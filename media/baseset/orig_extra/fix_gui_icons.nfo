@@ -10,3 +10,8 @@
    -1 sprites/fix_gui_icons.png 8bpp   8  13  20  20  0  0 normal nocrop
    -1 sprites/fix_gui_icons.png 8bpp  40  13  20  20  0  0 normal nocrop
    -1 sprites/fix_gui_icons.png 8bpp  72  13  20  20  0  0 normal nocrop
+
+// Add RTL variants.
+   -1 * 5    0A 01 01 \w 682
+   -1 sprites/rtl_icons.png 8bpp   5   5  10  10  0  1 normal chunked nocrop
+    | sprites/rtl_icons.png 8bpp   5  20  10  10  0  1 normal chunked nocrop rtl
