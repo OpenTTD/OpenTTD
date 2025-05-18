@@ -827,18 +827,25 @@ static Train *FindGoodVehiclePos(const Train *src)
 	EngineID eng = src->engine_type;
 	TileIndex tile = src->tile;
 
-	for (Train *dst : Train::Iterate()) {
-		if (dst->IsFreeWagon() && dst->tile == tile && !dst->vehstatus.Test(VehState::Crashed)) {
+	Train *pos = nullptr;
+	for (Vehicle *v : VehiclesOnTile(tile)) {
+		if (v->type != VEH_TRAIN) continue;
+
+		Train *dst = Train::From(v);
+		if (dst->IsFreeWagon() && !dst->vehstatus.Test(VehState::Crashed)) {
 			/* check so all vehicles in the line have the same engine. */
 			Train *t = dst;
 			while (t->engine_type == eng) {
 				t = t->Next();
-				if (t == nullptr) return dst;
+				if (t == nullptr && (pos == nullptr || pos->index > dst->index)) {
+					pos = dst;
+					break;
+				}
 			}
 		}
 	}
 
-	return nullptr;
+	return pos;
 }
 
 /** Helper type for lists/vectors of trains */
