@@ -432,7 +432,10 @@ void AddArticulatedParts(Vehicle *first)
 
 		if (flip_image) v->spritenum++;
 
-		if (v->type == VEH_TRAIN && TestVehicleBuildProbability(v, v->engine_type, BuildProbabilityType::Reversed)) Train::From(v)->flags.Set(VehicleRailFlag::Flipped);
+		if (v->type == VEH_TRAIN) {
+			auto prob = TestVehicleBuildProbability(v, v->engine_type, BuildProbabilityType::Reversed);
+			if (prob.has_value()) Train::From(v)->flags.Set(VehicleRailFlag::Flipped, prob.value());
+		}
 		v->UpdatePosition();
 	}
 }
