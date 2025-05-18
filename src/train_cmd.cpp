@@ -692,12 +692,19 @@ static CommandCost CmdBuildRailWagon(DoCommandFlags flags, TileIndex tile, const
 void NormalizeTrainVehInDepot(const Train *u)
 {
 	assert(u->IsEngine());
-	for (const Train *v : Train::Iterate()) {
-		if (v->IsFreeWagon() && v->tile == u->tile &&
-				v->track == TRACK_BIT_DEPOT) {
-			if (Command<CMD_MOVE_RAIL_VEHICLE>::Do(DoCommandFlag::Execute, v->index, u->index, true).Failed()) {
-				break;
-			}
+	std::vector<VehicleID> freewagons;
+	for (const Vehicle *w : VehiclesOnTile(u->tile)) {
+		if (w->type != VEH_TRAIN) continue;
+
+		const Train *v = Train::From(w);
+		if (v->IsFreeWagon() && v->track == TRACK_BIT_DEPOT) {
+			freewagons.push_back(v->index);
+		}
+	}
+	std::ranges::sort(freewagons);
+	for (VehicleID veh_id : freewagons) {
+		if (Command<CMD_MOVE_RAIL_VEHICLE>::Do(DoCommandFlag::Execute, veh_id, u->index, true).Failed()) {
+			break;
 		}
 	}
 }
