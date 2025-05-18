@@ -905,8 +905,8 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 		if (flags.Test(DoCommandFlag::Execute)) {
 			w = Vehicle::Get(new_veh_id);
 
-			if (v->type == VEH_TRAIN && HasBit(Train::From(v)->flags, VRF_REVERSE_DIRECTION)) {
-				SetBit(Train::From(w)->flags, VRF_REVERSE_DIRECTION);
+			if (v->type == VEH_TRAIN && Train::From(v)->flags.Test(VehicleRailFlag::Flipped)) {
+				Train::From(w)->flags.Set(VehicleRailFlag::Flipped);
 			}
 
 			if (v->type == VEH_TRAIN && !v->IsFrontEngine()) {

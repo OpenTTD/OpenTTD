@@ -1534,7 +1534,7 @@ void VehicleEnterDepot(Vehicle *v)
 			UpdateSignalsOnSegment(t->tile, INVALID_DIAGDIR, t->owner);
 			t->wait_counter = 0;
 			t->force_proceed = TFP_NONE;
-			ClrBit(t->flags, VRF_TOGGLE_REVERSE);
+			t->flags.Reset(VehicleRailFlag::Reversed);
 			t->ConsistChanged(CCF_ARRANGE);
 			break;
 		}
@@ -2361,7 +2361,7 @@ void Vehicle::LeaveStation()
 			TriggerStationAnimation(st, this->tile, StationAnimationTrigger::VehicleDeparts);
 		}
 
-		SetBit(Train::From(this)->flags, VRF_LEAVING_STATION);
+		Train::From(this)->flags.Set(VehicleRailFlag::LeavingStation);
 	}
 	if (this->type == VEH_ROAD && !this->vehstatus.Test(VehState::Crashed)) {
 		/* Trigger road stop animation */
@@ -2610,7 +2610,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlags flags, DepotCommandFlags command
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, WID_VV_START_STOP);
 
 		/* If there is no depot in front and the train is not already reversing, reverse automatically (trains only) */
-		if (this->type == VEH_TRAIN && (closest_depot.reverse ^ HasBit(Train::From(this)->flags, VRF_REVERSING))) {
+		if (this->type == VEH_TRAIN && (closest_depot.reverse ^ Train::From(this)->flags.Test(VehicleRailFlag::Reversing))) {
 			Command<CMD_REVERSE_TRAIN_DIRECTION>::Do(DoCommandFlag::Execute, this->index, false);
 		}
 
@@ -2720,7 +2720,7 @@ static void SpawnAdvancedVisualEffect(const Vehicle *v)
 	}
 
 	Direction l_dir = v->direction;
-	if (v->type == VEH_TRAIN && HasBit(Train::From(v)->flags, VRF_REVERSE_DIRECTION)) l_dir = ReverseDir(l_dir);
+	if (v->type == VEH_TRAIN && Train::From(v)->flags.Test(VehicleRailFlag::Flipped)) l_dir = ReverseDir(l_dir);
 	Direction t_dir = ChangeDir(l_dir, DIRDIFF_90RIGHT);
 
 	int8_t x_center = _vehicle_smoke_pos[l_dir] * l_center;
@@ -2781,7 +2781,7 @@ void Vehicle::ShowVisualEffect() const
 		 * - the train is reversing
 		 * - is entering a station with an order to stop there and its speed is equal to maximum station entering speed
 		 */
-		if (HasBit(t->flags, VRF_REVERSING) ||
+		if (t->flags.Test(VehicleRailFlag::Reversing) ||
 				(IsRailStationTile(t->tile) && t->IsFrontEngine() && t->current_order.ShouldStopAtStation(t, GetStationIndex(t->tile)) &&
 				t->cur_speed >= max_speed)) {
 			return;
@@ -2890,7 +2890,7 @@ void Vehicle::ShowVisualEffect() const
 			int x = _vehicle_smoke_pos[v->direction] * effect_offset;
 			int y = _vehicle_smoke_pos[(v->direction + 2) % 8] * effect_offset;
 
-			if (v->type == VEH_TRAIN && HasBit(Train::From(v)->flags, VRF_REVERSE_DIRECTION)) {
+			if (v->type == VEH_TRAIN && Train::From(v)->flags.Test(VehicleRailFlag::Flipped)) {
 				x = -x;
 				y = -y;
 			}
