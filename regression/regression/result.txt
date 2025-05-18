@@ -9427,13 +9427,22 @@ ERROR: IsEnd() is invalid as Begin() is never called
     23 => 652
     25 => 563
   HasStatue():                     false
-  GetRoadReworkDuration():         0
-  GetExclusiveRightsCompany():     -1
-  GetExclusiveRightsDuration():    0
   IsActionAvailable(BUILD_STATUE): true
   PerformTownAction(BUILD_STATUE): true
   IsActionAvailable(BUILD_STATUE): false
   HasStatue():                     true
+  GetRoadReworkDuration():         0
+  IsActionAvailable(ROAD_REBUILD): true
+  PerformTownAction(ROAD_REBUILD): true
+  IsActionAvailable(ROAD_REBUILD): true
+  GetRoadReworkDuration():         6
+  GetExclusiveRightsCompany():     -1
+  GetExclusiveRightsDuration():    0
+  IsActionAvailable(BUY_RIGHTS):   true
+  PerformTownAction(BUY_RIGHTS):   true
+  IsActionAvailable(BUY_RIGHTS):   false
+  GetExclusiveRightsCompany():     1
+  GetExclusiveRightsDuration():    12
 
 --Tunnel--
   IsTunnelTile():       false
@@ -9738,6 +9747,16 @@ ERROR: IsEnd() is invalid as Begin() is never called
       EventName:         CompanyRenamed
       CompanyID:         1
       CompanyName:       Little Frutford Transport
+  GetNextEvent:          instance
+    GetEventType:        28
+      EventName:         RoadReconstruction
+      CompanyID:         1
+      TownID:            12
+  GetNextEvent:          instance
+    GetEventType:        27
+      EventName:         ExclusiveTransportRights
+      CompanyID:         1
+      TownID:            12
   IsEventWaiting:        false
 
 --Math--
@@ -9775,9 +9794,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
 --Valuate() with excessive CPU usage--
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [unknown()] regression/main.nut line [2091]
+*FUNCTION [unknown()] regression/main.nut line [2114]
 *FUNCTION [Valuate()] NATIVE line [-1]
-*FUNCTION [Start()] regression/main.nut line [2092]
+*FUNCTION [Start()] regression/main.nut line [2115]
 
 [id] 0
 [this] TABLE
@@ -9786,7 +9805,7 @@ Your script made an error: excessive CPU usage in valuator function
 [this] INSTANCE
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [Start()] regression/main.nut line [2092]
+*FUNCTION [Start()] regression/main.nut line [2115]
 
 [Infinite] CLOSURE
 [list] INSTANCE

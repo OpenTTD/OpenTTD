@@ -1701,13 +1701,22 @@ function Regression::TownList()
 	}
 
 	print("  HasStatue():                     " + AITown.HasStatue(list.Begin()));
-	print("  GetRoadReworkDuration():         " + AITown.GetRoadReworkDuration(list.Begin()));
-	print("  GetExclusiveRightsCompany():     " + AITown.GetExclusiveRightsCompany(list.Begin()));
-	print("  GetExclusiveRightsDuration():    " + AITown.GetExclusiveRightsDuration(list.Begin()));
 	print("  IsActionAvailable(BUILD_STATUE): " + AITown.IsActionAvailable(list.Begin(), AITown.TOWN_ACTION_BUILD_STATUE));
 	print("  PerformTownAction(BUILD_STATUE): " + AITown.PerformTownAction(list.Begin(), AITown.TOWN_ACTION_BUILD_STATUE));
 	print("  IsActionAvailable(BUILD_STATUE): " + AITown.IsActionAvailable(list.Begin(), AITown.TOWN_ACTION_BUILD_STATUE));
 	print("  HasStatue():                     " + AITown.HasStatue(list.Begin()));
+	print("  GetRoadReworkDuration():         " + AITown.GetRoadReworkDuration(list.Begin()));
+	print("  IsActionAvailable(ROAD_REBUILD): " + AITown.IsActionAvailable(list.Begin(), AITown.TOWN_ACTION_ROAD_REBUILD));
+	print("  PerformTownAction(ROAD_REBUILD): " + AITown.PerformTownAction(list.Begin(), AITown.TOWN_ACTION_ROAD_REBUILD));
+	print("  IsActionAvailable(ROAD_REBUILD): " + AITown.IsActionAvailable(list.Begin(), AITown.TOWN_ACTION_ROAD_REBUILD));
+	print("  GetRoadReworkDuration():         " + AITown.GetRoadReworkDuration(list.Begin()));
+	print("  GetExclusiveRightsCompany():     " + AITown.GetExclusiveRightsCompany(list.Begin()));
+	print("  GetExclusiveRightsDuration():    " + AITown.GetExclusiveRightsDuration(list.Begin()));
+	print("  IsActionAvailable(BUY_RIGHTS):   " + AITown.IsActionAvailable(list.Begin(), AITown.TOWN_ACTION_BUY_RIGHTS));
+	print("  PerformTownAction(BUY_RIGHTS):   " + AITown.PerformTownAction(list.Begin(), AITown.TOWN_ACTION_BUY_RIGHTS));
+	print("  IsActionAvailable(BUY_RIGHTS):   " + AITown.IsActionAvailable(list.Begin(), AITown.TOWN_ACTION_BUY_RIGHTS));
+	print("  GetExclusiveRightsCompany():     " + AITown.GetExclusiveRightsCompany(list.Begin()));
+	print("  GetExclusiveRightsDuration():    " + AITown.GetExclusiveRightsDuration(list.Begin()));
 }
 
 function Regression::Tunnel()
@@ -2073,6 +2082,20 @@ function Regression::Start()
 				print("      EventName:         PresidentRenamed");
 				print("      CompanyID:         " + c.GetCompanyID());
 				print("      PresidentName:     " + c.GetNewName());
+			} break;
+
+			case AIEvent.ET_EXCLUSIVE_TRANSPORT_RIGHTS: {
+				local c = AIEventExclusiveTransportRights.Convert(e);
+				print("      EventName:         ExclusiveTransportRights");
+				print("      CompanyID:         " + c.GetCompanyID());
+				print("      TownID:            " + c.GetTownID());
+			} break;
+
+			case AIEvent.ET_ROAD_RECONSTRUCTION: {
+				local c = AIEventRoadReconstruction.Convert(e);
+				print("      EventName:         RoadReconstruction");
+				print("      CompanyID:         " + c.GetCompanyID());
+				print("      TownID:            " + c.GetTownID());
 			} break;
 
 			default:
