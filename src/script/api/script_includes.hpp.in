@@ -13,7 +13,7 @@ ${SQUIRREL_INCLUDES}
 
 static SQInteger ${APIUC}ObjectConstructor(HSQUIRRELVM vm)
 {
-	return sq_throwerror(vm, "${APIUC}Object is not instantiable");
+	return sq_throwerror(vm, "This class is not instantiable");
 }
 
 static SQInteger ${APIUC}ObjectCloned(HSQUIRRELVM)
