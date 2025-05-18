@@ -959,18 +959,21 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Copia el
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opcions de la partida
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :General
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Trieu la configuració general.
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :Trieu la configuració general.
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Gràfics
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Trieu la configuració dels gràfics.
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :Trieu la configuració dels gràfics.
 STR_GAME_OPTIONS_TAB_SOUND                                      :So
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Escolliu la configuració de so i de música.
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Escolliu la configuració de so i de música.
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Social
-STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Trieu les opcions d'integració social.
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Trieu les opcions d'integració social.
+STR_GAME_OPTIONS_TAB_ADVANCED                                   :Avançada
+STR_GAME_OPTIONS_TAB_ADVANCED_TOOLTIP                           :Canvia la configuració avançada.
 
 STR_GAME_OPTIONS_VOLUME                                         :Volum
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Efectes de so
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Música
 
+STR_GAME_OPTIONS_SETTING                                        :{STRING}: {ORANGE}{STRING}
 
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}{NBSP}%
 
@@ -1058,10 +1061,11 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Seleccio
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Controlador actual: {STRING}
 
+STR_GAME_OPTIONS_INTERFACE                                      :Interfície
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Mida de la interfície
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Arrossegueu el botó lliscant per a triar la mida de la interfície. Amb Ctrl+arrossega, s'aplica un ajust continu.
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Detecta la mida automàticament
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Detecta la mida automàticament
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Marqueu aquesta opció si voleu que s'ajusti la mida de la interfície automàticament.
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Escala els bisells
@@ -1069,7 +1073,7 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Marqueu 
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Fes servir la font tradicional
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Marqueu aquesta casella si preferiu fer servir la font tradicional de mida fixa i pixelada.
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Aplica anti-àlies a les fonts
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Aplica anti-àlies a les fonts
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Marqueu aquesta casella per a fer servir tècniques d'anti-àlies a les fonts redimensionables.
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
@@ -1082,17 +1086,18 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Obre una
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Vista prèvia del resultat del sondeig
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Mostra el resultat del sondeig automatitzat de la partida actual.
 
+STR_GAME_OPTIONS_DISPLAY                                        :Pantalla
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Rati de refresc de la pantalla
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Seleccioneu el rati de refresc de la pantalla que voleu usar.
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}{NBSP}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Ratis de refresc major a 60{NBSP}Hz poden causar problemes de rendiment.
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunt de gràfics base
+STR_GAME_OPTIONS_BASE_GRF                                       :Conjunt de gràfics base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecciona el conjunt de gràfics base a utilitzar (no es pot canviar des de dins de la partida; s'ha de canviar des del menú principal).
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informació addicional sobre el conjunt de gràfics base
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Informació addicional sobre el conjunt de gràfics base
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Conjunt de sons base
+STR_GAME_OPTIONS_BASE_SFX                                       :Conjunt de sons base
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selecciona un conjunt de sons base a utilitzar (no es pot canviar des de dins de la partida; s'ha de canviar des del menú principal).
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informació addicional sobre el joc de sons base
 
@@ -2191,6 +2196,8 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... no s
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... el controlador de la GPU ha fallat durant la partida. Es desactiva l'acceleració per maquinari.
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Partida nova
 STR_INTRO_LOAD_GAME                                             :{BLACK}Carrega una partida
@@ -5871,6 +5878,7 @@ STR_CURRENCY_SHORT_GIGA                                         :{NBSP}G
 STR_CURRENCY_SHORT_TERA                                         :{NBSP}T
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_LEFT_ARROW                                             :{LEFT_ARROW}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
