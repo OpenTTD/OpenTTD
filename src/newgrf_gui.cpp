@@ -1506,7 +1506,7 @@ void ShowMissingContentWindow(const GRFConfigList &list)
 
 		auto ci = std::make_unique<ContentInfo>();
 		ci->type = CONTENT_TYPE_NEWGRF;
-		ci->state = ContentInfo::DOES_NOT_EXIST;
+		ci->state = ContentInfo::State::DoesNotExist;
 		ci->name = c->GetName();
 		ci->unique_id = std::byteswap(c->ident.grfid);
 		ci->md5sum = c->flags.Test(GRFConfigFlag::Compatible) ? c->original_md5sum : c->ident.md5sum;
