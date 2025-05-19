@@ -2655,9 +2655,9 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_156)) {
 		/* The train's pathfinder lost flag got moved. */
 		for (Train *t : Train::Iterate()) {
-			if (!HasBit(t->flags, 5)) continue;
+			if (!t->flags.Test(VehicleRailFlag{5})) continue;
 
-			ClrBit(t->flags, 5);
+			t->flags.Reset(VehicleRailFlag{5});
 			t->vehicle_flags.Set(VehicleFlag::PathfinderLost);
 		}
 
@@ -2696,8 +2696,8 @@ bool AfterLoadGame()
 					 * It was changed in savegame version 139, but savegame
 					 * version 158 doesn't use these bits, so it doesn't hurt
 					 * to clear them unconditionally. */
-					ClrBit(t->flags, 1);
-					ClrBit(t->flags, 2);
+					t->flags.Reset(VehicleRailFlag{1});
+					t->flags.Reset(VehicleRailFlag{2});
 
 					/* Clear both bits first. */
 					ClrBit(t->gv_flags, GVF_GOINGUP_BIT);

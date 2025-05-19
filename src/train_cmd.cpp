@@ -163,9 +163,9 @@ void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
 		if (rvi_v->pow_wag_power != 0 && rvi_u->railveh_type == RAILVEH_WAGON &&
 				UsesWagonOverride(u) && !HasBit(u->vcache.cached_vis_effect, VE_DISABLE_WAGON_POWER)) {
 			/* wagon is powered */
-			SetBit(u->flags, VRF_POWEREDWAGON); // cache 'powered' status
+			u->flags.Set(VehicleRailFlag::PoweredWagon); // cache 'powered' status
 		} else {
-			ClrBit(u->flags, VRF_POWEREDWAGON);
+			u->flags.Reset(VehicleRailFlag::PoweredWagon);
 		}
 
 		if (!u->IsArticulatedPart()) {
@@ -177,7 +177,7 @@ void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
 
 			/* Some electric engines can be allowed to run on normal rail. It happens to all
 			 * existing electric engines when elrails are disabled and then re-enabled */
-			if (HasBit(u->flags, VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL)) {
+			if (u->flags.Test(VehicleRailFlag::AllowedOnNormalRail)) {
 				u->railtype = RAILTYPE_RAIL;
 				u->compatible_railtypes.Set(RAILTYPE_RAIL);
 			}
@@ -437,7 +437,7 @@ void Train::UpdateAcceleration()
 
 int Train::GetCursorImageOffset() const
 {
-	if (this->gcache.cached_veh_length != 8 && HasBit(this->flags, VRF_REVERSE_DIRECTION) && !EngInfo(this->engine_type)->misc_flags.Test(EngineMiscFlag::RailFlips)) {
+	if (this->gcache.cached_veh_length != 8 && this->flags.Test(VehicleRailFlag::Flipped) && !EngInfo(this->engine_type)->misc_flags.Test(EngineMiscFlag::RailFlips)) {
 		int reference_width = TRAININFO_DEFAULT_VEHICLE_WIDTH;
 
 		const Engine *e = this->GetEngine();
@@ -467,7 +467,7 @@ int Train::GetDisplayImageWidth(Point *offset) const
 	}
 
 	if (offset != nullptr) {
-		if (HasBit(this->flags, VRF_REVERSE_DIRECTION) && !EngInfo(this->engine_type)->misc_flags.Test(EngineMiscFlag::RailFlips)) {
+		if (this->flags.Test(VehicleRailFlag::Flipped) && !EngInfo(this->engine_type)->misc_flags.Test(EngineMiscFlag::RailFlips)) {
 			offset->x = ScaleSpriteTrad(((int)this->gcache.cached_veh_length - (int)VEHICLE_LENGTH / 2) * reference_width / (int)VEHICLE_LENGTH);
 		} else {
 			offset->x = ScaleSpriteTrad(reference_width) / 2;
@@ -493,7 +493,7 @@ void Train::GetImage(Direction direction, EngineImageType image_type, VehicleSpr
 {
 	uint8_t spritenum = this->spritenum;
 
-	if (HasBit(this->flags, VRF_REVERSE_DIRECTION)) direction = ReverseDir(direction);
+	if (this->flags.Test(VehicleRailFlag::Flipped)) direction = ReverseDir(direction);
 
 	if (IsCustomVehicleSpriteNum(spritenum)) {
 		if (spritenum == CUSTOM_VEHICLE_SPRITENUM_REVERSED) direction = ReverseDir(direction);
@@ -662,7 +662,7 @@ static CommandCost CmdBuildRailWagon(DoCommandFlags flags, TileIndex tile, const
 
 		v->group_id = DEFAULT_GROUP;
 
-		if (TestVehicleBuildProbability(v, v->engine_type, BuildProbabilityType::Reversed)) SetBit(v->flags, VRF_REVERSE_DIRECTION);
+		if (TestVehicleBuildProbability(v, v->engine_type, BuildProbabilityType::Reversed)) v->flags.Set(VehicleRailFlag::Flipped);
 		AddArticulatedParts(v);
 
 		v->UpdatePosition();
@@ -731,7 +731,7 @@ static void AddRearEngineToMultiheadedTrain(Train *v)
 	v->SetMultiheaded();
 	u->SetMultiheaded();
 	v->SetNext(u);
-	if (TestVehicleBuildProbability(u, u->engine_type, BuildProbabilityType::Reversed)) SetBit(u->flags, VRF_REVERSE_DIRECTION);
+	if (TestVehicleBuildProbability(u, u->engine_type, BuildProbabilityType::Reversed)) u->flags.Set(VehicleRailFlag::Flipped);
 	u->UpdatePosition();
 
 	/* Now we need to link the front and rear engines together */
@@ -804,7 +804,7 @@ CommandCost CmdBuildRailVehicle(DoCommandFlags flags, TileIndex tile, const Engi
 		v->SetFrontEngine();
 		v->SetEngine();
 
-		if (TestVehicleBuildProbability(v, v->engine_type, BuildProbabilityType::Reversed)) SetBit(v->flags, VRF_REVERSE_DIRECTION);
+		if (TestVehicleBuildProbability(v, v->engine_type, BuildProbabilityType::Reversed)) v->flags.Set(VehicleRailFlag::Flipped);
 		v->UpdatePosition();
 
 		if (rvi->railveh_type == RAILVEH_MULTIHEAD) {
@@ -1479,7 +1479,7 @@ void Train::UpdateDeltaXY()
 	this->y_bb_offs =  0;
 
 	/* Set if flipped and engine is NOT flagged with custom flip handling. */
-	int flipped = HasBit(this->flags, VRF_REVERSE_DIRECTION) && !EngInfo(this->engine_type)->misc_flags.Test(EngineMiscFlag::RailFlips);
+	int flipped = this->flags.Test(VehicleRailFlag::Flipped) && !EngInfo(this->engine_type)->misc_flags.Test(EngineMiscFlag::RailFlips);
 	/* If flipped and vehicle length is odd, we need to adjust the bounding box offset slightly. */
 	int flip_offs = flipped && (this->gcache.cached_veh_length & 1);
 
@@ -1545,9 +1545,9 @@ void Train::UpdateDeltaXY()
  */
 static void MarkTrainAsStuck(Train *v)
 {
-	if (!HasBit(v->flags, VRF_TRAIN_STUCK)) {
+	if (!v->flags.Test(VehicleRailFlag::Stuck)) {
 		/* It is the first time the problem occurred, set the "train stuck" flag. */
-		SetBit(v->flags, VRF_TRAIN_STUCK);
+		v->flags.Set(VehicleRailFlag::Stuck);
 
 		v->wait_counter = 0;
 
@@ -1976,7 +1976,7 @@ void ReverseTrainDirection(Train *v)
 	}
 
 	/* Clear path reservation in front if train is not stuck. */
-	if (!HasBit(v->flags, VRF_TRAIN_STUCK)) FreeTrainTrackReservation(v);
+	if (!v->flags.Test(VehicleRailFlag::Stuck)) FreeTrainTrackReservation(v);
 
 	/* Check if we were approaching a rail/road-crossing */
 	TileIndex crossing = TrainApproachingCrossingTile(v);
@@ -1998,9 +1998,8 @@ void ReverseTrainDirection(Train *v)
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 	}
 
-	ToggleBit(v->flags, VRF_TOGGLE_REVERSE);
-
-	ClrBit(v->flags, VRF_REVERSING);
+	v->flags.Flip(VehicleRailFlag::Reversed);
+	v->flags.Reset(VehicleRailFlag::Reversing);
 
 	/* recalculate cached data */
 	v->ConsistChanged(CCF_TRACK);
@@ -2018,8 +2017,8 @@ void ReverseTrainDirection(Train *v)
 	/* If we are inside a depot after reversing, don't bother with path reserving. */
 	if (v->track == TRACK_BIT_DEPOT) {
 		/* Can't be stuck here as inside a depot is always a safe tile. */
-		if (HasBit(v->flags, VRF_TRAIN_STUCK)) SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
-		ClrBit(v->flags, VRF_TRAIN_STUCK);
+		if (v->flags.Test(VehicleRailFlag::Stuck)) SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
+		v->flags.Reset(VehicleRailFlag::Stuck);
 		return;
 	}
 
@@ -2046,9 +2045,9 @@ void ReverseTrainDirection(Train *v)
 			/* Do not wait for a way out when we're still loading */
 			MarkTrainAsStuck(v);
 		}
-	} else if (HasBit(v->flags, VRF_TRAIN_STUCK)) {
+	} else if (v->flags.Test(VehicleRailFlag::Stuck)) {
 		/* A train not inside a PBS block can't be stuck. */
-		ClrBit(v->flags, VRF_TRAIN_STUCK);
+		v->flags.Reset(VehicleRailFlag::Stuck);
 		v->wait_counter = 0;
 	}
 }
@@ -2082,7 +2081,7 @@ CommandCost CmdReverseTrainDirection(DoCommandFlags flags, VehicleID veh_id, boo
 		}
 
 		if (flags.Test(DoCommandFlag::Execute)) {
-			ToggleBit(v->flags, VRF_REVERSE_DIRECTION);
+			v->flags.Flip(VehicleRailFlag::Flipped);
 
 			front->ConsistChanged(CCF_ARRANGE);
 			SetWindowDirty(WC_VEHICLE_DEPOT, front->tile);
@@ -2112,7 +2111,7 @@ CommandCost CmdReverseTrainDirection(DoCommandFlags flags, VehicleID veh_id, boo
 			SetWindowDirty(WC_VEHICLE_VIEW, v->index);
 
 			if (_settings_game.vehicle.train_acceleration_model != AM_ORIGINAL && v->cur_speed != 0) {
-				ToggleBit(v->flags, VRF_REVERSING);
+				v->flags.Flip(VehicleRailFlag::Reversing);
 			} else {
 				v->cur_speed = 0;
 				v->SetLastSpeed();
@@ -2150,7 +2149,7 @@ CommandCost CmdForceTrainProceed(DoCommandFlags flags, VehicleID veh_id)
 		 * to proceed to the next signal. In the other cases we
 		 * would like to pass the signal at danger and run till the
 		 * next signal we encounter. */
-		t->force_proceed = t->force_proceed == TFP_SIGNAL ? TFP_NONE : HasBit(t->flags, VRF_TRAIN_STUCK) || t->IsChainInDepot() ? TFP_STUCK : TFP_SIGNAL;
+		t->force_proceed = t->force_proceed == TFP_SIGNAL ? TFP_NONE : t->flags.Test(VehicleRailFlag::Stuck) || t->IsChainInDepot() ? TFP_STUCK : TFP_SIGNAL;
 		SetWindowDirty(WC_VEHICLE_VIEW, t->index);
 
 		/* Unbunching data is no longer valid. */
@@ -2899,8 +2898,8 @@ bool TryPathReserve(Train *v, bool mark_as_stuck, bool first_tile_okay)
 	/* If we have a reserved path and the path ends at a safe tile, we are finished already. */
 	if (origin.okay && (v->tile != origin.tile || first_tile_okay)) {
 		/* Can't be stuck then. */
-		if (HasBit(v->flags, VRF_TRAIN_STUCK)) SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
-		ClrBit(v->flags, VRF_TRAIN_STUCK);
+		if (v->flags.Test(VehicleRailFlag::Stuck)) SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
+		v->flags.Reset(VehicleRailFlag::Stuck);
 		return true;
 	}
 
@@ -2925,11 +2924,11 @@ bool TryPathReserve(Train *v, bool mark_as_stuck, bool first_tile_okay)
 		return false;
 	}
 
-	if (HasBit(v->flags, VRF_TRAIN_STUCK)) {
+	if (v->flags.Test(VehicleRailFlag::Stuck)) {
 		v->wait_counter = 0;
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 	}
-	ClrBit(v->flags, VRF_TRAIN_STUCK);
+	v->flags.Reset(VehicleRailFlag::Stuck);
 	return true;
 }
 
@@ -3118,7 +3117,7 @@ uint Train::Crash(bool flooded)
 
 		/* Remove the reserved path in front of the train if it is not stuck.
 		 * Also clear all reserved tracks the train is currently on. */
-		if (!HasBit(this->flags, VRF_TRAIN_STUCK)) FreeTrainTrackReservation(this);
+		if (!this->flags.Test(VehicleRailFlag::Stuck)) FreeTrainTrackReservation(this);
 		for (const Train *v = this; v != nullptr; v = v->Next()) {
 			ClearPathReservation(v, v->tile, v->GetVehicleTrackdir());
 			if (IsTileType(v->tile, MP_TUNNELBRIDGE)) {
@@ -3347,7 +3346,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 						Trackdir i = FindFirstTrackdir(trackdirbits);
 
 						/* Don't handle stuck trains here. */
-						if (HasBit(v->flags, VRF_TRAIN_STUCK)) return false;
+						if (v->flags.Test(VehicleRailFlag::Stuck)) return false;
 
 						if (!HasSignalOnTrackdir(gp.new_tile, ReverseTrackdir(i))) {
 							v->cur_speed = 0;
@@ -3921,14 +3920,14 @@ static bool TrainLocoHandler(Train *v, bool mode)
 	}
 
 	if (v->force_proceed != TFP_NONE) {
-		ClrBit(v->flags, VRF_TRAIN_STUCK);
+		v->flags.Reset(VehicleRailFlag::Stuck);
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 	}
 
 	/* train is broken down? */
 	if (v->HandleBreakdown()) return true;
 
-	if (HasBit(v->flags, VRF_REVERSING) && v->cur_speed == 0) {
+	if (v->flags.Test(VehicleRailFlag::Reversing) && v->cur_speed == 0) {
 		ReverseTrainDirection(v);
 	}
 
@@ -3940,10 +3939,10 @@ static bool TrainLocoHandler(Train *v, bool mode)
 		v->wait_counter = 0;
 		v->cur_speed = 0;
 		v->subspeed = 0;
-		ClrBit(v->flags, VRF_LEAVING_STATION);
+		v->flags.Reset(VehicleRailFlag::LeavingStation);
 		ReverseTrainDirection(v);
 		return true;
-	} else if (HasBit(v->flags, VRF_LEAVING_STATION)) {
+	} else if (v->flags.Test(VehicleRailFlag::LeavingStation)) {
 		/* Try to reserve a path when leaving the station as we
 		 * might not be marked as wanting a reservation, e.g.
 		 * when an overlength train gets turned around in a station. */
@@ -3953,7 +3952,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 		if (UpdateSignalsOnSegment(v->tile, dir, v->owner) == SIGSEG_PBS || _settings_game.pf.reserve_paths) {
 			TryPathReserve(v, true, true);
 		}
-		ClrBit(v->flags, VRF_LEAVING_STATION);
+		v->flags.Reset(VehicleRailFlag::LeavingStation);
 	}
 
 	v->HandleLoading(mode);
@@ -3970,7 +3969,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 	}
 
 	/* Handle stuck trains. */
-	if (!mode && HasBit(v->flags, VRF_TRAIN_STUCK)) {
+	if (!mode && v->flags.Test(VehicleRailFlag::Stuck)) {
 		++v->wait_counter;
 
 		/* Should we try reversing this tick if still stuck? */
@@ -3981,7 +3980,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 			/* Still stuck. */
 			if (turn_around) ReverseTrainDirection(v);
 
-			if (HasBit(v->flags, VRF_TRAIN_STUCK) && v->wait_counter > 2 * _settings_game.pf.wait_for_pbs_path * Ticks::DAY_TICKS) {
+			if (v->flags.Test(VehicleRailFlag::Stuck) && v->wait_counter > 2 * _settings_game.pf.wait_for_pbs_path * Ticks::DAY_TICKS) {
 				/* Show message to player. */
 				if (_settings_client.gui.lost_vehicle_warn && v->owner == _local_company) {
 					AddVehicleAdviceNewsItem(AdviceType::TrainStuck, GetEncodedString(STR_NEWS_TRAIN_IS_STUCK, v->index), v->index);
@@ -3990,7 +3989,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 			}
 			/* Exit if force proceed not pressed, else reset stuck flag anyway. */
 			if (v->force_proceed == TFP_NONE) return true;
-			ClrBit(v->flags, VRF_TRAIN_STUCK);
+			v->flags.Reset(VehicleRailFlag::Stuck);
 			v->wait_counter = 0;
 			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 		}
@@ -4219,7 +4218,7 @@ uint16_t Train::GetMaxWeight() const
 	}
 
 	/* Powered wagons have extra weight added. */
-	if (HasBit(this->flags, VRF_POWEREDWAGON)) {
+	if (this->flags.Test(VehicleRailFlag::PoweredWagon)) {
 		weight += RailVehInfo(this->gcache.first_engine)->pow_wag_weight;
 	}
 
