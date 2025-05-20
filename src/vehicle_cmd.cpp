@@ -906,7 +906,11 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 			w = Vehicle::Get(new_veh_id);
 
 			if (v->type == VEH_TRAIN && Train::From(v)->flags.Test(VehicleRailFlag::Flipped)) {
-				Train::From(w)->flags.Set(VehicleRailFlag::Flipped);
+				/* Only copy the reverse state if neither old or new vehicle implements reverse-on-build probability callback. */
+				if (!TestVehicleBuildProbability(v, v->engine_type, BuildProbabilityType::Reversed).has_value() &&
+					!TestVehicleBuildProbability(w, w->engine_type, BuildProbabilityType::Reversed).has_value()) {
+					Train::From(w)->flags.Set(VehicleRailFlag::Flipped);
+				}
 			}
 
 			if (v->type == VEH_TRAIN && !v->IsFrontEngine()) {

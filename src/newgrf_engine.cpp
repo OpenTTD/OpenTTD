@@ -1235,12 +1235,12 @@ int GetEngineProperty(EngineID engine, PropertyID property, int orig_value, cons
  * Test for vehicle build probablity type.
  * @param v Vehicle whose build probability to test.
  * @param type Build probability type to test for.
- * @returns True iff the probability result says so.
+ * @returns True or false depending on the probability result, or std::nullopt if the callback failed.
  */
-bool TestVehicleBuildProbability(Vehicle *v, EngineID engine, BuildProbabilityType type)
+std::optional<bool> TestVehicleBuildProbability(Vehicle *v, EngineID engine, BuildProbabilityType type)
 {
 	uint16_t p = GetVehicleCallback(CBID_VEHICLE_BUILD_PROBABILITY, to_underlying(type), 0, engine, v);
-	if (p == CALLBACK_FAILED) return false;
+	if (p == CALLBACK_FAILED) return std::nullopt;
 
 	const uint16_t PROBABILITY_RANGE = 100;
 	return p + RandomRange(PROBABILITY_RANGE) >= PROBABILITY_RANGE;
