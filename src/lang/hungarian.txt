@@ -2614,7 +2614,7 @@ STR_NETWORK_SPECTATORS                                          :Megfigyelők
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Csatlakozás
-STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Csatlakozz és vezesd a vállalatot
+STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Csatlakozás és a vállalat vezetése
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Elküld
@@ -4029,10 +4029,10 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}SZH áth
 STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}A vállalat székházának újraépítése máshol a vállalat értékének 1%-áért. Shift+kattintással csak a becsült költséget jeleníti meg
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Részletek
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Részletes információk megtekintése az infrastruktúráról
-STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Adományozz pénzt
-STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Utalj pénzt ennek a vállalatnak
+STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Pénz adományozása
+STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Pénz adományozása ennek a vállalatnak
 STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}Erőszakos átvétel
-STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Vedd át erőszakkal a vállalat vezetését
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}A vállalat vezetésének erőszakos átvétele
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Új arc
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Új arc választása az elnöknek
