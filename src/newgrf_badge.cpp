@@ -8,13 +8,25 @@
 /** @file newgrf_badge.cpp Functionality for NewGRF badges. */
 
 #include "stdafx.h"
+#include "house.h"
+#include "industry_map.h"
 #include "newgrf.h"
+#include "newgrf_airporttiles.h"
 #include "newgrf_badge.h"
 #include "newgrf_badge_type.h"
+#include "newgrf_object.h"
+#include "newgrf_roadstop.h"
+#include "newgrf_station.h"
 #include "newgrf_spritegroup.h"
+#include "rail.h"
+#include "rail_map.h"
+#include "station_map.h"
 #include "stringfilter_type.h"
 #include "strings_func.h"
+#include "tile_map.h"
 #include "timer/timer_game_calendar.h"
+#include "town_map.h"
+#include "tunnelbridge_map.h"
 
 #include "table/strings.h"
 
@@ -216,7 +228,186 @@ BadgeResolverObject::BadgeResolverObject(const Badge &badge, GrfSpecFeature feat
 }
 
 /**
- * Test for a matching badge in a list of badges, returning the number of matching bits.
+ * Test if a list of badges contains a badge.
+ * @param badges List of badges.
+ * @param badge Badge to find.
+ * @returns true iff the badge appears in the list.
+ */
+static bool BadgesContains(std::span<const BadgeID> badges, BadgeID badge)
+{
+	return std::ranges::find(badges, badge) != std::end(badges);
+}
+
+/**
+ * Test if a rail type has a badge.
+ * @param rt Rail type to test.
+ * @param badge Badge to find.
+ * @returns true iff the rail type has the badge.
+ */
+static bool RailTypeHasBadge(RailType rt, BadgeID badge)
+{
+	return rt != INVALID_RAILTYPE && BadgesContains(GetRailTypeInfo(rt)->badges, badge);
+}
+
+/**
+ * Test if a road type has a badge.
+ * @param rt Road type to test.
+ * @param badge Badge to find.
+ * @returns true iff the road type has the badge.
+ */
+static bool RoadTypeHasBadge(RoadType rt, BadgeID badge)
+{
+	return rt != INVALID_ROADTYPE && BadgesContains(GetRoadTypeInfo(rt)->badges, badge);
+}
+
+/**
+ * Test if a tile has a badge on it.
+ * @param tile The tile to test.
+ * @param badge Badge to find.
+ * @param features GRF features to consider.
+ * @return true iff the badge is present on the tile.
+ */
+using TileHasBadgeProc = bool(*)(TileIndex tile, BadgeID badge, GrfSpecFeatures features);
+
+/** @copydoc TileHasBadgeProc */
+static bool TileHasBadge_Rail(TileIndex tile, BadgeID badge, GrfSpecFeatures features)
+{
+	if (features.Test(GrfSpecFeature::GSF_RAILTYPES) && RailTypeHasBadge(GetRailType(tile), badge)) return true;
+	return false;
+}
+
+/** @copydoc TileHasBadgeProc */
+static bool TileHasBadge_Road(TileIndex tile, BadgeID badge, GrfSpecFeatures features)
+{
+	if (features.Test(GrfSpecFeature::GSF_ROADTYPES) && RoadTypeHasBadge(GetRoadTypeRoad(tile), badge)) return true;
+	if (features.Test(GrfSpecFeature::GSF_TRAMTYPES) && RoadTypeHasBadge(GetRoadTypeTram(tile), badge)) return true;
+	if (features.Test(GrfSpecFeature::GSF_RAILTYPES) && IsLevelCrossing(tile) && RailTypeHasBadge(GetRailType(tile), badge)) return true;
+	return false;
+}
+
+/** @copydoc TileHasBadgeProc */
+static bool TileHasBadge_Town(TileIndex tile, BadgeID badge, GrfSpecFeatures features)
+{
+	if (features.Test(GrfSpecFeature::GSF_HOUSES) && BadgesContains(HouseSpec::Get(GetHouseType(tile))->badges, badge)) return true;
+	return false;
+}
+
+/** @copydoc TileHasBadgeProc */
+static bool TileHasBadge_Station(TileIndex tile, BadgeID badge, GrfSpecFeatures features)
+{
+	switch (GetStationType(tile)) {
+		case StationType::Rail:
+		case StationType::RailWaypoint:
+			if (features.Test(GrfSpecFeature::GSF_STATIONS)) {
+				if (const StationSpec *spec = GetStationSpec(tile); spec != nullptr && BadgesContains(spec->badges, badge)) return true;
+			}
+			if (features.Test(GrfSpecFeature::GSF_RAILTYPES) && RailTypeHasBadge(GetRailType(tile), badge)) return true;
+			return false;
+
+		case StationType::Bus:
+		case StationType::Truck:
+		case StationType::RoadWaypoint:
+			if (features.Test(GrfSpecFeature::GSF_ROADSTOPS)) {
+				if (const RoadStopSpec *spec = GetRoadStopSpec(tile); spec != nullptr && BadgesContains(spec->badges, badge)) return true;
+			}
+			if (features.Test(GrfSpecFeature::GSF_ROADTYPES) && RoadTypeHasBadge(GetRoadTypeRoad(tile), badge)) return true;
+			if (features.Test(GrfSpecFeature::GSF_TRAMTYPES) && RoadTypeHasBadge(GetRoadTypeTram(tile), badge)) return true;
+			return false;
+
+		case StationType::Airport:
+			if (features.Test(GrfSpecFeature::GSF_AIRPORTTILES) && BadgesContains(AirportTileSpec::GetByTile(tile)->badges, badge)) return true;
+			return false;
+
+		default:
+			return false;
+	}
+}
+
+/** @copydoc TileHasBadgeProc */
+static bool TileHasBadge_Industry(TileIndex tile, BadgeID badge, GrfSpecFeatures features)
+{
+	if (features.Test(GrfSpecFeature::GSF_INDUSTRYTILES) && BadgesContains(GetIndustryTileSpec(GetIndustryGfx(tile))->badges, badge)) return true;
+	if (features.Test(GrfSpecFeature::GSF_INDUSTRIES) && BadgesContains(GetIndustrySpec(GetIndustryType(tile))->badges, badge)) return true;
+	return false;
+}
+
+/** @copydoc TileHasBadgeProc */
+static bool TileHasBadge_TunnelBridge(TileIndex tile, BadgeID badge, GrfSpecFeatures features)
+{
+	switch (GetTunnelBridgeTransportType(tile)) {
+		case TransportType::TRANSPORT_RAIL:
+			if (features.Test(GrfSpecFeature::GSF_RAILTYPES) && RailTypeHasBadge(GetRailType(tile), badge)) return true;
+			return false;
+
+		case TransportType::TRANSPORT_ROAD:
+			if (features.Test(GrfSpecFeature::GSF_ROADTYPES) && RoadTypeHasBadge(GetRoadTypeRoad(tile), badge)) return true;
+			if (features.Test(GrfSpecFeature::GSF_TRAMTYPES) && RoadTypeHasBadge(GetRoadTypeTram(tile), badge)) return true;
+			return false;
+
+		default:
+			return false;
+	}
+}
+
+/** @copydoc TileHasBadgeProc */
+static bool TileHasBadge_Object(TileIndex tile, BadgeID badge, GrfSpecFeatures features)
+{
+	if (features.Test(GrfSpecFeature::GSF_OBJECTS) && BadgesContains(ObjectSpec::GetByTile(tile)->badges, badge)) return true;
+	return false;
+}
+
+/**
+ * Test if a tile has an item containing the specified badge.
+ * @param tile Tile to query.
+ * @param badge Badge to search for.
+ * @param features GRF features to include in the test.
+ * @returns true iff the badge 'is on' the tile.
+ */
+static bool TileHasBadge(TileIndex tile, BadgeID badge, GrfSpecFeatures features)
+{
+	/* Per-tiletype functions for badge testing. Like _tile_type_procs, this is 16 entries as GetTileType() reads 4 bits. */
+	static constexpr EnumClassIndexContainer<std::array<TileHasBadgeProc, 16>, TileType> tile_procs = {
+		nullptr,
+		TileHasBadge_Rail,
+		TileHasBadge_Road,
+		TileHasBadge_Town,
+		nullptr,
+		TileHasBadge_Station,
+		nullptr,
+		nullptr,
+		TileHasBadge_Industry,
+		TileHasBadge_TunnelBridge,
+		TileHasBadge_Object,
+	};
+
+	TileHasBadgeProc proc = tile_procs[GetTileType(tile)];
+	return proc != nullptr && proc(tile, badge, features);
+}
+
+/**
+ * Test for a matching badge 'on' a specific map tile.
+ * @param grffile GRF file of the current varaction.
+ * @param tile Tile to test.
+ * @param object Resolver object of variable being resolved.
+ * @returns true iff the badge is present.
+ */
+uint32_t GetNearbyBadgeVariableResult(const GRFFile &grffile, TileIndex tile, const ResolverObject &object)
+{
+	GrfSpecFeatures features = static_cast<GrfSpecFeatures>(object.GetRegister(0x101));
+	if (features.None()) return 0;
+
+	uint32_t parameter = object.GetRegister(0x100);
+	if (parameter >= std::size(grffile.badge_list)) return UINT_MAX;
+
+	/* NewGRF cannot be expected to know the bounds of the map. If the tile is invalid it doesn't have the queried badge. */
+	if (!IsValidTile(tile)) return 0;
+
+	BadgeID index = grffile.badge_list[parameter];
+	return TileHasBadge(tile, index, features);
+}
+
+/**
+ * Test for a matching badge in a list of badges.
  * @param grffile GRF file of the current varaction.
  * @param badges List of badges to test.
  * @param parameter GRF-local badge index.
@@ -227,7 +418,7 @@ uint32_t GetBadgeVariableResult(const GRFFile &grffile, std::span<const BadgeID>
 	if (parameter >= std::size(grffile.badge_list)) return UINT_MAX;
 
 	BadgeID index = grffile.badge_list[parameter];
-	return std::ranges::find(badges, index) != std::end(badges);
+	return BadgesContains(badges, index);
 }
 
 /**
