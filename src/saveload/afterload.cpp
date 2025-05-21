@@ -575,6 +575,9 @@ bool AfterLoadGame()
 	 * that otherwise won't exist in the tree. */
 	RebuildViewportKdtree();
 
+	/* Group hierarchy may be evaluated during conversion, so ensure its correct early on. */
+	UpdateGroupChildren();
+
 	if (IsSavegameVersionBefore(SLV_98)) _gamelog.GRFAddList(_grfconfig);
 
 	if (IsSavegameVersionBefore(SLV_119)) {
