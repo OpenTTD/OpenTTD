@@ -11,6 +11,7 @@
 #define GROUP_H
 
 #include "group_type.h"
+#include "core/flatset_type.hpp"
 #include "core/pool_type.hpp"
 #include "company_type.h"
 #include "vehicle_type.h"
@@ -78,6 +79,7 @@ struct Group : GroupPool::PoolItem<&_group_pool> {
 	Livery livery{}; ///< Custom colour scheme for vehicles in this group
 	GroupStatistics statistics{}; ///< NOSAVE: Statistics and caches on the vehicles in the group.
 
+	FlatSet<GroupID> children; ///< NOSAVE: child groups belonging to this group.
 	bool folded = false; ///< NOSAVE: Is this group folded in the group view?
 
 	GroupID parent = GroupID::Invalid(); ///< Parent group
@@ -104,6 +106,7 @@ inline bool IsAllGroupID(GroupID id_g)
 }
 
 
+void UpdateGroupChildren();
 uint GetGroupNumEngines(CompanyID company, GroupID id_g, EngineID id_e);
 uint GetGroupNumVehicle(CompanyID company, GroupID id_g, VehicleType type);
 uint GetGroupNumVehicleMinAge(CompanyID company, GroupID id_g, VehicleType type);
