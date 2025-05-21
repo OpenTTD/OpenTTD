@@ -4284,7 +4284,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}לוח �
 STR_TIMETABLE_NO_TRAVEL                                         :ללא מסע
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :סע (אוטומטי; לוח זמנים נקבע לפי הפקודה הידנית הבאה)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :(מסע (ללא לוח זמנים
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :סע במהירות שהיא לכל היותר {2:VELOCITY} (ללא לוח זמנים)
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} ערוך מסע ל
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :סע למשך {STRING} במהירות שהיא לכל היותר {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :מסע (עבור {STRING}, לא מתוזמן)

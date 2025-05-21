@@ -2670,7 +2670,6 @@ STR_ORDER_OUT_OF_RANGE                                          :{RED} (اگلا
 # Time table window
 
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :زیادہ سے زیادہ {2:VELOCITY} رفتار پر سفر کریں (بغیر اوقات کے)
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{STRING} کے لئے زیادہ سے زیادہ {VELOCITY} رفتار پر سفر کریں
 
 

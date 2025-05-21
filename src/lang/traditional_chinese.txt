@@ -4761,7 +4761,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}時刻�
 STR_TIMETABLE_NO_TRAVEL                                         :原地待命
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :行駛（自動；由下個手動指令排程）
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :行駛（無時刻表）
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :限速 {2:VELOCITY} 行駛（無時刻表）
 STR_TIMETABLE_TRAVEL_FOR                                        :行駛需時 {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :行駛 {STRING} ，限速 {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :開往（{STRING} ，無時刻表）

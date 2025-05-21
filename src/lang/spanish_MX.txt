@@ -4762,7 +4762,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horario.
 STR_TIMETABLE_NO_TRAVEL                                         :No viajar
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viajar (automático; programado según la siguiente instrucción manual)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viajar (no programado)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viajar (no programado) a {2:VELOCITY} como máximo
 STR_TIMETABLE_TRAVEL_FOR                                        :Viajar durante {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viajar durante {STRING} a {VELOCITY} como máximo
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Viajar (durante {STRING}, no programado)

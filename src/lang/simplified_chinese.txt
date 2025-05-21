@@ -4761,7 +4761,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}时刻�
 STR_TIMETABLE_NO_TRAVEL                                         :原地待命
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :行驶（自动；由下个手动命令指定时间）
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :行驶（未指定时间）
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :限速 {2:VELOCITY}（未指定时间）
 STR_TIMETABLE_TRAVEL_FOR                                        :行驶 {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :行驶 {STRING}，限速 {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :行驶（{STRING}，未指定时间）

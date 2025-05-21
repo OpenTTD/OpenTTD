@@ -4735,7 +4735,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Lịch t
 STR_TIMETABLE_NO_TRAVEL                                         :Không di chuyển
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Hành trình (tự động; tính thời gian theo lịch trình thủ công kế tiếp)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Di chuyển (không bó buộc theo lịch trình)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Hành trình với tốc độ tối đa là {2:VELOCITY} (chưa dựng lịch trình)
 STR_TIMETABLE_TRAVEL_FOR                                        :Di chuyển trong {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Lộ trình {STRING} với tốc độ tối đa {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Lộ trình (cho {STRING}, chưa có lịch trình)

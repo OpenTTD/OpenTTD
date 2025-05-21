@@ -4721,7 +4721,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Разп
 STR_TIMETABLE_NO_TRAVEL                                         :Без преминаване
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Пътувай (автоматично; включено в разписанието чрез следващата ваша заповед)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Пътувай (без разписание)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Пътувай (без разписание) с не повече от {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Пътувай за {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Пътувай за {STRING} с не повече от {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Пътувай (за {STRING}, без разписание)

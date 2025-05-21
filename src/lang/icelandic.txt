@@ -3719,7 +3719,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Áætlun
 STR_TIMETABLE_NO_TRAVEL                                         :Engin ferðalög
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Ferðalag (sjálfvirkt; áætlað eftir næstu handvirku skipun)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Ferðalag (ekki sett í áætlun)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Ferðast með hámarkshraða {2:VELOCITY} (ekki áætlað)
 STR_TIMETABLE_TRAVEL_FOR                                        :Ferðast í {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Ferðast í {STRING} með hámarkshraða {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :og bíða í {STRING}

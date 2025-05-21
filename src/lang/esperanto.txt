@@ -4542,7 +4542,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horaro -
 STR_TIMETABLE_NO_TRAVEL                                         :Neniu veturo
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Veturu (aŭtomata; horara ĝis sekvanta mana ordono)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Veturo (ne horarita)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Veturu (sen horaro) je maksimume {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Veturu dum {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Veturu dum {STRING} je maksimume {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Veturu (dum {STRING}, sen horaro)

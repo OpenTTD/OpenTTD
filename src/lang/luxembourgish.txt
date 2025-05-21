@@ -4754,7 +4754,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Zäitpla
 STR_TIMETABLE_NO_TRAVEL                                         :Net ënnerwee
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Rees (automatesch; Zäitplang durch manuell Opträg)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Ënnerwee (ouni Zäitplang)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Fuer maximal {2:VELOCITY} (ouni Zäitplang)
 STR_TIMETABLE_TRAVEL_FOR                                        :Ënnerwee während {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Fiert während {STRING} mat maximal {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Fuer (während {STRING}, ouni Zäitplang)

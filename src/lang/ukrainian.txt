@@ -4880,7 +4880,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Розк
 STR_TIMETABLE_NO_TRAVEL                                         :Не прямувати
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :В дорозі (час руху враховано в наступному не автоматичному завданні)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :В дорозі (час не вказано)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Прямувати (без розкладу) зі швидкістю, що не перевищує {2:VELOCITY} (час не вказано)
 STR_TIMETABLE_TRAVEL_FOR                                        :В дорозі {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :В дорозі {STRING} зі швидкістю, що не перевищує {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Поїздка (для {STRING}, без розкладу)

@@ -4948,7 +4948,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Граф
 STR_TIMETABLE_NO_TRAVEL                                         :Нет назначения
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :В пути (время учтено в ближайшем не автоматическом задании)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :В пути (график не составлен)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Идти со скоростью не более {2:VELOCITY} (график не составлен)
 STR_TIMETABLE_TRAVEL_FOR                                        :В пути {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Идти {STRING} со скоростью не более {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :В пути примерно {STRING} (график не составлен)

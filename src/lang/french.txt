@@ -4759,7 +4759,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horaire 
 STR_TIMETABLE_NO_TRAVEL                                         :Pas de voyage
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Voyager (automatique{NBSP}; horaire au prochain ordre manuel)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Voyager (sans horaire)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Voyager (non planifié) à {2:VELOCITY} max.
 STR_TIMETABLE_TRAVEL_FOR                                        :Voyager pendant {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Voyager pendant {STRING} à {VELOCITY} max.
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Voyager (pendant {STRING}, non planifié)

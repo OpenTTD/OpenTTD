@@ -3825,7 +3825,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Ordutegi
 STR_TIMETABLE_NO_TRAVEL                                         :Bidaiarik ez
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Bidaia (automatikoa)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Bidaia (ordutegirik gabe)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Gehienez {2:VELOCITY}-ko abiadurara bidaiatu (ordutegirik gabe)
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} bidaiatu
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{STRING}-ra bidaiatu gehienez {VELOCITY}ra
 STR_TIMETABLE_STAY_FOR                                          :{STRING} gelditu

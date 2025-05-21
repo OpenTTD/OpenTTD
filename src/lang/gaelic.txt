@@ -4204,7 +4204,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Clàr-am
 STR_TIMETABLE_NO_TRAVEL                                         :Na siubhail
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Siubhail (fèin-obrachail; clàr-ama ga chruthachadh leis an ath-òrdugh a làimh)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Siubhail (gun chlàr-ama)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Siubhal le {2:VELOCITY} as motha (gun chlàr-ama)
 STR_TIMETABLE_TRAVEL_FOR                                        :Siubhail fad {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Siubhail fad {STRING} le {VELOCITY} as motha
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Siubhail (fad {STRING} gun chlàr-ama)

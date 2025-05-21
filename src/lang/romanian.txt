@@ -4734,7 +4734,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Orar - c
 STR_TIMETABLE_NO_TRAVEL                                         :NU este calatorie
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Călătorie (automat; programată după următoarea comandă manuală)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Calatorie (fara orar)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Călătoriți (neplanificat) cu maxim {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Călătorii pentru {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Mergi către {STRING} cu maxim {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Călătorie (pentru {STRING}, neplanificată)

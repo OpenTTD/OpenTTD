@@ -4760,7 +4760,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horario 
 STR_TIMETABLE_NO_TRAVEL                                         :Sen viaxe
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viaxar (automático; programado pola próxima orde manual)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viaxar (sen horario)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viaxar polo menos a {2:VELOCITY} (sen horarios)
 STR_TIMETABLE_TRAVEL_FOR                                        :Viaxar durante {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viaxar por {STRING} polo menos a {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Viaxe (para {STRING}, non calendarizada)

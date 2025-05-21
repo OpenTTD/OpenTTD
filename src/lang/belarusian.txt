@@ -4998,7 +4998,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Раск
 STR_TIMETABLE_NO_TRAVEL                                         :Няма назначэньня
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Прабег (аўтаматычна; у расклад наступным заданьнем уручную)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Час у шляху (не зададзены)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Рухацца не хутчэй за {2:VELOCITY} (расклад ня вызначаны)
 STR_TIMETABLE_TRAVEL_FOR                                        :Час у шляху — {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Рухацца да {STRING} не хутчэй за {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :У дарозе прыкладна {STRING} (графік не складзены)

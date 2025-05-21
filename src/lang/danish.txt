@@ -4728,7 +4728,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Kørepla
 STR_TIMETABLE_NO_TRAVEL                                         :Rejs ikke
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Rejs (automatisk; planlagt med næste manuelle ordre)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Rejs (ikke iflg. køreplan)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Rejs med højst {2:VELOCITY} (ikke skemalagt)
 STR_TIMETABLE_TRAVEL_FOR                                        :Rejs i {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Rejs mod {STRING} med højst {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Køreplan (for {STRING}, ikke skemalagt)

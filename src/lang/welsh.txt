@@ -4754,7 +4754,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Amserlen
 STR_TIMETABLE_NO_TRAVEL                                         :Dim teithio
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Teithio (awtomatig; amserlennir gan y gorchymyn defnyddiwr nesaf)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Teithio (heb ei amserlenu)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Teithio heb oresgyn {2:VELOCITY} (heb ei amserlenu)
 STR_TIMETABLE_TRAVEL_FOR                                        :Teithio am{STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Teithio am {STRING} heb oresgyn {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Teithio (am {STRING}, heb ei amserlennu)
