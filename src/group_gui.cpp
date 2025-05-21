@@ -111,65 +111,12 @@ static constexpr NWidgetPart _nested_group_widgets[] = {
 	EndContainer(),
 };
 
-/**
- * Add children to GUI group list to build a hierarchical tree.
- * @param dst Destination list.
- * @param src Source list.
- * @param fold Whether to handle group folding/hiding.
- * @param parent Current tree parent (set by self with recursion).
- * @param indent Current tree indentation level (set by self with recursion).
- */
-static void GuiGroupListAddChildren(GUIGroupList &dst, const GUIGroupList &src, bool fold, GroupID parent = GroupID::Invalid(), uint8_t indent = 0)
+static void SortGUIGroupList(std::vector<GUIGroupListItem> &list)
 {
-	for (const auto &item : src) {
-		if (item.group->parent != parent) continue;
-
-		dst.emplace_back(item.group, indent);
-
-		if (fold && item.group->folded) {
-			/* Test if this group has children at all. If not, the folded flag should be cleared to avoid lingering unfold buttons in the list. */
-			GroupID groupid = item.group->index;
-			bool has_children = std::any_of(src.begin(), src.end(), [groupid](const auto &child) { return child.group->parent == groupid; });
-			Group::Get(item.group->index)->folded = has_children;
-		} else {
-			GuiGroupListAddChildren(dst, src, fold, item.group->index, indent + 1);
-		}
-	}
-
-	if (indent > 0 || dst.empty()) return;
-
-	/* Hierarchy is complete, traverse in reverse to find where indentation levels continue. */
-	uint16_t level_mask = 0;
-	for (auto it = std::rbegin(dst); std::next(it) != std::rend(dst); ++it) {
-		auto next_it = std::next(it);
-		AssignBit(level_mask, it->indent, it->indent <= next_it->indent);
-		next_it->level_mask = level_mask;
-	}
-}
-
-/**
- * Build GUI group list, a sorted hierarchical list of groups for owner and vehicle type.
- * @param dst Destination list, owned by the caller.
- * @param fold Whether to handle group folding/hiding.
- * @param owner Owner of groups.
- * @param veh_type Vehicle type of groups.
- */
-void BuildGuiGroupList(GUIGroupList &dst, bool fold, Owner owner, VehicleType veh_type)
-{
-	GUIGroupList list;
-
-	for (const Group *g : Group::Iterate()) {
-		if (g->owner == owner && g->vehicle_type == veh_type) {
-			list.emplace_back(g, 0);
-		}
-	}
-
-	list.ForceResort();
-
 	/* Sort the groups by their name */
 	std::array<std::pair<const Group *, std::string>, 2> last_group{};
 
-	list.Sort([&last_group](const GUIGroupListItem &a, const GUIGroupListItem &b) -> bool {
+	std::ranges::sort(list, [&last_group](const GUIGroupListItem &a, const GUIGroupListItem &b) -> bool {
 		if (a.group != last_group[0].first) {
 			last_group[0] = {a.group, GetString(STR_GROUP_NAME, a.group->index)};
 		}
@@ -182,8 +129,68 @@ void BuildGuiGroupList(GUIGroupList &dst, bool fold, Owner owner, VehicleType ve
 		if (r == 0) return a.group->number < b.group->number;
 		return r < 0;
 	});
+}
 
-	GuiGroupListAddChildren(dst, list, fold, GroupID::Invalid(), 0);
+/**
+ * Add children to GUI group list to build a hierarchical tree.
+ * @param list Destination list.
+ * @param item Group item to add children to.
+ * @param fold Whether to handle group folding/hiding.
+ * @param indent Current tree indentation level (set by self with recursion).
+ */
+static void GuiGroupListAddChildren(GUIGroupList &list, GUIGroupListItem &item, bool fold, uint8_t indent = 1)
+{
+	if (fold && item.group->folded) {
+		Group::Get(item.group->index)->folded = !item.group->children.empty();
+		return;
+	}
+
+	if (item.group->children.empty()) return;
+
+	std::vector<GUIGroupListItem> sublist;
+	for (const GroupID &group : item.group->children) {
+		sublist.emplace_back(Group::Get(group), indent);
+	}
+	SortGUIGroupList(sublist);
+
+	for (const GUIGroupListItem &subitem : sublist) {
+		GuiGroupListAddChildren(list, list.emplace_back(subitem), fold, indent + 1);
+	}
+}
+
+/**
+ * Build GUI group list, a sorted hierarchical list of groups for owner and vehicle type.
+ * @param dst Destination list, owned by the caller.
+ * @param fold Whether to handle group folding/hiding.
+ * @param owner Owner of groups.
+ * @param veh_type Vehicle type of groups.
+ */
+void BuildGuiGroupList(GUIGroupList &list, bool fold, Owner owner, VehicleType veh_type)
+{
+	/* Make a temporary list of parent groups */
+	std::vector<GUIGroupListItem> sublist;
+	for (const Group *g : Group::Iterate()) {
+		if (g->parent != GroupID::Invalid()) continue;
+		if (g->owner != owner) continue;
+		if (g->vehicle_type != veh_type) continue;
+		sublist.emplace_back(g, 0);
+	}
+	SortGUIGroupList(sublist);
+
+	/* Now add each parent group, and its children if necessary, to the list. */
+	for (auto &item : sublist) {
+		GuiGroupListAddChildren(list, list.emplace_back(item), fold);
+	}
+
+	if (list.empty()) return;
+
+	/* Hierarchy is complete, traverse in reverse to find where indentation levels continue. */
+	uint16_t level_mask = 0;
+	for (auto it = std::rbegin(list); std::next(it) != std::rend(list); ++it) {
+		auto next_it = std::next(it);
+		AssignBit(level_mask, it->indent, it->indent <= next_it->indent);
+		next_it->level_mask = level_mask;
+	}
 }
 
 class VehicleGroupWindow : public BaseVehicleListWindow {
