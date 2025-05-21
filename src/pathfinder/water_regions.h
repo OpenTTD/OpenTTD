@@ -10,15 +10,16 @@
 #ifndef WATER_REGIONS_H
 #define WATER_REGIONS_H
 
+#include "../core/strong_typedef_type.hpp"
 #include "../tile_type.h"
 #include "../map_func.h"
 
-using TWaterRegionPatchLabel = uint8_t;
-using TWaterRegionIndex = uint;
+using TWaterRegionIndex = StrongType::Typedef<uint, struct TWaterRegionIndexTag, StrongType::Compare>;
+using TWaterRegionPatchLabel = StrongType::Typedef<uint8_t, struct TWaterRegionPatchLabelTag, StrongType::Compare, StrongType::Integer>;
 
 constexpr int WATER_REGION_EDGE_LENGTH = 16;
 constexpr int WATER_REGION_NUMBER_OF_TILES = WATER_REGION_EDGE_LENGTH * WATER_REGION_EDGE_LENGTH;
-constexpr TWaterRegionPatchLabel INVALID_WATER_REGION_PATCH = 0;
+constexpr TWaterRegionPatchLabel INVALID_WATER_REGION_PATCH{0};
 
 /**
  * Describes a single interconnected patch of water within a particular water region.
