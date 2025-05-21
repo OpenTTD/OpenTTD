@@ -432,17 +432,17 @@ static std::array<Vehicle *, TOTAL_TILE_HASH_SIZE> _vehicle_tile_hash{};
 VehiclesNearTileXY::Iterator::Iterator(int32_t x, int32_t y, uint max_dist)
 {
 	/* There are no negative tile coordinates */
-	pos_rect.left = std::max<int>(0, x - max_dist);
-	pos_rect.right = std::max<int>(0, x + max_dist);
-	pos_rect.top = std::max<int>(0, y - max_dist);
-	pos_rect.bottom = std::max<int>(0, y + max_dist);
+	this->pos_rect.left = std::max<int>(0, x - max_dist);
+	this->pos_rect.right = std::max<int>(0, x + max_dist);
+	this->pos_rect.top = std::max<int>(0, y - max_dist);
+	this->pos_rect.bottom = std::max<int>(0, y + max_dist);
 
 	if (2 * max_dist < TILE_HASH_MASK * TILE_SIZE) {
 		/* Hash area to scan */
-		this->hxmin = this->hx = GetTileHash1D(pos_rect.left / TILE_SIZE);
-		this->hxmax = GetTileHash1D(pos_rect.right / TILE_SIZE);
-		this->hymin = this->hy = GetTileHash1D(pos_rect.top / TILE_SIZE);
-		this->hymax = GetTileHash1D(pos_rect.bottom / TILE_SIZE);
+		this->hxmin = this->hx = GetTileHash1D(this->pos_rect.left / TILE_SIZE);
+		this->hxmax = GetTileHash1D(this->pos_rect.right / TILE_SIZE);
+		this->hymin = this->hy = GetTileHash1D(this->pos_rect.top / TILE_SIZE);
+		this->hymax = GetTileHash1D(this->pos_rect.bottom / TILE_SIZE);
 	} else {
 		/* Scan all */
 		this->hxmin = this->hx = 0;
