@@ -4760,19 +4760,20 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}時刻�
 
 STR_TIMETABLE_NO_TRAVEL                                         :原地待命
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :行駛（自動；由下個手動指令排程）
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :行駛（無時刻表）
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :行駛（未排程）
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :限速 {VELOCITY}（未排程）
 STR_TIMETABLE_TRAVEL_FOR                                        :行駛需時 {STRING}
-STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :行駛 {STRING} ，限速 {VELOCITY}
-STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :開往（{STRING} ，無時刻表）
-STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :開往（{STRING} ，無時刻表）以最高速度 {VELOCITY}
-STR_TIMETABLE_STAY_FOR_ESTIMATED                                :（等候 {STRING} ，無時刻表）
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :（開往 {STRING} ，無時刻表）
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :行駛 {STRING}，限速 {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :行駛（{STRING}，未排程）
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :行駛（{STRING}，未排程），限速 {VELOCITY}
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :（等候 {STRING}，未排程）
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :（開往 {STRING} ，未排程）
 STR_TIMETABLE_STAY_FOR                                          :並等待 {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :並行駛 {STRING}
 
-STR_TIMETABLE_APPROX_TIME                                       :{BLACK}此時刻表跑完全程大約需時 {STRING}
-STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}此時刻表跑完全程需時 {STRING}
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}此時刻表跑完全程至少需時 {STRING} (此表尚未完成)
+STR_TIMETABLE_APPROX_TIME                                       :{BLACK}完成此時刻表大約需時 {STRING}
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}完成此時刻表需時 {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}完成此時刻表至少需時 {STRING} （時刻表尚未完成）
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}此車輛目前準點
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}此車輛目前比表定時間遲 {STRING}

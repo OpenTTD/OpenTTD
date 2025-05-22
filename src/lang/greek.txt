@@ -4862,6 +4862,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Δρομ
 STR_TIMETABLE_NO_TRAVEL                                         :Μην ταξιδέψεις
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Ταξίδι (αυτόματα· με δρομολόγιο στην επόμενη μη αυτόματη εντολή)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Ταξίδεψε (όχι μεσώ δρομολογίου)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Ταξίδι (μη δρομολογημένο) με μέγιστη ταχύτητα {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Ταξίδεψε για {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Ταξίδεψε για {STRING} με στο μέγιστο {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Ταξίδι (για {STRING}, μη δρομολογημένο)
