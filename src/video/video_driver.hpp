@@ -10,6 +10,7 @@
 #ifndef VIDEO_VIDEO_DRIVER_HPP
 #define VIDEO_VIDEO_DRIVER_HPP
 
+#include "../debug.h"
 #include "../driver.h"
 #include "../core/geometry_type.hpp"
 #include "../core/math_func.hpp"
@@ -318,6 +319,8 @@ protected:
 		if (_ddc_fastforward) return std::chrono::microseconds(0);
 #endif /* DEBUG_DUMP_COMMANDS */
 
+		TicToc::Tick("GameTick");
+
 		/* If we are paused, run on normal speed. */
 		if (_pause_mode.Any()) return std::chrono::milliseconds(MILLISECONDS_PER_TICK);
 		/* Infinite speed, as quickly as you can. */
@@ -328,6 +331,8 @@ protected:
 
 	std::chrono::steady_clock::duration GetDrawInterval()
 	{
+		TicToc::Tick("DrawTick");
+
 		/* If vsync, draw interval is decided by the display driver */
 		if (_video_vsync && this->uses_hardware_acceleration) return std::chrono::microseconds(0);
 		return std::chrono::microseconds(1000000 / _settings_client.gui.refresh_rate);
