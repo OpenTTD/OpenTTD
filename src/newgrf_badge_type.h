@@ -21,7 +21,11 @@ enum class BadgeFlag : uint8_t {
 	NameListStop      = 1, ///< Stop adding names to the name list after this badge.
 	NameListFirstOnly = 2, ///< Don't add this name to the name list if not first.
 	UseCompanyColour  = 3, ///< Apply company colour palette to this badge.
+
+	HasText, ///< Internal flag set if the badge has text.
 };
 using BadgeFlags = EnumBitSet<BadgeFlag, uint8_t>;
+
+using BadgeFilterConfiguration = std::vector<std::pair<BadgeClassID, BadgeID>>;
 
 #endif /* NEWGRF_BADGE_TYPE_H */
