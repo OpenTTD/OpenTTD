@@ -89,17 +89,10 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 
 	assert(ScriptOrder::IsValidVehicleOrder(vehicle_id, order_position));
 
-	int pos = (int)order_position;
-	int res = (int)order_position;
-	for (const Order &order : v->Orders()) {
-		if (order.IsType(OT_IMPLICIT)) {
-			++res;
-		} else {
-			if (pos == 0) break;
-			--pos;
-		}
-	}
-	return res;
+	auto orders = v->Orders();
+	auto real_orders = orders | std::views::filter([](const Order &order) { return !order.IsType(OT_IMPLICIT); });
+	auto it = std::ranges::next(std::begin(real_orders), order_position, std::end(real_orders));
+	return static_cast<int>(std::distance(std::begin(orders), it.base()));
 }
 
 /**
@@ -111,18 +104,11 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 {
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
 
-	int num_implicit_orders = 0;
-	int pos = order_position;
-	for (const Order &order : v->Orders()) {
-		if (order.IsType(OT_IMPLICIT)) {
-			++num_implicit_orders;
-		} else {
-			if (pos == 0) break;
-			--pos;
-		}
-
-	}
-	return static_cast<ScriptOrder::OrderPosition>(order_position - num_implicit_orders);
+	auto orders = v->Orders();
+	auto first = std::begin(orders);
+	auto last = std::ranges::next(first, order_position, std::end(orders));
+	int num_implicit = static_cast<int>(std::count_if(first, last, [](const Order &order) { return order.IsType(OT_IMPLICIT); }));
+	return static_cast<ScriptOrder::OrderPosition>(order_position - num_implicit);
 }
 
 /* static */ bool ScriptOrder::IsGotoStationOrder(VehicleID vehicle_id, OrderPosition order_position)
