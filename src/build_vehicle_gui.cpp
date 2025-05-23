@@ -18,6 +18,7 @@
 #include "company_func.h"
 #include "vehicle_gui.h"
 #include "newgrf_badge.h"
+#include "newgrf_badge_config.h"
 #include "newgrf_badge_gui.h"
 #include "newgrf_engine.h"
 #include "newgrf_text.h"
@@ -73,6 +74,7 @@ static constexpr NWidgetPart _nested_build_vehicle_widgets[] = {
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BV_SHOW_HIDDEN_ENGINES),
 			NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_BV_CARGO_FILTER_DROPDOWN), SetResize(1, 0), SetFill(1, 0), SetToolTip(STR_TOOLTIP_FILTER_CRITERIA),
+			NWidget(WWT_IMGBTN, COLOUR_GREY, WID_BV_CONFIGURE_BADGES), SetAspect(WidgetDimensions::ASPECT_UP_DOWN_BUTTON), SetResize(0, 0), SetFill(0, 1), SetSpriteTip(SPR_EXTRA_MENU, STR_BADGE_CONFIG_MENU_TOOLTIP),
 		EndContainer(),
 		NWidget(WWT_PANEL, COLOUR_GREY),
 			NWidget(WWT_EDITBOX, COLOUR_GREY, WID_BV_FILTER), SetResize(1, 0), SetFill(1, 0), SetPadding(2), SetStringTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
@@ -1152,6 +1154,8 @@ struct BuildVehicleWindow : Window {
 	TestedEngineDetails te{}; ///< Tested cost and capacity after refit.
 	GUIBadgeClasses badge_classes{};
 
+	static constexpr int BADGE_COLUMNS = 3; ///< Number of columns available for badges (0 = left of image, 1 = between image and name, 2 = after name)
+
 	StringFilter string_filter{}; ///< Filter for vehicle name
 	QueryString vehicle_editbox; ///< Filter editbox
 
@@ -1578,6 +1582,12 @@ struct BuildVehicleWindow : Window {
 		return list;
 	}
 
+	DropDownList BuildBadgeConfigurationList() const
+	{
+		static const auto separators = {STR_BADGE_CONFIG_PREVIEW, STR_BADGE_CONFIG_NAME};
+		return BuildBadgeClassConfigurationList(this->badge_classes, BADGE_COLUMNS, separators);
+	}
+
 	void BuildVehicle()
 	{
 		EngineID sel_eng = this->sel_engine;
@@ -1659,6 +1669,10 @@ struct BuildVehicleWindow : Window {
 
 			case WID_BV_CARGO_FILTER_DROPDOWN: // Select cargo filtering criteria dropdown menu
 				ShowDropDownList(this, this->BuildCargoDropDownList(), this->cargo_filter_criteria, widget);
+				break;
+
+			case WID_BV_CONFIGURE_BADGES:
+				ShowDropDownList(this, this->BuildBadgeConfigurationList(), -1, widget, 0, false, true);
 				break;
 
 			case WID_BV_SHOW_HIDE: {
@@ -1760,6 +1774,11 @@ struct BuildVehicleWindow : Window {
 				size.width = std::max(size.width, GetDropDownListDimension(this->BuildCargoDropDownList()).width + padding.width);
 				break;
 
+			case WID_BV_CONFIGURE_BADGES:
+				/* Hide the configuration button if no configurable badges are present. */
+				if (this->badge_classes.GetClasses().empty()) size = {0, 0};
+				break;
+
 			case WID_BV_BUILD:
 				size = GetStringBoundingBox(STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON + this->vehicle_type);
 				size = maxdim(size, GetStringBoundingBox(STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON + this->vehicle_type));
@@ -1834,7 +1853,7 @@ struct BuildVehicleWindow : Window {
 		Command<CMD_RENAME_ENGINE>::Post(STR_ERROR_CAN_T_RENAME_TRAIN_TYPE + this->vehicle_type, this->rename_engine, *str);
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index, int) override
+	void OnDropdownSelect(WidgetID widget, int index, int click_result) override
 	{
 		switch (widget) {
 			case WID_BV_SORT_DROPDOWN:
@@ -1855,6 +1874,19 @@ struct BuildVehicleWindow : Window {
 					this->SelectEngine(this->sel_engine);
 				}
 				break;
+
+			case WID_BV_CONFIGURE_BADGES: {
+				bool reopen = HandleBadgeConfigurationDropDownClick(static_cast<GrfSpecFeature>(GSF_TRAINS + this->vehicle_type), BADGE_COLUMNS, index, click_result);
+
+				this->ReInit();
+
+				if (reopen) {
+					ReplaceDropDownList(this, this->BuildBadgeConfigurationList(), -1);
+				} else {
+					this->CloseChildWindows(WC_DROPDOWN_MENU);
+				}
+				break;
+			}
 		}
 		this->SetDirty();
 	}
