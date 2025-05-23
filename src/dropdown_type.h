@@ -37,7 +37,7 @@ public:
 		return -1;
 	}
 
-	virtual void Draw(const Rect &full, const Rect &, bool, Colours bg_colour) const
+	virtual void Draw(const Rect &full, const Rect &, bool, int, Colours bg_colour) const
 	{
 		if (this->masked) GfxFillRect(full, GetColourGradient(bg_colour, SHADE_LIGHT), FILLRECT_CHECKER);
 	}
