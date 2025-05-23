@@ -75,6 +75,12 @@ public:
 
 	uint Width() const override { return this->dim.width + this->TBase::Width(); }
 
+	int OnClick(const Rect &r, const Point &pt) const override
+	{
+		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+		return this->TBase::OnClick(r.Indent(this->dim.width, rtl), pt);
+	}
+
 	void Draw(const Rect &full, const Rect &r, bool sel, Colours bg_colour) const override
 	{
 		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
@@ -125,6 +131,12 @@ public:
 	uint Height() const override { return std::max(this->dbounds.height, this->TBase::Height()); }
 	uint Width() const override { return this->dbounds.width + WidgetDimensions::scaled.hsep_normal + this->TBase::Width(); }
 
+	int OnClick(const Rect &r, const Point &pt) const override
+	{
+		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+		return this->TBase::OnClick(r.Indent(this->dbounds.width + WidgetDimensions::scaled.hsep_normal, rtl), pt);
+	}
+
 	void Draw(const Rect &full, const Rect &r, bool sel, Colours bg_colour) const override
 	{
 		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
@@ -154,6 +166,12 @@ public:
 	uint Height() const override { return std::max<uint>(this->dim.height, this->TBase::Height()); }
 	uint Width() const override { return this->dim.width + WidgetDimensions::scaled.hsep_wide + this->TBase::Width(); }
 
+	int OnClick(const Rect &r, const Point &pt) const override
+	{
+		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+		return this->TBase::OnClick(r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), pt);
+	}
+
 	void Draw(const Rect &full, const Rect &r, bool sel, Colours bg_colour) const override
 	{
 		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
@@ -177,6 +195,12 @@ public:
 	explicit DropDownIndent(uint indent, Args&&... args) : TBase(std::forward<Args>(args)...), indent(indent) {}
 
 	uint Width() const override { return this->indent * WidgetDimensions::scaled.hsep_indent + this->TBase::Width(); }
+
+	int OnClick(const Rect &r, const Point &pt) const override
+	{
+		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+		return this->TBase::OnClick(r.Indent(this->indent * WidgetDimensions::scaled.hsep_indent, rtl), pt);
+	}
 
 	void Draw(const Rect &full, const Rect &r, bool sel, Colours bg_colour) const override
 	{
