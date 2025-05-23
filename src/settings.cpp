@@ -46,6 +46,7 @@
 #include "game/game_config.hpp"
 #include "newgrf_config.h"
 #include "picker_func.h"
+#include "newgrf_badge_config.h"
 #include "base_media_base.h"
 #include "base_media_graphics.h"
 #include "fios.h"
@@ -1449,6 +1450,7 @@ void LoadFromConfig(bool startup)
 		AILoadConfig(generic_ini, "ai_players");
 		GameLoadConfig(generic_ini, "game_scripts");
 		PickerLoadConfig(favs_ini);
+		BadgeClassLoadConfig(favs_ini);
 
 		PrepareOldDiffCustom();
 		IniLoadSettings(generic_ini, _old_gameopt_settings, "gameopt", &_settings_newgame, false);
@@ -1522,6 +1524,7 @@ void SaveToConfig()
 	AISaveConfig(generic_ini, "ai_players");
 	GameSaveConfig(generic_ini, "game_scripts");
 	PickerSaveConfig(favs_ini);
+	BadgeClassSaveConfig(favs_ini);
 
 	SaveVersionInConfig(generic_ini);
 	SaveVersionInConfig(private_ini);

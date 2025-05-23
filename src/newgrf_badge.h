@@ -55,6 +55,7 @@ std::span<const Badge> GetBadges();
 Badge *GetBadge(BadgeID index);
 Badge *GetBadgeByLabel(std::string_view label);
 Badge *GetClassBadge(BadgeClassID class_index);
+std::span<const BadgeID> GetClassBadges();
 
 uint32_t GetBadgeVariableResult(const struct GRFFile &grffile, std::span<const BadgeID> badges, uint32_t parameter);
 
