@@ -29,6 +29,8 @@ enum PickerClassWindowWidgets : WidgetID {
 	WID_PW_TYPE_SCROLL, ///< Scrollbar for the matrix.
 	WID_PW_TYPE_NAME, ///< Name of selected item.
 	WID_PW_TYPE_RESIZE, ///< Type resize handle.
+
+	WID_PW_CONFIGURE_BADGES, ///< Button to configure badges.
 };
 
 #endif /* WIDGETS_PICKER_WIDGET_H */
