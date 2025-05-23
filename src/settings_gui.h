@@ -19,6 +19,7 @@
 #define SETTING_BUTTON_HEIGHT ((int)NWidgetScrollbar::GetHorizontalDimension().height)
 
 void DrawArrowButtons(int x, int y, Colours button_colour, uint8_t state, bool clickable_left, bool clickable_right);
+void DrawUpDownButtons(int x, int y, Colours button_colour, uint8_t state, bool clickable_up, bool clickable_down);
 void DrawDropDownButton(int x, int y, Colours button_colour, bool state, bool clickable);
 void DrawBoolButton(int x, int y, Colours button_colour, Colours background, bool state, bool clickable);
 
