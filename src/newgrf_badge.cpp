@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "newgrf.h"
 #include "newgrf_badge.h"
+#include "newgrf_badge_config.h"
 #include "newgrf_badge_type.h"
 #include "newgrf_spritegroup.h"
 #include "stringfilter_type.h"
@@ -40,6 +41,15 @@ static Badges _badges = {};
 std::span<const Badge> GetBadges()
 {
 	return _badges.specs;
+}
+
+/**
+ * Get a read-only view of class badge index.
+ * @return Span of badges.
+ */
+std::span<const BadgeID> GetClassBadges()
+{
+	return _badges.classes;
 }
 
 /**

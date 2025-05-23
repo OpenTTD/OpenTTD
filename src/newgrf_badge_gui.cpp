@@ -11,10 +11,13 @@
 
 #include "core/flatset_type.hpp"
 #include "dropdown_type.h"
+#include "dropdown_func.h"
 #include "newgrf.h"
 #include "newgrf_badge.h"
+#include "newgrf_badge_config.h"
 #include "newgrf_badge_gui.h"
 #include "newgrf_badge_type.h"
+#include "settings_gui.h"
 #include "strings_func.h"
 #include "timer/timer_game_calendar.h"
 #include "window_gui.h"
@@ -77,12 +80,10 @@ GUIBadgeClasses::GUIBadgeClasses(GrfSpecFeature feature)
 		Dimension size = GetBadgeMaximalDimension(class_index, feature);
 		if (size.width == 0) continue;
 
-		uint8_t column = 0;
-		bool visible = true;
-		uint sort_order = UINT_MAX;
+		auto [config, sort_order] = GetBadgeClassConfigItem(feature, class_badge->label);
 
-		this->gui_classes.emplace_back(class_index, column, visible, sort_order, size, class_badge->label);
-		if (visible) max_column = std::max<uint>(max_column, column);
+		this->gui_classes.emplace_back(class_index, config.column, config.show_icon, sort_order, size, class_badge->label);
+		if (config.show_icon) max_column = std::max<uint>(max_column, config.column);
 	}
 
 	std::sort(std::begin(this->gui_classes), std::end(this->gui_classes));
@@ -245,4 +246,211 @@ std::unique_ptr<DropDownListItem> MakeDropDownListBadgeItem(const std::shared_pt
 std::unique_ptr<DropDownListItem> MakeDropDownListBadgeIconItem(const std::shared_ptr<GUIBadgeClasses> &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, const Dimension &dim, SpriteID sprite, PaletteID palette, std::string &&str, int value, bool masked, bool shaded)
 {
 	return std::make_unique<DropDownListBadgeIconItem>(gui_classes, badges, feature, introduction_date, dim, sprite, palette, std::move(str), value, masked, shaded);
+}
+
+/**
+ * Drop down component that shows extra buttons to indicate that the item can be moved up or down.
+ */
+template <class TBase, bool TEnd = true, FontSize TFs = FS_NORMAL>
+class DropDownMover : public TBase {
+public:
+	template <typename... Args>
+	explicit DropDownMover(int click_up, int click_down, Colours button_colour, Args &&...args)
+		: TBase(std::forward<Args>(args)...), click_up(click_up), click_down(click_down), button_colour(button_colour)
+	{
+	}
+
+	uint Height() const override
+	{
+		return std::max<uint>(SETTING_BUTTON_HEIGHT, this->TBase::Height());
+	}
+
+	uint Width() const override
+	{
+		return SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide + this->TBase::Width();
+	}
+
+	int OnClick(const Rect &r, const Point &pt) const override
+	{
+		bool rtl = (_current_text_dir == TD_RTL);
+		int w = SETTING_BUTTON_WIDTH;
+
+		Rect br = r.WithWidth(w, TEnd ^ rtl).CentreTo(w, SETTING_BUTTON_HEIGHT);
+		if (br.WithWidth(w / 2, rtl).Contains(pt)) return this->click_up;
+		if (br.WithWidth(w / 2, !rtl).Contains(pt)) return this->click_down;
+
+		return this->TBase::OnClick(r.Indent(w + WidgetDimensions::scaled.hsep_wide, TEnd ^ rtl), pt);
+	}
+
+	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
+	{
+		bool rtl = (_current_text_dir == TD_RTL);
+		int w = SETTING_BUTTON_WIDTH;
+
+		int state = 0;
+		if (sel && click_result != 0) {
+			if (click_result == this->click_up) state = 1;
+			if (click_result == this->click_down) state = 2;
+		}
+
+		Rect br = r.WithWidth(w, TEnd ^ rtl).CentreTo(w, SETTING_BUTTON_HEIGHT);
+		DrawUpDownButtons(br.left, br.top, this->button_colour, state, this->click_up != 0, this->click_down != 0);
+
+		this->TBase::Draw(full, r.Indent(w + WidgetDimensions::scaled.hsep_wide, TEnd ^ rtl), sel, click_result, bg_colour);
+	}
+
+private:
+	int click_up; ///< Click result for up button. Button is inactive if 0.
+	int click_down; ///< Click result for down button. Button is inactive if 0.
+	Colours button_colour; ///< Colour of buttons.
+};
+
+using DropDownListToggleMoverItem = DropDownMover<DropDownToggle<DropDownString<DropDownListItem>>>;
+
+enum BadgeClick : int {
+	BADGE_CLICK_NONE,
+	BADGE_CLICK_MOVE_UP,
+	BADGE_CLICK_MOVE_DOWN,
+	BADGE_CLICK_TOGGLE_ICON,
+};
+
+DropDownList BuildBadgeClassConfigurationList(const GUIBadgeClasses &gui_classes, uint columns, std::span<const StringID> column_separators)
+{
+	DropDownList list;
+
+	list.push_back(MakeDropDownListStringItem(STR_BADGE_CONFIG_RESET, INT_MAX));
+	if (gui_classes.GetClasses().empty()) return list;
+	list.push_back(MakeDropDownListDividerItem());
+
+	const BadgeClassID front = gui_classes.GetClasses().front().class_index;
+	const BadgeClassID back = gui_classes.GetClasses().back().class_index;
+
+	for (uint i = 0; i < columns; ++i) {
+		for (const auto &gc : gui_classes.GetClasses()) {
+			if (gc.column_group != i) continue;
+
+			bool first = (i == 0 && gc.class_index == front);
+			bool last = (i == columns - 1 && gc.class_index == back);
+			list.push_back(std::make_unique<DropDownListToggleMoverItem>(first ? 0 : BADGE_CLICK_MOVE_UP, last ? 0 : BADGE_CLICK_MOVE_DOWN, COLOUR_YELLOW, gc.visible, BADGE_CLICK_TOGGLE_ICON, COLOUR_YELLOW, COLOUR_GREY, GetString(GetClassBadge(gc.class_index)->name), gc.class_index.base()));
+		}
+
+		if (i >= column_separators.size()) continue;
+
+		if (column_separators[i] == STR_NULL) {
+			list.push_back(MakeDropDownListDividerItem());
+		} else {
+			list.push_back(MakeDropDownListStringItem(column_separators[i], INT_MIN + i, false, true));
+		}
+	}
+
+	return list;
+}
+
+/**
+ * Toggle badge class visibility.
+ * @param feature Feature being used.
+ * @param class_badge Class badge.
+ * @param click Dropdown click reuslt.
+ */
+static void BadgeClassToggleVisibility(GrfSpecFeature feature, Badge &class_badge, int click_result)
+{
+	auto config = GetBadgeClassConfiguration(feature);
+	auto it = std::ranges::find(config, class_badge.label, &BadgeClassConfigItem::label);
+	if (it == std::end(config)) return;
+
+	if (click_result == BADGE_CLICK_TOGGLE_ICON) it->show_icon = !it->show_icon;
+}
+
+/**
+ * Move the badge class to the previous position.
+ * @param feature Feature being used.
+ * @param class_badge Class badge.
+ */
+static void BadgeClassMovePrevious(GrfSpecFeature feature, Badge &class_badge)
+{
+	GUIBadgeClasses gui_classes(feature);
+	if (gui_classes.GetClasses().empty()) return;
+
+	auto config = GetBadgeClassConfiguration(feature);
+	auto it = std::ranges::find(config, class_badge.label, &BadgeClassConfigItem::label);
+	if (it == std::end(config)) return;
+
+	auto pos_cur = std::ranges::find(gui_classes.GetClasses(), class_badge.class_index, &GUIBadgeClasses::Element::class_index);
+	if (pos_cur == std::begin(gui_classes.GetClasses())) {
+		if (it->column > 0) --it->column;
+		return;
+	}
+
+	auto pos_prev = std::ranges::find(config, std::prev(pos_cur)->label, &BadgeClassConfigItem::label);
+	if (it->column > pos_prev->column) {
+		--it->column;
+	} else {
+		/* Rotate elements right so that it is placed before pos_prev, maintaining order of non-visible elements. */
+		std::rotate(pos_prev, it, std::next(it));
+	}
+}
+
+/**
+ * Move the badge class to the next position.
+ * @param feature Feature being used.
+ * @param class_badge Class badge.
+ * @param columns Maximum column number permitted.
+ */
+static void BadgeClassMoveNext(GrfSpecFeature feature, Badge &class_badge, uint columns)
+{
+	GUIBadgeClasses gui_classes(feature);
+	if (gui_classes.GetClasses().empty()) return;
+
+	auto config = GetBadgeClassConfiguration(feature);
+	auto it = std::ranges::find(config, class_badge.label, &BadgeClassConfigItem::label);
+	if (it == std::end(config)) return;
+
+	auto pos_cur = std::ranges::find(gui_classes.GetClasses(), class_badge.class_index, &GUIBadgeClasses::Element::class_index);
+	if (std::next(pos_cur) == std::end(gui_classes.GetClasses())) {
+		if (it->column < static_cast<int>(columns - 1)) ++it->column;
+		return;
+	}
+
+	auto pos_next = std::ranges::find(config, std::next(pos_cur)->label, &BadgeClassConfigItem::label);
+	if (it->column < pos_next->column) {
+		++it->column;
+	} else {
+		/* Rotate elements left so that it is placed after pos_next, maintaining order of non-visible elements. */
+		std::rotate(it, std::next(it), std::next(pos_next));
+	}
+}
+
+/**
+ * Handle the badge configuration drop down selection.
+ * @param feature Feature being used.
+ * @param columns Maximum column number permitted.
+ * @param result Selected dropdown item value.
+ * @param click_result Dropdown click result.
+ * @return true iff the caller should reinitialise their widgets.
+ */
+bool HandleBadgeConfigurationDropDownClick(GrfSpecFeature feature, uint columns, int result, int click_result)
+{
+	if (result == INT_MAX) {
+		ResetBadgeClassConfiguration(feature);
+		return true;
+	}
+
+	Badge *class_badge = GetClassBadge(static_cast<BadgeClassID>(result));
+	if (class_badge == nullptr) return false;
+
+	switch (click_result) {
+		case BADGE_CLICK_MOVE_DOWN: // Move down button.
+			BadgeClassMoveNext(feature, *class_badge, columns);
+			break;
+		case BADGE_CLICK_MOVE_UP: // Move up button.
+			BadgeClassMovePrevious(feature, *class_badge);
+			break;
+		case BADGE_CLICK_TOGGLE_ICON:
+			BadgeClassToggleVisibility(feature, *class_badge, click_result);
+			break;
+		default:
+			break;
+	}
+
+	return true;
 }
