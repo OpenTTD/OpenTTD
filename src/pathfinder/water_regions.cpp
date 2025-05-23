@@ -19,10 +19,11 @@
 #include "../ship.h"
 #include "../debug.h"
 #include "../3rdparty/fmt/ranges.h"
+#include "../core/convertible_through_base.hpp"
 #include "../safeguards.h"
 
 using TWaterRegionTraversabilityBits = uint16_t;
-constexpr TWaterRegionPatchLabel FIRST_REGION_LABEL = 1;
+constexpr TWaterRegionPatchLabel FIRST_REGION_LABEL{1};
 
 static_assert(sizeof(TWaterRegionTraversabilityBits) * 8 == WATER_REGION_EDGE_LENGTH);
 static_assert(sizeof(TWaterRegionPatchLabel) == sizeof(uint8_t)); // Important for the hash calculation.
@@ -36,7 +37,7 @@ static inline int GetWaterRegionY(TileIndex tile) { return TileY(tile) / WATER_R
 static inline int GetWaterRegionMapSizeX() { return Map::SizeX() / WATER_REGION_EDGE_LENGTH; }
 static inline int GetWaterRegionMapSizeY() { return Map::SizeY() / WATER_REGION_EDGE_LENGTH; }
 
-static inline TWaterRegionIndex GetWaterRegionIndex(int region_x, int region_y) { return GetWaterRegionMapSizeX() * region_y + region_x; }
+static inline TWaterRegionIndex GetWaterRegionIndex(int region_x, int region_y) { return TWaterRegionIndex(GetWaterRegionMapSizeX() * region_y + region_x); }
 static inline TWaterRegionIndex GetWaterRegionIndex(TileIndex tile) { return GetWaterRegionIndex(GetWaterRegionX(tile), GetWaterRegionY(tile)); }
 
 using TWaterRegionPatchLabelArray = std::array<TWaterRegionPatchLabel, WATER_REGION_NUMBER_OF_TILES>;
@@ -50,7 +51,7 @@ class WaterRegionData {
 	std::array<TWaterRegionTraversabilityBits, DIAGDIR_END> edge_traversability_bits{};
 	std::unique_ptr<TWaterRegionPatchLabelArray> tile_patch_labels; // Tile patch labels, this may be nullptr in the following trivial cases: region is invalid, region is only land (0 patches), region is only water (1 patch)
 	bool has_cross_region_aqueducts = false;
-	TWaterRegionPatchLabel number_of_patches = 0; // 0 = no water, 1 = one single patch of water, etc...
+	TWaterRegionPatchLabel::BaseType number_of_patches{0}; // 0 = no water, 1 = one single patch of water, etc...
 };
 
 /**
@@ -183,7 +184,7 @@ public:
 			if (increase_label) current_label++;
 		}
 
-		this->data.number_of_patches = highest_assigned_label;
+		this->data.number_of_patches = highest_assigned_label.base();
 
 		if (this->NumberOfPatches() == 0 || (this->NumberOfPatches() == 1 &&
 				std::all_of(this->data.tile_patch_labels->begin(), this->data.tile_patch_labels->end(), [](TWaterRegionPatchLabel label) { return label == FIRST_REGION_LABEL; }))) {
@@ -221,8 +222,8 @@ public:
 	}
 };
 
-std::vector<WaterRegionData> _water_region_data;
-std::vector<bool> _is_water_region_valid;
+ReferenceThroughBaseContainer<std::vector<WaterRegionData>> _water_region_data;
+ReferenceThroughBaseContainer<std::vector<bool>> _is_water_region_valid;
 
 static TileIndex GetTileIndexFromLocalCoordinate(int region_x, int region_y, int local_x, int local_y)
 {
@@ -274,7 +275,7 @@ static TWaterRegionIndex GetWaterRegionIndex(const WaterRegionDesc &water_region
  */
 int CalculateWaterRegionPatchHash(const WaterRegionPatchDesc &water_region_patch)
 {
-	return water_region_patch.label | GetWaterRegionIndex(water_region_patch) << 8;
+	return water_region_patch.label.base() | GetWaterRegionIndex(water_region_patch).base() << 8;
 }
 
 /**
