@@ -2195,6 +2195,8 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... Inge
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU-drivrutinen kraschade spelet. Maskinvaruacceleration inaktiverad
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nytt spel
 STR_INTRO_LOAD_GAME                                             :{BLACK}Ladda spel
@@ -4759,6 +4761,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Tidtabel
 STR_TIMETABLE_NO_TRAVEL                                         :Ingen resa
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Restid (automatisk; tidtabellen baseras på nästa manuella order)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Restid (inte angiven)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Res (utan tidtabell) i högst {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Res i {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Res i {STRING} med högsta hastighet {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Resor (för {STRING}, ej schemalagd)
