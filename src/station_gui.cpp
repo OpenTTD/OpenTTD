@@ -668,7 +668,7 @@ public:
 		}
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		if (widget == WID_STL_SORTDROPBTN) {
 			if (this->stations.SortType() != index) {
@@ -2112,7 +2112,7 @@ struct StationViewWindow : public Window {
 		this->SetDirty();
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		if (widget == WID_SV_SORT_BY) {
 			this->SelectSortBy(index);
