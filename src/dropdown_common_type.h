@@ -14,6 +14,7 @@
 #include "gfx_func.h"
 #include "gfx_type.h"
 #include "palette_func.h"
+#include "settings_gui.h"
 #include "string_func.h"
 #include "strings_func.h"
 #include "window_gui.h"
@@ -179,6 +180,56 @@ public:
 			DrawStringMultiLine(r.WithWidth(this->dim.width, rtl), STR_JUST_CHECKMARK, this->GetColour(sel), SA_CENTER, false, TFs);
 		}
 		this->TBase::Draw(full, r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), sel, click_result, bg_colour);
+	}
+};
+
+/**
+ * Drop down boolean toggle component.
+ * @tparam TBase Base component.
+ * @tparam TEnd Position toggle at end if true, or start if false.
+ */
+template <class TBase, bool TEnd = false>
+class DropDownToggle : public TBase {
+	bool on; ///< Is item on.
+	int click; ///< Click result when toggle used.
+	Colours button_colour; ///< Colour of toggle button.
+	Colours background_colour; ///< Colour of toggle background.
+public:
+	template <typename... Args>
+	explicit DropDownToggle(bool on, int click, Colours button_colour, Colours background_colour, Args&&... args)
+		: TBase(std::forward<Args>(args)...), on(on), click(click), button_colour(button_colour), background_colour(background_colour)
+	{
+	}
+
+	uint Height() const override
+	{
+		return std::max<uint>(SETTING_BUTTON_HEIGHT + WidgetDimensions::scaled.vsep_normal, this->TBase::Height());
+	}
+
+	uint Width() const override
+	{
+		return SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide + this->TBase::Width();
+	}
+
+	int OnClick(const Rect &r, const Point &pt) const override
+	{
+		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+		int w = SETTING_BUTTON_WIDTH;
+
+		if (r.WithWidth(w, rtl).CentreTo(w, SETTING_BUTTON_HEIGHT).Contains(pt)) return this->click;
+
+		return this->TBase::OnClick(r.Indent(w + WidgetDimensions::scaled.hsep_wide, rtl), pt);
+	}
+
+	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
+	{
+		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+		int w = SETTING_BUTTON_WIDTH;
+
+		Rect br = r.WithWidth(w, rtl).CentreTo(w, SETTING_BUTTON_HEIGHT);
+		DrawBoolButton(br.left, br.top, this->button_colour, this->background_colour, this->on, true);
+
+		this->TBase::Draw(full, r.Indent(w + WidgetDimensions::scaled.hsep_wide, rtl), sel, click_result, bg_colour);
 	}
 };
 
