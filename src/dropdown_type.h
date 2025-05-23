@@ -32,6 +32,11 @@ public:
 	virtual uint Height() const { return 0; }
 	virtual uint Width() const { return 0; }
 
+	virtual int OnClick(const Rect &, const Point &) const
+	{
+		return -1;
+	}
+
 	virtual void Draw(const Rect &full, const Rect &, bool, Colours bg_colour) const
 	{
 		if (this->masked) GfxFillRect(full, GetColourGradient(bg_colour, SHADE_LIGHT), FILLRECT_CHECKER);

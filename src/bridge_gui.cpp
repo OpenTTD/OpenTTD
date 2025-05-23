@@ -283,7 +283,7 @@ public:
 		}
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		if (widget == WID_BBS_DROPDOWN_CRITERIA && this->bridges.SortType() != index) {
 			this->bridges.SetSortType(index);

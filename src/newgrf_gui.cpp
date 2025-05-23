@@ -442,7 +442,7 @@ struct NewGRFParametersWindow : public Window {
 		this->SetDirty();
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		if (widget != WID_NP_SETTING_DROPDOWN) return;
 		assert(this->clicked_dropdown);
@@ -451,7 +451,7 @@ struct NewGRFParametersWindow : public Window {
 		this->SetDirty();
 	}
 
-	void OnDropdownClose(Point, WidgetID widget, int, bool) override
+	void OnDropdownClose(Point, WidgetID widget, int, int, bool) override
 	{
 		if (widget != WID_NP_SETTING_DROPDOWN) return;
 		/* We cannot raise the dropdown button just yet. OnClick needs some hint, whether
@@ -1136,7 +1136,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->CloseChildWindows(WC_QUERY_STRING); // Remove the parameter query window
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		if (widget != WID_NS_PRESET_LIST) return;
 		if (!this->editable) return;
