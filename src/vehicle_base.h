@@ -337,7 +337,7 @@ public:
 
 	union {
 		OrderList *orders = nullptr; ///< Pointer to the order list for this vehicle
-		Order *old_orders; ///< Only used during conversion of old save games
+		uint32_t old_orders; ///< Only used during conversion of old save games
 	};
 
 	NewGRFCache grf_cache{}; ///< Cache of often used calculated NewGRF values
@@ -682,7 +682,19 @@ public:
 	 * Get the first order of the vehicles order list.
 	 * @return first order of order list.
 	 */
-	inline Order *GetFirstOrder() const { return (this->orders == nullptr) ? nullptr : this->orders->GetFirstOrder(); }
+	inline const Order *GetFirstOrder() const { return (this->orders == nullptr) ? nullptr : this->GetOrder(this->orders->GetFirstOrder()); }
+
+	inline std::span<const Order> Orders() const
+	{
+		if (this->orders == nullptr) return {};
+		return this->orders->GetOrders();
+	}
+
+	inline std::span<Order> Orders()
+	{
+		if (this->orders == nullptr) return {};
+		return this->orders->GetOrders();
+	}
 
 	void AddToShared(Vehicle *shared_chain);
 	void RemoveFromShared();
@@ -908,9 +920,9 @@ public:
 	 * Returns the last order of a vehicle, or nullptr if it doesn't exists
 	 * @return last order of a vehicle, if available
 	 */
-	inline Order *GetLastOrder() const
+	inline const Order *GetLastOrder() const
 	{
-		return (this->orders == nullptr) ? nullptr : this->orders->GetLastOrder();
+		return (this->orders == nullptr) ? nullptr : this->orders->GetOrderAt(this->orders->GetLastOrder());
 	}
 
 	bool IsEngineCountable() const;
@@ -1013,54 +1025,6 @@ public:
 
 		return v;
 	}
-
-	/**
-	 * Iterator to iterate orders
-	 * Supports deletion of current order
-	 */
-	struct OrderIterator {
-		typedef Order value_type;
-		typedef Order *pointer;
-		typedef Order &reference;
-		typedef size_t difference_type;
-		typedef std::forward_iterator_tag iterator_category;
-
-		explicit OrderIterator(OrderList *list) : list(list), prev(nullptr)
-		{
-			this->order = (this->list == nullptr) ? nullptr : this->list->GetFirstOrder();
-		}
-
-		bool operator==(const OrderIterator &other) const { return this->order == other.order; }
-		Order * operator*() const { return this->order; }
-		OrderIterator & operator++()
-		{
-			this->prev = (this->prev == nullptr) ? this->list->GetFirstOrder() : this->prev->next;
-			this->order = (this->prev == nullptr) ? nullptr : this->prev->next;
-			return *this;
-		}
-
-	private:
-		OrderList *list;
-		Order *order;
-		Order *prev;
-	};
-
-	/**
-	 * Iterable ensemble of orders
-	 */
-	struct IterateWrapper {
-		OrderList *list;
-		IterateWrapper(OrderList *list = nullptr) : list(list) {}
-		OrderIterator begin() { return OrderIterator(this->list); }
-		OrderIterator end() { return OrderIterator(nullptr); }
-		bool empty() { return this->begin() == this->end(); }
-	};
-
-	/**
-	 * Returns an iterable ensemble of orders of a vehicle
-	 * @return an iterable ensemble of orders of a vehicle
-	 */
-	IterateWrapper Orders() const { return IterateWrapper(this->orders); }
 
 	uint32_t GetDisplayMaxWeight() const;
 	uint32_t GetDisplayMinPowerToWeight() const;

@@ -76,6 +76,7 @@
 #include "../safeguards.h"
 
 extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = CompanyID::Invalid());
+extern void ClearOldOrders();
 
 /**
  * Makes a tile canal or water depending on the surroundings.
@@ -818,6 +819,9 @@ bool AfterLoadGame()
 	/* Update all vehicles: Phase 1 */
 	AfterLoadVehiclesPhase1(true);
 
+	/* Old orders are no longer needed. */
+	ClearOldOrders();
+
 	/* make sure there is a town in the game */
 	if (_game_mode == GM_NORMAL && Town::GetNumItems() == 0) {
 		SetSaveLoadError(STR_ERROR_NO_TOWN_IN_SCENARIO);
@@ -1485,8 +1489,10 @@ bool AfterLoadGame()
 
 	/* Setting no refit flags to all orders in savegames from before refit in orders were added */
 	if (IsSavegameVersionBefore(SLV_36)) {
-		for (Order *order : Order::Iterate()) {
-			order->SetRefit(CARGO_NO_REFIT);
+		for (OrderList *orderlist : OrderList::Iterate()) {
+			for (Order &order : orderlist->GetOrders()) {
+				order.SetRefit(CARGO_NO_REFIT);
+			}
 		}
 
 		for (Vehicle *v : Vehicle::Iterate()) {
@@ -1781,25 +1787,31 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_93)) {
 		/* Rework of orders. */
-		for (Order *order : Order::Iterate()) order->ConvertFromOldSavegame();
+		for (OrderList *orderlist : OrderList::Iterate()) {
+			for (Order &o : orderlist->GetOrders()) {
+				o.ConvertFromOldSavegame();
+			}
+		}
 
 		for (Vehicle *v : Vehicle::Iterate()) {
-			if (v->orders != nullptr && v->orders->GetFirstOrder() != nullptr && v->orders->GetFirstOrder()->IsType(OT_NOTHING)) {
+			if (v->orders != nullptr && v->GetFirstOrder() != nullptr && v->GetFirstOrder()->IsType(OT_NOTHING)) {
 				v->orders->FreeChain();
 				v->orders = nullptr;
 			}
 
 			v->current_order.ConvertFromOldSavegame();
 			if (v->type == VEH_ROAD && v->IsPrimaryVehicle() && v->FirstShared() == v) {
-				for (Order *order : v->Orders()) order->SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
+				for (Order &order : v->Orders()) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 			}
 		}
 	} else if (IsSavegameVersionBefore(SLV_94)) {
 		/* Unload and transfer are now mutual exclusive. */
-		for (Order *order : Order::Iterate()) {
-			if ((order->GetUnloadType() & (OUFB_UNLOAD | OUFB_TRANSFER)) == (OUFB_UNLOAD | OUFB_TRANSFER)) {
-				order->SetUnloadType(OUFB_TRANSFER);
-				order->SetLoadType(OLFB_NO_LOAD);
+		for (OrderList *orderlist : OrderList::Iterate()) {
+			for (Order &order : orderlist->GetOrders()) {
+				if ((order.GetUnloadType() & (OUFB_UNLOAD | OUFB_TRANSFER)) == (OUFB_UNLOAD | OUFB_TRANSFER)) {
+					order.SetUnloadType(OUFB_TRANSFER);
+					order.SetLoadType(OLFB_NO_LOAD);
+				}
 			}
 		}
 
@@ -1811,9 +1823,11 @@ bool AfterLoadGame()
 		}
 	} else if (IsSavegameVersionBefore(SLV_DEPOT_UNBUNCHING)) {
 		/* OrderDepotActionFlags were moved, instead of starting at bit 4 they now start at bit 3. */
-		for (Order *order : Order::Iterate()) {
-			if (!order->IsType(OT_GOTO_DEPOT)) continue;
-			order->SetDepotActionType((OrderDepotActionFlags)(order->GetDepotActionType() >> 1));
+		for (OrderList *orderlist : OrderList::Iterate()) {
+			for (Order &order : orderlist->GetOrders()) {
+				if (!order.IsType(OT_GOTO_DEPOT)) continue;
+				order.SetDepotActionType((OrderDepotActionFlags)(order.GetDepotActionType() >> 1));
+			}
 		}
 
 		for (Vehicle *v : Vehicle::Iterate()) {
@@ -2175,8 +2189,10 @@ bool AfterLoadGame()
 
 	/* Trains could now stop in a specific location. */
 	if (IsSavegameVersionBefore(SLV_117)) {
-		for (Order *o : Order::Iterate()) {
-			if (o->IsType(OT_GOTO_STATION)) o->SetStopLocation(OSL_PLATFORM_FAR_END);
+		for (OrderList *orderlist : OrderList::Iterate()) {
+			for (Order &o : orderlist->GetOrders()) {
+				if (o.IsType(OT_GOTO_STATION)) o.SetStopLocation(OSL_PLATFORM_FAR_END);
+			}
 		}
 	}
 
@@ -3054,11 +3070,11 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SLV_190)) {
-		for (Order *order : Order::Iterate()) {
-			order->SetTravelTimetabled(order->GetTravelTime() > 0);
-			order->SetWaitTimetabled(order->GetWaitTime() > 0);
-		}
 		for (OrderList *orderlist : OrderList::Iterate()) {
+			for (Order &order : orderlist->GetOrders()) {
+				order.SetTravelTimetabled(order.GetTravelTime() > 0);
+				order.SetWaitTimetabled(order.GetWaitTime() > 0);
+			}
 			orderlist->RecalculateTimetableDuration();
 		}
 	}
