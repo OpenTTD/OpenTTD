@@ -426,7 +426,7 @@ struct NewGRFInspectWindow : Window {
 	{
 		switch (nip.type) {
 			case NIT_INT: return GetString(STR_JUST_INT, value);
-			case NIT_CARGO: return GetString(IsValidCargoType(value) ? CargoSpec::Get(value)->name : STR_QUANTITY_N_A);
+			case NIT_CARGO: return GetString(IsValidCargoType(static_cast<CargoType>(value)) ? CargoSpec::Get(static_cast<CargoType>(value))->name : STR_QUANTITY_N_A);
 			default: NOT_REACHED();
 		}
 	}
