@@ -4761,6 +4761,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Dienstre
 STR_TIMETABLE_NO_TRAVEL                                         :Niet rijden
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Rijden (automatisch; volgens dienstregeling bij volgende handmatige bestemming)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reis (geen dienstregeling)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Reis met maximaal {VELOCITY} (geen dienstregeling)
 STR_TIMETABLE_TRAVEL_FOR                                        :Reis naar {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Reis {STRING} met maximaal {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Reis (gedurende {STRING}, geen dienstregeling)
