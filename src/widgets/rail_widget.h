@@ -67,7 +67,6 @@ enum BuildRailStationWidgets : WidgetID {
 /** Widgets of the #BuildSignalWindow class. */
 enum BuildSignalWidgets : WidgetID {
 	WID_BS_CAPTION,            ///< Caption for the Signal Selection window.
-	WID_BS_TOGGLE_SIZE,        ///< Toggle showing advanced signal types.
 	WID_BS_SEMAPHORE_NORM,     ///< Build a semaphore normal block signal.
 	WID_BS_SEMAPHORE_ENTRY,    ///< Build a semaphore entry block signal.
 	WID_BS_SEMAPHORE_EXIT,     ///< Build a semaphore exit block signal.
