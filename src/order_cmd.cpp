@@ -366,8 +366,8 @@ StationIDStack OrderList::GetNextStoppingStation(const Vehicle *v, VehicleOrderI
 	VehicleOrderID next = first;
 	if (first == INVALID_VEH_ORDER_ID) {
 		next = v->cur_implicit_order_index;
-		if (next == INVALID_VEH_ORDER_ID) {
-			next = v->orders->GetFirstOrder();
+		if (next >= this->GetNumOrders()) {
+			next = this->GetFirstOrder();
 			if (next == INVALID_VEH_ORDER_ID) return StationID::Invalid().base();
 		} else {
 			/* GetNext never returns INVALID_VEH_ORDER_ID if there is a valid station in the list.
