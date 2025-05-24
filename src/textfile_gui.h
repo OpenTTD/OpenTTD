@@ -31,7 +31,7 @@ struct TextfileWindow : public Window, MissingGlyphSearcher {
 	void OnResize() override;
 	void OnInit() override;
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override;
-	void OnDropdownSelect(WidgetID widget, int index) override;
+	void OnDropdownSelect(WidgetID widget, int index, int) override;
 	void OnRealtimeTick(uint delta_ms) override;
 	void OnScrollbarScroll(WidgetID widget) override;
 

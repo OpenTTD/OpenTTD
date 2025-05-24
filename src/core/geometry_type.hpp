@@ -236,6 +236,19 @@ struct Rect {
 		/* This is a local version of IsInsideMM, to avoid including math_func everywhere. */
 		return (uint)(pt.x - this->left) <= (uint)(this->right - this->left) && (uint)(pt.y - this->top) <= (uint)(this->bottom - this->top);
 	}
+
+	/**
+	 * Centre a dimension within this Rect.
+	 * @param width The horizontal dimension.
+	 * @param height The vertical dimension.
+	 * @return the new resized Rect.
+	 */
+	[[nodiscard]] inline Rect CentreTo(int width, int height) const
+	{
+		int new_left = CentreBounds(this->left, this->right, width);
+		int new_right = CentreBounds(this->top, this->bottom, height);
+		return {new_left, new_right, new_left + width, new_right + height};
+	}
 };
 
 /**
