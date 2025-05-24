@@ -173,7 +173,7 @@ public:
 	 * @return The calendar-date this engine was designed.
 	 * @see \ref ScriptCalendarTime
 	 */
-	static ScriptDate::Date GetDesignDate(EngineID engine_id);
+	static ScriptCalendarDate *GetDesignDate(EngineID engine_id);
 
 	/**
 	 * Get the type of an engine.
