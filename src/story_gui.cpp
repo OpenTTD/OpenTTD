@@ -832,7 +832,7 @@ public:
 		}
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		if (widget != WID_SB_SEL_PAGE) return;
 

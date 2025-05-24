@@ -988,7 +988,7 @@ public:
 		this->vscroll->SetCapacityFromWidget(this, WID_GL_LIST_VEHICLE);
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		switch (widget) {
 			case WID_GL_GROUP_BY_DROPDOWN:
