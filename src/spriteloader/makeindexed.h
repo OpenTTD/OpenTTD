@@ -17,7 +17,7 @@ class SpriteLoaderMakeIndexed : public SpriteLoader {
 	SpriteLoader &baseloader;
 public:
 	SpriteLoaderMakeIndexed(SpriteLoader &baseloader) : baseloader(baseloader) {}
-	ZoomLevels LoadSprite(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, uint8_t control_flags, ZoomLevels &avail_8bpp, ZoomLevels &avail_32bpp) override;
+	SpriteCollKeys LoadSprite(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, uint8_t control_flags, SpriteCollKeys &avail_8bpp, SpriteCollKeys &avail_32bpp) override;
 };
 
 #endif /* SPRITELOADER_MAKEINDEXED_H */

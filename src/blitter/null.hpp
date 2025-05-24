@@ -16,9 +16,9 @@
 class Blitter_Null : public Blitter {
 public:
 	uint8_t GetScreenDepth() override { return 0; }
-	void Draw(Blitter::BlitterParams *, BlitterMode, ZoomLevel) override {};
+	void Draw(Blitter::BlitterParams *, BlitterMode, SpriteCollKey) override {};
 	void DrawColourMappingRect(void *, int, int, PaletteID) override {};
-	Sprite *Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator) override;
+	Sprite *Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, bool has_rtl, SpriteAllocator &allocator) override;
 	void *MoveTo(void *, int, int) override { return nullptr; };
 	void SetPixel(void *, int, int, uint8_t) override {};
 	void DrawRect(void *, int, int, uint8_t) override {};
