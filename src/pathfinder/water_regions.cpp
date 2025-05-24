@@ -22,11 +22,11 @@
 #include "../core/convertible_through_base.hpp"
 #include "../safeguards.h"
 
-using TWaterRegionTraversabilityBits = uint16_t;
-constexpr TWaterRegionPatchLabel FIRST_REGION_LABEL{1};
+using WaterRegionTraversabilityBits = uint16_t;
+constexpr WaterRegionPatchLabel FIRST_REGION_LABEL{1};
 
-static_assert(sizeof(TWaterRegionTraversabilityBits) * 8 == WATER_REGION_EDGE_LENGTH);
-static_assert(sizeof(TWaterRegionPatchLabel) == sizeof(uint8_t)); // Important for the hash calculation.
+static_assert(sizeof(WaterRegionTraversabilityBits) * 8 == WATER_REGION_EDGE_LENGTH);
+static_assert(sizeof(WaterRegionPatchLabel) == sizeof(uint8_t)); // Important for the hash calculation.
 
 static inline TrackBits GetWaterTracks(TileIndex tile) { return TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0)); }
 static inline bool IsAqueductTile(TileIndex tile) { return IsBridgeTile(tile) && GetTunnelBridgeTransportType(tile) == TRANSPORT_WATER; }
@@ -37,10 +37,10 @@ static inline int GetWaterRegionY(TileIndex tile) { return TileY(tile) / WATER_R
 static inline int GetWaterRegionMapSizeX() { return Map::SizeX() / WATER_REGION_EDGE_LENGTH; }
 static inline int GetWaterRegionMapSizeY() { return Map::SizeY() / WATER_REGION_EDGE_LENGTH; }
 
-static inline TWaterRegionIndex GetWaterRegionIndex(int region_x, int region_y) { return TWaterRegionIndex(GetWaterRegionMapSizeX() * region_y + region_x); }
-static inline TWaterRegionIndex GetWaterRegionIndex(TileIndex tile) { return GetWaterRegionIndex(GetWaterRegionX(tile), GetWaterRegionY(tile)); }
+static inline WaterRegionIndex GetWaterRegionIndex(int region_x, int region_y) { return WaterRegionIndex(GetWaterRegionMapSizeX() * region_y + region_x); }
+static inline WaterRegionIndex GetWaterRegionIndex(TileIndex tile) { return GetWaterRegionIndex(GetWaterRegionX(tile), GetWaterRegionY(tile)); }
 
-using TWaterRegionPatchLabelArray = std::array<TWaterRegionPatchLabel, WATER_REGION_NUMBER_OF_TILES>;
+using WaterRegionPatchLabelArray = std::array<WaterRegionPatchLabel, WATER_REGION_NUMBER_OF_TILES>;
 
 /**
  * The data stored for each water region.
@@ -48,10 +48,10 @@ using TWaterRegionPatchLabelArray = std::array<TWaterRegionPatchLabel, WATER_REG
 class WaterRegionData {
 	friend class WaterRegion;
 
-	std::array<TWaterRegionTraversabilityBits, DIAGDIR_END> edge_traversability_bits{};
-	std::unique_ptr<TWaterRegionPatchLabelArray> tile_patch_labels; // Tile patch labels, this may be nullptr in the following trivial cases: region is invalid, region is only land (0 patches), region is only water (1 patch)
+	std::array<WaterRegionTraversabilityBits, DIAGDIR_END> edge_traversability_bits{};
+	std::unique_ptr<WaterRegionPatchLabelArray> tile_patch_labels; // Tile patch labels, this may be nullptr in the following trivial cases: region is invalid, region is only land (0 patches), region is only water (1 patch)
 	bool has_cross_region_aqueducts = false;
-	TWaterRegionPatchLabel::BaseType number_of_patches{0}; // 0 = no water, 1 = one single patch of water, etc...
+	WaterRegionPatchLabel::BaseType number_of_patches{0}; // 0 = no water, 1 = one single patch of water, etc...
 };
 
 /**
@@ -94,7 +94,7 @@ public:
 	 * @param side Which side of the region we want to know the edge traversability of.
 	 * @returns A value holding the edge traversability bits.
 	 */
-	TWaterRegionTraversabilityBits GetEdgeTraversabilityBits(DiagDirection side) const { return this->data.edge_traversability_bits[side]; }
+	WaterRegionTraversabilityBits GetEdgeTraversabilityBits(DiagDirection side) const { return this->data.edge_traversability_bits[side]; }
 
 	/**
 	 * @returns The amount of individual water patches present within the water region. A value of
@@ -112,7 +112,7 @@ public:
 	 * @param tile The tile of which we want to retrieve the label.
 	 * @returns The label assigned to the tile.
 	 */
-	TWaterRegionPatchLabel GetLabel(TileIndex tile) const
+	WaterRegionPatchLabel GetLabel(TileIndex tile) const
 	{
 		assert(this->tile_area.Contains(tile));
 		if (this->data.tile_patch_labels == nullptr) {
@@ -132,14 +132,14 @@ public:
 
 		/* Acquire a tile patch label array if this region does not already have one */
 		if (this->data.tile_patch_labels == nullptr) {
-			this->data.tile_patch_labels = std::make_unique<TWaterRegionPatchLabelArray>();
+			this->data.tile_patch_labels = std::make_unique<WaterRegionPatchLabelArray>();
 		}
 
 		this->data.tile_patch_labels->fill(INVALID_WATER_REGION_PATCH);
 		this->data.edge_traversability_bits.fill(0);
 
-		TWaterRegionPatchLabel current_label = FIRST_REGION_LABEL;
-		TWaterRegionPatchLabel highest_assigned_label = INVALID_WATER_REGION_PATCH;
+		WaterRegionPatchLabel current_label = FIRST_REGION_LABEL;
+		WaterRegionPatchLabel highest_assigned_label = INVALID_WATER_REGION_PATCH;
 
 		/* Perform connected component labeling. This uses a flooding algorithm that expands until no
 		 * additional tiles can be added. Only tiles inside the water region are considered. */
@@ -156,7 +156,7 @@ public:
 				const TrackdirBits valid_dirs = TrackBitsToTrackdirBits(GetWaterTracks(tile));
 				if (valid_dirs == TRACKDIR_BIT_NONE) continue;
 
-				TWaterRegionPatchLabel &tile_patch = (*this->data.tile_patch_labels)[this->GetLocalIndex(tile)];
+				WaterRegionPatchLabel &tile_patch = (*this->data.tile_patch_labels)[this->GetLocalIndex(tile)];
 				if (tile_patch != INVALID_WATER_REGION_PATCH) continue;
 
 				tile_patch = current_label;
@@ -187,7 +187,7 @@ public:
 		this->data.number_of_patches = highest_assigned_label.base();
 
 		if (this->NumberOfPatches() == 0 || (this->NumberOfPatches() == 1 &&
-				std::all_of(this->data.tile_patch_labels->begin(), this->data.tile_patch_labels->end(), [](TWaterRegionPatchLabel label) { return label == FIRST_REGION_LABEL; }))) {
+				std::all_of(this->data.tile_patch_labels->begin(), this->data.tile_patch_labels->end(), [](WaterRegionPatchLabel label) { return label == FIRST_REGION_LABEL; }))) {
 			/* No need for patch storage: trivial cases */
 			this->data.tile_patch_labels.reset();
 		}
@@ -246,7 +246,7 @@ static TileIndex GetEdgeTileCoordinate(int region_x, int region_y, DiagDirection
 
 static WaterRegion GetUpdatedWaterRegion(uint16_t region_x, uint16_t region_y)
 {
-	const TWaterRegionIndex index = GetWaterRegionIndex(region_x, region_y);
+	const WaterRegionIndex index = GetWaterRegionIndex(region_x, region_y);
 	WaterRegion water_region(region_x, region_y, _water_region_data[index]);
 	if (!_is_water_region_valid[index]) {
 		water_region.ForceUpdate();
@@ -264,7 +264,7 @@ static WaterRegion GetUpdatedWaterRegion(TileIndex tile)
  * Returns the index of the water region.
  * @param water_region The water region to return the index for.
  */
-static TWaterRegionIndex GetWaterRegionIndex(const WaterRegionDesc &water_region)
+static WaterRegionIndex GetWaterRegionIndex(const WaterRegionDesc &water_region)
 {
 	return GetWaterRegionIndex(water_region.x, water_region.y);
 }
@@ -316,7 +316,7 @@ void InvalidateWaterRegion(TileIndex tile)
 	if (!IsValidTile(tile)) return;
 
 	auto invalidate_region = [](TileIndex tile) {
-		const TWaterRegionIndex water_region_index = GetWaterRegionIndex(tile);
+		const WaterRegionIndex water_region_index = GetWaterRegionIndex(tile);
 		if (!_is_water_region_valid[water_region_index]) Debug(map, 3, "Invalidated water region ({},{})", GetWaterRegionX(tile), GetWaterRegionY(tile));
 		_is_water_region_valid[water_region_index] = false;
 	};
@@ -340,7 +340,7 @@ void InvalidateWaterRegion(TileIndex tile)
  * @param side Side of the water region to look for neighbouring patches of water
  * @param callback The function that will be called for each neighbour that is found
  */
-static inline void VisitAdjacentWaterRegionPatchNeighbours(const WaterRegionPatchDesc &water_region_patch, DiagDirection side, TVisitWaterRegionPatchCallBack &func)
+static inline void VisitAdjacentWaterRegionPatchNeighbours(const WaterRegionPatchDesc &water_region_patch, DiagDirection side, VisitWaterRegionPatchCallback &func)
 {
 	if (water_region_patch.label == INVALID_WATER_REGION_PATCH) return;
 
@@ -356,7 +356,7 @@ static inline void VisitAdjacentWaterRegionPatchNeighbours(const WaterRegionPatc
 	const DiagDirection opposite_side = ReverseDiagDir(side);
 
 	/* Indicates via which local x or y coordinates (depends on the "side" parameter) we can cross over into the adjacent region. */
-	const TWaterRegionTraversabilityBits traversability_bits = current_region.GetEdgeTraversabilityBits(side)
+	const WaterRegionTraversabilityBits traversability_bits = current_region.GetEdgeTraversabilityBits(side)
 		& neighbouring_region.GetEdgeTraversabilityBits(opposite_side);
 	if (traversability_bits == 0) return;
 
@@ -366,21 +366,21 @@ static inline void VisitAdjacentWaterRegionPatchNeighbours(const WaterRegionPatc
 	}
 
 	/* Multiple water patches can be reached from the current patch. Check each edge tile individually. */
-	static std::vector<TWaterRegionPatchLabel> unique_labels; // static and vector-instead-of-map for performance reasons
+	static std::vector<WaterRegionPatchLabel> unique_labels; // static and vector-instead-of-map for performance reasons
 	unique_labels.clear();
 	for (int x_or_y = 0; x_or_y < WATER_REGION_EDGE_LENGTH; ++x_or_y) {
 		if (!HasBit(traversability_bits, x_or_y)) continue;
 
 		const TileIndex current_edge_tile = GetEdgeTileCoordinate(water_region_patch.x, water_region_patch.y, side, x_or_y);
-		const TWaterRegionPatchLabel current_label = current_region.GetLabel(current_edge_tile);
+		const WaterRegionPatchLabel current_label = current_region.GetLabel(current_edge_tile);
 		if (current_label != water_region_patch.label) continue;
 
 		const TileIndex neighbour_edge_tile = GetEdgeTileCoordinate(nx, ny, opposite_side, x_or_y);
-		const TWaterRegionPatchLabel neighbour_label = neighbouring_region.GetLabel(neighbour_edge_tile);
+		const WaterRegionPatchLabel neighbour_label = neighbouring_region.GetLabel(neighbour_edge_tile);
 		assert(neighbour_label != INVALID_WATER_REGION_PATCH);
 		if (std::ranges::find(unique_labels, neighbour_label) == unique_labels.end()) unique_labels.push_back(neighbour_label);
 	}
-	for (TWaterRegionPatchLabel unique_label : unique_labels) func(WaterRegionPatchDesc{ nx, ny, unique_label });
+	for (WaterRegionPatchLabel unique_label : unique_labels) func(WaterRegionPatchDesc{ nx, ny, unique_label });
 }
 
 /**
@@ -389,7 +389,7 @@ static inline void VisitAdjacentWaterRegionPatchNeighbours(const WaterRegionPatc
  * @param water_region_patch Water patch within the water region to start searching from
  * @param callback The function that will be called for each accessible water patch that is found
  */
-void VisitWaterRegionPatchNeighbours(const WaterRegionPatchDesc &water_region_patch, TVisitWaterRegionPatchCallBack &callback)
+void VisitWaterRegionPatchNeighbours(const WaterRegionPatchDesc &water_region_patch, VisitWaterRegionPatchCallback &callback)
 {
 	if (water_region_patch.label == INVALID_WATER_REGION_PATCH) return;
 

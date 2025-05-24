@@ -14,12 +14,12 @@
 #include "../tile_type.h"
 #include "../map_func.h"
 
-using TWaterRegionIndex = StrongType::Typedef<uint, struct TWaterRegionIndexTag, StrongType::Compare>;
-using TWaterRegionPatchLabel = StrongType::Typedef<uint8_t, struct TWaterRegionPatchLabelTag, StrongType::Compare, StrongType::Integer>;
+using WaterRegionIndex = StrongType::Typedef<uint, struct TWaterRegionIndexTag, StrongType::Compare>;
+using WaterRegionPatchLabel = StrongType::Typedef<uint8_t, struct TWaterRegionPatchLabelTag, StrongType::Compare, StrongType::Integer>;
 
 constexpr int WATER_REGION_EDGE_LENGTH = 16;
 constexpr int WATER_REGION_NUMBER_OF_TILES = WATER_REGION_EDGE_LENGTH * WATER_REGION_EDGE_LENGTH;
-constexpr TWaterRegionPatchLabel INVALID_WATER_REGION_PATCH{0};
+constexpr WaterRegionPatchLabel INVALID_WATER_REGION_PATCH{0};
 
 /**
  * Describes a single interconnected patch of water within a particular water region.
@@ -28,7 +28,7 @@ struct WaterRegionPatchDesc
 {
 	int x; ///< The X coordinate of the water region, i.e. X=2 is the 3rd water region along the X-axis
 	int y; ///< The Y coordinate of the water region, i.e. Y=2 is the 3rd water region along the Y-axis
-	TWaterRegionPatchLabel label; ///< Unique label identifying the patch within the region
+	WaterRegionPatchLabel label; ///< Unique label identifying the patch within the region
 
 	bool operator==(const WaterRegionPatchDesc &other) const { return x == other.x && y == other.y && label == other.label; }
 };
@@ -57,8 +57,8 @@ WaterRegionPatchDesc GetWaterRegionPatchInfo(TileIndex tile);
 
 void InvalidateWaterRegion(TileIndex tile);
 
-using TVisitWaterRegionPatchCallBack = std::function<void(const WaterRegionPatchDesc &)>;
-void VisitWaterRegionPatchNeighbours(const WaterRegionPatchDesc &water_region_patch, TVisitWaterRegionPatchCallBack &callback);
+using VisitWaterRegionPatchCallback = std::function<void(const WaterRegionPatchDesc &)>;
+void VisitWaterRegionPatchNeighbours(const WaterRegionPatchDesc &water_region_patch, VisitWaterRegionPatchCallback &callback);
 
 void AllocateWaterRegions();
 
