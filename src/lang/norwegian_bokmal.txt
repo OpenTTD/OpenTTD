@@ -4763,6 +4763,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Rutetabe
 STR_TIMETABLE_NO_TRAVEL                                         :Ingen reise
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Reis (automatisk; settes på ruteplan med neste manuelle ordre)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reise (uten rutetabell)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Reis (uten rutetabell) med inntil {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Reise i {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Reis i {STRING} med inntil {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Reise (i {STRING}, ikke oppsatt i rutetabell)

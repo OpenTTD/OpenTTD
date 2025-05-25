@@ -4762,6 +4762,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}시간�
 STR_TIMETABLE_NO_TRAVEL                                         :운행정보 없음
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :이동 (자동; 다음 경로에 의해 시간표 작성)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :운행 (시간표가 작성되지 않음)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :최대 {VELOCITY}의 속력으로 운행 (시간표 작성 안 됨)
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING}에 걸쳐 운행
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{0:STRING} 동안 최대 {1:VELOCITY}의 속력으로 운행
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :운행 ({STRING} 동안, 시간표 작성 안 됨)
