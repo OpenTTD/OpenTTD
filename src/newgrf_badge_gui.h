@@ -12,15 +12,16 @@
 
 #include "dropdown_type.h"
 #include "newgrf.h"
+#include "newgrf_badge.h"
 #include "newgrf_badge_type.h"
 #include "timer/timer_game_calendar.h"
 
-class GUIBadgeClasses {
+class GUIBadgeClasses : public UsedBadgeClasses {
 public:
 	struct Element {
 		BadgeClassID class_index; ///< Badge class index.
 		uint8_t column_group; ///< Column group in UI. 0 = left, 1 = centre, 2 = right.
-		bool visible; ///< Whether this element is visible.
+		bool visible; ///< Whether the icon is visible.
 		uint sort_order; ///< Order of element.
 		Dimension size; ///< Maximal size of this element.
 		std::string_view label; ///< Class label (string owned by the class badge)
@@ -54,5 +55,23 @@ std::unique_ptr<DropDownListItem> MakeDropDownListBadgeIconItem(const std::share
 
 DropDownList BuildBadgeClassConfigurationList(const class GUIBadgeClasses &badge_class, uint columns, std::span<const StringID> column_separators);
 bool HandleBadgeConfigurationDropDownClick(GrfSpecFeature feature, uint columns, int result, int click_result);
+
+std::pair<WidgetID, WidgetID> AddBadgeDropdownFilters(NWidgetContainer &container, WidgetID widget, Colours colour, GrfSpecFeature feature);
+
+class NWidgetBadgeFilter : public NWidgetLeaf {
+public:
+	NWidgetBadgeFilter(Colours colour, WidgetID index, GrfSpecFeature feature, BadgeClassID badge_class);
+
+	BadgeClassID GetBadgeClassID() const { return this->badge_class; }
+	std::string GetStringParameter(const BadgeFilterChoices &choices) const;
+	DropDownList GetDropDownList() const;
+
+private:
+	GrfSpecFeature feature; ///< Feature of this dropdown.
+	BadgeClassID badge_class; ///< Badge class of this dropdown.
+};
+
+void ResetBadgeFilter(BadgeFilterChoices &choices, BadgeClassID badge_class_index);
+void SetBadgeFilter(BadgeFilterChoices &choices, BadgeID badge_index);
 
 #endif /* NEWGRF_BADGE_GUI_H */

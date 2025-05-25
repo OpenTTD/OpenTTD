@@ -10,7 +10,6 @@
 #include "stdafx.h"
 #include "newgrf.h"
 #include "newgrf_badge.h"
-#include "newgrf_badge_config.h"
 #include "newgrf_badge_type.h"
 #include "newgrf_spritegroup.h"
 #include "stringfilter_type.h"
@@ -271,6 +270,7 @@ void ApplyBadgeFeaturesToClassBadges()
 		Badge *class_badge = GetClassBadge(badge.class_index);
 		assert(class_badge != nullptr);
 		class_badge->features.Set(badge.features);
+		if (badge.name != STR_NULL) class_badge->flags.Set(BadgeFlag::HasText);
 	}
 }
 
@@ -297,7 +297,7 @@ PalSpriteID GetBadgeSprite(const Badge &badge, GrfSpecFeature feature, std::opti
  * Create a list of used badge classes for a feature.
  * @param feature GRF feature being used.
  */
-UsedBadgeClasses::UsedBadgeClasses(GrfSpecFeature feature)
+UsedBadgeClasses::UsedBadgeClasses(GrfSpecFeature feature) : feature(feature)
 {
 	for (auto index : _badges.classes) {
 		Badge *class_badge = GetBadge(index);
@@ -340,4 +340,17 @@ BadgeTextFilter::BadgeTextFilter(StringFilter &filter, GrfSpecFeature feature)
 bool BadgeTextFilter::Filter(std::span<const BadgeID> badges) const
 {
 	return std::ranges::any_of(badges, [this](const BadgeID &badge) { return std::ranges::binary_search(this->badges, badge); });
+}
+
+/**
+ * Test if the given badges matches the filtered badge list.
+ * @param badges List of badges.
+ * @return true iff all required badges are present in the provided list.
+ */
+bool BadgeDropdownFilter::Filter(std::span<const BadgeID> badges) const
+{
+	if (this->badges.empty()) return true;
+
+	/* We want all filtered badges to match. */
+	return std::ranges::all_of(this->badges, [&badges](const auto &badge) { return std::ranges::find(badges, badge.second) != std::end(badges); });
 }

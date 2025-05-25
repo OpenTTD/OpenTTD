@@ -484,6 +484,7 @@ public:
 	inline bool IsEmpty() { return this->children.empty(); }
 
 	NWidgetBase *GetWidgetOfType(WidgetType tp) override;
+	void Clear() { this->children.clear(); }
 
 protected:
 	std::vector<std::unique_ptr<NWidgetBase>> children{}; ///< Child widgets in container.
