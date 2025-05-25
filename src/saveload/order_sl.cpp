@@ -214,7 +214,7 @@ struct ORDRChunkHandler : ChunkHandler {
 template <typename T>
 class SlOrders : public VectorSaveLoadHandler<SlOrders<T>, T, Order> {
 public:
-	inline static const SaveLoad description[] = {
+	static inline const SaveLoad description[] = {
 		SLE_VAR(Order, type,        SLE_UINT8),
 		SLE_VAR(Order, flags,       SLE_UINT8),
 		SLE_VAR(Order, dest,        SLE_UINT16),
@@ -223,7 +223,7 @@ public:
 		SLE_VAR(Order, travel_time, SLE_UINT16),
 		SLE_VAR(Order, max_speed,   SLE_UINT16),
 	};
-	inline const static SaveLoadCompatTable compat_description = {};
+	static inline const SaveLoadCompatTable compat_description = {};
 
 	std::vector<Order> &GetVector(T *container) const override { return container->orders; }
 

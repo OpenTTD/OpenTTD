@@ -30,7 +30,7 @@ static NodeID _linkgraph_from; ///< Contains the current "from" node being saved
 
 class SlLinkgraphEdge : public DefaultSaveLoadHandler<SlLinkgraphEdge, Node> {
 public:
-	inline static const SaveLoad description[] = {
+	static inline const SaveLoad description[] = {
 		    SLE_VAR(Edge, capacity,                 SLE_UINT32),
 		    SLE_VAR(Edge, usage,                    SLE_UINT32),
 		SLE_CONDVAR(Edge, travel_time_sum,          SLE_UINT64, SLV_LINKGRAPH_TRAVEL_TIME, SL_MAX_VERSION),
@@ -39,7 +39,7 @@ public:
 		    SLE_VAR(Edge, dest_node,                SLE_UINT16),
 		SLE_CONDVARNAME(Edge, dest_node, "next_edge", SLE_UINT16, SL_MIN_VERSION, SLV_LINKGRAPH_EDGES),
 	};
-	inline const static SaveLoadCompatTable compat_description = _linkgraph_edge_sl_compat;
+	static inline const SaveLoadCompatTable compat_description = _linkgraph_edge_sl_compat;
 
 	void Save(Node *bn) const override
 	{
@@ -95,7 +95,7 @@ public:
 
 class SlLinkgraphNode : public DefaultSaveLoadHandler<SlLinkgraphNode, LinkGraph> {
 public:
-	inline static const SaveLoad description[] = {
+	static inline const SaveLoad description[] = {
 		SLE_CONDVAR(Node, xy,          SLE_UINT32, SLV_191, SL_MAX_VERSION),
 		    SLE_VAR(Node, supply,      SLE_UINT32),
 		    SLE_VAR(Node, demand,      SLE_UINT32),
@@ -103,7 +103,7 @@ public:
 		    SLE_VAR(Node, last_update, SLE_INT32),
 		SLEG_STRUCTLIST("edges", SlLinkgraphEdge),
 	};
-	inline const static SaveLoadCompatTable compat_description = _linkgraph_node_sl_compat;
+	static inline const SaveLoadCompatTable compat_description = _linkgraph_node_sl_compat;
 
 	void Save(LinkGraph *lg) const override
 	{
@@ -153,9 +153,9 @@ SaveLoadTable GetLinkGraphDesc()
  */
 class SlLinkgraphJobProxy : public DefaultSaveLoadHandler<SlLinkgraphJobProxy, LinkGraphJob> {
 public:
-	inline static const SaveLoad description[] = {{}}; // Needed to keep DefaultSaveLoadHandler happy.
+	static inline const SaveLoad description[] = {{}}; // Needed to keep DefaultSaveLoadHandler happy.
 	SaveLoadTable GetDescription() const override { return GetLinkGraphDesc(); }
-	inline const static SaveLoadCompatTable compat_description = _linkgraph_sl_compat;
+	static inline const SaveLoadCompatTable compat_description = _linkgraph_sl_compat;
 
 	void Save(LinkGraphJob *lgj) const override
 	{

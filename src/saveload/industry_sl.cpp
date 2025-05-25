@@ -21,12 +21,12 @@ static OldPersistentStorage _old_ind_persistent_storage;
 
 class SlIndustryAccepted : public VectorSaveLoadHandler<SlIndustryAccepted, Industry, Industry::AcceptedCargo, INDUSTRY_NUM_INPUTS> {
 public:
-	inline static const SaveLoad description[] = {
+	static inline const SaveLoad description[] = {
 		 SLE_VAR(Industry::AcceptedCargo, cargo, SLE_UINT8),
 		 SLE_VAR(Industry::AcceptedCargo, waiting, SLE_UINT16),
 		 SLE_VAR(Industry::AcceptedCargo, last_accepted, SLE_INT32),
 	};
-	inline const static SaveLoadCompatTable compat_description = _industry_accepts_sl_compat;
+	static inline const SaveLoadCompatTable compat_description = _industry_accepts_sl_compat;
 
 	std::vector<Industry::AcceptedCargo> &GetVector(Industry *i) const override { return i->accepted; }
 
@@ -45,11 +45,11 @@ public:
 
 class SlIndustryProducedHistory : public DefaultSaveLoadHandler<SlIndustryProducedHistory, Industry::ProducedCargo> {
 public:
-	inline static const SaveLoad description[] = {
+	static inline const SaveLoad description[] = {
 		 SLE_VAR(Industry::ProducedHistory, production, SLE_UINT16),
 		 SLE_VAR(Industry::ProducedHistory, transported, SLE_UINT16),
 	};
-	inline const static SaveLoadCompatTable compat_description = _industry_produced_history_sl_compat;
+	static inline const SaveLoadCompatTable compat_description = _industry_produced_history_sl_compat;
 
 	void Save(Industry::ProducedCargo *p) const override
 	{
@@ -79,13 +79,13 @@ public:
 
 class SlIndustryProduced : public VectorSaveLoadHandler<SlIndustryProduced, Industry, Industry::ProducedCargo, INDUSTRY_NUM_OUTPUTS> {
 public:
-	inline static const SaveLoad description[] = {
+	static inline const SaveLoad description[] = {
 		 SLE_VAR(Industry::ProducedCargo, cargo, SLE_UINT8),
 		 SLE_VAR(Industry::ProducedCargo, waiting, SLE_UINT16),
 		 SLE_VAR(Industry::ProducedCargo, rate, SLE_UINT8),
 		SLEG_STRUCTLIST("history", SlIndustryProducedHistory),
 	};
-	inline const static SaveLoadCompatTable compat_description = _industry_produced_sl_compat;
+	static inline const SaveLoadCompatTable compat_description = _industry_produced_sl_compat;
 
 	std::vector<Industry::ProducedCargo> &GetVector(Industry *i) const override { return i->produced; }
 
