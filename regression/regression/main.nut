@@ -2112,6 +2112,11 @@ function Regression::Start()
 	local list = AIList();
 	list.AddItem(0, 0);
 	local Infinite = function(id) { while(true); }
+	try {
+		list = AIIndustryList(Infinite);
+	} catch (e) {
+		print("constructor failed with: " + e);
+	}
 	list.Valuate(Infinite);
 }
 

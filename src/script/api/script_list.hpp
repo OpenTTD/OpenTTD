@@ -111,9 +111,9 @@ protected:
 					}
 
 					/* Call the function. Squirrel pops all parameters and pushes the return value. */
-					if (SQ_FAILED(sq_call(vm, nparam + 1, SQTrue, SQTrue))) {
+					if (SQ_FAILED(sq_call(vm, nparam + 1, SQTrue, SQFalse))) {
 						ScriptObject::SetAllowDoCommand(backup_allow);
-						throw sq_throwerror(vm, "failed to run filter");
+						throw static_cast<SQInteger>(SQ_ERROR);
 					}
 
 					SQBool add = SQFalse;

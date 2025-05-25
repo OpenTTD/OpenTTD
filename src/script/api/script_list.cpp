@@ -932,7 +932,7 @@ SQInteger ScriptList::Valuate(HSQUIRRELVM vm)
 		}
 
 		/* Call the function. Squirrel pops all parameters and pushes the return value. */
-		if (SQ_FAILED(sq_call(vm, nparam + 1, SQTrue, SQTrue))) {
+		if (SQ_FAILED(sq_call(vm, nparam + 1, SQTrue, SQFalse))) {
 			ScriptObject::SetAllowDoCommand(backup_allow);
 			return SQ_ERROR;
 		}
