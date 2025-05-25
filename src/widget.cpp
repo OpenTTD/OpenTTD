@@ -923,6 +923,10 @@ static void DrawOutline(const Window *, const NWidgetBase *wid)
  * Fill the Window::widget_lookup with pointers to nested widgets in the tree.
  * @param widget_lookup The WidgetLookup.
  */
+void NWidgetBase::FillWidgetLookup(WidgetLookup &widget_lookup)
+{
+	if (this->index >= 0) widget_lookup[this->index] = this;
+}
 
 /**
  * @fn void NWidgetBase::Draw(const Window *w)
@@ -985,7 +989,7 @@ void NWidgetBase::AdjustPaddingForZoom()
  * @param fill_x Horizontal fill step size, \c 0 means no filling is allowed.
  * @param fill_y Vertical fill step size, \c 0 means no filling is allowed.
  */
-NWidgetResizeBase::NWidgetResizeBase(WidgetType tp, uint fill_x, uint fill_y) : NWidgetBase(tp)
+NWidgetResizeBase::NWidgetResizeBase(WidgetType tp, WidgetID index, uint fill_x, uint fill_y) : NWidgetBase(tp, index)
 {
 	this->fill_x = fill_x;
 	this->fill_y = fill_y;
@@ -1146,7 +1150,7 @@ void NWidgetResizeBase::AssignSizePosition(SizingType sizing, int x, int y, uint
  * @param widget_data Data component of the widget. @see Widget::data
  * @param tool_tip    Tool tip of the widget. @see Widget::tooltips
  */
-NWidgetCore::NWidgetCore(WidgetType tp, Colours colour, WidgetID index, uint fill_x, uint fill_y, const WidgetData &widget_data, StringID tool_tip) : NWidgetResizeBase(tp, fill_x, fill_y), index(index)
+NWidgetCore::NWidgetCore(WidgetType tp, Colours colour, WidgetID index, uint fill_x, uint fill_y, const WidgetData &widget_data, StringID tool_tip) : NWidgetResizeBase(tp, index, fill_x, fill_y)
 {
 	this->colour = colour;
 	this->widget_data = widget_data;
@@ -1261,26 +1265,12 @@ StringID NWidgetCore::GetString() const
 }
 
 /**
- * Get the \c WidgetID of this nested widget.
- * @return The \c WidgetID.
- */
-WidgetID NWidgetCore::GetIndex() const
-{
-	return this->index;
-}
-
-/**
  * Get the \c WidgetID of this nested widget's scrollbar.
  * @return The \c WidgetID.
  */
 WidgetID NWidgetCore::GetScrollbarIndex() const
 {
 	return this->scrollbar_index;
-}
-
-void NWidgetCore::FillWidgetLookup(WidgetLookup &widget_lookup)
-{
-	if (this->index >= 0) widget_lookup[this->index] = this;
 }
 
 NWidgetCore *NWidgetCore::GetWidgetFromPos(int x, int y)
@@ -1319,6 +1309,7 @@ void NWidgetContainer::Add(std::unique_ptr<NWidgetBase> &&wid)
 
 void NWidgetContainer::FillWidgetLookup(WidgetLookup &widget_lookup)
 {
+	this->NWidgetBase::FillWidgetLookup(widget_lookup);
 	for (const auto &child_wid : this->children) {
 		child_wid->FillWidgetLookup(widget_lookup);
 	}
@@ -1410,8 +1401,7 @@ void NWidgetStacked::FillWidgetLookup(WidgetLookup &widget_lookup)
 	/* We need to update widget_lookup later. */
 	this->widget_lookup = &widget_lookup;
 
-	if (this->index >= 0) widget_lookup[this->index] = this;
-	NWidgetContainer::FillWidgetLookup(widget_lookup);
+	this->NWidgetContainer::FillWidgetLookup(widget_lookup);
 	/* In case widget IDs are repeated, make sure Window::GetWidget works on displayed widgets. */
 	if (static_cast<size_t>(this->shown_plane) < this->children.size()) this->children[shown_plane]->FillWidgetLookup(widget_lookup);
 }
@@ -1451,14 +1441,12 @@ bool NWidgetStacked::SetDisplayedPlane(int plane)
 
 class NWidgetLayer : public NWidgetContainer {
 public:
-	NWidgetLayer(WidgetID index) : NWidgetContainer(NWID_LAYER), index(index) {}
+	NWidgetLayer(WidgetID index) : NWidgetContainer(NWID_LAYER, index) {}
 
 	void SetupSmallestSize(Window *w) override;
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
 
 	void Draw(const Window *w) override;
-
-	const WidgetID index; ///< If non-negative, index in the #Window::widget_lookup.
 };
 
 void NWidgetLayer::SetupSmallestSize(Window *w)
@@ -1511,11 +1499,6 @@ void NWidgetLayer::Draw(const Window *w)
 	DrawOutline(w, this);
 }
 
-NWidgetPIPContainer::NWidgetPIPContainer(WidgetType tp, NWidContainerFlags flags) : NWidgetContainer(tp)
-{
-	this->flags = flags;
-}
-
 void NWidgetPIPContainer::AdjustPaddingForZoom()
 {
 	this->pip_pre = ScaleGUITrad(this->uz_pip_pre);
@@ -1558,11 +1541,6 @@ void NWidgetPIPContainer::SetPIPRatio(uint8_t pip_ratio_pre, uint8_t pip_ratio_i
 	this->pip_ratio_pre = pip_ratio_pre;
 	this->pip_ratio_inter = pip_ratio_inter;
 	this->pip_ratio_post = pip_ratio_post;
-}
-
-/** Horizontal container widget. */
-NWidgetHorizontal::NWidgetHorizontal(NWidContainerFlags flags) : NWidgetPIPContainer(NWID_HORIZONTAL, flags)
-{
 }
 
 void NWidgetHorizontal::SetupSmallestSize(Window *w)
@@ -1743,20 +1721,9 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, int x, int y, uint
 	}
 }
 
-/** Horizontal left-to-right container widget. */
-NWidgetHorizontalLTR::NWidgetHorizontalLTR(NWidContainerFlags flags) : NWidgetHorizontal(flags)
-{
-	this->type = NWID_HORIZONTAL_LTR;
-}
-
 void NWidgetHorizontalLTR::AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool)
 {
 	NWidgetHorizontal::AssignSizePosition(sizing, x, y, given_width, given_height, false);
-}
-
-/** Vertical container widget. */
-NWidgetVertical::NWidgetVertical(NWidContainerFlags flags) : NWidgetPIPContainer(NWID_VERTICAL, flags)
-{
 }
 
 void NWidgetVertical::SetupSmallestSize(Window *w)
@@ -1931,7 +1898,7 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, int x, int y, uint g
  * @param width  Horizontal size of the spacer widget.
  * @param height Vertical size of the spacer widget.
  */
-NWidgetSpacer::NWidgetSpacer(int width, int height) : NWidgetResizeBase(NWID_SPACER, 0, 0)
+NWidgetSpacer::NWidgetSpacer(int width, int height) : NWidgetResizeBase(NWID_SPACER, -1, 0, 0)
 {
 	this->SetMinimalSize(width, height);
 	this->SetResize(0, 0);
@@ -1942,10 +1909,6 @@ void NWidgetSpacer::SetupSmallestSize(Window *)
 	this->smallest_x = this->min_x;
 	this->smallest_y = this->min_y;
 	this->ApplyAspectRatio();
-}
-
-void NWidgetSpacer::FillWidgetLookup(WidgetLookup &)
-{
 }
 
 void NWidgetSpacer::Draw(const Window *w)
@@ -1968,11 +1931,6 @@ void NWidgetSpacer::SetDirty(const Window *) const
 NWidgetCore *NWidgetSpacer::GetWidgetFromPos(int, int)
 {
 	return nullptr;
-}
-
-NWidgetMatrix::NWidgetMatrix(Colours colour, WidgetID index) : NWidgetPIPContainer(NWID_MATRIX, NWidContainerFlag::EqualSize), index(index)
-{
-	this->colour = colour;
 }
 
 /**
@@ -2078,12 +2036,6 @@ void NWidgetMatrix::AssignSizePosition(SizingType, int x, int y, uint given_widt
 	 * scrollbar becoming wider or narrower means the amount of rows in
 	 * the scrollbar becomes respectively smaller or higher. */
 	this->SetCount(this->count);
-}
-
-void NWidgetMatrix::FillWidgetLookup(WidgetLookup &widget_lookup)
-{
-	if (this->index >= 0) widget_lookup[this->index] = this;
-	NWidgetContainer::FillWidgetLookup(widget_lookup);
 }
 
 NWidgetCore *NWidgetMatrix::GetWidgetFromPos(int x, int y)
@@ -2351,7 +2303,7 @@ void NWidgetBackground::AssignSizePosition(SizingType sizing, int x, int y, uint
 
 void NWidgetBackground::FillWidgetLookup(WidgetLookup &widget_lookup)
 {
-	if (this->index >= 0) widget_lookup[this->index] = this;
+	this->NWidgetCore::FillWidgetLookup(widget_lookup);
 	if (this->child != nullptr) this->child->FillWidgetLookup(widget_lookup);
 }
 
@@ -3312,9 +3264,9 @@ static std::unique_ptr<NWidgetBase> MakeNWidget(const NWidgetPart &nwid)
 		case WWT_INSET: [[fallthrough]];
 		case WWT_FRAME: return std::make_unique<NWidgetBackground>(nwid.type, nwid.u.widget.colour, nwid.u.widget.index);
 
-		case NWID_HORIZONTAL: return std::make_unique<NWidgetHorizontal>(nwid.u.cont_flags);
-		case NWID_HORIZONTAL_LTR: return std::make_unique<NWidgetHorizontalLTR>(nwid.u.cont_flags);
-		case NWID_VERTICAL: return std::make_unique<NWidgetVertical>(nwid.u.cont_flags);
+		case NWID_HORIZONTAL: return std::make_unique<NWidgetHorizontal>(nwid.u.container.flags, nwid.u.container.index);
+		case NWID_HORIZONTAL_LTR: return std::make_unique<NWidgetHorizontalLTR>(nwid.u.container.flags, nwid.u.container.index);
+		case NWID_VERTICAL: return std::make_unique<NWidgetVertical>(nwid.u.container.flags, nwid.u.container.index);
 		case NWID_SELECTION: return std::make_unique<NWidgetStacked>(nwid.u.widget.index);
 		case NWID_MATRIX: return std::make_unique<NWidgetMatrix>(nwid.u.widget.colour, nwid.u.widget.index);
 		case NWID_VIEWPORT: return std::make_unique<NWidgetViewport>(nwid.u.widget.index);

@@ -227,7 +227,7 @@ static constexpr NWidgetPart _nested_social_plugins_none_widgets[] = {
 
 class NWidgetSocialPlugins : public NWidgetVertical {
 public:
-	NWidgetSocialPlugins()
+	NWidgetSocialPlugins() : NWidgetVertical({}, WID_GO_SOCIAL_PLUGINS)
 	{
 		this->plugins = SocialIntegration::GetPlugins();
 
@@ -242,12 +242,6 @@ public:
 		}
 
 		this->SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0);
-	}
-
-	void FillWidgetLookup(WidgetLookup &widget_lookup) override
-	{
-		widget_lookup[WID_GO_SOCIAL_PLUGINS] = this;
-		NWidgetVertical::FillWidgetLookup(widget_lookup);
 	}
 
 	void SetupSmallestSize(Window *w) override
