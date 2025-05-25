@@ -884,11 +884,33 @@ static CommandCost CmdRailTrackHelper(DoCommandFlags flags, TileIndex tile, Tile
 	CommandCost ret = ValidateAutoDrag(&trackdir, tile, end_tile);
 	if (ret.Failed()) return ret;
 
+	int distance_remaining = static_cast<int>(DistanceManhattan(tile, end_tile)) + 1;
+
+	auto advance = [&] {
+		distance_remaining--;
+		tile = TileAddByDiagDir(tile, TrackdirToExitdir(trackdir));
+		trackdir = NextTrackdir(trackdir);
+	};
+	
 	bool had_success = false;
 	CommandCost last_error = CMD_ERROR;
-	for (;;) {
-		ret = remove ? Command<CMD_REMOVE_SINGLE_RAIL>::Do(flags, tile, TrackdirToTrack(trackdir)) : Command<CMD_BUILD_SINGLE_RAIL>::Do(flags, tile, railtype, TrackdirToTrack(trackdir), auto_remove_signals);
-		if (!remove && !fail_on_obstacle && last_error.GetErrorMessage() == STR_ERROR_ALREADY_BUILT) had_success = true;
+	for (; distance_remaining > 0; advance()) {
+		if (!remove && !fail_on_obstacle && CheckTileOwnership(tile).Succeeded() && IsCompatibleRail(GetRailType(tile), railtype)) {
+			/* Skip stations and waypoints */
+			if (HasStationTileRail(tile) && GetRailStationTrack(tile) == track) continue;
+
+			/* Skip bridges and tunnels */
+			if (IsTileType(tile, MP_TUNNELBRIDGE) && GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL
+					&& DiagDirToDiagTrackdir(GetTunnelBridgeDirection(tile)) == trackdir ) {
+				const uint length = GetTunnelBridgeLength(tile, GetOtherTunnelBridgeEnd(tile));
+				for (uint i = 0; i <= length; ++i) advance();
+				continue;
+			}
+		}
+
+		ret = remove ? Command<CMD_REMOVE_SINGLE_RAIL>::Do(flags, tile, TrackdirToTrack(trackdir))
+				: Command<CMD_BUILD_SINGLE_RAIL>::Do(flags, tile, railtype, TrackdirToTrack(trackdir), auto_remove_signals);
+		if (!remove && !fail_on_obstacle && ret.GetErrorMessage() == STR_ERROR_ALREADY_BUILT) had_success = true;
 
 		if (ret.Failed()) {
 			last_error = std::move(ret);
@@ -903,13 +925,6 @@ static CommandCost CmdRailTrackHelper(DoCommandFlags flags, TileIndex tile, Tile
 			had_success = true;
 			total_cost.AddCost(ret.GetCost());
 		}
-
-		if (tile == end_tile) break;
-
-		tile += ToTileIndexDiff(_trackdelta[trackdir]);
-
-		/* toggle railbit for the non-diagonal tracks */
-		if (!IsDiagonalTrackdir(trackdir)) ToggleBit(trackdir, 0);
 	}
 
 	if (had_success) return total_cost;
