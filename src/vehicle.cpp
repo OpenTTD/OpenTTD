@@ -1733,7 +1733,7 @@ void Vehicle::UpdateViewport(bool dirty)
  */
 void Vehicle::UpdatePositionAndViewport()
 {
-	this->UpdatePosition();
+	if (this->type != VEH_EFFECT) this->UpdatePosition();
 	this->UpdateViewport(true);
 }
 
