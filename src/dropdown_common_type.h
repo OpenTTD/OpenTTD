@@ -260,6 +260,19 @@ public:
 	}
 };
 
+/**
+ * Drop down component that makes the item unselectable.
+ * @tparam TBase Base component.
+ */
+template <class TBase, FontSize TFs = FS_NORMAL>
+class DropDownUnselectable : public TBase {
+public:
+	template <typename... Args>
+	explicit DropDownUnselectable(Args&&... args) : TBase(std::forward<Args>(args)...) {}
+
+	bool Selectable() const override { return false; }
+};
+
 /* Commonly used drop down list items. */
 using DropDownListDividerItem = DropDownDivider<DropDownListItem>;
 using DropDownListStringItem = DropDownString<DropDownListItem>;
