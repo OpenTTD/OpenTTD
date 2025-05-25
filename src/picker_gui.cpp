@@ -150,7 +150,9 @@ static bool TypeIDSorter(PickerItem const &a, PickerItem const &b)
 /** Filter types by class name. */
 static bool TypeTagNameFilter(PickerItem const *item, PickerFilterData &filter)
 {
-	if (filter.btf.has_value() && filter.btf->Filter(filter.callbacks->GetTypeBadges(item->class_index, item->index))) return true;
+	auto badges = filter.callbacks->GetTypeBadges(item->class_index, item->index);
+	if (filter.bdf.has_value() && !filter.bdf->Filter(badges)) return false;
+	if (filter.btf.has_value() && filter.btf->Filter(badges)) return true;
 
 	filter.ResetState();
 	filter.AddLine(GetString(filter.callbacks->GetTypeName(item->class_index, item->index)));
@@ -247,6 +249,12 @@ void PickerWindow::ConstructWindow()
 void PickerWindow::OnInit()
 {
 	this->badge_classes = GUIBadgeClasses(this->callbacks.GetFeature());
+
+	auto container = this->GetWidget<NWidgetContainer>(WID_PW_BADGE_FILTER);
+	this->badge_filters = AddBadgeDropdownFilters(*container, WID_PW_BADGE_FILTER, COLOUR_DARK_GREEN, this->callbacks.GetFeature());
+
+	this->widget_lookup.clear();
+	this->nested_root->FillWidgetLookup(this->widget_lookup);
 }
 
 void PickerWindow::Close(int data)
@@ -286,6 +294,15 @@ void PickerWindow::UpdateWidgetSize(WidgetID widget, Dimension &size, const Dime
 			if (this->badge_classes.GetClasses().empty()) size = {0, 0};
 			break;
 	}
+}
+
+std::string PickerWindow::GetWidgetString(WidgetID widget, StringID stringid) const
+{
+	if (IsInsideMM(widget, this->badge_filters.first, this->badge_filters.second)) {
+		return this->GetWidget<NWidgetBadgeFilter>(widget)->GetStringParameter(this->badge_filter_choices);
+	}
+
+	return this->Window::GetWidgetString(widget, stringid);
 }
 
 void PickerWindow::DrawWidget(const Rect &r, WidgetID widget) const
@@ -414,6 +431,9 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 			break;
 
 		default:
+			if (IsInsideMM(widget, this->badge_filters.first, this->badge_filters.second)) {
+				ShowDropDownList(this, this->GetWidget<NWidgetBadgeFilter>(widget)->GetDropDownList(), -1, widget, 0, false);
+			}
 			break;
 	}
 }
@@ -435,6 +455,16 @@ void PickerWindow::OnDropdownSelect(WidgetID widget, int index, int click_result
 		}
 
 		default:
+			if (IsInsideMM(widget, this->badge_filters.first, this->badge_filters.second)) {
+				if (index < 0) {
+					ResetBadgeFilter(this->badge_filter_choices, this->GetWidget<NWidgetBadgeFilter>(widget)->GetBadgeClassID());
+				} else {
+					SetBadgeFilter(this->badge_filter_choices, BadgeID(index));
+				}
+				this->type_string_filter.bdf.emplace(this->badge_filter_choices);
+				this->types.SetFilterState(!type_string_filter.IsEmpty() || type_string_filter.bdf.has_value());
+				this->InvalidateData(PickerInvalidation::Type);
+			}
 			break;
 	}
 }
@@ -496,7 +526,7 @@ void PickerWindow::OnEditboxChanged(WidgetID wid)
 			} else {
 				this->type_string_filter.btf.reset();
 			}
-			this->types.SetFilterState(!type_string_filter.IsEmpty());
+			this->types.SetFilterState(!type_string_filter.IsEmpty() || type_string_filter.bdf.has_value());
 			this->InvalidateData(PickerInvalidation::Type);
 			break;
 
@@ -712,6 +742,8 @@ std::unique_ptr<NWidgetBase> MakePickerTypeWidgets()
 					EndContainer(),
 					NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_PW_CONFIGURE_BADGES), SetAspect(WidgetDimensions::ASPECT_UP_DOWN_BUTTON), SetResize(0, 0), SetFill(0, 1), SetSpriteTip(SPR_EXTRA_MENU, STR_BADGE_CONFIG_MENU_TOOLTIP),
 				EndContainer(),
+				NWidget(NWID_VERTICAL, NWidContainerFlag{}, WID_PW_BADGE_FILTER),
+			EndContainer(),
 				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 					NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_PW_MODE_ALL), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_PICKER_MODE_ALL, STR_PICKER_MODE_ALL_TOOLTIP),
 					NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_PW_MODE_USED), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_PICKER_MODE_USED, STR_PICKER_MODE_USED_TOOLTIP),
