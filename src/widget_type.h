@@ -136,7 +136,7 @@ using WidgetLookup = std::map<WidgetID, class NWidgetBase *>;
  */
 class NWidgetBase {
 public:
-	NWidgetBase(WidgetType tp) : type(tp) {}
+	NWidgetBase(WidgetType tp, WidgetID index = -1) : type(tp), index(index) {}
 	virtual ~NWidgetBase() = default;
 
 	void ApplyAspectRatio();
@@ -144,7 +144,7 @@ public:
 	virtual void SetupSmallestSize(Window *w) = 0;
 	virtual void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) = 0;
 
-	virtual void FillWidgetLookup(WidgetLookup &widget_lookup) = 0;
+	virtual void FillWidgetLookup(WidgetLookup &widget_lookup);
 
 	virtual NWidgetCore *GetWidgetFromPos(int x, int y) = 0;
 	virtual NWidgetBase *GetWidgetOfType(WidgetType tp);
@@ -177,6 +177,7 @@ public:
 		return nullptr;
 	}
 
+	inline WidgetID GetIndex() const { return this->index; }
 	virtual bool IsHighlighted() const { return false; }
 	virtual TextColour GetHighlightColour() const { return TC_INVALID; }
 	virtual void SetHighlighted([[maybe_unused]] TextColour highlight_colour) {}
@@ -248,6 +249,8 @@ public:
 	NWidgetBase *parent = nullptr; ///< Parent widget of this widget, automatically filled in when added to container.
 
 protected:
+	const WidgetID index = -1; ///< Index of the nested widget (\c -1 means 'not used').
+
 	inline void StoreSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height);
 };
 
@@ -296,7 +299,7 @@ inline void NWidgetBase::StoreSizePosition(SizingType sizing, int x, int y, uint
  */
 class NWidgetResizeBase : public NWidgetBase {
 public:
-	NWidgetResizeBase(WidgetType tp, uint fill_x, uint fill_y);
+	NWidgetResizeBase(WidgetType tp, WidgetID index, uint fill_x, uint fill_y);
 
 	void AdjustPaddingForZoom() override;
 	void SetMinimalSize(uint min_x, uint min_y);
@@ -379,7 +382,6 @@ public:
 	void SetAlignment(StringAlignment align);
 
 	StringID GetString() const;
-	WidgetID GetIndex() const;
 	WidgetID GetScrollbarIndex() const;
 
 	inline void SetLowered(bool lowered);
@@ -390,7 +392,6 @@ public:
 	inline TextColour GetTextColour() const { return this->text_colour; }
 	inline FontSize GetFontSize() const { return this->text_size; }
 
-	void FillWidgetLookup(WidgetLookup &widget_lookup) override;
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
 	bool IsHighlighted() const override;
 	TextColour GetHighlightColour() const override;
@@ -399,7 +400,6 @@ public:
 	NWidgetDisplayFlags disp_flags; ///< Flags that affect display and interaction with the widget.
 	Colours colour;            ///< Colour of this widget.
 protected:
-	const WidgetID index = -1; ///< Index of the nested widget (\c -1 means 'not used').
 	WidgetData widget_data{}; ///< Data of the widget. @see Widget::data
 	StringID tool_tip{}; ///< Tooltip of the widget. @see Widget::tool_tips
 	WidgetID scrollbar_index = -1; ///< Index of an attached scrollbar.
@@ -471,7 +471,7 @@ inline bool NWidgetCore::IsDisabled() const
  */
 class NWidgetContainer : public NWidgetBase {
 public:
-	NWidgetContainer(WidgetType tp) : NWidgetBase(tp) { }
+	NWidgetContainer(WidgetType tp, WidgetID index = -1) : NWidgetBase(tp, index) {}
 
 	void AdjustPaddingForZoom() override;
 	void Add(std::unique_ptr<NWidgetBase> &&wid);
@@ -510,7 +510,7 @@ enum StackedZeroSizePlanes : int {
  */
 class NWidgetStacked : public NWidgetContainer {
 public:
-	NWidgetStacked(WidgetID index) : NWidgetContainer(NWID_SELECTION), index(index) {}
+	NWidgetStacked(WidgetID index) : NWidgetContainer(NWID_SELECTION, index) {}
 
 	void SetupSmallestSize(Window *w) override;
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
@@ -522,7 +522,6 @@ public:
 	bool SetDisplayedPlane(int plane);
 
 	int shown_plane = 0; ///< Plane being displayed (for #NWID_SELECTION only).
-	const WidgetID index = -1; ///< If non-negative, index in the #Window::widget_lookup.
 private:
 	WidgetLookup *widget_lookup = nullptr; ///< Window's widget lookup, updated in SetDisplayedPlane().
 };
@@ -537,7 +536,7 @@ using NWidContainerFlags = EnumBitSet<NWidContainerFlag, uint8_t>;
 /** Container with pre/inter/post child space. */
 class NWidgetPIPContainer : public NWidgetContainer {
 public:
-	NWidgetPIPContainer(WidgetType tp, NWidContainerFlags flags = {});
+	NWidgetPIPContainer(WidgetType tp, NWidContainerFlags flags = {}, WidgetID index = -1) : NWidgetContainer(tp, index), flags(flags) {}
 
 	void AdjustPaddingForZoom() override;
 	void SetPIP(uint8_t pip_pre, uint8_t pip_inter, uint8_t pip_post);
@@ -565,7 +564,7 @@ protected:
  */
 class NWidgetHorizontal : public NWidgetPIPContainer {
 public:
-	NWidgetHorizontal(NWidContainerFlags flags = {});
+	NWidgetHorizontal(NWidContainerFlags flags = {}, WidgetID index = -1, WidgetType type = NWID_HORIZONTAL) : NWidgetPIPContainer(type, flags, index) {}
 
 	void SetupSmallestSize(Window *w) override;
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
@@ -577,7 +576,7 @@ public:
  */
 class NWidgetHorizontalLTR : public NWidgetHorizontal {
 public:
-	NWidgetHorizontalLTR(NWidContainerFlags flags = {});
+	NWidgetHorizontalLTR(NWidContainerFlags flags = {}, WidgetID index = -1) : NWidgetHorizontal(flags, index, NWID_HORIZONTAL_LTR) {}
 
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
 };
@@ -588,7 +587,7 @@ public:
  */
 class NWidgetVertical : public NWidgetPIPContainer {
 public:
-	NWidgetVertical(NWidContainerFlags flags = {});
+	NWidgetVertical(NWidContainerFlags flags = {}, WidgetID index = -1) : NWidgetPIPContainer(NWID_VERTICAL, flags, index) {}
 
 	void SetupSmallestSize(Window *w) override;
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
@@ -604,7 +603,7 @@ public:
  */
 class NWidgetMatrix : public NWidgetPIPContainer {
 public:
-	NWidgetMatrix(Colours colour, WidgetID index);
+	NWidgetMatrix(Colours colour, WidgetID index) : NWidgetPIPContainer(NWID_MATRIX, NWidContainerFlag::EqualSize, index), colour(colour) {}
 
 	void SetClicked(int clicked);
 	void SetCount(int count);
@@ -613,15 +612,13 @@ public:
 
 	void SetupSmallestSize(Window *w) override;
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
-	void FillWidgetLookup(WidgetLookup &widget_lookup) override;
 
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
 	void Draw(const Window *w) override;
 protected:
-	const WidgetID index = -1; ///< If non-negative, index in the #Window::widget_lookup.
 	Colours colour{}; ///< Colour of this widget.
 	int clicked = -1; ///< The currently clicked element.
-	int count = -1; ///< Amount of valid elements.
+	int count = 0; ///< Amount of valid elements.
 	int current_element = 0; ///< The element currently being processed.
 	Scrollbar *sb = nullptr;  ///< The scrollbar we're associated with.
 private:
@@ -643,7 +640,6 @@ public:
 	NWidgetSpacer(int width, int height);
 
 	void SetupSmallestSize(Window *w) override;
-	void FillWidgetLookup(WidgetLookup &widget_lookup) override;
 
 	void Draw(const Window *w) override;
 	void SetDirty(const Window *w) const override;
@@ -1023,6 +1019,11 @@ struct NWidgetPartWidget {
 	WidgetID index; ///< Index of the widget.
 };
 
+struct NWidgetPartContainer {
+	NWidContainerFlags flags;
+	WidgetID index;
+};
+
 /**
  * Widget part for storing padding.
  * @ingroup NestedWidgetParts
@@ -1074,7 +1075,7 @@ struct NWidgetPartAspect {
  * Pointer to function returning a nested widget.
  * @return Nested widget (tree).
  */
-typedef std::unique_ptr<NWidgetBase> NWidgetFunctionType();
+using NWidgetFunctionType = std::unique_ptr<NWidgetBase>();
 
 /**
  * Partial widget specification to allow NWidgets to be written nested.
@@ -1092,7 +1093,7 @@ struct NWidgetPart {
 		NWidgetPartTextStyle text_style; ///< Part with text style data.
 		NWidgetPartAlignment align;      ///< Part with internal alignment.
 		NWidgetFunctionType *func_ptr;   ///< Part with a function call.
-		NWidContainerFlags cont_flags;   ///< Part with container flags.
+		NWidgetPartContainer container;   ///< Part with container flags.
 		NWidgetPartAspect aspect; ///< Part to set aspect ratio.
 
 		/* Constructors for each NWidgetPartUnion data type. */
@@ -1106,7 +1107,7 @@ struct NWidgetPart {
 		constexpr NWidgetPartUnion(NWidgetPartTextStyle text_style) : text_style(text_style) {}
 		constexpr NWidgetPartUnion(NWidgetPartAlignment align) : align(align) {}
 		constexpr NWidgetPartUnion(NWidgetFunctionType *func_ptr) : func_ptr(func_ptr) {}
-		constexpr NWidgetPartUnion(NWidContainerFlags cont_flags) : cont_flags(cont_flags) {}
+		constexpr NWidgetPartUnion(NWidgetPartContainer container) : container(container) {}
 		constexpr NWidgetPartUnion(NWidgetPartAspect aspect) : aspect(aspect) {}
 	} u;
 
@@ -1121,7 +1122,7 @@ struct NWidgetPart {
 	constexpr NWidgetPart(WidgetType type, NWidgetPartTextStyle text_style) : type(type), u(text_style) {}
 	constexpr NWidgetPart(WidgetType type, NWidgetPartAlignment align) : type(type), u(align) {}
 	constexpr NWidgetPart(WidgetType type, NWidgetFunctionType *func_ptr) : type(type), u(func_ptr) {}
-	constexpr NWidgetPart(WidgetType type, NWidContainerFlags cont_flags) : type(type), u(cont_flags) {}
+	constexpr NWidgetPart(WidgetType type, NWidgetPartContainer container) : type(type), u(container) {}
 	constexpr NWidgetPart(WidgetType type, NWidgetPartAspect aspect) : type(type), u(aspect) {}
 };
 
@@ -1402,9 +1403,9 @@ constexpr NWidgetPart NWidget(WidgetType tp, Colours col, WidgetID idx = -1)
  * @param cont_flags Flags for the containers (#NWID_HORIZONTAL and #NWID_VERTICAL).
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart NWidget(WidgetType tp, NWidContainerFlags cont_flags = {})
+constexpr NWidgetPart NWidget(WidgetType tp, NWidContainerFlags cont_flags = {}, WidgetID idx = -1)
 {
-	return NWidgetPart{tp, NWidContainerFlags{cont_flags}};
+	return NWidgetPart{tp, NWidgetPartContainer{cont_flags, idx}};
 }
 
 /**
