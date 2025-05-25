@@ -87,7 +87,7 @@ void AddBadgeClassesToConfiguration()
 			if (found != std::end(config)) continue;
 
 			/* Not found, insert it. */
-			config.emplace_back(badge.label, 0, true);
+			config.emplace_back(badge.label, 0, true, false);
 		}
 	}
 }
@@ -106,7 +106,7 @@ void ResetBadgeClassConfiguration(GrfSpecFeature feature)
 	for (const BadgeID &index : GetClassBadges()) {
 		const Badge &badge = *GetBadge(index);
 		if (badge.name == STR_NULL) continue;
-		config.emplace_back(badge.label, 0, true);
+		config.emplace_back(badge.label, 0, true, false);
 	}
 }
 
@@ -147,14 +147,16 @@ static void BadgeClassLoadConfigFeature(const IniFile &ini, GrfSpecFeature featu
 	for (const IniItem &item : group->items) {
 		int column = 0;
 		bool show_icon = true;
+		bool show_filter = false;
 
 		if (item.value.has_value() && !item.value.value().empty()) {
 			StringConsumer consumer(item.value.value());
+			if (consumer.ReadCharIf('?')) show_filter = true;
 			if (consumer.ReadCharIf('!')) show_icon = false;
 			if (auto value = consumer.TryReadIntegerBase<int>(10); value.has_value()) column = *value;
 		}
 
-		config.emplace_back(item.name, column, show_icon);
+		config.emplace_back(item.name, column, show_icon, show_filter);
 	}
 }
 
@@ -183,7 +185,7 @@ static void BadgeClassSaveConfigFeature(IniFile &ini, GrfSpecFeature feature)
 	group.Clear();
 
 	for (const auto &item : _badge_config.features[to_underlying(feature)]) {
-		group.CreateItem(item.label).SetValue(fmt::format("{}{}", item.show_icon ? "" : "!", item.column));
+		group.CreateItem(item.label).SetValue(fmt::format("{}{}{}", item.show_filter ? "?" : "", item.show_icon ? "" : "!", item.column));
 	}
 }
 
