@@ -58,6 +58,7 @@
    -1 sprites/openttdgui.png 8bpp 338  136   9   9   0   0 normal
    -1 sprites/openttdgui.png 8bpp 354  136   7   8   0   0 normal
    -1 sprites/openttdgui.png 8bpp 370  136   8   8   0   0 normal
+    | sprites/openttdgui.png 8bpp 370  146   8   8   0   0 normal rtl
    -1 sprites/openttdgui.png 8bpp 386  136  20  13   0   4 normal
    -1 sprites/openttdgui.png 8bpp 418  136  56  36   0   0 normal
    -1 sprites/openttdgui.png 8bpp 482  136  20  20   0   0 normal
@@ -96,6 +97,7 @@
    -1 sprites/openttdgui.png 8bpp 418  264  20  20   0   0 normal
    -1 sprites/openttdgui.png 8bpp 450  264  72  44 -16 -35 normal
    -1 sprites/openttdgui.png 8bpp 530  264  18  18   1   1 normal
+    | sprites/openttdgui.png 8bpp 530  290  18  18   1   1 normal rtl
    -1 sprites/openttdgui.png 8bpp 562  264  20  20   0   0 normal
    -1 sprites/openttdgui.png 8bpp 594  264  32  32   0   0 normal
    -1 sprites/openttdgui.png 8bpp 642  264  18  18   0   0 normal
@@ -140,6 +142,7 @@
    -1 sprites/openttdgui.png 8bpp 354  376  18  18   0   0 normal
    -1 sprites/openttdgui.png 8bpp 386  376  18  18   0   0 normal
    -1 sprites/openttdgui.png 8bpp 418  376  20  20   0   0 normal
+    | sprites/openttdgui.png 8bpp 418  400  20  20   0   0 normal rtl
    -1 sprites/openttdgui.png 8bpp 450  376  19  22   0   0 normal
    -1 sprites/openttdgui.png 8bpp 482  376  20  20   0   0 normal
    -1 sprites/openttdgui.png 8bpp 514  376  54  44 -16 -35 normal
