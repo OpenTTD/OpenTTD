@@ -146,6 +146,7 @@ public:
 struct PickerFilterData : StringFilter {
 	const PickerCallbacks *callbacks; ///< Callbacks for filter functions to access to callbacks.
 	std::optional<BadgeTextFilter> btf;
+	std::optional<BadgeDropdownFilter> bdf;
 };
 
 using PickerClassList = GUIList<int, std::nullptr_t, PickerFilterData &>; ///< GUIList holding classes to display.
@@ -183,6 +184,7 @@ public:
 	void OnInit() override;
 	void Close(int data = 0) override;
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, const Dimension &padding, Dimension &fill, Dimension &resize) override;
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override;
 	void DrawWidget(const Rect &r, WidgetID widget) const override;
 	void OnDropdownSelect(WidgetID widget, int index, int click_result) override;
 	void OnResize() override;
@@ -222,6 +224,8 @@ private:
 	void EnsureSelectedTypeIsVisible();
 
 	GUIBadgeClasses badge_classes;
+	std::pair<WidgetID, WidgetID> badge_filters{};
+	BadgeFilterChoices badge_filter_choices{};
 
 	const IntervalTimer<TimerGameCalendar> yearly_interval = {{TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [this](auto) {
 		this->SetDirty();
