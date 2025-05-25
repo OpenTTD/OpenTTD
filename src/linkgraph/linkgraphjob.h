@@ -299,7 +299,7 @@ public:
 	 * @param total Total capacity.
 	 * @return free * 16 / max(total, 1).
 	 */
-	inline static int GetCapacityRatio(int free, uint total)
+	static inline int GetCapacityRatio(int free, uint total)
 	{
 		return Clamp(free, PATH_CAP_MIN_FREE, PATH_CAP_MAX_FREE) * PATH_CAP_MULTIPLIER / std::max(total, 1U);
 	}

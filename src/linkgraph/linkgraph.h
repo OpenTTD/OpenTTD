@@ -183,7 +183,7 @@ public:
 	 * @param orig_age Age of the original link graph.
 	 * @return scaled value.
 	 */
-	inline static uint Scale(uint val, TimerGameEconomy::Date target_age, TimerGameEconomy::Date orig_age)
+	static inline uint Scale(uint val, TimerGameEconomy::Date target_age, TimerGameEconomy::Date orig_age)
 	{
 		return val > 0 ? std::max(1U, val * target_age.base() / orig_age.base()) : 0;
 	}
