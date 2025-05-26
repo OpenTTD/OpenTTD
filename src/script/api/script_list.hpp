@@ -145,6 +145,13 @@ protected:
 
 	virtual bool SaveObject(HSQUIRRELVM vm) override;
 	virtual bool LoadObject(HSQUIRRELVM vm) override;
+	virtual ScriptObject *CloneObject() override;
+
+	/**
+	 * Copy the content of a list.
+	 * @param list The list that will be copied.
+	 */
+	void CopyList(const ScriptList *list);
 
 public:
 	typedef std::set<SQInteger> ScriptItemList;                   ///< The list of items inside the bucket
