@@ -11,22 +11,12 @@
 
 ${SQUIRREL_INCLUDES}
 
-static SQInteger ${APIUC}ObjectConstructor(HSQUIRRELVM vm)
-{
-	return sq_throwerror(vm, "This class is not instantiable");
-}
-
-static SQInteger ${APIUC}ObjectCloned(HSQUIRRELVM)
-{
-	throw Script_FatalError("This instance is not cloneable");
-}
-
 void SQ${APIUC}_RegisterAll(Squirrel &engine)
 {
 	DefSQClass<ScriptObject, ScriptType::${APIUC}> SQ${APIUC}Object("${APIUC}Object");
 	SQ${APIUC}Object.PreRegister(engine);
-	SQ${APIUC}Object.DefSQAdvancedStaticMethod(engine, &${APIUC}ObjectConstructor, "constructor");
-	SQ${APIUC}Object.DefSQAdvancedStaticMethod(engine, &${APIUC}ObjectCloned, "_cloned");
+	SQ${APIUC}Object.DefSQAdvancedStaticMethod(engine, &ScriptObject::Constructor, "constructor");
+	SQ${APIUC}Object.DefSQAdvancedStaticMethod(engine, &ScriptObject::_cloned, "_cloned");
 	SQ${APIUC}Object.PostRegister(engine);
 
 ${SQUIRREL_REGISTER}
