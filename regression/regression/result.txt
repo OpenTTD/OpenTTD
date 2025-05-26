@@ -575,6 +575,13 @@
     4006 => 12
   []:
     4000 => 50
+  clone:
+  Clone ListDump:
+    1005 => 1005
+    4000 => 50
+    4001 => 8002
+    4002 => 8004
+    4006 => 12
   IsEmpty():     true
     0 => 5  (true)
 ERROR: Next() is invalid as Begin() is never called
@@ -584,6 +591,12 @@ ERROR: IsEnd() is invalid as Begin() is never called
     2 => 6  (true)
     3 => 6  (true)
     9 => 0  (false)
+  Clone ListDump:
+    1005 => 1005
+    4000 => 50
+    4001 => 8002
+    4002 => 8004
+    4006 => 12
 
 --Company--
   SetName():            true
@@ -9794,9 +9807,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
 --Valuate() with excessive CPU usage--
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [unknown()] regression/main.nut line [2114]
+*FUNCTION [unknown()] regression/main.nut line [2127]
 *FUNCTION [Valuate()] NATIVE line [-1]
-*FUNCTION [Start()] regression/main.nut line [2115]
+*FUNCTION [Start()] regression/main.nut line [2128]
 
 [id] 0
 [this] TABLE
@@ -9805,7 +9818,7 @@ Your script made an error: excessive CPU usage in valuator function
 [this] INSTANCE
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [Start()] regression/main.nut line [2115]
+*FUNCTION [Start()] regression/main.nut line [2128]
 
 [Infinite] CLOSURE
 [list] INSTANCE
