@@ -2541,7 +2541,7 @@ CommandCost CmdBuildAirport(DoCommandFlags flags, TileIndex tile, uint8_t airpor
 		return CommandCost(STR_ERROR_STATION_TOO_SPREAD_OUT);
 	}
 
-	AirportTileTableIterator tile_iter(as->layouts[layout].tiles.data(), tile);
+	AirportTileTableIterator tile_iter(as->layouts[layout].tiles, tile);
 	CommandCost cost = CheckFlatLandAirport(tile_iter, flags);
 	if (cost.Failed()) return cost;
 
@@ -2590,7 +2590,7 @@ CommandCost CmdBuildAirport(DoCommandFlags flags, TileIndex tile, uint8_t airpor
 		return CommandCost(STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT);
 	}
 
-	for (AirportTileTableIterator iter(as->layouts[layout].tiles.data(), tile); iter != INVALID_TILE; ++iter) {
+	for (AirportTileTableIterator iter(as->layouts[layout].tiles, tile); iter != INVALID_TILE; ++iter) {
 		cost.AddCost(_price[PR_BUILD_STATION_AIRPORT]);
 	}
 
@@ -2606,7 +2606,7 @@ CommandCost CmdBuildAirport(DoCommandFlags flags, TileIndex tile, uint8_t airpor
 
 		st->rect.BeforeAddRect(tile, w, h, StationRect::ADD_TRY);
 
-		for (AirportTileTableIterator iter(as->layouts[layout].tiles.data(), tile); iter != INVALID_TILE; ++iter) {
+		for (AirportTileTableIterator iter(as->layouts[layout].tiles, tile); iter != INVALID_TILE; ++iter) {
 			Tile t(iter);
 			MakeAirport(t, st->owner, st->index, iter.GetStationGfx(), WATER_CLASS_INVALID);
 			SetStationTileRandomBits(t, GB(Random(), 0, 4));
@@ -2616,7 +2616,7 @@ CommandCost CmdBuildAirport(DoCommandFlags flags, TileIndex tile, uint8_t airpor
 		}
 
 		/* Only call the animation trigger after all tiles have been built */
-		for (AirportTileTableIterator iter(as->layouts[layout].tiles.data(), tile); iter != INVALID_TILE; ++iter) {
+		for (AirportTileTableIterator iter(as->layouts[layout].tiles, tile); iter != INVALID_TILE; ++iter) {
 			TriggerAirportTileAnimation(st, iter, AirportAnimationTrigger::Built);
 		}
 
