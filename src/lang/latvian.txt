@@ -3917,12 +3917,12 @@ STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Būvniec�
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Jauni transportlīdzekļi
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Vilcieni
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Autotransportlīdzekļi
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Lidaparāts
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}LidaparātI
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Kuģi
 STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}Infrastruktūra
 STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Vilcieni
 STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Autotransportlīdzekļi
-STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Lidaparāts
+STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Lidaparāti
 STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Kuģi
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Aizdevuma procents
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Citi

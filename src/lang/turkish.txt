@@ -267,6 +267,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}daki
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}yıl
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}dönem{P "ler"}
 
+STR_LIST_SEPARATOR                                              :,{SPACE}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtre:
@@ -439,6 +440,8 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Editörden çı
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Oyundan Çık
 
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Kasabalar Oluştur
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Ev Yerleştir
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Seçenekler
@@ -2790,12 +2793,14 @@ STR_PICKER_MODE_ALL                                             :Tümü
 STR_PICKER_MODE_ALL_TOOLTIP                                     :Tüm kategorilerdeki öğelerin görüntülenmesini aç/kapat
 STR_PICKER_MODE_USED                                            :Kullanılmış
 STR_PICKER_MODE_USED_TOOLTIP                                    :Yalnızca mevcut öğeleri göstermeyi aç/kapat
-STR_PICKER_MODE_SAVED                                           :Kaydedildi
+STR_PICKER_MODE_SAVED                                           :Kaydedilen
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Yalnızca kaydedilen öğeleri göstermeyi aç/kapat
 
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Görüntülenecek bir yol noktası türünü seçin
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Görüntülenecek bir kamyon istasyonu türünü seçin
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :İnşa edilecek bir tür kamyon istasyonu seçin. Kaydedilen öğelerde eklemek veya kaldırmak istiyorsanız Ctrl+Tık ile yapabilirsiniz.
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Görüntülemek için bir şehir bölgesi seçin
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Bir konut türü seçin. Kaydedilmiş öğelere eklemek veya kaldırmak için Ctrl+Tıklayın
 
 STR_HOUSE_PICKER_CAPTION                                        :Ev Seçimi
 STR_HOUSE_PICKER_NAME                                           :{BLACK}İsim: {ORANGE}{STRING}
@@ -3087,6 +3092,8 @@ STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Tramvay 
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Ray hız sınırı: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Yol hız sınırı: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Tramvay hız limiti: {LTBLUE}{VELOCITY}
+STR_LAND_AREA_INFORMATION_TOWN_CAN_UPGRADE                      :{BLACK}Kasaba yükseltilebilir: {LTBLUE}Evet
+STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE                   :{BLACK}Kasaba yükseltilebilir: {LTBLUE}Hayır
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Kayalar
@@ -4967,6 +4974,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... hari
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Yol çalışmaları
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Bu kasaba silinemiyor...{}Bir istasyon veya garaj kasabaya atıfta bulunuyor ya da bir kasaba karesi kaldırılamıyor
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... bu şehrin merkezinde heykel için uygun bir yer yok
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Bina inşa edilemez...
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... çok fazla fabrika var
@@ -5043,6 +5051,7 @@ STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Buraya �
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Yerimi adı değiştirilemedi...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Tren yerimi kaldırılamaz...
+STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}yol yerimi kaldırılamaz....
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Önce demiryolu yerimi kaldırılmalı
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... yolda şamandıra var
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... şamandıra başka bir şirket tarafından kullanılıyor!
@@ -5233,8 +5242,16 @@ STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Gemi sat
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Uçak satılamıyor...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :{WHITE}Tüm demiryolu araçları satılamaz...
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :{WHITE}Tüm Karayolu Araçları satılamaz...
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Tüm gemiler satılamaz...
+STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :Tüm uçaklar satılamıyor...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}Demiryolu araçları otomatik olarak değiştirilemiyor...
+STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}Karayolu araçları otomatik olarak değiştirilemiyor...
+STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}Gemiler otomatik olarak değiştirilemiyor...
+STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}Uçaklar otomatik değiştirılemiyor...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Oyunda çok fazla araç var
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Servis aralığı değiştirilemiyor...
@@ -5250,6 +5267,8 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}{DATE_SH
 
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Kasabada inşa edilebilir yol türleri mevcut değil
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}NewGRF Yapılandırma Ayarlarını Değiştir
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Henüz inşa edilebilir şehir yol türü mevcut değil
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Yeni oyuna başladıktan sonra {DATE_SHORT} veya önceden şehir inşa edilebilir yol türleri sağlayan bir NewGRF kullanın
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Tehlikedeki tren sinyali geçemez...

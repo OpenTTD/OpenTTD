@@ -2196,6 +2196,8 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... non 
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Os drivers da GPU provocaron un fallo no xogo. Deshabilitada aceleración por hardware.
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nova partida
 STR_INTRO_LOAD_GAME                                             :{BLACK}Cargar partida
@@ -4433,10 +4435,10 @@ STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Mostra-l
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Mostra-las ordes do avión. Ctrl+click mostra o horario
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Mostra-los detalles do tren
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Mostra-los detalles do vehículo de estrada
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Mostra-los detalles do barco
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Mostra-los detalles do avión
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Mostra-los detalles do tren. Ctrl+Click para amosar o grupo do tren
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Mostra-los detalles do vehículo. Ctrl+Click para amosar o grupo do vehículo
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Mostra-los detalles do barco. Ctrl+Click para amosar o grupo do barco
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Mostra-los detalles do avión. Ctrl+Click para amosar o grupo do avión
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Acción do tren actual - Click para parar/arrancar o tren
@@ -4760,14 +4762,15 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horario 
 STR_TIMETABLE_NO_TRAVEL                                         :Sen viaxe
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viaxar (automático; programado pola próxima orde manual)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viaxar (sen horario)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viaxar polo menos a {VELOCITY} (sen horarios)
 STR_TIMETABLE_TRAVEL_FOR                                        :Viaxar durante {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viaxar por {STRING} polo menos a {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Viaxe (para {STRING}, non calendarizada)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Viaxe (para {STRING}, non calendarizado) con como máximo {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(permanece por {STRING}, non calendarizado)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(viaxe para {STRING}, sen calendarizar)
-STR_TIMETABLE_STAY_FOR                                          :e parar durante {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :e viaxar durante {STRING}
+STR_TIMETABLE_STAY_FOR                                          :{SPACE}e parar durante {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}e viaxar durante {STRING}
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Completar este horario levará aproximadamente {STRING}
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Levará {STRING} completar este horario
@@ -5875,6 +5878,7 @@ STR_CURRENCY_SHORT_GIGA                                         :{NBSP}bn
 STR_CURRENCY_SHORT_TERA                                         :{NBSP}tn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_LEFT_ARROW                                             :{LEFT_ARROW}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
