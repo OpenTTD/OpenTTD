@@ -22,6 +22,7 @@
 #include "../script_fatalerror.hpp"
 #include "script_error.hpp"
 #include "../../debug.h"
+#include "../squirrel_helper.hpp"
 
 #include "../../safeguards.h"
 
@@ -259,7 +260,7 @@ ScriptObject::DisableDoCommandScope::DisableDoCommandScope()
 	return ScriptObject::GetActiveInstance().GetDoCommandCallback();
 }
 
-std::tuple<bool, bool, bool, bool> ScriptObject::DoCommandPrep()
+/* static */ std::tuple<bool, bool, bool, bool> ScriptObject::DoCommandPrep()
 {
 	if (!ScriptObject::CanSuspend()) {
 		throw Script_FatalError("You are not allowed to execute any DoCommand (even indirect) in your constructor, Save(), Load(), and any valuator.");
@@ -281,7 +282,7 @@ std::tuple<bool, bool, bool, bool> ScriptObject::DoCommandPrep()
 	return { false, estimate_only, asynchronous, networking };
 }
 
-bool ScriptObject::DoCommandProcessResult(const CommandCost &res, Script_SuspendCallbackProc *callback, bool estimate_only, bool asynchronous)
+/* static */ bool ScriptObject::DoCommandProcessResult(const CommandCost &res, Script_SuspendCallbackProc *callback, bool estimate_only, bool asynchronous)
 {
 	/* Set the default callback to return a true/false result of the DoCommand */
 	if (callback == nullptr) callback = &ScriptInstance::DoCommandReturn;
@@ -338,15 +339,33 @@ bool ScriptObject::DoCommandProcessResult(const CommandCost &res, Script_Suspend
 
 /* static */ ScriptObject::RandomizerArray ScriptObject::random_states;
 
-Randomizer &ScriptObject::GetRandomizer(Owner owner)
+/* static */ Randomizer &ScriptObject::GetRandomizer(Owner owner)
 {
 	return ScriptObject::random_states[owner];
 }
 
-void ScriptObject::InitializeRandomizers()
+/* static */ void ScriptObject::InitializeRandomizers()
 {
 	Randomizer random = _random;
 	for (Owner owner = OWNER_BEGIN; owner < OWNER_END; ++owner) {
 		ScriptObject::GetRandomizer(owner).SetSeed(random.Next());
 	}
+}
+
+/* static */ SQInteger ScriptObject::Constructor(HSQUIRRELVM)
+{
+	throw Script_FatalError("This class is not instantiable");
+}
+
+/* static */ SQInteger ScriptObject::_cloned(HSQUIRRELVM vm)
+{
+	ScriptObject *original = static_cast<ScriptObject *>(Squirrel::GetRealInstance(vm, 2, "Object"));
+	if (ScriptObject *clone = original->CloneObject(); clone != nullptr) {
+		clone->AddRef();
+		sq_setinstanceup(vm, 1, clone);
+		sq_setreleasehook(vm, 1, SQConvert::DefSQDestructorCallback<ScriptObject>);
+		return 0;
+	}
+
+	throw Script_FatalError("This instance is not cloneable");
 }

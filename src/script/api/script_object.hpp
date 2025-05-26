@@ -105,6 +105,12 @@ protected:
 	 */
 	virtual bool LoadObject(HSQUIRRELVM) { return false; }
 
+	/**
+	 * Clone an object.
+	 * @return The clone if cloning this type is supported, nullptr otherwise.
+	 */
+	virtual ScriptObject *CloneObject() { return nullptr; }
+
 public:
 	/**
 	 * Store the latest result of a DoCommand per company.
@@ -135,6 +141,16 @@ public:
 	 * based on the current _random seed, but _random does not get changed.
 	 */
 	static void InitializeRandomizers();
+
+	/**
+	 * Used when trying to instanciate ScriptObject from squirrel.
+	 */
+	static SQInteger Constructor(HSQUIRRELVM);
+
+	/**
+	 * Used for 'clone' from squirrel.
+	 */
+	static SQInteger _cloned(HSQUIRRELVM);
 
 protected:
 	template <Commands TCmd, typename T> struct ScriptDoCommandHelper;
