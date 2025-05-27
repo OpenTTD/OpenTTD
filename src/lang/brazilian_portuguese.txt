@@ -5918,3 +5918,7 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Abrir configuração de crachá
+STR_BADGE_CONFIG_RESET                                          :Restaurar
+STR_BADGE_CONFIG_PREVIEW                                        :Pré-visualizar imagem
+STR_BADGE_CONFIG_NAME                                           :Nome

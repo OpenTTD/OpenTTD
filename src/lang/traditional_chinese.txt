@@ -1737,7 +1737,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :所有，除了
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :所有動作
 
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :使用進階車輛清單：{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :啟用可以為車輛分組的進階車輛清單。
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :啟用進階車輛清單，以便為車輛分組
 
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :使用裝載進度指示：{STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :選擇是否在車輛裝卸的時候顯示裝載狀況。
@@ -5917,3 +5917,7 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}：{GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :開啟徽章設定
+STR_BADGE_CONFIG_RESET                                          :重設
+STR_BADGE_CONFIG_PREVIEW                                        :預覽圖
+STR_BADGE_CONFIG_NAME                                           :名稱

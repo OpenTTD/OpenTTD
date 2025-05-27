@@ -4761,6 +4761,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Timetabl
 STR_TIMETABLE_NO_TRAVEL                                         :No travel
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Travel (automatic; timetabled by next manual order)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Travel (not timetabled)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Travel (not timetabled) with at most {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Travel for {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Travel for {STRING} with at most {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Travel (for {STRING}, not timetabled)
@@ -5916,3 +5917,7 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Open badge configuration
+STR_BADGE_CONFIG_RESET                                          :Reset
+STR_BADGE_CONFIG_PREVIEW                                        :Preview Image
+STR_BADGE_CONFIG_NAME                                           :Name

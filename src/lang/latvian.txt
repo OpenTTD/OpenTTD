@@ -2431,7 +2431,7 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Pievieno
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Atsvaidzināt serveri
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Atsvaidzināt servera informāciju
 
-STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :Meklēt internetā
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :Meklēt tiešsaistē
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Meklēt publiskos serverus internetā
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Meklēt LAN
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Meklēt serverus lokālajā tīklā
@@ -3924,7 +3924,7 @@ STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Vilcieni
 STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Autotransportlīdzekļi
 STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Lidaparāti
 STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Kuģi
-STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Aizdevuma procents
+STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Aizdevuma procenti
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Citi
 
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Kopā
@@ -5928,3 +5928,7 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Atvērt nozīmītes konfigurāciju
+STR_BADGE_CONFIG_RESET                                          :Atiestatīt
+STR_BADGE_CONFIG_PREVIEW                                        :Priekšskatīt attēlu
+STR_BADGE_CONFIG_NAME                                           :Nosaukums
