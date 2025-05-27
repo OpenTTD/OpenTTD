@@ -25,14 +25,15 @@ typedef uint8_t StationGfx;
 /** Tile-offset / AirportTileID pair. */
 struct AirportTileTable {
 	TileIndexDiffC ti; ///< Tile offset from  the top-most airport tile.
-	StationGfx gfx;    ///< AirportTile to use for this tile.
+	StationGfx gfx; ///< AirportTile to use for this tile.
 };
 
 /** Iterator to iterate over all tiles belonging to an airport spec. */
 class AirportTileTableIterator : public TileIterator {
 private:
-	const AirportTileTable *att; ///< The offsets.
-	TileIndex base_tile;         ///< The tile we base the offsets off.
+	std::span<const AirportTileTable> att; ///< The offsets.
+	TileIndex base_tile; ///< The tile we base the offsets off.
+	std::span<const AirportTileTable>::iterator iter;
 
 public:
 	/**
@@ -40,17 +41,19 @@ public:
 	 * @param att The TileTable we want to iterate over.
 	 * @param base_tile The basetile for all offsets.
 	 */
-	AirportTileTableIterator(const AirportTileTable *att, TileIndex base_tile) : TileIterator(base_tile + ToTileIndexDiff(att->ti)), att(att), base_tile(base_tile)
+	AirportTileTableIterator(std::span<const AirportTileTable> att, TileIndex base_tile)
+		: TileIterator(base_tile + ToTileIndexDiff(att.front().ti))
+		, att(att), base_tile(base_tile), iter(att.begin())
 	{
 	}
 
 	inline TileIterator& operator ++() override
 	{
-		this->att++;
-		if (this->att->ti.x == -0x80) {
+		++this->iter;
+		if (this->iter == std::end(att)) {
 			this->tile = INVALID_TILE;
 		} else {
-			this->tile = this->base_tile + ToTileIndexDiff(this->att->ti);
+			this->tile = this->base_tile + ToTileIndexDiff(this->iter->ti);
 		}
 		return *this;
 	}
@@ -58,7 +61,7 @@ public:
 	/** Get the StationGfx for the current tile. */
 	StationGfx GetStationGfx() const
 	{
-		return this->att->gfx;
+		return this->iter->gfx;
 	}
 
 	std::unique_ptr<TileIterator> Clone() const override

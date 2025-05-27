@@ -22,11 +22,6 @@
  */
 #define MK(x, y, m) {{x, y}, m}
 
-/**
- * Terminator of airport tiles layout definition
- */
-#define MKEND {{-0x80, 0}, 0}
-
 /** Tiles for Country Airfield (small) */
 static const std::initializer_list<AirportTileTable> _tile_table_country_0 = {
 	MK(0, 0, APT_SMALL_BUILDING_1),
@@ -41,7 +36,6 @@ static const std::initializer_list<AirportTileTable> _tile_table_country_0 = {
 	MK(1, 2, APT_RUNWAY_SMALL_MIDDLE),
 	MK(2, 2, APT_RUNWAY_SMALL_MIDDLE),
 	MK(3, 2, APT_RUNWAY_SMALL_NEAR_END),
-	MKEND
 };
 
 static const std::initializer_list<AirportTileLayout> _tile_table_country = {
@@ -70,7 +64,6 @@ static const std::initializer_list<AirportTileTable> _tile_table_commuter_0 = {
 	MK(2, 3, APT_RUNWAY_2),
 	MK(3, 3, APT_RUNWAY_2),
 	MK(4, 3, APT_RUNWAY_END_FENCE_SE),
-	MKEND
 };
 
 static const std::initializer_list<AirportTileLayout> _tile_table_commuter = {
@@ -115,7 +108,6 @@ static const std::initializer_list<AirportTileTable> _tile_table_city_0 = {
 	MK(3, 5, APT_RUNWAY_3),
 	MK(4, 5, APT_RUNWAY_4),
 	MK(5, 5, APT_RUNWAY_END_FENCE_SE),
-	MKEND
 };
 
 static const std::initializer_list<AirportTileLayout> _tile_table_city = {
@@ -160,7 +152,6 @@ static const std::initializer_list<AirportTileTable> _tile_table_metropolitan_0 
 	MK(3, 5, APT_RUNWAY_2),
 	MK(4, 5, APT_RUNWAY_2),
 	MK(5, 5, APT_RUNWAY_END_FENCE_SE),
-	MKEND
 };
 
 static const std::initializer_list<AirportTileLayout> _tile_table_metropolitan = {
@@ -218,7 +209,6 @@ static const std::initializer_list<AirportTileTable> _tile_table_international_0
 	MK(4, 6, APT_RUNWAY_2),
 	MK(5, 6, APT_RUNWAY_2),
 	MK(6, 6, APT_RUNWAY_END_FENCE_SE),
-	MKEND
 };
 
 static const std::initializer_list<AirportTileLayout> _tile_table_international = {
@@ -326,7 +316,6 @@ static const std::initializer_list<AirportTileTable> _tile_table_intercontinenta
 	MK(6, 10, APT_RUNWAY_2),
 	MK(7, 10, APT_RUNWAY_END_FENCE_SE_SW),
 	MK(8, 10, APT_EMPTY),
-	MKEND
 };
 
 static const std::initializer_list<AirportTileLayout> _tile_table_intercontinental = {
@@ -336,7 +325,6 @@ static const std::initializer_list<AirportTileLayout> _tile_table_intercontinent
 /** Tiles for Heliport */
 static const std::initializer_list<AirportTileTable> _tile_table_heliport_0 = {
 	MK(0, 0, APT_HELIPORT),
-	MKEND
 };
 
 static const std::initializer_list<AirportTileLayout> _tile_table_heliport = {
@@ -349,7 +337,6 @@ static const std::initializer_list<AirportTileTable> _tile_table_helidepot_0 = {
 	MK(1, 0, APT_DEPOT_SE),
 	MK(0, 1, APT_HELIPAD_2_FENCE_NE_SE),
 	MK(1, 1, APT_APRON_FENCE_SE_SW),
-	MKEND
 };
 
 static const std::initializer_list<AirportTileLayout> _tile_table_helidepot = {
@@ -366,7 +353,6 @@ static const std::initializer_list<AirportTileTable> _tile_table_helistation_0 =
 	MK(1, 1, APT_APRON_FENCE_SE),
 	MK(2, 1, APT_APRON_FENCE_SE),
 	MK(3, 1, APT_HELIPAD_3_FENCE_SE_SW),
-	MKEND
 };
 
 static const std::initializer_list<AirportTileLayout> _tile_table_helistation = {
@@ -374,7 +360,6 @@ static const std::initializer_list<AirportTileLayout> _tile_table_helistation = 
 };
 
 #undef MK
-#undef MKEND
 
 /** General AirportSpec definition. */
 #define AS_GENERIC(fsm, layouts, depots, size_x, size_y, noise, catchment, min_year, max_year, maint_cost, ttdpatch_type, class_id, name, preview, enabled) \
