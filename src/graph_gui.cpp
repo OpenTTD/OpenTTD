@@ -206,6 +206,14 @@ protected:
 		uint8_t exclude_bit;
 		uint8_t range_bit;
 		uint8_t dash;
+
+		template <typename T, typename Tproj>
+		void Fill(const HistoryData<T> &history, Tproj proj)
+		{
+			for (uint j = 0; j < GRAPH_NUM_MONTHS; ++j) {
+				this->values[j] = std::invoke(proj, history[GRAPH_NUM_MONTHS - j]);
+			}
+		}
 	};
 	std::vector<DataSet> data{};
 
@@ -1665,20 +1673,14 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 			produced.colour = cs->legend_colour;
 			produced.exclude_bit = cs->Index();
 			produced.range_bit = 0;
-
-			for (uint j = 0; j < GRAPH_NUM_MONTHS; j++) {
-				produced.values[j] = p.history[GRAPH_NUM_MONTHS - j].production;
-			}
+			produced.Fill(p.history, &Industry::ProducedHistory::production);
 
 			DataSet &transported = this->data.emplace_back();
 			transported.colour = cs->legend_colour;
 			transported.exclude_bit = cs->Index();
 			transported.range_bit = 1;
 			transported.dash = 2;
-
-			for (uint j = 0; j < GRAPH_NUM_MONTHS; j++) {
-				transported.values[j] = p.history[GRAPH_NUM_MONTHS - j].transported;
-			}
+			transported.Fill(p.history, &Industry::ProducedHistory::transported);
 		}
 
 		this->SetDirty();
