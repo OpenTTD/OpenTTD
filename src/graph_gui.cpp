@@ -569,21 +569,6 @@ protected:
 		SetWindowDirty(WC_GRAPH_LEGEND, 0);
 	}
 
-	void InitializeWindow(WindowNumber number)
-	{
-		/* Initialise the dataset */
-		this->UpdateStatistics(true);
-
-		this->CreateNestedTree();
-
-		auto *wid = this->GetWidget<NWidgetCore>(WID_GRAPH_FOOTER);
-		if (wid != nullptr && TimerGameEconomy::UsingWallclockUnits()) {
-			wid->SetString(STR_GRAPH_LAST_72_MINUTES_TIME_LABEL);
-		}
-
-		this->FinishInitNested(number);
-	}
-
 public:
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
@@ -668,11 +653,6 @@ public:
 		}
 	}
 
-	virtual OverflowSafeInt64 GetGraphData(const Company *, int)
-	{
-		return INVALID_DATAPOINT;
-	}
-
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		/* Clicked on legend? */
@@ -709,11 +689,31 @@ public:
 		this->UpdateStatistics(true);
 	}
 
+	virtual void UpdateStatistics(bool initialize) = 0;
+};
+
+class CompanyGraphWindow : public BaseGraphWindow {
+public:
+	CompanyGraphWindow(WindowDesc &desc, StringID format_str_y_axis) : BaseGraphWindow(desc, format_str_y_axis) {}
+
+	void InitializeWindow(WindowNumber number)
+	{
+		/* Initialise the dataset */
+		this->UpdateStatistics(true);
+
+		this->CreateNestedTree();
+
+		auto *wid = this->GetWidget<NWidgetCore>(WID_GRAPH_FOOTER);
+		wid->SetString(TimerGameEconomy::UsingWallclockUnits() ? STR_GRAPH_LAST_72_MINUTES_TIME_LABEL : STR_EMPTY);
+
+		this->FinishInitNested(number);
+	}
+
 	/**
 	 * Update the statistics.
 	 * @param initialize Initialize the data structure.
 	 */
-	virtual void UpdateStatistics(bool initialize)
+	void UpdateStatistics(bool initialize) override
 	{
 		CompanyMask excluded_companies = _legend_excluded_companies;
 
@@ -766,6 +766,8 @@ public:
 			}
 		}
 	}
+
+	virtual OverflowSafeInt64 GetGraphData(const Company *, int) = 0;
 };
 
 
@@ -773,9 +775,9 @@ public:
 /* OPERATING PROFIT */
 /********************/
 
-struct OperatingProfitGraphWindow : BaseGraphWindow {
+struct OperatingProfitGraphWindow : CompanyGraphWindow {
 	OperatingProfitGraphWindow(WindowDesc &desc, WindowNumber window_number) :
-			BaseGraphWindow(desc, STR_JUST_CURRENCY_SHORT)
+			CompanyGraphWindow(desc, STR_JUST_CURRENCY_SHORT)
 	{
 		this->num_on_x_axis = GRAPH_NUM_MONTHS;
 		this->num_vert_lines = GRAPH_NUM_MONTHS;
@@ -830,9 +832,9 @@ void ShowOperatingProfitGraph()
 /* INCOME GRAPH */
 /****************/
 
-struct IncomeGraphWindow : BaseGraphWindow {
+struct IncomeGraphWindow : CompanyGraphWindow {
 	IncomeGraphWindow(WindowDesc &desc, WindowNumber window_number) :
-			BaseGraphWindow(desc, STR_JUST_CURRENCY_SHORT)
+			CompanyGraphWindow(desc, STR_JUST_CURRENCY_SHORT)
 	{
 		this->num_on_x_axis = GRAPH_NUM_MONTHS;
 		this->num_vert_lines = GRAPH_NUM_MONTHS;
@@ -885,9 +887,9 @@ void ShowIncomeGraph()
 /* DELIVERED CARGO */
 /*******************/
 
-struct DeliveredCargoGraphWindow : BaseGraphWindow {
+struct DeliveredCargoGraphWindow : CompanyGraphWindow {
 	DeliveredCargoGraphWindow(WindowDesc &desc, WindowNumber window_number) :
-			BaseGraphWindow(desc, STR_JUST_COMMA)
+			CompanyGraphWindow(desc, STR_JUST_COMMA)
 	{
 		this->num_on_x_axis = GRAPH_NUM_MONTHS;
 		this->num_vert_lines = GRAPH_NUM_MONTHS;
@@ -940,9 +942,9 @@ void ShowDeliveredCargoGraph()
 /* PERFORMANCE HISTORY */
 /***********************/
 
-struct PerformanceHistoryGraphWindow : BaseGraphWindow {
+struct PerformanceHistoryGraphWindow : CompanyGraphWindow {
 	PerformanceHistoryGraphWindow(WindowDesc &desc, WindowNumber window_number) :
-			BaseGraphWindow(desc, STR_JUST_COMMA)
+			CompanyGraphWindow(desc, STR_JUST_COMMA)
 	{
 		this->num_on_x_axis = GRAPH_NUM_MONTHS;
 		this->num_vert_lines = GRAPH_NUM_MONTHS;
@@ -1002,9 +1004,9 @@ void ShowPerformanceHistoryGraph()
 /* COMPANY VALUE */
 /*****************/
 
-struct CompanyValueGraphWindow : BaseGraphWindow {
+struct CompanyValueGraphWindow : CompanyGraphWindow {
 	CompanyValueGraphWindow(WindowDesc &desc, WindowNumber window_number) :
-			BaseGraphWindow(desc, STR_JUST_CURRENCY_SHORT)
+			CompanyGraphWindow(desc, STR_JUST_CURRENCY_SHORT)
 	{
 		this->num_on_x_axis = GRAPH_NUM_MONTHS;
 		this->num_vert_lines = GRAPH_NUM_MONTHS;
@@ -1215,6 +1217,8 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 	const IntervalTimer<TimerWindow> update_payment_interval = {std::chrono::seconds(3), [this](auto) {
 		this->UpdatePaymentRates();
 	}};
+
+	void UpdateStatistics(bool) override {}
 
 	/**
 	 * Update the payment rates according to the latest information.
