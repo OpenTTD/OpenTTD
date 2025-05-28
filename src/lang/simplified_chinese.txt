@@ -5917,3 +5917,7 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING}（{VELOCITY}）
 
 STR_BADGE_NAME_LIST                                             :{STRING}：{GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :开启徽章设定
+STR_BADGE_CONFIG_RESET                                          :重置
+STR_BADGE_CONFIG_PREVIEW                                        :预览图
+STR_BADGE_CONFIG_NAME                                           :名称

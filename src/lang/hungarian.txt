@@ -4825,6 +4825,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Menetren
 STR_TIMETABLE_NO_TRAVEL                                         :Nincs menet
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Menet (automata; menetrend a következő kézi utasítás alapján)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Következő célpontig a menetidő időzítetlen
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Menet {VELOCITY} max. sebességgel (nincs menetrend)
 STR_TIMETABLE_TRAVEL_FOR                                        :Menetidő: {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Menetidő: {STRING} {VELOCITY} max. sebességgel
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Menet ({STRING}ig, időzítetlen)
@@ -6021,3 +6022,7 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Jelvény beállítások megnyitása
+STR_BADGE_CONFIG_RESET                                          :Visszaállítás
+STR_BADGE_CONFIG_PREVIEW                                        :Előnézet kép
+STR_BADGE_CONFIG_NAME                                           :Név

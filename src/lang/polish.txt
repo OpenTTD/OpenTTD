@@ -6358,3 +6358,7 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Otwórz ustawienia znaczników
+STR_BADGE_CONFIG_RESET                                          :Przywróć
+STR_BADGE_CONFIG_PREVIEW                                        :Podgląd Obrazka
+STR_BADGE_CONFIG_NAME                                           :Nazwa
