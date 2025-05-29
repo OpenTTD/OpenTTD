@@ -5918,3 +5918,7 @@ STR_SHIP                                                        :{G=f}{BLACK}{SH
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :배지 설정을 엽니다
+STR_BADGE_CONFIG_RESET                                          :초기화
+STR_BADGE_CONFIG_PREVIEW                                        :미리보기 이미지
+STR_BADGE_CONFIG_NAME                                           :이름
