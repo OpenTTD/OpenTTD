@@ -10,6 +10,9 @@
 #ifndef HISTORY_FUNC_HPP
 #define HISTORY_FUNC_HPP
 
+#include "../core/math_func.hpp"
+
+#include "../timer/timer_game_economy.h"
 #include "history_type.hpp"
 
 /**
@@ -22,6 +25,14 @@ void RotateHistory(HistoryData<T> &history)
 {
 	std::rotate(std::rbegin(history), std::rbegin(history) + 1, std::rend(history));
 	history[THIS_MONTH] = {};
+}
+
+template <typename T, typename Taccrued>
+T GetAndResetAccumulatedAverage(Taccrued &total)
+{
+	T result = ClampTo<T>(total / std::max(1U, TimerGameEconomy::days_since_last_month));
+	total = 0;
+	return result;
 }
 
 #endif /* HISTORY_FUNC_HPP */

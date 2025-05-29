@@ -77,10 +77,18 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 		HistoryData<ProducedHistory> history{}; ///< History of cargo produced and transported for this month and 24 previous months
 	};
 
+	struct AcceptedHistory {
+		uint16_t accepted = 0; /// Total accepted.
+		uint16_t waiting = 0; /// Average waiting.
+	};
+
 	struct AcceptedCargo {
 		CargoType cargo = 0; ///< Cargo type
 		uint16_t waiting = 0; ///< Amount of cargo waiting to processed
+		uint32_t accumulated_waiting = 0; ///< Accumulated waiting total over the last month.
 		TimerGameEconomy::Date last_accepted{}; ///< Last day cargo was accepted by this industry
+
+		HistoryData<AcceptedHistory> history{}; ///< History of accepted ccargo.
 	};
 
 	using ProducedCargoes = std::vector<ProducedCargo>;
