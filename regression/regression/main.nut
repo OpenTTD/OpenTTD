@@ -828,6 +828,13 @@ function Regression::List()
 	print("  []:");
 	print("    4000 => " + list[4000]);
 
+	print("  clone:");
+	local list3 = clone list;
+	print("  Clone ListDump:");
+	foreach (idx, val in list3) {
+		print("    " + idx + " => " + val);
+	}
+
 	list.Clear();
 	print("  IsEmpty():     " + list.IsEmpty());
 
@@ -860,6 +867,12 @@ function Regression::List()
 		it = list.Next();
 		print("    " + it + " => " + list.GetValue(it));
 	}
+
+	print("  Clone ListDump:");
+	foreach (idx, val in list3) {
+		print("    " + idx + " => " + val);
+	}
+
 }
 
 function Regression::Map()
