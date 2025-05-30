@@ -30,6 +30,9 @@ function Regression::TestInit()
 	print("");
 	print(" Value Descending");
 	local list = AIList();
+	print("  GetSorterType():      " + list.GetSorterType());
+	print("  GetSorterDirection(): " + list.GetSorterDirection());
+
 	list.AddItem( 5, 10);
 	list.AddItem(10, 10);
 	list.AddItem(15, 20);
@@ -65,6 +68,9 @@ function Regression::TestInit()
 	list.Sort(AIList.SORT_BY_VALUE, AIList.SORT_ASCENDING);
 	print("");
 	print(" Value Ascending");
+	print("  GetSorterType():      " + list.GetSorterType());
+	print("  GetSorterDirection(): " + list.GetSorterDirection());
+
 	list.AddItem( 5, 10);
 	list.AddItem(10, 10);
 	list.AddItem(15, 20);
@@ -100,6 +106,9 @@ function Regression::TestInit()
 	list.Sort(AIList.SORT_BY_ITEM, AIList.SORT_DESCENDING);
 	print("");
 	print(" Item Descending");
+	print("  GetSorterType():      " + list.GetSorterType());
+	print("  GetSorterDirection(): " + list.GetSorterDirection());
+
 	list.AddItem( 5, 10);
 	list.AddItem(10, 10);
 	list.AddItem(15, 20);
@@ -135,6 +144,9 @@ function Regression::TestInit()
 	list.Sort(AIList.SORT_BY_ITEM, AIList.SORT_ASCENDING);
 	print("");
 	print(" Item Ascending");
+	print("  GetSorterType():      " + list.GetSorterType());
+	print("  GetSorterDirection(): " + list.GetSorterDirection());
+
 	list.AddItem( 5, 10);
 	list.AddItem(10, 10);
 	list.AddItem(15, 20);

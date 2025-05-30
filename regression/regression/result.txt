@@ -19,6 +19,8 @@
  AIList Consistency Tests
 
  Value Descending
+  GetSorterType():      0
+  GetSorterDirection(): false
    40
    25
    10
@@ -38,6 +40,8 @@
    10
 
  Value Ascending
+  GetSorterType():      0
+  GetSorterDirection(): true
    5
    20
    35
@@ -57,6 +61,8 @@
    40
 
  Item Descending
+  GetSorterType():      1
+  GetSorterDirection(): false
    40
    25
    10
@@ -72,6 +78,8 @@
    10
 
  Item Ascending
+  GetSorterType():      1
+  GetSorterDirection(): true
    5
    20
    35
@@ -85,7 +93,7 @@
    20
    30
    40
- Ops:      8649
+ Ops:      8601
 
 --Std--
  abs(-21): 21
@@ -10116,7 +10124,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
 constructor failed with: excessive CPU usage in list filter function
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [Start()] regression/main.nut line [2184]
+*FUNCTION [Start()] regression/main.nut line [2196]
 
 [Infinite] CLOSURE
 [list] INSTANCE
