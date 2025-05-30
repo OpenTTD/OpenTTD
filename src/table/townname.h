@@ -776,6 +776,7 @@ static const std::string_view _name_french_real[] = {
 	"Chamonix",
 	"Angoul\u00e8me",
 	"Alen\u00e7on",
+	"Vannes",
 };
 
 static const std::string_view _name_silly_1[] = {
