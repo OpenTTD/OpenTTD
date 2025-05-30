@@ -356,6 +356,20 @@ public:
 	 */
 	void KeepList(ScriptList *list);
 
+	/**
+	 * Get this list sorter type.
+	 * @return sorter type of this list.
+	 * @see ScriptList::SorterType
+	 */
+	SorterType GetSorterType();
+
+	/**
+	 * Get this list sorter direction.
+	 * @return sorter direction of this list.
+	 * @see SORT_ASCENDING SORT_DESCENDING
+	 */
+	bool GetSorterDirection();
+
 #ifndef DOXYGEN_API
 	/**
 	 * Used for 'foreach()' and [] get from Squirrel.

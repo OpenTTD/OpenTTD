@@ -837,6 +837,16 @@ void ScriptList::KeepList(ScriptList *list)
 	this->RemoveList(&tmp);
 }
 
+ScriptList::SorterType ScriptList::GetSorterType()
+{
+	return this->sorter_type;
+}
+
+bool ScriptList::GetSorterDirection()
+{
+	return this->sort_ascending;
+}
+
 SQInteger ScriptList::_get(HSQUIRRELVM vm)
 {
 	if (sq_gettype(vm, 2) != OT_INTEGER) return SQ_ERROR;
