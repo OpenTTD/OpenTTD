@@ -709,6 +709,17 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 			return count;
 		}
 
+		case 0x65:
+			if (v->type == VEH_TRAIN) {
+				RailType rt = GetRailType(v->tile);
+				return GetBadgeVariableResult(*object->ro.grffile, GetRailTypeInfo(rt)->badges, parameter);
+			}
+			if (v->type == VEH_ROAD) {
+				RoadType rt = GetRoadType(v->tile, GetRoadTramType(RoadVehicle::From(v)->roadtype));
+				return GetBadgeVariableResult(*object->ro.grffile, GetRoadTypeInfo(rt)->badges, parameter);
+			}
+			return UINT_MAX;
+
 		case 0x7A: return GetBadgeVariableResult(*object->ro.grffile, v->GetEngine()->badges, parameter);
 
 		case 0xFE:
