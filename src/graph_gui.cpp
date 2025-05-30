@@ -211,6 +211,10 @@ protected:
 
 	std::span<const StringID> ranges = {};
 
+	uint8_t highlight_data = UINT8_MAX; ///< Data set that should be highlighted, or UINT8_MAX for none.
+	uint8_t highlight_range = UINT8_MAX; ///< Data range that should be highlighted, or UINT8_MAX for none.
+	bool highlight_state = false; ///< Current state of highlight, toggled every TIMER_BLINK_INTERVAL period.
+
 	/**
 	 * Get appropriate part of dataset values for the current number of horizontal points.
 	 * @param dataset Dataset to get values of
@@ -500,9 +504,9 @@ protected:
 		uint pointoffs1 = (linewidth + 1) / 2;
 		uint pointoffs2 = linewidth + 1 - pointoffs1;
 
-		for (const DataSet &dataset : this->data) {
-			if (HasBit(this->excluded_data, dataset.exclude_bit)) continue;
-			if (HasBit(this->excluded_range, dataset.range_bit)) continue;
+		auto draw_dataset = [&](const DataSet &dataset, uint8_t colour) {
+			if (HasBit(this->excluded_data, dataset.exclude_bit)) return;
+			if (HasBit(this->excluded_range, dataset.range_bit)) return;
 
 			/* Centre the dot between the grid lines. */
 			if (rtl) {
@@ -543,10 +547,10 @@ protected:
 					y = r.top + x_axis_offset - ((r.bottom - r.top) * datapoint) / (interval_size >> reduce_range);
 
 					/* Draw the point. */
-					GfxFillRect(x - pointoffs1, y - pointoffs1, x + pointoffs2, y + pointoffs2, dataset.colour);
+					GfxFillRect(x - pointoffs1, y - pointoffs1, x + pointoffs2, y + pointoffs2, colour);
 
 					/* Draw the line connected to the previous point. */
-					if (prev_x != INVALID_DATAPOINT_POS) GfxDrawLine(prev_x, prev_y, x, y, dataset.colour, linewidth, dash);
+					if (prev_x != INVALID_DATAPOINT_POS) GfxDrawLine(prev_x, prev_y, x, y, colour, linewidth, dash);
 
 					prev_x = x;
 					prev_y = y;
@@ -557,6 +561,23 @@ protected:
 
 				x += x_sep;
 			}
+		};
+
+		/* Draw unhighlighted datasets. */
+		for (const DataSet &dataset : this->data) {
+			if (dataset.exclude_bit != this->highlight_data && dataset.range_bit != this->highlight_range) {
+				draw_dataset(dataset, dataset.colour);
+			}
+		}
+
+		/* If any dataset or range is highlighted, draw separately after the rest so they appear on top of all other
+		 * data. Highlighted data is only drawn when highlight_state is set, otherwise it is invisible. */
+		if (this->highlight_state && (this->highlight_data != UINT8_MAX || this->highlight_range != UINT8_MAX)) {
+			for (const DataSet &dataset : this->data) {
+				if (dataset.exclude_bit == this->highlight_data || dataset.range_bit == this->highlight_range) {
+					draw_dataset(dataset, PC_WHITE);
+				}
+			}
 		}
 	}
 
@@ -566,6 +587,15 @@ protected:
 	{
 		SetWindowDirty(WC_GRAPH_LEGEND, 0);
 	}
+
+	const IntervalTimer<TimerWindow> blink_interval = {TIMER_BLINK_INTERVAL, [this](auto) {
+		/* If nothing is highlighted then no redraw is needed. */
+		if (this->highlight_data == UINT8_MAX && this->highlight_range == UINT8_MAX) return;
+
+		/* Toggle the highlight state and redraw. */
+		this->highlight_state = !this->highlight_state;
+		this->SetDirty();
+	}};
 
 public:
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -671,6 +701,31 @@ public:
 		}
 	}
 
+	void OnMouseOver(Point pt, WidgetID widget) override
+	{
+		/* Test if a range should be highlighted. */
+		uint8_t new_highlight_range = UINT8_MAX;
+		if (widget == WID_GRAPH_RANGE_MATRIX) {
+			int row = GetRowFromWidget(pt.y, widget, 0, GetCharacterHeight(FS_SMALL) + WidgetDimensions::scaled.framerect.Vertical());
+			if (!HasBit(this->excluded_range, row)) new_highlight_range = static_cast<uint8_t>(row);
+		}
+
+		/* Test if a dataset should be highlighted. */
+		uint8_t new_highlight_data = UINT8_MAX;
+		if (widget == WID_GRAPH_MATRIX) {
+			auto dataset_index = this->GetDatasetIndex(pt.y);
+			if (dataset_index.has_value() && !HasBit(this->excluded_data, *dataset_index)) new_highlight_data = *dataset_index;
+		}
+
+		if (this->highlight_data == new_highlight_data && this->highlight_range == new_highlight_range) return;
+
+		/* Range or data set highlight has changed, set and redraw. */
+		this->highlight_data = new_highlight_data;
+		this->highlight_range = new_highlight_range;
+		this->highlight_state = true;
+		this->SetDirty();
+	}
+
 	void OnGameTick() override
 	{
 		this->UpdateStatistics(false);
@@ -688,6 +743,8 @@ public:
 	}
 
 	virtual void UpdateStatistics(bool initialize) = 0;
+
+	virtual std::optional<uint8_t> GetDatasetIndex(int) { return std::nullopt; }
 };
 
 class BaseCompanyGraphWindow : public BaseGraphWindow {
@@ -1063,6 +1120,21 @@ struct BaseCargoGraphWindow : BaseGraphWindow {
 	virtual CargoTypes GetCargoTypes(WindowNumber number) const = 0;
 	virtual CargoTypes &GetExcludedCargoTypes() const = 0;
 
+	std::optional<uint8_t> GetDatasetIndex(int y) override
+	{
+		int row = this->vscroll->GetScrolledRowFromWidget(y, this, WID_GRAPH_MATRIX);
+		if (row >= this->vscroll->GetCount()) return std::nullopt;
+
+		for (const CargoSpec *cs : _sorted_cargo_specs) {
+			if (!HasBit(this->cargo_types, cs->Index())) continue;
+			if (row-- > 0) continue;
+
+			return cs->Index();
+		}
+
+		return std::nullopt;
+	}
+
 	void OnInit() override
 	{
 		/* Width of the legend blob. */
@@ -1124,7 +1196,9 @@ struct BaseCargoGraphWindow : BaseGraphWindow {
 			/* Cargo-colour box with outline */
 			const Rect cargo = text.WithWidth(this->legend_width, rtl);
 			GfxFillRect(cargo, PC_BLACK);
-			GfxFillRect(cargo.Shrink(WidgetDimensions::scaled.bevel), cs->legend_colour);
+			uint8_t pc = cs->legend_colour;
+			if (this->highlight_data == cs->Index()) pc = this->highlight_state ? PC_WHITE : PC_BLACK;
+			GfxFillRect(cargo.Shrink(WidgetDimensions::scaled.bevel), pc);
 
 			/* Cargo name */
 			DrawString(text.Indent(this->legend_width + WidgetDimensions::scaled.hsep_normal, rtl), GetString(STR_GRAPH_CARGO_PAYMENT_CARGO, cs->name));
