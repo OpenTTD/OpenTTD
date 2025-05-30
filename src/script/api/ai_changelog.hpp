@@ -28,6 +28,8 @@
  * \li AICargo::CC_POTABLE
  * \li AICargo::CC_NON_POTABLE
  * \li AIVehicleList_Waypoint
+ * \li AIList::GetSorterType
+ * \li AIList::GetSorterDirection
  *
  * Other changes:
  * \li AIBridge::GetBridgeID renamed to AIBridge::GetBridgeType
