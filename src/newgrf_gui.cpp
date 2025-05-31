@@ -863,7 +863,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 							/* Get index of current selection. */
 							int active_sel_pos = this->GetCurrentActivePosition();
 							if (active_sel_pos != this->active_over) {
-								uint top = this->active_over < active_sel_pos ? tr.top + 1 : tr.top + step_height - 2;
+								uint top = (active_sel_pos < 0 || this->active_over < active_sel_pos) ? tr.top + 1 : tr.top + step_height - 2;
 								GfxFillRect(tr.left, top - 1, tr.right, top + 1, PC_GREY);
 							}
 						}
