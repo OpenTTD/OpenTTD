@@ -61,14 +61,14 @@ public:
 #ifdef DOXYGEN_API
 	/**
 	 * @param station_id The station to get the list of vehicles from, which have orders to it.
-	 * @pre ScriptBaseStation::IsValidBaseStation(station_id)
+	 * @pre ScriptStation::IsValidStation(station_id)
 	 */
 	ScriptVehicleList_Station(StationID station_id);
 
 	/**
 	 * @param station_id The station to get the list of vehicles from, which have orders to it.
 	 * @param vehicle_type The VehicleType to get the list of vehicles for.
-	 * @pre ScriptBaseStation::IsValidBaseStation(station_id)
+	 * @pre ScriptStation::IsValidStation(station_id)
 	 */
 	ScriptVehicleList_Station(StationID station_id, ScriptVehicle::VehicleType vehicle_type);
 #else
