@@ -52,7 +52,7 @@ void GameInstance::RegisterAPI()
 
 	if (!this->LoadCompatibilityScripts(GAME_DIR, GameInfo::ApiVersions)) this->Died();
 
-	RegisterGameTranslation(*this->engine);
+	if (this->IsAlive()) RegisterGameTranslation(*this->engine);
 }
 
 int GameInstance::GetSetting(const std::string &name)
