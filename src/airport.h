@@ -127,6 +127,7 @@ enum class AirportBlock : uint8_t {
 	/* end of new blocks */
 
 	Nothing          = 30,
+	Zeppeliner       = 62, ///< Block for the zeppeliner disaster vehicle.
 	AirportClosed    = 63, ///< Dummy block for indicating a closed airport.
 };
 using AirportBlocks = EnumBitSet<AirportBlock, uint64_t>;
