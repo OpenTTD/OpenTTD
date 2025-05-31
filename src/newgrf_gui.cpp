@@ -708,7 +708,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 			auto c = std::ranges::find_if(this->actives, [&iter](const auto &grfconfig) { return grfconfig.get() == iter->second; });
 			assert(c != std::end(this->actives));
-			auto d = std::make_unique<GRFConfig>(*iter->second);
+			auto d = std::make_unique<GRFConfig>(*a);
 			if (d->IsCompatible((*c)->version)) {
 				d->CopyParams(**c);
 			} else {
