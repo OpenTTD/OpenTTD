@@ -24,7 +24,7 @@ if (!$Env:AZURE_CODESIGN_ENDPOINT -or !$Env:AZURE_CODESIGN_ACCOUNT_NAME -or !$En
 	exit
 }
 
-Install-Module -Name AzureCodeSigning -Scope CurrentUser -RequiredVersion 0.3.0 -Force -Repository PSGallery
+Install-Module -Name TrustedSigning -Scope CurrentUser -RequiredVersion 0.5.3 -Force -Repository PSGallery
 
 $params = @{}
 
@@ -37,4 +37,4 @@ $params["FileDigest"] = "SHA256"
 $params["TimestampRfc3161"] = "http://timestamp.acs.microsoft.com"
 $params["TimestampDigest"] = "SHA256"
 
-Invoke-AzureCodeSigning @params
+Invoke-TrustedSigning @params
