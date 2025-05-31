@@ -314,6 +314,7 @@ struct SetBitIterator {
 	Iterator begin() { return Iterator(this->bitset); }
 	Iterator end() { return Iterator(static_cast<Tbitset>(0)); }
 	bool empty() { return this->begin() == this->end(); }
+	size_t size() { return CountBits(this->bitset); }
 
 private:
 	Tbitset bitset;
