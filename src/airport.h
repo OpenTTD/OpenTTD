@@ -124,6 +124,7 @@ enum class AirportBlock : uint8_t {
 	RunwayOut2       = 10, ///< @note re-uses #AirportBlock::TaxiwayBusy
 	HelipadGroup     = 13, ///< @note re-uses #AirportBlock::AirportEntrance
 	OutWay3          = 31,
+	Zeppeliner       = 32, ///< Block for the zeppeliner disaster vehicle.
 	/* end of new blocks */
 
 	Nothing          = 30,
