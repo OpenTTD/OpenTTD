@@ -441,7 +441,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :게임 종료
 
 STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :도시 생성
-STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :건물 건설
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :건물 생성
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :게임 기본 설정
@@ -2864,7 +2864,7 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :바깥쪽 시�
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :안쪽 시내
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :도시 중심
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :도시 발전 방지
+STR_HOUSE_PICKER_PROTECT_TITLE                                  :업그레이드 방지
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :이 건물이 도시가 성장함에 따라 교체되는 것을 막을지 여부를 선택합니다
 STR_HOUSE_PICKER_PROTECT_OFF                                    :끄기
 STR_HOUSE_PICKER_PROTECT_ON                                     :켜기

@@ -4914,9 +4914,9 @@ STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Avançar
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Envolver o texto
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Envolve o texto da janela de forma que não é necessário deslizar listagem
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Leia-me
-STR_TEXTFILE_VIEW_README_TOOLTIP                                :Ver "readme" para este conteúdo
+STR_TEXTFILE_VIEW_README_TOOLTIP                                :Ver "Leia-me" para este conteúdo
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Lista de alterações
-STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :Ver o "log" de alterações para este conteúdo
+STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :Ver o registo de alterações para este conteúdo
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licença
 STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Ver a licença para este conteúdo
 ###length 5
