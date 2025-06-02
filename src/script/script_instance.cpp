@@ -68,7 +68,7 @@ void ScriptInstance::Initialize(const std::string &main_script, const std::strin
 	}
 
 	try {
-		ScriptObject::SetAllowDoCommand(false);
+		ScriptObject::DisableDoCommandScope disabler{};
 		/* Load and execute the script for this script */
 		if (main_script == "%_dummy") {
 			this->LoadDummyScript();
@@ -88,7 +88,6 @@ void ScriptInstance::Initialize(const std::string &main_script, const std::strin
 			this->Died();
 			return;
 		}
-		ScriptObject::SetAllowDoCommand(true);
 	} catch (Script_FatalError &e) {
 		this->is_dead = true;
 		this->engine->ThrowError(e.GetErrorMessage());
@@ -213,21 +212,22 @@ void ScriptInstance::GameLoop()
 
 	if (!this->is_started) {
 		try {
-			ScriptObject::SetAllowDoCommand(false);
-			/* Run the constructor if it exists. Don't allow any DoCommands in it. */
-			if (this->engine->MethodExists(*this->instance, "constructor")) {
-				if (!this->engine->CallMethod(*this->instance, "constructor", MAX_CONSTRUCTOR_OPS) || this->engine->IsSuspended()) {
-					if (this->engine->IsSuspended()) ScriptLog::Error("This script took too long to initialize. Script is not started.");
+			{
+				ScriptObject::DisableDoCommandScope disabler{};
+				/* Run the constructor if it exists. Don't allow any DoCommands in it. */
+				if (this->engine->MethodExists(*this->instance, "constructor")) {
+					if (!this->engine->CallMethod(*this->instance, "constructor", MAX_CONSTRUCTOR_OPS) || this->engine->IsSuspended()) {
+						if (this->engine->IsSuspended()) ScriptLog::Error("This script took too long to initialize. Script is not started.");
+						this->Died();
+						return;
+					}
+				}
+				if (!this->CallLoad() || this->engine->IsSuspended()) {
+					if (this->engine->IsSuspended()) ScriptLog::Error("This script took too long in the Load function. Script is not started.");
 					this->Died();
 					return;
 				}
 			}
-			if (!this->CallLoad() || this->engine->IsSuspended()) {
-				if (this->engine->IsSuspended()) ScriptLog::Error("This script took too long in the Load function. Script is not started.");
-				this->Died();
-				return;
-			}
-			ScriptObject::SetAllowDoCommand(true);
 			/* Start the script by calling Start() */
 			if (!this->engine->CallMethod(*this->instance, "Start",  _settings_game.script.script_max_opcode_till_suspend) || !this->engine->IsSuspended()) this->Died();
 		} catch (Script_Suspend &e) {
@@ -520,10 +520,9 @@ void ScriptInstance::Save()
 		return;
 	} else if (this->engine->MethodExists(*this->instance, "Save")) {
 		HSQOBJECT savedata;
-		/* We don't want to be interrupted during the save function. */
-		bool backup_allow = ScriptObject::GetAllowDoCommand();
-		ScriptObject::SetAllowDoCommand(false);
 		try {
+			/* We don't want to be interrupted during the save function. */
+			ScriptObject::DisableDoCommandScope disabler{};
 			if (!this->engine->CallMethod(*this->instance, "Save", &savedata, MAX_SL_OPS)) {
 				/* The script crashed in the Save function. We can't kill
 				 * it here, but do so in the next script tick. */
@@ -544,7 +543,6 @@ void ScriptInstance::Save()
 			this->engine->CrashOccurred();
 			return;
 		}
-		ScriptObject::SetAllowDoCommand(backup_allow);
 
 		if (!sq_istable(savedata)) {
 			ScriptLog::Error(this->engine->IsSuspended() ? "This script took too long to Save." : "Save function should return a table.");
