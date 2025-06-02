@@ -32,4 +32,7 @@ public:
 	};
 };
 
+/** Interval used by blinking interface elements. */
+static constexpr std::chrono::milliseconds TIMER_BLINK_INTERVAL{450};
+
 #endif /* TIMER_WINDOW_H */

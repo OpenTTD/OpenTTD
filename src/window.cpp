@@ -3073,7 +3073,7 @@ static const IntervalTimer<TimerWindow> window_interval(std::chrono::millisecond
 });
 
 /** Blink the window highlight colour constantly. */
-static const IntervalTimer<TimerWindow> highlight_interval(std::chrono::milliseconds(450), [](auto) {
+static const IntervalTimer<TimerWindow> highlight_interval(TIMER_BLINK_INTERVAL, [](auto) {
 	_window_highlight_colour = !_window_highlight_colour;
 });
 
