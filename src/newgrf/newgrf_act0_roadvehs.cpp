@@ -194,10 +194,10 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint first, uint last, int prop, B
 				_gted[e->index].UpdateRefittability(prop == 0x24 && count != 0);
 				if (prop == 0x24) _gted[e->index].defaultcargo_grf = _cur_gps.grffile;
 				CargoTypes &ctt = prop == 0x24 ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask;
-				ctt = 0;
+				ctt.Reset();
 				while (count--) {
 					CargoType ctype = GetCargoTranslation(buf.ReadByte(), _cur_gps.grffile);
-					if (IsValidCargoType(ctype)) SetBit(ctt, ctype);
+					if (IsValidCargoType(ctype)) ctt.Set(ctype);
 				}
 				break;
 			}

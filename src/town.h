@@ -74,7 +74,7 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	uint8_t exclusive_counter = 0; ///< months till the exclusivity expires
 	ReferenceThroughBaseContainer<std::array<int16_t, MAX_COMPANIES>> ratings{};  ///< ratings of each company for this town
 
-	std::array<TransportedCargoStat<uint32_t>, NUM_CARGO> supplied{}; ///< Cargo statistics about supplied cargo.
+	ReferenceThroughBaseContainer<std::array<TransportedCargoStat<uint32_t>, NUM_CARGO>> supplied{}; ///< Cargo statistics about supplied cargo.
 	std::array<TransportedCargoStat<uint16_t>, NUM_TAE> received{}; ///< Cargo statistics about received cargotypes.
 	std::array<uint32_t, NUM_TAE> goal{}; ///< Amount of cargo required for the town to grow.
 

@@ -1407,7 +1407,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 
 					std::string_view list_separator = GetListSeparator();
 					for (const auto &cs : _sorted_cargo_specs) {
-						if (!HasBit(cmask, cs->Index())) continue;
+						if (!cmask.Test(cs->Index())) continue;
 
 						if (first) {
 							first = false;
