@@ -283,7 +283,7 @@ static ZoomLevels LoadSpriteV2(SpriteLoader::SpriteCollection &sprite, SpriteFil
 
 		uint8_t zoom = file.ReadByte();
 
-		bool is_wanted_colour_depth = (colour != SpriteComponents{} && (load_32bpp ? colour != SpriteComponent::Palette : colour == SpriteComponent::Palette));
+		bool is_wanted_colour_depth = (colour.Any() && (load_32bpp ? colour != SpriteComponent::Palette : colour == SpriteComponent::Palette));
 		bool is_wanted_zoom_lvl;
 
 		if (sprite_type != SpriteType::MapGen) {

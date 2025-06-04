@@ -604,11 +604,11 @@ void ReadGRFSpriteOffsets(SpriteFile &file)
 				if (length > 0) {
 					uint8_t zoom = file.ReadByte();
 					length--;
-					if (colour != SpriteComponents{} && zoom == 0) { // ZoomLevel::Normal (normal zoom)
+					if (colour.Any() && zoom == 0) { // ZoomLevel::Normal (normal zoom)
 						SetBit(offset.control_flags, (colour != SpriteComponent::Palette) ? SCCF_ALLOW_ZOOM_MIN_1X_32BPP : SCCF_ALLOW_ZOOM_MIN_1X_PAL);
 						SetBit(offset.control_flags, (colour != SpriteComponent::Palette) ? SCCF_ALLOW_ZOOM_MIN_2X_32BPP : SCCF_ALLOW_ZOOM_MIN_2X_PAL);
 					}
-					if (colour != SpriteComponents{} && zoom == 2) { // ZoomLevel::In2x (2x zoomed in)
+					if (colour.Any() && zoom == 2) { // ZoomLevel::In2x (2x zoomed in)
 						SetBit(offset.control_flags, (colour != SpriteComponent::Palette) ? SCCF_ALLOW_ZOOM_MIN_2X_32BPP : SCCF_ALLOW_ZOOM_MIN_2X_PAL);
 					}
 				}

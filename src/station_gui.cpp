@@ -1454,7 +1454,7 @@ struct StationViewWindow : public Window {
 		this->SetWidgetLoweredState(WID_SV_CLOSE_AIRPORT, st->facilities.Test(StationFacility::Airport) && st->airport.blocks.Test(AirportBlock::AirportClosed));
 
 		extern const Station *_viewport_highlight_station;
-		this->SetWidgetDisabledState(WID_SV_CATCHMENT, st->facilities == StationFacilities{});
+		this->SetWidgetDisabledState(WID_SV_CATCHMENT, st->facilities.None());
 		this->SetWidgetLoweredState(WID_SV_CATCHMENT, _viewport_highlight_station == st);
 
 		this->DrawWidgets();
