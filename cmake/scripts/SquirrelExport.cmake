@@ -73,9 +73,7 @@ macro(reset_reader)
     unset(STATIC_METHODS)
     unset(CLS)
     unset(START_SQUIRREL_DEFINE_ON_NEXT_LINE)
-    set(CLS_LEVEL 0)
     unset(CLS_IN_API)
-    set(BRACE_LEVEL 0)
 endmacro()
 
 reset_reader()
@@ -83,6 +81,9 @@ reset_reader()
 file(STRINGS "${SCRIPT_API_FILE}" SOURCE_LINES)
 
 set(NUM_LINE 0)
+set(CLS_LEVEL 0)
+set(BRACE_LEVEL 0)
+
 macro(doxygen_check)
     if(NOT "${DOXYGEN_SKIP}" STREQUAL "")
         message(FATAL_ERROR "${SCRIPT_API_FILE}:${NUM_LINE}: a DOXYGEN_API block was not properly closed")
@@ -155,6 +156,13 @@ foreach(LINE IN LISTS SOURCE_LINES)
     if(SQUIRREL_STUFF)
         continue()
     endif()
+
+    # Count braces to skip function bodies
+    string(REGEX REPLACE "[^{]" "" OPENING_BRACES "${LINE}")
+    string(LENGTH "${OPENING_BRACES}" OPENING_BRACES)
+    string(REGEX REPLACE "[^}]" "" CLOSING_BRACES "${LINE}")
+    string(LENGTH "${CLOSING_BRACES}" CLOSING_BRACES)
+    math(EXPR BRACE_LEVEL "${BRACE_LEVEL} + ${OPENING_BRACES} - ${CLOSING_BRACES}")
 
     # Ignore forward declarations of classes
     if("${LINE}" MATCHES "^(\t*)class(.*);")
@@ -274,7 +282,7 @@ foreach(LINE IN LISTS SOURCE_LINES)
     endif()
 
     # Maybe the end of the class, if so we can start with the Squirrel export pretty soon
-    if("${LINE}" MATCHES "};")
+    if(BRACE_LEVEL LESS CLS_LEVEL)
         math(EXPR CLS_LEVEL "${CLS_LEVEL} - 1")
         if(CLS_LEVEL)
             unset(IN_ENUM)
@@ -529,13 +537,9 @@ foreach(LINE IN LISTS SOURCE_LINES)
         continue()
     endif()
 
-    # Count braces to skip function bodies
-    string(REGEX REPLACE "[^{]" "" OPENING_BRACES "${LINE}")
-    string(LENGTH "${OPENING_BRACES}" OPENING_BRACES)
-    string(REGEX REPLACE "[^}]" "" CLOSING_BRACES "${LINE}")
-    string(LENGTH "${CLOSING_BRACES}" CLOSING_BRACES)
-    set(OLD_BRACE_LEVEL "${BRACE_LEVEL}")
-    math(EXPR BRACE_LEVEL "${BRACE_LEVEL} + ${OPENING_BRACES} - ${CLOSING_BRACES}")
+    if(NOT BRACE_LEVEL EQUAL CLS_LEVEL)
+        continue()
+    endif()
 
     # Add enums
     if(IN_ENUM)
@@ -562,10 +566,6 @@ foreach(LINE IN LISTS SOURCE_LINES)
                 list(APPEND ENUM_ERROR_TO_STRINGS "${ENUM_VALUE}")
             endif()
         endif()
-        continue()
-    endif()
-
-    if(OLD_BRACE_LEVEL)
         continue()
     endif()
 
