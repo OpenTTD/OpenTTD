@@ -25,6 +25,13 @@ macro(dump_fileheader)
     endif()
 endmacro()
 
+macro(open_namespace)
+    if(NOT NAMESPACE_OPENED)
+        string(APPEND SQUIRREL_EXPORT "\nnamespace SQConvert {")
+        set(NAMESPACE_OPENED TRUE)
+    endif()
+endmacro()
+
 macro(dump_class_templates NAME)
     string(REGEX REPLACE "^Script" "" REALNAME ${NAME})
 
@@ -305,32 +312,16 @@ foreach(LINE IN LISTS SOURCE_LINES)
         string(APPEND SQUIRREL_EXPORT "\n")
 
         if("${APIUC}" STREQUAL "Template")
-            # First check whether we have enums to print
-            if(DEFINED ENUMS)
-                if(NOT NAMESPACE_OPENED)
-                    string(APPEND SQUIRREL_EXPORT "\nnamespace SQConvert {")
-                    set(NAMESPACE_OPENED TRUE)
-                endif()
-            endif()
-
             # Then check whether we have structs/classes to print
             if(DEFINED STRUCTS)
-                if(NOT NAMESPACE_OPENED)
-                    string(APPEND SQUIRREL_EXPORT "\nnamespace SQConvert {")
-                    set(NAMESPACE_OPENED TRUE)
-                endif()
+                open_namespace()
                 string(APPEND SQUIRREL_EXPORT "\n\t/* Allow inner classes/structs to be used as Squirrel parameters */")
                 foreach(STRUCT IN LISTS STRUCTS)
                     dump_class_templates(${STRUCT})
                 endforeach()
             endif()
 
-            if(NOT NAMESPACE_OPENED)
-                string(APPEND SQUIRREL_EXPORT "\nnamespace SQConvert {")
-                set(NAMESPACE_OPENED TRUE)
-            else()
-                string(APPEND SQUIRREL_EXPORT "\n")
-            endif()
+            open_namespace()
             string(APPEND SQUIRREL_EXPORT "\n\t/* Allow ${CLS} to be used as Squirrel parameter */")
             dump_class_templates(${CLS})
 
