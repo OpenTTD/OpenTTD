@@ -4163,7 +4163,7 @@ STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Ilma-alu
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Kaikki rahtityypit
-STR_CARGO_TYPE_FILTER_FREIGHT                                   :Rahti
+STR_CARGO_TYPE_FILTER_FREIGHT                                   :Rahtitavara
 STR_CARGO_TYPE_FILTER_NONE                                      :Ei mikään
 
 ###length VEHICLE_TYPES
