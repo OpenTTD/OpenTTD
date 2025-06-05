@@ -70,14 +70,6 @@ struct BaseSet {
 	uint found_files = 0; ///< Number of the files that could be found
 	uint valid_files = 0; ///< Number of the files that could be found and are valid
 
-	T *next = nullptr; ///< The next base set in this list
-
-	/** Free everything we allocated */
-	~BaseSet()
-	{
-		delete this->next;
-	}
-
 	/**
 	 * Get the number of missing files.
 	 * @return the number
@@ -170,8 +162,8 @@ struct BaseSet {
 template <class Tbase_set>
 class BaseMedia : FileScanner {
 protected:
-	static inline Tbase_set *available_sets = nullptr; ///< All available sets
-	static inline Tbase_set *duplicate_sets = nullptr; ///< All sets that aren't available, but needed for not downloading base sets when a newer version than the one on BaNaNaS is loaded.
+	static inline std::list<Tbase_set> available_sets; ///< All available sets
+	static inline std::list<Tbase_set> duplicate_sets; ///< All sets that aren't available, but needed for not downloading base sets when a newer version than the one on BaNaNaS is loaded.
 	static inline const Tbase_set *used_set = nullptr; ///< The currently used set
 
 	bool AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename) override;
@@ -198,7 +190,7 @@ public:
 		return num + fs.Scan(GetExtension(), BASESET_DIR, Tbase_set::SEARCH_IN_TARS);
 	}
 
-	static Tbase_set *GetAvailableSets();
+	static std::list<Tbase_set>& GetAvailableSets();
 
 	static bool SetSet(const Tbase_set *set);
 	static bool SetSetByName(const std::string &name);
@@ -226,6 +218,6 @@ public:
  * @return The filename of the first file of the base set, or \c std::nullopt if there is no match.
  */
 template <class Tbase_set>
-std::optional<std::string_view> TryGetBaseSetFile(const ContentInfo &ci, bool md5sum, const Tbase_set *s);
+std::optional<std::string_view> TryGetBaseSetFile(const ContentInfo &ci, bool md5sum, const std::list<Tbase_set>& sets);
 
 #endif /* BASE_MEDIA_BASE_H */

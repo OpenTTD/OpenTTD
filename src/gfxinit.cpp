@@ -352,6 +352,10 @@ GraphicsSet::GraphicsSet() = default;
 /* instantiate here, because unique_ptr needs a complete type */
 GraphicsSet::~GraphicsSet() = default;
 
+GraphicsSet::GraphicsSet(GraphicsSet&&) = default;
+GraphicsSet& GraphicsSet::operator =(GraphicsSet&&) = default;
+
+
 bool GraphicsSet::FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename)
 {
 	if (!this->BaseSet<GraphicsSet>::FillSetDetails(ini, path, full_filename, false)) return false;
@@ -480,26 +484,26 @@ template <>
 
 	const GraphicsSet *best = nullptr;
 
-	auto IsBetter = [&best] (const auto *current) {
+	auto IsBetter = [&best] (const auto& current) {
 		/* Nothing chosen yet. */
 		if (best == nullptr) return true;
 		/* Not being a fallback is better. */
-		if (best->fallback && !current->fallback) return true;
+		if (best->fallback && !current.fallback) return true;
 		/* Having more valid files is better. */
-		if (best->valid_files < current->valid_files) return true;
+		if (best->valid_files < current.valid_files) return true;
 		/* Having (essentially) fewer valid files is worse. */
-		if (best->valid_files != current->valid_files) return false;
+		if (best->valid_files != current.valid_files) return false;
 		/* Having a later version of the same base set is better. */
-		if (best->shortname == current->shortname && best->version < current->version) return true;
+		if (best->shortname == current.shortname && best->version < current.version) return true;
 		/* The DOS palette is the better palette. */
-		return best->palette != PAL_DOS && current->palette == PAL_DOS;
+		return best->palette != PAL_DOS && current.palette == PAL_DOS;
 	};
 
-	for (const GraphicsSet *c = BaseMedia<GraphicsSet>::available_sets; c != nullptr; c = c->next) {
+	for (const GraphicsSet& gs : BaseMedia<GraphicsSet>::available_sets) {
 		/* Skip unusable sets */
-		if (c->GetNumMissing() != 0) continue;
+		if (gs.GetNumMissing() != 0) continue;
 
-		if (IsBetter(c)) best = c;
+		if (IsBetter(gs)) best = &gs;
 	}
 
 	BaseMedia<GraphicsSet>::used_set = best;
