@@ -310,8 +310,8 @@ ScriptObject::DisableDoCommandScope::DisableDoCommandScope()
 		IncreaseDoCommandCosts(res.GetCost());
 		if (!_generating_world) {
 			/* Charge a nominal fee for asynchronously executed commands */
-			Squirrel *engine = ScriptObject::GetActiveInstance().engine;
-			Squirrel::DecreaseOps(engine->GetVM(), 100);
+			Squirrel &engine = *ScriptObject::GetActiveInstance().engine;
+			Squirrel::DecreaseOps(engine.GetVM(), 100);
 		}
 		if (callback != nullptr) {
 			/* Insert return value into to stack and throw a control code that
