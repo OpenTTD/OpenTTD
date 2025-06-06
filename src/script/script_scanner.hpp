@@ -26,7 +26,7 @@ public:
 	/**
 	 * Get the engine of the main squirrel handler (it indexes all available scripts).
 	 */
-	class Squirrel *GetEngine() { return this->engine; }
+	class Squirrel *GetEngine() { return this->engine.get(); }
 
 	/**
 	 * Get the current main script the ScanDir is currently tracking.
@@ -84,7 +84,7 @@ public:
 	void RescanDir();
 
 protected:
-	class Squirrel *engine;  ///< The engine we're scanning with.
+	std::unique_ptr<class Squirrel> engine;  ///< The engine we're scanning with.
 	std::string main_script; ///< The full path of the script.
 	std::string tar_file;    ///< If, which tar file the script was in.
 

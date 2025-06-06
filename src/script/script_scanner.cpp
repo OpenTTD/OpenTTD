@@ -58,7 +58,7 @@ void ScriptScanner::ResetEngine()
 
 void ScriptScanner::Initialize(std::string_view name)
 {
-	this->engine = new Squirrel(name);
+	this->engine = std::make_unique<Squirrel>(name);
 
 	this->RescanDir();
 
@@ -68,8 +68,6 @@ void ScriptScanner::Initialize(std::string_view name)
 ScriptScanner::~ScriptScanner()
 {
 	this->Reset();
-
-	delete this->engine;
 }
 
 void ScriptScanner::RescanDir()
