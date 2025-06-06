@@ -76,7 +76,7 @@ ScriptController::ScriptController(::CompanyID company) :
 
 /* static */ uint ScriptController::GetTick()
 {
-	return ScriptObject::GetActiveInstance().GetController()->ticks;
+	return ScriptObject::GetActiveInstance().GetController().ticks;
 }
 
 /* static */ int ScriptController::GetOpsTillSuspend()
@@ -96,7 +96,7 @@ ScriptController::ScriptController(::CompanyID company) :
 
 /* static */ HSQOBJECT ScriptController::Import(const std::string &library, const std::string &class_name, int version)
 {
-	ScriptController *controller = ScriptObject::GetActiveInstance().GetController();
+	ScriptController &controller = ScriptObject::GetActiveInstance().GetController();
 	Squirrel *engine = ScriptObject::GetActiveInstance().engine;
 	HSQUIRRELVM vm = engine->GetVM();
 
@@ -114,11 +114,11 @@ ScriptController::ScriptController(::CompanyID company) :
 
 	std::string fake_class;
 
-	LoadedLibraryList::iterator it = controller->loaded_library.find(library_name);
-	if (it != controller->loaded_library.end()) {
+	LoadedLibraryList::iterator it = controller.loaded_library.find(library_name);
+	if (it != controller.loaded_library.end()) {
 		fake_class = (*it).second;
 	} else {
-		int next_number = ++controller->loaded_library_count;
+		int next_number = ++controller.loaded_library_count;
 
 		/* Create a new fake internal name */
 		fake_class = fmt::format("_internalNA{}", next_number);
@@ -135,7 +135,7 @@ ScriptController::ScriptController(::CompanyID company) :
 		sq_newslot(vm, -3, SQFalse);
 		sq_pop(vm, 1);
 
-		controller->loaded_library[library_name] = fake_class;
+		controller.loaded_library[library_name] = fake_class;
 	}
 
 	/* Find the real class inside the fake class (like 'sets.Vector') */

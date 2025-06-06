@@ -146,7 +146,7 @@ public:
 	/**
 	 * Get the controller attached to the instance.
 	 */
-	class ScriptController *GetController() { return controller; }
+	class ScriptController &GetController() { return *this->controller; }
 
 	/**
 	 * Return the "this script died" value
