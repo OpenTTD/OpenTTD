@@ -545,7 +545,7 @@ void ScriptInstance::Save()
 		}
 
 		if (!sq_istable(savedata)) {
-			ScriptLog::Error(this->engine->IsSuspended() ? "This script took too long to Save." : "Save function should return a table.");
+			ScriptLog::Error(this->GetOpsTillSuspend() <= 0 ? "This script took too long to Save." : "Save function should return a table.");
 			SaveEmpty();
 			this->engine->CrashOccurred();
 			return;
