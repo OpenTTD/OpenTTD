@@ -22,11 +22,8 @@
 #include "../safeguards.h"
 
 
-AIScannerInfo::AIScannerInfo() :
-	ScriptScanner(),
-	info_dummy(nullptr)
-{
-}
+AIScannerInfo::AIScannerInfo() = default;
+AIScannerInfo::~AIScannerInfo() = default;
 
 void AIScannerInfo::Initialize()
 {
@@ -39,14 +36,9 @@ void AIScannerInfo::Initialize()
 	Script_CreateDummyInfo(this->engine->GetVM(), "AI", "ai");
 }
 
-void AIScannerInfo::SetDummyAI(class AIInfo *info)
+void AIScannerInfo::SetDummyAI(std::unique_ptr<class AIInfo>&& info)
 {
-	this->info_dummy = info;
-}
-
-AIScannerInfo::~AIScannerInfo()
-{
-	delete this->info_dummy;
+	this->info_dummy = std::move(info);
 }
 
 std::string AIScannerInfo::GetScriptName(ScriptInfo &info)
@@ -63,7 +55,7 @@ AIInfo *AIScannerInfo::SelectRandomAI() const
 {
 	if (_game_mode == GM_MENU) {
 		Debug(script, 0, "The intro game should not use AI, loading 'dummy' AI.");
-		return this->info_dummy;
+		return this->info_dummy.get();
 	}
 
 	/* Filter for AIs suitable as Random AI. */
@@ -72,7 +64,7 @@ AIInfo *AIScannerInfo::SelectRandomAI() const
 	uint num_random_ais = std::ranges::distance(random_ais);
 	if (num_random_ais == 0) {
 		Debug(script, 0, "No suitable AI found, loading 'dummy' AI.");
-		return this->info_dummy;
+		return this->info_dummy.get();
 	}
 
 	/* Pick a random AI */
