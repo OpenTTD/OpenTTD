@@ -937,11 +937,11 @@ void ClientNetworkContentSocketHandler::ReverseLookupTreeDependency(ConstContent
 
 	/* First find all direct parents. We can't use the "normal" iterator as
 	 * we are including stuff into the vector and as such the vector's data
-	 * store can be reallocated (and thus move), which means out iterating
+	 * store can be reallocated (and thus move), which means our iterating
 	 * pointer gets invalid. So fall back to the indices. */
-	for (const ContentInfo *ci : tree) {
+	for (size_t i = 0; i < tree.size(); i++) {
 		ConstContentVector parents;
-		this->ReverseLookupDependency(parents, *ci);
+		this->ReverseLookupDependency(parents, *tree[i]);
 
 		for (const ContentInfo *ci : parents) {
 			include(tree, ci);
