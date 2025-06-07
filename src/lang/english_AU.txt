@@ -5919,5 +5919,9 @@ STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELO
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
 STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Open badge configuration
 STR_BADGE_CONFIG_RESET                                          :Reset
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Badge Icons
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Badge Filters
 STR_BADGE_CONFIG_PREVIEW                                        :Preview Image
 STR_BADGE_CONFIG_NAME                                           :Name
+STR_BADGE_FILTER_ANY_LABEL                                      :Any {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} is {STRING}

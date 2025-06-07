@@ -6024,5 +6024,9 @@ STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELO
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
 STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Άνοιγμα ρυθμίσεων badge
 STR_BADGE_CONFIG_RESET                                          :Επαναφορά
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Εικονίδια Badge
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Φίλτρα Badge
 STR_BADGE_CONFIG_PREVIEW                                        :Προεπισκόπιση Εικόνας
 STR_BADGE_CONFIG_NAME                                           :Όνομα
+STR_BADGE_FILTER_ANY_LABEL                                      :Κάθε {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} είναι {STRING}

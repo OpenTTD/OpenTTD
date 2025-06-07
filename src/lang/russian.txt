@@ -520,7 +520,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Исто
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Список задач
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Графики различных показателей деятельности компаний и оплаты грузоперевозок
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Рейтинги компаний
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Открыть промышленный каталог, производственную цепочку или финансировать строительство новой промышленности
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Показать список предприятий и производственные цепочки; профинансировать строительство нового предприятия
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Списки поездов по компаниям. Ctrl+щелчок - показать/скрыть группы.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Списки автомобильного транспорта по компаниям. Ctrl+щелчок - показать/скрыть группы.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Списки судов по компаниям. Ctrl+щелчок - показать/скрыть группы.
@@ -6180,5 +6180,9 @@ STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELO
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
 STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Открыть настройки значков
 STR_BADGE_CONFIG_RESET                                          :Сброс
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Иконки значков
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Фильтры значков
 STR_BADGE_CONFIG_PREVIEW                                        :Предпросмотр
 STR_BADGE_CONFIG_NAME                                           :Название
+STR_BADGE_FILTER_ANY_LABEL                                      :Любой {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} равен {STRING}

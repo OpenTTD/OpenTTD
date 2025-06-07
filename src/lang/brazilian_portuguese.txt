@@ -5920,5 +5920,9 @@ STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELO
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
 STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Abrir configuração de crachá
 STR_BADGE_CONFIG_RESET                                          :Restaurar
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Ícones de Crachá
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Filtros de Crachá
 STR_BADGE_CONFIG_PREVIEW                                        :Pré-visualizar imagem
 STR_BADGE_CONFIG_NAME                                           :Nome
+STR_BADGE_FILTER_ANY_LABEL                                      :Qualquer {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} é {STRING}

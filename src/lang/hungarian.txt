@@ -6024,5 +6024,9 @@ STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELO
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
 STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Jelvény beállítások megnyitása
 STR_BADGE_CONFIG_RESET                                          :Visszaállítás
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Jelvény ikonok
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Jelvény szűrők
 STR_BADGE_CONFIG_PREVIEW                                        :Előnézet kép
 STR_BADGE_CONFIG_NAME                                           :Név
+STR_BADGE_FILTER_ANY_LABEL                                      :Bármelyik {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} {STRING}

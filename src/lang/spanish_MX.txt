@@ -5920,5 +5920,8 @@ STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELO
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
 STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Abrir la configuración de insignias
 STR_BADGE_CONFIG_RESET                                          :Restablecer
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Iconos de insignias
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Filtros de insignias
 STR_BADGE_CONFIG_PREVIEW                                        :Vista previa de imagen
 STR_BADGE_CONFIG_NAME                                           :Nombre
+STR_BADGE_FILTER_ANY_LABEL                                      :Cualquier {STRING}
