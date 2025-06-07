@@ -91,6 +91,14 @@ enum TownLayout : uint8_t {
 };
 DECLARE_ENUM_AS_ADDABLE(TownLayout)
 
+/** Options for growing towns. */
+enum class TownExpandMode : uint8_t {
+	Buildings, ///< Allow town to place buildings.
+	Roads, ///< Allow town to place roads.
+};
+
+using TownExpandModes = EnumBitSet<TownExpandMode, uint8_t>;
+
 /** Town founding setting values. It needs to be 8bits, because we save and load it as such */
 enum TownFounding : uint8_t {
 	TF_BEGIN = 0,     ///< Used for iterations and limit testing

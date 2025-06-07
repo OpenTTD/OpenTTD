@@ -488,10 +488,17 @@ public:
 				SetViewportCatchmentTown(Town::Get(this->window_number), !this->IsWidgetLowered(WID_TV_CATCHMENT));
 				break;
 
-			case WID_TV_EXPAND: { // expand town - only available on Scenario editor
-				Command<CMD_EXPAND_TOWN>::Post(STR_ERROR_CAN_T_EXPAND_TOWN, static_cast<TownID>(this->window_number), 0);
+			case WID_TV_EXPAND: // expand town - only available on Scenario editor
+				Command<CMD_EXPAND_TOWN>::Post(STR_ERROR_CAN_T_EXPAND_TOWN, static_cast<TownID>(this->window_number), 0, {TownExpandMode::Buildings, TownExpandMode::Roads});
 				break;
-			}
+
+			case WID_TV_EXPAND_BUILDINGS: // expand buildings of town - only available on Scenario editor
+				Command<CMD_EXPAND_TOWN>::Post(STR_ERROR_CAN_T_EXPAND_TOWN, static_cast<TownID>(this->window_number), 0, {TownExpandMode::Buildings});
+				break;
+
+			case WID_TV_EXPAND_ROADS: // expand roads of town - only available on Scenario editor
+				Command<CMD_EXPAND_TOWN>::Post(STR_ERROR_CAN_T_EXPAND_TOWN, static_cast<TownID>(this->window_number), 0, {TownExpandMode::Roads});
+				break;
 
 			case WID_TV_DELETE: // delete town - only available on Scenario editor
 				Command<CMD_DELETE_TOWN>::Post(STR_ERROR_TOWN_CAN_T_DELETE, static_cast<TownID>(this->window_number));
@@ -638,10 +645,14 @@ static constexpr NWidgetPart _nested_town_editor_view_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_TV_INFO), SetMinimalSize(260, 32), SetResize(1, 0), SetFill(1, 0), EndContainer(),
-	NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TV_EXPAND), SetMinimalSize(80, 12), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_TOWN_VIEW_EXPAND_BUTTON, STR_TOWN_VIEW_EXPAND_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TV_DELETE), SetMinimalSize(80, 12), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_TOWN_VIEW_DELETE_BUTTON, STR_TOWN_VIEW_DELETE_TOOLTIP),
-		NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_TV_CATCHMENT), SetMinimalSize(40, 12), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_BUTTON_CATCHMENT, STR_TOOLTIP_CATCHMENT),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TV_EXPAND), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_TOWN_VIEW_EXPAND_BUTTON, STR_TOWN_VIEW_EXPAND_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TV_EXPAND_BUILDINGS), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON, STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TV_EXPAND_ROADS), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_TOWN_VIEW_EXPAND_ROADS_BUTTON, STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TV_DELETE), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_TOWN_VIEW_DELETE_BUTTON, STR_TOWN_VIEW_DELETE_TOOLTIP),
+		NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_TV_CATCHMENT), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_BUTTON_CATCHMENT, STR_TOOLTIP_CATCHMENT),
 		NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
 	EndContainer(),
 };
@@ -1078,7 +1089,6 @@ static constexpr NWidgetPart _nested_found_town_widgets[] = {
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_TF_RANDOM_TOWN), SetStringTip(STR_FOUND_TOWN_RANDOM_TOWN_BUTTON, STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP), SetFill(1, 0),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_TF_MANY_RANDOM_TOWNS), SetStringTip(STR_FOUND_TOWN_MANY_RANDOM_TOWNS, STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP), SetFill(1, 0),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_TF_LOAD_FROM_FILE), SetStringTip(STR_FOUND_TOWN_LOAD_FROM_FILE, STR_FOUND_TOWN_LOAD_FROM_FILE_TOOLTIP), SetFill(1, 0),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_TF_EXPAND_ALL_TOWNS), SetStringTip(STR_FOUND_TOWN_EXPAND_ALL_TOWNS, STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
 			EndContainer(),
 
@@ -1120,6 +1130,18 @@ static constexpr NWidgetPart _nested_found_town_widgets[] = {
 					EndContainer(),
 				EndContainer(),
 			EndContainer(),
+
+			/* Town expansion selection. */
+			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_TF_TOWN_EXPAND_SEL),
+				NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0),
+					NWidget(WWT_LABEL, INVALID_COLOUR), SetStringTip(STR_FOUND_TOWN_EXPAND_MODE),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_TF_EXPAND_ALL_TOWNS), SetStringTip(STR_FOUND_TOWN_EXPAND_ALL_TOWNS, STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP), SetFill(1, 0),
+					NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
+						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_TF_EXPAND_BUILDINGS), SetStringTip(STR_FOUND_TOWN_EXPAND_BUILDINGS, STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP), SetFill(1, 0),
+						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_TF_EXPAND_ROADS), SetStringTip(STR_FOUND_TOWN_EXPAND_ROADS, STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP), SetFill(1, 0),
+					EndContainer(),
+				EndContainer(),
+			EndContainer(),
 		EndContainer(),
 	EndContainer(),
 };
@@ -1134,6 +1156,7 @@ private:
 	bool townnamevalid = false; ///< Is generated town name valid?
 	uint32_t townnameparts = 0; ///< Generated town name
 	TownNameParams params; ///< Town name parameters
+	static inline TownExpandModes expand_modes{TownExpandMode::Buildings, TownExpandMode::Roads};
 
 public:
 	FoundTownWindow(WindowDesc &desc, WindowNumber window_number) :
@@ -1153,6 +1176,7 @@ public:
 		if (_game_mode == GM_EDITOR) return;
 
 		this->GetWidget<NWidgetStacked>(WID_TF_TOWN_ACTION_SEL)->SetDisplayedPlane(SZSP_HORIZONTAL);
+		this->GetWidget<NWidgetStacked>(WID_TF_TOWN_EXPAND_SEL)->SetDisplayedPlane(SZSP_HORIZONTAL);
 		this->GetWidget<NWidgetStacked>(WID_TF_SIZE_SEL)->SetDisplayedPlane(SZSP_VERTICAL);
 		if (_settings_game.economy.found_town != TF_CUSTOM_LAYOUT) {
 			this->GetWidget<NWidgetStacked>(WID_TF_ROAD_LAYOUT_SEL)->SetDisplayedPlane(SZSP_HORIZONTAL);
@@ -1191,6 +1215,9 @@ public:
 		for (WidgetID i = WID_TF_LAYOUT_ORIGINAL; i <= WID_TF_LAYOUT_RANDOM; i++) {
 			this->SetWidgetLoweredState(i, i == WID_TF_LAYOUT_ORIGINAL + this->town_layout);
 		}
+
+		this->SetWidgetLoweredState(WID_TF_EXPAND_BUILDINGS, FoundTownWindow::expand_modes.Test(TownExpandMode::Buildings));
+		this->SetWidgetLoweredState(WID_TF_EXPAND_ROADS, FoundTownWindow::expand_modes.Test(TownExpandMode::Roads));
 
 		this->SetDirty();
 	}
@@ -1242,7 +1269,7 @@ public:
 
 			case WID_TF_EXPAND_ALL_TOWNS:
 				for (Town *t : Town::Iterate()) {
-					Command<CMD_EXPAND_TOWN>::Do(DoCommandFlag::Execute, t->index, 0);
+					Command<CMD_EXPAND_TOWN>::Do(DoCommandFlag::Execute, t->index, 0, FoundTownWindow::expand_modes);
 				}
 				break;
 
@@ -1255,6 +1282,16 @@ public:
 				this->city ^= true;
 				this->SetWidgetLoweredState(WID_TF_CITY, this->city);
 				this->SetDirty();
+				break;
+
+			case WID_TF_EXPAND_BUILDINGS:
+				FoundTownWindow::expand_modes.Flip(TownExpandMode::Buildings);
+				this->UpdateButtons(false);
+				break;
+
+			case WID_TF_EXPAND_ROADS:
+				FoundTownWindow::expand_modes.Flip(TownExpandMode::Roads);
+				this->UpdateButtons(false);
 				break;
 
 			case WID_TF_LAYOUT_ORIGINAL: case WID_TF_LAYOUT_BETTER: case WID_TF_LAYOUT_GRID2:

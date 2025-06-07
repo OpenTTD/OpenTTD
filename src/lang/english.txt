@@ -3073,6 +3073,12 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Select t
 STR_FOUND_TOWN_CITY                                             :{BLACK}City
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Cities grow faster than regular towns{}Depending on settings, they are bigger when founded
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Town expansion:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Buildings
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Increase buildings of towns
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Roads
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Increase roads of towns
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Town road layout:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Select road layout used for this town
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Original
@@ -3696,6 +3702,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Change t
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Expand
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Increase size of town
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Expand buildings
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Increase buildings of town
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Expand roads
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Increase roads of town
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Delete
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Delete this town completely
 
