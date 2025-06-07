@@ -43,7 +43,7 @@ void AIInstance::Initialize(AIInfo *info)
 	this->api_version = info->GetAPIVersion();
 
 	/* Register the AIController (including the "import" command) */
-	SQAIController_Register(*this->engine);
+	SQAIController_Register(this->GetEngine());
 
 	ScriptInstance::Initialize(info->GetMainScript(), info->GetInstanceName(), _current_company);
 }
@@ -53,7 +53,7 @@ void AIInstance::RegisterAPI()
 	ScriptInstance::RegisterAPI();
 
 	/* Register all classes */
-	SQAI_RegisterAll(*this->engine);
+	SQAI_RegisterAll(this->GetEngine());
 
 	if (!this->LoadCompatibilityScripts(AI_DIR, AIInfo::ApiVersions)) this->Died();
 }
@@ -83,8 +83,8 @@ void AIInstance::Died()
 
 void AIInstance::LoadDummyScript()
 {
-	ScriptAllocatorScope alloc_scope(this->engine);
-	Script_CreateDummy(this->engine->GetVM(), STR_ERROR_AI_NO_AI_FOUND, "AI");
+	ScriptAllocatorScope alloc_scope(&this->GetEngine());
+	Script_CreateDummy(this->GetEngine().GetVM(), STR_ERROR_AI_NO_AI_FOUND, "AI");
 }
 
 int AIInstance::GetSetting(const std::string &name)
