@@ -8,6 +8,8 @@
 /** @file industry_cmd.cpp Handling of industry tiles. */
 
 #include "stdafx.h"
+#include "misc/history_type.hpp"
+#include "misc/history_func.hpp"
 #include "clear_map.h"
 #include "industry.h"
 #include "station_base.h"
@@ -1243,6 +1245,10 @@ void OnTick_Industry()
 
 	for (Industry *i : Industry::Iterate()) {
 		ProduceIndustryGoods(i);
+
+		if ((TimerGameTick::counter + i->index) % Ticks::DAY_TICKS == 0) {
+			for (auto &a : i->accepted) a.accumulated_waiting += a.waiting;
+		}
 	}
 }
 
@@ -2497,10 +2503,14 @@ static void UpdateIndustryStatistics(Industry *i)
 			if (p.history[THIS_MONTH].production != 0) i->last_prod_year = TimerGameEconomy::year;
 
 			/* Move history from this month to last month. */
-			std::rotate(std::rbegin(p.history), std::rbegin(p.history) + 1, std::rend(p.history));
-			p.history[THIS_MONTH].production = 0;
-			p.history[THIS_MONTH].transported = 0;
+			RotateHistory(p.history);
 		}
+	}
+
+	for (auto &a : i->accepted) {
+		if (!IsValidCargoType(a.cargo)) continue;
+		a.history[THIS_MONTH].waiting = GetAndResetAccumulatedAverage<uint16_t>(a.accumulated_waiting);
+		RotateHistory(a.history);
 	}
 }
 
