@@ -1150,6 +1150,25 @@ constexpr NWidgetPart SetMinimalSize(int16_t x, int16_t y)
 }
 
 /**
+ * Widget part function to setting the minimal size for a toolbar spacer.
+ * @ingroup NestedWidgetParts
+ */
+constexpr NWidgetPart SetToolbarSpacerMinimalSize()
+{
+	return NWidgetPart{WPT_MINSIZE, Point{4, 0}};
+}
+
+/**
+ * Widget part function to setting the minimal size for a toolbar button.
+ * @param width Width of button, measured in multiples of the standard toolbar button size.
+ * @ingroup NestedWidgetParts
+ */
+constexpr NWidgetPart SetToolbarMinimalSize(int width)
+{
+	return NWidgetPart{WPT_MINSIZE, Point{20 * width + 2, 22}};
+}
+
+/**
  * Widget part function for setting the minimal text lines.
  * @param lines   Number of text lines.
  * @param spacing Extra spacing required.
