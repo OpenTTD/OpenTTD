@@ -53,7 +53,7 @@ static ScriptStorage &GetStorage()
 
 /* static */ ScriptInstance *ScriptObject::ActiveInstance::active = nullptr;
 
-ScriptObject::ActiveInstance::ActiveInstance(ScriptInstance &instance) : alc_scope(instance.engine)
+ScriptObject::ActiveInstance::ActiveInstance(ScriptInstance &instance) : alc_scope(instance.engine.get())
 {
 	this->last_active = ScriptObject::ActiveInstance::active;
 	ScriptObject::ActiveInstance::active = &instance;
@@ -230,8 +230,8 @@ ScriptObject::DisableDoCommandScope::DisableDoCommandScope()
 
 /* static */ bool ScriptObject::CanSuspend()
 {
-	Squirrel *squirrel = ScriptObject::GetActiveInstance().engine;
-	return GetStorage().allow_do_command && squirrel->CanSuspend();
+	Squirrel &squirrel = *ScriptObject::GetActiveInstance().engine;
+	return GetStorage().allow_do_command && squirrel.CanSuspend();
 }
 
 /* static */ ScriptEventQueue &ScriptObject::GetEventQueue()

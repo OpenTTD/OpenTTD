@@ -256,7 +256,6 @@ public:
 	void ReleaseSQObject(HSQOBJECT *obj);
 
 protected:
-	class Squirrel *engine = nullptr; ///< A wrapper around the squirrel vm.
 	std::string api_version{}; ///< Current API used by this script.
 
 	/**
@@ -287,10 +286,20 @@ protected:
 	 */
 	virtual void LoadDummyScript() = 0;
 
+	/**
+	 * Get the storage of this script.
+	 */
+	inline class Squirrel &GetEngine()
+	{
+		assert(this->engine != nullptr);
+		return *this->engine;
+	}
+
 private:
-	class ScriptController *controller = nullptr; ///< The script main class.
-	class ScriptStorage *storage = nullptr; ///< Some global information for each running script.
-	SQObject *instance = nullptr; ///< Squirrel-pointer to the script main class.
+	std::unique_ptr<class ScriptStorage> storage; ///< Some global information for each running script.
+	std::unique_ptr<class Squirrel> engine; ///< A wrapper around the squirrel vm.
+	std::unique_ptr<class ScriptController> controller; ///< The script main class.
+	std::unique_ptr<SQObject> instance; ///< Squirrel-pointer to the script main class.
 
 	bool is_started = false; ///< Is the scripts constructor executed?
 	bool is_dead = false; ///< True if the script has been stopped.
