@@ -37,7 +37,7 @@ public:
 	/**
 	 * Set the Dummy AI.
 	 */
-	void SetDummyAI(class AIInfo *info);
+	void SetDummyAI(std::unique_ptr<class AIInfo> &&info);
 
 protected:
 	std::string GetScriptName(ScriptInfo &info) override;
@@ -47,7 +47,7 @@ protected:
 	void RegisterAPI(class Squirrel &engine) override;
 
 private:
-	AIInfo *info_dummy; ///< The dummy AI.
+	std::unique_ptr<AIInfo> info_dummy; ///< The dummy AI.
 };
 
 class AIScannerLibrary : public ScriptScanner {
