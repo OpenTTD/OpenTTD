@@ -95,7 +95,7 @@ template <>
 	if (BaseMedia<MusicSet>::used_set != nullptr) return true;
 
 	const MusicSet *best = nullptr;
-	for (const MusicSet *c = BaseMedia<MusicSet>::available_sets; c != nullptr; c = c->next) {
+	for (const auto &c : BaseMedia<MusicSet>::available_sets) {
 		if (c->GetNumMissing() != 0) continue;
 
 		if (best == nullptr ||
@@ -103,7 +103,7 @@ template <>
 				best->valid_files < c->valid_files ||
 				(best->valid_files == c->valid_files &&
 					(best->shortname == c->shortname && best->version < c->version))) {
-			best = c;
+			best = c.get();
 		}
 	}
 

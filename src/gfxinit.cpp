@@ -480,7 +480,7 @@ template <>
 
 	const GraphicsSet *best = nullptr;
 
-	auto IsBetter = [&best] (const auto *current) {
+	auto IsBetter = [&best] (const GraphicsSet *current) {
 		/* Nothing chosen yet. */
 		if (best == nullptr) return true;
 		/* Not being a fallback is better. */
@@ -495,11 +495,11 @@ template <>
 		return best->palette != PAL_DOS && current->palette == PAL_DOS;
 	};
 
-	for (const GraphicsSet *c = BaseMedia<GraphicsSet>::available_sets; c != nullptr; c = c->next) {
+	for (const auto &c : BaseMedia<GraphicsSet>::available_sets) {
 		/* Skip unusable sets */
 		if (c->GetNumMissing() != 0) continue;
 
-		if (IsBetter(c)) best = c;
+		if (IsBetter(c.get())) best = c.get();
 	}
 
 	BaseMedia<GraphicsSet>::used_set = best;
