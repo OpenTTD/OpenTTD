@@ -22,8 +22,8 @@ public:
 		uint8_t data[];                   ///< Data, all zoomlevels.
 	};
 
-	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom) override;
-	Sprite *Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator) override;
+	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, SpriteCollKey sck) override;
+	Sprite *Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, bool has_rtl, SpriteAllocator &allocator) override;
 
 	std::string_view GetName() override { return "8bpp-optimized"; }
 };
