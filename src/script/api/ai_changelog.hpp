@@ -35,6 +35,7 @@
  * \li AIList instances can now be saved
  * \li AIVehicleList_Station accepts an optional AIVehicle::VehicleType parameter
  * \li AIList instances can now be cloned
+ * \li AIStation::GetStationID can no longer return the StationID of waypoints
  *
  * \b 14.0
  *

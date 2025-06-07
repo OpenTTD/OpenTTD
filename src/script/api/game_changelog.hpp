@@ -36,6 +36,7 @@
  * \li GSList instances can now be saved
  * \li GSVehicleList_Station accepts an optional GSVehicle::VehicleType parameter
  * \li GSList instances can now be cloned
+ * \li GSStation::GetStationID can no longer return the StationID of waypoints
  *
  * \b 14.0
  *

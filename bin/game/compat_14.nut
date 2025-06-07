@@ -81,3 +81,11 @@ GSTown.FoundTown <- function(tile, size, city, layout, name) { return GSTown.Fou
 
 GSVehicle.SetNameCompat14 <- GSVehicle.SetName;
 GSVehicle.SetName <- function(id, name) { return GSVehicle.SetNameCompat14(id, GSCompat14.Text(name)); }
+
+GSStation.GetStationIDCompat14 <- GSStation.GetStationID;
+GSStation.GetStationID <- function(tile)
+{
+	local id = GSStation.GetStationIDCompat14(tile);
+	if (id == GSBaseStation.STATION_INVALID) return GSWaypoint.GetWaypointID(tile);
+	return id;
+}
