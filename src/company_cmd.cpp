@@ -28,6 +28,7 @@
 #include "sound_func.h"
 #include "rail.h"
 #include "core/pool_func.hpp"
+#include "core/string_consumer.hpp"
 #include "settings_func.h"
 #include "vehicle_base.h"
 #include "vehicle_func.h"
@@ -44,6 +45,7 @@
 #include "widgets/statusbar_widget.h"
 
 #include "table/strings.h"
+#include "table/company_face.h"
 
 #include "safeguards.h"
 
@@ -53,7 +55,7 @@ void UpdateObjectColours(const Company *c);
 CompanyID _local_company;   ///< Company controlled by the human player at this client. Can also be #COMPANY_SPECTATOR.
 CompanyID _current_company; ///< Company currently doing an action.
 ReferenceThroughBaseContainer<std::array<Colours, MAX_COMPANIES>> _company_colours; ///< NOSAVE: can be determined from company structs.
-CompanyManagerFace _company_manager_face; ///< for company manager face storage in openttd.cfg
+std::string _company_manager_face; ///< for company manager face storage in openttd.cfg
 uint _cur_company_tick_index;             ///< used to generate a name for one company that doesn't have a name yet per tick
 
 CompanyPool _company_pool("Company"); ///< Pool of companies.
@@ -181,24 +183,17 @@ void DrawCompanyIcon(CompanyID c, int x, int y)
  */
 static bool IsValidCompanyManagerFace(CompanyManagerFace cmf)
 {
-	if (!AreCompanyManagerFaceBitsValid(cmf, CMFV_GEN_ETHN, GE_WM)) return false;
+	if (cmf.style >= GetNumCompanyManagerFaceStyles()) return false;
 
-	GenderEthnicity ge   = (GenderEthnicity)GetCompanyManagerFaceBits(cmf, CMFV_GEN_ETHN, GE_WM);
-	bool has_moustache   = !HasBit(ge, GENDER_FEMALE) && GetCompanyManagerFaceBits(cmf, CMFV_HAS_MOUSTACHE,   ge) != 0;
-	bool has_tie_earring = !HasBit(ge, GENDER_FEMALE) || GetCompanyManagerFaceBits(cmf, CMFV_HAS_TIE_EARRING, ge) != 0;
-	bool has_glasses     = GetCompanyManagerFaceBits(cmf, CMFV_HAS_GLASSES, ge) != 0;
+	auto style = GetCompanyManagerFaceStyle(cmf.style);
 
-	if (!AreCompanyManagerFaceBitsValid(cmf, CMFV_EYE_COLOUR, ge)) return false;
-	for (CompanyManagerFaceVariable cmfv = CMFV_CHEEKS; cmfv < CMFV_END; cmfv++) {
-		switch (cmfv) {
-			case CMFV_MOUSTACHE:   if (!has_moustache)   continue; break;
-			case CMFV_LIPS:
-			case CMFV_NOSE:        if (has_moustache)    continue; break;
-			case CMFV_TIE_EARRING: if (!has_tie_earring) continue; break;
-			case CMFV_GLASSES:     if (!has_glasses)     continue; break;
-			default: break;
-		}
-		if (!AreCompanyManagerFaceBitsValid(cmf, cmfv, ge)) return false;
+	/* First determine which parts are enabled. */
+	uint64_t active_vars = GetActiveFaceVars(cmf, style);
+
+	/* Test each enabled part. */
+	for (uint var : SetBitIterator(active_vars)) {
+		if (style[var].type == FaceVarType::Toggle) continue;
+		if (!AreCompanyManagerFaceBitsValid(cmf, style, var)) return false;
 	}
 
 	return true;
@@ -633,10 +628,18 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = CompanyID::Invalid(
 
 	/* If starting a player company in singleplayer and a favorite company manager face is selected, choose it. Otherwise, use a random face.
 	 * In a network game, we'll choose the favorite face later in CmdCompanyCtrl to sync it to all clients. */
-	if (_company_manager_face != 0 && !is_ai && !_networking) {
-		c->face = _company_manager_face;
-	} else {
-		RandomCompanyManagerFaceBits(c->face, (GenderEthnicity)Random(), false, _random);
+	bool randomise_face = true;
+	if (!_company_manager_face.empty() && !is_ai && !_networking) {
+		auto cmf = ParseCompanyManagerFaceString(_company_manager_face);
+		if (cmf.has_value()) {
+			randomise_face = false;
+			c->face = *cmf;
+		}
+	}
+
+	if (randomise_face) {
+		c->face.style = RandomRange(GetNumCompanyManagerFaceStyles());
+		RandomCompanyManagerFaceBits(c->face, GetCompanyManagerFaceStyle(c->face.style), _random);
 	}
 
 	SetDefaultCompanySettings(c->index);
@@ -926,7 +929,12 @@ CommandCost CmdCompanyCtrl(DoCommandFlags flags, CompanyCtrlAction cca, CompanyI
 				 * its configuration and we are currently in the execution of a command, we have
 				 * to circumvent the normal ::Post logic for commands and just send the command.
 				 */
-				if (_company_manager_face != 0) Command<CMD_SET_COMPANY_MANAGER_FACE>::SendNet(STR_NULL, c->index, _company_manager_face);
+				if (!_company_manager_face.empty()) {
+					auto cmf = ParseCompanyManagerFaceString(_company_manager_face);
+					if (cmf.has_value()) {
+						Command<CMD_SET_COMPANY_MANAGER_FACE>::SendNet(STR_NULL, c->index, cmf->bits, cmf->style);
+					}
+				}
 
 				/* Now that we have a new company, broadcast our company settings to
 				 * all clients so everything is in sync */
@@ -1052,8 +1060,9 @@ CommandCost CmdCompanyAllowListCtrl(DoCommandFlags flags, CompanyAllowListCtrlAc
  * @param cmf face bitmasked
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetCompanyManagerFace(DoCommandFlags flags, CompanyManagerFace cmf)
+CommandCost CmdSetCompanyManagerFace(DoCommandFlags flags, uint32_t bits, uint style)
 {
+	CompanyManagerFace cmf{bits, style};
 	if (!IsValidCompanyManagerFace(cmf)) return CMD_ERROR;
 
 	if (flags.Test(DoCommandFlag::Execute)) {
@@ -1374,4 +1383,96 @@ CompanyID GetFirstPlayableCompanyID()
 	}
 
 	return CompanyID::Begin();
+}
+
+static std::vector<FaceSpec> _faces;
+
+void ResetFaces()
+{
+	_faces.clear();
+	_faces.assign(std::begin(_original_faces), std::end(_original_faces));
+}
+
+uint GetNumCompanyManagerFaceStyles()
+{
+	return static_cast<uint>(std::size(_faces));
+}
+
+const FaceSpec *GetCompanyManagerFaceSpec(uint style_index)
+{
+	if (style_index < GetNumCompanyManagerFaceStyles()) return &_faces[style_index];
+	return nullptr;
+}
+
+std::optional<uint> FindCompanyManagerFaceLabel(std::string_view label)
+{
+	auto it = std::ranges::find(_faces, label, &FaceSpec::label);
+	if (it == std::end(_faces)) return std::nullopt;
+
+	return static_cast<uint>(std::distance(std::begin(_faces), it));
+}
+
+FaceStyle GetCompanyManagerFaceStyle(uint style_index)
+{
+	const FaceSpec *spec = GetCompanyManagerFaceSpec(style_index);
+	if (spec == nullptr) return {};
+	return spec->GetFaceStyle();
+}
+
+uint32_t MaskCompanyManagerFaceBits(const CompanyManagerFace &cmf, FaceStyle style)
+{
+	CompanyManagerFace face{};
+
+	for (auto var : SetBitIterator(GetActiveFaceVars(cmf, style))) {
+		SetCompanyManagerFaceBits(face, style, var, GetCompanyManagerFaceBits(cmf, style, var));
+	}
+
+	return face.bits;
+}
+
+std::string FormatCompanyManagerFaceString(const CompanyManagerFace &cmf)
+{
+	const FaceSpec *spec = GetCompanyManagerFaceSpec(cmf.style);
+	if (spec == nullptr) return {};
+
+	std::string_view label = spec->label;
+	uint32_t masked_face_bits = MaskCompanyManagerFaceBits(cmf, spec->GetFaceStyle());
+
+	return fmt::format("{}:{}", label, masked_face_bits);
+}
+
+std::optional<CompanyManagerFace> ParseCompanyManagerFaceString(std::string_view str)
+{
+	if (str.empty()) return std::nullopt;
+
+	CompanyManagerFace cmf;
+
+	StringConsumer consumer{str};
+	if (consumer.FindChar(':') != StringConsumer::npos) {
+		auto label = consumer.ReadUntilChar(':', StringConsumer::SKIP_ONE_SEPARATOR);
+
+		auto face_style = FindCompanyManagerFaceLabel(label);
+		if (!face_style.has_value()) return std::nullopt;
+
+		auto face_bits = consumer.TryReadIntegerBase<uint32_t>(10, false);
+		if (!face_bits.has_value()) return std::nullopt;
+
+		cmf.style = *face_style;
+		cmf.bits = *face_bits;
+	} else {
+		/* No ':' included, treat as numeric-only. This allows old-style codes to be entered. */
+		auto face_bits = ParseInteger(str, 10, true);
+		if (!face_bits.has_value()) return std::nullopt;
+
+		/* Old codes have */
+		cmf.style = GB(*face_bits, 0, 2);
+		cmf.bits = *face_bits;
+	}
+
+	/* Force the face bits to be valid. */
+	auto style = GetCompanyManagerFaceStyle(cmf.style);
+	ScaleAllCompanyManagerFaceBits(cmf, style);
+	cmf.bits = MaskCompanyManagerFaceBits(cmf, style);
+
+	return cmf;
 }
