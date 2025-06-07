@@ -508,7 +508,7 @@ bool Squirrel::CreateClassInstance(const std::string &class_name, void *real_ins
 }
 
 Squirrel::Squirrel(std::string_view api_name) :
-	api_name(api_name), allocator(new ScriptAllocator())
+	api_name(api_name), allocator(std::make_unique<ScriptAllocator>())
 {
 	this->Initialize();
 }
