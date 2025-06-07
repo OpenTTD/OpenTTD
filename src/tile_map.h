@@ -62,6 +62,18 @@ inline void SetTileHeight(Tile tile, uint height)
 }
 
 /**
+ * Sets the height of a tile, also for tiles outside the map (virtual "black" tiles).
+ *
+ * @param tile The tile to change the height
+ * @param height The new height value of the tile
+ * @pre height <= MAX_TILE_HEIGHT
+ */
+inline void SetTileHeightOutsideMap(int x, int y, uint height)
+{
+	SetTileHeight(TileXY(Clamp(x, 0, Map::MaxX()), Clamp(y, 0, Map::MaxY())), height);
+}
+
+/**
  * Returns the height of a tile in pixels.
  *
  * This function returns the height of the northern corner of a tile in pixels.
