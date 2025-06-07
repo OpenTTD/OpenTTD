@@ -501,7 +501,7 @@ void LoadTownData()
 
 		do {
 			uint before = t->cache.num_houses;
-			Command<CMD_EXPAND_TOWN>::Post(t->index, HOUSES_TO_GROW);
+			Command<CMD_EXPAND_TOWN>::Post(t->index, HOUSES_TO_GROW, {TownExpandMode::Buildings, TownExpandMode::Roads});
 			if (t->cache.num_houses <= before) fail_limit--;
 		} while (fail_limit > 0 && try_limit-- > 0 && t->cache.population < population);
 	}
