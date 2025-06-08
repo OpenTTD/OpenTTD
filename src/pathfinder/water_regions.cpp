@@ -222,8 +222,8 @@ public:
 	}
 };
 
-ReferenceThroughBaseContainer<std::vector<WaterRegionData>> _water_region_data;
-ReferenceThroughBaseContainer<std::vector<bool>> _is_water_region_valid;
+TypedIndexContainer<std::vector<WaterRegionData>, WaterRegionIndex> _water_region_data;
+TypedIndexContainer<std::vector<bool>, WaterRegionIndex> _is_water_region_valid;
 
 static TileIndex GetTileIndexFromLocalCoordinate(int region_x, int region_y, int local_x, int local_y)
 {
