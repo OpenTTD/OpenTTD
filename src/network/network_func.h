@@ -45,7 +45,7 @@ void NetworkDisconnect(bool close_admins = true);
 void NetworkGameLoop();
 void NetworkBackgroundLoop();
 std::string_view ParseFullConnectionString(std::string_view connection_string, uint16_t &port, CompanyID *company_id = nullptr);
-using NetworkCompanyStatsArray = ReferenceThroughBaseContainer<std::array<NetworkCompanyStats, MAX_COMPANIES>>;
+using NetworkCompanyStatsArray = TypedIndexContainer<std::array<NetworkCompanyStats, MAX_COMPANIES>, CompanyID>;
 NetworkCompanyStatsArray NetworkGetCompanyStats();
 
 void NetworkUpdateClientInfo(ClientID client_id);

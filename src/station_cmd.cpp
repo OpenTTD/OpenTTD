@@ -4431,8 +4431,8 @@ uint MoveGoodsToStation(CargoType cargo, uint amount, Source source, const Stati
 		return UpdateStationWaiting(first_station, cargo, amount, source);
 	}
 
-	ReferenceThroughBaseContainer<std::array<uint32_t, OWNER_END.base()>> company_best = {};  // best rating for each company, including OWNER_NONE
-	ReferenceThroughBaseContainer<std::array<uint32_t, OWNER_END.base()>> company_sum = {};   // sum of ratings for each company
+	TypedIndexContainer<std::array<uint32_t, OWNER_END.base()>, Owner> company_best = {};  // best rating for each company, including OWNER_NONE
+	TypedIndexContainer<std::array<uint32_t, OWNER_END.base()>, Owner> company_sum = {};   // sum of ratings for each company
 	uint best_rating = 0;
 	uint best_sum = 0;  // sum of best ratings for each company
 
