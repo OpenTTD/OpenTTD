@@ -32,7 +32,7 @@ template <> SQInteger PushClassName<GameInfo, ScriptType::GS>(HSQUIRRELVM vm) { 
 	/* Create the GSInfo class, and add the RegisterGS function */
 	DefSQClass<GameInfo, ScriptType::GS> SQGSInfo("GSInfo");
 	SQGSInfo.PreRegister(engine);
-	SQGSInfo.AddConstructor<void (GameInfo::*)(), 1>(engine, "x");
+	SQGSInfo.AddConstructor<void (GameInfo::*)()>(engine, "x");
 	SQGSInfo.DefSQAdvancedMethod(engine, &GameInfo::AddSetting, "AddSetting");
 	SQGSInfo.DefSQAdvancedMethod(engine, &GameInfo::AddLabels, "AddLabels");
 	SQGSInfo.DefSQConst(engine, ScriptConfigFlags{}.base(), "CONFIG_NONE");

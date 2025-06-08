@@ -376,14 +376,17 @@ namespace SQConvert {
 	 *  params. It creates the instance in C++, and it sets all the needed
 	 *  settings in SQ to register the instance.
 	 */
-	template <typename Tcls, typename Tmethod, int Tnparam>
+	template <typename Tcls, typename Tmethod>
 	inline SQInteger DefSQConstructorCallback(HSQUIRRELVM vm)
 	{
 		try {
+			/* Find the amount of params we got */
+			int nparam = sq_gettop(vm);
+
 			/* Create the real instance */
 			Tcls *instance = HelperT<Tmethod>::SQConstruct((Tcls *)nullptr, (Tmethod)nullptr, vm);
-			sq_setinstanceup(vm, -Tnparam, instance);
-			sq_setreleasehook(vm, -Tnparam, DefSQDestructorCallback<Tcls>);
+			sq_setinstanceup(vm, -nparam, instance);
+			sq_setreleasehook(vm, -nparam, DefSQDestructorCallback<Tcls>);
 			instance->AddRef();
 			return 0;
 		} catch (SQInteger &e) {
