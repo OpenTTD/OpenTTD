@@ -49,4 +49,25 @@ public:
 	Container::const_reference operator[](const ConvertibleThroughBase auto &pos) const { return this->Container::operator[](pos.base()); }
 };
 
+/**
+ * A sort-of mixin that implements 'at(pos)' and 'operator[](pos)' only for a specific type.
+ * The type must have a suitable '.base()' method and therefore must inherently match 'ConvertibleThroughBase'.
+ * This to prevent having to call '.base()' for many container accesses, whilst preventing accidental use of the wrong index type.
+ */
+template <typename Container, typename Index>
+class TypedIndexContainer : public Container {
+public:
+	Container::reference at(size_t pos) { return this->Container::at(pos); }
+	Container::reference at(const Index &pos) { return this->Container::at(pos.base()); }
+
+	Container::const_reference at(size_t pos) const { return this->Container::at(pos); }
+	Container::const_reference at(const Index &pos) const { return this->Container::at(pos.base()); }
+
+	Container::reference operator[](size_t pos) { return this->Container::operator[](pos); }
+	Container::reference operator[](const Index &pos) { return this->Container::operator[](pos.base()); }
+
+	Container::const_reference operator[](size_t pos) const { return this->Container::operator[](pos); }
+	Container::const_reference operator[](const Index &pos) const { return this->Container::operator[](pos.base()); }
+};
+
 #endif /* CONVERTIBLE_THROUGH_BASE_HPP */
