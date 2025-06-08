@@ -108,11 +108,11 @@ public:
 		engine.AddClassBegin(this->classname, parent_class);
 	}
 
-	template <typename Func, int Tnparam>
+	template <typename Func>
 	void AddConstructor(Squirrel &engine, std::string_view params)
 	{
 		using namespace SQConvert;
-		engine.AddMethod("constructor", DefSQConstructorCallback<CL, Func, Tnparam>, params);
+		engine.AddMethod("constructor", DefSQConstructorCallback<CL, Func>, params);
 	}
 
 	void AddSQAdvancedConstructor(Squirrel &engine)
