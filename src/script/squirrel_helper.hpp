@@ -187,9 +187,9 @@ namespace SQConvert {
 			return SQCall(instance, func, vm, std::index_sequence_for<Targs...>{});
 		}
 
-		static Tcls *SQConstruct(Tcls *instance, Tretval(Tcls:: *func)(Targs...), HSQUIRRELVM vm)
+		static Tcls *SQConstruct(HSQUIRRELVM vm)
 		{
-			return SQConstruct(instance, func, vm, std::index_sequence_for<Targs...>{});
+			return SQConstruct(vm, std::index_sequence_for<Targs...>{});
 		}
 
 	private:
@@ -210,7 +210,7 @@ namespace SQConvert {
 		}
 
 		template <size_t... i>
-		static Tcls *SQConstruct(Tcls *, Tretval(Tcls:: *)(Targs...), [[maybe_unused]] HSQUIRRELVM vm, std::index_sequence<i...>)
+		static Tcls *SQConstruct([[maybe_unused]] HSQUIRRELVM vm, std::index_sequence<i...>)
 		{
 			Tcls *inst = new Tcls(
 				Param<Targs>::Get(vm, 2 + i)...
@@ -384,7 +384,7 @@ namespace SQConvert {
 			int nparam = sq_gettop(vm);
 
 			/* Create the real instance */
-			Tcls *instance = HelperT<Tmethod>::SQConstruct((Tcls *)nullptr, (Tmethod)nullptr, vm);
+			Tcls *instance = HelperT<Tmethod>::SQConstruct(vm);
 			sq_setinstanceup(vm, -nparam, instance);
 			sq_setreleasehook(vm, -nparam, DefSQDestructorCallback<Tcls>);
 			instance->AddRef();
