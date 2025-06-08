@@ -1141,6 +1141,7 @@ STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Ӑнсӑ
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Хула пысӑкӑшӗ суйла
 STR_FOUND_TOWN_CITY                                             :{BLACK}Тӑп хула
 
+
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Чӑн
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 серепе
 STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3 серепе

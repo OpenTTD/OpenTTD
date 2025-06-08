@@ -3073,6 +3073,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Vælg by
 STR_FOUND_TOWN_CITY                                             :{BLACK}Storby
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Storbyer vokser hurtigere en almindelige byer{}Afhængig af indstillingerne kan de være større ved grundlæggelsen
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Byens vej-layout:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Vælg vej-layout for denne by
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Originalt

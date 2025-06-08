@@ -2305,6 +2305,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Pilih sa
 STR_FOUND_TOWN_CITY                                             :{BLACK}Bandar
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Bandaraya membesar dengan lebih cepat daripada bandar{}Bergantung kepada tetapan, bandaraya akan lebih besar sewaktu dibina
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Susunan jalanraya bandar:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Pilih susunan jalanraya untuk bandar ini
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Asal

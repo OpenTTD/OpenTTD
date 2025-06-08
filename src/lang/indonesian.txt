@@ -2933,6 +2933,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Pilih uk
 STR_FOUND_TOWN_CITY                                             :{BLACK}Kota
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Kota tumbuh lebih cepat daripada biasanya{}Tergantung pengaturan, kota dapat lebih besar ketika di danai.
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Tampilan jalan kota:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Pilihlah tampilan jalan yang digunakan utk kota ini
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Asli

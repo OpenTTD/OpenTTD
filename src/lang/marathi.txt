@@ -1258,6 +1258,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}लह�
 STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}मोठं
 
 
+
 # Fund new industry window
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}खर्च: {YELLOW}{CURRENCY_LONG}
 

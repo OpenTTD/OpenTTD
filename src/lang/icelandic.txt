@@ -2411,6 +2411,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Velja st
 STR_FOUND_TOWN_CITY                                             :{BLACK}Borg
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Borgir vaxa hraðar en venjulegir bæir{}Möguleiki á aukinni upphafsstærð í stillingum
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Vegaskipulag bæja
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Veldu það skipulag sem þessi bær notar fyrir sína vegi
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Upphaflegt

@@ -3152,6 +3152,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Išsirin
 STR_FOUND_TOWN_CITY                                             :{BLACK}Miestas
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Didemiesčiai auga greičiau nei įprasti miestai{}Pagal tam tikras nuostatas, jie didesni, nuo atsiradimo
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Miesto kelių išdėstymas:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Pasirinkti kelio išdėstymą šiam miestui
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Originalus

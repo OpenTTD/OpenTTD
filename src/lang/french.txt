@@ -3074,6 +3074,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Sélecti
 STR_FOUND_TOWN_CITY                                             :{BLACK}Métropole
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Les métropoles se développent plus vite que les villes.{}Leur taille à la création dépend du paramétrage de la configuration.
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Agencement des routes{NBSP}:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Sélectionner l'agencement des routes pour cette ville
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Original
@@ -5920,5 +5921,9 @@ STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELO
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
 STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Ouvrir la configuration des badges
 STR_BADGE_CONFIG_RESET                                          :Réinitialiser
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Icônes de badges
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Filtres de badges
 STR_BADGE_CONFIG_PREVIEW                                        :Aperçu du véhicule
 STR_BADGE_CONFIG_NAME                                           :Nom
+STR_BADGE_FILTER_ANY_LABEL                                      :Tous {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} est {STRING}

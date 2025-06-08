@@ -2431,6 +2431,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Selektea
 STR_FOUND_TOWN_CITY                                             :{BLACK}Stêd
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Stêden groeien flugger as doarpen{}Ôfhinklik fan ynstellings binne se grutter at se makke wurde
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Strjittenpatroan
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Selektear strjittenpatroan foar dit plak
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Orizjiniel

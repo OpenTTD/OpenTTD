@@ -3066,6 +3066,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Dewiswch
 STR_FOUND_TOWN_CITY                                             :{BLACK}Dinas
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Mae dinasoedd yn tyfu'n gynt na threfi arferol{}Yn dibynnu ar y gosodiadau, maent hefyd yn fwy pan gânt eu sefydlu
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Cynllun ffyrdd tref
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Dewiswch y cynllun ffyrdd i'w ddefnyddio ar gyfer y dref hon
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Gwreiddiol

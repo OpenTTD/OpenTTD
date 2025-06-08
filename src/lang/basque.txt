@@ -2459,6 +2459,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Herriare
 STR_FOUND_TOWN_CITY                                             :{BLACK}Hiria
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Hiriak herriak baino azkarrago hazten dira{}Ezarpenen arabera sortzerakoan handiagoak izan daitezke
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Herri errepideen diseinua:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Herriaren errepide diseinua aukeratu
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Jatorrizkoa

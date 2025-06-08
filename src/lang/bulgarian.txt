@@ -3044,6 +3044,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Избе
 STR_FOUND_TOWN_CITY                                             :{BLACK}Метрополис
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Метрополисите се разрастват по-бързо от градовете.{}В зависимост от настройките те са по-големи при тяхното създаване
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}План на пътищата:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Изберете план за пътищата в този град
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Оргинален

@@ -3064,6 +3064,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Selezion
 STR_FOUND_TOWN_CITY                                             :{BLACK}Metropoli
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Le metropoli crescono più rapidamente delle normali città.{}A seconda delle impostazioni, sono più grandi quando vengono fondate.
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Disposizione strade:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Seleziona la disposizione delle strade per questa città
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Originale

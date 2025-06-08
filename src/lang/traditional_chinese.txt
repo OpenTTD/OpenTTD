@@ -3073,6 +3073,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}選擇�
 STR_FOUND_TOWN_CITY                                             :{BLACK}城市
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}城市比普通城鎮成長的更快{}你可以從進階設定中調整城市的初始規模
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}市鎮道路配置：
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}選擇這個市鎮使用的道路配置
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}原版
@@ -5919,5 +5920,9 @@ STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELO
 STR_BADGE_NAME_LIST                                             :{STRING}：{GOLD}{STRING}
 STR_BADGE_CONFIG_MENU_TOOLTIP                                   :開啟徽章設定
 STR_BADGE_CONFIG_RESET                                          :重設
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}徽章圖示
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}徽章篩選
 STR_BADGE_CONFIG_PREVIEW                                        :預覽圖
 STR_BADGE_CONFIG_NAME                                           :名稱
+STR_BADGE_FILTER_ANY_LABEL                                      :任何{STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING}是{STRING}

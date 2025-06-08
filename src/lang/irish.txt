@@ -2745,6 +2745,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Roghnaig
 STR_FOUND_TOWN_CITY                                             :{BLACK}Cathair
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Fásann cathracha níos mó ná gnáthbhailte{}Ag brath ar na socruithe, bíonn siad níos mó nuair a bhunaítear iad
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Leagan amach bóithre an bhaile:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Roghnaigh leagan amach na mbóithre don bhaile seo
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Bunaidh

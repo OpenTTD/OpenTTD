@@ -3056,6 +3056,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Alege m�
 STR_FOUND_TOWN_CITY                                             :{BLACK}Metropolă
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Metropolele cresc mai repede decât orașele{}În funcție de setări, sunt mai mari când sunt fondate
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Modelul drumului în oraș:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Alege modelul de drum folosit pentru acest oraș
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Original

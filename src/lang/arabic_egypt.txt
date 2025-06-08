@@ -2498,6 +2498,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}حدد �
 STR_FOUND_TOWN_CITY                                             :{BLACK}مدينة
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK} المدن الكبيرة تنمو اسرع من المدن العادية.{} كلما كانت اكبر عند انشائها, بالاعتماد على الاعدادات.
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW} تصميم طرق المدينة
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK} اختر تصميم الطرق لهذه المدينة
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK} اصلي

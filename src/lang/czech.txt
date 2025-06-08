@@ -3142,6 +3142,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Zvolte v
 STR_FOUND_TOWN_CITY                                             :{BLACK}Velkoměsto
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Velkoměsta rostou rychleji než běžná města. V závislosti na nastavení jsou při založení větší
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Silniční síť města:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Zvolte rozvržení silniční sítě v tomto městě
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Původní

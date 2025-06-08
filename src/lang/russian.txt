@@ -3248,6 +3248,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Выбо
 STR_FOUND_TOWN_CITY                                             :{BLACK}Мегаполис
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Большие города растут быстрее, чем маленькие.{}В зависимости от настроек, они при создании имеют больший размер.
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Сеть городских дорог:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Тип сети городских дорог
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Стандартная

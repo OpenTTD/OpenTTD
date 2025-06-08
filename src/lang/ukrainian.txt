@@ -3199,6 +3199,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Вибі
 STR_FOUND_TOWN_CITY                                             :{BLACK}Мегаполіс
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Мегаполіси ростуть швидше за звичайні міста{}Вони більші при заснуванні, якщо вказано у настройках
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Тип сітки міських доріг:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Оберіть тип сітки доріг для цього міста:
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Стандартний

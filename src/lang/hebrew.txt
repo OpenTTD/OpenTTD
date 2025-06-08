@@ -2756,6 +2756,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}בחר �
 STR_FOUND_TOWN_CITY                                             :{BLACK}עיר
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}ערים גדלות מהר יותר מאשר עיירות{}כתלות בהגדרות, הן גדולות יותר כאשר הן נוסדות
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}מתווה כביש של עיר:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}בחר מתווה כביש לשימוש עבור עיר זו
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}מקורי
