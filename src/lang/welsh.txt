@@ -958,13 +958,13 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Gludo ll
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Dewisiadau Gêm
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Cyffredinol
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Dewis gosodiadau cyffredinol
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :Dewis gosodiadau cyffredinol
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Graffeg
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Dewis gosodiadau graffeg
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :Dewis gosodiadau graffeg
 STR_GAME_OPTIONS_TAB_SOUND                                      :Sain
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Dewis gosodiadau sain a cherddoriaeth
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Dewis gosodiadau sain a cherddoriaeth
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Cymdeithasol
-STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Dewis gosodiadau integreiddio cymdeithasol
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Dewis gosodiadau integreiddio cymdeithasol
 
 STR_GAME_OPTIONS_VOLUME                                         :Lefel Sain
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Effeithiau sŵn
@@ -973,8 +973,8 @@ STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Cerddoriaeth
 
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Uned Arian
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Dewis unedau arian
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Uned Arian
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Dewis unedau arian
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -1025,8 +1025,8 @@ STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lats Latfia
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Esgwdo Portiwgeaidd
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Hryvnia Wcrain
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Awtogadw
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Dewiswch pa mor aml y dylid awtogadw gemau
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Awtogadw
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Dewiswch pa mor aml y dylid awtogadw gemau
 
 # Autosave dropdown
 ###length 5
@@ -1036,77 +1036,77 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Bob 30 munud
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Bob 60 munud
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Bob 120 munud
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Iaith
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Dewiswch yr iaith rhyngwyneb i'w defnyddio
+STR_GAME_OPTIONS_LANGUAGE                                       :Iaith
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Dewiswch yr iaith rhyngwyneb i'w defnyddio
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% wedi'i gwblhau)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Sgrin Llawn
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Marciwch y blwch hwn i chwarae Open TTD gyda Sgrin Llawn
+STR_GAME_OPTIONS_FULLSCREEN                                     :Sgrin Llawn
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Marciwch y blwch hwn i chwarae Open TTD gyda Sgrin Llawn
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Cydraniad Sgrin
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Dewiswch y cydraniad sgrin i'w defnyddio
+STR_GAME_OPTIONS_RESOLUTION                                     :Cydraniad Sgrin
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Dewiswch y cydraniad sgrin i'w defnyddio
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :arall
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Cyflymu caledwedd
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Bydd ticio'r blwch yma yn caniatáu i OpenTTD geisio defnyddio cyflymiad caledwedd. Bydd newid i'r gosodiad ond yn digwydd wedi ailddechrau'r gêm
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Cyflymu caledwedd
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Bydd ticio'r blwch yma yn caniatáu i OpenTTD geisio defnyddio cyflymiad caledwedd. Bydd newid i'r gosodiad ond yn digwydd wedi ailddechrau'r gêm
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Bydd y gosodiad ond yn cymryd effaith ar ôl ailddechrau'r gêm
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Bydd ticio'r blwch yma yn defnyddio cydamseriad fertigol wrth lunio'r sgrin. Bydd newid i'r gosodiad ond yn digwydd wedi ailddechrau'r gêm
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Bydd ticio'r blwch yma yn defnyddio cydamseriad fertigol wrth lunio'r sgrin. Bydd newid i'r gosodiad ond yn digwydd wedi ailddechrau'r gêm
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Gyriant presennol: {STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Gyriant presennol: {STRING}
 
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Maint rhyngwyneb
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Llusgwch y llithrwr i osod maint y rhyngwyneb. Daliwhc Ctrl i ganiatáu addasiad parhaol
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Awto-ganfod maint
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Marciwch y blwch hwn i ganfod maint y rhyngwyneb yn awtomatig
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Maint rhyngwyneb
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Llusgwch y llithrwr i osod maint y rhyngwyneb. Daliwhc Ctrl i ganiatáu addasiad parhaol
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Awto-ganfod maint
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Marciwch y blwch hwn i ganfod maint y rhyngwyneb yn awtomatig
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Helaethu befelau
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Marciwch y blwch hwn i helaethu befelau yn ôl maint y rhyngwyneb
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Marciwch y blwch hwn i helaethu befelau yn ôl maint y rhyngwyneb
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Defnyddio wynebfath corlun traddodiadol
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Marciwch y blwch hwn os oes well gennych ddefnyddio y wynebfath corlun un-maint traddodiadol
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Gwynebfathau dadamgenu
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Marciwch y blwch hwn i ddadamgennu ffontiau y gellir eu hailfeintio
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Defnyddio wynebfath corlun traddodiadol
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Marciwch y blwch hwn os oes well gennych ddefnyddio y wynebfath corlun un-maint traddodiadol
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Gwynebfathau dadamgenu
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Marciwch y blwch hwn i ddadamgennu ffontiau y gellir eu hailfeintio
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Arolwg awtomatig
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Cymryd rhan mewn arolwg awtomatig
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Pan y galluogir, bydd OpenTTD yn darlledu arolwg pan yn gadael gêm
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Am yr arolwg a phreifatrwydd
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Mae hwn yn agor porwr gyda mwy o wybodaeth am yr arolwg awtomatig
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Rhagolwg o ganlyniad yr arolwg
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Dangos canlyniadau arolwg y gêm sy'n rhedeg
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Arolwg awtomatig
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Cymryd rhan mewn arolwg awtomatig
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :Pan y galluogir, bydd OpenTTD yn darlledu arolwg pan yn gadael gêm
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :Am yr arolwg a phreifatrwydd
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Mae hwn yn agor porwr gyda mwy o wybodaeth am yr arolwg awtomatig
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Rhagolwg o ganlyniad yr arolwg
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Dangos canlyniadau arolwg y gêm sy'n rhedeg
 
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Dangos cyfradd adnewyddu
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Dewis y cyfradd adnewyddu sgrin i'w defnyddio
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Dangos cyfradd adnewyddu
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Dewis y cyfradd adnewyddu sgrin i'w defnyddio
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Gall amleddau uwch na 60Hz amharu perfformiad
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set raffeg sylfaenol
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Dewiswch y set raffeg sylfaenol i'w defnyddio (ni ellir ei newid o fewn gêm, dim ond o'r brif ddewislen)
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Gwybodaeth ychwanegol am y set graffeg sylfaenol
+STR_GAME_OPTIONS_BASE_GRF                                       :Set raffeg sylfaenol
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Dewiswch y set raffeg sylfaenol i'w defnyddio (ni ellir ei newid o fewn gêm, dim ond o'r brif ddewislen)
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Gwybodaeth ychwanegol am y set graffeg sylfaenol
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Set sain sylfaenol
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Dewiswch y set sain sylfaenol i'w ddefnyddio (ni ellir ei newid o fewn gêm, dim ond o'r brif ddewislen)
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Gwybodaeth bellach am y set sain sylfaenol
+STR_GAME_OPTIONS_BASE_SFX                                       :Set sain sylfaenol
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Dewiswch y set sain sylfaenol i'w ddefnyddio (ni ellir ei newid o fewn gêm, dim ond o'r brif ddewislen)
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Gwybodaeth bellach am y set sain sylfaenol
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Set cerddoriaeth sylfaenol
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Dewisiwch y set cerddoriaeth sylfaenol i'w ddefnyddio
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Gwybodaeth bellach am y set gerddoriaeth sylfaenol
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Set cerddoriaeth sylfaenol
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Dewisiwch y set cerddoriaeth sylfaenol i'w ddefnyddio
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Gwybodaeth bellach am y set gerddoriaeth sylfaenol
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Nôl Cynnwys
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Gwirio am gynnwys newydd a diweddar i'w lawrlwytho
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(dim ategolion integreiddio gyda llwyfannau cymdeithasol wedi'u gosod)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Llwyfan:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Stâd ategolyn:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Llwyfan:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :Stâd ategolyn:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Yn rhedeg
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Methwyd sefydlu
@@ -1220,10 +1220,10 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Bodlon (dim eff
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Dim AI addas ar gael...{}{}Gallwch lawrlwytho sawl AI drwy'r system 'Cynnwys Ar-lein'
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Hidlydd:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Ehangu oll
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Cywasgu oll
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Ailosod pob gwerth
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Hidlydd:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Ehangu oll
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Cywasgu oll
+STR_CONFIG_SETTING_RESET_ALL                                    :Ailosod pob gwerth
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(dim esboniad ar gael)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Gwerth rhagosodedig: {ORANGE}{STRING}
@@ -1236,9 +1236,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Gosodiad cwmni 
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Rhybudd!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Bydd y weithred yma'n ailosod pob gosodiad gêm i'w gwerthoedd rhagosodedig.{}Ydych chi'n siwr eich bod am barhau?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categori:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Math:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Yn cyfyngu'r rhestr isod drwy hidlau rhagosodedig
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Categori:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Math:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Yn cyfyngu'r rhestr isod drwy hidlau rhagosodedig
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Sylfaenol (gosodiadau pwysig yn unig)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Uwch (y rhan helaeth o'r gosodiadau)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Arbennigwyr (gosodiadau arbennigol, gan gynnwys rhai rhyfedd)
@@ -1255,9 +1255,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Gosodiadau cwmn
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Dim -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Dangosir holl ganlyniadau chwilio drwy osod{}{SILVER}Categori {BLACK}i {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Dangosir holl ganlyniadau chwilio drwy osod{}{SILVER}Math {BLACK}i {WHITE}Pob math o osodiad
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Dangosir holl ganlyniadau chwilio drwy osod{}{SILVER}Categori {BLACK}at {WHITE}{STRING} {BLACK}a {SILVER}Math {BLACK}i {WHITE}Pob math o osodiad
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Dangosir holl ganlyniadau chwilio drwy osod{}{SILVER}Categori {BLACK}i {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Dangosir holl ganlyniadau chwilio drwy osod{}{SILVER}Math {BLACK}i {WHITE}Pob math o osodiad
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Dangosir holl ganlyniadau chwilio drwy osod{}{SILVER}Categori {BLACK}at {WHITE}{STRING} {BLACK}a {SILVER}Math {BLACK}i {WHITE}Pob math o osodiad
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :I Ffwrdd

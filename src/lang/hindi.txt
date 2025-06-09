@@ -342,12 +342,12 @@ STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}
 
 
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}हार्डवेयर एक्सिलरेशन
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :हार्डवेयर एक्सिलरेशन
 
 
 
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}इंटरफ़ेस का आकार
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :इंटरफ़ेस का आकार
 
 
 

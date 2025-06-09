@@ -1041,7 +1041,7 @@ STR_GAME_OPTIONS_SETTING                                        :{STRING}: {ORAN
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Pénznem
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Pénznem kiválasztása
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Pénznem kiválasztása
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -1326,7 +1326,7 @@ STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Nincs 
 ###length 3
 STR_CONFIG_SETTING_CATEGORY_HIDES                               :Az összes találat megjelenítése:{}A {SILVER}kategória {BLACK}legyen {WHITE}{STRING}
 STR_CONFIG_SETTING_TYPE_HIDES                                   :Az összes találat megjelenítése:{}A {PUSH_COLOUR}{SILVER}típus {POP_COLOUR}legyen {WHITE}Összes beállítástípus
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Az összes találat megjelenítése:{}A {SILVER}kategória {BLACK}legyen {WHITE}{STRING} {BLACK}, a {SILVER}típus {BLACK}pedig {WHITE}Összes beállítástípus
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Az összes találat megjelenítése:{}A {SILVER}kategória {BLACK}legyen {WHITE}{STRING} {BLACK}, a {SILVER}típus {BLACK}pedig {WHITE}Összes beállítástípus
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Ki

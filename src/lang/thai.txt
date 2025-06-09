@@ -860,8 +860,8 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}ตั�
 
 
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}หน่วยสกุลเงิน
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}การเลือกสกุลเงิน
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :หน่วยสกุลเงิน
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :การเลือกสกุลเงิน
 
 
 ###length 45
@@ -902,21 +902,21 @@ STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranian Rial
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :ดอลลาร์ฮ่องกง
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :ริงกิตมาเลเซีย
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}บันทึกเกมอัตโนมัติ
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}เลือกระยะห่างระหว่างการบันทึกเกมอัตโนมัติแต่ละครั้ง
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :บันทึกเกมอัตโนมัติ
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :เลือกระยะห่างระหว่างการบันทึกเกมอัตโนมัติแต่ละครั้ง
 
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :ปิด
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}ภาษา
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}เลือกภาษาที่จะใช้
+STR_GAME_OPTIONS_LANGUAGE                                       :ภาษา
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :เลือกภาษาที่จะใช้
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}เต็มหน้าจอ
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}ทำเครื่องหมายที่ช่องนี้เพื่อเล่น OpenTTD fullscreen โหมด
+STR_GAME_OPTIONS_FULLSCREEN                                     :เต็มหน้าจอ
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :ทำเครื่องหมายที่ช่องนี้เพื่อเล่น OpenTTD fullscreen โหมด
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}ความละเอียดของหน้าจอ
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}เลือกความละเอียดของหน้าจอที่จะใช้
+STR_GAME_OPTIONS_RESOLUTION                                     :ความละเอียดของหน้าจอ
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :เลือกความละเอียดของหน้าจอที่จะใช้
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :อื่นๆ
 
 
@@ -929,20 +929,20 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :อื่นๆ
 
 
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}รีเฟรชเรทของหน้าจอ
+STR_GAME_OPTIONS_REFRESH_RATE                                   :รีเฟรชเรทของหน้าจอ
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}หากตั้งรีเฟรชเรทไว้มากกว่า 60Hz ขึ้นไป อาจมีผลต่อประสิทธิภาพของเกมได้
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}ตั้งค่า Graphic พื้นฐาน
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}เลือกและตั้งค่าฐานกราฟิกที่จะใช้
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}ข้อมูลเพิ่มเติมเกี่ยวกับชุดกราฟฟิคพื้นฐาน
+STR_GAME_OPTIONS_BASE_GRF                                       :ตั้งค่า Graphic พื้นฐาน
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :เลือกและตั้งค่าฐานกราฟิกที่จะใช้
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :ข้อมูลเพิ่มเติมเกี่ยวกับชุดกราฟฟิคพื้นฐาน
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}เลือกชุด Effect เสียงประกอบ
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}ปรับและเลือกเสียงที่จะใช้
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}ปรับข้อมูลเพิ่มเติมเกี่ยวกับโหมดเสียง
+STR_GAME_OPTIONS_BASE_SFX                                       :เลือกชุด Effect เสียงประกอบ
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :ปรับและเลือกเสียงที่จะใช้
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :ปรับข้อมูลเพิ่มเติมเกี่ยวกับโหมดเสียง
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}ชุดเพลงประกอบพื้นฐาน
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}เลือกเพลงประกอบพื้นฐานเพื่อใช้งาน
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}ข้อมูลเพิ่มเติมเกี่ยวกับชุดเพลงประกอบพื้นฐาน
+STR_GAME_OPTIONS_BASE_MUSIC                                     :ชุดเพลงประกอบพื้นฐาน
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :เลือกเพลงประกอบพื้นฐานเพื่อใช้งาน
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :ข้อมูลเพิ่มเติมเกี่ยวกับชุดเพลงประกอบพื้นฐาน
 
 
 
@@ -1046,9 +1046,9 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :อนุญา
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}ไม่มี AI ที่เหมาะสมปรากฎ...{}คุณสามารถดาวน์โหลด AI จากระบบ 'Online Content'
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}เติม string:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}ขยายทั้งหมด
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}ยุบลงทั้งหมด
+STR_CONFIG_SETTING_FILTER_TITLE                                 :เติม string:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :ขยายทั้งหมด
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :ยุบลงทั้งหมด
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ไม่สามารถขยายได้)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}ค่าเริ่มต้น: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}ประเภทการตั้งค่า: {ORANGE}{STRING}
@@ -1060,9 +1060,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :ตั้งค
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}คำเตือน!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}การกระทำนี้จะล้างการตั้งค่าเกมเดิมของคุณ{} คุณแน่ใจหรือไม่ที่จะกระทำแบบนี้?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}หมวดหมู่:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}ชนิด:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}จำกัดรายการด้านล่างให้แสดงเฉพาะการตั้งค่าที่มีการเปลี่ยนแปลง
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :หมวดหมู่:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :ชนิด:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :จำกัดรายการด้านล่างให้แสดงเฉพาะการตั้งค่าที่มีการเปลี่ยนแปลง
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :ตั้งค่าพื้นฐาน
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :ตั้งค่าขั้นสูง
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :การตั้งค่าแบบผู้เชี่ยวชาญ / การตั้งค่าทั้งหมด

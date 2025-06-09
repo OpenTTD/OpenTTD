@@ -823,8 +823,8 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spæli m
 
 
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Gjaldsoyra eindir
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Úrval av gjaldsoyra eindum
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Gjaldsoyra eindir
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Úrval av gjaldsoyra eindum
 
 
 ###length 45
@@ -863,21 +863,21 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Sjálvgjørt...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgiskur Lari
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranskur Rial
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Sjálvgoymsla
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vel títtleika av sjálvgoymslu
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Sjálvgoymsla
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Vel títtleika av sjálvgoymslu
 
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Sløkt
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Mál
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Vel mál at nýta í takførisflatu
+STR_GAME_OPTIONS_LANGUAGE                                       :Mál
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Vel mál at nýta í takførisflatu
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Fullan skerm
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Marka hendan kassan fyri at spæla OpenTTD í fullum skermi
+STR_GAME_OPTIONS_FULLSCREEN                                     :Fullan skerm
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Marka hendan kassan fyri at spæla OpenTTD í fullum skermi
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skerm upploysn
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Vel hvørja skermupploysn tú vil brúka
+STR_GAME_OPTIONS_RESOLUTION                                     :Skerm upploysn
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Vel hvørja skermupploysn tú vil brúka
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annað
 
 
@@ -891,17 +891,17 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annað
 
 
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Base grafikk sett
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vel ta base grafikk setti tú vil brúka
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Meira kunning um base grafikk setti
+STR_GAME_OPTIONS_BASE_GRF                                       :Base grafikk sett
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Vel ta base grafikk setti tú vil brúka
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Meira kunning um base grafikk setti
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Base ljóð sett
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Vel ta base ljóð setti tú vil brúka
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Meira kunning um base ljóð setti
+STR_GAME_OPTIONS_BASE_SFX                                       :Base ljóð sett
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Vel ta base ljóð setti tú vil brúka
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Meira kunning um base ljóð setti
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Base tónleika sett
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Vel ta base tónleika setti tú vil brúka
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Meira kunning um base tónleika setti
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Base tónleika sett
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Vel ta base tónleika setti tú vil brúka
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Meira kunning um base tónleika setti
 
 
 
@@ -1003,9 +1003,9 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Eftirgevandi
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Einki hóskandi AI til taks...{}Tú kann heinta niður fleiri ymisk AI gjøgnum 'Online tilfar' kervi
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtur strongur:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Víðka alt
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Toga alt saman
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Filtur strongur:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Víðka alt
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Toga alt saman
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(eingin frágreiðing tøk)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Vanligt virði: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Slag av instilling: {ORANGE}{STRING}
@@ -1015,7 +1015,7 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Goymslu instill
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Fyritøku instilling (goymt í goymslufílum; ávirkar einans nýggj spøl)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Fyritøku instilling (goymt í goymslufílum; ávirkar einans núverðandi fyritøku)
 
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Avmarkar listan niðanfyr so hann einans vísur broyttar instillingar
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Avmarkar listan niðanfyr so hann einans vísur broyttar instillingar
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grund innstillingar
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Víðkaðir innstillingar
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Serfrøðinga innstillingar / allir innstillingar

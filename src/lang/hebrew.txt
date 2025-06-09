@@ -908,8 +908,8 @@ STR_GAME_OPTIONS_TAB_GRAPHICS                                   :גרפיקות
 
 
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}מטבע
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}בחירת מטבע
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :מטבע
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :בחירת מטבע
 
 
 ###length 45
@@ -950,67 +950,67 @@ STR_GAME_OPTIONS_CURRENCY_IRR                                   :ריאל איר
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :רובל רוסי
 STR_GAME_OPTIONS_CURRENCY_INR                                   :רופי הודי
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}שמירה אוטומטית
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}בחר פרק זמן בין שמירות אוטומטיות
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :שמירה אוטומטית
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :בחר פרק זמן בין שמירות אוטומטיות
 
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :כבוי
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}שפה
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}בחר את שפת הממשק
+STR_GAME_OPTIONS_LANGUAGE                                       :שפה
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :בחר את שפת הממשק
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% הסתיים)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}מסך מלא
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}סמן תיבה זו כדי לשחק OpenTTD על כל המסך
+STR_GAME_OPTIONS_FULLSCREEN                                     :מסך מלא
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :סמן תיבה זו כדי לשחק OpenTTD על כל המסך
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}רזלוציית המסך
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}בחר את רזולוציית המסך
+STR_GAME_OPTIONS_RESOLUTION                                     :רזלוציית המסך
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :בחר את רזולוציית המסך
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :אחר
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :האצת חומרה
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}סמן תיבה זו כדי לאפשר ל-OpenTTD לנסות לבצע האצת חומרה. ההגדרה תיכנס לתוקף לאחר הפעלת המשחק מחדש
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :סמן תיבה זו כדי לאפשר ל-OpenTTD לנסות לבצע האצת חומרה. ההגדרה תיכנס לתוקף לאחר הפעלת המשחק מחדש
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}ההגדרה תיכנס לתוקף לאחר הפעלת המשחק מחדש
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}סמן תיבה זו כדי לבצע סנכרון אנכי (v-sync). ההגדרה תיכנס לתוקף לאחר הפעלת המשחק מחדש. עובד רק כאשר האצת החומרה מופעלת
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :סמן תיבה זו כדי לבצע סנכרון אנכי (v-sync). ההגדרה תיכנס לתוקף לאחר הפעלת המשחק מחדש. עובד רק כאשר האצת החומרה מופעלת
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}מנהל ההתקן הנוכחי: {STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :מנהל ההתקן הנוכחי: {STRING}
 
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}גודל הממשק
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}זהה גודל אוטומטית
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}סמן תיבה זו כדי לזהות את גודל הממשק אוטומטית
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :גודל הממשק
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :זהה גודל אוטומטית
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :סמן תיבה זו כדי לזהות את גודל הממשק אוטומטית
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}התאם שוליים
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}סמן תיבה זו כדי להתאים את השוליים לפי גודל הממשק
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :התאם שוליים
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :סמן תיבה זו כדי להתאים את השוליים לפי גודל הממשק
 
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}סקר אוטומטי
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}השתתף בסקר אוטומטי
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}כאשר מופעל, OpenTTD יפתח סקר כשתעזוב משחק
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}אודות סקרים ופרטיות
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}פותח דפדפן עם מידע נוסף לגבי הסקר האוטומטי
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}צפייה מקדימה בתוצאות הסקר
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}הצג את תוצאות הסקר של המשחק הנוכחי
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :סקר אוטומטי
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :השתתף בסקר אוטומטי
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :כאשר מופעל, OpenTTD יפתח סקר כשתעזוב משחק
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :אודות סקרים ופרטיות
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :פותח דפדפן עם מידע נוסף לגבי הסקר האוטומטי
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :צפייה מקדימה בתוצאות הסקר
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :הצג את תוצאות הסקר של המשחק הנוכחי
 
 
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}עדכוני סמך מעל 60Hz עלולים להשפיע על ביצועים.
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}ערכת גרפיקה בסיסית
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}בחר בערכת גרפיקה בסיסית לשימוש
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}מידע נוסף אודות ערכת הגרפיקה הבסיסית
+STR_GAME_OPTIONS_BASE_GRF                                       :ערכת גרפיקה בסיסית
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :בחר בערכת גרפיקה בסיסית לשימוש
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :מידע נוסף אודות ערכת הגרפיקה הבסיסית
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}ערכת צלילים בסיסיים
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}בחר את ערכת הצלילים הבסיסיים לשימוש
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}מידע נוסף אודות ערכת הצלילים הבסיסיים
+STR_GAME_OPTIONS_BASE_SFX                                       :ערכת צלילים בסיסיים
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :בחר את ערכת הצלילים הבסיסיים לשימוש
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :מידע נוסף אודות ערכת הצלילים הבסיסיים
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}ערכת מוזיקת בסיס
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}בחר בערכת מוזיקת הבסיס לשימוש
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}מידע נוסף אודות ערכת המוזיקה הבסיסית
+STR_GAME_OPTIONS_BASE_MUSIC                                     :ערכת מוזיקת בסיס
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :בחר בערכת מוזיקת הבסיס לשימוש
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :מידע נוסף אודות ערכת המוזיקה הבסיסית
 
 
 
@@ -1117,10 +1117,10 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :מתירני
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}אין בינות מלאכותיות מתאימות...{}באפשרותך להוריד בינות מלאכותיות בעזרת מערכת ה'תוכן המקוון'
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}מחרוזת סינון:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}הרחב הכל
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}צמצם הכל
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}אפס את כל הערכים
+STR_CONFIG_SETTING_FILTER_TITLE                                 :מחרוזת סינון:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :הרחב הכל
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :צמצם הכל
+STR_CONFIG_SETTING_RESET_ALL                                    :אפס את כל הערכים
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(אין הסבר זמין)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}ערך ברירת מחדל: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}סוג הגדרה: {ORANGE}{STRING}
@@ -1131,9 +1131,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :הגדרת חב
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :הגדרת חברה (מאוחסנת במשחק שמור; משפיעה על החברה הנוכחית בלבד)
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}זהירות!
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}קטגוריה:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}סוג:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}מגביל את הרשימה להלן תוך שימוש בסינון שהוגדר מראש.
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :קטגוריה:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :סוג:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :מגביל את הרשימה להלן תוך שימוש בסינון שהוגדר מראש.
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :הגדרות בסיסיות (הצג רק הגדרות חשובות)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :הגדרות מתקדמות (הצג את רוב ההגדרות)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :הגדרות מומחה (הצג את כל ההגדרות, כולל הגדרות משונות)
@@ -1150,9 +1150,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :הגדרות ח
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- ללא -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}הצג את תוצאות החיפוש בהגדרת {SILVER}הקטגוריה{} {BLACK} ל{WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}הצג את תוצאות החיפוש בהגדרת {SILVER}הסוג{} {BLACK}ל{WHITE}כל סוגי ההגדרות
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}הצג את תוצאות החיפוש בהגדרת{SILVER}הקטגוריה{} {BLACK}ל{WHITE}{STRING} {BLACK}וגם את {SILVER}הסוג {BLACK}ל{WHITE}כל סוגי ההגדרות
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :הצג את תוצאות החיפוש בהגדרת {SILVER}הקטגוריה{} {BLACK} ל{WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :הצג את תוצאות החיפוש בהגדרת {SILVER}הסוג{} {BLACK}ל{WHITE}כל סוגי ההגדרות
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :הצג את תוצאות החיפוש בהגדרת{SILVER}הקטגוריה{} {BLACK}ל{WHITE}{STRING} {BLACK}וגם את {SILVER}הסוג {BLACK}ל{WHITE}כל סוגי ההגדרות
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :כבוי

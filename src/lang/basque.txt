@@ -842,8 +842,8 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Jokoaren
 
 
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Diru unitateak
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Diru unitatearen aukeraketa
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Diru unitateak
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Diru unitatearen aukeraketa
 
 
 ###length 45
@@ -882,21 +882,21 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Pertsonalizatua
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgiarra
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraniarra
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Auto-gordea
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Aukeratu jokoa automatikoki gordetzeko denbora
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Auto-gordea
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Aukeratu jokoa automatikoki gordetzeko denbora
 
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Ez
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Hizkuntza
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Aukeratu interfazean erabiltzeko hizkuntza
+STR_GAME_OPTIONS_LANGUAGE                                       :Hizkuntza
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Aukeratu interfazean erabiltzeko hizkuntza
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Pantaila osoa
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Markatu kaxa hau OpenTTD pantaila osoko moduan jolasteko
+STR_GAME_OPTIONS_FULLSCREEN                                     :Pantaila osoa
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Markatu kaxa hau OpenTTD pantaila osoko moduan jolasteko
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Pantailaren resoluzioa
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Pantailaren resulozioa aukeratu
+STR_GAME_OPTIONS_RESOLUTION                                     :Pantailaren resoluzioa
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Pantailaren resulozioa aukeratu
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :besteak
 
 
@@ -910,17 +910,17 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :besteak
 
 
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafiko basea markatu
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Aukeratu erabili beharreko grafiko paketea
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Markatutako grafiko basearen informazio gehiago
+STR_GAME_OPTIONS_BASE_GRF                                       :Grafiko basea markatu
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Aukeratu erabili beharreko grafiko paketea
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Markatutako grafiko basearen informazio gehiago
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Base musika paketea
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Aukeratu erabili beharreko soinu paketea
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Soinu paketearen informazio gehiago
+STR_GAME_OPTIONS_BASE_SFX                                       :Base musika paketea
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Aukeratu erabili beharreko soinu paketea
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Soinu paketearen informazio gehiago
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Base musika konfiguratu
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Aukeratu erabili beharreko musika paketea
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Musika paketearen informazio gehiago
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Base musika konfiguratu
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Aukeratu erabili beharreko musika paketea
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Musika paketearen informazio gehiago
 
 
 
@@ -1023,9 +1023,9 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Jasankorra
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ez dago IA egokirik aukeratzeko..{}IA asko jaitsi ditzakezu 'Online edukiera' sistemaren bidez
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Lokarri iragazkia:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Guztia haunditu
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Guztia kolapsatu
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Lokarri iragazkia:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Guztia haunditu
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Guztia kolapsatu
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(Ez dago azalpen erabilgarririk)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Balio lehenetsia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Mota ezarpena: {ORANGE}{STRING}
@@ -1035,9 +1035,9 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Joko ezarpenak 
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Konpainia ezarpenak (Gorden bilduta; bakarrik joko berriei eragingo die)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Konpainia ezarpenak (Gorden bilduta; bakarrik uneko konpainiari eragiten dio)
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategoria:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Mota:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Beheko zerrenda laburtu bakarrik aldatutako ezarpenak erakutsiz
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Kategoria:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Mota:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Beheko zerrenda laburtu bakarrik aldatutako ezarpenak erakutsiz
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Oinarrizkoa (ezarpen garrantzitsuak bakarrik erakutsi)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Aurreratua (ezarpen gehienak erakutsi)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Aditua (ezarpen guztiak erakutsi, arraroak barne)

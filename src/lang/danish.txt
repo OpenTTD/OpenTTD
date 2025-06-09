@@ -1040,55 +1040,55 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Hvert 60. minut
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Hvert 120. minut
 
 STR_GAME_OPTIONS_LANGUAGE                                       :Sprog
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Vælg sprog til brugerfladen
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Vælg sprog til brugerfladen
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% færdig)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Fuld skærm
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Afkryds for at spille OpenTTD i fuld skærm
+STR_GAME_OPTIONS_FULLSCREEN                                     :Fuld skærm
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Afkryds for at spille OpenTTD i fuld skærm
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skærmopløsning
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Vælg ønsket skærmopløsning
+STR_GAME_OPTIONS_RESOLUTION                                     :Skærmopløsning
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Vælg ønsket skærmopløsning
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :andet
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hardware-acceleration
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Marker dette felt for at tillade at OpenTTD forsøger at bruge hardwareacceleration. Ændringer af indstillingen er først effektiv efter spillet er genstartet.
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Hardware-acceleration
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Marker dette felt for at tillade at OpenTTD forsøger at bruge hardwareacceleration. Ændringer af indstillingen er først effektiv efter spillet er genstartet.
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Indstillingen er først effektiv efter spillet er genstartet.
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Afmærk dette felt for at v-synkronisere skærmen. Ændringer af indstillingen er først effektiv efter spillet er genstartet. Fungerer kun med hardware-acceleration aktiveret.
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Afmærk dette felt for at v-synkronisere skærmen. Ændringer af indstillingen er først effektiv efter spillet er genstartet. Fungerer kun med hardware-acceleration aktiveret.
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Nuværende fører: {STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Nuværende fører: {STRING}
 
 STR_GAME_OPTIONS_INTERFACE                                      :Grænseflade
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Interface størrelse
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Træk skyderen for at indstille grænsefladestørrelsen. Hold Ctrl nede for kontinuerlig justering
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Automatisk registrering af størrelse
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Marker dette felt for automatisk at registrere grænsefladestørrelse
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Interface størrelse
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Træk skyderen for at indstille grænsefladestørrelsen. Hold Ctrl nede for kontinuerlig justering
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Automatisk registrering af størrelse
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Marker dette felt for automatisk at registrere grænsefladestørrelse
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Skalere facetter
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Marker dette afkrydsningsfelt for at skalere facetter efter grænsefladestørrelse
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Skalere facetter
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Marker dette afkrydsningsfelt for at skalere facetter efter grænsefladestørrelse
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Brug traditionel sprite-skrifttype
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Marker dette felt, hvis du foretrækker at bruge den traditionelle sprite-skrifttype med fast størrelse
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Brug traditionel sprite-skrifttype
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Marker dette felt, hvis du foretrækker at bruge den traditionelle sprite-skrifttype med fast størrelse
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Anti-alias skrifttyper
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Marker dette felt for at skrifttyper, der kan ændres størrelse, kan udlignes
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Marker dette felt for at skrifttyper, der kan ændres størrelse, kan udlignes
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automatiseret undersøgelse
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Deltag i automatiseret undersøgelse
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Når det er aktiveret, sender OpenTTD en undersøgelse, når du forlader et spil
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Automatiseret undersøgelse
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Deltag i automatiseret undersøgelse
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :Når det er aktiveret, sender OpenTTD en undersøgelse, når du forlader et spil
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :Om GPDR og privatliv
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Dette åbner en browser med mere information om den automatiserede undersøgelse
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Forhåndsvisning af undersøgelsesresultat
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Vis undersøgelsesresultatet af det aktuelle spil
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Dette åbner en browser med mere information om den automatiserede undersøgelse
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Forhåndsvisning af undersøgelsesresultat
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Vis undersøgelsesresultatet af det aktuelle spil
 
 STR_GAME_OPTIONS_DISPLAY                                        :Vis
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Skærm opdateringshastighed
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Vælg den opdateringshastighed der skal bruges på skærmen
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Skærm opdateringshastighed
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Vælg den opdateringshastighed der skal bruges på skærmen
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Opdateringshastigheder over 60Hz kan påvirke ydeevnen.
 
@@ -1109,9 +1109,9 @@ STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Søg efter nyt 
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(ingen plugins til at integrere med sociale platforme installeret)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Platform:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Plugin-tilstand:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Platform:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :Plugin-tilstand:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Køre
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Initialisering mislykkedes
@@ -1225,10 +1225,10 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Passiv (ingen i
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Der blev ikke fundet en egnet computer-spiller...{}Du kan downloade flere forskellige computer-spillere gennem 'Online Indhold'.
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filterstreng:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Udvid alle
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Skjul alle
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Nulstil alle værdier
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Filterstreng:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Udvid alle
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Skjul alle
+STR_CONFIG_SETTING_RESET_ALL                                    :Nulstil alle værdier
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ingen forklaring tilgængelig)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standard: {ORANGE}{STRING}
@@ -1241,9 +1241,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Firma indstilli
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Advarsel!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Denne handling vil nulstille alle spilindstillinger til deres standardværdier.{}Ønsker du at fortsætte?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategori:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Type:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Begrænser listen nedenfor så den kun viser ændrede indstillinger
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Kategori:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Type:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Begrænser listen nedenfor så den kun viser ændrede indstillinger
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grund Indstillinger
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avancerede indstillinger
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ekspertindstillinger / alle indstillinger
@@ -1260,9 +1260,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Firma indstilli
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Ingen -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Vis alle søgeresultater ved at sætte{}{SILVER}Kategori {BLACK}to {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Vis alle søgeresultater ved at sætte{}{SILVER}Indtast {BLACK}til {WHITE}Alle Indstillingstyper
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Vis alle søgeresultater ved at sætte{} {SILVER}Kategori {BLACK}til {WHITE} {STRING} {BLACK}og {SILVER} Indtast {BLACK}til {WHITE}Alle Indstillingstyper
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Vis alle søgeresultater ved at sætte{}{SILVER}Kategori {BLACK}to {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Vis alle søgeresultater ved at sætte{}{SILVER}Indtast {BLACK}til {WHITE}Alle Indstillingstyper
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Vis alle søgeresultater ved at sætte{} {SILVER}Kategori {BLACK}til {WHITE} {STRING} {BLACK}og {SILVER} Indtast {BLACK}til {WHITE}Alle Indstillingstyper
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Fra

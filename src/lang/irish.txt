@@ -876,8 +876,8 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Roghanna
 
 
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Aonaid airgeadra
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Aonaid airgeadra a roghnú
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Aonaid airgeadra
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Aonaid airgeadra a roghnú
 
 
 ###length 45
@@ -924,31 +924,31 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Rúipí na hInd
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupiah na hIndinéise
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit na Malaeisia
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Uathshábháil
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Roghnaigh eatramh idir uathshábhálacha an chluiche
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Uathshábháil
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Roghnaigh eatramh idir uathshábhálacha an chluiche
 
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :As
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Teanga
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Roghnaigh an teanga comhéadain le húsáid
+STR_GAME_OPTIONS_LANGUAGE                                       :Teanga
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Roghnaigh an teanga comhéadain le húsáid
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% críochnaithe)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Lánscáileán
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Cuir tic sa bhosca seo chun OpenTTD a imirt sa mhód lánscáileáin
+STR_GAME_OPTIONS_FULLSCREEN                                     :Lánscáileán
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Cuir tic sa bhosca seo chun OpenTTD a imirt sa mhód lánscáileáin
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Taifeach scáileáin
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Roghnaigh an taifeach scáileáin le húsáid
+STR_GAME_OPTIONS_RESOLUTION                                     :Taifeach scáileáin
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Roghnaigh an taifeach scáileáin le húsáid
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :eile
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Luasghéarú crua-earraí
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Cuir tic sa bhosca seo chun cead a thabhairt do OpenTTD iarracht a dhéanamh luasghéarú crua-earraí a úsáid. Má athraítear an socrú seo, ní chuirfear i bhfeidhm é ach tar éis an cluiche a atosú.
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Luasghéarú crua-earraí
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Cuir tic sa bhosca seo chun cead a thabhairt do OpenTTD iarracht a dhéanamh luasghéarú crua-earraí a úsáid. Má athraítear an socrú seo, ní chuirfear i bhfeidhm é ach tar éis an cluiche a atosú.
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Ní chuirfear an socrú i bhfeidhm go dtí go ndéanfar an cluiche a atosú
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Cuir tic sa bhosca seo chun v-shioncronú (v-sync) a úsáid ar an scáileán. Má athraítear an socrú seo, ní chuirfear i bhfeidhm é ach tar éis an cluiche a atosú. Ní oibríonn seo ach amháin má tá luasghéarú crua-earraí cumasaithe
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Cuir tic sa bhosca seo chun v-shioncronú (v-sync) a úsáid ar an scáileán. Má athraítear an socrú seo, ní chuirfear i bhfeidhm é ach tar éis an cluiche a atosú. Ní oibríonn seo ach amháin má tá luasghéarú crua-earraí cumasaithe
 
 
 
@@ -958,22 +958,22 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Cuir tic
 
 
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Ráta athnuachana na taispeána
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Roghnaigh ráta athnuachana an scáileán atá le húsáid
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Ráta athnuachana na taispeána
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Roghnaigh ráta athnuachana an scáileán atá le húsáid
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}D'fhéadfadh rátaí athnuacha os cionn 60Hz tionchar a bheith acu ar an bhfeidhmíocht.
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Sraith graifice bunaidh
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Roghnaigh an sraith grafaice bunaidh le húsáid
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Faisnéis breise faoin sraith grafaice bunaidh
+STR_GAME_OPTIONS_BASE_GRF                                       :Sraith graifice bunaidh
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Roghnaigh an sraith grafaice bunaidh le húsáid
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Faisnéis breise faoin sraith grafaice bunaidh
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Sraith fuaimeanna bunaidh
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Roghnaigh an tsraithe fuaimeanna bunaidh le húsáid
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Faisnéis breise faoin tsraith fuaimeanna bunaidh
+STR_GAME_OPTIONS_BASE_SFX                                       :Sraith fuaimeanna bunaidh
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Roghnaigh an tsraithe fuaimeanna bunaidh le húsáid
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Faisnéis breise faoin tsraith fuaimeanna bunaidh
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Sraith ceoil bunaidh
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Roghnaigh an tsraith ceoil bunaidh le húsáid
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Faisnéis breise faoin tsraith ceoil bunaidh
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Sraith ceoil bunaidh
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Roghnaigh an tsraith ceoil bunaidh le húsáid
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Faisnéis breise faoin tsraith ceoil bunaidh
 
 
 
@@ -1079,10 +1079,10 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Tugtar cead
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Níl aon AI oiriúnach ar fáil...{}Is féidir leat roinnt AI a íoslódáil tríd an gcóras 'Inneachar Ar Líne'
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Teaghrán scagtha:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Fairsingigh gach ceann
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Leacaigh gach ceann
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Athshocraigh gach luach
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Teaghrán scagtha:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Fairsingigh gach ceann
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Leacaigh gach ceann
+STR_CONFIG_SETTING_RESET_ALL                                    :Athshocraigh gach luach
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(níl aon mhíniú ar fáil)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Luach réamhshocraithe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Cineál socrú: {ORANGE}{STRING}
@@ -1094,9 +1094,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Socrú cuideach
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Rabhadh!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Leis an mbeart seo athshocrófar gach socrú cluiche chuig a réamhshocrú.{}An bhfuil tú cinnte gur mhaith leat leanúint ar aghaidh?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Catagóir:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Cineál:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Cuirtear srian ar an liosta thíos ag úsáid scagairí réamhshocraithe
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Catagóir:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Cineál:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Cuirtear srian ar an liosta thíos ag úsáid scagairí réamhshocraithe
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Bunúsach (ná taispeáin ach socruithe tábhachtacha)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Ardleibhéil (taispeáin formhór na socruithe)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Saineolaí (taispeáin gach socrú, cinn aisteacha ina measc)
@@ -1113,9 +1113,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Socruithe Cuide
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Ceann ar bith -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Taispeáin gach toradh cuardaigh de réir socrú{}{SILVER}Catagóir {BLACK}go {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Taispeáin gach toradh cuardaigh de réir socrú{}{SILVER}Cineál {BLACK}go {WHITE}Gach cineál socrú
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Taispeáin gach toradh cuardaigh de réir socrú{}{SILVER}Catagóir {BLACK}go {WHITE}{STRING} {BLACK}agus {SILVER}Cineál {BLACK}go {WHITE}Gach cineál socrú
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Taispeáin gach toradh cuardaigh de réir socrú{}{SILVER}Catagóir {BLACK}go {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Taispeáin gach toradh cuardaigh de réir socrú{}{SILVER}Cineál {BLACK}go {WHITE}Gach cineál socrú
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Taispeáin gach toradh cuardaigh de réir socrú{}{SILVER}Catagóir {BLACK}go {WHITE}{STRING} {BLACK}agus {SILVER}Cineál {BLACK}go {WHITE}Gach cineál socrú
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :As

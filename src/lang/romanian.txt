@@ -1021,8 +1021,8 @@ STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lats leton
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escudo portughez
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Hryvnia ucraineană
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Salvare automată
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Alege intervalul de timp dintre salvările automate
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Salvare automată
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Alege intervalul de timp dintre salvările automate
 
 # Autosave dropdown
 ###length 5
@@ -1032,77 +1032,77 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :La fiecare 30 d
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :La fiecare 60 de minute
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :La fiecare 120 de minute
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Limba
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Alege limba în care dorești afișată interfața
+STR_GAME_OPTIONS_LANGUAGE                                       :Limba
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Alege limba în care dorești afișată interfața
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% finalizat)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Ecran întreg
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Bifează această căsuță pentru a juca pe tot ecranul
+STR_GAME_OPTIONS_FULLSCREEN                                     :Ecran întreg
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Bifează această căsuță pentru a juca pe tot ecranul
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Rezoluția ecranului
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Alege rezoluția dorită pentru joc
+STR_GAME_OPTIONS_RESOLUTION                                     :Rezoluția ecranului
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Alege rezoluția dorită pentru joc
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :(alta/nespecificată)
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Accelerare hardware
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Bifați căsuța ca OpenTTD să încerce utilizarea accelerației hardware. Modificarea setării va avea efect după repornirea jocului
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Accelerare hardware
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Bifați căsuța ca OpenTTD să încerce utilizarea accelerației hardware. Modificarea setării va avea efect după repornirea jocului
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Setarea va avea efect doar după repornirea jocului
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Bifați această căsuță pentru sincronizarea verticală a imaginii. Modificarea setării va fi aplicată doar după repornirea jocului și funcționează doar cu accelerarea hardware activată
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Bifați această căsuță pentru sincronizarea verticală a imaginii. Modificarea setării va fi aplicată doar după repornirea jocului și funcționează doar cu accelerarea hardware activată
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Driver curent: {STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Driver curent: {STRING}
 
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Dimensiune interfață
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Trageți glisorul pentru a seta dimensiunea interfeței. Ctrl+Tras pentru ajustare continuă
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Detectează automat dimensiunea
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Bifați această căsuță pentru a detecta automat dimensiunea interfeței
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Dimensiune interfață
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Trageți glisorul pentru a seta dimensiunea interfeței. Ctrl+Tras pentru ajustare continuă
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Detectează automat dimensiunea
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Bifați această căsuță pentru a detecta automat dimensiunea interfeței
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Scalează marginile
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Bifați această casetă pentru a scala marginile în funcție de dimensiunea interfeței
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Scalează marginile
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Bifați această casetă pentru a scala marginile în funcție de dimensiunea interfeței
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Folosiți fontul tradițional al sprite-ului
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Bifați această casetă dacă preferați să utilizați fontul sprite tradițional cu dimensiune fixă.
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Fonturi anti-alias
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Bifați această casetă pentru a aplica anti-alias fonturilor redimensionabile.
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Folosiți fontul tradițional al sprite-ului
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Bifați această casetă dacă preferați să utilizați fontul sprite tradițional cu dimensiune fixă.
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Fonturi anti-alias
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Bifați această casetă pentru a aplica anti-alias fonturilor redimensionabile.
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Sondaj automat
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Participă în sondaje automate
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Când este activat, OpenTTD va transmite un sondaj la ieșirea din joc
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Despre sondaj și intimitate
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Asta va deschide un navigator cu mai multe informații despre sondajul automat
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Previzualizare rezultat sondaj
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Arată rezultatul sondajului pentru jocul curent
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Sondaj automat
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Participă în sondaje automate
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :Când este activat, OpenTTD va transmite un sondaj la ieșirea din joc
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :Despre sondaj și intimitate
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Asta va deschide un navigator cu mai multe informații despre sondajul automat
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Previzualizare rezultat sondaj
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Arată rezultatul sondajului pentru jocul curent
 
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Afișează rata de reîmprospătare
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Alegeți rata de reîmprospătare dorită
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Afișează rata de reîmprospătare
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Alegeți rata de reîmprospătare dorită
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Ratele de împrospătare de peste 60Hz ar putea afecta performanța.
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set grafic de bază
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selectați setul de grafică de bază pe care să îl utilizați (nu poate fi schimbat în joc, doar din meniul principal)
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informații adiționale despre setul grafic de bază
+STR_GAME_OPTIONS_BASE_GRF                                       :Set grafic de bază
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Selectați setul de grafică de bază pe care să îl utilizați (nu poate fi schimbat în joc, doar din meniul principal)
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Informații adiționale despre setul grafic de bază
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Set sunete de bază
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selectați sunetele de bază setate pentru a fi utilizate (nu pot fi modificate în joc, doar din meniul principal)
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informații adiționale despre setul de sunete de bază
+STR_GAME_OPTIONS_BASE_SFX                                       :Set sunete de bază
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Selectați sunetele de bază setate pentru a fi utilizate (nu pot fi modificate în joc, doar din meniul principal)
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Informații adiționale despre setul de sunete de bază
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Setul de muzică de bază
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selectați setul de muzică de bază
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informații adiționale despre setul de muzică de bază
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Setul de muzică de bază
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Selectați setul de muzică de bază
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Informații adiționale despre setul de muzică de bază
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Obțineți conținut
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Verificați daca există conținut de actualizat
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(fără pluginuri care să fie integrate cu platformele sociale instalate)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Platformă:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Starea pluginului:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Platformă:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :Starea pluginului:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Rulează
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Inițializarea eșuată
@@ -1216,10 +1216,10 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permisivă (far
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nu este disponibil nici un modul de Inteligență Artificială...{}Puteți descărca diferite module de Inteligență Artificială prin sistemul de 'Resurse Online'
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtru:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Extinde toate
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Colapsează toate
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Resetează toate valorile
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Filtru:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Extinde toate
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Colapsează toate
+STR_CONFIG_SETTING_RESET_ALL                                    :Resetează toate valorile
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(descrierea nu este disponibilă)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valoare implicită: {ORANGE}{STRING}
@@ -1232,9 +1232,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Setări compani
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Atenție!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Această acțiune va reface toate setările jocului la valorile implicite.{}Sigur vrei să continui?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categorie:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tip:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Limitează lista de mai jos doar la setările modificate
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Categorie:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Tip:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Limitează lista de mai jos doar la setările modificate
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Setări de bază (afișează numai setări importante)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Setări avansate (afișează majoritatea setărilor)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Setări expert (afișează toate setările)
@@ -1251,9 +1251,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Setări compani
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Nespecificat -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Arată toate rezultatele de căutare setând{}{SILVER}Categoria {BLACK}în {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Arată toate rezultatele de căutare setând{}{SILVER}Tipul {BLACK}în {WHITE}Toate tipurile de setări
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Arată toate rezultatele de căutare setând{}{SILVER}Categoria {BLACK}în {WHITE}{STRING} {BLACK}și {SILVER}Tipul {BLACK}ca {WHITE}Toate tipurile de setări
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Arată toate rezultatele de căutare setând{}{SILVER}Categoria {BLACK}în {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Arată toate rezultatele de căutare setând{}{SILVER}Tipul {BLACK}în {WHITE}Toate tipurile de setări
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Arată toate rezultatele de căutare setând{}{SILVER}Categoria {BLACK}în {WHITE}{STRING} {BLACK}și {SILVER}Tipul {BLACK}ca {WHITE}Toate tipurile de setări
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Inactiv

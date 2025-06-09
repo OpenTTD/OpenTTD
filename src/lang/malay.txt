@@ -826,8 +826,8 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Pilihan 
 
 
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unit kewangan
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Pilihan unit kewangan
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Unit kewangan
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Pilihan unit kewangan
 
 
 ###length 45
@@ -865,21 +865,21 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :South African R
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Sesuaikan...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgian Lari
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Simpanan automatik
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Pilih tempoh untuk simpanan permainan automatik
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Simpanan automatik
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Pilih tempoh untuk simpanan permainan automatik
 
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Matikan
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Bahasa
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Pilih bahasa antaramuka yang ingin digunakan
+STR_GAME_OPTIONS_LANGUAGE                                       :Bahasa
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Pilih bahasa antaramuka yang ingin digunakan
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Skrin Penuh
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Tanda kotak ini untuk bermain OpenTTD dalam mod skrin penuh
+STR_GAME_OPTIONS_FULLSCREEN                                     :Skrin Penuh
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Tanda kotak ini untuk bermain OpenTTD dalam mod skrin penuh
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolusi Skrin
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Pilih resolusi skrin untuk digunakan
+STR_GAME_OPTIONS_RESOLUTION                                     :Resolusi Skrin
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Pilih resolusi skrin untuk digunakan
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :lain
 
 
@@ -893,17 +893,17 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :lain
 
 
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set grafik asas
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Pilih set grafik asas untuk digunakan
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Maklumat tambahan tentang set grafik asas ini
+STR_GAME_OPTIONS_BASE_GRF                                       :Set grafik asas
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Pilih set grafik asas untuk digunakan
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Maklumat tambahan tentang set grafik asas ini
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Set bunyi asas
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Pilih set bunyi asas untuk digunakan
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Maklumat tambahan tentang set bunyi asas ini
+STR_GAME_OPTIONS_BASE_SFX                                       :Set bunyi asas
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Pilih set bunyi asas untuk digunakan
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Maklumat tambahan tentang set bunyi asas ini
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Set muzik asas
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Pilih set muzik asas yang akan digunakan
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Maklumat lebih tentang set muzik asas
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Set muzik asas
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Pilih set muzik asas yang akan digunakan
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Maklumat lebih tentang set muzik asas
 
 
 
@@ -1007,9 +1007,9 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Mengizinkan
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Tiada AI yang bersesuaian...{}Anda boleh memuat turun beberapa AI dari sistem 'Kandungan Atas Talian'
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Tapis baris:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Kembangkan semua
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Musnahkan semua
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Tapis baris:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Kembangkan semua
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Musnahkan semua
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(Tiada penjelasan)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Nilai lalai: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Jenis tetapan: {ORANGE}{STRING}
@@ -1019,8 +1019,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Tetapan permain
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Tetapan syarikat (disimpan di simpanan; berkesan hanya permainan baru)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Tetapan syarikat (disimpan di penyimpanan; hanya berkesan kepada syarikat semasa)
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategori:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Hadkan senarai di bawah menggunakan penapis yang telah ditetapkan
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Kategori:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Hadkan senarai di bawah menggunakan penapis yang telah ditetapkan
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Asas (menunjukkan tetapan yang penting sahaja)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Terperinci (tunjukkan kebanyakan tetapan)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Expert (memaparkan semua tetapan, termasuk yang pelik)
