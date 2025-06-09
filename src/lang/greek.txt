@@ -3166,6 +3166,11 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Επιλ
 STR_FOUND_TOWN_CITY                                             :{BLACK}Πόλη
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Οι πόλεις αναπτύσσονται ταχύτερα από τις απλές κωμοπόλεις{}Ανάλογα με τις ρυθμίσεις, είναι μεγαλύτερες όταν ιδρύονται
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Επέκταση πόλης:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Κτίρια
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Αύξηση κτιρίων πόλεων
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Δρόμοι
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Αύξηση δρόμων πόλεων
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Σχέδιο δρόμων πόλης
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Επιλογή σχεδίου δρόμων που χρησιμοποιείται για αυτή την πόλη
@@ -3790,6 +3795,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Αλλα
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Επέκταση
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Αύξηση μεγέθους της πόλης
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Επέκταση κτιρίων
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Αύξηση κτιρίων της πόλης
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Επέκταση δρόμων
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Αύξηση δρόμων της πόλης
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Διαγραφή
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Διαγραφή της πόλης ολοκληρωτικά
 

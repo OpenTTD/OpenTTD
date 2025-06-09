@@ -3074,6 +3074,11 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Escolher
 STR_FOUND_TOWN_CITY                                             :{BLACK}Cidade
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Cidades crescem mais depressa do que as localidades normais{}Dependendo das configurações, elas são maiores quando fundadas
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Expansão da cidade:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Construções
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Aumentar as construções das cidades
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Estradas
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Aumentar as estradas das localidades
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Disposição das estradas na localidade:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Selecionar disposição das estradas utilizada nesta localidade
@@ -3698,6 +3703,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Alterar 
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Expandir
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Aumentar o tamanho da localidade
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Expandir com construções
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Aumentar as construções da localidade
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Expandir com estradas
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Aumentar as estradas da localidade
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Remover
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Remover completamente esta localidade
 

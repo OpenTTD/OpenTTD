@@ -3248,6 +3248,11 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Выбо
 STR_FOUND_TOWN_CITY                                             :{BLACK}Мегаполис
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Большие города растут быстрее, чем маленькие.{}В зависимости от настроек, они при создании имеют больший размер.
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Расширение города:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Здания
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Строительство новых зданий в городе
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Дороги
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Строительство новых дорог в городе
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Сеть городских дорог:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Тип сети городских дорог
@@ -3872,6 +3877,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Пере
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Расширить
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Увеличить размер города
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Больше зданий
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Увеличить количество зданий в городе
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Больше дорог
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Расширить дорожную сеть
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Уничтожить
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Полностью уничтожить этот город
 

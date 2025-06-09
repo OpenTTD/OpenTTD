@@ -3073,6 +3073,11 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}選擇�
 STR_FOUND_TOWN_CITY                                             :{BLACK}城市
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}城市比普通城鎮成長的更快{}你可以從進階設定中調整城市的初始規模
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}市鎮擴展：
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :建築物
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :增建市鎮建築物
+STR_FOUND_TOWN_EXPAND_ROADS                                     :道路
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :增建市鎮道路
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}市鎮道路配置：
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}選擇這個市鎮使用的道路配置
@@ -3697,6 +3702,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}修改�
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}擴展
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}擴大市鎮大小
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}擴展建築物
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}增建市鎮建築物
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}擴展道路
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}增建市鎮道路
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}刪除
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}完全刪除這個市鎮
 
