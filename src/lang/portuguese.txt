@@ -3074,6 +3074,11 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Seleccio
 STR_FOUND_TOWN_CITY                                             :{BLACK}Cidade
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Cidades crescem mais depressa do que as localidades normais{}Dependendo da configuração, são maiores aquando da sua fundação
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Expansão da cidade:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Edifícios
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Aumentar os edifícios das cidades
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Estradas
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Aumentar as estradas das localidades
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Disposição de estradas na localidade:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Seleccione disposição das estradas utilizada para esta localidade
@@ -3698,6 +3703,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Alterar 
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Expandir
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Aumentar o tamanho da cidade
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Expandir edifícios
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Aumentar os edifícios da localidade
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Expandir estradas
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Aumentar as estradas da localidade
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Apagar
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Apagar completamente esta localidade
 
@@ -5921,5 +5930,9 @@ STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELO
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
 STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Abrir configuração de crachá
 STR_BADGE_CONFIG_RESET                                          :Repor
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Ícones de Crachá
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Filtros de Crachá
 STR_BADGE_CONFIG_PREVIEW                                        :Pré-visualizar imagem
 STR_BADGE_CONFIG_NAME                                           :Nome
+STR_BADGE_FILTER_ANY_LABEL                                      :Qualquer {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} é {STRING}

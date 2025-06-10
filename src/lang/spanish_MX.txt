@@ -3074,6 +3074,11 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Elegir e
 STR_FOUND_TOWN_CITY                                             :{BLACK}Ciudad
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Las ciudades crecen más rápido que los pueblos{}Según la configuración del juego, al ser fundadas son más grandes
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Expansión del pueblo:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Edificios
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Aumentar edificios de los pueblos
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Carreteras
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Aumentar carreteras de los pueblos
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Diseño urbano:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Elegir el patrón de carreteras de este pueblo
@@ -3698,6 +3703,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Cambiar 
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Aumentar
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Aumentar la población del pueblo
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Expandir edificios
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Aumentar edificios de los pueblos
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Expandir carreteras
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Aumentar carreteras de los pueblos
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Eliminar
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Eliminar este pueblo completamente
 
@@ -5926,3 +5935,4 @@ STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Filtros 
 STR_BADGE_CONFIG_PREVIEW                                        :Vista previa de imagen
 STR_BADGE_CONFIG_NAME                                           :Nombre
 STR_BADGE_FILTER_ANY_LABEL                                      :Cualquier {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} es {STRING}

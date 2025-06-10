@@ -3074,6 +3074,11 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}도시 �
 STR_FOUND_TOWN_CITY                                             :{BLACK}대도시로 만듦
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}대도시는 도시보다 빠르게 성장합니다.{}도시를 만들었을 때, 위 설정에 따라 더욱 커집니다
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}도시 확장:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :건물
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :도시의 건물을 확장합니다
+STR_FOUND_TOWN_EXPAND_ROADS                                     :도로
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :도시의 도로를 확장합니다
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}도시 도로 설계:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}이 도시에 사용할 도로 설계를 선택합니다
@@ -3698,6 +3703,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}이 도�
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}확장
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}도시의 크기를 키웁니다.
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}건물 확장
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}도시의 건물을 확장합니다
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}도로 확장
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}도시의 도로를 확장합니다
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}삭제
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}이 도시를 완전히 삭제
 
@@ -5921,5 +5930,9 @@ STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELO
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
 STR_BADGE_CONFIG_MENU_TOOLTIP                                   :배지 설정을 엽니다
 STR_BADGE_CONFIG_RESET                                          :초기화
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}배지 아이콘
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}배지 필터
 STR_BADGE_CONFIG_PREVIEW                                        :미리보기 이미지
 STR_BADGE_CONFIG_NAME                                           :이름
+STR_BADGE_FILTER_ANY_LABEL                                      :모든 {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} = {STRING}

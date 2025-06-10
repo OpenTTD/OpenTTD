@@ -3453,6 +3453,11 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Wybierz 
 STR_FOUND_TOWN_CITY                                             :{BLACK}Metropolia
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Metropolie rozwijają się szybciej od zwykłych miast{}W zależności od ustawień, są one większe przy zakładaniu
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Powiększanie miast:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Budynki
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Zwiększ liczbę budynków w miastach
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Drogi
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Rozbuduj drogi w miastach
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Układ dróg miasta:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Wybierz układ dróg dla tego miasta
@@ -4077,6 +4082,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Zmień n
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Rozszerz
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Zwiększ rozmiar miasta
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Dodaj budynki
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Zwiększ liczbę budynków w mieście
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Dodaj drogi
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Rozbuduj drogi w mieście
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Skasuj
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Skasuj to miasto
 
