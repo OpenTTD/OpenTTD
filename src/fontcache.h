@@ -229,11 +229,13 @@ public:
 	}
 
 	virtual void LoadFont(FontSize fs, FontType fonttype) = 0;
+	virtual bool SetFallbackFont(struct FontCacheSettings *settings, const std::string &language_isocode, class MissingGlyphSearcher *callback) = 0;
 };
 
 class FontProviderManager : ProviderManager<FontCacheFactory> {
 public:
 	static void LoadFont(FontSize fs, FontType fonttype);
+	static bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, MissingGlyphSearcher *callback);
 };
 
 /* Implemented in spritefontcache.cpp */

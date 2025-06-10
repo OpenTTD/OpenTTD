@@ -9,7 +9,6 @@
 
 #include "stdafx.h"
 #include "fontcache.h"
-#include "fontdetection.h"
 #include "blitter/factory.hpp"
 #include "gfx_layout.h"
 #include "openttd.h"
@@ -37,6 +36,25 @@ FontCacheSettings _fcsettings;
 	for (auto &provider : FontProviderManager::GetProviders()) {
 		provider->LoadFont(fs, fonttype);
 	}
+}
+
+/**
+ * We would like to have a fallback font as the current one
+ * doesn't contain all characters we need.
+ * This function must set all fonts of settings.
+ * @param settings the settings to overwrite the fontname of.
+ * @param language_isocode the language, e.g. en_GB.
+ * @param callback The function to call to check for missing glyphs.
+ * @return true if a font has been set, false otherwise.
+ */
+/* static */ bool FontProviderManager::SetFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, MissingGlyphSearcher *callback)
+{
+	for (auto &provider : FontProviderManager::GetProviders()) {
+		if (provider->SetFallbackFont(settings, language_isocode, callback)) {
+			return true;
+		}
+	}
+	return false;
 }
 
 /**
@@ -239,8 +257,3 @@ void UninitFontCache()
 		if (fc->HasParent()) delete fc;
 	}
 }
-
-#if !defined(_WIN32) && !defined(__APPLE__) && !defined(WITH_FONTCONFIG) && !defined(WITH_COCOA)
-
-bool SetFallbackFont(FontCacheSettings *, const std::string &, MissingGlyphSearcher *) { return false; }
-#endif /* !defined(_WIN32) && !defined(__APPLE__) && !defined(WITH_FONTCONFIG) && !defined(WITH_COCOA) */

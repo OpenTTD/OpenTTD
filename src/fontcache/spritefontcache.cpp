@@ -101,6 +101,11 @@ public:
 
 		new SpriteFontCache(fs);
 	}
+
+	bool SetFallbackFont(struct FontCacheSettings *, const std::string &, class MissingGlyphSearcher *) override
+	{
+		return false;
+	}
 };
 
 static SpriteFontCacheFactory s_sprite_fontcache_factory;
