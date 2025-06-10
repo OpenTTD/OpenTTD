@@ -91,6 +91,20 @@ bool SpriteFontCache::GetDrawGlyphShadow()
 	return false;
 }
 
+class SpriteFontCacheFactory : public FontCacheFactory {
+public:
+	SpriteFontCacheFactory() : FontCacheFactory("sprite", "Sprite font provider") {}
+
+	void LoadFont(FontSize fs, FontType fonttype) override
+	{
+		if (fonttype != FontType::Sprite) return;
+
+		new SpriteFontCache(fs);
+	}
+};
+
+static SpriteFontCacheFactory s_sprite_fontcache_factory;
+
 /**
  * Set the SpriteID for a unicode character.
  * @param fs Font size to set.

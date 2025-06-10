@@ -10,6 +10,7 @@
 #ifndef FONTCACHE_H
 #define FONTCACHE_H
 
+#include "provider_manager.h"
 #include "string_type.h"
 #include "spritecache.h"
 
@@ -207,6 +208,33 @@ void UninitFontCache();
 
 bool GetFontAAState();
 void SetFont(FontSize fontsize, const std::string &font, uint size);
+
+/** Different types of font that can be loaded. */
+enum class FontType : uint8_t {
+	Sprite, ///< Bitmap sprites from GRF files.
+	TrueType, ///< Scalable TrueType fonts.
+};
+
+/** Factory for FontCaches. */
+class FontCacheFactory : public BaseProvider<FontCacheFactory> {
+public:
+	FontCacheFactory(std::string_view name, std::string_view description) : BaseProvider<FontCacheFactory>(name, description)
+	{
+		ProviderManager<FontCacheFactory>::Register(*this);
+	}
+
+	virtual ~FontCacheFactory()
+	{
+		ProviderManager<FontCacheFactory>::Unregister(*this);
+	}
+
+	virtual void LoadFont(FontSize fs, FontType fonttype) = 0;
+};
+
+class FontProviderManager : ProviderManager<FontCacheFactory> {
+public:
+	static void LoadFont(FontSize fs, FontType fonttype);
+};
 
 /* Implemented in spritefontcache.cpp */
 void InitializeUnicodeGlyphMap();

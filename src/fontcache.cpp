@@ -12,7 +12,6 @@
 #include "fontdetection.h"
 #include "blitter/factory.hpp"
 #include "gfx_layout.h"
-#include "fontcache/spritefontcache.h"
 #include "openttd.h"
 #include "settings_func.h"
 #include "strings_func.h"
@@ -27,6 +26,18 @@ static const int _default_font_height[FS_END]   = {10, 6, 18, 10};
 static const int _default_font_ascender[FS_END] = { 8, 5, 15,  8};
 
 FontCacheSettings _fcsettings;
+
+/**
+ * Try loading a font with any fontcache factory.
+ * @param fs Font size to load.
+ * @param fonttype Font type requested.
+ */
+/* static */ void FontProviderManager::LoadFont(FontSize fs, FontType fonttype)
+{
+	for (auto &provider : FontProviderManager::GetProviders()) {
+		provider->LoadFont(fs, fonttype);
+	}
+}
 
 /**
  * Create a new font cache.
@@ -85,7 +96,7 @@ int GetCharacterHeight(FontSize size)
 /* static */ void FontCache::InitializeFontCaches()
 {
 	for (FontSize fs = FS_BEGIN; fs != FS_END; fs++) {
-		if (FontCache::caches[fs] == nullptr) new SpriteFontCache(fs); /* FontCache inserts itself into to the cache. */
+		if (FontCache::caches[fs] == nullptr) FontProviderManager::LoadFont(fs, FontType::Sprite); /* FontCache inserts itself into to the cache. */
 	}
 }
 
@@ -135,15 +146,6 @@ void SetFont(FontSize fontsize, const std::string &font, uint size)
 
 	if (_save_config) SaveToConfig();
 }
-
-#ifdef WITH_FREETYPE
-extern void LoadFreeTypeFont(FontSize fs);
-extern void UninitFreeType();
-#elif defined(_WIN32)
-extern void LoadWin32Font(FontSize fs);
-#elif defined(WITH_COCOA)
-extern void LoadCoreTextFont(FontSize fs);
-#endif
 
 /**
  * Test if a font setting uses the default font.
@@ -223,13 +225,7 @@ void InitFontCache(FontSizes fontsizes)
 		FontCache *fc = FontCache::Get(fs);
 		if (fc->HasParent()) delete fc;
 
-#ifdef WITH_FREETYPE
-		LoadFreeTypeFont(fs);
-#elif defined(_WIN32)
-		LoadWin32Font(fs);
-#elif defined(WITH_COCOA)
-		LoadCoreTextFont(fs);
-#endif
+		FontProviderManager::LoadFont(fs, FontType::TrueType);
 	}
 }
 
@@ -242,10 +238,6 @@ void UninitFontCache()
 		FontCache *fc = FontCache::Get(fs);
 		if (fc->HasParent()) delete fc;
 	}
-
-#ifdef WITH_FREETYPE
-	UninitFreeType();
-#endif /* WITH_FREETYPE */
 }
 
 #if !defined(_WIN32) && !defined(__APPLE__) && !defined(WITH_FONTCONFIG) && !defined(WITH_COCOA)
