@@ -822,8 +822,8 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Stilling
 
 
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Gjaldmiðill
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Val á gjaldmiðli
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Gjaldmiðill
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Val á gjaldmiðli
 
 
 ###length 45
@@ -862,21 +862,21 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Sérsniðinn...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Íranskt ríal
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Sjálfvirk vistun
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Tíðni sjálfvirkra vistana
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Sjálfvirk vistun
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Tíðni sjálfvirkra vistana
 
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Aldrei
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Tungumál
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Tungumál viðmóts
+STR_GAME_OPTIONS_LANGUAGE                                       :Tungumál
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Tungumál viðmóts
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Fylla út í skjá
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Smelltu hér til að OpenTTD fylli út í skjáinn
+STR_GAME_OPTIONS_FULLSCREEN                                     :Fylla út í skjá
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Smelltu hér til að OpenTTD fylli út í skjáinn
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skjáupplausn
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Stilla skjáupplausn
+STR_GAME_OPTIONS_RESOLUTION                                     :Skjáupplausn
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Stilla skjáupplausn
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annað
 
 
@@ -890,17 +890,17 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annað
 
 
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grunngrafík
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Nota grunngrafíkina
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Frekari upplýsingar um grunngrafíkpakkann
+STR_GAME_OPTIONS_BASE_GRF                                       :Grunngrafík
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Nota grunngrafíkina
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Frekari upplýsingar um grunngrafíkpakkann
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Grunn hljóðasafn
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Veldu grunn hljóðasafn
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Aukaupplýsingar um grunn hljóðasafnið
+STR_GAME_OPTIONS_BASE_SFX                                       :Grunn hljóðasafn
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Veldu grunn hljóðasafn
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Aukaupplýsingar um grunn hljóðasafnið
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Grunntónlistarsafn
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Veld grunntónlistarsafn til að nota
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Auka upplýsingar um grunntónlistarsafnið
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Grunntónlistarsafn
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Veld grunntónlistarsafn til að nota
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Auka upplýsingar um grunntónlistarsafnið
 
 
 
@@ -1002,9 +1002,9 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Eftirgefin
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Engin nothæf gervigreind í boði...{}Þú getur hlaðið niður mörgum gervigreindum í gegnum 'Ná í viðbætur af netinu' viðmótið
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Sía:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Þenja út
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Draga saman
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Sía:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Þenja út
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Draga saman
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(engin skýring til)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Sjálfgefið gildi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Gerð stillingar: {ORANGE}{STRING}
@@ -1014,7 +1014,7 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Leikjastillinga
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Fyrirtækjastillingar (geymdar í vistunarskrám; hefur bara áhrif á nýja leiki)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Fyrirtækjastillingar (geymdar í vistunarskrám; hefur bara áhrif á núverandi fyrirtæki)
 
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Takmarkar listan hér fyrir neðan við breyttar stillingar
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Takmarkar listan hér fyrir neðan við breyttar stillingar
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grunnstillingar
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Ítarlegar stillingar
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Mjög ítarlegar stillingar / allar stillingar

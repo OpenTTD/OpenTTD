@@ -1000,13 +1000,13 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Vaateala
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Liidese seadistus
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Üldine
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Vali üldised seaded
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :Vali üldised seaded
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Graafika
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Vali graafika seaded
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :Vali graafika seaded
 STR_GAME_OPTIONS_TAB_SOUND                                      :Heli
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Vali heli ja muusika seaded
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Vali heli ja muusika seaded
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Sotsiaal
-STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Vali sotsiaalse integratsiooni seaded
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Vali sotsiaalse integratsiooni seaded
 
 STR_GAME_OPTIONS_VOLUME                                         :Helitase
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Heliefektid
@@ -1015,8 +1015,8 @@ STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Muusika
 
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valuuta
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Valuuta valimine
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Valuuta
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Valuuta valimine
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -1066,8 +1066,8 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaisia ringit
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Läti Latt
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portugali eskuudo
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Salvestusvälp
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vali salvestamise välp
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Salvestusvälp
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Vali salvestamise välp
 
 # Autosave dropdown
 ###length 5
@@ -1077,75 +1077,75 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Iga 30. minut
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Iga 60. minut
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Iga 120. minut
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Keel
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Valib kasutajaliideses kasutatava keele
+STR_GAME_OPTIONS_LANGUAGE                                       :Keel
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Valib kasutajaliideses kasutatava keele
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% valmis)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Täisekraan
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Märgi see kast, et OpenTTD täisekraanirežiimis mängida
+STR_GAME_OPTIONS_FULLSCREEN                                     :Täisekraan
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Märgi see kast, et OpenTTD täisekraanirežiimis mängida
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekraanilahutus
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Ekraanilahutuse valimine
+STR_GAME_OPTIONS_RESOLUTION                                     :Ekraanilahutus
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Ekraanilahutuse valimine
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :muu
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Riistvarakiirendus
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Märkides selle ruudu, lubad OpenTTD-l üritada kasutada riistvarakiirendust. Muudetud seade omab mõju pärast mängu taaskäivitust
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Riistvarakiirendus
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Märkides selle ruudu, lubad OpenTTD-l üritada kasutada riistvarakiirendust. Muudetud seade omab mõju pärast mängu taaskäivitust
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Seade omab mõju alles pärast mängu taaskäivitust
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Märgi, et ekraani v-sync sisse lülitada. Seade kohaldub alles pärast mängu taaskäivitust. Töötab vaid, kui riistvarakiirendus on peal
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Märgi, et ekraani v-sync sisse lülitada. Seade kohaldub alles pärast mängu taaskäivitust. Töötab vaid, kui riistvarakiirendus on peal
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Hetke draiver: {STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Hetke draiver: {STRING}
 
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Liidese suurus
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Lohista liugurit liidesesuuruse seadmiseks. Ctrl+lohistamisel pidevkohendamine
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Tuvasta automaatselt suurus
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Märgi see kast, et tuvastada liidese suurus automaatselt
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Liidese suurus
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Lohista liugurit liidesesuuruse seadmiseks. Ctrl+lohistamisel pidevkohendamine
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Tuvasta automaatselt suurus
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Märgi see kast, et tuvastada liidese suurus automaatselt
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Skaleeri kaldeid
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Skaleeri kaldeid liidese suuruse järgi
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Skaleeri kaldeid
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Skaleeri kaldeid liidese suuruse järgi
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Kasuta traditsioonilist märgipõhist fonti
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Märgi, kui eelistad traditsioonilist kindla suurusega märgipõhist fonti
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Anti-alias fondid
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Kasti märkimisel tehakse muudetava suurusega fontidele anti-alias
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Kasuta traditsioonilist märgipõhist fonti
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Märgi, kui eelistad traditsioonilist kindla suurusega märgipõhist fonti
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Anti-alias fondid
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Kasti märkimisel tehakse muudetava suurusega fontidele anti-alias
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automaatne uuring
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Osale automaatses uuringus
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Kui võimaldatud, saadab OpenTTD uuringu mängu sulgemisel
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Uuringust ja privaatsusest
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}See avab brauseriakna, kus on lisateave automaatsest uuringust
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Uuringutulemuste eelvaade
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Näita käimasoleva mängu uuringutulemusi
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Automaatne uuring
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Osale automaatses uuringus
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :Kui võimaldatud, saadab OpenTTD uuringu mängu sulgemisel
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :Uuringust ja privaatsusest
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :See avab brauseriakna, kus on lisateave automaatsest uuringust
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Uuringutulemuste eelvaade
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Näita käimasoleva mängu uuringutulemusi
 
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Ekraani värskendussagedus
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Vali, mis värskendussagedust kasutada
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Ekraani värskendussagedus
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Vali, mis värskendussagedust kasutada
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Värskendussagedused üle 60Hz võivad jõudlusele löögi anda.
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Põhigraafika komplekt
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vali kasutatav põhigraafika komplekt (mängus ei saa muuta, ainult peamenüüst)
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Lisateave põhigraafika komplekti kohta
+STR_GAME_OPTIONS_BASE_GRF                                       :Põhigraafika komplekt
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Vali kasutatav põhigraafika komplekt (mängus ei saa muuta, ainult peamenüüst)
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Lisateave põhigraafika komplekti kohta
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Põhihelide komplekt
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Vali põhihelide komplekt (mängus ei saa muuta, ainult peamenüüst)
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Lisateave põhihelide komplekti kohta
+STR_GAME_OPTIONS_BASE_SFX                                       :Põhihelide komplekt
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Vali põhihelide komplekt (mängus ei saa muuta, ainult peamenüüst)
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Lisateave põhihelide komplekti kohta
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Põhimuusika komplekt
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Valib kasutatava põhimuusika komplekti
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Rohkem teavet põhimuusika komplekti kohta
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Põhimuusika komplekt
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Valib kasutatava põhimuusika komplekti
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Rohkem teavet põhimuusika komplekti kohta
 
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(puuduvad pistikprogrammid sotsiaalplatvormidega integreerumiseks)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Platvorm:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Pistikprogrammi olek:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Platvorm:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :Pistikprogrammi olek:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Töötab
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Alglaadimine ebaõnnestus
@@ -1259,10 +1259,10 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Lubav (ei oma m
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Sobiv AI puudub...{}Mitmesuguseid AI-sid saab alla laadida 'aineste allalaadimise' kaudu
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Märksõna:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Ava kõik
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Sulge kõik
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Nulli kõik väärtused
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Märksõna:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Ava kõik
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Sulge kõik
+STR_CONFIG_SETTING_RESET_ALL                                    :Nulli kõik väärtused
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(seletus puudub)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Vaikeväärtus: {ORANGE}{STRING}
@@ -1275,9 +1275,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Ettevõtte sead
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Ettevaatust!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}See toiming nullib kõik mänguseaded.{}Oled sa kindel, et jätkata?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Jagu:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Liik:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Piirab varem tehtud filtridega alljärgnevat loendit
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Jagu:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Liik:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Piirab varem tehtud filtridega alljärgnevat loendit
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Põhilised (kuva vaid tähtsad seaded)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Täpsustatud (näita enamikke seadeid)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Asjatundja (näita kõiki seaded, s.h. ebatavalisi)
@@ -1294,9 +1294,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Firma seaded (h
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Puudub -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Kõiki otsingu tulemusi näeb, kui{}{SILVER}jagu {BLACK}on {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Kõiki otsingu tulemusi näeb, kui{}{SILVER}liik {BLACK}on {WHITE}Kõik seadistuste liigid
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Kõiki otsingu tulemusi näeb, kui{}{SILVER}jagu {BLACK}on {WHITE}{STRING} {BLACK}ja {SILVER}liik {BLACK}on {WHITE}Kõik seadistuste liigid
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Kõiki otsingu tulemusi näeb, kui{}{SILVER}jagu {BLACK}on {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Kõiki otsingu tulemusi näeb, kui{}{SILVER}liik {BLACK}on {WHITE}Kõik seadistuste liigid
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Kõiki otsingu tulemusi näeb, kui{}{SILVER}jagu {BLACK}on {WHITE}{STRING} {BLACK}ja {SILVER}liik {BLACK}on {WHITE}Kõik seadistuste liigid
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Väljas

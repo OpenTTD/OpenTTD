@@ -915,11 +915,11 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}この�
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}ゲーム設定
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :一般
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}一般設定を開きます
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :一般設定を開きます
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :グラフィック
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}グラフィック設定を開きます
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :グラフィック設定を開きます
 STR_GAME_OPTIONS_TAB_SOUND                                      :サウンド
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}サウンドと音楽の設定を開きます
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :サウンドと音楽の設定を開きます
 
 STR_GAME_OPTIONS_VOLUME                                         :音量
 STR_GAME_OPTIONS_SFX_VOLUME                                     :効果音
@@ -927,8 +927,8 @@ STR_GAME_OPTIONS_MUSIC_VOLUME                                   :音楽
 
 
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}通貨単位
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}通貨単位の選択
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :通貨単位
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :通貨単位の選択
 
 
 ###length 45
@@ -975,8 +975,8 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :インド・ル
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :インドネシア・ルピア
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :マレーシア・リンギット
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}オートセーブ
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}自動保存の間隔を選択します
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :オートセーブ
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :自動保存の間隔を選択します
 
 # Autosave dropdown
 ###length 5
@@ -986,56 +986,56 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :30分毎
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :60分毎
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :120分毎
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}言語
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}ゲームの言語を選択します
+STR_GAME_OPTIONS_LANGUAGE                                       :言語
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :ゲームの言語を選択します
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% 完了)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}フルスクリーン
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}OpenTTD をフルスクリーンでプレイするにはチェックします
+STR_GAME_OPTIONS_FULLSCREEN                                     :フルスクリーン
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :OpenTTD をフルスクリーンでプレイするにはチェックします
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}画面解像度
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}ゲーム画面の解像度を選択します
+STR_GAME_OPTIONS_RESOLUTION                                     :画面解像度
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :ゲーム画面の解像度を選択します
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :その他
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}ハードウェアアクセラレーション
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}ここをチェックしてOpenTTDがハードウェアアクセラレーションを利用するようにします。設定はゲームを再起動した後に適用されます。
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :ハードウェアアクセラレーション
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :ここをチェックしてOpenTTDがハードウェアアクセラレーションを利用するようにします。設定はゲームを再起動した後に適用されます。
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE} この設定は再起動後に適用されます。
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK} 垂直同期
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}ここをチェックして垂直同期を有効にします。設定はゲームを再起動した後に適用されます。ハードウェアアクセラレーションが有効な環境でしか機能しません。
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    : 垂直同期
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :ここをチェックして垂直同期を有効にします。設定はゲームを再起動した後に適用されます。ハードウェアアクセラレーションが有効な環境でしか機能しません。
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}現在のドライバー：{STRING}
-
-
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}インターフェイスのサイズ
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}スライダーをドラッグでインターフェースの大きさを調整できます。Ctrl押しながらで微調整できます。
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}サイズを自動調整
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}ここをチェックしてインタフェースのサイズを自動調整します。
-
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}ベベルのスケール
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}ここをチェックするとベベルはインタフェースのサイズに比例します
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :現在のドライバー：{STRING}
 
 
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :インターフェイスのサイズ
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :スライダーをドラッグでインターフェースの大きさを調整できます。Ctrl押しながらで微調整できます。
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :サイズを自動調整
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :ここをチェックしてインタフェースのサイズを自動調整します。
+
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :ベベルのスケール
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :ここをチェックするとベベルはインタフェースのサイズに比例します
 
 
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}画面リフレッシュレート
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}使用する画面のリフレッシュレートを選択します
+
+
+STR_GAME_OPTIONS_REFRESH_RATE                                   :画面リフレッシュレート
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :使用する画面のリフレッシュレートを選択します
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}60Hzを超えるリフレッシュレートはパフォーマンスに影響を与える可能性があります。
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}基本グラフィックセット
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}使用するグラフィックセットを選択します
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}基本グラフィックセットについての追加情報
+STR_GAME_OPTIONS_BASE_GRF                                       :基本グラフィックセット
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :使用するグラフィックセットを選択します
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :基本グラフィックセットについての追加情報
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}基本効果音セット
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}使用する効果音セットを選択します
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}基本効果音セットについての追加情報
+STR_GAME_OPTIONS_BASE_SFX                                       :基本効果音セット
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :使用する効果音セットを選択します
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :基本効果音セットについての追加情報
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}基本音楽セット
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}使用する音楽セットを選択します
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}基本音楽セットについての追加情報
+STR_GAME_OPTIONS_BASE_MUSIC                                     :基本音楽セット
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :使用する音楽セットを選択します
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :基本音楽セットについての追加情報
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :コンテンツを取得
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :新しいコンテンツや更新をチェックする
@@ -1144,10 +1144,10 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :自由放任（
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}適切なAIがありません...{}AIは「オンライン項目を確認」からダウンロード可能です
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}フィルター:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}すべて開く
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}すべて折りたたむ
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}すべての値をリセット
+STR_CONFIG_SETTING_FILTER_TITLE                                 :フィルター:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :すべて開く
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :すべて折りたたむ
+STR_CONFIG_SETTING_RESET_ALL                                    :すべての値をリセット
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :（説明がありません）
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}デフォルト設定: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}設定の種類: {ORANGE}{STRING}
@@ -1159,9 +1159,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :会社設定(�
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}注意!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}この操作によりゲームのすべての設定が初期値にリセットされます。{}続行してもよろしいでしょうか?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}カテゴリ:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}種類:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}定義されたフィルタでリストをフィルタリングします。
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :カテゴリ:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :種類:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :定義されたフィルタでリストをフィルタリングします。
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :基本設定（重要な設定のみ表示）
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :詳細設定（より多くの設定を表示）
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :拡張設定(変なものも含めて全設定を表示)
@@ -1178,9 +1178,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :会社設定(�
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- なし -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}設定による検索結果をすべて表示{}{SILVER}カテゴリ{BLACK}別{WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}設定による検索結果をすべて表示{}{SILVER}種類{BLACK}別{WHITE}すべての設定タイプ
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}設定による検索結果をすべて表示{}{SILVER}カテゴリ{BLACK}別{WHITE}{STRING} {BLACK}and {SILVER}Type {BLACK}to {WHITE}All setting types
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :設定による検索結果をすべて表示{}{SILVER}カテゴリ{BLACK}別{WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :設定による検索結果をすべて表示{}{SILVER}種類{BLACK}別{WHITE}すべての設定タイプ
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :設定による検索結果をすべて表示{}{SILVER}カテゴリ{BLACK}別{WHITE}{STRING} {BLACK}and {SILVER}Type {BLACK}to {WHITE}All setting types
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :無効

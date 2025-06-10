@@ -1093,13 +1093,13 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Пере
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Налаштування гри
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Загальні
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Виберіть загальні налаштування
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :Виберіть загальні налаштування
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Графіка
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Виберіть налаштування графіки
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :Виберіть налаштування графіки
 STR_GAME_OPTIONS_TAB_SOUND                                      :Звук
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Виберіть налаштування звуку та музики
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Виберіть налаштування звуку та музики
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Соціальні платформи
-STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Оберіть налаштування інтеграції соціальних мереж
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Оберіть налаштування інтеграції соціальних мереж
 
 STR_GAME_OPTIONS_VOLUME                                         :Гучність
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Звукові ефекти
@@ -1108,8 +1108,8 @@ STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Музика
 
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Грошова одиниця
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Виберіть грошову одиницю
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Грошова одиниця
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Виберіть грошову одиницю
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -1160,8 +1160,8 @@ STR_GAME_OPTIONS_CURRENCY_LVL                                   :Латвійс�
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Португальське ескудо
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Українська гривня
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Автозбереження
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Виберіть інтервал автозбереження
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Автозбереження
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Виберіть інтервал автозбереження
 
 # Autosave dropdown
 ###length 5
@@ -1171,77 +1171,77 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Кожні 30 �
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Кожні 60 хвилин
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Кожні 120 хвилин
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Мова
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Виберіть мову інтерфейса користувача
+STR_GAME_OPTIONS_LANGUAGE                                       :Мова
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Виберіть мову інтерфейса користувача
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% виконано)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Повноекранний режим
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Позначте цей прапорець для використання повноекранного режиму
+STR_GAME_OPTIONS_FULLSCREEN                                     :Повноекранний режим
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Позначте цей прапорець для використання повноекранного режиму
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Роздільна здатність екрана
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Виберіть, яку роздільну здатність екрана використовувати
+STR_GAME_OPTIONS_RESOLUTION                                     :Роздільна здатність екрана
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Виберіть, яку роздільну здатність екрана використовувати
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :інша
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Апаратне прискорення
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Позначте цей прапорець для використання апаратного прискорення. Зміни застосуються тільки після перезапуску гри
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Апаратне прискорення
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Позначте цей прапорець для використання апаратного прискорення. Зміни застосуються тільки після перезапуску гри
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Налаштування запрацює тільки після перезапуску гри
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}Вертикальна синхронізація
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Позначте цей прапорець для використання вертикальної синхронізації. Зміни застосуються тільки після перезапуску гри. Працює лише за увімкненого апаратного прискорення
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :Вертикальна синхронізація
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Позначте цей прапорець для використання вертикальної синхронізації. Зміни застосуються тільки після перезапуску гри. Працює лише за увімкненого апаратного прискорення
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Використовуваний драйвер: {STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Використовуваний драйвер: {STRING}
 
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Розмір інтерфейсу
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Потягніть повзунок для зміни розміру інтерфейсу. Ctrl+протягування для точнішого коригування
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Визначати розмір автоматично
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Позначте цей прапорець для того, щоби визначати розмір інтерфейсу автоматично
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Розмір інтерфейсу
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Потягніть повзунок для зміни розміру інтерфейсу. Ctrl+протягування для точнішого коригування
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Визначати розмір автоматично
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Позначте цей прапорець для того, щоби визначати розмір інтерфейсу автоматично
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Масштабування рельєфних елементів
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Позначте цей прапорець для того, щоби масштабувати рельєфні елементи інтерфейсу
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Масштабування рельєфних елементів
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Позначте цей прапорець для того, щоби масштабувати рельєфні елементи інтерфейсу
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Використовувати стандартний растровий шрифт
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Позначте цей прапорець для використання стандартних растрових шрифтів фіксованого розміру
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Згладжування шрифтів
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Позначте цей прапорець для того, щоби згладжувати шрифти змінних розмірів
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Використовувати стандартний растровий шрифт
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Позначте цей прапорець для використання стандартних растрових шрифтів фіксованого розміру
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Згладжування шрифтів
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Позначте цей прапорець для того, щоби згладжувати шрифти змінних розмірів
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Автоматизований збір даних
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Брати участь в автоматизованому зборі даних
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Якщо увімкнено, OpenTTD передаватиме зібрані дані при виході з гри
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Про збір даних і приватність
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Відкриє переглядач з детальнішою інформацією про автоматичний збір даних
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Попередній перегляд збору даних
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Перегляд збору даних поточної гри
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Автоматизований збір даних
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Брати участь в автоматизованому зборі даних
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :Якщо увімкнено, OpenTTD передаватиме зібрані дані при виході з гри
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :Про збір даних і приватність
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Відкриє переглядач з детальнішою інформацією про автоматичний збір даних
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Попередній перегляд збору даних
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Перегляд збору даних поточної гри
 
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Частота оновлення екрана
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Оберіть, яку частоту оновлення екрана використовувати
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Частота оновлення екрана
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Оберіть, яку частоту оновлення екрана використовувати
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Гц
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Частота оновлення екрана вища за 75 Гц може вплинути на швидкодію
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Базовий набір графіки
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Оберіть, яку основну графіку використовувати (неможливо змінити у грі, тільки з головного меню)
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Додаткова інформація про базовий набір графіки
+STR_GAME_OPTIONS_BASE_GRF                                       :Базовий набір графіки
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Оберіть, яку основну графіку використовувати (неможливо змінити у грі, тільки з головного меню)
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Додаткова інформація про базовий набір графіки
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Базовий набір звуків
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Оберіть базовий набір звуків для використання (неможливо змінити у грі, тільки з головного меню)
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Додаткова інформація про базовий набір звуків
+STR_GAME_OPTIONS_BASE_SFX                                       :Базовий набір звуків
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Оберіть базовий набір звуків для використання (неможливо змінити у грі, тільки з головного меню)
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Додаткова інформація про базовий набір звуків
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Базовий музичний набір
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Оберіть базовий музичний набір для використання
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Допоміжна інформація про базовий музичний набір
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Базовий музичний набір
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Оберіть базовий музичний набір для використання
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Допоміжна інформація про базовий музичний набір
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Отримати контент
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Перевірте наявність нового та оновленого контенту для завантаження
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(не встановлено додатків для інтеграції з соціальними платформами)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Платформа:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Стан додатка:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Платформа:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :Стан додатка:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Працює
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Не вдалося з'єднатися
@@ -1355,10 +1355,10 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :допусти�
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Немає підходящих модулів ШІ...{}Ви можете завантажити різноманітні модулі ШІ через 'Додатковий контент'
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Фільтр:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Розгорнути всі
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Згорнути всі
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Скинути усі значення
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Фільтр:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Розгорнути всі
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Згорнути всі
+STR_CONFIG_SETTING_RESET_ALL                                    :Скинути усі значення
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(пояснення відсутнє)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Стандартне значення: {ORANGE}{STRING}
@@ -1371,9 +1371,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Налашту�
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Обережно!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Це скине усі налаштування гри до базових значень.{}Дійсно продовжити?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Категорія:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Тип:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Показати лише відфільтровані налаштування
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Категорія:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Тип:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Показати лише відфільтровані налаштування
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Основні (показує лише найважливіші налаштування)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Розширені (показати основні налаштування)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Експертні / (показати всі налаштування, в тому числі незвичні)
@@ -1390,9 +1390,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Налашту�
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- немає -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Показати всі результати пошуку встановивши{}{SILVER}Категорію {BLACK}на {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Показати всі результати пошуку встановивши{}{SILVER}Тип {BLACK}на {WHITE}Всі типи налаштувань
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Показати всі результати пошуку встановивши{}{SILVER}Категорію {BLACK}на {WHITE}{STRING} {BLACK}і {SILVER}Тип {BLACK}на {WHITE}Всі типи налаштувань
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Показати всі результати пошуку встановивши{}{SILVER}Категорію {BLACK}на {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Показати всі результати пошуку встановивши{}{SILVER}Тип {BLACK}на {WHITE}Всі типи налаштувань
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Показати всі результати пошуку встановивши{}{SILVER}Категорію {BLACK}на {WHITE}{STRING} {BLACK}і {SILVER}Тип {BLACK}на {WHITE}Всі типи налаштувань
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :ні

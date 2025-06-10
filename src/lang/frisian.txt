@@ -854,8 +854,8 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spulopsj
 
 
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Muntienheid
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Muntienheidseleksje
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Muntienheid
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Muntienheidseleksje
 
 
 ###length 45
@@ -902,21 +902,21 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Yndyske rupee
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Yndonezyske Roepia
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Maleizyske Ringgit
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatysk opslaan
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selektearje de interval foar automatysk opslaan
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Automatysk opslaan
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Selektearje de interval foar automatysk opslaan
 
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Ut
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Taal
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Selektearje de interfacetaal
+STR_GAME_OPTIONS_LANGUAGE                                       :Taal
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Selektearje de interfacetaal
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Folslein skerm
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Finkje dit fakje oan om OpenTTD te boartsje yn in folslein skerm
+STR_GAME_OPTIONS_FULLSCREEN                                     :Folslein skerm
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Finkje dit fakje oan om OpenTTD te boartsje yn in folslein skerm
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skermresolúsje
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selektearje de skermresolutje om te brûken
+STR_GAME_OPTIONS_RESOLUTION                                     :Skermresolúsje
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Selektearje de skermresolutje om te brûken
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oars
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
@@ -930,19 +930,19 @@ STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Byldferfaskingssnelheid
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Byldferfaskingssnelheid
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basisset for ôfbyldings
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selektearje de basis ôfbyldingsset om te brûken
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Oanfoljende ynformaasje oer de basisset foar ôfbyldings
+STR_GAME_OPTIONS_BASE_GRF                                       :Basisset for ôfbyldings
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Selektearje de basis ôfbyldingsset om te brûken
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Oanfoljende ynformaasje oer de basisset foar ôfbyldings
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Basisset foar lûdseffekten
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selektearje de basislûdsset om te brûken
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Oanfoljende ynformaasje oer de basislûdsset
+STR_GAME_OPTIONS_BASE_SFX                                       :Basisset foar lûdseffekten
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Selektearje de basislûdsset om te brûken
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Oanfoljende ynformaasje oer de basislûdsset
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basisset foar musyk
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selektearje de basisset foar musyk om te brûken
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Oanfoljende ynformaasje oer de basisset foar musyk
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Basisset foar musyk
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Selektearje de basisset foar musyk om te brûken
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Oanfoljende ynformaasje oer de basisset foar musyk
 
 
 
@@ -1048,9 +1048,9 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Tajouwend (gjin
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Gjin brûkbere AIs beskikber...{}jo kinne ferskillende AIs downloade fia it 'Online Content' systeem
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filter:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Alles útklappe
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Alles ynklappe
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Filter:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Alles útklappe
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Alles ynklappe
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(gjin útlis beskikber)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standerdwaarde: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Ynstellingstype: {ORANGE}{STRING}
@@ -1060,9 +1060,9 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Spulynstellings
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Bedriuwynstellings (wurdt per spul bewarre; hat allinich effekt op nije spullen)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Bedriuwynstellings (wurdt per spul bewarre; hat allinich effekt op it hjoeddeiske bedriuw)
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategory:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Type:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Behein de ûndersteande list ta feroare ynstellings
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Kategory:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Type:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Behein de ûndersteande list ta feroare ynstellings
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Basisynstellings (allinich wichtige ynstellings sjen litte)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Wiidweidige ynstellings (measte ynstellings sjen litte)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ekspêrynstelltings (alle ynstellings sjen litte, wêrûnder fremde)
@@ -1079,9 +1079,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Bedriuwynstelli
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Gjin -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Lit alle sykresultaten per ynstelling sjen{}{SILVER}Katagory {BLACK}oant {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Lit alle sykresultaten per ynstelling sjen{}{SILVER}Type {BLACK}oant {WHITE}Alle ynstellingtypes
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Lit alle sykresyltaten per ynstelling sjen{}{SILVER}Katagory {BLACK}oant {WHITE}{STRING} {BLACK}en {SILVER}Type {BLACK}oant {WHITE}Alle ynstellingtypes
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Lit alle sykresultaten per ynstelling sjen{}{SILVER}Katagory {BLACK}oant {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Lit alle sykresultaten per ynstelling sjen{}{SILVER}Type {BLACK}oant {WHITE}Alle ynstellingtypes
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Lit alle sykresyltaten per ynstelling sjen{}{SILVER}Katagory {BLACK}oant {WHITE}{STRING} {BLACK}en {SILVER}Type {BLACK}oant {WHITE}Alle ynstellingtypes
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Ut

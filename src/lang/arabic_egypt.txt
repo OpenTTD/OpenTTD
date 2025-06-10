@@ -880,8 +880,8 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}إعدا
 
 
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}وحدة العملة
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}اختيار وحدة العملة
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :وحدة العملة
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :اختيار وحدة العملة
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -930,8 +930,8 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :الروبية 
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :رينغيت ماليزي
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :لاتفيا لاتس
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}حفظ آلي
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}اختار مدة الحفظ الآلي
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :حفظ آلي
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :اختار مدة الحفظ الآلي
 
 # Autosave dropdown
 ###length 5
@@ -941,57 +941,57 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :كل 30 دقي�
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :كل 60 دقيقة
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :كل 120 دقيقة
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}لغة
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}اختر لغة الواجهه
+STR_GAME_OPTIONS_LANGUAGE                                       :لغة
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :اختر لغة الواجهه
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% مكتمل)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}شاشة كاملة
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}اختر هذا المربع للعب OpenTTD على لشاشة الكاملة
+STR_GAME_OPTIONS_FULLSCREEN                                     :شاشة كاملة
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :اختر هذا المربع للعب OpenTTD على لشاشة الكاملة
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}دقة الشاشة
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}اختر دقة الشاشة
+STR_GAME_OPTIONS_RESOLUTION                                     :دقة الشاشة
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :اختر دقة الشاشة
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :اخرى
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}تسريع الأجهزة
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}اخترهذا المربع للسماح لـ OpenTTD بمحاولة استخدام تسريع الأجهزة. سيتم تطبيق الإعداد الذي تم تغييره فقط عند إعادة تشغيل اللعبة
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :تسريع الأجهزة
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :اخترهذا المربع للسماح لـ OpenTTD بمحاولة استخدام تسريع الأجهزة. سيتم تطبيق الإعداد الذي تم تغييره فقط عند إعادة تشغيل اللعبة
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}لن يعمل الإعداد إلا بعد إعادة تشغيل اللعبة
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}حدد هذا المربع لمزامنة الشاشة (v-sync). سيتم تطبيق الإعداد الذي تم تغييره فقط عند إعادة تشغيل اللعبة. يعمل فقط مع تمكين تسريع الأجهزة (hardware acceleration)
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :حدد هذا المربع لمزامنة الشاشة (v-sync). سيتم تطبيق الإعداد الذي تم تغييره فقط عند إعادة تشغيل اللعبة. يعمل فقط مع تمكين تسريع الأجهزة (hardware acceleration)
 
 
 
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}اسحب شريط التمرير لتعيين حجم الواجهة. اضغط مع الاستمرار على Ctrl للتعديل المستمر
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}الكشف التلقائي عن الحجم
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}اختر هذا المربع لكشف حجم الواجهة تلقائيا
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :اسحب شريط التمرير لتعيين حجم الواجهة. اضغط مع الاستمرار على Ctrl للتعديل المستمر
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :الكشف التلقائي عن الحجم
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :اختر هذا المربع لكشف حجم الواجهة تلقائيا
 
 
 
 
 
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}معدل تحديث الشاشة
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}حدد معدل تحديث الشاشة
+STR_GAME_OPTIONS_REFRESH_RATE                                   :معدل تحديث الشاشة
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :حدد معدل تحديث الشاشة
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}هرتز
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}قد تؤثر معدلات التحديث الأعلى من 60 هرتز على الأداء.
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK} الواجهة الرسومية الاساسية
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK} اختر مجموعة الواجهة الرسومية
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK} معلومات اضافية عن القاعدة الرسومية
+STR_GAME_OPTIONS_BASE_GRF                                       : الواجهة الرسومية الاساسية
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               : اختر مجموعة الواجهة الرسومية
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   : معلومات اضافية عن القاعدة الرسومية
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}قاعدة الاصوات الاساسية
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}اختر الاصوات الاساسية للاستخدام
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}معلومات اضافية حول مجوعة الصوت
+STR_GAME_OPTIONS_BASE_SFX                                       :قاعدة الاصوات الاساسية
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :اختر الاصوات الاساسية للاستخدام
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :معلومات اضافية حول مجوعة الصوت
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}قاعده الموسيقى الاساسيه
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}اختر الموسيقى الاساسية التي تود استخدامها
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}معلومات اضافية عن الموسيقى الاساسية
+STR_GAME_OPTIONS_BASE_MUSIC                                     :قاعده الموسيقى الاساسيه
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :اختر الموسيقى الاساسية التي تود استخدامها
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :معلومات اضافية عن الموسيقى الاساسية
 
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(لا توجد اضافات مثبتة للتكامل مع منصات التواصل)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}المنصة:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}حالة الاضافة:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :المنصة:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :حالة الاضافة:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}فشلت التهيئة
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING       :{ORANGE}{STRING} غير مفعلة
@@ -1098,15 +1098,15 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :متساهل (�
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}لايوجد ذكاء اصطناعي متاح ...{}تستطيع تجميل العديد من الذكاء الاصطناعي عن طريق اللانترنت
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}تصفية القائمة:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}مدد الكل
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}إسحب الكل
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}اعادة ضبط جميع القيم
+STR_CONFIG_SETTING_FILTER_TITLE                                 :تصفية القائمة:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :مدد الكل
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :إسحب الكل
+STR_CONFIG_SETTING_RESET_ALL                                    :اعادة ضبط جميع القيم
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(لا يوجد تفسير متوفر)
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}تحذير!
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK} فئة:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}نوع:
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            : فئة:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :نوع:
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :اﻹعدادات الاساسيه
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}احصر القائمة على انواع اعدادات محددة
@@ -1119,7 +1119,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :اعدادات 
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE} - بدون -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}عرض جميع النتائج بالنسبة للإعداد{}{SILVER} الفئة {BLACK} إلى {WHITE}{STRING} {BLACK}و{SILVER}نوع {BLACK} إلى{WHITE} جميع انواع الإعدادات
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :عرض جميع النتائج بالنسبة للإعداد{}{SILVER} الفئة {BLACK} إلى {WHITE}{STRING} {BLACK}و{SILVER}نوع {BLACK} إلى{WHITE} جميع انواع الإعدادات
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :قفل

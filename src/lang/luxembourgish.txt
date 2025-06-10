@@ -958,13 +958,13 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Setzt d'
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spill Optiounen
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Generell
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Wiel generell Astellungen aus
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :Wiel generell Astellungen aus
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafik
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Wiel Grafik-Astellungen aus
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :Wiel Grafik-Astellungen aus
 STR_GAME_OPTIONS_TAB_SOUND                                      :Sound
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Wiel Sound- a Musikastellungen aus
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Wiel Sound- a Musikastellungen aus
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Social
-STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Wiel Astellungen déi mat Social Media ze dinn hunn
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Wiel Astellungen déi mat Social Media ze dinn hunn
 
 STR_GAME_OPTIONS_VOLUME                                         :Volume
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Soundeffekter
@@ -973,8 +973,8 @@ STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Musik
 
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Währungseenheet
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Währungseenheet wielen
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Währungseenheet
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Währungseenheet wielen
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -1025,8 +1025,8 @@ STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lettesch Lat
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portugieseschen Escudo
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Ukrainesch Hryvnia
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autospäicheren
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Wiel den Intervall aus fir d'Autospäicherung
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Autospäicheren
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Wiel den Intervall aus fir d'Autospäicherung
 
 # Autosave dropdown
 ###length 5
@@ -1036,77 +1036,77 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :All 30 Minuten
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :All 60 Minuten
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :All 120 Minuten
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Sprooch
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Wielt d'Interfacesprooch aus
+STR_GAME_OPTIONS_LANGUAGE                                       :Sprooch
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Wielt d'Interfacesprooch aus
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% fäerdeg)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Vollbild
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Klick dës Optioun un fir OpenTTD am Vollbild ze spillen
+STR_GAME_OPTIONS_FULLSCREEN                                     :Vollbild
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Klick dës Optioun un fir OpenTTD am Vollbild ze spillen
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Bildopléisung
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Wielt d'Bildopléisung
+STR_GAME_OPTIONS_RESOLUTION                                     :Bildopléisung
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Wielt d'Bildopléisung
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Aaner
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hardwarebeschleunegung
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Dës Optioun wielen, dass OpenTTD Hardwarebeschleunigung dierf notzen. Wäert just geännert ginn wann d'Spill nei gestart gëtt
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Hardwarebeschleunegung
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Dës Optioun wielen, dass OpenTTD Hardwarebeschleunigung dierf notzen. Wäert just geännert ginn wann d'Spill nei gestart gëtt
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}D'Astellung huet réicht en Afloss no engem Neistart vum Spill
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Wiel des Optioun fir de V-Sync unzeman. Des gëtt eréit no engem Neistart benotzt. Funktionéiert nëmmen wann Hardwarebeschleunigung un ass
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Wiel des Optioun fir de V-Sync unzeman. Des gëtt eréit no engem Neistart benotzt. Funktionéiert nëmmen wann Hardwarebeschleunigung un ass
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Aktuellen Driver: {STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Aktuellen Driver: {STRING}
 
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Interfacegréisst
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}De Slider zéien fir d'Gréisst vum Interface ze änneren. Ctrl+Zéien fir eng kontinuéierlech Ännerung
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Gréisst autom. erkennen
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Klick dës Optioun fir d'Interfacegréisst automatesch anzestellen
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Interfacegréisst
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :De Slider zéien fir d'Gréisst vum Interface ze änneren. Ctrl+Zéien fir eng kontinuéierlech Ännerung
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Gréisst autom. erkennen
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Klick dës Optioun fir d'Interfacegréisst automatesch anzestellen
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Bevels skaléiren
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Klick dës Optioun fir d'Bevels mat der Gréisst vum Interface ze skaléiren
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Bevels skaléiren
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Klick dës Optioun fir d'Bevels mat der Gréisst vum Interface ze skaléiren
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Traditionell Spriteschrëft benotzen
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Klick dës Optioun wanns du déi traditionell fix-Gréisst Spriteschrëft wëlls
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Anti-alias Schrëften
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Klick dës Optioun fir verännerbar Schrëften ze anti-aliasen
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Traditionell Spriteschrëft benotzen
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Klick dës Optioun wanns du déi traditionell fix-Gréisst Spriteschrëft wëlls
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Anti-alias Schrëften
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Klick dës Optioun fir verännerbar Schrëften ze anti-aliasen
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automatesch Emfro
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}An enger automatescher Emfro matmaachen
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Falls ugeschalt schéckt OpenTTD eng Emfro wann d'Spill ausgemet gëtt
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Iwwert Emfroen an Dateschutz
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Dëst start e Browser mat méi Informatiounen iwwert d'automatesch Emfro
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Preview op d'Emfroresultat
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Weis d'Resultat vun der Emfro vum aktuelle Spill un
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Automatesch Emfro
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :An enger automatescher Emfro matmaachen
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :Falls ugeschalt schéckt OpenTTD eng Emfro wann d'Spill ausgemet gëtt
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :Iwwert Emfroen an Dateschutz
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Dëst start e Browser mat méi Informatiounen iwwert d'automatesch Emfro
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Preview op d'Emfroresultat
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Weis d'Resultat vun der Emfro vum aktuelle Spill un
 
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Bildfrequenz
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Wiel d'Frequenz vum Bildschirm aus
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Bildfrequenz
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Wiel d'Frequenz vum Bildschirm aus
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Bildfrequenzen iwwert 60Hz kënnen d'Leeschtung beaflossen
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basis Grafikset
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Wielt de Basis Grafikset dee soll benotzt ginn (kann net am Spill geännert ginn, nëmmen am Haaptmenu)
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Méi Infos iwwert de Basis Grafikset
+STR_GAME_OPTIONS_BASE_GRF                                       :Basis Grafikset
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Wielt de Basis Grafikset dee soll benotzt ginn (kann net am Spill geännert ginn, nëmmen am Haaptmenu)
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Méi Infos iwwert de Basis Grafikset
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Basis Soundset
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Wiel de Basis Soundset dee soll benotzt ginn (kann net am Spill geännert ginn, nëmmen am Haaptmenu)
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Méi Informatiounen iwwer d'Basis Soundset
+STR_GAME_OPTIONS_BASE_SFX                                       :Basis Soundset
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Wiel de Basis Soundset dee soll benotzt ginn (kann net am Spill geännert ginn, nëmmen am Haaptmenu)
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Méi Informatiounen iwwer d'Basis Soundset
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basis Musikset
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Wiel de Basis Musikset dee soll benotzt ginn
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Méi Informatiounen iwwer de Basis Musikset
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Basis Musikset
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Wiel de Basis Musikset dee soll benotzt ginn
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Méi Informatiounen iwwer de Basis Musikset
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Inhalt eroflueden
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Sich no neiem an geupdateten Inhalt fir erofzelueden
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(keng Plugins déi mat Social Platforms kommunizéiren installéiert)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Plattform:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Pluginstatus:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Plattform:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :Pluginstatus:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Leeft
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Konnt net initialiséiren
@@ -1220,10 +1220,10 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Fräizügeg (ke
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Keng KI fonnt...{}{}KI kënnen iwwert den 'Online Content' system downgeload ginn
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filter:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Alles erweideren
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Alles reduzéiren
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}All Wäerter zerécksetzen
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Filter:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Alles erweideren
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Alles reduzéiren
+STR_CONFIG_SETTING_RESET_ALL                                    :All Wäerter zerécksetzen
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(keng Erklärung verfügbar)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standardwäert: {ORANGE}{STRING}
@@ -1236,9 +1236,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Firmenastellung
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Opgepasst!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Des Aktioun setzt all Wäerter op hier Standardastellungen zeréck.{}Bass du sécher, fir weiderzefueren?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorie:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Typ:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Limitéiert d'Lëscht mat virdefinéierten Filter
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Kategorie:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Typ:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Limitéiert d'Lëscht mat virdefinéierten Filter
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Basis (nëmmen wichteg Astellungen)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Erweidert (weist déi meescht Astellungen)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Expertenastellungen (all Astellungen, och komescher)
@@ -1255,9 +1255,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Firmenastellung
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Keng -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Weis all Sich-Resultater no der Astellung{}{SILVER}Kategorie {BLACK}bis {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Weis all Sich-Resultater no der Astellung{}{SILVER}Typ {BLACK}bis {WHITE}All Astellungstypen
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Weis all Sich-Resultater no der Astellung{}{SILVER}Kategorie {BLACK}bis {WHITE}{STRING} {BLACK}an {SILVER}Typ {BLACK}bis {WHITE}All Astellungstypen
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Weis all Sich-Resultater no der Astellung{}{SILVER}Kategorie {BLACK}bis {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Weis all Sich-Resultater no der Astellung{}{SILVER}Typ {BLACK}bis {WHITE}All Astellungstypen
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Weis all Sich-Resultater no der Astellung{}{SILVER}Kategorie {BLACK}bis {WHITE}{STRING} {BLACK}an {SILVER}Typ {BLACK}bis {WHITE}All Astellungstypen
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Aus

@@ -865,8 +865,8 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spel Ops
 
 
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Geldeenheid
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Geld eendheid keuse
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Geldeenheid
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Geld eendheid keuse
 
 
 ###length 45
@@ -910,21 +910,21 @@ STR_GAME_OPTIONS_CURRENCY_NTD                                   :Nuwe Taiwan dol
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Chinese Renminbi
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kong Dollar
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Outostoor
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Kies interval tussen outomatiese store
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Outostoor
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Kies interval tussen outomatiese store
 
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Af
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Taal
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Kies die koppelvlak taal om te gebruik
+STR_GAME_OPTIONS_LANGUAGE                                       :Taal
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Kies die koppelvlak taal om te gebruik
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Volskerm
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Kies die blokkie om OpenTTD in volleskerm te speel
+STR_GAME_OPTIONS_FULLSCREEN                                     :Volskerm
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Kies die blokkie om OpenTTD in volleskerm te speel
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skerm resolusie
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Kies die skerm resolusie om te gebruik
+STR_GAME_OPTIONS_RESOLUTION                                     :Skerm resolusie
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Kies die skerm resolusie om te gebruik
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :ander
 
 
@@ -938,17 +938,17 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :ander
 
 
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basis-grafikastel
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kies die basis-grafikastel stel om te gebruik
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Meer inligting oor die basis-grafikastel
+STR_GAME_OPTIONS_BASE_GRF                                       :Basis-grafikastel
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Kies die basis-grafikastel stel om te gebruik
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Meer inligting oor die basis-grafikastel
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Basis klank stel
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Kies die basis klank stel om te gebruik
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Addisionele informasie oor die basis klank stel
+STR_GAME_OPTIONS_BASE_SFX                                       :Basis klank stel
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Kies die basis klank stel om te gebruik
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Addisionele informasie oor die basis klank stel
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basis musiek stel
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Kies die basis musiek stel om te gebruik
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Addisionele informasie oor die basis musiek stel
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Basis musiek stel
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Kies die basis musiek stel om te gebruik
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Addisionele informasie oor die basis musiek stel
 
 
 
@@ -1052,9 +1052,9 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permissief
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Geen geskikte KI beskikbaar...{}Jy kan verskeie KI's aflaai deur middel van die 'Aanlyn Inhoud' stelsel
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filter string:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Brei alles uit
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Krimp alles in
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Filter string:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Brei alles uit
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Krimp alles in
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(geen verduideliking beskikbaar)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standaard waarde: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Stelling tipe: {ORANGE}{STRING}
@@ -1064,9 +1064,9 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Maatskappy inst
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Maatskappy instelling (word gestoor in Spaarspeletjies; raak net nuwe speletjies)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Maatskappy instelling (word gestoor in spaarspeletjie; raak net die huidige maatskappy)
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorie:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipe:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Beperk die lys hier onder deur voorafgestelde "filters" te gebruik slegs veranderde verstellings
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Kategorie:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Tipe:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Beperk die lys hier onder deur voorafgestelde "filters" te gebruik slegs veranderde verstellings
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Basiese (wys net belangrik verstellings)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Gevorderde (wys meeste verstellings)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ekspert (wys alle verstellings, insluitend vreemde verstellings)
@@ -1083,9 +1083,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Maatskappy-inst
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Geen -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Wys alle soekresultate deur oprigting{}{SILVER}Kategorie {BLACK}tot {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Wys alle soekresultate deur oprigting{}{SILVER}Tik {BLACK}tot {WHITE}Alle opstel tipes
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Wys alle soekresultate deur oprigting{}{SILVER}Kategorie {BLACK}tot {WHITE}{STRING} {BLACK}en {SILVER}Tik {BLACK}tot {WHITE}Alle opstel tipes
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Wys alle soekresultate deur oprigting{}{SILVER}Kategorie {BLACK}tot {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Wys alle soekresultate deur oprigting{}{SILVER}Tik {BLACK}tot {WHITE}Alle opstel tipes
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Wys alle soekresultate deur oprigting{}{SILVER}Kategorie {BLACK}tot {WHITE}{STRING} {BLACK}en {SILVER}Tik {BLACK}tot {WHITE}Alle opstel tipes
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Af

@@ -948,13 +948,13 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Bu gör�
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Seçenekler
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Genel
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Genel ayarları seçin
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :Genel ayarları seçin
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafikler
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Grafik ayarlarını seçin
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :Grafik ayarlarını seçin
 STR_GAME_OPTIONS_TAB_SOUND                                      :Ses
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Ses ve müzik ayarlarını seçin
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Ses ve müzik ayarlarını seçin
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Sosyal
-STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Sosyal entegre ayarlarını seçin
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Sosyal entegre ayarlarını seçin
 
 STR_GAME_OPTIONS_VOLUME                                         :Ses seviyesi
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Ses efektleri
@@ -962,8 +962,8 @@ STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Müzik
 
 
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Para birimleri
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Para birimi seçimi
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Para birimleri
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Para birimi seçimi
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -1013,8 +1013,8 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malezya Ringgit
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Letonya Latsı
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portekiz Esküdosu
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Otomatik Kaydet
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Otomatik kaydetme sıklığını seçin
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Otomatik Kaydet
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Otomatik kaydetme sıklığını seçin
 
 # Autosave dropdown
 ###length 5
@@ -1024,74 +1024,74 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Her 30 dakikada
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Her 60 dakikada
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Her 120 dakikada
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Dil
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Görünen dili seçin
+STR_GAME_OPTIONS_LANGUAGE                                       :Dil
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Görünen dili seçin
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} (%{NUM} tamamlandı)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Tam ekran
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Tam ekran oynamak için bunu isaretleyin
+STR_GAME_OPTIONS_FULLSCREEN                                     :Tam ekran
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Tam ekran oynamak için bunu isaretleyin
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekran Çözünürlüğü
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Kullanılacak ekran çözünürlüğünü seçin
+STR_GAME_OPTIONS_RESOLUTION                                     :Ekran Çözünürlüğü
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Kullanılacak ekran çözünürlüğünü seçin
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :diğer
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Donanım hızlandırma
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}OpenTTD'nin donanım ivmesini kullanmayı denemesine izin vermek için bu kutuyu işaretleyin. Değiştirilmiş bir ayar sadece oyun yeniden başlatıldığında uygulanır
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Donanım hızlandırma
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :OpenTTD'nin donanım ivmesini kullanmayı denemesine izin vermek için bu kutuyu işaretleyin. Değiştirilmiş bir ayar sadece oyun yeniden başlatıldığında uygulanır
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Ayar sadece oyun yeniden başlatıldığında uygulanır
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Dikey senkronizasyon'u aktif etmek için bu kutuyu işaretleyin. Değiştirilmiş bir ayar sadece oyun yeniden başlatıldığında uygulanır. Yalnızca donanım ivmesi aktifken çalışır
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Dikey senkronizasyon'u aktif etmek için bu kutuyu işaretleyin. Değiştirilmiş bir ayar sadece oyun yeniden başlatıldığında uygulanır. Yalnızca donanım ivmesi aktifken çalışır
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Geçerli sürücü: {STRING}
-
-
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Arayüz büyüklüğü
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Arayüz büyüklüğünü ayarlamak için kaydırın. Sürekli ayarlama için Ctrl tuşunu basılı tutun
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Büyüklüğü otomatik algıla
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Arayüz boyutunu otomatik ayarlamak için bu kutucuğu işaretleyin
-
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Eğimi ayarla
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Eğimi arayüz boyutuna göre ayarlamak için bu kutucuğu işaretleyin
-
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK} Geleneksel yazı tipini kullan
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Yazı tipini geleneksel sabit boyutlu haline döndürmek için bu kutucuğu işaretleyin
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Yazı tipi kenarlarını yumuşatma
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Yeniden boyutlandırılabilir yazı tiplerinin kenarlarını yumuşatmak için bu kutuyu işaretleyin
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Geçerli sürücü: {STRING}
 
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Otomatik anket
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Otomatik ankete katılın
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Etkinleştirildiğinde, OpenTTD bir oyundan çıkarken bir anket gönderir
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Anket ve gizlilik hakkında
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Bu, otomatik anket hakkında daha fazla bilgi içeren bir tarayıcı açar
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Anket sonucunu önizleyin
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Mevcut çalışan oyunun anket sonucunu göster
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Arayüz büyüklüğü
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Arayüz büyüklüğünü ayarlamak için kaydırın. Sürekli ayarlama için Ctrl tuşunu basılı tutun
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Büyüklüğü otomatik algıla
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Arayüz boyutunu otomatik ayarlamak için bu kutucuğu işaretleyin
+
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Eğimi ayarla
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Eğimi arayüz boyutuna göre ayarlamak için bu kutucuğu işaretleyin
+
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                : Geleneksel yazı tipini kullan
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Yazı tipini geleneksel sabit boyutlu haline döndürmek için bu kutucuğu işaretleyin
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Yazı tipi kenarlarını yumuşatma
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Yeniden boyutlandırılabilir yazı tiplerinin kenarlarını yumuşatmak için bu kutuyu işaretleyin
 
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Tazeleme oranını görüntüle
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Kullanılacak tazeleme oranını seç
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Otomatik anket
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Otomatik ankete katılın
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :Etkinleştirildiğinde, OpenTTD bir oyundan çıkarken bir anket gönderir
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :Anket ve gizlilik hakkında
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Bu, otomatik anket hakkında daha fazla bilgi içeren bir tarayıcı açar
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Anket sonucunu önizleyin
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Mevcut çalışan oyunun anket sonucunu göster
+
+
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Tazeleme oranını görüntüle
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Kullanılacak tazeleme oranını seç
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}60Hz'den yüksek tazeleme oranları performansı etkileyebilir.
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Temel grafik kümesi
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kullanılacak temel grafik kümesini seçin  (oyun içinde değiştirlemez sadece ana menüde değiştirebilinir)
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Temel grafik setiyle ilgili ilave bilgiler
+STR_GAME_OPTIONS_BASE_GRF                                       :Temel grafik kümesi
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Kullanılacak temel grafik kümesini seçin  (oyun içinde değiştirlemez sadece ana menüde değiştirebilinir)
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Temel grafik setiyle ilgili ilave bilgiler
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Temel ses kümesi
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Kullanılacak temel ses kümesini seçin (oyun içinde değiştirlemez sadece ana menüde değiştirebilinir)
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Temel ses kümesiyle ilgili ilave bilgiler
+STR_GAME_OPTIONS_BASE_SFX                                       :Temel ses kümesi
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Kullanılacak temel ses kümesini seçin (oyun içinde değiştirlemez sadece ana menüde değiştirebilinir)
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Temel ses kümesiyle ilgili ilave bilgiler
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Temel müzik kümesi
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Kullanılacak temel müzik kümesini seçin
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Temel müzik hakkında daha fazla bilgi
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Temel müzik kümesi
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Kullanılacak temel müzik kümesini seçin
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Temel müzik hakkında daha fazla bilgi
 
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(yüklü sosyal platformlarla entegre edilecek eklenti yok)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Platform:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Eklenti statüsü:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Platform:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :Eklenti statüsü:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Çalışıyor
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Başlatılamadı
@@ -1205,10 +1205,10 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :İzin verici (�
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Uygun YZ'ler yok...{}'Çevrimiçi içerik' sistemiyle pek çok YZ indirebilirsiniz
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtre:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Tümünü genişlet
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Tümünü kısalt
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Tüm değerleri sıfırla
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Filtre:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Tümünü genişlet
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Tümünü kısalt
+STR_CONFIG_SETTING_RESET_ALL                                    :Tüm değerleri sıfırla
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(açıklama bulunmamaktadır)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Varsayılan değer: {ORANGE}{STRING}
@@ -1221,9 +1221,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Şirket ayarlar
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Dikkat!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Bu eylem tüm oyun ayarlarını varsayılan değerlerine sıfırlayacaktır.{}Devam etmek istediğine emin misin?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategori:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tür:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Aşağıdaki listeyi önceden tanımlı filtreler kullanarak sınırlandırır
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Kategori:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Tür:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Aşağıdaki listeyi önceden tanımlı filtreler kullanarak sınırlandırır
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Temel (sadece önemli ayarları göster)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Gelişmiş (çoğu ayarı göster)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Uzman (garip olanlar dahil tüm ayarları göster)
@@ -1240,9 +1240,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Şirket ayarlar
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Hiçbiri -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Tüm arama sonuçlarını{}{SILVER}Kategoriyi {BLACK}{WHITE}{STRING} ayarlayarak göster
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Tüm arama sonuçlarını{}{SILVER}Türü {BLACK} {WHITE}Tüm ayar türleri olarak ayarlayarak göster
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Tüm arama sonuçlarını{}{SILVER}Kategoriyi {BLACK} {WHITE}{STRING} {BLACK}ve {SILVER}Türü {BLACK} {WHITE}Tüm ayar türleri olarak ayarlayarak göster
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Tüm arama sonuçlarını{}{SILVER}Kategoriyi {BLACK}{WHITE}{STRING} ayarlayarak göster
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Tüm arama sonuçlarını{}{SILVER}Türü {BLACK} {WHITE}Tüm ayar türleri olarak ayarlayarak göster
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Tüm arama sonuçlarını{}{SILVER}Kategoriyi {BLACK} {WHITE}{STRING} {BLACK}ve {SILVER}Türü {BLACK} {WHITE}Tüm ayar türleri olarak ayarlayarak göster
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Kapalı

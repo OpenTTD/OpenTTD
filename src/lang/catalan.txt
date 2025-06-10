@@ -977,8 +977,8 @@ STR_GAME_OPTIONS_SETTING                                        :{STRING}: {ORAN
 
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}{NBSP}%
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Moneda
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selecció de la unitat monetària
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Moneda
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Selecció de la unitat monetària
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -1029,8 +1029,8 @@ STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lats letó
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escut portuguès
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Hryvnia ucraïnès
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Desa automàticament
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selecciona l'interval de desada automàtica de la partida
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Desa automàticament
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Selecciona l'interval de desada automàtica de la partida
 
 # Autosave dropdown
 ###length 5
@@ -1040,79 +1040,79 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Cada 30 minuts
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Cada 60 minuts
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Cada 120 minuts
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Idioma
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Selecciona l'idioma de la interfície
+STR_GAME_OPTIONS_LANGUAGE                                       :Idioma
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Selecciona l'idioma de la interfície
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}{NBSP}% completat)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Pantalla completa
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Marqueu la casella per mostrar l'OpenTTD a pantalla completa.
+STR_GAME_OPTIONS_FULLSCREEN                                     :Pantalla completa
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Marqueu la casella per mostrar l'OpenTTD a pantalla completa.
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolució de pantalla
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecciona la resolució de pantalla
+STR_GAME_OPTIONS_RESOLUTION                                     :Resolució de pantalla
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Selecciona la resolució de pantalla
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altres
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Acceleració per maquinari
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Seleccioneu aquesta opció per permetre que l'OpenTTD provi d'usar acceleració per maquinari. Si es canvia l'opció, s'aplicarà quan es reiniciï el programa.
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Acceleració per maquinari
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Seleccioneu aquesta opció per permetre que l'OpenTTD provi d'usar acceleració per maquinari. Si es canvia l'opció, s'aplicarà quan es reiniciï el programa.
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}La configuració tindrà efecte quan es reiniciï el programa.
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Selecciona aquesta casella per activar la sincronització vertical de la pantalla. Els canvis s'aplicaran quan es reiniciï el programa. Només funciona si s'activa l'acceleració per maquinari.
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Selecciona aquesta casella per activar la sincronització vertical de la pantalla. Els canvis s'aplicaran quan es reiniciï el programa. Només funciona si s'activa l'acceleració per maquinari.
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Controlador actual: {STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Controlador actual: {STRING}
 
 STR_GAME_OPTIONS_INTERFACE                                      :Interfície
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Mida de la interfície
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Arrossegueu el botó lliscant per a triar la mida de la interfície. Amb Ctrl+arrossega, s'aplica un ajust continu.
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Mida de la interfície
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Arrossegueu el botó lliscant per a triar la mida de la interfície. Amb Ctrl+arrossega, s'aplica un ajust continu.
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Detecta la mida automàticament
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Marqueu aquesta opció si voleu que s'ajusti la mida de la interfície automàticament.
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Marqueu aquesta opció si voleu que s'ajusti la mida de la interfície automàticament.
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Escala els bisells
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Marqueu aquesta opció si voleu que s'escalin els bisells segons la mida de la interfície.
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Escala els bisells
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Marqueu aquesta opció si voleu que s'escalin els bisells segons la mida de la interfície.
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Fes servir la font tradicional
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Marqueu aquesta casella si preferiu fer servir la font tradicional de mida fixa i pixelada.
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Fes servir la font tradicional
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Marqueu aquesta casella si preferiu fer servir la font tradicional de mida fixa i pixelada.
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Aplica anti-àlies a les fonts
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Marqueu aquesta casella per a fer servir tècniques d'anti-àlies a les fonts redimensionables.
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Marqueu aquesta casella per a fer servir tècniques d'anti-àlies a les fonts redimensionables.
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Sondeig automatitzat
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Participa al sondeig automatitzat
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Quan s'activa, l'OpenTTD transmetrà dades sobre l'ús del joc del sondeig quan se surti d'una partida.
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Sobre el sondeig i la privacitat
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Obre una pàgina amb més informació sobre el sondeig automatitzat.
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Vista prèvia del resultat del sondeig
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Mostra el resultat del sondeig automatitzat de la partida actual.
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Sondeig automatitzat
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Participa al sondeig automatitzat
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :Quan s'activa, l'OpenTTD transmetrà dades sobre l'ús del joc del sondeig quan se surti d'una partida.
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :Sobre el sondeig i la privacitat
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Obre una pàgina amb més informació sobre el sondeig automatitzat.
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Vista prèvia del resultat del sondeig
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Mostra el resultat del sondeig automatitzat de la partida actual.
 
 STR_GAME_OPTIONS_DISPLAY                                        :Pantalla
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Rati de refresc de la pantalla
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Seleccioneu el rati de refresc de la pantalla que voleu usar.
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Rati de refresc de la pantalla
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Seleccioneu el rati de refresc de la pantalla que voleu usar.
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}{NBSP}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Ratis de refresc major a 60{NBSP}Hz poden causar problemes de rendiment.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :Conjunt de gràfics base
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecciona el conjunt de gràfics base a utilitzar (no es pot canviar des de dins de la partida; s'ha de canviar des del menú principal).
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Selecciona el conjunt de gràfics base a utilitzar (no es pot canviar des de dins de la partida; s'ha de canviar des del menú principal).
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Informació addicional sobre el conjunt de gràfics base
 
 STR_GAME_OPTIONS_BASE_SFX                                       :Conjunt de sons base
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selecciona un conjunt de sons base a utilitzar (no es pot canviar des de dins de la partida; s'ha de canviar des del menú principal).
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informació addicional sobre el joc de sons base
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Selecciona un conjunt de sons base a utilitzar (no es pot canviar des de dins de la partida; s'ha de canviar des del menú principal).
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Informació addicional sobre el joc de sons base
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Conjunt de peces de música base
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecciona el conjunt de peces de música base a utilitzar
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informació addicional sobre el conjunt de peces de música base
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Conjunt de peces de música base
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Selecciona el conjunt de peces de música base a utilitzar
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Informació addicional sobre el conjunt de peces de música base
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Descarrega contingut
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Comprova si hi ha continguts nous o actualitzats per a descarregar.
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(no s'han instal·lat complements per a interactuar amb plataformes socials)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Plataforma:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Estat del complement:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Plataforma:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :Estat del complement:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}En funcionament
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}No s'ha pogut inicialitzar.
@@ -1227,9 +1227,9 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No hi ha
 
 # Settings tree in the Game Options window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{G=Masculin}{BLACK}Filtre:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Desplega-ho tot
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Plega-ho tot
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Restableix tots els valors
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Desplega-ho tot
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Plega-ho tot
+STR_CONFIG_SETTING_RESET_ALL                                    :Restableix tots els valors
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(cap explicació disponible)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor per defecte: {ORANGE}{STRING}
@@ -1242,9 +1242,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Paràmetre de l
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Avís!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Aquesta acció restablirà la configuració de la partida als seus valors per defecte.{}Esteu segur que voleu fer-ho?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categoria:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipus:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restringeix la llista de sota usant els filtres predefinits
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Categoria:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Tipus:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Restringeix la llista de sota usant els filtres predefinits
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Paràmetres bàsics (mostra només els paràmetres importants)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Paràmetres avançats (mostra la majoria dels paràmetres)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Paràmetres per experts (mostra tots els paràmetres, fins i tot els rars)
@@ -1261,9 +1261,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Paràmetres de 
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Cap -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Mostra tots els resultats establint {SILVER}«Categoria» {BLACK}a {WHITE}«{STRING}»{BLACK}.
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Mostrar tots els resultats de la cerca filtrada amb {WHITE}tots els tipus de paràmetres
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Mostra tots els resultats de la cerca establint {SILVER}«Categoria» {BLACK}a {WHITE}«{STRING}» {BLACK}i {SILVER}«Tipus» {BLACK}a {WHITE}«Tots els paràmetres»{BLACK}.
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Mostra tots els resultats establint {SILVER}«Categoria» {BLACK}a {WHITE}«{STRING}»{BLACK}.
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Mostrar tots els resultats de la cerca filtrada amb {WHITE}tots els tipus de paràmetres
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Mostra tots els resultats de la cerca establint {SILVER}«Categoria» {BLACK}a {WHITE}«{STRING}» {BLACK}i {SILVER}«Tipus» {BLACK}a {WHITE}«Tots els paràmetres»{BLACK}.
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Inactiu

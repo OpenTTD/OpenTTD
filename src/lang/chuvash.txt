@@ -465,17 +465,17 @@ STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Пӗлт
 ###length 45
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Вырӑсла тенкӗ
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Хӑй управ
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Хӑй управ
 
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Сӳнтер
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Чӗлхи
+STR_GAME_OPTIONS_LANGUAGE                                       :Чӗлхи
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Тулли экран
+STR_GAME_OPTIONS_FULLSCREEN                                     :Тулли экран
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Экрана сӑнарлама пултарни
+STR_GAME_OPTIONS_RESOLUTION                                     :Экрана сӑнарлама пултарни
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :расна
 
 

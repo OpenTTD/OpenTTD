@@ -964,8 +964,8 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Postavke
 
 
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Novčane jedinice
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Izbor novčanih jedinica
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Novčane jedinice
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Izbor novčanih jedinica
 
 
 ###length 45
@@ -1010,26 +1010,26 @@ STR_GAME_OPTIONS_CURRENCY_CNY                                   :Kineski Renminb
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkonški Dolar
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Indijska Rupija
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatsko spremanje
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Odaberi interval između automatskih spremanja igre
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Automatsko spremanje
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Odaberi interval između automatskih spremanja igre
 
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Isključeno
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Jezik
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Odaberi jezik sučelja
+STR_GAME_OPTIONS_LANGUAGE                                       :Jezik
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Odaberi jezik sučelja
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Cijeli zaslon
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Označi ovu kućicu kako bi igrao OpenTTD preko cijelog zaslona
+STR_GAME_OPTIONS_FULLSCREEN                                     :Cijeli zaslon
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Označi ovu kućicu kako bi igrao OpenTTD preko cijelog zaslona
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Razlučivost zaslona
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Odaberi razlučivost zaslona
+STR_GAME_OPTIONS_RESOLUTION                                     :Razlučivost zaslona
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Odaberi razlučivost zaslona
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :ostalo
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
 
 
 
@@ -1040,17 +1040,17 @@ STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 
 
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Osnovni set grafike
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Odaberi osnovni grafički set za igru
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatne informacije o osnovnom grafičkom setu
+STR_GAME_OPTIONS_BASE_GRF                                       :Osnovni set grafike
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Odaberi osnovni grafički set za igru
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Dodatne informacije o osnovnom grafičkom setu
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Set osnovnih zvukova
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Odaberite osnovni set zvukova
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatne informacije o setu osnovnih zvukova
+STR_GAME_OPTIONS_BASE_SFX                                       :Set osnovnih zvukova
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Odaberite osnovni set zvukova
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Dodatne informacije o setu osnovnih zvukova
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Set osnovne glazbe
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Odaberi set osnovne glazbe za uporabu
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Dodatne informacije o setu osnovne glazbe
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Set osnovne glazbe
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Odaberi set osnovne glazbe za uporabu
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Dodatne informacije o setu osnovne glazbe
 
 
 
@@ -1154,10 +1154,10 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Dopustiv
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Odgovarajuća UI nije dostupna...{}Možete preuzeti nekoliko UI pomoću sustava 'Online sadržaja'
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtriraj slijed:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Otvori sve
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Zatvori sve
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Ponovno postavi sve vrijednosti
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Filtriraj slijed:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Otvori sve
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Zatvori sve
+STR_CONFIG_SETTING_RESET_ALL                                    :Ponovno postavi sve vrijednosti
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(nema dostupnog pojašnjenja)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Osnovna vrijednost: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Vrsta postavki: {ORANGE}{STRING}
@@ -1167,9 +1167,9 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Postavke igre (
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Postavke tvrtke (pohranjene u snimljenoj datoteci; utječu samo na nove igre)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Postavke tvrtke (pohranjene u snimljenoj datoteci; utječu samo na trenutnu tvrtku)
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorija:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tip:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Sužava doljnju listu koristeći samo predpostavljene filtere
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Kategorija:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Tip:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Sužava doljnju listu koristeći samo predpostavljene filtere
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Osnovno (prikaži samo važne postavke)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Napredno (prikaži većinu postavki)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Stručno (prikaži sve postavke, uključujući i one neobične)
@@ -1186,9 +1186,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Postavke tvrtke
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Nijedna -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Prikaži sve rezultate pretraga po postavkama{}{SILVER}Kategorija {BLACK}do {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Prikaži sve rezultate pretraga po postavkama{}{SILVER}Tip {BLACK}do {WHITE}Svi tipovi postavki
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Prikaži sve rezultate pretrage po postavkama{}{SILVER}Kategorija {BLACK}do {WHITE}{STRING} {BLACK}i {SILVER}Tip {BLACK}do {WHITE}Svi tipovi postavki
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Prikaži sve rezultate pretraga po postavkama{}{SILVER}Kategorija {BLACK}do {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Prikaži sve rezultate pretraga po postavkama{}{SILVER}Tip {BLACK}do {WHITE}Svi tipovi postavki
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Prikaži sve rezultate pretrage po postavkama{}{SILVER}Kategorija {BLACK}do {WHITE}{STRING} {BLACK}i {SILVER}Tip {BLACK}do {WHITE}Svi tipovi postavki
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Isključeno

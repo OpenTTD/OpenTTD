@@ -897,13 +897,13 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}موقع
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}تنظیمات بازی
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :عمومی
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}تنظیمات عمومی خود را انتخاب کنید
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :تنظیمات عمومی خود را انتخاب کنید
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :گرافیک
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}تنظیمات گرافیکی خود را انتخاب کنید
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :تنظیمات گرافیکی خود را انتخاب کنید
 STR_GAME_OPTIONS_TAB_SOUND                                      :صدا
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}تنظیمات صدا و موسیقی خود را انتخاب کنید
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :تنظیمات صدا و موسیقی خود را انتخاب کنید
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :اجتماعی
-STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}تنظیمات ادغام اجتماعی خود را انتخاب کنید
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :تنظیمات ادغام اجتماعی خود را انتخاب کنید
 
 
 
@@ -960,21 +960,21 @@ STR_GAME_OPTIONS_CURRENCY_LVL                                   :لات های �
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :اسکودوی پرتغال
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :گریونای اوکراین
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK} ذخیره اتوماتیک
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK} انتخاب فاصله زمانی بین ذخیره کردن های اتوماتیک
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 : ذخیره اتوماتیک
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      : انتخاب فاصله زمانی بین ذخیره کردن های اتوماتیک
 
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :خاموش
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}زبان
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}زبان واسط کاربری را برای استفاده انتخاب کنید
+STR_GAME_OPTIONS_LANGUAGE                                       :زبان
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :زبان واسط کاربری را برای استفاده انتخاب کنید
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}تمام صفحه
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}برای بازی کردن OpenTTD در حالت تمام صفحه این جعبه را انتخاب کنید
+STR_GAME_OPTIONS_FULLSCREEN                                     :تمام صفحه
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :برای بازی کردن OpenTTD در حالت تمام صفحه این جعبه را انتخاب کنید
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}وضوح تصویر
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}وضوح تصویر دلخواه را انتخاب کنید
+STR_GAME_OPTIONS_RESOLUTION                                     :وضوح تصویر
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :وضوح تصویر دلخواه را انتخاب کنید
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :دیگر
 
 
@@ -995,17 +995,17 @@ STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
 
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}بسته گرافیک پایه
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}بسته گرافیک پایه را انتخاب کنید
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK} اطلاعات اضافه در مورد بسته ی گرافیکی پایه
+STR_GAME_OPTIONS_BASE_GRF                                       :بسته گرافیک پایه
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :بسته گرافیک پایه را انتخاب کنید
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   : اطلاعات اضافه در مورد بسته ی گرافیکی پایه
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}بسته صدای پایه را انتخاب کنید
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}بسته صدای پایه را انتخاب کنید
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}اطلاعات اضافه درباره بسته ی صدای پایه
+STR_GAME_OPTIONS_BASE_SFX                                       :بسته صدای پایه را انتخاب کنید
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :بسته صدای پایه را انتخاب کنید
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :اطلاعات اضافه درباره بسته ی صدای پایه
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}بسته موسیقی پایه
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}بسته موسیقی پایه را انتخاب کنید
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}اطلاعات اضافه درباره بسته ی موسیقی پایه
+STR_GAME_OPTIONS_BASE_MUSIC                                     :بسته موسیقی پایه
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :بسته موسیقی پایه را انتخاب کنید
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :اطلاعات اضافه درباره بسته ی موسیقی پایه
 
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :(هیچ افزونه‌ای برای ادغام با پلتفرم‌های اجتماعی نصب نشده است)
@@ -1119,9 +1119,9 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :آسان گیر
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}هیچ بسته هوش مصنوعی موجود نیست...{}شما می توانید چندین بسته هوش مصنوعی(AI) را از قسمت محتویات برخط بارگیری کنید
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}متن فیلتر:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}نمایش همه
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}جمع کردن همه
+STR_CONFIG_SETTING_FILTER_TITLE                                 :متن فیلتر:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :نمایش همه
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :جمع کردن همه
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(بدون شرح)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}مقدار پیش فرض: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}نوع تنظیمات: {ORANGE}{STRING}
@@ -1131,8 +1131,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :تنظیمات 
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :تنظیمات شرکت ( در ذخیره سازی ها اعمال میشود و در بازی فعلی موثر است)
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}این عمل تمام تنظیمات بازی را به مقادیر پیش‌فرض بازنشانی می‌کند.{}آیا مطمئن هستید که می‌خواهید ادامه دهید؟
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}دسته بندی:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}نوع:
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :دسته بندی:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :نوع:
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :تنظیمات پایه
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :تنظیمات پیشرفته
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :تنظیمات حرفه ای/ همه تنظیمات
@@ -1143,9 +1143,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :تمام انو
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- هیچ -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}نمایش تمام نتایج با تنظیم{}{SILVER}دسته بندی {BLACK}به {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}نمایش تمام نتایج با تنظیم{}{SILVER}نوع{BLACK}به {WHITE}تمام انواع تنظیم
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}نمایش تمام نتایج با تنظیم{}{SILVER}دسته بندی {BLACK}به {WHITE}{STRING} {BLACK}و {SILVER}نوع {BLACK}به {WHITE}تمام انواع
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :نمایش تمام نتایج با تنظیم{}{SILVER}دسته بندی {BLACK}به {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :نمایش تمام نتایج با تنظیم{}{SILVER}نوع{BLACK}به {WHITE}تمام انواع تنظیم
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :نمایش تمام نتایج با تنظیم{}{SILVER}دسته بندی {BLACK}به {WHITE}{STRING} {BLACK}و {SILVER}نوع {BLACK}به {WHITE}تمام انواع
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :خاموش

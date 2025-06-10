@@ -821,8 +821,8 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}کھیل
 
 
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}کرنسی کی اکائیاں
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}کرنسی کی اکائی اختیار کریں
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :کرنسی کی اکائیاں
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :کرنسی کی اکائی اختیار کریں
 
 
 ###length 45
@@ -859,21 +859,21 @@ STR_GAME_OPTIONS_CURRENCY_KRW                                   :جنوبی کو
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :جنوبی افریقہ کے رنڈ
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :اپنی مرضی کی ۔۔۔
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}خود مختار بچاو
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}خودمختار کھیل بچانے کے درمیان وقفہ اختیار کریں
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :خود مختار بچاو
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :خودمختار کھیل بچانے کے درمیان وقفہ اختیار کریں
 
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :بند
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}زبان
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}استعمال کرنے کےلئے زبان اختیار کئیجیے
+STR_GAME_OPTIONS_LANGUAGE                                       :زبان
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :استعمال کرنے کےلئے زبان اختیار کئیجیے
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}مُکمل سکرین
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}مُکمل اسکرین پر کھیلنے کے لئے اِس ڈبے کو نشان لگائیں
+STR_GAME_OPTIONS_FULLSCREEN                                     :مُکمل سکرین
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :مُکمل اسکرین پر کھیلنے کے لئے اِس ڈبے کو نشان لگائیں
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}اسکرین کی resolution
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}اسکرین کی resolution اختیار کریں
+STR_GAME_OPTIONS_RESOLUTION                                     :اسکرین کی resolution
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :اسکرین کی resolution اختیار کریں
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :دیگر
 
 
@@ -887,17 +887,17 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :دیگر
 
 
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}بُنیادی گرافک سیٹ
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}بُنیادی گرافک سیٹ اختیار کریں
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}بُنیادی گرافک سیٹ کے بارے میں اضافی معلومات
+STR_GAME_OPTIONS_BASE_GRF                                       :بُنیادی گرافک سیٹ
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :بُنیادی گرافک سیٹ اختیار کریں
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :بُنیادی گرافک سیٹ کے بارے میں اضافی معلومات
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}بُنیادی صوتی سیٹ
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}بُنیادی صوتی سیٹ اختیار کریں
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}بُنیادی صوتی سیٹ کے بارے میں اضافی معلومات
+STR_GAME_OPTIONS_BASE_SFX                                       :بُنیادی صوتی سیٹ
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :بُنیادی صوتی سیٹ اختیار کریں
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :بُنیادی صوتی سیٹ کے بارے میں اضافی معلومات
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}بُنیادی موسیقی سیٹ
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}بُنیادی موسیقی سیٹ اختیار کریں
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}بُنیادی موسیقی سیٹ کے بارے میں اضافی معلومات
+STR_GAME_OPTIONS_BASE_MUSIC                                     :بُنیادی موسیقی سیٹ
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :بُنیادی موسیقی سیٹ اختیار کریں
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :بُنیادی موسیقی سیٹ کے بارے میں اضافی معلومات
 
 
 
