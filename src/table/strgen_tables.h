@@ -87,6 +87,11 @@ static const CmdStruct _cmd_structs[] = {
 	{"VELOCITY",          EmitSingleChar, SCC_VELOCITY,           1,  0, {}},
 	{"HEIGHT",            EmitSingleChar, SCC_HEIGHT,             1,  0, {}},
 
+	{"CARGO_ICON",        EmitSingleChar, SCC_CARGO_ICON,         1, std::nullopt, {}},
+	{"BADGE_ICON",        EmitSingleChar, SCC_BADGE_ICON,         1, std::nullopt, {}},
+	{"COMPANY_ICON",      EmitSingleChar, SCC_COMPANY_ICON,       1, std::nullopt, {}},
+	{"ENGINE_ICON",       EmitSingleChar, SCC_ENGINE_ICON,        1, std::nullopt, {}},
+
 	{"UNITS_DAYS_OR_SECONDS",   EmitSingleChar, SCC_UNITS_DAYS_OR_SECONDS,   1,  0, {CmdFlag::Gender}},
 	{"UNITS_MONTHS_OR_MINUTES", EmitSingleChar, SCC_UNITS_MONTHS_OR_MINUTES, 1,  0, {CmdFlag::Gender}},
 	{"UNITS_YEARS_OR_PERIODS",  EmitSingleChar, SCC_UNITS_YEARS_OR_PERIODS,  1,  0, {CmdFlag::Gender}},
