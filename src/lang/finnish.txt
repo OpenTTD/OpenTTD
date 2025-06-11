@@ -3073,6 +3073,11 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Valitse 
 STR_FOUND_TOWN_CITY                                             :{BLACK}Kaupunki
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Kaupungit kasvavat nopeammin kuin tavalliset kunnat{}Asetuksista riippuen, ne ovat suurempia perustettaessa
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Kuntien laajentaminen:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Rakennukset
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Kasvata rakennusten määrää kunnissa
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Tiet
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Kasvata teiden määrää kunnissa
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Kunnan tiekaava:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Valitse tiekaava tälle kunnalle
@@ -3697,6 +3702,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Vaihda k
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Laajenna
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Laajenna kuntaa
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Laajenna rakennuksia
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Kasvata rakennusten määrää kunnassa
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Laajenna teitä
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Kasvata teiden määrää kunnassa
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Poista
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Poista tämä kunta kokonaan.
 
@@ -5920,5 +5929,9 @@ STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELO
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
 STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Avaa tunnusasetukset
 STR_BADGE_CONFIG_RESET                                          :Palauta
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Tunnuskuvakkeet
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Tunnussuodattimet
 STR_BADGE_CONFIG_PREVIEW                                        :Esikatselu
 STR_BADGE_CONFIG_NAME                                           :Nimi
+STR_BADGE_FILTER_ANY_LABEL                                      :Mikä tahansa {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} on {STRING}

@@ -1020,8 +1020,8 @@ STR_GAME_OPTIONS_GUI_FONT_AA                                    :மாற்ற
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :மறுஅளவிடக்கூடிய மாற்றுப்பெயர் எதிர்ப்பு எழுத்துருக்களுக்கு இந்தப் பெட்டியைத் தேர்வு செய்யவும்.
 
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :தானியங்கி கணக்கெடுப்பு
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :தானியங்கி கணக்கெடுப்பில் சேர்
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}தானியங்கி கணக்கெடுப்பு
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}தானியங்கி கணக்கெடுப்பில் சேர்
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :செயற்படுத்தினால், ஒரு ஆட்டத்தினை விட்டு வெளியேறும்போது OpenTTD ஒரு கணக்கெடுப்பினை அனுப்பும்
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :கணக்கெடுப்பு மற்றும் தனியுரிமை பற்றி தெரிந்து கொள்ள
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :இது, தானியக்க கணக்கெடுப்பின் கூடுதல் தகவல்களை ஒரு உலாவியில் திறக்கும்

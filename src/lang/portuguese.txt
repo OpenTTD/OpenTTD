@@ -117,7 +117,7 @@ STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} d
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} de borracha
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} de açúcar
 STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}brinquedo{P "" s}
-STR_QUANTITY_SWEETS                                             :{COMMA} saco{P "" s} de doces
+STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}saco{P "" s} de doces
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} de bebida de cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} de algodão doce
 STR_QUANTITY_BUBBLES                                            :{COMMA} bolha{P "" s}
@@ -216,7 +216,7 @@ STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}m/s
 STR_UNITS_VELOCITY_GAMEUNITS_DAY                                :{DECIMAL}{NBSP}mosaicos/dia
 STR_UNITS_VELOCITY_GAMEUNITS_SEC                                :{DECIMAL}{NBSP}mosaicos/seg
-STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}nós
+STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}nó{P 0 "" s}
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}cv
 STR_UNITS_POWER_METRIC                                          :{DECIMAL}cv
@@ -261,7 +261,7 @@ STR_UNITS_DAYS                                                  :{COMMA}{NBSP}di
 STR_UNITS_SECONDS                                               :{COMMA}{NBSP}segundo{P "" s}
 STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tique{P "" s}
 
-STR_UNITS_MONTHS                                                :{NUM}{NBSP}{P "mês" "meses"}
+STR_UNITS_MONTHS                                                :{NUM}{NBSP}m{P ês eses}
 STR_UNITS_MINUTES                                               :{NUM}{NBSP}minuto{P "" s}
 
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}ano{P "" s}
@@ -534,7 +534,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Apagar todas as
 
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informações do terreno
-STR_ABOUT_MENU_HELP                                             :Ajuda & manuais
+STR_ABOUT_MENU_HELP                                             :Ajuda e manuais
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Mostrar/Ocultar consola
 STR_ABOUT_MENU_AI_DEBUG                                         :Depuração da IA/Scripts de jogo
 STR_ABOUT_MENU_SCREENSHOT                                       :Captura de ecrã
@@ -688,7 +688,7 @@ STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Dinheiro
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Dinheiro conseguido no mês com os lucros mais altos dos últimos 12 trimestres
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unidades de carga entregues nos últimos 4 trimestres.
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Tipos de carga entregues no último trimestre.
-STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Dinheiro 'em mãos'
+STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Quantia de dinheiro que esta empresa tem no banco
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Tem um empréstimo muito elevado?
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Total de pontos sobre o máximo de pontos
 
@@ -850,11 +850,11 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeiro navio chega a {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeira aeronave chega a {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Acidente de Comboios!{}{COMMA} morrem numa explosão após a colisão!
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Acidente de Comboios!{}{COMMA} pessoa{P "" s} morre{P u ram} na explosão após a colisão!
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Acidente com Veículo Rodoviário!{}Condutor morre na explosão após a colisão com um comboio!
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Acidente com Veículo Rodoviário{}{COMMA} morrem na explosão após a colisão com um comboio!
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Acidente de Aeronave!{}{COMMA} morrem na explosão em {STATION}!
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Acidente de Aeronave!{}Avião ficou sem combustível, {COMMA} morrem no incêndio!
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Acidente com Veículo Rodoviário{}{COMMA} pessoa{P "" s} morre{P u ram} na explosão após a colisão com um comboio!
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Acidente de Aeronave!{}{COMMA} pessoa{P "" s} morre{P u ram} na explosão em {STATION}!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Acidente de Aeronave!{}Avião ficou sem combustível, {COMMA} pessoa{P "" s} morre{P u ram} no incêndio!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Acidente de Zepelim em {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Veículo rodoviário destruído em colisão com OVNI!
@@ -986,7 +986,7 @@ STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRI
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra Britânica
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dólar dos E.U.A.
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen Japonês
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Iene Japonês
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Xelim Austríaco
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franco Belga
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Franco Suíço
@@ -994,13 +994,13 @@ STR_GAME_OPTIONS_CURRENCY_CZK                                   :Coroa Checa
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :Marco Alemão
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Coroa Dinamarquesa
 STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta Espanhola
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Marco Finlandês
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Marca Finlandesa
 STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franco Francês
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :Dracma Grego
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Florim Húngaro
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Coroa Islandesa
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira Italiana
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Florim Holandês
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Florim Neerlandês
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Coroa Norueguesa
 STR_GAME_OPTIONS_CURRENCY_PLN                                   :Zlóti Polaco
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu Romeno
@@ -1012,10 +1012,10 @@ STR_GAME_OPTIONS_CURRENCY_SKK                                   :Coroa Eslovaca
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Real Brasileiro
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Coroa Estoniana
 STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas Lituanias
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won Sul Coreano
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Sul Africano
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Uone Sul-Coreano
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rande Sul-Africano
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizado...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgiano
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lári Georgiano
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraniano
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Novo Rublo Russo
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso Mexicano
@@ -1024,10 +1024,10 @@ STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi chinê
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dólar de Hong Kong
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia Indiana
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia Indonésia
-STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit da Malásia
-STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lats da Letónia
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringuite Malaio
+STR_GAME_OPTIONS_CURRENCY_LVL                                   :Latse Letão
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escudo Português
-STR_GAME_OPTIONS_CURRENCY_UAH                                   :Hryvnia Ucraniana
+STR_GAME_OPTIONS_CURRENCY_UAH                                   :Grívnia Ucraniana
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Guardar automaticamente
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Selecionar o intervalo para guardar o jogo automaticamente
@@ -1071,7 +1071,7 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Marque esta op�
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Escalar chanfros
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Marque esta opção para dimensionar os chanfros por tamanho de interface
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Usar a fonte "sprite" tradicional
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Usar a fonte com gráficos tradicionais
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Marque esta opção se prefere usar o tipo de fonte tradicional de tamanho fixo
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Fontes anti-alias
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Marque esta opção para fontes redimensionáveis com anti-alias
@@ -1538,8 +1538,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Quando ativo, u
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Renovar automaticamente quando um veículo chega a {STRING} a idade máxima
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Idade relativa a partir da qual um veículo deva ser indicado para auto-renovação
 ###length 2
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} {P "mês" "meses"} antes
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} {P "mês" "meses"} após
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} m{P 0 ês eses} antes
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} m{P 0 ês eses} depois
 
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Dinheiro mínimo para fazer auto-renovação: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Quantidade mínima de dinheiro que tem que estar no banco para auto-renovação de veículos ser considerada
@@ -1556,7 +1556,7 @@ STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Clique com bot�
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Mostra população da localidade na identificação da mesma: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Mostrar a população das localidades na sua etiqueta no mapa
 
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grossura das linhas nos gráficos: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Espessura das linhas nos gráficos: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Largura da linha nos gráficos. Uma linha mais estreita é de leitura mais precisa, enquanto uma linha mais espessa é mais fácil de ver e as cores distinguem-se melhor.
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Exibir o nome do "NewGRF" na janela de compra de veículos: {STRING}
@@ -2018,7 +2018,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :Posição da ba
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Posição horizontal da barra de estado no fundo do ecrã
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Raio de alinhamento automático de janelas: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Distância entre janelas até que a janela que está a ser movimentada se alinhe automaticamente pelas janelas mais próximas
-STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} píxe{P 0 l is}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Desligado
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Número máximo de janelas não-coladas: {STRING}
@@ -2039,8 +2039,8 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Resolução máxima de "sprites" a usar: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limita a resolução máxima a ser usada para sprites. Limitar a resolução dos sprites evitará o uso de gráficos de alta resolução, mesmo quando disponíveis. Isto pode ajudar a manter a aparência do jogo unificada ao usar uma combinação de ficheiros GRF com e sem gráficos de alta resolução
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Resolução máxima de gráficos a usar: {STRING}
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limita a resolução máxima a ser usada para gráficos. Limitar a resolução dos gráficos evitará o uso de gráficos de alta resolução, mesmo quando disponíveis. Isto pode ajudar a manter a aparência do jogo unificada ao usar uma combinação de ficheiros GRF com e sem gráficos de alta resolução
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2188,7 +2188,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... a ig
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... a ignorar conjunto Base de Sons '{STRING}': não encontrado
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... a ignorar conjunto Musica Base '{STRING}': não encontrado
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Falta de memória
-STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Falha a alocar {BYTES} da cache de sprites. a cache de sprites foi reduzida para {BYTES}. Isto irá reduzir a performance do OpenTTD. Para baixar os requisitos de memória poderá desabilitar gráficos de 32bpp e/ou niveis de zoom
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Falha a alocar {BYTES} da cache de gráficos. a cache de gráficos foi reduzida para {BYTES}. Isto irá reduzir a performance do OpenTTD. Para baixar os requisitos de memória poderá desabilitar gráficos de 32bpp e/ou niveis de zoom
 
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Erro com as definições gráficas...
@@ -2208,7 +2208,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multi-jo
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opções de jogo
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela de classificações
-STR_INTRO_HELP                                                  :{BLACK}Ajuda & Manuais
+STR_INTRO_HELP                                                  :{BLACK}Ajuda e Manuais
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Conteúdo Online
 STR_INTRO_QUIT                                                  :{BLACK}Sair
 
@@ -2230,8 +2230,8 @@ STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Obter ac
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Verificar conteúdo novo e actualizado para descarga
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Sair de 'OpenTTD'
 
-STR_INTRO_BASESET                                               :{BLACK}O conjunto de gráficos base seleccionado tem {NUM} sprite{P "" s} em falta. Por favor verifique se existem atualizações para o conjunto.
-STR_INTRO_TRANSLATION                                           :{BLACK}Faltam {NUM} string{P "" s} nesta tradução. Ajude o OpenTTD em inscrever-se como tradutor. Leia readme.txt para mais detalhes.
+STR_INTRO_BASESET                                               :{BLACK}O conjunto de gráficos base selecionado tem {NUM} gráfico{P "" s} em falta. Por favor, verifique se existem atualizações para este conjunto.
+STR_INTRO_TRANSLATION                                           :{BLACK}Falta{P 0 "" m} traduzir {NUM} linha{P "" s} nesta tradução. Por favor, ajude o OpenTTD em inscrever-se como tradutor. Leia readme.txt para mais detalhes.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Sair
@@ -2245,7 +2245,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Tem a c
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Tem a certeza que deseja abandonar este cenário?
 
 # Help window
-STR_HELP_WINDOW_CAPTION                                         :{WHITE}Ajuda & Manuais
+STR_HELP_WINDOW_CAPTION                                         :{WHITE}Ajuda e Manuais
 STR_HELP_WINDOW_WEBSITES                                        :{BLACK}Páginas de Internet
 STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}Documentos
 STR_HELP_WINDOW_README                                          :{BLACK}Leia-me
@@ -2420,7 +2420,7 @@ STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Protegi
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVIDOR DESLIGADO
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVIDOR CHEIO
 STR_NETWORK_SERVER_LIST_SERVER_BANNED                           :{SILVER}FOI BANIDO PELO SERVIDOR
-STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD                          :{SILVER}SERVIDOR MUITO ANTIGO
+STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD                          :{SILVER}SERVIDOR DEMASIADO ANTIGO
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSÃO INCOMPATÍVEL
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF INCOMPATÍVEL
 
@@ -2612,7 +2612,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :não está na l
 STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :nenhum dos métodos de autenticação solicitados está disponível
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :ID da empresa errado na aplicação de rede
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :avisado pelo servidor
-STR_NETWORK_ERROR_CLIENT_CHEATER                                :estava a tentar usar batota
+STR_NETWORK_ERROR_CLIENT_CHEATER                                :estava a tentar fazer batota
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :servidor cheio
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :estava a enviar demasiados comandos
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :não foi recebida palavra-chave a tempo
@@ -2653,7 +2653,7 @@ STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} fo
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Falha ao registar o servidor
 STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Já foi registado um servidor com o mesmo código de convite. A mudar o tipo de jogo para "local".
-STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}O seu servidor não permite conexões remotas
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}O seu servidor não permite ligações remotas
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Outros jogadores não conseguirão conetar ao seu servidor
 
 # Content downloading window
@@ -2761,8 +2761,8 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}sobrecarregado
 
 # Linkgraph tooltip
-STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}{CARGO_LONG} para ser transportado por mês de {STATION} para {STATION} ({COMMA}% de capacidade){STRING}
-STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG} para ser transportado por minuto de {STATION} para {STATION} ({COMMA}% de capacidade){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}{CARGO_LONG} para ser transportado por mês de {STATION} para {STATION} ({COMMA}% da capacidade){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG} para ser transportado por minuto de {STATION} para {STATION} ({COMMA}% da capacidade){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} a ser transportado de volta ({COMMA}% da capacidade)
 STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Tempo médio de viagem: {UNITS_DAYS_OR_SECONDS}
 
@@ -3269,9 +3269,9 @@ STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Dados ba
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
 STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
-STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} fotograma/s
-STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} fotograma/s
-STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} fotograma/s
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} fotogramas/s
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} fotogramas/s
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} fotogramas/s
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
@@ -3588,7 +3588,7 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Aviso: {SI
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Erro: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}O NewGRF "{STRING}" retornou um erro fatal:{}{STRING}
-STR_NEWGRF_ERROR_POPUP                                          :{WHITE}O NewGRF "{STRING}" retornou um erro fatal:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}O NewGRF "{STRING}" devolveu um erro fatal:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} não funciona com a versão do TTDPatch reportada por OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} é para a versão {2:STRING} do TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} foi concebido para ser usado com {2:STRING}
@@ -3684,8 +3684,8 @@ STR_TOWN_POPULATION                                             :{BLACK}Populaç
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Cidade)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}População: {ORANGE}{COMMA}{BLACK}  Casas: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} ultimo mês: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} último minuto: {ORANGE}{COMMA}{BLACK} máx: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} no último mês: {ORANGE}{COMMA}{BLACK} máx.: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} no último minuto: {ORANGE}{COMMA}{BLACK} máx.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Mercadoria necessária para o seu desenvolvimento:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{RED}É necessário {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{BLACK}No inverno, é necessário {ORANGE}{STRING}
@@ -3961,8 +3961,8 @@ STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Nenhum
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valor da empresa: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infraestrutura:
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} {P "secção" "secções" } de caminho-de-ferro
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} {P "secção" "secções"} de estrada
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} secç{P ão ões} de caminho-de-ferro
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} secç{P ão ões} de estrada
 STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} mosaico{P "" s} com água
 STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} mosaico{P "" s} de estação
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} aeroporto{P "" s}
@@ -5011,7 +5011,7 @@ STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Não é 
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}O edifício deve ser demolido primeiro
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Não é possível limpar esta área...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... sítio inadequado
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}... já construído
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... já está construído
 STR_ERROR_OWNED_BY                                              :{WHITE}... propriedade de {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... a área é propriedade de outra empresa
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... atingido o limite para terraformação
@@ -5034,7 +5034,7 @@ STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Não é 
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}A escavação estragaria o túnel
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... já está ao nível do mar
 STR_ERROR_TOO_HIGH                                              :{WHITE}... demasiado alto
-STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... já plano
+STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... já está plano
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Ponte acima seria demasiado alta.
 
 # Company related errors
@@ -5257,7 +5257,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Deverá 
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Há outro túnel no caminho
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}O túnel terminaria fora do mapa
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Não é possível escavar o terreno para o outro lado do túnel
-STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... túnel muito longo
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... túnel demasiado longo
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... demasiados objectos

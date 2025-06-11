@@ -966,11 +966,14 @@ STR_GAME_OPTIONS_TAB_SOUND                                      :Sonido
 STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Selecciona los ajustes de sonido y música
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Social
 STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Selecciona los ajustes de integración social
+STR_GAME_OPTIONS_TAB_ADVANCED                                   :Avanzado
+STR_GAME_OPTIONS_TAB_ADVANCED_TOOLTIP                           :Cambiar ajustes avanzados
 
 STR_GAME_OPTIONS_VOLUME                                         :Volumen
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Efectos de sonido
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Música
 
+STR_GAME_OPTIONS_SETTING                                        :{STRING}: {ORANGE}{STRING}
 
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
@@ -1058,6 +1061,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Marca esta casi
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Controlador actual: {STRING}
 
+STR_GAME_OPTIONS_INTERFACE                                      :Interfaz
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Tamaño de la interfaz
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Mueve el control deslizante para seleccionar el tamaño de la interfaz. Ctrl+deslizar para ajustar de forma continua
@@ -1082,6 +1086,7 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Se abrirá el n
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Vista previa del resultado
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Muestra el resultado de la encuesta para el juego actual
 
+STR_GAME_OPTIONS_DISPLAY                                        :Mostrar
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :Mostrar frecuencia de actualización
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Selecciona la frecuencia de actualización de la pantalla
@@ -1103,7 +1108,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Información ad
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Conseguir contenido
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Comprueba si hay contenido nuevo y actualizado para descargar
 
-STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(no se han instalado "plugins" para integrar plataformas sociales)
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :(no se han instalado "plugins" para integrar plataformas sociales)
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Plataforma:
@@ -2191,6 +2196,8 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... no s
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... el controlador de GPU ha hecho fallar el juego. Se ha deshabilitado la aceleración por hardware
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nueva Partida
 STR_INTRO_LOAD_GAME                                             :{BLACK}Cargar Partida
@@ -3067,6 +3074,11 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Seleccio
 STR_FOUND_TOWN_CITY                                             :{BLACK}Ciudad
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Las ciudades crecen más rápido que los municipios{}Dependiendo de los ajustes, son mayores al ser fundadas
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Expansión del pueblo:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Edificios
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Aumentar edificios de los pueblos
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Carreteras
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Aumentar carreteras de los pueblos
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Patrón de carretera:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Seleccionar patrón de carreteras para este municipio
@@ -5871,6 +5883,7 @@ STR_CURRENCY_SHORT_GIGA                                         :{NBSP}kM
 STR_CURRENCY_SHORT_TERA                                         :{NBSP}MM
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_LEFT_ARROW                                             :{LEFT_ARROW}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
@@ -5910,3 +5923,11 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Abrir la configuración de insignias
+STR_BADGE_CONFIG_RESET                                          :Restablecer
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Iconos de insignias
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Filtros de insignias
+STR_BADGE_CONFIG_PREVIEW                                        :Vista previa de imagen
+STR_BADGE_CONFIG_NAME                                           :Nombre
+STR_BADGE_FILTER_ANY_LABEL                                      :Cualquier {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} es {STRING}

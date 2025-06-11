@@ -1246,7 +1246,7 @@ STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Automatinė apklausa
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Dalyvauti automatinėje apklausoje
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :Kai įjungta, OpenTTD išeinant iš žaidimo išsiųs apklausą
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Kai įjungta, OpenTTD išeinant iš žaidimo išsiųs apklausą
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :Apie apklausą ir privatumą
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Atidaryti naršyklę su daugiau informacijos apie automatizuotą apklausą
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Peržiūrėti apklausos rezultatus

@@ -3137,6 +3137,11 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}A telep�
 STR_FOUND_TOWN_CITY                                             :{BLACK}Város
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Átlagosnál gyorsabban növekedő városok{}Beállítástól függően nagyobbak alapításkor
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Város bővítés:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Épületek
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :A városi épületek növelése
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Utak
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :A városi utak növelése
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Település úthálózat építési mintája:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Válassz úthálózati elrendezést ehhez a városhoz
@@ -3761,6 +3766,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}A város
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Növelés
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}A település méretének növelése
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Épületek bővítése
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}A városi épületek növelése
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Utak növelése
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}A városi utak növelése
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Töröl
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}A település teljes eltüntetése
 
