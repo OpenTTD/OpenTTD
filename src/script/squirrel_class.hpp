@@ -27,13 +27,16 @@ public:
 	{}
 
 	/**
-	 * This defines a method inside a class for Squirrel.
+	 * This defines a method inside a class for Squirrel with defined params.
+	 * @note If you define params, make sure that the first param is always 'x',
+	 *  which is the 'this' inside the function. This is hidden from the rest
+	 *  of the code, but without it calling your function will fail!
 	 */
 	template <typename Func>
-	void DefSQMethod(Squirrel &engine, Func function_proc, std::string_view function_name)
+	void DefSQMethod(Squirrel &engine, Func function_proc, std::string_view function_name, std::string_view params = {})
 	{
 		using namespace SQConvert;
-		engine.AddMethod(function_name, DefSQNonStaticCallback<CL, Func, ST>, {}, &function_proc, sizeof(function_proc));
+		engine.AddMethod(function_name, DefSQNonStaticCallback<CL, Func, ST>, params, &function_proc, sizeof(function_proc));
 	}
 
 	/**
@@ -47,26 +50,16 @@ public:
 	}
 
 	/**
-	 * This defines a method inside a class for Squirrel with defined params.
-	 * @note If you define nparam, make sure that the first param is always 'x',
+	 * This defines a static method inside a class for Squirrel with defined params.
+	 * @note If you define params, make sure that the first param is always 'x',
 	 *  which is the 'this' inside the function. This is hidden from the rest
 	 *  of the code, but without it calling your function will fail!
 	 */
 	template <typename Func>
-	void DefSQMethod(Squirrel &engine, Func function_proc, std::string_view function_name, std::string_view params)
+	void DefSQStaticMethod(Squirrel &engine, Func function_proc, std::string_view function_name, std::string_view params = {})
 	{
 		using namespace SQConvert;
-		engine.AddMethod(function_name, DefSQNonStaticCallback<CL, Func, ST>, params, &function_proc, sizeof(function_proc));
-	}
-
-	/**
-	 * This defines a static method inside a class for Squirrel.
-	 */
-	template <typename Func>
-	void DefSQStaticMethod(Squirrel &engine, Func function_proc, std::string_view function_name)
-	{
-		using namespace SQConvert;
-		engine.AddMethod(function_name, DefSQStaticCallback<CL, Func>, {}, &function_proc, sizeof(function_proc));
+		engine.AddMethod(function_name, DefSQStaticCallback<CL, Func>, params, &function_proc, sizeof(function_proc));
 	}
 
 	/**
@@ -77,19 +70,6 @@ public:
 	{
 		using namespace SQConvert;
 		engine.AddMethod(function_name, DefSQAdvancedStaticCallback<CL, Func>, {}, &function_proc, sizeof(function_proc));
-	}
-
-	/**
-	 * This defines a static method inside a class for Squirrel with defined params.
-	 * @note If you define nparam, make sure that the first param is always 'x',
-	 *  which is the 'this' inside the function. This is hidden from the rest
-	 *  of the code, but without it calling your function will fail!
-	 */
-	template <typename Func>
-	void DefSQStaticMethod(Squirrel &engine, Func function_proc, std::string_view function_name, std::string_view params)
-	{
-		using namespace SQConvert;
-		engine.AddMethod(function_name, DefSQStaticCallback<CL, Func>, params, &function_proc, sizeof(function_proc));
 	}
 
 	template <typename Var>
