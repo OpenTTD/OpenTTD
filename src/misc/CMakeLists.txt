@@ -1,5 +1,6 @@
 add_files(
     alternating_iterator.hpp
+    autorelease.hpp
     binaryheap.hpp
     dbg_helpers.cpp
     dbg_helpers.h

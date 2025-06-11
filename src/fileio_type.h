@@ -11,6 +11,7 @@
 #define FILEIO_TYPE_H
 
 #include "core/enum_type.hpp"
+#include "misc/autorelease.hpp"
 
 /** The different abstract types of files that the system knows about. */
 enum AbstractFileType : uint8_t {
@@ -142,15 +143,7 @@ public:
 	}
 
 private:
-	/** Helper to close a FILE * with a \c std::unique_ptr. */
-	struct FileDeleter {
-		void operator ()(FILE *f)
-		{
-			if (f != nullptr) fclose(f);
-		}
-	};
-
-	std::unique_ptr<FILE, FileDeleter> f;
+	AutoRelease<FILE, fclose> f;
 
 	FileHandle(FILE *f) : f(f) { assert(this->f != nullptr); }
 };
