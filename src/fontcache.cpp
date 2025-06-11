@@ -307,6 +307,8 @@ std::string GetFontCacheFontName(FontSize fs)
 	}
 
 	for (FontSize fs : fontsizes) {
+		FontCache::Register(FontProviderManager::LoadFont(fs, FontType::Icon, false, {}, {}), FontLoadReason::Default);
+
 		/* Parse configured fonts, separated by ';' into a list. */
 		std::vector<std::string_view> fontnames;
 		StringConsumer consumer(GetFontCacheSubSetting(fs)->font);

@@ -4,6 +4,8 @@ add_files(
 )
 
 add_files(
+    iconfontcache.cpp
+    iconfontcache.h
     spritefontcache.cpp
     spritefontcache.h
     truetypefontcache.cpp

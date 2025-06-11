@@ -232,6 +232,7 @@ add_files(
     hotkeys.h
     house.h
     house_type.h
+    iconglyphs.h
     industry.h
     industry_cmd.cpp
     industry_cmd.h
