@@ -293,6 +293,8 @@ std::string GetFontCacheFontName(FontSize fs)
 	for (FontSize fs : fontsizes) {
 		const FontCacheSubSetting *setting = GetFontCacheSubSetting(fs);
 
+		FontCache::Register(FontProviderManager::LoadFont(fs, FontType::Icon, /*"default"*/ false, {}, {}));
+
 		/* Add all detected fallback fonts. */
 		for (auto it = setting->fallback_fonts.rbegin(); it != setting->fallback_fonts.rend(); ++it) {
 			FontCache::Register(FontProviderManager::LoadFont(fs, FontType::TrueType, /*fallback.dynamic ? "missing-fallback" : "language-fallback", */ false, it->name, it->os_handle));

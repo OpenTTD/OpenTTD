@@ -136,6 +136,8 @@ public:
 	 */
 	virtual bool GetDrawGlyphShadow() = 0;
 
+	virtual bool DrawAsGlyph() { return true; }
+
 	/**
 	 * Map a character into a glyph.
 	 * @param key The character.
@@ -287,6 +289,7 @@ void SetFont(FontSize fontsize, const std::string &font, uint size);
 enum class FontType : uint8_t {
 	Sprite, ///< Bitmap sprites from GRF files.
 	TrueType, ///< Scalable TrueType fonts.
+	Icon, ///< Icon sprites.
 };
 
 /** Factory for FontCaches. */
