@@ -937,7 +937,7 @@ STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Tilskudsordning i udbud:{}{}Første {STRING} fra {STRING} til {STRING} vil udløse et {UNITS_YEARS_OR_MINUTES}s tilskud fra den lokale myndighed!
 ###length 4
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Servicetilskud tildelt til {STRING}!{}{}{STRING} fra {STRING} til {STRING} vil betale 50% ekstra for de næste {UNITS_YEARS_OR_MINUTES}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Tilskudsordning tildelt {STRING}!{}{}{STRING} fra {STRING} til {STRING} vil betale dobbelt takster for den næste {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Servicetilskud tildelt {STRING}!{}{}{STRING} fra {STRING} til {STRING} vil betale dobbelt takster for den næste {UNITS_YEARS_OR_MINUTES}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Tilskudsordning tildelt {STRING}!{}{}{STRING} fra {STRING} til {STRING} betaler tredobbelte takster for de næste {UNITS_YEARS_OR_MINUTES}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Tilskudsordning tildelt {STRING}!{}{}{STRING} fra {STRING} til {STRING} betaler firedobbelt takster for de næste {UNITS_YEARS_OR_MINUTES}!
 
@@ -3073,6 +3073,11 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Vælg by
 STR_FOUND_TOWN_CITY                                             :{BLACK}Storby
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Storbyer vokser hurtigere en almindelige byer{}Afhængig af indstillingerne kan de være større ved grundlæggelsen
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Byudvidelse:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Bygninger
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Forøg bygningerne i byerne
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Veje
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Forøg byernes veje
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Byens vej-layout:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Vælg vej-layout for denne by
@@ -3697,6 +3702,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Ændre n
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Udvid
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Forøg størrelsen af byen
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Udvid bygninger
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Forøg byens bygninger
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Udvid veje
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Forøg byens veje
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Slet
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Slet denne by fuldstændigt
 
@@ -5918,3 +5927,11 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Åbn badgekonfiguration
+STR_BADGE_CONFIG_RESET                                          :Nulstil
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Badge-ikoner
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Badgefiltre
+STR_BADGE_CONFIG_PREVIEW                                        :Forhåndsvisningsbillede
+STR_BADGE_CONFIG_NAME                                           :Navn
+STR_BADGE_FILTER_ANY_LABEL                                      :Enhver {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} er {STRING}

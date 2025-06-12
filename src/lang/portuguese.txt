@@ -96,9 +96,9 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Refrigerantes
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}passageiro{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} de carvão
-STR_QUANTITY_MAIL                                               :{COMMA} saco{P "" s} de correio
+STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}saco{P "" s} de correio
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} de petróleo
-STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}ite{P m ns} de gado
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}cabeça{P "" s} de gado
 STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}caixa{P "" s} de bens
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} de cereais
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} de madeira
@@ -542,8 +542,8 @@ STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Mostrar taxa de
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Sobre o 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alinhador de gráficos
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Alternar as caixas envolventes
-STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Ativar coloração de blocos sujos
-STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Alternar contornos de "widget"
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Ativar coloração dos blocos sujos
+STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Alternar contornos dos grupos de botões
 
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1
@@ -829,7 +829,7 @@ STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Mostrar 
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  EM PAUSA  *  *
 STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  EM PAUSA (em espera pela atualização do gráfico de ligações) *  *
-STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOGUARDADO
+STR_STATUSBAR_AUTOSAVE                                          :{RED}A GUARDAR AUTOMATICAMENTE
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  A GUARDAR JOGO *  *
 
 STR_STATUSBAR_SPECTATOR                                         :{WHITE}(espectador)
@@ -1247,7 +1247,7 @@ STR_CONFIG_SETTING_RESTRICT_TYPE                                :Tipo:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Restringe a lista abaixo para mostrar apenas opções modificadas
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Opções básicas (mostrar apenas definições importantes)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avançado (mostra grande parte das definições)
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Avançado (mostrar todas as definições, incluindo as estranhas)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Avançado (mostrar todas as definições, incluindo as que são estranhas)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Opções com um valor diferente das de origem
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Preferências com um valor diferente das preferências para novos jogos
 
@@ -1426,9 +1426,9 @@ STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalmente, um
 STR_CONFIG_SETTING_STOP_LOCATION                                :Ordens novas do comboio param {STRING} da plataforma
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Local de paragem do comboio nas plataformas por omissão. A opção 'extremo mais próximo' significa perto do ponto de entrada, 'meio' significa no meio da plataforma e 'extremo mais distante' significa o mais distante possível do ponto de entrada. Esta opção apenas afeta o valor por omissão para novas ordens. Ordens individuais podem ter o local de paragem definido clicando no texto da ordem
 ###length 3
-STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :no extremo perto
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :no extremo inicial
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :no meio
-STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :no extremo longe
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :no extremo oposto
 
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Deslocar janela quando o rato está na borda do mapa: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Quando ativo, os visualizadores começam a deslocar-se logo que o rato esteja no extremo da janela
@@ -1972,8 +1972,8 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Disposição da
 ###length 5
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Original
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Estradas melhores
-STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :grelha 2x2
-STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grelha 3x3
+STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :Grelha 2x2
+STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :Grelha 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Aleatório
 
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :As localidades têm permissão para construir estradas: {STRING}
@@ -2379,7 +2379,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Mudar gr
 ###length 3
 STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :Local
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Público
-STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Apenas convites
+STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Apenas por convite
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multi-jogador
@@ -2481,11 +2481,11 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Desligar
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor protegido. Introduza palavra-chave
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Jogadores "online"
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Jogadores em linha
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :Assistir
 
 # Network client list
-STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Jogadores "Online"
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Jogadores em linha
 STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Servidor
 STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Nome
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Nome do servidor onde está a jogar
@@ -2711,7 +2711,7 @@ STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa de alturas
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Sons base
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Música base
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :Script de jogo
-STR_CONTENT_TYPE_GS_LIBRARY                                     :Biblioteca GS
+STR_CONTENT_TYPE_GS_LIBRARY                                     :Biblioteca de SJ
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}A descarregar conteúdo...
@@ -3084,8 +3084,8 @@ STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Disposi
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Seleccione disposição das estradas utilizada para esta localidade
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Original
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Estradas melhores
-STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}grelha 2x2
-STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}grelha 3x3
+STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}Grelha 2x2
+STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}Grelha 3x3
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Aleatório
 
 # Fund new industry window
@@ -3294,7 +3294,7 @@ STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   Scrip
 STR_FRAMERATE_AI                                                :{BLACK} IA {NUM} {STRING}
 
 ###length 15
-STR_FRAMETIME_CAPTION_GAMELOOP                                  :Loop de jogo
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :Ciclo de jogo
 STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Movimentação de carga
 STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Quantidade de atraso no percurso do Comboio
 STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Quantidade de atraso no percurso do veículo rodoviário
@@ -3306,7 +3306,7 @@ STR_FRAMETIME_CAPTION_DRAWING                                   :Renderização 
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Renderização de visualizador do mundo
 STR_FRAMETIME_CAPTION_VIDEO                                     :Saída de video
 STR_FRAMETIME_CAPTION_SOUND                                     :Mistura de Som
-STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :total scripts GS/AI
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :Total de scripts SJ/IA
 STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Script de jogo
 STR_FRAMETIME_CAPTION_AI                                        :IA {NUM} {STRING}
 
@@ -3391,7 +3391,7 @@ STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Inglês (Adicio
 STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latino-Americano
 STR_MAPGEN_TOWN_NAME_SILLY                                      :Absurdo
 STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Sueco
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :Holandês
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Neerlandês
 STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finlandês
 STR_MAPGEN_TOWN_NAME_POLISH                                     :Polaco
 STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Eslovaco
@@ -4656,7 +4656,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Idade (anos)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Requer manutenção
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Sempre
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Tempo de vida restante (anos)
-STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Máxima fiabilidade
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Fiabilidade máxima
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Como comparar os dados do veículo com o parâmetro passado
@@ -5234,7 +5234,7 @@ STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Precisa 
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Não é possível construir o canal aqui...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... árvore já plantada aqui
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... árvore já está plantada aqui
 STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... terreno não indicado para este tipo de árvore
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Impossível plantar árvore aqui...
 
@@ -5341,7 +5341,7 @@ STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Não é 
 STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}Não é possível vender todas as aeronaves...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}Não é possível auto-substituir veículos ferroviários...
+STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}Não é possível substituir automaticamente veículos ferroviários...
 STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}Não é possível auto-substituir veículos rodoviários...
 STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}Não é possível auto-substituir navios...
 STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}Não é possível auto-substituir aeronave...
@@ -5861,7 +5861,7 @@ STR_COMPANY_SOMEONE                                             :alguém
 
 STR_SAVEGAME_DURATION_REALTIME                                  :{NUM}h {NUM}m
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
-STR_SAVEGAME_NAME_SPECTATOR                                     :Espetador, {1:STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :Espectador, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
