@@ -1131,11 +1131,6 @@ void GUIEngineListAddChildren(GUIEngineList &dst, const GUIEngineList &src, Engi
 	}
 }
 
-/** Enum referring to the Hotkeys in the build vehicle window */
-enum BuildVehicleHotkeys : int32_t {
-	BVHK_FOCUS_FILTER_BOX, ///< Focus the edit box for editing the filter string
-};
-
 /** GUI for building vehicles. */
 struct BuildVehicleWindow : Window {
 	VehicleType vehicle_type = VEH_INVALID; ///< Type of vehicles shown in the window.
@@ -1941,23 +1936,8 @@ struct BuildVehicleWindow : Window {
 		}
 	}
 
-	EventState OnHotkey(int hotkey) override
-	{
-		switch (hotkey) {
-			case BVHK_FOCUS_FILTER_BOX:
-				this->SetFocusedWidget(WID_BV_FILTER);
-				SetFocusedWindow(this); // The user has asked to give focus to the text box, so make sure this window is focused.
-				return ES_HANDLED;
-
-			default:
-				return ES_NOT_HANDLED;
-		}
-
-		return ES_HANDLED;
-	}
-
 	static inline HotkeyList hotkeys{"buildvehicle", {
-		Hotkey('F', "focus_filter_box", BVHK_FOCUS_FILTER_BOX),
+		Hotkey('F', "focus_filter_box", WID_BV_FILTER),
 	}};
 };
 
