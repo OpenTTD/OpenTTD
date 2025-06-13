@@ -270,7 +270,7 @@ void Squirrel::AddMethod(std::string_view method_name, SQFUNCTION proc, std::str
 	sq_newslot(this->vm, -3, SQFalse);
 }
 
-void Squirrel::AddConst(std::string_view var_name, int value)
+void Squirrel::AddConst(std::string_view var_name, SQInteger value)
 {
 	ScriptAllocatorScope alloc_scope(this);
 
