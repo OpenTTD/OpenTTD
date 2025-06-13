@@ -328,6 +328,22 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 				e->badges = ReadBadgeList(buf, GSF_TRAINS);
 				break;
 
+			case 0x34: { // List of track types
+				uint8_t count = buf.ReadByte();
+
+				_gted[e->index].railtypelabels.clear();
+				while (count--) {
+					uint8_t tracktype = buf.ReadByte();
+
+					if (tracktype < _cur_gps.grffile->railtype_list.size()) {
+						_gted[e->index].railtypelabels.push_back(_cur_gps.grffile->railtype_list[tracktype]);
+					} else {
+						GrfMsg(1, "RailVehicleChangeInfo: Invalid track type {} specified, ignoring", tracktype);
+					}
+				}
+				break;
+			}
+
 			default:
 				ret = CommonVehicleChangeInfo(ei, prop, buf);
 				break;
