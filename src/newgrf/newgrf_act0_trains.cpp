@@ -41,15 +41,16 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 			case 0x05: { // Track type
 				uint8_t tracktype = buf.ReadByte();
 
+				_gted[e->index].railtypelabels.clear();
 				if (tracktype < _cur_gps.grffile->railtype_list.size()) {
-					_gted[e->index].railtypelabel = _cur_gps.grffile->railtype_list[tracktype];
+					_gted[e->index].railtypelabels.push_back(_cur_gps.grffile->railtype_list[tracktype]);
 					break;
 				}
 
 				switch (tracktype) {
-					case 0: _gted[e->index].railtypelabel = rvi->engclass >= 2 ? RAILTYPE_LABEL_ELECTRIC : RAILTYPE_LABEL_RAIL; break;
-					case 1: _gted[e->index].railtypelabel = RAILTYPE_LABEL_MONO; break;
-					case 2: _gted[e->index].railtypelabel = RAILTYPE_LABEL_MAGLEV; break;
+					case 0: _gted[e->index].railtypelabels.push_back(rvi->engclass >= 2 ? RAILTYPE_LABEL_ELECTRIC : RAILTYPE_LABEL_RAIL); break;
+					case 1: _gted[e->index].railtypelabels.push_back(RAILTYPE_LABEL_MONO); break;
+					case 2: _gted[e->index].railtypelabels.push_back(RAILTYPE_LABEL_MAGLEV); break;
 					default:
 						GrfMsg(1, "RailVehicleChangeInfo: Invalid track type {} specified, ignoring", tracktype);
 						break;
@@ -179,11 +180,11 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 					break;
 				}
 
-				if (_cur_gps.grffile->railtype_list.empty()) {
+				if (_cur_gps.grffile->railtype_list.empty() && !_gted[e->index].railtypelabels.empty()) {
 					/* Use traction type to select between normal and electrified
 					 * rail only when no translation list is in place. */
-					if (_gted[e->index].railtypelabel == RAILTYPE_LABEL_RAIL     && engclass >= EC_ELECTRIC) _gted[e->index].railtypelabel = RAILTYPE_LABEL_ELECTRIC;
-					if (_gted[e->index].railtypelabel == RAILTYPE_LABEL_ELECTRIC && engclass  < EC_ELECTRIC) _gted[e->index].railtypelabel = RAILTYPE_LABEL_RAIL;
+					if (_gted[e->index].railtypelabels[0] == RAILTYPE_LABEL_RAIL && engclass >= EC_ELECTRIC) _gted[e->index].railtypelabels[0] = RAILTYPE_LABEL_ELECTRIC;
+					if (_gted[e->index].railtypelabels[0] == RAILTYPE_LABEL_ELECTRIC && engclass < EC_ELECTRIC) _gted[e->index].railtypelabels[0] = RAILTYPE_LABEL_RAIL;
 				}
 
 				rvi->engclass = engclass;

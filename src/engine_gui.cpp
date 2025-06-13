@@ -47,7 +47,8 @@ StringID GetEngineCategoryName(EngineID engine)
 		case VEH_AIRCRAFT:          return STR_ENGINE_PREVIEW_AIRCRAFT;
 		case VEH_SHIP:              return STR_ENGINE_PREVIEW_SHIP;
 		case VEH_TRAIN:
-			return GetRailTypeInfo(e->u.rail.railtype)->strings.new_loco;
+			assert(e->u.rail.railtypes.Any());
+			return GetRailTypeInfo(e->u.rail.railtypes.GetNthSetBit(0).value())->strings.new_loco;
 	}
 }
 
@@ -181,7 +182,12 @@ static std::string GetTrainEngineInfoString(const Engine &e)
 	res << GetString(STR_ENGINE_PREVIEW_COST_WEIGHT, e.GetCost(), e.GetDisplayWeight());
 	res << '\n';
 
-	if (_settings_game.vehicle.train_acceleration_model != AM_ORIGINAL && GetRailTypeInfo(e.u.rail.railtype)->acceleration_type != VehicleAccelerationModel::Maglev) {
+	bool is_maglev = true;
+	for (RailType rt : e.u.rail.railtypes) {
+		is_maglev &= GetRailTypeInfo(rt)->acceleration_type == VehicleAccelerationModel::Maglev;
+	}
+
+	if (_settings_game.vehicle.train_acceleration_model != AM_ORIGINAL && !is_maglev) {
 		res << GetString(STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE, PackVelocity(e.GetDisplayMaxSpeed(), e.type), e.GetPower(), e.GetDisplayMaxTractiveEffort());
 		res << '\n';
 	} else {

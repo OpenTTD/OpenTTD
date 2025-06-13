@@ -1107,8 +1107,9 @@ static void NewVehicleAvailable(Engine *e)
 
 	if (e->type == VEH_TRAIN) {
 		/* maybe make another rail type available */
-		assert(e->u.rail.railtype < RAILTYPE_END);
-		for (Company *c : Company::Iterate()) c->avail_railtypes = AddDateIntroducedRailTypes(c->avail_railtypes | GetRailTypeInfo(e->u.rail.railtype)->introduces_railtypes, TimerGameCalendar::date);
+		assert(e->u.rail.railtypes != RailTypes{});
+		RailTypes introduced = GetAllIntroducesRailTypes(e->u.rail.railtypes);
+		for (Company *c : Company::Iterate()) c->avail_railtypes = AddDateIntroducedRailTypes(c->avail_railtypes | introduced, TimerGameCalendar::date);
 	} else if (e->type == VEH_ROAD) {
 		/* maybe make another road type available */
 		assert(e->u.road.roadtype < ROADTYPE_END);
@@ -1267,7 +1268,7 @@ bool IsEngineBuildable(EngineID engine, VehicleType type, CompanyID company)
 	if (type == VEH_TRAIN && company != OWNER_DEITY) {
 		/* Check if the rail type is available to this company */
 		const Company *c = Company::Get(company);
-		if (!GetRailTypeInfo(e->u.rail.railtype)->compatible_railtypes.Any(c->avail_railtypes)) return false;
+		if (!GetAllCompatibleRailTypes(e->u.rail.railtypes).Any(c->avail_railtypes)) return false;
 	}
 	if (type == VEH_ROAD && company != OWNER_DEITY) {
 		/* Check if the road type is available to this company */

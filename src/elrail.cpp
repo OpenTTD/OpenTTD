@@ -580,15 +580,13 @@ void SettingsDisableElrail(int32_t new_value)
 
 void UpdateDisableElrailSettingState(bool disable, bool update_vehicles)
 {
-	/* pick appropriate railtype for elrail engines depending on setting */
-	const RailType new_railtype = disable ? RAILTYPE_RAIL : RAILTYPE_ELECTRIC;
-
 	/* walk through all train engines */
 	for (Engine *e : Engine::IterateType(VEH_TRAIN)) {
 		RailVehicleInfo *rv_info = &e->u.rail;
 		/* update railtype of engines intended to use elrail */
-		if (rv_info->intended_railtype == RAILTYPE_ELECTRIC) {
-			rv_info->railtype = new_railtype;
+		if (rv_info->intended_railtypes.Test(RAILTYPE_ELECTRIC)) {
+			rv_info->railtypes.Set(RAILTYPE_ELECTRIC, !disable);
+			rv_info->railtypes.Set(RAILTYPE_RAIL, disable);
 		}
 	}
 
@@ -596,11 +594,12 @@ void UpdateDisableElrailSettingState(bool disable, bool update_vehicles)
 	 *  normal rail too */
 	if (disable) {
 		for (Train *t : Train::Iterate()) {
-			if (t->railtype == RAILTYPE_ELECTRIC) {
+			if (t->railtypes.Test(RAILTYPE_ELECTRIC)) {
 				/* this railroad vehicle is now compatible only with elrail,
 				 *  so add there also normal rail compatibility */
 				t->compatible_railtypes.Set(RAILTYPE_RAIL);
-				t->railtype = RAILTYPE_RAIL;
+				t->railtypes.Reset(RAILTYPE_ELECTRIC);
+				t->railtypes.Set(RAILTYPE_RAIL);
 				t->flags.Set(VehicleRailFlag::AllowedOnNormalRail);
 			}
 		}

@@ -203,7 +203,7 @@
 	if (GetVehicleType(engine_id) != ScriptVehicle::VT_RAIL) return false;
 	if (!ScriptRail::IsRailTypeAvailable(track_rail_type)) return false;
 
-	return ::IsCompatibleRail((::RailType)::RailVehInfo(engine_id)->railtype, (::RailType)track_rail_type);
+	return ::IsCompatibleRail(::RailVehInfo(engine_id)->railtypes, (::RailType)track_rail_type);
 }
 
 /* static */ bool ScriptEngine::HasPowerOnRail(EngineID engine_id, ScriptRail::RailType track_rail_type)
@@ -212,7 +212,7 @@
 	if (GetVehicleType(engine_id) != ScriptVehicle::VT_RAIL) return false;
 	if (!ScriptRail::IsRailTypeAvailable(track_rail_type)) return false;
 
-	return ::HasPowerOnRail((::RailType)::RailVehInfo(engine_id)->railtype, (::RailType)track_rail_type);
+	return ::HasPowerOnRail(::RailVehInfo(engine_id)->railtypes, (::RailType)track_rail_type);
 }
 
 /* static */ bool ScriptEngine::CanRunOnRoad(EngineID engine_id, ScriptRoad::RoadType road_type)
@@ -242,7 +242,7 @@
 	if (!IsValidEngine(engine_id)) return ScriptRail::RAILTYPE_INVALID;
 	if (GetVehicleType(engine_id) != ScriptVehicle::VT_RAIL) return ScriptRail::RAILTYPE_INVALID;
 
-	return (ScriptRail::RailType)(uint)::RailVehInfo(engine_id)->railtype;
+	return static_cast<ScriptRail::RailType>(::RailVehInfo(engine_id)->railtypes.GetNthSetBit(0).value_or(::RailType::INVALID_RAILTYPE));
 }
 
 /* static */ bool ScriptEngine::IsArticulated(EngineID engine_id)
