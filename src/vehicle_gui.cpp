@@ -2598,7 +2598,7 @@ struct VehicleDetailsWindow : Window {
 						(v->type == VEH_ROAD && _settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL)) {
 					const GroundVehicleCache *gcache = v->GetGroundVehicleCache();
 					if (v->type == VEH_TRAIN && (_settings_game.vehicle.train_acceleration_model == AM_ORIGINAL ||
-							GetRailTypeInfo(Train::From(v)->railtype)->acceleration_type == VehicleAccelerationModel::Maglev)) {
+							Train::From(v)->GetAccelerationType() == VehicleAccelerationModel::Maglev)) {
 						DrawString(tr, GetString(STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED, gcache->cached_weight, gcache->cached_power, max_speed));
 					} else {
 						DrawString(tr, GetString(STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE, gcache->cached_weight, gcache->cached_power, max_speed, gcache->cached_max_te));

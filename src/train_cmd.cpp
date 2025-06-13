@@ -127,7 +127,7 @@ void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
 
 		/* update the 'first engine' */
 		u->gcache.first_engine = this == u ? EngineID::Invalid() : first_engine;
-		u->railtype = rvi_u->railtype;
+		u->railtypes = rvi_u->railtypes;
 
 		if (u->IsEngine()) first_engine = u->engine_type;
 
@@ -172,13 +172,13 @@ void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
 			/* Do not count powered wagons for the compatible railtypes, as wagons always
 			   have railtype normal */
 			if (rvi_u->power > 0) {
-				this->compatible_railtypes.Set(GetRailTypeInfo(u->railtype)->powered_railtypes);
+				this->compatible_railtypes.Set(GetAllPoweredRailTypes(u->railtypes));
 			}
 
 			/* Some electric engines can be allowed to run on normal rail. It happens to all
 			 * existing electric engines when elrails are disabled and then re-enabled */
 			if (u->flags.Test(VehicleRailFlag::AllowedOnNormalRail)) {
-				u->railtype = RAILTYPE_RAIL;
+				u->railtypes.Set(RAILTYPE_RAIL);
 				u->compatible_railtypes.Set(RAILTYPE_RAIL);
 			}
 
@@ -639,7 +639,7 @@ static CommandCost CmdBuildRailWagon(DoCommandFlags flags, TileIndex tile, const
 	const RailVehicleInfo *rvi = &e->u.rail;
 
 	/* Check that the wagon can drive on the track in question */
-	if (!IsCompatibleRail(rvi->railtype, GetRailType(tile))) return CMD_ERROR;
+	if (!IsCompatibleRail(rvi->railtypes, GetRailType(tile))) return CMD_ERROR;
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		Train *v = new Train();
@@ -674,7 +674,7 @@ static CommandCost CmdBuildRailWagon(DoCommandFlags flags, TileIndex tile, const
 		v->cargo_cap = rvi->capacity;
 		v->refit_cap = 0;
 
-		v->railtype = rvi->railtype;
+		v->railtypes = rvi->railtypes;
 
 		v->date_of_last_service = TimerGameEconomy::date;
 		v->date_of_last_service_newgrf = TimerGameCalendar::date;
@@ -741,7 +741,7 @@ static void AddRearEngineToMultiheadedTrain(Train *v)
 	u->cargo_subtype = v->cargo_subtype;
 	u->cargo_cap = v->cargo_cap;
 	u->refit_cap = v->refit_cap;
-	u->railtype = v->railtype;
+	u->railtypes = v->railtypes;
 	u->engine_type = v->engine_type;
 	u->date_of_last_service = v->date_of_last_service;
 	u->date_of_last_service_newgrf = v->date_of_last_service_newgrf;
@@ -776,7 +776,7 @@ CommandCost CmdBuildRailVehicle(DoCommandFlags flags, TileIndex tile, const Engi
 
 	/* Check if depot and new engine uses the same kind of tracks *
 	 * We need to see if the engine got power on the tile to avoid electric engines in non-electric depots */
-	if (!HasPowerOnRail(rvi->railtype, GetRailType(tile))) return CMD_ERROR;
+	if (!HasPowerOnRail(rvi->railtypes, GetRailType(tile))) return CMD_ERROR;
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		DiagDirection dir = GetRailDepotDirection(tile);
@@ -808,7 +808,7 @@ CommandCost CmdBuildRailVehicle(DoCommandFlags flags, TileIndex tile, const Engi
 		v->reliability_spd_dec = e->reliability_spd_dec;
 		v->max_age = e->GetLifeLengthInDays();
 
-		v->railtype = rvi->railtype;
+		v->railtypes = rvi->railtypes;
 
 		v->SetServiceInterval(Company::Get(_current_company)->settings.vehicle.servint_trains);
 		v->date_of_last_service = TimerGameEconomy::date;
@@ -2418,7 +2418,7 @@ void FreeTrainTrackReservation(const Train *v)
 	/* Don't free reservation if it's not ours. */
 	if (TracksOverlap(GetReservedTrackbits(tile) | TrackToTrackBits(TrackdirToTrack(td)))) return;
 
-	CFollowTrackRail ft(v, GetRailTypeInfo(v->railtype)->compatible_railtypes);
+	CFollowTrackRail ft(v, GetAllCompatibleRailTypes(v->railtypes));
 	while (ft.Follow(tile, td)) {
 		tile = ft.new_tile;
 		TrackdirBits bits = ft.new_td_bits & TrackBitsToTrackdirBits(GetReservedTrackbits(tile));
@@ -3074,7 +3074,7 @@ static inline void AffectSpeedByZChange(Train *v, int old_z)
 {
 	if (old_z == v->z_pos || _settings_game.vehicle.train_acceleration_model != AM_ORIGINAL) return;
 
-	const AccelerationSlowdownParams *asp = &_accel_slowdown[static_cast<int>(GetRailTypeInfo(v->railtype)->acceleration_type)];
+	const AccelerationSlowdownParams *asp = &_accel_slowdown[static_cast<int>(v->GetAccelerationType())];
 
 	if (old_z < v->z_pos) {
 		v->cur_speed -= (v->cur_speed * asp->z_up >> 8);
@@ -3481,7 +3481,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 
 				if (chosen_dir != v->direction) {
 					if (prev == nullptr && _settings_game.vehicle.train_acceleration_model == AM_ORIGINAL) {
-						const AccelerationSlowdownParams *asp = &_accel_slowdown[static_cast<int>(GetRailTypeInfo(v->railtype)->acceleration_type)];
+						const AccelerationSlowdownParams *asp = &_accel_slowdown[static_cast<int>(v->GetAccelerationType())];
 						DirDiff diff = DirDifference(v->direction, chosen_dir);
 						v->cur_speed -= (diff == DIRDIFF_45RIGHT || diff == DIRDIFF_45LEFT ? asp->small_turn : asp->large_turn) * v->cur_speed >> 8;
 					}

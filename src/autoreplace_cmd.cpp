@@ -71,7 +71,7 @@ bool CheckAutoreplaceValidity(EngineID from, EngineID to, CompanyID company)
 	switch (type) {
 		case VEH_TRAIN: {
 			/* make sure the railtypes are compatible */
-			if (!GetRailTypeInfo(e_from->u.rail.railtype)->compatible_railtypes.Any(GetRailTypeInfo(e_to->u.rail.railtype)->compatible_railtypes)) return false;
+			if (!GetAllCompatibleRailTypes(e_from->u.rail.railtypes).Any(GetAllCompatibleRailTypes(e_to->u.rail.railtypes))) return false;
 
 			/* make sure we do not replace wagons with engines or vice versa */
 			if ((e_from->u.rail.railveh_type == RAILVEH_WAGON) != (e_to->u.rail.railveh_type == RAILVEH_WAGON)) return false;
