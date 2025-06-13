@@ -111,7 +111,7 @@ class ReplaceVehicleWindow : public Window {
 
 		if (draw_left && this->sel_railtype != INVALID_RAILTYPE) {
 			/* Ensure that the railtype is specific to the selected one */
-			if (rvi->railtype != this->sel_railtype) return false;
+			if (!rvi->railtypes.Test(this->sel_railtype)) return false;
 		}
 		return true;
 	}

@@ -1605,7 +1605,7 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 				Track     track;
 				while ((track = RemoveFirstTrack(&reserved)) != INVALID_TRACK) {
 					Train *v = GetTrainForReservation(tile, track);
-					if (v != nullptr && !HasPowerOnRail(v->railtype, totype)) {
+					if (v != nullptr && !HasPowerOnRail(v->railtypes, totype)) {
 						/* No power on new rail type, reroute. */
 						FreeTrainTrackReservation(v);
 						vehicles_affected.push_back(v);
@@ -1691,7 +1691,7 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 					Track track = DiagDirToDiagTrack(GetTunnelBridgeDirection(tile));
 					if (HasTunnelBridgeReservation(tile)) {
 						Train *v = GetTrainForReservation(tile, track);
-						if (v != nullptr && !HasPowerOnRail(v->railtype, totype)) {
+						if (v != nullptr && !HasPowerOnRail(v->railtypes, totype)) {
 							/* No power on new rail type, reroute. */
 							FreeTrainTrackReservation(v);
 							vehicles_affected.push_back(v);
