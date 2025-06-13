@@ -296,7 +296,7 @@ PBSTileInfo FollowTrainReservation(const Train *v, Vehicle **train_on_res)
 	if (IsRailDepotTile(tile) && !GetDepotReservationTrackBits(tile)) return PBSTileInfo(tile, trackdir, false);
 
 	FindTrainOnTrackInfo ftoti;
-	ftoti.res = FollowReservation(v->owner, GetRailTypeInfo(v->railtype)->compatible_railtypes, tile, trackdir);
+	ftoti.res = FollowReservation(v->owner, GetAllCompatibleRailTypes(v->railtypes), tile, trackdir);
 	ftoti.res.okay = IsSafeWaitingPosition(v, ftoti.res.tile, ftoti.res.trackdir, true, _settings_game.pf.forbid_90_deg);
 	if (train_on_res != nullptr) {
 		CheckTrainsOnTrack(ftoti, ftoti.res.tile);
@@ -388,7 +388,7 @@ bool IsSafeWaitingPosition(const Train *v, TileIndex tile, Trackdir trackdir, bo
 	}
 
 	/* Check next tile. For performance reasons, we check for 90 degree turns ourself. */
-	CFollowTrackRail ft(v, GetRailTypeInfo(v->railtype)->compatible_railtypes);
+	CFollowTrackRail ft(v, GetAllCompatibleRailTypes(v->railtypes));
 
 	/* End of track? */
 	if (!ft.Follow(tile, trackdir)) {
@@ -437,7 +437,7 @@ bool IsWaitingPositionFree(const Train *v, TileIndex tile, Trackdir trackdir, bo
 	if (IsTileType(tile, MP_RAILWAY) && HasSignalOnTrackdir(tile, trackdir) && !IsPbsSignal(GetSignalType(tile, track))) return true;
 
 	/* Check the next tile, if it's a PBS signal, it has to be free as well. */
-	CFollowTrackRail ft(v, GetRailTypeInfo(v->railtype)->compatible_railtypes);
+	CFollowTrackRail ft(v, GetAllCompatibleRailTypes(v->railtypes));
 
 	if (!ft.Follow(tile, trackdir)) return true;
 
