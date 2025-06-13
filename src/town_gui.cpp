@@ -701,11 +701,6 @@ static constexpr NWidgetPart _nested_town_directory_widgets[] = {
 	EndContainer(),
 };
 
-/** Enum referring to the Hotkeys in the town directory window */
-enum TownDirectoryHotkeys : int32_t {
-	TDHK_FOCUS_FILTER_BOX, ///< Focus the filter box
-};
-
 /** Town directory window class. */
 struct TownDirectoryWindow : public Window {
 private:
@@ -1019,21 +1014,8 @@ public:
 		}
 	}
 
-	EventState OnHotkey(int hotkey) override
-	{
-		switch (hotkey) {
-			case TDHK_FOCUS_FILTER_BOX:
-				this->SetFocusedWidget(WID_TD_FILTER);
-				SetFocusedWindow(this); // The user has asked to give focus to the text box, so make sure this window is focused.
-				break;
-			default:
-				return ES_NOT_HANDLED;
-		}
-		return ES_HANDLED;
-	}
-
 	static inline HotkeyList hotkeys {"towndirectory", {
-		Hotkey('F', "focus_filter_box", TDHK_FOCUS_FILTER_BOX),
+		Hotkey('F', "focus_filter_box", WID_TD_FILTER),
 	}};
 };
 
