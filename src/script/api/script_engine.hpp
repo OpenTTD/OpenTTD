@@ -248,11 +248,11 @@ public:
 	static ScriptRoad::RoadType GetRoadType(EngineID engine_id);
 
 	/**
-	 * Get the RailType of the engine.
+	 * Get the first RailType of the engine.
 	 * @param engine_id The engine to get the RailType of.
 	 * @pre IsValidEngine(engine_id).
 	 * @pre GetVehicleType(engine_id) == ScriptVehicle::VT_RAIL.
-	 * @return The RailType the engine has.
+	 * @return The first RailType the engine has.
 	 */
 	static ScriptRail::RailType GetRailType(EngineID engine_id);
 

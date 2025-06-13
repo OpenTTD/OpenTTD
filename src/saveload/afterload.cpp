@@ -1333,10 +1333,10 @@ bool AfterLoadGame()
 		RailType min_rail = RAILTYPE_ELECTRIC;
 
 		for (Train *v : Train::Iterate()) {
-			RailType rt = RailVehInfo(v->engine_type)->railtype;
+			RailTypes rts = RailVehInfo(v->engine_type)->railtypes;
 
-			v->railtype = rt;
-			if (rt == RAILTYPE_ELECTRIC) min_rail = RAILTYPE_RAIL;
+			v->railtypes = rts;
+			if (rts.Test(RAILTYPE_ELECTRIC)) min_rail = RAILTYPE_RAIL;
 		}
 
 		/* .. so we convert the entire map from normal to elrail (so maintain "fairness") */
