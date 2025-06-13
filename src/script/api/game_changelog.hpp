@@ -30,6 +30,7 @@
  * \li GSVehicleList_Waypoint
  * \li GSBaseStation::GetOwner
  * \li GSError:ERR_BRIDGE_TOO_LOW
+ * \li GSRail::GetAllRailTypes
  *
  * Other changes:
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
@@ -37,6 +38,7 @@
  * \li GSList instances can now be saved
  * \li GSVehicleList_Station accepts an optional GSVehicle::VehicleType parameter
  * \li GSList instances can now be cloned
+ * \li GSRail::GetRailType will only return the first RailType of an engine, use GSRail::GetAllRailTypes instead
  *
  * \b 14.0
  *

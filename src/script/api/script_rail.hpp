@@ -50,6 +50,14 @@ public:
 	};
 
 	/**
+	 * A bitmap with all possible rail types.
+	 */
+	enum RailTypes : int64_t {
+		/* Note: these values represent part of the in-game RailTypes enum */
+		INVALID_RAILTYPES = INT64_MAX, ///< Invalid RailTypes.
+	};
+
+	/**
 	 * A bitmap with all possible rail tracks on a tile.
 	 */
 	enum RailTrack {
