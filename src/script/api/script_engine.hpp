@@ -249,12 +249,22 @@ public:
 
 	/**
 	 * Get the first RailType of the engine.
+	 * @note This will only return the first RailType of a multi-system engine. Use GetAllRailTypes to get all rail types of the engine.
 	 * @param engine_id The engine to get the RailType of.
 	 * @pre IsValidEngine(engine_id).
 	 * @pre GetVehicleType(engine_id) == ScriptVehicle::VT_RAIL.
 	 * @return The first RailType the engine has.
 	 */
 	static ScriptRail::RailType GetRailType(EngineID engine_id);
+
+	/**
+	 * Get all RailType's of the engine.
+	 * @param engine_id The engine to get all RailTypes of.
+	 * @pre IsValidEngine(engine_id).
+	 * @pre GetVehicleType(engine_id) == ScriptVehicle::VT_RAIL.
+	 * @return All rail types of the engine.
+	 */
+	static ScriptRail::RailTypes GetAllRailTypes(EngineID engine_id);
 
 	/**
 	 * Check if the engine is articulated.
