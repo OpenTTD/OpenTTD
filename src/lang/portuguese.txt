@@ -540,7 +540,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :Depuração da 
 STR_ABOUT_MENU_SCREENSHOT                                       :Captura de ecrã
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Mostrar taxa de fotogramas
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Sobre o 'OpenTTD'
-STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alinhador de gráficos
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alinhador de elementos visuais
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Alternar as caixas envolventes
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Ativar coloração dos blocos sujos
 STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Alternar contornos dos grupos de botões
@@ -1071,10 +1071,10 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Marque esta op�
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Escalar chanfros
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Marque esta opção para dimensionar os chanfros por tamanho de interface
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Usar a fonte com gráficos tradicionais
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Marque esta opção se prefere usar o tipo de fonte tradicional de tamanho fixo
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :Fontes anti-alias
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Marque esta opção para fontes redimensionáveis com anti-alias
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Usar o tipo de letra com gráficos tradicionais
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Marque esta opção se prefere usar o tipo de letra tradicional de tamanho fixo
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Tipos de letra com contornos suaves
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Marque esta opção para tipos de letra redimensionáveis com contornos suaves
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
@@ -2040,7 +2040,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Resolução máxima de gráficos a usar: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limita a resolução máxima a ser usada para gráficos. Limitar a resolução dos gráficos evitará o uso de gráficos de alta resolução, mesmo quando disponíveis. Isto pode ajudar a manter a aparência do jogo unificada ao usar uma combinação de ficheiros GRF com e sem gráficos de alta resolução
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limita a resolução máxima a ser usada para os elementos visuais. Limitar a resolução dos elementos visuais evitará o uso de gráficos de alta resolução, mesmo quando disponíveis. Isto pode ajudar a manter a aparência do jogo consistente ao usar uma combinação de ficheiros GRF com e sem gráficos de alta resolução
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2188,7 +2188,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... a ig
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... a ignorar conjunto Base de Sons '{STRING}': não encontrado
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... a ignorar conjunto Musica Base '{STRING}': não encontrado
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Falta de memória
-STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Falha a alocar {BYTES} da cache de gráficos. a cache de gráficos foi reduzida para {BYTES}. Isto irá reduzir a performance do OpenTTD. Para baixar os requisitos de memória poderá desabilitar gráficos de 32bpp e/ou niveis de zoom
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Falha a alocar {BYTES} da cache de elementos visuais. Esta cache foi reduzida para {BYTES}. Isto irá reduzir a performance do OpenTTD. Para baixar os requisitos de memória poderá desabilitar gráficos de 32bpp e/ou níveis de zoom
 
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Erro com as definições gráficas...
@@ -2230,7 +2230,7 @@ STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Obter ac
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Verificar conteúdo novo e actualizado para descarga
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Sair de 'OpenTTD'
 
-STR_INTRO_BASESET                                               :{BLACK}O conjunto de gráficos base selecionado tem {NUM} gráfico{P "" s} em falta. Por favor, verifique se existem atualizações para este conjunto.
+STR_INTRO_BASESET                                               :{BLACK}O conjunto de gráficos base selecionado tem {NUM} elemento{P "" s} visua{P l is} em falta. Por favor, verifique se existem atualizações para este conjunto.
 STR_INTRO_TRANSLATION                                           :{BLACK}Falta{P 0 "" m} traduzir {NUM} linha{P "" s} nesta tradução. Por favor, ajude o OpenTTD em inscrever-se como tradutor. Leia readme.txt para mais detalhes.
 
 # Quit window
@@ -2252,7 +2252,7 @@ STR_HELP_WINDOW_README                                          :{BLACK}Leia-me
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Registo de alterações
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Erros Conhecidos
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}Licença
-STR_HELP_WINDOW_FONTS                                           :{BLACK}Fontes
+STR_HELP_WINDOW_FONTS                                           :{BLACK}Tipos de letra
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Manual / Wiki
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Reportar um erro
@@ -3558,11 +3558,11 @@ STR_SPRITE_ALIGNER_CAPTION_NO_ACTION                            :{WHITE}Alinhand
 STR_SPRITE_ALIGNER_CAPTION_ACTIONA                              :{WHITE}Alinhando sprite: Ação 0xA, {COMMA} ({STRING}:{NUM})
 STR_SPRITE_ALIGNER_CAPTION_ACTION5                              :{WHITE}Alinhando sprite: Ação 0x5, tipo {HEX}, {COMMA} ({STRING}:{NUM})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Gráfico seguinte
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Proceder ao gráfico normal seguinte, ignorando quaisquer gráficos pseudo/recolorir/tipo-de-letra e dando a volta no fim
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Proceder ao elemento visual normal seguinte, ignorando quaisquer elemento visual pseudo/recolorido/tipo-de-letra e dando a volta no fim
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Ir para o gráfico
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Ir para o gráfico seguinte. Se o gráfico não for um gráfico normal, proceder ao gráfico normal seguinte
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Gráfico anterior
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Proceder ao gráfico normal anterior, ignorando quaisquer gráficos pseudo/recolorir/tipo-de-letra e dando a volta no início
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Proceder ao elemento visual normal anterior, ignorando quaisquer elemento visual  pseudo/recolorido/tipo-de-letra e dando a volta no início
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representação do gráfico seleccionado actualmente. O alinhamento é ignorado a desenhar este gráfico
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Desloca o gráfico, alterando os intervalos  X e Y. Ctrl+Clique desloca o gráfico 8 unidades de uma só vez
 STR_SPRITE_ALIGNER_SPRITE                                       :{STRING}:{NUM}
@@ -3602,7 +3602,7 @@ STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregar {1:STR
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Gráfico inválido (sprite {3:NUM})
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriedade de Ação 0 desconhecida {4:HEX} (sprite {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de uso de ID Inválido (sprite {3:NUM})
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contém um objecto gráfico corrompido. Todos os objectos gráficos corrompidos serão apresentados como um ponto de interrogação (?) vermelho.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contém um elemento visual corrompido. Todos os elementos visuais corrompidos serão apresentados como um ponto de interrogação (?) vermelho.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contém múltiplas entradas Ação 8 - (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leitura além dos limites do pseudo-sprite (sprite {3:NUM})
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Recursos GRF pedidos não disponíveis (sprite {3:NUM})
@@ -3966,7 +3966,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} mosaico{P "" s} com água
 STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} mosaico{P "" s} de estação
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} aeroporto{P "" s}
-STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Nenhum
+STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Nenhuma
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Construir sede
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construir sede da empresa
@@ -4814,7 +4814,7 @@ STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Limpar a
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Apagar Contador Atraso
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reiniciar o contador de atraso, para que o veículo esteja pontual. Ctrl+Clique para reiniciar o grupo todo, para que o último veículo esteja pontual e todos os outros estejam adiantados.
 
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto preencher
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Preencher automaticamente
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Preencher o horário automaticamente com os valores da próxima viagem. Ctrl+Clique para tentar manter os tempos de espera.
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
@@ -4847,9 +4847,9 @@ STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Termina 
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Ativar/Desativar paragem quando o registo da IA for igual à string de paragem
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Parar em:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Parar em
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Quando a mensagem do registo da IA for igual a esta string, o jogo é posto em pausa
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Quando a mensagem do registo da IA for igual a esta cadeia de caracteres, o jogo é pausado
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Caso de igualdade
-STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Alternar o caso de igualdade quando se compara o resgisto da IA contra a string de paragem
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Alternar o caso de igualdade quando se compara o registo da IA contra a cadeia de caracteres de paragem
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuar
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Sair da pausa e continuar a IA
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Ver saída de depuração desta IA. Ctrl+Clique para abrir numa nova janela

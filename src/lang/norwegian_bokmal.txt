@@ -3075,6 +3075,11 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Velg bys
 STR_FOUND_TOWN_CITY                                             :{BLACK}By
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Storbyer vokser raskere enn vanlige byer{}Avhengig av innstillinger er de større når de blir grunnlagt
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Byutvidelse:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Bygninger
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Øk bygninger i byer
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Veier
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Øk veier i byer
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Byers veiløsning:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Velg veiløsning for denne byen
@@ -3699,6 +3704,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Endre na
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Utvid
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Øk bystørrelse
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Utvid bygninger
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Øk bygninger i by
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Utvid veier
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Øk veier i by
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Slett
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Slett denne byen fullstendig
 
@@ -5922,5 +5931,9 @@ STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELO
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
 STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Åpne merkeinnstillinger
 STR_BADGE_CONFIG_RESET                                          :Nullstill
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Merkeikoner
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Merkefiltre
 STR_BADGE_CONFIG_PREVIEW                                        :Forhåndsvis bilde
 STR_BADGE_CONFIG_NAME                                           :Navn
+STR_BADGE_FILTER_ANY_LABEL                                      :Vilkårlig {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} er {STRING}
