@@ -14,6 +14,7 @@
 #include <mutex>
 #include <condition_variable>
 #include <windows.h>
+#include <xinput.h>
 
 /** Base class for Windows video drivers. */
 class VideoDriver_Win32Base : public VideoDriver {
@@ -47,6 +48,13 @@ protected:
 	int height_org = 0;     ///< Original monitor resolution height, before we changed it.
 
 	bool buffer_locked;     ///< Video buffer was locked by the main thread.
+
+	/** Gamepad support for map scrolling */
+	DWORD gamepad_user_index = XUSER_MAX_COUNT; ///< Index of currently opened gamepad (XUSER_MAX_COUNT = no gamepad).
+	uint32_t gamepad_reconnect_timer = 0; ///< Timer for retrying gamepad connection after disconnect.
+	void OpenGamepad();
+	void CloseGamepad();
+	void ProcessGamepadInput();
 
 	Dimension GetScreenSize() const override;
 	float GetDPIScale() override;
