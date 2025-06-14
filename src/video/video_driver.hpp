@@ -273,6 +273,16 @@ protected:
 	 */
 	virtual bool PollEvent() { return false; };
 
+	/** Gamepad support */
+
+	/**
+	* Open the gamepad for input.
+	* @return True if the gamepad is available and open. False if no gamepad is available.
+	*/
+	virtual bool OpenGamepad() { return false; }
+	virtual void CloseGamepad() {}
+	virtual void ProcessGamepadInput() {}
+
 	/**
 	 * Start the loop for game-tick.
 	 */

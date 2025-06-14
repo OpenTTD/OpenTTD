@@ -3601,3 +3601,56 @@ void PickerWindowBase::Close([[maybe_unused]] int data)
 	ResetObjectToPlace();
 	this->Window::Close();
 }
+
+/**
+ * Process gamepad analog stick input for viewport scrolling.
+ * This is a common function that can be used by any video driver that supports gamepads.
+ * @param stick_x Raw analog stick X value (typically -32768 to 32767 range)
+ * @param stick_y Raw analog stick Y value (typically -32768 to 32767 range)
+ * @param max_axis_value Maximum value for the analog stick axes (e.g., 32767 for SDL2)
+ */
+void HandleGamepadScrolling(float stick_x, float stick_y, float max_axis_value)
+{
+	/* Skip if gamepad stick selection is disabled */
+	if (_settings_client.gui.gamepad_stick_selection == GamepadStickSelection::DISABLED) {
+		return;
+	}
+
+	/* Apply deadzone (convert percentage to axis range) */
+	const float deadzone = (_settings_client.gui.gamepad_deadzone * max_axis_value) / 100;
+
+	if (abs(stick_x) < deadzone) stick_x = 0;
+	if (abs(stick_y) < deadzone) stick_y = 0;
+
+	/* Skip if no movement after deadzone */
+	if (stick_x == 0 && stick_y == 0) {
+		return;
+	}
+
+	/* Calculate scroll delta with sensitivity */
+	float sensitivity = _settings_client.gui.gamepad_sensitivity / 10.0f;
+	int delta_x = (int)(stick_x * sensitivity / (max_axis_value / 16)); // Scale down from axis range
+	int delta_y = (int)(stick_y * sensitivity / (max_axis_value / 16));
+
+	/* Apply axis inversion */
+	if (_settings_client.gui.gamepad_invert_x) delta_x = -delta_x;
+	if (_settings_client.gui.gamepad_invert_y) delta_y = -delta_y;
+
+	/* Skip if deltas are too small */
+	if (abs(delta_x) < 1 && abs(delta_y) < 1) {
+		return;
+	}
+
+	/* Apply scrolling to the main viewport */
+	if (_game_mode != GM_MENU && _game_mode != GM_BOOTSTRAP) {
+		Window *main_window = GetMainWindow();
+		if (main_window != nullptr && main_window->viewport != nullptr) {
+			/* Cancel vehicle following when gamepad scrolling */
+			main_window->viewport->CancelFollow(*main_window);
+
+			/* Apply the scroll using the same method as keyboard scrolling */
+			main_window->viewport->dest_scrollpos_x += ScaleByZoom(delta_x, main_window->viewport->zoom);
+			main_window->viewport->dest_scrollpos_y += ScaleByZoom(delta_y, main_window->viewport->zoom);
+		}
+	}
+}
