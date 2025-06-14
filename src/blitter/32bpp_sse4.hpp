@@ -29,9 +29,9 @@
 /** The SSE4 32 bpp blitter (without palette animation). */
 class Blitter_32bppSSE4 : public Blitter_32bppSSSE3 {
 public:
-	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom) override;
+	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, SpriteCollKey sck) override;
 	template <BlitterMode mode, Blitter_32bppSSE_Base::ReadMode read_mode, Blitter_32bppSSE_Base::BlockType bt_last, bool translucent>
-	void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
+	void Draw(const Blitter::BlitterParams *bp, SpriteCollKey sck);
 	std::string_view GetName() override { return "32bpp-sse4"; }
 };
 
