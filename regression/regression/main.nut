@@ -2023,6 +2023,33 @@ function Regression::Math()
 	print("   13725      > -2147483648:   " + ( 13725      > -2147483648));
 }
 
+function Regression::PriorityQueue()
+{
+	print("");
+	print("--PriorityQueue--");
+	local queue = AIPriorityQueue();
+	print("  IsEmpty():    " + queue.IsEmpty());
+	print("  Count():      " + queue.Count());
+	print("  --Insert--")
+	for (local i = 0; i < 10; i++) {
+		print("    Insert(" + i + ", " + i + "): " + queue.Insert(i, i));
+	}
+	print("  Exists(5):    " + queue.Exists(5));
+	print("  Insert(5, 5): "+ queue.Insert(5, 5));
+	print("  IsEmpty():    " + queue.IsEmpty());
+	print("  Count():      " + queue.Count());
+	local item = queue.Peek();
+	print("  Peek():       " + item);
+	print("  Count():      " + queue.Count());
+	local item2 = queue.Pop();
+	print("  Pop():        " + item2);
+	print("  Count():      " + queue.Count());
+	print("  " + item + " == " + item2 + " :      " + (item == item2));
+	print("  Clear():      " + queue.Clear());
+	print("  IsEmpty():    " + queue.IsEmpty());
+	print("  Count():      " + queue.Count());
+}
+
 function Regression::Start()
 {
 	this.TestInit();
@@ -2119,6 +2146,7 @@ function Regression::Start()
 	print("  IsEventWaiting:        false");
 
 	this.Math();
+	this.PriorityQueue();
 
 	/* Check Valuate() is actually limited, MUST BE THE LAST TEST. */
 	print("--Valuate() with excessive CPU usage--")
