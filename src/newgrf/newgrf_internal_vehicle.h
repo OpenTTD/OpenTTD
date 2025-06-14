@@ -27,7 +27,7 @@ struct GRFTempEngineData {
 	CargoClasses cargo_allowed;          ///< Bitmask of cargo classes that are allowed as a refit.
 	CargoClasses cargo_allowed_required; ///< Bitmask of cargo classes that are required to be all present to allow a cargo as a refit.
 	CargoClasses cargo_disallowed;       ///< Bitmask of cargo classes that are disallowed as a refit.
-	RailTypeLabel railtypelabel;
+	std::vector<RailTypeLabel> railtypelabels;
 	uint8_t roadtramtype;
 	const GRFFile *defaultcargo_grf; ///< GRF defining the cargo translation table to use if the default cargo is the 'first refittable'.
 	Refittability refittability;     ///< Did the newgrf set any refittability property? If not, default refittability will be applied.

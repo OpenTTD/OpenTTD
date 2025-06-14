@@ -270,7 +270,8 @@ Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t internal_id
 		_gted.resize(Engine::GetPoolSize());
 	}
 	if (type == VEH_TRAIN) {
-		_gted[e->index].railtypelabel = GetRailTypeInfo(e->u.rail.railtype)->label;
+		_gted[e->index].railtypelabels.clear();
+		for (RailType rt : e->u.rail.railtypes) _gted[e->index].railtypelabels.push_back(GetRailTypeInfo(rt)->label);
 	}
 
 	GrfMsg(5, "Created new engine at index {} for GRFID {:x}, type {}, index {}", e->index, std::byteswap(file->grfid), type, internal_id);
@@ -424,7 +425,8 @@ void ResetNewGRFData()
 
 	/* Fill rail type label temporary data for default trains */
 	for (const Engine *e : Engine::IterateType(VEH_TRAIN)) {
-		_gted[e->index].railtypelabel = GetRailTypeInfo(e->u.rail.railtype)->label;
+		_gted[e->index].railtypelabels.clear();
+		for (RailType rt : e->u.rail.railtypes) _gted[e->index].railtypelabels.push_back(GetRailTypeInfo(rt)->label);
 	}
 
 	/* Reset GRM reservations */
@@ -861,7 +863,11 @@ static void FinaliseEngineArray()
 		if (!e->info.climates.Test(_settings_game.game_creation.landscape)) continue;
 
 		switch (e->type) {
-			case VEH_TRAIN: AppendCopyableBadgeList(e->badges, GetRailTypeInfo(e->u.rail.railtype)->badges, GSF_TRAINS); break;
+			case VEH_TRAIN:
+				for (RailType rt : e->u.rail.railtypes) {
+					AppendCopyableBadgeList(e->badges, GetRailTypeInfo(rt)->badges, GSF_TRAINS);
+				}
+				break;
 			case VEH_ROAD: AppendCopyableBadgeList(e->badges, GetRoadTypeInfo(e->u.road.roadtype)->badges, GSF_ROADVEHICLES); break;
 			default: break;
 		}
@@ -1708,13 +1714,18 @@ static void AfterLoadGRFs()
 	}
 
 	for (Engine *e : Engine::IterateType(VEH_TRAIN)) {
-		RailType railtype = GetRailTypeByLabel(_gted[e->index].railtypelabel);
-		if (railtype == INVALID_RAILTYPE) {
+		RailTypes railtypes{};
+		for (RailTypeLabel label : _gted[e->index].railtypelabels) {
+			auto rt = GetRailTypeByLabel(label);
+			if (rt != INVALID_RAILTYPE) railtypes.Set(rt);
+		}
+
+		if (railtypes.Any()) {
+			e->u.rail.railtypes = railtypes;
+			e->u.rail.intended_railtypes = railtypes;
+		} else {
 			/* Rail type is not available, so disable this engine */
 			e->info.climates = {};
-		} else {
-			e->u.rail.railtype = railtype;
-			e->u.rail.intended_railtype = railtype;
 		}
 	}
 
