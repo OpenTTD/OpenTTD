@@ -28,6 +28,7 @@
 #include <windows.h>
 #include <imm.h>
 #include <versionhelpers.h>
+#include <xinput.h>
 #if defined(_MSC_VER) && defined(NTDDI_WIN10_RS4)
 #include <winrt/Windows.UI.ViewManagement.h>
 #endif
@@ -991,6 +992,9 @@ void VideoDriver_Win32Base::InputLoop()
 	}
 
 	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
+
+	/* Process gamepad input for scrolling */
+	this->ProcessGamepadInput();
 }
 
 bool VideoDriver_Win32Base::PollEvent()
@@ -1109,6 +1113,106 @@ void VideoDriver_Win32Base::UnlockVideoBuffer()
 	this->buffer_locked = false;
 }
 
+bool VideoDriver_Win32Base::OpenGamepad()
+{
+	/* Don't open gamepad if already open or if gamepad scrolling is disabled */
+	if (this->gamepad_user_index != XUSER_MAX_COUNT) {
+		Debug(driver, 2, "Win32: Gamepad already open, skipping");
+		return true;
+	}
+
+	if (_settings_client.gui.gamepad_stick_selection == GamepadStickSelection::DISABLED) {
+		Debug(driver, 2, "Win32: Gamepad scrolling disabled, not opening gamepad");
+		return false;
+	}
+
+	/* Check for any connected gamepads */
+	for (DWORD i = 0; i < XUSER_MAX_COUNT; i++) {
+		XINPUT_STATE state = {};
+
+		if (XInputGetState(i, &state) == ERROR_SUCCESS) {
+			this->gamepad_user_index = i;
+			Debug(driver, 2, "Win32: Opened gamepad at index {}", i);
+			return true;
+		}
+	}
+
+	return false;
+}
+
+void VideoDriver_Win32Base::CloseGamepad()
+{
+	if (this->gamepad_user_index != XUSER_MAX_COUNT) {
+		this->gamepad_user_index = XUSER_MAX_COUNT;
+		Debug(driver, 2, "Win32: Closed gamepad");
+	}
+}
+
+void VideoDriver_Win32Base::ProcessGamepadInput()
+{
+	/* Skip if gamepad scrolling is disabled */
+	if (_settings_client.gui.gamepad_stick_selection == GamepadStickSelection::DISABLED) {
+		return;
+	}
+
+	/* If no gamepad is currently open, try to reconnect periodically */
+	if (this->gamepad_user_index == XUSER_MAX_COUNT) {
+		static bool logged_no_gamepad = false;
+
+		/* Only try to reconnect every 60 frames (~1 second at 60 FPS) to avoid spam */
+		if (this->gamepad_reconnect_timer > 0) {
+			this->gamepad_reconnect_timer--;
+			if (!logged_no_gamepad) {
+				Debug(driver, 2, "Win32: No gamepad available for input processing");
+				logged_no_gamepad = true;
+			}
+			return;
+		}
+
+		/* Try to open gamepad */
+		this->OpenGamepad();
+
+		/* If still no gamepad, set timer for next retry */
+		if (this->gamepad_user_index == XUSER_MAX_COUNT) {
+			this->gamepad_reconnect_timer = 60; /* Retry in ~1 second */
+			if (!logged_no_gamepad) {
+				Debug(driver, 2, "Win32: No gamepad available for input processing");
+				logged_no_gamepad = true;
+			}
+			return;
+		} else {
+			/* Successfully reconnected */
+			logged_no_gamepad = false;
+		}
+	}
+
+	/* Get gamepad state */
+	XINPUT_STATE state = {};
+
+	if (XInputGetState(this->gamepad_user_index, &state) != ERROR_SUCCESS) {
+		Debug(driver, 2, "Win32: Gamepad disconnected, closing and will retry connection");
+		this->CloseGamepad();
+		this->gamepad_reconnect_timer = 60; /* Start retry timer */
+		return;
+	}
+
+	/* Get analog stick values based on stick selection
+	 * Note: XInput uses SHORT values for stick positions, but we have to extend to int
+	 * to avoid overflow when inverting the Y-axis value */
+	int stick_x = 0, stick_y = 0;
+	if (_settings_client.gui.gamepad_stick_selection == GamepadStickSelection::LEFT_STICK) {
+		stick_x = state.Gamepad.sThumbLX;
+		stick_y = state.Gamepad.sThumbLY;
+	} else if (_settings_client.gui.gamepad_stick_selection == GamepadStickSelection::RIGHT_STICK) {
+		stick_x = state.Gamepad.sThumbRX;
+		stick_y = state.Gamepad.sThumbRY;
+	}
+	stick_y = -stick_y; // Xinput Y-axis is inverted from other libraries
+
+	/* Use the common gamepad handling function */
+	HandleGamepadScrolling(stick_x, stick_y, INT16_MAX);
+}
+
 
 static FVideoDriver_Win32GDI iFVideoDriver_Win32GDI;
 
@@ -1124,6 +1228,9 @@ std::optional<std::string_view> VideoDriver_Win32GDI::Start(const StringList &pa
 
 	MarkWholeScreenDirty();
 
+	/* Try to open gamepad */
+	this->OpenGamepad();
+
 	this->is_game_threaded = !GetDriverParamBool(param, "no_threads") && !GetDriverParamBool(param, "no_thread");
 
 	return std::nullopt;
@@ -1131,6 +1238,7 @@ std::optional<std::string_view> VideoDriver_Win32GDI::Start(const StringList &pa
 
 void VideoDriver_Win32GDI::Stop()
 {
+	this->CloseGamepad();
 	DeleteObject(this->gdi_palette);
 	DeleteObject(this->dib_sect);
 
@@ -1433,6 +1541,9 @@ std::optional<std::string_view> VideoDriver_Win32OpenGL::Start(const StringList 
 
 	MarkWholeScreenDirty();
 
+	/* Try to open gamepad */
+	this->OpenGamepad();
+
 	this->is_game_threaded = !GetDriverParamBool(param, "no_threads") && !GetDriverParamBool(param, "no_thread");
 
 	return std::nullopt;
@@ -1440,6 +1551,7 @@ std::optional<std::string_view> VideoDriver_Win32OpenGL::Start(const StringList 
 
 void VideoDriver_Win32OpenGL::Stop()
 {
+	this->CloseGamepad();
 	this->DestroyContext();
 	this->VideoDriver_Win32Base::Stop();
 }
