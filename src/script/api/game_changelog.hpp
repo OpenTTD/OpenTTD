@@ -29,6 +29,8 @@
  * \li GSCargo::CC_NON_POTABLE
  * \li GSVehicleList_Waypoint
  * \li GSBaseStation::GetOwner
+ * \li GSVehicle::GetEconomyAge
+ * \li GSVehicle::GetWagonEconomyAge
  *
  * Other changes:
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
