@@ -11,6 +11,7 @@
 #define VIDEO_SDL_H
 
 #include <condition_variable>
+#include <SDL.h>
 
 #include "video_driver.hpp"
 
@@ -57,6 +58,10 @@ protected:
 	void CheckPaletteAnim() override;
 	bool PollEvent() override;
 
+	bool OpenGamepad() override;
+	void CloseGamepad() override;
+	void ProcessGamepadInput() override;
+
 	/** Indicate to the driver the client-side might have changed. */
 	void ClientSizeChanged(int w, int h, bool force);
 
@@ -86,6 +91,8 @@ private:
 	bool edit_box_focused = false;
 
 	int startup_display = 0;
+
+	SDL_GameController *gamepad = nullptr; ///< Currently opened gamepad.
 };
 
 #endif /* VIDEO_SDL_H */
