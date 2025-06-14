@@ -36,3 +36,12 @@ AITown.FoundTown <- function(tile, size, city, layout, name) { return AITown.Fou
 
 AIVehicle.SetNameCompat14 <- AIVehicle.SetName;
 AIVehicle.SetName <- function(id, name) { return AIVehicle.SetNameCompat14(id, AICompat14.Text(name)); }
+
+AIVehicleList_Station.constructorCompat14 <- AIVehicleList_Station.constructor;
+AIVehicleList_Station.constructor <- function(id, ...)
+{
+	this.constructorCompat14(id);
+	if (AIWaypoint.IsValidWaypoint(id)) {
+		this.SwapList(AIVehicleList_Waypoint(id));
+	}
+}

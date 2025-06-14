@@ -81,3 +81,12 @@ GSTown.FoundTown <- function(tile, size, city, layout, name) { return GSTown.Fou
 
 GSVehicle.SetNameCompat14 <- GSVehicle.SetName;
 GSVehicle.SetName <- function(id, name) { return GSVehicle.SetNameCompat14(id, GSCompat14.Text(name)); }
+
+GSVehicleList_Station.constructorCompat14 <- GSVehicleList_Station.constructor;
+GSVehicleList_Station.constructor <- function(id, ...)
+{
+	this.constructorCompat14(id);
+	if (GSWaypoint.IsValidWaypoint(id)) {
+		this.SwapList(GSVehicleList_Waypoint(id));
+	}
+}

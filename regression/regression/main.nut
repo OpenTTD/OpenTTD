@@ -1020,6 +1020,9 @@ function Regression::Order()
 	print("  SetStopLocation():     " + AIOrder.SetStopLocation(20, 0, AIOrder.STOPLOCATION_MIDDLE));
 	print("  GetStopLocation():     " + AIOrder.GetStopLocation(20, 0));
 
+	print("  AppendOrder():         " + AIOrder.AppendOrder(16, 28481, AIOrder.OF_NONE));
+	print("  IsGotoWaypointOrder(): " + AIOrder.IsGotoWaypointOrder(16, 0));
+
 	local list = AIVehicleList_Station(3);
 
 	print("");
@@ -1046,6 +1049,32 @@ function Regression::Order()
 		print("    " + idx + " => " + val);
 	}
 	list = AIVehicleList_Station(3, AIVehicle.VT_RAIL);
+	print("  Count():             " + list.Count());
+	list.Valuate(AIVehicle.GetLocation);
+	print("  Location ListDump:");
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + i + " => " + list.GetValue(i));
+	}
+	print("  foreach():");
+	foreach (idx, val in list) {
+		print("    " + idx + " => " + val);
+	}
+	list = AIVehicleList_Station(2);
+	print("  Count():             " + list.Count());
+	list.Valuate(AIVehicle.GetLocation);
+	print("  Location ListDump:");
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + i + " => " + list.GetValue(i));
+	}
+	print("  foreach():");
+	foreach (idx, val in list) {
+		print("    " + idx + " => " + val);
+	}
+
+	list = AIVehicleList_Waypoint(2);
+
+	print("");
+	print("--VehicleList_Waypoint--");
 	print("  Count():             " + list.Count());
 	list.Valuate(AIVehicle.GetLocation);
 	print("  Location ListDump:");
