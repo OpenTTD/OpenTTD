@@ -35,6 +35,7 @@ extern uint _sprite_cache_size;
 class UniquePtrSpriteAllocator : public SpriteAllocator {
 public:
 	std::unique_ptr<std::byte[]> data;
+	size_t size;
 protected:
 	void *AllocatePtr(size_t size) override;
 };
