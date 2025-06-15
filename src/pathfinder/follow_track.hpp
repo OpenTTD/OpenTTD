@@ -331,7 +331,7 @@ protected:
 		}
 
 		/* rail transport is possible only on compatible rail types */
-		if (IsRailTT()) {
+		if (IsRailTT() && this->railtypes.Any()) {
 			RailType rail_type = GetTileRailType(this->new_tile);
 			if (!this->railtypes.Test(rail_type)) {
 				/* incompatible rail type */
