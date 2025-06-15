@@ -3073,6 +3073,11 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Stadsgro
 STR_FOUND_TOWN_CITY                                             :{BLACK}Groeistad
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Groeisteden groeien sneller dan gewone steden{}Afhankelijk van de instellingen kunnen ze ook groter zijn als ze gesticht worden
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Uitbreiding van stad:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Gebouwen
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Meer gebouwen in steden
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Wegen
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Meer wegen in steden
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Wegpatroon
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Wegpatroon voor deze stad kiezen
@@ -3697,6 +3702,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Hiermee 
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Vergroot
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Vergroot stadsgrootte
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Gebouwen uitbreiden
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Meer gebouwen in stad
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Wegen uitbreiden
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Meer wegen in steden
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Verwijder
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Verwijder deze hele stad
 

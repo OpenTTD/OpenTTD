@@ -1007,7 +1007,7 @@ STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}БАНКРУТ!
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} була закрита кредиторами і все майно продане!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Засновано нову компанію!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} починає звудення біля {TOWN}!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} починає будувати біля {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :Компанію {BIG_FONT}{BLACK}{STRING} агресивно захоплено компанією {STRING} з нерозголошеними витратами!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Керівник)
 
@@ -1074,7 +1074,7 @@ STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Пропонується субсидія:{}{}компанії, яка першою привезе {STRING.z} з {STRING} до {STRING} платитимуть субсидію впродовж {UNITS_YEARS_OR_MINUTES}!
 ###length 4
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Компанія {STRING} отримала субсидію!{}{}Перевезення {STRING.r} з {STRING} до {STRING} принесе додатково 50% впродовж {UNITS_YEARS_OR_MINUTES}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Субсидію надано {STRING}!{}{}Перевезення {STRING.r} з {STRING} до {STRING} принесе вдвічі більше прибутків впродовж {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Субсидію надано компанії {STRING}!{}{}Перевезення {STRING.r} з {STRING} до {STRING} принесе вдвічі більше прибутків впродовж {UNITS_YEARS_OR_MINUTES}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Компанія {STRING} отримала субсидію!{}{}Перевезення {STRING.r} з {STRING} до {STRING} принесе втричі більше прибутків впродовж {UNITS_YEARS_OR_MINUTES}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Компанія {STRING} отримала субсидію!{}{}Перевезення {STRING.r} з {STRING} до {STRING} принесе вчетверо більше прибутків впродовж {UNITS_YEARS_OR_MINUTES}!
 
@@ -1102,6 +1102,8 @@ STR_GAME_OPTIONS_TAB_SOUND                                      :Звук
 STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Виберіть налаштування звуку та музики
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Соціальні платформи
 STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Оберіть налаштування інтеграції соціальних мереж
+STR_GAME_OPTIONS_TAB_ADVANCED                                   :Розширені
+STR_GAME_OPTIONS_TAB_ADVANCED_TOOLTIP                           :Змінювати розширені налаштування
 
 STR_GAME_OPTIONS_VOLUME                                         :Гучність
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Звукові ефекти
@@ -2068,7 +2070,8 @@ STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Ніколи
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Тип економіки: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Плавна економіка здійснює часті зміни обсягів виробництва малими порціями. Заморожена економіка не допускає зміни обсягів виробництва і закриття підприємств. Це налаштування може не працювати, якщо використовуються підприємства з NewGRF.
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Плавна економіка здійснює часті зміни обсягів виробництва малими порціями. Заморожена економіка не допускає зміни обсягів виробництва і закриття підприємств. Це налаштування може не працювати, якщо використовуються підприємства з NewGRF.{}{}У замороженій економіці можлива зміна виробництва підприємствами за місяць, оскільки виробництво відбувається за фіксованими проміжками, не прив'язаними до місяців
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT_PERIOD                 :Плавна економіка здійснює часті зміни обсягів виробництва малими порціями. Заморожена економіка не допускає зміни обсягів виробництва і закриття підприємств. Це налаштування може не працювати, якщо використовуються підприємства з NewGRF.{}{}У замороженій економіці можлива зміна виробництва підприємствами за хвилину, оскільки виробництво відбувається за фіксованими проміжками, не прив'язаними до хвилин
 
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Оригінальна
@@ -4835,6 +4838,7 @@ STR_ORDER_ROAD_VEHICLE_DEPOT                                    :гараж
 STR_ORDER_SHIP_DEPOT                                            :док
 ###next-name-looks-similar
 
+STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT                           :{STRING} в найближчий ангар
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} до найближчого {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
@@ -4909,10 +4913,11 @@ STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :В дорозі
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Поїздка (для {STRING}, без розкладу)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Їхати (протягом {STRING}, без розкладу) зі швидкістю не більше {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(стояти протягом {STRING}, без розкладу)
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(їхати протягом {STRING}, без розкладу)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(їхати протягом {STRING}, без розкладу)
 STR_TIMETABLE_STAY_FOR                                          :і стояти {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :і прямувати до {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}і прямувати до {STRING}
 
+STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Для завершення цього розкладу треба приблизно {STRING}
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Цей розклад займе {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Цей розклад займе якнайменше {STRING} (не все враховано)
 
@@ -5041,8 +5046,8 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Знят
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Зняток мінімапи
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :ШІ
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Ігровий скрипт
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Налаштування ШІ
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Налаштування ігрового скрипту
 STR_AI_SETTINGS_RESET                                           :{BLACK}Скидання
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
@@ -6096,3 +6101,12 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
+STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Показує налаштування значків
+STR_BADGE_CONFIG_RESET                                          :Скидання
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Зображення значків
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Фільтри значків
+STR_BADGE_CONFIG_PREVIEW                                        :Попередній перегляд
+STR_BADGE_CONFIG_NAME                                           :Назва
+STR_BADGE_FILTER_ANY_LABEL                                      :Заголовок: {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} це {STRING}

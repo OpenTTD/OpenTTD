@@ -276,7 +276,7 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK}输入�
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}选择分组次序
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}选择排序方法（降序/升序）
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}选择排序标准
-STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}选择过滤标准
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}选择过滤条件
 STR_BUTTON_SORT_BY                                              :{BLACK}排序
 STR_BUTTON_CATCHMENT                                            :{BLACK}覆盖范围
 STR_TOOLTIP_CATCHMENT                                           :{BLACK}显示覆盖范围
@@ -389,7 +389,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}显示�
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}显示财政补贴项目
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}显示公司车站列表
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}显示公司财务信息
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}显示公司一般信息
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}显示公司基本信息
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}显示公司历史纪录
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}显示游戏目标列表
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}显示公司图表和货物运费表
@@ -869,7 +869,7 @@ STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} 被 {STRING} 以 {CURRENCY_LONG} 收购！
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}破产！
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} 已经宣布破产，所有资产均已抵债！
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}新的运输公司开业大吉！
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}运输公司开业大吉！
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} 在 {TOWN} 附近开工建设！
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} 被 {STRING} 以未知的价格收购！
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}（总裁）
@@ -1081,7 +1081,7 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :自动体验调
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :参与自动体验调查
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :启用后，OpenTTD 会在结束游戏时传输调查结果
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :关于调查与隐私
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :在浏览器中显示更多关于自动体验调查的信息
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :在浏览器中显示关于自动体验调查的更多信息
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :预览调查结果
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :显示当前游戏的结果
 
@@ -1102,7 +1102,7 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :关于基础音
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :基础音乐组
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :选择使用的基础音乐组
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :关于基本音乐组的额外信息
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :关于基础音乐组的额外信息
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :获取内容
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :查询并下载最新内容
@@ -1153,42 +1153,42 @@ STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 �
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}改变当前的货币参数
 
 STR_NONE                                                        :无
-STR_FUNDING_ONLY                                                :不生成
+STR_FUNDING_ONLY                                                :无
 STR_MINIMAL                                                     :每种仅一个
-STR_NUM_VERY_LOW                                                :非常低
-STR_NUM_LOW                                                     :低
-STR_NUM_NORMAL                                                  :一般
-STR_NUM_HIGH                                                    :高
+STR_NUM_VERY_LOW                                                :极少
+STR_NUM_LOW                                                     :较少
+STR_NUM_NORMAL                                                  :适中
+STR_NUM_HIGH                                                    :较多
 STR_NUM_CUSTOM                                                  :自定义
 STR_NUM_CUSTOM_NUMBER                                           :自定义（{NUM}）
 
 STR_VARIETY_NONE                                                :无
-STR_VARIETY_VERY_LOW                                            :非常低
-STR_VARIETY_LOW                                                 :低
-STR_VARIETY_MEDIUM                                              :中
-STR_VARIETY_HIGH                                                :高
-STR_VARIETY_VERY_HIGH                                           :非常高
+STR_VARIETY_VERY_LOW                                            :极少
+STR_VARIETY_LOW                                                 :较少
+STR_VARIETY_MEDIUM                                              :适中
+STR_VARIETY_HIGH                                                :较多
+STR_VARIETY_VERY_HIGH                                           :极多
 
 ###length 5
-STR_AI_SPEED_VERY_SLOW                                          :非常慢
+STR_AI_SPEED_VERY_SLOW                                          :极慢
 STR_AI_SPEED_SLOW                                               :慢
 STR_AI_SPEED_MEDIUM                                             :适中
 STR_AI_SPEED_FAST                                               :快
-STR_AI_SPEED_VERY_FAST                                          :非常快
+STR_AI_SPEED_VERY_FAST                                          :极快
 
 ###length 6
-STR_SEA_LEVEL_VERY_LOW                                          :非常低
-STR_SEA_LEVEL_LOW                                               :低
+STR_SEA_LEVEL_VERY_LOW                                          :极小
+STR_SEA_LEVEL_LOW                                               :较小
 STR_SEA_LEVEL_MEDIUM                                            :适中
-STR_SEA_LEVEL_HIGH                                              :高
+STR_SEA_LEVEL_HIGH                                              :较大
 STR_SEA_LEVEL_CUSTOM                                            :自定义
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :自定义（{NUM}%）
 
 ###length 4
-STR_RIVERS_NONE                                                 :没有
+STR_RIVERS_NONE                                                 :无
 STR_RIVERS_FEW                                                  :较少
-STR_RIVERS_MODERATE                                             :一些
-STR_RIVERS_LOT                                                  :布满
+STR_RIVERS_MODERATE                                             :适中
+STR_RIVERS_LOT                                                  :较多
 
 ###length 3
 STR_DISASTER_NONE                                               :没有
@@ -1225,7 +1225,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :放任（所有
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}无合适的 AI 可用……{}{}可以使用“线上拓展内容”功能下载新的 AI
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :搜索条目：
+STR_CONFIG_SETTING_FILTER_TITLE                                 :搜索：
 STR_CONFIG_SETTING_EXPAND_ALL                                   :展开全部
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :折叠全部
 STR_CONFIG_SETTING_RESET_ALL                                    :重置所有数值
@@ -1308,7 +1308,7 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :载具损坏：
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :设置维护不足的载具的故障频率
 
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :财政补贴系数：{STRING}
-STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :设置获得财政补贴的线路的利润倍数
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :设置获得财政补贴的线路的利润系数
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :财政补贴时长：{STRING}
 ###length 2
@@ -1456,10 +1456,10 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :启用时允许
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :允许向其他公司转移资金：{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :启用时在多人游戏中允许公司之间汇款
 
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :货物重量倍数：{STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :设置列车所载货物的重量倍数。设定的数值越高，货物对列车而言越重，并影响其加速、转弯及上坡的效率
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :货物重量系数，以模拟较重列车：{STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :设置列车所载货物的重量系数。设定的数值越高，货物对列车而言越重，并影响其加速、转弯及上坡的效率
 
-STR_CONFIG_SETTING_PLANE_SPEED                                  :飞机速度因子：{STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :飞机速度系数：{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :设置飞机与其它载具类型的相对速率以减少飞机运输收入
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 
@@ -1491,7 +1491,7 @@ STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :选择公司初
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :总允许建设小型机场：{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :启用时，每种机场一经面世，就永远可以选择建设
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :当列车无法找到路线时提示：{STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :列车无法找到路线时提示：{STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :启用时将在载具无法到达命令目的地时提示
 
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :检查载具调度计划：{STRING}
@@ -1501,12 +1501,12 @@ STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :不检查
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :检查，除停运载具外
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :检查所有载具
 
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :若线路亏损时发出提示：{STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :载具亏损时提示：{STRING}
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :启用时，若某载具在一年内总体亏损，发出提示
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :启用时，若某载具在一周期内总体亏损，发出提示
 
-STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :载具老化时发出提示：{STRING}
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :载具老化时提示：{STRING}
 STR_CONFIG_SETTING_WARN_OLD_VEHICLE_HELPTEXT                    :启用时后将会在载具老化时发出提示
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :载具永不过期：{STRING}
@@ -1525,9 +1525,9 @@ STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0（日期停止）
 
-STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :城镇货物产出倍数：{STRING}
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :城镇货物产出系数：{STRING}
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :按此比例扩大城镇的货物生产规模
-STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :工业货物产出倍数：{STRING}
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :工业货物产出系数：{STRING}
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :按此比例扩大工业的货物生产规模
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
@@ -1656,7 +1656,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :灰色到红色
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :灰度
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :视点滚动方式：{STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :用鼠标拖动地图时的行为。“鼠标位置锁定”选项并不在任何平台上适用，如基于网页的版本、触屏、Linux 上的 Wayland 等
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :卷动地图的行为。“鼠标指针不跟随移动”选项不适用于所有平台，如网页版、触控屏、Linux Wayland 等
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :鼠标右键移动视角，鼠标指针不跟随移动
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :鼠标右键移动地图，鼠标指针不跟随移动
@@ -1797,7 +1797,7 @@ STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :播放成功建
 STR_CONFIG_SETTING_SOUND_CLICK                                  :点击按钮：{STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :按一下按钮时发出蜂鸣声
 
-STR_CONFIG_SETTING_SOUND_DISASTER                               :灾难/事故：{STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER                               :灾难与事故：{STRING}
 STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :播放灾难和事故音效
 
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :载具：{STRING}
@@ -1806,16 +1806,16 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :播放载具音
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :音效：{STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :播放与地貌、工业设施和城镇有关的环境音效
 
-STR_CONFIG_SETTING_MAX_TRAINS                                   :每间公司最大火车数量：{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :公司火车数量上限：{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :每间公司最多能够拥有的火车数量
 
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :每间公司最大汽车数量：{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :公司汽车数量上限：{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :每间公司最多能够拥有的汽车数量
 
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :每间公司最大飞机数量：{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :公司飞机数量上限：{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :每间公司最多能够拥有的飞机数量
 
-STR_CONFIG_SETTING_MAX_SHIPS                                    :每间公司最大船只数量：{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :公司船只数量上限：{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :每间公司最多能够拥有的船只数量
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :禁止 AI 使用火车：{STRING}
@@ -1876,7 +1876,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :当玩家设立
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :对手车站的剪彩仪式：{STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :当对手设立的车站首次有载具停靠时显示讯息
 
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :事故/灾难：{STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :灾难与事故：{STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :报纸报道事故或灾难发生情况
 
 STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER                          :竞争对手的载具事故：{STRING}
@@ -1920,7 +1920,7 @@ STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :显示普通事
 ###length 3
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :关闭
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :摘要
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :完全
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :详细
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :彩色新闻出现在 {STRING} 年以后
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :从这一年开始，报纸采用彩色印刷，在此之前，报纸是采用黑白单色印刷的
@@ -2058,8 +2058,8 @@ STR_CONFIG_SETTING_LARGER_TOWNS                                 :都市比例：
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :设定生成城镇时，城镇中都市的比例。都市的起始人口和增长速度均较一般城镇而言高
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 / {COMMA}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :没有
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :初始都市规模因子：{STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :无
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :初始都市规模系数：{STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :游戏开局时，城市的平均规模相对于普通城镇的比值
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :客货流更新周期：{STRING}
@@ -2143,7 +2143,7 @@ STR_CONFIG_SETTING_INTERFACE                                    :界面
 STR_CONFIG_SETTING_INTERFACE_GENERAL                            :通用
 STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :视点
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :建设
-STR_CONFIG_SETTING_ADVISORS                                     :消息/新闻
+STR_CONFIG_SETTING_ADVISORS                                     :新闻与提示
 STR_CONFIG_SETTING_COMPANY                                      :公司
 STR_CONFIG_SETTING_ACCOUNTING                                   :财务管理
 STR_CONFIG_SETTING_VEHICLES                                     :载具
@@ -2151,7 +2151,7 @@ STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :物理
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :经由
 STR_CONFIG_SETTING_VEHICLES_ORDERS                              :调度计划
 STR_CONFIG_SETTING_LIMITATIONS                                  :限制
-STR_CONFIG_SETTING_ACCIDENTS                                    :灾难/事故
+STR_CONFIG_SETTING_ACCIDENTS                                    :灾难与事故
 STR_CONFIG_SETTING_GENWORLD                                     :地图生成
 STR_CONFIG_SETTING_ENVIRONMENT                                  :环境
 STR_CONFIG_SETTING_ENVIRONMENT_TIME                             :时间
@@ -2183,11 +2183,11 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :与当前版本
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :未知
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}……压缩等级“{STRING}”无效
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}……本版本不支持存档格式“{STRING}”，现改用“{STRING}”格式
-STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}……禁用基础图形设置“{STRING}”：未找到
-STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}……禁用基础音效设置“{STRING}”：未找到
-STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}……禁用基础音乐设置“{STRING}”：未找到
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}……正忽略基础图形组“{STRING}”：未找到
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}……正忽略基础音效组“{STRING}”：未找到
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}……正忽略基础音乐组“{STRING}”：未找到
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}内存不足
-STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}无法分配 {BYTES} 的 Sprite 缓存。Sprite 缓存的大小已降至 {BYTES}。OpenTTD 的性能将受到影响。请尝试停用 32bpp 图形及／或减少放大倍数，以降低内存需求
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}无法分配 {BYTES} 的 Sprite 缓存。Sprite 缓存的大小已降至 {BYTES}。OpenTTD 的性能将受到影响。请尝试停用 32bpp 图形、减少放大倍数，以降低内存需求
 
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}图形设置错误……
@@ -2462,8 +2462,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}为您�
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}正在连接……
 
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}您前面还有 {NUM} 个客户端
-STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} 已下载
-STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} 已下载
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}已下载 {BYTES}
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}已下载 {BYTES}，共 {BYTES}
 
 ###length 8
 STR_NETWORK_CONNECTING_1                                        :{BLACK}（1/6）正在连接……
@@ -2596,7 +2596,7 @@ STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}连接�
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}已经有 {NUM} 秒没有从服务器收到任何数据
 
 ###length 23
-STR_NETWORK_ERROR_CLIENT_GENERAL                                :一般错误
+STR_NETWORK_ERROR_CLIENT_GENERAL                                :基本错误
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :同步错误
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :不能读取地图
 STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :连接丢失
@@ -2672,7 +2672,7 @@ STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}在外�
 STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}在与 OpenTTD 没有联系的网站搜索没有纳入 OpenTTD 内容服务的内容
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}正在离开游戏！
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}在外部网站下载内容的规则及条款可能跟 OpenTTD 引用的规则及条款不同。{}您需要参照有关网站以取得在 OpenTTD 安装有关内容的资讯。{}您要继续吗？
-STR_CONTENT_FILTER_TITLE                                        :{BLACK}标签/名称过滤器
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}搜索标签与名称：
 STR_CONTENT_OPEN_URL                                            :{BLACK}主页
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}访问此项目的网站
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}下载
@@ -2690,7 +2690,7 @@ STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}此未�
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}这是现有 {STRING} 的替代版本
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}名称：{WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}版本：{WHITE}{STRING}
-STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}描述：{WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}简介：{WHITE}{STRING}
 STR_CONTENT_DETAIL_URL                                          :{SILVER}链接：{WHITE}{STRING}
 STR_CONTENT_DETAIL_TYPE                                         :{SILVER}类型：{WHITE}{STRING}
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}大小：{WHITE}{BYTES}
@@ -2717,7 +2717,7 @@ STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}下载�
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}正在发送请求……
 STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}正在下载 {STRING}（{NUM} / {NUM}）
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}下载完毕
-STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}已下载 {BYTES} / {BYTES}（{NUM}%）
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}已下载 {BYTES}，共 {BYTES}（{NUM}%）
 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}无法链接到下载服务器……
@@ -3073,6 +3073,11 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}选择�
 STR_FOUND_TOWN_CITY                                             :{BLACK}都市
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}都市增长速度高于一般城镇{}它们建立时规模更大
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}城镇发展：
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :建筑物
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :增建城镇建筑
+STR_FOUND_TOWN_EXPAND_ROADS                                     :道路
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :延展城镇道路
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}城镇道路布局：
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}为此城镇选择使用的道路布局
@@ -3314,8 +3319,8 @@ STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}读取�
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}保存高度图
 STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}加载城镇数据
 STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}点击这里返回默认的游戏存档目录
-STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} 可用
-STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}驱动器、目录和游戏存档列表
+STR_SAVELOAD_BYTES_FREE                                         :{BLACK}剩余空间：{BYTES}
+STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}硬盘、目录和游戏存档列表
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}保存当前游戏用的存档名字
 STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}删除
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}删除选定的游戏存档
@@ -3329,7 +3334,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}游戏�
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}无可用信息
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}：{WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF：{WHITE}{STRING}
-STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}关键字词：
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}搜索：
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}覆盖文件
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}你确定要覆盖已有文件吗？
 STR_SAVELOAD_DIRECTORY                                          :{STRING}（目录）
@@ -3339,7 +3344,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}为存�
 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}地图生成器
-STR_MAPGEN_MAPSIZE                                              :{BLACK}地图规模：
+STR_MAPGEN_MAPSIZE                                              :{BLACK}地图大小：
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}选择地图尺寸（单位：格）。可用的数值会略小
 STR_MAPGEN_BY                                                   :{BLACK}×
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}城镇数量：
@@ -3527,7 +3532,7 @@ STR_SAVE_PRESET_SAVE                                            :{BLACK}保存
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}以当前选定的名称保存预设
 
 # NewGRF parameters window
-STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}改变基本图形组参数
+STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}改变基础图形组参数
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}调整 NewGRF 参数
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}重置
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}全部参数恢复默认
@@ -3668,7 +3673,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}为标�
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}城镇（{COMMA} 座，共 {COMMA}座）
-STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- 没有 -
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- 无 -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK}（{COMMA}）
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW}（都市）{BLACK}（{COMMA}）
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK} 城镇名称 - 点击名称可以将屏幕中心{}移动到城镇所在的位置。按住 <Ctrl> 点选将会在新视点中显示城镇位置
@@ -3697,6 +3702,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}城镇�
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}扩展
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}增加城镇人口和面积
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}扩展建成区
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}增建城镇建筑
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}延展道路
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}延展城镇道路
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}删除
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}完全删除这座城镇
 
@@ -4134,25 +4143,25 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :新汽车
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :购买船只
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :购买飞机
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}售价：{GOLD}{CURRENCY_LONG}{BLACK} 重量：{GOLD}{WEIGHT_SHORT}
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}售价：{GOLD}{CURRENCY_LONG}{BLACK}　重量：{GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}售价：{GOLD}{CURRENCY_LONG}{BLACK}（改装花费：{GOLD}{CURRENCY_LONG}{BLACK}）重量：{GOLD}{WEIGHT_SHORT}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}速度：{GOLD}{VELOCITY}{BLACK} 功率：{GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}速度：{GOLD}{VELOCITY}{BLACK}　功率：{GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}速度：{GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}海上速度：{GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}运河、河流速度：{GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST_YEAR                              :{BLACK}运行费用：{GOLD}{CURRENCY_LONG}/年
 STR_PURCHASE_INFO_RUNNINGCOST_PERIOD                            :{BLACK}运行费用：{GOLD}{CURRENCY_LONG}/周期
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}容量：{GOLD}{CARGO_LONG} {STRING}
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}容量：{GOLD}{CARGO_LONG}{STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :（可改装）
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}设计日期：{GOLD}{NUM}{BLACK} 寿命：{GOLD}{COMMA} 年
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}设计日期：{GOLD}{NUM}{BLACK}　寿命：{GOLD}{COMMA} 年
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}最大可靠性：{GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}售价：{GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_COST_REFIT                                    :{BLACK}售价：{GOLD}{CURRENCY_LONG}{BLACK}（改装费用：{GOLD}{CURRENCY_LONG}{BLACK}）
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}重量：{GOLD}{WEIGHT_SHORT}（{WEIGHT_SHORT}）
-STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}售价：{GOLD}{CURRENCY_LONG}{BLACK} 速度：{GOLD}{VELOCITY}
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}售价：{GOLD}{CURRENCY_LONG}{BLACK}　速度：{GOLD}{VELOCITY}
 STR_PURCHASE_INFO_COST_REFIT_SPEED                              :{BLACK}售价：{GOLD}{CURRENCY_LONG}{BLACK}（改装费用：{GOLD}{CURRENCY_LONG}{BLACK}）速度：{GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}容量：{GOLD}{CARGO_LONG}、{CARGO_LONG}
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}功率：{GOLD}+{POWER}{BLACK} 重量：{GOLD}+{WEIGHT_SHORT}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}功率：{GOLD}+{POWER}{BLACK}　重量：{GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}可改装为：{GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :所有类型
 STR_PURCHASE_INFO_NONE                                          :无
@@ -4165,7 +4174,7 @@ STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}飞机�
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :所有货物类型
 STR_CARGO_TYPE_FILTER_FREIGHT                                   :货运
-STR_CARGO_TYPE_FILTER_NONE                                      :没有
+STR_CARGO_TYPE_FILTER_NONE                                      :无
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}列车选择列表。点击载具以展示信息。按住 <Ctrl> 键点选以显示 / 隐藏当前载具
@@ -4334,12 +4343,12 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :电车
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :飞机
 STR_ENGINE_PREVIEW_SHIP                                         :船舶
 
-STR_ENGINE_PREVIEW_COST_WEIGHT                                  :售价：{CURRENCY_LONG} 重量：{WEIGHT_SHORT}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :售价：{CURRENCY_LONG} 最高速度：{VELOCITY}
-STR_ENGINE_PREVIEW_SPEED_POWER                                  :速度：{VELOCITY} 功率：{POWER}
-STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :速度：{VELOCITY}  功率：{POWER}  最大牵引力：{FORCE}
+STR_ENGINE_PREVIEW_COST_WEIGHT                                  :售价：{CURRENCY_LONG}　重量：{WEIGHT_SHORT}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :售价：{CURRENCY_LONG}　最高速度：{VELOCITY}
+STR_ENGINE_PREVIEW_SPEED_POWER                                  :速度：{VELOCITY}　功率：{POWER}
+STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :速度：{VELOCITY}　功率：{POWER}　最大牵引力：{FORCE}
 STR_ENGINE_PREVIEW_TYPE                                         :飞机类型：{STRING}
-STR_ENGINE_PREVIEW_TYPE_RANGE                                   :飞机类别：{STRING}   航程：{COMMA} 格
+STR_ENGINE_PREVIEW_TYPE_RANGE                                   :飞机类别：{STRING}　航程：{COMMA} 格
 STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :运行费用：{CURRENCY_LONG}/年
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :运行费用：{CURRENCY_LONG}/周期
 STR_ENGINE_PREVIEW_CAPACITY                                     :容量：{CARGO_LONG}
@@ -4454,7 +4463,7 @@ STR_VEHICLE_STATUS_CRASHED                                      :{RED}已撞毁�
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}抛锚
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}停运
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}{VELOCITY} - 正在停止
-STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}没有电力
+STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}没有动力
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}等待空余轨道
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}距离下一目的地过远
 
@@ -4489,18 +4498,18 @@ STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}年龄�
 STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}年龄：{LTBLUE}{STRING}{BLACK}   运行费用：{LTBLUE}{CURRENCY_LONG}/周期
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}最高速度：{LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}最高速度：{LTBLUE}{VELOCITY} {BLACK}飞机种类：{LTBLUE}{STRING}
-STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}最高速度：{LTBLUE}{VELOCITY} {BLACK}飞机类型：{LTBLUE}{STRING} {BLACK}航程：{LTBLUE}{COMMA} 格
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}重量：{LTBLUE}{WEIGHT_SHORT} {BLACK}功率：{LTBLUE}{POWER}{BLACK} 最高速度：{LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}重量：{LTBLUE}{WEIGHT_SHORT} {BLACK}功率：{LTBLUE}{POWER}{BLACK} 最高速度：{LTBLUE}{VELOCITY} {BLACK}最大牵引力：{LTBLUE}{FORCE}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}最高速度：{LTBLUE}{VELOCITY}　{BLACK}飞机种类：{LTBLUE}{STRING}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}最高速度：{LTBLUE}{VELOCITY}　{BLACK}飞机类型：{LTBLUE}{STRING}　{BLACK}航程：{LTBLUE}{COMMA} 格
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}重量：{LTBLUE}{WEIGHT_SHORT}　{BLACK}功率：{LTBLUE}{POWER}{BLACK}　最高速度：{LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}重量：{LTBLUE}{WEIGHT_SHORT}　{BLACK}功率：{LTBLUE}{POWER}{BLACK}　最高速度：{LTBLUE}{VELOCITY}　{BLACK}最大牵引力：{LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}今年损益：{LTBLUE}{CURRENCY_LONG}（去年损益：{CURRENCY_LONG}）
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}今年损益：{LTBLUE}{CURRENCY_LONG}（去年损益：{CURRENCY_LONG}）{BLACK}最小功率：{LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}本期损益：{LTBLUE}{CURRENCY_LONG}（上期损益：{CURRENCY_LONG}）
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}本期损益：{LTBLUE}{CURRENCY_LONG}（上期损益：{CURRENCY_LONG}）{BLACK}最小功率：{LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}可靠性：{LTBLUE}{COMMA}%  {BLACK}上次维护后抛锚的次数：{LTBLUE}{COMMA}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}可靠性：{LTBLUE}{COMMA}%　{BLACK}上次维护后抛锚的次数：{LTBLUE}{COMMA}
 
-STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}建造年份：{LTBLUE}{NUM}{BLACK} 价值：{LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE}　{BLACK}购置于：{LTBLUE}{NUM}{BLACK}　价值：{LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}容量：{LTBLUE}无{STRING}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}容量：{LTBLUE}{CARGO_LONG}{STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}容量：{LTBLUE}{CARGO_LONG}{STRING}（×{NUM}）
@@ -4508,11 +4517,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}容量�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}转运账面收入：{LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}每 {LTBLUE}{COMMA}{NBSP}天进行维护{BLACK}   上次维护日期：{LTBLUE}{STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}每 {LTBLUE}{COMMA}{NBSP}天{BLACK}维护一次　{STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}维护间隔：{LTBLUE}{COMMA}{NBSP}分钟{BLACK} {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}维护间隔：{LTBLUE}{COMMA}%{BLACK} {STRING}
-STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :最近维护：{LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :最近维护：{LTBLUE}{NUM} 分钟前
+STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :上次维护：{LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :上次维护：{LTBLUE}{NUM} 分钟前
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}将维护间隔增加 10 天。按住 <Ctrl> 点击可将维护间隔增加 5 天
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}将维护间隔增加 5 分。按住 <Ctrl> 点击可将维护间隔增加 1 分
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}将维护间隔增加 10%。按住 <Ctrl> 点击可将维护间隔增加 5%
@@ -4533,12 +4542,12 @@ STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}命名�
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}命名飞机
 
 # Extra buttons for train details windows
-STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   建造年份：{LTBLUE}{NUM}{BLACK} 价值：{LTBLUE}{CURRENCY_LONG}
-STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   价值：{LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}　购置于：{LTBLUE}{NUM}{BLACK}　价值：{LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}　价值：{LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}列车总容量：
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG}（{CARGO_SHORT}）
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}{CARGO_LONG}（{CARGO_SHORT}）（×{NUM}）
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG}（最大容量：{CARGO_SHORT}）
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}{CARGO_LONG}（最大容量：{CARGO_SHORT}，重量系数：×{NUM}）
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}空
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG}（来自 {STATION}）
@@ -4945,9 +4954,9 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}预计�
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}保存仍在继续{}请耐心等待！
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}自动保存失败
-STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}不能读取驱动器
+STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}无法读取硬盘
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}保存游戏失败……
-STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}不能删除文件
+STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}无法删除文件
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}读取游戏失败……
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :内部错误：{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :无法识别的存档 - {STRING}
@@ -5160,8 +5169,8 @@ STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :铁路类型不
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}无法移动载具……
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}后端车头一定要跟着前端车头
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}找不到附近的车库
-STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}在附近找不到车库
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}无法找到前往附近车库的路径
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}无法在附近找到车库
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :车库类型错误
 
@@ -5246,7 +5255,7 @@ STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}此处�
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}必须先拆除隧道
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}规划位置中有另一条隧道
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}隧道出口将超出地图边界
-STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}隧道出口的地形无法处理
+STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}无法挖掘隧道出口
 STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}……隧道过长
 
 # Object related errors
@@ -5441,7 +5450,7 @@ STR_TOWN_BUILDING_NAME_STATUE_1                                 :雕像
 STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :喷泉
 STR_TOWN_BUILDING_NAME_PARK_1                                   :公园
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :写字楼
-STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :商场与写字楼
+STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :商店与办公室
 STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :现代写字楼
 STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :仓库
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :写字楼
@@ -5451,8 +5460,8 @@ STR_TOWN_BUILDING_NAME_COTTAGES_1                               :农舍
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :住宅
 STR_TOWN_BUILDING_NAME_FLATS_1                                  :公寓
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :高层写字楼
-STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :商场和写字楼
-STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :商场和写字楼
+STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :商店与办公室
+STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :商店与办公室
 STR_TOWN_BUILDING_NAME_THEATER_1                                :剧院
 STR_TOWN_BUILDING_NAME_STADIUM_2                                :体育场
 STR_TOWN_BUILDING_NAME_OFFICES_1                                :写字楼
@@ -5920,5 +5929,9 @@ STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING}（{VEL
 STR_BADGE_NAME_LIST                                             :{STRING}：{GOLD}{STRING}
 STR_BADGE_CONFIG_MENU_TOOLTIP                                   :开启徽章设定
 STR_BADGE_CONFIG_RESET                                          :重置
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}徽章图标
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}筛选徽章
 STR_BADGE_CONFIG_PREVIEW                                        :预览图
 STR_BADGE_CONFIG_NAME                                           :名称
+STR_BADGE_FILTER_ANY_LABEL                                      :{STRING}：所有
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING}：{STRING}
