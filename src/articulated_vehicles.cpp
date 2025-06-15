@@ -80,19 +80,17 @@ uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
 	 * either, so it doesn't matter how many articulated parts there are. */
 	if (!Vehicle::CanAllocateItem()) return 0;
 
-	Vehicle *v = nullptr;
+	std::unique_ptr<Vehicle> v;
 	if (!purchase_window) {
-		v = new Vehicle();
+		v = std::make_unique<Vehicle>();
 		v->engine_type = engine_type;
 		v->owner = _current_company;
 	}
 
 	uint i;
 	for (i = 1; i < MAX_ARTICULATED_PARTS; i++) {
-		if (GetNextArticulatedPart(i, engine_type, v) == EngineID::Invalid()) break;
+		if (GetNextArticulatedPart(i, engine_type, v.get()) == EngineID::Invalid()) break;
 	}
-
-	delete v;
 
 	return i - 1;
 }
