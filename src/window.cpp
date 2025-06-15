@@ -3665,8 +3665,13 @@ void HandleGamepadScrolling(float stick_x, float stick_y, float max_axis_value)
 
 		/* Apply scrolling to the target viewport */
 		if (target_window != nullptr && target_window->viewport != nullptr) {
-			/* Cancel vehicle following when gamepad scrolling */
-			target_window->viewport->CancelFollow(*target_window);
+			/* Check if the viewport is following a vehicle (similar to mouse scroll behavior) */
+			if (target_window == GetMainWindow() && target_window->viewport->follow_vehicle != VehicleID::Invalid()) {
+				/* If following a vehicle, center on it and stop following (like mouse scroll) */
+				const Vehicle *veh = Vehicle::Get(target_window->viewport->follow_vehicle);
+				ScrollMainWindowTo(veh->x_pos, veh->y_pos, veh->z_pos, true); // This also resets follow_vehicle
+				return; // Don't apply gamepad scroll, just like mouse scroll returns ES_NOT_HANDLED
+			}
 
 			/* Apply the scroll using the same method as keyboard scrolling */
 			target_window->viewport->dest_scrollpos_x += ScaleByZoom(delta_x, target_window->viewport->zoom);
