@@ -9,8 +9,10 @@
 
 #include "stdafx.h"
 #include "gfx_layout_icu.h"
+#include "gfx_layout_fallback.h"
 
 #include "debug.h"
+#include "string_func.h"
 #include "strings_func.h"
 #include "language.h"
 #include "table/control_codes.h"
@@ -51,6 +53,7 @@ public:
 	ICURun(int start, int length, UBiDiLevel level, UScriptCode script = USCRIPT_UNKNOWN, Font *font = nullptr) : start(start), length(length), level(level), script(script), font(font) {}
 
 	void Shape(UChar *buff, size_t length);
+	void FallbackShape(UChar *buff);
 };
 
 /**
@@ -76,7 +79,7 @@ public:
 		std::span<const int> GetGlyphToCharMap() const override { return this->glyph_to_char; }
 
 		const Font *GetFont() const override { return this->font; }
-		int GetLeading() const override { return this->font->fc->GetHeight(); }
+		int GetLeading() const override { return GetCharacterHeight(this->font->fc->GetSize()); }
 		int GetGlyphCount() const override { return this->glyphs.size(); }
 		int GetAdvance() const { return this->total_advance; }
 	};
@@ -135,10 +138,50 @@ ICUParagraphLayout::ICUVisualRun::ICUVisualRun(const ICURun &run, int x) :
 	assert(!run.positions.empty());
 	this->positions.reserve(run.positions.size());
 
+	int y_offset = this->font->fc->GetGlyphYOffset();
 	/* Copy positions, moving x coordinate by x offset. */
 	for (const auto &pos : run.positions) {
-		this->positions.emplace_back(pos.left + x, pos.right + x, pos.top);
+		this->positions.emplace_back(pos.left + x, pos.right + x, pos.top + y_offset);
 	}
+}
+
+/**
+ * Manually shape a run for built-in non-truetype fonts.
+ * Similar to but not quite the same as \a UniscribeRun::FallbackShape.
+ * @param buff The complete buffer of the run.
+ */
+void ICURun::FallbackShape(UChar *buff)
+{
+	this->glyphs.reserve(this->length);
+	this->glyph_to_char.reserve(this->length);
+
+	/* Read each UTF-16 character, mapping to an appropriate glyph. */
+	for (int i = this->start; i < this->start + this->length; ++i) {
+		char32_t c = Utf16DecodeChar(buff + i);
+		if (this->level & 1) c = SwapRtlPairedCharacters(c);
+		this->glyphs.emplace_back(this->font->fc->MapCharToGlyph(c));
+		this->glyph_to_char.push_back(i);
+		if (Utf16IsLeadSurrogate(*(buff + i))) ++i;
+	}
+
+	/* Reverse the sequence if this run is RTL. */
+	if (this->level & 1) {
+		std::reverse(std::begin(this->glyphs), std::end(this->glyphs));
+		std::reverse(std::begin(this->glyph_to_char), std::end(this->glyph_to_char));
+	}
+
+	this->positions.reserve(this->glyphs.size());
+
+	/* Set positions of each glyph. */
+	int y_offset = (GetCharacterHeight(this->font->fc->GetSize()) - this->font->fc->GetHeight()) / 2;
+	int advance = 0;
+	for (const GlyphID glyph : this->glyphs) {
+		int x_advance = this->font->fc->GetGlyphWidth(glyph);
+		this->positions.emplace_back(advance, advance + x_advance - 1, y_offset);
+		this->advance.push_back(x_advance);
+		advance += x_advance;
+	}
+	this->total_advance = advance;
 }
 
 /**
@@ -149,6 +192,17 @@ ICUParagraphLayout::ICUVisualRun::ICUVisualRun(const ICURun &run, int x) :
  */
 void ICURun::Shape(UChar *buff, size_t buff_length)
 {
+	/* Make sure any former run is lost. */
+	this->glyphs.clear();
+	this->glyph_to_char.clear();
+	this->positions.clear();
+	this->advance.clear();
+
+	if (this->font->fc->IsBuiltInFont()) {
+		this->FallbackShape(buff);
+		return;
+	}
+
 	auto hbfont = hb_ft_font_create_referenced(*(static_cast<const FT_Face *>(font->fc->GetOSHandle())));
 	/* Match the flags with how we render the glyphs. */
 	hb_ft_font_set_load_flags(hbfont, GetFontAAState() ? FT_LOAD_TARGET_NORMAL : FT_LOAD_TARGET_MONO);
@@ -170,12 +224,6 @@ void ICURun::Shape(UChar *buff, size_t buff_length)
 	auto glyph_info = hb_buffer_get_glyph_infos(hbbuf, &glyph_count);
 	auto glyph_pos = hb_buffer_get_glyph_positions(hbbuf, &glyph_count);
 
-	/* Make sure any former run is lost. */
-	this->glyphs.clear();
-	this->glyph_to_char.clear();
-	this->positions.clear();
-	this->advance.clear();
-
 	/* Reserve space, as we already know the size. */
 	this->glyphs.reserve(glyph_count);
 	this->glyph_to_char.reserve(glyph_count);
@@ -183,20 +231,12 @@ void ICURun::Shape(UChar *buff, size_t buff_length)
 	this->advance.reserve(glyph_count);
 
 	/* Prepare the glyphs/position. ICUVisualRun will give the position an offset if needed. */
+	int y_offset = (GetCharacterHeight(this->font->fc->GetSize()) - this->font->fc->GetHeight()) / 2;
 	hb_position_t advance = 0;
 	for (unsigned int i = 0; i < glyph_count; i++) {
-		int x_advance;
-
-		if (buff[glyph_info[i].cluster] >= SCC_SPRITE_START && buff[glyph_info[i].cluster] <= SCC_SPRITE_END && glyph_info[i].codepoint == 0) {
-			auto glyph = this->font->fc->MapCharToGlyph(buff[glyph_info[i].cluster]);
-			x_advance = this->font->fc->GetGlyphWidth(glyph);
-			this->glyphs.push_back(glyph);
-			this->positions.emplace_back(advance, advance + x_advance - 1, (this->font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(this->font->fc->GetSize()))) / 2); // Align sprite font to centre
-		} else {
-			x_advance = glyph_pos[i].x_advance / FONT_SCALE;
-			this->glyphs.push_back(glyph_info[i].codepoint);
-			this->positions.emplace_back(glyph_pos[i].x_offset / FONT_SCALE + advance, glyph_pos[i].x_offset / FONT_SCALE + advance + x_advance - 1, glyph_pos[i].y_offset / FONT_SCALE);
-		}
+		int x_advance = glyph_pos[i].x_advance / FONT_SCALE;
+		this->glyphs.push_back(glyph_info[i].codepoint);
+		this->positions.emplace_back(glyph_pos[i].x_offset / FONT_SCALE + advance, glyph_pos[i].x_offset / FONT_SCALE + advance + x_advance - 1, glyph_pos[i].y_offset / FONT_SCALE + y_offset);
 
 		this->glyph_to_char.push_back(glyph_info[i].cluster);
 		this->advance.push_back(x_advance);
@@ -358,11 +398,6 @@ std::vector<ICURun> ItemizeStyle(std::vector<ICURun> &runs_current, FontMap &fon
 	size_t length = buff_end - buff;
 	/* Can't layout an empty string. */
 	if (length == 0) return nullptr;
-
-	/* Can't layout our in-built sprite fonts. */
-	for (auto const &[position, font] : font_mapping) {
-		if (font->fc->IsBuiltInFont()) return nullptr;
-	}
 
 	auto runs = ItemizeBidi(buff, length);
 	runs = ItemizeScript(buff, length, runs);
