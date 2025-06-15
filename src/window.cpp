@@ -3641,16 +3641,36 @@ void HandleGamepadScrolling(float stick_x, float stick_y, float max_axis_value)
 		return;
 	}
 
-	/* Apply scrolling to the main viewport */
+	/* Apply scrolling based on cursor position */
 	if (_game_mode != GM_MENU && _game_mode != GM_BOOTSTRAP) {
-		Window *main_window = GetMainWindow();
-		if (main_window != nullptr && main_window->viewport != nullptr) {
+		Window *target_window = nullptr;
+
+		/* Check if cursor is over a window with a viewport */
+		Window *w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
+		if (w != nullptr && w->viewport != nullptr) {
+			/* Check if cursor is actually over the viewport area within the window */
+			Point pt = { _cursor.pos.x - w->left, _cursor.pos.y - w->top };
+			if (pt.x >= w->viewport->left - w->left &&
+			    pt.x < w->viewport->left - w->left + w->viewport->width &&
+			    pt.y >= w->viewport->top - w->top &&
+			    pt.y < w->viewport->top - w->top + w->viewport->height) {
+				target_window = w;
+			}
+		}
+
+		/* If no viewport under cursor, use main window */
+		if (target_window == nullptr) {
+			target_window = GetMainWindow();
+		}
+
+		/* Apply scrolling to the target viewport */
+		if (target_window != nullptr && target_window->viewport != nullptr) {
 			/* Cancel vehicle following when gamepad scrolling */
-			main_window->viewport->CancelFollow(*main_window);
+			target_window->viewport->CancelFollow(*target_window);
 
 			/* Apply the scroll using the same method as keyboard scrolling */
-			main_window->viewport->dest_scrollpos_x += ScaleByZoom(delta_x, main_window->viewport->zoom);
-			main_window->viewport->dest_scrollpos_y += ScaleByZoom(delta_y, main_window->viewport->zoom);
+			target_window->viewport->dest_scrollpos_x += ScaleByZoom(delta_x, target_window->viewport->zoom);
+			target_window->viewport->dest_scrollpos_y += ScaleByZoom(delta_y, target_window->viewport->zoom);
 		}
 	}
 }
