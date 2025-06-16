@@ -2264,9 +2264,11 @@ void NWidgetBackground::SetupSmallestSize(Window *w)
 		if (w != nullptr) { // A non-nullptr window pointer acts as switch to turn dynamic widget size on.
 			if (this->type == WWT_FRAME || this->type == WWT_INSET) {
 				std::string text = GetStringForWidget(w, this);
-				Dimension background = GetStringBoundingBox(text, this->text_size);
-				background.width += (this->type == WWT_FRAME) ? (WidgetDimensions::scaled.frametext.Horizontal()) : (WidgetDimensions::scaled.inset.Horizontal());
-				d = maxdim(d, background);
+				if (!text.empty()) {
+					Dimension background = GetStringBoundingBox(text, this->text_size);
+					background.width += (this->type == WWT_FRAME) ? (WidgetDimensions::scaled.frametext.Horizontal()) : (WidgetDimensions::scaled.inset.Horizontal());
+					d = maxdim(d, background);
+				}
 			}
 			if (this->index >= 0) {
 				Dimension padding;
