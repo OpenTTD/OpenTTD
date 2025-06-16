@@ -224,7 +224,7 @@ struct NewGRFParametersWindow : public Window {
 				this->line_height = std::max(SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)) + padding.height;
 
 				resize.width = 1;
-				resize.height = this->line_height;
+				fill.height = resize.height = this->line_height;
 				size.height = 5 * this->line_height;
 				break;
 
@@ -730,7 +730,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			case WID_NS_FILE_LIST:
 			{
 				Dimension d = maxdim(GetScaledSpriteSize(SPR_SQUARE), GetScaledSpriteSize(SPR_WARNING_SIGN));
-				resize.height = std::max<uint>(d.height + 2U, GetCharacterHeight(FS_NORMAL));
+				fill.height = resize.height = std::max<uint>(d.height + 2U, GetCharacterHeight(FS_NORMAL));
 				size.height = std::max(size.height, padding.height + 6 * resize.height);
 				break;
 			}
@@ -738,7 +738,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			case WID_NS_AVAIL_LIST:
 			{
 				Dimension d = maxdim(GetScaledSpriteSize(SPR_SQUARE), GetScaledSpriteSize(SPR_WARNING_SIGN));
-				resize.height = std::max<uint>(d.height + 2U, GetCharacterHeight(FS_NORMAL));
+				fill.height = resize.height = std::max<uint>(d.height + 2U, GetCharacterHeight(FS_NORMAL));
 				size.height = std::max(size.height, padding.height + 8 * resize.height);
 				break;
 			}
@@ -2041,12 +2041,11 @@ struct SavePresetWindow : public Window {
 	{
 		switch (widget) {
 			case WID_SVP_PRESET_LIST: {
-				resize.height = GetCharacterHeight(FS_NORMAL);
+				fill.height = resize.height = GetCharacterHeight(FS_NORMAL);
 				size.height = 0;
 				for (uint i = 0; i < this->presets.size(); i++) {
 					Dimension d = GetStringBoundingBox(this->presets[i]);
 					size.width = std::max(size.width, d.width + padding.width);
-					resize.height = std::max(resize.height, d.height);
 				}
 				size.height = ClampU((uint)this->presets.size(), 5, 20) * resize.height + padding.height;
 				break;

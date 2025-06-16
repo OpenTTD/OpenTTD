@@ -822,7 +822,7 @@ public:
 	{
 		switch (widget) {
 			case WID_O_ORDER_LIST:
-				resize.height = GetCharacterHeight(FS_NORMAL);
+				fill.height = resize.height = GetCharacterHeight(FS_NORMAL);
 				size.height = 6 * resize.height + padding.height;
 				break;
 

@@ -141,7 +141,7 @@ struct GSConfigWindow : public Window {
 			case WID_GSC_SETTINGS:
 				this->line_height = std::max(SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)) + padding.height;
 				resize.width = 1;
-				resize.height = this->line_height;
+				fill.height = resize.height = this->line_height;
 				size.height = 5 * this->line_height;
 				break;
 
