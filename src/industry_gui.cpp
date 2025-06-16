@@ -1343,10 +1343,6 @@ static bool CargoFilter(const Industry * const *industry, const std::pair<CargoT
 
 static GUIIndustryList::FilterFunction * const _industry_filter_funcs[] = { &CargoFilter };
 
-/** Enum referring to the Hotkeys in the industry directory window */
-enum IndustryDirectoryHotkeys : int32_t {
-	IDHK_FOCUS_FILTER_BOX, ///< Focus the filter box
-};
 /**
  * The list of industries.
  */
@@ -1921,21 +1917,8 @@ public:
 		}
 	}
 
-	EventState OnHotkey(int hotkey) override
-	{
-		switch (hotkey) {
-			case IDHK_FOCUS_FILTER_BOX:
-				this->SetFocusedWidget(WID_ID_FILTER);
-				SetFocusedWindow(this); // The user has asked to give focus to the text box, so make sure this window is focused.
-				break;
-			default:
-				return ES_NOT_HANDLED;
-		}
-		return ES_HANDLED;
-	}
-
 	static inline HotkeyList hotkeys {"industrydirectory", {
-		Hotkey('F', "focus_filter_box", IDHK_FOCUS_FILTER_BOX),
+		Hotkey('F', "focus_filter_box", WID_ID_FILTER),
 	}};
 };
 
