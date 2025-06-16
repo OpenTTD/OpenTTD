@@ -197,6 +197,40 @@ static std::string KeycodeToString(uint16_t keycode)
 }
 
 /**
+ * A short representation of the keycode, for printing as a hotkey hint.
+ * @param keycode The keycode to convert to a string.
+ * @return A string representation of this keycode.
+ */
+std::string KeycodeToShortString(uint16_t keycode)
+{
+	std::string str;
+	if (keycode & WKC_SHIFT) {
+		// TODO
+		str += "»";
+	}
+	if (keycode & WKC_CTRL) {
+		str += "^";
+	}
+	if (keycode & WKC_ALT) {
+		str += "A+";
+	}
+	if (keycode & WKC_META) {
+		str += "M+";
+	}
+	keycode = keycode & ~WKC_SPECIAL_KEYS;
+
+	for (const auto &kn : _keycode_to_name) {
+		if (kn.keycode == keycode) {
+			str += kn.name;
+			return str;
+		}
+	}
+	assert(keycode < 128);
+	str.push_back(keycode);
+	return str;
+}
+
+/**
  * Convert all keycodes attached to a hotkey to a single string. If multiple
  * keycodes are attached to the hotkey they are split by a comma.
  * @param hotkey The keycodes of this hotkey need to be converted to a string.
@@ -350,3 +384,12 @@ void HandleGlobalHotkeys([[maybe_unused]] char32_t key, uint16_t keycode)
 	}
 }
 
+const Hotkey* HotkeyList::GetHotkeyByNum(int num) const
+{
+	for (const Hotkey &hotkey : this->items) {
+		if (hotkey.num == num) {
+			return &hotkey;
+		}
+	}
+	return (const Hotkey*) nullptr;
+}

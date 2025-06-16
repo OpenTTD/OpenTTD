@@ -27,6 +27,9 @@
 
 #include "safeguards.h"
 
+#include "widgets/toolbar_widget.h"
+#include "hotkeys.h"
+
 WidgetDimensions WidgetDimensions::scaled = {};
 
 static std::string GetStringForWidget(const Window *w, const NWidgetCore *nwid, bool secondary = false)
@@ -3108,6 +3111,63 @@ void NWidgetLeaf::Draw(const Window *w)
 	}
 
 	DrawOutline(w, this);
+
+	// TODO: Draw hints only if Alt is being held.
+	if (!this->IsDisabled()) {
+		this->DrawHotkeyHint(w);
+	}
+}
+
+void NWidgetLeaf::DrawHotkeyHint(const Window* w) {
+	// TODO: Use global hotkey for autoroads for rail, road, tram, etc. if
+	// they have been set.
+
+	// TODO: Rect is wrong for edit boxes, and the kind of hint we're showing
+	// will look bad anyway.
+	Rect r = this->GetCurrentRect().Shrink(1);
+	if (w->window_desc.cls == WC_MAIN_TOOLBAR && this->index == WID_TN_FAST_FORWARD) {
+		// Special-case hint text for Fast-forwards because it's not really a hotkey
+		DrawStringMultiLine(r, "Tab", TC_WHITE, SA_LEFT | SA_BOTTOM, false, FS_NORMAL);
+	} else if (w->window_desc.hotkeys != nullptr) {
+		// Widget IDs can coincidentally overlap with hotkey IDs if
+		// they aren't assigned properly. Avoid this.
+		auto hk = w->window_desc.hotkeys->GetHotkeyByNum(this->index);
+		if (hk != nullptr) {
+			if (hk->keycodes.size()) {
+				// Find the "best" of the available keycodes
+				auto keycode = *(hk->keycodes.begin());
+				for (auto k : hk->keycodes) {
+					if (!(keycode & WKC_GLOBAL_HOTKEY) && (k & WKC_GLOBAL_HOTKEY)) {
+						keycode = k;
+					} else if ('A' <= (k & ~WKC_SPECIAL_KEYS) && (k & ~WKC_SPECIAL_KEYS) <= 'Z') {
+						keycode = k;
+					}
+				}
+
+				// Convert to a string
+				// TODO: Glyphs for Shift, Alt, etc. Colour for global.
+				//   - On screen keyboard has a sprite for shift.
+				auto s = KeycodeToShortString(keycode);
+
+				// Choose the font-size
+				auto availableSize = Dimension(r.right - r.left, r.bottom - r.top);
+				auto desiredSize = GetStringBoundingBox(s, FS_NORMAL);
+				auto fontsize = FS_NORMAL;
+				if (availableSize < desiredSize) {
+					fontsize = FS_SMALL;
+				}
+
+				// Display the hints!
+				// TODO: not as readable as my mockup :(
+				//   - Outline or a bolder font could help.
+				auto colour = TC_WHITE;
+				if (keycode & WKC_GLOBAL_HOTKEY) {
+					colour = TC_YELLOW;
+				}
+				DrawStringMultiLine(r, s, colour, SA_LEFT | SA_BOTTOM, false, fontsize);
+			}
+		}
+	}
 }
 
 /**
