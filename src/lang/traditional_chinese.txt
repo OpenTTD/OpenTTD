@@ -3075,7 +3075,7 @@ STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}城市�
 
 STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}市鎮擴展：
 STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :建築物
-STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :增建市鎮建築物
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :增建市鎮建築
 STR_FOUND_TOWN_EXPAND_ROADS                                     :道路
 STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :擴展市鎮道路
 
@@ -3702,8 +3702,8 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}修改�
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}擴展
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}擴大市鎮大小
-STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}擴展建築物
-STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}增建市鎮建築物
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}擴展已發展區域
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}增建市鎮建築
 STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}擴展道路
 STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}擴展市鎮道路
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}刪除
@@ -5934,4 +5934,4 @@ STR_BADGE_CONFIG_FILTERS                                        :{WHITE}篩選�
 STR_BADGE_CONFIG_PREVIEW                                        :預覽圖
 STR_BADGE_CONFIG_NAME                                           :名稱
 STR_BADGE_FILTER_ANY_LABEL                                      :任何{STRING}
-STR_BADGE_FILTER_IS_LABEL                                       :{STRING}是{STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING}：{STRING}

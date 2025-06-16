@@ -895,7 +895,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Nova técnica de cultivo leva à duplicação da produção {G 0 em no na nos nas} {INDUSTRY}!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produção de {STRING} {G 1 em no na nos nas} {INDUSTRY} aumenta {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}Produção d{G 0 e o a os as} {INDUSTRY} reduzida em 50%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Praga de insetos ataca {G 0 "" "o " "a " "os " "as "}{INDUSTRY}!{}A produção diminui 50%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Praga de insetos causa estragos {G 0 em no na nos nas} {INDUSTRY}!{}A produção diminui 50%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produção de {STRING} {G 1 em no na nos nas} {INDUSTRY} diminui {COMMA}%!
 
 ###length VEHICLE_TYPES
@@ -1131,9 +1131,9 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Modo de 
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moeda personalizada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taxa de conversão: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
-STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Diminuir a quantidade da sua moeda para uma Libra (£)
+STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Diminuir o valor da sua moeda em relação a uma Libra Britânica (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Aumentar a quantidade da sua moeda para uma Libra (£)
-STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Definir a taxa de câmbio da sua moeda para uma Libra (£)
+STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Definir a taxa de conversão da sua moeda para uma Libra Britânica (£)
 
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Define o separador para a sua moeda
@@ -1143,9 +1143,9 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Definir 
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufixo: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Definir o sufixo para a sua moeda
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Mudar para Euro: {ORANGE}{NUM}
-STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Mudar para Euro: {ORANGE}nunca
-STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Definir o ano para mudar para Euro
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Mudar para o Euro: {ORANGE}{NUM}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Mudar para o Euro: {ORANGE}Nunca
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Definir o ano para mudar para o Euro
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Mudar para Euro mais cedo
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Mudar para Euro mais tarde
 
@@ -1336,13 +1336,13 @@ STR_CONFIG_SETTING_CITY_APPROVAL                                :Atitude da auto
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Escolha de que forma o ruído e os danos ambientais causados pelas empresas afetam a classificação da sua localidade e futuras ações de construção na localidade
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Limite de altura do mapa: {STRING}
-STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Define a altura máxima do terreno do mapa. Com "(auto)" um bom valor será escolhido após a geração do terreno
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Define a altura máxima do terreno do mapa. Com "(automático)" um valor adequado será escolhido após a geração do terreno
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(auto)
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(automático)
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Não pode definir o limite de altura do mapa para este valor. Pelo menos uma montanha no mapa é mais alta
 
-STR_CONFIG_SETTING_AUTOSLOPE                                    :Permite alteração de terra sob edifícios, vias, etc. (auto-declive): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir desníveis de terra sob edifícios, vias, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permite alteração de terra sob edifícios e vias sem os remover
 
 STR_CONFIG_SETTING_CATCHMENT                                    :Dimensionamento mais realista de áreas de abrangência: {STRING}
@@ -1351,15 +1351,15 @@ STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Haver diferente
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Estações da empresa podem servir indústrias com estações neutras anexadas: {STRING}
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Quando ativo, indústrias com estações incluídas (com as Petrolíferas) podem ser servidas por estações-da-empresa construídas nas redondezas. Quando inativo, estas indústrias só podem ser servidas pela sua própria estação. Qualquer estação da empresa não poderá servir a indústria, nem a estação incluída pode servir outra entidade senão a própria indústria
 
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permite remover mais estradas, pontes e túneis detidos pela cidade: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permitir remover mais estradas, pontes e túneis detidos pela cidade: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Facilitar a remoçar de edifícios e infraestruturas detidas pela localidade
 
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Tamanho máximo de comboios: {STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Assignar o tamanho máximo dos comboios
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Comprimento máximo dos comboios: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Definir o comprimento máximo dos comboios
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} mosaico{P 0 "" s}
 
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Quantidade de fumo/faíscas de veículos: {STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Assignar quanto fumo ou quantas faíscas são emitidas pelos veículos
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Definir a quantidade de fumo ou quantas faíscas são emitidas pelos veículos
 
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Modelo de aceleração de comboios: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Escolha o modelo de física para a aceleração de comboios. O modelo "original" penaliza as inclinações para todos os veículos. O modelo "realista" penaliza as curvas e inclinações tendo em conta várias propriedades do comboio, tais como o comprimento e o esforço de tração
@@ -1383,7 +1383,7 @@ STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permite acresce
 STR_CONFIG_SETTING_INFLATION                                    :Inflação: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Ativar inflação na economia, para que os preços subam ligeiramente mais rápido do que os pagamentos
 
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Tamanho máximo de ponte: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Tamanho máximo das pontes: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Tamanho máximo para construção de pontes
 
 STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Altura máxima de ponte: {STRING}
@@ -1438,7 +1438,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Visualizador pr
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Visualizador principal
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Todos os visualizadores
 
-STR_CONFIG_SETTING_BRIBE                                        :Permite o suborno da autoridade local: {STRING}
+STR_CONFIG_SETTING_BRIBE                                        :Permitir o suborno da autoridade local: {STRING}
 ###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permite que as empresas tentem subornar a autoridade local. Se o suborno for descoberto por um inspetor, a empresa não poderá atuar nessa localidade durante seis meses
 STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :Permite que as empresas tentem subornar a autoridade local. Se o suborno for descoberto por um inspetor, a empresa não poderá atuar nessa localidade durante seis minutos
@@ -1448,13 +1448,13 @@ STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permite comprar
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Se uma empresa comprar direitos exclusivos de transporte para uma localidade, as estações dos concorrentes (passageiros e carga) não receberão carga durante 12 meses
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :Se uma empresa comprar direitos exclusivos de transporte para uma localidade, as estações dos concorrentes (passageiros e carga) não receberão carga durante 12 minutos
 
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permite investir em edifícios: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permitir financiar novos edifícios: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Permite que empresas doem dinheiro às localidades para financiar novas casas
 
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permite financiar a reconstrução de estradas locais:{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Permite que as empresas financiem reconstruções de estradas para sabotar o tráfego rodoviário na localidade.
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permitir financiar a reconstrução de estradas locais:{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Permitir que as empresas financiem reconstruções de estradas para sabotar o tráfego rodoviário na localidade.
 
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permite enviar dinheiro para outras empresas: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permitir enviar dinheiro para outras empresas: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Permite transferências de dinheiro entre empresas em modo multi-jogador
 
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Multiplicador de peso para simular comboios pesados: {STRING}
@@ -1474,7 +1474,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Permitir passagens de nível com estradas ou carris de outras empresas: {STRING}
 STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Permite a construção de passagens de nível nas estradas ou carris pertencentes a outras empresas
 
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permite estações de passagem nas estradas pertencentes às localidades: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permitir estações de passagem nas estradas pertencentes às localidades: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permite a construção de estações de passagem nas ruas pertencentes a localidades.
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permitir estações de passagem nas estradas detidas pelos competidores: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Permite a construção de estações de passagem nas estradas que são de outras empresas
@@ -1524,7 +1524,7 @@ STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Escolher o núm
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (tempo do calendário congelado)
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (tempo do calendário fica congelado)
 
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Escalar a produção de carga da localidade: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Escalar a produção de carga das localidades nesta percentagem
@@ -1674,7 +1674,7 @@ STR_CONFIG_SETTING_LIVERIES                                     :Mostrar estampa
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Controla a utilização de decorações específicas por tipo de veículo (em vez de decorações por empresa)
 ###length 3
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Nenhum
-STR_CONFIG_SETTING_LIVERIES_OWN                                 :Própria empresa
+STR_CONFIG_SETTING_LIVERIES_OWN                                 :Só da própria empresa
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Todas as empresas
 
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Escolher chat de equipa com <ENTER>: {STRING}
@@ -1880,8 +1880,8 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Mostrar um jorn
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Acidentes / desastres: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Mostrar um jornal quando ocorrem acidentes ou desastres
 
-STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER                          :Acidentes de veículos dos concorrentes: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER_HELPTEXT                 :Mostrar um jornal sobre veículos acidentados para concorrentes
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER                          :Acidentes de veículos da concorrência: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER_HELPTEXT                 :Mostrar um jornal sobre veículos acidentados da concorrência
 
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informações da empresa: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Mostrar um jornal quando uma empresa nova é criada, ou quando uma empresa está à beira da falência
@@ -2010,7 +2010,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controlar o apa
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Crescer mas não espalhar {RED}(inutiliza a serração)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Crescer mas espalhar apenas nas florestas tropicais
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Crescer e espalhar por todo o lado
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Não cresça, não espalhe {RED} (quebra a serraria)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Não crescem e não espalham {RED}(inutiliza a serração)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Posição da barra de ferramentas principal: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Posição horizontal da barra de ferramentas principal no topo do ecrã
@@ -2055,7 +2055,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Rápido
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Muito Rápido
 
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporção de localidades que chegarão a cidades: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporção de localidades que se tornarão cidades: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Quantidade de localidades que se tornarão cidades, ou seja uma localidade que começa maior e crescerá mais depressa.
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 em {COMMA}
 ###setting-zero-is-special
@@ -2102,7 +2102,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :Unidades do jog
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :Unidades do jogo (mosaicos/seg)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Nós
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unidades de potência de veículos: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unidades de potência dos veículos: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Quando a potência de um veículo é mostrada no interface de utilizador, mostrar na unidade seleccionada
 ###length 3
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Imperial (hp)
@@ -2231,7 +2231,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Verifica
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Sair de 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}O conjunto de gráficos base selecionado tem {NUM} elemento{P "" s} visua{P l is} em falta. Por favor, verifique se existem atualizações para este conjunto.
-STR_INTRO_TRANSLATION                                           :{BLACK}Falta{P 0 "" m} traduzir {NUM} linha{P "" s} nesta tradução. Por favor, ajude o OpenTTD em inscrever-se como tradutor. Leia readme.txt para mais detalhes.
+STR_INTRO_TRANSLATION                                           :{BLACK}Falta{P 0 "" m} traduzir {NUM} linha{P "" s} neste idioma. Por favor, ajude o OpenTTD em inscrever-se como tradutor. Leia readme.txt para mais detalhes.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Sair
@@ -2674,8 +2674,8 @@ STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Escolher
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Está a sair do OpenTTD!
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Os termos e condições para o carregamento de conteúdo de páginas externas variam.{}Terá que se referir às páginas externas para instruções em como instalar o conteúdo no OpenTTD.{}Pretende continuar?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtrar por etiqueta/nome:
-STR_CONTENT_OPEN_URL                                            :{BLACK}Página da internet
-STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visitar a página web para este conteúdo
+STR_CONTENT_OPEN_URL                                            :{BLACK}Página da Internet
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visitar a página de Internet para este conteúdo
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Descarregar
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Iniciar a descarga do conteúdo seleccionado
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Tamanho total da descarga: {WHITE}{BYTES}
@@ -2698,8 +2698,8 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Tamanho
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Seleccionado devido a: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Dependências: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Etiquetas: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD está compilado sem suporte "zlib"...
-STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... não é possível o descarregamento de conteúdo!
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD foi compilado sem suporte de "zlib"...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... não é possível fazer o descarregamento de conteúdo!
 
 # Order of these is important!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Gráficos base
@@ -3321,7 +3321,7 @@ STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Guardar 
 STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Carregar Dados da Localidade
 STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Clique aqui para saltar para o diretório atual de gravação/carregamento padrão
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} livres
-STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lista de unidades, directorias e ficheiros de jogos guardados
+STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lista de unidades, diretórios e ficheiros de jogos guardados
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Nome escolhido para guardar o jogo
 STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Eliminar
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Eliminar o jogo guardado seleccionado
@@ -3666,7 +3666,7 @@ STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Ligar/de
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Editar texto do letreiro
-STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Centrar a visualização na localização do letreiro. Ctrl+Clique para abrir um novo visualizador na localização do letreiro
+STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Centrar a vista principal na localização do letreiro. Ctrl+Clique para abrir um novo visualizador na localização do letreiro
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Ir para o próximo letreiro
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Ir para o letreiro anterior
 
@@ -5034,7 +5034,7 @@ STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Não é 
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}A escavação estragaria o túnel
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... já está ao nível do mar
 STR_ERROR_TOO_HIGH                                              :{WHITE}... demasiado alto
-STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... já está plano
+STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... já está nivelado
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Ponte acima seria demasiado alta.
 
 # Company related errors
