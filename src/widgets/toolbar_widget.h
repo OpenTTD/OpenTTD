@@ -50,32 +50,29 @@ enum ToolbarNormalWidgets : WidgetID {
 
 /** Widgets of the #ScenarioEditorToolbarWindow class. */
 enum ToolbarEditorWidgets : WidgetID {
-	// TODO: Clean this up. The idea here was to see which buttons are
-	// common between the two toolbars so that they can perhaps be
-	// de-duplicated.
-	WID_TE_PAUSE         = WID_TN_PAUSE,        ///< Pause the game.
-	WID_TE_FAST_FORWARD  = WID_TN_FAST_FORWARD, ///< Fast forward the game.
-	WID_TE_SETTINGS      = WID_TN_SETTINGS,     ///< Settings menu.
-	WID_TE_SAVE          = WID_TN_SAVE,         ///< Save menu.
-	WID_TE_SMALL_MAP     = WID_TN_SMALL_MAP,    ///< Small map menu.
-	WID_TE_ZOOM_IN       = WID_TN_ZOOM_IN,      ///< Zoom in the main viewport.
-	WID_TE_ZOOM_OUT      = WID_TN_ZOOM_OUT,     ///< Zoom out the main viewport.
-	WID_TE_ROADS         = WID_TN_ROADS,        ///< Road building menu.
-	WID_TE_TRAMS         = WID_TN_TRAMS,        ///< Tram building menu.
-	WID_TE_WATER         = WID_TN_WATER,        ///< Water building toolbar.
-	WID_TE_MUSIC_SOUND   = WID_TN_MUSIC_SOUND,  ///< Music/sound configuration menu.
-	WID_TE_HELP          = WID_TN_HELP,         ///< Help menu.
-	WID_TE_SWITCH_BAR    = WID_TN_SWITCH_BAR,   ///< Only available when toolbar has been split to switch between different subsets.
-	WID_TE_SPACER        = WID_TN_END,          ///< Spacer with "scenario editor" text.
-	WID_TE_DATE,                                ///< The date of the scenario.
-	WID_TE_DATE_BACKWARD,                       ///< Reduce the date of the scenario.
-	WID_TE_DATE_FORWARD,                        ///< Increase the date of the scenario.
-	WID_TE_LAND_GENERATE,                       ///< Land generation.
-	WID_TE_TOWN_GENERATE,                       ///< Town building window.
-	WID_TE_INDUSTRY,                            ///< Industry building window.
-	WID_TE_TREES,                               ///< Tree building toolbar.
-	WID_TE_SIGNS,                               ///< Sign building.
-	WID_TE_DATE_PANEL,                          ///< Container for the date widgets.
+	WID_TE_PAUSE,         ///< Pause the game.
+	WID_TE_FAST_FORWARD,  ///< Fast forward the game.
+	WID_TE_SETTINGS,      ///< Settings menu.
+	WID_TE_SAVE,          ///< Save menu.
+	WID_TE_SPACER,        ///< Spacer with "scenario editor" text.
+	WID_TE_DATE,          ///< The date of the scenario.
+	WID_TE_DATE_BACKWARD, ///< Reduce the date of the scenario.
+	WID_TE_DATE_FORWARD,  ///< Increase the date of the scenario.
+	WID_TE_SMALL_MAP,     ///< Small map menu.
+	WID_TE_ZOOM_IN,       ///< Zoom in the main viewport.
+	WID_TE_ZOOM_OUT,      ///< Zoom out the main viewport.
+	WID_TE_LAND_GENERATE, ///< Land generation.
+	WID_TE_TOWN_GENERATE, ///< Town building window.
+	WID_TE_INDUSTRY,      ///< Industry building window.
+	WID_TE_ROADS,         ///< Road building menu.
+	WID_TE_TRAMS,         ///< Tram building menu.
+	WID_TE_WATER,         ///< Water building toolbar.
+	WID_TE_TREES,         ///< Tree building toolbar.
+	WID_TE_SIGNS,         ///< Sign building.
+	WID_TE_DATE_PANEL,    ///< Container for the date widgets.
+	WID_TE_MUSIC_SOUND,   ///< Music/sound configuration menu.
+	WID_TE_HELP,          ///< Help menu.
+	WID_TE_SWITCH_BAR,    ///< Only available when toolbar has been split to switch between different subsets.
 	WID_TE_END,
 };
 
