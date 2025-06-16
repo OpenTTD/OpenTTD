@@ -3124,50 +3124,72 @@ void NWidgetLeaf::DrawHotkeyHint(const Window* w) {
 
 	// TODO: Rect is wrong for edit boxes, and the kind of hint we're showing
 	// will look bad anyway.
-	Rect r = this->GetCurrentRect().Shrink(1);
+	const uint o = ScaleGUITrad(1);
+	Rect r = this->GetCurrentRect().Translate(o, 0);
+	std::string hint;
+	auto fontsize = FS_NORMAL;
+	uint16_t keycode = 0;
+
 	if (w->window_desc.cls == WC_MAIN_TOOLBAR && this->index == WID_TN_FAST_FORWARD) {
 		// Special-case hint text for Fast-forwards because it's not really a hotkey
-		DrawStringMultiLine(r, "Tab", TC_WHITE, SA_LEFT | SA_BOTTOM, false, FS_NORMAL);
+		hint = "Tab";
 	} else if (w->window_desc.hotkeys != nullptr) {
 		// Widget IDs can coincidentally overlap with hotkey IDs if
 		// they aren't assigned properly. Avoid this.
 		auto hk = w->window_desc.hotkeys->GetHotkeyByNum(this->index);
-		if (hk != nullptr) {
-			if (hk->keycodes.size()) {
-				// Find the "best" of the available keycodes
-				auto keycode = *(hk->keycodes.begin());
-				for (auto k : hk->keycodes) {
-					if (!(keycode & WKC_GLOBAL_HOTKEY) && (k & WKC_GLOBAL_HOTKEY)) {
+		if (hk != nullptr && hk->keycodes.size()) {
+			// Find the "best" of the available keycodes
+			keycode = *(hk->keycodes.begin());
+			hint = KeycodeToShortString(keycode);
+			for (auto k : hk->keycodes) {
+				if (!(keycode & WKC_GLOBAL_HOTKEY) && (k & WKC_GLOBAL_HOTKEY)) {
+					keycode = k;
+				} else {
+					auto h = KeycodeToShortString(k);
+					if (hint.length() > h.length()) {
+						Debug(misc, 1, "shorter hint: {}; old hint {}", h, hint);
 						keycode = k;
-					} else if ('A' <= (k & ~WKC_SPECIAL_KEYS) && (k & ~WKC_SPECIAL_KEYS) <= 'Z') {
-						keycode = k;
+						hint = h;
 					}
 				}
-
-				// Convert to a string
-				// TODO: Glyphs for Shift, Alt, etc. Colour for global.
-				//   - On screen keyboard has a sprite for shift.
-				auto s = KeycodeToShortString(keycode);
-
-				// Choose the font-size
-				auto availableSize = Dimension(r.right - r.left, r.bottom - r.top);
-				auto desiredSize = GetStringBoundingBox(s, FS_NORMAL);
-				auto fontsize = FS_NORMAL;
-				if (availableSize < desiredSize) {
-					fontsize = FS_SMALL;
-				}
-
-				// Display the hints!
-				// TODO: not as readable as my mockup :(
-				//   - Outline or a bolder font could help.
-				auto colour = TC_WHITE;
-				if (keycode & WKC_GLOBAL_HOTKEY) {
-					colour = TC_YELLOW;
-				}
-				DrawStringMultiLine(r, s, colour, SA_LEFT | SA_BOTTOM, false, fontsize);
 			}
+
+			// Convert to a string
+			// TODO: Glyphs for Shift, Alt, etc. Colour for global.
+			//   - On screen keyboard has a sprite for shift.
+			hint = KeycodeToShortString(keycode);
 		}
 	}
+
+	if (hint.empty()) {
+		return;
+	}
+
+	// Choose the font-size
+	auto availableSize = Dimension(r.right - r.left, r.bottom - r.top);
+	auto desiredSize = GetStringBoundingBox(hint, FS_NORMAL);
+	if (availableSize < desiredSize) {
+		fontsize = FS_SMALL;
+	}
+
+	// Display the hints!
+	// TODO: not as readable as my mockup :(
+	auto colour = TC_WHITE;
+	if (keycode & WKC_GLOBAL_HOTKEY) {
+		colour = TC_LIGHT_BLUE;
+	}
+	// Draw a slightly shoddy outline
+	DrawStringMultiLine(r.Translate( o,  o), hint, TC_BLACK | TC_NO_SHADE, SA_LEFT | SA_BOTTOM, false, fontsize);
+	DrawStringMultiLine(r.Translate( o, -o), hint, TC_BLACK | TC_NO_SHADE, SA_LEFT | SA_BOTTOM, false, fontsize);
+	DrawStringMultiLine(r.Translate(-o,  o), hint, TC_BLACK | TC_NO_SHADE, SA_LEFT | SA_BOTTOM, false, fontsize);
+	DrawStringMultiLine(r.Translate(-o, -o), hint, TC_BLACK | TC_NO_SHADE, SA_LEFT | SA_BOTTOM, false, fontsize);
+	DrawStringMultiLine(r.Translate( o,  0), hint, TC_BLACK | TC_NO_SHADE, SA_LEFT | SA_BOTTOM, false, fontsize);
+	DrawStringMultiLine(r.Translate(-o,  0), hint, TC_BLACK | TC_NO_SHADE, SA_LEFT | SA_BOTTOM, false, fontsize);
+	DrawStringMultiLine(r.Translate( 0,  o), hint, TC_BLACK | TC_NO_SHADE, SA_LEFT | SA_BOTTOM, false, fontsize);
+	DrawStringMultiLine(r.Translate( 0, -o), hint, TC_BLACK | TC_NO_SHADE, SA_LEFT | SA_BOTTOM, false, fontsize);
+
+	// Draw the hint text.
+	DrawStringMultiLine(r, hint, colour | TC_NO_SHADE, SA_LEFT | SA_BOTTOM, false, fontsize);
 }
 
 /**

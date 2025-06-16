@@ -27,8 +27,16 @@ static std::vector<HotkeyList*> *_hotkey_lists = nullptr;
 
 /** String representation of a keycode */
 struct KeycodeNames {
-	const std::string_view name; ///< Name of the keycode
+	std::string_view name; ///< Name of the keycode
 	WindowKeyCodes keycode; ///< The keycode
+	std::string_view short_name;
+
+	KeycodeNames(const std::string_view name, const WindowKeyCodes keycode, const std::string_view short_name = "")
+	{
+		this->name = name;
+		this->keycode = keycode;
+		this->short_name = short_name.empty() ? name : short_name;
+	}
 };
 
 /** Array of non-standard keycodes that can be used in the hotkeys config file. */
@@ -38,16 +46,17 @@ static const std::initializer_list<KeycodeNames> _keycode_to_name = {
 	{"ALT", WKC_ALT},
 	{"META", WKC_META},
 	{"GLOBAL", WKC_GLOBAL_HOTKEY},
-	{"ESC", WKC_ESC},
-	{"BACKSPACE", WKC_BACKSPACE},
-	{"INS", WKC_INSERT},
-	{"DEL", WKC_DELETE},
-	{"PAGEUP", WKC_PAGEUP},
-	{"PAGEDOWN", WKC_PAGEDOWN},
-	{"END", WKC_END},
-	{"HOME", WKC_HOME},
-	{"RETURN", WKC_RETURN},
-	{"SPACE", WKC_SPACE},
+	{"ESC", WKC_ESC, "Esc"},
+	{"TAB", WKC_TAB, "Tab"},
+	{"BACKSPACE", WKC_BACKSPACE, "BS"},
+	{"INS", WKC_INSERT, "Ins"},
+	{"DEL", WKC_DELETE, "Del"},
+	{"PAGEUP", WKC_PAGEUP, "Page up"},
+	{"PAGEDOWN", WKC_PAGEDOWN, "Page down"},
+	{"END", WKC_END, "End"},
+	{"HOME", WKC_HOME, "Home"},
+	{"RETURN", WKC_RETURN, "Enter"},
+	{"SPACE", WKC_SPACE, "Space"},
 	{"F1", WKC_F1},
 	{"F2", WKC_F2},
 	{"F3", WKC_F3},
@@ -61,31 +70,31 @@ static const std::initializer_list<KeycodeNames> _keycode_to_name = {
 	{"F11", WKC_F11},
 	{"F12", WKC_F12},
 	{"BACKQUOTE", WKC_BACKQUOTE},
-	{"PAUSE", WKC_PAUSE},
-	{"NUM_DIV", WKC_NUM_DIV},
-	{"NUM_MUL", WKC_NUM_MUL},
-	{"NUM_MINUS", WKC_NUM_MINUS},
-	{"NUM_PLUS", WKC_NUM_PLUS},
-	{"NUM_ENTER", WKC_NUM_ENTER},
-	{"NUM_DOT", WKC_NUM_DECIMAL},
-	{"SLASH", WKC_SLASH},
+	{"PAUSE", WKC_PAUSE, "Pause"},
+	{"NUM_DIV", WKC_NUM_DIV, "Num /"},
+	{"NUM_MUL", WKC_NUM_MUL, "Num *"},
+	{"NUM_MINUS", WKC_NUM_MINUS, "Num -"},
+	{"NUM_PLUS", WKC_NUM_PLUS, "Num +"},
+	{"NUM_ENTER", WKC_NUM_ENTER, "Num Enter"},
+	{"NUM_DOT", WKC_NUM_DECIMAL, "Num ."},
+	{"SLASH", WKC_SLASH, "/"},
 	{"/", WKC_SLASH}, /* deprecated, use SLASH */
-	{"SEMICOLON", WKC_SEMICOLON},
+	{"SEMICOLON", WKC_SEMICOLON, ";"},
 	{";", WKC_SEMICOLON}, /* deprecated, use SEMICOLON */
-	{"EQUALS", WKC_EQUALS},
+	{"EQUALS", WKC_EQUALS, "="},
 	{"=", WKC_EQUALS}, /* deprecated, use EQUALS */
-	{"L_BRACKET", WKC_L_BRACKET},
+	{"L_BRACKET", WKC_L_BRACKET, "["},
 	{"[", WKC_L_BRACKET}, /* deprecated, use L_BRACKET */
-	{"BACKSLASH", WKC_BACKSLASH},
+	{"BACKSLASH", WKC_BACKSLASH, "\\"},
 	{"\\", WKC_BACKSLASH}, /* deprecated, use BACKSLASH */
-	{"R_BRACKET", WKC_R_BRACKET},
+	{"R_BRACKET", WKC_R_BRACKET, "]"},
 	{"]", WKC_R_BRACKET}, /* deprecated, use R_BRACKET */
-	{"SINGLEQUOTE", WKC_SINGLEQUOTE},
+	{"SINGLEQUOTE", WKC_SINGLEQUOTE, "'"},
 	{"'", WKC_SINGLEQUOTE}, /* deprecated, use SINGLEQUOTE */
-	{"COMMA", WKC_COMMA},
-	{"PERIOD", WKC_PERIOD},
+	{"COMMA", WKC_COMMA, ","},
+	{"PERIOD", WKC_PERIOD, "."},
 	{".", WKC_PERIOD}, /* deprecated, use PERIOD */
-	{"MINUS", WKC_MINUS},
+	{"MINUS", WKC_MINUS, "-"},
 	{"-", WKC_MINUS}, /* deprecated, use MINUS */
 };
 
@@ -221,7 +230,7 @@ std::string KeycodeToShortString(uint16_t keycode)
 
 	for (const auto &kn : _keycode_to_name) {
 		if (kn.keycode == keycode) {
-			str += kn.name;
+			str += kn.short_name;
 			return str;
 		}
 	}
