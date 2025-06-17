@@ -160,7 +160,7 @@ STR_ABBREV_TOFFEE                                               :TF
 STR_ABBREV_BATTERIES                                            :PI
 STR_ABBREV_PLASTIC                                              :PL
 STR_ABBREV_FIZZY_DRINKS                                         :RF
-STR_ABBREV_ALL                                                  :TOD
+STR_ABBREV_ALL                                                  :TODO
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA}{NBSP}pasajero{P "" s}
@@ -286,7 +286,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Cierra l
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título de la ventana - arrastra para moverla
 STR_TOOLTIP_SHADE                                               :{BLACK}Oculta la ventana - muestra sólo el título de la ventana
 STR_TOOLTIP_DEBUG                                               :{BLACK}Muestra la información de depuración NewGRF
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}Redimensionar ventana al tamaño por defecto. Ctrl+clic permite almacenar el tamaño actual como tamaño por defecto
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Redimensionar ventana al tamaño por defecto. Ctrl+Clic permite almacenar el tamaño actual como tamaño por defecto
 STR_TOOLTIP_STICKY                                              :{BLACK}Esta ventana no se cerrará tras usar el comando 'Cerrar Todas las Ventanas'. Ctrl+clic permite guardar el estado como estado por defecto
 STR_TOOLTIP_RESIZE                                              :{BLACK}Clica y arrastra para redimensionar la ventana
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alterna el tamaño de ventana entre grande/pequeño
@@ -3703,6 +3703,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Cambia e
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Aumentar
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Aumentar la población del municipio
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Expandir edificios
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Aumentar edificios de los pueblos
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Expandir carreteras
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Aumentar carreteras de los pueblos
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Borrar
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Borrar completamente este municipio
 
@@ -4441,9 +4445,9 @@ STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Ver órd
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Ver órdenes de la aeronave. Ctrl+clic muestra su horario
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Muestra los detalles del tren
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Muestra los detalles del vehículo
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Muesta los detalles del barco
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Muestra los detalles del tren. Ctrl + Click muestra su grupo
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Ver detalles del vehículo. Ctrl+Clic muestra su grupo
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Muestra los detalles del barco. Ctrl + Clic para mostrar su grupo
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Muesta los detalles de la aeronave
 
 ###length VEHICLE_TYPES
@@ -4768,14 +4772,15 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horario 
 STR_TIMETABLE_NO_TRAVEL                                         :No viajar
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viajar (automático; programado por la próxima orden manual)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viajar (sin programar)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viajar (sin programar) a {VELOCITY} como máximo
 STR_TIMETABLE_TRAVEL_FOR                                        :Viajar durante {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viajar durante {STRING} a {VELOCITY} como máximo
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Viajar (durante {STRING}, sin programar)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Viajar (durante {STRING}, sin programar) a {VELOCITY} como máximo
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(permanecer {STRING}, sin programar)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(viajar durante {STRING}, sin programar)
-STR_TIMETABLE_STAY_FOR                                          :y permanecer {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :y viajar durante {STRING}
+STR_TIMETABLE_STAY_FOR                                          :{SPACE}y permanecer {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}y viajar durante {STRING}
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}El horario tardará aproximadamente {STRING} en recorrerse
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}El horario tardará {STRING} en recorrerse
@@ -4839,7 +4844,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Configur
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Cambiar la configuración del script
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recargar IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Elimina la IA, recarga el código y reinicia la IA
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Activa/desactiva la pausa automática cuando un mensaje de log de la IA coincide con la cadena de parada
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Activa/desactiva la pausa automática cuando un ,mensaje de registro de registro de la IA coincide con la cadena de parada
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Pausar con:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Pausar cuando el script registre esta cadena
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Cuando un mensaje de log de una IA coincide con esta cadena, el juego se pausa
