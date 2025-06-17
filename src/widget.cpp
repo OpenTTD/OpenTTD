@@ -3113,7 +3113,8 @@ void NWidgetLeaf::Draw(const Window *w)
 	DrawOutline(w, this);
 
 	// TODO: Draw hints only if Alt is being held.
-	if (!this->IsDisabled()) {
+	// Don't draw hotkey hints on disabled widgets or editboxes with focus.
+	if (!(this->IsDisabled() || (this->type == WWT_EDITBOX && w->nested_focus == this))) {
 		this->DrawHotkeyHint(w);
 	}
 }
@@ -3122,12 +3123,9 @@ void NWidgetLeaf::DrawHotkeyHint(const Window* w) {
 	// TODO: Use global hotkey for autoroads for rail, road, tram, etc. if
 	// they have been set.
 
-	// TODO: Rect is wrong for edit boxes, and the kind of hint we're showing
-	// will look bad anyway.
 	const uint o = ScaleGUITrad(1);
-	Rect r = this->GetCurrentRect().Translate(o, 0);
+	Rect r = this->GetCurrentRect().Shrink(o);
 	std::string hint;
-	auto fontsize = FS_NORMAL;
 	uint16_t keycode = 0;
 
 	if (w->window_desc.cls == WC_MAIN_TOOLBAR && this->index == WID_TN_FAST_FORWARD) {
@@ -3139,6 +3137,7 @@ void NWidgetLeaf::DrawHotkeyHint(const Window* w) {
 		auto hk = w->window_desc.hotkeys->GetHotkeyByNum(this->index);
 		if (hk != nullptr && hk->keycodes.size()) {
 			// Find the "best" of the available keycodes
+			// TODO: maybe don't repeat this work so much
 			keycode = *(hk->keycodes.begin());
 			hint = KeycodeToShortString(keycode);
 			for (auto k : hk->keycodes) {
@@ -3147,7 +3146,6 @@ void NWidgetLeaf::DrawHotkeyHint(const Window* w) {
 				} else {
 					auto h = KeycodeToShortString(k);
 					if (hint.length() > h.length()) {
-						Debug(misc, 1, "shorter hint: {}; old hint {}", h, hint);
 						keycode = k;
 						hint = h;
 					}
@@ -3166,30 +3164,34 @@ void NWidgetLeaf::DrawHotkeyHint(const Window* w) {
 	}
 
 	// Choose the font-size
-	auto availableSize = Dimension(r.right - r.left, r.bottom - r.top);
-	auto desiredSize = GetStringBoundingBox(hint, FS_NORMAL);
-	if (availableSize < desiredSize) {
-		fontsize = FS_SMALL;
-	}
+	auto fontsize = FS_SMALL;
+	// It's better to have a single consistent size.
+	/*auto availableSize = Dimension(r.right - r.left, r.bottom - r.top);*/
+	/*auto desiredSize = GetStringBoundingBox(hint, FS_NORMAL);*/
+	/*if (availableSize < desiredSize) {*/
+	/*	fontsize = FS_SMALL;*/
+	/*}*/
 
-	// Display the hints!
-	// TODO: not as readable as my mockup :(
+	// Choose hint colour
 	auto colour = TC_WHITE;
 	if (keycode & WKC_GLOBAL_HOTKEY) {
 		colour = TC_LIGHT_BLUE;
 	}
-	// Draw a slightly shoddy outline
-	DrawStringMultiLine(r.Translate( o,  o), hint, TC_BLACK | TC_NO_SHADE, SA_LEFT | SA_BOTTOM, false, fontsize);
-	DrawStringMultiLine(r.Translate( o, -o), hint, TC_BLACK | TC_NO_SHADE, SA_LEFT | SA_BOTTOM, false, fontsize);
-	DrawStringMultiLine(r.Translate(-o,  o), hint, TC_BLACK | TC_NO_SHADE, SA_LEFT | SA_BOTTOM, false, fontsize);
-	DrawStringMultiLine(r.Translate(-o, -o), hint, TC_BLACK | TC_NO_SHADE, SA_LEFT | SA_BOTTOM, false, fontsize);
-	DrawStringMultiLine(r.Translate( o,  0), hint, TC_BLACK | TC_NO_SHADE, SA_LEFT | SA_BOTTOM, false, fontsize);
-	DrawStringMultiLine(r.Translate(-o,  0), hint, TC_BLACK | TC_NO_SHADE, SA_LEFT | SA_BOTTOM, false, fontsize);
-	DrawStringMultiLine(r.Translate( 0,  o), hint, TC_BLACK | TC_NO_SHADE, SA_LEFT | SA_BOTTOM, false, fontsize);
-	DrawStringMultiLine(r.Translate( 0, -o), hint, TC_BLACK | TC_NO_SHADE, SA_LEFT | SA_BOTTOM, false, fontsize);
 
-	// Draw the hint text.
-	DrawStringMultiLine(r, hint, colour | TC_NO_SHADE, SA_LEFT | SA_BOTTOM, false, fontsize);
+	auto alignment = SA_LEFT | SA_BOTTOM;
+
+	// Draw a slightly shoddy outline
+	DrawStringMultiLine(r.Translate( o,  o), hint, TC_BLACK | TC_NO_SHADE, alignment, false, fontsize);
+	DrawStringMultiLine(r.Translate( o, -o), hint, TC_BLACK | TC_NO_SHADE, alignment, false, fontsize);
+	DrawStringMultiLine(r.Translate(-o,  o), hint, TC_BLACK | TC_NO_SHADE, alignment, false, fontsize);
+	DrawStringMultiLine(r.Translate(-o, -o), hint, TC_BLACK | TC_NO_SHADE, alignment, false, fontsize);
+	DrawStringMultiLine(r.Translate( o,  0), hint, TC_BLACK | TC_NO_SHADE, alignment, false, fontsize);
+	DrawStringMultiLine(r.Translate(-o,  0), hint, TC_BLACK | TC_NO_SHADE, alignment, false, fontsize);
+	DrawStringMultiLine(r.Translate( 0,  o), hint, TC_BLACK | TC_NO_SHADE, alignment, false, fontsize);
+	DrawStringMultiLine(r.Translate( 0, -o), hint, TC_BLACK | TC_NO_SHADE, alignment, false, fontsize);
+
+	// Draw the hint text
+	DrawStringMultiLine(r, hint, colour | TC_NO_SHADE, alignment, false, fontsize);
 }
 
 /**
