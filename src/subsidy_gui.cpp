@@ -136,7 +136,7 @@ struct SubsidyListWindow : Window {
 		if (widget != WID_SUL_PANEL) return;
 		Dimension d = maxdim(GetStringBoundingBox(STR_SUBSIDIES_OFFERED_TITLE), GetStringBoundingBox(STR_SUBSIDIES_SUBSIDISED_TITLE));
 
-		resize.height = GetCharacterHeight(FS_NORMAL);
+		fill.height = resize.height = GetCharacterHeight(FS_NORMAL);
 
 		d.height *= 5;
 		d.width += WidgetDimensions::scaled.framerect.Horizontal();

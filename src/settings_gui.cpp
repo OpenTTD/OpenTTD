@@ -856,7 +856,7 @@ struct GameOptionsWindow : Window {
 			}
 
 			case WID_GO_OPTIONSPANEL:
-				resize.height = SETTING_HEIGHT = std::max({(int)_setting_circle_size.height, SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)}) + WidgetDimensions::scaled.vsep_normal;
+				fill.height = resize.height = SETTING_HEIGHT = std::max({(int)_setting_circle_size.height, SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)}) + WidgetDimensions::scaled.vsep_normal;
 				resize.width = 1;
 
 				size.height = 8 * resize.height + WidgetDimensions::scaled.framerect.Vertical();

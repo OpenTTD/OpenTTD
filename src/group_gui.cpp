@@ -430,8 +430,7 @@ public:
 		switch (widget) {
 			case WID_GL_LIST_GROUP:
 				size.width = this->ComputeGroupInfoSize();
-				resize.height = this->tiny_step_height;
-				fill.height = this->tiny_step_height;
+				fill.height = resize.height = this->tiny_step_height;
 				break;
 
 			case WID_GL_ALL_VEHICLES:
@@ -450,7 +449,7 @@ public:
 
 			case WID_GL_LIST_VEHICLE:
 				this->ComputeGroupInfoSize();
-				resize.height = GetVehicleListHeight(this->vli.vtype, this->tiny_step_height);
+				fill.height = resize.height = GetVehicleListHeight(this->vli.vtype, this->tiny_step_height);
 				size.height = 4 * resize.height;
 				break;
 

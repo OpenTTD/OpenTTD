@@ -1214,7 +1214,7 @@ struct MessageHistoryWindow : Window {
 	{
 		if (widget == WID_MH_BACKGROUND) {
 			this->line_height = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
-			resize.height = this->line_height;
+			fill.height = resize.height = this->line_height;
 
 			/* Months are off-by-one, so it's actually 8. Not using
 			 * month 12 because the 1 is usually less wide. */

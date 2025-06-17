@@ -977,7 +977,7 @@ struct RefitWindow : public Window {
 	{
 		switch (widget) {
 			case WID_VR_MATRIX:
-				resize.height = GetCharacterHeight(FS_NORMAL) + padding.height;
+				fill.height = resize.height = GetCharacterHeight(FS_NORMAL) + padding.height;
 				size.height = resize.height * 8;
 				break;
 
@@ -1947,7 +1947,7 @@ public:
 	{
 		switch (widget) {
 			case WID_VL_LIST:
-				resize.height = GetVehicleListHeight(this->vli.vtype, 1);
+				fill.height = resize.height = GetVehicleListHeight(this->vli.vtype, 1);
 
 				switch (this->vli.vtype) {
 					case VEH_TRAIN:
@@ -2503,7 +2503,7 @@ struct VehicleDetailsWindow : Window {
 			}
 
 			case WID_VD_MATRIX:
-				resize.height = std::max<uint>(ScaleGUITrad(14), GetCharacterHeight(FS_NORMAL) + padding.height);
+				fill.height = resize.height = std::max<uint>(ScaleGUITrad(14), GetCharacterHeight(FS_NORMAL) + padding.height);
 				size.height = 4 * resize.height;
 				break;
 

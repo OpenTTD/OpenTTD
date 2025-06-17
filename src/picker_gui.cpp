@@ -268,7 +268,7 @@ void PickerWindow::UpdateWidgetSize(WidgetID widget, Dimension &size, const Dime
 	switch (widget) {
 		/* Class picker */
 		case WID_PW_CLASS_LIST:
-			resize.height = GetCharacterHeight(FS_NORMAL) + padding.height;
+			fill.height = resize.height = GetCharacterHeight(FS_NORMAL) + padding.height;
 			size.height = 5 * resize.height;
 			break;
 

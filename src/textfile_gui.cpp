@@ -124,7 +124,7 @@ void TextfileWindow::ReflowContent()
 	switch (widget) {
 		case WID_TF_BACKGROUND:
 			resize.width = GetCharacterHeight(FS_MONO); // Width is not available here as the font may not be loaded yet.
-			resize.height = GetCharacterHeight(FS_MONO);
+			fill.height = resize.height = GetCharacterHeight(FS_MONO);
 
 			size.height = 4 * resize.height + WidgetDimensions::scaled.frametext.Vertical(); // At least 4 lines are visible.
 			size.width = std::max(200u, size.width); // At least 200 pixels wide.

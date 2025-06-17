@@ -444,7 +444,7 @@ public:
 				for (const auto &indtype : this->list) {
 					d = maxdim(d, GetStringBoundingBox(GetIndustrySpec(indtype)->name));
 				}
-				resize.height = std::max<uint>({this->legend.height, d.height, count.height}) + padding.height;
+				fill.height = resize.height = std::max<uint>({this->legend.height, d.height, count.height}) + padding.height;
 				d.width += this->badge_classes.GetTotalColumnsWidth() + this->legend.width + WidgetDimensions::scaled.hsep_wide + WidgetDimensions::scaled.hsep_normal + count.width + padding.width;
 				d.height = 5 * resize.height;
 				size = maxdim(size, d);
@@ -1780,7 +1780,7 @@ public:
 
 			case WID_ID_INDUSTRY_LIST: {
 				Dimension d = GetStringBoundingBox(STR_INDUSTRY_DIRECTORY_NONE);
-				resize.height = d.height;
+				fill.height = resize.height = d.height;
 				d.height *= 5;
 				d.width += padding.width;
 				d.height += padding.height;
@@ -2644,7 +2644,7 @@ struct IndustryCargoesWindow : public Window {
 	{
 		switch (widget) {
 			case WID_IC_PANEL:
-				resize.height = CargoesField::normal_height;
+				fill.height = resize.height = CargoesField::normal_height;
 				size.width = CargoesField::industry_width * 3 + CargoesField::cargo_field_width * 2 + WidgetDimensions::scaled.frametext.Horizontal();
 				size.height = CargoesField::small_height + 2 * resize.height + WidgetDimensions::scaled.frametext.Vertical();
 				break;

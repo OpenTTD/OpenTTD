@@ -761,7 +761,7 @@ public:
 
 				size.height = 5 * this->line_height;
 				resize.width = 1;
-				resize.height = this->line_height;
+				fill.height = resize.height = this->line_height;
 				break;
 			}
 
@@ -1937,7 +1937,7 @@ struct CompanyInfrastructureWindow : Window
 		size.width = max_label_width + WidgetDimensions::scaled.hsep_wide + this->count_width + WidgetDimensions::scaled.hsep_wide + this->cost_width;
 		size.width = std::max(size.width, max_header_width) + WidgetDimensions::scaled.framerect.Horizontal();
 
-		resize.height = GetCharacterHeight(FS_NORMAL);
+		fill.height = resize.height = GetCharacterHeight(FS_NORMAL);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override

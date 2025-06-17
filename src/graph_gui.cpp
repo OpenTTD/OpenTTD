@@ -1163,7 +1163,7 @@ struct BaseCargoGraphWindow : BaseGraphWindow {
 		this->line_height = size.height;
 		size.height = this->line_height * 11; /* Default number of cargo types in most climates. */
 		resize.width = 0;
-		resize.height = this->line_height;
+		fill.height = resize.height = this->line_height;
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override

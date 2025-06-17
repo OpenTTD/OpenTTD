@@ -476,8 +476,7 @@ public:
 	{
 		switch (widget) {
 			case WID_NG_MATRIX:
-				resize.height = std::max(GetSpriteSize(SPR_BLOT).height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
-				fill.height = resize.height;
+				fill.height = resize.height = std::max(GetSpriteSize(SPR_BLOT).height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
 				size.height = 12 * resize.height;
 				break;
 
@@ -1656,8 +1655,7 @@ public:
 				this->line_height = std::max(height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
 
 				resize.width = 1;
-				resize.height = this->line_height;
-				fill.height = this->line_height;
+				fill.height = resize.height = this->line_height;
 				size.height = std::max(size.height, 5 * this->line_height);
 				break;
 			}

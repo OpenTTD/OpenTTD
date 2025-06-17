@@ -112,7 +112,7 @@ struct ScriptListWindow : public Window {
 		this->line_height = GetCharacterHeight(FS_NORMAL) + padding.height;
 
 		resize.width = 1;
-		resize.height = this->line_height;
+		fill.height = resize.height = this->line_height;
 		size.height = 5 * this->line_height;
 	}
 
@@ -345,7 +345,7 @@ struct ScriptSettingsWindow : public Window {
 		this->line_height = std::max(SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)) + padding.height;
 
 		resize.width = 1;
-		resize.height = this->line_height;
+		fill.height = resize.height = this->line_height;
 		size.height = 5 * this->line_height;
 	}
 
@@ -789,7 +789,7 @@ struct ScriptDebugWindow : public Window {
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget == WID_SCRD_LOG_PANEL) {
-			resize.height = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
+			fill.height = resize.height = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 			size.height = 14 * resize.height + WidgetDimensions::scaled.framerect.Vertical();
 		}
 	}

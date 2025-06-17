@@ -205,7 +205,7 @@ public:
 					sprite_dim = maxdim(sprite_dim, GetScaledSpriteSize(bridge_data.spec->sprite));
 					text_dim = maxdim(text_dim, GetStringBoundingBox(GetBridgeSelectString(bridge_data)));
 				}
-				resize.height = std::max(sprite_dim.height, text_dim.height) + padding.height; // Max of both sizes + account for matrix edges.
+				fill.height = resize.height = std::max(sprite_dim.height, text_dim.height) + padding.height; // Max of both sizes + account for matrix edges.
 
 				this->icon_width = sprite_dim.width; // Width of bridge icon.
 				size.width = this->icon_width + WidgetDimensions::scaled.hsep_normal + text_dim.width + padding.width;
