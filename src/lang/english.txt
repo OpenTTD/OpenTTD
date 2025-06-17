@@ -2320,12 +2320,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Freight Tram
 STR_FACE_CAPTION                                                :{WHITE}Face Selection
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Cancel new face selection
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Accept new face selection
-STR_FACE_RANDOM                                                 :{BLACK}Randomise
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Male
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Select male faces
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Female
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Select female faces
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}New Face
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Generate random new face
 STR_FACE_ADVANCED                                               :{BLACK}Advanced
@@ -2335,44 +2330,31 @@ STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Simple f
 STR_FACE_LOAD                                                   :{BLACK}Load
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Load favourite face
 STR_FACE_LOAD_DONE                                              :{WHITE}Your favourite face has been loaded from the OpenTTD configuration file
-STR_FACE_FACECODE                                               :{BLACK}Player face no.
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}View and/or set face number of the company president
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}View and/or set president face number
-STR_FACE_FACECODE_SET                                           :{WHITE}New face number code has been set
-STR_FACE_FACECODE_ERR                                           :{WHITE}Couldn't set president face number - must be a number between 0 and 4,294,967,295!
+STR_FACE_FACECODE                                               :{BLACK}Player face code
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}View and/or set face code of the company president
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}View and/or set president face code
+STR_FACE_FACECODE_SET                                           :{WHITE}New president face has been set
+STR_FACE_FACECODE_ERR                                           :{WHITE}Couldn't set president face code - must be a valid label and number
 STR_FACE_SAVE                                                   :{BLACK}Save
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Save favourite face
 STR_FACE_SAVE_DONE                                              :{WHITE}This face will be saved as your favourite in the OpenTTD configuration file
-STR_FACE_EUROPEAN                                               :{BLACK}European
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Select European faces
-STR_FACE_AFRICAN                                                :{BLACK}African
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Select African faces
+STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
+STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Yes
 STR_FACE_NO                                                     :No
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Enable moustache or earring
+STR_FACE_STYLE                                                  :Style:
 STR_FACE_HAIR                                                   :Hair:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Change hair
 STR_FACE_EYEBROWS                                               :Eyebrows:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Change eyebrows
 STR_FACE_EYECOLOUR                                              :Eye colour:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Change eye colour
 STR_FACE_GLASSES                                                :Glasses:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Enable glasses
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Change glasses
 STR_FACE_NOSE                                                   :Nose:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Change nose
 STR_FACE_LIPS                                                   :Lips:
 STR_FACE_MOUSTACHE                                              :Moustache:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Change lips or moustache
 STR_FACE_CHIN                                                   :Chin:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Change chin
 STR_FACE_JACKET                                                 :Jacket:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Change jacket
 STR_FACE_COLLAR                                                 :Collar:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Change collar
 STR_FACE_TIE                                                    :Tie:
 STR_FACE_EARRING                                                :Earring:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Change tie or earring
 
 # Matches ServerGameType
 ###length 3

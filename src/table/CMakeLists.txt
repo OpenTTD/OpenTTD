@@ -11,6 +11,7 @@ add_files(
     build_industry.h
     cargo_const.h
     clear_land.h
+    company_face.h
     control_codes.h
     elrail_data.h
     engines.h
