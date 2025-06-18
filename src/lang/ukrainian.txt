@@ -2344,7 +2344,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Мере
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Налаштування гри
 STR_INTRO_HIGHSCORE                                             :{BLACK}Таблиця рекордів
 STR_INTRO_HELP                                                  :{BLACK}Допомога й довідка
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Додатковий контент
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Мережевий вміст
 STR_INTRO_QUIT                                                  :{BLACK}Вихід
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Почати нову гру. Ctrl+клац мишею пропускає конфігурацію карти
@@ -2792,7 +2792,7 @@ STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Серв
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Інші гравці не можуть приєднатися до твого сервера
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Завантаження вмісту
+STR_CONTENT_TITLE                                               :{WHITE}Мережевий вміст
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Тип
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Тип вмісту
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Назва
@@ -2981,7 +2981,7 @@ STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Виберіт�
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Виберіть клас вантажної станції для відображення
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Виберіть тип вантажної станції для побудови. Клацніть Ctrl+Клік, щоб додати або видалити зі списку збереженого
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Виберіть тип об’єкта для його відображення
-STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Виберіть тип об’єкта для побудови. Клацніть Ctrl+Клік, щоб додати або видалити зі списку збереженого. Ctrl+Клік+Протягніть, аби вибрати область по діагоналі. Утримуйте Shift для показу очікуваних витрат
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Виберіть тип об’єкта для побудови. Ctrl+клац, щоб додати або видалити зі списку збереженого. Ctrl+клац+протягування для виділення діагональної ділянки. Утримуйте Shift для показу очікуваних витрат
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Виберіть зону міста для відображення
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Виберіть тип споруди для побудови. Клацніть Ctrl+Клік, щоб додати або видалити зі списку збереженого
 
@@ -3098,7 +3098,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Вибе
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Спорудження водяної інфраструктури
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Водні шляхи
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Будування каналів. Утримуйте Shift для показу очікуваних витрат
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Будування каналів. Ctrl+клац+протягування для виділення клітинок по діагоналі. Утримання Shift покаже очікувані витрати
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Будування шлюзів. Утримуйте Shift для показу очікуваних витрат
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Побудова корабельних елінгів (для придбання та обслуговування кораблів). Утримуйте Shift для показу очікуваних витрат
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Будування доку. Ctrl+клац для приєднання додаткових доків. Утримуйте Shift для показу очікуваних витрат
@@ -3777,7 +3777,7 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Інформація про вантаж/переобладнання для '{1:ENGINE}' відрізняється від списку покупки після побудови. Це може спричинити невідповідності під час автооновлення/заміни
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' спричинив нескінченний цикл у виклику виробництва
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Виклик {1:HEX} повернув невідомий/неправильний результат {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}'повернув недійсний тип вантажу у виробничому зворотному режимі о {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' використовує недійсний тип вантажу на виклик виробництва у {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<невідомий вантаж>
@@ -4193,10 +4193,10 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} літак{P "" и ів}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Поїзди - клацніть на поїзд для детальної інформації
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Авто - натисніть на авто для інформації
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Кораблі - натисніть для інформації
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Літаки - натисніть на літак для інформації
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Поїзди - клацніть на поїзд для детальної інформації. Утримання Ctrl+Shift додасть тип вантажу
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Авто - натисніть на авто для інформації. Утримання Ctrl+Shift додасть тип вантажу
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Кораблі - натисніть для інформації. Утримання Ctrl+Shift додасть тип вантажу
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Літаки - тицьніть на літак для інформації. Утримання Ctrl+Shift додасть тип вантажу
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Доступні поїзди
@@ -4580,10 +4580,10 @@ STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Пока
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Показати завдання літака. Ctrl+клац показує розклад літака
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Показати детальну інформацію
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Показує детальну інформацію. Ctrl+клац показує групу потяга
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Показати авто детально
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Показати корабель детально
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Показати літак детально
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Показує корабель детально. Ctrl+клац показує групу корабля
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Показує докладний звіт про літак. Ctrl+клац показує групу літака
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Поточні дії потяга - натисніть для руху/зупинки потяга

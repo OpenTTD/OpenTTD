@@ -933,7 +933,7 @@ STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Abrir a 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST                   :{WHITE}{STATION} já não aceita{G 0 "" "" "" m m}: {CARGO_LIST}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION} agora aceita{G 0 "" "" "" m m}: {CARGO_LIST}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Oferta de subsídio expirou:{}{}Transporte de {STRING} d{G e o a os as} {STRING} para {G "" "o " "a " "os " "as "}{STRING} já não é subsidiado
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Oferta de subsídio expirou:{}{}Transporte de {STRING} d{G e o a os as} {STRING} para {G "" "o " "a " "os " "as "}{STRING} deixou de ser subsidiado
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsídio retirado:{}{}Transporte de {STRING} d{G e o a os as} {STRING} para {G "" "o " "a " "os " "as "}{STRING} já não é subsidiado
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Oferta de subsídio de serviço:{}{}Primeiro transporte de {STRING} d{G e o a os as} {STRING} para {G "" "o " "a " "os " "as "}{STRING} irá receber subsídio da autoridade local durante {UNITS_YEARS_OR_MINUTES}!
 ###length 4
@@ -1722,7 +1722,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Sim, exceto col
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Usar formato de data {STRING} para jogos guardados.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formato da data nos ficheiros de jogos guardados
 ###length 3
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :longo (31 Dez 2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :longo (31 de Dez. de 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :curto (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
@@ -5509,9 +5509,9 @@ STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=mp}Poços de
 STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=f}Loja de Brinquedos
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=f}Fábrica de Brinquedos
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=fp}Fontes de Plástico
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=f}Fábrica de refrigerantes
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}Produtor de Bolhas
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=f}Exploração de Caramelo
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=f}Fábrica de Refrigerantes
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}Gerador de Bolhas
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=f}Pedreira de Caramelo
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=f}Mina de Açúcar
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
@@ -5772,7 +5772,7 @@ STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :Petroleiro MPS
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :Petroleiro CS-Inc.
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :Navio de passageiros MPS
 STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :Navio de passageiros FFP
-STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Hovercraft Bakewell 300
+STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Hidroflutuador Bakewell 300
 STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Navio de passageiros Chugger-Chug
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Navio de passageiros Shivershake
 STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Navio de mercadorias Yate
@@ -5826,8 +5826,8 @@ STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Helicóptero Po
 ##id 0x8800
 # Formatting of some strings
 STR_FORMAT_DATE_TINY                                            :{ZEROFILL_NUM}-{ZEROFILL_NUM}-{NUM}
-STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} de {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} de {STRING}. de {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:ZEROFILL_NUM}-{0:ZEROFILL_NUM}
 
 STR_FORMAT_COMPANY_NUM                                          :(Empresa {COMMA})
