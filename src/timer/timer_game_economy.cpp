@@ -127,6 +127,20 @@ bool TimerManager<TimerGameEconomy>::Elapsed([[maybe_unused]] TimerGameEconomy::
 
 	if (_game_mode == GM_MENU) return false;
 
+	/* If calendar day progress is frozen, don't try to advance time. */
+	if (_settings_game.economy.minutes_per_calendar_year == CalendarTime::FROZEN_MINUTES_PER_YEAR) return false;
+
+	/* If we are using a non-default calendar progression speed, we need to check the sub_date_fract before updating date_fract. */
+	if (_settings_game.economy.minutes_per_calendar_year != CalendarTime::DEF_MINUTES_PER_YEAR) {
+		TimerGameCalendar::sub_date_fract += Ticks::DAY_TICKS;
+
+		/* Check if we are ready to increment date_fract */
+		const uint16_t threshold = (_settings_game.economy.minutes_per_calendar_year * Ticks::DAY_TICKS) / CalendarTime::DEF_MINUTES_PER_YEAR;
+		if (TimerGameCalendar::sub_date_fract < threshold) return false;
+
+		TimerGameCalendar::sub_date_fract = std::min<uint16_t>(TimerGameCalendar::sub_date_fract - threshold, Ticks::DAY_TICKS - 1);
+	}
+	
 	TimerGameEconomy::date_fract++;
 	if (TimerGameEconomy::date_fract < Ticks::DAY_TICKS) return true;
 	TimerGameEconomy::date_fract = 0;
