@@ -285,7 +285,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}關閉�
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}視窗標題 - 點此拖曳可移動視窗
 STR_TOOLTIP_SHADE                                               :{BLACK}陰影視窗 - 只顯示標題列
 STR_TOOLTIP_DEBUG                                               :{BLACK}顯示 NewGRF 除錯資訊
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}將視窗改回預設大小。按下 Ctrl 鍵點選此掣則將視窗現時大小定為預設
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}將視窗改回預設大小。按住 <Ctrl> 鍵單擊點選此按鈕可將視窗現時大小設為預設。按住 <Ctrl> 鍵雙擊點選則可重設預設大小
 STR_TOOLTIP_STICKY                                              :{BLACK}標記此視窗使其不受「關閉所有視窗」掣影響。按住 Ctrl 鍵點選此掣以將選項定為常態
 STR_TOOLTIP_RESIZE                                              :{BLACK}點選並拖曳可縮放視窗大小
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}切換大／小視窗
@@ -444,7 +444,6 @@ STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :設置房屋
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :遊戲選項
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :設定
 STR_SETTINGS_MENU_AI_SETTINGS                                   :AI 設定
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :遊戲腳本設定
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 設定
@@ -715,7 +714,7 @@ STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}跳至�
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}跳至所選的下一首樂軌
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}停止播放音樂
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}開始播放音樂
-STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}拖曳捲軸以設定背景音樂和音效的音量
+STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}拖曳滑動以設定背景音樂和音效的音量
 STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}選擇「全部音軌」播放清單
 STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}選擇「舊格調」播放清單
 STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}選擇「新格調」播放清單
@@ -959,22 +958,26 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}將主�
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}遊戲選項
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :基本
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}選擇基本設定
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :選擇基本設定
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :圖形集
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}選擇圖形設定
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :選擇圖形設定
 STR_GAME_OPTIONS_TAB_SOUND                                      :音效
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}選擇音效及音樂設定
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :選擇音效及音樂設定
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :社交
-STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}選擇社交插件設定
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :選擇社交插件設定
+STR_GAME_OPTIONS_TAB_ADVANCED                                   :進階
+STR_GAME_OPTIONS_TAB_ADVANCED_TOOLTIP                           :變更進階設定
 
 STR_GAME_OPTIONS_VOLUME                                         :音量
 STR_GAME_OPTIONS_SFX_VOLUME                                     :音效
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :音樂
 
+STR_GAME_OPTIONS_SETTING                                        :{STRING}：{ORANGE}{STRING}
+
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}幣值單位
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}選擇幣值單位
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :幣值單位
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :選擇幣值單位
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -1025,8 +1028,8 @@ STR_GAME_OPTIONS_CURRENCY_LVL                                   :拉脫維亞勒
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :葡萄牙埃斯庫多
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :烏克蘭赫里夫尼亞
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}自動存檔
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}選擇自動存檔頻率
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :自動存檔
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :選擇自動存檔頻率
 
 # Autosave dropdown
 ###length 5
@@ -1036,77 +1039,79 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :每30分鐘
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :每60分鐘
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :每120分鐘
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}語言
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}選擇要用的介面語言
+STR_GAME_OPTIONS_LANGUAGE                                       :語言
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :選擇界面語言
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING}（已完成 {NUM} ％）
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}全螢幕
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}勾選即可在全螢幕下玩 OpenTTD
+STR_GAME_OPTIONS_FULLSCREEN                                     :全螢幕
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :啟用後，即可在全螢幕下遊玩 OpenTTD
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}螢幕解析度
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}選擇螢幕解析度
+STR_GAME_OPTIONS_RESOLUTION                                     :螢幕解析度
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :選擇螢幕解析度
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :其他
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}硬體加速
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}勾選此方框以允許OpenTTD嘗試使用硬體加速。設定將會在遊戲重新啟動後套用
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :硬體加速
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :啟用後，允許 OpenTTD 嘗試使用硬體加速。設定將會在遊戲重新啟動後套用
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}修改的設定將會在遊戲重啟後生效
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}垂直同步
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}勾選此方框以啟用垂直同步 (V-SYNC)。此項設定將會在遊戲重啟後套用。只有在硬體加速存在時可用
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :垂直同步
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :啟用後，使用垂直同步 (V-SYNC)。此項設定將會在遊戲重啟後套用。只在使用硬體加速時可用
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}使用中的驅動程式：{STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :使用中的驅動程式：{STRING}
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}界面大小
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}拖曳滑動以設定界面大小。 按住 <Ctrl> 以調整至非整數之倍數
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}自動選取大小
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}勾選此方框以自動選取界面大小
+STR_GAME_OPTIONS_INTERFACE                                      :界面
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}縮放邊框
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}勾選此方框以令邊框隨界面大小而縮放
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :界面大小
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :拖曳滑動以設定界面大小。 按住 <Ctrl> 鍵以精準細緻調整
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :自動選取大小
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :啟用後，自動選取界面大小
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}使用傳統點陣式字體
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}勾選此方框以使用固定大小的傳統點陣式字體
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}反鋸齒字體
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}勾選此方框以使用反鋸齒字體
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :縮放邊框
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :啟用後，使邊框隨界面大小而縮放
+
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :使用傳統點陣式字體
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :啟用後，使用固定大小的傳統點陣式字體
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :反鋸齒字體
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :啟用後，使用反鋸齒字體
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}自動問卷
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}參與自動問卷
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}在啟用後，OpenTTD 將在離開遊戲時傳送調查資訊
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}關於問卷和隱私
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}這將會開啟瀏覽器給提供更多自動調查的資訊
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}預覽調查結果
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}顯示現正執行的遊戲調查結果
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :自動問卷調查
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :參與遊戲體驗自動問卷調查
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :啟用後，OpenTTD 將在離開遊戲時傳送問卷調查資訊
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :關於問卷和隱私
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :開啟瀏覽器以顯示更多有關遊戲體驗自動問卷調查的資訊
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :預覽調查結果
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :顯示現正執行的遊戲體驗問卷調查結果
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}圖形
+STR_GAME_OPTIONS_DISPLAY                                        :顯示
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}顯示畫面更新率
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}選擇畫面更新率
+STR_GAME_OPTIONS_REFRESH_RATE                                   :顯示畫面更新率
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :選擇畫面更新率
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}高於60Hz的畫面更新率可能會影響遊戲性能
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}基本圖形集
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}選擇要使用的基本圖形集（無法在遊戲中更改，只能從主選單中更改）
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}關於基本圖形集的額外資訊
+STR_GAME_OPTIONS_BASE_GRF                                       :基本圖形集
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :選擇要使用的基本圖形集（無法在遊戲中更改，只能從主選單中更改）
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :關於基本圖形集的額外資訊
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}基本音效集
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}選擇要使用的基本音效集（無法在遊戲中更改，只能從主選單中更改）
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}關於基本音效集的額外資訊
+STR_GAME_OPTIONS_BASE_SFX                                       :基本音效集
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :選擇要使用的基本音效集（無法在遊戲中更改，只能從主選單中更改）
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :關於基本音效集的額外資訊
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}基本音樂集
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}選擇要使用的基本音樂集
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}關於基本音樂集的額外資訊
+STR_GAME_OPTIONS_BASE_MUSIC                                     :基本音樂集
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :選擇要使用的基本音樂集
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :關於基本音樂集的額外資訊
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :取得內容
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :檢查及下載最新內容
 
-STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}（沒有安裝社交平台擴充功能）
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :（沒有安裝社交平台擴充功能）
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}平台︰
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}擴充功能狀態︰
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING}（{STRING}）
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :平台：
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :擴充功能狀態：
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}正在執行
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}初始化失敗
@@ -1219,12 +1224,11 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :放任（所有
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}無適合的 AI 可供使用……{}{}您可以使用「線上擴充內容」功能下載更多的 AI
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}顯示設定
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}篩選：
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}展開所有選項
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}折疊所有選項
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}重設所有數值
+# Settings tree in the Game Options window
+STR_CONFIG_SETTING_FILTER_TITLE                                 :篩選：
+STR_CONFIG_SETTING_EXPAND_ALL                                   :展開所有選項
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :折疊所有選項
+STR_CONFIG_SETTING_RESET_ALL                                    :重設所有數值
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(沒有適用的解釋)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}預設值：{ORANGE}{STRING}
@@ -1237,9 +1241,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :公司設定 (�
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}注意！
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}此操作將會還原所有遊戲設定至預設狀態{}你確定要進行此操作嗎?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}篩選設定：
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}適用範圍：
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}限制以下列表僅顯示曾被更改的設定。
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :篩選設定：
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :適用範圍：
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :僅顯示所選擇的適用設定
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :基本 (僅顯示重要設定)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :進階 (顯示大部份設定)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :專業 (顯示所有設定)
@@ -1256,9 +1260,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :公司設定 (�
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- 無 -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}在 {SILVER}篩選設定 {BLACK}一欄選擇 {WHITE}{STRING} {BLACK}以顯示所有搜尋結果
-STR_CONFIG_SETTING_TYPE_HIDES                                   :在 {SILVER}適用範圍 {BLACK}一欄選擇 {WHITE}所有適用範圍 {BLACK}以顯示所有搜尋結果
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}在 {SILVER}篩選設定 {BLACK}一欄選擇 {WHITE}{STRING} 並在 {SILVER}適用範圍 {BLACK}一欄選擇 {WHITE}所有適用範圍 {BLACK}以顯示所有搜尋結果
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :在{PUSH_COLOUR}{SILVER}篩選設定{POP_COLOUR}一欄選擇{PUSH_COLOUR}{WHITE}{STRING}{POP_COLOUR}以顯示所有搜尋結果
+STR_CONFIG_SETTING_TYPE_HIDES                                   :在{PUSH_COLOUR}{SILVER}適用範圍{POP_COLOUR}一欄選擇{PUSH_COLOUR}{WHITE}所有適用範圍{POP_COLOUR}以顯示所有搜尋結果
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :在{PUSH_COLOUR}{SILVER}篩選設定{POP_COLOUR}一欄選擇{PUSH_COLOUR}{WHITE}{STRING}{POP_COLOUR}並在{PUSH_COLOUR}{SILVER}適用範圍{POP_COLOUR}一欄選擇{PUSH_COLOUR}{WHITE}所有適用範圍{POP_COLOUR}以顯示所有搜尋結果
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :關
@@ -1485,7 +1489,7 @@ STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :初始公司副
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :選擇初始公司副色調，需使用支援副色調的 NewGRF
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :機場永不過期：{STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :如啟用此選項，所有機場一經面世，就永遠可以選擇建設。
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :啟用時，所有機場一經面世，即可永久地能夠選擇興建
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :當車輛走失時發出警告：{STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :在車輛無法到達指令的目的地時觸發訊息。
@@ -1660,7 +1664,7 @@ STR_CONFIG_SETTING_SCROLLMODE_RMB                               :使用右鍵移
 STR_CONFIG_SETTING_SCROLLMODE_LMB                               :使用左鍵移動地圖
 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :畫面平滑移動：{STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :設定在小地圖中點選一個位置時，主畫面的顯示反應。如啟用此選項，影像會移動直至到達點選的位置；否則影像會直接跳到點選的位置。
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :設定在小地圖中點選一個位置時，主畫面的顯示方式。啟用時，畫面會平緩移動到所點選的位置；否則畫面會直接跳到所點選的位置
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :使用某些建設工具時顯示度量提示：{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :當點選建造工具後拖曳滑鼠時，是否顯示兩端的方格距離及高度差異。
@@ -1694,7 +1698,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :單撳 (選定�
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :單撳 (立刻)
 
 STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :使用中繼服務：{STRING}
-STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :嘗試連結伺服器失敗時，玩家可以使用中繼伺服以建立連結。"關閉"禁止使用中繼伺服，"詢問"使用中繼伺服前先詢問，"打開"直接使用中繼伺服。
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :嘗試連結伺服器失敗時，玩家可以使用中繼伺服以建立連結。「關閉」禁止使用中繼伺服，「詢問」使用中繼伺服前先詢問，「允許」直接使用中繼伺服
 ###length 3
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :永不
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :詢問
@@ -1733,7 +1737,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :所有，除了
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :所有動作
 
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :使用進階車輛清單：{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :啟用可以為車輛分組的進階車輛清單。
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :啟用進階車輛清單，以便為車輛分組
 
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :使用裝載進度指示：{STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :選擇是否在車輛裝卸的時候顯示裝載狀況。
@@ -1974,13 +1978,13 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :隨機
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :市鎮可以興建道路：{STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :此選項決定是否容許市鎮自行興建道路。
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :允許市鎮建設平交道：{STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :啟用此選項以容許市鎮自行興建平交道。
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :啟用時允許市鎮興建平交道
 
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :根據噪音水平限制機場建造︰{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :允許市鎮根據其噪音接受水平限制機場興建，噪音接受程度取決於市鎮的人口以及機場的規模和距離。如果禁用此設置時，每座市鎮僅允許興建兩個機場，除非地方政府態度設置為「放任」
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :於遊戲中興建新市鎮：{STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :如啟用此選項，玩家可自行興建新市鎮。
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :啟用時，允許玩家在遊戲中興建新市鎮
 ###length 3
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :禁止
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :允許
@@ -2084,7 +2088,7 @@ STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :如果您對此
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :在對稱模式下產生的返程貨物比例：{STRING}
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :如果把此值定於100%以下，到達一站的貨物不會全部被送回始發站。如果此設定的值為0%，則「對稱」分配模式的表現跟「不對稱」分配模式完全一樣
 
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :如果最短路徑的飽和度超過{STRING}，把貨物改派往容量較大的路徑
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :如果最短路徑的飽和度超過 {STRING}，把貨物改派往容量較大的路徑
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :貨物分配功能在派送貨物時，會優先使用最短路徑，至其飽和後改用第二短的路徑，如此類推。當所有路徑皆飽和但仍未滿足需求，系統會由容量較大的路徑開始繼續加載貨物。由於路徑飽和度難以準確估算，此設定容許您定義一值，使短路徑達至該飽和度後，系統便開始加載容量較大的路徑。如果此設定的值少於100%，即使系統高估路徑容量，也不會使過多的貨物滯留車站
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :速度單位（陸地）：{STRING}
@@ -2191,7 +2195,8 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}……�
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}……GPU 驅動程式導致遊戲崩潰。硬體加速已被停用
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}開新遊戲
 STR_INTRO_LOAD_GAME                                             :{BLACK}載入遊戲
@@ -2203,11 +2208,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}多人�
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}遊戲選項
 STR_INTRO_HIGHSCORE                                             :{BLACK}積分排行榜
 STR_INTRO_HELP                                                  :{BLACK}幫助和手冊
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}設定
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 設定
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}線上擴充內容
-STR_INTRO_AI_SETTINGS                                           :{BLACK}AI 設定
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}遊戲腳本設定
 STR_INTRO_QUIT                                                  :{BLACK}離開
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}開始新遊戲。按住 Ctrl 點選可跳過地圖設定畫面
@@ -2225,11 +2226,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}選擇�
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}開啟遊戲選項
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}開啟積分排行榜
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}取得說明和線上資源
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}開啟設定
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}開啟 NewGRF 設定
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}檢查有無最新或可更新的內容可下載
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}開啟 AI 設定
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}開啟遊戲腳本設定
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}離開「OpenTTD」
 
 STR_INTRO_BASESET                                               :{BLACK}目前所選的基本圖形集缺少了 {NUM} 張貼圖。請確認基本圖形集是否有更新。
@@ -2253,7 +2250,7 @@ STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}文檔
 STR_HELP_WINDOW_README                                          :{BLACK}Readme
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}修訂紀錄
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}已知漏洞
-STR_HELP_WINDOW_LICENSE                                         :{BLACK}許可協議
+STR_HELP_WINDOW_LICENSE                                         :{BLACK}授權條款
 STR_HELP_WINDOW_FONTS                                           :{BLACK}字體
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}手冊／維基
@@ -2542,8 +2539,8 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}否
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}是，僅此一次
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}是，且不再詢問
 
-STR_NETWORK_ASK_SURVEY_CAPTION                                  :是否參與自動問卷？
-STR_NETWORK_ASK_SURVEY_TEXT                                     :您是否願意參加自動調查？{} OpenTTD 會在離開遊戲時傳送調查資訊。{}您可在任何時候於「遊戲選項」選單裡修改此項設定。
+STR_NETWORK_ASK_SURVEY_CAPTION                                  :是否參與遊戲體驗自動問卷調查？
+STR_NETWORK_ASK_SURVEY_TEXT                                     :您是否願意參加遊戲體驗自動問卷調查？{} OpenTTD 會在離開遊戲時傳送調查資訊。{}您可在任何時候於「遊戲選項」選單裡更改此項設定。
 STR_NETWORK_ASK_SURVEY_PREVIEW                                  :預覽調查結果
 STR_NETWORK_ASK_SURVEY_LINK                                     :關於問卷和隱私
 STR_NETWORK_ASK_SURVEY_NO                                       :否
@@ -3076,6 +3073,12 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}選擇�
 STR_FOUND_TOWN_CITY                                             :{BLACK}城市
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}城市比普通城鎮成長的更快{}你可以從進階設定中調整城市的初始規模
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}市鎮擴展：
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :建築物
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :增建市鎮建築
+STR_FOUND_TOWN_EXPAND_ROADS                                     :道路
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :擴展市鎮道路
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}市鎮道路配置：
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}選擇這個市鎮使用的道路配置
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}原版
@@ -3525,15 +3528,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}儲存�
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}現有的預設值名稱。點選一個預設值名稱，它會被複製到下方的輸入欄
 STR_SAVE_PRESET_TITLE                                           :{BLACK}輸入預設值名稱
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}預設值會儲存成現時選定的名稱
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}取消
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}請勿修改預設值
 STR_SAVE_PRESET_SAVE                                            :{BLACK}存檔
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}儲存預設值到選擇的名稱
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}變更基本圖形集參數
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}變更 NewGRF 參數
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}關閉
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}重設
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}將所有參數設為預設值
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :參數 {NUM}
@@ -3702,6 +3702,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}修改�
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}擴展
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}擴大市鎮大小
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}擴展已發展區域
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}增建市鎮建築
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}擴展道路
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}擴展市鎮道路
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}刪除
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}完全刪除這個市鎮
 
@@ -4440,10 +4444,10 @@ STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}顯示�
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}顯示飛機指令。 按住 Ctrl 點選可顯示飛機時刻表
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}顯示列車詳細資料
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}顯示車輛詳細資訊
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}顯示船舶詳細資料
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}顯示飛機詳細資料
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}顯示列車詳細資料。按住 <Ctrl> 點選可顯示列車群組
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}顯示車輛詳細資訊。按住 <Ctrl> 點選可顯示車輛群組
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}顯示船舶詳細資料。按住 <Ctrl> 點選可顯示船舶群組
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}顯示飛機詳細資料。按住 <Ctrl> 點選可顯示飛機群組
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}目前列車狀態 - 點擊以停止／起動列車
@@ -4766,20 +4770,20 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}時刻�
 
 STR_TIMETABLE_NO_TRAVEL                                         :原地待命
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :行駛（自動；由下個手動指令排程）
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :行駛（無時刻表）
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :限速 {2:VELOCITY} 行駛（無時刻表）
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :行駛（未排程）
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :限速 {VELOCITY}（未排程）
 STR_TIMETABLE_TRAVEL_FOR                                        :行駛需時 {STRING}
-STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :行駛 {STRING} ，限速 {VELOCITY}
-STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :開往（{STRING} ，無時刻表）
-STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :開往（{STRING} ，無時刻表）以最高速度 {VELOCITY}
-STR_TIMETABLE_STAY_FOR_ESTIMATED                                :（等候 {STRING} ，無時刻表）
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :（開往 {STRING} ，無時刻表）
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :行駛 {STRING}，限速 {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :行駛（{STRING}，未排程）
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :行駛（{STRING}，未排程），限速 {VELOCITY}
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :（等候 {STRING}，未排程）
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :（開往 {STRING} ，未排程）
 STR_TIMETABLE_STAY_FOR                                          :並等待 {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :並開往 {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :並行駛 {STRING}
 
-STR_TIMETABLE_APPROX_TIME                                       :{BLACK}此時刻表跑完全程大約需時 {STRING}
-STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}此時刻表跑完全程需時 {STRING}
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}此時刻表跑完全程至少需時 {STRING} (此表尚未完成)
+STR_TIMETABLE_APPROX_TIME                                       :{BLACK}完成此時刻表大約需時 {STRING}
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}完成此時刻表需時 {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}完成此時刻表至少需時 {STRING} （時刻表尚未完成）
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}此車輛目前準點
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}此車輛目前比表定時間遲 {STRING}
@@ -4894,8 +4898,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL：{
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}接受
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}選擇標示到的腳本
-STR_AI_LIST_CANCEL                                              :{BLACK}取消
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}不改變腳本
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}螢幕截圖
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}普通截圖
@@ -4908,7 +4910,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}小地�
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}AI 參數
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}遊戲腳本參數
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}關閉
 STR_AI_SETTINGS_RESET                                           :{BLACK}重設
 STR_AI_SETTINGS_SETTING                                         :{STRING}：{ORANGE}{STRING}
 
@@ -4926,7 +4927,7 @@ STR_TEXTFILE_VIEW_README_TOOLTIP                                :檢視此項目
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}修訂紀錄
 STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :檢視此項目的更新日誌
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}授權條款
-STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :檢視此項目的許可證
+STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :檢視此項目的授權條款
 ###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}{STRING}的 Readme
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING}{STRING}的修訂紀錄
@@ -5886,6 +5887,7 @@ STR_CURRENCY_SHORT_GIGA                                         :{NBSP}B
 STR_CURRENCY_SHORT_TERA                                         :{NBSP}T
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_LEFT_ARROW                                             :{LEFT_ARROW}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
@@ -5925,3 +5927,11 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}：{GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :開啟徽章設定
+STR_BADGE_CONFIG_RESET                                          :重設
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}徽章圖示
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}篩選徽章
+STR_BADGE_CONFIG_PREVIEW                                        :預覽圖
+STR_BADGE_CONFIG_NAME                                           :名稱
+STR_BADGE_FILTER_ANY_LABEL                                      :任何{STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING}：{STRING}

@@ -13,7 +13,7 @@ struct SQStringTable
 {
 	SQStringTable();
 	~SQStringTable();
-	SQString *Add(const SQChar *,SQInteger len);
+	SQString *Add(std::string_view str);
 	void Remove(SQString *);
 private:
 	void Resize(SQInteger size);
@@ -49,9 +49,6 @@ private:
 	RefNode **_buckets;
 };
 
-#define ADD_STRING(ss,str,len) ss->_stringtable->Add(str,len)
-#define REMOVE_STRING(ss,bstr) ss->_stringtable->Remove(bstr)
-
 struct SQObjectPtr;
 
 struct SQSharedState
@@ -59,7 +56,7 @@ struct SQSharedState
 	SQSharedState();
 	~SQSharedState();
 public:
-	SQChar* GetScratchPad(SQInteger size);
+	std::span<char> GetScratchPad(SQInteger size);
 	SQInteger GetMetaMethodIdxByName(const SQObjectPtr &name);
 	void DelayFinalFree(SQCollectable *collectable);
 #ifndef NO_GARBAGE_COLLECTOR
@@ -84,33 +81,32 @@ public:
 #endif
 	SQObjectPtr _root_vm;
 	SQObjectPtr _table_default_delegate;
-	static SQRegFunction _table_default_delegate_funcz[];
+	static const std::initializer_list<SQRegFunction> _table_default_delegate_funcz;
 	SQObjectPtr _array_default_delegate;
-	static SQRegFunction _array_default_delegate_funcz[];
+	static const std::initializer_list<SQRegFunction> _array_default_delegate_funcz;
 	SQObjectPtr _string_default_delegate;
-	static SQRegFunction _string_default_delegate_funcz[];
+	static const std::initializer_list<SQRegFunction> _string_default_delegate_funcz;
 	SQObjectPtr _number_default_delegate;
-	static SQRegFunction _number_default_delegate_funcz[];
+	static const std::initializer_list<SQRegFunction> _number_default_delegate_funcz;
 	SQObjectPtr _generator_default_delegate;
-	static SQRegFunction _generator_default_delegate_funcz[];
+	static const std::initializer_list<SQRegFunction> _generator_default_delegate_funcz;
 	SQObjectPtr _closure_default_delegate;
-	static SQRegFunction _closure_default_delegate_funcz[];
+	static const std::initializer_list<SQRegFunction> _closure_default_delegate_funcz;
 	SQObjectPtr _thread_default_delegate;
-	static SQRegFunction _thread_default_delegate_funcz[];
+	static const std::initializer_list<SQRegFunction> _thread_default_delegate_funcz;
 	SQObjectPtr _class_default_delegate;
-	static SQRegFunction _class_default_delegate_funcz[];
+	static const std::initializer_list<SQRegFunction> _class_default_delegate_funcz;
 	SQObjectPtr _instance_default_delegate;
-	static SQRegFunction _instance_default_delegate_funcz[];
+	static const std::initializer_list<SQRegFunction> _instance_default_delegate_funcz;
 	SQObjectPtr _weakref_default_delegate;
-	static SQRegFunction _weakref_default_delegate_funcz[];
+	static const std::initializer_list<SQRegFunction> _weakref_default_delegate_funcz;
 
 	SQCOMPILERERROR _compilererrorhandler;
 	SQPRINTFUNCTION _printfunc;
 	bool _debuginfo;
 	bool _notifyallexceptions;
 private:
-	SQChar *_scratchpad;
-	SQInteger _scratchpadsize;
+	std::vector<char> _scratchpad;
 };
 
 #define _sp(s) (_sharedstate->GetScratchPad(s))
@@ -133,6 +129,6 @@ extern SQObjectPtr _false_;
 extern SQObjectPtr _one_;
 extern SQObjectPtr _minusone_;
 
-bool CompileTypemask(SQIntVec &res,const SQChar *typemask);
+bool CompileTypemask(SQIntVec &res,std::string_view typemask);
 
 #endif //_SQSTATE_H_

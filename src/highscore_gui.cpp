@@ -214,14 +214,14 @@ static constexpr NWidgetPart _nested_highscore_widgets[] = {
 };
 
 static WindowDesc _highscore_desc(
-	WDP_MANUAL, nullptr, 0, 0,
+	WDP_MANUAL, {}, 0, 0,
 	WC_HIGHSCORE, WC_NONE,
 	{},
 	_nested_highscore_widgets
 );
 
 static WindowDesc _endgame_desc(
-	WDP_MANUAL, nullptr, 0, 0,
+	WDP_MANUAL, {}, 0, 0,
 	WC_ENDSCREEN, WC_NONE,
 	{},
 	_nested_highscore_widgets
@@ -252,7 +252,7 @@ void ShowEndGameChart()
 	new EndGameWindow(_endgame_desc);
 }
 
-static IntervalTimer<TimerGameCalendar> _check_end_game({TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [](auto)
+static const IntervalTimer<TimerGameCalendar> _check_end_game({TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [](auto)
 {
 	/* 0 = never */
 	if (_settings_game.game_creation.ending_year == 0) return;

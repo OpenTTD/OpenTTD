@@ -23,7 +23,7 @@ public:
 	/**
 	 * Register the functions of this class.
 	 */
-	static void RegisterAPI(Squirrel *engine);
+	static void RegisterAPI(Squirrel &engine);
 
 	/**
 	 * Create an Game, using this GameInfo as start-template.
@@ -56,7 +56,7 @@ public:
 	/**
 	 * Register the functions of this class.
 	 */
-	static void RegisterAPI(Squirrel *engine);
+	static void RegisterAPI(Squirrel &engine);
 
 	/**
 	 * Create an GSLibrary, using this GSInfo as start-template.

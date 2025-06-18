@@ -32,7 +32,7 @@ static void NewSpriteSet(ByteReader &buf)
 	 *                         In that case, use num-dirs=4.
 	 */
 
-	uint8_t  feature   = buf.ReadByte();
+	GrfSpecFeature feature{buf.ReadByte()};
 	uint16_t num_sets  = buf.ReadByte();
 	uint16_t first_set = 0;
 
@@ -45,20 +45,20 @@ static void NewSpriteSet(ByteReader &buf)
 	uint16_t num_ents = buf.ReadExtendedByte();
 
 	if (feature >= GSF_END) {
-		_cur.skip_sprites = num_sets * num_ents;
-		GrfMsg(1, "NewSpriteSet: Unsupported feature 0x{:02X}, skipping {} sprites", feature, _cur.skip_sprites);
+		_cur_gps.skip_sprites = num_sets * num_ents;
+		GrfMsg(1, "NewSpriteSet: Unsupported feature 0x{:02X}, skipping {} sprites", feature, _cur_gps.skip_sprites);
 		return;
 	}
 
-	_cur.AddSpriteSets(feature, _cur.spriteid, first_set, num_sets, num_ents);
+	_cur_gps.AddSpriteSets(feature, _cur_gps.spriteid, first_set, num_sets, num_ents);
 
 	GrfMsg(7, "New sprite set at {} of feature 0x{:02X}, consisting of {} sets with {} views each (total {})",
-		_cur.spriteid, feature, num_sets, num_ents, num_sets * num_ents
+		_cur_gps.spriteid, feature, num_sets, num_ents, num_sets * num_ents
 	);
 
 	for (int i = 0; i < num_sets * num_ents; i++) {
-		_cur.nfo_line++;
-		LoadNextSprite(_cur.spriteid++, *_cur.file, _cur.nfo_line);
+		_cur_gps.nfo_line++;
+		LoadNextSprite(_cur_gps.spriteid++, *_cur_gps.file, _cur_gps.nfo_line);
 	}
 }
 
@@ -76,9 +76,9 @@ static void SkipAct1(ByteReader &buf)
 	}
 	uint16_t num_ents = buf.ReadExtendedByte();
 
-	_cur.skip_sprites = num_sets * num_ents;
+	_cur_gps.skip_sprites = num_sets * num_ents;
 
-	GrfMsg(3, "SkipAct1: Skipping {} sprites", _cur.skip_sprites);
+	GrfMsg(3, "SkipAct1: Skipping {} sprites", _cur_gps.skip_sprites);
 }
 
 template <> void GrfActionHandler<0x01>::FileScan(ByteReader &buf) { SkipAct1(buf); }

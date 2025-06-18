@@ -25,7 +25,7 @@ enum NetworkGameStatus : uint8_t {
 
 /** Structure with information shown in the game list (GUI) */
 struct NetworkGame {
-	NetworkGame(const std::string &connection_string) : connection_string(connection_string) {}
+	NetworkGame(std::string_view connection_string) : connection_string(connection_string) {}
 
 	NetworkGameInfo info{};                  ///< The game information of this server.
 	std::string connection_string;           ///< Address of the server.
@@ -38,7 +38,7 @@ struct NetworkGame {
 extern std::vector<std::unique_ptr<NetworkGame>> _network_game_list;
 extern int _network_game_list_version;
 
-NetworkGame *NetworkGameListAddItem(const std::string &connection_string);
+NetworkGame *NetworkGameListAddItem(std::string_view connection_string);
 void NetworkGameListRemoveItem(NetworkGame *remove);
 void NetworkGameListRemoveExpired();
 

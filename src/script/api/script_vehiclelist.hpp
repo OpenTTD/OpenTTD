@@ -58,11 +58,39 @@ public:
  */
 class ScriptVehicleList_Station : public ScriptList {
 public:
+#ifdef DOXYGEN_API
 	/**
 	 * @param station_id The station to get the list of vehicles from, which have orders to it.
 	 * @pre ScriptBaseStation::IsValidBaseStation(station_id)
 	 */
 	ScriptVehicleList_Station(StationID station_id);
+
+	/**
+	 * @param station_id The station to get the list of vehicles from, which have orders to it.
+	 * @param vehicle_type The VehicleType to get the list of vehicles for.
+	 * @pre ScriptBaseStation::IsValidBaseStation(station_id)
+	 */
+	ScriptVehicleList_Station(StationID station_id, ScriptVehicle::VehicleType vehicle_type);
+#else
+	/**
+	* The constructor wrapper from Squirrel.
+	*/
+	ScriptVehicleList_Station(HSQUIRRELVM vm);
+#endif /* DOXYGEN_API */
+};
+
+/**
+ * Creates a list of vehicles that have orders to a given waypoint.
+ * @api ai game
+ * @ingroup ScriptList
+ */
+class ScriptVehicleList_Waypoint : public ScriptList {
+public:
+	/**
+	 * @param waypoint_id The waypoint to get the list of vehicles from, which have orders to it.
+	 * @pre ScriptWaypoint::IsValidWaypoint(waypoint_id)
+	 */
+	ScriptVehicleList_Waypoint(StationID waypoint_id);
 };
 
 /**

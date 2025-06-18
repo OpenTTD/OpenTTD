@@ -89,7 +89,7 @@ bool FiosIsHiddenFile(const std::filesystem::path &path)
 #include "../../debug.h"
 #include "../../string_func.h"
 
-const char *GetCurrentLocale(const char *param);
+std::optional<std::string> GetCurrentLocale(const char *param);
 
 #define INTERNALCODE "UTF-8"
 
@@ -98,16 +98,18 @@ const char *GetCurrentLocale(const char *param);
  * variables. MacOSX is hardcoded, other OS's are dynamic. If no suitable
  * locale can be found, don't do any conversion ""
  */
-static const char *GetLocalCode()
+static std::string GetLocalCode()
 {
 #if defined(__APPLE__)
 	return "UTF-8-MAC";
 #else
 	/* Strip locale (eg en_US.UTF-8) to only have UTF-8 */
-	const char *locale = GetCurrentLocale("LC_CTYPE");
-	if (locale != nullptr) locale = strchr(locale, '.');
-
-	return (locale == nullptr) ? "" : locale + 1;
+	auto locale = GetCurrentLocale("LC_CTYPE");
+	if (!locale.has_value()) return "";
+	auto pos = locale->find('.');
+	if (pos == std::string_view::npos) return "";
+	locale.erase(0, pos + 1);
+	return locale;
 #endif
 }
 
@@ -115,13 +117,13 @@ static const char *GetLocalCode()
  * Convert between locales, which from and which to is set in the calling
  * functions OTTD2FS() and FS2OTTD().
  */
-static std::string convert_tofrom_fs(iconv_t convd, const std::string &name)
+static std::string convert_tofrom_fs(iconv_t convd, std::string_view name)
 {
 	/* There are different implementations of iconv. The older ones,
 	 * e.g. SUSv2, pass a const pointer, whereas the newer ones, e.g.
 	 * IEEE 1003.1 (2004), pass a non-const pointer. */
 #ifdef HAVE_NON_CONST_ICONV
-	char *inbuf = const_cast<char*>(name.data());
+	char *inbuf = const_cast<char *>(name.data());
 #else
 	const char *inbuf = name.data();
 #endif
@@ -135,7 +137,7 @@ static std::string convert_tofrom_fs(iconv_t convd, const std::string &name)
 	iconv(convd, nullptr, nullptr, nullptr, nullptr);
 	if (iconv(convd, &inbuf, &inlen, &outbuf, &outlen) == SIZE_MAX) {
 		Debug(misc, 0, "[iconv] error converting '{}'. Errno {}", name, errno);
-		return name;
+		return std::string{name};
 	}
 
 	buf.resize(outbuf - buf.data());
@@ -143,23 +145,29 @@ static std::string convert_tofrom_fs(iconv_t convd, const std::string &name)
 }
 
 /**
+ * Open iconv converter.
+ */
+static std::optional<iconv_t> OpenIconv(std::string from, std::string to)
+{
+	iconv_t convd = iconv_open(from.c_str(), to.c_str());
+	if (convd == reinterpret_cast<iconv_t>(-1)) {
+		Debug(misc, 0, "[iconv] conversion from codeset '{}' to '{}' unsupported", from, to);
+		return std::nullopt;
+	}
+	return convd;
+}
+
+/**
  * Convert from OpenTTD's encoding to that of the local environment
  * @param name pointer to a valid string that will be converted
  * @return pointer to a new stringbuffer that contains the converted string
  */
-std::string OTTD2FS(const std::string &name)
+std::string OTTD2FS(std::string_view name)
 {
-	static iconv_t convd = (iconv_t)(-1);
-	if (convd == (iconv_t)(-1)) {
-		const char *env = GetLocalCode();
-		convd = iconv_open(env, INTERNALCODE);
-		if (convd == (iconv_t)(-1)) {
-			Debug(misc, 0, "[iconv] conversion from codeset '{}' to '{}' unsupported", INTERNALCODE, env);
-			return name;
-		}
-	}
+	static const auto convd = OpenIconv(GetLocalCode(), INTERNALCODE);
+	if (!convd.has_value()) return std::string{name};
 
-	return convert_tofrom_fs(convd, name);
+	return convert_tofrom_fs(*convd, name);
 }
 
 /**
@@ -167,30 +175,23 @@ std::string OTTD2FS(const std::string &name)
  * @param name valid string that will be converted
  * @return pointer to a new stringbuffer that contains the converted string
  */
-std::string FS2OTTD(const std::string &name)
+std::string FS2OTTD(std::string_view name)
 {
-	static iconv_t convd = (iconv_t)(-1);
-	if (convd == (iconv_t)(-1)) {
-		const char *env = GetLocalCode();
-		convd = iconv_open(INTERNALCODE, env);
-		if (convd == (iconv_t)(-1)) {
-			Debug(misc, 0, "[iconv] conversion from codeset '{}' to '{}' unsupported", env, INTERNALCODE);
-			return name;
-		}
-	}
+	static const auto convd = OpenIconv(INTERNALCODE, GetLocalCode());
+	if (!convd.has_value()) return std::string{name};
 
-	return convert_tofrom_fs(convd, name);
+	return convert_tofrom_fs(*convd, name);
 }
 
 #endif /* WITH_ICONV */
 
-void ShowInfoI(const std::string &str)
+void ShowInfoI(std::string_view str)
 {
 	fmt::print(stderr, "{}\n", str);
 }
 
 #if !defined(__APPLE__)
-void ShowOSErrorBox(const char *buf, bool)
+void ShowOSErrorBox(std::string_view buf, bool)
 {
 	/* All unix systems, except OSX. Only use escape codes on a TTY. */
 	if (isatty(fileno(stderr))) {
@@ -224,7 +225,7 @@ std::optional<std::string> GetClipboardContents()
 void OSOpenBrowser(const std::string &url)
 {
 	/* Implementation in pre.js */
-	EM_ASM({ if (window["openttd_open_url"]) window.openttd_open_url($0, $1) }, url.c_str(), url.size());
+	EM_ASM({ if (window["openttd_open_url"]) window.openttd_open_url($0, $1) }, url.data(), url.size());
 }
 #elif !defined( __APPLE__)
 void OSOpenBrowser(const std::string &url)
@@ -242,12 +243,12 @@ void OSOpenBrowser(const std::string &url)
 }
 #endif /* __APPLE__ */
 
-void SetCurrentThreadName([[maybe_unused]] const char *threadName)
+void SetCurrentThreadName([[maybe_unused]] const std::string &thread_name)
 {
 #if defined(__GLIBC__)
-	if (threadName) pthread_setname_np(pthread_self(), threadName);
+	pthread_setname_np(pthread_self(), thread_name.c_str());
 #endif /* defined(__GLIBC__) */
 #if defined(__APPLE__)
-	MacOSSetThreadName(threadName);
+	MacOSSetThreadName(thread_name);
 #endif /* defined(__APPLE__) */
 }

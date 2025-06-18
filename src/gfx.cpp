@@ -54,11 +54,11 @@ static uint8_t _stringwidth_table[FS_END][224]; ///< Cache containing width of o
 DrawPixelInfo *_cur_dpi;
 
 static void GfxMainBlitterViewport(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = nullptr, SpriteID sprite_id = SPR_CURSOR_MOUSE);
-static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = nullptr, SpriteID sprite_id = SPR_CURSOR_MOUSE, ZoomLevel zoom = ZOOM_LVL_MIN);
+static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = nullptr, SpriteID sprite_id = SPR_CURSOR_MOUSE, ZoomLevel zoom = ZoomLevel::Min);
 
 static ReusableBuffer<uint8_t> _cursor_backup;
 
-ZoomLevel _gui_zoom  = ZOOM_LVL_NORMAL;     ///< GUI Zoom level
+ZoomLevel _gui_zoom = ZoomLevel::Normal; ///< GUI Zoom level
 ZoomLevel _font_zoom = _gui_zoom;           ///< Sprite font Zoom level (not clamped)
 int _gui_scale       = MIN_INTERFACE_SCALE; ///< GUI scale, 100 is 100%.
 int _gui_scale_cfg;                         ///< GUI scale in config.
@@ -101,7 +101,7 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 /**
  * Applies a certain FillRectMode-operation to a rectangle [left, right] x [top, bottom] on the screen.
  *
- * @pre dpi->zoom == ZOOM_LVL_MIN, right >= left, bottom >= top
+ * @pre dpi->zoom == ZoomLevel::Min, right >= left, bottom >= top
  * @param left Minimum X (inclusive)
  * @param top Minimum Y (inclusive)
  * @param right Maximum X (inclusive)
@@ -120,7 +120,7 @@ void GfxFillRect(int left, int top, int right, int bottom, int colour, FillRectM
 	const int otop = top;
 	const int oleft = left;
 
-	if (dpi->zoom != ZOOM_LVL_MIN) return;
+	if (dpi->zoom != ZoomLevel::Min) return;
 	if (left > right || top > bottom) return;
 	if (right < dpi->left || left >= dpi->left + dpi->width) return;
 	if (bottom < dpi->top || top >= dpi->top + dpi->height) return;
@@ -200,7 +200,7 @@ static std::vector<LineSegment> MakePolygonSegments(std::span<const Point> shape
  * The odd-even winding rule is used, i.e. self-intersecting polygons will have holes in them.
  * Left and top edges are inclusive, right and bottom edges are exclusive.
  * @note For rectangles the GfxFillRect function will be faster.
- * @pre dpi->zoom == ZOOM_LVL_MIN
+ * @pre dpi->zoom == ZoomLevel::Min
  * @param shape List of points on the polygon.
  * @param colour An 8 bit palette index (FILLRECT_OPAQUE and FILLRECT_CHECKER) or a recolour spritenumber (FILLRECT_RECOLOUR).
  * @param mode
@@ -212,7 +212,7 @@ void GfxFillPolygon(std::span<const Point> shape, int colour, FillRectMode mode)
 {
 	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 	const DrawPixelInfo *dpi = _cur_dpi;
-	if (dpi->zoom != ZOOM_LVL_MIN) return;
+	if (dpi->zoom != ZoomLevel::Min) return;
 
 	std::vector<LineSegment> segments = MakePolygonSegments(shape, Point{ dpi->left, dpi->top });
 
@@ -840,6 +840,41 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
 }
 
 /**
+ * Draw a multiline string, possibly over multiple lines, if the region is within the current display clipping area.
+ * @note With clipping, it is not possible to determine how tall the rendered text will be, as it's not layouted.
+ *       Regulard DrawStringMultiLine must be used if the height needs to be known.
+ *
+ * @param left   The left most position to draw on.
+ * @param right  The right most position to draw on.
+ * @param top    The top most position to draw on.
+ * @param bottom The bottom most position to draw on.
+ * @param str    String to draw.
+ * @param colour Colour used for drawing the string, for details see _string_colourmap in
+ *               table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
+ * @param align  The horizontal and vertical alignment of the string.
+ * @param underline Whether to underline all strings
+ * @param fontsize The size of the initial characters.
+ *
+ * @return true iff the string was drawn.
+ */
+bool DrawStringMultiLineWithClipping(int left, int right, int top, int bottom, std::string_view str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
+{
+	/* The string may contain control chars to change the font, just use the biggest font for clipping. */
+	int max_height = std::max({GetCharacterHeight(FS_SMALL), GetCharacterHeight(FS_NORMAL), GetCharacterHeight(FS_LARGE), GetCharacterHeight(FS_MONO)});
+
+	/* Funny glyphs may extent outside the usual bounds, so relax the clipping somewhat. */
+	int extra = max_height / 2;
+
+	if (_cur_dpi->top + _cur_dpi->height + extra < top || _cur_dpi->top > bottom + extra ||
+			_cur_dpi->left + _cur_dpi->width + extra < left || _cur_dpi->left > right + extra) {
+		return false;
+	}
+
+	DrawStringMultiLine(left, right, top, bottom, str, colour, align, underline, fontsize);
+	return true;
+}
+
+/**
  * Return the string dimension in pixels. The height and width are returned
  * in a single Dimension value. TINYFONT, BIGFONT modifiers are only
  * supported as the first character of the string. The returned dimensions
@@ -907,8 +942,8 @@ void DrawCharCentered(char32_t c, const Rect &r, TextColour colour)
 {
 	SetColourRemap(colour);
 	GfxMainBlitter(GetGlyph(FS_NORMAL, c),
-		CenterBounds(r.left, r.right, GetCharacterWidth(FS_NORMAL, c)),
-		CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)),
+		CentreBounds(r.left, r.right, GetCharacterWidth(FS_NORMAL, c)),
+		CentreBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)),
 		BlitterMode::ColourRemap);
 }
 
@@ -1127,7 +1162,7 @@ static void GfxBlitter(const Sprite * const sprite, int x, int y, BlitterMode mo
 		if (topleft <= clicked && clicked <= bottomright) {
 			uint offset = (((size_t)clicked - (size_t)topleft) / (blitter->GetScreenDepth() / 8)) % bp.pitch;
 			if (offset < (uint)bp.width) {
-				include(_newgrf_debug_sprite_picker.sprites, sprite_id);
+				_newgrf_debug_sprite_picker.sprites.insert(sprite_id);
 			}
 		}
 	}
@@ -1521,7 +1556,7 @@ bool FillDrawPixelInfo(DrawPixelInfo *n, int left, int top, int width, int heigh
 	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 	const DrawPixelInfo *o = _cur_dpi;
 
-	n->zoom = ZOOM_LVL_MIN;
+	n->zoom = ZoomLevel::Min;
 
 	assert(width > 0);
 	assert(height > 0);
@@ -1747,12 +1782,12 @@ void UpdateGUIZoom()
 		_gui_scale = Clamp(_gui_scale_cfg, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE);
 	}
 
-	int8_t new_zoom = ScaleGUITrad(1) <= 1 ? ZOOM_LVL_NORMAL : ScaleGUITrad(1) >= 4 ? ZOOM_LVL_IN_4X : ZOOM_LVL_IN_2X;
+	ZoomLevel new_zoom = ScaleGUITrad(1) <= 1 ? ZoomLevel::Normal : ScaleGUITrad(1) >= 4 ? ZoomLevel::In4x : ZoomLevel::In2x;
 	/* Font glyphs should not be clamped to min/max zoom. */
-	_font_zoom = static_cast<ZoomLevel>(new_zoom);
+	_font_zoom = new_zoom;
 	/* Ensure the gui_zoom is clamped between min/max. */
 	new_zoom = Clamp(new_zoom, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
-	_gui_zoom = static_cast<ZoomLevel>(new_zoom);
+	_gui_zoom = new_zoom;
 }
 
 /**
@@ -1792,7 +1827,7 @@ bool AdjustGUIZoom(bool automatic)
 			w->top    = (w->top    * _gui_scale) / old_scale;
 		}
 		if (w->viewport != nullptr) {
-			w->viewport->zoom = static_cast<ZoomLevel>(Clamp(w->viewport->zoom - zoom_shift, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max));
+			w->viewport->zoom = Clamp(w->viewport->zoom - zoom_shift, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
 		}
 	}
 

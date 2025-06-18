@@ -53,10 +53,10 @@
 class ClientNetworkCoordinatorSocketHandler : public NetworkCoordinatorSocketHandler {
 private:
 	std::chrono::steady_clock::time_point next_update; ///< When to send the next update (if server and public).
-	std::map<std::string, std::pair<std::string, TCPServerConnecter *>> connecter; ///< Based on tokens, the current (invite-code, connecter) that are pending.
-	std::map<std::string, TCPServerConnecter *> connecter_pre; ///< Based on invite codes, the current connecters that are pending.
-	std::map<std::string, std::map<int, std::unique_ptr<ClientNetworkStunSocketHandler>>> stun_handlers; ///< All pending STUN handlers, stored by token:family.
-	std::map<std::string, std::unique_ptr<ClientNetworkTurnSocketHandler>> turn_handlers; ///< Pending TURN handler (if any), stored by token.
+	std::map<std::string, std::pair<std::string, TCPServerConnecter *>, std::less<>> connecter; ///< Based on tokens, the current (invite-code, connecter) that are pending.
+	std::map<std::string, TCPServerConnecter *, std::less<>> connecter_pre; ///< Based on invite codes, the current connecters that are pending.
+	std::map<std::string, std::map<int, std::unique_ptr<ClientNetworkStunSocketHandler>>, std::less<>> stun_handlers; ///< All pending STUN handlers, stored by token:family.
+	std::map<std::string, std::unique_ptr<ClientNetworkTurnSocketHandler>, std::less<>> turn_handlers; ///< Pending TURN handler (if any), stored by token.
 	std::shared_ptr<TCPConnecter> game_connecter{}; ///< Pending connecter to the game server.
 
 	uint32_t newgrf_lookup_table_cursor = 0; ///< Last received cursor for the #GameInfoNewGRFLookupTable updates.
@@ -86,22 +86,22 @@ public:
 	NetworkRecvStatus CloseConnection(bool error = true) override;
 	void SendReceive();
 
-	void ConnectFailure(const std::string &token, uint8_t tracking_number);
-	void ConnectSuccess(const std::string &token, SOCKET sock, NetworkAddress &address);
-	void StunResult(const std::string &token, uint8_t family, bool result);
+	void ConnectFailure(std::string_view token, uint8_t tracking_number);
+	void ConnectSuccess(std::string_view token, SOCKET sock, NetworkAddress &address);
+	void StunResult(std::string_view token, uint8_t family, bool result);
 
 	void Connect();
-	void CloseToken(const std::string &token);
+	void CloseToken(std::string_view token);
 	void CloseAllConnections();
-	void CloseStunHandler(const std::string &token, uint8_t family = AF_UNSPEC);
-	void CloseTurnHandler(const std::string &token);
+	void CloseStunHandler(std::string_view token, uint8_t family = AF_UNSPEC);
+	void CloseTurnHandler(std::string_view token);
 
 	void Register();
 	void SendServerUpdate();
 	void GetListing();
 
-	void ConnectToServer(const std::string &invite_code, TCPServerConnecter *connecter);
-	void StartTurnConnection(std::string &token);
+	void ConnectToServer(std::string_view invite_code, TCPServerConnecter *connecter);
+	void StartTurnConnection(std::string_view token);
 };
 
 extern ClientNetworkCoordinatorSocketHandler _network_coordinator_client;

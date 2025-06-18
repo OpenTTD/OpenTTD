@@ -127,7 +127,7 @@ static constexpr NWidgetPart _nested_normal_news_widgets[] = {
 };
 
 static WindowDesc _normal_news_desc(
-	WDP_MANUAL, nullptr, 0, 0,
+	WDP_MANUAL, {}, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	{},
 	_nested_normal_news_widgets
@@ -175,7 +175,7 @@ static constexpr NWidgetPart _nested_vehicle_news_widgets[] = {
 };
 
 static WindowDesc _vehicle_news_desc(
-	WDP_MANUAL, nullptr, 0, 0,
+	WDP_MANUAL, {}, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	{},
 	_nested_vehicle_news_widgets
@@ -220,7 +220,7 @@ static constexpr NWidgetPart _nested_company_news_widgets[] = {
 };
 
 static WindowDesc _company_news_desc(
-	WDP_MANUAL, nullptr, 0, 0,
+	WDP_MANUAL, {}, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	{},
 	_nested_company_news_widgets
@@ -254,7 +254,7 @@ static constexpr NWidgetPart _nested_thin_news_widgets[] = {
 };
 
 static WindowDesc _thin_news_desc(
-	WDP_MANUAL, nullptr, 0, 0,
+	WDP_MANUAL, {}, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	{},
 	_nested_thin_news_widgets
@@ -290,7 +290,7 @@ static constexpr NWidgetPart _nested_small_news_widgets[] = {
 };
 
 static WindowDesc _small_news_desc(
-	WDP_MANUAL, nullptr, 0, 0,
+	WDP_MANUAL, {}, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	{},
 	_nested_small_news_widgets
@@ -317,7 +317,7 @@ static WindowDesc &GetNewsWindowLayout(NewsStyle style)
 /**
  * Per-NewsType data
  */
-static NewsTypeData _news_type_data[] = {
+static const NewsTypeData _news_type_data[] = {
 	/*            name,                           age, sound,          */
 	NewsTypeData("news_display.arrival_player",    60, SND_1D_APPLAUSE ),  ///< NewsType::ArrivalCompany
 	NewsTypeData("news_display.arrival_other",     60, SND_1D_APPLAUSE ),  ///< NewsType::ArrivalOther
@@ -395,9 +395,9 @@ struct NewsWindow : Window {
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_N_VIEWPORT);
 		if (nvp != nullptr) {
 			if (std::holds_alternative<VehicleID>(ni->ref1)) {
-				nvp->InitializeViewport(this, std::get<VehicleID>(ni->ref1), ScaleZoomGUI(ZOOM_LVL_NEWS));
+				nvp->InitializeViewport(this, std::get<VehicleID>(ni->ref1), ScaleZoomGUI(ZoomLevel::News));
 			} else {
-				nvp->InitializeViewport(this, GetReferenceTile(ni->ref1), ScaleZoomGUI(ZOOM_LVL_NEWS));
+				nvp->InitializeViewport(this, GetReferenceTile(ni->ref1), ScaleZoomGUI(ZoomLevel::News));
 			}
 			if (this->ni->flags.Test(NewsFlag::NoTransparency)) nvp->disp_flags.Set(NWidgetDisplayFlag::NoTransparency);
 			if (!this->ni->flags.Test(NewsFlag::InColour)) {
@@ -550,7 +550,7 @@ struct NewsWindow : Window {
 			case WID_N_VEH_SPR: {
 				assert(std::holds_alternative<EngineID>(ni->ref1));
 				EngineID engine = std::get<EngineID>(this->ni->ref1);
-				DrawVehicleEngine(r.left, r.right, CenterBounds(r.left, r.right, 0), CenterBounds(r.top, r.bottom, 0), engine, GetEnginePalette(engine, _local_company), EIT_PREVIEW);
+				DrawVehicleEngine(r.left, r.right, CentreBounds(r.left, r.right, 0), CentreBounds(r.top, r.bottom, 0), engine, GetEnginePalette(engine, _local_company), EIT_PREVIEW);
 				GfxFillRect(r, PALETTE_NEWSPAPER, FILLRECT_RECOLOUR);
 				break;
 			}
@@ -652,7 +652,7 @@ struct NewsWindow : Window {
 	 *
 	 * The interval of 210ms is chosen to maintain 15ms at normal zoom: 210 / GetCharacterHeight(FS_NORMAL) = 15ms.
 	 */
-	IntervalTimer<TimerWindow> scroll_interval = {std::chrono::milliseconds(210) / GetCharacterHeight(FS_NORMAL), [this](uint count) {
+	const IntervalTimer<TimerWindow> scroll_interval = {std::chrono::milliseconds(210) / GetCharacterHeight(FS_NORMAL), [this](uint count) {
 		int newtop = std::max(this->top - 2 * static_cast<int>(count), _screen.height - this->height - this->status_height - this->chat_height);
 		this->SetWindowTop(newtop);
 	}};
@@ -1214,7 +1214,7 @@ struct MessageHistoryWindow : Window {
 	{
 		if (widget == WID_MH_BACKGROUND) {
 			this->line_height = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
-			resize.height = this->line_height;
+			fill.height = resize.height = this->line_height;
 
 			/* Months are off-by-one, so it's actually 8. Not using
 			 * month 12 because the 1 is usually less wide. */

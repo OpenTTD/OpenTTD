@@ -45,7 +45,7 @@ public:
 	void HandleEditBox(Window *w, WidgetID wid);
 
 	Point GetCaretPosition(const Window *w, WidgetID wid) const;
-	Rect GetBoundingRect(const Window *w, WidgetID wid, const char *from, const char *to) const;
+	Rect GetBoundingRect(const Window *w, WidgetID wid, size_t from, size_t to) const;
 	ptrdiff_t GetCharAtPosition(const Window *w, WidgetID wid, const Point &pt) const;
 };
 

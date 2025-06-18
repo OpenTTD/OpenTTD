@@ -143,8 +143,7 @@ static HFONT HFontFromFont(Font *font)
 {
 	if (font->fc->GetOSHandle() != nullptr) return CreateFontIndirect(reinterpret_cast<PLOGFONT>(const_cast<void *>(font->fc->GetOSHandle())));
 
-	LOGFONT logfont;
-	ZeroMemory(&logfont, sizeof(LOGFONT));
+	LOGFONT logfont{};
 	logfont.lfHeight = font->fc->GetHeight();
 	logfont.lfWeight = FW_NORMAL;
 	logfont.lfCharSet = DEFAULT_CHARSET;
@@ -249,12 +248,10 @@ static bool UniscribeShapeRun(const UniscribeParagraphLayoutFactory::CharType *b
 static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutFactory::CharType *buff, int32_t length)
 {
 	/* Itemize text. */
-	SCRIPT_CONTROL control;
-	ZeroMemory(&control, sizeof(SCRIPT_CONTROL));
+	SCRIPT_CONTROL control{};
 	control.uDefaultLanguage = _current_language->winlangid;
 
-	SCRIPT_STATE state;
-	ZeroMemory(&state, sizeof(SCRIPT_STATE));
+	SCRIPT_STATE state{};
 	state.uBidiLevel = _current_text_dir == TD_RTL ? 1 : 0;
 
 	std::vector<SCRIPT_ITEM> items(16);

@@ -74,9 +74,9 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	TimerGameCalendar::Date build_date{}; ///< Date of construction
 
 	uint16_t random_bits = 0; ///< Random bits assigned to this station
-	uint8_t waiting_triggers = 0; ///< Waiting triggers (NewGRF) for this station
-	uint8_t cached_anim_triggers = 0; ///< NOSAVE: Combined animation trigger bitmask, used to determine if trigger processing should happen.
-	uint8_t cached_roadstop_anim_triggers = 0; ///< NOSAVE: Combined animation trigger bitmask for road stops, used to determine if trigger processing should happen.
+	StationRandomTriggers waiting_random_triggers; ///< Waiting triggers (NewGRF), shared by all station parts/tiles, road stops, ... essentially useless and broken by design.
+	StationAnimationTriggers cached_anim_triggers; ///< NOSAVE: Combined animation trigger bitmask, used to determine if trigger processing should happen.
+	StationAnimationTriggers cached_roadstop_anim_triggers; ///< NOSAVE: Combined animation trigger bitmask for road stops, used to determine if trigger processing should happen.
 	CargoTypes cached_cargo_triggers{}; ///< NOSAVE: Combined cargo trigger bitmask
 	CargoTypes cached_roadstop_cargo_triggers{}; ///< NOSAVE: Combined cargo trigger bitmask for road stops
 

@@ -39,6 +39,7 @@
 #include "timer/timer.h"
 #include "timer/timer_game_economy.h"
 #include "timer/timer_game_tick.h"
+#include "timer/timer_window.h"
 
 #include "widgets/statusbar_widget.h"
 
@@ -51,7 +52,7 @@ void UpdateObjectColours(const Company *c);
 
 CompanyID _local_company;   ///< Company controlled by the human player at this client. Can also be #COMPANY_SPECTATOR.
 CompanyID _current_company; ///< Company currently doing an action.
-ReferenceThroughBaseContainer<std::array<Colours, MAX_COMPANIES>> _company_colours; ///< NOSAVE: can be determined from company structs.
+TypedIndexContainer<std::array<Colours, MAX_COMPANIES>, CompanyID> _company_colours; ///< NOSAVE: can be determined from company structs.
 CompanyManagerFace _company_manager_face; ///< for company manager face storage in openttd.cfg
 uint _cur_company_tick_index;             ///< used to generate a name for one company that doesn't have a name yet per tick
 
@@ -152,6 +153,16 @@ TextColour GetDrawStringCompanyColour(CompanyID company)
 }
 
 /**
+ * Get the palette for recolouring with a company colour.
+ * @param company Company to get the colour of.
+ * @return Palette for recolouring.
+ */
+PaletteID GetCompanyPalette(CompanyID company)
+{
+	return GetColourPalette(_company_colours[company]);
+}
+
+/**
  * Draw the icon of a company.
  * @param c Company that needs its icon drawn.
  * @param x Horizontal coordinate of the icon.
@@ -159,7 +170,7 @@ TextColour GetDrawStringCompanyColour(CompanyID company)
  */
 void DrawCompanyIcon(CompanyID c, int x, int y)
 {
-	DrawSprite(SPR_COMPANY_ICON, COMPANY_SPRITE_COLOUR(c), x, y);
+	DrawSprite(SPR_COMPANY_ICON, GetCompanyPalette(c), x, y);
 }
 
 /**
@@ -193,17 +204,37 @@ static bool IsValidCompanyManagerFace(CompanyManagerFace cmf)
 	return true;
 }
 
+static CompanyMask _dirty_company_finances{}; ///< Bitmask of compamy finances that should be marked dirty.
+
 /**
- * Refresh all windows owned by a company.
+ * Mark all finance windows owned by a company as needing a refresh.
+ * The actual refresh is deferred until the end of the gameloop to reduce duplicated work.
  * @param company Company that changed, and needs its windows refreshed.
  */
 void InvalidateCompanyWindows(const Company *company)
 {
 	CompanyID cid = company->index;
-
-	if (cid == _local_company) SetWindowWidgetDirty(WC_STATUS_BAR, 0, WID_S_RIGHT);
-	SetWindowDirty(WC_FINANCES, cid);
+	_dirty_company_finances.Set(cid);
 }
+
+/**
+ * Refresh all company finance windows previously marked dirty.
+ */
+static const IntervalTimer<TimerWindow> invalidate_company_windows_interval(std::chrono::milliseconds(1), [](auto) {
+	for (CompanyID cid : _dirty_company_finances) {
+		if (cid == _local_company) SetWindowWidgetDirty(WC_STATUS_BAR, 0, WID_S_RIGHT);
+		Window *w = FindWindowById(WC_FINANCES, cid);
+		if (w != nullptr) {
+			w->SetWidgetDirty(WID_CF_EXPS_PRICE3);
+			w->SetWidgetDirty(WID_CF_OWN_VALUE);
+			w->SetWidgetDirty(WID_CF_LOAN_VALUE);
+			w->SetWidgetDirty(WID_CF_BALANCE_VALUE);
+			w->SetWidgetDirty(WID_CF_MAXLOAN_VALUE);
+		}
+		SetWindowWidgetDirty(WC_COMPANY, cid, WID_C_DESC_COMPANY_VALUE);
+	}
+	_dirty_company_finances.Reset();
+});
 
 /**
  * Get the amount of money that a company has available, or INT64_MAX
@@ -781,7 +812,7 @@ void OnTick_Companies()
  * A year has passed, update the economic data of all companies, and perhaps show the
  * financial overview window of the local company.
  */
-static IntervalTimer<TimerGameEconomy> _economy_companies_yearly({TimerGameEconomy::YEAR, TimerGameEconomy::Priority::COMPANY}, [](auto)
+static const IntervalTimer<TimerGameEconomy> _economy_companies_yearly({TimerGameEconomy::YEAR, TimerGameEconomy::Priority::COMPANY}, [](auto)
 {
 	/* Copy statistics */
 	for (Company *c : Company::Iterate()) {

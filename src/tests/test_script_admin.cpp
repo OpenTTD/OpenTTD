@@ -22,6 +22,8 @@
 
 #include <squirrel.h>
 
+#include "../safeguards.h"
+
 /**
  * A controller to start enough so we can use Squirrel for testing.
  *
@@ -35,7 +37,7 @@
 class TestScriptController {
 public:
 	GameInstance game{};
-	ScriptObject::ActiveInstance active{&game};
+	ScriptObject::ActiveInstance active{game};
 
 	Squirrel engine{"test"};
 	ScriptAllocatorScope scope{&engine};
@@ -56,13 +58,13 @@ static std::optional<std::string> TestScriptAdminMakeJSON(std::string_view squir
 
 	/* Insert an (empty) class for testing. */
 	sq_pushroottable(vm);
-	sq_pushstring(vm, "DummyClass", -1);
+	sq_pushstring(vm, "DummyClass");
 	sq_newclass(vm, SQFalse);
 	sq_newslot(vm, -3, SQFalse);
 	sq_pop(vm, 1);
 
 	/* Compile the snippet. */
-	REQUIRE(sq_compilebuffer(vm, buffer.c_str(), buffer.size(), "test", SQTrue) == SQ_OK);
+	REQUIRE(sq_compilebuffer(vm, buffer, "test", SQTrue) == SQ_OK);
 	/* Execute the snippet, capturing the return value. */
 	sq_pushroottable(vm);
 	REQUIRE(sq_call(vm, 1, SQTrue, SQTrue) == SQ_OK);

@@ -763,11 +763,13 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Опци
 
 
 
+
 ###length 45
 
 
 # Autosave dropdown
 ###length 5
+
 
 
 
@@ -820,7 +822,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Прилаго�
 ###length 4
 
 
-# Settings tree window
+# Settings tree in the Game Options window
 
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Сите подесувања
@@ -1152,7 +1154,6 @@ STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Нема
 # Video initalization errors
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Нова Игра
 STR_INTRO_LOAD_GAME                                             :{BLACK}Вчитај Игра
@@ -1371,6 +1372,7 @@ STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Игра
 
 
 
+
 # Fund new industry window
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Изгради
 
@@ -1488,7 +1490,6 @@ STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Мин. 
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Промена НовGRF параметри
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Затвори
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Ресетирај
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Наместете ги сите параметри на нивните стандардни вредности
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Параметар {NUM}

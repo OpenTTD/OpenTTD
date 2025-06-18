@@ -821,8 +821,9 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Stilling
 
 
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Gjaldmiðill
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Val á gjaldmiðli
+
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Gjaldmiðill
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Val á gjaldmiðli
 
 
 ###length 45
@@ -861,21 +862,21 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Sérsniðinn...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Íranskt ríal
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Sjálfvirk vistun
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Tíðni sjálfvirkra vistana
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Sjálfvirk vistun
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Tíðni sjálfvirkra vistana
 
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Aldrei
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Tungumál
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Tungumál viðmóts
+STR_GAME_OPTIONS_LANGUAGE                                       :Tungumál
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Tungumál viðmóts
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Fylla út í skjá
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Smelltu hér til að OpenTTD fylli út í skjáinn
+STR_GAME_OPTIONS_FULLSCREEN                                     :Fylla út í skjá
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Smelltu hér til að OpenTTD fylli út í skjáinn
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skjáupplausn
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Stilla skjáupplausn
+STR_GAME_OPTIONS_RESOLUTION                                     :Skjáupplausn
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Stilla skjáupplausn
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annað
 
 
@@ -888,17 +889,18 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annað
 
 
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grunngrafík
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Nota grunngrafíkina
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Frekari upplýsingar um grunngrafíkpakkann
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Grunn hljóðasafn
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Veldu grunn hljóðasafn
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Aukaupplýsingar um grunn hljóðasafnið
+STR_GAME_OPTIONS_BASE_GRF                                       :Grunngrafík
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Nota grunngrafíkina
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Frekari upplýsingar um grunngrafíkpakkann
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Grunntónlistarsafn
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Veld grunntónlistarsafn til að nota
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Auka upplýsingar um grunntónlistarsafnið
+STR_GAME_OPTIONS_BASE_SFX                                       :Grunn hljóðasafn
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Veldu grunn hljóðasafn
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Aukaupplýsingar um grunn hljóðasafnið
+
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Grunntónlistarsafn
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Veld grunntónlistarsafn til að nota
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Auka upplýsingar um grunntónlistarsafnið
 
 
 
@@ -999,10 +1001,10 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Eftirgefin
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Engin nothæf gervigreind í boði...{}Þú getur hlaðið niður mörgum gervigreindum í gegnum 'Ná í viðbætur af netinu' viðmótið
 
-# Settings tree window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Sía:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Þenja út
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Draga saman
+# Settings tree in the Game Options window
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Sía:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Þenja út
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Draga saman
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(engin skýring til)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Sjálfgefið gildi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Gerð stillingar: {ORANGE}{STRING}
@@ -1012,7 +1014,7 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Leikjastillinga
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Fyrirtækjastillingar (geymdar í vistunarskrám; hefur bara áhrif á nýja leiki)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Fyrirtækjastillingar (geymdar í vistunarskrám; hefur bara áhrif á núverandi fyrirtæki)
 
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Takmarkar listan hér fyrir neðan við breyttar stillingar
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Takmarkar listan hér fyrir neðan við breyttar stillingar
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grunnstillingar
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Ítarlegar stillingar
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Mjög ítarlegar stillingar / allar stillingar
@@ -1732,7 +1734,6 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Úthlutu
 # Video initalization errors
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nýr leikur
 STR_INTRO_LOAD_GAME                                             :{BLACK}Opna leik
@@ -1743,7 +1744,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Fjölspi
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Stillingar
 STR_INTRO_HIGHSCORE                                             :{BLACK}Stigatafla
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Stillingar
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Ná í viðbætur af netinu
 STR_INTRO_QUIT                                                  :{BLACK}Hætta
 
@@ -1761,7 +1761,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Leikfang
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Stilla OpenTTD
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Birta stigatöflu
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Sýna NewGRF stillingar
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Skoða viðbætur sem hægt er að ná í af netinu
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Hætta í OpenTTD
 
@@ -2412,6 +2411,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Velja st
 STR_FOUND_TOWN_CITY                                             :{BLACK}Borg
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Borgir vaxa hraðar en venjulegir bæir{}Möguleiki á aukinni upphafsstærð í stillingum
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Vegaskipulag bæja
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Veldu það skipulag sem þessi bær notar fyrir sína vegi
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Upphaflegt
@@ -2736,7 +2736,6 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Ósamhæft
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Breyta NewGRF stillingum
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Loka
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Endurstilla
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Setja allar stillingar á sjálfvalin gildi.
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Stilling {NUM}
@@ -3721,7 +3720,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Áætlun
 STR_TIMETABLE_NO_TRAVEL                                         :Engin ferðalög
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Ferðalag (sjálfvirkt; áætlað eftir næstu handvirku skipun)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Ferðalag (ekki sett í áætlun)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Ferðast með hámarkshraða {2:VELOCITY} (ekki áætlað)
 STR_TIMETABLE_TRAVEL_FOR                                        :Ferðast í {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Ferðast í {STRING} með hámarkshraða {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :og bíða í {STRING}
@@ -3827,13 +3825,10 @@ STR_AI_LIST_URL                                                 :{LTBLUE}Vefsló
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Í lagi
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Velja merkta forskrift
-STR_AI_LIST_CANCEL                                              :{BLACK}Hætta við
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Hætta við breytingar forskriftar
 
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :Gervigreindar
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Loka
 STR_AI_SETTINGS_RESET                                           :{BLACK}Frumstilla
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

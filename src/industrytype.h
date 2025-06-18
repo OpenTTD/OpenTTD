@@ -131,7 +131,7 @@ struct IndustrySpec {
 	/* Newgrf data */
 	IndustryCallbackMasks callback_mask;                       ///< Bitmask of industry callbacks that have to be called
 	bool enabled;                               ///< entity still available (by default true).newgrf can disable it, though
-	GRFFileProps grf_prop;                      ///< properties related to the grf file
+	SubstituteGRFFileProps grf_prop; ///< properties related to the grf file
 	std::vector<uint8_t> random_sounds; ///< Random sounds;
 	std::vector<BadgeID> badges;
 
@@ -157,15 +157,15 @@ struct IndustryTileSpec {
 	uint8_t anim_next;                       ///< Next frame in an animation
 	/**
 	 * When true, the tile has to be drawn using the animation
-	 * state instead of the construction state
+	 * state instead of the construction stage
 	 */
 	bool anim_state;
 	/* Newgrf data */
 	IndustryTileCallbackMasks callback_mask;                  ///< Bitmask of industry tile callbacks that have to be called
-	AnimationInfo animation;              ///< Information about the animation (is it looping, how many loops etc)
+	AnimationInfo<IndustryAnimationTriggers> animation; ///< Information about the animation (is it looping, how many loops etc)
 	IndustryTileSpecialFlags special_flags; ///< Bitmask of extra flags used by the tile
 	bool enabled;                         ///< entity still available (by default true).newgrf can disable it, though
-	GRFFileProps grf_prop;                ///< properties related to the grf file
+	SubstituteGRFFileProps grf_prop; ///< properties related to the grf file
 	std::vector<BadgeID> badges;
 
 	std::array<std::variant<CargoLabel, MixedCargoType>, INDUSTRY_ORIGINAL_NUM_INPUTS> accepts_cargo_label; ///< Cargo labels of accepted cargo for default industry tiles.

@@ -356,7 +356,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendGameInfo()
  * @param error The error to disconnect for.
  * @param reason In case of kicking a client, specifies the reason for kicking the client.
  */
-NetworkRecvStatus ServerNetworkGameSocketHandler::SendError(NetworkErrorCode error, const std::string &reason)
+NetworkRecvStatus ServerNetworkGameSocketHandler::SendError(NetworkErrorCode error, std::string_view reason)
 {
 	Debug(net, 9, "client[{}] SendError(): error={}", this->client_id, error);
 
@@ -677,7 +677,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendCommand(const CommandPacke
  * @param msg The actual message.
  * @param data Arbitrary extra data.
  */
-NetworkRecvStatus ServerNetworkGameSocketHandler::SendChat(NetworkAction action, ClientID client_id, bool self_send, const std::string &msg, int64_t data)
+NetworkRecvStatus ServerNetworkGameSocketHandler::SendChat(NetworkAction action, ClientID client_id, bool self_send, std::string_view msg, int64_t data)
 {
 	Debug(net, 9, "client[{}] SendChat(): action={}, client_id={}, self_send={}", this->client_id, action, client_id, self_send);
 
@@ -702,7 +702,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendChat(NetworkAction action,
  * @param user Name of the user who sent the message.
  * @param msg The actual message.
  */
-NetworkRecvStatus ServerNetworkGameSocketHandler::SendExternalChat(const std::string &source, TextColour colour, const std::string &user, const std::string &msg)
+NetworkRecvStatus ServerNetworkGameSocketHandler::SendExternalChat(std::string_view source, TextColour colour, std::string_view user, std::string_view msg)
 {
 	Debug(net, 9, "client[{}] SendExternalChat(): source={}", this->client_id, source);
 
@@ -778,7 +778,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNewGame()
  * @param colour The colour of the result.
  * @param command The command that was executed.
  */
-NetworkRecvStatus ServerNetworkGameSocketHandler::SendRConResult(uint16_t colour, const std::string &command)
+NetworkRecvStatus ServerNetworkGameSocketHandler::SendRConResult(uint16_t colour, std::string_view command)
 {
 	Debug(net, 9, "client[{}] SendRConResult()", this->client_id);
 
@@ -1066,17 +1066,16 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMMAND(Packet 
 	Debug(net, 9, "client[{}] Receive_CLIENT_COMMAND()", this->client_id);
 
 	CommandPacket cp;
-	const char *err = this->ReceiveCommand(p, cp);
+	auto err = this->ReceiveCommand(p, cp);
 
 	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CLIENT_QUIT;
 
 	NetworkClientInfo *ci = this->GetInfo();
 
-	if (err != nullptr) {
-		IConsolePrint(CC_WARNING, "Dropping client #{} (IP: {}) due to {}.", ci->client_id, this->GetClientIP(), err);
+	if (err.has_value()) {
+		IConsolePrint(CC_WARNING, "Dropping client #{} (IP: {}) due to {}.", ci->client_id, this->GetClientIP(), *err);
 		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 	}
-
 
 	if (GetCommandFlags(cp.cmd).Test(CommandFlag::Server) && ci->client_id != CLIENT_ID_SERVER) {
 		IConsolePrint(CC_WARNING, "Kicking client #{} (IP: {}) due to calling a server only command {}.", ci->client_id, this->GetClientIP(), cp.cmd);
@@ -1250,7 +1249,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_ACK(Packet &p)
  * @param data Arbitrary data.
  * @param from_admin Whether the origin is an admin or not.
  */
-void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, const std::string &msg, ClientID from_id, int64_t data, bool from_admin)
+void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, std::string_view msg, ClientID from_id, int64_t data, bool from_admin)
 {
 	const NetworkClientInfo *ci, *ci_own, *ci_to;
 
@@ -1367,7 +1366,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
  * @param user Name of the user who sent the message.
  * @param msg The actual message.
  */
-void NetworkServerSendExternalChat(const std::string &source, TextColour colour, const std::string &user, const std::string &msg)
+void NetworkServerSendExternalChat(std::string_view source, TextColour colour, std::string_view user, std::string_view msg)
 {
 	for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 		if (cs->status >= ServerNetworkGameSocketHandler::STATUS_AUTHORIZED) cs->SendExternalChat(source, colour, user, msg);
@@ -1628,7 +1627,7 @@ bool NetworkMakeClientNameUnique(std::string &name)
 
 		if (!is_name_unique) {
 			/* Try a new name (<name> #1, <name> #2, and so on) */
-			name = original_name + " #" + std::to_string(number);
+			name = fmt::format("{} #{}", original_name, number);
 
 			/* The constructed client name is larger than the limit,
 			 * so... bail out as no valid name can be created. */
@@ -1814,7 +1813,7 @@ void NetworkServer_Tick(bool send_frame)
 static void NetworkRestartMap()
 {
 	_settings_newgame.game_creation.generation_seed = GENERATE_NEW_SEED;
-	switch (_file_to_saveload.abstract_ftype) {
+	switch (_file_to_saveload.ftype.abstract) {
 		case FT_SAVEGAME:
 		case FT_SCENARIO:
 			_switch_mode = SM_LOAD_GAME;
@@ -1865,14 +1864,14 @@ static void NetworkCheckRestartMapYear()
 }
 
 /** Calendar yearly "callback". Called whenever the calendar year changes. */
-static IntervalTimer<TimerGameCalendar> _calendar_network_yearly({ TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE }, [](auto) {
+static const IntervalTimer<TimerGameCalendar> _calendar_network_yearly({ TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE }, [](auto) {
 	if (!_network_server) return;
 
 	NetworkCheckRestartMapYear();
 });
 
 /** Economy yearly "callback". Called whenever the economy year changes. */
-static IntervalTimer<TimerGameEconomy> _economy_network_yearly({TimerGameEconomy::YEAR, TimerGameEconomy::Priority::NONE}, [](auto)
+static const IntervalTimer<TimerGameEconomy> _economy_network_yearly({TimerGameEconomy::YEAR, TimerGameEconomy::Priority::NONE}, [](auto)
 {
 	if (!_network_server) return;
 
@@ -1880,7 +1879,7 @@ static IntervalTimer<TimerGameEconomy> _economy_network_yearly({TimerGameEconomy
 });
 
 /** Quarterly "callback". Called whenever the economy quarter changes. */
-static IntervalTimer<TimerGameEconomy> _network_quarterly({TimerGameEconomy::QUARTER, TimerGameEconomy::Priority::NONE}, [](auto)
+static const IntervalTimer<TimerGameEconomy> _network_quarterly({TimerGameEconomy::QUARTER, TimerGameEconomy::Priority::NONE}, [](auto)
 {
 	if (!_network_server) return;
 
@@ -1889,7 +1888,7 @@ static IntervalTimer<TimerGameEconomy> _network_quarterly({TimerGameEconomy::QUA
 });
 
 /** Economy monthly "callback". Called whenever the economy month changes. */
-static IntervalTimer<TimerGameEconomy> _network_monthly({TimerGameEconomy::MONTH, TimerGameEconomy::Priority::NONE}, [](auto)
+static const IntervalTimer<TimerGameEconomy> _network_monthly({TimerGameEconomy::MONTH, TimerGameEconomy::Priority::NONE}, [](auto)
 {
 	if (!_network_server) return;
 
@@ -1898,7 +1897,7 @@ static IntervalTimer<TimerGameEconomy> _network_monthly({TimerGameEconomy::MONTH
 });
 
 /** Economy weekly "callback". Called whenever the economy week changes. */
-static IntervalTimer<TimerGameEconomy> _network_weekly({TimerGameEconomy::WEEK, TimerGameEconomy::Priority::NONE}, [](auto)
+static const IntervalTimer<TimerGameEconomy> _network_weekly({TimerGameEconomy::WEEK, TimerGameEconomy::Priority::NONE}, [](auto)
 {
 	if (!_network_server) return;
 
@@ -1906,7 +1905,7 @@ static IntervalTimer<TimerGameEconomy> _network_weekly({TimerGameEconomy::WEEK, 
 });
 
 /** Daily "callback". Called whenever the economy date changes. */
-static IntervalTimer<TimerGameEconomy> _economy_network_daily({TimerGameEconomy::DAY, TimerGameEconomy::Priority::NONE}, [](auto)
+static const IntervalTimer<TimerGameEconomy> _economy_network_daily({TimerGameEconomy::DAY, TimerGameEconomy::Priority::NONE}, [](auto)
 {
 	if (!_network_server) return;
 
@@ -1917,7 +1916,7 @@ static IntervalTimer<TimerGameEconomy> _economy_network_daily({TimerGameEconomy:
  * Get the IP address/hostname of the connected client.
  * @return The IP address.
  */
-const std::string &ServerNetworkGameSocketHandler::GetClientIP()
+std::string_view ServerNetworkGameSocketHandler::GetClientIP()
 {
 	return this->client_address.GetHostname();
 }
@@ -1925,7 +1924,7 @@ const std::string &ServerNetworkGameSocketHandler::GetClientIP()
 /** Show the status message of all clients on the console. */
 void NetworkServerShowStatusToConsole()
 {
-	static const char * const stat_str[] = {
+	static const std::string_view stat_str[] = {
 		"inactive",
 		"authorizing",
 		"identifying client",
@@ -1943,9 +1942,8 @@ void NetworkServerShowStatusToConsole()
 		NetworkClientInfo *ci = cs->GetInfo();
 		if (ci == nullptr) continue;
 		uint lag = NetworkCalculateLag(cs);
-		const char *status;
 
-		status = (cs->status < (ptrdiff_t)lengthof(stat_str) ? stat_str[cs->status] : "unknown");
+		std::string_view status = (cs->status < (ptrdiff_t)lengthof(stat_str) ? stat_str[cs->status] : "unknown");
 		IConsolePrint(CC_INFO, "Client #{}  name: '{}'  status: '{}'  frame-lag: {}  company: {}  IP: {}",
 			cs->client_id, ci->client_name, status, lag,
 			ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0),
@@ -2018,7 +2016,7 @@ void NetworkServerDoMove(ClientID client_id, CompanyID company_id)
  * @param colour_code The colour of the text.
  * @param string The actual reply.
  */
-void NetworkServerSendRcon(ClientID client_id, TextColour colour_code, const std::string &string)
+void NetworkServerSendRcon(ClientID client_id, TextColour colour_code, std::string_view string)
 {
 	NetworkClientSocket::GetByClientID(client_id)->SendRConResult(colour_code, string);
 }
@@ -2028,7 +2026,7 @@ void NetworkServerSendRcon(ClientID client_id, TextColour colour_code, const std
  * @param client_id The client to kick.
  * @param reason In case of kicking a client, specifies the reason for kicking the client.
  */
-void NetworkServerKickClient(ClientID client_id, const std::string &reason)
+void NetworkServerKickClient(ClientID client_id, std::string_view reason)
 {
 	if (client_id == CLIENT_ID_SERVER) return;
 	NetworkClientSocket::GetByClientID(client_id)->SendError(NETWORK_ERROR_KICKED, reason);
@@ -2040,7 +2038,7 @@ void NetworkServerKickClient(ClientID client_id, const std::string &reason)
  * @param ban Whether to ban or kick.
  * @param reason In case of kicking a client, specifies the reason for kicking the client.
  */
-uint NetworkServerKickOrBanIP(ClientID client_id, bool ban, const std::string &reason)
+uint NetworkServerKickOrBanIP(ClientID client_id, bool ban, std::string_view reason)
 {
 	return NetworkServerKickOrBanIP(NetworkClientSocket::GetByClientID(client_id)->GetClientIP(), ban, reason);
 }
@@ -2051,7 +2049,7 @@ uint NetworkServerKickOrBanIP(ClientID client_id, bool ban, const std::string &r
  * @param ban Whether to ban or just kick.
  * @param reason In case of kicking a client, specifies the reason for kicking the client.
  */
-uint NetworkServerKickOrBanIP(const std::string &ip, bool ban, const std::string &reason)
+uint NetworkServerKickOrBanIP(std::string_view ip, bool ban, std::string_view reason)
 {
 	/* Add address to ban-list */
 	if (ban) {

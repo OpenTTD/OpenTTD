@@ -19,7 +19,7 @@ struct Sprite {
 	uint16_t width;  ///< Width of the sprite.
 	int16_t x_offs;  ///< Number of pixels to shift the sprite to the right.
 	int16_t y_offs;  ///< Number of pixels to shift the sprite downwards.
-	uint8_t data[];   ///< Sprite data.
+	std::byte data[]; ///< Sprite data.
 };
 
 enum SpriteCacheCtrlFlags : uint8_t {
@@ -34,7 +34,7 @@ extern uint _sprite_cache_size;
 /** SpriteAllocator that allocates memory via a unique_ptr array. */
 class UniquePtrSpriteAllocator : public SpriteAllocator {
 public:
-	std::unique_ptr<uint8_t[]> data;
+	std::unique_ptr<std::byte[]> data;
 protected:
 	void *AllocatePtr(size_t size) override;
 };

@@ -134,22 +134,22 @@ void BindAirportSpecs()
 }
 
 
-void AirportOverrideManager::SetEntitySpec(AirportSpec *as)
+void AirportOverrideManager::SetEntitySpec(AirportSpec &&as)
 {
-	uint8_t airport_id = this->AddEntityID(as->grf_prop.local_id, as->grf_prop.grfid, as->grf_prop.subst_id);
+	uint8_t airport_id = this->AddEntityID(as.grf_prop.local_id, as.grf_prop.grfid, as.grf_prop.subst_id);
 
 	if (airport_id == this->invalid_id) {
 		GrfMsg(1, "Airport.SetEntitySpec: Too many airports allocated. Ignoring.");
 		return;
 	}
 
-	*AirportSpec::GetWithoutOverride(airport_id) = *as;
+	AirportSpec::specs[airport_id] = std::move(as);
 
 	/* Now add the overrides. */
 	for (int i = 0; i < this->max_offset; i++) {
 		AirportSpec *overridden_as = AirportSpec::GetWithoutOverride(i);
 
-		if (this->entity_overrides[i] != as->grf_prop.local_id || this->grfid_overrides[i] != as->grf_prop.grfid) continue;
+		if (this->entity_overrides[i] != AirportSpec::specs[airport_id].grf_prop.local_id || this->grfid_overrides[i] != AirportSpec::specs[airport_id].grf_prop.grfid) continue;
 
 		overridden_as->grf_prop.override_id = airport_id;
 		overridden_as->enabled = false;
@@ -252,22 +252,22 @@ AirportResolverObject::AirportResolverObject(TileIndex tile, Station *st, const 
 		CallbackID callback, uint32_t param1, uint32_t param2)
 	: ResolverObject(spec->grf_prop.grffile, callback, param1, param2), airport_scope(*this, tile, st, spec, layout)
 {
-	this->root_spritegroup = spec->grf_prop.GetSpriteGroup();
+	this->root_spritegroup = spec->grf_prop.GetSpriteGroup(st != nullptr);
 }
 
 SpriteID GetCustomAirportSprite(const AirportSpec *as, uint8_t layout)
 {
 	AirportResolverObject object(INVALID_TILE, nullptr, as, layout);
-	const SpriteGroup *group = object.Resolve();
-	if (group == nullptr) return as->preview_sprite;
+	const auto *group = object.Resolve<ResultSpriteGroup>();
+	if (group == nullptr || group->num_sprites == 0) return as->preview_sprite;
 
-	return group->GetResult();
+	return group->sprite;
 }
 
-uint16_t GetAirportCallback(CallbackID callback, uint32_t param1, uint32_t param2, Station *st, TileIndex tile)
+uint16_t GetAirportCallback(CallbackID callback, uint32_t param1, uint32_t param2, Station *st, TileIndex tile, std::span<int32_t> regs100)
 {
 	AirportResolverObject object(tile, st, AirportSpec::Get(st->airport.type), st->airport.layout, callback, param1, param2);
-	return object.ResolveCallback();
+	return object.ResolveCallback(regs100);
 }
 
 /**
@@ -280,8 +280,12 @@ uint16_t GetAirportCallback(CallbackID callback, uint32_t param1, uint32_t param
 StringID GetAirportTextCallback(const AirportSpec *as, uint8_t layout, uint16_t callback)
 {
 	AirportResolverObject object(INVALID_TILE, nullptr, as, layout, (CallbackID)callback);
-	uint16_t cb_res = object.ResolveCallback();
+	std::array<int32_t, 1> regs100;
+	uint16_t cb_res = object.ResolveCallback(regs100);
 	if (cb_res == CALLBACK_FAILED || cb_res == 0x400) return STR_UNDEFINED;
+	if (cb_res == 0x40F) {
+		return GetGRFStringID(as->grf_prop.grfid, static_cast<GRFStringID>(regs100[0]));
+	}
 	if (cb_res > 0x400) {
 		ErrorUnknownCallbackResult(as->grf_prop.grfid, callback, cb_res);
 		return STR_UNDEFINED;

@@ -22,11 +22,8 @@
 #include "../safeguards.h"
 
 
-AIScannerInfo::AIScannerInfo() :
-	ScriptScanner(),
-	info_dummy(nullptr)
-{
-}
+AIScannerInfo::AIScannerInfo() = default;
+AIScannerInfo::~AIScannerInfo() = default;
 
 void AIScannerInfo::Initialize()
 {
@@ -39,22 +36,17 @@ void AIScannerInfo::Initialize()
 	Script_CreateDummyInfo(this->engine->GetVM(), "AI", "ai");
 }
 
-void AIScannerInfo::SetDummyAI(class AIInfo *info)
+void AIScannerInfo::SetDummyAI(std::unique_ptr<class AIInfo> &&info)
 {
-	this->info_dummy = info;
+	this->info_dummy = std::move(info);
 }
 
-AIScannerInfo::~AIScannerInfo()
+std::string AIScannerInfo::GetScriptName(ScriptInfo &info)
 {
-	delete this->info_dummy;
+	return info.GetName();
 }
 
-std::string AIScannerInfo::GetScriptName(ScriptInfo *info)
-{
-	return info->GetName();
-}
-
-void AIScannerInfo::RegisterAPI(class Squirrel *engine)
+void AIScannerInfo::RegisterAPI(class Squirrel &engine)
 {
 	AIInfo::RegisterAPI(engine);
 }
@@ -63,7 +55,7 @@ AIInfo *AIScannerInfo::SelectRandomAI() const
 {
 	if (_game_mode == GM_MENU) {
 		Debug(script, 0, "The intro game should not use AI, loading 'dummy' AI.");
-		return this->info_dummy;
+		return this->info_dummy.get();
 	}
 
 	/* Filter for AIs suitable as Random AI. */
@@ -72,7 +64,7 @@ AIInfo *AIScannerInfo::SelectRandomAI() const
 	uint num_random_ais = std::ranges::distance(random_ais);
 	if (num_random_ais == 0) {
 		Debug(script, 0, "No suitable AI found, loading 'dummy' AI.");
-		return this->info_dummy;
+		return this->info_dummy.get();
 	}
 
 	/* Pick a random AI */
@@ -125,13 +117,13 @@ void AIScannerLibrary::Initialize()
 	ScriptScanner::Initialize("AIScanner");
 }
 
-std::string AIScannerLibrary::GetScriptName(ScriptInfo *info)
+std::string AIScannerLibrary::GetScriptName(ScriptInfo &info)
 {
-	AILibrary *library = static_cast<AILibrary *>(info);
-	return fmt::format("{}.{}", library->GetCategory(), library->GetInstanceName());
+	AILibrary &library = static_cast<AILibrary &>(info);
+	return fmt::format("{}.{}", library.GetCategory(), library.GetInstanceName());
 }
 
-void AIScannerLibrary::RegisterAPI(class Squirrel *engine)
+void AIScannerLibrary::RegisterAPI(class Squirrel &engine)
 {
 	AILibrary::RegisterAPI(engine);
 }

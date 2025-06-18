@@ -21,9 +21,18 @@
 #include "track_type.h"
 #include "livery.h"
 
-#define is_custom_sprite(x) (x >= 0xFD)
-#define IS_CUSTOM_FIRSTHEAD_SPRITE(x) (x == 0xFD)
-#define IS_CUSTOM_SECONDHEAD_SPRITE(x) (x == 0xFE)
+/**
+ * Special values for Vehicle::spritenum and (Aircraft|Rail|Road|Ship)VehicleInfo::image_index
+ */
+enum CustomVehicleSpriteNum {
+	CUSTOM_VEHICLE_SPRITENUM = 0xFD, ///< Vehicle sprite from NewGRF
+	CUSTOM_VEHICLE_SPRITENUM_REVERSED = 0xFE, ///< Vehicle sprite from NewGRF with reverse driving direction (from articulation callback)
+};
+
+static inline bool IsCustomVehicleSpriteNum(uint8_t spritenum)
+{
+	return spritenum >= CUSTOM_VEHICLE_SPRITENUM;
+}
 
 static const TimerGameEconomy::Date VEHICLE_PROFIT_MIN_AGE{CalendarTime::DAYS_IN_YEAR * 2}; ///< Only vehicles older than this have a meaningful profit.
 static const Money VEHICLE_PROFIT_THRESHOLD = 10000;        ///< Threshold for a vehicle to be considered making good profit.
@@ -37,14 +46,143 @@ static const Money VEHICLE_PROFIT_THRESHOLD = 10000;        ///< Threshold for a
 template <VehicleType T>
 bool IsValidImageIndex(uint8_t image_index);
 
-typedef Vehicle *VehicleFromPosProc(Vehicle *v, void *data);
+/**
+ * Iterate over all vehicles on a tile.
+ * @warning The order is non-deterministic. You have to make sure, that your processing is not order dependant.
+ */
+class VehiclesOnTile {
+public:
+	/**
+	 * Forward iterator
+	 */
+	class Iterator {
+	public:
+		using value_type = Vehicle *;
+		using difference_type = std::ptrdiff_t;
+		using iterator_category = std::forward_iterator_tag;
+		using pointer = void;
+		using reference = void;
+
+		explicit Iterator(TileIndex tile);
+
+		bool operator==(const Iterator &rhs) const { return this->current == rhs.current; }
+		bool operator==(const std::default_sentinel_t &) const { return this->current == nullptr; }
+
+		Vehicle *operator*() const { return this->current; }
+
+		Iterator &operator++()
+		{
+			this->Increment();
+			this->SkipFalseMatches();
+			return *this;
+		}
+
+		Iterator operator++(int)
+		{
+			Iterator result = *this;
+			++*this;
+			return result;
+		}
+	private:
+		TileIndex tile;
+		Vehicle *current;
+
+		void Increment();
+		void SkipFalseMatches();
+	};
+
+	explicit VehiclesOnTile(TileIndex tile) : start(tile) {}
+	Iterator begin() const { return this->start; }
+	std::default_sentinel_t end() const { return std::default_sentinel_t(); }
+private:
+	Iterator start;
+};
+
+/**
+ * Loop over vehicles on a tile, and check whether a predicate is true for any of them.
+ * The predicate must have the signature: bool Predicate(const Vehicle *);
+ */
+template <class UnaryPred>
+bool HasVehicleOnTile(TileIndex tile, UnaryPred &&predicate)
+{
+	for (const auto *v : VehiclesOnTile(tile)) {
+		if (predicate(v)) return true;
+	}
+	return false;
+}
+
+/**
+ * Iterate over all vehicles near a given world coordinate.
+ * @warning This only works for vehicles with proper Vehicle::Tile, so only ground vehicles outside wormholes.
+ * @warning The order is non-deterministic. You have to make sure, that your processing is not order dependant.
+ */
+class VehiclesNearTileXY {
+public:
+	/**
+	 * Forward iterator
+	 */
+	class Iterator {
+	public:
+		using value_type = Vehicle *;
+		using difference_type = std::ptrdiff_t;
+		using iterator_category = std::forward_iterator_tag;
+		using pointer = void;
+		using reference = void;
+
+		explicit Iterator(int32_t x, int32_t y, uint max_dist);
+
+		bool operator==(const Iterator &rhs) const { return this->current_veh == rhs.current_veh; }
+		bool operator==(const std::default_sentinel_t &) const { return this->current_veh == nullptr; }
+
+		Vehicle *operator*() const { return this->current_veh; }
+
+		Iterator &operator++()
+		{
+			this->Increment();
+			this->SkipFalseMatches();
+			return *this;
+		}
+
+		Iterator operator++(int)
+		{
+			Iterator result = *this;
+			++*this;
+			return result;
+		}
+	private:
+		Rect pos_rect;
+		uint hxmin, hxmax, hymin, hymax;
+		uint hx, hy;
+		Vehicle *current_veh;
+
+		void Increment();
+		void SkipEmptyBuckets();
+		void SkipFalseMatches();
+	};
+
+	explicit VehiclesNearTileXY(int32_t x, int32_t y, uint max_dist) : start(x, y, max_dist) {}
+	Iterator begin() const { return this->start; }
+	std::default_sentinel_t end() const { return std::default_sentinel_t(); }
+private:
+	Iterator start;
+};
+
+/**
+ * Loop over vehicles near a given world coordinate, and check whether a predicate is true for any of them.
+ * The predicate must have the signature: bool Predicate(const Vehicle *);
+ * @warning This only works for vehicles with proper Vehicle::Tile, so only ground vehicles outside wormholes.
+ */
+template <class UnaryPred>
+bool HasVehicleNearTileXY(int32_t x, int32_t y, uint max_dist, UnaryPred &&predicate)
+{
+	for (const auto *v : VehiclesNearTileXY(x, y, max_dist)) {
+		if (predicate(v)) return true;
+	}
+	return false;
+}
 
 void VehicleServiceInDepot(Vehicle *v);
 uint CountVehiclesInChain(const Vehicle *v);
-void FindVehicleOnPos(TileIndex tile, void *data, VehicleFromPosProc *proc);
-void FindVehicleOnPosXY(int x, int y, void *data, VehicleFromPosProc *proc);
-bool HasVehicleOnPos(TileIndex tile, void *data, VehicleFromPosProc *proc);
-bool HasVehicleOnPosXY(int x, int y, void *data, VehicleFromPosProc *proc);
 void CallVehicleTicks();
 uint8_t CalcPercentVehicleFilled(const Vehicle *v, StringID *colour);
 
@@ -65,7 +203,6 @@ void CheckVehicleBreakdown(Vehicle *v);
 void EconomyAgeVehicle(Vehicle *v);
 void AgeVehicle(Vehicle *v);
 void RunVehicleCalendarDayProc();
-void VehicleEnteredDepotThisTick(Vehicle *v);
 
 UnitID GetFreeUnitNumber(VehicleType type);
 

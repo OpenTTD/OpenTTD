@@ -23,7 +23,7 @@ enum ScreenshotType : uint8_t {
 	SC_MINIMAP,     ///< Minimap screenshot.
 };
 
-bool MakeHeightmapScreenshot(const char *filename);
+bool MakeHeightmapScreenshot(std::string_view filename);
 void MakeScreenshotWithConfirm(ScreenshotType t);
 bool MakeScreenshot(ScreenshotType t, const std::string &name, uint32_t width = 0, uint32_t height = 0);
 bool MakeMinimapWorldScreenshot();

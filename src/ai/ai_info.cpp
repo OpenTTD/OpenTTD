@@ -27,14 +27,14 @@ static bool CheckAPIVersion(const std::string &api_version)
 	return std::ranges::find(AIInfo::ApiVersions, api_version) != std::end(AIInfo::ApiVersions);
 }
 
-template <> SQInteger PushClassName<AIInfo, ScriptType::AI>(HSQUIRRELVM vm) { sq_pushstring(vm, "AIInfo", -1); return 1; }
+template <> SQInteger PushClassName<AIInfo, ScriptType::AI>(HSQUIRRELVM vm) { sq_pushstring(vm, "AIInfo"); return 1; }
 
-/* static */ void AIInfo::RegisterAPI(Squirrel *engine)
+/* static */ void AIInfo::RegisterAPI(Squirrel &engine)
 {
 	/* Create the AIInfo class, and add the RegisterAI function */
 	DefSQClass<AIInfo, ScriptType::AI> SQAIInfo("AIInfo");
 	SQAIInfo.PreRegister(engine);
-	SQAIInfo.AddConstructor<void (AIInfo::*)(), 1>(engine, "x");
+	SQAIInfo.AddConstructor<void (AIInfo::*)()>(engine, "x");
 	SQAIInfo.DefSQAdvancedMethod(engine, &AIInfo::AddSetting, "AddSetting");
 	SQAIInfo.DefSQAdvancedMethod(engine, &AIInfo::AddLabels, "AddLabels");
 	SQAIInfo.DefSQConst(engine, ScriptConfigFlags{}.base(), "CONFIG_NONE");
@@ -50,8 +50,8 @@ template <> SQInteger PushClassName<AIInfo, ScriptType::AI>(HSQUIRRELVM vm) { sq
 	SQAIInfo.DefSQConst(engine, ScriptConfigFlags{ScriptConfigFlag::InGame}.base(), "AICONFIG_INGAME");
 
 	SQAIInfo.PostRegister(engine);
-	engine->AddMethod("RegisterAI", &AIInfo::Constructor, 2, "tx");
-	engine->AddMethod("RegisterDummyAI", &AIInfo::DummyConstructor, 2, "tx");
+	engine.AddMethod("RegisterAI", &AIInfo::Constructor, "tx");
+	engine.AddMethod("RegisterDummyAI", &AIInfo::DummyConstructor, "tx");
 }
 
 /* static */ SQInteger AIInfo::Constructor(HSQUIRRELVM vm)
@@ -61,11 +61,12 @@ template <> SQInteger PushClassName<AIInfo, ScriptType::AI>(HSQUIRRELVM vm) { sq
 	if (SQ_FAILED(sq_getinstanceup(vm, 2, &instance, nullptr)) || instance == nullptr) return sq_throwerror(vm, "Pass an instance of a child class of AIInfo to RegisterAI");
 	AIInfo *info = (AIInfo *)instance;
 
-	SQInteger res = ScriptInfo::Constructor(vm, info);
+	SQInteger res = ScriptInfo::Constructor(vm, *info);
 	if (res != 0) return res;
 
 	if (info->engine->MethodExists(info->SQ_instance, "MinVersionToLoad")) {
 		if (!info->engine->CallIntegerMethod(info->SQ_instance, "MinVersionToLoad", &info->min_loadable_version, MAX_GET_OPS)) return SQ_ERROR;
+		if (info->min_loadable_version < 0) return SQ_ERROR;
 	} else {
 		info->min_loadable_version = info->GetVersion();
 	}
@@ -101,13 +102,13 @@ template <> SQInteger PushClassName<AIInfo, ScriptType::AI>(HSQUIRRELVM vm) { sq
 	AIInfo *info = (AIInfo *)instance;
 	info->api_version = *std::rbegin(AIInfo::ApiVersions);
 
-	SQInteger res = ScriptInfo::Constructor(vm, info);
+	SQInteger res = ScriptInfo::Constructor(vm, *info);
 	if (res != 0) return res;
 
 	/* Remove the link to the real instance, else it might get deleted by RegisterAI() */
 	sq_setinstanceup(vm, 2, nullptr);
 	/* Register the AI to the base system */
-	static_cast<AIScannerInfo *>(info->GetScanner())->SetDummyAI(info);
+	static_cast<AIScannerInfo *>(info->GetScanner())->SetDummyAI(std::unique_ptr<AIInfo>(info));
 	return 0;
 }
 
@@ -124,12 +125,12 @@ bool AIInfo::CanLoadFromVersion(int version) const
 }
 
 
-/* static */ void AILibrary::RegisterAPI(Squirrel *engine)
+/* static */ void AILibrary::RegisterAPI(Squirrel &engine)
 {
 	/* Create the AILibrary class, and add the RegisterLibrary function */
-	engine->AddClassBegin("AILibrary");
-	engine->AddClassEnd();
-	engine->AddMethod("RegisterLibrary", &AILibrary::Constructor, 2, "tx");
+	engine.AddClassBegin("AILibrary");
+	engine.AddClassEnd();
+	engine.AddMethod("RegisterLibrary", &AILibrary::Constructor, "tx");
 }
 
 /* static */ SQInteger AILibrary::Constructor(HSQUIRRELVM vm)
@@ -137,7 +138,7 @@ bool AIInfo::CanLoadFromVersion(int version) const
 	/* Create a new library */
 	AILibrary *library = new AILibrary();
 
-	SQInteger res = ScriptInfo::Constructor(vm, library);
+	SQInteger res = ScriptInfo::Constructor(vm, *library);
 	if (res != 0) {
 		delete library;
 		return res;

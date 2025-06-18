@@ -43,22 +43,21 @@ std::optional<std::string_view> MusicDriver_ExtMidi::Start(const StringList &par
 		return "the extmidi driver does not work when Allegro is loaded.";
 	}
 
-	const char *command = GetDriverParam(parm, "cmd");
+	auto command = GetDriverParam(parm, "cmd");
 #ifndef MIDI_ARG
-	if (StrEmpty(command)) command = EXTERNAL_PLAYER;
+	if (!command.has_value() || command->empty()) command = EXTERNAL_PLAYER;
 #else
-	if (StrEmpty(command)) command = EXTERNAL_PLAYER " " MIDI_ARG;
+	if (!command.has_value() || command->empty()) command = EXTERNAL_PLAYER " " MIDI_ARG;
 #endif
 
 	this->command_tokens.clear();
 
-	std::string_view view = command;
 	for (;;) {
-		auto pos = view.find(' ');
-		this->command_tokens.emplace_back(view.substr(0, pos));
+		auto pos = command->find(' ');
+		this->command_tokens.emplace_back(command->substr(0, pos));
 
 		if (pos == std::string_view::npos) break;
-		view.remove_prefix(pos + 1);
+		command->remove_prefix(pos + 1);
 	}
 
 	this->song.clear();

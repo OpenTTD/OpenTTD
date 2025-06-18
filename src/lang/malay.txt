@@ -367,7 +367,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Keluar
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pilihan permainan
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Tetapan
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Tetapan NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Pilihan Ketelusan
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Paparkan nama bandar
@@ -826,8 +825,9 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Pilihan 
 
 
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unit kewangan
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Pilihan unit kewangan
+
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Unit kewangan
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Pilihan unit kewangan
 
 
 ###length 45
@@ -865,21 +865,21 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :South African R
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Sesuaikan...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgian Lari
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Simpanan automatik
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Pilih tempoh untuk simpanan permainan automatik
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Simpanan automatik
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Pilih tempoh untuk simpanan permainan automatik
 
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Matikan
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Bahasa
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Pilih bahasa antaramuka yang ingin digunakan
+STR_GAME_OPTIONS_LANGUAGE                                       :Bahasa
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Pilih bahasa antaramuka yang ingin digunakan
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Skrin Penuh
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Tanda kotak ini untuk bermain OpenTTD dalam mod skrin penuh
+STR_GAME_OPTIONS_FULLSCREEN                                     :Skrin Penuh
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Tanda kotak ini untuk bermain OpenTTD dalam mod skrin penuh
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolusi Skrin
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Pilih resolusi skrin untuk digunakan
+STR_GAME_OPTIONS_RESOLUTION                                     :Resolusi Skrin
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Pilih resolusi skrin untuk digunakan
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :lain
 
 
@@ -892,17 +892,18 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :lain
 
 
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set grafik asas
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Pilih set grafik asas untuk digunakan
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Maklumat tambahan tentang set grafik asas ini
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Set bunyi asas
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Pilih set bunyi asas untuk digunakan
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Maklumat tambahan tentang set bunyi asas ini
+STR_GAME_OPTIONS_BASE_GRF                                       :Set grafik asas
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Pilih set grafik asas untuk digunakan
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Maklumat tambahan tentang set grafik asas ini
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Set muzik asas
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Pilih set muzik asas yang akan digunakan
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Maklumat lebih tentang set muzik asas
+STR_GAME_OPTIONS_BASE_SFX                                       :Set bunyi asas
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Pilih set bunyi asas untuk digunakan
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Maklumat tambahan tentang set bunyi asas ini
+
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Set muzik asas
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Pilih set muzik asas yang akan digunakan
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Maklumat lebih tentang set muzik asas
 
 
 
@@ -1005,11 +1006,10 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Mengizinkan
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Tiada AI yang bersesuaian...{}Anda boleh memuat turun beberapa AI dari sistem 'Kandungan Atas Talian'
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Tetapan
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Tapis baris:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Kembangkan semua
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Musnahkan semua
+# Settings tree in the Game Options window
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Tapis baris:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Kembangkan semua
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Musnahkan semua
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(Tiada penjelasan)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Nilai lalai: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Jenis tetapan: {ORANGE}{STRING}
@@ -1019,8 +1019,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Tetapan permain
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Tetapan syarikat (disimpan di simpanan; berkesan hanya permainan baru)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Tetapan syarikat (disimpan di penyimpanan; hanya berkesan kepada syarikat semasa)
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategori:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Hadkan senarai di bawah menggunakan penapis yang telah ditetapkan
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Kategori:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Hadkan senarai di bawah menggunakan penapis yang telah ditetapkan
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Asas (menunjukkan tetapan yang penting sahaja)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Terperinci (tunjukkan kebanyakan tetapan)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Expert (memaparkan semua tetapan, termasuk yang pelik)
@@ -1628,7 +1628,6 @@ STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE} ... aba
 # Video initalization errors
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Permainan Baru
 STR_INTRO_LOAD_GAME                                             :{BLACK}Buka Permainan
@@ -1639,8 +1638,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Pemain b
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Pilihan Permainan
 STR_INTRO_HIGHSCORE                                             :{BLACK}Carta mata tertinggi
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Tetapan
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Tetapan NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Periksa Kandungan Atas Talian
 STR_INTRO_QUIT                                                  :{BLACK}Keluar
 
@@ -1658,8 +1655,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Pilih la
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Paparkan pilihan permainan
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Paparan carta mata tertinggi
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Pamerkan pilihan
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Paparkan tetapan NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Periksa kandungan baru atau yang telah dikemaskini untuk dimuat turun
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Keluar 'OpenTTD'
 
@@ -2310,6 +2305,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Pilih sa
 STR_FOUND_TOWN_CITY                                             :{BLACK}Bandar
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Bandaraya membesar dengan lebih cepat daripada bandar{}Bergantung kepada tetapan, bandaraya akan lebih besar sewaktu dibina
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Susunan jalanraya bandar:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Pilih susunan jalanraya untuk bandar ini
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Asal
@@ -2635,12 +2631,10 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Tidak sera
 # NewGRF save preset window
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}Simpan pratetapan
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Masukkan nama untuk pratetapan
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Batal
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Simpan
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ubah parameter NewGRF
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Tutup
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Tetapan semula
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Tetapkan semua parameter kepada nilai asal mereka
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
@@ -3740,13 +3734,10 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Terima
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Pilih skrip yang diserlahkan
-STR_AI_LIST_CANCEL                                              :{BLACK}Batal
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Jangan ubah skrip
 
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Tutup
 STR_AI_SETTINGS_RESET                                           :{BLACK}Semula
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

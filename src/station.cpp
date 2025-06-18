@@ -8,6 +8,7 @@
 /** @file station.cpp Implementation of the station base class. */
 
 #include "stdafx.h"
+#include "core/flatset_type.hpp"
 #include "company_func.h"
 #include "company_base.h"
 #include "roadveh.h"
@@ -228,7 +229,7 @@ RoadStop *Station::GetPrimaryRoadStop(const RoadVehicle *v) const
  */
 void Station::AddFacility(StationFacility new_facility_bit, TileIndex facil_xy)
 {
-	if (this->facilities == StationFacilities{}) {
+	if (this->facilities.None()) {
 		this->MoveSign(facil_xy);
 		this->random_bits = Random();
 	}
@@ -387,7 +388,7 @@ Rect Station::GetCatchmentRect() const
  */
 void Station::AddIndustryToDeliver(Industry *ind, TileIndex tile)
 {
-	/* Using DistanceMax to get about the same order as with previously used CircularTileSearch. */
+	/* Using DistanceMax to get about the same order as with previously used SpiralTileSequence. */
 	uint distance = DistanceMax(this->xy, tile);
 
 	/* Don't check further if this industry is already in the list but update the distance if it's closer */
@@ -425,8 +426,8 @@ void Station::RemoveIndustryToDeliver(Industry *ind)
  */
 void Station::RemoveFromAllNearbyLists()
 {
-	std::set<TownID> towns;
-	std::set<IndustryID> industries;
+	FlatSet<TownID> towns;
+	FlatSet<IndustryID> industries;
 
 	for (const auto &tile : this->catchment_tiles) {
 		TileType type = GetTileType(tile);

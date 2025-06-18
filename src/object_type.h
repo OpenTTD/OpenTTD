@@ -32,4 +32,12 @@ using ObjectID = PoolID<uint32_t, struct ObjectIDTag, 0xFF0000, 0xFFFFFFFF>;
 struct Object;
 struct ObjectSpec;
 
+/** Animation triggers for objects. */
+enum class ObjectAnimationTrigger : uint8_t {
+	Built, ///< Triggered when the object is built (for all tiles at the same time).
+	TileLoop, ///< Triggered in the periodic tile loop.
+	TileLoopNorth, ///< Triggered every 256 ticks (for all tiles at the same time).
+};
+using ObjectAnimationTriggers = EnumBitSet<ObjectAnimationTrigger, uint16_t>;
+
 #endif /* OBJECT_TYPE_H */

@@ -538,7 +538,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Izhod
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Možnosti igre
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Nastavitve
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF nastavitve
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Nastavitve prozornega pogleda
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Imena mest prikazana
@@ -1006,8 +1005,9 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Možnost
 
 
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valute
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Izbira valut
+
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Valute
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Izbira valut
 
 
 ###length 45
@@ -1047,21 +1047,21 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzijski Lari
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranski Rial
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kongški dolar
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Samodejno shrani
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Izberi časovni interval samodejnega shranjevanja igre
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Samodejno shrani
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Izberi časovni interval samodejnega shranjevanja igre
 
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Izključeno
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Jezik
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Izberi jezik vmesnika
+STR_GAME_OPTIONS_LANGUAGE                                       :Jezik
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Izberi jezik vmesnika
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Cel zaslon
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Označi to okno za igro v celozaslonskem načinu
+STR_GAME_OPTIONS_FULLSCREEN                                     :Cel zaslon
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Označi to okno za igro v celozaslonskem načinu
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ločljivost
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Izberi ločljivost zaslona
+STR_GAME_OPTIONS_RESOLUTION                                     :Ločljivost
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Izberi ločljivost zaslona
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :drugo
 
 
@@ -1074,17 +1074,18 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :drugo
 
 
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Osnovni komplet grafik
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Izberi osnovni komplet grafik za uporabo
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatne informacije o osnovnem kompletu grafik
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Osnovni komplet zvokov
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Izberi osnovni komplet zvokov za uporabo
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatne informacije o osnovnem kompletu zvokov
+STR_GAME_OPTIONS_BASE_GRF                                       :Osnovni komplet grafik
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Izberi osnovni komplet grafik za uporabo
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Dodatne informacije o osnovnem kompletu grafik
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Osnovni komplet glasbe
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Izberi osnovni komplet glasbe za uporabo
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Dodatne informacije o osnovnem kompletu glasbe
+STR_GAME_OPTIONS_BASE_SFX                                       :Osnovni komplet zvokov
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Izberi osnovni komplet zvokov za uporabo
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Dodatne informacije o osnovnem kompletu zvokov
+
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Osnovni komplet glasbe
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Izberi osnovni komplet glasbe za uporabo
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Dodatne informacije o osnovnem kompletu glasbe
 
 
 
@@ -1187,11 +1188,10 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Dopustno
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ni na voljo nobene uporabne UI.{}UI so na voljo preko 'Prenosa vsebin'.
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Nastavitve
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtriraj niz:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Razširi vse
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Skrči vse
+# Settings tree in the Game Options window
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Filtriraj niz:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Razširi vse
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Skrči vse
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ni razpoložljive razlage)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Privzeta vrednost: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Vrsta nastavitve: {ORANGE}{STRING}
@@ -1201,9 +1201,9 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Nastavitve igre
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Nastavitve podjetja (shranjeno v igrah, vpliva samo na nove igre)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Nastavitve podjetja (shranjeno v igrah, vpliva samo na trenutno podjetje)
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorija:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tip:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Omeji seznam na prikaz le spremenjenih nastavitev
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Kategorija:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Tip:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Omeji seznam na prikaz le spremenjenih nastavitev
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Osnovne nastavitve
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Napredne nastavitve
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Strokovne nastavitve / vse nastavitve
@@ -1220,9 +1220,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Nastavitve podj
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Brez -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Prikaži vse rezultate iskanja z nastavitvijo{}{SILVER}Kategorija {BLACK}do {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Prikaži vse rezultate iskanja z nastavitvijo{}{SILVER}Tip {BLACK}do {WHITE}Vsi tipi nastavitev
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Prikaži vse rezultate iskanja z nastavitvijo{}{SILVER}Kategorija {BLACK}do {WHITE}{STRING} {BLACK}in {SILVER}Tip {BLACK}do {WHITE}Vsi tipi nastavitev
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Prikaži vse rezultate iskanja z nastavitvijo{}{SILVER}Kategorija {BLACK}do {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Prikaži vse rezultate iskanja z nastavitvijo{}{SILVER}Tip {BLACK}do {WHITE}Vsi tipi nastavitev
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Prikaži vse rezultate iskanja z nastavitvijo{}{SILVER}Kategorija {BLACK}do {WHITE}{STRING} {BLACK}in {SILVER}Tip {BLACK}do {WHITE}Vsi tipi nastavitev
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Izklopi
@@ -2013,7 +2013,6 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Priprava
 # Video initalization errors
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nova igra
 STR_INTRO_LOAD_GAME                                             :{BLACK}Naloži igro
@@ -2024,8 +2023,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Več igr
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Možnosti
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela najboljših rezultatov
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Nastavitve
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF nastavitve
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Preveri razpoložljive vsebine
 STR_INTRO_QUIT                                                  :{BLACK}Izhod
 
@@ -2043,8 +2040,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Izberi o
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Prikaži možnosti igre
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Prikaži tabelo najboljših rezultatov
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Nastavitve zaslona
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Prikaži nastavitve NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Preveri posodobljene vsebine na strežniku,{} ki so na voljo za prenos
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Izhod iz 'OpenTTD'
 
@@ -2712,6 +2707,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Izberi v
 STR_FOUND_TOWN_CITY                                             :{BLACK}Mesto
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Mesta rastejo hitreje kot navadna naselja{}Odvisno od nastavitev, so večja, ko so ustanovljena
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Oblika mestnih cest:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Izberi obliko cest za to mesto
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Original
@@ -3043,14 +3039,11 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Shrani p
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Seznam prednastavitev na voljo, izberi eno, da jo skopiraš kot ime za shranjevanje spodaj
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Vpiši ime za prednastavitev
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Trenutno izbrano ime za shranjevanje prednastavitev
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Prekliči
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Ne spremeni prednastavitve
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Shrani
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Shrani prednastavitev k trenutno izbranemu imenu
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Spremeni NewGRF parametre
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zapri
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Ponastavi
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Ponastavi vse nastavitve na privzeto
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
@@ -4098,7 +4091,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Urnik - 
 STR_TIMETABLE_NO_TRAVEL                                         :Brez potovanja
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Potovanje (avtomatično; urnik z naslednjim ukazom)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Potovanje (brez urnika)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Potuj z največ {2:VELOCITY} (brez časovne tabele)
 STR_TIMETABLE_TRAVEL_FOR                                        :Potuj za {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Pozuj proti {STRING} z najvišjo hitrostjo {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Potuj (za {STRING}, brez časovne tabele)
@@ -4208,13 +4200,10 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Potrdi
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Izberi označeno skripto
-STR_AI_LIST_CANCEL                                              :{BLACK}Prekliči
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne spremeni skripte
 
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :UI
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zapri
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetiraj
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

@@ -10,12 +10,16 @@
 #ifndef DROPDOWN_COMMON_TYPE_H
 #define DROPDOWN_COMMON_TYPE_H
 
+#include "dropdown_type.h"
 #include "gfx_func.h"
 #include "gfx_type.h"
 #include "palette_func.h"
+#include "settings_gui.h"
 #include "string_func.h"
 #include "strings_func.h"
 #include "window_gui.h"
+
+#include "table/strings.h"
 
 /**
  * Drop down divider component.
@@ -31,12 +35,12 @@ public:
 	bool Selectable() const override { return false; }
 	uint Height() const override { return std::max<uint>(GetCharacterHeight(TFs), this->TBase::Height()); }
 
-	void Draw(const Rect &full, const Rect &, bool, Colours bg_colour) const override
+	void Draw(const Rect &full, const Rect &, bool, int, Colours bg_colour) const override
 	{
 		uint8_t c1 = GetColourGradient(bg_colour, SHADE_DARK);
 		uint8_t c2 = GetColourGradient(bg_colour, SHADE_LIGHTEST);
 
-		int mid = CenterBounds(full.top, full.bottom, 0);
+		int mid = CentreBounds(full.top, full.bottom, 0);
 		GfxFillRect(full.left, mid - WidgetDimensions::scaled.bevel.bottom, full.right, mid - 1, c1);
 		GfxFillRect(full.left, mid, full.right, mid + WidgetDimensions::scaled.bevel.top - 1, c2);
 	}
@@ -72,11 +76,17 @@ public:
 
 	uint Width() const override { return this->dim.width + this->TBase::Width(); }
 
-	void Draw(const Rect &full, const Rect &r, bool sel, Colours bg_colour) const override
+	int OnClick(const Rect &r, const Point &pt) const override
+	{
+		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+		return this->TBase::OnClick(r.Indent(this->dim.width, rtl), pt);
+	}
+
+	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
 	{
 		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
 		DrawStringMultiLine(r.WithWidth(this->dim.width, rtl), this->string, this->GetColour(sel), SA_CENTER, false, TFs);
-		this->TBase::Draw(full, r.Indent(this->dim.width, rtl), sel, bg_colour);
+		this->TBase::Draw(full, r.Indent(this->dim.width, rtl), sel, click_result, bg_colour);
 	}
 
 	/**
@@ -122,12 +132,18 @@ public:
 	uint Height() const override { return std::max(this->dbounds.height, this->TBase::Height()); }
 	uint Width() const override { return this->dbounds.width + WidgetDimensions::scaled.hsep_normal + this->TBase::Width(); }
 
-	void Draw(const Rect &full, const Rect &r, bool sel, Colours bg_colour) const override
+	int OnClick(const Rect &r, const Point &pt) const override
+	{
+		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+		return this->TBase::OnClick(r.Indent(this->dbounds.width + WidgetDimensions::scaled.hsep_normal, rtl), pt);
+	}
+
+	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
 	{
 		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
 		Rect ir = r.WithWidth(this->dbounds.width, rtl);
-		DrawSprite(this->sprite, this->palette, CenterBounds(ir.left, ir.right, this->dsprite.width), CenterBounds(r.top, r.bottom, this->dsprite.height));
-		this->TBase::Draw(full, r.Indent(this->dbounds.width + WidgetDimensions::scaled.hsep_normal, rtl), sel, bg_colour);
+		DrawSprite(this->sprite, this->palette, CentreBounds(ir.left, ir.right, this->dsprite.width), CentreBounds(r.top, r.bottom, this->dsprite.height));
+		this->TBase::Draw(full, r.Indent(this->dbounds.width + WidgetDimensions::scaled.hsep_normal, rtl), sel, click_result, bg_colour);
 	}
 };
 
@@ -151,13 +167,69 @@ public:
 	uint Height() const override { return std::max<uint>(this->dim.height, this->TBase::Height()); }
 	uint Width() const override { return this->dim.width + WidgetDimensions::scaled.hsep_wide + this->TBase::Width(); }
 
-	void Draw(const Rect &full, const Rect &r, bool sel, Colours bg_colour) const override
+	int OnClick(const Rect &r, const Point &pt) const override
+	{
+		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+		return this->TBase::OnClick(r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), pt);
+	}
+
+	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
 	{
 		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
 		if (this->checked) {
 			DrawStringMultiLine(r.WithWidth(this->dim.width, rtl), STR_JUST_CHECKMARK, this->GetColour(sel), SA_CENTER, false, TFs);
 		}
-		this->TBase::Draw(full, r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), sel, bg_colour);
+		this->TBase::Draw(full, r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), sel, click_result, bg_colour);
+	}
+};
+
+/**
+ * Drop down boolean toggle component.
+ * @tparam TBase Base component.
+ * @tparam TEnd Position toggle at end if true, or start if false.
+ */
+template <class TBase, bool TEnd = false>
+class DropDownToggle : public TBase {
+	bool on; ///< Is item on.
+	int click; ///< Click result when toggle used.
+	Colours button_colour; ///< Colour of toggle button.
+	Colours background_colour; ///< Colour of toggle background.
+public:
+	template <typename... Args>
+	explicit DropDownToggle(bool on, int click, Colours button_colour, Colours background_colour, Args&&... args)
+		: TBase(std::forward<Args>(args)...), on(on), click(click), button_colour(button_colour), background_colour(background_colour)
+	{
+	}
+
+	uint Height() const override
+	{
+		return std::max<uint>(SETTING_BUTTON_HEIGHT + WidgetDimensions::scaled.vsep_normal, this->TBase::Height());
+	}
+
+	uint Width() const override
+	{
+		return SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide + this->TBase::Width();
+	}
+
+	int OnClick(const Rect &r, const Point &pt) const override
+	{
+		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+		int w = SETTING_BUTTON_WIDTH;
+
+		if (r.WithWidth(w, rtl).CentreTo(w, SETTING_BUTTON_HEIGHT).Contains(pt)) return this->click;
+
+		return this->TBase::OnClick(r.Indent(w + WidgetDimensions::scaled.hsep_wide, rtl), pt);
+	}
+
+	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
+	{
+		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+		int w = SETTING_BUTTON_WIDTH;
+
+		Rect br = r.WithWidth(w, rtl).CentreTo(w, SETTING_BUTTON_HEIGHT);
+		DrawBoolButton(br.left, br.top, this->button_colour, this->background_colour, this->on, true);
+
+		this->TBase::Draw(full, r.Indent(w + WidgetDimensions::scaled.hsep_wide, rtl), sel, click_result, bg_colour);
 	}
 };
 
@@ -175,11 +247,30 @@ public:
 
 	uint Width() const override { return this->indent * WidgetDimensions::scaled.hsep_indent + this->TBase::Width(); }
 
-	void Draw(const Rect &full, const Rect &r, bool sel, Colours bg_colour) const override
+	int OnClick(const Rect &r, const Point &pt) const override
 	{
 		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
-		this->TBase::Draw(full, r.Indent(this->indent * WidgetDimensions::scaled.hsep_indent, rtl), sel, bg_colour);
+		return this->TBase::OnClick(r.Indent(this->indent * WidgetDimensions::scaled.hsep_indent, rtl), pt);
 	}
+
+	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
+	{
+		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+		this->TBase::Draw(full, r.Indent(this->indent * WidgetDimensions::scaled.hsep_indent, rtl), sel, click_result, bg_colour);
+	}
+};
+
+/**
+ * Drop down component that makes the item unselectable.
+ * @tparam TBase Base component.
+ */
+template <class TBase, FontSize TFs = FS_NORMAL>
+class DropDownUnselectable : public TBase {
+public:
+	template <typename... Args>
+	explicit DropDownUnselectable(Args&&... args) : TBase(std::forward<Args>(args)...) {}
+
+	bool Selectable() const override { return false; }
 };
 
 /* Commonly used drop down list items. */

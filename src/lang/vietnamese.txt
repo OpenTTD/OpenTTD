@@ -444,7 +444,6 @@ STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Sắp xếp nh�
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Cấu hình trò chơi
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Thiết Lập
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Thiết lập AI
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Thiết lập kịch bản màn chơi
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Thông số NewGRF
@@ -953,22 +952,23 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Sao ché
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Cấu Hình Trò Chơi
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Tổng quát
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Điều chỉnh thiết lập tổng quát
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :Điều chỉnh thiết lập tổng quát
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Đồ họa
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Điều chỉnh thiết lập đồ họa
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :Điều chỉnh thiết lập đồ họa
 STR_GAME_OPTIONS_TAB_SOUND                                      :Âm thanh
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Lựa chọn thiết lập cho âm thanh và nhạc
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Lựa chọn thiết lập cho âm thanh và nhạc
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Xã hội
-STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Chọn thiết lập các tích hợp xã hội
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Chọn thiết lập các tích hợp xã hội
 
 STR_GAME_OPTIONS_VOLUME                                         :Âm lượng
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Hiệu ứng âm thanh
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Âm nhạc
 
+
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Đơn vị tiền tệ
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Lựa chọn đơn vị tiền tệ
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Đơn vị tiền tệ
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Lựa chọn đơn vị tiền tệ
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -1018,8 +1018,8 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit Malaysi
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lát-vi-a Lats
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escudo Bồ Đào Nha
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Lưu tự động
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Lựa chọn khoảng thời gian tự động lưu
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Lưu tự động
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Lựa chọn khoảng thời gian tự động lưu
 
 # Autosave dropdown
 ###length 5
@@ -1029,77 +1029,77 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Mỗi 30 phút
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Mỗi 60 phút
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Mỗi 120 phút
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Ngôn ngữ
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Lựa chọn sử dụng ngôn ngữ giao diện
+STR_GAME_OPTIONS_LANGUAGE                                       :Ngôn ngữ
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Lựa chọn sử dụng ngôn ngữ giao diện
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} (hoàn thành {NUM}%)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Toàn màn hình
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Đánh dấu vào ô này để chơi OpenTTD ở chế độ toàn màn hình
+STR_GAME_OPTIONS_FULLSCREEN                                     :Toàn màn hình
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Đánh dấu vào ô này để chơi OpenTTD ở chế độ toàn màn hình
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Độ phân giải màn hình
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Chọn độ phân giải màn hình để sử dụng
+STR_GAME_OPTIONS_RESOLUTION                                     :Độ phân giải màn hình
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Chọn độ phân giải màn hình để sử dụng
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :khác
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Tăng tốc phần cứng
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Đánh dấu vào ô này để cho phép OpenTTD thử sử dụng tăng tốc phần cứng. Sẽ có tác dụng sau khi khởi động lại trò chơi
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Tăng tốc phần cứng
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Đánh dấu vào ô này để cho phép OpenTTD thử sử dụng tăng tốc phần cứng. Sẽ có tác dụng sau khi khởi động lại trò chơi
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Thiết lập chỉ có tác dụng sau khi khởi động lại trò chơi
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Đánh dấu vào ô này để bật tính năng v-sync cho màn hình. Sẽ có tác dụng sau khi khởi động lại trò chơi. Chỉ có thể hoạt động khi tăng tốc phần cứng được bật
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Đánh dấu vào ô này để bật tính năng v-sync cho màn hình. Sẽ có tác dụng sau khi khởi động lại trò chơi. Chỉ có thể hoạt động khi tăng tốc phần cứng được bật
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Trình điều khiển hiện tại: {STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Trình điều khiển hiện tại: {STRING}
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Kích thước giao diện
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Kéo thanh trượt để điều chỉnh kích thước giao diện. Giữ Ctrl để điều chỉnh liên tục
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Tự động nhận dạng kích thước
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Đánh dấu vào ô này để điều chỉnh kích thước giao diện tự động
+
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Kích thước giao diện
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Kéo thanh trượt để điều chỉnh kích thước giao diện. Giữ Ctrl để điều chỉnh liên tục
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Tự động nhận dạng kích thước
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Đánh dấu vào ô này để điều chỉnh kích thước giao diện tự động
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Tỷ lệ góc xiên
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Đánh dấu vào ô này để điều chỉnh tỷ lệ góc xiên theo kích thước giao diện
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Đánh dấu vào ô này để điều chỉnh tỷ lệ góc xiên theo kích thước giao diện
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Sử dụng sprite phông truyền thống
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Tuỳ chọn này nếu bạn muốn sử dụng sprite phông cố định truyền thống
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Phông chữ chống răng cưa
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Tuỳ chọn này để chống răng cưa phông chữ co dãn được
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Sử dụng sprite phông truyền thống
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Tuỳ chọn này nếu bạn muốn sử dụng sprite phông cố định truyền thống
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Phông chữ chống răng cưa
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Tuỳ chọn này để chống răng cưa phông chữ co dãn được
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Khảo sát tự động
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Tham gia khảo sát tự động
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Khi bật, OpenTTD sẽ gửi một khảo sát lúc rời ván chơi
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Về khảo sát và quyền riêng tư
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Sẽ mở trình duyệt để xem thêm thông tin về khảo sát tự động
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Xem trước kết quả khảo sát
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Hiển thị kết quả khảo sát ở ván chơi hiện tại
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Khảo sát tự động
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Tham gia khảo sát tự động
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :Khi bật, OpenTTD sẽ gửi một khảo sát lúc rời ván chơi
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :Về khảo sát và quyền riêng tư
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Sẽ mở trình duyệt để xem thêm thông tin về khảo sát tự động
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Xem trước kết quả khảo sát
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Hiển thị kết quả khảo sát ở ván chơi hiện tại
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Hình ảnh
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Tần số quét màn hình
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Chọn tần số quét màn hình
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Tần số quét màn hình
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Chọn tần số quét màn hình
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Tần số quét hơn 60Hz có thể làm ảnh hưởng đến hiệu năng
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Gói đồ họa
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Chọn gói đồ họa để sử dụng (không thể thay đổi khi trong ván chơi, chỉ đổi được khi ở menu chính)
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Thông tin thêm về gói đồ họa
+STR_GAME_OPTIONS_BASE_GRF                                       :Gói đồ họa
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Chọn gói đồ họa để sử dụng (không thể thay đổi khi trong ván chơi, chỉ đổi được khi ở menu chính)
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Thông tin thêm về gói đồ họa
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Bộ âm thanh chuẩn
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Chọn bộ âm thanh chuẩn để dùng (không thể thay đổi khi trong ván chơi, chỉ đổi được khi ở menu chính)
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Thông tin thêm về bộ âm thanh chuẩn
+STR_GAME_OPTIONS_BASE_SFX                                       :Bộ âm thanh chuẩn
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Chọn bộ âm thanh chuẩn để dùng (không thể thay đổi khi trong ván chơi, chỉ đổi được khi ở menu chính)
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Thông tin thêm về bộ âm thanh chuẩn
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Gói nhạc chuẩn
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Chọn gói nhạc để sử dụng
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Thông tin thêm về gói nhạc chuẩn
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Gói nhạc chuẩn
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Chọn gói nhạc để sử dụng
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Thông tin thêm về gói nhạc chuẩn
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Tải Nội Dung
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Kiểm tra những nội dung mới & cập nhật để tải về
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(không có plugins được cài đặt để tích hợp vào nền tảng xã hội)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Nền tảng:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Trạng thái Plugin:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Nền tảng:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :Trạng thái Plugin:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Đang chạy
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Kích hoạt không thành công
@@ -1210,14 +1210,13 @@ STR_CITY_APPROVAL_TOLERANT                                      :Vừa phải
 STR_CITY_APPROVAL_HOSTILE                                       :Khó khăn
 STR_CITY_APPROVAL_PERMISSIVE                                    :Dễ dãi (không có tác dụng với hoạt động xây dựng của công ty)
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Không có AI nào phù hợp...{}Bạn có thể tải các AI từ mục 'Online Content'
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Không có AI nào phù hợp...{}{}Bạn có thể tải các AI từ mục 'Nội dung trực tuyến'
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Thiết lập
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Lọc:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Mở xuống tất cả
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Đóng lại tất cả
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Thiết lập lại tất cả
+# Settings tree in the Game Options window
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Lọc:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Mở xuống tất cả
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Đóng lại tất cả
+STR_CONFIG_SETTING_RESET_ALL                                    :Thiết lập lại tất cả
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(hiện không có giải thích nào)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Giá trị mặc định: {ORANGE}{STRING}
@@ -1230,9 +1229,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Thiết lập c
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Chú Ý!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Hành động này sẽ thiết lập lại tất cả các thông số về ban đầu.{}Bạn có muốn tiến hành?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Phân loại:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Kiểu:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Giới hạn danh sách bên dưới bằng những bộ lọc định sẵn
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Phân loại:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Kiểu:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Giới hạn danh sách bên dưới bằng những bộ lọc định sẵn
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Tùy chọn cơ bản
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Tùy chọn nâng cao
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Thiết lập chuyên gia/tất cả thiết lập
@@ -1249,9 +1248,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Thiết lập c
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Không -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Hiện tất cả kết quả tìm kiếm theo{}{SILVER}Phân loại {BLACK}cho {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Hiện tất cả kết quả tìm kiếm theo{}{SILVER}Kiểu {BLACK}cho {WHITE}tất cả kiểu thiết lập
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Hiện tất cả kết quả tìm kiếm theo{}{SILVER}Phân loại {BLACK}cho {WHITE}{STRING} {BLACK}và {SILVER}Kiểu {BLACK}cho {WHITE}tất cả kiểu thiết lập
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Hiện tất cả kết quả tìm kiếm theo{}{SILVER}Phân loại {BLACK}cho {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Hiện tất cả kết quả tìm kiếm theo{}{SILVER}Kiểu {BLACK}cho {WHITE}tất cả kiểu thiết lập
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Hiện tất cả kết quả tìm kiếm theo{}{SILVER}Phân loại {BLACK}cho {WHITE}{STRING} {BLACK}và {SILVER}Kiểu {BLACK}cho {WHITE}tất cả kiểu thiết lập
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Tắt
@@ -2180,7 +2179,6 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... khô
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... trình điều khiển GPU đã làm trò chơi bị lỗi. Tăng tốc phần cứng đã được tắt
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Màn Chơi Mới
 STR_INTRO_LOAD_GAME                                             :{BLACK}Nạp Ván Chơi
@@ -2192,11 +2190,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Ván Ch�
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Cấu Hình Trò Chơi
 STR_INTRO_HIGHSCORE                                             :{BLACK}Bảng Thành Tích
 STR_INTRO_HELP                                                  :{BLACK}Trợ giúp & hướng dẫn
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Thiết lập
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Thiết Lập NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Nội Dung Trực Tuyến
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Thiết Lập AI
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Thiết Lập Tập Lệnh Trò Chơi
 STR_INTRO_QUIT                                                  :{BLACK}Thoát
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Màn chơi mới.Ctrl+Click để bỏ qua phần điều chỉnh màn
@@ -2214,11 +2208,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Chọn k
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Hiển thị cấu hình của trò chơi
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Hiện bảng thành tích
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Truy cập vào tài liệu và tài nguyên trực tuyến
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Thiết lập hiển thị
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Hiển thị tùy chỉnh NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kiểm tra những nội dung mới & cập nhật để tải về
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Hiển thị tùy chỉnh AI
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Mở thiết lập kịch bản màn chơi
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Thoát 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}Gói đồ họa cơ sở đang chọn bị thiếu  {NUM} sprite. Hãy cập nhật gói cơ sở này.
@@ -2854,6 +2844,9 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Phía ngoài ng
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Phía trong ngoại ô
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Nội thành
 
+STR_HOUSE_PICKER_PROTECT_TITLE                                  :Ngăn chặn nâng cấp
+STR_HOUSE_PICKER_PROTECT_OFF                                    :Tắt
+STR_HOUSE_PICKER_PROTECT_ON                                     :Bật
 
 STR_STATION_CLASS_DFLT                                          :Mặc định
 STR_STATION_CLASS_DFLT_STATION                                  :Trạm mặc định
@@ -3059,6 +3052,7 @@ STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Quy mô 
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Chọn quy mô đô thị
 STR_FOUND_TOWN_CITY                                             :{BLACK}Đô thị
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Thành phố phát triển nhanh hơn thị trấn{}Tuỳ thuộc thiết lập, chúng lớn hơn khi khai sinh
+
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Quy hoạch đường đô thị:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Chọn để quy hoạch đường bộ trong đô thị
@@ -3504,15 +3498,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Lưu thi
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Danh sách những thiết lập có sẵn, chọn một để sao chép tên thiết lập
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Nhập tên cho thiết lập
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Tên hiện tại cho thiết lập được lưu
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Hủy bỏ
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Không thay đổi thiết lập
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Lưu
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Lưu thiết lập bằng tên được chọn
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Thay đổi các thông số của gói đồ họa chuẩn
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Thay Đổi Tham Số NewGRF
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Đóng
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Đặt mặc định
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Đặt tất cả các tham số về mặc định
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Tham số {NUM}
@@ -4016,6 +4007,10 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Sản l�
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Cần cung cấp:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX                    :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} đang chờ{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_NOSUFFIX                         :{YELLOW}{0:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX                  :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} đang chờ
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Thay đổi sản lượng (bội số của 8, max 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Thay đổi mức sản lượng (theo phần trăm, cao nhất 800%)
@@ -4741,7 +4736,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Lịch t
 STR_TIMETABLE_NO_TRAVEL                                         :Không di chuyển
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Hành trình (tự động; tính thời gian theo lịch trình thủ công kế tiếp)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Di chuyển (không bó buộc theo lịch trình)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Hành trình với tốc độ tối đa là {2:VELOCITY} (chưa dựng lịch trình)
 STR_TIMETABLE_TRAVEL_FOR                                        :Di chuyển trong {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Lộ trình {STRING} với tốc độ tối đa {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Lộ trình (cho {STRING}, chưa có lịch trình)
@@ -4866,8 +4860,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Chấp nhận
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Chấp nhận AI đã chọn
-STR_AI_LIST_CANCEL                                              :{BLACK}Huỷ bỏ
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Không đổi tập lệnh
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Chụp màn hình
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Chụp màn hình bình thường
@@ -4880,7 +4872,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Chụp m
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Tham Số AI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Tham Số Game Script
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Đóng
 STR_AI_SETTINGS_RESET                                           :{BLACK}Thiết Lập Lại
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
@@ -5305,8 +5296,16 @@ STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Không t
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Không thể bán máy bay...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :{WHITE}Không thể bán tất cả tàu hoả...
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :{WHITE}Không thể bán tất cả các xe...
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Không thể bán tất cả tàu thủy...
+STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}Không thể bán tất cả máy bay...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}Không thể tự động thay thế tàu hỏa...
+STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}Không thể tự động thay thế xe...
+STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}Không thể tự động thay thế tàu thủy...
+STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}Không thể tự động thay thế máy bay...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Quá nhiều phương tiện trong trò chơi
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Không thể thay đổi tần suất bảo trì...

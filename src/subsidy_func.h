@@ -10,6 +10,7 @@
 #ifndef SUBSIDY_FUNC_H
 #define SUBSIDY_FUNC_H
 
+#include "source_type.h"
 #include "station_type.h"
 #include "company_type.h"
 #include "cargo_type.h"

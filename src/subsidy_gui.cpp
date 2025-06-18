@@ -136,7 +136,7 @@ struct SubsidyListWindow : Window {
 		if (widget != WID_SUL_PANEL) return;
 		Dimension d = maxdim(GetStringBoundingBox(STR_SUBSIDIES_OFFERED_TITLE), GetStringBoundingBox(STR_SUBSIDIES_SUBSIDISED_TITLE));
 
-		resize.height = GetCharacterHeight(FS_NORMAL);
+		fill.height = resize.height = GetCharacterHeight(FS_NORMAL);
 
 		d.height *= 5;
 		d.width += WidgetDimensions::scaled.framerect.Horizontal();
@@ -150,7 +150,7 @@ struct SubsidyListWindow : Window {
 		SpriteID icon = CargoSpec::Get(cargo_type)->GetCargoIcon();
 		Dimension d = GetSpriteSize(icon);
 		Rect ir = r.WithWidth(this->cargo_icon_size.width, rtl).WithHeight(GetCharacterHeight(FS_NORMAL));
-		DrawSprite(icon, PAL_NONE, CenterBounds(ir.left, ir.right, d.width), CenterBounds(ir.top, ir.bottom, this->cargo_icon_size.height) + y_offset);
+		DrawSprite(icon, PAL_NONE, CentreBounds(ir.left, ir.right, d.width), CentreBounds(ir.top, ir.bottom, this->cargo_icon_size.height) + y_offset);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
@@ -219,13 +219,13 @@ struct SubsidyListWindow : Window {
 					if (TimerGameEconomy::UsingWallclockUnits()) {
 						text = GetString(STR_SUBSIDIES_SUBSIDISED_FROM_TO,
 							cs->name, s->src.GetFormat(), s->src.id, s->dst.GetFormat(), s->dst.id,
-							GetString(STR_COMPANY_NAME, s->awarded),
+							s->awarded,
 							STR_SUBSIDIES_SUBSIDISED_EXPIRY_TIME,
 							s->remaining + 1); // We get the rest of the current economy month for free, since the expiration is checked on each new month.
 					} else {
 						text = GetString(STR_SUBSIDIES_SUBSIDISED_FROM_TO,
 							cs->name, s->src.GetFormat(), s->src.id, s->dst.GetFormat(), s->dst.id,
-							GetString(STR_COMPANY_NAME, s->awarded),
+							s->awarded,
 							STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE,
 							TimerGameEconomy::date.base() - ymd.day + s->remaining * 32);
 					}

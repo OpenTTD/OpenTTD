@@ -228,7 +228,7 @@ void InitDepotWindowBlockSizes()
 		if (!e->IsEnabled()) continue;
 
 		uint w = TRAININFO_DEFAULT_VEHICLE_WIDTH;
-		if (e->GetGRF() != nullptr && is_custom_sprite(e->u.rail.image_index)) {
+		if (e->GetGRF() != nullptr && IsCustomVehicleSpriteNum(e->u.rail.image_index)) {
 			w = e->GetGRF()->traininfo_vehicle_width;
 			if (w != VEHICLEINFO_FULL_VEHICLE_WIDTH) {
 				/* Hopeless.
@@ -303,6 +303,35 @@ struct DepotWindow : Window {
 	}
 
 	/**
+	 * Count the dragged selection length if appropriate for the provided train.
+	 * @note This ignores potential changes in length due to callback returning different results.
+	 * @param t Train being counted.
+	 * @return Additional length of dragged selection to add.
+	 */
+	uint CountDraggedLength(const Train *t) const
+	{
+		/* Nothing is selected to add. */
+		if (this->sel == VehicleID::Invalid()) return 0;
+
+		/* Test if the dragged selection applies to this train. */
+		bool add_dragged = false;
+		for (const Train *u = t; u != nullptr; u = u->Next()) {
+			if (u->index == this->sel) return 0; // Selection is part of this train, so doesn't increase its length.
+			if (u->index == this->vehicle_over) add_dragged = true;
+		}
+
+		if (!add_dragged) return 0;
+
+		/* Sum the length of the dragged selection. */
+		uint length = 0;
+		for (Train *u = Train::Get(this->sel); u != nullptr; u = _cursor.vehchain ? u->Next() : (u->HasArticulatedPart() ? u->GetNextArticulatedPart() : nullptr)) {
+			length += u->gcache.cached_veh_length;
+		}
+
+		return length;
+	}
+
+	/**
 	 * Draw a vehicle in the depot window in the box with the top left corner at x,y.
 	 * @param v     Vehicle to draw.
 	 * @param r     Rect to draw in.
@@ -327,9 +356,10 @@ struct DepotWindow : Window {
 				DrawTrainImage(u, image.Indent(x_space, rtl), this->sel, EIT_IN_DEPOT, free_wagon ? 0 : this->hscroll->GetPosition(), this->vehicle_over);
 
 				/* Length of consist in tiles with 1 fractional digit (rounded up) */
+				uint length = u->gcache.cached_total_length + this->CountDraggedLength(u);
 				Rect count = text.WithWidth(this->count_width - WidgetDimensions::scaled.hsep_normal, !rtl);
 				DrawString(count.left, count.right, count.bottom - GetCharacterHeight(FS_SMALL) + 1,
-						GetString(STR_JUST_DECIMAL, CeilDiv(u->gcache.cached_total_length * 10, TILE_SIZE), 1),
+						GetString(STR_JUST_DECIMAL, CeilDiv(length * 10, TILE_SIZE), 1),
 						TC_BLACK, SA_RIGHT | SA_FORCE, false, FS_SMALL); // Draw the counter
 				break;
 			}

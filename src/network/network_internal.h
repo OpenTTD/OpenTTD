@@ -81,10 +81,10 @@ extern std::string _network_server_name;
 
 extern uint8_t _network_reconnect;
 
-void NetworkQueryServer(const std::string &connection_string);
+void NetworkQueryServer(std::string_view connection_string);
 
 void GetBindAddresses(NetworkAddressList *addresses, uint16_t port);
-struct NetworkGame *NetworkAddServer(const std::string &connection_string, bool manually = true, bool never_expire = false);
+struct NetworkGame *NetworkAddServer(std::string_view connection_string, bool manually = true, bool never_expire = false);
 void NetworkRebuildHostList();
 void UpdateNetworkGameWindow();
 
@@ -110,14 +110,14 @@ void NetworkSyncCommandQueue(NetworkClientSocket *cs);
 void NetworkReplaceCommandClientId(CommandPacket &cp, ClientID client_id);
 
 void ShowNetworkError(StringID error_string);
-void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send, const std::string &name, const std::string &str = "", StringParameter &&data = {});
+void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send, std::string_view name, std::string_view str = {}, StringParameter &&data = {});
 uint NetworkCalculateLag(const NetworkClientSocket *cs);
 StringID GetNetworkErrorMsg(NetworkErrorCode err);
 bool NetworkMakeClientNameUnique(std::string &new_name);
 
-std::string_view ParseCompanyFromConnectionString(const std::string &connection_string, CompanyID *company_id);
-NetworkAddress ParseConnectionString(const std::string &connection_string, uint16_t default_port);
-std::string NormalizeConnectionString(const std::string &connection_string, uint16_t default_port);
+std::string_view ParseCompanyFromConnectionString(std::string_view connection_string, CompanyID *company_id);
+NetworkAddress ParseConnectionString(std::string_view connection_string, uint16_t default_port);
+std::string NormalizeConnectionString(std::string_view connection_string, uint16_t default_port);
 
 void ClientNetworkEmergencySave();
 

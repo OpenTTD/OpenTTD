@@ -87,7 +87,7 @@ struct FiosItem {
 class FileList : public std::vector<FiosItem> {
 public:
 	void BuildFileList(AbstractFileType abstract_filetype, SaveLoadOperation fop, bool show_dirs);
-	const FiosItem *FindItem(const std::string_view file);
+	const FiosItem *FindItem(std::string_view file);
 };
 
 enum SortingBits : uint8_t {
@@ -112,16 +112,16 @@ bool FiosBrowseTo(const FiosItem *item);
 
 std::string FiosGetCurrentPath();
 std::optional<uint64_t> FiosGetDiskFreeSpace(const std::string &path);
-bool FiosDelete(const char *name);
-std::string FiosMakeHeightmapName(const char *name);
-std::string FiosMakeSavegameName(const char *name);
+bool FiosDelete(std::string_view name);
+std::string FiosMakeHeightmapName(std::string_view name);
+std::string FiosMakeSavegameName(std::string_view name);
 
-std::tuple<FiosType, std::string> FiosGetSavegameListCallback(SaveLoadOperation fop, const std::string &file, const std::string_view ext);
-std::tuple<FiosType, std::string> FiosGetScenarioListCallback(SaveLoadOperation fop, const std::string &file, const std::string_view ext);
-std::tuple<FiosType, std::string> FiosGetHeightmapListCallback(SaveLoadOperation fop, const std::string &file, const std::string_view ext);
+std::tuple<FiosType, std::string> FiosGetSavegameListCallback(SaveLoadOperation fop, std::string_view file, std::string_view ext);
+std::tuple<FiosType, std::string> FiosGetScenarioListCallback(SaveLoadOperation fop, std::string_view file, std::string_view ext);
+std::tuple<FiosType, std::string> FiosGetHeightmapListCallback(SaveLoadOperation fop, std::string_view file, std::string_view ext);
 
 void ScanScenarios();
-const char *FindScenario(const ContentInfo *ci, bool md5sum);
+std::optional<std::string_view> FindScenario(const ContentInfo &ci, bool md5sum);
 
 /**
  * A savegame name automatically numbered.

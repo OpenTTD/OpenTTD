@@ -34,6 +34,7 @@
 #include "../debug.h"
 #include "../blitter/factory.hpp"
 #include "../zoom_func.h"
+#include "../core/string_consumer.hpp"
 
 #include "../table/opengl_shader.h"
 #include "../table/sprites.h"
@@ -132,30 +133,28 @@ static const int MAX_CACHED_CURSORS = 48;
 
 GetOGLProcAddressProc GetOGLProcAddress;
 
+static std::optional<std::string_view> GlGetString(GLenum name)
+{
+	auto str = reinterpret_cast<const char *>(_glGetString(name));
+	if (str == nullptr) return {};
+	return str;
+}
+
 /**
  * Find a substring in a string made of space delimited elements. The substring
  * has to match the complete element, partial matches don't count.
  * @param string List of space delimited elements.
  * @param substring Substring to find.
- * @return Pointer to the start of the match or nullptr if the substring is not present.
+ * @return Whether the substring was found.
  */
-const char *FindStringInExtensionList(const char *string, const char *substring)
+bool HasStringInExtensionList(std::string_view string, std::string_view substring)
 {
-	while (true) {
-		/* Is the extension string present at all? */
-		const char *pos = strstr(string, substring);
-		if (pos == nullptr) break;
-
-		/* Is this a real match, i.e. are the chars before and after the matched string
-		 * indeed spaces (or the start or end of the string, respectively)? */
-		const char *end = pos + strlen(substring);
-		if ((pos == string || pos[-1] == ' ') && (*end == ' ' || *end == '\0')) return pos;
-
-		/* False hit, try again for the remaining string. */
-		string = end;
+	StringConsumer consumer{string};
+	while (consumer.AnyBytesLeft()) {
+		if (substring == consumer.ReadUntil(" ", StringConsumer::SKIP_ALL_SEPARATORS)) return true;
 	}
 
-	return nullptr;
+	return false;
 }
 
 /**
@@ -163,7 +162,7 @@ const char *FindStringInExtensionList(const char *string, const char *substring)
  * @param extension The extension string to test.
  * @return True if the extension is supported, false if not.
  */
-static bool IsOpenGLExtensionSupported(const char *extension)
+static bool IsOpenGLExtensionSupported(std::string_view extension)
 {
 	static PFNGLGETSTRINGIPROC glGetStringi = nullptr;
 	static bool glGetStringi_loaded = false;
@@ -181,12 +180,12 @@ static bool IsOpenGLExtensionSupported(const char *extension)
 		_glGetIntegerv(GL_NUM_EXTENSIONS, &num_exts);
 
 		for (GLint i = 0; i < num_exts; i++) {
-			const char *entry = (const char *)glGetStringi(GL_EXTENSIONS, i);
-			if (strcmp(entry, extension) == 0) return true;
+			const char *entry = reinterpret_cast<const char *>(glGetStringi(GL_EXTENSIONS, i));
+			if (entry != nullptr && entry == extension) return true;
 		}
-	} else {
+	} else if (auto str = GlGetString(GL_EXTENSIONS); str.has_value()) {
 		/* Old style: A single, space-delimited string for all extensions. */
-		return FindStringInExtensionList((const char *)_glGetString(GL_EXTENSIONS), extension) != nullptr;
+		return HasStringInExtensionList(*str, extension);
 	}
 
 	return false;
@@ -406,7 +405,7 @@ static bool BindPersistentBufferExtensions()
 void APIENTRY DebugOutputCallback([[maybe_unused]] GLenum source, GLenum type, [[maybe_unused]] GLuint id, GLenum severity, [[maybe_unused]] GLsizei length, const GLchar *message, [[maybe_unused]] const void *userParam)
 {
 	/* Make severity human readable. */
-	const char *severity_str = "";
+	std::string_view severity_str;
 	switch (severity) {
 		case GL_DEBUG_SEVERITY_HIGH:   severity_str = "high"; break;
 		case GL_DEBUG_SEVERITY_MEDIUM: severity_str = "medium"; break;
@@ -414,7 +413,7 @@ void APIENTRY DebugOutputCallback([[maybe_unused]] GLenum source, GLenum type, [
 	}
 
 	/* Make type human readable.*/
-	const char *type_str = "Other";
+	std::string_view type_str = "Other";
 	switch (type) {
 		case GL_DEBUG_TYPE_ERROR:               type_str = "Error"; break;
 		case GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR: type_str = "Deprecated"; break;
@@ -515,6 +514,14 @@ OpenGLBackend::~OpenGLBackend()
 	}
 }
 
+static std::tuple<uint8_t, uint8_t> DecodeVersion(std::string_view ver)
+{
+	StringConsumer consumer{ver};
+	int major = consumer.ReadIntegerBase<uint8_t>(10);
+	if (consumer.ReadIf(".")) return {major, consumer.ReadIntegerBase<uint8_t>(10)};
+	return {major, 0};
+}
+
 /**
  * Check for the needed OpenGL functionality and allocate all resources.
  * @param screen_res Current display resolution.
@@ -525,23 +532,21 @@ std::optional<std::string_view> OpenGLBackend::Init(const Dimension &screen_res)
 	if (!BindBasicInfoProcs()) return "OpenGL not supported";
 
 	/* Always query the supported OpenGL version as the current context might have changed. */
-	const char *ver = (const char *)_glGetString(GL_VERSION);
-	const char *vend = (const char *)_glGetString(GL_VENDOR);
-	const char *renderer = (const char *)_glGetString(GL_RENDERER);
+	auto ver = GlGetString(GL_VERSION);
+	auto vend = GlGetString(GL_VENDOR);
+	auto renderer = GlGetString(GL_RENDERER);
 
-	if (ver == nullptr || vend == nullptr || renderer == nullptr) return "OpenGL not supported";
+	if (!ver.has_value() || !vend.has_value() || !renderer.has_value()) return "OpenGL not supported";
 
-	Debug(driver, 1, "OpenGL driver: {} - {} ({})", vend, renderer, ver);
+	Debug(driver, 1, "OpenGL driver: {} - {} ({})", *vend, *renderer, *ver);
 
 #ifndef GL_ALLOW_SOFTWARE_RENDERER
 	/* Don't use MESA software rendering backends as they are slower than
 	 * just using a non-OpenGL video driver. */
-	if (strncmp(renderer, "llvmpipe", 8) == 0 || strncmp(renderer, "softpipe", 8) == 0) return "Software renderer detected, not using OpenGL";
+	if (renderer->starts_with("llvmpipe") || renderer->starts_with("softpipe")) return "Software renderer detected, not using OpenGL";
 #endif
 
-	const char *minor = strchr(ver, '.');
-	_gl_major_ver = atoi(ver);
-	_gl_minor_ver = minor != nullptr ? atoi(minor + 1) : 0;
+	std::tie(_gl_major_ver, _gl_minor_ver) = DecodeVersion(*ver);
 
 #ifdef _WIN32
 	/* Old drivers on Windows (especially if made by Intel) seem to be
@@ -594,7 +599,7 @@ std::optional<std::string_view> OpenGLBackend::Init(const Dimension &screen_res)
 	_glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &max_tex_units);
 	if (max_tex_units < 4) return "Not enough simultaneous textures supported";
 
-	Debug(driver, 2, "OpenGL shading language version: {}, texture units = {}", (const char *)_glGetString(GL_SHADING_LANGUAGE_VERSION), (int)max_tex_units);
+	Debug(driver, 2, "OpenGL shading language version: {}, texture units = {}", GlGetString(GL_SHADING_LANGUAGE_VERSION).value_or("Unknown version"), max_tex_units);
 
 	if (!this->InitShaders()) return "Failed to initialize shaders";
 
@@ -695,7 +700,7 @@ std::optional<std::string_view> OpenGLBackend::Init(const Dimension &screen_res)
 	/* Prime vertex buffer with a full-screen quad and store
 	 * the corresponding state in a vertex array object. */
 	static const Simple2DVertex vert_array[] = {
-		//  x     y    u    v
+		/*  x     y    u    v */
 		{  1.f, -1.f, 1.f, 1.f },
 		{  1.f,  1.f, 1.f, 0.f },
 		{ -1.f, -1.f, 0.f, 1.f },
@@ -741,12 +746,10 @@ void OpenGLBackend::PrepareContext()
 
 std::string OpenGLBackend::GetDriverName()
 {
-	std::string res{};
+	auto renderer = GlGetString(GL_RENDERER);
+	auto version = GlGetString(GL_VERSION);
 	/* Skipping GL_VENDOR as it tends to be "obvious" from the renderer and version data, and just makes the string pointlessly longer */
-	res += reinterpret_cast<const char *>(_glGetString(GL_RENDERER));
-	res += ", ";
-	res += reinterpret_cast<const char *>(_glGetString(GL_VERSION));
-	return res;
+	return fmt::format("{}, {}", renderer.value_or("Unknown renderer"), version.value_or("Unknown version"));
 }
 
 /**
@@ -801,11 +804,10 @@ static bool VerifyProgram(GLuint program)
  */
 bool OpenGLBackend::InitShaders()
 {
-	const char *ver = (const char *)_glGetString(GL_SHADING_LANGUAGE_VERSION);
-	if (ver == nullptr) return false;
+	auto ver = GlGetString(GL_SHADING_LANGUAGE_VERSION);
+	if (!ver.has_value()) return false;
 
-	int glsl_major  = ver[0] - '0';
-	int glsl_minor = ver[2] - '0';
+	auto [glsl_major, glsl_minor] = DecodeVersion(*ver);
 
 	bool glsl_150 = (IsOpenGLVersionAtLeast(3, 2) || glsl_major > 1 || (glsl_major == 1 && glsl_minor >= 5)) && _glBindFragDataLocation != nullptr;
 
@@ -1075,7 +1077,7 @@ void OpenGLBackend::DrawMouseCursor()
 	for (const auto &cs : this->cursor_sprites) {
 		/* Sprites are cached by PopulateCursorCache(). */
 		if (this->cursor_cache.Contains(cs.image.sprite)) {
-			OpenGLSprite *spr = this->cursor_cache.Get(cs.image.sprite);
+			const OpenGLSprite *spr = this->cursor_cache.Get(cs.image.sprite).get();
 
 			this->RenderOglSprite(spr, cs.image.pal,
 					this->cursor_pos.x + cs.pos.x + UnScaleByZoom(spr->x_offs, ZOOM_LVL_GUI),
@@ -1087,10 +1089,10 @@ void OpenGLBackend::DrawMouseCursor()
 
 class OpenGLSpriteAllocator : public SpriteAllocator {
 public:
-	LRUCache<SpriteID, OpenGLSprite> &lru;
+	OpenGLSpriteLRUCache &lru;
 	SpriteID sprite;
 
-	OpenGLSpriteAllocator(LRUCache<SpriteID, OpenGLSprite> &lru, SpriteID sprite) : lru(lru), sprite(sprite) {}
+	OpenGLSpriteAllocator(OpenGLSpriteLRUCache &lru, SpriteID sprite) : lru(lru), sprite(sprite) {}
 protected:
 	void *AllocatePtr(size_t) override { NOT_REACHED(); }
 };
@@ -1256,11 +1258,11 @@ void OpenGLBackend::ReleaseAnimBuffer(const Rect &update_rect)
 	}
 }
 
-/* virtual */ Sprite *OpenGLBackend::Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
+/* virtual */ Sprite *OpenGLBackend::Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
 {
 	/* This encoding is only called for mouse cursors. We don't need real sprites but OpenGLSprites to show as cursor. These need to be put in the LRU cache. */
 	OpenGLSpriteAllocator &gl_allocator = static_cast<OpenGLSpriteAllocator&>(allocator);
-	gl_allocator.lru.Insert(gl_allocator.sprite, std::make_unique<OpenGLSprite>(sprite));
+	gl_allocator.lru.Insert(gl_allocator.sprite, std::make_unique<OpenGLSprite>(sprite_type, sprite));
 
 	return nullptr;
 }
@@ -1272,7 +1274,7 @@ void OpenGLBackend::ReleaseAnimBuffer(const Rect &update_rect)
  * @param y Y position of the sprite.
  * @param zoom Zoom level to use.
  */
-void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, int x, int y, ZoomLevel zoom)
+void OpenGLBackend::RenderOglSprite(const OpenGLSprite *gl_sprite, PaletteID pal, int x, int y, ZoomLevel zoom)
 {
 	/* Set textures. */
 	bool rgb = gl_sprite->BindTextures();
@@ -1395,10 +1397,15 @@ void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, int 
  * Create an OpenGL sprite with a palette remap part.
  * @param sprite The sprite to create the OpenGL sprite for
  */
-OpenGLSprite::OpenGLSprite(const SpriteLoader::SpriteCollection &sprite) :
-	dim(sprite[ZOOM_LVL_MIN].width, sprite[ZOOM_LVL_MIN].height), x_offs(sprite[ZOOM_LVL_MIN].x_offs), y_offs(sprite[ZOOM_LVL_MIN].y_offs)
+OpenGLSprite::OpenGLSprite(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite)
 {
-	int levels = sprite[ZOOM_LVL_MIN].type == SpriteType::Font ? 1 : ZOOM_LVL_END;
+	const auto &root_sprite = sprite.Root();
+	this->dim.width = root_sprite.width;
+	this->dim.height = root_sprite.height;
+	this->x_offs = root_sprite.x_offs;
+	this->y_offs = root_sprite.y_offs;
+
+	int levels = sprite_type == SpriteType::Font ? 1 : to_underlying(ZoomLevel::End);
 	assert(levels > 0);
 	(void)_glGetError();
 
@@ -1408,8 +1415,8 @@ OpenGLSprite::OpenGLSprite(const SpriteLoader::SpriteCollection &sprite) :
 
 	for (int t = TEX_RGBA; t < NUM_TEX; t++) {
 		/* Sprite component present? */
-		if (t == TEX_RGBA && sprite[ZOOM_LVL_MIN].colours == SpriteComponent::Palette) continue;
-		if (t == TEX_REMAP && !sprite[ZOOM_LVL_MIN].colours.Test(SpriteComponent::Palette)) continue;
+		if (t == TEX_RGBA && root_sprite.colours == SpriteComponent::Palette) continue;
+		if (t == TEX_REMAP && !root_sprite.colours.Test(SpriteComponent::Palette)) continue;
 
 		/* Allocate texture. */
 		_glGenTextures(1, &this->tex[t]);
@@ -1433,8 +1440,9 @@ OpenGLSprite::OpenGLSprite(const SpriteLoader::SpriteCollection &sprite) :
 	}
 
 	/* Upload texture data. */
-	for (int i = 0; i < (sprite[ZOOM_LVL_MIN].type == SpriteType::Font ? 1 : ZOOM_LVL_END); i++) {
-		this->Update(sprite[i].width, sprite[i].height, i, sprite[i].data);
+	for (ZoomLevel zoom = ZoomLevel::Min; zoom <= (sprite_type == SpriteType::Font ? ZoomLevel::Min : ZoomLevel::Max); ++zoom) {
+		const auto &src_sprite = sprite[zoom];
+		this->Update(src_sprite.width, src_sprite.height, to_underlying(zoom), src_sprite.data);
 	}
 
 	assert(_glGetError() == GL_NO_ERROR);
@@ -1510,7 +1518,7 @@ inline Dimension OpenGLSprite::GetSize(ZoomLevel level) const
  * Bind textures for rendering this sprite.
  * @return True if the sprite has RGBA data.
  */
-bool OpenGLSprite::BindTextures()
+bool OpenGLSprite::BindTextures() const
 {
 	_glActiveTexture(GL_TEXTURE0);
 	_glBindTexture(GL_TEXTURE_2D, this->tex[TEX_RGBA] != 0 ? this->tex[TEX_RGBA] : OpenGLSprite::dummy_tex[TEX_RGBA]);

@@ -241,7 +241,7 @@ static bool _ValidateSignatureFile(const std::string &filename)
 		return false;
 	}
 
-	std::string dirname = FS2OTTD(std::filesystem::path(OTTD2FS(filename)).parent_path());
+	std::string dirname = FS2OTTD(std::filesystem::path(OTTD2FS(filename)).parent_path().native());
 
 	for (auto &signature : signatures["files"]) {
 		const std::string sig_filename = dirname + PATHSEPCHAR + signature["filename"].get<std::string>();

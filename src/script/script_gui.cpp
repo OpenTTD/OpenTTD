@@ -25,6 +25,7 @@
 #include "../strings_func.h"
 #include "../timer/timer.h"
 #include "../timer/timer_window.h"
+#include "../core/string_consumer.hpp"
 
 #include "script_gui.h"
 #include "script_log.hpp"
@@ -70,7 +71,7 @@ struct ScriptListWindow : public Window {
 	ScriptListWindow(WindowDesc &desc, CompanyID slot, bool show_all) : Window(desc),
 		slot(slot), show_all(show_all)
 	{
-		if (slot == OWNER_DEITY) {
+		if (this->slot == OWNER_DEITY) {
 			this->info_list = this->show_all ? Game::GetInfoList() : Game::GetUniqueInfoList();
 		} else {
 			this->info_list = this->show_all ? AI::GetInfoList() : AI::GetUniqueInfoList();
@@ -83,8 +84,8 @@ struct ScriptListWindow : public Window {
 		this->vscroll->SetCount(this->info_list->size() + 1);
 
 		/* Try if we can find the currently selected AI */
-		if (GetConfig(slot)->HasScript()) {
-			ScriptInfo *info = GetConfig(slot)->GetInfo();
+		if (GetConfig(this->slot)->HasScript()) {
+			ScriptInfo *info = GetConfig(this->slot)->GetInfo();
 			int i = 0;
 			for (const auto &item : *this->info_list) {
 				if (item.second == info) {
@@ -111,7 +112,7 @@ struct ScriptListWindow : public Window {
 		this->line_height = GetCharacterHeight(FS_NORMAL) + padding.height;
 
 		resize.width = 1;
-		resize.height = this->line_height;
+		fill.height = resize.height = this->line_height;
 		size.height = 5 * this->line_height;
 	}
 
@@ -167,25 +168,25 @@ struct ScriptListWindow : public Window {
 	void ChangeScript()
 	{
 		if (this->selected == -1) {
-			GetConfig(slot)->Change(std::nullopt);
+			GetConfig(this->slot)->Change(std::nullopt);
 		} else {
 			ScriptInfoList::const_iterator it = this->info_list->cbegin();
 			std::advance(it, this->selected);
-			GetConfig(slot)->Change(it->second->GetName(), it->second->GetVersion());
+			GetConfig(this->slot)->Change(it->second->GetName(), it->second->GetVersion());
 		}
 		if (_game_mode == GM_EDITOR) {
-			if (slot == OWNER_DEITY) {
+			if (this->slot == OWNER_DEITY) {
 				if (Game::GetInstance() != nullptr) Game::ResetInstance();
 				Game::StartNew();
 			} else {
-				Company *c = Company::GetIfValid(slot);
+				Company *c = Company::GetIfValid(this->slot);
 				if (c != nullptr && c->ai_instance != nullptr) {
 					c->ai_instance.reset();
-					AI::StartNew(slot);
+					AI::StartNew(this->slot);
 				}
 			}
 		}
-		InvalidateWindowData(WC_GAME_OPTIONS, slot == OWNER_DEITY ? WN_GAME_OPTIONS_GS : WN_GAME_OPTIONS_AI);
+		InvalidateWindowData(WC_GAME_OPTIONS, this->slot == OWNER_DEITY ? WN_GAME_OPTIONS_GS : WN_GAME_OPTIONS_AI);
 		InvalidateWindowClassesData(WC_SCRIPT_SETTINGS);
 		InvalidateWindowClassesData(WC_SCRIPT_DEBUG, -1);
 		CloseWindowByClass(WC_QUERY_STRING);
@@ -197,7 +198,7 @@ struct ScriptListWindow : public Window {
 		switch (widget) {
 			case WID_SCRL_LIST: { // Select one of the Scripts
 				int sel = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SCRL_LIST) - 1;
-				if (sel < (int)this->info_list->size()) {
+				if (sel < static_cast<int>(this->info_list->size())) {
 					this->selected = sel;
 					this->SetDirty();
 					if (click_count > 1) {
@@ -213,10 +214,6 @@ struct ScriptListWindow : public Window {
 				this->Close();
 				break;
 			}
-
-			case WID_SCRL_CANCEL:
-				this->Close();
-				break;
 		}
 	}
 
@@ -260,10 +257,7 @@ static constexpr NWidgetPart _nested_script_list_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_MAUVE, WID_SCRL_INFO_BG), SetMinimalTextLines(8, WidgetDimensions::unscaled.framerect.Vertical() + WidgetDimensions::unscaled.vsep_normal * 3), SetResize(1, 0),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_SCRL_ACCEPT), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_AI_LIST_ACCEPT, STR_AI_LIST_ACCEPT_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_SCRL_CANCEL), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_AI_LIST_CANCEL, STR_AI_LIST_CANCEL_TOOLTIP),
-		EndContainer(),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_SCRL_ACCEPT), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_AI_LIST_ACCEPT, STR_AI_LIST_ACCEPT_TOOLTIP),
 		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
 	EndContainer(),
 };
@@ -313,7 +307,7 @@ struct ScriptSettingsWindow : public Window {
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_SCRS_SCROLLBAR);
-		this->FinishInitNested(slot);  // Initializes 'this->line_height' as side effect.
+		this->FinishInitNested(this->slot);  // Initializes 'this->line_height' as side effect.
 
 		this->OnInvalidateData();
 	}
@@ -325,12 +319,12 @@ struct ScriptSettingsWindow : public Window {
 	 */
 	void RebuildVisibleSettings()
 	{
-		visible_settings.clear();
+		this->visible_settings.clear();
 
 		for (const auto &item : *this->script_config->GetConfigList()) {
 			bool no_hide = !item.flags.Test(ScriptConfigFlag::Developer);
 			if (no_hide || _settings_client.gui.ai_developer_tools) {
-				visible_settings.push_back(&item);
+				this->visible_settings.push_back(&item);
 			}
 		}
 
@@ -351,7 +345,7 @@ struct ScriptSettingsWindow : public Window {
 		this->line_height = std::max(SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)) + padding.height;
 
 		resize.width = 1;
-		resize.height = this->line_height;
+		fill.height = resize.height = this->line_height;
 		size.height = 5 * this->line_height;
 	}
 
@@ -359,7 +353,7 @@ struct ScriptSettingsWindow : public Window {
 	{
 		if (widget != WID_SCRS_BACKGROUND) return;
 
-		Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
+		Rect ir = r.Shrink(WidgetDimensions::scaled.frametext, RectPadding::zero);
 		bool rtl = _current_text_dir == TD_RTL;
 		Rect br = ir.WithWidth(SETTING_BUTTON_WIDTH, rtl);
 		Rect tr = ir.Indent(SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide, rtl);
@@ -375,11 +369,11 @@ struct ScriptSettingsWindow : public Window {
 			bool editable = this->IsEditableItem(config_item);
 
 			if (config_item.flags.Test(ScriptConfigFlag::Boolean)) {
-				DrawBoolButton(br.left, y + button_y_offset, current_value != 0, editable);
+				DrawBoolButton(br.left, y + button_y_offset, COLOUR_YELLOW, COLOUR_MAUVE, current_value != 0, editable);
 			} else {
 				int i = static_cast<int>(std::distance(std::begin(this->visible_settings), it));
 				if (config_item.complete_labels) {
-					DrawDropDownButton(br.left, y + button_y_offset, COLOUR_YELLOW, this->clicked_row == i && clicked_dropdown, editable);
+					DrawDropDownButton(br.left, y + button_y_offset, COLOUR_YELLOW, this->clicked_row == i && this->clicked_dropdown, editable);
 				} else {
 					DrawArrowButtons(br.left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
 				}
@@ -419,7 +413,7 @@ struct ScriptSettingsWindow : public Window {
 
 				bool bool_item = config_item.flags.Test(ScriptConfigFlag::Boolean);
 
-				Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.matrix, RectPadding::zero);
+				Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.frametext, RectPadding::zero);
 				int x = pt.x - r.left;
 				if (_current_text_dir == TD_RTL) x = r.Width() - 1 - x;
 
@@ -482,10 +476,6 @@ struct ScriptSettingsWindow : public Window {
 				break;
 			}
 
-			case WID_SCRS_ACCEPT:
-				this->Close();
-				break;
-
 			case WID_SCRS_RESET:
 				this->script_config->ResetEditableSettings(_game_mode == GM_MENU || ((this->slot != OWNER_DEITY) && !Company::IsValidID(this->slot)));
 				this->SetDirty();
@@ -495,20 +485,20 @@ struct ScriptSettingsWindow : public Window {
 
 	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (!str.has_value() || str->empty()) return;
-		int32_t value = atoi(str->c_str());
-
-		SetValue(value);
+		if (!str.has_value()) return;
+		auto value = ParseInteger<int32_t>(*str, 10, true);
+		if (!value.has_value()) return;
+		this->SetValue(*value);
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		if (widget != WID_SCRS_SETTING_DROPDOWN) return;
 		assert(this->clicked_dropdown);
-		SetValue(index);
+		this->SetValue(index);
 	}
 
-	void OnDropdownClose(Point, WidgetID widget, int, bool) override
+	void OnDropdownClose(Point, WidgetID widget, int, int, bool) override
 	{
 		if (widget != WID_SCRS_SETTING_DROPDOWN) return;
 		/* We cannot raise the dropdown button just yet. OnClick needs some hint, whether
@@ -576,9 +566,8 @@ static constexpr NWidgetPart _nested_script_settings_widgets[] = {
 		NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, WID_SCRS_SCROLLBAR),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_SCRS_ACCEPT), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_AI_SETTINGS_CLOSE),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_SCRS_RESET), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_AI_SETTINGS_RESET),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_SCRS_RESET), SetStringTip(STR_AI_SETTINGS_RESET),
+		NWidget(WWT_PANEL, COLOUR_MAUVE), SetResize(1, 0), SetFill(1, 0),
 		EndContainer(),
 		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
 	EndContainer(),
@@ -608,7 +597,7 @@ void ShowScriptSettingsWindow(CompanyID slot)
 struct ScriptTextfileWindow : public TextfileWindow {
 	CompanyID slot{}; ///< View the textfile of this CompanyID slot.
 
-	ScriptTextfileWindow(TextfileType file_type, CompanyID slot) : TextfileWindow(file_type), slot(slot)
+	ScriptTextfileWindow(Window *parent, TextfileType file_type, CompanyID slot) : TextfileWindow(parent, file_type), slot(slot)
 	{
 		this->ConstructWindow();
 		this->OnInvalidateData();
@@ -617,7 +606,7 @@ struct ScriptTextfileWindow : public TextfileWindow {
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		if (widget == WID_TF_CAPTION) {
-			return GetString(stringid, (slot == OWNER_DEITY) ? STR_CONTENT_TYPE_GAME_SCRIPT : STR_CONTENT_TYPE_AI, GetConfig(slot)->GetInfo()->GetName());
+			return GetString(stringid, (this->slot == OWNER_DEITY) ? STR_CONTENT_TYPE_GAME_SCRIPT : STR_CONTENT_TYPE_AI, GetConfig(this->slot)->GetInfo()->GetName());
 		}
 
 		return this->Window::GetWidgetString(widget, stringid);
@@ -625,11 +614,11 @@ struct ScriptTextfileWindow : public TextfileWindow {
 
 	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
-		auto textfile = GetConfig(slot)->GetTextfile(file_type, slot);
+		auto textfile = GetConfig(this->slot)->GetTextfile(file_type, this->slot);
 		if (!textfile.has_value()) {
 			this->Close();
 		} else {
-			this->LoadTextfile(textfile.value(), (slot == OWNER_DEITY) ? GAME_DIR : AI_DIR);
+			this->LoadTextfile(textfile.value(), (this->slot == OWNER_DEITY) ? GAME_DIR : AI_DIR);
 		}
 	}
 };
@@ -639,10 +628,10 @@ struct ScriptTextfileWindow : public TextfileWindow {
  * @param file_type The type of textfile to display.
  * @param slot The slot the Script is using.
  */
-void ShowScriptTextfileWindow(TextfileType file_type, CompanyID slot)
+void ShowScriptTextfileWindow(Window *parent, TextfileType file_type, CompanyID slot)
 {
-	CloseWindowById(WC_TEXTFILE, file_type);
-	new ScriptTextfileWindow(file_type, slot);
+	parent->CloseChildWindowById(WC_TEXTFILE, file_type);
+	new ScriptTextfileWindow(parent, file_type, slot);
 }
 
 
@@ -743,13 +732,13 @@ struct ScriptDebugWindow : public Window {
 
 		for (const Company *c : Company::Iterate()) {
 			if (c->is_ai) {
-				ChangeToScript(c->index);
+				this->ChangeToScript(c->index);
 				return;
 			}
 		}
 
 		/* If no AI is available, see if there is a game script. */
-		if (Game::GetInstance() != nullptr) ChangeToScript(OWNER_DEITY);
+		if (Game::GetInstance() != nullptr) this->ChangeToScript(OWNER_DEITY);
 	}
 
 	/**
@@ -800,7 +789,7 @@ struct ScriptDebugWindow : public Window {
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget == WID_SCRD_LOG_PANEL) {
-			resize.height = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
+			fill.height = resize.height = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 			size.height = 14 * resize.height + WidgetDimensions::scaled.framerect.Vertical();
 		}
 	}
@@ -855,9 +844,9 @@ struct ScriptDebugWindow : public Window {
 	void DrawWidgetCompanyButton(const Rect &r, WidgetID widget, int start) const
 	{
 		if (this->IsWidgetDisabled(widget)) return;
-		CompanyID cid = (CompanyID)(widget - start);
+		CompanyID cid = static_cast<CompanyID>(widget - start);
 		Dimension sprite_size = GetSpriteSize(SPR_COMPANY_ICON);
-		DrawCompanyIcon(cid, CenterBounds(r.left, r.right, sprite_size.width), CenterBounds(r.top, r.bottom, sprite_size.height));
+		DrawCompanyIcon(cid, CentreBounds(r.left, r.right, sprite_size.width), CentreBounds(r.top, r.bottom, sprite_size.height));
 	}
 
 	/**
@@ -920,7 +909,7 @@ struct ScriptDebugWindow : public Window {
 
 		ScriptLogTypes::LogData &log = this->GetLogData();
 
-		int scroll_count = (int)log.size();
+		int scroll_count = static_cast<int>(log.size());
 		if (this->vscroll->GetCount() != scroll_count) {
 			this->vscroll->SetCount(scroll_count);
 
@@ -932,10 +921,10 @@ struct ScriptDebugWindow : public Window {
 
 		/* Detect when the user scrolls the window. Enable autoscroll when the bottom-most line becomes visible. */
 		if (this->last_vscroll_pos != this->vscroll->GetPosition()) {
-			this->autoscroll = this->vscroll->GetPosition() + this->vscroll->GetCapacity() >= (int)log.size();
+			this->autoscroll = this->vscroll->GetPosition() + this->vscroll->GetCapacity() >= static_cast<int>(log.size());
 		}
 
-		if (this->autoscroll && this->vscroll->SetPosition((int)log.size())) {
+		if (this->autoscroll && this->vscroll->SetPosition(static_cast<int>(log.size()))) {
 			/* We need a repaint */
 			this->SetWidgetDirty(WID_SCRD_VSCROLLBAR);
 			this->SetWidgetDirty(WID_SCRD_LOG_PANEL);
@@ -1014,12 +1003,12 @@ struct ScriptDebugWindow : public Window {
 
 		/* Check which button is clicked */
 		if (IsInsideMM(widget, WID_SCRD_COMPANY_BUTTON_START, WID_SCRD_COMPANY_BUTTON_END + 1)) {
-			ChangeToScript((CompanyID)(widget - WID_SCRD_COMPANY_BUTTON_START), _ctrl_pressed);
+			this->ChangeToScript(static_cast<CompanyID>(widget - WID_SCRD_COMPANY_BUTTON_START), _ctrl_pressed);
 		}
 
 		switch (widget) {
 			case WID_SCRD_SCRIPT_GAME:
-				ChangeToScript(OWNER_DEITY, _ctrl_pressed);
+				this->ChangeToScript(OWNER_DEITY, _ctrl_pressed);
 				break;
 
 			case WID_SCRD_RELOAD_TOGGLE:
@@ -1122,7 +1111,7 @@ struct ScriptDebugWindow : public Window {
 					}
 
 					/* Highlight row that matched */
-					this->highlight_row = (int)(log.size() - 1);
+					this->highlight_row = static_cast<int>(log.size() - 1);
 				}
 			}
 		}

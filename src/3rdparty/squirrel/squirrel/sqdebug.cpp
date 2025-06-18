@@ -37,7 +37,7 @@ SQRESULT sq_stackinfos(HSQUIRRELVM v, SQInteger level, SQStackInfos *si)
 {
 	SQInteger cssize = v->_callsstacksize;
 	if (cssize > level) {
-		memset(si, 0, sizeof(SQStackInfos));
+		*si = {};
 		SQVM::CallInfo &ci = v->_callsstack[cssize-level-1];
 		switch (type(ci._closure)) {
 		case OT_CLOSURE:{
@@ -101,15 +101,15 @@ void SQVM::Raise_CompareError(const SQObject &o1, const SQObject &o2)
 
 void SQVM::Raise_ParamTypeError(SQInteger nparam,SQInteger typemask,SQInteger type)
 {
-	SQObjectPtr exptypes = SQString::Create(_ss(this), "", -1);
+	SQObjectPtr exptypes = SQString::Create(_ss(this), "");
 	SQInteger found = 0;
 	for(SQInteger i=0; i<16; i++)
 	{
 		SQInteger mask = 0x00000001LL << i;
 		if(typemask & (mask)) {
-			if(found>0) StringCat(exptypes,SQString::Create(_ss(this), "|", -1), exptypes);
+			if(found>0) StringCat(exptypes,SQString::Create(_ss(this), "|"), exptypes);
 			found ++;
-			StringCat(exptypes,SQString::Create(_ss(this), IdType2Name((SQObjectType)mask), -1), exptypes);
+			StringCat(exptypes,SQString::Create(_ss(this), IdType2Name((SQObjectType)mask)), exptypes);
 		}
 	}
 	Raise_Error(fmt::format("parameter {} has an invalid type '{}' ; expected: '{}'", nparam, IdType2Name((SQObjectType)type), _stringval(exptypes)));

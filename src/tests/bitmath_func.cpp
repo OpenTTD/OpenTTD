@@ -13,6 +13,8 @@
 
 #include "../core/bitmath_func.hpp"
 
+#include "../safeguards.h"
+
 TEST_CASE("SetBitIterator tests")
 {
 	auto test_case = [&](auto input, std::initializer_list<uint> expected) {

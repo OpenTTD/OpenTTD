@@ -67,7 +67,7 @@ SINGLE_ARG_FUNC(ceil, 1)
 SINGLE_ARG_FUNC(exp, 100)
 
 #define _DECL_FUNC(name,nparams,tycheck) {#name,math_##name,nparams,tycheck}
-static SQRegFunction mathlib_funcs[] = {
+static const std::initializer_list<SQRegFunction> mathlib_funcs = {
 	_DECL_FUNC(sqrt,2,".n"),
 	_DECL_FUNC(sin,2,".n"),
 	_DECL_FUNC(cos,2,".n"),
@@ -84,11 +84,10 @@ static SQRegFunction mathlib_funcs[] = {
 	_DECL_FUNC(exp,2,".n"),
 #ifdef EXPORT_DEFAULT_SQUIRREL_FUNCTIONS
 	_DECL_FUNC(srand,2,".n"),
-	_DECL_FUNC(rand,1,nullptr),
+	_DECL_FUNC(rand,1,std::nullopt),
 #endif /* EXPORT_DEFAULT_SQUIRREL_FUNCTIONS */
 	_DECL_FUNC(fabs,2,".n"),
 	_DECL_FUNC(abs,2,".n"),
-	{nullptr,nullptr,0,nullptr},
 };
 
 #ifndef M_PI
@@ -97,21 +96,19 @@ static SQRegFunction mathlib_funcs[] = {
 
 SQRESULT sqstd_register_mathlib(HSQUIRRELVM v)
 {
-	SQInteger i=0;
-	while(mathlib_funcs[i].name!=nullptr)	{
-		sq_pushstring(v,mathlib_funcs[i].name,-1);
-		sq_newclosure(v,mathlib_funcs[i].f,0);
-		sq_setparamscheck(v,mathlib_funcs[i].nparamscheck,mathlib_funcs[i].typemask);
-		sq_setnativeclosurename(v,-1,mathlib_funcs[i].name);
+	for(auto &func : mathlib_funcs) {
+		sq_pushstring(v,func.name);
+		sq_newclosure(v,func.f,0);
+		sq_setparamscheck(v,func.nparamscheck,func.typemask);
+		sq_setnativeclosurename(v,-1,func.name);
 		sq_createslot(v,-3);
-		i++;
 	}
 #ifdef EXPORT_DEFAULT_SQUIRREL_FUNCTIONS
-	sq_pushstring(v,"RAND_MAX",-1);
+	sq_pushstring(v,"RAND_MAX");
 	sq_pushinteger(v,RAND_MAX);
 	sq_createslot(v,-3);
 #endif /* EXPORT_DEFAULT_SQUIRREL_FUNCTIONS */
-	sq_pushstring(v,"PI",-1);
+	sq_pushstring(v,"PI");
 	sq_pushfloat(v,(SQFloat)M_PI);
 	sq_createslot(v,-3);
 	return SQ_OK;

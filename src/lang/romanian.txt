@@ -443,7 +443,6 @@ STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Plasează case
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opțiunile jocului
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Setări
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Setările AI
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Setări pentru scriptul jocului
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Setări NewGRF
@@ -451,6 +450,12 @@ STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Opțiuni Sandbo
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opțiuni transparență
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Afișează numele orașelor
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Afișează numele stațiilor
+STR_SETTINGS_MENU_STATION_NAMES_TRAIN                           :Stații de tren
+STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :Stații de camion
+STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Stații de autobuz
+STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :Docuri
+STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :Aeroporturi
+STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :Fantomă
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Afișează numele punctelor de tranzit
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Afișează semnele de pe hartă
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Afișează numele și semnele competitorilor
@@ -948,21 +953,24 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Copiază
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opțiuni
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :General
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Alege setările generale
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :Alege setările generale
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafică
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Alege setările grafice
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :Alege setările grafice
 STR_GAME_OPTIONS_TAB_SOUND                                      :Sunet
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Alegeți setările de sunet și muzică
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Alegeți setările de sunet și muzică
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Social
-STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Alegeți setările de integrare socială
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Alegeți setările de integrare socială
+STR_GAME_OPTIONS_TAB_ADVANCED                                   :Avansat
+STR_GAME_OPTIONS_TAB_ADVANCED_TOOLTIP                           :Modificați setările avansate
 
 STR_GAME_OPTIONS_VOLUME                                         :Volum
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Efecte sonore
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Muzică
 
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unitate monetară
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Alege unitatea monetară
+
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Unitate monetară
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Alege unitatea monetară
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -1011,9 +1019,10 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia indonezia
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit Malaysian
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lats leton
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escudo portughez
+STR_GAME_OPTIONS_CURRENCY_UAH                                   :Hryvnia ucraineană
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Salvare automată
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Alege intervalul de timp dintre salvările automate
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Salvare automată
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Alege intervalul de timp dintre salvările automate
 
 # Autosave dropdown
 ###length 5
@@ -1023,77 +1032,77 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :La fiecare 30 d
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :La fiecare 60 de minute
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :La fiecare 120 de minute
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Limba
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Alege limba în care dorești afișată interfața
+STR_GAME_OPTIONS_LANGUAGE                                       :Limba
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Alege limba în care dorești afișată interfața
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% finalizat)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Ecran întreg
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Bifează această căsuță pentru a juca pe tot ecranul
+STR_GAME_OPTIONS_FULLSCREEN                                     :Ecran întreg
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Bifează această căsuță pentru a juca pe tot ecranul
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Rezoluția ecranului
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Alege rezoluția dorită pentru joc
+STR_GAME_OPTIONS_RESOLUTION                                     :Rezoluția ecranului
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Alege rezoluția dorită pentru joc
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :(alta/nespecificată)
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Accelerare hardware
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Bifați căsuța ca OpenTTD să încerce utilizarea accelerației hardware. Modificarea setării va avea efect după repornirea jocului
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Accelerare hardware
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Bifați căsuța ca OpenTTD să încerce utilizarea accelerației hardware. Modificarea setării va avea efect după repornirea jocului
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Setarea va avea efect doar după repornirea jocului
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Bifați această căsuță pentru sincronizarea verticală a imaginii. Modificarea setării va fi aplicată doar după repornirea jocului și funcționează doar cu accelerarea hardware activată
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Bifați această căsuță pentru sincronizarea verticală a imaginii. Modificarea setării va fi aplicată doar după repornirea jocului și funcționează doar cu accelerarea hardware activată
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Driver curent: {STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Driver curent: {STRING}
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Dimensiune interfață
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Trageți glisorul pentru a seta dimensiunea interfeței. Ctrl+Tras pentru ajustare continuă
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Detectează automat dimensiunea
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Bifați această căsuță pentru a detecta automat dimensiunea interfeței
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Scalează marginile
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Bifați această casetă pentru a scala marginile în funcție de dimensiunea interfeței
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Dimensiune interfață
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Trageți glisorul pentru a seta dimensiunea interfeței. Ctrl+Tras pentru ajustare continuă
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Detectează automat dimensiunea
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Bifați această căsuță pentru a detecta automat dimensiunea interfeței
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Folosiți fontul tradițional al sprite-ului
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Bifați această casetă dacă preferați să utilizați fontul sprite tradițional cu dimensiune fixă.
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Fonturi anti-alias
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Bifați această casetă pentru a aplica anti-alias fonturilor redimensionabile.
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Scalează marginile
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Bifați această casetă pentru a scala marginile în funcție de dimensiunea interfeței
+
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Folosiți fontul tradițional al sprite-ului
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Bifați această casetă dacă preferați să utilizați fontul sprite tradițional cu dimensiune fixă.
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Fonturi anti-alias
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Bifați această casetă pentru a aplica anti-alias fonturilor redimensionabile.
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Sondaj automat
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Participă în sondaje automate
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Când este activat, OpenTTD va transmite un sondaj la ieșirea din joc
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Despre sondaj și intimitate
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Asta va deschide un navigator cu mai multe informații despre sondajul automat
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Previzualizare rezultat sondaj
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Arată rezultatul sondajului pentru jocul curent
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Sondaj automat
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Participă în sondaje automate
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :Când este activat, OpenTTD va transmite un sondaj la ieșirea din joc
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :Despre sondaj și intimitate
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Asta va deschide un navigator cu mai multe informații despre sondajul automat
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Previzualizare rezultat sondaj
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Arată rezultatul sondajului pentru jocul curent
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafică
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Afișează rata de reîmprospătare
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Alegeți rata de reîmprospătare dorită
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Afișează rata de reîmprospătare
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Alegeți rata de reîmprospătare dorită
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Ratele de împrospătare de peste 60Hz ar putea afecta performanța.
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set grafic de bază
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selectați setul de grafică de bază pe care să îl utilizați (nu poate fi schimbat în joc, doar din meniul principal)
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informații adiționale despre setul grafic de bază
+STR_GAME_OPTIONS_BASE_GRF                                       :Set grafic de bază
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Selectați setul de grafică de bază pe care să îl utilizați (nu poate fi schimbat în joc, doar din meniul principal)
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Informații adiționale despre setul grafic de bază
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Set sunete de bază
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selectați sunetele de bază setate pentru a fi utilizate (nu pot fi modificate în joc, doar din meniul principal)
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informații adiționale despre setul de sunete de bază
+STR_GAME_OPTIONS_BASE_SFX                                       :Set sunete de bază
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Selectați sunetele de bază setate pentru a fi utilizate (nu pot fi modificate în joc, doar din meniul principal)
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Informații adiționale despre setul de sunete de bază
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Setul de muzică de bază
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selectați setul de muzică de bază
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informații adiționale despre setul de muzică de bază
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Setul de muzică de bază
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Selectați setul de muzică de bază
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Informații adiționale despre setul de muzică de bază
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Obțineți conținut
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Verificați daca există conținut de actualizat
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(fără pluginuri care să fie integrate cu platformele sociale instalate)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Platformă:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Starea pluginului:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Platformă:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :Starea pluginului:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Rulează
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Inițializarea eșuată
@@ -1206,12 +1215,11 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permisivă (far
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nu este disponibil nici un modul de Inteligență Artificială...{}Puteți descărca diferite module de Inteligență Artificială prin sistemul de 'Resurse Online'
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Setări
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtru:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Extinde toate
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Colapsează toate
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Resetează toate valorile
+# Settings tree in the Game Options window
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Filtru:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Extinde toate
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Colapsează toate
+STR_CONFIG_SETTING_RESET_ALL                                    :Resetează toate valorile
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(descrierea nu este disponibilă)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valoare implicită: {ORANGE}{STRING}
@@ -1224,9 +1232,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Setări compani
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Atenție!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Această acțiune va reface toate setările jocului la valorile implicite.{}Sigur vrei să continui?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categorie:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tip:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Limitează lista de mai jos doar la setările modificate
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Categorie:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Tip:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Limitează lista de mai jos doar la setările modificate
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Setări de bază (afișează numai setări importante)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Setări avansate (afișează majoritatea setărilor)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Setări expert (afișează toate setările)
@@ -1239,13 +1247,13 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Setări client 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Setări joc (stocate în salvări; afectează doar jocurile noi)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Setări joc (stocate în salvări; afectează doar jocul curent)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Setări companie (stocate în salvări; afectează doar jocurile noi)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Setări compenia (stocate în salvări; afectează doar compania curentă)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Setări companie (stocate în salvări; afectează doar compania curentă)
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Nespecificat -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Arată toate rezultatele de căutare setând{}{SILVER}Categoria {BLACK}în {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Arată toate rezultatele de căutare setând{}{SILVER}Tipul {BLACK}în {WHITE}Toate tipurile de setări
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Arată toate rezultatele de căutare setând{}{SILVER}Categoria {BLACK}în {WHITE}{STRING} {BLACK}și {SILVER}Tipul {BLACK}ca {WHITE}Toate tipurile de setări
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Arată toate rezultatele de căutare setând{}{SILVER}Categoria {BLACK}în {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Arată toate rezultatele de căutare setând{}{SILVER}Tipul {BLACK}în {WHITE}Toate tipurile de setări
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Arată toate rezultatele de căutare setând{}{SILVER}Categoria {BLACK}în {WHITE}{STRING} {BLACK}și {SILVER}Tipul {BLACK}ca {WHITE}Toate tipurile de setări
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Inactiv
@@ -1917,7 +1925,7 @@ STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Niciodată
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Tipul economiei: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Economia lină face mai des modificări de producție, în pași mai mici. Economia înghețată previne modificările de producție și închiderile industriilor. Setarea ar putea să nu aibă efect dacă tipurile de industrii sunt furnizate de un NewGRF
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Economia lină face mai des modificări de producție, în pași mai mici. Economia înghețată previne modificările de producție și închiderile industriilor. Setarea ar putea să nu aibă efect dacă tipurile de industrii sunt furnizate de un NewGRF.{}{}Producția unei industrii pe lună tot poate apărea că variază chiar de economia este Înghețată, pentru că producția este declanșată la intervale fixe care nu corespund exact cu lunile.
 
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
@@ -1972,7 +1980,12 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :nepermis
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permis
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permis, aspect particularizat al orașului
 
+STR_CONFIG_SETTING_HOUSE_PLACER                                 :Plasarea individuala a caselor de oraș: {STRING}
+STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :Activarea acestei setări permite jucătorilor să plaseze manual casele din oraș
 ###length 3
+STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :Interzis
+STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :Permis
+STR_CONFIG_SETTING_HOUSE_PLACER_FULLY_CONSTRUCTED               :Permis, complet construit
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Modalitatea de generare a cargoului dintr-un oraș: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Câtă marfa este produsă de casele dintr-un oraș, relativ la populația totală a orașului.{}Creștere pătratică: Un oraș de 2 ori mai mare generează de 4 ori mai mulți pasageri.{}Creștere liniară: Un oraș de 2 ori mai mare generează de 4 ori mai mulți pasageri.
@@ -2172,7 +2185,6 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... GPU 
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Driverul GPU a dus la prăbușirea jocului. Accelerarea hardware a fost dezactivată
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Joc nou
 STR_INTRO_LOAD_GAME                                             :{BLACK}Încarcă joc
@@ -2184,11 +2196,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multipla
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opțiuni
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela cu scoruri maxime
 STR_INTRO_HELP                                                  :{BLACK}Ajutor și manuale
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Setări
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Setări NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Resurse online
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Setări AI
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Setări pentru scriptul jocului
 STR_INTRO_QUIT                                                  :{BLACK}Ieșire
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Începere joc nou. Ctrl+Click pentru a sări peste fereastra de configurație a harții
@@ -2206,11 +2214,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Alege pe
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Afișează opțiunile jocului
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Afișează tabela cu scoruri maxime
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Obțineți acces la documentație și resurse online
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Deschide setările
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Afișează setările NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Verifică dacă există resurse noi sau actualizate pentru descărcare
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Afișează setările AI
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Afișează setările scriptului de joc
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Ieși din 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}Setul grafic actual are lipsă {NUM} {P sprite spriteuri "de spriteuri"}. Verificați actualizările pentru setul de bază.
@@ -2829,6 +2833,15 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Selectați o zo
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Selectați un tip de casă de construit. Ctrl+Click pentru a adăuga sau elimina elementele salvate
 
 STR_HOUSE_PICKER_CAPTION                                        :Selectia caselor
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Nume: {ORANGE}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Populație: {ORANGE}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Ani: {ORANGE}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Ani: {ORANGE}Oricare
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Ani: {ORANGE}Din {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Ani: {ORANGE}Până {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Mărime: {ORANGE}{NUM}x{NUM} pătrățele
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Marfă acceptată: {ORANGE}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Marfă produsă: {ORANGE}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Margine
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Periferie
@@ -2836,6 +2849,10 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Suburbiile peri
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Suburbiile urbane
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centrul orașului
 
+STR_HOUSE_PICKER_PROTECT_TITLE                                  :Preveniți upgrade-urile
+STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Alege dacă această casă va fi protejată împotriva înlocuirii pe măsură ce orașul crește
+STR_HOUSE_PICKER_PROTECT_OFF                                    :Oprit
+STR_HOUSE_PICKER_PROTECT_ON                                     :Pornit
 
 STR_STATION_CLASS_DFLT                                          :Implicită
 STR_STATION_CLASS_DFLT_STATION                                  :Stație implicită
@@ -3039,6 +3056,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Alege m�
 STR_FOUND_TOWN_CITY                                             :{BLACK}Metropolă
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Metropolele cresc mai repede decât orașele{}În funcție de setări, sunt mai mari când sunt fondate
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Modelul drumului în oraș:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Alege modelul de drum folosit pentru acest oraș
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Original
@@ -3110,6 +3128,8 @@ STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Tip de t
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Limită viteză pe calea ferată: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Viteza limită a drumului: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Limită de viteză tramvai: {LTBLUE}{VELOCITY}
+STR_LAND_AREA_INFORMATION_TOWN_CAN_UPGRADE                      :{BLACK}Orașul poate face upgrade: {LTBLUE}Da
+STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE                   :{BLACK}Orașul poate face upgrade: {LTBLUE}Nu
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Stânci
@@ -3118,6 +3138,9 @@ STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Teren viran
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Verdeață
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Teren agricol
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Deșert
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS                           :Pietre acoperite de zăpadă
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND                      :Teren accidentat acoperit de zăpadă
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS                           :Iarbă acoperită de zăpadă
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Cale ferată cale ferată
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Cale ferată cale ferată cu semafoare
@@ -3272,6 +3295,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Salveaz�
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Încarcă scenariu
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Încarcă harta înălțimilor
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Salvează harta înălțimilor
+STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Încărcați datele orașului
 STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Click aici pentru a ajunge la directorul predefinit pentru salvări
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} liberi
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lista de discuri, directoare și fișiere cu jocuri salvate
@@ -3283,6 +3307,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Salveaz�
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Încarcă
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Încarcă salvarea selectată
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Încarcă harta selectată
+STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Încărcați datele orașului selectat
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalii joc
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nicio informație disponibilă
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3416,6 +3441,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Initiali
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Se rulează script-ul
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Pregătesc jocul
 
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}JSON formatat incorect
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} coordonate formatate incorect, trebuie să fie de la 0 la 1 ca proporție din dimensiunea totală a hărții de înălțime
 
 
 # NewGRF settings
@@ -3476,15 +3503,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Salveaz�
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Lista presetărilor disponibile; alegeți una pentru salvare cu numele de mai jos
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Adaugă denumire presetare
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Numele selectat pentru salvarea presetării
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Anulează
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Nu schimba setarea implicită
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Salvează
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Salvează setarea pe numele selectat
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Schimbați parametrii grafici de bază
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Schimbă parametrii NewGRF
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Închide
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Resetează
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Setează toții parametrii la valorile implicite
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametru {NUM}
@@ -3973,6 +3997,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producț
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Producție în ultimul minut:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportat)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrează imaginea pe locația industriei. Ctrl+Click pentru a deshide o fereastra cu locația industriei
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}Grafic de producție
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Arată graficul de producție istoric al industriei
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivelul producției: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Industria a anunțat închiderea iminentă!
 
@@ -3981,6 +4007,10 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produce:
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Necesită:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX                    :YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} așteptând{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_NOSUFFIX                         :{YELLOW}{0:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX                  :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} aștepând
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Schimba productia (multiplu de 8, până la 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Modifică nivelul producției (procent, până la 800%)
@@ -4705,7 +4735,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Orar - c
 STR_TIMETABLE_NO_TRAVEL                                         :NU este calatorie
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Călătorie (automat; programată după următoarea comandă manuală)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Calatorie (fara orar)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Călătoriți (neplanificat) cu maxim {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Călătorii pentru {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Mergi către {STRING} cu maxim {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Călătorie (pentru {STRING}, neplanificată)
@@ -4731,12 +4760,14 @@ STR_TIMETABLE_START_SECONDS_QUERY                               :Secunde până 
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modifică timpul
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modificați timpul pe care ar trebui să o dureze comanda evidențiată. Ctrl+Click pentru a seta ora pentru toate comenzile
+STR_TIMETABLE_CHANGE_TIME_QUERY                                 :Schimbă timpul
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Curata timp
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Ștergeți perioada de timp pentru comanda evidențiată. Ctrl+Click pentru a șterge ora pentru toate comenzile
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Schimbă limita de viteză
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Modificați viteza maximă de deplasare a comenzii evidențiate. Ctrl+Click pentru a seta viteza pentru toate comenzile
+STR_TIMETABLE_CHANGE_SPEED_QUERY                                :Schimbă limita de viteză
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}șterge limita de viteză
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Ștergeți viteza maximă de deplasare a comenzii evidențiate. Ctrl+Click pentru a șterge viteza pentru toate comenzile
@@ -4829,8 +4860,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Acceptă
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Alege scriptul marcat
-STR_AI_LIST_CANCEL                                              :{BLACK}Anulează
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nu schimba scriptul
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Capturează ecranul
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Captură de ecran obișnuită
@@ -4843,7 +4872,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Captură
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}IA
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script de joc
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Închide
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetează
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
@@ -4950,6 +4978,7 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... a fo
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... a fost atinsă limita numarului de zone pe care le poti curăța
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... limita de plantare a copacilor a fost atinsă
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Numele trebuie să fie unic
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{STRING} în cale
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Nepermis când jocul este în pauză
 
 # Local authority errors

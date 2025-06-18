@@ -16,6 +16,7 @@
 #include "../signal_type.h"
 #include "../tile_type.h"
 #include "../track_type.h"
+#include "../core/format.hpp"
 
 /** Helper template class that provides C array length and item type */
 template <typename T> struct ArrayT;
@@ -64,7 +65,7 @@ inline typename ArrayT<T>::Item ItemAtT(E idx, const T &t, typename ArrayT<T>::I
  * or t_unk when index is out of bounds.
  */
 template <typename E, typename T>
-inline std::string ComposeNameT(E value, T &t, const char *t_unk, E val_inv, const char *name_inv)
+inline std::string ComposeNameT(E value, T &t, std::string_view t_unk, E val_inv, std::string_view name_inv)
 {
 	std::string out;
 	if (value == val_inv) {
@@ -156,23 +157,28 @@ struct DumpTarget {
 
 	void WriteIndent();
 
-	void WriteValue(const std::string &name, int value);
-	void WriteValue(const std::string &name, const std::string &value_str);
-	void WriteTile(const std::string &name, TileIndex t);
+	/** Write 'name = value' with indent and new-line. */
+	void WriteValue(std::string_view name, const auto &value)
+	{
+		WriteIndent();
+		format_append(m_out, "{} = {}\n", name, value);
+	}
+
+	void WriteTile(std::string_view name, TileIndex t);
 
 	/** Dump given enum value (as a number and as named value) */
-	template <typename E> void WriteEnumT(const std::string &name, E e)
+	template <typename E> void WriteEnumT(std::string_view name, E e)
 	{
 		WriteValue(name, ValueStr(e));
 	}
 
-	void BeginStruct(size_t type_id, const std::string &name, const void *ptr);
+	void BeginStruct(size_t type_id, std::string_view name, const void *ptr);
 	void EndStruct();
 
 	/** Dump nested object (or only its name if this instance is already known). */
-	template <typename S> void WriteStructT(const std::string &name, const S *s)
+	template <typename S> void WriteStructT(std::string_view name, const S *s)
 	{
-		static size_t type_id = ++LastTypeId();
+		static const size_t type_id = ++LastTypeId();
 
 		if (s == nullptr) {
 			/* No need to dump nullptr struct. */
@@ -193,9 +199,9 @@ struct DumpTarget {
 	}
 
 	/** Dump nested object (or only its name if this instance is already known). */
-	template <typename S> void WriteStructT(const std::string &name, const std::deque<S> *s)
+	template <typename S> void WriteStructT(std::string_view name, const std::deque<S> *s)
 	{
-		static size_t type_id = ++LastTypeId();
+		static const size_t type_id = ++LastTypeId();
 
 		if (s == nullptr) {
 			/* No need to dump nullptr struct. */
@@ -211,7 +217,7 @@ struct DumpTarget {
 			/* Still unknown, dump it */
 			BeginStruct(type_id, name, s);
 			size_t num_items = s->size();
-			this->WriteValue("num_items", std::to_string(num_items));
+			this->WriteValue("num_items", num_items);
 			for (size_t i = 0; i < num_items; i++) {
 				const auto &item = (*s)[i];
 				this->WriteStructT(fmt::format("item[{}]", i), &item);

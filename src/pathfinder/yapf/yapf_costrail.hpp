@@ -517,8 +517,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 					end_segment_reason.Set(EndSegmentReason::SafeTile);
 				} else if (HasSignalOnTrackdir(next.tile, ReverseTrackdir(next.td)) && GetSignalType(next.tile, TrackdirToTrack(next.td)) == SIGTYPE_PBS_ONEWAY) {
 					/* Possible safe tile, but not so good as it's the back of a signal... */
-					end_segment_reason.Set(EndSegmentReason::SafeTile);
-					end_segment_reason.Set(EndSegmentReason::DeadEnd);
+					end_segment_reason.Set({EndSegmentReason::SafeTile, EndSegmentReason::DeadEnd});
 					extra_cost += Yapf().PfGetSettings().rail_lastred_exit_penalty;
 				}
 			}

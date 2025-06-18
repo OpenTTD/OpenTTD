@@ -227,7 +227,7 @@ void InitializeWindowViewport(Window *w, int x, int y,
 	vp->width = width;
 	vp->height = height;
 
-	vp->zoom = static_cast<ZoomLevel>(Clamp(zoom, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max));
+	vp->zoom = Clamp(zoom, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
 
 	vp->virtual_width = ScaleByZoom(width, zoom);
 	vp->virtual_height = ScaleByZoom(height, zoom);
@@ -1352,7 +1352,7 @@ static Rect ExpandRectWithViewportSignMargins(Rect r, ZoomLevel zoom)
 static void ViewportAddTownStrings(DrawPixelInfo *dpi, const std::vector<const Town *> &towns, bool small)
 {
 	ViewportStringFlags flags{};
-	if (small) flags.Set(ViewportStringFlag::Small).Set(ViewportStringFlag::Shadow);
+	if (small) flags.Set({ViewportStringFlag::Small, ViewportStringFlag::Shadow});
 
 	StringID stringid = !small && _settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_POP : STR_TOWN_NAME;
 	for (const Town *t : towns) {
@@ -1435,7 +1435,7 @@ static void ViewportAddKdtreeSigns(DrawPixelInfo *dpi)
 
 				/* If no facilities are present the station is a ghost station. */
 				StationFacilities facilities = st->facilities;
-				if (facilities == StationFacilities{}) facilities = STATION_FACILITY_GHOST;
+				if (facilities.None()) facilities = STATION_FACILITY_GHOST;
 
 				if (!facilities.Any(_facility_display_opt)) break;
 
@@ -1481,7 +1481,7 @@ static void ViewportAddKdtreeSigns(DrawPixelInfo *dpi)
 	});
 
 	/* Small versions of signs are used zoom level 4X and higher. */
-	bool small = dpi->zoom >= ZOOM_LVL_OUT_4X;
+	bool small = dpi->zoom >= ZoomLevel::Out4x;
 
 	/* Layering order (bottom to top): Town names, signs, stations */
 	ViewportAddTownStrings(dpi, towns, small);
@@ -1525,17 +1525,17 @@ void ViewportSign::UpdatePosition(int center, int top, std::string_view str, std
  */
 void ViewportSign::MarkDirty(ZoomLevel maxzoom) const
 {
-	Rect zoomlevels[ZOOM_LVL_END];
+	Rect zoomlevels[to_underlying(ZoomLevel::End)];
 
 	/* We don't know which size will be drawn, so mark the largest area dirty. */
 	const uint half_width = std::max(this->width_normal, this->width_small) / 2 + 1;
 	const uint height = WidgetDimensions::scaled.fullbevel.top + std::max(GetCharacterHeight(FS_NORMAL), GetCharacterHeight(FS_SMALL)) + WidgetDimensions::scaled.fullbevel.bottom + 1;
 
-	for (ZoomLevel zoom = ZOOM_LVL_BEGIN; zoom != ZOOM_LVL_END; zoom++) {
-		zoomlevels[zoom].left   = this->center - ScaleByZoom(half_width, zoom);
-		zoomlevels[zoom].top    = this->top    - ScaleByZoom(1, zoom);
-		zoomlevels[zoom].right  = this->center + ScaleByZoom(half_width, zoom);
-		zoomlevels[zoom].bottom = this->top    + ScaleByZoom(height, zoom);
+	for (ZoomLevel zoom = ZoomLevel::Begin; zoom != ZoomLevel::End; zoom++) {
+		zoomlevels[to_underlying(zoom)].left = this->center - ScaleByZoom(half_width, zoom);
+		zoomlevels[to_underlying(zoom)].top = this->top - ScaleByZoom(1, zoom);
+		zoomlevels[to_underlying(zoom)].right = this->center + ScaleByZoom(half_width, zoom);
+		zoomlevels[to_underlying(zoom)].bottom = this->top + ScaleByZoom(height, zoom);
 	}
 
 	for (const Window *w : Window::Iterate()) {
@@ -1544,7 +1544,7 @@ void ViewportSign::MarkDirty(ZoomLevel maxzoom) const
 		Viewport &vp = *w->viewport;
 		if (vp.zoom <= maxzoom) {
 			assert(vp.width != 0);
-			Rect &zl = zoomlevels[vp.zoom];
+			Rect &zl = zoomlevels[to_underlying(vp.zoom)];
 			MarkViewportDirty(vp, zl.left, zl.top, zl.right, zl.bottom);
 		}
 	}
@@ -1820,7 +1820,7 @@ void ViewportDoDraw(const Viewport &vp, int left, int top, int right, int bottom
 
 	DrawPixelInfo dp = _vd.dpi;
 	ZoomLevel zoom = _vd.dpi.zoom;
-	dp.zoom = ZOOM_LVL_MIN;
+	dp.zoom = ZoomLevel::Min;
 	dp.width = UnScaleByZoom(dp.width, zoom);
 	dp.height = UnScaleByZoom(dp.height, zoom);
 	AutoRestoreBackup cur_dpi(_cur_dpi, &dp);
@@ -2026,8 +2026,8 @@ void UpdateViewportPosition(Window *w, uint32_t delta_ms)
 static bool MarkViewportDirty(const Viewport &vp, int left, int top, int right, int bottom)
 {
 	/* Rounding wrt. zoom-out level */
-	right  += (1 << vp.zoom) - 1;
-	bottom += (1 << vp.zoom) - 1;
+	right += (1 << to_underlying(vp.zoom)) - 1;
+	bottom += (1 << to_underlying(vp.zoom)) - 1;
 
 	right -= vp.virtual_left;
 	if (right <= 0) return false;
@@ -2055,10 +2055,10 @@ static bool MarkViewportDirty(const Viewport &vp, int left, int top, int right, 
 
 /**
  * Mark all viewports that display an area as dirty (in need of repaint).
- * @param left   Left   edge of area to repaint. (viewport coordinates, that is wrt. #ZOOM_LVL_MIN)
- * @param top    Top    edge of area to repaint. (viewport coordinates, that is wrt. #ZOOM_LVL_MIN)
- * @param right  Right  edge of area to repaint. (viewport coordinates, that is wrt. #ZOOM_LVL_MIN)
- * @param bottom Bottom edge of area to repaint. (viewport coordinates, that is wrt. #ZOOM_LVL_MIN)
+ * @param left   Left   edge of area to repaint. (viewport coordinates, that is wrt. #ZoomLevel::Min)
+ * @param top    Top    edge of area to repaint. (viewport coordinates, that is wrt. #ZoomLevel::Min)
+ * @param right  Right  edge of area to repaint. (viewport coordinates, that is wrt. #ZoomLevel::Min)
+ * @param bottom Bottom edge of area to repaint. (viewport coordinates, that is wrt. #ZoomLevel::Min)
  * @return true if at least one viewport has a dirty block
  * @ingroup dirty
  */
@@ -2081,7 +2081,7 @@ void ConstrainAllViewportsZoom()
 	for (Window *w : Window::Iterate()) {
 		if (w->viewport == nullptr) continue;
 
-		ZoomLevel zoom = static_cast<ZoomLevel>(Clamp(w->viewport->zoom, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max));
+		ZoomLevel zoom = Clamp(w->viewport->zoom, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
 		if (zoom != w->viewport->zoom) {
 			while (w->viewport->zoom < zoom) DoZoomInOutWindow(ZOOM_OUT, w);
 			while (w->viewport->zoom > zoom) DoZoomInOutWindow(ZOOM_IN, w);
@@ -2240,7 +2240,7 @@ void SetSelectionRed(bool b)
  */
 static bool CheckClickOnViewportSign(const Viewport &vp, int x, int y, const ViewportSign *sign)
 {
-	bool small = (vp.zoom >= ZOOM_LVL_OUT_4X);
+	bool small = (vp.zoom >= ZoomLevel::Out4x);
 	int sign_half_width = ScaleByZoom((small ? sign->width_small : sign->width_normal) / 2, vp.zoom);
 	int sign_height = ScaleByZoom(WidgetDimensions::scaled.fullbevel.top + GetCharacterHeight(small ? FS_SMALL : FS_NORMAL) + WidgetDimensions::scaled.fullbevel.bottom, vp.zoom);
 
@@ -2280,12 +2280,18 @@ static bool CheckClickOnViewportSign(const Viewport &vp, int x, int y)
 	/* See ViewportAddKdtreeSigns() for details on the search logic */
 	_viewport_sign_kdtree.FindContained(search_rect.left, search_rect.top, search_rect.right, search_rect.bottom, [&](const ViewportSignKdtreeItem & item) {
 		switch (item.type) {
-			case ViewportSignKdtreeItem::VKI_STATION:
+			case ViewportSignKdtreeItem::VKI_STATION: {
 				if (!show_stations) break;
 				st = BaseStation::Get(std::get<StationID>(item.id));
 				if (!show_competitors && _local_company != st->owner && st->owner != OWNER_NONE) break;
+
+				StationFacilities facilities = st->facilities;
+				if (facilities.None()) facilities = STATION_FACILITY_GHOST;
+				if (!facilities.Any(_facility_display_opt)) break;
+
 				if (CheckClickOnViewportSign(vp, x, y, &st->sign)) last_st = st;
 				break;
+			}
 
 			case ViewportSignKdtreeItem::VKI_WAYPOINT:
 				if (!show_waypoints) break;
@@ -3559,7 +3565,7 @@ struct ViewportSSCSS {
 };
 
 /** List of sorters ordered from best to worst. */
-static ViewportSSCSS _vp_sprite_sorters[] = {
+static const ViewportSSCSS _vp_sprite_sorters[] = {
 #ifdef WITH_SSE
 	{ &ViewportSortParentSpritesSSE41Checker, &ViewportSortParentSpritesSSE41 },
 #endif

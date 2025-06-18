@@ -10,6 +10,7 @@
 #ifndef NEWGRF_DEBUG_H
 #define NEWGRF_DEBUG_H
 
+#include "core/flatset_type.hpp"
 #include "newgrf.h"
 #include "tile_type.h"
 #include "vehicle_type.h"
@@ -25,7 +26,7 @@ enum NewGrfDebugSpritePickerMode : uint8_t {
 struct NewGrfDebugSpritePicker {
 	NewGrfDebugSpritePickerMode mode;   ///< Current state
 	void *clicked_pixel;                ///< Clicked pixel (pointer to blitter buffer)
-	std::vector<SpriteID> sprites;       ///< Sprites found
+	FlatSet<SpriteID> sprites; ///< Sprites found
 };
 
 extern NewGrfDebugSpritePicker _newgrf_debug_sprite_picker;

@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file string.cpp Handling of C-type strings (char*). */
+/** @file string.cpp Handling of strings (std::string/std::string_view). */
 
 #include "stdafx.h"
 #include "debug.h"
@@ -14,12 +14,9 @@
 #include "string_func.h"
 #include "string_base.h"
 #include "core/utf8.hpp"
+#include "core/string_inplace.hpp"
 
 #include "table/control_codes.h"
-
-#ifdef _MSC_VER
-#	define strncasecmp strnicmp
-#endif
 
 #ifdef _WIN32
 #	include "os/windows/win32.h"
@@ -81,7 +78,7 @@ std::string FormatArrayAsHex(std::span<const uint8_t> data)
 	str.reserve(data.size() * 2 + 1);
 
 	for (auto b : data) {
-		fmt::format_to(std::back_inserter(str), "{:02X}", b);
+		format_append(str, "{:02X}", b);
 	}
 
 	return str;
@@ -108,76 +105,40 @@ static bool IsSccEncodedCode(char32_t c)
 }
 
 /**
- * Copies the valid (UTF-8) characters from \c str up to \c last to the \c dst.
+ * Copies the valid (UTF-8) characters from \c consumer to the \c builder.
  * Depending on the \c settings invalid characters can be replaced with a
  * question mark, as well as determining what characters are deemed invalid.
  *
- * It is allowed for \c dst to be the same as \c src, in which case the string
- * is make valid in place.
- * @param dst The destination to write to.
- * @param str The string to validate.
- * @param last The last valid character of str.
+ * @param builder The destination to write to.
+ * @param consumer The string to validate.
  * @param settings The settings for the string validation.
  */
-template <class T>
-static void StrMakeValid(T &dst, const char *str, const char *last, StringValidationSettings settings)
+template <class Builder>
+static void StrMakeValid(Builder &builder, StringConsumer &consumer, StringValidationSettings settings)
 {
 	/* Assume the ABSOLUTE WORST to be in str as it comes from the outside. */
-
-	while (str <= last && *str != '\0') {
-		size_t len = Utf8EncodedCharLen(*str);
-		char32_t c;
-		/* If the first byte does not look like the first byte of an encoded
-		 * character, i.e. encoded length is 0, then this byte is definitely bad
-		 * and it should be skipped.
-		 * When the first byte looks like the first byte of an encoded character,
-		 * then the remaining bytes in the string are checked whether the whole
-		 * encoded character can be there. If that is not the case, this byte is
-		 * skipped.
-		 * Finally we attempt to decode the encoded character, which does certain
-		 * extra validations to see whether the correct number of bytes were used
-		 * to encode the character. If that is not the case, the byte is probably
-		 * invalid and it is skipped. We could emit a question mark, but then the
-		 * logic below cannot just copy bytes, it would need to re-encode the
-		 * decoded characters as the length in bytes may have changed.
-		 *
-		 * The goals here is to get as much valid Utf8 encoded characters from the
-		 * source string to the destination string.
-		 *
-		 * Note: a multi-byte encoded termination ('\0') will trigger the encoded
-		 * char length and the decoded length to differ, so it will be ignored as
-		 * invalid character data. If it were to reach the termination, then we
-		 * would also reach the "last" byte of the string and a normal '\0'
-		 * termination will be placed after it.
-		 */
-		if (len == 0 || str + len > last + 1 || len != Utf8Decode(&c, str)) {
+	while (consumer.AnyBytesLeft()) {
+		auto c = consumer.TryReadUtf8();
+		if (!c.has_value()) {
 			/* Maybe the next byte is still a valid character? */
-			str++;
+			consumer.Skip(1);
 			continue;
 		}
+		if (*c == 0) break;
 
-		if ((IsPrintable(c) && (c < SCC_SPRITE_START || c > SCC_SPRITE_END)) || (settings.Test(StringValidationSetting::AllowControlCode) && IsSccEncodedCode(c))) {
-			/* Copy the character back. Even if dst is current the same as str
-			 * (i.e. no characters have been changed) this is quicker than
-			 * moving the pointers ahead by len */
-			do {
-				*dst++ = *str++;
-			} while (--len != 0);
-		} else if (settings.Test(StringValidationSetting::AllowNewline) && c == '\n') {
-			*dst++ = *str++;
-		} else {
-			if (settings.Test(StringValidationSetting::AllowNewline) && c == '\r' && str[1] == '\n') {
-				str += len;
-				continue;
-			}
-			str += len;
-			if (settings.Test(StringValidationSetting::ReplaceTabCrNlWithSpace) && (c == '\r' || c == '\n' || c == '\t')) {
-				/* Replace the tab, carriage return or newline with a space. */
-				*dst++ = ' ';
-			} else if (settings.Test(StringValidationSetting::ReplaceWithQuestionMark)) {
-				/* Replace the undesirable character with a question mark */
-				*dst++ = '?';
-			}
+		if ((IsPrintable(*c) && (*c < SCC_SPRITE_START || *c > SCC_SPRITE_END)) ||
+				(settings.Test(StringValidationSetting::AllowControlCode) && IsSccEncodedCode(*c)) ||
+				(settings.Test(StringValidationSetting::AllowNewline) && *c == '\n')) {
+			builder.PutUtf8(*c);
+		} else if (settings.Test(StringValidationSetting::AllowNewline) && *c == '\r' && consumer.PeekCharIf('\n')) {
+			/* Skip \r, if followed by \n */
+			/* continue */
+		} else if (settings.Test(StringValidationSetting::ReplaceTabCrNlWithSpace) && (*c == '\r' || *c == '\n' || *c == '\t')) {
+			/* Replace the tab, carriage return or newline with a space. */
+			builder.PutChar(' ');
+		} else if (settings.Test(StringValidationSetting::ReplaceWithQuestionMark)) {
+			/* Replace the undesirable character with a question mark */
+			builder.PutChar('?');
 		}
 	}
 
@@ -193,9 +154,10 @@ static void StrMakeValid(T &dst, const char *str, const char *last, StringValida
  */
 void StrMakeValidInPlace(char *str, StringValidationSettings settings)
 {
-	char *dst = str;
-	StrMakeValid(dst, str, str + strlen(str), settings);
-	*dst = '\0';
+	InPlaceReplacement inplace(std::span(str, strlen(str)));
+	StrMakeValid(inplace.builder, inplace.consumer, settings);
+	/* Add NUL terminator, if we ended up with less bytes than before */
+	if (inplace.builder.AnyBytesUnused()) inplace.builder.PutChar('\0');
 }
 
 /**
@@ -209,11 +171,9 @@ void StrMakeValidInPlace(std::string &str, StringValidationSettings settings)
 {
 	if (str.empty()) return;
 
-	char *buf = str.data();
-	char *last = buf + str.size() - 1;
-	char *dst = buf;
-	StrMakeValid(dst, buf, last, settings);
-	str.erase(dst - buf, std::string::npos);
+	InPlaceReplacement inplace(std::span(str.data(), str.size()));
+	StrMakeValid(inplace.builder, inplace.consumer, settings);
+	str.erase(inplace.builder.GetBytesWritten(), std::string::npos);
 }
 
 /**
@@ -225,16 +185,11 @@ void StrMakeValidInPlace(std::string &str, StringValidationSettings settings)
  */
 std::string StrMakeValid(std::string_view str, StringValidationSettings settings)
 {
-	if (str.empty()) return {};
-
-	auto buf = str.data();
-	auto last = buf + str.size() - 1;
-
-	std::ostringstream dst;
-	std::ostreambuf_iterator<char> dst_iter(dst);
-	StrMakeValid(dst_iter, buf, last, settings);
-
-	return dst.str();
+	std::string result;
+	StringBuilder builder(result);
+	StringConsumer consumer(str);
+	StrMakeValid(builder, consumer, settings);
+	return result;
 }
 
 /**
@@ -248,27 +203,17 @@ std::string StrMakeValid(std::string_view str, StringValidationSettings settings
 bool StrValid(std::span<const char> str)
 {
 	/* Assume the ABSOLUTE WORST to be in str as it comes from the outside. */
-	auto it = std::begin(str);
-	auto last = std::prev(std::end(str));
-
-	while (it <= last && *it != '\0') {
-		size_t len = Utf8EncodedCharLen(*it);
-		/* Encoded length is 0 if the character isn't known.
-		 * The length check is needed to prevent Utf8Decode to read
-		 * over the terminating '\0' if that happens to be placed
-		 * within the encoding of an UTF8 character. */
-		if (len == 0 || it + len > last) return false;
-
-		char32_t c;
-		len = Utf8Decode(&c, &*it);
-		if (!IsPrintable(c) || (c >= SCC_SPRITE_START && c <= SCC_SPRITE_END)) {
+	StringConsumer consumer(str);
+	while (consumer.AnyBytesLeft()) {
+		auto c = consumer.TryReadUtf8();
+		if (!c.has_value()) return false; // invalid codepoint
+		if (*c == 0) return true; // NUL termination
+		if (!IsPrintable(*c) || (*c >= SCC_SPRITE_START && *c <= SCC_SPRITE_END)) {
 			return false;
 		}
-
-		it += len;
 	}
 
-	return *it == '\0';
+	return false; // missing NUL termination
 }
 
 /**
@@ -280,16 +225,24 @@ bool StrValid(std::span<const char> str)
  */
 void StrTrimInPlace(std::string &str)
 {
-	str = StrTrimView(str);
+	size_t first_pos = str.find_first_not_of(StringConsumer::WHITESPACE_NO_NEWLINE);
+	if (first_pos == std::string::npos) {
+		str.clear();
+		return;
+	}
+	str.erase(0, first_pos);
+
+	size_t last_pos = str.find_last_not_of(StringConsumer::WHITESPACE_NO_NEWLINE);
+	str.erase(last_pos + 1);
 }
 
-std::string_view StrTrimView(std::string_view str)
+std::string_view StrTrimView(std::string_view str, std::string_view characters_to_trim)
 {
-	size_t first_pos = str.find_first_not_of(' ');
+	size_t first_pos = str.find_first_not_of(characters_to_trim);
 	if (first_pos == std::string::npos) {
 		return std::string_view{};
 	}
-	size_t last_pos = str.find_last_not_of(' ');
+	size_t last_pos = str.find_last_not_of(characters_to_trim);
 	return str.substr(first_pos, last_pos - first_pos + 1);
 }
 
@@ -299,7 +252,7 @@ std::string_view StrTrimView(std::string_view str)
  * @param prefix The prefix to look for.
  * @return True iff the begin of the string is the same as the prefix, ignoring case.
  */
-bool StrStartsWithIgnoreCase(std::string_view str, const std::string_view prefix)
+bool StrStartsWithIgnoreCase(std::string_view str, std::string_view prefix)
 {
 	if (str.size() < prefix.size()) return false;
 	return StrEqualsIgnoreCase(str.substr(0, prefix.size()), prefix);
@@ -339,7 +292,7 @@ typedef std::basic_string_view<char, CaseInsensitiveCharTraits> CaseInsensitiveS
  * @param suffix The suffix to look for.
  * @return True iff the end of the string is the same as the suffix, ignoring case.
  */
-bool StrEndsWithIgnoreCase(std::string_view str, const std::string_view suffix)
+bool StrEndsWithIgnoreCase(std::string_view str, std::string_view suffix)
 {
 	if (str.size() < suffix.size()) return false;
 	return StrEqualsIgnoreCase(str.substr(str.size() - suffix.size()), suffix);
@@ -352,7 +305,7 @@ bool StrEndsWithIgnoreCase(std::string_view str, const std::string_view suffix)
  * @return Less than zero if str1 < str2, zero if str1 == str2, greater than
  *         zero if str1 > str2. All ignoring the case of the characters.
  */
-int StrCompareIgnoreCase(const std::string_view str1, const std::string_view str2)
+int StrCompareIgnoreCase(std::string_view str1, std::string_view str2)
 {
 	CaseInsensitiveStringView ci_str1{ str1.data(), str1.size() };
 	CaseInsensitiveStringView ci_str2{ str2.data(), str2.size() };
@@ -365,7 +318,7 @@ int StrCompareIgnoreCase(const std::string_view str1, const std::string_view str
  * @param str2 The second string.
  * @return True iff both strings are equal, barring the case of the characters.
  */
-bool StrEqualsIgnoreCase(const std::string_view str1, const std::string_view str2)
+bool StrEqualsIgnoreCase(std::string_view str1, std::string_view str2)
 {
 	if (str1.size() != str2.size()) return false;
 	return StrCompareIgnoreCase(str1, str2) == 0;
@@ -378,7 +331,7 @@ bool StrEqualsIgnoreCase(const std::string_view str1, const std::string_view str
  * @param value The string to search for.
  * @return True if a match was found.
  */
-bool StrContainsIgnoreCase(const std::string_view str, const std::string_view value)
+bool StrContainsIgnoreCase(std::string_view str, std::string_view value)
 {
 	CaseInsensitiveStringView ci_str{ str.data(), str.size() };
 	CaseInsensitiveStringView ci_value{ value.data(), value.size() };
@@ -426,48 +379,6 @@ bool IsValidChar(char32_t key, CharSetFilter afilter)
 		case CS_HEXADECIMAL:    return (key >= '0' && key <= '9') || (key >= 'a' && key <= 'f') || (key >= 'A' && key <= 'F');
 		default: NOT_REACHED();
 	}
-}
-
-
-/* UTF-8 handling routines */
-
-
-/**
- * Decode and consume the next UTF-8 encoded character.
- * @param c Buffer to place decoded character.
- * @param s Character stream to retrieve character from.
- * @return Number of characters in the sequence.
- */
-size_t Utf8Decode(char32_t *c, const char *s)
-{
-	assert(c != nullptr);
-
-	if (!HasBit(s[0], 7)) {
-		/* Single byte character: 0xxxxxxx */
-		*c = s[0];
-		return 1;
-	} else if (GB(s[0], 5, 3) == 6) {
-		if (IsUtf8Part(s[1])) {
-			/* Double byte character: 110xxxxx 10xxxxxx */
-			*c = GB(s[0], 0, 5) << 6 | GB(s[1], 0, 6);
-			if (*c >= 0x80) return 2;
-		}
-	} else if (GB(s[0], 4, 4) == 14) {
-		if (IsUtf8Part(s[1]) && IsUtf8Part(s[2])) {
-			/* Triple byte character: 1110xxxx 10xxxxxx 10xxxxxx */
-			*c = GB(s[0], 0, 4) << 12 | GB(s[1], 0, 6) << 6 | GB(s[2], 0, 6);
-			if (*c >= 0x800) return 3;
-		}
-	} else if (GB(s[0], 3, 5) == 30) {
-		if (IsUtf8Part(s[1]) && IsUtf8Part(s[2]) && IsUtf8Part(s[3])) {
-			/* 4 byte character: 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx */
-			*c = GB(s[0], 0, 3) << 18 | GB(s[1], 0, 6) << 12 | GB(s[2], 0, 6) << 6 | GB(s[3], 0, 6);
-			if (*c >= 0x10000 && *c <= 0x10FFFF) return 4;
-		}
-	}
-
-	*c = '?';
-	return 1;
 }
 
 /**
@@ -552,7 +463,7 @@ int StrNaturalCompare(std::string_view s1, std::string_view s2, bool ignore_garb
  * @param case_insensitive Search case-insensitive.
  * @return 1 if value was found, 0 if it was not found, or -1 if not supported by the OS.
  */
-static int ICUStringContains(const std::string_view str, const std::string_view value, bool case_insensitive)
+static int ICUStringContains(std::string_view str, std::string_view value, bool case_insensitive)
 {
 	if (_current_collator) {
 		std::unique_ptr<icu::RuleBasedCollator> coll(dynamic_cast<icu::RuleBasedCollator *>(_current_collator->clone()));
@@ -582,7 +493,7 @@ static int ICUStringContains(const std::string_view str, const std::string_view 
  * @param value The string to search for.
  * @return True if a match was found.
  */
-[[nodiscard]] bool StrNaturalContains(const std::string_view str, const std::string_view value)
+[[nodiscard]] bool StrNaturalContains(std::string_view str, std::string_view value)
 {
 #ifdef WITH_ICU_I18N
 	int res_u = ICUStringContains(str, value, false);
@@ -609,7 +520,7 @@ static int ICUStringContains(const std::string_view str, const std::string_view 
  * @param value The string to search for.
  * @return True if a match was found.
  */
-[[nodiscard]] bool StrNaturalContainsIgnoreCase(const std::string_view str, const std::string_view value)
+[[nodiscard]] bool StrNaturalContainsIgnoreCase(std::string_view str, std::string_view value)
 {
 #ifdef WITH_ICU_I18N
 	int res_u = ICUStringContains(str, value, true);
@@ -940,3 +851,15 @@ public:
 #endif /* defined(WITH_COCOA) && !defined(STRGEN) && !defined(SETTINGSGEN) */
 
 #endif
+
+/**
+ * Get the environment variable using std::getenv and when it is an empty string (or nullptr), return \c std::nullopt instead.
+ * @param variable The environment variable to read from.
+ * @return The environment value, or \c std::nullopt.
+ */
+std::optional<std::string_view> GetEnv(const char *variable)
+{
+	auto val = std::getenv(variable);
+	if (val == nullptr || *val == '\0') return std::nullopt;
+	return val;
+}

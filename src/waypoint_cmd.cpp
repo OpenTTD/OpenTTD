@@ -405,11 +405,11 @@ CommandCost CmdBuildRoadWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 		if (roadstopspec != nullptr) {
 			/* Include this road stop spec's animation trigger bitmask
 			 * in the station's cached copy. */
-			wp->cached_roadstop_anim_triggers |= roadstopspec->animation.triggers;
+			wp->cached_roadstop_anim_triggers.Set(roadstopspec->animation.triggers);
 		}
 
 		wp->delete_ctr = 0;
-		wp->facilities.Set(StationFacility::BusStop).Set(StationFacility::TruckStop);
+		wp->facilities.Set({StationFacility::BusStop, StationFacility::TruckStop});
 		wp->build_date = TimerGameCalendar::date;
 		wp->string_id = STR_SV_STNAME_WAYPOINT;
 

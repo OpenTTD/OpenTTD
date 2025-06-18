@@ -83,7 +83,7 @@ static void GetShipIcon(EngineID engine, EngineImageType image_type, VehicleSpri
 	const Engine *e = Engine::Get(engine);
 	uint8_t spritenum = e->u.ship.image_index;
 
-	if (is_custom_sprite(spritenum)) {
+	if (IsCustomVehicleSpriteNum(spritenum)) {
 		GetCustomVehicleIcon(engine, DIR_W, image_type, result);
 		if (result->IsValid()) return;
 
@@ -137,7 +137,7 @@ void Ship::GetImage(Direction direction, EngineImageType image_type, VehicleSpri
 
 	if (image_type == EIT_ON_MAP) direction = this->rotation;
 
-	if (is_custom_sprite(spritenum)) {
+	if (IsCustomVehicleSpriteNum(spritenum)) {
 		GetCustomVehicleSprite(this, direction, image_type, result);
 		if (result->IsValid()) return;
 
@@ -168,7 +168,7 @@ static const Depot *FindClosestShipDepot(const Vehicle *v, uint max_distance)
 		patches_to_search.pop_front();
 
 		/* Add neighbours of the current patch to the search queue. */
-		TVisitWaterRegionPatchCallBack visit_func = [&](const WaterRegionPatchDesc &water_region_patch) {
+		VisitWaterRegionPatchCallback visit_func = [&](const WaterRegionPatchDesc &water_region_patch) {
 			/* Note that we check the max distance per axis, not the total distance. */
 			if (std::abs(water_region_patch.x - start_patch.x) > max_region_distance ||
 					std::abs(water_region_patch.y - start_patch.y) > max_region_distance) return;
@@ -359,14 +359,6 @@ void Ship::UpdateDeltaXY()
 	}
 }
 
-/**
- * Test-procedure for HasVehicleOnPos to check for any ships which are moving.
- */
-static Vehicle *EnsureNoMovingShipProc(Vehicle *v, void *)
-{
-	return v->type == VEH_SHIP && v->cur_speed != 0 ? v : nullptr;
-}
-
 static bool CheckReverseShip(const Ship *v, Trackdir *trackdir = nullptr)
 {
 	/* Ask pathfinder for best direction */
@@ -392,7 +384,9 @@ static bool CheckShipLeaveDepot(Ship *v)
 
 	/* Don't leave depot if another vehicle is already entering/leaving */
 	/* This helps avoid CPU load if many ships are set to start at the same time */
-	if (HasVehicleOnPos(v->tile, nullptr, &EnsureNoMovingShipProc)) return true;
+	if (HasVehicleOnTile(v->tile, [](const Vehicle *u) {
+			return u->type == VEH_SHIP && u->cur_speed != 0;
+		})) return true;
 
 	TileIndex tile = v->tile;
 	Axis axis = GetShipDepotAxis(tile);
@@ -549,7 +543,7 @@ struct ShipSubcoordData {
  * so each Diagdir sub-array will have three valid and three invalid structures per Track.
  */
 static const ShipSubcoordData _ship_subcoord[DIAGDIR_END][TRACK_END] = {
-	// DIAGDIR_NE
+	/* DIAGDIR_NE */
 	{
 		{15,  8, DIR_NE},      // TRACK_X
 		{ 0,  0, INVALID_DIR}, // TRACK_Y
@@ -558,7 +552,7 @@ static const ShipSubcoordData _ship_subcoord[DIAGDIR_END][TRACK_END] = {
 		{15,  7, DIR_N},       // TRACK_LEFT
 		{ 0,  0, INVALID_DIR}, // TRACK_RIGHT
 	},
-	// DIAGDIR_SE
+	/* DIAGDIR_SE */
 	{
 		{ 0,  0, INVALID_DIR}, // TRACK_X
 		{ 8,  0, DIR_SE},      // TRACK_Y
@@ -567,7 +561,7 @@ static const ShipSubcoordData _ship_subcoord[DIAGDIR_END][TRACK_END] = {
 		{ 8,  0, DIR_S},       // TRACK_LEFT
 		{ 0,  0, INVALID_DIR}, // TRACK_RIGHT
 	},
-	// DIAGDIR_SW
+	/* DIAGDIR_SW */
 	{
 		{ 0,  8, DIR_SW},      // TRACK_X
 		{ 0,  0, INVALID_DIR}, // TRACK_Y
@@ -576,7 +570,7 @@ static const ShipSubcoordData _ship_subcoord[DIAGDIR_END][TRACK_END] = {
 		{ 0,  0, INVALID_DIR}, // TRACK_LEFT
 		{ 0,  8, DIR_S},       // TRACK_RIGHT
 	},
-	// DIAGDIR_NW
+	/* DIAGDIR_NW */
 	{
 		{ 0,  0, INVALID_DIR}, // TRACK_X
 		{ 8, 15, DIR_NW},      // TRACK_Y
@@ -742,8 +736,8 @@ static void ShipController(Ship *v)
 					gp.y = v->y_pos;
 				} else {
 					/* Not inside depot */
-					const VehicleEnterTileStatus r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
-					if (HasBit(r, VETS_CANNOT_ENTER)) return ReverseShip(v);
+					auto vets = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
+					if (vets.Test(VehicleEnterTileState::CannotEnter)) return ReverseShip(v);
 
 					/* A leave station order only needs one tick to get processed, so we can
 					 * always skip ahead. */
@@ -810,10 +804,10 @@ static void ShipController(Ship *v)
 				gp.y = (gp.y & ~0xF) | b.y_subcoord;
 
 				/* Call the landscape function and tell it that the vehicle entered the tile */
-				const VehicleEnterTileStatus r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
-				if (HasBit(r, VETS_CANNOT_ENTER)) return ReverseShip(v);
+				auto vets = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
+				if (vets.Test(VehicleEnterTileState::CannotEnter)) return ReverseShip(v);
 
-				if (!HasBit(r, VETS_ENTERED_WORMHOLE)) {
+				if (!vets.Test(VehicleEnterTileState::EnteredWormhole)) {
 					v->tile = gp.new_tile;
 					v->state = TrackToTrackBits(track);
 
@@ -843,7 +837,7 @@ static void ShipController(Ship *v)
 			}
 		} else {
 			/* On a bridge */
-			if (!IsTileType(gp.new_tile, MP_TUNNELBRIDGE) || !HasBit(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
+			if (!IsTileType(gp.new_tile, MP_TUNNELBRIDGE) || !VehicleEnterTile(v, gp.new_tile, gp.x, gp.y).Test(VehicleEnterTileState::EnteredWormhole)) {
 				v->x_pos = gp.x;
 				v->y_pos = gp.y;
 				v->UpdatePosition();

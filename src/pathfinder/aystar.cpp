@@ -41,7 +41,7 @@ void AyStar::CheckTile(AyStarNode *current, PathNode *parent)
 	if (this->nodes.FindClosedNode(*current) != nullptr) return;
 
 	/* Calculate the G-value for this node */
-	int new_g = this->CalculateG(this, current, parent);
+	int new_g = this->CalculateG(*current, *parent);
 	/* If the value was INVALID_NODE, we don't do anything with this node */
 	if (new_g == AYSTAR_INVALID_NODE) return;
 
@@ -49,10 +49,9 @@ void AyStar::CheckTile(AyStarNode *current, PathNode *parent)
 	assert(new_g >= 0);
 	/* Add the parent g-value to the new g-value */
 	new_g += parent->cost;
-	if (this->max_path_cost != 0 && new_g > this->max_path_cost) return;
 
 	/* Calculate the h-value */
-	int new_h = this->CalculateH(this, current, parent);
+	int new_h = this->CalculateH(*current, *parent);
 	/* There should not be given any error-code.. */
 	assert(new_h >= 0);
 
@@ -97,10 +96,8 @@ AyStarStatus AyStar::Loop()
 	if (current == nullptr) return AyStarStatus::EmptyOpenList;
 
 	/* Check for end node and if found, return that code */
-	if (this->EndNodeCheck(this, current) == AyStarStatus::FoundEndNode && current->parent != nullptr) {
-		if (this->FoundEndNode != nullptr) {
-			this->FoundEndNode(this, current);
-		}
+	if (this->EndNodeCheck(*current) == AyStarStatus::FoundEndNode && current->parent != nullptr) {
+		this->FoundEndNode(*current);
 		return AyStarStatus::FoundEndNode;
 	}
 
@@ -108,7 +105,7 @@ AyStarStatus AyStar::Loop()
 	this->nodes.InsertClosedNode(*current);
 
 	/* Load the neighbours */
-	this->GetNeighbours(this, current);
+	this->GetNeighbours(*current, this->neighbours);
 
 	/* Go through all neighbours */
 	for (auto &neighbour : this->neighbours) {
@@ -116,7 +113,7 @@ AyStarStatus AyStar::Loop()
 		this->CheckTile(&neighbour, current);
 	}
 
-	if (this->max_search_nodes != 0 && this->nodes.ClosedCount() >= this->max_search_nodes) {
+	if (this->nodes.ClosedCount() >= AYSTAR_DEF_MAX_SEARCH_NODES) {
 		/* We've expanded enough nodes */
 		return AyStarStatus::LimitReached;
 	} else {
@@ -131,16 +128,13 @@ AyStarStatus AyStar::Loop()
  *  - #AyStarStatus::FoundEndNode
  *  - #AyStarStatus::NoPath
  *  - #AyStarStatus::StillBusy
- * @note When the algorithm is done (when the return value is not #AyStarStatus::StillBusy) #Clear() is called automatically.
- *       When you stop the algorithm halfway, you should call #Clear() yourself!
  */
 AyStarStatus AyStar::Main()
 {
-	AyStarStatus r = AyStarStatus::FoundEndNode;
-	int i = 0;
-	/* Loop through the OpenList
-	 *  Quit if result is no AyStarStatus::StillBusy or is more than loops_per_tick */
-	while ((r = this->Loop()) == AyStarStatus::StillBusy && (this->loops_per_tick == 0 || ++i < this->loops_per_tick)) { }
+	AyStarStatus r;
+	do {
+		r = this->Loop();
+	} while (r == AyStarStatus::StillBusy);
 #ifdef AYSTAR_DEBUG
 	switch (r) {
 		case AyStarStatus::FoundEndNode: Debug(misc, 0, "[AyStar] Found path!"); break;
@@ -160,9 +154,7 @@ AyStarStatus AyStar::Main()
 
 /**
  * Adds a node from where to start an algorithm. Multiple nodes can be added
- * if wanted. You should make sure that #Clear() is called before adding nodes
- * if the #AyStar has been used before (though the normal main loop calls
- * #Clear() automatically when the algorithm finishes.
+ * if wanted.
  * @param start_node Node to start with.
  * @param g the cost for starting with this node.
  */

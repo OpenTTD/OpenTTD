@@ -74,7 +74,7 @@ int RecursiveCommandCounter::_counter = 0;
  * the #CommandFlag::Auto, #CommandFlag::Offline and #CommandFlag::Server values.
  */
 struct CommandInfo {
-	const char *name;   ///< A human readable name for the procedure
+	std::string_view name; ///< A human readable name for the procedure
 	CommandFlags flags; ///< The (command) flags to that apply to this command
 	CommandType type;   ///< The type of command.
 };
@@ -129,7 +129,7 @@ CommandFlags GetCommandFlags(Commands cmd)
  * @param cmd The integer value of the command
  * @return The name for this command
  */
-const char *GetCommandName(Commands cmd)
+std::string_view GetCommandName(Commands cmd)
 {
 	assert(IsValidCommand(cmd));
 

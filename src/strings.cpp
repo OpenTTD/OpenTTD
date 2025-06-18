@@ -39,8 +39,8 @@
 #include "core/backup_type.hpp"
 #include "gfx_layout.h"
 #include "core/utf8.hpp"
+#include "core/string_consumer.hpp"
 #include <stack>
-#include <charconv>
 
 #include "table/strings.h"
 #include "table/control_codes.h"
@@ -153,48 +153,39 @@ EncodedString EncodedString::ReplaceParam(size_t param, StringParameter &&data) 
 	if (this->empty()) return {};
 
 	std::vector<StringParameter> params;
+	StringConsumer consumer(this->string);
 
-	/* We need char * for std::from_chars. Iterate the underlying data, as string's own iterators may interfere. */
-	const char *p = this->string.data();
-	const char *e = this->string.data() + this->string.length();
-
-	char32_t c = Utf8Consume(p);
-	if (c != SCC_ENCODED_INTERNAL) return {};
+	if (!consumer.ReadUtf8If(SCC_ENCODED_INTERNAL)) return {};
 
 	StringID str;
-	auto result = std::from_chars(p, e, str, 16);
-	if (result.ec != std::errc()) return {};
-	if (result.ptr != e && *result.ptr != SCC_RECORD_SEPARATOR) return {};
-	p = result.ptr;
+	if (auto r = consumer.TryReadIntegerBase<uint32_t>(16); r.has_value()) {
+		str = *r;
+	} else {
+		return {};
+	}
+	if (consumer.AnyBytesLeft() && !consumer.ReadUtf8If(SCC_RECORD_SEPARATOR)) return {};
 
-	while (p != e) {
-		auto s = ++p;
+	while (consumer.AnyBytesLeft()) {
+		StringConsumer record(consumer.ReadUntilUtf8(SCC_RECORD_SEPARATOR, StringConsumer::SKIP_ONE_SEPARATOR));
 
-		/* Find end of the parameter. */
-		for (; p != e && *p != SCC_RECORD_SEPARATOR; ++p) {}
-
-		if (s == p) {
+		if (!record.AnyBytesLeft()) {
 			/* This is an empty parameter. */
 			params.emplace_back(std::monostate{});
 			continue;
 		}
 
 		/* Get the parameter type. */
-		char32_t parameter_type;
-		size_t len = Utf8Decode(&parameter_type, s);
-		s += len;
-
+		char32_t parameter_type = record.ReadUtf8();
 		switch (parameter_type) {
 			case SCC_ENCODED_NUMERIC: {
-				uint64_t value;
-				result = std::from_chars(s, p, value, 16);
-				if (result.ec != std::errc() || result.ptr != p) return {};
+				uint64_t value = record.ReadIntegerBase<uint64_t>(16);
+				assert(!record.AnyBytesLeft());
 				params.emplace_back(value);
 				break;
 			}
 
 			case SCC_ENCODED_STRING: {
-				params.emplace_back(std::string(s, p));
+				params.emplace_back(record.Read(StringConsumer::npos));
 				break;
 			}
 
@@ -282,7 +273,7 @@ struct LanguagePackDeleter {
 	void operator()(LanguagePack *langpack)
 	{
 		/* LanguagePack is in fact reinterpreted char[], we need to reinterpret it back to free it properly. */
-		delete[] reinterpret_cast<char*>(langpack);
+		delete[] reinterpret_cast<char *>(langpack);
 	}
 };
 
@@ -466,10 +457,10 @@ std::string GetStringWithArgs(StringID string, std::span<StringParameter> args)
 	return result;
 }
 
-static const char *GetDecimalSeparator()
+static std::string_view GetDecimalSeparator()
 {
-	const char *decimal_separator = _settings_game.locale.digit_decimal_separator.c_str();
-	if (StrEmpty(decimal_separator)) decimal_separator = _langpack.langpack->digit_decimal_separator;
+	std::string_view decimal_separator = _settings_game.locale.digit_decimal_separator;
+	if (decimal_separator.empty()) decimal_separator = _langpack.langpack->digit_decimal_separator;
 	return decimal_separator;
 }
 
@@ -479,7 +470,7 @@ static const char *GetDecimalSeparator()
  * @param number    the number to write down
  * @param separator the thousands-separator to use
  */
-static void FormatNumber(StringBuilder &builder, int64_t number, const char *separator)
+static void FormatNumber(StringBuilder &builder, int64_t number, std::string_view separator)
 {
 	static const int max_digits = 20;
 	uint64_t divisor = 10000000000000000000ULL;
@@ -509,8 +500,8 @@ static void FormatNumber(StringBuilder &builder, int64_t number, const char *sep
 
 static void FormatCommaNumber(StringBuilder &builder, int64_t number)
 {
-	const char *separator = _settings_game.locale.digit_group_separator.c_str();
-	if (StrEmpty(separator)) separator = _langpack.langpack->digit_group_separator;
+	std::string_view separator = _settings_game.locale.digit_group_separator;
+	if (separator.empty()) separator = _langpack.langpack->digit_group_separator;
 	FormatNumber(builder, number, separator);
 }
 
@@ -538,8 +529,8 @@ static void FormatBytes(StringBuilder &builder, int64_t number)
 {
 	assert(number >= 0);
 
-	/*                                   1   2^10  2^20  2^30  2^40  2^50  2^60 */
-	const char * const iec_prefixes[] = {"", "Ki", "Mi", "Gi", "Ti", "Pi", "Ei"};
+	/*                                              1   2^10  2^20  2^30  2^40  2^50  2^60 */
+	static const std::string_view iec_prefixes[] = {"", "Ki", "Mi", "Gi", "Ti", "Pi", "Ei"};
 	uint id = 1;
 	while (number >= 1024 * 1024) {
 		number /= 1024;
@@ -629,9 +620,9 @@ static void FormatGenericCurrency(StringBuilder &builder, const CurrencySpec *sp
 		}
 	}
 
-	const char *separator = _settings_game.locale.digit_group_separator_currency.c_str();
-	if (StrEmpty(separator)) separator = GetCurrency().separator.c_str();
-	if (StrEmpty(separator)) separator = _langpack.langpack->digit_group_separator_currency;
+	std::string_view separator = _settings_game.locale.digit_group_separator_currency;
+	if (separator.empty()) separator = GetCurrency().separator;
+	if (separator.empty()) separator = _langpack.langpack->digit_group_separator_currency;
 	FormatNumber(builder, number, separator);
 	if (number_str != STR_NULL) {
 		FormatString(builder, GetStringPtr(number_str), {});
@@ -653,7 +644,7 @@ static void FormatGenericCurrency(StringBuilder &builder, const CurrencySpec *sp
  * @param plural_form The plural form we want an index for.
  * @return The plural index for the given form.
  */
-static int DeterminePluralForm(int64_t count, int plural_form)
+static int DeterminePluralForm(int64_t count, uint plural_form)
 {
 	/* The absolute value determines plurality */
 	uint64_t n = abs(count);
@@ -774,22 +765,35 @@ static int DeterminePluralForm(int64_t count, int plural_form)
 	}
 }
 
-static const char *ParseStringChoice(const char *b, uint form, StringBuilder &builder)
+static void SkipStringChoice(StringConsumer &consumer)
+{
+	uint n = consumer.ReadUint8();
+	uint len = 0;
+	for (uint i = 0; i != n; i++) {
+		len += consumer.ReadUint8();
+	}
+	consumer.Skip(len);
+}
+
+static void ParseStringChoice(StringConsumer &consumer, uint form, StringBuilder &builder)
 {
 	/* <NUM> {Length of each string} {each string} */
-	uint n = (uint8_t)*b++;
-	size_t form_offset = 0, form_len = 0, total_len = 0;
+	uint n = consumer.ReadUint8();
+	size_t form_pre = 0, form_len = 0, form_post = 0;
 	for (uint i = 0; i != n; i++) {
-		uint len = (uint8_t)*b++;
-		if (i == form) {
-			form_offset = total_len;
+		uint len = consumer.ReadUint8();
+		if (i < form) {
+			form_pre += len;
+		} else if (i > form) {
+			form_post += len;
+		} else {
 			form_len = len;
 		}
-		total_len += len;
 	}
 
-	builder += std::string_view(b + form_offset, form_len);
-	return b + total_len;
+	consumer.Skip(form_pre);
+	builder += consumer.Read(form_len);
+	consumer.Skip(form_post);
 }
 
 /** Helper for unit conversion. */
@@ -991,67 +995,60 @@ uint ConvertDisplaySpeedToKmhishSpeed(uint speed, VehicleType type)
 
 /**
  * Decodes an encoded string during FormatString.
- * @param str The buffer of the encoded string.
+ * @param consumer The encoded string.
  * @param game_script Set if decoding a GameScript-encoded string. This affects how string IDs are handled.
  * @param builder The string builder to write the string to.
- * @returns Updated position position in input buffer.
  */
-static const char *DecodeEncodedString(const char *str, bool game_script, StringBuilder &builder)
+static void DecodeEncodedString(StringConsumer &consumer, bool game_script, StringBuilder &builder)
 {
 	std::vector<StringParameter> sub_args;
 
-	char *p;
-	StringIndexInTab id(std::strtoul(str, &p, 16));
-	if (*p != SCC_RECORD_SEPARATOR && *p != '\0') {
-		while (*p != '\0') p++;
+	StringIndexInTab id(consumer.ReadIntegerBase<uint32_t>(16));
+	if (consumer.AnyBytesLeft() && !consumer.PeekUtf8If(SCC_RECORD_SEPARATOR)) {
+		consumer.SkipAll();
 		builder += "(invalid SCC_ENCODED)";
-		return p;
+		return;
 	}
 	if (game_script && id >= TAB_SIZE_GAMESCRIPT) {
-		while (*p != '\0') p++;
+		consumer.SkipAll();
 		builder += "(invalid StringID)";
-		return p;
+		return;
 	}
 
-	while (*p != '\0') {
-		/* The start of parameter. */
-		const char *s = ++p;
+	while (consumer.AnyBytesLeft()) {
+		consumer.SkipUtf8If(SCC_RECORD_SEPARATOR);
+		StringConsumer record(consumer.ReadUntilUtf8(SCC_RECORD_SEPARATOR, StringConsumer::KEEP_SEPARATOR));
 
-		/* Find end of the parameter. */
-		for (; *p != '\0' && *p != SCC_RECORD_SEPARATOR; ++p) {}
-
-		if (s == p) {
+		if (!record.AnyBytesLeft()) {
 			/* This is an empty parameter. */
 			sub_args.emplace_back(std::monostate{});
 			continue;
 		}
 
 		/* Get the parameter type. */
-		char32_t parameter_type;
-		size_t len = Utf8Decode(&parameter_type, s);
-		s += len;
-
+		char32_t parameter_type = record.ReadUtf8();
 		switch (parameter_type) {
 			case SCC_ENCODED: {
-				uint64_t param = std::strtoull(s, &p, 16);
+				uint64_t param = record.ReadIntegerBase<uint64_t>(16);
 				if (param >= TAB_SIZE_GAMESCRIPT) {
-					while (*p != '\0') p++;
 					builder += "(invalid sub-StringID)";
-					return p;
+					return;
 				}
+				assert(!record.AnyBytesLeft());
 				param = MakeStringID(TEXT_TAB_GAMESCRIPT_START, StringIndexInTab(param));
 				sub_args.emplace_back(param);
 				break;
 			}
 
 			case SCC_ENCODED_NUMERIC: {
-				uint64_t param = std::strtoull(s, &p, 16);
+				uint64_t param = record.ReadIntegerBase<uint64_t>(16);
+				assert(!record.AnyBytesLeft());
 				sub_args.emplace_back(param);
 				break;
 			}
 
 			case SCC_ENCODED_STRING: {
-				sub_args.emplace_back(std::string(s, p - s));
+				sub_args.emplace_back(record.Read(StringConsumer::npos));
 				break;
 			}
 
@@ -1064,8 +1061,6 @@ static const char *DecodeEncodedString(const char *str, bool game_script, String
 
 	StringID stringid = game_script ? MakeStringID(TEXT_TAB_GAMESCRIPT_START, id) : StringID{id.base()};
 	GetStringWithArgs(builder, stringid, sub_args, true);
-
-	return p;
 }
 
 /**
@@ -1096,13 +1091,12 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 	}
 	uint next_substr_case_index = 0;
 	struct StrStackItem {
-		const char *str;
-		const char *end;
+		StringConsumer consumer;
 		size_t first_param_offset;
 		uint case_index;
 
 		StrStackItem(std::string_view view, size_t first_param_offset, uint case_index)
-			: str(view.data()), end(view.data() + view.size()), first_param_offset(first_param_offset), case_index(case_index)
+			: consumer(view), first_param_offset(first_param_offset), case_index(case_index)
 		{}
 	};
 	std::stack<StrStackItem, std::vector<StrStackItem>> str_stack;
@@ -1110,19 +1104,24 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 
 	for (;;) {
 		try {
-			while (!str_stack.empty() && str_stack.top().str >= str_stack.top().end) {
+			while (!str_stack.empty() && !str_stack.top().consumer.AnyBytesLeft()) {
 				str_stack.pop();
 			}
 			if (str_stack.empty()) break;
-			const char *&str = str_stack.top().str;
+			StringConsumer &consumer = str_stack.top().consumer;
 			const size_t ref_param_offset = str_stack.top().first_param_offset;
 			const uint case_index = str_stack.top().case_index;
-			char32_t b = Utf8Consume(&str);
+			char32_t b = consumer.ReadUtf8();
 			assert(b != 0);
+			if (b == 0) {
+				/* A NUL character should never be encountered, but for non-debug builds handle it gracefully. */
+				builder += "(unexpected NUL)";
+				continue;
+			}
 
 			if (SCC_NEWGRF_FIRST <= b && b <= SCC_NEWGRF_LAST) {
 				/* We need to pass some stuff as it might be modified. */
-				b = RemapNewGRFStringControlCode(b, &str);
+				b = RemapNewGRFStringControlCode(b, consumer);
 				if (b == 0) continue;
 			}
 
@@ -1135,13 +1134,13 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 			switch (b) {
 				case SCC_ENCODED:
 				case SCC_ENCODED_INTERNAL:
-					str = DecodeEncodedString(str, b == SCC_ENCODED, builder);
+					DecodeEncodedString(consumer, b == SCC_ENCODED, builder);
 					break;
 
 				case SCC_NEWGRF_STRINL: {
-					StringID substr = Utf8Consume(&str);
+					StringID substr = consumer.ReadUtf8(STR_NULL);
 					std::string_view ptr = GetStringPtr(substr);
-					str_stack.emplace(ptr, args.GetOffset(), next_substr_case_index); // this may invalidate "str"
+					str_stack.emplace(ptr, args.GetOffset(), next_substr_case_index); // this may invalidate "consumer"
 					next_substr_case_index = 0;
 					break;
 				}
@@ -1149,15 +1148,15 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 				case SCC_NEWGRF_PRINT_WORD_STRING_ID: {
 					StringID substr = args.GetNextParameter<StringID>();
 					std::string_view ptr = GetStringPtr(substr);
-					str_stack.emplace(ptr, args.GetOffset(), next_substr_case_index); // this may invalidate "str"
+					str_stack.emplace(ptr, args.GetOffset(), next_substr_case_index); // this may invalidate "consumer"
 					next_substr_case_index = 0;
 					break;
 				}
 
 				case SCC_GENDER_LIST: { // {G 0 Der Die Das}
 					/* First read the meta data from the language file. */
-					size_t offset = ref_param_offset + (uint8_t)*str++;
-					int gender = 0;
+					size_t offset = ref_param_offset + consumer.ReadUint8();
+					uint8_t gender = 0;
 					if (offset >= args.GetNumParameters()) {
 						/* The offset may come from an external NewGRF, and be invalid. */
 						builder += "(invalid GENDER parameter)";
@@ -1179,76 +1178,75 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 							FormatString(tmp_builder, input, tmp_params);
 						}
 
-						/* The gender is stored at the start of the formatted string. */
-						const char *s = buffer.c_str();
-						char32_t c = Utf8Consume(&s);
-						/* Does this string have a gender, if so, set it */
-						if (c == SCC_GENDER_INDEX) gender = (uint8_t)s[0];
+						/* The gender is stored at the start of the formatted string.
+						 * Does this string have a gender, if so, set it. */
+						StringConsumer gender_consumer(buffer);
+						if (gender_consumer.ReadUtf8If(SCC_GENDER_INDEX)) {
+							gender = gender_consumer.ReadUint8();
+						}
 					}
-					str = ParseStringChoice(str, gender, builder);
+					ParseStringChoice(consumer, gender, builder);
 					break;
 				}
 
 				/* This sets up the gender for the string.
 				 * We just ignore this one. It's used in {G 0 Der Die Das} to determine the case. */
-				case SCC_GENDER_INDEX: // {GENDER 0}
+				case SCC_GENDER_INDEX: { // {GENDER 0}
+					uint8_t gender = consumer.ReadUint8();
 					if (_scan_for_gender_data) {
 						builder.PutUtf8(SCC_GENDER_INDEX);
-						builder.PutUint8(*str++);
-					} else {
-						str++;
+						builder.PutUint8(gender);
 					}
 					break;
+				}
 
 				case SCC_PLURAL_LIST: { // {P}
-					int plural_form = *str++;          // contains the plural form for this string
-					size_t offset = ref_param_offset + (uint8_t)*str++;
+					uint8_t plural_form = consumer.ReadUint8();  // contains the plural form for this string
+					size_t offset = ref_param_offset + consumer.ReadUint8();
 					const uint64_t *v = nullptr;
 					/* The offset may come from an external NewGRF, and be invalid. */
 					if (offset < args.GetNumParameters()) {
 						v = std::get_if<uint64_t>(&args.GetParam(offset)); // contains the number that determines plural
 					}
 					if (v != nullptr) {
-						str = ParseStringChoice(str, DeterminePluralForm(static_cast<int64_t>(*v), plural_form), builder);
+						ParseStringChoice(consumer, DeterminePluralForm(static_cast<int64_t>(*v), plural_form), builder);
 					} else {
+						SkipStringChoice(consumer);
 						builder += "(invalid PLURAL parameter)";
 					}
 					break;
 				}
 
 				case SCC_ARG_INDEX: { // Move argument pointer
-					args.SetOffset(ref_param_offset + (uint8_t)*str++);
+					args.SetOffset(ref_param_offset + consumer.ReadUint8());
 					break;
 				}
 
 				case SCC_SET_CASE: { // {SET_CASE}
 					/* This is a pseudo command, it's outputted when someone does {STRING.ack}
 					 * The modifier is added to all subsequent GetStringWithArgs that accept the modifier. */
-					next_substr_case_index = (uint8_t)*str++;
+					next_substr_case_index = consumer.ReadUint8();
 					break;
 				}
 
 				case SCC_SWITCH_CASE: { // {Used to implement case switching}
 					/* <0x9E> <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <LENDEFAULT> <STRINGDEFAULT>
 					 * Each LEN is printed using 2 bytes in little endian order. */
-					uint num = (uint8_t)*str++;
+					uint num = consumer.ReadUint8();
 					std::optional<std::string_view> found;
 					for (; num > 0; --num) {
-						uint8_t index = static_cast<uint8_t>(str[0]);
-						uint16_t len = static_cast<uint8_t>(str[1]) + (static_cast<uint8_t>(str[2]) << 8);
-						str += 3;
+						uint8_t index = consumer.ReadUint8();
+						uint16_t len = consumer.ReadUint16LE();
+						auto case_str = consumer.Read(len);
 						if (index == case_index) {
 							/* Found the case */
-							found.emplace(str, len);
+							found = case_str;
 						}
-						str += len;
 					}
-					uint16_t default_len = static_cast<uint8_t>(str[0]) + (static_cast<uint8_t>(str[1]) << 8);
-					str += 2;
-					if (!found.has_value()) found.emplace(str, default_len);
-					str += default_len;
-					assert(str <= str_stack.top().end);
-					str_stack.emplace(*found, ref_param_offset, case_index); // this may invalidate "str"
+					uint16_t default_len = consumer.ReadUint16LE();
+					auto default_str = consumer.Read(default_len);
+					if (!found.has_value()) found = default_str;
+					str_stack.emplace(*found, ref_param_offset, case_index); // this may invalidate "consumer"
 					break;
 				}
 
@@ -1256,16 +1254,9 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 					builder += _openttd_revision;
 					break;
 
-				case SCC_RAW_STRING_POINTER: { // {RAW_STRING}
-					const char *raw_string = args.GetNextParameterString();
-					/* raw_string can be nullptr. */
-					if (raw_string == nullptr) {
-						builder += "(invalid RAW_STRING parameter)";
-						break;
-					}
-					FormatString(builder, raw_string, args);
+				case SCC_RAW_STRING_POINTER: // {RAW_STRING}
+					FormatString(builder, args.GetNextParameterString(), args);
 					break;
-				}
 
 				case SCC_STRING: {// {STRING}
 					StringID string_id = args.GetNextParameter<StringID>();
@@ -1496,7 +1487,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 
 				case SCC_VELOCITY: { // {VELOCITY}
 					int64_t arg = args.GetNextParameter<int64_t>();
-					// Unpack vehicle type from packed argument to get desired units.
+					/* Unpack vehicle type from packed argument to get desired units. */
 					VehicleType vt = static_cast<VehicleType>(GB(arg, 56, 8));
 					const auto &x = GetVelocityUnits(vt);
 					auto tmp_params = MakeParameters(ConvertKmhishSpeedToDisplaySpeed(GB(arg, 0, 56), vt), x.decimal_places);
@@ -1624,13 +1615,20 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 					}
 
 					if (e->info.callback_mask.Test(VehicleCallbackMask::Name)) {
-						uint16_t callback = GetVehicleCallback(CBID_VEHICLE_NAME, static_cast<uint32_t>(arg >> 32), 0, e->index, nullptr);
+						std::array<int32_t, 16> regs100;
+						uint16_t callback = GetVehicleCallback(CBID_VEHICLE_NAME, static_cast<uint32_t>(arg >> 32), 0, e->index, nullptr, regs100);
 						/* Not calling ErrorUnknownCallbackResult due to being inside string processing. */
-						if (callback != CALLBACK_FAILED && callback < 0x400) {
+						if (callback == 0x40F) {
 							const GRFFile *grffile = e->GetGRF();
 							assert(grffile != nullptr);
 
-							builder += GetGRFStringWithTextStack(grffile, GRFSTR_MISC_GRF_TEXT + callback, 6);
+							builder += GetGRFStringWithTextStack(grffile, static_cast<GRFStringID>(regs100[0]), std::span{regs100}.subspan(1));
+							break;
+						} else if (callback < 0x400) {
+							const GRFFile *grffile = e->GetGRF();
+							assert(grffile != nullptr);
+
+							builder += GetGRFStringWithTextStack(grffile, GRFSTR_MISC_GRF_TEXT + callback, regs100);
 							break;
 						}
 					}
@@ -1833,7 +1831,7 @@ static void StationGetSpecialString(StringBuilder &builder, StationFacilities x)
 	if (x.Test(StationFacility::Airport)) builder.PutUtf8(SCC_PLANE);
 }
 
-static const char * const _silly_company_names[] = {
+static const std::string_view _silly_company_names[] = {
 	"Bloggs Brothers",
 	"Tiny Transport Ltd.",
 	"Express Travel",
@@ -1849,7 +1847,7 @@ static const char * const _silly_company_names[] = {
 	"Getout & Pushit Ltd."
 };
 
-static const char * const _surname_list[] = {
+static const std::string_view _surname_list[] = {
 	"Adams",
 	"Allan",
 	"Baker",
@@ -1881,7 +1879,7 @@ static const char * const _surname_list[] = {
 	"Watkins"
 };
 
-static const char * const _silly_surname_list[] = {
+static const std::string_view _silly_surname_list[] = {
 	"Grumpy",
 	"Dozy",
 	"Speedy",
@@ -1901,7 +1899,7 @@ static const char _initial_name_letters[] = {
 	'K', 'L', 'M', 'N', 'P', 'R', 'S', 'T', 'W',
 };
 
-static std::span<const char * const> GetSurnameOptions()
+static std::span<const std::string_view> GetSurnameOptions()
 {
 	if (_settings_game.game_creation.landscape == LandscapeType::Toyland) return _silly_surname_list;
 	return _surname_list;
@@ -1912,7 +1910,7 @@ static std::span<const char * const> GetSurnameOptions()
  * @param seed The seed the surname was generated from.
  * @return The surname.
  */
-static const char *GetSurname(uint32_t seed)
+static std::string_view GetSurname(uint32_t seed)
 {
 	auto surname_options = GetSurnameOptions();
 	return surname_options[surname_options.size() * GB(seed, 16, 8) >> 8];
@@ -2004,7 +2002,7 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 {
 	/* Current language pack */
 	size_t total_len = 0;
-	std::unique_ptr<LanguagePack, LanguagePackDeleter> lang_pack(reinterpret_cast<LanguagePack *>(ReadFileToMem(FS2OTTD(lang->file), total_len, 1U << 20).release()));
+	std::unique_ptr<LanguagePack, LanguagePackDeleter> lang_pack(reinterpret_cast<LanguagePack *>(ReadFileToMem(FS2OTTD(lang->file.native()), total_len, 1U << 20).release()));
 	if (!lang_pack) return false;
 
 	/* End of read data (+ terminating zero added in ReadFileToMem()) */
@@ -2052,7 +2050,7 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 
 	_current_language = lang;
 	_current_text_dir = (TextDirection)_current_language->text_dir;
-	_config_language_file = FS2OTTD(_current_language->file.filename());
+	_config_language_file = FS2OTTD(_current_language->file.filename().native());
 	SetCurrentGrfLangID(_current_language->newgrflangid);
 	_langpack.list_separator = GetString(STR_LIST_SEPARATOR);
 
@@ -2062,7 +2060,7 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 #endif
 
 #ifdef WITH_COCOA
-	extern void MacOSSetCurrentLocaleName(const char *iso_code);
+	extern void MacOSSetCurrentLocaleName(std::string_view iso_code);
 	MacOSSetCurrentLocaleName(_current_language->isocode);
 #endif
 
@@ -2108,25 +2106,26 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
  *        set. Pass nullptr if you don't want additional checks.
  * @return return string containing current charset, or nullptr if not-determinable
  */
-const char *GetCurrentLocale(const char *param)
+std::optional<std::string> GetCurrentLocale(const char *param)
 {
-	const char *env;
+	auto env = GetEnv("LANGUAGE");
+	if (env.has_value()) return std::string{*env};
 
-	env = std::getenv("LANGUAGE");
-	if (env != nullptr) return env;
-
-	env = std::getenv("LC_ALL");
-	if (env != nullptr) return env;
+	env = GetEnv("LC_ALL");
+	if (env.has_value()) return std::string{*env};
 
 	if (param != nullptr) {
-		env = std::getenv(param);
-		if (env != nullptr) return env;
+		env = GetEnv(param);
+		if (env.has_value()) return std::string{*env};
 	}
 
-	return std::getenv("LANG");
+	env = GetEnv("LANG");
+	if (env.has_value()) return std::string{*env};
+
+	return std::nullopt;
 }
 #else
-const char *GetCurrentLocale(const char *param);
+std::optional<std::string> GetCurrentLocale(const char *param);
 #endif /* !(defined(_WIN32) || defined(__APPLE__)) */
 
 /**
@@ -2181,10 +2180,11 @@ static void FillLanguageList(const std::string &path)
 		lmd.file = dir_entry.path();
 
 		/* Check whether the file is of the correct version */
-		if (!GetLanguageFileHeader(FS2OTTD(lmd.file), &lmd)) {
-			Debug(misc, 3, "{} is not a valid language file", FS2OTTD(lmd.file));
+		std::string file = FS2OTTD(lmd.file.native());
+		if (!GetLanguageFileHeader(file, &lmd)) {
+			Debug(misc, 3, "{} is not a valid language file", file);
 		} else if (GetLanguage(lmd.newgrflangid) != nullptr) {
-			Debug(misc, 3, "{}'s language ID is already known", FS2OTTD(lmd.file));
+			Debug(misc, 3, "{}'s language ID is already known", file);
 		} else {
 			_languages.push_back(std::move(lmd));
 		}
@@ -2206,8 +2206,8 @@ void InitializeLanguagePacks()
 	if (_languages.empty()) UserError("No available language packs (invalid versions?)");
 
 	/* Acquire the locale of the current system */
-	const char *lang = GetCurrentLocale("LC_MESSAGES");
-	if (lang == nullptr) lang = "en_GB";
+	auto str_lang = GetCurrentLocale("LC_MESSAGES");
+	std::string_view lang = str_lang.has_value() ? std::string_view{*str_lang} : "en_GB";
 
 	const LanguageMetadata *chosen_language   = nullptr; ///< Matching the language in the configuration file or the current locale
 	const LanguageMetadata *language_fallback = nullptr; ///< Using pt_PT for pt_BR locale when pt_BR is not available
@@ -2218,18 +2218,19 @@ void InitializeLanguagePacks()
 		/* We are trying to find a default language. The priority is by
 		 * configuration file, local environment and last, if nothing found,
 		 * English. */
-		if (_config_language_file == FS2OTTD(lng.file.filename())) {
+		if (_config_language_file == FS2OTTD(lng.file.filename().native())) {
 			chosen_language = &lng;
 			break;
 		}
 
-		if (strcmp (lng.isocode, "en_GB") == 0) en_GB_fallback    = &lng;
+		std::string_view iso_code = lng.isocode;
+		if (iso_code == "en_GB") en_GB_fallback = &lng;
 
 		/* Only auto-pick finished translations */
 		if (!lng.IsReasonablyFinished()) continue;
 
-		if (strncmp(lng.isocode, lang, 5) == 0) chosen_language   = &lng;
-		if (strncmp(lng.isocode, lang, 2) == 0) language_fallback = &lng;
+		if (iso_code.starts_with(lang.substr(0, 5))) chosen_language = &lng;
+		if (iso_code.starts_with(lang.substr(0, 2))) language_fallback = &lng;
 	}
 
 	/* We haven't found the language in the config nor the one in the locale.
@@ -2238,14 +2239,14 @@ void InitializeLanguagePacks()
 		chosen_language = (language_fallback != nullptr) ? language_fallback : en_GB_fallback;
 	}
 
-	if (!ReadLanguagePack(chosen_language)) UserError("Can't read language pack '{}'", FS2OTTD(chosen_language->file));
+	if (!ReadLanguagePack(chosen_language)) UserError("Can't read language pack '{}'", FS2OTTD(chosen_language->file.native()));
 }
 
 /**
  * Get the ISO language code of the currently loaded language.
  * @return the ISO code.
  */
-const char *GetCurrentLanguageIsoCode()
+std::string_view GetCurrentLanguageIsoCode()
 {
 	return _langpack.langpack->isocode;
 }
@@ -2322,7 +2323,7 @@ class LanguagePackGlyphSearcher : public MissingGlyphSearcher {
 		return false;
 	}
 
-	void SetFontNames([[maybe_unused]] FontCacheSettings *settings, [[maybe_unused]] const char *font_name, [[maybe_unused]] const void *os_data) override
+	void SetFontNames([[maybe_unused]] FontCacheSettings *settings, [[maybe_unused]] std::string_view font_name, [[maybe_unused]] const void *os_data) override
 	{
 #if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
 		settings->small.font = font_name;

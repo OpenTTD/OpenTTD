@@ -68,7 +68,6 @@ struct SQClass;
 struct SQInstance;
 struct SQDelegable;
 
-typedef char SQChar;
 #define MAX_CHAR 0xFFFF
 
 #define SQUIRREL_VERSION	"Squirrel 2.2.5 stable - With custom OpenTTD modifications"
@@ -164,17 +163,17 @@ typedef struct tagSQObject
 }SQObject;
 
 typedef struct tagSQStackInfos{
-	const SQChar* funcname;
-	const SQChar* source;
-	SQInteger line;
+	std::string_view funcname;
+	std::string_view source;
+	SQInteger line = -1;
 }SQStackInfos;
 
 typedef struct SQVM* HSQUIRRELVM;
 typedef SQObject HSQOBJECT;
 typedef SQInteger (*SQFUNCTION)(HSQUIRRELVM);
 typedef SQInteger (*SQRELEASEHOOK)(SQUserPointer,SQInteger size);
-typedef void (*SQCOMPILERERROR)(HSQUIRRELVM,const SQChar * /*desc*/,const SQChar * /*source*/,SQInteger /*line*/,SQInteger /*column*/);
-typedef void (*SQPRINTFUNCTION)(HSQUIRRELVM,const std::string &);
+typedef void (*SQCOMPILERERROR)(HSQUIRRELVM,std::string_view /*desc*/,std::string_view /*source*/,SQInteger /*line*/,SQInteger /*column*/);
+typedef void (*SQPRINTFUNCTION)(HSQUIRRELVM,std::string_view);
 
 typedef SQInteger (*SQWRITEFUNC)(SQUserPointer,SQUserPointer,SQInteger);
 typedef SQInteger (*SQREADFUNC)(SQUserPointer,SQUserPointer,SQInteger);
@@ -182,16 +181,16 @@ typedef SQInteger (*SQREADFUNC)(SQUserPointer,SQUserPointer,SQInteger);
 typedef char32_t (*SQLEXREADFUNC)(SQUserPointer);
 
 typedef struct tagSQRegFunction{
-	const SQChar *name;
+	std::string_view name;
 	SQFUNCTION f;
 	SQInteger nparamscheck;
-	const SQChar *typemask;
+	std::optional<std::string_view> typemask;
 }SQRegFunction;
 
 typedef struct tagSQFunctionInfo {
 	SQUserPointer funcid;
-	const SQChar *name;
-	const SQChar *source;
+	std::string_view name;
+	std::string_view source;
 }SQFunctionInfo;
 
 
@@ -213,8 +212,8 @@ SQInteger sq_getvmstate(HSQUIRRELVM v);
 void sq_decreaseops(HSQUIRRELVM v, int amount);
 
 /*compiler*/
-SQRESULT sq_compile(HSQUIRRELVM v,SQLEXREADFUNC read,SQUserPointer p,const SQChar *sourcename,SQBool raiseerror);
-SQRESULT sq_compilebuffer(HSQUIRRELVM v,const SQChar *s,SQInteger size,const SQChar *sourcename,SQBool raiseerror);
+SQRESULT sq_compile(HSQUIRRELVM v,SQLEXREADFUNC read,SQUserPointer p,std::string_view sourcename,SQBool raiseerror);
+SQRESULT sq_compilebuffer(HSQUIRRELVM v,std::string_view buffer,std::string_view sourcename,SQBool raiseerror);
 void sq_enabledebuginfo(HSQUIRRELVM v, SQBool enable);
 void sq_notifyallexceptions(HSQUIRRELVM v, SQBool enable);
 void sq_setcompilererrorhandler(HSQUIRRELVM v,SQCOMPILERERROR f);
@@ -235,10 +234,9 @@ SQUserPointer sq_newuserdata(HSQUIRRELVM v,SQUnsignedInteger size);
 void sq_newtable(HSQUIRRELVM v);
 void sq_newarray(HSQUIRRELVM v,SQInteger size);
 void sq_newclosure(HSQUIRRELVM v,SQFUNCTION func,SQUnsignedInteger nfreevars);
-SQRESULT sq_setparamscheck(HSQUIRRELVM v,SQInteger nparamscheck,const SQChar *typemask);
+SQRESULT sq_setparamscheck(HSQUIRRELVM v,SQInteger nparamscheck,std::optional<std::string_view> typemask);
 SQRESULT sq_bindenv(HSQUIRRELVM v,SQInteger idx);
-void sq_pushstring(HSQUIRRELVM v,const SQChar *s,SQInteger len);
-inline void sq_pushstring(HSQUIRRELVM v, const std::string &str, SQInteger len = -1) { sq_pushstring(v, str.data(), len == -1 ? str.size() : len); }
+void sq_pushstring(HSQUIRRELVM v, std::string_view str);
 void sq_pushfloat(HSQUIRRELVM v,SQFloat f);
 void sq_pushinteger(HSQUIRRELVM v,SQInteger n);
 void sq_pushbool(HSQUIRRELVM v,SQBool b);
@@ -250,7 +248,7 @@ SQRESULT sq_getbase(HSQUIRRELVM v,SQInteger idx);
 SQBool sq_instanceof(HSQUIRRELVM v);
 void sq_tostring(HSQUIRRELVM v,SQInteger idx);
 void sq_tobool(HSQUIRRELVM v, SQInteger idx, SQBool *b);
-SQRESULT sq_getstring(HSQUIRRELVM v,SQInteger idx,const SQChar **c);
+SQRESULT sq_getstring(HSQUIRRELVM v,SQInteger idx,std::string_view &str);
 SQRESULT sq_getinteger(HSQUIRRELVM v,SQInteger idx,SQInteger *i);
 SQRESULT sq_getfloat(HSQUIRRELVM v,SQInteger idx,SQFloat *f);
 SQRESULT sq_getbool(HSQUIRRELVM v,SQInteger idx,SQBool *b);
@@ -260,10 +258,10 @@ SQRESULT sq_getuserdata(HSQUIRRELVM v,SQInteger idx,SQUserPointer *p,SQUserPoint
 SQRESULT sq_settypetag(HSQUIRRELVM v,SQInteger idx,SQUserPointer typetag);
 SQRESULT sq_gettypetag(HSQUIRRELVM v,SQInteger idx,SQUserPointer *typetag);
 void sq_setreleasehook(HSQUIRRELVM v,SQInteger idx,SQRELEASEHOOK hook);
-SQChar *sq_getscratchpad(HSQUIRRELVM v,SQInteger minsize);
+std::span<char> sq_getscratchpad(HSQUIRRELVM v,SQInteger minsize);
 SQRESULT sq_getfunctioninfo(HSQUIRRELVM v,SQInteger idx,SQFunctionInfo *fi);
 SQRESULT sq_getclosureinfo(HSQUIRRELVM v,SQInteger idx,SQUnsignedInteger *nparams,SQUnsignedInteger *nfreevars);
-SQRESULT sq_setnativeclosurename(HSQUIRRELVM v,SQInteger idx,const SQChar *name);
+SQRESULT sq_setnativeclosurename(HSQUIRRELVM v,SQInteger idx,std::string_view name);
 SQRESULT sq_setinstanceup(HSQUIRRELVM v, SQInteger idx, SQUserPointer p);
 SQRESULT sq_getinstanceup(HSQUIRRELVM v, SQInteger idx, SQUserPointer *p,SQUserPointer typetag);
 SQRESULT sq_setclassudsize(HSQUIRRELVM v, SQInteger idx, SQInteger udsize);
@@ -305,10 +303,9 @@ SQRESULT sq_clear(HSQUIRRELVM v,SQInteger idx);
 /*calls*/
 SQRESULT sq_call(HSQUIRRELVM v,SQInteger params,SQBool retval,SQBool raiseerror, int suspend = -1);
 SQRESULT sq_resume(HSQUIRRELVM v,SQBool retval,SQBool raiseerror);
-const SQChar *sq_getlocal(HSQUIRRELVM v,SQUnsignedInteger level,SQUnsignedInteger idx);
-const SQChar *sq_getfreevariable(HSQUIRRELVM v,SQInteger idx,SQUnsignedInteger nval);
-SQRESULT sq_throwerror(HSQUIRRELVM v,const SQChar *err, SQInteger len = -1);
-inline SQRESULT sq_throwerror(HSQUIRRELVM v, const std::string_view err) { return sq_throwerror(v, err.data(), err.size()); }
+std::optional<std::string_view> sq_getlocal(HSQUIRRELVM v,SQUnsignedInteger level,SQUnsignedInteger idx);
+std::optional<std::string_view> sq_getfreevariable(HSQUIRRELVM v,SQInteger idx,SQUnsignedInteger nval);
+SQRESULT sq_throwerror(HSQUIRRELVM v,std::string_view err);
 void sq_reseterror(HSQUIRRELVM v);
 void sq_getlasterror(HSQUIRRELVM v);
 
@@ -318,7 +315,7 @@ void sq_pushobject(HSQUIRRELVM v,HSQOBJECT obj);
 void sq_addref(HSQUIRRELVM v,HSQOBJECT *po);
 SQBool sq_release(HSQUIRRELVM v,HSQOBJECT *po);
 void sq_resetobject(HSQOBJECT *po);
-const SQChar *sq_objtostring(HSQOBJECT *o);
+std::optional<std::string_view> sq_objtostring(HSQOBJECT *o);
 SQBool sq_objtobool(HSQOBJECT *o);
 SQInteger sq_objtointeger(HSQOBJECT *o);
 SQFloat sq_objtofloat(HSQOBJECT *o);
@@ -363,7 +360,7 @@ void sq_setdebughook(HSQUIRRELVM v);
 
 /* Limit the total number of ops that can be consumed by an operation */
 struct SQOpsLimiter {
-	SQOpsLimiter(HSQUIRRELVM v, SQInteger ops, const char *label);
+	SQOpsLimiter(HSQUIRRELVM v, SQInteger ops, std::string_view label);
 	~SQOpsLimiter();
 private:
 	HSQUIRRELVM _v;

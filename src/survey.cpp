@@ -18,6 +18,7 @@
 #include "timer/timer_game_tick.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_economy.h"
+#include "3rdparty/fmt/ranges.h"
 
 #include "currency.h"
 #include "fontcache.h"
@@ -256,7 +257,7 @@ void SurveyConfiguration(nlohmann::json &survey)
 {
 	survey["network"] = _networking ? (_network_server ? "server" : "client") : "no";
 	if (_current_language != nullptr) {
-		survey["language"]["filename"] = FS2OTTD(_current_language->file.filename());
+		survey["language"]["filename"] = FS2OTTD(_current_language->file.filename().native());
 		survey["language"]["name"] = _current_language->name;
 		survey["language"]["isocode"] = _current_language->isocode;
 	}
@@ -274,7 +275,7 @@ void SurveyConfiguration(nlohmann::json &survey)
 		survey["video_info"] = VideoDriver::GetInstance()->GetInfoString();
 	}
 	if (BaseGraphics::GetUsedSet() != nullptr) {
-		survey["graphics_set"] = fmt::format("{}.{}", BaseGraphics::GetUsedSet()->name, BaseGraphics::GetUsedSet()->version);
+		survey["graphics_set"] = fmt::format("{}.{}", BaseGraphics::GetUsedSet()->name, fmt::join(BaseGraphics::GetUsedSet()->version, "."));
 		const GRFConfig *extra_cfg = BaseGraphics::GetUsedSet()->GetExtraConfig();
 		if (extra_cfg != nullptr && !extra_cfg->param.empty()) {
 			survey["graphics_set_parameters"] = std::span<const uint32_t>(extra_cfg->param);
@@ -283,10 +284,10 @@ void SurveyConfiguration(nlohmann::json &survey)
 		}
 	}
 	if (BaseMusic::GetUsedSet() != nullptr) {
-		survey["music_set"] = fmt::format("{}.{}", BaseMusic::GetUsedSet()->name, BaseMusic::GetUsedSet()->version);
+		survey["music_set"] = fmt::format("{}.{}", BaseMusic::GetUsedSet()->name, fmt::join(BaseMusic::GetUsedSet()->version, "."));
 	}
 	if (BaseSounds::GetUsedSet() != nullptr) {
-		survey["sound_set"] = fmt::format("{}.{}", BaseSounds::GetUsedSet()->name, BaseSounds::GetUsedSet()->version);
+		survey["sound_set"] = fmt::format("{}.{}", BaseSounds::GetUsedSet()->name, fmt::join(BaseSounds::GetUsedSet()->version, "."));
 	}
 }
 
@@ -311,7 +312,7 @@ void SurveyFont(nlohmann::json &survey)
 void SurveyCompanies(nlohmann::json &survey)
 {
 	for (const Company *c : Company::Iterate()) {
-		auto &company = survey[std::to_string(c->index.base())];
+		auto &company = survey[fmt::format("{}", c->index.base())];
 		if (c->ai_info == nullptr) {
 			company["type"] = "human";
 		} else {

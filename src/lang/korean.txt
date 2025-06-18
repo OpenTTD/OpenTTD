@@ -286,7 +286,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}창을 �
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}창 제목 - 창을 움직이려면 여기를 드래그하세요.
 STR_TOOLTIP_SHADE                                               :{BLACK}창 접기 - 창을 접어 제목만 보여줍니다.
 STR_TOOLTIP_DEBUG                                               :{BLACK}NewGRF 디버그 정보를 보여주기
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}창의 크기를 기본 크기로 되돌립니다. 현재 창 크기를 기본값으로 설정하시려면 CTRL+클릭하십시오.
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}창의 크기를 기본 크기로 되돌립니다. 현재 창 크기를 기본값으로 설정하시려면 CTRL+클릭하세요. 초기값으로 되돌리려면 두 번 CTRL+클릭하세요
 STR_TOOLTIP_STICKY                                              :{BLACK}이 창을 '모든 창 닫기' 단축키로 닫을 수 없게 고정합니다. CTRL+클릭하면 그 상태를 기본으로 설정합니다.
 STR_TOOLTIP_RESIZE                                              :{BLACK}이 창의 크기를 조절하려면 여기를 클릭하고 드래그하세요
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}창 크기를 대형/소형으로 전환합니다.
@@ -441,11 +441,10 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :게임 종료
 
 STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :도시 생성
-STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :건물 건설
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :건물 생성
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :게임 기본 설정
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :설정
 STR_SETTINGS_MENU_AI_SETTINGS                                   :인공지능 설정
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :게임 스크립트 설정
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 설정
@@ -960,22 +959,26 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}외부 �
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}게임 설정
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :일반
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}일반 설정을 선택합니다
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :일반 설정을 보여줍니다
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :그래픽
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}그래픽 설정을 선택합니다
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :그래픽 설정을 선택합니다
 STR_GAME_OPTIONS_TAB_SOUND                                      :효과음
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}효과음과 배경음 설정을 선택합니다
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :효과음과 배경음 설정을 보여줍니다
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :소셜
-STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}소셜 통합 설정을 선택합니다
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :소셜 통합 설정을 보여줍니다
+STR_GAME_OPTIONS_TAB_ADVANCED                                   :고급
+STR_GAME_OPTIONS_TAB_ADVANCED_TOOLTIP                           :고급 설정을 변경합니다
 
 STR_GAME_OPTIONS_VOLUME                                         :음량
 STR_GAME_OPTIONS_SFX_VOLUME                                     :효과음
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :배경음
 
+STR_GAME_OPTIONS_SETTING                                        :{STRING}: {ORANGE}{STRING}
+
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}화폐 단위
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}화폐 단위 선택
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :화폐 단위
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :화폐 단위 선택
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -1026,8 +1029,8 @@ STR_GAME_OPTIONS_CURRENCY_LVL                                   :라트비아 �
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :포르투갈 이스쿠두
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :우크라이나 흐리우냐
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}자동 저장
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}게임 자동 저장 간격을 선택
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :자동 저장
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :게임 자동 저장 간격을 선택
 
 # Autosave dropdown
 ###length 5
@@ -1037,77 +1040,79 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :매 30분마다
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :매 60분마다
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :매 120분마다
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}언어
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}사용할 언어를 선택하세요
+STR_GAME_OPTIONS_LANGUAGE                                       :언어
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :사용할 언어를 선택하세요
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% 번역됨)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}전체화면
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}OpenTTD를 전체화면으로 플레이하려면 클릭하세요.
+STR_GAME_OPTIONS_FULLSCREEN                                     :전체화면
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :OpenTTD를 전체화면으로 플레이하려면 클릭하세요
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}화면 해상도
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}사용할 화면 해상도를 선택하세요
+STR_GAME_OPTIONS_RESOLUTION                                     :화면 해상도
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :사용할 화면 해상도를 선택하세요
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :기타
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}하드웨어 가속
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}OpenTTD가 하드웨어 가속을 사용하게 하려면 체크하세요. 변경한 설정은 게임을 재시작한 뒤에 적용될 것입니다.
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :하드웨어 가속
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :}OpenTTD가 하드웨어 가속을 사용하게 하려면 체크하세요. 변경한 설정은 게임을 재시작한 뒤에 적용될 것입니다
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}이 설정은 게임을 재시작한 뒤에 적용될 것입니다
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}수직 동기화
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}화면과 수직 동기화하려면 체크하세요. 변경한 설정은 게임을 재시작한 뒤에 적용될 것입니다. 하드웨어 가속을 켠 경우에만 작동합니다.
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :수직 동기화
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :화면과 수직 동기화하려면 체크하세요. 변경한 설정은 게임을 재시작한 뒤에 적용될 것입니다. 하드웨어 가속을 켠 경우에만 작동합니다
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}현재 드라이버: {STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :현재 드라이버: {STRING}
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}인터페이스 크기
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}인터페이스 크기를 설정하려면 슬라이더를 드래그하세요. CTRL+드래그하면 미세 조정이 가능합니다
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}크기 자동 탐지
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}인터페이스 크기를 자동으로 탐지하려면 이 박스에 체크하세요
+STR_GAME_OPTIONS_INTERFACE                                      :인터페이스
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}크기 조절
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}인터페이스 크기를 슬라이더로 조절하려면 이 박스에 체크하세요
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :인터페이스 크기
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :인터페이스 크기를 설정하려면 슬라이더를 드래그하세요. CTRL+드래그하면 미세 조정이 가능합니다
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :크기 자동 탐지
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :인터페이스 크기를 자동으로 탐지하려면 이 박스에 체크하세요
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}원본 그래픽 글꼴 사용
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}기존 영어의 고정폭 글꼴을 사용하는 것을 선호하는 경우 이 박스에 체크하세요. 한국어 사용자는 체크하면 안 됩니다
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}글씨체 테두리를 부드럽게
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}크기 조절이 가능한 글씨체에 안티 에일리어싱을 적용하여 테두리를 부드럽게 표현하려면 이 박스에 체크하세요
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :크기 조절
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :인터페이스 크기를 슬라이더로 조절하려면 이 박스에 체크하세요
+
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :원본 그래픽 글꼴 사용
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :기존 영어의 고정폭 글꼴을 사용하는 것을 선호하는 경우 이 박스에 체크하세요. 한국어 사용자는 체크하면 안 됩니다
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :글씨체 테두리를 부드럽게
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :크기 조절이 가능한 글씨체에 안티 에일리어싱을 적용하여 테두리를 부드럽게 표현하려면 이 박스에 체크하세요
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}자동 설문
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}자동 설문조사 참여
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}이 설정을 켜면, 게임을 종료할 때마다 OpenTTD가 관련 설문 통계를 전송합니다
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}설문조사와 개인정보 보호에 대하여
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}자동 설문조사에 대한 더 많은 정보를 보여주기 위해 브라우저 창을 엽니다
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}설문조사 결과 미리보기
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}현재 진행 중인 게임의 설문조사 결과를 보여줍니다
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :자동 설문
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :자동 설문조사 참여
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :이 설정을 켜면, 게임을 종료할 때마다 OpenTTD가 관련 설문 통계를 전송합니다
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :설문조사와 개인정보 보호에 대하여
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :자동 설문조사에 대한 더 많은 정보를 보여주기 위해 브라우저 창을 엽니다
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :설문조사 결과 미리보기
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :현재 진행 중인 게임의 설문조사 결과를 보여줍니다
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}그래픽
+STR_GAME_OPTIONS_DISPLAY                                        :화면
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}화면 주사율
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}사용할 화면 주사율을 선택하세요
+STR_GAME_OPTIONS_REFRESH_RATE                                   :화면 주사율
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :사용할 화면 주사율을 선택하세요
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}60Hz를 넘는 화면 주사율을 사용하면 성능에 영향이 갈 수도 있습니다.
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}기본 그래픽 세트
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}게임에 사용할 기본 그래픽 세트를 선택하세요 (플레이 도중에는 변경할 수 없고 메인 메뉴에서만 변경 가능합니다)
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}기본 그래픽 세트에 대한 추가 정보를 봅니다.
+STR_GAME_OPTIONS_BASE_GRF                                       :기본 그래픽 세트
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :게임에 사용할 기본 그래픽 세트를 선택하세요 (플레이 도중에는 변경할 수 없고 메인 메뉴에서만 변경 가능합니다)
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :기본 그래픽 세트에 대한 추가 정보를 봅니다
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}기본 효과음 세트
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}게임에 사용할 기본 효과음 세트를 선택하세요 (플레이 도중에는 변경할 수 없고 메인 메뉴에서만 변경 가능합니다)
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}기본 효과음 세트에 대한 추가 정보를 봅니다.
+STR_GAME_OPTIONS_BASE_SFX                                       :기본 효과음 세트
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :게임에 사용할 기본 효과음 세트를 선택하세요 (플레이 도중에는 변경할 수 없고 메인 메뉴에서만 변경 가능합니다)
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :기본 효과음 세트에 대한 추가 정보를 봅니다
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}기본 배경 음악 세트
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}게임에 사용할 기본 배경 음악 세트를 선택하세요
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}기본 배경 음악 세트에 대한 추가 정보를 봅니다.
+STR_GAME_OPTIONS_BASE_MUSIC                                     :기본 배경 음악 세트
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :게임에 사용할 기본 배경 음악 세트를 선택하세요
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :기본 배경 음악 세트에 대한 추가 정보를 봅니다
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :콘텐츠 다운로드
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :다운로드할 신규 & 업데이트된 콘텐츠를 확인합니다
 
-STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(소셜 플랫폼과 연계할 수 있는 플러그인이 없음)
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :(소셜 플랫폼과 연계할 수 있는 플러그인이 없음)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}플랫폼:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}플러그인 상태:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :플랫폼:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :플러그인 상태:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}실행 중
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}초기화 실패
@@ -1220,12 +1225,11 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :신경 안 씀 
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}사용할 수 있는 인공지능이 없습니다...{}{}'온라인 콘텐츠' 시스템을 통해 인공지능을 다운로드받을 수 있습니다.
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}설정
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}검색:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}모두 펼치기
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}모두 접기
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}모든 설정 초기화
+# Settings tree in the Game Options window
+STR_CONFIG_SETTING_FILTER_TITLE                                 :검색:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :모두 펼치기
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :모두 접기
+STR_CONFIG_SETTING_RESET_ALL                                    :모든 설정 초기화
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(설명이 존재하지 않습니다)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}기본값: {ORANGE}{STRING}
@@ -1238,9 +1242,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :회사 설정 (
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}경고!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}게임의 모든 설정을 기본값으로 되돌립니다.{}정말 모든 설정을 초기화하시겠습니까?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}분류:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}종류:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}미리 지정한 검색어에 해당하는 설정 목록에 표시하도록 할 수 있습니다.
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :분류:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :종류:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :미리 지정한 검색어에 해당하는 설정 목록에 표시하도록 할 수 있습니다.
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :기본 설정 (일부 중요한 설정만 보임)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :고급 설정 (대부분의 설정을 보여줌)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :전문가 설정 / 모든 설정 (모든 설정을 보여줌)
@@ -1257,9 +1261,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :회사 설정 (
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- 없음 -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}검색 결과를 전부 보시려면{}{SILVER}분류 {BLACK}설정을 {WHITE}{STRING}{BLACK}으로 바꾸십시오.
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}검색 결과를 전부 보시려면{}{SILVER}종류 {BLACK}설정을 {WHITE}모든 설정{BLACK}으로 바꾸십시오.
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}검색 결과를 전부 보시려면{}{SILVER}분류 {BLACK}설정을 {WHITE}{STRING}{BLACK}으로, {SILVER}종류 {BLACK}설정을 {WHITE}모든 설정{BLACK}으로 바꾸십시오.
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :검색 결과를 전부 보시려면{}{PUSH_COLOUR}{SILVER}분류 {POP_COLOUR}설정을 {PUSH_COLOUR}{WHITE}{STRING}{POP_COLOUR}으로 바꾸세요
+STR_CONFIG_SETTING_TYPE_HIDES                                   :검색 결과를 전부 보시려면{}{PUSH_COLOUR}{SILVER}종류 {POP_COLOUR}설정을 {PUSH_COLOUR}{WHITE}모든 설정{POP_COLOUR}으로 바꾸세요
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :검색 결과를 전부 보시려면{}{PUSH_COLOUR}{SILVER}분류 {POP_COLOUR}설정을 {PUSH_COLOUR}{WHITE}{STRING}{POP_COLOUR}으로, {PUSH_COLOUR}{SILVER}종류 {POP_COLOUR}설정을 {PUSH_COLOUR}{WHITE}모든 설정{POP_COLOUR}으로 바꾸세요
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :아니요
@@ -1371,7 +1375,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :경사도 설�
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :자동차/전차에 적용시킬 경사도를 설정합니다. 값이 높을수록 차량이 언덕을 오를 때 더 힘이 듭니다.
 
 STR_CONFIG_SETTING_FORBID_90_DEG                                :열차의 90도 회전을 금지함: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :─ 모양의 수평 선로와 │ 모양의 수직 선로가 바로 이어져 만날 때 90도 회전이 발생합니다. 이 설정을 켜면, 열차가 칸 가장자리를 통과할 때 90도로 회전할 수 있도록 허용합니다. 이 설정은 선박의 회전 반경에도 적용됩니다
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :─ 모양의 수평 선로와 │ 모양의 수직 선로가 바로 이어져 만날 때 90도 회전이 발생합니다. 이 설정을 켜면, 열차가 칸 가장자리를 통과할 때 90도로 회전할 수 없도록 금지합니다
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :역이 같은 방향으로 붙어있지 않아도 같은 이름의 역 짓기 허용: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :이미 존재하는 역을 직접 건드리지 않고도 역의 일부분을 새로 추가/확장하는 것을 허용합니다. 인접한 칸에 기존과 다른 새로운 역을 놓을 때에는 CTRL+클릭해야 합니다
@@ -2099,7 +2103,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :게임 단위 (
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :노트
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :차량의 힘 단위: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :출력할 차량의 힘 단위를 선택합니다.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :출력할 차량의 힘 단위를 선택합니다
 ###length 3
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :야드파운드법 (마력)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :미터법 (마력)
@@ -2113,21 +2117,21 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :미터법 (톤)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :국제표준규격 (kg)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :부피 단위: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :부피를 표시할 때 선택한 단위를 사용하여 나타냅니다.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :부피를 표시할 때 선택한 단위를 사용하여 나타냅니다
 ###length 3
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :야드파운드법 (갤런)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :미터법 (리터)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :국제표준규격 (m³)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :견인 효과 단위: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :견인 효과(견인력)를 표시할 때 선택한 단위를 사용하여 나타냅니다.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :견인 효과(견인력)를 표시할 때 선택한 단위를 사용하여 나타냅니다
 ###length 3
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :야드파운드법 (파운드중)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :미터법 (kgf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :국제표준규격 (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :높이 단위: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :높이를 표시할 때 선택한 단위를 사용하여 나타냅니다.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :높이를 표시할 때 선택한 단위를 사용하여 나타냅니다
 ###length 3
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :야드파운드법 (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :미터법 (m)
@@ -2192,7 +2196,8 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... 호�
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU 드라이버가 게임을 종료시켰습니다. 하드웨어 가속이 비활성화됩니다
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}새 게임
 STR_INTRO_LOAD_GAME                                             :{BLACK}불러오기
@@ -2204,11 +2209,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}멀티 �
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}게임 설정
 STR_INTRO_HIGHSCORE                                             :{BLACK}고득점 순위표
 STR_INTRO_HELP                                                  :{BLACK}도움말 & 매뉴얼
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}설정
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 설정
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}온라인 콘텐츠
-STR_INTRO_AI_SETTINGS                                           :{BLACK}인공지능 설정
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}게임 스크립트 설정
 STR_INTRO_QUIT                                                  :{BLACK}종료
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}새 게임을 시작합니다.{}CTRL+클릭하시면 지도 설정을 건너뛰고 바로 시작합니다
@@ -2226,11 +2227,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}장난�
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}게임 기본 설정 창을 엽니다
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}고득점 순위표를 엽니다
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}각종 문서와 온라인 링크를 확인합니다
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}설정 창을 엽니다
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF 설정 창을 엽니다
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}새로 나왔거나 업데이트된 콘텐츠를 체크하여 다운로드합니다
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}인공지능 설정 창을 엽니다
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}게임 스크립트 설정 창을 엽니다
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD'를 종료합니다.
 
 STR_INTRO_BASESET                                               :{BLACK}현재 선택된 기본 그래픽 세트에는 {NUM}개의 스프라이트가 빠져있습니다. 기본 세트를 업데이트하세요.
@@ -2867,7 +2864,7 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :바깥쪽 시�
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :안쪽 시내
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :도시 중심
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :도시 발전 방지
+STR_HOUSE_PICKER_PROTECT_TITLE                                  :업그레이드 방지
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :이 건물이 도시가 성장함에 따라 교체되는 것을 막을지 여부를 선택합니다
 STR_HOUSE_PICKER_PROTECT_OFF                                    :끄기
 STR_HOUSE_PICKER_PROTECT_ON                                     :켜기
@@ -3076,6 +3073,12 @@ STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}임의
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}도시 크기 선택
 STR_FOUND_TOWN_CITY                                             :{BLACK}대도시로 만듦
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}대도시는 도시보다 빠르게 성장합니다.{}도시를 만들었을 때, 위 설정에 따라 더욱 커집니다
+
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}도시 확장:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :건물
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :도시의 건물을 확장합니다
+STR_FOUND_TOWN_EXPAND_ROADS                                     :도로
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :도시의 도로를 확장합니다
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}도시 도로 설계:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}이 도시에 사용할 도로 설계를 선택합니다
@@ -3526,15 +3529,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}프리�
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}사용 가능한 프리셋 목록입니다. 아래에 같은 이름을 복사하려면 선택하세요
 STR_SAVE_PRESET_TITLE                                           :{BLACK}프리셋의 이름을 입력하세요
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}저장할 프리셋에 지정할 이름입니다
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}취소
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}프리셋을 바꾸지 않습니다
 STR_SAVE_PRESET_SAVE                                            :{BLACK}저장
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}이 프리셋을 선택한 이름으로 저장합니다
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}기본 그래픽 매개 변수를 변경합니다
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF 매개 변숫값 변경
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}닫기
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}초기화
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}모든 매개 변숫값을 기본값으로 설정합니다
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :매개 변수 {NUM}번
@@ -3703,6 +3703,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}이 도�
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}확장
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}도시의 크기를 키웁니다.
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}건물 확장
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}도시의 건물을 확장합니다
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}도로 확장
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}도시의 도로를 확장합니다
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}삭제
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}이 도시를 완전히 삭제
 
@@ -4441,10 +4445,10 @@ STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}선박�
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}항공기의 경로를 보여줍니다. CTRL+클릭하면 항공기의 시간표를 보여줍니다
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}열차의 상세정보를 보여줍니다
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}차량의 상세정보를 보여줍니다
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}선박의 상세정보를 보여줍니다
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}항공기의 상세정보를 보여줍니다
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}열차의 상세정보를 보여줍니다. CTRL+클릭하면 열차 그룹 창을 엽니다
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}차량의 상세정보를 보여줍니다. CTRL+클릭하면 차량 그룹 창을 엽니다
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}선박의 상세정보를 보여줍니다. CTRL+클릭하면 선박 그룹 창을 엽니다
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}항공기의 상세정보를 보여줍니다. CTRL+클릭하면 항공기 그룹 창을 엽니다
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}현재 열차 행동 - 열차 운행을 시작/정지하려면 클릭하세요
@@ -4768,15 +4772,15 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}시간�
 STR_TIMETABLE_NO_TRAVEL                                         :운행정보 없음
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :이동 (자동; 다음 경로에 의해 시간표 작성)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :운행 (시간표가 작성되지 않음)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :최대 {2:VELOCITY}의 속력으로 운행 (시간표 작성 안 됨)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :최대 {VELOCITY}의 속력으로 운행 (시간표 작성 안 됨)
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING}에 걸쳐 운행
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{0:STRING} 동안 최대 {1:VELOCITY}의 속력으로 운행
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :운행 ({STRING} 동안, 시간표 작성 안 됨)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :최대 {1:VELOCITY}의 속력으로 운행 ({0:STRING} 동안, 시간표 작성 안 됨)
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}({STRING} 동안 정차, 시간표 작성 안 됨)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}({STRING} 동안 운행, 시간표 작성 안 됨)
-STR_TIMETABLE_STAY_FOR                                          :& {STRING} 동안 정차
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :& 다음 목적지({STRING})로 이동
+STR_TIMETABLE_STAY_FOR                                          :{SPACE}& {STRING} 동안 정차
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}& 다음 목적지({STRING})로 이동
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}이 시간표는 완주하는데 대략 {0:STRING}{G 0 "이" "가"} 걸립니다
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}이 시간표는 완주하는데 {0:STRING}{G 0 "이" "가"} 걸립니다
@@ -4895,8 +4899,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}주소:
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}적용
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}선택한 스크립트를 적용합니다
-STR_AI_LIST_CANCEL                                              :{BLACK}취소
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}인공지능 스크립트를 바꾸지 않습니다
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}스크린 샷 찍기
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}일반 스크린 샷
@@ -4909,7 +4911,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}미니�
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}인공지능 매개 변수
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}게임 스크립트 매개 변수
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}닫기
 STR_AI_SETTINGS_RESET                                           :{BLACK}초기화
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
@@ -5887,6 +5888,7 @@ STR_CURRENCY_SHORT_GIGA                                         :{NBSP}bn
 STR_CURRENCY_SHORT_TERA                                         :{NBSP}tn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_LEFT_ARROW                                             :{LEFT_ARROW}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
@@ -5926,3 +5928,11 @@ STR_SHIP                                                        :{G=f}{BLACK}{SH
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :배지 설정을 엽니다
+STR_BADGE_CONFIG_RESET                                          :초기화
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}배지 아이콘
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}배지 필터
+STR_BADGE_CONFIG_PREVIEW                                        :미리보기 이미지
+STR_BADGE_CONFIG_NAME                                           :이름
+STR_BADGE_FILTER_ANY_LABEL                                      :모든 {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} = {STRING}

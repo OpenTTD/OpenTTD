@@ -83,10 +83,10 @@ static ChangeInfoResult ObjectChangeInfo(uint first, uint last, int prop, ByteRe
 	}
 
 	/* Allocate object specs if they haven't been allocated already. */
-	if (_cur.grffile->objectspec.size() < last) _cur.grffile->objectspec.resize(last);
+	if (_cur_gps.grffile->objectspec.size() < last) _cur_gps.grffile->objectspec.resize(last);
 
 	for (uint id = first; id < last; ++id) {
-		auto &spec = _cur.grffile->objectspec[id];
+		auto &spec = _cur_gps.grffile->objectspec[id];
 
 		if (prop != 0x08 && spec == nullptr) {
 			/* If the object property 08 is not yet set, ignore this property */
@@ -151,7 +151,7 @@ static ChangeInfoResult ObjectChangeInfo(uint first, uint last, int prop, ByteRe
 
 			case 0x11: // Animation info
 				spec->animation.frames = buf.ReadByte();
-				spec->animation.status = buf.ReadByte();
+				spec->animation.status = static_cast<AnimationStatus>(buf.ReadByte());
 				break;
 
 			case 0x12: // Animation speed
@@ -159,7 +159,7 @@ static ChangeInfoResult ObjectChangeInfo(uint first, uint last, int prop, ByteRe
 				break;
 
 			case 0x13: // Animation triggers
-				spec->animation.triggers = buf.ReadWord();
+				spec->animation.triggers = static_cast<ObjectAnimationTriggers>(buf.ReadWord());
 				break;
 
 			case 0x14: // Removal cost multiplier

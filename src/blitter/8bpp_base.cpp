@@ -43,9 +43,10 @@ void Blitter_8bppBase::DrawLine(void *video, int x, int y, int x2, int y2, int s
 
 void Blitter_8bppBase::DrawRect(void *video, int width, int height, uint8_t colour)
 {
+	std::byte *p = static_cast<std::byte *>(video);
 	do {
-		memset(video, colour, width);
-		video = (uint8_t *)video + _screen.pitch;
+		std::fill_n(p, width, static_cast<std::byte>(colour));
+		p += _screen.pitch;
 	} while (--height);
 }
 
@@ -55,7 +56,7 @@ void Blitter_8bppBase::CopyFromBuffer(void *video, const void *src, int width, i
 	const uint8_t *usrc = (const uint8_t *)src;
 
 	for (; height > 0; height--) {
-		memcpy(dst, usrc, width * sizeof(uint8_t));
+		std::copy_n(usrc, width, dst);
 		usrc += width;
 		dst += _screen.pitch;
 	}
@@ -67,7 +68,7 @@ void Blitter_8bppBase::CopyToBuffer(const void *video, void *dst, int width, int
 	const uint8_t *src = (const uint8_t *)video;
 
 	for (; height > 0; height--) {
-		memcpy(udst, src, width * sizeof(uint8_t));
+		std::copy_n(src, width, udst);
 		src += _screen.pitch;
 		udst += width;
 	}
@@ -79,7 +80,7 @@ void Blitter_8bppBase::CopyImageToBuffer(const void *video, void *dst, int width
 	const uint8_t *src = (const uint8_t *)video;
 
 	for (; height > 0; height--) {
-		memcpy(udst, src, width * sizeof(uint8_t));
+		std::copy_n(src, width, udst);
 		src += _screen.pitch;
 		udst += dst_pitch;
 	}
@@ -110,11 +111,7 @@ void Blitter_8bppBase::ScrollBuffer(void *video, int &left, int &top, int &width
 			width += scroll_x;
 		}
 
-		for (int h = height; h > 0; h--) {
-			memcpy(dst, src, width * sizeof(uint8_t));
-			src -= _screen.pitch;
-			dst -= _screen.pitch;
-		}
+		Blitter::MovePixels(src, dst, width, height, -_screen.pitch);
 	} else {
 		/* Calculate pointers */
 		dst = (uint8_t *)video + left + top * _screen.pitch;
@@ -134,13 +131,7 @@ void Blitter_8bppBase::ScrollBuffer(void *video, int &left, int &top, int &width
 			width += scroll_x;
 		}
 
-		/* the y-displacement may be 0 therefore we have to use memmove,
-		 * because source and destination may overlap */
-		for (int h = height; h > 0; h--) {
-			memmove(dst, src, width * sizeof(uint8_t));
-			src += _screen.pitch;
-			dst += _screen.pitch;
-		}
+		Blitter::MovePixels(src, dst, width, height, _screen.pitch);
 	}
 }
 

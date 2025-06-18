@@ -14,9 +14,6 @@
 
 #include "table/sprites.h"
 
-#define GENERAL_SPRITE_COLOUR(colour) ((colour) + PALETTE_RECOLOUR_START)
-#define COMPANY_SPRITE_COLOUR(owner) (GENERAL_SPRITE_COLOUR(_company_colours[owner]))
-
 /* The following describes bunch of sprites to be drawn together in a single 3D
  * bounding box. Used especially for various multi-sprite buildings (like
  * depots or stations): */
@@ -61,8 +58,7 @@ struct DrawTileSprites {
 struct DrawTileSpriteSpan : DrawTileSprites {
 	std::span<const DrawTileSeqStruct> seq; ///< Child sprites,
 
-	template <size_t N>
-	DrawTileSpriteSpan(PalSpriteID ground, const DrawTileSeqStruct (&seq)[N]) : DrawTileSprites(ground), seq(std::begin(seq), std::end(seq)) {}
+	DrawTileSpriteSpan(PalSpriteID ground, std::span<const DrawTileSeqStruct> seq) : DrawTileSprites(ground), seq(seq) {}
 	DrawTileSpriteSpan(PalSpriteID ground) : DrawTileSprites(ground) {};
 	DrawTileSpriteSpan() = default;
 
@@ -179,5 +175,12 @@ inline PaletteID GroundSpritePaletteTransform(SpriteID image, PaletteID pal, Pal
 		return PAL_NONE;
 	}
 }
+
+/**
+ * Get recolour palette for a colour.
+ * @param colour Colour.
+ * @return Recolour palette.
+ */
+static inline PaletteID GetColourPalette(Colours colour) { return PALETTE_RECOLOUR_START + colour; }
 
 #endif /* SPRITE_H */

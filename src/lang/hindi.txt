@@ -157,7 +157,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :निकास
 
 
 # Settings menu
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :समायोजन
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :पथ-संकेतों के नाम दिखायें
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :पारदर्शी संकेत
 
@@ -328,6 +327,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}इस �
 
 
 
+
 ###length 45
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :फिनलैंड मार्का
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :आइसलैंडिक क्रोना
@@ -342,11 +342,12 @@ STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}
 
 
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}हार्डवेयर एक्सिलरेशन
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :हार्डवेयर एक्सिलरेशन
 
 
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}इंटरफ़ेस का आकार
+
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :इंटरफ़ेस का आकार
 
 
 
@@ -397,7 +398,7 @@ STR_DISASTER_NORMAL                                             :सामान
 STR_CITY_APPROVAL_TOLERANT                                      :सहिष्णु
 
 
-# Settings tree window
+# Settings tree in the Game Options window
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}डिफ़ॉल्ट मान: {ORANGE}{STRING}
 
 
@@ -930,6 +931,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}लघ�
 STR_FOUND_TOWN_CITY                                             :{BLACK}शहर
 
 
+
 # Fund new industry window
 
 # Industry cargoes window
@@ -1022,8 +1024,6 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}प्�
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}उपलब्ध प्रीसेट की सूची, इसे नीचे सेव नाम पर कॉपी करने के लिए एक का चयन करें
 STR_SAVE_PRESET_TITLE                                           :{BLACK}प्रीसेट के लिए एक नाम दर्ज करें
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}सहेजने के लिए प्रीसेट के लिए वर्तमान में चयनित नाम
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}रद्द
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}प्रीसेट न बदलें
 STR_SAVE_PRESET_SAVE                                            :{BLACK}सेव
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}प्रीसेट को वर्तमान चयनित नाम पर सहेजें
 

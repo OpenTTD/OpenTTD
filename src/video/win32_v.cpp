@@ -152,9 +152,7 @@ bool VideoDriver_Win32Base::MakeWindow(bool full_screen, bool resize)
 	}
 
 	if (full_screen) {
-		DEVMODE settings;
-
-		memset(&settings, 0, sizeof(settings));
+		DEVMODE settings{};
 		settings.dmSize = sizeof(settings);
 		settings.dmFields =
 			DM_BITSPERPEL |
@@ -346,8 +344,8 @@ static LRESULT HandleIMEComposition(HWND hwnd, WPARAM wParam, LPARAM lParam)
 
 			/* Transmit text to windowing system. */
 			if (len > 0) {
-				HandleTextInput(nullptr, true); // Clear marked string.
-				HandleTextInput(FS2OTTD(str).c_str());
+				HandleTextInput({}, true); // Clear marked string.
+				HandleTextInput(FS2OTTD(str));
 			}
 			SetCompositionPos(hwnd);
 
@@ -364,7 +362,7 @@ static LRESULT HandleIMEComposition(HWND hwnd, WPARAM wParam, LPARAM lParam)
 
 			if (len > 0) {
 				static char utf8_buf[1024];
-				convert_from_fs(str.c_str(), utf8_buf);
+				convert_from_fs(str, utf8_buf);
 
 				/* Convert caret position from bytes in the input string to a position in the UTF-8 encoded string. */
 				LONG caret_bytes = ImmGetCompositionString(hIMC, GCS_CURSORPOS, nullptr, 0);
@@ -380,9 +378,9 @@ static LRESULT HandleIMEComposition(HWND hwnd, WPARAM wParam, LPARAM lParam)
 					++caret;
 				}
 
-				HandleTextInput(utf8_buf, true, utf8_buf + caret.GetByteOffset());
+				HandleTextInput(utf8_buf, true, caret.GetByteOffset());
 			} else {
-				HandleTextInput(nullptr, true);
+				HandleTextInput({}, true);
 			}
 
 			lParam &= ~(GCS_COMPSTR | GCS_COMPATTR | GCS_COMPCLAUSE | GCS_CURSORPOS | GCS_DELTASTART);
@@ -400,7 +398,7 @@ static void CancelIMEComposition(HWND hwnd)
 	if (hIMC != nullptr) ImmNotifyIME(hIMC, NI_COMPOSITIONSTR, CPS_CANCEL, 0);
 	ImmReleaseContext(hwnd, hIMC);
 	/* Clear any marked string from the current edit box. */
-	HandleTextInput(nullptr, true);
+	HandleTextInput({}, true);
 }
 
 static bool IsDarkModeEnabled()
@@ -442,7 +440,7 @@ static void SetDarkModeForWindow(HWND hWnd, bool dark_mode)
 	 * reason, the code uses dynamic loading and ignores any errors for a best-effort result. */
 	static LibraryLoader _dwmapi("dwmapi.dll");
 	typedef HRESULT(WINAPI *PFNDWMSETWINDOWATTRIBUTE)(HWND, DWORD, LPCVOID, DWORD);
-	static PFNDWMSETWINDOWATTRIBUTE DwmSetWindowAttribute = _dwmapi.GetFunction("DwmSetWindowAttribute");
+	static const PFNDWMSETWINDOWATTRIBUTE DwmSetWindowAttribute = _dwmapi.GetFunction("DwmSetWindowAttribute");
 
 	if (DwmSetWindowAttribute != nullptr) {
 		/* Contrary to the published documentation, DWMWA_USE_IMMERSIVE_DARK_MODE does not change the
@@ -597,7 +595,7 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 		case WM_IME_ENDCOMPOSITION:
 			/* Clear any pending composition string. */
-			HandleTextInput(nullptr, true);
+			HandleTextInput({}, true);
 			if (DrawIMECompositionString()) return 0;
 			break;
 
@@ -1379,13 +1377,13 @@ static void LoadWGLExtensions()
 			/* Get list of WGL extensions. */
 			PFNWGLGETEXTENSIONSSTRINGARBPROC wglGetExtensionsStringARB = (PFNWGLGETEXTENSIONSSTRINGARBPROC)wglGetProcAddress("wglGetExtensionsStringARB");
 			if (wglGetExtensionsStringARB != nullptr) {
-				const char *wgl_exts = wglGetExtensionsStringARB(dc);
+				std::string_view wgl_exts = wglGetExtensionsStringARB(dc);
 				/* Bind supported functions. */
-				if (FindStringInExtensionList(wgl_exts, "WGL_ARB_create_context") != nullptr) {
+				if (HasStringInExtensionList(wgl_exts, "WGL_ARB_create_context")) {
 					_wglCreateContextAttribsARB = (PFNWGLCREATECONTEXTATTRIBSARBPROC)wglGetProcAddress("wglCreateContextAttribsARB");
 				}
-				_hasWGLARBCreateContextProfile = FindStringInExtensionList(wgl_exts, "WGL_ARB_create_context_profile") != nullptr;
-				if (FindStringInExtensionList(wgl_exts, "WGL_EXT_swap_control") != nullptr) {
+				_hasWGLARBCreateContextProfile = HasStringInExtensionList(wgl_exts, "WGL_ARB_create_context_profile");
+				if (HasStringInExtensionList(wgl_exts, "WGL_EXT_swap_control")) {
 					_wglSwapIntervalEXT = (PFNWGLSWAPINTERVALEXTPROC)wglGetProcAddress("wglSwapIntervalEXT");
 				}
 			}

@@ -34,6 +34,7 @@
 #include "townname_func.h"
 #include "core/backup_type.hpp"
 #include "core/geometry_func.hpp"
+#include "core/string_consumer.hpp"
 #include "genworld.h"
 #include "fios.h"
 #include "stringfilter_type.h"
@@ -86,25 +87,6 @@ private:
 
 	Dimension icon_size{}; ///< Dimensions of company icon
 	Dimension exclusive_size{}; ///< Dimensions of exclusive icon
-
-	/**
-	 * Get the position of the Nth set bit.
-	 *
-	 * If there is no Nth bit set return -1
-	 *
-	 * @param n The Nth set bit from which we want to know the position
-	 * @return The position of the Nth set bit, or -1 if no Nth bit set.
-	 */
-	int GetNthSetBit(int n)
-	{
-		if (n >= 0) {
-			for (uint i : SetBitIterator(this->enabled_actions.base())) {
-				n--;
-				if (n < 0) return i;
-			}
-		}
-		return -1;
-	}
 
 	/**
 	 * Gets all town authority actions enabled in settings.
@@ -201,7 +183,7 @@ public:
 				DrawCompanyIcon(c->index, icon.left, text.top + icon_y_offset);
 
 				if (this->town->exclusivity == c->index) {
-					DrawSprite(SPR_EXCLUSIVE_TRANSPORT, COMPANY_SPRITE_COLOUR(c->index), exclusive.left, text.top + exclusive_y_offset);
+					DrawSprite(SPR_EXCLUSIVE_TRANSPORT, GetCompanyPalette(c->index), exclusive.left, text.top + exclusive_y_offset);
 				}
 
 				int rating = this->town->ratings[c->index];
@@ -289,7 +271,7 @@ public:
 				break;
 
 			case WID_TA_RATING_INFO:
-				resize.height = std::max({this->icon_size.height + WidgetDimensions::scaled.vsep_normal, this->exclusive_size.height + WidgetDimensions::scaled.vsep_normal, (uint)GetCharacterHeight(FS_NORMAL)});
+				fill.height = resize.height = std::max({this->icon_size.height + WidgetDimensions::scaled.vsep_normal, this->exclusive_size.height + WidgetDimensions::scaled.vsep_normal, (uint)GetCharacterHeight(FS_NORMAL)});
 				size.height = 9 * resize.height + padding.height;
 				break;
 		}
@@ -313,14 +295,14 @@ public:
 			case WID_TA_COMMAND_LIST: {
 				int y = this->GetRowFromWidget(pt.y, WID_TA_COMMAND_LIST, 1, GetCharacterHeight(FS_NORMAL)) - 1;
 
-				y = GetNthSetBit(y);
-				if (y >= 0) {
-					this->sel_action = static_cast<TownAction>(y);
-					this->SetDirty();
-				}
+				auto action = this->enabled_actions.GetNthSetBit(y);
+				if (!action.has_value()) break;
+
+				this->sel_action = *action;
+				this->SetDirty();
 
 				/* When double-clicking, continue */
-				if (click_count == 1 || y < 0 || !this->available_actions.Test(this->sel_action)) break;
+				if (click_count == 1 || !this->available_actions.Test(this->sel_action)) break;
 				[[fallthrough]];
 			}
 
@@ -331,7 +313,7 @@ public:
 	}
 
 	/** Redraw the whole window on a regular interval. */
-	IntervalTimer<TimerWindow> redraw_interval = {std::chrono::seconds(3), [this](auto) {
+	const IntervalTimer<TimerWindow> redraw_interval = {std::chrono::seconds(3), [this](auto) {
 		this->SetDirty();
 	}};
 
@@ -372,13 +354,12 @@ public:
 		this->CreateNestedTree();
 
 		this->town = Town::Get(window_number);
-		if (this->town->larger_town) this->GetWidget<NWidgetCore>(WID_TV_CAPTION)->SetString(STR_TOWN_VIEW_CITY_CAPTION);
 
 		this->FinishInitNested(window_number);
 
 		this->flags.Set(WindowFlag::DisableVpScroll);
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_TV_VIEWPORT);
-		nvp->InitializeViewport(this, this->town->xy, ScaleZoomGUI(ZOOM_LVL_TOWN));
+		nvp->InitializeViewport(this, this->town->xy, ScaleZoomGUI(ZoomLevel::Town));
 
 		/* disable renaming town in network games if you are not the server */
 		this->SetWidgetDisabledState(WID_TV_CHANGE_NAME, _networking && !_network_server);
@@ -392,7 +373,7 @@ public:
 
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_TV_CAPTION) return GetString(STR_TOWN_VIEW_TOWN_CAPTION, this->town->index);
+		if (widget == WID_TV_CAPTION) return GetString(this->town->larger_town ? STR_TOWN_VIEW_CITY_CAPTION : STR_TOWN_VIEW_TOWN_CAPTION, this->town->index);
 
 		return this->Window::GetWidgetString(widget, stringid);
 	}
@@ -507,10 +488,17 @@ public:
 				SetViewportCatchmentTown(Town::Get(this->window_number), !this->IsWidgetLowered(WID_TV_CATCHMENT));
 				break;
 
-			case WID_TV_EXPAND: { // expand town - only available on Scenario editor
-				Command<CMD_EXPAND_TOWN>::Post(STR_ERROR_CAN_T_EXPAND_TOWN, static_cast<TownID>(this->window_number), 0);
+			case WID_TV_EXPAND: // expand town - only available on Scenario editor
+				Command<CMD_EXPAND_TOWN>::Post(STR_ERROR_CAN_T_EXPAND_TOWN, static_cast<TownID>(this->window_number), 0, {TownExpandMode::Buildings, TownExpandMode::Roads});
 				break;
-			}
+
+			case WID_TV_EXPAND_BUILDINGS: // expand buildings of town - only available on Scenario editor
+				Command<CMD_EXPAND_TOWN>::Post(STR_ERROR_CAN_T_EXPAND_TOWN, static_cast<TownID>(this->window_number), 0, {TownExpandMode::Buildings});
+				break;
+
+			case WID_TV_EXPAND_ROADS: // expand roads of town - only available on Scenario editor
+				Command<CMD_EXPAND_TOWN>::Post(STR_ERROR_CAN_T_EXPAND_TOWN, static_cast<TownID>(this->window_number), 0, {TownExpandMode::Roads});
+				break;
 
 			case WID_TV_DELETE: // delete town - only available on Scenario editor
 				Command<CMD_DELETE_TOWN>::Post(STR_ERROR_TOWN_CAN_T_DELETE, static_cast<TownID>(this->window_number));
@@ -577,8 +565,9 @@ public:
 		}
 	}
 
-	void OnMouseWheel(int wheel) override
+	void OnMouseWheel(int wheel, WidgetID widget) override
 	{
+		if (widget != WID_TV_VIEWPORT) return;
 		if (_settings_client.gui.scrollwheel_scrolling != SWS_OFF) {
 			DoZoomInOutWindow(wheel < 0 ? ZOOM_IN : ZOOM_OUT, this);
 		}
@@ -604,7 +593,7 @@ public:
 		Command<CMD_RENAME_TOWN>::Post(STR_ERROR_CAN_T_RENAME_TOWN, static_cast<TownID>(this->window_number), *str);
 	}
 
-	IntervalTimer<TimerGameCalendar> daily_interval = {{TimerGameCalendar::DAY, TimerGameCalendar::Priority::NONE}, [this](auto) {
+	const IntervalTimer<TimerGameCalendar> daily_interval = {{TimerGameCalendar::DAY, TimerGameCalendar::Priority::NONE}, [this](auto) {
 		/* Refresh after possible snowline change */
 		this->SetDirty();
 	}};
@@ -644,7 +633,7 @@ static constexpr NWidgetPart _nested_town_editor_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, WID_TV_CHANGE_NAME), SetAspect(WidgetDimensions::ASPECT_RENAME), SetSpriteTip(SPR_RENAME, STR_TOWN_VIEW_RENAME_TOOLTIP),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_TV_CAPTION), SetStringTip(STR_TOWN_VIEW_TOWN_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_TV_CAPTION), SetToolTip(STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, WID_TV_CENTER_VIEW), SetAspect(WidgetDimensions::ASPECT_LOCATION), SetSpriteTip(SPR_GOTO_LOCATION, STR_TOWN_VIEW_CENTER_TOOLTIP),
 		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_BROWN),
@@ -656,10 +645,14 @@ static constexpr NWidgetPart _nested_town_editor_view_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_TV_INFO), SetMinimalSize(260, 32), SetResize(1, 0), SetFill(1, 0), EndContainer(),
-	NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TV_EXPAND), SetMinimalSize(80, 12), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_TOWN_VIEW_EXPAND_BUTTON, STR_TOWN_VIEW_EXPAND_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TV_DELETE), SetMinimalSize(80, 12), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_TOWN_VIEW_DELETE_BUTTON, STR_TOWN_VIEW_DELETE_TOOLTIP),
-		NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_TV_CATCHMENT), SetMinimalSize(40, 12), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_BUTTON_CATCHMENT, STR_TOOLTIP_CATCHMENT),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TV_EXPAND), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_TOWN_VIEW_EXPAND_BUTTON, STR_TOWN_VIEW_EXPAND_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TV_EXPAND_BUILDINGS), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON, STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TV_EXPAND_ROADS), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_TOWN_VIEW_EXPAND_ROADS_BUTTON, STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TV_DELETE), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_TOWN_VIEW_DELETE_BUTTON, STR_TOWN_VIEW_DELETE_TOOLTIP),
+		NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_TV_CATCHMENT), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_BUTTON_CATCHMENT, STR_TOOLTIP_CATCHMENT),
 		NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
 	EndContainer(),
 };
@@ -706,11 +699,6 @@ static constexpr NWidgetPart _nested_town_directory_widgets[] = {
 			NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
 		EndContainer(),
 	EndContainer(),
-};
-
-/** Enum referring to the Hotkeys in the town directory window */
-enum TownDirectoryHotkeys : int32_t {
-	TDHK_FOCUS_FILTER_BOX, ///< Focus the filter box
 };
 
 /** Town directory window class. */
@@ -914,7 +902,7 @@ public:
 				Dimension icon_size = GetSpriteSize(SPR_TOWN_RATING_GOOD);
 				d.width += icon_size.width + 2;
 				d.height = std::max(d.height, icon_size.height);
-				resize.height = d.height;
+				fill.height = resize.height = d.height;
 				d.height *= 5;
 				d.width += padding.width;
 				d.height += padding.height;
@@ -968,7 +956,7 @@ public:
 		}
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		if (widget != WID_TD_SORT_CRITERIA) return;
 
@@ -986,7 +974,7 @@ public:
 	}
 
 	/** Redraw the whole window on a regular interval. */
-	IntervalTimer<TimerWindow> rebuild_interval = {std::chrono::seconds(3), [this](auto) {
+	const IntervalTimer<TimerWindow> rebuild_interval = {std::chrono::seconds(3), [this](auto) {
 		this->BuildSortTownList();
 		this->SetDirty();
 	}};
@@ -1026,21 +1014,8 @@ public:
 		}
 	}
 
-	EventState OnHotkey(int hotkey) override
-	{
-		switch (hotkey) {
-			case TDHK_FOCUS_FILTER_BOX:
-				this->SetFocusedWidget(WID_TD_FILTER);
-				SetFocusedWindow(this); // The user has asked to give focus to the text box, so make sure this window is focused.
-				break;
-			default:
-				return ES_NOT_HANDLED;
-		}
-		return ES_HANDLED;
-	}
-
 	static inline HotkeyList hotkeys {"towndirectory", {
-		Hotkey('F', "focus_filter_box", TDHK_FOCUS_FILTER_BOX),
+		Hotkey('F', "focus_filter_box", WID_TD_FILTER),
 	}};
 };
 
@@ -1096,7 +1071,6 @@ static constexpr NWidgetPart _nested_found_town_widgets[] = {
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_TF_RANDOM_TOWN), SetStringTip(STR_FOUND_TOWN_RANDOM_TOWN_BUTTON, STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP), SetFill(1, 0),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_TF_MANY_RANDOM_TOWNS), SetStringTip(STR_FOUND_TOWN_MANY_RANDOM_TOWNS, STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP), SetFill(1, 0),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_TF_LOAD_FROM_FILE), SetStringTip(STR_FOUND_TOWN_LOAD_FROM_FILE, STR_FOUND_TOWN_LOAD_FROM_FILE_TOOLTIP), SetFill(1, 0),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_TF_EXPAND_ALL_TOWNS), SetStringTip(STR_FOUND_TOWN_EXPAND_ALL_TOWNS, STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
 			EndContainer(),
 
@@ -1138,6 +1112,18 @@ static constexpr NWidgetPart _nested_found_town_widgets[] = {
 					EndContainer(),
 				EndContainer(),
 			EndContainer(),
+
+			/* Town expansion selection. */
+			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_TF_TOWN_EXPAND_SEL),
+				NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0),
+					NWidget(WWT_LABEL, INVALID_COLOUR), SetStringTip(STR_FOUND_TOWN_EXPAND_MODE),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_TF_EXPAND_ALL_TOWNS), SetStringTip(STR_FOUND_TOWN_EXPAND_ALL_TOWNS, STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP), SetFill(1, 0),
+					NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
+						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_TF_EXPAND_BUILDINGS), SetStringTip(STR_FOUND_TOWN_EXPAND_BUILDINGS, STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP), SetFill(1, 0),
+						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_TF_EXPAND_ROADS), SetStringTip(STR_FOUND_TOWN_EXPAND_ROADS, STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP), SetFill(1, 0),
+					EndContainer(),
+				EndContainer(),
+			EndContainer(),
 		EndContainer(),
 	EndContainer(),
 };
@@ -1152,6 +1138,7 @@ private:
 	bool townnamevalid = false; ///< Is generated town name valid?
 	uint32_t townnameparts = 0; ///< Generated town name
 	TownNameParams params; ///< Town name parameters
+	static inline TownExpandModes expand_modes{TownExpandMode::Buildings, TownExpandMode::Roads};
 
 public:
 	FoundTownWindow(WindowDesc &desc, WindowNumber window_number) :
@@ -1171,6 +1158,7 @@ public:
 		if (_game_mode == GM_EDITOR) return;
 
 		this->GetWidget<NWidgetStacked>(WID_TF_TOWN_ACTION_SEL)->SetDisplayedPlane(SZSP_HORIZONTAL);
+		this->GetWidget<NWidgetStacked>(WID_TF_TOWN_EXPAND_SEL)->SetDisplayedPlane(SZSP_HORIZONTAL);
 		this->GetWidget<NWidgetStacked>(WID_TF_SIZE_SEL)->SetDisplayedPlane(SZSP_VERTICAL);
 		if (_settings_game.economy.found_town != TF_CUSTOM_LAYOUT) {
 			this->GetWidget<NWidgetStacked>(WID_TF_ROAD_LAYOUT_SEL)->SetDisplayedPlane(SZSP_HORIZONTAL);
@@ -1209,6 +1197,9 @@ public:
 		for (WidgetID i = WID_TF_LAYOUT_ORIGINAL; i <= WID_TF_LAYOUT_RANDOM; i++) {
 			this->SetWidgetLoweredState(i, i == WID_TF_LAYOUT_ORIGINAL + this->town_layout);
 		}
+
+		this->SetWidgetLoweredState(WID_TF_EXPAND_BUILDINGS, FoundTownWindow::expand_modes.Test(TownExpandMode::Buildings));
+		this->SetWidgetLoweredState(WID_TF_EXPAND_ROADS, FoundTownWindow::expand_modes.Test(TownExpandMode::Roads));
 
 		this->SetDirty();
 	}
@@ -1250,23 +1241,17 @@ public:
 				break;
 
 			case WID_TF_MANY_RANDOM_TOWNS: {
-				Backup<bool> old_generating_world(_generating_world, true);
-				UpdateNearestTownForRoadTiles(true);
-				if (!GenerateTowns(this->town_layout)) {
-					ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_GENERATE_TOWN), GetEncodedString(STR_ERROR_NO_SPACE_FOR_TOWN), WL_INFO);
-				}
-				UpdateNearestTownForRoadTiles(false);
-				old_generating_world.Restore();
+				std::string default_town_number = fmt::format("{}", GetDefaultTownsForMapSize());
+				ShowQueryString(default_town_number, STR_MAPGEN_NUMBER_OF_TOWNS, 5, this, CS_NUMERAL, {QueryStringFlag::AcceptUnchanged});
 				break;
 			}
-
 			case WID_TF_LOAD_FROM_FILE:
 				ShowSaveLoadDialog(FT_TOWN_DATA, SLO_LOAD);
 				break;
 
 			case WID_TF_EXPAND_ALL_TOWNS:
 				for (Town *t : Town::Iterate()) {
-					Command<CMD_EXPAND_TOWN>::Do(DoCommandFlag::Execute, t->index, 0);
+					Command<CMD_EXPAND_TOWN>::Do(DoCommandFlag::Execute, t->index, 0, FoundTownWindow::expand_modes);
 				}
 				break;
 
@@ -1281,6 +1266,16 @@ public:
 				this->SetDirty();
 				break;
 
+			case WID_TF_EXPAND_BUILDINGS:
+				FoundTownWindow::expand_modes.Flip(TownExpandMode::Buildings);
+				this->UpdateButtons(false);
+				break;
+
+			case WID_TF_EXPAND_ROADS:
+				FoundTownWindow::expand_modes.Flip(TownExpandMode::Roads);
+				this->UpdateButtons(false);
+				break;
+
 			case WID_TF_LAYOUT_ORIGINAL: case WID_TF_LAYOUT_BETTER: case WID_TF_LAYOUT_GRID2:
 			case WID_TF_LAYOUT_GRID3: case WID_TF_LAYOUT_RANDOM:
 				this->town_layout = (TownLayout)(widget - WID_TF_LAYOUT_ORIGINAL);
@@ -1292,6 +1287,23 @@ public:
 				this->UpdateButtons(false);
 				break;
 		}
+	}
+
+	void OnQueryTextFinished(std::optional<std::string> str) override
+	{
+		/* Was 'cancel' pressed? */
+		if (!str.has_value()) return;
+
+		auto value = ParseInteger(*str, 10, true);
+		if (!value.has_value()) return;
+
+		Backup<bool> old_generating_world(_generating_world, true);
+		UpdateNearestTownForRoadTiles(true);
+		if (!GenerateTowns(this->town_layout, value)) {
+			ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_GENERATE_TOWN), GetEncodedString(STR_ERROR_NO_SPACE_FOR_TOWN), WL_INFO);
+		}
+		UpdateNearestTownForRoadTiles(false);
+		old_generating_world.Restore();
 	}
 
 	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
@@ -1336,45 +1348,6 @@ void InitializeTownGui()
 }
 
 /**
- * Draw representation of a house tile for GUI purposes.
- * @param x Position x of image.
- * @param y Position y of image.
- * @param spec House spec to draw.
- * @param house_id House ID to draw.
- * @param view The house's 'view'.
- */
-void DrawNewHouseTileInGUI(int x, int y, const HouseSpec *spec, HouseID house_id, int view)
-{
-	HouseResolverObject object(house_id, INVALID_TILE, nullptr, CBID_NO_CALLBACK, 0, 0, true, view);
-	const SpriteGroup *group = object.Resolve();
-	if (group == nullptr || group->type != SGT_TILELAYOUT) return;
-
-	uint8_t stage = TOWN_HOUSE_COMPLETED;
-	const DrawTileSprites *dts = reinterpret_cast<const TileLayoutSpriteGroup *>(group)->ProcessRegisters(&stage);
-
-	PaletteID palette = GENERAL_SPRITE_COLOUR(spec->random_colour[0]);
-	if (spec->callback_mask.Test(HouseCallbackMask::Colour)) {
-		uint16_t callback = GetHouseCallback(CBID_HOUSE_COLOUR, 0, 0, house_id, nullptr, INVALID_TILE, true, view);
-		if (callback != CALLBACK_FAILED) {
-			/* If bit 14 is set, we should use a 2cc colour map, else use the callback value. */
-			palette = HasBit(callback, 14) ? GB(callback, 0, 8) + SPR_2CCMAP_BASE : callback;
-		}
-	}
-
-	SpriteID image = dts->ground.sprite;
-	PaletteID pal  = dts->ground.pal;
-
-	if (HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) image += stage;
-	if (HasBit(pal, SPRITE_MODIFIER_CUSTOM_SPRITE)) pal += stage;
-
-	if (GB(image, 0, SPRITE_WIDTH) != 0) {
-		DrawSprite(image, GroundSpritePaletteTransform(image, pal, palette), x, y);
-	}
-
-	DrawNewGRFTileSeqInGUI(x, y, dts, stage, palette);
-}
-
-/**
  * Draw a house that does not exist.
  * @param x Position x of image.
  * @param y Position y of image.
@@ -1389,7 +1362,7 @@ void DrawHouseInGUI(int x, int y, HouseID house_id, int view)
 			 * spritegroup associated with them, then the sprite for the substitute
 			 * house id is drawn instead. */
 			const HouseSpec *spec = HouseSpec::Get(house_id);
-			if (spec->grf_prop.GetSpriteGroup() != nullptr) {
+			if (spec->grf_prop.HasSpriteGroups()) {
 				DrawNewHouseTileInGUI(x, y, spec, house_id, view);
 				return;
 			} else {
@@ -1437,15 +1410,19 @@ void DrawHouseInGUI(int x, int y, HouseID house_id, int view)
  */
 static StringID GetHouseName(const HouseSpec *hs)
 {
-	uint16_t callback_res = GetHouseCallback(CBID_HOUSE_CUSTOM_NAME, 1, 0, hs->Index(), nullptr, INVALID_TILE, true);
+	std::array<int32_t, 1> regs100;
+	uint16_t callback_res = GetHouseCallback(CBID_HOUSE_CUSTOM_NAME, 1, 0, hs->Index(), nullptr, INVALID_TILE, regs100, true);
 	if (callback_res != CALLBACK_FAILED && callback_res != 0x400) {
-		if (callback_res > 0x400) {
+		StringID new_name = STR_NULL;
+		if (callback_res == 0x40F) {
+			new_name = GetGRFStringID(hs->grf_prop.grffile->grfid, static_cast<GRFStringID>(regs100[0]));
+		} else if (callback_res > 0x400) {
 			ErrorUnknownCallbackResult(hs->grf_prop.grffile->grfid, CBID_HOUSE_CUSTOM_NAME, callback_res);
 		} else {
-			StringID new_name = GetGRFStringID(hs->grf_prop.grffile->grfid, GRFSTR_MISC_GRF_TEXT + callback_res);
-			if (new_name != STR_NULL && new_name != STR_UNDEFINED) {
-				return new_name;
-			}
+			new_name = GetGRFStringID(hs->grf_prop.grffile->grfid, GRFSTR_MISC_GRF_TEXT + callback_res);
+		}
+		if (new_name != STR_NULL && new_name != STR_UNDEFINED) {
+			return new_name;
 		}
 	}
 
@@ -1461,13 +1438,7 @@ public:
 	 */
 	void SetClimateMask()
 	{
-		switch (_settings_game.game_creation.landscape) {
-			case LandscapeType::Temperate: this->climate_mask = HZ_TEMP; break;
-			case LandscapeType::Arctic:    this->climate_mask = HZ_SUBARTC_ABOVE | HZ_SUBARTC_BELOW; break;
-			case LandscapeType::Tropic:    this->climate_mask = HZ_SUBTROPIC; break;
-			case LandscapeType::Toyland:   this->climate_mask = HZ_TOYLND; break;
-			default: NOT_REACHED();
-		}
+		this->climate_mask = GetClimateMaskForLandscape();
 
 		/* In some cases, not all 'classes' (house zones) have distinct houses, so we need to disable those.
 		 * As we need to check all types, and this cannot change with the picker window open, pre-calculate it.
@@ -1495,7 +1466,7 @@ public:
 
 	/* Houses do not have classes like NewGRFClass. We'll make up fake classes based on town zone
 	 * availability instead. */
-	static inline const std::array<StringID, HZB_END> zone_names = {
+	static inline const std::array<StringID, NUM_HOUSE_ZONES> zone_names = {
 		STR_HOUSE_PICKER_CLASS_ZONE1,
 		STR_HOUSE_PICKER_CLASS_ZONE2,
 		STR_HOUSE_PICKER_CLASS_ZONE3,
@@ -1540,16 +1511,19 @@ public:
 	int GetSelectedType() const override { return sel_type; }
 	void SetSelectedType(int id) const override { sel_type = id; }
 
+	static HouseZone GetHouseZoneFromClassId(int cls_id) { return static_cast<HouseZone>(to_underlying(HouseZone::TownEdge) + cls_id); }
+	static int GetClassIdFromHouseZone(HouseZones zones) { return FindFirstBit((zones & HZ_ZONE_ALL).base()) - to_underlying(HouseZone::TownEdge); }
+
 	StringID GetTypeName(int cls_id, int id) const override
 	{
 		const HouseSpec *spec = HouseSpec::Get(id);
 		if (spec == nullptr) return INVALID_STRING_ID;
 		if (!spec->enabled) return INVALID_STRING_ID;
-		if ((spec->building_availability & climate_mask) == 0) return INVALID_STRING_ID;
-		if (!HasBit(spec->building_availability, cls_id)) return INVALID_STRING_ID;
+		if (!spec->building_availability.Any(climate_mask)) return INVALID_STRING_ID;
+		if (!spec->building_availability.Test(GetHouseZoneFromClassId(cls_id))) return INVALID_STRING_ID;
 		for (int i = 0; i < cls_id; i++) {
 			/* Don't include if it's already included in an earlier zone. */
-			if (HasBit(spec->building_availability, i)) return INVALID_STRING_ID;
+			if (spec->building_availability.Test(GetHouseZoneFromClassId(i))) return INVALID_STRING_ID;
 		}
 
 		return GetHouseName(spec);
@@ -1560,11 +1534,11 @@ public:
 		const auto *spec = HouseSpec::Get(id);
 		if (spec == nullptr) return {};
 		if (!spec->enabled) return {};
-		if ((spec->building_availability & climate_mask) == 0) return {};
-		if (!HasBit(spec->building_availability, cls_id)) return {};
+		if (!spec->building_availability.Any(climate_mask)) return {};
+		if (!spec->building_availability.Test(GetHouseZoneFromClassId(cls_id))) return {};
 		for (int i = 0; i < cls_id; i++) {
 			/* Don't include if it's already included in an earlier zone. */
-			if (HasBit(spec->building_availability, i)) return {};
+			if (spec->building_availability.Test(GetHouseZoneFromClassId(i))) return {};
 		}
 
 		return spec->badges;
@@ -1588,7 +1562,7 @@ public:
 			if (*it == 0) continue;
 			HouseID house = static_cast<HouseID>(std::distance(id_count.begin(), it));
 			const HouseSpec *hs = HouseSpec::Get(house);
-			int class_index = FindFirstBit(hs->building_availability & HZ_ZONALL);
+			int class_index = GetClassIdFromHouseZone(hs->building_availability);
 			items.insert({0, house, class_index, house});
 		}
 	}
@@ -1609,7 +1583,7 @@ public:
 					/* Not preset, hide from UI. */
 					dst.insert({item.grfid, item.local_id, -1, -1});
 				} else {
-					int class_index = FindFirstBit(it->building_availability & HZ_ZONALL);
+					int class_index = GetClassIdFromHouseZone(it->building_availability);
 					dst.insert( {item.grfid, item.local_id, class_index, it->Index()});
 				}
 			}
@@ -1632,7 +1606,7 @@ static CargoTypes GetProducedCargoOfHouse(const HouseSpec *hs)
 	CargoTypes produced{};
 	if (hs->callback_mask.Test(HouseCallbackMask::ProduceCargo)) {
 		for (uint i = 0; i < 256; i++) {
-			uint16_t callback = GetHouseCallback(CBID_HOUSE_PRODUCE_CARGO, i, 0, hs->Index(), nullptr, INVALID_TILE, true);
+			uint16_t callback = GetHouseCallback(CBID_HOUSE_PRODUCE_CARGO, i, 0, hs->Index(), nullptr, INVALID_TILE, {}, true);
 
 			if (callback == CALLBACK_FAILED || callback == CALLBACK_HOUSEPRODCARGO_END) break;
 
@@ -1743,7 +1717,7 @@ struct BuildHouseWindow : public PickerWindow {
 
 	void OnInit() override
 	{
-		this->InvalidateData(PickerInvalidation::Position);
+		this->InvalidateData(PICKER_INVALIDATION_ALL);
 		this->PickerWindow::OnInit();
 	}
 
@@ -1805,7 +1779,7 @@ struct BuildHouseWindow : public PickerWindow {
 		Command<CMD_PLACE_HOUSE>::Post(STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index(), this->house_protected);
 	}
 
-	IntervalTimer<TimerWindow> view_refresh_interval = {std::chrono::milliseconds(2500), [this](auto) {
+	const IntervalTimer<TimerWindow> view_refresh_interval = {std::chrono::milliseconds(2500), [this](auto) {
 		/* There are four different 'views' that are random based on house tile position. As this is not
 		 * user-controllable, instead we automatically cycle through them. */
 		HousePickerCallbacks::sel_view = (HousePickerCallbacks::sel_view + 1) % 4;

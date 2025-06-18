@@ -12,6 +12,7 @@
 #include "base_media_func.h"
 #include "base_media_music.h"
 #include "random_access_file_type.h"
+#include "core/string_consumer.hpp"
 
 #include "safeguards.h"
 
@@ -83,7 +84,7 @@ template <>
 }
 
 template <>
-/* static */ const char *BaseMedia<MusicSet>::GetExtension()
+/* static */ std::string_view BaseMedia<MusicSet>::GetExtension()
 {
 	return ".obm"; // OpenTTD Base Music
 }
@@ -94,7 +95,7 @@ template <>
 	if (BaseMedia<MusicSet>::used_set != nullptr) return true;
 
 	const MusicSet *best = nullptr;
-	for (const MusicSet *c = BaseMedia<MusicSet>::available_sets; c != nullptr; c = c->next) {
+	for (const auto &c : BaseMedia<MusicSet>::available_sets) {
 		if (c->GetNumMissing() != 0) continue;
 
 		if (best == nullptr ||
@@ -102,7 +103,7 @@ template <>
 				best->valid_files < c->valid_files ||
 				(best->valid_files == c->valid_files &&
 					(best->shortname == c->shortname && best->version < c->version))) {
-			best = c;
+			best = c.get();
 		}
 	}
 
@@ -133,7 +134,12 @@ bool MusicSet::FillSetDetails(const IniFile &ini, const std::string &path, const
 			if (item != nullptr && item->value.has_value() && !item->value->empty()) {
 				/* Song has a CAT file index, assume it's MPS MIDI format */
 				this->songinfo[i].filetype = MTT_MPSMIDI;
-				this->songinfo[i].cat_index = atoi(item->value->c_str());
+				auto value = ParseInteger(*item->value);
+				if (!value.has_value()) {
+					Debug(grf, 0, "Invalid base music set song index: {}/{}", filename, *item->value);
+					continue;
+				}
+				this->songinfo[i].cat_index = *value;
 				auto songname = GetMusicCatEntryName(filename, this->songinfo[i].cat_index);
 				if (!songname.has_value()) {
 					Debug(grf, 0, "Base music set song missing from CAT file: {}/{}", filename, this->songinfo[i].cat_index);
@@ -144,17 +150,24 @@ bool MusicSet::FillSetDetails(const IniFile &ini, const std::string &path, const
 				this->songinfo[i].filetype = MTT_STANDARDMIDI;
 			}
 
-			const char *trimmed_filename = filename.c_str();
+			std::string_view trimmed_filename{filename};
 			/* As we possibly add a path to the filename and we compare
 			 * on the filename with the path as in the .obm, we need to
 			 * keep stripping path elements until we find a match. */
-			for (; trimmed_filename != nullptr; trimmed_filename = strchr(trimmed_filename, PATHSEPCHAR)) {
+			while (!trimmed_filename.empty()) {
 				/* Remove possible double path separator characters from
 				 * the beginning, so we don't start reading e.g. root. */
-				while (*trimmed_filename == PATHSEPCHAR) trimmed_filename++;
+				while (trimmed_filename.starts_with(PATHSEPCHAR)) trimmed_filename.remove_prefix(1);
 
 				item = names != nullptr ? names->GetItem(trimmed_filename) : nullptr;
 				if (item != nullptr && item->value.has_value() && !item->value->empty()) break;
+
+				auto next = trimmed_filename.find(PATHSEPCHAR);
+				if (next == std::string_view::npos) {
+					trimmed_filename = {};
+				} else {
+					trimmed_filename.remove_prefix(next);
+				}
 			}
 
 			if (this->songinfo[i].filetype == MTT_STANDARDMIDI) {
@@ -174,12 +187,15 @@ bool MusicSet::FillSetDetails(const IniFile &ini, const std::string &path, const
 				this->songinfo[i].tracknr = tracknr++;
 			}
 
-			item = trimmed_filename != nullptr && timingtrim != nullptr ? timingtrim->GetItem(trimmed_filename) : nullptr;
+			item = !trimmed_filename.empty() && timingtrim != nullptr ? timingtrim->GetItem(trimmed_filename) : nullptr;
 			if (item != nullptr && item->value.has_value() && !item->value->empty()) {
-				auto endpos = item->value->find(':');
-				if (endpos != std::string::npos) {
-					this->songinfo[i].override_start = atoi(item->value->c_str());
-					this->songinfo[i].override_end = atoi(item->value->c_str() + endpos + 1);
+				StringConsumer consumer{*item->value};
+				auto start = consumer.TryReadIntegerBase<uint>(10);
+				auto valid = consumer.ReadIf(":");
+				auto end = consumer.TryReadIntegerBase<uint>(10);
+				if (start.has_value() && valid && end.has_value() && !consumer.AnyBytesLeft()) {
+					this->songinfo[i].override_start = *start;
+					this->songinfo[i].override_end = *end;
 				}
 			}
 		}

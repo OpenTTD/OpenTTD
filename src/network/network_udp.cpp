@@ -13,21 +13,10 @@
  */
 
 #include "../stdafx.h"
-#include "../timer/timer_game_calendar.h"
-#include "../map_func.h"
+
 #include "../debug.h"
-#include "core/network_game_info.h"
-#include "network_gamelist.h"
 #include "network_internal.h"
 #include "network_udp.h"
-#include "network.h"
-#include "../core/endian_func.hpp"
-#include "../company_base.h"
-#include "../rev.h"
-#include "../newgrf_text.h"
-#include "../strings_func.h"
-
-#include "table/strings.h"
 
 #include "core/udp.h"
 
@@ -58,7 +47,7 @@ struct UDPSocket {
 static UDPSocket _udp_client("Client"); ///< udp client socket
 static UDPSocket _udp_server("Server"); ///< udp server socket
 
-///*** Communication with clients (we are server) ***/
+/* Communication with clients (we are server) */
 
 /** Helper class for handling all server side communication. */
 class ServerNetworkUDPSocketHandler : public NetworkUDPSocketHandler {
@@ -81,7 +70,7 @@ void ServerNetworkUDPSocketHandler::Receive_CLIENT_FIND_SERVER(Packet &, Network
 	Debug(net, 7, "Queried from {}", client_addr.GetHostname());
 }
 
-///*** Communication with servers (we are client) ***/
+/* Communication with servers (we are client) */
 
 /** Helper class for handling all client side communication. */
 class ClientNetworkUDPSocketHandler : public NetworkUDPSocketHandler {

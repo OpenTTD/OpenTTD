@@ -117,7 +117,6 @@ SQVM::SQVM(SQSharedState *ss)
 	_in_stackoverflow = false;
 	_ops_till_suspend = 0;
 	_ops_till_suspend_error_threshold = INT64_MIN;
-	_ops_till_suspend_error_label = nullptr;
 	_callsstack = nullptr;
 	_callsstacksize = 0;
 	_alloccallsstacksize = 0;
@@ -198,7 +197,7 @@ bool SQVM::ObjCmp(const SQObjectPtr &o1,const SQObjectPtr &o2,SQInteger &result)
 		SQObjectPtr res;
 		switch(type(o1)){
 		case OT_STRING:
-			_RET_SUCCEED(strcmp(_stringval(o1),_stringval(o2)));
+			_RET_SUCCEED(_stringval(o1).compare(_stringval(o2)));
 		case OT_INTEGER:
 			/* FS#3954: wrong integer comparison */
 			_RET_SUCCEED((_integer(o1)<_integer(o2))?-1:(_integer(o1)==_integer(o2))?0:1);
@@ -302,11 +301,7 @@ bool SQVM::StringCat(const SQObjectPtr &str,const SQObjectPtr &obj,SQObjectPtr &
 	SQObjectPtr a, b;
 	ToString(str, a);
 	ToString(obj, b);
-	SQInteger l = _string(a)->_len , ol = _string(b)->_len;
-	SQChar *s = _sp(l + ol + 1);
-	memcpy(s, _stringval(a), (size_t)l);
-	memcpy(s + l, _stringval(b), (size_t)ol);
-	dest = SQString::Create(_ss(this), _spval, l + ol);
+	dest = SQString::Create(_ss(this), fmt::format("{}{}", _stringval(a), _stringval(b)));
 	return true;
 }
 
@@ -1253,7 +1248,8 @@ bool SQVM::Get(const SQObjectPtr &self,const SQObjectPtr &key,SQObjectPtr &dest,
 	if(fetchroot) {
 		if(_rawval(STK(0)) == _rawval(self) &&
 			type(STK(0)) == type(self)) {
-				return _table(_roottable)->Get(key,dest);
+				if (_table(_roottable)->Get(key,dest)) return true;
+				return _table(_ss(this)->_consts)->Get(key,dest);
 		}
 	}
 	return false;
@@ -1288,9 +1284,10 @@ bool SQVM::FallBackGet(const SQObjectPtr &self,const SQObjectPtr &key,SQObjectPt
 	case OT_STRING:
 		if(sq_isnumeric(key)){
 			SQInteger n=tointeger(key);
-			if(abs((int)n)<_string(self)->_len){
-				if(n<0)n=_string(self)->_len-n;
-				dest=SQInteger(_stringval(self)[n]);
+			std::string_view str = _stringval(self);
+			if(std::abs(n) < static_cast<SQInteger>(str.size())){
+				if(n<0)n=str.size()+n;
+				dest=SQInteger(str[n]);
 				return true;
 			}
 			return false;

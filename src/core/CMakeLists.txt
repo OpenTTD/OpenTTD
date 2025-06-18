@@ -7,6 +7,7 @@ add_files(
     convertible_through_base.hpp
     endian_func.hpp
     enum_type.hpp
+    flatset_type.hpp
     format.hpp
     geometry_func.cpp
     geometry_func.hpp
@@ -14,7 +15,6 @@ add_files(
     kdtree.hpp
     math_func.cpp
     math_func.hpp
-    mem_func.hpp
     multimap.hpp
     overflowsafe_type.hpp
     pool_func.cpp
@@ -25,6 +25,10 @@ add_files(
     smallstack_type.hpp
     string_builder.cpp
     string_builder.hpp
+    string_consumer.cpp
+    string_consumer.hpp
+    string_inplace.cpp
+    string_inplace.hpp
     strong_typedef_type.hpp
     utf8.cpp
     utf8.hpp

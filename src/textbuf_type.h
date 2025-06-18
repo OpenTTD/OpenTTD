@@ -43,13 +43,15 @@ struct Textbuf {
 
 	explicit Textbuf(uint16_t max_bytes, uint16_t max_chars = UINT16_MAX);
 
-	void Assign(const std::string_view text);
+	void Assign(std::string_view text);
 
 	void DeleteAll();
 	bool InsertClipboard();
 
 	bool InsertChar(char32_t key);
-	bool InsertString(const char *str, bool marked, const char *caret = nullptr, const char *insert_location = nullptr, const char *replacement_end = nullptr);
+	bool InsertString(std::string_view str, bool marked,
+			std::optional<size_t> caret = std::nullopt,
+			std::optional<size_t> insert_location = std::nullopt, std::optional<size_t> replacement_end = std::nullopt);
 
 	bool DeleteChar(uint16_t keycode);
 	bool MovePos(uint16_t keycode);
@@ -61,7 +63,7 @@ struct Textbuf {
 
 	void DiscardMarkedText(bool update = true);
 
-	const char *GetText() const;
+	std::string_view GetText() const;
 
 private:
 	std::string buf; ///< buffer in which text is saved

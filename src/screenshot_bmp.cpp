@@ -43,7 +43,7 @@ class ScreenshotProvider_Bmp : public ScreenshotProvider {
 public:
 	ScreenshotProvider_Bmp() : ScreenshotProvider("bmp", "BMP", 10) {}
 
-	bool MakeImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette) override
+	bool MakeImage(std::string_view name, const ScreenshotCallback &callb, uint w, uint h, int pixelformat, const Colour *palette) override
 	{
 		uint bpp; // bytes per pixel
 		switch (pixelformat) {
@@ -117,13 +117,13 @@ public:
 			h -= n;
 
 			/* Render the pixels */
-			callb(userdata, buff.data(), h, w, n);
+			callb(buff.data(), h, w, n);
 
 			/* Write each line */
 			while (n-- != 0) {
 				if (pixelformat == 8) {
 					/* Move to 'line', leave last few pixels in line zeroed */
-					memcpy(line.data(), buff.data() + n * w, w);
+					std::copy_n(buff.data() + n * w, w, line.data());
 				} else {
 					/* Convert from 'native' 32bpp to BMP-like 24bpp.
 					 * Works for both big and little endian machines */

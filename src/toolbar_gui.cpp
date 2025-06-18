@@ -59,6 +59,7 @@
 #include "timer/timer_window.h"
 #include "timer/timer_game_calendar.h"
 #include "help_gui.h"
+#include "core/string_consumer.hpp"
 
 #include "widgets/toolbar_widget.h"
 
@@ -101,7 +102,7 @@ static CallBackFunction _last_started_action = CBF_NONE; ///< Last started user 
  */
 class DropDownListCompanyItem : public DropDownIcon<DropDownIcon<DropDownString<DropDownListItem>, true>> {
 public:
-	DropDownListCompanyItem(CompanyID company, bool shaded) : DropDownIcon<DropDownIcon<DropDownString<DropDownListItem>, true>>(SPR_COMPANY_ICON, COMPANY_SPRITE_COLOUR(company), NetworkCanJoinCompany(company) ? SPR_EMPTY : SPR_LOCK, PAL_NONE, GetString(STR_COMPANY_NAME_COMPANY_NUM, company, company), company.base(), false, shaded)
+	DropDownListCompanyItem(CompanyID company, bool shaded) : DropDownIcon<DropDownIcon<DropDownString<DropDownListItem>, true>>(SPR_COMPANY_ICON, GetCompanyPalette(company), NetworkCanJoinCompany(company) ? SPR_EMPTY : SPR_LOCK, PAL_NONE, GetString(STR_COMPANY_NAME_COMPANY_NUM, company, company), company.base(), false, shaded)
 	{
 	}
 };
@@ -228,7 +229,6 @@ static CallBackFunction ToolbarFastForwardClick(Window *)
  */
 enum OptionMenuEntries : uint8_t {
 	OME_GAMEOPTIONS,
-	OME_SETTINGS,
 	OME_AI_SETTINGS,
 	OME_GAMESCRIPT_SETTINGS,
 	OME_NEWGRFSETTINGS,
@@ -261,7 +261,6 @@ static CallBackFunction ToolbarOptionsClick(Window *w)
 {
 	DropDownList list;
 	list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_GAME_OPTIONS,             OME_GAMEOPTIONS));
-	list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE,     OME_SETTINGS));
 	/* Changes to the per-AI settings don't get send from the server to the clients. Clients get
 	 * the settings once they join but never update it. As such don't show the window at all
 	 * to network clients. */
@@ -306,7 +305,6 @@ static CallBackFunction MenuClickSettings(int index)
 {
 	switch (index) {
 		case OME_GAMEOPTIONS:          ShowGameOptions();                               return CBF_NONE;
-		case OME_SETTINGS:             ShowGameSettings();                              return CBF_NONE;
 		case OME_AI_SETTINGS:          ShowAIConfigWindow();                            return CBF_NONE;
 		case OME_GAMESCRIPT_SETTINGS:  ShowGSConfigWindow();                            return CBF_NONE;
 		case OME_NEWGRFSETTINGS:       ShowNewGRFSettings(!_networking && _settings_client.gui.UserIsAllowedToChangeNewGRFs(), true, true, _grfconfig); return CBF_NONE;
@@ -1540,7 +1538,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 			WID_TN_AIR,
 			WID_TN_LANDSCAPE,
 			WID_TN_SWITCH_BAR,
-			// lower toolbar
+			/* lower toolbar */
 			WID_TN_SETTINGS,
 			WID_TN_SAVE,
 			WID_TN_SMALL_MAP,
@@ -1572,7 +1570,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 			WID_TN_ZOOM_IN,
 			WID_TN_ZOOM_OUT,
 			WID_TN_SWITCH_BAR,
-			// lower toolbar
+			/* lower toolbar */
 			WID_TN_PAUSE,
 			WID_TN_SETTINGS,
 			WID_TN_SMALL_MAP,
@@ -1606,7 +1604,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 			WID_TN_ZOOM_IN,
 			WID_TN_ZOOM_OUT,
 			WID_TN_SWITCH_BAR,
-			// lower toolbar
+			/* lower toolbar */
 			WID_TN_PAUSE,
 			WID_TN_FAST_FORWARD,
 			WID_TN_SAVE,
@@ -1642,7 +1640,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 			WID_TN_ZOOM_IN,
 			WID_TN_ZOOM_OUT,
 			WID_TN_SWITCH_BAR,
-			// lower toolbar
+			/* lower toolbar */
 			WID_TN_PAUSE,
 			WID_TN_FAST_FORWARD,
 			WID_TN_SAVE,
@@ -1680,7 +1678,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 			WID_TN_ZOOM_IN,
 			WID_TN_ZOOM_OUT,
 			WID_TN_SWITCH_BAR,
-			// lower toolbar
+			/* lower toolbar */
 			WID_TN_PAUSE,
 			WID_TN_FAST_FORWARD,
 			WID_TN_SAVE,
@@ -1720,7 +1718,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 			WID_TN_ZOOM_IN,
 			WID_TN_ZOOM_OUT,
 			WID_TN_SWITCH_BAR,
-			// lower toolbar
+			/* lower toolbar */
 			WID_TN_PAUSE,
 			WID_TN_FAST_FORWARD,
 			WID_TN_SAVE,
@@ -1762,7 +1760,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 			WID_TN_ZOOM_IN,
 			WID_TN_ZOOM_OUT,
 			WID_TN_SWITCH_BAR,
-			// lower toolbar
+			/* lower toolbar */
 			WID_TN_PAUSE,
 			WID_TN_FAST_FORWARD,
 			WID_TN_SAVE,
@@ -1909,7 +1907,7 @@ class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
 			WID_TE_TREES,
 			WID_TE_SIGNS,
 			WID_TE_SWITCH_BAR,
-			// lower toolbar
+			/* lower toolbar */
 			WID_TE_PAUSE,
 			WID_TE_FAST_FORWARD,
 			WID_TE_SETTINGS,
@@ -2004,9 +2002,9 @@ struct MainToolbarWindow : Window {
 		DoZoomInOutWindow(ZOOM_NONE, this);
 	}
 
-	void FindWindowPlacementAndResize([[maybe_unused]] int def_width, [[maybe_unused]] int def_height) override
+	void FindWindowPlacementAndResize(int, int def_height, bool allow_resize) override
 	{
-		Window::FindWindowPlacementAndResize(_toolbar_width, def_height);
+		Window::FindWindowPlacementAndResize(_toolbar_width, def_height, allow_resize);
 	}
 
 	void OnPaint() override
@@ -2029,7 +2027,7 @@ struct MainToolbarWindow : Window {
 		if (_game_mode != GM_MENU && !this->IsWidgetDisabled(widget)) _toolbar_button_procs[widget](this);
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		CallBackFunction cbf = _menu_clicked_procs[widget](index);
 		if (cbf != CBF_NONE) _last_started_action = cbf;
@@ -2106,7 +2104,7 @@ struct MainToolbarWindow : Window {
 	}
 
 	/** Refresh the state of pause / game-speed on a regular interval.*/
-	IntervalTimer<TimerWindow> refresh_interval = {std::chrono::milliseconds(30), [this](auto) {
+	const IntervalTimer<TimerWindow> refresh_interval = {std::chrono::milliseconds(30), [this](auto) {
 		if (this->IsWidgetLowered(WID_TN_PAUSE) != _pause_mode.Any()) {
 			this->ToggleWidgetLoweredState(WID_TN_PAUSE);
 			this->SetWidgetDirty(WID_TN_PAUSE);
@@ -2244,7 +2242,7 @@ static constexpr NWidgetPart _nested_toolbar_normal_widgets[] = {
 };
 
 static WindowDesc _toolb_normal_desc(
-	WDP_MANUAL, nullptr, 0, 0,
+	WDP_MANUAL, {}, 0, 0,
 	WC_MAIN_TOOLBAR, WC_NONE,
 	{WindowDefaultFlag::NoFocus, WindowDefaultFlag::NoClose},
 	_nested_toolbar_normal_widgets,
@@ -2343,9 +2341,9 @@ struct ScenarioEditorToolbarWindow : Window {
 		DoZoomInOutWindow(ZOOM_NONE, this);
 	}
 
-	void FindWindowPlacementAndResize([[maybe_unused]] int def_width, [[maybe_unused]] int def_height) override
+	void FindWindowPlacementAndResize(int, int def_height, bool allow_resize) override
 	{
-		Window::FindWindowPlacementAndResize(_toolbar_width, def_height);
+		Window::FindWindowPlacementAndResize(_toolbar_width, def_height, allow_resize);
 	}
 
 	void OnPaint() override
@@ -2405,7 +2403,7 @@ struct ScenarioEditorToolbarWindow : Window {
 		if (cbf != CBF_NONE) _last_started_action = cbf;
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		CallBackFunction cbf = _scen_toolbar_dropdown_procs[widget](index);
 		if (cbf != CBF_NONE) _last_started_action = cbf;
@@ -2473,7 +2471,7 @@ struct ScenarioEditorToolbarWindow : Window {
 	}
 
 	/** Refresh the state of pause / game-speed on a regular interval.*/
-	IntervalTimer<TimerWindow> refresh_interval = {std::chrono::milliseconds(30), [this](auto) {
+	const IntervalTimer<TimerWindow> refresh_interval = {std::chrono::milliseconds(30), [this](auto) {
 		if (this->IsWidgetLowered(WID_TE_PAUSE) != _pause_mode.Any()) {
 			this->ToggleWidgetLoweredState(WID_TE_PAUSE);
 			this->SetDirty();
@@ -2503,7 +2501,9 @@ struct ScenarioEditorToolbarWindow : Window {
 
 		TimerGameCalendar::Year value;
 		if (!str->empty()) {
-			value = TimerGameCalendar::Year{atoi(str->c_str())};
+			auto val = ParseInteger(*str, 10, true);
+			if (!val.has_value()) return;
+			value = static_cast<TimerGameCalendar::Year>(*val);
 		} else {
 			/* An empty string means revert to the default */
 			value = TimerGameCalendar::Year{CalendarTime::DEF_START_YEAR.base()};
@@ -2585,7 +2585,7 @@ static constexpr NWidgetPart _nested_toolb_scen_widgets[] = {
 };
 
 static WindowDesc _toolb_scen_desc(
-	WDP_MANUAL, nullptr, 0, 0,
+	WDP_MANUAL, {}, 0, 0,
 	WC_MAIN_TOOLBAR, WC_NONE,
 	{WindowDefaultFlag::NoFocus, WindowDefaultFlag::NoClose},
 	_nested_toolb_scen_widgets,

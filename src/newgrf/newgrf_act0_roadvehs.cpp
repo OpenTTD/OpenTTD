@@ -32,7 +32,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint first, uint last, int prop, B
 	ChangeInfoResult ret = CIR_SUCCESS;
 
 	for (uint id = first; id < last; ++id) {
-		Engine *e = GetNewEngine(_cur.grffile, VEH_ROAD, id);
+		Engine *e = GetNewEngine(_cur_gps.grffile, VEH_ROAD, id);
 		if (e == nullptr) return CIR_INVALID_ID; // No engine could be allocated, so neither can any next vehicles
 
 		EngineInfo *ei = &e->info;
@@ -62,9 +62,9 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint first, uint last, int prop, B
 				uint8_t orig_spriteid = spriteid;
 
 				/* cars have different custom id in the GRF file */
-				if (spriteid == 0xFF) spriteid = 0xFD;
+				if (spriteid == 0xFF) spriteid = CUSTOM_VEHICLE_SPRITENUM;
 
-				if (spriteid < 0xFD) spriteid >>= 1;
+				if (spriteid < CUSTOM_VEHICLE_SPRITENUM) spriteid >>= 1;
 
 				if (IsValidNewGRFImageIndex<VEH_ROAD>(spriteid)) {
 					rvi->image_index = spriteid;
@@ -80,7 +80,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint first, uint last, int prop, B
 				break;
 
 			case 0x10: { // Cargo type
-				_gted[e->index].defaultcargo_grf = _cur.grffile;
+				_gted[e->index].defaultcargo_grf = _cur_gps.grffile;
 				uint8_t ctype = buf.ReadByte();
 
 				if (ctype == 0xFF) {
@@ -88,7 +88,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint first, uint last, int prop, B
 					ei->cargo_type = INVALID_CARGO;
 				} else {
 					/* Use translated cargo. Might result in INVALID_CARGO (first refittable), if cargo is not defined. */
-					ei->cargo_type = GetCargoTranslation(ctype, _cur.grffile);
+					ei->cargo_type = GetCargoTranslation(ctype, _cur_gps.grffile);
 					if (ei->cargo_type == INVALID_CARGO) GrfMsg(2, "RoadVehicleChangeInfo: Invalid cargo type {}, using first refittable", ctype);
 				}
 				ei->cargo_label = CT_INVALID;
@@ -100,7 +100,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint first, uint last, int prop, B
 				break;
 
 			case 0x12: // SFX
-				rvi->sfx = GetNewGRFSoundID(_cur.grffile, buf.ReadByte());
+				rvi->sfx = GetNewGRFSoundID(_cur_gps.grffile, buf.ReadByte());
 				break;
 
 			case PROP_ROADVEH_POWER: // Power in units of 10 HP.
@@ -119,7 +119,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint first, uint last, int prop, B
 				uint32_t mask = buf.ReadDWord();
 				_gted[e->index].UpdateRefittability(mask != 0);
 				ei->refit_mask = TranslateRefitMask(mask);
-				_gted[e->index].defaultcargo_grf = _cur.grffile;
+				_gted[e->index].defaultcargo_grf = _cur_gps.grffile;
 				break;
 			}
 
@@ -154,7 +154,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint first, uint last, int prop, B
 			case 0x1D: // Cargo classes allowed
 				_gted[e->index].cargo_allowed = CargoClasses{buf.ReadWord()};
 				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed.Any());
-				_gted[e->index].defaultcargo_grf = _cur.grffile;
+				_gted[e->index].defaultcargo_grf = _cur_gps.grffile;
 				break;
 
 			case 0x1E: // Cargo classes disallowed
@@ -192,11 +192,11 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint first, uint last, int prop, B
 			case 0x25: { // CTT refit exclude list
 				uint8_t count = buf.ReadByte();
 				_gted[e->index].UpdateRefittability(prop == 0x24 && count != 0);
-				if (prop == 0x24) _gted[e->index].defaultcargo_grf = _cur.grffile;
+				if (prop == 0x24) _gted[e->index].defaultcargo_grf = _cur_gps.grffile;
 				CargoTypes &ctt = prop == 0x24 ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask;
 				ctt = 0;
 				while (count--) {
-					CargoType ctype = GetCargoTranslation(buf.ReadByte(), _cur.grffile);
+					CargoType ctype = GetCargoTranslation(buf.ReadByte(), _cur_gps.grffile);
 					if (IsValidCargoType(ctype)) SetBit(ctt, ctype);
 				}
 				break;

@@ -52,35 +52,40 @@ static constexpr BuildingFlags BUILDING_2_TILES_X   = {BuildingFlag::Size2x1, Bu
 static constexpr BuildingFlags BUILDING_2_TILES_Y   = {BuildingFlag::Size1x2, BuildingFlag::Size2x2};
 static constexpr BuildingFlags BUILDING_HAS_4_TILES = {BuildingFlag::Size2x2};
 
-enum HouseZonesBits : uint8_t {
-	HZB_BEGIN     = 0,
-	HZB_TOWN_EDGE = 0,
-	HZB_TOWN_OUTSKIRT,
-	HZB_TOWN_OUTER_SUBURB,
-	HZB_TOWN_INNER_SUBURB,
-	HZB_TOWN_CENTRE,
-	HZB_END,
-};
-static_assert(HZB_END == 5);
+enum class HouseZone : uint8_t {
+	TownEdge = 0,
+	TownOutskirt = 1,
+	TownOuterSuburb = 2,
+	TownInnerSuburb = 3,
+	TownCentre = 4,
+	TownEnd,
 
-DECLARE_INCREMENT_DECREMENT_OPERATORS(HouseZonesBits)
-
-enum HouseZones : uint16_t {
-	HZ_NOZNS             = 0x0000,  ///<       0          This is just to get rid of zeros, meaning none
-	HZ_ZON1              = 1U << HZB_TOWN_EDGE,    ///< 0..4 1,2,4,8,10  which town zones the building can be built in, Zone1 been the further suburb
-	HZ_ZON2              = 1U << HZB_TOWN_OUTSKIRT,
-	HZ_ZON3              = 1U << HZB_TOWN_OUTER_SUBURB,
-	HZ_ZON4              = 1U << HZB_TOWN_INNER_SUBURB,
-	HZ_ZON5              = 1U << HZB_TOWN_CENTRE,  ///<  center of town
-	HZ_ZONALL            = 0x001F,  ///<       1F         This is just to englobe all above types at once
-	HZ_SUBARTC_ABOVE     = 0x0800,  ///< 11    800        can appear in sub-arctic climate above the snow line
-	HZ_TEMP              = 0x1000,  ///< 12   1000        can appear in temperate climate
-	HZ_SUBARTC_BELOW     = 0x2000,  ///< 13   2000        can appear in sub-arctic climate below the snow line
-	HZ_SUBTROPIC         = 0x4000,  ///< 14   4000        can appear in subtropical climate
-	HZ_TOYLND            = 0x8000,  ///< 15   8000        can appear in toyland climate
-	HZ_CLIMALL           = 0xF800,  ///< Bitmask of all climate bits
+	ClimateSubarcticAboveSnow = 11, ///< Building can appear in sub-arctic climate above the snow line
+	ClimateTemperate = 12, ///< Building can appear in temperate climate
+	ClimateSubarcticBelowSnow = 13, ///< Building can appear in sub-arctic climate below the snow line
+	ClimateSubtropic = 14, ///< Building can appear in subtropical climate
+	ClimateToyland = 15, ///< Building can appear in toyland climate
 };
-DECLARE_ENUM_AS_BIT_SET(HouseZones)
+using HouseZones = EnumBitSet<HouseZone, uint16_t>;
+
+static constexpr uint NUM_HOUSE_ZONES = to_underlying(HouseZone::TownEnd);
+static_assert(NUM_HOUSE_ZONES == 5);
+
+static constexpr HouseZones HZ_ZONE_ALL = {
+	HouseZone::TownEdge,
+	HouseZone::TownOutskirt,
+	HouseZone::TownOuterSuburb,
+	HouseZone::TownInnerSuburb,
+	HouseZone::TownCentre,
+};
+
+static constexpr HouseZones HZ_CLIMATE_ALL = {
+	HouseZone::ClimateSubarcticAboveSnow,
+	HouseZone::ClimateTemperate,
+	HouseZone::ClimateSubarcticBelowSnow,
+	HouseZone::ClimateSubtropic,
+	HouseZone::ClimateToyland,
+};
 
 enum class HouseExtraFlag : uint8_t {
 	BuildingIsHistorical   = 0, ///< this house will only appear during town generation in random games, thus the historical
@@ -106,13 +111,13 @@ struct HouseSpec {
 	bool enabled;                             ///< the house is available to build (true by default, but can be disabled by newgrf)
 
 	/* NewHouses properties */
-	GRFFileProps grf_prop;                    ///< Properties related the the grf file
+	SubstituteGRFFileProps grf_prop; ///< Properties related the the grf file
 	HouseCallbackMasks callback_mask;                     ///< Bitmask of house callbacks that have to be called
 	Colours random_colour[4];                 ///< 4 "random" colours
 	uint8_t probability;                         ///< Relative probability of appearing (16 is the standard value)
 	HouseExtraFlags extra_flags{};              ///< some more flags
 	HouseClassID class_id;                    ///< defines the class this house has (not grf file based)
-	AnimationInfo animation;                  ///< information about the animation.
+	AnimationInfo<void> animation; ///< information about the animation.
 	uint8_t processing_time;                     ///< Periodic refresh multiplier
 	uint8_t minimum_life;                        ///< The minimum number of years this house will survive before the town rebuilds it
 	CargoTypes watched_cargoes;               ///< Cargo types watched for acceptance.
@@ -139,5 +144,6 @@ inline HouseID GetTranslatedHouseID(HouseID hid)
 }
 
 void ShowBuildHousePicker(struct Window *);
+HouseZones GetClimateMaskForLandscape();
 
 #endif /* HOUSE_H */

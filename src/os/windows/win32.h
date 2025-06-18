@@ -12,11 +12,10 @@
 
 bool MyShowCursor(bool show, bool toggle = false);
 
-char *convert_from_fs(const std::wstring_view src, std::span<char> dst_buf);
-wchar_t *convert_to_fs(const std::string_view src, std::span<wchar_t> dst_buf);
+std::string_view convert_from_fs(const std::wstring_view src, std::span<char> dst_buf);
+wchar_t *convert_to_fs(std::string_view src, std::span<wchar_t> dst_buf);
 
-void Win32SetCurrentLocaleName(const char *iso_code);
 int OTTDStringCompare(std::string_view s1, std::string_view s2);
-int Win32StringContains(const std::string_view str, const std::string_view value, bool case_insensitive);
+int Win32StringContains(std::string_view str, std::string_view value, bool case_insensitive);
 
 #endif /* WIN32_H */

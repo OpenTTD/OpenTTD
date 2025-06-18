@@ -75,13 +75,18 @@ protected:
 	class ActiveInstance {
 	friend class ScriptObject;
 	public:
-		ActiveInstance(ScriptInstance *instance);
+		ActiveInstance(ScriptInstance &instance);
 		~ActiveInstance();
 	private:
 		ScriptInstance *last_active;    ///< The active instance before we go instantiated.
 		ScriptAllocatorScope alc_scope; ///< Keep the correct allocator for the script instance activated
 
 		static ScriptInstance *active;  ///< The global current active instance.
+	};
+
+	class DisableDoCommandScope : private AutoRestoreBackup<bool> {
+	public:
+		DisableDoCommandScope();
 	};
 
 	/**
@@ -100,6 +105,12 @@ protected:
 	 */
 	virtual bool LoadObject(HSQUIRRELVM) { return false; }
 
+	/**
+	 * Clone an object.
+	 * @return The clone if cloning this type is supported, nullptr otherwise.
+	 */
+	virtual ScriptObject *CloneObject() { return nullptr; }
+
 public:
 	/**
 	 * Store the latest result of a DoCommand per company.
@@ -117,7 +128,7 @@ public:
 	 * Get the currently active instance.
 	 * @return The instance.
 	 */
-	static class ScriptInstance *GetActiveInstance();
+	static class ScriptInstance &GetActiveInstance();
 
 	/**
 	 * Get a reference of the randomizer that brings this script random values.
@@ -130,6 +141,16 @@ public:
 	 * based on the current _random seed, but _random does not get changed.
 	 */
 	static void InitializeRandomizers();
+
+	/**
+	 * Used when trying to instanciate ScriptObject from squirrel.
+	 */
+	static SQInteger Constructor(HSQUIRRELVM);
+
+	/**
+	 * Used for 'clone' from squirrel.
+	 */
+	static SQInteger _cloned(HSQUIRRELVM);
 
 protected:
 	template <Commands TCmd, typename T> struct ScriptDoCommandHelper;
@@ -266,21 +287,6 @@ protected:
 	static const CommandDataBuffer &GetLastCommandResData();
 
 	/**
-	 * Store a allow_do_command per company.
-	 * @param allow The new allow.
-	 */
-	static void SetAllowDoCommand(bool allow);
-
-	/**
-	 * Get the internal value of allow_do_command. This can differ
-	 * from CanSuspend() if the reason we are not allowed
-	 * to execute a DoCommand is in squirrel and not the API.
-	 * In that case use this function to restore the previous value.
-	 * @return True iff DoCommands are allowed in the current scope.
-	 */
-	static bool GetAllowDoCommand();
-
-	/**
 	 * Set the current company to execute commands for or request
 	 *  information about.
 	 * @param company The new company.
@@ -327,12 +333,12 @@ protected:
 	static bool CanSuspend();
 
 	/**
-	 * Get the pointer to store event data in.
+	 * Get the reference to the event queue.
 	 */
-	static void *&GetEventPointer();
+	static struct ScriptEventQueue &GetEventQueue();
 
 	/**
-	 * Get the pointer to store log message in.
+	 * Get the reference to the log message storage.
 	 */
 	static ScriptLogTypes::LogData &GetLogData();
 
@@ -341,7 +347,7 @@ private:
 	static std::tuple<bool, bool, bool, bool> DoCommandPrep();
 	static bool DoCommandProcessResult(const CommandCost &res, Script_SuspendCallbackProc *callback, bool estimate_only, bool asynchronous);
 	static CommandCallbackData *GetDoCommandCallback();
-	using RandomizerArray = ReferenceThroughBaseContainer<std::array<Randomizer, OWNER_END.base()>>;
+	using RandomizerArray = TypedIndexContainer<std::array<Randomizer, OWNER_END.base()>, Owner>;
 	static RandomizerArray random_states; ///< Random states for each of the scripts (game script uses OWNER_DEITY)
 };
 
@@ -465,6 +471,14 @@ public:
 	~ScriptObjectRef()
 	{
 		if (this->data != nullptr) this->data->Release();
+	}
+
+	/**
+	 * Transfer ownership to the caller.
+	 */
+	[[nodiscard]] T *release()
+	{
+		return std::exchange(this->data, nullptr);
 	}
 
 	/**

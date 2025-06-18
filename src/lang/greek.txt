@@ -347,7 +347,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Κλεί
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Τίτλος παραθύρου - σύρετε το για να το μετακινήσετε
 STR_TOOLTIP_SHADE                                               :{BLACK}Απόκρυψη παραθύρου - Εμφάνιση μόνο της μπάρας τιτλου
 STR_TOOLTIP_DEBUG                                               :{BLACK}Εμφάνιση πληροφοριών αποσφαλμάτωσης για NewGRF
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}Επαναφέρει το παράθυρο στο προκαθορισμένο μέγεθος. Με Ctrl+Κλικ αποθηκεύεται το τρέχον μέγεθος ως προκαθορισμένο
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Επαναφέρει το παράθυρο στο προκαθορισμένο μέγεθος. Με Ctrl+Κλικ αποθηκεύεται το τρέχον μέγεθος ως προκαθορισμένο. Με διπλό Ctrl+Κλικ εκτελείται επαναφορά του αποθηκευμένου προκαθορισμένου στην αρχική τιμή
 STR_TOOLTIP_STICKY                                              :{BLACK}Σημειώστε αυτό το παραθύρο ωστέ να μην κλείνει από το πλήκτρο «Κλείσιμο Όλων των Παραθύρων». Πατήστε Ctrl+Κλικ για να αποθηκεύσετε την κατάσταση απο επιλογή
 STR_TOOLTIP_RESIZE                                              :{BLACK}Πατήστε και σύρετε για να αλλάξετε το μέγεθος του παραθύρου
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Εναλλαγή μεγάλου/μικρού παραθύρου
@@ -457,10 +457,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Εμφά
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Εμφάνιση εταιρικών γραφημάτων και ποσοστών πληρωμής φορτίου
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Εμφάνιση πίνακα κατάταξης των εταιριών
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Εμφάνιση λίστας βιομηχανιών ή χρηματοδότηση κατασκευής νέας βιομηχανίας
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Εμφάνιση λίστας με τα τρένα της εταιρίας. Με Ctrl+Κλικ εναλλάσσεται η εμφάνιση/απόκρυψη των ομάδων οχημάτων
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Εμφάνιση λίστας με τα οδικά οχήματα της εταιρίας. Με Ctrl+Κλικ εναλλάσσεται η εμφάνιση/απόκρυψη των ομάδων οχημάτων
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Εμφάνιση λίστας με τα πλοία της εταιρίας. Με Ctrl+Κλικ εναλλάσσεται η εμφάνιση/απόκρυψη των ομάδων οχημάτων
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Εμφάνιση λίστας με τα αεροσκάφη της εταιρίας. Με Ctrl+Κλικ εναλλάσσεται η εμφάνιση/απόκρυψη των ομάδων οχημάτων
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Εμφάνιση λίστας με τα τρένα της εταιρίας. Ctrl+Κλικ για εμφάνιση/απόκρυψη των ομάδων οχημάτων
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Εμφάνιση λίστας με τα οδικά οχήματα της εταιρίας.Ctrl+Κλικ για εμφάνιση/απόκρυψη των ομάδων οχημάτων
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Εμφάνιση λίστας με τα πλοία της εταιρίας. Ctrl+Κλικ για εμφάνιση/απόκρυψη των ομάδων οχημάτων
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Εμφάνιση λίστας με τα αεροσκάφη της εταιρίας. Ctrl+Κλικ για εμφάνιση/απόκρυψη των ομάδων οχημάτων
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Μεγέθυνση εικόνας
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Σμίκρυνση εικόνας
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Κατασκευή σιδηροτροχιάς
@@ -506,7 +506,6 @@ STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Τοποθέτ�
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Επιλογές παιχνιδιού
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Ρυθμίσεις
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Ρυθμίσεις AI
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Ρυθμίσεις σενάριου παιχνιδιού
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Ρυθμίσεις NewGRF
@@ -1052,22 +1051,26 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Επικ
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Επιλογές Παιχνιδιού
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Γενικά
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Επιλέξτε γενικές ρυθμίσεις
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :Επιλέξτε γενικές ρυθμίσεις
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Γραφικά
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Επιλέξτε ρυθμίσεις γραφικών
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :Επιλέξτε ρυθμίσεις γραφικών
 STR_GAME_OPTIONS_TAB_SOUND                                      :Ήχος
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Επιλέξτε ρυθμίσεις ήχου και μουσικής
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Επιλέξτε ρυθμίσεις ήχου και μουσικής
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Κοινωνικά
-STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Επιλέξτε ρυθμίσεις κοινωνικής ενσωμάτωσης
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Επιλέξτε ρυθμίσεις κοινωνικής ενσωμάτωσης
+STR_GAME_OPTIONS_TAB_ADVANCED                                   :Για προχωρημένους
+STR_GAME_OPTIONS_TAB_ADVANCED_TOOLTIP                           :Αλλαγή ρυθμίσεων για προχωρημένους
 
 STR_GAME_OPTIONS_VOLUME                                         :Ένταση Ήχου
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Ηχητικά εφέ
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Μουσική
 
+STR_GAME_OPTIONS_SETTING                                        :{STRING}: {ORANGE}{STRING}
+
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Νομισματικές μονάδες
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Επιλογή νομισματικών μονάδων
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Νομισματικές μονάδες
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Επιλογή νομισματικών μονάδων
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -1118,8 +1121,8 @@ STR_GAME_OPTIONS_CURRENCY_LVL                                   :Λετονικ�
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Πορτογαλικό Εσκούδο
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Ουκρανικά Γρίβνα
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Αυτόματη αποθήκευση
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Επιλογή διάκενου ανάμεσα στις αυτόματες αποθηκεύσεις
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Αυτόματη αποθήκευση
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Επιλογή διαστήματος μεταξύ αυτόματων αποθηκεύσεων
 
 # Autosave dropdown
 ###length 5
@@ -1129,77 +1132,79 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Ανά 30 λε�
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Ανά 60 λεπτά
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Ανά 120 λεπτά
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Γλώσσα
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Επιλογή της γλώσσας του παιχνιδιού
+STR_GAME_OPTIONS_LANGUAGE                                       :Γλώσσα
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Επιλογή της γλώσσας του παιχνιδιού
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% ολοκλήρωση)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Πλήρης οθόνη
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Τσεκάρετε αυτό το κουτάκι ωστε να παίξετε το OpenTTD σε όλη την οθόνη
+STR_GAME_OPTIONS_FULLSCREEN                                     :Πλήρης οθόνη
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Τσεκάρετε αυτό το κουτάκι ωστε να παίξετε το OpenTTD σε όλη την οθόνη
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ανάλυση οθόνης
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Διαλέξτε την ανάλυση της οθόνης που θέλετε
+STR_GAME_OPTIONS_RESOLUTION                                     :Ανάλυση οθόνης
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Διαλέξτε την ανάλυση της οθόνης
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :άλλη
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Επιτάχυνση υλικού
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Τσεκάρετε αυτό το κουτί για να επιτρέψετε στο OpenTTD να δοκιμάσει να χρησιμοποιήσει την επιτάχυνση υλικού. Η αλλαγή αυτή θα εφαρμοστεί μόνο μετά από επανεκκίνηση του παιχνιδιού
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Επιτάχυνση υλικού
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Τσεκάρετε αυτό το κουτί για να επιτρέψετε στο OpenTTD να δοκιμάσει να χρησιμοποιήσει την επιτάχυνση υλικού. Η αλλαγή αυτή θα εφαρμοστεί μόνο μετά από επανεκκίνηση του παιχνιδιού
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Η ρύθμιση θα εφαρμοστεί μόνο μετά από επανεκκίνηση του παιχνιδιού
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Τσεκάρετε αυτό το κουτί για να ενεργοποιήσετε το v-sync στην οθόνη. Η αλλαγή αυτή θα εφαρμοστεί μετά από επανεκκίνηση του παιχνιδιού. Λειτουργεί μόνο με ενεργοποιημένη την επιτάχυνση υλικού
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Τσεκάρετε αυτό το κουτί για να ενεργοποιήσετε το v-sync (κάθετος συγχρονισμός) στην οθόνη. Η αλλαγή αυτή θα εφαρμοστεί μετά από επανεκκίνηση του παιχνιδιού. Λειτουργεί μόνο με ενεργοποιημένη την επιτάχυνση υλικού
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Τρέχων οδηγός: {STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Τρέχων οδηγός: {STRING}
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Μέγεθος διεπαφής
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Σύρετε το κουμπί για να ορίσετε το μέγεθος του περιβάλλοντος διεπαφής. Ctrl+Σύρσιμο για συνεχή προσαρμογή
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Αυτόματος εντοπισμός μεγέθους
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Τσεκάρετε αυτό το κουτάκι για να ανιχνεύεται το μέγεθος της διεπαφής αυτόματα
+STR_GAME_OPTIONS_INTERFACE                                      :Διεπαφή
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Κλίση κλίμακας
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Τσεκάρετε αυτό το κουτί για να αλλάζει μέγεθος το περίγραμμα με βάση το μέγεθος της διεπαφής
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Μέγεθος διεπαφής
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Σύρετε το κουμπί για να ορίσετε το μέγεθος της διεπαφής. Ctrl+Σύρσιμο για συνεχή προσαρμογή
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Αυτόματος εντοπισμός μεγέθους
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Τσεκάρετε αυτό το κουτάκι για να ανιχνεύεται το μέγεθος της διεπαφής αυτόματα
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Χρήση παραδοσιακής γραμματοσειράς
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Τσεκάρετε αυτό το κουτάκι εάν προτιμάτε να χρησιμοποιήσετε την παραδοσιακή γραμματοσειρά σταθερού μεγέθους
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Εξομάλυνση εμφάνισης γραμματοσειράς
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Τσεκάρετε αυτό το κουτάκι για εξομάλυνση εμφάνισης γραμματοσειράς
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Κλίση κλίμακας
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Τσεκάρετε αυτό το κουτί για να αλλάζει μέγεθος το περίγραμμα με βάση το μέγεθος της διεπαφής
+
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Χρήση παραδοσιακής γραμματοσειράς
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Τσεκάρετε αυτό το κουτάκι εάν προτιμάτε να χρησιμοποιήσετε την παραδοσιακή γραμματοσειρά σταθερού μεγέθους
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Εξομάλυνση εμφάνισης γραμματοσειράς
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Τσεκάρετε αυτό το κουτάκι για εξομάλυνση εμφάνισης γραμματοσειράς μεταβλητού μεγέθους
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Αυτοματοποιημένη έρευνα
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Συμμετοχή σε αυτοματοποιημένη έρευνα
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Όταν είναι ενεργοποιημένο, το OpenTTD θα μεταδίδει μια έρευνα κατά την έξοδο παιχνιδιού
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Πληροφορίες για την αυτοματοποιημένη έρευνα και ιδιωτικότητα
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Αυτό ανοίγει ένα πρόγραμμα περιήγησης/browser με περισσότερες πληροφορίες σχετικά με την αυτοματοποιημένη έρευνα
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Προεπισκόπηση αποτελέσματος έρευνας
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Εμφάνιση του αποτελέσματος της έρευνας του τρέχοντος παιχνιδιού
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Αυτοματοποιημένη έρευνα
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Συμμετοχή σε αυτοματοποιημένη έρευνα
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :Όταν είναι ενεργοποιημένο, το OpenTTD θα μεταδίδει μια έρευνα κατά την έξοδο από ένα παιχνίδι
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :Πληροφορίες για την αυτοματοποιημένη έρευνα και ιδιωτικότητα
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Αυτό ανοίγει ένα πρόγραμμα περιήγησης με περισσότερες πληροφορίες σχετικά με την αυτοματοποιημένη έρευνα
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Προεπισκόπηση αποτελέσματος έρευνας
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Εμφάνιση του αποτελέσματος έρευνας του τρέχοντος παιχνιδιού
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Γραφικά
+STR_GAME_OPTIONS_DISPLAY                                        :Οθόνη
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Εμφάνιση ρυθμού ανανέωσης
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Επιλέξτε τον ρυθμό ανανέωσης της οθόνης
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Εμφάνιση ρυθμού ανανέωσης
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Επιλέξτε τον ρυθμό ανανέωσης της οθόνης
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Ρυθμοί ανανέωσης μεγαλύτεροι από 60Hz μπορεί να μειώσουν την απόδοση.
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Βασικό σετ γραφικών
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Επιλογή του βασικού σετ γραφικών που θα χρησιμοποιηθεί (δεν αλλάζει μέσα από ένα παιχνίδι, μόνο από το κεντρικό μενού)
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Επιπλέον πληροφορίες σχετικά με το βασικό πακέτο γραφικών
+STR_GAME_OPTIONS_BASE_GRF                                       :Βασικό σετ γραφικών
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Επιλογή του βασικού σετ γραφικών που θα χρησιμοποιηθεί (δεν αλλάζει μέσα από ένα παιχνίδι, μόνο από το κεντρικό μενού)
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Επιπλέον πληροφορίες σχετικά με το βασικό πακέτο γραφικών
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Σετ βασικών ήχων
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Επιλογή των βασικών ήχων που θα χρησιμοποιηθούν (δεν αλλάζει μέσα από ένα παιχνίδι, μόνο από το κεντρικό μενού)
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Επιπλέον πληροφορίες σχετικά με τους βασικούς ήχους
+STR_GAME_OPTIONS_BASE_SFX                                       :Σετ βασικών ήχων
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Επιλογή του βασικού σετ ήχων που θα χρησιμοποιηθεί (δεν αλλάζει μέσα από ένα παιχνίδι, μόνο από το κεντρικό μενού)
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Επιπλέον πληροφορίες σχετικά με τους βασικούς ήχους
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Βασικό σετ μουσικής
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Επιλέξτε το βασικό σετ μουσικής για χρήση
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Επιπλέον πληροφορίες σχετικά με το βασικό πακέτο μουσικής
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Βασικό σετ μουσικής
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Επιλέξτε το βασικό σετ μουσικής για χρήση
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Επιπλέον πληροφορίες σχετικά με το βασικό πακέτο μουσικής
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Λήψη Περιεχομένου
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Ελέγξτε για νέο και ενημερωμένο περιεχόμενο προς λήψη
 
-STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(δεν έχουν εγκατασταθεί plugins για διασύνδεση με πλατφόρμες κοινωνικής δικτύωσης)
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :(δεν έχουν εγκατασταθεί πρόσθετα (plugins) για διασύνδεση με πλατφόρμες κοινωνικής δικτύωσης)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Πλατφόρμα:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Plugin state:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Πλατφόρμα:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :Κατάσταση προσθέτων (plugins):
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Τρέχει
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Αποτυχία αρχικοποίησης
@@ -1312,12 +1317,11 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Ανεκτικ�
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Δεν υπάρχει διαθέσιμο κατάλληλο Al...{}{}Μπορείτε να κατεβάσετε AI μέσω του συστήματος «Διαδικτυακού Περιεχομένου»
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Ρυθμίσεις
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Φιλτράρισμα:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Επέκταση όλων
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Σύμπτυξη όλων
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Επαναφορά όλων των τιμών
+# Settings tree in the Game Options window
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Φίλτρο:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Επέκταση όλων
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Σύμπτυξη όλων
+STR_CONFIG_SETTING_RESET_ALL                                    :Επαναφορά όλων των τιμών
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(δεν υπάρχει διαθέσιμη επεξήγηση)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Προκαθορισμένη τιμή: {ORANGE}{STRING}
@@ -1330,9 +1334,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Ρύθμιση 
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Προσοχή!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Αυτή η ενέργεια θα επαναφέρει όλες τις ρυθμίσεις του παιχνιδιού στις προκαθορισμένες τιμές τους.{}Σίγουρα θέλετε να προχωρήσετε;
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Κατηγορία:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Τύπος:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Περιορίζει την παρακάτω λίστα με τη χρήση προκαθορισμένων φίλτρων
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Κατηγορία:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Τύπος:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Περιορίζει την παρακάτω λίστα με τη χρήση προκαθορισμένων φίλτρων
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Βασικές (εμφάνιση μόνο σημαντικών ρυθμίσεων)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Για προχωρημένους (εμφάνιση των περισσότερων ρυθμίσεων)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Για ειδικούς (εμφάνιση όλων των ρυθμίσεων, ακομη και παράξενων)
@@ -1349,9 +1353,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Ρυθμίσε�
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Κανένα -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Εμφάνιση όλων των αποτελεσμάτων αναζήτησης ανά ρύθμιση{}{SILVER}Κατηγορία {BLACK}εώς {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Εμφάνιση όλων των αποτελεσμάτων αναζήτησης ανά ρύθμιση{}{SILVER}Τύπος {BLACK}εώς {WHITE}Όλοι οι τύποι ρυθμίσεων
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Εμφάνιση όλων των αποτελεσμάτων αναζήτησης ανά ρύθμιση{}{SILVER}Κατηγορία {BLACK}εώς {WHITE}{STRING} {BLACK}και {SILVER}Τύπος {BLACK}εώς {WHITE}Όλοι οι τύποι ρυθμίσεων
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Εμφάνιση όλων των αποτελεσμάτων αναζήτησης ανά ρύθμιση{}{PUSH_COLOUR}{SILVER}Κατηγορία {POP_COLOUR}εώς {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Εμφάνιση όλων των αποτελεσμάτων αναζήτησης ανά ρύθμιση{}{PUSH_COLOUR}{SILVER}Τύπος {POP_COLOUR}εώς {WHITE}Όλοι οι τύποι ρυθμίσεων
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Εμφάνιση όλων των αποτελεσμάτων αναζήτησης ανά ρύθμιση{}{PUSH_COLOUR}{SILVER}Κατηγορία {POP_COLOUR}εώς {PUSH_COLOUR}{WHITE}{STRING} {POP_COLOUR}και {PUSH_COLOUR}{SILVER}Τύπος {POP_COLOUR}εώς {WHITE}Όλοι οι τύποι ρυθμίσεων
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Ανενεργό
@@ -2284,7 +2288,8 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... δε
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Το πρόγραμμα οδήγησης της κάρτας γραφικών προκάλεσε πρόβλημα στο παιχνίδι. Η επιτάχυνση υλικού απενεργοποιήθηκε
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Νέο Παιχνίδι
 STR_INTRO_LOAD_GAME                                             :{BLACK}Φόρτωση Παιχνιδιού
@@ -2296,11 +2301,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Παιχ
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Επιλογές Παιχνιδιού
 STR_INTRO_HIGHSCORE                                             :{BLACK}Πίνακας Βαθμολογιών
 STR_INTRO_HELP                                                  :{BLACK}Βοήθεια και εγχειρίδια χρήσης
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Ρυθμίσεις
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Ρυθμίσεις NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Διαδικτυακό Περιεχόμενο
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Ρυθμίσεις AI
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Ρυθμίσεις σενάριου παιχνιδιού
 STR_INTRO_QUIT                                                  :{BLACK}Έξοδος
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Έναρξη νέου παιχνιδιού. Με Ctrl+Κλικ παρακάμπτεται η ρύθμιση του χάρτη
@@ -2318,11 +2319,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Επιλ
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Εμφάνιση επιλογών παιχνιδιού
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Εμφάνιση του πίνακα βαθμολογιών
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Αποκτήστε πρόσβαση στην τεκμηρίωση και σε διαδικτυακούς πόρους
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Εμφάνιση ρυθμίσεων
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Εμφάνιση ρυθμίσεων NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Έλεγχος για νέο και ανανεωμένο περιεχόμενο για λήψη
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Εμφάνιση ρυθμίσεων ΤΝ
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Εμφάνιση ρυθμίσεων σενάριου παιχνιδιού
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Έξοδος από το «OpenTTD»
 
 STR_INTRO_BASESET                                               :{BLACK}Λείπουν {NUM} sprite{P "" s} από το επιλεγμένο βασικό σετ γραφικών. Παρακαλούμε ελέγξτε για ενημερώσεις του βασικού σετ.
@@ -3169,6 +3166,12 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Επιλ
 STR_FOUND_TOWN_CITY                                             :{BLACK}Πόλη
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Οι πόλεις αναπτύσσονται ταχύτερα από τις απλές κωμοπόλεις{}Ανάλογα με τις ρυθμίσεις, είναι μεγαλύτερες όταν ιδρύονται
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Επέκταση πόλης:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Κτίρια
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Αύξηση κτιρίων πόλεων
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Δρόμοι
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Αύξηση δρόμων πόλεων
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Σχέδιο δρόμων πόλης
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Επιλογή σχεδίου δρόμων που χρησιμοποιείται για αυτή την πόλη
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Αρχικό
@@ -3618,15 +3621,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Αποθ
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Λίστα διαθέσιμων προκαθορισμένων, επιλέχτε ένα για την αντιγραφή το στο όνομα αποθήκευσης απο κάτω
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Δώστε ένα όνομα για το προκαθορισμένο
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Τρέχον επιλεγμένο όνομα για το προκαθορισμένο για αποθήκευση
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Ακύρωση
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Μη αλλαγή του προκαθορισμένου
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Αποθήκευση
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Αποθήκευση προκαθορισμένου, χρησιμοποιώντας το επιλεγμένο όνομα
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Αλλαγή παραμέτρων βασικού σετ γραφικών
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Αλλαγή παραμέτρων NewGRF
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Κλείσιμο
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Επαναφορά
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Ρύθμιση όλων των παραμέτρων στις προεπιλεγμένες τιμές
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Παράμετρος {NUM}
@@ -3795,6 +3795,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Αλλα
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Επέκταση
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Αύξηση μεγέθους της πόλης
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Επέκταση κτιρίων
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Αύξηση κτιρίων της πόλης
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Επέκταση δρόμων
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Αύξηση δρόμων της πόλης
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Διαγραφή
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Διαγραφή της πόλης ολοκληρωτικά
 
@@ -4541,10 +4545,10 @@ STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Εμφά
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Εμφάνιση των εντολών του αεροσκάφους. Με Ctrl+Κλικ εμφανίζεται το χρονοδιάγραμμα
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Εμφάνιση λεπτομερειών τρένου
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Εμφάνιση λεπτομερειών οδικού οχήματος
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Εμφάνιση λεπτομερειών πλοίου
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Εμφάνιση λεπτομερειών αεροσκάφους
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Εμφάνιση λεπτομερειών τρένου. Ctrl+Κλικ για εμφάνιση/απόκρυψη των ομάδων τρένων
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Εμφάνιση λεπτομερειών οχήματος. Ctrl+Κλικ για εμφάνιση/απόκρυψη των ομάδων οχημάτων
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Εμφάνιση λεπτομερειών πλοίου. Ctrl+Κλικ για εμφάνιση/απόκρυψη των ομάδων πλοίων
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Εμφάνιση λεπτομερειών αεροσκάφους. Ctrl+Κλικ για εμφάνιση/απόκρυψη των ομάδων αεροσκαφών
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Τρέχουσα δράση τρένου - πατήστε για να σταματήσετε/ξεκινήσετε το τρένο
@@ -4868,15 +4872,15 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Δρομ
 STR_TIMETABLE_NO_TRAVEL                                         :Μην ταξιδέψεις
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Ταξίδι (αυτόματα· με δρομολόγιο στην επόμενη μη αυτόματη εντολή)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Ταξίδεψε (όχι μεσώ δρομολογίου)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Ταξίδι (μη δρομολογημένο) με μέγιστη ταχύτητα {2:VELOCITY}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Ταξίδι (μη δρομολογημένο) με μέγιστη ταχύτητα {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Ταξίδεψε για {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Ταξίδεψε για {STRING} με στο μέγιστο {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Ταξίδι (για {STRING}, μη δρομολογημένο)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Ταξίδι γιά {STRING}, (μη δρομολογημένο) με μέγιστη ταχύτητα {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(αναμονή για {STRING}, μη δρομολογημένο)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(ταξίδι για {STRING}, μη δρομολογημένο)
-STR_TIMETABLE_STAY_FOR                                          :και μείνε για {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :και ταξίδεψε για {STRING}
+STR_TIMETABLE_STAY_FOR                                          :{SPACE}και μείνε για {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}και ταξίδεψε για {STRING}
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Θα χρειαστούν περίπου {STRING} για να ολοκληρωθεί αυτό το χρονοδιάγραμμα
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Το δρομολόγιο αυτό θα χρειαστεί τουλάχιστον {STRING} για να ολοκληρωθεί
@@ -4995,8 +4999,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}Ιστ�
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Αποδοχή
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Αποδοχή της επιλεγμένης δέσμης ενεργειών
-STR_AI_LIST_CANCEL                                              :{BLACK}Άκυρωση
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Να μην γίνει αλλαγή δέσμης ενεργειών
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Βγάλτε στιγμιότυπο εικόνας
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Κανονικό στιγμιότυπο
@@ -5009,7 +5011,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Στιγ
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Παράμετροι ΤΝ (Τεχνητης Νοημοσύνης)
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Παράμετροι σεναρίου παιχνιδιού
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Κλείσιμο
 STR_AI_SETTINGS_RESET                                           :{BLACK}Επαναφορά
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
@@ -5991,6 +5992,7 @@ STR_CURRENCY_SHORT_GIGA                                         :{NBSP}δισ.
 STR_CURRENCY_SHORT_TERA                                         :{NBSP}τρισ.
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_LEFT_ARROW                                             :{LEFT_ARROW}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
@@ -6030,3 +6032,11 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Άνοιγμα ρυθμίσεων badge
+STR_BADGE_CONFIG_RESET                                          :Επαναφορά
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Εικονίδια Badge
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Φίλτρα Badge
+STR_BADGE_CONFIG_PREVIEW                                        :Προεπισκόπιση Εικόνας
+STR_BADGE_CONFIG_NAME                                           :Όνομα
+STR_BADGE_FILTER_ANY_LABEL                                      :Κάθε {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} είναι {STRING}

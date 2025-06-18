@@ -74,7 +74,7 @@ protected:
 	static NetworkRecvStatus SendIdentify();
 	void CheckConnection();
 public:
-	ClientNetworkGameSocketHandler(SOCKET s, const std::string &connection_string);
+	ClientNetworkGameSocketHandler(SOCKET s, std::string_view connection_string);
 	~ClientNetworkGameSocketHandler();
 
 	NetworkRecvStatus CloseConnection(NetworkRecvStatus status) override;
@@ -88,9 +88,9 @@ public:
 
 	static NetworkRecvStatus SendAuthResponse();
 
-	static NetworkRecvStatus SendChat(NetworkAction action, DestType type, int dest, const std::string &msg, int64_t data);
+	static NetworkRecvStatus SendChat(NetworkAction action, DestType type, int dest, std::string_view msg, int64_t data);
 	static NetworkRecvStatus SendSetName(const std::string &name);
-	static NetworkRecvStatus SendRCon(const std::string &password, const std::string &command);
+	static NetworkRecvStatus SendRCon(std::string_view password, std::string_view command);
 	static NetworkRecvStatus SendMove(CompanyID company);
 
 	static bool IsConnected();

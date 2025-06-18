@@ -10,6 +10,7 @@
 #ifndef INDUSTRY_H
 #define INDUSTRY_H
 
+#include "core/flatset_type.hpp"
 #include "newgrf_storage.h"
 #include "subsidy_type.h"
 #include "industry_map.h"
@@ -257,7 +258,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 		return this->cached_name;
 	}
 
-	static std::array<std::vector<IndustryID>, NUM_INDUSTRYTYPES> industries; ///< List of industries of each type.
+	static std::array<FlatSet<IndustryID>, NUM_INDUSTRYTYPES> industries; ///< List of industries of each type.
 
 private:
 	void FillCachedName() const;

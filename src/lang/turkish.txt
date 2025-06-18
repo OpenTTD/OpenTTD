@@ -267,6 +267,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}daki
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}yıl
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}dönem{P "ler"}
 
+STR_LIST_SEPARATOR                                              :,{SPACE}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtre:
@@ -439,10 +440,11 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Editörden çı
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Oyundan Çık
 
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Kasabalar Oluştur
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Ev Yerleştir
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Seçenekler
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Ayarlar
 STR_SETTINGS_MENU_AI_SETTINGS                                   :YZ ayarları
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Oyun betiği ayarları
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF ayarları
@@ -946,21 +948,22 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Bu gör�
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Seçenekler
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Genel
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Genel ayarları seçin
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :Genel ayarları seçin
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafikler
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Grafik ayarlarını seçin
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :Grafik ayarlarını seçin
 STR_GAME_OPTIONS_TAB_SOUND                                      :Ses
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Ses ve müzik ayarlarını seçin
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Ses ve müzik ayarlarını seçin
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Sosyal
-STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Sosyal entegre ayarlarını seçin
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Sosyal entegre ayarlarını seçin
 
 STR_GAME_OPTIONS_VOLUME                                         :Ses seviyesi
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Ses efektleri
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Müzik
 
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Para birimleri
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Para birimi seçimi
+
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Para birimleri
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Para birimi seçimi
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -1010,8 +1013,8 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malezya Ringgit
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Letonya Latsı
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portekiz Esküdosu
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Otomatik Kaydet
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Otomatik kaydetme sıklığını seçin
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Otomatik Kaydet
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Otomatik kaydetme sıklığını seçin
 
 # Autosave dropdown
 ###length 5
@@ -1021,74 +1024,74 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Her 30 dakikada
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Her 60 dakikada
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Her 120 dakikada
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Dil
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Görünen dili seçin
+STR_GAME_OPTIONS_LANGUAGE                                       :Dil
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Görünen dili seçin
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} (%{NUM} tamamlandı)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Tam ekran
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Tam ekran oynamak için bunu isaretleyin
+STR_GAME_OPTIONS_FULLSCREEN                                     :Tam ekran
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Tam ekran oynamak için bunu isaretleyin
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekran Çözünürlüğü
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Kullanılacak ekran çözünürlüğünü seçin
+STR_GAME_OPTIONS_RESOLUTION                                     :Ekran Çözünürlüğü
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Kullanılacak ekran çözünürlüğünü seçin
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :diğer
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Donanım hızlandırma
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}OpenTTD'nin donanım ivmesini kullanmayı denemesine izin vermek için bu kutuyu işaretleyin. Değiştirilmiş bir ayar sadece oyun yeniden başlatıldığında uygulanır
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Donanım hızlandırma
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :OpenTTD'nin donanım ivmesini kullanmayı denemesine izin vermek için bu kutuyu işaretleyin. Değiştirilmiş bir ayar sadece oyun yeniden başlatıldığında uygulanır
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Ayar sadece oyun yeniden başlatıldığında uygulanır
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Dikey senkronizasyon'u aktif etmek için bu kutuyu işaretleyin. Değiştirilmiş bir ayar sadece oyun yeniden başlatıldığında uygulanır. Yalnızca donanım ivmesi aktifken çalışır
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Dikey senkronizasyon'u aktif etmek için bu kutuyu işaretleyin. Değiştirilmiş bir ayar sadece oyun yeniden başlatıldığında uygulanır. Yalnızca donanım ivmesi aktifken çalışır
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Geçerli sürücü: {STRING}
-
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Arayüz büyüklüğü
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Arayüz büyüklüğünü ayarlamak için kaydırın. Sürekli ayarlama için Ctrl tuşunu basılı tutun
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Büyüklüğü otomatik algıla
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Arayüz boyutunu otomatik ayarlamak için bu kutucuğu işaretleyin
-
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Eğimi ayarla
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Eğimi arayüz boyutuna göre ayarlamak için bu kutucuğu işaretleyin
-
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK} Geleneksel yazı tipini kullan
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Yazı tipini geleneksel sabit boyutlu haline döndürmek için bu kutucuğu işaretleyin
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Yazı tipi kenarlarını yumuşatma
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Yeniden boyutlandırılabilir yazı tiplerinin kenarlarını yumuşatmak için bu kutuyu işaretleyin
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Geçerli sürücü: {STRING}
 
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Otomatik anket
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Otomatik ankete katılın
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Etkinleştirildiğinde, OpenTTD bir oyundan çıkarken bir anket gönderir
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Anket ve gizlilik hakkında
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Bu, otomatik anket hakkında daha fazla bilgi içeren bir tarayıcı açar
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Anket sonucunu önizleyin
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Mevcut çalışan oyunun anket sonucunu göster
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Arayüz büyüklüğü
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Arayüz büyüklüğünü ayarlamak için kaydırın. Sürekli ayarlama için Ctrl tuşunu basılı tutun
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Büyüklüğü otomatik algıla
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Arayüz boyutunu otomatik ayarlamak için bu kutucuğu işaretleyin
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafikler
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Eğimi ayarla
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Eğimi arayüz boyutuna göre ayarlamak için bu kutucuğu işaretleyin
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Tazeleme oranını görüntüle
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Kullanılacak tazeleme oranını seç
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                : Geleneksel yazı tipini kullan
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Yazı tipini geleneksel sabit boyutlu haline döndürmek için bu kutucuğu işaretleyin
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Yazı tipi kenarlarını yumuşatma
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Yeniden boyutlandırılabilir yazı tiplerinin kenarlarını yumuşatmak için bu kutuyu işaretleyin
+
+
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Otomatik anket
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Otomatik ankete katılın
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :Etkinleştirildiğinde, OpenTTD bir oyundan çıkarken bir anket gönderir
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :Anket ve gizlilik hakkında
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Bu, otomatik anket hakkında daha fazla bilgi içeren bir tarayıcı açar
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Anket sonucunu önizleyin
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Mevcut çalışan oyunun anket sonucunu göster
+
+
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Tazeleme oranını görüntüle
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Kullanılacak tazeleme oranını seç
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}60Hz'den yüksek tazeleme oranları performansı etkileyebilir.
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Temel grafik kümesi
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kullanılacak temel grafik kümesini seçin  (oyun içinde değiştirlemez sadece ana menüde değiştirebilinir)
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Temel grafik setiyle ilgili ilave bilgiler
+STR_GAME_OPTIONS_BASE_GRF                                       :Temel grafik kümesi
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Kullanılacak temel grafik kümesini seçin  (oyun içinde değiştirlemez sadece ana menüde değiştirebilinir)
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Temel grafik setiyle ilgili ilave bilgiler
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Temel ses kümesi
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Kullanılacak temel ses kümesini seçin (oyun içinde değiştirlemez sadece ana menüde değiştirebilinir)
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Temel ses kümesiyle ilgili ilave bilgiler
+STR_GAME_OPTIONS_BASE_SFX                                       :Temel ses kümesi
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Kullanılacak temel ses kümesini seçin (oyun içinde değiştirlemez sadece ana menüde değiştirebilinir)
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Temel ses kümesiyle ilgili ilave bilgiler
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Temel müzik kümesi
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Kullanılacak temel müzik kümesini seçin
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Temel müzik hakkında daha fazla bilgi
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Temel müzik kümesi
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Kullanılacak temel müzik kümesini seçin
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Temel müzik hakkında daha fazla bilgi
 
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(yüklü sosyal platformlarla entegre edilecek eklenti yok)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Platform:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Eklenti statüsü:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Platform:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :Eklenti statüsü:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Çalışıyor
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Başlatılamadı
@@ -1201,12 +1204,11 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :İzin verici (�
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Uygun YZ'ler yok...{}'Çevrimiçi içerik' sistemiyle pek çok YZ indirebilirsiniz
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Ayarlar
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtre:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Tümünü genişlet
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Tümünü kısalt
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Tüm değerleri sıfırla
+# Settings tree in the Game Options window
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Filtre:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Tümünü genişlet
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Tümünü kısalt
+STR_CONFIG_SETTING_RESET_ALL                                    :Tüm değerleri sıfırla
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(açıklama bulunmamaktadır)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Varsayılan değer: {ORANGE}{STRING}
@@ -1219,9 +1221,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Şirket ayarlar
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Dikkat!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Bu eylem tüm oyun ayarlarını varsayılan değerlerine sıfırlayacaktır.{}Devam etmek istediğine emin misin?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategori:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tür:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Aşağıdaki listeyi önceden tanımlı filtreler kullanarak sınırlandırır
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Kategori:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Tür:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Aşağıdaki listeyi önceden tanımlı filtreler kullanarak sınırlandırır
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Temel (sadece önemli ayarları göster)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Gelişmiş (çoğu ayarı göster)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Uzman (garip olanlar dahil tüm ayarları göster)
@@ -1238,9 +1240,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Şirket ayarlar
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Hiçbiri -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Tüm arama sonuçlarını{}{SILVER}Kategoriyi {BLACK}{WHITE}{STRING} ayarlayarak göster
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Tüm arama sonuçlarını{}{SILVER}Türü {BLACK} {WHITE}Tüm ayar türleri olarak ayarlayarak göster
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Tüm arama sonuçlarını{}{SILVER}Kategoriyi {BLACK} {WHITE}{STRING} {BLACK}ve {SILVER}Türü {BLACK} {WHITE}Tüm ayar türleri olarak ayarlayarak göster
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Tüm arama sonuçlarını{}{SILVER}Kategoriyi {BLACK}{WHITE}{STRING} ayarlayarak göster
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Tüm arama sonuçlarını{}{SILVER}Türü {BLACK} {WHITE}Tüm ayar türleri olarak ayarlayarak göster
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Tüm arama sonuçlarını{}{SILVER}Kategoriyi {BLACK} {WHITE}{STRING} {BLACK}ve {SILVER}Türü {BLACK} {WHITE}Tüm ayar türleri olarak ayarlayarak göster
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Kapalı
@@ -2162,7 +2164,6 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... uyum
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU sürücüsü oyunu çökertti. Donanım hızlandırma devre dışı bırakıldı
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Yeni Oyun
 STR_INTRO_LOAD_GAME                                             :{BLACK}Oyun Yükle
@@ -2174,11 +2175,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Çok Oyu
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Seçenekler
 STR_INTRO_HIGHSCORE                                             :{BLACK}Puan Tablosu
 STR_INTRO_HELP                                                  :{BLACK}Yardım ve Kılavuzlar
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Ayarlar
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Ayarları
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Çevrimiçi İçeriği Kontrol Et
-STR_INTRO_AI_SETTINGS                                           :{BLACK}YZ Ayarları
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Oyun Betiği Ayarları
 STR_INTRO_QUIT                                                  :{BLACK}Çıkış
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Yeni oyuna başla. Ctrl+Tıklama harita ayarlamasını atlar.
@@ -2196,11 +2193,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}'Oyuncak
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Oyun ayarlarını aç
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Puan tablosunu aç
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Belgelere ve çevrimiçi kaynaklara erişin
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Ayarları aç
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF ayarlarını aç
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}İndirilecek yeni ve güncellenmiş içeriği kontrol et
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Yapay Zeka ayarlarını göster
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Oyun skripti (betiği) ayarlarını aç
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD' den çık
 
 STR_INTRO_BASESET                                               :{BLACK}Geçerli seçimdeki temel grafik setinin {NUM} örneği eksik. Lütfen temel setin güncellemelerini kontrol edin.
@@ -2800,12 +2793,14 @@ STR_PICKER_MODE_ALL                                             :Tümü
 STR_PICKER_MODE_ALL_TOOLTIP                                     :Tüm kategorilerdeki öğelerin görüntülenmesini aç/kapat
 STR_PICKER_MODE_USED                                            :Kullanılmış
 STR_PICKER_MODE_USED_TOOLTIP                                    :Yalnızca mevcut öğeleri göstermeyi aç/kapat
-STR_PICKER_MODE_SAVED                                           :Kaydedildi
+STR_PICKER_MODE_SAVED                                           :Kaydedilen
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Yalnızca kaydedilen öğeleri göstermeyi aç/kapat
 
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Görüntülenecek bir yol noktası türünü seçin
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Görüntülenecek bir kamyon istasyonu türünü seçin
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :İnşa edilecek bir tür kamyon istasyonu seçin. Kaydedilen öğelerde eklemek veya kaldırmak istiyorsanız Ctrl+Tık ile yapabilirsiniz.
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Görüntülemek için bir şehir bölgesi seçin
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Bir konut türü seçin. Kaydedilmiş öğelere eklemek veya kaldırmak için Ctrl+Tıklayın
 
 STR_HOUSE_PICKER_CAPTION                                        :Ev Seçimi
 STR_HOUSE_PICKER_NAME                                           :{BLACK}İsim: {ORANGE}{STRING}
@@ -3026,6 +3021,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Şehir b
 STR_FOUND_TOWN_CITY                                             :{BLACK}Şehir
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Şehirler normal kasabalardan daha hızlı büyürler{}Ayarlara göre değişmekle birlikte, ilk kurulduklarında daha büyük olurlar.
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Kasaba yol yerleşimi:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Bu kasaba için kullanılacak yol yerleşimini seç
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Özgün
@@ -3097,6 +3093,8 @@ STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Tramvay 
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Ray hız sınırı: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Yol hız sınırı: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Tramvay hız limiti: {LTBLUE}{VELOCITY}
+STR_LAND_AREA_INFORMATION_TOWN_CAN_UPGRADE                      :{BLACK}Kasaba yükseltilebilir: {LTBLUE}Evet
+STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE                   :{BLACK}Kasaba yükseltilebilir: {LTBLUE}Hayır
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Kayalar
@@ -3465,15 +3463,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Ön ayar
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Kullanılabilir ön ayarların listesi, aşağıdaki isimle kaydetmek üzere kopyalamak için birini seçin
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Ön ayar için bir isim girin
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Geçerli seçimdeki ön ayarın kaydedilmek için adı
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}İptal
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Ön ayarı değiştirme
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Kaydet
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Ön ayarı geçerli seçili isimle kaydet
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Temel grafik parametrelerini değiştirin
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF parametrelerini değiştir
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Kapat
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Sıfırla
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Tüm parametreleri varsayılan değerlerine ata
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametre {NUM}
@@ -4697,7 +4692,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Zaman ç
 STR_TIMETABLE_NO_TRAVEL                                         :Sefer yok
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Yolculuk (otomatik; bir sonraki elle verilmiş talimat tarafından zamanlanır)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Gezi (zamanlı değil)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :En çok {2:VELOCITY} hız ile git (zaman tablosu yok)
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} boyunca yol al
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{STRING} boyunca en çok {VELOCITY} hız ile git
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Seyahat et ({STRING} için, hareket planı yok)
@@ -4821,8 +4815,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Kabul et
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vurgulanan betiği seç
-STR_AI_LIST_CANCEL                                              :{BLACK}İptal
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Betiği değiştirme
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Ekran görüntüsü al
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normal ekran görüntüsü
@@ -4835,7 +4827,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Küçük
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :YZ
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Oyun Betiği
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Kapat
 STR_AI_SETTINGS_RESET                                           :{BLACK}Yeniden başlat
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
@@ -4984,6 +4975,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... hari
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Yol çalışmaları
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Bu kasaba silinemiyor...{}Bir istasyon veya garaj kasabaya atıfta bulunuyor ya da bir kasaba karesi kaldırılamıyor
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... bu şehrin merkezinde heykel için uygun bir yer yok
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Bina inşa edilemez...
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... çok fazla fabrika var
@@ -5060,6 +5052,7 @@ STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Buraya �
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Yerimi adı değiştirilemedi...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Tren yerimi kaldırılamaz...
+STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}yol yerimi kaldırılamaz....
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Önce demiryolu yerimi kaldırılmalı
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... yolda şamandıra var
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... şamandıra başka bir şirket tarafından kullanılıyor!
@@ -5250,8 +5243,16 @@ STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Gemi sat
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Uçak satılamıyor...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :{WHITE}Tüm demiryolu araçları satılamaz...
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :{WHITE}Tüm Karayolu Araçları satılamaz...
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Tüm gemiler satılamaz...
+STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :Tüm uçaklar satılamıyor...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}Demiryolu araçları otomatik olarak değiştirilemiyor...
+STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}Karayolu araçları otomatik olarak değiştirilemiyor...
+STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}Gemiler otomatik olarak değiştirilemiyor...
+STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}Uçaklar otomatik değiştirılemiyor...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Oyunda çok fazla araç var
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Servis aralığı değiştirilemiyor...
@@ -5267,6 +5268,8 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}{DATE_SH
 
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Kasabada inşa edilebilir yol türleri mevcut değil
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}NewGRF Yapılandırma Ayarlarını Değiştir
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Henüz inşa edilebilir şehir yol türü mevcut değil
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Yeni oyuna başladıktan sonra {DATE_SHORT} veya önceden şehir inşa edilebilir yol türleri sağlayan bir NewGRF kullanın
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Tehlikedeki tren sinyali geçemez...

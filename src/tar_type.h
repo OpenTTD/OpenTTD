@@ -19,8 +19,8 @@ struct TarFileListEntry {
 	size_t position;
 };
 
-typedef std::map<std::string, std::string> TarList; ///< Map of tar file to tar directory.
-typedef std::map<std::string, TarFileListEntry> TarFileList;
+using TarList = std::map<std::string, std::string, std::less<>>; ///< Map of tar file to tar directory.
+using TarFileList = std::map<std::string, TarFileListEntry, std::less<>> ;
 extern std::array<TarList, NUM_SUBDIRS> _tar_list;
 extern TarFileList _tar_filelist[NUM_SUBDIRS];
 

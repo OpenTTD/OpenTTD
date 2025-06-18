@@ -17,7 +17,7 @@ enum class CmdFlag : uint8_t {
 using CmdFlags = EnumBitSet<CmdFlag, uint8_t>;
 
 class StringBuilder;
-typedef void (*ParseCmdProc)(StringBuilder &builder, const char *buf, char32_t value);
+typedef void (*ParseCmdProc)(StringBuilder &builder, std::string_view param, char32_t value);
 
 struct CmdStruct {
 	std::string_view cmd;
@@ -28,9 +28,9 @@ struct CmdStruct {
 	CmdFlags flags;
 };
 
-extern void EmitSingleChar(StringBuilder &builder, const char *buf, char32_t value);
-extern void EmitPlural(StringBuilder &builder, const char *buf, char32_t value);
-extern void EmitGender(StringBuilder &builder, const char *buf, char32_t value);
+extern void EmitSingleChar(StringBuilder &builder, std::string_view param, char32_t value);
+extern void EmitPlural(StringBuilder &builder, std::string_view param, char32_t value);
+extern void EmitGender(StringBuilder &builder, std::string_view param, char32_t value);
 
 static const CmdStruct _cmd_structs[] = {
 	/* Font size */
@@ -142,6 +142,7 @@ static const CmdStruct _cmd_structs[] = {
 	{"DOWN_ARROW",        EmitSingleChar, SCC_DOWN_ARROW,         0, std::nullopt, {CmdFlag::DontCount}},
 	{"CHECKMARK",         EmitSingleChar, SCC_CHECKMARK,          0, std::nullopt, {CmdFlag::DontCount}},
 	{"CROSS",             EmitSingleChar, SCC_CROSS,              0, std::nullopt, {CmdFlag::DontCount}},
+	{"LEFT_ARROW",        EmitSingleChar, SCC_LEFT_ARROW,         0, std::nullopt, {CmdFlag::DontCount}},
 	{"RIGHT_ARROW",       EmitSingleChar, SCC_RIGHT_ARROW,        0, std::nullopt, {CmdFlag::DontCount}},
 	{"SMALL_LEFT_ARROW",  EmitSingleChar, SCC_LESS_THAN,          0, std::nullopt, {CmdFlag::DontCount}},
 	{"SMALL_RIGHT_ARROW", EmitSingleChar, SCC_GREATER_THAN,       0, std::nullopt, {CmdFlag::DontCount}},
@@ -160,8 +161,8 @@ static const CmdStruct _cmd_structs[] = {
 /** Description of a plural form */
 struct PluralForm {
 	size_t plural_count;     ///< The number of plural forms
-	const char *description; ///< Human readable description of the form
-	const char *names;       ///< Plural names
+	std::string_view description; ///< Human readable description of the form
+	std::string_view names; ///< Plural names
 };
 
 /** The maximum number of plurals. */
@@ -199,7 +200,7 @@ static const PluralForm _plural_forms[] = {
  * a = array, i.e. list of strings
  */
  /** All pragmas used */
-static const char * const _pragmas[][4] = {
+static const std::string_view _pragmas[][4] = {
 	/*  name         flags  default   description */
 	{ "name",        "0",   "",       "English name for the language" },
 	{ "ownname",     "t",   "",       "Localised name for the language" },

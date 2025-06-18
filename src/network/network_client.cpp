@@ -9,6 +9,7 @@
 
 #include "../stdafx.h"
 #include "network_gui.h"
+#include "../core/string_consumer.hpp"
 #include "../saveload/saveload.h"
 #include "../saveload/saveload_filter.h"
 #include "../command_func.h"
@@ -53,26 +54,16 @@ struct PacketReader : LoadFilter {
 	}
 
 	/**
-	 * Simple wrapper around fwrite to be able to pass it to Packet's TransferOut.
-	 * @param destination The reader to add the data to.
-	 * @param source      The buffer to read data from.
-	 * @param amount      The number of bytes to copy.
-	 * @return The number of bytes that were copied.
-	 */
-	static inline ssize_t TransferOutMemCopy(PacketReader *destination, const char *source, size_t amount)
-	{
-		std::copy_n(source, amount, std::back_inserter(destination->buffer));
-		return amount;
-	}
-
-	/**
 	 * Add a packet to this buffer.
 	 * @param p The packet to add.
 	 */
 	void AddPacket(Packet &p)
 	{
 		assert(this->read_bytes == 0);
-		p.TransferOut(TransferOutMemCopy, this);
+		p.TransferOut([this](std::span<const uint8_t> source) {
+			std::ranges::copy(source, std::back_inserter(this->buffer));
+			return source.size();
+		});
 	}
 
 	size_t Read(uint8_t *rbuf, size_t size) override
@@ -109,7 +100,7 @@ void ClientNetworkEmergencySave()
  * Create a new socket for the client side of the game connection.
  * @param s The socket to connect with.
  */
-ClientNetworkGameSocketHandler::ClientNetworkGameSocketHandler(SOCKET s, const std::string &connection_string) : NetworkGameSocketHandler(s), connection_string(connection_string)
+ClientNetworkGameSocketHandler::ClientNetworkGameSocketHandler(SOCKET s, std::string_view connection_string) : NetworkGameSocketHandler(s), connection_string(connection_string)
 {
 	assert(ClientNetworkGameSocketHandler::my_client == nullptr);
 	ClientNetworkGameSocketHandler::my_client = this;
@@ -401,7 +392,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendCommand(const CommandPacke
 }
 
 /** Send a chat-packet over the network */
-NetworkRecvStatus ClientNetworkGameSocketHandler::SendChat(NetworkAction action, DestType type, int dest, const std::string &msg, int64_t data)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendChat(NetworkAction action, DestType type, int dest, std::string_view msg, int64_t data)
 {
 	Debug(net, 9, "Client::SendChat(): action={}, type={}, dest={}", action, type, dest);
 
@@ -462,7 +453,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendQuit()
  * @param pass The password for the remote command.
  * @param command The actual command.
  */
-NetworkRecvStatus ClientNetworkGameSocketHandler::SendRCon(const std::string &pass, const std::string &command)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendRCon(std::string_view pass, std::string_view command)
 {
 	Debug(net, 9, "Client::SendRCon()");
 
@@ -823,7 +814,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_DONE(Packet
 	ClearErrorMessages();
 
 	/* Set the abstract filetype. This is read during savegame load. */
-	_file_to_saveload.SetMode(SLO_LOAD, FT_SAVEGAME, DFT_GAME_FILE);
+	_file_to_saveload.SetMode(FIOS_TYPE_FILE, SLO_LOAD);
 
 	bool load_success = SafeLoad({}, SLO_LOAD, DFT_GAME_FILE, GM_NORMAL, NO_DIRECTORY, this->savegame);
 	this->savegame = nullptr;
@@ -925,14 +916,14 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_COMMAND(Packet 
 	if (this->status != STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	CommandPacket cp;
-	const char *err = this->ReceiveCommand(p, cp);
+	auto err = this->ReceiveCommand(p, cp);
 	cp.frame    = p.Recv_uint32();
 	cp.my_cmd   = p.Recv_bool();
 
 	Debug(net, 9, "Client::Receive_SERVER_COMMAND(): cmd={}, frame={}", cp.cmd, cp.frame);
 
-	if (err != nullptr) {
-		IConsolePrint(CC_WARNING, "Dropping server connection due to {}.", err);
+	if (err.has_value()) {
+		IConsolePrint(CC_WARNING, "Dropping server connection due to {}.", *err);
 		return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	}
 
@@ -1212,7 +1203,7 @@ void NetworkClient_Connected()
  * @param password The password.
  * @param command The command to execute.
  */
-void NetworkClientSendRcon(const std::string &password, const std::string &command)
+void NetworkClientSendRcon(std::string_view password, std::string_view command)
 {
 	MyClient::SendRCon(password, command);
 }
@@ -1252,7 +1243,7 @@ void NetworkClientsToSpectators(CompanyID cid)
  * @param client_name The client name to check for validity.
  * @return True iff the name is valid.
  */
-bool NetworkIsValidClientName(const std::string_view client_name)
+bool NetworkIsValidClientName(std::string_view client_name)
 {
 	if (client_name.empty()) return false;
 	if (client_name[0] == ' ') return false;
@@ -1287,7 +1278,7 @@ bool NetworkValidateClientName(std::string &client_name)
  * Convenience method for NetworkValidateClientName on _settings_client.network.client_name.
  * It trims the client name and checks whether it is empty. When it is empty
  * an error message is shown to the GUI user.
- * See \c NetworkValidateClientName(char*) for details about the functionality.
+ * See \c NetworkValidateClientName(std::string&) for details about the functionality.
  * @return True iff the client name is valid.
  */
 bool NetworkValidateOurClientName()
@@ -1328,7 +1319,7 @@ void NetworkUpdateClientName(const std::string &client_name)
  * @param msg The actual message.
  * @param data Arbitrary extra data.
  */
-void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const std::string &msg, int64_t data)
+void NetworkClientSendChat(NetworkAction action, DestType type, int dest, std::string_view msg, int64_t data)
 {
 	MyClient::SendChat(action, type, dest, msg, data);
 }

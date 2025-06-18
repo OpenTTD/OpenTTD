@@ -128,7 +128,7 @@ static void AddGrfInfo(std::back_insert_iterator<std::string> &output_iterator, 
 
 
 /** Text messages for various logged actions */
-static const char * const la_text[] = {
+static const std::string_view la_text[] = {
 	"new game started",
 	"game loaded",
 	"GRF config changed",

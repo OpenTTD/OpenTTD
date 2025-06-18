@@ -461,21 +461,23 @@ STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Пӗлт
 
 
 
+
 ###length 45
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Вырӑсла тенкӗ
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Хӑй управ
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Хӑй управ
 
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Сӳнтер
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Чӗлхи
+STR_GAME_OPTIONS_LANGUAGE                                       :Чӗлхи
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Тулли экран
+STR_GAME_OPTIONS_FULLSCREEN                                     :Тулли экран
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Экрана сӑнарлама пултарни
+STR_GAME_OPTIONS_RESOLUTION                                     :Экрана сӑнарлама пултарни
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :расна
+
 
 
 
@@ -540,7 +542,7 @@ STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Вӑйӑ пах
 ###length 4
 
 
-# Settings tree window
+# Settings tree in the Game Options window
 
 
 
@@ -860,15 +862,12 @@ STR_CONFIG_SETTING_AI                                           :Ӑмӑртуҫ�
 # Video initalization errors
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF майлаштару
 STR_INTRO_QUIT                                                  :{BLACK}Вӗҫле
 
 
 
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF майлаштару кӑтар
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD' вӗҫле
 
 
@@ -1142,6 +1141,7 @@ STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Ӑнсӑ
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Хула пысӑкӑшӗ суйла
 STR_FOUND_TOWN_CITY                                             :{BLACK}Тӑп хула
 
+
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Чӑн
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 серепе
 STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3 серепе
@@ -1241,7 +1241,6 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Верс
 # NewGRF save preset window
 
 # NewGRF parameters window
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Хуп
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Сикӗ
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Ӗнерленӳ {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}

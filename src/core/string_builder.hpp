@@ -26,17 +26,12 @@ public:
 	/**
 	 * Append buffer.
 	 */
-	virtual void PutBuffer(const char *str, size_type len) = 0;
-
-	/**
-	 * Append span.
-	 */
-	void PutBuffer(std::span<const char> str) { this->PutBuffer(str.data(), str.size()); }
+	virtual void PutBuffer(std::span<const char> str) = 0;
 
 	/**
 	 * Append string.
 	 */
-	void Put(std::string_view str) { this->PutBuffer(str.data(), str.size()); }
+	void Put(std::string_view str) { this->PutBuffer(str); }
 
 	void PutUint8(uint8_t value);
 	void PutSint8(int8_t value);
@@ -53,22 +48,21 @@ public:
 	/**
 	 * Append integer 'value' in given number 'base'.
 	 */
-	template<class T>
+	template <class T>
 	void PutIntegerBase(T value, int base)
 	{
 		std::array<char, 32> buf;
 		auto result = std::to_chars(buf.data(), buf.data() + buf.size(), value, base);
 		if (result.ec != std::errc{}) return;
 		size_type len = result.ptr - buf.data();
-		this->PutBuffer(buf.data(), len);
+		this->PutBuffer({buf.data(), len});
 	}
 };
 
 /**
  * Compose data into a growing std::string.
  */
-class StringBuilder final : public BaseStringBuilder
-{
+class StringBuilder final : public BaseStringBuilder {
 	std::string *dest;
 public:
 	/**
@@ -94,8 +88,7 @@ public:
 	 */
 	[[nodiscard]] std::string &GetString() noexcept { return *dest; }
 
-	using BaseStringBuilder::PutBuffer;
-	void PutBuffer(const char *str, size_type len) override;
+	void PutBuffer(std::span<const char> str) override;
 
 	/**
 	 * Append string.

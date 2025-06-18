@@ -27,7 +27,7 @@ enum class AyStarStatus : uint8_t {
 	EmptyOpenList, ///< All items are tested, and no path has been found.
 	StillBusy, ///< Some checking was done, but no path found yet, and there are still items left to try.
 	NoPath, ///< No path to the goal was found.
-	LimitReached, ///< The #AyStar::max_search_nodes limit has been reached, aborting search.
+	LimitReached, ///< The AYSTAR_DEF_MAX_SEARCH_NODES limit has been reached, aborting search.
 	Done, ///< Not an end-tile, or wrong direction.
 };
 
@@ -38,99 +38,61 @@ using AyStarNode = CYapfNodeKeyTrackDir;
 struct PathNode : CYapfNodeT<AyStarNode, PathNode> {
 };
 
-struct AyStar;
-
-/**
- * Check whether the end-tile is found.
- * @param aystar %AyStar search algorithm data.
- * @param current Node to exam one.
- * @note The 2nd parameter should be #OpenListNode, and \em not #AyStarNode. #AyStarNode is
- * part of #OpenListNode and so it could be accessed without any problems.
- * The good part about #OpenListNode is, and how AIs use it, that you can
- * access the parent of the current node, and so check if you, for example
- * don't try to enter the file tile with a 90-degree curve. So please, leave
- * this an #OpenListNode, it works just fine.
- * @return Status of the node:
- *  - #AyStarStatus::FoundEndNode : indicates this is the end tile
- *  - #AyStarStatus::Done : indicates this is not the end tile (or direction was wrong)
- */
-typedef AyStarStatus AyStar_EndNodeCheck(const AyStar *aystar, const PathNode *current);
-
-/**
- * Calculate the G-value for the %AyStar algorithm.
- * @return G value of the node:
- *  - #AYSTAR_INVALID_NODE : indicates an item is not valid (e.g.: unwalkable)
- *  - Any value >= 0 : the g-value for this tile
- */
-typedef int32_t AyStar_CalculateG(AyStar *aystar, AyStarNode *current, PathNode *parent);
-
-/**
- * Calculate the H-value for the %AyStar algorithm.
- * Mostly, this must return the distance (Manhattan way) between the current point and the end point.
- * @return The h-value for this tile (any value >= 0)
- */
-typedef int32_t AyStar_CalculateH(AyStar *aystar, AyStarNode *current, PathNode *parent);
-
-/**
- * This function requests the tiles around the current tile and put them in #neighbours.
- * #neighbours is never reset, so if you are not using directions, just leave it alone.
- * @warning Never add more #neighbours than memory allocated for it.
- */
-typedef void AyStar_GetNeighbours(AyStar *aystar, PathNode *current);
-
-/**
- * If the End Node is found, this function is called.
- * It can do, for example, calculate the route and put that in an array.
- */
-typedef void AyStar_FoundEndNode(AyStar *aystar, PathNode *current);
-
 /**
  * %AyStar search algorithm struct.
- * Before calling #Init(), fill #CalculateG, #CalculateH, #GetNeighbours, #EndNodeCheck, and #FoundEndNode.
- * If you want to change them after calling #Init(), first call #Free() !
- *
- * The #user_path, #user_target, and #user_data[10] are intended to be used by the user routines. The data not accessed by the #AyStar code itself.
- * The user routines can change any moment they like.
  */
-struct AyStar {
-/* These fields should be filled before initing the AyStar, but not changed
- * afterwards (except for user_data)! (free and init again to change them) */
-
-	/* These should point to the application specific routines that do the
-	 * actual work */
-	AyStar_CalculateG *CalculateG;
-	AyStar_CalculateH *CalculateH;
-	AyStar_GetNeighbours *GetNeighbours;
-	AyStar_EndNodeCheck *EndNodeCheck;
-	AyStar_FoundEndNode *FoundEndNode;
-
-	/* These are completely untouched by AyStar, they can be accessed by
-	 * the application specific routines to input and output data.
-	 * user_path should typically contain data about the resulting path
-	 * afterwards, user_target should typically contain information about
-	 * what you where looking for, and user_data can contain just about
-	 * everything */
-	void *user_target;
-	void *user_data;
-
-	uint8_t loops_per_tick;   ///< How many loops are there called before Main() gives control back to the caller. 0 = until done.
-	int max_path_cost;    ///< If the g-value goes over this number, it stops searching, 0 = infinite.
-	int max_search_nodes = AYSTAR_DEF_MAX_SEARCH_NODES; ///< The maximum number of nodes that will be expanded, 0 = infinite.
-
-	/* These should be filled with the neighbours of a tile by GetNeighbours */
-	std::vector<AyStarNode> neighbours;
-
-	/* These will contain the methods for manipulating the AyStar. Only
-	 * Main() should be called externally */
-	void AddStartNode(AyStarNode *start_node, int g);
-	AyStarStatus Main();
-	AyStarStatus Loop();
-	void CheckTile(AyStarNode *current, PathNode *parent);
-
+class AyStar {
 protected:
-	NodeList<PathNode, 8, 10> nodes;
+	/**
+	 * Calculate the G-value for the %AyStar algorithm.
+	 * @return G value of the node:
+	 *  - #AYSTAR_INVALID_NODE : indicates an item is not valid (e.g.: unwalkable)
+	 *  - Any value >= 0 : the g-value for this tile
+	 */
+	virtual int32_t CalculateG(const AyStarNode &current, const PathNode &parent) const = 0;
 
+	/**
+	 * Calculate the H-value for the %AyStar algorithm.
+	 * Mostly, this must return the distance (Manhattan way) between the current point and the end point.
+	 * @return The h-value for this tile (any value >= 0)
+	 */
+	virtual int32_t CalculateH(const AyStarNode &current, const PathNode &parent) const = 0;
+
+	/**
+	 * This function requests the tiles around the current tile.
+	 * #neighbours is never reset, so if you are not using directions, just leave it alone.
+	 */
+	virtual void GetNeighbours(const PathNode &current, std::vector<AyStarNode> &neighours) const = 0;
+
+	 /**
+	 * Check whether the end-tile is found.
+	 * @param current Node to exam.
+	 * @return Status of the node:
+	 *  - #AyStarStatus::FoundEndNode : indicates this is the end tile
+	 *  - #AyStarStatus::Done : indicates this is not the end tile (or direction was wrong)
+	 */
+	virtual AyStarStatus EndNodeCheck(const PathNode &current) const = 0;
+
+	/**
+	 * If the End Node is found, this function is called.
+	 * It can do, for example, calculate the route and put that in an array.
+	 */
+	virtual void FoundEndNode(const PathNode &current) = 0;
+
+	void AddStartNode(AyStarNode *start_node, int g);
+
+	AyStarStatus Main();
+
+public:
+	virtual ~AyStar() = default;
+
+private:
+	NodeList<PathNode, 8, 10> nodes;
+	mutable std::vector<AyStarNode> neighbours;
+
+	AyStarStatus Loop();
 	void OpenListAdd(PathNode *parent, const AyStarNode *node, int f, int g);
+	void CheckTile(AyStarNode *current, PathNode *parent);
 };
 
 #endif /* AYSTAR_H */

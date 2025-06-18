@@ -9,14 +9,14 @@
 
 #include "../core/enum_type.hpp"
 
-static const char * const _name_original_english_1[] = {
+static const std::string_view _name_original_english_1[] = {
 	"Great ",
 	"Little ",
 	"New ",
 	"Fort ",
 };
 
-static const char * const _name_original_english_2[] = {
+static const std::string_view _name_original_english_2[] = {
 	"Wr",
 	"B",
 	"C",
@@ -45,7 +45,7 @@ static const char * const _name_original_english_2[] = {
 	"W",
 };
 
-static const char * const _name_original_english_3[] = {
+static const std::string_view _name_original_english_3[] = {
 	"ar",
 	"a",
 	"e",
@@ -56,7 +56,7 @@ static const char * const _name_original_english_3[] = {
 	"en",
 };
 
-static const char * const _name_original_english_4[] = {
+static const std::string_view _name_original_english_4[] = {
 	"n",
 	"ning",
 	"ding",
@@ -66,7 +66,7 @@ static const char * const _name_original_english_4[] = {
 	"fing",
 };
 
-static const char * const _name_original_english_5[] = {
+static const std::string_view _name_original_english_5[] = {
 	"ville",
 	"ham",
 	"field",
@@ -92,7 +92,7 @@ static const char * const _name_original_english_5[] = {
 	"burg",
 };
 
-static const char * const _name_original_english_6[] = {
+static const std::string_view _name_original_english_6[] = {
 	"-on-sea",
 	" Bay",
 	" Market",
@@ -104,7 +104,7 @@ static const char * const _name_original_english_6[] = {
 	" Springs",
 };
 
-static const char * const _name_additional_english_prefix[] = {
+static const std::string_view _name_additional_english_prefix[] = {
 	"Great ",
 	"Little ",
 	"New ",
@@ -113,7 +113,7 @@ static const char * const _name_additional_english_prefix[] = {
 	"Old ",
 };
 
-static const char * const _name_additional_english_1a[] = {
+static const std::string_view _name_additional_english_1a[] = {
 	"Pen",
 	"Lough",
 	"Stam",
@@ -159,7 +159,7 @@ static const char * const _name_additional_english_1a[] = {
 	"Stan",
 };
 
-static const char * const _name_additional_english_1b1[] = {
+static const std::string_view _name_additional_english_1b1[] = {
 	"Wr",
 	"B",
 	"C",
@@ -188,7 +188,7 @@ static const char * const _name_additional_english_1b1[] = {
 	"W",
 };
 
-static const char * const _name_additional_english_1b2[] = {
+static const std::string_view _name_additional_english_1b2[] = {
 	"ar",
 	"a",
 	"e",
@@ -203,7 +203,7 @@ static const char * const _name_additional_english_1b2[] = {
 	"en",
 };
 
-static const char * const _name_additional_english_1b3a[] = {
+static const std::string_view _name_additional_english_1b3a[] = {
 	"n",
 	"d",
 	"",
@@ -212,13 +212,13 @@ static const char * const _name_additional_english_1b3a[] = {
 	"",
 };
 
-static const char * const _name_additional_english_1b3b[] = {
+static const std::string_view _name_additional_english_1b3b[] = {
 	"ning",
 	"ding",
 	"fing",
 };
 
-static const char * const _name_additional_english_2[] = {
+static const std::string_view _name_additional_english_2[] = {
 	"ville",
 	"ham",
 	"field",
@@ -276,7 +276,7 @@ static const char * const _name_additional_english_2[] = {
 	"thwaite",
 };
 
-static const char * const _name_additional_english_3[] = {
+static const std::string_view _name_additional_english_3[] = {
 	"-on-sea",
 	" Bay",
 	" Market",
@@ -297,7 +297,7 @@ static const char * const _name_additional_english_3[] = {
 	" Springs",
 };
 
-static const char * const _name_austrian_a1[] = {
+static const std::string_view _name_austrian_a1[] = {
 	"Bad ",
 	"Deutsch ",
 	"Gross ",
@@ -306,7 +306,7 @@ static const char * const _name_austrian_a1[] = {
 	"Maria ",
 };
 
-static const char * const _name_austrian_a2[] = {
+static const std::string_view _name_austrian_a2[] = {
 	"Aus",
 	"Alten",
 	"Braun",
@@ -351,7 +351,7 @@ static const char * const _name_austrian_a2[] = {
 	"Weissen",
 };
 
-static const char * const _name_austrian_a3[] = {
+static const std::string_view _name_austrian_a3[] = {
 	"see",
 	"bach",
 	"dorf",
@@ -370,7 +370,7 @@ static const char * const _name_austrian_a3[] = {
 	"haag",
 };
 
-static const char * const _name_austrian_a4[] = {
+static const std::string_view _name_austrian_a4[] = {
 	"Bruck",
 	"Brunn",
 	"Gams",
@@ -385,12 +385,12 @@ static const char * const _name_austrian_a4[] = {
 	"Wald",
 };
 
-static const char * const _name_austrian_a5[] = {
+static const std::string_view _name_austrian_a5[] = {
 	"St. ",
 	"Sankt ",
 };
 
-static const char * const _name_austrian_a6[] = {
+static const std::string_view _name_austrian_a6[] = {
 	"Aegyd",
 	"Andr\u00e4",
 	"Georgen",
@@ -413,12 +413,12 @@ static const char * const _name_austrian_a6[] = {
 	"Wolfgang",
 };
 
-static const char * const _name_austrian_f1[] = {
+static const std::string_view _name_austrian_f1[] = {
 	" an der ",
 	" ob der ",
 };
 
-static const char * const _name_austrian_f2[] = {
+static const std::string_view _name_austrian_f2[] = {
 	"Donau",
 	"Steyr",
 	"Lafnitz",
@@ -434,11 +434,11 @@ static const char * const _name_austrian_f2[] = {
 	"Ill",
 };
 
-static const char * const _name_austrian_b1[] = {
+static const std::string_view _name_austrian_b1[] = {
 	" am ",
 };
 
-static const char * const _name_austrian_b2[] = {
+static const std::string_view _name_austrian_b2[] = {
 	"Brenner",
 	"Dachstein",
 	"Gebirge",
@@ -451,7 +451,7 @@ static const char * const _name_austrian_b2[] = {
 	"Ziller",
 };
 
-static const char * const _name_german_real[] = {
+static const std::string_view _name_german_real[] = {
 	"Berlin",
 	"Bonn",
 	"Bremen",
@@ -475,13 +475,13 @@ static const char * const _name_german_real[] = {
 	"Wiesbaden",
 };
 
-static const char * const _name_german_pre[] = {
+static const std::string_view _name_german_pre[] = {
 	"Bad ",
 	"Klein ",
 	"Neu ",
 };
 
-static const char * const _name_german_1[] = {
+static const std::string_view _name_german_1[] = {
 	"Alb",
 	"Als",
 	"Ander",
@@ -577,7 +577,7 @@ static const char * const _name_german_1[] = {
 	"W\u00fcrz",
 };
 
-static const char * const _name_german_2[] = {
+static const std::string_view _name_german_2[] = {
 	"bach",
 	"berg",
 	"br\u00fcck",
@@ -596,15 +596,15 @@ static const char * const _name_german_2[] = {
 	"wald",
 };
 
-static const char * const _name_german_3_an_der[] = {
+static const std::string_view _name_german_3_an_der[] = {
 	" an der ",
 };
 
-static const char * const _name_german_3_am[] = {
+static const std::string_view _name_german_3_am[] = {
 	" am ",
 };
 
-static const char * const _name_german_4_an_der[] = {
+static const std::string_view _name_german_4_an_der[] = {
 	"Oder",
 	"Spree",
 	"Donau",
@@ -612,11 +612,11 @@ static const char * const _name_german_4_an_der[] = {
 	"Elbe",
 };
 
-static const char * const _name_german_4_am[] = {
+static const std::string_view _name_german_4_am[] = {
 	"Main",
 };
 
-static const char * const _name_spanish_real[] = {
+static const std::string_view _name_spanish_real[] = {
 	"Caracas",
 	"Maracay",
 	"Maracaibo",
@@ -705,7 +705,7 @@ static const char * const _name_spanish_real[] = {
 	"Santa Rosa",
 };
 
-static const char * const _name_french_real[] = {
+static const std::string_view _name_french_real[] = {
 	"Agincourt",
 	"Lille",
 	"Dinan",
@@ -778,7 +778,7 @@ static const char * const _name_french_real[] = {
 	"Alen\u00e7on",
 };
 
-static const char * const _name_silly_1[] = {
+static const std::string_view _name_silly_1[] = {
 	"Binky",
 	"Blubber",
 	"Bumble",
@@ -869,7 +869,7 @@ static const char * const _name_silly_1[] = {
 	"Griddle",
 };
 
-static const char * const _name_silly_2[] = {
+static const std::string_view _name_silly_2[] = {
 	"ton",
 	"bury",
 	"bottom",
@@ -887,14 +887,14 @@ static const char * const _name_silly_2[] = {
 	"bridge",
 };
 
-static const char * const _name_swedish_1[] = {
+static const std::string_view _name_swedish_1[] = {
 	"Gamla ",
 	"Lilla ",
 	"Nya ",
 	"Stora ",
 };
 
-static const char * const _name_swedish_2[] = {
+static const std::string_view _name_swedish_2[] = {
 	"Boll",
 	"Bor",
 	"Ed",
@@ -935,7 +935,7 @@ static const char * const _name_swedish_2[] = {
 	"\u00d6ster",
 };
 
-static const char * const _name_swedish_2a[] = {
+static const std::string_view _name_swedish_2a[] = {
 	"B",
 	"Br",
 	"D",
@@ -980,7 +980,7 @@ static const char * const _name_swedish_2a[] = {
 	"Vr",
 };
 
-static const char * const _name_swedish_2b[] = {
+static const std::string_view _name_swedish_2b[] = {
 	"a",
 	"e",
 	"i",
@@ -992,7 +992,7 @@ static const char * const _name_swedish_2b[] = {
 	"\u00f6",
 };
 
-static const char * const _name_swedish_2c[] = {
+static const std::string_view _name_swedish_2c[] = {
 	"ck",
 	"d",
 	"dd",
@@ -1021,7 +1021,7 @@ static const char * const _name_swedish_2c[] = {
 	"v",
 };
 
-static const char * const _name_swedish_3[] = {
+static const std::string_view _name_swedish_3[] = {
 	"arp",
 	"berg",
 	"boda",
@@ -1056,7 +1056,7 @@ static const char * const _name_swedish_3[] = {
 	"\u00e5s",
 };
 
-static const char * const _name_dutch_1[] = {
+static const std::string_view _name_dutch_1[] = {
 	"Nieuw ",
 	"Oud ",
 	"Groot ",
@@ -1067,7 +1067,7 @@ static const char * const _name_dutch_1[] = {
 	"Klein ",
 };
 
-static const char * const _name_dutch_2[] = {
+static const std::string_view _name_dutch_2[] = {
 	"Hoog",
 	"Laag",
 	"Zuider",
@@ -1123,7 +1123,7 @@ static const char * const _name_dutch_2[] = {
 	"Hil",
 };
 
-static const char * const _name_dutch_3[] = {
+static const std::string_view _name_dutch_3[] = {
 	"Drog",
 	"Nat",
 	"Valk",
@@ -1146,7 +1146,7 @@ static const char * const _name_dutch_3[] = {
 	"Koning",
 };
 
-static const char * const _name_dutch_4[] = {
+static const std::string_view _name_dutch_4[] = {
 	"e",
 	"er",
 	"el",
@@ -1155,7 +1155,7 @@ static const char * const _name_dutch_4[] = {
 	"s",
 };
 
-static const char * const _name_dutch_5[] = {
+static const std::string_view _name_dutch_5[] = {
 	"stad",
 	"vorst",
 	"dorp",
@@ -1214,7 +1214,7 @@ static const char * const _name_dutch_5[] = {
 	"end",
 };
 
-static const char * const _name_finnish_real[] = {
+static const std::string_view _name_finnish_real[] = {
 	"Aijala",
 	"Kisko",
 	"Espoo",
@@ -1248,7 +1248,7 @@ static const char * const _name_finnish_real[] = {
 	"Lieksa",
 };
 
-static const char * const _name_finnish_1[] = {
+static const std::string_view _name_finnish_1[] = {
 	"Hiekka",
 	"Haapa",
 	"Mylly",
@@ -1278,7 +1278,7 @@ static const char * const _name_finnish_1[] = {
 	"Niini",
 };
 
-static const char * const _name_finnish_2[] = {
+static const std::string_view _name_finnish_2[] = {
 	"Lappeen",
 	"Lohjan",
 	"Savon",
@@ -1292,7 +1292,7 @@ static const char * const _name_finnish_2[] = {
 	"Kangas",
 };
 
-static const char * const _name_finnish_3[] = {
+static const std::string_view _name_finnish_3[] = {
 	"harju",
 	"linna",
 	"j\u00e4rvi",
@@ -1314,7 +1314,7 @@ static const char * const _name_finnish_3[] = {
 	"salo",
 };
 
-static const char * const _name_polish_1_m[] = {
+static const std::string_view _name_polish_1_m[] = {
 	"Wielki ",
 	"Ma\u0142y ",
 	"Z\u0142y ",
@@ -1328,7 +1328,7 @@ static const char * const _name_polish_1_m[] = {
 	"D\u0119bowy ",
 };
 
-static const char * const _name_polish_1_f[] = {
+static const std::string_view _name_polish_1_f[] = {
 	"Wielka ",
 	"Ma\u0142a ",
 	"Z\u0142a ",
@@ -1342,7 +1342,7 @@ static const char * const _name_polish_1_f[] = {
 	"D\u0119bowa ",
 };
 
-static const char * const _name_polish_1_n[] = {
+static const std::string_view _name_polish_1_n[] = {
 	"Wielkie ",
 	"Ma\u0142e ",
 	"Z\u0142e ",
@@ -1356,7 +1356,7 @@ static const char * const _name_polish_1_n[] = {
 	"D\u0119bowe ",
 };
 
-static const char * const _name_polish_2_o[] = {
+static const std::string_view _name_polish_2_o[] = {
 	"Frombork",
 	"Gniezno",
 	"Olsztyn",
@@ -1393,7 +1393,7 @@ static const char * const _name_polish_2_o[] = {
 	"Wolsztyn",
 };
 
-static const char * const _name_polish_2_m[] = {
+static const std::string_view _name_polish_2_m[] = {
 	"Jarocin",
 	"Gogolin",
 	"Tomasz\u00f3w",
@@ -1444,7 +1444,7 @@ static const char * const _name_polish_2_m[] = {
 	"Garwolin",
 };
 
-static const char * const _name_polish_2_f[] = {
+static const std::string_view _name_polish_2_f[] = {
 	"Szprotawa",
 	"Pogorzelica",
 	"Mot\u0142awa",
@@ -1475,7 +1475,7 @@ static const char * const _name_polish_2_f[] = {
 	"Pilawa",
 };
 
-static const char * const _name_polish_2_n[] = {
+static const std::string_view _name_polish_2_n[] = {
 	"Lipsko",
 	"Pilzno",
 	"Przodkowo",
@@ -1508,7 +1508,7 @@ static const char * const _name_polish_2_n[] = {
 	"Opoczno",
 };
 
-static const char * const _name_polish_3_m[] = {
+static const std::string_view _name_polish_3_m[] = {
 	" Wybudowanie",
 	" \u015awi\u0119tokrzyski",
 	" G\u00f3rski",
@@ -1540,7 +1540,7 @@ static const char * const _name_polish_3_m[] = {
 	" Lesny",
 };
 
-static const char * const _name_polish_3_f[] = {
+static const std::string_view _name_polish_3_f[] = {
 	" Wybudowanie",
 	" \u015awi\u0119tokrzyska",
 	" G\u00f3rska",
@@ -1572,7 +1572,7 @@ static const char * const _name_polish_3_f[] = {
 	" Le\u015bna",
 };
 
-static const char * const _name_polish_3_n[] = {
+static const std::string_view _name_polish_3_n[] = {
 	" Wybudowanie",
 	" \u015awietokrzyskie",
 	" G\u00f3rskie",
@@ -1604,7 +1604,7 @@ static const char * const _name_polish_3_n[] = {
 	" Le\u015bne",
 };
 
-static const char * const _name_czech_real[] = {
+static const std::string_view _name_czech_real[] = {
 	"A\u0161",
 	"Bene\u0161ov",
 	"Beroun",
@@ -1716,7 +1716,7 @@ enum CzechPattern : uint8_t {
 };
 
 /* [CzechGender][CzechPattern] - suffixes for adjectives */
-static const char * const _name_czech_patmod[][3] = {
+static const std::string_view _name_czech_patmod[][3] = {
 	/* CZG_SMASC */ { "\u00ed", "\u00fd", "uv" },
 	/* CZG_SFEM */  { "\u00ed", "\u00e1", "ova" },
 	/* CZG_SNEUT */ { "\u00ed", "\u00e9", "ovo" },
@@ -1727,37 +1727,38 @@ static const char * const _name_czech_patmod[][3] = {
 
 /* This way the substantive can choose only some adjectives/endings:
  * At least one of these flags must be satisfied: */
-enum CzechAllow : uint8_t {
-	CZA_SHORT = 1,
-	CZA_MIDDLE = 2,
-	CZA_LONG = 4,
-	CZA_ALL = CZA_SHORT | CZA_MIDDLE | CZA_LONG,
+enum class CzechAllowFlag : uint8_t {
+	Short,
+	Middle,
+	Long,
 };
 
-DECLARE_ENUM_AS_BIT_SET(CzechAllow)
+using CzechAllowFlags = EnumBitSet<CzechAllowFlag, uint8_t>;
+
+static constexpr CzechAllowFlags CZA_ALL = {CzechAllowFlag::Short, CzechAllowFlag::Middle, CzechAllowFlag::Long};
 
 /* All these flags must be satisfied (in the stem->others direction): */
-enum CzechChoose : uint8_t {
-	CZC_NONE = 0, // No requirements.
-	CZC_COLOR = 1,
-	CZC_POSTFIX = 2, // Matched if postfix was inserted.
-	CZC_NOPOSTFIX = 4, // Matched if no postfix was inserted.
-	CZC_ANY = CZC_COLOR | CZC_POSTFIX | CZC_NOPOSTFIX,
+enum class CzechChooseFlag : uint8_t {
+	Colour,
+	Postfix, // Matched if postfix was inserted.
+	NoPostfix, // Matched if no postfix was inserted.
 };
 
-DECLARE_ENUM_AS_BIT_SET(CzechChoose)
+using CzechChooseFlags = EnumBitSet<CzechChooseFlag, uint8_t>;
+
+static constexpr CzechChooseFlags CZC_ANY = {CzechChooseFlag::Colour, CzechChooseFlag::Postfix, CzechChooseFlag::NoPostfix};
 
 struct CzechNameSubst {
 	CzechGender gender;
-	CzechAllow allow;
-	CzechChoose choose;
-	const char *name;
+	CzechAllowFlags allow;
+	CzechChooseFlags choose;
+	std::string_view name;
 };
 
 struct CzechNameAdj {
 	CzechPattern pattern;
-	CzechChoose choose;
-	const char *name;
+	CzechChooseFlags choose;
+	std::string_view name;
 };
 
 /* Some of items which should be common are doubled. */
@@ -1791,18 +1792,18 @@ static const CzechNameAdj _name_czech_adj[] = {
 	{ CZP_MLADY, CZC_ANY, "Kamenn" },
 	{ CZP_MLADY, CZC_ANY, "Cihlov" },
 	{ CZP_MLADY, CZC_ANY, "Divn" },
-	{ CZP_MLADY, CZC_COLOR, "\u010cerven" },
-	{ CZP_MLADY, CZC_COLOR, "\u010cerven" },
-	{ CZP_MLADY, CZC_COLOR, "\u010cerven" },
-	{ CZP_MLADY, CZC_COLOR, "Zelen" },
-	{ CZP_MLADY, CZC_COLOR, "\u017dlut" },
-	{ CZP_MLADY, CZC_COLOR, "Siv" },
-	{ CZP_MLADY, CZC_COLOR, "\u0160ed" },
-	{ CZP_MLADY, CZC_COLOR, "B\u00edl" },
-	{ CZP_MLADY, CZC_COLOR, "B\u00edl" },
-	{ CZP_MLADY, CZC_COLOR, "Modr" },
-	{ CZP_MLADY, CZC_COLOR, "R\u016f\u017eov" },
-	{ CZP_MLADY, CZC_COLOR, "\u010cern" },
+	{ CZP_MLADY, CzechChooseFlag::Colour, "\u010cerven" },
+	{ CZP_MLADY, CzechChooseFlag::Colour, "\u010cerven" },
+	{ CZP_MLADY, CzechChooseFlag::Colour, "\u010cerven" },
+	{ CZP_MLADY, CzechChooseFlag::Colour, "Zelen" },
+	{ CZP_MLADY, CzechChooseFlag::Colour, "\u017dlut" },
+	{ CZP_MLADY, CzechChooseFlag::Colour, "Siv" },
+	{ CZP_MLADY, CzechChooseFlag::Colour, "\u0160ed" },
+	{ CZP_MLADY, CzechChooseFlag::Colour, "B\u00edl" },
+	{ CZP_MLADY, CzechChooseFlag::Colour, "B\u00edl" },
+	{ CZP_MLADY, CzechChooseFlag::Colour, "Modr" },
+	{ CZP_MLADY, CzechChooseFlag::Colour, "R\u016f\u017eov" },
+	{ CZP_MLADY, CzechChooseFlag::Colour, "\u010cern" },
 	{ CZP_PRIVL, CZC_ANY, "Kr\u00e1l" },
 	{ CZP_PRIVL, CZC_ANY, "Jan" },
 	{ CZP_PRIVL, CZC_ANY, "Karl" },
@@ -1814,72 +1815,72 @@ static const CzechNameAdj _name_czech_adj[] = {
 
 /* Considered a stem for choose/allow matching purposes. */
 static const CzechNameSubst _name_czech_subst_full[] = {
-	{ CZG_SMASC, CZA_ALL, CZC_COLOR, "Sedlec" },
-	{ CZG_SMASC, CZA_ALL, CZC_COLOR, "Brod" },
-	{ CZG_SMASC, CZA_ALL, CZC_COLOR, "Brod" },
-	{ CZG_SMASC, CZA_ALL, CZC_NONE, "\u00daval" },
-	{ CZG_SMASC, CZA_ALL, CZC_COLOR, "\u017d\u010f\u00e1r" },
-	{ CZG_SMASC, CZA_ALL, CZC_COLOR, "Smrk" },
-	{ CZG_SFEM,  CZA_ALL, CZC_COLOR, "Hora" },
-	{ CZG_SFEM,  CZA_ALL, CZC_COLOR, "Lhota" },
-	{ CZG_SFEM,  CZA_ALL, CZC_COLOR, "Lhota" },
-	{ CZG_SFEM,  CZA_ALL, CZC_COLOR, "Hlava" },
-	{ CZG_SFEM,  CZA_ALL, CZC_COLOR, "L\u00edpa" },
-	{ CZG_SNEUT, CZA_ALL, CZC_COLOR, "Pole" },
-	{ CZG_SNEUT, CZA_ALL, CZC_COLOR, "\u00dadol\u00ed" },
-	{ CZG_PMASC, CZA_ALL, CZC_NONE, "\u00davaly" },
-	{ CZG_PFEM,  CZA_ALL, CZC_COLOR, "Luka" },
-	{ CZG_PNEUT, CZA_ALL, CZC_COLOR, "Pole" },
+	{ CZG_SMASC, CZA_ALL, CzechChooseFlag::Colour, "Sedlec" },
+	{ CZG_SMASC, CZA_ALL, CzechChooseFlag::Colour, "Brod" },
+	{ CZG_SMASC, CZA_ALL, CzechChooseFlag::Colour, "Brod" },
+	{ CZG_SMASC, CZA_ALL, {}, "\u00daval" },
+	{ CZG_SMASC, CZA_ALL, CzechChooseFlag::Colour, "\u017d\u010f\u00e1r" },
+	{ CZG_SMASC, CZA_ALL, CzechChooseFlag::Colour, "Smrk" },
+	{ CZG_SFEM,  CZA_ALL, CzechChooseFlag::Colour, "Hora" },
+	{ CZG_SFEM,  CZA_ALL, CzechChooseFlag::Colour, "Lhota" },
+	{ CZG_SFEM,  CZA_ALL, CzechChooseFlag::Colour, "Lhota" },
+	{ CZG_SFEM,  CZA_ALL, CzechChooseFlag::Colour, "Hlava" },
+	{ CZG_SFEM,  CZA_ALL, CzechChooseFlag::Colour, "L\u00edpa" },
+	{ CZG_SNEUT, CZA_ALL, CzechChooseFlag::Colour, "Pole" },
+	{ CZG_SNEUT, CZA_ALL, CzechChooseFlag::Colour, "\u00dadol\u00ed" },
+	{ CZG_PMASC, CZA_ALL, {}, "\u00davaly" },
+	{ CZG_PFEM,  CZA_ALL, CzechChooseFlag::Colour, "Luka" },
+	{ CZG_PNEUT, CZA_ALL, CzechChooseFlag::Colour, "Pole" },
 };
 
 /* TODO: More stems needed. --pasky */
 static const CzechNameSubst _name_czech_subst_stem[] = {
-	{ CZG_SMASC,             CZA_MIDDLE,            CZC_COLOR, "Kostel" },
-	{ CZG_SMASC,             CZA_MIDDLE,            CZC_COLOR, "Kl\u00e1\u0161ter" },
-	{ CZG_SMASC, CZA_SHORT,                         CZC_COLOR, "Lhot" },
-	{ CZG_SFEM,  CZA_SHORT,                         CZC_COLOR, "Lhot" },
-	{ CZG_SFEM,  CZA_SHORT,                         CZC_COLOR, "Hur" },
-	{ CZG_FREE,              CZA_MIDDLE | CZA_LONG, CZC_NONE, "Sedl" },
-	{ CZG_FREE,  CZA_SHORT | CZA_MIDDLE | CZA_LONG, CZC_COLOR, "Hrad" },
-	{ CZG_NFREE,             CZA_MIDDLE,            CZC_NONE, "Pras" },
-	{ CZG_NFREE,             CZA_MIDDLE,            CZC_NONE, "Ba\u017e" },
-	{ CZG_NFREE,             CZA_MIDDLE,            CZC_NONE, "Tes" },
-	{ CZG_NFREE,             CZA_MIDDLE,            CZC_NONE, "U\u017e" },
-	{ CZG_NFREE,             CZA_MIDDLE | CZA_LONG, CZC_POSTFIX, "B\u0159" },
-	{ CZG_NFREE,             CZA_MIDDLE | CZA_LONG, CZC_NONE, "Vod" },
-	{ CZG_NFREE,             CZA_MIDDLE | CZA_LONG, CZC_NONE, "Jan" },
-	{ CZG_NFREE,                          CZA_LONG, CZC_NONE, "Prach" },
-	{ CZG_NFREE,                          CZA_LONG, CZC_NONE, "Kunr" },
-	{ CZG_NFREE,                          CZA_LONG, CZC_NONE, "Strak" },
-	{ CZG_NFREE,                          CZA_LONG, CZC_NONE, "V\u00edt" },
-	{ CZG_NFREE,                          CZA_LONG, CZC_NONE, "Vy\u0161" },
-	{ CZG_NFREE,                          CZA_LONG, CZC_NONE, "\u017dat" },
-	{ CZG_NFREE,                          CZA_LONG, CZC_NONE, "\u017der" },
-	{ CZG_NFREE,                          CZA_LONG, CZC_NONE, "St\u0159ed" },
-	{ CZG_NFREE,                          CZA_LONG, CZC_NONE, "Harv" },
-	{ CZG_NFREE,                          CZA_LONG, CZC_NONE, "Pruh" },
-	{ CZG_NFREE,                          CZA_LONG, CZC_NONE, "Tach" },
-	{ CZG_NFREE,                          CZA_LONG, CZC_NONE, "P\u00edsn" },
-	{ CZG_NFREE,                          CZA_LONG, CZC_NONE, "Jin" },
-	{ CZG_NFREE,                          CZA_LONG, CZC_NONE, "Jes" },
-	{ CZG_NFREE,                          CZA_LONG, CZC_NONE, "Jar" },
-	{ CZG_NFREE,                          CZA_LONG, CZC_NONE, "Sok" },
-	{ CZG_NFREE,                          CZA_LONG, CZC_NONE, "Hod" },
-	{ CZG_NFREE,                          CZA_LONG, CZC_NONE, "Net" },
-	{ CZG_FREE,                           CZA_LONG, CZC_NONE, "Pra\u017e" },
-	{ CZG_FREE,                           CZA_LONG, CZC_NONE, "Nerat" },
-	{ CZG_FREE,                           CZA_LONG, CZC_NONE, "Kral" },
-	{ CZG_FREE,                           CZA_LONG, CZC_NONE, "Hut" },
-	{ CZG_FREE,                           CZA_LONG, CZC_NOPOSTFIX, "Pan" },
-	{ CZG_FREE,  CZA_SHORT | CZA_MIDDLE | CZA_LONG, CZC_NOPOSTFIX, "Odst\u0159ed" },
-	{ CZG_FREE,  CZA_SHORT | CZA_MIDDLE | CZA_LONG, CZC_COLOR, "Mrat" },
-	{ CZG_FREE,                           CZA_LONG, CZC_COLOR, "Hlav" },
-	{ CZG_FREE,  CZA_SHORT | CZA_MIDDLE,            CZC_NONE, "M\u011b\u0159" },
-	{ CZG_FREE,              CZA_MIDDLE | CZA_LONG, CZC_NONE, "Lip" },
+	{ CZG_SMASC, {                       CzechAllowFlag::Middle                      }, CzechChooseFlag::Colour, "Kostel" },
+	{ CZG_SMASC, {                       CzechAllowFlag::Middle                      }, CzechChooseFlag::Colour, "Kl\u00e1\u0161ter" },
+	{ CZG_SMASC, {CzechAllowFlag::Short                                              }, CzechChooseFlag::Colour, "Lhot" },
+	{ CZG_SFEM,  {CzechAllowFlag::Short                                              }, CzechChooseFlag::Colour, "Lhot" },
+	{ CZG_SFEM,  {CzechAllowFlag::Short                                              }, CzechChooseFlag::Colour, "Hur" },
+	{ CZG_FREE,  {                       CzechAllowFlag::Middle, CzechAllowFlag::Long}, {}, "Sedl" },
+	{ CZG_FREE,  {CzechAllowFlag::Short, CzechAllowFlag::Middle, CzechAllowFlag::Long}, CzechChooseFlag::Colour, "Hrad" },
+	{ CZG_NFREE, {                       CzechAllowFlag::Middle                      }, {}, "Pras" },
+	{ CZG_NFREE, {                       CzechAllowFlag::Middle                      }, {}, "Ba\u017e" },
+	{ CZG_NFREE, {                       CzechAllowFlag::Middle                      }, {}, "Tes" },
+	{ CZG_NFREE, {                       CzechAllowFlag::Middle                      }, {}, "U\u017e" },
+	{ CZG_NFREE, {                       CzechAllowFlag::Middle, CzechAllowFlag::Long}, CzechChooseFlag::Postfix, "B\u0159" },
+	{ CZG_NFREE, {                       CzechAllowFlag::Middle, CzechAllowFlag::Long}, {}, "Vod" },
+	{ CZG_NFREE, {                       CzechAllowFlag::Middle, CzechAllowFlag::Long}, {}, "Jan" },
+	{ CZG_NFREE, {                                               CzechAllowFlag::Long}, {}, "Prach" },
+	{ CZG_NFREE, {                                               CzechAllowFlag::Long}, {}, "Kunr" },
+	{ CZG_NFREE, {                                               CzechAllowFlag::Long}, {}, "Strak" },
+	{ CZG_NFREE, {                                               CzechAllowFlag::Long}, {}, "V\u00edt" },
+	{ CZG_NFREE, {                                               CzechAllowFlag::Long}, {}, "Vy\u0161" },
+	{ CZG_NFREE, {                                               CzechAllowFlag::Long}, {}, "\u017dat" },
+	{ CZG_NFREE, {                                               CzechAllowFlag::Long}, {}, "\u017der" },
+	{ CZG_NFREE, {                                               CzechAllowFlag::Long}, {}, "St\u0159ed" },
+	{ CZG_NFREE, {                                               CzechAllowFlag::Long}, {}, "Harv" },
+	{ CZG_NFREE, {                                               CzechAllowFlag::Long}, {}, "Pruh" },
+	{ CZG_NFREE, {                                               CzechAllowFlag::Long}, {}, "Tach" },
+	{ CZG_NFREE, {                                               CzechAllowFlag::Long}, {}, "P\u00edsn" },
+	{ CZG_NFREE, {                                               CzechAllowFlag::Long}, {}, "Jin" },
+	{ CZG_NFREE, {                                               CzechAllowFlag::Long}, {}, "Jes" },
+	{ CZG_NFREE, {                                               CzechAllowFlag::Long}, {}, "Jar" },
+	{ CZG_NFREE, {                                               CzechAllowFlag::Long}, {}, "Sok" },
+	{ CZG_NFREE, {                                               CzechAllowFlag::Long}, {}, "Hod" },
+	{ CZG_NFREE, {                                               CzechAllowFlag::Long}, {}, "Net" },
+	{ CZG_FREE,  {                                               CzechAllowFlag::Long}, {}, "Pra\u017e" },
+	{ CZG_FREE,  {                                               CzechAllowFlag::Long}, {}, "Nerat" },
+	{ CZG_FREE,  {                                               CzechAllowFlag::Long}, {}, "Kral" },
+	{ CZG_FREE,  {                                               CzechAllowFlag::Long}, {}, "Hut" },
+	{ CZG_FREE,  {                                               CzechAllowFlag::Long}, CzechChooseFlag::NoPostfix, "Pan" },
+	{ CZG_FREE,  {CzechAllowFlag::Short, CzechAllowFlag::Middle, CzechAllowFlag::Long}, CzechChooseFlag::NoPostfix, "Odst\u0159ed" },
+	{ CZG_FREE,  {CzechAllowFlag::Short, CzechAllowFlag::Middle, CzechAllowFlag::Long}, CzechChooseFlag::Colour, "Mrat" },
+	{ CZG_FREE,  {                                               CzechAllowFlag::Long}, CzechChooseFlag::Colour, "Hlav" },
+	{ CZG_FREE,  {CzechAllowFlag::Short, CzechAllowFlag::Middle                      }, {}, "M\u011b\u0159" },
+	{ CZG_FREE,  {                       CzechAllowFlag::Middle, CzechAllowFlag::Long}, {}, "Lip" },
 };
 
 /* Optional postfix inserted between stem and ending. */
-static const char * const _name_czech_subst_postfix[] = {
+static const std::string_view _name_czech_subst_postfix[] = {
 	"av", "an", "at",
 	"ov", "on", "ot",
 	"ev", "en", "et",
@@ -1887,29 +1888,29 @@ static const char * const _name_czech_subst_postfix[] = {
 
 /* This array must have the both neutral genders at the end! */
 static const CzechNameSubst _name_czech_subst_ending[] = {
-	{ CZG_SMASC, CZA_SHORT | CZA_MIDDLE,            CZC_ANY, "ec" },
-	{ CZG_SMASC, CZA_SHORT | CZA_MIDDLE,            CZC_ANY, "\u00edn" },
-	{ CZG_SMASC, CZA_SHORT | CZA_MIDDLE | CZA_LONG, CZC_ANY, "ov" },
-	{ CZG_SMASC, CZA_SHORT       |        CZA_LONG, CZC_ANY, "kov" },
-	{ CZG_SMASC,                          CZA_LONG, CZC_POSTFIX, "\u00edn" },
-	{ CZG_SMASC,                          CZA_LONG, CZC_POSTFIX, "n\u00edk" },
-	{ CZG_SMASC,                          CZA_LONG, CZC_ANY, "burk" },
-	{ CZG_SFEM,  CZA_SHORT,                         CZC_ANY, "ka" },
-	{ CZG_SFEM,              CZA_MIDDLE,            CZC_ANY, "inka" },
-	{ CZG_SFEM,              CZA_MIDDLE,            CZC_ANY, "n\u00e1" },
-	{ CZG_SFEM,                           CZA_LONG, CZC_ANY, "ava" },
-	{ CZG_PMASC,                          CZA_LONG, CZC_POSTFIX, "\u00edky" },
-	{ CZG_PMASC,                          CZA_LONG, CZC_ANY, "upy" },
-	{ CZG_PMASC,                          CZA_LONG, CZC_ANY, "olupy" },
-	{ CZG_PFEM,                           CZA_LONG, CZC_ANY, "avy" },
-	{ CZG_PFEM,  CZA_SHORT | CZA_MIDDLE | CZA_LONG, CZC_ANY, "ice" },
-	{ CZG_PFEM,  CZA_SHORT | CZA_MIDDLE | CZA_LONG, CZC_ANY, "i\u010dky" },
-	{ CZG_PNEUT, CZA_SHORT | CZA_MIDDLE,            CZC_ANY, "na" },
-	{ CZG_SNEUT, CZA_SHORT | CZA_MIDDLE,            CZC_ANY, "no" },
-	{ CZG_SNEUT,                          CZA_LONG, CZC_ANY, "i\u0161t\u011b" },
+	{ CZG_SMASC, {CzechAllowFlag::Short, CzechAllowFlag::Middle                      }, CZC_ANY, "ec" },
+	{ CZG_SMASC, {CzechAllowFlag::Short, CzechAllowFlag::Middle                      }, CZC_ANY, "\u00edn" },
+	{ CZG_SMASC, {CzechAllowFlag::Short, CzechAllowFlag::Middle, CzechAllowFlag::Long}, CZC_ANY, "ov" },
+	{ CZG_SMASC, {CzechAllowFlag::Short,                         CzechAllowFlag::Long}, CZC_ANY, "kov" },
+	{ CZG_SMASC, {                                               CzechAllowFlag::Long}, CzechChooseFlag::Postfix, "\u00edn" },
+	{ CZG_SMASC, {                                               CzechAllowFlag::Long}, CzechChooseFlag::Postfix, "n\u00edk" },
+	{ CZG_SMASC, {                                               CzechAllowFlag::Long}, CZC_ANY, "burk" },
+	{ CZG_SFEM,  {CzechAllowFlag::Short                                              }, CZC_ANY, "ka" },
+	{ CZG_SFEM,  {                       CzechAllowFlag::Middle                      }, CZC_ANY, "inka" },
+	{ CZG_SFEM,  {                       CzechAllowFlag::Middle                      }, CZC_ANY, "n\u00e1" },
+	{ CZG_SFEM,  {                                               CzechAllowFlag::Long}, CZC_ANY, "ava" },
+	{ CZG_PMASC, {                                               CzechAllowFlag::Long}, CzechChooseFlag::Postfix, "\u00edky" },
+	{ CZG_PMASC, {                                               CzechAllowFlag::Long}, CZC_ANY, "upy" },
+	{ CZG_PMASC, {                                               CzechAllowFlag::Long}, CZC_ANY, "olupy" },
+	{ CZG_PFEM,  {                                               CzechAllowFlag::Long}, CZC_ANY, "avy" },
+	{ CZG_PFEM,  {CzechAllowFlag::Short, CzechAllowFlag::Middle, CzechAllowFlag::Long}, CZC_ANY, "ice" },
+	{ CZG_PFEM,  {CzechAllowFlag::Short, CzechAllowFlag::Middle, CzechAllowFlag::Long}, CZC_ANY, "i\u010dky" },
+	{ CZG_PNEUT, {CzechAllowFlag::Short, CzechAllowFlag::Middle                      }, CZC_ANY, "na" },
+	{ CZG_SNEUT, {CzechAllowFlag::Short, CzechAllowFlag::Middle                      }, CZC_ANY, "no" },
+	{ CZG_SNEUT, {                                               CzechAllowFlag::Long}, CZC_ANY, "i\u0161t\u011b" },
 };
 
-static const char * const _name_czech_suffix[] = {
+static const std::string_view _name_czech_suffix[] = {
 	"nad Cidlinou",
 	"nad Dyj\u00ed",
 	"nad Jihlavou",
@@ -1933,7 +1934,7 @@ static const char * const _name_czech_suffix[] = {
 
 
 
-static const char * const _name_romanian_real[] = {
+static const std::string_view _name_romanian_real[] = {
 	"Adjud",
 	"Alba Iulia",
 	"Alexandria",
@@ -2030,7 +2031,7 @@ static const char * const _name_romanian_real[] = {
 	"Zal\u0103u",
 };
 
-static const char * const _name_slovak_real[] = {
+static const std::string_view _name_slovak_real[] = {
 	"Bratislava",
 	"B\u00e1novce nad Bebravou",
 	"Bansk\u00e1 Bystrica",
@@ -2120,7 +2121,7 @@ static const char * const _name_slovak_real[] = {
 	"Zvolen",
 };
 
-static const char * const _name_norwegian_1[] = {
+static const std::string_view _name_norwegian_1[] = {
 	"Arna",
 	"Aust",
 	"Bj\u00f8rk",
@@ -2207,7 +2208,7 @@ static const char * const _name_norwegian_1[] = {
 	"V\u00e5g",
 };
 
-static const char * const _name_norwegian_2[] = {
+static const std::string_view _name_norwegian_2[] = {
 	"aker",
 	"anger",
 	"bakken",
@@ -2277,7 +2278,7 @@ static const char * const _name_norwegian_2[] = {
 	"\u00e5sen",
 };
 
-static const char * const _name_norwegian_real[] = {
+static const std::string_view _name_norwegian_real[] = {
 	"Alta",
 	"Arendal",
 	"Askim",
@@ -2374,7 +2375,7 @@ static const char * const _name_norwegian_real[] = {
 	"\u00c5ndalsnes",
 };
 
-static const char * const _name_hungarian_1[] = {
+static const std::string_view _name_hungarian_1[] = {
 	"Nagy-",
 	"Kis-",
 	"Fels\u0151-",
@@ -2382,7 +2383,7 @@ static const char * const _name_hungarian_1[] = {
 	"\u00daj-",
 };
 
-static const char * const _name_hungarian_2[] = {
+static const std::string_view _name_hungarian_2[] = {
 	"Bodrog",
 	"Dr\u00e1va",
 	"Duna",
@@ -2439,7 +2440,7 @@ static const char * const _name_hungarian_2[] = {
 	"V\u00e1s\u00e1ros",
 };
 
-static const char * const _name_hungarian_3[] = {
+static const std::string_view _name_hungarian_3[] = {
 	"ap\u00e1ti",
 	"b\u00e1ba",
 	"bikk",
@@ -2458,7 +2459,7 @@ static const char * const _name_hungarian_3[] = {
 	"v\u00f6lgy",
 };
 
-static const char * const _name_hungarian_4[] = {
+static const std::string_view _name_hungarian_4[] = {
 	"alja",
 	"egyh\u00e1za",
 	"h\u00e1za",
@@ -2466,7 +2467,7 @@ static const char * const _name_hungarian_4[] = {
 	"v\u00e1r",
 };
 
-static const char * const _name_hungarian_real[] = {
+static const std::string_view _name_hungarian_real[] = {
 	"Ajka",
 	"Asz\u00f3d",
 	"Badacsony",
@@ -2505,7 +2506,7 @@ static const char * const _name_hungarian_real[] = {
 	"Zirc",
 };
 
-static const char * const _name_swiss_real[] = {
+static const std::string_view _name_swiss_real[] = {
 	"Aarau",
 	"Aesch",
 	"Altdorf",
@@ -2631,7 +2632,7 @@ static const char * const _name_swiss_real[] = {
 	"Zug",
 };
 
-static const char * const _name_danish_1[] = {
+static const std::string_view _name_danish_1[] = {
 	"Gamle ",
 	"Lille ",
 	"Nye ",
@@ -2646,7 +2647,7 @@ static const char * const _name_danish_1[] = {
 	"Kongens ",
 };
 
-static const char * const _name_danish_2[] = {
+static const std::string_view _name_danish_2[] = {
 	"Ager",
 	"Alle",
 	"Aske",
@@ -2730,7 +2731,7 @@ static const char * const _name_danish_2[] = {
 	"\u00c5l",
 };
 
-static const char * const _name_danish_3[] = {
+static const std::string_view _name_danish_3[] = {
 	"basse",
 	"borg",
 	"berg",
@@ -2763,7 +2764,7 @@ static const char * const _name_danish_3[] = {
 	"skov",
 };
 
-static const char * const _name_turkish_prefix[] = {
+static const std::string_view _name_turkish_prefix[] = {
 	"Ak\u00e7a",
 	"Alt\u0131n",
 	"Bah\u00e7e",
@@ -2782,7 +2783,7 @@ static const char * const _name_turkish_prefix[] = {
 	"Yeni",
 };
 
-static const char * const _name_turkish_middle[] = {
+static const std::string_view _name_turkish_middle[] = {
 	"aga\u00e7",
 	"ayva",
 	"\u00e7am",
@@ -2792,7 +2793,7 @@ static const char * const _name_turkish_middle[] = {
 	"yal\u0131",
 };
 
-static const char * const _name_turkish_suffix[] = {
+static const std::string_view _name_turkish_suffix[] = {
 	"dere",
 	"hisar",
 	"kale",
@@ -2809,7 +2810,7 @@ static const char * const _name_turkish_suffix[] = {
 	"yurt",
 };
 
-static const char * const _name_turkish_real[] = {
+static const std::string_view _name_turkish_real[] = {
 	"Adana",
 	"Ad\u0131yaman",
 	"Afyon",
@@ -2877,7 +2878,7 @@ static const char * const _name_turkish_real[] = {
 	"D\u00fczce",
 };
 
-static const char * const _name_italian_real[] = {
+static const std::string_view _name_italian_real[] = {
 	"Roma",
 	"Milano",
 	"Napoli",
@@ -2958,7 +2959,7 @@ static const char * const _name_italian_real[] = {
 	"Grosseto",
 };
 
-static const char * const _name_italian_pref[] = {
+static const std::string_view _name_italian_pref[] = {
 	"Alpe ",
 	"Borgo ",
 	"Cascina ",
@@ -2973,7 +2974,7 @@ static const char * const _name_italian_pref[] = {
 	"Villar ",
 };
 
-static const char * const _name_italian_1m[] = {
+static const std::string_view _name_italian_1m[] = {
 	"Bel",
 	"Borgo",
 	"Bosco",
@@ -3001,7 +3002,7 @@ static const char * const _name_italian_1m[] = {
 	"Vico",
 };
 
-static const char * const _name_italian_1f[] = {
+static const std::string_view _name_italian_1f[] = {
 	"Acqua",
 	"Bra",
 	"Cala",
@@ -3027,7 +3028,7 @@ static const char * const _name_italian_1f[] = {
 	"Villa",
 };
 
-static const char * const _name_italian_2[] = {
+static const std::string_view _name_italian_2[] = {
 	"bell",
 	"bianc",
 	"cald",
@@ -3057,7 +3058,7 @@ static const char * const _name_italian_2[] = {
 	"viv",
 };
 
-static const char * const _name_italian_2i[] = {
+static const std::string_view _name_italian_2i[] = {
 	"",
 	"breve",
 	"brevi",
@@ -3084,7 +3085,7 @@ static const char * const _name_italian_2i[] = {
 };
 
 
-static const char * const _name_italian_3[] = {
+static const std::string_view _name_italian_3[] = {
 	" Marittimo",
 	" Marittima",
 	" del Capo",
@@ -3108,14 +3109,14 @@ static const char * const _name_italian_3[] = {
 	" Ticino",
 };
 
-static const char * const _name_italian_river1[] = {
+static const std::string_view _name_italian_river1[] = {
 	" del",
 	" sul",
 	" al",
 	" nel",
 };
 
-static const char * const _name_italian_river2[] = {
+static const std::string_view _name_italian_river2[] = {
 	"l'Adda",
 	"l'Adige",
 	"le Alpi",
@@ -3143,7 +3144,7 @@ static const char * const _name_italian_river2[] = {
 	" Tevere",
 };
 
-static const char * const _name_catalan_real[] = {
+static const std::string_view _name_catalan_real[] = {
 	"Barcelona",
 	"L'Hospitalet de Llobregat",
 	"Cerdanyola",
@@ -3213,7 +3214,7 @@ static const char * const _name_catalan_real[] = {
 	"Roses",
 };
 
-static const char * const _name_catalan_pref[] = {
+static const std::string_view _name_catalan_pref[] = {
 	"El Pont de ",
 	"Parets de ",
 	"Canet de ",
@@ -3248,7 +3249,7 @@ static const char * const _name_catalan_pref[] = {
 
 };
 
-static const char * const _name_catalan_1m[] = {
+static const std::string_view _name_catalan_1m[] = {
 	"Torrent",
 	"Cami",
 	"Mont",
@@ -3257,7 +3258,7 @@ static const char * const _name_catalan_1m[] = {
 	"Riu",
 };
 
-static const char * const _name_catalan_1f[] = {
+static const std::string_view _name_catalan_1f[] = {
 	"Pala",
 	"Selva",
 	"Vall",
@@ -3268,7 +3269,7 @@ static const char * const _name_catalan_1f[] = {
 	"Terra",
 };
 
-static const char * const _name_catalan_2m[] = {
+static const std::string_view _name_catalan_2m[] = {
 	"alt",
 	"baix",
 	"fosc",
@@ -3279,7 +3280,7 @@ static const char * const _name_catalan_2m[] = {
 	"gr\u00eds",
 };
 
-static const char * const _name_catalan_2f[] = {
+static const std::string_view _name_catalan_2f[] = {
 	"baixa",
 	"alta",
 	"fosca",
@@ -3290,7 +3291,7 @@ static const char * const _name_catalan_2f[] = {
 	"freda",
 };
 
-static const char * const _name_catalan_3[] = {
+static const std::string_view _name_catalan_3[] = {
 	" Desp\u00ed",
 	" Desvern",
 	" del Cam\u00ed",
@@ -3303,7 +3304,7 @@ static const char * const _name_catalan_3[] = {
 	" de la Plana",
 };
 
-static const char * const _name_catalan_river1[] = {
+static const std::string_view _name_catalan_river1[] = {
 	" d'Anoia",
 	" de Ter",
 	" de Llobregat",

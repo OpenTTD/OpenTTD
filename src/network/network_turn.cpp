@@ -8,13 +8,10 @@
 /** @file network_turn.cpp TURN sending/receiving part of the network protocol. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
-#include "../error.h"
-#include "../strings_func.h"
 #include "network_coordinator.h"
 #include "network_turn.h"
-
-#include "table/strings.h"
 
 #include "../safeguards.h"
 
@@ -28,7 +25,7 @@ public:
 	 * Initiate the connecting.
 	 * @param connection_string The address of the TURN server.
 	 */
-	NetworkTurnConnecter(ClientNetworkTurnSocketHandler *handler, const std::string &connection_string) : TCPConnecter(connection_string, NETWORK_TURN_SERVER_PORT), handler(handler) {}
+	NetworkTurnConnecter(ClientNetworkTurnSocketHandler *handler, std::string_view connection_string) : TCPConnecter(connection_string, NETWORK_TURN_SERVER_PORT), handler(handler) {}
 
 	void OnFailure() override
 	{
@@ -96,7 +93,7 @@ void ClientNetworkTurnSocketHandler::Connect()
  * @param connection_string Connection string of the TURN server.
  * @return The handler for this TURN connection.
  */
-/* static */ std::unique_ptr<ClientNetworkTurnSocketHandler> ClientNetworkTurnSocketHandler::Turn(const std::string &token, uint8_t tracking_number, const std::string &ticket, const std::string &connection_string)
+/* static */ std::unique_ptr<ClientNetworkTurnSocketHandler> ClientNetworkTurnSocketHandler::Turn(std::string_view token, uint8_t tracking_number, std::string_view ticket, std::string_view connection_string)
 {
 	auto turn_handler = std::make_unique<ClientNetworkTurnSocketHandler>(token, tracking_number, connection_string);
 

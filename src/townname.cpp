@@ -137,10 +137,6 @@ bool GenerateTownName(Randomizer &randomizer, uint32_t *townnameparts, TownNames
 {
 	TownNameParams par(_settings_game.game_creation.town_name);
 
-	/* This function is called very often without entering the gameloop
-	 * in between. So reset layout cache to prevent it from growing too big. */
-	Layouter::ReduceLineCache();
-
 	/* Do not set i too low, since when we run out of names, we loop
 	 * for #tries only one time anyway - then we stop generating more
 	 * towns. Do not set it too high either, since looping through all
@@ -602,8 +598,8 @@ static void MakeCzechTownName(StringBuilder &builder, uint32_t seed)
 
 	/* The select criteria. */
 	CzechGender gender;
-	CzechChoose choose;
-	CzechAllow allow;
+	CzechChooseFlags choose;
+	CzechAllowFlags allow;
 
 	if (do_prefix) prefix = SeedModChance(5, std::size(_name_czech_adj) * 12, seed) / 12;
 	if (do_suffix) suffix = SeedModChance(7, std::size(_name_czech_suffix), seed);
@@ -632,18 +628,18 @@ static void MakeCzechTownName(StringBuilder &builder, uint32_t seed)
 		/* Load the postfix (1:1 chance that a postfix will be inserted) */
 		postfix = SeedModChance(14, std::size(_name_czech_subst_postfix) * 2, seed);
 
-		if (choose & CZC_POSTFIX) {
+		if (choose.Test(CzechChooseFlag::Postfix)) {
 			/* Always get a real postfix. */
 			postfix %= std::size(_name_czech_subst_postfix);
 		}
-		if (choose & CZC_NOPOSTFIX) {
+		if (choose.Test(CzechChooseFlag::NoPostfix)) {
 			/* Always drop a postfix. */
 			postfix += std::size(_name_czech_subst_postfix);
 		}
 		if (postfix < std::size(_name_czech_subst_postfix)) {
-			choose |= CZC_POSTFIX;
+			choose.Set(CzechChooseFlag::Postfix);
 		} else {
-			choose |= CZC_NOPOSTFIX;
+			choose.Set(CzechChooseFlag::NoPostfix);
 		}
 
 		/* Localize the array segment containing a good gender */
@@ -671,7 +667,7 @@ static void MakeCzechTownName(StringBuilder &builder, uint32_t seed)
 		for (ending = ending_start; ending <= ending_stop; ending++) {
 			const CzechNameSubst *e = &_name_czech_subst_ending[ending];
 
-			if ((e->choose & choose) == choose && (e->allow & allow) != 0) {
+			if ((e->choose & choose) == choose && e->allow.Any(allow)) {
 				map[i++] = ending;
 			}
 		}
@@ -702,11 +698,11 @@ static void MakeCzechTownName(StringBuilder &builder, uint32_t seed)
 	if (dynamic_subst) {
 		builder += _name_czech_subst_stem[stem].name;
 		if (postfix < std::size(_name_czech_subst_postfix)) {
-			const char *poststr = _name_czech_subst_postfix[postfix];
-			const char *endstr = _name_czech_subst_ending[ending].name;
+			std::string_view poststr = _name_czech_subst_postfix[postfix];
+			std::string_view endstr = _name_czech_subst_ending[ending].name;
 
-			size_t postlen = strlen(poststr);
-			size_t endlen = strlen(endstr);
+			size_t postlen = poststr.size();
+			size_t endlen = endstr.size();
 			assert(postlen > 0 && endlen > 0);
 
 			/* Kill the "avava" and "Jananna"-like cases */
@@ -884,7 +880,7 @@ static void MakeItalianTownName(StringBuilder &builder, uint32_t seed)
 		return;
 	}
 
-	static const char * const mascul_femin_italian[] = {
+	static const std::string_view mascul_femin_italian[] = {
 		"o",
 		"a",
 	};
@@ -961,7 +957,7 @@ static void MakeCatalanTownName(StringBuilder &builder, uint32_t seed)
 typedef void TownNameGenerator(StringBuilder &builder, uint32_t seed);
 
 /** Town name generators */
-static TownNameGenerator *_town_name_generators[] = {
+static TownNameGenerator *const _town_name_generators[] = {
 	MakeEnglishOriginalTownName,  // replaces first 4 characters of name
 	MakeFrenchTownName,
 	MakeGermanTownName,

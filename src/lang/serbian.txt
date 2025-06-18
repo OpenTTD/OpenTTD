@@ -624,7 +624,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Izađi
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcije
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Podešavanja
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Podešavanja VI
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Podešavanja skripte
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Podešavanja NewGRF
@@ -1121,21 +1120,22 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Kopiraj 
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opcije
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Opšte
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Odabir opštih podešavanja
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :Odabir opštih podešavanja
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grrafika
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Odabir grafičkih podešavanja
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :Odabir grafičkih podešavanja
 STR_GAME_OPTIONS_TAB_SOUND                                      :Zvuk
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Odabir podešavanja zvuka i muzike
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Odabir podešavanja zvuka i muzike
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Društveno
-STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Odabir društvenih podešavanja
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Odabir društvenih podešavanja
 
 STR_GAME_OPTIONS_VOLUME                                         :Jačina zvuka
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Zvučni efekti
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Muzika
 
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valuta
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Izbor valute
+
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Valuta
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Izbor valute
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -1184,8 +1184,8 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonezijska ru
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malezijski ringit
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Letonski lat
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Auto čuvanje pozicije
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Izbor vremenskog intervala između dve automatski sačuvane pozicije
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Auto čuvanje pozicije
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Izbor vremenskog intervala između dve automatski sačuvane pozicije
 
 # Autosave dropdown
 ###length 5
@@ -1195,73 +1195,73 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Svakih 30 minut
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Svakih 60 minuta
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Svakih 120 minuta
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Jezik
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Odaberi jezik za interfejs
+STR_GAME_OPTIONS_LANGUAGE                                       :Jezik
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Odaberi jezik za interfejs
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% završeno)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Ceo ekran
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Označi ovde za igranje OpenTTD preko celog ekrana
+STR_GAME_OPTIONS_FULLSCREEN                                     :Ceo ekran
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Označi ovde za igranje OpenTTD preko celog ekrana
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Veličina ekrana
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Odaberi željenu veličinu ekrana
+STR_GAME_OPTIONS_RESOLUTION                                     :Veličina ekrana
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Odaberi željenu veličinu ekrana
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :drugo
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hardversko ubrzanje
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Označi ovde da OpenTTD pokuša da koristi hardversko ubrzanje. Promena ovog podešavanja će imati efekta tek nakon ponvnog pokretanja igre
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Hardversko ubrzanje
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Označi ovde da OpenTTD pokuša da koristi hardversko ubrzanje. Promena ovog podešavanja će imati efekta tek nakon ponvnog pokretanja igre
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Podešavanje će imati efekta tek nakon ponovnog pokretanja igre
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Označi ovde da uključiš v-sync. Promena ovog podešavanja će biti vidljiva tek nakon ponovnog pokretanja igre. Radi jedino sa uključenim hardverskim ubrzanjem.
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Označi ovde da uključiš v-sync. Promena ovog podešavanja će biti vidljiva tek nakon ponovnog pokretanja igre. Radi jedino sa uključenim hardverskim ubrzanjem.
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Trenutni pokretač: {STRING}
-
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Veličina interfejsa
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Povuci klizač da podesiš veličinu interfejsa. Držanjem Ctrl podešavanje se vrši kontinualno
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Automatski detektuj veličinu
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Označi ovde za automatsko prepoznavanje veličine interfejsa
-
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Povećanje okvira
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Označi ovde da veličina okvira povećava sa veličinom prozora
-
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Koristi tradicionalni font
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Označi ovde ako više voliš tradicionalni font fiksirane veličine.
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Anti-alias fontova
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Označi ovde za anti-alias fontova promenljive veličine
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Trenutni pokretač: {STRING}
 
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automatizovana anketa
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Učestvuj u automatizovanoj anketi
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Kada je uključeno, OpenTTD će poslati rezultate ankete prilikom napuštanja igre
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}O anketi i privatnosti
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Ovo otvara pretraživač sa više informacija o automatizovanim anketama
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Pregledaj rezultate anketa
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Pogledaj rezultate ankete za trenutnu igru
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Veličina interfejsa
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Povuci klizač da podesiš veličinu interfejsa. Držanjem Ctrl podešavanje se vrši kontinualno
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Automatski detektuj veličinu
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Označi ovde za automatsko prepoznavanje veličine interfejsa
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafike
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Povećanje okvira
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Označi ovde da veličina okvira povećava sa veličinom prozora
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Frekvencija osvežavanja ekrana
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Odaberi frekvenciju osvežavanja ekrana
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Koristi tradicionalni font
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Označi ovde ako više voliš tradicionalni font fiksirane veličine.
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Anti-alias fontova
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Označi ovde za anti-alias fontova promenljive veličine
+
+
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Automatizovana anketa
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Učestvuj u automatizovanoj anketi
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :Kada je uključeno, OpenTTD će poslati rezultate ankete prilikom napuštanja igre
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :O anketi i privatnosti
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Ovo otvara pretraživač sa više informacija o automatizovanim anketama
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Pregledaj rezultate anketa
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Pogledaj rezultate ankete za trenutnu igru
+
+
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Frekvencija osvežavanja ekrana
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Odaberi frekvenciju osvežavanja ekrana
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Frekvencije osvežavanja veće od 60Hz mogu uticati na performanse.
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Osnovni skup grafika
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Odaberi željeni skup osnovnih grafika
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatni podaci o osnovnom skupu grafika
+STR_GAME_OPTIONS_BASE_GRF                                       :Osnovni skup grafika
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Odaberi željeni skup osnovnih grafika
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Dodatni podaci o osnovnom skupu grafika
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Osnovni skup zvukova
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Odaberi željeni skup osnovnih zvukova
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatni podaci o osnovnom skupu zvukova
+STR_GAME_OPTIONS_BASE_SFX                                       :Osnovni skup zvukova
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Odaberi željeni skup osnovnih zvukova
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Dodatni podaci o osnovnom skupu zvukova
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Osnovni skup muzike
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Odaberi željeni skup osnovne muzike
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Dodatni podaci o osnovnom skupu muzike
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Osnovni skup muzike
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Odaberi željeni skup osnovne muzike
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Dodatni podaci o osnovnom skupu muzike
 
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(nema instaliranih dodataka za integraciju sa drušvenim platformama)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Platforma:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Stanje dodatka:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Platforma:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :Stanje dodatka:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Neuspešno pokretanje
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING       :{ORANGE}{STRING} nije u funkciji
@@ -1369,12 +1369,11 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Popustljivo (be
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nisu dostupne odgovarajuće VI...{}Možete preuzeti nekoliko VI preko sistema za preuzimanje dodataka
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Podešavanja
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Pretraga:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Proširi sve
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Skupi sve
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Resetuj sve vrednosti
+# Settings tree in the Game Options window
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Pretraga:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Proširi sve
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Skupi sve
+STR_CONFIG_SETTING_RESET_ALL                                    :Resetuj sve vrednosti
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(nema objašnjenja)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Podrazumevana vrednost: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Vrsta podešavanja: {ORANGE}{STRING}
@@ -1386,9 +1385,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Podešavanja pr
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Oprez!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Ovo će resetovati sva podešavanja igre na početne vrednosti{}Da li sigurno želiš da nastaviš?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorija:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Vrsta:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Ograničava donju listu tako da prikazuje samo promenjena podešavanja
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Kategorija:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Vrsta:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Ograničava donju listu tako da prikazuje samo promenjena podešavanja
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Osnovna podešavanja
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Napredna podešavanja
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ekspertska / sva podešavanja
@@ -1405,9 +1404,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Podešavanja pr
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Nema -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Prikaži sve rezultate pretrage po postavkama{}{SILVER}Kategorija {BLACK}do {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Pokaži sve rezultate pretrage prema postavkama{}{SILVER}Tip {BLACK}do {WHITE} Svi tipovi postavki
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Prikaži sve rezultate pretrage po postavkama{}{SILVER}Kategorija {BLACK}do {WHITE}{STRING} {BLACK}i {SILVER}Tip {BLACK}do {WHITE}Svi tipovi postavki
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Prikaži sve rezultate pretrage po postavkama{}{SILVER}Kategorija {BLACK}do {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Pokaži sve rezultate pretrage prema postavkama{}{SILVER}Tip {BLACK}do {WHITE} Svi tipovi postavki
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Prikaži sve rezultate pretrage po postavkama{}{SILVER}Kategorija {BLACK}do {WHITE}{STRING} {BLACK}i {SILVER}Tip {BLACK}do {WHITE}Svi tipovi postavki
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Ne
@@ -2308,7 +2307,6 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... komp
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU drajver je oborio igru. Hardversko ubrzanje je onemogućeno
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nova igra
 STR_INTRO_LOAD_GAME                                             :{BLACK}Učitavanje igre
@@ -2320,11 +2318,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Mrežna 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opcije
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela najboljih rezultata
 STR_INTRO_HELP                                                  :{BLACK}Pomoć i priručnici
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Podešavanja
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Podešavanja NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Proveri dodatke na mreži
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Podešavanja VI
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Podešavanja skripte
 STR_INTRO_QUIT                                                  :{BLACK}Napusti
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Započinje novu igru. Ctrl+klik preskače konfiguraciju mape
@@ -2342,11 +2336,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Izbor ze
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Prikaži opcije igre
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Prikaži tabelu najboljih rezultata
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Pristupi dokumentaciji i resursima na internetu
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Otvori podešavanja
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Prikaži podešavanja NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Pregled novih i ažuriranih dodatka za preuzimanje
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Otvori podešavanja VI
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Otvori podešavanja skripte
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Napušta 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}Trenutno odabranom skupu osnovne grafike nedostaje {NUM} sprajt{P "" "ova" "ova"}. Proveri da li postoje izmene za ovaj skup.
@@ -3135,6 +3125,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Izbor ve
 STR_FOUND_TOWN_CITY                                             :{BLACK}Grad
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Gradovi se razvijaju brže nego uobičajena naselja{}U zavisnosti od podešavanja, veći su prilikom osnivanja
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Mreža puteva u naselju:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Izbor plana mreže puteva u naselju
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Originalno
@@ -3559,14 +3550,11 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Sačuvaj
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Lista dostupnih postavki, odaberi jednu za kopiranje pod imenom ispod
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Unesi ime postavke
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Trenutno izabrani naziv za snimanje početnih postavki
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Otkaži
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Ne manjati odabrane postavke
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Sačuvaj
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK} Sačuvaj trenutnu postavku odabranog imena
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Promena NewGRF parametara
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zatvori
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Poništi
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Postavlja parametre na njihove početne vrednosti
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametar {NUM}
@@ -4774,7 +4762,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Raspored
 STR_TIMETABLE_NO_TRAVEL                                         :Nema putovanja
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Putovanje (automatski; raspored po redu naredbi)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Putovanje (bez rasporeda)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Putovanje sa najviše {2:VELOCITY} (bez rasporeda)
 STR_TIMETABLE_TRAVEL_FOR                                        :Putovanje za {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Putovanje do {STRING} sa najviše {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Putovanje (za{STRING}, bez rasporeda)
@@ -4895,8 +4882,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Prihvati
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Bira označenu skriptu
-STR_AI_LIST_CANCEL                                              :{BLACK}Otkaži
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne menja skriptu
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Snimi sliku ekrana
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normalna slika ekrana
@@ -4909,7 +4894,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Slika um
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Skripta igre
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zatvori
 STR_AI_SETTINGS_RESET                                           :{BLACK}Poništi
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

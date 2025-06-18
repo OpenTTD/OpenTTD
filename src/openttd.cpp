@@ -27,6 +27,7 @@
 #include "saveload/saveload.h"
 #include "company_cmd.h"
 #include "company_func.h"
+#include "company_gui.h"
 #include "command_func.h"
 #include "news_func.h"
 #include "fios.h"
@@ -79,6 +80,7 @@
 #include "timer/timer_game_realtime.h"
 #include "timer/timer_game_tick.h"
 #include "social_integration.h"
+#include "core/string_consumer.hpp"
 
 #include "linkgraph/linkgraphschedule.h"
 
@@ -102,7 +104,7 @@ bool HandleBootstrap();
 extern void CheckCaches();
 extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = CompanyID::Invalid());
 extern void OSOpenBrowser(const std::string &url);
-extern void ShowOSErrorBox(const char *buf, bool system);
+extern void ShowOSErrorBox(std::string_view buf, bool system);
 extern std::string _config_file;
 
 bool _save_config = false;
@@ -116,7 +118,7 @@ NewGRFScanCallback *_request_newgrf_scan_callback = nullptr;
  */
 void UserErrorI(const std::string &str)
 {
-	ShowOSErrorBox(str.c_str(), false);
+	ShowOSErrorBox(str, false);
 	if (VideoDriver::GetInstance() != nullptr) VideoDriver::GetInstance()->Stop();
 
 #ifdef __EMSCRIPTEN__
@@ -138,7 +140,7 @@ void UserErrorI(const std::string &str)
 void FatalErrorI(const std::string &str)
 {
 	if (VideoDriver::GetInstance() == nullptr || VideoDriver::GetInstance()->HasGUI()) {
-		ShowOSErrorBox(str.c_str(), true);
+		ShowOSErrorBox(str, true);
 	}
 
 	/* Set the error message for the crash log and then invoke it. */
@@ -236,19 +238,19 @@ static void WriteSavegameInfo(const std::string &name)
 
 	std::string message;
 	message.reserve(1024);
-	fmt::format_to(std::back_inserter(message), "Name:         {}\n", name);
-	fmt::format_to(std::back_inserter(message), "Savegame ver: {}\n", _sl_version);
-	fmt::format_to(std::back_inserter(message), "NewGRF ver:   0x{:08X}\n", last_ottd_rev);
-	fmt::format_to(std::back_inserter(message), "Modified:     {}\n", ever_modified);
+	format_append(message, "Name:         {}\n", name);
+	format_append(message, "Savegame ver: {}\n", _sl_version);
+	format_append(message, "NewGRF ver:   0x{:08X}\n", last_ottd_rev);
+	format_append(message, "Modified:     {}\n", ever_modified);
 
 	if (removed_newgrfs) {
-		fmt::format_to(std::back_inserter(message), "NewGRFs have been removed\n");
+		format_append(message, "NewGRFs have been removed\n");
 	}
 
 	message += "NewGRFs:\n";
 	if (_load_check_data.HasNewGrfs()) {
 		for (const auto &c : _load_check_data.grfconfig) {
-			fmt::format_to(std::back_inserter(message), "{:08X} {} {}\n", std::byteswap(c->ident.grfid),
+			format_append(message, "{:08X} {} {}\n", std::byteswap(c->ident.grfid),
 				FormatArrayAsHex(c->flags.Test(GRFConfigFlag::Compatible) ? c->original_md5sum : c->ident.md5sum), c->filename);
 		}
 	}
@@ -269,16 +271,19 @@ static void WriteSavegameInfo(const std::string &name)
  * @param res variable to store the resolution in.
  * @param s   the string to decompose.
  */
-static void ParseResolution(Dimension *res, const char *s)
+static void ParseResolution(Dimension &res, std::string_view s)
 {
-	const char *t = strchr(s, 'x');
-	if (t == nullptr) {
+	StringConsumer consumer(s);
+	auto width = consumer.TryReadIntegerBase<uint>(10);
+	auto valid = consumer.ReadIf("x");
+	auto height = consumer.TryReadIntegerBase<uint>(10);
+	if (!width.has_value() || !valid || !height.has_value() || consumer.AnyBytesLeft()) {
 		ShowInfo("Invalid resolution '{}'", s);
 		return;
 	}
 
-	res->width  = std::max(std::strtoul(s, nullptr, 0), 64UL);
-	res->height = std::max(std::strtoul(t + 1, nullptr, 0), 64UL);
+	res.width  = std::max<uint>(*width, 64);
+	res.height = std::max<uint>(*height, 64);
 }
 
 
@@ -492,7 +497,7 @@ static std::vector<OptionData> CreateOptions()
  * @param arguments The command line arguments passed to the application.
  * @return 0 when there is no error.
  */
-int openttd_main(std::span<char * const> arguments)
+int openttd_main(std::span<std::string_view> arguments)
 {
 	_game_session_stats.start_time = std::chrono::steady_clock::now();
 	_game_session_stats.savegame_size = std::nullopt;
@@ -536,7 +541,7 @@ int openttd_main(std::span<char * const> arguments)
 			blitter = "null";
 			dedicated = true;
 			SetDebugString("net=4", ShowInfoI);
-			if (mgo.opt != nullptr) {
+			if (!mgo.opt.empty()) {
 				scanner->dedicated_host = ParseFullConnectionString(mgo.opt, scanner->dedicated_port);
 			}
 			break;
@@ -547,13 +552,19 @@ int openttd_main(std::span<char * const> arguments)
 		case 'p':
 			scanner->join_server_password = mgo.opt;
 			break;
-		case 'r': ParseResolution(&resolution, mgo.opt); break;
-		case 't': scanner->startyear = TimerGameCalendar::Year(atoi(mgo.opt)); break;
+		case 'r': ParseResolution(resolution, mgo.opt); break;
+		case 't':
+			if (auto value = ParseInteger(mgo.opt); value.has_value()) {
+				scanner->startyear = TimerGameCalendar::Year(*value);
+			} else {
+				fmt::print(stderr, "Invalid start year: {}\n", mgo.opt);
+			}
+			break;
 		case 'd': {
 #if defined(_WIN32)
 				CreateConsole();
 #endif
-				if (mgo.opt != nullptr) SetDebugString(mgo.opt, ShowInfoI);
+				if (!mgo.opt.empty()) SetDebugString(mgo.opt, ShowInfoI);
 				break;
 			}
 		case 'e':
@@ -566,10 +577,10 @@ int openttd_main(std::span<char * const> arguments)
 			}
 			break;
 		case 'g':
-			if (mgo.opt != nullptr) {
+			if (!mgo.opt.empty()) {
 				_file_to_saveload.name = mgo.opt;
 
-				std::string extension = FS2OTTD(std::filesystem::path(OTTD2FS(_file_to_saveload.name)).extension());
+				std::string extension = FS2OTTD(std::filesystem::path(OTTD2FS(_file_to_saveload.name)).extension().native());
 				auto [ft, _] = FiosGetSavegameListCallback(SLO_LOAD, _file_to_saveload.name, extension);
 				if (ft == FIOS_TYPE_INVALID) {
 					std::tie(ft, _) = FiosGetScenarioListCallback(SLO_LOAD, _file_to_saveload.name, extension);
@@ -579,14 +590,14 @@ int openttd_main(std::span<char * const> arguments)
 				}
 
 				/* Allow for '-e' before or after '-g'. */
-				switch (GetAbstractFileType(ft)) {
+				switch (ft.abstract) {
 					case FT_SAVEGAME: _switch_mode = (_switch_mode == SM_EDITOR ? SM_LOAD_SCENARIO : SM_LOAD_GAME); break;
 					case FT_SCENARIO: _switch_mode = (_switch_mode == SM_EDITOR ? SM_LOAD_SCENARIO : SM_LOAD_GAME); break;
 					case FT_HEIGHTMAP: _switch_mode = (_switch_mode == SM_EDITOR ? SM_LOAD_HEIGHTMAP : SM_START_HEIGHTMAP); break;
 					default: break;
 				}
 
-				_file_to_saveload.SetMode(SLO_LOAD, GetAbstractFileType(ft), GetDetailedFileType(ft));
+				_file_to_saveload.SetMode(ft, SLO_LOAD);
 				break;
 			}
 
@@ -598,12 +609,12 @@ int openttd_main(std::span<char * const> arguments)
 			break;
 		case 'q': {
 			DeterminePaths(arguments[0], only_local_path);
-			if (StrEmpty(mgo.opt)) {
+			if (mgo.opt.empty()) {
 				ret = 1;
 				return ret;
 			}
 
-			std::string extension = FS2OTTD(std::filesystem::path(OTTD2FS(mgo.opt)).extension());
+			std::string extension = FS2OTTD(std::filesystem::path(OTTD2FS(mgo.opt)).extension().native());
 			auto [_, title] = FiosGetSavegameListCallback(SLO_LOAD, mgo.opt, extension);
 
 			_load_check_data.Clear();
@@ -625,7 +636,13 @@ int openttd_main(std::span<char * const> arguments)
 			_skip_all_newgrf_scanning += 1;
 			break;
 		}
-		case 'G': scanner->generation_seed = std::strtoul(mgo.opt, nullptr, 10); break;
+		case 'G':
+			if (auto value = ParseInteger(mgo.opt); value.has_value()) {
+				scanner->generation_seed = *value;
+			} else {
+				fmt::print(stderr, "Invalid generation seed: {}\n", mgo.opt);
+			}
+			break;
 		case 'c': _config_file = mgo.opt; break;
 		case 'x': scanner->save_config = false; break;
 		case 'X': only_local_path = true; break;
@@ -743,7 +760,7 @@ int openttd_main(std::span<char * const> arguments)
 	InitializeSpriteSorter();
 
 	/* Initialize the zoom level of the screen to normal */
-	_screen.zoom = ZOOM_LVL_MIN;
+	_screen.zoom = ZoomLevel::Min;
 
 	/* The video driver is now selected, now initialise GUI zoom */
 	UpdateGUIZoom();
@@ -886,7 +903,7 @@ static void MakeNewGame(bool from_heightmap, bool reset_settings)
 	_game_mode = GM_NORMAL;
 	if (!from_heightmap) {
 		/* "reload" command needs to know what mode we were in. */
-		_file_to_saveload.SetMode(SLO_INVALID, FT_INVALID, DFT_INVALID);
+		_file_to_saveload.SetMode(FIOS_TYPE_INVALID, SLO_INVALID);
 	}
 
 	ResetGRFConfig(true);
@@ -904,7 +921,7 @@ static void MakeNewEditorWorld()
 {
 	_game_mode = GM_EDITOR;
 	/* "reload" command needs to know what mode we were in. */
-	_file_to_saveload.SetMode(SLO_INVALID, FT_INVALID, DFT_INVALID);
+	_file_to_saveload.SetMode(FIOS_TYPE_INVALID, SLO_INVALID);
 
 	ResetGRFConfig(true);
 
@@ -1054,12 +1071,12 @@ void SwitchToMode(SwitchMode new_mode)
 			break;
 
 		case SM_RELOADGAME: // Reload with what-ever started the game
-			if (_file_to_saveload.abstract_ftype == FT_SAVEGAME || _file_to_saveload.abstract_ftype == FT_SCENARIO) {
+			if (_file_to_saveload.ftype.abstract == FT_SAVEGAME || _file_to_saveload.ftype.abstract == FT_SCENARIO) {
 				/* Reload current savegame/scenario */
 				_switch_mode = _game_mode == GM_EDITOR ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
 				SwitchToMode(_switch_mode);
 				break;
-			} else if (_file_to_saveload.abstract_ftype == FT_HEIGHTMAP) {
+			} else if (_file_to_saveload.ftype.abstract == FT_HEIGHTMAP) {
 				/* Restart current heightmap */
 				_switch_mode = _game_mode == GM_EDITOR ? SM_LOAD_HEIGHTMAP : SM_RESTART_HEIGHTMAP;
 				SwitchToMode(_switch_mode);
@@ -1084,10 +1101,10 @@ void SwitchToMode(SwitchMode new_mode)
 			ResetGRFConfig(true);
 			ResetWindowSystem();
 
-			if (!SafeLoad(_file_to_saveload.name, _file_to_saveload.file_op, _file_to_saveload.detail_ftype, GM_NORMAL, NO_DIRECTORY)) {
+			if (!SafeLoad(_file_to_saveload.name, _file_to_saveload.file_op, _file_to_saveload.ftype.detailed, GM_NORMAL, NO_DIRECTORY)) {
 				ShowErrorMessage(GetSaveLoadErrorType(), GetSaveLoadErrorMessage(), WL_CRITICAL);
 			} else {
-				if (_file_to_saveload.abstract_ftype == FT_SCENARIO) {
+				if (_file_to_saveload.ftype.abstract == FT_SCENARIO) {
 					OnStartScenario();
 				}
 				OnStartGame(_network_dedicated);
@@ -1120,7 +1137,7 @@ void SwitchToMode(SwitchMode new_mode)
 			break;
 
 		case SM_LOAD_SCENARIO: { // Load scenario from scenario editor
-			if (SafeLoad(_file_to_saveload.name, _file_to_saveload.file_op, _file_to_saveload.detail_ftype, GM_EDITOR, NO_DIRECTORY)) {
+			if (SafeLoad(_file_to_saveload.name, _file_to_saveload.file_op, _file_to_saveload.ftype.detailed, GM_EDITOR, NO_DIRECTORY)) {
 				SetLocalCompany(OWNER_NONE);
 				GenerateSavegameId();
 				_settings_newgame.game_creation.starting_year = TimerGameCalendar::year;
@@ -1169,7 +1186,7 @@ void SwitchToMode(SwitchMode new_mode)
 			break;
 
 		case SM_SAVE_HEIGHTMAP: // Save heightmap.
-			MakeHeightmapScreenshot(_file_to_saveload.name.c_str());
+			MakeHeightmapScreenshot(_file_to_saveload.name);
 			CloseWindowById(WC_SAVELOAD, 0);
 			break;
 
@@ -1216,8 +1233,6 @@ void StateGameLoop()
 
 	PerformanceMeasurer framerate(PFE_GAMELOOP);
 	PerformanceAccumulator::Reset(PFE_GL_LANDSCAPE);
-
-	Layouter::ReduceLineCache();
 
 	if (_game_mode == GM_EDITOR) {
 		BasePersistentStorageArray::SwitchMode(PSM_ENTER_GAMELOOP);

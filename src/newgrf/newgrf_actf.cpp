@@ -27,7 +27,7 @@ static void FeatureTownName(ByteReader &buf)
 	 * B num-parts   Number of parts in this definition
 	 * V parts       The parts */
 
-	uint32_t grfid = _cur.grffile->grfid;
+	uint32_t grfid = _cur_gps.grffile->grfid;
 
 	GRFTownName *townname = AddGRFTownName(grfid);
 
@@ -37,7 +37,7 @@ static void FeatureTownName(ByteReader &buf)
 	if (HasBit(id, 7)) {
 		/* Final definition */
 		ClrBit(id, 7);
-		bool new_scheme = _cur.grffile->grf_version >= 7;
+		bool new_scheme = _cur_gps.grffile->grf_version >= 7;
 
 		uint8_t lang = buf.ReadByte();
 		StringID style = STR_UNDEFINED;

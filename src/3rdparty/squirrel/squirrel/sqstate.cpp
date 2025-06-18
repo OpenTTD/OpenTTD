@@ -14,6 +14,7 @@
 #include "sqarray.h"
 #include "squserdata.h"
 #include "sqclass.h"
+#include "../../../core/string_consumer.hpp"
 
 #include "../../../safeguards.h"
 
@@ -32,14 +33,12 @@ SQObjectPtr _minusone_((SQInteger)-1);
 	_table(_metamethodsmap)->NewSlot(_metamethods->back(),(SQInteger)(_metamethods->size()-1)); \
 	}
 
-bool CompileTypemask(SQIntVec &res,const SQChar *typemask)
+bool CompileTypemask(SQIntVec &res,std::string_view typemask)
 {
-	SQInteger i = 0;
-
 	SQInteger mask = 0;
-	while(typemask[i] != 0) {
-
-		switch(typemask[i]){
+	StringConsumer consumer{typemask};
+	while (consumer.AnyBytesLeft()) {
+		switch(consumer.ReadChar()){
 				case 'o': mask |= _RT_NULL; break;
 				case 'i': mask |= _RT_INTEGER; break;
 				case 'f': mask |= _RT_FLOAT; break;
@@ -56,37 +55,32 @@ bool CompileTypemask(SQIntVec &res,const SQChar *typemask)
 				case 'x': mask |= _RT_INSTANCE; break;
 				case 'y': mask |= _RT_CLASS; break;
 				case 'r': mask |= _RT_WEAKREF; break;
-				case '.': mask = -1; res.push_back(mask); i++; mask = 0; continue;
-				case ' ': i++; continue; //ignores spaces
+				case '.': mask = -1; res.push_back(mask); mask = 0; continue;
+				case ' ': continue; //ignores spaces
 				default:
 					return false;
 		}
-		i++;
-		if(typemask[i] == '|') {
-			i++;
-			if(typemask[i] == 0)
-				return false;
+
+		if(consumer.ReadCharIf('|')) {
+			if(!consumer.AnyBytesLeft()) return false;
 			continue;
 		}
 		res.push_back(mask);
 		mask = 0;
-
 	}
 	return true;
 }
 
-SQTable *CreateDefaultDelegate(SQSharedState *ss,SQRegFunction *funcz)
+SQTable *CreateDefaultDelegate(SQSharedState *ss,const std::initializer_list<SQRegFunction> &funcz)
 {
-	SQInteger i=0;
 	SQTable *t=SQTable::Create(ss,0);
-	while(funcz[i].name!=nullptr){
-		SQNativeClosure *nc = SQNativeClosure::Create(ss,funcz[i].f);
-		nc->_nparamscheck = funcz[i].nparamscheck;
-		nc->_name = SQString::Create(ss,funcz[i].name);
-		if(funcz[i].typemask && !CompileTypemask(nc->_typecheck,funcz[i].typemask))
+	for (auto &func : funcz) {
+		SQNativeClosure *nc = SQNativeClosure::Create(ss,func.f);
+		nc->_nparamscheck = func.nparamscheck;
+		nc->_name = SQString::Create(ss,func.name);
+		if(func.typemask.has_value() && !CompileTypemask(nc->_typecheck,*func.typemask))
 			return nullptr;
-		t->NewSlot(SQString::Create(ss,funcz[i].name),nc);
-		i++;
+		t->NewSlot(SQString::Create(ss,func.name),nc);
 	}
 	return t;
 }
@@ -97,8 +91,6 @@ SQSharedState::SQSharedState()
 	_printfunc = nullptr;
 	_debuginfo = false;
 	_notifyallexceptions = false;
-	_scratchpad=nullptr;
-	_scratchpadsize=0;
 	_collectable_free_processing = false;
 #ifndef NO_GARBAGE_COLLECTOR
 	_gc_chain=nullptr;
@@ -212,7 +204,6 @@ SQSharedState::~SQSharedState()
 	sq_delete(_systemstrings,SQObjectPtrVec);
 	sq_delete(_metamethods,SQObjectPtrVec);
 	sq_delete(_stringtable,SQStringTable);
-	if(_scratchpad)SQ_FREE(_scratchpad,_scratchpadsize);
 }
 
 
@@ -357,19 +348,16 @@ void SQCollectable::RemoveFromChain(SQCollectable **chain,SQCollectable *c)
 }
 #endif
 
-SQChar* SQSharedState::GetScratchPad(SQInteger size)
+std::span<char> SQSharedState::GetScratchPad(SQInteger size)
 {
 	SQInteger newsize;
 	if(size>0) {
-		if(_scratchpadsize < size) {
+		if(_scratchpad.size() < static_cast<size_t>(size)) {
 			newsize = size + (size>>1);
-			_scratchpad = (SQChar *)SQ_REALLOC(_scratchpad,_scratchpadsize,newsize);
-			_scratchpadsize = newsize;
-
-		}else if(_scratchpadsize >= (size<<5)) {
-			newsize = _scratchpadsize >> 1;
-			_scratchpad = (SQChar *)SQ_REALLOC(_scratchpad,_scratchpadsize,newsize);
-			_scratchpadsize = newsize;
+			_scratchpad.resize(newsize);
+		}else if(_scratchpad.size() >= static_cast<size_t>(size<<5)) {
+			newsize = _scratchpad.size() >> 1;
+			_scratchpad.resize(newsize);
 		}
 	}
 	return _scratchpad;
@@ -550,36 +538,36 @@ void SQStringTable::AllocNodes(SQInteger size)
 {
 	_numofslots = size;
 	_strings = (SQString**)SQ_MALLOC(sizeof(SQString*)*_numofslots);
-	memset(_strings,0,sizeof(SQString*)*(size_t)_numofslots);
+	std::fill_n(_strings, _numofslots, nullptr);
 }
 
-SQString *SQStringTable::Add(const SQChar *news,SQInteger len)
+static const std::hash<std::string_view> string_table_hash{};
+
+SQString *SQStringTable::Add(std::string_view new_string)
 {
-	if(len<0)
-		len = (SQInteger)strlen(news);
-	SQHash h = ::_hashstr(news,(size_t)len)&(_numofslots-1);
+	size_t len = new_string.size();
+	auto slot = string_table_hash(new_string) & (_numofslots-1);
 	SQString *s;
-	for (s = _strings[h]; s; s = s->_next){
-		if(s->_len == len && (!memcmp(news,s->_val,(size_t)len)))
-			return s; //found
+	for (s = _strings[slot]; s; s = s->_next){
+		if(s->View() == new_string) return s; //found
 	}
 
 	SQString *t=(SQString *)SQ_MALLOC(len+sizeof(SQString));
-	new (t) SQString(news, len);
-	t->_next = _strings[h];
-	_strings[h] = t;
+	new (t) SQString(new_string);
+	t->_next = _strings[slot];
+	_strings[slot] = t;
 	_slotused++;
 	if (_slotused > _numofslots)  /* too crowded? */
 		Resize(_numofslots*2);
 	return t;
 }
 
-SQString::SQString(const SQChar *news, SQInteger len)
+SQString::SQString(std::string_view new_string)
 {
-	memcpy(_val,news,(size_t)len);
-	_val[len] = '\0';
-	_len = len;
-	_hash = ::_hashstr(news,(size_t)len);
+	std::ranges::copy(new_string, _val);
+	_val[new_string.size()] = '\0';
+	_len = new_string.size();
+	_hash = string_table_hash(new_string);
 	_next = nullptr;
 	_sharedstate = nullptr;
 }
@@ -615,7 +603,7 @@ void SQStringTable::Remove(SQString *bs)
 			else
 				_strings[h] = s->_next;
 			_slotused--;
-			SQInteger slen = s->_len;
+			size_t slen = s->View().size();
 			s->~SQString();
 			SQ_FREE(s,sizeof(SQString) + slen);
 			return;

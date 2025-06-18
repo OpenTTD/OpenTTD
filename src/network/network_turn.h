@@ -27,7 +27,7 @@ public:
 	std::shared_ptr<TCPConnecter> connecter{}; ///< Connecter instance.
 	bool connect_started = false;      ///< Whether we started the connection.
 
-	ClientNetworkTurnSocketHandler(const std::string &token, uint8_t tracking_number, const std::string &connection_string) : token(token), tracking_number(tracking_number), connection_string(connection_string) {}
+	ClientNetworkTurnSocketHandler(std::string_view token, uint8_t tracking_number, std::string_view connection_string) : token(token), tracking_number(tracking_number), connection_string(connection_string) {}
 
 	NetworkRecvStatus CloseConnection(bool error = true) override;
 	~ClientNetworkTurnSocketHandler() override;
@@ -36,7 +36,7 @@ public:
 	void Connect();
 	void ConnectFailure();
 
-	static std::unique_ptr<ClientNetworkTurnSocketHandler> Turn(const std::string &token, uint8_t tracking_number, const std::string &ticket, const std::string &connection_string);
+	static std::unique_ptr<ClientNetworkTurnSocketHandler> Turn(std::string_view token, uint8_t tracking_number, std::string_view ticket, std::string_view connection_string);
 };
 
 #endif /* NETWORK_TURN_H */

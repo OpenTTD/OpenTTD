@@ -12,8 +12,6 @@
 #include "../core/string_builder.hpp"
 #include "../safeguards.h"
 
-using namespace std::literals;
-
 TEST_CASE("StringBuilder - basic")
 {
 	std::string buffer;

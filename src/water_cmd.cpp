@@ -48,22 +48,22 @@
 /**
  * Describes from which directions a specific slope can be flooded (if the tile is floodable at all).
  */
-static const uint8_t _flood_from_dirs[] = {
-	(1 << DIR_NW) | (1 << DIR_SW) | (1 << DIR_SE) | (1 << DIR_NE), // SLOPE_FLAT
-	(1 << DIR_NE) | (1 << DIR_SE),                                 // SLOPE_W
-	(1 << DIR_NW) | (1 << DIR_NE),                                 // SLOPE_S
-	(1 << DIR_NE),                                                 // SLOPE_SW
-	(1 << DIR_NW) | (1 << DIR_SW),                                 // SLOPE_E
-	0,                                                             // SLOPE_EW
-	(1 << DIR_NW),                                                 // SLOPE_SE
-	(1 << DIR_N ) | (1 << DIR_NW) | (1 << DIR_NE),                 // SLOPE_WSE, SLOPE_STEEP_S
-	(1 << DIR_SW) | (1 << DIR_SE),                                 // SLOPE_N
-	(1 << DIR_SE),                                                 // SLOPE_NW
-	0,                                                             // SLOPE_NS
-	(1 << DIR_E ) | (1 << DIR_NE) | (1 << DIR_SE),                 // SLOPE_NWS, SLOPE_STEEP_W
-	(1 << DIR_SW),                                                 // SLOPE_NE
-	(1 << DIR_S ) | (1 << DIR_SW) | (1 << DIR_SE),                 // SLOPE_ENW, SLOPE_STEEP_N
-	(1 << DIR_W ) | (1 << DIR_SW) | (1 << DIR_NW),                 // SLOPE_SEN, SLOPE_STEEP_E
+static const Directions _flood_from_dirs[] = {
+	{DIR_NW, DIR_SW, DIR_SE, DIR_NE}, // SLOPE_FLAT
+	{DIR_NE, DIR_SE},                 // SLOPE_W
+	{DIR_NW, DIR_NE},                 // SLOPE_S
+	{DIR_NE},                         // SLOPE_SW
+	{DIR_NW, DIR_SW},                 // SLOPE_E
+	{},                               // SLOPE_EW
+	{DIR_NW},                         // SLOPE_SE
+	{DIR_N, DIR_NW, DIR_NE},          // SLOPE_WSE, SLOPE_STEEP_S
+	{DIR_SW, DIR_SE},                 // SLOPE_N
+	{DIR_SE},                         // SLOPE_NW
+	{},                               // SLOPE_NS
+	{DIR_E, DIR_NE, DIR_SE},          // SLOPE_NWS, SLOPE_STEEP_W
+	{DIR_SW},                         // SLOPE_NE
+	{DIR_S, DIR_SW, DIR_SE},          // SLOPE_ENW, SLOPE_STEEP_N
+	{DIR_W, DIR_SW, DIR_NW},          // SLOPE_SEN, SLOPE_STEEP_E
 };
 
 /**
@@ -439,13 +439,6 @@ CommandCost CmdBuildLock(DoCommandFlags flags, TileIndex tile)
 	return DoBuildLock(tile, dir, flags);
 }
 
-/** Callback to create non-desert around a river tile. */
-static bool RiverModifyDesertZone(TileIndex tile, void *)
-{
-	if (GetTropicZone(tile) == TROPICZONE_DESERT) SetTropicZone(tile, TROPICZONE_NORMAL);
-	return false;
-}
-
 /**
  * Make a river tile and remove desert directly around it.
  * @param tile The tile to change into river and create non-desert around
@@ -456,7 +449,9 @@ void MakeRiverAndModifyDesertZoneAround(TileIndex tile)
 	MarkTileDirtyByTile(tile);
 
 	/* Remove desert directly around the river tile. */
-	CircularTileSearch(&tile, RIVER_OFFSET_DESERT_DISTANCE, RiverModifyDesertZone, nullptr);
+	for (auto t : SpiralTileSequence(tile, RIVER_OFFSET_DESERT_DISTANCE)) {
+		if (GetTropicZone(t) == TROPICZONE_DESERT) SetTropicZone(t, TROPICZONE_NORMAL);
+	}
 }
 
 /**
@@ -510,8 +505,10 @@ CommandCost CmdBuildCanal(DoCommandFlags flags, TileIndex tile, TileIndex start_
 				case WATER_CLASS_RIVER:
 					MakeRiver(current_tile, Random());
 					if (_game_mode == GM_EDITOR) {
-						TileIndex tile2 = current_tile;
-						CircularTileSearch(&tile2, RIVER_OFFSET_DESERT_DISTANCE, RiverModifyDesertZone, nullptr);
+						/* Remove desert directly around the river tile. */
+						for (auto t : SpiralTileSequence(current_tile, RIVER_OFFSET_DESERT_DISTANCE)) {
+							if (GetTropicZone(t) == TROPICZONE_DESERT) SetTropicZone(t, TROPICZONE_NORMAL);
+						}
 					}
 					break;
 
@@ -860,7 +857,7 @@ static void DrawWaterLock(const TileInfo *ti)
 static void DrawWaterDepot(const TileInfo *ti)
 {
 	DrawWaterClassGround(ti);
-	DrawWaterTileStruct(ti, _shipdepot_display_data[GetShipDepotAxis(ti->tile)][GetShipDepotPart(ti->tile)].seq, 0, 0, COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile)), CF_END);
+	DrawWaterTileStruct(ti, _shipdepot_display_data[GetShipDepotAxis(ti->tile)][GetShipDepotPart(ti->tile)].seq, 0, 0, GetCompanyPalette(GetTileOwner(ti->tile)), CF_END);
 }
 
 static void DrawRiverWater(const TileInfo *ti)
@@ -957,7 +954,7 @@ void DrawShipDepotSprite(int x, int y, Axis axis, DepotPart part)
 	const DrawTileSprites &dts = _shipdepot_display_data[axis][part];
 
 	DrawSprite(dts.ground.sprite, dts.ground.pal, x, y);
-	DrawOrigTileSeqInGUI(x, y, &dts, COMPANY_SPRITE_COLOUR(_local_company));
+	DrawOrigTileSeqInGUI(x, y, &dts, GetCompanyPalette(_local_company));
 }
 
 
@@ -1015,12 +1012,11 @@ static void FloodVehicle(Vehicle *v)
 /**
  * Flood a vehicle if we are allowed to flood it, i.e. when it is on the ground.
  * @param v    The vehicle to test for flooding.
- * @param data The z of level to flood.
- * @return nullptr as we always want to remove everything.
+ * @param z    The z of level to flood.
  */
-static Vehicle *FloodVehicleProc(Vehicle *v, void *data)
+static void FloodVehicleProc(Vehicle *v, int z)
 {
-	if (v->vehstatus.Test(VehState::Crashed)) return nullptr;
+	if (v->vehstatus.Test(VehState::Crashed)) return;
 
 	switch (v->type) {
 		default: break;
@@ -1041,14 +1037,18 @@ static Vehicle *FloodVehicleProc(Vehicle *v, void *data)
 
 		case VEH_TRAIN:
 		case VEH_ROAD: {
-			int z = *(int*)data;
 			if (v->z_pos > z) break;
 			FloodVehicle(v->First());
 			break;
 		}
 	}
+}
 
-	return nullptr;
+static void FloodVehiclesOnTile(TileIndex tile, int z)
+{
+	for (Vehicle *v : VehiclesOnTile(tile)) {
+		FloodVehicleProc(v, z);
+	}
 }
 
 /**
@@ -1058,12 +1058,10 @@ static Vehicle *FloodVehicleProc(Vehicle *v, void *data)
  */
 static void FloodVehicles(TileIndex tile)
 {
-	int z = 0;
-
 	if (IsAirportTile(tile)) {
 		const Station *st = Station::GetByTile(tile);
 		for (TileIndex airport_tile : st->airport) {
-			if (st->TileBelongsToAirport(airport_tile)) FindVehicleOnPos(airport_tile, &z, &FloodVehicleProc);
+			if (st->TileBelongsToAirport(airport_tile)) FloodVehiclesOnTile(airport_tile, 0);
 		}
 
 		/* No vehicle could be flooded on this airport anymore */
@@ -1071,15 +1069,15 @@ static void FloodVehicles(TileIndex tile)
 	}
 
 	if (!IsBridgeTile(tile)) {
-		FindVehicleOnPos(tile, &z, &FloodVehicleProc);
+		FloodVehiclesOnTile(tile, 0);
 		return;
 	}
 
 	TileIndex end = GetOtherBridgeEnd(tile);
-	z = GetBridgePixelHeight(tile);
+	int z = GetBridgePixelHeight(tile);
 
-	FindVehicleOnPos(tile, &z, &FloodVehicleProc);
-	FindVehicleOnPos(end, &z, &FloodVehicleProc);
+	FloodVehiclesOnTile(tile, z);
+	FloodVehiclesOnTile(end, z);
 }
 
 /**
@@ -1270,7 +1268,7 @@ void TileLoop_Water(TileIndex tile)
 				auto [slope_dest, z_dest] = GetFoundationSlope(dest);
 				if (z_dest > 0) continue;
 
-				if (!HasBit(_flood_from_dirs[slope_dest & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP], ReverseDir(dir))) continue;
+				if (!_flood_from_dirs[slope_dest & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP].Test(ReverseDir(dir))) continue;
 
 				DoFloodTile(dest);
 			}
@@ -1280,7 +1278,7 @@ void TileLoop_Water(TileIndex tile)
 
 		case FLOOD_DRYUP: {
 			Slope slope_here = std::get<0>(GetFoundationSlope(tile)) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP;
-			for (Direction dir : SetBitIterator<Direction>(_flood_from_dirs[slope_here])) {
+			for (Direction dir : _flood_from_dirs[slope_here]) {
 				TileIndex dest = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDir(dir));
 				/* Contrary to flooding, drying up does consider MP_VOID tiles. */
 				if (dest == INVALID_TILE) continue;
@@ -1317,7 +1315,7 @@ void ConvertGroundTilesIntoWaterTiles()
 					break;
 
 				default:
-					for (Direction dir : SetBitIterator<Direction>(_flood_from_dirs[slope & ~SLOPE_STEEP])) {
+					for (Direction dir : _flood_from_dirs[slope & ~SLOPE_STEEP]) {
 						TileIndex dest = TileAddByDir(tile, dir);
 						Slope slope_dest = GetTileSlope(dest) & ~SLOPE_STEEP;
 						if (slope_dest == SLOPE_FLAT || IsSlopeWithOneCornerRaised(slope_dest) || IsTileType(dest, MP_VOID)) {
@@ -1403,9 +1401,9 @@ static void ChangeTileOwner_Water(TileIndex tile, Owner old_owner, Owner new_own
 	}
 }
 
-static VehicleEnterTileStatus VehicleEnter_Water(Vehicle *, TileIndex, int, int)
+static VehicleEnterTileStates VehicleEnter_Water(Vehicle *, TileIndex, int, int)
 {
-	return VETSB_CONTINUE;
+	return {};
 }
 
 static CommandCost TerraformTile_Water(TileIndex tile, DoCommandFlags flags, int, Slope)

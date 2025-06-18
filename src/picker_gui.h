@@ -11,6 +11,7 @@
 #define PICKER_GUI_H
 
 #include "newgrf_badge.h"
+#include "newgrf_badge_gui.h"
 #include "querystring_gui.h"
 #include "sortlist_type.h"
 #include "stringfilter_type.h"
@@ -145,6 +146,7 @@ public:
 struct PickerFilterData : StringFilter {
 	const PickerCallbacks *callbacks; ///< Callbacks for filter functions to access to callbacks.
 	std::optional<BadgeTextFilter> btf;
+	std::optional<BadgeDropdownFilter> bdf;
 };
 
 using PickerClassList = GUIList<int, std::nullptr_t, PickerFilterData &>; ///< GUIList holding classes to display.
@@ -182,7 +184,9 @@ public:
 	void OnInit() override;
 	void Close(int data = 0) override;
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, const Dimension &padding, Dimension &fill, Dimension &resize) override;
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override;
 	void DrawWidget(const Rect &r, WidgetID widget) const override;
+	void OnDropdownSelect(WidgetID widget, int index, int click_result) override;
 	void OnResize() override;
 	void OnClick(Point pt, WidgetID widget, int click_count) override;
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override;
@@ -220,12 +224,14 @@ private:
 	void EnsureSelectedTypeIsVisible();
 
 	GUIBadgeClasses badge_classes;
+	std::pair<WidgetID, WidgetID> badge_filters{};
+	BadgeFilterChoices badge_filter_choices{};
 
-	IntervalTimer<TimerGameCalendar> yearly_interval = {{TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [this](auto) {
+	const IntervalTimer<TimerGameCalendar> yearly_interval = {{TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [this](auto) {
 		this->SetDirty();
 	}};
 
-	IntervalTimer<TimerWindow> refresh_interval = {std::chrono::seconds(3), [this](auto) {
+	const IntervalTimer<TimerWindow> refresh_interval = {std::chrono::seconds(3), [this](auto) {
 		RefreshUsedTypeList();
 	}};
 };

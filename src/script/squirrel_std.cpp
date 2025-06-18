@@ -41,20 +41,16 @@ SQInteger SquirrelStd::max(HSQUIRRELVM vm)
 SQInteger SquirrelStd::require(HSQUIRRELVM vm)
 {
 	SQInteger top = sq_gettop(vm);
-	const SQChar *filename;
+	std::string_view filename;
 
-	sq_getstring(vm, 2, &filename);
+	sq_getstring(vm, 2, filename);
 
 	/* Get the script-name of the current file, so we can work relative from it */
 	SQStackInfos si;
 	sq_stackinfos(vm, 1, &si);
-	if (si.source == nullptr) {
-		Debug(misc, 0, "[squirrel] Couldn't detect the script-name of the 'require'-caller; this should never happen!");
-		return SQ_ERROR;
-	}
 
 	/* Keep the dir, remove the rest */
-	std::string path = si.source;
+	std::string path{si.source};
 	auto p = path.find_last_of(PATHSEPCHAR);
 	/* Keep the PATHSEPCHAR there, remove the rest */
 	if (p != std::string::npos) path.erase(p + 1);
@@ -90,16 +86,16 @@ void squirrel_register_global_std(Squirrel *engine)
 {
 	/* We don't use squirrel_helper here, as we want to register to the global
 	 *  scope and not to a class. */
-	engine->AddMethod("require",             &SquirrelStd::require,             2, ".s");
-	engine->AddMethod("notifyallexceptions", &SquirrelStd::notifyallexceptions, 2, ".b");
+	engine->AddMethod("require",             &SquirrelStd::require,             ".s");
+	engine->AddMethod("notifyallexceptions", &SquirrelStd::notifyallexceptions, ".b");
 }
 
 void squirrel_register_std(Squirrel *engine)
 {
 	/* We don't use squirrel_helper here, as we want to register to the global
 	 *  scope and not to a class. */
-	engine->AddMethod("min", &SquirrelStd::min, 3, ".ii");
-	engine->AddMethod("max", &SquirrelStd::max, 3, ".ii");
+	engine->AddMethod("min", &SquirrelStd::min, ".ii");
+	engine->AddMethod("max", &SquirrelStd::max, ".ii");
 
 	sqstd_register_mathlib(engine->GetVM());
 }

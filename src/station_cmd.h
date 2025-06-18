@@ -11,7 +11,11 @@
 #define STATION_CMD_H
 
 #include "command_type.h"
+#include "rail_type.h"
+#include "road_type.h"
 #include "station_type.h"
+
+struct Town;
 
 enum StationClassID : uint16_t;
 enum RoadStopClassID : uint16_t;

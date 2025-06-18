@@ -9,6 +9,7 @@
 
 #include "../stdafx.h"
 
+#include "../core/string_consumer.hpp"
 #include "../strings_func.h"
 #include "../command_func.h"
 #include "../timer/timer_game_tick.h"
@@ -230,7 +231,7 @@ uint8_t NetworkSpectatorCount()
 /* This puts a text-message to the console, or in the future, the chat-box,
  *  (to keep it all a bit more general)
  * If 'self_send' is true, this is the client who is sending the message */
-void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send, const std::string &name, const std::string &str, StringParameter &&data)
+void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send, std::string_view name, std::string_view str, StringParameter &&data)
 {
 	std::string message;
 	StringBuilder builder(message);
@@ -472,7 +473,7 @@ static void CheckPauseOnJoin()
  * @param company_id        The company ID to set, if available.
  * @return A std::string_view into the connection string without the company part.
  */
-std::string_view ParseCompanyFromConnectionString(const std::string &connection_string, CompanyID *company_id)
+std::string_view ParseCompanyFromConnectionString(std::string_view connection_string, CompanyID *company_id)
 {
 	std::string_view ip = connection_string;
 	if (company_id == nullptr) return ip;
@@ -516,7 +517,7 @@ std::string_view ParseCompanyFromConnectionString(const std::string &connection_
  * @param company_id        The company ID to set, if available.
  * @return A std::string_view into the connection string with the (IP) address part.
  */
-std::string_view ParseFullConnectionString(const std::string &connection_string, uint16_t &port, CompanyID *company_id)
+std::string_view ParseFullConnectionString(std::string_view connection_string, uint16_t &port, CompanyID *company_id)
 {
 	std::string_view ip = ParseCompanyFromConnectionString(connection_string, company_id);
 
@@ -536,11 +537,11 @@ std::string_view ParseFullConnectionString(const std::string &connection_string,
  * @param default_port The port to use if none is given.
  * @return The normalized connection string.
  */
-std::string NormalizeConnectionString(const std::string &connection_string, uint16_t default_port)
+std::string NormalizeConnectionString(std::string_view connection_string, uint16_t default_port)
 {
 	uint16_t port = default_port;
 	std::string_view ip = ParseFullConnectionString(connection_string, port);
-	return std::string(ip) + ":" + std::to_string(port);
+	return fmt::format("{}:{}", ip, port);
 }
 
 /**
@@ -551,7 +552,7 @@ std::string NormalizeConnectionString(const std::string &connection_string, uint
  * @param default_port The default port to set port to if not in connection_string.
  * @return A valid NetworkAddress of the parsed information.
  */
-NetworkAddress ParseConnectionString(const std::string &connection_string, uint16_t default_port)
+NetworkAddress ParseConnectionString(std::string_view connection_string, uint16_t default_port)
 {
 	uint16_t port = default_port;
 	std::string_view ip = ParseFullConnectionString(connection_string, port);
@@ -642,7 +643,7 @@ private:
 	std::string connection_string;
 
 public:
-	TCPQueryConnecter(const std::string &connection_string) : TCPServerConnecter(connection_string, NETWORK_DEFAULT_PORT), connection_string(connection_string) {}
+	TCPQueryConnecter(std::string_view connection_string) : TCPServerConnecter(connection_string, NETWORK_DEFAULT_PORT), connection_string(connection_string) {}
 
 	void OnFailure() override
 	{
@@ -667,7 +668,7 @@ public:
  * Query a server to fetch the game-info.
  * @param connection_string the address to query.
  */
-void NetworkQueryServer(const std::string &connection_string)
+void NetworkQueryServer(std::string_view connection_string)
 {
 	if (!_network_available) return;
 
@@ -689,7 +690,7 @@ void NetworkQueryServer(const std::string &connection_string)
  * @param never_expire Whether the entry can expire (removed when no longer found in the public listing).
  * @return The entry on the game list.
  */
-NetworkGame *NetworkAddServer(const std::string &connection_string, bool manually, bool never_expire)
+NetworkGame *NetworkAddServer(std::string_view connection_string, bool manually, bool never_expire)
 {
 	if (connection_string.empty()) return nullptr;
 
@@ -718,7 +719,7 @@ NetworkGame *NetworkAddServer(const std::string &connection_string, bool manuall
 void GetBindAddresses(NetworkAddressList *addresses, uint16_t port)
 {
 	for (const auto &iter : _network_bind_list) {
-		addresses->emplace_back(iter.c_str(), port);
+		addresses->emplace_back(iter, port);
 	}
 
 	/* No address, so bind to everything. */
@@ -745,7 +746,7 @@ private:
 	std::string connection_string;
 
 public:
-	TCPClientConnecter(const std::string &connection_string) : TCPServerConnecter(connection_string, NETWORK_DEFAULT_PORT), connection_string(connection_string) {}
+	TCPClientConnecter(std::string_view connection_string) : TCPServerConnecter(connection_string, NETWORK_DEFAULT_PORT), connection_string(connection_string) {}
 
 	void OnFailure() override
 	{
@@ -782,7 +783,7 @@ public:
  * @param join_server_password  The password for the server.
  * @return Whether the join has started.
  */
-bool NetworkClientConnectGame(const std::string &connection_string, CompanyID default_company, const std::string &join_server_password)
+bool NetworkClientConnectGame(std::string_view connection_string, CompanyID default_company, const std::string &join_server_password)
 {
 	Debug(net, 9, "NetworkClientConnectGame(): connection_string={}", connection_string);
 
@@ -1125,7 +1126,7 @@ void NetworkGameLoop()
 			if (TimerGameEconomy::date == next_date && TimerGameEconomy::date_fract == next_date_fract) {
 				if (cp != nullptr) {
 					NetworkSendCommand(cp->cmd, cp->err_msg, nullptr, cp->company, cp->data);
-					Debug(desync, 0, "Injecting: {:08x}; {:02x}; {:02x}; {:08x}; {} ({})", TimerGameEconomy::date, TimerGameEconomy::date_fract, (int)_current_company, cp->cmd, FormatArrayAsHex(cp->data), GetCommandName(cp->cmd));
+					Debug(desync, 0, "Injecting: {:08x}; {:02x}; {:02x}; {:08x}; {} ({})", TimerGameEconomy::date, TimerGameEconomy::date_fract, _current_company.base(), cp->cmd, FormatArrayAsHex(cp->data), GetCommandName(cp->cmd));
 					delete cp;
 					cp = nullptr;
 				}
@@ -1156,70 +1157,72 @@ void NetworkGameLoop()
 			char buff[4096];
 			if (fgets(buff, lengthof(buff), *f) == nullptr) break;
 
-			char *p = buff;
+			StringConsumer consumer{std::string_view{buff}};
 			/* Ignore the "[date time] " part of the message */
-			if (*p == '[') {
-				p = strchr(p, ']');
-				if (p == nullptr) break;
-				p += 2;
+			if (consumer.ReadCharIf('[')) {
+				consumer.SkipUntilChar(']', StringConsumer::SKIP_ONE_SEPARATOR);
+				consumer.SkipCharIf(' ');
 			}
 
-			if (strncmp(p, "cmd: ", 5) == 0
+			if (consumer.ReadIf("cmd: ")
 #ifdef DEBUG_FAILED_DUMP_COMMANDS
-				|| strncmp(p, "cmdf: ", 6) == 0
+				|| consumer.ReadIf("cmdf: ")
 #endif
 				) {
-				p += 5;
-				if (*p == ' ') p++;
 				cp = new CommandPacket();
-				int company;
-				uint cmd;
-				char buffer[256];
-				uint32_t next_date_raw;
-				int ret = sscanf(p, "%x; %x; %x; %x; %x; %255s", &next_date_raw, &next_date_fract, &company, &cmd, &cp->err_msg, buffer);
-				assert(ret == 6);
-				next_date = TimerGameEconomy::Date((int32_t)next_date_raw);
-				cp->company = (CompanyID)company;
-				cp->cmd = (Commands)cmd;
+				next_date = TimerGameEconomy::Date(consumer.ReadIntegerBase<uint32_t>(16));
+				bool valid = consumer.ReadIf("; ");
+				next_date_fract = consumer.ReadIntegerBase<uint32_t>(16);
+				valid &= consumer.ReadIf("; ");
+				cp->company = static_cast<CompanyID>(consumer.ReadIntegerBase<uint16_t>(16));
+				valid &= consumer.ReadIf("; ");
+				cp->cmd = static_cast<Commands>(consumer.ReadIntegerBase<uint32_t>(16));
+				valid &= consumer.ReadIf("; ");
+				cp->err_msg = consumer.ReadIntegerBase<uint32_t>(16);
+				valid &= consumer.ReadIf("; ");
+				auto args = consumer.ReadUntilChar(' ', StringConsumer::SKIP_ONE_SEPARATOR);
+				assert(valid);
 
 				/* Parse command data. */
-				std::vector<uint8_t> args;
-				size_t arg_len = strlen(buffer);
-				for (size_t i = 0; i + 1 < arg_len; i += 2) {
+				cp->data.clear();
+				for (size_t i = 0; i + 1 < args.size(); i += 2) {
 					uint8_t e = 0;
-					std::from_chars(buffer + i, buffer + i + 2, e, 16);
-					args.emplace_back(e);
+					std::from_chars(args.data() + i, args.data() + i + 2, e, 16);
+					cp->data.push_back(e);
 				}
-				cp->data = args;
-			} else if (strncmp(p, "join: ", 6) == 0) {
+			} else if (consumer.ReadIf("join: ")) {
 				/* Manually insert a pause when joining; this way the client can join at the exact right time. */
-				uint32_t next_date_raw;
-				int ret = sscanf(p + 6, "%x; %x", &next_date_raw, &next_date_fract);
-				next_date = TimerGameEconomy::Date((int32_t)next_date_raw);
-				assert(ret == 2);
+				next_date = TimerGameEconomy::Date(consumer.ReadIntegerBase<uint32_t>(16));
+				bool valid = consumer.ReadIf("; ");
+				next_date_fract = consumer.ReadIntegerBase<uint32_t>(16);
+				assert(valid);
 				Debug(desync, 0, "Injecting pause for join at {:08x}:{:02x}; please join when paused", next_date, next_date_fract);
 				cp = new CommandPacket();
 				cp->company = COMPANY_SPECTATOR;
 				cp->cmd = CMD_PAUSE;
 				cp->data = EndianBufferWriter<>::FromValue(CommandTraits<CMD_PAUSE>::Args{ PauseMode::Normal, true });
 				_ddc_fastforward = false;
-			} else if (strncmp(p, "sync: ", 6) == 0) {
-				uint32_t next_date_raw;
-				int ret = sscanf(p + 6, "%x; %x; %x; %x", &next_date_raw, &next_date_fract, &sync_state[0], &sync_state[1]);
-				next_date = TimerGameEconomy::Date((int32_t)next_date_raw);
-				assert(ret == 4);
+			} else if (consumer.ReadIf("sync: ")) {
+				next_date = TimerGameEconomy::Date(consumer.ReadIntegerBase<uint32_t>(16));
+				bool valid = consumer.ReadIf("; ");
+				next_date_fract = consumer.ReadIntegerBase<uint32_t>(16);
+				valid &= consumer.ReadIf("; ");
+				sync_state[0] = consumer.ReadIntegerBase<uint32_t>(16);
+				valid &= consumer.ReadIf("; ");
+				sync_state[1] = consumer.ReadIntegerBase<uint32_t>(16);
+				assert(valid);
 				check_sync_state = true;
-			} else if (strncmp(p, "msg: ", 5) == 0 || strncmp(p, "client: ", 8) == 0 ||
-						strncmp(p, "load: ", 6) == 0 || strncmp(p, "save: ", 6) == 0 ||
-						strncmp(p, "warning: ", 9) == 0) {
+			} else if (consumer.ReadIf("msg: ") || consumer.ReadIf("client: ") ||
+						consumer.ReadIf("load: ") || consumer.ReadIf("save: ") ||
+						consumer.ReadIf("warning: ")) {
 				/* A message that is not very important to the log playback, but part of the log. */
 #ifndef DEBUG_FAILED_DUMP_COMMANDS
-			} else if (strncmp(p, "cmdf: ", 6) == 0) {
-				Debug(desync, 0, "Skipping replay of failed command: {}", p + 6);
+			} else if (consumer.ReadIf("cmdf: ")) {
+				Debug(desync, 0, "Skipping replay of failed command: {}", consumer.Read(StringConsumer::npos));
 #endif
 			} else {
 				/* Can't parse a line; what's wrong here? */
-				Debug(desync, 0, "Trying to parse: {}", p);
+				Debug(desync, 0, "Trying to parse: {}", consumer.Read(StringConsumer::npos));
 				NOT_REACHED();
 			}
 		}

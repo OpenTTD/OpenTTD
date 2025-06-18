@@ -10,8 +10,6 @@
 #ifndef SPRITECACHE_INTERNAL_H
 #define SPRITECACHE_INTERNAL_H
 
-#include "stdafx.h"
-
 #include "core/math_func.hpp"
 #include "gfx_type.h"
 #include "spriteloader/spriteloader.hpp"

@@ -25,7 +25,7 @@
 #	include <windows.h>
 #	include <bcrypt.h>
 #elif defined(__APPLE__) || defined(__NetBSD__) || defined(__FreeBSD__)
-// No includes required.
+/* No includes required. */
 #elif defined(__GLIBC__) && ((__GLIBC__ > 2) || ((__GLIBC__ == 2) && (__GLIBC_MINOR__ >= 25)))
 #	include <sys/random.h>
 #elif defined(__EMSCRIPTEN__)

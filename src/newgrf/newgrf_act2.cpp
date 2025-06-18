@@ -18,9 +18,12 @@
 #include "newgrf_bytereader.h"
 #include "newgrf_internal.h"
 
-#include "../table/strings.h"
+#include "table/strings.h"
 
 #include "../safeguards.h"
+
+constexpr uint16_t GROUPID_CALLBACK_FAILED = 0x7FFF; ///< Explicit "failure" result.
+constexpr uint16_t GROUPID_CALCULATED_RESULT = 0x7FFE; ///< Return calculated result from VarAction2.
 
 /**
  * Map the colour modifiers of TTDPatch to those that Open is using.
@@ -57,7 +60,7 @@ void MapSpriteMappingRecolour(PalSpriteID *grf_sprite)
  * @param[out] max_palette_offset Optionally returns the number of sprites in the spriteset of the palette. (0 if no spritset)
  * @return Read TileLayoutFlags.
  */
-TileLayoutFlags ReadSpriteLayoutSprite(ByteReader &buf, bool read_flags, bool invert_action1_flag, bool use_cur_spritesets, int feature, PalSpriteID *grf_sprite, uint16_t *max_sprite_offset, uint16_t *max_palette_offset)
+TileLayoutFlags ReadSpriteLayoutSprite(ByteReader &buf, bool read_flags, bool invert_action1_flag, bool use_cur_spritesets, GrfSpecFeature feature, PalSpriteID *grf_sprite, uint16_t *max_sprite_offset, uint16_t *max_palette_offset)
 {
 	grf_sprite->sprite = buf.ReadWord();
 	grf_sprite->pal = buf.ReadWord();
@@ -70,13 +73,13 @@ TileLayoutFlags ReadSpriteLayoutSprite(ByteReader &buf, bool read_flags, bool in
 	if (custom_sprite) {
 		/* Use sprite from Action 1 */
 		uint index = GB(grf_sprite->sprite, 0, 14);
-		if (use_cur_spritesets && (!_cur.IsValidSpriteSet(feature, index) || _cur.GetNumEnts(feature, index) == 0)) {
+		if (use_cur_spritesets && (!_cur_gps.IsValidSpriteSet(feature, index) || _cur_gps.GetNumEnts(feature, index) == 0)) {
 			GrfMsg(1, "ReadSpriteLayoutSprite: Spritelayout uses undefined custom spriteset {}", index);
 			grf_sprite->sprite = SPR_IMG_QUERY;
 			grf_sprite->pal = PAL_NONE;
 		} else {
-			SpriteID sprite = use_cur_spritesets ? _cur.GetSprite(feature, index) : index;
-			if (max_sprite_offset != nullptr) *max_sprite_offset = use_cur_spritesets ? _cur.GetNumEnts(feature, index) : UINT16_MAX;
+			SpriteID sprite = use_cur_spritesets ? _cur_gps.GetSprite(feature, index) : index;
+			if (max_sprite_offset != nullptr) *max_sprite_offset = use_cur_spritesets ? _cur_gps.GetNumEnts(feature, index) : UINT16_MAX;
 			SB(grf_sprite->sprite, 0, SPRITE_WIDTH, sprite);
 			SetBit(grf_sprite->sprite, SPRITE_MODIFIER_CUSTOM_SPRITE);
 		}
@@ -89,12 +92,12 @@ TileLayoutFlags ReadSpriteLayoutSprite(ByteReader &buf, bool read_flags, bool in
 	if (flags & TLF_CUSTOM_PALETTE) {
 		/* Use palette from Action 1 */
 		uint index = GB(grf_sprite->pal, 0, 14);
-		if (use_cur_spritesets && (!_cur.IsValidSpriteSet(feature, index) || _cur.GetNumEnts(feature, index) == 0)) {
+		if (use_cur_spritesets && (!_cur_gps.IsValidSpriteSet(feature, index) || _cur_gps.GetNumEnts(feature, index) == 0)) {
 			GrfMsg(1, "ReadSpriteLayoutSprite: Spritelayout uses undefined custom spriteset {} for 'palette'", index);
 			grf_sprite->pal = PAL_NONE;
 		} else {
-			SpriteID sprite = use_cur_spritesets ? _cur.GetSprite(feature, index) : index;
-			if (max_palette_offset != nullptr) *max_palette_offset = use_cur_spritesets ? _cur.GetNumEnts(feature, index) : UINT16_MAX;
+			SpriteID sprite = use_cur_spritesets ? _cur_gps.GetSprite(feature, index) : index;
+			if (max_palette_offset != nullptr) *max_palette_offset = use_cur_spritesets ? _cur_gps.GetNumEnts(feature, index) : UINT16_MAX;
 			SB(grf_sprite->pal, 0, SPRITE_WIDTH, sprite);
 			SetBit(grf_sprite->pal, SPRITE_MODIFIER_CUSTOM_SPRITE);
 		}
@@ -168,7 +171,7 @@ static void ReadSpriteLayoutRegisters(ByteReader &buf, TileLayoutFlags flags, bo
  * @param dts                  Layout container to output into
  * @return True on error (GRF was disabled).
  */
-bool ReadSpriteLayout(ByteReader &buf, uint num_building_sprites, bool use_cur_spritesets, uint8_t feature, bool allow_var10, bool no_z_position, NewGRFSpriteLayout *dts)
+bool ReadSpriteLayout(ByteReader &buf, uint num_building_sprites, bool use_cur_spritesets, GrfSpecFeature feature, bool allow_var10, bool no_z_position, NewGRFSpriteLayout *dts)
 {
 	bool has_flags = HasBit(num_building_sprites, 6);
 	ClrBit(num_building_sprites, 6);
@@ -181,7 +184,7 @@ bool ReadSpriteLayout(ByteReader &buf, uint num_building_sprites, bool use_cur_s
 
 	/* Groundsprite */
 	TileLayoutFlags flags = ReadSpriteLayoutSprite(buf, has_flags, false, use_cur_spritesets, feature, &dts->ground, max_sprite_offset.data(), max_palette_offset.data());
-	if (_cur.skip_sprites < 0) return true;
+	if (_cur_gps.skip_sprites < 0) return true;
 
 	if (flags & ~(valid_flags & ~TLF_NON_GROUND_FLAGS)) {
 		GrfMsg(1, "ReadSpriteLayout: Spritelayout uses invalid flag 0x{:X} for ground sprite", flags & ~(valid_flags & ~TLF_NON_GROUND_FLAGS));
@@ -190,13 +193,13 @@ bool ReadSpriteLayout(ByteReader &buf, uint num_building_sprites, bool use_cur_s
 	}
 
 	ReadSpriteLayoutRegisters(buf, flags, false, dts, 0);
-	if (_cur.skip_sprites < 0) return true;
+	if (_cur_gps.skip_sprites < 0) return true;
 
 	for (uint i = 0; i < num_building_sprites; i++) {
 		DrawTileSeqStruct *seq = const_cast<DrawTileSeqStruct*>(&dts->seq[i]);
 
 		flags = ReadSpriteLayoutSprite(buf, has_flags, false, use_cur_spritesets, feature, &seq->image, max_sprite_offset.data() + i + 1, max_palette_offset.data() + i + 1);
-		if (_cur.skip_sprites < 0) return true;
+		if (_cur_gps.skip_sprites < 0) return true;
 
 		if (flags & ~valid_flags) {
 			GrfMsg(1, "ReadSpriteLayout: Spritelayout uses unknown flag 0x{:X}", flags & ~valid_flags);
@@ -216,7 +219,7 @@ bool ReadSpriteLayout(ByteReader &buf, uint num_building_sprites, bool use_cur_s
 		}
 
 		ReadSpriteLayoutRegisters(buf, flags, seq->IsParentSprite(), dts, i + 1);
-		if (_cur.skip_sprites < 0) return true;
+		if (_cur_gps.skip_sprites < 0) return true;
 	}
 
 	/* Check if the number of sprites per spriteset is consistent */
@@ -271,7 +274,7 @@ static const SpriteGroup *GetCallbackResultGroup(uint16_t value)
 {
 	/* Old style callback results (only valid for version < 8) have the highest byte 0xFF to signify it is a callback result.
 	 * New style ones only have the highest bit set (allows 15-bit results, instead of just 8) */
-	if (_cur.grffile->grf_version < 8 && GB(value, 8, 8) == 0xFF) {
+	if (_cur_gps.grffile->grf_version < 8 && GB(value, 8, 8) == 0xFF) {
 		value &= ~0xFF00;
 	} else {
 		value &= ~0x8000;
@@ -293,13 +296,14 @@ static const SpriteGroup *GetCallbackResultGroup(uint16_t value)
 static const SpriteGroup *GetGroupFromGroupID(uint8_t setid, uint8_t type, uint16_t groupid)
 {
 	if (HasBit(groupid, 15)) return GetCallbackResultGroup(groupid);
+	if (groupid == GROUPID_CALLBACK_FAILED) return nullptr;
 
-	if (groupid > MAX_SPRITEGROUP || _cur.spritegroups[groupid] == nullptr) {
+	if (groupid > MAX_SPRITEGROUP || _cur_gps.spritegroups[groupid] == nullptr) {
 		GrfMsg(1, "GetGroupFromGroupID(0x{:02X}:0x{:02X}): Groupid 0x{:04X} does not exist, leaving empty", setid, type, groupid);
 		return nullptr;
 	}
 
-	return _cur.spritegroups[groupid];
+	return _cur_gps.spritegroups[groupid];
 }
 
 /**
@@ -310,20 +314,20 @@ static const SpriteGroup *GetGroupFromGroupID(uint8_t setid, uint8_t type, uint1
  * @param spriteid Raw value from the GRF for the new spritegroup; describes either the return value or the referenced spritegroup.
  * @return Created spritegroup.
  */
-static const SpriteGroup *CreateGroupFromGroupID(uint8_t feature, uint8_t setid, uint8_t type, uint16_t spriteid)
+static const SpriteGroup *CreateGroupFromGroupID(GrfSpecFeature feature, uint8_t setid, uint8_t type, uint16_t spriteid)
 {
 	if (HasBit(spriteid, 15)) return GetCallbackResultGroup(spriteid);
 
-	if (!_cur.IsValidSpriteSet(feature, spriteid)) {
+	if (!_cur_gps.IsValidSpriteSet(feature, spriteid)) {
 		GrfMsg(1, "CreateGroupFromGroupID(0x{:02X}:0x{:02X}): Sprite set {} invalid", setid, type, spriteid);
 		return nullptr;
 	}
 
-	SpriteID spriteset_start = _cur.GetSprite(feature, spriteid);
-	uint num_sprites = _cur.GetNumEnts(feature, spriteid);
+	SpriteID spriteset_start = _cur_gps.GetSprite(feature, spriteid);
+	uint num_sprites = _cur_gps.GetNumEnts(feature, spriteid);
 
 	/* Ensure that the sprites are loeded */
-	assert(spriteset_start + num_sprites <= _cur.spriteid);
+	assert(spriteset_start + num_sprites <= _cur_gps.spriteid);
 
 	assert(ResultSpriteGroup::CanAllocateItem());
 	return new ResultSpriteGroup(spriteset_start, num_sprites);
@@ -344,7 +348,7 @@ static void NewSpriteGroup(ByteReader &buf)
 	 * V feature-specific-data (huge mess, don't even look it up --pasky) */
 	const SpriteGroup *act_group = nullptr;
 
-	uint8_t feature = buf.ReadByte();
+	GrfSpecFeature feature{buf.ReadByte()};
 	if (feature >= GSF_END) {
 		GrfMsg(1, "NewSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);
 		return;
@@ -371,7 +375,7 @@ static void NewSpriteGroup(ByteReader &buf)
 
 			assert(DeterministicSpriteGroup::CanAllocateItem());
 			DeterministicSpriteGroup *group = new DeterministicSpriteGroup();
-			group->nfo_line = _cur.nfo_line;
+			group->nfo_line = _cur_gps.nfo_line;
 			act_group = group;
 			group->var_scope = HasBit(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
 
@@ -417,15 +421,31 @@ static void NewSpriteGroup(ByteReader &buf)
 			std::vector<DeterministicSpriteGroupRange> ranges;
 			ranges.resize(buf.ReadByte());
 			for (auto &range : ranges) {
-				range.group = GetGroupFromGroupID(setid, type, buf.ReadWord());
+				auto groupid = buf.ReadWord();
+				if (groupid == GROUPID_CALCULATED_RESULT) {
+					range.result.calculated_result = true;
+				} else {
+					range.result.group = GetGroupFromGroupID(setid, type, groupid);
+				}
 				range.low   = buf.ReadVarSize(varsize);
 				range.high  = buf.ReadVarSize(varsize);
 			}
 
-			group->default_group = GetGroupFromGroupID(setid, type, buf.ReadWord());
-			group->error_group = ranges.empty() ? group->default_group : ranges[0].group;
-			/* nvar == 0 is a special case -- we turn our value into a callback result */
-			group->calculated_result = ranges.empty();
+			auto defgroupid = buf.ReadWord();
+			if (defgroupid == GROUPID_CALCULATED_RESULT) {
+				group->default_result.calculated_result = true;
+			} else {
+				group->default_result.group = GetGroupFromGroupID(setid, type, defgroupid);
+			}
+			/* 'calculated_result' makes no sense for the 'error' case. Use callback failure (nullptr) instead */
+			group->error_group = ranges.empty() ? group->default_result.group : ranges[0].result.group;
+			/* nvar == 0 is a special case:
+			 * - set "default_result" to "calculated_result".
+			 * - the old value specifies the "error_group". */
+			if (ranges.empty()) {
+				group->default_result.calculated_result = true;
+				group->default_result.group = nullptr;
+			}
 
 			/* Sort ranges ascending. When ranges overlap, this may required clamping or splitting them */
 			std::vector<uint32_t> bounds;
@@ -437,13 +457,13 @@ static void NewSpriteGroup(ByteReader &buf)
 			std::sort(bounds.begin(), bounds.end());
 			bounds.erase(std::unique(bounds.begin(), bounds.end()), bounds.end());
 
-			std::vector<const SpriteGroup *> target;
+			std::vector<DeterministicSpriteGroupResult> target;
 			target.reserve(bounds.size());
 			for (const auto &bound : bounds) {
-				const SpriteGroup *t = group->default_group;
+				auto t = group->default_result;
 				for (const auto &range : ranges) {
 					if (range.low <= bound && bound <= range.high) {
-						t = range.group;
+						t = range.result;
 						break;
 					}
 				}
@@ -452,11 +472,11 @@ static void NewSpriteGroup(ByteReader &buf)
 			assert(target.size() == bounds.size());
 
 			for (uint j = 0; j < bounds.size(); ) {
-				if (target[j] != group->default_group) {
+				if (target[j] != group->default_result) {
 					DeterministicSpriteGroupRange &r = group->ranges.emplace_back();
-					r.group = target[j];
+					r.result = target[j];
 					r.low = bounds[j];
-					while (j < bounds.size() && target[j] == r.group) {
+					while (j < bounds.size() && target[j] == r.result) {
 						j++;
 					}
 					r.high = j < bounds.size() ? bounds[j] - 1 : UINT32_MAX;
@@ -475,7 +495,7 @@ static void NewSpriteGroup(ByteReader &buf)
 		{
 			assert(RandomizedSpriteGroup::CanAllocateItem());
 			RandomizedSpriteGroup *group = new RandomizedSpriteGroup();
-			group->nfo_line = _cur.nfo_line;
+			group->nfo_line = _cur_gps.nfo_line;
 			act_group = group;
 			group->var_scope = HasBit(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
 
@@ -522,7 +542,7 @@ static void NewSpriteGroup(ByteReader &buf)
 					uint8_t num_loaded  = type;
 					uint8_t num_loading = buf.ReadByte();
 
-					if (!_cur.HasValidSpriteSets(feature)) {
+					if (!_cur_gps.HasValidSpriteSets(feature)) {
 						GrfMsg(0, "NewSpriteGroup: No sprite set to work on! Skipping");
 						return;
 					}
@@ -569,7 +589,7 @@ static void NewSpriteGroup(ByteReader &buf)
 
 					assert(RealSpriteGroup::CanAllocateItem());
 					RealSpriteGroup *group = new RealSpriteGroup();
-					group->nfo_line = _cur.nfo_line;
+					group->nfo_line = _cur_gps.nfo_line;
 					act_group = group;
 
 					if (loaded_same && loaded.size() > 1) loaded.resize(1);
@@ -598,7 +618,7 @@ static void NewSpriteGroup(ByteReader &buf)
 
 					assert(TileLayoutSpriteGroup::CanAllocateItem());
 					TileLayoutSpriteGroup *group = new TileLayoutSpriteGroup();
-					group->nfo_line = _cur.nfo_line;
+					group->nfo_line = _cur_gps.nfo_line;
 					act_group = group;
 
 					/* On error, bail out immediately. Temporary GRF data was already freed */
@@ -614,7 +634,7 @@ static void NewSpriteGroup(ByteReader &buf)
 
 					assert(IndustryProductionSpriteGroup::CanAllocateItem());
 					IndustryProductionSpriteGroup *group = new IndustryProductionSpriteGroup();
-					group->nfo_line = _cur.nfo_line;
+					group->nfo_line = _cur_gps.nfo_line;
 					act_group = group;
 					group->version = type;
 					if (type == 0) {
@@ -646,7 +666,7 @@ static void NewSpriteGroup(ByteReader &buf)
 						}
 						for (uint i = 0; i < group->num_input; i++) {
 							uint8_t rawcargo = buf.ReadByte();
-							CargoType cargo = GetCargoTranslation(rawcargo, _cur.grffile);
+							CargoType cargo = GetCargoTranslation(rawcargo, _cur_gps.grffile);
 							if (!IsValidCargoType(cargo)) {
 								/* The mapped cargo is invalid. This is permitted at this point,
 								 * as long as the result is not used. Mark it invalid so this
@@ -668,7 +688,7 @@ static void NewSpriteGroup(ByteReader &buf)
 						}
 						for (uint i = 0; i < group->num_output; i++) {
 							uint8_t rawcargo = buf.ReadByte();
-							CargoType cargo = GetCargoTranslation(rawcargo, _cur.grffile);
+							CargoType cargo = GetCargoTranslation(rawcargo, _cur_gps.grffile);
 							if (!IsValidCargoType(cargo)) {
 								/* Mark this result as invalid to use */
 								group->version = 0xFF;
@@ -693,7 +713,7 @@ static void NewSpriteGroup(ByteReader &buf)
 		}
 	}
 
-	_cur.spritegroups[setid] = act_group;
+	_cur_gps.spritegroups[setid] = act_group;
 }
 
 template <> void GrfActionHandler<0x02>::FileScan(ByteReader &) { }

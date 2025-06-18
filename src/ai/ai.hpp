@@ -135,8 +135,8 @@ public:
 	static AIScannerLibrary *GetScannerLibrary();
 
 	/** Wrapper function for AIScanner::HasAI */
-	static bool HasAI(const struct ContentInfo *ci, bool md5sum);
-	static bool HasAILibrary(const ContentInfo *ci, bool md5sum);
+	static bool HasAI(const ContentInfo &ci, bool md5sum);
+	static bool HasAILibrary(const ContentInfo &ci, bool md5sum);
 private:
 	static uint frame_counter; ///< Tick counter for the AI code
 	static std::unique_ptr<AIScannerInfo> scanner_info; ///< ScriptScanner instance that is used to find AIs

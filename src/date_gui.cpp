@@ -26,8 +26,7 @@
 
 /** Window to select a date graphically by using dropdowns */
 struct SetDateWindow : Window {
-	SetDateCallback *callback = nullptr; ///< Callback to call when a date has been selected
-	void *callback_data = nullptr; ///< Callback data pointer.
+	SetDateCallback callback; ///< Callback to call when a date has been selected
 	TimerGameEconomy::YearMonthDay date{}; ///< The currently selected date
 	TimerGameEconomy::Year min_year{}; ///< The minimum year in the year dropdown
 	TimerGameEconomy::Year max_year{}; ///< The maximum year (inclusive) in the year dropdown
@@ -42,10 +41,9 @@ struct SetDateWindow : Window {
 	 * @param max_year the maximum year (inclusive) to show in the year dropdown
 	 * @param callback the callback to call once a date has been selected
 	 */
-	SetDateWindow(WindowDesc &desc, WindowNumber window_number, Window *parent, TimerGameEconomy::Date initial_date, TimerGameEconomy::Year min_year, TimerGameEconomy::Year max_year, SetDateCallback *callback, void *callback_data) :
+	SetDateWindow(WindowDesc &desc, WindowNumber window_number, Window *parent, TimerGameEconomy::Date initial_date, TimerGameEconomy::Year min_year, TimerGameEconomy::Year max_year, SetDateCallback &&callback) :
 			Window(desc),
-			callback(callback),
-			callback_data(callback_data),
+			callback(std::move(callback)),
 			min_year(std::max(EconomyTime::MIN_YEAR, min_year)),
 			max_year(std::min(EconomyTime::MAX_YEAR, max_year))
 	{
@@ -149,13 +147,13 @@ struct SetDateWindow : Window {
 				break;
 
 			case WID_SD_SET_DATE:
-				if (this->callback != nullptr) this->callback(this, TimerGameEconomy::ConvertYMDToDate(this->date.year, this->date.month, this->date.day), this->callback_data);
+				this->callback(this, TimerGameEconomy::ConvertYMDToDate(this->date.year, this->date.month, this->date.day));
 				this->Close();
 				break;
 		}
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		switch (widget) {
 			case WID_SD_DAY:
@@ -198,7 +196,7 @@ static constexpr NWidgetPart _nested_set_date_widgets[] = {
 
 /** Description of the date setting window. */
 static WindowDesc _set_date_desc(
-	WDP_CENTER, nullptr, 0, 0,
+	WDP_CENTER, {}, 0, 0,
 	WC_SET_DATE, WC_NONE,
 	{},
 	_nested_set_date_widgets
@@ -212,10 +210,9 @@ static WindowDesc _set_date_desc(
  * @param min_year the minimum year to show in the year dropdown
  * @param max_year the maximum year (inclusive) to show in the year dropdown
  * @param callback the callback to call once a date has been selected
- * @param callback_data extra callback data
  */
-void ShowSetDateWindow(Window *parent, int window_number, TimerGameEconomy::Date initial_date, TimerGameEconomy::Year min_year, TimerGameEconomy::Year max_year, SetDateCallback *callback, void *callback_data)
+void ShowSetDateWindow(Window *parent, int window_number, TimerGameEconomy::Date initial_date, TimerGameEconomy::Year min_year, TimerGameEconomy::Year max_year, SetDateCallback &&callback)
 {
 	CloseWindowByClass(WC_SET_DATE);
-	new SetDateWindow(_set_date_desc, window_number, parent, initial_date, min_year, max_year, callback, callback_data);
+	new SetDateWindow(_set_date_desc, window_number, parent, initial_date, min_year, max_year, std::move(callback));
 }

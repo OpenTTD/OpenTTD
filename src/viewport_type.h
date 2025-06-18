@@ -53,7 +53,7 @@ struct ViewportSign {
 	auto operator<=>(const ViewportSign &) const = default;
 
 	void UpdatePosition(int center, int top, std::string_view str, std::string_view str_small = {});
-	void MarkDirty(ZoomLevel maxzoom = ZOOM_LVL_MAX) const;
+	void MarkDirty(ZoomLevel maxzoom = ZoomLevel::Max) const;
 };
 
 /** Specialised ViewportSign that tracks whether it is valid for entering into a Kdtree */

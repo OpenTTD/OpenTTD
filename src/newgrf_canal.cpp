@@ -140,10 +140,10 @@ CanalResolverObject::CanalResolverObject(CanalFeature feature, TileIndex tile,
 SpriteID GetCanalSprite(CanalFeature feature, TileIndex tile)
 {
 	CanalResolverObject object(feature, tile);
-	const SpriteGroup *group = object.Resolve();
-	if (group == nullptr) return 0;
+	const auto *group = object.Resolve<ResultSpriteGroup>();
+	if (group == nullptr || group->num_sprites == 0) return 0;
 
-	return group->GetResult();
+	return group->sprite;
 }
 
 /**
@@ -153,12 +153,13 @@ SpriteID GetCanalSprite(CanalFeature feature, TileIndex tile)
  * @param param2   Callback parameter 2.
  * @param feature  For which feature to run the callback.
  * @param tile     Tile index of canal.
+ * @param[out] regs100 Additional result values from registers 100+
  * @return Callback result or #CALLBACK_FAILED if the callback failed.
  */
-static uint16_t GetCanalCallback(CallbackID callback, uint32_t param1, uint32_t param2, CanalFeature feature, TileIndex tile)
+static uint16_t GetCanalCallback(CallbackID callback, uint32_t param1, uint32_t param2, CanalFeature feature, TileIndex tile, std::span<int32_t> regs100 = {})
 {
 	CanalResolverObject object(feature, tile, callback, param1, param2);
-	return object.ResolveCallback();
+	return object.ResolveCallback(regs100);
 }
 
 /**

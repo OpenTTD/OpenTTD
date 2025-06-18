@@ -27,7 +27,7 @@
  * @param name        Used for error warnings.
  * @return The number of sprites that is going to be skipped.
  */
-static uint16_t SanitizeSpriteOffset(uint16_t &num, uint16_t offset, int max_sprites, const std::string_view name)
+static uint16_t SanitizeSpriteOffset(uint16_t &num, uint16_t offset, int max_sprites, std::string_view name)
 {
 
 	if (offset >= max_sprites) {
@@ -103,20 +103,20 @@ static void GraphicsNew(ByteReader &buf)
 	uint16_t offset = HasBit(type, 7) ? buf.ReadExtendedByte() : 0;
 	ClrBit(type, 7); // Clear the high bit as that only indicates whether there is an offset.
 
-	if ((type == 0x0D) && (num == 10) && _cur.grfconfig->flags.Test(GRFConfigFlag::System)) {
+	if ((type == 0x0D) && (num == 10) && _cur_gps.grfconfig->flags.Test(GRFConfigFlag::System)) {
 		/* Special not-TTDP-compatible case used in openttd.grf
 		 * Missing shore sprites and initialisation of SPR_SHORE_BASE */
 		GrfMsg(2, "GraphicsNew: Loading 10 missing shore sprites from extra grf.");
-		LoadNextSprite(SPR_SHORE_BASE +  0, *_cur.file, _cur.nfo_line++); // SLOPE_STEEP_S
-		LoadNextSprite(SPR_SHORE_BASE +  5, *_cur.file, _cur.nfo_line++); // SLOPE_STEEP_W
-		LoadNextSprite(SPR_SHORE_BASE +  7, *_cur.file, _cur.nfo_line++); // SLOPE_WSE
-		LoadNextSprite(SPR_SHORE_BASE + 10, *_cur.file, _cur.nfo_line++); // SLOPE_STEEP_N
-		LoadNextSprite(SPR_SHORE_BASE + 11, *_cur.file, _cur.nfo_line++); // SLOPE_NWS
-		LoadNextSprite(SPR_SHORE_BASE + 13, *_cur.file, _cur.nfo_line++); // SLOPE_ENW
-		LoadNextSprite(SPR_SHORE_BASE + 14, *_cur.file, _cur.nfo_line++); // SLOPE_SEN
-		LoadNextSprite(SPR_SHORE_BASE + 15, *_cur.file, _cur.nfo_line++); // SLOPE_STEEP_E
-		LoadNextSprite(SPR_SHORE_BASE + 16, *_cur.file, _cur.nfo_line++); // SLOPE_EW
-		LoadNextSprite(SPR_SHORE_BASE + 17, *_cur.file, _cur.nfo_line++); // SLOPE_NS
+		LoadNextSprite(SPR_SHORE_BASE +  0, *_cur_gps.file, _cur_gps.nfo_line++); // SLOPE_STEEP_S
+		LoadNextSprite(SPR_SHORE_BASE +  5, *_cur_gps.file, _cur_gps.nfo_line++); // SLOPE_STEEP_W
+		LoadNextSprite(SPR_SHORE_BASE +  7, *_cur_gps.file, _cur_gps.nfo_line++); // SLOPE_WSE
+		LoadNextSprite(SPR_SHORE_BASE + 10, *_cur_gps.file, _cur_gps.nfo_line++); // SLOPE_STEEP_N
+		LoadNextSprite(SPR_SHORE_BASE + 11, *_cur_gps.file, _cur_gps.nfo_line++); // SLOPE_NWS
+		LoadNextSprite(SPR_SHORE_BASE + 13, *_cur_gps.file, _cur_gps.nfo_line++); // SLOPE_ENW
+		LoadNextSprite(SPR_SHORE_BASE + 14, *_cur_gps.file, _cur_gps.nfo_line++); // SLOPE_SEN
+		LoadNextSprite(SPR_SHORE_BASE + 15, *_cur_gps.file, _cur_gps.nfo_line++); // SLOPE_STEEP_E
+		LoadNextSprite(SPR_SHORE_BASE + 16, *_cur_gps.file, _cur_gps.nfo_line++); // SLOPE_EW
+		LoadNextSprite(SPR_SHORE_BASE + 17, *_cur_gps.file, _cur_gps.nfo_line++); // SLOPE_NS
 		if (_loaded_newgrf_features.shore == SHORE_REPLACE_NONE) _loaded_newgrf_features.shore = SHORE_REPLACE_ONLY_NEW;
 		return;
 	}
@@ -124,7 +124,7 @@ static void GraphicsNew(ByteReader &buf)
 	/* Supported type? */
 	if ((type >= std::size(_action5_types)) || (_action5_types[type].block_type == A5BLOCK_INVALID)) {
 		GrfMsg(2, "GraphicsNew: Custom graphics (type 0x{:02X}) sprite block of length {} (unimplemented, ignoring)", type, num);
-		_cur.skip_sprites = num;
+		_cur_gps.skip_sprites = num;
 		return;
 	}
 
@@ -142,7 +142,7 @@ static void GraphicsNew(ByteReader &buf)
 	 * This does not make sense, if <offset> is allowed */
 	if ((action5_type->block_type == A5BLOCK_FIXED) && (num < action5_type->min_sprites)) {
 		GrfMsg(1, "GraphicsNew: {} (type 0x{:02X}) count must be at least {}. Only {} were specified. Skipping.", action5_type->name, type, action5_type->min_sprites, num);
-		_cur.skip_sprites = num;
+		_cur_gps.skip_sprites = num;
 		return;
 	}
 
@@ -166,16 +166,16 @@ static void GraphicsNew(ByteReader &buf)
 	bool dup_oneway_sprites = ((type == 0x09) && (offset + num <= ONEWAY_SLOPE_N_OFFSET));
 
 	for (; num > 0; num--) {
-		_cur.nfo_line++;
-		SpriteID load_index = (replace == 0 ? _cur.spriteid++ : replace++);
-		LoadNextSprite(load_index, *_cur.file, _cur.nfo_line);
+		_cur_gps.nfo_line++;
+		SpriteID load_index = (replace == 0 ? _cur_gps.spriteid++ : replace++);
+		LoadNextSprite(load_index, *_cur_gps.file, _cur_gps.nfo_line);
 		if (dup_oneway_sprites) {
 			DupSprite(load_index, load_index + ONEWAY_SLOPE_N_OFFSET);
 			DupSprite(load_index, load_index + ONEWAY_SLOPE_S_OFFSET);
 		}
 	}
 
-	_cur.skip_sprites = skip_num;
+	_cur_gps.skip_sprites = skip_num;
 }
 
 /* Action 0x05 (SKIP) */
@@ -185,9 +185,9 @@ static void SkipAct5(ByteReader &buf)
 	buf.ReadByte();
 
 	/* Skip the sprites of this action */
-	_cur.skip_sprites = buf.ReadExtendedByte();
+	_cur_gps.skip_sprites = buf.ReadExtendedByte();
 
-	GrfMsg(3, "SkipAct5: Skipping {} sprites", _cur.skip_sprites);
+	GrfMsg(3, "SkipAct5: Skipping {} sprites", _cur_gps.skip_sprites);
 }
 
 template <> void GrfActionHandler<0x05>::FileScan(ByteReader &buf) { SkipAct5(buf); }

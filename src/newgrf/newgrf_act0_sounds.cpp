@@ -26,19 +26,20 @@
 static ChangeInfoResult SoundEffectChangeInfo(uint first, uint last, int prop, ByteReader &buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
+	if (first == last) return ret;
 
-	if (_cur.grffile->sound_offset == 0) {
+	if (_cur_gps.grffile->sound_offset == 0) {
 		GrfMsg(1, "SoundEffectChangeInfo: No effects defined, skipping");
 		return CIR_INVALID_ID;
 	}
 
-	if (last - ORIGINAL_SAMPLE_COUNT > _cur.grffile->num_sounds) {
-		GrfMsg(1, "SoundEffectChangeInfo: Attempting to change undefined sound effect ({}), max ({}). Ignoring.", last, ORIGINAL_SAMPLE_COUNT + _cur.grffile->num_sounds);
+	if (last - ORIGINAL_SAMPLE_COUNT > _cur_gps.grffile->num_sounds) {
+		GrfMsg(1, "SoundEffectChangeInfo: Attempting to change undefined sound effect ({}), max ({}). Ignoring.", last, ORIGINAL_SAMPLE_COUNT + _cur_gps.grffile->num_sounds);
 		return CIR_INVALID_ID;
 	}
 
 	for (uint id = first; id < last; ++id) {
-		SoundEntry *sound = GetSound(first + _cur.grffile->sound_offset - ORIGINAL_SAMPLE_COUNT);
+		SoundEntry *sound = GetSound(first + _cur_gps.grffile->sound_offset - ORIGINAL_SAMPLE_COUNT);
 
 		switch (prop) {
 			case 0x08: // Relative volume

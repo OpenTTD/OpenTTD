@@ -7,6 +7,8 @@
 
  /** @file newgrf_profiling.cpp Profiling of NewGRF action 2 handling. */
 
+#include "stdafx.h"
+
 #include "newgrf_profiling.h"
 #include "fileio_func.h"
 #include "string_func.h"
@@ -18,6 +20,7 @@
 
 #include <chrono>
 
+#include "safeguards.h"
 
 std::vector<NewGRFProfiler> _newgrf_profilers;
 
@@ -57,20 +60,28 @@ void NewGRFProfiler::BeginResolve(const ResolverObject &resolver)
 /**
  * Capture the completion of a sprite group resolution.
  */
-void NewGRFProfiler::EndResolve(const SpriteGroup *result)
+void NewGRFProfiler::EndResolve(const ResolverResult &result)
 {
 	using namespace std::chrono;
 	this->cur_call.time = (uint32_t)time_point_cast<microseconds>(high_resolution_clock::now()).time_since_epoch().count() - this->cur_call.time;
 
-	if (result == nullptr) {
-		this->cur_call.result = 0;
-	} else if (result->type == SGT_CALLBACK) {
-		this->cur_call.result = static_cast<const CallbackResultSpriteGroup *>(result)->result;
-	} else if (result->type == SGT_RESULT) {
-		this->cur_call.result = GetSpriteLocalID(static_cast<const ResultSpriteGroup *>(result)->sprite);
-	} else {
-		this->cur_call.result = result->nfo_line;
-	}
+	struct visitor {
+		uint32_t operator()(std::monostate)
+		{
+			return 0;
+		}
+		uint32_t operator()(CallbackResult cb_result)
+		{
+			return cb_result;
+		}
+		uint32_t operator()(const SpriteGroup *group)
+		{
+			if (group == nullptr) return 0;
+			if (group->type != SGT_RESULT) return group->nfo_line;
+			return GetSpriteLocalID(static_cast<const ResultSpriteGroup *>(group)->sprite);
+		}
+	};
+	this->cur_call.result = std::visit(visitor{}, result);
 
 	this->calls.push_back(this->cur_call);
 }

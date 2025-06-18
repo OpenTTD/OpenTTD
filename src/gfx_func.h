@@ -70,7 +70,9 @@ extern Palette _cur_palette; ///< Current palette
 
 void HandleToolbarHotkey(int hotkey);
 void HandleKeypress(uint keycode, char32_t key);
-void HandleTextInput(const char *str, bool marked = false, const char *caret = nullptr, const char *insert_location = nullptr, const char *replacement_end = nullptr);
+void HandleTextInput(std::string_view str, bool marked = false,
+		std::optional<size_t> caret = std::nullopt,
+		std::optional<size_t> insert_location = std::nullopt, std::optional<size_t> replacement_end = std::nullopt);
 void HandleCtrlChanged();
 void HandleMouseEvents();
 void UpdateWindows();
@@ -97,6 +99,7 @@ int DrawString(int left, int right, int top, std::string_view str, TextColour co
 int DrawString(int left, int right, int top, StringID str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FS_NORMAL);
 int DrawStringMultiLine(int left, int right, int top, int bottom, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL);
 int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL);
+bool DrawStringMultiLineWithClipping(int left, int right, int top, int bottom, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL);
 
 void DrawCharCentered(char32_t c, const Rect &r, TextColour colour);
 
@@ -127,6 +130,11 @@ inline int DrawStringMultiLine(const Rect &r, StringID str, TextColour colour = 
 	return DrawStringMultiLine(r.left, r.right, r.top, r.bottom, str, colour, align, underline, fontsize);
 }
 
+inline bool DrawStringMultiLineWithClipping(const Rect &r, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL)
+{
+	return DrawStringMultiLineWithClipping(r.left, r.right, r.top, r.bottom, str, colour, align, underline, fontsize);
+}
+
 inline void GfxFillRect(const Rect &r, int colour, FillRectMode mode = FILLRECT_OPAQUE)
 {
 	GfxFillRect(r.left, r.top, r.right, r.bottom, colour, mode);
@@ -154,18 +162,6 @@ bool FillDrawPixelInfo(DrawPixelInfo *n, int left, int top, int width, int heigh
 inline bool FillDrawPixelInfo(DrawPixelInfo *n, const Rect &r)
 {
 	return FillDrawPixelInfo(n, r.left, r.top, r.Width(), r.Height());
-}
-
-/**
- * Determine where to draw a centred object inside a widget.
- * @param min The top or left coordinate.
- * @param max The bottom or right coordinate.
- * @param size The height or width of the object to draw.
- * @return Offset of where to start drawing the object.
- */
-inline int CenterBounds(int min, int max, int size)
-{
-	return (min + max - size + 1) / 2;
 }
 
 /* window.cpp */

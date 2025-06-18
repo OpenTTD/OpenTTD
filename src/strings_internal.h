@@ -13,6 +13,7 @@
 #include "strings_func.h"
 #include "string_func.h"
 #include "core/string_builder.hpp"
+#include "core/string_consumer.hpp"
 
 class StringParameters {
 protected:
@@ -111,12 +112,12 @@ public:
 	 * will be read.
 	 * @return The next parameter's value.
 	 */
-	const char *GetNextParameterString()
+	std::string_view GetNextParameterString()
 	{
 		struct visitor {
-			const char *operator()(const std::monostate &) { throw std::out_of_range("Attempt to read uninitialised parameter as string"); }
-			const char *operator()(const uint64_t &) { throw std::out_of_range("Attempt to read integer parameter as string"); }
-			const char *operator()(const std::string &arg) { return arg.c_str(); }
+			std::string_view operator()(const std::monostate &) { throw std::out_of_range("Attempt to read uninitialised parameter as string"); }
+			std::string_view operator()(const uint64_t &) { throw std::out_of_range("Attempt to read integer parameter as string"); }
+			std::string_view operator()(const std::string &arg) { return arg; }
 		};
 
 		const auto &param = this->GetNextParameterReference();
@@ -184,13 +185,11 @@ public:
 		SetParam(n, v.base());
 	}
 
-	void SetParam(size_t n, const char *str)
+	void SetParam(size_t n, const std::string &str)
 	{
 		assert(n < this->parameters.size());
 		this->parameters[n].data = str;
 	}
-
-	void SetParam(size_t n, const std::string &str) { this->SetParam(n, str.c_str()); }
 
 	void SetParam(size_t n, std::string &&str)
 	{
@@ -214,6 +213,6 @@ void GenerateTownNameString(StringBuilder &builder, size_t lang, uint32_t seed);
 void GetTownName(StringBuilder &builder, const struct Town *t);
 void GRFTownNameGenerate(StringBuilder &builder, uint32_t grfid, uint16_t gen, uint32_t seed);
 
-char32_t RemapNewGRFStringControlCode(char32_t scc, const char **str);
+char32_t RemapNewGRFStringControlCode(char32_t scc, StringConsumer &consumer);
 
 #endif /* STRINGS_INTERNAL_H */

@@ -18,7 +18,6 @@
 #include "../progress.h"
 #include "../core/random_func.hpp"
 #include "../core/math_func.hpp"
-#include "../core/mem_func.hpp"
 #include "../core/geometry_func.hpp"
 #include "../fileio_func.h"
 #include "../framerate_type.h"

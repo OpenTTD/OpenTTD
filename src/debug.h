@@ -35,7 +35,7 @@
  * @param format_string The formatting string of the message.
  */
 #define Debug(category, level, format_string, ...) do { if ((level) == 0 || _debug_ ## category ## _level >= (level)) DebugPrint(#category, level, fmt::format(FMT_STRING(format_string) __VA_OPT__(,) __VA_ARGS__)); } while (false)
-void DebugPrint(const char *category, int level, std::string &&message);
+void DebugPrint(std::string_view category, int level, std::string &&message);
 
 extern int _debug_driver_level;
 extern int _debug_grf_level;
@@ -56,12 +56,18 @@ extern int _debug_random_level;
 #endif
 
 void DumpDebugFacilityNames(std::back_insert_iterator<std::string> &output_iterator);
-void SetDebugString(const char *s, void (*error_func)(const std::string &));
+using SetDebugStringErrorFunc = void(std::string_view);
+void SetDebugString(std::string_view s, SetDebugStringErrorFunc error_func);
 std::string GetDebugString();
 
 /** TicToc profiling.
- * Usage:
+ * Usage for max_count based output:
  * static TicToc::State state("A name", 1);
+ * TicToc tt(state);
+ * --Do your code--
+ *
+ * Usage for per-tick output:
+ * static TicToc::State state("A name");
  * TicToc tt(state);
  * --Do your code--
  */
@@ -69,11 +75,35 @@ struct TicToc {
 	/** Persistent state for TicToc profiling. */
 	struct State {
 		const std::string_view name;
-		const uint32_t max_count;
+		const std::optional<uint32_t> max_count;
 		uint32_t count = 0;
 		uint64_t chrono_sum = 0;
 
-		constexpr State(std::string_view name, uint32_t max_count) : name(name), max_count(max_count) { }
+		using States = std::vector<State *>;
+
+		State(std::string_view name, std::optional<uint32_t> max_count = {}) : name(name), max_count(max_count)
+		{
+			GetStates().push_back(this);
+		}
+
+		~State()
+		{
+			/* Container might be already destroyed. */
+			if (!GetStates().empty()) std::erase(GetStates(), this);
+		}
+
+		static States &GetStates()
+		{
+			thread_local static States s_states;
+			return s_states;
+		}
+
+		void OutputAndReset(const std::string_view prefix = "")
+		{
+			Debug(misc, 0, "[{}] [{}] {} calls in {} us [avg: {:.1f} us]", prefix, this->name, this->count, this->chrono_sum, this->chrono_sum / static_cast<double>(this->count));
+			this->count = 0;
+			this->chrono_sum = 0;
+		}
 	};
 
 	State &state;
@@ -84,15 +114,22 @@ struct TicToc {
 	inline ~TicToc()
 	{
 		this->state.chrono_sum += (std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - this->chrono_start)).count();
-		if (++this->state.count == this->state.max_count) {
-			Debug(misc, 0, "[{}] {} us [avg: {:.1f} us]", this->state.name, this->state.chrono_sum, this->state.chrono_sum / static_cast<double>(this->state.count));
-			this->state.count = 0;
-			this->state.chrono_sum = 0;
+		this->state.count++;
+		if (this->state.max_count.has_value() && this->state.count == this->state.max_count.value()) {
+			this->state.OutputAndReset("MaxCount");
+		}
+	}
+
+	static void Tick(const std::string_view prefix)
+	{
+		for (auto state : State::GetStates()) {
+			if (state->max_count.has_value() || state->count == 0) continue;
+			state->OutputAndReset(prefix);
 		}
 	}
 };
 
-void ShowInfoI(const std::string &str);
+void ShowInfoI(std::string_view str);
 #define ShowInfo(format_string, ...) ShowInfoI(fmt::format(FMT_STRING(format_string) __VA_OPT__(,) __VA_ARGS__))
 
 std::string GetLogPrefix(bool force = false);

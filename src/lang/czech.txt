@@ -519,7 +519,6 @@ STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Budovat domy
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Možnosti hry
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Nastavení
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Nastavení AI
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Nastavení herních skriptů
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Nastavení grafik
@@ -1046,22 +1045,23 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Nastavit
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Možnosti hry
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Obecné
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Zobrazit obecná nastavení
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :Zobrazit obecná nastavení
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafika
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Zobrazit nastavení grafiky
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :Zobrazit nastavení grafiky
 STR_GAME_OPTIONS_TAB_SOUND                                      :Zvuk
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Zobrazit nastavení zvuku a hudby
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Zobrazit nastavení zvuku a hudby
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Sociální
-STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Zobrazit nastavení pro sociální interakci
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Zobrazit nastavení pro sociální interakci
 
 STR_GAME_OPTIONS_VOLUME                                         :Hlasitost
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Zvukové efekty
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Hudba
 
+
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Měna
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Výběr jednotek měny
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Měna
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Výběr jednotek měny
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -1112,8 +1112,8 @@ STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lotyšský lat
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portugalské escudo
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Ukrajinská hřivna
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatické ukládání
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Volba intervalu mezi automatickým ukládáním hry
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Automatické ukládání
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Volba intervalu mezi automatickým ukládáním hry
 
 # Autosave dropdown
 ###length 5
@@ -1123,77 +1123,77 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Každých 30 mi
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Každých 60 minut
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Každých 120 minut
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Jazyk
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Zvolit jazyk uživatelského rozhraní
+STR_GAME_OPTIONS_LANGUAGE                                       :Jazyk
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Zvolit jazyk uživatelského rozhraní
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% dokončeno)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Na celou obrazovku
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Zaškrtnutím této volby poběží OpenTTD na celé obrazovce
+STR_GAME_OPTIONS_FULLSCREEN                                     :Na celou obrazovku
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Zaškrtnutím této volby poběží OpenTTD na celé obrazovce
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Rozlišení obrazovky
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Zvolit rozlišení obrazovky
+STR_GAME_OPTIONS_RESOLUTION                                     :Rozlišení obrazovky
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Zvolit rozlišení obrazovky
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :jiné
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hardwarová akcelerace
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Zaškrtni, pokud chceš OpenTTD povolit použití hardwarové akcelerace. Změněné nastavení bude aplikováno po restartu hry
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Hardwarová akcelerace
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Zaškrtni, pokud chceš OpenTTD povolit použití hardwarové akcelerace. Změněné nastavení bude aplikováno po restartu hry
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Nastavení vstoupí v platnost pouze po restartu hry
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Zaškrtní tento box pro v-sync obrazovky. Změna se projeví po znovu spuštění hry. Funguje to pouze pro povolenou hardwarovou akceleraci.
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Zaškrtní tento box pro v-sync obrazovky. Změna se projeví po znovu spuštění hry. Funguje to pouze pro povolenou hardwarovou akceleraci.
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Aktuální ovladač: {STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Aktuální ovladač: {STRING}
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Velikost uživatelského rozhraní
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Přetažením posuvníku změníš velikost rozhraní. Drž Ctrl pro plynulé přizpůsobení
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Automaticky detekovat velikost
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Zaškrtni pro automatické nastavení velikosti uživatelského rozhraní
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Škálovat úkosy
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Zaškrtni toto políčko pro škálování úkosů dle velikosti uživatelského rozhraní
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Velikost uživatelského rozhraní
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Přetažením posuvníku změníš velikost rozhraní. Drž Ctrl pro plynulé přizpůsobení
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Automaticky detekovat velikost
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Zaškrtni pro automatické nastavení velikosti uživatelského rozhraní
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Používat tradiční písma ze sprite
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Zaškrtni toto políčko, pokud dáváš přednost tradičním písmům pevné velikosti ze sprite
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Anti-aliasovat písma
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Zaškrtni toto políčko pro zapnutí anti-aliasování škálovatelných písem
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Škálovat úkosy
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Zaškrtni toto políčko pro škálování úkosů dle velikosti uživatelského rozhraní
+
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Používat tradiční písma ze sprite
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Zaškrtni toto políčko, pokud dáváš přednost tradičním písmům pevné velikosti ze sprite
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Anti-aliasovat písma
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Zaškrtni toto políčko pro zapnutí anti-aliasování škálovatelných písem
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automatický průzkum
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Účastnit se automatického průzkumu
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Pokud je zapnuto, OpenTTD odešle průzkum při opuštění hry
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}O anketě a ochraně soukromí
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Otevře prohlížeč s více informacemi o automatickém průzkumu
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Náhled výsledků průzkumu
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Zobrazovat výsledek průzkumu z aktuálně běžící hry
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Automatický průzkum
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Účastnit se automatického průzkumu
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :Pokud je zapnuto, OpenTTD odešle průzkum při opuštění hry
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :O anketě a ochraně soukromí
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Otevře prohlížeč s více informacemi o automatickém průzkumu
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Náhled výsledků průzkumu
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Zobrazovat výsledek průzkumu z aktuálně běžící hry
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafiky
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Obnovovací frekvence obrazovky
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Zvolit obnovovací frekvenci obrazovky
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Obnovovací frekvence obrazovky
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Zvolit obnovovací frekvenci obrazovky
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Obnovovací frekvence vyšší než 60Hz může mít dopad výkon.
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Základní sada grafiky
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vyber si základní sadu grafiky (nemůže být změněna během hry, ale pouze z hlavního menu)
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Další informace o základní sadě grafiky
+STR_GAME_OPTIONS_BASE_GRF                                       :Základní sada grafiky
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Vyber si základní sadu grafiky (nemůže být změněna během hry, ale pouze z hlavního menu)
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Další informace o základní sadě grafiky
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Základní sada zvuků
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Vyber si základní sadu zvuků (nemůže být změněna během hry, ale pouze z hlavního menu)
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Další informace o základní sadě zvuků
+STR_GAME_OPTIONS_BASE_SFX                                       :Základní sada zvuků
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Vyber si základní sadu zvuků (nemůže být změněna během hry, ale pouze z hlavního menu)
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Další informace o základní sadě zvuků
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Základní hudební set
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Vyberte jaký základní hudební set použít
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Další informace o základním hudebním setu
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Základní hudební set
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Vyberte jaký základní hudební set použít
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Další informace o základním hudebním setu
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Získat obsah
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Zkontrolovat nový a aktualizovaný obsah ke stažení
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(nejsou nainstalovány žádné zásuvné moduly pro integraci sociálních platforem)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Platforma:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Stav zásuvného modulu:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Platforma:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :Stav zásuvného modulu:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Spuštěn
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Inicializace selhala
@@ -1305,12 +1305,11 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Nezaujatý (bez
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Žádná vhodná AI není k dispozici...{}Některé AI lze stáhnout pomocí služby "Stahovat součásti"
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Nastavení
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtrovat:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Rozbalit vše
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Sbalit vše
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Vymazat všechny hodnoty
+# Settings tree in the Game Options window
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Filtrovat:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Rozbalit vše
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Sbalit vše
+STR_CONFIG_SETTING_RESET_ALL                                    :Vymazat všechny hodnoty
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(žádné vysvětlení není k dispozici)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Výchozí hodnota: {ORANGE}{STRING}
@@ -1323,9 +1322,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Nastavení spol
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Pozor!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Tato akce resetuje všechna nastavení hry na výchozí hodnoty.{}Jste si jistý, že chcete pokračovat?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorie:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Druh:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Omezit nastavení v seznamu níže pomocí předdefinovaných filtrů
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Kategorie:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Druh:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Omezit nastavení v seznamu níže pomocí předdefinovaných filtrů
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Základní (zobrazí pouze důležitá nastavení)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Pokročilé (zobrazí většinu nastavení)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Expertní (zobrazí všechna nastavení, včetně těch podivných)
@@ -1342,9 +1341,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Nastavení spol
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Nic -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Všechny výsledky vyhledávání zobrazíš nastavením{}{SILVER}kategorie {BLACK}na {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Všechny výsledky vyhledávání zobrazíš nastavením{}{SILVER}typu {BLACK}na {WHITE}Všechny typy nastavení
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Všechny výsledky vyhledávání zobrazíš nastavením{}{SILVER}kategorie {BLACK}na {WHITE}{STRING} {BLACK}a {SILVER}typu {BLACK}na {WHITE}Všechny typy nastavení
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Všechny výsledky vyhledávání zobrazíš nastavením{}{SILVER}kategorie {BLACK}na {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Všechny výsledky vyhledávání zobrazíš nastavením{}{SILVER}typu {BLACK}na {WHITE}Všechny typy nastavení
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Všechny výsledky vyhledávání zobrazíš nastavením{}{SILVER}kategorie {BLACK}na {WHITE}{STRING} {BLACK}a {SILVER}typu {BLACK}na {WHITE}Všechny typy nastavení
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Vypnuto
@@ -2271,7 +2270,6 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... neby
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... grafická karta způsobila pád hry. Hadwarová akcelerace byla zakázána
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nová hra
 STR_INTRO_LOAD_GAME                                             :{BLACK}Nahrát hru
@@ -2283,11 +2281,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Více hr
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Možnosti hry
 STR_INTRO_HIGHSCORE                                             :{BLACK}Nejlepší výsledky
 STR_INTRO_HELP                                                  :{BLACK}Nápověda a Manuály
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Nastavení
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Nastavení grafik
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Stahovat součásti
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Nastavení AI
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Nastavení herních skriptů
 STR_INTRO_QUIT                                                  :{BLACK}Ukončit
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Hrát novou hru. Pomocí Ctrl přeskočíš nastavení mapy
@@ -2305,11 +2299,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Země hr
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Otevřít možnosti hry
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Zobrazit tabulku nejlepších výsledků
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Prohlédnout dokumentaci a online zdroje
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Otevřít nastavení
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Otevřít nastavení NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Ukázat, jaký nový nebo upravený obsah se dá stáhnout
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Otevřít nastavení AI
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Otevřít nastavení herních skriptů
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Ukončit 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}V aktuálně zvolené základní sadě grafiky chybí {NUM} sprit{P "" y ů}. Zkuste, prosím, vyhledat aktualizovanou základní sadu.
@@ -3152,6 +3142,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Zvolte v
 STR_FOUND_TOWN_CITY                                             :{BLACK}Velkoměsto
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Velkoměsta rostou rychleji než běžná města. V závislosti na nastavení jsou při založení větší
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Silniční síť města:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Zvolte rozvržení silniční sítě v tomto městě
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Původní
@@ -3604,15 +3595,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Uložit 
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Seznam předvoleb k dispozici, vyber jednu pro zkopírování do uložené hry vybrané níže
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Vlož název pro předvolby
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Aktuálně zvolený název pro předvolby
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Zrušit
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Neměnit předvolby
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Uložit
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Uloží předvolby do aktuálně zvolené uložené hry
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Změnit parametry základní grafiky
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Úprava nastavení parametrů
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zavřít
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Reset
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Nastav všechny parametry na jejich výchozí hodnotu
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametr {NUM}
@@ -4845,7 +4833,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Jízdní
 STR_TIMETABLE_NO_TRAVEL                                         :Nikam nejet
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Jet do (automatický; jizdní řád podle následujícího ručního příkazu)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Jet do (mimo jízdní řád)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Jet (mimo jízdní řád) maximální rychlostí {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Jet do {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Jeď {STRING} a maximálně {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Jeď ({STRING}, mimo jízdní řád)
@@ -4971,8 +4958,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Potvrdit
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vybrat označený skript
-STR_AI_LIST_CANCEL                                              :{BLACK}Zrušit
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Neměňte skript
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Pořídit snímek obrazovky
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Běžný snímek obrazovky
@@ -4985,7 +4970,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Snímek 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parametry AI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Parametry herního skriptu
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zavřít
 STR_AI_SETTINGS_RESET                                           :{BLACK}Obnovit nastavení
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

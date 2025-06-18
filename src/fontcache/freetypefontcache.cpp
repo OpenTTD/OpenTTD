@@ -46,7 +46,7 @@ public:
 	const void *GetOSHandle() override { return &face; }
 };
 
-FT_Library _library = nullptr;
+FT_Library _ft_library = nullptr;
 
 
 /**
@@ -113,7 +113,7 @@ void FreeTypeFontCache::SetFontSize(int pixels)
 	}
 }
 
-static FT_Error LoadFont(FontSize fs, FT_Face face, const char *font_name, uint size)
+static FT_Error LoadFont(FontSize fs, FT_Face face, std::string_view font_name, uint size)
 {
 	Debug(fontcache, 2, "Requested '{}', using '{} {}'", font_name, face->family_name, face->style_name);
 
@@ -163,8 +163,8 @@ void LoadFreeTypeFont(FontSize fs)
 	std::string font = GetFontCacheFontName(fs);
 	if (font.empty()) return;
 
-	if (_library == nullptr) {
-		if (FT_Init_FreeType(&_library) != FT_Err_Ok) {
+	if (_ft_library == nullptr) {
+		if (FT_Init_FreeType(&_ft_library) != FT_Err_Ok) {
 			ShowInfo("Unable to initialize FreeType, using sprite fonts instead");
 			return;
 		}
@@ -172,29 +172,28 @@ void LoadFreeTypeFont(FontSize fs)
 		Debug(fontcache, 2, "Initialized");
 	}
 
-	const char *font_name = font.c_str();
 	FT_Face face = nullptr;
 
 	/* If font is an absolute path to a ttf, try loading that first. */
 	int32_t index = 0;
 	if (settings->os_handle != nullptr) index = *static_cast<const int32_t *>(settings->os_handle);
-	FT_Error error = FT_New_Face(_library, font_name, index, &face);
+	FT_Error error = FT_New_Face(_ft_library, font.c_str(), index, &face);
 
 	if (error != FT_Err_Ok) {
 		/* Check if font is a relative filename in one of our search-paths. */
-		std::string full_font = FioFindFullPath(BASE_DIR, font_name);
+		std::string full_font = FioFindFullPath(BASE_DIR, font);
 		if (!full_font.empty()) {
-			error = FT_New_Face(_library, full_font.c_str(), 0, &face);
+			error = FT_New_Face(_ft_library, full_font.c_str(), 0, &face);
 		}
 	}
 
 	/* Try loading based on font face name (OS-wide fonts). */
-	if (error != FT_Err_Ok) error = GetFontByFaceName(font_name, &face);
+	if (error != FT_Err_Ok) error = GetFontByFaceName(font, &face);
 
 	if (error == FT_Err_Ok) {
-		error = LoadFont(fs, face, font_name, GetFontCacheFontSize(fs));
+		error = LoadFont(fs, face, font, GetFontCacheFontSize(fs));
 		if (error != FT_Err_Ok) {
-			ShowInfo("Unable to use '{}' for {} font, FreeType reported error 0x{:X}, using sprite font instead", font_name, FontSizeToName(fs), error);
+			ShowInfo("Unable to use '{}' for {} font, FreeType reported error 0x{:X}, using sprite font instead", font, FontSizeToName(fs), error);
 		}
 	} else {
 		FT_Done_Face(face);
@@ -243,9 +242,8 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 
 	/* FreeType has rendered the glyph, now we allocate a sprite and copy the image into it */
 	SpriteLoader::SpriteCollection spritecollection;
-	SpriteLoader::Sprite &sprite = spritecollection[ZOOM_LVL_MIN];
-	sprite.AllocateData(ZOOM_LVL_MIN, static_cast<size_t>(width) * height);
-	sprite.type = SpriteType::Font;
+	SpriteLoader::Sprite &sprite = spritecollection[ZoomLevel::Min];
+	sprite.AllocateData(ZoomLevel::Min, static_cast<size_t>(width) * height);
 	sprite.colours = SpriteComponent::Palette;
 	if (aa) sprite.colours.Set(SpriteComponent::Alpha);
 	sprite.width = width;
@@ -275,7 +273,7 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 	}
 
 	UniquePtrSpriteAllocator allocator;
-	BlitterFactory::GetCurrentBlitter()->Encode(spritecollection, allocator);
+	BlitterFactory::GetCurrentBlitter()->Encode(SpriteType::Font, spritecollection, allocator);
 
 	GlyphEntry new_glyph;
 	new_glyph.data = std::move(allocator.data);
@@ -303,13 +301,13 @@ GlyphID FreeTypeFontCache::MapCharToGlyph(char32_t key, bool allow_fallback)
  */
 void UninitFreeType()
 {
-	FT_Done_FreeType(_library);
-	_library = nullptr;
+	FT_Done_FreeType(_ft_library);
+	_ft_library = nullptr;
 }
 
 #if !defined(WITH_FONTCONFIG)
 
-FT_Error GetFontByFaceName(const char *font_name, FT_Face *face) { return FT_Err_Cannot_Open_Resource; }
+FT_Error GetFontByFaceName(std::string_view font_name, FT_Face *face) { return FT_Err_Cannot_Open_Resource; }
 
 #endif /* !defined(WITH_FONTCONFIG) */
 

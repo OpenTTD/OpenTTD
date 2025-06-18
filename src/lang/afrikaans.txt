@@ -391,7 +391,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Verlaat
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spel opsies
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Stellings
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF stellings
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Deursigtigheid opsies
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Dorp name vertoon
@@ -865,8 +864,9 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spel Ops
 
 
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Geldeenheid
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Geld eendheid keuse
+
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Geldeenheid
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Geld eendheid keuse
 
 
 ###length 45
@@ -910,21 +910,21 @@ STR_GAME_OPTIONS_CURRENCY_NTD                                   :Nuwe Taiwan dol
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Chinese Renminbi
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kong Dollar
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Outostoor
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Kies interval tussen outomatiese store
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Outostoor
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Kies interval tussen outomatiese store
 
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Af
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Taal
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Kies die koppelvlak taal om te gebruik
+STR_GAME_OPTIONS_LANGUAGE                                       :Taal
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Kies die koppelvlak taal om te gebruik
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Volskerm
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Kies die blokkie om OpenTTD in volleskerm te speel
+STR_GAME_OPTIONS_FULLSCREEN                                     :Volskerm
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Kies die blokkie om OpenTTD in volleskerm te speel
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skerm resolusie
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Kies die skerm resolusie om te gebruik
+STR_GAME_OPTIONS_RESOLUTION                                     :Skerm resolusie
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Kies die skerm resolusie om te gebruik
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :ander
 
 
@@ -937,17 +937,18 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :ander
 
 
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basis-grafikastel
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kies die basis-grafikastel stel om te gebruik
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Meer inligting oor die basis-grafikastel
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Basis klank stel
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Kies die basis klank stel om te gebruik
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Addisionele informasie oor die basis klank stel
+STR_GAME_OPTIONS_BASE_GRF                                       :Basis-grafikastel
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Kies die basis-grafikastel stel om te gebruik
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Meer inligting oor die basis-grafikastel
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basis musiek stel
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Kies die basis musiek stel om te gebruik
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Addisionele informasie oor die basis musiek stel
+STR_GAME_OPTIONS_BASE_SFX                                       :Basis klank stel
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Kies die basis klank stel om te gebruik
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Addisionele informasie oor die basis klank stel
+
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Basis musiek stel
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Kies die basis musiek stel om te gebruik
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Addisionele informasie oor die basis musiek stel
 
 
 
@@ -1050,11 +1051,10 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permissief
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Geen geskikte KI beskikbaar...{}Jy kan verskeie KI's aflaai deur middel van die 'Aanlyn Inhoud' stelsel
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Stellings
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filter string:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Brei alles uit
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Krimp alles in
+# Settings tree in the Game Options window
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Filter string:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Brei alles uit
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Krimp alles in
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(geen verduideliking beskikbaar)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standaard waarde: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Stelling tipe: {ORANGE}{STRING}
@@ -1064,9 +1064,9 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Maatskappy inst
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Maatskappy instelling (word gestoor in Spaarspeletjies; raak net nuwe speletjies)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Maatskappy instelling (word gestoor in spaarspeletjie; raak net die huidige maatskappy)
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorie:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipe:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Beperk die lys hier onder deur voorafgestelde "filters" te gebruik slegs veranderde verstellings
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Kategorie:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Tipe:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Beperk die lys hier onder deur voorafgestelde "filters" te gebruik slegs veranderde verstellings
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Basiese (wys net belangrik verstellings)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Gevorderde (wys meeste verstellings)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ekspert (wys alle verstellings, insluitend vreemde verstellings)
@@ -1083,9 +1083,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Maatskappy-inst
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Geen -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Wys alle soekresultate deur oprigting{}{SILVER}Kategorie {BLACK}tot {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Wys alle soekresultate deur oprigting{}{SILVER}Tik {BLACK}tot {WHITE}Alle opstel tipes
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Wys alle soekresultate deur oprigting{}{SILVER}Kategorie {BLACK}tot {WHITE}{STRING} {BLACK}en {SILVER}Tik {BLACK}tot {WHITE}Alle opstel tipes
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Wys alle soekresultate deur oprigting{}{SILVER}Kategorie {BLACK}tot {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Wys alle soekresultate deur oprigting{}{SILVER}Tik {BLACK}tot {WHITE}Alle opstel tipes
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Wys alle soekresultate deur oprigting{}{SILVER}Kategorie {BLACK}tot {WHITE}{STRING} {BLACK}en {SILVER}Tik {BLACK}tot {WHITE}Alle opstel tipes
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Af
@@ -1890,7 +1890,6 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Allokeri
 # Video initalization errors
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nuwe Spel
 STR_INTRO_LOAD_GAME                                             :{BLACK}Laai Spel
@@ -1901,8 +1900,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multispe
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spel Opsies
 STR_INTRO_HIGHSCORE                                             :{BLACK}Hoogste Tellings Tafel
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Stellings
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Stellings
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Soek aanlyn
 STR_INTRO_QUIT                                                  :{BLACK}Verlaat
 
@@ -1920,8 +1917,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Kies 'sp
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Vertoon speletjie opsies
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Vertoon hoogste tellings tafel
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Vertoon instellings
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Wys NewGRF stellings
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kyk vir nuwe of bygewerkde inhoud om af te laai
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Verlaat 'OpenTTD'
 
@@ -2589,6 +2584,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Kies dor
 STR_FOUND_TOWN_CITY                                             :{BLACK}Stad
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Stede groei viniger as gewone dorpe{}Afhangende van stellings, is hulle grooter waneer hulle gestig word
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Straat uitleg van dorp:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Kies straat uitleg wat vir die dorp gebruik word
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Oorspronklik
@@ -2962,14 +2958,11 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Stoor vo
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Beskikbare voorafinstellings, kies een om te gebruik as eksemplaar vir 'n nuwe een
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Kies 'n naam vir die voorafinstellings
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Gekose naam om voorafstellings te stoor
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Kanselleer
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Moenie voorafinstellings verander nie
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Stoor
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Stoor die voorafinstellings na gekose naam
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Verander NewGRF parameters
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Maak Toe
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Herstel
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Stel alle parameters na hul verstek waarde
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
@@ -4061,7 +4054,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Rooster 
 STR_TIMETABLE_NO_TRAVEL                                         :Geen reis
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Reis (outomaties; getabuleer volgens eiehandige bevel)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reis (Nie op rooster nie)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Reis nie meer as {2:VELOCITY} nie (nie volgens tydrooster nie)
 STR_TIMETABLE_TRAVEL_FOR                                        :Reis vir {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Reis vir {STRING} met die meeste {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Reis (vir {STRING}, nie volgens tydrooster nie)
@@ -4171,8 +4163,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Aanvaar
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Kies beligte skrif
-STR_AI_LIST_CANCEL                                              :{BLACK}Kanseleer
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Moenie skrif verander nie
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Neem 'n skermkiekie
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normale skermkiekie
@@ -4184,7 +4174,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minimap-
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Maak toe
 STR_AI_SETTINGS_RESET                                           :{BLACK}Herstel
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

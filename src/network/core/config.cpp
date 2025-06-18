@@ -16,25 +16,13 @@
 #include "../../safeguards.h"
 
 /**
- * Get the environment variable using std::getenv and when it is an empty string (or nullptr), return a fallback value instead.
- * @param variable The environment variable to read from.
- * @param fallback The fallback in case the environment variable is not set.
- * @return The environment value, or when that does not exist the given fallback value.
- */
-static const char *GetEnv(const char *variable, const char *fallback)
-{
-	const char *value = std::getenv(variable);
-	return StrEmpty(value) ? fallback : value;
-}
-
-/**
  * Get the connection string for the game coordinator from the environment variable OTTD_COORDINATOR_CS,
  * or when it has not been set a hard coded default DNS hostname of the production server.
  * @return The game coordinator's connection string.
  */
-const char *NetworkCoordinatorConnectionString()
+std::string_view NetworkCoordinatorConnectionString()
 {
-	return GetEnv("OTTD_COORDINATOR_CS", "coordinator.openttd.org");
+	return GetEnv("OTTD_COORDINATOR_CS").value_or("coordinator.openttd.org");
 }
 
 /**
@@ -42,9 +30,9 @@ const char *NetworkCoordinatorConnectionString()
  * or when it has not been set a hard coded default DNS hostname of the production server.
  * @return The STUN server's connection string.
  */
-const char *NetworkStunConnectionString()
+std::string_view NetworkStunConnectionString()
 {
-	return GetEnv("OTTD_STUN_CS", "stun.openttd.org");
+	return GetEnv("OTTD_STUN_CS").value_or("stun.openttd.org");
 }
 
 /**
@@ -52,9 +40,9 @@ const char *NetworkStunConnectionString()
  * or when it has not been set a hard coded default DNS hostname of the production server.
  * @return The content server's connection string.
  */
-const char *NetworkContentServerConnectionString()
+std::string_view NetworkContentServerConnectionString()
 {
-	return GetEnv("OTTD_CONTENT_SERVER_CS", "content.openttd.org");
+	return GetEnv("OTTD_CONTENT_SERVER_CS").value_or("content.openttd.org");
 }
 
 /**
@@ -62,9 +50,9 @@ const char *NetworkContentServerConnectionString()
  * or when it has not been set a hard coded URI of the production server.
  * @return The content mirror's URI string.
  */
-const char *NetworkContentMirrorUriString()
+std::string_view NetworkContentMirrorUriString()
 {
-	return GetEnv("OTTD_CONTENT_MIRROR_URI", "https://binaries.openttd.org/bananas");
+	return GetEnv("OTTD_CONTENT_MIRROR_URI").value_or("https://binaries.openttd.org/bananas");
 }
 
 /**
@@ -72,7 +60,7 @@ const char *NetworkContentMirrorUriString()
  * or when it has not been set a hard coded URI of the production server.
  * @return The survey's URI string.
  */
-const char *NetworkSurveyUriString()
+std::string_view NetworkSurveyUriString()
 {
-	return GetEnv("OTTD_SURVEY_URI", "https://survey-participate.openttd.org/");
+	return GetEnv("OTTD_SURVEY_URI").value_or("https://survey-participate.openttd.org/");
 }

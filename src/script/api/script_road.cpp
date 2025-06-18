@@ -30,7 +30,7 @@
 {
 	if (!IsRoadTypeAvailable(road_type)) return std::nullopt;
 
-	return ::StrMakeValid(::GetString(GetRoadTypeInfo((::RoadType)road_type)->strings.name));
+	return ::StrMakeValid(::GetString(GetRoadTypeInfo((::RoadType)road_type)->strings.name), {});
 }
 
 /* static */ bool ScriptRoad::IsRoadTile(TileIndex tile)
@@ -132,7 +132,7 @@
 	EnforcePrecondition(false, ::IsValidTile(end_tile));
 	EnforcePrecondition(false, IsRoadTypeAvailable(road_type));
 
-	return ScriptObject::Command<CMD_CONVERT_ROAD>::Do(start_tile, end_tile, (::RoadType)road_type);
+	return ScriptObject::Command<CMD_CONVERT_ROAD>::Do(start_tile, end_tile, (::RoadType)road_type, false);
 }
 
 /* Helper functions for ScriptRoad::CanBuildConnectedRoadParts(). */

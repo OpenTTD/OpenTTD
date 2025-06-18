@@ -8,6 +8,7 @@
 /** @file fileio.cpp Standard In/Out file operations */
 
 #include "stdafx.h"
+#include "core/string_consumer.hpp"
 #include "fileio_func.h"
 #include "spriteloader/spriteloader.hpp"
 #include "debug.h"
@@ -23,7 +24,6 @@
 #include <unistd.h>
 #include <pwd.h>
 #endif
-#include <charconv>
 #include <sys/stat.h>
 #include <filesystem>
 
@@ -35,7 +35,7 @@ static bool _do_scan_working_directory = true;
 extern std::string _config_file;
 extern std::string _highscore_file;
 
-static const char * const _subdirs[] = {
+static const std::string_view _subdirs[] = {
 	"",
 	"save" PATHSEP,
 	"save" PATHSEP "autosave" PATHSEP,
@@ -118,7 +118,7 @@ static void FillValidSearchPaths(bool only_local_path)
  * @param subdir the subdirectory to look in
  * @return true if and only if the file can be opened
  */
-bool FioCheckFileExists(const std::string &filename, Subdirectory subdir)
+bool FioCheckFileExists(std::string_view filename, Subdirectory subdir)
 {
 	auto f = FioFOpenFile(filename, "rb", subdir);
 	return f.has_value();
@@ -129,7 +129,7 @@ bool FioCheckFileExists(const std::string &filename, Subdirectory subdir)
  * @param filename the file to test.
  * @return true if and only if the file exists.
  */
-bool FileExists(const std::string &filename)
+bool FileExists(std::string_view filename)
 {
 	std::error_code ec;
 	return std::filesystem::exists(OTTD2FS(filename), ec);
@@ -141,7 +141,7 @@ bool FileExists(const std::string &filename)
  * @param filename Filename to look for.
  * @return String containing the path if the path was found, else an empty string.
  */
-std::string FioFindFullPath(Subdirectory subdir, const std::string &filename)
+std::string FioFindFullPath(Subdirectory subdir, std::string_view filename)
 {
 	assert(subdir < NUM_SUBDIRS);
 
@@ -165,7 +165,7 @@ std::string FioGetDirectory(Searchpath sp, Subdirectory subdir)
 	assert(subdir < NUM_SUBDIRS);
 	assert(sp < NUM_SEARCHPATHS);
 
-	return _searchpaths[sp] + _subdirs[subdir];
+	return fmt::format("{}{}", _searchpaths[sp], _subdirs[subdir]);
 }
 
 std::string FioFindDirectory(Subdirectory subdir)
@@ -180,7 +180,7 @@ std::string FioFindDirectory(Subdirectory subdir)
 	return _personal_dir;
 }
 
-static std::optional<FileHandle> FioFOpenFileSp(const std::string &filename, const char *mode, Searchpath sp, Subdirectory subdir, size_t *filesize)
+static std::optional<FileHandle> FioFOpenFileSp(std::string_view filename, std::string_view mode, Searchpath sp, Subdirectory subdir, size_t *filesize)
 {
 #if defined(_WIN32)
 	/* fopen is implemented as a define with ellipses for
@@ -188,14 +188,14 @@ static std::optional<FileHandle> FioFOpenFileSp(const std::string &filename, con
 	 * a string, but a variable, it 'renames' the variable,
 	 * so make that variable to makes it compile happily */
 	wchar_t Lmode[5];
-	MultiByteToWideChar(CP_ACP, 0, mode, -1, Lmode, static_cast<int>(std::size(Lmode)));
+	MultiByteToWideChar(CP_ACP, 0, mode.data(), static_cast<int>(std::size(mode)), Lmode, static_cast<int>(std::size(Lmode)));
 #endif
 	std::string buf;
 
 	if (subdir == NO_DIRECTORY) {
 		buf = filename;
 	} else {
-		buf = _searchpaths[sp] + _subdirs[subdir] + filename;
+		buf = fmt::format("{}{}{}", _searchpaths[sp], _subdirs[subdir], filename);
 	}
 
 	auto f = FileHandle::Open(buf, mode);
@@ -239,7 +239,7 @@ static std::optional<FileHandle> FioFOpenFileTar(const TarFileListEntry &entry, 
  * @param subdir Subdirectory to open.
  * @return File handle of the opened file, or \c nullptr if the file is not available.
  */
-std::optional<FileHandle> FioFOpenFile(const std::string &filename, const char *mode, Subdirectory subdir, size_t *filesize)
+std::optional<FileHandle> FioFOpenFile(std::string_view filename, std::string_view mode, Subdirectory subdir, size_t *filesize)
 {
 	std::optional<FileHandle> f = std::nullopt;
 	assert(subdir < NUM_SUBDIRS || subdir == NO_DIRECTORY);
@@ -252,7 +252,7 @@ std::optional<FileHandle> FioFOpenFile(const std::string &filename, const char *
 	/* We can only use .tar in case of data-dir, and read-mode */
 	if (!f.has_value() && mode[0] == 'r' && subdir != NO_DIRECTORY) {
 		/* Filenames in tars are always forced to be lowercase */
-		std::string resolved_name = filename;
+		std::string resolved_name{filename};
 		strtolower(resolved_name);
 
 		/* Resolve ".." */
@@ -460,6 +460,7 @@ bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] c
 
 		char unused[12];
 	};
+	static_assert(sizeof(TarHeader) == 512);
 
 	/* Check if we already seen this file */
 	TarList::iterator it = _tar_list[this->subdir].find(filename);
@@ -475,25 +476,22 @@ bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] c
 
 	_tar_list[this->subdir][filename] = std::string{};
 
-	std::string filename_base = FS2OTTD(std::filesystem::path(OTTD2FS(filename)).filename());
+	std::string filename_base = FS2OTTD(std::filesystem::path(OTTD2FS(filename)).filename().native());
 	SimplifyFileName(filename_base);
 
 	TarHeader th;
 	size_t num = 0, pos = 0;
 
-	/* Make a char of 512 empty bytes */
-	char empty[512];
-	memset(&empty[0], 0, sizeof(empty));
-
 	for (;;) { // Note: feof() always returns 'false' after 'fseek()'. Cool, isn't it?
-		size_t num_bytes_read = fread(&th, 1, 512, f);
-		if (num_bytes_read != 512) break;
+		size_t num_bytes_read = fread(&th, 1, sizeof(TarHeader), f);
+		if (num_bytes_read != sizeof(TarHeader)) break;
 		pos += num_bytes_read;
 
 		/* Check if we have the new tar-format (ustar) or the old one (a lot of zeros after 'link' field) */
-		if (strncmp(th.magic, "ustar", 5) != 0 && memcmp(&th.magic, &empty[0], 512 - offsetof(TarHeader, magic)) != 0) {
+		auto last_of_th = &th.unused[std::size(th.unused)];
+		if (std::string_view{th.magic, 5} != "ustar" && std::any_of(th.magic, last_of_th, [](auto c) { return c != 0; })) {
 			/* If we have only zeros in the block, it can be an end-of-file indicator */
-			if (memcmp(&th, &empty[0], 512) == 0) continue;
+			if (std::all_of(th.name, last_of_th, [](auto c) { return c == 0; })) continue;
 
 			Debug(misc, 0, "The file '{}' isn't a valid tar-file", filename);
 			return false;
@@ -514,13 +512,13 @@ bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] c
 		std::string size = ExtractString(th.size);
 		size_t skip = 0;
 		if (!size.empty()) {
-			StrTrimInPlace(size);
-			auto [_, err] = std::from_chars(size.data(), size.data() + size.size(), skip, 8);
-			if (err != std::errc()) {
+			auto value = ParseInteger<size_t>(size, 8);
+			if (!value.has_value()) {
 				Debug(misc, 0, "The file '{}' has an invalid size for '{}'", filename, name);
 				fclose(f);
 				return false;
 			}
+			skip = *value;
 		}
 
 		switch (th.typeflag) {
@@ -658,7 +656,10 @@ bool ExtractTar(const std::string &tar_filename, Subdirectory subdir)
  * @param exe the path from the current path to the executable
  * @note defined in the OS related files (win32.cpp, unix.cpp etc)
  */
-extern void DetermineBasePaths(const char *exe);
+extern void DetermineBasePaths(std::string_view exe);
+
+/** Mimicks the getcwd from POSIX for Windows. */
+char *getcwd(char *buf, size_t size);
 #else /* defined(_WIN32) */
 
 /**
@@ -668,9 +669,9 @@ extern void DetermineBasePaths(const char *exe);
  * in the same way we remove the name from the executable name.
  * @param exe the path to the executable
  */
-static bool ChangeWorkingDirectoryToExecutable(const char *exe)
+static bool ChangeWorkingDirectoryToExecutable(std::string_view exe)
 {
-	std::string path = exe;
+	std::string path{exe};
 
 #ifdef WITH_COCOA
 	for (size_t pos = path.find_first_of('.'); pos != std::string::npos; pos = path.find_first_of('.', pos + 1)) {
@@ -733,8 +734,8 @@ static std::string GetHomeDir()
 	find_directory(B_USER_SETTINGS_DIRECTORY, &path);
 	return std::string(path.Path());
 #else
-	const char *home_env = std::getenv("HOME"); // Stack var, shouldn't be freed
-	if (home_env != nullptr) return std::string(home_env);
+	auto home_env = GetEnv("HOME"); // Stack var, shouldn't be freed
+	if (home_env.has_value()) return std::string(*home_env);
 
 	const struct passwd *pw = getpwuid(getuid());
 	if (pw != nullptr) return std::string(pw->pw_dir);
@@ -746,14 +747,13 @@ static std::string GetHomeDir()
  * Determine the base (personal dir and game data dir) paths
  * @param exe the path to the executable
  */
-void DetermineBasePaths(const char *exe)
+void DetermineBasePaths(std::string_view exe)
 {
 	std::string tmp;
 	const std::string homedir = GetHomeDir();
 #ifdef USE_XDG
-	const char *xdg_data_home = std::getenv("XDG_DATA_HOME");
-	if (xdg_data_home != nullptr) {
-		tmp = xdg_data_home;
+	if (auto xdg_data_home = GetEnv("XDG_DATA_HOME"); xdg_data_home.has_value()) {
+		tmp = *xdg_data_home;
 		tmp += PATHSEP;
 		tmp += PERSONAL_DIR[0] == '.' ? &PERSONAL_DIR[1] : PERSONAL_DIR;
 		AppendPathSeparator(tmp);
@@ -822,7 +822,7 @@ void DetermineBasePaths(const char *exe)
 			/* _config_file is not in a folder, so use current directory. */
 			tmp = cwd;
 		} else {
-			tmp = FS2OTTD(std::filesystem::weakly_canonical(std::filesystem::path(OTTD2FS(_config_file))).parent_path());
+			tmp = FS2OTTD(std::filesystem::weakly_canonical(std::filesystem::path(OTTD2FS(_config_file))).parent_path().native());
 		}
 		AppendPathSeparator(tmp);
 		_searchpaths[SP_WORKING_DIR] = tmp;
@@ -874,7 +874,7 @@ std::string _personal_dir;
  * @param exe the path from the current path to the executable
  * @param only_local_path Whether we shouldn't fill searchpaths with global folders.
  */
-void DeterminePaths(const char *exe, bool only_local_path)
+void DeterminePaths(std::string_view exe, bool only_local_path)
 {
 	DetermineBasePaths(exe);
 	FillValidSearchPaths(only_local_path);
@@ -882,9 +882,8 @@ void DeterminePaths(const char *exe, bool only_local_path)
 #ifdef USE_XDG
 	std::string config_home;
 	std::string homedir = GetHomeDir();
-	const char *xdg_config_home = std::getenv("XDG_CONFIG_HOME");
-	if (xdg_config_home != nullptr) {
-		config_home = xdg_config_home;
+	if (auto xdg_config_home = GetEnv("XDG_CONFIG_HOME"); xdg_config_home.has_value()) {
+		config_home = *xdg_config_home;
 		config_home += PATHSEP;
 		config_home += PERSONAL_DIR[0] == '.' ? &PERSONAL_DIR[1] : PERSONAL_DIR;
 	} else if (!homedir.empty()) {
@@ -976,7 +975,7 @@ void DeterminePaths(const char *exe, bool only_local_path)
 	};
 
 	for (const auto &default_subdir : default_subdirs) {
-		FioCreateDirectory(_personal_dir + _subdirs[default_subdir]);
+		FioCreateDirectory(fmt::format("{}{}", _personal_dir, _subdirs[default_subdir]));
 	}
 
 	/* If we have network we make a directory for the autodownloading of content */
@@ -1074,7 +1073,7 @@ static uint ScanPath(FileScanner *fs, std::string_view extension, const std::fil
 			if (!recursive) continue;
 			num += ScanPath(fs, extension, dir_entry.path(), basepath_length, recursive);
 		} else if (dir_entry.is_regular_file()) {
-			std::string file = FS2OTTD(dir_entry.path());
+			std::string file = FS2OTTD(dir_entry.path().native());
 			if (!MatchesExtension(extension, file)) continue;
 			if (fs->AddFile(file, basepath_length, {})) num++;
 		}
@@ -1152,7 +1151,7 @@ uint FileScanner::Scan(std::string_view extension, Subdirectory sd, bool tars, b
  * @return the number of found files, i.e. the number of times that
  *         AddFile returned true.
  */
-uint FileScanner::Scan(const std::string_view extension, const std::string &directory, bool recursive)
+uint FileScanner::Scan(std::string_view extension, const std::string &directory, bool recursive)
 {
 	std::string path(directory);
 	AppendPathSeparator(path);
@@ -1166,13 +1165,13 @@ uint FileScanner::Scan(const std::string_view extension, const std::string &dire
  * @param mode Mode to open file.
  * @return FileHandle, or std::nullopt on failure.
  */
-std::optional<FileHandle> FileHandle::Open(const std::string &filename, const std::string &mode)
+std::optional<FileHandle> FileHandle::Open(const std::string &filename, std::string_view mode)
 {
 #if defined(_WIN32)
 	/* Windows also requires mode to be wchar_t. */
 	auto f = _wfopen(OTTD2FS(filename).c_str(), OTTD2FS(mode).c_str());
 #else
-	auto f = fopen(filename.c_str(), mode.c_str());
+	auto f = fopen(filename.c_str(), std::string{mode}.c_str());
 #endif /* _WIN32 */
 
 	if (f == nullptr) return std::nullopt;

@@ -45,10 +45,10 @@ bool ScriptAdminMakeJSON(nlohmann::json &json, HSQUIRRELVM vm, SQInteger index, 
 		}
 
 		case OT_STRING: {
-			const SQChar *buf;
-			sq_getstring(vm, index, &buf);
+			std::string_view view;
+			sq_getstring(vm, index, view);
 
-			json = std::string(buf);
+			json = view;
 			return true;
 		}
 
@@ -78,9 +78,9 @@ bool ScriptAdminMakeJSON(nlohmann::json &json, HSQUIRRELVM vm, SQInteger index, 
 			sq_pushnull(vm);
 			while (SQ_SUCCEEDED(sq_next(vm, index - 1))) {
 				sq_tostring(vm, -2);
-				const SQChar *buf;
-				sq_getstring(vm, -1, &buf);
-				std::string key = std::string(buf);
+				std::string_view view;
+				sq_getstring(vm, -1, view);
+				std::string key{view};
 				sq_pop(vm, 1);
 
 				nlohmann::json value;

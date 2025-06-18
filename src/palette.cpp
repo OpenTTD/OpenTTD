@@ -209,7 +209,7 @@ void DoPaletteAnimations();
 void GfxInitPalettes()
 {
 	std::lock_guard<std::recursive_mutex> lock(_palette_mutex);
-	memcpy(&_cur_palette, &_palette, sizeof(_cur_palette));
+	_cur_palette = _palette;
 	DoPaletteAnimations();
 }
 
@@ -253,7 +253,6 @@ void DoPaletteAnimations()
 	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 	const Colour *s;
 	const ExtraPaletteValues *ev = &_extra_palette_values;
-	Colour old_val[PALETTE_ANIM_SIZE];
 	const uint old_tc = palette_animation_counter;
 	uint j;
 
@@ -261,10 +260,12 @@ void DoPaletteAnimations()
 		palette_animation_counter = 0;
 	}
 
-	Colour *palette_pos = &_cur_palette.palette[PALETTE_ANIM_START];  // Points to where animations are taking place on the palette
+	std::span<Colour> current_palette{&_cur_palette.palette[PALETTE_ANIM_START], PALETTE_ANIM_SIZE};
 	/* Makes a copy of the current animation palette in old_val,
 	 * so the work on the current palette could be compared, see if there has been any changes */
-	memcpy(old_val, palette_pos, sizeof(old_val));
+	std::array<Colour, PALETTE_ANIM_SIZE> original_palette;
+	std::ranges::copy(current_palette, original_palette.begin());
+	auto palette_pos = current_palette.begin(); // Points to where animations are taking place on the palette
 
 	/* Fizzy Drink bubbles animation */
 	s = ev->fizzy_drink;
@@ -344,7 +345,7 @@ void DoPaletteAnimations()
 
 	if (blitter != nullptr && blitter->UsePaletteAnimation() == Blitter::PaletteAnimation::None) {
 		palette_animation_counter = old_tc;
-	} else if (_cur_palette.count_dirty == 0 && memcmp(old_val, &_cur_palette.palette[PALETTE_ANIM_START], sizeof(old_val)) != 0) {
+	} else if (_cur_palette.count_dirty == 0 && !std::ranges::equal(current_palette, original_palette)) {
 		/* Did we changed anything on the palette? Seems so.  Mark it as dirty */
 		_cur_palette.first_dirty = PALETTE_ANIM_START;
 		_cur_palette.count_dirty = PALETTE_ANIM_SIZE;

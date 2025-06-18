@@ -400,6 +400,7 @@ STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE
 
 
 
+
 ###length 45
 
 
@@ -409,6 +410,7 @@ STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE
 
 
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
+
 
 
 
@@ -455,7 +457,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
 ###length 4
 
 
-# Settings tree window
+# Settings tree in the Game Options window
 
 
 
@@ -756,7 +758,6 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ippermetti l-uz
 # Video initalization errors
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 
 
@@ -920,6 +921,7 @@ STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 
 # Town generation window (SE)
+
 
 
 
@@ -1318,7 +1320,6 @@ STR_ORDER_IMPLICIT                                              :(Awtomatiku)
 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Skeda - agħfas fuq ordni biex tagħzilha.
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Патуваат со најмногу {2:VELOCITY} (не е време-Увезени)
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :патуваат за {STRING} со најмногу {VELOCITY}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Din l-iskeda ser iddum {STRING} biex titlesta

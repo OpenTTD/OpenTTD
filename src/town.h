@@ -42,7 +42,7 @@ struct TownCache {
 	uint32_t population = 0; ///< Current population of people
 	TrackedViewportSign sign{}; ///< Location of name sign, UpdateVirtCoord updates this
 	PartsOfSubsidy part_of_subsidy{}; ///< Is this town a source/destination of a subsidy?
-	std::array<uint32_t, HZB_END> squared_town_zone_radius{}; ///< UpdateTownRadius updates this given the house count
+	std::array<uint32_t, NUM_HOUSE_ZONES> squared_town_zone_radius{}; ///< UpdateTownRadius updates this given the house count
 	BuildingCounts<uint16_t> building_counts{}; ///< The number of each type of building in the town
 
 	auto operator<=>(const TownCache &) const = default;
@@ -69,10 +69,10 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 
 	/* Company ratings. */
 	CompanyMask have_ratings{}; ///< which companies have a rating
-	ReferenceThroughBaseContainer<std::array<uint8_t, MAX_COMPANIES>> unwanted{}; ///< how many months companies aren't wanted by towns (bribe)
+	TypedIndexContainer<std::array<uint8_t, MAX_COMPANIES>, CompanyID> unwanted{}; ///< how many months companies aren't wanted by towns (bribe)
 	CompanyID exclusivity = CompanyID::Invalid(); ///< which company has exclusivity
 	uint8_t exclusive_counter = 0; ///< months till the exclusivity expires
-	ReferenceThroughBaseContainer<std::array<int16_t, MAX_COMPANIES>> ratings{};  ///< ratings of each company for this town
+	TypedIndexContainer<std::array<int16_t, MAX_COMPANIES>, CompanyID> ratings{};  ///< ratings of each company for this town
 
 	std::array<TransportedCargoStat<uint32_t>, NUM_CARGO> supplied{}; ///< Cargo statistics about supplied cargo.
 	std::array<TransportedCargoStat<uint16_t>, NUM_TAE> received{}; ///< Cargo statistics about received cargotypes.
@@ -228,10 +228,11 @@ void UpdateTownRadius(Town *t);
 CommandCost CheckIfAuthorityAllowsNewStation(TileIndex tile, DoCommandFlags flags);
 Town *ClosestTownFromTile(TileIndex tile, uint threshold);
 void ChangeTownRating(Town *t, int add, int max, DoCommandFlags flags);
-HouseZonesBits GetTownRadiusGroup(const Town *t, TileIndex tile);
+HouseZone GetTownRadiusGroup(const Town *t, TileIndex tile);
 void SetTownRatingTestMode(bool mode);
 TownActions GetMaskOfTownActions(CompanyID cid, const Town *t);
-bool GenerateTowns(TownLayout layout);
+uint GetDefaultTownsForMapSize();
+bool GenerateTowns(TownLayout layout, std::optional<uint> number = std::nullopt);
 const CargoSpec *FindFirstCargoWithTownAcceptanceEffect(TownAcceptanceEffect effect);
 CargoArray GetAcceptedCargoOfHouse(const HouseSpec *hs);
 

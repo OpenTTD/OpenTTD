@@ -58,9 +58,9 @@ DECLARE_INCREMENT_DECREMENT_OPERATORS(ObjectClassID)
  * default objects in table/object_land.h
  */
 struct ObjectSpec : NewGRFSpecBase<ObjectClassID> {
-	/* 2 because of the "normal" and "buy" sprite stacks. */
-	FixedGRFFileProps<2> grf_prop; ///< Properties related the the grf file
-	AnimationInfo animation;      ///< Information about the animation.
+	StandardGRFFileProps grf_prop; ///< Properties related the the grf file
+	/* Animation speed default differs from other features */
+	AnimationInfo<ObjectAnimationTriggers> animation{0, AnimationStatus::NoAnimation, 0, {}};  ///< Information about the animation.
 	StringID name;                ///< The name for this object.
 
 	LandscapeTypes climate; ///< In which climates is this object available?
@@ -165,15 +165,12 @@ private:
 /** Class containing information relating to object classes. */
 using ObjectClass = NewGRFClass<ObjectSpec, ObjectClassID, OBJECT_CLASS_MAX>;
 
-static const size_t OBJECT_SPRITE_GROUP_DEFAULT = 0;
-static const size_t OBJECT_SPRITE_GROUP_PURCHASE = 1;
-
-uint16_t GetObjectCallback(CallbackID callback, uint32_t param1, uint32_t param2, const ObjectSpec *spec, Object *o, TileIndex tile, uint8_t view = 0);
+uint16_t GetObjectCallback(CallbackID callback, uint32_t param1, uint32_t param2, const ObjectSpec *spec, Object *o, TileIndex tile, std::span<int32_t> regs100 = {}, uint8_t view = 0);
 
 void DrawNewObjectTile(TileInfo *ti, const ObjectSpec *spec);
 void DrawNewObjectTileInGUI(int x, int y, const ObjectSpec *spec, uint8_t view);
 void AnimateNewObjectTile(TileIndex tile);
-void TriggerObjectTileAnimation(Object *o, TileIndex tile, ObjectAnimationTrigger trigger, const ObjectSpec *spec);
-void TriggerObjectAnimation(Object *o, ObjectAnimationTrigger trigger, const ObjectSpec *spec);
+bool TriggerObjectTileAnimation(Object *o, TileIndex tile, ObjectAnimationTrigger trigger, const ObjectSpec *spec);
+bool TriggerObjectAnimation(Object *o, ObjectAnimationTrigger trigger, const ObjectSpec *spec);
 
 #endif /* NEWGRF_OBJECT_H */

@@ -633,18 +633,6 @@ inline DiagDirection DiagdirBetweenTiles(TileIndex tile_from, TileIndex tile_to)
 }
 
 /**
- * A callback function type for searching tiles.
- *
- * @param tile The tile to test
- * @param user_data additional data for the callback function to use
- * @return A boolean value, depend on the definition of the function.
- */
-typedef bool TestTileOnSearchProc(TileIndex tile, void *user_data);
-
-bool CircularTileSearch(TileIndex *tile, uint size, TestTileOnSearchProc proc, void *user_data);
-bool CircularTileSearch(TileIndex *tile, uint radius, uint w, uint h, TestTileOnSearchProc proc, void *user_data);
-
-/**
  * Get a random tile out of a given seed.
  * @param r the random 'seed'
  * @return a valid tile

@@ -285,7 +285,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Close wi
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Window title - drag this to move window
 STR_TOOLTIP_SHADE                                               :{BLACK}Shade window - only show the title bar
 STR_TOOLTIP_DEBUG                                               :{BLACK}Show NewGRF debug information
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}Resize window to default size. Ctrl+Click to store current size as default
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Resize window to default size. Ctrl+Click to store current size as default. Double Ctrl+Click to reset stored default
 STR_TOOLTIP_STICKY                                              :{BLACK}Mark this window as uncloseable by the 'Close All Windows' key. Ctrl+Click to also save state as default
 STR_TOOLTIP_RESIZE                                              :{BLACK}Click and drag to resize this window
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Toggle large/small window size
@@ -444,7 +444,6 @@ STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Place houses
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Game options
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Settings
 STR_SETTINGS_MENU_AI_SETTINGS                                   :AI settings
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Game script settings
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF settings
@@ -959,22 +958,26 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Copy the
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Game Options
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :General
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Choose general settings
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :Choose general settings
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Graphics
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Choose graphics settings
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :Choose graphics settings
 STR_GAME_OPTIONS_TAB_SOUND                                      :Sound
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Choose sound and music settings
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Choose sound and music settings
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Social
-STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Choose social integration settings
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Choose social integration settings
+STR_GAME_OPTIONS_TAB_ADVANCED                                   :Advanced
+STR_GAME_OPTIONS_TAB_ADVANCED_TOOLTIP                           :Change advanced settings
 
 STR_GAME_OPTIONS_VOLUME                                         :Volume
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Sound effects
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Music
 
+STR_GAME_OPTIONS_SETTING                                        :{STRING}: {ORANGE}{STRING}
+
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Currency units
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Currency units selection
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Currency units
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Currency units selection
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({RAW_STRING})
 
@@ -1025,8 +1028,8 @@ STR_GAME_OPTIONS_CURRENCY_LVL                                   :Latvian Lats
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portuguese Escudo
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Ukrainian Hryvnia
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autosave
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Select interval between automatic game saves
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Autosave
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Select interval between automatic game saves
 
 # Autosave dropdown
 ###length 5
@@ -1036,77 +1039,79 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Every 30 minute
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Every 60 minutes
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Every 120 minutes
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Language
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Select the interface language to use
+STR_GAME_OPTIONS_LANGUAGE                                       :Language
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Select the interface language to use
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{RAW_STRING} ({NUM}% completed)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Fullscreen
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Check this box to play OpenTTD fullscreen mode
+STR_GAME_OPTIONS_FULLSCREEN                                     :Fullscreen
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Check this box to play OpenTTD fullscreen mode
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Screen resolution
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Select the screen resolution to use
+STR_GAME_OPTIONS_RESOLUTION                                     :Screen resolution
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Select the screen resolution to use
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :other
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hardware acceleration
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Check this box to allow OpenTTD to try to use hardware acceleration. A changed setting will only be applied upon game restart
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Hardware acceleration
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Check this box to allow OpenTTD to try to use hardware acceleration. A changed setting will only be applied upon game restart
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}The setting will only take effect after a game restart
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Check this box to v-sync the screen. A changed setting will only be applied upon game restart. Only works with hardware acceleration enabled
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Check this box to v-sync the screen. A changed setting will only be applied upon game restart. Only works with hardware acceleration enabled
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Current driver: {RAW_STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Current driver: {RAW_STRING}
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Interface size
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Drag slider to set interface size. Ctrl+Drag for continuous adjustment
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Auto-detect size
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Check this box to detect interface size automatically
+STR_GAME_OPTIONS_INTERFACE                                      :Interface
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Scale bevels
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Check this box to scale bevels by interface size
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Interface size
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Drag slider to set interface size. Ctrl+Drag for continuous adjustment
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Auto-detect size
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Check this box to detect interface size automatically
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Use traditional sprite font
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Check this box if you prefer to use the traditional fixed-size sprite font
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Anti-alias fonts
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Check this box to anti-alias resizable fonts
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Scale bevels
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Check this box to scale bevels by interface size
+
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Use traditional sprite font
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Check this box if you prefer to use the traditional fixed-size sprite font
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Anti-alias fonts
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Check this box to anti-alias resizable fonts
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automated survey
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Participate in automated survey
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}When enabled, OpenTTD will transmit a survey when leaving a game
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}About survey and privacy
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}This opens a browser with more information about the automated survey
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Preview survey result
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Show the survey result of the current running game
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Automated survey
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Participate in automated survey
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :When enabled, OpenTTD will transmit a survey when leaving a game
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :About survey and privacy
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :This opens a browser with more information about the automated survey
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Preview survey result
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Show the survey result of the current running game
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Graphics
+STR_GAME_OPTIONS_DISPLAY                                        :Display
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Display refresh rate
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Select the screen refresh rate to use
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Display refresh rate
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Select the screen refresh rate to use
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Refresh rates higher than 60Hz might impact performance.
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Base graphics set
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Select the base graphics set to use (cannot be changed in-game, only from the main menu)
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Additional information about the base graphics set
+STR_GAME_OPTIONS_BASE_GRF                                       :Base graphics set
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Select the base graphics set to use (cannot be changed in-game, only from the main menu)
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Additional information about the base graphics set
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Base sounds set
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Select the base sounds set to use (cannot be changed in-game, only from the main menu)
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Additional information about the base sounds set
+STR_GAME_OPTIONS_BASE_SFX                                       :Base sounds set
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Select the base sounds set to use (cannot be changed in-game, only from the main menu)
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Additional information about the base sounds set
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Base music set
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Select the base music set to use
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Additional information about the base music set
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Base music set
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Select the base music set to use
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Additional information about the base music set
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Get Content
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Check for new and updated content to download
 
-STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(no plugins to integrate with social platforms installed)
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :(no plugins to integrate with social platforms installed)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{RAW_STRING} ({RAW_STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Platform:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Plugin state:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{RAW_STRING} ({RAW_STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Platform:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :Plugin state:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Running
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Failed to initialize
@@ -1219,12 +1224,11 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permissive (no 
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No suitable AIs available...{}{}You can download several AIs via the 'Online Content' system
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Settings
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filter:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Expand all
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Collapse all
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Reset all values
+# Settings tree in the Game Options window
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Filter:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Expand all
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Collapse all
+STR_CONFIG_SETTING_RESET_ALL                                    :Reset all values
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(no explanation available)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING1}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Default value: {ORANGE}{STRING1}
@@ -1237,9 +1241,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Company setting
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Caution!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}This action will reset all game settings to their default values.{}Are you sure you want to proceed?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Category:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Type:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restricts the list below using predefined filters
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Category:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Type:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Restricts the list below using predefined filters
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Basic (show only important settings)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Advanced (show most settings)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Expert (show all settings, including weird ones)
@@ -1256,9 +1260,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Company setting
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- None -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Show all search results by setting{}{SILVER}Category {BLACK}to {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Show all search results by setting{}{SILVER}Type {BLACK}to {WHITE}All setting types
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Show all search results by setting{}{SILVER}Category {BLACK}to {WHITE}{STRING} {BLACK}and {SILVER}Type {BLACK}to {WHITE}All setting types
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Show all search results by setting{}{PUSH_COLOUR}{SILVER}Category {POP_COLOUR}to {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Show all search results by setting{}{PUSH_COLOUR}{SILVER}Type {POP_COLOUR}to {WHITE}All setting types
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Show all search results by setting{}{PUSH_COLOUR}{SILVER}Category {POP_COLOUR}to {PUSH_COLOUR}{WHITE}{STRING} {POP_COLOUR}and {PUSH_COLOUR}{SILVER}Type {POP_COLOUR}to {WHITE}All setting types
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Off
@@ -2191,7 +2195,8 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... no c
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU driver crashed the game. Hardware acceleration disabled
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}New Game
 STR_INTRO_LOAD_GAME                                             :{BLACK}Load Game
@@ -2203,11 +2208,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multipla
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Game Options
 STR_INTRO_HIGHSCORE                                             :{BLACK}Highscore Table
 STR_INTRO_HELP                                                  :{BLACK}Help & Manuals
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Settings
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Settings
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Online Content
-STR_INTRO_AI_SETTINGS                                           :{BLACK}AI Settings
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Game Script Settings
 STR_INTRO_QUIT                                                  :{BLACK}Exit
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start a new game. Ctrl+Click skips map configuration
@@ -2225,11 +2226,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Select '
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Open game options
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Open highscore table
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Get access to documentation and online resources
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Open settings
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Open NewGRF settings
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Check for new and updated content to download
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Open AI settings
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Open Game script settings
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Exit 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}The currently selected base graphics set is missing {NUM} sprite{P "" s}. Please check for updates for the baseset.
@@ -3076,6 +3073,12 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Select t
 STR_FOUND_TOWN_CITY                                             :{BLACK}City
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Cities grow faster than regular towns{}Depending on settings, they are bigger when founded
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Town expansion:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Buildings
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Increase buildings of towns
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Roads
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Increase roads of towns
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Town road layout:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Select road layout used for this town
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Original
@@ -3525,15 +3528,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Save pre
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}List of available presets, select one to copy it to the save name below
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Enter a name for the preset
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Currently selected name for the preset to save
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Cancel
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Don't change the preset
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Save
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Save the preset to the current selected name
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Change base graphics parameters
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Change NewGRF parameters
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Close
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Reset
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Set all parameters to their default value
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
@@ -3702,6 +3702,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Change t
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Expand
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Increase size of town
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Expand buildings
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Increase buildings of town
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Expand roads
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Increase roads of town
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Delete
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Delete this town completely
 
@@ -4440,10 +4444,10 @@ STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Show shi
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Show aircraft's orders. Ctrl+Click to show aircraft's timetable
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Show train details
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Show road vehicle details
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Show ship details
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Show aircraft details
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Show train details. Ctrl+Click to show train's group
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Show vehicle details. Ctrl+Click to show vehicle's group
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Show ship details. Ctrl+Click to show ship's group
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Show aircraft details. Ctrl+Click to show aircraft's group
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Current train action - click to stop/start train
@@ -4767,15 +4771,15 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Timetabl
 STR_TIMETABLE_NO_TRAVEL                                         :No travel
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Travel (automatic; timetabled by next manual order)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Travel (not timetabled)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Travel (not timetabled) with at most {2:VELOCITY}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Travel (not timetabled) with at most {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Travel for {STRING1}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Travel for {STRING1} with at most {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Travel (for {STRING1}, not timetabled)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Travel (for {STRING1}, not timetabled) with at most {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(stay for {STRING1}, not timetabled)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(travel for {STRING1}, not timetabled)
-STR_TIMETABLE_STAY_FOR                                          :and stay for {STRING1}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :and travel for {STRING1}
+STR_TIMETABLE_STAY_FOR                                          :{SPACE}and stay for {STRING1}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}and travel for {STRING1}
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}This timetable will take approximately {STRING1} to complete
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}This timetable will take {STRING1} to complete
@@ -4894,8 +4898,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Accept
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Select highlighted script
-STR_AI_LIST_CANCEL                                              :{BLACK}Cancel
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Don't change the script
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Take a screenshot
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normal screenshot
@@ -4908,7 +4910,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minimap 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}AI Parameters
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Game Script Parameters
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Close
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{RAW_STRING}: {ORANGE}{STRING1}
 
@@ -5886,6 +5887,7 @@ STR_CURRENCY_SHORT_GIGA                                         :{NBSP}bn
 STR_CURRENCY_SHORT_TERA                                         :{NBSP}tn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_LEFT_ARROW                                             :{LEFT_ARROW}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
@@ -5925,3 +5927,11 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{RAW_STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Open badge configuration
+STR_BADGE_CONFIG_RESET                                          :Reset
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Badge Icons
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Badge Filters
+STR_BADGE_CONFIG_PREVIEW                                        :Preview Image
+STR_BADGE_CONFIG_NAME                                           :Name
+STR_BADGE_FILTER_ANY_LABEL                                      :Any {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} is {STRING}

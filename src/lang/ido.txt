@@ -466,6 +466,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Ludo Sel
 
 
 
+
 ###length 45
 
 
@@ -475,6 +476,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Ludo Sel
 
 
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altra
+
 
 
 
@@ -539,7 +541,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Kustumigita ({N
 ###length 4
 
 
-# Settings tree window
+# Settings tree in the Game Options window
 
 
 
@@ -824,7 +826,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violkolora
 # Video initalization errors
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nova Ludo
 STR_INTRO_LOAD_GAME                                             :{BLACK}Charjas Ludo
@@ -1004,6 +1005,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grandeso
 
 
 
+
 # Fund new industry window
 
 # Industry cargoes window
@@ -1081,7 +1083,6 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versiono
 # NewGRF save preset window
 
 # NewGRF parameters window
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Klozas
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Nombro di parametri: {ORANGE}{NUM}
 

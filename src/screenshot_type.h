@@ -21,7 +21,7 @@
  * @param pitch    Number of pixels to write (1 byte for 8bpp, 4 bytes for 32bpp). @see Colour
  * @param n        Number of lines to write.
  */
-using ScreenshotCallback = void(void *userdata, void *buf, uint y, uint pitch, uint n);
+using ScreenshotCallback = std::function<void (void *buf, uint y, uint pitch, uint n)>;
 
 /** Base interface for a SoundLoader implementation. */
 class ScreenshotProvider : public PriorityBaseProvider<ScreenshotProvider> {
@@ -36,7 +36,7 @@ public:
 		ProviderManager<ScreenshotProvider>::Unregister(*this);
 	}
 
-	virtual bool MakeImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette) = 0;
+	virtual bool MakeImage(std::string_view name, const ScreenshotCallback &callb, uint w, uint h, int pixelformat, const Colour *palette) = 0;
 };
 
 #endif /* SCREENSHOT_TYPE_H */

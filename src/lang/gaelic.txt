@@ -572,7 +572,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Fàg an-seo
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Roghainnean a' gheama
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Roghainnean
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Roghainnean NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Roghainnean trìd-shoilleireachd
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Ainmean nam bailtean gan sealltainn
@@ -1055,8 +1054,9 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Roghainn
 
 
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Aonadan airgeadra
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Tagh aonadan airgeadra
+
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Aonadan airgeadra
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Tagh aonadan airgeadra
 
 
 ###length 45
@@ -1095,21 +1095,21 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Gnàthaichte...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Cairtbheileach
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iorànach
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Fèin-shàbhaladh
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Tagh dè cho tric ’s a thèid an geama fèin-shàbhaladh
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Fèin-shàbhaladh
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Tagh dè cho tric ’s a thèid an geama fèin-shàbhaladh
 
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Dheth
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Cànan
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Tagh cànan an eadar-aghaidh a chleachdas tu
+STR_GAME_OPTIONS_LANGUAGE                                       :Cànan
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Tagh cànan an eadar-aghaidh a chleachdas tu
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Làn-sgrìn
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Cuir cromag sa bhogsa seo gus OpenTTD a chluiche sa mhodh làn-sgrìn
+STR_GAME_OPTIONS_FULLSCREEN                                     :Làn-sgrìn
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Cuir cromag sa bhogsa seo gus OpenTTD a chluiche sa mhodh làn-sgrìn
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Dùmhlachd-bhreacaidh na sgrìn
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Tagh dùmhlachd-bhreacaidh na sgrìn a chleachdas tu
+STR_GAME_OPTIONS_RESOLUTION                                     :Dùmhlachd-bhreacaidh na sgrìn
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Tagh dùmhlachd-bhreacaidh na sgrìn a chleachdas tu
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Gnàthaichte
 
 
@@ -1122,17 +1122,18 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Gnàthaichte
 
 
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Seata grafaigeachd bunasach
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Tagh an seata grafaigeachd bunasach a chleachdas tu
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Barrachd fiosrachaidh mun t-seata ghrafaigeachd bhunasach
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Seata fhuaimean bunasach
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Tagh an seata fhuaimean bunasach a chleachdas tu
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Barrachd fiosrachaidh mun t-seata fhuaimean bhunasach
+STR_GAME_OPTIONS_BASE_GRF                                       :Seata grafaigeachd bunasach
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Tagh an seata grafaigeachd bunasach a chleachdas tu
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Barrachd fiosrachaidh mun t-seata ghrafaigeachd bhunasach
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Seata ciùil bunasach
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Tagh an seata ciùil bunasach a chleachdas tu
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Barrachd fiosrachaidh mun t-seata chiùil bhunasach
+STR_GAME_OPTIONS_BASE_SFX                                       :Seata fhuaimean bunasach
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Tagh an seata fhuaimean bunasach a chleachdas tu
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Barrachd fiosrachaidh mun t-seata fhuaimean bhunasach
+
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Seata ciùil bunasach
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Tagh an seata ciùil bunasach a chleachdas tu
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Barrachd fiosrachaidh mun t-seata chiùil bhunasach
 
 
 
@@ -1235,11 +1236,10 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Coibhneil
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Chan eil IF freagarrach ri fhaighinn...{}’S urrainn dhut roghainn dhe IFan a luchdadh a-nuas leis an t-siostam “Susbaint air loidhne"
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Roghainnean
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Sreang criathraige:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Leudaich a h-uile
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Co-theannaich a h-uile
+# Settings tree in the Game Options window
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Sreang criathraige:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Leudaich a h-uile
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Co-theannaich a h-uile
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(chan eil mìneachadh ri làimh)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Luach bunaiteach: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Seòrsa an roghainn: {ORANGE}{STRING}
@@ -1249,9 +1249,9 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Roghainnean a' 
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Roghainnean na companaidh (thèid an sàbhaladh leis a' gheama; gun bhuaidh ach air geamannan ùra)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Roghainnean na companaidh (thèid an sàbhaladh leis a' gheama; gun bhuaidh ach air a' chompanaidh seo)
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Roinn-seòrsa:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Seòrsa:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Cuingichidh seo an liosta gu h-ìosal le criathradh ro-shocraichte
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Roinn-seòrsa:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Seòrsa:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Cuingichidh seo an liosta gu h-ìosal le criathradh ro-shocraichte
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Bunasach (na seall ach roghainnean cudromach)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Adhartach (a’ mhòrchuid dhe na roghainnean)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Eòlaiche (a h-uile roghainn, a’ gabhail a-steach an fheadhainn neònach)
@@ -1268,9 +1268,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Roghainnean na 
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Chan eil gin -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Seall na h-uile toradh luirg ’s tu a’ suidheachadh{}{SILVER}Roinn-seòrsa {BLACK}air {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Seall na h-uile toradh luirg ’s tu a’ suidheachadh{}{SILVER}Seòrsa {BLACK}air {WHITE}Gach seòrsa
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Seall na h-uile toradh luirg ’s tu a’ suidheachadh{}{SILVER}Roinn-seòrsa {BLACK}air {WHITE}{STRING} {BLACK}agus {SILVER}Seòrsa {BLACK}air {WHITE}Gach seòrsa
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Seall na h-uile toradh luirg ’s tu a’ suidheachadh{}{SILVER}Roinn-seòrsa {BLACK}air {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Seall na h-uile toradh luirg ’s tu a’ suidheachadh{}{SILVER}Seòrsa {BLACK}air {WHITE}Gach seòrsa
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Seall na h-uile toradh luirg ’s tu a’ suidheachadh{}{SILVER}Roinn-seòrsa {BLACK}air {WHITE}{STRING} {BLACK}agus {SILVER}Seòrsa {BLACK}air {WHITE}Gach seòrsa
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Dheth
@@ -2062,7 +2062,6 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Dh'fhài
 # Video initalization errors
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Geama ùr
 STR_INTRO_LOAD_GAME                                             :{BLACK}Luchdaich geama
@@ -2073,8 +2072,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Ioma-chl
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Roghainnean a' gheama
 STR_INTRO_HIGHSCORE                                             :{BLACK}Clàr nan sgòran àrda
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Roghainnean
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Roghainnean NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Susbaint air loidhne
 STR_INTRO_QUIT                                                  :{BLACK}Fàg an-seo
 
@@ -2092,8 +2089,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Tagh an 
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Seall roghainnean a' gheama
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Seall clàr nan sgòran àrda
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Roghainnean an t-seallaidh
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Seall na roghainnean NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Thoir sùil airson susbainte ùire no air a h-ùrachadh ri luchdadh a-nuas
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Fàg “OpenTTD"
 
@@ -2776,6 +2771,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Tagh meu
 STR_FOUND_TOWN_CITY                                             :{BLACK}Mòr-bhaile
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Fàsaidh mòr-bhailtean nas luaithe na bailtean àbhaisteach{}A' crochadh air na roghainnean, tha iad nas motha nuair a thèid an stèidheachadh
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Co-dhealbhachd rathaidean a' bhaile
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Tagh co-dhealbhachd nan rathaidean aig a' bhaile
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Tùsail
@@ -3149,14 +3145,11 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Sàbhail
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Liosta dhe na ro-shocrachaidhean ri làimh, tagh fear gus lethbhreac dheth a chur gun ainm sàbhalaidh gu h-ìosal
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Cuir a-steach ainm an ro-shocrachaidh
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}An t-ainm a chaidh a thaghadh an-dràsta gus an ro-shocrachadh a shàbhaladh ann
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Sguir dheth
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Na atharraich an ro-shocrachadh
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Sàbhail
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Sàbhail an ro-shocrachadh dhan ainm air a thaghadh an-dràsta
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Atharraich paramadairean NewGRF
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Dùin
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Ath-shuidhich
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Suidhich a h-uile paramadair air a luach tùsail
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Paramadair {NUM}
@@ -4212,7 +4205,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Clàr-am
 STR_TIMETABLE_NO_TRAVEL                                         :Na siubhail
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Siubhail (fèin-obrachail; clàr-ama ga chruthachadh leis an ath-òrdugh a làimh)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Siubhail (gun chlàr-ama)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Siubhal le {2:VELOCITY} as motha (gun chlàr-ama)
 STR_TIMETABLE_TRAVEL_FOR                                        :Siubhail fad {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Siubhail fad {STRING} le {VELOCITY} as motha
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Siubhail (fad {STRING} gun chlàr-ama)
@@ -4322,13 +4314,10 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Gabh ris
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Cleachd an sgriobt a thagh thu
-STR_AI_LIST_CANCEL                                              :{BLACK}Sguir dheth
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Na atharraich an sgriobt
 
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :IF
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Dùin
 STR_AI_SETTINGS_RESET                                           :{BLACK}Ath-shuidhich
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

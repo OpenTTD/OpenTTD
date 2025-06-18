@@ -34,6 +34,7 @@
 #include "error.h"
 #include "order_cmd.h"
 #include "company_cmd.h"
+#include "core/string_consumer.hpp"
 
 #include "widgets/order_widget.h"
 
@@ -224,7 +225,7 @@ static StringID GetOrderGoToString(const Order &order)
  * @param middle X position between order index and order text
  * @param right Right border for text drawing
  */
-void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int y, bool selected, bool timetable, int left, int middle, int right)
+void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_index, int y, bool selected, bool timetable, int left, int middle, int right)
 {
 	bool rtl = _current_text_dir == TD_RTL;
 
@@ -354,8 +355,7 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 
 	/* Check range for aircraft. */
 	if (v->type == VEH_AIRCRAFT && Aircraft::From(v)->GetRange() > 0 && order->IsGotoOrder()) {
-		const Order *next = order->next != nullptr ? order->next : v->GetFirstOrder();
-		if (GetOrderDistance(order, next, v) > Aircraft::From(v)->acache.cached_max_range_sqr) {
+		if (GetOrderDistance(order_index, v->orders->GetNext(order_index), v) > Aircraft::From(v)->acache.cached_max_range_sqr) {
 			line += GetString(STR_ORDER_OUT_OF_RANGE);
 		}
 	}
@@ -371,9 +371,7 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
  */
 static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 {
-	/* Override the index as it is not coming from a pool, so would not be initialised correctly. */
-	Order order;
-	order.index = OrderID::Begin();
+	Order order{};
 
 	/* check depot first */
 	if (IsDepotTypeTile(tile, (TransportType)(uint)v->type) && IsTileOwner(tile, _local_company)) {
@@ -656,9 +654,7 @@ private:
 	 */
 	void OrderClick_NearestDepot()
 	{
-		Order order;
-		order.next = nullptr;
-		order.index = OrderID::Begin();
+		Order order{};
 		order.MakeGoToDepot(DepotID::Invalid(), ODTFB_PART_OF_ORDERS,
 				_settings_client.gui.new_nonstop && this->vehicle->IsGroundVehicle() ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
 		order.SetDepotActionType(ODATFB_NEAREST_DEPOT);
@@ -815,10 +811,7 @@ public:
 
 		if (_settings_client.gui.quick_goto && v->owner == _local_company) {
 			/* If there are less than 2 station, make Go To active. */
-			int station_orders = 0;
-			for (const Order *order : v->Orders()) {
-				if (order->IsType(OT_GOTO_STATION)) station_orders++;
-			}
+			int station_orders = std::ranges::count_if(v->Orders(), [](const Order &order) { return order.IsType(OT_GOTO_STATION); });
 
 			if (station_orders < 2) this->OrderClick_Goto(OPOS_GOTO);
 		}
@@ -829,7 +822,7 @@ public:
 	{
 		switch (widget) {
 			case WID_O_ORDER_LIST:
-				resize.height = GetCharacterHeight(FS_NORMAL);
+				fill.height = resize.height = GetCharacterHeight(FS_NORMAL);
 				size.height = 6 * resize.height + padding.height;
 				break;
 
@@ -1113,11 +1106,12 @@ public:
 		int y = ir.top;
 		int line_height = this->GetWidget<NWidgetBase>(WID_O_ORDER_LIST)->resize_y;
 
-		int i = this->vscroll->GetPosition();
-		const Order *order = this->vehicle->GetOrder(i);
+		VehicleOrderID i = this->vscroll->GetPosition();
+		VehicleOrderID num_orders = this->vehicle->GetNumOrders();
+
 		/* First draw the highlighting underground if it exists. */
 		if (this->order_over != INVALID_VEH_ORDER_ID) {
-			while (order != nullptr) {
+			while (i < num_orders) {
 				/* Don't draw anything if it extends past the end of the window. */
 				if (!this->vscroll->IsVisible(i)) break;
 
@@ -1132,25 +1126,22 @@ public:
 				y += line_height;
 
 				i++;
-				order = order->next;
 			}
 
 			/* Reset counters for drawing the orders. */
 			y = ir.top;
 			i = this->vscroll->GetPosition();
-			order = this->vehicle->GetOrder(i);
 		}
 
 		/* Draw the orders. */
-		while (order != nullptr) {
+		while (i < num_orders) {
 			/* Don't draw anything if it extends past the end of the window. */
 			if (!this->vscroll->IsVisible(i)) break;
 
-			DrawOrderString(this->vehicle, order, i, y, i == this->selected_order, false, ir.left, middle, ir.right);
+			DrawOrderString(this->vehicle, this->vehicle->GetOrder(i), i, y, i == this->selected_order, false, ir.left, middle, ir.right);
 			y += line_height;
 
 			i++;
-			order = order->next;
 		}
 
 		if (this->vscroll->IsVisible(i)) {
@@ -1202,9 +1193,7 @@ public:
 				if (this->goto_type == OPOS_CONDITIONAL) {
 					VehicleOrderID order_id = this->GetOrderFromPt(_cursor.pos.y - this->top);
 					if (order_id != INVALID_VEH_ORDER_ID) {
-						Order order;
-						order.next = nullptr;
-						order.index = OrderID::Begin();
+						Order order{};
 						order.MakeConditional(order_id);
 
 						Command<CMD_INSERT_ORDER>::Post(STR_ERROR_CAN_T_INSERT_NEW_ORDER, this->vehicle->tile, this->vehicle->index, this->OrderGetSel(), order);
@@ -1227,8 +1216,8 @@ public:
 				if (sel == INVALID_VEH_ORDER_ID || this->vehicle->owner != _local_company) {
 					/* Deselect clicked order */
 					this->selected_order = -1;
-				} else if (sel == this->selected_order) {
-					if (click_count > 1 && this->vehicle->type == VEH_TRAIN && sel < this->vehicle->GetNumOrders()) {
+				} else if (sel == this->selected_order && click_count > 1) {
+					if (this->vehicle->type == VEH_TRAIN && sel < this->vehicle->GetNumOrders()) {
 						Command<CMD_MODIFY_ORDER>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER,
 								this->vehicle->tile, this->vehicle->index, sel,
 								MOF_STOP_LOCATION, (this->vehicle->GetOrder(sel)->GetStopLocation() + 1) % OSL_END);
@@ -1362,25 +1351,26 @@ public:
 		if (!str.has_value() || str->empty()) return;
 
 		VehicleOrderID sel = this->OrderGetSel();
-		uint value = atoi(str->c_str());
+		auto value = ParseInteger(*str, 10, true);
+		if (!value.has_value()) return;
 
 		switch (this->vehicle->GetOrder(sel)->GetConditionVariable()) {
 			case OCV_MAX_SPEED:
-				value = ConvertDisplaySpeedToSpeed(value, this->vehicle->type);
+				value = ConvertDisplaySpeedToSpeed(*value, this->vehicle->type);
 				break;
 
 			case OCV_RELIABILITY:
 			case OCV_LOAD_PERCENTAGE:
-				value = Clamp(value, 0, 100);
+				value = Clamp(*value, 0, 100);
 				break;
 
 			default:
 				break;
 		}
-		Command<CMD_MODIFY_ORDER>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER, this->vehicle->tile, this->vehicle->index, sel, MOF_COND_VALUE, Clamp(value, 0, 2047));
+		Command<CMD_MODIFY_ORDER>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER, this->vehicle->tile, this->vehicle->index, sel, MOF_COND_VALUE, Clamp(*value, 0, 2047));
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		switch (widget) {
 			case WID_O_NON_STOP:

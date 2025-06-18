@@ -10,6 +10,7 @@
 #ifndef DROPDOWN_FUNC_H
 #define DROPDOWN_FUNC_H
 
+#include "dropdown_type.h"
 #include "window_gui.h"
 
 /* Show drop down menu containing a fixed list of strings */

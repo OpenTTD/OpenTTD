@@ -24,7 +24,7 @@ static void DefineGotoLabel(ByteReader &buf)
 
 	uint8_t nfo_label = buf.ReadByte();
 
-	_cur.grffile->labels.emplace_back(nfo_label, _cur.nfo_line, _cur.file->GetPos());
+	_cur_gps.grffile->labels.emplace_back(nfo_label, _cur_gps.nfo_line, _cur_gps.file->GetPos());
 
 	GrfMsg(2, "DefineGotoLabel: GOTO target with label 0x{:02X}", nfo_label);
 }

@@ -76,6 +76,43 @@ enum StationHadVehicleOfType : uint8_t {
 };
 DECLARE_ENUM_AS_BIT_SET(StationHadVehicleOfType)
 
+/** Randomisation triggers for stations and roadstops */
+enum class StationRandomTrigger : uint8_t {
+	NewCargo, ///< Trigger station on new cargo arrival.
+	CargoTaken, ///< Trigger station when cargo is completely taken.
+	VehicleArrives, ///< Trigger platform when train arrives.
+	VehicleDeparts, ///< Trigger platform when train leaves.
+	VehicleLoads, ///< Trigger platform when train loads/unloads.
+	PathReservation, ///< Trigger platform when train reserves path.
+};
+using StationRandomTriggers = EnumBitSet<StationRandomTrigger, uint8_t>;
+
+/** Animation triggers for stations and roadstops. */
+enum class StationAnimationTrigger : uint8_t {
+	Built, ///< Trigger tile when built.
+	NewCargo, ///< Trigger station on new cargo arrival.
+	CargoTaken, ///< Trigger station when cargo is completely taken.
+	VehicleArrives, ///< Trigger platform when train arrives.
+	VehicleDeparts, ///< Trigger platform when train leaves.
+	VehicleLoads, ///< Trigger platform when train loads/unloads.
+	AcceptanceTick, ///< Trigger station every 250 ticks.
+	TileLoop, ///< Trigger in the periodic tile loop.
+	PathReservation, ///< Trigger platform when train reserves path.
+	End
+};
+using StationAnimationTriggers = EnumBitSet<StationAnimationTrigger, uint16_t>;
+
+/** Animation triggers for airport tiles */
+enum class AirportAnimationTrigger : uint8_t {
+	Built, ///< Triggered when the airport is built (for all tiles at the same time).
+	TileLoop, ///< Triggered in the periodic tile loop.
+	NewCargo, ///< Triggered when new cargo arrives at the station (for all tiles at the same time).
+	CargoTaken, ///< Triggered when a cargo type is completely removed from the station (for all tiles at the same time).
+	AcceptanceTick, ///< Triggered every 250 ticks (for all tiles at the same time).
+	AirplaneTouchdown, ///< Triggered when an airplane (not a helicopter) touches down at the airport (for single tile).
+};
+using AirportAnimationTriggers = EnumBitSet<AirportAnimationTrigger, uint8_t>;
+
 /* The different catchment area sizes. */
 static constexpr uint CA_NONE = 0; ///< Catchment when the station has no facilities
 static constexpr uint CA_BUS = 3; ///< Catchment for bus stops with "modified catchment" enabled

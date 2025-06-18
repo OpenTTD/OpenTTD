@@ -108,10 +108,12 @@ static void FixTTDDepots()
 	}
 }
 
-#define FIXNUM(x, y, z) (((((x) << 16) / (y)) + 1) << z)
-
 static uint32_t RemapOldTownName(uint32_t townnameparts, uint8_t old_town_name_type)
 {
+	auto fix_num = [](uint32_t i, uint32_t n, uint8_t s) -> uint32_t {
+		return ((i << 16) / n + 1) << s;
+	};
+
 	switch (old_town_name_type) {
 		case 0: case 3: // English, American
 			/* Already OK */
@@ -120,7 +122,7 @@ static uint32_t RemapOldTownName(uint32_t townnameparts, uint8_t old_town_name_t
 		case 1: // French
 			/* For some reason 86 needs to be subtracted from townnameparts
 			 * 0000 0000 0000 0000 0000 0000 1111 1111 */
-			return FIXNUM(townnameparts - 86, lengthof(_name_french_real), 0);
+			return fix_num(townnameparts - 86, lengthof(_name_french_real), 0);
 
 		case 2: // German
 			Debug(misc, 0, "German Townnames are buggy ({})", townnameparts);
@@ -128,18 +130,16 @@ static uint32_t RemapOldTownName(uint32_t townnameparts, uint8_t old_town_name_t
 
 		case 4: // Latin-American
 			/* 0000 0000 0000 0000 0000 0000 1111 1111 */
-			return FIXNUM(townnameparts, lengthof(_name_spanish_real), 0);
+			return fix_num(townnameparts, lengthof(_name_spanish_real), 0);
 
 		case 5: // Silly
 			/* NUM_SILLY_1 - lower 16 bits
 			 * NUM_SILLY_2 - upper 16 bits without leading 1 (first 8 bytes)
 			 * 1000 0000 2222 2222 0000 0000 1111 1111 */
-			return FIXNUM(townnameparts, lengthof(_name_silly_1), 0) | FIXNUM(GB(townnameparts, 16, 8), lengthof(_name_silly_2), 16);
+			return fix_num(townnameparts, lengthof(_name_silly_1), 0) | fix_num(GB(townnameparts, 16, 8), lengthof(_name_silly_2), 16);
 	}
 	return 0;
 }
-
-#undef FIXNUM
 
 static void FixOldTowns()
 {
@@ -643,16 +643,14 @@ static bool LoadOldOrder(LoadgameState &ls, int num)
 {
 	if (!LoadChunk(ls, nullptr, order_chunk)) return false;
 
-	Order *o = new (OrderID(num)) Order();
-	o->AssignOrder(UnpackOldOrder(_old_order));
+	OldOrderSaveLoadItem &o = AllocateOldOrder(num);
+	o.order.AssignOrder(UnpackOldOrder(_old_order));
 
-	if (o->IsType(OT_NOTHING)) {
-		delete o;
-	} else {
+	if (!o.order.IsType(OT_NOTHING) && num > 0) {
 		/* Relink the orders to each other (in the orders for one vehicle are behind each other,
 		 * with an invalid order (OT_NOTHING) as indication that it is the last order */
-		Order *prev = Order::GetIfValid(num - 1);
-		if (prev != nullptr) prev->next = o;
+		OldOrderSaveLoadItem *prev = GetOldOrder(num + 1 - 1);
+		if (prev != nullptr) prev->next = num + 1; // next is 1-based.
 	}
 
 	return true;
@@ -875,7 +873,7 @@ static bool LoadOldIndustry(LoadgameState &ls, int num)
 			i->random_colour = RemapTTOColour(i->random_colour);
 		}
 
-		Industry::industries[i->type].push_back(i->index); // Assume savegame indices are sorted.
+		Industry::industries[i->type].insert(i->index);
 	} else {
 		delete i;
 	}
@@ -1364,7 +1362,7 @@ bool LoadOldVehicle(LoadgameState &ls, int num)
 		if (_old_order_ptr != 0 && _old_order_ptr != 0xFFFFFFFF) {
 			uint max = _savegame_type == SGT_TTO ? 3000 : 5000;
 			uint old_id = RemapOrderIndex(_old_order_ptr);
-			if (old_id < max) v->old_orders = Order::Get(old_id); // don't accept orders > max number of orders
+			if (old_id < max) v->old_orders = old_id + 1;
 		}
 		v->current_order.AssignOrder(UnpackOldOrder(_old_order));
 

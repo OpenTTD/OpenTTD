@@ -42,7 +42,7 @@ static constexpr NWidgetPart _background_widgets[] = {
  * Window description for the background window to prevent smearing.
  */
 static WindowDesc _background_desc(
-	WDP_MANUAL, nullptr, 0, 0,
+	WDP_MANUAL, {}, 0, 0,
 	WC_BOOTSTRAP, WC_NONE,
 	WindowDefaultFlag::NoClose,
 	_background_widgets
@@ -78,7 +78,7 @@ static constexpr NWidgetPart _nested_bootstrap_errmsg_widgets[] = {
 
 /** Window description for the error window. */
 static WindowDesc _bootstrap_errmsg_desc(
-	WDP_CENTER, nullptr, 0, 0,
+	WDP_CENTER, {}, 0, 0,
 	WC_BOOTSTRAP, WC_NONE,
 	{WindowDefaultFlag::Modal, WindowDefaultFlag::NoClose},
 	_nested_bootstrap_errmsg_widgets
@@ -135,7 +135,7 @@ static constexpr NWidgetPart _nested_bootstrap_download_status_window_widgets[] 
 
 /** Window description for the download window */
 static WindowDesc _bootstrap_download_status_window_desc(
-	WDP_CENTER, nullptr, 0, 0,
+	WDP_CENTER, {}, 0, 0,
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
 	{WindowDefaultFlag::Modal, WindowDefaultFlag::NoClose},
 	_nested_bootstrap_download_status_window_widgets
@@ -187,7 +187,7 @@ static constexpr NWidgetPart _bootstrap_query_widgets[] = {
 
 /** The window description for the query. */
 static WindowDesc _bootstrap_query_desc(
-	WDP_CENTER, nullptr, 0, 0,
+	WDP_CENTER, {}, 0, 0,
 	WC_CONFIRM_POPUP_QUERY, WC_NONE,
 	WindowDefaultFlag::NoClose,
 	_bootstrap_query_widgets
@@ -273,10 +273,10 @@ public:
 		_network_content_client.RequestContentList(CONTENT_TYPE_BASE_GRAPHICS);
 	}
 
-	void OnReceiveContentInfo(const ContentInfo *ci) override
+	void OnReceiveContentInfo(const ContentInfo &ci) override
 	{
 		/* And once the meta data is received, start downloading it. */
-		_network_content_client.Select(ci->id);
+		_network_content_client.Select(ci.id);
 		new BootstrapContentDownloadStatusWindow();
 		this->Close();
 	}
@@ -320,19 +320,19 @@ public:
 		_network_content_client.RequestContentList(CONTENT_TYPE_BASE_GRAPHICS);
 	}
 
-	void OnReceiveContentInfo(const ContentInfo *ci) override
+	void OnReceiveContentInfo(const ContentInfo &ci) override
 	{
 		if (this->downloading) return;
 
 		/* And once the metadata is received, start downloading it. */
-		_network_content_client.Select(ci->id);
+		_network_content_client.Select(ci.id);
 		_network_content_client.DownloadSelectedContent(this->total_files, this->total_bytes);
 		this->downloading = true;
 
 		EM_ASM({ if (window["openttd_bootstrap"]) openttd_bootstrap($0, $1); }, this->downloaded_bytes, this->total_bytes);
 	}
 
-	void OnDownloadProgress(const ContentInfo *, int bytes) override
+	void OnDownloadProgress(const ContentInfo &, int bytes) override
 	{
 		/* A negative value means we are resetting; for example, when retrying or using a fallback. */
 		if (bytes < 0) {

@@ -205,7 +205,7 @@ public:
 					sprite_dim = maxdim(sprite_dim, GetScaledSpriteSize(bridge_data.spec->sprite));
 					text_dim = maxdim(text_dim, GetStringBoundingBox(GetBridgeSelectString(bridge_data)));
 				}
-				resize.height = std::max(sprite_dim.height, text_dim.height) + padding.height; // Max of both sizes + account for matrix edges.
+				fill.height = resize.height = std::max(sprite_dim.height, text_dim.height) + padding.height; // Max of both sizes + account for matrix edges.
 
 				this->icon_width = sprite_dim.width; // Width of bridge icon.
 				size.width = this->icon_width + WidgetDimensions::scaled.hsep_normal + text_dim.width + padding.width;
@@ -239,7 +239,7 @@ public:
 				for (auto it = first; it != last; ++it) {
 					const BridgeSpec *b = it->spec;
 					DrawSpriteIgnorePadding(b->sprite, b->pal, tr.WithWidth(this->icon_width, rtl), SA_HOR_CENTER | SA_BOTTOM);
-					DrawStringMultiLine(tr.Indent(this->icon_width + WidgetDimensions::scaled.hsep_normal, rtl), GetBridgeSelectString(*it));
+					DrawStringMultiLineWithClipping(tr.Indent(this->icon_width + WidgetDimensions::scaled.hsep_normal, rtl), GetBridgeSelectString(*it));
 					tr = tr.Translate(0, this->resize.step_height);
 				}
 				break;
@@ -283,7 +283,7 @@ public:
 		}
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		if (widget == WID_BBS_DROPDOWN_CRITERIA && this->bridges.SortType() != index) {
 			this->bridges.SetSortType(index);

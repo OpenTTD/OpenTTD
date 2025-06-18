@@ -13,7 +13,6 @@
 #include "gfx_type.h"
 
 static const uint ICON_CMDLN_SIZE     = 1024; ///< maximum length of a typed in command
-static const uint ICON_MAX_STREAMSIZE = 2048; ///< maximum length of a totally expanded command
 
 /** Return values of console hooks (#IConsoleHook). */
 enum ConsoleHookResult : uint8_t {
@@ -30,8 +29,8 @@ enum ConsoleHookResult : uint8_t {
  * If you want to handle multiple words as one, enclose them in double-quotes
  * eg. 'say "hello everybody"'
  */
-typedef bool IConsoleCmdProc(uint8_t argc, char *argv[]);
-typedef ConsoleHookResult IConsoleHook(bool echo);
+using IConsoleCmdProc = bool(std::span<std::string_view>);
+using IConsoleHook = ConsoleHookResult(bool);
 struct IConsoleCmd {
 	IConsoleCmd(const std::string &name, IConsoleCmdProc *proc, IConsoleHook *hook) : name(name), proc(proc), hook(hook) {}
 
@@ -53,7 +52,7 @@ struct IConsoleCmd {
  * - ";" allows for combining commands (see example 'ng')
  */
 struct IConsoleAlias {
-	IConsoleAlias(const std::string &name, const std::string &cmdline) : name(name), cmdline(cmdline) {}
+	IConsoleAlias(const std::string &name, std::string_view cmdline) : name(name), cmdline(cmdline) {}
 
 	std::string name;           ///< name of the alias
 	std::string cmdline;        ///< command(s) that is/are being aliased
@@ -71,7 +70,7 @@ struct IConsole
 	/* Commands */
 	static void CmdRegister(const std::string &name, IConsoleCmdProc *proc, IConsoleHook *hook = nullptr);
 	static IConsoleCmd *CmdGet(const std::string &name);
-	static void AliasRegister(const std::string &name, const std::string &cmd);
+	static void AliasRegister(const std::string &name, std::string_view cmd);
 	static IConsoleAlias *AliasGet(const std::string &name);
 };
 
@@ -80,9 +79,6 @@ void IConsoleClearBuffer();
 
 /* console std lib (register ingame commands/aliases) */
 void IConsoleStdLibRegister();
-
-/* Supporting functions */
-bool GetArgumentInteger(uint32_t *value, const char *arg);
 
 void IConsoleGUIInit();
 void IConsoleGUIFree();

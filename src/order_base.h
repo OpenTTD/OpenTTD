@@ -20,9 +20,7 @@
 #include "timer/timer_game_tick.h"
 #include "saveload/saveload.h"
 
-using OrderPool = Pool<Order, OrderID, 256>;
 using OrderListPool = Pool<OrderList, OrderListID, 128>;
-extern OrderPool _order_pool;
 extern OrderListPool _orderlist_pool;
 
 template <typename, typename>
@@ -31,15 +29,16 @@ class EndianBufferWriter;
 /* If you change this, keep in mind that it is saved on 3 places:
  * - Load_ORDR, all the global orders
  * - Vehicle -> current_order
- * - REF_ORDER (all REFs are currently limited to 16 bits!!)
  */
-struct Order : OrderPool::PoolItem<&_order_pool> {
+struct Order {
 private:
 	friend struct VEHSChunkHandler;                             ///< Loading of ancient vehicles.
 	friend SaveLoadTable GetOrderDescription();                 ///< Saving and loading of orders.
 	/* So we can use private/protected variables in the saveload code */
 	friend class SlVehicleCommon;
 	friend class SlVehicleDisaster;
+	template <typename T>
+	friend class SlOrders;
 
 	template <typename Tcont, typename Titer>
 	friend EndianBufferWriter<Tcont, Titer> &operator <<(EndianBufferWriter<Tcont, Titer> &buffer, const Order &data);
@@ -56,11 +55,8 @@ private:
 	uint16_t max_speed = UINT16_MAX; ///< How fast the vehicle may go on the way to the destination.
 
 public:
-	Order *next = nullptr; ///< Pointer to next order. If nullptr, end of list
-
 	Order() {}
 	Order(uint8_t type, uint8_t flags, DestinationID dest) : type(type), flags(flags), dest(dest) {}
-	~Order();
 
 	/**
 	 * Check whether this order is of the given type.
@@ -248,7 +244,17 @@ public:
 	void ConvertFromOldSavegame();
 };
 
-void InsertOrder(Vehicle *v, Order *new_o, VehicleOrderID sel_ord);
+/** Compatibility struct to allow saveload of pool-based orders. */
+struct OldOrderSaveLoadItem {
+	uint32_t index = 0; ///< This order's index (1-based).
+	uint32_t next = 0; ///< The next order index (1-based).
+	Order order{}; ///< The order data.
+};
+
+OldOrderSaveLoadItem *GetOldOrder(size_t pool_index);
+OldOrderSaveLoadItem &AllocateOldOrder(size_t pool_index);
+
+void InsertOrder(Vehicle *v, Order &&new_o, VehicleOrderID sel_ord);
 void DeleteOrder(Vehicle *v, VehicleOrderID sel_ord);
 
 /**
@@ -259,31 +265,49 @@ struct OrderList : OrderListPool::PoolItem<&_orderlist_pool> {
 private:
 	friend void AfterLoadVehiclesPhase1(bool part_of_load); ///< For instantiating the shared vehicle chain
 	friend SaveLoadTable GetOrderListDescription(); ///< Saving and loading of order lists.
+	friend struct ORDLChunkHandler;
+	template <typename T>
+	friend class SlOrders;
 
-	VehicleOrderID num_orders = INVALID_VEH_ORDER_ID; ///< NOSAVE: How many orders there are in the list.
 	VehicleOrderID num_manual_orders = 0; ///< NOSAVE: How many manually added orders are there in the list.
 	uint num_vehicles = 0; ///< NOSAVE: Number of vehicles that share this order list.
 	Vehicle *first_shared = nullptr; ///< NOSAVE: pointer to the first vehicle in the shared order chain.
-	Order *first = nullptr; ///< First order of the order list.
+	std::vector<Order> orders; ///< Orders of the order list.
+	uint32_t old_order_index = 0;
 
 	TimerGameTick::Ticks timetable_duration{}; ///< NOSAVE: Total timetabled duration of the order list.
 	TimerGameTick::Ticks total_duration{}; ///< NOSAVE: Total (timetabled or not) duration of the order list.
 
 public:
 	/** Default constructor producing an invalid order list. */
-	OrderList(VehicleOrderID num_orders = INVALID_VEH_ORDER_ID) : num_orders(num_orders) { }
+	OrderList() {}
 
 	/**
 	 * Create an order list with the given order chain for the given vehicle.
 	 *  @param chain pointer to the first order of the order chain
 	 *  @param v any vehicle using this orderlist
 	 */
-	OrderList(Order *chain, Vehicle *v) { this->Initialize(chain, v); }
+	OrderList(Order &&order, Vehicle *v)
+	{
+		this->orders.emplace_back(std::move(order));
+		this->Initialize(v);
+	}
+
+	OrderList(std::vector<Order> &&orders, Vehicle *v)
+	{
+		this->orders = std::move(orders);
+		this->Initialize(v);
+	}
+
+	OrderList(Vehicle *v)
+	{
+		this->Initialize(v);
+	}
 
 	/** Destructor. Invalidates OrderList for re-usage by the pool. */
 	~OrderList() {}
 
-	void Initialize(Order *chain, Vehicle *v);
+	void Initialize(Vehicle *v);
 
 	void RecalculateTimetableDuration();
 
@@ -291,15 +315,33 @@ public:
 	 * Get the first order of the order chain.
 	 * @return the first order of the chain.
 	 */
-	inline Order *GetFirstOrder() const { return this->first; }
+	inline VehicleOrderID GetFirstOrder() const { return this->orders.empty() ? INVALID_VEH_ORDER_ID : 0; }
 
-	Order *GetOrderAt(int index) const;
+	inline std::span<const Order> GetOrders() const { return this->orders; }
+	inline std::span<Order> GetOrders() { return this->orders; }
+
+	/**
+	 * Get a certain order of the order chain.
+	 * @param index zero-based index of the order within the chain.
+	 * @return the order at position index.
+	 */
+	const Order *GetOrderAt(VehicleOrderID index) const
+	{
+		if (index >= this->GetNumOrders()) return nullptr;
+		return &this->orders[index];
+	}
+
+	Order *GetOrderAt(VehicleOrderID index)
+	{
+		if (index >= this->GetNumOrders()) return nullptr;
+		return &this->orders[index];
+	}
 
 	/**
 	 * Get the last order of the order chain.
 	 * @return the last order of the chain.
 	 */
-	inline Order *GetLastOrder() const { return this->GetOrderAt(this->num_orders - 1); }
+	inline VehicleOrderID GetLastOrder() const { return this->orders.empty() ? INVALID_VEH_ORDER_ID : (this->GetNumOrders() - 1); }
 
 	/**
 	 * Get the order after the given one or the first one, if the given one is the
@@ -307,13 +349,17 @@ public:
 	 * @param curr Order to find the next one for.
 	 * @return Next order.
 	 */
-	inline const Order *GetNext(const Order *curr) const { return (curr->next == nullptr) ? this->GetFirstOrder() : curr->next; }
+	inline VehicleOrderID GetNext(VehicleOrderID cur) const
+	{
+		if (this->orders.empty()) return INVALID_VEH_ORDER_ID;
+		return static_cast<VehicleOrderID>((cur + 1) % this->GetNumOrders());
+	}
 
 	/**
 	 * Get number of orders in the order list.
 	 * @return number of orders in the chain.
 	 */
-	inline VehicleOrderID GetNumOrders() const { return this->num_orders; }
+	inline VehicleOrderID GetNumOrders() const { return static_cast<VehicleOrderID>(std::size(this->orders)); }
 
 	/**
 	 * Get number of manually added orders in the order list.
@@ -321,12 +367,12 @@ public:
 	 */
 	inline VehicleOrderID GetNumManualOrders() const { return this->num_manual_orders; }
 
-	StationIDStack GetNextStoppingStation(const Vehicle *v, const Order *first = nullptr, uint hops = 0) const;
-	const Order *GetNextDecisionNode(const Order *next, uint hops) const;
+	StationIDStack GetNextStoppingStation(const Vehicle *v, VehicleOrderID first = INVALID_VEH_ORDER_ID, uint hops = 0) const;
+	VehicleOrderID GetNextDecisionNode(VehicleOrderID next, uint hops) const;
 
-	void InsertOrderAt(Order *new_order, int index);
-	void DeleteOrderAt(int index);
-	void MoveOrder(int from, int to);
+	void InsertOrderAt(Order &&order, VehicleOrderID index);
+	void DeleteOrderAt(VehicleOrderID index);
+	void MoveOrder(VehicleOrderID from, VehicleOrderID to);
 
 	/**
 	 * Is this a shared order list?

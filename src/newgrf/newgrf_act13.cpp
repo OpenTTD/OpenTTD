@@ -50,7 +50,7 @@ static void TranslateGRFStrings(ByteReader &buf)
 	 * new_scheme has to be true as well, which will also be implicitly the case for version 8
 	 * and higher. A language id of 0x7F will be overridden by a non-generic id, so this will
 	 * not change anything if a string has been provided specifically for this language. */
-	uint8_t language = _cur.grffile->grf_version >= 8 ? buf.ReadByte() : 0x7F;
+	uint8_t language = _cur_gps.grffile->grf_version >= 8 ? buf.ReadByte() : 0x7F;
 	uint8_t num_strings = buf.ReadByte();
 	uint16_t first_id  = buf.ReadWord();
 

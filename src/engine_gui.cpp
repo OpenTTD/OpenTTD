@@ -141,7 +141,7 @@ struct EnginePreviewWindow : Window {
 };
 
 static WindowDesc _engine_preview_desc(
-	WDP_CENTER, nullptr, 0, 0,
+	WDP_CENTER, {}, 0, 0,
 	WC_ENGINE_PREVIEW, WC_NONE,
 	WindowDefaultFlag::Construction,
 	_nested_engine_preview_widgets

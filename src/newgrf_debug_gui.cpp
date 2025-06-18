@@ -19,6 +19,7 @@
 #include "textbuf_gui.h"
 #include "vehicle_gui.h"
 #include "zoom_func.h"
+#include "core/string_consumer.hpp"
 
 #include "engine_base.h"
 #include "industry.h"
@@ -49,7 +50,7 @@
 #include "safeguards.h"
 
 /** The sprite picker. */
-NewGrfDebugSpritePicker _newgrf_debug_sprite_picker = { SPM_NONE, nullptr, std::vector<SpriteID>() };
+NewGrfDebugSpritePicker _newgrf_debug_sprite_picker = { SPM_NONE, nullptr, {} };
 
 /**
  * Get the feature index related to the window number.
@@ -85,13 +86,12 @@ enum NIType : uint8_t {
 	NIT_CARGO, ///< The property is a cargo
 };
 
-typedef const void *NIOffsetProc(const void *b);
+using NIReadProc = uint32_t(const void *b);
 
 /** Representation of the data from a NewGRF property. */
 struct NIProperty {
 	std::string_view name;          ///< A (human readable) name for the property
-	NIOffsetProc *offset_proc; ///< Callback proc to get the actual variable address in memory
-	uint8_t read_size;            ///< Number of bytes (i.e. byte, word, dword etc)
+	NIReadProc *read_proc; ///< Callback proc to get the actual variable from memory
 	uint8_t prop;                 ///< The number of the property
 	uint8_t type;
 };
@@ -103,8 +103,7 @@ struct NIProperty {
  */
 struct NICallback {
 	std::string_view name;          ///< The human readable name of the callback
-	NIOffsetProc *offset_proc; ///< Callback proc to get the actual variable address in memory
-	uint8_t read_size;            ///< The number of bytes (i.e. byte, word, dword etc) to read
+	NIReadProc *read_proc; ///< Callback proc to get the actual variable from memory
 	std::variant<
 		std::monostate,
 		VehicleCallbackMask,
@@ -360,7 +359,7 @@ struct NewGRFInspectWindow : Window {
 			}
 
 			case WID_NGRFI_MAINPANEL:
-				resize.height = std::max(11, GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal);
+				fill.height = resize.height = std::max(11, GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal);
 				resize.width  = 1;
 
 				size.height = 5 * resize.height + WidgetDimensions::scaled.frametext.Vertical();
@@ -412,7 +411,7 @@ struct NewGRFInspectWindow : Window {
 
 		GrfSpecFeature f = GetFeatureNum(this->window_number);
 		int h = GetVehicleImageCellSize((VehicleType)(VEH_TRAIN + (f - GSF_TRAINS)), EIT_IN_DEPOT).height;
-		int y = CenterBounds(br.top, br.bottom, h);
+		int y = CentreBounds(br.top, br.bottom, h);
 		DrawVehicleImage(v->First(), br, VehicleID::Invalid(), EIT_IN_DETAILS, skip);
 
 		/* Highlight the articulated part (this is different to the whole-vehicle highlighting of DrawVehicleImage */
@@ -487,15 +486,7 @@ struct NewGRFInspectWindow : Window {
 		if (!nif->properties.empty()) {
 			this->DrawString(r, i++, "Properties:");
 			for (const NIProperty &nip : nif->properties) {
-				const void *ptr = nip.offset_proc(base);
-				uint value;
-				switch (nip.read_size) {
-					case 1: value = *(const uint8_t  *)ptr; break;
-					case 2: value = *(const uint16_t *)ptr; break;
-					case 4: value = *(const uint32_t *)ptr; break;
-					default: NOT_REACHED();
-				}
-
+				uint32_t value = nip.read_proc(base);
 				this->DrawString(r, i++, fmt::format("  {:02x}: {} ({})", nip.prop, this->GetPropertyString(nip, value), nip.name));
 			}
 		}
@@ -504,17 +495,10 @@ struct NewGRFInspectWindow : Window {
 			this->DrawString(r, i++, "Callbacks:");
 			for (const NICallback &nic : nif->callbacks) {
 				if (!std::holds_alternative<std::monostate>(nic.cb_bit)) {
-					const void *ptr = nic.offset_proc(base_spec);
-					uint value;
-					switch (nic.read_size) {
-						case 1: value = *(const uint8_t  *)ptr; break;
-						case 2: value = *(const uint16_t *)ptr; break;
-						case 4: value = *(const uint32_t *)ptr; break;
-						default: NOT_REACHED();
-					}
+					uint32_t value = nic.read_proc(base_spec);
 
 					struct visitor {
-						uint value;
+						uint32_t value;
 
 						bool operator()(const std::monostate &) { return false; }
 						bool operator()(const VehicleCallbackMask &bit) { return static_cast<VehicleCallbackMasks>(this->value).Test(bit); }
@@ -608,9 +592,11 @@ struct NewGRFInspectWindow : Window {
 
 	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (!str.has_value() || str->empty()) return;
+		if (!str.has_value()) return;
 
-		NewGRFInspectWindow::var60params[GetFeatureNum(this->window_number)][this->current_edit_param - 0x60] = std::strtol(str->c_str(), nullptr, 16);
+		auto val = ParseInteger<int32_t>(*str, 10, true);
+		if (!val.has_value()) return;
+		NewGRFInspectWindow::var60params[GetFeatureNum(this->window_number)][this->current_edit_param - 0x60] = *val;
 		this->SetDirty();
 	}
 
@@ -819,7 +805,7 @@ struct SpriteAlignerWindow : Window {
 	Scrollbar *vscroll = nullptr;
 	std::map<SpriteID, XyOffs> offs_start_map{}; ///< Mapping of starting offsets for the sprites which have been aligned in the sprite aligner window.
 
-	static inline ZoomLevel zoom = ZOOM_LVL_END;
+	static inline ZoomLevel zoom = ZoomLevel::End;
 	static bool centre;
 	static bool crosshair;
 	const Action5Type *act5_type = nullptr; ///< Sprite Area of current selected sprite.
@@ -827,7 +813,7 @@ struct SpriteAlignerWindow : Window {
 	SpriteAlignerWindow(WindowDesc &desc, WindowNumber wno) : Window(desc)
 	{
 		/* On first opening, set initial zoom to current zoom level. */
-		if (SpriteAlignerWindow::zoom == ZOOM_LVL_END) SpriteAlignerWindow::zoom = _gui_zoom;
+		if (SpriteAlignerWindow::zoom == ZoomLevel::End) SpriteAlignerWindow::zoom = _gui_zoom;
 		SpriteAlignerWindow::zoom = Clamp(SpriteAlignerWindow::zoom, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
 
 		/* Oh yes, we assume there is at least one normal sprite! */
@@ -902,9 +888,8 @@ struct SpriteAlignerWindow : Window {
 					d = maxdim(d, GetStringBoundingBox(GetString(STR_SPRITE_ALIGNER_SPRITE, spritefile->GetSimplifiedFilename(), GetParamMaxDigits(6))));
 				}
 				size.width = d.width + padding.width;
-				resize.height = GetCharacterHeight(FS_NORMAL) + padding.height;
+				fill.height = resize.height = GetCharacterHeight(FS_NORMAL) + padding.height;
 				resize.width = 1;
-				fill.height = resize.height;
 				break;
 			}
 
@@ -954,7 +939,7 @@ struct SpriteAlignerWindow : Window {
 				const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget);
 				int step_size = nwid->resize_y;
 
-				const std::vector<SpriteID> &list = _newgrf_debug_sprite_picker.sprites;
+				const FlatSet<SpriteID> &list = _newgrf_debug_sprite_picker.sprites;
 
 				Rect ir = r.Shrink(WidgetDimensions::scaled.matrix);
 				auto [first, last] = this->vscroll->GetVisibleRangeIterators(list);
@@ -1068,8 +1053,8 @@ struct SpriteAlignerWindow : Window {
 				break;
 
 			default:
-				if (IsInsideBS(widget, WID_SA_ZOOM, ZOOM_LVL_END)) {
-					SpriteAlignerWindow::zoom = ZoomLevel(widget - WID_SA_ZOOM);
+				if (IsInsideBS(widget, WID_SA_ZOOM, to_underlying(ZoomLevel::End))) {
+					SpriteAlignerWindow::zoom = static_cast<ZoomLevel>(widget - WID_SA_ZOOM);
 					this->InvalidateData(0, true);
 				}
 				break;
@@ -1078,9 +1063,11 @@ struct SpriteAlignerWindow : Window {
 
 	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (!str.has_value() || str->empty()) return;
+		if (!str.has_value()) return;
 
-		this->current_sprite = atoi(str->c_str());
+		auto value = ParseInteger(*str, 10, true);
+		if (!value.has_value()) return;
+		this->current_sprite = *value;
 		if (this->current_sprite >= GetMaxSpriteID()) this->current_sprite = 0;
 		while (GetSpriteType(this->current_sprite) != SpriteType::Normal) {
 			this->current_sprite = (this->current_sprite + 1) % GetMaxSpriteID();
@@ -1104,9 +1091,9 @@ struct SpriteAlignerWindow : Window {
 		}
 
 		SpriteAlignerWindow::zoom = Clamp(SpriteAlignerWindow::zoom, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
-		for (ZoomLevel z = ZOOM_LVL_BEGIN; z < ZOOM_LVL_END; z++) {
-			this->SetWidgetsDisabledState(z < _settings_client.gui.zoom_min || z > _settings_client.gui.zoom_max, WID_SA_ZOOM + z);
-			this->SetWidgetsLoweredState(SpriteAlignerWindow::zoom == z, WID_SA_ZOOM + z);
+		for (ZoomLevel z = ZoomLevel::Begin; z < ZoomLevel::End; z++) {
+			this->SetWidgetsDisabledState(z < _settings_client.gui.zoom_min || z > _settings_client.gui.zoom_max, WID_SA_ZOOM + to_underlying(z));
+			this->SetWidgetsLoweredState(SpriteAlignerWindow::zoom == z, WID_SA_ZOOM + to_underlying(z));
 		}
 	}
 
@@ -1186,12 +1173,12 @@ static constexpr NWidgetPart _nested_sprite_aligner_widgets[] = {
 					NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SA_SCROLLBAR),
 				EndContainer(),
 				NWidget(NWID_VERTICAL),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_IN_4X), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_MIN), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_IN_2X), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_IN_2X), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_NORMAL), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_NORMAL), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_OUT_2X), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_OUT_4X), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_OUT_8X), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZoomLevel::In4x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_MIN), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZoomLevel::In2x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_IN_2X), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZoomLevel::Normal)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_NORMAL), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZoomLevel::Out2x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZoomLevel::Out4x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZoomLevel::Out8x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X), SetFill(1, 0),
 				EndContainer(),
 			EndContainer(),
 		EndContainer(),

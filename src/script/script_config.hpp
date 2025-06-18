@@ -19,7 +19,7 @@ static const int INT32_DIGITS_WITH_SIGN_AND_TERMINATION = 10 + 1 + 1;
 
 /** Flags for Script settings. */
 enum class ScriptConfigFlag : uint8_t {
-	// Unused flag 0x1.
+	/* Unused flag 0x1. */
 	Boolean   = 1, ///< This value is a boolean (either 0 (false) or 1 (true) ).
 	InGame    = 2, ///< This setting can be changed while the Script is running.
 	Developer = 3, ///< This setting will only be visible when the Script development tools are active.
@@ -78,7 +78,7 @@ public:
 	 * @param force_exact_match If true try to find the exact same version
 	 *   as specified. If false any compatible version is ok.
 	 */
-	void Change(std::optional<std::string> name, int version = -1, bool force_exact_match = false);
+	void Change(std::optional<std::string_view> name, int version = -1, bool force_exact_match = false);
 
 	/**
 	 * Get the ScriptInfo linked to this ScriptConfig.
@@ -122,7 +122,7 @@ public:
 	/**
 	 * Set the value of a setting for this config.
 	 */
-	void SetSetting(const std::string_view name, int value);
+	void SetSetting(std::string_view name, int value);
 
 	/**
 	 * Reset all settings to their default value.
@@ -154,7 +154,7 @@ public:
 	 * Convert a string which is stored in the config file or savegames to
 	 *  custom settings of this Script.
 	 */
-	void StringToSettings(const std::string &value);
+	void StringToSettings(std::string_view value);
 
 	/**
 	 * Convert the custom settings to a string that can be stored in the config

@@ -35,7 +35,7 @@
 
 
 /** Cache of ParagraphLayout lines. */
-Layouter::LineCache *Layouter::linecache;
+std::unique_ptr<Layouter::LineCache> Layouter::linecache;
 
 /** Cache of Font instances. */
 Layouter::FontColourMap Layouter::fonts[FS_END];
@@ -174,11 +174,21 @@ Layouter::Layouter(std::string_view str, int maxw, FontSize fontsize) : string(s
 			}
 		}
 
-		/* Move all lines into a local cache so we can reuse them later on more easily. */
-		for (;;) {
-			auto l = line.layout->NextLine(maxw);
-			if (l == nullptr) break;
-			this->push_back(std::move(l));
+		if (line.cached_width != maxw) {
+			/* First run or width has changed, so we need to go through the layouter. Lines are moved into a cache to
+			 * be reused if the width is not changed. */
+			line.cached_layout.clear();
+			line.cached_width = maxw;
+			for (;;) {
+				auto l = line.layout->NextLine(maxw);
+				if (l == nullptr) break;
+				line.cached_layout.push_back(std::move(l));
+			}
+		}
+
+		/* Retrieve layout from the cache. */
+		for (const auto &l : line.cached_layout) {
+			this->push_back(l.get());
 		}
 
 		/* Break out if this was the last line. */
@@ -214,7 +224,7 @@ static bool IsConsumedFormattingCode(char32_t ch)
 	if (ch == SCC_PUSH_COLOUR) return true;
 	if (ch == SCC_POP_COLOUR) return true;
 	if (ch >= SCC_FIRST_FONT && ch <= SCC_LAST_FONT) return true;
-	// All other characters defined in Unicode standard are assumed to be non-consumed.
+	/* All other characters defined in Unicode standard are assumed to be non-consumed. */
 	return false;
 }
 
@@ -380,19 +390,20 @@ Layouter::LineCacheItem &Layouter::GetCachedParagraphLayout(std::string_view str
 {
 	if (linecache == nullptr) {
 		/* Create linecache on first access to avoid trouble with initialisation order of static variables. */
-		linecache = new LineCache();
+		linecache = std::make_unique<LineCache>(4096);
 	}
 
-	if (auto match = linecache->find(LineCacheQuery{state, str});
-		match != linecache->end()) {
-		return match->second;
+	if (auto match = linecache->GetIfValid(LineCacheQuery{state, str});
+		match != nullptr) {
+		return *match;
 	}
 
 	/* Create missing entry */
 	LineCacheKey key;
 	key.state_before = state;
 	key.str.assign(str);
-	return (*linecache)[std::move(key)];
+	linecache->Insert(key, {});
+	return *linecache->GetIfValid(key);
 }
 
 /**
@@ -400,33 +411,21 @@ Layouter::LineCacheItem &Layouter::GetCachedParagraphLayout(std::string_view str
  */
 void Layouter::ResetLineCache()
 {
-	if (linecache != nullptr) linecache->clear();
-}
-
-/**
- * Reduce the size of linecache if necessary to prevent infinite growth.
- */
-void Layouter::ReduceLineCache()
-{
-	if (linecache != nullptr) {
-		/* TODO LRU cache would be fancy, but not exactly necessary */
-		if (linecache->size() > 4096) ResetLineCache();
-	}
+	if (linecache != nullptr) linecache->Clear();
 }
 
 /**
  * Get the leading corner of a character in a single-line string relative
  * to the start of the string.
  * @param str String containing the character.
- * @param ch Pointer to the character in the string.
+ * @param pos Index to the character in the string.
  * @param start_fontsize Font size to start the text with.
  * @return Upper left corner of the glyph associated with the character.
  */
-ParagraphLayouter::Position GetCharPosInString(std::string_view str, const char *ch, FontSize start_fontsize)
+ParagraphLayouter::Position GetCharPosInString(std::string_view str, size_t pos, FontSize start_fontsize)
 {
-	/* Ensure "ch" is inside "str" or at the exact end. */
-	assert(ch >= str.data() && (ch - str.data()) <= static_cast<ptrdiff_t>(str.size()));
-	auto it_ch = str.begin() + (ch - str.data());
+	assert(pos <= str.size());
+	auto it_ch = str.begin() + pos;
 
 	Layouter layout(str, INT32_MAX, start_fontsize);
 	return layout.GetCharPosition(it_ch);

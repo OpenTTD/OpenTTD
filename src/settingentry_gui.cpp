@@ -94,7 +94,7 @@ uint BaseSettingEntry::Draw(GameSettings *settings_ptr, int left, int right, int
 	if (cur_row >= max_row) return cur_row;
 
 	bool rtl = _current_text_dir == TD_RTL;
-	int offset = (rtl ? -(int)_circle_size.width : (int)_circle_size.width) / 2;
+	int offset = (rtl ? -(int)_setting_circle_size.width : (int)_setting_circle_size.width) / 2;
 	int level_width = rtl ? -WidgetDimensions::scaled.hsep_indent : WidgetDimensions::scaled.hsep_indent;
 
 	int x = rtl ? right : left;
@@ -123,16 +123,6 @@ uint BaseSettingEntry::Draw(GameSettings *settings_ptr, int left, int right, int
 }
 
 /* == SettingEntry methods == */
-
-/**
- * Constructor for a single setting in the 'advanced settings' window
- * @param name Name of the setting in the setting table
- */
-SettingEntry::SettingEntry(const char *name)
-{
-	this->name = name;
-	this->setting = nullptr;
-}
 
 /**
  * Initialization of a setting entry
@@ -293,7 +283,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 	int32_t value = sd->Read(ResolveObject(settings_ptr, sd));
 	if (sd->IsBoolSetting()) {
 		/* Draw checkbox for boolean-value either on/off */
-		DrawBoolButton(buttons_left, button_y, value != 0, editable);
+		DrawBoolButton(buttons_left, button_y, COLOUR_YELLOW, COLOUR_MAUVE, value != 0, editable);
 	} else if (sd->flags.Test(SettingFlag::GuiDropdown)) {
 		/* Draw [v] button for settings of an enum-type */
 		DrawDropDownButton(buttons_left, button_y, COLOUR_YELLOW, state != 0, editable);
@@ -621,8 +611,8 @@ uint SettingsPage::Draw(GameSettings *settings_ptr, int left, int right, int y, 
 void SettingsPage::DrawSetting(GameSettings *, int left, int right, int y, bool) const
 {
 	bool rtl = _current_text_dir == TD_RTL;
-	DrawSprite((this->folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED), PAL_NONE, rtl ? right - _circle_size.width : left, y + (SETTING_HEIGHT - _circle_size.height) / 2);
-	DrawString(rtl ? left : left + _circle_size.width + WidgetDimensions::scaled.hsep_normal, rtl ? right - _circle_size.width - WidgetDimensions::scaled.hsep_normal : right, y + (SETTING_HEIGHT - GetCharacterHeight(FS_NORMAL)) / 2, this->title, TC_ORANGE);
+	DrawSprite((this->folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED), PAL_NONE, rtl ? right - _setting_circle_size.width : left, y + (SETTING_HEIGHT - _setting_circle_size.height) / 2);
+	DrawString(rtl ? left : left + _setting_circle_size.width + WidgetDimensions::scaled.hsep_normal, rtl ? right - _setting_circle_size.width - WidgetDimensions::scaled.hsep_normal : right, y + (SETTING_HEIGHT - GetCharacterHeight(FS_NORMAL)) / 2, this->title, TC_ORANGE);
 }
 
 /** Construct settings tree */

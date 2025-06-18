@@ -66,7 +66,7 @@ static constexpr EndSegmentReasons ESRF_ABORT_PF_MASK = {
 
 inline std::string ValueStr(EndSegmentReasons flags)
 {
-	static const std::initializer_list<std::string_view> end_segment_reason_names = {
+	static const std::initializer_list<const std::string_view> end_segment_reason_names = {
 		"DEAD_END", "RAIL_TYPE", "INFINITE_LOOP", "SEGMENT_TOO_LONG", "CHOICE_FOLLOWS",
 		"DEPOT", "WAYPOINT", "STATION", "SAFE_TILE",
 		"PATH_TOO_LONG", "FIRST_TWO_WAY_RED", "LOOK_AHEAD_END", "TARGET_REACHED"

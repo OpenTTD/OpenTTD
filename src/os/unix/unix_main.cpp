@@ -21,7 +21,11 @@
 int CDECL main(int argc, char *argv[])
 {
 	/* Make sure our arguments contain only valid UTF-8 characters. */
-	for (int i = 0; i < argc; i++) StrMakeValidInPlace(argv[i]);
+	std::vector<std::string_view> params;
+	for (int i = 0; i < argc; ++i) {
+		StrMakeValidInPlace(argv[i]);
+		params.emplace_back(argv[i]);
+	}
 
 	CrashLog::InitialiseCrashLog();
 
@@ -29,5 +33,5 @@ int CDECL main(int argc, char *argv[])
 
 	signal(SIGPIPE, SIG_IGN);
 
-	return openttd_main(std::span(argv, argc));
+	return openttd_main(params);
 }

@@ -46,10 +46,10 @@ static void FeatureNewName(ByteReader &buf)
 	 * S data          new texts, each of them zero-terminated, after
 	 *                 which the next name begins. */
 
-	bool new_scheme = _cur.grffile->grf_version >= 7;
+	bool new_scheme = _cur_gps.grffile->grf_version >= 7;
 
-	uint8_t feature  = buf.ReadByte();
-	if (feature >= GSF_END && feature != 0x48) {
+	GrfSpecFeature feature{buf.ReadByte()};
+	if (feature >= GSF_END && feature != GSF_ORIGINAL_STRINGS) {
 		GrfMsg(1, "FeatureNewName: Unsupported feature 0x{:02X}, skipping", feature);
 		return;
 	}
@@ -77,7 +77,7 @@ static void FeatureNewName(ByteReader &buf)
 	uint32_t feature_overlay = generic ? 0 : ((feature + 1) << 16);
 
 	for (; id < endid && buf.HasData(); id++) {
-		const std::string_view name = buf.ReadString();
+		std::string_view name = buf.ReadString();
 		GrfMsg(8, "FeatureNewName: 0x{:04X} <- {}", id, StrMakeValid(name));
 
 		switch (feature) {
@@ -86,67 +86,67 @@ static void FeatureNewName(ByteReader &buf)
 			case GSF_SHIPS:
 			case GSF_AIRCRAFT:
 				if (!generic) {
-					Engine *e = GetNewEngine(_cur.grffile, (VehicleType)feature, id, _cur.grfconfig->flags.Test(GRFConfigFlag::Static));
+					Engine *e = GetNewEngine(_cur_gps.grffile, (VehicleType)feature, id, _cur_gps.grfconfig->flags.Test(GRFConfigFlag::Static));
 					if (e == nullptr) break;
-					StringID string = AddGRFString(_cur.grffile->grfid, GRFStringID{feature_overlay | e->index.base()}, lang, new_scheme, false, name, e->info.string_id);
+					StringID string = AddGRFString(_cur_gps.grffile->grfid, GRFStringID{feature_overlay | e->index.base()}, lang, new_scheme, false, name, e->info.string_id);
 					e->info.string_id = string;
 				} else {
-					AddGRFString(_cur.grffile->grfid, GRFStringID{id}, lang, new_scheme, true, name, STR_UNDEFINED);
+					AddGRFString(_cur_gps.grffile->grfid, GRFStringID{id}, lang, new_scheme, true, name, STR_UNDEFINED);
 				}
 				break;
 
 			case GSF_BADGES: {
 				if (!generic) {
-					auto found = _cur.grffile->badge_map.find(id);
-					if (found == std::end(_cur.grffile->badge_map)) {
+					auto found = _cur_gps.grffile->badge_map.find(id);
+					if (found == std::end(_cur_gps.grffile->badge_map)) {
 						GrfMsg(1, "FeatureNewName: Attempt to name undefined badge 0x{:X}, ignoring", id);
 					} else {
 						Badge &badge = *GetBadge(found->second);
-						badge.name = AddGRFString(_cur.grffile->grfid, GRFStringID{feature_overlay | id}, lang, true, false, name, STR_UNDEFINED);
+						badge.name = AddGRFString(_cur_gps.grffile->grfid, GRFStringID{feature_overlay | id}, lang, true, false, name, STR_UNDEFINED);
 					}
 				} else {
-					AddGRFString(_cur.grffile->grfid, GRFStringID{id}, lang, new_scheme, true, name, STR_UNDEFINED);
+					AddGRFString(_cur_gps.grffile->grfid, GRFStringID{id}, lang, new_scheme, true, name, STR_UNDEFINED);
 				}
 				break;
 			}
 
 			default:
 				if (IsInsideMM(id, 0xD000, 0xD400) || IsInsideMM(id, 0xD800, 0x10000)) {
-					AddGRFString(_cur.grffile->grfid, GRFStringID{id}, lang, new_scheme, true, name, STR_UNDEFINED);
+					AddGRFString(_cur_gps.grffile->grfid, GRFStringID{id}, lang, new_scheme, true, name, STR_UNDEFINED);
 					break;
 				}
 
 				switch (GB(id, 8, 8)) {
 					case 0xC4: // Station class name
-						if (GB(id, 0, 8) >= _cur.grffile->stations.size() || _cur.grffile->stations[GB(id, 0, 8)] == nullptr) {
+						if (GB(id, 0, 8) >= _cur_gps.grffile->stations.size() || _cur_gps.grffile->stations[GB(id, 0, 8)] == nullptr) {
 							GrfMsg(1, "FeatureNewName: Attempt to name undefined station 0x{:X}, ignoring", GB(id, 0, 8));
 						} else {
-							StationClassID class_index = _cur.grffile->stations[GB(id, 0, 8)]->class_index;
-							StationClass::Get(class_index)->name = AddGRFString(_cur.grffile->grfid, GRFStringID{id}, lang, new_scheme, false, name, STR_UNDEFINED);
+							StationClassID class_index = _cur_gps.grffile->stations[GB(id, 0, 8)]->class_index;
+							StationClass::Get(class_index)->name = AddGRFString(_cur_gps.grffile->grfid, GRFStringID{id}, lang, new_scheme, false, name, STR_UNDEFINED);
 						}
 						break;
 
 					case 0xC5: // Station name
-						if (GB(id, 0, 8) >= _cur.grffile->stations.size() || _cur.grffile->stations[GB(id, 0, 8)] == nullptr) {
+						if (GB(id, 0, 8) >= _cur_gps.grffile->stations.size() || _cur_gps.grffile->stations[GB(id, 0, 8)] == nullptr) {
 							GrfMsg(1, "FeatureNewName: Attempt to name undefined station 0x{:X}, ignoring", GB(id, 0, 8));
 						} else {
-							_cur.grffile->stations[GB(id, 0, 8)]->name = AddGRFString(_cur.grffile->grfid, GRFStringID{id}, lang, new_scheme, false, name, STR_UNDEFINED);
+							_cur_gps.grffile->stations[GB(id, 0, 8)]->name = AddGRFString(_cur_gps.grffile->grfid, GRFStringID{id}, lang, new_scheme, false, name, STR_UNDEFINED);
 						}
 						break;
 
 					case 0xC7: // Airporttile name
-						if (GB(id, 0, 8) >= _cur.grffile->airtspec.size() || _cur.grffile->airtspec[GB(id, 0, 8)] == nullptr) {
+						if (GB(id, 0, 8) >= _cur_gps.grffile->airtspec.size() || _cur_gps.grffile->airtspec[GB(id, 0, 8)] == nullptr) {
 							GrfMsg(1, "FeatureNewName: Attempt to name undefined airport tile 0x{:X}, ignoring", GB(id, 0, 8));
 						} else {
-							_cur.grffile->airtspec[GB(id, 0, 8)]->name = AddGRFString(_cur.grffile->grfid, GRFStringID{id}, lang, new_scheme, false, name, STR_UNDEFINED);
+							_cur_gps.grffile->airtspec[GB(id, 0, 8)]->name = AddGRFString(_cur_gps.grffile->grfid, GRFStringID{id}, lang, new_scheme, false, name, STR_UNDEFINED);
 						}
 						break;
 
 					case 0xC9: // House name
-						if (GB(id, 0, 8) >= _cur.grffile->housespec.size() || _cur.grffile->housespec[GB(id, 0, 8)] == nullptr) {
+						if (GB(id, 0, 8) >= _cur_gps.grffile->housespec.size() || _cur_gps.grffile->housespec[GB(id, 0, 8)] == nullptr) {
 							GrfMsg(1, "FeatureNewName: Attempt to name undefined house 0x{:X}, ignoring.", GB(id, 0, 8));
 						} else {
-							_cur.grffile->housespec[GB(id, 0, 8)]->building_name = AddGRFString(_cur.grffile->grfid, GRFStringID{id}, lang, new_scheme, false, name, STR_UNDEFINED);
+							_cur_gps.grffile->housespec[GB(id, 0, 8)]->building_name = AddGRFString(_cur_gps.grffile->grfid, GRFStringID{id}, lang, new_scheme, false, name, STR_UNDEFINED);
 						}
 						break;
 

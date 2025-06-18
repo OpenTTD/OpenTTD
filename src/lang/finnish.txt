@@ -285,7 +285,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Sulje ik
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Ikkunan otsake – siirrä ikkunaa vetämällä tästä
 STR_TOOLTIP_SHADE                                               :{BLACK}Pienennä ikkuna – näytä vain otsikko
 STR_TOOLTIP_DEBUG                                               :{BLACK}Näytä NewGRF-vianmääritystiedot
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}Palauta ikkunan oletuskoko. Ctrl+napsautus tallentaa nykyisen koon oletukseksi.
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Palauta ikkuna oletuskokoon. Ctrl+napsautus tallentaa nykyisen koon oletukseksi. Ctrl+kaksoisnapautus asettaa oletuskoon alkutilaan
 STR_TOOLTIP_STICKY                                              :{BLACK}Aseta ikkuna säilymään ”Sulje kaikki ikkunat” -napista huolimatta. Ctrl+napsautus tallentaa tilan oletukseksi.
 STR_TOOLTIP_RESIZE                                              :{BLACK}Napsauta ja vedä muuttaaksesi tämän ikkunan kokoa
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Suurenna/pienennä ikkuna
@@ -444,7 +444,6 @@ STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Sijoita taloja
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pelin valinnat
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Asetukset
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Tekoälyasetukset
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Peliskriptiasetukset
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-asetukset
@@ -579,32 +578,32 @@ STR_DAY_NUMBER_30TH                                             :30.
 STR_DAY_NUMBER_31ST                                             :31.
 
 ###length 12
-STR_MONTH_ABBREV_JAN                                            :{NBSP}1.
-STR_MONTH_ABBREV_FEB                                            :{NBSP}2.
-STR_MONTH_ABBREV_MAR                                            :{NBSP}3.
-STR_MONTH_ABBREV_APR                                            :{NBSP}4.
-STR_MONTH_ABBREV_MAY                                            :{NBSP}5.
-STR_MONTH_ABBREV_JUN                                            :{NBSP}6.
-STR_MONTH_ABBREV_JUL                                            :{NBSP}7.
-STR_MONTH_ABBREV_AUG                                            :{NBSP}8.
-STR_MONTH_ABBREV_SEP                                            :{NBSP}9.
+STR_MONTH_ABBREV_JAN                                            :1.
+STR_MONTH_ABBREV_FEB                                            :2.
+STR_MONTH_ABBREV_MAR                                            :3.
+STR_MONTH_ABBREV_APR                                            :4.
+STR_MONTH_ABBREV_MAY                                            :5.
+STR_MONTH_ABBREV_JUN                                            :6.
+STR_MONTH_ABBREV_JUL                                            :7.
+STR_MONTH_ABBREV_AUG                                            :8.
+STR_MONTH_ABBREV_SEP                                            :9.
 STR_MONTH_ABBREV_OCT                                            :10.
 STR_MONTH_ABBREV_NOV                                            :11.
 STR_MONTH_ABBREV_DEC                                            :12.
 
 ###length 12
-STR_MONTH_JAN                                                   :Tammikuu
-STR_MONTH_FEB                                                   :Helmikuu
-STR_MONTH_MAR                                                   :Maaliskuu
-STR_MONTH_APR                                                   :Huhtikuu
-STR_MONTH_MAY                                                   :Toukokuu
-STR_MONTH_JUN                                                   :Kesäkuu
-STR_MONTH_JUL                                                   :Heinäkuu
-STR_MONTH_AUG                                                   :Elokuu
-STR_MONTH_SEP                                                   :Syyskuu
-STR_MONTH_OCT                                                   :Lokakuu
-STR_MONTH_NOV                                                   :Marraskuu
-STR_MONTH_DEC                                                   :Joulukuu
+STR_MONTH_JAN                                                   :tammikuu
+STR_MONTH_FEB                                                   :helmikuu
+STR_MONTH_MAR                                                   :maaliskuu
+STR_MONTH_APR                                                   :huhtikuu
+STR_MONTH_MAY                                                   :toukokuu
+STR_MONTH_JUN                                                   :kesäkuu
+STR_MONTH_JUL                                                   :heinäkuu
+STR_MONTH_AUG                                                   :elokuu
+STR_MONTH_SEP                                                   :syyskuu
+STR_MONTH_OCT                                                   :lokakuu
+STR_MONTH_NOV                                                   :marraskuu
+STR_MONTH_DEC                                                   :joulukuu
 
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Selite
@@ -959,22 +958,26 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Siirrä 
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Pelin valinnat
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Yleiset
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Valitse yleisasetukset
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :Valitse yleisasetukset
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafiikka
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Valitse grafiikka-asetukset
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :Valitse grafiikka-asetukset
 STR_GAME_OPTIONS_TAB_SOUND                                      :Ääni
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Valitse ääni- ja musiikkiasetukset
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Valitse ääni- ja musiikkiasetukset
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Sosiaaliset
-STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Valitse sosiaalisen integraation asetukset
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Valitse sosiaalisen integraation asetukset
+STR_GAME_OPTIONS_TAB_ADVANCED                                   :Edistyneet
+STR_GAME_OPTIONS_TAB_ADVANCED_TOOLTIP                           :Muuta lisäasetuksia
 
 STR_GAME_OPTIONS_VOLUME                                         :Äänenvoimakkuus
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Äänitehosteet
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Musiikki
 
+STR_GAME_OPTIONS_SETTING                                        :{STRING}: {ORANGE}{STRING}
+
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}{NBSP}%
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Rahayksikkö
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Rahayksikön valinta
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Rahayksiköt
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Rahayksiköiden valinta
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -1025,8 +1028,8 @@ STR_GAME_OPTIONS_CURRENCY_LVL                                   :Latvian lati
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portugalin escudo
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Ukrainan hryvnia
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automaattitallennus
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Valitse aikaväli automaattisille pelitallennuksille
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Automaattitallennus
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Valitse automaattisten pelitallennusten välinen aika
 
 # Autosave dropdown
 ###length 5
@@ -1036,77 +1039,79 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :30 minuutin vä
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :60 minuutin välein
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :120 minuutin välein
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Kieli
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Valitse käyttöliittymän kieli
+STR_GAME_OPTIONS_LANGUAGE                                       :Kieli
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Valitse käyttöliittymän kieli
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}{NBSP}% valmiina)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Koko näyttö
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Valitse tämä pelataksesi kokoruututilassa
+STR_GAME_OPTIONS_FULLSCREEN                                     :Koko näyttö
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Valitse tämä pelataksesi OpenTTD:tä koko ruudun tilassa
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Näytön tarkkuus
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Valitse käytettävä näytön tarkkuus
+STR_GAME_OPTIONS_RESOLUTION                                     :Näytön tarkkuus
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Valitse käytettävä näytön tarkkuus
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :muu
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}×{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Laitteistokiihdytys
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Valitse tämä, jos haluat, että OpenTTD yrittää käyttää laitteistokiihdytystä. Muutettu asetus tulee voimaan vasta pelin uudelleenkäynnistyksen jälkeen.
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Laitteistokiihdytys
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Valitse tämä, jos haluat, että OpenTTD yrittää käyttää laitteistokiihdytystä. Muutettu asetus tulee voimaan vasta pelin uudelleenkäynnistyksen jälkeen
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Asetus tulee voimaan vasta pelin uudelleenkäynnistyksen jälkeen
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}Pystytahdistus
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Valitse tämä ottaaksesi käyttöön näytön pystytahdistuksen. Muutettu asetus tulee voimaan vasta pelin uudelleenkäynnistyksen jälkeen. Edellyttää, että laitteistokiihdytys on käytössä.
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :Pystytahdistus
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Valitse tämä ottaaksesi käyttöön näytön pystytahdistuksen. Muutettu asetus tulee voimaan vasta pelin uudelleenkäynnistyksen jälkeen. Edellyttää, että laitteistokiihdytys on käytössä
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Nykyinen ajuri: {STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Nykyinen ajuri: {STRING}
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Käyttöliittymän koko
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Vedä liukusäädintä asettaaksesi käyttöliittymän koon. Pidä Ctrl-näppäintä painettuna säätääksesi portaattomasti
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Tunnista koko automaattisesti
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Valitse tämä ruutu käyttöliittymän koon tunnistamiseksi automaattisesti
+STR_GAME_OPTIONS_INTERFACE                                      :Käyttöliittymä
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Skaalaa viisteet
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Valitse tämä ruutu reunusten skaalaamiseksi käyttöliittymän koon mukaan
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Käyttöliittymän koko
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Vedä liukusäädintä asettaaksesi käyttöliittymän koon. Pidä Ctrl-näppäintä painettuna säätääksesi portaattomasti
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Tunnista koko automaattisesti
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Valitse tämä ruutu käyttöliittymän koon tunnistamiseksi automaattisesti
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Käytä perinteistä sprite-fonttia
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Valitse tämä ruutu käyttääksesi perinteistä kiinteäkokoista sprite-kirjasintyyppiä
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Pehmennä kirjasinten reunoja
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Valitse tämä ruutu pehmentääksesi muuttuvan kokoisten fonttien reunoja
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Skaalaa viisteet
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Valitse tämä ruutu viisteiden skaalaamiseksi käyttöliittymän koon mukaan
+
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Käytä perinteistä sprite-fonttia
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Valitse tämä ruutu käyttääksesi perinteistä kiinteäkokoista sprite-kirjasintyyppiä
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Pehmennä kirjasinten reunoja
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Valitse tämä ruutu pehmentääksesi muuttuvan kokoisten fonttien reunoja
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}×
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automatisoitu tutkimus
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Osallistu automatisoituun tutkimukseen
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Mikäli käytössä, OpenTTD lähettää tilastointitietoja pelistä poistuttaessa
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Tutkimuksesta ja yksityisyydestä
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Avaa selaimen, jossa lisätietoja automatisoidusta tutkimuksesta
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Esikatsele tutkimustulosta
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Näytä meneillään olevan pelin tutkimustulos
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Automatisoitu tutkimus
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Osallistu automatisoituun tutkimukseen
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :Mikäli käytössä, OpenTTD lähettää tilastointitietoja pelistä poistuttaessa
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :Tutkimuksesta ja yksityisyydestä
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Avaa selaimen, missä lisätietoja automatisoidusta tutkimuksesta
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Esikatsele tutkimustulosta
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Näytä meneillään olevan pelin tutkimustulos
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafiikka
+STR_GAME_OPTIONS_DISPLAY                                        :Näyttö
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Näytön virkistystaajuus
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Valitse käytettävä näytönvirkistystaajuus
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Näytön virkistystaajuus
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Valitse käytettävä näytönvirkistystaajuus
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM} Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Yli 60 Hz:n virkistystaajuudet saattavat vaikuttaa suorituskykyyn.
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Perusgrafiikat
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Valitse käytettävät perusgrafiikat (ei vaihdettavissa pelin aikana, ainoastaan päävalikosta)
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Lisätietoja perusgrafiikoista
+STR_GAME_OPTIONS_BASE_GRF                                       :Perusgrafiikkakokoelma
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Valitse käytettävä perusgrafiikkakokoelma (ei vaihdettavissa pelin aikana, ainoastaan päävalikosta)
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Lisätietoja perusgrafiikkakokoelmasta
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Perusäänet
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Valitse käytettävät perusäänet (ei vaihdettavissa pelin aikana, ainoastaan päävalikosta)
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Lisätietoja perusäänistä
+STR_GAME_OPTIONS_BASE_SFX                                       :Perusäänikokoelma
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Valitse käytettävä perusäänikokoelma (ei vaihdettavissa pelin aikana, ainoastaan päävalikosta)
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Lisätietoja perusäänikokoelmasta
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musiikkipaketti
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Valitse käytettävä musiikkipaketti
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Lisätietoja musiikkipaketista
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Musiikkipaketti
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Valitse käytettävä musiikkipaketti
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Lisätietoja musiikkipaketista
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Hae sisältöä
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Tarkista, onko ladattavissa uutta tai päivitettyä sisältöä
 
-STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(ei sosiaalisten alustojen integroinnin liitännäisiä asennettuna)
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :(ei sosiaalisten alustojen integroinnin liitännäisiä asennettuna)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Alusta:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Liitännäisen tila:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Alusta:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :Liitännäisen tila:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Käynnissä
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Alustus epäonnistui
@@ -1219,12 +1224,11 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Salliva (ei vai
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ei soveltuvia tekoälyjä saatavilla…{}{}Voit ladata tekoälyjä online-sisältöpalvelun kautta
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Asetukset
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Suodatin:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Avaa kaikki
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Sulje kaikki
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Palauta oletukset
+# Settings tree in the Game Options window
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Suodatin:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Laajenna kaikki
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Tiivistä kaikki
+STR_CONFIG_SETTING_RESET_ALL                                    :Palauta oletukset
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(selitystä ei saatavilla)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Oletusarvo: {ORANGE}{STRING}
@@ -1237,9 +1241,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Yhtiön asetus 
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Varoitus!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Tämä toiminto palauttaa pelin kaikki asetukset oletusarvoihinsa.{}Haluatko varmasti jatkaa?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategoria:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tyyppi:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Rajaa alla olevaa listaa ennalta määritellyillä suodattimilla
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Kategoria:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Tyyppi:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Rajaa alla olevaa listaa ennalta määritellyillä suodattimilla
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Perus (näytä vain tärkeät asetukset)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Kehittynyt (näytä useimmat asetukset)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Edistynyt (näytä kaikki asetukset, oudotkin)
@@ -1256,9 +1260,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Yhtiön asetuks
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Ei mitään -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Näytä kaikki tulokset muuttamalla{}{SILVER}kategoriaksi {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Näytä kaikki hakutulokset muuttamalla{}{SILVER}Tyypiksi {WHITE}Kaikki asetustyypit
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Näytä kaikki tulokset muuttamalla{}{SILVER}kategoriaksi {WHITE}{STRING} {BLACK}ja {SILVER}tyypiksi {WHITE}kaikki asetustyypit
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Näytä kaikki tulokset muuttamalla{}PUSH_COLOUR}{SILVER}kategoriaksi {POP_COLOUR}{WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Näytä kaikki hakutulokset muuttamalla{}{PUSH_COLOUR}{SILVER}tyypiksi {POP_COLOUR}{WHITE}kaikki asetustyypit
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Näytä kaikki tulokset muuttamalla{}{PUSH_COLOUR}{SILVER}kategoriaksi {POP_COLOUR}{PUSH_COLOUR}{WHITE}{STRING} {POP_COLOUR}ja {PUSH_COLOUR}{SILVER}tyypiksi {POP_COLOUR}{WHITE}kaikki asetustyypit
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :pois
@@ -2175,7 +2179,7 @@ STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... jät
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :ei löydetty
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :ei turvallinen staattiseen käyttöön
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :järjestelmä-NewGRF
-STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :epäyhteensopiva tämän OpenTTD-version kanssa
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :yhteensopimaton OpenTTD:n tämän version kanssa
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :tuntematon
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... pakkaustaso ”{STRING}” on kelvoton
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... pelitallennemuoto ”{STRING}” ei ole saatavilla. Palataan muotoon ”{STRING}”
@@ -2191,7 +2195,8 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}… yhte
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}… Näytönohjaimen ajuri kaatoi pelin. Laitteistokiihdytys on poistettu käytöstä
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Uusi peli
 STR_INTRO_LOAD_GAME                                             :{BLACK}Lataa peli
@@ -2203,11 +2208,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Moninpel
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Pelin valinnat
 STR_INTRO_HIGHSCORE                                             :{BLACK}Pistetaulukko
 STR_INTRO_HELP                                                  :{BLACK}Ohjeet ja oppaat
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Asetukset
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-asetukset
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Online-sisältö
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Tekoälyasetukset
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Peliskriptiasetukset
 STR_INTRO_QUIT                                                  :{BLACK}Poistu
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Aloita uusi peli. Ctrl+napsautus ohittaa kartan asetusten valinnan.
@@ -2225,11 +2226,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Valitse 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Avaa pelin valinnat
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Avaa pistetaulukko
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Tutustu dokumentaatioon ja online-resursseihin
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Avaa asetukset
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Avaa NewGRF-asetukset
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tarkista, onko ladattavissa uutta tai päivitettyä sisältöä
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Avaa tekoälyasetukset
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Avaa peliskriptiasetukset
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Lopeta OpenTTD
 
 STR_INTRO_BASESET                                               :{BLACK}Valitusta perusgrafiikkapaketista puuttuu {NUM} sprite{P "" ä}. Tarkista, onko sille päivityksiä.
@@ -3076,6 +3073,12 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Valitse 
 STR_FOUND_TOWN_CITY                                             :{BLACK}Kaupunki
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Kaupungit kasvavat nopeammin kuin tavalliset kunnat{}Asetuksista riippuen, ne ovat suurempia perustettaessa
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Kuntien laajentaminen:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Rakennukset
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Kasvata rakennusten määrää kunnissa
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Tiet
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Kasvata teiden määrää kunnissa
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Kunnan tiekaava:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Valitse tiekaava tälle kunnalle
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Alkuperäinen
@@ -3518,22 +3521,19 @@ STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Ei mitään
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Ei tietoa
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Sopivaa tiedostoa ei löydy
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Ei käytössä
-STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Epäyhteensopiva tämän OpenTTD-version kanssa
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Yhteensopimaton OpenTTD:n tämän version kanssa
 
 # NewGRF save preset window
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}Tallenna valmislistaksi
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Luettelo saatavilla olevista valmislistoista, valitse yksi kopioitavaksi alla olevaan tallenteeseen
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Syötä nimi valmislistalle
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Valittu nimi tallennettavalle valmislistalle
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Peruuta
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Älä muuta valmislistaa
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Tallenna
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Tallenna valmislista valitulle nimelle
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Muuta perusgrafiikan parametreja
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Muuta NewGRF-parametreja
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Sulje
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Palauta
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Aseta kaikki parametrit oletusarvoihin
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametri {NUM}
@@ -3702,6 +3702,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Vaihda k
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Laajenna
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Laajenna kuntaa
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Laajenna rakennuksia
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Kasvata rakennusten määrää kunnassa
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Laajenna teitä
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Kasvata teiden määrää kunnassa
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Poista
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Poista tämä kunta kokonaan.
 
@@ -4169,7 +4173,7 @@ STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Ilma-alu
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Kaikki rahtityypit
-STR_CARGO_TYPE_FILTER_FREIGHT                                   :Rahti
+STR_CARGO_TYPE_FILTER_FREIGHT                                   :Rahtitavara
 STR_CARGO_TYPE_FILTER_NONE                                      :Ei mikään
 
 ###length VEHICLE_TYPES
@@ -4440,10 +4444,10 @@ STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Näytä 
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Näytä ilma-aluksen käskyt. Ctrl+napsautus näyttää ilma-aluksen aikataulun
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Näytä junan tiedot
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Näytä ajoneuvon tiedot
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Näytä laivan tiedot
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Näytä ilma-aluksen tiedot
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Näytä junan tiedot. Ctrl+napsautus näyttää junan ryhmän
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Näytä kulkuneuvon tiedot. Ctrl+napsautus näyttää kulkuneuvon ryhmän
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Näytä laivan tiedot. Ctrl+napsautus näyttää laivan ryhmän
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Näytä ilma-aluksen tiedot. Ctrl+napsautus näyttää ilma-aluksen ryhmän
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Nykyisen junan toiminnot – napsauta pysäyttääksesi/käynnistääksesi
@@ -4767,15 +4771,15 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Aikataul
 STR_TIMETABLE_NO_TRAVEL                                         :Ei kulkua
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Kulje (automaattinen; aikataulu seuraavan manuaalisen käskyn mukaisesti)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Kiertävä (ei aikataulua)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Kulje (ilman aikataulua) enimmillään {2:VELOCITY}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Kulje (ilman aikataulua) enimmillään {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Kulje kohteeseen {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Kulje kohteeseen {STRING} enintään {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Kulje ({STRING}, ei aikataulua)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Kulje ({STRING}, ei aikataulua) enimmillään {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(pysy {STRING}, ei aikataulua)
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(matkusta {STRING}, ei aikataulua)
-STR_TIMETABLE_STAY_FOR                                          :ja odota {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :ja kulje {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(kulje {STRING}, ei aikataulua)
+STR_TIMETABLE_STAY_FOR                                          :{SPACE}ja odota {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}ja kulje {STRING}
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Aikataulun kesto on noin {STRING}
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Aikataulun kesto on {STRING}
@@ -4894,8 +4898,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Hyväksy
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Valitse korostettu skripti
-STR_AI_LIST_CANCEL                                              :{BLACK}Peruuta
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Älä vaihda skriptiä
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Ota kuvakaappaus
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Tavallinen kuvakaappaus
@@ -4908,7 +4910,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Pienoisk
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Tekoälyparametrit
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Peliskriptin parametrit
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sulje
 STR_AI_SETTINGS_RESET                                           :{BLACK}Palauta
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
@@ -5823,9 +5824,9 @@ STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Powernaut-helik
 
 ##id 0x8800
 # Formatting of some strings
-STR_FORMAT_DATE_TINY                                            :{ZEROFILL_NUM}-{ZEROFILL_NUM}-{NUM}
-STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_TINY                                            :{ZEROFILL_NUM}.{ZEROFILL_NUM}.{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING}ssa {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING}{STRING}{NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:ZEROFILL_NUM}-{0:ZEROFILL_NUM}
 
 STR_FORMAT_COMPANY_NUM                                          :(yhtiö {COMMA})
@@ -5886,6 +5887,7 @@ STR_CURRENCY_SHORT_GIGA                                         :{NBSP}mrd.
 STR_CURRENCY_SHORT_TERA                                         :{NBSP}bilj.
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_LEFT_ARROW                                             :{LEFT_ARROW}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
@@ -5925,3 +5927,11 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Avaa tunnusasetukset
+STR_BADGE_CONFIG_RESET                                          :Palauta
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Tunnuskuvakkeet
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Tunnussuodattimet
+STR_BADGE_CONFIG_PREVIEW                                        :Esikatselu
+STR_BADGE_CONFIG_NAME                                           :Nimi
+STR_BADGE_FILTER_ANY_LABEL                                      :Mikä tahansa {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} on {STRING}

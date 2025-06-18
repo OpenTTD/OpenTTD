@@ -55,7 +55,7 @@ struct LegendAndColour {
 };
 
 /** Link stat colours shown in legenda. */
-static uint8_t _linkstat_colours_in_legenda[] = {0, 1, 3, 5, 7, 9, 11};
+static const uint8_t _linkstat_colours_in_legenda[] = {0, 1, 3, 5, 7, 9, 11};
 
 static const int NUM_NO_COMPANY_ENTRIES = 4; ///< Number of entries in the owner legend that are not companies.
 
@@ -181,7 +181,7 @@ static IndustryType _smallmap_industry_highlight = IT_INVALID;
 /** State of highlight blinking */
 static bool _smallmap_industry_highlight_state;
 /** For connecting company ID to position in owner list (small map legend) */
-static ReferenceThroughBaseContainer<std::array<uint32_t, MAX_COMPANIES>> _company_to_list_pos;
+static TypedIndexContainer<std::array<uint32_t, MAX_COMPANIES>, CompanyID> _company_to_list_pos;
 
 /**
  * Fills an array for the industries legends.
@@ -552,7 +552,7 @@ static inline uint32_t GetSmallMapVegetationPixels(TileIndex tile, TileType t)
 				if (GetClearDensity(tile) < 3) return MKCOLOUR_XXXX(PC_BARE_LAND);
 				if (GetTropicZone(tile) == TROPICZONE_RAINFOREST) return MKCOLOUR_XXXX(PC_RAINFOREST);
 			}
-			return _vegetation_clear_bits[GetClearGround(tile)];
+			return _vegetation_clear_bits[IsSnowTile(tile) ? CLEAR_SNOW : GetClearGround(tile)];
 
 		case MP_INDUSTRY:
 			return IsTileForestIndustry(tile) ? MKCOLOUR_XXXX(PC_GREEN) : MKCOLOUR_XXXX(PC_DARK_RED);
@@ -730,12 +730,12 @@ protected:
 	}
 
 	/** Blink the industries (if selected) on a regular interval. */
-	IntervalTimer<TimerWindow> blink_interval = {std::chrono::milliseconds(450), [this](auto) {
+	const IntervalTimer<TimerWindow> blink_interval = {TIMER_BLINK_INTERVAL, [this](auto) {
 		Blink();
 	}};
 
 	/** Update the whole map on a regular interval. */
-	IntervalTimer<TimerWindow> refresh_interval = {std::chrono::milliseconds(930), [this](auto) {
+	const IntervalTimer<TimerWindow> refresh_interval = {std::chrono::milliseconds(930), [this](auto) {
 		ForceRefresh();
 	}};
 
@@ -1495,8 +1495,8 @@ public:
 	 */
 	Point GetStationMiddle(const Station *st) const
 	{
-		int x = CenterBounds(st->rect.left, st->rect.right, 0);
-		int y = CenterBounds(st->rect.top, st->rect.bottom, 0);
+		int x = CentreBounds(st->rect.left, st->rect.right, 0);
+		int y = CentreBounds(st->rect.top, st->rect.bottom, 0);
 		Point ret = this->RemapTile(x, y);
 
 		/* Same magic 3 as in DrawVehicles; that's where I got it from.
@@ -1857,16 +1857,15 @@ public:
 		return true;
 	}
 
-	void OnMouseWheel(int wheel) override
+	void OnMouseWheel(int wheel, WidgetID widget) override
 	{
+		if (widget != WID_SM_MAP) return;
 		if (_settings_client.gui.scrollwheel_scrolling != SWS_OFF) {
 			const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_SM_MAP);
 			int cursor_x = _cursor.pos.x - this->left - wid->pos_x;
 			int cursor_y = _cursor.pos.y - this->top  - wid->pos_y;
-			if (IsInsideMM(cursor_x, 0, wid->current_x) && IsInsideMM(cursor_y, 0, wid->current_y)) {
-				Point pt = {cursor_x, cursor_y};
-				this->SetZoomLevel((wheel < 0) ? ZLC_ZOOM_IN : ZLC_ZOOM_OUT, &pt);
-			}
+			Point pt = {cursor_x, cursor_y};
+			this->SetZoomLevel((wheel < 0) ? ZLC_ZOOM_IN : ZLC_ZOOM_OUT, &pt);
 		}
 	}
 

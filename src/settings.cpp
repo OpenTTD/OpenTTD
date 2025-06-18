@@ -23,6 +23,7 @@
 
 #include "stdafx.h"
 #include <charconv>
+#include "core/string_consumer.hpp"
 #include "settings_table.h"
 #include "debug.h"
 #include "currency.h"
@@ -45,6 +46,7 @@
 #include "game/game_config.hpp"
 #include "newgrf_config.h"
 #include "picker_func.h"
+#include "newgrf_badge_config.h"
 #include "base_media_base.h"
 #include "base_media_graphics.h"
 #include "fios.h"
@@ -117,8 +119,8 @@ static auto &SecretSettingTables()
 	return _secrets_setting_tables;
 }
 
-typedef void SettingDescProc(IniFile &ini, const SettingTable &desc, const char *grpname, void *object, bool only_startup);
-typedef void SettingDescProcList(IniFile &ini, const char *grpname, StringList &list);
+using SettingDescProc = void(IniFile &ini, const SettingTable &desc, std::string_view grpname, void *object, bool only_startup);
+using SettingDescProcList = void(IniFile &ini, std::string_view grpname, StringList &list);
 
 static bool IsSignedVarMemType(VarType vt)
 {
@@ -137,7 +139,7 @@ static bool IsSignedVarMemType(VarType vt)
  */
 class ConfigIniFile : public IniFile {
 private:
-	inline static const IniGroupNameList list_group_names = {
+	static inline const IniGroupNameList list_group_names = {
 		"bans",
 		"newgrf",
 		"servers",
@@ -178,24 +180,21 @@ enum IniFileVersion : uint32_t {
 const uint16_t INIFILE_VERSION = (IniFileVersion)(IFV_MAX_VERSION - 1); ///< Current ini-file version of OpenTTD.
 
 /**
- * Find the index value of a ONEofMANY type in a string separated by |
+ * Find the index value of a ONEofMANY type in a string
  * @param str the current value of the setting for which a value needs found
- * @param len length of the string
  * @param many full domain of values the ONEofMANY setting can have
- * @return the integer index of the full-list, or SIZE_MAX if not found
+ * @return the integer index of the full-list, or std::nullopt if not found
  */
-size_t OneOfManySettingDesc::ParseSingleValue(const char *str, size_t len, const std::vector<std::string> &many)
+std::optional<uint32_t> OneOfManySettingDesc::ParseSingleValue(std::string_view str, std::span<const std::string_view> many)
 {
+	StringConsumer consumer{str};
+	auto digit = consumer.TryReadIntegerBase<uint32_t>(10);
 	/* check if it's an integer */
-	if (isdigit(*str)) return std::strtoul(str, nullptr, 0);
+	if (digit.has_value()) return digit;
 
-	size_t idx = 0;
-	for (const auto &one : many) {
-		if (one.size() == len && strncmp(one.c_str(), str, len) == 0) return idx;
-		idx++;
-	}
-
-	return SIZE_MAX;
+	auto it = std::ranges::find(many, str);
+	if (it == many.end()) return std::nullopt;
+	return static_cast<uint32_t>(it - many.begin());
 }
 
 /**
@@ -204,10 +203,10 @@ size_t OneOfManySettingDesc::ParseSingleValue(const char *str, size_t len, const
  * @param str the current value of the setting for which a value needs found.
  * @return Either true/false, or nullopt if no boolean value found.
  */
-std::optional<bool> BoolSettingDesc::ParseSingleValue(const char *str)
+std::optional<bool> BoolSettingDesc::ParseSingleValue(std::string_view str)
 {
-	if (strcmp(str, "true") == 0 || strcmp(str, "on") == 0 || strcmp(str, "1") == 0) return true;
-	if (strcmp(str, "false") == 0 || strcmp(str, "off") == 0 || strcmp(str, "0") == 0) return false;
+	if (str == "true" || str == "on" || str == "1") return true;
+	if (str == "false" || str == "off" || str == "0") return false;
 
 	return std::nullopt;
 }
@@ -216,66 +215,53 @@ std::optional<bool> BoolSettingDesc::ParseSingleValue(const char *str)
  * Find the set-integer value MANYofMANY type in a string
  * @param many full domain of values the MANYofMANY setting can have
  * @param str the current string value of the setting, each individual
- * of separated by a whitespace,tab or | character
- * @return the 'fully' set integer, or SIZE_MAX if a set is not found
+ * of separated by a whitespace, tab or | character
+ * @return the 'fully' set integer, or std::nullopt if a set is not found
  */
-static size_t LookupManyOfMany(const std::vector<std::string> &many, const char *str)
+static std::optional<uint32_t> LookupManyOfMany(std::span<const std::string_view> many, std::string_view str)
 {
-	const char *s;
-	size_t r;
-	size_t res = 0;
+	static const std::string_view separators{" \t|"};
 
-	for (;;) {
+	uint32_t res = 0;
+	StringConsumer consumer{str};
+	while (consumer.AnyBytesLeft()) {
 		/* skip "whitespace" */
-		while (*str == ' ' || *str == '\t' || *str == '|') str++;
-		if (*str == 0) break;
+		consumer.SkipUntilCharNotIn(separators);
 
-		s = str;
-		while (*s != 0 && *s != ' ' && *s != '\t' && *s != '|') s++;
+		std::string_view value = consumer.ReadUntilCharIn(separators);
+		if (value.empty()) break;
 
-		r = OneOfManySettingDesc::ParseSingleValue(str, s - str, many);
-		if (r == SIZE_MAX) return r;
+		auto r = OneOfManySettingDesc::ParseSingleValue(value, many);
+		if (!r.has_value()) return r;
 
-		SetBit(res, (uint8_t)r); // value found, set it
-		if (*s == 0) break;
-		str = s + 1;
+		SetBit(res, *r); // value found, set it
 	}
 	return res;
 }
 
 /**
  * Parse a string into a vector of uint32s.
- * @param p the string to be parsed. Each element in the list is separated by a comma or a space character
+ * @param str the string to be parsed. Each element in the list is separated by a comma or a space character
  * @return std::optional with a vector of parsed integers. The optional is empty upon an error.
  */
-static std::optional<std::vector<uint32_t>> ParseIntList(const char *p)
+static std::optional<std::vector<uint32_t>> ParseIntList(std::string_view str)
 {
 	bool comma = false; // do we accept comma?
 	std::vector<uint32_t> result;
 
-	while (*p != '\0') {
-		switch (*p) {
-			case ',':
-				/* Do not accept multiple commas between numbers */
-				if (!comma) return std::nullopt;
-				comma = false;
-				[[fallthrough]];
-
-			case ' ':
-				p++;
-				break;
-
-			default: {
-				char *end;
-				unsigned long v = std::strtoul(p, &end, 0);
-				if (p == end) return std::nullopt; // invalid character (not a number)
-
-				result.push_back(ClampTo<uint32_t>(v));
-				p = end; // first non-number
-				comma = true; // we accept comma now
-				break;
-			}
+	StringConsumer consumer{str};
+	for (;;) {
+		consumer.SkipUntilCharNotIn(StringConsumer::WHITESPACE_NO_NEWLINE);
+		if (!consumer.AnyBytesLeft()) break;
+		if (comma && consumer.ReadIf(",")) {
+			/* commas are optional, but we only accept one between values */
+			comma = false;
+			continue;
 		}
+		auto v = consumer.TryReadIntegerBase<uint32_t>(10);
+		if (!v.has_value()) return std::nullopt;
+		result.push_back(*v);
+		comma = true;
 	}
 
 	/* If we have read comma but no number after it, fail.
@@ -293,18 +279,18 @@ static std::optional<std::vector<uint32_t>> ParseIntList(const char *p)
  * @param type the type of elements the array holds (eg INT8, UINT16, etc.)
  * @return return true on success and false on error
  */
-static bool LoadIntList(const char *str, void *array, int nelems, VarType type)
+static bool LoadIntList(std::optional<std::string_view> str, void *array, int nelems, VarType type)
 {
 	size_t elem_size = SlVarSize(type);
-	if (str == nullptr) {
-		memset(array, 0, nelems * elem_size);
+	std::byte *p = static_cast<std::byte *>(array);
+	if (!str.has_value()) {
+		std::fill_n(p, nelems * elem_size, static_cast<std::byte>(0));
 		return true;
 	}
 
-	auto opt_items = ParseIntList(str);
+	auto opt_items = ParseIntList(*str);
 	if (!opt_items.has_value() || opt_items->size() != (size_t)nelems) return false;
 
-	char *p = static_cast<char *>(array);
 	for (auto item : *opt_items) {
 		WriteValue(p, type, item);
 		p += elem_size;
@@ -339,7 +325,7 @@ std::string ListSettingDesc::FormatValue(const void *object) const
 			default: NOT_REACHED();
 		}
 		if (i != 0) result += ',';
-		result += std::to_string(v);
+		format_append(result, "{}", v);
 	}
 	return result;
 }
@@ -347,9 +333,9 @@ std::string ListSettingDesc::FormatValue(const void *object) const
 std::string OneOfManySettingDesc::FormatSingleValue(uint id) const
 {
 	if (id >= this->many.size()) {
-		return std::to_string(id);
+		return fmt::format("{}", id);
 	}
-	return this->many[id];
+	return std::string{this->many[id]};
 }
 
 std::string OneOfManySettingDesc::FormatValue(const void *object) const
@@ -378,31 +364,32 @@ std::string ManyOfManySettingDesc::FormatValue(const void *object) const
  * @param str Input string that will be parsed based on the type of desc.
  * @return The value from the parse string, or the default value of the setting.
  */
-size_t IntSettingDesc::ParseValue(const char *str) const
+int32_t IntSettingDesc::ParseValue(std::string_view str) const
 {
-	char *end;
-	size_t val = std::strtoul(str, &end, 0);
-	if (end == str) {
+	StringConsumer consumer{str};
+	/* The actual settings value might be int32 or uint32. Read as int64 and just cast away the high bits. */
+	auto value = consumer.TryReadIntegerBase<int64_t>(10);
+	if (!value.has_value()) {
 		_settings_error_list.emplace_back(
 			GetEncodedString(STR_CONFIG_ERROR),
 			GetEncodedString(STR_CONFIG_ERROR_INVALID_VALUE, str, this->GetName()));
 		return this->GetDefaultValue();
 	}
-	if (*end != '\0') {
+	if (consumer.AnyBytesLeft()) {
 		_settings_error_list.emplace_back(
 			GetEncodedString(STR_CONFIG_ERROR),
 			GetEncodedString(STR_CONFIG_ERROR_TRAILING_CHARACTERS, this->GetName()));
 	}
-	return val;
+	return static_cast<int32_t>(*value);
 }
 
-size_t OneOfManySettingDesc::ParseValue(const char *str) const
+int32_t OneOfManySettingDesc::ParseValue(std::string_view str) const
 {
-	size_t r = OneOfManySettingDesc::ParseSingleValue(str, strlen(str), this->many);
+	auto r = OneOfManySettingDesc::ParseSingleValue(str, this->many);
 	/* if the first attempt of conversion from string to the appropriate value fails,
 	 * look if we have defined a converter from old value to new value. */
-	if (r == SIZE_MAX && this->many_cnvt != nullptr) r = this->many_cnvt(str);
-	if (r != SIZE_MAX) return r; // and here goes converted value
+	if (!r.has_value() && this->many_cnvt != nullptr) r = this->many_cnvt(str);
+	if (r.has_value()) return *r; // and here goes converted value
 
 	_settings_error_list.emplace_back(
 		GetEncodedString(STR_CONFIG_ERROR),
@@ -410,10 +397,10 @@ size_t OneOfManySettingDesc::ParseValue(const char *str) const
 	return this->GetDefaultValue();
 }
 
-size_t ManyOfManySettingDesc::ParseValue(const char *str) const
+int32_t ManyOfManySettingDesc::ParseValue(std::string_view str) const
 {
-	size_t r = LookupManyOfMany(this->many, str);
-	if (r != SIZE_MAX) return r;
+	auto r = LookupManyOfMany(this->many, str);
+	if (r.has_value()) return *r;
 
 	_settings_error_list.emplace_back(
 		GetEncodedString(STR_CONFIG_ERROR),
@@ -421,7 +408,7 @@ size_t ManyOfManySettingDesc::ParseValue(const char *str) const
 	return this->GetDefaultValue();
 }
 
-size_t BoolSettingDesc::ParseValue(const char *str) const
+int32_t BoolSettingDesc::ParseValue(std::string_view str) const
 {
 	auto r = BoolSettingDesc::ParseSingleValue(str);
 	if (r.has_value()) return *r;
@@ -606,7 +593,7 @@ void StringSettingDesc::MakeValueValid(std::string &str) const
  * @param object The object the setting is to be saved in.
  * @param str The string to save.
  */
-void StringSettingDesc::Write(const void *object, const std::string &str) const
+void StringSettingDesc::Write(const void *object, std::string_view str) const
 {
 	reinterpret_cast<std::string *>(GetVariableAddress(object, this->save))->assign(str);
 }
@@ -630,7 +617,7 @@ const std::string &StringSettingDesc::Read(const void *object) const
  * @param object pointer to the object been loaded
  * @param only_startup load only the startup settings set
  */
-static void IniLoadSettings(IniFile &ini, const SettingTable &settings_table, const char *grpname, void *object, bool only_startup)
+static void IniLoadSettings(IniFile &ini, const SettingTable &settings_table, std::string_view grpname, void *object, bool only_startup)
 {
 	const IniGroup *group;
 	const IniGroup *group_def = ini.GetGroup(grpname);
@@ -673,20 +660,25 @@ static void IniLoadSettings(IniFile &ini, const SettingTable &settings_table, co
 
 void IntSettingDesc::ParseValue(const IniItem *item, void *object) const
 {
-	size_t val = (item == nullptr) ? this->GetDefaultValue() : this->ParseValue(item->value.has_value() ? item->value->c_str() : "");
-	this->MakeValueValidAndWrite(object, (int32_t)val);
+	int32_t val = (item != nullptr && item->value.has_value()) ? this->ParseValue(*item->value) : this->GetDefaultValue();
+	this->MakeValueValidAndWrite(object, val);
 }
 
 void StringSettingDesc::ParseValue(const IniItem *item, void *object) const
 {
-	std::string str = (item == nullptr) ? this->def : item->value.value_or("");
+	std::string str{(item == nullptr) ? this->def : item->value.value_or("")};
 	this->MakeValueValid(str);
 	this->Write(object, str);
 }
 
 void ListSettingDesc::ParseValue(const IniItem *item, void *object) const
 {
-	const char *str = (item == nullptr) ? this->def : item->value.has_value() ? item->value->c_str() : nullptr;
+	std::optional<std::string_view> str;
+	if (item != nullptr) {
+		str = item->value;
+	} else if (!this->def.empty()) {
+		str = this->def;
+	}
 	void *ptr = GetVariableAddress(object, this->save);
 	if (!LoadIntList(str, ptr, this->save.length, GetVarMemType(this->save.conv))) {
 		_settings_error_list.emplace_back(
@@ -710,7 +702,7 @@ void ListSettingDesc::ParseValue(const IniItem *item, void *object) const
  * values are reloaded when saving). If settings indeed have changed, we get
  * these and save them.
  */
-static void IniSaveSettings(IniFile &ini, const SettingTable &settings_table, const char *grpname, void *object, bool)
+static void IniSaveSettings(IniFile &ini, const SettingTable &settings_table, std::string_view grpname, void *object, bool)
 {
 	IniGroup *group_def = nullptr, *group;
 
@@ -749,7 +741,7 @@ std::string IntSettingDesc::FormatValue(const void *object) const
 	} else {
 		i = (uint32_t)this->Read(object);
 	}
-	return std::to_string(i);
+	return fmt::format("{}", i);
 }
 
 std::string BoolSettingDesc::FormatValue(const void *object) const
@@ -760,7 +752,7 @@ std::string BoolSettingDesc::FormatValue(const void *object) const
 
 bool IntSettingDesc::IsSameValue(const IniItem *item, void *object) const
 {
-	int32_t item_value = (int32_t)this->ParseValue(item->value->c_str());
+	int32_t item_value = static_cast<int32_t>(this->ParseValue(*item->value));
 	int32_t object_value = this->Read(object);
 	return item_value == object_value;
 }
@@ -840,7 +832,7 @@ void ListSettingDesc::ResetToDefault(void *) const
  * @param grpname character string identifying the section-header of the ini file that will be parsed
  * @param list new list with entries of the given section
  */
-static void IniLoadSettingList(IniFile &ini, const char *grpname, StringList &list)
+static void IniLoadSettingList(IniFile &ini, std::string_view grpname, StringList &list)
 {
 	const IniGroup *group = ini.GetGroup(grpname);
 
@@ -862,7 +854,7 @@ static void IniLoadSettingList(IniFile &ini, const char *grpname, StringList &li
  * @param list pointer to an string(pointer) array that will be used as the
  *             source to be saved into the relevant ini section
  */
-static void IniSaveSettingList(IniFile &ini, const char *grpname, StringList &list)
+static void IniSaveSettingList(IniFile &ini, std::string_view grpname, StringList &list)
 {
 	IniGroup &group = ini.GetOrCreateGroup(grpname);
 	group.Clear();
@@ -878,7 +870,7 @@ static void IniSaveSettingList(IniFile &ini, const char *grpname, StringList &li
  * @param grpname character string identifying the section-header of the ini file that will be parsed
  * @param desc Destination WindowDesc
  */
-void IniLoadWindowSettings(IniFile &ini, const char *grpname, void *desc)
+void IniLoadWindowSettings(IniFile &ini, std::string_view grpname, WindowDesc *desc)
 {
 	IniLoadSettings(ini, _window_settings, grpname, desc, false);
 }
@@ -889,7 +881,7 @@ void IniLoadWindowSettings(IniFile &ini, const char *grpname, void *desc)
  * @param grpname character string identifying the section-header of the ini file
  * @param desc Source WindowDesc
  */
-void IniSaveWindowSettings(IniFile &ini, const char *grpname, void *desc)
+void IniSaveWindowSettings(IniFile &ini, std::string_view grpname, WindowDesc *desc)
 {
 	IniSaveSettings(ini, _window_settings, grpname, desc, false);
 }
@@ -956,7 +948,7 @@ static void ValidateSettings()
 	}
 }
 
-static void AILoadConfig(const IniFile &ini, const char *grpname)
+static void AILoadConfig(const IniFile &ini, std::string_view grpname)
 {
 	const IniGroup *group = ini.GetGroup(grpname);
 
@@ -985,7 +977,7 @@ static void AILoadConfig(const IniFile &ini, const char *grpname)
 	}
 }
 
-static void GameLoadConfig(const IniFile &ini, const char *grpname)
+static void GameLoadConfig(const IniFile &ini, std::string_view grpname)
 {
 	const IniGroup *group = ini.GetGroup(grpname);
 
@@ -1024,13 +1016,29 @@ static void GraphicsSetLoadConfig(IniFile &ini)
 		if (const IniItem *item = group->GetItem("name"); item != nullptr && item->value) BaseGraphics::ini_data.name = *item->value;
 
 		if (const IniItem *item = group->GetItem("shortname"); item != nullptr && item->value && item->value->size() == 8) {
-			BaseGraphics::ini_data.shortname = std::byteswap<uint32_t>(std::strtoul(item->value->c_str(), nullptr, 16));
+			auto val = ParseInteger<uint32_t>(*item->value, 16);
+			if (val.has_value()) {
+				BaseGraphics::ini_data.shortname = std::byteswap<uint32_t>(*val);
+			} else {
+				ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR),
+					GetEncodedString(STR_CONFIG_ERROR_INVALID_VALUE, *item->value, BaseGraphics::ini_data.name),
+					WL_CRITICAL);
+			}
 		}
 
-		if (const IniItem *item = group->GetItem("extra_version"); item != nullptr && item->value) BaseGraphics::ini_data.extra_version = std::strtoul(item->value->c_str(), nullptr, 10);
+		if (const IniItem *item = group->GetItem("extra_version"); item != nullptr && item->value) {
+			auto val = ParseInteger<uint32_t>(*item->value);
+			if (val.has_value()) {
+				BaseGraphics::ini_data.extra_version = *val;
+			} else {
+				ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR),
+					GetEncodedString(STR_CONFIG_ERROR_INVALID_VALUE, *item->value, BaseGraphics::ini_data.name),
+					WL_CRITICAL);
+			}
+		}
 
 		if (const IniItem *item = group->GetItem("extra_params"); item != nullptr && item->value) {
-			auto params = ParseIntList(item->value->c_str());
+			auto params = ParseIntList(*item->value);
 			if (params.has_value()) {
 				BaseGraphics::ini_data.extra_params = params.value();
 			} else {
@@ -1048,7 +1056,7 @@ static void GraphicsSetLoadConfig(IniFile &ini)
  * @param grpname   Group name containing the configuration of the GRF.
  * @param is_static GRF is static.
  */
-static GRFConfigList GRFLoadConfig(const IniFile &ini, const char *grpname, bool is_static)
+static GRFConfigList GRFLoadConfig(const IniFile &ini, std::string_view grpname, bool is_static)
 {
 	const IniGroup *group = ini.GetGroup(grpname);
 	GRFConfigList list;
@@ -1097,7 +1105,7 @@ static GRFConfigList GRFLoadConfig(const IniFile &ini, const char *grpname, bool
 
 		/* Parse parameters */
 		if (item.value.has_value() && !item.value->empty()) {
-			auto params = ParseIntList(item.value->c_str());
+			auto params = ParseIntList(*item.value);
 			if (params.has_value()) {
 				c->SetParams(params.value());
 			} else {
@@ -1123,7 +1131,7 @@ static GRFConfigList GRFLoadConfig(const IniFile &ini, const char *grpname, bool
 			}
 
 			ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR),
-				GetEncodedString(STR_CONFIG_ERROR_INVALID_GRF, filename.empty() ? item.name.c_str() : filename, reason),
+				GetEncodedString(STR_CONFIG_ERROR_INVALID_GRF, filename.empty() ? item.name : filename, reason),
 				WL_CRITICAL);
 			continue;
 		}
@@ -1169,7 +1177,7 @@ static IniFileVersion LoadVersionFromConfig(const IniFile &ini)
 	return static_cast<IniFileVersion>(version);
 }
 
-static void AISaveConfig(IniFile &ini, const char *grpname)
+static void AISaveConfig(IniFile &ini, std::string_view grpname)
 {
 	IniGroup &group = ini.GetOrCreateGroup(grpname);
 	group.Clear();
@@ -1189,7 +1197,7 @@ static void AISaveConfig(IniFile &ini, const char *grpname)
 	}
 }
 
-static void GameSaveConfig(IniFile &ini, const char *grpname)
+static void GameSaveConfig(IniFile &ini, std::string_view grpname)
 {
 	IniGroup &group = ini.GetOrCreateGroup(grpname);
 	group.Clear();
@@ -1216,7 +1224,7 @@ static void SaveVersionInConfig(IniFile &ini)
 	IniGroup &group = ini.GetOrCreateGroup("version");
 	group.GetOrCreateItem("version_string").SetValue(_openttd_revision);
 	group.GetOrCreateItem("version_number").SetValue(fmt::format("{:08X}", _openttd_newgrf_version));
-	group.GetOrCreateItem("ini_version").SetValue(std::to_string(INIFILE_VERSION));
+	group.GetOrCreateItem("ini_version").SetValue(fmt::format("{}", INIFILE_VERSION));
 }
 
 /**
@@ -1241,7 +1249,7 @@ static void GraphicsSetSaveConfig(IniFile &ini)
 }
 
 /* Save a GRF configuration to the given group name */
-static void GRFSaveConfig(IniFile &ini, const char *grpname, const GRFConfigList &list)
+static void GRFSaveConfig(IniFile &ini, std::string_view grpname, const GRFConfigList &list)
 {
 	IniGroup &group = ini.GetOrCreateGroup(grpname);
 	group.Clear();
@@ -1413,13 +1421,13 @@ void LoadFromConfig(bool startup)
 		const IniItem *old_item;
 
 		if (generic_version < IFV_GAME_TYPE && IsConversionNeeded(generic_ini, "network", "server_advertise", "server_game_type", &old_item)) {
-			auto old_value = BoolSettingDesc::ParseSingleValue(old_item->value->c_str());
+			auto old_value = BoolSettingDesc::ParseSingleValue(*old_item->value);
 			_settings_client.network.server_game_type = old_value.value_or(false) ? SERVER_GAME_TYPE_PUBLIC : SERVER_GAME_TYPE_LOCAL;
 		}
 
 		if (generic_version < IFV_AUTOSAVE_RENAME && IsConversionNeeded(generic_ini, "gui", "autosave", "autosave_interval", &old_item)) {
-			static std::vector<std::string> _old_autosave_interval{"off", "monthly", "quarterly", "half year", "yearly"};
-			auto old_value = OneOfManySettingDesc::ParseSingleValue(old_item->value->c_str(), old_item->value->size(), _old_autosave_interval);
+			static constexpr std::initializer_list<std::string_view> _old_autosave_interval{"off"sv, "monthly"sv, "quarterly"sv, "half year"sv, "yearly"sv};
+			auto old_value = OneOfManySettingDesc::ParseSingleValue(*old_item->value, _old_autosave_interval).value_or(-1);
 
 			switch (old_value) {
 				case 0: _settings_client.gui.autosave_interval = 0; break;
@@ -1433,7 +1441,7 @@ void LoadFromConfig(bool startup)
 
 		/* Persist the right click close option from older versions. */
 		if (generic_version < IFV_RIGHT_CLICK_CLOSE && IsConversionNeeded(generic_ini, "gui", "right_mouse_wnd_close", "right_click_wnd_close", &old_item)) {
-			auto old_value = BoolSettingDesc::ParseSingleValue(old_item->value->c_str());
+			auto old_value = BoolSettingDesc::ParseSingleValue(*old_item->value);
 			_settings_client.gui.right_click_wnd_close = old_value.value_or(false) ? RCC_YES : RCC_NO;
 		}
 
@@ -1442,6 +1450,7 @@ void LoadFromConfig(bool startup)
 		AILoadConfig(generic_ini, "ai_players");
 		GameLoadConfig(generic_ini, "game_scripts");
 		PickerLoadConfig(favs_ini);
+		BadgeClassLoadConfig(favs_ini);
 
 		PrepareOldDiffCustom();
 		IniLoadSettings(generic_ini, _old_gameopt_settings, "gameopt", &_settings_newgame, false);
@@ -1515,6 +1524,7 @@ void SaveToConfig()
 	AISaveConfig(generic_ini, "ai_players");
 	GameSaveConfig(generic_ini, "game_scripts");
 	PickerSaveConfig(favs_ini);
+	BadgeClassSaveConfig(favs_ini);
 
 	SaveVersionInConfig(generic_ini);
 	SaveVersionInConfig(private_ini);
@@ -1551,13 +1561,13 @@ StringList GetGRFPresetList()
  * @return NewGRF configuration.
  * @see GetGRFPresetList
  */
-GRFConfigList LoadGRFPresetFromConfig(const char *config_name)
+GRFConfigList LoadGRFPresetFromConfig(std::string_view config_name)
 {
 	std::string section("preset-");
 	section += config_name;
 
 	ConfigIniFile ini(_config_file);
-	GRFConfigList config = GRFLoadConfig(ini, section.c_str(), false);
+	GRFConfigList config = GRFLoadConfig(ini, section, false);
 
 	return config;
 }
@@ -1568,13 +1578,13 @@ GRFConfigList LoadGRFPresetFromConfig(const char *config_name)
  * @param config      NewGRF configuration to save.
  * @see GetGRFPresetList
  */
-void SaveGRFPresetToConfig(const char *config_name, GRFConfigList &config)
+void SaveGRFPresetToConfig(std::string_view config_name, GRFConfigList &config)
 {
 	std::string section("preset-");
 	section += config_name;
 
 	ConfigIniFile ini(_config_file);
-	GRFSaveConfig(ini, section.c_str(), config);
+	GRFSaveConfig(ini, section, config);
 	ini.SaveToDisk(_config_file);
 }
 
@@ -1582,7 +1592,7 @@ void SaveGRFPresetToConfig(const char *config_name, GRFConfigList &config)
  * Delete a NewGRF configuration by preset name.
  * @param config_name Name of the preset.
  */
-void DeleteGRFPresetFromConfig(const char *config_name)
+void DeleteGRFPresetFromConfig(std::string_view config_name)
 {
 	std::string section("preset-");
 	section += config_name;
@@ -1627,7 +1637,7 @@ void IntSettingDesc::ChangeValue(const void *object, int32_t newval) const
  * @return Pointer to the setting description of setting \a name if it can be found,
  *         \c nullptr indicates failure to obtain the description.
  */
-static const SettingDesc *GetSettingFromName(const std::string_view name, const SettingTable &settings)
+static const SettingDesc *GetSettingFromName(std::string_view name, const SettingTable &settings)
 {
 	/* First check all full names */
 	for (auto &desc : settings) {
@@ -1709,7 +1719,7 @@ static const SettingDesc *GetCompanySettingFromName(std::string_view name)
  * @return Pointer to the setting description of setting \a name if it can be found,
  *         \c nullptr indicates failure to obtain the description.
  */
-const SettingDesc *GetSettingFromName(const std::string_view name)
+const SettingDesc *GetSettingFromName(std::string_view name)
 {
 	for (auto &table : GenericSettingTables()) {
 		auto sd = GetSettingFromName(name, table);
@@ -1881,16 +1891,16 @@ void SyncCompanySettings()
  * @param force_newgame force the newgame settings
  * @note Strings WILL NOT be synced over the network
  */
-bool SetSettingValue(const StringSettingDesc *sd, std::string value, bool force_newgame)
+bool SetSettingValue(const StringSettingDesc *sd, std::string_view value, bool force_newgame)
 {
 	assert(sd->flags.Test(SettingFlag::NoNetworkSync));
 
-	if (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ && value.compare("(null)") == 0) {
-		value.clear();
+	if (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ && value == "(null)") {
+		value = {};
 	}
 
 	const void *object = (_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game;
-	sd->AsStringSetting()->ChangeValue(object, value);
+	sd->AsStringSetting()->ChangeValue(object, std::string{value});
 	return true;
 }
 
@@ -1900,7 +1910,7 @@ bool SetSettingValue(const StringSettingDesc *sd, std::string value, bool force_
  * @param object The object the setting is in.
  * @param newval The new value for the setting.
  */
-void StringSettingDesc::ChangeValue(const void *object, std::string &newval) const
+void StringSettingDesc::ChangeValue(const void *object, std::string &&newval) const
 {
 	this->MakeValueValid(newval);
 	if (this->pre_check != nullptr && !this->pre_check(newval)) return;
@@ -1913,7 +1923,7 @@ void StringSettingDesc::ChangeValue(const void *object, std::string &newval) con
 
 /* Those 2 functions need to be here, else we have to make some stuff non-static
  * and besides, it is also better to keep stuff like this at the same place */
-void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
+void IConsoleSetSetting(std::string_view name, std::string_view value, bool force_newgame)
 {
 	const SettingDesc *sd = GetSettingFromName(name);
 	/* Company settings are not in "list_settings", so don't try to modify them. */
@@ -1945,7 +1955,7 @@ void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 	}
 }
 
-void IConsoleSetSetting(const char *name, int value)
+void IConsoleSetSetting(std::string_view name, int value)
 {
 	const SettingDesc *sd = GetSettingFromName(name);
 	assert(sd != nullptr);
@@ -1957,7 +1967,7 @@ void IConsoleSetSetting(const char *name, int value)
  * @param name  Name of the setting to output its value
  * @param force_newgame force the newgame settings
  */
-void IConsoleGetSetting(const char *name, bool force_newgame)
+void IConsoleGetSetting(std::string_view name, bool force_newgame)
 {
 	const SettingDesc *sd = GetSettingFromName(name);
 	/* Company settings are not in "list_settings", so don't try to read them. */
@@ -1974,17 +1984,18 @@ void IConsoleGetSetting(const char *name, bool force_newgame)
 		std::string value = sd->FormatValue(object);
 		const IntSettingDesc *int_setting = sd->AsIntSetting();
 		auto [min_val, max_val] = int_setting->GetRange();
-		IConsolePrint(CC_INFO, "Current value for '{}' is '{}' (min: {}{}, max: {}).",
-			sd->GetName(), value, sd->flags.Test(SettingFlag::GuiZeroIsSpecial) ? "(0) " : "", min_val, max_val);
+		auto def_val = int_setting->GetDefaultValue();
+		IConsolePrint(CC_INFO, "Current value for '{}' is '{}' (min: {}{}, max: {}, def: {}).",
+			sd->GetName(), value, sd->flags.Test(SettingFlag::GuiZeroIsSpecial) ? "(0) " : "", min_val, max_val, def_val);
 	}
 }
 
-static void IConsoleListSettingsTable(const SettingTable &table, const char *prefilter)
+static void IConsoleListSettingsTable(const SettingTable &table, std::string_view prefilter)
 {
 	for (auto &desc : table) {
 		const SettingDesc *sd = GetSettingDesc(desc);
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		if (prefilter != nullptr && sd->GetName().find(prefilter) == std::string::npos) continue;
+		if (!prefilter.empty() && sd->GetName().find(prefilter) == std::string::npos) continue;
 		IConsolePrint(CC_DEFAULT, "{} = {}", sd->GetName(), sd->FormatValue(&GetGameSettings()));
 	}
 }
@@ -1994,7 +2005,7 @@ static void IConsoleListSettingsTable(const SettingTable &table, const char *pre
  *
  * @param prefilter  If not \c nullptr, only list settings with names that begin with \a prefilter prefix
  */
-void IConsoleListSettings(const char *prefilter)
+void IConsoleListSettings(std::string_view prefilter)
 {
 	IConsolePrint(CC_HELP, "All settings with their current value:");
 

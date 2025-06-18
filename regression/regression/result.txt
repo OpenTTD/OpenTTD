@@ -8,6 +8,10 @@
  IsValid(vehicle.plane_speed): true
  vehicle.plane_speed: 2
   Required this file
+ TestEnum.value1: 1
+ test_constant: 1
+ TestEnum.value2: 2
+ test_constant: 1
  min(6, 3): 3
  min(3, 6): 3
  max(6, 3): 6
@@ -81,7 +85,7 @@
    20
    30
    40
- Ops:      8673
+ Ops:      8649
 
 --Std--
  abs(-21): 21
@@ -571,6 +575,13 @@
     4006 => 12
   []:
     4000 => 50
+  clone:
+  Clone ListDump:
+    1005 => 1005
+    4000 => 50
+    4001 => 8002
+    4002 => 8004
+    4006 => 12
   IsEmpty():     true
     0 => 5  (true)
 ERROR: Next() is invalid as Begin() is never called
@@ -580,6 +591,12 @@ ERROR: IsEnd() is invalid as Begin() is never called
     2 => 6  (true)
     3 => 6  (true)
     9 => 0  (false)
+  Clone ListDump:
+    1005 => 1005
+    4000 => 50
+    4001 => 8002
+    4002 => 8004
+    4006 => 12
 
 --Company--
   SetName():            true
@@ -9423,13 +9440,22 @@ ERROR: IsEnd() is invalid as Begin() is never called
     23 => 652
     25 => 563
   HasStatue():                     false
-  GetRoadReworkDuration():         0
-  GetExclusiveRightsCompany():     -1
-  GetExclusiveRightsDuration():    0
   IsActionAvailable(BUILD_STATUE): true
   PerformTownAction(BUILD_STATUE): true
   IsActionAvailable(BUILD_STATUE): false
   HasStatue():                     true
+  GetRoadReworkDuration():         0
+  IsActionAvailable(ROAD_REBUILD): true
+  PerformTownAction(ROAD_REBUILD): true
+  IsActionAvailable(ROAD_REBUILD): true
+  GetRoadReworkDuration():         6
+  GetExclusiveRightsCompany():     -1
+  GetExclusiveRightsDuration():    0
+  IsActionAvailable(BUY_RIGHTS):   true
+  PerformTownAction(BUY_RIGHTS):   true
+  IsActionAvailable(BUY_RIGHTS):   false
+  GetExclusiveRightsCompany():     1
+  GetExclusiveRightsDuration():    12
 
 --Tunnel--
   IsTunnelTile():       false
@@ -9699,6 +9725,14 @@ ERROR: IsEnd() is invalid as Begin() is never called
     20 => 23596
   foreach():
     20 => 23596
+  Count():             0
+  Location ListDump:
+  foreach():
+  Count():             1
+  Location ListDump:
+    20 => 23596
+  foreach():
+    20 => 23596
 
   First Subsidy Test
       --Subsidy (0) --
@@ -9726,6 +9760,16 @@ ERROR: IsEnd() is invalid as Begin() is never called
       EventName:         CompanyRenamed
       CompanyID:         1
       CompanyName:       Little Frutford Transport
+  GetNextEvent:          instance
+    GetEventType:        28
+      EventName:         RoadReconstruction
+      CompanyID:         1
+      TownID:            12
+  GetNextEvent:          instance
+    GetEventType:        27
+      EventName:         ExclusiveTransportRights
+      CompanyID:         1
+      TownID:            12
   IsEventWaiting:        false
 
 --Math--
@@ -9760,21 +9804,38 @@ ERROR: IsEnd() is invalid as Begin() is never called
   -1          >  2147483647:   false
   -2147483648 >  2147483647:   false
    13725      > -2147483648:   true
+
+--PriorityQueue--
+  IsEmpty():    true
+  Count():      0
+  --Insert--
+    Insert(0, 0): true
+    Insert(1, 1): true
+    Insert(2, 2): true
+    Insert(3, 3): true
+    Insert(4, 4): true
+    Insert(5, 5): true
+    Insert(6, 6): true
+    Insert(7, 7): true
+    Insert(8, 8): true
+    Insert(9, 9): true
+  Exists(5):    true
+  Insert(5, 5): true
+  IsEmpty():    false
+  Count():      11
+  Peek():       0
+  Count():      11
+  Pop():        0
+  Count():      10
+  0 == 0 :      true
+  Clear():      (null : 0x00000000)
+  IsEmpty():    true
+  Count():      0
 --Valuate() with excessive CPU usage--
+constructor failed with: excessive CPU usage in list filter function
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [unknown()] regression/main.nut line [2065]
-*FUNCTION [Valuate()] NATIVE line [-1]
-*FUNCTION [Start()] regression/main.nut line [2066]
-
-[id] 0
-[this] TABLE
-[Infinite] CLOSURE
-[list] INSTANCE
-[this] INSTANCE
-Your script made an error: excessive CPU usage in valuator function
-
-*FUNCTION [Start()] regression/main.nut line [2066]
+*FUNCTION [Start()] regression/main.nut line [2161]
 
 [Infinite] CLOSURE
 [list] INSTANCE

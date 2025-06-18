@@ -33,6 +33,7 @@
 #include "ai/ai_gui.hpp"
 #include "game/game_gui.hpp"
 #include "industry.h"
+#include "core/string_consumer.hpp"
 
 #include "widgets/genworld_widget.h"
 
@@ -851,7 +852,7 @@ struct GenerateLandscapeWindow : public Window {
 		}
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		switch (widget) {
 			case WID_GL_MAPSIZE_X_PULLDOWN:     _settings_newgame.game_creation.map_x = index; break;
@@ -913,7 +914,9 @@ struct GenerateLandscapeWindow : public Window {
 
 		int32_t value;
 		if (!str->empty()) {
-			value = atoi(str->c_str());
+			auto val = ParseInteger<int32_t>(*str, 10, true);
+			if (!val.has_value()) return;
+			value = *val;
 		} else {
 			/* An empty string means revert to the default */
 			switch (this->widget_id) {
@@ -972,14 +975,14 @@ struct GenerateLandscapeWindow : public Window {
 };
 
 static WindowDesc _generate_landscape_desc(
-	WDP_CENTER, nullptr, 0, 0,
+	WDP_CENTER, {}, 0, 0,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	{},
 	_nested_generate_landscape_widgets
 );
 
 static WindowDesc _heightmap_load_desc(
-	WDP_CENTER, nullptr, 0, 0,
+	WDP_CENTER, {}, 0, 0,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	{},
 	_nested_heightmap_load_widgets
@@ -997,7 +1000,7 @@ static void _ShowGenerateLandscape(GenerateLandscapeWindowMode mode)
 
 	if (mode == GLWM_HEIGHTMAP) {
 		/* If the function returns negative, it means there was a problem loading the heightmap */
-		if (!GetHeightmapDimensions(_file_to_saveload.detail_ftype, _file_to_saveload.name.c_str(), &x, &y)) return;
+		if (!GetHeightmapDimensions(_file_to_saveload.ftype.detailed, _file_to_saveload.name, &x, &y)) return;
 	}
 
 	WindowDesc &desc = (mode == GLWM_HEIGHTMAP) ? _heightmap_load_desc : _generate_landscape_desc;
@@ -1187,7 +1190,7 @@ struct CreateScenarioWindow : public Window
 		this->RaiseWidgetsWhenLowered(WID_CS_START_DATE_DOWN, WID_CS_START_DATE_UP, WID_CS_FLAT_LAND_HEIGHT_DOWN, WID_CS_FLAT_LAND_HEIGHT_UP);
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		switch (widget) {
 			case WID_CS_MAPSIZE_X_PULLDOWN: _settings_newgame.game_creation.map_x = index; break;
@@ -1198,19 +1201,20 @@ struct CreateScenarioWindow : public Window
 
 	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (!str.has_value() || str->empty()) return;
+		if (!str.has_value()) return;
 
-		int32_t value = atoi(str->c_str());
+		auto value = ParseInteger<int32_t>(*str, 10, true);
+		if (!value.has_value()) return;
 
 		switch (this->widget_id) {
 			case WID_CS_START_DATE_TEXT:
 				this->SetWidgetDirty(WID_CS_START_DATE_TEXT);
-				_settings_newgame.game_creation.starting_year = Clamp(TimerGameCalendar::Year(value), CalendarTime::MIN_YEAR, CalendarTime::MAX_YEAR);
+				_settings_newgame.game_creation.starting_year = Clamp(TimerGameCalendar::Year(*value), CalendarTime::MIN_YEAR, CalendarTime::MAX_YEAR);
 				break;
 
 			case WID_CS_FLAT_LAND_HEIGHT_TEXT:
 				this->SetWidgetDirty(WID_CS_FLAT_LAND_HEIGHT_TEXT);
-				_settings_newgame.game_creation.se_flat_world_height = Clamp(value, 0, GetMapHeightLimit());
+				_settings_newgame.game_creation.se_flat_world_height = Clamp(*value, 0, GetMapHeightLimit());
 				break;
 		}
 
@@ -1278,7 +1282,7 @@ static constexpr NWidgetPart _nested_create_scenario_widgets[] = {
 };
 
 static WindowDesc _create_scenario_desc(
-	WDP_CENTER, nullptr, 0, 0,
+	WDP_CENTER, {}, 0, 0,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	{},
 	_nested_create_scenario_widgets
@@ -1304,7 +1308,7 @@ static constexpr NWidgetPart _nested_generate_progress_widgets[] = {
 
 
 static WindowDesc _generate_progress_desc(
-	WDP_CENTER, nullptr, 0, 0,
+	WDP_CENTER, {}, 0, 0,
 	WC_MODAL_PROGRESS, WC_NONE,
 	WindowDefaultFlag::NoClose,
 	_nested_generate_progress_widgets
@@ -1393,7 +1397,7 @@ struct GenerateProgressWindow : public Window {
 				DrawFrameRect(r, COLOUR_GREY, {FrameFlag::BorderOnly, FrameFlag::Lowered});
 				Rect br = r.Shrink(WidgetDimensions::scaled.bevel);
 				DrawFrameRect(br.WithWidth(br.Width() * GenWorldStatus::percent / 100, _current_text_dir == TD_RTL), COLOUR_MAUVE, {});
-				DrawString(br.left, br.right, CenterBounds(br.top, br.bottom, GetCharacterHeight(FS_NORMAL)),
+				DrawString(br.left, br.right, CentreBounds(br.top, br.bottom, GetCharacterHeight(FS_NORMAL)),
 					GetString(STR_GENERATION_PROGRESS, GenWorldStatus::percent), TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 			}

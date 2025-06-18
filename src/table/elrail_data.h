@@ -17,7 +17,7 @@
  * Tile Location group.
  * This defines whether the X and or Y coordinate of a tile is even
  */
-enum TLG : uint8_t {
+enum TileLocationGroup : uint8_t {
 	XEVEN_YEVEN = 0,
 	XEVEN_YODD  = 1,
 	XODD_YEVEN  = 2,
@@ -40,11 +40,11 @@ enum TileSource : uint8_t {
 static const uint NUM_TRACKS_AT_PCP = 6;
 
 /** Which PPPs are possible at all on a given PCP */
-static const uint8_t AllowedPPPonPCP[DIAGDIR_END] = {
-	1 << DIR_N | 1 << DIR_E  | 1 << DIR_SE | 1 << DIR_S | 1 << DIR_W  | 1 << DIR_NW,
-	1 << DIR_N | 1 << DIR_NE | 1 << DIR_E  | 1 << DIR_S | 1 << DIR_SW | 1 << DIR_W,
-	1 << DIR_N | 1 << DIR_E  | 1 << DIR_SE | 1 << DIR_S | 1 << DIR_W  | 1 << DIR_NW,
-	1 << DIR_N | 1 << DIR_NE | 1 << DIR_E  | 1 << DIR_S | 1 << DIR_SW | 1 << DIR_W,
+static const Directions _allowed_ppp_on_pcp[DIAGDIR_END] = {
+	{DIR_N, DIR_E, DIR_SE, DIR_S, DIR_W, DIR_NW},
+	{DIR_N, DIR_NE, DIR_E, DIR_S, DIR_SW, DIR_W},
+	{DIR_N, DIR_E, DIR_SE, DIR_S, DIR_W, DIR_NW},
+	{DIR_N, DIR_NE, DIR_E, DIR_S, DIR_SW, DIR_W},
 };
 
 /**
@@ -52,15 +52,15 @@ static const uint8_t AllowedPPPonPCP[DIAGDIR_END] = {
  * the following system is used: if you rotate the PCP so that it is in the
  * north, the eastern PPP belongs to the tile.
  */
-static const uint8_t OwnedPPPonPCP[DIAGDIR_END] = {
-	1 << DIR_SE | 1 << DIR_S  | 1 << DIR_SW | 1 << DIR_W,
-	1 << DIR_N  | 1 << DIR_SW | 1 << DIR_W  | 1 << DIR_NW,
-	1 << DIR_N  | 1 << DIR_NE | 1 << DIR_E  | 1 << DIR_NW,
-	1 << DIR_NE | 1 << DIR_E  | 1 << DIR_SE | 1 << DIR_S
+static const Directions _owned_ppp_on_pcp[DIAGDIR_END] = {
+	{DIR_SE, DIR_S, DIR_SW, DIR_W},
+	{DIR_N, DIR_SW, DIR_W, DIR_NW},
+	{DIR_N, DIR_NE, DIR_E, DIR_NW},
+	{DIR_NE, DIR_E, DIR_SE, DIR_S},
 };
 
 /** Maps a track bit onto two PCP positions */
-static const DiagDirection PCPpositions[TRACK_END][2] = {
+static const DiagDirection _pcp_positions[TRACK_END][2] = {
 	{DIAGDIR_NE, DIAGDIR_SW}, // X
 	{DIAGDIR_SE, DIAGDIR_NW}, // Y
 	{DIAGDIR_NW, DIAGDIR_NE}, // UPPER
@@ -69,142 +69,141 @@ static const DiagDirection PCPpositions[TRACK_END][2] = {
 	{DIAGDIR_NE, DIAGDIR_SE}, // RIGHT
 };
 
-#define PCP_NOT_ON_TRACK 0xFF
 /**
  * Preferred points of each trackbit. Those are the ones perpendicular to the
  * track, plus the point in extension of the track (to mark end-of-track). PCPs
  * which are not on either end of the track are fully preferred.
  * @see PCPpositions
  */
-static const uint8_t PreferredPPPofTrackAtPCP[TRACK_END][DIAGDIR_END] = {
-	{    // X
-		1 << DIR_NE | 1 << DIR_SE | 1 << DIR_NW, // NE
-		PCP_NOT_ON_TRACK,                        // SE
-		1 << DIR_SE | 1 << DIR_SW | 1 << DIR_NW, // SW
-		PCP_NOT_ON_TRACK                         // NE
-	}, { // Y
-		PCP_NOT_ON_TRACK,
-		1 << DIR_NE | 1 << DIR_SE | 1 << DIR_SW,
-		PCP_NOT_ON_TRACK,
-		1 << DIR_SW | 1 << DIR_NW | 1 << DIR_NE
-	}, { // UPPER
-		1 << DIR_E | 1 << DIR_N | 1 << DIR_S,
-		PCP_NOT_ON_TRACK,
-		PCP_NOT_ON_TRACK,
-		1 << DIR_W | 1 << DIR_N | 1 << DIR_S
-	}, { // LOWER
-		PCP_NOT_ON_TRACK,
-		1 << DIR_E | 1 << DIR_N | 1 << DIR_S,
-		1 << DIR_W | 1 << DIR_N | 1 << DIR_S,
-		PCP_NOT_ON_TRACK
-	}, { // LEFT
-		PCP_NOT_ON_TRACK,
-		PCP_NOT_ON_TRACK,
-		1 << DIR_S | 1 << DIR_E | 1 << DIR_W,
-		1 << DIR_N | 1 << DIR_E | 1 << DIR_W
-	}, { // RIGHT
-		1 << DIR_N | 1 << DIR_E | 1 << DIR_W,
-		1 << DIR_S | 1 << DIR_E | 1 << DIR_W,
-		PCP_NOT_ON_TRACK,
-		PCP_NOT_ON_TRACK
-	}
+static const Directions _preferred_ppp_of_track_at_pcp[TRACK_END][DIAGDIR_END] = {
+	{ // X
+		{DIR_NE, DIR_SE, DIR_NW}, // NE
+		DIRECTIONS_ALL,           // SE
+		{DIR_SE, DIR_SW, DIR_NW}, // SW
+		DIRECTIONS_ALL            // NE
+	},
+	{ // Y
+		DIRECTIONS_ALL,
+		{DIR_NE, DIR_SE, DIR_SW},
+		DIRECTIONS_ALL,
+		{DIR_SW, DIR_NW, DIR_NE},
+	},
+	{ // UPPER
+		{DIR_E, DIR_N, DIR_S},
+		DIRECTIONS_ALL,
+		DIRECTIONS_ALL,
+		{DIR_W, DIR_N, DIR_S},
+	},
+	{ // LOWER
+		DIRECTIONS_ALL,
+		{DIR_E, DIR_N, DIR_S},
+		{DIR_W, DIR_N, DIR_S},
+		DIRECTIONS_ALL,
+	},
+	{ // LEFT
+		DIRECTIONS_ALL,
+		DIRECTIONS_ALL,
+		{DIR_S, DIR_E, DIR_W},
+		{DIR_N, DIR_E, DIR_W},
+	},
+	{ // RIGHT
+		{DIR_N, DIR_E, DIR_W},
+		{DIR_S, DIR_E, DIR_W},
+		DIRECTIONS_ALL,
+		DIRECTIONS_ALL,
+	},
 };
-#undef PCP_NOT_ON_TRACK
-
 
 #define NUM_IGNORE_GROUPS 3
-#define IGNORE_NONE 0xFF
 /**
  * In case we have a straight line, we place pylon only every two tiles,
  * so there are certain tiles which we ignore. A straight line is found if
  * we have exactly two PPPs.
  */
-static const uint8_t IgnoredPCP[NUM_IGNORE_GROUPS][TLG_END][DIAGDIR_END] = {
+static const Directions _ignored_pcp[NUM_IGNORE_GROUPS][TLG_END][DIAGDIR_END] = {
 	{   // Ignore group 1, X and Y tracks
 		{     // X even, Y even
-			IGNORE_NONE,
-			1 << DIR_NE | 1 << DIR_SW,
-			1 << DIR_NW | 1 << DIR_SE,
-			IGNORE_NONE
+			DIRECTIONS_ALL,
+			{DIR_NE, DIR_SW},
+			{DIR_NW, DIR_SE},
+			DIRECTIONS_ALL,
 		}, { // X even, Y odd
-			IGNORE_NONE,
-			IGNORE_NONE,
-			1 << DIR_NW | 1 << DIR_SE,
-			1 << DIR_NE | 1 << DIR_SW
+			DIRECTIONS_ALL,
+			DIRECTIONS_ALL,
+			{DIR_NW, DIR_SE},
+			{DIR_NE, DIR_SW},
 		}, { // X odd,  Y even
-			1 << DIR_NW | 1 << DIR_SE,
-			1 << DIR_NE | 1 << DIR_SW,
-			IGNORE_NONE,
-			IGNORE_NONE
+			{DIR_NW, DIR_SE},
+			{DIR_NE, DIR_SW},
+			DIRECTIONS_ALL,
+			DIRECTIONS_ALL,
 		}, { // X odd,  Y odd
-			1 << DIR_NW | 1 << DIR_SE,
-			IGNORE_NONE,
-			IGNORE_NONE,
-			1 << DIR_NE | 1 << DIR_SW
+			{DIR_NW, DIR_SE},
+			DIRECTIONS_ALL,
+			DIRECTIONS_ALL,
+			{DIR_NE, DIR_SW},
 		}
 	},
 	{   // Ignore group 2, LEFT and RIGHT tracks
 		{
-			1 << DIR_E | 1 << DIR_W,
-			IGNORE_NONE,
-			IGNORE_NONE,
-			1 << DIR_E | 1 << DIR_W
+			{DIR_E, DIR_W},
+			DIRECTIONS_ALL,
+			DIRECTIONS_ALL,
+			{DIR_E, DIR_W},
 		}, {
-			IGNORE_NONE,
-			1 << DIR_E | 1 << DIR_W,
-			1 << DIR_E | 1 << DIR_W,
-			IGNORE_NONE
+			DIRECTIONS_ALL,
+			{DIR_E, DIR_W},
+			{DIR_E, DIR_W},
+			DIRECTIONS_ALL,
 		}, {
-			IGNORE_NONE,
-			1 << DIR_E | 1 << DIR_W,
-			1 << DIR_E | 1 << DIR_W,
-			IGNORE_NONE
+			DIRECTIONS_ALL,
+			{DIR_E, DIR_W},
+			{DIR_E, DIR_W},
+			DIRECTIONS_ALL,
 		}, {
-			1 << DIR_E | 1 << DIR_W,
-			IGNORE_NONE,
-			IGNORE_NONE,
-			1 << DIR_E | 1 << DIR_W
+			{DIR_E, DIR_W},
+			DIRECTIONS_ALL,
+			DIRECTIONS_ALL,
+			{DIR_E, DIR_W},
 		}
 	},
 	{   // Ignore group 3, UPPER and LOWER tracks
 		{
-			1 << DIR_N | 1 << DIR_S,
-			1 << DIR_N | 1 << DIR_S,
-			IGNORE_NONE,
-			IGNORE_NONE
+			{DIR_N, DIR_S},
+			{DIR_N, DIR_S},
+			DIRECTIONS_ALL,
+			DIRECTIONS_ALL,
 		}, {
-			IGNORE_NONE,
-			IGNORE_NONE,
-			1 << DIR_N | 1 << DIR_S,
-			1 << DIR_N | 1 << DIR_S
+			DIRECTIONS_ALL,
+			DIRECTIONS_ALL,
+			{DIR_N, DIR_S},
+			{DIR_N, DIR_S},
 		}, {
-			IGNORE_NONE,
-			IGNORE_NONE,
-			1 << DIR_N | 1 << DIR_S ,
-			1 << DIR_N | 1 << DIR_S
+			DIRECTIONS_ALL,
+			DIRECTIONS_ALL,
+			{DIR_N, DIR_S},
+			{DIR_N, DIR_S},
 		}, {
-			1 << DIR_N | 1 << DIR_S,
-			1 << DIR_N | 1 << DIR_S,
-			IGNORE_NONE,
-			IGNORE_NONE
+			{DIR_N, DIR_S},
+			{DIR_N, DIR_S},
+			DIRECTIONS_ALL,
+			DIRECTIONS_ALL,
 		}
 	}
 };
 
-#undef NO_IGNORE
-
 /** Which pylons can definitely NOT be built */
-static const uint8_t DisallowedPPPofTrackAtPCP[TRACK_END][DIAGDIR_END] = {
-	{1 << DIR_SW | 1 << DIR_NE, 0,           1 << DIR_SW | 1 << DIR_NE, 0          }, // X
-	{0,           1 << DIR_NW | 1 << DIR_SE, 0,           1 << DIR_NW | 1 << DIR_SE}, // Y
-	{1 << DIR_W | 1 << DIR_E,  0,           0,           1 << DIR_W | 1 << DIR_E }, // UPPER
-	{0,           1 << DIR_W | 1 << DIR_E,  1 << DIR_W | 1 << DIR_E,  0          }, // LOWER
-	{0,           0,           1 << DIR_S | 1 << DIR_N,  1 << DIR_N | 1 << DIR_S }, // LEFT
-	{1 << DIR_S | 1 << DIR_N,  1 << DIR_S | 1 << DIR_N,  0,           0,         }, // RIGHT
+static const Directions _disallowed_ppp_of_track_at_pcp[TRACK_END][DIAGDIR_END] = {
+	{{DIR_SW, DIR_NE}, {},               {DIR_SW, DIR_NE}, {}              }, // X
+	{{},               {DIR_NW, DIR_SE}, {},               {DIR_NW, DIR_SE}}, // Y
+	{{DIR_W, DIR_E},   {},               {},               {DIR_W, DIR_E}  }, // UPPER
+	{{},               {DIR_W, DIR_E},   {DIR_W, DIR_E},   {}              }, // LOWER
+	{{},               {},               {DIR_S, DIR_N},   {DIR_N, DIR_S}  }, // LEFT
+	{{DIR_S, DIR_N},   {DIR_S, DIR_N},   {},               {},             }, // RIGHT
 };
 
 /* This array stores which track bits can meet at a tile edge */
-static const Track TracksAtPCP[DIAGDIR_END][NUM_TRACKS_AT_PCP] = {
+static const Track _tracks_at_pcp[DIAGDIR_END][NUM_TRACKS_AT_PCP] = {
 	{TRACK_X, TRACK_X, TRACK_UPPER, TRACK_LOWER, TRACK_LEFT, TRACK_RIGHT},
 	{TRACK_Y, TRACK_Y, TRACK_UPPER, TRACK_LOWER, TRACK_LEFT, TRACK_RIGHT},
 	{TRACK_X, TRACK_X, TRACK_UPPER, TRACK_LOWER, TRACK_LEFT, TRACK_RIGHT},
@@ -213,7 +212,7 @@ static const Track TracksAtPCP[DIAGDIR_END][NUM_TRACKS_AT_PCP] = {
 
 /* takes each of the 6 track bits from the array above and
  * assigns it to the home tile or neighbour tile */
-static const TileSource TrackSourceTile[DIAGDIR_END][NUM_TRACKS_AT_PCP] = {
+static const TileSource _track_source_tile[DIAGDIR_END][NUM_TRACKS_AT_PCP] = {
 	{TS_HOME, TS_NEIGHBOUR, TS_HOME     , TS_NEIGHBOUR, TS_NEIGHBOUR, TS_HOME     },
 	{TS_HOME, TS_NEIGHBOUR, TS_NEIGHBOUR, TS_HOME     , TS_NEIGHBOUR, TS_HOME     },
 	{TS_HOME, TS_NEIGHBOUR, TS_NEIGHBOUR, TS_HOME     , TS_HOME     , TS_NEIGHBOUR},
@@ -221,7 +220,7 @@ static const TileSource TrackSourceTile[DIAGDIR_END][NUM_TRACKS_AT_PCP] = {
 };
 
 /* Several PPPs maybe exist, here they are sorted in order of preference. */
-static const Direction PPPorder[DIAGDIR_END][TLG_END][DIR_END] = {    //  X  -  Y
+static const Direction _ppp_order[DIAGDIR_END][TLG_END][DIR_END] = {    //  X  -  Y
 	{   // PCP 0
 		{DIR_NE, DIR_NW, DIR_SE, DIR_SW, DIR_N, DIR_E, DIR_S, DIR_W}, // evn - evn
 		{DIR_NE, DIR_SE, DIR_SW, DIR_NW, DIR_S, DIR_W, DIR_N, DIR_E}, // evn - odd
@@ -245,11 +244,11 @@ static const Direction PPPorder[DIAGDIR_END][TLG_END][DIR_END] = {    //  X  -  
 	}
 };
 /* Geometric placement of the PCP relative to the tile origin */
-static const int8_t x_pcp_offsets[DIAGDIR_END] = {0,  8, 16, 8};
-static const int8_t y_pcp_offsets[DIAGDIR_END] = {8, 16,  8, 0};
+static const int8_t _x_pcp_offsets[DIAGDIR_END] = {0,  8, 16, 8};
+static const int8_t _y_pcp_offsets[DIAGDIR_END] = {8, 16,  8, 0};
 /* Geometric placement of the PPP relative to the PCP*/
-static const int8_t x_ppp_offsets[DIR_END] = {-2, -4, -2,  0,  2,  4,  2,  0};
-static const int8_t y_ppp_offsets[DIR_END] = {-2,  0,  2,  4,  2,  0, -2, -4};
+static const int8_t _x_ppp_offsets[DIR_END] = {-2, -4, -2,  0,  2,  4,  2,  0};
+static const int8_t _y_ppp_offsets[DIR_END] = {-2,  0,  2,  4,  2,  0, -2, -4};
 
 /**
  * Offset for pylon sprites from the base pylon sprite.
@@ -266,7 +265,7 @@ enum PylonSpriteOffset : uint8_t {
 };
 
 /* The type of pylon to draw at each PPP */
-static const uint8_t pylon_sprites[] = {
+static const uint8_t _pylon_sprites[] = {
 	PSO_EW_N,
 	PSO_Y_NE,
 	PSO_NS_E,
@@ -331,7 +330,7 @@ static const uint ELRAIL_ELEVRAISE = ELRAIL_ELEVATION + TILE_HEIGHT + 1;
 /** Wires that a draw one level lower than the north corner. */
 static const uint ELRAIL_ELEVLOWER = ELRAIL_ELEVATION - 1;
 
-static const SortableSpriteStruct RailCatenarySpriteData[] = {
+static const SortableSpriteStruct _rail_catenary_sprite_data[] = {
 /* X direction
 	 * Flat tiles:
 		 * Wires */
@@ -392,14 +391,14 @@ static const SortableSpriteStruct RailCatenarySpriteData[] = {
 	{ WSO_EW_E,         15,  8,  3,  3,  1, ELRAIL_ELEVATION }  //!33: LOWER trackbit wire, pylon on both ends
 };
 
-static const SortableSpriteStruct RailCatenarySpriteData_Depot[] = {
+static const SortableSpriteStruct _rail_catenary_sprite_data_depot[] = {
 	{ WSO_ENTRANCE_NE,   0,  7, 15,  1,  1, ELRAIL_ELEVATION }, //! Wire for NE depot exit
 	{ WSO_ENTRANCE_SE,   7,  0,  1, 15,  1, ELRAIL_ELEVATION }, //! Wire for SE depot exit
 	{ WSO_ENTRANCE_SW,   0,  7, 15,  1,  1, ELRAIL_ELEVATION }, //! Wire for SW depot exit
 	{ WSO_ENTRANCE_NW,   7,  0,  1, 15,  1, ELRAIL_ELEVATION }  //! Wire for NW depot exit
 };
 
-static const SortableSpriteStruct RailCatenarySpriteData_Tunnel[] = {
+static const SortableSpriteStruct _rail_catenary_sprite_data_tunnel[] = {
 	{ WSO_ENTRANCE_SW,   0,  7, 15,  1,  1, ELRAIL_ELEVATION }, //! Wire for NE tunnel (SW facing exit)
 	{ WSO_ENTRANCE_NW,   7,  0,  1, 15,  1, ELRAIL_ELEVATION }, //! Wire for SE tunnel (NW facing exit)
 	{ WSO_ENTRANCE_NE,   0,  7, 15,  1,  1, ELRAIL_ELEVATION }, //! Wire for SW tunnel (NE facing exit)
@@ -471,7 +470,7 @@ enum RailCatenarySprite : uint8_t {
  * c) the second
  * d) both
  * PCP exists.*/
-static const RailCatenarySprite Wires[5][TRACK_END][4] = {
+static const RailCatenarySprite _rail_wires[5][TRACK_END][4] = {
 	{ // Tileh == 0
 		{INVALID_CATENARY, WIRE_X_FLAT_NE,   WIRE_X_FLAT_SW,   WIRE_X_FLAT_BOTH},
 		{INVALID_CATENARY, WIRE_Y_FLAT_SE,   WIRE_Y_FLAT_NW,   WIRE_Y_FLAT_BOTH},

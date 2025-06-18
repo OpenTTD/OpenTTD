@@ -12,37 +12,31 @@
 #include <mmsystem.h>
 #include "../../openttd.h"
 #include "../../core/random_func.hpp"
+#include "../../core/string_consumer.hpp"
 #include "../../string_func.h"
 #include "../../crashlog.h"
 #include "../../debug.h"
 
 #include "../../safeguards.h"
 
-static auto ParseCommandLine(char *line)
+static auto ParseCommandLine(std::string_view line)
 {
-	std::vector<char *> arguments;
-	for (;;) {
-		/* skip whitespace */
-		while (*line == ' ' || *line == '\t') line++;
+	std::vector<std::string_view> arguments;
 
-		/* end? */
-		if (*line == '\0') break;
+	StringConsumer consumer{line};
+	while (consumer.AnyBytesLeft()) {
+		consumer.SkipUntilCharNotIn(StringConsumer::WHITESPACE_NO_NEWLINE);
+		if (!consumer.AnyBytesLeft()) break;
 
-		/* special handling when quoted */
-		if (*line == '"') {
-			arguments.push_back(++line);
-			while (*line != '"') {
-				if (*line == '\0') return arguments;
-				line++;
-			}
+		std::string_view argument;
+		if (consumer.ReadIf("\"")) {
+			/* special handling when quoted */
+			argument = consumer.ReadUntil("\"", StringConsumer::SKIP_ONE_SEPARATOR);
 		} else {
-			arguments.push_back(line);
-			while (*line != ' ' && *line != '\t') {
-				if (*line == '\0') return arguments;
-				line++;
-			}
+			argument = consumer.ReadUntilCharIn(StringConsumer::WHITESPACE_NO_NEWLINE);
 		}
-		*line++ = '\0';
+
+		arguments.push_back(argument);
 	};
 
 	return arguments;
@@ -57,8 +51,8 @@ int APIENTRY WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 
 	CrashLog::InitialiseCrashLog();
 
-	/* Convert the command line to UTF-8. */
-	std::string cmdline = FS2OTTD(GetCommandLine());
+	/* Convert the command line to valid UTF-8. */
+	std::string cmdline = StrMakeValid(FS2OTTD(GetCommandLine()));
 
 	/* Set the console codepage to UTF-8. */
 	SetConsoleOutputCP(CP_UTF8);
@@ -72,11 +66,7 @@ int APIENTRY WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	/* setup random seed to something quite random */
 	SetRandomSeed(GetTickCount());
 
-	auto arguments = ParseCommandLine(cmdline.data());
-
-	/* Make sure our arguments contain only valid UTF-8 characters. */
-	for (auto argument : arguments) StrMakeValidInPlace(argument);
-
+	auto arguments = ParseCommandLine(cmdline);
 	int ret = openttd_main(arguments);
 
 	/* Restore system timer resolution. */

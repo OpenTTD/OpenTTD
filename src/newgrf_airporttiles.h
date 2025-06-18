@@ -68,12 +68,12 @@ struct AirportTileResolverObject : public ResolverObject {
  * Defines the data structure of each individual tile of an airport.
  */
 struct AirportTileSpec {
-	AnimationInfo animation;              ///< Information about the animation.
+	AnimationInfo<AirportAnimationTriggers> animation; ///< Information about the animation.
 	StringID name;                        ///< Tile Subname string, land information on this tile will give you "AirportName (TileSubname)"
 	AirportTileCallbackMasks callback_mask;                  ///< Bitmask telling which grf callback is set
 	uint8_t animation_special_flags;        ///< Extra flags to influence the animation
 	bool enabled;                         ///< entity still available (by default true). newgrf can disable it, though
-	GRFFileProps grf_prop;                ///< properties related the the grf file
+	SubstituteGRFFileProps grf_prop; ///< properties related the the grf file
 	std::vector<BadgeID> badges;
 
 	static const AirportTileSpec *Get(StationGfx gfx);
@@ -84,12 +84,12 @@ struct AirportTileSpec {
 private:
 	static AirportTileSpec tiles[NUM_AIRPORTTILES];
 
-	friend void AirportTileOverrideManager::SetEntitySpec(const AirportTileSpec *airpts);
+	friend void AirportTileOverrideManager::SetEntitySpec(AirportTileSpec &&airpts);
 };
 
 void AnimateAirportTile(TileIndex tile);
-void AirportTileAnimationTrigger(Station *st, TileIndex tile, AirpAnimationTrigger trigger, CargoType cargo_type = INVALID_CARGO);
-void AirportAnimationTrigger(Station *st, AirpAnimationTrigger trigger, CargoType cargo_type = INVALID_CARGO);
+bool TriggerAirportTileAnimation(Station *st, TileIndex tile, AirportAnimationTrigger trigger);
+bool TriggerAirportAnimation(Station *st, AirportAnimationTrigger trigger, CargoType cargo_type = INVALID_CARGO);
 bool DrawNewAirportTile(TileInfo *ti, Station *st, const AirportTileSpec *airts);
 
 #endif /* NEWGRF_AIRPORTTILES_H */

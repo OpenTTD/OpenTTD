@@ -7,6 +7,8 @@
 
 /* @file midifile.cpp Parser for standard MIDI files */
 
+#include "../stdafx.h"
+
 #include "midifile.hpp"
 #include "../fileio_func.h"
 #include "../fileio_type.h"
@@ -20,6 +22,8 @@
 #include "../console_internal.h"
 
 #include "table/strings.h"
+
+#include "../safeguards.h"
 
 /* SMF reader based on description at: http://www.somascape.org/midi/tech/mfile.html */
 
@@ -194,7 +198,7 @@ static bool ReadTrackChunk(FileHandle &file, MidiFile &target)
 	if (fread(buf, sizeof(magic), 1, file) != 1) {
 		return false;
 	}
-	if (memcmp(magic, buf, sizeof(magic)) != 0) {
+	if (!std::ranges::equal(magic, buf)) {
 		return false;
 	}
 
@@ -373,7 +377,7 @@ static bool FixupMidiData(MidiFile &target)
 
 	/* Annotate blocks with real time */
 	last_ticktime = 0;
-	uint32_t last_realtime = 0;
+	int64_t last_realtime = 0;
 	size_t cur_tempo = 0, cur_block = 0;
 	while (cur_block < target.blocks.size()) {
 		MidiFile::DataBlock &block = target.blocks[cur_block];
@@ -383,14 +387,14 @@ static bool FixupMidiData(MidiFile &target)
 			/* block is within the current tempo */
 			int64_t tickdiff = block.ticktime - last_ticktime;
 			last_ticktime = block.ticktime;
-			last_realtime += uint32_t(tickdiff * tempo.tempo / target.tickdiv);
+			last_realtime += tickdiff * tempo.tempo / target.tickdiv;
 			block.realtime = last_realtime;
 			cur_block++;
 		} else {
 			/* tempo change occurs before this block */
 			int64_t tickdiff = next_tempo.ticktime - last_ticktime;
 			last_ticktime = next_tempo.ticktime;
-			last_realtime += uint32_t(tickdiff * tempo.tempo / target.tickdiv); // current tempo until the tempo change
+			last_realtime += tickdiff * tempo.tempo / target.tickdiv; // current tempo until the tempo change
 			cur_tempo++;
 		}
 	}
@@ -1039,29 +1043,23 @@ std::string MidiFile::GetSMFFile(const MusicSongInfo &song)
 
 	if (song.filetype != MTT_MPSMIDI) return std::string();
 
-	char basename[MAX_PATH];
+	std::string tempdirname = FioGetDirectory(Searchpath::SP_AUTODOWNLOAD_DIR, Subdirectory::BASESET_DIR);
 	{
-		const char *fnstart = strrchr(song.filename.c_str(), PATHSEPCHAR);
-		if (fnstart == nullptr) {
-			fnstart = song.filename.c_str();
-		} else {
-			fnstart++;
-		}
+		std::string_view basename{song.filename};
+		auto fnstart = basename.rfind(PATHSEPCHAR);
+		if (fnstart != std::string_view::npos) basename.remove_prefix(fnstart + 1);
 
 		/* Remove all '.' characters from filename */
-		char *wp = basename;
-		for (const char *rp = fnstart; *rp != '\0'; rp++) {
-			if (*rp != '.') *wp++ = *rp;
+		tempdirname.reserve(tempdirname.size() + basename.size());
+		for (auto c : basename) {
+			if (c != '.') tempdirname.append(1, c);
 		}
-		*wp++ = '\0';
 	}
 
-	std::string tempdirname = FioGetDirectory(Searchpath::SP_AUTODOWNLOAD_DIR, Subdirectory::BASESET_DIR);
-	tempdirname += basename;
 	AppendPathSeparator(tempdirname);
 	FioCreateDirectory(tempdirname);
 
-	std::string output_filename = tempdirname + std::to_string(song.cat_index) + ".mid";
+	std::string output_filename = fmt::format("{}{}.mid", tempdirname, song.cat_index);
 
 	if (FileExists(output_filename)) {
 		/* If the file already exists, assume it's the correct decoded data */
@@ -1084,13 +1082,13 @@ std::string MidiFile::GetSMFFile(const MusicSongInfo &song)
 }
 
 
-static bool CmdDumpSMF(uint8_t argc, char *argv[])
+static bool CmdDumpSMF(std::span<std::string_view> argv)
 {
-	if (argc == 0) {
+	if (argv.empty()) {
 		IConsolePrint(CC_HELP, "Write the current song to a Standard MIDI File. Usage: 'dumpsmf <filename>'.");
 		return true;
 	}
-	if (argc != 2) {
+	if (argv.size() != 2) {
 		IConsolePrint(CC_WARNING, "You must specify a filename to write MIDI data to.");
 		return false;
 	}

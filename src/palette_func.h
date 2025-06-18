@@ -91,7 +91,7 @@ void SetColourGradient(Colours colour, ColourShade shade, uint8_t palette_colour
  * @param level Intensity, 0 = black, 15 = white
  * @return colour
  */
-#define GREY_SCALE(level) (level)
+constexpr uint8_t GREY_SCALE(uint8_t level) { return level; }
 
 static const uint8_t PC_BLACK              = GREY_SCALE(1);  ///< Black palette colour.
 static const uint8_t PC_DARK_GREY          = GREY_SCALE(6);  ///< Dark grey palette colour.

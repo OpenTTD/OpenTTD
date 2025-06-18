@@ -11,6 +11,7 @@
 #define SAVELOAD_NEWGRF_SL_H
 
 #include "../newgrf_commons.h"
+#include "saveload.h"
 
 struct NewGRFMappingChunkHandler : ChunkHandler {
 	OverrideManagerBase &mapping;

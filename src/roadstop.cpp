@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "roadveh.h"
 #include "core/pool_func.hpp"
+#include "core/container_func.hpp"
 #include "roadstop_base.h"
 #include "station_base.h"
 #include "vehicle_func.h"
@@ -26,9 +27,8 @@ INSTANTIATE_POOL_METHODS(RoadStop)
 RoadStop::~RoadStop()
 {
 	/* When we are the head we need to free the entries */
-	if (HasBit(this->status, RSSFB_BASE_ENTRY)) {
-		delete this->east;
-		delete this->west;
+	if (this->status.Test(RoadStopStatusFlag::BaseEntry)) {
+		delete this->entries;
 	}
 
 	if (CleaningPool()) return;
@@ -61,7 +61,7 @@ RoadStop *RoadStop::GetNextRoadStop(const RoadVehicle *v) const
  */
 void RoadStop::MakeDriveThrough()
 {
-	assert(this->east == nullptr && this->west == nullptr);
+	assert(this->entries == nullptr);
 
 	RoadStopType rst = GetRoadStopType(this->xy);
 	Axis axis = GetDriveThroughStopAxis(this->xy);
@@ -78,48 +78,43 @@ void RoadStop::MakeDriveThrough()
 	RoadStop *rs_south = south ? RoadStop::GetByTile(south_tile, rst) : nullptr;
 
 	/* Amount of road stops that will be added to the 'northern' head */
-	int added = 1;
-	if (north && rs_north->east != nullptr) { // (east != nullptr) == (west != nullptr)
+	uint16_t added = 1;
+	if (north && rs_north->entries != nullptr) {
 		/* There is a more northern one, so this can join them */
-		this->east = rs_north->east;
-		this->west = rs_north->west;
+		this->entries = rs_north->entries;
 
-		if (south && rs_south->east != nullptr) { // (east != nullptr) == (west != nullptr)
+		if (south && rs_south->entries != nullptr) {
 			/* There more southern tiles too, they must 'join' us too */
-			ClrBit(rs_south->status, RSSFB_BASE_ENTRY);
-			this->east->occupied += rs_south->east->occupied;
-			this->west->occupied += rs_south->west->occupied;
+			rs_south->status.Reset(RoadStopStatusFlag::BaseEntry);
+			this->entries->east.occupied += rs_south->entries->east.occupied;
+			this->entries->west.occupied += rs_south->entries->west.occupied;
 
-			/* Free the now unneeded entry structs */
-			delete rs_south->east;
-			delete rs_south->west;
+			/* Free the now unneeded entries struct */
+			delete rs_south->entries;
 
 			/* Make all 'children' of the southern tile take the new master */
 			for (; IsDriveThroughRoadStopContinuation(this->xy, south_tile); south_tile += offset) {
 				rs_south = RoadStop::GetByTile(south_tile, rst);
-				if (rs_south->east == nullptr) break;
-				rs_south->east = rs_north->east;
-				rs_south->west = rs_north->west;
+				if (rs_south->entries == nullptr) break;
+				rs_south->entries = rs_north->entries;
 				added++;
 			}
 		}
-	} else if (south && rs_south->east != nullptr) { // (east != nullptr) == (west != nullptr)
+	} else if (south && rs_south->entries != nullptr) {
 		/* There is one to the south, but not to the north... so we become 'parent' */
-		this->east = rs_south->east;
-		this->west = rs_south->west;
-		SetBit(this->status, RSSFB_BASE_ENTRY);
-		ClrBit(rs_south->status, RSSFB_BASE_ENTRY);
+		this->entries = rs_south->entries;
+		this->status.Set(RoadStopStatusFlag::BaseEntry);
+		rs_south->status.Reset(RoadStopStatusFlag::BaseEntry);
 	} else {
 		/* We are the only... so we are automatically the master */
-		this->east = new Entry();
-		this->west = new Entry();
-		SetBit(this->status, RSSFB_BASE_ENTRY);
+		this->entries = new Entries();
+		this->status.Set(RoadStopStatusFlag::BaseEntry);
 	}
 
 	/* Now update the lengths */
 	added *= TILE_SIZE;
-	this->east->length += added;
-	this->west->length += added;
+	this->entries->east.length += added;
+	this->entries->west.length += added;
 }
 
 /**
@@ -128,7 +123,7 @@ void RoadStop::MakeDriveThrough()
  */
 void RoadStop::ClearDriveThrough()
 {
-	assert(this->east != nullptr && this->west != nullptr);
+	assert(this->entries != nullptr);
 
 	RoadStopType rst = GetRoadStopType(this->xy);
 	Axis axis = GetDriveThroughStopAxis(this->xy);
@@ -153,9 +148,8 @@ void RoadStop::ClearDriveThrough()
 		if (south) {
 			/* There are more southern tiles too, they must be split;
 			 * first make the new southern 'base' */
-			SetBit(rs_south->status, RSSFB_BASE_ENTRY);
-			rs_south->east = new Entry();
-			rs_south->west = new Entry();
+			rs_south->status.Set(RoadStopStatusFlag::BaseEntry);
+			rs_south->entries = new Entries();
 
 			/* Keep track of the base because we need it later on */
 			RoadStop *rs_south_base = rs_south;
@@ -164,8 +158,7 @@ void RoadStop::ClearDriveThrough()
 			/* Make all (even more) southern stops part of the new entry queue */
 			for (south_tile += offset; IsDriveThroughRoadStopContinuation(base_tile, south_tile); south_tile += offset) {
 				rs_south = RoadStop::GetByTile(south_tile, rst);
-				rs_south->east = rs_south_base->east;
-				rs_south->west = rs_south_base->west;
+				rs_south->entries = rs_south_base->entries;
 			}
 
 			/* Find the other end; the northern most tile */
@@ -179,32 +172,30 @@ void RoadStop::ClearDriveThrough()
 			 * rebuild it from scratch as that removes lots of maintenance code
 			 * for the vehicle list and it's faster in real games as long as you
 			 * do not keep split and merge road stop every tick by the millions. */
-			rs_south_base->east->Rebuild(rs_south_base);
-			rs_south_base->west->Rebuild(rs_south_base);
+			rs_south_base->entries->east.Rebuild(rs_south_base);
+			rs_south_base->entries->west.Rebuild(rs_south_base);
 
-			assert(HasBit(rs_north->status, RSSFB_BASE_ENTRY));
-			rs_north->east->Rebuild(rs_north);
-			rs_north->west->Rebuild(rs_north);
+			assert(rs_north->status.Test(RoadStopStatusFlag::BaseEntry));
+			rs_north->entries->east.Rebuild(rs_north);
+			rs_north->entries->west.Rebuild(rs_north);
 		} else {
 			/* Only we left, so simple update the length. */
-			rs_north->east->length -= TILE_SIZE;
-			rs_north->west->length -= TILE_SIZE;
+			rs_north->entries->east.length -= TILE_SIZE;
+			rs_north->entries->west.length -= TILE_SIZE;
 		}
 	} else if (south) {
 		/* There is only something to the south. Hand over the base entry */
-		SetBit(rs_south->status, RSSFB_BASE_ENTRY);
-		rs_south->east->length -= TILE_SIZE;
-		rs_south->west->length -= TILE_SIZE;
+		rs_south->status.Set(RoadStopStatusFlag::BaseEntry);
+		rs_south->entries->east.length -= TILE_SIZE;
+		rs_south->entries->west.length -= TILE_SIZE;
 	} else {
 		/* We were the last */
-		delete this->east;
-		delete this->west;
+		delete this->entries;
 	}
 
 	/* Make sure we don't get used for something 'incorrect' */
-	ClrBit(this->status, RSSFB_BASE_ENTRY);
-	this->east = nullptr;
-	this->west = nullptr;
+	this->status.Reset(RoadStopStatusFlag::BaseEntry);
+	this->entries = nullptr;
 }
 
 /**
@@ -219,7 +210,7 @@ void RoadStop::Leave(RoadVehicle *rv)
 		this->SetEntranceBusy(false);
 	} else {
 		/* Otherwise just leave the drive through's entry cache. */
-		this->GetEntry(DirToDiagDir(rv->direction))->Leave(rv);
+		this->GetEntry(DirToDiagDir(rv->direction)).Leave(rv);
 	}
 }
 
@@ -247,7 +238,7 @@ bool RoadStop::Enter(RoadVehicle *rv)
 	}
 
 	/* Vehicles entering a drive-through stop from the 'normal' side use first bay (bay 0). */
-	this->GetEntry(DirToDiagDir(rv->direction))->Enter(rv);
+	this->GetEntry(DirToDiagDir(rv->direction)).Enter(rv);
 
 	/* Indicate a drive-through stop */
 	SetBit(rv->state, RVS_IN_DT_ROAD_STOP);
@@ -277,8 +268,8 @@ bool RoadStop::Enter(RoadVehicle *rv)
  */
 void RoadStop::Entry::Leave(const RoadVehicle *rv)
 {
+	assert(this->occupied >= rv->gcache.cached_total_length);
 	this->occupied -= rv->gcache.cached_total_length;
-	assert(this->occupied >= 0);
 }
 
 /**
@@ -309,39 +300,6 @@ void RoadStop::Entry::Enter(const RoadVehicle *rv)
 			GetDriveThroughStopAxis(next) == GetDriveThroughStopAxis(rs);
 }
 
-typedef std::list<const RoadVehicle *> RVList; ///< A list of road vehicles
-
-/** Helper for finding RVs in a road stop. */
-struct RoadStopEntryRebuilderHelper {
-	RVList vehicles;   ///< The list of vehicles to possibly add to.
-	DiagDirection dir; ///< The direction the vehicle has to face to be added.
-};
-
-/**
- * Add road vehicles to the station's list if needed.
- * @param v the found vehicle
- * @param data the extra data used to make our decision
- * @return always nullptr
- */
-Vehicle *FindVehiclesInRoadStop(Vehicle *v, void *data)
-{
-	RoadStopEntryRebuilderHelper *rserh = (RoadStopEntryRebuilderHelper*)data;
-	/* Not a RV or not in the right direction or crashed :( */
-	if (v->type != VEH_ROAD || DirToDiagDir(v->direction) != rserh->dir || !v->IsPrimaryVehicle() || v->vehstatus.Test(VehState::Crashed)) return nullptr;
-
-	RoadVehicle *rv = RoadVehicle::From(v);
-	/* Don't add ones not in a road stop */
-	if (rv->state < RVSB_IN_ROAD_STOP) return nullptr;
-
-	/* Do not add duplicates! */
-	for (const auto &it : rserh->vehicles) {
-		if (rv == it) return nullptr;
-	}
-
-	rserh->vehicles.push_back(rv);
-	return nullptr;
-}
-
 /**
  * Get the DiagDirection for entering the drive through stop from the given 'side' (east or west) on the given axis.
  * @param east Enter from the east when true or from the west when false.
@@ -364,23 +322,32 @@ static DiagDirection GetEntryDirection(bool east, Axis axis)
  */
 void RoadStop::Entry::Rebuild(const RoadStop *rs, int side)
 {
-	assert(HasBit(rs->status, RSSFB_BASE_ENTRY));
+	assert(rs->status.Test(RoadStopStatusFlag::BaseEntry));
 
 	Axis axis = GetDriveThroughStopAxis(rs->xy);
-	if (side == -1) side = (rs->east == this);
+	if (side == -1) side = (&rs->entries->east == this);
 
-	RoadStopEntryRebuilderHelper rserh;
-	rserh.dir = GetEntryDirection(side, axis);
+	auto entry_dir = GetEntryDirection(side, axis);
+	std::vector<const RoadVehicle *> vehicles;
 
 	this->length = 0;
 	TileIndexDiff offset = TileOffsByAxis(axis);
 	for (TileIndex tile = rs->xy; IsDriveThroughRoadStopContinuation(rs->xy, tile); tile += offset) {
 		this->length += TILE_SIZE;
-		FindVehicleOnPos(tile, &rserh, FindVehiclesInRoadStop);
+		for (const Vehicle *v : VehiclesOnTile(tile)) {
+			/* Not a RV or not in the right direction or crashed :( */
+			if (v->type != VEH_ROAD || DirToDiagDir(v->direction) != entry_dir || !v->IsPrimaryVehicle() || v->vehstatus.Test(VehState::Crashed)) continue;
+
+			const RoadVehicle *rv = RoadVehicle::From(v);
+			/* Don't add ones not in a road stop */
+			if (rv->state < RVSB_IN_ROAD_STOP) continue;
+
+			include(vehicles, rv);
+		}
 	}
 
 	this->occupied = 0;
-	for (const auto &it : rserh.vehicles) {
+	for (const auto &it : vehicles) {
 		this->occupied += it->gcache.cached_total_length;
 	}
 }
@@ -392,13 +359,13 @@ void RoadStop::Entry::Rebuild(const RoadStop *rs, int side)
  */
 void RoadStop::Entry::CheckIntegrity(const RoadStop *rs) const
 {
-	if (!HasBit(rs->status, RSSFB_BASE_ENTRY)) return;
+	if (!rs->status.Test(RoadStopStatusFlag::BaseEntry)) return;
 
 	/* The tile 'before' the road stop must not be part of this 'line' */
 	assert(IsDriveThroughStopTile(rs->xy));
 	assert(!IsDriveThroughRoadStopContinuation(rs->xy, rs->xy - TileOffsByAxis(GetDriveThroughStopAxis(rs->xy))));
 
 	Entry temp;
-	temp.Rebuild(rs, rs->east == this);
+	temp.Rebuild(rs, &rs->entries->east == this);
 	if (temp.length != this->length || temp.occupied != this->occupied) NOT_REACHED();
 }

@@ -12,6 +12,7 @@
 #include "debug.h"
 #include "fileio_func.h"
 #include "screenshot_type.h"
+#include "3rdparty/fmt/ranges.h"
 
 #include <png.h>
 
@@ -30,7 +31,7 @@ class ScreenshotProvider_Png : public ScreenshotProvider {
 public:
 	ScreenshotProvider_Png() : ScreenshotProvider("png", "PNG", 0) {}
 
-	bool MakeImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette) override
+	bool MakeImage(std::string_view name, const ScreenshotCallback &callb, uint w, uint h, int pixelformat, const Colour *palette) override
 	{
 		png_color rq[256];
 		uint i, y, n;
@@ -46,7 +47,7 @@ public:
 		if (!of.has_value()) return false;
 		auto &f = *of;
 
-		png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, const_cast<char *>(name), png_my_error, png_my_warning);
+		png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, &name, png_my_error, png_my_warning);
 
 		if (png_ptr == nullptr) {
 			return false;
@@ -74,28 +75,27 @@ public:
 
 		/* Try to add some game metadata to the PNG screenshot so
 		 * it's more useful for debugging and archival purposes. */
-		png_text_struct text[2];
-		memset(text, 0, sizeof(text));
+		png_text_struct text[2]{};
 		text[0].key = const_cast<char *>("Software");
-		text[0].text = const_cast<char *>(_openttd_revision);
-		text[0].text_length = strlen(_openttd_revision);
+		text[0].text = const_cast<char *>(_openttd_revision.c_str());
+		text[0].text_length = _openttd_revision.size();
 		text[0].compression = PNG_TEXT_COMPRESSION_NONE;
 
 		std::string message;
 		message.reserve(1024);
-		fmt::format_to(std::back_inserter(message), "Graphics set: {} ({})\n", BaseGraphics::GetUsedSet()->name, BaseGraphics::GetUsedSet()->version);
+		format_append(message, "Graphics set: {} ({})\n", BaseGraphics::GetUsedSet()->name, fmt::join(BaseGraphics::GetUsedSet()->version, "."));
 		message += "NewGRFs:\n";
 		if (_game_mode != GM_MENU) {
 			for (const auto &c : _grfconfig) {
-				fmt::format_to(std::back_inserter(message), "{:08X} {} {}\n", std::byteswap(c->ident.grfid), FormatArrayAsHex(c->ident.md5sum), c->filename);
+				format_append(message, "{:08X} {} {}\n", std::byteswap(c->ident.grfid), FormatArrayAsHex(c->ident.md5sum), c->filename);
 			}
 		}
 		message += "\nCompanies:\n";
 		for (const Company *c : Company::Iterate()) {
 			if (c->ai_info == nullptr) {
-				fmt::format_to(std::back_inserter(message), "{:2d}: Human\n", c->index);
+				format_append(message, "{:2d}: Human\n", c->index);
 			} else {
-				fmt::format_to(std::back_inserter(message), "{:2d}: {} (v{})\n", c->index, c->ai_info->GetName(), c->ai_info->GetVersion());
+				format_append(message, "{:2d}: {} (v{})\n", c->index, c->ai_info->GetName(), c->ai_info->GetVersion());
 			}
 		}
 		text[1].key = const_cast<char *>("Description");
@@ -151,7 +151,7 @@ public:
 			n = std::min(h - y, maxlines);
 
 			/* render the pixels into the buffer */
-			callb(userdata, buff.data(), y, w, n);
+			callb(buff.data(), y, w, n);
 			y += n;
 
 			/* write them to png */
@@ -169,13 +169,13 @@ public:
 private:
 	static void PNGAPI png_my_error(png_structp png_ptr, png_const_charp message)
 	{
-		Debug(misc, 0, "[libpng] error: {} - {}", message, (const char *)png_get_error_ptr(png_ptr));
+		Debug(misc, 0, "[libpng] error: {} - {}", message, *static_cast<std::string_view *>(png_get_error_ptr(png_ptr)));
 		longjmp(png_jmpbuf(png_ptr), 1);
 	}
 
 	static void PNGAPI png_my_warning(png_structp png_ptr, png_const_charp message)
 	{
-		Debug(misc, 1, "[libpng] warning: {} - {}", message, (const char *)png_get_error_ptr(png_ptr));
+		Debug(misc, 1, "[libpng] warning: {} - {}", message, *static_cast<std::string_view *>(png_get_error_ptr(png_ptr)));
 	}
 };
 

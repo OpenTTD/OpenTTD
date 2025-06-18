@@ -10,7 +10,6 @@
 #ifndef NEWGRF_PROFILING_H
 #define NEWGRF_PROFILING_H
 
-#include "stdafx.h"
 #include "timer/timer_game_calendar.h"
 #include "newgrf.h"
 #include "newgrf_callbacks.h"
@@ -25,7 +24,7 @@ struct NewGRFProfiler {
 	~NewGRFProfiler();
 
 	void BeginResolve(const ResolverObject &resolver);
-	void EndResolve(const SpriteGroup *result);
+	void EndResolve(const ResolverResult &result);
 	void RecursiveResolve();
 
 	void Start();

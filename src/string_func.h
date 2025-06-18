@@ -25,10 +25,6 @@ void StrMakeValidInPlace(char *str, StringValidationSettings settings = StringVa
 void StrMakeValidInPlace(std::string &str, StringValidationSettings settings = StringValidationSetting::ReplaceWithQuestionMark);
 
 [[nodiscard]] std::string StrMakeValid(std::string_view str, StringValidationSettings settings = StringValidationSetting::ReplaceWithQuestionMark);
-[[nodiscard]] inline std::string StrMakeValid(const char *str, StringValidationSettings settings = StringValidationSetting::ReplaceWithQuestionMark)
-{
-	return StrMakeValid(std::string_view(str), settings);
-}
 [[nodiscard]] inline std::string StrMakeValid(std::string &&str, StringValidationSettings settings = StringValidationSetting::ReplaceWithQuestionMark)
 {
 	StrMakeValidInPlace(str, settings);
@@ -39,97 +35,26 @@ bool strtolower(std::string &str, std::string::size_type offs = 0);
 
 [[nodiscard]] bool StrValid(std::span<const char> str);
 void StrTrimInPlace(std::string &str);
-[[nodiscard]] std::string_view StrTrimView(std::string_view str);
+[[nodiscard]] std::string_view StrTrimView(std::string_view str, std::string_view characters_to_trim);
 
-[[nodiscard]] bool StrStartsWithIgnoreCase(std::string_view str, const std::string_view prefix);
-[[nodiscard]] bool StrEndsWithIgnoreCase(std::string_view str, const std::string_view suffix);
+[[nodiscard]] bool StrStartsWithIgnoreCase(std::string_view str, std::string_view prefix);
+[[nodiscard]] bool StrEndsWithIgnoreCase(std::string_view str, std::string_view suffix);
 
-[[nodiscard]] int StrCompareIgnoreCase(const std::string_view str1, const std::string_view str2);
-[[nodiscard]] bool StrEqualsIgnoreCase(const std::string_view str1, const std::string_view str2);
-[[nodiscard]] bool StrContainsIgnoreCase(const std::string_view str, const std::string_view value);
+[[nodiscard]] int StrCompareIgnoreCase(std::string_view str1, std::string_view str2);
+[[nodiscard]] bool StrEqualsIgnoreCase(std::string_view str1, std::string_view str2);
+[[nodiscard]] bool StrContainsIgnoreCase(std::string_view str, std::string_view value);
 [[nodiscard]] int StrNaturalCompare(std::string_view s1, std::string_view s2, bool ignore_garbage_at_front = false);
-[[nodiscard]] bool StrNaturalContains(const std::string_view str, const std::string_view value);
-[[nodiscard]] bool StrNaturalContainsIgnoreCase(const std::string_view str, const std::string_view value);
+[[nodiscard]] bool StrNaturalContains(std::string_view str, std::string_view value);
+[[nodiscard]] bool StrNaturalContainsIgnoreCase(std::string_view str, std::string_view value);
 
 bool ConvertHexToBytes(std::string_view hex, std::span<uint8_t> bytes);
 
 /** Case insensitive comparator for strings, for example for use in std::map. */
 struct CaseInsensitiveComparator {
-	bool operator()(const std::string_view s1, const std::string_view s2) const { return StrCompareIgnoreCase(s1, s2) < 0; }
+	bool operator()(std::string_view s1, std::string_view s2) const { return StrCompareIgnoreCase(s1, s2) < 0; }
 };
 
-/**
- * Check if a string buffer is empty.
- *
- * @param s The pointer to the first element of the buffer
- * @return true if the buffer starts with the terminating null-character or
- *         if the given pointer points to nullptr else return false
- */
-inline bool StrEmpty(const char *s)
-{
-	return s == nullptr || s[0] == '\0';
-}
-
-/**
- * Get the length of a string, within a limited buffer.
- *
- * @param str The pointer to the first element of the buffer
- * @param maxlen The maximum size of the buffer
- * @return The length of the string
- */
-inline size_t ttd_strnlen(const char *str, size_t maxlen)
-{
-	const char *t;
-	for (t = str; static_cast<size_t>(t - str) < maxlen && *t != '\0'; t++) {}
-	return t - str;
-}
-
 bool IsValidChar(char32_t key, CharSetFilter afilter);
-
-size_t Utf8Decode(char32_t *c, const char *s);
-/* std::string_view::iterator might be char *, in which case we do not want this templated variant to be taken. */
-template <typename T> requires (!std::is_same_v<T, char *> && (std::is_same_v<std::string_view::iterator, T> || std::is_same_v<std::string::iterator, T>))
-inline size_t Utf8Decode(char32_t *c, T &s) { return Utf8Decode(c, &*s); }
-
-inline char32_t Utf8Consume(const char **s)
-{
-	char32_t c;
-	*s += Utf8Decode(&c, *s);
-	return c;
-}
-
-template <class Titr>
-inline char32_t Utf8Consume(Titr &s)
-{
-	char32_t c;
-	s += Utf8Decode(&c, &*s);
-	return c;
-}
-
-/**
- * Return the length of an UTF-8 encoded value based on a single char. This
- * char should be the first byte of the UTF-8 encoding. If not, or encoding
- * is invalid, return value is 0
- * @param c char to query length of
- * @return requested size
- */
-inline int8_t Utf8EncodedCharLen(char c)
-{
-	if (GB(c, 3, 5) == 0x1E) return 4;
-	if (GB(c, 4, 4) == 0x0E) return 3;
-	if (GB(c, 5, 3) == 0x06) return 2;
-	if (GB(c, 7, 1) == 0x00) return 1;
-
-	/* Invalid UTF8 start encoding */
-	return 0;
-}
-
-
-/* Check if the given character is part of a UTF8 sequence */
-inline bool IsUtf8Part(char c)
-{
-	return GB(c, 6, 2) == 2;
-}
 
 size_t Utf8StringLength(std::string_view str);
 
@@ -225,5 +150,7 @@ inline bool IsWhitespace(char32_t c)
 #if defined(__NetBSD__) || defined(__FreeBSD__)
 #include <sys/param.h>
 #endif
+
+std::optional<std::string_view> GetEnv(const char *variable);
 
 #endif /* STRING_FUNC_H */

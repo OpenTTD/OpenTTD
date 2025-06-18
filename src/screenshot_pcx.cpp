@@ -41,11 +41,10 @@ class ScreenshotProvider_Pcx : public ScreenshotProvider {
 public:
 	ScreenshotProvider_Pcx() : ScreenshotProvider("pcx", "PCX", 20) {}
 
-	bool MakeImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette) override
+	bool MakeImage(std::string_view name, const ScreenshotCallback &callb, uint w, uint h, int pixelformat, const Colour *palette) override
 	{
 		uint maxlines;
 		uint y;
-		PcxHeader pcx;
 		bool success;
 
 		if (pixelformat == 32) {
@@ -58,9 +57,8 @@ public:
 		if (!of.has_value()) return false;
 		auto &f = *of;
 
-		memset(&pcx, 0, sizeof(pcx));
-
 		/* setup pcx header */
+		PcxHeader pcx{};
 		pcx.manufacturer = 10;
 		pcx.version = 5;
 		pcx.rle = 1;
@@ -93,7 +91,7 @@ public:
 			uint i;
 
 			/* render the pixels into the buffer */
-			callb(userdata, buff.data(), y, w, n);
+			callb(buff.data(), y, w, n);
 			y += n;
 
 			/* write them to pcx */
@@ -153,4 +151,4 @@ public:
 	}
 };
 
-static ScreenshotProvider_Pcx s_screenshot_provider_pcx;
+static const ScreenshotProvider_Pcx s_screenshot_provider_pcx;

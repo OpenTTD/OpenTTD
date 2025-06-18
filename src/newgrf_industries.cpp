@@ -79,7 +79,7 @@ uint32_t GetIndustryIDAtOffset(TileIndex tile, const Industry *i, uint32_t cur_g
 		}
 	}
 	/* Not an 'old type' tile */
-	if (indtsp->grf_prop.GetSpriteGroup() != nullptr) { // tile has a spritegroup ?
+	if (indtsp->grf_prop.HasSpriteGroups()) {
 		if (indtsp->grf_prop.grfid == cur_grfid) { // same industry, same grf ?
 			return indtsp->grf_prop.local_id;
 		} else {
@@ -107,15 +107,16 @@ static uint32_t GetClosestIndustry(TileIndex tile, IndustryType type, const Indu
  * Implementation of both var 67 and 68
  * since the mechanism is almost the same, it is easier to regroup them on the same
  * function.
+ * @param object ResolverObject owning the temporary storage.
  * @param param_set_id parameter given to the callback, which is the set id, or the local id, in our terminology
  * @param layout_filter on what layout do we filter?
  * @param town_filter Do we filter on the same town as the current industry?
  * @param current Industry for which the inquiry is made
  * @return the formatted answer to the callback : rr(reserved) cc(count) dddd(manhattan distance of closest sister)
  */
-static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_set_id, uint8_t layout_filter, bool town_filter, const Industry *current)
+static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &object, uint8_t param_set_id, uint8_t layout_filter, bool town_filter, const Industry *current)
 {
-	uint32_t grf_id = GetRegister(0x100);  ///< Get the GRFID of the definition to look for in register 100h
+	uint32_t grf_id = static_cast<uint32_t>(object.GetRegister(0x100)); ///< Get the GRFID of the definition to look for in register 100h
 	IndustryType industry_type;
 	uint32_t closest_dist = UINT32_MAX;
 	uint8_t count = 0;
@@ -185,7 +186,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_set_id, uint8
 			case 0x87: return GetTerrainType(this->tile);
 
 			/* Town zone */
-			case 0x88: return GetTownRadiusGroup(this->industry->town, this->tile);
+			case 0x88: return to_underlying(GetTownRadiusGroup(this->industry->town, this->tile));
 
 			/* Manhattan distance of the closest town */
 			case 0x89: return ClampTo<uint8_t>(DistanceManhattan(this->industry->town->xy, this->tile));
@@ -295,7 +296,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_set_id, uint8
 		case 0x65: {
 			if (this->tile == INVALID_TILE) break;
 			TileIndex tile = GetNearbyTile(parameter, this->tile, true);
-			return GetTownRadiusGroup(this->industry->town, tile) << 16 | ClampTo<uint16_t>(DistanceManhattan(tile, this->industry->town->xy));
+			return to_underlying(GetTownRadiusGroup(this->industry->town, tile)) << 16 | ClampTo<uint16_t>(DistanceManhattan(tile, this->industry->town->xy));
 		}
 		/* Get square of Euclidean distance of closest town */
 		case 0x66: {
@@ -311,11 +312,11 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_set_id, uint8
 			uint8_t layout_filter = 0;
 			bool town_filter = false;
 			if (variable == 0x68) {
-				uint32_t reg = GetRegister(0x101);
+				int32_t reg = this->ro.GetRegister(0x101);
 				layout_filter = GB(reg, 0, 8);
 				town_filter = HasBit(reg, 8);
 			}
-			return GetCountAndDistanceOfClosestInstance(parameter, layout_filter, town_filter, this->industry);
+			return GetCountAndDistanceOfClosestInstance(this->ro, parameter, layout_filter, town_filter, this->industry);
 		}
 
 		case 0x69:
@@ -433,7 +434,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_set_id, uint8
 	return this->industry != nullptr ? this->industry->random : 0;
 }
 
-/* virtual */ uint32_t IndustriesScopeResolver::GetTriggers() const
+/* virtual */ uint32_t IndustriesScopeResolver::GetRandomTriggers() const
 {
 	return 0;
 }
@@ -481,7 +482,7 @@ IndustriesResolverObject::IndustriesResolverObject(TileIndex tile, Industry *ind
 	: ResolverObject(GetGrffile(type), callback, callback_param1, callback_param2),
 	industries_scope(*this, tile, indus, type, random_bits)
 {
-	this->root_spritegroup = GetIndustrySpec(type)->grf_prop.GetSpriteGroup();
+	this->root_spritegroup = GetIndustrySpec(type)->grf_prop.GetSpriteGroup(indus != nullptr && indus->index != IndustryID::Invalid());
 }
 
 /**
@@ -523,12 +524,13 @@ uint32_t IndustriesResolverObject::GetDebugID() const
  * @param industry The industry to do the callback for.
  * @param type The type of industry to do the callback for.
  * @param tile The tile associated with the callback.
+ * @param[out] regs100 Additional result values from registers 100+
  * @return The callback result.
  */
-uint16_t GetIndustryCallback(CallbackID callback, uint32_t param1, uint32_t param2, Industry *industry, IndustryType type, TileIndex tile)
+uint16_t GetIndustryCallback(CallbackID callback, uint32_t param1, uint32_t param2, Industry *industry, IndustryType type, TileIndex tile, std::span<int32_t> regs100)
 {
 	IndustriesResolverObject object(tile, industry, type, 0, callback, param1, param2);
-	return object.ResolveCallback();
+	return object.ResolveCallback(regs100);
 }
 
 /**
@@ -558,13 +560,14 @@ CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, siz
 	ind.psa = nullptr;
 
 	IndustriesResolverObject object(tile, &ind, type, seed, CBID_INDUSTRY_LOCATION, 0, creation_type);
-	uint16_t result = object.ResolveCallback();
+	std::array<int32_t, 16> regs100;
+	uint16_t result = object.ResolveCallback(regs100);
 
 	/* Unlike the "normal" cases, not having a valid result means we allow
 	 * the building of the industry, as that's how it's done in TTDP. */
 	if (result == CALLBACK_FAILED) return CommandCost();
 
-	return GetErrorMessageFromLocationCallbackResult(result, indspec->grf_prop.grffile, STR_ERROR_SITE_UNSUITABLE);
+	return GetErrorMessageFromLocationCallbackResult(result, regs100, indspec->grf_prop.grffile, STR_ERROR_SITE_UNSUITABLE);
 }
 
 /**
@@ -596,11 +599,6 @@ uint32_t GetIndustryProbabilityCallback(IndustryType type, IndustryAvailabilityC
 	return default_prob;
 }
 
-static int32_t DerefIndProd(int field, bool use_register)
-{
-	return use_register ? (int32_t)GetRegister(field) : field;
-}
-
 /**
  * Get the industry production callback and apply it to the industry.
  * @param ind    the industry this callback has to be called for
@@ -614,6 +612,10 @@ void IndustryProductionCallback(Industry *ind, int reason)
 	int multiplier = 1;
 	if (spec->behaviour.Test(IndustryBehaviour::ProdMultiHandling)) multiplier = ind->prod_level;
 	object.callback_param2 = reason;
+
+	auto deref_ind_prod = [&object](int field, bool use_register) -> int32_t {
+		return use_register ? object.GetRegister(field) : field;
+	};
 
 	for (uint loop = 0;; loop++) {
 		/* limit the number of calls to break infinite loops.
@@ -629,9 +631,8 @@ void IndustryProductionCallback(Industry *ind, int reason)
 		}
 
 		SB(object.callback_param2, 8, 16, loop);
-		const SpriteGroup *tgroup = object.Resolve();
-		if (tgroup == nullptr || tgroup->type != SGT_INDUSTRY_PRODUCTION) break;
-		const IndustryProductionSpriteGroup *group = (const IndustryProductionSpriteGroup *)tgroup;
+		const auto *group = object.Resolve<IndustryProductionSpriteGroup>();
+		if (group == nullptr) break;
 
 		if (group->version == 0xFF) {
 			/* Result was marked invalid on load, display error message */
@@ -649,27 +650,27 @@ void IndustryProductionCallback(Industry *ind, int reason)
 			/* Callback parameters map directly to industry cargo slot indices */
 			for (uint i = 0; i < group->num_input && i < ind->accepted.size(); i++) {
 				if (!IsValidCargoType(ind->accepted[i].cargo)) continue;
-				ind->accepted[i].waiting = ClampTo<uint16_t>(ind->accepted[i].waiting - DerefIndProd(group->subtract_input[i], deref) * multiplier);
+				ind->accepted[i].waiting = ClampTo<uint16_t>(ind->accepted[i].waiting - deref_ind_prod(group->subtract_input[i], deref) * multiplier);
 			}
 			for (uint i = 0; i < group->num_output && i < ind->produced.size(); i++) {
 				if (!IsValidCargoType(ind->produced[i].cargo)) continue;
-				ind->produced[i].waiting = ClampTo<uint16_t>(ind->produced[i].waiting + std::max(DerefIndProd(group->add_output[i], deref), 0) * multiplier);
+				ind->produced[i].waiting = ClampTo<uint16_t>(ind->produced[i].waiting + std::max(deref_ind_prod(group->add_output[i], deref), 0) * multiplier);
 			}
 		} else {
 			/* Callback receives list of cargos to apply for, which need to have their cargo slots in industry looked up */
 			for (uint i = 0; i < group->num_input; i++) {
 				auto it = ind->GetCargoAccepted(group->cargo_input[i]);
 				if (it == std::end(ind->accepted)) continue;
-				it->waiting = ClampTo<uint16_t>(it->waiting - DerefIndProd(group->subtract_input[i], deref) * multiplier);
+				it->waiting = ClampTo<uint16_t>(it->waiting - deref_ind_prod(group->subtract_input[i], deref) * multiplier);
 			}
 			for (uint i = 0; i < group->num_output; i++) {
 				auto it = ind->GetCargoProduced(group->cargo_output[i]);
 				if (it == std::end(ind->produced)) continue;
-				it->waiting = ClampTo<uint16_t>(it->waiting + std::max(DerefIndProd(group->add_output[i], deref), 0) * multiplier);
+				it->waiting = ClampTo<uint16_t>(it->waiting + std::max(deref_ind_prod(group->add_output[i], deref), 0) * multiplier);
 			}
 		}
 
-		int32_t again = DerefIndProd(group->again, deref);
+		int32_t again = deref_ind_prod(group->again, deref);
 		if (again == 0) break;
 
 		SB(object.callback_param2, 24, 8, again);

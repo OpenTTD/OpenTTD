@@ -22,9 +22,9 @@ void ShowNetworkChatQueryWindow(DestType type, int dest);
 void ShowJoinStatusWindow();
 void ShowNetworkGameWindow();
 void ShowClientList();
-void ShowNetworkAskRelay(const std::string &server_connection_string, const std::string &relay_connection_string, const std::string &token);
+void ShowNetworkAskRelay(std::string_view server_connection_string, std::string &&relay_connection_string, std::string &&token);
 void ShowNetworkAskSurvey();
-void ShowSurveyResultTextfileWindow();
+void ShowSurveyResultTextfileWindow(Window *parent);
 
 /** Company information stored at the client side */
 struct NetworkCompanyInfo : NetworkCompanyStats {

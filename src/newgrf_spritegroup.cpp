@@ -18,7 +18,7 @@
 SpriteGroupPool _spritegroup_pool("SpriteGroup");
 INSTANTIATE_POOL_METHODS(SpriteGroup)
 
-TemporaryStorageArray<int32_t, 0x110> _temp_store;
+/* static */ TemporaryStorageArray<int32_t, 0x110> ResolverObject::temp_store;
 
 
 /**
@@ -31,20 +31,18 @@ TemporaryStorageArray<int32_t, 0x110> _temp_store;
  * @param top_level true if this is a top-level SpriteGroup, false if used nested in another SpriteGroup.
  * @return the resolved group
  */
-/* static */ const SpriteGroup *SpriteGroup::Resolve(const SpriteGroup *group, ResolverObject &object, bool top_level)
+/* static */ ResolverResult SpriteGroup::Resolve(const SpriteGroup *group, ResolverObject &object, bool top_level)
 {
-	if (group == nullptr) return nullptr;
+	if (group == nullptr) return std::monostate{};
 
 	const GRFFile *grf = object.grffile;
 	auto profiler = std::ranges::find(_newgrf_profilers, grf, &NewGRFProfiler::grffile);
 
 	if (profiler == _newgrf_profilers.end() || !profiler->active) {
-		if (top_level) _temp_store.ClearChanges();
 		return group->Resolve(object);
 	} else if (top_level) {
 		profiler->BeginResolve(object);
-		_temp_store.ClearChanges();
-		const SpriteGroup *result = group->Resolve(object);
+		auto result = group->Resolve(object);
 		profiler->EndResolve(result);
 		return result;
 	} else {
@@ -62,9 +60,9 @@ static inline uint32_t GetVariable(const ResolverObject &object, ScopeResolver *
 		case 0x18: return object.callback_param2;
 		case 0x1C: return object.last_value;
 
-		case 0x5F: return (scope->GetRandomBits() << 8) | scope->GetTriggers();
+		case 0x5F: return (scope->GetRandomBits() << 8) | scope->GetRandomTriggers();
 
-		case 0x7D: return _temp_store.GetValue(parameter);
+		case 0x7D: return object.GetRegister(parameter);
 
 		case 0x7F:
 			if (object.grffile == nullptr) return 0;
@@ -91,7 +89,7 @@ static inline uint32_t GetVariable(const ResolverObject &object, ScopeResolver *
  * Get the triggers. Base class returns \c 0 to prevent trouble.
  * @return The triggers.
  */
-/* virtual */ uint32_t ScopeResolver::GetTriggers() const
+/* virtual */ uint32_t ScopeResolver::GetRandomTriggers() const
 {
 	return 0;
 }
@@ -120,10 +118,10 @@ static inline uint32_t GetVariable(const ResolverObject &object, ScopeResolver *
  * @param group Group to get.
  * @return The available sprite group.
  */
-/* virtual */ const SpriteGroup *ResolverObject::ResolveReal(const RealSpriteGroup *group) const
+/* virtual */ const SpriteGroup *ResolverObject::ResolveReal(const RealSpriteGroup &group) const
 {
-	if (!group->loaded.empty())  return group->loaded[0];
-	if (!group->loading.empty()) return group->loading[0];
+	if (!group.loaded.empty()) return group.loaded[0];
+	if (!group.loading.empty()) return group.loading[0];
 
 	return nullptr;
 }
@@ -140,7 +138,7 @@ static inline uint32_t GetVariable(const ResolverObject &object, ScopeResolver *
 /* Evaluate an adjustment for a variable of the given size.
  * U is the unsigned type and S is the signed type to use. */
 template <typename U, typename S>
-static U EvalAdjustT(const DeterministicSpriteGroupAdjust &adjust, ScopeResolver *scope, U last_value, uint32_t value)
+static U EvalAdjustT(const DeterministicSpriteGroupAdjust &adjust, ResolverObject &object, ScopeResolver *scope, U last_value, uint32_t value)
 {
 	value >>= adjust.shift_num;
 	value  &= adjust.and_mask;
@@ -166,7 +164,7 @@ static U EvalAdjustT(const DeterministicSpriteGroupAdjust &adjust, ScopeResolver
 		case DSGA_OP_AND:  return last_value & value;
 		case DSGA_OP_OR:   return last_value | value;
 		case DSGA_OP_XOR:  return last_value ^ value;
-		case DSGA_OP_STO:  _temp_store.StoreValue((U)value, (S)last_value); return last_value;
+		case DSGA_OP_STO:  object.SetRegister((U)value, (S)last_value); return last_value;
 		case DSGA_OP_RST:  return value;
 		case DSGA_OP_STOP: scope->StorePSA((U)value, (S)last_value); return last_value;
 		case DSGA_OP_ROR:  return std::rotr<uint32_t>((U)last_value, (U)value & 0x1F); // mask 'value' to 5 bits, which should behave the same on all architectures.
@@ -185,7 +183,7 @@ static bool RangeHighComparator(const DeterministicSpriteGroupRange &range, uint
 	return range.high < value;
 }
 
-const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) const
+/* virtual */ ResolverResult DeterministicSpriteGroup::Resolve(ResolverObject &object) const
 {
 	uint32_t last_value = 0;
 	uint32_t value = 0;
@@ -196,12 +194,9 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) con
 		/* Try to get the variable. We shall assume it is available, unless told otherwise. */
 		bool available = true;
 		if (adjust.variable == 0x7E) {
-			const SpriteGroup *subgroup = SpriteGroup::Resolve(adjust.subroutine, object, false);
-			if (subgroup == nullptr) {
-				value = CALLBACK_FAILED;
-			} else {
-				value = subgroup->GetCallbackResult();
-			}
+			auto subgroup = SpriteGroup::Resolve(adjust.subroutine, object, false);
+			auto *subvalue = std::get_if<CallbackResult>(&subgroup);
+			value = subvalue != nullptr ? *subvalue : UINT16_MAX;
 
 			/* Note: 'last_value' and 'reseed' are shared between the main chain and the procedure */
 		} else if (adjust.variable == 0x7B) {
@@ -217,9 +212,9 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) con
 		}
 
 		switch (this->size) {
-			case DSG_SIZE_BYTE:  value = EvalAdjustT<uint8_t,  int8_t> (adjust, scope, last_value, value); break;
-			case DSG_SIZE_WORD:  value = EvalAdjustT<uint16_t, int16_t>(adjust, scope, last_value, value); break;
-			case DSG_SIZE_DWORD: value = EvalAdjustT<uint32_t, int32_t>(adjust, scope, last_value, value); break;
+			case DSG_SIZE_BYTE:  value = EvalAdjustT<uint8_t,  int8_t> (adjust, object, scope, last_value, value); break;
+			case DSG_SIZE_WORD:  value = EvalAdjustT<uint16_t, int16_t>(adjust, object, scope, last_value, value); break;
+			case DSG_SIZE_DWORD: value = EvalAdjustT<uint32_t, int32_t>(adjust, object, scope, last_value, value); break;
 			default: NOT_REACHED();
 		}
 		last_value = value;
@@ -227,42 +222,40 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) con
 
 	object.last_value = last_value;
 
-	if (this->calculated_result) {
-		/* nvar == 0 is a special case -- we turn our value into a callback result */
-		if (value != CALLBACK_FAILED) value = GB(value, 0, 15);
-		static CallbackResultSpriteGroup nvarzero(0);
-		nvarzero.result = value;
-		return &nvarzero;
-	}
+	auto result = this->default_result;
 
 	if (this->ranges.size() > 4) {
 		const auto &lower = std::lower_bound(this->ranges.begin(), this->ranges.end(), value, RangeHighComparator);
 		if (lower != this->ranges.end() && lower->low <= value) {
 			assert(lower->low <= value && value <= lower->high);
-			return SpriteGroup::Resolve(lower->group, object, false);
+			result = lower->result;
 		}
 	} else {
 		for (const auto &range : this->ranges) {
 			if (range.low <= value && value <= range.high) {
-				return SpriteGroup::Resolve(range.group, object, false);
+				result = range.result;
+				break;
 			}
 		}
 	}
 
-	return SpriteGroup::Resolve(this->default_group, object, false);
+	if (result.calculated_result) {
+		return static_cast<CallbackResult>(GB(value, 0, 15));
+	}
+	return SpriteGroup::Resolve(result.group, object, false);
 }
 
 
-const SpriteGroup *RandomizedSpriteGroup::Resolve(ResolverObject &object) const
+/* virtual */ ResolverResult RandomizedSpriteGroup::Resolve(ResolverObject &object) const
 {
 	ScopeResolver *scope = object.GetScope(this->var_scope, this->count);
 	if (object.callback == CBID_RANDOM_TRIGGER) {
 		/* Handle triggers */
-		uint8_t match = this->triggers & object.waiting_triggers;
+		uint8_t match = this->triggers & object.GetWaitingRandomTriggers();
 		bool res = (this->cmp_mode == RSG_CMP_ANY) ? (match != 0) : (match == this->triggers);
 
 		if (res) {
-			object.used_triggers |= match;
+			object.AddUsedRandomTriggers(match);
 			object.reseed[this->var_scope] |= (this->groups.size() - 1) << this->lowest_randbit;
 		}
 	}
@@ -273,34 +266,40 @@ const SpriteGroup *RandomizedSpriteGroup::Resolve(ResolverObject &object) const
 	return SpriteGroup::Resolve(this->groups[index], object, false);
 }
 
-
-const SpriteGroup *RealSpriteGroup::Resolve(ResolverObject &object) const
+/* virtual */ ResolverResult CallbackResultSpriteGroup::Resolve(ResolverObject &) const
 {
-	return object.ResolveReal(this);
+	return this->result;
+}
+
+/* virtual */ ResolverResult RealSpriteGroup::Resolve(ResolverObject &object) const
+{
+	/* Call the feature specific evaluation via ResultSpriteGroup::ResolveReal.
+	 * The result is either ResultSpriteGroup, CallbackResultSpriteGroup, or nullptr.
+	 */
+	return SpriteGroup::Resolve(object.ResolveReal(*this), object, false);
 }
 
 /**
  * Process registers and the construction stage into the sprite layout.
  * The passed construction stage might get reset to zero, if it gets incorporated into the layout
  * during the preprocessing.
+ * @param object ResolverObject owning the temporary storage.
  * @param[in,out] stage Construction stage (0-3), or nullptr if not applicable.
  * @return sprite layout to draw.
  */
-const DrawTileSprites *TileLayoutSpriteGroup::ProcessRegisters(uint8_t *stage) const
+SpriteLayoutProcessor TileLayoutSpriteGroup::ProcessRegisters(const ResolverObject &object, uint8_t *stage) const
 {
 	if (!this->dts.NeedsPreprocessing()) {
 		if (stage != nullptr && this->dts.consistent_max_offset > 0) *stage = GetConstructionStageOffset(*stage, this->dts.consistent_max_offset);
-		return &this->dts;
+		return SpriteLayoutProcessor(this->dts);
 	}
 
-	static DrawTileSpriteSpan result;
 	uint8_t actual_stage = stage != nullptr ? *stage : 0;
-	this->dts.PrepareLayout(0, 0, 0, actual_stage, false);
-	this->dts.ProcessRegisters(0, 0, false);
-	result.seq = this->dts.GetLayout(&result.ground);
+	SpriteLayoutProcessor result(this->dts, 0, 0, 0, actual_stage, false);
+	result.ProcessRegisters(object, 0, 0);
 
 	/* Stage has been processed by PrepareLayout(), set it to zero. */
 	if (stage != nullptr) *stage = 0;
 
-	return &result;
+	return result;
 }

@@ -81,7 +81,7 @@ SendPacketsState NetworkTCPSocketHandler::SendPackets(bool closing_down)
 
 	while (!this->packet_queue.empty()) {
 		Packet &p = *this->packet_queue.front();
-		ssize_t res = p.TransferOut<int>(send, this->sock, 0);
+		ssize_t res = p.TransferOut(SocketSender{this->sock});
 		if (res == -1) {
 			NetworkError err = NetworkError::GetLast();
 			if (!err.WouldBlock()) {
@@ -131,7 +131,7 @@ std::unique_ptr<Packet> NetworkTCPSocketHandler::ReceivePacket()
 	/* Read packet size */
 	if (!p.HasPacketSizeData()) {
 		while (p.RemainingBytesToTransfer() != 0) {
-			res = p.TransferIn<int>(recv, this->sock, 0);
+			res = p.TransferIn(SocketReceiver{this->sock});
 			if (res == -1) {
 				NetworkError err = NetworkError::GetLast();
 				if (!err.WouldBlock()) {
@@ -159,7 +159,7 @@ std::unique_ptr<Packet> NetworkTCPSocketHandler::ReceivePacket()
 
 	/* Read rest of packet */
 	while (p.RemainingBytesToTransfer() != 0) {
-		res = p.TransferIn<int>(recv, this->sock, 0);
+		res = p.TransferIn(SocketReceiver{this->sock});
 		if (res == -1) {
 			NetworkError err = NetworkError::GetLast();
 			if (!err.WouldBlock()) {

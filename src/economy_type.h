@@ -207,16 +207,6 @@ enum PriceCategory : uint8_t {
 	PCAT_CONSTRUCTION, ///< Price is affected by "construction cost" difficulty setting
 };
 
-/**
- * Describes properties of price bases.
- */
-struct PriceBaseSpec {
-	Money start_price;      ///< Default value at game start, before adding multipliers.
-	PriceCategory category; ///< Price is affected by certain difficulty settings.
-	uint grf_feature;       ///< GRF Feature that decides whether price multipliers apply locally or globally, #GSF_END if none.
-	Price fallback_price;   ///< Fallback price multiplier for new prices but old grfs.
-};
-
 /** The "steps" in loan size, in British Pounds! */
 static const int LOAN_INTERVAL = 10000;
 /** The size of loan for a new company, in British Pounds! */

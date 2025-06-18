@@ -30,6 +30,7 @@
 #include "../strings_func.h"
 #include "../core/endian_func.hpp"
 #include "../core/string_builder.hpp"
+#include "../core/string_consumer.hpp"
 #include "../vehicle_base.h"
 #include "../company_func.h"
 #include "../timer/timer_game_economy.h"
@@ -935,13 +936,14 @@ void FixSCCEncoded(std::string &str, bool fix_code)
 	bool in_string = false; // Set if we in a string, between double-quotes.
 	bool need_type = true; // Set if a parameter type needs to be emitted.
 
-	for (auto it = std::begin(str); it != std::end(str); /* nothing */) {
-		size_t len = Utf8EncodedCharLen(*it);
-		if (len == 0 || it + len > std::end(str)) break;
-
+	StringConsumer consumer(str);
+	while (consumer.AnyBytesLeft()) {
 		char32_t c;
-		Utf8Decode(&c, &*it);
-		it += len;
+		if (auto r = consumer.TryReadUtf8(); r.has_value()) {
+			c = *r;
+		} else {
+			break;
+		}
 		if (c == SCC_ENCODED || (fix_code && (c == 0xE028 || c == 0xE02A))) {
 			builder.PutUtf8(SCC_ENCODED);
 			need_type = false;
@@ -980,6 +982,43 @@ void FixSCCEncoded(std::string &str, bool fix_code)
 }
 
 /**
+ * Scan the string for SCC_ENCODED_NUMERIC with negative values, and reencode them as uint64_t.
+ * @param str the string to fix.
+ */
+void FixSCCEncodedNegative(std::string &str)
+{
+	if (str.empty()) return;
+
+	StringConsumer consumer(str);
+
+	/* Check whether this is an encoded string */
+	if (!consumer.ReadUtf8If(SCC_ENCODED)) return;
+
+	std::string result;
+	StringBuilder builder(result);
+	builder.PutUtf8(SCC_ENCODED);
+	while (consumer.AnyBytesLeft()) {
+		/* Copy until next record */
+		builder.Put(consumer.ReadUntilUtf8(SCC_RECORD_SEPARATOR, StringConsumer::READ_ONE_SEPARATOR));
+
+		/* Check whether this is a numeric parameter */
+		if (!consumer.ReadUtf8If(SCC_ENCODED_NUMERIC)) continue;
+		builder.PutUtf8(SCC_ENCODED_NUMERIC);
+
+		/* First try unsigned */
+		if (auto u = consumer.TryReadIntegerBase<uint64_t>(16); u.has_value()) {
+			builder.PutIntegerBase<uint64_t>(*u, 16);
+		} else {
+			/* Read as signed, store as unsigned */
+			auto s = consumer.ReadIntegerBase<int64_t>(16);
+			builder.PutIntegerBase<uint64_t>(static_cast<uint64_t>(s), 16);
+		}
+	}
+
+	str = std::move(result);
+}
+
+/**
  * Read the given amount of bytes from the buffer into the string.
  * @param str The string to write to.
  * @param length The amount of bytes to read into the string.
@@ -1004,7 +1043,7 @@ static void SlStdString(void *ptr, VarType conv)
 		case SLA_SAVE: {
 			size_t len = str->length();
 			SlWriteArrayLength(len);
-			SlCopyBytes(const_cast<void *>(static_cast<const void *>(str->c_str())), len);
+			SlCopyBytes(const_cast<void *>(static_cast<const void *>(str->data())), len);
 			break;
 		}
 
@@ -1022,9 +1061,13 @@ static void SlStdString(void *ptr, VarType conv)
 			if ((conv & SLF_ALLOW_CONTROL) != 0) {
 				settings.Set(StringValidationSetting::AllowControlCode);
 				if (IsSavegameVersionBefore(SLV_ENCODED_STRING_FORMAT)) FixSCCEncoded(*str, IsSavegameVersionBefore(SLV_169));
+				if (IsSavegameVersionBefore(SLV_FIX_SCC_ENCODED_NEGATIVE)) FixSCCEncodedNegative(*str);
 			}
 			if ((conv & SLF_ALLOW_NEWLINE) != 0) {
 				settings.Set(StringValidationSetting::AllowNewline);
+			}
+			if ((conv & SLF_REPLACE_TABCRLF) != 0) {
+				settings.Set(StringValidationSetting::ReplaceTabCrNlWithSpace);
 			}
 			StrMakeValidInPlace(*str, settings);
 		}
@@ -1179,7 +1222,6 @@ static size_t ReferenceToInt(const void *obj, SLRefType rt)
 		case REF_VEHICLE:   return ((const  Vehicle*)obj)->index + 1;
 		case REF_STATION:   return ((const  Station*)obj)->index + 1;
 		case REF_TOWN:      return ((const     Town*)obj)->index + 1;
-		case REF_ORDER:     return ((const    Order*)obj)->index + 1;
 		case REF_ROADSTOPS: return ((const RoadStop*)obj)->index + 1;
 		case REF_ENGINE_RENEWS:  return ((const       EngineRenew*)obj)->index + 1;
 		case REF_CARGO_PACKET:   return ((const       CargoPacket*)obj)->index + 1;
@@ -1224,12 +1266,6 @@ static void *IntToReference(size_t index, SLRefType rt)
 		case REF_ORDERLIST:
 			if (OrderList::IsValidID(index)) return OrderList::Get(index);
 			SlErrorCorrupt("Referencing invalid OrderList");
-
-		case REF_ORDER:
-			if (Order::IsValidID(index)) return Order::Get(index);
-			/* in old versions, invalid order was used to mark end of order list */
-			if (IsSavegameVersionBefore(SLV_5, 2)) return nullptr;
-			SlErrorCorrupt("Referencing invalid Order");
 
 		case REF_VEHICLE_OLD:
 		case REF_VEHICLE:
@@ -2514,7 +2550,7 @@ struct NoCompSaveFilter : SaveFilter {
 
 /** Filter using Zlib compression. */
 struct ZlibLoadFilter : LoadFilter {
-	z_stream z;                        ///< Stream state we are reading from.
+	z_stream z{}; ///< Stream state we are reading from.
 	uint8_t fread_buf[MEMORY_CHUNK_SIZE]; ///< Buffer for reading from the file.
 
 	/**
@@ -2523,7 +2559,6 @@ struct ZlibLoadFilter : LoadFilter {
 	 */
 	ZlibLoadFilter(std::shared_ptr<LoadFilter> chain) : LoadFilter(std::move(chain))
 	{
-		memset(&this->z, 0, sizeof(this->z));
 		if (inflateInit(&this->z) != Z_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize decompressor");
 	}
 
@@ -2558,7 +2593,7 @@ struct ZlibLoadFilter : LoadFilter {
 
 /** Filter using Zlib compression. */
 struct ZlibSaveFilter : SaveFilter {
-	z_stream z; ///< Stream state we are writing to.
+	z_stream z{}; ///< Stream state we are writing to.
 	uint8_t fwrite_buf[MEMORY_CHUNK_SIZE]; ///< Buffer for writing to the file.
 
 	/**
@@ -2568,7 +2603,6 @@ struct ZlibSaveFilter : SaveFilter {
 	 */
 	ZlibSaveFilter(std::shared_ptr<SaveFilter> chain, uint8_t compression_level) : SaveFilter(std::move(chain))
 	{
-		memset(&this->z, 0, sizeof(this->z));
 		if (deflateInit(&this->z, compression_level) != Z_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
 	}
 
@@ -2751,7 +2785,7 @@ struct LZMASaveFilter : SaveFilter {
 
 /** The format for a reader/writer type of a savegame */
 struct SaveLoadFormat {
-	const char *name;                     ///< name of the compressor/decompressor (debug-only)
+	std::string_view name; ///< name of the compressor/decompressor (debug-only)
 	uint32_t tag;                           ///< the 4-letter tag by which it is identified in the savegame
 
 	std::shared_ptr<LoadFilter> (*init_load)(std::shared_ptr<LoadFilter> chain); ///< Constructor for the load filter.
@@ -2803,7 +2837,7 @@ static const SaveLoadFormat _saveload_formats[] = {
  * @param full_name Name of the savegame format. If empty it picks the first available one
  * @return Pair containing reference to SaveLoadFormat struct giving all characteristics of this type of savegame, and a compression level to use.
  */
-static std::pair<const SaveLoadFormat &, uint8_t> GetSavegameFormat(const std::string &full_name)
+static std::pair<const SaveLoadFormat &, uint8_t> GetSavegameFormat(std::string_view full_name)
 {
 	/* Find default savegame format, the highest one with which files can be written. */
 	auto it = std::find_if(std::rbegin(_saveload_formats), std::rend(_saveload_formats), [](const auto &slf) { return slf.init_write != nullptr; });
@@ -2815,23 +2849,22 @@ static std::pair<const SaveLoadFormat &, uint8_t> GetSavegameFormat(const std::s
 		/* Get the ":..." of the compression level out of the way */
 		size_t separator = full_name.find(':');
 		bool has_comp_level = separator != std::string::npos;
-		const std::string name(full_name, 0, has_comp_level ? separator : full_name.size());
+		std::string_view name = has_comp_level ? full_name.substr(0, separator) : full_name;
 
 		for (const auto &slf : _saveload_formats) {
 			if (slf.init_write != nullptr && name.compare(slf.name) == 0) {
 				if (has_comp_level) {
-					const std::string complevel(full_name, separator + 1);
+					auto complevel = full_name.substr(separator + 1);
 
 					/* Get the level and determine whether all went fine. */
-					size_t processed;
-					long level = std::stol(complevel, &processed, 10);
-					if (processed == 0 || level != Clamp(level, slf.min_compression, slf.max_compression)) {
+					auto level = ParseInteger<uint8_t>(complevel);
+					if (!level.has_value() || *level != Clamp(*level, slf.min_compression, slf.max_compression)) {
 						ShowErrorMessage(
 							GetEncodedString(STR_CONFIG_ERROR),
 							GetEncodedString(STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL, complevel),
 							WL_CRITICAL);
 					} else {
-						return {slf, ClampTo<uint8_t>(level)};
+						return {slf, *level};
 					}
 				}
 				return {slf, slf.default_compression};
@@ -2849,7 +2882,7 @@ static std::pair<const SaveLoadFormat &, uint8_t> GetSavegameFormat(const std::s
 /* actual loader/saver function */
 void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settings);
 extern bool AfterLoadGame();
-extern bool LoadOldSaveGame(const std::string &file);
+extern bool LoadOldSaveGame(std::string_view file);
 
 /**
  * Reset all settings to their default, so any settings missing in the savegame
@@ -2867,11 +2900,14 @@ static void ResetSettings()
 	}
 }
 
+extern void ClearOldOrders();
+
 /**
  * Clear temporary data that is passed between various saveload phases.
  */
 static void ResetSaveloadData()
 {
+	ClearOldOrders();
 	ResetTempEngineData();
 	ClearRailTypeLabelList();
 	ClearRoadTypeLabelList();
@@ -3210,7 +3246,7 @@ SaveOrLoadResult LoadWithFilter(std::shared_ptr<LoadFilter> reader)
  * @param threaded True when threaded saving is allowed
  * @return Return the result of the action. #SL_OK, #SL_ERROR, or #SL_REINIT ("unload" the game)
  */
-SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileType dft, Subdirectory sb, bool threaded)
+SaveOrLoadResult SaveOrLoad(std::string_view filename, SaveLoadOperation fop, DetailedFileType dft, Subdirectory sb, bool threaded)
 {
 	/* An instance of saving is already active, so don't go saving again */
 	if (_sl.saveinprogress && fop == SLO_SAVE && dft == DFT_GAME_FILE && threaded) {
@@ -3369,32 +3405,20 @@ std::string GenerateDefaultSaveName()
 }
 
 /**
- * Set the mode and file type of the file to save or load based on the type of file entry at the file system.
- * @param ft Type of file entry of the file system.
- */
-void FileToSaveLoad::SetMode(FiosType ft)
-{
-	this->SetMode(SLO_LOAD, GetAbstractFileType(ft), GetDetailedFileType(ft));
-}
-
-/**
  * Set the mode and file type of the file to save or load.
+ * @param ft File type.
  * @param fop File operation being performed.
- * @param aft Abstract file type.
- * @param dft Detailed file type.
  */
-void FileToSaveLoad::SetMode(SaveLoadOperation fop, AbstractFileType aft, DetailedFileType dft)
+void FileToSaveLoad::SetMode(const FiosType &ft, SaveLoadOperation fop)
 {
-	if (aft == FT_INVALID || aft == FT_NONE) {
+	if (ft.abstract == FT_INVALID || ft.abstract == FT_NONE) {
 		this->file_op = SLO_INVALID;
-		this->detail_ftype = DFT_INVALID;
-		this->abstract_ftype = FT_INVALID;
+		this->ftype = FIOS_TYPE_INVALID;
 		return;
 	}
 
 	this->file_op = fop;
-	this->detail_ftype = dft;
-	this->abstract_ftype = aft;
+	this->ftype = ft;
 }
 
 /**

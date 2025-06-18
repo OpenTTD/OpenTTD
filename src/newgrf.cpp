@@ -22,6 +22,7 @@
 #include "currency.h"
 #include "landscape.h"
 #include "newgrf_badge.h"
+#include "newgrf_badge_config.h"
 #include "newgrf_cargo.h"
 #include "newgrf_sound.h"
 #include "newgrf_station.h"
@@ -71,9 +72,9 @@ GrfMiscBits _misc_grf_features{};
 /** Indicates which are the newgrf features currently loaded ingame */
 GRFLoadedFeatures _loaded_newgrf_features;
 
-GrfProcessingState _cur;
+GrfProcessingState _cur_gps;
 
-ReferenceThroughBaseContainer<std::vector<GRFTempEngineData>> _gted;  ///< Temporary engine data used during NewGRF loading
+TypedIndexContainer<std::vector<GRFTempEngineData>, EngineID> _gted;  ///< Temporary engine data used during NewGRF loading
 
 /**
  * Debug() function dedicated to newGRF debugging messages
@@ -87,7 +88,11 @@ ReferenceThroughBaseContainer<std::vector<GRFTempEngineData>> _gted;  ///< Tempo
  */
 void GrfMsgI(int severity, const std::string &msg)
 {
-	Debug(grf, severity, "[{}:{}] {}", _cur.grfconfig->filename, _cur.nfo_line, msg);
+	if (_cur_gps.grfconfig == nullptr) {
+		Debug(grf, severity, "{}", msg);
+	} else {
+		Debug(grf, severity, "[{}:{}] {}", _cur_gps.grfconfig->filename, _cur_gps.nfo_line, msg);
+	}
 }
 
 /**
@@ -132,18 +137,18 @@ GRFError *DisableGrf(StringID message, GRFConfig *config)
 	if (config != nullptr) {
 		file = GetFileByGRFID(config->ident.grfid);
 	} else {
-		config = _cur.grfconfig;
-		file = _cur.grffile;
+		config = _cur_gps.grfconfig;
+		file = _cur_gps.grffile;
 	}
 
 	config->status = GCS_DISABLED;
 	if (file != nullptr) ClearTemporaryNewGRFData(file);
-	if (config == _cur.grfconfig) _cur.skip_sprites = -1;
+	if (config == _cur_gps.grfconfig) _cur_gps.skip_sprites = -1;
 
 	if (message == STR_NULL) return nullptr;
 
 	config->error = {STR_NEWGRF_ERROR_MSG_FATAL, message};
-	if (config == _cur.grfconfig) config->error->param_value[0] = _cur.nfo_line;
+	if (config == _cur_gps.grfconfig) config->error->param_value[0] = _cur_gps.nfo_line;
 	return &config->error.value();
 }
 
@@ -159,7 +164,7 @@ GRFError *DisableGrf(StringID message, GRFConfig *config)
 void DisableStaticNewGRFInfluencingNonStaticNewGRFs(GRFConfig &c)
 {
 	GRFError *error = DisableGrf(STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC, &c);
-	error->data = _cur.grfconfig->GetName();
+	error->data = _cur_gps.grfconfig->GetName();
 }
 
 static std::map<uint32_t, uint32_t> _grf_id_overrides;
@@ -186,7 +191,7 @@ void SetNewGRFOverride(uint32_t source_grfid, uint32_t target_grfid)
  */
 GRFFile *GetCurrentGRFOverride()
 {
-	auto found = _grf_id_overrides.find(_cur.grffile->grfid);
+	auto found = _grf_id_overrides.find(_cur_gps.grffile->grfid);
 	if (found != std::end(_grf_id_overrides)) {
 		GRFFile *grffile = GetFileByGRFID(found->second);
 		if (grffile != nullptr) return grffile;
@@ -306,7 +311,7 @@ CargoTypes TranslateRefitMask(uint32_t refit_mask)
 {
 	CargoTypes result = 0;
 	for (uint8_t bit : SetBitIterator(refit_mask)) {
-		CargoType cargo = GetCargoTranslation(bit, _cur.grffile, true);
+		CargoType cargo = GetCargoTranslation(bit, _cur_gps.grffile, true);
 		if (IsValidCargoType(cargo)) SetBit(result, cargo);
 	}
 	return result;
@@ -319,7 +324,7 @@ CargoTypes TranslateRefitMask(uint32_t refit_mask)
  * @param error_location Function name for grf error messages
  * @param[out] index If \a base_pointer is valid, \a index is assigned to the matching price; else it is left unchanged
  */
-void ConvertTTDBasePrice(uint32_t base_pointer, const char *error_location, Price *index)
+void ConvertTTDBasePrice(uint32_t base_pointer, std::string_view error_location, Price *index)
 {
 	/* Special value for 'none' */
 	if (base_pointer == 0) {
@@ -362,16 +367,17 @@ void ConvertTTDBasePrice(uint32_t base_pointer, const char *error_location, Pric
  */
 void GRFUnsafe(ByteReader &)
 {
-	_cur.grfconfig->flags.Set(GRFConfigFlag::Unsafe);
+	_cur_gps.grfconfig->flags.Set(GRFConfigFlag::Unsafe);
 
 	/* Skip remainder of GRF */
-	_cur.skip_sprites = -1;
+	_cur_gps.skip_sprites = -1;
 }
 
 /** Reset and clear all NewGRFs */
 static void ResetNewGRF()
 {
-	_cur.grffile = nullptr;
+	_cur_gps.grfconfig = nullptr;
+	_cur_gps.grffile = nullptr;
 	_grf_files.clear();
 
 	/* We store pointers to GRFFiles in many places, so need to ensure that the pointers do not become invalid
@@ -522,14 +528,14 @@ void ResetPersistentNewGRFData()
  */
 static void BuildCargoTranslationMap()
 {
-	_cur.grffile->cargo_map.fill(UINT8_MAX);
+	_cur_gps.grffile->cargo_map.fill(UINT8_MAX);
 
-	auto cargo_list = GetCargoTranslationTable(*_cur.grffile);
+	auto cargo_list = GetCargoTranslationTable(*_cur_gps.grffile);
 
 	for (const CargoSpec *cs : CargoSpec::Iterate()) {
 		/* Check the translation table for this cargo's label */
 		int idx = find_index(cargo_list, cs->label);
-		if (idx >= 0) _cur.grffile->cargo_map[cs->Index()] = idx;
+		if (idx >= 0) _cur_gps.grffile->cargo_map[cs->Index()] = idx;
 	}
 }
 
@@ -542,12 +548,12 @@ static void InitNewGRFFile(const GRFConfig &config)
 	GRFFile *newfile = GetFileByFilename(config.filename);
 	if (newfile != nullptr) {
 		/* We already loaded it once. */
-		_cur.grffile = newfile;
+		_cur_gps.grffile = newfile;
 		return;
 	}
 
 	assert(_grf_files.size() < _grf_files.capacity()); // We must not invalidate pointers.
-	_cur.grffile = &_grf_files.emplace_back(config);
+	_cur_gps.grffile = &_grf_files.emplace_back(config);
 }
 
 /**
@@ -904,7 +910,7 @@ static void FinaliseEngineArray()
 		}
 
 		if (e->info.variant_id != EngineID::Invalid()) {
-			Engine::Get(e->info.variant_id)->display_flags.Set(EngineDisplayFlag::HasVariants).Set(EngineDisplayFlag::IsFolded);
+			Engine::Get(e->info.variant_id)->display_flags.Set({EngineDisplayFlag::HasVariants, EngineDisplayFlag::IsFolded});
 		}
 	}
 }
@@ -940,40 +946,40 @@ void FinaliseCargoArray()
  * @param filename The filename of the newgrf this house was defined in.
  * @return Whether the given housespec is valid.
  */
-static bool IsHouseSpecValid(HouseSpec *hs, const HouseSpec *next1, const HouseSpec *next2, const HouseSpec *next3, const std::string &filename)
+static bool IsHouseSpecValid(HouseSpec &hs, const HouseSpec *next1, const HouseSpec *next2, const HouseSpec *next3, const std::string &filename)
 {
-	if ((hs->building_flags.Any(BUILDING_HAS_2_TILES) &&
+	if ((hs.building_flags.Any(BUILDING_HAS_2_TILES) &&
 				(next1 == nullptr || !next1->enabled || next1->building_flags.Any(BUILDING_HAS_1_TILE))) ||
-			(hs->building_flags.Any(BUILDING_HAS_4_TILES) &&
+			(hs.building_flags.Any(BUILDING_HAS_4_TILES) &&
 				(next2 == nullptr || !next2->enabled || next2->building_flags.Any(BUILDING_HAS_1_TILE) ||
 				next3 == nullptr || !next3->enabled || next3->building_flags.Any(BUILDING_HAS_1_TILE)))) {
-		hs->enabled = false;
-		if (!filename.empty()) Debug(grf, 1, "FinaliseHouseArray: {} defines house {} as multitile, but no suitable tiles follow. Disabling house.", filename, hs->grf_prop.local_id);
+		hs.enabled = false;
+		if (!filename.empty()) Debug(grf, 1, "FinaliseHouseArray: {} defines house {} as multitile, but no suitable tiles follow. Disabling house.", filename, hs.grf_prop.local_id);
 		return false;
 	}
 
 	/* Some places sum population by only counting north tiles. Other places use all tiles causing desyncs.
 	 * As the newgrf specs define population to be zero for non-north tiles, we just disable the offending house.
 	 * If you want to allow non-zero populations somewhen, make sure to sum the population of all tiles in all places. */
-	if ((hs->building_flags.Any(BUILDING_HAS_2_TILES) && next1->population != 0) ||
-			(hs->building_flags.Any(BUILDING_HAS_4_TILES) && (next2->population != 0 || next3->population != 0))) {
-		hs->enabled = false;
-		if (!filename.empty()) Debug(grf, 1, "FinaliseHouseArray: {} defines multitile house {} with non-zero population on additional tiles. Disabling house.", filename, hs->grf_prop.local_id);
+	if ((hs.building_flags.Any(BUILDING_HAS_2_TILES) && next1->population != 0) ||
+			(hs.building_flags.Any(BUILDING_HAS_4_TILES) && (next2->population != 0 || next3->population != 0))) {
+		hs.enabled = false;
+		if (!filename.empty()) Debug(grf, 1, "FinaliseHouseArray: {} defines multitile house {} with non-zero population on additional tiles. Disabling house.", filename, hs.grf_prop.local_id);
 		return false;
 	}
 
 	/* Substitute type is also used for override, and having an override with a different size causes crashes.
 	 * This check should only be done for NewGRF houses because grf_prop.subst_id is not set for original houses.*/
-	if (!filename.empty() && (hs->building_flags & BUILDING_HAS_1_TILE) != (HouseSpec::Get(hs->grf_prop.subst_id)->building_flags & BUILDING_HAS_1_TILE)) {
-		hs->enabled = false;
-		Debug(grf, 1, "FinaliseHouseArray: {} defines house {} with different house size then it's substitute type. Disabling house.", filename, hs->grf_prop.local_id);
+	if (!filename.empty() && (hs.building_flags & BUILDING_HAS_1_TILE) != (HouseSpec::Get(hs.grf_prop.subst_id)->building_flags & BUILDING_HAS_1_TILE)) {
+		hs.enabled = false;
+		Debug(grf, 1, "FinaliseHouseArray: {} defines house {} with different house size then it's substitute type. Disabling house.", filename, hs.grf_prop.local_id);
 		return false;
 	}
 
 	/* Make sure that additional parts of multitile houses are not available. */
-	if (!hs->building_flags.Any(BUILDING_HAS_1_TILE) && (hs->building_availability & HZ_ZONALL) != 0 && (hs->building_availability & HZ_CLIMALL) != 0) {
-		hs->enabled = false;
-		if (!filename.empty()) Debug(grf, 1, "FinaliseHouseArray: {} defines house {} without a size but marked it as available. Disabling house.", filename, hs->grf_prop.local_id);
+	if (!hs.building_flags.Any(BUILDING_HAS_1_TILE) && hs.building_availability.Any(HZ_ZONE_ALL) && hs.building_availability.Any(HZ_CLIMATE_ALL)) {
+		hs.enabled = false;
+		if (!filename.empty()) Debug(grf, 1, "FinaliseHouseArray: {} defines house {} without a size but marked it as available. Disabling house.", filename, hs.grf_prop.local_id);
 		return false;
 	}
 
@@ -992,7 +998,7 @@ static void EnsureEarlyHouse(HouseZones bitmask)
 
 	for (const auto &hs : HouseSpec::Specs()) {
 		if (!hs.enabled) continue;
-		if ((hs.building_availability & bitmask) != bitmask) continue;
+		if (!hs.building_availability.All(bitmask)) continue;
 		if (hs.min_year < min_year) min_year = hs.min_year;
 	}
 
@@ -1000,7 +1006,7 @@ static void EnsureEarlyHouse(HouseZones bitmask)
 
 	for (auto &hs : HouseSpec::Specs()) {
 		if (!hs.enabled) continue;
-		if ((hs.building_availability & bitmask) != bitmask) continue;
+		if (!hs.building_availability.All(bitmask)) continue;
 		if (hs.min_year == min_year) hs.min_year = CalendarTime::MIN_YEAR;
 	}
 }
@@ -1022,12 +1028,12 @@ static void FinaliseHouseArray()
 	 * On the other hand, why 1930? Just 'fix' the houses with the lowest
 	 * minimum introduction date to 0.
 	 */
-	for (const auto &file : _grf_files) {
+	for (auto &file : _grf_files) {
 		if (file.housespec.empty()) continue;
 
 		size_t num_houses = file.housespec.size();
 		for (size_t i = 0; i < num_houses; i++) {
-			HouseSpec *hs = file.housespec[i].get();
+			auto &hs = file.housespec[i];
 
 			if (hs == nullptr) continue;
 
@@ -1035,10 +1041,14 @@ static void FinaliseHouseArray()
 			const HouseSpec *next2 = (i + 2 < num_houses ? file.housespec[i + 2].get() : nullptr);
 			const HouseSpec *next3 = (i + 3 < num_houses ? file.housespec[i + 3].get() : nullptr);
 
-			if (!IsHouseSpecValid(hs, next1, next2, next3, file.filename)) continue;
+			if (!IsHouseSpecValid(*hs, next1, next2, next3, file.filename)) continue;
 
-			_house_mngr.SetEntitySpec(hs);
+			_house_mngr.SetEntitySpec(std::move(*hs));
 		}
+
+		/* Won't be used again */
+		file.housespec.clear();
+		file.housespec.shrink_to_fit();
 	}
 
 	for (size_t i = 0; i < HouseSpec::Specs().size(); i++) {
@@ -1049,7 +1059,7 @@ static void FinaliseHouseArray()
 
 		/* We need to check all houses again to we are sure that multitile houses
 		 * did get consecutive IDs and none of the parts are missing. */
-		if (!IsHouseSpecValid(hs, next1, next2, next3, std::string{})) {
+		if (!IsHouseSpecValid(*hs, next1, next2, next3, std::string{})) {
 			/* GetHouseNorthPart checks 3 houses that are directly before
 			 * it in the house pool. If any of those houses have multi-tile
 			 * flags set it assumes it's part of a multitile house. Since
@@ -1068,19 +1078,11 @@ static void FinaliseHouseArray()
 		}
 	}
 
-	HouseZones climate_mask = (HouseZones)(1 << (to_underlying(_settings_game.game_creation.landscape) + 12));
-	EnsureEarlyHouse(HZ_ZON1 | climate_mask);
-	EnsureEarlyHouse(HZ_ZON2 | climate_mask);
-	EnsureEarlyHouse(HZ_ZON3 | climate_mask);
-	EnsureEarlyHouse(HZ_ZON4 | climate_mask);
-	EnsureEarlyHouse(HZ_ZON5 | climate_mask);
-
-	if (_settings_game.game_creation.landscape == LandscapeType::Arctic) {
-		EnsureEarlyHouse(HZ_ZON1 | HZ_SUBARTC_ABOVE);
-		EnsureEarlyHouse(HZ_ZON2 | HZ_SUBARTC_ABOVE);
-		EnsureEarlyHouse(HZ_ZON3 | HZ_SUBARTC_ABOVE);
-		EnsureEarlyHouse(HZ_ZON4 | HZ_SUBARTC_ABOVE);
-		EnsureEarlyHouse(HZ_ZON5 | HZ_SUBARTC_ABOVE);
+	HouseZones climate_mask = GetClimateMaskForLandscape();
+	for (HouseZone climate : climate_mask) {
+		for (HouseZone zone : HZ_ZONE_ALL) {
+			EnsureEarlyHouse({climate, zone});
+		}
 	}
 }
 
@@ -1091,18 +1093,24 @@ static void FinaliseHouseArray()
  */
 static void FinaliseIndustriesArray()
 {
-	for (const auto &file : _grf_files) {
-		for (const auto &indsp : file.industryspec) {
+	for (auto &file : _grf_files) {
+		for (auto &indsp : file.industryspec) {
 			if (indsp == nullptr || !indsp->enabled) continue;
 
-			_industry_mngr.SetEntitySpec(indsp.get());
+			_industry_mngr.SetEntitySpec(std::move(*indsp));
 		}
 
-		for (const auto &indtsp : file.indtspec) {
+		for (auto &indtsp : file.indtspec) {
 			if (indtsp != nullptr) {
-				_industile_mngr.SetEntitySpec(indtsp.get());
+				_industile_mngr.SetEntitySpec(std::move(*indtsp));
 			}
 		}
+
+		/* Won't be used again */
+		file.industryspec.clear();
+		file.industryspec.shrink_to_fit();
+		file.indtspec.clear();
+		file.indtspec.shrink_to_fit();
 	}
 
 	for (auto &indsp : _industry_specs) {
@@ -1139,12 +1147,16 @@ static void FinaliseIndustriesArray()
  */
 static void FinaliseObjectsArray()
 {
-	for (const auto &file : _grf_files) {
+	for (auto &file : _grf_files) {
 		for (auto &objectspec : file.objectspec) {
 			if (objectspec != nullptr && objectspec->grf_prop.HasGrfFile() && objectspec->IsEnabled()) {
-				_object_mngr.SetEntitySpec(objectspec.get());
+				_object_mngr.SetEntitySpec(std::move(*objectspec));
 			}
 		}
+
+		/* Won't be used again */
+		file.objectspec.clear();
+		file.objectspec.shrink_to_fit();
 	}
 
 	ObjectSpec::BindToClasses();
@@ -1157,18 +1169,24 @@ static void FinaliseObjectsArray()
  */
 static void FinaliseAirportsArray()
 {
-	for (const auto &file : _grf_files) {
+	for (auto &file : _grf_files) {
 		for (auto &as : file.airportspec) {
 			if (as != nullptr && as->enabled) {
-				_airport_mngr.SetEntitySpec(as.get());
+				_airport_mngr.SetEntitySpec(std::move(*as));
 			}
 		}
 
 		for (auto &ats : file.airtspec) {
 			if (ats != nullptr && ats->enabled) {
-				_airporttile_mngr.SetEntitySpec(ats.get());
+				_airporttile_mngr.SetEntitySpec(std::move(*ats));
 			}
 		}
+
+		/* Won't be used again */
+		file.airportspec.clear();
+		file.airportspec.shrink_to_fit();
+		file.airtspec.clear();
+		file.airtspec.shrink_to_fit();
 	}
 }
 
@@ -1213,23 +1231,26 @@ struct InvokeGrfActionHandler {
  * XXX: We consider GRF files trusted. It would be trivial to exploit OTTD by
  * a crafted invalid GRF file. We should tell that to the user somehow, or
  * better make this more robust in the future. */
-static void DecodeSpecialSprite(uint8_t *buf, uint num, GrfLoadingStage stage)
+static void DecodeSpecialSprite(ReusableBuffer<uint8_t> &allocator, uint num, GrfLoadingStage stage)
 {
-	auto it = _grf_line_to_action6_sprite_override.find({_cur.grfconfig->ident.grfid, _cur.nfo_line});
+	uint8_t *buf;
+	auto it = _grf_line_to_action6_sprite_override.find({_cur_gps.grfconfig->ident.grfid, _cur_gps.nfo_line});
 	if (it == _grf_line_to_action6_sprite_override.end()) {
 		/* No preloaded sprite to work with; read the
 		 * pseudo sprite content. */
-		_cur.file->ReadBlock(buf, num);
+		buf = allocator.Allocate(num);
+		_cur_gps.file->ReadBlock(buf, num);
 	} else {
 		/* Use the preloaded sprite data. */
 		buf = it->second.data();
+		assert(it->second.size() == num);
 		GrfMsg(7, "DecodeSpecialSprite: Using preloaded pseudo sprite data");
 
 		/* Skip the real (original) content of this action. */
-		_cur.file->SeekTo(num, SEEK_CUR);
+		_cur_gps.file->SeekTo(num, SEEK_CUR);
 	}
 
-	ByteReader br(buf, buf + num);
+	ByteReader br(buf, num);
 
 	try {
 		uint8_t action = br.ReadByte();
@@ -1255,8 +1276,8 @@ static void DecodeSpecialSprite(uint8_t *buf, uint num, GrfLoadingStage stage)
  */
 static void LoadNewGRFFileFromFile(GRFConfig &config, GrfLoadingStage stage, SpriteFile &file)
 {
-	AutoRestoreBackup cur_file(_cur.file, &file);
-	AutoRestoreBackup cur_config(_cur.grfconfig, &config);
+	AutoRestoreBackup cur_file(_cur_gps.file, &file);
+	AutoRestoreBackup cur_config(_cur_gps.grfconfig, &config);
 
 	Debug(grf, 2, "LoadNewGRFFile: Reading NewGRF-file '{}'", config.filename);
 
@@ -1295,16 +1316,16 @@ static void LoadNewGRFFileFromFile(GRFConfig &config, GrfLoadingStage stage, Spr
 		return;
 	}
 
-	_cur.ClearDataForNextFile();
+	_cur_gps.ClearDataForNextFile();
 
-	ReusableBuffer<uint8_t> buf;
+	ReusableBuffer<uint8_t> allocator;
 
 	while ((num = (grf_container_version >= 2 ? file.ReadDword() : file.ReadWord())) != 0) {
 		uint8_t type = file.ReadByte();
-		_cur.nfo_line++;
+		_cur_gps.nfo_line++;
 
 		if (type == 0xFF) {
-			if (_cur.skip_sprites == 0) {
+			if (_cur_gps.skip_sprites == 0) {
 				/* Limit the special sprites to 1 MiB. */
 				if (num > 1024 * 1024) {
 					GrfMsg(0, "LoadNewGRFFile: Unexpectedly large sprite, disabling");
@@ -1312,17 +1333,17 @@ static void LoadNewGRFFileFromFile(GRFConfig &config, GrfLoadingStage stage, Spr
 					break;
 				}
 
-				DecodeSpecialSprite(buf.Allocate(num), num, stage);
+				DecodeSpecialSprite(allocator, num, stage);
 
 				/* Stop all processing if we are to skip the remaining sprites */
-				if (_cur.skip_sprites == -1) break;
+				if (_cur_gps.skip_sprites == -1) break;
 
 				continue;
 			} else {
 				file.SkipBytes(num);
 			}
 		} else {
-			if (_cur.skip_sprites == 0) {
+			if (_cur_gps.skip_sprites == 0) {
 				GrfMsg(0, "LoadNewGRFFile: Unexpected sprite, disabling");
 				DisableGrf(STR_NEWGRF_ERROR_UNEXPECTED_SPRITE);
 				break;
@@ -1337,7 +1358,7 @@ static void LoadNewGRFFileFromFile(GRFConfig &config, GrfLoadingStage stage, Spr
 			}
 		}
 
-		if (_cur.skip_sprites > 0) _cur.skip_sprites--;
+		if (_cur_gps.skip_sprites > 0) _cur_gps.skip_sprites--;
 	}
 }
 
@@ -1363,8 +1384,8 @@ void LoadNewGRFFile(GRFConfig &config, GrfLoadingStage stage, Subdirectory subdi
 	 * carried out.  All others are ignored, because they only need to be
 	 * processed once at initialization.  */
 	if (stage != GLS_FILESCAN && stage != GLS_SAFETYSCAN && stage != GLS_LABELSCAN) {
-		_cur.grffile = GetFileByFilename(filename);
-		if (_cur.grffile == nullptr) UserError("File '{}' lost in cache.\n", filename);
+		_cur_gps.grffile = GetFileByFilename(filename);
+		if (_cur_gps.grffile == nullptr) UserError("File '{}' lost in cache.\n", filename);
 		if (stage == GLS_RESERVE && config.status != GCS_INITIALISED) return;
 		if (stage == GLS_ACTIVATION && !config.flags.Test(GRFConfigFlag::Reserved)) return;
 	}
@@ -1441,7 +1462,7 @@ static void FinalisePriceBaseMultipliers()
 {
 	extern const PriceBaseSpec _price_base_specs[];
 	/** Features, to which '_grf_id_overrides' applies. Currently vehicle features only. */
-	static const uint32_t override_features = (1 << GSF_TRAINS) | (1 << GSF_ROADVEHICLES) | (1 << GSF_SHIPS) | (1 << GSF_AIRCRAFT);
+	static constexpr GrfSpecFeatures override_features{GSF_TRAINS, GSF_ROADVEHICLES, GSF_SHIPS, GSF_AIRCRAFT};
 
 	/* Evaluate grf overrides */
 	int num_grfs = (uint)_grf_files.size();
@@ -1465,13 +1486,13 @@ static void FinalisePriceBaseMultipliers()
 		GRFFile &source = _grf_files[i];
 		GRFFile &dest = _grf_files[grf_overrides[i]];
 
-		uint32_t features = (source.grf_features | dest.grf_features) & override_features;
-		source.grf_features |= features;
-		dest.grf_features |= features;
+		GrfSpecFeatures features = (source.grf_features | dest.grf_features) & override_features;
+		source.grf_features.Set(features);
+		dest.grf_features.Set(features);
 
 		for (Price p = PR_BEGIN; p < PR_END; p++) {
 			/* No price defined -> nothing to do */
-			if (!HasBit(features, _price_base_specs[p].grf_feature) || source.price_base_multipliers[p] == INVALID_PRICE_MODIFIER) continue;
+			if (!features.Test(_price_base_specs[p].grf_feature) || source.price_base_multipliers[p] == INVALID_PRICE_MODIFIER) continue;
 			Debug(grf, 3, "'{}' overrides price base multiplier {} of '{}'", source.filename, p, dest.filename);
 			dest.price_base_multipliers[p] = source.price_base_multipliers[p];
 		}
@@ -1483,13 +1504,13 @@ static void FinalisePriceBaseMultipliers()
 		GRFFile &source = _grf_files[i];
 		GRFFile &dest = _grf_files[grf_overrides[i]];
 
-		uint32_t features = (source.grf_features | dest.grf_features) & override_features;
-		source.grf_features |= features;
-		dest.grf_features |= features;
+		GrfSpecFeatures features = (source.grf_features | dest.grf_features) & override_features;
+		source.grf_features.Set(features);
+		dest.grf_features.Set(features);
 
 		for (Price p = PR_BEGIN; p < PR_END; p++) {
 			/* Already a price defined -> nothing to do */
-			if (!HasBit(features, _price_base_specs[p].grf_feature) || dest.price_base_multipliers[p] != INVALID_PRICE_MODIFIER) continue;
+			if (!features.Test(_price_base_specs[p].grf_feature) || dest.price_base_multipliers[p] != INVALID_PRICE_MODIFIER) continue;
 			Debug(grf, 3, "Price base multiplier {} from '{}' propagated to '{}'", p, source.filename, dest.filename);
 			dest.price_base_multipliers[p] = source.price_base_multipliers[p];
 		}
@@ -1501,12 +1522,12 @@ static void FinalisePriceBaseMultipliers()
 		GRFFile &source = _grf_files[i];
 		GRFFile &dest = _grf_files[grf_overrides[i]];
 
-		uint32_t features = (source.grf_features | dest.grf_features) & override_features;
-		source.grf_features |= features;
-		dest.grf_features |= features;
+		GrfSpecFeatures features = (source.grf_features | dest.grf_features) & override_features;
+		source.grf_features.Set(features);
+		dest.grf_features.Set(features);
 
 		for (Price p = PR_BEGIN; p < PR_END; p++) {
-			if (!HasBit(features, _price_base_specs[p].grf_feature)) continue;
+			if (!features.Test(_price_base_specs[p].grf_feature)) continue;
 			if (source.price_base_multipliers[p] != dest.price_base_multipliers[p]) {
 				Debug(grf, 3, "Price base multiplier {} from '{}' propagated to '{}'", p, dest.filename, source.filename);
 			}
@@ -1536,7 +1557,7 @@ static void FinalisePriceBaseMultipliers()
 				/* No multiplier was set; set it to a neutral value */
 				price_base_multipliers[p] = 0;
 			} else {
-				if (!HasBit(file.grf_features, _price_base_specs[p].grf_feature)) {
+				if (!file.grf_features.Test(_price_base_specs[p].grf_feature)) {
 					/* The grf does not define any objects of the feature,
 					 * so it must be a difficulty setting. Apply it globally */
 					Debug(grf, 3, "'{}' sets global price base multiplier {}", file.filename, p);
@@ -1584,6 +1605,7 @@ static void FinaliseBadges()
 	}
 
 	ApplyBadgeFeaturesToClassBadges();
+	AddBadgeClassesToConfiguration();
 }
 
 extern void InitGRFTownGeneratorNames();
@@ -1755,7 +1777,7 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 		if (c->status != GCS_NOT_FOUND) c->status = GCS_UNKNOWN;
 	}
 
-	_cur.spriteid = load_index;
+	_cur_gps.spriteid = load_index;
 
 	/* Load newgrf sprites
 	 * in each loading stage, (try to) open each file specified in the config
@@ -1781,7 +1803,7 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 		uint num_grfs = 0;
 		uint num_non_static = 0;
 
-		_cur.stage = stage;
+		_cur_gps.stage = stage;
 		for (const auto &c : _grfconfig) {
 			if (c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND) continue;
 			if (stage > GLS_INIT && c->flags.Test(GRFConfigFlag::InitOnly)) continue;
@@ -1812,19 +1834,23 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 				c->flags.Set(GRFConfigFlag::Reserved);
 			} else if (stage == GLS_ACTIVATION) {
 				c->flags.Reset(GRFConfigFlag::Reserved);
-				assert(GetFileByGRFID(c->ident.grfid) == _cur.grffile);
-				ClearTemporaryNewGRFData(_cur.grffile);
+				assert(GetFileByGRFID(c->ident.grfid) == _cur_gps.grffile);
+				ClearTemporaryNewGRFData(_cur_gps.grffile);
 				BuildCargoTranslationMap();
-				Debug(sprite, 2, "LoadNewGRF: Currently {} sprites are loaded", _cur.spriteid);
+				Debug(sprite, 2, "LoadNewGRF: Currently {} sprites are loaded", _cur_gps.spriteid);
 			} else if (stage == GLS_INIT && c->flags.Test(GRFConfigFlag::InitOnly)) {
 				/* We're not going to activate this, so free whatever data we allocated */
-				ClearTemporaryNewGRFData(_cur.grffile);
+				ClearTemporaryNewGRFData(_cur_gps.grffile);
 			}
 		}
 	}
 
+	/* We've finished reading files. */
+	_cur_gps.grfconfig = nullptr;
+	_cur_gps.grffile = nullptr;
+
 	/* Pseudo sprite processing is finished; free temporary stuff */
-	_cur.ClearDataForNextFile();
+	_cur_gps.ClearDataForNextFile();
 
 	/* Call any functions that should be run after GRFs have been loaded. */
 	AfterLoadGRFs();

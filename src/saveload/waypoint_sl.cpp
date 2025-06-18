@@ -49,14 +49,14 @@ static std::vector<OldWaypoint> _old_waypoints;
  * Update the waypoint orders to get the new waypoint ID.
  * @param o the order 'list' to check.
  */
-static void UpdateWaypointOrder(Order *o)
+static void UpdateWaypointOrder(Order &o)
 {
-	if (!o->IsType(OT_GOTO_WAYPOINT)) return;
+	if (!o.IsType(OT_GOTO_WAYPOINT)) return;
 
 	for (OldWaypoint &wp : _old_waypoints) {
-		if (wp.index != o->GetDestination()) continue;
+		if (wp.index != o.GetDestination()) continue;
 
-		o->SetDestination(wp.new_index);
+		o.SetDestination(wp.new_index);
 		return;
 	}
 }
@@ -147,13 +147,13 @@ void MoveWaypointsToBaseStations()
 	for (OrderList *ol : OrderList::Iterate()) {
 		if (ol->GetFirstSharedVehicle()->type != VEH_TRAIN) continue;
 
-		for (Order *o = ol->GetFirstOrder(); o != nullptr; o = o->next) UpdateWaypointOrder(o);
+		for (Order &o : ol->GetOrders()) UpdateWaypointOrder(o);
 	}
 
 	for (Vehicle *v : Vehicle::Iterate()) {
 		if (v->type != VEH_TRAIN) continue;
 
-		UpdateWaypointOrder(&v->current_order);
+		UpdateWaypointOrder(v->current_order);
 	}
 
 	ResetOldWaypoints();

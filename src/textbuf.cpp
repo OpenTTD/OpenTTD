@@ -154,21 +154,21 @@ bool Textbuf::InsertChar(char32_t key)
  * @param replacement_end Replace all characters from #insert_location up to this location with the new string.
  * @return True on successful change of Textbuf, or false otherwise.
  */
-bool Textbuf::InsertString(const char *str, bool marked, const char *caret, const char *insert_location, const char *replacement_end)
+bool Textbuf::InsertString(std::string_view str, bool marked, std::optional<size_t> caret, std::optional<size_t> insert_location, std::optional<size_t> replacement_end)
 {
 	uint16_t insertpos = (marked && this->marklength != 0) ? this->markpos : this->caretpos;
-	if (insert_location != nullptr) {
-		insertpos = insert_location - this->buf.data();
+	if (insert_location.has_value()) {
+		insertpos = static_cast<uint16_t>(*insert_location);
 		if (insertpos >= this->buf.size()) return false;
 
-		if (replacement_end != nullptr) {
-			this->DeleteText(insertpos, replacement_end - this->buf.data(), str == nullptr);
+		if (replacement_end.has_value()) {
+			this->DeleteText(insertpos, static_cast<uint16_t>(*replacement_end), str.empty());
 		}
 	} else {
-		if (marked) this->DiscardMarkedText(str == nullptr);
+		if (marked) this->DiscardMarkedText(str.empty());
 	}
 
-	if (str == nullptr) return false;
+	if (str.empty()) return false;
 
 	uint16_t chars = 0;
 	uint16_t bytes;
@@ -192,17 +192,17 @@ bool Textbuf::InsertString(const char *str, bool marked, const char *caret, cons
 	if (bytes == 0) return false;
 
 	/* Move caret if needed. */
-	if (str <= caret && caret <= str + bytes) this->caretpos = insertpos + (caret - str);
+	if (caret.has_value()) this->caretpos = insertpos + static_cast<uint16_t>(*caret);
 
 	if (marked) {
 		this->markpos = insertpos;
 		this->markend = insertpos + bytes;
 	}
 
-	this->buf.insert(insertpos, str, bytes);
+	this->buf.insert(insertpos, str.substr(0, bytes));
 
 	this->chars += chars;
-	if (!marked && caret == nullptr) this->caretpos += bytes;
+	if (!marked && !caret.has_value()) this->caretpos += bytes;
 	assert(this->buf.size() < this->max_bytes);
 	assert(this->chars <= this->max_chars);
 
@@ -225,7 +225,7 @@ bool Textbuf::InsertClipboard()
 	auto contents = GetClipboardContents();
 	if (!contents.has_value()) return false;
 
-	return this->InsertString(contents.value().c_str(), false);
+	return this->InsertString(contents.value(), false);
 }
 
 /**
@@ -281,9 +281,9 @@ void Textbuf::DiscardMarkedText(bool update)
  * Get the current text.
  * @return Current text.
  */
-const char *Textbuf::GetText() const
+std::string_view Textbuf::GetText() const
 {
-	return this->buf.c_str();
+	return this->buf;
 }
 
 /** Update the character iter after the text has changed. */
@@ -303,7 +303,7 @@ void Textbuf::UpdateWidth()
 /** Update pixel position of the caret. */
 void Textbuf::UpdateCaretPosition()
 {
-	const auto pos = GetCharPosInString(this->buf, &this->buf[this->caretpos], FS_NORMAL);
+	const auto pos = GetCharPosInString(this->buf, this->caretpos, FS_NORMAL);
 	this->caretxoffs = _current_text_dir == TD_LTR ? pos.left : pos.right;
 }
 
@@ -311,8 +311,8 @@ void Textbuf::UpdateCaretPosition()
 void Textbuf::UpdateMarkedText()
 {
 	if (this->markend != 0) {
-		const auto pos = GetCharPosInString(this->buf, &this->buf[this->markpos], FS_NORMAL);
-		const auto end = GetCharPosInString(this->buf, &this->buf[this->markend], FS_NORMAL);
+		const auto pos = GetCharPosInString(this->buf, this->markpos, FS_NORMAL);
+		const auto end = GetCharPosInString(this->buf, this->markend, FS_NORMAL);
 		this->markxoffs = std::min(pos.left, end.left);
 		this->marklength = std::max(pos.right, end.right) - this->markxoffs;
 	} else {
@@ -417,7 +417,7 @@ Textbuf::Textbuf(uint16_t max_bytes, uint16_t max_chars)
  * Copy a string into the textbuffer.
  * @param text Source.
  */
-void Textbuf::Assign(const std::string_view text)
+void Textbuf::Assign(std::string_view text)
 {
 	size_t bytes = std::min<size_t>(this->max_bytes - 1, text.size());
 	this->buf = StrMakeValid(text.substr(0, bytes));

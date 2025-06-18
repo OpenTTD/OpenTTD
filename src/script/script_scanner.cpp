@@ -53,10 +53,10 @@ void ScriptScanner::ResetEngine()
 {
 	this->engine->Reset();
 	this->engine->SetGlobalPointer(this);
-	this->RegisterAPI(this->engine);
+	this->RegisterAPI(*this->engine);
 }
 
-void ScriptScanner::Initialize(const char *name)
+void ScriptScanner::Initialize(std::string_view name)
 {
 	this->engine = new Squirrel(name);
 
@@ -93,7 +93,7 @@ void ScriptScanner::Reset()
 
 void ScriptScanner::RegisterScript(ScriptInfo *info)
 {
-	std::string script_original_name = this->GetScriptName(info);
+	std::string script_original_name = this->GetScriptName(*info);
 	std::string script_name = fmt::format("{}.{}", script_original_name, info->GetVersion());
 
 	/* Check if GetShortName follows the rules */
@@ -103,20 +103,20 @@ void ScriptScanner::RegisterScript(ScriptInfo *info)
 		return;
 	}
 
-	if (this->info_list.find(script_name) != this->info_list.end()) {
+	if (auto it = this->info_list.find(script_name); it != this->info_list.end()) {
 		/* This script was already registered */
 #ifdef _WIN32
 		/* Windows doesn't care about the case */
-		if (StrEqualsIgnoreCase(this->info_list[script_name]->GetMainScript(), info->GetMainScript())) {
+		if (StrEqualsIgnoreCase(it->second->GetMainScript(), info->GetMainScript())) {
 #else
-		if (this->info_list[script_name]->GetMainScript() == info->GetMainScript()) {
+		if (it->second->GetMainScript() == info->GetMainScript()) {
 #endif
 			delete info;
 			return;
 		}
 
 		Debug(script, 1, "Registering two scripts with the same name and version");
-		Debug(script, 1, "  1: {}", this->info_list[script_name]->GetMainScript());
+		Debug(script, 1, "  1: {}", it->second->GetMainScript());
 		Debug(script, 1, "  2: {}", info->GetMainScript());
 		Debug(script, 1, "The first is taking precedence.");
 
@@ -195,13 +195,13 @@ struct ScriptFileChecksumCreator : FileScanner {
  * @param info The script to get the shortname and md5 sum from.
  * @return True iff they're the same.
  */
-static bool IsSameScript(const ContentInfo *ci, bool md5sum, ScriptInfo *info, Subdirectory dir)
+static bool IsSameScript(const ContentInfo &ci, bool md5sum, ScriptInfo *info, Subdirectory dir)
 {
 	uint32_t id = 0;
-	const char *str = info->GetShortName().c_str();
-	for (int j = 0; j < 4 && *str != '\0'; j++, str++) id |= *str << (8 * j);
+	auto str = std::string_view{info->GetShortName()}.substr(0, 4);
+	for (size_t j = 0; j < str.size(); j++) id |= static_cast<uint8_t>(str[j]) << (8 * j);
 
-	if (id != ci->unique_id) return false;
+	if (id != ci.unique_id) return false;
 	if (!md5sum) return true;
 
 	ScriptFileChecksumCreator checksum(dir);
@@ -215,8 +215,8 @@ static bool IsSameScript(const ContentInfo *ci, bool md5sum, ScriptInfo *info, S
 			if (tar.second.tar_filename != iter->first) continue;
 
 			/* Check the extension. */
-			const char *ext = strrchr(tar.first.c_str(), '.');
-			if (ext == nullptr || !StrEqualsIgnoreCase(ext, ".nut")) continue;
+			auto ext = tar.first.rfind('.');
+			if (ext == std::string_view::npos || !StrEqualsIgnoreCase(tar.first.substr(ext), ".nut")) continue;
 
 			checksum.AddFile(tar.first, 0, tar_filename);
 		}
@@ -229,10 +229,10 @@ static bool IsSameScript(const ContentInfo *ci, bool md5sum, ScriptInfo *info, S
 		checksum.Scan(".nut", path);
 	}
 
-	return ci->md5sum == checksum.md5sum;
+	return ci.md5sum == checksum.md5sum;
 }
 
-bool ScriptScanner::HasScript(const ContentInfo *ci, bool md5sum)
+bool ScriptScanner::HasScript(const ContentInfo &ci, bool md5sum)
 {
 	for (const auto &item : this->info_list) {
 		if (IsSameScript(ci, md5sum, item.second, this->GetDirectory())) return true;
@@ -240,10 +240,10 @@ bool ScriptScanner::HasScript(const ContentInfo *ci, bool md5sum)
 	return false;
 }
 
-const char *ScriptScanner::FindMainScript(const ContentInfo *ci, bool md5sum)
+std::optional<std::string_view> ScriptScanner::FindMainScript(const ContentInfo &ci, bool md5sum)
 {
 	for (const auto &item : this->info_list) {
-		if (IsSameScript(ci, md5sum, item.second, this->GetDirectory())) return item.second->GetMainScript().c_str();
+		if (IsSameScript(ci, md5sum, item.second, this->GetDirectory())) return item.second->GetMainScript();
 	}
-	return nullptr;
+	return std::nullopt;
 }

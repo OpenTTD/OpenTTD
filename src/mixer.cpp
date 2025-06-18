@@ -19,7 +19,7 @@
 
 struct MixerChannel {
 	/* pointer to allocated buffer memory */
-	std::shared_ptr<std::vector<uint8_t>> memory;
+	std::shared_ptr<std::vector<std::byte>> memory;
 
 	/* current position in memory */
 	uint32_t pos;
@@ -131,7 +131,7 @@ void MxMixSamples(void *buffer, uint samples)
 	}
 
 	/* Clear the buffer */
-	memset(buffer, 0, sizeof(int16_t) * 2 * samples);
+	std::fill_n(static_cast<int16_t *>(buffer), 2 * samples, 0);
 
 	{
 		std::lock_guard<std::mutex> lock{ _music_stream_mutex };
@@ -180,7 +180,7 @@ MixerChannel *MxAllocateChannel()
 	return mc;
 }
 
-void MxSetChannelRawSrc(MixerChannel *mc, const std::shared_ptr<std::vector<uint8_t>> &mem, uint rate, bool is16bit)
+void MxSetChannelRawSrc(MixerChannel *mc, const std::shared_ptr<std::vector<std::byte>> &mem, uint rate, bool is16bit)
 {
 	mc->memory = mem;
 	mc->frac_pos = 0;

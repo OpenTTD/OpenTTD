@@ -48,7 +48,7 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // Wi
 
 		sockaddr_storage address{};
 		/* iiBroadcast is unusable, because it always seems to be set to 255.255.255.255. */
-		memcpy(&address, &ifo.iiAddress.Address, sizeof(sockaddr));
+		std::copy_n(reinterpret_cast<const std::byte *>(&ifo.iiAddress.Address), sizeof(sockaddr), reinterpret_cast<std::byte *>(&address));
 		reinterpret_cast<sockaddr_in*>(&address)->sin_addr.s_addr = ifo.iiAddress.AddressIn.sin_addr.s_addr | ~ifo.iiNetmask.AddressIn.sin_addr.s_addr;
 		NetworkAddress addr(address, sizeof(sockaddr));
 		if (std::none_of(broadcast->begin(), broadcast->end(), [&addr](NetworkAddress const &elem) -> bool { return elem == addr; })) broadcast->push_back(addr);

@@ -45,7 +45,7 @@ public:
 	 * @param token The token as given by the Game Coordinator to track this connection attempt.
 	 * @param tracking_number The tracking number as given by the Game Coordinator to track this connection attempt.
 	 */
-	NetworkDirectConnecter(const std::string &hostname, uint16_t port, const std::string &token, uint8_t tracking_number) : TCPConnecter(hostname, port), token(token), tracking_number(tracking_number) {}
+	NetworkDirectConnecter(std::string_view hostname, uint16_t port, std::string &&token, uint8_t tracking_number) : TCPConnecter(hostname, port), token(std::move(token)), tracking_number(tracking_number) {}
 
 	void OnFailure() override
 	{
@@ -76,7 +76,7 @@ public:
 	 * @param tracking_number The tracking number of the connection.
 	 * @param family The family this connection is using.
 	 */
-	NetworkReuseStunConnecter(const std::string &hostname, uint16_t port, const NetworkAddress &bind_address, std::string token, uint8_t tracking_number, uint8_t family) :
+	NetworkReuseStunConnecter(std::string_view hostname, uint16_t port, const NetworkAddress &bind_address, std::string &&token, uint8_t tracking_number, uint8_t family) :
 		TCPConnecter(hostname, port, bind_address),
 		token(std::move(token)),
 		tracking_number(tracking_number),
@@ -106,7 +106,7 @@ public:
 	 * Initiate the connecting.
 	 * @param connection_string The address of the Game Coordinator server.
 	 */
-	NetworkCoordinatorConnecter(const std::string &connection_string) : TCPConnecter(connection_string, NETWORK_COORDINATOR_SERVER_PORT) {}
+	NetworkCoordinatorConnecter(std::string_view connection_string) : TCPConnecter(connection_string, NETWORK_COORDINATOR_SERVER_PORT) {}
 
 	void OnFailure() override
 	{
@@ -305,7 +305,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_DIRECT_CONNECT(Packet &p)
 		this->game_connecter = nullptr;
 	}
 
-	this->game_connecter = TCPConnecter::Create<NetworkDirectConnecter>(hostname, port, token, tracking_number);
+	this->game_connecter = TCPConnecter::Create<NetworkDirectConnecter>(hostname, port, std::move(token), tracking_number);
 	return true;
 }
 
@@ -348,7 +348,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_STUN_CONNECT(Packet &p)
 	 * STUN server. This means that if there is any NAT in the local network,
 	 * the public ip:port is still pointing to the local address, and as such
 	 * a connection can be established. */
-	this->game_connecter = TCPConnecter::Create<NetworkReuseStunConnecter>(host, port, family_it->second->local_addr, token, tracking_number, family);
+	this->game_connecter = TCPConnecter::Create<NetworkReuseStunConnecter>(host, port, family_it->second->local_addr, std::move(token), tracking_number, family);
 	return true;
 }
 
@@ -393,7 +393,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_TURN_CONNECT(Packet &p)
 				break;
 
 			case URS_ASK:
-				ShowNetworkAskRelay(connecter_it->second.first, connection_string, token);
+				ShowNetworkAskRelay(connecter_it->second.first, std::move(connection_string), std::move(token));
 				break;
 
 			case URS_ALLOW:
@@ -407,7 +407,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_TURN_CONNECT(Packet &p)
 	return true;
 }
 
-void ClientNetworkCoordinatorSocketHandler::StartTurnConnection(std::string &token)
+void ClientNetworkCoordinatorSocketHandler::StartTurnConnection(std::string_view token)
 {
 	auto turn_it = this->turn_handlers.find(token);
 	if (turn_it == this->turn_handlers.end()) return;
@@ -511,7 +511,7 @@ void ClientNetworkCoordinatorSocketHandler::GetListing()
  * @param invite_code The invite code of the server to connect to.
  * @param connecter The connecter of the request.
  */
-void ClientNetworkCoordinatorSocketHandler::ConnectToServer(const std::string &invite_code, TCPServerConnecter *connecter)
+void ClientNetworkCoordinatorSocketHandler::ConnectToServer(std::string_view invite_code, TCPServerConnecter *connecter)
 {
 	assert(invite_code.starts_with("+"));
 
@@ -525,7 +525,7 @@ void ClientNetworkCoordinatorSocketHandler::ConnectToServer(const std::string &i
 
 	/* Initially we store based on invite code; on first reply we know the
 	 * token, and will start using that key instead. */
-	this->connecter_pre[invite_code] = connecter;
+	this->connecter_pre[std::string(invite_code)] = connecter;
 
 	this->Connect();
 
@@ -541,7 +541,7 @@ void ClientNetworkCoordinatorSocketHandler::ConnectToServer(const std::string &i
  * @param token Token of the connecter that failed.
  * @param tracking_number Tracking number of the connecter that failed.
  */
-void ClientNetworkCoordinatorSocketHandler::ConnectFailure(const std::string &token, uint8_t tracking_number)
+void ClientNetworkCoordinatorSocketHandler::ConnectFailure(std::string_view token, uint8_t tracking_number)
 {
 	/* Connecter will destroy itself. */
 	this->game_connecter = nullptr;
@@ -563,7 +563,7 @@ void ClientNetworkCoordinatorSocketHandler::ConnectFailure(const std::string &to
  * @param token Token of the connecter that succeeded.
  * @param sock The socket that the connecter can now use.
  */
-void ClientNetworkCoordinatorSocketHandler::ConnectSuccess(const std::string &token, SOCKET sock, NetworkAddress &address)
+void ClientNetworkCoordinatorSocketHandler::ConnectSuccess(std::string_view token, SOCKET sock, NetworkAddress &address)
 {
 	assert(sock != INVALID_SOCKET);
 
@@ -603,7 +603,7 @@ void ClientNetworkCoordinatorSocketHandler::ConnectSuccess(const std::string &to
  * This helps the Game Coordinator not to wait for a timeout on its end, but
  * rather react as soon as the client/server knows the result.
  */
-void ClientNetworkCoordinatorSocketHandler::StunResult(const std::string &token, uint8_t family, bool result)
+void ClientNetworkCoordinatorSocketHandler::StunResult(std::string_view token, uint8_t family, bool result)
 {
 	auto p = std::make_unique<Packet>(this, PACKET_COORDINATOR_SERCLI_STUN_RESULT);
 	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
@@ -618,7 +618,7 @@ void ClientNetworkCoordinatorSocketHandler::StunResult(const std::string &token,
  * @param token The token used for the STUN handlers.
  * @param family The family of STUN handlers to close. AF_UNSPEC to close all STUN handlers for this token.
  */
-void ClientNetworkCoordinatorSocketHandler::CloseStunHandler(const std::string &token, uint8_t family)
+void ClientNetworkCoordinatorSocketHandler::CloseStunHandler(std::string_view token, uint8_t family)
 {
 	auto stun_it = this->stun_handlers.find(token);
 	if (stun_it == this->stun_handlers.end()) return;
@@ -645,7 +645,7 @@ void ClientNetworkCoordinatorSocketHandler::CloseStunHandler(const std::string &
  * Close the TURN handler.
  * @param token The token used for the TURN handler.
  */
-void ClientNetworkCoordinatorSocketHandler::CloseTurnHandler(const std::string &token)
+void ClientNetworkCoordinatorSocketHandler::CloseTurnHandler(std::string_view token)
 {
 	CloseWindowByClass(WC_NETWORK_ASK_RELAY, NRWCD_HANDLED);
 
@@ -664,7 +664,7 @@ void ClientNetworkCoordinatorSocketHandler::CloseTurnHandler(const std::string &
  * Close everything related to this connection token.
  * @param token The connection token to close.
  */
-void ClientNetworkCoordinatorSocketHandler::CloseToken(const std::string &token)
+void ClientNetworkCoordinatorSocketHandler::CloseToken(std::string_view token)
 {
 	/* Close all remaining STUN / TURN connections. */
 	this->CloseStunHandler(token);

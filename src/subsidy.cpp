@@ -422,7 +422,7 @@ bool FindSubsidyCargoDestination(CargoType cargo_type, Source src)
 }
 
 /** Perform the economy monthly update of open subsidies, and try to create a new one. */
-static IntervalTimer<TimerGameEconomy> _economy_subsidies_monthly({TimerGameEconomy::MONTH, TimerGameEconomy::Priority::SUBSIDY}, [](auto)
+static const IntervalTimer<TimerGameEconomy> _economy_subsidies_monthly({TimerGameEconomy::MONTH, TimerGameEconomy::Priority::SUBSIDY}, [](auto)
 {
 	bool modified = false;
 

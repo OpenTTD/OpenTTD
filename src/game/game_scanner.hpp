@@ -26,11 +26,11 @@ public:
 	class GameInfo *FindInfo(const std::string &name, int version, bool force_exact_match);
 
 protected:
-	std::string GetScriptName(ScriptInfo *info) override;
-	const char *GetFileName() const override { return PATHSEP "info.nut"; }
+	std::string GetScriptName(ScriptInfo &info) override;
+	std::string_view GetFileName() const override { return PATHSEP "info.nut"; }
 	Subdirectory GetDirectory() const override { return GAME_DIR; }
-	const char *GetScannerName() const override { return "Game Scripts"; }
-	void RegisterAPI(class Squirrel *engine) override;
+	std::string_view GetScannerName() const override { return "Game Scripts"; }
+	void RegisterAPI(class Squirrel &engine) override;
 };
 
 
@@ -47,11 +47,11 @@ public:
 	class GameLibrary *FindLibrary(const std::string &library, int version);
 
 protected:
-	std::string GetScriptName(ScriptInfo *info) override;
-	const char *GetFileName() const override { return PATHSEP "library.nut"; }
+	std::string GetScriptName(ScriptInfo &info) override;
+	std::string_view GetFileName() const override { return PATHSEP "library.nut"; }
 	Subdirectory GetDirectory() const override { return GAME_LIBRARY_DIR; }
-	const char *GetScannerName() const override { return "GS Libraries"; }
-	void RegisterAPI(class Squirrel *engine) override;
+	std::string_view GetScannerName() const override { return "GS Libraries"; }
+	void RegisterAPI(class Squirrel &engine) override;
 };
 
 #endif /* GAME_SCANNER_HPP */

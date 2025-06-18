@@ -52,9 +52,9 @@ static const TrackdirBits _enterdir_to_trackdirbits[DIAGDIR_END] = {
 template <typename Tdir, uint items>
 struct SmallSet {
 private:
-	uint n;           // actual number of units
-	bool overflowed;  // did we try to overflow the set?
-	const char *name; // name, used for debugging purposes...
+	uint n = 0; // actual number of units
+	bool overflowed = false; // did we try to overflow the set?
+	const std::string_view name; // name, used for debugging purposes...
 
 	/** Element of set */
 	struct SSdata {
@@ -64,7 +64,7 @@ private:
 
 public:
 	/** Constructor - just set default values and 'name' */
-	SmallSet(const char *name) : n(0), overflowed(false), name(name) { }
+	SmallSet(std::string_view name) : name(name) { }
 
 	/** Reset variables to default values */
 	void Reset()
@@ -189,11 +189,9 @@ static SmallSet<DiagDirection, SIG_GLOB_SIZE> _globset("_globset"); ///< set of 
 
 
 /** Check whether there is a train on rail, not in a depot */
-static Vehicle *TrainOnTileEnum(Vehicle *v, void *)
+static bool IsTrainAndNotInDepot(const Vehicle *v)
 {
-	if (v->type != VEH_TRAIN || Train::From(v)->track == TRACK_BIT_DEPOT) return nullptr;
-
-	return v;
+	return v->type == VEH_TRAIN && Train::From(v)->track != TRACK_BIT_DEPOT;
 }
 
 
@@ -280,13 +278,13 @@ static SigFlags ExploreSegment(Owner owner)
 
 				if (IsRailDepot(tile)) {
 					if (enterdir == INVALID_DIAGDIR) { // from 'inside' - train just entered or left the depot
-						if (!flags.Test(SigFlag::Train) && HasVehicleOnPos(tile, nullptr, &TrainOnTileEnum)) flags.Set(SigFlag::Train);
+						if (!flags.Test(SigFlag::Train) && HasVehicleOnTile(tile, IsTrainAndNotInDepot)) flags.Set(SigFlag::Train);
 						exitdir = GetRailDepotDirection(tile);
 						tile += TileOffsByDiagDir(exitdir);
 						enterdir = ReverseDiagDir(exitdir);
 						break;
 					} else if (enterdir == GetRailDepotDirection(tile)) { // entered a depot
-						if (!flags.Test(SigFlag::Train) && HasVehicleOnPos(tile, nullptr, &TrainOnTileEnum)) flags.Set(SigFlag::Train);
+						if (!flags.Test(SigFlag::Train) && HasVehicleOnTile(tile, IsTrainAndNotInDepot)) flags.Set(SigFlag::Train);
 						continue;
 					} else {
 						continue;
@@ -303,7 +301,7 @@ static SigFlags ExploreSegment(Owner owner)
 					if (!flags.Test(SigFlag::Train) && EnsureNoTrainOnTrackBits(tile, tracks).Failed()) flags. Set(SigFlag::Train);
 				} else {
 					if (tracks_masked == TRACK_BIT_NONE) continue; // no incidating track
-					if (!flags.Test(SigFlag::Train) && HasVehicleOnPos(tile, nullptr, &TrainOnTileEnum)) flags.Set(SigFlag::Train);
+					if (!flags.Test(SigFlag::Train) && HasVehicleOnTile(tile, IsTrainAndNotInDepot)) flags.Set(SigFlag::Train);
 				}
 
 				/* Is this a track merge or split? */
@@ -358,7 +356,7 @@ static SigFlags ExploreSegment(Owner owner)
 				if (DiagDirToAxis(enterdir) != GetRailStationAxis(tile)) continue; // different axis
 				if (IsStationTileBlocked(tile)) continue; // 'eye-candy' station tile
 
-				if (!flags.Test(SigFlag::Train) && HasVehicleOnPos(tile, nullptr, &TrainOnTileEnum)) flags.Set(SigFlag::Train);
+				if (!flags.Test(SigFlag::Train) && HasVehicleOnTile(tile, IsTrainAndNotInDepot)) flags.Set(SigFlag::Train);
 				tile += TileOffsByDiagDir(exitdir);
 				break;
 
@@ -367,7 +365,7 @@ static SigFlags ExploreSegment(Owner owner)
 				if (GetTileOwner(tile) != owner) continue;
 				if (DiagDirToAxis(enterdir) == GetCrossingRoadAxis(tile)) continue; // different axis
 
-				if (!flags.Test(SigFlag::Train) && HasVehicleOnPos(tile, nullptr, &TrainOnTileEnum)) flags.Set(SigFlag::Train);
+				if (!flags.Test(SigFlag::Train) && HasVehicleOnTile(tile, IsTrainAndNotInDepot)) flags.Set(SigFlag::Train);
 				tile += TileOffsByDiagDir(exitdir);
 				break;
 
@@ -377,13 +375,13 @@ static SigFlags ExploreSegment(Owner owner)
 				DiagDirection dir = GetTunnelBridgeDirection(tile);
 
 				if (enterdir == INVALID_DIAGDIR) { // incoming from the wormhole
-					if (!flags.Test(SigFlag::Train) && HasVehicleOnPos(tile, nullptr, &TrainOnTileEnum)) flags.Set(SigFlag::Train);
+					if (!flags.Test(SigFlag::Train) && HasVehicleOnTile(tile, IsTrainAndNotInDepot)) flags.Set(SigFlag::Train);
 					enterdir = dir;
 					exitdir = ReverseDiagDir(dir);
 					tile += TileOffsByDiagDir(exitdir); // just skip to next tile
 				} else { // NOT incoming from the wormhole!
 					if (ReverseDiagDir(enterdir) != dir) continue;
-					if (!flags.Test(SigFlag::Train) && HasVehicleOnPos(tile, nullptr, &TrainOnTileEnum)) flags.Set(SigFlag::Train);
+					if (!flags.Test(SigFlag::Train) && HasVehicleOnTile(tile, IsTrainAndNotInDepot)) flags.Set(SigFlag::Train);
 					tile = GetOtherTunnelBridgeEnd(tile); // just skip to exit tile
 					enterdir = INVALID_DIAGDIR;
 					exitdir = INVALID_DIAGDIR;

@@ -9,64 +9,27 @@
 
 #include "../../stdafx.h"
 #include "script_event_types.hpp"
-
-#include <queue>
+#include "../script_storage.hpp"
 
 #include "../../safeguards.h"
 
-/** The queue of events for a script. */
-struct ScriptEventData {
-	std::queue<ScriptEvent *> stack; ///< The actual queue.
-};
-
-/* static */ void ScriptEventController::CreateEventPointer()
-{
-	assert(ScriptObject::GetEventPointer() == nullptr);
-
-	ScriptObject::GetEventPointer() = new ScriptEventData();
-}
-
-/* static */ void ScriptEventController::FreeEventPointer()
-{
-	ScriptEventData *data = (ScriptEventData *)ScriptObject::GetEventPointer();
-
-	/* Free all waiting events (if any) */
-	while (!data->stack.empty()) {
-		ScriptEvent *e = data->stack.front();
-		data->stack.pop();
-		e->Release();
-	}
-
-	/* Now kill our data pointer */
-	delete data;
-}
-
 /* static */ bool ScriptEventController::IsEventWaiting()
 {
-	if (ScriptObject::GetEventPointer() == nullptr) ScriptEventController::CreateEventPointer();
-	ScriptEventData *data = (ScriptEventData *)ScriptObject::GetEventPointer();
-
-	return !data->stack.empty();
+	return !ScriptObject::GetEventQueue().empty();
 }
 
 /* static */ ScriptEvent *ScriptEventController::GetNextEvent()
 {
-	if (ScriptObject::GetEventPointer() == nullptr) ScriptEventController::CreateEventPointer();
-	ScriptEventData *data = (ScriptEventData *)ScriptObject::GetEventPointer();
+	auto &queue = ScriptObject::GetEventQueue();
+	if (queue.empty()) return nullptr;
 
-	if (data->stack.empty()) return nullptr;
-
-	ScriptEvent *e = data->stack.front();
-	data->stack.pop();
-	return e;
+	auto *result = queue.front().release();
+	queue.pop();
+	return result;
 }
 
 /* static */ void ScriptEventController::InsertEvent(ScriptEvent *event)
 {
-	if (ScriptObject::GetEventPointer() == nullptr) ScriptEventController::CreateEventPointer();
-	ScriptEventData *data = (ScriptEventData *)ScriptObject::GetEventPointer();
-
-	event->AddRef();
-	data->stack.push(event);
+	ScriptObject::GetEventQueue().push(event);
 }
 

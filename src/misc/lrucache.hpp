@@ -15,17 +15,20 @@
 
 /**
  * Size limited cache with a least recently used eviction strategy.
+ * @note If a comparator is provided, the lookup type is a std::map, otherwise std::unordered_map is used.
  * @tparam Tkey Type of the cache key.
- * @tparam Tdata Type of the cache item. The cache will store a pointer of this type.
+ * @tparam Tdata Type of the cache item.
  */
-template <class Tkey, class Tdata>
+template <class Tkey, class Tdata, class Thash = std::hash<Tkey>, class Tequality = std::equal_to<>>
 class LRUCache {
 private:
-	typedef std::pair<Tkey, std::unique_ptr<Tdata>> Tpair;
-	typedef typename std::list<Tpair>::iterator Titer;
+	using PairType = std::pair<Tkey, Tdata>;
+	using StorageType = std::list<PairType>;
+	using IteratorType = StorageType::iterator;
+	using LookupType = std::unordered_map<Tkey, IteratorType, Thash, Tequality>;
 
-	std::list<Tpair> data; ///< Ordered list of all items.
-	std::unordered_map<Tkey, Titer> lookup;  ///< Map of keys to items.
+	StorageType data; ///< Ordered list of all items.
+	LookupType lookup; ///< Map of keys to items.
 
 	const size_t capacity; ///< Number of items to cache.
 
@@ -41,7 +44,7 @@ public:
 	 * @param key The key to search.
 	 * @return True, if the key was found.
 	 */
-	inline bool Contains(const Tkey key)
+	inline bool Contains(const Tkey &key)
 	{
 		return this->lookup.find(key) != this->lookup.end();
 	}
@@ -51,11 +54,12 @@ public:
 	 * @param key Key under which the item should be stored.
 	 * @param item Item to insert.
 	 */
-	void Insert(const Tkey key, std::unique_ptr<Tdata> &&item)
+	void Insert(const Tkey &key, Tdata &&item)
 	{
-		if (this->Contains(key)) {
+		auto it = this->lookup.find(key);
+		if (it != this->lookup.end()) {
 			/* Replace old value. */
-			this->lookup[key]->second = std::move(item);
+			it->second->second = std::move(item);
 			return;
 		}
 
@@ -85,13 +89,31 @@ public:
 	 * @return The item value.
 	 * @note Throws if item not found.
 	 */
-	inline Tdata *Get(const Tkey key)
+	inline const Tdata &Get(const Tkey &key)
 	{
-		if (this->lookup.find(key) == this->lookup.end()) throw std::out_of_range("item not found");
+		auto it = this->lookup.find(key);
+		if (it == this->lookup.end()) throw std::out_of_range("item not found");
 		/* Move to front if needed. */
-		this->data.splice(this->data.begin(), this->data, this->lookup[key]);
+		this->data.splice(this->data.begin(), this->data, it->second);
 
-		return this->data.front().second.get();
+		return this->data.front().second;
+	}
+
+	/**
+	 * Get an item from the cache.
+	 * @param key The key to look up.
+	 * @return The item value.
+	 * @note Throws if item not found.
+	 */
+	inline Tdata *GetIfValid(const auto &key)
+	{
+		auto it = this->lookup.find(key);
+		if (it == this->lookup.end()) return nullptr;
+
+		/* Move to front if needed. */
+		this->data.splice(this->data.begin(), this->data, it->second);
+
+		return &this->data.front().second;
 	}
 };
 

@@ -212,8 +212,7 @@ static const uint MAX_FRAMES     = 64;
 		proc.pSymSetOptions(SYMOPT_DEFERRED_LOADS | SYMOPT_FAIL_CRITICAL_ERRORS | SYMOPT_UNDNAME);
 
 		/* Initialize starting stack frame from context record. */
-		STACKFRAME64 frame;
-		memset(&frame, 0, sizeof(frame));
+		STACKFRAME64 frame{};
 #ifdef _M_AMD64
 		frame.AddrPC.Offset = ep->ContextRecord->Rip;
 		frame.AddrFrame.Offset = ep->ContextRecord->Rbp;
@@ -232,8 +231,7 @@ static const uint MAX_FRAMES     = 64;
 		frame.AddrStack.Mode = AddrModeFlat;
 
 		/* Copy context record as StackWalk64 may modify it. */
-		CONTEXT ctx;
-		memcpy(&ctx, ep->ContextRecord, sizeof(ctx));
+		CONTEXT ctx = *ep->ContextRecord;
 
 		/* Allocate space for symbol info.
 		 * The total initialised size must be sufficient for a null-terminating char at sym_info->Name[sym_info->MaxNameLength],
@@ -260,7 +258,7 @@ static const uint MAX_FRAMES     = 64;
 			}
 
 			/* Get module name. */
-			const char *mod_name = "???";
+			std::string_view mod_name = "???";
 
 			IMAGEHLP_MODULE64 module;
 			module.SizeOfStruct = sizeof(module);
@@ -269,18 +267,18 @@ static const uint MAX_FRAMES     = 64;
 			}
 
 			/* Print module and instruction pointer. */
-			std::string message = fmt::format("{:20s} {:X}",  mod_name, frame.AddrPC.Offset);
+			std::string message = fmt::format("{:20s} {:X}", mod_name, frame.AddrPC.Offset);
 
 			/* Get symbol name and line info if possible. */
 			DWORD64 offset;
 			if (proc.pSymGetSymFromAddr64(hCur, frame.AddrPC.Offset, &offset, sym_info)) {
-				message += fmt::format(" {} + {}", sym_info->Name, offset);
+				format_append(message, " {} + {}", sym_info->Name, offset);
 
 				DWORD line_offs;
 				IMAGEHLP_LINE64 line;
 				line.SizeOfStruct = sizeof(IMAGEHLP_LINE64);
 				if (proc.pSymGetLineFromAddr64(hCur, frame.AddrPC.Offset, &line_offs, &line)) {
-					message += fmt::format(" ({}:{})", line.FileName, line.LineNumber);
+					format_append(message, " ({}:{})", line.FileName, line.LineNumber);
 				}
 			}
 

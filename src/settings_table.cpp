@@ -445,11 +445,11 @@ static bool CheckRoadSide(int32_t &)
  * @param value that was read from config file
  * @return the "hopefully" converted value
  */
-static size_t ConvertLandscape(const char *value)
+static std::optional<uint32_t> ConvertLandscape(std::string_view value)
 {
 	/* try with the old values */
-	static std::vector<std::string> _old_landscape_values{"normal", "hilly", "desert", "candy"};
-	return OneOfManySettingDesc::ParseSingleValue(value, strlen(value), _old_landscape_values);
+	static constexpr std::initializer_list<std::string_view> _old_landscape_values{"normal"sv, "hilly"sv, "desert"sv, "candy"sv};
+	return OneOfManySettingDesc::ParseSingleValue(value, _old_landscape_values);
 }
 
 static bool CheckFreeformEdges(int32_t &new_value)

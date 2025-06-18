@@ -20,10 +20,10 @@
 
 #include "../safeguards.h"
 
-void ScriptConfig::Change(std::optional<std::string> name, int version, bool force_exact_match)
+void ScriptConfig::Change(std::optional<std::string_view> name, int version, bool force_exact_match)
 {
 	if (name.has_value()) {
-		this->name = std::move(name.value());
+		this->name = name.value();
 		this->info = this->FindInfo(this->name, version, force_exact_match);
 	} else {
 		this->info = nullptr;
@@ -88,7 +88,7 @@ int ScriptConfig::GetSetting(const std::string &name) const
 	return (*it).second;
 }
 
-void ScriptConfig::SetSetting(const std::string_view name, int value)
+void ScriptConfig::SetSetting(std::string_view name, int value)
 {
 	/* You can only set Script specific settings if an Script is selected. */
 	if (this->info == nullptr) return;
@@ -140,7 +140,7 @@ int ScriptConfig::GetVersion() const
 	return this->version;
 }
 
-void ScriptConfig::StringToSettings(const std::string &value)
+void ScriptConfig::StringToSettings(std::string_view value)
 {
 	std::string_view to_process = value;
 	for (;;) {
@@ -168,7 +168,7 @@ std::string ScriptConfig::SettingsToString() const
 
 	std::string result;
 	for (const auto &item : this->settings) {
-		fmt::format_to(std::back_inserter(result), "{}={},", item.first, item.second);
+		format_append(result, "{}={},", item.first, item.second);
 	}
 
 	/* Remove the last ','. */

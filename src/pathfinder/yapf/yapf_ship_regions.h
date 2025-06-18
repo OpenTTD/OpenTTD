@@ -10,7 +10,6 @@
 #ifndef YAPF_SHIP_REGIONS_H
 #define YAPF_SHIP_REGIONS_H
 
-#include "../../stdafx.h"
 #include "../../tile_type.h"
 #include "../water_regions.h"
 

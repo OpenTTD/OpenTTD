@@ -139,7 +139,7 @@ std::tuple<CommandCost, VehicleID, uint, uint16_t, CargoArray> CmdBuildVehicle(D
 	/* If we are refitting we need to temporarily purchase the vehicle to be able to
 	 * test it. */
 	DoCommandFlags subflags = flags;
-	if (refitting && !flags.Test(DoCommandFlag::Execute)) subflags.Set(DoCommandFlag::Execute).Set(DoCommandFlag::AutoReplace);
+	if (refitting && !flags.Test(DoCommandFlag::Execute)) subflags.Set({DoCommandFlag::Execute, DoCommandFlag::AutoReplace});
 
 	/* Vehicle construction needs random bits, so we have to save the random
 	 * seeds to prevent desyncs. */
@@ -246,16 +246,6 @@ CommandCost CmdSellVehicle(DoCommandFlags flags, VehicleID v_id, bool sell_chain
 	if (front->vehstatus.Test(VehState::Crashed)) return CommandCost(STR_ERROR_VEHICLE_IS_DESTROYED);
 
 	if (!front->IsStoppedInDepot()) return CommandCost(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT + front->type);
-
-	/* Can we actually make the order backup, i.e. are there enough orders? */
-	if (backup_order &&
-			front->orders != nullptr &&
-			!front->orders->IsShared() &&
-			!Order::CanAllocateItem(front->orders->GetNumOrders())) {
-		/* Only happens in exceptional cases when there aren't enough orders anyhow.
-		 * Thus it should be safe to just drop the orders in that case. */
-		backup_order = false;
-	}
 
 	if (v->type == VEH_TRAIN) {
 		ret = CmdSellRailWagon(flags, v, sell_chain, backup_order, client_id);
@@ -617,7 +607,8 @@ CommandCost CmdStartStopVehicle(DoCommandFlags flags, VehicleID veh_id, bool eva
 
 	if (evaluate_startstop_cb) {
 		/* Check if this vehicle can be started/stopped. Failure means 'allow'. */
-		uint16_t callback = GetVehicleCallback(CBID_VEHICLE_START_STOP_CHECK, 0, 0, v->engine_type, v);
+		std::array<int32_t, 1> regs100;
+		uint16_t callback = GetVehicleCallback(CBID_VEHICLE_START_STOP_CHECK, 0, 0, v->engine_type, v, regs100);
 		StringID error = STR_NULL;
 		if (callback != CALLBACK_FAILED) {
 			if (v->GetGRF()->grf_version < 8) {
@@ -629,6 +620,10 @@ CommandCost CmdStartStopVehicle(DoCommandFlags flags, VehicleID veh_id, bool eva
 				} else {
 					switch (callback) {
 						case 0x400: // allow
+							break;
+
+						case 0x40F:
+							error = GetGRFStringID(v->GetGRFID(), static_cast<GRFStringID>(regs100[0]));
 							break;
 
 						default: // unknown reason -> disallow
@@ -900,8 +895,12 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 		if (flags.Test(DoCommandFlag::Execute)) {
 			w = Vehicle::Get(new_veh_id);
 
-			if (v->type == VEH_TRAIN && HasBit(Train::From(v)->flags, VRF_REVERSE_DIRECTION)) {
-				SetBit(Train::From(w)->flags, VRF_REVERSE_DIRECTION);
+			if (v->type == VEH_TRAIN && Train::From(v)->flags.Test(VehicleRailFlag::Flipped)) {
+				/* Only copy the reverse state if neither old or new vehicle implements reverse-on-build probability callback. */
+				if (!TestVehicleBuildProbability(v, v->engine_type, BuildProbabilityType::Reversed).has_value() &&
+					!TestVehicleBuildProbability(w, w->engine_type, BuildProbabilityType::Reversed).has_value()) {
+					Train::From(w)->flags.Set(VehicleRailFlag::Flipped);
+				}
 			}
 
 			if (v->type == VEH_TRAIN && !v->IsFrontEngine()) {

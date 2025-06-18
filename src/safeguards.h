@@ -21,31 +21,60 @@
 #define calloc    SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define realloc   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
-/* Use std::string instead. */
+/* Use std::string/std::string_view instead. */
 #define strdup    SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define strndup   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
-/* Use strecpy instead. */
 #define strcpy    SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define strncpy   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
-/* Use std::string concatenation/fmt::format instead. */
 #define strcat    SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define strncat   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
-/* Use fmt::format instead. */
 #define sprintf   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define snprintf  SAFEGUARD_DO_NOT_USE_THIS_METHOD
-
-/* Use fmt::format instead. */
 #define vsprintf  SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define vsnprintf SAFEGUARD_DO_NOT_USE_THIS_METHOD
+
+#define strcmp SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define strncmp SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#ifdef strcasecmp
+#undef strcasecmp
+#endif
+#define strcasecmp SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#ifdef stricmp
+#undef stricmp
+#endif
+#define stricmp SAFEGUARD_DO_NOT_USE_THIS_METHOD
+
+#define memcmp SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define memcpy SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define memmove SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define memset SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
 /* Use fgets instead. */
 #define gets      SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
-/* No clear replacement. */
+/* Use StringConsumer instead. */
 #define strtok    SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define sscanf    SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define from_string SAFEGUARD_DO_NOT_USE_THIS_METHOD
+
+/* Use ParseInteger or StringConsumer instead. */
+#define atoi      SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define atol      SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define atoll     SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define strtol    SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define strtoll   SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define strtoul   SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define strtoull  SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define stoi      SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define stol      SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define stoll     SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define stoul     SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define stoull    SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define stoimax   SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define stoumax   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
 /* Use fmt::print instead. */
 #define printf    SAFEGUARD_DO_NOT_USE_THIS_METHOD
@@ -53,6 +82,9 @@
 #define puts      SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define fputs     SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define putchar   SAFEGUARD_DO_NOT_USE_THIS_METHOD
+
+/* Use fmt::format instead */
+#define to_string SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
 /* Use our own templated implementation instead of a macro or function with only one type. */
 #ifdef min

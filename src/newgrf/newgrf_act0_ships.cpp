@@ -33,7 +33,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 	ChangeInfoResult ret = CIR_SUCCESS;
 
 	for (uint id = first; id < last; ++id) {
-		Engine *e = GetNewEngine(_cur.grffile, VEH_SHIP, id);
+		Engine *e = GetNewEngine(_cur_gps.grffile, VEH_SHIP, id);
 		if (e == nullptr) return CIR_INVALID_ID; // No engine could be allocated, so neither can any next vehicles
 
 		EngineInfo *ei = &e->info;
@@ -45,9 +45,9 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 				uint8_t orig_spriteid = spriteid;
 
 				/* ships have different custom id in the GRF file */
-				if (spriteid == 0xFF) spriteid = 0xFD;
+				if (spriteid == 0xFF) spriteid = CUSTOM_VEHICLE_SPRITENUM;
 
-				if (spriteid < 0xFD) spriteid >>= 1;
+				if (spriteid < CUSTOM_VEHICLE_SPRITENUM) spriteid >>= 1;
 
 				if (IsValidNewGRFImageIndex<VEH_SHIP>(spriteid)) {
 					svi->image_index = spriteid;
@@ -71,7 +71,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 				break;
 
 			case 0x0C: { // Cargo type
-				_gted[e->index].defaultcargo_grf = _cur.grffile;
+				_gted[e->index].defaultcargo_grf = _cur_gps.grffile;
 				uint8_t ctype = buf.ReadByte();
 
 				if (ctype == 0xFF) {
@@ -79,7 +79,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 					ei->cargo_type = INVALID_CARGO;
 				} else {
 					/* Use translated cargo. Might result in INVALID_CARGO (first refittable), if cargo is not defined. */
-					ei->cargo_type = GetCargoTranslation(ctype, _cur.grffile);
+					ei->cargo_type = GetCargoTranslation(ctype, _cur_gps.grffile);
 					if (ei->cargo_type == INVALID_CARGO) GrfMsg(2, "ShipVehicleChangeInfo: Invalid cargo type {}, using first refittable", ctype);
 				}
 				ei->cargo_label = CT_INVALID;
@@ -95,14 +95,14 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 				break;
 
 			case 0x10: // SFX
-				svi->sfx = GetNewGRFSoundID(_cur.grffile, buf.ReadByte());
+				svi->sfx = GetNewGRFSoundID(_cur_gps.grffile, buf.ReadByte());
 				break;
 
 			case 0x11: { // Cargoes available for refitting
 				uint32_t mask = buf.ReadDWord();
 				_gted[e->index].UpdateRefittability(mask != 0);
 				ei->refit_mask = TranslateRefitMask(mask);
-				_gted[e->index].defaultcargo_grf = _cur.grffile;
+				_gted[e->index].defaultcargo_grf = _cur_gps.grffile;
 				break;
 			}
 
@@ -137,7 +137,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 			case 0x18: // Cargo classes allowed
 				_gted[e->index].cargo_allowed = CargoClasses{buf.ReadWord()};
 				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed.Any());
-				_gted[e->index].defaultcargo_grf = _cur.grffile;
+				_gted[e->index].defaultcargo_grf = _cur_gps.grffile;
 				break;
 
 			case 0x19: // Cargo classes disallowed
@@ -171,11 +171,11 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 			case 0x1F: { // CTT refit exclude list
 				uint8_t count = buf.ReadByte();
 				_gted[e->index].UpdateRefittability(prop == 0x1E && count != 0);
-				if (prop == 0x1E) _gted[e->index].defaultcargo_grf = _cur.grffile;
+				if (prop == 0x1E) _gted[e->index].defaultcargo_grf = _cur_gps.grffile;
 				CargoTypes &ctt = prop == 0x1E ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask;
 				ctt = 0;
 				while (count--) {
-					CargoType ctype = GetCargoTranslation(buf.ReadByte(), _cur.grffile);
+					CargoType ctype = GetCargoTranslation(buf.ReadByte(), _cur_gps.grffile);
 					if (IsValidCargoType(ctype)) SetBit(ctt, ctype);
 				}
 				break;

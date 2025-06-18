@@ -13,10 +13,10 @@
 #include "../newgrf_roadstop.h"
 
 /* Helper for filling property tables */
-#define NIP(prop, base, variable, type, name) { name, [] (const void *b) -> const void * { return std::addressof(static_cast<const base *>(b)->variable); }, cpp_sizeof(base, variable), prop, type }
+#define NIP(prop, base_class, variable, type, name) { name, [] (const void *b) -> uint32_t { return static_cast<const base_class *>(b)->variable; }, prop, type }
 
 /* Helper for filling callback tables */
-#define NIC(cb_id, base, variable, bit) { #cb_id, [] (const void *b) -> const void * { return std::addressof(static_cast<const base *>(b)->variable); }, cpp_sizeof(base, variable), bit, cb_id }
+#define NIC(cb_id, base_class, variable, bit) { #cb_id, [] (const void *b) -> uint32_t { return static_cast<const base_class *>(b)->variable.base(); }, bit, cb_id }
 
 /* Helper for filling variable tables */
 #define NIV(var, name) { name, var }
@@ -60,7 +60,7 @@ static const NIVariable _niv_vehicles[] = {
 	NIV(0x4C, "current max speed"),
 	NIV(0x4D, "position in articulated vehicle"),
 	NIV(0x60, "count vehicle id occurrences"),
-	// 0x61 not useful, since it requires register 0x10F
+	/* 0x61 not useful, since it requires register 0x10F */
 	NIV(0x62, "curvature/position difference to other vehicle"),
 	NIV(0x63, "tile compatibility wrt. track-type"),
 };
@@ -97,8 +97,8 @@ static const NICallback _nic_stations[] = {
 	NICS(CBID_STATION_AVAILABILITY,     StationCallbackMask::Avail),
 	NICS(CBID_STATION_DRAW_TILE_LAYOUT, StationCallbackMask::DrawTileLayout),
 	NICS(CBID_STATION_BUILD_TILE_LAYOUT,std::monostate{}),
-	NICS(CBID_STATION_ANIM_START_STOP,  std::monostate{}),
-	NICS(CBID_STATION_ANIM_NEXT_FRAME,  StationCallbackMask::AnimationNextFrame),
+	NICS(CBID_STATION_ANIMATION_TRIGGER, std::monostate{}),
+	NICS(CBID_STATION_ANIMATION_NEXT_FRAME, StationCallbackMask::AnimationNextFrame),
 	NICS(CBID_STATION_ANIMATION_SPEED,  StationCallbackMask::AnimationSpeed),
 	NICS(CBID_STATION_LAND_SLOPE_CHECK, StationCallbackMask::SlopeCheck),
 };
@@ -160,8 +160,8 @@ static const NIFeature _nif_station = {
 static const NICallback _nic_house[] = {
 	NICH(CBID_HOUSE_ALLOW_CONSTRUCTION,        HouseCallbackMask::AllowConstruction),
 	NICH(CBID_HOUSE_ANIMATION_NEXT_FRAME,      HouseCallbackMask::AnimationNextFrame),
-	NICH(CBID_HOUSE_ANIMATION_START_STOP,      HouseCallbackMask::AnimationStartStop),
-	NICH(CBID_HOUSE_CONSTRUCTION_STATE_CHANGE, HouseCallbackMask::ConstructionStateChange),
+	NICH(CBID_HOUSE_ANIMATION_TRIGGER_TILE_LOOP, HouseCallbackMask::AnimationTriggerTileLoop),
+	NICH(CBID_HOUSE_ANIMATION_TRIGGER_CONSTRUCTION_STAGE_CHANGED, HouseCallbackMask::AnimationTriggerConstructionStageChanged),
 	NICH(CBID_HOUSE_COLOUR,                    HouseCallbackMask::Colour),
 	NICH(CBID_HOUSE_CARGO_ACCEPTANCE,          HouseCallbackMask::CargoAcceptance),
 	NICH(CBID_HOUSE_ANIMATION_SPEED,           HouseCallbackMask::AnimationSpeed),
@@ -169,14 +169,14 @@ static const NICallback _nic_house[] = {
 	NICH(CBID_HOUSE_ACCEPT_CARGO,              HouseCallbackMask::AcceptCargo),
 	NICH(CBID_HOUSE_PRODUCE_CARGO,             HouseCallbackMask::ProduceCargo),
 	NICH(CBID_HOUSE_DENY_DESTRUCTION,          HouseCallbackMask::DenyDestruction),
-	NICH(CBID_HOUSE_WATCHED_CARGO_ACCEPTED,    std::monostate{}),
+	NICH(CBID_HOUSE_ANIMATION_TRIGGER_WATCHED_CARGO_ACCEPTED, std::monostate{}),
 	NICH(CBID_HOUSE_CUSTOM_NAME,               std::monostate{}),
 	NICH(CBID_HOUSE_DRAW_FOUNDATIONS,          HouseCallbackMask::DrawFoundations),
 	NICH(CBID_HOUSE_AUTOSLOPE,                 HouseCallbackMask::Autoslope),
 };
 
 static const NIVariable _niv_house[] = {
-	NIV(0x40, "construction state of tile and pseudo-random value"),
+	NIV(0x40, "construction stage of tile and pseudo-random value"),
 	NIV(0x41, "age of building in years"),
 	NIV(0x42, "town zone"),
 	NIV(0x43, "terrain type"),
@@ -223,8 +223,8 @@ static const NIFeature _nif_house = {
 
 #define NICIT(cb_id, bit) NIC(cb_id, IndustryTileSpec, callback_mask, bit)
 static const NICallback _nic_industrytiles[] = {
-	NICIT(CBID_INDTILE_ANIM_START_STOP,  std::monostate{}),
-	NICIT(CBID_INDTILE_ANIM_NEXT_FRAME,  IndustryTileCallbackMask::AnimationNextFrame),
+	NICIT(CBID_INDTILE_ANIMATION_TRIGGER, std::monostate{}),
+	NICIT(CBID_INDTILE_ANIMATION_NEXT_FRAME, IndustryTileCallbackMask::AnimationNextFrame),
 	NICIT(CBID_INDTILE_ANIMATION_SPEED,  IndustryTileCallbackMask::AnimationSpeed),
 	NICIT(CBID_INDTILE_CARGO_ACCEPTANCE, IndustryTileCallbackMask::CargoAcceptance),
 	NICIT(CBID_INDTILE_ACCEPT_CARGO,     IndustryTileCallbackMask::AcceptCargo),
@@ -234,7 +234,7 @@ static const NICallback _nic_industrytiles[] = {
 };
 
 static const NIVariable _niv_industrytiles[] = {
-	NIV(0x40, "construction state of tile"),
+	NIV(0x40, "construction stage of tile"),
 	NIV(0x41, "ground type"),
 	NIV(0x42, "current town zone in nearest town"),
 	NIV(0x43, "relative position"),
@@ -270,8 +270,8 @@ static const NIFeature _nif_industrytile = {
 
 
 /*** NewGRF industries ***/
-#define NIP_PRODUCED_CARGO(prop, base, slot, type, name) { name, [] (const void *b) -> const void * { return std::addressof(static_cast<const base *>(b)->GetProduced(slot).cargo); }, sizeof(CargoType), prop, type }
-#define NIP_ACCEPTED_CARGO(prop, base, slot, type, name) { name, [] (const void *b) -> const void * { return std::addressof(static_cast<const base *>(b)->GetAccepted(slot).cargo); }, sizeof(CargoType), prop, type }
+#define NIP_PRODUCED_CARGO(prop, base_class, slot, type, name) { name, [] (const void *b) -> uint32_t { return static_cast<const base_class *>(b)->GetProduced(slot).cargo; }, prop, type }
+#define NIP_ACCEPTED_CARGO(prop, base_class, slot, type, name) { name, [] (const void *b) -> uint32_t { return static_cast<const base_class *>(b)->GetAccepted(slot).cargo; }, prop, type }
 
 static const NIProperty _nip_industries[] = {
 	NIP_PRODUCED_CARGO(0x25, Industry,  0, NIT_CARGO, "produced cargo 0"),
@@ -394,7 +394,7 @@ static const NIFeature _nif_industry = {
 static const NICallback _nic_objects[] = {
 	NICO(CBID_OBJECT_LAND_SLOPE_CHECK,     ObjectCallbackMask::SlopeCheck),
 	NICO(CBID_OBJECT_ANIMATION_NEXT_FRAME, ObjectCallbackMask::AnimationNextFrame),
-	NICO(CBID_OBJECT_ANIMATION_START_STOP, std::monostate{}),
+	NICO(CBID_OBJECT_ANIMATION_TRIGGER, std::monostate{}),
 	NICO(CBID_OBJECT_ANIMATION_SPEED,      ObjectCallbackMask::AnimationSpeed),
 	NICO(CBID_OBJECT_COLOUR,               ObjectCallbackMask::Colour),
 	NICO(CBID_OBJECT_FUND_MORE_TEXT,       ObjectCallbackMask::FundMoreText),
@@ -451,6 +451,7 @@ static const NIVariable _niv_railtypes[] = {
 	NIV(0x42, "level crossing status"),
 	NIV(0x43, "construction date"),
 	NIV(0x44, "town zone"),
+	NIV(0x45, "track types"),
 };
 
 class NIHRailType : public NIHelper {
@@ -484,8 +485,8 @@ static const NIFeature _nif_railtype = {
 #define NICAT(cb_id, bit) NIC(cb_id, AirportTileSpec, callback_mask, bit)
 static const NICallback _nic_airporttiles[] = {
 	NICAT(CBID_AIRPTILE_DRAW_FOUNDATIONS, AirportTileCallbackMask::DrawFoundations),
-	NICAT(CBID_AIRPTILE_ANIM_START_STOP,  std::monostate{}),
-	NICAT(CBID_AIRPTILE_ANIM_NEXT_FRAME,  AirportTileCallbackMask::AnimationNextFrame),
+	NICAT(CBID_AIRPTILE_ANIMATION_TRIGGER, std::monostate{}),
+	NICAT(CBID_AIRPTILE_ANIMATION_NEXT_FRAME, AirportTileCallbackMask::AnimationNextFrame),
 	NICAT(CBID_AIRPTILE_ANIMATION_SPEED,  AirportTileCallbackMask::AnimationSpeed),
 };
 
@@ -620,6 +621,7 @@ static const NIVariable _niv_roadtypes[] = {
 	NIV(0x42, "level crossing status"),
 	NIV(0x43, "construction date"),
 	NIV(0x44, "town zone"),
+	NIV(0x45, "track types"),
 };
 
 template <RoadTramType TRoadTramType>
@@ -663,8 +665,8 @@ static const NIFeature _nif_tramtype = {
 #define NICRS(cb_id, bit) NIC(cb_id, RoadStopSpec, callback_mask, bit)
 static const NICallback _nic_roadstops[] = {
 	NICRS(CBID_STATION_AVAILABILITY,     RoadStopCallbackMask::Avail),
-	NICRS(CBID_STATION_ANIM_START_STOP,  std::monostate{}),
-	NICRS(CBID_STATION_ANIM_NEXT_FRAME,  RoadStopCallbackMask::AnimationNextFrame),
+	NICRS(CBID_STATION_ANIMATION_TRIGGER, std::monostate{}),
+	NICRS(CBID_STATION_ANIMATION_NEXT_FRAME, RoadStopCallbackMask::AnimationNextFrame),
 	NICRS(CBID_STATION_ANIMATION_SPEED,  RoadStopCallbackMask::AnimationSpeed),
 };
 

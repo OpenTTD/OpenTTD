@@ -22,7 +22,7 @@ public:
 	static constexpr uint16_t RAW_SAMPLE_RATE = 11025; ///< Sample rate of raw pcm samples.
 	static constexpr uint8_t RAW_SAMPLE_BITS = 8; ///< Bit depths of raw pcm samples.
 
-	bool Load(SoundEntry &sound, bool new_format, std::vector<uint8_t> &data) override
+	bool Load(SoundEntry &sound, bool new_format, std::vector<std::byte> &data) override
 	{
 		/* Raw sounds are apecial case for the jackhammer sound (name in Windows sample.cat is "Corrupt sound")
 		 * It's not a RIFF file, but raw PCM data.
@@ -42,7 +42,7 @@ public:
 
 		/* Convert 8-bit samples from unsigned to signed. */
 		for (auto &sample : data) {
-			sample = sample - 128;
+			sample ^= std::byte{0x80};
 		}
 
 		return true;

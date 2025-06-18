@@ -8,6 +8,8 @@
 /** @file sound_opus.cpp Loading of opus sounds. */
 
 #include "stdafx.h"
+
+#include "misc/autorelease.hpp"
 #include "random_access_file_type.h"
 #include "sound_type.h"
 #include "soundloader_type.h"
@@ -32,7 +34,7 @@ public:
 	static constexpr size_t DECODE_BUFFER_SAMPLES = 5760 * 2;
 	static constexpr size_t DECODE_BUFFER_BYTES = DECODE_BUFFER_SAMPLES * sizeof(opus_int16);
 
-	bool Load(SoundEntry &sound, bool new_format, std::vector<uint8_t> &data) override
+	bool Load(SoundEntry &sound, bool new_format, std::vector<std::byte> &data) override
 	{
 		if (!new_format) return false;
 
@@ -51,7 +53,7 @@ public:
 		sound.file->ReadBlock(tmp.data(), tmp.size());
 
 		int error = 0;
-		auto of = std::unique_ptr<OggOpusFile, OggOpusFileDeleter>(op_open_memory(tmp.data(), tmp.size(), &error));
+		auto of = AutoRelease<OggOpusFile, op_free>(op_open_memory(tmp.data(), tmp.size(), &error));
 		if (error != 0) return false;
 
 		size_t datapos = 0;
@@ -81,15 +83,6 @@ public:
 
 		return true;
 	}
-
-private:
-	/** Helper class to RAII release an OggOpusFile. */
-	struct OggOpusFileDeleter {
-		void operator()(OggOpusFile *of)
-		{
-			if (of != nullptr) op_free(of);
-		}
-	};
 };
 
 static SoundLoader_Opus s_sound_loader_opus;

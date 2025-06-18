@@ -433,25 +433,21 @@ inline void BarCrossing(Tile t)
 	SetCrossingBarred(t, true);
 }
 
-/** Check if a road tile has snow/desert. */
-#define IsOnDesert IsOnSnow
 /**
  * Check if a road tile has snow/desert.
  * @param t The tile to query.
  * @return True if the tile has snow/desert.
  */
-inline bool IsOnSnow(Tile t)
+inline bool IsOnSnowOrDesert(Tile t)
 {
 	return HasBit(t.m7(), 5);
 }
 
-/** Toggle the snow/desert state of a road tile. */
-#define ToggleDesert ToggleSnow
 /**
  * Toggle the snow/desert state of a road tile.
  * @param t The tile to change.
  */
-inline void ToggleSnow(Tile t)
+inline void ToggleSnowOrDesert(Tile t)
 {
 	ToggleBit(t.m7(), 5);
 }
@@ -463,7 +459,7 @@ enum Roadside : uint8_t {
 	ROADSIDE_GRASS            = 1, ///< Road on grass
 	ROADSIDE_PAVED            = 2, ///< Road with paved sidewalks
 	ROADSIDE_STREET_LIGHTS    = 3, ///< Road with street lights on paved sidewalks
-	// 4 is unused for historical reasons
+	/* 4 is unused for historical reasons */
 	ROADSIDE_TREES            = 5, ///< Road with trees on paved sidewalks
 	ROADSIDE_GRASS_ROAD_WORKS = 6, ///< Road on grass with road works
 	ROADSIDE_PAVED_ROAD_WORKS = 7, ///< Road with sidewalks and road works

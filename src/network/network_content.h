@@ -10,20 +10,16 @@
 #ifndef NETWORK_CONTENT_H
 #define NETWORK_CONTENT_H
 
+#include <ranges>
 #include "core/tcp_content.h"
 #include "core/http.h"
 #include <unordered_map>
 #include "../core/container_func.hpp"
 
 /** Vector with content info */
-typedef std::vector<ContentInfo *> ContentVector;
+using ContentVector = std::vector<std::unique_ptr<ContentInfo>>;
 /** Vector with constant content info */
-typedef std::vector<const ContentInfo *> ConstContentVector;
-
-/** Iterator for the content vector */
-typedef ContentInfo **ContentIterator;
-/** Iterator for the constant content vector */
-typedef const ContentInfo * const * ConstContentIterator;
+using ConstContentVector = std::vector<const ContentInfo *>;
 
 /** Callbacks for notifying others about incoming data */
 struct ContentCallback {
@@ -42,14 +38,14 @@ struct ContentCallback {
 	 * We received a content info.
 	 * @param ci the content info
 	 */
-	virtual void OnReceiveContentInfo([[maybe_unused]] const ContentInfo *ci) {}
+	virtual void OnReceiveContentInfo([[maybe_unused]] const ContentInfo &ci) {}
 
 	/**
 	 * We have progress in the download of a file
 	 * @param ci the content info of the file
 	 * @param bytes the number of bytes downloaded since the previous call
 	 */
-	virtual void OnDownloadProgress([[maybe_unused]] const ContentInfo *ci, [[maybe_unused]] int bytes) {}
+	virtual void OnDownloadProgress([[maybe_unused]] const ContentInfo &ci, [[maybe_unused]] int bytes) {}
 
 	/**
 	 * We have finished downloading a file
@@ -66,19 +62,20 @@ struct ContentCallback {
  */
 class ClientNetworkContentSocketHandler : public NetworkContentSocketHandler, ContentCallback, HTTPCallback {
 protected:
-	typedef std::vector<ContentID> ContentIDList; ///< List of content IDs to (possibly) select.
-	std::vector<ContentCallback *> callbacks;     ///< Callbacks to notify "the world"
-	ContentIDList requested;                      ///< ContentIDs we already requested (so we don't do it again)
-	ContentVector infos;                          ///< All content info we received
+	using ContentIDList = std::vector<ContentID>; ///< List of content IDs to (possibly) select.
+	std::vector<ContentCallback *> callbacks; ///< Callbacks to notify "the world"
+	ContentIDList requested; ///< ContentIDs we already requested (so we don't do it again)
+	ContentIDList queued; ///< ContentID queue to be requested.
+	ContentVector infos; ///< All content info we received
 	std::unordered_multimap<ContentID, ContentID> reverse_dependency_map; ///< Content reverse dependency map
-	std::vector<char> http_response;              ///< The HTTP response to the requests we've been doing
-	int http_response_index;                      ///< Where we are, in the response, with handling it
+	std::vector<char> http_response; ///< The HTTP response to the requests we've been doing
+	int http_response_index = -2; ///< Where we are, in the response, with handling it
 
 	std::optional<FileHandle> cur_file; ///< Currently downloaded file
-	ContentInfo *cur_info; ///< Information about the currently downloaded file
-	bool is_connecting;    ///< Whether we're connecting
-	bool is_cancelled;     ///< Whether the download has been cancelled
-	std::chrono::steady_clock::time_point last_activity;  ///< The last time there was network activity
+	std::unique_ptr<ContentInfo> cur_info; ///< Information about the currently downloaded file
+	bool is_connecting = false; ///< Whether we're connecting
+	bool is_cancelled = false; ///< Whether the download has been cancelled
+	std::chrono::steady_clock::time_point last_activity = std::chrono::steady_clock::now(); ///< The last time there was network activity
 
 	friend class NetworkContentConnecter;
 
@@ -90,8 +87,8 @@ protected:
 
 	void OnConnect(bool success) override;
 	void OnDisconnect() override;
-	void OnReceiveContentInfo(const ContentInfo *ci) override;
-	void OnDownloadProgress(const ContentInfo *ci, int bytes) override;
+	void OnReceiveContentInfo(const ContentInfo &ci) override;
+	void OnDownloadProgress(const ContentInfo &ci, int bytes) override;
 	void OnDownloadComplete(ContentID cid) override;
 
 	void OnFailure() override;
@@ -107,39 +104,34 @@ public:
 	/** The idle timeout; when to close the connection because it's idle. */
 	static constexpr std::chrono::seconds IDLE_TIMEOUT = std::chrono::seconds(60);
 
-	ClientNetworkContentSocketHandler();
-	~ClientNetworkContentSocketHandler();
-
 	void Connect();
 	void SendReceive();
 	NetworkRecvStatus CloseConnection(bool error = true) override;
 	void Cancel();
 
 	void RequestContentList(ContentType type);
-	void RequestContentList(uint count, const ContentID *content_ids);
+	void RequestContentList(std::span<const ContentID> content_ids);
 	void RequestContentList(ContentVector *cv, bool send_md5sum = true);
 
 	void DownloadSelectedContent(uint &files, uint &bytes, bool fallback = false);
+	void RequestQueuedContentInfo();
 
 	void Select(ContentID cid);
 	void Unselect(ContentID cid);
 	void SelectAll();
 	void SelectUpgrade();
 	void UnselectAll();
-	void ToggleSelectedState(const ContentInfo *ci);
+	void ToggleSelectedState(const ContentInfo &ci);
 
-	void ReverseLookupDependency(ConstContentVector &parents, const ContentInfo *child) const;
+	void ReverseLookupDependency(ConstContentVector &parents, const ContentInfo &child) const;
 	void ReverseLookupTreeDependency(ConstContentVector &tree, const ContentInfo *child) const;
-	void CheckDependencyState(const ContentInfo *ci);
+	void CheckDependencyState(const ContentInfo &ci);
 
-	/** Get the number of content items we know locally. */
-	uint Length() const { return (uint)this->infos.size(); }
-	/** Get the begin of the content inf iterator. */
-	ConstContentIterator Begin() const { return this->infos.data(); }
-	/** Get the nth position of the content inf iterator. */
-	ConstContentIterator Get(uint32_t index) const { return this->infos.data() + index; }
-	/** Get the end of the content inf iterator. */
-	ConstContentIterator End() const { return this->Begin() + this->Length(); }
+	/**
+	 * Get a read-only view of content info for iterating externally.
+	 * @return Read-only view of content info.
+	 */
+	auto Info() const { return this->infos | std::views::transform([](const auto &ci) -> const ContentInfo & { return *ci; }); }
 
 	void Clear();
 

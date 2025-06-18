@@ -28,7 +28,7 @@ class InternalSocialIntegrationPlugin {
 public:
 	InternalSocialIntegrationPlugin(const std::string &filename, const std::string &basepath) : library(nullptr), external(basepath)
 	{
-		openttd_info.openttd_version = _openttd_revision;
+		openttd_info.openttd_version = _openttd_revision.c_str();
 
 		if (!ValidateSignatureFile(fmt::format("{}.sig", filename))) {
 			external.state = SocialIntegrationPlugin::INVALID_SIGNATURE;

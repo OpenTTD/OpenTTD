@@ -15,6 +15,8 @@
 #include "../spritecache_internal.h"
 #include "../table/sprites.h"
 
+#include "../safeguards.h"
+
 static bool MockLoadNextSprite(SpriteID load_index)
 {
 	static UniquePtrSpriteAllocator allocator;

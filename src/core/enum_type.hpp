@@ -65,6 +65,55 @@ inline constexpr enum_type operator --(enum_type &e, int)
 		static const bool value = true; \
 	};
 
+/** Trait to enable prefix/postfix incrementing operators. */
+template <typename enum_type>
+struct is_enum_sequential {
+	static constexpr bool value = false;
+};
+
+template <typename enum_type>
+constexpr bool is_enum_sequential_v = is_enum_sequential<enum_type>::value;
+
+/** Add integer. */
+template <typename enum_type, std::enable_if_t<is_enum_sequential_v<enum_type>, bool> = true>
+inline constexpr enum_type operator+(enum_type e, int offset)
+{
+	return static_cast<enum_type>(to_underlying(e) + offset);
+}
+
+template <typename enum_type, std::enable_if_t<is_enum_sequential_v<enum_type>, bool> = true>
+inline constexpr enum_type &operator+=(enum_type &e, int offset)
+{
+	e = e + offset;
+	return e;
+}
+
+/** Sub integer. */
+template <typename enum_type, std::enable_if_t<is_enum_sequential_v<enum_type>, bool> = true>
+inline constexpr enum_type operator-(enum_type e, int offset)
+{
+	return static_cast<enum_type>(to_underlying(e) - offset);
+}
+
+template <typename enum_type, std::enable_if_t<is_enum_sequential_v<enum_type>, bool> = true>
+inline constexpr enum_type &operator-=(enum_type &e, int offset)
+{
+	e = e - offset;
+	return e;
+}
+
+/** Distance */
+template <typename enum_type, std::enable_if_t<is_enum_sequential_v<enum_type>, bool> = true>
+inline constexpr auto operator-(enum_type a, enum_type b)
+{
+	return to_underlying(a) - to_underlying(b);
+}
+
+/** For some enums it is useful to add/sub more than 1 */
+#define DECLARE_ENUM_AS_SEQUENTIAL(enum_type) \
+	template <> struct is_enum_sequential<enum_type> { \
+		static const bool value = true; \
+	};
 
 /** Operators to allow to work with enum as with type safe bit set in C++ */
 #define DECLARE_ENUM_AS_BIT_SET(enum_type) \

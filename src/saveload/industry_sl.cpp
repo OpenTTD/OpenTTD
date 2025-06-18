@@ -21,12 +21,12 @@ static OldPersistentStorage _old_ind_persistent_storage;
 
 class SlIndustryAccepted : public VectorSaveLoadHandler<SlIndustryAccepted, Industry, Industry::AcceptedCargo, INDUSTRY_NUM_INPUTS> {
 public:
-	inline static const SaveLoad description[] = {
+	static inline const SaveLoad description[] = {
 		 SLE_VAR(Industry::AcceptedCargo, cargo, SLE_UINT8),
 		 SLE_VAR(Industry::AcceptedCargo, waiting, SLE_UINT16),
 		 SLE_VAR(Industry::AcceptedCargo, last_accepted, SLE_INT32),
 	};
-	inline const static SaveLoadCompatTable compat_description = _industry_accepts_sl_compat;
+	static inline const SaveLoadCompatTable compat_description = _industry_accepts_sl_compat;
 
 	std::vector<Industry::AcceptedCargo> &GetVector(Industry *i) const override { return i->accepted; }
 
@@ -45,11 +45,11 @@ public:
 
 class SlIndustryProducedHistory : public DefaultSaveLoadHandler<SlIndustryProducedHistory, Industry::ProducedCargo> {
 public:
-	inline static const SaveLoad description[] = {
+	static inline const SaveLoad description[] = {
 		 SLE_VAR(Industry::ProducedHistory, production, SLE_UINT16),
 		 SLE_VAR(Industry::ProducedHistory, transported, SLE_UINT16),
 	};
-	inline const static SaveLoadCompatTable compat_description = _industry_produced_history_sl_compat;
+	static inline const SaveLoadCompatTable compat_description = _industry_produced_history_sl_compat;
 
 	void Save(Industry::ProducedCargo *p) const override
 	{
@@ -79,13 +79,13 @@ public:
 
 class SlIndustryProduced : public VectorSaveLoadHandler<SlIndustryProduced, Industry, Industry::ProducedCargo, INDUSTRY_NUM_OUTPUTS> {
 public:
-	inline static const SaveLoad description[] = {
+	static inline const SaveLoad description[] = {
 		 SLE_VAR(Industry::ProducedCargo, cargo, SLE_UINT8),
 		 SLE_VAR(Industry::ProducedCargo, waiting, SLE_UINT16),
 		 SLE_VAR(Industry::ProducedCargo, rate, SLE_UINT8),
 		SLEG_STRUCTLIST("history", SlIndustryProducedHistory),
 	};
-	inline const static SaveLoadCompatTable compat_description = _industry_produced_sl_compat;
+	static inline const SaveLoadCompatTable compat_description = _industry_produced_sl_compat;
 
 	std::vector<Industry::ProducedCargo> &GetVector(Industry *i) const override { return i->produced; }
 
@@ -220,7 +220,7 @@ struct INDYChunkHandler : ChunkHandler {
 			if (IsSavegameVersionBefore(SLV_161) && !IsSavegameVersionBefore(SLV_76)) {
 				/* Store the old persistent storage. The GRFID will be added later. */
 				assert(PersistentStorage::CanAllocateItem());
-				i->psa = new PersistentStorage(0, 0, TileIndex{});
+				i->psa = new PersistentStorage(0, GSF_INVALID, TileIndex{});
 				std::copy(std::begin(_old_ind_persistent_storage.storage), std::end(_old_ind_persistent_storage.storage), std::begin(i->psa->storage));
 			}
 			if (IsSavegameVersionBefore(SLV_EXTEND_INDUSTRY_CARGO_SLOTS)) {
@@ -228,7 +228,7 @@ struct INDYChunkHandler : ChunkHandler {
 			} else if (IsSavegameVersionBefore(SLV_INDUSTRY_CARGO_REORGANISE)) {
 				LoadMoveAcceptsProduced(i, INDUSTRY_NUM_INPUTS, INDUSTRY_NUM_OUTPUTS);
 			}
-			Industry::industries[i->type].push_back(i->index); // Assume savegame indices are sorted.
+			Industry::industries[i->type].insert(i->index);
 		}
 	}
 

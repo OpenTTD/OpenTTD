@@ -74,9 +74,8 @@ void CheckCaches()
 	for (const RoadStop *rs : RoadStop::Iterate()) {
 		if (IsBayRoadStopTile(rs->xy)) continue;
 
-		assert(rs->GetEntry(DIAGDIR_NE) != rs->GetEntry(DIAGDIR_NW));
-		rs->GetEntry(DIAGDIR_NE)->CheckIntegrity(rs);
-		rs->GetEntry(DIAGDIR_NW)->CheckIntegrity(rs);
+		rs->GetEntry(DIAGDIR_NE).CheckIntegrity(rs);
+		rs->GetEntry(DIAGDIR_NW).CheckIntegrity(rs);
 	}
 
 	std::vector<NewGRFCache> grf_cache;

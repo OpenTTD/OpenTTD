@@ -70,10 +70,10 @@ static ChangeInfoResult RoadStopChangeInfo(uint first, uint last, int prop, Byte
 		return CIR_INVALID_ID;
 	}
 
-	if (_cur.grffile->roadstops.size() < last) _cur.grffile->roadstops.resize(last);
+	if (_cur_gps.grffile->roadstops.size() < last) _cur_gps.grffile->roadstops.resize(last);
 
 	for (uint id = first; id < last; ++id) {
-		auto &rs = _cur.grffile->roadstops[id];
+		auto &rs = _cur_gps.grffile->roadstops[id];
 
 		if (rs == nullptr && prop != 0x08) {
 			GrfMsg(1, "RoadStopChangeInfo: Attempt to modify undefined road stop {}, ignoring", id);
@@ -115,7 +115,7 @@ static ChangeInfoResult RoadStopChangeInfo(uint first, uint last, int prop, Byte
 
 			case 0x0E: // Animation info
 				rs->animation.frames = buf.ReadByte();
-				rs->animation.status = buf.ReadByte();
+				rs->animation.status = static_cast<AnimationStatus>(buf.ReadByte());
 				break;
 
 			case 0x0F: // Animation speed
@@ -123,7 +123,7 @@ static ChangeInfoResult RoadStopChangeInfo(uint first, uint last, int prop, Byte
 				break;
 
 			case 0x10: // Animation triggers
-				rs->animation.triggers = buf.ReadWord();
+				rs->animation.triggers = static_cast<StationAnimationTriggers>(buf.ReadWord());
 				break;
 
 			case 0x11: // Callback mask

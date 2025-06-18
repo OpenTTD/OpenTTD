@@ -73,6 +73,8 @@
 #include <variant>
 #include <vector>
 
+using namespace std::literals::string_view_literals;
+
 #if defined(UNIX) || defined(__MINGW32__)
 #	include <sys/types.h>
 #endif
@@ -87,7 +89,7 @@
 #endif
 
 #if defined(_MSC_VER)
-	// See https://learn.microsoft.com/en-us/cpp/cpp/empty-bases?view=msvc-170
+	/* See https://learn.microsoft.com/en-us/cpp/cpp/empty-bases?view=msvc-170 */
 #	define EMPTY_BASES __declspec(empty_bases)
 #else
 #	define EMPTY_BASES
@@ -155,16 +157,14 @@
 
 #if !defined(STRGEN) && !defined(SETTINGSGEN)
 #	if defined(_WIN32)
-		char *getcwd(char *buf, size_t size);
-
-		std::string FS2OTTD(const std::wstring &name);
-		std::wstring OTTD2FS(const std::string &name);
+		std::string FS2OTTD(std::wstring_view name);
+		std::wstring OTTD2FS(std::string_view name);
 #	elif defined(WITH_ICONV)
-		std::string FS2OTTD(const std::string &name);
-		std::string OTTD2FS(const std::string &name);
+		std::string FS2OTTD(std::string_view name);
+		std::string OTTD2FS(std::string_view name);
 #	else
-		template <typename T> std::string FS2OTTD(T name) { return name; }
-		template <typename T> std::string OTTD2FS(T name) { return name; }
+		static inline std::string FS2OTTD(std::string_view name) { return std::string{name}; }
+		static inline std::string OTTD2FS(std::string_view name) { return std::string{name}; }
 #	endif /* _WIN32 or WITH_ICONV */
 #endif /* STRGEN || SETTINGSGEN */
 
@@ -270,14 +270,6 @@ char (&ArraySizeHelper(T (&array)[N]))[N];
  */
 #define lengthof(array) (sizeof(ArraySizeHelper(array)))
 
-/**
- * Gets the size of a variable within a class.
- * @param base     The class the variable is in.
- * @param variable The variable to get the size of.
- * @return the size of the variable
- */
-#define cpp_sizeof(base, variable) (sizeof(std::declval<base>().variable))
-
 
 /* take care of some name clashes on MacOS */
 #if defined(__APPLE__)
@@ -293,7 +285,7 @@ char (&ArraySizeHelper(T (&array)[N]))[N];
 #endif /* __GNUC__ || __clang__ */
 
 [[noreturn]] void NOT_REACHED(const std::source_location location = std::source_location::current());
-[[noreturn]] void AssertFailedError(const char *expression, const std::source_location location = std::source_location::current());
+[[noreturn]] void AssertFailedError(std::string_view expression, const std::source_location location = std::source_location::current());
 
 /* For non-debug builds with assertions enabled use the special assertion handler. */
 #if defined(NDEBUG) && defined(WITH_ASSERT)

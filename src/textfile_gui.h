@@ -10,12 +10,13 @@
 #ifndef TEXTFILE_GUI_H
 #define TEXTFILE_GUI_H
 
+#include "misc/alternating_iterator.hpp"
 #include "fileio_type.h"
 #include "strings_func.h"
 #include "textfile_type.h"
 #include "window_gui.h"
 
-std::optional<std::string> GetTextfile(TextfileType type, Subdirectory dir, const std::string &filename);
+std::optional<std::string> GetTextfile(TextfileType type, Subdirectory dir, std::string_view filename);
 
 /** Window for displaying a textfile */
 struct TextfileWindow : public Window, MissingGlyphSearcher {
@@ -28,29 +29,34 @@ struct TextfileWindow : public Window, MissingGlyphSearcher {
 	bool OnTooltip([[maybe_unused]] Point pt, WidgetID widget, TooltipCloseCondition close_cond) override;
 	void DrawWidget(const Rect &r, WidgetID widget) const override;
 	void OnResize() override;
+	void OnInit() override;
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override;
-	void OnDropdownSelect(WidgetID widget, int index) override;
+	void OnDropdownSelect(WidgetID widget, int index, int) override;
+	void OnRealtimeTick(uint delta_ms) override;
+	void OnScrollbarScroll(WidgetID widget) override;
 
 	void Reset() override;
 	FontSize DefaultSize() override;
 	std::optional<std::string_view> NextString() override;
 	bool Monospace() override;
-	void SetFontNames(FontCacheSettings *settings, const char *font_name, const void *os_data) override;
+	void SetFontNames(FontCacheSettings *settings, std::string_view font_name, const void *os_data) override;
 	void ScrollToLine(size_t line);
+	bool IsTextWrapped() const;
 
 	virtual void LoadTextfile(const std::string &textfile, Subdirectory dir);
 
 protected:
-	TextfileWindow(TextfileType file_type);
+	TextfileWindow(Window *parent, TextfileType file_type);
 	void ConstructWindow();
 
 	struct Line {
-		int top = 0;                  ///< Top scroll position in visual lines.
-		int bottom = 0;               ///< Bottom scroll position in visual lines.
-		std::string text{};           ///< Contents of the line.
+		int num_lines = 1; ///< Number of visual lines for this line.
+		int wrapped_width = 0;
+		int max_width = -1;
 		TextColour colour = TC_WHITE; ///< Colour to render text line in.
+		std::string text{};           ///< Contents of the line.
 
-		Line(int top, std::string_view text) : top(top), bottom(top + 1), text(text) {}
+		Line(std::string_view text) : text(text) {}
 		Line() {}
 	};
 
@@ -99,11 +105,29 @@ protected:
 
 private:
 	uint search_iterator = 0; ///< Iterator for the font check search.
-	uint max_length = 0; ///< Maximum length of unwrapped text line.
+	int max_width = 0; ///< Maximum length of unwrapped text line.
+	size_t num_lines = 0; ///< Number of lines of text, taking account of wrapping.
 
-	uint ReflowContent();
-	uint GetContentHeight();
-	void SetupScrollbars(bool force_reflow);
+	using LineIterator = std::vector<Line>::iterator;
+	using ReflowIterator = AlternatingIterator<LineIterator>;
+
+	ReflowIterator reflow_iter; ///< Current iterator for reflow.
+	ReflowIterator reflow_end; ///< End iterator for reflow.
+
+	LineIterator visible_first; ///< Iterator to first visible element.
+	LineIterator visible_last; ///< Iterator to last visible element.
+
+	enum class ReflowState : uint8_t {
+		None, ///< Nothing has been reflowed.
+		Reflowed, ///< Content has been reflowed.
+		VisibleReflowed, ///< Visible content has been reflowed.
+	};
+
+	std::vector<TextfileWindow::Line>::iterator GetIteratorFromPosition(int pos);
+	void UpdateVisibleIterators();
+	void ReflowContent();
+	ReflowState ContinueReflow();
+	void SetupScrollbars();
 	const Hyperlink *GetHyperlink(Point pt) const;
 
 	void AfterLoadMarkdown();

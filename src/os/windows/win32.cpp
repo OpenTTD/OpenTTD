@@ -47,7 +47,7 @@ bool MyShowCursor(bool show, bool toggle)
 	return !show;
 }
 
-void ShowOSErrorBox(const char *buf, bool)
+void ShowOSErrorBox(std::string_view buf, bool)
 {
 	MyShowCursor(true);
 	MessageBox(GetActiveWindow(), OTTD2FS(buf).c_str(), L"Error!", MB_ICONSTOP | MB_TASKMODAL);
@@ -198,7 +198,7 @@ static INT_PTR CALLBACK HelpDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM
 	return FALSE;
 }
 
-void ShowInfoI(const std::string &str)
+void ShowInfoI(std::string_view str)
 {
 	if (_has_console) {
 		fmt::print(stderr, "{}\n", str);
@@ -231,7 +231,7 @@ char *getcwd(char *buf, size_t size)
 
 extern std::string _config_file;
 
-void DetermineBasePaths(const char *exe)
+void DetermineBasePaths(std::string_view exe)
 {
 	extern std::array<std::string, NUM_SEARCHPATHS> _searchpaths;
 
@@ -334,13 +334,13 @@ std::optional<std::string> GetClipboardContents()
  * @see the current code-page comes from video\win32_v.cpp, event-notification
  * WM_INPUTLANGCHANGE
  */
-std::string FS2OTTD(const std::wstring &name)
+std::string FS2OTTD(std::wstring_view name)
 {
-	int name_len = (name.length() >= INT_MAX) ? INT_MAX : (int)name.length();
-	int len = WideCharToMultiByte(CP_UTF8, 0, name.c_str(), name_len, nullptr, 0, nullptr, nullptr);
+	int name_len = (name.length() >= INT_MAX) ? INT_MAX : static_cast<int>(name.length());
+	int len = WideCharToMultiByte(CP_UTF8, 0, name.data(), name_len, nullptr, 0, nullptr, nullptr);
 	if (len <= 0) return std::string();
 	std::string utf8_buf(len, '\0'); // len includes terminating null
-	WideCharToMultiByte(CP_UTF8, 0, name.c_str(), name_len, utf8_buf.data(), len, nullptr, nullptr);
+	WideCharToMultiByte(CP_UTF8, 0, name.data(), name_len, utf8_buf.data(), len, nullptr, nullptr);
 	return utf8_buf;
 }
 
@@ -351,13 +351,13 @@ std::string FS2OTTD(const std::wstring &name)
  * @param console_cp convert to the console encoding instead of the normal system encoding.
  * @return converted string; if failed string is of zero-length
  */
-std::wstring OTTD2FS(const std::string &name)
+std::wstring OTTD2FS(std::string_view name)
 {
-	int name_len = (name.length() >= INT_MAX) ? INT_MAX : (int)name.length();
-	int len = MultiByteToWideChar(CP_UTF8, 0, name.c_str(), name_len, nullptr, 0);
+	int name_len = (name.length() >= INT_MAX) ? INT_MAX : static_cast<int>(name.length());
+	int len = MultiByteToWideChar(CP_UTF8, 0, name.data(), name_len, nullptr, 0);
 	if (len <= 0) return std::wstring();
 	std::wstring system_buf(len, L'\0'); // len includes terminating null
-	MultiByteToWideChar(CP_UTF8, 0, name.c_str(), name_len, system_buf.data(), len);
+	MultiByteToWideChar(CP_UTF8, 0, name.data(), name_len, system_buf.data(), len);
 	return system_buf;
 }
 
@@ -369,13 +369,13 @@ std::wstring OTTD2FS(const std::string &name)
  * @param dst_buf span of valid char buffer that will receive the converted string
  * @return pointer to dst_buf. If conversion fails the string is of zero-length
  */
-char *convert_from_fs(const std::wstring_view src, std::span<char> dst_buf)
+std::string_view convert_from_fs(const std::wstring_view src, std::span<char> dst_buf)
 {
 	/* Convert UTF-16 string to UTF-8. */
 	int len = WideCharToMultiByte(CP_UTF8, 0, src.data(), static_cast<int>(src.size()), dst_buf.data(), static_cast<int>(dst_buf.size() - 1U), nullptr, nullptr);
 	dst_buf[len] = '\0';
 
-	return dst_buf.data();
+	return std::string_view(dst_buf.data(), len);
 }
 
 
@@ -386,7 +386,7 @@ char *convert_from_fs(const std::wstring_view src, std::span<char> dst_buf)
  * @param dst_buf span of valid wide-char buffer that will receive the converted string
  * @return pointer to dst_buf. If conversion fails the string is of zero-length
  */
-wchar_t *convert_to_fs(const std::string_view src, std::span<wchar_t> dst_buf)
+wchar_t *convert_to_fs(std::string_view src, std::span<wchar_t> dst_buf)
 {
 	int len = MultiByteToWideChar(CP_UTF8, 0, src.data(), static_cast<int>(src.size()), dst_buf.data(), static_cast<int>(dst_buf.size() - 1U));
 	dst_buf[len] = '\0';
@@ -395,7 +395,7 @@ wchar_t *convert_to_fs(const std::string_view src, std::span<wchar_t> dst_buf)
 }
 
 /** Determine the current user's locale. */
-const char *GetCurrentLocale(const char *)
+std::optional<std::string> GetCurrentLocale(const char *)
 {
 	const LANGID userUiLang = GetUserDefaultUILanguage();
 	const LCID userUiLocale = MAKELCID(userUiLang, SORT_DEFAULT);
@@ -407,8 +407,7 @@ const char *GetCurrentLocale(const char *)
 		return nullptr;
 	}
 	/* Format it as 'en_us'. */
-	static char retbuf[6] = {lang[0], lang[1], '_', country[0], country[1], 0};
-	return retbuf;
+	return fmt::format("{}_{}", std::string_view{lang, 2}, std::string_view{country, 2});
 }
 
 
@@ -428,14 +427,19 @@ void Win32SetCurrentLocaleName(std::string iso_code)
 		}
 	}
 
-	MultiByteToWideChar(CP_UTF8, 0, iso_code.c_str(), -1, _cur_iso_locale, static_cast<int>(std::size(_cur_iso_locale)));
+	MultiByteToWideChar(CP_UTF8, 0, iso_code.data(), static_cast<int>(iso_code.size()), _cur_iso_locale, static_cast<int>(std::size(_cur_iso_locale)));
+}
+
+static LibraryLoader::Function GetKernel32Function(const std::string &symbol_name)
+{
+	static LibraryLoader _kernel32("Kernel32.dll");
+	return _kernel32.GetFunction(symbol_name);
 }
 
 int OTTDStringCompare(std::string_view s1, std::string_view s2)
 {
 	typedef int (WINAPI *PFNCOMPARESTRINGEX)(LPCWSTR, DWORD, LPCWCH, int, LPCWCH, int, LPVOID, LPVOID, LPARAM);
-	static PFNCOMPARESTRINGEX _CompareStringEx = nullptr;
-	static bool first_time = true;
+	static const PFNCOMPARESTRINGEX _CompareStringEx = GetKernel32Function("CompareStringEx");
 
 #ifndef SORT_DIGITSASNUMBERS
 #	define SORT_DIGITSASNUMBERS 0x00000008  // use digits as numbers sort method
@@ -443,12 +447,6 @@ int OTTDStringCompare(std::string_view s1, std::string_view s2)
 #ifndef LINGUISTIC_IGNORECASE
 #	define LINGUISTIC_IGNORECASE 0x00000010 // linguistically appropriate 'ignore case'
 #endif
-
-	if (first_time) {
-		static LibraryLoader _kernel32("Kernel32.dll");
-		_CompareStringEx = _kernel32.GetFunction("CompareStringEx");
-		first_time = false;
-	}
 
 	int len_s1 = MultiByteToWideChar(CP_UTF8, 0, s1.data(), (int)s1.size(), nullptr, 0);
 	int len_s2 = MultiByteToWideChar(CP_UTF8, 0, s2.data(), (int)s2.size(), nullptr, 0);
@@ -461,11 +459,11 @@ int OTTDStringCompare(std::string_view s1, std::string_view s2)
 
 	/* CompareStringEx takes UTF-16 strings, even in ANSI-builds. */
 	if (_CompareStringEx != nullptr) {
-		int result = _CompareStringEx(_cur_iso_locale, LINGUISTIC_IGNORECASE | SORT_DIGITSASNUMBERS, str_s1.c_str(), len_s1, str_s2.c_str(), len_s2, nullptr, nullptr, 0);
+		int result = _CompareStringEx(_cur_iso_locale, LINGUISTIC_IGNORECASE | SORT_DIGITSASNUMBERS, str_s1.data(), len_s1, str_s2.data(), len_s2, nullptr, nullptr, 0);
 		if (result != 0) return result;
 	}
 
-	return CompareString(MAKELCID(_current_language->winlangid, SORT_DEFAULT), NORM_IGNORECASE, str_s1.c_str(), len_s1, str_s2.c_str(), len_s2);
+	return CompareString(MAKELCID(_current_language->winlangid, SORT_DEFAULT), NORM_IGNORECASE, str_s1.data(), len_s1, str_s2.data(), len_s2);
 }
 
 /**
@@ -476,17 +474,10 @@ int OTTDStringCompare(std::string_view s1, std::string_view s2)
  * @param case_insensitive Search case-insensitive.
  * @return 1 if value was found, 0 if it was not found, or -1 if not supported by the OS.
  */
-int Win32StringContains(const std::string_view str, const std::string_view value, bool case_insensitive)
+int Win32StringContains(std::string_view str, std::string_view value, bool case_insensitive)
 {
 	typedef int (WINAPI *PFNFINDNLSSTRINGEX)(LPCWSTR, DWORD, LPCWSTR, int, LPCWSTR, int, LPINT, LPNLSVERSIONINFO, LPVOID, LPARAM);
-	static PFNFINDNLSSTRINGEX _FindNLSStringEx = nullptr;
-	static bool first_time = true;
-
-	if (first_time) {
-		static LibraryLoader _kernel32("Kernel32.dll");
-		_FindNLSStringEx = _kernel32.GetFunction("FindNLSStringEx");
-		first_time = false;
-	}
+	static const PFNFINDNLSSTRINGEX _FindNLSStringEx = GetKernel32Function("FindNLSStringEx");
 
 	if (_FindNLSStringEx != nullptr) {
 		int len_str = MultiByteToWideChar(CP_UTF8, 0, str.data(), (int)str.size(), nullptr, 0);
@@ -520,11 +511,11 @@ PACK_N(struct THREADNAME_INFO {
 /**
  * Signal thread name to any attached debuggers.
  */
-void SetCurrentThreadName(const char *threadName)
+void SetCurrentThreadName(const std::string &thread_name)
 {
 	THREADNAME_INFO info;
 	info.dwType = 0x1000;
-	info.szName = threadName;
+	info.szName = thread_name.c_str();
 	info.dwThreadID = -1;
 	info.dwFlags = 0;
 
@@ -537,5 +528,5 @@ void SetCurrentThreadName(const char *threadName)
 #pragma warning(pop)
 }
 #else
-void SetCurrentThreadName(const char *) {}
+void SetCurrentThreadName(const std::string &) {}
 #endif

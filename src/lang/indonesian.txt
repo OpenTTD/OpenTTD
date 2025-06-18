@@ -436,7 +436,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Keluar
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pengaturan permainan
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Pengaturan
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Pengaturan AI
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Pengaturan Game script
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Pengaturan NewGRF
@@ -925,19 +924,20 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Perlihat
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opsi permainan
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Umum
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Pilih setingan umum
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :Pilih setingan umum
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafik
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Setingan pilih grafis
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :Setingan pilih grafis
 STR_GAME_OPTIONS_TAB_SOUND                                      :Suara
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}\Pilih suara dan setingan musik
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :\Pilih suara dan setingan musik
 
 STR_GAME_OPTIONS_VOLUME                                         :Volume
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Efek suara
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Musik
 
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Mata uang
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Pilih mata uang
+
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Mata uang
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Pilih mata uang
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -985,8 +985,8 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :India Rupee
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupiah Indonesia
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit Malaysia
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Simpan Otomatis
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Pilih selang waktu permainan otomatis disimpan
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Simpan Otomatis
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Pilih selang waktu permainan otomatis disimpan
 
 # Autosave dropdown
 ###length 5
@@ -996,71 +996,71 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Setiap 30 menit
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Setiap 60 menit
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Setiap 120 menit
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Bahasa
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Pilih antar muka bahasa yang akan dipergunakan
+STR_GAME_OPTIONS_LANGUAGE                                       :Bahasa
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Pilih antar muka bahasa yang akan dipergunakan
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% selesai)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Layar Penuh
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Klik cek box ini untuk memainkan OpenTTD dalam layar penuh
+STR_GAME_OPTIONS_FULLSCREEN                                     :Layar Penuh
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Klik cek box ini untuk memainkan OpenTTD dalam layar penuh
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolusi Layar
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Pilih resolusi layar yang diinginkan
+STR_GAME_OPTIONS_RESOLUTION                                     :Resolusi Layar
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Pilih resolusi layar yang diinginkan
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :lainnya
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Akselerasi perangkat keras
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK} Centang kotak ini untuk mengizinkan OpenTTD mencoba menggunakan akselerasi perangkat keras. Pengaturan yang diubah hanya akan diterapkan saat permainan dimulai ulang.
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Akselerasi perangkat keras
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     : Centang kotak ini untuk mengizinkan OpenTTD mencoba menggunakan akselerasi perangkat keras. Pengaturan yang diubah hanya akan diterapkan saat permainan dimulai ulang.
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Pengaturan hanya akan berlaku setelah game dimulai ulang
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Centang kotak ini untuk melakukan sinkronisasi layar (v-sync). Pengaturan yang diubah hanya akan diterapkan saat game dimulai ulang. Hanya berfungsi dengan akselerasi perangkat keras diaktifkan.
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Centang kotak ini untuk melakukan sinkronisasi layar (v-sync). Pengaturan yang diubah hanya akan diterapkan saat game dimulai ulang. Hanya berfungsi dengan akselerasi perangkat keras diaktifkan.
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Pengendali piranti: {STRING}
-
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Ukuran antarmuka
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Geser slider untuk mengatur ukuran antarmuka. Tekan tombol Ctrl untuk pengaturan terus menerus
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Otomatis deteksi ukuran
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Pilih kotak ini untuk mendeteksi ukuran antarmuka secara otomatis
-
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Skala bevel
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Pilih kotak ini untuk pengaturan perbandingan ukuran bevel dengan ukuran antarmuka
-
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Font anti-alias
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Centang kotak ini untuk font anti-alias yang dapat diubah ukurannya.
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Pengendali piranti: {STRING}
 
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Survei Otomatis
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Berpartisipasi pada survey otomatis
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Jika diaktifkan, OpenTTD akan mengirimkan survei saat meninggalkan game
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Tentang survei dan privasi
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Ini akan membuka browser dengan informasi lebih lanjut tentang survei otomatis
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Tampilkan hasil survey
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Tampilkan hasil survey pada game yang berjalan saat ini
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Ukuran antarmuka
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Geser slider untuk mengatur ukuran antarmuka. Tekan tombol Ctrl untuk pengaturan terus menerus
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Otomatis deteksi ukuran
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Pilih kotak ini untuk mendeteksi ukuran antarmuka secara otomatis
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafik
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Skala bevel
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Pilih kotak ini untuk pengaturan perbandingan ukuran bevel dengan ukuran antarmuka
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Menampilkan kecepatan refresh
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Pilih laju penyegaran layar yang akan digunakan
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Font anti-alias
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Centang kotak ini untuk font anti-alias yang dapat diubah ukurannya.
+
+
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Survei Otomatis
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Berpartisipasi pada survey otomatis
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :Jika diaktifkan, OpenTTD akan mengirimkan survei saat meninggalkan game
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :Tentang survei dan privasi
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Ini akan membuka browser dengan informasi lebih lanjut tentang survei otomatis
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Tampilkan hasil survey
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Tampilkan hasil survey pada game yang berjalan saat ini
+
+
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Menampilkan kecepatan refresh
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Pilih laju penyegaran layar yang akan digunakan
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Kecepatan refresh yang lebih tinggi dari 60Hz dapat memengaruhi kinerja.
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set Grafik Dasar
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Pilih grafik dasar yang digunakan (tidak dapat diubah didalam permainan, hanya dari menu utama)
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informasi tambahan tentang set grafik dasar
+STR_GAME_OPTIONS_BASE_GRF                                       :Set Grafik Dasar
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Pilih grafik dasar yang digunakan (tidak dapat diubah didalam permainan, hanya dari menu utama)
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Informasi tambahan tentang set grafik dasar
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Set suara dasar
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Pilih set suara dasar yang digunakan (tidak dapat diubah didalam permainan, hanya dari menu utama)
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informasi tambahan tentang set suara dasar
+STR_GAME_OPTIONS_BASE_SFX                                       :Set suara dasar
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Pilih set suara dasar yang digunakan (tidak dapat diubah didalam permainan, hanya dari menu utama)
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Informasi tambahan tentang set suara dasar
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Set Musik Dasar
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Pilih musik dasar yang akan digunakan
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informasi tambahan tentang musik dasar
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Set Musik Dasar
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Pilih musik dasar yang akan digunakan
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Informasi tambahan tentang musik dasar
 
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(tidak ada plugin untuk diintegrasikan dengan platform sosial yang terpasang)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Platform:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Status plugin:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Platform:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :Status plugin:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Inisiasi gagal
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING       :{ORANGE}{STRING} tidak dijalankan
@@ -1168,12 +1168,11 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permisif (tidak
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Tidak terdapat pemain AI ...{}anda dapat mengunduh beberapa macam AI lewat "Cari Konten"
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Pengaturan
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Saring:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Perluas semua
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Persempit semua
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Atur ulang semua pengaturan
+# Settings tree in the Game Options window
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Saring:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Perluas semua
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Persempit semua
+STR_CONFIG_SETTING_RESET_ALL                                    :Atur ulang semua pengaturan
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(penjelasan belum tersedia)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Nilai standar: {ORANGE}{STRING}
@@ -1186,9 +1185,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Setting perusah
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Peringatan!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Tindakan ini akan mengembalikan semua pengaturan gim ke nilai awalnya.{} Anda yakin ingin melanjutkan?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategori:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Jenis:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Batasi daftar dibawah ini menggunakan filter yang telah ditetapkan
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Kategori:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Jenis:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Batasi daftar dibawah ini menggunakan filter yang telah ditetapkan
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Pengaturan dasar (hanya pengaturan yang penting)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Pengaturan lanjut (lebih banyak pengaturan)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Pengaturan mahir (tampilkan semua, termasuk yang tak biasa)
@@ -1205,9 +1204,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Pengaturan peru
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Tidak ada -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Tampilkan semua pencarian berdasarkan pengaturan{}{SILVER}Kategori {BLACK}sampai {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Tampilkan semua hasil pencarian dengan pengaturan{}{SILVER}Jenis {BLACK}ke {WHITE} Semua jenis pengaturan
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Tampilkan semua hasil pencarian berdasarkan pengaturan{}{SILVER}Kategori {BLACK}sampai {WHITE}{STRING} {BLACK}dan {SILVER}Jenis {BLACK}sampai {WHITE}Semua jenis pengaturan
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Tampilkan semua pencarian berdasarkan pengaturan{}{SILVER}Kategori {BLACK}sampai {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Tampilkan semua hasil pencarian dengan pengaturan{}{SILVER}Jenis {BLACK}ke {WHITE} Semua jenis pengaturan
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Tampilkan semua hasil pencarian berdasarkan pengaturan{}{SILVER}Kategori {BLACK}sampai {WHITE}{STRING} {BLACK}dan {SILVER}Jenis {BLACK}sampai {WHITE}Semua jenis pengaturan
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Tidak
@@ -2114,7 +2113,6 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... tida
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Driver GPU membuat game crash. Akselerasi perangkat keras dinonaktifkan
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Permainan Baru
 STR_INTRO_LOAD_GAME                                             :{BLACK}Buka Permainan
@@ -2126,11 +2124,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multi Pe
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Pengaturan Permainan
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabel Nilai Tertinggi
 STR_INTRO_HELP                                                  :{BLACK}Bantuan & Panduan
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Pengaturan
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Pengaturan NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Cari Konten Daring
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Pengaturan AI
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Pengaturan Game Script
 STR_INTRO_QUIT                                                  :{BLACK}Keluar
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Mulai permainan baru. Ctrl-Klik melewatkan konfigurasi peta
@@ -2148,11 +2142,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Pilih ga
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Tampilkan opsi permainan
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Tampilkan tabel nilai tertinggi
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Dapatkan izin dokumentasi dan sumber daya online
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Tampilkan pengaturan
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Tampilkan pengaturan NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Cari konten baru dan pembaruan untuk diunduh
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Tampilkan pengaturan AI
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Tampilan pengaturan game script
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Keluar OpenTTD
 
 STR_INTRO_BASESET                                               :{BLACK}Kumpulan grafik dasar yang dipilih saat ini hilang {NUM} sprite {P ..}. Silakan periksa pembaruan untuk baseset.
@@ -2943,6 +2933,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Pilih uk
 STR_FOUND_TOWN_CITY                                             :{BLACK}Kota
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Kota tumbuh lebih cepat daripada biasanya{}Tergantung pengaturan, kota dapat lebih besar ketika di danai.
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Tampilan jalan kota:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Pilihlah tampilan jalan yang digunakan utk kota ini
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Asli
@@ -3369,15 +3360,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Menyimpa
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Daftar pengaturan yang tersedia, memilih salah satu untuk menyalin kepada nama penyimpanan di bawah
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Memasukkan nama untuk pengaturan
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Nama yang sedang dipilih bagi penyimpanan pengaturan
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Batal
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Jangan mengubah pengaturan awal
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Menyimpan
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Menyimpan presetnya pada nama yang sedang dipilih
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Ubah parameter grafik dasar
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ubah parameter NewGRF
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Tutup
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Reset
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Kembalikan setelan awal parameter
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
@@ -4559,7 +4547,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Daftar J
 STR_TIMETABLE_NO_TRAVEL                                         :Tidak berjalan
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Perjalanan (otomatis; akan dijadwalkan pada perintah manual berikutnya)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Perjalanan belum terjadwal
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Bergerak dengan kecepatan maks. {2:VELOCITY} (not timetabled)
 STR_TIMETABLE_TRAVEL_FOR                                        :Berjalan selama {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Bergerak {STRING} dengan maks. kecepatan {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Berjalan (untuk {STRING}, tidak berjadwal)
@@ -4675,8 +4662,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Terapkan
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Pilih skrip AI yg disorot
-STR_AI_LIST_CANCEL                                              :{BLACK}Batal
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Jangan mengubah skrip AI
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Ambil tangkapan layar
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Tangkapan layar normal
@@ -4689,7 +4674,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Tangkapa
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parameter AI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Skrip Permainan
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Tutup
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

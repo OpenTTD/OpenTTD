@@ -45,7 +45,7 @@
 
 ObjectPool _object_pool("Object");
 INSTANTIATE_POOL_METHODS(Object)
-uint16_t Object::counts[NUM_OBJECTS];
+/* static */ std::array<uint16_t, NUM_OBJECTS> Object::counts;
 
 /**
  * Get the object associated with a tile.
@@ -130,26 +130,33 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, u
 	}
 
 	Object::IncTypeCount(type);
-	if (spec->flags.Test(ObjectFlag::Animation)) TriggerObjectAnimation(o, OAT_BUILT, spec);
+	if (spec->flags.Test(ObjectFlag::Animation)) TriggerObjectAnimation(o, ObjectAnimationTrigger::Built, spec);
 }
 
 /**
- * Increase the animation stage of a whole structure.
- * @param tile The tile of the structure.
+ * Increase the HQ size.
+ * @param tile The (northern) tile of the company HQ.
  */
-static void IncreaseAnimationStage(TileIndex tile)
+static void IncreaseCompanyHQSize(TileIndex tile)
 {
 	TileArea ta = Object::GetByTile(tile)->location;
 	for (TileIndex t : ta) {
+		/* We encode the company HQ size in the animation state. */
 		SetAnimationFrame(t, GetAnimationFrame(t) + 1);
 		MarkTileDirtyByTile(t);
 	}
 }
 
-/** We encode the company HQ size in the animation stage. */
-#define GetCompanyHQSize GetAnimationFrame
-/** We encode the company HQ size in the animation stage. */
-#define IncreaseCompanyHQSize IncreaseAnimationStage
+/**
+ * Get the size of the HQ.
+ * @param tile The (northern) tile of the company HQ.
+ * @return HQ size.
+ */
+static uint8_t GetCompanyHQSize(TileIndex tile)
+{
+	/* We encode the company HQ size in the animation state. */
+	return GetAnimationFrame(tile);
+}
 
 /**
  * Update the CompanyHQ to the state associated with the given score
@@ -191,7 +198,7 @@ void UpdateObjectColours(const Company *c)
 	}
 }
 
-extern CommandCost CheckBuildableTile(TileIndex tile, uint invalid_dirs, int &allowed_z, bool allow_steep, bool check_bridge);
+extern CommandCost CheckBuildableTile(TileIndex tile, DiagDirections invalid_dirs, int &allowed_z, bool allow_steep, bool check_bridge);
 static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlags flags);
 
 /**
@@ -240,7 +247,7 @@ CommandCost CmdBuildObject(DoCommandFlags flags, TileIndex tile, ObjectType type
 				if (!IsWaterTile(t)) {
 					/* Normal water tiles don't have to be cleared. For all other tile types clear
 					 * the tile but leave the water. */
-					cost.AddCost(Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlags{flags}.Reset(DoCommandFlag::NoWater).Reset(DoCommandFlag::Execute), t));
+					cost.AddCost(Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlags{flags}.Reset({DoCommandFlag::NoWater, DoCommandFlag::Execute}), t));
 				} else {
 					/* Can't build on water owned by another company. */
 					Owner o = GetTileOwner(t);
@@ -269,17 +276,18 @@ CommandCost CmdBuildObject(DoCommandFlags flags, TileIndex tile, ObjectType type
 
 		for (TileIndex t : ta) {
 			uint16_t callback = CALLBACK_FAILED;
+			std::array<int32_t, 16> regs100;
 			if (spec->callback_mask.Test(ObjectCallbackMask::SlopeCheck)) {
 				TileIndex diff = t - tile;
-				callback = GetObjectCallback(CBID_OBJECT_LAND_SLOPE_CHECK, GetTileSlope(t), TileY(diff) << 4 | TileX(diff), spec, nullptr, t, view);
+				callback = GetObjectCallback(CBID_OBJECT_LAND_SLOPE_CHECK, GetTileSlope(t), TileY(diff) << 4 | TileX(diff), spec, nullptr, t, regs100, view);
 			}
 
 			if (callback == CALLBACK_FAILED) {
-				cost.AddCost(CheckBuildableTile(t, 0, allowed_z, false, false));
+				cost.AddCost(CheckBuildableTile(t, {}, allowed_z, false, false));
 			} else {
 				/* The meaning of bit 10 is inverted for a grf version < 8. */
 				if (spec->grf_prop.grffile->grf_version < 8) ToggleBit(callback, 10);
-				CommandCost ret = GetErrorMessageFromLocationCallbackResult(callback, spec->grf_prop.grffile, STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
+				CommandCost ret = GetErrorMessageFromLocationCallbackResult(callback, regs100, spec->grf_prop.grffile, STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 				if (ret.Failed()) return ret;
 			}
 		}
@@ -443,7 +451,7 @@ static void DrawTile_Object(TileInfo *ti)
 	if (type < NEW_OBJECT_OFFSET) {
 		const DrawTileSprites *dts = nullptr;
 		Owner to = GetTileOwner(ti->tile);
-		PaletteID palette = to == OWNER_NONE ? PAL_NONE : COMPANY_SPRITE_COLOUR(to);
+		PaletteID palette = to == OWNER_NONE ? PAL_NONE : GetCompanyPalette(to);
 
 		if (type == OBJECT_HQ) {
 			TileIndex diff = ti->tile - Object::GetByTile(ti->tile)->location.tile;
@@ -564,7 +572,7 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlags flags)
 		} else if (CheckTileOwnership(tile).Failed()) {
 			/* We don't own it!. */
 			return CommandCost(STR_ERROR_OWNED_BY);
-		} else if (spec->flags.All({ObjectFlag::CannotRemove, ObjectFlag::Autoremove})) {
+		} else if (spec->flags.Test(ObjectFlag::CannotRemove) && !spec->flags.Test(ObjectFlag::Autoremove)) {
 			/* In the game editor or with cheats we can remove, otherwise we can't. */
 			if (!_cheats.magic_bulldozer.value) {
 				if (type == OBJECT_HQ) return CommandCost(STR_ERROR_COMPANY_HEADQUARTERS_IN);
@@ -669,8 +677,8 @@ static void TileLoop_Object(TileIndex tile)
 	const ObjectSpec *spec = ObjectSpec::GetByTile(tile);
 	if (spec->flags.Test(ObjectFlag::Animation)) {
 		Object *o = Object::GetByTile(tile);
-		TriggerObjectTileAnimation(o, tile, OAT_TILELOOP, spec);
-		if (o->location.tile == tile) TriggerObjectAnimation(o, OAT_256_TICKS, spec);
+		TriggerObjectTileAnimation(o, tile, ObjectAnimationTrigger::TileLoop, spec);
+		if (o->location.tile == tile) TriggerObjectAnimation(o, ObjectAnimationTrigger::TileLoopNorth, spec);
 	}
 
 	if (IsTileOnWater(tile)) TileLoop_Water(tile);
@@ -738,16 +746,6 @@ static void AnimateTile_Object(TileIndex tile)
 }
 
 /**
- * Helper function for \c CircularTileSearch.
- * @param tile The tile to check.
- * @return True iff the tile has a radio tower.
- */
-static bool HasTransmitter(TileIndex tile, void *)
-{
-	return IsObjectTypeTile(tile, OBJECT_TRANSMITTER);
-}
-
-/**
  * Try to build a lighthouse.
  * @return True iff building a lighthouse succeeded.
  */
@@ -798,9 +796,9 @@ static bool TryBuildTransmitter()
 	TileIndex tile = RandomTile();
 	int h;
 	if (IsTileType(tile, MP_CLEAR) && IsTileFlat(tile, &h) && h >= 4 && !IsBridgeAbove(tile)) {
-		TileIndex t = tile;
-		if (CircularTileSearch(&t, 9, HasTransmitter, nullptr)) return false;
-
+		for (auto t : SpiralTileSequence(tile, 9)) {
+			if (IsObjectTypeTile(t, OBJECT_TRANSMITTER)) return false;
+		}
 		BuildObject(OBJECT_TRANSMITTER, tile);
 		return true;
 	}

@@ -8,7 +8,6 @@
 /** @file newgrf_badge.cpp Functionality for NewGRF badges. */
 
 #include "stdafx.h"
-#include "dropdown_type.h"
 #include "newgrf.h"
 #include "newgrf_badge.h"
 #include "newgrf_badge_type.h"
@@ -16,12 +15,8 @@
 #include "stringfilter_type.h"
 #include "strings_func.h"
 #include "timer/timer_game_calendar.h"
-#include "window_gui.h"
-#include "zoom_func.h"
 
 #include "table/strings.h"
-
-#include "dropdown_common_type.h"
 
 #include "safeguards.h"
 
@@ -37,6 +32,24 @@ public:
 
 /** Static instance of badge state. */
 static Badges _badges = {};
+
+/**
+ * Get a read-only view of badges.
+ * @return Span of badges.
+ */
+std::span<const Badge> GetBadges()
+{
+	return _badges.specs;
+}
+
+/**
+ * Get a read-only view of class badge index.
+ * @return Span of badges.
+ */
+std::span<const BadgeID> GetClassBadges()
+{
+	return _badges.classes;
+}
 
 /**
  * Assign a BadgeClassID to the given badge.
@@ -199,8 +212,7 @@ BadgeResolverObject::BadgeResolverObject(const Badge &badge, GrfSpecFeature feat
 		: ResolverObject(badge.grf_prop.grffile, callback, callback_param1, callback_param2), self_scope(*this, badge, introduction_date)
 {
 	assert(feature <= GSF_END);
-	this->root_spritegroup = this->self_scope.badge.grf_prop.GetSpriteGroup(feature);
-	if (this->root_spritegroup == nullptr) this->root_spritegroup = this->self_scope.badge.grf_prop.GetSpriteGroup(GSF_END);
+	this->root_spritegroup = this->self_scope.badge.grf_prop.GetFirstSpriteGroupOf({feature, GSF_DEFAULT});
 }
 
 /**
@@ -254,15 +266,13 @@ void AppendCopyableBadgeList(std::vector<BadgeID> &dst, std::span<const BadgeID>
 /** Apply features from all badges to their badge classes. */
 void ApplyBadgeFeaturesToClassBadges()
 {
-	for (const Badge &badge : _badges.specs) {
+	for (const Badge &badge : GetBadges()) {
 		Badge *class_badge = GetClassBadge(badge.class_index);
 		assert(class_badge != nullptr);
 		class_badge->features.Set(badge.features);
+		if (badge.name != STR_NULL) class_badge->flags.Set(BadgeFlag::HasText);
 	}
 }
-
-static constexpr uint MAX_BADGE_HEIGHT = 12; ///< Maximal height of a badge sprite.
-static constexpr uint MAX_BADGE_WIDTH = MAX_BADGE_HEIGHT * 2; ///< Maximal width.
 
 /**
  * Get sprite for the given badge.
@@ -272,123 +282,31 @@ static constexpr uint MAX_BADGE_WIDTH = MAX_BADGE_HEIGHT * 2; ///< Maximal width
  * @param remap Palette remap to use if the flag is company-coloured.
  * @returns Custom sprite to draw, or \c 0 if not available.
  */
-static PalSpriteID GetBadgeSprite(const Badge &badge, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, PaletteID remap)
+PalSpriteID GetBadgeSprite(const Badge &badge, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, PaletteID remap)
 {
 	BadgeResolverObject object(badge, feature, introduction_date);
-	const SpriteGroup *group = object.Resolve();
-	if (group == nullptr) return {0, PAL_NONE};
+	const auto *group = object.Resolve<ResultSpriteGroup>();
+	if (group == nullptr || group->num_sprites == 0) return {0, PAL_NONE};
 
 	PaletteID pal = badge.flags.Test(BadgeFlag::UseCompanyColour) ? remap : PAL_NONE;
 
-	return {group->GetResult(), pal};
+	return {group->sprite, pal};
 }
 
 /**
- * Get the largest badge size (within limits) for a badge class.
- * @param badge_class Badge class.
- * @param feature Feature being used.
- * @returns Largest base size of the badge class for the feature.
+ * Create a list of used badge classes for a feature.
+ * @param feature GRF feature being used.
  */
-static Dimension GetBadgeMaximalDimension(BadgeClassID class_index, GrfSpecFeature feature)
+UsedBadgeClasses::UsedBadgeClasses(GrfSpecFeature feature) : feature(feature)
 {
-	Dimension d = { 0, MAX_BADGE_HEIGHT };
+	for (auto index : _badges.classes) {
+		Badge *class_badge = GetBadge(index);
+		if (!class_badge->features.Test(feature)) continue;
 
-	for (const auto &badge : _badges.specs) {
-		if (badge.class_index != class_index) continue;
-
-		PalSpriteID ps = GetBadgeSprite(badge, feature, std::nullopt, PAL_NONE);
-		if (ps.sprite == 0) continue;
-
-		d.width = std::max(d.width, GetSpriteSize(ps.sprite, nullptr, ZOOM_LVL_NORMAL).width);
-		if (d.width > MAX_BADGE_WIDTH) break;
+		this->classes.push_back(class_badge->class_index);
 	}
 
-	d.width = std::min(d.width, MAX_BADGE_WIDTH);
-	return d;
-}
-
-/** Utility class to create a list of badge classes used by a feature. */
-class UsedBadgeClasses {
-public:
-	/**
-	 * Create a list of used badge classes for a feature.
-	 * @param feature GRF feature being used.
-	 */
-	explicit UsedBadgeClasses(GrfSpecFeature feature)
-	{
-		for (auto index : _badges.classes) {
-			Badge *class_badge = GetBadge(index);
-			if (!class_badge->features.Test(feature)) continue;
-
-			this->classes.push_back(class_badge->class_index);
-		}
-
-		std::ranges::sort(this->classes, [](const BadgeClassID &a, const BadgeClassID &b)
-		{
-			return GetClassBadge(a)->label < GetClassBadge(b)->label;
-		});
-	}
-
-	std::span<const BadgeClassID> Classes() const { return this->classes; }
-
-private:
-	std::vector<BadgeClassID> classes; ///< List of badge classes.
-};
-
-static bool operator<(const GUIBadgeClasses::Element &a, const GUIBadgeClasses::Element &b)
-{
-	if (a.column_group != b.column_group) return a.column_group < b.column_group;
-	if (a.sort_order != b.sort_order) return a.sort_order < b.sort_order;
-	return a.label < b.label;
-}
-
-/**
- * Construct of list of badge classes and column groups to display.
- * @param feature feature being used.
- */
-GUIBadgeClasses::GUIBadgeClasses(GrfSpecFeature feature)
-{
-	/* Get list of classes used by feature. */
-	UsedBadgeClasses used(feature);
-
-	uint max_column = 0;
-	for (BadgeClassID class_index : used.Classes()) {
-		Dimension size = GetBadgeMaximalDimension(class_index, feature);
-		if (size.width == 0) continue;
-
-		uint8_t column = 0;
-		bool visible = true;
-		uint sort_order = UINT_MAX;
-
-		std::string_view label = GetClassBadge(class_index)->label;
-
-		this->gui_classes.emplace_back(class_index, column, visible, sort_order, size, label);
-		if (visible) max_column = std::max<uint>(max_column, column);
-	}
-
-	std::sort(std::begin(this->gui_classes), std::end(this->gui_classes));
-
-	/* Determine total width of visible badge columns. */
-	this->column_widths.resize(max_column + 1);
-	for (const auto &el : this->gui_classes) {
-		if (!el.visible) continue;
-		this->column_widths[el.column_group] += ScaleGUITrad(el.size.width) + WidgetDimensions::scaled.hsep_normal;
-	}
-
-	/* Replace trailing `hsep_normal` spacer with wider `hsep_wide` spacer. */
-	for (uint &badge_width : this->column_widths) {
-		if (badge_width == 0) continue;
-		badge_width = badge_width - WidgetDimensions::scaled.hsep_normal + WidgetDimensions::scaled.hsep_wide;
-	}
-}
-
-/**
- * Get total width of all columns.
- * @returns sum of all column widths.
- */
-uint GUIBadgeClasses::GetTotalColumnsWidth() const
-{
-	return std::accumulate(std::begin(this->column_widths), std::end(this->column_widths), 0U);
+	std::ranges::sort(this->classes, [](const BadgeClassID &a, const BadgeClassID &b) { return GetClassBadge(a)->label < GetClassBadge(b)->label; });
 }
 
 /**
@@ -402,7 +320,7 @@ BadgeTextFilter::BadgeTextFilter(StringFilter &filter, GrfSpecFeature feature)
 	if (filter.IsEmpty()) return;
 
 	/* Pre-build list of badges that match by string. */
-	for (const auto &badge : _badges.specs) {
+	for (const auto &badge : GetBadges()) {
 		if (badge.name == STR_NULL) continue;
 		if (!badge.features.Test(feature)) continue;
 
@@ -410,10 +328,7 @@ BadgeTextFilter::BadgeTextFilter(StringFilter &filter, GrfSpecFeature feature)
 		filter.AddLine(GetString(badge.name));
 		if (!filter.GetState()) continue;
 
-		auto it = std::ranges::lower_bound(this->badges, badge.index);
-		if (it != std::end(this->badges) && *it == badge.index) continue;
-
-		this->badges.insert(it, badge.index);
+		this->badges.insert(badge.index);
 	}
 }
 
@@ -428,126 +343,14 @@ bool BadgeTextFilter::Filter(std::span<const BadgeID> badges) const
 }
 
 /**
- * Draw names for a list of badge labels.
- * @param r Rect to draw in.
+ * Test if the given badges matches the filtered badge list.
  * @param badges List of badges.
- * @param feature GRF feature being used.
- * @returns Vertical position after drawing is complete.
+ * @return true iff all required badges are present in the provided list.
  */
-int DrawBadgeNameList(Rect r, std::span<const BadgeID> badges, GrfSpecFeature)
+bool BadgeDropdownFilter::Filter(std::span<const BadgeID> badges) const
 {
-	if (badges.empty()) return r.top;
+	if (this->badges.empty()) return true;
 
-	std::set<BadgeClassID> classes;
-	for (const BadgeID &index : badges) classes.insert(GetBadge(index)->class_index);
-
-	std::string_view list_separator = GetListSeparator();
-	for (const BadgeClassID &class_index : classes) {
-		const Badge *class_badge = GetClassBadge(class_index);
-		if (class_badge == nullptr || class_badge->name == STR_NULL) continue;
-
-		std::string s;
-		for (const BadgeID &index : badges) {
-			const Badge *badge = GetBadge(index);
-			if (badge == nullptr || badge->name == STR_NULL) continue;
-			if (badge->class_index != class_index) continue;
-
-			if (!s.empty()) {
-				if (badge->flags.Test(BadgeFlag::NameListFirstOnly)) continue;
-				s += list_separator;
-			}
-			AppendStringInPlace(s, badge->name);
-			if (badge->flags.Test(BadgeFlag::NameListStop)) break;
-		}
-
-		if (s.empty()) continue;
-
-		r.top = DrawStringMultiLine(r, GetString(STR_BADGE_NAME_LIST, class_badge->name, std::move(s)), TC_BLACK);
-	}
-
-	return r.top;
-}
-
-/**
- * Draw a badge column group.
- * @param r rect to draw within.
- * @param column_group column to draw.
- * @param badge_classes badge classes.
- * @param badges badges to draw.
- * @param feature feature being used.
- * @param introduction_date introduction date of item.
- * @param remap palette remap to for company-coloured badges.
- */
-void DrawBadgeColumn(Rect r, int column_group, const GUIBadgeClasses &badge_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, PaletteID remap)
-{
-	bool rtl = _current_text_dir == TD_RTL;
-	for (const auto &badge_class : badge_classes.GetClasses()) {
-		if (badge_class.column_group != column_group) continue;
-		if (!badge_class.visible) continue;
-
-		int width = ScaleGUITrad(badge_class.size.width);
-		for (const BadgeID &index : badges) {
-			const Badge &badge = *GetBadge(index);
-			if (badge.class_index != badge_class.badge_class) continue;
-
-			PalSpriteID ps = GetBadgeSprite(badge, feature, introduction_date, remap);
-			if (ps.sprite == 0) continue;
-
-			DrawSpriteIgnorePadding(ps.sprite, ps.pal, r.WithWidth(width, rtl), SA_CENTER);
-			break;
-		}
-
-		r = r.Indent(width + WidgetDimensions::scaled.hsep_normal, rtl);
-	}
-}
-
-/** Drop down element that draws a list of badges. */
-template <class TBase, bool TEnd = true, FontSize TFs = FS_NORMAL>
-class DropDownBadges : public TBase {
-public:
-	template <typename... Args>
-	explicit DropDownBadges(const std::shared_ptr<GUIBadgeClasses> &badge_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, Args&&... args)
-		: TBase(std::forward<Args>(args)...), badge_classes(badge_classes), badges(badges), feature(feature), introduction_date(introduction_date)
-	{
-		for (const auto &badge_class : badge_classes->GetClasses()) {
-			if (badge_class.column_group != 0) continue;
-			dim.width += badge_class.size.width + WidgetDimensions::scaled.hsep_normal;
-			dim.height = std::max(dim.height, badge_class.size.height);
-		}
-	}
-
-	uint Height() const override { return std::max<uint>(this->dim.height, this->TBase::Height()); }
-	uint Width() const override { return this->dim.width + WidgetDimensions::scaled.hsep_wide + this->TBase::Width(); }
-
-	void Draw(const Rect &full, const Rect &r, bool sel, Colours bg_colour) const override
-	{
-		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
-
-		DrawBadgeColumn(r.WithWidth(this->dim.width, rtl), 0, *this->badge_classes, this->badges, this->feature, this->introduction_date, PAL_NONE);
-
-		this->TBase::Draw(full, r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), sel, bg_colour);
-	}
-
-private:
-	std::shared_ptr<GUIBadgeClasses> badge_classes;
-
-	const std::span<const BadgeID> badges;
-	const GrfSpecFeature feature;
-	const std::optional<TimerGameCalendar::Date> introduction_date;
-
-	Dimension dim{};
-
-};
-
-using DropDownListBadgeItem = DropDownBadges<DropDownListStringItem>;
-using DropDownListBadgeIconItem = DropDownBadges<DropDownListIconItem>;
-
-std::unique_ptr<DropDownListItem> MakeDropDownListBadgeItem(const std::shared_ptr<GUIBadgeClasses> &badge_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, std::string &&str, int value, bool masked, bool shaded)
-{
-	return std::make_unique<DropDownListBadgeItem>(badge_classes, badges, feature, introduction_date, std::move(str), value, masked, shaded);
-}
-
-std::unique_ptr<DropDownListItem> MakeDropDownListBadgeIconItem(const std::shared_ptr<GUIBadgeClasses> &badge_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, const Dimension &dim, SpriteID sprite, PaletteID palette, std::string &&str, int value, bool masked, bool shaded)
-{
-	return std::make_unique<DropDownListBadgeIconItem>(badge_classes, badges, feature, introduction_date, dim, sprite, palette, std::move(str), value, masked, shaded);
+	/* We want all filtered badges to match. */
+	return std::ranges::all_of(this->badges, [&badges](const auto &badge) { return std::ranges::find(badges, badge.second) != std::end(badges); });
 }

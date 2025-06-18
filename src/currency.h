@@ -94,7 +94,7 @@ struct CurrencySpec {
 
 	CurrencySpec() = default;
 
-	CurrencySpec(uint16_t rate, const char *separator, TimerGameCalendar::Year to_euro, const char *prefix, const char *suffix, const char *code, uint8_t symbol_pos, StringID name) :
+	CurrencySpec(uint16_t rate, std::string_view separator, TimerGameCalendar::Year to_euro, std::string_view prefix, std::string_view suffix, std::string_view code, uint8_t symbol_pos, StringID name) :
 		rate(rate), separator(separator), to_euro(to_euro), prefix(prefix), suffix(suffix), code(code), symbol_pos(symbol_pos), name(name)
 	{
 	}

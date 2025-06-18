@@ -46,7 +46,7 @@ public:
 	/**
 	 * Create a new script.
 	 */
-	ScriptInstance(const char *APIName);
+	ScriptInstance(std::string_view api_name);
 	virtual ~ScriptInstance();
 
 	/**
@@ -101,47 +101,47 @@ public:
 	/**
 	 * Return a true/false reply for a DoCommand.
 	 */
-	static void DoCommandReturn(ScriptInstance *instance);
+	static void DoCommandReturn(ScriptInstance &instance);
 
 	/**
 	 * Return a VehicleID reply for a DoCommand.
 	 */
-	static void DoCommandReturnVehicleID(ScriptInstance *instance);
+	static void DoCommandReturnVehicleID(ScriptInstance &instance);
 
 	/**
 	 * Return a SignID reply for a DoCommand.
 	 */
-	static void DoCommandReturnSignID(ScriptInstance *instance);
+	static void DoCommandReturnSignID(ScriptInstance &instance);
 
 	/**
 	 * Return a GroupID reply for a DoCommand.
 	 */
-	static void DoCommandReturnGroupID(ScriptInstance *instance);
+	static void DoCommandReturnGroupID(ScriptInstance &instance);
 
 	/**
 	 * Return a GoalID reply for a DoCommand.
 	 */
-	static void DoCommandReturnGoalID(ScriptInstance *instance);
+	static void DoCommandReturnGoalID(ScriptInstance &instance);
 
 	/**
 	 * Return a StoryPageID reply for a DoCommand.
 	 */
-	static void DoCommandReturnStoryPageID(ScriptInstance *instance);
+	static void DoCommandReturnStoryPageID(ScriptInstance &instance);
 
 	/**
 	 * Return a StoryPageElementID reply for a DoCommand.
 	 */
-	static void DoCommandReturnStoryPageElementID(ScriptInstance *instance);
+	static void DoCommandReturnStoryPageElementID(ScriptInstance &instance);
 
 	/**
 	 * Return a LeagueTableID reply for a DoCommand.
 	 */
-	static void DoCommandReturnLeagueTableID(ScriptInstance *instance);
+	static void DoCommandReturnLeagueTableID(ScriptInstance &instance);
 
 	/**
 	 * Return a LeagueTableElementID reply for a DoCommand.
 	 */
-	static void DoCommandReturnLeagueTableElementID(ScriptInstance *instance);
+	static void DoCommandReturnLeagueTableElementID(ScriptInstance &instance);
 
 	/**
 	 * Get the controller attached to the instance.

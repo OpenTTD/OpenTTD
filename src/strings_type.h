@@ -85,7 +85,7 @@ struct StringParameter {
 	inline StringParameter(const std::monostate &data) : data(data), type(0) {}
 	inline StringParameter(uint64_t data) : data(data), type(0) {}
 
-	inline StringParameter(const char *data) : data(std::string{data}), type(0) {}
+	inline StringParameter(std::string_view data) : data(std::string{data}), type(0) {}
 	inline StringParameter(std::string &&data) : data(std::move(data)), type(0) {}
 	inline StringParameter(const std::string &data) : data(data), type(0) {}
 

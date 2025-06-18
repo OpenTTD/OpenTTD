@@ -13,6 +13,7 @@
 #include "ini_type.h"
 #include "string_func.h"
 #include "window_gui.h"
+#include "core/string_consumer.hpp"
 
 #include "safeguards.h"
 
@@ -90,56 +91,49 @@ static const std::initializer_list<KeycodeNames> _keycode_to_name = {
 
 /**
  * Try to parse a single part of a keycode.
- * @param start Start of the string to parse.
- * @param end End of the string to parse.
- * @return A keycode if a match is found or 0.
+ * @param keystr Input.
+ * @return A keycode if a match is found.
  */
-static uint16_t ParseCode(const char *start, const char *end)
+static std::optional<uint16_t> ParseCode(std::string_view keystr)
 {
-	assert(start <= end);
-	while (start < end && *start == ' ') start++;
-	while (end > start && *end == ' ') end--;
-	std::string_view str{start, end};
+	keystr = StrTrimView(keystr, StringConsumer::WHITESPACE_NO_NEWLINE);
 	for (const auto &kn : _keycode_to_name) {
-		if (StrEqualsIgnoreCase(str, kn.name)) {
+		if (StrEqualsIgnoreCase(keystr, kn.name)) {
 			return kn.keycode;
 		}
 	}
-	if (end - start == 1) {
-		if (*start >= 'a' && *start <= 'z') return *start - ('a'-'A');
+	if (keystr.size() == 1) {
+		auto c = keystr[0];
+		if (c >= 'a' && c <= 'z') return c - ('a'-'A');
 		/* Ignore invalid keycodes */
-		if (*(const uint8_t *)start < 128) return *start;
+		if (static_cast<uint8_t>(c) < 128) return c;
 	}
-	return 0;
+	return std::nullopt;
 }
 
 /**
  * Parse a string representation of a keycode.
- * @param start Start of the input.
- * @param end End of the input.
- * @return A valid keycode or 0.
+ * @param keystr Input.
+ * @return A valid keycode or std::nullopt.
  */
-static uint16_t ParseKeycode(const char *start, const char *end)
+static std::optional<uint16_t> ParseKeycode(std::string_view keystr)
 {
-	assert(start <= end);
+	if (keystr.empty()) return std::nullopt;
+	StringConsumer consumer{keystr};
 	uint16_t keycode = 0;
-	for (;;) {
-		const char *cur = start;
-		while (*cur != '+' && cur != end) cur++;
-		uint16_t code = ParseCode(start, cur);
-		if (code == 0) return 0;
-		if (code & WKC_SPECIAL_KEYS) {
+	while (consumer.AnyBytesLeft()) {
+		auto cur = consumer.ReadUntilChar('+', StringConsumer::SKIP_ONE_SEPARATOR);
+		auto code = ParseCode(cur);
+		if (!code.has_value()) return std::nullopt;
+		if (*code & WKC_SPECIAL_KEYS) {
 			/* Some completely wrong keycode we don't support. */
-			if (code & ~WKC_SPECIAL_KEYS) return 0;
-			keycode |= code;
+			if (*code & ~WKC_SPECIAL_KEYS) return std::nullopt;
+			keycode |= *code;
 		} else {
 			/* Ignore the code if it has more then 1 letter. */
-			if (keycode & ~WKC_SPECIAL_KEYS) return 0;
-			keycode |= code;
+			if (keycode & ~WKC_SPECIAL_KEYS) return std::nullopt;
+			keycode |= *code;
 		}
-		if (cur == end) break;
-		assert(cur < end);
-		start = cur + 1;
 	}
 	return keycode;
 }
@@ -149,15 +143,13 @@ static uint16_t ParseKeycode(const char *start, const char *end)
  * @param hotkey The hotkey object to add the keycodes to
  * @param value The string to parse
  */
-static void ParseHotkeys(Hotkey &hotkey, const char *value)
+static void ParseHotkeys(Hotkey &hotkey, std::string_view value)
 {
-	const char *start = value;
-	while (*start != '\0') {
-		const char *end = start;
-		while (*end != '\0' && *end != ',') end++;
-		uint16_t keycode = ParseKeycode(start, end);
-		if (keycode != 0) hotkey.AddKeycode(keycode);
-		start = (*end == ',') ? end + 1: end;
+	StringConsumer consumer{value};
+	while (consumer.AnyBytesLeft()) {
+		auto keystr = consumer.ReadUntilChar(',', StringConsumer::SKIP_ONE_SEPARATOR);
+		auto keycode = ParseKeycode(keystr);
+		if (keycode.has_value()) hotkey.AddKeycode(*keycode);
 	}
 }
 
@@ -282,7 +274,7 @@ void HotkeyList::Load(const IniFile &ini)
 		const IniItem *item = group->GetItem(hotkey.name);
 		if (item != nullptr) {
 			hotkey.keycodes.clear();
-			if (item->value.has_value()) ParseHotkeys(hotkey, item->value->c_str());
+			if (item->value.has_value()) ParseHotkeys(hotkey, *item->value);
 		}
 	}
 }

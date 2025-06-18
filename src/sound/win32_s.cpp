@@ -39,7 +39,7 @@ static void PrepareHeader(HeaderDataPair &hdr)
 	hdr.first.dwBufferLength = _bufsize * 4;
 	hdr.first.dwFlags = 0;
 	hdr.first.lpData = hdr.second.get();
-	if (waveOutPrepareHeader(_waveout, &hdr.first, sizeof(WAVEHDR)) != MMSYSERR_NOERROR) throw "waveOutPrepareHeader failed";
+	if (waveOutPrepareHeader(_waveout, &hdr.first, sizeof(WAVEHDR)) != MMSYSERR_NOERROR) throw "waveOutPrepareHeader failed"sv;
 }
 
 static DWORD WINAPI SoundThread(LPVOID)
@@ -76,16 +76,16 @@ std::optional<std::string_view> SoundDriver_Win32::Start(const StringList &parm)
 	_bufsize = std::min<int>(_bufsize, UINT16_MAX);
 
 	try {
-		if (nullptr == (_event = CreateEvent(nullptr, FALSE, FALSE, nullptr))) throw "Failed to create event";
+		if (nullptr == (_event = CreateEvent(nullptr, FALSE, FALSE, nullptr))) throw "Failed to create event"sv;
 
-		if (waveOutOpen(&_waveout, WAVE_MAPPER, &wfex, (DWORD_PTR)_event, 0, CALLBACK_EVENT) != MMSYSERR_NOERROR) throw "waveOutOpen failed";
+		if (waveOutOpen(&_waveout, WAVE_MAPPER, &wfex, (DWORD_PTR)_event, 0, CALLBACK_EVENT) != MMSYSERR_NOERROR) throw "waveOutOpen failed"sv;
 
 		MxInitialize(wfex.nSamplesPerSec);
 
 		for (auto &hdr : _wave_hdr) PrepareHeader(hdr);
 
-		if (nullptr == (_thread = CreateThread(nullptr, 8192, SoundThread, 0, 0, &_threadId))) throw "Failed to create thread";
-	} catch (const char *error) {
+		if (nullptr == (_thread = CreateThread(nullptr, 8192, SoundThread, 0, 0, &_threadId))) throw "Failed to create thread"sv;
+	} catch (std::string_view error) {
 		this->Stop();
 		return error;
 	}

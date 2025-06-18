@@ -287,8 +287,8 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Lukk vin
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Vindustittel - dra her for å flytte vindu
 STR_TOOLTIP_SHADE                                               :{BLACK}Skyggevindu - Vis kun tittelfeltet
 STR_TOOLTIP_DEBUG                                               :{BLACK}Vis NewGRF-debuggingsinformasjon
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}Gjennopprett vindu til standard størrelse. Ctrl + Klikk for å lagre gjeldende størrelse som standard
-STR_TOOLTIP_STICKY                                              :{BLACK}Beskytt dette vinduet mot 'Lukk alle vinduer'-knappen. Ctrl + Klikk for å lagre tilstanden som standard.
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Gjennopprett vindu til standard størrelse. Ctrl+klikk for å lagre gjeldende størrelse som standard. Dobbelt Ctrl+klikk for å nullstille lagret standard
+STR_TOOLTIP_STICKY                                              :{BLACK}Beskytt dette vinduet mot 'Lukk alle vinduer'-knappen. Ctrl+klikk for å lagre tilstanden som standard
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klikk og dra for å endre størrelsen på vinduet
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Veksle mellom stor/liten vindustørrelse
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rullefelt - ruller listen opp/ned
@@ -446,7 +446,6 @@ STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Plasser hus
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spillinnstillinger
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Innstillinger
 STR_SETTINGS_MENU_AI_SETTINGS                                   :KI-innstilinger
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Innstillinger for Game Script
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-innstillinger
@@ -961,22 +960,26 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}flytt pl
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spillinnstillinger
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Generelt
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Velg generelle innstillinger
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :Velg generelle innstillinger
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafikk
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Velg grafikkinnstillinger
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :Velg grafikkinnstillinger
 STR_GAME_OPTIONS_TAB_SOUND                                      :Lyd
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Velg lyd- og musikkinnstillinger
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Velg lyd- og musikkinnstillinger
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Sosial
-STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Velg sosiale integrasjonsinnstillinger
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Velg sosiale integrasjonsinnstillinger
+STR_GAME_OPTIONS_TAB_ADVANCED                                   :Avanserte
+STR_GAME_OPTIONS_TAB_ADVANCED_TOOLTIP                           :Endre avanserte innstillinger
 
 STR_GAME_OPTIONS_VOLUME                                         :Volum
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Lydeffekter
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Musikk
 
+STR_GAME_OPTIONS_SETTING                                        :{STRING}: {ORANGE}{STRING}
+
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valutaenhet
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Velg valutaenhet som skal brukes
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Valutaenhet
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Velg valutaenhet som skal brukes
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -1027,8 +1030,8 @@ STR_GAME_OPTIONS_CURRENCY_LVL                                   :Latviske lats
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portugisiske escudo
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Ukrainske hryvnja
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatisk lagring
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Velg intervall for automatisk lagring
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Automatisk lagring
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Velg intervall for automatisk lagring
 
 # Autosave dropdown
 ###length 5
@@ -1038,77 +1041,79 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Hvert 30. minut
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Hvert 60. minutt
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Hvert 120. minutt
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Språk
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Velg språk som skal brukes
+STR_GAME_OPTIONS_LANGUAGE                                       :Språk
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Velg språk som skal brukes
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% fullført)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Fullskjerm
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Kryss av denne knappen for å spille OpenTTD i fullskjermmodus
+STR_GAME_OPTIONS_FULLSCREEN                                     :Fullskjerm
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Kryss av denne knappen for å spille OpenTTD i fullskjermmodus
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skjermoppløsning
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Velg skjermoppløsningen som skal brukes
+STR_GAME_OPTIONS_RESOLUTION                                     :Skjermoppløsning
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Velg skjermoppløsningen som skal brukes
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annet
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Maskinvareakselerasjon
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Merk av i denne boksen for å la OpenTTD prøve å bruke maskinvareakselerasjon. En endret innstilling blir bare brukt ved omstart av spillet
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Maskinvareakselerasjon
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Merk av i denne boksen for å la OpenTTD prøve å bruke maskinvareakselerasjon. En endret innstilling blir bare brukt ved omstart av spillet
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Innstillingen vil ikke tre i kraft før spillet er restartet
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Merk av i denne boksen for å aktivere VSync for skjermen. Endring av innstilling krever omstart av spillet. Fungerer bare med maskinvareakselerasjon aktivert
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Merk av i denne boksen for å aktivere VSync for skjermen. Endring av innstilling krever omstart av spillet. Fungerer bare med maskinvareakselerasjon aktivert
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Aktiv driver: {STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Aktiv driver: {STRING}
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Grensesnittstørrelse
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Dra for å endre grensesnittstørrelse. Ctrl+dra for kontinuerlig justering
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Detekter størrelse automatisk
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Kryss av denne knappen for å detektere grensesnittstørrelsen automatisk
+STR_GAME_OPTIONS_INTERFACE                                      :Grensesnitt
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Skaler faser
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Kryss av denne knappen for å skalere faser med størrelsen på grensesnittet
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Grensesnittstørrelse
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Dra for å endre grensesnittstørrelse. Ctrl+dra for kontinuerlig justering
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Detekter størrelse automatisk
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Kryss av denne knappen for å detektere grensesnittstørrelsen automatisk
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Bruk tradisjonell sprite-skrift
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Kryss av denne knappen hvis du foretrekker den tradisjonelle sprite-skriften med fast størrelse
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Kantutjevning av skrift
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Kryss av denne knappen for å kantutjevne skalerbar skrift
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Skaler faser
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Kryss av denne knappen for å skalere faser med størrelsen på grensesnittet
+
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Bruk tradisjonell sprite-skrift
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Kryss av denne knappen hvis du foretrekker den tradisjonelle sprite-skriften med fast størrelse
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Kantutjevning av skrift
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Kryss av denne knappen for å kantutjevne skalerbar skrift
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automatisert undersøkelse
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Delta i automatisert undersøkelse
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Når aktivert, OpenTTD vi sende en undersøkelse når spillet forlates
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Om undersøkelser og personvern
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Dette åpner en nettleser med mer informasjon om den automatiserte undersøkelsen
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Forhåndsvis undersøkelsesresultater
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Vis undersøkelsesresultatene fra det pågående spillet
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Automatisert undersøkelse
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Delta i automatisert undersøkelse
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :Når aktivert, vil OpenTTD sende en undersøkelse når spillet forlates
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :Om undersøkelser og personvern
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Dette åpner en nettleser med mer informasjon om den automatiserte undersøkelsen
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Forhåndsvis undersøkelsesresultater
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Vis undersøkelsesresultatene fra det pågående spillet
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafikk
+STR_GAME_OPTIONS_DISPLAY                                        :Skjerm
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}VIs oppdateringsfrekvens
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Velg oppdateringsfrekvensen på skjermen
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Vis oppdateringsfrekvens
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Velg oppdateringsfrekvensen på skjermen
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Oppdateringsfrekvens høyere enn 60Hz kan påvirke ytelsen.
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikksett
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Velg grafikksett som skal brukes (kan ikke endres inne i spillet, kun fra hovedmenyen)
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Tilleggsinformasjon om grafikksettet
+STR_GAME_OPTIONS_BASE_GRF                                       :Grafikksett
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Velg grafikksett som skal brukes (kan ikke endres inne i spillet, kun fra hovedmenyen)
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Tilleggsinformasjon om grafikksettet
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Lydsett
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Velg lydsett som skal brukes (kan ikke endres inne i spillet, bare fra hovedmenyen)
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Tilleggsinformasjon om lydsettet
+STR_GAME_OPTIONS_BASE_SFX                                       :Lydsett
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Velg lydsett som skal brukes (kan ikke endres inne i spillet, bare fra hovedmenyen)
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Tilleggsinformasjon om lydsettet
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musikksett
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Velg musikksett som skal brukes
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Ytterligere informasjon om det originale musikksettet
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Musikksett
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Velg musikksett som skal brukes
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Ytterligere informasjon om det originale musikksettet
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Hent innhold
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Se etter nytt og oppdatert innhold for nedlasting
 
-STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(ingen moduler for integrasjon med sosiale plattformer er installert)
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :(ingen moduler for integrasjon med sosiale plattformer er installert)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Plattform:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Status for tilleggsmodul:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Plattform:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :Status for tilleggsmodul:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Kjører
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Kunne ikke initialisere
@@ -1221,12 +1226,11 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Tillatende (ing
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ingen egnet KI tilgjengelig...{}{}Du kan laste ned flere KI-er fra nettet med spillets nedlastingssystem.
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Innstillinger
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtrer:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Vis alle
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Skjul alle
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Tilbakestill alle verdier
+# Settings tree in the Game Options window
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Filtrer:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Vis alle
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Skjul alle
+STR_CONFIG_SETTING_RESET_ALL                                    :Tilbakestill alle verdier
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ingen forklaring tilgjengelig)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standard verdi: {ORANGE}{STRING}
@@ -1239,9 +1243,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Selskapet innst
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Advarsel!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Denne handlingen vil tilbakestille alle spillinnstillingene til standard verdier.{}Er du sikker på at du vil fortsette?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategori:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Type:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Begrenser listen nedenfor ved hjelp av forhåndsdefinerte filtre
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Kategori:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Type:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Begrenser listen nedenfor ved hjelp av forhåndsdefinerte filtre
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grunnleggende (vis bare viktige innstillinger)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avansert (Vis de fleste innstillinger)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ekspert (vis alle innstillinger, inkludert merkelige)
@@ -1258,9 +1262,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Selskapsinnstil
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Ingen -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK} Vis alle søkeresultater ved å sette{} {SILVER} kategori {BLACK} til {WHITE} {STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK} Vis alle søkeresultater ved å sette{} {SILVER} type {BLACK} til {WHITE} alle innstillingstyper
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK} Vis alle søkeresultater ved å sette{} {SILVER} kategori {BLACK} til {WHITE} {STRING} {BLACK} og {SILVER} type {BLACK} til {WHITE} alle innstillingstyper
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Vis alle søkeresultater ved å sette{}{PUSH_COLOUR}{SILVER} kategori {POP_COLOUR}til {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Vis alle søkeresultater ved å sette{}{PUSH_COLOUR}{SILVER}type {POP_COLOUR}til {WHITE} alle innstillingstyper
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Vis alle søkeresultater ved å sette{}{PUSH_COLOUR}{SILVER}Kategori{POP_COLOUR} til {PUSH_COLOUR}{WHITE}{STRING} {POP_COLOUR}og {PUSH_COLOUR}{SILVER}type {POP_COLOUR}til {WHITE} alle innstillingstyper
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Av
@@ -2022,7 +2026,7 @@ STR_CONFIG_SETTING_SOFT_LIMIT                                   :Største antall
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Antall ikke-klebrige åpne vinduer før gamle vinduer automatisk blir lukket for å gi plass til nye vinduer
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :deaktivert
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Deaktivert
 
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Største zoom-inn nivå: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Største forstørrelsesnivå for synsfelt. Vær oppmerksom på at aktivering av høyere forstørrelsesnivå øker minnekravet
@@ -2193,7 +2197,8 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... inge
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU-driveren krasjet spillet. Maskinvareakselerasjon deaktivert
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nytt spill
 STR_INTRO_LOAD_GAME                                             :{BLACK}Last inn spill
@@ -2205,11 +2210,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Flerspil
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spillinnstillinger
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tavle med høyeste poengsummer
 STR_INTRO_HELP                                                  :{BLACK}Hjelp og manualer
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Innstillinger
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-innstillinger
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Innhold på nettet
-STR_INTRO_AI_SETTINGS                                           :{BLACK}KI-innstillinger
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Game Script-innstillinger
 STR_INTRO_QUIT                                                  :{BLACK}Avslutt
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start et nytt spill. Ctrl+klikk hopper over kartkonfigurering
@@ -2227,11 +2228,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Velg lek
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Åpne spillinnstillinger
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Åpne tabell med høyeste poengsummer
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Få tilgang til dokumentasjon og ressurser på nettet
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Åpne innstillinger
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Åpne NewGRF-instillinger
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Se etter nytt og oppdatert innhold for nedlasting
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Åpne KI-innstillinger
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Åpne Game Script-innstillinger
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Avslutt 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}Det valgte innebygde grafikksettet mangler {NUM} sprite{P "" r}. Se etter oppdateringer for settet.
@@ -3078,6 +3075,12 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Velg bys
 STR_FOUND_TOWN_CITY                                             :{BLACK}By
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Storbyer vokser raskere enn vanlige byer{}Avhengig av innstillinger er de større når de blir grunnlagt
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Byutvidelse:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Bygninger
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Øk bygninger i byer
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Veier
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Øk veier i byer
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Byers veiløsning:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Velg veiløsning for denne byen
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Original
@@ -3527,15 +3530,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Lagre fo
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Liste over tilgjengelige forhåndsinnstillinger. Velg en for å kopiere den til det lagrede navnet nedenfor
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Skriv inn et navn for forhåndsinnstillingen
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Valgt navn for forhåndsinnstillingen som skal lagres
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Avbryt
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Ikke forandre forhåndsinnstillingen
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Lagre
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Lagre forhåndsinnstillingen med det valgte navnet
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Endre grunnleggende grafikkparametre
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Endre NewGRF-parametre
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Lukk
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Tilbakestill
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Sett alle parametere til standardverdi
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
@@ -3704,6 +3704,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Endre na
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Utvid
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Øk bystørrelse
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Utvid bygninger
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Øk bygninger i by
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Utvid veier
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Øk veier i by
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Slett
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Slett denne byen fullstendig
 
@@ -4442,10 +4446,10 @@ STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Vis skip
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Vis luftfartøyets ordreliste. Ctrl+klikk for å vise luftfartøyets rutetabell
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Vis detaljer om toget
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Vis detaljer om kjøretøyet
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Vis detaljer om skipet
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Vis detaljer om luftfartøyet
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Vis detaljer om toget. Ctrl+klikk for å vise togets gruppe
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Vis detaljer om kjøretøyet. Ctrl+klikk for å vise kjøretøyets gruppe
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Vis detaljer om skipet. Ctrl+klikk for å vise skipets gruppe
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Vis detaljer om luftfartøyet. Ctrl+klikk for å vise luftfartøyets gruppe
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Valgt tog handling - klikk for å stoppe/starte toget
@@ -4769,15 +4773,15 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Rutetabe
 STR_TIMETABLE_NO_TRAVEL                                         :Ingen reise
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Reis (automatisk; settes på ruteplan med neste manuelle ordre)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reise (uten rutetabell)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Reis (uten rutetabell) med inntil {2:VELOCITY}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Reis (uten rutetabell) med inntil {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Reise i {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Reis i {STRING} med inntil {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Reise (i {STRING}, ikke oppsatt i rutetabell)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Reise (i {STRING}, ikke oppsatt i rutetabell) med høyst {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(opphold i {STRING}, ikke oppsatt i rutetabell)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(reise for {STRING}, ikke oppsatt med rutetabell)
-STR_TIMETABLE_STAY_FOR                                          :og bli værende i {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :og reis i {STRING}
+STR_TIMETABLE_STAY_FOR                                          :{SPACE}og bli værende i {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}og reis i {STRING}
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Denne rutetabellen vil ta omtrent {STRING} å fullføre
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Det vil ta {STRING} å fullføre rutetabellen
@@ -4896,8 +4900,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Godta
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Velg det merkede skript
-STR_AI_LIST_CANCEL                                              :{BLACK}Avbryt
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ikke endre skriptet
 
 STR_SCREENSHOT_CAPTION                                          :WHITE}Ta skjermbilde
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normalt skjermbilde
@@ -4910,7 +4912,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Oversikt
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}KI-parametere
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Game Script-parametere
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Lukk
 STR_AI_SETTINGS_RESET                                           :{BLACK}Tilbakestill
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
@@ -5888,6 +5889,7 @@ STR_CURRENCY_SHORT_GIGA                                         :{NBSP}mrd
 STR_CURRENCY_SHORT_TERA                                         :{NBSP}bn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_LEFT_ARROW                                             :{LEFT_ARROW}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
@@ -5927,3 +5929,11 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Åpne merkeinnstillinger
+STR_BADGE_CONFIG_RESET                                          :Nullstill
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Merkeikoner
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Merkefiltre
+STR_BADGE_CONFIG_PREVIEW                                        :Forhåndsvis bilde
+STR_BADGE_CONFIG_NAME                                           :Navn
+STR_BADGE_FILTER_ANY_LABEL                                      :Vilkårlig {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} er {STRING}

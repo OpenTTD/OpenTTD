@@ -55,7 +55,7 @@ protected:
 	 * @pre description != nullptr.
 	 * @pre There is no blitter registered with this name.
 	 */
-	BlitterFactory(const char *name, const char *description, bool usable = true) :
+	BlitterFactory(std::string_view name, std::string_view description, bool usable = true) :
 			name(name), description(description)
 	{
 		if (usable) {
@@ -93,7 +93,7 @@ public:
 	 * @param name the blitter to select.
 	 * @post Sets the blitter so GetCurrentBlitter() returns it too.
 	 */
-	static Blitter *SelectBlitter(const std::string_view name)
+	static Blitter *SelectBlitter(std::string_view name)
 	{
 		BlitterFactory *b = GetBlitterFactory(name);
 		if (b == nullptr) return nullptr;
@@ -109,17 +109,17 @@ public:
 	 * @param name the blitter factory to select.
 	 * @return The blitter factory, or nullptr when there isn't one with the wanted name.
 	 */
-	static BlitterFactory *GetBlitterFactory(const std::string_view name)
+	static BlitterFactory *GetBlitterFactory(std::string_view name)
 	{
 #if defined(DEDICATED)
-		const std::string_view default_blitter = "null";
+		static const std::string_view default_blitter = "null";
 #elif defined(WITH_COCOA)
-		const std::string_view default_blitter = "32bpp-anim";
+		static const std::string_view default_blitter = "32bpp-anim";
 #else
-		const std::string_view default_blitter = "8bpp-optimized";
+		static const std::string_view default_blitter = "8bpp-optimized";
 #endif
 		if (GetBlitters().empty()) return nullptr;
-		const std::string_view bname = name.empty() ? default_blitter : name;
+		std::string_view bname = name.empty() ? default_blitter : name;
 
 		for (auto &it : GetBlitters()) {
 			BlitterFactory *b = it.second;

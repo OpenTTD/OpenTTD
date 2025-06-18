@@ -43,7 +43,7 @@
  * Helper function to connect a just built bridge to nearby roads.
  * @param instance The script instance we have to built the road for.
  */
-static void _DoCommandReturnBuildBridge2(class ScriptInstance *instance)
+static void _DoCommandReturnBuildBridge2(class ScriptInstance &instance)
 {
 	if (!ScriptBridge::_BuildBridgeRoad2()) {
 		ScriptInstance::DoCommandReturn(instance);
@@ -59,7 +59,7 @@ static void _DoCommandReturnBuildBridge2(class ScriptInstance *instance)
  * Helper function to connect a just built bridge to nearby roads.
  * @param instance The script instance we have to built the road for.
  */
-static void _DoCommandReturnBuildBridge1(class ScriptInstance *instance)
+static void _DoCommandReturnBuildBridge1(class ScriptInstance &instance)
 {
 	if (!ScriptBridge::_BuildBridgeRoad1()) {
 		ScriptInstance::DoCommandReturn(instance);
@@ -135,7 +135,7 @@ static void _DoCommandReturnBuildBridge1(class ScriptInstance *instance)
 	EnforcePrecondition(std::nullopt, vehicle_type == ScriptVehicle::VT_ROAD || vehicle_type == ScriptVehicle::VT_RAIL || vehicle_type == ScriptVehicle::VT_WATER);
 	if (!IsValidBridge(bridge_type)) return std::nullopt;
 
-	return ::StrMakeValid(::GetString(vehicle_type == ScriptVehicle::VT_WATER ? STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT : ::GetBridgeSpec(bridge_type)->transport_name[vehicle_type]));
+	return ::StrMakeValid(::GetString(vehicle_type == ScriptVehicle::VT_WATER ? STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT : ::GetBridgeSpec(bridge_type)->transport_name[vehicle_type]), {});
 }
 
 /* static */ SQInteger ScriptBridge::GetMaxSpeed(BridgeType bridge_type)

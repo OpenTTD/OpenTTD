@@ -14,11 +14,12 @@
 
 #include "script_info.hpp"
 #include "script_scanner.hpp"
+#include "../core/string_consumer.hpp"
 #include "../3rdparty/fmt/format.h"
 
 #include "../safeguards.h"
 
-bool ScriptInfo::CheckMethod(const char *name) const
+bool ScriptInfo::CheckMethod(std::string_view name) const
 {
 	if (!this->engine->MethodExists(this->SQ_instance, name)) {
 		this->engine->ThrowError(fmt::format("your info.nut/library.nut doesn't have the method '{}'", name));
@@ -27,18 +28,18 @@ bool ScriptInfo::CheckMethod(const char *name) const
 	return true;
 }
 
-/* static */ SQInteger ScriptInfo::Constructor(HSQUIRRELVM vm, ScriptInfo *info)
+/* static */ SQInteger ScriptInfo::Constructor(HSQUIRRELVM vm, ScriptInfo &info)
 {
 	/* Set some basic info from the parent */
-	Squirrel::GetInstance(vm, &info->SQ_instance, 2);
+	Squirrel::GetInstance(vm, &info.SQ_instance, 2);
 	/* Make sure the instance stays alive over time */
-	sq_addref(vm, &info->SQ_instance);
+	sq_addref(vm, &info.SQ_instance);
 
-	info->scanner = (ScriptScanner *)Squirrel::GetGlobalPointer(vm);
-	info->engine = info->scanner->GetEngine();
+	info.scanner = (ScriptScanner *)Squirrel::GetGlobalPointer(vm);
+	info.engine = info.scanner->GetEngine();
 
 	/* Ensure the mandatory functions exist */
-	static const char * const required_functions[] = {
+	static const std::string_view required_functions[] = {
 		"GetAuthor",
 		"GetName",
 		"GetShortName",
@@ -48,30 +49,31 @@ bool ScriptInfo::CheckMethod(const char *name) const
 		"CreateInstance",
 	};
 	for (const auto &required_function : required_functions) {
-		if (!info->CheckMethod(required_function)) return SQ_ERROR;
+		if (!info.CheckMethod(required_function)) return SQ_ERROR;
 	}
 
 	/* Get location information of the scanner */
-	info->main_script = info->scanner->GetMainScript();
-	info->tar_file = info->scanner->GetTarFile();
+	info.main_script = info.scanner->GetMainScript();
+	info.tar_file = info.scanner->GetTarFile();
 
 	/* Cache the data the info file gives us. */
-	if (!info->engine->CallStringMethod(info->SQ_instance, "GetAuthor", &info->author, MAX_GET_OPS)) return SQ_ERROR;
-	if (!info->engine->CallStringMethod(info->SQ_instance, "GetName", &info->name, MAX_GET_OPS)) return SQ_ERROR;
-	if (!info->engine->CallStringMethod(info->SQ_instance, "GetShortName", &info->short_name, MAX_GET_OPS)) return SQ_ERROR;
-	if (!info->engine->CallStringMethod(info->SQ_instance, "GetDescription", &info->description, MAX_GET_OPS)) return SQ_ERROR;
-	if (!info->engine->CallStringMethod(info->SQ_instance, "GetDate", &info->date, MAX_GET_OPS)) return SQ_ERROR;
-	if (!info->engine->CallIntegerMethod(info->SQ_instance, "GetVersion", &info->version, MAX_GET_OPS)) return SQ_ERROR;
-	if (!info->engine->CallStringMethod(info->SQ_instance, "CreateInstance", &info->instance_name, MAX_CREATEINSTANCE_OPS)) return SQ_ERROR;
+	if (!info.engine->CallStringMethod(info.SQ_instance, "GetAuthor", &info.author, MAX_GET_OPS)) return SQ_ERROR;
+	if (!info.engine->CallStringMethod(info.SQ_instance, "GetName", &info.name, MAX_GET_OPS)) return SQ_ERROR;
+	if (!info.engine->CallStringMethod(info.SQ_instance, "GetShortName", &info.short_name, MAX_GET_OPS)) return SQ_ERROR;
+	if (!info.engine->CallStringMethod(info.SQ_instance, "GetDescription", &info.description, MAX_GET_OPS)) return SQ_ERROR;
+	if (!info.engine->CallStringMethod(info.SQ_instance, "GetDate", &info.date, MAX_GET_OPS)) return SQ_ERROR;
+	if (!info.engine->CallIntegerMethod(info.SQ_instance, "GetVersion", &info.version, MAX_GET_OPS)) return SQ_ERROR;
+	if (info.version < 0) return SQ_ERROR;
+	if (!info.engine->CallStringMethod(info.SQ_instance, "CreateInstance", &info.instance_name, MAX_CREATEINSTANCE_OPS)) return SQ_ERROR;
 
 	/* The GetURL function is optional. */
-	if (info->engine->MethodExists(info->SQ_instance, "GetURL")) {
-		if (!info->engine->CallStringMethod(info->SQ_instance, "GetURL", &info->url, MAX_GET_OPS)) return SQ_ERROR;
+	if (info.engine->MethodExists(info.SQ_instance, "GetURL")) {
+		if (!info.engine->CallStringMethod(info.SQ_instance, "GetURL", &info.url, MAX_GET_OPS)) return SQ_ERROR;
 	}
 
 	/* Check if we have settings */
-	if (info->engine->MethodExists(info->SQ_instance, "GetSettings")) {
-		if (!info->GetSettings()) return SQ_ERROR;
+	if (info.engine->MethodExists(info.SQ_instance, "GetSettings")) {
+		if (!info.GetSettings()) return SQ_ERROR;
 	}
 
 	return 0;
@@ -82,65 +84,74 @@ bool ScriptInfo::GetSettings()
 	return this->engine->CallMethod(this->SQ_instance, "GetSettings", nullptr, MAX_GET_SETTING_OPS);
 }
 
+enum class ScriptConfigItemKey : uint8_t {
+	Name,
+	Description,
+	MinValue,
+	MaxValue,
+	MediumValue,
+	DefaultValue,
+	Flags,
+};
+using ScriptConfigItemKeys = EnumBitSet<ScriptConfigItemKey, uint8_t>;
+
 SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 {
 	ScriptConfigItem config;
-	uint items = 0;
+	ScriptConfigItemKeys present{};
 
 	int medium_value = INT32_MIN;
 
 	/* Read the table, and find all properties we care about */
 	sq_pushnull(vm);
 	while (SQ_SUCCEEDED(sq_next(vm, -2))) {
-		const SQChar *key_string;
-		if (SQ_FAILED(sq_getstring(vm, -2, &key_string))) return SQ_ERROR;
+		std::string_view key_string;
+		if (SQ_FAILED(sq_getstring(vm, -2, key_string))) return SQ_ERROR;
 		std::string key = StrMakeValid(key_string);
 
 		if (key == "name") {
-			const SQChar *sqvalue;
-			if (SQ_FAILED(sq_getstring(vm, -1, &sqvalue))) return SQ_ERROR;
+			std::string_view sqvalue;
+			if (SQ_FAILED(sq_getstring(vm, -1, sqvalue))) return SQ_ERROR;
 
 			/* Don't allow '=' and ',' in configure setting names, as we need those
 			 *  2 chars to nicely store the settings as a string. */
 			auto replace_with_underscore = [](auto c) { return c == '=' || c == ','; };
 			config.name = StrMakeValid(sqvalue);
 			std::replace_if(config.name.begin(), config.name.end(), replace_with_underscore, '_');
-			items |= 0x001;
+			present.Set(ScriptConfigItemKey::Name);
 		} else if (key == "description") {
-			const SQChar *sqdescription;
-			if (SQ_FAILED(sq_getstring(vm, -1, &sqdescription))) return SQ_ERROR;
+			std::string_view sqdescription;
+			if (SQ_FAILED(sq_getstring(vm, -1, sqdescription))) return SQ_ERROR;
 			config.description = StrMakeValid(sqdescription);
-			items |= 0x002;
+			present.Set(ScriptConfigItemKey::Description);
 		} else if (key == "min_value") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.min_value = ClampTo<int32_t>(res);
-			items |= 0x004;
+			present.Set(ScriptConfigItemKey::MinValue);
 		} else if (key == "max_value") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.max_value = ClampTo<int32_t>(res);
-			items |= 0x008;
+			present.Set(ScriptConfigItemKey::MaxValue);
 		} else if (key == "easy_value") {
-			// No longer parsed.
-			items |= 0x010;
+			/* No longer parsed. */
 		} else if (key == "medium_value") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			medium_value = ClampTo<int32_t>(res);
-			items |= 0x020;
+			present.Set(ScriptConfigItemKey::MediumValue);
 		} else if (key == "hard_value") {
-			// No longer parsed.
-			items |= 0x040;
+			/* No longer parsed. */
 		} else if (key == "custom_value") {
-			// No longer parsed.
+			/* No longer parsed. */
 		} else if (key == "default_value") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.default_value = ClampTo<int32_t>(res);
-			items |= 0x080;
+			present.Set(ScriptConfigItemKey::DefaultValue);
 		} else if (key == "random_deviation") {
-			// No longer parsed.
+			/* No longer parsed. */
 		} else if (key == "step_size") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
@@ -148,8 +159,8 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 		} else if (key == "flags") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
-			config.flags = (ScriptConfigFlags)res;
-			items |= 0x100;
+			config.flags = static_cast<ScriptConfigFlags>(res);
+			present.Set(ScriptConfigItemKey::Flags);
 		} else {
 			this->engine->ThrowError(fmt::format("unknown setting property '{}'", key));
 			return SQ_ERROR;
@@ -162,23 +173,22 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 	/* Check if default_value is set. Although required, this was changed with
 	 * 14.0, and as such, older AIs don't use it yet. So we convert the older
 	 * values into a default_value. */
-	if ((items & 0x080) == 0) {
+	if (!present.Test(ScriptConfigItemKey::DefaultValue)) {
 		/* Easy/medium/hard should all three be defined. */
-		if ((items & 0x010) == 0 || (items & 0x020) == 0 || (items & 0x040) == 0) {
+		if (!present.Test(ScriptConfigItemKey::MediumValue)) {
 			this->engine->ThrowError("please define all properties of a setting (min/max not allowed for booleans)");
 			return SQ_ERROR;
 		}
 
 		config.default_value = medium_value;
-		items |= 0x080;
-	} else {
-		/* For compatibility, also act like the default sets the easy/medium/hard. */
-		items |= 0x010 | 0x020 | 0x040;
+		present.Set(ScriptConfigItemKey::DefaultValue);
 	}
 
-	/* Make sure all properties are defined */
-	uint mask = config.flags.Test(ScriptConfigFlag::Boolean) ? 0x1F3 : 0x1FF;
-	if (items != mask) {
+	/* Make sure all required properties are defined */
+	ScriptConfigItemKeys required = {ScriptConfigItemKey::Name, ScriptConfigItemKey::Description, ScriptConfigItemKey::DefaultValue, ScriptConfigItemKey::Flags};
+	if (!config.flags.Test(ScriptConfigFlag::Boolean)) required.Set({ScriptConfigItemKey::MinValue, ScriptConfigItemKey::MaxValue});
+
+	if (!present.All(required)) {
 		this->engine->ThrowError("please define all properties of a setting (min/max not allowed for booleans)");
 		return SQ_ERROR;
 	}
@@ -189,9 +199,9 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 
 SQInteger ScriptInfo::AddLabels(HSQUIRRELVM vm)
 {
-	const SQChar *setting_name_str;
-	if (SQ_FAILED(sq_getstring(vm, -2, &setting_name_str))) return SQ_ERROR;
-	std::string setting_name = StrMakeValid(setting_name_str);
+	std::string_view setting_name_view;
+	if (SQ_FAILED(sq_getstring(vm, -2, setting_name_view))) return SQ_ERROR;
+	std::string setting_name = StrMakeValid(setting_name_view);
 
 	ScriptConfigItem *config = nullptr;
 	for (auto &item : this->config_list) {
@@ -207,21 +217,22 @@ SQInteger ScriptInfo::AddLabels(HSQUIRRELVM vm)
 	/* Read the table and find all labels */
 	sq_pushnull(vm);
 	while (SQ_SUCCEEDED(sq_next(vm, -2))) {
-		const SQChar *key_string;
-		const SQChar *label;
-		if (SQ_FAILED(sq_getstring(vm, -2, &key_string))) return SQ_ERROR;
-		if (SQ_FAILED(sq_getstring(vm, -1, &label))) return SQ_ERROR;
+		std::string_view key_string;
+		std::string_view label;
+		if (SQ_FAILED(sq_getstring(vm, -2, key_string))) return SQ_ERROR;
+		if (SQ_FAILED(sq_getstring(vm, -1, label))) return SQ_ERROR;
 		/* Because squirrel doesn't support identifiers starting with a digit,
 		 * we skip the first character. */
-		key_string++;
+		key_string.remove_prefix(1);
 		int sign = 1;
-		if (*key_string == '_') {
+		if (key_string.starts_with('_')) {
 			/* When the second character is '_', it indicates the value is negative. */
 			sign = -1;
-			key_string++;
+			key_string.remove_prefix(1);
 		}
-		int key = atoi(key_string) * sign;
-		config->labels[key] = StrMakeValid(label);
+		auto key = ParseInteger<int>(key_string);
+		if (!key.has_value()) return SQ_ERROR;
+		config->labels[*key * sign] = StrMakeValid(label);
 
 		sq_pop(vm, 2);
 	}
@@ -244,7 +255,7 @@ const ScriptConfigItemList *ScriptInfo::GetConfigList() const
 	return &this->config_list;
 }
 
-const ScriptConfigItem *ScriptInfo::GetConfigItem(const std::string_view name) const
+const ScriptConfigItem *ScriptInfo::GetConfigItem(std::string_view name) const
 {
 	for (const auto &item : this->config_list) {
 		if (item.name == name) return &item;

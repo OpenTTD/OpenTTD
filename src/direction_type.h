@@ -38,6 +38,11 @@ enum Direction : uint8_t {
 /** Allow incrementing of Direction variables */
 DECLARE_INCREMENT_DECREMENT_OPERATORS(Direction)
 
+using Directions = EnumBitSet<Direction, uint8_t>;
+
+/** All possible directions. */
+static constexpr Directions DIRECTIONS_ALL{DIR_N, DIR_NE, DIR_E, DIR_SE, DIR_S, DIR_SW, DIR_W, DIR_NW};
+
 /**
  * Enumeration for the difference between two directions.
  *
@@ -81,6 +86,8 @@ enum DiagDirection : uint8_t {
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(DiagDirection)
 DECLARE_ENUM_AS_ADDABLE(DiagDirection)
+
+using DiagDirections = EnumBitSet<DiagDirection, uint8_t>;
 
 /**
  * Enumeration for the difference between to DiagDirection.

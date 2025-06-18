@@ -95,7 +95,7 @@ void GetMacOSVersion(int *return_major, int *return_minor, int *return_bugfix)
 
 #ifdef WITH_COCOA
 
-extern void CocoaDialog(const char *title, const char *message, const char *buttonLabel);
+extern void CocoaDialog(std::string_view title, std::string_view message, std::string_view buttonLabel);
 
 /**
  * Show the system dialogue message (Cocoa on MacOSX).
@@ -104,7 +104,7 @@ extern void CocoaDialog(const char *title, const char *message, const char *butt
  * @param message Message text.
  * @param buttonLabel Button text.
  */
-void ShowMacDialog(const char *title, const char *message, const char *buttonLabel)
+void ShowMacDialog(std::string_view title, std::string_view message, std::string_view buttonLabel)
 {
 	CocoaDialog(title, message, buttonLabel);
 }
@@ -119,7 +119,7 @@ void ShowMacDialog(const char *title, const char *message, const char *buttonLab
  * @param message Message text.
  * @param buttonLabel Button text.
  */
-void ShowMacDialog(const char *title, const char *message, const char *buttonLabel)
+void ShowMacDialog(std::string_view title, std::string_view message, std::string_view buttonLabel)
 {
 	fmt::print(stderr, "{}: {}\n", title, message);
 }
@@ -133,7 +133,7 @@ void ShowMacDialog(const char *title, const char *message, const char *buttonLab
  * @param buf error message text.
  * @param system message text originates from OS.
  */
-void ShowOSErrorBox(const char *buf, bool system)
+void ShowOSErrorBox(std::string_view buf, bool system)
 {
 	/* Display the error in the best way possible. */
 	if (system) {
@@ -151,16 +151,18 @@ void OSOpenBrowser(const std::string &url)
 /**
  * Determine and return the current user's locale.
  */
-const char *GetCurrentLocale(const char *)
+std::optional<std::string> GetCurrentLocale(const char *)
 {
-	static char retbuf[32] = { '\0' };
 	NSUserDefaults *defs = [ NSUserDefaults standardUserDefaults ];
 	NSArray *languages = [ defs objectForKey:@"AppleLanguages" ];
 	NSString *preferredLang = [ languages objectAtIndex:0 ];
 	/* preferredLang is either 2 or 5 characters long ("xx" or "xx_YY"). */
 
-	[ preferredLang getCString:retbuf maxLength:32 encoding:NSASCIIStringEncoding ];
-
+	std::string retbuf{32, '\0'};
+	[ preferredLang getCString:retbuf.data() maxLength:retbuf.size() encoding:NSASCIIStringEncoding ];
+	auto end = retbuf.find('\0');
+	if (end == 0) return std::nullopt;
+	if (end != std::string::npos) retbuf.erase(end);
 	return retbuf;
 }
 
@@ -242,15 +244,15 @@ bool IsMonospaceFont(CFStringRef name)
  * Set the name of the current thread for the debugger.
  * @param name The new name of the current thread.
  */
-void MacOSSetThreadName(const char *name)
+void MacOSSetThreadName(const std::string &name)
 {
 	if (MacOSVersionIsAtLeast(10, 6, 0)) {
-		pthread_setname_np(name);
+		pthread_setname_np(name.c_str());
 	}
 
 	NSThread *cur = [ NSThread currentThread ];
 	if (cur != nil && [ cur respondsToSelector:@selector(setName:) ]) {
-		[ cur performSelector:@selector(setName:) withObject:[ NSString stringWithUTF8String:name ] ];
+		[ cur performSelector:@selector(setName:) withObject:[ NSString stringWithUTF8String:name.c_str() ] ];
 	}
 }
 

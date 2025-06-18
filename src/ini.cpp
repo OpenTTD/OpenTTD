@@ -101,14 +101,14 @@ bool IniFile::SaveToDisk(const std::string &filename)
 	return true;
 }
 
-/* virtual */ std::optional<FileHandle> IniFile::OpenFile(const std::string &filename, Subdirectory subdir, size_t *size)
+/* virtual */ std::optional<FileHandle> IniFile::OpenFile(std::string_view filename, Subdirectory subdir, size_t *size)
 {
 	/* Open the text file in binary mode to prevent end-of-line translations
 	 * done by ftell() and friends, as defined by K&R. */
 	return FioFOpenFile(filename, "rb", subdir, size);
 }
 
-/* virtual */ void IniFile::ReportFileError(const char * const pre, const char * const buffer, const char * const post)
+/* virtual */ void IniFile::ReportFileError(std::string_view message)
 {
-	ShowInfo("{}{}{}", pre, buffer, post);
+	ShowInfo("{}", message);
 }

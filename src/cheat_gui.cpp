@@ -35,6 +35,7 @@
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_economy.h"
+#include "core/string_consumer.hpp"
 
 #include "widgets/cheat_widget.h"
 
@@ -286,7 +287,7 @@ struct CheatWindow : Window {
 				case SLE_BOOL: {
 					bool on = (*(bool*)ce->variable);
 
-					DrawBoolButton(button_left, y + button_y_offset, on, true);
+					DrawBoolButton(button_left, y + button_y_offset, COLOUR_YELLOW, COLOUR_GREY, on, true);
 					str = GetString(ce->str, on ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 					break;
 				}
@@ -354,7 +355,7 @@ struct CheatWindow : Window {
 		int32_t value = sd->Read(&GetGameSettings());
 		if (sd->IsBoolSetting()) {
 			/* Draw checkbox for boolean-value either on/off */
-			DrawBoolButton(buttons.left, buttons.top, value != 0, editable);
+			DrawBoolButton(buttons.left, buttons.top, COLOUR_YELLOW, COLOUR_GREY, value != 0, editable);
 		} else if (sd->flags.Test(SettingFlag::GuiDropdown)) {
 			/* Draw [v] button for settings of an enum-type */
 			DrawDropDownButton(buttons.left, buttons.top, COLOUR_YELLOW, state != 0, editable);
@@ -607,12 +608,13 @@ struct CheatWindow : Window {
 
 			int32_t value;
 			if (!str->empty()) {
-				long long llvalue = atoll(str->c_str());
+				auto llvalue = ParseInteger<int64_t>(*str, 10, true);
+				if (!llvalue.has_value()) return;
 
 				/* Save the correct currency-translated value */
-				if (sd->flags.Test(SettingFlag::GuiCurrency)) llvalue /= GetCurrency().rate;
+				if (sd->flags.Test(SettingFlag::GuiCurrency)) llvalue = *llvalue / GetCurrency().rate;
 
-				value = ClampTo<int32_t>(llvalue);
+				value = ClampTo<int32_t>(*llvalue);
 			} else {
 				value = sd->GetDefaultValue();
 			}
@@ -621,18 +623,19 @@ struct CheatWindow : Window {
 		} else {
 			const CheatEntry *ce = &_cheats_ui[clicked_cheat];
 			int oldvalue = static_cast<int32_t>(ReadValue(ce->variable, ce->type));
-			int value = atoi(str->c_str());
+			auto value = ParseInteger<int32_t>(*str, 10, true);
+			if (!value.has_value()) return;
 			*ce->been_used = true;
-			value = ce->proc(value, value - oldvalue);
+			value = ce->proc(*value, *value - oldvalue);
 
-			if (value != oldvalue) WriteValue(ce->variable, ce->type, static_cast<int64_t>(value));
+			if (*value != oldvalue) WriteValue(ce->variable, ce->type, static_cast<int64_t>(*value));
 		}
 
 		this->valuewindow_entry = nullptr;
 		this->SetDirty();
 	}
 
-	IntervalTimer<TimerGameCalendar> daily_interval = {{TimerGameCalendar::MONTH, TimerGameCalendar::Priority::NONE}, [this](auto) {
+	const IntervalTimer<TimerGameCalendar> daily_interval = {{TimerGameCalendar::MONTH, TimerGameCalendar::Priority::NONE}, [this](auto) {
 		this->SetDirty();
 	}};
 };

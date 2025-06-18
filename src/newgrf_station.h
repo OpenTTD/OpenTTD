@@ -31,6 +31,21 @@ struct StationScopeResolver : public ScopeResolver {
 	Axis axis;                          ///< Station axis, used only for the slope check callback.
 
 	/**
+	 * Station variable cache
+	 * This caches 'expensive' station variable lookups which iterate over
+	 * several tiles that may be called multiple times per Resolve().
+	 */
+	struct Cache {
+		std::optional<uint32_t> v40;
+		std::optional<uint32_t> v41;
+		std::optional<uint32_t> v45;
+		std::optional<uint32_t> v46;
+		std::optional<uint32_t> v47;
+		std::optional<uint32_t> v49;
+	};
+	mutable Cache cache;
+
+	/**
 	 * Constructor for station scopes.
 	 * @param ro Surrounding resolver.
 	 * @param statspec Station (type) specification.
@@ -43,13 +58,13 @@ struct StationScopeResolver : public ScopeResolver {
 	}
 
 	uint32_t GetRandomBits() const override;
-	uint32_t GetTriggers() const override;
+	uint32_t GetRandomTriggers() const override;
 
 	uint32_t GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const override;
 };
 
 /** Station resolver. */
-struct StationResolverObject : public ResolverObject {
+struct StationResolverObject : public SpecializedResolverObject<StationRandomTriggers> {
 	StationScopeResolver station_scope; ///< The station scope resolver.
 	std::optional<TownScopeResolver> town_scope = std::nullopt; ///< The town scope resolver (created on the first call).
 
@@ -75,7 +90,7 @@ struct StationResolverObject : public ResolverObject {
 		}
 	}
 
-	const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const override;
+	const SpriteGroup *ResolveReal(const RealSpriteGroup &group) const override;
 
 	GrfSpecFeature GetFeature() const override;
 	uint32_t GetDebugID() const override;
@@ -103,30 +118,15 @@ enum class StationSpecFlag : uint8_t {
 };
 using StationSpecFlags = EnumBitSet<StationSpecFlag, uint8_t>;
 
-/** Randomisation triggers for stations */
-enum StationRandomTrigger : uint8_t {
-	SRT_NEW_CARGO,        ///< Trigger station on new cargo arrival.
-	SRT_CARGO_TAKEN,      ///< Trigger station when cargo is completely taken.
-	SRT_TRAIN_ARRIVES,    ///< Trigger platform when train arrives.
-	SRT_TRAIN_DEPARTS,    ///< Trigger platform when train leaves.
-	SRT_TRAIN_LOADS,      ///< Trigger platform when train loads/unloads.
-	SRT_PATH_RESERVATION, ///< Trigger platform when train reserves path.
-};
-
 /** Station specification. */
 struct StationSpec : NewGRFSpecBase<StationClassID> {
 	StationSpec() : name(0),
 		disallowed_platforms(0), disallowed_lengths(0),
 		cargo_threshold(0), cargo_triggers(0),
-		callback_mask(0), flags(0),
-		animation({0, 0, 0, 0}) {}
-	/**
-	 * Properties related the the grf file.
-	 * NUM_CARGO real cargo plus three pseudo cargo sprite groups.
-	 * Used for obtaining the sprite offset of custom sprites, and for
-	 * evaluating callbacks.
-	 */
-	VariableGRFFileProps grf_prop;
+		callback_mask(0), flags(0)
+	{}
+
+	CargoGRFFileProps grf_prop; ///< Link to NewGRF
 	StringID name;             ///< Name of this station.
 
 	/**
@@ -170,7 +170,7 @@ struct StationSpec : NewGRFSpecBase<StationClassID> {
 	using TileFlags = EnumBitSet<TileFlag, uint8_t>;
 	std::vector<TileFlags> tileflags; ///< List of tile flags.
 
-	AnimationInfo animation;
+	AnimationInfo<StationAnimationTriggers> animation;
 
 	/** Custom platform layouts, keyed by platform and length combined. */
 	std::unordered_map<uint16_t, std::vector<uint8_t>> layouts;
@@ -208,8 +208,9 @@ inline bool IsWaypointClass(const StationClass &cls)
 uint32_t GetPlatformInfo(Axis axis, uint8_t tile, int platforms, int length, int x, int y, bool centred);
 
 SpriteID GetCustomStationRelocation(const StationSpec *statspec, BaseStation *st, TileIndex tile, uint32_t var10 = 0);
+void GetCustomStationRelocation(SpriteLayoutProcessor &processor, const StationSpec *statspec, BaseStation *st, TileIndex tile);
 SpriteID GetCustomStationFoundationRelocation(const StationSpec *statspec, BaseStation *st, TileIndex tile, uint layout, uint edge_info);
-uint16_t GetStationCallback(CallbackID callback, uint32_t param1, uint32_t param2, const StationSpec *statspec, BaseStation *st, TileIndex tile);
+uint16_t GetStationCallback(CallbackID callback, uint32_t param1, uint32_t param2, const StationSpec *statspec, BaseStation *st, TileIndex tile, std::span<int32_t> regs100 = {});
 CommandCost PerformStationTileSlopeCheck(TileIndex north_tile, TileIndex cur_tile, const StationSpec *statspec, Axis axis, uint8_t plat_len, uint8_t numtracks);
 
 /* Allocate a StationSpec to a Station. This is called once per build operation. */
@@ -223,7 +224,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 
 void AnimateStationTile(TileIndex tile);
 void TriggerStationAnimation(BaseStation *st, TileIndex tile, StationAnimationTrigger trigger, CargoType cargo_type = INVALID_CARGO);
-void TriggerStationRandomisation(Station *st, TileIndex tile, StationRandomTrigger trigger, CargoType cargo_type = INVALID_CARGO);
+void TriggerStationRandomisation(BaseStation *st, TileIndex tile, StationRandomTrigger trigger, CargoType cargo_type = INVALID_CARGO);
 void StationUpdateCachedTriggers(BaseStation *st);
 
 #endif /* NEWGRF_STATION_H */

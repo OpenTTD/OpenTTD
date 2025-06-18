@@ -16,28 +16,22 @@ void sqstd_printcallstack(HSQUIRRELVM v)
 		SQInteger i;
 		SQBool b;
 		SQFloat f;
-		const SQChar *s;
 		SQInteger level=1; //1 is to skip this function that is level 0
-		const SQChar *name=nullptr;
 		SQInteger seq=0;
 		pf(v,"\nCALLSTACK\n");
 		while(SQ_SUCCEEDED(sq_stackinfos(v,level,&si)))
 		{
-			const SQChar *fn="unknown";
-			const SQChar *src="unknown";
-			if(si.funcname)fn=si.funcname;
-			if(si.source) {
+			std::string_view fn="unknown";
+			std::string_view src="unknown";
+			if(!si.funcname.empty())fn=si.funcname;
+			if(!si.source.empty()) {
 				/* We don't want to bother users with absolute paths to all AI files.
 				 * Since the path only reaches NoAI code in a formatted string we have
 				 * to strip it here. Let's hope nobody installs openttd in a subdirectory
 				 * of a directory named /ai/. */
-				src = strstr(si.source, "\\ai\\");
-				if (!src) src = strstr(si.source, "/ai/");
-				if (src) {
-					src += 4;
-				} else {
-					src = si.source;
-				}
+				auto p = si.source.find("\\ai\\");
+				if (p == std::string_view::npos) p = si.source.find("/ai/");
+				src = (p == std::string_view::npos) ? si.source : si.source.substr(p + 4);
 			}
 			pf(v,fmt::format("*FUNCTION [{}()] {} line [{}]\n",fn,src,si.line));
 			level++;
@@ -47,8 +41,9 @@ void sqstd_printcallstack(HSQUIRRELVM v)
 
 		for(level=0;level<10;level++){
 			seq=0;
-			while((name = sq_getlocal(v,level,seq)))
-			{
+			std::optional<std::string_view> opt;
+			while ((opt = sq_getlocal(v,level,seq)).has_value()) {
+				std::string_view name = *opt;
 				seq++;
 				switch(sq_gettype(v,-1))
 				{
@@ -66,10 +61,12 @@ void sqstd_printcallstack(HSQUIRRELVM v)
 				case OT_USERPOINTER:
 					pf(v,fmt::format("[{}] USERPOINTER\n",name));
 					break;
-				case OT_STRING:
-					sq_getstring(v,-1,&s);
-					pf(v,fmt::format("[{}] \"{}\"\n",name,s));
+				case OT_STRING: {
+					std::string_view view;
+					sq_getstring(v,-1,view);
+					pf(v,fmt::format("[{}] \"{}\"\n",name,view));
 					break;
+				}
 				case OT_TABLE:
 					pf(v,fmt::format("[{}] TABLE\n",name));
 					break;
@@ -117,10 +114,10 @@ static SQInteger _sqstd_aux_printerror(HSQUIRRELVM v)
 {
 	SQPRINTFUNCTION pf = sq_getprintfunc(v);
 	if(pf) {
-		const SQChar *sErr = nullptr;
+		std::string_view error;
 		if(sq_gettop(v)>=1) {
-			if(SQ_SUCCEEDED(sq_getstring(v,2,&sErr)))	{
-				pf(v,fmt::format("\nAN ERROR HAS OCCURRED [{}]\n",sErr));
+			if(SQ_SUCCEEDED(sq_getstring(v,2,error))) {
+				pf(v,fmt::format("\nAN ERROR HAS OCCURRED [{}]\n",error));
 			}
 			else{
 				pf(v,"\nAN ERROR HAS OCCURRED [unknown]\n");
@@ -131,7 +128,7 @@ static SQInteger _sqstd_aux_printerror(HSQUIRRELVM v)
 	return 0;
 }
 
-void _sqstd_compiler_error(HSQUIRRELVM v,const SQChar *sErr,const SQChar *sSource,SQInteger line,SQInteger column)
+void _sqstd_compiler_error(HSQUIRRELVM v,std::string_view sErr,std::string_view sSource,SQInteger line,SQInteger column)
 {
 	SQPRINTFUNCTION pf = sq_getprintfunc(v);
 	if(pf) {

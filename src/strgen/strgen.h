@@ -10,7 +10,9 @@
 #ifndef STRGEN_H
 #define STRGEN_H
 
+#include "../core/string_consumer.hpp"
 #include "../language.h"
+#include "../string_type.h"
 #include "../3rdparty/fmt/format.h"
 
 #include <unordered_map>
@@ -21,7 +23,7 @@ struct Case {
 	uint8_t caseidx;       ///< The index of the case.
 	std::string string; ///< The translation of the case.
 
-	Case(uint8_t caseidx, const std::string &string);
+	Case(uint8_t caseidx, std::string_view string);
 };
 
 /** Information about a single string. */
@@ -33,14 +35,14 @@ struct LangString {
 	size_t line;            ///< Line of string in source-file.
 	std::vector<Case> translated_cases; ///< Cases of the translation.
 
-	LangString(const std::string &name, const std::string &english, size_t index, size_t line);
+	LangString(std::string_view name, std::string_view english, size_t index, size_t line);
 	void FreeTranslation();
 };
 
 /** Information about the currently known strings. */
 struct StringData {
 	std::vector<std::shared_ptr<LangString>> strings; ///< List of all known strings.
-	std::unordered_map<std::string, std::shared_ptr<LangString>> name_to_string; ///< Lookup table for the strings.
+	std::unordered_map<std::string, std::shared_ptr<LangString>, StringHash, std::equal_to<>> name_to_string; ///< Lookup table for the strings.
 	size_t tabs;          ///< The number of 'tabs' of strings.
 	size_t max_strings;   ///< The maximum number of strings.
 	size_t next_string_id;///< The next string ID to allocate.
@@ -48,7 +50,7 @@ struct StringData {
 	StringData(size_t tabs);
 	void FreeTranslation();
 	void Add(std::shared_ptr<LangString> ls);
-	LangString *Find(const std::string &s);
+	LangString *Find(std::string_view s);
 	uint32_t Version() const;
 	size_t CountInUse(size_t tab) const;
 };
@@ -62,7 +64,7 @@ struct StringReader {
 
 	StringReader(StringData &data, const std::string &file, bool master, bool translation);
 	virtual ~StringReader() = default;
-	void HandleString(char *str);
+	void HandleString(std::string_view str);
 
 	/**
 	 * Read a single line from the source of strings.
@@ -74,7 +76,7 @@ struct StringReader {
 	 * Handle the pragma of the file.
 	 * @param str    The pragma string to parse.
 	 */
-	virtual void HandlePragma(char *str);
+	virtual void HandlePragma(std::string_view str, LanguagePackHeader &lang);
 
 	/**
 	 * Start parsing the file.
@@ -115,9 +117,8 @@ struct LanguageWriter {
 	/**
 	 * Write a number of bytes.
 	 * @param buffer The buffer to write.
-	 * @param length The amount of byte to write.
 	 */
-	virtual void Write(const char *buffer, size_t length) = 0;
+	virtual void Write(std::string_view buffer) = 0;
 
 	/**
 	 * Finalise writing the file.
@@ -144,7 +145,7 @@ struct ParsedCommandStruct {
 };
 
 const CmdStruct *TranslateCmdForCompare(const CmdStruct *a);
-ParsedCommandStruct ExtractCommandString(const char *s, bool warnings);
+ParsedCommandStruct ExtractCommandString(std::string_view s, bool warnings);
 
 void StrgenWarningI(const std::string &msg);
 void StrgenErrorI(const std::string &msg);
@@ -152,12 +153,19 @@ void StrgenErrorI(const std::string &msg);
 #define StrgenWarning(format_string, ...) StrgenWarningI(fmt::format(FMT_STRING(format_string) __VA_OPT__(,) __VA_ARGS__))
 #define StrgenError(format_string, ...) StrgenErrorI(fmt::format(FMT_STRING(format_string) __VA_OPT__(,) __VA_ARGS__))
 #define StrgenFatal(format_string, ...) StrgenFatalI(fmt::format(FMT_STRING(format_string) __VA_OPT__(,) __VA_ARGS__))
-std::optional<std::string_view> ParseWord(const char **buf);
+std::optional<std::string_view> ParseWord(StringConsumer &consumer);
 
-extern const char *_file;
-extern size_t _cur_line;
-extern size_t _errors, _warnings;
-extern bool _show_warnings, _annotate_todos, _translation;
-extern LanguagePackHeader _lang;
+/** Global state shared between strgen.cpp, game_text.cpp and strgen_base.cpp */
+struct StrgenState {
+	std::string file = "(unknown file)"; ///< The filename of the input, so we can refer to it in errors/warnings
+	size_t cur_line = 0; ///< The current line we're parsing in the input file
+	size_t errors = 0;
+	size_t warnings = 0;
+	bool show_warnings = false;
+	bool annotate_todos = false;
+	bool translation = false; ///< Is the current file actually a translation or not
+	LanguagePackHeader lang; ///< Header information about a language.
+};
+extern StrgenState _strgen;
 
 #endif /* STRGEN_H */

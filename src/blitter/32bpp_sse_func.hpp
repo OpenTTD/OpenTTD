@@ -309,8 +309,8 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 
 					/* Remap colours. */
 					if (mvX2 & 0x00FF00FF) {
+						/* Written so the compiler uses CMOV. */
 						#define CMOV_REMAP(m_colour, m_colour_init, m_src, m_m) \
-							/* Written so the compiler uses CMOV. */ \
 							Colour m_colour = m_colour_init; \
 							{ \
 							const Colour srcm = (Colour) (m_src); \

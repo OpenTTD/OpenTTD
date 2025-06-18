@@ -12,6 +12,7 @@
 
 #include "command_type.h"
 #include "depot_type.h"
+#include "vehicle_type.h"
 
 CommandCost CmdRenameDepot(DoCommandFlags flags, DepotID depot_id, const std::string &text);
 

@@ -8,6 +8,7 @@
 /** @file script_order.cpp Implementation of ScriptOrder. */
 
 #include "../../stdafx.h"
+#include <ranges>
 #include "script_order.hpp"
 #include "script_cargo.hpp"
 #include "script_map.hpp"
@@ -34,7 +35,7 @@ static OrderType GetOrderTypeByTile(TileIndex t)
 	switch (::GetTileType(t)) {
 		default: break;
 		case MP_STATION:
-			if (IsBuoy(t) || IsRailWaypoint(t)) return OT_GOTO_WAYPOINT;
+			if (IsBuoy(t) || IsRailWaypoint(t) || IsRoadWaypoint(t)) return OT_GOTO_WAYPOINT;
 			if (IsHangar(t)) return OT_GOTO_DEPOT;
 			return OT_GOTO_STATION;
 
@@ -67,15 +68,12 @@ static const Order *ResolveOrder(VehicleID vehicle_id, ScriptOrder::OrderPositio
 		order_position = ScriptOrder::ResolveOrderPosition(vehicle_id, order_position);
 		if (order_position == ScriptOrder::ORDER_INVALID) return nullptr;
 	}
-	const Order *order = v->GetFirstOrder();
-	assert(order != nullptr);
-	while (order->GetType() == OT_IMPLICIT) order = order->next;
-	while (order_position > 0) {
-		order_position = (ScriptOrder::OrderPosition)(order_position - 1);
-		order = order->next;
-		while (order->GetType() == OT_IMPLICIT) order = order->next;
-	}
-	return order;
+
+	auto real_orders = v->Orders() | std::views::filter([](const Order &order) { return !order.IsType(OT_IMPLICIT); });
+	auto it = std::ranges::next(std::begin(real_orders), order_position, std::end(real_orders));
+	if (it != std::end(real_orders)) return &*it;
+
+	return nullptr;
 }
 
 /**
@@ -91,17 +89,10 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 
 	assert(ScriptOrder::IsValidVehicleOrder(vehicle_id, order_position));
 
-	int res = (int)order_position;
-	const Order *order = v->orders->GetFirstOrder();
-	assert(order != nullptr);
-	for (; order->GetType() == OT_IMPLICIT; order = order->next) res++;
-	while (order_position > 0) {
-		order_position = (ScriptOrder::OrderPosition)(order_position - 1);
-		order = order->next;
-		for (; order->GetType() == OT_IMPLICIT; order = order->next) res++;
-	}
-
-	return res;
+	auto orders = v->Orders();
+	auto real_orders = orders | std::views::filter([](const Order &order) { return !order.IsType(OT_IMPLICIT); });
+	auto it = std::ranges::next(std::begin(real_orders), order_position, std::end(real_orders));
+	return static_cast<int>(std::distance(std::begin(orders), it.base()));
 }
 
 /**
@@ -111,14 +102,13 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
  */
 static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(VehicleID vehicle_id, int order_position)
 {
-	const Order *order = ::Vehicle::Get(vehicle_id)->GetFirstOrder();
-	assert(order != nullptr);
-	int num_implicit_orders = 0;
-	for (int i = 0; i < order_position; i++) {
-		if (order->GetType() == OT_IMPLICIT) num_implicit_orders++;
-		order = order->next;
-	}
-	return static_cast<ScriptOrder::OrderPosition>(order_position - num_implicit_orders);
+	const Vehicle *v = ::Vehicle::Get(vehicle_id);
+
+	auto orders = v->Orders();
+	auto first = std::begin(orders);
+	auto last = std::ranges::next(first, order_position, std::end(orders));
+	int num_implicit = static_cast<int>(std::count_if(first, last, [](const Order &order) { return order.IsType(OT_IMPLICIT); }));
+	return static_cast<ScriptOrder::OrderPosition>(order_position - num_implicit);
 }
 
 /* static */ bool ScriptOrder::IsGotoStationOrder(VehicleID vehicle_id, OrderPosition order_position)
@@ -296,8 +286,12 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 				for (TileIndex t : wp->train_station) {
 					if (wp->TileBelongsToRailStation(t)) return t;
 				}
+			} else if (wp->road_waypoint_area.tile != INVALID_TILE) {
+				for (TileIndex t : wp->road_waypoint_area) {
+					if (::IsRoadWaypointTile(t) && ::GetStationIndex(t) == wp->index) return t;
+				}
 			}
-			/* If the waypoint has no rail waypoint tiles, it must have a buoy */
+			/* If the waypoint has no rail or road waypoint tiles, it must have a buoy */
 			return wp->xy;
 		}
 		default:               return INVALID_TILE;
@@ -579,7 +573,7 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
  * between the wanted and the current order.
  * @param instance The script instance we are doing the callback for.
  */
-static void _DoCommandReturnSetOrderFlags(class ScriptInstance *instance)
+static void _DoCommandReturnSetOrderFlags(class ScriptInstance &instance)
 {
 	ScriptObject::SetLastCommandRes(ScriptOrder::_SetOrderFlags());
 	ScriptInstance::DoCommandReturn(instance);

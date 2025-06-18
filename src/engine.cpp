@@ -959,7 +959,7 @@ static bool IsVehicleTypeDisabled(VehicleType type, bool ai)
 }
 
 /** Daily check to offer an exclusive engine preview to the companies. */
-static IntervalTimer<TimerGameCalendar> _calendar_engines_daily({TimerGameCalendar::DAY, TimerGameCalendar::Priority::ENGINE}, [](auto)
+static const IntervalTimer<TimerGameCalendar> _calendar_engines_daily({TimerGameCalendar::DAY, TimerGameCalendar::Priority::ENGINE}, [](auto)
 {
 	for (Company *c : Company::Iterate()) {
 		c->avail_railtypes = AddDateIntroducedRailTypes(c->avail_railtypes, TimerGameCalendar::date);
@@ -976,7 +976,7 @@ static IntervalTimer<TimerGameCalendar> _calendar_engines_daily({TimerGameCalend
 					CloseWindowById(WC_ENGINE_PREVIEW, i);
 					e->preview_company = CompanyID::Invalid();
 				}
-			} else if (CountBits(e->preview_asked.base()) < MAX_COMPANIES) {
+			} else if (e->preview_asked.Count() < MAX_COMPANIES) {
 				e->preview_company = GetPreviewCompany(e);
 
 				if (e->preview_company == CompanyID::Invalid()) {
@@ -1085,22 +1085,13 @@ static void NewVehicleAvailable(Engine *e)
 	 * prevent that company from getting future intro periods for a while. */
 	if (e->flags.Test(EngineFlag::ExclusivePreview)) {
 		for (Company *c : Company::Iterate()) {
-			uint block_preview = c->block_preview;
-
 			if (!e->company_avail.Test(c->index)) continue;
 
-			/* We assume the user did NOT build it.. prove me wrong ;) */
-			c->block_preview = 20;
-
-			for (const Vehicle *v : Vehicle::Iterate()) {
-				if (v->type == VEH_TRAIN || v->type == VEH_ROAD || v->type == VEH_SHIP ||
-						(v->type == VEH_AIRCRAFT && Aircraft::From(v)->IsNormalAircraft())) {
-					if (v->owner == c->index && v->engine_type == index) {
-						/* The user did prove me wrong, so restore old value */
-						c->block_preview = block_preview;
-						break;
-					}
-				}
+			/* Check the company's 'ALL_GROUP' group statistics. This only includes countable vehicles, which is fine
+			 * as those are the only engines that can be given exclusive previews. */
+			if (GetGroupNumEngines(c->index, ALL_GROUP, e->index) == 0) {
+				/* The company did not build this engine during preview. */
+				c->block_preview = 20;
 			}
 		}
 	}
@@ -1192,7 +1183,7 @@ void CalendarEnginesMonthlyLoop()
 	}
 }
 
-static IntervalTimer<TimerGameCalendar> _calendar_engines_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::ENGINE}, [](auto)
+static const IntervalTimer<TimerGameCalendar> _calendar_engines_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::ENGINE}, [](auto)
 {
 	CalendarEnginesMonthlyLoop();
 });

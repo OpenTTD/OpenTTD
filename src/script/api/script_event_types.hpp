@@ -62,7 +62,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventVehicleCrashed *Convert(ScriptEvent *instance) { return (ScriptEventVehicleCrashed *)instance; }
+	static ScriptEventVehicleCrashed *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventVehicleCrashed *>(instance); }
 
 	/**
 	 * Get the VehicleID of the crashed vehicle.
@@ -123,7 +123,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventSubsidyOffer *Convert(ScriptEvent *instance) { return (ScriptEventSubsidyOffer *)instance; }
+	static ScriptEventSubsidyOffer *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventSubsidyOffer *>(instance); }
 
 	/**
 	 * Get the SubsidyID of the subsidy.
@@ -156,7 +156,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventSubsidyOfferExpired *Convert(ScriptEvent *instance) { return (ScriptEventSubsidyOfferExpired *)instance; }
+	static ScriptEventSubsidyOfferExpired *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventSubsidyOfferExpired *>(instance); }
 
 	/**
 	 * Get the SubsidyID of the subsidy.
@@ -189,7 +189,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventSubsidyAwarded *Convert(ScriptEvent *instance) { return (ScriptEventSubsidyAwarded *)instance; }
+	static ScriptEventSubsidyAwarded *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventSubsidyAwarded *>(instance); }
 
 	/**
 	 * Get the SubsidyID of the subsidy.
@@ -222,7 +222,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventSubsidyExpired *Convert(ScriptEvent *instance) { return (ScriptEventSubsidyExpired *)instance; }
+	static ScriptEventSubsidyExpired *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventSubsidyExpired *>(instance); }
 
 	/**
 	 * Get the SubsidyID of the subsidy.
@@ -257,7 +257,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventEnginePreview *Convert(ScriptEvent *instance) { return (ScriptEventEnginePreview *)instance; }
+	static ScriptEventEnginePreview *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventEnginePreview *>(instance); }
 
 	/**
 	 * Get the name of the offered engine.
@@ -349,7 +349,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventCompanyNew *Convert(ScriptEvent *instance) { return (ScriptEventCompanyNew *)instance; }
+	static ScriptEventCompanyNew *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventCompanyNew *>(instance); }
 
 	/**
 	 * Get the CompanyID of the company that has been created.
@@ -383,7 +383,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventCompanyRenamed *Convert(ScriptEvent *instance) { return static_cast<ScriptEventCompanyRenamed *>(instance); }
+	static ScriptEventCompanyRenamed *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventCompanyRenamed *>(instance); }
 
 	/**
 	 * Get the CompanyID of the company that has been renamed.
@@ -425,7 +425,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventCompanyInTrouble *Convert(ScriptEvent *instance) { return (ScriptEventCompanyInTrouble *)instance; }
+	static ScriptEventCompanyInTrouble *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventCompanyInTrouble *>(instance); }
 
 	/**
 	 * Get the CompanyID of the company that is in trouble.
@@ -460,7 +460,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventCompanyAskMerger *Convert(ScriptEvent *instance) { return (ScriptEventCompanyAskMerger *)instance; }
+	static ScriptEventCompanyAskMerger *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventCompanyAskMerger *>(instance); }
 
 	/**
 	 * Get the CompanyID of the company that can be bought.
@@ -511,7 +511,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventCompanyMerger *Convert(ScriptEvent *instance) { return (ScriptEventCompanyMerger *)instance; }
+	static ScriptEventCompanyMerger *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventCompanyMerger *>(instance); }
 
 	/**
 	 * Get the CompanyID of the company that has been bought.
@@ -554,7 +554,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventCompanyBankrupt *Convert(ScriptEvent *instance) { return (ScriptEventCompanyBankrupt *)instance; }
+	static ScriptEventCompanyBankrupt *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventCompanyBankrupt *>(instance); }
 
 	/**
 	 * Get the CompanyID of the company that has gone bankrupt.
@@ -587,7 +587,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventVehicleLost *Convert(ScriptEvent *instance) { return (ScriptEventVehicleLost *)instance; }
+	static ScriptEventVehicleLost *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventVehicleLost *>(instance); }
 
 	/**
 	 * Get the VehicleID of the vehicle that is lost.
@@ -620,7 +620,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventVehicleWaitingInDepot *Convert(ScriptEvent *instance) { return (ScriptEventVehicleWaitingInDepot *)instance; }
+	static ScriptEventVehicleWaitingInDepot *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventVehicleWaitingInDepot *>(instance); }
 
 	/**
 	 * Get the VehicleID of the vehicle that is waiting in a depot.
@@ -653,7 +653,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventVehicleUnprofitable *Convert(ScriptEvent *instance) { return (ScriptEventVehicleUnprofitable *)instance; }
+	static ScriptEventVehicleUnprofitable *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventVehicleUnprofitable *>(instance); }
 
 	/**
 	 * Get the VehicleID of the vehicle that lost money.
@@ -686,7 +686,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventIndustryOpen *Convert(ScriptEvent *instance) { return (ScriptEventIndustryOpen *)instance; }
+	static ScriptEventIndustryOpen *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventIndustryOpen *>(instance); }
 
 	/**
 	 * Get the IndustryID of the new industry.
@@ -719,7 +719,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventIndustryClose *Convert(ScriptEvent *instance) { return (ScriptEventIndustryClose *)instance; }
+	static ScriptEventIndustryClose *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventIndustryClose *>(instance); }
 
 	/**
 	 * Get the IndustryID of the closing industry.
@@ -752,7 +752,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventEngineAvailable *Convert(ScriptEvent *instance) { return (ScriptEventEngineAvailable *)instance; }
+	static ScriptEventEngineAvailable *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventEngineAvailable *>(instance); }
 
 	/**
 	 * Get the EngineID of the new engine.
@@ -787,7 +787,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventStationFirstVehicle *Convert(ScriptEvent *instance) { return (ScriptEventStationFirstVehicle *)instance; }
+	static ScriptEventStationFirstVehicle *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventStationFirstVehicle *>(instance); }
 
 	/**
 	 * Get the StationID of the visited station.
@@ -827,7 +827,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventDisasterZeppelinerCrashed *Convert(ScriptEvent *instance) { return (ScriptEventDisasterZeppelinerCrashed *)instance; }
+	static ScriptEventDisasterZeppelinerCrashed *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventDisasterZeppelinerCrashed *>(instance); }
 
 	/**
 	 * Get the StationID of the station containing the affected airport.
@@ -860,7 +860,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventDisasterZeppelinerCleared *Convert(ScriptEvent *instance) { return (ScriptEventDisasterZeppelinerCleared *)instance; }
+	static ScriptEventDisasterZeppelinerCleared *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventDisasterZeppelinerCleared *>(instance); }
 
 	/**
 	 * Get the StationID of the station containing the affected airport.
@@ -893,7 +893,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventTownFounded *Convert(ScriptEvent *instance) { return (ScriptEventTownFounded *)instance; }
+	static ScriptEventTownFounded *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventTownFounded *>(instance); }
 
 	/**
 	 * Get the TownID of the town.
@@ -928,7 +928,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventAircraftDestTooFar *Convert(ScriptEvent *instance) { return (ScriptEventAircraftDestTooFar *)instance; }
+	static ScriptEventAircraftDestTooFar *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventAircraftDestTooFar *>(instance); }
 
 	/**
 	 * Get the VehicleID of the aircraft whose destination is too far away.
@@ -958,7 +958,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventAdminPort *Convert(ScriptEvent *instance) { return (ScriptEventAdminPort *)instance; }
+	static ScriptEventAdminPort *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventAdminPort *>(instance); }
 
 #ifndef DOXYGEN_API
 	/**
@@ -1003,7 +1003,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventWindowWidgetClick *Convert(ScriptEvent *instance) { return (ScriptEventWindowWidgetClick *)instance; }
+	static ScriptEventWindowWidgetClick *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventWindowWidgetClick *>(instance); }
 
 	/**
 	 * Get the class of the window that was clicked.
@@ -1056,7 +1056,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventGoalQuestionAnswer *Convert(ScriptEvent *instance) { return (ScriptEventGoalQuestionAnswer *)instance; }
+	static ScriptEventGoalQuestionAnswer *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventGoalQuestionAnswer *>(instance); }
 
 	/**
 	 * Get the unique id of the question.
@@ -1106,7 +1106,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventCompanyTown *Convert(ScriptEvent *instance) { return (ScriptEventCompanyTown *)instance; }
+	static ScriptEventCompanyTown *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventCompanyTown *>(instance); }
 
 	/**
 	 * Get the CompanyID of the company.
@@ -1147,7 +1147,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventExclusiveTransportRights *Convert(ScriptEventCompanyTown *instance) { return (ScriptEventExclusiveTransportRights *)instance; }
+	static ScriptEventExclusiveTransportRights *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventExclusiveTransportRights *>(instance); }
 };
 
 /**
@@ -1172,7 +1172,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventRoadReconstruction *Convert(ScriptEventCompanyTown *instance) { return (ScriptEventRoadReconstruction *)instance; }
+	static ScriptEventRoadReconstruction *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventRoadReconstruction *>(instance); }
 };
 
 /**
@@ -1198,7 +1198,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventVehicleAutoReplaced *Convert(ScriptEvent *instance) { return (ScriptEventVehicleAutoReplaced *)instance; }
+	static ScriptEventVehicleAutoReplaced *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventVehicleAutoReplaced *>(instance); }
 
 	/**
 	 * Get the VehicleID of the vehicle that has been replaced.
@@ -1242,7 +1242,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventStoryPageButtonClick *Convert(ScriptEvent *instance) { return (ScriptEventStoryPageButtonClick *)instance; }
+	static ScriptEventStoryPageButtonClick *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventStoryPageButtonClick *>(instance); }
 
 	/**
 	 * Get the CompanyID of the player that selected a tile.
@@ -1295,7 +1295,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventStoryPageTileSelect *Convert(ScriptEvent *instance) { return (ScriptEventStoryPageTileSelect *)instance; }
+	static ScriptEventStoryPageTileSelect *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventStoryPageTileSelect *>(instance); }
 
 	/**
 	 * Get the CompanyID of the player that selected a tile.
@@ -1355,7 +1355,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventStoryPageVehicleSelect *Convert(ScriptEvent *instance) { return (ScriptEventStoryPageVehicleSelect *)instance; }
+	static ScriptEventStoryPageVehicleSelect *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventStoryPageVehicleSelect *>(instance); }
 
 	/**
 	 * Get the CompanyID of the player that selected a tile.
@@ -1413,7 +1413,7 @@ public:
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static ScriptEventPresidentRenamed *Convert(ScriptEvent *instance) { return static_cast<ScriptEventPresidentRenamed *>(instance); }
+	static ScriptEventPresidentRenamed *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventPresidentRenamed *>(instance); }
 
 	/**
 	 * Get the CompanyID of the company that got its president renamed.

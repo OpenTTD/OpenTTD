@@ -110,11 +110,6 @@ SQFuncState::SQFuncState(SQSharedState *ss,SQFuncState *parent)
 
 }
 
-void SQFuncState::Error(const SQChar *err)
-{
-	throw CompileException(err);
-}
-
 #ifdef _DEBUG_DUMP
 void SQFuncState::Dump(SQFunctionProto *func)
 {
@@ -234,7 +229,7 @@ SQInteger SQFuncState::GetConstant(const SQObject &cons)
 		_nliterals++;
 		if(_nliterals > MAX_LITERALS) {
 			val.Null();
-			Error("internal compiler error: too many literals");
+			throw CompileException("internal compiler error: too many literals");
 		}
 	}
 	return _integer(val);
@@ -264,7 +259,7 @@ SQInteger SQFuncState::AllocStackPos()
 	SQInteger npos=_vlocals.size();
 	_vlocals.push_back(SQLocalVarInfo());
 	if(_vlocals.size()>((SQUnsignedInteger)_stacksize)) {
-		if(_stacksize>MAX_FUNC_STACKSIZE) Error("internal compiler error: too many locals");
+		if(_stacksize>MAX_FUNC_STACKSIZE) throw CompileException("internal compiler error: too many locals");
 		_stacksize=_vlocals.size();
 	}
 	return npos;
@@ -499,9 +494,9 @@ void SQFuncState::AddInstruction(SQInstruction &i)
 	_instructions.push_back(i);
 }
 
-SQObject SQFuncState::CreateString(const SQChar *s,SQInteger len)
+SQObject SQFuncState::CreateString(std::string_view s)
 {
-	SQObjectPtr ns(SQString::Create(_sharedstate,s,len));
+	SQObjectPtr ns(SQString::Create(_sharedstate,s));
 	_table(_strings)->NewSlot(ns,(SQInteger)1);
 	return std::move(ns);
 }
@@ -539,7 +534,7 @@ SQFunctionProto *SQFuncState::BuildProto()
 	for(SQUnsignedInteger no = 0; no < _lineinfos.size(); no++) f->_lineinfos[no] = _lineinfos[no];
 	for(SQUnsignedInteger no = 0; no < _defaultparams.size(); no++) f->_defaultparams[no] = _defaultparams[no];
 
-	memcpy(f->_instructions,&_instructions[0],(size_t)_instructions.size()*sizeof(SQInstruction));
+	std::copy_n(&_instructions[0], _instructions.size(), f->_instructions);
 
 	f->_varparams = _varparams;
 

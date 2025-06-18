@@ -820,8 +820,9 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}کھیل
 
 
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}کرنسی کی اکائیاں
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}کرنسی کی اکائی اختیار کریں
+
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :کرنسی کی اکائیاں
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :کرنسی کی اکائی اختیار کریں
 
 
 ###length 45
@@ -858,21 +859,21 @@ STR_GAME_OPTIONS_CURRENCY_KRW                                   :جنوبی کو
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :جنوبی افریقہ کے رنڈ
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :اپنی مرضی کی ۔۔۔
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}خود مختار بچاو
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}خودمختار کھیل بچانے کے درمیان وقفہ اختیار کریں
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :خود مختار بچاو
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :خودمختار کھیل بچانے کے درمیان وقفہ اختیار کریں
 
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :بند
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}زبان
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}استعمال کرنے کےلئے زبان اختیار کئیجیے
+STR_GAME_OPTIONS_LANGUAGE                                       :زبان
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :استعمال کرنے کےلئے زبان اختیار کئیجیے
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}مُکمل سکرین
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}مُکمل اسکرین پر کھیلنے کے لئے اِس ڈبے کو نشان لگائیں
+STR_GAME_OPTIONS_FULLSCREEN                                     :مُکمل سکرین
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :مُکمل اسکرین پر کھیلنے کے لئے اِس ڈبے کو نشان لگائیں
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}اسکرین کی resolution
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}اسکرین کی resolution اختیار کریں
+STR_GAME_OPTIONS_RESOLUTION                                     :اسکرین کی resolution
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :اسکرین کی resolution اختیار کریں
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :دیگر
 
 
@@ -885,17 +886,18 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :دیگر
 
 
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}بُنیادی گرافک سیٹ
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}بُنیادی گرافک سیٹ اختیار کریں
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}بُنیادی گرافک سیٹ کے بارے میں اضافی معلومات
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}بُنیادی صوتی سیٹ
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}بُنیادی صوتی سیٹ اختیار کریں
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}بُنیادی صوتی سیٹ کے بارے میں اضافی معلومات
+STR_GAME_OPTIONS_BASE_GRF                                       :بُنیادی گرافک سیٹ
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :بُنیادی گرافک سیٹ اختیار کریں
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :بُنیادی گرافک سیٹ کے بارے میں اضافی معلومات
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}بُنیادی موسیقی سیٹ
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}بُنیادی موسیقی سیٹ اختیار کریں
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}بُنیادی موسیقی سیٹ کے بارے میں اضافی معلومات
+STR_GAME_OPTIONS_BASE_SFX                                       :بُنیادی صوتی سیٹ
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :بُنیادی صوتی سیٹ اختیار کریں
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :بُنیادی صوتی سیٹ کے بارے میں اضافی معلومات
+
+STR_GAME_OPTIONS_BASE_MUSIC                                     :بُنیادی موسیقی سیٹ
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :بُنیادی موسیقی سیٹ اختیار کریں
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :بُنیادی موسیقی سیٹ کے بارے میں اضافی معلومات
 
 
 
@@ -995,7 +997,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :مخالفان�
 STR_CITY_APPROVAL_PERMISSIVE                                    :اجازت دینے والا
 
 
-# Settings tree window
+# Settings tree in the Game Options window
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(کوئی وضاحت موجود نہیں)
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}ترتیب قسم: {ORANGE}{STRING}
 
@@ -1507,7 +1509,6 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE} ۔ ۔ �
 # Video initalization errors
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}نیا کھیل
 STR_INTRO_LOAD_GAME                                             :{BLACK}کھیل لوڈ کریں
@@ -1517,7 +1518,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}منظر
 STR_INTRO_MULTIPLAYER                                           :{BLACK}زیادہ کھلاڑی
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}کھیل کے اختیارات
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF چنئے
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}آن لائن مواد دیکھیں
 STR_INTRO_QUIT                                                  :{BLACK}باہر نکلو
 
@@ -1534,7 +1534,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}منظر
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}منظر کشی کا 'toyland' طریقہ چُنئیے
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}کھیل کے اختیارات دکھائیں
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF سیٹنگز دیکھیئے
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}نئے اور ترمیم شدہ مواد کو ڈاون لوڈ کرنے کے لئے چیک کریں
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD' سے باہر نکلو
 
@@ -2157,6 +2156,7 @@ STR_FOUND_TOWN_SIZE_RANDOM                                      :{G=m}{BLACK}ک�
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}شہر کا حجم منتخب کرو
 STR_FOUND_TOWN_CITY                                             :{BLACK}شہر
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}شہر کی سڑکوں کا پھیلائو:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}اس شہر کیلئے سڑکوں کا بھیلائو منتخب کرو
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}اصلی
@@ -2261,8 +2261,6 @@ STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}اپگر
 
 
 # NewGRF save preset window
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}منسوخ
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}پریسیٹ تبدیل نہ کریں
 STR_SAVE_PRESET_SAVE                                            :{BLACK}بچایں
 
 # NewGRF parameters window
@@ -2673,7 +2671,6 @@ STR_ORDER_OUT_OF_RANGE                                          :{RED} (اگلا
 # Time table window
 
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :زیادہ سے زیادہ {2:VELOCITY} رفتار پر سفر کریں (بغیر اوقات کے)
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{STRING} کے لئے زیادہ سے زیادہ {VELOCITY} رفتار پر سفر کریں
 
 

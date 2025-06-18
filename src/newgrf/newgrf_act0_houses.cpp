@@ -103,10 +103,10 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 	}
 
 	/* Allocate house specs if they haven't been allocated already. */
-	if (_cur.grffile->housespec.size() < last) _cur.grffile->housespec.resize(last);
+	if (_cur_gps.grffile->housespec.size() < last) _cur_gps.grffile->housespec.resize(last);
 
 	for (uint id = first; id < last; ++id) {
-		auto &housespec = _cur.grffile->housespec[id];
+		auto &housespec = _cur_gps.grffile->housespec[id];
 
 		if (prop != 0x08 && housespec == nullptr) {
 			/* If the house property 08 is not yet set, ignore this property */
@@ -137,7 +137,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 					housespec->enabled = true;
 					housespec->grf_prop.local_id = id;
 					housespec->grf_prop.subst_id = subs_id;
-					housespec->grf_prop.SetGRFFile(_cur.grffile);
+					housespec->grf_prop.SetGRFFile(_cur_gps.grffile);
 					/* Set default colours for randomization, used if not overridden. */
 					housespec->random_colour[0] = COLOUR_RED;
 					housespec->random_colour[1] = COLOUR_BLUE;
@@ -145,7 +145,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 					housespec->random_colour[3] = COLOUR_GREEN;
 
 					/* House flags 40 and 80 are exceptions; these flags are never set automatically. */
-					housespec->building_flags.Reset(BuildingFlag::IsChurch).Reset(BuildingFlag::IsStadium);
+					housespec->building_flags.Reset({BuildingFlag::IsChurch, BuildingFlag::IsStadium});
 
 					/* Make sure that the third cargo type is valid in this
 					 * climate. This can cause problems when copying the properties
@@ -233,7 +233,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 					continue;
 				}
 
-				_house_mngr.Add(id, _cur.grffile->grfid, override_id);
+				_house_mngr.Add(id, _cur_gps.grffile->grfid, override_id);
 				break;
 			}
 
@@ -253,18 +253,19 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 				housespec->extra_flags = static_cast<HouseExtraFlags>(buf.ReadByte());
 				break;
 
-			case 0x1A: // Animation frames
-				housespec->animation.frames = buf.ReadByte();
-				housespec->animation.status = GB(housespec->animation.frames, 7, 1);
-				SB(housespec->animation.frames, 7, 1, 0);
+			case 0x1A: { // Animation frames
+				uint8_t info = buf.ReadByte();
+				housespec->animation.frames = GB(info, 0, 7);
+				housespec->animation.status = HasBit(info, 7) ? AnimationStatus::Looping : AnimationStatus::NonLooping;
 				break;
+			}
 
 			case 0x1B: // Animation speed
 				housespec->animation.speed = Clamp(buf.ReadByte(), 2, 16);
 				break;
 
 			case 0x1C: // Class of the building type
-				housespec->class_id = AllocateHouseClassID(buf.ReadByte(), _cur.grffile->grfid);
+				housespec->class_id = AllocateHouseClassID(buf.ReadByte(), _cur_gps.grffile->grfid);
 				break;
 
 			case 0x1D: { // Callback mask part 2
@@ -283,7 +284,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 				for (uint j = 0; j < HOUSE_ORIGINAL_NUM_ACCEPTS; j++) {
 					/* Get the cargo number from the 'list' */
 					uint8_t cargo_part = GB(cargotypes, 8 * j, 8);
-					CargoType cargo = GetCargoTranslation(cargo_part, _cur.grffile);
+					CargoType cargo = GetCargoTranslation(cargo_part, _cur_gps.grffile);
 
 					if (!IsValidCargoType(cargo)) {
 						/* Disable acceptance of invalid cargo type */
@@ -303,7 +304,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 			case 0x20: { // Cargo acceptance watch list
 				uint8_t count = buf.ReadByte();
 				for (uint8_t j = 0; j < count; j++) {
-					CargoType cargo = GetCargoTranslation(buf.ReadByte(), _cur.grffile);
+					CargoType cargo = GetCargoTranslation(buf.ReadByte(), _cur_gps.grffile);
 					if (IsValidCargoType(cargo)) SetBit(housespec->watched_cargoes, cargo);
 				}
 				break;
@@ -330,7 +331,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 				 * any risks of array overrun. */
 				for (uint i = 0; i < lengthof(housespec->accepts_cargo); i++) {
 					if (i < count) {
-						housespec->accepts_cargo[i] = GetCargoTranslation(buf.ReadByte(), _cur.grffile);
+						housespec->accepts_cargo[i] = GetCargoTranslation(buf.ReadByte(), _cur_gps.grffile);
 						housespec->cargo_acceptance[i] = buf.ReadByte();
 					} else {
 						housespec->accepts_cargo[i] = INVALID_CARGO;

@@ -68,7 +68,7 @@ public:
 	void   Send_uint16(uint16_t data);
 	void   Send_uint32(uint32_t data);
 	void   Send_uint64(uint64_t data);
-	void   Send_string(const std::string_view data);
+	void   Send_string(std::string_view data);
 	void   Send_buffer(const std::vector<uint8_t> &data);
 	std::span<const uint8_t> Send_bytes(const std::span<const uint8_t> span);
 
@@ -95,29 +95,22 @@ public:
 	 * Transfer data from the packet to the given function. It starts reading at the
 	 * position the last transfer stopped.
 	 * See Packet::TransferIn for more information about transferring data to functions.
-	 * @param transfer_function The function to pass the buffer as second parameter and the
-	 *                          amount to write as third parameter. It returns the amount that
-	 *                          was written or -1 upon errors.
+	 * @param transfer_function The function to pass span of bytes to write to.
+	 *                          It returns the amount that was written or -1 upon errors.
 	 * @param limit             The maximum amount of bytes to transfer.
-	 * @param destination       The first parameter of the transfer function.
-	 * @param args              The fourth and further parameters to the transfer function, if any.
+	 * @tparam F The type of the transfer_function.
 	 * @return The return value of the transfer_function.
 	 */
-	template <
-		typename A = size_t, ///< The type for the amount to be passed, so it can be cast to the right type.
-		typename F,          ///< The type of the function.
-		typename D,          ///< The type of the destination.
-		typename ... Args>   ///< The types of the remaining arguments to the function.
-	ssize_t TransferOutWithLimit(F transfer_function, size_t limit, D destination, Args&& ... args)
+	template <typename F>
+	ssize_t TransferOutWithLimit(F transfer_function, size_t limit)
 	{
 		size_t amount = std::min(this->RemainingBytesToTransfer(), limit);
 		if (amount == 0) return 0;
 
 		assert(this->pos < this->buffer.size());
 		assert(this->pos + amount <= this->buffer.size());
-		/* Making buffer a char means casting a lot in the Recv/Send functions. */
-		const char *output_buffer = reinterpret_cast<const char*>(this->buffer.data() + this->pos);
-		ssize_t bytes = transfer_function(destination, output_buffer, static_cast<A>(amount), std::forward<Args>(args)...);
+		auto output_buffer = std::span<const uint8_t>(this->buffer.data() + this->pos, amount);
+		ssize_t bytes = transfer_function(output_buffer);
 		if (bytes > 0) this->pos += bytes;
 		return bytes;
 	}
@@ -126,21 +119,15 @@ public:
 	 * Transfer data from the packet to the given function. It starts reading at the
 	 * position the last transfer stopped.
 	 * See Packet::TransferIn for more information about transferring data to functions.
-	 * @param transfer_function The function to pass the buffer as second parameter and the
-	 *                          amount to write as third parameter. It returns the amount that
-	 *                          was written or -1 upon errors.
-	 * @param destination       The first parameter of the transfer function.
-	 * @param args              The fourth and further parameters to the transfer function, if any.
-	 * @tparam A    The type for the amount to be passed, so it can be cast to the right type.
-	 * @tparam F    The type of the transfer_function.
-	 * @tparam D    The type of the destination.
-	 * @tparam Args The types of the remaining arguments to the function.
+	 * @param transfer_function The function to pass span of bytes to write to.
+	 *                          It returns the amount that was written or -1 upon errors.
+	 * @tparam F The type of the transfer_function.
 	 * @return The return value of the transfer_function.
 	 */
-	template <typename A = size_t, typename F, typename D, typename ... Args>
-	ssize_t TransferOut(F transfer_function, D destination, Args&& ... args)
+	template <typename F>
+	ssize_t TransferOut(F transfer_function)
 	{
-		return TransferOutWithLimit<A>(transfer_function, std::numeric_limits<size_t>::max(), destination, std::forward<Args>(args)...);
+		return TransferOutWithLimit(transfer_function, std::numeric_limits<size_t>::max());
 	}
 
 	/**
@@ -161,28 +148,21 @@ public:
 	 *
 	 * This will attempt to write all the remaining bytes into the packet. It updates the
 	 * position based on how many bytes were actually written by the called transfer_function.
-	 * @param transfer_function The function to pass the buffer as second parameter and the
-	 *                          amount to read as third parameter. It returns the amount that
-	 *                          was read or -1 upon errors.
-	 * @param source            The first parameter of the transfer function.
-	 * @param args              The fourth and further parameters to the transfer function, if any.
-	 * @tparam A    The type for the amount to be passed, so it can be cast to the right type.
-	 * @tparam F    The type of the transfer_function.
-	 * @tparam S    The type of the source.
-	 * @tparam Args The types of the remaining arguments to the function.
+	 * @param transfer_function The function to pass a span of bytes to read to.
+	 *                          It returns the amount that was read or -1 upon errors.
+	 * @tparam F The type of the transfer_function.
 	 * @return The return value of the transfer_function.
 	 */
-	template <typename A = size_t, typename F, typename S, typename ... Args>
-	ssize_t TransferIn(F transfer_function, S source, Args&& ... args)
+	template <typename F>
+	ssize_t TransferIn(F transfer_function)
 	{
 		size_t amount = this->RemainingBytesToTransfer();
 		if (amount == 0) return 0;
 
 		assert(this->pos < this->buffer.size());
 		assert(this->pos + amount <= this->buffer.size());
-		/* Making buffer a char means casting a lot in the Recv/Send functions. */
-		char *input_buffer = reinterpret_cast<char*>(this->buffer.data() + this->pos);
-		ssize_t bytes = transfer_function(source, input_buffer, static_cast<A>(amount), std::forward<Args>(args)...);
+		auto input_buffer = std::span<uint8_t>(this->buffer.data() + this->pos, amount);
+		ssize_t bytes = transfer_function(input_buffer);
 		if (bytes > 0) this->pos += bytes;
 		return bytes;
 	}

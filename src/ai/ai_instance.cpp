@@ -27,7 +27,7 @@
 #include "table/strings.h"
 
 /* Manually include the Text glue. */
-#include "../script/api/template/template_text.hpp.sq"
+#include "../script/api/template/template_text.sq.hpp"
 
 /* Convert all AI related classes to Squirrel data. */
 #include "../script/api/ai/ai_includes.hpp"
@@ -43,7 +43,7 @@ void AIInstance::Initialize(AIInfo *info)
 	this->api_version = info->GetAPIVersion();
 
 	/* Register the AIController (including the "import" command) */
-	SQAIController_Register(this->engine);
+	SQAIController_Register(*this->engine);
 
 	ScriptInstance::Initialize(info->GetMainScript(), info->GetInstanceName(), _current_company);
 }
@@ -53,7 +53,7 @@ void AIInstance::RegisterAPI()
 	ScriptInstance::RegisterAPI();
 
 	/* Register all classes */
-	SQAI_RegisterAll(this->engine);
+	SQAI_RegisterAll(*this->engine);
 
 	if (!this->LoadCompatibilityScripts(AI_DIR, AIInfo::ApiVersions)) this->Died();
 }

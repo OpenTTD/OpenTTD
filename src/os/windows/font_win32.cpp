@@ -11,7 +11,6 @@
 #include "../../debug.h"
 #include "../../blitter/factory.hpp"
 #include "../../core/math_func.hpp"
-#include "../../core/mem_func.hpp"
 #include "../../error_func.h"
 #include "../../fileio_func.h"
 #include "../../fontcache.h"
@@ -225,9 +224,8 @@ void Win32FontCache::ClearFontCache()
 
 	/* GDI has rendered the glyph, now we allocate a sprite and copy the image into it. */
 	SpriteLoader::SpriteCollection spritecollection;
-	SpriteLoader::Sprite &sprite = spritecollection[ZOOM_LVL_MIN];
-	sprite.AllocateData(ZOOM_LVL_MIN, width * height);
-	sprite.type = SpriteType::Font;
+	SpriteLoader::Sprite &sprite = spritecollection[ZoomLevel::Min];
+	sprite.AllocateData(ZoomLevel::Min, width * height);
 	sprite.colours = SpriteComponent::Palette;
 	if (aa) sprite.colours.Set(SpriteComponent::Alpha);
 	sprite.width = width;
@@ -266,7 +264,7 @@ void Win32FontCache::ClearFontCache()
 	}
 
 	UniquePtrSpriteAllocator allocator;
-	BlitterFactory::GetCurrentBlitter()->Encode(spritecollection, allocator);
+	BlitterFactory::GetCurrentBlitter()->Encode(SpriteType::Font, spritecollection, allocator);
 
 	GlyphEntry new_glyph;
 	new_glyph.data = std::move(allocator.data);
@@ -369,8 +367,7 @@ void LoadWin32Font(FontSize fs)
 	std::string font = GetFontCacheFontName(fs);
 	if (font.empty()) return;
 
-	LOGFONT logfont;
-	MemSetT(&logfont, 0);
+	LOGFONT logfont{};
 	logfont.lfPitchAndFamily = fs == FS_MONO ? FIXED_PITCH : VARIABLE_PITCH;
 	logfont.lfCharSet = DEFAULT_CHARSET;
 	logfont.lfOutPrecision = OUT_OUTLINE_PRECIS;

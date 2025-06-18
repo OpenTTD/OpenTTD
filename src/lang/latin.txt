@@ -574,7 +574,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Exire
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Ludi optiones
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Electiones
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Optiones NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Optiones perluciditatis
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Nomina oppidorum spectabilia
@@ -1046,8 +1045,9 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Ludi opt
 
 
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unitates nummi
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Electio unitatum nummi
+
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Unitates nummi
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Electio unitatum nummi
 
 
 ###length 45
@@ -1087,21 +1087,21 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgiana
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Regalis Iranica
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Novus Rubelus Russicus
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Servare automatice
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Eligere crebritatem automatice ludum servandi
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Servare automatice
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Eligere crebritatem automatice ludum servandi
 
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Numquam
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Lingua
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Eligere linguam interfaciei
+STR_GAME_OPTIONS_LANGUAGE                                       :Lingua
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Eligere linguam interfaciei
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Cunctum scrinium
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Optione electa, OpenTTD cuncto scrinio ostenditur
+STR_GAME_OPTIONS_FULLSCREEN                                     :Cunctum scrinium
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Optione electa, OpenTTD cuncto scrinio ostenditur
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolutio scrinii
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Eligere resolutio scrinii adhibenda
+STR_GAME_OPTIONS_RESOLUTION                                     :Resolutio scrinii
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Eligere resolutio scrinii adhibenda
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :alia
 
 
@@ -1114,17 +1114,18 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :alia
 
 
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Fundamentum graphicum
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Eligere fundamentum graphicum adhibendum
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Indicia additicia de hoc fundamento graphico
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Fundamentum sonicum
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Eligere fundamentum sonicum adhibendum
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Indicia additicia de hoc fundamento sonico
+STR_GAME_OPTIONS_BASE_GRF                                       :Fundamentum graphicum
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Eligere fundamentum graphicum adhibendum
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Indicia additicia de hoc fundamento graphico
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Fundamentum musicum
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Eligere fundamentum musicum adhibendum
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Indicia additicia de hoc fundamento musico
+STR_GAME_OPTIONS_BASE_SFX                                       :Fundamentum sonicum
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Eligere fundamentum sonicum adhibendum
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Indicia additicia de hoc fundamento sonico
+
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Fundamentum musicum
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Eligere fundamentum musicum adhibendum
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Indicia additicia de hoc fundamento musico
 
 
 
@@ -1227,11 +1228,10 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Longe
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nullae IA parabiles sunt...{}Potes arcessere nunullas IA in 'Inventario Interretiale'
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Electiones
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Series colans:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Omnia expandere
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Omnia collocare
+# Settings tree in the Game Options window
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Series colans:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Omnia expandere
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Omnia collocare
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(nulla explicatio parabilis)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor solitus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Electionis typus: {ORANGE}{STRING}
@@ -1241,9 +1241,9 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Electio ludi (i
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Electio societatis (inclusa in ludis servatis; modo ludos novos afficit)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Electio societatis (inclusa in ludo servato; modo societatem currentem afficit)
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categoria:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Typus:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Definit indicem optionum ut solum electiones simplices aut mutatae monstrentur
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Categoria:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Typus:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Definit indicem optionum ut solum electiones simplices aut mutatae monstrentur
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Electiones simplices (modo monstrare electiones magni momenti)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Electiones doctae (monstrare pleras electiones)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Electiones peritae (monstrare omnes electiones, etiam insolitas)
@@ -1260,9 +1260,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Electiones soci
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Nullae -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Monstrare eventum investigationis optione separatum{}{SILVER}Categoria {BLACK}ad {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Monstrare eventum investigationis optione separatum{}{SILVER}Typus {BLACK}ad {WHITE}Omnes electionis typi
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Monstrare eventum investigationis optione separatum{}{SILVER}Categoria {BLACK}ad {WHITE}{STRING} {BLACK}et {SILVER}Typus {BLACK}ad {WHITE}Omnes electionis typi
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Monstrare eventum investigationis optione separatum{}{SILVER}Categoria {BLACK}ad {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Monstrare eventum investigationis optione separatum{}{SILVER}Typus {BLACK}ad {WHITE}Omnes electionis typi
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Monstrare eventum investigationis optione separatum{}{SILVER}Categoria {BLACK}ad {WHITE}{STRING} {BLACK}et {SILVER}Typus {BLACK}ad {WHITE}Omnes electionis typi
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Non
@@ -2064,7 +2064,6 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Non potu
 # Video initalization errors
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Ludus Novus
 STR_INTRO_LOAD_GAME                                             :{BLACK}Legere Ludum
@@ -2075,8 +2074,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Plurium 
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Ludi Optiones
 STR_INTRO_HIGHSCORE                                             :{BLACK}Album Punctorum Supremorum
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Electiones
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Optiones
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Inspicere Inventarium Interretiale
 STR_INTRO_QUIT                                                  :{BLACK}Exire
 
@@ -2094,8 +2091,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Eligere 
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Monstrare ludi optiones
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Monstrare album punctorum supremorum
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Monstrare electiones
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Monstrare optiones NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Inspicere inventarium Interretiale in quo res sicut NewGRF, scaenaria, musica, etc. sunt
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Exire OpenTTD
 
@@ -2772,6 +2767,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Eligere 
 STR_FOUND_TOWN_CITY                                             :{BLACK}Urbs
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Urbes crescunt oppidis celerius{}Etiam maiores sunt cum conduntur
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Dispositio viarum oppidi:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Eligere dispositionem viarum huic oppido adhibendam
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Originalis
@@ -3118,14 +3114,11 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Servare 
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Index rationum. Unam elige ut transcribatur nomini infero
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Inscribe nomen rationis
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Nomen electum rationis conservandum
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Cancellare
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Non mutare rationem
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Servare
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Rationem conservare huic nomini
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Mutare parametra NewGRF
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Claudere
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Redire
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Facere ut quodque parametrum solito reversum sit
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametrum {NUM}
@@ -4203,7 +4196,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horarius
 STR_TIMETABLE_NO_TRAVEL                                         :(Non est navigandum)
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Iter (horarius curatur a secundo fixo iusso)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Iter (sine horario)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Iter cum {2:VELOCITY} velocitas maxima (sine horario)
 STR_TIMETABLE_TRAVEL_FOR                                        :Iter {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Iter {STRING} cum {VELOCITY} velocitas maxima
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Iter ({STRING}, sine horario)
@@ -4313,13 +4305,10 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Accipere
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Eligere scriptum
-STR_AI_LIST_CANCEL                                              :{BLACK}Cancellare
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Non scriptum mutare
 
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :IA
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Claudere
 STR_AI_SETTINGS_RESET                                           :{BLACK}Revertere
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

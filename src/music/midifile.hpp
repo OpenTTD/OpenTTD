@@ -10,7 +10,6 @@
 #ifndef MUSIC_MIDIFILE_HPP
 #define MUSIC_MIDIFILE_HPP
 
-#include "../stdafx.h"
 #include "../fileio_type.h"
 #include "midi.h"
 
@@ -19,7 +18,7 @@ struct MusicSongInfo;
 struct MidiFile {
 	struct DataBlock {
 		uint32_t ticktime; ///< tick number since start of file this block should be triggered at
-		uint32_t realtime = 0; ///< real-time (microseconds) since start of file this block should be triggered at
+		int64_t realtime = 0; ///< real-time (microseconds) since start of file this block should be triggered at
 		std::vector<uint8_t> data; ///< raw midi data contained in block
 		DataBlock(uint32_t _ticktime = 0) : ticktime(_ticktime) { }
 	};

@@ -65,7 +65,7 @@ static constexpr NWidgetPart _nested_dropdown_menu_widgets[] = {
 };
 
 static WindowDesc _dropdown_desc(
-	WDP_MANUAL, nullptr, 0, 0,
+	WDP_MANUAL, {}, 0, 0,
 	WC_DROPDOWN_MENU, WC_NONE,
 	WindowDefaultFlag::NoFocus,
 	_nested_dropdown_menu_widgets
@@ -77,6 +77,7 @@ struct DropdownWindow : Window {
 	Rect wi_rect{}; ///< Rect of the button that opened the dropdown.
 	DropDownList list{}; ///< List with dropdown menu items.
 	int selected_result = 0; ///< Result value of the selected item in the list.
+	int selected_click_result = -1; ///< Click result value, from the OnClick handler of the selected item.
 	uint8_t click_delay = 0; ///< Timer to delay selection.
 	bool drag_mode = true;
 	bool instant_close = false; ///< Close the window when the mouse button is raised.
@@ -131,7 +132,7 @@ struct DropdownWindow : Window {
 		Point pt = _cursor.pos;
 		pt.x -= this->parent->left;
 		pt.y -= this->parent->top;
-		this->parent->OnDropdownClose(pt, this->parent_button, this->selected_result, this->instant_close);
+		this->parent->OnDropdownClose(pt, this->parent_button, this->selected_result, this->selected_click_result, this->instant_close);
 
 		/* Set flag on parent widget to indicate that we have just closed. */
 		NWidgetCore *nwc = this->parent->GetWidget<NWidgetCore>(this->parent_button);
@@ -225,14 +226,15 @@ struct DropdownWindow : Window {
 
 	/**
 	 * Find the dropdown item under the cursor.
-	 * @param[out] value Selected item, if function returns \c true.
+	 * @param[out] result Selected item, if function returns \c true.
+	 * @param[out] click_result Click result from OnClick of Selected item, if function returns \c true.
 	 * @return Cursor points to a dropdown item.
 	 */
-	bool GetDropDownItem(int &value)
+	bool GetDropDownItem(int &result, int &click_result)
 	{
 		if (GetWidgetFromPos(this, _cursor.pos.x - this->left, _cursor.pos.y - this->top) < 0) return false;
 
-		const Rect &r = this->GetWidget<NWidgetBase>(WID_DM_ITEMS)->GetCurrentRect().Shrink(WidgetDimensions::scaled.dropdownlist);
+		const Rect &r = this->GetWidget<NWidgetBase>(WID_DM_ITEMS)->GetCurrentRect().Shrink(WidgetDimensions::scaled.dropdownlist).Shrink(WidgetDimensions::scaled.dropdowntext, RectPadding::zero);
 		int y     = _cursor.pos.y - this->top - r.top;
 		int pos   = this->vscroll->GetPosition();
 
@@ -244,7 +246,8 @@ struct DropdownWindow : Window {
 
 			if (y < item_height) {
 				if (item->masked || !item->Selectable()) return false;
-				value = item->result;
+				result = item->result;
+				click_result = item->OnClick({r.left, 0, r.right, item_height - 1}, {_cursor.pos.x - this->left, y});
 				return true;
 			}
 
@@ -275,7 +278,7 @@ struct DropdownWindow : Window {
 				bool selected = (this->selected_result == item->result) && item->Selectable();
 				if (selected) GfxFillRect(full, PC_BLACK);
 
-				item->Draw(full, full.Shrink(WidgetDimensions::scaled.dropdowntext, RectPadding::zero), selected, colour);
+				item->Draw(full, full.Shrink(WidgetDimensions::scaled.dropdowntext, RectPadding::zero), selected, selected ? this->selected_click_result : -1, colour);
 			}
 			y += item_height;
 		}
@@ -284,16 +287,17 @@ struct DropdownWindow : Window {
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		if (widget != WID_DM_ITEMS) return;
-		int item;
-		if (this->GetDropDownItem(item)) {
+		int result, click_result;
+		if (this->GetDropDownItem(result, click_result)) {
 			this->click_delay = 4;
-			this->selected_result = item;
+			this->selected_result = result;
+			this->selected_click_result = click_result;
 			this->SetDirty();
 		}
 	}
 
 	/** Rate limit how fast scrolling happens. */
-	IntervalTimer<TimerWindow> scroll_interval = {std::chrono::milliseconds(30), [this](auto) {
+	const IntervalTimer<TimerWindow> scroll_interval = {std::chrono::milliseconds(30), [this](auto) {
 		if (this->scrolling == 0) return;
 
 		if (this->vscroll->UpdatePosition(this->scrolling)) this->SetDirty();
@@ -307,16 +311,16 @@ struct DropdownWindow : Window {
 			/* Close the dropdown, so it doesn't affect new window placement.
 			 * Also mark it dirty in case the callback deals with the screen. (e.g. screenshots). */
 			if (!this->persist) this->Close();
-			this->parent->OnDropdownSelect(this->parent_button, this->selected_result);
+			this->parent->OnDropdownSelect(this->parent_button, this->selected_result, this->selected_click_result);
 			return;
 		}
 
 		if (this->drag_mode) {
-			int item;
+			int result, click_result;
 
 			if (!_left_button_clicked) {
 				this->drag_mode = false;
-				if (!this->GetDropDownItem(item)) {
+				if (!this->GetDropDownItem(result, click_result)) {
 					if (this->instant_close) this->Close();
 					return;
 				}
@@ -332,30 +336,33 @@ struct DropdownWindow : Window {
 					return;
 				}
 
-				if (!this->GetDropDownItem(item)) return;
+				if (!this->GetDropDownItem(result, click_result)) return;
 			}
 
-			if (this->selected_result != item) {
-				this->selected_result = item;
+			if (this->selected_result != result || this->selected_click_result != click_result) {
+				this->selected_result = result;
+				this->selected_click_result = click_result;
 				this->SetDirty();
 			}
 		}
 	}
 
-	void ReplaceList(DropDownList &&list)
+	void ReplaceList(DropDownList &&list, std::optional<int> selected_result)
 	{
 		this->list = std::move(list);
+		if (selected_result.has_value()) this->selected_result = *selected_result;
 		this->UpdateSizeAndPosition();
 		this->ReInit(0, 0);
 		this->InitializePositionSize(this->position.x, this->position.y, this->nested_root->smallest_x, this->nested_root->smallest_y);
+		this->FindWindowPlacementAndResize(this->window_desc.GetDefaultWidth(), this->window_desc.GetDefaultHeight(), true);
 		this->SetDirty();
 	}
 };
 
-void ReplaceDropDownList(Window *parent, DropDownList &&list)
+void ReplaceDropDownList(Window *parent, DropDownList &&list, std::optional<int> selected_result)
 {
 	DropdownWindow *ddw = dynamic_cast<DropdownWindow *>(parent->FindChildWindow(WC_DROPDOWN_MENU));
-	if (ddw != nullptr) ddw->ReplaceList(std::move(list));
+	if (ddw != nullptr) ddw->ReplaceList(std::move(list), selected_result);
 }
 
 /**

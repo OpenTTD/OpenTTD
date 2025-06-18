@@ -41,6 +41,7 @@
 #include "../timer/timer_game_calendar.h"
 #include "../textfile_gui.h"
 #include "../stringfilter_type.h"
+#include "../core/string_consumer.hpp"
 
 #include "../widgets/network_widget.h"
 
@@ -475,8 +476,7 @@ public:
 	{
 		switch (widget) {
 			case WID_NG_MATRIX:
-				resize.height = std::max(GetSpriteSize(SPR_BLOT).height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
-				fill.height = resize.height;
+				fill.height = resize.height = std::max(GetSpriteSize(SPR_BLOT).height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
 				size.height = 12 * resize.height;
 				break;
 
@@ -502,7 +502,7 @@ public:
 
 			case WID_NG_MAPSIZE: {
 				size.width += 2 * Window::SortButtonWidth(); // Make space for the arrow
-				auto max_map_size = GetParamMaxValue(0, MAX_MAP_SIZE);
+				auto max_map_size = GetParamMaxValue(MAX_MAP_SIZE);
 				size = maxdim(size, GetStringBoundingBox(GetString(STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT, max_map_size, max_map_size)));
 				break;
 			}
@@ -623,8 +623,8 @@ public:
 		tr.top += header_height;
 
 		/* Draw the right menu */
-		/* Create the nice grayish rectangle at the details top */
-		GfxFillRect(r.WithHeight(header_height).Shrink(WidgetDimensions::scaled.bevel), PC_DARK_BLUE);
+		/* Create the nice darker rectangle at the details top */
+		GfxFillRect(r.WithHeight(header_height).Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(COLOUR_LIGHT_BLUE, SHADE_NORMAL));
 		hr.top = DrawStringMultiLine(hr, header_msg, TC_FROMSTRING, SA_HOR_CENTER);
 		if (sel == nullptr) return;
 
@@ -670,10 +670,6 @@ public:
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
-			case WID_NG_CANCEL: // Cancel button
-				CloseWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME);
-				break;
-
 			case WID_NG_NAME:    // Sort by name
 			case WID_NG_CLIENTS: // Sort by connected clients
 			case WID_NG_MAPSIZE: // Sort by map size
@@ -832,7 +828,7 @@ public:
 	}
 
 	/** Refresh the online servers on a regular interval. */
-	IntervalTimer<TimerWindow> refresh_interval = {std::chrono::seconds(30), [this](uint) {
+	const IntervalTimer<TimerWindow> refresh_interval = {std::chrono::seconds(30), [this](uint) {
 		if (!this->searched_internet) return;
 
 		_network_coordinator_client.GetListing();
@@ -909,7 +905,7 @@ static constexpr NWidgetPart _nested_network_game_widgets[] = {
 								NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_NEWGRF_MISSING), SetFill(1, 0), SetStringTip(STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON, STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP),
 							EndContainer(),
 							NWidget(NWID_SELECTION, INVALID_COLOUR, WID_NG_NEWGRF_SEL),
-								NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_NEWGRF), SetFill(1, 0), SetStringTip(STR_INTRO_NEWGRF_SETTINGS),
+								NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_NEWGRF), SetFill(1, 0), SetStringTip(STR_MAPGEN_NEWGRF_SETTINGS, STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP),
 							EndContainer(),
 							NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 								NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_JOIN), SetFill(1, 0), SetStringTip(STR_NETWORK_SERVER_LIST_JOIN_GAME),
@@ -925,7 +921,6 @@ static constexpr NWidgetPart _nested_network_game_widgets[] = {
 				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_SEARCH_LAN), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN, STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_ADD), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_NETWORK_SERVER_LIST_ADD_SERVER, STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_START), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_NETWORK_SERVER_LIST_START_SERVER, STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_CANCEL), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_BUTTON_CANCEL),
 			EndContainer(),
 		EndContainer(),
 		/* Resize button. */
@@ -1086,7 +1081,7 @@ struct NetworkStartServerWindow : public Window {
 		}
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		switch (widget) {
 			case WID_NSS_CONNTYPE_BTN:
@@ -1101,7 +1096,7 @@ struct NetworkStartServerWindow : public Window {
 
 	bool CheckServerName()
 	{
-		std::string str = this->name_editbox.text.GetText();
+		std::string str{this->name_editbox.text.GetText()};
 		if (!NetworkValidateServerName(str)) return false;
 
 		SetSettingValue(GetSettingFromName("network.server_name")->AsStringSetting(), std::move(str));
@@ -1120,12 +1115,13 @@ struct NetworkStartServerWindow : public Window {
 		if (this->widget_id == WID_NSS_SETPWD) {
 			_settings_client.network.server_password = std::move(*str);
 		} else {
-			int32_t value = atoi(str->c_str());
+			auto value = ParseInteger<int32_t>(*str, 10, true);
+			if (!value.has_value()) return;
 			this->SetWidgetDirty(this->widget_id);
 			switch (this->widget_id) {
 				default: NOT_REACHED();
-				case WID_NSS_CLIENTS_TXT:    _settings_client.network.max_clients    = Clamp(value, 2, MAX_CLIENTS); break;
-				case WID_NSS_COMPANIES_TXT:  _settings_client.network.max_companies  = Clamp(value, 1, MAX_COMPANIES); break;
+				case WID_NSS_CLIENTS_TXT:    _settings_client.network.max_clients    = Clamp(*value, 2, MAX_CLIENTS); break;
+				case WID_NSS_COMPANIES_TXT:  _settings_client.network.max_companies  = Clamp(*value, 1, MAX_COMPANIES); break;
 			}
 		}
 
@@ -1201,7 +1197,7 @@ static constexpr NWidgetPart _nested_network_start_server_window_widgets[] = {
 };
 
 static WindowDesc _network_start_server_window_desc(
-	WDP_CENTER, nullptr, 0, 0,
+	WDP_CENTER, {}, 0, 0,
 	WC_NETWORK_WINDOW, WC_NONE,
 	{},
 	_nested_network_start_server_window_widgets
@@ -1659,8 +1655,7 @@ public:
 				this->line_height = std::max(height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
 
 				resize.width = 1;
-				resize.height = this->line_height;
-				fill.height = this->line_height;
+				fill.height = resize.height = this->line_height;
 				size.height = std::max(size.height, 5 * this->line_height);
 				break;
 			}
@@ -1771,15 +1766,15 @@ public:
 		return false;
 	}
 
-	void OnDropdownClose(Point pt, WidgetID widget, int index, bool instant_close) override
+	void OnDropdownClose(Point pt, WidgetID widget, int index, int click_result, bool instant_close) override
 	{
 		/* If you close the dropdown outside the list, don't take any action. */
 		if (widget == WID_CL_MATRIX) return;
 
-		Window::OnDropdownClose(pt, widget, index, instant_close);
+		Window::OnDropdownClose(pt, widget, index, click_result, instant_close);
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		switch (widget) {
 			case WID_CL_SERVER_VISIBILITY:
@@ -1900,10 +1895,10 @@ public:
 	void DrawCompany(CompanyID company_id, const Rect &r, uint &line) const
 	{
 		bool rtl = _current_text_dir == TD_RTL;
-		int text_y_offset = CenterBounds(0, this->line_height, GetCharacterHeight(FS_NORMAL));
+		int text_y_offset = CentreBounds(0, this->line_height, GetCharacterHeight(FS_NORMAL));
 
 		Dimension d = GetSpriteSize(SPR_COMPANY_ICON);
-		int offset = CenterBounds(0, this->line_height, d.height);
+		int offset = CentreBounds(0, this->line_height, d.height);
 
 		uint line_start = this->vscroll->GetPosition();
 		uint line_end = line_start + this->vscroll->GetCapacity();
@@ -1961,7 +1956,7 @@ public:
 
 				if (player_icon != 0) {
 					Dimension d2 = GetSpriteSize(player_icon);
-					int offset_y = CenterBounds(0, this->line_height, d2.height);
+					int offset_y = CentreBounds(0, this->line_height, d2.height);
 					DrawSprite(player_icon, PALETTE_TO_GREY, rtl ? tr.right - d2.width : tr.left, y + offset_y);
 					tr = tr.Indent(d2.width + WidgetDimensions::scaled.hsep_normal, rtl);
 				}
@@ -2075,7 +2070,7 @@ struct NetworkJoinStatusWindow : Window {
 						break;
 				}
 				DrawFrameRect(ir.WithWidth(ir.Width() * progress / 100, _current_text_dir == TD_RTL), COLOUR_MAUVE, {});
-				DrawString(ir.left, ir.right, CenterBounds(ir.top, ir.bottom, GetCharacterHeight(FS_NORMAL)), STR_NETWORK_CONNECTING_1 + _network_join_status, TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(ir.left, ir.right, CentreBounds(ir.top, ir.bottom, GetCharacterHeight(FS_NORMAL)), STR_NETWORK_CONNECTING_1 + _network_join_status, TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 			}
 
@@ -2157,7 +2152,7 @@ static constexpr NWidgetPart _nested_network_join_status_window_widgets[] = {
 };
 
 static WindowDesc _network_join_status_window_desc(
-	WDP_CENTER, nullptr, 0, 0,
+	WDP_CENTER, {}, 0, 0,
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
 	WindowDefaultFlag::Modal,
 	_nested_network_join_status_window_widgets
@@ -2186,11 +2181,11 @@ struct NetworkAskRelayWindow : public Window {
 	std::string relay_connection_string{}; ///< The relay server we want to connect to.
 	std::string token{}; ///< The token for this connection.
 
-	NetworkAskRelayWindow(WindowDesc &desc, Window *parent, const std::string &server_connection_string, const std::string &relay_connection_string, const std::string &token) :
+	NetworkAskRelayWindow(WindowDesc &desc, Window *parent, std::string_view server_connection_string, std::string &&relay_connection_string, std::string &&token) :
 		Window(desc),
 		server_connection_string(server_connection_string),
-		relay_connection_string(relay_connection_string),
-		token(token)
+		relay_connection_string(std::move(relay_connection_string)),
+		token(std::move(token))
 	{
 		this->parent = parent;
 		this->InitNested(0);
@@ -2216,7 +2211,7 @@ struct NetworkAskRelayWindow : public Window {
 		}
 	}
 
-	void FindWindowPlacementAndResize([[maybe_unused]] int def_width, [[maybe_unused]] int def_height) override
+	void FindWindowPlacementAndResize(int, int, bool) override
 	{
 		/* Position query window over the calling window, ensuring it's within screen bounds. */
 		this->left = Clamp(parent->left + (parent->width / 2) - (this->width / 2), 0, _screen.width - this->width);
@@ -2264,7 +2259,7 @@ static constexpr NWidgetPart _nested_network_ask_relay_widgets[] = {
 };
 
 static WindowDesc _network_ask_relay_desc(
-	WDP_CENTER, nullptr, 0, 0,
+	WDP_CENTER, {}, 0, 0,
 	WC_NETWORK_ASK_RELAY, WC_NONE,
 	WindowDefaultFlag::Modal,
 	_nested_network_ask_relay_widgets
@@ -2276,12 +2271,12 @@ static WindowDesc _network_ask_relay_desc(
  * @param relay_connection_string The relay server we want to connect to.
  * @param token The token for this connection.
  */
-void ShowNetworkAskRelay(const std::string &server_connection_string, const std::string &relay_connection_string, const std::string &token)
+void ShowNetworkAskRelay(std::string_view server_connection_string, std::string &&relay_connection_string, std::string &&token)
 {
 	CloseWindowByClass(WC_NETWORK_ASK_RELAY, NRWCD_HANDLED);
 
 	Window *parent = GetMainWindow();
-	new NetworkAskRelayWindow(_network_ask_relay_desc, parent, server_connection_string, relay_connection_string, token);
+	new NetworkAskRelayWindow(_network_ask_relay_desc, parent, server_connection_string, std::move(relay_connection_string), std::move(token));
 }
 
 /**
@@ -2309,7 +2304,7 @@ struct NetworkAskSurveyWindow : public Window {
 		}
 	}
 
-	void FindWindowPlacementAndResize([[maybe_unused]] int def_width, [[maybe_unused]] int def_height) override
+	void FindWindowPlacementAndResize(int, int, bool) override
 	{
 		/* Position query window over the calling window, ensuring it's within screen bounds. */
 		this->left = Clamp(parent->left + (parent->width / 2) - (this->width / 2), 0, _screen.width - this->width);
@@ -2321,7 +2316,7 @@ struct NetworkAskSurveyWindow : public Window {
 	{
 		switch (widget) {
 			case WID_NAS_PREVIEW:
-				ShowSurveyResultTextfileWindow();
+				ShowSurveyResultTextfileWindow(this);
 				break;
 
 			case WID_NAS_LINK:
@@ -2362,7 +2357,7 @@ static constexpr NWidgetPart _nested_network_ask_survey_widgets[] = {
 };
 
 static WindowDesc _network_ask_survey_desc(
-	WDP_CENTER, nullptr, 0, 0,
+	WDP_CENTER, {}, 0, 0,
 	WC_NETWORK_ASK_SURVEY, WC_NONE,
 	WindowDefaultFlag::Modal,
 	_nested_network_ask_survey_widgets
@@ -2386,7 +2381,7 @@ void ShowNetworkAskSurvey()
 struct SurveyResultTextfileWindow : public TextfileWindow {
 	const GRFConfig *grf_config; ///< View the textfile of this GRFConfig.
 
-	SurveyResultTextfileWindow(TextfileType file_type) : TextfileWindow(file_type)
+	SurveyResultTextfileWindow(Window *parent, TextfileType file_type) : TextfileWindow(parent, file_type)
 	{
 		this->ConstructWindow();
 
@@ -2396,8 +2391,8 @@ struct SurveyResultTextfileWindow : public TextfileWindow {
 	}
 };
 
-void ShowSurveyResultTextfileWindow()
+void ShowSurveyResultTextfileWindow(Window *parent)
 {
-	CloseWindowById(WC_TEXTFILE, TFT_SURVEY_RESULT);
-	new SurveyResultTextfileWindow(TFT_SURVEY_RESULT);
+	parent->CloseChildWindowById(WC_TEXTFILE, TFT_SURVEY_RESULT);
+	new SurveyResultTextfileWindow(parent, TFT_SURVEY_RESULT);
 }

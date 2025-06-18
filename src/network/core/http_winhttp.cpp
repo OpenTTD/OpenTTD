@@ -37,7 +37,7 @@ private:
 	int depth = 0;                       ///< Current redirect depth we are in.
 
 public:
-	NetworkHTTPRequest(const std::wstring &uri, HTTPCallback *callback, const std::string &data);
+	NetworkHTTPRequest(std::wstring &&uri, HTTPCallback *callback, std::string &&data);
 
 	~NetworkHTTPRequest();
 
@@ -62,10 +62,10 @@ static std::mutex _new_http_callback_mutex;
  * @param callback the callback to send data back on.
  * @param data     the data we want to send. When non-empty, this will be a POST request, otherwise a GET request.
  */
-NetworkHTTPRequest::NetworkHTTPRequest(const std::wstring &uri, HTTPCallback *callback, const std::string &data) :
-	uri(uri),
+NetworkHTTPRequest::NetworkHTTPRequest(std::wstring &&uri, HTTPCallback *callback, std::string &&data) :
+	uri(std::move(uri)),
 	callback(callback),
-	data(data)
+	data(std::move(data))
 {
 	std::lock_guard<std::mutex> lock(_new_http_callback_mutex);
 	_new_http_callbacks.push_back(&this->callback);
@@ -254,7 +254,7 @@ void NetworkHTTPRequest::Connect()
 	} else {
 		/* When the payload starts with a '{', it is a JSON payload. */
 		LPCWSTR content_type = data.starts_with("{") ? L"Content-Type: application/json\r\n" : L"Content-Type: application/x-www-form-urlencoded\r\n";
-		WinHttpSendRequest(this->request, content_type, -1, const_cast<char *>(data.c_str()), static_cast<DWORD>(data.size()), static_cast<DWORD>(data.size()), reinterpret_cast<DWORD_PTR>(this));
+		WinHttpSendRequest(this->request, content_type, -1, const_cast<char *>(data.data()), static_cast<DWORD>(data.size()), static_cast<DWORD>(data.size()), reinterpret_cast<DWORD_PTR>(this));
 	}
 }
 
@@ -291,9 +291,9 @@ NetworkHTTPRequest::~NetworkHTTPRequest()
 	_http_callbacks.erase(std::remove(_http_callbacks.begin(), _http_callbacks.end(), &this->callback), _http_callbacks.end());
 }
 
-/* static */ void NetworkHTTPSocketHandler::Connect(const std::string &uri, HTTPCallback *callback, const std::string data)
+/* static */ void NetworkHTTPSocketHandler::Connect(std::string_view uri, HTTPCallback *callback, std::string &&data)
 {
-	auto request = new NetworkHTTPRequest(std::wstring(uri.begin(), uri.end()), callback, data);
+	auto request = new NetworkHTTPRequest(std::wstring(uri.begin(), uri.end()), callback, std::move(data));
 	request->Connect();
 
 	std::lock_guard<std::mutex> lock(_new_http_requests_mutex);

@@ -101,7 +101,7 @@ const ScoreInfo _score_info[] = {
 	{       0,   0}  // SCORE_TOTAL
 };
 
-ReferenceThroughBaseContainer<std::array<std::array<int64_t, SCORE_END>, MAX_COMPANIES>> _score_part;
+TypedIndexContainer<std::array<std::array<int64_t, SCORE_END>, MAX_COMPANIES>, CompanyID> _score_part;
 Economy _economy;
 Prices _price;
 static PriceMultipliers _price_base_multiplier;
@@ -119,7 +119,7 @@ static Money CalculateCompanyAssetValue(const Company *c)
 	uint num = 0;
 
 	for (const Station *st : Station::Iterate()) {
-		if (st->owner == owner) num += CountBits(st->facilities.base());
+		if (st->owner == owner) num += st->facilities.Count();
 	}
 
 	Money value = num * _price[PR_STATION_VALUE] * 25;
@@ -240,7 +240,7 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 		uint num = 0;
 		for (const Station *st : Station::Iterate()) {
 			/* Only count stations that are actually serviced */
-			if (st->owner == owner && (st->time_since_load <= 20 || st->time_since_unload <= 20)) num += CountBits(st->facilities.base());
+			if (st->owner == owner && (st->time_since_load <= 20 || st->time_since_unload <= 20)) num += st->facilities.Count();
 		}
 		_score_part[owner][SCORE_STATIONS] = num;
 	}
@@ -1167,8 +1167,8 @@ static void TriggerIndustryProduction(Industry *i)
 		}
 	}
 
-	TriggerIndustry(i, INDUSTRY_TRIGGER_RECEIVED_CARGO);
-	StartStopIndustryTileAnimation(i, IAT_INDUSTRY_RECEIVED_CARGO);
+	TriggerIndustryRandomisation(i, IndustryRandomTrigger::CargoReceived);
+	TriggerIndustryAnimation(i, IndustryAnimationTrigger::CargoReceived);
 }
 
 /**
@@ -1779,7 +1779,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 			/* If there's goods waiting at the station, and the vehicle
 			 * has capacity for it, load it on the vehicle. */
 			if ((v->cargo.ActionCount(VehicleCargoList::MTA_LOAD) > 0 || (ge->HasData() && ge->GetData().cargo.AvailableCount() > 0)) && MayLoadUnderExclusiveRights(st, v)) {
-				if (v->cargo.StoredCount() == 0) TriggerVehicle(v, VEHICLE_TRIGGER_NEW_CARGO);
+				if (v->cargo.StoredCount() == 0) TriggerVehicleRandomisation(v, VehicleRandomTrigger::NewCargo);
 				if (_settings_game.order.gradual_loading) cap_left = std::min(cap_left, GetLoadAmount(v));
 
 				uint loaded = ge->GetOrCreateData().cargo.Load(cap_left, &v->cargo, next_station, v->GetCargoTile());
@@ -1811,11 +1811,11 @@ static void LoadUnloadVehicle(Vehicle *front)
 					st->last_vehicle_type = v->type;
 
 					if (ge->GetData().cargo.TotalCount() == 0) {
-						TriggerStationRandomisation(st, st->xy, SRT_CARGO_TAKEN, v->cargo_type);
-						TriggerStationAnimation(st, st->xy, SAT_CARGO_TAKEN, v->cargo_type);
-						AirportAnimationTrigger(st, AAT_STATION_CARGO_TAKEN, v->cargo_type);
-						TriggerRoadStopRandomisation(st, st->xy, RSRT_CARGO_TAKEN, v->cargo_type);
-						TriggerRoadStopAnimation(st, st->xy, SAT_CARGO_TAKEN, v->cargo_type);
+						TriggerStationRandomisation(st, st->xy, StationRandomTrigger::CargoTaken, v->cargo_type);
+						TriggerStationAnimation(st, st->xy, StationAnimationTrigger::CargoTaken, v->cargo_type);
+						TriggerAirportAnimation(st, AirportAnimationTrigger::CargoTaken, v->cargo_type);
+						TriggerRoadStopRandomisation(st, st->xy, StationRandomTrigger::CargoTaken, v->cargo_type);
+						TriggerRoadStopAnimation(st, st->xy, StationAnimationTrigger::CargoTaken, v->cargo_type);
 					}
 
 					new_load_unload_ticks += loaded;
@@ -1834,11 +1834,11 @@ static void LoadUnloadVehicle(Vehicle *front)
 
 	if (anything_loaded || anything_unloaded) {
 		if (front->type == VEH_TRAIN) {
-			TriggerStationRandomisation(st, front->tile, SRT_TRAIN_LOADS);
-			TriggerStationAnimation(st, front->tile, SAT_TRAIN_LOADS);
+			TriggerStationRandomisation(st, front->tile, StationRandomTrigger::VehicleLoads);
+			TriggerStationAnimation(st, front->tile, StationAnimationTrigger::VehicleLoads);
 		} else if (front->type == VEH_ROAD) {
-			TriggerRoadStopRandomisation(st, front->tile, RSRT_VEH_LOADS);
-			TriggerRoadStopAnimation(st, front->tile, SAT_TRAIN_LOADS);
+			TriggerRoadStopRandomisation(st, front->tile, StationRandomTrigger::VehicleLoads);
+			TriggerRoadStopAnimation(st, front->tile, StationAnimationTrigger::VehicleLoads);
 		}
 	}
 
@@ -1910,7 +1910,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 		/* Make sure the vehicle is marked dirty, since we need to update the NewGRF
 		 * properties such as weight, power and TE whenever the trigger runs. */
 		dirty_vehicle = true;
-		TriggerVehicle(front, VEHICLE_TRIGGER_EMPTY);
+		TriggerVehicleRandomisation(front, VehicleRandomTrigger::Empty);
 	}
 
 	if (dirty_vehicle) {
@@ -1969,7 +1969,7 @@ void LoadUnloadStation(Station *st)
 /**
  * Every calendar month update of inflation.
  */
-static IntervalTimer<TimerGameCalendar> _calendar_inflation_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::COMPANY}, [](auto)
+static const IntervalTimer<TimerGameCalendar> _calendar_inflation_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::COMPANY}, [](auto)
 {
 	if (_settings_game.economy.inflation) {
 		AddInflation();
@@ -1980,7 +1980,7 @@ static IntervalTimer<TimerGameCalendar> _calendar_inflation_monthly({TimerGameCa
 /**
  * Every economy month update of company economic data, plus economy fluctuations.
  */
-static IntervalTimer<TimerGameEconomy> _economy_companies_monthly({ TimerGameEconomy::MONTH, TimerGameEconomy::Priority::COMPANY }, [](auto)
+static const IntervalTimer<TimerGameEconomy> _economy_companies_monthly({ TimerGameEconomy::MONTH, TimerGameEconomy::Priority::COMPANY }, [](auto)
 {
 	CompaniesGenStatistics();
 	CompaniesPayInterest();
