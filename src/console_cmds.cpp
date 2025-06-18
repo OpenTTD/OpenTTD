@@ -543,8 +543,12 @@ static bool ConRemove(std::span<std::string_view> argv)
 	_console_file_list_savegame.ValidateFileList();
 	const FiosItem *item = _console_file_list_savegame.FindItem(file);
 	if (item != nullptr) {
-		if (!FioRemove(item->name)) {
-			IConsolePrint(CC_ERROR, "Failed to delete '{}'.", item->name);
+		if (item->type.abstract == FT_SAVEGAME) {
+			if (!FioRemove(item->name)) {
+				IConsolePrint(CC_ERROR, "Failed to delete '{}'.", item->name);
+			}
+		} else {
+			IConsolePrint(CC_ERROR, "'{}' is not a savegame.", file);
 		}
 	} else {
 		IConsolePrint(CC_ERROR, "'{}' could not be found.", file);
