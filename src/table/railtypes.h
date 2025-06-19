@@ -86,7 +86,7 @@ static const RailTypeInfo _original_railtypes[] = {
 		8,
 
 		/* acceleration type */
-		0,
+		VehicleAccelerationModel::Normal,
 
 		/* max speed */
 		0,
@@ -188,7 +188,7 @@ static const RailTypeInfo _original_railtypes[] = {
 		12,
 
 		/* acceleration type */
-		0,
+		VehicleAccelerationModel::Normal,
 
 		/* max speed */
 		0,
@@ -286,7 +286,7 @@ static const RailTypeInfo _original_railtypes[] = {
 		16,
 
 		/* acceleration type */
-		1,
+		VehicleAccelerationModel::Monorail,
 
 		/* max speed */
 		0,
@@ -384,7 +384,7 @@ static const RailTypeInfo _original_railtypes[] = {
 		24,
 
 		/* acceleration type */
-		2,
+		VehicleAccelerationModel::Maglev,
 
 		/* max speed */
 		0,

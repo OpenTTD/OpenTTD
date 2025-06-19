@@ -250,11 +250,11 @@ protected: // These functions should not be called outside acceleration code.
 
 	/**
 	 * Allows to know the acceleration type of a vehicle.
-	 * @return Zero, road vehicles always use a normal acceleration method.
+	 * @return \c VehicleAccelerationModel::Normal, road vehicles always use a normal acceleration method.
 	 */
-	inline int GetAccelerationType() const
+	inline VehicleAccelerationModel GetAccelerationType() const
 	{
-		return 0;
+		return VehicleAccelerationModel::Normal;
 	}
 
 	/**
