@@ -17,9 +17,10 @@ class SpriteFontCache : public FontCache {
 public:
 	SpriteFontCache(FontSize fs);
 	void ClearFontCache() override;
-	const Sprite *GetGlyph(GlyphID key) override;
+	void DrawGlyph(GlyphID key, const Rect &r) override;
+	void DrawGlyphShadow(GlyphID, const Rect &) override {}
 	uint GetGlyphWidth(GlyphID key) override;
-	bool GetDrawGlyphShadow() override;
+	bool GetDrawGlyphShadow() override { return false; }
 	GlyphID MapCharToGlyph(char32_t key) override;
 	std::string GetFontName() override { return "sprite"; }
 	bool IsBuiltInFont() override { return true; }
