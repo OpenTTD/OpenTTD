@@ -302,7 +302,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Allows to know the acceleration type of a vehicle.
 	 * @return Acceleration type of the vehicle.
 	 */
-	inline int GetAccelerationType() const
+	inline VehicleAccelerationModel GetAccelerationType() const
 	{
 		return GetRailTypeInfo(this->railtype)->acceleration_type;
 	}
