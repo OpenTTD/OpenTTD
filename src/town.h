@@ -69,10 +69,10 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 
 	/* Company ratings. */
 	CompanyMask have_ratings{}; ///< which companies have a rating
-	ReferenceThroughBaseContainer<std::array<uint8_t, MAX_COMPANIES>> unwanted{}; ///< how many months companies aren't wanted by towns (bribe)
+	TypedIndexContainer<std::array<uint8_t, MAX_COMPANIES>, CompanyID> unwanted{}; ///< how many months companies aren't wanted by towns (bribe)
 	CompanyID exclusivity = CompanyID::Invalid(); ///< which company has exclusivity
 	uint8_t exclusive_counter = 0; ///< months till the exclusivity expires
-	ReferenceThroughBaseContainer<std::array<int16_t, MAX_COMPANIES>> ratings{};  ///< ratings of each company for this town
+	TypedIndexContainer<std::array<int16_t, MAX_COMPANIES>, CompanyID> ratings{};  ///< ratings of each company for this town
 
 	std::array<TransportedCargoStat<uint32_t>, NUM_CARGO> supplied{}; ///< Cargo statistics about supplied cargo.
 	std::array<TransportedCargoStat<uint16_t>, NUM_TAE> received{}; ///< Cargo statistics about received cargotypes.

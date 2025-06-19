@@ -227,7 +227,7 @@ static constexpr NWidgetPart _nested_social_plugins_none_widgets[] = {
 
 class NWidgetSocialPlugins : public NWidgetVertical {
 public:
-	NWidgetSocialPlugins()
+	NWidgetSocialPlugins() : NWidgetVertical({}, WID_GO_SOCIAL_PLUGINS)
 	{
 		this->plugins = SocialIntegration::GetPlugins();
 
@@ -242,12 +242,6 @@ public:
 		}
 
 		this->SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0);
-	}
-
-	void FillWidgetLookup(WidgetLookup &widget_lookup) override
-	{
-		widget_lookup[WID_GO_SOCIAL_PLUGINS] = this;
-		NWidgetVertical::FillWidgetLookup(widget_lookup);
 	}
 
 	void SetupSmallestSize(Window *w) override
@@ -863,7 +857,7 @@ struct GameOptionsWindow : Window {
 			}
 
 			case WID_GO_OPTIONSPANEL:
-				resize.height = SETTING_HEIGHT = std::max({(int)_setting_circle_size.height, SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)}) + WidgetDimensions::scaled.vsep_normal;
+				fill.height = resize.height = SETTING_HEIGHT = std::max({(int)_setting_circle_size.height, SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)}) + WidgetDimensions::scaled.vsep_normal;
 				resize.width = 1;
 
 				size.height = 8 * resize.height + WidgetDimensions::scaled.framerect.Vertical();
@@ -1375,7 +1369,7 @@ struct GameOptionsWindow : Window {
 
 		int32_t value;
 		if (!str->empty()) {
-			auto llvalue = ParseInteger<int64_t>(*str);
+			auto llvalue = ParseInteger<int64_t>(*str, 10, true);
 			if (!llvalue.has_value()) return;
 
 			/* Save the correct currency-translated value */
@@ -1403,7 +1397,7 @@ struct GameOptionsWindow : Window {
 		}
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		switch (widget) {
 			case WID_GO_CURRENCY_DROPDOWN: // Currency
@@ -1496,14 +1490,14 @@ struct GameOptionsWindow : Window {
 		}
 	}
 
-	void OnDropdownClose(Point pt, WidgetID widget, int index, bool instant_close) override
+	void OnDropdownClose(Point pt, WidgetID widget, int index, int click_result, bool instant_close) override
 	{
 		if (widget != WID_GO_SETTING_DROPDOWN) {
 			/* Normally the default implementation of OnDropdownClose() takes care of
 			 * a few things. We want that behaviour here too, but only for
 			 * "normal" dropdown boxes. The special dropdown boxes added for every
 			 * setting that needs one can't have this call. */
-			Window::OnDropdownClose(pt, widget, index, instant_close);
+			Window::OnDropdownClose(pt, widget, index, click_result, instant_close);
 		} else {
 			/* We cannot raise the dropdown button just yet. OnClick needs some hint, whether
 			 * the same dropdown button was clicked again, and then not open the dropdown again.
@@ -1767,7 +1761,7 @@ static constexpr NWidgetPart _nested_game_options_widgets[] = {
 						NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GO_BASE_MUSIC_DESCRIPTION), SetMinimalTextLines(1, 0), SetToolTip(STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
 							NWidget(NWID_VERTICAL), SetPIPRatio(0, 0, 1),
-								NWidget(WWT_PUSHIMGBTN, GAME_OPTIONS_BUTTON, WID_GO_BASE_MUSIC_JUKEBOX), SetMinimalSize(22, 22), SetSpriteTip(SPR_IMG_MUSIC, STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW),
+								NWidget(WWT_PUSHIMGBTN, GAME_OPTIONS_BUTTON, WID_GO_BASE_MUSIC_JUKEBOX), SetToolbarMinimalSize(1), SetSpriteTip(SPR_IMG_MUSIC, STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW),
 							EndContainer(),
 						EndContainer(),
 						NWidget(NWID_VERTICAL),
@@ -1879,6 +1873,33 @@ void DrawArrowButtons(int x, int y, Colours button_colour, uint8_t state, bool c
 	if (rtl ? !clickable_left : !clickable_right) {
 		GfxFillRect(rr.Shrink(WidgetDimensions::scaled.bevel), colour, FILLRECT_CHECKER);
 	}
+}
+
+/**
+ * Draw [^][v] buttons
+ * @param x the x position to draw
+ * @param y the y position to draw
+ * @param button_colour the colour of the button
+ * @param state 0 = none clicked, 1 = first clicked, 2 = second clicked
+ * @param clickable_up is the up button clickable?
+ * @param clickable_down is the down button clickable?
+ */
+void DrawUpDownButtons(int x, int y, Colours button_colour, uint8_t state, bool clickable_up, bool clickable_down)
+{
+	int colour = GetColourGradient(button_colour, SHADE_DARKER);
+
+	Rect r = {x, y, x + SETTING_BUTTON_WIDTH - 1, y + SETTING_BUTTON_HEIGHT - 1};
+	Rect ur = r.WithWidth(SETTING_BUTTON_WIDTH / 2, (_current_text_dir == TD_RTL));
+	Rect dr = r.WithWidth(SETTING_BUTTON_WIDTH / 2, (_current_text_dir != TD_RTL));
+
+	DrawFrameRect(ur, button_colour, (state == 1) ? FrameFlag::Lowered : FrameFlags{});
+	DrawFrameRect(dr, button_colour, (state == 2) ? FrameFlag::Lowered : FrameFlags{});
+	DrawSpriteIgnorePadding(SPR_ARROW_UP, PAL_NONE, ur, SA_CENTER);
+	DrawSpriteIgnorePadding(SPR_ARROW_DOWN, PAL_NONE, dr, SA_CENTER);
+
+	/* Grey out the buttons that aren't clickable */
+	if (!clickable_up) GfxFillRect(ur.Shrink(WidgetDimensions::scaled.bevel), colour, FILLRECT_CHECKER);
+	if (!clickable_down) GfxFillRect(dr.Shrink(WidgetDimensions::scaled.bevel), colour, FILLRECT_CHECKER);
 }
 
 /**
@@ -2071,7 +2092,7 @@ struct CustomCurrencyWindow : Window {
 
 		switch (this->query_widget) {
 			case WID_CC_RATE: {
-				auto val = ParseInteger(*str);
+				auto val = ParseInteger(*str, 10, true);
 				if (!val.has_value()) return;
 				GetCustomCurrency().rate = Clamp(*val, 1, UINT16_MAX);
 				break;
@@ -2092,7 +2113,7 @@ struct CustomCurrencyWindow : Window {
 			case WID_CC_YEAR: { // Year to switch to euro
 				TimerGameCalendar::Year year = CF_NOEURO;
 				if (!str->empty()) {
-					auto val = ParseInteger(*str);
+					auto val = ParseInteger(*str, 10, true);
 					if (!val.has_value()) return;
 					year = Clamp(static_cast<TimerGameCalendar::Year>(*val), MIN_EURO_YEAR, CalendarTime::MAX_YEAR);
 				}

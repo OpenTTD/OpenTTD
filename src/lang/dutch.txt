@@ -2195,6 +2195,8 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... geen
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Spel is vastgelopen door het GPU-stuurprogramma. Hardwareversnelling wordt uitgeschakeld
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nieuw spel
 STR_INTRO_LOAD_GAME                                             :{BLACK}Spel laden
@@ -3071,6 +3073,12 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Stadsgro
 STR_FOUND_TOWN_CITY                                             :{BLACK}Groeistad
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Groeisteden groeien sneller dan gewone steden{}Afhankelijk van de instellingen kunnen ze ook groter zijn als ze gesticht worden
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Uitbreiding van stad:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Gebouwen
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Meer gebouwen in steden
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Wegen
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Meer wegen in steden
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Wegpatroon
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Wegpatroon voor deze stad kiezen
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Origineel
@@ -3694,6 +3702,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Hiermee 
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Vergroot
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Vergroot stadsgrootte
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Gebouwen uitbreiden
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Meer gebouwen in stad
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Wegen uitbreiden
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Meer wegen in steden
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Verwijder
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Verwijder deze hele stad
 
@@ -4759,7 +4771,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Dienstre
 STR_TIMETABLE_NO_TRAVEL                                         :Niet rijden
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Rijden (automatisch; volgens dienstregeling bij volgende handmatige bestemming)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reis (geen dienstregeling)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Reis met maximaal {2:VELOCITY} (geen dienstregeling)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Reis met maximaal {VELOCITY} (geen dienstregeling)
 STR_TIMETABLE_TRAVEL_FOR                                        :Reis naar {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Reis {STRING} met maximaal {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Reis (gedurende {STRING}, geen dienstregeling)
@@ -5915,3 +5927,11 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Badgeconfiguratie openen
+STR_BADGE_CONFIG_RESET                                          :Terugstellen
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Badgepictogrammen
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Badgefilters
+STR_BADGE_CONFIG_PREVIEW                                        :Voorbeeld
+STR_BADGE_CONFIG_NAME                                           :Naam
+STR_BADGE_FILTER_ANY_LABEL                                      :Willekeurige {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} is {STRING}

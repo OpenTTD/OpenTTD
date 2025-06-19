@@ -583,28 +583,21 @@ StationResolverObject::StationResolverObject(const StationSpec *statspec, BaseSt
 	if (this->station_scope.st == nullptr) {
 		/* No station, so we are in a purchase list */
 		ctype = CargoGRFFileProps::SG_PURCHASE;
-		this->root_spritegroup = statspec->grf_prop.GetSpriteGroup(ctype);
 	} else if (Station::IsExpected(this->station_scope.st)) {
 		const Station *st = Station::From(this->station_scope.st);
 		/* Pick the first cargo that we have waiting */
 		for (const auto &[cargo, spritegroup] : statspec->grf_prop.spritegroups) {
 			if (cargo < NUM_CARGO && st->goods[cargo].HasData() && st->goods[cargo].GetData().cargo.TotalCount() > 0) {
 				ctype = cargo;
-				this->root_spritegroup = spritegroup;
 				break;
 			}
 		}
-
-		if (this->root_spritegroup == nullptr) {
-			ctype = CargoGRFFileProps::SG_DEFAULT_NA;
-			this->root_spritegroup = statspec->grf_prop.GetSpriteGroup(ctype);
-		}
 	}
 
-
+	this->root_spritegroup = this->station_scope.statspec->grf_prop.GetSpriteGroup(ctype);
 	if (this->root_spritegroup == nullptr) {
 		ctype = CargoGRFFileProps::SG_DEFAULT;
-		this->root_spritegroup = statspec->grf_prop.GetSpriteGroup(ctype);
+		this->root_spritegroup = this->station_scope.statspec->grf_prop.GetSpriteGroup(ctype);
 	}
 
 	/* Remember the cargo type we've picked */

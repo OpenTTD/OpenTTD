@@ -828,6 +828,13 @@ function Regression::List()
 	print("  []:");
 	print("    4000 => " + list[4000]);
 
+	print("  clone:");
+	local list3 = clone list;
+	print("  Clone ListDump:");
+	foreach (idx, val in list3) {
+		print("    " + idx + " => " + val);
+	}
+
 	list.Clear();
 	print("  IsEmpty():     " + list.IsEmpty());
 
@@ -860,6 +867,12 @@ function Regression::List()
 		it = list.Next();
 		print("    " + it + " => " + list.GetValue(it));
 	}
+
+	print("  Clone ListDump:");
+	foreach (idx, val in list3) {
+		print("    " + idx + " => " + val);
+	}
+
 }
 
 function Regression::Map()
@@ -1701,13 +1714,22 @@ function Regression::TownList()
 	}
 
 	print("  HasStatue():                     " + AITown.HasStatue(list.Begin()));
-	print("  GetRoadReworkDuration():         " + AITown.GetRoadReworkDuration(list.Begin()));
-	print("  GetExclusiveRightsCompany():     " + AITown.GetExclusiveRightsCompany(list.Begin()));
-	print("  GetExclusiveRightsDuration():    " + AITown.GetExclusiveRightsDuration(list.Begin()));
 	print("  IsActionAvailable(BUILD_STATUE): " + AITown.IsActionAvailable(list.Begin(), AITown.TOWN_ACTION_BUILD_STATUE));
 	print("  PerformTownAction(BUILD_STATUE): " + AITown.PerformTownAction(list.Begin(), AITown.TOWN_ACTION_BUILD_STATUE));
 	print("  IsActionAvailable(BUILD_STATUE): " + AITown.IsActionAvailable(list.Begin(), AITown.TOWN_ACTION_BUILD_STATUE));
 	print("  HasStatue():                     " + AITown.HasStatue(list.Begin()));
+	print("  GetRoadReworkDuration():         " + AITown.GetRoadReworkDuration(list.Begin()));
+	print("  IsActionAvailable(ROAD_REBUILD): " + AITown.IsActionAvailable(list.Begin(), AITown.TOWN_ACTION_ROAD_REBUILD));
+	print("  PerformTownAction(ROAD_REBUILD): " + AITown.PerformTownAction(list.Begin(), AITown.TOWN_ACTION_ROAD_REBUILD));
+	print("  IsActionAvailable(ROAD_REBUILD): " + AITown.IsActionAvailable(list.Begin(), AITown.TOWN_ACTION_ROAD_REBUILD));
+	print("  GetRoadReworkDuration():         " + AITown.GetRoadReworkDuration(list.Begin()));
+	print("  GetExclusiveRightsCompany():     " + AITown.GetExclusiveRightsCompany(list.Begin()));
+	print("  GetExclusiveRightsDuration():    " + AITown.GetExclusiveRightsDuration(list.Begin()));
+	print("  IsActionAvailable(BUY_RIGHTS):   " + AITown.IsActionAvailable(list.Begin(), AITown.TOWN_ACTION_BUY_RIGHTS));
+	print("  PerformTownAction(BUY_RIGHTS):   " + AITown.PerformTownAction(list.Begin(), AITown.TOWN_ACTION_BUY_RIGHTS));
+	print("  IsActionAvailable(BUY_RIGHTS):   " + AITown.IsActionAvailable(list.Begin(), AITown.TOWN_ACTION_BUY_RIGHTS));
+	print("  GetExclusiveRightsCompany():     " + AITown.GetExclusiveRightsCompany(list.Begin()));
+	print("  GetExclusiveRightsDuration():    " + AITown.GetExclusiveRightsDuration(list.Begin()));
 }
 
 function Regression::Tunnel()
@@ -2001,6 +2023,33 @@ function Regression::Math()
 	print("   13725      > -2147483648:   " + ( 13725      > -2147483648));
 }
 
+function Regression::PriorityQueue()
+{
+	print("");
+	print("--PriorityQueue--");
+	local queue = AIPriorityQueue();
+	print("  IsEmpty():    " + queue.IsEmpty());
+	print("  Count():      " + queue.Count());
+	print("  --Insert--")
+	for (local i = 0; i < 10; i++) {
+		print("    Insert(" + i + ", " + i + "): " + queue.Insert(i, i));
+	}
+	print("  Exists(5):    " + queue.Exists(5));
+	print("  Insert(5, 5): "+ queue.Insert(5, 5));
+	print("  IsEmpty():    " + queue.IsEmpty());
+	print("  Count():      " + queue.Count());
+	local item = queue.Peek();
+	print("  Peek():       " + item);
+	print("  Count():      " + queue.Count());
+	local item2 = queue.Pop();
+	print("  Pop():        " + item2);
+	print("  Count():      " + queue.Count());
+	print("  " + item + " == " + item2 + " :      " + (item == item2));
+	print("  Clear():      " + queue.Clear());
+	print("  IsEmpty():    " + queue.IsEmpty());
+	print("  Count():      " + queue.Count());
+}
+
 function Regression::Start()
 {
 	this.TestInit();
@@ -2075,6 +2124,20 @@ function Regression::Start()
 				print("      PresidentName:     " + c.GetNewName());
 			} break;
 
+			case AIEvent.ET_EXCLUSIVE_TRANSPORT_RIGHTS: {
+				local c = AIEventExclusiveTransportRights.Convert(e);
+				print("      EventName:         ExclusiveTransportRights");
+				print("      CompanyID:         " + c.GetCompanyID());
+				print("      TownID:            " + c.GetTownID());
+			} break;
+
+			case AIEvent.ET_ROAD_RECONSTRUCTION: {
+				local c = AIEventRoadReconstruction.Convert(e);
+				print("      EventName:         RoadReconstruction");
+				print("      CompanyID:         " + c.GetCompanyID());
+				print("      TownID:            " + c.GetTownID());
+			} break;
+
 			default:
 				print("      Unknown Event");
 				break;
@@ -2083,12 +2146,18 @@ function Regression::Start()
 	print("  IsEventWaiting:        false");
 
 	this.Math();
+	this.PriorityQueue();
 
 	/* Check Valuate() is actually limited, MUST BE THE LAST TEST. */
 	print("--Valuate() with excessive CPU usage--")
 	local list = AIList();
 	list.AddItem(0, 0);
 	local Infinite = function(id) { while(true); }
+	try {
+		list = AIIndustryList(Infinite);
+	} catch (e) {
+		print("constructor failed with: " + e);
+	}
 	list.Valuate(Infinite);
 }
 

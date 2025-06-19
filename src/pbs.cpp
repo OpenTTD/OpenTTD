@@ -436,8 +436,9 @@ bool IsWaitingPositionFree(const Train *v, TileIndex tile, Trackdir trackdir, bo
 	if (IsRailDepotTile(tile)) return true;
 	if (IsTileType(tile, MP_RAILWAY) && HasSignalOnTrackdir(tile, trackdir) && !IsPbsSignal(GetSignalType(tile, track))) return true;
 
-	/* Check the next tile, if it's a PBS signal, it has to be free as well. */
-	CFollowTrackRail ft(v, GetRailTypeInfo(v->railtype)->compatible_railtypes);
+	/* Check the next tile, it has to be free as well. Do not filter for compatible railtypes
+	 * to make sure we never accidentally join up reservations. */
+	CFollowTrackRail ft(v, RailTypes{});
 
 	if (!ft.Follow(tile, trackdir)) return true;
 

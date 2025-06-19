@@ -285,7 +285,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Luk vind
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Vinduestitel - træk her for at flytte vinduet
 STR_TOOLTIP_SHADE                                               :{BLACK}Oprul vindue - vis kun titellinien
 STR_TOOLTIP_DEBUG                                               :{BLACK}Vis information om NewGRF fejl
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}Gendan vinduets standardstørrelse. Ctrl+Klik for at gemme nuværende størrelse som standard
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Ændre vinduesstørrelsen til standardstørrelsen. Ctrl+klik for at gemme den aktuelle størrelse som standard. Dobbelt Ctrl+klik for at nulstille den gemte standardstørrelse.
 STR_TOOLTIP_STICKY                                              :{BLACK}Marker dette vindue som ulukkeligt af 'Luk ALLE vinduer' tasten. Ctrl+Klik for også at gemme tilstand som standart
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klik og træk for at ændre vinduets størrelse
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Skift mellem stort/lille vindue
@@ -451,7 +451,12 @@ STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Sandkasse mulig
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gennemsigtighedsvalg
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Bynavne vist
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stationsnavne vist
+STR_SETTINGS_MENU_STATION_NAMES_TRAIN                           :Togstationer
+STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :Lastbilen stopper
 STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Busstoppesteder
+STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :Havne
+STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :Lufthavne
+STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :Spøgelse
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Rutepunkt-navne vist
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Viste skilte
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Modstander skilte og navne vist
@@ -932,7 +937,7 @@ STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Tilskudsordning i udbud:{}{}Første {STRING} fra {STRING} til {STRING} vil udløse et {UNITS_YEARS_OR_MINUTES}s tilskud fra den lokale myndighed!
 ###length 4
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Servicetilskud tildelt til {STRING}!{}{}{STRING} fra {STRING} til {STRING} vil betale 50% ekstra for de næste {UNITS_YEARS_OR_MINUTES}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Tilskudsordning tildelt {STRING}!{}{}{STRING} fra {STRING} til {STRING} vil betale dobbelt takster for den næste {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Servicetilskud tildelt {STRING}!{}{}{STRING} fra {STRING} til {STRING} vil betale dobbelt takster for den næste {UNITS_YEARS_OR_MINUTES}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Tilskudsordning tildelt {STRING}!{}{}{STRING} fra {STRING} til {STRING} betaler tredobbelte takster for de næste {UNITS_YEARS_OR_MINUTES}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Tilskudsordning tildelt {STRING}!{}{}{STRING} fra {STRING} til {STRING} betaler firedobbelt takster for de næste {UNITS_YEARS_OR_MINUTES}!
 
@@ -953,23 +958,26 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Bevæg h
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opsætning
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Generel
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Vælg generelle indstillinger
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :Vælg generelle indstillinger
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafik
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Vælg grafikindstillinger
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :Vælg grafikindstillinger
 STR_GAME_OPTIONS_TAB_SOUND                                      :Lyd
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Vælg lyd og musik indstillinger
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Vælg lyd og musik indstillinger
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Social
-STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Vælg sociale integrationsindstillinger
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Vælg indstillinger for social integration
+STR_GAME_OPTIONS_TAB_ADVANCED                                   :Avanceret
+STR_GAME_OPTIONS_TAB_ADVANCED_TOOLTIP                           :Skift avancerede indstillinger
 
 STR_GAME_OPTIONS_VOLUME                                         :Lydstyrke
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Lydeffekter
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :musik
 
+STR_GAME_OPTIONS_SETTING                                        :{STRING}: {ORANGE}{STRING}
 
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valutaenhed
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Valg af valutaenhed
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Valutaenheder
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Valg af valutaenheder
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -1018,9 +1026,10 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesisk Rupi
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysisk Ringgit
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :lettiske lats
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portugisiske Escudo
+STR_GAME_OPTIONS_CURRENCY_UAH                                   :Ukrainsk hryvnia
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatisk gemning
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vælg interval imellem automatisk gemning
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Automatisk gem spil
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Vælg interval imellem automatisk gem spil
 
 # Autosave dropdown
 ###length 5
@@ -1030,77 +1039,79 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Hvert 30. minut
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Hvert 60. minut
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Hvert 120. minut
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Sprog
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Vælg sprog til brugerfladen
+STR_GAME_OPTIONS_LANGUAGE                                       :Sprog
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Vælg sprog til brugerfladen
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% færdig)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Fuld skærm
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Afkryds for at spille OpenTTD i fuld skærm
+STR_GAME_OPTIONS_FULLSCREEN                                     :Fuld skærm
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Afkryds for at spille OpenTTD i fuld skærm
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skærmopløsning
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Vælg ønsket skærmopløsning
+STR_GAME_OPTIONS_RESOLUTION                                     :Skærmopløsning
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Vælg ønsket skærmopløsning
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :andet
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hardware-acceleration
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Marker dette felt for at tillade at OpenTTD forsøger at bruge hardwareacceleration. Ændringer af indstillingen er først effektiv efter spillet er genstartet.
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Hardware-acceleration
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Marker dette felt for at tillade at OpenTTD forsøger at bruge hardwareacceleration. Ændringer af indstillingen er først effektiv efter spillet er genstartet.
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Indstillingen er først effektiv efter spillet er genstartet.
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Afmærk dette felt for at v-synkronisere skærmen. Ændringer af indstillingen er først effektiv efter spillet er genstartet. Fungerer kun med hardware-acceleration aktiveret.
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Afmærk dette felt for at v-synkronisere skærmen. Ændringer af indstillingen er først effektiv efter spillet er genstartet. Fungerer kun med hardware-acceleration aktiveret.
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Nuværende fører: {STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Nuværende fører: {STRING}
 
+STR_GAME_OPTIONS_INTERFACE                                      :Grænseflade
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Interface størrelse
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Træk skyderen for at indstille grænsefladestørrelsen. Hold Ctrl nede for kontinuerlig justering
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Automatisk registrering af størrelse
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Marker dette felt for automatisk at registrere grænsefladestørrelse
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Interface størrelse
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Træk skyderen for at indstille grænsefladestørrelsen. Hold Ctrl nede for kontinuerlig justering
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Automatisk registrering af størrelse
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Marker dette felt for automatisk at registrere grænsefladestørrelse
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Skalere facetter
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Marker dette afkrydsningsfelt for at skalere facetter efter grænsefladestørrelse
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Skalere facetter
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Marker dette afkrydsningsfelt for at skalere facetter efter grænsefladestørrelse
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Brug traditionel sprite-skrifttype
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Marker dette felt, hvis du foretrækker at bruge den traditionelle sprite-skrifttype med fast størrelse
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Anti-alias skrifttyper
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Marker dette felt for at skrifttyper, der kan ændres størrelse, kan udlignes
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Brug traditionel sprite-skrifttype
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Marker dette felt, hvis du foretrækker at bruge den traditionelle sprite-skrifttype med fast størrelse
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Anti-alias skrifttyper
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Marker dette felt for at skrifttyper, der kan ændres størrelse, kan udlignes
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automatiseret undersøgelse
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Deltag i automatiseret undersøgelse
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Når det er aktiveret, sender OpenTTD en undersøgelse, når du forlader et spil
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Automatiseret undersøgelse
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Deltag i automatiseret undersøgelse
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :Når det er aktiveret, sender OpenTTD en undersøgelse, når du forlader et spil
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :Om GPDR og privatliv
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Dette åbner en browser med mere information om den automatiserede undersøgelse
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Forhåndsvisning af undersøgelsesresultat
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Vis undersøgelsesresultatet af det aktuelle spil
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Dette åbner en browser med mere information om den automatiserede undersøgelse
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Forhåndsvisning af undersøgelsesresultat
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Vis undersøgelsesresultatet af det aktuelle spil
 
+STR_GAME_OPTIONS_DISPLAY                                        :Vis
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Skærm opdateringshastighed
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Vælg den opdateringshastighed der skal bruges på skærmen
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Skærm opdateringshastighed
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Vælg den opdateringshastighed der skal bruges på skærmen
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Opdateringshastigheder over 60Hz kan påvirke ydeevnen.
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basis-grafiksæt
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vælg det grundlæggende grafiksæt, der skal bruges
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Yderligere information om basis-grafiksættet
+STR_GAME_OPTIONS_BASE_GRF                                       :Basis-grafiksæt
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Vælg det grundlæggende grafiksæt, der skal bruges (kan ikke ændres i spillet, kun fra hovedmenuen)
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Yderligere information om basis-grafiksættet
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Basis-lydsæt
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Vælg det grundlæggende lyd sæt, der skal bruges
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Mere information om basis-lydsættet
+STR_GAME_OPTIONS_BASE_SFX                                       :Basis lydsæt
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Vælg det grundlæggende lyd sæt, der skal bruges (kan ikke ændres i spillet, kun fra hovedmenuen)
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Mere information om basis lydsættet
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basis-musiksæt
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Vælg basismusik-sæt
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Yderligere information om basismusik-sættet
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Basis musiksæt
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Vælg basismusik sæt
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Yderligere information om basismusik-sættet
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Hent indhold
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Søg efter nyt og opdateret indhold, der skal downloades
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(ingen plugins til at integrere med sociale platforme installeret)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Platform:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Plugin-tilstand:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Platform:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :Plugin-tilstand:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Køre
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Initialisering mislykkedes
@@ -1214,10 +1225,10 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Passiv (ingen i
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Der blev ikke fundet en egnet computer-spiller...{}Du kan downloade flere forskellige computer-spillere gennem 'Online Indhold'.
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filterstreng:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Udvid alle
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Skjul alle
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Nulstil alle værdier
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Filterstreng:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Udvid alle
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Skjul alle
+STR_CONFIG_SETTING_RESET_ALL                                    :Nulstil alle værdier
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ingen forklaring tilgængelig)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standard: {ORANGE}{STRING}
@@ -1230,9 +1241,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Firma indstilli
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Advarsel!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Denne handling vil nulstille alle spilindstillinger til deres standardværdier.{}Ønsker du at fortsætte?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategori:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Type:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Begrænser listen nedenfor så den kun viser ændrede indstillinger
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Kategori:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Type:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Begrænser listen nedenfor så den kun viser ændrede indstillinger
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grund Indstillinger
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avancerede indstillinger
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ekspertindstillinger / alle indstillinger
@@ -1249,9 +1260,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Firma indstilli
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Ingen -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Vis alle søgeresultater ved at sætte{}{SILVER}Kategori {BLACK}to {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Vis alle søgeresultater ved at sætte{}{SILVER}Indtast {BLACK}til {WHITE}Alle Indstillingstyper
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Vis alle søgeresultater ved at sætte{} {SILVER}Kategori {BLACK}til {WHITE} {STRING} {BLACK}og {SILVER} Indtast {BLACK}til {WHITE}Alle Indstillingstyper
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Vis alle søgeresultater ved at sætte{}{SILVER}Kategori {BLACK}to {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Vis alle søgeresultater ved at sætte{}{SILVER}Indtast {BLACK}til {WHITE}Alle Indstillingstyper
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Vis alle søgeresultater ved at sætte{} {SILVER}Kategori {BLACK}til {WHITE} {STRING} {BLACK}og {SILVER} Indtast {BLACK}til {WHITE}Alle Indstillingstyper
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Fra
@@ -1924,6 +1935,7 @@ STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Aldrig
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Økonomitype: {STRING}
 ###length 2
 STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Udjævnet økonomi ændrer produktionsniveauet oftere, og i mindre trin. Frossen økonomi forhindrer ændringer i produktionsniveauet og industrilukninger. Denne indstilling kan muligvis ikke have nogen effekt hvis industrityperne stammer fra en NewGRF
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT_PERIOD                 :Jævn økonomi ændrer produktionen oftere og i mindre trin. En frossen økonomi stopper produktionsændringer og industrilukninger. Denne indstilling har muligvis ingen effekt, hvis industrityper leveres af en NewGRF.{}{}Industriens produktion pr. minut kan stadig synes at variere, hvis økonomien er frossen, fordi produktionen udløses med faste intervaller, der ikke præcist svarer til minutter.
 
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
@@ -1978,7 +1990,12 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Forbudt
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Tilladt
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Tilladt, tilpasset by-layout
 
+STR_CONFIG_SETTING_HOUSE_PLACER                                 :Placering af individuelle byhuse:{STRING}
+STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :Aktivering af denne indstilling giver spillerne mulighed for at placere byhuse manuelt
 ###length 3
+STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :Forbudt
+STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :Tilladt
+STR_CONFIG_SETTING_HOUSE_PLACER_FULLY_CONSTRUCTED               :Tilladt, fuldt konstrueret
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Godsgenerering i byer: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Hvor meget gods der bliver produceret af byers bygninger, i forhold til byens samlede indbyggertal.{}Kvadratisk vækst: En by med dobbelt indbyggertal genererer fire gange så mange passagerer.{}Lineær vækst: En by med dobbelt indbyggertal genererer dobbelt så mange passagerer
@@ -2178,6 +2195,8 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... inge
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU-driver fik spillet til at gå ned. Hardwareacceleration deaktiveret
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nyt spil
 STR_INTRO_LOAD_GAME                                             :{BLACK}Fortsæt spil
@@ -2189,7 +2208,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Netværk
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opsætning
 STR_INTRO_HIGHSCORE                                             :{BLACK} Topresultater
 STR_INTRO_HELP                                                  :{BLACK}Hjælp og manualer
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Tjek Online Indhold
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Online Indhold
 STR_INTRO_QUIT                                                  :{BLACK}Afslut
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start et nyt spil. Ctrl+Klik springer kortindstillingerne over.
@@ -2232,6 +2251,7 @@ STR_HELP_WINDOW_README                                          :{BLACK}Læs mig
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Ændringslog
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Kendte Bugs
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}Licens
+STR_HELP_WINDOW_FONTS                                           :{BLACK}Skrifttyper
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Manual / Wiki
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Anmeld en fejl
@@ -2636,7 +2656,7 @@ STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Din serv
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Andre spillere vil ikke kunne forbinde til din server
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Download af indhold
+STR_CONTENT_TITLE                                               :{WHITE}Online indhold
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Type
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Indholdstype
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Navn
@@ -2835,6 +2855,7 @@ STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}År: {OR
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}År: {ORANGE}til {NUM}
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}Størrelse: {ORANGE}{NUM}x{NUM} fliser
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Gods accepteret: {ORANGE}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Produceret last: {ORANGE}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Kant
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Udkant
@@ -2842,6 +2863,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Ydre Forstæder
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Indre Forstæder
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Bymidte
 
+STR_HOUSE_PICKER_PROTECT_TITLE                                  :Forhindre opgraderinger
+STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Vælg om dette hus skal beskyttes mod udskiftning i takt med at byen vokser
 STR_HOUSE_PICKER_PROTECT_OFF                                    :Slukket
 STR_HOUSE_PICKER_PROTECT_ON                                     :tændt
 
@@ -3050,6 +3073,12 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Vælg by
 STR_FOUND_TOWN_CITY                                             :{BLACK}Storby
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Storbyer vokser hurtigere en almindelige byer{}Afhængig af indstillingerne kan de være større ved grundlæggelsen
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Byudvidelse:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Bygninger
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Forøg bygningerne i byerne
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Veje
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Forøg byernes veje
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Byens vej-layout:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Vælg vej-layout for denne by
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Originalt
@@ -3121,6 +3150,8 @@ STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Sporvejs
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Togspors hastighedsgrænse: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Vej hastighedsbegrænsning: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Sporvogn hastighedsgrænse: {LTBLUE}{VELOCITY}
+STR_LAND_AREA_INFORMATION_TOWN_CAN_UPGRADE                      :{BLACK}Byen kan opgraderes: {LTBLUE}Ja
+STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE                   :{BLACK}Byen kan opgraderes: {LTBLUE}Nej
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Klipper
@@ -3129,6 +3160,9 @@ STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Bart land
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Græs
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Marker
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Ørken
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS                           :Snedækkede klipper
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND                      :Snedækket, ujævnt land
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS                           :Snedækket græs
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Jernbanespor
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Jernbanespor med bloksignaler
@@ -3668,6 +3702,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Ændre n
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Udvid
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Forøg størrelsen af byen
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Udvid bygninger
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Forøg byens bygninger
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Udvid veje
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Forøg byens veje
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Slet
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Slet denne by fuldstændigt
 
@@ -4003,6 +4041,10 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Producer
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Kræver:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX                    :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} venter{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_NOSUFFIX                         :{YELLOW}{0:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX                  :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} venter
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Skift produktion (multipla af 8, op til 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Ændre produktions niveauet (Op til 800%)
@@ -4660,6 +4702,7 @@ STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Værksted
 STR_ORDER_SHIP_DEPOT                                            :Skibsdok
 ###next-name-looks-similar
 
+STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT                           :{STRING} den nærmeste hangar
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} den nærmeste {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
@@ -4682,10 +4725,10 @@ STR_ORDER_UNLOAD_FULL_LOAD                                      :(Los og vent p�
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Los og vent på fuld last af hvilken som helst type fragt)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Los og efterlad tom)
 STR_ORDER_TRANSFER                                              :(Overfør og last fragt)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Overfør og vent på fuld last)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Overfør og vent på fuld last af hvilken som helst type fragt)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Overfør og vent på fuld last)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Overfør og vent på fuld last af hvilken som helst type fragt)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Overfør og efterlad tom)
-STR_ORDER_NO_UNLOAD                                             :(Los ikke og last fragt)
+STR_ORDER_NO_UNLOAD                                             :{SPACE}(Los ikke og last fragt)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Los ikke og vent på fuld last)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Los ikke af og vent på fuld last af hvilken som helst type)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Los ikke og last ikke)
@@ -4697,8 +4740,8 @@ STR_ORDER_UNLOAD_REFIT                                          :(Los og medtag 
 STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Los og vent på fuld last med auto-tilpas til {STRING})
 STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Los og vent på fuld vilkårlig last med auto-tilpas til {STRING})
 STR_ORDER_TRANSFER_REFIT                                        :(Overfør og medtag last med auto-tilpas til {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Overfør og vent på fuld last med auto-tilpas til {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Overfør og vent på fuld vilkårlig last med auto-tilpas til {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :{SPACE}(Overfør og vent på fuld last med auto-tilpas til {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :{SPACE}(Overfør og vent på fuld vilkårlig last med auto-tilpas til {STRING})
 STR_ORDER_NO_UNLOAD_REFIT                                       :(Ingen losning og medtag last med with auto-tilpas til {STRING})
 STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Ingen losning og vent på fuld last med with auto-tilpas til {STRING})
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Ingen losning og vent på fuld vilkårlig last med with auto-tilpas til {STRING})
@@ -4728,7 +4771,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Kørepla
 STR_TIMETABLE_NO_TRAVEL                                         :Rejs ikke
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Rejs (automatisk; planlagt med næste manuelle ordre)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Rejs (ikke iflg. køreplan)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Rejs med højst {2:VELOCITY} (ikke skemalagt)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Rejs med højst {VELOCITY} (ikke skemalagt)
 STR_TIMETABLE_TRAVEL_FOR                                        :Rejs i {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Rejs mod {STRING} med højst {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Køreplan (for {STRING}, ikke skemalagt)
@@ -4755,6 +4798,7 @@ STR_TIMETABLE_START_SECONDS_QUERY                               :Sekunder til ti
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ændre tid
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ændre den tid, som den fremhævede rækkefølge skal tage. Ctrl+klik angiver tidspunktet for alle ordrer
+STR_TIMETABLE_CHANGE_TIME_QUERY                                 :Skift tid
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Nulstil tid
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Nulstil tiden for den markerede ordre. Ctrl+klik for at rydde tiden for alle ordrer
@@ -5290,11 +5334,16 @@ STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Kan ikke
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Kan ikke sælge flyet...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :{WHITE}Kan ikke sælge alle jernbanevogne...
 STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :{WHITE}Kan ikke sælge alle vejkøretøjer...
 STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Kan ikke sælge alle skibe...
 STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}Kan ikke sælge alle fly...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}Kan ikke automatisk erstatte jernbanevogne...
+STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}Kan ikke automatisk erstatte vejkøretøjer...
+STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}Kan ikke automatisk erstatte skibe...
+STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}Kan ikke automatisk erstatte fly...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}For mange køretøjer i spillet
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan ikke ændre serviceinterval...
@@ -5838,6 +5887,7 @@ STR_CURRENCY_SHORT_GIGA                                         :{NBSP}bn
 STR_CURRENCY_SHORT_TERA                                         :{NBSP}tn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_LEFT_ARROW                                             :{LEFT_ARROW}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
@@ -5877,3 +5927,11 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Åbn badgekonfiguration
+STR_BADGE_CONFIG_RESET                                          :Nulstil
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Badge-ikoner
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Badgefiltre
+STR_BADGE_CONFIG_PREVIEW                                        :Forhåndsvisningsbillede
+STR_BADGE_CONFIG_NAME                                           :Navn
+STR_BADGE_FILTER_ANY_LABEL                                      :Enhver {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} er {STRING}

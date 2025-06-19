@@ -2197,6 +2197,8 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... inge
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU-driveren krasjet spillet. Maskinvareakselerasjon deaktivert
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nytt spill
 STR_INTRO_LOAD_GAME                                             :{BLACK}Last inn spill
@@ -3073,6 +3075,12 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Velg bys
 STR_FOUND_TOWN_CITY                                             :{BLACK}By
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Storbyer vokser raskere enn vanlige byer{}Avhengig av innstillinger er de større når de blir grunnlagt
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Byutvidelse:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Bygninger
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Øk bygninger i byer
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Veier
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Øk veier i byer
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Byers veiløsning:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Velg veiløsning for denne byen
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Original
@@ -3696,6 +3704,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Endre na
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Utvid
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Øk bystørrelse
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Utvid bygninger
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Øk bygninger i by
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Utvid veier
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Øk veier i by
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Slett
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Slett denne byen fullstendig
 
@@ -4761,7 +4773,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Rutetabe
 STR_TIMETABLE_NO_TRAVEL                                         :Ingen reise
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Reis (automatisk; settes på ruteplan med neste manuelle ordre)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reise (uten rutetabell)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Reis (uten rutetabell) med inntil {2:VELOCITY}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Reis (uten rutetabell) med inntil {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Reise i {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Reis i {STRING} med inntil {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Reise (i {STRING}, ikke oppsatt i rutetabell)
@@ -5917,3 +5929,11 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Åpne merkeinnstillinger
+STR_BADGE_CONFIG_RESET                                          :Nullstill
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Merkeikoner
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Merkefiltre
+STR_BADGE_CONFIG_PREVIEW                                        :Forhåndsvis bilde
+STR_BADGE_CONFIG_NAME                                           :Navn
+STR_BADGE_FILTER_ANY_LABEL                                      :Vilkårlig {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} er {STRING}

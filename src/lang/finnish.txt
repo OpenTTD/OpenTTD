@@ -3073,6 +3073,12 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Valitse 
 STR_FOUND_TOWN_CITY                                             :{BLACK}Kaupunki
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Kaupungit kasvavat nopeammin kuin tavalliset kunnat{}Asetuksista riippuen, ne ovat suurempia perustettaessa
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Kuntien laajentaminen:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Rakennukset
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Kasvata rakennusten määrää kunnissa
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Tiet
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Kasvata teiden määrää kunnissa
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Kunnan tiekaava:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Valitse tiekaava tälle kunnalle
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Alkuperäinen
@@ -3696,6 +3702,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Vaihda k
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Laajenna
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Laajenna kuntaa
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Laajenna rakennuksia
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Kasvata rakennusten määrää kunnassa
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Laajenna teitä
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Kasvata teiden määrää kunnassa
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Poista
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Poista tämä kunta kokonaan.
 
@@ -4163,7 +4173,7 @@ STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Ilma-alu
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Kaikki rahtityypit
-STR_CARGO_TYPE_FILTER_FREIGHT                                   :Rahti
+STR_CARGO_TYPE_FILTER_FREIGHT                                   :Rahtitavara
 STR_CARGO_TYPE_FILTER_NONE                                      :Ei mikään
 
 ###length VEHICLE_TYPES
@@ -4761,7 +4771,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Aikataul
 STR_TIMETABLE_NO_TRAVEL                                         :Ei kulkua
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Kulje (automaattinen; aikataulu seuraavan manuaalisen käskyn mukaisesti)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Kiertävä (ei aikataulua)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Kulje (ilman aikataulua) enimmillään {2:VELOCITY}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Kulje (ilman aikataulua) enimmillään {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Kulje kohteeseen {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Kulje kohteeseen {STRING} enintään {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Kulje ({STRING}, ei aikataulua)
@@ -5917,3 +5927,11 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Avaa tunnusasetukset
+STR_BADGE_CONFIG_RESET                                          :Palauta
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Tunnuskuvakkeet
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Tunnussuodattimet
+STR_BADGE_CONFIG_PREVIEW                                        :Esikatselu
+STR_BADGE_CONFIG_NAME                                           :Nimi
+STR_BADGE_FILTER_ANY_LABEL                                      :Mikä tahansa {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} on {STRING}

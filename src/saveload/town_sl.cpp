@@ -114,13 +114,13 @@ void UpdateHousesAndTowns()
 
 class SlTownSupplied : public DefaultSaveLoadHandler<SlTownSupplied, Town> {
 public:
-	inline static const SaveLoad description[] = {
+	static inline const SaveLoad description[] = {
 		SLE_CONDVAR(TransportedCargoStat<uint32_t>, old_max, SLE_UINT32, SLV_165, SL_MAX_VERSION),
 		SLE_CONDVAR(TransportedCargoStat<uint32_t>, new_max, SLE_UINT32, SLV_165, SL_MAX_VERSION),
 		SLE_CONDVAR(TransportedCargoStat<uint32_t>, old_act, SLE_UINT32, SLV_165, SL_MAX_VERSION),
 		SLE_CONDVAR(TransportedCargoStat<uint32_t>, new_act, SLE_UINT32, SLV_165, SL_MAX_VERSION),
 	};
-	inline const static SaveLoadCompatTable compat_description = _town_supplied_sl_compat;
+	static inline const SaveLoadCompatTable compat_description = _town_supplied_sl_compat;
 
 	/**
 	 * Get the number of cargoes used by this savegame version.
@@ -153,13 +153,13 @@ public:
 
 class SlTownReceived : public DefaultSaveLoadHandler<SlTownReceived, Town> {
 public:
-	inline static const SaveLoad description[] = {
+	static inline const SaveLoad description[] = {
 		SLE_CONDVAR(TransportedCargoStat<uint16_t>, old_max, SLE_UINT16, SLV_165, SL_MAX_VERSION),
 		SLE_CONDVAR(TransportedCargoStat<uint16_t>, new_max, SLE_UINT16, SLV_165, SL_MAX_VERSION),
 		SLE_CONDVAR(TransportedCargoStat<uint16_t>, old_act, SLE_UINT16, SLV_165, SL_MAX_VERSION),
 		SLE_CONDVAR(TransportedCargoStat<uint16_t>, new_act, SLE_UINT16, SLV_165, SL_MAX_VERSION),
 	};
-	inline const static SaveLoadCompatTable compat_description = _town_received_sl_compat;
+	static inline const SaveLoadCompatTable compat_description = _town_received_sl_compat;
 
 	void Save(Town *t) const override
 	{
@@ -186,12 +186,12 @@ private:
 		static const uint GRID = 4;
 	};
 public:
-	inline static const SaveLoad description[] = {
+	static inline const SaveLoad description[] = {
 		SLE_VAR(AcceptanceMatrix, area.tile, SLE_UINT32),
 		SLE_VAR(AcceptanceMatrix, area.w,    SLE_UINT16),
 		SLE_VAR(AcceptanceMatrix, area.h,    SLE_UINT16),
 	};
-	inline const static SaveLoadCompatTable compat_description = _town_acceptance_matrix_sl_compat;
+	static inline const SaveLoadCompatTable compat_description = _town_acceptance_matrix_sl_compat;
 
 	void Load(Town *) const override
 	{

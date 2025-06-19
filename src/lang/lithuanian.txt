@@ -1130,13 +1130,13 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Įkelti 
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Pagrindinės nuostatos
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Bendras
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Pasirinkti bendrus nustatymus
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :Pasirinkti bendrus nustatymus
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Vaizdas
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Pasirinkti vaizdo nustatymus
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :Pasirinkti vaizdo nustatymus
 STR_GAME_OPTIONS_TAB_SOUND                                      :Garsas
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Pasirinkti garso ir muzikos nustatymus
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Pasirinkti garso ir muzikos nustatymus
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Socialumas
-STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Pasirinkti socialumo integracijos nustatymus
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Pasirinkti socialumo integracijos nustatymus
 
 STR_GAME_OPTIONS_VOLUME                                         :Tūris
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Garso efektai
@@ -1145,8 +1145,8 @@ STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Muzika
 
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valiuta
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Valiutos pasirinkimas
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Valiuta
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Valiutos pasirinkimas
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -1196,8 +1196,8 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaizijos ring
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Latvių latas
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portugalijos eskudai
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatinis išsaugojimas
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Pasirink, kaip dažnai išsaugoti žaidimą
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Automatinis išsaugojimas
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Pasirink, kaip dažnai išsaugoti žaidimą
 
 # Autosave dropdown
 ###length 5
@@ -1207,77 +1207,77 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Kas 30 minuči�
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Kas 60 minučių
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Kas 120 minučių
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Kalba
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Pasirinkite aplinkos kalbą
+STR_GAME_OPTIONS_LANGUAGE                                       :Kalba
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Pasirinkite aplinkos kalbą
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% baigtumas)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Per visą ekraną
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Pažymėkite šį langelį, jeigu norite OpenTTD žaisti visame ekrane
+STR_GAME_OPTIONS_FULLSCREEN                                     :Per visą ekraną
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Pažymėkite šį langelį, jeigu norite OpenTTD žaisti visame ekrane
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekrano raiška
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Pasirinkite ekrano raišką
+STR_GAME_OPTIONS_RESOLUTION                                     :Ekrano raiška
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Pasirinkite ekrano raišką
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Kita
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Aparatinis spartinimas
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Pažymėkite šį langelį, jei norite, kad OpenTTD taikytų aparatinį spartinimą. Kad nuostata įsigaliotų, reiks perkrauti OpenTTD
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Aparatinis spartinimas
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Pažymėkite šį langelį, jei norite, kad OpenTTD taikytų aparatinį spartinimą. Kad nuostata įsigaliotų, reiks perkrauti OpenTTD
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Kad pakeitimai įsigaliotų, reikia paleisti OpenTTD iš naujo
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}Vertikalioji sinchronizacija (VSync)
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Pažymėkite šį langelį, norėdami v-sync ekraną. Pakeistas nustatymas bus pritaikytas tik paleidus žaidimą iš naujo. Veikia tik įjungus aparatūros pagreitį
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :Vertikalioji sinchronizacija (VSync)
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Pažymėkite šį langelį, norėdami v-sync ekraną. Pakeistas nustatymas bus pritaikytas tik paleidus žaidimą iš naujo. Veikia tik įjungus aparatūros pagreitį
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Dabartinė tvarkyklė: {STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Dabartinė tvarkyklė: {STRING}
 
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Sąsajos dydis
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Vilkite slankiklį, kad nustatyti sąsajos dydį. Vilkite laikant nuspaustą Ctrl klavišą nuolatiniam reguliavimui
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Automatinis dydžio nustatymas
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Pažymėkite šį langelį, kad automatiškai aptiktumėte sąsajos dydį
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Sąsajos dydis
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Vilkite slankiklį, kad nustatyti sąsajos dydį. Vilkite laikant nuspaustą Ctrl klavišą nuolatiniam reguliavimui
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Automatinis dydžio nustatymas
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Pažymėkite šį langelį, kad automatiškai aptiktumėte sąsajos dydį
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Skalės nuožulniai
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Pažymėkite šį langelį, jei norite keisti kampus pagal sąsajos dydį
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Skalės nuožulniai
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Pažymėkite šį langelį, jei norite keisti kampus pagal sąsajos dydį
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Naudoti tradicišką spruklių šriftą
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Pažymėkite šį langelį, jeigu teikiate pirmenybę tradiciškui fiksuoto dydžio spruklio raštui
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Išlyginti šriftus
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Pasirinkite šį langelį, kad išlyginti šriftus
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Naudoti tradicišką spruklių šriftą
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Pažymėkite šį langelį, jeigu teikiate pirmenybę tradiciškui fiksuoto dydžio spruklio raštui
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Išlyginti šriftus
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Pasirinkite šį langelį, kad išlyginti šriftus
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automatinė apklausa
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Dalyvauti automatinėje apklausoje
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Automatinė apklausa
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Dalyvauti automatinėje apklausoje
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Kai įjungta, OpenTTD išeinant iš žaidimo išsiųs apklausą
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Apie apklausą ir privatumą
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Atidaryti naršyklę su daugiau informacijos apie automatizuotą apklausą
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Peržiūrėti apklausos rezultatus
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Rodyti dabartinio žaidimo apklausos rezultatą
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :Apie apklausą ir privatumą
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Atidaryti naršyklę su daugiau informacijos apie automatizuotą apklausą
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Peržiūrėti apklausos rezultatus
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Rodyti dabartinio žaidimo apklausos rezultatą
 
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Ekrano kadrų dažnis
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Pasirinkite pageidaujamą ekrano kadrų dažnį
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Ekrano kadrų dažnis
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Pasirinkite pageidaujamą ekrano kadrų dažnį
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Didesnis nei 60Hz kadrų dažnis gali sulėtinti žaidimą.
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Bazinis grafikos rinkinys
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Pasirinkti naudojimui bazinį grafikos rinkinį (negali būti pakeista žaidime, tik pagrindiniame ekrane)
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Papildoma informacija apie bazinės grafikos rinkinį
+STR_GAME_OPTIONS_BASE_GRF                                       :Bazinis grafikos rinkinys
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Pasirinkti naudojimui bazinį grafikos rinkinį (negali būti pakeista žaidime, tik pagrindiniame ekrane)
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Papildoma informacija apie bazinės grafikos rinkinį
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Bazinis garsų rinkinys
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Pasirinkite, kurį bazinių garsų rinkinį naudoti (negali būti pakeista žaidime, tik pagrindiniame ekrane)
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Papildoma informacija apie bazinių garsų rinkinį
+STR_GAME_OPTIONS_BASE_SFX                                       :Bazinis garsų rinkinys
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Pasirinkite, kurį bazinių garsų rinkinį naudoti (negali būti pakeista žaidime, tik pagrindiniame ekrane)
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Papildoma informacija apie bazinių garsų rinkinį
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Bazinis muzikos rinkinys
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Pasirinkti naudojimui bazinę muziką
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Papildoma informacija apie bazinę muziką
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Bazinis muzikos rinkinys
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Pasirinkti naudojimui bazinę muziką
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Papildoma informacija apie bazinę muziką
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Parsisiųsti turinį
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Tikrinti, ar nėra naujo ir atnaujinto turinio atsisiuntimui
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(plėtinių socialinių platformų integravimui nėra įdiegta)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Platforma:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Papildinio būsena:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Platforma:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :Papildinio būsena:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Veikia
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Nepavyko inicijuoti
@@ -1387,10 +1387,10 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Atlaidus (jokio
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nerasta tinkamų DI...{}Galite parsisiųsti keletą DI naudonat 'Turinio internete' sistemą
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtras:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Išskleisti viską
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Suskleisti viską
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Iš naujo nustatyti visas vertes
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Filtras:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Išskleisti viską
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Suskleisti viską
+STR_CONFIG_SETTING_RESET_ALL                                    :Iš naujo nustatyti visas vertes
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(paaiškinimo nėra)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Numatytoji reikšmė: {ORANGE}{STRING}
@@ -1403,9 +1403,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :kompanijos (įr
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Atsargiai!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Šis veiksmas iš naujo nustatys visus žaidimo nustatymus į numatytąsias vertes.{}Ar tikrai norite tęsti?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorija:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipas:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Rodyti tik tam tikros rūšies nuostatas
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Kategorija:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Tipas:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Rodyti tik tam tikros rūšies nuostatas
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Pagrindinės nuostatos
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Sudėtingesnės nuostatos
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Visos nuostatos
@@ -1422,9 +1422,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Kompanijos (įr
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Nėra -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Rodyti visus paeiškos rezultatus nustatant{}{SILVER}kategoriją{BLACK}į {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Rodyti visus paeiškos rezultatus nustatant{}{SILVER}tipą {BLACK}į {WHITE}„Visos nuostatos“
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Rodyti visus paieškos rezultatus nustatant{}{SILVER}kategoriją {BLACK}į {WHITE}{STRING} {BLACK}bei {SILVER}tipą {BLACK}į {WHITE}„Visos nuostatos“
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Rodyti visus paeiškos rezultatus nustatant{}{SILVER}kategoriją{BLACK}į {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Rodyti visus paeiškos rezultatus nustatant{}{SILVER}tipą {BLACK}į {WHITE}„Visos nuostatos“
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Rodyti visus paieškos rezultatus nustatant{}{SILVER}kategoriją {BLACK}į {WHITE}{STRING} {BLACK}bei {SILVER}tipą {BLACK}į {WHITE}„Visos nuostatos“
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Ne
@@ -3152,6 +3152,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Išsirin
 STR_FOUND_TOWN_CITY                                             :{BLACK}Miestas
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Didemiesčiai auga greičiau nei įprasti miestai{}Pagal tam tikras nuostatas, jie didesni, nuo atsiradimo
 
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Miesto kelių išdėstymas:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Pasirinkti kelio išdėstymą šiam miestui
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Originalus
@@ -4835,7 +4836,6 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Tvarkara
 STR_TIMETABLE_NO_TRAVEL                                         :Nėra kelionių
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Kelionė (automatinė; į tvarkaraštį bus įtraukta kitos užduoties)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Kelionė (nėra tvarkaraštyje)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Vykti ne didesniu, nei {2:VELOCITY} greičiu (kelionės trukmė nenustatyta)
 STR_TIMETABLE_TRAVEL_FOR                                        :Keliauti {STRING.ka}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Vykti {STRING} ne didesniu, nei {VELOCITY} greičiu
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Vykti ({STRING.ka}, neįtraukiant į tvarkaraštį)

@@ -84,6 +84,11 @@ protected:
 		static ScriptInstance *active;  ///< The global current active instance.
 	};
 
+	class DisableDoCommandScope : private AutoRestoreBackup<bool> {
+	public:
+		DisableDoCommandScope();
+	};
+
 	/**
 	 * Save this object.
 	 * Must push 2 elements on the stack:
@@ -99,6 +104,12 @@ protected:
 	 * @return True iff loading this type is supported.
 	 */
 	virtual bool LoadObject(HSQUIRRELVM) { return false; }
+
+	/**
+	 * Clone an object.
+	 * @return The clone if cloning this type is supported, nullptr otherwise.
+	 */
+	virtual ScriptObject *CloneObject() { return nullptr; }
 
 public:
 	/**
@@ -130,6 +141,16 @@ public:
 	 * based on the current _random seed, but _random does not get changed.
 	 */
 	static void InitializeRandomizers();
+
+	/**
+	 * Used when trying to instanciate ScriptObject from squirrel.
+	 */
+	static SQInteger Constructor(HSQUIRRELVM);
+
+	/**
+	 * Used for 'clone' from squirrel.
+	 */
+	static SQInteger _cloned(HSQUIRRELVM);
 
 protected:
 	template <Commands TCmd, typename T> struct ScriptDoCommandHelper;
@@ -266,21 +287,6 @@ protected:
 	static const CommandDataBuffer &GetLastCommandResData();
 
 	/**
-	 * Store a allow_do_command per company.
-	 * @param allow The new allow.
-	 */
-	static void SetAllowDoCommand(bool allow);
-
-	/**
-	 * Get the internal value of allow_do_command. This can differ
-	 * from CanSuspend() if the reason we are not allowed
-	 * to execute a DoCommand is in squirrel and not the API.
-	 * In that case use this function to restore the previous value.
-	 * @return True iff DoCommands are allowed in the current scope.
-	 */
-	static bool GetAllowDoCommand();
-
-	/**
 	 * Set the current company to execute commands for or request
 	 *  information about.
 	 * @param company The new company.
@@ -341,7 +347,7 @@ private:
 	static std::tuple<bool, bool, bool, bool> DoCommandPrep();
 	static bool DoCommandProcessResult(const CommandCost &res, Script_SuspendCallbackProc *callback, bool estimate_only, bool asynchronous);
 	static CommandCallbackData *GetDoCommandCallback();
-	using RandomizerArray = ReferenceThroughBaseContainer<std::array<Randomizer, OWNER_END.base()>>;
+	using RandomizerArray = TypedIndexContainer<std::array<Randomizer, OWNER_END.base()>, Owner>;
 	static RandomizerArray random_states; ///< Random states for each of the scripts (game script uses OWNER_DEITY)
 };
 

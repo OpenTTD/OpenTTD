@@ -797,12 +797,12 @@ public:
 
 private:
 	template <class T>
-	[[nodiscard]] static std::pair<size_type, T> ParseIntegerBase(std::string_view src, int base, bool log_errors)
+	[[nodiscard]] static std::pair<size_type, T> ParseIntegerBase(std::string_view src, int base, bool clamp, bool log_errors)
 	{
 		if (base == 0) {
 			/* Try positive hex */
 			if (src.starts_with("0x") || src.starts_with("0X")) {
-				auto [len, value] = ParseIntegerBase<T>(src.substr(2), 16, log_errors);
+				auto [len, value] = ParseIntegerBase<T>(src.substr(2), 16, clamp, log_errors);
 				if (len == 0) return {};
 				return {len + 2, value};
 			}
@@ -810,18 +810,21 @@ private:
 			/* Try negative hex */
 			if (std::is_signed_v<T> && (src.starts_with("-0x") || src.starts_with("-0X"))) {
 				using Unsigned = std::make_unsigned_t<T>;
-				auto [len, uvalue] = ParseIntegerBase<Unsigned>(src.substr(3), 16, log_errors);
+				auto [len, uvalue] = ParseIntegerBase<Unsigned>(src.substr(3), 16, clamp, log_errors);
 				if (len == 0) return {};
 				T value = static_cast<T>(0 - uvalue);
 				if (value > 0) {
-					if (log_errors) LogError(fmt::format("Integer out of range: '{}'", src.substr(0, len + 3)));
-					return {};
+					if (!clamp) {
+						if (log_errors) LogError(fmt::format("Integer out of range: '{}'", src.substr(0, len + 3)));
+						return {};
+					}
+					value = std::numeric_limits<T>::lowest();
 				}
 				return {len + 3, value};
 			}
 
 			/* Try decimal */
-			return ParseIntegerBase<T>(src, 10, log_errors);
+			return ParseIntegerBase<T>(src, 10, clamp, log_errors);
 		}
 
 		T value{};
@@ -829,10 +832,16 @@ private:
 		auto result = std::from_chars(src.data(), src.data() + src.size(), value, base);
 		auto len = result.ptr - src.data();
 		if (result.ec == std::errc::result_out_of_range) {
-			if (log_errors) LogError(fmt::format("Integer out of range: '{}'+'{}'", src.substr(0, len), src.substr(len, 4)));
-			return {};
-		}
-		if (result.ec != std::errc{}) {
+			if (!clamp) {
+				if (log_errors) LogError(fmt::format("Integer out of range: '{}'+'{}'", src.substr(0, len), src.substr(len, 4)));
+				return {};
+			}
+			if (src.starts_with("-")) {
+				value = std::numeric_limits<T>::lowest();
+			} else {
+				value = std::numeric_limits<T>::max();
+			}
+		} else if (result.ec != std::errc{}) {
 			if (log_errors) LogError(fmt::format("Cannot parse integer: '{}'+'{}'", src.substr(0, len), src.substr(len, 4)));
 			return {};
 		}
@@ -843,24 +852,28 @@ public:
 	/**
 	 * Peek and parse an integer in number 'base'.
 	 * If 'base == 0', then a prefix '0x' decides between base 16 or base 10.
+	 * @param clamp If the value is a valid number, but out of range for T, return the maximum representable value.
+	 *              Negative values for unsigned results are still treated as invalid.
 	 * @return Length of string match, and parsed value.
 	 * @note The parser rejects leading whitespace and unary plus.
 	 */
 	template <class T>
-	[[nodiscard]] std::pair<size_type, T> PeekIntegerBase(int base) const
+	[[nodiscard]] std::pair<size_type, T> PeekIntegerBase(int base, bool clamp = false) const
 	{
-		return ParseIntegerBase<T>(this->src.substr(this->position), base, false);
+		return ParseIntegerBase<T>(this->src.substr(this->position), base, clamp, false);
 	}
 	/**
 	 * Try to read and parse an integer in number 'base', and then advance the reader.
 	 * If 'base == 0', then a prefix '0x' decides between base 16 or base 10.
+	 * @param clamp If the value is a valid number, but out of range for T, return the maximum representable value.
+	 *              Negative values for unsigned results are still treated as invalid.
 	 * @return Parsed value, if valid.
 	 * @note The parser rejects leading whitespace and unary plus.
 	 */
 	template <class T>
-	[[nodiscard]] std::optional<T> TryReadIntegerBase(int base)
+	[[nodiscard]] std::optional<T> TryReadIntegerBase(int base, bool clamp = false)
 	{
-		auto [len, value] = this->PeekIntegerBase<T>(base);
+		auto [len, value] = this->PeekIntegerBase<T>(base, clamp);
 		if (len == 0) return std::nullopt;
 		this->SkipIntegerBase(base);
 		return value;
@@ -868,14 +881,16 @@ public:
 	/**
 	 * Read and parse an integer in number 'base', and advance the reader.
 	 * If 'base == 0', then a prefix '0x' decides between base 16 or base 10.
+	 * @param clamp If the value is a valid number, but out of range for T, return the maximum representable value.
+	 *              Negative values for unsigned results are still treated as invalid.
 	 * @return Parsed value, or 'def' if invalid.
 	 * @note The reader is advanced, even if no valid data was present.
 	 * @note The parser rejects leading whitespace and unary plus.
 	 */
 	template <class T>
-	[[nodiscard]] T ReadIntegerBase(int base, T def = 0)
+	[[nodiscard]] T ReadIntegerBase(int base, T def = 0, bool clamp = false)
 	{
-		auto [len, value] = ParseIntegerBase<T>(this->src.substr(this->position), base, true);
+		auto [len, value] = ParseIntegerBase<T>(this->src.substr(this->position), base, clamp, true);
 		this->SkipIntegerBase(base); // always advance
 		return len > 0 ? value : def;
 	}
@@ -894,14 +909,16 @@ public:
  * Accepts leading and trailing whitespace. Trailing junk is an error.
  * @param arg The string to be converted.
  * @param base The base for parsing the number, defaults to only decimal numbers. Use 0 to also allow hexadecimal.
+ * @param clamp If the value is a valid number, but out of range for T, return the maximum representable value.
+ *              Negative values for unsigned results are still treated as invalid.
  * @return The number, or std::nullopt if it could not be parsed.
  */
 template <class T = uint32_t>
-static inline std::optional<T> ParseInteger(std::string_view arg, int base = 10)
+static inline std::optional<T> ParseInteger(std::string_view arg, int base = 10, bool clamp = false)
 {
 	StringConsumer consumer{arg};
 	consumer.SkipUntilCharNotIn(StringConsumer::WHITESPACE_NO_NEWLINE);
-	auto result = consumer.TryReadIntegerBase<T>(base);
+	auto result = consumer.TryReadIntegerBase<T>(base, clamp);
 	consumer.SkipUntilCharNotIn(StringConsumer::WHITESPACE_NO_NEWLINE);
 	if (consumer.AnyBytesLeft()) return std::nullopt;
 	return result;

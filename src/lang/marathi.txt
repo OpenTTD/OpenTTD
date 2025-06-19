@@ -704,7 +704,7 @@ STR_GAME_OPTIONS_CURRENCY_SKK                                   :स्लोव
 # Autosave dropdown
 ###length 5
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}भाषा
+STR_GAME_OPTIONS_LANGUAGE                                       :भाषा
 
 
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :अन्य
@@ -1256,6 +1256,7 @@ STR_PLANT_TREE_CAPTION                                          :{WHITE}झा�
 
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}लहान
 STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}मोठं
+
 
 
 # Fund new industry window

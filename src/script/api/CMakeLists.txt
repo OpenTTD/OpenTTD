@@ -43,23 +43,23 @@ foreach(API "ai;AI" "game;GS" "template;Template")
         if("${SCRIPT_API_FILE}" MATCHES ".*script_controller.*")
             continue()
         endif()
-        get_filename_component(SCRIPT_API_FILE_NAME "${SCRIPT_API_FILE}" NAME)
+        get_filename_component(SCRIPT_API_FILE_NAME "${SCRIPT_API_FILE}" NAME_WE)
         string(REPLACE "script_" "${APILC}_" SCRIPT_API_FILE_NAME "${SCRIPT_API_FILE_NAME}")
-        set(SCRIPT_API_BINARY_FILE "${CMAKE_BINARY_DIR}/generated/script/api/${APILC}/${SCRIPT_API_FILE_NAME}.sq")
+        set(SCRIPT_API_BINARY_FILE "${CMAKE_BINARY_DIR}/generated/script/api/${APILC}/${SCRIPT_API_FILE_NAME}.sq.hpp")
 
         add_custom_command_timestamp(OUTPUT ${SCRIPT_API_BINARY_FILE}
                 COMMAND ${CMAKE_COMMAND}
-                        -DSCRIPT_API_SOURCE_FILE=${CMAKE_CURRENT_SOURCE_DIR}/squirrel_export.hpp.sq.in
+                        -DSCRIPT_API_SOURCE_FILE=${CMAKE_CURRENT_SOURCE_DIR}/squirrel_export.sq.hpp.in
                         -DSCRIPT_API_BINARY_FILE=${SCRIPT_API_BINARY_FILE}
                         -DSCRIPT_API_FILE=${SCRIPT_API_FILE}
                         -DAPIUC=${APIUC}
                         -DAPILC=${APILC}
                         -P ${CMAKE_SOURCE_DIR}/cmake/scripts/SquirrelExport.cmake
                 MAIN_DEPENDENCY ${SCRIPT_API_FILE}
-                DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/squirrel_export.hpp.sq.in
+                DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/squirrel_export.sq.hpp.in
                         ${CMAKE_SOURCE_DIR}/cmake/scripts/SquirrelExport.cmake
                 WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-                COMMENT "Generating ${APILC}/${SCRIPT_API_FILE_NAME}.sq"
+                COMMENT "Generating ${APILC}/${SCRIPT_API_FILE_NAME}.sq.hpp"
         )
         list(APPEND SCRIPT_${APIUC}_BINARY_FILES ${SCRIPT_API_BINARY_FILE})
     endforeach()
@@ -73,7 +73,7 @@ foreach(API "ai;AI" "game;GS" "template;Template")
     )
 
     if(NOT "${APILC}" STREQUAL "template")
-        list(APPEND SCRIPT_${APIUC}_BINARY_FILES "${CMAKE_CURRENT_SOURCE_DIR}/${APILC}/${APILC}_controller.hpp.sq")
+        list(APPEND SCRIPT_${APIUC}_BINARY_FILES "${CMAKE_CURRENT_SOURCE_DIR}/${APILC}/${APILC}_controller.sq.hpp")
         set(INCLUDES_BINARY_FILE "${CMAKE_BINARY_DIR}/generated/script/api/${APILC}/${APILC}_includes.hpp")
         set(API_FILES "${CMAKE_CURRENT_BINARY_DIR}/${APILC}.files")
         file(GENERATE OUTPUT ${API_FILES} CONTENT "${SCRIPT_${APIUC}_BINARY_FILES}")

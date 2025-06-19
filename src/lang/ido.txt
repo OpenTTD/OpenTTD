@@ -1005,6 +1005,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grandeso
 
 
 
+
 # Fund new industry window
 
 # Industry cargoes window

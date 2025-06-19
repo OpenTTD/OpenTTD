@@ -101,7 +101,7 @@ const ScoreInfo _score_info[] = {
 	{       0,   0}  // SCORE_TOTAL
 };
 
-ReferenceThroughBaseContainer<std::array<std::array<int64_t, SCORE_END>, MAX_COMPANIES>> _score_part;
+TypedIndexContainer<std::array<std::array<int64_t, SCORE_END>, MAX_COMPANIES>, CompanyID> _score_part;
 Economy _economy;
 Prices _price;
 static PriceMultipliers _price_base_multiplier;

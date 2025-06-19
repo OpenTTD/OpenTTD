@@ -33,7 +33,13 @@ public:
 /** Utility class to create a list of badge classes used by a feature. */
 class UsedBadgeClasses {
 public:
+	UsedBadgeClasses() = default;
 	explicit UsedBadgeClasses(GrfSpecFeature feature);
+
+	inline GrfSpecFeature GetFeature() const
+	{
+		return this->feature;
+	}
 
 	inline std::span<const BadgeClassID> Classes() const
 	{
@@ -41,6 +47,7 @@ public:
 	}
 
 private:
+	GrfSpecFeature feature;
 	std::vector<BadgeClassID> classes; ///< List of badge classes.
 };
 
@@ -55,6 +62,7 @@ std::span<const Badge> GetBadges();
 Badge *GetBadge(BadgeID index);
 Badge *GetBadgeByLabel(std::string_view label);
 Badge *GetClassBadge(BadgeClassID class_index);
+std::span<const BadgeID> GetClassBadges();
 
 uint32_t GetBadgeVariableResult(const struct GRFFile &grffile, std::span<const BadgeID> badges, uint32_t parameter);
 
@@ -67,6 +75,15 @@ public:
 
 private:
 	FlatSet<BadgeID> badges{};
+};
+
+class BadgeDropdownFilter {
+public:
+	BadgeDropdownFilter(const BadgeFilterChoices &conf) : badges(conf) {}
+	bool Filter(std::span<const BadgeID> badges) const;
+
+private:
+	const BadgeFilterChoices &badges;
 };
 
 #endif /* NEWGRF_BADGE_H */

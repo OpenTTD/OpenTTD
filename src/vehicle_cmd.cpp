@@ -247,16 +247,6 @@ CommandCost CmdSellVehicle(DoCommandFlags flags, VehicleID v_id, bool sell_chain
 
 	if (!front->IsStoppedInDepot()) return CommandCost(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT + front->type);
 
-	/* Can we actually make the order backup, i.e. are there enough orders? */
-	if (backup_order &&
-			front->orders != nullptr &&
-			!front->orders->IsShared() &&
-			!Order::CanAllocateItem(front->orders->GetNumOrders())) {
-		/* Only happens in exceptional cases when there aren't enough orders anyhow.
-		 * Thus it should be safe to just drop the orders in that case. */
-		backup_order = false;
-	}
-
 	if (v->type == VEH_TRAIN) {
 		ret = CmdSellRailWagon(flags, v, sell_chain, backup_order, client_id);
 	} else {
@@ -905,8 +895,12 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 		if (flags.Test(DoCommandFlag::Execute)) {
 			w = Vehicle::Get(new_veh_id);
 
-			if (v->type == VEH_TRAIN && HasBit(Train::From(v)->flags, VRF_REVERSE_DIRECTION)) {
-				SetBit(Train::From(w)->flags, VRF_REVERSE_DIRECTION);
+			if (v->type == VEH_TRAIN && Train::From(v)->flags.Test(VehicleRailFlag::Flipped)) {
+				/* Only copy the reverse state if neither old or new vehicle implements reverse-on-build probability callback. */
+				if (!TestVehicleBuildProbability(v, v->engine_type, BuildProbabilityType::Reversed).has_value() &&
+					!TestVehicleBuildProbability(w, w->engine_type, BuildProbabilityType::Reversed).has_value()) {
+					Train::From(w)->flags.Set(VehicleRailFlag::Flipped);
+				}
 			}
 
 			if (v->type == VEH_TRAIN && !v->IsFrontEngine()) {

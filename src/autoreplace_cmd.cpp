@@ -185,9 +185,9 @@ static bool VerifyAutoreplaceRefitForOrders(const Vehicle *v, EngineID engine_ty
 	CargoTypes union_refit_mask_b = GetUnionOfArticulatedRefitMasks(engine_type, false);
 
 	const Vehicle *u = (v->type == VEH_TRAIN) ? v->First() : v;
-	for (const Order *o : u->Orders()) {
-		if (!o->IsRefit() || o->IsAutoRefit()) continue;
-		CargoType cargo_type = o->GetRefitCargo();
+	for (const Order &o : u->Orders()) {
+		if (!o.IsRefit() || o.IsAutoRefit()) continue;
+		CargoType cargo_type = o.GetRefitCargo();
 
 		if (!HasBit(union_refit_mask_a, cargo_type)) continue;
 		if (!HasBit(union_refit_mask_b, cargo_type)) return false;
@@ -206,13 +206,12 @@ static int GetIncompatibleRefitOrderIdForAutoreplace(const Vehicle *v, EngineID 
 {
 	CargoTypes union_refit_mask = GetUnionOfArticulatedRefitMasks(engine_type, false);
 
-	const Order *o;
 	const Vehicle *u = (v->type == VEH_TRAIN) ? v->First() : v;
 
 	const OrderList *orders = u->orders;
 	if (orders == nullptr) return -1;
 	for (VehicleOrderID i = 0; i < orders->GetNumOrders(); i++) {
-		o = orders->GetOrderAt(i);
+		const Order *o = orders->GetOrderAt(i);
 		if (!o->IsRefit()) continue;
 		if (!HasBit(union_refit_mask, o->GetRefitCargo())) return i;
 	}
@@ -373,8 +372,12 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 	}
 
 	/* Try to reverse the vehicle, but do not care if it fails as the new type might not be reversible */
-	if (new_veh->type == VEH_TRAIN && HasBit(Train::From(old_veh)->flags, VRF_REVERSE_DIRECTION)) {
-		Command<CMD_REVERSE_TRAIN_DIRECTION>::Do(DoCommandFlag::Execute, new_veh->index, true);
+	if (new_veh->type == VEH_TRAIN && Train::From(old_veh)->flags.Test(VehicleRailFlag::Flipped)) {
+		/* Only copy the reverse state if neither old or new vehicle implements reverse-on-build probability callback. */
+		if (!TestVehicleBuildProbability(old_veh, old_veh->engine_type, BuildProbabilityType::Reversed).has_value() &&
+			!TestVehicleBuildProbability(new_veh, new_veh->engine_type, BuildProbabilityType::Reversed).has_value()) {
+			Command<CMD_REVERSE_TRAIN_DIRECTION>::Do(DoCommandFlag::Execute, new_veh->index, true);
+		}
 	}
 
 	return cost;

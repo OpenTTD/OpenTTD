@@ -453,6 +453,20 @@ bool ScriptList::LoadObject(HSQUIRRELVM vm)
 	return true;
 }
 
+ScriptObject *ScriptList::CloneObject()
+{
+	ScriptList *clone = new ScriptList();
+	clone->CopyList(this);
+	return clone;
+}
+
+void ScriptList::CopyList(const ScriptList *list)
+{
+	this->Sort(list->sorter_type, list->sort_ascending);
+	this->items = list->items;
+	this->buckets = list->buckets;
+}
+
 ScriptList::ScriptList()
 {
 	/* Default sorter */
@@ -910,8 +924,7 @@ SQInteger ScriptList::Valuate(HSQUIRRELVM vm)
 
 	/* Don't allow docommand from a Valuator, as we can't resume in
 	 * mid C++-code. */
-	bool backup_allow = ScriptObject::GetAllowDoCommand();
-	ScriptObject::SetAllowDoCommand(false);
+	ScriptObject::DisableDoCommandScope disabler{};
 
 	/* Limit the total number of ops that can be consumed by a valuate operation */
 	SQOpsLimiter limiter(vm, MAX_VALUATE_OPS, "valuator function");
@@ -932,8 +945,7 @@ SQInteger ScriptList::Valuate(HSQUIRRELVM vm)
 		}
 
 		/* Call the function. Squirrel pops all parameters and pushes the return value. */
-		if (SQ_FAILED(sq_call(vm, nparam + 1, SQTrue, SQTrue))) {
-			ScriptObject::SetAllowDoCommand(backup_allow);
+		if (SQ_FAILED(sq_call(vm, nparam + 1, SQTrue, SQFalse))) {
 			return SQ_ERROR;
 		}
 
@@ -956,7 +968,6 @@ SQInteger ScriptList::Valuate(HSQUIRRELVM vm)
 				/* See below for explanation. The extra pop is the return value. */
 				sq_pop(vm, nparam + 4);
 
-				ScriptObject::SetAllowDoCommand(backup_allow);
 				return sq_throwerror(vm, "return value of valuator is not valid (not integer/bool)");
 			}
 		}
@@ -966,7 +977,6 @@ SQInteger ScriptList::Valuate(HSQUIRRELVM vm)
 			/* See below for explanation. The extra pop is the return value. */
 			sq_pop(vm, nparam + 4);
 
-			ScriptObject::SetAllowDoCommand(backup_allow);
 			return sq_throwerror(vm, "modifying valuated list outside of valuator function");
 		}
 
@@ -984,6 +994,5 @@ SQInteger ScriptList::Valuate(HSQUIRRELVM vm)
 	 * 4. The ScriptList instance object. */
 	sq_pop(vm, nparam + 3);
 
-	ScriptObject::SetAllowDoCommand(backup_allow);
 	return 0;
 }

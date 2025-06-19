@@ -42,6 +42,16 @@ void GroupStatistics::Clear()
 }
 
 /**
+ * Update children list for each group.
+ */
+void UpdateGroupChildren()
+{
+	for (Group *g : Group::Iterate()) {
+		if (g->parent != GroupID::Invalid()) Group::Get(g->parent)->children.insert(g->index);
+	}
+}
+
+/**
  * Get number of vehicles of a specific engine ID.
  * @param engine Engine ID.
  * @returns number of vehicles of this engine ID.
@@ -294,12 +304,11 @@ static void PropagateChildLivery(const Group *g, bool reset_cache)
 		}
 	}
 
-	for (Group *cg : Group::Iterate()) {
-		if (cg->parent == g->index) {
-			if (!HasBit(cg->livery.in_use, 0)) cg->livery.colour1 = g->livery.colour1;
-			if (!HasBit(cg->livery.in_use, 1)) cg->livery.colour2 = g->livery.colour2;
-			PropagateChildLivery(cg, reset_cache);
-		}
+	for (const GroupID &childgroup : g->children) {
+		Group *cg = Group::Get(childgroup);
+		if (!HasBit(cg->livery.in_use, 0)) cg->livery.colour1 = g->livery.colour1;
+		if (!HasBit(cg->livery.in_use, 1)) cg->livery.colour2 = g->livery.colour2;
+		PropagateChildLivery(cg, reset_cache);
 	}
 }
 
@@ -333,7 +342,7 @@ std::tuple<CommandCost, GroupID> CmdCreateGroup(DoCommandFlags flags, VehicleTyp
 
 	if (!Group::CanAllocateItem()) return { CMD_ERROR, GroupID::Invalid() };
 
-	const Group *pg = Group::GetIfValid(parent_group);
+	Group *pg = Group::GetIfValid(parent_group);
 	if (pg != nullptr) {
 		if (pg->owner != _current_company) return { CMD_ERROR, GroupID::Invalid() };
 		if (pg->vehicle_type != vt) return { CMD_ERROR, GroupID::Invalid() };
@@ -353,6 +362,7 @@ std::tuple<CommandCost, GroupID> CmdCreateGroup(DoCommandFlags flags, VehicleTyp
 			g->livery.colour1 = pg->livery.colour1;
 			g->livery.colour2 = pg->livery.colour2;
 			g->flags = pg->flags;
+			pg->children.insert(g->index);
 		}
 
 		InvalidateWindowData(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VL_GROUP_LIST, vt, _current_company).ToWindowNumber());
@@ -380,10 +390,8 @@ CommandCost CmdDeleteGroup(DoCommandFlags flags, GroupID group_id)
 	Command<CMD_REMOVE_ALL_VEHICLES_GROUP>::Do(flags, group_id);
 
 	/* Delete sub-groups */
-	for (const Group *gp : Group::Iterate()) {
-		if (gp->parent == g->index) {
-			Command<CMD_DELETE_GROUP>::Do(flags, gp->index);
-		}
+	for (const GroupID &childgroup : g->children) {
+		Command<CMD_DELETE_GROUP>::Do(flags, childgroup);
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
@@ -399,6 +407,11 @@ CommandCost CmdDeleteGroup(DoCommandFlags flags, GroupID group_id)
 			}
 
 			c->freegroups.ReleaseID(g->number);
+		}
+
+		if (g->parent != GroupID::Invalid()) {
+			Group *pg = Group::Get(g->parent);
+			pg->children.erase(g->index);
 		}
 
 		VehicleType vt = g->vehicle_type;
@@ -445,6 +458,9 @@ CommandCost CmdAlterGroup(DoCommandFlags flags, AlterGroupMode mode, GroupID gro
 			}
 		}
 	} else if (mode == AlterGroupMode::SetParent) {
+		/* Do nothing if the parent group isn't actually changed. */
+		if (g->parent == parent_id) return CommandCost();
+
 		/* Set group parent */
 		const Group *pg = Group::GetIfValid(parent_id);
 
@@ -458,7 +474,10 @@ CommandCost CmdAlterGroup(DoCommandFlags flags, AlterGroupMode mode, GroupID gro
 		}
 
 		if (flags.Test(DoCommandFlag::Execute)) {
+			if (g->parent != GroupID::Invalid()) Group::Get(g->parent)->children.erase(g->index);
 			g->parent = (pg == nullptr) ? GroupID::Invalid() : pg->index;
+			if (g->parent != GroupID::Invalid()) Group::Get(g->parent)->children.insert(g->index);
+
 			GroupStatistics::UpdateAutoreplace(g->owner);
 
 			if (!HasBit(g->livery.in_use, 0) || !HasBit(g->livery.in_use, 1)) {
@@ -696,8 +715,8 @@ static void SetGroupFlag(Group *g, GroupFlag flag, bool set, bool children)
 
 	if (!children) return;
 
-	for (Group *pg : Group::Iterate()) {
-		if (pg->parent == g->index) SetGroupFlag(pg, flag, set, true);
+	for (const GroupID &childgroup : g->children) {
+		SetGroupFlag(Group::Get(childgroup), flag, set, true);
 	}
 }
 
@@ -790,11 +809,14 @@ void UpdateTrainGroupID(Train *v)
 uint GetGroupNumEngines(CompanyID company, GroupID id_g, EngineID id_e)
 {
 	uint count = 0;
-	const Engine *e = Engine::Get(id_e);
-	for (const Group *g : Group::Iterate()) {
-		if (g->parent == id_g) count += GetGroupNumEngines(company, g->index, id_e);
+
+	if (Group *g = Group::GetIfValid(id_g); g != nullptr) {
+		for (const GroupID &childgroup : g->children) {
+			count += GetGroupNumEngines(company, childgroup, id_e);
+		}
 	}
-	return count + GroupStatistics::Get(company, id_g, e->type).GetNumEngines(id_e);
+
+	return count + GroupStatistics::Get(company, id_g, Engine::Get(id_e)->type).GetNumEngines(id_e);
 }
 
 /**
@@ -808,9 +830,13 @@ uint GetGroupNumEngines(CompanyID company, GroupID id_g, EngineID id_e)
 uint GetGroupNumVehicle(CompanyID company, GroupID id_g, VehicleType type)
 {
 	uint count = 0;
-	for (const Group *g : Group::Iterate()) {
-		if (g->parent == id_g) count += GetGroupNumVehicle(company, g->index, type);
+
+	if (Group *g = Group::GetIfValid(id_g); g != nullptr) {
+		for (const GroupID &childgroup : g->children) {
+			count += GetGroupNumVehicle(company, childgroup, type);
+		}
 	}
+
 	return count + GroupStatistics::Get(company, id_g, type).num_vehicle;
 }
 
@@ -825,9 +851,13 @@ uint GetGroupNumVehicle(CompanyID company, GroupID id_g, VehicleType type)
 uint GetGroupNumVehicleMinAge(CompanyID company, GroupID id_g, VehicleType type)
 {
 	uint count = 0;
-	for (const Group *g : Group::Iterate()) {
-		if (g->parent == id_g) count += GetGroupNumVehicleMinAge(company, g->index, type);
+
+	if (Group *g = Group::GetIfValid(id_g); g != nullptr) {
+		for (const GroupID &childgroup : g->children) {
+			count += GetGroupNumVehicleMinAge(company, childgroup, type);
+		}
 	}
+
 	return count + GroupStatistics::Get(company, id_g, type).num_vehicle_min_age;
 }
 
@@ -842,9 +872,13 @@ uint GetGroupNumVehicleMinAge(CompanyID company, GroupID id_g, VehicleType type)
 Money GetGroupProfitLastYearMinAge(CompanyID company, GroupID id_g, VehicleType type)
 {
 	Money sum = 0;
-	for (const Group *g : Group::Iterate()) {
-		if (g->parent == id_g) sum += GetGroupProfitLastYearMinAge(company, g->index, type);
+
+	if (Group *g = Group::GetIfValid(id_g); g != nullptr) {
+		for (const GroupID &childgroup : g->children) {
+			sum += GetGroupProfitLastYearMinAge(company, childgroup, type);
+		}
 	}
+
 	return sum + GroupStatistics::Get(company, id_g, type).profit_last_year_min_age;
 }
 

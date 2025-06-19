@@ -3166,6 +3166,12 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Επιλ
 STR_FOUND_TOWN_CITY                                             :{BLACK}Πόλη
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Οι πόλεις αναπτύσσονται ταχύτερα από τις απλές κωμοπόλεις{}Ανάλογα με τις ρυθμίσεις, είναι μεγαλύτερες όταν ιδρύονται
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Επέκταση πόλης:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Κτίρια
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Αύξηση κτιρίων πόλεων
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Δρόμοι
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Αύξηση δρόμων πόλεων
+
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Σχέδιο δρόμων πόλης
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Επιλογή σχεδίου δρόμων που χρησιμοποιείται για αυτή την πόλη
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Αρχικό
@@ -3789,6 +3795,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Αλλα
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Επέκταση
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Αύξηση μεγέθους της πόλης
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Επέκταση κτιρίων
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Αύξηση κτιρίων της πόλης
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Επέκταση δρόμων
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Αύξηση δρόμων της πόλης
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Διαγραφή
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Διαγραφή της πόλης ολοκληρωτικά
 
@@ -4862,7 +4872,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Δρομ
 STR_TIMETABLE_NO_TRAVEL                                         :Μην ταξιδέψεις
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Ταξίδι (αυτόματα· με δρομολόγιο στην επόμενη μη αυτόματη εντολή)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Ταξίδεψε (όχι μεσώ δρομολογίου)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Ταξίδι (μη δρομολογημένο) με μέγιστη ταχύτητα {2:VELOCITY}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Ταξίδι (μη δρομολογημένο) με μέγιστη ταχύτητα {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Ταξίδεψε για {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Ταξίδεψε για {STRING} με στο μέγιστο {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Ταξίδι (για {STRING}, μη δρομολογημένο)
@@ -6022,3 +6032,11 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Άνοιγμα ρυθμίσεων badge
+STR_BADGE_CONFIG_RESET                                          :Επαναφορά
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Εικονίδια Badge
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Φίλτρα Badge
+STR_BADGE_CONFIG_PREVIEW                                        :Προεπισκόπιση Εικόνας
+STR_BADGE_CONFIG_NAME                                           :Όνομα
+STR_BADGE_FILTER_ANY_LABEL                                      :Κάθε {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} είναι {STRING}

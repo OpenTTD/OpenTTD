@@ -311,7 +311,7 @@ public:
 
 			case WID_RV_LEFT_MATRIX:
 			case WID_RV_RIGHT_MATRIX:
-				resize.height = GetEngineListHeight(this->window_number);
+				fill.height = resize.height = GetEngineListHeight(this->window_number);
 				size.height = (this->window_number <= VEH_ROAD ? 8 : 4) * resize.height;
 				break;
 
@@ -623,7 +623,7 @@ public:
 		}
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		switch (widget) {
 			case WID_RV_SORT_DROPDOWN:

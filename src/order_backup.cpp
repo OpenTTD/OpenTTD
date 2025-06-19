@@ -27,18 +27,7 @@
 OrderBackupPool _order_backup_pool("BackupOrder");
 INSTANTIATE_POOL_METHODS(OrderBackup)
 
-/** Free everything that is allocated. */
-OrderBackup::~OrderBackup()
-{
-	if (CleaningPool()) return;
-
-	Order *o = this->orders;
-	while (o != nullptr) {
-		Order *next = o->next;
-		delete o;
-		o = next;
-	}
-}
+OrderBackup::~OrderBackup() = default;
 
 /**
  * Create an order backup for the given vehicle.
@@ -54,15 +43,7 @@ OrderBackup::OrderBackup(const Vehicle *v, uint32_t user) : user(user), tile(v->
 		this->clone = (v->FirstShared() == v) ? v->NextShared() : v->FirstShared();
 	} else {
 		/* Else copy the orders */
-		Order **tail = &this->orders;
-
-		/* Count the number of orders */
-		for (const Order *order : v->Orders()) {
-			Order *copy = new Order();
-			copy->AssignOrder(*order);
-			*tail = copy;
-			tail = &copy->next;
-		}
+		this->orders.assign(std::begin(v->Orders()), std::end(v->Orders()));
 	}
 }
 
@@ -75,9 +56,8 @@ void OrderBackup::DoRestore(Vehicle *v)
 	/* If we had shared orders, recover that */
 	if (this->clone != nullptr) {
 		Command<CMD_CLONE_ORDER>::Do(DoCommandFlag::Execute, CO_SHARE, v->index, this->clone->index);
-	} else if (this->orders != nullptr && OrderList::CanAllocateItem()) {
-		v->orders = new OrderList(this->orders, v);
-		this->orders = nullptr;
+	} else if (!this->orders.empty() && OrderList::CanAllocateItem()) {
+		v->orders = new OrderList(std::move(this->orders), v);
 		/* Make sure buoys/oil rigs are updated in the station list. */
 		InvalidateWindowClassesData(WC_STATION_LIST, 0);
 	}
@@ -251,12 +231,12 @@ CommandCost CmdClearOrderBackup(DoCommandFlags flags, TileIndex tile, ClientID u
 /* static */ void OrderBackup::RemoveOrder(OrderType type, DestinationID destination, bool hangar)
 {
 	for (OrderBackup *ob : OrderBackup::Iterate()) {
-		for (Order *order = ob->orders; order != nullptr; order = order->next) {
-			OrderType ot = order->GetType();
-			if (ot == OT_GOTO_DEPOT && (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) != 0) continue;
+		for (Order &order : ob->orders) {
+			OrderType ot = order.GetType();
+			if (ot == OT_GOTO_DEPOT && (order.GetDepotActionType() & ODATFB_NEAREST_DEPOT) != 0) continue;
 			if (ot == OT_GOTO_DEPOT && hangar && !IsHangarTile(ob->tile)) continue; // Not an aircraft? Can't have a hangar order.
 			if (ot == OT_IMPLICIT || (IsHangarTile(ob->tile) && ot == OT_GOTO_DEPOT && !hangar)) ot = OT_GOTO_STATION;
-			if (ot == type && order->GetDestination() == destination) {
+			if (ot == type && order.GetDestination() == destination) {
 				/* Remove the order backup! If a station/depot gets removed, we can't/shouldn't restore those broken orders. */
 				delete ob;
 				break;

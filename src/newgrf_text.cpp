@@ -74,7 +74,7 @@ struct GRFTextEntry {
 };
 
 
-static ReferenceThroughBaseContainer<std::vector<GRFTextEntry>> _grf_text;
+static TypedIndexContainer<std::vector<GRFTextEntry>, StringIndexInTab> _grf_text;
 static uint8_t _current_lang_id = GRFLX_ENGLISH;  ///< by default, english is used.
 
 /**

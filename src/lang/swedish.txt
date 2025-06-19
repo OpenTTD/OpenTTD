@@ -2195,6 +2195,8 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... Inge
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU-drivrutinen kraschade spelet. Maskinvaruacceleration inaktiverad
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nytt spel
 STR_INTRO_LOAD_GAME                                             :{BLACK}Ladda spel
@@ -3070,6 +3072,7 @@ STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Slumpa
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Välj stadsstorlek
 STR_FOUND_TOWN_CITY                                             :{BLACK}Stad
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Storstäder växer snabbare än vanliga städer{}Beroende på inställningarna så är de större när de grundas
+
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Utformning av stadens vägnät:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Välj vägnätets utformning för denna stad
@@ -4759,7 +4762,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Tidtabel
 STR_TIMETABLE_NO_TRAVEL                                         :Ingen resa
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Restid (automatisk; tidtabellen baseras på nästa manuella order)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Restid (inte angiven)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Res (utan tidtabell) högst i {2:VELOCITY}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Res (utan tidtabell) i högst {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Res i {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Res i {STRING} med högsta hastighet {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Resor (för {STRING}, ej schemalagd)

@@ -32,9 +32,9 @@
 bool ContentInfo::IsSelected() const
 {
 	switch (this->state) {
-		case ContentInfo::SELECTED:
-		case ContentInfo::AUTOSELECTED:
-		case ContentInfo::ALREADY_HERE:
+		case ContentInfo::State::Selected:
+		case ContentInfo::State::Autoselected:
+		case ContentInfo::State::AlreadyHere:
 			return true;
 
 		default:
@@ -48,7 +48,7 @@ bool ContentInfo::IsSelected() const
  */
 bool ContentInfo::IsValid() const
 {
-	return this->state < ContentInfo::INVALID && this->type >= CONTENT_TYPE_BEGIN && this->type < CONTENT_TYPE_END;
+	return this->state < ContentInfo::State::Invalid && this->type >= CONTENT_TYPE_BEGIN && this->type < CONTENT_TYPE_END;
 }
 
 /**
@@ -58,7 +58,7 @@ bool ContentInfo::IsValid() const
  */
 std::optional<std::string> ContentInfo::GetTextfile(TextfileType type) const
 {
-	if (this->state == INVALID) return std::nullopt;
+	if (this->state == ContentInfo::State::Invalid) return std::nullopt;
 	std::optional<std::string_view> tmp;
 	switch (this->type) {
 		default: NOT_REACHED();

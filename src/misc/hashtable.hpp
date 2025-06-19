@@ -147,7 +147,7 @@ protected:
 	int number_of_items = 0; // item counter
 
 	/** static helper - return hash for the given key modulo number of slots */
-	inline static int CalcHash(const Tkey &key)
+	static inline int CalcHash(const Tkey &key)
 	{
 		uint32_t hash = key.CalcHash();
 		hash -= (hash >> 17);          // hash * 131071 / 131072
@@ -157,7 +157,7 @@ protected:
 	}
 
 	/** static helper - return hash for the given item modulo number of slots */
-	inline static int CalcHash(const Titem &item)
+	static inline int CalcHash(const Titem &item)
 	{
 		return CalcHash(item.GetKey());
 	}

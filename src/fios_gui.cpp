@@ -621,7 +621,7 @@ public:
 				break;
 
 			case WID_SL_DRIVES_DIRECTORIES_LIST:
-				resize.height = GetCharacterHeight(FS_NORMAL);
+				fill.height = resize.height = GetCharacterHeight(FS_NORMAL);
 				size.height = resize.height * 10 + padding.height;
 				break;
 			case WID_SL_SORT_BYNAME:

@@ -187,6 +187,8 @@ public:
 
 			case WID_BO_INFO:
 				size.height = this->info_height;
+				fill.height = this->has_class_picker ? 0 : 1;
+				resize.height = this->has_class_picker ? 0 : 1;
 				break;
 
 			default:

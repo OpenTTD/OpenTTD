@@ -23,7 +23,7 @@ void ResetPriceBaseMultipliers();
 void SetPriceBaseMultiplier(Price price, int factor);
 
 extern const ScoreInfo _score_info[];
-extern ReferenceThroughBaseContainer<std::array<std::array<int64_t, SCORE_END>, MAX_COMPANIES>> _score_part;
+extern TypedIndexContainer<std::array<std::array<int64_t, SCORE_END>, MAX_COMPANIES>, CompanyID> _score_part;
 extern Economy _economy;
 /* Prices and also the fractional part. */
 extern Prices _price;

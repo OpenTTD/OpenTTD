@@ -1041,7 +1041,7 @@ STR_GAME_OPTIONS_SETTING                                        :{STRING}: {ORAN
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Pénznem
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Pénznem kiválasztása
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Pénznem kiválasztása
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -1326,7 +1326,7 @@ STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Nincs 
 ###length 3
 STR_CONFIG_SETTING_CATEGORY_HIDES                               :Az összes találat megjelenítése:{}A {SILVER}kategória {BLACK}legyen {WHITE}{STRING}
 STR_CONFIG_SETTING_TYPE_HIDES                                   :Az összes találat megjelenítése:{}A {PUSH_COLOUR}{SILVER}típus {POP_COLOUR}legyen {WHITE}Összes beállítástípus
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Az összes találat megjelenítése:{}A {SILVER}kategória {BLACK}legyen {WHITE}{STRING} {BLACK}, a {SILVER}típus {BLACK}pedig {WHITE}Összes beállítástípus
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Az összes találat megjelenítése:{}A {SILVER}kategória {BLACK}legyen {WHITE}{STRING} {BLACK}, a {SILVER}típus {BLACK}pedig {WHITE}Összes beállítástípus
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Ki
@@ -2614,7 +2614,7 @@ STR_NETWORK_SPECTATORS                                          :Megfigyelők
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Csatlakozás
-STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Csatlakozz és vezesd a vállalatot
+STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Csatlakozás és a vállalat vezetése
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Elküld
@@ -2984,7 +2984,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Villamos
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Közút építése egyszerűsített módon. Ctrl+kattintás az út lerombolásához. Shift+kattintással csak a becsült költséget jeleníti meg
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Villamospálya építése egyszerűsített módon. Ctrl+kattintás a pálya lerombolásához. Shift+kattintással csak a becsült költséget jeleníti meg
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Garázs építése (járművek vételére és karbantartására). Shift+kattintással csak a becsült költséget jeleníti meg
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Villamos remíz építése (járművek megépítésére és javítására). Shift+kattintással csak a becsült költséget jeleníti meg
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Villamosremíz építése (járművek megépítésére és javítására). Shift+kattintással csak a becsült költséget jeleníti meg
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Útpont építése az úton. Ctrl+kattintás másik csatlakozási pont kiválasztásához. Nyomd meg a Shift billentyűt is, ha csak a költségbecslést szeretnéd megjeleníteni
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Útpont építése a villamosvonalon. Ctrl+kattintás másik csatlakozási pont kiválasztásához. Nyomd meg a Shift billentyűt is, ha csak a költségbecslést szeretnéd megjeleníteni
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Buszmegálló építése. Ctrl+kattintással egyesíthető más állomásokkal. Shift+kattintással csak a becsült költséget jeleníti meg
@@ -3136,6 +3136,12 @@ STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Véletle
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}A település méretének kiválasztása
 STR_FOUND_TOWN_CITY                                             :{BLACK}Város
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Átlagosnál gyorsabban növekedő városok{}Beállítástól függően nagyobbak alapításkor
+
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Város bővítés:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Épületek
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :A városi épületek növelése
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Utak
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :A városi utak növelése
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Település úthálózat építési mintája:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Válassz úthálózati elrendezést ehhez a városhoz
@@ -3760,6 +3766,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}A város
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Növelés
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}A település méretének növelése
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Épületek bővítése
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}A városi épületek növelése
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Utak növelése
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}A városi utak növelése
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Töröl
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}A település teljes eltüntetése
 
@@ -3947,7 +3957,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Repülő
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}A fő nézetet az ellenőrző pontra állítja. Ctrl+kattintással új nézet nyílik az ellenőrzőpontnál
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}A fő nézetet az ellenőrzőpontra állítja. Ctrl+kattintással új nézet nyílik az ellenőrzőpontnál
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Ellenőrzőpont nevének megváltoztatása
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}A fő nézetet a bójára állítja. Ctrl+kattintással új nézet nyílik a bója helyzeténél
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Bója nevének megváltoztatása
@@ -4029,10 +4039,10 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}SZH áth
 STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}A vállalat székházának újraépítése máshol a vállalat értékének 1%-áért. Shift+kattintással csak a becsült költséget jeleníti meg
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Részletek
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Részletes információk megtekintése az infrastruktúráról
-STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Adományozz pénzt
-STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Utalj pénzt ennek a vállalatnak
+STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Pénz adományozása
+STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Pénz adományozása ennek a vállalatnak
 STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}Erőszakos átvétel
-STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Vedd át erőszakkal a vállalat vezetését
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}A vállalat vezetésének erőszakos átvétele
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Új arc
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Új arc választása az elnöknek
@@ -4321,9 +4331,9 @@ STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Húzz id
 
 ###length VEHICLE_TYPES
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}A járműtelepen tartózkodó összes vonat eladása
-STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Összes garázsban tartózkodó jármű eladása
-STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Összes dokkban tartózkodó hajó eladása
-STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Összes hangárban tartózkodó repülő eladása
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}A garázsban tartózkodó összes jármű eladása
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}A dokkban tartózkodó összes hajó eladása
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}A hangárban tartózkodó összes repülő eladása
 
 ###length VEHICLE_TYPES
 STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}A járműtelepen tartózkodó összes vonat automatikus cseréje
@@ -4469,7 +4479,7 @@ STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Közelí
 STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Közelítés a repülőgép jelenlegi helyzetére. Dupla kattintással a fő nézetben követni fogja a repülőgépet. Ctrl+kattintással új nézet nyílik a repülőgép helyzeténél
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}A járműtelepre küldi a vonatot. Ctrl+kattintással csak javításra
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Járműtelepre küldi a vonatot. Ctrl+kattintással csak javításra
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Garázsba küldi a járművet. Ctrl+kattintással csak javításra
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Dokkba küldi a hajót. Ctrl+kattintással csak javításra
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Hangárba küldi a repülőgépet. Ctrl+kattintással csak javításra
@@ -4526,12 +4536,12 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCI
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - Útban {0:WAYPOINT} felé
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - Útban {0:DEPOT} felé
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - Javítás {0:DEPOT}ban
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - Csoport bontás és szervizelés itt: {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - Csoportbontás és szervizelés itt: {0:DEPOT}
 
-STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{1:VELOCITY} - {0:STATION} nem elérhető
-STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{1:VELOCITY} - {0:WAYPOINT} nem elérhető,
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELOCITY} - {0:DEPOT} nem elérhető
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - {0:DEPOT} nem elérhető
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{1:VELOCITY} - {0:STATION} nem érhető el
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{1:VELOCITY} - {0:WAYPOINT} nem érhető el
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELOCITY} - {0:DEPOT} nem érhető el
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - {0:DEPOT} nem érhető el
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Megállítva
@@ -4692,9 +4702,9 @@ STR_ORDER_DROP_UNBUNCH                                          :Csoportbontás
 
 # Depot action tooltips, one per vehicle type
 ###length VEHICLE_TYPES
-STR_ORDER_TRAIN_DEPOT_ACTION_TOOLTIP                            :{BLACK}Válaszd ki a vasúti járműtelepre alkalmazni kívánt műveletet
-STR_ORDER_ROAD_DEPOT_ACTION_TOOLTIP                             :{BLACK}Válaszd ki a garázsra alkalmazni kívánt műveletet
-STR_ORDER_SHIP_DEPOT_ACTION_TOOLTIP                             :{BLACK}Válaszd ki a dokkra alkalmazni kívánt műveletet
+STR_ORDER_TRAIN_DEPOT_ACTION_TOOLTIP                            :{BLACK}Válaszd ki a vasúti járműtelepre alkalmazandó műveletet
+STR_ORDER_ROAD_DEPOT_ACTION_TOOLTIP                             :{BLACK}Válaszd ki a garázsra alkalmazandó műveletet
+STR_ORDER_SHIP_DEPOT_ACTION_TOOLTIP                             :{BLACK}Válaszd ki a dokkra alkalmazandó műveletet
 STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Válaszd ki a hangárra alkalmazni kívánt műveletet
 ###next-name-looks-similar
 
@@ -4825,7 +4835,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Menetren
 STR_TIMETABLE_NO_TRAVEL                                         :Nincs menet
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Menet (automata; menetrend a következő kézi utasítás alapján)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Következő célpontig a menetidő időzítetlen
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Menet {2:VELOCITY} max. sebességgel (nincs menetrend)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Menet {VELOCITY} max. sebességgel (nincs menetrend)
 STR_TIMETABLE_TRAVEL_FOR                                        :Menetidő: {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Menetidő: {STRING} {VELOCITY} max. sebességgel
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Menet ({STRING}ig, időzítetlen)
@@ -5114,7 +5124,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... túl
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... túl sok a település
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nincs több hely a térképen
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Útkarbantartás folyamatban
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nem törölhető ezt a várost...{}{}Egy állomás vagy járműtelep hivatkozik a városra, vagy egy városi tulajdonú mező nem eltávolítható
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}A város nem törölhető...{}{}Egy állomás vagy járműtelep hivatkozik a városra, vagy egy városi tulajdonú mező nem távolítható el
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... nincs megfelelő hely egy szobornak a város központjában
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}A házépítés nem lehetséges
 
@@ -5210,7 +5220,7 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Nem ép�
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Nem nevezheted át a járműtelepet...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... fűtőhűzban kellene állnia ehhez
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... járműtelepen kellene állnia ehhez
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... garázsban kellene állnia ehhez
 STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... dokkban kellene állnia ehhez
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... hangárban kellene állnia ehhez
@@ -5932,21 +5942,21 @@ STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} {COMMA}.
 STR_FORMAT_BUOY_NAME_SERIAL.ba                                  :{TOWN} {COMMA}. sz. Bóján
 
 ###length 2
-STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Ellenőrző pont
-STR_FORMAT_WAYPOINT_NAME.ba                                     :{TOWN} Ellenőrző ponton
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} {COMMA}. sz. Ellenőrző pont
-STR_FORMAT_WAYPOINT_NAME_SERIAL.ba                              :{TOWN} {COMMA}. sz. Ellenőrző ponton
+STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} ellenőrzőpont
+STR_FORMAT_WAYPOINT_NAME.ba                                     :{TOWN} ellenőrzőponton
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} {COMMA}. sz. ellenőrzőpont
+STR_FORMAT_WAYPOINT_NAME_SERIAL.ba                              :{TOWN} {COMMA}. sz. ellenőrzőponton
 
 ###length 6
-STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Járműtelep
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} {COMMA}. sz. Vasúti járműtelep
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Garázs
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} {COMMA}. sz. Garázs
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} járműtelep
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} {COMMA}. sz. vasúti járműtelep
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} garázs
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} {COMMA}. sz. garázs
 STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Dokk
-STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} {COMMA}. sz. Dokk
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} {COMMA}. sz. dokk
 ###next-name-looks-similar
 
-STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangár
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} hangár
 # _SERIAL version of AIRACRAFT doesn't exist
 
 STR_UNKNOWN_STATION                                             :ismeretlen állomás
@@ -6022,3 +6032,11 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Jelvény beállítások megnyitása
+STR_BADGE_CONFIG_RESET                                          :Visszaállítás
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Jelvény ikonok
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Jelvény szűrők
+STR_BADGE_CONFIG_PREVIEW                                        :Előnézet kép
+STR_BADGE_CONFIG_NAME                                           :Név
+STR_BADGE_FILTER_ANY_LABEL                                      :Bármelyik {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} {STRING}

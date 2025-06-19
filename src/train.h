@@ -22,16 +22,17 @@
 struct Train;
 
 /** Rail vehicle flags. */
-enum VehicleRailFlags : uint8_t {
-	VRF_REVERSING                     = 0,
-	VRF_POWEREDWAGON                  = 3, ///< Wagon is powered.
-	VRF_REVERSE_DIRECTION             = 4, ///< Reverse the visible direction of the vehicle.
+enum VehicleRailFlag : uint8_t {
+	Reversing = 0, ///< Train is slowing down to reverse.
+	PoweredWagon = 3, ///< Wagon is powered.
+	Flipped = 4, ///< Reverse the visible direction of the vehicle.
 
-	VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL = 6, ///< Electric train engine is allowed to run on normal rail. */
-	VRF_TOGGLE_REVERSE                = 7, ///< Used for vehicle var 0xFE bit 8 (toggled each time the train is reversed, accurate for first vehicle only).
-	VRF_TRAIN_STUCK                   = 8, ///< Train can't get a path reservation.
-	VRF_LEAVING_STATION               = 9, ///< Train is just leaving a station.
+	AllowedOnNormalRail = 6, ///< Electric train engine is allowed to run on normal rail. */
+	Reversed = 7, ///< Used for vehicle var 0xFE bit 8 (toggled each time the train is reversed, accurate for first vehicle only).
+	Stuck = 8, ///< Train can't get a path reservation.
+	LeavingStation = 9, ///< Train is just leaving a station.
 };
+using VehicleRailFlags = EnumBitSet<VehicleRailFlag, uint16_t>;
 
 /** Modes for ignoring signals. */
 enum TrainForceProceeding : uint8_t {
@@ -88,7 +89,7 @@ struct TrainCache {
  * 'Train' is either a loco or a wagon.
  */
 struct Train final : public GroundVehicle<Train, VEH_TRAIN> {
-	uint16_t flags = 0;
+	VehicleRailFlags flags{};
 	uint16_t crash_anim_pos = 0; ///< Crash animation counter.
 	uint16_t wait_counter = 0; ///< Ticks waiting in front of a signal, ticks being stuck or a counter for forced proceeding through signals.
 
@@ -205,7 +206,7 @@ protected: // These functions should not be called outside acceleration code.
 	inline uint16_t GetPoweredPartPower(const Train *head) const
 	{
 		/* For powered wagons the engine defines the type of engine (i.e. railtype) */
-		if (HasBit(this->flags, VRF_POWEREDWAGON) && HasPowerOnRail(head->railtype, GetRailType(this->tile))) {
+		if (this->flags.Test(VehicleRailFlag::PoweredWagon) && HasPowerOnRail(head->railtype, GetRailType(this->tile))) {
 			return RailVehInfo(this->gcache.first_engine)->pow_wag_power;
 		}
 
@@ -226,7 +227,7 @@ protected: // These functions should not be called outside acceleration code.
 		}
 
 		/* Powered wagons have extra weight added. */
-		if (HasBit(this->flags, VRF_POWEREDWAGON)) {
+		if (this->flags.Test(VehicleRailFlag::PoweredWagon)) {
 			weight += RailVehInfo(this->gcache.first_engine)->pow_wag_weight;
 		}
 
@@ -273,7 +274,7 @@ protected: // These functions should not be called outside acceleration code.
 	 */
 	inline AccelStatus GetAccelerationStatus() const
 	{
-		return this->vehstatus.Test(VehState::Stopped) || HasBit(this->flags, VRF_REVERSING) || HasBit(this->flags, VRF_TRAIN_STUCK) ? AS_BRAKE : AS_ACCEL;
+		return this->vehstatus.Test(VehState::Stopped) || this->flags.Any({VehicleRailFlag::Reversing, VehicleRailFlag::Stuck}) ? AS_BRAKE : AS_ACCEL;
 	}
 
 	/**

@@ -852,7 +852,7 @@ struct GenerateLandscapeWindow : public Window {
 		}
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		switch (widget) {
 			case WID_GL_MAPSIZE_X_PULLDOWN:     _settings_newgame.game_creation.map_x = index; break;
@@ -914,7 +914,7 @@ struct GenerateLandscapeWindow : public Window {
 
 		int32_t value;
 		if (!str->empty()) {
-			auto val = ParseInteger<int32_t>(*str);
+			auto val = ParseInteger<int32_t>(*str, 10, true);
 			if (!val.has_value()) return;
 			value = *val;
 		} else {
@@ -1190,7 +1190,7 @@ struct CreateScenarioWindow : public Window
 		this->RaiseWidgetsWhenLowered(WID_CS_START_DATE_DOWN, WID_CS_START_DATE_UP, WID_CS_FLAT_LAND_HEIGHT_DOWN, WID_CS_FLAT_LAND_HEIGHT_UP);
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		switch (widget) {
 			case WID_CS_MAPSIZE_X_PULLDOWN: _settings_newgame.game_creation.map_x = index; break;
@@ -1203,7 +1203,7 @@ struct CreateScenarioWindow : public Window
 	{
 		if (!str.has_value()) return;
 
-		auto value = ParseInteger<int32_t>(*str);
+		auto value = ParseInteger<int32_t>(*str, 10, true);
 		if (!value.has_value()) return;
 
 		switch (this->widget_id) {

@@ -120,10 +120,10 @@ static uint32_t _game_saveload_strings;
 
 class SlGameLanguageString : public DefaultSaveLoadHandler<SlGameLanguageString, LanguageStrings> {
 public:
-	inline static const SaveLoad description[] = {
+	static inline const SaveLoad description[] = {
 		SLEG_SSTR("string", _game_saveload_string, SLE_STR | SLF_ALLOW_CONTROL | SLF_REPLACE_TABCRLF),
 	};
-	inline const static SaveLoadCompatTable compat_description = _game_language_string_sl_compat;
+	static inline const SaveLoadCompatTable compat_description = _game_language_string_sl_compat;
 
 	void Save(LanguageStrings *ls) const override
 	{

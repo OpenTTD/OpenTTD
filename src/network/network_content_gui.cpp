@@ -357,7 +357,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 
 			bool first = true;
 			for (const ContentInfo *ci : this->content) {
-				if (ci->state != ContentInfo::DOES_NOT_EXIST) continue;
+				if (ci->state != ContentInfo::State::DoesNotExist) continue;
 
 				if (!first) url.push_back(',');
 				first = false;
@@ -409,7 +409,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 		bool all_available = true;
 
 		for (const ContentInfo &ci : _network_content_client.Info()) {
-			if (ci.state == ContentInfo::DOES_NOT_EXIST) all_available = false;
+			if (ci.state == ContentInfo::State::DoesNotExist) all_available = false;
 			this->content.push_back(&ci);
 		}
 
@@ -426,7 +426,9 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	/** Sort content by name. */
 	static bool NameSorter(const ContentInfo * const &a, const ContentInfo * const &b)
 	{
-		return StrNaturalCompare(a->name, b->name, true) < 0; // Sort by name (natural sorting).
+		int r = StrNaturalCompare(a->name, b->name, true); // Sort by name (natural sorting).
+		if (r == 0) r = StrNaturalCompare(a->version, b->version, true);
+		return r < 0;
 	}
 
 	/** Sort content by type. */
@@ -443,7 +445,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	/** Sort content by state. */
 	static bool StateSorter(const ContentInfo * const &a, const ContentInfo * const &b)
 	{
-		int r = a->state - b->state;
+		int r = to_underlying(a->state) - to_underlying(b->state);
 		if (r == 0) return TypeSorter(a, b);
 		return r < 0;
 	}
@@ -460,7 +462,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	/** Filter content by tags/name */
 	static bool TagNameFilter(const ContentInfo * const *a, ContentListFilterData &filter)
 	{
-		if ((*a)->state == ContentInfo::SELECTED || (*a)->state == ContentInfo::AUTOSELECTED) return true;
+		if ((*a)->state == ContentInfo::State::Selected || (*a)->state == ContentInfo::State::Autoselected) return true;
 
 		filter.string_filter.ResetState();
 		for (auto &tag : (*a)->tags) filter.string_filter.AddLine(tag);
@@ -474,7 +476,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	{
 		if (filter.types.None()) return true;
 		if (filter.types.Test((*a)->type)) return true;
-		return ((*a)->state == ContentInfo::SELECTED || (*a)->state == ContentInfo::AUTOSELECTED);
+		return ((*a)->state == ContentInfo::State::Selected || (*a)->state == ContentInfo::State::Autoselected);
 	}
 
 	/** Filter the content list */
@@ -594,7 +596,7 @@ public:
 			}
 
 			case WID_NCL_MATRIX:
-				resize.height = std::max(this->checkbox_size.height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
+				fill.height = resize.height = std::max(this->checkbox_size.height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
 				size.height = 10 * resize.height;
 				break;
 		}
@@ -637,6 +639,7 @@ public:
 	 */
 	void DrawMatrix(const Rect &r) const
 	{
+		bool rtl = _current_text_dir == TD_RTL;
 		const Rect checkbox = this->GetWidget<NWidgetBase>(WID_NCL_CHECKBOX)->GetCurrentRect();
 		const Rect name = this->GetWidget<NWidgetBase>(WID_NCL_NAME)->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
 		const Rect type = this->GetWidget<NWidgetBase>(WID_NCL_TYPE)->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
@@ -644,6 +647,7 @@ public:
 		/* Fill the matrix with the information */
 		const uint step_height = this->GetWidget<NWidgetBase>(WID_NCL_MATRIX)->resize_y;
 		const int text_y_offset = WidgetDimensions::scaled.matrix.top + (step_height - WidgetDimensions::scaled.matrix.Vertical() - GetCharacterHeight(FS_NORMAL)) / 2;
+		const int version_y_offset = WidgetDimensions::scaled.matrix.top + (step_height - WidgetDimensions::scaled.matrix.Vertical() - GetCharacterHeight(FS_SMALL)) / 2;
 
 		Rect mr = r.WithHeight(step_height);
 		auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->content);
@@ -655,11 +659,11 @@ public:
 			SpriteID sprite;
 			SpriteID pal = PAL_NONE;
 			switch (ci->state) {
-				case ContentInfo::UNSELECTED:     sprite = SPR_BOX_EMPTY;   break;
-				case ContentInfo::SELECTED:       sprite = SPR_BOX_CHECKED; break;
-				case ContentInfo::AUTOSELECTED:   sprite = SPR_BOX_CHECKED; break;
-				case ContentInfo::ALREADY_HERE:   sprite = SPR_BLOT; pal = PALETTE_TO_GREEN; break;
-				case ContentInfo::DOES_NOT_EXIST: sprite = SPR_BLOT; pal = PALETTE_TO_RED;   break;
+				case ContentInfo::State::Unselected: sprite = SPR_BOX_EMPTY; break;
+				case ContentInfo::State::Selected: sprite = SPR_BOX_CHECKED; break;
+				case ContentInfo::State::Autoselected: sprite = SPR_BOX_CHECKED; break;
+				case ContentInfo::State::AlreadyHere: sprite = SPR_BLOT; pal = PALETTE_TO_GREEN; break;
+				case ContentInfo::State::DoesNotExist: sprite = SPR_BLOT; pal = PALETTE_TO_RED; break;
 				default: NOT_REACHED();
 			}
 			DrawSpriteIgnorePadding(sprite, pal, {checkbox.left, mr.top, checkbox.right, mr.bottom}, SA_CENTER);
@@ -667,7 +671,10 @@ public:
 			StringID str = STR_CONTENT_TYPE_BASE_GRAPHICS + ci->type - CONTENT_TYPE_BASE_GRAPHICS;
 			DrawString(type.left, type.right, mr.top + text_y_offset, str, TC_BLACK, SA_HOR_CENTER);
 
-			DrawString(name.left, name.right, mr.top + text_y_offset, ci->name, TC_BLACK);
+			int x = DrawString(name.left, name.right, mr.top + version_y_offset, ci->version, TC_BLACK, SA_RIGHT, false, FS_SMALL);
+			x += rtl ? WidgetDimensions::scaled.hsep_wide : -WidgetDimensions::scaled.hsep_wide;
+
+			DrawString(rtl ? x : name.left, rtl ? name.right : x, mr.top + text_y_offset, ci->name, TC_BLACK);
 			mr = mr.Translate(0, step_height);
 		}
 	}
@@ -695,7 +702,7 @@ public:
 		if (this->selected == nullptr) return;
 
 		/* And fill the rest of the details when there's information to place there */
-		DrawStringMultiLine(hr.left, hr.right, hr.top + GetCharacterHeight(FS_NORMAL), hr.bottom, STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED + this->selected->state, TC_FROMSTRING, SA_CENTER);
+		DrawStringMultiLine(hr.left, hr.right, hr.top + GetCharacterHeight(FS_NORMAL), hr.bottom, STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED + to_underlying(this->selected->state), TC_FROMSTRING, SA_CENTER);
 
 		/* Also show the total download size, so keep some space from the bottom */
 		tr.bottom -= GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_wide;
@@ -758,7 +765,7 @@ public:
 
 			std::string buf;
 			for (const ContentInfo *ci : tree) {
-				if (ci == this->selected || ci->state != ContentInfo::SELECTED) continue;
+				if (ci == this->selected || ci->state != ContentInfo::State::Selected) continue;
 
 				if (!buf.empty()) buf += list_separator;
 				buf += ci->name;
@@ -772,7 +779,7 @@ public:
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		if (widget >= WID_NCL_TEXTFILE && widget < WID_NCL_TEXTFILE + TFT_CONTENT_END) {
-			if (this->selected == nullptr || this->selected->state != ContentInfo::ALREADY_HERE) return;
+			if (this->selected == nullptr || this->selected->state != ContentInfo::State::AlreadyHere) return;
 
 			ShowContentTextfileWindow(this, (TextfileType)(widget - WID_NCL_TEXTFILE), this->selected);
 			return;
@@ -957,12 +964,12 @@ public:
 		bool show_select_upgrade = false;
 		for (const ContentInfo *ci : this->content) {
 			switch (ci->state) {
-				case ContentInfo::SELECTED:
-				case ContentInfo::AUTOSELECTED:
+				case ContentInfo::State::Selected:
+				case ContentInfo::State::Autoselected:
 					this->filesize_sum += ci->filesize;
 					break;
 
-				case ContentInfo::UNSELECTED:
+				case ContentInfo::State::Unselected:
 					show_select_all = true;
 					show_select_upgrade |= ci->upgrade;
 					break;
@@ -979,7 +986,7 @@ public:
 		this->SetWidgetDisabledState(WID_NCL_SELECT_UPDATE, !show_select_upgrade || !this->filter_data.string_filter.IsEmpty());
 		this->SetWidgetDisabledState(WID_NCL_OPEN_URL, this->selected == nullptr || this->selected->url.empty());
 		for (TextfileType tft = TFT_CONTENT_BEGIN; tft < TFT_CONTENT_END; tft++) {
-			this->SetWidgetDisabledState(WID_NCL_TEXTFILE + tft, this->selected == nullptr || this->selected->state != ContentInfo::ALREADY_HERE || !this->selected->GetTextfile(tft).has_value());
+			this->SetWidgetDisabledState(WID_NCL_TEXTFILE + tft, this->selected == nullptr || this->selected->state != ContentInfo::State::AlreadyHere || !this->selected->GetTextfile(tft).has_value());
 		}
 	}
 };

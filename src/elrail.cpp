@@ -623,7 +623,7 @@ void UpdateDisableElrailSettingState(bool disable, bool update_vehicles)
 				 *  so add there also normal rail compatibility */
 				t->compatible_railtypes.Set(RAILTYPE_RAIL);
 				t->railtype = RAILTYPE_RAIL;
-				SetBit(t->flags, VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL);
+				t->flags.Set(VehicleRailFlag::AllowedOnNormalRail);
 			}
 		}
 	}

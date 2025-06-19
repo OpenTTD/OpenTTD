@@ -42,6 +42,8 @@ enum TownViewWidgets : WidgetID {
 	WID_TV_CHANGE_NAME,    ///< Change the name of this town.
 	WID_TV_CATCHMENT,      ///< Toggle catchment area highlight.
 	WID_TV_EXPAND,         ///< Expand this town (scenario editor only).
+	WID_TV_EXPAND_BUILDINGS, ///< Expand number of buildings this town (scenario editor only).
+	WID_TV_EXPAND_ROADS, ///< Expand roads of this town (scenario editor only).
 	WID_TV_DELETE,         ///< Delete this town (scenario editor only).
 };
 
@@ -67,6 +69,9 @@ enum TownFoundingWidgets : WidgetID {
 	WID_TF_LAYOUT_GRID2,      ///< Selection for the 2x2 grid town layout.
 	WID_TF_LAYOUT_GRID3,      ///< Selection for the 3x3 grid town layout.
 	WID_TF_LAYOUT_RANDOM,     ///< Selection for a randomly chosen town layout.
+	WID_TF_TOWN_EXPAND_SEL, ///< Container of town expansion buttons.
+	WID_TF_EXPAND_BUILDINGS, ///< Expand buildings toggle.
+	WID_TF_EXPAND_ROADS, ///< Expand roads toggle.
 };
 
 /** Widgets of the #BuildHouseWindow class. */

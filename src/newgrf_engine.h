@@ -105,7 +105,7 @@ enum class BuildProbabilityType : uint8_t {
 	Reversed = 0,
 };
 
-bool TestVehicleBuildProbability(Vehicle *v, EngineID engine, BuildProbabilityType type);
+std::optional<bool> TestVehicleBuildProbability(Vehicle *v, EngineID engine, BuildProbabilityType type);
 
 void TriggerVehicleRandomisation(Vehicle *veh, VehicleRandomTrigger trigger);
 

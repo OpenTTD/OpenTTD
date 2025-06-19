@@ -342,12 +342,12 @@ STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}
 
 
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}हार्डवेयर एक्सिलरेशन
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :हार्डवेयर एक्सिलरेशन
 
 
 
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}इंटरफ़ेस का आकार
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :इंटरफ़ेस का आकार
 
 
 
@@ -929,6 +929,7 @@ STR_OBJECT_CLASS_LTHS                                           :प्रका
 
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}लघु
 STR_FOUND_TOWN_CITY                                             :{BLACK}शहर
+
 
 
 # Fund new industry window

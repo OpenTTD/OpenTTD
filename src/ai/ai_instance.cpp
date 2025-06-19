@@ -27,7 +27,7 @@
 #include "table/strings.h"
 
 /* Manually include the Text glue. */
-#include "../script/api/template/template_text.hpp.sq"
+#include "../script/api/template/template_text.sq.hpp"
 
 /* Convert all AI related classes to Squirrel data. */
 #include "../script/api/ai/ai_includes.hpp"

@@ -23,6 +23,13 @@ bool ScriptTileList::SaveObject(HSQUIRRELVM vm)
 	return true;
 }
 
+ScriptObject *ScriptTileList::CloneObject()
+{
+	ScriptTileList *clone = new ScriptTileList();
+	clone->CopyList(this);
+	return clone;
+}
+
 void ScriptTileList::AddRectangle(TileIndex t1, TileIndex t2)
 {
 	if (!::IsValidTile(t1)) return;

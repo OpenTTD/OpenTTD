@@ -228,7 +228,7 @@ Money HouseSpec::GetRemovalCost() const
 	return (_price[PR_CLEAR_HOUSE] * this->removal_cost) >> 8;
 }
 
-static bool TryBuildTownHouse(Town *t, TileIndex tile);
+static bool TryBuildTownHouse(Town *t, TileIndex tile, TownExpandModes modes);
 static Town *CreateRandomTown(uint attempts, uint32_t townnameparts, TownSize size, bool city, TownLayout layout);
 
 static void TownDrawHouseLift(const TileInfo *ti)
@@ -691,7 +691,10 @@ static void TileLoop_Town(TileIndex tile)
 				}
 			}
 
-			TryBuildTownHouse(t, tile);
+			TownExpandModes modes{TownExpandMode::Buildings};
+			if (_settings_game.economy.allow_town_roads) modes.Set(TownExpandMode::Roads);
+
+			TryBuildTownHouse(t, tile, modes);
 		}
 	}
 
@@ -902,7 +905,7 @@ static void ChangeTileOwner_Town(TileIndex, Owner, Owner)
 	/* not used */
 }
 
-static bool GrowTown(Town *t);
+static bool GrowTown(Town *t, TownExpandModes modes);
 
 /**
  * Handle the town tick for a single town, by growing the town if desired.
@@ -911,9 +914,11 @@ static bool GrowTown(Town *t);
 static void TownTickHandler(Town *t)
 {
 	if (HasBit(t->flags, TOWN_IS_GROWING)) {
+		TownExpandModes modes{TownExpandMode::Buildings};
+		if (_settings_game.economy.allow_town_roads) modes.Set(TownExpandMode::Roads);
 		int i = (int)t->grow_counter - 1;
 		if (i < 0) {
-			if (GrowTown(t)) {
+			if (GrowTown(t, modes)) {
 				i = t->growth_rate;
 			} else {
 				/* If growth failed wait a bit before retrying */
@@ -1204,7 +1209,7 @@ static RoadBits GetTownRoadGridElement(Town *t, TileIndex tile, DiagDirection di
  * @param tile The target tile for the extra house.
  * @return true if an extra house has been added.
  */
-static bool GrowTownWithExtraHouse(Town *t, TileIndex tile)
+static bool GrowTownWithExtraHouse(Town *t, TileIndex tile, TownExpandModes modes)
 {
 	/* We can't look further than that. */
 	if (DistanceFromEdge(tile) == 0) return false;
@@ -1228,7 +1233,7 @@ static bool GrowTownWithExtraHouse(Town *t, TileIndex tile)
 
 		/* If there are enough neighbours stop here */
 		if (counter >= 3) {
-			return TryBuildTownHouse(t, tile);
+			return TryBuildTownHouse(t, tile, modes);
 		}
 	}
 	return false;
@@ -1498,9 +1503,9 @@ static bool TownCanGrowRoad(TileIndex tile)
  * Check if the town is allowed to build roads.
  * @return true If the town is allowed to build roads.
  */
-static inline bool TownAllowedToBuildRoads()
+static inline bool TownAllowedToBuildRoads(TownExpandModes modes)
 {
-	return _settings_game.economy.allow_town_roads || _generating_world || _game_mode == GM_EDITOR;
+	return modes.Test(TownExpandMode::Roads);
 }
 
 /* The possible states of town growth. */
@@ -1528,7 +1533,7 @@ enum class TownGrowthResult {
  * @param t1 The current town
  * @return Result so far.
  */
-static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection target_dir, Town *t1)
+static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection target_dir, Town *t1, TownExpandModes modes)
 {
 	RoadBits rcmd = ROAD_NONE;  // RoadBits for the road construction command
 	TileIndex tile = *tile_ptr; // The main tile on which we base our growth
@@ -1539,7 +1544,7 @@ static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, Dia
 		/* Tile has no road.
 		 * We will return TownGrowthResult::SearchStopped to say that this is the last iteration. */
 
-		if (!TownAllowedToBuildRoads()) return TownGrowthResult::SearchStopped;
+		if (!TownAllowedToBuildRoads(modes)) return TownGrowthResult::SearchStopped;
 		if (!_settings_game.economy.allow_town_level_crossings && IsTileType(tile, MP_RAILWAY)) return TownGrowthResult::SearchStopped;
 
 		/* Remove hills etc */
@@ -1588,7 +1593,7 @@ static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, Dia
 	} else if (target_dir < DIAGDIR_END && !(cur_rb & DiagDirToRoadBits(ReverseDiagDir(target_dir)))) {
 		if (!TownCanGrowRoad(tile)) return TownGrowthResult::Continue;
 
-		if (!TownAllowedToBuildRoads()) return TownGrowthResult::SearchStopped;
+		if (!TownAllowedToBuildRoads(modes)) return TownGrowthResult::SearchStopped;
 
 		/* Continue building on a partial road.
 		 * Should be always OK, so we only generate
@@ -1664,12 +1669,12 @@ static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, Dia
 
 		TownGrowthResult result = TownGrowthResult::Continue;
 
-		if (target_dir != DIAGDIR_END && TownAllowedToBuildRoads()) {
+		if (target_dir != DIAGDIR_END && TownAllowedToBuildRoads(modes)) {
 			switch (t1->layout) {
 				default: NOT_REACHED();
 
 				case TL_3X3_GRID: // Use 2x2 grid afterwards!
-					if (GrowTownWithExtraHouse(t1, TileAddByDiagDir(house_tile, target_dir))) {
+					if (GrowTownWithExtraHouse(t1, TileAddByDiagDir(house_tile, target_dir), modes)) {
 						result = TownGrowthResult::Succeed;
 					}
 					[[fallthrough]];
@@ -1680,7 +1685,7 @@ static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, Dia
 					break;
 
 				case TL_BETTER_ROADS: // Use original afterwards!
-					if (GrowTownWithExtraHouse(t1, TileAddByDiagDir(house_tile, target_dir))) {
+					if (GrowTownWithExtraHouse(t1, TileAddByDiagDir(house_tile, target_dir), modes)) {
 						result = TownGrowthResult::Succeed;
 					}
 					[[fallthrough]];
@@ -1704,7 +1709,7 @@ static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, Dia
 
 				/* And build a house.
 				 * Set result to -1 if we managed to build it. */
-				if (TryBuildTownHouse(t1, house_tile)) {
+				if (TryBuildTownHouse(t1, house_tile, modes)) {
 					result = TownGrowthResult::Succeed;
 				}
 			}
@@ -1744,14 +1749,14 @@ static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, Dia
  * @param dir Direction for road to follow or build.
  * @return true If road is or can be connected in the specified direction.
  */
-static bool CanFollowRoad(TileIndex tile, DiagDirection dir)
+static bool CanFollowRoad(TileIndex tile, DiagDirection dir, TownExpandModes modes)
 {
 	TileIndex target_tile = tile + TileOffsByDiagDir(dir);
 	if (!IsValidTile(target_tile)) return false;
 	if (HasTileWaterGround(target_tile)) return false;
 
 	RoadBits target_rb = GetTownRoadBits(target_tile);
-	if (TownAllowedToBuildRoads()) {
+	if (TownAllowedToBuildRoads(modes)) {
 		/* Check whether a road connection exists or can be build. */
 		switch (GetTileType(target_tile)) {
 			case MP_ROAD:
@@ -1786,7 +1791,7 @@ static bool CanFollowRoad(TileIndex tile, DiagDirection dir)
  * @param tile The road tile to try growing from.
  * @return true if we successfully expanded the town.
  */
-static bool GrowTownAtRoad(Town *t, TileIndex tile)
+static bool GrowTownAtRoad(Town *t, TileIndex tile, TownExpandModes modes)
 {
 	/* Special case.
 	 * @see GrowTownInTile Check the else if
@@ -1818,7 +1823,7 @@ static bool GrowTownAtRoad(Town *t, TileIndex tile)
 		RoadBits cur_rb = GetTownRoadBits(tile); // The RoadBits of the current tile
 
 		/* Try to grow the town from this point */
-		switch (GrowTownInTile(&tile, cur_rb, target_dir, t)) {
+		switch (GrowTownInTile(&tile, cur_rb, target_dir, t, modes)) {
 			case TownGrowthResult::Succeed:
 				return true;
 			case TownGrowthResult::SearchStopped:
@@ -1847,7 +1852,7 @@ static bool GrowTownAtRoad(Town *t, TileIndex tile)
 					target_bits = DiagDirToRoadBits(target_dir);
 				} while (!(cur_rb & target_bits));
 				cur_rb &= ~target_bits;
-			} while (!CanFollowRoad(tile, target_dir));
+			} while (!CanFollowRoad(tile, target_dir, modes));
 		}
 		tile = TileAddByDiagDir(tile, target_dir);
 
@@ -1890,7 +1895,7 @@ static RoadBits GenRandomRoadBits()
  * @param t The town to grow
  * @return true if we successfully grew the town with a road or house.
  */
-static bool GrowTown(Town *t)
+static bool GrowTown(Town *t, TownExpandModes modes)
 {
 	static const TileIndexDiffC _town_coord_mod[] = {
 		{-1,  0},
@@ -1916,7 +1921,7 @@ static bool GrowTown(Town *t)
 	/* Find a road that we can base the construction on. */
 	for (const auto &ptr : _town_coord_mod) {
 		if (GetTownRoadBits(tile) != ROAD_NONE) {
-			bool success = GrowTownAtRoad(t, tile);
+			bool success = GrowTownAtRoad(t, tile, modes);
 			cur_company.Restore();
 			return success;
 		}
@@ -1925,7 +1930,7 @@ static bool GrowTown(Town *t)
 
 	/* No road available, try to build a random road block by
 	 * clearing some land and then building a road there. */
-	if (TownAllowedToBuildRoads()) {
+	if (TownAllowedToBuildRoads(modes)) {
 		tile = t->xy;
 		for (const auto &ptr : _town_coord_mod) {
 			/* Only work with plain land that not already has a house */
@@ -2084,7 +2089,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32_t townnameparts, TownSi
 
 	int i = x * 4;
 	do {
-		GrowTown(t);
+		GrowTown(t, {TownExpandMode::Buildings, TownExpandMode::Roads});
 	} while (--i);
 
 	t->UpdateVirtCoord();
@@ -2605,10 +2610,12 @@ static bool CheckFree2x2Area(TileIndex tile, int z, bool noslope)
  * @return true iff town layout allows building here.
  * @note see layouts
  */
-static inline bool TownLayoutAllowsHouseHere(Town *t, TileIndex tile)
+static inline bool TownLayoutAllowsHouseHere(Town *t, TileIndex tile, TownExpandModes modes)
 {
+	if (!modes.Test(TownExpandMode::Buildings)) return false;
+
 	/* Allow towns everywhere when we don't build roads */
-	if (!TownAllowedToBuildRoads()) return true;
+	if (!TownAllowedToBuildRoads(modes)) return true;
 
 	TileIndexDiffC grid_pos = TileIndexToTileIndexDiffC(t->xy, tile);
 
@@ -2636,10 +2643,12 @@ static inline bool TownLayoutAllowsHouseHere(Town *t, TileIndex tile)
  * @return true iff town layout allows a 2x2 building here.
  * @note see layouts
  */
-static inline bool TownLayoutAllows2x2HouseHere(Town *t, TileIndex tile)
+static inline bool TownLayoutAllows2x2HouseHere(Town *t, TileIndex tile, TownExpandModes modes)
 {
+	if (!modes.Test(TownExpandMode::Buildings)) return false;
+
 	/* Allow towns everywhere when we don't build roads */
-	if (!TownAllowedToBuildRoads()) return true;
+	if (!TownAllowedToBuildRoads(modes)) return true;
 
 	/* Compute relative position of tile. (Positive offsets are towards north) */
 	TileIndexDiffC grid_pos = TileIndexToTileIndexDiffC(t->xy, tile);
@@ -2673,15 +2682,15 @@ static inline bool TownLayoutAllows2x2HouseHere(Town *t, TileIndex tile)
  * @param noslope Are foundations disallowed for this house?
  * @param second The diagdir from the first tile to the second tile.
  */
-static bool CheckTownBuild2House(TileIndex *tile, Town *t, int maxz, bool noslope, DiagDirection second)
+static bool CheckTownBuild2House(TileIndex *tile, Town *t, int maxz, bool noslope, DiagDirection second, TownExpandModes modes)
 {
 	/* 'tile' is already checked in BuildTownHouse() - CanBuildHouseHere() and slope test */
 
 	TileIndex tile2 = *tile + TileOffsByDiagDir(second);
-	if (TownLayoutAllowsHouseHere(t, tile2) && CheckBuildHouseSameZ(tile2, maxz, noslope)) return true;
+	if (TownLayoutAllowsHouseHere(t, tile2, modes) && CheckBuildHouseSameZ(tile2, maxz, noslope)) return true;
 
 	tile2 = *tile + TileOffsByDiagDir(ReverseDiagDir(second));
-	if (TownLayoutAllowsHouseHere(t, tile2) && CheckBuildHouseSameZ(tile2, maxz, noslope)) {
+	if (TownLayoutAllowsHouseHere(t, tile2, modes) && CheckBuildHouseSameZ(tile2, maxz, noslope)) {
 		*tile = tile2;
 		return true;
 	}
@@ -2698,12 +2707,12 @@ static bool CheckTownBuild2House(TileIndex *tile, Town *t, int maxz, bool noslop
  * @param maxz The maximum Z level, since all tiles must have the same height.
  * @param noslope Are foundations disallowed for this house?
  */
-static bool CheckTownBuild2x2House(TileIndex *tile, Town *t, int maxz, bool noslope)
+static bool CheckTownBuild2x2House(TileIndex *tile, Town *t, int maxz, bool noslope, TownExpandModes modes)
 {
 	TileIndex tile2 = *tile;
 
 	for (DiagDirection d = DIAGDIR_SE;; d++) { // 'd' goes through DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_END
-		if (TownLayoutAllows2x2HouseHere(t, tile2) && CheckFree2x2Area(tile2, maxz, noslope)) {
+		if (TownLayoutAllows2x2HouseHere(t, tile2, modes) && CheckFree2x2Area(tile2, maxz, noslope)) {
 			*tile = tile2;
 			return true;
 		}
@@ -2763,10 +2772,10 @@ static void BuildTownHouse(Town *t, TileIndex tile, const HouseSpec *hs, HouseID
  * @param tile The tile to try building on.
  * @return false iff no house can be built on this tile.
  */
-static bool TryBuildTownHouse(Town *t, TileIndex tile)
+static bool TryBuildTownHouse(Town *t, TileIndex tile, TownExpandModes modes)
 {
 	/* forbidden building here by town layout */
-	if (!TownLayoutAllowsHouseHere(t, tile)) return false;
+	if (!TownLayoutAllowsHouseHere(t, tile, modes)) return false;
 
 	/* no house allowed at all, bail out */
 	if (!CanBuildHouseHere(tile, false)) return false;
@@ -2860,11 +2869,11 @@ static bool TryBuildTownHouse(Town *t, TileIndex tile)
 		if (noslope && slope != SLOPE_FLAT) continue;
 
 		if (hs->building_flags.Test(BuildingFlag::Size2x2)) {
-			if (!CheckTownBuild2x2House(&tile, t, maxz, noslope)) continue;
+			if (!CheckTownBuild2x2House(&tile, t, maxz, noslope, modes)) continue;
 		} else if (hs->building_flags.Test(BuildingFlag::Size2x1)) {
-			if (!CheckTownBuild2House(&tile, t, maxz, noslope, DIAGDIR_SW)) continue;
+			if (!CheckTownBuild2House(&tile, t, maxz, noslope, DIAGDIR_SW, modes)) continue;
 		} else if (hs->building_flags.Test(BuildingFlag::Size1x2)) {
-			if (!CheckTownBuild2House(&tile, t, maxz, noslope, DIAGDIR_SE)) continue;
+			if (!CheckTownBuild2House(&tile, t, maxz, noslope, DIAGDIR_SE, modes)) continue;
 		} else {
 			/* 1x1 house checks are already done */
 		}
@@ -3199,9 +3208,10 @@ CommandCost CmdTownRating(DoCommandFlags flags, TownID town_id, CompanyID compan
  * @param grow_amount Amount to grow, or 0 to grow a random size up to the current amount of houses.
  * @return Empty cost or an error.
  */
-CommandCost CmdExpandTown(DoCommandFlags flags, TownID town_id, uint32_t grow_amount)
+CommandCost CmdExpandTown(DoCommandFlags flags, TownID town_id, uint32_t grow_amount, TownExpandModes modes)
 {
 	if (_game_mode != GM_EDITOR && _current_company != OWNER_DEITY) return CMD_ERROR;
+	if (modes.None()) return CMD_ERROR;
 	Town *t = Town::GetIfValid(town_id);
 	if (t == nullptr) return CMD_ERROR;
 
@@ -3213,13 +3223,13 @@ CommandCost CmdExpandTown(DoCommandFlags flags, TownID town_id, uint32_t grow_am
 			UpdateTownRadius(t);
 
 			uint n = amount * 10;
-			do GrowTown(t); while (--n);
+			do GrowTown(t, modes); while (--n);
 
 			t->cache.num_houses -= amount;
 		} else {
 			for (; grow_amount > 0; grow_amount--) {
 				/* Try several times to grow, as we are really suppose to grow */
-				for (uint i = 0; i < 25; i++) if (GrowTown(t)) break;
+				for (uint i = 0; i < 25; i++) if (GrowTown(t, modes)) break;
 			}
 		}
 		UpdateTownRadius(t);

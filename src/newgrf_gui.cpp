@@ -224,7 +224,7 @@ struct NewGRFParametersWindow : public Window {
 				this->line_height = std::max(SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)) + padding.height;
 
 				resize.width = 1;
-				resize.height = this->line_height;
+				fill.height = resize.height = this->line_height;
 				size.height = 5 * this->line_height;
 				break;
 
@@ -435,14 +435,14 @@ struct NewGRFParametersWindow : public Window {
 	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
 		if (!str.has_value() || str->empty()) return;
-		auto value = ParseInteger<int32_t>(*str);
+		auto value = ParseInteger<int32_t>(*str, 10, true);
 		if (!value.has_value()) return;
 		GRFParameterInfo &par_info = this->GetParameterInfo(this->clicked_row);
 		this->grf_config.SetValue(par_info, *value);
 		this->SetDirty();
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		if (widget != WID_NP_SETTING_DROPDOWN) return;
 		assert(this->clicked_dropdown);
@@ -451,7 +451,7 @@ struct NewGRFParametersWindow : public Window {
 		this->SetDirty();
 	}
 
-	void OnDropdownClose(Point, WidgetID widget, int, bool) override
+	void OnDropdownClose(Point, WidgetID widget, int, int, bool) override
 	{
 		if (widget != WID_NP_SETTING_DROPDOWN) return;
 		/* We cannot raise the dropdown button just yet. OnClick needs some hint, whether
@@ -708,7 +708,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 			auto c = std::ranges::find_if(this->actives, [&iter](const auto &grfconfig) { return grfconfig.get() == iter->second; });
 			assert(c != std::end(this->actives));
-			auto d = std::make_unique<GRFConfig>(*iter->second);
+			auto d = std::make_unique<GRFConfig>(*a);
 			if (d->IsCompatible((*c)->version)) {
 				d->CopyParams(**c);
 			} else {
@@ -730,7 +730,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			case WID_NS_FILE_LIST:
 			{
 				Dimension d = maxdim(GetScaledSpriteSize(SPR_SQUARE), GetScaledSpriteSize(SPR_WARNING_SIGN));
-				resize.height = std::max<uint>(d.height + 2U, GetCharacterHeight(FS_NORMAL));
+				fill.height = resize.height = std::max<uint>(d.height + 2U, GetCharacterHeight(FS_NORMAL));
 				size.height = std::max(size.height, padding.height + 6 * resize.height);
 				break;
 			}
@@ -738,7 +738,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			case WID_NS_AVAIL_LIST:
 			{
 				Dimension d = maxdim(GetScaledSpriteSize(SPR_SQUARE), GetScaledSpriteSize(SPR_WARNING_SIGN));
-				resize.height = std::max<uint>(d.height + 2U, GetCharacterHeight(FS_NORMAL));
+				fill.height = resize.height = std::max<uint>(d.height + 2U, GetCharacterHeight(FS_NORMAL));
 				size.height = std::max(size.height, padding.height + 8 * resize.height);
 				break;
 			}
@@ -863,7 +863,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 							/* Get index of current selection. */
 							int active_sel_pos = this->GetCurrentActivePosition();
 							if (active_sel_pos != this->active_over) {
-								uint top = this->active_over < active_sel_pos ? tr.top + 1 : tr.top + step_height - 2;
+								uint top = (active_sel_pos < 0 || this->active_over < active_sel_pos) ? tr.top + 1 : tr.top + step_height - 2;
 								GfxFillRect(tr.left, top - 1, tr.right, top + 1, PC_GREY);
 							}
 						}
@@ -1136,7 +1136,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->CloseChildWindows(WC_QUERY_STRING); // Remove the parameter query window
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		if (widget != WID_NS_PRESET_LIST) return;
 		if (!this->editable) return;
@@ -1506,7 +1506,7 @@ void ShowMissingContentWindow(const GRFConfigList &list)
 
 		auto ci = std::make_unique<ContentInfo>();
 		ci->type = CONTENT_TYPE_NEWGRF;
-		ci->state = ContentInfo::DOES_NOT_EXIST;
+		ci->state = ContentInfo::State::DoesNotExist;
 		ci->name = c->GetName();
 		ci->unique_id = std::byteswap(c->ident.grfid);
 		ci->md5sum = c->flags.Test(GRFConfigFlag::Compatible) ? c->original_md5sum : c->ident.md5sum;
@@ -1713,6 +1713,7 @@ public:
 
 	void FillWidgetLookup(WidgetLookup &widget_lookup) override
 	{
+		this->NWidgetBase::FillWidgetLookup(widget_lookup);
 		this->avs->FillWidgetLookup(widget_lookup);
 		this->acs->FillWidgetLookup(widget_lookup);
 		this->inf->FillWidgetLookup(widget_lookup);
@@ -2040,12 +2041,11 @@ struct SavePresetWindow : public Window {
 	{
 		switch (widget) {
 			case WID_SVP_PRESET_LIST: {
-				resize.height = GetCharacterHeight(FS_NORMAL);
+				fill.height = resize.height = GetCharacterHeight(FS_NORMAL);
 				size.height = 0;
 				for (uint i = 0; i < this->presets.size(); i++) {
 					Dimension d = GetStringBoundingBox(this->presets[i]);
 					size.width = std::max(size.width, d.width + padding.width);
-					resize.height = std::max(resize.height, d.height);
 				}
 				size.height = ClampU((uint)this->presets.size(), 5, 20) * resize.height + padding.height;
 				break;

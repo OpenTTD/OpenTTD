@@ -278,7 +278,7 @@
 
 	houses = std::min<SQInteger>(houses, UINT32_MAX);
 
-	return ScriptObject::Command<CMD_EXPAND_TOWN>::Do(town_id, houses);
+	return ScriptObject::Command<CMD_EXPAND_TOWN>::Do(town_id, houses, {TownExpandMode::Buildings, TownExpandMode::Roads});
 }
 
 /* static */ bool ScriptTown::FoundTown(TileIndex tile, TownSize size, bool city, RoadLayout layout, Text *name)

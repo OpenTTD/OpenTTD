@@ -172,7 +172,7 @@ struct GoalListWindow : public Window {
 		Dimension d = GetStringBoundingBox(STR_GOALS_NONE);
 
 		resize.width = 1;
-		resize.height = d.height;
+		fill.height = resize.height = d.height;
 
 		d.height *= 5;
 		d.width += WidgetDimensions::scaled.framerect.Horizontal();

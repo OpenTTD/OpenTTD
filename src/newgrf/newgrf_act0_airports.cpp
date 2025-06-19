@@ -93,10 +93,8 @@ static ChangeInfoResult AirportChangeInfo(uint first, uint last, int prop, ByteR
 						tile.ti.x = buf.ReadByte();
 						tile.ti.y = buf.ReadByte();
 						if (tile.ti.x == 0 && tile.ti.y == 0x80) {
-							/* Convert terminator to our own. */
-							tile.ti.x = -0x80;
-							tile.ti.y = 0;
-							tile.gfx = 0;
+							/* Terminator, remove and finish up. */
+							layout.tiles.pop_back();
 							break;
 						}
 

@@ -1435,7 +1435,7 @@ static void ViewportAddKdtreeSigns(DrawPixelInfo *dpi)
 
 				/* If no facilities are present the station is a ghost station. */
 				StationFacilities facilities = st->facilities;
-				if (facilities == StationFacilities{}) facilities = STATION_FACILITY_GHOST;
+				if (facilities.None()) facilities = STATION_FACILITY_GHOST;
 
 				if (!facilities.Any(_facility_display_opt)) break;
 
@@ -2280,12 +2280,18 @@ static bool CheckClickOnViewportSign(const Viewport &vp, int x, int y)
 	/* See ViewportAddKdtreeSigns() for details on the search logic */
 	_viewport_sign_kdtree.FindContained(search_rect.left, search_rect.top, search_rect.right, search_rect.bottom, [&](const ViewportSignKdtreeItem & item) {
 		switch (item.type) {
-			case ViewportSignKdtreeItem::VKI_STATION:
+			case ViewportSignKdtreeItem::VKI_STATION: {
 				if (!show_stations) break;
 				st = BaseStation::Get(std::get<StationID>(item.id));
 				if (!show_competitors && _local_company != st->owner && st->owner != OWNER_NONE) break;
+
+				StationFacilities facilities = st->facilities;
+				if (facilities.None()) facilities = STATION_FACILITY_GHOST;
+				if (!facilities.Any(_facility_display_opt)) break;
+
 				if (CheckClickOnViewportSign(vp, x, y, &st->sign)) last_st = st;
 				break;
+			}
 
 			case ViewportSignKdtreeItem::VKI_WAYPOINT:
 				if (!show_waypoints) break;

@@ -717,7 +717,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 
 			if (v->type == VEH_TRAIN) {
 				const Train *t = Train::From(v);
-				bool is_powered_wagon = HasBit(t->flags, VRF_POWEREDWAGON);
+				bool is_powered_wagon = t->flags.Test(VehicleRailFlag::PoweredWagon);
 				const Train *u = is_powered_wagon ? t->First() : t; // for powered wagons the engine defines the type of engine (i.e. railtype)
 				RailType railtype = GetRailType(v->tile);
 				bool powered = t->IsEngine() || is_powered_wagon;
@@ -725,7 +725,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 
 				if (powered && has_power) SetBit(modflags, 5);
 				if (powered && !has_power) SetBit(modflags, 6);
-				if (HasBit(t->flags, VRF_TOGGLE_REVERSE)) SetBit(modflags, 8);
+				if (t->flags.Test(VehicleRailFlag::Reversed)) SetBit(modflags, 8);
 			}
 			if (v->vehicle_flags.Test(VehicleFlag::CargoUnloading)) SetBit(modflags, 1);
 			if (v->vehicle_flags.Test(VehicleFlag::BuiltAsPrototype)) SetBit(modflags, 10);
@@ -839,7 +839,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 		case 0x47: return GB(v->GetEngine()->grf_prop.local_id, 8, 8);
 		case 0x48:
 			if (v->type != VEH_TRAIN || v->spritenum != CUSTOM_VEHICLE_SPRITENUM) return v->spritenum;
-			return HasBit(Train::From(v)->flags, VRF_REVERSE_DIRECTION) ? CUSTOM_VEHICLE_SPRITENUM_REVERSED : CUSTOM_VEHICLE_SPRITENUM;
+			return Train::From(v)->flags.Test(VehicleRailFlag::Flipped) ? CUSTOM_VEHICLE_SPRITENUM_REVERSED : CUSTOM_VEHICLE_SPRITENUM;
 
 		case 0x49: return v->day_counter;
 		case 0x4A: return v->breakdowns_since_last_service;
@@ -1235,12 +1235,12 @@ int GetEngineProperty(EngineID engine, PropertyID property, int orig_value, cons
  * Test for vehicle build probablity type.
  * @param v Vehicle whose build probability to test.
  * @param type Build probability type to test for.
- * @returns True iff the probability result says so.
+ * @returns True or false depending on the probability result, or std::nullopt if the callback failed.
  */
-bool TestVehicleBuildProbability(Vehicle *v, EngineID engine, BuildProbabilityType type)
+std::optional<bool> TestVehicleBuildProbability(Vehicle *v, EngineID engine, BuildProbabilityType type)
 {
 	uint16_t p = GetVehicleCallback(CBID_VEHICLE_BUILD_PROBABILITY, to_underlying(type), 0, engine, v);
-	if (p == CALLBACK_FAILED) return false;
+	if (p == CALLBACK_FAILED) return std::nullopt;
 
 	const uint16_t PROBABILITY_RANGE = 100;
 	return p + RandomRange(PROBABILITY_RANGE) >= PROBABILITY_RANGE;

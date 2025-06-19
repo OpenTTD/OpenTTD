@@ -181,7 +181,7 @@ static IndustryType _smallmap_industry_highlight = IT_INVALID;
 /** State of highlight blinking */
 static bool _smallmap_industry_highlight_state;
 /** For connecting company ID to position in owner list (small map legend) */
-static ReferenceThroughBaseContainer<std::array<uint32_t, MAX_COMPANIES>> _company_to_list_pos;
+static TypedIndexContainer<std::array<uint32_t, MAX_COMPANIES>, CompanyID> _company_to_list_pos;
 
 /**
  * Fills an array for the industries legends.
@@ -730,7 +730,7 @@ protected:
 	}
 
 	/** Blink the industries (if selected) on a regular interval. */
-	const IntervalTimer<TimerWindow> blink_interval = {std::chrono::milliseconds(450), [this](auto) {
+	const IntervalTimer<TimerWindow> blink_interval = {TIMER_BLINK_INTERVAL, [this](auto) {
 		Blink();
 	}};
 

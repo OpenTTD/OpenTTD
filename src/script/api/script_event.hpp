@@ -61,6 +61,7 @@ public:
 		ET_PRESIDENT_RENAMED,
 	};
 
+#ifndef DOXYGEN_API
 	/**
 	 * Constructor of ScriptEvent, to get the type of event.
 	 * @param type The type of event to construct.
@@ -68,6 +69,7 @@ public:
 	ScriptEvent(ScriptEvent::ScriptEventType type) :
 		type(type)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Get the event-type.

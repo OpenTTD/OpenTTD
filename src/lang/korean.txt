@@ -441,7 +441,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :게임 종료
 
 STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :도시 생성
-STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :건물 건설
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :건물 생성
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :게임 기본 설정
@@ -2196,6 +2196,8 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... 호�
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU 드라이버가 게임을 종료시켰습니다. 하드웨어 가속이 비활성화됩니다
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}새 게임
 STR_INTRO_LOAD_GAME                                             :{BLACK}불러오기
@@ -2862,7 +2864,7 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :바깥쪽 시�
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :안쪽 시내
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :도시 중심
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :도시 발전 방지
+STR_HOUSE_PICKER_PROTECT_TITLE                                  :업그레이드 방지
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :이 건물이 도시가 성장함에 따라 교체되는 것을 막을지 여부를 선택합니다
 STR_HOUSE_PICKER_PROTECT_OFF                                    :끄기
 STR_HOUSE_PICKER_PROTECT_ON                                     :켜기
@@ -3071,6 +3073,12 @@ STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}임의
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}도시 크기 선택
 STR_FOUND_TOWN_CITY                                             :{BLACK}대도시로 만듦
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}대도시는 도시보다 빠르게 성장합니다.{}도시를 만들었을 때, 위 설정에 따라 더욱 커집니다
+
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}도시 확장:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :건물
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :도시의 건물을 확장합니다
+STR_FOUND_TOWN_EXPAND_ROADS                                     :도로
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :도시의 도로를 확장합니다
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}도시 도로 설계:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}이 도시에 사용할 도로 설계를 선택합니다
@@ -3695,6 +3703,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}이 도�
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}확장
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}도시의 크기를 키웁니다.
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}건물 확장
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}도시의 건물을 확장합니다
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}도로 확장
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}도시의 도로를 확장합니다
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}삭제
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}이 도시를 완전히 삭제
 
@@ -4760,7 +4772,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}시간�
 STR_TIMETABLE_NO_TRAVEL                                         :운행정보 없음
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :이동 (자동; 다음 경로에 의해 시간표 작성)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :운행 (시간표가 작성되지 않음)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :최대 {2:VELOCITY}의 속력으로 운행 (시간표 작성 안 됨)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :최대 {VELOCITY}의 속력으로 운행 (시간표 작성 안 됨)
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING}에 걸쳐 운행
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{0:STRING} 동안 최대 {1:VELOCITY}의 속력으로 운행
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :운행 ({STRING} 동안, 시간표 작성 안 됨)
@@ -5916,3 +5928,11 @@ STR_SHIP                                                        :{G=f}{BLACK}{SH
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :배지 설정을 엽니다
+STR_BADGE_CONFIG_RESET                                          :초기화
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}배지 아이콘
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}배지 필터
+STR_BADGE_CONFIG_PREVIEW                                        :미리보기 이미지
+STR_BADGE_CONFIG_NAME                                           :이름
+STR_BADGE_FILTER_ANY_LABEL                                      :모든 {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} = {STRING}

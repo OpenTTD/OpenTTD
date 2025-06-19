@@ -977,6 +977,10 @@ SQRESULT sq_call(HSQUIRRELVM v,SQInteger params,SQBool retval,SQBool raiseerror,
 		if(!v->_suspended) {
 			v->Pop(params);//pop closure and args
 		}
+		if (!v->_can_suspend && v->IsOpsTillSuspendError()) {
+			v->Raise_Error(fmt::format("excessive CPU usage in {}", v->_ops_till_suspend_error_label));
+			return SQ_ERROR;
+		}
 		if(retval){
 			v->Push(res); return SQ_OK;
 		}
