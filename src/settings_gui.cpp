@@ -1069,7 +1069,8 @@ struct GameOptionsWindow : Window {
 				if (_gui_scale_cfg == -1) {
 					_gui_scale_cfg = previous_gui_scale; // Store the previous GUI scale value
 					this->SetWidgetLoweredState(WID_GO_GUI_SCALE_AUTO, false);
-					if (AdjustGUIZoom(false)) ReInitAllWindows(true);
+					if (AdjustGUIZoom(false))
+					    ReInitAllWindows(true);
 					this->gui_scale = _gui_scale;
 				} else {
 					previous_gui_scale = _gui_scale;	// Set the previous GUI scale value as the current one
