@@ -31,7 +31,7 @@ private:
 	void SetFontSize(int pixels);
 
 protected:
-	const Sprite *InternalGetGlyph(GlyphID key, bool aa) override;
+	TrueTypeFontCache::GlyphEntry *InternalGetGlyph(GlyphID key, bool aa) override;
 
 public:
 	Win32FontCache(FontSize fs, const LOGFONT &logfont, int pixels);
