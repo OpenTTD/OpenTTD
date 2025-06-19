@@ -3074,7 +3074,7 @@ static inline void AffectSpeedByZChange(Train *v, int old_z)
 {
 	if (old_z == v->z_pos || _settings_game.vehicle.train_acceleration_model != AM_ORIGINAL) return;
 
-	const AccelerationSlowdownParams *asp = &_accel_slowdown[GetRailTypeInfo(v->railtype)->acceleration_type];
+	const AccelerationSlowdownParams *asp = &_accel_slowdown[static_cast<int>(GetRailTypeInfo(v->railtype)->acceleration_type)];
 
 	if (old_z < v->z_pos) {
 		v->cur_speed -= (v->cur_speed * asp->z_up >> 8);
@@ -3481,7 +3481,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 
 				if (chosen_dir != v->direction) {
 					if (prev == nullptr && _settings_game.vehicle.train_acceleration_model == AM_ORIGINAL) {
-						const AccelerationSlowdownParams *asp = &_accel_slowdown[GetRailTypeInfo(v->railtype)->acceleration_type];
+						const AccelerationSlowdownParams *asp = &_accel_slowdown[static_cast<int>(GetRailTypeInfo(v->railtype)->acceleration_type)];
 						DirDiff diff = DirDifference(v->direction, chosen_dir);
 						v->cur_speed -= (diff == DIRDIFF_45RIGHT || diff == DIRDIFF_45LEFT ? asp->small_turn : asp->large_turn) * v->cur_speed >> 8;
 					}

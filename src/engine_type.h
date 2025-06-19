@@ -43,6 +43,13 @@ enum EngineClass : uint8_t {
 	EC_MAGLEV,   ///< Maglev engine.
 };
 
+/** Acceleration model of a vehicle. */
+enum class VehicleAccelerationModel : uint8_t {
+	Normal,   ///< Default acceleration model.
+	Monorail, ///< Monorail acceleration model.
+	Maglev,   ///< Maglev acceleration model.
+};
+
 /** Information about a rail vehicle. */
 struct RailVehicleInfo {
 	uint8_t image_index = 0;

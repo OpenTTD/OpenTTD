@@ -118,7 +118,7 @@ static ChangeInfoResult RailTypeChangeInfo(uint first, uint last, int prop, Byte
 				break;
 
 			case 0x15: // Acceleration model
-				rti->acceleration_type = Clamp(buf.ReadByte(), 0, 2);
+				rti->acceleration_type = static_cast<VehicleAccelerationModel>(Clamp(buf.ReadByte(), 0, 2));
 				break;
 
 			case 0x16: // Map colour
