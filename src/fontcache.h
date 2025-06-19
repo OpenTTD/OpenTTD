@@ -10,9 +10,8 @@
 #ifndef FONTCACHE_H
 #define FONTCACHE_H
 
+#include "gfx_type.h"
 #include "provider_manager.h"
-#include "string_type.h"
-#include "spritecache.h"
 
 /** Glyphs are characters from a font. */
 typedef uint32_t GlyphID;
@@ -120,7 +119,9 @@ public:
 	 * @param key The key to look up.
 	 * @return The sprite.
 	 */
-	virtual const Sprite *GetGlyph(GlyphID key) = 0;
+	virtual void DrawGlyph(GlyphID key, const Rect &r)= 0;
+
+	virtual void DrawGlyphShadow(GlyphID, const Rect &) = 0;
 
 	/**
 	 * Get the width of the glyph with the given key.
@@ -217,12 +218,12 @@ public:
 };
 
 /** Get the Sprite for a glyph */
-inline const Sprite *GetGlyph(FontSize size, char32_t key)
+inline void DrawGlyph(FontSize size, char32_t key, const Rect &r)
 {
 	FontIndex font_index = FontCache::GetFontIndexForCharacter(size, key);
 	FontCache *fc = font_index != INVALID_FONT_INDEX ? FontCache::Get(font_index) : FontCache::GetDefaultFontCache(size);
-	if (fc == nullptr) return nullptr;
-	return fc->GetGlyph(fc->MapCharToGlyph(key));
+	if (fc == nullptr) return;
+	fc->DrawGlyph(fc->MapCharToGlyph(key), r);
 }
 
 /** Get the width of a glyph */
