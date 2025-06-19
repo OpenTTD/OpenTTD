@@ -115,7 +115,7 @@ GlyphID CoreTextFontCache::MapCharToGlyph(char32_t key)
 	return 0;
 }
 
-const Sprite *CoreTextFontCache::InternalGetGlyph(GlyphID key, bool use_aa)
+TrueTypeFontCache::GlyphEntry *CoreTextFontCache::InternalGetGlyph(GlyphID key, bool use_aa)
 {
 	/* Get glyph size. */
 	CGGlyph glyph = (CGGlyph)key;
@@ -194,7 +194,7 @@ const Sprite *CoreTextFontCache::InternalGetGlyph(GlyphID key, bool use_aa)
 	new_glyph.data = std::move(allocator.data);
 	new_glyph.width = (uint8_t)std::round(CTFontGetAdvancesForGlyphs(this->font.get(), kCTFontOrientationDefault, &glyph, nullptr, 1));
 
-	return this->SetGlyphPtr(key, std::move(new_glyph)).GetSprite();
+	return &this->SetGlyphPtr(key, std::move(new_glyph));
 }
 
 class CoreTextFontCacheFactory : public FontCacheFactory {

@@ -11,7 +11,7 @@
 #define TRUETYPEFONTCACHE_H
 
 #include "../fontcache.h"
-
+#include "../spritecache.h"
 
 static const int MAX_FONT_SIZE = 72; ///< Maximum font size.
 
@@ -40,13 +40,14 @@ protected:
 	GlyphEntry *GetGlyphPtr(GlyphID key);
 	GlyphEntry &SetGlyphPtr(GlyphID key, GlyphEntry &&glyph);
 
-	virtual const Sprite *InternalGetGlyph(GlyphID key, bool aa) = 0;
+	virtual TrueTypeFontCache::GlyphEntry *InternalGetGlyph(GlyphID key, bool aa) = 0;
 
 public:
 	TrueTypeFontCache(FontSize fs, int pixels);
 	virtual ~TrueTypeFontCache();
 	int GetFontSize() const override { return this->used_size; }
-	const Sprite *GetGlyph(GlyphID key) override;
+	void DrawGlyph(GlyphID key, const Rect &r) override;
+	void DrawGlyphShadow(GlyphID key, const Rect &r) override;
 	void ClearFontCache() override;
 	uint GetGlyphWidth(GlyphID key) override;
 	bool GetDrawGlyphShadow() override;

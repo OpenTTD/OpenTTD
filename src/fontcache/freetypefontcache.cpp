@@ -35,7 +35,7 @@ private:
 	FT_Face face;  ///< The font face associated with this font.
 
 	void SetFontSize(int pixels);
-	const Sprite *InternalGetGlyph(GlyphID key, bool aa) override;
+	TrueTypeFontCache::GlyphEntry *InternalGetGlyph(GlyphID key, bool aa) override;
 
 public:
 	FreeTypeFontCache(FontSize fs, FT_Face face, int pixels);
@@ -133,7 +133,7 @@ void FreeTypeFontCache::ClearFontCache()
 }
 
 
-const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
+TrueTypeFontCache::GlyphEntry *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 {
 	FT_GlyphSlot slot = this->face->glyph;
 
@@ -190,7 +190,7 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 	new_glyph.data = std::move(allocator.data);
 	new_glyph.width = slot->advance.x >> 6;
 
-	return this->SetGlyphPtr(key, std::move(new_glyph)).GetSprite();
+	return &this->SetGlyphPtr(key, std::move(new_glyph));
 }
 
 
