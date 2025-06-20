@@ -317,10 +317,10 @@ public:
 	static bool IsValidStoryPageButtonColour(StoryPageButtonColour colour);
 
 	/**
-	* Check whether this is a valid story page button flag.
-	* @param flags The StoryPageButtonFlags to check.
-	* @return True if and only if this story page button flag is valid.
-	*/
+	 * Check whether this is a valid story page button flag.
+	 * @param flags The StoryPageButtonFlags to check.
+	 * @return True if and only if this story page button flag is valid.
+	 */
 	static bool IsValidStoryPageButtonFlags(StoryPageButtonFlags flags);
 
 	/**

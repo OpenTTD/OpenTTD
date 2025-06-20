@@ -899,8 +899,8 @@ static CommandCost CheckFlatLandRailStation(TileIndex tile_cur, TileIndex north_
 	}
 
 	/* if station is set, then we have special handling to allow building on top of already existing stations.
-		* so station points to StationID::Invalid() if we can build on any station.
-		* Or it points to a station if we're only allowed to build on exactly that station. */
+	 * so station points to StationID::Invalid() if we can build on any station.
+	 * Or it points to a station if we're only allowed to build on exactly that station. */
 	if (station != nullptr && IsTileType(tile_cur, MP_STATION)) {
 		if (!IsRailStation(tile_cur)) {
 			return ClearTile_Station(tile_cur, DoCommandFlag::Auto); // get error message
@@ -1043,7 +1043,7 @@ static CommandCost CheckFlatLandRoadStop(TileIndex cur_tile, int &allowed_z, DoC
 				if (Company::IsValidID(tram_owner) &&
 						(!_settings_game.construction.road_stop_on_competitor_road ||
 						/* Disallow breaking end-of-line of someone else
-							* so trams can still reverse on this tile. */
+						 * so trams can still reverse on this tile. */
 							HasExactlyOneBit(GetRoadBits(cur_tile, RTT_TRAM)))) {
 					ret = CheckOwnership(tram_owner);
 					if (ret.Failed()) return ret;

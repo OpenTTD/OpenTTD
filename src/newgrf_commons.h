@@ -438,7 +438,7 @@ struct VariableGRFFileProps : GRFFilePropsBase {
 	 * Set the SpriteGroup at the specified index.
 	 * @param index Index to set.
 	 * @param spritegroup SpriteGroup to set.
-	*/
+	 */
 	void SetSpriteGroup(Tkey index, const SpriteGroup *spritegroup)
 	{
 		auto it = std::ranges::lower_bound(this->spritegroups, index, std::less{}, &ValueType::first);

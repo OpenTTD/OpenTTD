@@ -525,16 +525,16 @@ protected:
 			for (OverflowSafeInt64 datapoint : this->GetDataSetRange(dataset)) {
 				if (datapoint != INVALID_DATAPOINT) {
 					/*
-						* Check whether we need to reduce the 'accuracy' of the
-						* datapoint value and the highest value to split overflows.
-						* And when 'drawing' 'one million' or 'one million and one'
-						* there is no significant difference, so the least
-						* significant bits can just be removed.
-						*
-						* If there are more bits needed than would fit in a 32 bits
-						* integer, so at about 31 bits because of the sign bit, the
-						* least significant bits are removed.
-						*/
+					 * Check whether we need to reduce the 'accuracy' of the
+					 * datapoint value and the highest value to split overflows.
+					 * And when 'drawing' 'one million' or 'one million and one'
+					 * there is no significant difference, so the least
+					 * significant bits can just be removed.
+					 *
+					 * If there are more bits needed than would fit in a 32 bits
+					 * integer, so at about 31 bits because of the sign bit, the
+					 * least significant bits are removed.
+					 */
 					int mult_range = FindLastBit<uint32_t>(x_axis_offset) + FindLastBit<uint64_t>(abs(datapoint));
 					int reduce_range = std::max(mult_range - 31, 0);
 
