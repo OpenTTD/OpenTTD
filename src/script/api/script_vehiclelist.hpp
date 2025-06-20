@@ -73,8 +73,8 @@ public:
 	ScriptVehicleList_Station(StationID station_id, ScriptVehicle::VehicleType vehicle_type);
 #else
 	/**
-	* The constructor wrapper from Squirrel.
-	*/
+	 * The constructor wrapper from Squirrel.
+	 */
 	ScriptVehicleList_Station(HSQUIRRELVM vm);
 #endif /* DOXYGEN_API */
 };
