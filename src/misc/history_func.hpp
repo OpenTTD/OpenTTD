@@ -15,14 +15,18 @@
 #include "../timer/timer_game_economy.h"
 #include "history_type.hpp"
 
+void UpdateValidHistory(ValidHistoryMask &valid_history, uint cur_month);
+bool IsValidHistory(ValidHistoryMask valid_history, uint period, uint age);
+
 /**
- * Update mask of valid history records.
- * @param[in,out] valid_history Valid history records.
+ * Sum history data elements.
+ * @note The summation should prevent overflowing, and perform transformations relevant to the type of data.
+ * @tparam T type of history data element.
+ * @param history History elements to sum.
+ * @return Sum of history elements.
  */
-inline void UpdateValidHistory(ValidHistoryMask &valid_history)
-{
-	SB(valid_history, LAST_MONTH, HISTORY_RECORDS - LAST_MONTH, GB(valid_history, LAST_MONTH, HISTORY_RECORDS - LAST_MONTH) << 1ULL | 1ULL);
-}
+template <typename T>
+T SumHistory(typename std::span<const T> history);
 
 /**
  * Rotate history.
@@ -30,10 +34,28 @@ inline void UpdateValidHistory(ValidHistoryMask &valid_history)
  * @param history Historical data to rotate.
  */
 template <typename T>
-void RotateHistory(HistoryData<T> &history)
+void RotateHistory(HistoryData<T> &history, ValidHistoryMask valid_history, const HistoryRange &hr, uint cur_month)
 {
-	std::rotate(std::rbegin(history), std::rbegin(history) + 1, std::rend(history));
-	history[THIS_MONTH] = {};
+	if (cur_month % hr.total_division != 0) return;
+
+	std::move_backward(std::next(std::begin(history), hr.first), std::next(std::begin(history), hr.last - 1), std::next(std::begin(history), hr.last));
+
+	if (hr.division == 1) {
+		history[hr.first] = history[hr.first - 1];
+	} else if (HasBit(valid_history, hr.first - hr.division)) {
+		auto first = std::next(std::begin(history), hr.first - hr.division);
+		auto last = std::next(first, hr.division);
+		history[hr.first] = SumHistory<T>(std::span{first, last});
+	}
+}
+
+template <typename T>
+void RotateHistory(HistoryData<T> &history, ValidHistoryMask valid_history, uint cur_month)
+{
+	RotateHistory(history, valid_history, HISTORY_MONTH, cur_month);
+	RotateHistory(history, valid_history, HISTORY_QUARTER, cur_month);
+	RotateHistory(history, valid_history, HISTORY_YEAR, cur_month);
+	history.front() = {};
 }
 
 /**
@@ -49,18 +71,68 @@ T GetAndResetAccumulatedAverage(Taccrued &total)
 	return result;
 }
 
+template <typename T>
+bool GetHistory(const HistoryData<T> &history, ValidHistoryMask valid_history, const HistoryRange &hr, uint age, T &result)
+{
+	if (hr.hr == nullptr) {
+		if (age < hr.periods) {
+			uint slot = hr.first + age;
+			result = history[slot];
+			return HasBit(valid_history, slot);
+		}
+	} else {
+		if (age * hr.division < static_cast<uint>(hr.hr->periods - hr.division)) {
+			bool is_valid = false;
+			std::array<T, HISTORY_MAX_DIVISION> tmp_result; // No need to clear as we fill every element we use.
+			uint start = age * hr.division + ((TimerGameEconomy::month / hr.hr->division) % hr.division);
+			for (auto i = start; i != start + hr.division; ++i) {
+				is_valid |= GetHistory(history, valid_history, *hr.hr, i, tmp_result[i - start]);
+			}
+			result = SumHistory<T>(std::span{std::begin(tmp_result), hr.division});
+			return is_valid;
+		}
+		if (age < hr.periods) {
+			uint slot = hr.first + age - ((hr.hr->periods / hr.division) - 1);
+			result = history[slot];
+			return HasBit(valid_history, slot);
+		}
+	}
+	NOT_REACHED();
+}
+
+/**
+ * Get history data for the specified period and age within that period.
+ * @param history History data to extract from.
+ * @param valid_history Mask of valid history records.
+ * @param period Period to get.
+ * @param age Age of data to get.
+ * @param[out] result Variable to store historical value for period and age.
+ * @return True if the value is valid.
+ */
+template <typename T>
+bool GetHistory(const HistoryData<T> &history, ValidHistoryMask valid_history, uint period, uint age, T &result)
+{
+	switch (period) {
+		case 0: return GetHistory(history, valid_history, HISTORY_MONTH, age, result);
+		case 1: return GetHistory(history, valid_history, HISTORY_QUARTER, age, result);
+		case 2: return GetHistory(history, valid_history, HISTORY_YEAR, age, result);
+		default: NOT_REACHED();
+	}
+}
+
 /**
  * Fill some data with historical data.
  * @param history Historical data to fill from.
  * @param valid_history Mask of valid history records.
+ * @param period Period (monthly, quarterly, yearly) to fill with.
  * @param fillers Fillers to fill with history data.
  */
 template <uint N, typename T, typename... Tfillers>
-void FillFromHistory(const HistoryData<T> &history, ValidHistoryMask valid_history, Tfillers... fillers)
+void FillFromHistory(const HistoryData<T> &history, ValidHistoryMask valid_history, uint period, Tfillers... fillers)
 {
+	T data{};
 	for (uint i = 0; i != N; ++i) {
-		if (HasBit(valid_history, N - i)) {
-			auto &data = history[N - i];
+		if (GetHistory(history, valid_history, period, N - i - 1, data)) {
 			(fillers.Fill(i, data), ...);
 		} else {
 			(fillers.MakeInvalid(i), ...);
@@ -71,13 +143,14 @@ void FillFromHistory(const HistoryData<T> &history, ValidHistoryMask valid_histo
 /**
  * Fill some data with empty records.
  * @param valid_history Mask of valid history records.
+ * @param period Period (monthly, quarterly, yearly) to fill with.
  * @param fillers Fillers to fill with history data.
  */
 template <uint N, typename... Tfillers>
-void FillFromEmpty(ValidHistoryMask valid_history, Tfillers... fillers)
+void FillFromEmpty(ValidHistoryMask valid_history, uint period, Tfillers... fillers)
 {
 	for (uint i = 0; i != N; ++i) {
-		if (HasBit(valid_history, N - i)) {
+		if (IsValidHistory(valid_history, period, N - i - 1)) {
 			(fillers.MakeZero(i), ...);
 		} else {
 			(fillers.MakeInvalid(i), ...);
