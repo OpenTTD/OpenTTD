@@ -8,6 +8,11 @@
 /** @file graph_gui.cpp GUI that shows performance graphs. */
 
 #include "stdafx.h"
+
+#include <ranges>
+
+#include "misc/history_type.hpp"
+#include "misc/history_func.hpp"
 #include "graph_gui.h"
 #include "window_gui.h"
 #include "company_base.h"
@@ -173,6 +178,7 @@ protected:
 	static const int GRAPH_PAYMENT_RATE_STEPS = 20; ///< Number of steps on Payment rate graph.
 	static const int PAYMENT_GRAPH_X_STEP_DAYS    = 10; ///< X-axis step label for cargo payment rates "Days in transit".
 	static const int PAYMENT_GRAPH_X_STEP_SECONDS = 20; ///< X-axis step label for cargo payment rates "Seconds in transit".
+	static const int ECONOMY_YEAR_MINUTES = 12;  ///< Minutes per economic year.
 	static const int ECONOMY_QUARTER_MINUTES = 3;  ///< Minutes per economic quarter.
 	static const int ECONOMY_MONTH_MINUTES = 1;  ///< Minutes per economic month.
 
@@ -180,6 +186,24 @@ protected:
 
 	static const int MIN_GRAPH_NUM_LINES_Y  =   9; ///< Minimal number of horizontal lines to draw.
 	static const int MIN_GRID_PIXEL_SIZE    =  20; ///< Minimum distance between graph lines.
+
+	struct GraphScale {
+		StringID label = STR_NULL;
+		uint8_t month_increment = 0;
+		int16_t x_values_increment = 0;
+	};
+
+	static inline constexpr GraphScale MONTHLY_SCALE_WALLCLOCK[] = {
+		{STR_GRAPH_LAST_24_MINUTES_TIME_LABEL, HISTORY_MONTH.total_division, ECONOMY_MONTH_MINUTES},
+		{STR_GRAPH_LAST_72_MINUTES_TIME_LABEL, HISTORY_QUARTER.total_division, ECONOMY_QUARTER_MINUTES},
+		{STR_GRAPH_LAST_288_MINUTES_TIME_LABEL, HISTORY_YEAR.total_division, ECONOMY_YEAR_MINUTES},
+	};
+
+	static inline constexpr GraphScale MONTHLY_SCALE_CALENDAR[] = {
+		{STR_GRAPH_LAST_24_MONTHS, HISTORY_MONTH.total_division, ECONOMY_MONTH_MINUTES},
+		{STR_GRAPH_LAST_24_QUARTERS, HISTORY_QUARTER.total_division, ECONOMY_QUARTER_MINUTES},
+		{STR_GRAPH_LAST_24_YEARS, HISTORY_YEAR.total_division, ECONOMY_YEAR_MINUTES},
+	};
 
 	uint64_t excluded_data = 0; ///< bitmask of datasets hidden by the player.
 	uint64_t excluded_range = 0; ///< bitmask of ranges hidden by the player.
@@ -209,16 +233,18 @@ protected:
 		uint8_t dash;
 
 		template <typename T, typename Tproj>
-		void Fill(const HistoryData<T> &history, Tproj proj)
+		void Fill(const HistoryData<T> &history, uint8_t scale, Tproj proj)
 		{
 			for (uint j = 0; j < GRAPH_NUM_MONTHS; ++j) {
-				this->values[j] = std::invoke(proj, history[GRAPH_NUM_MONTHS - j]);
+				this->values[j] = std::invoke(proj, GetHistory(history, scale, GRAPH_NUM_MONTHS - j - 1));
 			}
 		}
 	};
 	std::vector<DataSet> data{};
 
-	std::span<const StringID> ranges = {};
+	std::span<const StringID> ranges{};
+	std::span<const GraphScale> scales{};
+	uint8_t selected_scale = 0;
 
 	uint8_t highlight_data = UINT8_MAX; ///< Data set that should be highlighted, or UINT8_MAX for none.
 	uint8_t highlight_range = UINT8_MAX; ///< Data range that should be highlighted, or UINT8_MAX for none.
@@ -606,24 +632,34 @@ protected:
 		this->SetDirty();
 	}};
 
+	void UpdateMatrixSize(WidgetID widget, Dimension &size, Dimension &resize, auto labels)
+	{
+		size = {};
+		for (const StringID &str : labels) {
+			size = maxdim(size, GetStringBoundingBox(str, FS_SMALL));
+		}
+
+		size.width += WidgetDimensions::scaled.framerect.Horizontal();
+		size.height += WidgetDimensions::scaled.framerect.Vertical();
+
+		/* Set fixed height for number of ranges. */
+		size.height *= static_cast<uint>(std::size(labels));
+
+		resize.width = 0;
+		resize.height = 0;
+		this->GetWidget<NWidgetCore>(widget)->SetMatrixDimension(1, ClampTo<uint32_t>(std::size(labels)));
+	}
+
 public:
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
 			case WID_GRAPH_RANGE_MATRIX:
-				for (const StringID &str : this->ranges) {
-					size = maxdim(size, GetStringBoundingBox(str, FS_SMALL));
-				}
+				this->UpdateMatrixSize(widget, size, resize, this->ranges);
+				break;
 
-				size.width += WidgetDimensions::scaled.framerect.Horizontal();
-				size.height += WidgetDimensions::scaled.framerect.Vertical();
-
-				/* Set fixed height for number of ranges. */
-				size.height *= static_cast<uint>(std::size(this->ranges));
-
-				resize.width = 0;
-				resize.height = 0;
-				this->GetWidget<NWidgetCore>(WID_GRAPH_RANGE_MATRIX)->SetMatrixDimension(1, ClampTo<uint32_t>(std::size(this->ranges)));
+			case WID_GRAPH_SCALE_MATRIX:
+				this->UpdateMatrixSize(widget, size, resize, this->scales | std::views::transform(&GraphScale::label));
 				break;
 
 			case WID_GRAPH_GRAPH: {
@@ -690,6 +726,21 @@ public:
 				break;
 			}
 
+			case WID_GRAPH_SCALE_MATRIX: {
+				uint line_height = GetCharacterHeight(FS_SMALL) + WidgetDimensions::scaled.framerect.Vertical();
+				uint8_t selected_month_increment = this->scales[this->selected_scale].month_increment;
+				Rect line = r.WithHeight(line_height);
+				for (const auto &scale : this->scales) {
+					/* Redraw frame if selected */
+					if (selected_month_increment == scale.month_increment) DrawFrameRect(line, COLOUR_BROWN, FrameFlag::Lowered);
+
+					DrawString(line.Shrink(WidgetDimensions::scaled.framerect), scale.label, TC_BLACK, SA_CENTER, false, FS_SMALL);
+
+					line = line.Translate(0, line_height);
+				}
+				break;
+			}
+
 			default: break;
 		}
 	}
@@ -708,6 +759,18 @@ public:
 				if (HasBit(this->masked_range, row)) break;
 				ToggleBit(this->excluded_range, row);
 				this->SetDirty();
+				break;
+			}
+
+			case WID_GRAPH_SCALE_MATRIX: {
+				int row = GetRowFromWidget(pt.y, widget, 0, GetCharacterHeight(FS_SMALL) + WidgetDimensions::scaled.framerect.Vertical());
+				const auto &scale = this->scales[row];
+				if (this->selected_scale != row) {
+					this->selected_scale = row;
+					this->month_increment = scale.month_increment;
+					this->x_values_increment = scale.x_values_increment;
+					this->InvalidateData();
+				}
 				break;
 			}
 
@@ -1635,6 +1698,13 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 		this->InitializeWindow(window_number, STR_GRAPH_LAST_24_MINUTES_TIME_LABEL);
 	}
 
+	void OnInit() override
+	{
+		this->BaseCargoGraphWindow::OnInit();
+
+		this->scales = TimerGameEconomy::UsingWallclockUnits() ? MONTHLY_SCALE_WALLCLOCK : MONTHLY_SCALE_CALENDAR;
+	}
+
 	CargoTypes GetCargoTypes(WindowNumber window_number) const override
 	{
 		CargoTypes cargo_types{};
@@ -1689,14 +1759,14 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 			produced.colour = cs->legend_colour;
 			produced.exclude_bit = cs->Index();
 			produced.range_bit = 0;
-			produced.Fill(p.history, &Industry::ProducedHistory::production);
+			produced.Fill(p.history, this->selected_scale, &Industry::ProducedHistory::production);
 
 			DataSet &transported = this->data.emplace_back();
 			transported.colour = cs->legend_colour;
 			transported.exclude_bit = cs->Index();
 			transported.range_bit = 1;
 			transported.dash = 2;
-			transported.Fill(p.history, &Industry::ProducedHistory::transported);
+			transported.Fill(p.history, this->selected_scale, &Industry::ProducedHistory::transported);
 		}
 
 		for (const auto &a : i->accepted) {
@@ -1708,14 +1778,14 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 			accepted.exclude_bit = cs->Index();
 			accepted.range_bit = 2;
 			accepted.dash = 1;
-			accepted.Fill(a.history, &Industry::AcceptedHistory::accepted);
+			accepted.Fill(a.history, this->selected_scale, &Industry::AcceptedHistory::accepted);
 
 			DataSet &waiting = this->data.emplace_back();
 			waiting.colour = cs->legend_colour;
 			waiting.exclude_bit = cs->Index();
 			waiting.range_bit = 3;
 			waiting.dash = 4;
-			waiting.Fill(a.history, &Industry::AcceptedHistory::waiting);
+			waiting.Fill(a.history, this->selected_scale, &Industry::AcceptedHistory::waiting);
 		}
 
 		this->SetDirty();
@@ -1735,7 +1805,7 @@ static constexpr NWidgetPart _nested_industry_production_widgets[] = {
 			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GRAPH_GRAPH), SetMinimalSize(495, 0), SetFill(1, 1), SetResize(1, 1),
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1),
-				NWidget(WWT_MATRIX, COLOUR_BROWN, WID_GRAPH_RANGE_MATRIX), SetFill(1, 0), SetResize(0, 0), SetMatrixDataTip(1, 0, STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO),
+				NWidget(WWT_MATRIX, COLOUR_BROWN, WID_GRAPH_RANGE_MATRIX), SetFill(1, 0), SetResize(0, 0), SetMatrixDataTip(1, 0, STR_GRAPH_TOGGLE_RANGE),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 4),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_GRAPH_ENABLE_CARGOES), SetStringTip(STR_GRAPH_CARGO_ENABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL), SetFill(1, 0),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_GRAPH_DISABLE_CARGOES), SetStringTip(STR_GRAPH_CARGO_DISABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL), SetFill(1, 0),
@@ -1744,6 +1814,8 @@ static constexpr NWidgetPart _nested_industry_production_widgets[] = {
 					NWidget(WWT_MATRIX, COLOUR_BROWN, WID_GRAPH_MATRIX), SetFill(1, 0), SetResize(0, 2), SetMatrixDataTip(1, 0, STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO), SetScrollbar(WID_GRAPH_MATRIX_SCROLLBAR),
 					NWidget(NWID_VSCROLLBAR, COLOUR_BROWN, WID_GRAPH_MATRIX_SCROLLBAR),
 				EndContainer(),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 4),
+				NWidget(WWT_MATRIX, COLOUR_BROWN, WID_GRAPH_SCALE_MATRIX), SetFill(1, 0), SetResize(0, 0), SetMatrixDataTip(1, 0, STR_GRAPH_SELECT_SCALE),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1),
 			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(5, 0), SetFill(0, 1), SetResize(0, 1),
