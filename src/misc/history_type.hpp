@@ -10,7 +10,36 @@
 #ifndef HISTORY_TYPE_HPP
 #define HISTORY_TYPE_HPP
 
-static constexpr uint8_t HISTORY_RECORDS = 25;
+#include "../stdafx.h"
+
+static constexpr uint8_t HISTORY_PERIODS = 24;
+
+struct HistoryRange {
+	const HistoryRange *hr;
+	const uint8_t periods; ///< Number of periods for this range.
+	const uint8_t records; ///< Number of records needed for this range.
+	const uint8_t first; ///< Index of first element in history data.
+	const uint8_t last; ///< Index of last element in history data.
+	const uint8_t division; ///< Number of divisions of the previous history range.
+	const uint8_t total_division; ///< Number of divisions of the initial history range.
+
+	constexpr HistoryRange(uint8_t periods) :
+		hr(nullptr), periods(periods), records(this->periods), first(1), last(this->first + this->records), division(1), total_division(1)
+	{
+	}
+
+	constexpr HistoryRange(const HistoryRange &hr, uint8_t division, uint8_t periods) :
+		hr(&hr), periods(periods), records(this->periods - ((hr.periods / division) - 1)), first(hr.last), last(this->first + this->records),
+		division(division), total_division(division * hr.total_division)
+	{
+	}
+};
+
+static constexpr HistoryRange HISTORY_MONTH{HISTORY_PERIODS};
+static constexpr HistoryRange HISTORY_QUARTER{HISTORY_MONTH, 3, HISTORY_PERIODS};
+static constexpr HistoryRange HISTORY_YEAR{HISTORY_QUARTER, 4, HISTORY_PERIODS};
+
+static constexpr uint8_t HISTORY_RECORDS = HISTORY_YEAR.last;
 
 static constexpr uint8_t THIS_MONTH = 0;
 static constexpr uint8_t LAST_MONTH = 1;

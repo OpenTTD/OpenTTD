@@ -2492,25 +2492,44 @@ void GenerateIndustries()
 	_industry_builder.Reset();
 }
 
+template <>
+Industry::ProducedHistory SumHistory(HistoryData<Industry::ProducedHistory>::iterator first, HistoryData<Industry::ProducedHistory>::iterator last)
+{
+	uint32_t production = std::accumulate(first, last, 0, [](uint32_t r, const auto &p) { return r + p.production; });
+	uint32_t transported = std::accumulate(first, last, 0, [](uint32_t r, const auto &p) { return r + p.transported; });
+	auto count = std::distance(first, last);
+	return {.production = ClampTo<uint16_t>(production / count), .transported = ClampTo<uint16_t>(transported / count)};
+}
+
+template <>
+Industry::AcceptedHistory SumHistory(HistoryData<Industry::AcceptedHistory>::iterator first, HistoryData<Industry::AcceptedHistory>::iterator last)
+{
+	uint32_t accepted = std::accumulate(first, last, 0, [](uint32_t r, const auto &a) { return r + a.accepted; });
+	uint32_t waiting = std::accumulate(first, last, 0, [](uint32_t r, const auto &a) { return r + a.waiting; });;
+	auto count = std::distance(first, last);
+	return {.accepted = ClampTo<uint16_t>(accepted / count), .waiting = ClampTo<uint16_t>(waiting / count)};
+}
+
 /**
  * Monthly update of industry statistics.
  * @param i Industry to update.
  */
 static void UpdateIndustryStatistics(Industry *i)
 {
+	auto month = TimerGameEconomy::month;
 	for (auto &p : i->produced) {
 		if (IsValidCargoType(p.cargo)) {
 			if (p.history[THIS_MONTH].production != 0) i->last_prod_year = TimerGameEconomy::year;
 
 			/* Move history from this month to last month. */
-			RotateHistory(p.history);
+			RotateHistory(p.history, month);
 		}
 	}
 
 	for (auto &a : i->accepted) {
 		if (!IsValidCargoType(a.cargo)) continue;
 		a.history[THIS_MONTH].waiting = GetAndResetAccumulatedAverage<uint16_t>(a.accumulated_waiting);
-		RotateHistory(a.history);
+		RotateHistory(a.history, month);
 	}
 }
 

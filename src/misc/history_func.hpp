@@ -16,15 +16,74 @@
 #include "history_type.hpp"
 
 /**
+ * Sum history data between first and last elements.
+ * @note The summation should prevent overflowing, and perform transformations relevant to the type of data.
+ * @tparam T type of history data element.
+ * @param first First element to sum.
+ * @param last Last element to sum.
+ * @return Sum of history elements.
+ */
+template <typename T>
+T SumHistory(typename HistoryData<T>::iterator first, typename HistoryData<T>::iterator last);
+
+/**
  * Rotate history.
  * @tparam T type of history data element.
  * @param history Historical data to rotate.
  */
 template <typename T>
-void RotateHistory(HistoryData<T> &history)
+void RotateHistory(HistoryData<T> &history, const HistoryRange &hr, uint age)
 {
-	std::rotate(std::rbegin(history), std::rbegin(history) + 1, std::rend(history));
-	history[THIS_MONTH] = {};
+	if (age % hr.total_division != 0) return;
+
+	std::move_backward(std::next(std::begin(history), hr.first), std::next(std::begin(history), hr.last - 1), std::next(std::begin(history), hr.last));
+
+	if (hr.division == 1) {
+		history[hr.first] = history[hr.first - 1];
+	} else {
+		auto first = std::next(std::begin(history), hr.first - hr.division);
+		auto last = std::next(first, hr.division);
+		history[hr.first] = SumHistory<T>(first, last);
+	}
+}
+
+template <typename T>
+void RotateHistory(HistoryData<T> &history, uint age)
+{
+	RotateHistory(history, HISTORY_MONTH, age);
+	RotateHistory(history, HISTORY_QUARTER, age);
+	RotateHistory(history, HISTORY_YEAR, age);
+	history.front() = {};
+}
+
+template <typename T>
+T GetHistory(const HistoryData<T> &history, const HistoryRange &hr, uint age)
+{
+	if (hr.hr == nullptr) {
+		if (age < hr.periods) return history[hr.first + age];
+	} else {
+		if (age * hr.division < hr.hr->periods - hr.division) {
+			std::array<T, HISTORY_PERIODS> result;
+			uint start = age * hr.division + ((TimerGameEconomy::month / hr.hr->division) % hr.division);
+			for (auto i = start; i != start + hr.division; ++i) {
+				result[i - start] = GetHistory(history, *hr.hr, i);
+			}
+			return SumHistory<T>(std::begin(result), std::next(std::begin(result), hr.division));
+		}
+		if (age < hr.periods) return history[hr.first + age - ((hr.hr->periods / hr.division) - 1)];
+	}
+	NOT_REACHED();
+}
+
+template <typename T>
+T GetHistory(const HistoryData<T> &history, uint period, uint age)
+{
+	switch (period) {
+		case 0: return GetHistory(history, HISTORY_MONTH, age);
+		case 1: return GetHistory(history, HISTORY_QUARTER, age);
+		case 2: return GetHistory(history, HISTORY_YEAR, age);
+		default: NOT_REACHED();
+	}
 }
 
 template <typename T, typename Taccrued>
