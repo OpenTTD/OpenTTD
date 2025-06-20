@@ -1272,7 +1272,7 @@ STR_CONFIG_SETTING_DISABLED                                     :Desativado
 
 ###length 3
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Desligado
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Sua empresa
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Só da própria empresa
 STR_CONFIG_SETTING_COMPANIES_ALL                                :Todas as empresas
 
 ###length 3
@@ -1392,7 +1392,7 @@ STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Altura máxima 
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Comprimento máximo dos túneis: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Tamanho máximo para construção de túneis
 
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Método de financiamento de indústrias primárias: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Método de financiamento das indústrias primárias: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Método de financiar uma indústria primária. 'Nenhum' significa que não é possível financiar nenhuma; 'Prospeção' significa que é possível financiar, mas a construção é feita num local aleatório no mapa e pode até falhar; 'Como as outras indústrias' significa que as indústrias de matérias primas podem ser construídas em qualquer local escolhido pelas empresas, como se fossem indústrias de processamento
 ###length 3
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Nenhum
@@ -1733,7 +1733,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Durante pausa p
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Seleccionar que acções podem ser feitas enquanto o jogo está em pausa
 ###length 4
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Nenhuma ação
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Todas as acções sem construção
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Todas as ações, exceto construção
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Todas expecto acções que modificam o terreno
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Todas as ações
 
@@ -2891,9 +2891,9 @@ STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinal co
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinal de trajeto (elétrico){}Permite que vários comboios passem simultaneamente um bloco de linha, desde que consigam reservar um caminho seguro sem prejudicar o veículo seguinte. Os sinais de trajeto padrão podem ser cruzados no sentido contrário.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinal de sentido único (eléctrico){}Um sinal de trajeto que permite que mais de um comboio passe simultaneamente uma divisão de linha, desde que consiga reservar um caminho para onde possa parar posteriormente sem prejudicar o seguinte. Os sinais de sentido único não podem ser cruzados no sentido contrário.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Converter Sinal{}Clique num sinal existente para convertê-lo no tipo e variante de sinal selecionado. Ctrl+Clique para mudar a variante existente. Pressione também Shift para apenas mostrar o custo estimado
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Distância de arrasto de sinais
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Reduzir distância de arrasto de sinais
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Aumentar a distância de arrasto de sinais
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Distância entre os sinais quando se arrasta
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Reduzir a distância entre os sinais quando se arrasta
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Aumentar a distância entre os sinais quando se arrasta
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Seleccione Ponte Ferroviária
@@ -3277,14 +3277,14 @@ STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COM
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 
 ###length 15
-STR_FRAMERATE_GAMELOOP                                          :Total de loops no jogo
+STR_FRAMERATE_GAMELOOP                                          :{BLACK}Total do ciclo de jogo
 STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Movimentação de carga:
 STR_FRAMERATE_GL_TRAINS                                         :{BLACK}  Quantidade de atraso no percurso do Comboio:
 STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}Quantidade de atraso no percurso do veículo rodoviário:
 STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Tiques de navio:
 STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK} Quantidade de atraso no percurso de Aeronave:
 STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK} Tiques do mundo:
-STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Atraso no gráfico de ligação:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK} Atraso no gráfico de ligações:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Renderização gráfica:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Visualizadores do mundo:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Saída de video:
@@ -3484,7 +3484,7 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Guarda a
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Eliminar
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Elimina a predefinição seleccionada
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Adicionar
-STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Adiciona o ficheiro NewGRF seleccionado à configuração
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Adicionar o ficheiro NewGRF selecionado à sua configuração
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Reler ficheiros
 STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Actualiza a lista de ficheiros NewGRF disponíveis
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Remover
@@ -3656,8 +3656,8 @@ STR_INVALID_VEHICLE                                             :<veiculo invál
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Procurar NewGRFs
-STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Procurar NewGRFs. Dependendo da quantidade, isto pode demorar algum tempo...
-STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" s} investigados num total estimado de {NUM} NewGRF{P "" s}
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}A procurar NewGRFs. Dependendo da quantidade, isto poderá demorar algum tempo...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" s} fo{P i ram} analisado{P "" s} num total estimado de {NUM} NewGRF{P "" s}
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Letreiros - {COMMA} Letreiro{P "" s}
@@ -5775,8 +5775,8 @@ STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :Navio de passag
 STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Hidroflutuador Bakewell 300
 STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Navio de passageiros Chugger-Chug
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Navio de passageiros Shivershake
-STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Navio de mercadorias Yate
-STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Navio de mercadorias Bakewell
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Cargueiro Yate
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Cargueiro Bakewell
 STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Navio de carga MightyMover
 STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Navio de carga Powernaut
 
