@@ -1699,7 +1699,7 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 			transported.range_bit = 1;
 			transported.dash = 2;
 
-			FillFromHistory<GRAPH_NUM_MONTHS>(p.history, Filler{produced, &Industry::ProducedHistory::production}, Filler{transported, &Industry::ProducedHistory::transported});
+			FillFromHistory<GRAPH_NUM_MONTHS>(p.history, 0, Filler{produced, &Industry::ProducedHistory::production}, Filler{transported, &Industry::ProducedHistory::transported});
 		}
 
 		for (const auto &a : i->accepted) {
@@ -1720,7 +1720,7 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 			waiting.range_bit = 3;
 			waiting.dash = 4;
 
-			FillFromHistory<GRAPH_NUM_MONTHS>(a.history, Filler{accepted, &Industry::AcceptedHistory::accepted}, Filler{waiting, &Industry::AcceptedHistory::waiting});
+			FillFromHistory<GRAPH_NUM_MONTHS>(a.history, 0, Filler{accepted, &Industry::AcceptedHistory::accepted}, Filler{waiting, &Industry::AcceptedHistory::waiting});
 		}
 
 		this->SetDirty();
