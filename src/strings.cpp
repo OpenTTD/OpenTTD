@@ -17,7 +17,6 @@
 #include "newgrf_text.h"
 #include "fileio_func.h"
 #include "signs_base.h"
-#include "fontdetection.h"
 #include "error.h"
 #include "error_func.h"
 #include "strings_func.h"
@@ -2253,42 +2252,60 @@ std::string_view GetCurrentLanguageIsoCode()
 
 /**
  * Check whether there are glyphs missing in the current language.
- * @return If glyphs are missing, return \c true, else return \c false.
+ * @return Bit mask of font sizes have any missing glyphs.
  */
-bool MissingGlyphSearcher::FindMissingGlyphs()
+FontSizes MissingGlyphSearcher::FindMissingGlyphs()
 {
-	InitFontCache(this->Monospace());
+	for (FontSize size : this->font_sizes) {
+		GetFontCacheSubSetting(size)->fallback_fonts.clear();
+	}
+
+	InitFontCache(this->font_sizes);
+
+	FontSizes bad_fontsizes{};
+
+	for (FontSize size : this->font_sizes) {
+		auto set = this->GetRequiredGlyphs(size);
+		if (set.empty()) continue;
+
+		Debug(fontcache, 0, "Missing {} glyphs in {} font size", set.size(), FontSizeToName(size));
+		bad_fontsizes.Set(size);
+	}
+
+	return bad_fontsizes;
+}
+
+std::set<char32_t> BaseStringMissingGlyphSearcher::GetRequiredGlyphs(FontSizes fontsizes)
+{
+	std::set<char32_t> glyphs{};
 
 	this->Reset();
 	for (auto text = this->NextString(); text.has_value(); text = this->NextString()) {
 		FontSize size = this->DefaultSize();
-		FontCache *fc = FontCache::Get(size);
 		for (char32_t c : Utf8View(*text)) {
 			if (c >= SCC_FIRST_FONT && c <= SCC_LAST_FONT) {
 				size = (FontSize)(c - SCC_FIRST_FONT);
-				fc = FontCache::Get(size);
-			} else if (!IsInsideMM(c, SCC_SPRITE_START, SCC_SPRITE_END) && IsPrintable(c) && !IsTextDirectionChar(c) && fc->MapCharToGlyph(c, false) == 0) {
-				/* The character is printable, but not in the normal font. This is the case we were testing for. */
-				std::string size_name;
-
-				switch (size) {
-					case FS_NORMAL: size_name = "medium"; break;
-					case FS_SMALL: size_name = "small"; break;
-					case FS_LARGE: size_name = "large"; break;
-					case FS_MONO: size_name = "mono"; break;
-					default: NOT_REACHED();
-				}
-
-				Debug(fontcache, 0, "Font is missing glyphs to display char 0x{:X} in {} font size", (int)c, size_name);
-				return true;
+				continue;
 			}
+
+			if (IsInsideMM(c, SCC_SPRITE_START, SCC_SPRITE_END)) continue;
+			if (!IsPrintable(c) || IsTextDirectionChar(c)) continue;
+			if (fontsizes.Test(size)) continue;
+			if (FontCache::GetFontIndexForCharacter(size, c) != INVALID_FONT_INDEX) continue;
+
+			glyphs.insert(c);
 		}
 	}
-	return false;
+
+	return glyphs;
 }
 
 /** Helper for searching through the language pack. */
-class LanguagePackGlyphSearcher : public MissingGlyphSearcher {
+class LanguagePackGlyphSearcher : public BaseStringMissingGlyphSearcher {
+public:
+	LanguagePackGlyphSearcher() : BaseStringMissingGlyphSearcher({FS_NORMAL, FS_SMALL, FS_LARGE}) {}
+
+private:
 	uint i; ///< Iterator for the primary language tables.
 	uint j; ///< Iterator for the secondary language tables.
 
@@ -2317,25 +2334,10 @@ class LanguagePackGlyphSearcher : public MissingGlyphSearcher {
 
 		return ret;
 	}
-
-	bool Monospace() override
-	{
-		return false;
-	}
-
-	void SetFontNames([[maybe_unused]] FontCacheSettings *settings, [[maybe_unused]] std::string_view font_name, [[maybe_unused]] const void *os_data) override
-	{
-#if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
-		settings->small.font = font_name;
-		settings->medium.font = font_name;
-		settings->large.font = font_name;
-
-		settings->small.os_handle = os_data;
-		settings->medium.os_handle = os_data;
-		settings->large.os_handle = os_data;
-#endif
-	}
 };
+
+static LanguagePackGlyphSearcher _language_pack_searcher;
+
 
 /**
  * Check whether the currently loaded language pack
@@ -2352,22 +2354,17 @@ class LanguagePackGlyphSearcher : public MissingGlyphSearcher {
  */
 void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 {
-	static LanguagePackGlyphSearcher pack_searcher;
-	if (searcher == nullptr) searcher = &pack_searcher;
-	bool bad_font = !base_font || searcher->FindMissingGlyphs();
+	if (searcher == nullptr) searcher = &_language_pack_searcher;
+	FontSizes bad_mask = searcher->FindMissingGlyphs();
+	bool bad_font = bad_mask.Any();
+
 #if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
-	if (bad_font) {
+	if (bad_mask.Any()) {
 		/* We found an unprintable character... lets try whether we can find
 		 * a fallback font that can print the characters in the current language. */
 		bool any_font_configured = !_fcsettings.medium.font.empty();
-		FontCacheSettings backup = _fcsettings;
 
-		_fcsettings.mono.os_handle = nullptr;
-		_fcsettings.medium.os_handle = nullptr;
-
-		bad_font = !SetFallbackFont(&_fcsettings, _langpack.langpack->isocode, searcher);
-
-		_fcsettings = std::move(backup);
+		bad_font = !FontProviderManager::SetFallbackFont(_langpack.langpack->isocode, bad_mask, searcher);
 
 		if (!bad_font && any_font_configured) {
 			/* If the user configured a bad font, and we found a better one,
@@ -2384,7 +2381,7 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 			/* Our fallback font does miss characters too, so keep the
 			 * user chosen font as that is more likely to be any good than
 			 * the wild guess we made */
-			InitFontCache(searcher->Monospace());
+			InitFontCache(bad_mask);
 		}
 	}
 #endif
@@ -2401,12 +2398,12 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 		ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, std::move(err_str)), {}, WL_WARNING);
 
 		/* Reset the font width */
-		LoadStringWidthTable(searcher->Monospace());
+		LoadStringWidthTable(bad_mask);
 		return;
 	}
 
 	/* Update the font with cache */
-	LoadStringWidthTable(searcher->Monospace());
+	LoadStringWidthTable(searcher->font_sizes);
 
 #if !(defined(WITH_ICU_I18N) && defined(WITH_HARFBUZZ)) && !defined(WITH_UNISCRIBE) && !defined(WITH_COCOA)
 	/*

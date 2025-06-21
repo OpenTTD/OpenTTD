@@ -157,8 +157,30 @@ EncodedString GetEncodedString(StringID string, const Args&... args)
  */
 class MissingGlyphSearcher {
 public:
+	FontSizes font_sizes; ///< Font sizes to search for.
+
+	MissingGlyphSearcher(FontSizes font_sizes) : font_sizes(font_sizes) {}
+
 	/** Make sure everything gets destructed right. */
 	virtual ~MissingGlyphSearcher() = default;
+
+	/**
+	 * Test if any glyphs are missing.
+	 * @return Font sizes which have missing glyphs.
+	 */
+	FontSizes FindMissingGlyphs();
+
+	/**
+	 * Get set of glyphs required for the current language.
+	 * @param fontsizes Font sizes to test.
+	 * @return Set of required glyphs.
+	 **/
+	virtual std::set<char32_t> GetRequiredGlyphs(FontSizes fontsizes) = 0;
+};
+
+class BaseStringMissingGlyphSearcher : public MissingGlyphSearcher {
+public:
+	BaseStringMissingGlyphSearcher(FontSizes font_sizes) : MissingGlyphSearcher(font_sizes) {}
 
 	/**
 	 * Get the next string to search through.
@@ -177,23 +199,9 @@ public:
 	 */
 	virtual void Reset() = 0;
 
-	/**
-	 * Whether to search for a monospace font or not.
-	 * @return True if searching for monospace.
-	 */
-	virtual bool Monospace() = 0;
-
-	/**
-	 * Set the right font names.
-	 * @param settings  The settings to modify.
-	 * @param font_name The new font name.
-	 * @param os_data Opaque pointer to OS-specific data.
-	 */
-	virtual void SetFontNames(struct FontCacheSettings *settings, std::string_view font_name, const void *os_data = nullptr) = 0;
-
-	bool FindMissingGlyphs();
+	std::set<char32_t> GetRequiredGlyphs(FontSizes fontsizes) override;
 };
 
-void CheckForMissingGlyphs(bool base_font = true, MissingGlyphSearcher *search = nullptr);
+void CheckForMissingGlyphs(bool base_font = true, MissingGlyphSearcher *searcher = nullptr);
 
 #endif /* STRINGS_FUNC_H */

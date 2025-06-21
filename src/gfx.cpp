@@ -481,6 +481,12 @@ static void SetColourRemap(TextColour colour)
 	_colour_remap_ptr = _string_colourremap;
 }
 
+static void RenderGlyph(FontCache *fc, GlyphID glyph, int left, int, int top, int)
+{
+	const Sprite *sprite = fc->GetGlyph(glyph);
+	GfxMainBlitter(sprite, left, top, BlitterMode::ColourRemap);
+};
+
 /**
  * Drawing routine for drawing a laid out line of text.
  * @param line      String to draw.
@@ -595,6 +601,9 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 			colour_has_shadow = (colour & TC_NO_SHADE) == 0 && colour != TC_BLACK;
 			SetColourRemap(do_shadow ? TC_BLACK : colour); // the last run also sets the colour for the truncation dots
 			if (do_shadow && (!fc->GetDrawGlyphShadow() || !colour_has_shadow)) continue;
+			int height = GetCharacterHeight(fc->GetSize());
+
+			auto render = RenderGlyph;
 
 			DrawPixelInfo *dpi = _cur_dpi;
 			int dpi_left  = dpi->left;
@@ -612,14 +621,16 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 
 				/* Truncated away. */
 				if (truncation && (begin_x < min_x || end_x > max_x)) continue;
+				/* Outside the clipping area. */
+				if (begin_x > dpi_right || end_x < dpi_left) continue;
 
-				const Sprite *sprite = fc->GetGlyph(glyph);
-				/* Check clipping (the "+ 1" is for the shadow). */
-				if (begin_x + sprite->x_offs > dpi_right || begin_x + sprite->x_offs + sprite->width /* - 1 + 1 */ < dpi_left) continue;
+				if (do_shadow) {
+					begin_x += shadow_offset;
+					end_x += shadow_offset;
+					top += shadow_offset;
+				}
 
-				if (do_shadow && (glyph & SPRITE_GLYPH) != 0) continue;
-
-				GfxMainBlitter(sprite, begin_x + (do_shadow ? shadow_offset : 0), top + (do_shadow ? shadow_offset : 0), BlitterMode::ColourRemap);
+				render(fc, glyph, begin_x, end_x, top, top + height - 1);
 			}
 		}
 
@@ -1243,11 +1254,11 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode,
  * Initialize _stringwidth_table cache
  * @param monospace Whether to load the monospace cache or the normal fonts.
  */
-void LoadStringWidthTable(bool monospace)
+void LoadStringWidthTable(FontSizes fontsizes)
 {
-	ClearFontCache();
+	ClearFontCache(fontsizes);
 
-	for (FontSize fs = monospace ? FS_MONO : FS_BEGIN; fs < (monospace ? FS_END : FS_MONO); fs++) {
+	for (FontSize fs : fontsizes) {
 		for (uint i = 0; i != 224; i++) {
 			_stringwidth_table[fs][i] = GetGlyphWidth(fs, i + 32);
 		}
@@ -1812,8 +1823,8 @@ bool AdjustGUIZoom(bool automatic)
 	if (old_font_zoom != _font_zoom) {
 		GfxClearFontSpriteCache();
 	}
-	ClearFontCache();
-	LoadStringWidthTable();
+	ClearFontCache(FONTSIZES_ALL);
+	LoadStringWidthTable(FONTSIZES_REQUIRED);
 
 	SetupWidgetDimensions();
 	UpdateAllVirtCoords();
