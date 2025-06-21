@@ -1991,6 +1991,8 @@ static bool IsWholeTrainInsideDepot(const Train *v)
  */
 void ReverseTrainDirection(Train *v)
 {
+	//DEBUG(driver, 1, "Reversing train %d on tile %d", v->index, v->tile);
+
 	if (IsRailDepotTile(v->tile)) {
 		if (IsWholeTrainInsideDepot(v)) return;
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
@@ -3884,6 +3886,9 @@ static TileIndex TrainApproachingCrossingTile(const Train *v)
  */
 static bool TrainCheckIfLineEnds(Train *v, bool reverse)
 {
+
+	if (v->flags.Test(VehicleRailFlag::Reversing)) return false;
+	
 	/* First, handle broken down train */
 
 	int t = v->breakdown_ctr;
@@ -3931,6 +3936,7 @@ static bool TrainCheckIfLineEnds(Train *v, bool reverse)
 
 	return true;
 }
+
 
 
 static bool TrainLocoHandler(Train *v, bool mode)
