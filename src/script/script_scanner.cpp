@@ -44,10 +44,7 @@ bool ScriptScanner::AddFile(const std::string &filename, size_t, const std::stri
 	return true;
 }
 
-ScriptScanner::ScriptScanner() :
-	engine(nullptr)
-{
-}
+ScriptScanner::ScriptScanner() = default;
 
 void ScriptScanner::ResetEngine()
 {
@@ -58,7 +55,7 @@ void ScriptScanner::ResetEngine()
 
 void ScriptScanner::Initialize(std::string_view name)
 {
-	this->engine = new Squirrel(name);
+	this->engine = std::make_unique<Squirrel>(name);
 
 	this->RescanDir();
 
@@ -68,8 +65,6 @@ void ScriptScanner::Initialize(std::string_view name)
 ScriptScanner::~ScriptScanner()
 {
 	this->Reset();
-
-	delete this->engine;
 }
 
 void ScriptScanner::RescanDir()
@@ -83,15 +78,12 @@ void ScriptScanner::RescanDir()
 
 void ScriptScanner::Reset()
 {
-	for (const auto &item : this->info_list) {
-		delete item.second;
-	}
-
 	this->info_list.clear();
 	this->info_single_list.clear();
+	this->info_vector.clear();
 }
 
-void ScriptScanner::RegisterScript(ScriptInfo *info)
+void ScriptScanner::RegisterScript(std::unique_ptr<ScriptInfo> &&info)
 {
 	std::string script_original_name = this->GetScriptName(*info);
 	std::string script_name = fmt::format("{}.{}", script_original_name, info->GetVersion());
@@ -99,7 +91,6 @@ void ScriptScanner::RegisterScript(ScriptInfo *info)
 	/* Check if GetShortName follows the rules */
 	if (info->GetShortName().size() != 4) {
 		Debug(script, 0, "The script '{}' returned a string from GetShortName() which is not four characters. Unable to load the script.", info->GetName());
-		delete info;
 		return;
 	}
 
@@ -111,7 +102,6 @@ void ScriptScanner::RegisterScript(ScriptInfo *info)
 #else
 		if (it->second->GetMainScript() == info->GetMainScript()) {
 #endif
-			delete info;
 			return;
 		}
 
@@ -120,20 +110,20 @@ void ScriptScanner::RegisterScript(ScriptInfo *info)
 		Debug(script, 1, "  2: {}", info->GetMainScript());
 		Debug(script, 1, "The first is taking precedence.");
 
-		delete info;
 		return;
 	}
 
-	this->info_list[script_name] = info;
+	ScriptInfo *script_info = this->info_vector.emplace_back(std::move(info)).get();
+	this->info_list[script_name] = script_info;
 
-	if (!info->IsDeveloperOnly() || _settings_client.gui.ai_developer_tools) {
+	if (!script_info->IsDeveloperOnly() || _settings_client.gui.ai_developer_tools) {
 		/* Add the script to the 'unique' script list, where only the highest version
 		 *  of the script is registered. */
 		auto it = this->info_single_list.find(script_original_name);
 		if (it == this->info_single_list.end()) {
-			this->info_single_list[script_original_name] = info;
-		} else if (it->second->GetVersion() < info->GetVersion()) {
-			it->second = info;
+			this->info_single_list[script_original_name] = script_info;
+		} else if (it->second->GetVersion() < script_info->GetVersion()) {
+			it->second = script_info;
 		}
 	}
 }
@@ -195,17 +185,17 @@ struct ScriptFileChecksumCreator : FileScanner {
  * @param info The script to get the shortname and md5 sum from.
  * @return True iff they're the same.
  */
-static bool IsSameScript(const ContentInfo &ci, bool md5sum, ScriptInfo *info, Subdirectory dir)
+static bool IsSameScript(const ContentInfo &ci, bool md5sum, const ScriptInfo &info, Subdirectory dir)
 {
 	uint32_t id = 0;
-	auto str = std::string_view{info->GetShortName()}.substr(0, 4);
+	auto str = std::string_view{info.GetShortName()}.substr(0, 4);
 	for (size_t j = 0; j < str.size(); j++) id |= static_cast<uint8_t>(str[j]) << (8 * j);
 
 	if (id != ci.unique_id) return false;
 	if (!md5sum) return true;
 
 	ScriptFileChecksumCreator checksum(dir);
-	const auto &tar_filename = info->GetTarFile();
+	const auto &tar_filename = info.GetTarFile();
 	TarList::iterator iter;
 	if (!tar_filename.empty() && (iter = _tar_list[dir].find(tar_filename)) != _tar_list[dir].end()) {
 		/* The main script is in a tar file, so find all files that
@@ -224,7 +214,7 @@ static bool IsSameScript(const ContentInfo &ci, bool md5sum, ScriptInfo *info, S
 		/* There'll always be at least 1 path separator character in a script
 		 * main script name as the search algorithm requires the main script to
 		 * be in a subdirectory of the script directory; so <dir>/<path>/main.nut. */
-		const std::string &main_script = info->GetMainScript();
+		const std::string &main_script = info.GetMainScript();
 		std::string path = main_script.substr(0, main_script.find_last_of(PATHSEPCHAR));
 		checksum.Scan(".nut", path);
 	}
@@ -235,7 +225,7 @@ static bool IsSameScript(const ContentInfo &ci, bool md5sum, ScriptInfo *info, S
 bool ScriptScanner::HasScript(const ContentInfo &ci, bool md5sum)
 {
 	for (const auto &item : this->info_list) {
-		if (IsSameScript(ci, md5sum, item.second, this->GetDirectory())) return true;
+		if (IsSameScript(ci, md5sum, *item.second, this->GetDirectory())) return true;
 	}
 	return false;
 }
@@ -243,7 +233,7 @@ bool ScriptScanner::HasScript(const ContentInfo &ci, bool md5sum)
 std::optional<std::string_view> ScriptScanner::FindMainScript(const ContentInfo &ci, bool md5sum)
 {
 	for (const auto &item : this->info_list) {
-		if (IsSameScript(ci, md5sum, item.second, this->GetDirectory())) return item.second->GetMainScript();
+		if (IsSameScript(ci, md5sum, *item.second, this->GetDirectory())) return item.second->GetMainScript();
 	}
 	return std::nullopt;
 }
