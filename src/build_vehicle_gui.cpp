@@ -1896,7 +1896,7 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case WID_BV_CONFIGURE_BADGES: {
-				bool reopen = HandleBadgeConfigurationDropDownClick(static_cast<GrfSpecFeature>(GSF_TRAINS + this->vehicle_type), BADGE_COLUMNS, index, click_result);
+				bool reopen = HandleBadgeConfigurationDropDownClick(static_cast<GrfSpecFeature>(GSF_TRAINS + this->vehicle_type), BADGE_COLUMNS, index, click_result, this->badge_filter_choices);
 
 				this->ReInit();
 
@@ -1905,6 +1905,10 @@ struct BuildVehicleWindow : Window {
 				} else {
 					this->CloseChildWindows(WC_DROPDOWN_MENU);
 				}
+
+				/* We need to refresh if a filter is removed. */
+				this->eng_list.ForceRebuild();
+				this->SetDirty();
 				break;
 			}
 

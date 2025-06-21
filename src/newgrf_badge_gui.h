@@ -54,7 +54,7 @@ std::unique_ptr<DropDownListItem> MakeDropDownListBadgeItem(const std::shared_pt
 std::unique_ptr<DropDownListItem> MakeDropDownListBadgeIconItem(const std::shared_ptr<GUIBadgeClasses> &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, const Dimension &dim, SpriteID sprite, PaletteID palette, std::string &&str, int value, bool masked = false, bool shaded = false);
 
 DropDownList BuildBadgeClassConfigurationList(const class GUIBadgeClasses &badge_class, uint columns, std::span<const StringID> column_separators);
-bool HandleBadgeConfigurationDropDownClick(GrfSpecFeature feature, uint columns, int result, int click_result);
+bool HandleBadgeConfigurationDropDownClick(GrfSpecFeature feature, uint columns, int result, int click_result, BadgeFilterChoices &choices);
 
 std::pair<WidgetID, WidgetID> AddBadgeDropdownFilters(NWidgetContainer &container, WidgetID widget, Colours colour, GrfSpecFeature feature);
 
