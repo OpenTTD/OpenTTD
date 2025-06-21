@@ -1,0 +1,38 @@
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/** @file history_func.hpp Functions for storing historical data. */
+
+#ifndef HISTORY_FUNC_HPP
+#define HISTORY_FUNC_HPP
+
+#include "../core/math_func.hpp"
+
+#include "../timer/timer_game_economy.h"
+#include "history_type.hpp"
+
+/**
+ * Rotate history.
+ * @tparam T type of history data element.
+ * @param history Historical data to rotate.
+ */
+template <typename T>
+void RotateHistory(HistoryData<T> &history)
+{
+	std::rotate(std::rbegin(history), std::rbegin(history) + 1, std::rend(history));
+	history[THIS_MONTH] = {};
+}
+
+template <typename T, typename Taccrued>
+T GetAndResetAccumulatedAverage(Taccrued &total)
+{
+	T result = ClampTo<T>(total / std::max(1U, TimerGameEconomy::days_since_last_month));
+	total = 0;
+	return result;
+}
+
+#endif /* HISTORY_FUNC_HPP */
