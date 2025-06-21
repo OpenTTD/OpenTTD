@@ -96,6 +96,8 @@ public:
 	const std::string ini_group; ///< Ini Group for saving favourites.
 	uint8_t mode = 0; ///< Bitmask of \c PickerFilterModes.
 
+	int preview_height = 0; ///< Previously adjusted height.
+
 	std::set<PickerItem> used; ///< Set of items used in the current game by the current company.
 	std::set<PickerItem> saved; ///< Set of saved favourite items.
 };
@@ -170,15 +172,19 @@ public:
 
 	static constexpr PickerInvalidations PICKER_INVALIDATION_ALL{PickerInvalidation::Class, PickerInvalidation::Type, PickerInvalidation::Position, PickerInvalidation::Validate};
 
-	static const int PREVIEW_WIDTH = 64; ///< Width of each preview button.
-	static const int PREVIEW_HEIGHT = 48; ///< Height of each preview button.
-	static const int PREVIEW_LEFT = 31; ///< Offset from left edge to draw preview.
-	static const int PREVIEW_BOTTOM = 31; ///< Offset from bottom edge to draw preview.
+	static constexpr int PREVIEW_WIDTH = 64; ///< Width of each preview button.
+	static constexpr int PREVIEW_HEIGHT = 48; ///< Height of each preview button.
+	static constexpr int PREVIEW_LEFT = 31; ///< Offset from left edge to draw preview.
+	static constexpr int PREVIEW_BOTTOM = 31; ///< Offset from bottom edge to draw preview.
 
-	static const uint EDITBOX_MAX_SIZE = 16; ///< The maximum number of characters for the filter edit box.
+	static constexpr int STEP_PREVIEW_HEIGHT = 16; ///< Step for decreasing or increase preivew button height.
+	static constexpr int MAX_PREVIEW_HEIGHT = PREVIEW_HEIGHT * 3; ///< Maximum height of each preview button.
+
+	static constexpr uint EDITBOX_MAX_SIZE = 16; ///< The maximum number of characters for the filter edit box.
 
 	bool has_class_picker = false; ///< Set if this window has a class picker 'component'.
 	bool has_type_picker = false; ///< Set if this window has a type picker 'component'.
+	int preview_height = 0; ///< Height of preview images.
 
 	PickerWindow(WindowDesc &desc, Window *parent, int window_number, PickerCallbacks &callbacks);
 	void OnInit() override;
