@@ -77,7 +77,7 @@ jobs:
         curl -L https://cdn.openttd.org/openmsx-releases/0.4.2/openmsx-0.4.2-all.zip -o openmsx-all.zip
         echo "::endgroup::"
 
-        echo "::group::Unpack OpenGFX"
+        echo "::group::Unpack OpenMSX"
         unzip openmsx-all.zip
         tar xf openmsx-*.tar
         echo "::endgroup::"
