@@ -43,13 +43,20 @@ enum EngineClass : uint8_t {
 	EC_MAGLEV,   ///< Maglev engine.
 };
 
+/** Acceleration model of a vehicle. */
+enum class VehicleAccelerationModel : uint8_t {
+	Normal,   ///< Default acceleration model.
+	Monorail, ///< Monorail acceleration model.
+	Maglev,   ///< Maglev acceleration model.
+};
+
 /** Information about a rail vehicle. */
 struct RailVehicleInfo {
 	uint8_t image_index = 0;
 	RailVehicleTypes railveh_type{};
 	uint8_t cost_factor = 0; ///< Purchase cost factor;      For multiheaded engines the sum of both engine prices.
-	RailType railtype{}; ///< Railtype, mangled if elrail is disabled.
-	RailType intended_railtype{}; ///< Intended railtype, regardless of elrail being enabled or disabled.
+	RailTypes railtypes{}; ///< Railtypes, mangled if elrail is disabled.
+	RailTypes intended_railtypes{}; ///< Intended railtypes, regardless of elrail being enabled or disabled.
 	uint8_t ai_passenger_only = 0; ///< Bit value to tell AI that this engine is for passenger use only
 	uint16_t max_speed = 0; ///< Maximum speed (1 unit = 1/1.6 mph = 1 km-ish/h)
 	uint16_t power = 0; ///< Power of engine (hp);      For multiheaded engines the sum of both engine powers.

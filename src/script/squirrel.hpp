@@ -104,15 +104,21 @@ public:
 	 * Adds a const to the stack. Depending on the current state this means
 	 *  either a const to a class or to the global space.
 	 */
-	void AddConst(std::string_view var_name, int value);
+	void AddConst(std::string_view var_name, SQInteger value);
 
 	/**
 	 * Adds a const to the stack. Depending on the current state this means
 	 *  either a const to a class or to the global space.
 	 */
-	void AddConst(std::string_view var_name, uint value) { this->AddConst(var_name, (int)value); }
+	void AddConst(std::string_view var_name, uint value) { this->AddConst(var_name, (SQInteger)value); }
 
-	void AddConst(std::string_view var_name, const ConvertibleThroughBase auto &value) { this->AddConst(var_name, static_cast<int>(value.base())); }
+	/**
+	 * Adds a const to the stack. Depending on the current state this means
+	 *  either a const to a class or to the global space.
+	 */
+	void AddConst(std::string_view var_name, int value) { this->AddConst(var_name, (SQInteger)value); }
+
+	void AddConst(std::string_view var_name, const ConvertibleThroughBase auto &value) { this->AddConst(var_name, static_cast<SQInteger>(value.base())); }
 
 	/**
 	 * Adds a const to the stack. Depending on the current state this means
