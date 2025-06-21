@@ -208,17 +208,17 @@ INTERNAL_LINKAGE inline __m128i AdjustBrightnessOfTwoPixels([[maybe_unused]] __m
  *
  * @tparam mode blitter mode
  * @param bp further blitting parameters
- * @param zoom zoom level at which we are drawing
+ * @param sck sprite collection key to draw
  */
 IGNORE_UNINITIALIZED_WARNING_START
 template <BlitterMode mode, Blitter_32bppSSE2::ReadMode read_mode, Blitter_32bppSSE2::BlockType bt_last, bool translucent>
 GNU_TARGET(SSE_TARGET)
 #if (SSE_VERSION == 2)
-inline void Blitter_32bppSSE2::Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom)
+inline void Blitter_32bppSSE2::Draw(const Blitter::BlitterParams *bp, SpriteCollKey sck)
 #elif (SSE_VERSION == 3)
-inline void Blitter_32bppSSSE3::Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom)
+inline void Blitter_32bppSSSE3::Draw(const Blitter::BlitterParams *bp, SpriteCollKey sck)
 #elif (SSE_VERSION == 4)
-inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom)
+inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, SpriteCollKey sck)
 #endif
 {
 	const uint8_t * const remap = bp->remap;
@@ -227,7 +227,7 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 
 	/* Find where to start reading in the source sprite. */
 	const SpriteData * const sd = (const SpriteData *) bp->sprite;
-	const SpriteInfo * const si = &sd->infos[zoom];
+	const SpriteInfo *const si = &sd->infos[sck];
 	const MapValue *src_mv_line = (const MapValue *) &sd->data[si->mv_offset] + bp->skip_top * si->sprite_width;
 	const Colour *src_rgba_line = (const Colour *) ((const uint8_t *) &sd->data[si->sprite_offset] + bp->skip_top * si->sprite_line_size);
 
@@ -453,14 +453,14 @@ IGNORE_UNINITIALIZED_WARNING_STOP
  *
  * @param bp further blitting parameters
  * @param mode blitter mode
- * @param zoom zoom level at which we are drawing
+ * @param sck sprite collection key to draw
  */
 #if (SSE_VERSION == 2)
-void Blitter_32bppSSE2::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
+void Blitter_32bppSSE2::Draw(Blitter::BlitterParams *bp, BlitterMode mode, SpriteCollKey sck)
 #elif (SSE_VERSION == 3)
-void Blitter_32bppSSSE3::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
+void Blitter_32bppSSSE3::Draw(Blitter::BlitterParams *bp, BlitterMode mode, SpriteCollKey sck)
 #elif (SSE_VERSION == 4)
-void Blitter_32bppSSE4::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
+void Blitter_32bppSSE4::Draw(Blitter::BlitterParams *bp, BlitterMode mode, SpriteCollKey sck)
 #endif
 {
 	switch (mode) {
@@ -469,14 +469,14 @@ void Blitter_32bppSSE4::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 bm_normal:
 				const BlockType bt_last = (BlockType) (bp->width & 1);
 				switch (bt_last) {
-					default:     Draw<BlitterMode::Normal, RM_WITH_SKIP, BT_EVEN, true>(bp, zoom); return;
-					case BT_ODD: Draw<BlitterMode::Normal, RM_WITH_SKIP, BT_ODD, true>(bp, zoom); return;
+					default:     Draw<BlitterMode::Normal, RM_WITH_SKIP, BT_EVEN, true>(bp, sck); return;
+					case BT_ODD: Draw<BlitterMode::Normal, RM_WITH_SKIP, BT_ODD, true>(bp, sck); return;
 				}
 			} else {
 				if (((const Blitter_32bppSSE_Base::SpriteData *) bp->sprite)->flags.Test(SpriteFlag::Translucent)) {
-					Draw<BlitterMode::Normal, RM_WITH_MARGIN, BT_NONE, true>(bp, zoom);
+					Draw<BlitterMode::Normal, RM_WITH_MARGIN, BT_NONE, true>(bp, sck);
 				} else {
-					Draw<BlitterMode::Normal, RM_WITH_MARGIN, BT_NONE, false>(bp, zoom);
+					Draw<BlitterMode::Normal, RM_WITH_MARGIN, BT_NONE, false>(bp, sck);
 				}
 				return;
 			}
@@ -485,14 +485,14 @@ bm_normal:
 		case BlitterMode::ColourRemap:
 			if (((const Blitter_32bppSSE_Base::SpriteData *) bp->sprite)->flags.Test(SpriteFlag::NoRemap)) goto bm_normal;
 			if (bp->skip_left != 0 || bp->width <= MARGIN_REMAP_THRESHOLD) {
-				Draw<BlitterMode::ColourRemap, RM_WITH_SKIP, BT_NONE, true>(bp, zoom); return;
+				Draw<BlitterMode::ColourRemap, RM_WITH_SKIP, BT_NONE, true>(bp, sck); return;
 			} else {
-				Draw<BlitterMode::ColourRemap, RM_WITH_MARGIN, BT_NONE, true>(bp, zoom); return;
+				Draw<BlitterMode::ColourRemap, RM_WITH_MARGIN, BT_NONE, true>(bp, sck); return;
 			}
-		case BlitterMode::Transparent: Draw<BlitterMode::Transparent, RM_NONE, BT_NONE, true>(bp, zoom); return;
-		case BlitterMode::TransparentRemap: Draw<BlitterMode::TransparentRemap, RM_NONE, BT_NONE, true>(bp, zoom); return;
-		case BlitterMode::CrashRemap: Draw<BlitterMode::CrashRemap, RM_NONE, BT_NONE, true>(bp, zoom); return;
-		case BlitterMode::BlackRemap: Draw<BlitterMode::BlackRemap, RM_NONE, BT_NONE, true>(bp, zoom); return;
+		case BlitterMode::Transparent: Draw<BlitterMode::Transparent, RM_NONE, BT_NONE, true>(bp, sck); return;
+		case BlitterMode::TransparentRemap: Draw<BlitterMode::TransparentRemap, RM_NONE, BT_NONE, true>(bp, sck); return;
+		case BlitterMode::CrashRemap: Draw<BlitterMode::CrashRemap, RM_NONE, BT_NONE, true>(bp, sck); return;
+		case BlitterMode::BlackRemap: Draw<BlitterMode::BlackRemap, RM_NONE, BT_NONE, true>(bp, sck); return;
 	}
 }
 #endif /* FULL_ANIMATION */

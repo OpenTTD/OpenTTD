@@ -224,8 +224,8 @@ void Win32FontCache::ClearFontCache()
 
 	/* GDI has rendered the glyph, now we allocate a sprite and copy the image into it. */
 	SpriteLoader::SpriteCollection spritecollection;
-	SpriteLoader::Sprite &sprite = spritecollection[ZoomLevel::Min];
-	sprite.AllocateData(ZoomLevel::Min, width * height);
+	SpriteLoader::Sprite &sprite = spritecollection.Root(false);
+	sprite.AllocateData(SpriteCollKey::Root(false), width * height);
 	sprite.colours = SpriteComponent::Palette;
 	if (aa) sprite.colours.Set(SpriteComponent::Alpha);
 	sprite.width = width;
@@ -264,7 +264,7 @@ void Win32FontCache::ClearFontCache()
 	}
 
 	UniquePtrSpriteAllocator allocator;
-	BlitterFactory::GetCurrentBlitter()->Encode(SpriteType::Font, spritecollection, allocator);
+	BlitterFactory::GetCurrentBlitter()->Encode(SpriteType::Font, spritecollection, false, allocator);
 
 	GlyphEntry new_glyph;
 	new_glyph.data = std::move(allocator.data);

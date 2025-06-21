@@ -108,7 +108,7 @@ public:
 
 	bool Is32BppSupported() override { return true; }
 	uint GetSpriteAlignment() override { return 1u << to_underlying(ZoomLevel::Max); }
-	Sprite *Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator) override;
+	Sprite *Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, bool has_rtl, SpriteAllocator &allocator) override;
 };
 
 
@@ -139,7 +139,7 @@ private:
 	bool BindTextures() const;
 
 public:
-	OpenGLSprite(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite);
+	OpenGLSprite(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, bool rtl);
 
 	/* No support for moving/copying the textures is implemented. */
 	OpenGLSprite(const OpenGLSprite&) = delete;
