@@ -49,7 +49,12 @@ public:
 };
 
 struct Company;
-typedef uint32_t CompanyManagerFace; ///< Company manager face bits, info see in company_manager_face.h
+
+struct CompanyManagerFace {
+	uint style = 0; ///< Company manager face style.
+	uint32_t bits = 0; ///< Company manager face bits, meaning is dependent on style.
+	std::string style_label; ///< Face style label.
+};
 
 /** The reason why the company was removed. */
 enum CompanyRemoveReason : uint8_t {

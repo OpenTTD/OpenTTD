@@ -108,12 +108,18 @@
 	EnforcePrecondition(false, gender == GENDER_MALE || gender == GENDER_FEMALE);
 	EnforcePrecondition(false, GetPresidentGender(ScriptCompany::COMPANY_SELF) != gender);
 
-	Randomizer &randomizer = ScriptObject::GetRandomizer();
-	CompanyManagerFace cmf;
-	GenderEthnicity ge = (GenderEthnicity)((gender == GENDER_FEMALE ? (1 << ::GENDER_FEMALE) : 0) | (randomizer.Next() & (1 << ETHNICITY_BLACK)));
-	RandomCompanyManagerFaceBits(cmf, ge, false, randomizer);
+	assert(GetNumCompanyManagerFaceStyles() >= 2); /* At least two styles are needed to fake a gender. */
 
-	return ScriptObject::Command<CMD_SET_COMPANY_MANAGER_FACE>::Do(cmf);
+	/* Company faces no longer have a defined gender, so pick a random face style instead. */
+	Randomizer &randomizer = ScriptObject::GetRandomizer();
+	CompanyManagerFace cmf{};
+	do {
+		cmf.style = randomizer.Next(GetNumCompanyManagerFaceStyles());
+	} while ((HasBit(cmf.style, 0) ? GENDER_FEMALE : GENDER_MALE) != gender);
+
+	RandomiseCompanyManagerFaceBits(cmf, GetCompanyManagerFaceVars(cmf.style), randomizer);
+
+	return ScriptObject::Command<CMD_SET_COMPANY_MANAGER_FACE>::Do(cmf.style, cmf.bits);
 }
 
 /* static */ ScriptCompany::Gender ScriptCompany::GetPresidentGender(ScriptCompany::CompanyID company)
@@ -121,8 +127,10 @@
 	company = ResolveCompanyID(company);
 	if (company == ScriptCompany::COMPANY_INVALID) return GENDER_INVALID;
 
-	GenderEthnicity ge = (GenderEthnicity)GetCompanyManagerFaceBits(Company::Get(ScriptCompany::FromScriptCompanyID(company))->face, CMFV_GEN_ETHN, GE_WM);
-	return HasBit(ge, ::GENDER_FEMALE) ? GENDER_FEMALE : GENDER_MALE;
+	/* Company faces no longer have a defined gender, so fake one based on the style index. This might not match
+	 * the face appearance. */
+	const auto &cmf = ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->face;
+	return HasBit(cmf.style, 0) ? GENDER_FEMALE : GENDER_MALE;
 }
 
 /* static */ Money ScriptCompany::GetQuarterlyIncome(ScriptCompany::CompanyID company, SQInteger quarter)
