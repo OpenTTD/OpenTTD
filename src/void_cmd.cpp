@@ -21,7 +21,12 @@
 
 static void DrawTile_Void(TileInfo *ti)
 {
-	DrawGroundSprite(SPR_FLAT_BARE_LAND + SlopeToSpriteOffset(ti->tileh), PALETTE_ALL_BLACK);
+	/* If all borders are water, draw infinite water off the edges of the map. */
+	if (_settings_game.game_creation.water_borders == BORDERFLAGS_ALL) {
+		DrawGroundSprite(SPR_FLAT_WATER_TILE + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
+	} else {
+		DrawGroundSprite(SPR_FLAT_BARE_LAND + SlopeToSpriteOffset(ti->tileh), PALETTE_ALL_BLACK);
+	}
 }
 
 
