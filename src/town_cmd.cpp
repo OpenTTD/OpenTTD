@@ -8,6 +8,8 @@
 /** @file town_cmd.cpp Handling of town tiles. */
 
 #include "stdafx.h"
+#include "misc/history_type.hpp"
+#include "misc/history_func.hpp"
 #include "road.h"
 #include "road_internal.h" /* Cleaning up road bits */
 #include "road_cmd.h"
@@ -114,6 +116,7 @@ Town::~Town()
 	/* Delete town authority window
 	 * and remove from list of sorted towns */
 	CloseWindowById(WC_TOWN_VIEW, this->index);
+	CloseWindowById(WC_TOWN_CARGO_GRAPH, this->index);
 
 #ifdef WITH_ASSERT
 	/* Check no industry is related to us. */
@@ -528,10 +531,12 @@ static void TownGenerateCargo(Town *t, CargoType cargo, uint amount, StationFind
 
 	/* Scale by cargo scale setting. */
 	amount = ScaleByCargoScale(amount, true);
+	if (amount == 0) return;
 
 	/* Actually generate cargo and update town statistics. */
-	t->supplied[cargo].new_max += amount;
-	t->supplied[cargo].new_act += MoveGoodsToStation(cargo, amount, {t->index, SourceType::Town}, stations.GetStations());;
+	auto &supplied = t->GetOrCreateCargoSupplied(cargo);
+	supplied.history[THIS_MONTH].production += amount;
+	supplied.history[THIS_MONTH].transported += MoveGoodsToStation(cargo, amount, {t->index, SourceType::Town}, stations.GetStations());;
 }
 
 /**
@@ -1996,10 +2001,19 @@ void UpdateTownRadius(Town *t)
 void UpdateTownMaxPass(Town *t)
 {
 	for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_PASSENGERS]) {
-		t->supplied[cs->Index()].old_max = ScaleByCargoScale(t->cache.population >> 3, true);
+		uint32_t production = ScaleByCargoScale(t->cache.population >> 3, true);
+		if (production == 0) continue;
+
+		auto &supplied = t->GetOrCreateCargoSupplied(cs->Index());
+		supplied.history[LAST_MONTH].production = production;
 	}
+
 	for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_MAIL]) {
-		t->supplied[cs->Index()].old_max = ScaleByCargoScale(t->cache.population >> 4, true);
+		uint32_t production = ScaleByCargoScale(t->cache.population >> 4, true);
+		if (production == 0) continue;
+
+		auto &supplied = t->GetOrCreateCargoSupplied(cs->Index());
+		supplied.history[LAST_MONTH].production = production;
 	}
 }
 
@@ -4050,6 +4064,15 @@ CommandCost CheckforTownRating(DoCommandFlags flags, Town *t, TownRatingCheckTyp
 	return CommandCost();
 }
 
+template <>
+Town::SuppliedHistory SumHistory(std::span<const Town::SuppliedHistory> history)
+{
+	uint32_t production = std::accumulate(std::begin(history), std::end(history), 0, [](uint32_t r, const auto &s) { return r + s.production; });
+	uint32_t transported = std::accumulate(std::begin(history), std::end(history), 0, [](uint32_t r, const auto &s) { return r + s.transported; });
+	auto count = std::size(history);
+	return {.production = ClampTo<uint16_t>(production / count), .transported = ClampTo<uint16_t>(transported / count)};
+}
+
 static const IntervalTimer<TimerGameEconomy> _economy_towns_monthly({TimerGameEconomy::MONTH, TimerGameEconomy::Priority::TOWN}, [](auto)
 {
 	for (Town *t : Town::Iterate()) {
@@ -4066,8 +4089,10 @@ static const IntervalTimer<TimerGameEconomy> _economy_towns_monthly({TimerGameEc
 			if (t->unwanted[c->index] > 0) t->unwanted[c->index]--;
 		}
 
+		UpdateValidHistory(t->valid_history, HISTORY_YEAR, TimerGameEconomy::month);
+
 		/* Update cargo statistics. */
-		for (auto &supplied : t->supplied) supplied.NewMonth();
+		for (auto &s : t->supplied) RotateHistory(s.history, t->valid_history, HISTORY_YEAR, TimerGameEconomy::month);
 		for (auto &received : t->received) received.NewMonth();
 
 		UpdateTownGrowth(t);

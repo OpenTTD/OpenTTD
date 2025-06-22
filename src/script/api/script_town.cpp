@@ -93,7 +93,10 @@
 
 	const Town *t = ::Town::Get(town_id);
 
-	return t->supplied[cargo_type].old_max;
+	auto it = t->GetCargoSupplied(cargo_type);
+	if (it == std::end(t->supplied)) return 0;
+
+	return it->history[LAST_MONTH].production;
 }
 
 /* static */ SQInteger ScriptTown::GetLastMonthSupplied(TownID town_id, CargoType cargo_type)
@@ -103,7 +106,10 @@
 
 	const Town *t = ::Town::Get(town_id);
 
-	return t->supplied[cargo_type].old_act;
+	auto it = t->GetCargoSupplied(cargo_type);
+	if (it == std::end(t->supplied)) return 0;
+
+	return it->history[LAST_MONTH].transported;
 }
 
 /* static */ SQInteger ScriptTown::GetLastMonthTransportedPercentage(TownID town_id, CargoType cargo_type)
