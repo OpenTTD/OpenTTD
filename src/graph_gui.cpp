@@ -8,6 +8,7 @@
 /** @file graph_gui.cpp GUI that shows performance graphs. */
 
 #include "stdafx.h"
+#include "misc/history_func.hpp"
 #include "graph_gui.h"
 #include "window_gui.h"
 #include "company_base.h"
@@ -215,6 +216,14 @@ protected:
 	uint8_t highlight_data = UINT8_MAX; ///< Data set that should be highlighted, or UINT8_MAX for none.
 	uint8_t highlight_range = UINT8_MAX; ///< Data range that should be highlighted, or UINT8_MAX for none.
 	bool highlight_state = false; ///< Current state of highlight, toggled every TIMER_BLINK_INTERVAL period.
+
+	template <typename Tprojection>
+	struct Filler {
+		DataSet &dataset; ///< Dataset to fill.
+		const Tprojection &proj; ///< Projection to apply.
+
+		inline void Fill(uint i, const auto &data) const { this->dataset.values[i] = std::invoke(this->proj, data); }
+	};
 
 	/**
 	 * Get appropriate part of dataset values for the current number of horizontal points.
@@ -1668,14 +1677,12 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 			if (!IsValidCargoType(p.cargo)) continue;
 			const CargoSpec *cs = CargoSpec::Get(p.cargo);
 
+			this->data.reserve(this->data.size() + 2);
+
 			DataSet &produced = this->data.emplace_back();
 			produced.colour = cs->legend_colour;
 			produced.exclude_bit = cs->Index();
 			produced.range_bit = 0;
-
-			for (uint j = 0; j < GRAPH_NUM_MONTHS; j++) {
-				produced.values[j] = p.history[GRAPH_NUM_MONTHS - j].production;
-			}
 
 			DataSet &transported = this->data.emplace_back();
 			transported.colour = cs->legend_colour;
@@ -1683,9 +1690,7 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 			transported.range_bit = 1;
 			transported.dash = 2;
 
-			for (uint j = 0; j < GRAPH_NUM_MONTHS; j++) {
-				transported.values[j] = p.history[GRAPH_NUM_MONTHS - j].transported;
-			}
+			FillFromHistory<GRAPH_NUM_MONTHS>(p.history, Filler{produced, &Industry::ProducedHistory::production}, Filler{transported, &Industry::ProducedHistory::transported});
 		}
 
 		this->SetDirty();
