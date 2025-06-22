@@ -18,6 +18,7 @@
 #include "../landscape.h"
 #include "../subsidy_func.h"
 #include "../strings_func.h"
+#include "../misc/history_func.hpp"
 
 #include "../safeguards.h"
 
@@ -112,7 +113,8 @@ void UpdateHousesAndTowns()
 	RebuildTownCaches();
 }
 
-class SlTownSupplied : public DefaultSaveLoadHandler<SlTownSupplied, Town> {
+
+class SlTownOldSupplied : public DefaultSaveLoadHandler<SlTownOldSupplied, Town> {
 public:
 	static inline const SaveLoad description[] = {
 		SLE_CONDVAR(TransportedCargoStat<uint32_t>, old_max, SLE_UINT32, SLV_165, SL_MAX_VERSION),
@@ -134,21 +136,62 @@ public:
 		return SlGetStructListLength(NUM_CARGO);
 	}
 
-	void Save(Town *t) const override
-	{
-		SlSetStructListLength(std::size(t->supplied));
-		for (auto &supplied : t->supplied) {
-			SlObject(&supplied, this->GetDescription());
-		}
-	}
-
 	void Load(Town *t) const override
 	{
 		size_t num_cargo = this->GetNumCargo();
 		for (size_t i = 0; i < num_cargo; i++) {
-			SlObject(&t->supplied[i], this->GetLoadDescription());
+			TransportedCargoStat<uint32_t> cargo_stat;
+			SlObject(&cargo_stat, this->GetLoadDescription());
+
+			/* Ignore empty statistics. */
+			if (cargo_stat.new_act == 0 && cargo_stat.new_max == 0 && cargo_stat.old_act == 0 && cargo_stat.old_max == 0) continue;
+
+			auto &s = t->supplied.emplace_back(static_cast<CargoType>(i));
+			s.history[LAST_MONTH].production = cargo_stat.old_max;
+			s.history[LAST_MONTH].transported = cargo_stat.old_act;
+			s.history[THIS_MONTH].production = cargo_stat.new_max;
+			s.history[THIS_MONTH].transported = cargo_stat.new_act;
 		}
 	}
+};
+
+class SlTownSuppliedHistory : public DefaultSaveLoadHandler<SlTownSuppliedHistory, Town::SuppliedCargo> {
+public:
+	static inline const SaveLoad description[] = {
+		 SLE_VAR(Town::SuppliedHistory, production, SLE_UINT32),
+		 SLE_VAR(Town::SuppliedHistory, transported, SLE_UINT32),
+	};
+	static inline const SaveLoadCompatTable compat_description = {};
+
+	void Save(Town::SuppliedCargo *p) const override
+	{
+		SlSetStructListLength(p->history.size());
+
+		for (auto &h : p->history) {
+			SlObject(&h, this->GetDescription());
+		}
+	}
+
+	void Load(Town::SuppliedCargo *p) const override
+	{
+		size_t len = SlGetStructListLength(p->history.size());
+
+		for (auto &h : p->history) {
+			if (--len > p->history.size()) break; // unsigned so wraps after hitting zero.
+			SlObject(&h, this->GetDescription());
+		}
+	}
+};
+
+class SlTownSupplied : public VectorSaveLoadHandler<SlTownSupplied, Town, Town::SuppliedCargo> {
+public:
+	inline static const SaveLoad description[] = {
+		SLE_VAR(Town::SuppliedCargo, cargo, SLE_UINT8),
+		SLEG_STRUCTLIST("history", SlTownSuppliedHistory),
+	};
+	inline const static SaveLoadCompatTable compat_description = {};
+
+	std::vector<Town::SuppliedCargo> &GetVector(Town *t) const override { return t->supplied; }
 };
 
 class SlTownReceived : public DefaultSaveLoadHandler<SlTownReceived, Town> {
@@ -205,6 +248,9 @@ public:
 	}
 };
 
+static std::array<Town::SuppliedHistory, 2> _old_pass_supplied{};
+static std::array<Town::SuppliedHistory, 2> _old_mail_supplied{};
+
 static const SaveLoad _town_desc[] = {
 	SLE_CONDVAR(Town, xy,                    SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_6),
 	SLE_CONDVAR(Town, xy,                    SLE_UINT32,                 SLV_6, SL_MAX_VERSION),
@@ -226,22 +272,22 @@ static const SaveLoad _town_desc[] = {
 	SLE_CONDARR(Town, unwanted,              SLE_INT8,  MAX_COMPANIES, SLV_104, SL_MAX_VERSION),
 
 	/* Slots 0 and 2 are passengers and mail respectively for old saves. */
-	SLE_CONDVARNAME(Town, supplied[0].old_max, "supplied[CT_PASSENGERS].old_max", SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_9),
-	SLE_CONDVARNAME(Town, supplied[0].old_max, "supplied[CT_PASSENGERS].old_max", SLE_UINT32,                 SLV_9, SLV_165),
-	SLE_CONDVARNAME(Town, supplied[2].old_max,       "supplied[CT_MAIL].old_max",       SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_9),
-	SLE_CONDVARNAME(Town, supplied[2].old_max,       "supplied[CT_MAIL].old_max",       SLE_UINT32,                 SLV_9, SLV_165),
-	SLE_CONDVARNAME(Town, supplied[0].new_max, "supplied[CT_PASSENGERS].new_max", SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_9),
-	SLE_CONDVARNAME(Town, supplied[0].new_max, "supplied[CT_PASSENGERS].new_max", SLE_UINT32,                 SLV_9, SLV_165),
-	SLE_CONDVARNAME(Town, supplied[2].new_max,       "supplied[CT_MAIL].new_max",       SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_9),
-	SLE_CONDVARNAME(Town, supplied[2].new_max,       "supplied[CT_MAIL].new_max",       SLE_UINT32,                 SLV_9, SLV_165),
-	SLE_CONDVARNAME(Town, supplied[0].old_act, "supplied[CT_PASSENGERS].old_act", SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_9),
-	SLE_CONDVARNAME(Town, supplied[0].old_act, "supplied[CT_PASSENGERS].old_act", SLE_UINT32,                 SLV_9, SLV_165),
-	SLE_CONDVARNAME(Town, supplied[2].old_act,       "supplied[CT_MAIL].old_act",       SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_9),
-	SLE_CONDVARNAME(Town, supplied[2].old_act,       "supplied[CT_MAIL].old_act",       SLE_UINT32,                 SLV_9, SLV_165),
-	SLE_CONDVARNAME(Town, supplied[0].new_act, "supplied[CT_PASSENGERS].new_act", SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_9),
-	SLE_CONDVARNAME(Town, supplied[0].new_act, "supplied[CT_PASSENGERS].new_act", SLE_UINT32,                 SLV_9, SLV_165),
-	SLE_CONDVARNAME(Town, supplied[2].new_act,       "supplied[CT_MAIL].new_act",       SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_9),
-	SLE_CONDVARNAME(Town, supplied[2].new_act,       "supplied[CT_MAIL].new_act",       SLE_UINT32,                 SLV_9, SLV_165),
+	SLEG_CONDVAR("supplied[CT_PASSENGERS].old_max", _old_pass_supplied[LAST_MONTH].production, SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_9),
+	SLEG_CONDVAR("supplied[CT_PASSENGERS].old_max", _old_pass_supplied[LAST_MONTH].production, SLE_UINT32,                 SLV_9, SLV_165),
+	SLEG_CONDVAR(      "supplied[CT_MAIL].old_max", _old_mail_supplied[LAST_MONTH].production, SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_9),
+	SLEG_CONDVAR(      "supplied[CT_MAIL].old_max", _old_mail_supplied[LAST_MONTH].production, SLE_UINT32,                 SLV_9, SLV_165),
+	SLEG_CONDVAR("supplied[CT_PASSENGERS].new_max", _old_pass_supplied[THIS_MONTH].production, SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_9),
+	SLEG_CONDVAR("supplied[CT_PASSENGERS].new_max", _old_pass_supplied[THIS_MONTH].production, SLE_UINT32,                 SLV_9, SLV_165),
+	SLEG_CONDVAR(      "supplied[CT_MAIL].new_max", _old_mail_supplied[THIS_MONTH].production, SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_9),
+	SLEG_CONDVAR(      "supplied[CT_MAIL].new_max", _old_mail_supplied[THIS_MONTH].production, SLE_UINT32,                 SLV_9, SLV_165),
+	SLEG_CONDVAR("supplied[CT_PASSENGERS].old_act", _old_pass_supplied[LAST_MONTH].transported, SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_9),
+	SLEG_CONDVAR("supplied[CT_PASSENGERS].old_act", _old_pass_supplied[LAST_MONTH].transported, SLE_UINT32,                 SLV_9, SLV_165),
+	SLEG_CONDVAR(      "supplied[CT_MAIL].old_act", _old_mail_supplied[LAST_MONTH].transported, SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_9),
+	SLEG_CONDVAR(      "supplied[CT_MAIL].old_act", _old_mail_supplied[LAST_MONTH].transported, SLE_UINT32,                 SLV_9, SLV_165),
+	SLEG_CONDVAR("supplied[CT_PASSENGERS].new_act", _old_pass_supplied[THIS_MONTH].transported, SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_9),
+	SLEG_CONDVAR("supplied[CT_PASSENGERS].new_act", _old_pass_supplied[THIS_MONTH].transported, SLE_UINT32,                 SLV_9, SLV_165),
+	SLEG_CONDVAR(      "supplied[CT_MAIL].new_act", _old_mail_supplied[THIS_MONTH].transported, SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_9),
+	SLEG_CONDVAR(      "supplied[CT_MAIL].new_act", _old_mail_supplied[THIS_MONTH].transported, SLE_UINT32,                 SLV_9, SLV_165),
 
 	SLE_CONDVARNAME(Town, received[TAE_FOOD].old_act,  "received[TE_FOOD].old_act",  SLE_UINT16,                 SL_MIN_VERSION, SLV_165),
 	SLE_CONDVARNAME(Town, received[TAE_WATER].old_act, "received[TE_WATER].old_act", SLE_UINT16,                 SL_MIN_VERSION, SLV_165),
@@ -268,10 +314,12 @@ static const SaveLoad _town_desc[] = {
 
 	SLE_CONDVAR(Town, larger_town,           SLE_BOOL,                  SLV_56, SL_MAX_VERSION),
 	SLE_CONDVAR(Town, layout,                SLE_UINT8,                SLV_113, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, valid_history, SLE_UINT64, SLV_TOWN_SUPPLY_HISTORY, SL_MAX_VERSION),
 
 	SLE_CONDREFVECTOR(Town, psa_list,        REF_STORAGE,              SLV_161, SL_MAX_VERSION),
 
-	SLEG_CONDSTRUCTLIST("supplied", SlTownSupplied,                    SLV_165, SL_MAX_VERSION),
+	SLEG_CONDSTRUCTLIST("supplied", SlTownOldSupplied,                 SLV_165, SLV_TOWN_SUPPLY_HISTORY),
+	SLEG_CONDSTRUCTLIST("supplied", SlTownSupplied,                    SLV_TOWN_SUPPLY_HISTORY, SL_MAX_VERSION),
 	SLEG_CONDSTRUCTLIST("received", SlTownReceived,                    SLV_165, SL_MAX_VERSION),
 	SLEG_CONDSTRUCTLIST("acceptance_matrix", SlTownAcceptanceMatrix,   SLV_166, SLV_REMOVE_TOWN_CARGO_CACHE),
 };
@@ -302,6 +350,20 @@ struct CITYChunkHandler : ChunkHandler {
 		while ((index = SlIterateArray()) != -1) {
 			Town *t = new (TownID(index)) Town();
 			SlObject(t, slt);
+
+			if (IsSavegameVersionBefore(SLV_165)) {
+				/* Passengers and mail were always treated as slots 0 and 2 in older saves. */
+				auto &pass = t->supplied.emplace_back(0);
+				pass.history[LAST_MONTH] = _old_pass_supplied[LAST_MONTH];
+				pass.history[THIS_MONTH] = _old_pass_supplied[THIS_MONTH];
+				auto &mail = t->supplied.emplace_back(2);
+				mail.history[LAST_MONTH] = _old_mail_supplied[LAST_MONTH];
+				mail.history[THIS_MONTH] = _old_mail_supplied[THIS_MONTH];
+			}
+
+			if (IsSavegameVersionBefore(SLV_TOWN_SUPPLY_HISTORY)) {
+				t->valid_history = 1U << LAST_MONTH;
+			}
 
 			if (t->townnamegrfid == 0 && !IsInsideMM(t->townnametype, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_END) && GetStringTab(t->townnametype) != TEXT_TAB_OLD_CUSTOM) {
 				SlErrorCorrupt("Invalid town name generator");

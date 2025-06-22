@@ -564,6 +564,9 @@ static void ReadTTDPatchFlags(LoadgameState &ls)
 	Debug(oldloader, 3, "Vehicle-multiplier is set to {} ({} vehicles)", ls.vehicle_multiplier, ls.vehicle_multiplier * 850);
 }
 
+static std::array<Town::SuppliedHistory, 2> _old_pass_supplied{};
+static std::array<Town::SuppliedHistory, 2> _old_mail_supplied{};
+
 static const OldChunks town_chunk[] = {
 	OCL_SVAR(   OC_TILE, Town, xy ),
 	OCL_NULL( 2 ),         ///< population,        no longer in use
@@ -592,14 +595,14 @@ static const OldChunks town_chunk[] = {
 	OCL_SVAR(  OC_FILE_U8 | OC_VAR_U16, Town, growth_rate ),
 
 	/* Slots 0 and 2 are passengers and mail respectively for old saves. */
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, supplied[0].new_max ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, supplied[2].new_max ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, supplied[0].new_act ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, supplied[2].new_act ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, supplied[0].old_max ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, supplied[2].old_max ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, supplied[0].old_act ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, supplied[2].old_act ),
+	OCL_VAR( OC_FILE_U16 | OC_VAR_U32, 1, &_old_pass_supplied[THIS_MONTH].production ),
+	OCL_VAR( OC_FILE_U16 | OC_VAR_U32, 1, &_old_mail_supplied[THIS_MONTH].production ),
+	OCL_VAR( OC_FILE_U16 | OC_VAR_U32, 1, &_old_pass_supplied[THIS_MONTH].transported ),
+	OCL_VAR( OC_FILE_U16 | OC_VAR_U32, 1, &_old_mail_supplied[THIS_MONTH].transported ),
+	OCL_VAR( OC_FILE_U16 | OC_VAR_U32, 1, &_old_pass_supplied[LAST_MONTH].production ),
+	OCL_VAR( OC_FILE_U16 | OC_VAR_U32, 1, &_old_mail_supplied[LAST_MONTH].production ),
+	OCL_VAR( OC_FILE_U16 | OC_VAR_U32, 1, &_old_pass_supplied[LAST_MONTH].transported ),
+	OCL_VAR( OC_FILE_U16 | OC_VAR_U32, 1, &_old_mail_supplied[LAST_MONTH].transported ),
 
 	OCL_NULL( 2 ),         ///< pct_pass_transported / pct_mail_transported, now computed on the fly
 
@@ -626,6 +629,13 @@ static bool LoadOldTown(LoadgameState &ls, int num)
 			/* 0x10B6 is auto-generated name, others are custom names */
 			t->townnametype = t->townnametype == 0x10B6 ? 0x20C1 : t->townnametype + 0x2A00;
 		}
+		/* Passengers and mail were always treated as slots 0 and 2 in older saves. */
+		auto &pass = t->supplied.emplace_back(0);
+		pass.history[LAST_MONTH] = _old_pass_supplied[LAST_MONTH];
+		pass.history[THIS_MONTH] = _old_pass_supplied[THIS_MONTH];
+		auto &mail = t->supplied.emplace_back(2);
+		mail.history[LAST_MONTH] = _old_mail_supplied[LAST_MONTH];
+		mail.history[THIS_MONTH] = _old_mail_supplied[THIS_MONTH];
 	} else {
 		delete t;
 	}
