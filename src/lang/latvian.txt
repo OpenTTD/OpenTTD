@@ -3077,6 +3077,11 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Izvēlē
 STR_FOUND_TOWN_CITY                                             :{BLACK}Pilsēta
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Pilsētas aug straujāk kā parastas apdzīvotās vietas{}Atkarībā no iestatījumiem, dibināšanas brīdī pilsētas ir lielākas
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Pilsētas paplašināšanās:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Ēkas
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Palieliniet pilsētu ēku skaitu
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Ceļi
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Palielināt pilsētu ceļu skaitu
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Pilsētas ceļu izskats:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Atlasīt šajā pilsētā lietojamo ceļu izkārtojumu
@@ -3705,6 +3710,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Pārdēv
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Paplašināt
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Palielināt pilsētas izmērus
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Izvērst ēkas
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Palielināt pilsētas ēku skaitu
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Izvērst ceļus
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Palielināt pilsētas ceļu skaitu
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Izdzēst
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Pilnībā dzēst šo pilsētu
 
@@ -5931,5 +5940,9 @@ STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELO
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
 STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Atvērt nozīmītes konfigurāciju
 STR_BADGE_CONFIG_RESET                                          :Atiestatīt
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Emblēmu ikonas
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Emblēmu filtri
 STR_BADGE_CONFIG_PREVIEW                                        :Priekšskatīt attēlu
 STR_BADGE_CONFIG_NAME                                           :Nosaukums
+STR_BADGE_FILTER_ANY_LABEL                                      :Jebkurš {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} ir {STRING}

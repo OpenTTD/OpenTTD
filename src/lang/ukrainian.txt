@@ -423,7 +423,7 @@ STR_TOOLTIP_DEFSIZE                                             :{BLACK}Пове
 STR_TOOLTIP_STICKY                                              :{BLACK}Не закривати вікно кнопкою "Закрити всі вікна". Ctrl+клац зберігає налаштування як базове
 STR_TOOLTIP_RESIZE                                              :{BLACK}Натисніть і тягніть для зміни розміру вікна
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Розмір вікна великий/малий
-STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Смуга прокрутки - прокручує список вверх/вниз
+STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Смуга прокрутки - прокручує список вгору/вниз
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Смуга прокрутки - прокручує список вліво/вправо
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Зруйнувати будинки, дороги тощо у квадраті суходолу.  Ctrl+клац+протягування для виділення клітинок по діагоналі. Утримуйте Shift для показу витрат на руйнування
 
@@ -1514,7 +1514,7 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Заборон�
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :При включенні прямокутні перетини шляхів не будуть вважатися поворотами. Для повороту необходно прокладати шляхи під кутом 45°.
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Станції можуть складатися з не суміжних частин: {STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Дозволяє приєднання до станції частин, що не примикають одна до одної. Для цього використовуйте Ctrl+Клік під час спорудження нових станцій
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Дозволяє приєднання до станції несуміжних одна до одної частин. Для цього використовуйте Ctrl+клац під час спорудження нових станцій
 
 STR_CONFIG_SETTING_INFLATION                                    :Інфляція: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Дозволяє інфляцію в економіці. При цьому витрати з часом зростають дещо швидше за прибутки
@@ -2312,7 +2312,7 @@ STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... по
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... невірне значення '{STRING}' для '{STRING}'
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... зайві символи в кінці параметра '{STRING}'
 STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ігнорую NewGRF '{STRING}': дублікат GRF ID з '{STRING}'
-STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ігнорую невірні NewGRF '{STRING}': {STRING}
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ігноруються непридатні NewGRF '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :не знайдено
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :небезпечий для статичного використання
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :системний NewGRF
@@ -2535,7 +2535,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Пото
 STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}год {NUM}хв
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Тривалість гри
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Тривалість гри{}без паузи
-STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Мова, версія сервера, та інше.
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Сумісність сервера й аутентифікація
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Натисніть на гру із списку, щоб вибрати її
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Сервер, до якого під'єднувались востаннє
@@ -2784,7 +2784,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} п
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} змінив(-ла) ім'я на {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** Від {0:STRING} до {2:STRING} передано {1:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Сервер закрив сеанс
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Перезавантаження сервера...{}Зачекайте...
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Перезавантаження сервера...{}{}Зачекайте...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} відключено. Причина: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Не вдалося зареєструвати сервер
@@ -3606,7 +3606,9 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Гене
 STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Збій завантаження налаштувань міста
 STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}JSON-файл має неправильний формат
 STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}{STRING} дані відформатовані неправильно
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} координати відформатовані неправильно, мають бути від 0 до 1, пропорційно до вимірів об'ємної мапи
 
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Неможливо знайти місце, придатне для заснування {NUM} міст{P "а" "" ""}. Натомість створено позначк{P "у" "и" "ок"} у передбачен{P "ому" "их" "их"} місц{P "і" "ях" "ях"}
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Налаштування нової графіки
@@ -3627,9 +3629,9 @@ STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Онов
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Видалити
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Видалити обрані файли NewGRF зі списку
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Вище
-STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Перемістити вибрані файли вверх по списку
+STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Перемістить обрані файли вище по списку
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Нижче
-STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Перемістити вибрані файли вниз по списку
+STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Перемістить обрані файли вниз по списку
 STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Оновити
 STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Оновити новішими версіями файли встановлених NewGRF'ів
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Список встановлених файлів NewGRF
@@ -4105,8 +4107,8 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} аеропорт{P "" и ів}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Нема
 
-STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Будувати Офіс
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Побудувати офіс компанії
+STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Збудувати офіс
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Буідівництво офісу компанії
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Показати Офіс
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Показати офіс компанії
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Перенести Офіс
@@ -4131,8 +4133,8 @@ STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Назва ко
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Ім'я керівника
 STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Введіть суму грошей, яку бажаєте передати
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Ми шукаємо нового власника нашої компанії.{}{}Чи бажаєте Ви купити {COMPANY} за {CURRENCY_LONG}?
-STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}Для агресивного захоплення компанії {COMPANY} необхідно прдбати усі активи, виплатити усі позики і сплатити дворічний прибуток.{}{}Приблизна вартість {CURRENCY_LONG}.{}{}Бажаєте продовжити агресивне захоплення?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Ми шукаємо нового власника нашої компанії.{}{}Бажаєте купити {COMPANY} за {CURRENCY_LONG}?
+STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}Для агресивного захоплення компанії {COMPANY} необхідно придбати усі активи, виплатити усі позики і сплатити дворічний прибуток.{}{}Приблизна вартість {CURRENCY_LONG}.{}{}Бажаєте продовжити агресивне захоплення?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Інфраструктура {COMPANY}
@@ -4983,12 +4985,12 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Нала
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Змінити налаштування скрипту
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Перезавантажити ШІ
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Зупинити ШІ, перезавантажити скрипт та перезапустити ШІ
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Увімкнути/вимкнути паузу при появі сигнального рядку в журналі АІ
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Вмикає/вимикає паузу при появі сигнального рядка в журналі ШІ
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Рядок:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Рядок
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}У разі появи в журналі АІ цього рядка гра призупиняється
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}При появі в журналі ШІ цього рядка гра призупиняється
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Регістр
-STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Перемкнути перевірку регістру при порівнянні рядків журналу АІ з сигнальним рядком
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Перемикання перевірки регістру при порівнянні рядків журналу ШІ з сигнальним рядком
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Продовжити
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Зняти з паузи і продовжити ШІ
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Відобразити результати зневадження цього ШІ. Ctrl+клац мишею відкриє нове вікно з результатами
@@ -5012,7 +5014,7 @@ STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Кіл�
 STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}Проміжок між вступом конкурентів у гру: {ORANGE}{COMMA} хвилин{P а и ""}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Перемістити вище
-STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Перемістити обраний ШІ вверх по списку
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Перемістить обраний ШІ вище по списку
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Перемістити нижче
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Перемістити обраний ШІ вниз по списку
 
@@ -5023,8 +5025,8 @@ STR_AI_CONFIG_AI                                                :{SILVER}ШІ
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Обрати ШІ
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Обрати ігровий скрипт
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Завантажити інший скрипт. Ctrl+клац показує всі наявні версії
-STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Настроїти
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Настроїти параметри скрипту
+STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Налаштувати
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Налаштувати параметри скрипту
 
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Доступні {STRING}
@@ -6033,7 +6035,7 @@ STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Ангар {STA
 
 STR_UNKNOWN_STATION                                             :невідома станція
 STR_DEFAULT_SIGN_NAME                                           :Позначка
-STR_COMPANY_SOMEONE                                             :дехто
+STR_COMPANY_SOMEONE                                             :хтось
 
 STR_SAVEGAME_DURATION_REALTIME                                  :{NUM}год {NUM}хв
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
