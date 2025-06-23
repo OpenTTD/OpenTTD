@@ -442,7 +442,7 @@ void PickerWindow::OnDropdownSelect(WidgetID widget, int index, int click_result
 {
 	switch (widget) {
 		case WID_PW_CONFIGURE_BADGES: {
-			bool reopen = HandleBadgeConfigurationDropDownClick(this->callbacks.GetFeature(), 1, index, click_result);
+			bool reopen = HandleBadgeConfigurationDropDownClick(this->callbacks.GetFeature(), 1, index, click_result, this->badge_filter_choices);
 
 			this->ReInit();
 
@@ -451,6 +451,9 @@ void PickerWindow::OnDropdownSelect(WidgetID widget, int index, int click_result
 			} else {
 				this->CloseChildWindows(WC_DROPDOWN_MENU);
 			}
+
+			/* We need to refresh if a filter is removed. */
+			this->InvalidateData({PickerInvalidation::Type, PickerInvalidation::Filter});
 			break;
 		}
 
@@ -461,9 +464,7 @@ void PickerWindow::OnDropdownSelect(WidgetID widget, int index, int click_result
 				} else {
 					SetBadgeFilter(this->badge_filter_choices, BadgeID(index));
 				}
-				this->type_string_filter.bdf.emplace(this->badge_filter_choices);
-				this->types.SetFilterState(!type_string_filter.IsEmpty() || type_string_filter.bdf.has_value());
-				this->InvalidateData(PickerInvalidation::Type);
+				this->InvalidateData({PickerInvalidation::Type, PickerInvalidation::Filter});
 			}
 			break;
 	}
@@ -474,6 +475,16 @@ void PickerWindow::OnInvalidateData(int data, bool gui_scope)
 	if (!gui_scope) return;
 
 	PickerInvalidations pi(data);
+
+	if (pi.Test(PickerInvalidation::Filter)) {
+		if (this->badge_filter_choices.empty()) {
+			this->type_string_filter.bdf.reset();
+		} else {
+			this->type_string_filter.bdf.emplace(this->badge_filter_choices);
+		}
+		this->types.SetFilterState(!type_string_filter.IsEmpty() || type_string_filter.bdf.has_value());
+	}
+
 	if (pi.Test(PickerInvalidation::Class)) this->classes.ForceRebuild();
 	if (pi.Test(PickerInvalidation::Type)) this->types.ForceRebuild();
 
@@ -526,8 +537,7 @@ void PickerWindow::OnEditboxChanged(WidgetID wid)
 			} else {
 				this->type_string_filter.btf.reset();
 			}
-			this->types.SetFilterState(!type_string_filter.IsEmpty() || type_string_filter.bdf.has_value());
-			this->InvalidateData(PickerInvalidation::Type);
+			this->InvalidateData({PickerInvalidation::Type, PickerInvalidation::Filter});
 			break;
 
 		default:

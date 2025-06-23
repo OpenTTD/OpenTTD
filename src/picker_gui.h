@@ -165,6 +165,7 @@ public:
 		Type, ///< Refresh the type list.
 		Position, ///< Update scroll positions.
 		Validate, ///< Validate selected item.
+		Filter, ///< Update filter state.
 	};
 	using PickerInvalidations = EnumBitSet<PickerInvalidation, uint8_t>;
 
