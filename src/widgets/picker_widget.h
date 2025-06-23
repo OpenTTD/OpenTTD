@@ -24,6 +24,8 @@ enum PickerClassWindowWidgets : WidgetID {
 	WID_PW_MODE_ALL, ///< Toggle "Show all" filter mode.
 	WID_PW_MODE_USED, ///< Toggle showing only used types.
 	WID_PW_MODE_SAVED, ///< Toggle showing only saved types.
+	WID_PW_SHRINK, ///< Button to reduce preview image height.
+	WID_PW_EXPAND, ///< Button to increase preview image height.
 	WID_PW_TYPE_MATRIX, ///< Matrix with items.
 	WID_PW_TYPE_ITEM, ///< A single item.
 	WID_PW_TYPE_SCROLL, ///< Scrollbar for the matrix.

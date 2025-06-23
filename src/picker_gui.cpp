@@ -181,6 +181,8 @@ void PickerWindow::ConstructWindow()
 	/* Test if pickers should be active.*/
 	bool is_active = this->callbacks.IsActive();
 
+	this->preview_height = std::max(this->callbacks.preview_height, PREVIEW_HEIGHT);
+
 	/* Functionality depends on widgets being present, not window class. */
 	this->has_class_picker = is_active && this->GetWidget<NWidgetBase>(WID_PW_CLASS_LIST) != nullptr && this->callbacks.HasClassChoice();
 	this->has_type_picker = is_active && this->GetWidget<NWidgetBase>(WID_PW_TYPE_MATRIX) != nullptr;
@@ -286,7 +288,7 @@ void PickerWindow::UpdateWidgetSize(WidgetID widget, Dimension &size, const Dime
 		/* Type picker */
 		case WID_PW_TYPE_ITEM:
 			size.width  = ScaleGUITrad(PREVIEW_WIDTH) + WidgetDimensions::scaled.fullbevel.Horizontal();
-			size.height = ScaleGUITrad(PREVIEW_HEIGHT) + WidgetDimensions::scaled.fullbevel.Vertical();
+			size.height = ScaleGUITrad(this->preview_height) + WidgetDimensions::scaled.fullbevel.Vertical();
 			break;
 
 		case WID_PW_CONFIGURE_BADGES:
@@ -332,7 +334,7 @@ void PickerWindow::DrawWidget(const Rect &r, WidgetID widget) const
 			if (FillDrawPixelInfo(&tmp_dpi, ir)) {
 				AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 				int x = (ir.Width()  - ScaleSpriteTrad(PREVIEW_WIDTH)) / 2 + ScaleSpriteTrad(PREVIEW_LEFT);
-				int y = (ir.Height() + ScaleSpriteTrad(PREVIEW_HEIGHT)) / 2 - ScaleSpriteTrad(PREVIEW_BOTTOM);
+				int y = (ir.Height() + ScaleSpriteTrad(this->preview_height)) / 2 - ScaleSpriteTrad(PREVIEW_BOTTOM);
 
 				this->callbacks.DrawType(x, y, item.class_index, item.index);
 
@@ -396,6 +398,18 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 				SetBit(this->callbacks.mode, PFM_ALL);
 			}
 			this->InvalidateData({PickerInvalidation::Class, PickerInvalidation::Type, PickerInvalidation::Position});
+			break;
+
+		case WID_PW_SHRINK:
+			this->callbacks.preview_height = this->preview_height = _ctrl_pressed ? PREVIEW_HEIGHT : std::max(PREVIEW_HEIGHT, this->preview_height - STEP_PREVIEW_HEIGHT);
+			this->InvalidateData({});
+			this->ReInit();
+			break;
+
+		case WID_PW_EXPAND:
+			this->callbacks.preview_height = this->preview_height = _ctrl_pressed ? MAX_PREVIEW_HEIGHT : std::min(MAX_PREVIEW_HEIGHT, this->preview_height + STEP_PREVIEW_HEIGHT);
+			this->InvalidateData({});
+			this->ReInit();
 			break;
 
 		/* Type Picker */
@@ -501,6 +515,9 @@ void PickerWindow::OnInvalidateData(int data, bool gui_scope)
 		SetWidgetLoweredState(WID_PW_MODE_USED, HasBit(this->callbacks.mode, PFM_USED));
 		SetWidgetLoweredState(WID_PW_MODE_SAVED, HasBit(this->callbacks.mode, PFM_SAVED));
 	}
+
+	SetWidgetDisabledState(WID_PW_SHRINK, this->preview_height == PREVIEW_HEIGHT);
+	SetWidgetDisabledState(WID_PW_EXPAND, this->preview_height == MAX_PREVIEW_HEIGHT);
 }
 
 EventState PickerWindow::OnHotkey(int hotkey)
@@ -758,6 +775,8 @@ std::unique_ptr<NWidgetBase> MakePickerTypeWidgets()
 					NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_PW_MODE_ALL), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_PICKER_MODE_ALL, STR_PICKER_MODE_ALL_TOOLTIP),
 					NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_PW_MODE_USED), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_PICKER_MODE_USED, STR_PICKER_MODE_USED_TOOLTIP),
 					NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_PW_MODE_SAVED), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_PICKER_MODE_SAVED, STR_PICKER_MODE_SAVED_TOOLTIP),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_DARK_GREEN, WID_PW_SHRINK), SetAspect(WidgetDimensions::ASPECT_UP_DOWN_BUTTON), SetStringTip(STR_PICKER_PREVIEW_SHRINK, STR_PICKER_PREVIEW_SHRINK_TOOLTIP),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_DARK_GREEN, WID_PW_EXPAND), SetAspect(WidgetDimensions::ASPECT_UP_DOWN_BUTTON), SetStringTip(STR_PICKER_PREVIEW_EXPAND, STR_PICKER_PREVIEW_EXPAND_TOOLTIP),
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetScrollbar(WID_PW_TYPE_SCROLL),
