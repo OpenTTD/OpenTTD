@@ -4016,8 +4016,16 @@ static void UpdateStationRating(Station *st)
 			}
 
 			if (!skip) {
-				int b = ge->last_speed - 85;
-				if (b >= 0) rating += b >> 2;
+				/* Maybe consider the speed of the last vehicle. */
+				if (_settings_game.difficulty.station_rating_mode == SRM_IMPROVED) {
+					/* Don't consider vehicle speed at all. */
+					static const uint8_t MAX_SPEED_RATING_VALUE = 42; ///< Rating point value of the fastest possible vehicle.
+					rating += MAX_SPEED_RATING_VALUE;
+				} else {
+					/* Vehicle speed matters. */
+					int b = ge->last_speed - 85;
+					if (b >= 0) rating += b >> 2;
+				}
 
 				uint waittime = ge->time_since_pickup;
 
