@@ -8,6 +8,8 @@
 /** @file industry_cmd.cpp Handling of industry tiles. */
 
 #include "stdafx.h"
+#include "misc/history_type.hpp"
+#include "misc/history_func.hpp"
 #include "clear_map.h"
 #include "industry.h"
 #include "station_base.h"
@@ -2496,10 +2498,7 @@ static void UpdateIndustryStatistics(Industry *i)
 		if (IsValidCargoType(p.cargo)) {
 			if (p.history[THIS_MONTH].production != 0) i->last_prod_year = TimerGameEconomy::year;
 
-			/* Move history from this month to last month. */
-			std::rotate(std::rbegin(p.history), std::rbegin(p.history) + 1, std::rend(p.history));
-			p.history[THIS_MONTH].production = 0;
-			p.history[THIS_MONTH].transported = 0;
+			RotateHistory(p.history);
 		}
 	}
 }
