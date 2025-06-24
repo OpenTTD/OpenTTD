@@ -22,6 +22,7 @@
 
 static const uint8_t INITIAL_STATION_RATING = 175;
 static const uint8_t MAX_STATION_RATING = 255;
+static const uint8_t STATION_SIZE_FACTOR = 10; ///< "Average" amount of station tiles for station rating calculations. "Game balance eh?"
 
 /**
  * Flow statistics telling how much flow should be sent along a link. This is
@@ -518,6 +519,7 @@ public:
 	IndustryType indtype = IT_INVALID; ///< Industry type to get the name from
 
 	BitmapTileArea catchment_tiles{}; ///< NOSAVE: Set of individual tiles covered by catchment area
+	uint station_tiles; ///< NOSAVE: Count of station tiles owned by this station
 
 	StationHadVehicleOfType had_vehicle_of_type{};
 

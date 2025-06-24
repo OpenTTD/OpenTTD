@@ -4027,11 +4027,19 @@ static void UpdateStationRating(Station *st)
 				if (waittime <= 3) rating += 35;
 
 				rating -= 90;
-				if (ge->max_waiting_cargo <= 1500) rating += 55;
-				if (ge->max_waiting_cargo <= 1000) rating += 35;
-				if (ge->max_waiting_cargo <= 600) rating += 10;
-				if (ge->max_waiting_cargo <= 300) rating += 20;
-				if (ge->max_waiting_cargo <= 100) rating += 10;
+
+				/* The number of station tiles might affect rating drop for "too much waiting cargo." */
+				uint normalised_max_waiting_cargo = ge->max_waiting_cargo;
+				if (_settings_game.difficulty.station_rating_mode == SRM_IMPROVED) {
+					normalised_max_waiting_cargo *= STATION_SIZE_FACTOR;
+					if (st->station_tiles > 1) normalised_max_waiting_cargo /= st->station_tiles;
+				}
+
+				if (normalised_max_waiting_cargo <= 1500) rating += 55;
+				if (normalised_max_waiting_cargo <= 1000) rating += 35;
+				if (normalised_max_waiting_cargo <= 600) rating += 10;
+				if (normalised_max_waiting_cargo <= 300) rating += 20;
+				if (normalised_max_waiting_cargo <= 100) rating += 10;
 			}
 
 			if (Company::IsValidID(st->owner) && st->town->statues.Test(st->owner)) rating += 26;
@@ -4041,12 +4049,13 @@ static void UpdateStationRating(Station *st)
 			if (age < 2) rating += 10;
 			if (age < 1) rating += 13;
 
-			{
-				int or_ = ge->rating; // old rating
+			int or_ = ge->rating; // old rating
 
-				/* only modify rating in steps of -2, -1, 0, 1 or 2 */
-				ge->rating = rating = ClampTo<uint8_t>(or_ + Clamp(rating - or_, -2, 2));
+			/* only modify rating in steps of -2, -1, 0, 1 or 2 */
+			ge->rating = rating = ClampTo<uint8_t>(or_ + Clamp(rating - or_, -2, 2));
 
+			/* Original station rating removes random goods. */
+			if (_settings_game.difficulty.station_rating_mode == SRM_ORIGINAL) {
 				/* if rating is <= 64 and more than 100 items waiting on average per destination,
 				 * remove some random amount of goods from the station */
 				if (rating <= 64 && waiting_avg >= 100) {
@@ -4065,34 +4074,39 @@ static void UpdateStationRating(Station *st)
 						waiting_changed = true;
 					}
 				}
+			}
 
-				/* At some point we really must cap the cargo. Previously this
-				 * was a strict 4095, but now we'll have a less strict, but
-				 * increasingly aggressive truncation of the amount of cargo. */
-				static const uint WAITING_CARGO_THRESHOLD  = 1 << 12;
-				static const uint WAITING_CARGO_CUT_FACTOR = 1 <<  6;
-				static const uint MAX_WAITING_CARGO        = 1 << 15;
+			/* We also remove goods that are above a certain cap. */
+			static const uint WAITING_CARGO_THRESHOLD  = 1 << 12;
+			static const uint WAITING_CARGO_CUT_FACTOR = 1 <<  6;
+			static const uint MAX_WAITING_CARGO        = 1 << 15;
 
-				if (waiting > WAITING_CARGO_THRESHOLD) {
-					uint difference = waiting - WAITING_CARGO_THRESHOLD;
-					waiting -= (difference / WAITING_CARGO_CUT_FACTOR);
+			/* The number of station tiles might affect cargo truncation. */
+			uint normalised_waiting_cargo_threshold = WAITING_CARGO_THRESHOLD;
+			if (_settings_game.difficulty.station_rating_mode == SRM_IMPROVED) {
+				if (st->station_tiles > 1) normalised_waiting_cargo_threshold *= st->station_tiles;
+				normalised_waiting_cargo_threshold /= STATION_SIZE_FACTOR;
+			}
 
-					waiting = std::min(waiting, MAX_WAITING_CARGO);
-					waiting_changed = true;
-				}
+			if (waiting > normalised_waiting_cargo_threshold) {
+				const uint difference = waiting - normalised_waiting_cargo_threshold;
+				waiting -= (difference / WAITING_CARGO_CUT_FACTOR);
 
-				/* We can't truncate cargo that's already reserved for loading.
-				 * Thus StoredCount() here. */
-				if (waiting_changed && waiting < (ge->HasData() ? ge->GetData().cargo.AvailableCount() : 0)) {
-					/* Feed back the exact own waiting cargo at this station for the
-					 * next rating calculation. */
-					ge->max_waiting_cargo = 0;
+				waiting = std::min(waiting, MAX_WAITING_CARGO);
+				waiting_changed = true;
+			}
 
-					TruncateCargo(cs, ge, ge->GetData().cargo.AvailableCount() - waiting);
-				} else {
-					/* If the average number per next hop is low, be more forgiving. */
-					ge->max_waiting_cargo = waiting_avg;
-				}
+			/* We can't truncate cargo that's already reserved for loading.
+			 * Thus StoredCount() here. */
+			if (waiting_changed && waiting < (ge->HasData() ? ge->GetData().cargo.AvailableCount() : 0)) {
+				/* Feed back the exact own waiting cargo at this station for the
+				 * next rating calculation. */
+				ge->max_waiting_cargo = 0;
+
+				TruncateCargo(cs, ge, ge->GetData().cargo.AvailableCount() - waiting);
+			} else {
+				/* If the average number per next hop is low, be more forgiving. */
+				ge->max_waiting_cargo = waiting_avg;
 			}
 		}
 	}
