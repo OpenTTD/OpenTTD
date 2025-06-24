@@ -28,11 +28,11 @@ TEST_CASE("FlatSet - basic")
 	CHECK(set.empty());
 
 	/* Insert in a random order,. */
-	set.insert(values[1]);
-	set.insert(values[2]);
-	set.insert(values[4]);
-	set.insert(values[3]);
-	set.insert(values[0]);
+	CHECK(set.insert(values[1]).second);
+	CHECK(set.insert(values[2]).second);
+	CHECK(set.insert(values[4]).second);
+	CHECK(set.insert(values[3]).second);
+	CHECK(set.insert(values[0]).second);
 	CHECK(set.size() == 5);
 	CHECK(set.contains(values[0]));
 	CHECK(set.contains(values[1]));
@@ -42,7 +42,7 @@ TEST_CASE("FlatSet - basic")
 	CHECK(std::ranges::equal(set, values));
 
 	/* Test inserting an existing value does not affect order. */
-	set.insert(values[1]);
+	CHECK_FALSE(set.insert(values[1]).second);
 	CHECK(set.size() == 5);
 	CHECK(set.contains(values[0]));
 	CHECK(set.contains(values[1]));
@@ -52,16 +52,16 @@ TEST_CASE("FlatSet - basic")
 	CHECK(std::ranges::equal(set, values));
 
 	/* Insert a value multiple times. */
-	set.insert(0);
-	set.insert(0);
-	set.insert(0);
+	CHECK(set.insert(0).second);
+	CHECK_FALSE(set.insert(0).second);
+	CHECK_FALSE(set.insert(0).second);
 	CHECK(set.size() == 6);
 	CHECK(set.contains(0));
 
 	/* Remove a value multiple times. */
-	set.erase(0);
-	set.erase(0);
-	set.erase(0);
+	CHECK(set.erase(0) == 1);
+	CHECK(set.erase(0) == 0);
+	CHECK(set.erase(0) == 0);
 	CHECK(set.size() == 5);
 	CHECK(!set.contains(0));
 }

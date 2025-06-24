@@ -23,13 +23,16 @@ public:
 	using const_iterator = std::vector<Tkey>::const_iterator;
 
 	/**
-	 * Insert a key into the set.
+	 * Insert a key into the set, if it does not already exist.
 	 * @param key Key to insert.
+	 * @return A pair consisting of an iterator to the inserted element (or to the element that prevented the
+	 *         insertion), and a bool value to true iff the insertion took place.
 	 */
-	void insert(const Tkey &key)
+	std::pair<const_iterator, bool> insert(const Tkey &key)
 	{
 		auto it = std::ranges::lower_bound(this->data, key, Tcompare{});
-		if (it == std::end(this->data) || *it != key) this->data.emplace(it, key);
+		if (it == std::end(this->data) || *it != key) return {this->data.emplace(it, key), true};
+		return {it, false};
 	}
 
 	/**
