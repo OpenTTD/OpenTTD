@@ -403,6 +403,8 @@ enum SaveLoadVersion : uint16_t {
 	SLV_FIX_SCC_ENCODED_NEGATIVE,           ///< 353  PR#14049 Fix encoding of negative parameters.
 	SLV_ORDERS_OWNED_BY_ORDERLIST,          ///< 354  PR#13948 Orders stored in OrderList, pool removed.
 
+	SLV_FACE_STYLES,                        ///< 355  PR#14319 Addition of face styles, replacing gender and ethnicity.
+
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
 

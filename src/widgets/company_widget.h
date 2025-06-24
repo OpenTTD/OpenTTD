@@ -97,8 +97,6 @@ enum SelectCompanyLiveryWidgets : WidgetID {
 
 /**
  * Widgets of the #SelectCompanyManagerFaceWindow class.
- * Do not change the order of the widgets from WID_SCMF_HAS_MOUSTACHE_EARRING to WID_SCMF_GLASSES_R,
- * this order is needed for the WE_CLICK event of DrawFaceStringLabel().
  */
 enum SelectCompanyManagerFaceWidgets : WidgetID {
 	WID_SCMF_CAPTION,                    ///< Caption of window.
@@ -106,65 +104,18 @@ enum SelectCompanyManagerFaceWidgets : WidgetID {
 	WID_SCMF_SELECT_FACE,                ///< Select face.
 	WID_SCMF_CANCEL,                     ///< Cancel.
 	WID_SCMF_ACCEPT,                     ///< Accept.
-	WID_SCMF_MALE,                       ///< Male button in the simple view.
-	WID_SCMF_FEMALE,                     ///< Female button in the simple view.
-	WID_SCMF_MALE2,                      ///< Male button in the advanced view.
-	WID_SCMF_FEMALE2,                    ///< Female button in the advanced view.
 	WID_SCMF_SEL_LOADSAVE,               ///< Selection to display the load/save/number buttons in the advanced view.
-	WID_SCMF_SEL_MALEFEMALE,             ///< Selection to display the male/female buttons in the simple view.
-	WID_SCMF_SEL_PARTS,                  ///< Selection to display the buttons for setting each part of the face in the advanced view.
+	WID_SCMF_SEL_PARTS, ///< Selection to display the buttons for setting each part of the face in the advanced view.
+	WID_SCMF_SEL_RESIZE, ///< Selection to display the resize button.
 	WID_SCMF_RANDOM_NEW_FACE,            ///< Create random new face.
 	WID_SCMF_TOGGLE_LARGE_SMALL_BUTTON,  ///< Toggle for large or small.
 	WID_SCMF_FACE,                       ///< Current face.
 	WID_SCMF_LOAD,                       ///< Load face.
 	WID_SCMF_FACECODE,                   ///< Get the face code.
 	WID_SCMF_SAVE,                       ///< Save face.
-	WID_SCMF_HAS_MOUSTACHE_EARRING_TEXT, ///< Text about moustache and earring.
-	WID_SCMF_TIE_EARRING_TEXT,           ///< Text about tie and earring.
-	WID_SCMF_LIPS_MOUSTACHE_TEXT,        ///< Text about lips and moustache.
-	WID_SCMF_HAS_GLASSES_TEXT,           ///< Text about glasses.
-	WID_SCMF_HAIR_TEXT,                  ///< Text about hair.
-	WID_SCMF_EYEBROWS_TEXT,              ///< Text about eyebrows.
-	WID_SCMF_EYECOLOUR_TEXT,             ///< Text about eyecolour.
-	WID_SCMF_GLASSES_TEXT,               ///< Text about glasses.
-	WID_SCMF_NOSE_TEXT,                  ///< Text about nose.
-	WID_SCMF_CHIN_TEXT,                  ///< Text about chin.
-	WID_SCMF_JACKET_TEXT,                ///< Text about jacket.
-	WID_SCMF_COLLAR_TEXT,                ///< Text about collar.
-	WID_SCMF_ETHNICITY_EUR,              ///< Text about ethnicity european.
-	WID_SCMF_ETHNICITY_AFR,              ///< Text about ethnicity african.
-	WID_SCMF_HAS_MOUSTACHE_EARRING,      ///< Has moustache or earring.
-	WID_SCMF_HAS_GLASSES,                ///< Has glasses.
-	WID_SCMF_EYECOLOUR_L,                ///< Eyecolour left.
-	WID_SCMF_EYECOLOUR,                  ///< Eyecolour.
-	WID_SCMF_EYECOLOUR_R,                ///< Eyecolour right.
-	WID_SCMF_CHIN_L,                     ///< Chin left.
-	WID_SCMF_CHIN,                       ///< Chin.
-	WID_SCMF_CHIN_R,                     ///< Chin right.
-	WID_SCMF_EYEBROWS_L,                 ///< Eyebrows left.
-	WID_SCMF_EYEBROWS,                   ///< Eyebrows.
-	WID_SCMF_EYEBROWS_R,                 ///< Eyebrows right.
-	WID_SCMF_LIPS_MOUSTACHE_L,           ///< Lips / Moustache left.
-	WID_SCMF_LIPS_MOUSTACHE,             ///< Lips / Moustache.
-	WID_SCMF_LIPS_MOUSTACHE_R,           ///< Lips / Moustache right.
-	WID_SCMF_NOSE_L,                     ///< Nose left.
-	WID_SCMF_NOSE,                       ///< Nose.
-	WID_SCMF_NOSE_R,                     ///< Nose right.
-	WID_SCMF_HAIR_L,                     ///< Hair left.
-	WID_SCMF_HAIR,                       ///< Hair.
-	WID_SCMF_HAIR_R,                     ///< Hair right.
-	WID_SCMF_JACKET_L,                   ///< Jacket left.
-	WID_SCMF_JACKET,                     ///< Jacket.
-	WID_SCMF_JACKET_R,                   ///< Jacket right.
-	WID_SCMF_COLLAR_L,                   ///< Collar left.
-	WID_SCMF_COLLAR,                     ///< Collar.
-	WID_SCMF_COLLAR_R,                   ///< Collar right.
-	WID_SCMF_TIE_EARRING_L,              ///< Tie / Earring left.
-	WID_SCMF_TIE_EARRING,                ///< Tie / Earring.
-	WID_SCMF_TIE_EARRING_R,              ///< Tie / Earring right.
-	WID_SCMF_GLASSES_L,                  ///< Glasses left.
-	WID_SCMF_GLASSES,                    ///< Glasses.
-	WID_SCMF_GLASSES_R,                  ///< Glasses right.
+	WID_SCMF_STYLE, ///< Style selector widget.
+	WID_SCMF_PARTS, ///< Face configuration parts widget.
+	WID_SCMF_PARTS_SCROLLBAR, ///< Scrollbar for configuration parts widget.
 };
 
 /** Widgets of the #CompanyInfrastructureWindow class. */
