@@ -2186,8 +2186,6 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... save
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignorér Basis Grafiksæt '{STRING}': ikke fundet
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorere Basis Lydsæt '{STRING}': ikke fundet
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorere Basis Musiksæt '{STRING}': ikke fundet
-STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Utilstrækkelig hukommelse
-STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Allokering af {BYTES} spritecache fejlede. Spritecachen blev indskrænket til {BYTES}. Dette vil sænke OpenTTDs ydelse. Du kan forsøge at slå 32bpp grafik og/eller zoom-ind niveauer for at reducere hukommelseskravet
 
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Fejl med grafikindstillinger...
@@ -2832,6 +2830,7 @@ STR_PICKER_MODE_USED                                            :Brugt
 STR_PICKER_MODE_USED_TOOLTIP                                    :Skift til kun at vise eksisterende elementer
 STR_PICKER_MODE_SAVED                                           :Gemt
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Skift til kun at vise gemte elementer
+
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Vælg en stationsklasse, der skal vises
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Vælg en stationstype at bygge. Ctrl+klik for at tilføje eller fjerne i gemte elementer

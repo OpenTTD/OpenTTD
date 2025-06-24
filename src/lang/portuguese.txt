@@ -2187,8 +2187,6 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... form
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... a ignorar conjunto de Gráficos Base '{STRING}': não foi encontrado
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... a ignorar conjunto Base de Sons '{STRING}': não foi encontrado
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... a ignorar conjunto Musica Base '{STRING}': não foi encontrado
-STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Falta de memória
-STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Falha a alocar {BYTES} da cache de elementos visuais. Esta cache foi reduzida para {BYTES}. Isto irá reduzir a performance do OpenTTD. Para baixar os requisitos de memória poderá desabilitar gráficos de 32bpp e/ou níveis de zoom
 
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Erro com as definições gráficas...
@@ -2833,6 +2831,7 @@ STR_PICKER_MODE_USED                                            :Usado
 STR_PICKER_MODE_USED_TOOLTIP                                    :Alterna a exibição só de itens existentes
 STR_PICKER_MODE_SAVED                                           :Guardado
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Alterna a exibição só de itens guardados
+
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Selecionar uma classe de estação para mostrar
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Escolher um tipo de estação para construir. Ctrl+Clique para adicionar ou remover nos itens guardados

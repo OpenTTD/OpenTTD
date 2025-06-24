@@ -1149,7 +1149,6 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :некомпа�
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :непознат
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... ниво на компресија '{STRING}' не е валидна
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... спаси играта формат '{STRING}' не е достапен. се врати на '{STRING}'
-STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Нема доволно меморија
 
 # Video initalization errors
 
@@ -1291,6 +1290,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Изгр
 # Rail waypoint construction window
 
 # Rail station construction window
+
 
 
 

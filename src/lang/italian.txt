@@ -2197,8 +2197,6 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... form
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignorato pacchetto grafico di base '{STRING}': non trovato
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorato pacchetto sonoro di base '{STRING}': non trovato
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorato pachetto musicale di base '{STRING}': non trovato
-STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Memoria esaurita
-STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Impossibile allocare {BYTES} della cache degli sprite. La cache degli sprite è stata limitata a {BYTES}; questo comporterà una riduzione delle prestazioni di OpenTTD. Per ridurre la quantità di memoria richiesta è possibile disabilitare la grafica a 32 bit e/o i livelli di zoom
 
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Errore nelle impostazioni video...
@@ -2844,6 +2842,7 @@ STR_PICKER_MODE_USED                                            :Usato
 STR_PICKER_MODE_USED_TOOLTIP                                    :Attiva/disattiva la visualizzazione solo degli elementi esistenti
 STR_PICKER_MODE_SAVED                                           :Salvato
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Attiva/disattiva la visualizzazione solo degli elementi salvati
+
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Seleziona una classe di stazioni da visualizzare
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Seleziona un tipo di stazione da costruire. Ctrl+Click per aggiungere o rimuovere dagli oggetti salvati

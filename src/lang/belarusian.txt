@@ -2463,8 +2463,6 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... фа
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... набор ґрафікі "{STRING}" ня знойдзены
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... набор гукаў "{STRING}" ня знойдзены
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... набор музыкі "{STRING}" ня знойдзены
-STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Недахоп апэратыўнай памяці
-STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Не атрымалася вылучыць {BYTES} для кэша спрайтаў. Памер кэша зніжаны да {BYTES}. Гэта адмоўна адаб'ецца на прадукцыйнасьці OpenTTD. Каб зьменшыць выдаткі памяці, адключыце 32-бітную ґрафіку й зьменшыце максімальны ўзровень набліжэньня.
 
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Памылка ў наладках графікі...
@@ -3110,6 +3108,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Даўж
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Выберыце даўжыню станцыйных каляінаў
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Участак
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Пабудаваць станцыю на выбраным участку зямлі
+
 
 
 

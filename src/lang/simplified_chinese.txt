@@ -2186,8 +2186,6 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}……�
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}……正忽略基础图形组“{STRING}”：未找到
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}……正忽略基础音效组“{STRING}”：未找到
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}……正忽略基础音乐组“{STRING}”：未找到
-STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}内存不足
-STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}无法分配 {BYTES} 的 Sprite 缓存。Sprite 缓存的大小已降至 {BYTES}。OpenTTD 的性能将受到影响。请尝试停用 32bpp 图形、减少放大倍数，以降低内存需求
 
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}图形设置错误……
@@ -2832,6 +2830,7 @@ STR_PICKER_MODE_USED                                            :已使用
 STR_PICKER_MODE_USED_TOOLTIP                                    :切换为仅显示现有的项目
 STR_PICKER_MODE_SAVED                                           :已保存
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :切换为仅显示已保存的项目
+
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :选择显示的车站类别
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :选择建造的车站类型。按住 <Ctrl> 键操作以保存或删除当前项目

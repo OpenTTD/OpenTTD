@@ -2145,8 +2145,6 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... ludo
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignoras Bazan Grafikaron '{STRING}': ne trovebla
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoras Bazan Sonaron '{STRING}': ne trovebla
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoras Bazan Muzikaron '{STRING}': ne trovebla
-STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Memormanko
-STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Asignado de {BYTES} por bildeta kaŝmemoro malsukcesis. La bildeta kaŝmemoro estis reduktita al {BYTES}. Tio ĉi igos OpenTTD funkcii pli malrapide. Por malpliigi la memorbezonon vi povas provi malŝalti grafikon kun 32 bitoj rastrumere kaj/aŭ zom-nivelojn.
 
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Eraro pri videaj agordoj...
@@ -2749,6 +2747,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Platform
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Elektu longon de stacidomo
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Tiru k metu
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Tiru por konstrui stacidomon
+
 
 
 

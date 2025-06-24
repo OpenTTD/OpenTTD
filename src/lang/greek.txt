@@ -2279,8 +2279,6 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... ο �
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... αγνόηση βασικού σετ γραφικών «{STRING}»: δεν βρέθηκε
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... αγνόηση βασικού σετ ήχων «{STRING}»: δεν βρέθηκε
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... αγνόηση βασικού σετ μουσικής «{STRING}»: δεν βρέθηκε
-STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Έλληψη μνήμης
-STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Η κατανομή {BYTES} του spritecache απέτυχε. Το spritecache μειώθηκε σε {BYTES}. Αυτό θα μειώσει την απόδοση του OpenTTD. Για να μειώσετε τις ανάγκες μνήμς μπορείτε να απενεργοποιήσετε τα γραφικά 32bpp graphics ή/και τα επίπεδα μεγέθυνσης
 
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Πρόβλημα με τις ρυθμίσεις βίντεο...
@@ -2925,6 +2923,7 @@ STR_PICKER_MODE_USED                                            :Χρησιμο�
 STR_PICKER_MODE_USED_TOOLTIP                                    :Εναλλαγή εμφάνισης μόνο υπαρχόντων στοιχείων
 STR_PICKER_MODE_SAVED                                           :Αποθηκεύτηκε
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Εναλλαγή εμφάνισης μόνο αποθηκευμένων στοιχείων
+
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Επιλογή κατηγορίας σταθμού για εμφάνιση
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Επιλογή τύπου σταθμού για κατασκευή. Ctrl+κλικ για προσθήκη σε ή αφαίρεση από αποθηκευμένα στοιχεία

@@ -1868,8 +1868,6 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... ร�
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ไม่สนใน Base Graphics set '{STRING}': หาไม่พบ
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ไม่สนใน Base Sounds set '{STRING}': หาไม่พบ
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ไม่สนใจ Base Music set '{STRING}': หาไม่พบ
-STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}หน่วยความจำไม่เพียงพอ
-STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}การกำหนดพื้นที่ {BYTES} ของ Spritecache ล้มเหลว Spritecache ได้ลดลง {BYTES}. นี่คือการทำให้ประสิทธิภาพของเกม OpenTTD ลดลง. เพื่อลดความต้องการของหน่วยความจำ ให้ทำการปิดการใช้งานระบบ 32bpp graphics
 
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... ไม่พบ GPU ที่รองรับ การเร่งฮาร์ดแวร์ถูกยกเลิกแล้ว
@@ -2409,6 +2407,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}คว�
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}เลือกความยาวของชานชาลา
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}ลากและวาง
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}สร้างสถานีโดยใช้การลากและวาง
+
 
 
 
