@@ -143,7 +143,7 @@ const SaveLoadCompat _settings_sl_compat[] = {
 	SLC_VAR("economy.fund_roads"),
 	SLC_VAR("economy.give_money"),
 	SLC_VAR("game_creation.snow_line_height"),
-	SLC_VAR("game_creation.snow_coverage"),
+	SLC_NULL(1, SaveLoadVersion::MapgenSettingsRevamp, SaveLoadVersion::TableChunks),
 	SLC_VAR("game_creation.desert_coverage"),
 	SLC_NULL(4, SaveLoadVersion::MinVersion, SaveLoadVersion::ReorderUnmovableRemoveReserved),
 	SLC_VAR("game_creation.starting_year"),
