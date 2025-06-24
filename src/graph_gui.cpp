@@ -1612,7 +1612,9 @@ CompanyID PerformanceRatingDetailWindow::company = CompanyID::Invalid();
 struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 	static inline constexpr StringID RANGE_LABELS[] = {
 		STR_GRAPH_INDUSTRY_RANGE_PRODUCED,
-		STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED
+		STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED,
+		STR_GRAPH_INDUSTRY_RANGE_DELIVERED,
+		STR_GRAPH_INDUSTRY_RANGE_WAITING,
 	};
 
 	static inline CargoTypes excluded_cargo_types{};
@@ -1627,6 +1629,10 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 		this->draw_dates = !TimerGameEconomy::UsingWallclockUnits();
 		this->ranges = RANGE_LABELS;
 
+		const Industry *i = Industry::Get(window_number);
+		if (!i->IsCargoProduced()) this->masked_range = (1U << 0) | (1U << 1);
+		if (!i->IsCargoAccepted()) this->masked_range = (1U << 2) | (1U << 3);
+
 		this->InitializeWindow(window_number, STR_GRAPH_LAST_24_MINUTES_TIME_LABEL);
 	}
 
@@ -1634,6 +1640,9 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 	{
 		CargoTypes cargo_types{};
 		const Industry *i = Industry::Get(window_number);
+		for (const auto &a : i->accepted) {
+			if (IsValidCargoType(a.cargo)) SetBit(cargo_types, a.cargo);
+		}
 		for (const auto &p : i->produced) {
 			if (IsValidCargoType(p.cargo)) SetBit(cargo_types, p.cargo);
 		}
@@ -1647,7 +1656,7 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_GRAPH_CAPTION) return GetString(STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION, this->window_number);
+		if (widget == WID_GRAPH_CAPTION) return GetString(STR_GRAPH_INDUSTRY_CAPTION, this->window_number);
 
 		return this->Window::GetWidgetString(widget, stringid);
 	}
@@ -1691,6 +1700,28 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 			transported.dash = 2;
 
 			FillFromHistory<GRAPH_NUM_MONTHS>(p.history, Filler{produced, &Industry::ProducedHistory::production}, Filler{transported, &Industry::ProducedHistory::transported});
+		}
+
+		for (const auto &a : i->accepted) {
+			if (!IsValidCargoType(a.cargo)) continue;
+			const CargoSpec *cs = CargoSpec::Get(a.cargo);
+
+			this->data.reserve(this->data.size() + 2);
+
+			DataSet &accepted = this->data.emplace_back();
+			accepted.colour = cs->legend_colour;
+			accepted.exclude_bit = cs->Index();
+			accepted.range_bit = 2;
+			accepted.dash = 1;
+
+			DataSet &waiting = this->data.emplace_back();
+			waiting.colour = cs->legend_colour;
+			waiting.exclude_bit = cs->Index();
+			waiting.range_bit = 3;
+			waiting.dash = 4;
+
+			if (a.history == nullptr) continue;
+			FillFromHistory<GRAPH_NUM_MONTHS>(*a.history, Filler{accepted, &Industry::AcceptedHistory::accepted}, Filler{waiting, &Industry::AcceptedHistory::waiting});
 		}
 
 		this->SetDirty();
