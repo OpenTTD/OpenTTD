@@ -405,6 +405,7 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_FACE_STYLES,                        ///< 355  PR#14319 Addition of face styles, replacing gender and ethnicity.
 	SLV_INDUSTRY_NUM_VALID_HISTORY,         ///< 356  PR#14416 Store number of valid history records for industries.
+	SLV_SNOW_LINE_LEVEL,                    ///< 357  PR#14428 Replacement of snow coverage setting with snow line level setting
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
