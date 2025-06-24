@@ -4019,7 +4019,18 @@ static void UpdateStationRating(Station *st)
 				int b = ge->last_speed - 85;
 				if (b >= 0) rating += b >> 2;
 
-				uint8_t waittime = ge->time_since_pickup;
+				uint waittime = ge->time_since_pickup;
+
+				/* The cargo's time sensitivity might affect how much we care about wait time. */
+				if (_settings_game.difficulty.station_rating_mode == SRM_IMPROVED) {
+					/** Calculate sensitivity from the combination of the "time until penalty is applied" and "length of penalty interval."
+					 *  Scale the result to a suitable amount, so that passengers are 2.7 times more sensitive, while coal is 1/4 as sensitive as in TTD.
+					 */
+					const uint transit_sensitivity = std::max(1, cs->transit_periods[0] + cs->transit_periods[1]);
+					const uint WAIT_TIME_SCALAR = 32;
+					waittime = (waittime * WAIT_TIME_SCALAR) / transit_sensitivity;
+				}
+
 				if (st->last_vehicle_type == VEH_SHIP) waittime >>= 2;
 				if (waittime <= 21) rating += 25;
 				if (waittime <= 12) rating += 25;
