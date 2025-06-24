@@ -1360,7 +1360,7 @@ struct BuildVehicleWindow : Window {
 	/* Figure out what train EngineIDs to put in the list */
 	void GenerateBuildTrainList(GUIEngineList &list)
 	{
-		std::vector<EngineID> variants;
+		FlatSet<EngineID> variants;
 		EngineID sel_id = EngineID::Invalid();
 		size_t num_engines = 0;
 
@@ -1395,8 +1395,7 @@ struct BuildVehicleWindow : Window {
 
 			/* Add all parent variants of this engine to the variant list */
 			EngineID parent = e->info.variant_id;
-			while (parent != EngineID::Invalid()) {
-				variants.push_back(parent);
+			while (parent != EngineID::Invalid() && variants.insert(parent).second) {
 				parent = Engine::Get(parent)->info.variant_id;
 			}
 
@@ -1543,11 +1542,10 @@ struct BuildVehicleWindow : Window {
 		this->FilterEngineList();
 
 		/* ensure primary engine of variant group is in list after filtering */
-		std::vector<EngineID> variants;
+		FlatSet<EngineID> variants;
 		for (const auto &item : this->eng_list) {
 			EngineID parent = item.variant_id;
-			while (parent != EngineID::Invalid()) {
-				variants.push_back(parent);
+			while (parent != EngineID::Invalid() && variants.insert(parent).second) {
 				parent = Engine::Get(parent)->info.variant_id;
 			}
 		}
