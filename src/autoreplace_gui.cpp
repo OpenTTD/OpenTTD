@@ -122,7 +122,7 @@ class ReplaceVehicleWindow : public Window {
 	 */
 	void GenerateReplaceVehList(bool draw_left)
 	{
-		std::vector<EngineID> variants;
+		FlatSet<EngineID> variants;
 		EngineID selected_engine = EngineID::Invalid();
 		VehicleType type = this->window_number;
 		uint8_t side = draw_left ? 0 : 1;
@@ -161,8 +161,7 @@ class ReplaceVehicleWindow : public Window {
 
 			if (side == 1) {
 				EngineID parent = e->info.variant_id;
-				while (parent != EngineID::Invalid()) {
-					variants.push_back(parent);
+				while (parent != EngineID::Invalid() && variants.insert(parent).second) {
 					parent = Engine::Get(parent)->info.variant_id;
 				}
 			}
