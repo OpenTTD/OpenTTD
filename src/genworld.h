@@ -47,6 +47,8 @@ static const uint CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY = 4; ///< Value for custom 
 static const uint CUSTOM_SEA_LEVEL_MIN_PERCENTAGE = 1;    ///< Minimum percentage a user can specify for custom sea level.
 static const uint CUSTOM_SEA_LEVEL_MAX_PERCENTAGE = 90;   ///< Maximum percentage a user can specify for custom sea level.
 
+static const uint CUSTOM_SNOW_LEVEL_NUMBER = 5; ///< Value for custom snow level in game creation settings.
+
 static constexpr uint MAP_HEIGHT_LIMIT_ORIGINAL = 15; ///< Original map height limit.
 
 static const uint MAP_HEIGHT_LIMIT_AUTO_MINIMUM = 30; ///< When map height limit is auto, make this the lowest possible map height limit.

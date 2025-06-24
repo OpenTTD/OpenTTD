@@ -66,6 +66,7 @@
 #include "../timer/timer_game_economy.h"
 #include "../timer/timer_game_tick.h"
 #include "../picker_func.h"
+#include "../genworld.h"
 
 #include "saveload_internal.h"
 
@@ -3406,6 +3407,11 @@ bool AfterLoadGame()
 		} else {
 			c->freegroups.UseID(g->number);
 		}
+	}
+
+	if (IsSavegameVersionBefore(SLV_SNOW_LINE_LEVEL)) {
+		/* The snow line level replaces the snow coverage but the two do not map very well. */
+		_settings_game.game_creation.snow_line_level = CUSTOM_SNOW_LEVEL_NUMBER;
 	}
 
 	AfterLoadLabelMaps();

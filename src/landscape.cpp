@@ -1591,12 +1591,43 @@ static uint CalculateCoverageLine(uint coverage, uint edge_multiplier)
 }
 
 /**
+ * Get current maximum height of the map.
+ * @return The maximum height of the map.
+ */
+static uint GetMapMaxHeight()
+{
+	uint max_height = 0;
+
+	for (const auto tile : Map::Iterate()) {
+		uint h = TileHeight(tile);
+		if (h > max_height) {
+			max_height = h;
+		}
+	}
+
+	return max_height;
+}
+
+/**
  * Calculate the line from which snow begins.
  */
 static void CalculateSnowLine()
 {
-	/* We do not have snow sprites on coastal tiles, so never allow "1" as height. */
-	_settings_game.game_creation.snow_line_height = std::max(CalculateCoverageLine(_settings_game.game_creation.snow_coverage, 0), 2u);
+	/* If snow_line_level is custom, then snow_line_height is already set
+	 * otherwise we have to calculate it. */
+	if (_settings_game.game_creation.snow_line_level != CUSTOM_SNOW_LEVEL_NUMBER) {
+		uint min_snow_line_height = 4;                              // Not too low to make room for farms.
+		uint max_snow_line_height = GetMapMaxHeight() - 2;          // Not too high to make room for forests.
+
+		uint max_height_diff = min_snow_line_height < max_snow_line_height
+			? max_snow_line_height - min_snow_line_height
+			: 0;
+
+		/* snow_line_level goes up to 4 so we divide by 5 to get a maximum ratio of 80%. */
+		uint height_diff = RoundDivSU(max_height_diff * _settings_game.game_creation.snow_line_level, 5);
+
+		_settings_game.game_creation.snow_line_height = min_snow_line_height + height_diff;
+	}
 }
 
 /**

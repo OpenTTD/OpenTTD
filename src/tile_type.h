@@ -33,7 +33,6 @@ static constexpr uint MIN_SNOWLINE_HEIGHT = 2;                     ///< Minimum 
 static constexpr uint DEF_SNOWLINE_HEIGHT = 10;                    ///< Default snowline height
 static constexpr uint MAX_SNOWLINE_HEIGHT = (MAX_TILE_HEIGHT - 2); ///< Maximum allowed snowline height
 
-static constexpr uint DEF_SNOW_COVERAGE = 40;                      ///< Default snow coverage.
 static constexpr uint DEF_DESERT_COVERAGE = 50;                    ///< Default desert coverage.
 
 
