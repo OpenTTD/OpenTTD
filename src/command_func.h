@@ -165,6 +165,17 @@ public:
 	}
 
 	/**
+	 * Shortcut to query a command with its flags to test if it will succeed.
+	 * @param args Parameters for the command.
+	 * @return cost of the command.
+	 */
+	static CommandCost Query(Targs... args)
+	{
+		Tret res = Do(CommandFlagsToDCFlags(GetCommandFlags<Tcmd>()), args...);
+		return ExtractCommandCost(res);
+	}
+
+	/**
 	 * Shortcut for the long Post when not using a callback.
 	 * @param err_message Message prefix to show on error
 	 * @param args Parameters for the command
