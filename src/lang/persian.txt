@@ -1866,10 +1866,6 @@ STR_FACE_CAPTION                                                :{WHITE}انتخ
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}لغو انتخاب صورت جدید
 STR_FACE_OK_TOOLTIP                                             :{BLACK}تایید انتخاب صورت جدید
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}مرد
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}انتخاب صورت مردانه
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}زن
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}انتخاب صورت زنانه
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}صورت جدید
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}تولید صورت جدید با تنظیمات تصادفی
 STR_FACE_ADVANCED                                               :{BLACK}پیشرفته
@@ -1887,36 +1883,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}صورت
 STR_FACE_SAVE                                                   :{BLACK}ذخیره
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}ذخیره صورت دلخواه
 STR_FACE_SAVE_DONE                                              :{WHITE}این صورت به عنوان صورت دلخواه شما در فایل تنظیمات بازی ذخیره می گردد
-STR_FACE_EUROPEAN                                               :{BLACK}اروپایی
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}انتخاب صورت های اروپایی
-STR_FACE_AFRICAN                                                :{BLACK}آفریقایی
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}انتخاب صورت های آفریقایی
 STR_FACE_YES                                                    :بله
 STR_FACE_NO                                                     :خیر
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}فعال کردن سبیل و یا گوشواره
 STR_FACE_HAIR                                                   :مو:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}تغییر مو
 STR_FACE_EYEBROWS                                               :ابروها:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}تغییر ابروها
 STR_FACE_EYECOLOUR                                              :رنگ چشم:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}تغییر رنگ چشم
 STR_FACE_GLASSES                                                :عینک:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}فعال کردن عینک
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}تغییر عینک
 STR_FACE_NOSE                                                   :بینی:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}تغییر بینی
 STR_FACE_LIPS                                                   :لب ها:
 STR_FACE_MOUSTACHE                                              :سبیل:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}تغییر لب ها و یا سبیل
 STR_FACE_CHIN                                                   :چانه:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}تغییر چانه
 STR_FACE_JACKET                                                 :کت:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}تغییر کت
 STR_FACE_COLLAR                                                 :یقه:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}تغییر یقه
 STR_FACE_TIE                                                    :کراوات:
 STR_FACE_EARRING                                                :گوشواره:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}تغییر کراوات یا گوشواره
 
 # Matches ServerGameType
 ###length 3

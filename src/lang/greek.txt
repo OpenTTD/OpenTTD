@@ -2411,12 +2411,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Εμπορικ�
 STR_FACE_CAPTION                                                :{WHITE}Επιλογή Προσώπου
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Ακύρωση επιλογής νέου προσώπου
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Αποδοχή νέου προσώπου
-STR_FACE_RANDOM                                                 :{BLACK}Τυχαίος
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Αρσενικό
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Επιλογή αρσενικών προσώπων
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Θηλυκό
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Επιλογή θηλυκών προσώπων
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Νέο Πρόσωπο
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Δημιουργία τυχαίου προσώπου
 STR_FACE_ADVANCED                                               :{BLACK}Προχωρημένη
@@ -2434,36 +2429,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Δεν �
 STR_FACE_SAVE                                                   :{BLACK}Αποθήκευση
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Αποθήκευση αγαπημένου προσώπου
 STR_FACE_SAVE_DONE                                              :{WHITE}Αυτό το πρόσωπο θα αποθηκευτεί ως αγαπημένο στο αρχείο ρυθμίσεων του OpenTTD
-STR_FACE_EUROPEAN                                               :{BLACK}Ευρωπαϊκό
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Επιλογή ευρωπαϊκών προσώπων
-STR_FACE_AFRICAN                                                :{BLACK}Αφρικάνικο
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Επιλογή αφρικάνικων προσώπων
 STR_FACE_YES                                                    :Ναι
 STR_FACE_NO                                                     :Όχι
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Ενεργοποίηση μουστακιού ή σκουλαρικιού
 STR_FACE_HAIR                                                   :Μαλλιά:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Αλλάξτε μαλλιά
 STR_FACE_EYEBROWS                                               :Φρύδια:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Αλλάξτε φρύδια
 STR_FACE_EYECOLOUR                                              :Χρώμα ματιών:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Αλλαγή χρώμα ματιών
 STR_FACE_GLASSES                                                :Γυαλιά:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Βάλτε γυαλιά
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Αλλάξτε γυαλιά
 STR_FACE_NOSE                                                   :Μύτη:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Αλλάξτε μύτη
 STR_FACE_LIPS                                                   :Χείλια:
 STR_FACE_MOUSTACHE                                              :Μουστάκι:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Αλλάξτε χείλια ή μουστάκι
 STR_FACE_CHIN                                                   :Πηγούνι:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Αλλάξτε πηγούνι
 STR_FACE_JACKET                                                 :Σακάκι:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Αλλάξτε σακάκι
 STR_FACE_COLLAR                                                 :Γιακάς:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Αλλαγή γιακά
 STR_FACE_TIE                                                    :Γραβάτα:
 STR_FACE_EARRING                                                :Σκουλαρίκι:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Αλλαγή γραβάτας ή σκουλαρικιού
 
 # Matches ServerGameType
 ###length 3
@@ -2924,6 +2903,10 @@ STR_PICKER_MODE_USED_TOOLTIP                                    :Εναλλαγ�
 STR_PICKER_MODE_SAVED                                           :Αποθηκεύτηκε
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Εναλλαγή εμφάνισης μόνο αποθηκευμένων στοιχείων
 
+STR_PICKER_PREVIEW_SHRINK                                       :-
+STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Μείωση του ύψους των εικόνων προεπισκόπισης. Ctrl+κλικ για μείωση στο ελάχιστο
+STR_PICKER_PREVIEW_EXPAND                                       :+
+STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Αύξηση του ύψους των εικόνων προεπισκόπισης. Ctrl+κλικ για αύξηση στο μέγιστο
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Επιλογή κατηγορίας σταθμού για εμφάνιση
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Επιλογή τύπου σταθμού για κατασκευή. Ctrl+κλικ για προσθήκη σε ή αφαίρεση από αποθηκευμένα στοιχεία
@@ -2968,7 +2951,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Προεπιλ�
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Επιλογή Σηματοδότη
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Εναλλαγή εμφάνισης προχωρημένων τύπων σηματοδοτών
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Σηματοδότες Τμήματος (σηματοφόρος){}Αυτός είναι ο πιο βασικός τύπος σηματοδότη, επιτρέποντας μόνο ένα τρένο να βρίσκεται σε κάθε τμήμα κάθε φορά
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Σηματοδότης-Εισόδου (σηματοφόρος){}Πράσινο όσο υπάρχει ένας ή περισσότεροι πράσινοι σηματοδότες-εξόδου στο επόμενο τμήμα γράμμης. Διαφορετικά δείχνει κόκκινο
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Σηματοδότης-Εξόδου (σηματοφόρος){}Συμπεριφέρεται με τον ίδιο τρόπο οπως οι σηματοδότες τμήματος αλλά είναι απαραίτητο να τεθεί το σωστό χρώμα στους προ-σηματοδότες είσοδου και συνδυαστικούς

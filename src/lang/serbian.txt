@@ -2424,12 +2424,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Teretni tramvaj
 STR_FACE_CAPTION                                                :{WHITE}Izbor lica
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Poništi ovo lice
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Prihvati ovo lice
-STR_FACE_RANDOM                                                 :{BLACK}Proizvoljno
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Muško
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Izbor muškog lica
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Žensko
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Izbor ženskog lica
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Novo lice
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Nasumično izabira novo lice
 STR_FACE_ADVANCED                                               :{BLACK}Napredno
@@ -2447,36 +2442,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Redni br
 STR_FACE_SAVE                                                   :{BLACK}Sačuvaj
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Čuvanje omiljenog lica
 STR_FACE_SAVE_DONE                                              :{WHITE}Ovo lice će biti sačuvano kao omiljeno u OpenTTD datoteci podešavanja
-STR_FACE_EUROPEAN                                               :{BLACK}Evropski
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Evropski izgled lica
-STR_FACE_AFRICAN                                                :{BLACK}Afrički
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Afrički izgled lica
 STR_FACE_YES                                                    :Da
 STR_FACE_NO                                                     :Ne
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Dodavanje brkova ili minđuša
 STR_FACE_HAIR                                                   :Kosa:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Promena kose
 STR_FACE_EYEBROWS                                               :Obrve:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Promena obrva
 STR_FACE_EYECOLOUR                                              :Boja očiju:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Promena boje očiju
 STR_FACE_GLASSES                                                :Naočare:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Dodavanje naočara
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Promena naočara
 STR_FACE_NOSE                                                   :Nos:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Promena nosa
 STR_FACE_LIPS                                                   :Usna:
 STR_FACE_MOUSTACHE                                              :Brkovi:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Promena usana ili brkova
 STR_FACE_CHIN                                                   :Brada:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Promena brade
 STR_FACE_JACKET                                                 :Sako:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Promena dezena sakoa
 STR_FACE_COLLAR                                                 :Kragna:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Promena dezena kragne
 STR_FACE_TIE                                                    :Kravata:
 STR_FACE_EARRING                                                :Minđuše:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Promena kravate ili minđuša
 
 # Matches ServerGameType
 ###length 3
@@ -2932,7 +2911,6 @@ STR_STATION_CLASS_WAYP                                          :Putanje
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Odabir signalizacije
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Prikaz naprednih tipova signala
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blok signalizacija (semafor){}Ovo je najosnovnija vrsta signalizacije, dozvoljava samo jedan voz da bude u istoj deonici
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Ulazna signalizacija (semafor){}Otvoren prolaz ukoliko postoji jedna ili više otvorenih izlaznih signalizacija sa nastupajuće deonice. U suprotnom je zatvoren
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Izlazna signalizacija (semafor){}Ponaša se isto kao i blok signalizacija ali je neophodan za uparivanje sa ulaznom i/ili kombinovanom signalizacijom

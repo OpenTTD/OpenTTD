@@ -2391,12 +2391,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Nákladní tram
 STR_FACE_CAPTION                                                :{WHITE}Volba tváře
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Zrušit volbu nového obličeje
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Potvrdit výběr obličeje
-STR_FACE_RANDOM                                                 :{BLACK}Nové číslo
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Mužská
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Zvolit mužské obličeje
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Ženská
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Zvolit ženské obličeje
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nový obličej
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Vytvořit náhodnou novou tvář
 STR_FACE_ADVANCED                                               :{BLACK}Podrobně
@@ -2414,36 +2409,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Nelze na
 STR_FACE_SAVE                                                   :{BLACK}Uložit
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Uložit oblíbený obličej
 STR_FACE_SAVE_DONE                                              :{WHITE}Tato tvář bude uložena do konfiguračního souboru jako tvá oblíbená
-STR_FACE_EUROPEAN                                               :{BLACK}Europoidní
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Vybrat europoidní tváře
-STR_FACE_AFRICAN                                                :{BLACK}Africká
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Vybrat africké tváře
 STR_FACE_YES                                                    :Ano
 STR_FACE_NO                                                     :Ne
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Povolit knír nebo náušnici
 STR_FACE_HAIR                                                   :Vlasy:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Změnit vlasy
 STR_FACE_EYEBROWS                                               :Obočí:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Změnit obočí
 STR_FACE_EYECOLOUR                                              :Barva očí:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Změnit barvu očí
 STR_FACE_GLASSES                                                :Brýle:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Povolit brýle
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Změnit brýle
 STR_FACE_NOSE                                                   :Nos:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Změnit nos
 STR_FACE_LIPS                                                   :Rty:
 STR_FACE_MOUSTACHE                                              :Knír:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Změnit rty nebo knír
 STR_FACE_CHIN                                                   :Brada:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Změnit bradu
 STR_FACE_JACKET                                                 :Sako:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Změnit sako
 STR_FACE_COLLAR                                                 :Límec:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Změnit límec
 STR_FACE_TIE                                                    :Kravata:
 STR_FACE_EARRING                                                :Náušnice:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Změnit kravatu nebo náušnice
 
 # Matches ServerGameType
 ###length 3
@@ -2945,7 +2924,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Původní směr
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Výběr návěstidel
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Zobrazit dokonalejší návěstidla
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Obyčejné návěstidlo (semafor){}Návěstidla jsou nutná, aby nedocházelo ke srážkám vlaků na tratích, kde jezdí více než jeden vlak
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Vjezdové návěstidlo (semafor){}Svítí zeleně do té doby, kdy v následujícím úseku trati je alespoň jedno další svítící zeleně. Jinak svítí červeně
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Výjezdové návěstidlo (semafor){}Chová se stejně jako obyčejné, ale je nezbytné nastavit správnou barvu vjezdových a kombinovaných pre-signálů

@@ -1892,12 +1892,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Varetrikk
 STR_FACE_CAPTION                                                :{WHITE}Vel utsjånad
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Avbryt val av utsjånad
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Godta ny utsjånad
-STR_FACE_RANDOM                                                 :{BLACK}Tilferdiggjer
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Mann
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Vel mannsandlet
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Kvinne
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Vel kvinneandlet
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nytt andlet
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Lag eit tilfeldig andlet
 STR_FACE_ADVANCED                                               :{BLACK}Avansert
@@ -1915,36 +1910,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Kunne ik
 STR_FACE_SAVE                                                   :{BLACK}Lagre
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Lagre favoritandlete
 STR_FACE_SAVE_DONE                                              :{WHITE}Dette andletet vil verte lagra som favoriten din i OpenTTDs konfigurasjonfil
-STR_FACE_EUROPEAN                                               :{BLACK}Europeisk
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Velg europeiske andlet
-STR_FACE_AFRICAN                                                :{BLACK}Afrikans
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Velg afrikanske andlet
 STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :Nei
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Slå på bart eller øyrering
 STR_FACE_HAIR                                                   :Hår:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Byt hår
 STR_FACE_EYEBROWS                                               :Augebryn:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Byt augebryn
 STR_FACE_EYECOLOUR                                              :Augefarge:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Byt augefarge:
 STR_FACE_GLASSES                                                :Briller:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Slå på briller
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Byt briller
 STR_FACE_NOSE                                                   :Nase:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Byt nase
 STR_FACE_LIPS                                                   :Lepper:
 STR_FACE_MOUSTACHE                                              :Bart:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Byt lepper eller bart
 STR_FACE_CHIN                                                   :Hake:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Byt hake
 STR_FACE_JACKET                                                 :Jakke:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Byt jakke
 STR_FACE_COLLAR                                                 :Krage:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Byt krage
 STR_FACE_TIE                                                    :Slips:
 STR_FACE_EARRING                                                :Øyrering:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Byt slips eller øyrering
 
 # Matches ServerGameType
 ###length 3

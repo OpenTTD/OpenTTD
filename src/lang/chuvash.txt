@@ -915,23 +915,17 @@ STR_LIVERY_FREIGHT_TRAM                                         :Ҫӑк трам
 # Face selection window
 STR_FACE_CAPTION                                                :{WHITE}Кап
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Арҫын
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Хӗрарӑм
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Ҫӗнӗ Ят
 STR_FACE_ADVANCED                                               :{BLACK}Хушма
 STR_FACE_SIMPLE                                                 :{BLACK}Ансат
 STR_FACE_LOAD                                                   :{BLACK}Тие
 STR_FACE_SAVE                                                   :{BLACK}Упра
-STR_FACE_EUROPEAN                                               :{BLACK}Европӑ
-STR_FACE_AFRICAN                                                :{BLACK}Африкан
 STR_FACE_YES                                                    :Ҫапла
 STR_FACE_NO                                                     :Ҫук
 STR_FACE_HAIR                                                   :Ҫӳҫ:
 STR_FACE_EYEBROWS                                               :Куҫ харши:
 STR_FACE_EYECOLOUR                                              :Куҫ тӗс:
 STR_FACE_GLASSES                                                :Куҫлӑх:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Куҫлӑх яр
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Тӳрлет куҫлӑх
 STR_FACE_NOSE                                                   :Сӑмса:
 STR_FACE_LIPS                                                   :Тута:
 STR_FACE_MOUSTACHE                                              :Мӑйӑх:

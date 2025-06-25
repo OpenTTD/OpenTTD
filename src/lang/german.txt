@@ -2295,12 +2295,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Frachtstraßenb
 STR_FACE_CAPTION                                                :{WHITE}Gesicht auswählen
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Gesichtswahl abbrechen
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Gesichtswahl übernehmen
-STR_FACE_RANDOM                                                 :{BLACK}Zufällig
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Männlich
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Wähle männliches Gesicht aus
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Weiblich
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Wähle weibliches Gesicht aus
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Neues Gesicht
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Wähle zufälliges neues Gesicht
 STR_FACE_ADVANCED                                               :{BLACK}Detailliert
@@ -2318,36 +2313,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Konnte k
 STR_FACE_SAVE                                                   :{BLACK}Speichern
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Speichere bevorzugtes Gesicht
 STR_FACE_SAVE_DONE                                              :{WHITE}Dieses Gesicht wird als bevorzugtes Gesicht in der OpenTTD-Konfigurationsdatei gespeichert
-STR_FACE_EUROPEAN                                               :{BLACK}Europäisch
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Auswahl europäischer Gesichter
-STR_FACE_AFRICAN                                                :{BLACK}Afrikanisch
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Auswahl afrikanischer Gesichter
 STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :Nein
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Schnauzbart oder Ohrring erlauben
 STR_FACE_HAIR                                                   :Frisur:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Frisur ändern
 STR_FACE_EYEBROWS                                               :Augenbrauen:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Augenbrauen ändern
 STR_FACE_EYECOLOUR                                              :Augenfarbe:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Augenfarbe ändern
 STR_FACE_GLASSES                                                :Brille:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Brille aufsetzen
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Brille ändern
 STR_FACE_NOSE                                                   :Nase:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Nase ändern
 STR_FACE_LIPS                                                   :Lippen:
 STR_FACE_MOUSTACHE                                              :Schnauzbart:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Lippen oder Schnauzbart ändern
 STR_FACE_CHIN                                                   :Kinn:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Kinn ändern
 STR_FACE_JACKET                                                 :Jackett:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Jackett ändern
 STR_FACE_COLLAR                                                 :Kragen:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Kragen ändern
 STR_FACE_TIE                                                    :Krawatte:
 STR_FACE_EARRING                                                :Ohrring:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Krawatte oder Ohrring ändern
 
 # Matches ServerGameType
 ###length 3
@@ -2838,7 +2817,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Standart-Wegpun
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalauswahl
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Das Zeigen erweiterter Signaltypen umschalten
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blocksignal (Formsignal){}Dies ist der einfachste Signaltyp. Bei Verwendung dieses Signaltyps darf sich immer nur ein Zug im Signalabschnitt aufhalten
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Einfahrsignal (Formsignal){}Zeigt grün, wenn im nächsten Block mindestens ein Ausfahrsignal grün zeigt. Andernfalls zeigt es rot
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Ausfahrsignal (Formsignal){}Verhält sich wie ein Blocksignal, wird jedoch benötigt, um den Einfahr- oder Kombinationssignalen des Blockes „frei“ zu melden

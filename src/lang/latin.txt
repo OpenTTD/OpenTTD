@@ -2161,12 +2161,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Transviaria Rae
 STR_FACE_CAPTION                                                :{WHITE}Electio Faciei
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Cancellare electionem novae faciei
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Confirmare electionem novae faciei
-STR_FACE_RANDOM                                                 :{BLACK}Commiscere
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Masculina
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Eligere facies masculinas
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Feminea
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Eligere facies femineas
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Facies Nova
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Creare novam faciem fortuitam
 STR_FACE_ADVANCED                                               :{BLACK}Praecipua
@@ -2184,36 +2179,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Numerus 
 STR_FACE_SAVE                                                   :{BLACK}Servare
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Servare faciem dilectam
 STR_FACE_SAVE_DONE                                              :{WHITE}Haec facies servabit ad dilectam tuam in fasciculo OpenTTD configurationis
-STR_FACE_EUROPEAN                                               :{BLACK}Europaea
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Eligere facies Europaeas
-STR_FACE_AFRICAN                                                :{BLACK}Africana
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Eligere facies Africanas
 STR_FACE_YES                                                    :Ita
 STR_FACE_NO                                                     :Non
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Apponere mystacem vel inaurem
 STR_FACE_HAIR                                                   :Capilli:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Mutare capillos
 STR_FACE_EYEBROWS                                               :Supercilia:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Mutare supercilia
 STR_FACE_EYECOLOUR                                              :Color oculorum:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Mutare colorem oculorum
 STR_FACE_GLASSES                                                :Perspicilla:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Apponere perspicilla
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Mutare perspicilla
 STR_FACE_NOSE                                                   :Nasus:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Mutare nasum
 STR_FACE_LIPS                                                   :Labra:
 STR_FACE_MOUSTACHE                                              :Mystax:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Mutare labra vel mystacem
 STR_FACE_CHIN                                                   :Mentum:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Mutare mentum
 STR_FACE_JACKET                                                 :Vestis:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Mutare vestem
 STR_FACE_COLLAR                                                 :Collare:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Mutare collare
 STR_FACE_TIE                                                    :Focale:
 STR_FACE_EARRING                                                :Inauris:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Mutare focale vel inaurem
 
 # Matches ServerGameType
 ###length 3

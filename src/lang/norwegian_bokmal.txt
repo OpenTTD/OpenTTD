@@ -2320,12 +2320,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Varetrikk
 STR_FACE_CAPTION                                                :{WHITE}Velg ansikt
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Avbryt ansiktsvalg
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Godta nytt ansikt
-STR_FACE_RANDOM                                                 :{BLACK}Tilfeldiggjør
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Mann
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Velg mannsansikter
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Kvinne
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Velg kvinneansikter
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nytt ansikt
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Lag et tilfeldig ansikt
 STR_FACE_ADVANCED                                               :{BLACK}Avansert
@@ -2343,36 +2338,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Kunne ik
 STR_FACE_SAVE                                                   :{BLACK}Lagre
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Lagre favorittansikt
 STR_FACE_SAVE_DONE                                              :{WHITE}Dette ansiktet vil bli lagret som din favoritt i OpenTTDs konfigurasjonsfil
-STR_FACE_EUROPEAN                                               :{BLACK}Europeisk
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Velg europeiske ansikter
-STR_FACE_AFRICAN                                                :{BLACK}Afrikansk
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Velg afrikanske ansikter
 STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :Nei
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Aktiver bart eller ørering
 STR_FACE_HAIR                                                   :Hår:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Endre hår
 STR_FACE_EYEBROWS                                               :Øyenbryn:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Endre øyenbryn
 STR_FACE_EYECOLOUR                                              :Øyenfarge:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Endre øyenfarge
 STR_FACE_GLASSES                                                :Briller:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Aktiver briller
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Endre briller
 STR_FACE_NOSE                                                   :Nese:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Endre nese
 STR_FACE_LIPS                                                   :Lepper:
 STR_FACE_MOUSTACHE                                              :Bart:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Endre lepper eller bart
 STR_FACE_CHIN                                                   :Hake:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Endre hake
 STR_FACE_JACKET                                                 :Jakke:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Endre jakke
 STR_FACE_COLLAR                                                 :Krage:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Endre krage
 STR_FACE_TIE                                                    :Slips:
 STR_FACE_EARRING                                                :Ørering:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Endre slips eller ørering
 
 # Matches ServerGameType
 ###length 3
@@ -2833,6 +2812,10 @@ STR_PICKER_MODE_USED_TOOLTIP                                    :Vis bare eksist
 STR_PICKER_MODE_SAVED                                           :Lagret
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Vis bare lagrede elementer
 
+STR_PICKER_PREVIEW_SHRINK                                       :-
+STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Reduser høyden på forhåndsvisninger. Ctrl+klikk for så liten som mulig
+STR_PICKER_PREVIEW_EXPAND                                       :+
+STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Øk høyden på forhåndsvisninger. Ctrl+klikk for så stor som mulig
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Velg stasjonsklassen du vil vise
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Velg type stasjon å bygge. Ctrl+klikk for å legge til eller fjerne lagrede elementer
@@ -2877,7 +2860,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Standard veipun
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalvalg
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Veksle mellom visning av avanserte signaltyper
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blokksignal (vingesignal){}Dette er den enkleste typen av signaler som tillater kun ett tog å kjøre om gangen.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Inngangssignal (vingesignal){}Grønt så lenge det er ett eller flere grønne utgangssignal fra etterfølgende sporseksjon. Ellers rødt.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Utgangssignal (vingesignal){}Oppfører seg på samme måte som et blokksignal, men er nødvendig for å utløse riktig farge på inngangs- og kombinasjonsforsignaler.

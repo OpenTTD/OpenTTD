@@ -1789,12 +1789,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :{G=m}Góðs spo
 STR_FACE_CAPTION                                                :{WHITE}Andlits úrval
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Angra nýtt andlits val
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Góðtak nýtt andlits val
-STR_FACE_RANDOM                                                 :{BLACK}Blanda
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Kallkyn
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Vel kallkyns andlit
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Kvennkyn
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Vel kvennkyns andlit
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nýtt andlit
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Framleið tilvildarligt nýtt andlit
 STR_FACE_ADVANCED                                               :{BLACK}Víðka
@@ -1812,36 +1807,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Eydnaði
 STR_FACE_SAVE                                                   :{BLACK}Goym
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Goym yndis andlit
 STR_FACE_SAVE_DONE                                              :{WHITE}Hetta andliti verur goymt sum títt yndis andlit í OpenTTD uppsetanar fíluni
-STR_FACE_EUROPEAN                                               :{BLACK}Evropeiskt
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Vel Evropeisk andlit
-STR_FACE_AFRICAN                                                :{BLACK}Afrikansk
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Vel Afrikonsk andlit
 STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :Nei
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Tendra yvirskegg ella oyraring
 STR_FACE_HAIR                                                   :Hár:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Broyt hár
 STR_FACE_EYEBROWS                                               :Eygnabrýr:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Broyt eygnabrýr
 STR_FACE_EYECOLOUR                                              :Eygna litur:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Broyt eygna lit
 STR_FACE_GLASSES                                                :Brillur:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Tendra brillur
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Broyt brillur
 STR_FACE_NOSE                                                   :Nøs:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Broyt nøs
 STR_FACE_LIPS                                                   :Varrar:
 STR_FACE_MOUSTACHE                                              :Yvirskegg:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Broyt varrar ella yvirskegg
 STR_FACE_CHIN                                                   :Høka:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Broyt høku
 STR_FACE_JACKET                                                 :Jakki:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Broyt jakka
 STR_FACE_COLLAR                                                 :Kragi:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Broyt kraga
 STR_FACE_TIE                                                    :Slips:
 STR_FACE_EARRING                                                :Oyraringur:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Broyt slips ella oyraring
 
 # Matches ServerGameType
 ###length 3

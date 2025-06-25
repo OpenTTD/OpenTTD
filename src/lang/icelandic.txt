@@ -1827,12 +1827,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Farmsporvagn
 STR_FACE_CAPTION                                                :{WHITE}Andlitsval
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Hætta við andlitsval
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Samþykkja andlitsval
-STR_FACE_RANDOM                                                 :{BLACK}Nýtt raðnúmer
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Karlmaður
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Velja karlmannsandlit
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Kvenmaður
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Velja kvenmannsandlit
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nýtt Andlit
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Mynda andlit af handahófi
 STR_FACE_ADVANCED                                               :{BLACK}Ítarlegt
@@ -1850,36 +1845,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Gat ekki
 STR_FACE_SAVE                                                   :{BLACK}Vista
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Vista uppáhalds andlit
 STR_FACE_SAVE_DONE                                              :{WHITE}Þetta andlit mun verða vistað sem þitt uppahald í OpenTTD stilliskrá
-STR_FACE_EUROPEAN                                               :{BLACK}Evrópskt
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Velja evrópskt andlit
-STR_FACE_AFRICAN                                                :{BLACK}Afrískt
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Velja blökkuandlit
 STR_FACE_YES                                                    :Já
 STR_FACE_NO                                                     :Nei
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Virkja yfirvaraskegg eða eyrnalokk
 STR_FACE_HAIR                                                   :Hár:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Breyta hári
 STR_FACE_EYEBROWS                                               :Augabrúnir:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Breyta augabrúnum
 STR_FACE_EYECOLOUR                                              :Augnlitur:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Breyta augnlit
 STR_FACE_GLASSES                                                :Gleraugu:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Velja/afvelja gleraugu
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Breyta gleraugum
 STR_FACE_NOSE                                                   :Nef:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Breyta nefi
 STR_FACE_LIPS                                                   :Varir:
 STR_FACE_MOUSTACHE                                              :Yfirvaraskegg:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Breyta vörum eða yfirvaraskeggi
 STR_FACE_CHIN                                                   :Vangar:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Breyta vöngum
 STR_FACE_JACKET                                                 :Jakki:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Breyta jakka
 STR_FACE_COLLAR                                                 :Kragi:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Breyta kraga
 STR_FACE_TIE                                                    :Bindi:
 STR_FACE_EARRING                                                :Eyrnalokkur:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Breyta bindi eða eyrnalokk
 
 # Matches ServerGameType
 ###length 3

@@ -2065,12 +2065,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tram Lastais
 STR_FACE_CAPTION                                                :{WHITE}Aghaidh a Roghnú
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Cuir roghnúchán aghaidhe nua ar ceal
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Glac leis an aghaidh nua
-STR_FACE_RANDOM                                                 :{BLACK}Déan randamú
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Fear
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Roghnaigh aghaidheanna fir
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Bean
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Roghnaigh aghaidhanna ban
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Aghaidh Nua
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Cruthaigh aghaidh nua randamach
 STR_FACE_ADVANCED                                               :{BLACK}Ardsocruithe
@@ -2088,36 +2083,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Níorbh 
 STR_FACE_SAVE                                                   :{BLACK}Sábháil
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Sábháil aghaidh is fearr leat
 STR_FACE_SAVE_DONE                                              :{WHITE}Sábhálfar an aghaidh mar an ceann is fearr leat i gcomhad cumraíochta OpenTTD
-STR_FACE_EUROPEAN                                               :{BLACK}Eorpach
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Roghnaigh aghaidheanna Eorpacha
-STR_FACE_AFRICAN                                                :{BLACK}Afraiceach
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Roghnaigh aghaidheanna Afraiceacha
 STR_FACE_YES                                                    :Tá
 STR_FACE_NO                                                     :Níl
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Cumasaigh croiméal nó fáinne cluasa
 STR_FACE_HAIR                                                   :Gruaig:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Athraigh gruaig
 STR_FACE_EYEBROWS                                               :Malaí:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Athraigh malaí
 STR_FACE_EYECOLOUR                                              :Dath na súl:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Athraigh dath na súl
 STR_FACE_GLASSES                                                :Spéaclaí:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Cumasaigh spéaclaí
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Athraigh spéaclaí
 STR_FACE_NOSE                                                   :Nose:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Athraigh an srón
 STR_FACE_LIPS                                                   :Beolaí:
 STR_FACE_MOUSTACHE                                              :Croiméal:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Athraigh beola nó croiméal
 STR_FACE_CHIN                                                   :Smig:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Athraigh an smig
 STR_FACE_JACKET                                                 :Seaicéad:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Athraigh an seaicéad
 STR_FACE_COLLAR                                                 :Bóna:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Athraigh an bóna
 STR_FACE_TIE                                                    :Carbhat:
 STR_FACE_EARRING                                                :Fáinne cluaise:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Athraigh carbhat nó fáinne cluaise
 
 # Matches ServerGameType
 ###length 3

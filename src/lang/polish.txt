@@ -2698,12 +2698,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tramwaj towarow
 STR_FACE_CAPTION                                                :{WHITE}Wybór Twarzy
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Anuluj wybór nowej twarzy
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Zatwierdź wybór nowej twarzy
-STR_FACE_RANDOM                                                 :{BLACK}Losuj
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Mężczyzna
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Wybierz męską twarz
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Kobieta
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Wybierz kobiecą twarz
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nowa twarz
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Wygeneruj nową losową twarz
 STR_FACE_ADVANCED                                               :{BLACK}Szczegółowy
@@ -2721,36 +2716,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Nie moż
 STR_FACE_SAVE                                                   :{BLACK}Zapisz
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Zapisz ulubioną twarz
 STR_FACE_SAVE_DONE                                              :{WHITE}Ta twarz będzie zapisana w pliku konfiguracyjnym OpenTTD jako twoja ulubiona
-STR_FACE_EUROPEAN                                               :{BLACK}Europejska
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Wybierz twarz o karnacji europejskiej
-STR_FACE_AFRICAN                                                :{BLACK}Afrykańska
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Wybierz twarz o karnacji afrykańskiej
 STR_FACE_YES                                                    :Tak
 STR_FACE_NO                                                     :Nie
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Pokaż wąsy lub kolczyk
 STR_FACE_HAIR                                                   :Włosy:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Zmień włosy
 STR_FACE_EYEBROWS                                               :Brwi:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Zmień brwi
 STR_FACE_EYECOLOUR                                              :Kolor oczu:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Zmień kolor oczu
 STR_FACE_GLASSES                                                :Okulary
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Uaktywnij okulary
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Zmień okulary
 STR_FACE_NOSE                                                   :Nos:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Zmień nos
 STR_FACE_LIPS                                                   :Usta:
 STR_FACE_MOUSTACHE                                              :Wąsy:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Zmień usta lub wąsy
 STR_FACE_CHIN                                                   :Broda:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Zmień brodę
 STR_FACE_JACKET                                                 :Marynarka:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Zmień marynarkę
 STR_FACE_COLLAR                                                 :Kołnierz:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Zmień kołnierz
 STR_FACE_TIE                                                    :Krawat:
 STR_FACE_EARRING                                                :Kolczyk:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Zmień krawat lub kolczyk
 
 # Matches ServerGameType
 ###length 3
@@ -3255,7 +3234,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Standardowy pos
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Wybór sygnałów
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Przełącz wyświetlanie zaawansowanych typów sygnałów
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sygnalizator bloku (semafor){}Najprostszy typ sygnału pozwalający na przebywanie w jednym bloku wyłącznie jednemu pociągowi naraz
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sygnalizator wejściowy (semafor){}Zielony, póki choć jeden sygnalizator wyjściowy dla kolejnego odcinka trasy jest zielony. W przeciwnym wypadku czerwony.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sygnalizator wyjściowy (semafor){}Zachowuje się jak sygnalizator blokowy, lecz jest niezbędny do zmiany na poprawny kolor w presygnalizatorach wejściowych i złożonych

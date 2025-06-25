@@ -2318,12 +2318,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :货运电车
 STR_FACE_CAPTION                                                :{WHITE}选择头像
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}放弃新的头像
 STR_FACE_OK_TOOLTIP                                             :{BLACK}使用新的头像
-STR_FACE_RANDOM                                                 :{BLACK}随机种子
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}男性
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}选择男性的头像
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}女性
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}选择女性的头像
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}换一个！
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}生成一个随机的头像
 STR_FACE_ADVANCED                                               :{BLACK}高级
@@ -2341,36 +2336,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}编号�
 STR_FACE_SAVE                                                   :{BLACK}储存头像
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}储存喜好的头像
 STR_FACE_SAVE_DONE                                              :{WHITE}该头像将作为你的喜好储存至 OpenTTD 配置文件中
-STR_FACE_EUROPEAN                                               :{BLACK}欧洲人
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}使用欧洲人面孔
-STR_FACE_AFRICAN                                                :{BLACK}非洲人
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}使用非洲人面孔
 STR_FACE_YES                                                    :是
 STR_FACE_NO                                                     :否
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}是否有胡子或耳环
 STR_FACE_HAIR                                                   :发型
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}选择发型
 STR_FACE_EYEBROWS                                               :眉毛
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}选择眉毛
 STR_FACE_EYECOLOUR                                              :眼睛
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}选择眼睛颜色
 STR_FACE_GLASSES                                                :眼镜
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}增加眼镜
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}选择眼镜
 STR_FACE_NOSE                                                   :鼻子
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}选择鼻子
 STR_FACE_LIPS                                                   :嘴唇
 STR_FACE_MOUSTACHE                                              :胡子
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}选择嘴唇或是胡子
 STR_FACE_CHIN                                                   :下巴
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}选择下巴
 STR_FACE_JACKET                                                 :外衣
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}选择外衣
 STR_FACE_COLLAR                                                 :领口
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}选择领口
 STR_FACE_TIE                                                    :领带
 STR_FACE_EARRING                                                :耳环
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}选择领带或是耳环
 
 # Matches ServerGameType
 ###length 3
@@ -2875,7 +2854,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :默认路点
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}信号选择
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}是否显示高级信号灯类型
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}通过信号灯（悬臂）{}最基础的信号灯，同一时间内，只允许一列列车通过信号灯后的区间
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}入口信号灯（悬臂）{}在下一轨道区间上至少有一个出口信号灯是绿色时此信号亮绿灯，否则亮红灯
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}出口信号灯（悬臂）{}功能与通过信号灯相同，但它的状态还可以触发入口及复合信号灯

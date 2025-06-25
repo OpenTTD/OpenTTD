@@ -2319,12 +2319,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tramvia de càr
 STR_FACE_CAPTION                                                :{WHITE}Selecció de cares
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Cancel·la la selecció de nova cara
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Accepta la selecció de nova cara
-STR_FACE_RANDOM                                                 :{BLACK}Aleatoritza
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Home
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Selecciona cares d'home
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Dona
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Selecciona cares de dona
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nova cara
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Genera una nova cara aleatòria
 STR_FACE_ADVANCED                                               :{BLACK}Avançat
@@ -2342,36 +2337,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}No s'ha 
 STR_FACE_SAVE                                                   :{BLACK}Desa
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Desa la cara preferida
 STR_FACE_SAVE_DONE                                              :{WHITE}Es desarà aquesta cara personalitzada a l'arxiu de configuració de l'OpenTTD.
-STR_FACE_EUROPEAN                                               :{BLACK}Europea
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Selecciona cares europees
-STR_FACE_AFRICAN                                                :{BLACK}Africana
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Selecciona cares africanes
 STR_FACE_YES                                                    :Sí
 STR_FACE_NO                                                     :No
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Activa el bigoti o les arracades
 STR_FACE_HAIR                                                   :Cabell:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Canvia el cabell
 STR_FACE_EYEBROWS                                               :Celles:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Canvia les celles
 STR_FACE_EYECOLOUR                                              :Color dels ulls:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Canvia el color dels ulls
 STR_FACE_GLASSES                                                :Ulleres:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Activa les ulleres
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Canvia les ulleres
 STR_FACE_NOSE                                                   :Nas:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Canvia el nas
 STR_FACE_LIPS                                                   :Llavis:
 STR_FACE_MOUSTACHE                                              :Bigoti:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Canvia els llavis o el bigoti
 STR_FACE_CHIN                                                   :Barbeta:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Canvia la barbeta
 STR_FACE_JACKET                                                 :Jaqueta:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Canvia la jaqueta
 STR_FACE_COLLAR                                                 :Coll:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Canvia el collaret
 STR_FACE_TIE                                                    :Corbata:
 STR_FACE_EARRING                                                :Arracades:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Canvia la corbata o les arracades
 
 # Matches ServerGameType
 ###length 3
@@ -2876,7 +2855,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Punt de pas per
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Selecció de senyals
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Mostra o amaga els tipus avançats de senyals.
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Senyal de secció (mecànic){}Aquest és el tipus de senyal més senzill. Permet l'entrada a la següent secció de vies només si no hi ha cap altre tren.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Senyal previ d'entrada (mecànic){}En verd si a la següent secció no hi ha trens i, a més a més, hi ha almenys un senyal previ de sortida en verd. En cas contrari, en vermell.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Senyal previ de sortida (mecànic){}Es comporta com un senyal de secció i activa correctament els senyals previs d'entrada i combinats.

@@ -2318,12 +2318,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Fraktspårvagn
 STR_FACE_CAPTION                                                :{WHITE}Välj ansikte
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Avbryt val av ansikte
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Acceptera nytt ansikte
-STR_FACE_RANDOM                                                 :{BLACK}Slumpa
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Man
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Välj manliga ansikten
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Kvinna
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Välj kvinnliga ansikten
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nytt ansikte
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Slumpa fram nytt ansikte
 STR_FACE_ADVANCED                                               :{BLACK}Avancerad
@@ -2341,36 +2336,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Kunde in
 STR_FACE_SAVE                                                   :{BLACK}Spara
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Spara favoritansikte
 STR_FACE_SAVE_DONE                                              :{WHITE}Det här ansiktet kommer att sparas som ditt favoritansikte i OpenTTDs konfigurationsfil.
-STR_FACE_EUROPEAN                                               :{BLACK}Europeisk
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Välj europeiska ansikten
-STR_FACE_AFRICAN                                                :{BLACK}Afrikanska
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Välj afrikanska ansikten
 STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :Nej
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Aktivera mustasch eller örhänge
 STR_FACE_HAIR                                                   :Hår:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Ändra hår
 STR_FACE_EYEBROWS                                               :Ögonbryn:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Ändra ögonbryn
 STR_FACE_EYECOLOUR                                              :Ögonfärg:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Ändra ögonfärg
 STR_FACE_GLASSES                                                :Glasögon:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Aktivera glasögon
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Ändra glasögon
 STR_FACE_NOSE                                                   :Näsa:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Ändra näsa
 STR_FACE_LIPS                                                   :Läppar:
 STR_FACE_MOUSTACHE                                              :Mustasch:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Ändra läppar eller mustasch
 STR_FACE_CHIN                                                   :Haka:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Ändra haka
 STR_FACE_JACKET                                                 :Kavaj:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Ändra kavaj
 STR_FACE_COLLAR                                                 :Krage:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Ändra krage
 STR_FACE_TIE                                                    :Slips:
 STR_FACE_EARRING                                                :Örhänge:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Ändra slips eller örhänge
 
 # Matches ServerGameType
 ###length 3
@@ -2875,7 +2854,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Standardriktmä
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalval
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Slå av/på visning av avancerade signaltyper
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Standardsignal (semafor){}Detta är den enklaste typen av signal, som endast tillåter ett tåg per block vid samma tidpunkt
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Infartssignal (semafor){}Grön så länge det finns en eller flera gröna utfartssignaler på efterföljande bit av spår, annars visas rött
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Utfartssignal (semafor){}Fungerar på samma sätt som en vanlig signal, men behövs för att utlösa korrekt färg på in- eller kombinationssignaler

@@ -2169,12 +2169,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :貨物用路面
 STR_FACE_CAPTION                                                :{WHITE}顔の変更
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}顔の変更をキャンセルします
 STR_FACE_OK_TOOLTIP                                             :{BLACK}顔の変更を適用します
-STR_FACE_RANDOM                                                 :{BLACK}ランダム
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}男性
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}男性顔を表示します
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}女性
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}女性顔を表示します
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}新規顔
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}ランダムな顔を作成します
 STR_FACE_ADVANCED                                               :{BLACK}詳細
@@ -2192,36 +2187,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}顔番�
 STR_FACE_SAVE                                                   :{BLACK}保存
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}お気に入りの顔として保存します
 STR_FACE_SAVE_DONE                                              :{WHITE}この顔をお気に入りの顔として、OpenTTDの設定ファイルに保存します
-STR_FACE_EUROPEAN                                               :{BLACK}ヨーロッパ系
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}ヨーロッパ系の顔を選択します
-STR_FACE_AFRICAN                                                :{BLACK}アフリカ系
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}アフリカ系の顔を選択します
 STR_FACE_YES                                                    :あり
 STR_FACE_NO                                                     :なし
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}口ひげかイヤリングを付けます
 STR_FACE_HAIR                                                   :髪型:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}髪型を変更します
 STR_FACE_EYEBROWS                                               :まゆ:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}まゆを変更します
 STR_FACE_EYECOLOUR                                              :瞳の色:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}瞳の色を変更します
 STR_FACE_GLASSES                                                :眼鏡:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}眼鏡ありにします
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}眼鏡を変更します
 STR_FACE_NOSE                                                   :鼻:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}鼻を変更します
 STR_FACE_LIPS                                                   :唇:
 STR_FACE_MOUSTACHE                                              :口ひげ:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}唇/口ひげを変更します
 STR_FACE_CHIN                                                   :顎:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}顎を変更します
 STR_FACE_JACKET                                                 :ジャケット:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}ジャケットを変更します
 STR_FACE_COLLAR                                                 :襟:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}襟を変更します
 STR_FACE_TIE                                                    :ネクタイ:
 STR_FACE_EARRING                                                :イヤリング:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}ネクタイ/イヤリングを変更します
 
 # Matches ServerGameType
 ###length 3
@@ -2668,7 +2647,6 @@ STR_STATION_CLASS_WAYP                                          :中継駅
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}信号種類の選択
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}高度な信号の表示切替
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}閉塞信号 (腕木式){}最も一般的な信号で、1つの閉塞内(信号同士の間の区間)には1編成のみが進入できます。配置した信号をクリックすると信号の向きを「一方向→一方向(逆)→二方向」の順で変えられます。一方向式の信号は背面から通過できません
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}入口信号 (腕木式){}この信号の先にある出口信号のうち最低でも1つが緑であれば緑になりますが、そうでなければ赤になります。場内信号に良く使われます
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}出口信号 (腕木式){}動作は普通の閉塞信号と同様ですが、入口/コンボ信号を使用する場合に必要になります。ホームの入り口に良く使われます

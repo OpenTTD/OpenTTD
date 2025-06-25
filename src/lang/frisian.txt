@@ -1917,12 +1917,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Fracht Tram
 STR_FACE_CAPTION                                                :{WHITE}Gesicthseleksje
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Nije gesichtseleksje annulearje
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Akseptear nije gesichtseleksje
-STR_FACE_RANDOM                                                 :{BLACK}Samar wat
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Man
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Selektear manlike gesichten
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Frou
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Selektear froulike gesichten
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nei Gesicht
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Meitsje samar in nij gesicht
 STR_FACE_ADVANCED                                               :{BLACK}Afansjearre
@@ -1934,36 +1929,20 @@ STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Laad sta
 STR_FACE_FACECODE                                               :{BLACK}Spielers gesicht noemer
 STR_FACE_SAVE                                                   :{BLACK}Opslaan
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Favorite gesicht opslaan
-STR_FACE_EUROPEAN                                               :{BLACK}Jeropeesk
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Selektearje jeropeeske gesichten
-STR_FACE_AFRICAN                                                :{BLACK}Afrikaans
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Selektearje Afrikaanske gesichten
 STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :#
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Snorren en earbellen
 STR_FACE_HAIR                                                   :Hier:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Veroarje hier
 STR_FACE_EYEBROWS                                               :Wynbrauwen:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Wynbrauwen feroarje
 STR_FACE_EYECOLOUR                                              :Kleur eagen:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Feroarje eechkleur
 STR_FACE_GLASSES                                                :Bril:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Bril oansette
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Bril feroarje
 STR_FACE_NOSE                                                   :Noas:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Noas feroarje
 STR_FACE_LIPS                                                   :Lippen:
 STR_FACE_MOUSTACHE                                              :Snor:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Feroarje lippen of snor
 STR_FACE_CHIN                                                   :Kin:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Feroarje kin
 STR_FACE_JACKET                                                 :Jas:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Feroarje jas
 STR_FACE_COLLAR                                                 :Kraach:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Feroarje kraach
 STR_FACE_TIE                                                    :Strik:
 STR_FACE_EARRING                                                :Earbel:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Feroarje strik of earbel
 
 # Matches ServerGameType
 ###length 3

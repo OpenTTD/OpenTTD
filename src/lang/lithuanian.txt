@@ -2450,12 +2450,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Krovininis tram
 STR_FACE_CAPTION                                                :{WHITE}Veido pasirinkimas
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Nutraukia veido pasirinkimą
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Užbaigia veido pasirinkimą
-STR_FACE_RANDOM                                                 :{BLACK}Atsitiktinai
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Vyras
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Pasirink vyro veidą
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Moteris
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Pasirink moters veidą
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Naujas veidas
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Parinka naują atsitiktinį veidą
 STR_FACE_ADVANCED                                               :{BLACK}Plačiau
@@ -2473,36 +2468,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Preziden
 STR_FACE_SAVE                                                   :{BLACK}Išsaugoti
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Išsaugoti mėgstamą veidą
 STR_FACE_SAVE_DONE                                              :{WHITE}Šis veidas bus išsaugotas kaip tavo mėgstamas OpenTTD nustatymų faile.
-STR_FACE_EUROPEAN                                               :{BLACK}Europietiškas
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Pasirinkti europietiškus veidus
-STR_FACE_AFRICAN                                                :{BLACK}Afrikietiškas
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Pasirinkti afrikietiškus veidus
 STR_FACE_YES                                                    :Taip
 STR_FACE_NO                                                     :Ne
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Įjungti ūsus arba auskarą
 STR_FACE_HAIR                                                   :Plaukai:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Keisti plaukus
 STR_FACE_EYEBROWS                                               :Antakiai:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Keisti antakius
 STR_FACE_EYECOLOUR                                              :Akių spalva:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Keisti akių spalvą
 STR_FACE_GLASSES                                                :Akiniai:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Įjungti akinius
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Keisti akinius
 STR_FACE_NOSE                                                   :Nosis:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Keisti nosį
 STR_FACE_LIPS                                                   :Lūpos:
 STR_FACE_MOUSTACHE                                              :Ūsai:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Pakeisti lūpas arba ūsus
 STR_FACE_CHIN                                                   :Smakras:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Pakeisti smakrą
 STR_FACE_JACKET                                                 :Švarkas:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Pakeisti švarką
 STR_FACE_COLLAR                                                 :Apykaklė:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Pakeisti apykaklę
 STR_FACE_TIE                                                    :Kaklaraištis:
 STR_FACE_EARRING                                                :Auskaras:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Pakeisti kaklaraištį arba auskarą
 
 # Matches ServerGameType
 ###length 3
@@ -2957,7 +2936,6 @@ STR_STATION_CLASS_WAYP                                          :Keliarodžiai
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalo pasirinkimas
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Perjungti išplėstinių signalų tipų rodymą
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Bėgių bloko semaforas{}Paprasčiausias signalo tipas, leidžiantis viename bėgių bloke tuo pačiu metu būti tik vienam traukiniui
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Įvažiavimo semaforas{}Leidžia įvažiuoti į bėgių bloką, jei bent vienas išvažiavimo signalas leidžia išvažiuoti iš bloko. Kitu atveju traukinių eismas draudžiamas
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Išvažiavimo semaforas{}Veikia lygiai taip pat, kaip ir paprastas bėgių bloko signalas, bet yra reikalingas normaliam įvažiavimo bei kombinuotųjų semaforų darbui

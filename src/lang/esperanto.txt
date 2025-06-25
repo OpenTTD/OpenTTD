@@ -2263,12 +2263,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Frajttramo
 STR_FACE_CAPTION                                                :{WHITE}Elekto de Vizaĝo
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Nuligu elekton de nova vizaĝo
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Akceptu elekton de nova vizaĝo
-STR_FACE_RANDOM                                                 :{BLACK}Hazardigu
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Vira
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Elektu virajn vizaĝojn
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Virina
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Elektu virinajn vizaĝojn
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nova Vizaĝo
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Kreu hazardan novan vizaĝon
 STR_FACE_ADVANCED                                               :{BLACK}Altnivela
@@ -2286,36 +2281,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Ne povas
 STR_FACE_SAVE                                                   :{BLACK}Konservi
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Konservi favoratan vizaĝon
 STR_FACE_SAVE_DONE                                              :{WHITE}Tiu ĉi vizaĝo estos konservita kiel via favorata en la agord-dosiero de OpenTTD.
-STR_FACE_EUROPEAN                                               :{BLACK}Europa
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Elekti eŭropajn vizaĝojn
-STR_FACE_AFRICAN                                                :{BLACK}Afrika
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Elekti afrikajn vizaĝojn
 STR_FACE_YES                                                    :Jes
 STR_FACE_NO                                                     :Ne
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Ŝalti lipharojn aŭ orelringon.
 STR_FACE_HAIR                                                   :Hararo:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Ŝanĝu hararon
 STR_FACE_EYEBROWS                                               :Brovoj:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Ŝanĝi brovojn.
 STR_FACE_EYECOLOUR                                              :Okula koloro:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Ŝanĝi okulan koloron
 STR_FACE_GLASSES                                                :Okulvitroj:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Ŝalti okulvitrojn.
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Ŝanĝi okulvitrojn.
 STR_FACE_NOSE                                                   :Nazo:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Ŝanĝi nazon
 STR_FACE_LIPS                                                   :Lipoj:
 STR_FACE_MOUSTACHE                                              :Liphararo:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Ŝanĝi lipojn aŭ lipharojn.
 STR_FACE_CHIN                                                   :Mentono:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Ŝanĝi mentonon.
 STR_FACE_JACKET                                                 :Jako:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Ŝanĝi jakon.
 STR_FACE_COLLAR                                                 :Kolumo:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Ŝanĝi kolumon.
 STR_FACE_TIE                                                    :Kravato:
 STR_FACE_EARRING                                                :Orelringo:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Ŝanĝi kravaton aŭ orelringon.
 
 # Matches ServerGameType
 ###length 3
@@ -2764,7 +2743,6 @@ STR_STATION_CLASS_WAYP                                          :Vojpunktoj
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Elekto de Signalo
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Ŝaltu montradon de altnivelaj tipoj de semaforoj
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Bloksignalo (elektra){}Tio ĉi estas la plej baza tipo de signalo, kiu permesas al nur unu vagonaro esti en la sama bloko dum la sama tempo
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Enirsemaforo (elektra){}Restas verda dum estas almenaŭ unu verda elirsemaforo de la sekva traksekcio. Alikaze ĝi estas ruĝa
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Elira semaforo (elektra){}Kondutas same kiel bloka semaforo, sed estas bezonata por kaŭzi la ĝustan koloron ĉe eniraj kaj kombinaj antaŭsemaforoj

@@ -2318,12 +2318,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Raitiotavaravau
 STR_FACE_CAPTION                                                :{WHITE}Kasvojen valinta
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Peruuta uusien kasvojen valinta
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Hyväksy uusien kasvojen valinta
-STR_FACE_RANDOM                                                 :{BLACK}Satunnainen
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Mies
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Valitse miehen kasvot
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Nainen
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Valitse naisen kasvot
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Uudet kasvot
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Luo satunnaiset kasvot
 STR_FACE_ADVANCED                                               :{BLACK}Monipuolinen
@@ -2341,36 +2336,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Johtajan
 STR_FACE_SAVE                                                   :{BLACK}Tallenna
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Tallenna suosikkikasvot
 STR_FACE_SAVE_DONE                                              :{WHITE}Nämä kasvot tallennetaan suosikkikasvoiksesi OpenTTD:n kokoonpanotiedostoon.
-STR_FACE_EUROPEAN                                               :{BLACK}Eurooppalainen
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Valitse eurooppalaisia kasvoja
-STR_FACE_AFRICAN                                                :{BLACK}Afrikkalainen
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Valitse afrikkalaisia kasvoja
 STR_FACE_YES                                                    :Kyllä
 STR_FACE_NO                                                     :Ei
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Käytä viiksiä tai korvakorua
 STR_FACE_HAIR                                                   :Hiukset:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Vaihda hiukset
 STR_FACE_EYEBROWS                                               :Kulmakarvat:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Vaihda kulmakarvat
 STR_FACE_EYECOLOUR                                              :Silmien väri:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Vaihda silmien väri
 STR_FACE_GLASSES                                                :Silmälasit:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Käytä silmälaseja
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Vaihda silmälasit
 STR_FACE_NOSE                                                   :Nenä:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Vaihda nenä
 STR_FACE_LIPS                                                   :Huulet:
 STR_FACE_MOUSTACHE                                              :Viikset:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Vaihda huulet tai viikset
 STR_FACE_CHIN                                                   :Leuka:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Vaihda leuka
 STR_FACE_JACKET                                                 :Takki:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Vaihda takki
 STR_FACE_COLLAR                                                 :Kaulus:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Vaihda kaulus
 STR_FACE_TIE                                                    :Solmio:
 STR_FACE_EARRING                                                :Korvakoru:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Vaihda solmio tai korvakoru
 
 # Matches ServerGameType
 ###length 3
@@ -2831,6 +2810,10 @@ STR_PICKER_MODE_USED_TOOLTIP                                    :Valitse, näyte
 STR_PICKER_MODE_SAVED                                           :Tallennettu
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Valitse, näytetäänkö vain tallennetut kohteet
 
+STR_PICKER_PREVIEW_SHRINK                                       :−
+STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Vähennä esikatselukuvien korkeutta. Ctrl+napsautus pienentää minimikorkeuteen
+STR_PICKER_PREVIEW_EXPAND                                       :+
+STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Kasvata esikatselukuvien korkeutta. Ctrl+napsautus suurentaa maksimikorkeuteen
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Valitse näytettävä asemien luokka
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Valitse rakennettavan aseman tyyppi. Ctrl+napsautus lisää tallennettuihin tai poistaa tallennetuista
@@ -2875,7 +2858,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Oletusreittipis
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Opastimien valinta
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Edistyneiden opastintyyppien näyttäminen
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Suojastusopastin (siipiopastin){}Kaikkein alkeellisin opastin, joka sallii vain yhden junan samalla osuudella kerrallaan
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Tulo-opastin (siipiopastin){}Näyttää vihreää aina, kun yksi tai useampi seuraavista poistumisopastimista näyttää vihreää. Muutoin se näyttää punaista
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Poistumisopastin (siipiopastin){}Käyttäytyy samalla tavalla kuin suojastusopastin, mutta on välttämätön oikean valon näyttämiseen tulo- ja yhdistelmäopastimissa

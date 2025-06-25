@@ -2319,12 +2319,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Eléctrico de M
 STR_FACE_CAPTION                                                :{WHITE}Selecção de Cara
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Cancelar selecção da nova cara
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Aceitar selecção da nova cara
-STR_FACE_RANDOM                                                 :{BLACK}Gerar aleatório
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Masculino
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Seleccionar caras masculinas
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Feminino
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Seleccionar caras femininas
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nova Cara
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Gerar nova cara aleatoriamente
 STR_FACE_ADVANCED                                               :{BLACK}Avançado
@@ -2342,36 +2337,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Não foi
 STR_FACE_SAVE                                                   :{BLACK}Gravar
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Gravar cara preferida
 STR_FACE_SAVE_DONE                                              :{WHITE}Esta cara será gravada como a sua preferida no ficheiro de configuração do OpenTTD.
-STR_FACE_EUROPEAN                                               :{BLACK}Europeu
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Seleccionar Caras Europeias
-STR_FACE_AFRICAN                                                :{BLACK}Africano
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Seleccionar Caras Africanas
 STR_FACE_YES                                                    :Sim
 STR_FACE_NO                                                     :Não
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Ativar bigode ou brinco
 STR_FACE_HAIR                                                   :Cabelo:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Mudar cabelo
 STR_FACE_EYEBROWS                                               :Sobrancelhas:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Mudar sobrancelhas
 STR_FACE_EYECOLOUR                                              :Cor dos olhos:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Mudar cor dos olhos
 STR_FACE_GLASSES                                                :Óculos:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Ativar óculos
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Mudar óculos
 STR_FACE_NOSE                                                   :Nariz:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Mudar nariz
 STR_FACE_LIPS                                                   :Lábios:
 STR_FACE_MOUSTACHE                                              :Bigode:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Mudar lábios ou bigode
 STR_FACE_CHIN                                                   :Queixo:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Mudar queixo
 STR_FACE_JACKET                                                 :Casaco:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Mudar casaco
 STR_FACE_COLLAR                                                 :Colarinho:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Mudar colarinho
 STR_FACE_TIE                                                    :Gravata:
 STR_FACE_EARRING                                                :Brinco:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Mudar gravata ou brinco
 
 # Matches ServerGameType
 ###length 3
@@ -2832,6 +2811,10 @@ STR_PICKER_MODE_USED_TOOLTIP                                    :Alterna a exibi
 STR_PICKER_MODE_SAVED                                           :Guardado
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Alterna a exibição só de itens guardados
 
+STR_PICKER_PREVIEW_SHRINK                                       :-
+STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Reduzir a altura das imagens de pré-visualização. Ctrl+Clique para reduzir ao mínimo
+STR_PICKER_PREVIEW_EXPAND                                       :+
+STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Aumentar a altura das imagens de pré-visualização. Ctrl+Clique para aumentar ao máximo
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Selecionar uma classe de estação para mostrar
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Escolher um tipo de estação para construir. Ctrl+Clique para adicionar ou remover nos itens guardados
@@ -2876,7 +2859,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Ponto de contro
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Selecção de Sinal
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Alterna a exibição para tipos de sinais avançados
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sinal de bloco (semáforo){}Este é o tipo mais básico de sinal. Permite apenas a passagem de um comboio dentro de um bloco de linha ao mesmo tempo.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sinal de entrada (semáforo){}Apresenta-se verde enquanto existir um ou mais sinais de saída verdes no seguimento da linha. Caso contrário, ficará vermelho.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sinal de saída (semáforo){}Funciona da mesma forma que o sinal de bloco, mas é necessário para ativar a cor correta nos pré-sinais de entrada e combinado.

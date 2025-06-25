@@ -2319,12 +2319,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tranvía de car
 STR_FACE_CAPTION                                                :{WHITE}Selección de cara
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Cancela-la selección dunha nova cara
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Acepta-la selección da nova cara
-STR_FACE_RANDOM                                                 :{BLACK}Aleatorio
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Home
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Seleccionar caras masculinas
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Muller
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Seleccionar caras femininas
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nova cara
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Xerar unha nova cara aleatoriamente
 STR_FACE_ADVANCED                                               :{BLACK}Avanzado
@@ -2342,36 +2337,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Non se p
 STR_FACE_SAVE                                                   :{BLACK}Gravar
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Gravar coma cara favorita
 STR_FACE_SAVE_DONE                                              :{WHITE}Esta cara gravarase coma favorita no arquivo de configuración de OpenTTD.
-STR_FACE_EUROPEAN                                               :{BLACK}Europea
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Seleccionar caras europeas
-STR_FACE_AFRICAN                                                :{BLACK}Africana
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Seleccionar caras africanas
 STR_FACE_YES                                                    :Si
 STR_FACE_NO                                                     :Non
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Activar mostacho ou pendentes
 STR_FACE_HAIR                                                   :Pelo:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Cambiar pelo
 STR_FACE_EYEBROWS                                               :Cellas:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Cambia-las cellas
 STR_FACE_EYECOLOUR                                              :Cor de ollos:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Cambia a cor de ollos
 STR_FACE_GLASSES                                                :Lentes:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Poñer lentes
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Cambia-las lentes
 STR_FACE_NOSE                                                   :Nariz:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Cambia-lo nariz
 STR_FACE_LIPS                                                   :Beizos:
 STR_FACE_MOUSTACHE                                              :Mostacho:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Cambia-los beizos ou o mostacho
 STR_FACE_CHIN                                                   :Queixo:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Cambia-lo queixo
 STR_FACE_JACKET                                                 :Chaqueta:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Cambia-la chaqueta
 STR_FACE_COLLAR                                                 :Colo:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Cambia-lo colo
 STR_FACE_TIE                                                    :Garavata:
 STR_FACE_EARRING                                                :Pendentes:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cambia-la garavata ou os pendentes
 
 # Matches ServerGameType
 ###length 3
@@ -2876,7 +2855,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Punto de ruta p
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Selección de sinais
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Activa ou desactiva amosar os tipos de sinais avanzados
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sinal de bloqueo (mecánico){}Este é o tipo máis básico de sinal, só permite un tren no mesmo cantón ao mesmo tempo.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sinal de entrada (mecánico){}Verde mentras haxa un ou máis sinais de saída verdes na seguinte sección de vía. Noutro caso estará vermella.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sinal de saída (mecánico){}Actúa igual que un sinal de bloqueo pero é necesaria para activar a cor correcta nas combinacións de sinal avanzado + sinal de entrada

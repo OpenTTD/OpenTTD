@@ -2341,12 +2341,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Kaubatramm
 STR_FACE_CAPTION                                                :{WHITE}Näo valik
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Tühista uue näo valimine
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Uue näo valimine
-STR_FACE_RANDOM                                                 :{BLACK}Suvaline
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Mees
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Vali mehe nägu
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Naine
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Vali naise nägu
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Uus nägu
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Tekita uus suvaline nägu
 STR_FACE_ADVANCED                                               :{BLACK}Täpsem
@@ -2364,36 +2359,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Ei saanu
 STR_FACE_SAVE                                                   :{BLACK}Salvesta
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Salvesta lemmiknägu
 STR_FACE_SAVE_DONE                                              :{WHITE}See nägu salvestatakse sinu lemmikuna OpenTTD seadete faili.
-STR_FACE_EUROPEAN                                               :{BLACK}Eurooplane
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Vali euroopa näod
-STR_FACE_AFRICAN                                                :{BLACK}Aafriklane
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Vali aafrika näod
 STR_FACE_YES                                                    :Jah
 STR_FACE_NO                                                     :Ei
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Vuntsid või kõrvarõngad on lubatud
 STR_FACE_HAIR                                                   :Soeng:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Vaheta juukseid
 STR_FACE_EYEBROWS                                               :Kulmud:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Vaheta kulmusid
 STR_FACE_EYECOLOUR                                              :Silmavärv:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Vaheta silmavärvi
 STR_FACE_GLASSES                                                :Prillid:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Prillid on lubatud
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Vaheta prille
 STR_FACE_NOSE                                                   :Nina:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Vaheta nina
 STR_FACE_LIPS                                                   :Huuled:
 STR_FACE_MOUSTACHE                                              :Vuntsid:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Vaheta huuli või vuntse
 STR_FACE_CHIN                                                   :Lõug:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Vaheta lõuga
 STR_FACE_JACKET                                                 :Pintsak:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Vaheta pintsakut
 STR_FACE_COLLAR                                                 :Krae:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Vaheta kraed
 STR_FACE_TIE                                                    :Lips:
 STR_FACE_EARRING                                                :Kõrvarõngas:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Vaheta kraed või kõrvarõngast
 
 # Matches ServerGameType
 ###length 3
@@ -2870,7 +2849,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Vaikimisi punkt
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signaali valik
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Vahelda täiustatud signaalitüüpide näitamist
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Läbisõidusignaal (semafor){}Signaale läheb tarvis vältimaks kokkupõrkeid enam kui ühe rongiga rööbasteedel
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sissesõidusignaal (semafor){}Roheline, kuni vähemalt üks väljasõidusignaal on roheline. Muudel juhtudel näitab punast
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Väljasõidusignaal (semafor){}Käitub samamoodi, nagu läbisõidusignaal, kuid läheb vaja et sissesõidu- ja mitmik-hoiatussignaalid näitaksid õiget värvi

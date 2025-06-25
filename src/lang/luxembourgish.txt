@@ -2311,12 +2311,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Wuerentram
 STR_FACE_CAPTION                                                :{WHITE}Gesiichtsauswiel
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Briech d'Auswiel vum Gesiicht of
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Neit Gesiicht akzeptéieren
-STR_FACE_RANDOM                                                 :{BLACK}Duercherneen wierfelen
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Männlech
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Wielt männlech Gesiichter
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Weiblech
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Wielt weiblech Gesiichter
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Neit Gesiicht
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Generéiert zoufällegt neit Gesiicht
 STR_FACE_ADVANCED                                               :{BLACK}Erweidert
@@ -2334,36 +2329,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Konnt d'
 STR_FACE_SAVE                                                   :{BLACK}Späicheren
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Späichert favoriséiert Gesiicht
 STR_FACE_SAVE_DONE                                              :{WHITE}Dëst Gesiicht gëtt als favoriséiert an der OpenTTD Konfiguratiounsdatei gespäichert.
-STR_FACE_EUROPEAN                                               :{BLACK}Europäesch
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Wielt europäesch Gesiichter
-STR_FACE_AFRICAN                                                :{BLACK}Afrikanesch
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Wielt afrikanesch Gesiichter
 STR_FACE_YES                                                    :Jo
 STR_FACE_NO                                                     :Nee
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Schalt Schnauz oder Ouerréng un
 STR_FACE_HAIR                                                   :Hoer:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Hoer änneren
 STR_FACE_EYEBROWS                                               :Aperhoer:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Apenhoer änneren
 STR_FACE_EYECOLOUR                                              :Aafaarf:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Aafaarf änneren
 STR_FACE_GLASSES                                                :Brëll:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Brëll aschalten
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Brëll änneren
 STR_FACE_NOSE                                                   :Nues:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Nues änneren
 STR_FACE_LIPS                                                   :Lëpsen:
 STR_FACE_MOUSTACHE                                              :Schnauz:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Lëpsen oder Schnauz änneren
 STR_FACE_CHIN                                                   :Kënn:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Kënn änneren
 STR_FACE_JACKET                                                 :Paltong:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Paltong änneren
 STR_FACE_COLLAR                                                 :Halsband:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Halsband änneren
 STR_FACE_TIE                                                    :Krawatt:
 STR_FACE_EARRING                                                :Ouerréng:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Krawatt oder Ouerréng änneren
 
 # Matches ServerGameType
 ###length 3
@@ -2868,7 +2847,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Standardweepunk
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalauswiel
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Wiesselen tëschent erweiderte Signaler
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Block Signal (Diks){} Dest ass e Basis-Signal, wat nëmmen engem Zuch zur selwechter Zait erlaabt an engem Block ze sinn
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Agangs-Signal (Diks){}Gréng soulaang een oder méi gréng Ausgangs-Signaler op dem nächsten Streckenabschnitt sinn. Anescht ass et rout.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Ausgangs-Signal (Diks){}Verhält sech wéi en Block-Signal mee gëtt gebraucht fir déi korrekt Faarf ob Agangs- an Combo-Pre-Signaler ze setzen

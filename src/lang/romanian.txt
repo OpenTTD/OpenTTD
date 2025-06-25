@@ -2305,12 +2305,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tramvai marfă
 STR_FACE_CAPTION                                                :{WHITE}Alegerea pozei
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Anulează alegerea unei poze noi
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Acceptă poza selectată
-STR_FACE_RANDOM                                                 :{BLACK}Aleator
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Bărbat
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Alege figură masculină
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Femeie
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Alege figură feminină
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Poză nouă
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Generează poză aleatoare
 STR_FACE_ADVANCED                                               :{BLACK}Avansat
@@ -2328,36 +2323,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Nu am pu
 STR_FACE_SAVE                                                   :{BLACK}Salvează
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Salvează fața preferată
 STR_FACE_SAVE_DONE                                              :{WHITE}Această față va fi salvată ca fața preferată în fișierul de configurare al OpenTTD.
-STR_FACE_EUROPEAN                                               :{BLACK}European
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Alege fețe europene
-STR_FACE_AFRICAN                                                :{BLACK}African
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Alege fețe africane
 STR_FACE_YES                                                    :Da
 STR_FACE_NO                                                     :Nu
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Permite mustață sau cercei
 STR_FACE_HAIR                                                   :Păr:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Schimbă părul
 STR_FACE_EYEBROWS                                               :Sprâncene:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Schimbă sprâncenele
 STR_FACE_EYECOLOUR                                              :Culoare ochi:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Schimbă culoarea ochilor
 STR_FACE_GLASSES                                                :Ochelari:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Permite ochelari
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Schimbă ochelari
 STR_FACE_NOSE                                                   :Nas:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Schimbă nasul
 STR_FACE_LIPS                                                   :Buze:
 STR_FACE_MOUSTACHE                                              :Mustață:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Schimbă buzele sau mustața
 STR_FACE_CHIN                                                   :Bărbie:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Schimbă bărbia
 STR_FACE_JACKET                                                 :Haină:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Schimbă haina
 STR_FACE_COLLAR                                                 :Guler:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Schimbă gulerul
 STR_FACE_TIE                                                    :Cravată:
 STR_FACE_EARRING                                                :Cercei:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Schimbă cravata sau cerceii
 
 # Matches ServerGameType
 ###length 3
@@ -2861,7 +2840,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Punct intermedi
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Alegere semnal
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Comută afișarea tipurilor de semnal avansate
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Semnal standard (semafor){}Acesta este cel mai simplu tip de semnal, permițând numai unui tren să fie în același bloc, la un moment dat
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Semnal de intrare (semafor){}Verde, atat timp cât există unul sau mai multe semnale verzi de ieșire din secțiunea următoare a căii ferate. Altfel indică roșu
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Semnal de ieșire (semafor){}Se comportă în același fel ca semnalul normal, dar este necesar pentru declanșarea culorii corecte la presemnalizatoarele de intrare și cele combinate

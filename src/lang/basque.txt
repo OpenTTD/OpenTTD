@@ -1874,12 +1874,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Merkantzietarak
 STR_FACE_CAPTION                                                :{WHITE}Aurpegia aukeratu
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Bertan behera utzi aurpegia aukeratu
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Aurpegi berria onartu
-STR_FACE_RANDOM                                                 :{BLACK}Ausaz egin
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Gizonezkoa
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Aukeratu gizonezko aurpegiak
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Emakumea
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Aukeratu emakumezko aurpegiak
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Aurpegi berria
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Ausazko aurpegia sortu
 STR_FACE_ADVANCED                                               :{BLACK}Aukera aurreratuak
@@ -1897,36 +1892,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Ezin iza
 STR_FACE_SAVE                                                   :{BLACK}Gorde
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Aurpegia gorde
 STR_FACE_SAVE_DONE                                              :{WHITE}Aurpegia zure aurpegi gogoko bezala gorde da OpenTTDko konfigurazio artxiboan
-STR_FACE_EUROPEAN                                               :{BLACK}Europarra
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Europarren aurpegiak aukeratu
-STR_FACE_AFRICAN                                                :{BLACK}Afrikarra
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Afrikarren aurpegiak aukeratu
 STR_FACE_YES                                                    :Bai
 STR_FACE_NO                                                     :Ez
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Gaitu biboteak eta belarritakoak
 STR_FACE_HAIR                                                   :Ilea:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Ilea aldatu
 STR_FACE_EYEBROWS                                               :Bekainak:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Bekainak aldatu
 STR_FACE_EYECOLOUR                                              :Begien kolorea:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Begien kolorea aldatu
 STR_FACE_GLASSES                                                :Betaurrekoak:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Betaurrikoak gaitu
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Betaurrekoak aldatu
 STR_FACE_NOSE                                                   :Sudurra:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Sudurra aldatu
 STR_FACE_LIPS                                                   :Ezpainak:
 STR_FACE_MOUSTACHE                                              :Bibotea:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Aldatu ezpainak eta bibotea
 STR_FACE_CHIN                                                   :Kokotsa:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Kokotsa aldatu
 STR_FACE_JACKET                                                 :Jaka:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Jaka aldatu
 STR_FACE_COLLAR                                                 :Lepokoa:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Lepokoa aldatu
 STR_FACE_TIE                                                    :Korbata:
 STR_FACE_EARRING                                                :Belarritakoak:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Aldatu korbata eta belarritakoak
 
 # Matches ServerGameType
 ###length 3

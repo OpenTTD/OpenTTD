@@ -2311,12 +2311,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tram Nwyddau
 STR_FACE_CAPTION                                                :{WHITE}Dewiswch Wyneb
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Diddymu dewis wyneb
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Derbyn y dewis newydd o wyneb
-STR_FACE_RANDOM                                                 :{BLACK}Ar hap
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Gwrywaidd
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Dewis gwyneb gwrywaidd
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Benywaidd
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Dewis gwyneb benywaidd
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Gwyneb Newydd
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Cynhyrchu wyneb newydd ar hap
 STR_FACE_ADVANCED                                               :{BLACK}Uwch
@@ -2334,36 +2329,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Methu go
 STR_FACE_SAVE                                                   :{BLACK}Cadw
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Cadw hoff wyneb
 STR_FACE_SAVE_DONE                                              :{WHITE}Bydd yr wyneb hwn yn cael ei gadw fel eich ffefryn yn y ffeil ffurfweddu OpenTTD
-STR_FACE_EUROPEAN                                               :{BLACK}Ewropeiaidd
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Dewis gwyneb Ewropeaidd
-STR_FACE_AFRICAN                                                :{BLACK}Affricanaidd
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Dewis gwyneb Affricanaidd
 STR_FACE_YES                                                    :Ie
 STR_FACE_NO                                                     :Na
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Galluogi mwstásh neu glustdlws
 STR_FACE_HAIR                                                   :Gwallt:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Newid gwallt
 STR_FACE_EYEBROWS                                               :Aeliau:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Newid aeliau
 STR_FACE_EYECOLOUR                                              :Lliw llygaid
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Newid lliw llygaid
 STR_FACE_GLASSES                                                :Sbectol:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Galluogi sbectol
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Newid sbectol
 STR_FACE_NOSE                                                   :Trwyn:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Newid trwyn
 STR_FACE_LIPS                                                   :Gwefusau:
 STR_FACE_MOUSTACHE                                              :Mwstásh:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Newid gwefusau neu fwstásh
 STR_FACE_CHIN                                                   :Gen:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Newid gen
 STR_FACE_JACKET                                                 :Siaced:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Newid siaced
 STR_FACE_COLLAR                                                 :Coler:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Newid coler
 STR_FACE_TIE                                                    :Tei:
 STR_FACE_EARRING                                                :Clustlws:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Newid tei neu glustlws
 
 # Matches ServerGameType
 ###length 3
@@ -2868,7 +2847,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Pwynt llwybro r
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Dewis Signal
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Toglu dangos mathau signal uwch
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Signal Bloc (semaffor){}Dyma'r math mwyaf sylfaenol o signal, sy'n caniatáu un trên yn unig ymhob bloc ar unrhyw adeg
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Signal Mynediad (semaffor){}Gwyrdd cyhyd y bod un neu fwy o signalau gadael yn wyrdd yn yr ardal nesaf o drac. Dangosir coch fel arall
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Signal Gadael (semaffor){}Yn ymddwyn fel signal bloc, ond yn angenrheidiol ar gyfer gweithredu'r lliw cywir ar signalau mynediad a chyfun

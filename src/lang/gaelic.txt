@@ -2159,12 +2159,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Trama carago
 STR_FACE_CAPTION                                                :{WHITE}Taghadh aodainn
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Sguir dhen taghadh aodainn ùir
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Gabh ris an taghadh aodainn ùir
-STR_FACE_RANDOM                                                 :{BLACK}Cuir sìol air thuaiream
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Fireannach
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Tagh aodann fireannaich
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Boireannach
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Tagh aodann boireannaich
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Aodann ùr
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Gin aodann ùr air thuaiream
 STR_FACE_ADVANCED                                               :{BLACK}Adhartach
@@ -2182,36 +2177,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Cha do g
 STR_FACE_SAVE                                                   :{BLACK}Sàbhail
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Sàbhail mar an t-aodann as fhearr leat
 STR_FACE_SAVE_DONE                                              :{WHITE}Thèid an t-aodann seo a shàbhaladh mar am fear as fhearr leat san fhaidhle rèiteachaidh aig OpenTTD
-STR_FACE_EUROPEAN                                               :{BLACK}Eòrpach
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Tagh aodann Eòrpach
-STR_FACE_AFRICAN                                                :{BLACK}Afraganach
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Tagh aodann Afraganach
 STR_FACE_YES                                                    :Air/Oirre
 STR_FACE_NO                                                     :—
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Cuir stais no fàinne-chluaise an comas
 STR_FACE_HAIR                                                   :Falt:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Atharraich am falt
 STR_FACE_EYEBROWS                                               :Malaidhean:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Atharraich na malaidhean
 STR_FACE_EYECOLOUR                                              :Dath sùla:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Atharraich dath nan sùilean
 STR_FACE_GLASSES                                                :Speuclairean:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Cuir speuclairean an comas
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Atharraich na speuclairean
 STR_FACE_NOSE                                                   :Sròn:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Atharraich an t-sròn
 STR_FACE_LIPS                                                   :Bilean:
 STR_FACE_MOUSTACHE                                              :Stais:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Atharraich na bilean no an stais
 STR_FACE_CHIN                                                   :Smigead:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Atharraich an smigead
 STR_FACE_JACKET                                                 :Seacaid:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}atharraich an t-seacaid
 STR_FACE_COLLAR                                                 :Coilear:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Atharraich an coilear
 STR_FACE_TIE                                                    :Tàidh:
 STR_FACE_EARRING                                                :Fàinne-chluaise:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Atharraich an tàidh no an fhàinne-chluaise
 
 # Matches ServerGameType
 ###length 3

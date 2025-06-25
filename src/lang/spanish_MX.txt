@@ -2319,12 +2319,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tranvía de car
 STR_FACE_CAPTION                                                :{WHITE}Selección de cara
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Cancelar selección de nueva cara
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Aceptar selección de nueva cara
-STR_FACE_RANDOM                                                 :{BLACK}Aleatorio
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Hombre
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Elegir cara masculina
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Mujer
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Elegir cara femenina
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nueva cara
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Generar cara al azar
 STR_FACE_ADVANCED                                               :{BLACK}Avanzado
@@ -2342,36 +2337,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}No se pu
 STR_FACE_SAVE                                                   :{BLACK}Guardar
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Guardar cara favorita
 STR_FACE_SAVE_DONE                                              :{WHITE}Cara guardada como favorita en el archivo de configuración
-STR_FACE_EUROPEAN                                               :{BLACK}Europea
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Elegir cara con rasgos europeos
-STR_FACE_AFRICAN                                                :{BLACK}Africana
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Elegir cara con rasgos africanos
 STR_FACE_YES                                                    :Sí
 STR_FACE_NO                                                     :No
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Añadir bigotes o aretes
 STR_FACE_HAIR                                                   :Pelo:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Cambiar cabello
 STR_FACE_EYEBROWS                                               :Cejas:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Cambiar cejas
 STR_FACE_EYECOLOUR                                              :Color de ojos:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Cambiar color de ojos
 STR_FACE_GLASSES                                                :Gafas:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Añadir gafas
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Cambiar gafas
 STR_FACE_NOSE                                                   :Nariz:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Cambiar nariz
 STR_FACE_LIPS                                                   :Labios:
 STR_FACE_MOUSTACHE                                              :Bigote:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Cambiar labios o bigote
 STR_FACE_CHIN                                                   :Barbilla:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Cambiar barbilla
 STR_FACE_JACKET                                                 :Saco:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Cambiar saco
 STR_FACE_COLLAR                                                 :Cuello:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Cambiar cuello
 STR_FACE_TIE                                                    :Corbata:
 STR_FACE_EARRING                                                :Aretes:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cambiar corbata o aretes
 
 # Matches ServerGameType
 ###length 3
@@ -2876,7 +2855,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Punto de ruta p
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Selección de señales
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Alternar vista de señales avanzadas
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Señal de tramo (mecánica){}Es la señal más básica. Permite a un solo tren ocupar un tramo de vía entre dos señales
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Señal de entrada (mecánica){}Se abre si existe una o más señales de salida en el siguiente tramo, de lo contrario se mostrará cerrada
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Señal de salida (mecánica){}Igual que una señal de tramo pero es necesaria para activar la posición correcta de las señales de entrada y combo

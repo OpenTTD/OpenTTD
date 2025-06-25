@@ -2092,12 +2092,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :חשמלית מ
 STR_FACE_CAPTION                                                :{WHITE}בחירת תווי פנים
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}בטל פנים חדשות
 STR_FACE_OK_TOOLTIP                                             :{BLACK}אישור תווי פנים
-STR_FACE_RANDOM                                                 :{BLACK}אקראית
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}גבר
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}בחר תווי פנים של גברים
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}אישה
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}בחר תווי פנים של נשים
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}פנים חדשות
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}צור תווי פנים באקראי
 STR_FACE_ADVANCED                                               :{BLACK}מתקדם
@@ -2115,36 +2110,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}לא נ�
 STR_FACE_SAVE                                                   :{BLACK}שמור
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}שמור את הפנים לקובץ
 STR_FACE_SAVE_DONE                                              :{WHITE}פנים אלה ישמרו כהעדפה אישית שלך בקובץ ההגדרות של המשחק
-STR_FACE_EUROPEAN                                               :{BLACK}אירופאי
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}בחר תווי פנים אירופאיים
-STR_FACE_AFRICAN                                                :{BLACK}אפריקני
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}בחר תווי פנים אפריקניים
 STR_FACE_YES                                                    :כן
 STR_FACE_NO                                                     :לא
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}אפשר זקן/עגילים
 STR_FACE_HAIR                                                   ::שיער
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}שנה שיער
 STR_FACE_EYEBROWS                                               ::גבות
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}שנה גבות
 STR_FACE_EYECOLOUR                                              ::צבע עיניים
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}שנה צבע עיניים
 STR_FACE_GLASSES                                                ::משקפיים
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}אפשר משקפיים
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK} שנה משקפיים
 STR_FACE_NOSE                                                   :: אף
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}שנה אף
 STR_FACE_LIPS                                                   ::שפתיים
 STR_FACE_MOUSTACHE                                              ::שפם
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}שנה שפתיים או שפם
 STR_FACE_CHIN                                                   ::סנטר
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}שנה סנטר
 STR_FACE_JACKET                                                 ::חליפה
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}שנה חליפה
 STR_FACE_COLLAR                                                 ::צווארון
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}שנה צווארון
 STR_FACE_TIE                                                    ::עניבה
 STR_FACE_EARRING                                                ::עגילים
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK} שנה עניבה/עגילים
 
 # Matches ServerGameType
 ###length 3
@@ -2572,7 +2551,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :תחנת ברי
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}בחירת רמזורים
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK} החלף הצגת רמזורים מתקדמים
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}רמזור בלוק (מכאניים){}זהו הרמזורי הפשוט ביותר, מאפשר לרכבת אחת בלבד להמצא בבלוק מסויים בזמן נתון
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}רמזור כניסה (סמפור){}ירוקים כל עוד יש לפחות רמזור יציאה ירוק מקטע המסילה העוקב. אחרת מראה אדום
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}רמזור יציאה (סמפור){} מתנהג בדומה לרמזור הבלוק, אבל נחוץ להצגת הצבע הנכון ברמזורי כניסה ורמזורים משולבים

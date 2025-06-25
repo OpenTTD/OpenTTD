@@ -2300,12 +2300,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tàu Hàng Đi�
 STR_FACE_CAPTION                                                :{WHITE}Chọn Khuôn Mặt
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Bỏ qua lựa chọn vẻ mặt
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Lựa chọn vẻ mặt mới
-STR_FACE_RANDOM                                                 :{BLACK}Sinh Ngẫu Nhiên
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Nam
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Chọn khuôn mặt nam
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Nữ
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Chọn khuôn mặt nữ
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Vẻ Mặt Mới
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Chọn ngẫu nhiên vẻ mặt mới
 STR_FACE_ADVANCED                                               :{BLACK}Nâng cao
@@ -2323,36 +2318,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Không t
 STR_FACE_SAVE                                                   :{BLACK}Lưu
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Lưu gương mặt yêu thích
 STR_FACE_SAVE_DONE                                              :{WHITE}Gương mặt yêu thích này sẽ được lưu lại trong tập tin cấu hình OpenTTD .
-STR_FACE_EUROPEAN                                               :{BLACK}Châu Âu
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Chọn khuôn mặt Châu Âu
-STR_FACE_AFRICAN                                                :{BLACK}Châu Phi
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Chọn khuôn mặt Châu Phi
 STR_FACE_YES                                                    :Đồng ý
 STR_FACE_NO                                                     :Không
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Chọn ria mép hoặc bông tai
 STR_FACE_HAIR                                                   :Tóc:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Thay đổi tóc
 STR_FACE_EYEBROWS                                               :Lông mày:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Thay đổi Lông mày
 STR_FACE_EYECOLOUR                                              :Màu mắt:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Thay đổi màu mắt
 STR_FACE_GLASSES                                                :Mắt kính:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Chọn mắt kính
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Thay đổi mắt kính
 STR_FACE_NOSE                                                   :Mũi:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Thay đổi mũi
 STR_FACE_LIPS                                                   :Môi:
 STR_FACE_MOUSTACHE                                              :Ria mép:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Thay đổi môi hoặc ria mép
 STR_FACE_CHIN                                                   :Cằm:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Thay đổi cằm
 STR_FACE_JACKET                                                 :Áo Jacket:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Thay đổi áo Jacket
 STR_FACE_COLLAR                                                 :Cổ áo:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Thay đổi cổ áo
 STR_FACE_TIE                                                    :Cà vạt:
 STR_FACE_EARRING                                                :Bông tai:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Thay đổi cà vạt hoặc bông tai
 
 # Matches ServerGameType
 ###length 3
@@ -2855,7 +2834,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Điểm mốc m
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Chọn Đèn Tín Hiệu
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Bật/tắt hiển thị các loại đèn báo nâng cao
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Đèn (cờ) tín hiệu khoá{}Đây là loại tín hiệu cơ bản, chỉ cho phép một đoàn tàu đi vào chỗ khoá cùng một thời điểm.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Đèn (cờ) tín hiệu cửa nhập{}Sẽ xanh nếu một hoặc nhiều đèn tín hiệu cửa thoát ở phía sau màu xanh. Không thì sẽ đỏ.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Đèn (cờ) tín hiệu cửa thoát{}Tương tự đèn tín hiệu khoá, nhưng cần có để đổi trạng thái của đèn tín hiệu loại cửa nhập & kết hợp nằm trước nó.

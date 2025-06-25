@@ -764,7 +764,6 @@ STR_LIVERY_ELECTRIC                                             :इलेक्
 # Face selection window
 
 STR_FACE_LOAD_DONE                                              :{WHITE}ओपनटीटीडी प्रारूप पत्र से आपका प्रिय चेहरा भर लिया गया है
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}कॉलर बदलें
 
 # Matches ServerGameType
 ###length 3

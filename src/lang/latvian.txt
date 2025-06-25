@@ -2322,12 +2322,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Kravas tramvajs
 STR_FACE_CAPTION                                                :{WHITE}Sejas izvēle
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Pārtraukt jaunas sejas izvēli
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Apstiprināt izvēlēto seju
-STR_FACE_RANDOM                                                 :{BLACK}Nejaušs
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Vīrietis
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Izvēlēties vīriešu sejas
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Sieviete
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Izvēlēties sieviešu sejas
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Jauna seja
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Radīt nejaušu seju
 STR_FACE_ADVANCED                                               :{BLACK}Papildu
@@ -2345,36 +2340,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Nevar pi
 STR_FACE_SAVE                                                   :{BLACK}Saglabāt
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Saglabāt iecienīto seju
 STR_FACE_SAVE_DONE                                              :{WHITE}Šī seja tiks saglabāta OpenTDD konfigurācijas failā kā iecienītā seja
-STR_FACE_EUROPEAN                                               :{BLACK}Eiropietis
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Izvēlēties eiropiešu sejas
-STR_FACE_AFRICAN                                                :{BLACK}Afrikānis
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Izvēlēties afrikāņu sejas
 STR_FACE_YES                                                    :Ir
 STR_FACE_NO                                                     :Nav
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Iespējot ūsas vai auskarus
 STR_FACE_HAIR                                                   :Mati:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Mainīt matus
 STR_FACE_EYEBROWS                                               :Uzacis:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Mainīt uzacis
 STR_FACE_EYECOLOUR                                              :Acu krāsa:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Mainīt acu krāsu
 STR_FACE_GLASSES                                                :Brilles:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Iespējot brilles
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Mainīt brilles
 STR_FACE_NOSE                                                   :Deguns:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Mainīt degunu
 STR_FACE_LIPS                                                   :Lūpas:
 STR_FACE_MOUSTACHE                                              :Ūsas:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Mainīt lūpas vai ūsas
 STR_FACE_CHIN                                                   :Zods:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Mainīt zodu
 STR_FACE_JACKET                                                 :Jaka:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Mainīt jaku
 STR_FACE_COLLAR                                                 :Apkakle:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Mainīt apkakli
 STR_FACE_TIE                                                    :Kaklasaite:
 STR_FACE_EARRING                                                :Auskars:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Mainīt kaklasaiti vai auskarus
 
 # Matches ServerGameType
 ###length 3
@@ -2879,7 +2858,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Noklusējuma pi
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signāla izvēle
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Pārslēdziet papildu signālu veidu rādīšanu
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Bloka signālierīce (semafors){}Šis ir pats vienkāršākais signālierīces veids, kas ļauj uz bloka vienlaicīgi atrasties tikai vienam vilcienam
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Ieejas signālierīce (semafors){}Zaļš kamēr ir viens vai vairāki zaļi izejas signāli no sekojošās sliežu sekcijas. Citādi signāls būs sarkans
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Izejas signālierīce (semafors){}Uzvedas tāpat kā bloka signālierīce, bet tā ir nepieciešama, lai pirmssignālu ierīces rādītu pareizās krāsas

@@ -2382,12 +2382,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Teherszállít�
 STR_FACE_CAPTION                                                :{WHITE}Arcválasztás
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Új arc elvetése
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Új arc elfogadása
-STR_FACE_RANDOM                                                 :{BLACK}Új véletlen alapszám
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Férfi
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Férfi arcok kiválasztása
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Nő
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Női arcok kiválasztása
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Új arc
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Véletlenszerű új arc létrehozása
 STR_FACE_ADVANCED                                               :{BLACK}Fejlett
@@ -2405,36 +2400,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Elnöki 
 STR_FACE_SAVE                                                   :{BLACK}Mentés
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Kedvenc arc elmentése
 STR_FACE_SAVE_DONE                                              :{WHITE}Ez az arc mint a kedvenc arcod kerül az OpenTTD konfig-fájlba mentésre.
-STR_FACE_EUROPEAN                                               :{BLACK}Európai
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Európai arc választása
-STR_FACE_AFRICAN                                                :{BLACK}Afrikai
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Afrikai arc választása
 STR_FACE_YES                                                    :Igen
 STR_FACE_NO                                                     :Nem
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Engedélyez bajuszt vagy a fülbevalót
 STR_FACE_HAIR                                                   :Haj:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Haj cseréje
 STR_FACE_EYEBROWS                                               :Szemöldök:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Szemöldök cseréje
 STR_FACE_EYECOLOUR                                              :Szemszín:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Szemszín cseréje
 STR_FACE_GLASSES                                                :Szemüveg:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Szemüveg engedélyezése
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Szemüveg cseréje
 STR_FACE_NOSE                                                   :Orr:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Orr cseréje
 STR_FACE_LIPS                                                   :Ajkak:
 STR_FACE_MOUSTACHE                                              :Bajusz:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Ajkak vagy bajusz cseréje
 STR_FACE_CHIN                                                   :Áll:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Áll cseréje
 STR_FACE_JACKET                                                 :Kabát
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Kabát cseréje
 STR_FACE_COLLAR                                                 :Gallér
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Gallér cseréje
 STR_FACE_TIE                                                    :Nyakkendő:
 STR_FACE_EARRING                                                :Fülbevaló:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Nyakkendő vagy fülbevaló cseréje
 
 # Matches ServerGameType
 ###length 3
@@ -2895,6 +2874,10 @@ STR_PICKER_MODE_USED_TOOLTIP                                    :Csak a meglév�
 STR_PICKER_MODE_SAVED                                           :Mentve
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Csak a mentett elemek megjelenítése
 
+STR_PICKER_PREVIEW_SHRINK                                       :-
+STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Az előnézeti képek méretének csökkentése. Ctrl+kattintás a minimalizáláshoz
+STR_PICKER_PREVIEW_EXPAND                                       :+
+STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Az előnézeti képek méretének növelése. Ctrl+kattintás a maximalizáláshoz
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Válaszd ki a megjeleníteni kívánt állomástípust
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Válassz ki egy állomástípust az építéshez. Ctrl+kattintás a mentett elemek hozzáadásához vagy eltávolításához
@@ -2939,7 +2922,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Alapértelmezet
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Jelzőválasztó
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Mutassa vagy ne mutassa az összes jelzőtípust
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Normál jelző (alak){}A legegyszerűbb jelzőtípus, az előtte lévő jelzőblokkba egyszerre csak egy vonatot enged tartózkodni
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Bejárati jelző (alak){}Mindaddig szabad, amíg van legalább egy szabad kijárati jelző az utána következő szakaszon. Egyébként Megálljt jelez
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Kijárati jelző (alak){}Ugyanúgy viselkedik mint a normál jelző, de megléte elengedhetetlenül szükséges a bejárati- és a kombinált jelzők működéséhez

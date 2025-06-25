@@ -1857,12 +1857,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :عربة ترا
 STR_FACE_CAPTION                                                :{WHITE}اختيار الوجة
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}الغاء اختيار الوجة الجديد
 STR_FACE_OK_TOOLTIP                                             :{BLACK}موافقة على الوجه الجديد
-STR_FACE_RANDOM                                                 :{BLACK}عشوائي
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}رجل
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}اختر وجة رجل
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}امرأة
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}اختر وجة امرأة
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}وجة جديد
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}اختر وجة عشوائي
 STR_FACE_ADVANCED                                               :{BLACK}متقدم
@@ -1880,36 +1875,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}لا ن�
 STR_FACE_SAVE                                                   :{BLACK}حفظ
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}حفظ الوجه المفضل
 STR_FACE_SAVE_DONE                                              :{WHITE}هذا الوجه سيحفظ كالمفضل في ملف تكوينك الخاص بـ Open TTD.
-STR_FACE_EUROPEAN                                               :{BLACK}أوربي
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}إختيار وجوه أوربيه
-STR_FACE_AFRICAN                                                :{BLACK}أفريقي
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}إختيار وجوه أفريقيه
 STR_FACE_YES                                                    :نعم
 STR_FACE_NO                                                     :لا
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}تفعيل الشوارب أو أقراط الأذان
 STR_FACE_HAIR                                                   :الشعر:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}غير الشعر
 STR_FACE_EYEBROWS                                               :الحواجب:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}غير الحواجب
 STR_FACE_EYECOLOUR                                              :لون العيون:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}غير لون العيون
 STR_FACE_GLASSES                                                :نظارات:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}تفعيل النظارات
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}غير النظارات
 STR_FACE_NOSE                                                   :الأنف:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}غير الأنف
 STR_FACE_LIPS                                                   :الشفاه:
 STR_FACE_MOUSTACHE                                              :الشوارب:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}غير الشفاه أو الشوارب
 STR_FACE_CHIN                                                   :الذقن:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}غير الذقن
 STR_FACE_JACKET                                                 :سترة:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}غير السترة
 STR_FACE_COLLAR                                                 :الياقة:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}غير الياقة
 STR_FACE_TIE                                                    :الربطة:
 STR_FACE_EARRING                                                :أقراط الأذان:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}غير الربطة أو أقراط الأذن
 
 # Matches ServerGameType
 ###length 3

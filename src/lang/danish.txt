@@ -2318,12 +2318,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Fragt-sporvogn
 STR_FACE_CAPTION                                                :{WHITE}Ansigtsvalg
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Annuller nyt valg af ansigt
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Accepter nyt ansigtsvalg
-STR_FACE_RANDOM                                                 :{BLACK}Tilfældig
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Mand
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Vælg mandlige ansigter
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Kvinde
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Vælg kvindelige ansigter
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nyt ansigt
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Generer nyt tilfældigt ansigt
 STR_FACE_ADVANCED                                               :{BLACK}Avanceret
@@ -2341,36 +2336,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Kunne ik
 STR_FACE_SAVE                                                   :{BLACK}Gem
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Gem favoritansigt
 STR_FACE_SAVE_DONE                                              :{WHITE}Dette ansigt bliver gemt som din favorit i OpenTTD konfigurationsfilen.
-STR_FACE_EUROPEAN                                               :{BLACK}Europæisk
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Vælg europæiske ansigter
-STR_FACE_AFRICAN                                                :{BLACK}Afrikansk
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Vælg afrikanske ansigter
 STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :Nej
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Slå overskæg eller ørering til
 STR_FACE_HAIR                                                   :Hår:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Ændre hår
 STR_FACE_EYEBROWS                                               :Øjenbryn:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Ændre øjenbryn
 STR_FACE_EYECOLOUR                                              :Øjenfarve:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Skift øjenfarve
 STR_FACE_GLASSES                                                :Briller:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Slå briller til
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Ændre briller
 STR_FACE_NOSE                                                   :Næse:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Ændre næse
 STR_FACE_LIPS                                                   :Læber:
 STR_FACE_MOUSTACHE                                              :Overskæg:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Ændre læber eller overskæg
 STR_FACE_CHIN                                                   :Hage:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Ændre hage
 STR_FACE_JACKET                                                 :Jakke:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Ændre jakke
 STR_FACE_COLLAR                                                 :Krave:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Ændre krave
 STR_FACE_TIE                                                    :Slips:
 STR_FACE_EARRING                                                :Ørering:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Ændre slips eller ørering
 
 # Matches ServerGameType
 ###length 3
@@ -2875,7 +2854,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Standard rutepu
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalvælger
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Vis eller skjul avancerede signaltyper
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Standardsignal (semafor){}Dette er den mest almindelige type signal, og tillader kun et tog ad gangen på den samme signalblok
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Indgangssignal (semafor){}Grønt så længe der er et eller flere grønne udgangssignaler fra den efterfølgende sporsektion. Ellers vises rødt.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Udgangssignal (semafor){}Fungerer som et normalt signal men er nødvendigt for at vise den korrekte farve ved indgangs- og kombisignaler.

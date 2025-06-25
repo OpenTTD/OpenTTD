@@ -2319,12 +2319,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :{G=f}화물 전
 STR_FACE_CAPTION                                                :{WHITE}얼굴 선택
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}새 얼굴 선택을 취소합니다.
 STR_FACE_OK_TOOLTIP                                             :{BLACK}이 얼굴을 선택합니다.
-STR_FACE_RANDOM                                                 :{BLACK}무작위화
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}남성
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}남성 얼굴 선택
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}여성
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}여성 얼굴 선택
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}새 얼굴
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}얼굴을 만듭니다.
 STR_FACE_ADVANCED                                               :{BLACK}고급
@@ -2342,36 +2337,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}플레�
 STR_FACE_SAVE                                                   :{BLACK}저장
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}즐겨찾는 얼굴로 저장
 STR_FACE_SAVE_DONE                                              :{WHITE}이 얼굴이 OpenTTD 설정 파일에 즐겨찾는 얼굴로 저장될 것입니다.
-STR_FACE_EUROPEAN                                               :{BLACK}유럽인
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}유럽인 얼굴 선택
-STR_FACE_AFRICAN                                                :{BLACK}흑인
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}흑인 얼굴 선택
 STR_FACE_YES                                                    :예
 STR_FACE_NO                                                     :아니요
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}콧수염이나 귀걸이 착용
 STR_FACE_HAIR                                                   :머리:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}머리 변경
 STR_FACE_EYEBROWS                                               :눈썹:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}눈썹 변경
 STR_FACE_EYECOLOUR                                              :눈동자 색:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}눈동자색 변경
 STR_FACE_GLASSES                                                :안경:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}안경 착용
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}안경 변경
 STR_FACE_NOSE                                                   :코:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}코 변경
 STR_FACE_LIPS                                                   :입술:
 STR_FACE_MOUSTACHE                                              :콧수염:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}입술/콧수염 변경
 STR_FACE_CHIN                                                   :턱:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}턱 변경
 STR_FACE_JACKET                                                 :자켓:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}자켓 변경
 STR_FACE_COLLAR                                                 :옷깃:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}옷깃 변경
 STR_FACE_TIE                                                    :넥타이:
 STR_FACE_EARRING                                                :귀걸이:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}넥타이/귀걸이 변경
 
 # Matches ServerGameType
 ###length 3
@@ -2832,6 +2811,10 @@ STR_PICKER_MODE_USED_TOOLTIP                                    :존재하는 �
 STR_PICKER_MODE_SAVED                                           :즐겨찾기
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :즐겨찾기된 항목만 표시 전환
 
+STR_PICKER_PREVIEW_SHRINK                                       :-
+STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :미리보기 이미지의 높이를 줄입니다. CTRL+클릭하면 최대로 줄입니다
+STR_PICKER_PREVIEW_EXPAND                                       :+
+STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :미리보기 이미지의 높이를 늘입니다. CTRL+클릭하면 최대로 늘입니다
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :표시할 역 종류를 선택하세요
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :설치하려는 역 종류를 선택하세요. CTRL+클릭하면 즐겨찾기 추가/제거가 가능합니다
@@ -2876,7 +2859,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :기본 경유�
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}신호기 선택
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}고급 신호기 종류를 보이거나 감춥니다
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}폐색 신호기 (구식){}가장 기본적인 신호기 형식입니다. 단 한 대의 열차만이 이 폐색 구간을 통과할 수 있습니다
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}입구 신호기 (구식){}다음 폐색 구간에 있는 출구 신호기가 하나라도 파란불이면 파란불이 되며, 그렇지 않은 경우에는 빨간불이 됩니다
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}출구 신호기 (구식){}일반 신호기와 기능이 똑같지만, 입구 & 복합 신호기와 올바르게 연계되어야 합니다

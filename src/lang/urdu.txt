@@ -1602,10 +1602,6 @@ STR_FACE_CAPTION                                                :{WHITE}چہرہ
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}چہرہ چننا منسوخ کریں
 STR_FACE_OK_TOOLTIP                                             :{BLACK}نیا چہرہ چننا قبول کریں
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}مرد
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}مردانہ چہرے چنئے
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}عورت
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}زنانہ چہرے چنئے
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}نیا چہرہ
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}بے ترتیب نیا چہرہ بنائیں
 STR_FACE_ADVANCED                                               :{BLACK}ایڈوانسڈ
@@ -1623,36 +1619,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}نمبر
 STR_FACE_SAVE                                                   :{BLACK}بچائیں
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}پسندیدہ چہرہ بچائیں
 STR_FACE_SAVE_DONE                                              :{WHITE}یہ چہرہ آپ کے پسندیدہ چہرے کے طور پر OpenTTD configuration file میں محفوظ کر لیا جائے گا
-STR_FACE_EUROPEAN                                               :{BLACK}یورپئین
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}یورپئین چہرہ چنئے
-STR_FACE_AFRICAN                                                :{BLACK}افریقی
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}افریقی چہرہ چنئے
 STR_FACE_YES                                                    :ہاں
 STR_FACE_NO                                                     :نہیں
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}مونچھیں یا کان کی بالیاں فعال کریں
 STR_FACE_HAIR                                                   :بال:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}بال بدلیں
 STR_FACE_EYEBROWS                                               :بھوئیں:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}بھوئیں بدلیں
 STR_FACE_EYECOLOUR                                              :آنکھوں کا رنگ:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}آنکھوں کا رنگ بدلیں
 STR_FACE_GLASSES                                                :چشمے:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}چشمے فعال کریں
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}چشمے بدلیں
 STR_FACE_NOSE                                                   :ناک:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}ناک بدلیں
 STR_FACE_LIPS                                                   :ہونٹ:
 STR_FACE_MOUSTACHE                                              :مونچھیں:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}ہونٹ یا مونچھیں بدلیں
 STR_FACE_CHIN                                                   :ٹھوڑی:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}ٹھوڑی بدلیں
 STR_FACE_JACKET                                                 :جیکٹ:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}جیکٹ بدلیں
 STR_FACE_COLLAR                                                 :کالر:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}کالر بدلیں
 STR_FACE_TIE                                                    :ٹائی:
 STR_FACE_EARRING                                                :بالیاں:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}ٹائی یا بالیاں بدلیں
 
 # Matches ServerGameType
 ###length 3

@@ -2318,12 +2318,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :載貨電車
 STR_FACE_CAPTION                                                :{WHITE}選擇臉孔
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}取消選擇新臉孔
 STR_FACE_OK_TOOLTIP                                             :{BLACK}接受新臉孔
-STR_FACE_RANDOM                                                 :{BLACK}亂數化
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}男性
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}選擇男性臉孔
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}女性
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}選擇女性臉孔
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}產生新臉孔
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}隨機產生新臉孔
 STR_FACE_ADVANCED                                               :{BLACK}進階
@@ -2341,36 +2336,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}無法�
 STR_FACE_SAVE                                                   :{BLACK}儲存
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}儲存喜愛臉孔
 STR_FACE_SAVE_DONE                                              :{WHITE}這將被當成您喜愛的臉孔存入 OpenTTD 設定檔
-STR_FACE_EUROPEAN                                               :{BLACK}歐洲人
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}選擇歐洲人臉孔
-STR_FACE_AFRICAN                                                :{BLACK}非洲人
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}選擇非洲人臉孔
 STR_FACE_YES                                                    :確定
 STR_FACE_NO                                                     :取消
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}增加鬍鬚或耳飾
 STR_FACE_HAIR                                                   :髮型：
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}改變髮型
 STR_FACE_EYEBROWS                                               :眉毛：
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}改變眉毛
 STR_FACE_EYECOLOUR                                              :眼珠顏色：
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}改變眼珠顏色
 STR_FACE_GLASSES                                                :眼鏡：
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}增加眼鏡
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}改變眼鏡
 STR_FACE_NOSE                                                   :鼻子：
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}改變鼻子
 STR_FACE_LIPS                                                   :嘴唇：
 STR_FACE_MOUSTACHE                                              :鬍鬚：
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}改變嘴唇或鬍鬚
 STR_FACE_CHIN                                                   :下巴：
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}改變下巴
 STR_FACE_JACKET                                                 :外套：
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}改變外套
 STR_FACE_COLLAR                                                 :衣領：
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}改變衣領
 STR_FACE_TIE                                                    :領帶：
 STR_FACE_EARRING                                                :耳飾：
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}改變領帶或耳飾
 
 # Matches ServerGameType
 ###length 3
@@ -2831,6 +2810,10 @@ STR_PICKER_MODE_USED_TOOLTIP                                    :切換僅顯示
 STR_PICKER_MODE_SAVED                                           :已儲存
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :切換僅顯示已儲存的項目
 
+STR_PICKER_PREVIEW_SHRINK                                       :-
+STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :縮小預覽圖。按住 <Ctrl> 點選可縮到最小
+STR_PICKER_PREVIEW_EXPAND                                       :+
+STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :放大預覽圖。按住 <Ctrl> 點選可放到最大
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :選擇顯示的車站種類
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :選擇建設的車站類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除
@@ -2875,7 +2858,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :預設號誌站
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}號誌選擇
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}是否顯示進階號誌類型
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}閉塞號誌 (信號){}這是最常見的基本號誌，在同一時間裡只允許一列火車在同個區塊裡。
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}入口號誌 (懸臂){}當綠燈亮時，代表此號誌後有一個以上的出口號誌呈現綠燈，否則將會亮紅燈
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}出口號誌 (懸臂){}與閉塞號誌類似，但它還會負責觸發前頭的入口號誌及組合號誌

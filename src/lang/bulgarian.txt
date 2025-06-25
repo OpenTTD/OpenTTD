@@ -2304,12 +2304,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Товарен 
 STR_FACE_CAPTION                                                :{WHITE}Избор на лице
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Прекъсване избора на ново лице
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Приемане избора на ново лице
-STR_FACE_RANDOM                                                 :{BLACK}Произволно
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Мъж
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Избери мъжки лица
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Жена
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Избери женски лица
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Ново лице
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Генерирай произволно ново лице
 STR_FACE_ADVANCED                                               :{BLACK}Разширени настройки
@@ -2327,36 +2322,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Ново
 STR_FACE_SAVE                                                   :{BLACK}Запази
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Запази любимо лице
 STR_FACE_SAVE_DONE                                              :{WHITE}Това лице ще бъде запазено като Вашето любимо в OpenTTD config файла
-STR_FACE_EUROPEAN                                               :{BLACK}Eвропеец
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Избери Европейски лица
-STR_FACE_AFRICAN                                                :{BLACK}Aфриканец
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Избери Африкански лица
 STR_FACE_YES                                                    :Дa
 STR_FACE_NO                                                     :He
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Позволи мустак или обица
 STR_FACE_HAIR                                                   :Kоса:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Cмени кocaтa
 STR_FACE_EYEBROWS                                               :Вежди:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Смени веждите
 STR_FACE_EYECOLOUR                                              :Цвят на очи:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Смени цвета на очите
 STR_FACE_GLASSES                                                :Oчила:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Позволи oчила
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Cмени очилатa
 STR_FACE_NOSE                                                   :Hoc:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Cмени носа
 STR_FACE_LIPS                                                   :Устни:
 STR_FACE_MOUSTACHE                                              :Mустак :
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Cмени устните или мустака
 STR_FACE_CHIN                                                   :Брада:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Cмени брадатa
 STR_FACE_JACKET                                                 :Cако:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Cмени сакото
 STR_FACE_COLLAR                                                 :Яка:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Cмени якатa
 STR_FACE_TIE                                                    :Вратовръзкa:
 STR_FACE_EARRING                                                :Oбица:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cмени вратовръзкатa или oбицатa
 
 # Matches ServerGameType
 ###length 3
@@ -2847,7 +2826,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Влаков м
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Селекция на сигнал
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Превключване на показването на разширени типове сигнали
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Нормален сигнал (семафор){}Това е най-базовият тип сигнал, позволяващ само един влак да бъде в дадена секция от влаковата линия в даден момент
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Входен сигнал (семафор){}Свети зелено, докато има поне един зелен изходен сигнал от следващия сегмент от пътя. В противен случай свети червено
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Изходен сигнал (семафор){}Действа като нормален сигнал, но е необходим, за да работят входните и комбинираните пред-сигнали

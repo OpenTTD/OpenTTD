@@ -2318,12 +2318,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Vrachttram
 STR_FACE_CAPTION                                                :{WHITE}Gezichtskeuze
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Annuleer nieuwe gezichtskeuze
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Accepteer nieuwe gezichtskeuze
-STR_FACE_RANDOM                                                 :{BLACK}Willekeurig maken
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Mannelijk
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Selecteer mannelijke gezichten
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Vrouwelijk
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Selecteer vrouwelijke gezichten
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nieuw gezicht
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Genereer willekeurig nieuw gezicht
 STR_FACE_ADVANCED                                               :{BLACK}Geavanceerd
@@ -2341,36 +2336,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Kon gezi
 STR_FACE_SAVE                                                   :{BLACK}Opslaan
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Favoriet gezicht opslaan
 STR_FACE_SAVE_DONE                                              :{WHITE}Dit gezicht wordt in het OpenTTD-configuratiebestand opgeslagen als jouw favoriet
-STR_FACE_EUROPEAN                                               :{BLACK}Europeaans
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Selecteer Europese gezichten
-STR_FACE_AFRICAN                                                :{BLACK}Afrikaans
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Selecteer Afrikaanse gezichten
 STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :Nee
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Geef het gezicht een snor of oorbel
 STR_FACE_HAIR                                                   :Haar:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Verander haar
 STR_FACE_EYEBROWS                                               :Wenkbrauwen:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Verander wenkbrauwen
 STR_FACE_EYECOLOUR                                              :Oogkleur:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Verander oogkleur
 STR_FACE_GLASSES                                                :Bril:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Geef het gezicht een bril
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Verander bril
 STR_FACE_NOSE                                                   :Neus:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Verander neus
 STR_FACE_LIPS                                                   :Lippen:
 STR_FACE_MOUSTACHE                                              :Snor:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Verander lippen of snor
 STR_FACE_CHIN                                                   :Kin:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Verander kin
 STR_FACE_JACKET                                                 :Jas:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Verander jas
 STR_FACE_COLLAR                                                 :Kraag:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Verander kraag
 STR_FACE_TIE                                                    :Stropdas:
 STR_FACE_EARRING                                                :Oorbel:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Verander das of oorbel
 
 # Matches ServerGameType
 ###length 3
@@ -2875,7 +2854,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Standaard route
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Seinselectie
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Wisselen tussen geavanceerde seintypen weergeven-verbergen
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Bloksein (armsein){}Dit is het simpelste soort sein dat slechts één trein tegelijk in hetzelfde blok toelaat
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Ingangssein (armsein){}Groen als er een groen uitgangssein is uit het volgende blok. Anders rood.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Uitgangssein (armsein){}Gedraagt zich hetzelfde als een standaardsein, maar is nodig om ingangs- en combinatie-voorseinen aan te sturen

@@ -2284,12 +2284,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Yük Tramvayı
 STR_FACE_CAPTION                                                :{WHITE}Surat Seçimi
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Seçimi iptal et
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Seçimi Kabul et
-STR_FACE_RANDOM                                                 :{BLACK}Rastgele
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Erkek
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Erkek suratlarıni seç
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Bayan
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Bayan suratlarını seç
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Yeni Surat
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Rastgele surat yap
 STR_FACE_ADVANCED                                               :{BLACK}Gelişmiş
@@ -2307,36 +2302,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Şirket 
 STR_FACE_SAVE                                                   :{BLACK}Kaydet
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Tercih edilen yüzü kaydet
 STR_FACE_SAVE_DONE                                              :{WHITE}Bu yüz OpenTTD ayar dosyasına favoriniz olarak kaydedilecek
-STR_FACE_EUROPEAN                                               :{BLACK}Avrupalı
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Avrupalı yüz seç
-STR_FACE_AFRICAN                                                :{BLACK}Afrikalı
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Siyah yüz seç
 STR_FACE_YES                                                    :Evet
 STR_FACE_NO                                                     :Hayır
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Bıyık veya küpeyi etkinleştir
 STR_FACE_HAIR                                                   :Saç:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Saçı değiştir
 STR_FACE_EYEBROWS                                               :Kaşlar:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Kaşları değiştir
 STR_FACE_EYECOLOUR                                              :Göz rengi:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Göz rengini değiştir
 STR_FACE_GLASSES                                                :Gözlük:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Gözlüğü etkinleştir
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Gözlüğü değiştir
 STR_FACE_NOSE                                                   :Burun:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Burnu değiştir
 STR_FACE_LIPS                                                   :Dudak:
 STR_FACE_MOUSTACHE                                              :Bıyık:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Dudakları veya bıyığı değiştir
 STR_FACE_CHIN                                                   :Çene:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Çeneyi değiştir
 STR_FACE_JACKET                                                 :Ceket:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Ceketi değiştir
 STR_FACE_COLLAR                                                 :Yaka:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Yakayı değiştir
 STR_FACE_TIE                                                    :Kravat:
 STR_FACE_EARRING                                                :Küpe:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Kravatı veya küpeyi değiştir
 
 # Matches ServerGameType
 ###length 3
@@ -2826,7 +2805,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Varsayılan yol
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Sinyal Seçimi
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Gelişmiş sinyal türlerini göster
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blok Sinyali (semafor){}Bu en temel sinyal türüdür, bir blok içinde aynı anda yalnız bir tren bulunmasına izin verir
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Giriş-Sinyali (semafor){}Yolun devam eden bölümünde en az bir yeşil çıkış sinyali olduğu sürece yeşil yanar. Aksi halde kırmızı yanar
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Çıkış Sinyali (semafor){}Blok sinyali ile aynı şekilde çalışır ancak giriş ve karışık ön sinyaller ile doğru rengi tetiklemek gerekmektedir

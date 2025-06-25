@@ -2326,12 +2326,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tram merci
 STR_FACE_CAPTION                                                :{WHITE}Seleziona faccia
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Annulla la selezione della nuova faccia
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Accetta la selezione della nuova faccia
-STR_FACE_RANDOM                                                 :{BLACK}Scegli a caso
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Maschio
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Seleziona fra volti maschili
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Femmina
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Seleziona fra volti femminili
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nuova faccia
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Genera una nuova faccia a caso
 STR_FACE_ADVANCED                                               :{BLACK}Avanzata
@@ -2349,36 +2344,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Impossib
 STR_FACE_SAVE                                                   :{BLACK}Salva
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Salva come faccia preferita
 STR_FACE_SAVE_DONE                                              :{WHITE}La faccia corrente è stata salvata come preferita nel file di configurazione di OpenTTD
-STR_FACE_EUROPEAN                                               :{BLACK}Europea
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Seleziona le facce europee
-STR_FACE_AFRICAN                                                :{BLACK}Africana
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Seleziona le facce africane
 STR_FACE_YES                                                    :Sì
 STR_FACE_NO                                                     :No
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Abilita i baffi o l'orecchino
 STR_FACE_HAIR                                                   :Capelli:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Cambia i capelli
 STR_FACE_EYEBROWS                                               :Sopracciglia:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Cambia le sopracciglia
 STR_FACE_EYECOLOUR                                              :Colore occhi:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Cambia il colore degli occhi
 STR_FACE_GLASSES                                                :Occhiali:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Abilita gli occhiali
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Cambia gli occhiali
 STR_FACE_NOSE                                                   :Naso:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Cambia il naso
 STR_FACE_LIPS                                                   :Labbra:
 STR_FACE_MOUSTACHE                                              :Baffi:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Cambia le labbra o i baffi
 STR_FACE_CHIN                                                   :Mento:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Cambia il mento
 STR_FACE_JACKET                                                 :Giacca:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Cambia la giacca
 STR_FACE_COLLAR                                                 :Colletto:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Cambia il colletto
 STR_FACE_TIE                                                    :Cravatta:
 STR_FACE_EARRING                                                :Orecchino:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cambia la cravatta o l'orecchino
 
 # Matches ServerGameType
 ###length 3
@@ -2869,7 +2848,6 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Waypoint predef
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Selezione segnale
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Attiva/disattiva la visualizzazione dei tipi di segnale avanzati
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Segnale di blocco (semaforico){}I segnali sono necessari per impedire ai convogli di scontrarsi su reti ferroviarie dove viaggia più di un treno
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Segnale di entrata (semaforico){}Questo pre-segnale permette l'accesso a un blocco solo se è presente almeno un segnale di uscita verde al termine della sezione del blocco, altrimenti è rosso.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Segnale di uscita (semaforico){}Questo pre-segnale interagisce con i segnali di entrata, comunicandogli se vi sono uscite disponibili dal blocco, a cui entrambi appartengono. Se non è in combinazione con un segnale di entrata, si comporta come un comune segnale di blocco.

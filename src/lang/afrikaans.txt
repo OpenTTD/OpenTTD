@@ -1986,12 +1986,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Vrag Trem
 STR_FACE_CAPTION                                                :{WHITE}Gesig Keuse
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Kanselleer nuwe gesig keuse
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Aanvar nuwe gesig keuse
-STR_FACE_RANDOM                                                 :{BLACK}Lukraake
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Manlik
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Kies manlik gesigte
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Vroulik
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Kies vroulik gesigte
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nuwe Gesig
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Genereer nuwe lukrake gesig
 STR_FACE_ADVANCED                                               :{BLACK}Voorlopend
@@ -2009,36 +2004,20 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Kon nie 
 STR_FACE_SAVE                                                   :{BLACK}Spaar
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Spaar gunsteling gesig
 STR_FACE_SAVE_DONE                                              :{WHITE}Die gesig sal as u gunsteling gesig in die OpenTTD stellings lêer gespaar word.
-STR_FACE_EUROPEAN                                               :{BLACK}Europiese
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Kies europese gesigte
-STR_FACE_AFRICAN                                                :{BLACK}Afrikaanse
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Kies Afrikaanse gesigte
 STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :Nee
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Aktiveer snor of oorbel
 STR_FACE_HAIR                                                   :Hare:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Verander hare
 STR_FACE_EYEBROWS                                               :Winkbroue:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Verander winkbroue
 STR_FACE_EYECOLOUR                                              :Oog kleur:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Verander oogkleur
 STR_FACE_GLASSES                                                :Brille:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Aktiveer brille
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Verander brille
 STR_FACE_NOSE                                                   :Neus:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Verander neus
 STR_FACE_LIPS                                                   :Lippe:
 STR_FACE_MOUSTACHE                                              :Snor:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Verander lippe of snor
 STR_FACE_CHIN                                                   :Ken:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Verander ken
 STR_FACE_JACKET                                                 :Jas:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Verander jas
 STR_FACE_COLLAR                                                 :Kraag:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Verander kraag
 STR_FACE_TIE                                                    :Das:
 STR_FACE_EARRING                                                :Oorbel:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Verander das of oorbel
 
 # Matches ServerGameType
 ###length 3
