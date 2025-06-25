@@ -241,7 +241,7 @@ static void PlaceRoadStop(TileIndex start_tile, TileIndex end_tile, RoadStopType
 
 	auto proc = [=](bool test, StationID to_join) -> bool {
 		if (test) {
-			return Command<Commands::BuildRoadStop>::Do(CommandFlagsToDCFlags(GetCommandFlags<Commands::BuildRoadStop>()), ta.tile, ta.w, ta.h, stop_type, drive_through,
+			return Command<Commands::BuildRoadStop>::Query(ta.tile, ta.w, ta.h, stop_type, drive_through,
 					ddir, rt, spec_class, spec_index, StationID::Invalid(), adjacent).Succeeded();
 		} else {
 			return Command<Commands::BuildRoadStop>::Post(err_msg, CcRoadStop, ta.tile, ta.w, ta.h, stop_type, drive_through,
@@ -814,7 +814,7 @@ struct BuildRoadToolbarWindow : Window {
 
 							auto proc = [=](bool test, StationID to_join) -> bool {
 								if (test) {
-									return Command<Commands::BuildRoadWaypoint>::Do(CommandFlagsToDCFlags(GetCommandFlags<Commands::BuildRoadWaypoint>()), ta.tile, axis, ta.w, ta.h, _waypoint_gui.sel_class, _waypoint_gui.sel_type, StationID::Invalid(), adjacent).Succeeded();
+									return Command<Commands::BuildRoadWaypoint>::Query(ta.tile, axis, ta.w, ta.h, _waypoint_gui.sel_class, _waypoint_gui.sel_type, StationID::Invalid(), adjacent).Succeeded();
 								} else {
 									return Command<Commands::BuildRoadWaypoint>::Post(STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT, CcPlaySound_CONSTRUCTION_OTHER, ta.tile, axis, ta.w, ta.h, _waypoint_gui.sel_class, _waypoint_gui.sel_type, to_join, adjacent);
 								}

@@ -219,7 +219,7 @@ struct BuildDocksToolbarWindow : Window {
 				bool adjacent = _ctrl_pressed;
 				auto proc = [=](bool test, StationID to_join) -> bool {
 					if (test) {
-						return Command<Commands::BuildDock>::Do(CommandFlagsToDCFlags(GetCommandFlags<Commands::BuildDock>()), tile, StationID::Invalid(), adjacent).Succeeded();
+						return Command<Commands::BuildDock>::Query(tile, StationID::Invalid(), adjacent).Succeeded();
 					} else {
 						return Command<Commands::BuildDock>::Post(STR_ERROR_CAN_T_BUILD_DOCK_HERE, CcBuildDocks, tile, to_join, adjacent);
 					}

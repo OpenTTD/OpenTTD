@@ -220,7 +220,7 @@ static void PlaceRail_Station(TileIndex tile)
 
 		auto proc = [=](bool test, StationID to_join) -> bool {
 			if (test) {
-				return Command<Commands::BuildRailStation>::Do(CommandFlagsToDCFlags(GetCommandFlags<Commands::BuildRailStation>()), tile, rt, params.axis, numtracks, platlength, params.sel_class, params.sel_type, StationID::Invalid(), adjacent).Succeeded();
+				return Command<Commands::BuildRailStation>::Query(tile, rt, params.axis, numtracks, platlength, params.sel_class, params.sel_type, StationID::Invalid(), adjacent).Succeeded();
 			} else {
 				return Command<Commands::BuildRailStation>::Post(STR_ERROR_CAN_T_BUILD_RAILROAD_STATION, CcStation, tile, rt, params.axis, numtracks, platlength, params.sel_class, params.sel_type, to_join, adjacent);
 			}
@@ -794,7 +794,7 @@ struct BuildRailToolbarWindow : Window {
 
 							auto proc = [=](bool test, StationID to_join) -> bool {
 								if (test) {
-									return Command<Commands::BuildRailWaypoint>::Do(CommandFlagsToDCFlags(GetCommandFlags<Commands::BuildRailWaypoint>()), ta.tile, axis, ta.w, ta.h, _waypoint_gui.sel_class, _waypoint_gui.sel_type, StationID::Invalid(), adjacent).Succeeded();
+									return Command<Commands::BuildRailWaypoint>::Query(ta.tile, axis, ta.w, ta.h, _waypoint_gui.sel_class, _waypoint_gui.sel_type, StationID::Invalid(), adjacent).Succeeded();
 								} else {
 									return Command<Commands::BuildRailWaypoint>::Post(STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT , CcPlaySound_CONSTRUCTION_RAIL, ta.tile, axis, ta.w, ta.h, _waypoint_gui.sel_class, _waypoint_gui.sel_type, to_join, adjacent);
 								}
@@ -987,7 +987,7 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 
 	auto proc = [=](bool test, StationID to_join) -> bool {
 		if (test) {
-			return Command<Commands::BuildRailStation>::Do(CommandFlagsToDCFlags(GetCommandFlags<Commands::BuildRailStation>()), ta.tile, rt, params.axis, numtracks, platlength, params.sel_class, params.sel_type, StationID::Invalid(), adjacent).Succeeded();
+			return Command<Commands::BuildRailStation>::Query(ta.tile, rt, params.axis, numtracks, platlength, params.sel_class, params.sel_type, StationID::Invalid(), adjacent).Succeeded();
 		} else {
 			return Command<Commands::BuildRailStation>::Post(STR_ERROR_CAN_T_BUILD_RAILROAD_STATION, CcStation, ta.tile, rt, params.axis, numtracks, platlength, params.sel_class, params.sel_type, to_join, adjacent);
 		}
