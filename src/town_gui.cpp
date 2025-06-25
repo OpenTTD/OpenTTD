@@ -1377,7 +1377,7 @@ void DrawHouseInGUI(int x, int y, HouseID house_id, int view)
 		/* Add a house on top of the ground? */
 		if (dcts.building.sprite != 0) {
 			Point pt = RemapCoords(dcts.subtile_x, dcts.subtile_y, 0);
-			DrawSprite(dcts.building.sprite, dcts.building.pal, x + ScaleSpriteTrad(pt.x), y + ScaleSpriteTrad(pt.y));
+			DrawSprite(dcts.building.sprite, dcts.building.pal, x + UnScaleGUI(pt.x), y + UnScaleGUI(pt.y));
 		}
 	};
 
