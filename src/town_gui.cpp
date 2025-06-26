@@ -1219,8 +1219,16 @@ public:
 		this->SetDirty();
 	}
 
+	/**
+	 * Issue a FoundTown command.
+	 * @param tile Tile for town.
+	 * @param random Use random location.
+	 * @param query Whether to only query the operation.
+	 * @param errstr Error string to use for the operation.
+	 * @param cc Callback to execute.
+	 */
 	template <typename Tcallback>
-	void ExecuteFoundTownCommand(TileIndex tile, bool random, StringID errstr, Tcallback cc)
+	void ExecuteFoundTownCommand(TileIndex tile, bool random, bool query, StringID errstr, Tcallback cc)
 	{
 		std::string name;
 
@@ -1232,7 +1240,7 @@ public:
 			if (original_name != this->townname_editbox.text.GetText()) name = this->townname_editbox.text.GetText();
 		}
 
-		bool success = Command<Commands::FoundTown>::Post(errstr, cc,
+		bool success = Command<Commands::FoundTown>::PostOrQuery(query, errstr, cc,
 				tile, this->town_size, this->city, this->town_layout, random, townnameparts, name);
 
 		/* Rerandomise name, if success and no cost-estimation. */
@@ -1247,7 +1255,7 @@ public:
 				break;
 
 			case WID_TF_RANDOM_TOWN:
-				this->ExecuteFoundTownCommand(TileIndex{}, true, STR_ERROR_CAN_T_GENERATE_TOWN, CcFoundRandomTown);
+				this->ExecuteFoundTownCommand(TileIndex{}, true, false, STR_ERROR_CAN_T_GENERATE_TOWN, CcFoundRandomTown);
 				break;
 
 			case WID_TF_TOWN_NAME_RANDOM:
@@ -1321,9 +1329,9 @@ public:
 		old_generating_world.Restore();
 	}
 
-	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile, bool query) override
 	{
-		this->ExecuteFoundTownCommand(tile, false, STR_ERROR_CAN_T_FOUND_TOWN_HERE, CcFoundTown);
+		this->ExecuteFoundTownCommand(tile, false, query, STR_ERROR_CAN_T_FOUND_TOWN_HERE, CcFoundTown);
 	}
 
 	void OnPlaceObjectAbort() override
@@ -1804,14 +1812,13 @@ struct BuildHouseWindow : public PickerWindow {
 		this->SetWidgetDisabledState(WID_BH_PROTECT_TOGGLE, hasflag);
 	}
 
-	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile, bool query) override
 	{
 		const HouseSpec *spec = HouseSpec::Get(HousePickerCallbacks::sel_type);
-
 		if (spec->building_flags.Test(BuildingFlag::Size1x1)) {
-			VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_PLACE_HOUSE);
+			VpStartPlaceSizing(query, tile, VPM_X_AND_Y, DDSP_PLACE_HOUSE);
 		} else {
-			Command<Commands::PlaceHouse>::Post(STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index(), BuildHouseWindow::house_protected, BuildHouseWindow::replace);
+			Command<Commands::PlaceHouse>::PostOrQuery(query, STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index(), BuildHouseWindow::house_protected, BuildHouseWindow::replace);
 		}
 	}
 
@@ -1820,14 +1827,14 @@ struct BuildHouseWindow : public PickerWindow {
 		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
 	}
 
-	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, [[maybe_unused]] ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile) override
+	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, [[maybe_unused]] ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile, bool query) override
 	{
 		if (pt.x == -1) return;
 
 		assert(select_proc == DDSP_PLACE_HOUSE);
 
 		const HouseSpec *spec = HouseSpec::Get(HousePickerCallbacks::sel_type);
-		Command<Commands::PlaceHouseArea>::Post(STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER,
+		Command<Commands::PlaceHouseArea>::PostOrQuery(query, STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER,
 			end_tile, start_tile, spec->Index(), BuildHouseWindow::house_protected, BuildHouseWindow::replace, _ctrl_pressed);
 	}
 

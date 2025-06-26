@@ -21,6 +21,7 @@ enum TextEffectMode : uint8_t {
 	TE_INVALID, ///< Text effect is invalid.
 	TE_RISING, ///< Make the text effect slowly go upwards
 	TE_STATIC, ///< Keep the text effect static
+	TE_ERROR, ///< Error text effect.
 };
 
 using TextEffectID = uint16_t;

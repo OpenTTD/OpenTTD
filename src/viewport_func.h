@@ -21,6 +21,7 @@
 static const int TILE_HEIGHT_STEP = 50; ///< One Z unit tile height difference is displayed as 50m.
 
 void SetSelectionRed(bool);
+void SetSelectionPulsateRed(bool);
 
 void InitializeWindowViewport(Window *w, int x, int y, int width, int height, std::variant<TileIndex, VehicleID> focus, ZoomLevel zoom);
 Viewport *IsPtInWindowViewport(const Window *w, int x, int y);
@@ -64,7 +65,7 @@ inline void AddSortableSpriteToDraw(SpriteID image, PaletteID pal, const Coord3D
 void StartSpriteCombine();
 void EndSpriteCombine();
 
-bool HandleViewportClicked(const Viewport &vp, int x, int y);
+bool HandleViewportClicked(const Viewport &vp, int x, int y, bool query);
 void SetRedErrorSquare(TileIndex tile);
 void SetTileSelectSize(int w, int h);
 void SetTileSelectBigSize(int ox, int oy, int sx, int sy);

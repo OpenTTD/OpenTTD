@@ -144,9 +144,11 @@ void CcPlaceSign(Commands, const CommandCost &result, SignID new_sign)
  *
  * PlaceProc function, called when someone pressed the button if the
  *  sign-tool is selected
+ * @param query Whether to only query the operation.
  * @param tile on which to place the sign
  */
-void PlaceProc_Sign(TileIndex tile)
+void PlaceProc_Sign(bool query, TileIndex tile)
 {
+	if (query) return;
 	Command<Commands::PlaceSign>::Post(STR_ERROR_CAN_T_PLACE_SIGN_HERE, CcPlaceSign, tile, {});
 }

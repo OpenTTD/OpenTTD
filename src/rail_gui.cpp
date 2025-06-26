@@ -75,7 +75,7 @@ struct StationPickerSelection {
 static StationPickerSelection _station_gui; ///< Settings of the station picker.
 
 
-static void HandleStationPlacement(TileIndex start, TileIndex end);
+static void HandleStationPlacement(bool query, TileIndex start, TileIndex end);
 static void ShowBuildTrainDepotPicker(Window *parent);
 static void ShowBuildWaypointPicker(Window *parent);
 static Window *ShowStationBuilder(Window *parent);
@@ -101,13 +101,19 @@ void CcPlaySound_CONSTRUCTION_RAIL(Commands, const CommandCost &result, TileInde
 	if (result.Succeeded() && _settings_client.sound.confirm) SndPlayTileFx(SND_20_CONSTRUCTION_RAIL, tile);
 }
 
-static void GenericPlaceRail(TileIndex tile, Track track)
+/**
+ * Place or remove rail on a tile.
+ * @param query Whether to only query the operation.
+ * @param tile The tile to operate on.
+ * @param track The track piece.
+ */
+static void GenericPlaceRail(bool query, TileIndex tile, Track track)
 {
 	if (_remove_button_clicked) {
-		Command<Commands::RemoveRail>::Post(STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK, CcPlaySound_CONSTRUCTION_RAIL,
+		Command<Commands::RemoveRail>::PostOrQuery(query, STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK, CcPlaySound_CONSTRUCTION_RAIL,
 				tile, track);
 	} else {
-		Command<Commands::BuildRail>::Post(STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK, CcPlaySound_CONSTRUCTION_RAIL,
+		Command<Commands::BuildRail>::PostOrQuery(query, STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK, CcPlaySound_CONSTRUCTION_RAIL,
 				tile, _cur_railtype, track, _settings_client.gui.auto_remove_signals);
 	}
 }
@@ -165,24 +171,25 @@ void CcRailDepot(Commands, const CommandCost &result, TileIndex tile, RailType, 
 
 /**
  * Place a rail waypoint.
+ * @param query Whether to only query the operation.
  * @param tile Position to start dragging a waypoint.
  */
-static void PlaceRail_Waypoint(TileIndex tile)
+static void PlaceRail_Waypoint(bool query, TileIndex tile)
 {
 	if (_remove_button_clicked) {
-		VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_REMOVE_STATION);
+		VpStartPlaceSizing(query, tile, VPM_X_AND_Y, DDSP_REMOVE_STATION);
 		return;
 	}
 
 	Axis axis = GetAxisForNewRailWaypoint(tile);
 	if (IsValidAxis(axis)) {
 		/* Valid tile for waypoints */
-		VpStartPlaceSizing(tile, axis == AXIS_X ? VPM_X_LIMITED : VPM_Y_LIMITED, DDSP_BUILD_STATION);
+		VpStartPlaceSizing(query, tile, axis == AXIS_X ? VPM_X_LIMITED : VPM_Y_LIMITED, DDSP_BUILD_STATION);
 		VpSetPlaceSizingLimit(_settings_game.station.station_spread);
 	} else {
 		/* Tile where we can't build rail waypoints. This is always going to fail,
 		 * but provides the user with a proper error message. */
-		Command<Commands::BuildRailWaypoint>::Post(STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT , tile, AXIS_X, 1, 1, STAT_CLASS_WAYP, 0, StationID::Invalid(), false);
+		Command<Commands::BuildRailWaypoint>::PostOrQuery(query, STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT , tile, AXIS_X, 1, 1, STAT_CLASS_WAYP, 0, StationID::Invalid(), false);
 	}
 }
 
@@ -197,15 +204,16 @@ void CcStation(Commands, const CommandCost &result, TileIndex tile)
 
 /**
  * Place a rail station.
+ * @param query Whether to only query the operation.
  * @param tile Position to place or start dragging a station.
  */
-static void PlaceRail_Station(TileIndex tile)
+static void PlaceRail_Station(bool query, TileIndex tile)
 {
 	if (_remove_button_clicked) {
-		VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED, DDSP_REMOVE_STATION);
+		VpStartPlaceSizing(query, tile, VPM_X_AND_Y_LIMITED, DDSP_REMOVE_STATION);
 		VpSetPlaceSizingLimit(-1);
 	} else if (_settings_client.gui.station_dragdrop) {
-		VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED, DDSP_BUILD_STATION);
+		VpStartPlaceSizing(query, tile, VPM_X_AND_Y_LIMITED, DDSP_BUILD_STATION);
 		VpSetPlaceSizingLimit(_settings_game.station.station_spread);
 	} else {
 		int w = _settings_client.gui.station_numtracks;
@@ -217,6 +225,11 @@ static void PlaceRail_Station(TileIndex tile)
 		uint8_t numtracks = _settings_client.gui.station_numtracks;
 		uint8_t platlength = _settings_client.gui.station_platlength;
 		bool adjacent = _ctrl_pressed;
+
+		if (query) {
+			HandleSelectionQuery(STR_ERROR_CAN_T_BUILD_RAILROAD_STATION, Command<Commands::BuildRailStation>::Query(tile, rt, params.axis, numtracks, platlength, params.sel_class, params.sel_type, StationID::Invalid(), adjacent));
+			return;
+		}
 
 		auto proc = [=](bool test, StationID to_join) -> bool {
 			if (test) {
@@ -232,10 +245,10 @@ static void PlaceRail_Station(TileIndex tile)
 
 /**
  * Build a new signal or edit/remove a present signal, use CmdBuildSingleSignal() or CmdRemoveSingleSignal() in rail_cmd.cpp
- *
+ * @param query Whether to only query the operation.
  * @param tile The tile where the signal will build or edit
  */
-static void GenericPlaceSignals(TileIndex tile)
+static void GenericPlaceSignals(bool query, TileIndex tile)
 {
 	TrackBits trackbits = TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, 0));
 
@@ -250,7 +263,7 @@ static void GenericPlaceSignals(TileIndex tile)
 	Track track = FindFirstTrack(trackbits);
 
 	if (_remove_button_clicked) {
-		Command<Commands::RemoveSignal>::Post(STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM, CcPlaySound_CONSTRUCTION_RAIL, tile, track);
+		Command<Commands::RemoveSignal>::PostOrQuery(query, STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM, CcPlaySound_CONSTRUCTION_RAIL, tile, track);
 	} else {
 		/* Which signals should we cycle through? */
 		bool tile_has_signal = IsPlainRailTile(tile) && IsValidTrack(track) && HasSignalOnTrack(tile, track);
@@ -277,11 +290,11 @@ static void GenericPlaceSignals(TileIndex tile)
 
 		if (FindWindowById(WC_BUILD_SIGNAL, 0) != nullptr) {
 			/* signal GUI is used */
-			Command<Commands::BuildSignal>::Post(_convert_signal_button ? STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE : STR_ERROR_CAN_T_BUILD_SIGNALS_HERE, CcPlaySound_CONSTRUCTION_RAIL,
+			Command<Commands::BuildSignal>::PostOrQuery(query, _convert_signal_button ? STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE : STR_ERROR_CAN_T_BUILD_SIGNALS_HERE, CcPlaySound_CONSTRUCTION_RAIL,
 				tile, track, _cur_signal_type, _cur_signal_variant, _convert_signal_button, false, _ctrl_pressed, cycle_start, cycle_end, 0, 0);
 		} else {
 			SignalVariant sigvar = TimerGameCalendar::year < _settings_client.gui.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC;
-			Command<Commands::BuildSignal>::Post(STR_ERROR_CAN_T_BUILD_SIGNALS_HERE, CcPlaySound_CONSTRUCTION_RAIL,
+			Command<Commands::BuildSignal>::PostOrQuery(query, STR_ERROR_CAN_T_BUILD_SIGNALS_HERE, CcPlaySound_CONSTRUCTION_RAIL,
 				tile, track, _settings_client.gui.default_signal_type, sigvar, false, false, _ctrl_pressed, cycle_start, cycle_end, 0, 0);
 
 		}
@@ -290,17 +303,18 @@ static void GenericPlaceSignals(TileIndex tile)
 
 /**
  * Start placing a rail bridge.
+ * @param query Whether to only query the operation.
  * @param tile Position of the first tile of the bridge.
  * @param w    Rail toolbar window.
  */
-static void PlaceRail_Bridge(TileIndex tile, Window *w)
+static void PlaceRail_Bridge(bool query, TileIndex tile, Window *w)
 {
 	if (IsBridgeTile(tile)) {
 		TileIndex other_tile = GetOtherTunnelBridgeEnd(tile);
 		Point pt = {0, 0};
-		w->OnPlaceMouseUp(VPM_X_OR_Y, DDSP_BUILD_BRIDGE, pt, other_tile, tile);
+		if (!query) w->OnPlaceMouseUp(VPM_X_OR_Y, DDSP_BUILD_BRIDGE, pt, other_tile, tile, query);
 	} else {
-		VpStartPlaceSizing(tile, VPM_X_OR_Y, DDSP_BUILD_BRIDGE);
+		VpStartPlaceSizing(query, tile, VPM_X_OR_Y, DDSP_BUILD_BRIDGE);
 	}
 }
 
@@ -387,27 +401,36 @@ static void BuildRailClick_Remove(Window *w)
 	}
 }
 
-static void DoRailroadTrack(Track track)
+/**
+ * Build or remove rail track.
+ * @param query Whether to only query the operation.
+ * @param track Track to build or remove.
+ */
+static void DoRailroadTrack(bool query, Track track)
 {
 	if (_remove_button_clicked) {
-		Command<Commands::RemoveRailLong>::Post(STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK, CcPlaySound_CONSTRUCTION_RAIL,
+		Command<Commands::RemoveRailLong>::PostOrQuery(query, STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK, CcPlaySound_CONSTRUCTION_RAIL,
 				TileVirtXY(_thd.selend.x, _thd.selend.y), TileVirtXY(_thd.selstart.x, _thd.selstart.y), track);
 	} else {
-		Command<Commands::BuildRailLong>::Post(STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK, CcPlaySound_CONSTRUCTION_RAIL,
+		Command<Commands::BuildRailLong>::PostOrQuery(query, STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK, CcPlaySound_CONSTRUCTION_RAIL,
 				TileVirtXY(_thd.selend.x, _thd.selend.y), TileVirtXY(_thd.selstart.x, _thd.selstart.y),  _cur_railtype, track, _settings_client.gui.auto_remove_signals, false);
 	}
 }
 
-static void HandleAutodirPlacement()
+/**
+ * Handle drag-and-drop rail operations.
+ * @param query Whether to only query the operation.
+ */
+static void HandleAutodirPlacement(bool query)
 {
 	Track trackstat = static_cast<Track>( _thd.drawstyle & HT_DIR_MASK); // 0..5
 
 	if (_thd.drawstyle & HT_RAIL) { // one tile case
-		GenericPlaceRail(TileVirtXY(_thd.selend.x, _thd.selend.y), trackstat);
+		GenericPlaceRail(query, TileVirtXY(_thd.selend.x, _thd.selend.y), trackstat);
 		return;
 	}
 
-	DoRailroadTrack(trackstat);
+	DoRailroadTrack(query, trackstat);
 }
 
 /**
@@ -415,26 +438,27 @@ static void HandleAutodirPlacement()
  *
  * If one tile marked abort and use GenericPlaceSignals()
  * else use CmdBuildSingleSignal() or CmdRemoveSingleSignal() in rail_cmd.cpp to build many signals
+ * @param query Whether to only query the operation.
  */
-static void HandleAutoSignalPlacement()
+static void HandleAutoSignalPlacement(bool query)
 {
 	Track track = (Track)GB(_thd.drawstyle, 0, 3); // 0..5
 
 	if ((_thd.drawstyle & HT_DRAG_MASK) == HT_RECT) { // one tile case
-		GenericPlaceSignals(TileVirtXY(_thd.selend.x, _thd.selend.y));
+		GenericPlaceSignals(query, TileVirtXY(_thd.selend.x, _thd.selend.y));
 		return;
 	}
 
 	/* _settings_client.gui.drag_signals_density is given as a parameter such that each user
 	 * in a network game can specify their own signal density */
 	if (_remove_button_clicked) {
-		Command<Commands::RemoveSignalLong>::Post(STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM, CcPlaySound_CONSTRUCTION_RAIL,
+		Command<Commands::RemoveSignalLong>::PostOrQuery(query, STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM, CcPlaySound_CONSTRUCTION_RAIL,
 				TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), track, _ctrl_pressed);
 	} else {
 		bool sig_gui = FindWindowById(WC_BUILD_SIGNAL, 0) != nullptr;
 		SignalType sigtype = sig_gui ? _cur_signal_type : _settings_client.gui.default_signal_type;
 		SignalVariant sigvar = sig_gui ? _cur_signal_variant : (TimerGameCalendar::year < _settings_client.gui.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC);
-		Command<Commands::BuildSignalLong>::Post(STR_ERROR_CAN_T_BUILD_SIGNALS_HERE, CcPlaySound_CONSTRUCTION_RAIL,
+		Command<Commands::BuildSignalLong>::PostOrQuery(query, STR_ERROR_CAN_T_BUILD_SIGNALS_HERE, CcPlaySound_CONSTRUCTION_RAIL,
 				TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), track, sigtype, sigvar, false, _ctrl_pressed, !_settings_client.gui.drag_signals_fixed_distance, _settings_client.gui.drag_signals_density);
 	}
 }
@@ -674,59 +698,59 @@ struct BuildRailToolbarWindow : Window {
 		return Window::OnHotkey(hotkey);
 	}
 
-	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile, bool query) override
 	{
 		switch (this->last_user_action) {
 			case WID_RAT_BUILD_NS:
-				VpStartPlaceSizing(tile, VPM_FIX_VERTICAL | VPM_RAILDIRS, DDSP_PLACE_RAIL);
+				VpStartPlaceSizing(query, tile, VPM_FIX_VERTICAL | VPM_RAILDIRS, DDSP_PLACE_RAIL);
 				break;
 
 			case WID_RAT_BUILD_X:
-				VpStartPlaceSizing(tile, VPM_FIX_Y | VPM_RAILDIRS, DDSP_PLACE_RAIL);
+				VpStartPlaceSizing(query, tile, VPM_FIX_Y | VPM_RAILDIRS, DDSP_PLACE_RAIL);
 				break;
 
 			case WID_RAT_BUILD_EW:
-				VpStartPlaceSizing(tile, VPM_FIX_HORIZONTAL | VPM_RAILDIRS, DDSP_PLACE_RAIL);
+				VpStartPlaceSizing(query, tile, VPM_FIX_HORIZONTAL | VPM_RAILDIRS, DDSP_PLACE_RAIL);
 				break;
 
 			case WID_RAT_BUILD_Y:
-				VpStartPlaceSizing(tile, VPM_FIX_X | VPM_RAILDIRS, DDSP_PLACE_RAIL);
+				VpStartPlaceSizing(query, tile, VPM_FIX_X | VPM_RAILDIRS, DDSP_PLACE_RAIL);
 				break;
 
 			case WID_RAT_AUTORAIL:
-				VpStartPlaceSizing(tile, VPM_RAILDIRS, DDSP_PLACE_RAIL);
+				VpStartPlaceSizing(query, tile, VPM_RAILDIRS, DDSP_PLACE_RAIL);
 				break;
 
 			case WID_RAT_DEMOLISH:
-				PlaceProc_DemolishArea(tile);
+				PlaceProc_DemolishArea(query, tile);
 				break;
 
 			case WID_RAT_BUILD_DEPOT:
-				Command<Commands::BuildRailDepot>::Post(STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT, CcRailDepot, tile, _cur_railtype, _build_depot_direction);
+				Command<Commands::BuildRailDepot>::PostOrQuery(query, STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT, CcRailDepot, tile, _cur_railtype, _build_depot_direction);
 				break;
 
 			case WID_RAT_BUILD_WAYPOINT:
-				PlaceRail_Waypoint(tile);
+				PlaceRail_Waypoint(query, tile);
 				break;
 
 			case WID_RAT_BUILD_STATION:
-				PlaceRail_Station(tile);
+				PlaceRail_Station(query, tile);
 				break;
 
 			case WID_RAT_BUILD_SIGNALS:
-				VpStartPlaceSizing(tile, VPM_SIGNALDIRS, DDSP_BUILD_SIGNALS);
+				VpStartPlaceSizing(query, tile, VPM_SIGNALDIRS, DDSP_BUILD_SIGNALS);
 				break;
 
 			case WID_RAT_BUILD_BRIDGE:
-				PlaceRail_Bridge(tile, this);
+				PlaceRail_Bridge(query, tile, this);
 				break;
 
 			case WID_RAT_BUILD_TUNNEL:
-				Command<Commands::BuildTunnel>::Post(STR_ERROR_CAN_T_BUILD_TUNNEL_HERE, CcBuildRailTunnel, tile, TRANSPORT_RAIL, _cur_railtype);
+				Command<Commands::BuildTunnel>::PostOrQuery(query, STR_ERROR_CAN_T_BUILD_TUNNEL_HERE, CcBuildRailTunnel, tile, TRANSPORT_RAIL, _cur_railtype);
 				break;
 
 			case WID_RAT_CONVERT_RAIL:
-				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CONVERT_RAIL);
+				VpStartPlaceSizing(query, tile, VPM_X_AND_Y, DDSP_CONVERT_RAIL);
 				break;
 
 			default: NOT_REACHED();
@@ -746,30 +770,31 @@ struct BuildRailToolbarWindow : Window {
 		return AlignInitialConstructionToolbar(sm_width);
 	}
 
-	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile) override
+	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile, bool query) override
 	{
 		if (pt.x != -1) {
 			switch (select_proc) {
 				default: NOT_REACHED();
 				case DDSP_BUILD_BRIDGE:
+					if (query) return;
 					if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 					ShowBuildBridgeWindow(start_tile, end_tile, TRANSPORT_RAIL, _cur_railtype);
 					break;
 
 				case DDSP_PLACE_RAIL:
-					HandleAutodirPlacement();
+					HandleAutodirPlacement(query);
 					break;
 
 				case DDSP_BUILD_SIGNALS:
-					HandleAutoSignalPlacement();
+					HandleAutoSignalPlacement(query);
 					break;
 
 				case DDSP_DEMOLISH_AREA:
-					GUIPlaceProcDragXY(select_proc, start_tile, end_tile);
+					GUIPlaceProcDragXY(query, select_proc, start_tile, end_tile);
 					break;
 
 				case DDSP_CONVERT_RAIL:
-					Command<Commands::ConvertRail>::Post(STR_ERROR_CAN_T_CONVERT_RAIL, CcPlaySound_CONSTRUCTION_RAIL, end_tile, start_tile, _cur_railtype, _ctrl_pressed);
+					Command<Commands::ConvertRail>::PostOrQuery(query, STR_ERROR_CAN_T_CONVERT_RAIL, CcPlaySound_CONSTRUCTION_RAIL, end_tile, start_tile, _cur_railtype, _ctrl_pressed);
 					break;
 
 				case DDSP_REMOVE_STATION:
@@ -778,19 +803,24 @@ struct BuildRailToolbarWindow : Window {
 						/* Station */
 						if (_remove_button_clicked) {
 							bool keep_rail = !_ctrl_pressed;
-							Command<Commands::RemoveFromRailStation>::Post(STR_ERROR_CAN_T_REMOVE_PART_OF_STATION, CcPlaySound_CONSTRUCTION_RAIL, end_tile, start_tile, keep_rail);
+							Command<Commands::RemoveFromRailStation>::PostOrQuery(query, STR_ERROR_CAN_T_REMOVE_PART_OF_STATION, CcPlaySound_CONSTRUCTION_RAIL, end_tile, start_tile, keep_rail);
 						} else {
-							HandleStationPlacement(start_tile, end_tile);
+							HandleStationPlacement(query, start_tile, end_tile);
 						}
 					} else {
 						/* Waypoint */
 						if (_remove_button_clicked) {
 							bool keep_rail = !_ctrl_pressed;
-							Command<Commands::RemoveFromRailWaypoint>::Post(STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT , CcPlaySound_CONSTRUCTION_RAIL, end_tile, start_tile, keep_rail);
+							Command<Commands::RemoveFromRailWaypoint>::PostOrQuery(query, STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT , CcPlaySound_CONSTRUCTION_RAIL, end_tile, start_tile, keep_rail);
 						} else {
 							TileArea ta(start_tile, end_tile);
 							Axis axis = select_method == VPM_X_LIMITED ? AXIS_X : AXIS_Y;
 							bool adjacent = _ctrl_pressed;
+
+							if (query) {
+								HandleSelectionQuery(STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT, Command<Commands::BuildRailWaypoint>::Query(ta.tile, axis, ta.w, ta.h, _waypoint_gui.sel_class, _waypoint_gui.sel_type, StationID::Invalid(), adjacent));
+								return;
+							}
 
 							auto proc = [=](bool test, StationID to_join) -> bool {
 								if (test) {
@@ -970,10 +1000,13 @@ Window *ShowBuildRailToolbar(RailType railtype)
 	return new BuildRailToolbarWindow(_build_rail_desc, railtype);
 }
 
-/* TODO: For custom stations, respect their allowed platforms/lengths bitmasks!
- * --pasky */
-
-static void HandleStationPlacement(TileIndex start, TileIndex end)
+/**
+ * Handle station placement operation.
+ * @param query Whether to only query the operation.
+ * @param start First tile of operation.
+ * @param end Last tile of operation.
+ */
+static void HandleStationPlacement(bool query, TileIndex start, TileIndex end)
 {
 	TileArea ta(start, end);
 	uint numtracks = ta.w;
@@ -984,6 +1017,11 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 	StationPickerSelection params = _station_gui;
 	RailType rt = _cur_railtype;
 	bool adjacent = _ctrl_pressed;
+
+	if (query) {
+		HandleSelectionQuery(STR_ERROR_CAN_T_BUILD_RAILROAD_STATION, Command<Commands::BuildRailStation>::Query(ta.tile, rt, params.axis, numtracks, platlength, params.sel_class, params.sel_type, StationID::Invalid(), adjacent));
+		return;
+	}
 
 	auto proc = [=](bool test, StationID to_join) -> bool {
 		if (test) {

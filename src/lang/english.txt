@@ -5083,6 +5083,7 @@ STR_ERROR_SCREENSHOT_FAILED                                     :Screenshot fail
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Message
 STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Message from {COMPANY}
+STR_ERROR_MESSAGE_OVERLAY                                       :{STRING} {RAW_STRING}
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :off edge of map

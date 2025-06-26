@@ -2259,9 +2259,9 @@ struct CompanyWindow : Window
 		this->SetDirty();
 	}};
 
-	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile, bool query) override
 	{
-		if (Command<Commands::BuildObject>::Post(STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS, tile, OBJECT_HQ, 0) && !_shift_pressed) {
+		if (Command<Commands::BuildObject>::PostOrQuery(query, STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS, tile, OBJECT_HQ, 0) && !_shift_pressed) {
 			ResetObjectToPlace();
 			this->RaiseButtons();
 		}
