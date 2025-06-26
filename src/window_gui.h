@@ -796,8 +796,9 @@ public:
 	 * has been set.
 	 * @param pt   the exact point on the map that has been clicked.
 	 * @param tile the tile on the map that has been clicked.
+	 * @param query set if the tile was not actually clicked.
 	 */
-	virtual void OnPlaceObject([[maybe_unused]] Point pt, [[maybe_unused]] TileIndex tile) {}
+	virtual void OnPlaceObject([[maybe_unused]] Point pt, [[maybe_unused]] TileIndex tile, [[maybe_unused]] bool query) {}
 
 	/**
 	 * The user clicked on a vehicle while HT_VEHICLE has been set.
@@ -839,7 +840,7 @@ public:
 	 * @param start_tile    the begin tile of the drag.
 	 * @param end_tile      the end tile of the drag.
 	 */
-	virtual void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, [[maybe_unused]] ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, [[maybe_unused]] TileIndex start_tile, [[maybe_unused]] TileIndex end_tile) {}
+	virtual void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, [[maybe_unused]] ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, [[maybe_unused]] TileIndex start_tile, [[maybe_unused]] TileIndex end_tile, [[maybe_unused]] bool query) {}
 
 	/**
 	 * The user moves over the map when a tile highlight mode has been set

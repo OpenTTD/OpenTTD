@@ -16,7 +16,7 @@
 struct Window;
 
 void UpdateAllSignVirtCoords();
-void PlaceProc_Sign(TileIndex tile);
+void PlaceProc_Sign(bool query, TileIndex tile);
 bool CompanyCanRenameSign(const Sign *si);
 
 /* signs_gui.cpp */

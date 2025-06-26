@@ -63,13 +63,18 @@ void CcBuildAirport(Commands, const CommandCost &result, TileIndex tile)
  * Place an airport.
  * @param tile Position to put the new airport.
  */
-static void PlaceAirport(TileIndex tile)
+static void PlaceAirport(bool query, TileIndex tile)
 {
 	if (_selected_airport_index == -1) return;
 
 	uint8_t airport_type = AirportClass::Get(_selected_airport_class)->GetSpec(_selected_airport_index)->GetIndex();
 	uint8_t layout = _selected_airport_layout;
 	bool adjacent = _ctrl_pressed;
+
+	if (query) {
+		HandleSelectionQuery(Command<CMD_BUILD_AIRPORT>::Query(tile, airport_type, layout, StationID::Invalid(), adjacent));
+		return;
+	}
 
 	auto proc = [=](bool test, StationID to_join) -> bool {
 		if (test) {
@@ -141,15 +146,15 @@ struct BuildAirToolbarWindow : Window {
 	}
 
 
-	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile, bool query) override
 	{
 		switch (this->last_user_action) {
 			case WID_AT_AIRPORT:
-				PlaceAirport(tile);
+				PlaceAirport(query, tile);
 				break;
 
 			case WID_AT_DEMOLISH:
-				PlaceProc_DemolishArea(tile);
+				PlaceProc_DemolishArea(query, tile);
 				break;
 
 			default: NOT_REACHED();
@@ -161,10 +166,10 @@ struct BuildAirToolbarWindow : Window {
 		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
 	}
 
-	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile) override
+	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile, bool query) override
 	{
 		if (pt.x != -1 && select_proc == DDSP_DEMOLISH_AREA) {
-			GUIPlaceProcDragXY(select_proc, start_tile, end_tile);
+			GUIPlaceProcDragXY(query, select_proc, start_tile, end_tile);
 		}
 	}
 

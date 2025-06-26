@@ -20,6 +20,7 @@
 #include "zoom_func.h"
 #include "tree_map.h"
 #include "tree_cmd.h"
+#include "viewport_func.h"
 
 #include "widgets/tree_widget.h"
 
@@ -212,11 +213,11 @@ public:
 		}
 	}
 
-	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile, bool query) override
 	{
 		if (_game_mode != GM_EDITOR && this->mode == PM_NORMAL) {
-			VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_PLANT_TREES);
-		} else {
+			VpStartPlaceSizing(query, tile, VPM_X_AND_Y, DDSP_PLANT_TREES);
+		} else if (!query) {
 			VpStartDragging(DDSP_PLANT_TREES);
 		}
 	}
@@ -236,10 +237,10 @@ public:
 		}
 	}
 
-	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile) override
+	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile, bool query) override
 	{
 		if (_game_mode != GM_EDITOR && this->mode == PM_NORMAL && pt.x != -1 && select_proc == DDSP_PLANT_TREES) {
-			Command<CMD_PLANT_TREE>::Post(STR_ERROR_CAN_T_PLANT_TREE_HERE, end_tile, start_tile, this->tree_to_plant, _ctrl_pressed);
+			Command<CMD_PLANT_TREE>::PostOrQuery(query, STR_ERROR_CAN_T_PLANT_TREE_HERE, end_tile, start_tile, this->tree_to_plant, _ctrl_pressed);
 		}
 	}
 
