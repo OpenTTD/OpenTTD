@@ -2933,14 +2933,14 @@ static void MouseLoop(MouseClick click, int mousewheel)
 	HandleMouseOver();
 
 	bool scrollwheel_scrolling = _settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::ScrollMap && _cursor.wheel_moved;
-	if (click == MouseClick::None && mousewheel == 0 && !scrollwheel_scrolling) return;
+	if (click == MouseClick::None && mousewheel == 0 && !scrollwheel_scrolling && (_thd.drawstyle & HT_DRAG_MASK) == HT_NONE) return;
 
 	int x = _cursor.pos.x;
 	int y = _cursor.pos.y;
 	Window *w = FindWindowFromPt(x, y);
 	if (w == nullptr) return;
 
-	if (click != MouseClick::Hover && !MaybeBringWindowToFront(w)) return;
+	if (click != MouseClick::None && click != MouseClick::Hover && !MaybeBringWindowToFront(w)) return;
 	Viewport *vp = IsPtInWindowViewport(w, x, y);
 
 	/* Don't allow any action in a viewport if either in menu or when having a modal progress window */
@@ -2968,7 +2968,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 		switch (click) {
 			case MouseClick::DoubleLeft:
 			case MouseClick::Left:
-				if (HandleViewportClicked(*vp, x, y)) return;
+				if (HandleViewportClicked(*vp, x, y, false)) return;
 				if (!w->flags.Test(WindowFlag::DisableVpScroll) &&
 						_settings_client.gui.scroll_mode == ViewportScrollMode::MapLMB) {
 					_scrolling_viewport = true;
@@ -2989,6 +2989,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 				break;
 
 			default:
+				HandleViewportClicked(*vp, x, y, true);
 				break;
 		}
 	}
