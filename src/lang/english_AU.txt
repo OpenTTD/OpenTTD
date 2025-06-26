@@ -2328,16 +2328,19 @@ STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Simple f
 STR_FACE_LOAD                                                   :{BLACK}Load
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Load favourite face
 STR_FACE_LOAD_DONE                                              :{WHITE}Your favourite face has been loaded from the OpenTTD configuration file
-STR_FACE_FACECODE                                               :{BLACK}Player face no.
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}View and/or set face number of the company president
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}View and/or set president face number
-STR_FACE_FACECODE_SET                                           :{WHITE}New face number code has been set
-STR_FACE_FACECODE_ERR                                           :{WHITE}Couldn't set president face number - must be a number between 0 and 4,294,967,295!
+STR_FACE_FACECODE                                               :{BLACK}Player face code
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}View and/or set face code of the company president
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}View and/or set president face code
+STR_FACE_FACECODE_SET                                           :{WHITE}New president face has been set
+STR_FACE_FACECODE_ERR                                           :{WHITE}Couldn't set president face code - must be a valid label and number
 STR_FACE_SAVE                                                   :{BLACK}Save
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Save favourite face
 STR_FACE_SAVE_DONE                                              :{WHITE}This face will be saved as your favourite in the OpenTTD configuration file
+STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
+STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Yes
 STR_FACE_NO                                                     :No
+STR_FACE_STYLE                                                  :Style:
 STR_FACE_HAIR                                                   :Hair:
 STR_FACE_EYEBROWS                                               :Eyebrows:
 STR_FACE_EYECOLOUR                                              :Eye colour:

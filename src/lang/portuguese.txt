@@ -2329,16 +2329,19 @@ STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Seleçã
 STR_FACE_LOAD                                                   :{BLACK}Carregar
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Carregar cara preferida
 STR_FACE_LOAD_DONE                                              :{WHITE}A sua cara preferida foi carregada a partir do ficheiro de configuração do OpenTTD.
-STR_FACE_FACECODE                                               :{BLACK}Nº de cara
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Ver e/ou definir número de cara do presidente da empresa
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Ver e/ou definir número de cara do presidente
-STR_FACE_FACECODE_SET                                           :{WHITE}Novo número de código de cara foi definido
-STR_FACE_FACECODE_ERR                                           :{WHITE}Não foi possível definir o número de cara do presidente - deverá ser um número entre 0 e 4,294,967,295!
+STR_FACE_FACECODE                                               :{BLACK}Código da cara do jogador
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Ver e/ou definir o código da cara do presidente da empresa
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Ver e/ou definir o código da cara do presidente
+STR_FACE_FACECODE_SET                                           :{WHITE}A nova cara do presidente foi definida
+STR_FACE_FACECODE_ERR                                           :{WHITE}Não foi possível definir o código da cara do presidente - a etiqueta e o número têm que ser válidos
 STR_FACE_SAVE                                                   :{BLACK}Gravar
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Gravar cara preferida
 STR_FACE_SAVE_DONE                                              :{WHITE}Esta cara será gravada como a sua preferida no ficheiro de configuração do OpenTTD.
+STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
+STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Sim
 STR_FACE_NO                                                     :Não
+STR_FACE_STYLE                                                  :Estilo:
 STR_FACE_HAIR                                                   :Cabelo:
 STR_FACE_EYEBROWS                                               :Sobrancelhas:
 STR_FACE_EYECOLOUR                                              :Cor dos olhos:
@@ -3962,7 +3965,7 @@ STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Dá dinh
 STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}Aquisição hostil
 STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Fazer a aquisição hostil desta empresa
 
-STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nova cara
+STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nova Cara
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Seleccione uma nova cara para o presidente
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Cores
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Alterar cores dos veículos

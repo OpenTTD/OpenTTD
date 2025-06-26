@@ -2328,16 +2328,19 @@ STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}切换�
 STR_FACE_LOAD                                                   :{BLACK}载入头像
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}载入预存喜好的头像
 STR_FACE_LOAD_DONE                                              :{WHITE}你喜好的头像已经从 OpenTTD 配置文件中读取
-STR_FACE_FACECODE                                               :{BLACK}头像种子
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}查看或设置头像编号
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}头像编号
-STR_FACE_FACECODE_SET                                           :{WHITE}新编号已经启用
-STR_FACE_FACECODE_ERR                                           :{WHITE}编号必须在 0 ~ 4,294,967,295 范围内！
+STR_FACE_FACECODE                                               :{BLACK}头像编号
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}检视或设定公司总裁头像编号
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}检视或设定公司总裁头像编号
+STR_FACE_FACECODE_SET                                           :{WHITE}已应用新头像
+STR_FACE_FACECODE_ERR                                           :{WHITE}无法设置总裁头像编号，编号必须在 0 ~ 4,294,967,295 范围内！
 STR_FACE_SAVE                                                   :{BLACK}储存头像
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}储存喜好的头像
 STR_FACE_SAVE_DONE                                              :{WHITE}该头像将作为你的喜好储存至 OpenTTD 配置文件中
+STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
+STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :是
 STR_FACE_NO                                                     :否
+STR_FACE_STYLE                                                  :样式：
 STR_FACE_HAIR                                                   :发型
 STR_FACE_EYEBROWS                                               :眉毛
 STR_FACE_EYECOLOUR                                              :眼睛
@@ -2810,6 +2813,10 @@ STR_PICKER_MODE_USED_TOOLTIP                                    :切换为仅显
 STR_PICKER_MODE_SAVED                                           :已保存
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :切换为仅显示已保存的项目
 
+STR_PICKER_PREVIEW_SHRINK                                       :-
+STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :缩小预览图。按住 <Ctrl> 键点击以最小化
+STR_PICKER_PREVIEW_EXPAND                                       :+
+STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :放大预览图。按住 <Ctrl> 键点击以最大化
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :选择显示的车站类别
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :选择建造的车站类型。按住 <Ctrl> 键操作以保存或删除当前项目

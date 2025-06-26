@@ -2480,15 +2480,18 @@ STR_FACE_LOAD                                                   :{BLACK}Загр
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Загрузить внешность
 STR_FACE_LOAD_DONE                                              :{WHITE}Ваша внешность загружена из файла конфигурации.
 STR_FACE_FACECODE                                               :{BLACK}Числовой код
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Посмотреть или изменить код внешности
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Числовой код внешнего вида
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Отобразить/изменить числовой код внешности президента компании
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Отобразить/изменить числовой код внешности президента компании
 STR_FACE_FACECODE_SET                                           :{WHITE}Числовой код нового лица установлен.
-STR_FACE_FACECODE_ERR                                           :{WHITE}Невозможно изменить внешность - значение должно быть целым и лежать в диапазоне от 0 до 4 294 967 295
+STR_FACE_FACECODE_ERR                                           :{WHITE}Невозможно изменить внешность: значение должно быть целым числом в диапазоне от 0 до 4{NBSP}294{NBSP}967{NBSP}295
 STR_FACE_SAVE                                                   :{BLACK}Сохранить
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Сохранить внешность
 STR_FACE_SAVE_DONE                                              :{WHITE}Внешность сохранена в файле конфигурации.
+STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
+STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Да
 STR_FACE_NO                                                     :Нет
+STR_FACE_STYLE                                                  :Стиль:
 STR_FACE_HAIR                                                   :Волосы:
 STR_FACE_EYEBROWS                                               :Брови:
 STR_FACE_EYECOLOUR                                              :Цвет глаз:

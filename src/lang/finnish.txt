@@ -2328,16 +2328,19 @@ STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Yksinker
 STR_FACE_LOAD                                                   :{BLACK}Lataa
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Lataa suosikkikasvot
 STR_FACE_LOAD_DONE                                              :{WHITE}Suosikkikasvosi on ladattu OpenTTD:n kokoonpanotiedostosta.
-STR_FACE_FACECODE                                               :{BLACK}Pelaajan kasvojen nro
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Tarkastele ja/tai aseta johtajan kasvojen numero
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Tarkastele ja/tai aseta johtajan kasvojen numero
-STR_FACE_FACECODE_SET                                           :{WHITE}Uusi kasvojen numerokoodi on asetettu
-STR_FACE_FACECODE_ERR                                           :{WHITE}Johtajan kasvojen numeroa ei voitu asettaa – arvon on oltava numeerinen arvo väliltä 0–4 294 967 295!
+STR_FACE_FACECODE                                               :{BLACK}Pelaajan kasvojen koodi
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Tarkastele ja/tai aseta johtajan kasvojen koodi
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Tarkastele ja/tai aseta johtajan kasvojen koodi
+STR_FACE_FACECODE_SET                                           :{WHITE}Uudet johtajan kasvot on asetettu
+STR_FACE_FACECODE_ERR                                           :{WHITE}Johtajan kasvojen koodia ei voitu asettaa – tarvitaan kelvollinen tunniste ja luku
 STR_FACE_SAVE                                                   :{BLACK}Tallenna
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Tallenna suosikkikasvot
 STR_FACE_SAVE_DONE                                              :{WHITE}Nämä kasvot tallennetaan suosikkikasvoiksesi OpenTTD:n kokoonpanotiedostoon.
+STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
+STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} ({NUM})
 STR_FACE_YES                                                    :Kyllä
 STR_FACE_NO                                                     :Ei
+STR_FACE_STYLE                                                  :Tyyli:
 STR_FACE_HAIR                                                   :Hiukset:
 STR_FACE_EYEBROWS                                               :Kulmakarvat:
 STR_FACE_EYECOLOUR                                              :Silmien väri:

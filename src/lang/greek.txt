@@ -2421,16 +2421,19 @@ STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Απλή
 STR_FACE_LOAD                                                   :{BLACK}Φόρτωση
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Φόρτωση αγαπημένου προσώπου
 STR_FACE_LOAD_DONE                                              :{WHITE}Το αγαπημένο πρόσωπο έχει φορτωθεί από το αρχείο ρυθμίσεων του OpenTTD
-STR_FACE_FACECODE                                               :{BLACK}Αρ. προσώπου παίκτη
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Εμφάνιση και/ή επιλογή του αριθμού του προσώπου του παίκτη
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Προβολή και/ή ορισμός του αριθμού του προσώπου του παίκτη
-STR_FACE_FACECODE_SET                                           :{WHITE}Ο νέος αριθμός προσώπου έχει οριστεί
-STR_FACE_FACECODE_ERR                                           :{WHITE}Δεν μπορεί να οριστεί ο αριθμός προσώπου του παίκτη - πρέπει να είναι αριθμητικός μεταξύ του 0 και του 4.294.967.295!
+STR_FACE_FACECODE                                               :{BLACK}Κωδ. προσώπου παίκτη
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Εμφάνιση και/ή επιλογή του κωδικού προσώπου του παίκτη
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Προβολή και/ή ορισμός του κωδικού προσώπου του παίκτη
+STR_FACE_FACECODE_SET                                           :{WHITE}Το νέο πρόσωπο του προέδρου έχει οριστεί
+STR_FACE_FACECODE_ERR                                           :{WHITE}Δεν μπορεί να οριστεί ο κωδικός προσώπου του παίκτη - πρέπει να είναι ένας έγκυρος αριθμός
 STR_FACE_SAVE                                                   :{BLACK}Αποθήκευση
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Αποθήκευση αγαπημένου προσώπου
 STR_FACE_SAVE_DONE                                              :{WHITE}Αυτό το πρόσωπο θα αποθηκευτεί ως αγαπημένο στο αρχείο ρυθμίσεων του OpenTTD
+STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
+STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Ναι
 STR_FACE_NO                                                     :Όχι
+STR_FACE_STYLE                                                  :Στυλ:
 STR_FACE_HAIR                                                   :Μαλλιά:
 STR_FACE_EYEBROWS                                               :Φρύδια:
 STR_FACE_EYECOLOUR                                              :Χρώμα ματιών:

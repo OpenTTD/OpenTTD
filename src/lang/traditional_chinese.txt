@@ -2315,29 +2315,32 @@ STR_LIVERY_PASSENGER_TRAM                                       :載客電車
 STR_LIVERY_FREIGHT_TRAM                                         :載貨電車
 
 # Face selection window
-STR_FACE_CAPTION                                                :{WHITE}選擇臉孔
-STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}取消選擇新臉孔
-STR_FACE_OK_TOOLTIP                                             :{BLACK}接受新臉孔
+STR_FACE_CAPTION                                                :{WHITE}選擇肖像
+STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}放棄新的肖像
+STR_FACE_OK_TOOLTIP                                             :{BLACK}使用新的肖像
 
-STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}產生新臉孔
-STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}隨機產生新臉孔
+STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}產生新肖像
+STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}隨機產生新肖像
 STR_FACE_ADVANCED                                               :{BLACK}進階
-STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}進階臉孔選擇
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}進階肖像選項
 STR_FACE_SIMPLE                                                 :{BLACK}簡易
-STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}簡易臉孔選擇
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}簡易肖像選項
 STR_FACE_LOAD                                                   :{BLACK}載入
-STR_FACE_LOAD_TOOLTIP                                           :{BLACK}載入喜愛臉孔
-STR_FACE_LOAD_DONE                                              :{WHITE}您喜愛的臉孔已從 OpenTTD 設定檔中載入
-STR_FACE_FACECODE                                               :{BLACK}玩家臉孔編號
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}檢視或設定公司總經理臉孔編號
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}檢視或設定總經理臉孔編號
-STR_FACE_FACECODE_SET                                           :{WHITE}新的臉孔編號已設定
-STR_FACE_FACECODE_ERR                                           :{WHITE}無法設定總經理臉孔編號 - 應該要介於 0 ~ 4,294,967,295 之間！
+STR_FACE_LOAD_TOOLTIP                                           :{BLACK}載入喜愛的肖像
+STR_FACE_LOAD_DONE                                              :{WHITE}您喜愛的肖像已從 OpenTTD 設定檔中載入
+STR_FACE_FACECODE                                               :{BLACK}玩家肖像編號
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}檢視或設定公司總經理肖像編號
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}檢視或設定總經理肖像編號
+STR_FACE_FACECODE_SET                                           :{WHITE}已設定新肖像
+STR_FACE_FACECODE_ERR                                           :{WHITE}無法設定總經理肖像編號，編號應該要設定在 0 ~ 4,294,967,295 之內！
 STR_FACE_SAVE                                                   :{BLACK}儲存
-STR_FACE_SAVE_TOOLTIP                                           :{BLACK}儲存喜愛臉孔
-STR_FACE_SAVE_DONE                                              :{WHITE}這將被當成您喜愛的臉孔存入 OpenTTD 設定檔
+STR_FACE_SAVE_TOOLTIP                                           :{BLACK}儲存喜愛的肖像
+STR_FACE_SAVE_DONE                                              :{WHITE}這將被當成您喜愛的肖像存入 OpenTTD 設定檔
+STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
+STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :確定
 STR_FACE_NO                                                     :取消
+STR_FACE_STYLE                                                  :款式：
 STR_FACE_HAIR                                                   :髮型：
 STR_FACE_EYEBROWS                                               :眉毛：
 STR_FACE_EYECOLOUR                                              :眼珠顏色：
@@ -2811,9 +2814,9 @@ STR_PICKER_MODE_SAVED                                           :已儲存
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :切換僅顯示已儲存的項目
 
 STR_PICKER_PREVIEW_SHRINK                                       :-
-STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :縮小預覽圖。按住 <Ctrl> 點選可縮到最小
+STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :縮小預覽圖。按住 <Ctrl> 鍵點選以最小化
 STR_PICKER_PREVIEW_EXPAND                                       :+
-STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :放大預覽圖。按住 <Ctrl> 點選可放到最大
+STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :放大預覽圖。按住 <Ctrl> 鍵點選以最大化
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :選擇顯示的車站種類
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :選擇建設的車站類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除
@@ -3961,8 +3964,8 @@ STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}將資�
 STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}敵意收購
 STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}對此公司進行敵意收購
 
-STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}新臉孔
-STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}選擇總經理的新臉孔
+STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}新的肖像
+STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}選擇總經理的新肖像
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}配色
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}修改公司車輛配色
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}公司名稱
