@@ -2332,7 +2332,7 @@ STR_FACE_FACECODE                                               :{BLACK}玩家�
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}檢視或設定公司總經理肖像編號
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}檢視或設定總經理肖像編號
 STR_FACE_FACECODE_SET                                           :{WHITE}已設定新肖像
-STR_FACE_FACECODE_ERR                                           :{WHITE}無法設定總經理肖像編號，編號應該要設定在 0 ~ 4,294,967,295 之內！
+STR_FACE_FACECODE_ERR                                           :{WHITE}無法設定總經理肖像編號，編號應該要設定在 0 ~ 4,294,967,295 的數值之內！
 STR_FACE_SAVE                                                   :{BLACK}儲存
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}儲存喜愛的肖像
 STR_FACE_SAVE_DONE                                              :{WHITE}這將被當成您喜愛的肖像存入 OpenTTD 設定檔
