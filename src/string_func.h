@@ -94,7 +94,7 @@ inline char32_t Utf16DecodeSurrogate(uint lead, uint trail)
  * @param c Pointer to one or two UTF-16 code points.
  * @return Decoded Unicode character.
  */
-inline char32_t Utf16DecodeChar(const uint16_t *c)
+inline char32_t Utf16DecodeChar(const char16_t *c)
 {
 	if (Utf16IsLeadSurrogate(c[0])) {
 		return Utf16DecodeSurrogate(c[0], c[1]);

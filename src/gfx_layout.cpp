@@ -38,18 +38,17 @@
 std::unique_ptr<Layouter::LineCache> Layouter::linecache;
 
 /** Cache of Font instances. */
-Layouter::FontColourMap Layouter::fonts[FS_END];
+std::unordered_map<FontIndex, Layouter::FontColourMap> Layouter::fonts;
 
 
 /**
  * Construct a new font.
- * @param size   The font size to use for this font.
+ * @param font_index The font index to use for this font.
  * @param colour The colour to draw this font in.
  */
-Font::Font(FontSize size, TextColour colour) :
-		fc(FontCache::Get(size)), colour(colour)
+Font::Font(FontIndex font_index, TextColour colour) :
+		fc(FontCache::Get(font_index)), colour(colour)
 {
-	assert(size < FS_END);
 }
 
 /**
@@ -71,7 +70,7 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
 	const typename T::CharType *buffer_last = buff_begin + str.size() + 1;
 	typename T::CharType *buff = buff_begin;
 	FontMap &font_mapping = line.runs;
-	Font *f = Layouter::GetFont(state.fontsize, state.cur_colour);
+	Font *f = Layouter::GetFont(state.font_index, state.cur_colour);
 
 	font_mapping.clear();
 
@@ -80,7 +79,10 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
 	 * whenever the font changes, and convert the wide characters into a format
 	 * usable by ParagraphLayout.
 	 */
-	for (char32_t c : Utf8View(str)) {
+	Utf8View view(str);
+	for (auto it = view.begin(); it != view.end(); /* nothing */) {
+		auto cur = it;
+		uint32_t c = *it++;
 		if (c == '\0' || c == '\n') {
 			/* Caller should already have filtered out these characters. */
 			NOT_REACHED();
@@ -95,19 +97,40 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
 		} else {
 			/* Filter out non printable characters */
 			if (!IsPrintable(c)) continue;
-			/* Filter out text direction characters that shouldn't be drawn, and
-			 * will not be handled in the fallback case because they are mostly
-			 * needed for RTL languages which need more proper shaping support. */
-			if (!T::SUPPORTS_RTL && IsTextDirectionChar(c)) continue;
-			buff += T::AppendToBuffer(buff, buffer_last, c);
-			if (buff >= buffer_last) break;
-			continue;
+
+			if (IsTextDirectionChar(c)) {
+				/* Filter out text direction characters that shouldn't be drawn, and
+				 * will not be handled in the fallback case because they are mostly
+				 * needed for RTL languages which need more proper shaping support. */
+				if constexpr (!T::SUPPORTS_RTL) continue;
+
+				buff += T::AppendToBuffer(buff, buffer_last, c);
+				if (buff >= buffer_last) break;
+				continue;
+			}
+
+			FontIndex font_index = FontCache::GetFontIndexForCharacter(state.fontsize, c);
+
+			if (font_index == INVALID_FONT_INDEX) {
+				font_index = FontCache::GetDefaultFontIndex(state.fontsize);
+			}
+
+			if (state.font_index == font_index) {
+				buff += T::AppendToBuffer(buff, buffer_last, c);
+				if (buff >= buffer_last) break;
+				continue;
+			}
+
+			/* This character goes in the next run so don't advance. */
+			state.font_index = font_index;
+
+			it = cur;
 		}
 
-		if (font_mapping.empty() || font_mapping.back().first != buff - buff_begin) {
+		if (buff - buff_begin > 0 && (font_mapping.empty() || font_mapping.back().first != buff - buff_begin)) {
 			font_mapping.emplace_back(buff - buff_begin, f);
 		}
-		f = Layouter::GetFont(state.fontsize, state.cur_colour);
+		f = Layouter::GetFont(state.font_index, state.cur_colour);
 	}
 
 	/* Better safe than sorry. */
@@ -116,6 +139,14 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
 	if (font_mapping.empty() || font_mapping.back().first != buff - buff_begin) {
 		font_mapping.emplace_back(buff - buff_begin, f);
 	}
+
+	if constexpr (!std::is_same_v<T, FallbackParagraphLayoutFactory>) {
+		/* Don't layout if all runs use a built-in font and we're not using the fallback layouter. */
+		if (std::all_of(std::begin(font_mapping), std::end(font_mapping), [](const auto &i) { return i.second->fc->IsBuiltInFont(); })) {
+			return;
+		}
+	}
+
 	line.layout = T::GetParagraphLayout(buff_begin, buff, font_mapping);
 	line.state_after = state;
 }
@@ -128,7 +159,7 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
  */
 Layouter::Layouter(std::string_view str, int maxw, FontSize fontsize) : string(str)
 {
-	FontState state(TC_INVALID, fontsize);
+	FontState state(TC_INVALID, fontsize, FontCache::GetDefaultFontIndex(fontsize));
 
 	while (true) {
 		auto line_length = str.find_first_of('\n');
@@ -341,13 +372,17 @@ ptrdiff_t Layouter::GetCharAtPosition(int x, size_t line_index) const
 /**
  * Get a static font instance.
  */
-Font *Layouter::GetFont(FontSize size, TextColour colour)
+Font *Layouter::GetFont(FontIndex font_index, TextColour colour)
 {
-	FontColourMap::iterator it = fonts[size].find(colour);
-	if (it != fonts[size].end()) return it->second.get();
+	if (font_index == INVALID_FONT_INDEX) return nullptr;
+	assert(font_index < FontCache::Get().size());
 
-	fonts[size][colour] = std::make_unique<Font>(size, colour);
-	return fonts[size][colour].get();
+	FontColourMap &fcm = Layouter::fonts[font_index];
+	auto it = fcm.find(colour);
+	if (it != fcm.end()) return it->second.get();
+
+	fcm[colour] = std::make_unique<Font>(font_index, colour);
+	return fcm[colour].get();
 }
 
 /**
@@ -362,11 +397,10 @@ void Layouter::Initialize()
 
 /**
  * Reset cached font information.
- * @param size Font size to reset.
  */
-void Layouter::ResetFontCache(FontSize size)
+void Layouter::ResetFontCache([[maybe_unused]] FontSize size)
 {
-	fonts[size].clear();
+	Layouter::fonts.clear();
 
 	/* We must reset the linecache since it references the just freed fonts */
 	ResetLineCache();

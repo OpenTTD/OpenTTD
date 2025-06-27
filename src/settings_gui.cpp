@@ -1036,9 +1036,8 @@ struct GameOptionsWindow : Window {
 				this->SetWidgetDisabledState(WID_GO_GUI_FONT_AA, _fcsettings.prefer_sprite);
 				this->SetDirty();
 
-				InitFontCache(false);
-				InitFontCache(true);
-				ClearFontCache();
+				InitFontCache(FONTSIZES_ALL);
+				ClearFontCache(FONTSIZES_ALL);
 				CheckForMissingGlyphs();
 				SetupWidgetDimensions();
 				UpdateAllVirtCoords();
@@ -1051,7 +1050,7 @@ struct GameOptionsWindow : Window {
 				this->SetWidgetLoweredState(WID_GO_GUI_FONT_AA, _fcsettings.global_aa);
 				MarkWholeScreenDirty();
 
-				ClearFontCache();
+				ClearFontCache(FONTSIZES_ALL);
 				break;
 #endif /* HAS_TRUETYPE_FONT */
 
