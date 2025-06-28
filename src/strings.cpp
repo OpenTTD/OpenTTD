@@ -1333,23 +1333,24 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 					 * param 1: cargo type
 					 * param 2: cargo count */
 					CargoType cargo = args.GetNextParameter<CargoType>();
-					if (cargo >= CargoSpec::GetArraySize()) break;
+					int64_t amount = args.GetNextParameter<int64_t>();
 
-					StringID cargo_str = CargoSpec::Get(cargo)->units_volume;
-					int64_t amount = 0;
-					switch (cargo_str) {
+					if (cargo >= CargoSpec::GetArraySize()) {
+						builder += "(invalid cargo type)";
+						break;
+					}
+
+					switch (CargoSpec::Get(cargo)->units_volume) {
 						case STR_TONS:
-							amount = _units_weight[_settings_game.locale.units_weight].c.ToDisplay(args.GetNextParameter<int64_t>());
+							amount = _units_weight[_settings_game.locale.units_weight].c.ToDisplay(amount);
 							break;
 
 						case STR_LITERS:
-							amount = _units_volume[_settings_game.locale.units_volume].c.ToDisplay(args.GetNextParameter<int64_t>());
+							amount = _units_volume[_settings_game.locale.units_volume].c.ToDisplay(amount);
 							break;
 
-						default: {
-							amount = args.GetNextParameter<int64_t>();
+						default:
 							break;
-						}
 					}
 
 					FormatCommaNumber(builder, amount);
@@ -1361,14 +1362,19 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 					 * param 1: cargo type
 					 * param 2: cargo count */
 					CargoType cargo = args.GetNextParameter<CargoType>();
-					if (cargo >= CargoSpec::GetArraySize()) break;
+					int64_t amount = args.GetNextParameter<int64_t>();
+
+					if (cargo >= CargoSpec::GetArraySize()) {
+						builder += "(invalid cargo type)";
+						break;
+					}
 
 					StringID cargo_str = CargoSpec::Get(cargo)->units_volume;
 					switch (cargo_str) {
 						case STR_TONS: {
 							assert(_settings_game.locale.units_weight < lengthof(_units_weight));
 							const auto &x = _units_weight[_settings_game.locale.units_weight];
-							auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetNextParameter<int64_t>()), x.decimal_places);
+							auto tmp_params = MakeParameters(x.c.ToDisplay(amount), x.decimal_places);
 							FormatString(builder, GetStringPtr(x.l), tmp_params);
 							break;
 						}
@@ -1376,13 +1382,13 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 						case STR_LITERS: {
 							assert(_settings_game.locale.units_volume < lengthof(_units_volume));
 							const auto &x = _units_volume[_settings_game.locale.units_volume];
-							auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetNextParameter<int64_t>()), x.decimal_places);
+							auto tmp_params = MakeParameters(x.c.ToDisplay(amount), x.decimal_places);
 							FormatString(builder, GetStringPtr(x.l), tmp_params);
 							break;
 						}
 
 						default: {
-							auto tmp_params = MakeParameters(args.GetNextParameter<int64_t>());
+							auto tmp_params = MakeParameters(amount);
 							GetStringWithArgs(builder, cargo_str, tmp_params);
 							break;
 						}
@@ -1393,11 +1399,15 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 				case SCC_CARGO_LONG: { // {CARGO_LONG}
 					/* First parameter is cargo type, second parameter is cargo count */
 					CargoType cargo = args.GetNextParameter<CargoType>();
-					if (IsValidCargoType(cargo) && cargo >= CargoSpec::GetArraySize()) break;
-
-					StringID cargo_str = !IsValidCargoType(cargo) ? STR_QUANTITY_N_A : CargoSpec::Get(cargo)->quantifier;
-					auto tmp_args = MakeParameters(args.GetNextParameter<int64_t>());
-					GetStringWithArgs(builder, cargo_str, tmp_args);
+					int64_t amount = args.GetNextParameter<int64_t>();
+					if (cargo < CargoSpec::GetArraySize()) {
+						auto tmp_args = MakeParameters(amount);
+						GetStringWithArgs(builder, CargoSpec::Get(cargo)->quantifier, tmp_args);
+					} else if (!IsValidCargoType(cargo)) {
+						GetStringWithArgs(builder, STR_QUANTITY_N_A, {});
+					} else {
+						builder += "(invalid cargo type)";
+					}
 					break;
 				}
 
