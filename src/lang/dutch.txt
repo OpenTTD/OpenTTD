@@ -2328,16 +2328,19 @@ STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Eenvoudi
 STR_FACE_LOAD                                                   :{BLACK}Laden
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Favoriet gezicht laden
 STR_FACE_LOAD_DONE                                              :{WHITE}Je favoriete gezicht is geladen uit het OpenTTD-configuratiebestand
-STR_FACE_FACECODE                                               :{BLACK}Gezichtsnummer
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Gezichtsnummer van directeur bekijken en/of instellen
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Huidig gezichtsnummer bekijken en/of instellen
-STR_FACE_FACECODE_SET                                           :{WHITE}Nieuwe gezichtsnummercode is opgeslagen
-STR_FACE_FACECODE_ERR                                           :{WHITE}Kon gezichtsnummer voor directeur niet instellen - moet een getal zijn tussen 0 en 4.294.967.295!
+STR_FACE_FACECODE                                               :{BLACK}Gezichtscode
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Gezichtscode van directeur bekijken en/of instellen
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Huidige gezichtscode bekijken en/of instellen
+STR_FACE_FACECODE_SET                                           :{WHITE}Nieuw gezicht van directeur is ingesteld
+STR_FACE_FACECODE_ERR                                           :{WHITE}Kon gezichtscode voor directeur niet instellen - moet een geldig label en nummer zijn
 STR_FACE_SAVE                                                   :{BLACK}Opslaan
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Favoriet gezicht opslaan
 STR_FACE_SAVE_DONE                                              :{WHITE}Dit gezicht wordt in het OpenTTD-configuratiebestand opgeslagen als jouw favoriet
+STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
+STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :Nee
+STR_FACE_STYLE                                                  :Stijl:
 STR_FACE_HAIR                                                   :Haar:
 STR_FACE_EYEBROWS                                               :Wenkbrauwen:
 STR_FACE_EYECOLOUR                                              :Oogkleur:
@@ -2810,6 +2813,10 @@ STR_PICKER_MODE_USED_TOOLTIP                                    :Weergave van al
 STR_PICKER_MODE_SAVED                                           :Opgeslagen
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Weergave van alleen opgeslagen onderdelen omschakelen
 
+STR_PICKER_PREVIEW_SHRINK                                       :-
+STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Verklein de hoogte van voorbeelden. Ctrl+klikken verkleint tot minimaal
+STR_PICKER_PREVIEW_EXPAND                                       :+
+STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Vergroot de hoogte van voorbeelden. Ctrl+klikken vergroot tot maximaal
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Selecteer een klasse stations voor weergave
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Selecteer een type station om te bouwen. Ctrl+klik om toe te voegen aan of te verwijderen uit opgeslagen onderdelen

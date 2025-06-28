@@ -2708,16 +2708,19 @@ STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Uproszcz
 STR_FACE_LOAD                                                   :{BLACK}Wczytaj
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Wczytaj ulubioną twarz
 STR_FACE_LOAD_DONE                                              :{WHITE}Twoja ulubiona twarz została wczytana z pliku konfiguracyjnego OpenTTD
-STR_FACE_FACECODE                                               :{BLACK}Numer twarzy gracza
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Obejrzyj i/lub ustaw numer twarzy prezesa firmy
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Obejrzyj i/lub ustaw numer twarzy prezesa
-STR_FACE_FACECODE_SET                                           :{WHITE}Ustawiono nowy numer twarzy gracza
-STR_FACE_FACECODE_ERR                                           :{WHITE}Nie można ustawić numeru twarzy prezesa - musi być liczbą pomiędzy 0 a 4{NBSP}294{NBSP}967{NBSP}295!
+STR_FACE_FACECODE                                               :{BLACK}Kod twarzy gracza
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Wyświetl i/lub ustaw kod twarzy prezesa firmy
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Wyświetl i/lub ustaw kod twarzy prezesa
+STR_FACE_FACECODE_SET                                           :{WHITE}Nowa twarz prezesa została ustalona
+STR_FACE_FACECODE_ERR                                           :{WHITE}Nie można ustawić kodu twarzy prezesa - musi to być odpowiednia etykieta i numer
 STR_FACE_SAVE                                                   :{BLACK}Zapisz
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Zapisz ulubioną twarz
 STR_FACE_SAVE_DONE                                              :{WHITE}Ta twarz będzie zapisana w pliku konfiguracyjnym OpenTTD jako twoja ulubiona
+STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
+STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Tak
 STR_FACE_NO                                                     :Nie
+STR_FACE_STYLE                                                  :Styl:
 STR_FACE_HAIR                                                   :Włosy:
 STR_FACE_EYEBROWS                                               :Brwi:
 STR_FACE_EYECOLOUR                                              :Kolor oczu:
@@ -3190,6 +3193,10 @@ STR_PICKER_MODE_USED_TOOLTIP                                    :Przełącz wyś
 STR_PICKER_MODE_SAVED                                           :Zapisane
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Przełącz wyświetlanie tylko zapisanych elementów
 
+STR_PICKER_PREVIEW_SHRINK                                       :-
+STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Zmniejsz wysokość podglądów. Użyj Ctrl, aby pomniejszyć do minimum
+STR_PICKER_PREVIEW_EXPAND                                       :+
+STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Zwiększ wysokość podglądów. Użyj Ctrl, aby powiększyć maksymalnie
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Wybierz klasę stacji do wyświetlenia
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Wybierz typ stacji do zbudowania. Użyj Ctrl, aby dodać lub usunąć z zapisanych elementów
