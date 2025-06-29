@@ -2701,10 +2701,10 @@ STR_FACE_OK_TOOLTIP                                             :{BLACK}Zatwierd
 
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nowa twarz
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Wygeneruj nową losową twarz
-STR_FACE_ADVANCED                                               :{BLACK}Szczegółowy
+STR_FACE_ADVANCED                                               :{BLACK}Zaawansowane
 STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Szczegółowy widok wyboru twarzy
-STR_FACE_SIMPLE                                                 :{BLACK}Uproszczony
-STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Uproszczony widok wyboru twarzy
+STR_FACE_SIMPLE                                                 :{BLACK}Podstawowe
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Podstawowy widok wyboru twarzy
 STR_FACE_LOAD                                                   :{BLACK}Wczytaj
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Wczytaj ulubioną twarz
 STR_FACE_LOAD_DONE                                              :{WHITE}Twoja ulubiona twarz została wczytana z pliku konfiguracyjnego OpenTTD

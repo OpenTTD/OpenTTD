@@ -2329,16 +2329,19 @@ STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}간편 �
 STR_FACE_LOAD                                                   :{BLACK}불러오기
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}즐겨찾는 얼굴 불러오기
 STR_FACE_LOAD_DONE                                              :{WHITE}당신이 즐겨찾는 얼굴을 OpenTTD 설정 파일로부터 불러왔습니다.
-STR_FACE_FACECODE                                               :{BLACK}플레이어 얼굴 번호
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}플레이어 얼굴 번호 보기/설정
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}플레이어 얼굴 번호 보기/설정
-STR_FACE_FACECODE_SET                                           :{WHITE}새 얼굴 번호 코드가 설정되었습니다.
-STR_FACE_FACECODE_ERR                                           :{WHITE}플레이어 얼굴 번호를 설정할 수 없습니다 - 0에서 4,294,967,295 사이의 값을 입력하십시오!
+STR_FACE_FACECODE                                               :{BLACK}플레이어 얼굴 코드
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}플레이어 얼굴 코드 보기/설정
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}플레이어 얼굴 코드 보기/설정
+STR_FACE_FACECODE_SET                                           :{WHITE}새 회사 소유주 얼굴이 설정되었습니다
+STR_FACE_FACECODE_ERR                                           :{WHITE}플레이어 얼굴 코드를 설정할 수 없습니다 - 올바른 값을 입력해야 합니다
 STR_FACE_SAVE                                                   :{BLACK}저장
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}즐겨찾는 얼굴로 저장
 STR_FACE_SAVE_DONE                                              :{WHITE}이 얼굴이 OpenTTD 설정 파일에 즐겨찾는 얼굴로 저장될 것입니다.
+STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
+STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :예
 STR_FACE_NO                                                     :아니요
+STR_FACE_STYLE                                                  :종류:
 STR_FACE_HAIR                                                   :머리:
 STR_FACE_EYEBROWS                                               :눈썹:
 STR_FACE_EYECOLOUR                                              :눈동자 색:
