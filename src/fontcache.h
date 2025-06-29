@@ -24,6 +24,7 @@ enum class FontLoadReason : uint8_t {
 	Default,
 	Configured,
 	LanguageFallback,
+	MissingFallback,
 	End,
 };
 
@@ -51,7 +52,7 @@ protected:
 	FontCache(FontSize fs) : fs(fs) {}
 	static void Register(std::unique_ptr<FontCache> &&fc, FontLoadReason load_reason);
 	static void LoadDefaultFonts(FontSize fs);
-	static void LoadFallbackFonts(FontSize fs);
+	static void LoadFallbackFonts(FontSize fs, FontLoadReason load_reason);
 
 public:
 	virtual ~FontCache() = default;
