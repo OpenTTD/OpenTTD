@@ -36,7 +36,11 @@ public:
 
 	constexpr static bool IsSurveyPossible()
 	{
+#if defined(__EMSCRIPTEN__)
+		return false; // Disable surveys for GitHub previews
+#else
 		return true;
+#endif
 	}
 
 private:
