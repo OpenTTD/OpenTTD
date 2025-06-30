@@ -118,14 +118,16 @@ void ResetBadgeClassConfiguration(GrfSpecFeature feature)
  */
 std::pair<const BadgeClassConfigItem &, int> GetBadgeClassConfigItem(GrfSpecFeature feature, std::string_view label)
 {
-	auto config = GetBadgeClassConfiguration(feature);
-	auto found = std::ranges::find(config, label, &BadgeClassConfigItem::label);
-	if (found == std::end(config)) {
-		return {BadgeClassConfig::EMPTY_CONFIG_ITEM, 0};
+	if (BadgeClassConfig::CONFIGURABLE_FEATURES.Test(feature)) {
+		auto config = GetBadgeClassConfiguration(feature);
+		auto found = std::ranges::find(config, label, &BadgeClassConfigItem::label);
+		if (found != std::end(config)) {
+			/* Sort order is simply the position in the configuration list. */
+			return {*found, static_cast<int>(std::distance(std::begin(config), found))};
+		}
 	}
 
-	/* Sort order is simply the position in the configuration list. */
-	return {*found, static_cast<int>(std::distance(std::begin(config), found))};
+	return {BadgeClassConfig::EMPTY_CONFIG_ITEM, 0};
 }
 
 /**
