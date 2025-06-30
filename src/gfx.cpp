@@ -542,7 +542,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 
 		if (_current_text_dir == TD_RTL) {
 			min_x += 3 * dot_width;
-			offset_x = w - 3 * dot_width - max_w;
+			offset_x = w - max_w;
 		} else {
 			max_x -= 3 * dot_width;
 		}
