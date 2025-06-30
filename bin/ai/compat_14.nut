@@ -36,3 +36,11 @@ AITown.FoundTown <- function(tile, size, city, layout, name) { return AITown.Fou
 
 AIVehicle.SetNameCompat14 <- AIVehicle.SetName;
 AIVehicle.SetName <- function(id, name) { return AIVehicle.SetNameCompat14(id, AICompat14.Text(name)); }
+
+AIObject.constructorCompat14 <- AIObject.constructor;
+foreach(name, object in CompatScriptRootTable) {
+	if (type(object) != "class") continue;
+	if (!object.rawin("constructor")) continue;
+	if (object.constructor != AIObject.constructorCompat14) continue;
+	object.constructor <- function() : (name) { AILog.Error("'" + name + "' is not instantiable"); }
+}
