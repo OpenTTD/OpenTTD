@@ -583,17 +583,24 @@ public:
 	{
 		switch (widget) {
 			case WID_NCL_CHECKBOX:
-				size.width = this->checkbox_size.width + padding.width;
+				size.width = std::max<uint>(this->checkbox_size.width, Window::SortButtonWidth()) + padding.width;
 				break;
 
 			case WID_NCL_TYPE: {
+				/* Width must be enough for header label and sort buttons.*/
+				size.width += Window::SortButtonWidth() * 2;
+				/* And also enough for the width of each type of content. */
 				Dimension d = size;
 				for (int i = CONTENT_TYPE_BEGIN; i < CONTENT_TYPE_END; i++) {
 					d = maxdim(d, GetStringBoundingBox(STR_CONTENT_TYPE_BASE_GRAPHICS + i - CONTENT_TYPE_BASE_GRAPHICS));
 				}
-				size.width = d.width + padding.width;
+				size.width = std::max(size.width, d.width + padding.width);
 				break;
 			}
+
+			case WID_NCL_NAME:
+				size.width += Window::SortButtonWidth() * 2;
+				break;
 
 			case WID_NCL_MATRIX:
 				fill.height = resize.height = std::max(this->checkbox_size.height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
