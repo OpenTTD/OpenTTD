@@ -8,6 +8,8 @@
 /** @file industry_cmd.cpp Handling of industry tiles. */
 
 #include "stdafx.h"
+#include "misc/history_type.hpp"
+#include "misc/history_func.hpp"
 #include "clear_map.h"
 #include "industry.h"
 #include "station_base.h"
@@ -1243,6 +1245,10 @@ void OnTick_Industry()
 
 	for (Industry *i : Industry::Iterate()) {
 		ProduceIndustryGoods(i);
+
+		if ((TimerGameTick::counter + i->index) % Ticks::DAY_TICKS == 0) {
+			for (auto &a : i->accepted) a.accumulated_waiting += a.waiting;
+		}
 	}
 }
 
@@ -2486,21 +2492,44 @@ void GenerateIndustries()
 	_industry_builder.Reset();
 }
 
+template <>
+Industry::ProducedHistory SumHistory(std::span<Industry::ProducedHistory> history)
+{
+	uint32_t production = std::accumulate(std::begin(history), std::end(history), 0, [](uint32_t r, const auto &p) { return r + p.production; });
+	uint32_t transported = std::accumulate(std::begin(history), std::end(history), 0, [](uint32_t r, const auto &p) { return r + p.transported; });
+	auto count = std::size(history);
+	return {.production = ClampTo<uint16_t>(production / count), .transported = ClampTo<uint16_t>(transported / count)};
+}
+
+template <>
+Industry::AcceptedHistory SumHistory(std::span<Industry::AcceptedHistory> history)
+{
+	uint32_t accepted = std::accumulate(std::begin(history), std::end(history), 0, [](uint32_t r, const auto &a) { return r + a.accepted; });
+	uint32_t waiting = std::accumulate(std::begin(history), std::end(history), 0, [](uint32_t r, const auto &a) { return r + a.waiting; });;
+	auto count = std::size(history);
+	return {.accepted = ClampTo<uint16_t>(accepted / count), .waiting = ClampTo<uint16_t>(waiting / count)};
+}
+
 /**
  * Monthly update of industry statistics.
  * @param i Industry to update.
  */
 static void UpdateIndustryStatistics(Industry *i)
 {
+	auto month = TimerGameEconomy::month;
 	for (auto &p : i->produced) {
 		if (IsValidCargoType(p.cargo)) {
 			if (p.history[THIS_MONTH].production != 0) i->last_prod_year = TimerGameEconomy::year;
 
 			/* Move history from this month to last month. */
-			std::rotate(std::rbegin(p.history), std::rbegin(p.history) + 1, std::rend(p.history));
-			p.history[THIS_MONTH].production = 0;
-			p.history[THIS_MONTH].transported = 0;
+			RotateHistory(p.history, month);
 		}
+	}
+
+	for (auto &a : i->accepted) {
+		if (!IsValidCargoType(a.cargo)) continue;
+		a.history[THIS_MONTH].waiting = GetAndResetAccumulatedAverage<uint16_t>(a.accumulated_waiting);
+		RotateHistory(a.history, month);
 	}
 }
 
