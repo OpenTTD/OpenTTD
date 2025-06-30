@@ -1448,7 +1448,7 @@ STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permiti-la comp
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Se unha compañía compra os dereitos de transporte exclusivos nunha cidade, as estacións dos opoñentes (pasaxeiros e mercadorías) non recibirán ningunha carga durante doce meses
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :Se unha compañía compra os dereitos de transporte exclusivos nunha cidade, as estacións dos opoñentes (pasaxeiros e mercadorías) non recibirán ningunha carga durante doce minutos
 
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permitir a financiación de edicifios: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permitir a financiación de edificios: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Permite ás compañías dar cartos ás cidades para finiacia-la construción de novos edificios
 
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permitira a financiación da reconstrución das estradas locáis: {STRING}
@@ -2329,16 +2329,19 @@ STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Selecci�
 STR_FACE_LOAD                                                   :{BLACK}Cargar
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Carga-la cara favorita
 STR_FACE_LOAD_DONE                                              :{WHITE}A túa cara favorita cargouse dende o arquivo de configuración de OpenTTD.
-STR_FACE_FACECODE                                               :{BLACK}Número de cara
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Ver e/ou establecer o número da cara do presidente da compañía
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Ver e/ou establecer o número da cara do presidente
-STR_FACE_FACECODE_SET                                           :{WHITE}Estableceuse o novo número de cara
-STR_FACE_FACECODE_ERR                                           :{WHITE}Non se puido establecer o número de cara! - debe ser un número entre 0 e 4.294.967.295!
+STR_FACE_FACECODE                                               :{BLACK}Código de cara do xogador
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Ver e/ou establecer o código da cara da presidencia da compañía
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Ver e/ou establecer o código da cara do presidente
+STR_FACE_FACECODE_SET                                           :{WHITE}Estableceuse unha nova cara da presidencia
+STR_FACE_FACECODE_ERR                                           :{WHITE}Non se puido establecer o código de cara! - debe ser unha etiqueta e número válidos
 STR_FACE_SAVE                                                   :{BLACK}Gravar
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Gravar coma cara favorita
 STR_FACE_SAVE_DONE                                              :{WHITE}Esta cara gravarase coma favorita no arquivo de configuración de OpenTTD.
+STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
+STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Si
 STR_FACE_NO                                                     :Non
+STR_FACE_STYLE                                                  :Estilo:
 STR_FACE_HAIR                                                   :Pelo:
 STR_FACE_EYEBROWS                                               :Cellas:
 STR_FACE_EYECOLOUR                                              :Cor de ollos:
@@ -2811,6 +2814,10 @@ STR_PICKER_MODE_USED_TOOLTIP                                    :Alternar amosar
 STR_PICKER_MODE_SAVED                                           :Gardados
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Alternar amosar só elementos gardados
 
+STR_PICKER_PREVIEW_SHRINK                                       :-
+STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Reducir a altura da vista previa de imaxes. Ctrl+Click para reducir o mínimo
+STR_PICKER_PREVIEW_EXPAND                                       :+
+STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Inrecementar a altura da vista previa de imaxes. Ctrl+Click para incrementar o máximo
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Selecciona unha clase de estación para amosar
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Selecciona un tipo de estación a construír. Ctrl+Click para engadir ou eliminar nos elementos gardados.
@@ -3051,6 +3058,11 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Seleccio
 STR_FOUND_TOWN_CITY                                             :{BLACK}Cidade
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}As cidades crecen máis rápido que os pobos{}Segundo a configuración, son máis grandes cando se fundan
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Expansión da vila:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Estruturas
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Aumentar as estruturas das vilas
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Estradas
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Aumentar as estradas das vilas
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Disposición das estradas das poboacións:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Selecciona a disposición das estradas para esta poboación
@@ -3675,6 +3687,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Cambia-l
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Expandir
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Incrementa-lo tamaño da cidade
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Expandir estruturas
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Aumentar as estruturas das vilas
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Expandir estradas
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Incrementar as estradas da vila
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Borrar
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Borrar completamente esta cidade
 
@@ -5896,3 +5912,11 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Abrir a configuración de insignias
+STR_BADGE_CONFIG_RESET                                          :Restablecer
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Iconos de insignia
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Filtros de Insignia
+STR_BADGE_CONFIG_PREVIEW                                        :Previsualizar imaxe
+STR_BADGE_CONFIG_NAME                                           :Nome
+STR_BADGE_FILTER_ANY_LABEL                                      :Calquera {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} é {STRING}

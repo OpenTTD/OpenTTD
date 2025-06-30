@@ -2328,16 +2328,19 @@ STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Simpelt 
 STR_FACE_LOAD                                                   :{BLACK}Hent
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Hent favoritansigt
 STR_FACE_LOAD_DONE                                              :{WHITE}Dit favoritansigt er indlæst fra OpenTTD konfigurationsfilen.
-STR_FACE_FACECODE                                               :{BLACK}Spiller ansigtsnr.
+STR_FACE_FACECODE                                               :{BLACK}Spiller ansigts nr.
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Vis og/eller indstil spillers ansigtsnummer
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Vis og/eller indstil spillers ansigtsnummer
-STR_FACE_FACECODE_SET                                           :{WHITE}Ny ansigtsnummer-kode er indstillet.
-STR_FACE_FACECODE_ERR                                           :{WHITE}Kunne ikke indstille spillers ansigtsnummer - skal være et nummer mellem 0 og 4.294.967.295!
+STR_FACE_FACECODE_SET                                           :{WHITE}Ny præsidents ansigt er sat
+STR_FACE_FACECODE_ERR                                           :{WHITE}Præsidentens ansigtskode kunne ikke angives - skal være en gyldig etiket og nummer
 STR_FACE_SAVE                                                   :{BLACK}Gem
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Gem favoritansigt
 STR_FACE_SAVE_DONE                                              :{WHITE}Dette ansigt bliver gemt som din favorit i OpenTTD konfigurationsfilen.
+STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
+STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :Nej
+STR_FACE_STYLE                                                  :Stil:
 STR_FACE_HAIR                                                   :Hår:
 STR_FACE_EYEBROWS                                               :Øjenbryn:
 STR_FACE_EYECOLOUR                                              :Øjenfarve:
