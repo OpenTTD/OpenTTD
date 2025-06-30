@@ -1761,7 +1761,7 @@ static void ViewportDrawStrings(ZoomLevel zoom, const StringSpriteToDrawVector *
 		}
 
 		if (ss.flags.Test(ViewportStringFlag::TextColour)) {
-			if (ss.colour != INVALID_COLOUR) colour = static_cast<TextColour>(GetColourGradient(ss.colour, SHADE_LIGHTER) | TC_IS_PALETTE_COLOUR);
+			if (ss.colour != INVALID_COLOUR) colour = static_cast<TextColour>(GetColourGradient(ss.colour, SHADE_LIGHTER) | TC_IS_PALETTE_COLOUR | TC_FORCED);
 		}
 
 		int left = x + WidgetDimensions::scaled.fullbevel.left;
@@ -2226,8 +2226,30 @@ static void SetSelectionTilesDirty()
 
 void SetSelectionRed(bool b)
 {
+	if (_thd.make_square_red == b) return;
 	_thd.make_square_red = b;
 	SetSelectionTilesDirty();
+}
+
+/**
+ * Update tile highlight selection to reflect the command cost.
+ * @param cost CommandCost.
+ */
+void HandleSelectionQuery(CommandCost &&cost)
+{
+	SetSelectionRed(cost.Failed());
+	if (cost.Failed()) {
+		if (_thd.error != INVALID_TE_ID) RemoveTextEffect(_thd.error);
+		Point pt = RemapCoords(_thd.new_pos.x, _thd.new_pos.y, GetTilePixelZ(TileXY(_thd.new_pos.x / TILE_SIZE, _thd.new_pos.y / TILE_SIZE)));
+
+		EncodedString error = std::move(cost.GetEncodedMessage());
+		if (error.empty()) error = GetEncodedStringIfValid(cost.GetErrorMessage());
+
+		_thd.error = AddTextEffect(std::move(error), pt.x, pt.y, 0, TextEffectMode::TE_ERROR);
+	} else {
+		if (_thd.error != INVALID_TE_ID) RemoveTextEffect(_thd.error);
+		_thd.error = INVALID_TE_ID;
+	}
 }
 
 /**
@@ -2442,7 +2464,7 @@ static bool CheckClickOnLandscape(const Viewport &vp, int x, int y)
 	return true;
 }
 
-static void PlaceObject()
+static void PlaceObject(bool query)
 {
 	Point pt;
 	Window *w;
@@ -2459,23 +2481,34 @@ static void PlaceObject()
 	_tile_fract_coords.y = pt.y & TILE_UNIT_MASK;
 
 	w = _thd.GetCallbackWnd();
-	if (w != nullptr) w->OnPlaceObject(pt, TileVirtXY(pt.x, pt.y));
+	if (w != nullptr) {
+		TileIndex tile = TileVirtXY(pt.x, pt.y);
+		if (query) {
+			/* Query only if moved to a new tile. */
+			static TileIndex last_tile = INVALID_TILE;
+			if (tile == last_tile) return;
+			last_tile = tile;
+		}
+		w->OnPlaceObject(pt, tile, query);
+	}
 }
 
 
-bool HandleViewportClicked(const Viewport &vp, int x, int y)
+bool HandleViewportClicked(const Viewport &vp, int x, int y, bool query)
 {
 	const Vehicle *v = CheckClickOnVehicle(vp, x, y);
 
 	if (_thd.place_mode & HT_VEHICLE) {
-		if (v != nullptr && VehicleClicked(v)) return true;
+		if (!query && v != nullptr && VehicleClicked(v)) return true;
 	}
 
 	/* Vehicle placement mode already handled above. */
 	if ((_thd.place_mode & HT_DRAG_MASK) != HT_NONE) {
-		PlaceObject();
+		PlaceObject(query);
 		return true;
 	}
+
+	if (query) return false;
 
 	if (CheckClickOnViewportSign(vp, x, y)) return true;
 	bool result = CheckClickOnLandscape(vp, x, y);
@@ -2618,6 +2651,9 @@ void TileHighlightData::Reset()
 	this->pos.y = 0;
 	this->new_pos.x = 0;
 	this->new_pos.y = 0;
+
+	if (this->error != INVALID_TE_ID) RemoveTextEffect(this->error);
+	this->error = INVALID_TE_ID;
 }
 
 /**
@@ -2766,8 +2802,10 @@ static void HideMeasurementTooltips()
 }
 
 /** highlighting tiles while only going over them with the mouse */
-void VpStartPlaceSizing(TileIndex tile, ViewportPlaceMethod method, ViewportDragDropSelectionProcess process)
+void VpStartPlaceSizing(bool query, TileIndex tile, ViewportPlaceMethod method, ViewportDragDropSelectionProcess process)
 {
+	if (_thd.select_method != method || _thd.select_proc != process) SetSelectionRed(false);
+
 	_thd.select_method = method;
 	_thd.select_proc   = process;
 	_thd.selend.x = TileX(tile) * TILE_SIZE;
@@ -2784,6 +2822,8 @@ void VpStartPlaceSizing(TileIndex tile, ViewportPlaceMethod method, ViewportDrag
 		_thd.selstart.x += TILE_SIZE / 2;
 		_thd.selstart.y += TILE_SIZE / 2;
 	}
+
+	if (query) return;
 
 	HighLightStyle others = _thd.place_mode & ~(HT_DRAG_MASK | HT_DIR_MASK);
 	if ((_thd.place_mode & HT_DRAG_MASK) == HT_RECT) {
@@ -3426,6 +3466,20 @@ calc_heightdiff_single_direction:;
  */
 EventState VpHandlePlaceSizingDrag()
 {
+	if (_thd.window_class != WC_INVALID && _thd.select_proc != DDSP_NONE) {
+		static TileIndex last_start, last_end;
+		Point selend = _special_mouse_mode == WSM_NONE ? _thd.new_pos : _thd.selend;
+		TileIndex start = TileVirtXY(_thd.new_pos.x, _thd.new_pos.y);
+		TileIndex end = TileVirtXY(selend.x, selend.y);
+		if (start != last_start || end != last_end) {
+			last_start = start;
+			last_end = end;
+			if (Window *w = _thd.GetCallbackWnd(); w != nullptr) {
+				w->OnPlaceMouseUp(_thd.select_method, _thd.select_proc, selend, start, end, true);
+			}
+		}
+	}
+
 	if (_special_mouse_mode != WSM_SIZING && _special_mouse_mode != WSM_DRAGGING) return ES_NOT_HANDLED;
 
 	/* stop drag mode if the window has been closed */
@@ -3466,7 +3520,7 @@ EventState VpHandlePlaceSizingDrag()
 	SetTileSelectSize(1, 1);
 
 	HideMeasurementTooltips();
-	w->OnPlaceMouseUp(_thd.select_method, _thd.select_proc, _thd.selend, TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y));
+	w->OnPlaceMouseUp(_thd.select_method, _thd.select_proc, _thd.selend, TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), false);
 
 	return ES_HANDLED;
 }
@@ -3524,9 +3578,13 @@ void SetObjectToPlace(CursorID icon, PaletteID pal, HighLightStyle mode, WindowC
 		_special_mouse_mode = WSM_NONE;
 	}
 
+	_thd.select_proc = DDSP_NONE;
 	_thd.place_mode = mode;
 	_thd.window_class = window_class;
 	_thd.window_number = window_num;
+
+	if (_thd.error != INVALID_TE_ID) RemoveTextEffect(_thd.error);
+	_thd.error = INVALID_TE_ID;
 
 	if ((mode & HT_DRAG_MASK) == HT_SPECIAL) { // special tools, like tunnels or docks start with presizing mode
 		VpStartPreSizing();

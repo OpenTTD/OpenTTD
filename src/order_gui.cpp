@@ -1467,8 +1467,10 @@ public:
 		return ES_HANDLED;
 	}
 
-	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile, bool query) override
 	{
+		if (query) return;
+
 		if (this->goto_type == OPOS_GOTO) {
 			const Order cmd = GetOrderCmdFromTile(this->vehicle, tile);
 			if (cmd.IsType(OT_NOTHING)) return;

@@ -11,6 +11,7 @@
 #define TILEHIGHLIGHT_TYPE_H
 
 #include "core/geometry_type.hpp"
+#include "texteff.hpp"
 #include "window_type.h"
 #include "tile_type.h"
 #include "viewport_type.h"
@@ -73,6 +74,8 @@ struct TileHighlightData {
 
 	ViewportPlaceMethod select_method;            ///< The method which governs how tiles are selected.
 	ViewportDragDropSelectionProcess select_proc; ///< The procedure that has to be called when the selection is done.
+
+	TextEffectID error = INVALID_TE_ID;
 
 	void Reset();
 

@@ -2083,15 +2083,15 @@ struct MainToolbarWindow : Window {
 		return ES_HANDLED;
 	}
 
-	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile, bool query) override
 	{
 		switch (_last_started_action) {
 			case CBF_PLACE_SIGN:
-				PlaceProc_Sign(tile);
+				PlaceProc_Sign(query, tile);
 				break;
 
 			case CBF_PLACE_LANDINFO:
-				ShowLandInfo(tile);
+				if (!query) ShowLandInfo(tile);
 				break;
 
 			default: NOT_REACHED();
@@ -2443,15 +2443,15 @@ struct ScenarioEditorToolbarWindow : Window {
 		return ES_HANDLED;
 	}
 
-	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile, bool query) override
 	{
 		switch (_last_started_action) {
 			case CBF_PLACE_SIGN:
-				PlaceProc_Sign(tile);
+				PlaceProc_Sign(query, tile);
 				break;
 
 			case CBF_PLACE_LANDINFO:
-				ShowLandInfo(tile);
+				if (!query) ShowLandInfo(tile);
 				break;
 
 			default: NOT_REACHED();

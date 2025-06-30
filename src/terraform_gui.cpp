@@ -109,7 +109,7 @@ static void GenerateRockyArea(TileIndex end, TileIndex start)
  * allows for additional implements that are more local. For example X_Y drag
  * of convertrail which belongs in rail_gui.cpp and not terraform_gui.cpp
  */
-bool GUIPlaceProcDragXY(ViewportDragDropSelectionProcess proc, TileIndex start_tile, TileIndex end_tile)
+bool GUIPlaceProcDragXY(bool query, ViewportDragDropSelectionProcess proc, TileIndex start_tile, TileIndex end_tile)
 {
 	if (!_settings_game.construction.freeform_edges) {
 		/* When end_tile is MP_VOID, the error tile will not be visible to the
@@ -120,22 +120,22 @@ bool GUIPlaceProcDragXY(ViewportDragDropSelectionProcess proc, TileIndex start_t
 
 	switch (proc) {
 		case DDSP_DEMOLISH_AREA:
-			Command<CMD_CLEAR_AREA>::Post(STR_ERROR_CAN_T_CLEAR_THIS_AREA, CcPlaySound_EXPLOSION, end_tile, start_tile, _ctrl_pressed);
+			Command<CMD_CLEAR_AREA>::PostOrQuery(query, STR_ERROR_CAN_T_CLEAR_THIS_AREA, CcPlaySound_EXPLOSION, end_tile, start_tile, _ctrl_pressed);
 			break;
 		case DDSP_RAISE_AND_LEVEL_AREA:
-			Command<CMD_LEVEL_LAND>::Post(STR_ERROR_CAN_T_RAISE_LAND_HERE, CcTerraform, end_tile, start_tile, _ctrl_pressed, LM_RAISE);
+			Command<CMD_LEVEL_LAND>::PostOrQuery(query, STR_ERROR_CAN_T_RAISE_LAND_HERE, CcTerraform, end_tile, start_tile, _ctrl_pressed, LM_RAISE);
 			break;
 		case DDSP_LOWER_AND_LEVEL_AREA:
-			Command<CMD_LEVEL_LAND>::Post(STR_ERROR_CAN_T_LOWER_LAND_HERE, CcTerraform, end_tile, start_tile, _ctrl_pressed, LM_LOWER);
+			Command<CMD_LEVEL_LAND>::PostOrQuery(query, STR_ERROR_CAN_T_LOWER_LAND_HERE, CcTerraform, end_tile, start_tile, _ctrl_pressed, LM_LOWER);
 			break;
 		case DDSP_LEVEL_AREA:
-			Command<CMD_LEVEL_LAND>::Post(STR_ERROR_CAN_T_LEVEL_LAND_HERE, CcTerraform, end_tile, start_tile, _ctrl_pressed, LM_LEVEL);
+			Command<CMD_LEVEL_LAND>::PostOrQuery(query, STR_ERROR_CAN_T_LEVEL_LAND_HERE, CcTerraform, end_tile, start_tile, _ctrl_pressed, LM_LEVEL);
 			break;
 		case DDSP_CREATE_ROCKS:
-			GenerateRockyArea(end_tile, start_tile);
+			if (!query) GenerateRockyArea(end_tile, start_tile);
 			break;
 		case DDSP_CREATE_DESERT:
-			GenerateDesertArea(end_tile, start_tile);
+			if (!query) GenerateDesertArea(end_tile, start_tile);
 			break;
 		default:
 			return false;
@@ -148,9 +148,9 @@ bool GUIPlaceProcDragXY(ViewportDragDropSelectionProcess proc, TileIndex start_t
  * Start a drag for demolishing an area.
  * @param tile Position of one corner.
  */
-void PlaceProc_DemolishArea(TileIndex tile)
+void PlaceProc_DemolishArea(bool query, TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_DEMOLISH_AREA);
+	VpStartPlaceSizing(query, tile, VPM_X_AND_Y, DDSP_DEMOLISH_AREA);
 }
 
 /** Terra form toolbar managing class. */
@@ -218,31 +218,31 @@ struct TerraformToolbarWindow : Window {
 		}
 	}
 
-	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile, bool query) override
 	{
 		switch (this->last_user_action) {
 			case WID_TT_LOWER_LAND: // Lower land button
-				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_LOWER_AND_LEVEL_AREA);
+				VpStartPlaceSizing(query, tile, VPM_X_AND_Y, DDSP_LOWER_AND_LEVEL_AREA);
 				break;
 
 			case WID_TT_RAISE_LAND: // Raise land button
-				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_RAISE_AND_LEVEL_AREA);
+				VpStartPlaceSizing(query, tile, VPM_X_AND_Y, DDSP_RAISE_AND_LEVEL_AREA);
 				break;
 
 			case WID_TT_LEVEL_LAND: // Level land button
-				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_LEVEL_AREA);
+				VpStartPlaceSizing(query, tile, VPM_X_AND_Y, DDSP_LEVEL_AREA);
 				break;
 
 			case WID_TT_DEMOLISH: // Demolish aka dynamite button
-				PlaceProc_DemolishArea(tile);
+				PlaceProc_DemolishArea(query, tile);
 				break;
 
 			case WID_TT_BUY_LAND: // Buy land button
-				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_BUILD_OBJECT);
+				VpStartPlaceSizing(query, tile, VPM_X_AND_Y, DDSP_BUILD_OBJECT);
 				break;
 
 			case WID_TT_PLACE_SIGN: // Place sign button
-				PlaceProc_Sign(tile);
+				PlaceProc_Sign(query, tile);
 				break;
 
 			default: NOT_REACHED();
@@ -261,7 +261,7 @@ struct TerraformToolbarWindow : Window {
 		return pt;
 	}
 
-	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile) override
+	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile, bool query) override
 	{
 		if (pt.x != -1) {
 			switch (select_proc) {
@@ -270,7 +270,7 @@ struct TerraformToolbarWindow : Window {
 				case DDSP_RAISE_AND_LEVEL_AREA:
 				case DDSP_LOWER_AND_LEVEL_AREA:
 				case DDSP_LEVEL_AREA:
-					GUIPlaceProcDragXY(select_proc, start_tile, end_tile);
+					GUIPlaceProcDragXY(query, select_proc, start_tile, end_tile);
 					break;
 				case DDSP_BUILD_OBJECT:
 					if (!_settings_game.construction.freeform_edges) {
@@ -279,8 +279,8 @@ struct TerraformToolbarWindow : Window {
 						if (TileX(end_tile) == Map::MaxX()) end_tile += TileDiffXY(-1, 0);
 						if (TileY(end_tile) == Map::MaxY()) end_tile += TileDiffXY(0, -1);
 					}
-					Command<CMD_BUILD_OBJECT_AREA>::Post(STR_ERROR_CAN_T_PURCHASE_THIS_LAND, CcPlaySound_CONSTRUCTION_RAIL,
-						end_tile, start_tile, OBJECT_OWNED_LAND, 0, (_ctrl_pressed ? true : false));
+					Command<CMD_BUILD_OBJECT_AREA>::PostOrQuery(query, STR_ERROR_CAN_T_PURCHASE_THIS_LAND, CcPlaySound_CONSTRUCTION_RAIL,
+							end_tile, start_tile, OBJECT_OWNED_LAND, 0, (_ctrl_pressed ? true : false));
 					break;
 			}
 		}
@@ -650,31 +650,31 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 		}
 	}
 
-	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile, bool query) override
 	{
 		switch (this->last_user_action) {
 			case WID_ETT_DEMOLISH: // Demolish aka dynamite button
-				PlaceProc_DemolishArea(tile);
+				PlaceProc_DemolishArea(query, tile);
 				break;
 
 			case WID_ETT_LOWER_LAND: // Lower land button
-				CommonRaiseLowerBigLand(tile, false);
+				if (!query) CommonRaiseLowerBigLand(tile, false);
 				break;
 
 			case WID_ETT_RAISE_LAND: // Raise land button
-				CommonRaiseLowerBigLand(tile, true);
+				if (!query) CommonRaiseLowerBigLand(tile, true);
 				break;
 
 			case WID_ETT_LEVEL_LAND: // Level land button
-				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_LEVEL_AREA);
+				VpStartPlaceSizing(query, tile, VPM_X_AND_Y, DDSP_LEVEL_AREA);
 				break;
 
 			case WID_ETT_PLACE_ROCKS: // Place rocks button
-				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_ROCKS);
+				VpStartPlaceSizing(query, tile, VPM_X_AND_Y, DDSP_CREATE_ROCKS);
 				break;
 
 			case WID_ETT_PLACE_DESERT: // Place desert button (in tropical climate)
-				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_DESERT);
+				VpStartPlaceSizing(query, tile, VPM_X_AND_Y, DDSP_CREATE_DESERT);
 				break;
 
 			default: NOT_REACHED();
@@ -686,7 +686,7 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
 	}
 
-	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile) override
+	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile, bool query) override
 	{
 		if (pt.x != -1) {
 			switch (select_proc) {
@@ -697,7 +697,7 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 				case DDSP_LOWER_AND_LEVEL_AREA:
 				case DDSP_LEVEL_AREA:
 				case DDSP_DEMOLISH_AREA:
-					GUIPlaceProcDragXY(select_proc, start_tile, end_tile);
+					GUIPlaceProcDragXY(query, select_proc, start_tile, end_tile);
 					break;
 			}
 		}

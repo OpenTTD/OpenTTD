@@ -192,23 +192,23 @@ struct BuildDocksToolbarWindow : Window {
 		this->last_clicked_widget = (DockToolbarWidgets)widget;
 	}
 
-	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile, bool query) override
 	{
 		switch (this->last_clicked_widget) {
 			case WID_DT_CANAL: // Build canal button
-				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_WATER);
+				VpStartPlaceSizing(query, tile, VPM_X_AND_Y, DDSP_CREATE_WATER);
 				break;
 
 			case WID_DT_LOCK: // Build lock button
-				Command<CMD_BUILD_LOCK>::Post(STR_ERROR_CAN_T_BUILD_LOCKS, CcBuildDocks, tile);
+				Command<CMD_BUILD_LOCK>::PostOrQuery(query, STR_ERROR_CAN_T_BUILD_LOCKS, CcBuildDocks, tile);
 				break;
 
 			case WID_DT_DEMOLISH: // Demolish aka dynamite button
-				PlaceProc_DemolishArea(tile);
+				PlaceProc_DemolishArea(query, tile);
 				break;
 
 			case WID_DT_DEPOT: // Build depot button
-				Command<CMD_BUILD_SHIP_DEPOT>::Post(STR_ERROR_CAN_T_BUILD_SHIP_DEPOT, CcBuildDocks, tile, _ship_depot_direction);
+				Command<CMD_BUILD_SHIP_DEPOT>::PostOrQuery(query, STR_ERROR_CAN_T_BUILD_SHIP_DEPOT, CcBuildDocks, tile, _ship_depot_direction);
 				break;
 
 			case WID_DT_STATION: { // Build station button
@@ -217,9 +217,15 @@ struct BuildDocksToolbarWindow : Window {
 				TileIndex tile_to = (dir != INVALID_DIAGDIR ? TileAddByDiagDir(tile, ReverseDiagDir(dir)) : tile);
 
 				bool adjacent = _ctrl_pressed;
+
+				if (query) {
+					HandleSelectionQuery(Command<CMD_BUILD_DOCK>::Query(tile, StationID::Invalid(), adjacent));
+					break;
+				}
+
 				auto proc = [=](bool test, StationID to_join) -> bool {
 					if (test) {
-						return Command<CMD_BUILD_DOCK>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_DOCK>()), tile, StationID::Invalid(), adjacent).Succeeded();
+						return Command<CMD_BUILD_DOCK>::Query(tile, StationID::Invalid(), adjacent).Succeeded();
 					} else {
 						return Command<CMD_BUILD_DOCK>::Post(STR_ERROR_CAN_T_BUILD_DOCK_HERE, CcBuildDocks, tile, to_join, adjacent);
 					}
@@ -230,15 +236,15 @@ struct BuildDocksToolbarWindow : Window {
 			}
 
 			case WID_DT_BUOY: // Build buoy button
-				Command<CMD_BUILD_BUOY>::Post(STR_ERROR_CAN_T_POSITION_BUOY_HERE, CcBuildDocks, tile);
+				Command<CMD_BUILD_BUOY>::PostOrQuery(query, STR_ERROR_CAN_T_POSITION_BUOY_HERE, CcBuildDocks, tile);
 				break;
 
 			case WID_DT_RIVER: // Build river button (in scenario editor)
-				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_RIVER);
+				VpStartPlaceSizing(query, tile, VPM_X_AND_Y, DDSP_CREATE_RIVER);
 				break;
 
 			case WID_DT_BUILD_AQUEDUCT: // Build aqueduct button
-				Command<CMD_BUILD_BRIDGE>::Post(STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE, CcBuildBridge, tile, GetOtherAqueductEnd(tile), TRANSPORT_WATER, 0, 0);
+				Command<CMD_BUILD_BRIDGE>::PostOrQuery(query, STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE, CcBuildBridge, tile, GetOtherAqueductEnd(tile), TRANSPORT_WATER, 0, 0);
 				break;
 
 			default: NOT_REACHED();
@@ -250,22 +256,22 @@ struct BuildDocksToolbarWindow : Window {
 		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
 	}
 
-	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile) override
+	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile, bool query) override
 	{
 		if (pt.x != -1) {
 			switch (select_proc) {
 				case DDSP_DEMOLISH_AREA:
-					GUIPlaceProcDragXY(select_proc, start_tile, end_tile);
+					GUIPlaceProcDragXY(query, select_proc, start_tile, end_tile);
 					break;
 				case DDSP_CREATE_WATER:
 					if (_game_mode == GM_EDITOR) {
-						Command<CMD_BUILD_CANAL>::Post(STR_ERROR_CAN_T_BUILD_CANALS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, _ctrl_pressed ? WATER_CLASS_SEA : WATER_CLASS_CANAL, false);
+						Command<CMD_BUILD_CANAL>::PostOrQuery(query, STR_ERROR_CAN_T_BUILD_CANALS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, _ctrl_pressed ? WATER_CLASS_SEA : WATER_CLASS_CANAL, false);
 					} else {
-						Command<CMD_BUILD_CANAL>::Post(STR_ERROR_CAN_T_BUILD_CANALS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, WATER_CLASS_CANAL, _ctrl_pressed);
+						Command<CMD_BUILD_CANAL>::PostOrQuery(query, STR_ERROR_CAN_T_BUILD_CANALS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, WATER_CLASS_CANAL, _ctrl_pressed);
 					}
 					break;
 				case DDSP_CREATE_RIVER:
-					Command<CMD_BUILD_CANAL>::Post(STR_ERROR_CAN_T_PLACE_RIVERS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, WATER_CLASS_RIVER, _ctrl_pressed);
+					Command<CMD_BUILD_CANAL>::PostOrQuery(query, STR_ERROR_CAN_T_PLACE_RIVERS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, WATER_CLASS_RIVER, _ctrl_pressed);
 					break;
 
 				default: break;
