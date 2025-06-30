@@ -1106,7 +1106,7 @@ struct BaseCargoGraphWindow : BaseGraphWindow {
 		this->cargo_types = this->GetCargoTypes(number);
 
 		this->vscroll = this->GetScrollbar(WID_GRAPH_MATRIX_SCROLLBAR);
-		this->vscroll->SetCount(CountBits(this->cargo_types));
+		this->vscroll->SetCount(this->cargo_types.Count());
 
 		auto *wid = this->GetWidget<NWidgetCore>(WID_GRAPH_FOOTER);
 		wid->SetString(TimerGameEconomy::UsingWallclockUnits() ? footer_wallclock : footer_calendar);
@@ -1126,10 +1126,10 @@ struct BaseCargoGraphWindow : BaseGraphWindow {
 		if (row >= this->vscroll->GetCount()) return std::nullopt;
 
 		for (const CargoSpec *cs : _sorted_cargo_specs) {
-			if (!HasBit(this->cargo_types, cs->Index())) continue;
+			if (!this->cargo_types.Test(cs->Index())) continue;
 			if (row-- > 0) continue;
 
-			return cs->Index();
+			return cs->Index().base();
 		}
 
 		return std::nullopt;
@@ -1150,7 +1150,7 @@ struct BaseCargoGraphWindow : BaseGraphWindow {
 
 		size.height = GetCharacterHeight(FS_SMALL) + WidgetDimensions::scaled.framerect.Vertical();
 
-		for (CargoType cargo_type : SetCargoBitIterator(this->cargo_types)) {
+		for (CargoType cargo_type : this->cargo_types) {
 			const CargoSpec *cs = CargoSpec::Get(cargo_type);
 
 			Dimension d = GetStringBoundingBox(GetString(STR_GRAPH_CARGO_PAYMENT_CARGO, cs->name));
@@ -1181,12 +1181,12 @@ struct BaseCargoGraphWindow : BaseGraphWindow {
 		Rect line = r.WithHeight(this->line_height);
 
 		for (const CargoSpec *cs : _sorted_cargo_specs) {
-			if (!HasBit(this->cargo_types, cs->Index())) continue;
+			if (!this->cargo_types.Test(cs->Index())) continue;
 
 			if (pos-- > 0) continue;
 			if (--max < 0) break;
 
-			bool lowered = !HasBit(this->excluded_data, cs->Index());
+			bool lowered = !HasBit(this->excluded_data, cs->Index().base());
 
 			/* Redraw frame if lowered */
 			if (lowered) DrawFrameRect(line, COLOUR_BROWN, FrameFlag::Lowered);
@@ -1213,14 +1213,14 @@ struct BaseCargoGraphWindow : BaseGraphWindow {
 			case WID_GRAPH_ENABLE_CARGOES:
 				/* Remove all cargoes from the excluded lists. */
 				this->GetExcludedCargoTypes() = {};
-				this->excluded_data = this->GetExcludedCargoTypes();
+				this->excluded_data = this->GetExcludedCargoTypes().base();
 				this->SetDirty();
 				break;
 
 			case WID_GRAPH_DISABLE_CARGOES: {
 				/* Add all cargoes to the excluded lists. */
 				this->GetExcludedCargoTypes() = this->cargo_types;
-				this->excluded_data = this->GetExcludedCargoTypes();
+				this->excluded_data = this->GetExcludedCargoTypes().base();
 				this->SetDirty();
 				break;
 			}
@@ -1230,11 +1230,11 @@ struct BaseCargoGraphWindow : BaseGraphWindow {
 				if (row >= this->vscroll->GetCount()) return;
 
 				for (const CargoSpec *cs : _sorted_cargo_specs) {
-					if (!HasBit(this->cargo_types, cs->Index())) continue;
+					if (!this->cargo_types.Test(cs->Index())) continue;
 					if (row-- > 0) continue;
 
-					ToggleBit(this->GetExcludedCargoTypes(), cs->Index());
-					this->excluded_data = this->GetExcludedCargoTypes();
+					this->GetExcludedCargoTypes().Flip(cs->Index());
+					this->excluded_data = this->GetExcludedCargoTypes().base();
 					this->SetDirty();
 					break;
 				}
@@ -1306,13 +1306,13 @@ struct PaymentRatesGraphWindow : BaseCargoGraphWindow {
 	 */
 	void UpdatePaymentRates()
 	{
-		this->excluded_data = this->GetExcludedCargoTypes();
+		this->excluded_data = this->GetExcludedCargoTypes().base();
 
 		this->data.clear();
 		for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
 			DataSet &dataset = this->data.emplace_back();
 			dataset.colour = cs->legend_colour;
-			dataset.exclude_bit = cs->Index();
+			dataset.exclude_bit = cs->Index().base();
 
 			for (uint j = 0; j != this->num_on_x_axis; j++) {
 				dataset.values[j] = GetTransportedGoodsIncome(10, 20, j * 4 + 4, cs->Index());
@@ -1619,7 +1619,7 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 		CargoTypes cargo_types{};
 		const Industry *i = Industry::Get(window_number);
 		for (const auto &p : i->produced) {
-			if (IsValidCargoType(p.cargo)) SetBit(cargo_types, p.cargo);
+			if (IsValidCargoType(p.cargo)) cargo_types.Set(p.cargo);
 		}
 		return cargo_types;
 	}
@@ -1645,12 +1645,12 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 			mo += 12;
 		}
 
-		if (!initialize && this->excluded_data == this->GetExcludedCargoTypes() && this->num_on_x_axis == this->num_vert_lines && this->year == yr && this->month == mo) {
+		if (!initialize && this->excluded_data == this->GetExcludedCargoTypes().base() && this->num_on_x_axis == this->num_vert_lines && this->year == yr && this->month == mo) {
 			/* There's no reason to get new stats */
 			return;
 		}
 
-		this->excluded_data = this->GetExcludedCargoTypes();
+		this->excluded_data = this->GetExcludedCargoTypes().base();
 		this->year = yr;
 		this->month = mo;
 
@@ -1663,7 +1663,7 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 
 			DataSet &produced = this->data.emplace_back();
 			produced.colour = cs->legend_colour;
-			produced.exclude_bit = cs->Index();
+			produced.exclude_bit = cs->Index().base();
 			produced.range_bit = 0;
 
 			for (uint j = 0; j < GRAPH_NUM_MONTHS; j++) {
@@ -1672,7 +1672,7 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 
 			DataSet &transported = this->data.emplace_back();
 			transported.colour = cs->legend_colour;
-			transported.exclude_bit = cs->Index();
+			transported.exclude_bit = cs->Index().base();
 			transported.range_bit = 1;
 			transported.dash = 2;
 
