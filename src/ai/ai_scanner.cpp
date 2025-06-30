@@ -29,7 +29,7 @@ void AIScannerInfo::Initialize()
 {
 	ScriptScanner::Initialize("AIScanner");
 
-	ScriptAllocatorScope alloc_scope(this->engine);
+	ScriptAllocatorScope alloc_scope(this->engine.get());
 
 	/* Create the dummy AI */
 	this->main_script = "%_dummy";
