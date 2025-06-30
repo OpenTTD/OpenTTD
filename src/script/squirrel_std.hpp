@@ -52,12 +52,12 @@ public:
 /**
  * Register all standard functions we want to give to a script.
  */
-void squirrel_register_std(Squirrel *engine);
+void squirrel_register_std(Squirrel &engine);
 
 /**
  * Register all standard functions that are available on first startup.
  * @note this set is very limited, and is only meant to load other scripts and things like that.
  */
-void squirrel_register_global_std(Squirrel *engine);
+void squirrel_register_global_std(Squirrel &engine);
 
 #endif /* SQUIRREL_STD_HPP */
