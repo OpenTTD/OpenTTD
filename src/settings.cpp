@@ -946,6 +946,11 @@ static void ValidateSettings()
 			_settings_newgame.difficulty.quantity_sea_lakes == CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY) {
 		_settings_newgame.difficulty.quantity_sea_lakes = CUSTOM_SEA_LEVEL_MIN_PERCENTAGE;
 	}
+
+	/* If we are using calendar timekeeping, "minutes per year" must be default. */
+	if (_settings_newgame.economy.timekeeping_units == TKU_CALENDAR) {
+		_settings_newgame.economy.minutes_per_calendar_year = CalendarTime::DEF_MINUTES_PER_YEAR;
+	}
 }
 
 static void AILoadConfig(const IniFile &ini, std::string_view grpname)
