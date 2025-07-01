@@ -1795,14 +1795,12 @@ struct BuildHouseWindow : public PickerWindow {
 			this->house_info = spec->enabled ? GetHouseInformation(spec) : "";
 		}
 
-		/* If house spec already has the protected flag, handle it automatically and disable the buttons. */
-		bool hasflag = spec->extra_flags.Test(HouseExtraFlag::BuildingIsProtected);
-		if (hasflag) BuildHouseWindow::house_protected = true;
-
+		/* The protection button only shows the player's choice.
+		 * Houses also have a property and a callback for protection, but these are not shown
+		 * since we cannot know the possible results of the callback in runtime. */
 		this->SetWidgetLoweredState(WID_BH_PROTECT_TOGGLE, BuildHouseWindow::house_protected);
-		this->SetWidgetLoweredState(WID_BH_REPLACE_TOGGLE, BuildHouseWindow::replace);
 
-		this->SetWidgetDisabledState(WID_BH_PROTECT_TOGGLE, hasflag);
+		this->SetWidgetLoweredState(WID_BH_REPLACE_TOGGLE, BuildHouseWindow::replace);
 	}
 
 	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
