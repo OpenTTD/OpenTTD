@@ -22,6 +22,7 @@
 #include "tilehighlight_func.h"
 #include "network/network.h"
 #include "station_base.h"
+#include "station_gui.h"
 #include "industry.h"
 #include "waypoint_base.h"
 #include "core/geometry_func.hpp"
@@ -33,6 +34,7 @@
 #include "vehicle_func.h"
 #include "error.h"
 #include "order_cmd.h"
+#include "order_func.h"
 #include "company_cmd.h"
 #include "core/string_consumer.hpp"
 
@@ -218,14 +220,13 @@ static StringID GetOrderGoToString(const Order &order)
  * @param v Vehicle the order belongs to
  * @param order The order to draw
  * @param order_index Index of the order in the orders of the vehicle
- * @param y Y position for drawing
  * @param selected True, if the order is selected
  * @param timetable True, when drawing in the timetable GUI
- * @param left Left border for text drawing
- * @param middle X position between order index and order text
- * @param right Right border for text drawing
+ * @param index_rect Rect to draw order index, and current order marker.
+ * @param order_rect Rect to draw order detail text within.
+ * @param rating_width Width of each station rating mini graph, or 0 to disable drawing ratings.
  */
-void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_index, int y, bool selected, bool timetable, int left, int middle, int right)
+void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_index, bool selected, bool timetable, Rect index_rect, Rect order_rect, int rating_width)
 {
 	bool rtl = _current_text_dir == TD_RTL;
 
@@ -233,11 +234,11 @@ void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_
 	Dimension sprite_size = GetSpriteSize(sprite);
 	if (v->cur_real_order_index == order_index) {
 		/* Draw two arrows before the next real order. */
-		DrawSprite(sprite, PAL_NONE, rtl ? right -     sprite_size.width : left,                     y + ((int)GetCharacterHeight(FS_NORMAL) - (int)sprite_size.height) / 2);
-		DrawSprite(sprite, PAL_NONE, rtl ? right - 2 * sprite_size.width : left + sprite_size.width, y + ((int)GetCharacterHeight(FS_NORMAL) - (int)sprite_size.height) / 2);
+		DrawSpriteIgnorePadding(sprite, PAL_NONE, index_rect.WithWidth(sprite_size.width, rtl), SA_CENTER);
+		DrawSpriteIgnorePadding(sprite, PAL_NONE, index_rect.Indent(sprite_size.width, rtl).WithWidth(sprite_size.width, rtl), SA_CENTER);
 	} else if (v->cur_implicit_order_index == order_index) {
 		/* Draw one arrow before the next implicit order; the next real order will still get two arrows. */
-		DrawSprite(sprite, PAL_NONE, rtl ? right -     sprite_size.width : left,                     y + ((int)GetCharacterHeight(FS_NORMAL) - (int)sprite_size.height) / 2);
+		DrawSpriteIgnorePadding(sprite, PAL_NONE, index_rect.WithWidth(sprite_size.width, rtl), SA_CENTER);
 	}
 
 	TextColour colour = TC_BLACK;
@@ -247,8 +248,9 @@ void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_
 		colour = TC_WHITE;
 	}
 
-	DrawString(left, rtl ? right - 2 * sprite_size.width - 3 : middle, y, GetString(STR_ORDER_INDEX, order_index + 1), colour, SA_RIGHT | SA_FORCE);
+	DrawString(index_rect.Indent(sprite_size.width * 2, rtl), GetString(STR_ORDER_INDEX, order_index + 1), colour, SA_RIGHT | SA_FORCE);
 
+	const Station *st = nullptr;
 	std::string line;
 
 	switch (order->GetType()) {
@@ -264,7 +266,8 @@ void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_
 		case OT_GOTO_STATION: {
 			OrderLoadFlags load = order->GetLoadType();
 			OrderUnloadFlags unload = order->GetUnloadType();
-			bool valid_station = CanVehicleUseStation(v, Station::Get(order->GetDestination().ToStationID()));
+			st = Station::Get(order->GetDestination().ToStationID());
+			bool valid_station = CanVehicleUseStation(v, st);
 
 			line = GetString(valid_station ? STR_ORDER_GO_TO_STATION : STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION, STR_ORDER_GO_TO + (v->IsGroundVehicle() ? order->GetNonStopType() : 0), order->GetDestination());
 			if (timetable) {
@@ -360,7 +363,12 @@ void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_
 		}
 	}
 
-	DrawString(rtl ? left : middle, rtl ? middle : right, y, line, colour);
+	int w = GetStringBoundingBox(line).width;
+	DrawString(order_rect, line, colour);
+
+	if (st != nullptr && rating_width > 0) {
+		DrawStationRatingMiniGraphs(st, order_rect.Indent(w + WidgetDimensions::scaled.hsep_wide, rtl), rating_width);
+	}
 }
 
 /**
@@ -561,6 +569,7 @@ private:
 		DP_BOTTOM_MIDDLE_STOP_SHARING = 1, ///< Display 'stop sharing' in the middle button of the bottom row of the vehicle order window.
 	};
 
+	int rating_width = 0;
 	int selected_order = -1;
 	VehicleOrderID order_over = INVALID_VEH_ORDER_ID; ///< Order over which another order is dragged, \c INVALID_VEH_ORDER_ID if none.
 	OrderPlaceObjectState goto_type = OPOS_NONE;
@@ -816,6 +825,11 @@ public:
 			if (station_orders < 2) this->OrderClick_Goto(OPOS_GOTO);
 		}
 		this->OnInvalidateData(VIWD_MODIFY_ORDERS);
+	}
+
+	void OnInit() override
+	{
+		this->rating_width = GetStationRatingMiniGraphWidth();
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -1101,10 +1115,8 @@ public:
 		bool rtl = _current_text_dir == TD_RTL;
 		uint64_t max_value = GetParamMaxValue(this->vehicle->GetNumOrders(), 2);
 		int index_column_width = GetStringBoundingBox(GetString(STR_ORDER_INDEX, max_value)).width + 2 * GetSpriteSize(rtl ? SPR_ARROW_RIGHT : SPR_ARROW_LEFT).width + WidgetDimensions::scaled.hsep_normal;
-		int middle = rtl ? ir.right - index_column_width : ir.left + index_column_width;
 
-		int y = ir.top;
-		int line_height = this->GetWidget<NWidgetBase>(WID_O_ORDER_LIST)->resize_y;
+		Rect tr = ir.WithHeight(this->GetWidget<NWidgetBase>(WID_O_ORDER_LIST)->resize_y);
 
 		VehicleOrderID i = this->vscroll->GetPosition();
 		VehicleOrderID num_orders = this->vehicle->GetNumOrders();
@@ -1117,19 +1129,18 @@ public:
 
 				if (i != this->selected_order && i == this->order_over) {
 					/* Highlight dragged order destination. */
-					int top = (this->order_over < this->selected_order ? y : y + line_height) - WidgetDimensions::scaled.framerect.top;
+					int top = (this->order_over < this->selected_order ? tr.top : tr.bottom) - WidgetDimensions::scaled.framerect.top;
 					int bottom = std::min(top + 2, ir.bottom);
 					top = std::max(top - 3, ir.top);
 					GfxFillRect(ir.left, top, ir.right, bottom, GetColourGradient(COLOUR_GREY, SHADE_LIGHTEST));
 					break;
 				}
-				y += line_height;
-
-				i++;
+				tr = tr.Translate(0, tr.Height());
+				++i;
 			}
 
 			/* Reset counters for drawing the orders. */
-			y = ir.top;
+			tr = ir;
 			i = this->vscroll->GetPosition();
 		}
 
@@ -1138,15 +1149,14 @@ public:
 			/* Don't draw anything if it extends past the end of the window. */
 			if (!this->vscroll->IsVisible(i)) break;
 
-			DrawOrderString(this->vehicle, this->vehicle->GetOrder(i), i, y, i == this->selected_order, false, ir.left, middle, ir.right);
-			y += line_height;
-
-			i++;
+			DrawOrderString(this->vehicle, this->vehicle->GetOrder(i), i, i == this->selected_order, false, tr.WithWidth(index_column_width, rtl), tr.Indent(index_column_width, rtl), this->rating_width);
+			tr = tr.Translate(0, tr.Height());
+			++i;
 		}
 
 		if (this->vscroll->IsVisible(i)) {
 			StringID str = this->vehicle->IsOrderListShared() ? STR_ORDERS_END_OF_SHARED_ORDERS : STR_ORDERS_END_OF_ORDERS;
-			DrawString(rtl ? ir.left : middle, rtl ? middle : ir.right, y, str, (i == this->selected_order) ? TC_WHITE : TC_BLACK);
+			DrawString(tr.Indent(index_column_width, rtl), str, (i == this->selected_order) ? TC_WHITE : TC_BLACK);
 		}
 	}
 

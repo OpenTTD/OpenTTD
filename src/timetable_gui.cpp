@@ -428,7 +428,7 @@ struct TimetableWindow : Window {
 	{
 		const Vehicle *v = this->vehicle;
 		if (v->GetNumOrders() == 0) return;
-		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
+		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect).WithHeight(GetCharacterHeight(FS_NORMAL));
 		int i = this->vscroll->GetPosition();
 		VehicleOrderID order_id = (i + 1) / 2;
 		bool final_order = false;
@@ -436,7 +436,6 @@ struct TimetableWindow : Window {
 
 		bool rtl = _current_text_dir == TD_RTL;
 		int index_column_width = GetStringBoundingBox(GetString(STR_ORDER_INDEX, GetParamMaxValue(v->GetNumOrders(), 2))).width + 2 * GetSpriteSize(rtl ? SPR_ARROW_RIGHT : SPR_ARROW_LEFT).width + WidgetDimensions::scaled.hsep_normal;
-		int middle = rtl ? tr.right - index_column_width : tr.left + index_column_width;
 
 		auto orders = v->Orders();
 		while (true) {
@@ -444,20 +443,20 @@ struct TimetableWindow : Window {
 			if (!this->vscroll->IsVisible(i)) break;
 
 			if (i % 2 == 0) {
-				DrawOrderString(v, &orders[order_id], order_id, tr.top, i == selected, true, tr.left, middle, tr.right);
+				DrawOrderString(v, &orders[order_id], order_id, i == selected, true, tr.WithWidth(index_column_width, rtl), tr.Indent(index_column_width, rtl), 0);
 				if (v->orders->GetNext(order_id) == 0) final_order = true;
 				order_id = v->orders->GetNext(order_id);
 			} else {
 				TextColour colour;
 				std::string string = GetTimetableTravelString(orders[order_id], i, colour);
 
-				DrawString(rtl ? tr.left : middle, rtl ? middle : tr.right, tr.top, string, colour);
+				DrawString(tr.Indent(index_column_width, rtl), string, colour);
 
 				if (final_order) break;
 			}
 
 			i++;
-			tr.top += GetCharacterHeight(FS_NORMAL);
+			tr = tr.Translate(0, tr.Height());
 		}
 	}
 
