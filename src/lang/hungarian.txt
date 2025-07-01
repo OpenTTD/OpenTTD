@@ -2392,16 +2392,19 @@ STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Egyszer�
 STR_FACE_LOAD                                                   :{BLACK}Betölt
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Kedvenc arcod betöltése
 STR_FACE_LOAD_DONE                                              :{WHITE}A kedvenc arcod az OpenTTD konfig-fájlból be lett töltve.
-STR_FACE_FACECODE                                               :{BLACK}Játékos arcszám
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Az elnök portréjának kódjánakmegtekintése, módosítása
+STR_FACE_FACECODE                                               :{BLACK}Játékos portré kód
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Az elnöki portré kódjának megtekintése, módosítása
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Elnöki portré kód megtekintése, módosítása
-STR_FACE_FACECODE_SET                                           :{WHITE}Az új portré kód beállítása megtörtént
-STR_FACE_FACECODE_ERR                                           :{WHITE}Elnöki portré kód beállítás sikertelen - a megadott értéknek 0 és 4.294.967.295 között kell lennie!
+STR_FACE_FACECODE_SET                                           :{WHITE}Az új elnöki portré beállítása megtörtént
+STR_FACE_FACECODE_ERR                                           :{WHITE}Elnöki portré kód beállítás sikertelen - érvényes címkének és számnak kell lennie
 STR_FACE_SAVE                                                   :{BLACK}Mentés
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Kedvenc arc elmentése
 STR_FACE_SAVE_DONE                                              :{WHITE}Ez az arc mint a kedvenc arcod kerül az OpenTTD konfig-fájlba mentésre.
+STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
+STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Igen
 STR_FACE_NO                                                     :Nem
+STR_FACE_STYLE                                                  :Stílus:
 STR_FACE_HAIR                                                   :Haj:
 STR_FACE_EYEBROWS                                               :Szemöldök:
 STR_FACE_EYECOLOUR                                              :Szemszín:
