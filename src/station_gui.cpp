@@ -204,52 +204,91 @@ void CheckRedrawRoadWaypointCoverage(const Window *)
 }
 
 /**
+ * Get width required for station rating mini graphs
+ * @return width of mini graphs.
+ */
+uint GetStationRatingMiniGraphWidth()
+{
+	/* Determine appropriate width for mini station rating graph */
+	uint rating_width = 0;
+	for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
+		rating_width = std::max(rating_width, GetStringBoundingBox(cs->abbrev, FS_SMALL).width);
+	}
+	/* Approximately match original 16 pixel wide rating bars by multiplying string width by 1.6 */
+	return rating_width * 16 / 10;
+}
+
+/**
  * Draw small boxes of cargo amount and ratings data at the given
  * coordinates. If amount exceeds 576 units, it is shown 'full', same
  * goes for the rating: at above 90% orso (224) it is also 'full'
- *
- * @param left   left most coordinate to draw the box at
- * @param right  right most coordinate to draw the box at
- * @param y      coordinate to draw the box at
+ * @param r Rect to draw mini graph in.
  * @param cargo  Cargo type
  * @param amount Cargo amount
  * @param rating ratings data for that particular cargo
  */
-static void StationsWndShowStationRating(int left, int right, int y, CargoType cargo, uint amount, uint8_t rating)
+static void DrawStationRatingMiniGraph(const Rect &r, CargoType cargo_type, uint amount, uint8_t rating)
 {
-	static const uint units_full  = 576; ///< number of units to show station as 'full'
-	static const uint rating_full = 224; ///< rating needed so it is shown as 'full'
+	static constexpr uint units_full  = 576; ///< number of units to show station as 'full'
+	static constexpr uint rating_full = 224; ///< rating needed so it is shown as 'full'
 
-	const CargoSpec *cs = CargoSpec::Get(cargo);
+	bool rtl = _current_text_dir == TD_RTL;
+
+	const CargoSpec *cs = CargoSpec::Get(cargo_type);
 	if (!cs->IsValid()) return;
 
-	int padding = ScaleGUITrad(1);
-	int width = right - left;
 	PixelColour colour = cs->rating_colour;
 	TextColour tc = GetContrastColour(colour);
-	uint w = std::min(amount + 5, units_full) * width / units_full;
+	uint w = std::min(amount + 5, units_full) * r.Width() / units_full;
 
-	int height = GetCharacterHeight(FS_SMALL) + padding - 1;
+	int height = GetCharacterHeight(FS_SMALL) + ScaleGUITrad(1);
 
+	Rect gr = r.WithHeight(height);
 	if (amount > 30) {
 		/* Draw total cargo (limited) on station */
-		GfxFillRect(left, y, left + w - 1, y + height, colour);
+		GfxFillRect(gr.WithWidth(w, rtl), colour);
 	} else {
 		/* Draw a (scaled) one pixel-wide bar of additional cargo meter, useful
 		 * for stations with only a small amount (<=30) */
 		uint rest = ScaleGUITrad(amount) / 5;
 		if (rest != 0) {
-			GfxFillRect(left, y + height - rest, left + padding - 1, y + height, colour);
+			GfxFillRect(gr.WithWidth(ScaleGUITrad(1), rtl).WithHeight(rest, true), colour);
 		}
 	}
 
-	DrawString(left + padding, right, y, cs->abbrev, tc, SA_CENTER, false, FS_SMALL);
+	DrawString(r, cs->abbrev, tc, SA_CENTER, false, FS_SMALL);
 
 	/* Draw green/red ratings bar (fits under the waiting bar) */
-	y += height + padding + 1;
-	GfxFillRect(left + padding, y, right - padding - 1, y + padding - 1, PC_RED);
-	w = std::min<uint>(rating, rating_full) * (width - padding - padding) / rating_full;
-	if (w != 0) GfxFillRect(left + padding, y, left + w - 1, y + padding - 1, PC_GREEN);
+	Rect br = r.Shrink(ScaleGUITrad(1)).WithHeight(ScaleGUITrad(1), true);
+	GfxFillRect(br, PC_RED);
+
+	w = std::min<uint>(rating, rating_full) * br.Width() / rating_full;
+	if (w != 0) GfxFillRect(br.WithWidth(w, rtl), PC_GREEN);
+}
+
+/**
+ * Draw all station rating mini graphs.
+ * @param st Station to draw graphs for.
+ * @param row Rect to draw row of graphs within.
+ * @param rating_width Width of each rating grpah.
+ */
+void DrawStationRatingMiniGraphs(const Station *st, const Rect &row, uint rating_width)
+{
+	bool rtl = _current_text_dir == TD_RTL;
+	Rect r = row.WithWidth(rating_width, rtl);
+	int delta_x = rating_width + WidgetDimensions::scaled.hsep_normal;
+	if (rtl) delta_x = -delta_x;
+
+	/* Draw cargo waiting and station ratings */
+	for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
+		const GoodsEntry &ge = st->goods[cs->Index()];
+		if (!ge.HasRating()) continue;
+		if (r.left < row.left || r.right > row.right) break;
+
+		DrawStationRatingMiniGraph(r, cs->Index(), ge.HasData() ? ge.GetData().cargo.TotalCount() : 0, ge.rating);
+
+		r = r.Translate(delta_x, 0);
+	}
 }
 
 typedef GUIList<const Station*, const CargoTypes &> GUIStationList;
@@ -449,6 +488,11 @@ public:
 		CompanyStationsWindow::initial_state = this->filter;
 	}
 
+	void OnInit() override
+	{
+		this->rating_width = GetStationRatingMiniGraphWidth();
+	}
+
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
@@ -471,14 +515,6 @@ public:
 			case WID_STL_LIST:
 				fill.height = resize.height = std::max(GetCharacterHeight(FS_NORMAL), GetCharacterHeight(FS_SMALL) + ScaleGUITrad(3));
 				size.height = padding.height + 5 * resize.height;
-
-				/* Determine appropriate width for mini station rating graph */
-				this->rating_width = 0;
-				for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
-					this->rating_width = std::max(this->rating_width, GetStringBoundingBox(cs->abbrev, FS_SMALL).width);
-				}
-				/* Approximately match original 16 pixel wide rating bars by multiplying string width by 1.6 */
-				this->rating_width = this->rating_width * 16 / 10;
 				break;
 		}
 	}
@@ -501,12 +537,7 @@ public:
 
 			case WID_STL_LIST: {
 				bool rtl = _current_text_dir == TD_RTL;
-				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
-				uint line_height = this->GetWidget<NWidgetBase>(widget)->resize_y;
-				/* Spacing between station name and first rating graph. */
-				int text_spacing = WidgetDimensions::scaled.hsep_wide;
-				/* Spacing between additional rating graphs. */
-				int rating_spacing = WidgetDimensions::scaled.hsep_normal;
+				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect).WithHeight(this->GetWidget<NWidgetBase>(widget)->resize_y);
 
 				auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->stations);
 				for (auto it = first; it != last; ++it) {
@@ -517,33 +548,16 @@ public:
 					 * when the order had been removed and the station list hasn't been removed yet */
 					assert(st->owner == owner || st->owner == OWNER_NONE);
 
-					int x = DrawString(tr.left, tr.right, tr.top + (line_height - GetCharacterHeight(FS_NORMAL)) / 2, GetString(STR_STATION_LIST_STATION, st->index, st->facilities));
-					x += rtl ? -text_spacing : text_spacing;
+					std::string str = GetString(STR_STATION_LIST_STATION, st->index, st->facilities);
+					int w = GetStringBoundingBox(str).width;
+					DrawString(tr.left, tr.right, tr.top + (tr.Height() - GetCharacterHeight(FS_NORMAL)) / 2, str);
 
-					/* show cargo waiting and station ratings */
-					for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
-						CargoType cargo_type = cs->Index();
-						if (st->goods[cargo_type].HasRating()) {
-							/* For RTL we work in exactly the opposite direction. So
-							 * decrement the space needed first, then draw to the left
-							 * instead of drawing to the left and then incrementing
-							 * the space. */
-							if (rtl) {
-								x -= rating_width + rating_spacing;
-								if (x < tr.left) break;
-							}
-							StationsWndShowStationRating(x, x + rating_width, tr.top, cargo_type, st->goods[cargo_type].HasData() ? st->goods[cargo_type].GetData().cargo.TotalCount() : 0, st->goods[cargo_type].rating);
-							if (!rtl) {
-								x += rating_width + rating_spacing;
-								if (x > tr.right) break;
-							}
-						}
-					}
-					tr.top += line_height;
+					DrawStationRatingMiniGraphs(st, tr.Indent(w + WidgetDimensions::scaled.hsep_wide, rtl), this->rating_width);
+					tr = tr.Translate(0, tr.Height());
 				}
 
 				if (this->vscroll->GetCount() == 0) { // company has no stations
-					DrawString(tr.left, tr.right, tr.top + (line_height - GetCharacterHeight(FS_NORMAL)) / 2, STR_STATION_LIST_NONE);
+					DrawString(tr.left, tr.right, tr.top + (tr.Height() - GetCharacterHeight(FS_NORMAL)) / 2, STR_STATION_LIST_NONE);
 					return;
 				}
 				break;
