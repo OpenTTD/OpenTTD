@@ -1628,7 +1628,7 @@ static CargoTypes GetProducedCargoOfHouse(const HouseSpec *hs)
 
 struct BuildHouseWindow : public PickerWindow {
 	std::string house_info{};
-	bool house_protected = false;
+	static inline bool house_protected;
 
 	BuildHouseWindow(WindowDesc &desc, Window *parent) : PickerWindow(desc, parent, 0, HousePickerCallbacks::instance)
 	{
@@ -1735,9 +1735,9 @@ struct BuildHouseWindow : public PickerWindow {
 		switch (widget) {
 			case WID_BH_PROTECT_OFF:
 			case WID_BH_PROTECT_ON:
-				this->house_protected = (widget == WID_BH_PROTECT_ON);
-				this->SetWidgetLoweredState(WID_BH_PROTECT_OFF, !this->house_protected);
-				this->SetWidgetLoweredState(WID_BH_PROTECT_ON, this->house_protected);
+				BuildHouseWindow::house_protected = (widget == WID_BH_PROTECT_ON);
+				this->SetWidgetLoweredState(WID_BH_PROTECT_OFF, !BuildHouseWindow::house_protected);
+				this->SetWidgetLoweredState(WID_BH_PROTECT_ON, BuildHouseWindow::house_protected);
 
 				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
@@ -1764,10 +1764,10 @@ struct BuildHouseWindow : public PickerWindow {
 
 		/* If house spec already has the protected flag, handle it automatically and disable the buttons. */
 		bool hasflag = spec->extra_flags.Test(HouseExtraFlag::BuildingIsProtected);
-		if (hasflag) this->house_protected = true;
+		if (hasflag) BuildHouseWindow::house_protected = true;
 
-		this->SetWidgetLoweredState(WID_BH_PROTECT_OFF, !this->house_protected);
-		this->SetWidgetLoweredState(WID_BH_PROTECT_ON, this->house_protected);
+		this->SetWidgetLoweredState(WID_BH_PROTECT_OFF, !BuildHouseWindow::house_protected);
+		this->SetWidgetLoweredState(WID_BH_PROTECT_ON, BuildHouseWindow::house_protected);
 
 		this->SetWidgetDisabledState(WID_BH_PROTECT_OFF, hasflag);
 		this->SetWidgetDisabledState(WID_BH_PROTECT_ON, hasflag);
@@ -1776,7 +1776,7 @@ struct BuildHouseWindow : public PickerWindow {
 	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
 	{
 		const HouseSpec *spec = HouseSpec::Get(HousePickerCallbacks::sel_type);
-		Command<CMD_PLACE_HOUSE>::Post(STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index(), this->house_protected);
+		Command<CMD_PLACE_HOUSE>::Post(STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index(), BuildHouseWindow::house_protected);
 	}
 
 	const IntervalTimer<TimerWindow> view_refresh_interval = {std::chrono::milliseconds(2500), [this](auto) {
