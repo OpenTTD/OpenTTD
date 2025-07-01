@@ -671,9 +671,9 @@
 
 // U+2026: Horizontal Ellipsis
    -1 * 18	 12 04 00 01 26 20 01 01 26 20 02 01 26 20 03 01 26 20
-   -1 sprites/chars.png 8bpp 560  370  11  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 560  370   9  12   0  -1 normal
    -1 sprites/chars.png 8bpp 560  390   5   7   0   0 normal
-   -1 sprites/chars.png 8bpp 560  400  15  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 560  400  14  21   0  -2 normal
    -1 sprites/mono.png 8bpp 265  270   7  13   0   0 normal
 
 // U+2039: Single Left-Pointing Angle Quotation Mark
