@@ -595,12 +595,16 @@ bool CanDeleteHouse(TileIndex tile)
 		return true;
 	}
 
+	/* The house might be placed by a player or protected by the GRF house flag. */
+	if (IsHouseProtected(tile)) return false;
+
+	/* Check the callback result, if the house uses it. */
 	if (hs->callback_mask.Test(HouseCallbackMask::DenyDestruction)) {
 		uint16_t callback_res = GetHouseCallback(CBID_HOUSE_DENY_DESTRUCTION, 0, 0, GetHouseType(tile), Town::GetByTile(tile), tile);
 		return (callback_res == CALLBACK_FAILED || !ConvertBooleanCallback(hs->grf_prop.grffile, CBID_HOUSE_DENY_DESTRUCTION, callback_res));
-	} else {
-		return !IsHouseProtected(tile);
 	}
+
+	return true;
 }
 
 /**
