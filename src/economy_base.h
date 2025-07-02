@@ -11,7 +11,6 @@
 #define ECONOMY_BASE_H
 
 #include "cargopacket.h"
-#include "company_type.h"
 
 /** Type of pool to store cargo payments in; little over 1 million. */
 using CargoPaymentPool = Pool<CargoPayment, CargoPaymentID, 512>;
@@ -24,7 +23,6 @@ extern CargoPaymentPool _cargo_payment_pool;
 struct CargoPayment : CargoPaymentPool::PoolItem<&_cargo_payment_pool> {
 	/* CargoPaymentID index member of CargoPaymentPool is 4 bytes. */
 	StationID current_station = StationID::Invalid(); ///< NOSAVE: The current station
-	Company *owner = nullptr; ///< NOSAVE: The owner of the vehicle
 
 	Vehicle *front = nullptr; ///< The front vehicle to do the payment of
 	Money route_profit = 0; ///< The amount of money to add/remove from the bank account
