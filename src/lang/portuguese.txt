@@ -506,8 +506,8 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Financiar nova 
 # URailway construction menu
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Construção de caminhos-de-ferro
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Construção de caminhos-de-ferro eletrificados
-STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Construir monocarril
-STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Construir Maglev
+STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Construção de monocarris
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Construção de Maglev
 
 # Road construction menu
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Construir estradas
@@ -535,7 +535,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Apagar todas as
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informações do terreno
 STR_ABOUT_MENU_HELP                                             :Ajuda e manuais
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Mostrar/Ocultar consola
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Abrir/Fechar consola
 STR_ABOUT_MENU_AI_DEBUG                                         :Depuração da IA/Scripts de jogo
 STR_ABOUT_MENU_SCREENSHOT                                       :Captura de ecrã
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Mostrar taxa de fotogramas
@@ -2770,8 +2770,8 @@ STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Desativa
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construção de caminhos-de-ferro
 STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construção de caminhos-de-ferro eletrificados
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construir monocarril
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construir Maglev
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construção de monocarris
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construção de Maglev
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir linha férrea. Ctrl+Clique para remover a linha férrea. Pressione também Shift para apenas mostrar o custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir caminhos-de-ferro usando o modo automático. Ctrl+Clique para remover a via férrea. Pressione também Shift para apenas mostrar o custo estimado
@@ -3141,7 +3141,7 @@ STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE                   :{BLACK}Localida
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Rochas
 STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Terreno irregular
-STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Terreno deserto
+STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Descampado
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Prados
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Campos
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Deserto
@@ -3697,7 +3697,7 @@ STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Apagar c
 STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Renomear Localidade
 
 # Town local authority window
-STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} autoridade local
+STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Autoridade local de {TOWN}
 STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Zona
 STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Mostrar a zona dentro dos limites da autoridade local
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Classificações de empresas de transporte:
@@ -5007,8 +5007,8 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Não per
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}A autoridade local de {TOWN} não autorizou
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} a autoridade local recusa-se a permitir a construção de outro aeroporto nesta localidade
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} a autoridade local não permite a construção do aeroporto devido à poluição sonora
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}A autoridade local de {TOWN} recusa-se a permitir a construção de outro aeroporto nesta localidade
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}A autoridade loca de {TOWN} não permite a construção do aeroporto devido à poluição sonora
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}A sua tentativa de suborno foi descoberta por um investigador regional
 
 # Levelling errors
@@ -5424,30 +5424,30 @@ STR_BASEMUSIC_NONE_DESCRIPTION                                  :Um conjunto de 
 
 ##id 0x2000
 # Town building names
-STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Edifício alto de escritórios
-STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Edifício de escritórios
-STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Edifício de apartamentos grande
+STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Edifício alto com escritórios
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Edifício com escritórios
+STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Edifício pequeno com apartamentos
 STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Igreja
-STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Edifício de escritórios grande
+STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Edifício grande com escritórios
 STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Casas
 STR_TOWN_BUILDING_NAME_HOTEL_1                                  :Hotel
 STR_TOWN_BUILDING_NAME_STATUE_1                                 :Estátua
 STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :Fonte
 STR_TOWN_BUILDING_NAME_PARK_1                                   :Parque
-STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :Edifício de escritórios
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :Edifício com escritórios
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :Lojas e escritórios
 STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :Edifício de escritórios moderno
 STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :Armazém
-STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Edifício de escritórios
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Edifício com escritórios
 STR_TOWN_BUILDING_NAME_STADIUM_1                                :Estádio
 STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Casas antigas
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Casas de campo
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Casas
 STR_TOWN_BUILDING_NAME_FLATS_1                                  :Apartamentos
-STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :Prédio de escritórios alto
+STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :Edifício alto com escritórios
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :Lojas e escritórios
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :Lojas e escritórios
-STR_TOWN_BUILDING_NAME_THEATER_1                                :Teatro
+STR_TOWN_BUILDING_NAME_THEATER_1                                :Casa de Teatro
 STR_TOWN_BUILDING_NAME_STADIUM_2                                :Estádio
 STR_TOWN_BUILDING_NAME_OFFICES_1                                :Escritórios
 STR_TOWN_BUILDING_NAME_HOUSES_2                                 :Casas
