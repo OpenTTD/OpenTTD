@@ -466,9 +466,6 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 					auto &unitidgen = new_company->freeunits[v->type];
 					v->unitnumber = unitidgen.UseID(unitidgen.NextID());
 				}
-
-				/* Invalidate the vehicle's cargo payment "owner cache". */
-				if (v->cargo_payment != nullptr) v->cargo_payment->owner = nullptr;
 			}
 		}
 
@@ -1218,12 +1215,8 @@ CargoPayment::~CargoPayment()
  */
 void CargoPayment::PayFinalDelivery(CargoType cargo, const CargoPacket *cp, uint count, TileIndex current_tile)
 {
-	if (this->owner == nullptr) {
-		this->owner = Company::Get(this->front->owner);
-	}
-
 	/* Handle end of route payment */
-	Money profit = DeliverGoods(count, cargo, this->current_station, cp->GetDistance(current_tile), cp->GetPeriodsInTransit(), this->owner, cp->GetSource());
+	Money profit = DeliverGoods(count, cargo, this->current_station, cp->GetDistance(current_tile), cp->GetPeriodsInTransit(), Company::Get(this->front->owner), cp->GetSource());
 	this->route_profit += profit;
 
 	/* The vehicle's profit is whatever route profit there is minus feeder shares. */
