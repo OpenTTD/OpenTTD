@@ -639,6 +639,8 @@ static size_t TranslateArgumentIdx(size_t argidx, size_t offset)
 	for (size_t i = 0; i < argidx; i++) {
 		cs = _cur_pcs.consuming_commands[i];
 
+		if (cs == nullptr && sum > i) continue;
+
 		sum += (cs != nullptr) ? cs->consumes : 1;
 	}
 
