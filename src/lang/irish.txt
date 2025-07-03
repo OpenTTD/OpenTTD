@@ -1148,6 +1148,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Ráta úis ar i
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Costais choinneála: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Socraigh leibhéal na gcostas cothabhála agus coinneála atá ag feithiclí agus bonneagar
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Luas tógála: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Cuir teorainn le líon na ngníomhartha tógála atá ag AInna
@@ -1167,6 +1168,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Gan fóirdheont
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costais tógála: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Socraigh leibhéal na gcostas tógála agus ceannaigh
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Cúluithe eacnamaíochta: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Má dhéantar seo a chumasú, féadfaidh cúluithe a bheith ann gach cúpla bliain. Le linn cúlú, bíonn an táirgeadh ar fad cuid mhaith níos ísle (téann sé ar ais chuig an leibhéal roimhe sin nuair a bheidh an cúlú thart)

@@ -1295,6 +1295,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Лихвен п
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Цени за опериране на превозните средства: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Задава ниво на цените за опериране и поддръжка на превозните средства и инфраструктурата
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Скорост на строителните дейности: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Ограничава количеството строителни дейности за ИИ
@@ -1316,6 +1317,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Няма суб
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Цени на конструкции: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Задава ниво на конструиране и цени за закупуване
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Рецесии: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ако е разрешено, рецесии може да се появяват на всеки няколко години. По време на рецесия цялото производство е значително намалено (връща се на предишно ниво след края на рецесията)

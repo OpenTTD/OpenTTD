@@ -1460,6 +1460,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Paskolos palūk
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Eksploatacijos išlaidų lygmuo: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Nustatyti infrastruktūros bei transporto priemonių ekploatacijos išlaidų lygmenį
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Statymo greitis: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Kompiuterinio priešininko statymo sparta
@@ -1480,6 +1481,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Be subsidijų
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Statybos kaštų lygis: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Nustatykite statybos kaštų lygmenį
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Nuosmukiai: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Įgalinus šią nusotatą, kas keletą metų gali užklupti ekonomikos nuosmukis. Nuosmukio metų smarkiai smunka gamyba (kuri atsistato nuosmukiai pasibaigus)

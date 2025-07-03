@@ -1118,6 +1118,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Lening rentekoe
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Bedryfskostes: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Verstel die vlak van instandhouding en bedryfskoste van voertuie en infrastruktuur
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Konstruksie spoed: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Beperk die hoeveelheid konstruksie aksies vir die AIs
@@ -1134,6 +1135,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Verstel hoeveel
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Konstruksie kostes: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Verstel die vlak van konstruksie en aankoop-kostes
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Resessies: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :As dit geaktiveer is, kan resessie elke paar jaar voorkom. Gedurende 'n resessie word is vervaardiging drasties minder en aan die einde van die resessie word dit weer herstel na normale vlakke.

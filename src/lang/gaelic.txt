@@ -1303,6 +1303,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Luach-rèidh ia
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Cosgaisean ruith: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Suidhich ìre nan cosgaisean ruith is obrach-càraidh aig carbadan is a' bhun-structar
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Luaths na togail: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Cuingich meud nan gnìomhan togail aig na IFan
@@ -1319,6 +1320,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Suidhich na th�
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Cosgaisean togail: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Suidhich ìre nan cosgaisean togail is ceannachd
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Crìonaidhean eaconamaidh: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ma tha seo air, faodaidh crìonadh eaconamaidh tachairt gach beagan bhliadhnaichean. Rè crìonaidh eaconamaidh, tha a h-uile toradh mòran nas ìsle (tillidh e dhan ìre roimhe nuair a bhios an crìonadh eaconamaidh seachad)

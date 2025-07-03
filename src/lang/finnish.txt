@@ -1300,6 +1300,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Lainan korko; o
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Käyttökustannukset: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Määritä kulkuneuvojen sekä infrastruktuurin ylläpito- ja käyttökustannusten taso
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Rakennusnopeus: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Rajoita tekoälyn rakennustoimien määrää
@@ -1321,6 +1322,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Ei tukia
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Rakennuskustannukset: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Määritä rakennus- ja ostokustannusten taso
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Lamat: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Mikäli käytössä, taloudellinen lama voi ilmaantua ajoittain. Laman aikana kaikki tuotanto on huomattavasti alhaisempaa (palautuu normaalille tasolle laman päätyttyä)

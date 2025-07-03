@@ -1295,6 +1295,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Zënssaz; kontr
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Betribskäschten: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Fixéier den Niveau vun de Betribskäschten vu Gefierer an Infrastruktur
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Baugeschwindegkeet: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limitéier d'Unzuel u Bauaktiounen fir d'KI
@@ -1316,6 +1317,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Keng Subsiden
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Konstruktiounskäschten: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Bestëmm den Niveau vu Bau- a Kafkäschten
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Rezessiounen: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Wann ugeschalt kann vun Zäit zur Zäit eng Rezessioun kommen. Während enger Rezessioun ass d'Produktioun däitlech méi niddreg (an klëmmt erëm op den alen Niveau no der Rezessioun)

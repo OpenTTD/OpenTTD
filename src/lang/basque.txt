@@ -1082,6 +1082,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Maileguen inter
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Mantenimendu kostea: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Ibilgailu eta azpigiturak mantentzea kostatuko duena ezarri
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Eraikitzeko abiadura: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :IA-en eraikuntza ekintza kopurua mugatu
@@ -1098,6 +1099,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Subsidio garrai
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Eraikuntza kosteak: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Erosketa eta eraikuntza kostuak ezarri
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Atzerapen ekonomikoak: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Gaitua dagoenean, atzeratze ekonomikoa urte gutxika gertatuko da. Atzeratze ekonomikoan, ekoizpen orokorra dexente gutxituko da (Aurreko balioetara bueltatuko da atzerapena amaitzerakoan)

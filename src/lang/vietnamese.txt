@@ -1288,6 +1288,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Lãi xuất vay
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Chi phí hoạt động: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Thiết lập mức độ tính chi phí bảo trì và vận hành đối với phương tiện và hạ tầng giao thông
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Tốc độ xây dựng: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Giới hạn hành động xây dựng của AI
@@ -1309,6 +1310,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Không có tr�
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Chi phí xây dựng: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Thiết lập mức độ xây dựng và chi phí mua sắm
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Suy thoái: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Nếu bật, thì các đợt suy thoái sẽ xảy ra vài năm một lần. Trong suy thoái tất cả sản xuất sẽ giảm mạnh (và sẽ trở lại như cũ sau khi suy thoái kết thúc)

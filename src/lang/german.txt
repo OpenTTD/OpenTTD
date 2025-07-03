@@ -1286,6 +1286,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Zinssatz für K
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Betriebskosten: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Stellt die Höhe der Unterhalts- und Betriebskosten für Fahrzeuge und Infrastruktur ein
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Baugeschwindigkeit: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Begrenzt der eingestellten Baugeschwindigkeit entsprechend die Anzahl der Bau-Aktionen der KIs
@@ -1307,6 +1308,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Keine Subventio
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Baukosten: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Höhe der Bau- und Einkaufskosten festlegen
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Rezessionen: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Falls aktiv, können Rezessionen von Zeit zu Zeit auftreten. Während einer Rezession ist die Produktion aller Industrien viel niedriger (und kehrt zum Ende der Rezession zur gleichen Höhe zurück wie vor der Rezession)

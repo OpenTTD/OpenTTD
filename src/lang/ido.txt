@@ -561,6 +561,7 @@ STR_CONFIG_SETTING_NONE                                         :Nulo
 ###setting-zero-is-special
 
 
+###length 3
 
 
 
@@ -569,6 +570,7 @@ STR_CONFIG_SETTING_NONE                                         :Nulo
 
 ###setting-zero-is-special
 
+###length 3
 
 
 

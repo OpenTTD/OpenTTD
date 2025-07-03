@@ -1334,6 +1334,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Laenu intressim
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Käituskulud: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Määrab sõidukite ja taristu hooldus- ja käituskulude hinnataseme
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Ehitustempo: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Piirab arvuti ehitustoimingute arvu
@@ -1355,6 +1356,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Toetusteta
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Ehituse hinnad: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Määrab ehitus- ja ostukulude hinnataseme
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Majanduslangused: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Kui on aktiveeritud siis võib majanduslangus toimuda iga paari aasta tagant. Majanduslanguse ajal on kõik tootmismahud tunduvalt madalamad (majanduslanguse lõppedes taastuvad endised tootmismahud)

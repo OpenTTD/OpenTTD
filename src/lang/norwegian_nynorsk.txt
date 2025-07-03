@@ -1106,6 +1106,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Lånerente; kon
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Køyrekostnadar: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Set vedlikehaldsnivå og driftskostnadar for køyretøy og infrastruktur
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Fart for bygging: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Avgrensing av farten AIar kan gjere konstruksjonshandlingar i.
@@ -1122,6 +1123,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Kor mykje ekstr
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Byggjekostnadar: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Nivået kostnadene for konstruksjon og kjøp ligg på
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Nedgangstider: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Skru på at det frå tid til anna kjem nedgangstider. Under nedgangstider fell all produksjon kraftig. (Han går opp att når nedgangstida er over.)

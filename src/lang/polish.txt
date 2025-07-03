@@ -1680,6 +1680,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Oprocentowanie 
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Koszty amortyzacji: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Ustaw poziom kosztów utrzymania i amortyzacji pojazdów i infrastruktury
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Szybkość budowy: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Ogranicz ilość czynności budowlanych wykonywanych przez SI
@@ -1701,6 +1702,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Brak dotacji
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Koszty budowy: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Ustaw poziom kosztów budowy i kupna
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Kryzys: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Jeśli włączone, kryzys może występować okresowo. Podczas kryzysu produkcja jest znacznie niższa (powraca do poprzedniego poziomu, kiedy kryzys się kończy)

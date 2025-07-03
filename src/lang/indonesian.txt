@@ -1244,6 +1244,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Bunga pinjaman;
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Biaya pemeliharaan: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Menetapkan tingkat biaya pemeliharaan dan biaya untuk menjalankan kendaraan dan infrastruktur
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Kecepatan konstruksi: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Membatasi jumlah kegiatan konstruksi untuk AI
@@ -1264,6 +1265,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Tidak ada subsi
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Biaya konstruksi: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Menetapkan tingkat biaya konstruksi dan pembelian
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Resesi : {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Jika diaktifkan, resesi dapat terjadi secara berkala. Selama resesi, seluruh produksi jauh lebih rendah (akan kembali ke tingkat sebelumnya setelah resesi selesai)

@@ -1175,6 +1175,7 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :حداکثر ا
 STR_CONFIG_SETTING_INTEREST_RATE                                :نرخ سود: {STRING}
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :هزینه نگهداری: {STRING}
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :سرعت ساخت و ساز: {STRING}
 
@@ -1187,6 +1188,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :ضریب سوب
 ###setting-zero-is-special
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :هزینه های ساخت و ساز: {STRING}
+###length 3
 
 
 

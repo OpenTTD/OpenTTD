@@ -1301,6 +1301,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :A taxa de inter
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Custos de explotación: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Establece o nivel de mantemento e custo de operación de vehículos e infraestrutura
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocidade de construción: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limita a cantidade de accións construtivas das IAs
@@ -1322,6 +1323,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Sen subvención
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Custos de construción: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Fixa o nivel de custos de construción e compra
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesións económicas: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Se está activado, a economía pode entrar en recesión periódicamente. Durante unha recesión tódalas producións son significativamente máis baixas (volvendo ao nivel anterior cando a recesión remata)

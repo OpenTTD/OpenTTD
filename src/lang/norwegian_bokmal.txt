@@ -1302,6 +1302,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Lånerente; kon
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Driftskostnader: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Still nivå av vedlikehold og driftskostnader for kjøretøy og infrastruktur
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Byggehastighet: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Begrens mengden av byggetiltak hos KI-er
@@ -1323,6 +1324,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Ingen subsidier
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Byggekostnader: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Still kostnadsnivå for bygging og kjøp
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Resesjoner: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Hvis aktivert, lavkonjunkturer kan forekomme innimellom. Under en lavkonjunktur vil all produksjon være betydelig lavere (den returnerer til tidligere nivå når lavkonjunktur er over)

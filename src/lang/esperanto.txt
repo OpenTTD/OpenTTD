@@ -1324,6 +1324,7 @@ STR_CONFIG_SETTING_INTEREST_RATE                                :Rentumtarifoj: 
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Irkostoj: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Ŝanĝu nivelon de bontenkostoj kaj irkostoj de veturiloj kaj infrastrukturo
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Konstrurapido: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limigu la kvanton de konstruaj agoj por AIoj
@@ -1344,6 +1345,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Neniuj subvenci
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Kostoj de konstruado: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Ŝanĝu nivelon de konstruaj kaj aĉetaj kostoj
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesioj: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Kiam tiu ĉi agordo estas aktiva, recesioj povas okazi ĉiujn kelkajn jarojn. Dum recesio ĉia produktado estas signife malpli alta (ĝi revenos al la antaŭa nivelo kiam finiĝas la recesio)

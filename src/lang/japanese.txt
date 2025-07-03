@@ -1215,6 +1215,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :借入利率を
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :維持費: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :車両や施設のメンテナンスコストを設定します
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :建設速度: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :AIの建設速度を設定します
@@ -1235,6 +1236,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :補助金なし
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :建設費: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :建設・購入費用のレベルを設定します
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :景気後退: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :設定を有効にすると数年おきに短期間、景気の後退が起こる可能性が出ます。景気後退の間はすべての生産がかなりの落ち込みを見せます (景気後退が終わると元のレベルに戻ります)。

@@ -1295,6 +1295,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Cyfradd chwyddi
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Costau rhedeg: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Gosod lefel costau cynnal a chadw ar gerbydau a thanadeiledd
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Cyflymder adeiladu: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Cyfyngu'r nifer o weithredoedd adeiliadu ar gyfer AIau
@@ -1316,6 +1317,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Dim cymhorthdal
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costau adeiladu: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Gosod lefel costau prynnu ac adeiladu
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Dirwasgiadau: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Os y galluogir, gall dirwasgiadau ddigwydd yn ysbeidiol. Yn ystod dirwasgiad bydd lefelau gweithgynhyrchu'n is o lawer (gan ddychwelyd at y lefel gwreiddiol wedi diwedd y dirwasgiad)

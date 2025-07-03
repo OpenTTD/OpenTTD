@@ -1295,6 +1295,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Proportio faeno
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Pretii operandi: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Eligere magnitudinem pretiorum vehicula operandi atque infrastructuram ministrandi
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocitas struendi: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Definire IA velocitatem struendi
@@ -1311,6 +1312,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Eligere proport
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Pretii struendi: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Eligere magnitudinem pretiorum struendi emendique
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessiones: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Sinere recessiones oeconomicae aliquando accidere. In recessione oeconomica, productio omnino minuitur (sed, recessione confecta, productio redit ad magnitudinem priorem)

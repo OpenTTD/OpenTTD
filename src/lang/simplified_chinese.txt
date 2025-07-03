@@ -1300,6 +1300,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :贷款利率。
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :运营费用：{STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :设置载具的营运与维护成本水平
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :建设速度：{STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :AI 建设频率的上限
@@ -1321,6 +1322,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :没有财政补
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :建设费用：{STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :设定建造的成本水平
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :经济衰退：{STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :启用时，经济衰退将每隔几经济周期发生一次。经济衰退时所有工业货物产量都将大幅下降，直至衰退结束为止

@@ -1317,6 +1317,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Tasso d'interes
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Costi di esercizio: {STRING.mp}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Imposta il livello dei costi di manutenzione ed esercizio di veicoli e infrastrutture.
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocità di costruzione: {STRING.fs}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limita la frequenza delle azioni di costruzione delle IA.
@@ -1338,6 +1339,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Niente sussidi
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costi di costruzione: {STRING.mp}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Imposta il livello dei costi di costruzione e acquisto.
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessioni: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Se abilitata, le recessioni possono verificarsi periodicamente. Durante una recessione, tutta la produzione è significativamente più bassa (torna al livello precedente quando la recessione è terminata).

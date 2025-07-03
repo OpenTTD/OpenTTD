@@ -845,6 +845,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Реален
 ###setting-zero-is-special
 
 
+###length 3
 
 
 
@@ -853,6 +854,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Реален
 
 ###setting-zero-is-special
 
+###length 3
 
 
 

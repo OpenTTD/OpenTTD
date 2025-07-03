@@ -1255,6 +1255,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Obrestna mera; 
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Stroški delovanja: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Nastavitev vzdrževanja in stroškov delovanja vozil in zgradb
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Hitrost gradnje: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Nastavitev hitrosti gradnje za UI
@@ -1271,6 +1272,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Nastavitev fakt
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Cene gradnje: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Nastavitev cene gradnje in nakupa
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesije: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Če je omogočeno, se recesije lahko pojavijo vsakih nekaj let. Med recesijo je proizvodnja znatno nižja, povrne se v tek po recesiji.

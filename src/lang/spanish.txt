@@ -1301,6 +1301,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Porcentaje de i
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Costes de operación: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Permite fijar el nivel de los costes de mantenimiento y operación de vehículos e infraestructuras
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocidad de construcción: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limita la velocidad de las acciones de construcción para las IA
@@ -1322,6 +1323,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Sin subvencione
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costes de construcción: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Fija el nivel de los costes de construcción y compra
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesiones: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Si se activa, ocurrirán recesiones periódicamente. Durante una recesión, toda la producción es significativamente menor (volverá a su nivel anterior cuando acabe la recesión)

@@ -1062,6 +1062,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Kadar faedah pi
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Kos penyelenggaraan: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Tetapkan tahap penyelenggaraan dan kos perjalanan kenderaan dan infrastuktur
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Kelajuan pembinaan: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Had jumlah pembinaan untuk AI
@@ -1078,6 +1079,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Tetapkan jumlah
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Kos pembinaan: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Tetapkan tahap pembinaan dan kos pembelian
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Kemelesetan: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Jika diupayakan, kemelesetan mungkin berlaku setiap tahun. Semasa kemelesetan, pengeluaran adalah lebih rendah (ia kembali ke tahap sebelumnya apabila kemelesetan berakhir)

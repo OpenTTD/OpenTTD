@@ -1301,6 +1301,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Taux d’intér
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Coûts d'entretien{NBSP}: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Définit le niveau des coûts d'entretien et de fonctionnement des véhicules et des infrastructures
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Vitesse de construction{NBSP}: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limite le nombre d'actions de constructions pour les IAs
@@ -1322,6 +1323,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Pas de subventi
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Coûts de construction{NBSP}: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Définit le niveau des coûts de construction et d'achat
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Récessions{NBSP}: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Si activé, des récessions peuvent se produire périodiquement. Pendant une récession, toute la production baisse de façon significative (elle retourne à son niveau antérieur à la fin de la récession).

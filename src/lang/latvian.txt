@@ -1302,6 +1302,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Aizdevumu proce
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Kārtējās izmaksas: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Iestaties uzturēšanas un ekspluatācijas izmaksu līmeni transportlīdzekļiem un infrastruktūrai
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Būvēšanas ātrums: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :MI (mākslīgā intelekta) būvniecības darbību daudzuma ierobežošana
@@ -1323,6 +1324,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Bez subsīdijā
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Būvēšanas izmaksas: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Iestatīt būvēšanas un pirkumu izmaksas
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Lejupslīde: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ja ieslēgts, periodiski var rasties recesijas. Recesijas laikā visa ražošana ir ievērojami zemāka (tā atgriežas iepriekšējā līmenī, kad recesija ir beigusies)

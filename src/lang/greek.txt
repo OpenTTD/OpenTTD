@@ -1393,6 +1393,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Επιτόκι�
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Λειτουργικά έξοδα: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Θέτει το επίπεδο συντήρησης και τα λειτουργικά έξοδα των οχημάτων και της υποδομής
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Ταχύτητα οικοδόμησης: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Περιορίζει το ποσοστό των οικοδομήμσεων από την ΤΝ
@@ -1414,6 +1415,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Χωρίς επ
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Κόστη οικοδόμησης: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Θέτει το επίπεδο κόστους για αγορές και οικοδομές
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Υφέσεις: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Όταν είναι ενεργοποιημένο, ενδέχεται περιοδικά να υπάρχουν υφέσεις. Κατά τη διάρκεια μιας ύφεσης, όλη η παραγωγή είναι πολύ χαμηλότερη (επιστρέφει στο προηγούμενο επίπεδο όταν τελειώσει η ύφεση)

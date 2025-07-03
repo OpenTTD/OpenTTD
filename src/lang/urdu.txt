@@ -1030,6 +1030,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :دائیں
 ###setting-zero-is-special
 
 
+###length 3
 
 
 
@@ -1038,6 +1039,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :دائیں
 
 ###setting-zero-is-special
 
+###length 3
 
 
 

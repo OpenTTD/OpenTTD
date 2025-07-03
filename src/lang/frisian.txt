@@ -1114,6 +1114,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Rinte op lienin
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Eksploitaasjekosten: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Stel hichte ûnderhâlds- en ekploitaasjekosten fan fiertugen en ynfrastruktuer yn
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Boufaasje: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Behein it oantal bouwaksjes foar AI's
@@ -1131,6 +1132,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Stel it oantal 
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Boukosten: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Stel hichte bouw- en oankeapkosten yn
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Resesjes: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :By ynskeakeljen kinne der om de safolle jier resesjes plakfine. Under in resesje nim de produksje op alle flakken ôf (sadree in resesje oergean is giet de produkje wer nei it âlde nivo omheech)

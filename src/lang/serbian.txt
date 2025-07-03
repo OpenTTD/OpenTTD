@@ -1443,6 +1443,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Kamatna stopa n
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Rashod: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Podesi cene za održavanje i radni proces vozila i infrastrukture
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Brzina gradnje: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Ograniči količinu akcija gradnje za VI
@@ -1464,6 +1465,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Bez subvencija
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Troškovi gradnje: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Podešava nivo troškova gradnje i kupovine
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesije: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ako je omogućeno, recesije mogu da se jave svakih nekoliko godina. Proizvodnja je značajno smanjena tokom recesije (vraća se na prethodni nivo kada se recesija završi)

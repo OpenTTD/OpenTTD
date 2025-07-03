@@ -1301,6 +1301,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Tipus d'interè
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Costos d'utilització: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Fixa el nivell de manteniment i els costos d'utilització dels vehicles i infraestructures
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Ritme de construcció: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limita la quantitat d'accions de construcció per part de les IA
@@ -1322,6 +1323,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Sense subsidis
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costos de construcció: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Fixa el nivell de construcció i els preus de compra
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessions: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Si està activat, poden haver recessions periòdicament. Durant una recessió, tota la producció és significativament més baixa, tornant al nivell previ quan s'acabi el període de recessió.

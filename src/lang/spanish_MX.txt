@@ -1301,6 +1301,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Tasa de interé
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Costos de operación: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Nivel de costos de mantenimiento y operación de vehículos e infraestructura
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocidad de construcción: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Restringir la velocidad de las acciones de construcción de jugadores no humanos
@@ -1322,6 +1323,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Sin subsidios
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costos de construcción: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Nivel de costos de construcción y adquisición
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesiones: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Al activarse, habrá recesiones periódicamente en las que toda la producción decaerá considerablemente, restableciéndose al final de cada recesión
@@ -2329,16 +2331,19 @@ STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Selecci�
 STR_FACE_LOAD                                                   :{BLACK}Cargar
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Cargar cara favorita
 STR_FACE_LOAD_DONE                                              :{WHITE}Cara favorita cargada desde el archivo de configuración
-STR_FACE_FACECODE                                               :{BLACK}Número de cara
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Establecer un número de cara
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Establecer un número de cara
-STR_FACE_FACECODE_SET                                           :{WHITE}Nuevo número de cara fue asignado
-STR_FACE_FACECODE_ERR                                           :{WHITE}No se puede asignar número de cara, ¡debe ser un valor entre 0 y 4,294,967,295!
+STR_FACE_FACECODE                                               :{BLACK}Código de cara
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Establecer un código de cara para el presidente
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Establecer un código para la cara del presidente
+STR_FACE_FACECODE_SET                                           :{WHITE}La nueva cara del presidente se ha asignado
+STR_FACE_FACECODE_ERR                                           :{WHITE}No se puede asignar código de cara, debe ser una etiqueta y número válidos
 STR_FACE_SAVE                                                   :{BLACK}Guardar
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Guardar cara favorita
 STR_FACE_SAVE_DONE                                              :{WHITE}Cara guardada como favorita en el archivo de configuración
+STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
+STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Sí
 STR_FACE_NO                                                     :No
+STR_FACE_STYLE                                                  :Estilo:
 STR_FACE_HAIR                                                   :Pelo:
 STR_FACE_EYEBROWS                                               :Cejas:
 STR_FACE_EYECOLOUR                                              :Color de ojos:
@@ -2811,6 +2816,10 @@ STR_PICKER_MODE_USED_TOOLTIP                                    :Ver solo los el
 STR_PICKER_MODE_SAVED                                           :Guardados
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Ver solo los elementos guardados
 
+STR_PICKER_PREVIEW_SHRINK                                       :-
+STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Reducir la altura de las imágenes previas. Ctrl+Clic reduce al mínimo
+STR_PICKER_PREVIEW_EXPAND                                       :+
+STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Incrementar la altura de las imágenes previas. Ctrl+Clic aumenta al máximo
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Elegir qué clase de estación mostrar
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Elegir qué tipo de estación construir. Ctrl+Clic lo añade o elimina de guardados

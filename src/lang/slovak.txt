@@ -1346,6 +1346,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Úroková sadzb
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Prevádzkové náklady: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Zvoľte úroveň cien údržby a prevádzky vozidiel a infraštruktúry
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Rýchlosť výstavby: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Obmezdenie počtu stavebných akcí pre počítačových hráčov
@@ -1367,6 +1368,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Žiadne ponúkn
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Cena stavby: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Zvoľte úroveň cien výstavby a nákupov
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesie: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ak je povolené, recesia sa môže periodicky opakovať. Počas recesie je všetká produkcia znatelne nižšia (po skončení recesie sa produkcia vráti na normálnu úroveň)

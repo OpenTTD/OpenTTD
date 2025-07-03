@@ -1188,6 +1188,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :ריבית עב
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :עלויות תפעול: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :קבע את רמת התחזוקה ועלויות התפעול של רכבים ותשתיות
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :מהירות בנייה: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :הגבל את כמות פעולות הבנייה עבור שחקני מחשב
@@ -1206,6 +1207,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :אין סובי
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :עלויות בנייה: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :קבע את רמת העלויות של בנייה ורכישה
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :מיתונים: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :אם מאופשר מיתונים עלולים להתרחש מדי כמה שנים. בתקופת מיתון כל הייצור קטן יותר באופן משמעותי (הוא חוזר לרמתו הקודמת בסוף המיתון)

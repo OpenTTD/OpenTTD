@@ -1280,6 +1280,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Borç faiz oran
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :İşletme giderleri: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Araçlar ve altyapı için bakım ve işletme giderlerinin seviyesini ayarlayın
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :İnşaat hızı: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :YZ'ler için inşaat hareketi sayısını sınırlayın
@@ -1301,6 +1302,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Teşvik yok
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :İnşaat maliyetleri: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :İnşaat ve satın alma maliyet seviyesini belirleyin
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Ekonomik krizler: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Etkinleştirilirse, periyodik olarak bir ekonomik durgunluk yaşanır. Durgunluk süresince tüm üretim seviyeleri belirgin oranda düşer (durgunluk sona erdiğinde önceki seviyesine tekrar yükselir)

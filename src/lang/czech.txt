@@ -1381,6 +1381,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Výše úroků 
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Cena provozu: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Nastav cenu údržby a provozu vozidel a infrastruktury
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Rychlost výstavby: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Omezení výstavby AI
@@ -1402,6 +1403,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Žádné dotace
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Cena výstavby: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Nastav cenu výstavby a nákupu
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Krize: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Pokud jsou krize zapnuty, mohou se občas objevit krize. Během krize je snížena veškerá produkce. Po krizi se opět vrátí do původních hodnot

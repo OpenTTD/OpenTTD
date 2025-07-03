@@ -1062,6 +1062,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Vextir á lánu
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Rekstrarkostnaður: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Stillingar á hversu dýrt er að reka farartæki og mannvirki teng þeim
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Framkvæmdahraði: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Minnka framkvæmdir hjá gervigreind
@@ -1078,6 +1079,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Stillingar fyri
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Mannvirkja kostnaður: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Stillingar á byggingum og framkvæmdum
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Efnahagslægð: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ef virkt getur komið efnahagslægð á nokkurra ára fresti. Meðan á efnahagslægð stendur er öll framleiðsla marktækt minni (framleiðslan fellur í fyrra horf þegar efnahagslægðinni líkur)

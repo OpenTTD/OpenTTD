@@ -1300,6 +1300,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Lånerente; kon
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Driftsomkostninger: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Indstil niveauet for vedligeholdelse og driftsomkostninger af kørertøjer og infrastruktur
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Konstruktionshastighed: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Begræns antallet af igangværende konstruktioner for AI'er
@@ -1321,6 +1322,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Ingen tilskudso
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Konstruktionspriser: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Indstil prisniveau for køb og konstruktion
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Kriser: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Hvis aktiveret, kan lavkonjunktur forekomme hvert par år. Under en lavkonjunktur er al produktion væsentligt lavere (den vender tilbage til tidligere niveau, når recessionen er forbi)

@@ -1300,6 +1300,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Räntenivå fö
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Driftkostnader: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Sätt nivån för underhålls- och driftkostnader för fordon och infrastruktur
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Konstruktionshastighet: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Begränsar antalet konstruktionshandlingar för datorspelare
@@ -1321,6 +1322,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Inga subvention
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Konstruktionskostnader: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Sätt nivån för konstruktions- och inköpskostnader
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Lågkonjunkturer: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Om det är aktiverat kan lågkonjunkturer uppstå regelbundet. Under en lågkonjunktur är all produktion avsevärt lägre (men återgår till det normala när lågkonjunkturen är över)

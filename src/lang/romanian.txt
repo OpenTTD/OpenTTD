@@ -1291,6 +1291,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Rata dobânzii;
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Costuri de funcționare: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Alege nivelul de întreținere și costul de rulare al vehiculelor sau al infrastructurii
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Viteza de construcție: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limitează numărul de acțiuni de construcție pentru AI
@@ -1312,6 +1313,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Fără subvenț
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costuri de construcție: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Alege nivelul de construcție și costurile de achiziție
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesiuni: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Dacă este activată, recesiunile pot apărea periodic. În timpul unei recesiuni toată producția este semnificativ mai scăzută (revine la nivelul anterior când recesiunea se încheie)

@@ -1300,6 +1300,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Loan interest r
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Running costs: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Set level of maintainance and running costs of vehicles and infrastructure
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Construction speed: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limit the amount of construction actions for AI's
@@ -1321,6 +1322,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :No subsidies
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Construction costs: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Set level of construction and purchase costs
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessions: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :If enabled, recessions may occur periodically. During a recession all production is significantly lower (it returns to previous level when the recession is over)

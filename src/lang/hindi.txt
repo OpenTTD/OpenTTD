@@ -419,6 +419,7 @@ STR_CONFIG_SETTING_COMPANIES_OFF                                :बन्द
 ###setting-zero-is-special
 
 
+###length 3
 
 
 
@@ -427,6 +428,7 @@ STR_CONFIG_SETTING_COMPANIES_OFF                                :बन्द
 
 ###setting-zero-is-special
 
+###length 3
 
 
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :यदि सक्षम किया गया है, तो ट्रेनें गैर-टर्मिनस स्टेशनों पर रिवर्स नहीं होंगी, भले ही रिवर्स करते समय उनके अगले गंतव्य के लिए छोटा रास्ता हो।

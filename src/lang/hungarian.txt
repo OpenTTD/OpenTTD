@@ -1364,6 +1364,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Banki hitelkama
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Üzemeltetési költségek: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Járművek karbantartási és üzemeltetési költségeinek a szintje
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Építkezési sebesség: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Korlátozza az építkezési sebességét számítógépes ellenfeleknek
@@ -1385,6 +1386,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Nincsenek támo
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Építkezési költségek: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Építkezések és beszerzésk költségeinek szintje
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Gazdasági válságok: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ha bekapcsolod, időszakonként gazdasági válság fog kitörni. A válság alatt az összes ipar jelentősen kevesebbet termel. (A válság végével a termelés visszaáll az eredeti szintre.)

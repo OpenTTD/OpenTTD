@@ -1301,6 +1301,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Taxa de juro do
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Custos operacionais: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Configurar nível de manutenção e custos operacionais de veículos e infraestrutura
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocidade de construção: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limitar o número de acções de construção para IAs
@@ -1322,6 +1323,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Sem subsídios
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Custos de construção: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Configurar o nível de construção e custos de compra
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessões: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Se ativo, podem ocorrer recessões periodicamente. Durante uma recessão a produção em geral é mais baixa (e regressa aos níveis anteriores quando termina a recessão)
@@ -5008,7 +5010,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Não per
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}A autoridade local de {TOWN} não autorizou
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}A autoridade local de {TOWN} recusa-se a permitir a construção de outro aeroporto nesta localidade
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}A autoridade loca de {TOWN} não permite a construção do aeroporto devido à poluição sonora
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}A autoridade local de {TOWN} não permite a construção do aeroporto devido à poluição sonora
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}A sua tentativa de suborno foi descoberta por um investigador regional
 
 # Levelling errors

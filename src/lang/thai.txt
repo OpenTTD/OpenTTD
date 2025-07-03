@@ -1110,6 +1110,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :อัตรา
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :ระดับของค่าปฎิบัติการของยานพาหนะต่างๆ: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :กำหนดระดับของการบำรุงรักษาและค่าใช้จ่ายของยานพาหนะและโครงสร้างพื้นฐาน
+###length 3
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :ควานเร็วในการก่อสร้าง: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :จำกัด จำนวนของการกระทำก่อสร้างสำหรับ AIs
@@ -1127,6 +1128,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :กำหนด
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :ค่าใช้จ่ายในการก่อสร้า: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :การตั้งค่าระดับของค่าใช้จ่ายในการก่อสร้างและซื้อ
+###length 3
 
 STR_CONFIG_SETTING_RECESSIONS                                   :เศรษฐกิจถดถอย: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :หากเปิดใช้งาน การถดถอย อาจเกิดขึ้นทุก 2 - 3 ปี ในช่วงเศรษฐกิจตกต่ำในการผลิตทั้งหมด อย่างมีนัยสำคัญต่ำกว่า (มันจะกลับไปที่ระดับก่อนหน้านี้เมื่อภาวะถดถอยจบลง)
