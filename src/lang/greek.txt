@@ -1394,6 +1394,9 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Επιτόκι�
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Λειτουργικά έξοδα: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Θέτει το επίπεδο συντήρησης και τα λειτουργικά έξοδα των οχημάτων και της υποδομής
 ###length 3
+STR_CONFIG_SETTING_RUNNING_COSTS_LOW                            :Χαμηλό
+STR_CONFIG_SETTING_RUNNING_COSTS_MEDIUM                         :Μέτριο
+STR_CONFIG_SETTING_RUNNING_COSTS_HIGH                           :Υψηλό
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Ταχύτητα οικοδόμησης: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Περιορίζει το ποσοστό των οικοδομήμσεων από την ΤΝ
@@ -1416,6 +1419,9 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Χωρίς επ
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Κόστη οικοδόμησης: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Θέτει το επίπεδο κόστους για αγορές και οικοδομές
 ###length 3
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_LOW                       :Χαμηλό
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_MEDIUM                    :Μέτριο
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Υψηλό
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Υφέσεις: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Όταν είναι ενεργοποιημένο, ενδέχεται περιοδικά να υπάρχουν υφέσεις. Κατά τη διάρκεια μιας ύφεσης, όλη η παραγωγή είναι πολύ χαμηλότερη (επιστρέφει στο προηγούμενο επίπεδο όταν τελειώσει η ύφεση)
@@ -3145,7 +3151,7 @@ STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Δημι
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Μέγεθος πόλης:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Μικρό
-STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Μεσαίο
+STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Μέτριο
 STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Μεγάλο
 STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Τυχαίο
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Επιλογή μεγέθους πόλης

@@ -1202,9 +1202,9 @@ STR_SUBSIDY_X3                                                  :× 3
 STR_SUBSIDY_X4                                                  :× 4
 
 ###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :lauhkea maasto
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :pohjoinen maasto
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :subtrooppinen maasto
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Lauhkea maasto
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Pohjoinen maasto
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Subtrooppinen maasto
 STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Lelumaan maasto
 
 ###length 7
@@ -1265,8 +1265,8 @@ STR_CONFIG_SETTING_TYPE_HIDES                                   :Näytä kaikki 
 STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Näytä kaikki tulokset muuttamalla{}{PUSH_COLOUR}{SILVER}kategoriaksi {POP_COLOUR}{PUSH_COLOUR}{WHITE}{STRING} {POP_COLOUR}ja {PUSH_COLOUR}{SILVER}tyypiksi {POP_COLOUR}{WHITE}kaikki asetustyypit
 
 ###length 3
-STR_CONFIG_SETTING_OFF                                          :pois
-STR_CONFIG_SETTING_ON                                           :päällä
+STR_CONFIG_SETTING_OFF                                          :Pois
+STR_CONFIG_SETTING_ON                                           :Päällä
 STR_CONFIG_SETTING_DISABLED                                     :Pois käytöstä
 
 ###length 3
@@ -1280,9 +1280,9 @@ STR_CONFIG_SETTING_ORIGINAL                                     :Alkuperäinen
 STR_CONFIG_SETTING_REALISTIC                                    :Realistinen
 
 ###length 3
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :vasemmalla
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :keskellä
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :oikealla
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vasemmalla
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Keskellä
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Oikealla
 
 STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}sekunti{P 0 "" a}
 
@@ -1301,6 +1301,9 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Lainan korko; o
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Käyttökustannukset: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Määritä kulkuneuvojen sekä infrastruktuurin ylläpito- ja käyttökustannusten taso
 ###length 3
+STR_CONFIG_SETTING_RUNNING_COSTS_LOW                            :Alhaiset
+STR_CONFIG_SETTING_RUNNING_COSTS_MEDIUM                         :Keskisuuret
+STR_CONFIG_SETTING_RUNNING_COSTS_HIGH                           :Korkeat
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Rakennusnopeus: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Rajoita tekoälyn rakennustoimien määrää
@@ -1323,6 +1326,9 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Ei tukia
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Rakennuskustannukset: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Määritä rakennus- ja ostokustannusten taso
 ###length 3
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_LOW                       :Alhaiset
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_MEDIUM                    :Keskisuuret
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Korkeat
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Lamat: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Mikäli käytössä, taloudellinen lama voi ilmaantua ajoittain. Laman aikana kaikki tuotanto on huomattavasti alhaisempaa (palautuu normaalille tasolle laman päätyttyä)
@@ -1496,11 +1502,11 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Mikäli käytö
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Varoita, jos kulkuneuvo on eksynyt: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Lähetä viesti, jos kulkuneuvo ei löydä reittiä määränpäähänsä
 
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :Tarkista kulkuneuvojen pysähdykset: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :Tarkista kulkuneuvojen käskyt: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Mikäli käytössä, kulkuneuvojen käskyjä tarkastetaan väliajoin, ja havaituista ongelmista ilmoitetaan uutisviestillä
 ###length 3
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Ei
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Kyllä, mutta ei pysäytetyille
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Kyllä, paitsi pysäytetyille
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Kaikille kulkuneuvoille
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Varoita, jos kulkuneuvon tulos on negatiivinen: {STRING}
@@ -1720,12 +1726,12 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Ei
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Kyllä
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Vain ei-säilyvät
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Käytä {STRING} päivämäärämuotoa tallennettujen pelien niminä
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Tallennettujen pelien nimissä käytettävä päivämäärämuoto: {STRING}
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Pelitallenteiden tiedostonimissä käytettävä päivämäärän muoto
 ###length 3
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :pitkää (31. joulu 2008)
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :lyhyttä (31.12.2008)
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO- (2008-12-31)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :tavallinen (1.4.2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :etunollilla (01.04.2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-04-01)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Uusi peli alkaa pysäytettynä: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Mikäli käytössä, peli pysäytetään automaattisesti uuden pelin alussa, mahdollistaen esimerkiksi kartan tarkemman tutkimisen
@@ -2078,9 +2084,9 @@ STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Arvokuljetuksii
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Muiden rahtityyppien jakautuminen: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :”Epäsymmetrinen” tarkoittaa, että rahtia voidaan lähettää mielivaltainen määrä kumpaankin suuntaan. ”Manuaalinen” tarkoittaa, että automaattista jakautumista ei sovelleta näihin rahteihin
 ###length 3
-STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuaalinen
-STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :epäsymmetrinen
-STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symmetrinen
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :Manuaalinen
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :Epäsymmetrinen
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :Symmetrinen
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Jakautumisen tarkkuus: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Mitä suuremmaksi tämä asetus on määritetty, sitä enemmän prosessoriaikaa yhteyskuvaajan laskemiseen kuluu. Mikäli tähän kuluu liian paljon aikaa, saatat havaita pelin nykimistä. Jos arvo on määritetty liian pieneksi, jakauman laskeminen ei ole tarkkaa, ja rahtia ei välttämättä lähetetä odotettuihin paikkoin
@@ -2107,7 +2113,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Kulkuneuvon teh
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Kun käyttöliittymässä näytetään kulkuneuvon teho, näytä se valittua yksikköä käyttäen
 ###length 3
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Brittiläinen (hp)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrinen (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrinen (hv)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Painon yksikkö: {STRING}
@@ -2128,7 +2134,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Vetovoiman yksi
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Kun käyttöliittymässä näytetään vetovoima, näytä se valittua yksikköä käyttäen
 ###length 3
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Brittiläinen (lbf)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metrinen (kgf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metrinen (kp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Korkeuden yksikkö: {STRING}

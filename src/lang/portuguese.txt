@@ -942,8 +942,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subsídio de serviço concedido a {STRING}!{}{}{STRING} d{G e o a os as} {STRING} para {G "" "o " "a " "os " "as "}{STRING} será pago a 300% durante {UNITS_YEARS_OR_MINUTES}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subsídio de serviço concedido a {STRING}!{}{}{STRING} d{G e o a os as} {STRING} para {G "" "o " "a " "os " "as "}{STRING} será pago a 400% durante {UNITS_YEARS_OR_MINUTES}!
 
-STR_NEWS_ROAD_REBUILDING_MONTHS                                 :{BIG_FONT}{BLACK}Tráfego caótico em {TOWN}!{}{}Iniciativa de reconstrução das estradas financiado por {STRING} provoca 6 meses de sofrimento aos motoristas!
-STR_NEWS_ROAD_REBUILDING_MINUTES                                :{BIG_FONT}{BLACK}Tráfego caótico em {TOWN}!{}{}Iniciativa de reconstrução das estradas financiado por {STRING} provoca 6 minutos de sofrimento aos motoristas!
+STR_NEWS_ROAD_REBUILDING_MONTHS                                 :{BIG_FONT}{BLACK}Tráfego caótico em {TOWN}!{}{}Iniciativa de reconstrução das estradas financiada por {STRING} provoca 6 meses de sofrimento aos motoristas!
+STR_NEWS_ROAD_REBUILDING_MINUTES                                :{BIG_FONT}{BLACK}Tráfego caótico em {TOWN}!{}{}Iniciativa de reconstrução das estradas financiada por {STRING} provoca 6 minutos de sofrimento aos motoristas!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopólio dos Transportes!
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS                    :{BIG_FONT}{BLACK}A autoridade local de {TOWN} assinou um contrato com {STRING} por 12 meses de direitos exclusivos de transporte!
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLACK}A autoridade local de {TOWN} assinou um contrato com {STRING} por 12 minutos de direitos exclusivos de transporte!
@@ -1302,6 +1302,9 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Taxa de juro do
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Custos operacionais: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Configurar nível de manutenção e custos operacionais de veículos e infraestrutura
 ###length 3
+STR_CONFIG_SETTING_RUNNING_COSTS_LOW                            :Baixos
+STR_CONFIG_SETTING_RUNNING_COSTS_MEDIUM                         :Médios
+STR_CONFIG_SETTING_RUNNING_COSTS_HIGH                           :Altos
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocidade de construção: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limitar o número de acções de construção para IAs
@@ -1324,6 +1327,9 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Sem subsídios
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Custos de construção: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Configurar o nível de construção e custos de compra
 ###length 3
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_LOW                       :Baixos
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_MEDIUM                    :Médios
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Altos
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessões: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Se ativo, podem ocorrer recessões periodicamente. Durante uma recessão a produção em geral é mais baixa (e regressa aos níveis anteriores quando termina a recessão)
@@ -3231,7 +3237,7 @@ STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Aqueduto
 STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Transmissor
 STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Farol
 STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Sede de empresa
-STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Terreno propriedade de uma empresa
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Terreno detido por uma empresa
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Sobre o OpenTTD
@@ -3453,7 +3459,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}A prepar
 STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Falha ao carregar dados da localidade
 STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}Ficheiro JSON formatado incorretamente
 STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}Dados de {STRING} formatados incorretamente
-STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} coordenadas mal formatadas, devem ser de 0 a 1 como uma proporção da dimensão total do mapa de alturas
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}Coordenadas de {STRING} mal formatadas, devem ser de 0 a 1 como uma proporção da dimensão total do mapa de alturas
 
 STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Não foi possível encontrar um local válido para fundar {NUM} localidade{P "" s}. Em vez disso, fo{P i ram} colocado{P "" s} {P "um " ""}letreiro{P "" s} no{P "" s} loca{P l is} desejado{P "" s}
 
@@ -3922,13 +3928,13 @@ STR_FINANCES_PROFIT                                             :{WHITE}Lucro
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Balanço bancário
 STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Fundos Próprios
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Empréstimo
-STR_FINANCES_INTEREST_RATE                                      :{WHITE}Juro do Empréstimo: {BLACK}{NUM}%
+STR_FINANCES_INTEREST_RATE                                      :{WHITE}Juros do Empréstimo: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Empréstimo Máximo: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BANK_BALANCE                                       :{WHITE}{CURRENCY_LONG}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pedir empréstimo {CURRENCY_LONG}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pedir empréstimo de {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Aumentar tamanho do empréstimo. Ctrl+Clique para pedir emprestado o máximo possível
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Pagar empréstimo {CURRENCY_LONG}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Pagar empréstimo de {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Pagar uma parte do empréstimo. Ctrl+Clique para pagar o máximo de empréstimo possível
 STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infraestrutura
 
@@ -5426,27 +5432,27 @@ STR_BASEMUSIC_NONE_DESCRIPTION                                  :Um conjunto de 
 
 ##id 0x2000
 # Town building names
-STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Edifício alto com escritórios
-STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Edifício com escritórios
+STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Edifício alto de escritórios
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Edifício de escritórios
 STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Edifício pequeno com apartamentos
 STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Igreja
-STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Edifício grande com escritórios
+STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Edifício grande de escritórios
 STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Casas
 STR_TOWN_BUILDING_NAME_HOTEL_1                                  :Hotel
 STR_TOWN_BUILDING_NAME_STATUE_1                                 :Estátua
 STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :Fonte
 STR_TOWN_BUILDING_NAME_PARK_1                                   :Parque
-STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :Edifício com escritórios
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :Edifício de escritórios
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :Lojas e escritórios
 STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :Edifício de escritórios moderno
 STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :Armazém
-STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Edifício com escritórios
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Edifício de escritórios
 STR_TOWN_BUILDING_NAME_STADIUM_1                                :Estádio
 STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Casas antigas
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Casas de campo
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Casas
 STR_TOWN_BUILDING_NAME_FLATS_1                                  :Apartamentos
-STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :Edifício alto com escritórios
+STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :Edifício alto de escritórios
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :Lojas e escritórios
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :Lojas e escritórios
 STR_TOWN_BUILDING_NAME_THEATER_1                                :Casa de Teatro

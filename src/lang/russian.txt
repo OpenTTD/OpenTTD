@@ -1452,6 +1452,9 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Процент�
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Эксплуатационные расходы: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Установите уровень стоимости обслуживания и эксплуатации транспорта и инфраструктуры
 ###length 3
+STR_CONFIG_SETTING_RUNNING_COSTS_LOW                            :Низкие
+STR_CONFIG_SETTING_RUNNING_COSTS_MEDIUM                         :Средние
+STR_CONFIG_SETTING_RUNNING_COSTS_HIGH                           :Высокие
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Скорость строительства: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Ограничьте количество строительных мероприятий для ИИ
@@ -1474,6 +1477,9 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :субсиди�
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Затраты на строительство: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Установите уровень затрат на строительство и приобретение
 ###length 3
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_LOW                       :Низкая
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_MEDIUM                    :Средняя
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Высокая
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Экономические кризисы: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Если эта настройка включена, в игре иногда происходят экономические кризисы. В это время объёмы производства значительно снижаются (и возвращаются к прежнему уровню, когда спад заканчивается).
