@@ -15,7 +15,6 @@
 #include "../../fileio_func.h"
 #include "../../fontcache.h"
 #include "../../fontcache/truetypefontcache.h"
-#include "../../fontdetection.h"
 #include "../../library_loader.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
@@ -84,32 +83,6 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	Debug(fontcache, 1, "Fallback font: {}", font_name);
 	return 0; // stop enumerating
 }
-
-bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, MissingGlyphSearcher *callback)
-{
-	Debug(fontcache, 1, "Trying fallback fonts");
-	EFCParam langInfo;
-	std::wstring lang = OTTD2FS(language_isocode.substr(0, language_isocode.find('_')));
-	if (GetLocaleInfoEx(lang.c_str(), LOCALE_FONTSIGNATURE, reinterpret_cast<LPWSTR>(&langInfo.locale), sizeof(langInfo.locale) / sizeof(wchar_t)) == 0) {
-		/* Invalid isocode or some other mysterious error, can't determine fallback font. */
-		Debug(fontcache, 1, "Can't get locale info for fallback font (isocode={})", language_isocode);
-		return false;
-	}
-	langInfo.settings = settings;
-	langInfo.callback = callback;
-
-	LOGFONT font;
-	/* Enumerate all fonts. */
-	font.lfCharSet = DEFAULT_CHARSET;
-	font.lfFaceName[0] = '\0';
-	font.lfPitchAndFamily = 0;
-
-	HDC dc = GetDC(nullptr);
-	int ret = EnumFontFamiliesEx(dc, &font, (FONTENUMPROC)&EnumFontCallback, (LPARAM)&langInfo, 0);
-	ReleaseDC(nullptr, dc);
-	return ret == 0;
-}
-
 
 /**
  * Create a new Win32FontCache.
@@ -333,6 +306,31 @@ public:
 		}
 
 		return LoadWin32Font(fs, logfont, GetFontCacheFontSize(fs), font);
+	}
+
+	bool FindFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, MissingGlyphSearcher *callback) override
+	{
+		Debug(fontcache, 1, "Trying fallback fonts");
+		EFCParam langInfo;
+		std::wstring lang = OTTD2FS(language_isocode.substr(0, language_isocode.find('_')));
+		if (GetLocaleInfoEx(lang.c_str(), LOCALE_FONTSIGNATURE, reinterpret_cast<LPWSTR>(&langInfo.locale), sizeof(langInfo.locale) / sizeof(wchar_t)) == 0) {
+			/* Invalid isocode or some other mysterious error, can't determine fallback font. */
+			Debug(fontcache, 1, "Can't get locale info for fallback font (isocode={})", language_isocode);
+			return false;
+		}
+		langInfo.settings = settings;
+		langInfo.callback = callback;
+
+		LOGFONT font;
+		/* Enumerate all fonts. */
+		font.lfCharSet = DEFAULT_CHARSET;
+		font.lfFaceName[0] = '\0';
+		font.lfPitchAndFamily = 0;
+
+		HDC dc = GetDC(nullptr);
+		int ret = EnumFontFamiliesEx(dc, &font, (FONTENUMPROC)&EnumFontCallback, (LPARAM)&langInfo, 0);
+		ReleaseDC(nullptr, dc);
+		return ret == 0;
 	}
 
 private:
