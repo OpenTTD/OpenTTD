@@ -1464,6 +1464,8 @@ public:
 	static inline int sel_type; ///< Currently selected HouseID.
 	static inline int sel_view; ///< Currently selected 'view'. This is not controllable as its based on random data.
 
+	static inline bool house_protected; ///< Currently selected mode for whether the house placed will be protected from town upgrades.
+
 	/* Houses do not have classes like NewGRFClass. We'll make up fake classes based on town zone
 	 * availability instead. */
 	static inline const std::array<StringID, NUM_HOUSE_ZONES> zone_names = {
@@ -1510,6 +1512,9 @@ public:
 
 	int GetSelectedType() const override { return sel_type; }
 	void SetSelectedType(int id) const override { sel_type = id; }
+
+	bool GetHousePickerProtected() { return house_protected; }
+	void SetHousePickerProtected(bool make_protected) const { house_protected = make_protected; }
 
 	static HouseZone GetHouseZoneFromClassId(int cls_id) { return static_cast<HouseZone>(to_underlying(HouseZone::TownEdge) + cls_id); }
 	static int GetClassIdFromHouseZone(HouseZones zones) { return FindFirstBit((zones & HZ_ZONE_ALL).base()) - to_underlying(HouseZone::TownEdge); }
@@ -1628,7 +1633,6 @@ static CargoTypes GetProducedCargoOfHouse(const HouseSpec *hs)
 
 struct BuildHouseWindow : public PickerWindow {
 	std::string house_info{};
-	bool house_protected = false;
 
 	BuildHouseWindow(WindowDesc &desc, Window *parent) : PickerWindow(desc, parent, 0, HousePickerCallbacks::instance)
 	{
@@ -1735,9 +1739,9 @@ struct BuildHouseWindow : public PickerWindow {
 		switch (widget) {
 			case WID_BH_PROTECT_OFF:
 			case WID_BH_PROTECT_ON:
-				this->house_protected = (widget == WID_BH_PROTECT_ON);
-				this->SetWidgetLoweredState(WID_BH_PROTECT_OFF, !this->house_protected);
-				this->SetWidgetLoweredState(WID_BH_PROTECT_ON, this->house_protected);
+				HousePickerCallbacks::instance.SetHousePickerProtected(widget == WID_BH_PROTECT_ON);
+				this->SetWidgetLoweredState(WID_BH_PROTECT_OFF, !HousePickerCallbacks::instance.GetHousePickerProtected());
+				this->SetWidgetLoweredState(WID_BH_PROTECT_ON, HousePickerCallbacks::instance.GetHousePickerProtected());
 
 				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
@@ -1764,10 +1768,10 @@ struct BuildHouseWindow : public PickerWindow {
 
 		/* If house spec already has the protected flag, handle it automatically and disable the buttons. */
 		bool hasflag = spec->extra_flags.Test(HouseExtraFlag::BuildingIsProtected);
-		if (hasflag) this->house_protected = true;
+		if (hasflag) HousePickerCallbacks::instance.SetHousePickerProtected(true);
 
-		this->SetWidgetLoweredState(WID_BH_PROTECT_OFF, !this->house_protected);
-		this->SetWidgetLoweredState(WID_BH_PROTECT_ON, this->house_protected);
+		this->SetWidgetLoweredState(WID_BH_PROTECT_OFF, !HousePickerCallbacks::instance.GetHousePickerProtected());
+		this->SetWidgetLoweredState(WID_BH_PROTECT_ON, HousePickerCallbacks::instance.GetHousePickerProtected());
 
 		this->SetWidgetDisabledState(WID_BH_PROTECT_OFF, hasflag);
 		this->SetWidgetDisabledState(WID_BH_PROTECT_ON, hasflag);
@@ -1776,7 +1780,7 @@ struct BuildHouseWindow : public PickerWindow {
 	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
 	{
 		const HouseSpec *spec = HouseSpec::Get(HousePickerCallbacks::sel_type);
-		Command<CMD_PLACE_HOUSE>::Post(STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index(), this->house_protected);
+		Command<CMD_PLACE_HOUSE>::Post(STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index(), HousePickerCallbacks::instance.GetHousePickerProtected());
 	}
 
 	const IntervalTimer<TimerWindow> view_refresh_interval = {std::chrono::milliseconds(2500), [this](auto) {
