@@ -2235,9 +2235,9 @@ STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Ценные г
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Распределение прочих грузов: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :«Несимметричное» означает, что объёмы грузов в любых направлениях не будут зависеть друг от друга.{}«Вручную» - не использовать автоматическое распределение грузов.
 ###length 3
-STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :вручную
-STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :несимметричное
-STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :симметричное
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :Вручную
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :Несимметричное
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :Симметричное
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Точность распределения: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Чем выше данное значение, тем больше процессорного времени используется для расчёта графа грузоперевозок. При высоких значениях возможны задержки в игре. Однако при низких значениях расчёты грузопотоков будут неточными, и грузы, возможно, будут отправляться не туда, куда нужно.

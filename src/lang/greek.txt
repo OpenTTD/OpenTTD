@@ -2177,9 +2177,9 @@ STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Ο ΘΩΡΑΚΙ
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Τρόπος διανομής άλλων ειδών φορτίου: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :Το «ασυμμετρικό» σημαίνει ότι αυθαίρετες ποσότητες φορτίου μπορεί να σταλούν σε οποιαδήποτε εκ των δύο κατευθύνσεων. Το «χειροκίνητο» σημαίνει ότι καμία αυτόματη διανομή δε θα γίνεται για αυτά τα φορτία
 ###length 3
-STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :χειροκίνητη
-STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :μη συμμετρική
-STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :συμμετρική
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :Χειροκίνητη
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :Ασύμμετρη
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :Συμμετρική
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Ακρίβεια διανομής: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Όσο μεγαλύτερη ή τιμή αυτή, τόσο περισσότερος χρόνος επεξεργαστή θα χρειάζεται για τον υπολογισμό του γραφήματος συνδέσμου. Αν το ορίσετε πολύ ψηλά, ενδέχεται να παρατηρήσετε καθυστερήσεις. Εάν όμως θέσετε χαμηλή τιμή, η διανομή θα είναι ανακριβής και μπορεί να παρατηρήσετε φορτία να μην στέλνονται στους προορισμούς που θα έπρεπε να πηγαίνουν

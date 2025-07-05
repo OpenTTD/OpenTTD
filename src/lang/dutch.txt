@@ -1301,6 +1301,9 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Percentage rent
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Onderhoudskosten: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Het niveau van onderhoud en lopende kosten van voertuigen en infrastuctuur
 ###length 3
+STR_CONFIG_SETTING_RUNNING_COSTS_LOW                            :Laag
+STR_CONFIG_SETTING_RUNNING_COSTS_MEDIUM                         :Gemiddeld
+STR_CONFIG_SETTING_RUNNING_COSTS_HIGH                           :Hoog
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Bouwsnelheid: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Beperk de hoeveelheid bouwactiviteiten voor computerspeler
@@ -1323,6 +1326,9 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Geen subsidie
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Bouwkosten: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Het niveau van bouw- en aankoopkosten instellen
 ###length 3
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_LOW                       :Laag
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_MEDIUM                    :Gemiddeld
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Hoog
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessies: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Wanneer dit is ingeschakeld kunnen nu en dan recessies optreden. Tijdens een recessie is alle productie aanzienlijk lager (deze keert terug naar het vorige niveau als de recessie voorbij is).
