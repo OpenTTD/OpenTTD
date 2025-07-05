@@ -121,14 +121,14 @@ void CcPlaySound_CONSTRUCTION_OTHER(Commands, const CommandCost &result, TileInd
  * Callback to start placing a bridge.
  * @param tile Start tile of the bridge.
  */
-static void PlaceRoad_Bridge(TileIndex tile, Window *w)
+static void PlaceRoad_Bridge(bool query, TileIndex tile, Window *w)
 {
 	if (IsBridgeTile(tile)) {
 		TileIndex other_tile = GetOtherTunnelBridgeEnd(tile);
 		Point pt = {0, 0};
-		w->OnPlaceMouseUp(VPM_X_OR_Y, DDSP_BUILD_BRIDGE, pt, other_tile, tile);
+		if (!query) w->OnPlaceMouseUp(VPM_X_OR_Y, DDSP_BUILD_BRIDGE, pt, other_tile, tile, query);
 	} else {
-		VpStartPlaceSizing(tile, VPM_X_OR_Y, DDSP_BUILD_BRIDGE);
+		VpStartPlaceSizing(query, tile, VPM_X_OR_Y, DDSP_BUILD_BRIDGE);
 	}
 }
 
@@ -226,7 +226,7 @@ void CcRoadStop(Commands, const CommandCost &result, TileIndex tile, uint8_t wid
  * @param err_msg Error message to show.
  * @see CcRoadStop()
  */
-static void PlaceRoadStop(TileIndex start_tile, TileIndex end_tile, RoadStopType stop_type, bool adjacent, RoadType rt, StringID err_msg)
+static void PlaceRoadStop(bool query, TileIndex start_tile, TileIndex end_tile, RoadStopType stop_type, bool adjacent, RoadType rt, StringID err_msg)
 {
 	TileArea ta(start_tile, end_tile);
 	DiagDirection ddir = _roadstop_gui.orientation;
@@ -235,9 +235,15 @@ static void PlaceRoadStop(TileIndex start_tile, TileIndex end_tile, RoadStopType
 	RoadStopClassID spec_class = _roadstop_gui.sel_class;
 	uint16_t spec_index = _roadstop_gui.sel_type;
 
+	if (query) {
+		HandleSelectionQuery(Command<CMD_BUILD_ROAD_STOP>::Query(ta.tile, ta.w, ta.h, stop_type, drive_through,
+				ddir, rt, spec_class, spec_index, StationID::Invalid(), adjacent));
+		return;
+	}
+
 	auto proc = [=](bool test, StationID to_join) -> bool {
 		if (test) {
-			return Command<CMD_BUILD_ROAD_STOP>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_ROAD_STOP>()), ta.tile, ta.w, ta.h, stop_type, drive_through,
+			return Command<CMD_BUILD_ROAD_STOP>::Query(ta.tile, ta.w, ta.h, stop_type, drive_through,
 					ddir, rt, spec_class, spec_index, StationID::Invalid(), adjacent).Succeeded();
 		} else {
 			return Command<CMD_BUILD_ROAD_STOP>::Post(err_msg, CcRoadStop, ta.tile, ta.w, ta.h, stop_type, drive_through,
@@ -252,18 +258,20 @@ static void PlaceRoadStop(TileIndex start_tile, TileIndex end_tile, RoadStopType
  * Place a road waypoint.
  * @param tile Position to start dragging a waypoint.
  */
-static void PlaceRoad_Waypoint(TileIndex tile)
+static void PlaceRoad_Waypoint(bool query, TileIndex tile)
 {
 	if (_remove_button_clicked) {
-		VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_REMOVE_ROAD_WAYPOINT);
+		VpStartPlaceSizing(query, tile, VPM_X_AND_Y, DDSP_REMOVE_ROAD_WAYPOINT);
 		return;
 	}
 
 	Axis axis = GetAxisForNewRoadWaypoint(tile);
 	if (IsValidAxis(axis)) {
 		/* Valid tile for waypoints */
-		VpStartPlaceSizing(tile, axis == AXIS_X ? VPM_X_LIMITED : VPM_Y_LIMITED, DDSP_BUILD_ROAD_WAYPOINT);
+		VpStartPlaceSizing(query, tile, axis == AXIS_X ? VPM_X_LIMITED : VPM_Y_LIMITED, DDSP_BUILD_ROAD_WAYPOINT);
 		VpSetPlaceSizingLimit(_settings_game.station.station_spread);
+	} else if (query) {
+		SetSelectionRed(true);
 	} else {
 		/* Tile where we can't build road waypoints. This is always going to fail,
 		 * but provides the user with a proper error message. */
@@ -275,15 +283,15 @@ static void PlaceRoad_Waypoint(TileIndex tile)
  * Callback for placing a bus station.
  * @param tile Position to place the station.
  */
-static void PlaceRoad_BusStation(TileIndex tile)
+static void PlaceRoad_BusStation(bool query, TileIndex tile)
 {
 	if (_remove_button_clicked) {
-		VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_REMOVE_BUSSTOP);
+		VpStartPlaceSizing(query, tile, VPM_X_AND_Y, DDSP_REMOVE_BUSSTOP);
 	} else {
 		if (_roadstop_gui.orientation < DIAGDIR_END) { // Not a drive-through stop.
-			VpStartPlaceSizing(tile, (DiagDirToAxis(_roadstop_gui.orientation) == AXIS_X) ? VPM_X_LIMITED : VPM_Y_LIMITED, DDSP_BUILD_BUSSTOP);
+			VpStartPlaceSizing(query, tile, (DiagDirToAxis(_roadstop_gui.orientation) == AXIS_X) ? VPM_X_LIMITED : VPM_Y_LIMITED, DDSP_BUILD_BUSSTOP);
 		} else {
-			VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED, DDSP_BUILD_BUSSTOP);
+			VpStartPlaceSizing(query, tile, VPM_X_AND_Y_LIMITED, DDSP_BUILD_BUSSTOP);
 		}
 		VpSetPlaceSizingLimit(_settings_game.station.station_spread);
 	}
@@ -293,15 +301,15 @@ static void PlaceRoad_BusStation(TileIndex tile)
  * Callback for placing a truck station.
  * @param tile Position to place the station.
  */
-static void PlaceRoad_TruckStation(TileIndex tile)
+static void PlaceRoad_TruckStation(bool query, TileIndex tile)
 {
 	if (_remove_button_clicked) {
-		VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_REMOVE_TRUCKSTOP);
+		VpStartPlaceSizing(query, tile, VPM_X_AND_Y, DDSP_REMOVE_TRUCKSTOP);
 	} else {
 		if (_roadstop_gui.orientation < DIAGDIR_END) { // Not a drive-through stop.
-			VpStartPlaceSizing(tile, (DiagDirToAxis(_roadstop_gui.orientation) == AXIS_X) ? VPM_X_LIMITED : VPM_Y_LIMITED, DDSP_BUILD_TRUCKSTOP);
+			VpStartPlaceSizing(query, tile, (DiagDirToAxis(_roadstop_gui.orientation) == AXIS_X) ? VPM_X_LIMITED : VPM_Y_LIMITED, DDSP_BUILD_TRUCKSTOP);
 		} else {
-			VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED, DDSP_BUILD_TRUCKSTOP);
+			VpStartPlaceSizing(query, tile, VPM_X_AND_Y_LIMITED, DDSP_BUILD_TRUCKSTOP);
 		}
 		VpSetPlaceSizingLimit(_settings_game.station.station_spread);
 	}
@@ -602,7 +610,7 @@ struct BuildRoadToolbarWindow : Window {
 		return Window::OnHotkey(hotkey);
 	}
 
-	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile, bool query) override
 	{
 		_remove_button_clicked = this->IsWidgetLowered(WID_ROT_REMOVE);
 		_one_way_button_clicked = RoadTypeIsRoad(this->roadtype) ? this->IsWidgetLowered(WID_ROT_ONE_WAY) : false;
@@ -610,54 +618,54 @@ struct BuildRoadToolbarWindow : Window {
 			case WID_ROT_ROAD_X:
 				_place_road_dir = AXIS_X;
 				_place_road_start_half_x = _tile_fract_coords.x >= 8;
-				VpStartPlaceSizing(tile, VPM_FIX_Y, DDSP_PLACE_ROAD_X_DIR);
+				VpStartPlaceSizing(query, tile, VPM_FIX_Y, DDSP_PLACE_ROAD_X_DIR);
 				break;
 
 			case WID_ROT_ROAD_Y:
 				_place_road_dir = AXIS_Y;
 				_place_road_start_half_y = _tile_fract_coords.y >= 8;
-				VpStartPlaceSizing(tile, VPM_FIX_X, DDSP_PLACE_ROAD_Y_DIR);
+				VpStartPlaceSizing(query, tile, VPM_FIX_X, DDSP_PLACE_ROAD_Y_DIR);
 				break;
 
 			case WID_ROT_AUTOROAD:
 				_place_road_dir = INVALID_AXIS;
 				_place_road_start_half_x = _tile_fract_coords.x >= 8;
 				_place_road_start_half_y = _tile_fract_coords.y >= 8;
-				VpStartPlaceSizing(tile, VPM_X_OR_Y, DDSP_PLACE_AUTOROAD);
+				VpStartPlaceSizing(query, tile, VPM_X_OR_Y, DDSP_PLACE_AUTOROAD);
 				break;
 
 			case WID_ROT_DEMOLISH:
-				PlaceProc_DemolishArea(tile);
+				PlaceProc_DemolishArea(query, tile);
 				break;
 
 			case WID_ROT_DEPOT:
-				Command<CMD_BUILD_ROAD_DEPOT>::Post(GetRoadTypeInfo(this->roadtype)->strings.err_depot, CcRoadDepot,
+				Command<CMD_BUILD_ROAD_DEPOT>::PostOrQuery(query, GetRoadTypeInfo(this->roadtype)->strings.err_depot, CcRoadDepot,
 						tile, _cur_roadtype, _road_depot_orientation);
 				break;
 
 			case WID_ROT_BUILD_WAYPOINT:
-				PlaceRoad_Waypoint(tile);
+				PlaceRoad_Waypoint(query, tile);
 				break;
 
 			case WID_ROT_BUS_STATION:
-				PlaceRoad_BusStation(tile);
+				PlaceRoad_BusStation(query, tile);
 				break;
 
 			case WID_ROT_TRUCK_STATION:
-				PlaceRoad_TruckStation(tile);
+				PlaceRoad_TruckStation(query, tile);
 				break;
 
 			case WID_ROT_BUILD_BRIDGE:
-				PlaceRoad_Bridge(tile, this);
+				PlaceRoad_Bridge(query, tile, this);
 				break;
 
 			case WID_ROT_BUILD_TUNNEL:
-				Command<CMD_BUILD_TUNNEL>::Post(STR_ERROR_CAN_T_BUILD_TUNNEL_HERE, CcBuildRoadTunnel,
+				Command<CMD_BUILD_TUNNEL>::PostOrQuery(query, STR_ERROR_CAN_T_BUILD_TUNNEL_HERE, CcBuildRoadTunnel,
 						tile, TRANSPORT_ROAD, _cur_roadtype);
 				break;
 
 			case WID_ROT_CONVERT_ROAD:
-				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CONVERT_ROAD);
+				VpStartPlaceSizing(query, tile, VPM_X_AND_Y, DDSP_CONVERT_ROAD);
 				break;
 
 			default: NOT_REACHED();
@@ -724,18 +732,19 @@ struct BuildRoadToolbarWindow : Window {
 		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
 	}
 
-	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile) override
+	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile, bool query) override
 	{
 		if (pt.x != -1) {
 			switch (select_proc) {
 				default: NOT_REACHED();
 				case DDSP_BUILD_BRIDGE:
+					if (query) break;
 					if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 					ShowBuildBridgeWindow(start_tile, end_tile, TRANSPORT_ROAD, _cur_roadtype);
 					break;
 
 				case DDSP_DEMOLISH_AREA:
-					GUIPlaceProcDragXY(select_proc, start_tile, end_tile);
+					GUIPlaceProcDragXY(query, select_proc, start_tile, end_tile);
 					break;
 
 				case DDSP_PLACE_ROAD_X_DIR:
@@ -744,10 +753,10 @@ struct BuildRoadToolbarWindow : Window {
 					bool start_half = _place_road_dir == AXIS_Y ? _place_road_start_half_y : _place_road_start_half_x;
 
 					if (_remove_button_clicked) {
-						Command<CMD_REMOVE_LONG_ROAD>::Post(GetRoadTypeInfo(this->roadtype)->strings.err_remove_road, CcPlaySound_CONSTRUCTION_OTHER,
+						Command<CMD_REMOVE_LONG_ROAD>::PostOrQuery(query, GetRoadTypeInfo(this->roadtype)->strings.err_remove_road, CcPlaySound_CONSTRUCTION_OTHER,
 								end_tile, start_tile, _cur_roadtype, _place_road_dir, start_half, _place_road_end_half);
 					} else {
-						Command<CMD_BUILD_LONG_ROAD>::Post(GetRoadTypeInfo(this->roadtype)->strings.err_build_road, CcPlaySound_CONSTRUCTION_OTHER,
+						Command<CMD_BUILD_LONG_ROAD>::PostOrQuery(query, GetRoadTypeInfo(this->roadtype)->strings.err_build_road, CcPlaySound_CONSTRUCTION_OTHER,
 								end_tile, start_tile, _cur_roadtype, _place_road_dir, _one_way_button_clicked ? DRD_NORTHBOUND : DRD_NONE, start_half, _place_road_end_half, false);
 					}
 					break;
@@ -757,15 +766,20 @@ struct BuildRoadToolbarWindow : Window {
 				case DDSP_REMOVE_ROAD_WAYPOINT:
 					if (this->IsWidgetLowered(WID_ROT_BUILD_WAYPOINT)) {
 						if (_remove_button_clicked) {
-							Command<CMD_REMOVE_FROM_ROAD_WAYPOINT>::Post(STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT, CcPlaySound_CONSTRUCTION_OTHER, end_tile, start_tile);
+							Command<CMD_REMOVE_FROM_ROAD_WAYPOINT>::PostOrQuery(query, STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT, CcPlaySound_CONSTRUCTION_OTHER, end_tile, start_tile);
 						} else {
 							TileArea ta(start_tile, end_tile);
 							Axis axis = select_method == VPM_X_LIMITED ? AXIS_X : AXIS_Y;
 							bool adjacent = _ctrl_pressed;
 
+							if (query) {
+								HandleSelectionQuery(Command<CMD_BUILD_ROAD_WAYPOINT>::Query(ta.tile, axis, ta.w, ta.h, _waypoint_gui.sel_class, _waypoint_gui.sel_type, StationID::Invalid(), adjacent));
+								return;
+							}
+
 							auto proc = [=](bool test, StationID to_join) -> bool {
 								if (test) {
-									return Command<CMD_BUILD_ROAD_WAYPOINT>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_ROAD_WAYPOINT>()), ta.tile, axis, ta.w, ta.h, _waypoint_gui.sel_class, _waypoint_gui.sel_type, StationID::Invalid(), adjacent).Succeeded();
+									return Command<CMD_BUILD_ROAD_WAYPOINT>::Query(ta.tile, axis, ta.w, ta.h, _waypoint_gui.sel_class, _waypoint_gui.sel_type, StationID::Invalid(), adjacent).Succeeded();
 								} else {
 									return Command<CMD_BUILD_ROAD_WAYPOINT>::Post(STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT, CcPlaySound_CONSTRUCTION_OTHER, ta.tile, axis, ta.w, ta.h, _waypoint_gui.sel_class, _waypoint_gui.sel_type, to_join, adjacent);
 								}
@@ -782,10 +796,10 @@ struct BuildRoadToolbarWindow : Window {
 						if (_remove_button_clicked) {
 							TileArea ta(start_tile, end_tile);
 							StringID str = GetRoadTypeInfo(this->roadtype)->strings.err_remove_station[to_underlying(RoadStopType::Bus)];
-							Command<CMD_REMOVE_ROAD_STOP>::Post(str, CcPlaySound_CONSTRUCTION_OTHER, ta.tile, ta.w, ta.h, RoadStopType::Bus, _ctrl_pressed);
+							Command<CMD_REMOVE_ROAD_STOP>::PostOrQuery(query, str, CcPlaySound_CONSTRUCTION_OTHER, ta.tile, ta.w, ta.h, RoadStopType::Bus, _ctrl_pressed);
 						} else {
 							StringID str = GetRoadTypeInfo(this->roadtype)->strings.err_build_station[to_underlying(RoadStopType::Bus)];
-							PlaceRoadStop(start_tile, end_tile, RoadStopType::Bus, _ctrl_pressed, _cur_roadtype, str);
+							PlaceRoadStop(query, start_tile, end_tile, RoadStopType::Bus, _ctrl_pressed, _cur_roadtype, str);
 						}
 					}
 					break;
@@ -796,16 +810,16 @@ struct BuildRoadToolbarWindow : Window {
 						if (_remove_button_clicked) {
 							TileArea ta(start_tile, end_tile);
 							StringID str = GetRoadTypeInfo(this->roadtype)->strings.err_remove_station[to_underlying(RoadStopType::Truck)];
-							Command<CMD_REMOVE_ROAD_STOP>::Post(str, CcPlaySound_CONSTRUCTION_OTHER, ta.tile, ta.w, ta.h, RoadStopType::Truck, _ctrl_pressed);
+							Command<CMD_REMOVE_ROAD_STOP>::PostOrQuery(query, str, CcPlaySound_CONSTRUCTION_OTHER, ta.tile, ta.w, ta.h, RoadStopType::Truck, _ctrl_pressed);
 						} else {
 							StringID str = GetRoadTypeInfo(this->roadtype)->strings.err_build_station[to_underlying(RoadStopType::Truck)];
-							PlaceRoadStop(start_tile, end_tile, RoadStopType::Truck, _ctrl_pressed, _cur_roadtype, str);
+							PlaceRoadStop(query, start_tile, end_tile, RoadStopType::Truck, _ctrl_pressed, _cur_roadtype, str);
 						}
 					}
 					break;
 
 				case DDSP_CONVERT_ROAD:
-					Command<CMD_CONVERT_ROAD>::Post(GetRoadTypeInfo(this->roadtype)->strings.err_convert_road, CcPlaySound_CONSTRUCTION_OTHER, end_tile, start_tile, _cur_roadtype, _ctrl_pressed);
+					Command<CMD_CONVERT_ROAD>::PostOrQuery(query, GetRoadTypeInfo(this->roadtype)->strings.err_convert_road, CcPlaySound_CONSTRUCTION_OTHER, end_tile, start_tile, _cur_roadtype, _ctrl_pressed);
 					break;
 			}
 		}

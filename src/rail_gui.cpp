@@ -75,7 +75,7 @@ struct StationPickerSelection {
 static StationPickerSelection _station_gui; ///< Settings of the station picker.
 
 
-static void HandleStationPlacement(TileIndex start, TileIndex end);
+static void HandleStationPlacement(bool query, TileIndex start, TileIndex end);
 static void ShowBuildTrainDepotPicker(Window *parent);
 static void ShowBuildWaypointPicker(Window *parent);
 static Window *ShowStationBuilder(Window *parent);
@@ -166,18 +166,20 @@ void CcRailDepot(Commands, const CommandCost &result, TileIndex tile, RailType, 
  * Place a rail waypoint.
  * @param tile Position to start dragging a waypoint.
  */
-static void PlaceRail_Waypoint(TileIndex tile)
+static void PlaceRail_Waypoint(bool query, TileIndex tile)
 {
 	if (_remove_button_clicked) {
-		VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_REMOVE_STATION);
+		VpStartPlaceSizing(query, tile, VPM_X_AND_Y, DDSP_REMOVE_STATION);
 		return;
 	}
 
 	Axis axis = GetAxisForNewRailWaypoint(tile);
 	if (IsValidAxis(axis)) {
 		/* Valid tile for waypoints */
-		VpStartPlaceSizing(tile, axis == AXIS_X ? VPM_X_LIMITED : VPM_Y_LIMITED, DDSP_BUILD_STATION);
+		VpStartPlaceSizing(query, tile, axis == AXIS_X ? VPM_X_LIMITED : VPM_Y_LIMITED, DDSP_BUILD_STATION);
 		VpSetPlaceSizingLimit(_settings_game.station.station_spread);
+	} else if (query) {
+		SetSelectionRed(true);
 	} else {
 		/* Tile where we can't build rail waypoints. This is always going to fail,
 		 * but provides the user with a proper error message. */
@@ -198,13 +200,13 @@ void CcStation(Commands, const CommandCost &result, TileIndex tile)
  * Place a rail station.
  * @param tile Position to place or start dragging a station.
  */
-static void PlaceRail_Station(TileIndex tile)
+static void PlaceRail_Station(bool query, TileIndex tile)
 {
 	if (_remove_button_clicked) {
-		VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED, DDSP_REMOVE_STATION);
+		VpStartPlaceSizing(query, tile, VPM_X_AND_Y_LIMITED, DDSP_REMOVE_STATION);
 		VpSetPlaceSizingLimit(-1);
 	} else if (_settings_client.gui.station_dragdrop) {
-		VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED, DDSP_BUILD_STATION);
+		VpStartPlaceSizing(query, tile, VPM_X_AND_Y_LIMITED, DDSP_BUILD_STATION);
 		VpSetPlaceSizingLimit(_settings_game.station.station_spread);
 	} else {
 		int w = _settings_client.gui.station_numtracks;
@@ -217,9 +219,14 @@ static void PlaceRail_Station(TileIndex tile)
 		uint8_t platlength = _settings_client.gui.station_platlength;
 		bool adjacent = _ctrl_pressed;
 
+		if (query) {
+			HandleSelectionQuery(Command<CMD_BUILD_RAIL_STATION>::Query(tile, rt, params.axis, numtracks, platlength, params.sel_class, params.sel_type, StationID::Invalid(), adjacent));
+			return;
+		}
+
 		auto proc = [=](bool test, StationID to_join) -> bool {
 			if (test) {
-				return Command<CMD_BUILD_RAIL_STATION>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_RAIL_STATION>()), tile, rt, params.axis, numtracks, platlength, params.sel_class, params.sel_type, StationID::Invalid(), adjacent).Succeeded();
+				return Command<CMD_BUILD_RAIL_STATION>::Query(tile, rt, params.axis, numtracks, platlength, params.sel_class, params.sel_type, StationID::Invalid(), adjacent).Succeeded();
 			} else {
 				return Command<CMD_BUILD_RAIL_STATION>::Post(STR_ERROR_CAN_T_BUILD_RAILROAD_STATION, CcStation, tile, rt, params.axis, numtracks, platlength, params.sel_class, params.sel_type, to_join, adjacent);
 			}
@@ -292,14 +299,14 @@ static void GenericPlaceSignals(TileIndex tile)
  * @param tile Position of the first tile of the bridge.
  * @param w    Rail toolbar window.
  */
-static void PlaceRail_Bridge(TileIndex tile, Window *w)
+static void PlaceRail_Bridge(bool query, TileIndex tile, Window *w)
 {
 	if (IsBridgeTile(tile)) {
 		TileIndex other_tile = GetOtherTunnelBridgeEnd(tile);
 		Point pt = {0, 0};
-		w->OnPlaceMouseUp(VPM_X_OR_Y, DDSP_BUILD_BRIDGE, pt, other_tile, tile);
+		if (!query) w->OnPlaceMouseUp(VPM_X_OR_Y, DDSP_BUILD_BRIDGE, pt, other_tile, tile, query);
 	} else {
-		VpStartPlaceSizing(tile, VPM_X_OR_Y, DDSP_BUILD_BRIDGE);
+		VpStartPlaceSizing(query, tile, VPM_X_OR_Y, DDSP_BUILD_BRIDGE);
 	}
 }
 
@@ -662,59 +669,59 @@ struct BuildRailToolbarWindow : Window {
 		return Window::OnHotkey(hotkey);
 	}
 
-	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile, bool query) override
 	{
 		switch (this->last_user_action) {
 			case WID_RAT_BUILD_NS:
-				VpStartPlaceSizing(tile, VPM_FIX_VERTICAL | VPM_RAILDIRS, DDSP_PLACE_RAIL);
+				VpStartPlaceSizing(query, tile, VPM_FIX_VERTICAL | VPM_RAILDIRS, DDSP_PLACE_RAIL);
 				break;
 
 			case WID_RAT_BUILD_X:
-				VpStartPlaceSizing(tile, VPM_FIX_Y | VPM_RAILDIRS, DDSP_PLACE_RAIL);
+				VpStartPlaceSizing(query, tile, VPM_FIX_Y | VPM_RAILDIRS, DDSP_PLACE_RAIL);
 				break;
 
 			case WID_RAT_BUILD_EW:
-				VpStartPlaceSizing(tile, VPM_FIX_HORIZONTAL | VPM_RAILDIRS, DDSP_PLACE_RAIL);
+				VpStartPlaceSizing(query, tile, VPM_FIX_HORIZONTAL | VPM_RAILDIRS, DDSP_PLACE_RAIL);
 				break;
 
 			case WID_RAT_BUILD_Y:
-				VpStartPlaceSizing(tile, VPM_FIX_X | VPM_RAILDIRS, DDSP_PLACE_RAIL);
+				VpStartPlaceSizing(query, tile, VPM_FIX_X | VPM_RAILDIRS, DDSP_PLACE_RAIL);
 				break;
 
 			case WID_RAT_AUTORAIL:
-				VpStartPlaceSizing(tile, VPM_RAILDIRS, DDSP_PLACE_RAIL);
+				VpStartPlaceSizing(query, tile, VPM_RAILDIRS, DDSP_PLACE_RAIL);
 				break;
 
 			case WID_RAT_DEMOLISH:
-				PlaceProc_DemolishArea(tile);
+				PlaceProc_DemolishArea(query, tile);
 				break;
 
 			case WID_RAT_BUILD_DEPOT:
-				Command<CMD_BUILD_TRAIN_DEPOT>::Post(STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT, CcRailDepot, tile, _cur_railtype, _build_depot_direction);
+				Command<CMD_BUILD_TRAIN_DEPOT>::PostOrQuery(query, STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT, CcRailDepot, tile, _cur_railtype, _build_depot_direction);
 				break;
 
 			case WID_RAT_BUILD_WAYPOINT:
-				PlaceRail_Waypoint(tile);
+				PlaceRail_Waypoint(query, tile);
 				break;
 
 			case WID_RAT_BUILD_STATION:
-				PlaceRail_Station(tile);
+				PlaceRail_Station(query, tile);
 				break;
 
 			case WID_RAT_BUILD_SIGNALS:
-				VpStartPlaceSizing(tile, VPM_SIGNALDIRS, DDSP_BUILD_SIGNALS);
+				VpStartPlaceSizing(query, tile, VPM_SIGNALDIRS, DDSP_BUILD_SIGNALS);
 				break;
 
 			case WID_RAT_BUILD_BRIDGE:
-				PlaceRail_Bridge(tile, this);
+				PlaceRail_Bridge(query, tile, this);
 				break;
 
 			case WID_RAT_BUILD_TUNNEL:
-				Command<CMD_BUILD_TUNNEL>::Post(STR_ERROR_CAN_T_BUILD_TUNNEL_HERE, CcBuildRailTunnel, tile, TRANSPORT_RAIL, _cur_railtype);
+				Command<CMD_BUILD_TUNNEL>::PostOrQuery(query, STR_ERROR_CAN_T_BUILD_TUNNEL_HERE, CcBuildRailTunnel, tile, TRANSPORT_RAIL, _cur_railtype);
 				break;
 
 			case WID_RAT_CONVERT_RAIL:
-				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CONVERT_RAIL);
+				VpStartPlaceSizing(query, tile, VPM_X_AND_Y, DDSP_CONVERT_RAIL);
 				break;
 
 			default: NOT_REACHED();
@@ -729,30 +736,31 @@ struct BuildRailToolbarWindow : Window {
 		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
 	}
 
-	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile) override
+	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile, bool query) override
 	{
 		if (pt.x != -1) {
 			switch (select_proc) {
 				default: NOT_REACHED();
 				case DDSP_BUILD_BRIDGE:
+					if (query) return;
 					if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 					ShowBuildBridgeWindow(start_tile, end_tile, TRANSPORT_RAIL, _cur_railtype);
 					break;
 
 				case DDSP_PLACE_RAIL:
-					HandleAutodirPlacement();
+					if (!query) HandleAutodirPlacement();
 					break;
 
 				case DDSP_BUILD_SIGNALS:
-					HandleAutoSignalPlacement();
+					if (!query) HandleAutoSignalPlacement();
 					break;
 
 				case DDSP_DEMOLISH_AREA:
-					GUIPlaceProcDragXY(select_proc, start_tile, end_tile);
+					GUIPlaceProcDragXY(query, select_proc, start_tile, end_tile);
 					break;
 
 				case DDSP_CONVERT_RAIL:
-					Command<CMD_CONVERT_RAIL>::Post(STR_ERROR_CAN_T_CONVERT_RAIL, CcPlaySound_CONSTRUCTION_RAIL, end_tile, start_tile, _cur_railtype, _ctrl_pressed);
+					Command<CMD_CONVERT_RAIL>::PostOrQuery(query, STR_ERROR_CAN_T_CONVERT_RAIL, CcPlaySound_CONSTRUCTION_RAIL, end_tile, start_tile, _cur_railtype, _ctrl_pressed);
 					break;
 
 				case DDSP_REMOVE_STATION:
@@ -761,23 +769,28 @@ struct BuildRailToolbarWindow : Window {
 						/* Station */
 						if (_remove_button_clicked) {
 							bool keep_rail = !_ctrl_pressed;
-							Command<CMD_REMOVE_FROM_RAIL_STATION>::Post(STR_ERROR_CAN_T_REMOVE_PART_OF_STATION, CcPlaySound_CONSTRUCTION_RAIL, end_tile, start_tile, keep_rail);
+							Command<CMD_REMOVE_FROM_RAIL_STATION>::PostOrQuery(query, STR_ERROR_CAN_T_REMOVE_PART_OF_STATION, CcPlaySound_CONSTRUCTION_RAIL, end_tile, start_tile, keep_rail);
 						} else {
-							HandleStationPlacement(start_tile, end_tile);
+							HandleStationPlacement(query, start_tile, end_tile);
 						}
 					} else {
 						/* Waypoint */
 						if (_remove_button_clicked) {
 							bool keep_rail = !_ctrl_pressed;
-							Command<CMD_REMOVE_FROM_RAIL_WAYPOINT>::Post(STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT, CcPlaySound_CONSTRUCTION_RAIL, end_tile, start_tile, keep_rail);
+							Command<CMD_REMOVE_FROM_RAIL_WAYPOINT>::PostOrQuery(query, STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT, CcPlaySound_CONSTRUCTION_RAIL, end_tile, start_tile, keep_rail);
 						} else {
 							TileArea ta(start_tile, end_tile);
 							Axis axis = select_method == VPM_X_LIMITED ? AXIS_X : AXIS_Y;
 							bool adjacent = _ctrl_pressed;
 
+							if (query) {
+								HandleSelectionQuery(Command<CMD_BUILD_RAIL_WAYPOINT>::Query(ta.tile, axis, ta.w, ta.h, _waypoint_gui.sel_class, _waypoint_gui.sel_type, StationID::Invalid(), adjacent));
+								return;
+							}
+
 							auto proc = [=](bool test, StationID to_join) -> bool {
 								if (test) {
-									return Command<CMD_BUILD_RAIL_WAYPOINT>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_RAIL_WAYPOINT>()), ta.tile, axis, ta.w, ta.h, _waypoint_gui.sel_class, _waypoint_gui.sel_type, StationID::Invalid(), adjacent).Succeeded();
+									return Command<CMD_BUILD_RAIL_WAYPOINT>::Query(ta.tile, axis, ta.w, ta.h, _waypoint_gui.sel_class, _waypoint_gui.sel_type, StationID::Invalid(), adjacent).Succeeded();
 								} else {
 									return Command<CMD_BUILD_RAIL_WAYPOINT>::Post(STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT, CcPlaySound_CONSTRUCTION_RAIL, ta.tile, axis, ta.w, ta.h, _waypoint_gui.sel_class, _waypoint_gui.sel_type, to_join, adjacent);
 								}
@@ -930,7 +943,7 @@ Window *ShowBuildRailToolbar(RailType railtype)
 /* TODO: For custom stations, respect their allowed platforms/lengths bitmasks!
  * --pasky */
 
-static void HandleStationPlacement(TileIndex start, TileIndex end)
+static void HandleStationPlacement(bool query, TileIndex start, TileIndex end)
 {
 	TileArea ta(start, end);
 	uint numtracks = ta.w;
@@ -942,9 +955,14 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 	RailType rt = _cur_railtype;
 	bool adjacent = _ctrl_pressed;
 
+	if (query) {
+		HandleSelectionQuery(Command<CMD_BUILD_RAIL_STATION>::Query(ta.tile, rt, params.axis, numtracks, platlength, params.sel_class, params.sel_type, StationID::Invalid(), adjacent));
+		return;
+	}
+
 	auto proc = [=](bool test, StationID to_join) -> bool {
 		if (test) {
-			return Command<CMD_BUILD_RAIL_STATION>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_RAIL_STATION>()), ta.tile, rt, params.axis, numtracks, platlength, params.sel_class, params.sel_type, StationID::Invalid(), adjacent).Succeeded();
+			return Command<CMD_BUILD_RAIL_STATION>::Query(ta.tile, rt, params.axis, numtracks, platlength, params.sel_class, params.sel_type, StationID::Invalid(), adjacent).Succeeded();
 		} else {
 			return Command<CMD_BUILD_RAIL_STATION>::Post(STR_ERROR_CAN_T_BUILD_RAILROAD_STATION, CcStation, ta.tile, rt, params.axis, numtracks, platlength, params.sel_class, params.sel_type, to_join, adjacent);
 		}

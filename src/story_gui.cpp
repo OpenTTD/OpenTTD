@@ -888,8 +888,10 @@ public:
 		this->SetWidgetDirty(WID_SB_PAGE_PANEL);
 	}
 
-	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile, bool query) override
 	{
+		if (query) return;
+
 		const StoryPageElement *const pe = StoryPageElement::GetIfValid(this->active_button_id);
 		if (pe == nullptr || pe->type != SPET_BUTTON_TILE) {
 			ResetObjectToPlace();

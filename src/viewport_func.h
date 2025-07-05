@@ -59,7 +59,7 @@ std::string *ViewportAddString(const DrawPixelInfo *dpi, const ViewportSign *sig
 void StartSpriteCombine();
 void EndSpriteCombine();
 
-bool HandleViewportClicked(const Viewport &vp, int x, int y);
+bool HandleViewportClicked(const Viewport &vp, int x, int y, bool query);
 void SetRedErrorSquare(TileIndex tile);
 void SetTileSelectSize(int w, int h);
 void SetTileSelectBigSize(int ox, int oy, int sx, int sy);

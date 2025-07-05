@@ -114,7 +114,8 @@ void CcPlaceSign(Commands, const CommandCost &result, SignID new_sign)
  *  sign-tool is selected
  * @param tile on which to place the sign
  */
-void PlaceProc_Sign(TileIndex tile)
+void PlaceProc_Sign(bool query, TileIndex tile)
 {
+	if (query) return;
 	Command<CMD_PLACE_SIGN>::Post(STR_ERROR_CAN_T_PLACE_SIGN_HERE, CcPlaceSign, tile, {});
 }
