@@ -11,6 +11,7 @@
 #define INDUSTRY_H
 
 #include "core/flatset_type.hpp"
+#include "misc/history_type.hpp"
 #include "newgrf_storage.h"
 #include "subsidy_type.h"
 #include "industry_map.h"
@@ -55,9 +56,6 @@ enum class IndustryControlFlag : uint8_t {
 };
 using IndustryControlFlags = EnumBitSet<IndustryControlFlag, uint8_t, IndustryControlFlag::End>;
 
-static const int THIS_MONTH = 0;
-static const int LAST_MONTH = 1;
-
 /**
  * Defines the internal data of a functional industry.
  */
@@ -72,18 +70,24 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 			return ClampTo<uint8_t>(this->transported * 256 / this->production);
 		}
 	};
-
 	struct ProducedCargo {
 		CargoType cargo = 0; ///< Cargo type
 		uint16_t waiting = 0; ///< Amount of cargo produced
 		uint8_t rate = 0; ///< Production rate
-		std::array<ProducedHistory, 25> history{}; ///< History of cargo produced and transported for this month and 24 previous months
+		HistoryData<ProducedHistory> history{}; ///< History of cargo produced and transported for this month and 24 previous months
+	};
+
+	struct AcceptedHistory {
+		uint16_t accepted = 0; /// Total accepted.
+		uint16_t waiting = 0; /// Average waiting.
 	};
 
 	struct AcceptedCargo {
 		CargoType cargo = 0; ///< Cargo type
 		uint16_t waiting = 0; ///< Amount of cargo waiting to processed
+		uint32_t accumulated_waiting = 0; ///< Accumulated waiting total over the last month, used to calculate average.
 		TimerGameEconomy::Date last_accepted{}; ///< Last day cargo was accepted by this industry
+		HistoryData<AcceptedHistory> history{}; ///< History of accepted and waiting cargo.
 	};
 
 	using ProducedCargoes = std::vector<ProducedCargo>;
