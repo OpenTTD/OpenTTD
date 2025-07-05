@@ -330,7 +330,7 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 	SetCurrentRailTypeLabelList();
 	SetCurrentRoadTypeLabelList();
 	InitializeBuildingCounts();
-	LoadStringWidthTable();
+	LoadStringWidthTable(FONTSIZES_REQUIRED);
 
 	/* Re-init the windowing system */
 	ResetWindowSystem();

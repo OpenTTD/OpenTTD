@@ -534,11 +534,11 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 		 * another size would be chosen it won't have truncated too little for
 		 * the truncation dots.
 		 */
-		FontCache *fc = line.GetVisualRun(0).GetFont()->fc;
-		dot_has_shadow = fc->GetDrawGlyphShadow();
-		GlyphID dot_glyph = fc->MapCharToGlyph('.');
-		dot_width = fc->GetGlyphWidth(dot_glyph);
-		dot_sprite = fc->GetGlyph(dot_glyph);
+		FontCache &fc = line.GetVisualRun(0).GetFont()->GetFontCache();
+		dot_has_shadow = fc.GetDrawGlyphShadow();
+		GlyphID dot_glyph = fc.MapCharToGlyph('.');
+		dot_width = fc.GetGlyphWidth(dot_glyph);
+		dot_sprite = fc.GetGlyph(dot_glyph);
 
 		/* Is there enough space even for an ellipsis? */
 		if (max_w < dot_width * 3) return (_current_text_dir == TD_RTL) ? left : right;
@@ -592,12 +592,12 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 			const auto &positions = run.GetPositions();
 			const Font *f = run.GetFont();
 
-			FontCache *fc = f->fc;
+			FontCache &fc = f->GetFontCache();
 			TextColour colour = f->colour;
 			if (colour == TC_INVALID || HasFlag(default_colour, TC_FORCED)) colour = default_colour;
 			colour_has_shadow = (colour & TC_NO_SHADE) == 0 && colour != TC_BLACK;
 			SetColourRemap(do_shadow ? TC_BLACK : colour); // the last run also sets the colour for the truncation dots
-			if (do_shadow && (!fc->GetDrawGlyphShadow() || !colour_has_shadow)) continue;
+			if (do_shadow && (!fc.GetDrawGlyphShadow() || !colour_has_shadow)) continue;
 
 			DrawPixelInfo *dpi = _cur_dpi;
 			int dpi_left  = dpi->left;
@@ -615,13 +615,10 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 
 				/* Truncated away. */
 				if (truncation && (begin_x < min_x || end_x > max_x)) continue;
+				/* Outside the clipping area. */
+				if (begin_x > dpi_right || end_x < dpi_left) continue;
 
-				const Sprite *sprite = fc->GetGlyph(glyph);
-				/* Check clipping (the "+ 1" is for the shadow). */
-				if (begin_x + sprite->x_offs > dpi_right || begin_x + sprite->x_offs + sprite->width /* - 1 + 1 */ < dpi_left) continue;
-
-				if (do_shadow && (glyph & SPRITE_GLYPH) != 0) continue;
-
+				const Sprite *sprite = fc.GetGlyph(glyph);
 				GfxMainBlitter(sprite, begin_x + (do_shadow ? shadow_offset : 0), top + (do_shadow ? shadow_offset : 0), BlitterMode::ColourRemap);
 			}
 		}
@@ -1246,11 +1243,11 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode,
  * Initialize _stringwidth_table cache
  * @param monospace Whether to load the monospace cache or the normal fonts.
  */
-void LoadStringWidthTable(bool monospace)
+void LoadStringWidthTable(FontSizes fontsizes)
 {
-	ClearFontCache();
+	FontCache::ClearFontCaches(fontsizes);
 
-	for (FontSize fs = monospace ? FS_MONO : FS_BEGIN; fs < (monospace ? FS_END : FS_MONO); fs++) {
+	for (FontSize fs : fontsizes) {
 		for (uint i = 0; i != 224; i++) {
 			_stringwidth_table[fs][i] = GetGlyphWidth(fs, i + 32);
 		}
@@ -1815,8 +1812,8 @@ bool AdjustGUIZoom(bool automatic)
 	if (old_font_zoom != _font_zoom) {
 		GfxClearFontSpriteCache();
 	}
-	ClearFontCache();
-	LoadStringWidthTable();
+	FontCache::ClearFontCaches(FONTSIZES_ALL);
+	LoadStringWidthTable(FONTSIZES_REQUIRED);
 
 	SetupWidgetDimensions();
 	UpdateAllVirtCoords();

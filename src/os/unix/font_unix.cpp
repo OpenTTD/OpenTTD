@@ -11,16 +11,16 @@
 
 #include "../../misc/autorelease.hpp"
 #include "../../debug.h"
-#include "../../fontdetection.h"
+#include "../../fontcache.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
+#include "font_unix.h"
 
 #include <fontconfig/fontconfig.h>
-
-#include "../../safeguards.h"
-
 #include <ft2build.h>
 #include FT_FREETYPE_H
+
+#include "../../safeguards.h"
 
 extern FT_Library _ft_library;
 
@@ -61,6 +61,12 @@ static std::tuple<std::string, std::string> SplitFontFamilyAndStyle(std::string_
 	return { std::string(font_name.substr(0, separator)), std::string(font_name.substr(begin)) };
 }
 
+/**
+ * Load a freetype font face with the given font name.
+ * @param font_name The name of the font to load.
+ * @param face The face that has been found.
+ * @return The error we encountered.
+ */
 FT_Error GetFontByFaceName(std::string_view font_name, FT_Face *face)
 {
 	FT_Error err = FT_Err_Cannot_Open_Resource;
@@ -114,10 +120,14 @@ FT_Error GetFontByFaceName(std::string_view font_name, FT_Face *face)
 		}
 	}
 
+	if (err != FT_Err_Ok) {
+		ShowInfo("Unable to find '{}' font", font_name);
+	}
+
 	return err;
 }
 
-bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, MissingGlyphSearcher *callback)
+bool FontConfigFindFallbackFont(const std::string &language_isocode, FontSizes fontsizes, MissingGlyphSearcher *callback)
 {
 	bool ret = false;
 
@@ -126,22 +136,25 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 	auto fc_instance = AutoRelease<FcConfig, FcConfigDestroy>(FcConfigReference(nullptr));
 	assert(fc_instance != nullptr);
 
+	/* Get set of required characters. XXX Do we know what font size we want here? */
+	auto chars = callback->GetRequiredGlyphs(fontsizes);
+
 	/* Fontconfig doesn't handle full language isocodes, only the part
 	 * before the _ of e.g. en_GB is used, so "remove" everything after
 	 * the _. */
-	std::string lang = fmt::format(":lang={}", language_isocode.substr(0, language_isocode.find('_')));
+	std::string lang = language_isocode.empty() ? "" : fmt::format(":lang={}", language_isocode.substr(0, language_isocode.find('_')));
 
 	/* First create a pattern to match the wanted language. */
 	auto pat = AutoRelease<FcPattern, FcPatternDestroy>(FcNameParse(ToFcString(lang)));
 	/* We only want to know these attributes. */
-	auto os = AutoRelease<FcObjectSet, FcObjectSetDestroy>(FcObjectSetBuild(FC_FILE, FC_INDEX, FC_SPACING, FC_SLANT, FC_WEIGHT, nullptr));
+	auto os = AutoRelease<FcObjectSet, FcObjectSetDestroy>(FcObjectSetBuild(FC_FILE, FC_INDEX, FC_SPACING, FC_SLANT, FC_WEIGHT, FC_CHARSET, nullptr));
 	/* Get the list of filenames matching the wanted language. */
 	auto fs = AutoRelease<FcFontSet, FcFontSetDestroy>(FcFontList(nullptr, pat.get(), os.get()));
 
 	if (fs == nullptr) return ret;
 
 	int best_weight = -1;
-	const char *best_font = nullptr;
+	std::string best_font;
 	int best_index = 0;
 
 	for (FcPattern *font : std::span(fs->fonts, fs->nfont)) {
@@ -152,7 +165,7 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 		/* Get a font with the right spacing .*/
 		int value = 0;
 		FcPatternGetInteger(font, FC_SPACING, 0, &value);
-		if (callback->Monospace() != (value == FC_MONO) && value != FC_DUAL) continue;
+		if (fontsizes.Test(FS_MONO) != (value == FC_MONO) && value != FC_DUAL) continue;
 
 		/* Do not use those that explicitly say they're slanted. */
 		FcPatternGetInteger(font, FC_SLANT, 0, &value);
@@ -162,26 +175,32 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 		FcPatternGetInteger(font, FC_WEIGHT, 0, &value);
 		if (value <= best_weight) continue;
 
+		size_t matching_chars = 0;
+		FcCharSet *charset;
+		FcPatternGetCharSet(font, FC_CHARSET, 0, &charset);
+		for (const char32_t &c : chars) {
+			if (FcCharSetHasChar(charset, c)) ++matching_chars;
+		}
+
+		if (matching_chars < chars.size()) {
+			// Debug(fontcache, 0, "Font \"{}\" misses {} glyphs", (char *)file, chars.size() - matching_chars);
+			continue;
+		}
+
 		/* Possible match based on attributes, get index. */
 		int32_t index;
 		res = FcPatternGetInteger(font, FC_INDEX, 0, &index);
 		if (res != FcResultMatch) continue;
 
-		callback->SetFontNames(settings, FromFcString(file), &index);
-
-		bool missing = callback->FindMissingGlyphs();
-		Debug(fontcache, 1, "Font \"{}\" misses{} glyphs", FromFcString(file), missing ? "" : " no");
-
-		if (!missing) {
-			best_weight = value;
-			best_font = FromFcString(file);
-			best_index = index;
-		}
+		best_weight = value;
+		best_font = FromFcString(file);
+		best_index = index;
 	}
 
-	if (best_font == nullptr) return false;
+	if (best_font.empty()) return false;
 
-	callback->SetFontNames(settings, best_font, &best_index);
-	InitFontCache(callback->Monospace());
+	FontCache::AddFallback(fontsizes, best_font, best_index);
+	FontCache::LoadFontCaches(fontsizes);
+
 	return true;
 }
