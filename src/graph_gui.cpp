@@ -8,6 +8,7 @@
 /** @file graph_gui.cpp GUI that shows performance graphs. */
 
 #include "stdafx.h"
+#include "misc/history_func.hpp"
 #include "graph_gui.h"
 #include "window_gui.h"
 #include "company_base.h"
@@ -181,8 +182,9 @@ protected:
 	static const int MIN_GRAPH_NUM_LINES_Y  =   9; ///< Minimal number of horizontal lines to draw.
 	static const int MIN_GRID_PIXEL_SIZE    =  20; ///< Minimum distance between graph lines.
 
-	uint64_t excluded_data = 0; ///< bitmask of the datasets that shouldn't be displayed.
-	uint64_t excluded_range = 0; ///< bitmask of ranges that should not be displayed.
+	uint64_t excluded_data = 0; ///< bitmask of datasets hidden by the player.
+	uint64_t excluded_range = 0; ///< bitmask of ranges hidden by the player.
+	uint64_t masked_range = 0; ///< bitmask of ranges that are not available for the current data.
 	uint8_t num_on_x_axis = 0;
 	uint8_t num_vert_lines = GRAPH_NUM_MONTHS;
 
@@ -214,6 +216,14 @@ protected:
 	uint8_t highlight_data = UINT8_MAX; ///< Data set that should be highlighted, or UINT8_MAX for none.
 	uint8_t highlight_range = UINT8_MAX; ///< Data range that should be highlighted, or UINT8_MAX for none.
 	bool highlight_state = false; ///< Current state of highlight, toggled every TIMER_BLINK_INTERVAL period.
+
+	template <typename Tprojection>
+	struct Filler {
+		DataSet &dataset; ///< Dataset to fill.
+		const Tprojection &proj; ///< Projection to apply.
+
+		inline void Fill(uint i, const auto &data) const { this->dataset.values[i] = std::invoke(this->proj, data); }
+	};
 
 	/**
 	 * Get appropriate part of dataset values for the current number of horizontal points.
@@ -663,13 +673,17 @@ public:
 				uint index = 0;
 				Rect line = r.WithHeight(line_height);
 				for (const auto &str : this->ranges) {
-					bool lowered = !HasBit(this->excluded_range, index);
+					bool lowered = !HasBit(this->excluded_range, index) && !HasBit(this->masked_range, index);
 
 					/* Redraw frame if lowered */
 					if (lowered) DrawFrameRect(line, COLOUR_BROWN, FrameFlag::Lowered);
 
 					const Rect text = line.Shrink(WidgetDimensions::scaled.framerect);
-					DrawString(text, str, TC_BLACK, SA_CENTER, false, FS_SMALL);
+					DrawString(text, str, (this->highlight_state && this->highlight_range == index) ? TC_WHITE : TC_BLACK, SA_CENTER, false, FS_SMALL);
+
+					if (HasBit(this->masked_range, index)) {
+						GfxFillRect(line.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(COLOUR_BROWN, SHADE_DARKER), FILLRECT_CHECKER);
+					}
 
 					line = line.Translate(0, line_height);
 					++index;
@@ -692,6 +706,7 @@ public:
 			case WID_GRAPH_RANGE_MATRIX: {
 				int row = GetRowFromWidget(pt.y, widget, 0, GetCharacterHeight(FS_SMALL) + WidgetDimensions::scaled.framerect.Vertical());
 
+				if (HasBit(this->masked_range, row)) break;
 				ToggleBit(this->excluded_range, row);
 				this->SetDirty();
 				break;
@@ -1103,6 +1118,7 @@ struct BaseCargoGraphWindow : BaseGraphWindow {
 	{
 		this->CreateNestedTree();
 
+		this->excluded_range = this->masked_range;
 		this->cargo_types = this->GetCargoTypes(number);
 
 		this->vscroll = this->GetScrollbar(WID_GRAPH_MATRIX_SCROLLBAR);
@@ -1596,7 +1612,9 @@ CompanyID PerformanceRatingDetailWindow::company = CompanyID::Invalid();
 struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 	static inline constexpr StringID RANGE_LABELS[] = {
 		STR_GRAPH_INDUSTRY_RANGE_PRODUCED,
-		STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED
+		STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED,
+		STR_GRAPH_INDUSTRY_RANGE_DELIVERED,
+		STR_GRAPH_INDUSTRY_RANGE_WAITING,
 	};
 
 	static inline CargoTypes excluded_cargo_types{};
@@ -1611,6 +1629,10 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 		this->draw_dates = !TimerGameEconomy::UsingWallclockUnits();
 		this->ranges = RANGE_LABELS;
 
+		const Industry *i = Industry::Get(window_number);
+		if (!i->IsCargoProduced()) this->masked_range = (1U << 0) | (1U << 1);
+		if (!i->IsCargoAccepted()) this->masked_range = (1U << 2) | (1U << 3);
+
 		this->InitializeWindow(window_number, STR_GRAPH_LAST_24_MINUTES_TIME_LABEL);
 	}
 
@@ -1618,6 +1640,9 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 	{
 		CargoTypes cargo_types{};
 		const Industry *i = Industry::Get(window_number);
+		for (const auto &a : i->accepted) {
+			if (IsValidCargoType(a.cargo)) SetBit(cargo_types, a.cargo);
+		}
 		for (const auto &p : i->produced) {
 			if (IsValidCargoType(p.cargo)) SetBit(cargo_types, p.cargo);
 		}
@@ -1631,7 +1656,7 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_GRAPH_CAPTION) return GetString(STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION, this->window_number);
+		if (widget == WID_GRAPH_CAPTION) return GetString(STR_GRAPH_INDUSTRY_CAPTION, this->window_number);
 
 		return this->Window::GetWidgetString(widget, stringid);
 	}
@@ -1661,14 +1686,12 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 			if (!IsValidCargoType(p.cargo)) continue;
 			const CargoSpec *cs = CargoSpec::Get(p.cargo);
 
+			this->data.reserve(this->data.size() + 2);
+
 			DataSet &produced = this->data.emplace_back();
 			produced.colour = cs->legend_colour;
 			produced.exclude_bit = cs->Index();
 			produced.range_bit = 0;
-
-			for (uint j = 0; j < GRAPH_NUM_MONTHS; j++) {
-				produced.values[j] = p.history[GRAPH_NUM_MONTHS - j].production;
-			}
 
 			DataSet &transported = this->data.emplace_back();
 			transported.colour = cs->legend_colour;
@@ -1676,9 +1699,29 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 			transported.range_bit = 1;
 			transported.dash = 2;
 
-			for (uint j = 0; j < GRAPH_NUM_MONTHS; j++) {
-				transported.values[j] = p.history[GRAPH_NUM_MONTHS - j].transported;
-			}
+			FillFromHistory<GRAPH_NUM_MONTHS>(p.history, Filler{produced, &Industry::ProducedHistory::production}, Filler{transported, &Industry::ProducedHistory::transported});
+		}
+
+		for (const auto &a : i->accepted) {
+			if (!IsValidCargoType(a.cargo)) continue;
+			const CargoSpec *cs = CargoSpec::Get(a.cargo);
+
+			this->data.reserve(this->data.size() + 2);
+
+			DataSet &accepted = this->data.emplace_back();
+			accepted.colour = cs->legend_colour;
+			accepted.exclude_bit = cs->Index();
+			accepted.range_bit = 2;
+			accepted.dash = 1;
+
+			DataSet &waiting = this->data.emplace_back();
+			waiting.colour = cs->legend_colour;
+			waiting.exclude_bit = cs->Index();
+			waiting.range_bit = 3;
+			waiting.dash = 4;
+
+			if (a.history == nullptr) continue;
+			FillFromHistory<GRAPH_NUM_MONTHS>(*a.history, Filler{accepted, &Industry::AcceptedHistory::accepted}, Filler{waiting, &Industry::AcceptedHistory::waiting});
 		}
 
 		this->SetDirty();

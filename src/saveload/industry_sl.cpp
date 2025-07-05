@@ -19,12 +19,50 @@
 
 static OldPersistentStorage _old_ind_persistent_storage;
 
+class SlIndustryAcceptedHistory : public DefaultSaveLoadHandler<SlIndustryAcceptedHistory, Industry::AcceptedCargo> {
+public:
+	static inline const SaveLoad description[] = {
+		 SLE_VAR(Industry::AcceptedHistory, accepted, SLE_UINT16),
+		 SLE_VAR(Industry::AcceptedHistory, waiting, SLE_UINT16),
+	};
+	static inline const SaveLoadCompatTable compat_description = _industry_produced_history_sl_compat;
+
+	void Save(Industry::AcceptedCargo *a) const override
+	{
+		if (!IsValidCargoType(a->cargo) || a->history == nullptr) {
+			/* Don't save any history if cargo slot isn't used. */
+			SlSetStructListLength(0);
+			return;
+		}
+
+		SlSetStructListLength(a->history->size());
+
+		for (auto &h : *a->history) {
+			SlObject(&h, this->GetDescription());
+		}
+	}
+
+	void Load(Industry::AcceptedCargo *a) const override
+	{
+		size_t len = SlGetStructListLength(UINT32_MAX);
+		if (len == 0) return;
+
+		auto &history = a->GetOrCreateHistory();
+		for (auto &h : history) {
+			if (--len > history.size()) break; // unsigned so wraps after hitting zero.
+			SlObject(&h, this->GetDescription());
+		}
+	}
+};
+
 class SlIndustryAccepted : public VectorSaveLoadHandler<SlIndustryAccepted, Industry, Industry::AcceptedCargo, INDUSTRY_NUM_INPUTS> {
 public:
 	static inline const SaveLoad description[] = {
 		 SLE_VAR(Industry::AcceptedCargo, cargo, SLE_UINT8),
 		 SLE_VAR(Industry::AcceptedCargo, waiting, SLE_UINT16),
 		 SLE_VAR(Industry::AcceptedCargo, last_accepted, SLE_INT32),
+		SLE_CONDVAR(Industry::AcceptedCargo, accumulated_waiting, SLE_UINT32, SLV_INDUSTRY_ACCEPTED_HISTORY, SL_MAX_VERSION),
+		SLEG_CONDSTRUCTLIST("history", SlIndustryAcceptedHistory, SLV_INDUSTRY_ACCEPTED_HISTORY, SL_MAX_VERSION),
 	};
 	static inline const SaveLoadCompatTable compat_description = _industry_accepts_sl_compat;
 
