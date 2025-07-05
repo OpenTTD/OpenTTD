@@ -1248,7 +1248,7 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode,
  */
 void LoadStringWidthTable(FontSizes fontsizes)
 {
-	ClearFontCache(fontsizes);
+	FontCache::ClearFontCaches(fontsizes);
 
 	for (FontSize fs : fontsizes) {
 		for (uint i = 0; i != 224; i++) {
@@ -1815,7 +1815,7 @@ bool AdjustGUIZoom(bool automatic)
 	if (old_font_zoom != _font_zoom) {
 		GfxClearFontSpriteCache();
 	}
-	ClearFontCache(FONTSIZES_ALL);
+	FontCache::ClearFontCaches(FONTSIZES_ALL);
 	LoadStringWidthTable(FONTSIZES_REQUIRED);
 
 	SetupWidgetDimensions();

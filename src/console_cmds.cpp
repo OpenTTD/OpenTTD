@@ -2369,7 +2369,7 @@ static bool ConFont(std::span<std::string_view> argv)
 		FontCacheSubSetting *setting = GetFontCacheSubSetting(fs);
 		/* Make sure all non sprite fonts are loaded. */
 		if (!setting->font.empty() && !fc->HasParent()) {
-			InitFontCache(fs);
+			FontCache::LoadFontCaches(fs);
 			fc = FontCache::Get(fs);
 		}
 		IConsolePrint(CC_DEFAULT, "{} font:", FontSizeToName(fs));
