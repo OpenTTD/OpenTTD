@@ -29,6 +29,7 @@ add_files(
     string_consumer.hpp
     string_inplace.cpp
     string_inplace.hpp
+    strong_bitset_type.hpp
     strong_typedef_type.hpp
     utf8.cpp
     utf8.hpp
