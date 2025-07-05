@@ -43,7 +43,7 @@ FontCache::FontCache(FontSize fs) : parent(FontCache::Get(fs)), fs(fs), height(_
 /** Clean everything up. */
 FontCache::~FontCache()
 {
-	assert(this->fs == this->parent->fs);
+	assert(this->parent == nullptr || this->fs == this->parent->fs);
 	FontCache::caches[this->fs] = this->parent;
 	Layouter::ResetFontCache(this->fs);
 }
@@ -241,8 +241,7 @@ void InitFontCache(bool monospace)
 void UninitFontCache()
 {
 	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
-		FontCache *fc = FontCache::Get(fs);
-		if (fc->HasParent()) delete fc;
+		while (FontCache::Get(fs) != nullptr) delete FontCache::Get(fs);
 	}
 
 #ifdef WITH_FREETYPE
