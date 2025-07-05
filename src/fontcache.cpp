@@ -8,6 +8,8 @@
 /** @file fontcache.cpp Cache for characters from fonts. */
 
 #include "stdafx.h"
+
+#include "core/string_consumer.hpp"
 #include "fontcache.h"
 #include "blitter/factory.hpp"
 #include "gfx_layout.h"
@@ -17,12 +19,9 @@
 #include "viewport_func.h"
 #include "window_func.h"
 #include "fileio_func.h"
+#include "zoom_func.h"
 
 #include "safeguards.h"
-
-/** Default heights for the different sizes of fonts. */
-static const int _default_font_height[FS_END]   = {10, 6, 18, 10};
-static const int _default_font_ascender[FS_END] = { 8, 5, 15,  8};
 
 FontCacheSettings _fcsettings;
 
@@ -32,10 +31,10 @@ FontCacheSettings _fcsettings;
  * @param fonttype Font type requested.
  * @return FontCache of the font if loaded, or nullptr.
  */
-/* static */ std::unique_ptr<FontCache> FontProviderManager::LoadFont(FontSize fs, FontType fonttype)
+/* static */ std::unique_ptr<FontCache> FontProviderManager::LoadFont(FontSize fs, FontType fonttype, bool search, const std::string &font_name, std::span<const std::byte> os_handle)
 {
 	for (auto &provider : FontProviderManager::GetProviders()) {
-		auto fc = provider->LoadFont(fs, fonttype);
+		auto fc = provider->LoadFont(fs, fonttype, search, font_name, os_handle);
 		if (fc != nullptr) return fc;
 	}
 
@@ -51,45 +50,52 @@ FontCacheSettings _fcsettings;
  * @param callback The function to call to check for missing glyphs.
  * @return true if a font has been set, false otherwise.
  */
-/* static */ bool FontProviderManager::FindFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, MissingGlyphSearcher *callback)
+/* static */ bool FontProviderManager::FindFallbackFont(const std::string &language_isocode, FontSizes fontsizes, class MissingGlyphSearcher *callback)
 {
 	for (auto &provider : FontProviderManager::GetProviders()) {
-		if (provider->FindFallbackFont(settings, language_isocode, callback)) {
+		if (provider->FindFallbackFont(language_isocode, fontsizes, callback)) {
 			return true;
 		}
 	}
 	return false;
 }
 
-/**
- * Create a new font cache.
- * @param fs The size of the font.
- */
-FontCache::FontCache(FontSize fs) : fs(fs), height(_default_font_height[fs]),
-		ascender(_default_font_ascender[fs]), descender(_default_font_ascender[fs] - _default_font_height[fs])
-{
-}
-
 int FontCache::GetDefaultFontHeight(FontSize fs)
 {
-	return _default_font_height[fs];
+	return DEFAULT_FONT_HEIGHT[fs];
 }
 
-/**
- * Get the font name of a given font size.
- * @param fs The font size to look up.
- * @return The font name.
- */
-std::string FontCache::GetName(FontSize fs)
+/* static */ void FontCache::UpdateCharacterHeight(FontSize fs)
 {
-	FontCache *fc = FontCache::Get(fs);
-	if (fc != nullptr) {
-		return fc->GetFontName();
+	FontMetrics &metrics = FontCache::metrics[fs];
+	const FontCache *defaultfc = GetDefaultFontCache(fs);
+
+	metrics = {};
+
+	for (const auto &fc : FontCache::caches) {
+		if (fc == nullptr || fc->fs != fs) continue;
+		metrics.ascender = std::max(metrics.ascender, fc->ascender);
+		metrics.descender = std::min(metrics.descender, fc->descender);
+	}
+
+	if (metrics.ascender == 0 && metrics.descender == 0) {
+		/* No font loaded yet? */
+		metrics.ascender = ScaleGUITrad(DEFAULT_FONT_ASCENDER[fs]);
+		metrics.descender = ScaleGUITrad(DEFAULT_FONT_ASCENDER[fs] - DEFAULT_FONT_HEIGHT[fs]);
+	}
+
+	if (defaultfc != nullptr) {
+		metrics.y_offset = (metrics.Height() - (defaultfc->ascender - defaultfc->descender)) / 2 + defaultfc->ascender;
 	} else {
-		return "[NULL]";
+		metrics.y_offset = ScaleGUITrad(DEFAULT_FONT_ASCENDER[fs]);
 	}
 }
 
+int FontCache::GetGlyphYOffset()
+{
+	const FontMetrics &metrics = FontCache::metrics[this->fs];
+	return metrics.y_offset - this->ascender;
+}
 
 /**
  * Get height of a character for a given font size.
@@ -98,20 +104,22 @@ std::string FontCache::GetName(FontSize fs)
  */
 int GetCharacterHeight(FontSize size)
 {
-	return FontCache::Get(size)->GetHeight();
+	uint height = FontCache::GetCharacterHeight(size);
+	if (height == 0) height = ScaleGUITrad(FontCache::GetDefaultFontHeight(FS_MONO));
+	return height;
 }
 
-
-/* static */ std::array<std::unique_ptr<FontCache>, FS_END> FontCache::caches{};
+/* static */ FontCache::FontCaches FontCache::caches;
+/* static */ std::array<FontCache::FontMetrics, FS_END> FontCache::metrics{};
+/* static */ std::array<FontIndex, FS_END> FontCache::default_font_index{};
 
 /**
  * Initialise font caches with the base sprite font cache for all sizes.
  */
 /* static */ void FontCache::InitializeFontCaches()
 {
-	for (FontSize fs = FS_BEGIN; fs != FS_END; fs++) {
-		if (FontCache::Get(fs) != nullptr) continue;
-		FontCache::Register(FontProviderManager::LoadFont(fs, FontType::Sprite));
+	for (FontSize fs : FONTSIZES_ALL) {
+		UpdateCharacterHeight(fs);
 	}
 }
 
@@ -142,19 +150,13 @@ void SetFont(FontSize fontsize, const std::string &font, uint size)
 	if (!changed) return;
 
 	if (fontsize != FS_MONO) {
-		/* Try to reload only the modified font. */
-		FontCacheSettings backup = _fcsettings;
-		for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
-			if (fs == fontsize) continue;
-			FontCache *fc = FontCache::Get(fs);
-			GetFontCacheSubSetting(fs)->font = fc->HasParent() ? fc->GetFontName() : "";
-		}
+		/* Check if fallback fonts are needed. */
 		CheckForMissingGlyphs();
-		_fcsettings = std::move(backup);
 	} else {
 		FontCache::LoadFontCaches(fontsize);
 	}
 
+	FontCache::UpdateCharacterHeight(fontsize);
 	LoadStringWidthTable(fontsize);
 	UpdateAllVirtCoords();
 	ReInitAllWindows(true);
@@ -168,7 +170,7 @@ void SetFont(FontSize fontsize, const std::string &font, uint size)
  */
 static bool IsDefaultFont(const FontCacheSubSetting &setting)
 {
-	return setting.font.empty() && setting.os_handle == nullptr;
+	return setting.font.empty();
 }
 
 /**
@@ -205,7 +207,7 @@ static std::string GetDefaultTruetypeFont(FontSize fs)
  * @param fs Font size.
  * @return Full path of default font file.
  */
-static std::string GetDefaultTruetypeFontFile([[maybe_unused]] FontSize fs)
+std::string GetDefaultTruetypeFontFile([[maybe_unused]] FontSize fs)
 {
 #if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
 	/* Find font file. */
@@ -228,18 +230,29 @@ std::string GetFontCacheFontName(FontSize fs)
 	return GetDefaultTruetypeFontFile(fs);
 }
 
-/**
- * Register a FontCache for its font size.
- * @param fc FontCache to register.
- */
 /* static */ void FontCache::Register(std::unique_ptr<FontCache> &&fc)
 {
 	if (fc == nullptr) return;
 
 	FontSize fs = fc->fs;
 
-	fc->parent = std::move(FontCache::caches[fs]);
-	FontCache::caches[fs] = std::move(fc);
+	/* Find an empty font cache slot. */
+	auto it = std::find(std::begin(FontCache::caches), std::end(FontCache::caches), nullptr);
+	if (it == std::end(FontCache::caches)) it = FontCache::caches.insert(it, nullptr);
+
+	/* Set up our font index and make us the default font cache for this font size. */
+	fc->font_index = static_cast<FontIndex>(std::distance(std::begin(FontCache::caches), it));
+	FontCache::default_font_index[fs] = fc->font_index;
+
+	/* Register this font cache in the slot. */
+	*it = std::move(fc);
+}
+
+/* static */ void FontCache::AddFallback(FontSizes fontsizes, const std::string &name, std::span<std::byte> os_data)
+{
+	for (FontSize fs : fontsizes) {
+		GetFontCacheSubSetting(fs)->fallback_fonts.emplace_back(name, std::vector<std::byte>{os_data.begin(), os_data.end()});
+	}
 }
 
 /**
@@ -248,17 +261,58 @@ std::string GetFontCacheFontName(FontSize fs)
  */
 /* static */ void FontCache::LoadFontCaches(FontSizes fontsizes)
 {
-	FontCache::InitializeFontCaches();
+	static constexpr std::string_view DEFAULT_FONT = "default";
 
 	for (FontSize fs : fontsizes) {
 		Layouter::ResetFontCache(fs);
+		FontCache::default_font_index[fs] = INVALID_FONT_INDEX;
+	}
 
-		/* Unload everything except the sprite font cache. */
-		while (FontCache::Get(fs)->HasParent()) {
-			FontCache::caches[fs] = std::move(FontCache::caches[fs]->parent);
+	/* Remove all existing FontCaches. */
+	if (fontsizes == FONTSIZES_ALL) {
+		FontCache::caches.clear();
+	} else {
+		for (auto it = std::begin(FontCache::caches); it != std::end(FontCache::caches); ++it) {
+			if (*it == nullptr) continue;
+			if (!fontsizes.Test((*it)->fs)) continue;
+			it->reset();
+		}
+	}
+
+	for (FontSize fs : fontsizes) {
+		const FontCacheSubSetting *setting = GetFontCacheSubSetting(fs);
+
+		/* Add all detected fallback fonts. */
+		for (auto it = setting->fallback_fonts.rbegin(); it != setting->fallback_fonts.rend(); ++it) {
+			FontCache::Register(FontProviderManager::LoadFont(fs, FontType::TrueType, /*fallback.dynamic ? "missing-fallback" : "language-fallback", */ false, it->name, it->os_handle));
 		}
 
-		FontCache::Register(FontProviderManager::LoadFont(fs, FontType::TrueType));
+		/* Parse configured fonts, separated by ';' into a list. */
+		std::vector<std::string_view> fontnames;
+		StringConsumer consumer(setting->font);
+		do {
+			auto fontname = StrTrimView(consumer.ReadUntilChar(';', StringConsumer::SKIP_ONE_SEPARATOR), " \t");
+			if (!fontname.empty()) fontnames.push_back(fontname);
+		} while (consumer.AnyBytesLeft());
+
+		/* Add the default font as lowest priority if not manually specified. */
+		if (std::ranges::find(fontnames, DEFAULT_FONT) == std::end(fontnames)) fontnames.push_back(DEFAULT_FONT);
+
+		/* Load configured fonts in reverse order so that the first entry has priority. */
+		for (auto it = fontnames.rbegin(); it != fontnames.rend(); ++it) {
+			if (*it == DEFAULT_FONT) {
+				/* Load the sprite font, even if it's not preferred. */
+				FontCache::Register(FontProviderManager::LoadFont(fs, FontType::Sprite, /*"default"*/ false, {}, {}));
+				if (!_fcsettings.prefer_sprite) {
+					/* Load the default truetype font if sprite not isn't preferred. */
+					FontCache::Register(FontProviderManager::LoadFont(fs, FontType::TrueType, /*"default",*/ false, GetDefaultTruetypeFontFile(fs), {}));
+				}
+			} else {
+				FontCache::Register(FontProviderManager::LoadFont(fs, FontType::TrueType, /*"configured",*/ true, std::string{*it}, {}));
+			}
+		}
+
+		FontCache::UpdateCharacterHeight(fs);
 	}
 }
 
@@ -267,5 +321,5 @@ std::string GetFontCacheFontName(FontSize fs)
  */
 /* static */ void FontCache::UninitializeFontCaches()
 {
-	std::ranges::generate(FontCache::caches, []() { return nullptr; });
+	FontCache::caches.clear();
 }

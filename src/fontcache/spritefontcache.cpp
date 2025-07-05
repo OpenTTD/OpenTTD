@@ -12,6 +12,8 @@
 #include "../fontcache.h"
 #include "../gfx_layout.h"
 #include "../zoom_func.h"
+#include "../gfx_func.h"
+#include "../palette_func.h"
 #include "spritefontcache.h"
 
 #include "../table/sprites.h"
@@ -23,23 +25,19 @@
 static std::array<std::unordered_map<char32_t, SpriteID>, FS_END> _glyph_maps{}; ///< Glyph map for each font size.
 
 /**
- * Scale traditional pixel dimensions to font zoom level, for drawing sprite fonts.
- * @param value Pixel amount at #ZOOM_BASE (traditional "normal" interface size).
- * @return Pixel amount at _font_zoom (current interface size).
- */
-static int ScaleFontTrad(int value)
-{
-	return UnScaleByZoom(value * ZOOM_BASE, _font_zoom);
-}
-
-/**
  * Create a new sprite font cache.
  * @param fs The font size to create the cache for.
  */
 SpriteFontCache::SpriteFontCache(FontSize fs) : FontCache(fs)
 {
-	this->height = ScaleGUITrad(FontCache::GetDefaultFontHeight(this->fs));
-	this->ascender = (this->height - ScaleFontTrad(FontCache::GetDefaultFontHeight(this->fs))) / 2;
+	this->UpdateMetrics();
+}
+
+void SpriteFontCache::UpdateMetrics()
+{
+	this->height = ScaleGUITrad(DEFAULT_FONT_HEIGHT[this->fs]);
+	this->ascender = ScaleFontTrad(DEFAULT_FONT_ASCENDER[fs]);
+	this->descender = ScaleFontTrad(DEFAULT_FONT_ASCENDER[fs] - DEFAULT_FONT_HEIGHT[fs]);
 }
 
 /**
@@ -60,30 +58,29 @@ SpriteID SpriteFontCache::GetSpriteIDForChar(char32_t key)
 void SpriteFontCache::ClearFontCache()
 {
 	Layouter::ResetFontCache(this->fs);
-	this->height = ScaleGUITrad(FontCache::GetDefaultFontHeight(this->fs));
-	this->ascender = (this->height - ScaleFontTrad(FontCache::GetDefaultFontHeight(this->fs))) / 2;
+	this->UpdateMetrics();
 }
 
 const Sprite *SpriteFontCache::GetGlyph(GlyphID key)
 {
-	SpriteID sprite = this->GetSpriteIDForChar(static_cast<char32_t>(key & ~SPRITE_GLYPH));
+	SpriteID sprite = this->GetSpriteIDForChar(static_cast<char32_t>(key));
 	if (sprite == 0) sprite = this->GetSpriteIDForChar('?');
 	return GetSprite(sprite, SpriteType::Font);
 }
 
 uint SpriteFontCache::GetGlyphWidth(GlyphID key)
 {
-	SpriteID sprite = this->GetSpriteIDForChar(static_cast<char32_t>(key & ~SPRITE_GLYPH));
+	SpriteID sprite = this->GetSpriteIDForChar(static_cast<char32_t>(key));
 	if (sprite == 0) sprite = this->GetSpriteIDForChar('?');
 	return SpriteExists(sprite) ? GetSprite(sprite, SpriteType::Font)->width + ScaleFontTrad(this->fs != FS_NORMAL ? 1 : 0) : 0;
 }
 
-GlyphID SpriteFontCache::MapCharToGlyph(char32_t key, [[maybe_unused]] bool allow_fallback)
+GlyphID SpriteFontCache::MapCharToGlyph(char32_t key)
 {
 	assert(IsPrintable(key));
 	SpriteID sprite = this->GetSpriteIDForChar(key);
 	if (sprite == 0) return 0;
-	return SPRITE_GLYPH | key;
+	return static_cast<GlyphID>(key);
 }
 
 bool SpriteFontCache::GetDrawGlyphShadow()
@@ -95,14 +92,14 @@ class SpriteFontCacheFactory : public FontCacheFactory {
 public:
 	SpriteFontCacheFactory() : FontCacheFactory("sprite", "Sprite font provider") {}
 
-	std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype) override
+	std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype, bool, const std::string &, std::span<const std::byte>) override
 	{
 		if (fonttype != FontType::Sprite) return nullptr;
 
 		return std::make_unique<SpriteFontCache>(fs);
 	}
 
-	bool FindFallbackFont(struct FontCacheSettings *, const std::string &, class MissingGlyphSearcher *) override
+	bool FindFallbackFont(const std::string &, FontSizes, class MissingGlyphSearcher *) override
 	{
 		return false;
 	}
