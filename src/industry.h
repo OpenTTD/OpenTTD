@@ -89,6 +89,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	TileArea location{INVALID_TILE, 0, 0}; ///< Location of the industry
 	Town *town = nullptr; ///< Nearest town
 	Station *neutral_station = nullptr; ///< Associated neutral station
+	ValidHistoryMask valid_history = 0; ///< Mask of valid history records.
 	ProducedCargoes produced{}; ///< produced cargo slots
 	AcceptedCargoes accepted{}; ///< accepted cargo slots
 	uint8_t prod_level = 0; ///< general production level

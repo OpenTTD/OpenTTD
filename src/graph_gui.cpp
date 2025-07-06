@@ -222,6 +222,7 @@ protected:
 		const Tprojection &proj; ///< Projection to apply.
 
 		inline void Fill(uint i, const auto &data) const { this->dataset.values[i] = std::invoke(this->proj, data); }
+		inline void MakeInvalid(uint i) const { this->dataset.values[i] = INVALID_DATAPOINT; }
 	};
 
 	/**
@@ -1685,7 +1686,7 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 			transported.dash = 2;
 			auto transported_filler = Filler{transported, &Industry::ProducedHistory::transported};
 
-			FillFromHistory<GRAPH_NUM_MONTHS>(p.history, produced_filler, transported_filler);
+			FillFromHistory<GRAPH_NUM_MONTHS>(p.history, i->valid_history, produced_filler, transported_filler);
 		}
 
 		this->SetDirty();

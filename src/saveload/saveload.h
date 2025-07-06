@@ -404,6 +404,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_ORDERS_OWNED_BY_ORDERLIST,          ///< 354  PR#13948 Orders stored in OrderList, pool removed.
 
 	SLV_FACE_STYLES,                        ///< 355  PR#14319 Addition of face styles, replacing gender and ethnicity.
+	SLV_INDUSTRY_NUM_VALID_HISTORY,         ///< 356  PR#14416 Store number of valid history records for industries.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
