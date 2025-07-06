@@ -1837,6 +1837,8 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 		for (auto &p : i->produced) {
 			p.history[LAST_MONTH].production += ScaleByCargoScale(p.rate * 8, false);
 		}
+
+		UpdateValidHistory(i->valid_history);
 	}
 
 	if (indspec->callback_mask.Test(IndustryCallbackMask::DecideColour)) {
@@ -2494,6 +2496,8 @@ void GenerateIndustries()
  */
 static void UpdateIndustryStatistics(Industry *i)
 {
+	UpdateValidHistory(i->valid_history);
+
 	for (auto &p : i->produced) {
 		if (IsValidCargoType(p.cargo)) {
 			if (p.history[THIS_MONTH].production != 0) i->last_prod_year = TimerGameEconomy::year;

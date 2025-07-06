@@ -162,6 +162,8 @@ static const SaveLoad _industry_desc[] = {
 	SLE_CONDVAR(Industry, random,                     SLE_UINT16,                SLV_82, SL_MAX_VERSION),
 	SLE_CONDSSTR(Industry, text,     SLE_STR | SLF_ALLOW_CONTROL,     SLV_INDUSTRY_TEXT, SL_MAX_VERSION),
 
+	SLE_CONDVAR(Industry, valid_history, SLE_UINT64, SLV_INDUSTRY_NUM_VALID_HISTORY, SL_MAX_VERSION),
+
 	SLEG_CONDSTRUCTLIST("accepted", SlIndustryAccepted,                          SLV_INDUSTRY_CARGO_REORGANISE, SL_MAX_VERSION),
 	SLEG_CONDSTRUCTLIST("produced", SlIndustryProduced,                          SLV_INDUSTRY_CARGO_REORGANISE, SL_MAX_VERSION),
 };
@@ -228,6 +230,24 @@ struct INDYChunkHandler : ChunkHandler {
 			} else if (IsSavegameVersionBefore(SLV_INDUSTRY_CARGO_REORGANISE)) {
 				LoadMoveAcceptsProduced(i, INDUSTRY_NUM_INPUTS, INDUSTRY_NUM_OUTPUTS);
 			}
+
+			if (IsSavegameVersionBefore(SLV_INDUSTRY_NUM_VALID_HISTORY)) {
+				/* The last month has always been recorded. */
+				size_t oldest_valid = LAST_MONTH;
+				if (!IsSavegameVersionBefore(SLV_PRODUCTION_HISTORY)) {
+					/* History was extended but we did not keep track of valid history, so assume it from the oldest non-zero value. */
+					for (const auto &p : i->produced) {
+						if (!IsValidCargoType(p.cargo)) continue;
+						for (size_t n = LAST_MONTH; n < std::size(p.history); ++n) {
+							if (p.history[n].production == 0 && p.history[n].transported == 0) continue;
+							oldest_valid = std::max(oldest_valid, n);
+						}
+					}
+				}
+				/* Set mask bits up to and including the oldest valid record. */
+				i->valid_history = (std::numeric_limits<uint64_t>::max() >> (std::numeric_limits<uint64_t>::digits - (oldest_valid + 1 - LAST_MONTH))) << LAST_MONTH;
+			}
+
 			Industry::industries[i->type].insert(i->index);
 		}
 	}

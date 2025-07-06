@@ -22,4 +22,7 @@ static constexpr uint8_t LAST_MONTH = 1;
 template <typename T>
 using HistoryData = std::array<T, HISTORY_RECORDS>;
 
+/** Mask of valid history records. */
+using ValidHistoryMask = uint64_t;
+
 #endif /* HISTORY_TYPE_HPP */
