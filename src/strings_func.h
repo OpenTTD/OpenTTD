@@ -98,6 +98,7 @@ extern TextDirection _current_text_dir; ///< Text direction of the currently sel
 void InitializeLanguagePacks();
 std::string_view GetCurrentLanguageIsoCode();
 std::string_view GetListSeparator();
+std::string_view GetEllipsis();
 
 /**
  * Helper to create the StringParameters with its own buffer with the given
