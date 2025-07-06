@@ -1301,6 +1301,9 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :設定貸款息
 STR_CONFIG_SETTING_RUNNING_COSTS                                :營運成本：{STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :設定車輛的營運與維護成本水平。
 ###length 3
+STR_CONFIG_SETTING_RUNNING_COSTS_LOW                            :低
+STR_CONFIG_SETTING_RUNNING_COSTS_MEDIUM                         :適中
+STR_CONFIG_SETTING_RUNNING_COSTS_HIGH                           :高
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :建造速度：{STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :限制電腦 AI 的建造速度。
@@ -1323,6 +1326,9 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :沒有補助
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :建造成本：{STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :設定建造和購買物件的成本水平。
 ###length 3
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_LOW                       :低
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_MEDIUM                    :適中
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :高
 
 STR_CONFIG_SETTING_RECESSIONS                                   :經濟衰退：{STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :如果此選項被啟用，經濟衰退將會週期性發生。屆時所有工業生產都會大幅下降，直至衰退結束後回到之前的水平
