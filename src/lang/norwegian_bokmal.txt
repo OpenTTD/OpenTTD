@@ -1303,6 +1303,9 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Lånerente; kon
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Driftskostnader: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Still nivå av vedlikehold og driftskostnader for kjøretøy og infrastruktur
 ###length 3
+STR_CONFIG_SETTING_RUNNING_COSTS_LOW                            :Lav
+STR_CONFIG_SETTING_RUNNING_COSTS_MEDIUM                         :Middels
+STR_CONFIG_SETTING_RUNNING_COSTS_HIGH                           :Høy
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Byggehastighet: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Begrens mengden av byggetiltak hos KI-er
@@ -1325,6 +1328,9 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Ingen subsidier
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Byggekostnader: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Still kostnadsnivå for bygging og kjøp
 ###length 3
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_LOW                       :Lav
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_MEDIUM                    :Middels
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Høy
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Resesjoner: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Hvis aktivert, lavkonjunkturer kan forekomme innimellom. Under en lavkonjunktur vil all produksjon være betydelig lavere (den returnerer til tidligere nivå når lavkonjunktur er over)
@@ -2080,9 +2086,9 @@ STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Den PANSREDE va
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distribusjonsmodus for andre vareklasser: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asymmetrisk" betyr at vilkårlige mengder varer kan sendes i begge retninger. "Manuell" betyr at ingen automatisk distribusjon vil forekomme for disse varene
 ###length 3
-STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
-STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetrisk
-STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symmetrisk
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :Manuell
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :Asymmetrisk
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :Symmetrisk
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Distribusjonsnøyaktighet: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Jo høyere du setter denne, desto mer prosessortid vil beregningen av koblingsgrafen ta. Hvis dette bruker for lang tid, vil du kunne oppleve etterslep. Hvis du setter den til en lav verdi, derimot, vil distribusjonen bli mer unøyaktig, og du vil kunne oppleve at varer ikke blir sendt til de stedene du forventer at de skal
@@ -2332,16 +2338,19 @@ STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Enkelt a
 STR_FACE_LOAD                                                   :{BLACK}Last inn
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Last inn favorittansikt
 STR_FACE_LOAD_DONE                                              :{WHITE}Ditt favorittansikt har blitt lastet inn fra OpenTTDs konfigurasjonsfil
-STR_FACE_FACECODE                                               :{BLACK}Ansiktsnummer
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Vis og/eller endre ansiktsnummeret til selskapets president
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Vis og/eller endre lederens ansiktsnummer
-STR_FACE_FACECODE_SET                                           :{WHITE}Ny ansiktsnummerkode har blitt satt
-STR_FACE_FACECODE_ERR                                           :{WHITE}Kunne ikke endre lederens ansiktsnummer - må være et heltall mellom 0 og 4294967295!
+STR_FACE_FACECODE                                               :{BLACK}Ansiktskode
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Vis og/eller endre ansiktskoden til selskapets president
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Vis og/eller endre lederens ansiktskode
+STR_FACE_FACECODE_SET                                           :{WHITE}Nytt presidentansikt har blitt satt
+STR_FACE_FACECODE_ERR                                           :{WHITE}Kunne ikke endre lederens ansiktskode - må være et gyldig merke og nummer
 STR_FACE_SAVE                                                   :{BLACK}Lagre
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Lagre favorittansikt
 STR_FACE_SAVE_DONE                                              :{WHITE}Dette ansiktet vil bli lagret som din favoritt i OpenTTDs konfigurasjonsfil
+STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
+STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :Nei
+STR_FACE_STYLE                                                  :Stil:
 STR_FACE_HAIR                                                   :Hår:
 STR_FACE_EYEBROWS                                               :Øyenbryn:
 STR_FACE_EYECOLOUR                                              :Øyenfarge:

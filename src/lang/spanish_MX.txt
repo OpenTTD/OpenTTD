@@ -1302,6 +1302,9 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Tasa de interé
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Costos de operación: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Nivel de costos de mantenimiento y operación de vehículos e infraestructura
 ###length 3
+STR_CONFIG_SETTING_RUNNING_COSTS_LOW                            :Bajos
+STR_CONFIG_SETTING_RUNNING_COSTS_MEDIUM                         :Medios
+STR_CONFIG_SETTING_RUNNING_COSTS_HIGH                           :Altos
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocidad de construcción: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Restringir la velocidad de las acciones de construcción de jugadores no humanos
@@ -1324,6 +1327,9 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Sin subsidios
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costos de construcción: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Nivel de costos de construcción y adquisición
 ###length 3
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_LOW                       :Bajos
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_MEDIUM                    :Medios
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Altos
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesiones: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Al activarse, habrá recesiones periódicamente en las que toda la producción decaerá considerablemente, restableciéndose al final de cada recesión
