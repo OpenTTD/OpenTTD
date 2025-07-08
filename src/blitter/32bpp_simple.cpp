@@ -19,13 +19,13 @@
 /** Instantiation of the simple 32bpp blitter factory. */
 static FBlitter_32bppSimple iFBlitter_32bppSimple;
 
-void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
+void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, SpriteCollKey sck)
 {
 	const Blitter_32bppSimple::Pixel *src, *src_line;
 	Colour *dst, *dst_line;
 
 	/* Find where to start reading in the source sprite */
-	src_line = (const Blitter_32bppSimple::Pixel *)bp->sprite + (bp->skip_top * bp->sprite_width + bp->skip_left) * ScaleByZoom(1, zoom);
+	src_line = (const Blitter_32bppSimple::Pixel *)bp->sprite + (bp->skip_top * bp->sprite_width + bp->skip_left) * ScaleByZoom(1, sck.zoom);
 	dst_line = (Colour *)bp->dst + bp->top * bp->pitch + bp->left;
 
 	for (int y = 0; y < bp->height; y++) {
@@ -33,7 +33,7 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 		dst_line += bp->pitch;
 
 		src = src_line;
-		src_line += bp->sprite_width * ScaleByZoom(1, zoom);
+		src_line += bp->sprite_width * ScaleByZoom(1, sck.zoom);
 
 		for (int x = 0; x < bp->width; x++) {
 			switch (mode) {
@@ -82,7 +82,7 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 					break;
 			}
 			dst++;
-			src += ScaleByZoom(1, zoom);
+			src += ScaleByZoom(1, sck.zoom);
 		}
 	}
 }
@@ -115,9 +115,9 @@ void Blitter_32bppSimple::DrawColourMappingRect(void *dst, int width, int height
 	Debug(misc, 0, "32bpp blitter doesn't know how to draw this colour table ('{}')", pal);
 }
 
-Sprite *Blitter_32bppSimple::Encode(SpriteType, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
+Sprite *Blitter_32bppSimple::Encode(SpriteType, const SpriteLoader::SpriteCollection &sprite, bool, SpriteAllocator &allocator)
 {
-	const auto &root_sprite = sprite.Root();
+	const auto &root_sprite = sprite.Root(false);
 	Blitter_32bppSimple::Pixel *dst;
 	Sprite *dest_sprite = allocator.Allocate<Sprite>(sizeof(*dest_sprite) + static_cast<size_t>(root_sprite.height) * static_cast<size_t>(root_sprite.width) * sizeof(*dst));
 
@@ -125,6 +125,7 @@ Sprite *Blitter_32bppSimple::Encode(SpriteType, const SpriteLoader::SpriteCollec
 	dest_sprite->width = root_sprite.width;
 	dest_sprite->x_offs = root_sprite.x_offs;
 	dest_sprite->y_offs = root_sprite.y_offs;
+	dest_sprite->has_rtl = false;
 
 	dst = reinterpret_cast<Blitter_32bppSimple::Pixel *>(dest_sprite->data);
 	SpriteLoader::CommonPixel *src = reinterpret_cast<SpriteLoader::CommonPixel *>(root_sprite.data);

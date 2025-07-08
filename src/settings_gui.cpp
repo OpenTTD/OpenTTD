@@ -1414,6 +1414,7 @@ struct GameOptionsWindow : Window {
 				CheckForMissingGlyphs();
 				ClearAllCachedNames();
 				UpdateAllVirtCoords();
+				VideoDriver::GetInstance()->ClearSystemSprites(); // relevant if _current_text_dir changes
 				CheckBlitter();
 				ReInitAllWindows(false);
 				break;

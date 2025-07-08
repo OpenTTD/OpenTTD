@@ -27,17 +27,114 @@ enum class SpriteComponent : uint8_t {
 using SpriteComponents = EnumBitSet<SpriteComponent, uint8_t, SpriteComponent::End>;
 
 /**
- * Map zoom level to data.
+ * Key into sprite collections.
+ */
+class SpriteCollKey {
+public:
+	bool rtl;
+	ZoomLevel zoom;
+
+	inline constexpr SpriteCollKey(ZoomLevel zoom, bool rtl) : rtl(rtl), zoom(zoom) {}
+
+	inline constexpr bool operator==(const SpriteCollKey &rhs) const = default;
+	inline constexpr std::strong_ordering operator<=>(const SpriteCollKey &rhs) const = default;
+
+	static SpriteCollKey Root(bool rtl) { return SpriteCollKey(ZoomLevel::Min, rtl); }
+};
+
+/**
+ * Set of sprite collection keys.
+ */
+class SpriteCollKeys {
+	ZoomLevels ltr, rtl;
+public:
+	inline constexpr SpriteCollKeys() = default;
+	inline constexpr void Set(const SpriteCollKey &sck) { (sck.rtl ? this->rtl : this->ltr).Set(sck.zoom); }
+	inline constexpr bool Test(const SpriteCollKey &sck) const { return (sck.rtl ? this->rtl : this->ltr).Test(sck.zoom); }
+	inline constexpr bool AnyLtr() const { return this->ltr.Any(); }
+	inline constexpr bool AnyRtl() const { return this->rtl.Any(); }
+	inline constexpr bool NoLtr() const { return this->ltr.None(); }
+	inline constexpr bool NoRtl() const { return this->rtl.None(); }
+};
+
+/**
+ * Map sprite collection keys to data.
  */
 template <class T>
 class SpriteCollMap {
-	std::array<T, to_underlying(ZoomLevel::End)> data{};
+	std::array<T, to_underlying(ZoomLevel::End)> ltr{}, rtl{};
 public:
-	inline constexpr T &operator[](const ZoomLevel &zoom) { return this->data[to_underlying(zoom)]; }
-	inline constexpr const T &operator[](const ZoomLevel &zoom) const { return this->data[to_underlying(zoom)]; }
+	inline constexpr T &operator[](const SpriteCollKey &sck) { return (sck.rtl ? this->rtl : this->ltr)[to_underlying(sck.zoom)]; }
+	inline constexpr const T &operator[](const SpriteCollKey &sck) const { return (sck.rtl ? this->rtl : this->ltr)[to_underlying(sck.zoom)]; }
 
-	T &Root() { return this->data[to_underlying(ZoomLevel::Min)]; }
-	const T &Root() const { return this->data[to_underlying(ZoomLevel::Min)]; }
+	T &Root(bool rtl) { return (rtl ? this->rtl : this->ltr)[to_underlying(ZoomLevel::Min)]; }
+	const T &Root(bool rtl) const { return (rtl ? this->rtl : this->ltr)[to_underlying(ZoomLevel::Min)]; }
+};
+
+/**
+ * Range of sprite collection keys.
+ */
+class SpriteCollKeyRange {
+public:
+	class Iterator {
+		ZoomLevel zoom_min, zoom_max;
+		SpriteCollKey pos;
+	public:
+		using value_type = SpriteCollKey;
+		using difference_type = std::ptrdiff_t;
+		using iterator_category = std::bidirectional_iterator_tag;
+		using pointer = void;
+		using reference = void;
+
+		Iterator(ZoomLevel zoom_min, ZoomLevel zoom_max, SpriteCollKey pos) : zoom_min(zoom_min), zoom_max(zoom_max), pos(pos) {}
+		bool operator==(const Iterator &rhs) const { return this->pos == rhs.pos; }
+		std::strong_ordering operator<=>(const Iterator &rhs) const { return this->pos <=> rhs.pos; }
+		const SpriteCollKey &operator*() const { return this->pos; }
+
+		Iterator& operator++()
+		{
+			if (!this->pos.rtl && this->pos.zoom == this->zoom_max) {
+				this->pos.zoom = this->zoom_min;
+				this->pos.rtl = true;
+			} else {
+				++this->pos.zoom;
+			}
+			return *this;
+		}
+
+		Iterator operator++(int)
+		{
+			Iterator result = *this;
+			++*this;
+			return result;
+		}
+
+		Iterator& operator--()
+		{
+			if (this->pos.zoom == this->zoom_min) {
+				this->pos.zoom = this->zoom_max;
+				this->pos.rtl = false;
+			} else {
+				--this->pos.zoom;
+			}
+			return *this;
+		}
+
+		Iterator operator--(int)
+		{
+			Iterator result = *this;
+			--*this;
+			return result;
+		}
+	};
+
+	SpriteCollKeyRange(ZoomLevel zoom_min, ZoomLevel zoom_max, bool has_rtl) : zoom_min(zoom_min), zoom_max(zoom_max), has_rtl(has_rtl) {}
+	Iterator begin() const { return Iterator{this->zoom_min, this->zoom_max, SpriteCollKey{this->zoom_min, false}}; }
+	Iterator end() const { return ++Iterator{this->zoom_min, this->zoom_max, SpriteCollKey{this->zoom_max, this->has_rtl}}; }
+
+private:
+	ZoomLevel zoom_min, zoom_max;
+	bool has_rtl;
 };
 
 /** Interface for the loader of our sprites. */
@@ -68,17 +165,17 @@ public:
 
 		/**
 		 * Allocate the sprite data of this sprite.
-		 * @param zoom Zoom level to allocate the data for.
+		 * @param sck Key to allocate the data for.
 		 * @param size the minimum size of the data field.
 		 */
-		void AllocateData(ZoomLevel zoom, size_t size) { this->data = Sprite::buffer[zoom].ZeroAllocate(size); }
+		void AllocateData(SpriteCollKey sck, size_t size) { this->data = Sprite::buffer[sck].ZeroAllocate(size); }
 	private:
 		/** Allocated memory to pass sprite data around */
 		static SpriteCollMap<ReusableBuffer<SpriteLoader::CommonPixel>> buffer;
 	};
 
 	/**
-	 * Type defining a collection of sprites, one for each zoom level.
+	 * Type defining a collection of sprites, one for each key.
 	 */
 	using SpriteCollection = SpriteCollMap<Sprite>;
 
@@ -94,7 +191,7 @@ public:
 	 * @param[out] avail_32bpp Available 32bpp sprites.
 	 * @return Available sprites matching \a load_32bpp.
 	 */
-	virtual ZoomLevels LoadSprite(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, uint8_t control_flags, ZoomLevels &avail_8bpp, ZoomLevels &avail_32bpp) = 0;
+	virtual SpriteCollKeys LoadSprite(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, uint8_t control_flags, SpriteCollKeys &avail_8bpp, SpriteCollKeys &avail_32bpp) = 0;
 
 	virtual ~SpriteLoader() = default;
 };
@@ -139,7 +236,7 @@ public:
 	/**
 	 * Convert a sprite from the loader to our own format.
 	 */
-	virtual Sprite *Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator) = 0;
+	virtual Sprite *Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, bool has_rtl, SpriteAllocator &allocator) = 0;
 
 	/**
 	 * Get the value which the height and width on a sprite have to be aligned by.

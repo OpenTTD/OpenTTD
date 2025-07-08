@@ -18,11 +18,11 @@
 /** Instantiation of the 8bpp optimised blitter factory. */
 static FBlitter_8bppOptimized iFBlitter_8bppOptimized;
 
-void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
+void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, SpriteCollKey sck)
 {
 	/* Find the offset of this zoom-level */
 	const SpriteData *sprite_src = (const SpriteData *)bp->sprite;
-	uint offset = sprite_src->offset[zoom];
+	uint offset = sprite_src->offset[sck];
 
 	/* Find where to start reading in the source sprite */
 	const uint8_t *src = sprite_src->data + offset;
@@ -119,7 +119,7 @@ void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Z
 	}
 }
 
-Sprite *Blitter_8bppOptimized::Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
+Sprite *Blitter_8bppOptimized::Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, bool has_rtl, SpriteAllocator &allocator)
 {
 	/* Make memory for all zoom-levels */
 	uint memory = sizeof(SpriteData);
@@ -136,8 +136,8 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteType sprite_type, const SpriteLoader
 		if (zoom_max == zoom_min) zoom_max = ZoomLevel::Max;
 	}
 
-	for (ZoomLevel i = zoom_min; i <= zoom_max; i++) {
-		memory += sprite[i].width * sprite[i].height;
+	for (auto sck : SpriteCollKeyRange(zoom_min, zoom_max, has_rtl)) {
+		memory += sprite[sck].width * sprite[sck].height;
 	}
 
 	/* We have no idea how much memory we really need, so just guess something */
@@ -151,11 +151,16 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteType sprite_type, const SpriteLoader
 	uint8_t *dst = temp_dst->data;
 
 	/* Make the sprites per zoom-level */
-	for (ZoomLevel i = zoom_min; i <= zoom_max; i++) {
-		const SpriteLoader::Sprite &src_orig = sprite[i];
+	for (auto sck : SpriteCollKeyRange(zoom_min, zoom_max, has_rtl)) {
+		const SpriteLoader::Sprite &src_orig = sprite[sck];
 		/* Store the index table */
 		uint offset = dst - temp_dst->data;
-		temp_dst->offset[i] = offset;
+		temp_dst->offset[sck] = offset;
+		if (!has_rtl) {
+			/* Duplicate the sprite for RTL */
+			SpriteCollKey rtl{sck.zoom, true};
+			temp_dst->offset[rtl] = offset;
+		}
 
 		/* cache values, because compiler can't cache it */
 		int scaled_height = src_orig.height;
@@ -220,11 +225,12 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteType sprite_type, const SpriteLoader
 	/* Allocate the exact amount of memory we need */
 	Sprite *dest_sprite = allocator.Allocate<Sprite>(sizeof(*dest_sprite) + size);
 
-	const auto &root_sprite = sprite.Root();
+	const auto &root_sprite = sprite.Root(false);
 	dest_sprite->height = root_sprite.height;
 	dest_sprite->width = root_sprite.width;
 	dest_sprite->x_offs = root_sprite.x_offs;
 	dest_sprite->y_offs = root_sprite.y_offs;
+	dest_sprite->has_rtl = has_rtl;
 	std::copy_n(reinterpret_cast<std::byte *>(temp_dst), size, dest_sprite->data);
 
 	return dest_sprite;

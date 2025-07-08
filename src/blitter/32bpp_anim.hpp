@@ -32,7 +32,7 @@ public:
 		this->palette = _cur_palette;
 	}
 
-	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom) override;
+	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, SpriteCollKey sck) override;
 	void DrawColourMappingRect(void *dst, int width, int height, PaletteID pal) override;
 	void SetPixel(void *video, int x, int y, uint8_t colour) override;
 	void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8_t colour, int width, int dash) override;
@@ -64,7 +64,7 @@ public:
 		return across + (lines * this->anim_buf_pitch);
 	}
 
-	template <BlitterMode mode> void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
+	template <BlitterMode mode> void Draw(const Blitter::BlitterParams *bp, SpriteCollKey sck);
 };
 
 /** Factory for the 32bpp blitter with animation. */
