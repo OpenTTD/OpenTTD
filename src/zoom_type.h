@@ -52,7 +52,6 @@ extern int _gui_scale_cfg;
 
 extern ZoomLevel _gui_zoom;
 extern ZoomLevel _font_zoom;
-#define ZOOM_LVL_GUI (_gui_zoom)
 
 static const int MIN_INTERFACE_SCALE = 100;
 static const int MAX_INTERFACE_SCALE = 500;

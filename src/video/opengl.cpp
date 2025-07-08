@@ -1080,9 +1080,9 @@ void OpenGLBackend::DrawMouseCursor()
 			const OpenGLSprite *spr = this->cursor_cache.Get(cs.image.sprite).get();
 
 			this->RenderOglSprite(spr, cs.image.pal,
-					this->cursor_pos.x + cs.pos.x + UnScaleByZoom(spr->x_offs, ZOOM_LVL_GUI),
-					this->cursor_pos.y + cs.pos.y + UnScaleByZoom(spr->y_offs, ZOOM_LVL_GUI),
-					ZOOM_LVL_GUI);
+					this->cursor_pos.x + cs.pos.x + UnScaleByZoom(spr->x_offs, _gui_zoom),
+					this->cursor_pos.y + cs.pos.y + UnScaleByZoom(spr->y_offs, _gui_zoom),
+					_gui_zoom);
 		}
 	}
 }

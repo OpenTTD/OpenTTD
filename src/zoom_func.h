@@ -72,11 +72,11 @@ inline int UnScaleByZoomLower(int value, ZoomLevel zoom)
 /**
  * Short-hand to apply GUI zoom level.
  * @param value Pixel amount at #ZoomLevel::Min (full zoom in).
- * @return Pixel amount at #ZOOM_LVL_GUI (current interface size).
+ * @return Pixel amount at current interface size.
  */
 inline int UnScaleGUI(int value)
 {
-	return UnScaleByZoom(value, ZOOM_LVL_GUI);
+	return UnScaleByZoom(value, _gui_zoom);
 }
 
 /**
@@ -86,7 +86,7 @@ inline int UnScaleGUI(int value)
  */
 inline ZoomLevel ScaleZoomGUI(ZoomLevel value)
 {
-	return std::clamp(value + (ZOOM_LVL_GUI - ZoomLevel::Normal), ZoomLevel::Min, ZoomLevel::Max);
+	return std::clamp(value + (_gui_zoom - ZoomLevel::Normal), ZoomLevel::Min, ZoomLevel::Max);
 }
 
 /**
@@ -96,13 +96,13 @@ inline ZoomLevel ScaleZoomGUI(ZoomLevel value)
  */
 inline ZoomLevel UnScaleZoomGUI(ZoomLevel value)
 {
-	return std::clamp(value - (ZOOM_LVL_GUI - ZoomLevel::Normal), ZoomLevel::Min, ZoomLevel::Max);
+	return std::clamp(value - (_gui_zoom - ZoomLevel::Normal), ZoomLevel::Min, ZoomLevel::Max);
 }
 
 /**
  * Scale traditional pixel dimensions to GUI zoom level, for drawing sprites.
  * @param value Pixel amount at #ZOOM_BASE (traditional "normal" interface size).
- * @return Pixel amount at #ZOOM_LVL_GUI (current interface size).
+ * @return Pixel amount at current interface size.
  */
 inline int ScaleSpriteTrad(int value)
 {
@@ -112,7 +112,7 @@ inline int ScaleSpriteTrad(int value)
 /**
  * Scale traditional pixel dimensions to GUI zoom level.
  * @param value Pixel amount at #ZOOM_BASE (traditional "normal" interface size).
- * @return Pixel amount at #ZOOM_LVL_GUI (current interface size).
+ * @return Pixel amount at current interface size.
  */
 inline int ScaleGUITrad(int value)
 {

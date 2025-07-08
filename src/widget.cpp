@@ -44,7 +44,7 @@ static std::string GetStringForWidget(const Window *w, const NWidgetCore *nwid, 
 /**
  * Scale a RectPadding to GUI zoom level.
  * @param r RectPadding at ZOOM_BASE (traditional "normal" interface size).
- * @return RectPadding at #ZOOM_LVL_GUI (current interface size).
+ * @return RectPadding at current interface size.
  */
 static inline RectPadding ScaleGUITrad(const RectPadding &r)
 {
@@ -54,7 +54,7 @@ static inline RectPadding ScaleGUITrad(const RectPadding &r)
 /**
  * Scale a Dimension to GUI zoom level.
  * @param d Dimension at ZOOM_BASE (traditional "normal" interface size).
- * @return Dimension at #ZOOM_LVL_GUI (current interface size).
+ * @return Dimension at current interface size.
  */
 static inline Dimension ScaleGUITrad(const Dimension &dim)
 {

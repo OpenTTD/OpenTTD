@@ -526,7 +526,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 	}
 
 	if (sprite_type == SpriteType::Font && _font_zoom != ZoomLevel::Min) {
-		/* Make ZoomLevel::Min be ZOOM_LVL_GUI */
+		/* Make ZoomLevel::Min the desired font zoom level. */
 		sprite[ZoomLevel::Min] = sprite[_font_zoom];
 	}
 
