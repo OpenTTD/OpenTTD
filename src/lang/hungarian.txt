@@ -1365,6 +1365,9 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Banki hitelkama
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Üzemeltetési költségek: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Járművek karbantartási és üzemeltetési költségeinek a szintje
 ###length 3
+STR_CONFIG_SETTING_RUNNING_COSTS_LOW                            :Alacsony
+STR_CONFIG_SETTING_RUNNING_COSTS_MEDIUM                         :Közepes
+STR_CONFIG_SETTING_RUNNING_COSTS_HIGH                           :Magas
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Építkezési sebesség: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Korlátozza az építkezési sebességét számítógépes ellenfeleknek
@@ -1387,6 +1390,9 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Nincsenek támo
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Építkezési költségek: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Építkezések és beszerzésk költségeinek szintje
 ###length 3
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_LOW                       :Alacsony
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_MEDIUM                    :Közepes
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Magas
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Gazdasági válságok: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ha bekapcsolod, időszakonként gazdasági válság fog kitörni. A válság alatt az összes ipar jelentősen kevesebbet termel. (A válság végével a termelés visszaáll az eredeti szintre.)
@@ -2142,9 +2148,9 @@ STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :A PÁNCÉLOZOTT
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Egyéb rakománytípusok szétosztása: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :Az "Aszimmetrikus" beállítás esetén a különböző irányokba tetszőleges mennyiségű rakomány mehet. "Kézi" esetben a rakományok nem lesznek automatikusan szétosztva.
 ###length 3
-STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :kézi
-STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :aszimmetrikus
-STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :szimmetrikus
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :Kézi
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :Aszimmetrikus
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :Szimmetrikus
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :A szétosztás pontossága: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Magasabb beállítás esetén a kapcsolati gráf kiszámítása több időt fog igénybe venni. A játék akadozhat, ha ez a számítás túl sok időbe telik. Alacsony beállítás esetén viszont a szétosztás pontatlan lehet, a rakományok váratlan célokat kaphatnak.
