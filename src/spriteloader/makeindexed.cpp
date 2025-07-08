@@ -52,8 +52,8 @@ ZoomLevels SpriteLoaderMakeIndexed::LoadSprite(SpriteLoader::SpriteCollection &s
 {
 	ZoomLevels avail = this->baseloader.LoadSprite(sprite, file, file_pos, sprite_type, true, control_flags, avail_8bpp, avail_32bpp);
 
-	for (ZoomLevel zoom = ZoomLevel::Begin; zoom != ZoomLevel::End; zoom++) {
-		if (avail.Test(zoom)) Convert32bppTo8bpp(sprite[zoom]);
+	for (ZoomLevel zoom : avail) {
+		Convert32bppTo8bpp(sprite[zoom]);
 	}
 
 	return avail;
