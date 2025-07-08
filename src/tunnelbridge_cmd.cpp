@@ -413,17 +413,13 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 		if (terraform_cost_south.Failed() || (terraform_cost_south.GetCost() != 0 && !allow_on_slopes)) return CommandCost(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 		cost.AddCost(terraform_cost_south.GetCost());
 
-		const TileIndex heads[] = {tile_start, tile_end};
-		for (int i = 0; i < 2; i++) {
-			if (IsBridgeAbove(heads[i])) {
-				TileIndex north_head = GetNorthernBridgeEnd(heads[i]);
+		/* Check for bridges above the bridge ramps. */
+		for (TileIndex tile : {tile_start, tile_end}) {
+			if (!IsBridgeAbove(tile)) continue;
 
-				if (direction == GetBridgeAxis(heads[i])) return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+			if (direction == GetBridgeAxis(tile)) return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
-				if (z_start + 1 == GetBridgeHeight(north_head)) {
-					return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
-				}
-			}
+			if (z_start + 1 == GetBridgeHeight(GetNorthernBridgeEnd(tile))) return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 		}
 
 		TileIndexDiff delta = TileOffsByAxis(direction);
