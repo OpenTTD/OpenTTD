@@ -207,15 +207,15 @@ bool ReadSpriteLayout(ByteReader &buf, uint num_building_sprites, bool use_cur_s
 			return true;
 		}
 
-		seq->delta_x = buf.ReadByte();
-		seq->delta_y = buf.ReadByte();
+		seq->origin.x = buf.ReadByte();
+		seq->origin.y = buf.ReadByte();
 
-		if (!no_z_position) seq->delta_z = buf.ReadByte();
+		if (!no_z_position) seq->origin.z = buf.ReadByte();
 
 		if (seq->IsParentSprite()) {
-			seq->size_x = buf.ReadByte();
-			seq->size_y = buf.ReadByte();
-			seq->size_z = buf.ReadByte();
+			seq->extent.x = buf.ReadByte();
+			seq->extent.y = buf.ReadByte();
+			seq->extent.z = buf.ReadByte();
 		}
 
 		ReadSpriteLayoutRegisters(buf, flags, seq->IsParentSprite(), dts, i + 1);

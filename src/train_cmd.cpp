@@ -1491,13 +1491,7 @@ CommandCost CmdSellRailWagon(DoCommandFlags flags, Vehicle *t, bool sell_chain, 
 void Train::UpdateDeltaXY()
 {
 	/* Set common defaults. */
-	this->x_offs    = -1;
-	this->y_offs    = -1;
-	this->x_extent  =  3;
-	this->y_extent  =  3;
-	this->z_extent  =  6;
-	this->x_bb_offs =  0;
-	this->y_bb_offs =  0;
+	this->bounds = {{-1, -1, 0}, {3, 3, 6}, {}};
 
 	/* Set if flipped and engine is NOT flagged with custom flip handling. */
 	int flipped = this->flags.Test(VehicleRailFlag::Flipped) && !EngInfo(this->engine_type)->misc_flags.Test(EngineMiscFlag::RailFlips);
@@ -1508,50 +1502,47 @@ void Train::UpdateDeltaXY()
 	if (flipped) dir = ReverseDir(dir);
 
 	if (!IsDiagonalDirection(dir)) {
-		static const int _sign_table[] =
-		{
+		static const Point _sign_table[] = {
 			/* x, y */
-			-1, -1, // DIR_N
-			-1,  1, // DIR_E
-			 1,  1, // DIR_S
-			 1, -1, // DIR_W
+			{-1, -1}, // DIR_N
+			{-1,  1}, // DIR_E
+			{ 1,  1}, // DIR_S
+			{ 1, -1}, // DIR_W
 		};
 
 		int half_shorten = (VEHICLE_LENGTH - this->gcache.cached_veh_length + flipped) / 2;
 
 		/* For all straight directions, move the bound box to the centre of the vehicle, but keep the size. */
-		this->x_offs -= half_shorten * _sign_table[dir];
-		this->y_offs -= half_shorten * _sign_table[dir + 1];
-		this->x_extent += this->x_bb_offs = half_shorten * _sign_table[dir];
-		this->y_extent += this->y_bb_offs = half_shorten * _sign_table[dir + 1];
+		this->bounds.offset.x -= half_shorten * _sign_table[DirToDiagDir(dir)].x;
+		this->bounds.offset.y -= half_shorten * _sign_table[DirToDiagDir(dir)].y;
 	} else {
 		switch (dir) {
 				/* Shorten southern corner of the bounding box according the vehicle length
 				 * and center the bounding box on the vehicle. */
 			case DIR_NE:
-				this->x_offs    = 1 - (this->gcache.cached_veh_length + 1) / 2 + flip_offs;
-				this->x_extent  = this->gcache.cached_veh_length - 1;
-				this->x_bb_offs = -1;
+				this->bounds.origin.x = -(this->gcache.cached_veh_length + 1) / 2 + flip_offs;
+				this->bounds.extent.x = this->gcache.cached_veh_length;
+				this->bounds.offset.x = 1;
 				break;
 
 			case DIR_NW:
-				this->y_offs    = 1 - (this->gcache.cached_veh_length + 1) / 2 + flip_offs;
-				this->y_extent  = this->gcache.cached_veh_length - 1;
-				this->y_bb_offs = -1;
+				this->bounds.origin.y = -(this->gcache.cached_veh_length + 1) / 2 + flip_offs;
+				this->bounds.extent.y = this->gcache.cached_veh_length;
+				this->bounds.offset.y = 1;
 				break;
 
 				/* Move northern corner of the bounding box down according to vehicle length
 				 * and center the bounding box on the vehicle. */
 			case DIR_SW:
-				this->x_offs    = 1 + (this->gcache.cached_veh_length + 1) / 2 - VEHICLE_LENGTH - flip_offs;
-				this->x_extent  = VEHICLE_LENGTH - 1;
-				this->x_bb_offs = VEHICLE_LENGTH - this->gcache.cached_veh_length - 1;
+				this->bounds.origin.x = -(this->gcache.cached_veh_length) / 2 - flip_offs;
+				this->bounds.extent.x = this->gcache.cached_veh_length;
+				this->bounds.offset.x = 1 - (VEHICLE_LENGTH - this->gcache.cached_veh_length);
 				break;
 
 			case DIR_SE:
-				this->y_offs    = 1 + (this->gcache.cached_veh_length + 1) / 2 - VEHICLE_LENGTH - flip_offs;
-				this->y_extent  = VEHICLE_LENGTH - 1;
-				this->y_bb_offs = VEHICLE_LENGTH - this->gcache.cached_veh_length - 1;
+				this->bounds.origin.y = -(this->gcache.cached_veh_length) / 2 - flip_offs;
+				this->bounds.extent.y = this->gcache.cached_veh_length;
+				this->bounds.offset.y = 1 - (VEHICLE_LENGTH - this->gcache.cached_veh_length);
 				break;
 
 			default:

@@ -1899,7 +1899,7 @@ static void DrawSingleSignal(TileIndex tile, const RailTypeInfo *rti, Track trac
 		sprite += type * 16 + variant * 64 + image * 2 + condition + (type > SIGTYPE_LAST_NOPBS ? 64 : 0);
 	}
 
-	AddSortableSpriteToDraw(sprite, PAL_NONE, x, y, 1, 1, BB_HEIGHT_UNDER_BRIDGE, GetSaveSlopeZ(x, y, track));
+	AddSortableSpriteToDraw(sprite, PAL_NONE, x, y, GetSaveSlopeZ(x, y, track), {{}, {1, 1, BB_HEIGHT_UNDER_BRIDGE}, {}});
 }
 
 static uint32_t _drawtile_track_palette;
@@ -1907,12 +1907,11 @@ static uint32_t _drawtile_track_palette;
 
 
 /** Offsets for drawing fences */
-struct FenceOffset {
-	Corner height_ref;  //!< Corner to use height offset from.
-	int x_offs;         //!< Bounding box X offset.
-	int y_offs;         //!< Bounding box Y offset.
-	int x_size;         //!< Bounding box X size.
-	int y_size;         //!< Bounding box Y size.
+struct FenceOffset : SpriteBounds {
+	Corner height_ref; ///< Corner to use height offset from.
+
+	constexpr FenceOffset(Corner height_ref, int8_t origin_x, int8_t origin_y, uint8_t extent_x, uint8_t extent_y) :
+		SpriteBounds({origin_x, origin_y, 0}, {extent_x, extent_y, 4}, {}), height_ref(height_ref) {}
 };
 
 /** Offsets for drawing fences */
@@ -1948,12 +1947,7 @@ static void DrawTrackFence(const TileInfo *ti, SpriteID base_image, uint num_spr
 	if (_fence_offsets[rfo].height_ref != CORNER_INVALID) {
 		z += GetSlopePixelZInCorner(RemoveHalftileSlope(ti->tileh), _fence_offsets[rfo].height_ref);
 	}
-	AddSortableSpriteToDraw(base_image + (rfo % num_sprites), _drawtile_track_palette,
-		ti->x + _fence_offsets[rfo].x_offs,
-		ti->y + _fence_offsets[rfo].y_offs,
-		_fence_offsets[rfo].x_size,
-		_fence_offsets[rfo].y_size,
-		4, z);
+	AddSortableSpriteToDraw(base_image + (rfo % num_sprites), _drawtile_track_palette, ti->x, ti->y, z, _fence_offsets[rfo]);
 }
 
 /**

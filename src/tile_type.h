@@ -12,29 +12,29 @@
 
 #include "core/strong_typedef_type.hpp"
 
-static const uint TILE_SIZE           = 16;                    ///< Tile size in world coordinates.
-static const uint TILE_UNIT_MASK      = TILE_SIZE - 1;         ///< For masking in/out the inner-tile world coordinate units.
-static const uint TILE_PIXELS         = 32;                    ///< Pixel distance between tile columns/rows in #ZOOM_BASE.
-static const uint TILE_HEIGHT         =  8;                    ///< Height of a height level in world coordinate AND in pixels in #ZOOM_BASE.
+static constexpr uint TILE_SIZE           = 16;                    ///< Tile size in world coordinates.
+static constexpr uint TILE_UNIT_MASK      = TILE_SIZE - 1;         ///< For masking in/out the inner-tile world coordinate units.
+static constexpr uint TILE_PIXELS         = 32;                    ///< Pixel distance between tile columns/rows in #ZOOM_BASE.
+static constexpr uint TILE_HEIGHT         =  8;                    ///< Height of a height level in world coordinate AND in pixels in #ZOOM_BASE.
 
-static const uint MAX_BUILDING_PIXELS = 200;                   ///< Maximum height of a building in pixels in #ZOOM_BASE. (Also applies to "bridge buildings" on the bridge floor.)
-static const int MAX_VEHICLE_PIXEL_X  = 192;                   ///< Maximum width of a vehicle in pixels in #ZOOM_BASE.
-static const int MAX_VEHICLE_PIXEL_Y  = 96;                    ///< Maximum height of a vehicle in pixels in #ZOOM_BASE.
+static constexpr uint MAX_BUILDING_PIXELS = 200;                   ///< Maximum height of a building in pixels in #ZOOM_BASE. (Also applies to "bridge buildings" on the bridge floor.)
+static constexpr int MAX_VEHICLE_PIXEL_X  = 192;                   ///< Maximum width of a vehicle in pixels in #ZOOM_BASE.
+static constexpr int MAX_VEHICLE_PIXEL_Y  = 96;                    ///< Maximum height of a vehicle in pixels in #ZOOM_BASE.
 
-static const uint MAX_TILE_HEIGHT     = 255;                   ///< Maximum allowed tile height
+static constexpr uint MAX_TILE_HEIGHT     = 255;                   ///< Maximum allowed tile height
 
-static const uint MIN_HEIGHTMAP_HEIGHT = 1;                    ///< Lowest possible peak value for heightmap creation
-static const uint MIN_CUSTOM_TERRAIN_TYPE = 1;                 ///< Lowest possible peak value for world generation
+static constexpr uint MIN_HEIGHTMAP_HEIGHT = 1;                    ///< Lowest possible peak value for heightmap creation
+static constexpr uint MIN_CUSTOM_TERRAIN_TYPE = 1;                 ///< Lowest possible peak value for world generation
 
-static const uint MIN_MAP_HEIGHT_LIMIT = 15;                   ///< Lower bound of maximum allowed heightlevel (in the construction settings)
-static const uint MAX_MAP_HEIGHT_LIMIT = MAX_TILE_HEIGHT;      ///< Upper bound of maximum allowed heightlevel (in the construction settings)
+static constexpr uint MIN_MAP_HEIGHT_LIMIT = 15;                   ///< Lower bound of maximum allowed heightlevel (in the construction settings)
+static constexpr uint MAX_MAP_HEIGHT_LIMIT = MAX_TILE_HEIGHT;      ///< Upper bound of maximum allowed heightlevel (in the construction settings)
 
-static const uint MIN_SNOWLINE_HEIGHT = 2;                     ///< Minimum snowline height
-static const uint DEF_SNOWLINE_HEIGHT = 10;                    ///< Default snowline height
-static const uint MAX_SNOWLINE_HEIGHT = (MAX_TILE_HEIGHT - 2); ///< Maximum allowed snowline height
+static constexpr uint MIN_SNOWLINE_HEIGHT = 2;                     ///< Minimum snowline height
+static constexpr uint DEF_SNOWLINE_HEIGHT = 10;                    ///< Default snowline height
+static constexpr uint MAX_SNOWLINE_HEIGHT = (MAX_TILE_HEIGHT - 2); ///< Maximum allowed snowline height
 
-static const uint DEF_SNOW_COVERAGE = 40;                      ///< Default snow coverage.
-static const uint DEF_DESERT_COVERAGE = 50;                    ///< Default desert coverage.
+static constexpr uint DEF_SNOW_COVERAGE = 40;                      ///< Default snow coverage.
+static constexpr uint DEF_DESERT_COVERAGE = 50;                    ///< Default desert coverage.
 
 
 /**

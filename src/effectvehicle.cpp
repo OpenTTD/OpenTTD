@@ -619,11 +619,7 @@ bool EffectVehicle::Tick()
 
 void EffectVehicle::UpdateDeltaXY()
 {
-	this->x_offs        = 0;
-	this->y_offs        = 0;
-	this->x_extent      = 1;
-	this->y_extent      = 1;
-	this->z_extent      = 1;
+	this->bounds = {{}, {1, 1, 1}, {}};
 }
 
 /**
