@@ -71,6 +71,12 @@ enum class RoadStopSpecFlag : uint8_t {
 };
 using RoadStopSpecFlags = EnumBitSet<RoadStopSpecFlag, uint8_t>;
 
+enum class RoadStopSpecIntlFlag : uint8_t {
+	BridgeHeightsSet,           ///< bridge_height[6] is set.
+	BridgeDisallowedPillarsSet, ///< bridge_disallowed_pillars[6] is set.
+};
+using RoadStopSpecIntlFlags = EnumBitSet<RoadStopSpecIntlFlag, uint8_t>;
+
 enum RoadStopView : uint8_t {
 	RSV_BAY_NE                  = 0, ///< Bay road stop, facing Northeast
 	RSV_BAY_SE                  = 1, ///< Bay road stop, facing Southeast
@@ -133,6 +139,7 @@ struct RoadStopSpec : NewGRFSpecBase<RoadStopClassID> {
 	RoadStopDrawModes draw_mode = {RoadStopDrawMode::Road, RoadStopDrawMode::Overlay};
 	RoadStopCallbackMasks callback_mask{};
 	RoadStopSpecFlags flags{};
+	RoadStopSpecIntlFlags internal_flags{};
 
 	CargoTypes cargo_triggers = 0; ///< Bitmask of cargo types which cause trigger re-randomizing
 
@@ -143,6 +150,8 @@ struct RoadStopSpec : NewGRFSpecBase<RoadStopClassID> {
 
 	uint8_t build_cost_multiplier = 16;  ///< Build cost multiplier per tile.
 	uint8_t clear_cost_multiplier = 16;  ///< Clear cost multiplier per tile.
+
+	uint8_t height;                      ///< The height of this structure, in heightlevels; max MAX_TILE_HEIGHT.
 
 	std::vector<BadgeID> badges;
 

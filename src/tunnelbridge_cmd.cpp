@@ -39,10 +39,13 @@
 #include "object_base.h"
 #include "water.h"
 #include "company_gui.h"
+#include "newgrf_roadstop.h"
 #include "station_func.h"
+#include "station_map.h"
 #include "tunnelbridge_cmd.h"
 #include "landscape_cmd.h"
 #include "terraform_cmd.h"
+#include "newgrf_station.h"
 
 #include "table/strings.h"
 #include "table/bridge_land.h"
@@ -55,6 +58,12 @@ TileIndex _build_tunnel_endtile; ///< The end of a tunnel; as hidden return from
 /** Z position of the bridge sprites relative to bridge height (downwards) */
 static const int BRIDGE_Z_START = 3;
 
+extern CommandCost IsRailStationBridgeAboveOk(TileIndex tile, const StationSpec *statspec, uint8_t layout, TileIndex northern_bridge_end, TileIndex southern_bridge_end, int bridge_height,
+											  BridgeType bridge_type, TransportType bridge_transport_type);
+
+extern CommandCost IsRoadStopBridgeAboveOK(TileIndex tile, const RoadStopSpec *spec, bool drive_through, DiagDirection entrance,
+										   TileIndex northern_bridge_end, TileIndex southern_bridge_end, int bridge_height,
+										   BridgeType bridge_type, TransportType bridge_transport_type);
 
 /**
  * Mark bridge tiles dirty.
@@ -391,6 +400,48 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 		/* If bridge belonged to bankrupt company, it has a new owner now */
 		is_new_owner = (owner == OWNER_NONE);
 		if (is_new_owner) owner = company;
+
+		TileIndexDiff delta = (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
+		for (TileIndex tile = tile_start + delta; tile != tile_end; tile += delta) {
+			if (IsTileType(tile, MP_STATION)) {
+				switch (GetStationType(tile)) {
+					case StationType::Rail:
+					case StationType::RailWaypoint: {
+						CommandCost ret = IsRailStationBridgeAboveOk(tile, GetStationSpec(tile), GetStationGfx(tile), tile_start, tile_end, z_start + 1, bridge_type, transport_type);
+						if (ret.Failed()) {
+							if (ret.GetErrorMessage() != INVALID_STRING_ID) return ret;
+							ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
+							if (ret.Failed()) return ret;
+						}
+						break;
+					}
+
+					case StationType::Bus:
+					case StationType::Truck:
+					case StationType::RoadWaypoint: {
+						CommandCost ret = IsRoadStopBridgeAboveOK(tile, GetRoadStopSpec(tile), IsDriveThroughStopTile(tile), IsDriveThroughStopTile(tile) ? AxisToDiagDir(GetDriveThroughStopAxis(tile)) : GetBayRoadStopDir(tile),
+																  tile_start, tile_end, z_start + 1, bridge_type, transport_type);
+						if (ret.Failed()) {
+							if (ret.GetErrorMessage() != INVALID_STRING_ID) return ret;
+							ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
+							if (ret.Failed()) return ret;
+						}
+						break;
+					}
+
+					case StationType::Buoy:
+						/* Buoys are always allowed */
+						break;
+
+					default:
+						/*if (!(GetStationType(tile) == StationType::Dock && _settings_game.construction.allow_docks_under_bridges)) {
+							CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
+							if (ret.Failed()) return ret;
+						}*/
+						break;
+				}
+			}
+		}
 	} else {
 		/* Build a new bridge. */
 
@@ -470,6 +521,45 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 					if (GetTileMaxZ(tile) + spec->height > z_start) goto not_valid_below;
 					break;
 				}
+
+				case MP_STATION: {
+					switch (GetStationType(tile)) {
+						case StationType::Airport:
+							goto not_valid_below;
+
+						case StationType::Rail:
+						case StationType::RailWaypoint: {
+							CommandCost ret = IsRailStationBridgeAboveOk(tile, GetStationSpec(tile), GetStationGfx(tile), tile_start, tile_end, z_start + 1, bridge_type, transport_type);
+							if (ret.Failed()) {
+								if (ret.GetErrorMessage() != INVALID_STRING_ID) return ret;
+								goto not_valid_below;
+							}
+							break;
+						}
+
+						case StationType::Bus:
+						case StationType::Truck:
+						case StationType::RoadWaypoint: {
+							CommandCost ret = IsRoadStopBridgeAboveOK(tile, GetRoadStopSpec(tile), IsDriveThroughStopTile(tile), IsDriveThroughStopTile(tile) ? AxisToDiagDir(GetDriveThroughStopAxis(tile)) : GetBayRoadStopDir(tile),
+																	  tile_start, tile_end, z_start + 1, bridge_type, transport_type);
+							if (ret.Failed()) {
+								if (ret.GetErrorMessage() != INVALID_STRING_ID) return ret;
+								goto not_valid_below;
+							}
+							break;
+						}
+
+						case StationType::Buoy:
+							/* Buoys are always allowed */
+							break;
+
+						default:
+							//if (!(GetStationType(tile) == StationType::Dock && _settings_game.construction.allow_docks_under_bridges)) goto not_valid_below;
+							break;
+					}
+					break;
+				}
+
 
 				case MP_CLEAR:
 					break;
@@ -1519,6 +1609,49 @@ static BridgePieces CalcBridgePiece(uint north, uint south)
 	} else {
 		return north & 1 ? BRIDGE_PIECE_MIDDLE_EVEN : BRIDGE_PIECE_MIDDLE_ODD;
 	}
+}
+
+BridgePiecePillarFlags GetBridgeTilePillarFlags(TileIndex tile, TileIndex northern_bridge_end, TileIndex southern_bridge_end, BridgeType bridge_type, TransportType bridge_transport_type)
+{
+	if (bridge_transport_type == TRANSPORT_WATER) return BPPF_ALL_CORNERS;
+
+	BridgePieces piece = CalcBridgePiece(
+		GetTunnelBridgeLength(tile, northern_bridge_end) + 1,
+										 GetTunnelBridgeLength(tile, southern_bridge_end) + 1
+	);
+	assert(piece < BRIDGE_PIECE_HEAD);
+
+	const BridgeSpec *spec = GetBridgeSpec(bridge_type);
+	const Axis axis = TileX(northern_bridge_end) == TileX(southern_bridge_end) ? AXIS_Y : AXIS_X;
+	if (!HasBit(spec->ctrl_flags, BSCF_INVALID_PILLAR_FLAGS)) {
+		return (BridgePiecePillarFlags) spec->pillar_flags[piece * 2 + (axis == AXIS_Y ? 1 : 0)];
+	} else {
+		uint base_offset;
+		if (bridge_transport_type == TRANSPORT_RAIL) {
+			base_offset = GetRailTypeInfo(GetRailType(southern_bridge_end))->bridge_offset;
+		} else {
+			base_offset = 8;
+		}
+
+		const PalSpriteID *psid = &GetBridgeSpriteTable(bridge_type, piece)[base_offset];
+		if (axis == AXIS_Y) psid += 4;
+		return (BridgePiecePillarFlags) (psid[2].sprite != 0 ? BPPF_ALL_CORNERS : 0);
+	}
+}
+
+BridgePieceDebugInfo GetBridgePieceDebugInfo(TileIndex tile)
+{
+	TileIndex rampnorth = GetNorthernBridgeEnd(tile);
+	TileIndex rampsouth = GetSouthernBridgeEnd(tile);
+
+	BridgePieces piece = CalcBridgePiece(
+		GetTunnelBridgeLength(tile, rampnorth) + 1,
+										 GetTunnelBridgeLength(tile, rampsouth) + 1
+	);
+	BridgePiecePillarFlags pillar_flags = GetBridgeTilePillarFlags(tile, rampnorth, rampsouth, GetBridgeType(rampnorth), GetTunnelBridgeTransportType(rampnorth));
+	const Axis axis = TileX(rampnorth) == TileX(rampsouth) ? AXIS_Y : AXIS_X;
+	uint pillar_index = piece * 2 + (axis == AXIS_Y ? 1 : 0);
+	return { piece, pillar_flags, pillar_index };
 }
 
 /**

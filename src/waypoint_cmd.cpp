@@ -182,7 +182,9 @@ static CommandCost IsValidTileForWaypoint(TileIndex tile, Axis axis, StationID *
 extern void GetStationLayout(uint8_t *layout, uint numtracks, uint plat_len, const StationSpec *statspec);
 extern CommandCost FindJoiningWaypoint(StationID existing_station, StationID station_to_join, bool adjacent, TileArea ta, Waypoint **wp, bool is_road);
 extern CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta);
-extern CommandCost CalculateRoadStopCost(TileArea tile_area, DoCommandFlags flags, bool is_drive_through, StationType station_type, Axis axis, DiagDirection ddir, StationID *est, RoadType rt, Money unit_cost);
+extern CommandCost CalculateRoadStopCost(TileArea tile_area, DoCommandFlags flags, bool is_drive_through, StationType station_type, const RoadStopSpec *roadstopspec, Axis axis, DiagDirection ddir, StationID *est, RoadType rt, Money unit_cost);
+extern CommandCost IsRailStationBridgeAboveOk(TileIndex tile, const StationSpec *statspec, uint8_t layout);
+
 extern CommandCost RemoveRoadWaypointStop(TileIndex tile, DoCommandFlags flags, int replacement_spec_index);
 
 /**
@@ -220,6 +222,17 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 
 	if (distant_join && (!_settings_game.station.distant_join_stations || !Waypoint::IsValidID(station_to_join))) return CMD_ERROR;
 
+	const StationSpec *spec = StationClass::Get(spec_class)->GetSpec(spec_index);
+	std::vector<uint8_t> layout_ptr;
+	layout_ptr.resize(count);
+	if (spec == nullptr) {
+		/* The layout must be 0 for the 'normal' waypoints by design. */
+		//memset(layout_ptr, 0, count);
+	} else {
+		/* But for NewGRF waypoints we like to have their style. */
+		GetStationLayout(&layout_ptr[0], count, 1, spec);
+	}
+
 	TileArea new_location(start_tile, width, height);
 
 	/* only AddCost for non-existing waypoints */
@@ -237,6 +250,10 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 		TileIndex tile = start_tile + i * offset;
 		CommandCost ret = IsValidTileForWaypoint(tile, axis, &est);
 		if (ret.Failed()) return ret;
+		ret = IsRailStationBridgeAboveOk(tile, spec, layout_ptr[i]);
+		if (ret.Failed()) {
+			return ret;
+		}
 	}
 
 	Waypoint *wp = nullptr;
@@ -364,7 +381,7 @@ CommandCost CmdBuildRoadWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 		unit_cost = _price[PR_BUILD_STATION_TRUCK];
 	}
 	StationID est = StationID::Invalid();
-	CommandCost cost = CalculateRoadStopCost(roadstop_area, flags, true, StationType::RoadWaypoint, axis, AxisToDiagDir(axis), &est, INVALID_ROADTYPE, unit_cost);
+	CommandCost cost = CalculateRoadStopCost(roadstop_area, flags, true, StationType::RoadWaypoint, roadstopspec, axis, AxisToDiagDir(axis), &est, INVALID_ROADTYPE, unit_cost);
 	if (cost.Failed()) return cost;
 
 	Waypoint *wp = nullptr;

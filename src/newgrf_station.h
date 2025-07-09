@@ -118,6 +118,12 @@ enum class StationSpecFlag : uint8_t {
 };
 using StationSpecFlags = EnumBitSet<StationSpecFlag, uint8_t>;
 
+enum class StationSpecIntlFlag : uint8_t {
+	BridgeHeightsSet,           ///< bridge_height[8] is set.
+	BridgeDisallowedPillarsSet, ///< bridge_disallowed_pillars[8] is set.
+};
+using StationSpecIntlFlags = EnumBitSet<StationSpecIntlFlag, uint8_t>;
+
 /** Station specification. */
 struct StationSpec : NewGRFSpecBase<StationClassID> {
 	StationSpec() : name(0),
@@ -162,6 +168,12 @@ struct StationSpec : NewGRFSpecBase<StationClassID> {
 
 	StationSpecFlags flags; ///< Bitmask of flags, bit 0: use different sprite set; bit 1: divide cargo about by station size
 
+	struct BridgeAboveFlags {
+		uint8_t height = UINT8_MAX;     ///< Minimum height for a bridge above, 0 for none
+		uint8_t disallowed_pillars = 0; ///< Disallowed pillar flags for a bridge above
+	};
+	std::vector<BridgeAboveFlags> bridge_above_flags; ///< List of bridge above flags.
+
 	enum class TileFlag : uint8_t {
 		Pylons = 0, ///< Tile should contain catenary pylons.
 		NoWires = 1, ///< Tile should NOT contain catenary wires.
@@ -172,10 +184,18 @@ struct StationSpec : NewGRFSpecBase<StationClassID> {
 
 	AnimationInfo<StationAnimationTriggers> animation;
 
+	StationSpecIntlFlags internal_flags{}; ///< Bitmask of internal spec flags
+
 	/** Custom platform layouts, keyed by platform and length combined. */
 	std::unordered_map<uint16_t, std::vector<uint8_t>> layouts;
 
 	std::vector<BadgeID> badges;
+
+	BridgeAboveFlags GetBridgeAboveFlags(uint gfx) const
+	{
+		if (gfx < this->bridge_above_flags.size()) return this->bridge_above_flags[gfx];
+		return {};
+	}
 };
 
 /** Class containing information relating to station classes. */
