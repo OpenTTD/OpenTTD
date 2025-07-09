@@ -113,6 +113,7 @@ jobs:
       uses: ./.github/actions/setup-vcpkg
       with:
         vcpkg-location: /vcpkg
+        mono-install-command: 'yum install -y mono-complete'
 
     - name: Install GCC problem matcher
       uses: ammaraskar/gcc-problem-matcher@master
