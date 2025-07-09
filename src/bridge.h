@@ -13,6 +13,7 @@
 #include "gfx_type.h"
 #include "tile_cmd.h"
 #include "timer/timer_game_calendar.h"
+#include <cstdint>
 
 /**
  * This enum is related to the definition of bridge pieces,
@@ -40,7 +41,7 @@ typedef uint BridgeType; ///< Bridge spec number.
 /**
  * Actions that can be performed when the vehicle enters the depot.
  */
-enum BridgePiecePillarFlags {
+enum class BridgePiecePillarFlag : uint8_t {
 	BPPF_CORNER_W        = 1 << 0,
 	BPPF_CORNER_S        = 1 << 1,
 	BPPF_CORNER_E        = 1 << 2,
@@ -51,14 +52,15 @@ enum BridgePiecePillarFlags {
 	BPPF_EDGE_SW         = 1 << 6,
 	BPPF_EDGE_NW         = 1 << 7,
 };
-DECLARE_ENUM_AS_BIT_SET(BridgePiecePillarFlags)
+using BridgePiecePillarFlags = EnumBitSet<BridgePiecePillarFlag, uint8_t>;
 
-enum BridgeSpecCtrlFlags {
+enum class BridgeSpecCtrlFlag : uint8_t{
 	BSCF_CUSTOM_PILLAR_FLAGS,
 	BSCF_INVALID_PILLAR_FLAGS,
 	BSCF_NOT_AVAILABLE_TOWN,
 	BSCF_NOT_AVAILABLE_AI_GS,
 };
+using BridgeSpecCtrlFlags = EnumBitSet<BridgeSpecCtrlFlag, uint8_t>;
 
 /**
  * Struct containing information about a single bridge type
@@ -75,7 +77,7 @@ struct BridgeSpec {
 	StringID transport_name[2];         ///< description of the bridge, when built for road or rail
 	std::vector<std::vector<PalSpriteID>> sprite_table; ///< table of sprites for drawing the bridge
 	uint8_t flags;                         ///< bit 0 set: disable drawing of far pillars.
-	uint8_t ctrl_flags;          ///< control flags
+	BridgeSpecCtrlFlags ctrl_flags;          ///< control flags
 	uint8_t pillar_flags[12];    ///< bridge pillar flags: 6 x pairs of x and y flags
 };
 

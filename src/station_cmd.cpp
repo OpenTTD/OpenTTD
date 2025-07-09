@@ -7,6 +7,7 @@
 
 /** @file station_cmd.cpp Handling of station tiles. */
 
+#include "core/enum_type.hpp"
 #include "stdafx.h"
 #include "core/flatset_type.hpp"
 #include "aircraft.h"
@@ -1229,8 +1230,18 @@ CommandCost IsRailStationBridgeAboveOk(TileIndex tile, const StationSpec *statsp
 	} else if (!statspec) {
 		/* Default stations/waypoints */
 		if (layout < 8) {
-			static const uint8_t st_flags[8] = { 0x50, 0xA0, 0x50, 0xA0, 0x50 | 0x26, 0xA0 | 0x1C, 0x50 | 0x89, 0xA0 | 0x43 };
-			disallowed_pillar_flags = (BridgePiecePillarFlags) st_flags[layout];
+			static const BridgePiecePillarFlags st_flags[8] = {
+				{BridgePiecePillarFlag::BPPF_EDGE_SW, BridgePiecePillarFlag::BPPF_EDGE_NE}, //0x50,
+				{BridgePiecePillarFlag::BPPF_EDGE_NW, BridgePiecePillarFlag::BPPF_EDGE_SE}, //0xA0,
+				{BridgePiecePillarFlag::BPPF_EDGE_SW, BridgePiecePillarFlag::BPPF_EDGE_NE}, //0x50,
+				{BridgePiecePillarFlag::BPPF_EDGE_NW, BridgePiecePillarFlag::BPPF_EDGE_SE}, //0xA0,
+				{BridgePiecePillarFlag::BPPF_EDGE_SW, BridgePiecePillarFlag::BPPF_EDGE_NE, BridgePiecePillarFlag::BPPF_EDGE_SE, BridgePiecePillarFlag::BPPF_CORNER_E, BridgePiecePillarFlag::BPPF_CORNER_S}, //0x50 | 0x26,
+				{BridgePiecePillarFlag::BPPF_EDGE_NW, BridgePiecePillarFlag::BPPF_EDGE_SE, BridgePiecePillarFlag::BPPF_EDGE_NE, BridgePiecePillarFlag::BPPF_CORNER_N, BridgePiecePillarFlag::BPPF_CORNER_E}, //0xA0 | 0x1C,
+				{BridgePiecePillarFlag::BPPF_EDGE_NW, BridgePiecePillarFlag::BPPF_EDGE_SE, BridgePiecePillarFlag::BPPF_EDGE_NW, BridgePiecePillarFlag::BPPF_CORNER_N, BridgePiecePillarFlag::BPPF_CORNER_W}, //0x50 | 0x89,
+				{BridgePiecePillarFlag::BPPF_EDGE_NW, BridgePiecePillarFlag::BPPF_EDGE_SE, BridgePiecePillarFlag::BPPF_EDGE_SW, BridgePiecePillarFlag::BPPF_CORNER_S, BridgePiecePillarFlag::BPPF_CORNER_W} //0xA0 | 0x43
+			};
+
+			disallowed_pillar_flags = st_flags[layout];
 		} else {
 			disallowed_pillar_flags = (BridgePiecePillarFlags) 0;
 		}
@@ -1243,7 +1254,7 @@ CommandCost IsRailStationBridgeAboveOk(TileIndex tile, const StationSpec *statsp
 		disallowed_pillar_flags = (BridgePiecePillarFlags) (axis == AXIS_X ? 0x50 : 0xA0);
 	}
 
-	if ((GetBridgeTilePillarFlags(tile, northern_bridge_end, southern_bridge_end, bridge_type, bridge_transport_type) & disallowed_pillar_flags) == 0) {
+	if ((GetBridgeTilePillarFlags(tile, northern_bridge_end, southern_bridge_end, bridge_type, bridge_transport_type) & disallowed_pillar_flags).Any()) {
 		return CommandCost();
 	} else {
 		return CommandCost(STR_ERROR_BRIDGE_PILLARS_OBSTRUCT_STATION);
@@ -1284,9 +1295,9 @@ CommandCost IsRoadStopBridgeAboveOK(TileIndex tile, const RoadStopSpec *spec, bo
 	} else if (drive_through) {
 		disallowed_pillar_flags = (BridgePiecePillarFlags) (DiagDirToAxis(entrance) == AXIS_X ? 0x50 : 0xA0);
 	} else {
-		SetBit(disallowed_pillar_flags, 4 + entrance);
+		disallowed_pillar_flags.Set((BridgePiecePillarFlags) (4 + entrance));
 	}
-	if ((GetBridgeTilePillarFlags(tile, northern_bridge_end, southern_bridge_end, bridge_type, bridge_transport_type) & disallowed_pillar_flags) == 0) {
+	if ((GetBridgeTilePillarFlags(tile, northern_bridge_end, southern_bridge_end, bridge_type, bridge_transport_type) & disallowed_pillar_flags).Any()) {
 		return CommandCost();
 	} else {
 		return CommandCost(STR_ERROR_BRIDGE_PILLARS_OBSTRUCT_STATION);

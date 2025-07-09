@@ -1613,7 +1613,7 @@ static BridgePieces CalcBridgePiece(uint north, uint south)
 
 BridgePiecePillarFlags GetBridgeTilePillarFlags(TileIndex tile, TileIndex northern_bridge_end, TileIndex southern_bridge_end, BridgeType bridge_type, TransportType bridge_transport_type)
 {
-	if (bridge_transport_type == TRANSPORT_WATER) return BPPF_ALL_CORNERS;
+	if (bridge_transport_type == TRANSPORT_WATER) return BridgePiecePillarFlag::BPPF_ALL_CORNERS;
 
 	BridgePieces piece = CalcBridgePiece(
 		GetTunnelBridgeLength(tile, northern_bridge_end) + 1,
@@ -1623,7 +1623,7 @@ BridgePiecePillarFlags GetBridgeTilePillarFlags(TileIndex tile, TileIndex northe
 
 	const BridgeSpec *spec = GetBridgeSpec(bridge_type);
 	const Axis axis = TileX(northern_bridge_end) == TileX(southern_bridge_end) ? AXIS_Y : AXIS_X;
-	if (!HasBit(spec->ctrl_flags, BSCF_INVALID_PILLAR_FLAGS)) {
+	if (!spec->ctrl_flags.Test(BridgeSpecCtrlFlag::BSCF_INVALID_PILLAR_FLAGS)) {
 		return (BridgePiecePillarFlags) spec->pillar_flags[piece * 2 + (axis == AXIS_Y ? 1 : 0)];
 	} else {
 		uint base_offset;
@@ -1635,7 +1635,7 @@ BridgePiecePillarFlags GetBridgeTilePillarFlags(TileIndex tile, TileIndex northe
 
 		const PalSpriteID *psid = &GetBridgeSpriteTable(bridge_type, piece)[base_offset];
 		if (axis == AXIS_Y) psid += 4;
-		return (BridgePiecePillarFlags) (psid[2].sprite != 0 ? BPPF_ALL_CORNERS : 0);
+		return psid[2].sprite != 0 ? BridgePiecePillarFlag::BPPF_ALL_CORNERS : BridgePiecePillarFlags();
 	}
 }
 
