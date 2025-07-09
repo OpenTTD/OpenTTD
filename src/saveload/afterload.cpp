@@ -796,7 +796,7 @@ bool AfterLoadGame()
 
 	/* Load the sprites */
 	GfxLoadSprites();
-	LoadStringWidthTable();
+	LoadStringWidthTable(FONTSIZES_REQUIRED);
 
 	/* Copy temporary data to Engine pool */
 	CopyTempEngineData();
@@ -3442,7 +3442,7 @@ void ReloadNewGRFData()
 {
 	/* reload grf data */
 	GfxLoadSprites();
-	LoadStringWidthTable();
+	LoadStringWidthTable(FONTSIZES_REQUIRED);
 	RecomputePrices();
 	/* reload vehicles */
 	ResetVehicleHash();
