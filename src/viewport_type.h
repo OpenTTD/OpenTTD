@@ -113,6 +113,8 @@ DECLARE_ENUM_AS_BIT_SET(ViewportPlaceMethod)
  * you've selected it.
  */
 enum ViewportDragDropSelectionProcess : uint8_t {
+	DDSP_NONE,
+
 	DDSP_DEMOLISH_AREA,        ///< Clear area
 	DDSP_RAISE_AND_LEVEL_AREA, ///< Raise / level area
 	DDSP_LOWER_AND_LEVEL_AREA, ///< Lower / level area

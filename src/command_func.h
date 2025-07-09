@@ -94,6 +94,8 @@ protected:
 	static void LogCommandExecution(Commands cmd, StringID err_message, const CommandDataBuffer &args, bool failed);
 };
 
+void HandleSelectionQuery(CommandCost &&res);
+
 /**
  * Templated wrapper that exposes the command parameter arguments
  * for the various Command::Do/Post calls.
@@ -162,6 +164,59 @@ public:
 		InternalDoAfter(ExtractCommandCost(res), flags, counter.IsTopLevel(), false);
 
 		return res;
+	}
+
+	/**
+	 * Shortcut to query a command with its flags to test if it will succeed.
+	 * @param args Parameters for the command.
+	 * @return cost of the command.
+	 */
+	static inline CommandCost Query(Targs... args)
+	{
+		Tret res = Do(CommandFlagsToDCFlags(GetCommandFlags<Tcmd>()), std::forward<Targs>(args)...);
+		return ExtractCommandCost(res);
+	}
+
+	/**
+	 * Post or query a command.
+	 * @param query Whether to query (for selection) or post the command.
+	 * @param err_message Message prefix to show on error.
+	 * @param callback A callback function to call after the command is finished.
+	 * @param args Parameters for the command.
+	 * @return \c true if the command was posted and succeeded, else \c false.
+	 */
+	template <typename Tcallback>
+	static inline bool PostOrQuery(bool query, StringID err_message, Tcallback *callback, Targs... args)
+	{
+		if (query) {
+			HandleSelectionQuery(Query(std::forward<Targs>(args)...));
+			return false;
+		} else {
+			return Post(err_message, callback, std::forward<Targs>(args)...);
+		}
+	}
+
+	/**
+	 * Shortcut for the long PostOrQuery when not using a callback.
+	 * @param query Whether to query (for selection) or post the command.
+	 * @param err_message Message prefix to show on error.
+	 * @param args Parameters for the command.
+	 * @return \c true if the command was posted and succeeded, else \c false.
+	 */
+	static inline bool PostOrQuery(bool query, StringID err_message, Targs... args)
+	{
+		return PostOrQuery<CommandCallback>(query, err_message, nullptr, std::forward<Targs>(args)...);
+	}
+
+	/**
+	 * Shortcut for the long PostOrQuery when not using a callback or an error message.
+	 * @param query Whether to query (for selection) or post the command.
+	 * @param args Parameters for the command.
+	 * @return \c true if the command was posted and succeeded, else \c false.
+	 */
+	static inline bool PostOrQuery(bool query, Targs... args)
+	{
+		return PostOrQuery<CommandCallback>(query, static_cast<StringID>(0), nullptr, std::forward<Targs>(args)...);
 	}
 
 	/**

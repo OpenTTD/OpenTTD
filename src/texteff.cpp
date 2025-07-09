@@ -126,8 +126,8 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 	for (const TextEffect &te : _text_effects) {
 		if (!te.IsValid()) continue;
 
-		if (te.mode == TE_RISING || _settings_client.gui.loading_indicators) {
-			std::string *str = ViewportAddString(dpi, &te, flags, INVALID_COLOUR);
+		if (te.mode == TE_RISING || te.mode == TE_ERROR || _settings_client.gui.loading_indicators) {
+			std::string *str = ViewportAddString(dpi, &te, te.mode == TE_ERROR ? flags | ViewportStringFlag::TextColour | ViewportStringFlag::TransparentRect : flags, te.mode == TE_ERROR ? COLOUR_RED : INVALID_COLOUR);
 			if (str == nullptr) continue;
 
 			*str = te.msg.GetDecodedString();
