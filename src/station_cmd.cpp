@@ -77,6 +77,8 @@
 
 #include "safeguards.h"
 
+static StationSpec::TileFlags GetStationTileFlags(StationGfx gfx, const StationSpec *statspec);
+
 /**
  * Static instance of FlowStat::SharesMap.
  * Note: This instance is created on task start.
@@ -864,6 +866,29 @@ static CommandCost CheckFlatLandAirport(AirportTileTableIterator tile_iter, DoCo
 	return cost;
 }
 
+static CommandCost IsRailStationBridgeAboveOk(TileIndex tile, const StationSpec *statspec, uint8_t layout, int bridge_height)
+{
+	if (statspec == nullptr) {
+		/* Default stations/waypoints */
+		int height_above = layout < 4 ? 2 : 5;
+		if (GetTileMaxZ(tile) + height_above > bridge_height) return CommandCost(STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION);
+	} else {
+		int height_above = layout < std::size(statspec->tilespecs) ? statspec->tilespecs[layout].height : 0;
+		if (height_above == 0) return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+		if (GetTileMaxZ(tile) + height_above > bridge_height) return CommandCost(STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION);
+	}
+
+	return CommandCost();
+}
+
+CommandCost IsRailStationBridgeAboveOk(TileIndex tile, const StationSpec *statspec, uint8_t layout)
+{
+	if (!IsBridgeAbove(tile)) return CommandCost();
+
+	TileIndex rampsouth = GetSouthernBridgeEnd(tile);
+	return IsRailStationBridgeAboveOk(tile, statspec, layout, GetBridgeHeight(rampsouth));
+}
+
 /**
  * Checks if a rail station can be built at the given tile.
  * @param tile_cur Tile to check.
@@ -888,7 +913,7 @@ static CommandCost CheckFlatLandRailStation(TileIndex tile_cur, TileIndex north_
 	const StationSpec *statspec = StationClass::Get(spec_class)->GetSpec(spec_index);
 	bool slope_cb = statspec != nullptr && statspec->callback_mask.Test(StationCallbackMask::SlopeCheck);
 
-	CommandCost ret = CheckBuildableTile(tile_cur, invalid_dirs, allowed_z, false);
+	CommandCost ret = CheckBuildableTile(tile_cur, invalid_dirs, allowed_z, false, false);
 	if (ret.Failed()) return ret;
 	cost.AddCost(ret.GetCost());
 
@@ -949,6 +974,33 @@ static CommandCost CheckFlatLandRailStation(TileIndex tile_cur, TileIndex north_
 	return cost;
 }
 
+static CommandCost IsRoadStopBridgeAboveOk(TileIndex tile, const RoadStopSpec *spec, bool drive_through, DiagDirection entrance, int bridge_height)
+{
+	uint layout = drive_through ? (GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET + DiagDirToAxis(entrance)) : entrance;
+
+	if (spec == nullptr) {
+		if (GetTileMaxZ(tile) + (drive_through ? 1 : 2) > bridge_height) {
+			return CommandCost(STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION);
+		}
+	} else {
+		int height = spec->tilespecs[layout].height;
+		if (height == 0) return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+		if (GetTileMaxZ(tile) + height > bridge_height) {
+			return CommandCost(STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION);
+		}
+	}
+
+	return CommandCost();
+}
+
+static CommandCost IsRoadStopBridgeAboveOk(TileIndex tile, const RoadStopSpec *spec, bool drive_through, DiagDirection entrance)
+{
+	if (!IsBridgeAbove(tile)) return CommandCost();
+
+	TileIndex rampsouth = GetSouthernBridgeEnd(tile);
+	return IsRoadStopBridgeAboveOk(tile, spec, drive_through, entrance, GetBridgeHeight(rampsouth));
+}
+
 /**
  * Checks if a road stop can be built at the given tile.
  * @param cur_tile Tile to check.
@@ -962,13 +1014,16 @@ static CommandCost CheckFlatLandRailStation(TileIndex tile_cur, TileIndex north_
  * @param rt Road type to build, may be INVALID_ROADTYPE if an existing road is required.
  * @return The cost in case of success, or an error code if it failed.
  */
-static CommandCost CheckFlatLandRoadStop(TileIndex cur_tile, int &allowed_z, DoCommandFlags flags, DiagDirections invalid_dirs, bool is_drive_through, StationType station_type, Axis axis, StationID *station, RoadType rt)
+static CommandCost CheckFlatLandRoadStop(TileIndex cur_tile, int &allowed_z, const RoadStopSpec *spec, DoCommandFlags flags, DiagDirections invalid_dirs, bool is_drive_through, StationType station_type, Axis axis, StationID *station, RoadType rt)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
-	CommandCost ret = CheckBuildableTile(cur_tile, invalid_dirs, allowed_z, !is_drive_through);
+	CommandCost ret = CheckBuildableTile(cur_tile, invalid_dirs, allowed_z, !is_drive_through, false);
 	if (ret.Failed()) return ret;
 	cost.AddCost(ret.GetCost());
+
+	ret = IsRoadStopBridgeAboveOk(cur_tile, spec, is_drive_through, DiagDirection{FindFirstBit(invalid_dirs.base())});
+	if (ret.Failed()) return ret;
 
 	/* If station is set, then we have special handling to allow building on top of already existing stations.
 	 * Station points to StationID::Invalid() if we can build on any station.
@@ -1362,6 +1417,9 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 		w_org = numtracks;
 	}
 
+	/* Check if the first tile and the last tile are valid */
+	if (!IsValidTile(tile_org) || TileAddWrap(tile_org, w_org - 1, h_org - 1) == INVALID_TILE) return CMD_ERROR;
+
 	bool reuse = (station_to_join != NEW_STATION);
 	if (!reuse) station_to_join = StationID::Invalid();
 	bool distant_join = (station_to_join != StationID::Invalid());
@@ -1392,8 +1450,29 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 		if (ret.Failed()) return ret;
 	}
 
-	/* Check if we can allocate a custom stationspec to this station */
 	const StationSpec *statspec = StationClass::Get(spec_class)->GetSpec(spec_index);
+	TileIndexDiff tile_delta = TileOffsByAxis(axis); // offset to go to the next platform tile
+	TileIndexDiff track_delta = TileOffsByAxis(OtherAxis(axis)); // offset to go to the next track
+
+	std::vector<uint8_t> layouts(numtracks * plat_len);
+	GetStationLayout(layouts.data(), numtracks, plat_len, statspec);
+
+	{
+		auto it = std::begin(layouts);
+		TileIndex tile_track = tile_org;
+		for (uint i = 0; i < numtracks; i++) {
+			TileIndex tile = tile_track;
+			for (uint j = 0; j < plat_len; j++) {
+				uint8_t layout = ((*it++) & ~1) + axis; // Adjust layout piece to match axis.
+				ret = IsRailStationBridgeAboveOk(tile, statspec, layout);
+				if (ret.Failed()) return ret;
+				tile += tile_delta;
+			}
+			tile_track += track_delta;
+		}
+	}
+
+	/* Check if we can allocate a custom stationspec to this station */
 	int specindex = AllocateSpecToStation(statspec, st, flags.Test(DoCommandFlag::Execute));
 	if (specindex == -1) return CommandCost(STR_ERROR_TOO_MANY_STATION_SPECS);
 
@@ -1423,13 +1502,7 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 			st->cached_anim_triggers.Set(statspec->animation.triggers);
 		}
 
-		TileIndexDiff tile_delta = TileOffsByAxis(axis); // offset to go to the next platform tile
-		TileIndexDiff track_delta = TileOffsByAxis(OtherAxis(axis)); // offset to go to the next track
 		Track track = AxisToTrack(axis);
-
-		std::vector<uint8_t> layouts(numtracks * plat_len);
-		GetStationLayout(layouts.data(), numtracks, plat_len, statspec);
-
 		uint8_t numtracks_orig = numtracks;
 
 		Company *c = Company::Get(st->owner);
@@ -1440,6 +1513,7 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 			int w = plat_len;
 			do {
 				uint8_t layout = layouts[layout_idx++];
+
 				if (IsRailStationTile(tile) && HasStationReservation(tile)) {
 					/* Check for trains having a reservation for this tile. */
 					Train *v = GetTrainForReservation(tile, AxisToTrack(GetRailStationAxis(tile)));
@@ -1913,7 +1987,7 @@ static CommandCost FindJoiningRoadStop(StationID existing_stop, StationID statio
  * @param unit_cost The cost to build one road stop of the current type.
  * @return The cost in case of success, or an error code if it failed.
  */
-CommandCost CalculateRoadStopCost(TileArea tile_area, DoCommandFlags flags, bool is_drive_through, StationType station_type, Axis axis, DiagDirection ddir, StationID *est, RoadType rt, Money unit_cost)
+CommandCost CalculateRoadStopCost(TileArea tile_area, DoCommandFlags flags, bool is_drive_through, StationType station_type, const RoadStopSpec *roadstopspec, Axis axis, DiagDirection ddir, StationID *est, RoadType rt, Money unit_cost)
 {
 	DiagDirections invalid_dirs{};
 	if (is_drive_through) {
@@ -1927,7 +2001,7 @@ CommandCost CalculateRoadStopCost(TileArea tile_area, DoCommandFlags flags, bool
 	int allowed_z = -1;
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	for (TileIndex cur_tile : tile_area) {
-		CommandCost ret = CheckFlatLandRoadStop(cur_tile, allowed_z, flags, invalid_dirs, is_drive_through, station_type, axis, est, rt);
+		CommandCost ret = CheckFlatLandRoadStop(cur_tile, allowed_z, roadstopspec, flags, invalid_dirs, is_drive_through, station_type, axis, est, rt);
 		if (ret.Failed()) return ret;
 
 		bool is_preexisting_roadstop = IsTileType(cur_tile, MP_STATION) && IsAnyRoadStop(cur_tile);
@@ -2008,7 +2082,7 @@ CommandCost CmdBuildRoadStop(DoCommandFlags flags, TileIndex tile, uint8_t width
 		unit_cost = _price[is_truck_stop ? PR_BUILD_STATION_TRUCK : PR_BUILD_STATION_BUS];
 	}
 	StationID est = StationID::Invalid();
-	CommandCost cost = CalculateRoadStopCost(roadstop_area, flags, is_drive_through, is_truck_stop ? StationType::Truck : StationType::Bus, axis, ddir, &est, rt, unit_cost);
+	CommandCost cost = CalculateRoadStopCost(roadstop_area, flags, is_drive_through, is_truck_stop ? StationType::Truck : StationType::Bus, roadstopspec, axis, ddir, &est, rt, unit_cost);
 	if (cost.Failed()) return cost;
 
 	Station *st = nullptr;
@@ -3073,6 +3147,51 @@ bool SplitGroundSpriteForOverlay(const TileInfo *ti, SpriteID *ground, RailTrack
 	return true;
 }
 
+static BridgePillarFlags GetRailStationBlockedPillars(const StationSpec *statspec, uint8_t layout)
+{
+	static const BridgePillarFlags default_pillar_flags[] = {
+		{BridgePillarFlag::EdgeSW, BridgePillarFlag::EdgeNE}, // X empty
+		{BridgePillarFlag::EdgeNW, BridgePillarFlag::EdgeSE}, // Y empty
+		{BridgePillarFlag::EdgeSW, BridgePillarFlag::EdgeNE}, // X small
+		{BridgePillarFlag::EdgeNW, BridgePillarFlag::EdgeSE}, // Y small
+		{BridgePillarFlag::EdgeSW, BridgePillarFlag::EdgeNE, BridgePillarFlag::EdgeSE, BridgePillarFlag::CornerE, BridgePillarFlag::CornerS}, // X large
+		{BridgePillarFlag::EdgeNW, BridgePillarFlag::EdgeSE, BridgePillarFlag::EdgeSW, BridgePillarFlag::CornerS, BridgePillarFlag::CornerW}, // Y large
+		{BridgePillarFlag::EdgeSW, BridgePillarFlag::EdgeNE, BridgePillarFlag::EdgeNW, BridgePillarFlag::CornerN, BridgePillarFlag::CornerW}, // X large
+		{BridgePillarFlag::EdgeNW, BridgePillarFlag::EdgeSE, BridgePillarFlag::EdgeNE, BridgePillarFlag::CornerN, BridgePillarFlag::CornerE}, // Y large
+	};
+
+	if (statspec == nullptr) {
+		/* Default stations/waypoints */
+		if (layout < 8) return default_pillar_flags[layout];
+		return {};
+	}
+	if (layout < std::size(statspec->tilespecs) && statspec->tilespecs[layout].disallowed_pillars != BRIDGEPILLARFLAGS_ALL) {
+		/* Pllar flags set by NewGRF */
+		return statspec->tilespecs[layout].disallowed_pillars;
+	}
+	if (GetStationTileFlags(layout, statspec).Test(StationSpec::TileFlag::Blocked)) {
+		/* Blocked station tile. */
+		return {};
+	}
+
+	/* Non-blocked station tile. */
+	return default_pillar_flags[layout % 2];
+}
+
+static BridgePillarFlags GetRoadStopBlockedPillars(const RoadStopSpec *spec, bool drive_through, uint8_t layout)
+{
+	static constexpr BridgePillarFlags default_pillar_flags_x{BridgePillarFlag::EdgeSW, BridgePillarFlag::EdgeNE};
+	static constexpr BridgePillarFlags default_pillar_flags_y{BridgePillarFlag::EdgeNW, BridgePillarFlag::EdgeSE};
+
+	if (spec != nullptr && spec->tilespecs[layout].disallowed_pillars != BRIDGEPILLARFLAGS_ALL) {
+		return spec->tilespecs[layout].disallowed_pillars;
+	}
+	if (drive_through) {
+		return HasBit(layout, 0) ? default_pillar_flags_y : default_pillar_flags_x;
+	}
+	return {BridgePillarFlag::EdgeNE + (DiagDirection)layout};
+}
+
 static void DrawTile_Station(TileInfo *ti)
 {
 	const NewGRFSpriteLayout *layout = nullptr;
@@ -3086,6 +3205,7 @@ static void DrawTile_Station(TileInfo *ti)
 	BaseStation *st = nullptr;
 	const StationSpec *statspec = nullptr;
 	uint tile_layout = 0;
+	BridgePillarFlags blocked_pillars = {};
 
 	if (HasStationRail(ti->tile)) {
 		rti = GetRailTypeInfo(GetRailType(ti->tile));
@@ -3114,6 +3234,7 @@ static void DrawTile_Station(TileInfo *ti)
 				}
 			}
 		}
+		blocked_pillars = GetRailStationBlockedPillars(statspec, GetStationGfx(ti->tile));
 	} else {
 		total_offset = 0;
 	}
@@ -3358,6 +3479,7 @@ draw_default_foundation:
 				uint sprite_offset = GetDriveThroughStopAxis(ti->tile) == AXIS_X ? 1 : 0;
 				DrawRoadOverlays(ti, PAL_NONE, road_rti, tram_rti, sprite_offset, sprite_offset);
 			}
+			blocked_pillars = GetRoadStopBlockedPillars(stopspec, true, view);
 		} else {
 			/* Non-drivethrough road stops are only valid for roads. */
 			assert(road_rt != INVALID_ROADTYPE && tram_rt == INVALID_ROADTYPE);
@@ -3366,6 +3488,7 @@ draw_default_foundation:
 				SpriteID ground = GetCustomRoadSprite(road_rti, ti->tile, ROTSG_ROADSTOP);
 				DrawGroundSprite(ground + view, PAL_NONE);
 			}
+			blocked_pillars = GetRoadStopBlockedPillars(stopspec, false, view);
 		}
 
 		if (stopspec == nullptr || !stopspec->flags.Test(RoadStopSpecFlag::NoCatenary)) {
@@ -3380,6 +3503,7 @@ draw_default_foundation:
 	}
 
 	DrawRailTileSeq(ti, t, TO_BUILDINGS, total_offset, relocation, palette);
+	DrawBridgeMiddle(ti, blocked_pillars);
 }
 
 void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, RoadType roadtype, int image)
@@ -5162,6 +5286,40 @@ uint FlowStatMap::GetFlowFromVia(StationID from, StationID via) const
 	return i->second.GetShare(via);
 }
 
+static CommandCost CheckBuildAbove_Station(TileIndex tile, DoCommandFlags flags, Axis, int height)
+{
+	switch (GetStationType(tile)) {
+		case StationType::Rail:
+		case StationType::RailWaypoint: {
+			CommandCost ret = IsRailStationBridgeAboveOk(tile, GetStationSpec(tile), GetStationGfx(tile), height + 1);
+			if (ret.Failed()) {
+				if (ret.GetErrorMessage() != INVALID_STRING_ID) return ret;
+				break;
+			}
+			return CommandCost();
+		}
+
+		case StationType::Bus:
+		case StationType::Truck:
+		case StationType::RoadWaypoint: {
+			CommandCost ret = IsRoadStopBridgeAboveOk(tile, GetRoadStopSpec(tile), IsDriveThroughStopTile(tile),
+					IsDriveThroughStopTile(tile) ? AxisToDiagDir(GetDriveThroughStopAxis(tile)) : GetBayRoadStopDir(tile), height + 1);
+			if (ret.Failed()) {
+				if (ret.GetErrorMessage() != INVALID_STRING_ID) return ret;
+				break;
+			}
+			return CommandCost();
+		}
+
+		case StationType::Buoy:
+			return CommandCost();
+
+		default: break;
+	}
+
+	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
+}
+
 extern const TileTypeProcs _tile_type_station_procs = {
 	DrawTile_Station,           // draw_tile_proc
 	GetSlopePixelZ_Station,     // get_slope_z_proc
@@ -5177,5 +5335,5 @@ extern const TileTypeProcs _tile_type_station_procs = {
 	VehicleEnter_Station,       // vehicle_enter_tile_proc
 	GetFoundation_Station,      // get_foundation_proc
 	TerraformTile_Station,      // terraform_tile_proc
-	nullptr, // check_build_above_proc
+	CheckBuildAbove_Station, // check_build_above_proc
 };

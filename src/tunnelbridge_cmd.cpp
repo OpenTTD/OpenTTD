@@ -441,6 +441,14 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 		/* If bridge belonged to bankrupt company, it has a new owner now */
 		is_new_owner = (owner == OWNER_NONE);
 		if (is_new_owner) owner = company;
+
+		/* Check if the new bridge is compatible with tiles underneath. */
+		TileIndexDiff delta = (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
+		for (TileIndex tile = tile_start + delta; tile != tile_end; tile += delta) {
+			CommandCost ret = CheckBuildAbove(tile, flags, direction, z_start);
+			if (ret.Failed()) return ret;
+			cost.AddCost(ret.GetCost());
+		}
 	} else {
 		/* Build a new bridge. */
 
@@ -1418,7 +1426,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		AddSortableSpriteToDraw(SPR_EMPTY_BOUNDING_BOX, PAL_NONE, *ti, rear_sep[tunnelbridge_direction]);
 		AddSortableSpriteToDraw(SPR_EMPTY_BOUNDING_BOX, PAL_NONE, *ti, front_sep[tunnelbridge_direction]);
 
-		DrawBridgeMiddle(ti);
+		DrawBridgeMiddle(ti, {});
 	} else { // IsBridge(ti->tile)
 		DrawFoundation(ti, GetBridgeFoundation(ti->tileh, DiagDirToAxis(tunnelbridge_direction)));
 
@@ -1509,7 +1517,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			}
 		}
 
-		DrawBridgeMiddle(ti);
+		DrawBridgeMiddle(ti, {});
 	}
 }
 
@@ -1547,11 +1555,26 @@ static BridgePieces CalcBridgePiece(uint north, uint south)
 	}
 }
 
+BridgePillarFlags GetBridgeTilePillarFlags(TileIndex tile, TileIndex rampnorth, TileIndex rampsouth, BridgeType type, TransportType transport_type)
+{
+	if (transport_type == TRANSPORT_WATER) return BRIDGEPILLARFLAGS_ALL_CORNERS;
+
+	const BridgeSpec *spec = GetBridgeSpec(type);
+	if (!spec->ctrl_flags.Test(BridgeSpecCtrlFlag::InvalidPillarFlags)) {
+		BridgePieces piece = CalcBridgePiece(GetTunnelBridgeLength(tile, rampnorth) + 1, GetTunnelBridgeLength(tile, rampsouth) + 1);
+		Axis axis = TileX(rampnorth) == TileX(rampsouth) ? AXIS_Y : AXIS_X;
+
+		return spec->pillar_flags[piece][axis == AXIS_Y ? 1 : 0];
+	}
+
+	return BRIDGEPILLARFLAGS_ALL_CORNERS;
+}
+
 /**
  * Draw the middle bits of a bridge.
  * @param ti Tile information of the tile to draw it on.
  */
-void DrawBridgeMiddle(const TileInfo *ti)
+void DrawBridgeMiddle(const TileInfo *ti, BridgePillarFlags blocked_pillars)
 {
 	/* Sectional view of bridge bounding boxes:
 	 *
@@ -1575,6 +1598,7 @@ void DrawBridgeMiddle(const TileInfo *ti)
 	TileIndex rampsouth = GetSouthernBridgeEnd(ti->tile);
 	TransportType transport_type = GetTunnelBridgeTransportType(rampsouth);
 	Axis axis = GetBridgeAxis(ti->tile);
+	BridgePillarFlags pillars;
 
 	uint base_offset = GetBridgeMiddleAxisBaseOffset(axis);
 	std::span<const PalSpriteID> psid;
@@ -1584,9 +1608,11 @@ void DrawBridgeMiddle(const TileInfo *ti)
 		drawfarpillar = !HasBit(GetBridgeSpec(bridge_type)->flags, 0);
 		base_offset += GetBridgeSpriteTableBaseOffset(transport_type, rampsouth);
 		psid = GetBridgeSpriteTable(bridge_type, CalcBridgePiece(GetTunnelBridgeLength(ti->tile, rampnorth) + 1, GetTunnelBridgeLength(ti->tile, rampsouth) + 1));
+		pillars = GetBridgeTilePillarFlags(ti->tile, rampnorth, rampsouth, bridge_type, transport_type);
 	} else {
 		drawfarpillar = true;
 		psid = _aqueduct_sprite_table_middle;
+		pillars = BRIDGEPILLARFLAGS_ALL_CORNERS;
 	}
 	psid = psid.subspan(base_offset, 3);
 
@@ -1655,6 +1681,7 @@ void DrawBridgeMiddle(const TileInfo *ti)
 	/* Do not draw anything more if bridges are invisible */
 	if (IsInvisibilitySet(TO_BRIDGES)) return;
 
+	if (blocked_pillars.Any(pillars)) return;
 	DrawBridgePillars(psid[2], ti, axis, drawfarpillar, x, y, z);
 }
 

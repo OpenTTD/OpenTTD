@@ -926,12 +926,12 @@ static void DrawTile_Water(TileInfo *ti)
 	switch (GetWaterTileType(ti->tile)) {
 		case WATER_TILE_CLEAR:
 			DrawWaterClassGround(ti);
-			DrawBridgeMiddle(ti);
+			DrawBridgeMiddle(ti, {});
 			break;
 
 		case WATER_TILE_COAST: {
 			DrawShoreTile(ti->tileh);
-			DrawBridgeMiddle(ti);
+			DrawBridgeMiddle(ti, {});
 			break;
 		}
 
