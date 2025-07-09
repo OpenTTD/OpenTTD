@@ -41,6 +41,7 @@ jobs:
       uses: ./.github/actions/setup-vcpkg
       with:
         vcpkg-location: ${{ runner.temp }}/vcpkg
+        mono-install-command: 'brew install mono'
 
     - name: Install dependencies
       env:
