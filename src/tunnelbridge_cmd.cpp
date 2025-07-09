@@ -275,10 +275,10 @@ static Money TunnelBridgeClearCost(TileIndex tile, Price base_price)
 	return base_cost;
 }
 
-static CommandCost CheckBuildAbove(TileIndex tile, DoCommandFlags flags, Axis axis, int height)
+static CommandCost CheckBuildAbove(TileIndex tile, DoCommandFlags flags, Axis axis, int height, BridgePillarFlags bridge_pillars)
 {
 	if (_tile_type_procs[GetTileType(tile)]->check_build_above_proc != nullptr) {
-		return _tile_type_procs[GetTileType(tile)]->check_build_above_proc(tile, flags, axis, height);
+		return _tile_type_procs[GetTileType(tile)]->check_build_above_proc(tile, flags, axis, height, bridge_pillars);
 	}
 
 	/* A tile without a handler must be cleared. */
@@ -441,6 +441,14 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 		/* If bridge belonged to bankrupt company, it has a new owner now */
 		is_new_owner = (owner == OWNER_NONE);
 		if (is_new_owner) owner = company;
+
+		/* Check if the new bridge is compatible with tiles underneath. */
+		TileIndexDiff delta = (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
+		for (TileIndex tile = tile_start + delta; tile != tile_end; tile += delta) {
+			CommandCost ret = CheckBuildAbove(tile, flags, direction, z_start, GetBridgeTilePillarFlags(tile, tile_start, tile_end, bridge_type, transport_type));
+			if (ret.Failed()) return ret;
+			cost.AddCost(ret.GetCost());
+		}
 	} else {
 		/* Build a new bridge. */
 
@@ -491,7 +499,7 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 				return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 			}
 
-			ret = CheckBuildAbove(tile, flags, direction, z_start);
+			ret = CheckBuildAbove(tile, flags, direction, z_start, GetBridgeTilePillarFlags(tile, tile_start, tile_end, bridge_type, transport_type));
 			if (ret.Failed()) return ret;
 			cost.AddCost(ret.GetCost());
 
@@ -1547,6 +1555,26 @@ static BridgePieces CalcBridgePiece(uint north, uint south)
 	}
 }
 
+BridgePillarFlags GetBridgeTilePillarFlags(TileIndex tile, TileIndex rampnorth, TileIndex rampsouth, BridgeType type, TransportType transport_type)
+{
+	if (transport_type == TRANSPORT_WATER) return BRIDGEPILLARFLAGS_ALL_CORNERS;
+
+	BridgePieces piece = CalcBridgePiece(GetTunnelBridgeLength(tile, rampnorth) + 1, GetTunnelBridgeLength(tile, rampsouth) + 1);
+	Axis axis = TileX(rampnorth) == TileX(rampsouth) ? AXIS_Y : AXIS_X;
+
+	const BridgeSpec *spec = GetBridgeSpec(type);
+	if (!spec->ctrl_flags.Test(BridgeSpecCtrlFlag::InvalidPillarFlags)) {
+		return spec->pillar_flags[piece][axis == AXIS_Y ? 1 : 0];
+	}
+
+	uint base_offset = GetBridgeMiddleAxisBaseOffset(axis);
+	base_offset += GetBridgeSpriteTableBaseOffset(transport_type, rampsouth);
+	std::span<const PalSpriteID> psid = GetBridgeSpriteTable(type, piece);
+	psid = psid.subspan(base_offset, 3);
+
+	return psid[2].sprite != 0 ? BRIDGEPILLARFLAGS_ALL_CORNERS : BridgePillarFlags{};
+}
+
 /**
  * Draw the middle bits of a bridge.
  * @param ti Tile information of the tile to draw it on.
@@ -2057,7 +2085,7 @@ static CommandCost TerraformTile_TunnelBridge(TileIndex tile, DoCommandFlags fla
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }
 
-static CommandCost CheckBuildAbove_TunnelBridge(TileIndex tile, DoCommandFlags flags, Axis axis, int height)
+static CommandCost CheckBuildAbove_TunnelBridge(TileIndex tile, DoCommandFlags flags, Axis axis, int height, BridgePillarFlags)
 {
 	if (IsTunnel(tile)) return CommandCost();
 

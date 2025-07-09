@@ -1410,7 +1410,7 @@ static CommandCost TerraformTile_Water(TileIndex tile, DoCommandFlags flags, int
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }
 
-static CommandCost CheckBuildAbove_Water(TileIndex tile, DoCommandFlags flags, Axis, int)
+static CommandCost CheckBuildAbove_Water(TileIndex tile, DoCommandFlags flags, Axis, int, BridgePillarFlags)
 {
 	if (IsWater(tile) || IsCoast(tile)) return CommandCost();
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);

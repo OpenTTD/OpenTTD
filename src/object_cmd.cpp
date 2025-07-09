@@ -929,7 +929,7 @@ static CommandCost TerraformTile_Object(TileIndex tile, DoCommandFlags flags, in
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }
 
-static CommandCost CheckBuildAbove_Object(TileIndex tile, DoCommandFlags flags, Axis, int height)
+static CommandCost CheckBuildAbove_Object(TileIndex tile, DoCommandFlags flags, Axis, int height, BridgePillarFlags)
 {
 	const ObjectSpec *spec = ObjectSpec::GetByTile(tile);
 	if (spec->flags.Test(ObjectFlag::AllowUnderBridge) && GetTileMaxZ(tile) + spec->height <= height) {

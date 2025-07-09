@@ -2616,7 +2616,7 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 	return found_convertible_road ? cost : error;
 }
 
-static CommandCost CheckBuildAbove_Road(TileIndex tile, DoCommandFlags flags, Axis, int)
+static CommandCost CheckBuildAbove_Road(TileIndex tile, DoCommandFlags flags, Axis, int, BridgePillarFlags)
 {
 	if (!IsRoadDepot(tile)) return CommandCost();
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);

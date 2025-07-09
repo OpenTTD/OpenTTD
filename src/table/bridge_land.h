@@ -753,7 +753,7 @@ static constexpr BridgePillarFlags BRIDGEPILLARFLAGS_ALL_CORNERS = {
 };
 
 /** Pillar flags for bridges which have pillars on the all corners on each piece. */
-static constexpr std::array<std::array<BridgePillarFlags, AXIS_END>, NUM_BRIDGE_PIECES - 1> ALL_PILLARS = {{
+static const std::array<std::array<BridgePillarFlags, AXIS_END>, NUM_BRIDGE_PIECES - 1> ALL_PILLARS = {{
 	{{BRIDGEPILLARFLAGS_ALL_CORNERS, BRIDGEPILLARFLAGS_ALL_CORNERS}},
 	{{BRIDGEPILLARFLAGS_ALL_CORNERS, BRIDGEPILLARFLAGS_ALL_CORNERS}},
 	{{BRIDGEPILLARFLAGS_ALL_CORNERS, BRIDGEPILLARFLAGS_ALL_CORNERS}},
@@ -763,7 +763,7 @@ static constexpr std::array<std::array<BridgePillarFlags, AXIS_END>, NUM_BRIDGE_
 }};
 
 /** Pillar flags for suspension style bridges. */
-static constexpr std::array<std::array<BridgePillarFlags, AXIS_END>, NUM_BRIDGE_PIECES - 1> SUSPENSION_PILLARS = {{
+static const std::array<std::array<BridgePillarFlags, AXIS_END>, NUM_BRIDGE_PIECES - 1> SUSPENSION_PILLARS = {{
 	{{{BridgePillarFlag::CornerW, BridgePillarFlag::CornerS}, {BridgePillarFlag::CornerS, BridgePillarFlag::CornerE}}},
 	{{{BridgePillarFlag::CornerE, BridgePillarFlag::CornerN}, {BridgePillarFlag::CornerW, BridgePillarFlag::CornerN}}},
 	{{{BridgePillarFlag::CornerE, BridgePillarFlag::CornerN}, {BridgePillarFlag::CornerW, BridgePillarFlag::CornerN}}},
@@ -773,7 +773,7 @@ static constexpr std::array<std::array<BridgePillarFlags, AXIS_END>, NUM_BRIDGE_
 }};
 
 /** Pillar flags for cantilever style bridges. */
-static constexpr std::array<std::array<BridgePillarFlags, AXIS_END>, NUM_BRIDGE_PIECES - 1> CANTILEVER_PILLARS = {{
+static const std::array<std::array<BridgePillarFlags, AXIS_END>, NUM_BRIDGE_PIECES - 1> CANTILEVER_PILLARS = {{
 	{{{},                                                     {}}},
 	{{{BridgePillarFlag::CornerE, BridgePillarFlag::CornerN}, {BridgePillarFlag::CornerW, BridgePillarFlag::CornerN}}},
 	{{{BridgePillarFlag::CornerE, BridgePillarFlag::CornerN}, {BridgePillarFlag::CornerW, BridgePillarFlag::CornerN}}},

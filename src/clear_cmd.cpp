@@ -390,7 +390,7 @@ static CommandCost TerraformTile_Clear(TileIndex tile, DoCommandFlags flags, int
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }
 
-static CommandCost CheckBuildAbove_Clear(TileIndex, DoCommandFlags, Axis, int)
+static CommandCost CheckBuildAbove_Clear(TileIndex, DoCommandFlags, Axis, int, BridgePillarFlags)
 {
 	return CommandCost();
 }
