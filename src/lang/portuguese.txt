@@ -3700,7 +3700,7 @@ STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Aumentar
 STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Expandir estradas
 STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Aumentar as estradas da localidade
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Apagar
-STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Apagar completamente esta localidade
+STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Remover completamente esta localidade
 
 STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Renomear Localidade
 
@@ -3854,12 +3854,12 @@ STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_S
 STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} para esta estação
 STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} sem parar
 
-STR_STATION_VIEW_GROUP_S_V_D                                    :Fonte-Via-Destino
-STR_STATION_VIEW_GROUP_S_D_V                                    :Fonte-Destino-Via
-STR_STATION_VIEW_GROUP_V_S_D                                    :Via-Fonte-Destino
-STR_STATION_VIEW_GROUP_V_D_S                                    :Via-Destino-Fonte
-STR_STATION_VIEW_GROUP_D_S_V                                    :Destino-Fonte-Via
-STR_STATION_VIEW_GROUP_D_V_S                                    :Destino-Via-Fonte
+STR_STATION_VIEW_GROUP_S_V_D                                    :Origem-Via-Destino
+STR_STATION_VIEW_GROUP_S_D_V                                    :Origem-Destino-Via
+STR_STATION_VIEW_GROUP_V_S_D                                    :Via-Origem-Destino
+STR_STATION_VIEW_GROUP_V_D_S                                    :Via-Destino-Origem
+STR_STATION_VIEW_GROUP_D_S_V                                    :Destino-Origem-Via
+STR_STATION_VIEW_GROUP_D_V_S                                    :Destino-Via-Origem
 
 ###length 8
 STR_CARGO_RATING_APPALLING                                      :Inexistente
