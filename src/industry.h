@@ -77,10 +77,27 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 		HistoryData<ProducedHistory> history{}; ///< History of cargo produced and transported for this month and 24 previous months
 	};
 
+	struct AcceptedHistory {
+		uint16_t accepted = 0; /// Total accepted.
+		uint16_t waiting = 0; /// Average waiting.
+	};
+
 	struct AcceptedCargo {
 		CargoType cargo = 0; ///< Cargo type
 		uint16_t waiting = 0; ///< Amount of cargo waiting to processed
+		uint32_t accumulated_waiting = 0; ///< Accumulated waiting total over the last month, used to calculate average.
 		TimerGameEconomy::Date last_accepted{}; ///< Last day cargo was accepted by this industry
+		std::unique_ptr<HistoryData<AcceptedHistory>> history{}; ///< History of accepted and waiting cargo.
+
+		/**
+		 * Get history data, creating it if necessary.
+		 * @return Accepted history data.
+		 */
+		inline HistoryData<AcceptedHistory> &GetOrCreateHistory()
+		{
+			if (this->history == nullptr) this->history = std::make_unique<HistoryData<AcceptedHistory>>();
+			return *this->history;
+		}
 	};
 
 	using ProducedCargoes = std::vector<ProducedCargo>;
@@ -151,7 +168,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	 */
 	inline const AcceptedCargo &GetAccepted(size_t slot) const
 	{
-		static const AcceptedCargo empty{INVALID_CARGO, 0, {}};
+		static const AcceptedCargo empty{INVALID_CARGO, 0, 0, {}, {}};
 		return slot < this->accepted.size() ? this->accepted[slot] : empty;
 	}
 

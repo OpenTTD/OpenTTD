@@ -208,6 +208,13 @@ protected:
 		uint8_t exclude_bit;
 		uint8_t range_bit;
 		uint8_t dash;
+
+		void FillWithEmptyValues(uint num_valid)
+		{
+			assert(num_valid < std::size(values));
+			std::fill(std::begin(this->values), std::begin(this->values) + num_valid, 0);
+			std::fill(std::begin(this->values) + num_valid, std::end(this->values), INVALID_DATAPOINT);
+		}
 	};
 	std::vector<DataSet> data{};
 
@@ -217,13 +224,20 @@ protected:
 	uint8_t highlight_range = UINT8_MAX; ///< Data range that should be highlighted, or UINT8_MAX for none.
 	bool highlight_state = false; ///< Current state of highlight, toggled every TIMER_BLINK_INTERVAL period.
 
-	template <typename Tprojection>
-	struct Filler {
+	struct BaseFiller {
 		DataSet &dataset; ///< Dataset to fill.
+
+		inline void MakeZero(uint i) const { this->dataset.values[i] = 0; }
+		inline void MakeInvalid(uint i) const { this->dataset.values[i] = INVALID_DATAPOINT; }
+	};
+
+	template <typename Tprojection>
+	struct Filler : BaseFiller {
 		const Tprojection &proj; ///< Projection to apply.
 
+		constexpr Filler(DataSet &dataset, const Tprojection &proj) : BaseFiller(dataset), proj(proj) {}
+
 		inline void Fill(uint i, const auto &data) const { this->dataset.values[i] = std::invoke(this->proj, data); }
-		inline void MakeInvalid(uint i) const { this->dataset.values[i] = INVALID_DATAPOINT; }
 	};
 
 	/**
@@ -1613,7 +1627,9 @@ CompanyID PerformanceRatingDetailWindow::company = CompanyID::Invalid();
 struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 	static inline constexpr StringID RANGE_LABELS[] = {
 		STR_GRAPH_INDUSTRY_RANGE_PRODUCED,
-		STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED
+		STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED,
+		STR_GRAPH_INDUSTRY_RANGE_DELIVERED,
+		STR_GRAPH_INDUSTRY_RANGE_WAITING,
 	};
 
 	static inline CargoTypes excluded_cargo_types{};
@@ -1628,6 +1644,10 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 		this->draw_dates = !TimerGameEconomy::UsingWallclockUnits();
 		this->ranges = RANGE_LABELS;
 
+		const Industry *i = Industry::Get(window_number);
+		if (!i->IsCargoProduced()) this->masked_range = (1U << 0) | (1U << 1);
+		if (!i->IsCargoAccepted()) this->masked_range = (1U << 2) | (1U << 3);
+
 		this->InitializeWindow(window_number, STR_GRAPH_LAST_24_MINUTES_TIME_LABEL);
 	}
 
@@ -1635,6 +1655,9 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 	{
 		CargoTypes cargo_types{};
 		const Industry *i = Industry::Get(window_number);
+		for (const auto &a : i->accepted) {
+			if (IsValidCargoType(a.cargo)) SetBit(cargo_types, a.cargo);
+		}
 		for (const auto &p : i->produced) {
 			if (IsValidCargoType(p.cargo)) SetBit(cargo_types, p.cargo);
 		}
@@ -1648,7 +1671,7 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_GRAPH_CAPTION) return GetString(STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION, this->window_number);
+		if (widget == WID_GRAPH_CAPTION) return GetString(STR_GRAPH_INDUSTRY_CAPTION, this->window_number);
 
 		return this->Window::GetWidgetString(widget, stringid);
 	}
@@ -1694,6 +1717,33 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 			auto transported_filler = Filler{transported, &Industry::ProducedHistory::transported};
 
 			FillFromHistory<GRAPH_NUM_MONTHS>(p.history, i->valid_history, produced_filler, transported_filler);
+		}
+
+		for (const auto &a : i->accepted) {
+			if (!IsValidCargoType(a.cargo)) continue;
+			const CargoSpec *cs = CargoSpec::Get(a.cargo);
+
+			this->data.reserve(this->data.size() + 2);
+
+			DataSet &accepted = this->data.emplace_back();
+			accepted.colour = cs->legend_colour;
+			accepted.exclude_bit = cs->Index();
+			accepted.range_bit = 2;
+			accepted.dash = 1;
+			auto accepted_filler = Filler{accepted, &Industry::AcceptedHistory::accepted};
+
+			DataSet &waiting = this->data.emplace_back();
+			waiting.colour = cs->legend_colour;
+			waiting.exclude_bit = cs->Index();
+			waiting.range_bit = 3;
+			waiting.dash = 4;
+			auto waiting_filler = Filler{waiting, &Industry::AcceptedHistory::waiting};
+
+			if (a.history == nullptr) {
+				FillFromEmpty<GRAPH_NUM_MONTHS>(i->valid_history, accepted_filler, waiting_filler);
+			} else {
+				FillFromHistory<GRAPH_NUM_MONTHS>(*a.history, i->valid_history, accepted_filler, waiting_filler);
+			}
 		}
 
 		this->SetDirty();
