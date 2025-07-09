@@ -62,6 +62,7 @@ jobs:
           -GNinja \
           -DVCPKG_TARGET_TRIPLET=${{ inputs.arch }}-windows-static \
           -DCMAKE_TOOLCHAIN_FILE="${{ runner.temp }}\vcpkg\scripts\buildsystems\vcpkg.cmake" \
+          -DVCPKG_INSTALL_OPTIONS="--debug" \
           # EOF
         echo "::endgroup::"
 
