@@ -286,6 +286,7 @@ struct LoadedLanguagePack {
 	std::array<uint, TEXT_TAB_END> langtab_start; ///< Offset into langpack offs
 
 	std::string list_separator; ///< Current list separator string.
+	std::string ellipsis; ///< Current ellipsis string.
 };
 
 static LoadedLanguagePack _langpack;
@@ -299,6 +300,15 @@ static bool _scan_for_gender_data = false;  ///< Are we scanning for the gender 
 std::string_view GetListSeparator()
 {
 	return _langpack.list_separator;
+}
+
+/**
+ * Get the ellipsis string for the current language.
+ * @returns string containing ellipsis to use.
+ */
+std::string_view GetEllipsis()
+{
+	return _langpack.ellipsis;
 }
 
 std::string_view GetStringPtr(StringID string)
@@ -2063,6 +2073,7 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 	_config_language_file = FS2OTTD(_current_language->file.filename().native());
 	SetCurrentGrfLangID(_current_language->newgrflangid);
 	_langpack.list_separator = GetString(STR_LIST_SEPARATOR);
+	_langpack.ellipsis = GetString(STR_TRUNCATION_ELLIPSIS);
 
 #ifdef _WIN32
 	extern void Win32SetCurrentLocaleName(std::string iso_code);
