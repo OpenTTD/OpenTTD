@@ -13,7 +13,6 @@
 #include "gfx_type.h"
 #include "tile_cmd.h"
 #include "timer/timer_game_calendar.h"
-#include <cstdint>
 
 /**
  * This enum is related to the definition of bridge pieces,
@@ -78,7 +77,7 @@ struct BridgeSpec {
 	std::vector<std::vector<PalSpriteID>> sprite_table; ///< table of sprites for drawing the bridge
 	uint8_t flags;                         ///< bit 0 set: disable drawing of far pillars.
 	BridgeSpecCtrlFlags ctrl_flags;          ///< control flags
-	uint8_t pillar_flags[12];    ///< bridge pillar flags: 6 x pairs of x and y flags
+	std::array<BridgePiecePillarFlags, 12> pillar_flags;    ///< bridge pillar flags: 6 x pairs of x and y flags
 };
 
 extern BridgeSpec _bridge[MAX_BRIDGES];
