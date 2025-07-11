@@ -267,6 +267,7 @@ STR_UNITS_YEARS                                                 :{NUM}{NBSP}年
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}个周期
 
 STR_LIST_SEPARATOR                                              :、
+STR_TRUNCATION_ELLIPSIS                                         :…
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}搜索：

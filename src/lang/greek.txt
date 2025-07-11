@@ -329,6 +329,7 @@ STR_UNITS_YEARS                                                 :{NUM}{NBSP}έτ
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}περίοδ{P 0 ος οι}
 
 STR_LIST_SEPARATOR                                              :,{SPACE}
+STR_TRUNCATION_ELLIPSIS                                         :...
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Φιλτράρισμα λίστας:
