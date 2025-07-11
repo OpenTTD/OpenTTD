@@ -29,6 +29,11 @@
  * \li GSCargo::CC_NON_POTABLE
  * \li GSVehicleList_Waypoint
  * \li GSBaseStation::GetOwner
+ * \li GSEconomyDate
+ * \li GSCalendarDate
+ *
+ * API removals:
+ * \li GSDate
  *
  * Other changes:
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
