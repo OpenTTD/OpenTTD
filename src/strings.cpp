@@ -1112,6 +1112,9 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 	std::stack<StrStackItem, std::vector<StrStackItem>> str_stack;
 	str_stack.emplace(str_arg, orig_first_param_offset, orig_case_index);
 
+	bool appending = builder.AnyBytesWritten();
+	if (appending) builder.PutUtf8(SCC_PUSH_COLOUR);
+
 	for (;;) {
 		try {
 			while (!str_stack.empty() && !str_stack.top().consumer.AnyBytesLeft()) {
@@ -1839,6 +1842,8 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 			builder += "(invalid parameter)";
 		}
 	}
+
+	if (appending) builder.PutUtf8(SCC_POP_COLOUR);
 }
 
 
