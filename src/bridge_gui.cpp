@@ -382,6 +382,8 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 	StringID errmsg = INVALID_STRING_ID;
 	CommandCost ret = Command<CMD_BUILD_BRIDGE>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_BRIDGE>()) | DoCommandFlag::QueryCost, end, start, transport_type, 0, road_rail_type);
 
+	const bool query_per_bridge_type = ret.Failed() && (ret.GetErrorMessage() == STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION || ret.GetErrorMessage() == STR_ERROR_BRIDGE_PILLARS_OBSTRUCT_STATION);
+
 	GUIBridgeList bl;
 	if (ret.Failed()) {
 		errmsg = ret.GetErrorMessage();
@@ -415,11 +417,13 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 		}
 
 		bool any_available = false;
+		StringID type_errmsg = INVALID_STRING_ID;
 		CommandCost type_check;
 		/* loop for all bridgetypes */
 		for (BridgeType brd_type = 0; brd_type != MAX_BRIDGES; brd_type++) {
 			type_check = CheckBridgeAvailability(brd_type, bridge_len);
 			if (type_check.Succeeded()) {
+				if (query_per_bridge_type && Command<CMD_BUILD_BRIDGE>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_BRIDGE>()) | DoCommandFlag::QueryCost, end, start, transport_type, brd_type, road_rail_type).Failed()) continue;
 				/* bridge is accepted, add to list */
 				BuildBridgeData &item = bl.emplace_back();
 				item.index = brd_type;
@@ -428,10 +432,12 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 				 * bridge itself (not computed with DoCommandFlag::QueryCost) */
 				item.cost = ret.GetCost() + (((int64_t)tot_bridgedata_len * _price[PR_BUILD_BRIDGE] * item.spec->price) >> 8) + infra_cost;
 				any_available = true;
+			} else if (type_check.GetErrorMessage() != INVALID_STRING_ID && !query_per_bridge_type) {
+				type_errmsg = type_check.GetErrorMessage();
 			}
 		}
 		/* give error cause if no bridges available here*/
-		if (!any_available)
+		if (!any_available && type_errmsg != INVALID_STRING_ID) errmsg = type_errmsg;
 		{
 			errmsg = type_check.GetErrorMessage();
 		}
