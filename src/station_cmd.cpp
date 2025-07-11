@@ -1254,11 +1254,9 @@ CommandCost IsRailStationBridgeAboveOk(TileIndex tile, const StationSpec *statsp
 		disallowed_pillar_flags = axis == AXIS_X ? BridgePiecePillarFlags({BridgePiecePillarFlag::BPPF_EDGE_SW, BridgePiecePillarFlag::BPPF_EDGE_NE}) : BridgePiecePillarFlags({BridgePiecePillarFlag::BPPF_EDGE_NW, BridgePiecePillarFlag::BPPF_EDGE_SE}); //0x50, 0xA0
 	}
 
-	if ((GetBridgeTilePillarFlags(tile, northern_bridge_end, southern_bridge_end, bridge_type, bridge_transport_type) & disallowed_pillar_flags).Any()) {
-		return CommandCost();
-	} else {
-		return CommandCost(STR_ERROR_BRIDGE_PILLARS_OBSTRUCT_STATION);
-	}
+	if (!(GetBridgeTilePillarFlags(tile, northern_bridge_end, southern_bridge_end, bridge_type, bridge_transport_type) & disallowed_pillar_flags).Any()) return CommandCost(STR_ERROR_BRIDGE_PILLARS_OBSTRUCT_STATION);
+
+	return CommandCost();
 }
 
 CommandCost IsRailStationBridgeAboveOk(TileIndex tile, const StationSpec *statspec, uint8_t layout)
@@ -1297,11 +1295,9 @@ CommandCost IsRoadStopBridgeAboveOK(TileIndex tile, const RoadStopSpec *spec, bo
 	} else {
 		disallowed_pillar_flags.Set((BridgePiecePillarFlags) (4 + entrance));
 	}
-	if ((GetBridgeTilePillarFlags(tile, northern_bridge_end, southern_bridge_end, bridge_type, bridge_transport_type) & disallowed_pillar_flags).Any()) {
-		return CommandCost();
-	} else {
-		return CommandCost(STR_ERROR_BRIDGE_PILLARS_OBSTRUCT_STATION);
-	}
+	if (!(GetBridgeTilePillarFlags(tile, northern_bridge_end, southern_bridge_end, bridge_type, bridge_transport_type) & disallowed_pillar_flags).Any()) return CommandCost(STR_ERROR_BRIDGE_PILLARS_OBSTRUCT_STATION);
+
+	return CommandCost();
 }
 
 /**
