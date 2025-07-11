@@ -118,7 +118,7 @@ std::optional<std::string_view> VideoDriver_SDL_OpenGL::AllocateContext()
 	}
 
 	this->gl_context = SDL_GL_CreateContext(this->sdl_window);
-	if (this->gl_context == nullptr) return "SDL2: Can't active GL context";
+	if (this->gl_context == nullptr) return "SDL2: Can't activate GL context";
 
 	ToggleVsync(_video_vsync);
 
