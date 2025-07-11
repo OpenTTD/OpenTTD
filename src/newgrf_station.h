@@ -10,6 +10,7 @@
 #ifndef NEWGRF_STATION_H
 #define NEWGRF_STATION_H
 
+#include "bridge.h"
 #include "core/enum_type.hpp"
 #include "newgrf_animation_type.h"
 #include "newgrf_badge_type.h"
@@ -170,7 +171,7 @@ struct StationSpec : NewGRFSpecBase<StationClassID> {
 
 	struct BridgeAboveFlags {
 		uint8_t height = UINT8_MAX;     ///< Minimum height for a bridge above, 0 for none
-		uint8_t disallowed_pillars = 0; ///< Disallowed pillar flags for a bridge above
+		BridgePiecePillarFlags disallowed_pillars = {}; ///< Disallowed pillar flags for a bridge above
 	};
 	std::vector<BridgeAboveFlags> bridge_above_flags; ///< List of bridge above flags.
 

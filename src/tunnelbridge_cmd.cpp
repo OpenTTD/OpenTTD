@@ -1623,7 +1623,7 @@ BridgePiecePillarFlags GetBridgeTilePillarFlags(TileIndex tile, TileIndex northe
 	const BridgeSpec *spec = GetBridgeSpec(bridge_type);
 	const Axis axis = TileX(northern_bridge_end) == TileX(southern_bridge_end) ? AXIS_Y : AXIS_X;
 	if (!spec->ctrl_flags.Test(BridgeSpecCtrlFlag::BSCF_INVALID_PILLAR_FLAGS)) {
-		return (BridgePiecePillarFlags) spec->pillar_flags[piece * 2 + (axis == AXIS_Y ? 1 : 0)];
+		return spec->pillar_flags[piece * 2 + (axis == AXIS_Y ? 1 : 0)];
 	} else {
 		uint base_offset;
 		if (bridge_transport_type == TRANSPORT_RAIL) {

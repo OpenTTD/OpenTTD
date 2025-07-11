@@ -1226,7 +1226,7 @@ CommandCost IsRailStationBridgeAboveOk(TileIndex tile, const StationSpec *statsp
 	BridgePiecePillarFlags disallowed_pillar_flags;
 	if (statspec != nullptr && statspec->internal_flags.Test(StationSpecIntlFlag::BridgeDisallowedPillarsSet)) {
 		/* Pillar flags set by NewGRF */
-		disallowed_pillar_flags = (BridgePiecePillarFlags) statspec->GetBridgeAboveFlags(layout).disallowed_pillars;
+		disallowed_pillar_flags = statspec->GetBridgeAboveFlags(layout).disallowed_pillars;
 	} else if (!statspec) {
 		/* Default stations/waypoints */
 		if (layout < 8) {
@@ -1243,15 +1243,15 @@ CommandCost IsRailStationBridgeAboveOk(TileIndex tile, const StationSpec *statsp
 
 			disallowed_pillar_flags = st_flags[layout];
 		} else {
-			disallowed_pillar_flags = (BridgePiecePillarFlags) 0;
+			disallowed_pillar_flags = {};
 		}
 	} else if (GetStationTileFlags(layout, statspec).Test(StationSpec::TileFlag::Blocked)) {
 		/* Non-track station tiles */
-		disallowed_pillar_flags = (BridgePiecePillarFlags) 0;
+		disallowed_pillar_flags = {};
 	} else {
 		/* Tracked station tiles */
 		const Axis axis = HasBit(layout, 0) ? AXIS_Y : AXIS_X;
-		disallowed_pillar_flags = (BridgePiecePillarFlags) (axis == AXIS_X ? 0x50 : 0xA0);
+		disallowed_pillar_flags = axis == AXIS_X ? BridgePiecePillarFlags({BridgePiecePillarFlag::BPPF_EDGE_SW, BridgePiecePillarFlag::BPPF_EDGE_NE}) : BridgePiecePillarFlags({BridgePiecePillarFlag::BPPF_EDGE_NW, BridgePiecePillarFlag::BPPF_EDGE_SE}); //0x50, 0xA0
 	}
 
 	if ((GetBridgeTilePillarFlags(tile, northern_bridge_end, southern_bridge_end, bridge_type, bridge_transport_type) & disallowed_pillar_flags).Any()) {
@@ -1289,11 +1289,11 @@ CommandCost IsRoadStopBridgeAboveOK(TileIndex tile, const RoadStopSpec *spec, bo
 		}
 	}
 
-	BridgePiecePillarFlags disallowed_pillar_flags = (BridgePiecePillarFlags) 0;
+	BridgePiecePillarFlags disallowed_pillar_flags = {};
 	if (spec != nullptr && spec->internal_flags.Test(RoadStopSpecIntlFlag::BridgeDisallowedPillarsSet)) {
-		disallowed_pillar_flags = (BridgePiecePillarFlags) spec->bridge_disallowed_pillars[drive_through ? (GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET + DiagDirToAxis(entrance)) : entrance];
+		disallowed_pillar_flags = spec->bridge_disallowed_pillars[drive_through ? (GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET + DiagDirToAxis(entrance)) : entrance];
 	} else if (drive_through) {
-		disallowed_pillar_flags = (BridgePiecePillarFlags) (DiagDirToAxis(entrance) == AXIS_X ? 0x50 : 0xA0);
+		disallowed_pillar_flags = DiagDirToAxis(entrance) == AXIS_X ? BridgePiecePillarFlags({BridgePiecePillarFlag::BPPF_EDGE_SW, BridgePiecePillarFlag::BPPF_EDGE_NE}) : BridgePiecePillarFlags({BridgePiecePillarFlag::BPPF_EDGE_NW, BridgePiecePillarFlag::BPPF_EDGE_SE}); //0x50, 0xA0
 	} else {
 		disallowed_pillar_flags.Set((BridgePiecePillarFlags) (4 + entrance));
 	}
