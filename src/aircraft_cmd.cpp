@@ -48,10 +48,7 @@
 
 void Aircraft::UpdateDeltaXY()
 {
-	this->x_offs = -1;
-	this->y_offs = -1;
-	this->x_extent = 2;
-	this->y_extent = 2;
+	this->bounds = {{-1, -1, 0}, {2, 2, 0}, {}};
 
 	switch (this->subtype) {
 		default: NOT_REACHED();
@@ -64,21 +61,21 @@ void Aircraft::UpdateDeltaXY()
 				case LANDING:
 				case HELILANDING:
 				case FLYING:
-					this->x_extent = 24;
-					this->y_extent = 24;
+					/* Bounds are not centred on the aircraft. */
+					this->bounds.extent.x = 24;
+					this->bounds.extent.y = 24;
 					break;
 			}
-			this->z_extent = 5;
+			this->bounds.extent.z = 5;
 			break;
 
 		case AIR_SHADOW:
-			this->z_extent = 1;
-			this->x_offs = 0;
-			this->y_offs = 0;
+			this->bounds.extent.z = 1;
+			this->bounds.origin = {};
 			break;
 
 		case AIR_ROTOR:
-			this->z_extent = 1;
+			this->bounds.extent.z = 1;
 			break;
 	}
 }

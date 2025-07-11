@@ -1109,8 +1109,7 @@ static void DoDrawVehicle(const Vehicle *v)
 	for (uint i = 0; i < v->sprite_cache.sprite_seq.count; ++i) {
 		PaletteID pal2 = v->sprite_cache.sprite_seq.seq[i].pal;
 		if (!pal2 || v->vehstatus.Test(VehState::Crashed)) pal2 = pal;
-		AddSortableSpriteToDraw(v->sprite_cache.sprite_seq.seq[i].sprite, pal2, v->x_pos + v->x_offs, v->y_pos + v->y_offs,
-			v->x_extent, v->y_extent, v->z_extent, v->z_pos, shadowed, v->x_bb_offs, v->y_bb_offs);
+		AddSortableSpriteToDraw(v->sprite_cache.sprite_seq.seq[i].sprite, pal2, v->x_pos, v->y_pos, v->z_pos, v->bounds, shadowed);
 	}
 	EndSpriteCombine();
 }
@@ -1674,11 +1673,23 @@ void Vehicle::UpdateBoundingBoxCoordinates(bool update_cache) const
 	Rect new_coord;
 	this->sprite_cache.sprite_seq.GetBounds(&new_coord);
 
-	Point pt = RemapCoords(this->x_pos + this->x_offs, this->y_pos + this->y_offs, this->z_pos);
+	/* z-bounds are not used. */
+	Point pt = RemapCoords(this->x_pos + this->bounds.origin.x + this->bounds.offset.x, this->y_pos + this->bounds.origin.y + this->bounds.offset.y, this->z_pos);
 	new_coord.left   += pt.x;
 	new_coord.top    += pt.y;
 	new_coord.right  += pt.x + 2 * ZOOM_BASE;
 	new_coord.bottom += pt.y + 2 * ZOOM_BASE;
+
+	extern bool _draw_bounding_boxes;
+	if (_draw_bounding_boxes) {
+		int x = this->x_pos + this->bounds.origin.x;
+		int y = this->y_pos + this->bounds.origin.y;
+		int z = this->z_pos + this->bounds.origin.z;
+		new_coord.left   = std::min(new_coord.left, RemapCoords(x + bounds.extent.x, y, z).x);
+		new_coord.right  = std::max(new_coord.right, RemapCoords(x, y + bounds.extent.y, z).x + 1);
+		new_coord.top    = std::min(new_coord.top, RemapCoords(x, y, z + bounds.extent.z).y);
+		new_coord.bottom = std::max(new_coord.bottom, RemapCoords(x + bounds.extent.x, y + bounds.extent.y, z).y + 1);
+	}
 
 	if (update_cache) {
 		/*

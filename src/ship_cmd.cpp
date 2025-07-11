@@ -330,32 +330,26 @@ TileIndex Ship::GetOrderStationLocation(StationID station)
 
 void Ship::UpdateDeltaXY()
 {
-	static const int8_t _delta_xy_table[8][4] = {
-		/* y_extent, x_extent, y_offs, x_offs */
-		{ 6,  6,  -3,  -3}, // N
-		{ 6, 32,  -3, -16}, // NE
-		{ 6,  6,  -3,  -3}, // E
-		{32,  6, -16,  -3}, // SE
-		{ 6,  6,  -3,  -3}, // S
-		{ 6, 32,  -3, -16}, // SW
-		{ 6,  6,  -3,  -3}, // W
-		{32,  6, -16,  -3}, // NW
+	static constexpr SpriteBounds ship_bounds[DIR_END] = {
+		{{ -3,  -3, 0}, { 6,  6, 6}, {}}, // N
+		{{-16,  -3, 0}, {32,  6, 6}, {}}, // NE
+		{{ -3,  -3, 0}, { 6,  6, 6}, {}}, // E
+		{{ -3, -16, 0}, { 6, 32, 6}, {}}, // SE
+		{{ -3,  -3, 0}, { 6,  6, 6}, {}}, // S
+		{{-16,  -3, 0}, {32,  6, 6}, {}}, // SW
+		{{ -3,  -3, 0}, { 6,  6, 6}, {}}, // W
+		{{ -3, -16, 0}, { 6, 32, 6}, {}}, // NW
 	};
 
-	const int8_t *bb = _delta_xy_table[this->rotation];
-	this->x_offs        = bb[3];
-	this->y_offs        = bb[2];
-	this->x_extent      = bb[1];
-	this->y_extent      = bb[0];
-	this->z_extent      = 6;
+	this->bounds = ship_bounds[this->rotation];
 
 	if (this->direction != this->rotation) {
 		/* If we are rotating, then it is possible the ship was moved to its next position. In that
 		 * case, because we are still showing the old direction, the ship will appear to glitch sideways
 		 * slightly. We can work around this by applying an additional offset to make the ship appear
 		 * where it was before it moved. */
-		this->x_offs -= this->x_pos - this->rotation_x_pos;
-		this->y_offs -= this->y_pos - this->rotation_y_pos;
+		this->bounds.origin.x -= this->x_pos - this->rotation_x_pos;
+		this->bounds.origin.y -= this->y_pos - this->rotation_y_pos;
 	}
 }
 
