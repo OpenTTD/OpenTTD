@@ -81,3 +81,11 @@ GSTown.FoundTown <- function(tile, size, city, layout, name) { return GSTown.Fou
 
 GSVehicle.SetNameCompat14 <- GSVehicle.SetName;
 GSVehicle.SetName <- function(id, name) { return GSVehicle.SetNameCompat14(id, GSCompat14.Text(name)); }
+
+GSObject.constructorCompat14 <- GSObject.constructor;
+foreach(name, object in CompatScriptRootTable) {
+	if (type(object) != "class") continue;
+	if (!object.rawin("constructor")) continue;
+	if (object.constructor != GSObject.constructorCompat14) continue;
+	object.constructor <- function() : (name) { GSLog.Error("'" + name + "' is not instantiable"); }
+}
