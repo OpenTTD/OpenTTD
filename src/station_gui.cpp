@@ -2222,18 +2222,13 @@ static void AddNearbyStation(TileIndex tile, TileArea *ctx)
  * @tparam T the station filter type, for stations to look for
  */
 template <class T>
-static const BaseStation *FindStationsNearby(TileArea ta, bool distant_join)
+static void FindStationsNearby(TileArea ta, bool distant_join)
 {
 	TileArea ctx = ta;
 
 	_stations_nearby_list.clear();
 	_stations_nearby_list.push_back(NEW_STATION);
 	_deleted_stations_nearby.clear();
-
-	/* Check the inside, to return, if we sit on another station */
-	for (TileIndex t : ta) {
-		if (t < Map::Size() && IsTileType(t, MP_STATION) && T::IsValidID(GetStationIndex(t))) return BaseStation::GetByTile(t);
-	}
 
 	/* Look for deleted stations */
 	for (const BaseStation *st : BaseStation::Iterate()) {
@@ -2251,17 +2246,20 @@ static const BaseStation *FindStationsNearby(TileArea ta, bool distant_join)
 		}
 	}
 
+	/* Add stations that are within station tile area. Stations do not have to occupy all tiles */
+	for (auto t : ta) {
+		AddNearbyStation<T>(t, &ctx);
+	}
+
 	/* Only search tiles where we have a chance to stay within the station spread.
 	 * The complete check needs to be done in the callback as we don't know the
 	 * extent of the found station, yet. */
-	if (distant_join && std::min(ta.w, ta.h) >= _settings_game.station.station_spread) return nullptr;
+	if (distant_join && std::min(ta.w, ta.h) >= _settings_game.station.station_spread) return;
 	uint max_dist = distant_join ? _settings_game.station.station_spread - std::min(ta.w, ta.h) : 1;
 
 	for (auto tile : SpiralTileSequence(TileAddByDir(ctx.tile, DIR_N), max_dist, ta.w, ta.h)) {
 		AddNearbyStation<T>(tile, &ctx);
 	}
-
-	return nullptr;
 }
 
 static constexpr NWidgetPart _nested_select_station_widgets[] = {
@@ -2421,7 +2419,7 @@ static WindowDesc _select_station_desc(
  * @return whether we need to show the station selection window.
  */
 template <class T>
-static bool StationJoinerNeeded(TileArea ta, const StationPickerCmdProc &proc)
+static bool StationJoinerNeeded(const StationPickerCmdProc &proc)
 {
 	/* Only show selection if distant join is enabled in the settings */
 	if (!_settings_game.station.distant_join_stations) return false;
@@ -2439,9 +2437,7 @@ static bool StationJoinerNeeded(TileArea ta, const StationPickerCmdProc &proc)
 	if (!_ctrl_pressed) return false;
 
 	/* Now check if we could build there */
-	if (!proc(true, StationID::Invalid())) return false;
-
-	return FindStationsNearby<T>(ta, false) == nullptr;
+	return proc(true, StationID::Invalid());
 }
 
 /**
@@ -2453,7 +2449,7 @@ static bool StationJoinerNeeded(TileArea ta, const StationPickerCmdProc &proc)
 template <class T>
 void ShowSelectBaseStationIfNeeded(TileArea ta, StationPickerCmdProc&& proc)
 {
-	if (StationJoinerNeeded<T>(ta, proc)) {
+	if (StationJoinerNeeded<T>(proc)) {
 		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 		new SelectStationWindow<T>(_select_station_desc, ta, std::move(proc));
 	} else {
