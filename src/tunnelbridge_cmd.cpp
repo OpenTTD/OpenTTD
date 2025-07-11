@@ -434,10 +434,6 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 					break;
 
 				default:
-					/*if (!(GetStationType(tile) == StationType::Dock && _settings_game.construction.allow_docks_under_bridges)) {
-						CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
-						if (ret.Failed()) return ret;
-					}*/
 					break;
 			}
 		}

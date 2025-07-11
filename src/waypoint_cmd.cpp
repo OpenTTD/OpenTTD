@@ -227,7 +227,7 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 	layout_ptr.resize(count);
 	if (spec == nullptr) {
 		/* The layout must be 0 for the 'normal' waypoints by design. */
-		//memset(layout_ptr, 0, count);
+		//memset(layout_ptr, 0, count); //FIXME
 	} else {
 		/* But for NewGRF waypoints we like to have their style. */
 		GetStationLayout(&layout_ptr[0], count, 1, spec);

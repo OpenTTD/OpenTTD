@@ -1405,7 +1405,7 @@ static CommandCost CheckFlatLandRoadStop(TileIndex cur_tile, int &allowed_z, con
 						(!_settings_game.construction.road_stop_on_competitor_road ||
 						/* Disallow breaking end-of-line of someone else
 						 * so trams can still reverse on this tile. */
-							HasExactlyOneBit(GetRoadBits(cur_tile, RTT_TRAM)))) {
+						HasExactlyOneBit(GetRoadBits(cur_tile, RTT_TRAM)))) {
 					ret = CheckOwnership(tram_owner);
 					if (ret.Failed()) return ret;
 				}
@@ -1492,7 +1492,6 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 	TileIndexDiff track_delta = TileOffsByAxis(OtherAxis(axis)); // offset to go to the next track
 	std::vector<uint8_t> layout_buffer;
 	layout_buffer.resize(numtracks * plat_len);
-	//TempBufferST<uint8_t> layout_buffer(numtracks * plat_len);
 	GetStationLayout(&layout_buffer[0], numtracks, plat_len, statspec);
 
 	{
@@ -1501,9 +1500,9 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 		for (uint i = 0; i < numtracks; i++) {
 			TileIndex tile = tile_track;
 			for (uint j = 0; j < plat_len; j++) {
-				CommandCost ret = IsRailStationBridgeAboveOk(tile, statspec, *check_layout_ptr++);
+				ret = IsRailStationBridgeAboveOk(tile, statspec, *check_layout_ptr++);
 				if (ret.Failed()) {
-					//return CommandCost::DualErrorMessage(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST, ret.GetErrorMessage());
+					//return CommandCost::DualErrorMessage(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST, ret.GetErrorMessage()); //FIXME
 					return ret;
 				}
 				tile += tile_delta;
