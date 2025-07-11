@@ -403,43 +403,42 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 
 		TileIndexDiff delta = (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 		for (TileIndex tile = tile_start + delta; tile != tile_end; tile += delta) {
-			if (IsTileType(tile, MP_STATION)) {
-				switch (GetStationType(tile)) {
-					case StationType::Rail:
-					case StationType::RailWaypoint: {
-						CommandCost ret = IsRailStationBridgeAboveOk(tile, GetStationSpec(tile), GetStationGfx(tile), tile_start, tile_end, z_start + 1, bridge_type, transport_type);
-						if (ret.Failed()) {
-							if (ret.GetErrorMessage() != INVALID_STRING_ID) return ret;
-							ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
-							if (ret.Failed()) return ret;
-						}
-						break;
+			if (!IsTileType(tile, MP_STATION)) continue;
+			switch (GetStationType(tile)) {
+				case StationType::Rail:
+				case StationType::RailWaypoint: {
+					CommandCost ret = IsRailStationBridgeAboveOk(tile, GetStationSpec(tile), GetStationGfx(tile), tile_start, tile_end, z_start + 1, bridge_type, transport_type);
+					if (ret.Failed()) {
+						if (ret.GetErrorMessage() != INVALID_STRING_ID) return ret;
+						ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
+						if (ret.Failed()) return ret;
 					}
-
-					case StationType::Bus:
-					case StationType::Truck:
-					case StationType::RoadWaypoint: {
-						CommandCost ret = IsRoadStopBridgeAboveOK(tile, GetRoadStopSpec(tile), IsDriveThroughStopTile(tile), IsDriveThroughStopTile(tile) ? AxisToDiagDir(GetDriveThroughStopAxis(tile)) : GetBayRoadStopDir(tile),
-																  tile_start, tile_end, z_start + 1, bridge_type, transport_type);
-						if (ret.Failed()) {
-							if (ret.GetErrorMessage() != INVALID_STRING_ID) return ret;
-							ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
-							if (ret.Failed()) return ret;
-						}
-						break;
-					}
-
-					case StationType::Buoy:
-						/* Buoys are always allowed */
-						break;
-
-					default:
-						/*if (!(GetStationType(tile) == StationType::Dock && _settings_game.construction.allow_docks_under_bridges)) {
-							CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
-							if (ret.Failed()) return ret;
-						}*/
-						break;
+					break;
 				}
+
+				case StationType::Bus:
+				case StationType::Truck:
+				case StationType::RoadWaypoint: {
+					CommandCost ret = IsRoadStopBridgeAboveOK(tile, GetRoadStopSpec(tile), IsDriveThroughStopTile(tile), IsDriveThroughStopTile(tile) ? AxisToDiagDir(GetDriveThroughStopAxis(tile)) : GetBayRoadStopDir(tile),
+																tile_start, tile_end, z_start + 1, bridge_type, transport_type);
+					if (ret.Failed()) {
+						if (ret.GetErrorMessage() != INVALID_STRING_ID) return ret;
+						ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
+						if (ret.Failed()) return ret;
+					}
+					break;
+				}
+
+				case StationType::Buoy:
+					/* Buoys are always allowed */
+					break;
+
+				default:
+					/*if (!(GetStationType(tile) == StationType::Dock && _settings_game.construction.allow_docks_under_bridges)) {
+						CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
+						if (ret.Failed()) return ret;
+					}*/
+					break;
 			}
 		}
 	} else {
