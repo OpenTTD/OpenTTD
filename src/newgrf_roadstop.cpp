@@ -205,6 +205,7 @@ uint32_t RoadStopScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] u
 			return 0xFFFE;
 		}
 
+		case 0x79: return GetNearbyBadgeVariableResult(*this->ro.grffile, GetNearbyTile(parameter, this->tile), this->ro);
 		case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, this->roadstopspec->badges, parameter);
 
 		case 0xF0: return this->st == nullptr ? 0 : this->st->facilities.base(); // facilities
