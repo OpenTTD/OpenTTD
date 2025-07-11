@@ -379,7 +379,7 @@ static void CargoMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 			continue;
 		}
 
-		CargoSpec *cs = CargoSpec::Get(cargo_type);
+		CargoSpec *cs = CargoSpec::Get(static_cast<CargoType>(cargo_type));
 		cs->grffile = _cur_gps.grffile;
 		cs->group = _cur_gps.spritegroups[groupid];
 	}

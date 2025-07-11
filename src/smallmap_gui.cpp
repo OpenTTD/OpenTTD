@@ -227,7 +227,7 @@ void BuildLinkStatsLegend()
 
 		_legend_linkstats[i].legend = cs->name;
 		_legend_linkstats[i].colour = cs->legend_colour;
-		_legend_linkstats[i].type = cs->Index();
+		_legend_linkstats[i].type = cs->Index().base(); /// IndustryType!?
 		_legend_linkstats[i].show_on_map = true;
 	}
 
@@ -1254,9 +1254,9 @@ protected:
 	 */
 	void SetOverlayCargoMask()
 	{
-		CargoTypes cargo_mask = 0;
+		CargoTypes cargo_mask{};
 		for (int i = 0; i != _smallmap_cargo_count; ++i) {
-			if (_legend_linkstats[i].show_on_map) SetBit(cargo_mask, _legend_linkstats[i].type);
+			if (_legend_linkstats[i].show_on_map) cargo_mask.Set(static_cast<CargoType>(_legend_linkstats[i].type));
 		}
 		this->overlay->SetCargoMask(cargo_mask);
 	}
@@ -1453,7 +1453,7 @@ public:
 	SmallMapWindow(WindowDesc &desc, int window_number) : Window(desc)
 	{
 		_smallmap_industry_highlight = IT_INVALID;
-		this->overlay = std::make_unique<LinkGraphOverlay>(this, WID_SM_MAP, 0, this->GetOverlayCompanyMask(), 1);
+		this->overlay = std::make_unique<LinkGraphOverlay>(this, WID_SM_MAP, CargoTypes{}, this->GetOverlayCompanyMask(), 1);
 		this->CreateNestedTree();
 		this->LowerWidget(WID_SM_CONTOUR + this->map_type);
 
