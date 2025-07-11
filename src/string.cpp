@@ -607,28 +607,25 @@ bool ConvertHexToBytes(std::string_view hex, std::span<uint8_t> bytes)
 /** String iterator using ICU as a backend. */
 class IcuStringIterator : public StringIterator
 {
-	icu::BreakIterator *char_itr; ///< ICU iterator for characters.
-	icu::BreakIterator *word_itr; ///< ICU iterator for words.
+	std::unique_ptr<icu::BreakIterator> char_itr; ///< ICU iterator for characters.
+	std::unique_ptr<icu::BreakIterator> word_itr; ///< ICU iterator for words.
 
 	std::vector<UChar> utf16_str;      ///< UTF-16 copy of the string.
 	std::vector<size_t> utf16_to_utf8; ///< Mapping from UTF-16 code point position to index in the UTF-8 source string.
 
 public:
-	IcuStringIterator() : char_itr(nullptr), word_itr(nullptr)
+	IcuStringIterator()
 	{
 		UErrorCode status = U_ZERO_ERROR;
-		this->char_itr = icu::BreakIterator::createCharacterInstance(icu::Locale(_current_language != nullptr ? _current_language->isocode : "en"), status);
-		this->word_itr = icu::BreakIterator::createWordInstance(icu::Locale(_current_language != nullptr ? _current_language->isocode : "en"), status);
+		auto locale = icu::Locale(_current_language != nullptr ? _current_language->isocode : "en");
+		this->char_itr.reset(icu::BreakIterator::createCharacterInstance(locale, status));
+		this->word_itr.reset(icu::BreakIterator::createWordInstance(locale, status));
 
 		this->utf16_str.push_back('\0');
 		this->utf16_to_utf8.push_back(0);
 	}
 
-	~IcuStringIterator() override
-	{
-		delete this->char_itr;
-		delete this->word_itr;
-	}
+	~IcuStringIterator() override = default;
 
 	void SetString(std::string_view s) override
 	{
