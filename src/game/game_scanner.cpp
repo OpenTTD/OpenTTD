@@ -92,8 +92,8 @@ GameLibrary *GameScannerLibrary::FindLibrary(const std::string &library, int ver
 	std::string library_name = fmt::format("{}.{}", library, version);
 
 	/* Check if the library + version exists */
-	ScriptInfoList::iterator it = this->info_list.find(library_name);
+	auto it = this->info_list.find(library_name);
 	if (it == this->info_list.end()) return nullptr;
 
-	return static_cast<GameLibrary *>((*it).second);
+	return static_cast<GameLibrary *>(it->second);
 }
