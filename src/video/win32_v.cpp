@@ -401,6 +401,40 @@ static void CancelIMEComposition(HWND hwnd)
 	HandleTextInput({}, true);
 }
 
+#if defined(_MSC_VER) && defined(NTDDI_WIN10_RS4)
+/* We only use WinRT functions on Windows 10 or later. Unfortunately, newer Windows SDKs are now
+ * linking the two functions below directly instead of using dynamic linking as previously.
+ * To avoid any runtime linking errors on Windows 7 or older, we stub in our own dynamic
+ * linking trampoline. */
+
+static LibraryLoader _combase("combase.dll");
+
+extern "C" int32_t __stdcall WINRT_IMPL_RoOriginateLanguageException(int32_t error, void *message, void *languageException) noexcept
+{
+	typedef BOOL(WINAPI *PFNRoOriginateLanguageException)(int32_t, void *, void *);
+	static PFNRoOriginateLanguageException RoOriginateLanguageException = _combase.GetFunction("RoOriginateLanguageException");
+
+	if (RoOriginateLanguageException != nullptr) {
+		return RoOriginateLanguageException(error, message, languageException);
+	} else {
+		return TRUE;
+	}
+}
+
+extern "C" int32_t __stdcall WINRT_IMPL_RoGetActivationFactory(void *classId, winrt::guid const &iid, void **factory) noexcept
+{
+	typedef BOOL(WINAPI *PFNRoGetActivationFactory)(void *, winrt::guid const &, void **);
+	static PFNRoGetActivationFactory RoGetActivationFactory = _combase.GetFunction("RoGetActivationFactory");
+
+	if (RoGetActivationFactory != nullptr) {
+		return RoGetActivationFactory(classId, iid, factory);
+	} else {
+		*factory = nullptr;
+		return winrt::impl::error_class_not_available;
+	}
+}
+#endif
+
 static bool IsDarkModeEnabled()
 {
 	/* Only build if SDK is Windows 10 1803 or later. */
