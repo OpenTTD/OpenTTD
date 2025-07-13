@@ -105,8 +105,8 @@ static ChangeInfoResult RoadStopChangeInfo(uint first, uint last, int prop, Byte
 				AddStringForMapping(GRFStringID{buf.ReadWord()}, [rs = rs.get()](StringID str) { RoadStopClass::Get(rs->class_index)->name = str; });
 				break;
 
-			case 0x0C: // The draw mode
-				rs->draw_mode = static_cast<RoadStopDrawMode>(buf.ReadByte());
+			case 0x0C: // The draw modes
+				rs->draw_mode = static_cast<RoadStopDrawModes>(buf.ReadByte());
 				break;
 
 			case 0x0D: // Cargo types for random triggers

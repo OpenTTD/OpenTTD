@@ -3331,7 +3331,7 @@ draw_default_foundation:
 			auto result = GetRoadStopLayout(ti, stopspec, st, type, view, regs100);
 			if (result.has_value()) {
 				if (stopspec->flags.Test(RoadStopSpecFlag::DrawModeRegister)) {
-					stop_draw_mode = static_cast<RoadStopDrawMode>(regs100[0]);
+					stop_draw_mode = static_cast<RoadStopDrawModes>(regs100[0]);
 				}
 				if (type == StationType::RoadWaypoint && stop_draw_mode.Test(RoadStopDrawMode::WaypGround)) {
 					draw_ground = true;
