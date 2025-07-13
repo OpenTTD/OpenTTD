@@ -12,12 +12,10 @@
 
 #include <queue>
 
-#include "../signs_func.h"
-#include "../vehicle_func.h"
+#include "../command_type.h"
+#include "../company_type.h"
+#include "../rail_type.h"
 #include "../road_type.h"
-#include "../group.h"
-#include "../goal_type.h"
-#include "../story_type.h"
 
 #include "script_types.hpp"
 #include "script_log_types.hpp"

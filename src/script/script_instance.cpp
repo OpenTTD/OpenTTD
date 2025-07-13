@@ -24,10 +24,12 @@
 #include "api/script_event.hpp"
 #include "api/script_log.hpp"
 
-#include "../company_base.h"
-#include "../company_func.h"
+#include "../company_type.h"
 #include "../fileio_func.h"
+#include "../goal_type.h"
 #include "../league_type.h"
+#include "../signs_type.h"
+#include "../story_type.h"
 #include "../misc/endian_buffer.hpp"
 
 #include "../safeguards.h"
