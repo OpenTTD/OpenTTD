@@ -267,6 +267,7 @@ STR_UNITS_YEARS                                                 :{NUM}{NBSP}jaar
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}period{P "" en}
 
 STR_LIST_SEPARATOR                                              :,{SPACE}
+STR_TRUNCATION_ELLIPSIS                                         :...
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filter:

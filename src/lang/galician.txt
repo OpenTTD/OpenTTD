@@ -268,6 +268,7 @@ STR_UNITS_YEARS                                                 :{NUM}{NBSP}ano{
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}período{P "" s}
 
 STR_LIST_SEPARATOR                                              :,{SPACE}
+STR_TRUNCATION_ELLIPSIS                                         :...
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrar:
@@ -1302,6 +1303,9 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :A taxa de inter
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Custos de explotación: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Establece o nivel de mantemento e custo de operación de vehículos e infraestrutura
 ###length 3
+STR_CONFIG_SETTING_RUNNING_COSTS_LOW                            :Baixo
+STR_CONFIG_SETTING_RUNNING_COSTS_MEDIUM                         :Medio
+STR_CONFIG_SETTING_RUNNING_COSTS_HIGH                           :Alto
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocidade de construción: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limita a cantidade de accións construtivas das IAs
@@ -1324,6 +1328,9 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Sen subvención
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Custos de construción: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Fixa o nivel de custos de construción e compra
 ###length 3
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_LOW                       :Baixo
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_MEDIUM                    :Medio
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Alto
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesións económicas: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Se está activado, a economía pode entrar en recesión periódicamente. Durante unha recesión tódalas producións son significativamente máis baixas (volvendo ao nivel anterior cando a recesión remata)
@@ -2079,9 +2086,9 @@ STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :A clase de merc
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Xeito de distribución para outros tipos de mercadoría: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asimétrico" significa que calquera cantidade de mercadorías pode ser enviada en calquera dirección. "Manual" significa que non haberá distribución automática para estas mercadorías
 ###length 3
-STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
-STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimétrica
-STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simétrica
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :Manual
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :Asimétrica
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :Simétrica
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Precisión da distribución: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Canto máis alto sexa o valor, máis tempo de CPU levará o cálculo de distribución. Se leva demasiado tempo podes experimentar retraso. Se sen embargo o fixas nun valor baixo, a distribución será imprecisa, e pode que a carga non sexa enviada aos destinos que ti queres
