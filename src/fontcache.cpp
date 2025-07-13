@@ -22,9 +22,10 @@
 
 #include "safeguards.h"
 
-/** Default heights for the different sizes of fonts. */
-static const int _default_font_height[FS_END]   = {10, 6, 18, 10};
-static const int _default_font_ascender[FS_END] = { 8, 5, 15,  8};
+/** Default unscaled heights for the different sizes of fonts. */
+/* static */ const int FontCache::DEFAULT_FONT_HEIGHT[FS_END] = {10, 6, 18, 10};
+/** Default unscaled ascenders for the different sizes of fonts. */
+/* static */ const int FontCache::DEFAULT_FONT_ASCENDER[FS_END] = {8, 5, 15, 8};
 
 FontCacheSettings _fcsettings;
 
@@ -32,8 +33,7 @@ FontCacheSettings _fcsettings;
  * Create a new font cache.
  * @param fs The size of the font.
  */
-FontCache::FontCache(FontSize fs) : parent(FontCache::Get(fs)), fs(fs), height(_default_font_height[fs]),
-		ascender(_default_font_ascender[fs]), descender(_default_font_ascender[fs] - _default_font_height[fs])
+FontCache::FontCache(FontSize fs) : parent(FontCache::Get(fs)), fs(fs)
 {
 	assert(this->parent == nullptr || this->fs == this->parent->fs);
 	FontCache::caches[this->fs] = this;
@@ -50,7 +50,7 @@ FontCache::~FontCache()
 
 int FontCache::GetDefaultFontHeight(FontSize fs)
 {
-	return _default_font_height[fs];
+	return FontCache::DEFAULT_FONT_HEIGHT[fs];
 }
 
 /**
