@@ -20,8 +20,7 @@
  * defined (they don't count with any segment cost caching).
  */
 template <class Types>
-class CYapfSegmentCostCacheNoneT
-{
+class CYapfSegmentCostCacheNoneT {
 public:
 	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::NodeList::Item Node; ///< this will be our node type
@@ -43,8 +42,7 @@ public:
  *  to be shared between all rail YAPF types (one shared counter, one notification
  *  function.
  */
-struct CSegmentCostCacheBase
-{
+struct CSegmentCostCacheBase {
 	static int   s_rail_change_counter;
 
 	static void NotifyTrackLayoutChange(TileIndex, Track)

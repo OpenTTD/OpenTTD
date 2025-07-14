@@ -16,8 +16,7 @@
 
 /** YAPF origin provider base class - used when origin is one tile / multiple trackdirs */
 template <class Types>
-class CYapfOriginTileT
-{
+class CYapfOriginTileT {
 public:
 	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::NodeList::Item Node; ///< this will be our node type
@@ -56,8 +55,7 @@ public:
 
 /** YAPF origin provider base class - used when there are two tile/trackdir origins */
 template <class Types>
-class CYapfOriginTileTwoWayT
-{
+class CYapfOriginTileTwoWayT {
 public:
 	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::NodeList::Item Node; ///< this will be our node type

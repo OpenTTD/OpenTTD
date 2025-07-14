@@ -24,8 +24,7 @@ constexpr int MAX_SHIP_PF_NODES = (NUMBER_OR_WATER_REGIONS_LOOKAHEAD + 1) * WATE
 constexpr int SHIP_LOST_PATH_LENGTH = 8; // The length of the (aimless) path assigned when a ship is lost.
 
 template <class Types>
-class CYapfDestinationTileWaterT
-{
+class CYapfDestinationTileWaterT {
 public:
 	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class).
 	typedef typename Types::TrackFollower TrackFollower;
@@ -123,8 +122,7 @@ public:
 
 /** Node Follower module of YAPF for ships */
 template <class Types>
-class CYapfFollowShipT
-{
+class CYapfFollowShipT {
 public:
 	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class).
 	typedef typename Types::TrackFollower TrackFollower;
@@ -325,8 +323,7 @@ public:
 
 /** Cost Provider module of YAPF for ships. */
 template <class Types>
-class CYapfCostShipT
-{
+class CYapfCostShipT {
 public:
 	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class).
 	typedef typename Types::TrackFollower TrackFollower;
@@ -415,8 +412,7 @@ public:
  * Defines all 6 base YAPF modules as classes providing services for CYapfBaseT.
  */
 template <class Tpf_, class Ttrack_follower, class Tnode_list>
-struct CYapfShip_TypesT
-{
+struct CYapfShip_TypesT {
 	typedef CYapfShip_TypesT<Tpf_, Ttrack_follower, Tnode_list>  Types;         ///< Shortcut for this struct type.
 	typedef Tpf_                                                 Tpf;           ///< Pathfinder type.
 	typedef Ttrack_follower                                      TrackFollower; ///< Track follower helper class.
@@ -432,8 +428,7 @@ struct CYapfShip_TypesT
 	typedef CYapfCostShipT<Types>             PfCost;        ///< Cost provider.
 };
 
-struct CYapfShip : CYapfT<CYapfShip_TypesT<CYapfShip, CFollowTrackWater, CShipNodeListExitDir > >
-{
+struct CYapfShip : CYapfT<CYapfShip_TypesT<CYapfShip, CFollowTrackWater, CShipNodeListExitDir>> {
 	explicit CYapfShip(int max_nodes) { this->max_search_nodes = max_nodes; }
 };
 

@@ -25,8 +25,7 @@
  *  types w/ or w/o 90-deg turns allowed
  */
 template <TransportType Ttr_type_, typename VehicleType, bool T90deg_turns_allowed_ = true, bool Tmask_reserved_tracks = false>
-struct CFollowTrackT
-{
+struct CFollowTrackT {
 	enum ErrorCode : uint8_t {
 		EC_NONE,
 		EC_OWNER,

@@ -17,8 +17,8 @@
 
 /** Yapf Node for road YAPF */
 template <class Tkey_>
-struct CYapfRoadNodeT : CYapfNodeT<Tkey_, CYapfRoadNodeT<Tkey_> > {
-	typedef CYapfNodeT<Tkey_, CYapfRoadNodeT<Tkey_> > base;
+struct CYapfRoadNodeT : CYapfNodeT<Tkey_, CYapfRoadNodeT<Tkey_>> {
+	typedef CYapfNodeT<Tkey_, CYapfRoadNodeT<Tkey_>> base;
 
 	TileIndex segment_last_tile;
 	Trackdir segment_last_td;
