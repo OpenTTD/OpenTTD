@@ -44,7 +44,7 @@ enum AirportTypes : uint8_t {
 };
 
 /** Flags for airport movement data. */
-enum AirportMovingDataFlag : uint8_t {
+enum class AirportMovingDataFlag : uint8_t {
 	NoSpeedClamp, ///< No speed restrictions.
 	Takeoff, ///< Takeoff movement.
 	SlowTurn, ///< Turn slowly (mostly used in the air).
