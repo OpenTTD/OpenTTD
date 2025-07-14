@@ -427,6 +427,7 @@ struct TimetableWindow : Window {
 	void DrawTimetablePanel(const Rect &r) const
 	{
 		const Vehicle *v = this->vehicle;
+		if (v->GetNumOrders() == 0) return;
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 		int i = this->vscroll->GetPosition();
 		VehicleOrderID order_id = (i + 1) / 2;
