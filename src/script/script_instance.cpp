@@ -100,7 +100,7 @@ void ScriptInstance::Initialize(const std::string &main_script, const std::strin
 
 void ScriptInstance::RegisterAPI()
 {
-	squirrel_register_std(this->engine);
+	squirrel_register_std(*this->engine);
 }
 
 bool ScriptInstance::LoadCompatibilityScript(std::string_view api_version, Subdirectory dir)

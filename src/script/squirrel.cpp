@@ -536,7 +536,7 @@ void Squirrel::Initialize()
 	sq_setforeignptr(this->vm, this);
 
 	sq_pushroottable(this->vm);
-	squirrel_register_global_std(this);
+	squirrel_register_global_std(*this);
 
 	/* Set consts table as delegate of root table, so consts/enums defined via require() are accessible */
 	sq_pushconsttable(this->vm);
