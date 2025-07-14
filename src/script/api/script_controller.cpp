@@ -97,8 +97,8 @@ ScriptController::ScriptController(::CompanyID company) :
 /* static */ HSQOBJECT ScriptController::Import(const std::string &library, const std::string &class_name, int version)
 {
 	ScriptController &controller = ScriptObject::GetActiveInstance().GetController();
-	Squirrel *engine = ScriptObject::GetActiveInstance().engine;
-	HSQUIRRELVM vm = engine->GetVM();
+	Squirrel &engine = *ScriptObject::GetActiveInstance().engine;
+	HSQUIRRELVM vm = engine.GetVM();
 
 	ScriptInfo *lib = ScriptObject::GetActiveInstance().FindLibrary(library, version);
 	if (lib == nullptr) {
@@ -128,7 +128,7 @@ ScriptController::ScriptController(::CompanyID company) :
 		sq_pushstring(vm, fake_class);
 		sq_newclass(vm, SQFalse);
 		/* Load the library */
-		if (!engine->LoadScript(vm, lib->GetMainScript(), false)) {
+		if (!engine.LoadScript(vm, lib->GetMainScript(), false)) {
 			throw sq_throwerror(vm, fmt::format("there was a compile error when importing '{}' version {}", library, version));
 		}
 		/* Create the fake class */
