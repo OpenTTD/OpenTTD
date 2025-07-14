@@ -28,8 +28,8 @@ public:
 	bool IsBuiltInFont() override { return true; }
 
 private:
-	std::unordered_map<GlyphID, SpriteID> glyph_to_spriteid_map{}; ///< Mapping of glyphs to sprite IDs.
-	SpriteID GetUnicodeGlyph(GlyphID key);
+	std::unordered_map<char32_t, SpriteID> char_map{}; ///< Mapping of characters to sprite IDs.
+	SpriteID GetUnicodeGlyph(char32_t key);
 };
 
 #endif /* SPRITEFONTCACHE_H */

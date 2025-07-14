@@ -43,26 +43,26 @@ SpriteFontCache::SpriteFontCache(FontSize fs) : FontCache(fs)
 }
 
 /**
- * Get SpriteID associated with a GlyphID.
- * @param key Glyph to find.
- * @return SpriteID of glyph, or 0 if not present.
+ * Get SpriteID associated with a character.
+ * @param key Character to find.
+ * @return SpriteID for character, or 0 if not present.
  */
-SpriteID SpriteFontCache::GetUnicodeGlyph(GlyphID key)
+SpriteID SpriteFontCache::GetUnicodeGlyph(char32_t key)
 {
-	const auto found = this->glyph_to_spriteid_map.find(key & ~SPRITE_GLYPH);
-	if (found == std::end(this->glyph_to_spriteid_map)) return 0;
+	const auto found = this->char_map.find(key);
+	if (found == std::end(this->char_map)) return 0;
 	return found->second;
 }
 
 void SpriteFontCache::SetUnicodeGlyph(char32_t key, SpriteID sprite)
 {
-	this->glyph_to_spriteid_map[key] = sprite;
+	this->char_map[key] = sprite;
 }
 
 void SpriteFontCache::InitializeUnicodeGlyphMap()
 {
 	/* Clear out existing glyph map if it exists */
-	this->glyph_to_spriteid_map.clear();
+	this->char_map.clear();
 
 	SpriteID base;
 	switch (this->fs) {
