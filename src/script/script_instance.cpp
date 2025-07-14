@@ -318,9 +318,10 @@ void ScriptInstance::CollectGarbage()
 }
 
 
-ScriptStorage *ScriptInstance::GetStorage()
+ScriptStorage &ScriptInstance::GetStorage()
 {
-	return this->storage;
+	assert(this->storage != nullptr);
+	return *this->storage;
 }
 
 ScriptLogTypes::LogData &ScriptInstance::GetLogData()

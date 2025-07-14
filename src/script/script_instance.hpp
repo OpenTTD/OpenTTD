@@ -91,7 +91,7 @@ public:
 	/**
 	 * Get the storage of this script.
 	 */
-	class ScriptStorage *GetStorage();
+	class ScriptStorage &GetStorage();
 
 	/**
 	 * Get the log pointer of this script.
