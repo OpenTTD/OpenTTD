@@ -710,7 +710,7 @@ static void TileLoop_Town(TileIndex tile)
 static CommandCost ClearTile_Town(TileIndex tile, DoCommandFlags flags)
 {
 	if (flags.Test(DoCommandFlag::Auto)) return CommandCost(STR_ERROR_BUILDING_MUST_BE_DEMOLISHED);
-	if (!CanDeleteHouse(tile)) return CMD_ERROR;
+	if (!CanDeleteHouse(tile)) return CommandCost(STR_ERROR_BUILDING_IS_PROTECTED);
 
 	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
 
@@ -724,7 +724,7 @@ static CommandCost ClearTile_Town(TileIndex tile, DoCommandFlags flags)
 		if (!_cheats.magic_bulldozer.value && !flags.Test(DoCommandFlag::NoTestTownRating)) {
 			/* NewGRFs can add indestructible houses. */
 			if (rating > RATING_MAXIMUM) {
-				return CommandCost(CMD_ERROR);
+				return CommandCost(STR_ERROR_BUILDING_IS_PROTECTED);
 			}
 			/* If town authority controls removal, check the company's rating. */
 			if (rating > t->ratings[_current_company] && _settings_game.difficulty.town_council_tolerance != TOWN_COUNCIL_PERMISSIVE) {
