@@ -10,15 +10,12 @@
 #ifndef SPRITEFONTCACHE_H
 #define SPRITEFONTCACHE_H
 
-#include "../string_func.h"
 #include "../fontcache.h"
 
 /** Font cache for fonts that are based on a freetype font. */
 class SpriteFontCache : public FontCache {
 public:
 	SpriteFontCache(FontSize fs);
-	void SetUnicodeGlyph(char32_t key, SpriteID sprite) override;
-	void InitializeUnicodeGlyphMap() override;
 	void ClearFontCache() override;
 	const Sprite *GetGlyph(GlyphID key) override;
 	uint GetGlyphWidth(GlyphID key) override;
@@ -26,10 +23,6 @@ public:
 	GlyphID MapCharToGlyph(char32_t key, bool allow_fallback = true) override;
 	std::string GetFontName() override { return "sprite"; }
 	bool IsBuiltInFont() override { return true; }
-
-private:
-	std::unordered_map<char32_t, SpriteID> char_map{}; ///< Mapping of characters to sprite IDs.
-	SpriteID GetUnicodeGlyph(char32_t key);
 };
 
 #endif /* SPRITEFONTCACHE_H */
