@@ -973,7 +973,7 @@ static void HandleNewGRFStringControlCodes(std::string_view str, TextRefStack &s
  * @param textstack Text parameter stack.
  * @returns Parameters for GRF string.
  */
-std::vector<StringParameter> GetGRFSringTextStackParameters(const GRFFile *grffile, StringID stringid, std::span<const int32_t> textstack)
+std::vector<StringParameter> GetGRFStringTextStackParameters(const GRFFile *grffile, StringID stringid, std::span<const int32_t> textstack)
 {
 	if (stringid == INVALID_STRING_ID) return {};
 
@@ -998,6 +998,6 @@ std::vector<StringParameter> GetGRFSringTextStackParameters(const GRFFile *grffi
 std::string GetGRFStringWithTextStack(const struct GRFFile *grffile, GRFStringID grfstringid, std::span<const int32_t> textstack)
 {
 	StringID stringid = GetGRFStringID(grffile->grfid, grfstringid);
-	auto params = GetGRFSringTextStackParameters(grffile, stringid, textstack);
+	auto params = GetGRFStringTextStackParameters(grffile, stringid, textstack);
 	return GetStringWithArgs(stringid, params);
 }
