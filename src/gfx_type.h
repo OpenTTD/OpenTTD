@@ -258,6 +258,13 @@ enum FontSize : uint8_t {
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(FontSize)
 
+using FontSizes = EnumBitSet<FontSize, uint8_t>;
+
+/** Mask of all possible font sizes. */
+constexpr FontSizes FONTSIZES_ALL{FS_NORMAL, FS_SMALL, FS_LARGE, FS_MONO};
+/** Mask of font sizes required to be present. */
+constexpr FontSizes FONTSIZES_REQUIRED{FS_NORMAL, FS_SMALL, FS_LARGE};
+
 inline std::string_view FontSizeToName(FontSize fs)
 {
 	static const std::string_view SIZE_TO_NAME[] = { "medium", "small", "large", "mono" };
