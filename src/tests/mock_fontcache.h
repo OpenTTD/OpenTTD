@@ -33,7 +33,7 @@ public:
 	{
 		for (FontSize fs = FS_BEGIN; fs != FS_END; fs++) {
 			if (FontCache::Get(fs) != nullptr) continue;
-			FontCache::caches[fs] = std::make_unique<MockFontCache>(fs);
+			FontCache::Register(std::make_unique<MockFontCache>(fs));
 		}
 	}
 };
