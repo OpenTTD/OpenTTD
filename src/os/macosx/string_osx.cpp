@@ -61,7 +61,6 @@ static std::unordered_map<FontIndex, CFAutoRelease<CTFontRef>> _font_cache;
  */
 class CoreTextParagraphLayout : public ParagraphLayouter {
 private:
-	const CoreTextParagraphLayoutFactory::CharType *text_buffer;
 	ptrdiff_t length;
 	const FontMap &font_map;
 
@@ -81,7 +80,7 @@ public:
 		Font *font;
 
 	public:
-		CoreTextVisualRun(CTRunRef run, Font *font, const CoreTextParagraphLayoutFactory::CharType *buff);
+		CoreTextVisualRun(CTRunRef run, Font *font);
 		CoreTextVisualRun(CoreTextVisualRun &&other) = default;
 
 		std::span<const GlyphID> GetGlyphs() const override { return this->glyphs; }
@@ -97,7 +96,7 @@ public:
 	/** A single line worth of VisualRuns. */
 	class CoreTextLine : public std::vector<CoreTextVisualRun>, public ParagraphLayouter::Line {
 	public:
-		CoreTextLine(CFAutoRelease<CTLineRef> line, const FontMap &font_mapping, const CoreTextParagraphLayoutFactory::CharType *buff)
+		CoreTextLine(CFAutoRelease<CTLineRef> line, const FontMap &font_mapping)
 		{
 			CFArrayRef runs = CTLineGetGlyphRuns(line.get());
 			for (CFIndex i = 0; i < CFArrayGetCount(runs); i++) {
@@ -107,7 +106,7 @@ public:
 				CFRange chars = CTRunGetStringRange(run);
 				auto map = std::ranges::upper_bound(font_mapping, chars.location, std::less{}, &std::pair<int, Font *>::first);
 
-				this->emplace_back(run, map->second, buff);
+				this->emplace_back(run, map->second);
 			}
 		}
 
@@ -123,7 +122,7 @@ public:
 		}
 	};
 
-	CoreTextParagraphLayout(CFAutoRelease<CTTypesetterRef> typesetter, const CoreTextParagraphLayoutFactory::CharType *buffer, ptrdiff_t len, const FontMap &font_mapping) : text_buffer(buffer), length(len), font_map(font_mapping), typesetter(std::move(typesetter))
+	CoreTextParagraphLayout(CFAutoRelease<CTTypesetterRef> typesetter, ptrdiff_t len, const FontMap &font_mapping) : length(len), font_map(font_mapping), typesetter(std::move(typesetter))
 	{
 		this->Reflow();
 	}
@@ -159,8 +158,6 @@ static const CTRunDelegateCallbacks _sprite_font_callback = {
 	ptrdiff_t length = buff_end - buff;
 	if (length == 0) return nullptr;
 
-	FontCache &fc = this->font->GetFontCache();
-
 	/* Make attributed string with embedded font information. */
 	CFAutoRelease<CFMutableAttributedStringRef> str(CFAttributedStringCreateMutable(kCFAllocatorDefault, 0));
 	CFAttributedStringBeginEditing(str.get());
@@ -177,6 +174,7 @@ static const CTRunDelegateCallbacks _sprite_font_callback = {
 	for (const auto &[position, font] : font_mapping) {
 		if (position - last == 0) continue;
 
+		FontCache &fc = font->GetFontCache();
 		CTFontRef font_handle = static_cast<CTFontRef>(fc.GetOSHandle());
 		if (font_handle == nullptr) {
 			if (!_font_cache[fc.GetIndex()]) {
@@ -194,8 +192,8 @@ static const CTRunDelegateCallbacks _sprite_font_callback = {
 
 		/* Install a size callback for our custom fonts. */
 		if (fc.IsBuiltInFont()) {
-			for (ssize_t c = last; c < i.first; c++) {
-				CFAutoRelease<CTRunDelegateRef> del(CTRunDelegateCreate(&_custom_font_callback, static_cast<void *>(reinterpret_cast<uintptr_t>(buff[c] | (fc.GetIndex() << 24)))));
+			for (ssize_t c = last; c < position; c++) {
+				CFAutoRelease<CTRunDelegateRef> del(CTRunDelegateCreate(&_sprite_font_callback, reinterpret_cast<void *>(static_cast<size_t>(buff[c] | (fc.GetIndex() << 24)))));
 				/* According to the official documentation, if a run delegate is used, the char should always be 0xFFFC. */
 				CFAttributedStringReplaceString(str.get(), CFRangeMake(c, 1), replacment_str.get());
 				CFAttributedStringSetAttribute(str.get(), CFRangeMake(c, 1), kCTRunDelegateAttributeName, del.get());
@@ -209,7 +207,7 @@ static const CTRunDelegateCallbacks _sprite_font_callback = {
 	/* Create and return typesetter for the string. */
 	CFAutoRelease<CTTypesetterRef> typesetter(CTTypesetterCreateWithAttributedString(str.get()));
 
-	return typesetter ? std::make_unique<CoreTextParagraphLayout>(std::move(typesetter), buff, length, font_mapping) : nullptr;
+	return typesetter ? std::make_unique<CoreTextParagraphLayout>(std::move(typesetter), length, font_mapping) : nullptr;
 }
 
 /* virtual */ std::unique_ptr<const ParagraphLayouter::Line> CoreTextParagraphLayout::NextLine(int max_width)
@@ -225,10 +223,10 @@ static const CTRunDelegateCallbacks _sprite_font_callback = {
 	this->cur_offset += len;
 
 	if (!line) return nullptr;
-	return std::make_unique<CoreTextLine>(std::move(line), this->font_map, this->text_buffer);
+	return std::make_unique<CoreTextLine>(std::move(line), this->font_map);
 }
 
-CoreTextParagraphLayout::CoreTextVisualRun::CoreTextVisualRun(CTRunRef run, Font *font, const CoreTextParagraphLayoutFactory::CharType *buff) : font(font)
+CoreTextParagraphLayout::CoreTextVisualRun::CoreTextVisualRun(CTRunRef run, Font *font) : font(font)
 {
 	this->glyphs.resize(CTRunGetGlyphCount(run));
 
