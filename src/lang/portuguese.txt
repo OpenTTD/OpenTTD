@@ -647,7 +647,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Alternar
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Classificação de Empresas
-STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} "{STRING}"
 STR_COMPANY_LEAGUE_COMPANY_RANK                                 :{YELLOW}#{NUM}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Engenheiro
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Gestor de Tráfego
@@ -5002,6 +5002,7 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}É neces
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Terreno inclinado na direcção incorrecta
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Não é possível fazer isto...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}O edifício deve ser demolido primeiro
+STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}... o edifício está protegido
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Não é possível limpar esta área...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... sítio inadequado
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... já está construído

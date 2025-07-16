@@ -5387,6 +5387,7 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Wymagany
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Teren pochylony w złym kierunku
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Nie można tego zrobić...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Należy najpierw zburzyć budynek
+STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}... budynek jest chroniony
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Nie można wyczyścić terenu...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... nieodpowiednie miejsce
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... już zbudowano

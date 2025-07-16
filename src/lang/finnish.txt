@@ -5001,6 +5001,7 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Tarvitaa
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Maa viettää väärään suuntaan.
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Ei onnistu...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Rakennus täytyy purkaa ensin.
+STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}… rakennus on suojattu
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Aluetta ei voi tyhjentää...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... maasto on sopimaton
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... se on jo rakennettu

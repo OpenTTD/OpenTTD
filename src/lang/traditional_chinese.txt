@@ -5001,6 +5001,7 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}需要�
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}地面斜坡方向不對
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}不能執行以下動作...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}必須先摧毀建築物
+STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}……建築物受到保護
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}不能清除這個地段...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... 地點不適合
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}……經已建成

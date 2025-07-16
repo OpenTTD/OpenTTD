@@ -268,6 +268,7 @@ STR_UNITS_YEARS                                                 :{NUM}{NBSP}any{
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}període{P "" s}
 
 STR_LIST_SEPARATOR                                              :,{SPACE}
+STR_TRUNCATION_ELLIPSIS                                         :...
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtre:
@@ -286,7 +287,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Tanca la
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Títol de la finestra: arrossegueu el títol per desplaçar la finestra.
 STR_TOOLTIP_SHADE                                               :{BLACK}Ombra de la finestra: mostra només la barra de títol.
 STR_TOOLTIP_DEBUG                                               :{BLACK}Mostra la informació de depuració NewGRF
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}Redimensiona la finestra a la mida predeterminada. Ctrl+Clic desa la mida actual com a predeterminada.
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Redimensiona la finestra a la mida predeterminada. Amb Ctrl+Clic, es desa la mida actual com a predeterminada. Amb Ctrl+doble clic, es restableix als valors per defecte.
 STR_TOOLTIP_STICKY                                              :{BLACK}Marca aquesta finestra com a no eliminable per la tecla «Tanca totes les finestres». Ctrl+Clic per desar també l'estat predeterminat.
 STR_TOOLTIP_RESIZE                                              :{BLACK}Clica i arrossega per redimensionar aquesta finestra
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Commuta entre la mida gran i petita de la finestra
@@ -1108,7 +1109,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Informació add
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Descarrega contingut
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Comprova si hi ha continguts nous o actualitzats per a descarregar.
 
-STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(no s'han instal·lat complements per a interactuar amb plataformes socials)
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :(no s'han instal·lat complements per a interactuar amb plataformes socials)
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Plataforma:
@@ -1226,7 +1227,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permissiva (les
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No hi ha cap IA disponible...{}Podeu descarregar-ne a través del «Contingut en línia».
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{G=Masculin}{BLACK}Filtre:
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{G=Masculin}Filtre:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :Desplega-ho tot
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Plega-ho tot
 STR_CONFIG_SETTING_RESET_ALL                                    :Restableix tots els valors
@@ -1302,6 +1303,9 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Tipus d'interè
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Costos d'utilització: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Fixa el nivell de manteniment i els costos d'utilització dels vehicles i infraestructures
 ###length 3
+STR_CONFIG_SETTING_RUNNING_COSTS_LOW                            :Baix
+STR_CONFIG_SETTING_RUNNING_COSTS_MEDIUM                         :Mitjà
+STR_CONFIG_SETTING_RUNNING_COSTS_HIGH                           :Alt
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Ritme de construcció: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limita la quantitat d'accions de construcció per part de les IA
@@ -1324,6 +1328,9 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Sense subsidis
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costos de construcció: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Fixa el nivell de construcció i els preus de compra
 ###length 3
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_LOW                       :Baix
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_MEDIUM                    :Mitjà
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Alt
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessions: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Si està activat, poden haver recessions periòdicament. Durant una recessió, tota la producció és significativament més baixa, tornant al nivell previ quan s'acabi el període de recessió.
@@ -2079,9 +2086,9 @@ STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :La classe de c�
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Mode de distribució per altres classes de càrrega: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asimètric" vol dir que quantitats arbitràries de càrrega poden ser enviades en qualsevol sentit. "Manual" significa que no s'aplicarà cap distribució automàtica a aquestes càrregues.
 ###length 3
-STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
-STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimètric
-STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simètric
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :Manual
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :Asimètric
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :Simètric
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Precisió de la distribució: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Com més alt el valor indicat, més temps de processador requerirà el càlcul del graf de distribució. Si requereix massa temps podeu notar ralentització. Si indiqueu un valor baix, però, la distribució serà poc acurada, i us podeu trobar que la càrrega no és enviada als llocs que espereu.
@@ -2331,16 +2338,19 @@ STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Selecci�
 STR_FACE_LOAD                                                   :{BLACK}Carrega
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Carrega la cara preferida
 STR_FACE_LOAD_DONE                                              :{WHITE}S'ha carregat la cara personalitzada des de l'arxiu de configuració de l'OpenTTD.
-STR_FACE_FACECODE                                               :{BLACK}Número de la cara
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Veure i/o assigna el número de la cara del president
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Veure i/o assigna el número de la cara del president
-STR_FACE_FACECODE_SET                                           :{WHITE}El número de la nova cara ha estat assignat
-STR_FACE_FACECODE_ERR                                           :{WHITE}No s'ha pogut assignar el número de cara del president - ha de ser un nombre entre 0 i 4,294,967,295!
+STR_FACE_FACECODE                                               :{BLACK}Codi de la cara
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Veure i/o assigna el codi de la cara del president
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Veure i/o assigna el codi de la cara del president
+STR_FACE_FACECODE_SET                                           :{WHITE}S'ha assignat el codi de la nova cara del president.
+STR_FACE_FACECODE_ERR                                           :{WHITE}No s'ha pogut assignar el codi de cara del president - ha de ser una etiqueta i nombre vàlids.
 STR_FACE_SAVE                                                   :{BLACK}Desa
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Desa la cara preferida
 STR_FACE_SAVE_DONE                                              :{WHITE}Es desarà aquesta cara personalitzada a l'arxiu de configuració de l'OpenTTD.
+STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
+STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Sí
 STR_FACE_NO                                                     :No
+STR_FACE_STYLE                                                  :Estil:
 STR_FACE_HAIR                                                   :Cabell:
 STR_FACE_EYEBROWS                                               :Celles:
 STR_FACE_EYECOLOUR                                              :Color dels ulls:
@@ -2813,6 +2823,10 @@ STR_PICKER_MODE_USED_TOOLTIP                                    :Commuta entre m
 STR_PICKER_MODE_SAVED                                           :Desats
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Commuta entre mostrar tots o bé només els elements desats.
 
+STR_PICKER_PREVIEW_SHRINK                                       :‒
+STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Redueix l'alçària de les vistes prèvies. Amb Ctrl+clic, es redueix fins al mínim.
+STR_PICKER_PREVIEW_EXPAND                                       :+
+STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Augmenta l'alçària de les vistes prèvies. Amb Ctrl+clic, s'augmenta fins al màxim.
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Trieu quina classe d'estació voleu veure.
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Trieu quin tipus d'estació voleu construir. Amb Ctrl+clic, s'afegeix o es trau l'element de la llista de desats.
@@ -3053,6 +3067,11 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Seleccio
 STR_FOUND_TOWN_CITY                                             :{BLACK}Ciutat
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Les ciutats creixen més ràpid que els pobles{}Depenent de la configuració, són més grans quan es funden
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Expansió de la població:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Edificis
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Augmenta el nombre d'edificis de les poblacions.
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Carreteres
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Augmenta el nombre de carreteres de la població.
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Disposició de les carreteres de la població:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Selecciona la disposició de les carreteres utilitzades per a aquesta població
@@ -3677,6 +3696,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Canvia e
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Eixampla
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Incrementa la mida de la població
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Expandeix els edificis
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Augmenta el nombre d'edificis de la població.
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Expandeix les carreteres
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Augmenta el nombre de carreteres de la població.
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Esborra
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Esborra totalment aquesta població
 
@@ -4415,10 +4438,10 @@ STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Mostra l
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Mostra les ordres de l'avió. Ctrl+Clic per mostrar l'horari de l'avió
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Mostra els detalls del tren
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Mostra els detalls del vehicle
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Mostra els detalls del vaixell
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Mostra els detalls de l'avió
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Mostra els detalls del tren. Amb Ctrl+clic, es mostra el grup del tren.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Mostra els detalls del vehicle. Amb Ctrl+clic, es mostra el grup del vehicle.
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Mostra els detalls del vaixell. Amb Ctrl+clic, es mostra el grup del vaixell.
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Mostra els detalls de l'aeronau. Amb Ctrl+clic, es mostra el grup de l'aeronau.
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Acció actual del tren - Feu clic per parar-lo o engegar-lo.
@@ -4742,14 +4765,15 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horari -
 STR_TIMETABLE_NO_TRAVEL                                         :Sense viatge
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viatge (automàtic; programat per la següent ordre manual)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viatge (fora d'horari)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viatja (sense horari) com a molt a {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Viatge a {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viatja durant {STRING} com a molt a {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Viatja (durant {STRING}, sense horari)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Viatja (durant {STRING}, sense horari) com a molt a {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(quedar-s'hi durant {STRING}, sense horari)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(viatja durant {STRING}, sense horari)
-STR_TIMETABLE_STAY_FOR                                          :i estigues {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :i viatge per {STRING}
+STR_TIMETABLE_STAY_FOR                                          :{SPACE}i estigues {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}i viatja durant {STRING}
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}L'horari trigara aproximadament {STRING} a completar-se.
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}L'horari tardarà {STRING} a complir-se
@@ -5897,3 +5921,11 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Obre la configuració d'insígnies
+STR_BADGE_CONFIG_RESET                                          :Restableix
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Icones d'insígnies
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Filtres d'insígnies
+STR_BADGE_CONFIG_PREVIEW                                        :Imatge de previsualització
+STR_BADGE_CONFIG_NAME                                           :Nom
+STR_BADGE_FILTER_ANY_LABEL                                      :Qualsevol {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} és {STRING}

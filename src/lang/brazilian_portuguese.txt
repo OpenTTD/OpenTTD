@@ -5002,6 +5002,7 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}O terren
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Terreno inclinado na direção errada
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Não é possível fazer isto...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}A construção precisa ser demolida primeiro
+STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}... construção é protegida
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Não é possível limpar esta área...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... local não adequado
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... já construído

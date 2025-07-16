@@ -5102,6 +5102,7 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Απαι
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Το έδαφος έχει λάθος κλίση
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Αυτό δεν γίνεται...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Το κτίριο πρέπει πρώτα να κατεδαφιστεί
+STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}... το κτίριο προστατεύεται
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Είναι αδύνατο να καθαριστεί αυτή η περιοχή...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... ακατάλληλη περιοχή
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... ήδη κατασκευασμένο

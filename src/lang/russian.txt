@@ -5188,6 +5188,7 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Необ
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Неверный уклон земли
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Это невозможно...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Сначала снесите здания
+STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}... это здание защищено от изменений
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Невозможно расчистить данный участок...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... неподходящее место
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... уже построено
