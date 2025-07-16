@@ -476,7 +476,7 @@ CommandCost GetErrorMessageFromLocationCallbackResult(uint16_t cb_res, std::span
 		/* If this error isn't for the local player then it won't be seen, so don't bother encoding anything. */
 		if (IsLocalCompany()) {
 			StringID stringid = GetGRFStringID(grffile->grfid, text_id);
-			auto params = GetGRFSringTextStackParameters(grffile, stringid, textstack);
+			auto params = GetGRFStringTextStackParameters(grffile, stringid, textstack);
 			res.SetEncodedMessage(GetEncodedStringWithArgs(stringid, params));
 		}
 
