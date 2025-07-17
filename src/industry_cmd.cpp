@@ -1245,6 +1245,10 @@ void OnTick_Industry()
 
 	for (Industry *i : Industry::Iterate()) {
 		ProduceIndustryGoods(i);
+
+		if ((TimerGameTick::counter + i->index) % Ticks::DAY_TICKS == 0) {
+			for (auto &a : i->accepted) a.accumulated_waiting += a.waiting;
+		}
 	}
 }
 
@@ -2504,6 +2508,14 @@ static void UpdateIndustryStatistics(Industry *i)
 
 			RotateHistory(p.history);
 		}
+	}
+
+	for (auto &a : i->accepted) {
+		if (!IsValidCargoType(a.cargo)) continue;
+		if (a.history == nullptr) continue;
+
+		(*a.history)[THIS_MONTH].waiting = GetAndResetAccumulatedAverage<uint16_t>(a.accumulated_waiting);
+		RotateHistory(*a.history);
 	}
 }
 

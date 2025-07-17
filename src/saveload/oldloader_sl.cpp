@@ -858,7 +858,7 @@ static bool LoadOldIndustry(LoadgameState &ls, int num)
 
 	if (i->location.tile != 0) {
 		/* Copy data from old fixed arrays to industry. */
-		std::copy(std::begin(_old_accepted), std::end(_old_accepted), std::back_inserter(i->accepted));
+		std::move(std::begin(_old_accepted), std::end(_old_accepted), std::back_inserter(i->accepted));
 		std::copy(std::begin(_old_produced), std::end(_old_produced), std::back_inserter(i->produced));
 
 		i->town = RemapTown(i->location.tile);
