@@ -81,7 +81,7 @@ static const RoadTypeInfo _original_roadtypes[] = {
 		RoadTypeLabelList(),
 
 		/* map colour */
-		0x01,
+		PC_BLACK,
 
 		/* introduction date */
 		CalendarTime::MIN_DATE,
@@ -162,7 +162,7 @@ static const RoadTypeInfo _original_roadtypes[] = {
 		RoadTypeLabelList(),
 
 		/* map colour */
-		0x01,
+		PC_BLACK,
 
 		/* introduction date */
 		CalendarTime::INVALID_DATE,

@@ -165,11 +165,11 @@ struct ValuesInterval {
 struct BaseGraphWindow : Window {
 protected:
 	static const int GRAPH_MAX_DATASETS     =  64;
-	static const int GRAPH_BASE_COLOUR      =  GREY_SCALE(2);
-	static const int GRAPH_GRID_COLOUR      =  GREY_SCALE(3);
-	static const int GRAPH_AXIS_LINE_COLOUR =  GREY_SCALE(1);
-	static const int GRAPH_ZERO_LINE_COLOUR =  GREY_SCALE(8);
-	static const int GRAPH_YEAR_LINE_COLOUR =  GREY_SCALE(5);
+	static constexpr PixelColour GRAPH_BASE_COLOUR      =  GREY_SCALE(2);
+	static constexpr PixelColour GRAPH_GRID_COLOUR      =  GREY_SCALE(3);
+	static constexpr PixelColour GRAPH_AXIS_LINE_COLOUR =  GREY_SCALE(1);
+	static constexpr PixelColour GRAPH_ZERO_LINE_COLOUR =  GREY_SCALE(8);
+	static constexpr PixelColour GRAPH_YEAR_LINE_COLOUR =  GREY_SCALE(5);
 	static const int GRAPH_NUM_MONTHS       =  24; ///< Number of months displayed in the graph.
 	static const int GRAPH_PAYMENT_RATE_STEPS = 20; ///< Number of steps on Payment rate graph.
 	static const int PAYMENT_GRAPH_X_STEP_DAYS    = 10; ///< X-axis step label for cargo payment rates "Days in transit".
@@ -203,7 +203,7 @@ protected:
 
 	struct DataSet {
 		std::array<OverflowSafeInt64, GRAPH_NUM_MONTHS> values;
-		uint8_t colour;
+		PixelColour colour;
 		uint8_t exclude_bit;
 		uint8_t range_bit;
 		uint8_t dash;
@@ -390,7 +390,7 @@ protected:
 
 		/* Draw the grid lines. */
 		int gridline_width = WidgetDimensions::scaled.bevel.top;
-		int grid_colour = GRAPH_GRID_COLOUR;
+		PixelColour grid_colour = GRAPH_GRID_COLOUR;
 
 		/* Don't draw the first line, as that's where the axis will be. */
 		if (rtl) {
@@ -516,7 +516,7 @@ protected:
 		uint pointoffs1 = pointwidth / 2;
 		uint pointoffs2 = pointwidth - pointoffs1;
 
-		auto draw_dataset = [&](const DataSet &dataset, uint8_t colour) {
+		auto draw_dataset = [&](const DataSet &dataset, PixelColour colour) {
 			if (HasBit(this->excluded_data, dataset.exclude_bit)) return;
 			if (HasBit(this->excluded_range, dataset.range_bit)) return;
 
@@ -1208,7 +1208,7 @@ struct BaseCargoGraphWindow : BaseGraphWindow {
 			/* Cargo-colour box with outline */
 			const Rect cargo = text.WithWidth(this->legend_width, rtl);
 			GfxFillRect(cargo, PC_BLACK);
-			uint8_t pc = cs->legend_colour;
+			PixelColour pc = cs->legend_colour;
 			if (this->highlight_data == cs->Index()) pc = this->highlight_state ? PC_WHITE : PC_BLACK;
 			GfxFillRect(cargo.Shrink(WidgetDimensions::scaled.bevel), pc);
 
@@ -1485,8 +1485,8 @@ struct PerformanceRatingDetailWindow : Window {
 		ScoreID score_type = (ScoreID)(widget - WID_PRD_SCORE_FIRST);
 
 		/* The colours used to show how the progress is going */
-		int colour_done = GetColourGradient(COLOUR_GREEN, SHADE_NORMAL);
-		int colour_notdone = GetColourGradient(COLOUR_RED, SHADE_NORMAL);
+		PixelColour colour_done = GetColourGradient(COLOUR_GREEN, SHADE_NORMAL);
+		PixelColour colour_notdone = GetColourGradient(COLOUR_RED, SHADE_NORMAL);
 
 		/* Draw all the score parts */
 		int64_t val    = _score_part[company][score_type];

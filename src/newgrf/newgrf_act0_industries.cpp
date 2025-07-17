@@ -565,7 +565,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint first, uint last, int prop, By
 				break;
 
 			case 0x19: // Map colour
-				indsp->map_colour = buf.ReadByte();
+				indsp->map_colour = PixelColour{buf.ReadByte()};
 				break;
 
 			case 0x1A: // Special industry flags to define special behavior

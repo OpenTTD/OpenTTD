@@ -27,7 +27,7 @@ static FBlitter_40bppAnim iFBlitter_40bppAnim;
 static const Colour _black_colour(0, 0, 0);
 
 
-void Blitter_40bppAnim::SetPixel(void *video, int x, int y, uint8_t colour)
+void Blitter_40bppAnim::SetPixel(void *video, int x, int y, PixelColour colour)
 {
 	if (_screen_disable_anim) {
 		Blitter_32bppOptimized::SetPixel(video, x, y, colour);
@@ -35,11 +35,11 @@ void Blitter_40bppAnim::SetPixel(void *video, int x, int y, uint8_t colour)
 		size_t y_offset = static_cast<size_t>(y) * _screen.pitch;
 		*((Colour *)video + x + y_offset) = _black_colour;
 
-		VideoDriver::GetInstance()->GetAnimBuffer()[((uint32_t *)video - (uint32_t *)_screen.dst_ptr) + x + y_offset] = colour;
+		VideoDriver::GetInstance()->GetAnimBuffer()[((uint32_t *)video - (uint32_t *)_screen.dst_ptr) + x + y_offset] = colour.p;
 	}
 }
 
-void Blitter_40bppAnim::DrawRect(void *video, int width, int height, uint8_t colour)
+void Blitter_40bppAnim::DrawRect(void *video, int width, int height, PixelColour colour)
 {
 	if (_screen_disable_anim) {
 		/* This means our output is not to the screen, so we can't be doing any animation stuff, so use our parent DrawRect() */
@@ -56,7 +56,7 @@ void Blitter_40bppAnim::DrawRect(void *video, int width, int height, uint8_t col
 
 		for (int i = width; i > 0; i--) {
 			*dst = _black_colour;
-			*anim = colour;
+			*anim = colour.p;
 			dst++;
 			anim++;
 		}
@@ -65,7 +65,7 @@ void Blitter_40bppAnim::DrawRect(void *video, int width, int height, uint8_t col
 	} while (--height);
 }
 
-void Blitter_40bppAnim::DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8_t colour, int width, int dash)
+void Blitter_40bppAnim::DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, PixelColour colour, int width, int dash)
 {
 	if (_screen_disable_anim) {
 		/* This means our output is not to the screen, so we can't be doing any animation stuff, so use our parent DrawRect() */
@@ -78,7 +78,7 @@ void Blitter_40bppAnim::DrawLine(void *video, int x, int y, int x2, int y2, int 
 
 	this->DrawLineGeneric(x, y, x2, y2, screen_width, screen_height, width, dash, [=](int x, int y) {
 		*((Colour *)video + x + y * _screen.pitch) = _black_colour;
-		*(anim + x + y * _screen.pitch) = colour;
+		*(anim + x + y * _screen.pitch) = colour.p;
 	});
 }
 

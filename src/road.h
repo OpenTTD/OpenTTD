@@ -145,7 +145,7 @@ public:
 	/**
 	 * Colour on mini-map
 	 */
-	uint8_t map_colour;
+	PixelColour map_colour;
 
 	/**
 	 * Introduction date.

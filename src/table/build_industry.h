@@ -1134,7 +1134,7 @@ enum IndustryTypes : uint8_t {
 		{r1, r2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, m, \
 		{INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO}, \
 		{{im1, 0}, {im2, 0}, {im3, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}}, \
-		pr, clim, bev, col, in, intx, s1, s2, s3, STR_UNDEFINED, {ai1, ai2, ai3, ai4}, {ag1, ag2, ag3, ag4}, \
+		pr, clim, bev, PixelColour{col}, in, intx, s1, s2, s3, STR_UNDEFINED, {ai1, ai2, ai3, ai4}, {ag1, ag2, ag3, ag4}, \
 		IndustryCallbackMasks{}, true, SubstituteGRFFileProps(IT_INVALID), snd, {}, \
 		{{p1, p2}}, {{a1, a2, a3}}}
 	/* Format:
