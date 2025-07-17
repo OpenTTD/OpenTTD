@@ -5002,6 +5002,7 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Es neces
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Terreny inclinat en direcció incorrecta
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Això no es pot fer...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}L'edifici s'ha d'enderrocar primer
+STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}... l'edifici està protegit
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}No es pot netejar aquesta àrea...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... lloc inadequat
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... ja construït

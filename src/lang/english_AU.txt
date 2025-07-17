@@ -5001,6 +5001,7 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Flat lan
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Land sloped in wrong direction
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Can't do this...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Building must be demolished first
+STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}... building is protected
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Can't clear this area...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... site unsuitable
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... already built
