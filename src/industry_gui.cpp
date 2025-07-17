@@ -826,7 +826,7 @@ public:
 		nvp->InitializeViewport(this, Industry::Get(window_number)->location.GetCenterTile(), ScaleZoomGUI(ZoomLevel::Industry));
 
 		const Industry *i = Industry::Get(window_number);
-		if (!i->IsCargoProduced()) this->DisableWidget(WID_IV_GRAPH);
+		if (!i->IsCargoProduced() && !i->IsCargoAccepted()) this->DisableWidget(WID_IV_GRAPH);
 
 		this->InvalidateData();
 	}
@@ -1223,7 +1223,7 @@ static constexpr NWidgetPart _nested_industry_view_widgets[] = {
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_CREAM, WID_IV_DISPLAY), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_INDUSTRY_DISPLAY_CHAIN, STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_CREAM, WID_IV_GRAPH), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_INDUSTRY_VIEW_PRODUCTION_GRAPH, STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_CREAM, WID_IV_GRAPH), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_INDUSTRY_VIEW_CARGO_GRAPH, STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP),
 		NWidget(WWT_RESIZEBOX, COLOUR_CREAM),
 	EndContainer(),
 };

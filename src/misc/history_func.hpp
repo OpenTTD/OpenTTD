@@ -11,6 +11,8 @@
 #define HISTORY_FUNC_HPP
 
 #include "../core/bitmath_func.hpp"
+#include "../core/math_func.hpp"
+#include "../timer/timer_game_economy.h"
 #include "history_type.hpp"
 
 /**
@@ -35,6 +37,19 @@ void RotateHistory(HistoryData<T> &history)
 }
 
 /**
+ * Get an average value for the previous month, as reset for the next month.
+ * @param total Accrued total to average. Will be reset to zero.
+ * @return Average value for the month.
+ */
+template <typename T, typename Taccrued>
+T GetAndResetAccumulatedAverage(Taccrued &total)
+{
+	T result = ClampTo<T>(total / std::max(1U, TimerGameEconomy::days_since_last_month));
+	total = 0;
+	return result;
+}
+
+/**
  * Fill some data with historical data.
  * @param history Historical data to fill from.
  * @param valid_history Mask of valid history records.
@@ -47,6 +62,23 @@ void FillFromHistory(const HistoryData<T> &history, ValidHistoryMask valid_histo
 		if (HasBit(valid_history, N - i)) {
 			auto &data = history[N - i];
 			(fillers.Fill(i, data), ...);
+		} else {
+			(fillers.MakeInvalid(i), ...);
+		}
+	}
+}
+
+/**
+ * Fill some data with empty records.
+ * @param valid_history Mask of valid history records.
+ * @param fillers Fillers to fill with history data.
+ */
+template <uint N, typename... Tfillers>
+void FillFromEmpty(ValidHistoryMask valid_history, Tfillers... fillers)
+{
+	for (uint i = 0; i != N; ++i) {
+		if (HasBit(valid_history, N - i)) {
+			(fillers.MakeZero(i), ...);
 		} else {
 			(fillers.MakeInvalid(i), ...);
 		}

@@ -37,6 +37,7 @@ TimerGameEconomy::Year TimerGameEconomy::year = {};
 TimerGameEconomy::Month TimerGameEconomy::month = {};
 TimerGameEconomy::Date TimerGameEconomy::date = {};
 TimerGameEconomy::DateFract TimerGameEconomy::date_fract = {};
+uint TimerGameEconomy::days_since_last_month = {};
 
 /**
  * Converts a Date to a Year, Month & Day.
@@ -133,6 +134,7 @@ bool TimerManager<TimerGameEconomy>::Elapsed([[maybe_unused]] TimerGameEconomy::
 
 	/* increase day counter */
 	TimerGameEconomy::date++;
+	++TimerGameEconomy::days_since_last_month;
 
 	TimerGameEconomy::YearMonthDay ymd = TimerGameEconomy::ConvertDateToYMD(TimerGameEconomy::date);
 
@@ -176,6 +178,8 @@ bool TimerManager<TimerGameEconomy>::Elapsed([[maybe_unused]] TimerGameEconomy::
 			timer->Elapsed(TimerGameEconomy::YEAR);
 		}
 	}
+
+	if (new_month) TimerGameEconomy::days_since_last_month = 0;
 
 	/* check if we reached the maximum year, decrement dates by a year */
 	if (TimerGameEconomy::year == EconomyTime::MAX_YEAR + 1) {

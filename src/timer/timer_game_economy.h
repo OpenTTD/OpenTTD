@@ -37,6 +37,8 @@ public:
 	static Date date; ///< Current date in days (day counter).
 	static DateFract date_fract; ///< Fractional part of the day.
 
+	static uint days_since_last_month; ///< Number of days that have elapsed since the last month.
+
 	static YearMonthDay ConvertDateToYMD(Date date);
 	static Date ConvertYMDToDate(Year year, Month month, Day day);
 	static void SetDate(Date date, DateFract fract);
