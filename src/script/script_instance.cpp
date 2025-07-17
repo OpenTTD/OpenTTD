@@ -130,6 +130,13 @@ bool ScriptInstance::LoadCompatibilityScripts(Subdirectory dir, std::span<const 
 
 	ScriptLog::Info(fmt::format("Downgrading API to be compatible with version {}", this->api_version));
 
+	HSQUIRRELVM vm = this->engine->GetVM();
+	sq_pushroottable(vm);
+	sq_pushstring(vm, "CompatScriptRootTable");
+	sq_pushroottable(vm);
+	sq_newslot(vm, -3, SQFalse);
+	sq_pop(vm, 1);
+
 	/* Downgrade the API till we are the same version as the script. The last
 	 * entry in the list is always the current version, so skip that one. */
 	for (auto it = std::rbegin(api_versions) + 1; it != std::rend(api_versions); ++it) {
@@ -137,6 +144,11 @@ bool ScriptInstance::LoadCompatibilityScripts(Subdirectory dir, std::span<const 
 
 		if (*it == this->api_version) break;
 	}
+
+	sq_pushroottable(vm);
+	sq_pushstring(vm, "CompatScriptRootTable");
+	sq_deleteslot(vm, -2, SQFalse);
+	sq_pop(vm, 1);
 
 	return true;
 }
