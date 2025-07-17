@@ -1486,31 +1486,6 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 	StationID est = StationID::Invalid();
 	std::vector<Train *> affected_vehicles;
 
-	const StationSpec *statspec = StationClass::Get(spec_class)->GetSpec(spec_index);
-
-	TileIndexDiff tile_delta = TileOffsByAxis(axis); // offset to go to the next platform tile
-	TileIndexDiff track_delta = TileOffsByAxis(OtherAxis(axis)); // offset to go to the next track
-	std::vector<uint8_t> layout_buffer;
-	layout_buffer.resize(numtracks * plat_len);
-	GetStationLayout(&layout_buffer[0], numtracks, plat_len, statspec);
-
-	{
-		TileIndex tile_track = tile_org;
-		uint8_t *check_layout_ptr = &layout_buffer[0];
-		for (uint i = 0; i < numtracks; i++) {
-			TileIndex tile = tile_track;
-			for (uint j = 0; j < plat_len; j++) {
-				ret = IsRailStationBridgeAboveOk(tile, statspec, *check_layout_ptr++);
-				if (ret.Failed()) {
-					//return CommandCost::DualErrorMessage(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST, ret.GetErrorMessage()); //FIXME
-					return ret;
-				}
-				tile += tile_delta;
-			}
-			tile_track += track_delta;
-		}
-	}
-
 	/* Add construction and clearing expenses. */
 	CommandCost cost = CalculateRailStationCost(new_location, flags, axis, &est, rt, affected_vehicles, spec_class, spec_index, plat_len, numtracks);
 	if (cost.Failed()) return cost;
@@ -1528,6 +1503,7 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 	}
 
 	/* Check if we can allocate a custom stationspec to this station */
+	const StationSpec *statspec = StationClass::Get(spec_class)->GetSpec(spec_index);
 	int specindex = AllocateSpecToStation(statspec, st, flags.Test(DoCommandFlag::Execute));
 	if (specindex == -1) return CommandCost(STR_ERROR_TOO_MANY_STATION_SPECS);
 
@@ -1557,21 +1533,30 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 			st->cached_anim_triggers.Set(statspec->animation.triggers);
 		}
 
-		Track track = AxisToTrack(axis);
-
 		std::vector<uint8_t> layouts(numtracks * plat_len);
 		GetStationLayout(layouts.data(), numtracks, plat_len, statspec);
 
+		TileIndexDiff tile_delta = TileOffsByAxis(axis); // offset to go to the next platform tile
+		TileIndexDiff track_delta = TileOffsByAxis(OtherAxis(axis)); // offset to go to the next track
+		Track track = AxisToTrack(axis);
 		uint8_t numtracks_orig = numtracks;
 
 		Company *c = Company::Get(st->owner);
 		size_t layout_idx = 0;
 		TileIndex tile_track = tile_org;
+
 		do {
 			TileIndex tile = tile_track;
 			int w = plat_len;
 			do {
 				uint8_t layout = layouts[layout_idx++];
+
+				ret = IsRailStationBridgeAboveOk(tile, statspec, layout);
+				if (ret.Failed()) {
+					//return CommandCost::DualErrorMessage(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST, ret.GetErrorMessage()); //FIXME
+					return ret;
+				}
+
 				if (IsRailStationTile(tile) && HasStationReservation(tile)) {
 					/* Check for trains having a reservation for this tile. */
 					Train *v = GetTrainForReservation(tile, AxisToTrack(GetRailStationAxis(tile)));
