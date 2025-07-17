@@ -74,8 +74,8 @@ static const uint TOWN_PRODUCTION_DIVISOR = 256;
 struct CargoSpec {
 	CargoLabel label;                ///< Unique label of the cargo type.
 	uint8_t bitnum = INVALID_CARGO_BITNUM; ///< Cargo bit number, is #INVALID_CARGO_BITNUM for a non-used spec.
-	uint8_t legend_colour;
-	uint8_t rating_colour;
+	PixelColour legend_colour;
+	PixelColour rating_colour;
 	uint8_t weight;                    ///< Weight of a single unit of this cargo type in 1/16 ton (62.5 kg).
 	uint16_t multiplier = 0x100; ///< Capacity multiplier for vehicles. (8 fractional bits)
 	CargoClasses classes; ///< Classes of this cargo type. @see CargoClass

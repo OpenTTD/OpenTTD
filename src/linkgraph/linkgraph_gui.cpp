@@ -30,26 +30,26 @@
  * Colours for the various "load" states of links. Ordered from "unused" to
  * "overloaded".
  */
-const uint8_t LinkGraphOverlay::LINK_COLOURS[][12] = {
+const PixelColour LinkGraphOverlay::LINK_COLOURS[][12] = {
 {
-	0x0f, 0xd1, 0xd0, 0x57,
-	0x55, 0x53, 0xbf, 0xbd,
-	0xba, 0xb9, 0xb7, 0xb5
+	PixelColour{0x0f}, PixelColour{0xd1}, PixelColour{0xd0}, PixelColour{0x57},
+	PixelColour{0x55}, PixelColour{0x53}, PixelColour{0xbf}, PixelColour{0xbd},
+	PixelColour{0xba}, PixelColour{0xb9}, PixelColour{0xb7}, PixelColour{0xb5}
 },
 {
-	0x0f, 0xd1, 0xd0, 0x57,
-	0x55, 0x53, 0x96, 0x95,
-	0x94, 0x93, 0x92, 0x91
+	PixelColour{0x0f}, PixelColour{0xd1}, PixelColour{0xd0}, PixelColour{0x57},
+	PixelColour{0x55}, PixelColour{0x53}, PixelColour{0x96}, PixelColour{0x95},
+	PixelColour{0x94}, PixelColour{0x93}, PixelColour{0x92}, PixelColour{0x91}
 },
 {
-	0x0f, 0x0b, 0x09, 0x07,
-	0x05, 0x03, 0xbf, 0xbd,
-	0xba, 0xb9, 0xb7, 0xb5
+	PixelColour{0x0f}, PixelColour{0x0b}, PixelColour{0x09}, PixelColour{0x07},
+	PixelColour{0x05}, PixelColour{0x03}, PixelColour{0xbf}, PixelColour{0xbd},
+	PixelColour{0xba}, PixelColour{0xb9}, PixelColour{0xb7}, PixelColour{0xb5}
 },
 {
-	0x0f, 0x0b, 0x0a, 0x09,
-	0x08, 0x07, 0x06, 0x05,
-	0x04, 0x03, 0x02, 0x01
+	PixelColour{0x0f}, PixelColour{0x0b}, PixelColour{0x0a}, PixelColour{0x09},
+	PixelColour{0x08}, PixelColour{0x07}, PixelColour{0x06}, PixelColour{0x05},
+	PixelColour{0x04}, PixelColour{0x03}, PixelColour{0x02}, PixelColour{0x01}
 }
 };
 
@@ -297,7 +297,7 @@ void LinkGraphOverlay::DrawLinks(const DrawPixelInfo *dpi) const
 void LinkGraphOverlay::DrawContent(Point pta, Point ptb, const LinkProperties &cargo) const
 {
 	uint usage_or_plan = std::min(cargo.capacity * 2 + 1, cargo.Usage());
-	int colour = LinkGraphOverlay::LINK_COLOURS[_settings_client.gui.linkgraph_colours][usage_or_plan * lengthof(LinkGraphOverlay::LINK_COLOURS[0]) / (cargo.capacity * 2 + 2)];
+	PixelColour colour = LinkGraphOverlay::LINK_COLOURS[_settings_client.gui.linkgraph_colours][usage_or_plan * lengthof(LinkGraphOverlay::LINK_COLOURS[0]) / (cargo.capacity * 2 + 2)];
 	int width = ScaleGUITrad(this->scale);
 	int dash = cargo.shared ? width * 4 : 0;
 
@@ -345,7 +345,7 @@ void LinkGraphOverlay::DrawStationDots(const DrawPixelInfo *dpi) const
  * @param colour Colour with which the vertex will be filled.
  * @param border_colour Colour for the border of the vertex.
  */
-/* static */ void LinkGraphOverlay::DrawVertex(int x, int y, int size, int colour, int border_colour)
+/* static */ void LinkGraphOverlay::DrawVertex(int x, int y, int size, PixelColour colour, PixelColour border_colour)
 {
 	size--;
 	int w1 = size / 2;
@@ -607,7 +607,7 @@ void LinkGraphLegendWindow::DrawWidget(const Rect &r, WidgetID widget) const
 		DrawCompanyIcon(cid, CentreBounds(br.left, br.right, sprite_size.width), CentreBounds(br.top, br.bottom, sprite_size.height));
 	}
 	if (IsInsideMM(widget, WID_LGL_SATURATION_FIRST, WID_LGL_SATURATION_LAST + 1)) {
-		uint8_t colour = LinkGraphOverlay::LINK_COLOURS[_settings_client.gui.linkgraph_colours][widget - WID_LGL_SATURATION_FIRST];
+		PixelColour colour = LinkGraphOverlay::LINK_COLOURS[_settings_client.gui.linkgraph_colours][widget - WID_LGL_SATURATION_FIRST];
 		GfxFillRect(br, colour);
 		StringID str = STR_NULL;
 		if (widget == WID_LGL_SATURATION_FIRST) {

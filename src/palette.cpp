@@ -358,9 +358,9 @@ void DoPaletteAnimations()
  * @param threshold Background colour brightness threshold below which the background is considered dark and TC_WHITE is returned, range: 0 - 255, default 128.
  * @return TC_BLACK or TC_WHITE depending on what gives a better contrast.
  */
-TextColour GetContrastColour(uint8_t background, uint8_t threshold)
+TextColour GetContrastColour(PixelColour background, uint8_t threshold)
 {
-	Colour c = _cur_palette.palette[background];
+	Colour c = _cur_palette.palette[background.p];
 	/* Compute brightness according to http://www.w3.org/TR/AERT#color-contrast.
 	 * The following formula computes 1000 * brightness^2, with brightness being in range 0 to 255. */
 	uint sq1000_brightness = c.r * c.r * 299 + c.g * c.g * 587 + c.b * c.b * 114;
@@ -374,7 +374,7 @@ TextColour GetContrastColour(uint8_t background, uint8_t threshold)
  */
 struct ColourGradients
 {
-	using ColourGradient = std::array<uint8_t, SHADE_END>;
+	using ColourGradient = std::array<PixelColour, SHADE_END>;
 
 	static inline std::array<ColourGradient, COLOUR_END> gradient{};
 };
@@ -385,7 +385,7 @@ struct ColourGradients
  * @param shade Shade level from 1 to 7.
  * @returns palette index of colour.
  */
-uint8_t GetColourGradient(Colours colour, ColourShade shade)
+PixelColour GetColourGradient(Colours colour, ColourShade shade)
 {
 	return ColourGradients::gradient[colour % COLOUR_END][shade % SHADE_END];
 }
@@ -396,7 +396,7 @@ uint8_t GetColourGradient(Colours colour, ColourShade shade)
  * @param shade Shade level from 1 to 7.
  * @param palette_index Palette index to set.
  */
-void SetColourGradient(Colours colour, ColourShade shade, uint8_t palette_index)
+void SetColourGradient(Colours colour, ColourShade shade, PixelColour palette_index)
 {
 	assert(colour < COLOUR_END);
 	assert(shade < SHADE_END);

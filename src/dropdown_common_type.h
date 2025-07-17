@@ -37,8 +37,8 @@ public:
 
 	void Draw(const Rect &full, const Rect &, bool, int, Colours bg_colour) const override
 	{
-		uint8_t c1 = GetColourGradient(bg_colour, SHADE_DARK);
-		uint8_t c2 = GetColourGradient(bg_colour, SHADE_LIGHTEST);
+		PixelColour c1 = GetColourGradient(bg_colour, SHADE_DARK);
+		PixelColour c2 = GetColourGradient(bg_colour, SHADE_LIGHTEST);
 
 		int mid = CentreBounds(full.top, full.bottom, 0);
 		GfxFillRect(full.left, mid - WidgetDimensions::scaled.bevel.bottom, full.right, mid - 1, c1);

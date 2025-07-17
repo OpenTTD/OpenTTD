@@ -1732,13 +1732,13 @@ static void ViewportDrawDirtyBlocks()
 	int right =  UnScaleByZoom(dpi->width,  dpi->zoom);
 	int bottom = UnScaleByZoom(dpi->height, dpi->zoom);
 
-	int colour = _string_colourmap[_dirty_block_colour & 0xF];
+	PixelColour colour = _string_colourmap[_dirty_block_colour & 0xF];
 
 	dst = dpi->dst_ptr;
 
 	uint8_t bo = UnScaleByZoom(dpi->left + dpi->top, dpi->zoom) & 1;
 	do {
-		for (int i = (bo ^= 1); i < right; i += 2) blitter->SetPixel(dst, i, 0, (uint8_t)colour);
+		for (int i = (bo ^= 1); i < right; i += 2) blitter->SetPixel(dst, i, 0, colour);
 		dst = blitter->MoveTo(dst, 0, 1);
 	} while (--bottom > 0);
 }
@@ -1761,7 +1761,7 @@ static void ViewportDrawStrings(ZoomLevel zoom, const StringSpriteToDrawVector *
 		}
 
 		if (ss.flags.Test(ViewportStringFlag::TextColour)) {
-			if (ss.colour != INVALID_COLOUR) colour = static_cast<TextColour>(GetColourGradient(ss.colour, SHADE_LIGHTER) | TC_IS_PALETTE_COLOUR);
+			if (ss.colour != INVALID_COLOUR) colour = GetColourGradient(ss.colour, SHADE_LIGHTER).ToTextColour();
 		}
 
 		int left = x + WidgetDimensions::scaled.fullbevel.left;

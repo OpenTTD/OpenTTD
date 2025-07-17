@@ -60,8 +60,8 @@ public:
 
 	void DrawWidget(const Rect &r, WidgetID) const override
 	{
-		GfxFillRect(r.left, r.top, r.right, r.bottom, 4, FILLRECT_OPAQUE);
-		GfxFillRect(r.left, r.top, r.right, r.bottom, 0, FILLRECT_CHECKER);
+		GfxFillRect(r.left, r.top, r.right, r.bottom, PixelColour{4}, FILLRECT_OPAQUE);
+		GfxFillRect(r.left, r.top, r.right, r.bottom, PixelColour{0}, FILLRECT_CHECKER);
 	}
 };
 
@@ -385,10 +385,10 @@ bool HandleBootstrap()
 	/* Initialise the palette. The biggest step is 'faking' some recolour sprites.
 	 * This way the mauve and gray colours work and we can show the user interface. */
 	GfxInitPalettes();
-	static const int offsets[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x80, 0, 0, 0, 0x04, 0x08 };
+	static const uint8_t offsets[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x80, 0, 0, 0, 0x04, 0x08 };
 	for (Colours i = COLOUR_BEGIN; i != COLOUR_END; i++) {
 		for (ColourShade j = SHADE_BEGIN; j < SHADE_END; j++) {
-			SetColourGradient(i, j, offsets[i] + j);
+			SetColourGradient(i, j, PixelColour(offsets[i] + j));
 		}
 	}
 

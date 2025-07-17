@@ -305,7 +305,7 @@ private:
 
 		const int offset = (rtl ? -(int)this->column_size[VGC_FOLD].width : (int)this->column_size[VGC_FOLD].width) / 2;
 		const int level_width = rtl ? -WidgetDimensions::scaled.hsep_indent : WidgetDimensions::scaled.hsep_indent;
-		const int linecolour = GetColourGradient(COLOUR_ORANGE, SHADE_NORMAL);
+		const PixelColour linecolour = GetColourGradient(COLOUR_ORANGE, SHADE_NORMAL);
 
 		if (indent > 0) {
 			/* Draw tree continuation lines. */

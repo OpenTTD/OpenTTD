@@ -44,7 +44,7 @@ public:
 	typedef std::map<StationID, StationLinkMap> LinkMap;
 	typedef std::vector<std::pair<StationID, uint> > StationSupplyList;
 
-	static const uint8_t LINK_COLOURS[][12];
+	static const PixelColour LINK_COLOURS[][12];
 
 	/**
 	 * Create a link graph overlay for the specified window.
@@ -95,7 +95,7 @@ protected:
 	void RebuildCache();
 
 	static void AddStats(CargoType new_cargo, uint new_cap, uint new_usg, uint new_flow, uint32_t time, bool new_shared, LinkProperties &cargo);
-	static void DrawVertex(int x, int y, int size, int colour, int border_colour);
+	static void DrawVertex(int x, int y, int size, PixelColour colour, PixelColour border_colour);
 };
 
 void ShowLinkGraphLegend();
