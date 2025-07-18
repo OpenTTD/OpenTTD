@@ -13,15 +13,15 @@
  * @param p1 The first sprite's palette of the building, mostly the ground sprite
  * @param s2 The second sprite of the building.
  * @param p2 The second sprite's palette of the building.
- * @param sx The x-position of the sprite within the tile
- * @param sy the y-position of the sprite within the tile
- * @param w the width of the sprite
- * @param h the height of the sprite
- * @param dz the virtual height of the sprite
+ * @param dx The x-position of the sprite within the tile.
+ * @param dy the y-position of the sprite within the tile.
+ * @param sx the x-extent of the sprite.
+ * @param sy the y-extent of the sprite.
+ * @param sz the z-extent of the sprite.
  * @param p set to 1 if a lift is present ()
  * @see DrawBuildingsTileStruct
  */
-#define M(s1, p1, s2, p2, sx, sy, w, h, dz, p) { { s1, p1 }, { s2, p2 }, sx, sy, w, h, dz, p}
+#define M(s1, p1, s2, p2, dx, dy, sx, sy, sz, p) { {{dx, dy, 0}, {sx, sy, sz}, {}}, { s1, p1 }, { s2, p2 }, p}
 
 /** structure of houses graphics*/
 static const DrawBuildingsTileStruct _town_draw_tile_data[] = {

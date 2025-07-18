@@ -89,8 +89,8 @@ enum ZoomStateChange : uint8_t {
  * z=6     reserved, currently unused.
  * z=7     Z separator between bridge/tunnel and the things under/above it.
  */
-static const uint BB_HEIGHT_UNDER_BRIDGE = 6; ///< Everything that can be built under low bridges, must not exceed this Z height.
-static const uint BB_Z_SEPARATOR         = 7; ///< Separates the bridge/tunnel from the things under/above it.
+static constexpr int BB_HEIGHT_UNDER_BRIDGE = 6; ///< Everything that can be built under low bridges, must not exceed this Z height.
+static constexpr int BB_Z_SEPARATOR         = 7; ///< Separates the bridge/tunnel from the things under/above it.
 
 /** Viewport place method (type of highlighted area and placed objects) */
 enum ViewportPlaceMethod : uint8_t {

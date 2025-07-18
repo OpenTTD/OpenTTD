@@ -10,28 +10,37 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 
+#include "core/geometry_type.hpp"
 #include "transparency.h"
 
 #include "table/sprites.h"
+
+struct SpriteBounds {
+	Coord3D<int8_t> origin; ///< Position of northern corner within tile.
+	Coord3D<uint8_t> extent; ///< Size of bounding box.
+	Coord3D<int8_t> offset; ///< Relative position of sprite from bounding box.
+
+	constexpr SpriteBounds() = default;
+	constexpr SpriteBounds(const Coord3D<int8_t> &origin, const Coord3D<uint8_t> &extent, const Coord3D<int8_t> &offset) :
+		origin(origin), extent(extent), offset(offset) {}
+};
 
 /* The following describes bunch of sprites to be drawn together in a single 3D
  * bounding box. Used especially for various multi-sprite buildings (like
  * depots or stations): */
 
 /** A tile child sprite and palette to draw for stations etc, with 3D bounding box */
-struct DrawTileSeqStruct {
-	int8_t delta_x = 0;
-	int8_t delta_y = 0;
-	int8_t delta_z = 0; ///< \c 0x80 identifies child sprites
-	uint8_t size_x = 0;
-	uint8_t size_y = 0;
-	uint8_t size_z = 0;
-	PalSpriteID image{};
+struct DrawTileSeqStruct : SpriteBounds {
+	PalSpriteID image;
+
+	constexpr DrawTileSeqStruct() = default;
+	constexpr DrawTileSeqStruct(int8_t origin_x, int8_t origin_y, int8_t origin_z, uint8_t extent_x, uint8_t extent_y, uint8_t extent_z, PalSpriteID image) :
+		SpriteBounds({origin_x, origin_y, origin_z}, {extent_x, extent_y, extent_z}, {}), image(image) {}
 
 	/** Check whether this is a parent sprite with a boundingbox. */
-	bool IsParentSprite() const
+	inline bool IsParentSprite() const
 	{
-		return (uint8_t)this->delta_z != 0x80;
+		return static_cast<uint8_t>(this->origin.z) != 0x80;
 	}
 };
 
@@ -69,14 +78,9 @@ struct DrawTileSpriteSpan : DrawTileSprites {
  * This structure is the same for both Industries and Houses.
  * Buildings here reference a general type of construction
  */
-struct DrawBuildingsTileStruct {
+struct DrawBuildingsTileStruct : SpriteBounds {
 	PalSpriteID ground;
 	PalSpriteID building;
-	uint8_t subtile_x;
-	uint8_t subtile_y;
-	uint8_t width;
-	uint8_t height;
-	uint8_t dz;
 	uint8_t draw_proc;  // this allows to specify a special drawing procedure.
 };
 

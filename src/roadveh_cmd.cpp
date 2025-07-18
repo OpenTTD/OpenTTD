@@ -405,29 +405,56 @@ void RoadVehicle::MarkDirty()
 
 void RoadVehicle::UpdateDeltaXY()
 {
-	static const int8_t _delta_xy_table[8][10] = {
-		/* y_extent, x_extent, y_offs, x_offs, y_bb_offs, x_bb_offs, y_extent_shorten, x_extent_shorten, y_bb_offs_shorten, x_bb_offs_shorten */
-		{3, 3, -1, -1,  0,  0, -1, -1, -1, -1}, // N
-		{3, 7, -1, -3,  0, -1,  0, -1,  0,  0}, // NE
-		{3, 3, -1, -1,  0,  0,  1, -1,  1, -1}, // E
-		{7, 3, -3, -1, -1,  0,  0,  0,  1,  0}, // SE
-		{3, 3, -1, -1,  0,  0,  1,  1,  1,  1}, // S
-		{3, 7, -1, -3,  0, -1,  0,  0,  0,  1}, // SW
-		{3, 3, -1, -1,  0,  0, -1,  1, -1,  1}, // W
-		{7, 3, -3, -1, -1,  0, -1,  0,  0,  0}, // NW
-	};
+	/* Set common defaults. */
+	this->bounds = {{-1, -1, 0}, {3, 3, 6}, {}};
 
-	int shorten = VEHICLE_LENGTH - this->gcache.cached_veh_length;
-	if (!IsDiagonalDirection(this->direction)) shorten >>= 1;
+	if (!IsDiagonalDirection(this->direction)) {
+		static const Point _sign_table[] = {
+			/* x, y */
+			{-1, -1}, // DIR_N
+			{-1,  1}, // DIR_E
+			{ 1,  1}, // DIR_S
+			{ 1, -1}, // DIR_W
+		};
 
-	const int8_t *bb = _delta_xy_table[this->direction];
-	this->x_bb_offs     = bb[5] + bb[9] * shorten;
-	this->y_bb_offs     = bb[4] + bb[8] * shorten;;
-	this->x_offs        = bb[3];
-	this->y_offs        = bb[2];
-	this->x_extent      = bb[1] + bb[7] * shorten;
-	this->y_extent      = bb[0] + bb[6] * shorten;
-	this->z_extent      = 6;
+		int half_shorten = (VEHICLE_LENGTH - this->gcache.cached_veh_length) / 2;
+
+		/* For all straight directions, move the bound box to the centre of the vehicle, but keep the size. */
+		this->bounds.offset.x -= half_shorten * _sign_table[DirToDiagDir(this->direction)].x;
+		this->bounds.offset.y -= half_shorten * _sign_table[DirToDiagDir(this->direction)].y;
+	} else {
+		/* Unlike trains, road vehicles do not have their offsets moved to the centre. */
+		switch (this->direction) {
+				/* Shorten southern corner of the bounding box according the vehicle length. */
+			case DIR_NE:
+				this->bounds.origin.x = -3;
+				this->bounds.extent.x = this->gcache.cached_veh_length;
+				this->bounds.offset.x = 1;
+				break;
+
+			case DIR_NW:
+				this->bounds.origin.y = -3;
+				this->bounds.extent.y = this->gcache.cached_veh_length;
+				this->bounds.offset.y = 1;
+				break;
+
+				/* Move northern corner of the bounding box down according to vehicle length. */
+			case DIR_SW:
+				this->bounds.origin.x = -3 + (VEHICLE_LENGTH - this->gcache.cached_veh_length);
+				this->bounds.extent.x = this->gcache.cached_veh_length;
+				this->bounds.offset.x = 1 - (VEHICLE_LENGTH - this->gcache.cached_veh_length);
+				break;
+
+			case DIR_SE:
+				this->bounds.origin.y = -3 + (VEHICLE_LENGTH - this->gcache.cached_veh_length);
+				this->bounds.extent.y = this->gcache.cached_veh_length;
+				this->bounds.offset.y = 1 - (VEHICLE_LENGTH - this->gcache.cached_veh_length);
+				break;
+
+			default:
+				NOT_REACHED();
+		}
+	}
 }
 
 /**

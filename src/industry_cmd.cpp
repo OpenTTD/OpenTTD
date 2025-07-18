@@ -374,13 +374,7 @@ static void DrawTile_Industry(TileInfo *ti)
 	image = dits->building.sprite;
 	if (image != 0) {
 		AddSortableSpriteToDraw(image, SpriteLayoutPaletteTransform(image, dits->building.pal, GetColourPalette(ind->random_colour)),
-			ti->x + dits->subtile_x,
-			ti->y + dits->subtile_y,
-			dits->width,
-			dits->height,
-			dits->dz,
-			ti->z,
-			IsTransparencySet(TO_INDUSTRIES));
+			*ti, *dits, IsTransparencySet(TO_INDUSTRIES));
 
 		if (IsTransparencySet(TO_INDUSTRIES)) return;
 	}

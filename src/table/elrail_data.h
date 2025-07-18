@@ -313,14 +313,12 @@ enum WireSpriteOffset : uint8_t {
 	WSO_ENTRANCE_SE,
 };
 
-struct SortableSpriteStruct {
+struct SortableSpriteStruct : SpriteBounds {
 	uint8_t image_offset;
-	int8_t x_offset;
-	int8_t y_offset;
-	int8_t x_size;
-	int8_t y_size;
-	int8_t z_size;
-	int8_t z_offset;
+
+	constexpr SortableSpriteStruct(uint8_t image_offset, const SpriteBounds &bounds) : SpriteBounds(bounds), image_offset(image_offset) {}
+	constexpr SortableSpriteStruct(uint8_t image_offset, int8_t x_offset, int8_t y_offset, uint8_t x_size, uint8_t y_size, uint8_t z_size, int8_t z_offset) :
+		SpriteBounds({x_offset, y_offset, z_offset}, {x_size, y_size, z_size}, {}), image_offset(image_offset) {}
 };
 
 /** Distance between wire and rail */
@@ -398,11 +396,17 @@ static const SortableSpriteStruct _rail_catenary_sprite_data_depot[] = {
 	{ WSO_ENTRANCE_NW,   7,  0,  1, 15,  1, ELRAIL_ELEVATION }  //! Wire for NW depot exit
 };
 
+/**
+ * In tunnelheads, the bounding box for wires covers nearly the full tile, and is lowered a bit.
+ * ELRAIL_TUNNEL_OFFSET is the difference between visual position and bounding box.
+ */
+static const int8_t ELRAIL_TUNNEL_OFFSET = ELRAIL_ELEVATION - BB_Z_SEPARATOR;
+
 static const SortableSpriteStruct _rail_catenary_sprite_data_tunnel[] = {
-	{ WSO_ENTRANCE_SW,   0,  7, 15,  1,  1, ELRAIL_ELEVATION }, //! Wire for NE tunnel (SW facing exit)
-	{ WSO_ENTRANCE_NW,   7,  0,  1, 15,  1, ELRAIL_ELEVATION }, //! Wire for SE tunnel (NW facing exit)
-	{ WSO_ENTRANCE_NE,   0,  7, 15,  1,  1, ELRAIL_ELEVATION }, //! Wire for SW tunnel (NE facing exit)
-	{ WSO_ENTRANCE_SE,   7,  0,  1, 15,  1, ELRAIL_ELEVATION }  //! Wire for NW tunnel (SE facing exit)
+	{ WSO_ENTRANCE_SW, {{0, 0, BB_Z_SEPARATOR}, {16, 15, 1}, {0, 7, ELRAIL_TUNNEL_OFFSET}} }, //! Wire for NE tunnel (SW facing exit)
+	{ WSO_ENTRANCE_NW, {{0, 0, BB_Z_SEPARATOR}, {15, 16, 1}, {7, 0, ELRAIL_TUNNEL_OFFSET}} }, //! Wire for SE tunnel (NW facing exit)
+	{ WSO_ENTRANCE_NE, {{0, 0, BB_Z_SEPARATOR}, {16, 15, 1}, {0, 7, ELRAIL_TUNNEL_OFFSET}} }, //! Wire for SW tunnel (NE facing exit)
+	{ WSO_ENTRANCE_SE, {{0, 0, BB_Z_SEPARATOR}, {15, 16, 1}, {7, 0, ELRAIL_TUNNEL_OFFSET}} }  //! Wire for NW tunnel (SE facing exit)
 };
 
 

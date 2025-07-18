@@ -3184,7 +3184,7 @@ static void DrawTile_Station(TileInfo *ti)
 					7, 8, 9     // SLOPE_NE, SLOPE_ENW, SLOPE_SEN
 				};
 
-				AddSortableSpriteToDraw(image + foundation_parts[ti->tileh], PAL_NONE, ti->x, ti->y, 16, 16, 7, ti->z);
+				AddSortableSpriteToDraw(image + foundation_parts[ti->tileh], PAL_NONE, *ti, {{}, {TILE_SIZE, TILE_SIZE, 7}, {}});
 			} else {
 				/* Draw simple foundations, built up from 8 possible foundation sprites. */
 
@@ -3218,7 +3218,7 @@ static void DrawTile_Station(TileInfo *ti)
 				StartSpriteCombine();
 				for (int i = 0; i < 8; i++) {
 					if (HasBit(parts, i)) {
-						AddSortableSpriteToDraw(image + i, PAL_NONE, ti->x, ti->y, 16, 16, 7, ti->z);
+						AddSortableSpriteToDraw(image + i, PAL_NONE, *ti, {{}, {TILE_SIZE, TILE_SIZE, 7}, {}});
 					}
 				}
 				EndSpriteCombine();

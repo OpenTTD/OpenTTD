@@ -10,6 +10,7 @@
 #ifndef TILE_CMD_H
 #define TILE_CMD_H
 
+#include "core/geometry_type.hpp"
 #include "command_type.h"
 #include "vehicle_type.h"
 #include "cargo_type.h"
@@ -26,12 +27,9 @@ enum class VehicleEnterTileState : uint8_t {
 using VehicleEnterTileStates = EnumBitSet<VehicleEnterTileState, uint8_t>;
 
 /** Tile information, used while rendering the tile */
-struct TileInfo {
-	int x;          ///< X position of the tile in unit coordinates
-	int y;          ///< Y position of the tile in unit coordinates
+struct TileInfo : Coord3D<int> {
 	Slope tileh;    ///< Slope of the tile
 	TileIndex tile; ///< Tile index
-	int z;          ///< Height
 };
 
 /** Tile description for the 'land area information' tool */
