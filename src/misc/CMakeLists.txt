@@ -8,6 +8,7 @@ add_files(
     getoptdata.cpp
     getoptdata.h
     hashtable.hpp
+    history.cpp
     history_func.hpp
     history_type.hpp
     lrucache.hpp

@@ -1842,7 +1842,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 			p.history[LAST_MONTH].production += ScaleByCargoScale(p.rate * 8, false);
 		}
 
-		UpdateValidHistory(i->valid_history);
+		UpdateValidHistory(i->valid_history, HISTORY_YEAR, TimerGameEconomy::month);
 	}
 
 	if (indspec->callback_mask.Test(IndustryCallbackMask::DecideColour)) {
@@ -2494,19 +2494,38 @@ void GenerateIndustries()
 	_industry_builder.Reset();
 }
 
+template <>
+Industry::ProducedHistory SumHistory(std::span<const Industry::ProducedHistory> history)
+{
+	uint32_t production = std::accumulate(std::begin(history), std::end(history), 0, [](uint32_t r, const auto &p) { return r + p.production; });
+	uint32_t transported = std::accumulate(std::begin(history), std::end(history), 0, [](uint32_t r, const auto &p) { return r + p.transported; });
+	auto count = std::size(history);
+	return {.production = ClampTo<uint16_t>(production / count), .transported = ClampTo<uint16_t>(transported / count)};
+}
+
+template <>
+Industry::AcceptedHistory SumHistory(std::span<const Industry::AcceptedHistory> history)
+{
+	uint32_t accepted = std::accumulate(std::begin(history), std::end(history), 0, [](uint32_t r, const auto &a) { return r + a.accepted; });
+	uint32_t waiting = std::accumulate(std::begin(history), std::end(history), 0, [](uint32_t r, const auto &a) { return r + a.waiting; });;
+	auto count = std::size(history);
+	return {.accepted = ClampTo<uint16_t>(accepted / count), .waiting = ClampTo<uint16_t>(waiting / count)};
+}
+
 /**
  * Monthly update of industry statistics.
  * @param i Industry to update.
  */
 static void UpdateIndustryStatistics(Industry *i)
 {
-	UpdateValidHistory(i->valid_history);
+	auto month = TimerGameEconomy::month;
+	UpdateValidHistory(i->valid_history, HISTORY_YEAR, month);
 
 	for (auto &p : i->produced) {
 		if (IsValidCargoType(p.cargo)) {
 			if (p.history[THIS_MONTH].production != 0) i->last_prod_year = TimerGameEconomy::year;
 
-			RotateHistory(p.history);
+			RotateHistory(p.history, i->valid_history, HISTORY_YEAR, month);
 		}
 	}
 
@@ -2515,7 +2534,7 @@ static void UpdateIndustryStatistics(Industry *i)
 		if (a.history == nullptr) continue;
 
 		(*a.history)[THIS_MONTH].waiting = GetAndResetAccumulatedAverage<uint16_t>(a.accumulated_waiting);
-		RotateHistory(*a.history);
+		RotateHistory(*a.history, i->valid_history, HISTORY_YEAR, month);
 	}
 }
 

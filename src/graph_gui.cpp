@@ -1711,7 +1711,7 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 			transported.dash = 2;
 			auto transported_filler = Filler{transported, &Industry::ProducedHistory::transported};
 
-			FillFromHistory<GRAPH_NUM_MONTHS>(p.history, i->valid_history, produced_filler, transported_filler);
+			FillFromHistory<GRAPH_NUM_MONTHS>(p.history, i->valid_history, HISTORY_MONTH, produced_filler, transported_filler);
 		}
 
 		for (const auto &a : i->accepted) {
@@ -1735,9 +1735,9 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 			auto waiting_filler = Filler{waiting, &Industry::AcceptedHistory::waiting};
 
 			if (a.history == nullptr) {
-				FillFromEmpty<GRAPH_NUM_MONTHS>(i->valid_history, accepted_filler, waiting_filler);
+				FillFromEmpty<GRAPH_NUM_MONTHS>(i->valid_history, HISTORY_MONTH, accepted_filler, waiting_filler);
 			} else {
-				FillFromHistory<GRAPH_NUM_MONTHS>(*a.history, i->valid_history, accepted_filler, waiting_filler);
+				FillFromHistory<GRAPH_NUM_MONTHS>(*a.history, i->valid_history, HISTORY_MONTH, accepted_filler, waiting_filler);
 			}
 		}
 
