@@ -149,7 +149,7 @@ int GetStringHeight(StringID str, int maxw);
 int GetStringLineCount(std::string_view str, int maxw);
 Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestion);
 Dimension GetStringMultiLineBoundingBox(std::string_view str, const Dimension &suggestion, FontSize fontsize = FS_NORMAL);
-void LoadStringWidthTable(bool monospace = false);
+void LoadStringWidthTable(FontSizes fontsizes = FONTSIZES_REQUIRED);
 
 void DrawDirtyBlocks();
 void AddDirtyBlock(int left, int top, int right, int bottom);
