@@ -9,6 +9,7 @@
 
 #include "../../stdafx.h"
 #include "string_osx.h"
+#include "../../gfx_func.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
 #include "../../core/utf8.hpp"
@@ -52,7 +53,7 @@ extern "C" {
 /** Cached current locale. */
 static CFAutoRelease<CFLocaleRef> _osx_locale;
 /** CoreText cache for font information, cleared when OTTD changes fonts. */
-static CFAutoRelease<CTFontRef> _font_cache[FS_END];
+static std::unordered_map<FontIndex, CFAutoRelease<CTFontRef>> _font_cache;
 
 
 /**
@@ -88,7 +89,7 @@ public:
 		std::span<const int> GetGlyphToCharMap() const override { return this->glyph_to_char; }
 
 		const Font *GetFont() const override { return this->font;  }
-		int GetLeading() const override { return this->font->fc->GetHeight(); }
+		int GetLeading() const override { return GetCharacterHeight(this->font->GetFontCache().GetSize()); }
 		int GetGlyphCount() const override { return (int)this->glyphs.size(); }
 		int GetAdvance() const { return this->total_advance; }
 	};
@@ -137,17 +138,17 @@ public:
 
 
 /** Get the width of an encoded sprite font character.  */
-static CGFloat SpriteFontGetWidth(void *ref_con)
+static CGFloat CustomFontGetWidth(void *ref_con)
 {
-	FontSize fs = (FontSize)((size_t)ref_con >> 24);
-	char32_t c = (char32_t)((size_t)ref_con & 0xFFFFFF);
+	FontIndex fi = static_cast<FontIndex>(reinterpret_cast<uintptr_t>(ref_con) >> 24);
+	char32_t c = static_cast<char32_t>(reinterpret_cast<uintptr_t>(ref_con) & 0xFFFFFF);
 
-	return GetGlyphWidth(fs, c);
+	return FontCache::Get(fi)->GetGlyphWidth(c);
 }
 
 static const CTRunDelegateCallbacks _sprite_font_callback = {
 	kCTRunDelegateCurrentVersion, nullptr, nullptr, nullptr,
-	&SpriteFontGetWidth
+	&CustomFontGetWidth
 };
 
 /* static */ std::unique_ptr<ParagraphLayouter> CoreTextParagraphLayoutFactory::GetParagraphLayout(CharType *buff, CharType *buff_end, FontMap &font_mapping)
@@ -158,10 +159,7 @@ static const CTRunDelegateCallbacks _sprite_font_callback = {
 	ptrdiff_t length = buff_end - buff;
 	if (length == 0) return nullptr;
 
-	/* Can't layout our in-built sprite fonts. */
-	for (const auto &[position, font] : font_mapping) {
-		if (font->fc->IsBuiltInFont()) return nullptr;
-	}
+	FontCache &fc = this->font->GetFontCache();
 
 	/* Make attributed string with embedded font information. */
 	CFAutoRelease<CFMutableAttributedStringRef> str(CFAttributedStringCreateMutable(kCFAllocatorDefault, 0));
@@ -179,14 +177,14 @@ static const CTRunDelegateCallbacks _sprite_font_callback = {
 	for (const auto &[position, font] : font_mapping) {
 		if (position - last == 0) continue;
 
-		CTFontRef font_handle = static_cast<CTFontRef>(font->fc->GetOSHandle());
+		CTFontRef font_handle = static_cast<CTFontRef>(fc.GetOSHandle());
 		if (font_handle == nullptr) {
-			if (!_font_cache[font->fc->GetSize()]) {
+			if (!_font_cache[fc.GetIndex()]) {
 				/* Cache font information. */
-				CFAutoRelease<CFStringRef> font_name(CFStringCreateWithCString(kCFAllocatorDefault, font->fc->GetFontName().c_str(), kCFStringEncodingUTF8));
-				_font_cache[font->fc->GetSize()].reset(CTFontCreateWithName(font_name.get(), font->fc->GetFontSize(), nullptr));
+				CFAutoRelease<CFStringRef> font_name(CFStringCreateWithCString(kCFAllocatorDefault, fc.GetFontName().c_str(), kCFStringEncodingUTF8));
+				_font_cache[fc.GetIndex()].reset(CTFontCreateWithName(font_name.get(), fc.GetFontSize(), nullptr));
 			}
-			font_handle = _font_cache[font->fc->GetSize()].get();
+			font_handle = _font_cache[fc.GetIndex()].get();
 		}
 		CFAttributedStringSetAttribute(str.get(), CFRangeMake(last, position - last), kCTFontAttributeName, font_handle);
 
@@ -194,10 +192,10 @@ static const CTRunDelegateCallbacks _sprite_font_callback = {
 		CFAttributedStringSetAttribute(str.get(), CFRangeMake(last, position - last), kCTForegroundColorAttributeName, color);
 		CGColorRelease(color);
 
-		/* Install a size callback for our special private-use sprite glyphs in case the font does not provide them. */
-		for (ssize_t c = last; c < position; c++) {
-			if (buff[c] >= SCC_SPRITE_START && buff[c] <= SCC_SPRITE_END && font->fc->MapCharToGlyph(buff[c], false) == 0) {
-				CFAutoRelease<CTRunDelegateRef> del(CTRunDelegateCreate(&_sprite_font_callback, (void *)(size_t)(buff[c] | (font->fc->GetSize() << 24))));
+		/* Install a size callback for our custom fonts. */
+		if (fc.IsBuiltInFont()) {
+			for (ssize_t c = last; c < i.first; c++) {
+				CFAutoRelease<CTRunDelegateRef> del(CTRunDelegateCreate(&_custom_font_callback, static_cast<void *>(reinterpret_cast<uintptr_t>(buff[c] | (fc.GetIndex() << 24)))));
 				/* According to the official documentation, if a run delegate is used, the char should always be 0xFFFC. */
 				CFAttributedStringReplaceString(str.get(), CFRangeMake(c, 1), replacment_str.get());
 				CFAttributedStringSetAttribute(str.get(), CFRangeMake(c, 1), kCTRunDelegateAttributeName, del.get());
@@ -247,19 +245,15 @@ CoreTextParagraphLayout::CoreTextVisualRun::CoreTextVisualRun(CTRunRef run, Font
 	CTRunGetAdvances(run, CFRangeMake(0, 0), advs);
 	this->positions.reserve(this->glyphs.size());
 
+	int y_offset = this->font->GetFontCache().GetGlyphYOffset();
+
 	/* Convert glyph array to our data type. At the same time, substitute
 	 * the proper glyphs for our private sprite glyphs. */
 	CGGlyph gl[this->glyphs.size()];
 	CTRunGetGlyphs(run, CFRangeMake(0, 0), gl);
 	for (size_t i = 0; i < this->glyphs.size(); i++) {
-		if (buff[this->glyph_to_char[i]] >= SCC_SPRITE_START && buff[this->glyph_to_char[i]] <= SCC_SPRITE_END && (gl[i] == 0 || gl[i] == 3)) {
-			/* A glyph of 0 indidicates not found, while apparently 3 is what char 0xFFFC maps to. */
-			this->glyphs[i] = font->fc->MapCharToGlyph(buff[this->glyph_to_char[i]]);
-			this->positions.emplace_back(pts[i].x, pts[i].x + advs[i].width - 1, (font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(font->fc->GetSize()))) / 2); // Align sprite font to centre
-		} else {
-			this->glyphs[i] = gl[i];
-			this->positions.emplace_back(pts[i].x, pts[i].x + advs[i].width - 1, pts[i].y);
-		}
+		this->glyphs[i] = gl[i];
+		this->positions.emplace_back(pts[i].x, pts[i].x + advs[i].width - 1, pts[i].y + y_offset);
 	}
 	this->total_advance = (int)std::ceil(CTRunGetTypographicBounds(run, CFRangeMake(0, 0), nullptr, nullptr, nullptr));
 }
