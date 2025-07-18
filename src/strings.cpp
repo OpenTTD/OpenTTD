@@ -2278,7 +2278,7 @@ std::string_view GetCurrentLanguageIsoCode()
  */
 bool MissingGlyphSearcher::FindMissingGlyphs()
 {
-	InitFontCache(this->Monospace());
+	InitFontCache(this->Monospace() ? FontSizes{FS_MONO} : FONTSIZES_REQUIRED);
 
 	this->Reset();
 	for (auto text = this->NextString(); text.has_value(); text = this->NextString()) {
@@ -2395,7 +2395,7 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 			/* Our fallback font does miss characters too, so keep the
 			 * user chosen font as that is more likely to be any good than
 			 * the wild guess we made */
-			InitFontCache(searcher->Monospace());
+			InitFontCache(searcher->Monospace() ? FontSizes{FS_MONO} : FONTSIZES_REQUIRED);
 		}
 	}
 #endif
@@ -2412,12 +2412,12 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 		ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, std::move(err_str)), {}, WL_WARNING);
 
 		/* Reset the font width */
-		LoadStringWidthTable(searcher->Monospace());
+		LoadStringWidthTable(searcher->Monospace() ? FontSizes{FS_MONO} : FONTSIZES_REQUIRED);
 		return;
 	}
 
 	/* Update the font with cache */
-	LoadStringWidthTable(searcher->Monospace());
+	LoadStringWidthTable(searcher->Monospace() ? FontSizes{FS_MONO} : FONTSIZES_REQUIRED);
 
 #if !(defined(WITH_ICU_I18N) && defined(WITH_HARFBUZZ)) && !defined(WITH_UNISCRIBE) && !defined(WITH_COCOA)
 	/*

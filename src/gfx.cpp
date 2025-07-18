@@ -8,6 +8,7 @@
 /** @file gfx.cpp Handling of drawing text and other gfx related stuff. */
 
 #include "stdafx.h"
+#include "gfx_func.h"
 #include "gfx_layout.h"
 #include "progress.h"
 #include "zoom_func.h"
@@ -1240,14 +1241,14 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode,
 }
 
 /**
- * Initialize _stringwidth_table cache
- * @param monospace Whether to load the monospace cache or the normal fonts.
+ * Initialize _stringwidth_table cache for the specified font sizes.
+ * @param fontsizes Font sizes to initialise.
  */
-void LoadStringWidthTable(bool monospace)
+void LoadStringWidthTable(FontSizes fontsizes)
 {
-	ClearFontCache();
+	ClearFontCache(fontsizes);
 
-	for (FontSize fs = monospace ? FS_MONO : FS_BEGIN; fs < (monospace ? FS_END : FS_MONO); fs++) {
+	for (FontSize fs : fontsizes) {
 		for (uint i = 0; i != 224; i++) {
 			_stringwidth_table[fs][i] = GetGlyphWidth(fs, i + 32);
 		}
@@ -1812,7 +1813,7 @@ bool AdjustGUIZoom(bool automatic)
 	if (old_font_zoom != _font_zoom) {
 		GfxClearFontSpriteCache();
 	}
-	ClearFontCache();
+	ClearFontCache(FONTSIZES_ALL);
 	LoadStringWidthTable();
 
 	SetupWidgetDimensions();

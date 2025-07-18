@@ -182,6 +182,6 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 	if (best_font == nullptr) return false;
 
 	callback->SetFontNames(settings, best_font, &best_index);
-	InitFontCache(callback->Monospace());
+	InitFontCache(callback->Monospace() ? FontSizes{FS_MONO} : FONTSIZES_REQUIRED);
 	return true;
 }

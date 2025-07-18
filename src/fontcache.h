@@ -167,9 +167,9 @@ inline void InitializeUnicodeGlyphMap()
 	}
 }
 
-inline void ClearFontCache()
+inline void ClearFontCache(FontSizes fontsizes)
 {
-	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
+	for (FontSize fs : fontsizes) {
 		FontCache::Get(fs)->ClearFontCache();
 	}
 }
@@ -231,7 +231,7 @@ inline FontCacheSubSetting *GetFontCacheSubSetting(FontSize fs)
 
 uint GetFontCacheFontSize(FontSize fs);
 std::string GetFontCacheFontName(FontSize fs);
-void InitFontCache(bool monospace);
+void InitFontCache(FontSizes fontsizes);
 void UninitFontCache();
 
 bool GetFontAAState();
