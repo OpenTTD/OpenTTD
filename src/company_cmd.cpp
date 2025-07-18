@@ -141,6 +141,8 @@ void SetLocalCompany(CompanyID new_company)
 	MarkWholeScreenDirty();
 	InvalidateWindowClassesData(WC_SIGN_LIST, -1);
 	InvalidateWindowClassesData(WC_GOALS_LIST);
+	InvalidateWindowClassesData(WC_COMPANY_COLOUR, -1);
+	ResetVehicleColourMap();
 }
 
 /**
