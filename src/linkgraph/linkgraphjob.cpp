@@ -42,13 +42,13 @@ LinkGraphJob::LinkGraphJob(const LinkGraph &orig) :
 }
 
 /**
- * Erase all flows originating at a specific node.
- * @param from Node to erase flows for.
+ * Erase all flows originating at a specific station.
+ * @param from StationID to erase flows for.
  */
-void LinkGraphJob::EraseFlows(NodeID from)
+void LinkGraphJob::EraseFlows(StationID from)
 {
 	for (NodeID node_id = 0; node_id < this->Size(); ++node_id) {
-		(*this)[node_id].flows.erase(StationID{from});
+		(*this)[node_id].flows.erase(from);
 	}
 }
 
@@ -106,7 +106,7 @@ LinkGraphJob::~LinkGraphJob()
 		/* The station can have been deleted. Remove all flows originating from it then. */
 		Station *st = Station::GetIfValid(from.base.station);
 		if (st == nullptr) {
-			this->EraseFlows(node_id);
+			this->EraseFlows(from.base.station);
 			continue;
 		}
 
@@ -114,7 +114,7 @@ LinkGraphJob::~LinkGraphJob()
 		 * sure that everything is still consistent or ignore it otherwise. */
 		GoodsEntry &ge = st->goods[this->Cargo()];
 		if (ge.link_graph != this->link_graph.index || ge.node != node_id) {
-			this->EraseFlows(node_id);
+			this->EraseFlows(from.base.station);
 			continue;
 		}
 

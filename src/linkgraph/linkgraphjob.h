@@ -167,7 +167,7 @@ protected:
 	std::atomic<bool> job_completed = false; ///< Is the job still running. This is accessed by multiple threads and reads may be stale.
 	std::atomic<bool> job_aborted = false; ///< Has the job been aborted. This is accessed by multiple threads and reads may be stale.
 
-	void EraseFlows(NodeID from);
+	void EraseFlows(StationID from);
 	void JoinThread();
 	void SpawnThread();
 
