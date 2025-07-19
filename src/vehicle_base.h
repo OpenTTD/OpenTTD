@@ -741,7 +741,7 @@ public:
 	 */
 	inline StationIDStack GetNextStoppingStation() const
 	{
-		return (this->orders == nullptr) ? StationID::Invalid().base() : this->orders->GetNextStoppingStation(this);
+		return (this->orders == nullptr) ? StationID::Invalid() : this->orders->GetNextStoppingStation(this);
 	}
 
 	void ResetRefitCaps();

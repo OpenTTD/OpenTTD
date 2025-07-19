@@ -368,7 +368,7 @@ StationIDStack OrderList::GetNextStoppingStation(const Vehicle *v, VehicleOrderI
 		next = v->cur_implicit_order_index;
 		if (next >= this->GetNumOrders()) {
 			next = this->GetFirstOrder();
-			if (next == INVALID_VEH_ORDER_ID) return StationID::Invalid().base();
+			if (next == INVALID_VEH_ORDER_ID) return StationID::Invalid();
 		} else {
 			/* GetNext never returns INVALID_VEH_ORDER_ID if there is a valid station in the list.
 			 * As the given "next" is already valid and a station in the list, we
@@ -404,11 +404,11 @@ StationIDStack OrderList::GetNextStoppingStation(const Vehicle *v, VehicleOrderI
 		if (next == INVALID_VEH_ORDER_ID || ((orders[next].IsType(OT_GOTO_STATION) || orders[next].IsType(OT_IMPLICIT)) &&
 				orders[next].GetDestination() == v->last_station_visited &&
 				(orders[next].GetUnloadType() & (OUFB_TRANSFER | OUFB_UNLOAD)) != 0)) {
-			return StationID::Invalid().base();
+			return StationID::Invalid();
 		}
 	} while (orders[next].IsType(OT_GOTO_DEPOT) || orders[next].GetDestination() == v->last_station_visited);
 
-	return orders[next].GetDestination().ToStationID().base();
+	return orders[next].GetDestination().ToStationID();
 }
 
 /**

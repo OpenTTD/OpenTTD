@@ -410,7 +410,7 @@ void VehicleCargoList::AgeCargo()
 		return (accepted && cp->first_station != current_station) ? MTA_DELIVER : MTA_KEEP;
 	} else if (cargo_next == current_station) {
 		return MTA_DELIVER;
-	} else if (next_station.Contains(cargo_next.base())) {
+	} else if (next_station.Contains(cargo_next)) {
 		return MTA_KEEP;
 	} else {
 		return MTA_TRANSFER;
@@ -470,7 +470,7 @@ bool VehicleCargoList::Stage(bool accepted, StationID current_station, StationID
 				new_shares.ChangeShare(current_station, INT_MIN);
 				StationIDStack excluded = next_station;
 				while (!excluded.IsEmpty() && !new_shares.GetShares()->empty()) {
-					new_shares.ChangeShare(StationID{excluded.Pop()}, INT_MIN);
+					new_shares.ChangeShare(excluded.Pop(), INT_MIN);
 				}
 				if (new_shares.GetShares()->empty()) {
 					cargo_next = StationID::Invalid();
@@ -743,7 +743,7 @@ uint StationCargoList::ShiftCargo(Taction action, StationIDStack next, bool incl
 {
 	uint max_move = action.MaxMove();
 	while (!next.IsEmpty()) {
-		this->ShiftCargo(action, StationID{next.Pop()});
+		this->ShiftCargo(action, next.Pop());
 		if (action.MaxMove() == 0) break;
 	}
 	if (include_invalid && action.MaxMove() > 0) {
@@ -853,7 +853,7 @@ uint StationCargoList::Load(uint max_move, VehicleCargoList *dest, StationIDStac
  */
 uint StationCargoList::Reroute(uint max_move, StationCargoList *dest, StationID avoid, StationID avoid2, const GoodsEntry *ge)
 {
-	return this->ShiftCargo(StationCargoReroute(this, dest, max_move, avoid, avoid2, ge), avoid.base(), false);
+	return this->ShiftCargo(StationCargoReroute(this, dest, max_move, avoid, avoid2, ge), avoid, false);
 }
 
 /*

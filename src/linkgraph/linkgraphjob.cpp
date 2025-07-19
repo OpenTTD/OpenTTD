@@ -136,7 +136,7 @@ LinkGraphJob::~LinkGraphJob()
 				/* Delete old flows for source stations which have been deleted
 				 * from the new flows. This avoids flow cycles between old and
 				 * new flows. */
-				while (!erased.IsEmpty()) geflows.erase(StationID{erased.Pop()});
+				while (!erased.IsEmpty()) geflows.erase(erased.Pop());
 			} else if ((*lg)[node_id][dest_id].last_unrestricted_update == EconomyTime::INVALID_DATE) {
 				/* Edge is fully restricted. */
 				flows.RestrictFlows(to);

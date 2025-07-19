@@ -5079,7 +5079,7 @@ StationIDStack FlowStatMap::DeleteFlows(StationID via)
 		FlowStat &s_flows = f_it->second;
 		s_flows.ChangeShare(via, INT_MIN);
 		if (s_flows.GetShares()->empty()) {
-			ret.Push(f_it->first.base());
+			ret.Push(f_it->first);
 			this->erase(f_it++);
 		} else {
 			++f_it;
