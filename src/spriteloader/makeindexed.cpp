@@ -48,7 +48,7 @@ static void Convert32bppTo8bpp(SpriteLoader::Sprite &sprite)
 	}
 }
 
-ZoomLevels SpriteLoaderMakeIndexed::LoadSprite(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool, uint8_t control_flags, ZoomLevels &avail_8bpp, ZoomLevels &avail_32bpp)
+ZoomLevels SpriteLoaderMakeIndexed::LoadSprite(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool, SpriteCacheCtrlFlags control_flags, ZoomLevels &avail_8bpp, ZoomLevels &avail_32bpp)
 {
 	ZoomLevels avail = this->baseloader.LoadSprite(sprite, file, file_pos, sprite_type, true, control_flags, avail_8bpp, avail_32bpp);
 
