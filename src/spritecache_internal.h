@@ -12,6 +12,7 @@
 
 #include "core/math_func.hpp"
 #include "gfx_type.h"
+#include "spritecache_type.h"
 #include "spriteloader/spriteloader.hpp"
 
 #include "table/sprites.h"
@@ -27,7 +28,7 @@ struct SpriteCache {
 	uint32_t lru = 0;
 	SpriteType type = SpriteType::Invalid; ///< In some cases a single sprite is misused by two NewGRFs. Once as real sprite and once as recolour sprite. If the recolour sprite gets into the cache it might be drawn as real sprite which causes enormous trouble.
 	bool warned = false; ///< True iff the user has been warned about incorrect use of this sprite
-	uint8_t control_flags = 0; ///< Control flags, see SpriteCacheCtrlFlags
+	SpriteCacheCtrlFlags control_flags{}; ///< Control flags, see SpriteCacheCtrlFlags
 
 	void ClearSpriteData();
 };
