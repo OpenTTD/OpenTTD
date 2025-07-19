@@ -5001,6 +5001,7 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}需要�
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}土地倾斜的方向不对
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}不能这样做……
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}必须先摧毁建筑
+STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}……建筑物被保护
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}无法清除这个区域……
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}……地点不合适
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}……已经建成
