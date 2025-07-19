@@ -26,7 +26,7 @@ struct RoadStop;
 struct StationSpec;
 struct Waypoint;
 
-using StationIDStack = SmallStack<StationID::BaseType, StationID::BaseType, StationID::Invalid().base(), 8, StationID::End().base()>;
+using StationIDStack = SmallStack<StationID, StationID::BaseType, StationID::Invalid().base(), 8, StationID::End().base()>;
 
 /** Station types */
 enum class StationType : uint8_t {
