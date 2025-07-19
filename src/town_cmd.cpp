@@ -3195,7 +3195,7 @@ CommandCost CmdTownRating(DoCommandFlags flags, TownID town_id, CompanyID compan
 	int16_t new_rating = Clamp(rating, RATING_MINIMUM, RATING_MAXIMUM);
 	if (flags.Test(DoCommandFlag::Execute)) {
 		t->ratings[company_id] = new_rating;
-		InvalidateWindowData(WC_TOWN_AUTHORITY, town_id);
+		InvalidateWindowData(WC_TOWN_VIEW, town_id);
 	}
 
 	return CommandCost();
@@ -3591,7 +3591,7 @@ static CommandCost TownActionBribe(Town *t, DoCommandFlags flags)
 			 */
 			if (t->ratings[_current_company] > RATING_BRIBE_DOWN_TO) {
 				t->ratings[_current_company] = RATING_BRIBE_DOWN_TO;
-				SetWindowDirty(WC_TOWN_AUTHORITY, t->index);
+				SetWindowDirty(WC_TOWN_VIEW, t->index);
 			}
 		} else {
 			ChangeTownRating(t, RATING_BRIBE_UP_STEP, RATING_BRIBE_MAXIMUM, DoCommandFlag::Execute);
@@ -3692,7 +3692,7 @@ CommandCost CmdDoTownAction(DoCommandFlags flags, TownID town_id, TownAction act
 	if (ret.Failed()) return ret;
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		SetWindowDirty(WC_TOWN_AUTHORITY, town_id);
+		SetWindowDirty(WC_TOWN_VIEW, town_id);
 	}
 
 	return cost;
@@ -3745,7 +3745,7 @@ static void UpdateTownRating(Town *t)
 		t->ratings[i] = Clamp(t->ratings[i], RATING_MINIMUM, RATING_MAXIMUM);
 	}
 
-	SetWindowDirty(WC_TOWN_AUTHORITY, t->index);
+	SetWindowDirty(WC_TOWN_VIEW, t->index);
 }
 
 
@@ -4017,7 +4017,7 @@ void ChangeTownRating(Town *t, int add, int max, DoCommandFlags flags)
 	} else {
 		t->have_ratings.Set(_current_company);
 		t->ratings[_current_company] = rating;
-		SetWindowDirty(WC_TOWN_AUTHORITY, t->index);
+		InvalidateWindowData(WC_TOWN_VIEW, t->index);
 	}
 }
 
