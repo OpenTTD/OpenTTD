@@ -413,7 +413,7 @@ struct DepotWindow : Window {
 		 */
 		if (this->type == VEH_TRAIN && _consistent_train_width != 0) {
 			int w = ScaleSpriteTrad(2 * _consistent_train_width);
-			int col = GetColourGradient(wid->colour, SHADE_NORMAL);
+			PixelColour col = GetColourGradient(wid->colour, SHADE_NORMAL);
 			Rect image = ir.Indent(this->header_width, rtl).Indent(this->count_width, !rtl);
 			int first_line = w + (-this->hscroll->GetPosition()) % w;
 			if (rtl) {

@@ -121,7 +121,7 @@ static ChangeInfoResult RailTypeChangeInfo(uint first, uint last, int prop, Byte
 				break;
 
 			case 0x16: // Map colour
-				rti->map_colour = buf.ReadByte();
+				rti->map_colour = PixelColour{buf.ReadByte()};
 				break;
 
 			case 0x17: // Introduction date

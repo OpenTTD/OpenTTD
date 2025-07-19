@@ -19,9 +19,9 @@ class Blitter_32bppBase : public Blitter {
 public:
 	uint8_t GetScreenDepth() override { return 32; }
 	void *MoveTo(void *video, int x, int y) override;
-	void SetPixel(void *video, int x, int y, uint8_t colour) override;
-	void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8_t colour, int width, int dash) override;
-	void DrawRect(void *video, int width, int height, uint8_t colour) override;
+	void SetPixel(void *video, int x, int y, PixelColour colour) override;
+	void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, PixelColour colour, int width, int dash) override;
+	void DrawRect(void *video, int width, int height, PixelColour colour) override;
 	void CopyFromBuffer(void *video, const void *src, int width, int height) override;
 	void CopyToBuffer(const void *video, void *dst, int width, int height) override;
 	void CopyImageToBuffer(const void *video, void *dst, int width, int height, int dst_pitch) override;

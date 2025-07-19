@@ -867,9 +867,9 @@ struct FrametimeGraphWindow : Window {
 			const int x_max = r.right;
 			const int y_zero = r.top + (int)this->graph_size.height;
 			const int y_max = r.top;
-			const int c_grid = PC_DARK_GREY;
-			const int c_lines = PC_BLACK;
-			const int c_peak = PC_DARK_RED;
+			const PixelColour c_grid = PC_DARK_GREY;
+			const PixelColour c_lines = PC_BLACK;
+			const PixelColour c_peak = PC_DARK_RED;
 
 			const TimingMeasurement draw_horz_scale = (TimingMeasurement)this->horizontal_scale * TIMESTAMP_PRECISION / 2;
 			const TimingMeasurement draw_vert_scale = (TimingMeasurement)this->vertical_scale;
@@ -959,7 +959,7 @@ struct FrametimeGraphWindow : Window {
 
 			/* If the peak value is significantly larger than the average, mark and label it */
 			if (points_drawn > 0 && peak_value > TIMESTAMP_PRECISION / 100 && 2 * peak_value > 3 * value_sum / points_drawn) {
-				TextColour tc_peak = (TextColour)(TC_IS_PALETTE_COLOUR | c_peak);
+				TextColour tc_peak = c_peak.ToTextColour();
 				GfxFillRect(peak_point.x - 1, peak_point.y - 1, peak_point.x + 1, peak_point.y + 1, c_peak);
 				uint64_t value = peak_value * 1000 / TIMESTAMP_PRECISION;
 				int label_y = std::max(y_max, peak_point.y - GetCharacterHeight(FS_SMALL));
