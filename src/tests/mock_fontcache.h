@@ -21,8 +21,6 @@ public:
 		this->height = FontCache::GetDefaultFontHeight(this->fs);
 	}
 
-	void SetUnicodeGlyph(char32_t, SpriteID) override {}
-	void InitializeUnicodeGlyphMap() override {}
 	void ClearFontCache() override {}
 	const Sprite *GetGlyph(GlyphID) override { return nullptr; }
 	uint GetGlyphWidth(GlyphID) override { return this->height / 2; }
