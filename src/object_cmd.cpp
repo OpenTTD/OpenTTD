@@ -476,13 +476,7 @@ static void DrawTile_Object(TileInfo *ti)
 
 		if (!IsInvisibilitySet(TO_STRUCTURES)) {
 			for (const DrawTileSeqStruct &dtss : dts->GetSequence()) {
-				AddSortableSpriteToDraw(
-					dtss.image.sprite, palette,
-					ti->x + dtss.delta_x, ti->y + dtss.delta_y,
-					dtss.size_x, dtss.size_y,
-					dtss.size_z, ti->z + dtss.delta_z,
-					IsTransparencySet(TO_STRUCTURES)
-				);
+				AddSortableSpriteToDraw(dtss.image.sprite, palette, *ti, dtss, IsTransparencySet(TO_STRUCTURES));
 			}
 		}
 	} else {

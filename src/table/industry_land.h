@@ -37,15 +37,15 @@ struct DrawIndustryCoordinates {
  * @param p1 palette ID of ground sprite
  * @param s2 sprite ID of building sprite
  * @param p2 palette ID of building sprite
- * @param sx coordinate x of the sprite
- * @param sy coordinate y of the sprite
- * @param w width of the sprite
- * @param h height of the sprite
- * @param dz virtual height of the sprite
+ * @param dx The x-position of the sprite within the tile.
+ * @param dy the y-position of the sprite within the tile.
+ * @param sx the x-extent of the sprite.
+ * @param sy the y-extent of the sprite.
+ * @param sz the z-extent of the sprite.
  * @param p this allows to specify a special drawing procedure.
  * @see DrawBuildingsTileStruct
  */
-#define M(s1, p1, s2, p2, sx, sy, w, h, dz, p) { { s1, p1 }, { s2, p2 }, sx, sy, w, h, dz, p }
+#define M(s1, p1, s2, p2, dx, dy, sx, sy, sz, p) { {{dx, dy, 0}, {sx, sy, sz}, {}}, { s1, p1 }, { s2, p2 }, p}
 
 /** Structure for industry tiles drawing */
 static const DrawBuildingsTileStruct _industry_draw_tile_data[NEW_INDUSTRYTILEOFFSET * 4] = {
