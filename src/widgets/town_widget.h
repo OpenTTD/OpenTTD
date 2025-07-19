@@ -21,30 +21,27 @@ enum TownDirectoryWidgets : WidgetID {
 	WID_TD_WORLD_POPULATION, ///< The world's population.
 };
 
-/** Widgets of the #TownAuthorityWindow class. */
-enum TownAuthorityWidgets : WidgetID {
-	WID_TA_CAPTION,      ///< Caption of window.
-	WID_TA_ZONE_BUTTON,  ///< Turn on/off showing local authority zone.
-	WID_TA_RATING_INFO,  ///< Overview with ratings for each company.
-	WID_TA_COMMAND_LIST, ///< List of commands for the player.
-	WID_TA_SCROLLBAR,    ///< Scrollbar of the list of commands.
-	WID_TA_ACTION_INFO,  ///< Additional information about the action.
-	WID_TA_EXECUTE,      ///< Do-it button.
-};
-
 /** Widgets of the #TownViewWindow class. */
 enum TownViewWidgets : WidgetID {
 	WID_TV_CAPTION,        ///< Caption of window.
 	WID_TV_VIEWPORT,       ///< View of the center of the town.
 	WID_TV_INFO,           ///< General information about the town.
 	WID_TV_CENTER_VIEW,    ///< Center the main view on this town.
-	WID_TV_SHOW_AUTHORITY, ///< Show the town authority window.
 	WID_TV_CHANGE_NAME,    ///< Change the name of this town.
 	WID_TV_CATCHMENT,      ///< Toggle catchment area highlight.
 	WID_TV_EXPAND,         ///< Expand this town (scenario editor only).
 	WID_TV_EXPAND_BUILDINGS, ///< Expand number of buildings this town (scenario editor only).
 	WID_TV_EXPAND_ROADS, ///< Expand roads of this town (scenario editor only).
 	WID_TV_DELETE,         ///< Delete this town (scenario editor only).
+	WID_TV_PANE_SEL,
+	WID_TV_PANE_INFO,
+	WID_TV_PANE_RATINGS,
+	WID_TV_PANE_ACTIONS,
+	WID_TV_RATING_INFO,  ///< Overview with ratings for each company.
+	WID_TV_COMMAND_LIST, ///< List of commands for the player.
+	WID_TV_ACTION_INFO,  ///< Additional information about the action.
+	WID_TV_EXECUTE, ///< Do-it button.
+	WID_TV_ZONE,  ///< Turn on/off showing local authority zone.
 };
 
 /** Widgets of the #FoundTownWindow class. */

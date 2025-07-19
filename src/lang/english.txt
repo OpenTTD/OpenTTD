@@ -3693,6 +3693,13 @@ STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Local Au
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Show information on local authority
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Change town name
 
+STR_TOWN_VIEW_INFO                                              :Information
+STR_TOWN_VIEW_INFO_TOOLTIP                                      :Switch to town information tab
+STR_TOWN_VIEW_RATINGS                                           :Ratings
+STR_TOWN_VIEW_RATINGS_TOOLTIP                                   :Switch to local authority ratings tab
+STR_TOWN_VIEW_ACTIONS                                           :Actions
+STR_TOWN_VIEW_ACTIONS_TOOLTIP                                   :Switch to local authority actions tab
+
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Expand
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Increase size of town
 STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Expand buildings
