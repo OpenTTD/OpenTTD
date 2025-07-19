@@ -13,6 +13,7 @@
 #include "../core/alloc_type.hpp"
 #include "../core/enum_type.hpp"
 #include "../gfx_type.h"
+#include "../spritecache_type.h"
 #include "sprite_file_type.hpp"
 
 struct Sprite;
@@ -94,7 +95,7 @@ public:
 	 * @param[out] avail_32bpp Available 32bpp sprites.
 	 * @return Available sprites matching \a load_32bpp.
 	 */
-	virtual ZoomLevels LoadSprite(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, uint8_t control_flags, ZoomLevels &avail_8bpp, ZoomLevels &avail_32bpp) = 0;
+	virtual ZoomLevels LoadSprite(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, SpriteCacheCtrlFlags control_flags, ZoomLevels &avail_8bpp, ZoomLevels &avail_32bpp) = 0;
 
 	virtual ~SpriteLoader() = default;
 };

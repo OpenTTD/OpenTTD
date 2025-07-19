@@ -535,7 +535,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 
 struct GrfSpriteOffset {
 	size_t file_pos;
-	uint8_t control_flags;
+	SpriteCacheCtrlFlags control_flags{};
 };
 
 /** Map from sprite numbers to position in the GRF file. */
@@ -565,7 +565,7 @@ void ReadGRFSpriteOffsets(SpriteFile &file)
 		size_t old_pos = file.GetPos();
 		file.SeekTo(data_offset, SEEK_CUR);
 
-		GrfSpriteOffset offset = { 0, 0 };
+		GrfSpriteOffset offset{0};
 
 		/* Loop over all sprite section entries and store the file
 		 * offset for each newly encountered ID. */
@@ -574,7 +574,6 @@ void ReadGRFSpriteOffsets(SpriteFile &file)
 			if (id != prev_id) {
 				_grf_sprite_offsets[prev_id] = offset;
 				offset.file_pos = file.GetPos() - 4;
-				offset.control_flags = 0;
 			}
 			prev_id = id;
 			uint length = file.ReadDword();
@@ -585,11 +584,11 @@ void ReadGRFSpriteOffsets(SpriteFile &file)
 					uint8_t zoom = file.ReadByte();
 					length--;
 					if (colour.Any() && zoom == 0) { // ZoomLevel::Normal (normal zoom)
-						SetBit(offset.control_flags, (colour != SpriteComponent::Palette) ? SCCF_ALLOW_ZOOM_MIN_1X_32BPP : SCCF_ALLOW_ZOOM_MIN_1X_PAL);
-						SetBit(offset.control_flags, (colour != SpriteComponent::Palette) ? SCCF_ALLOW_ZOOM_MIN_2X_32BPP : SCCF_ALLOW_ZOOM_MIN_2X_PAL);
+						offset.control_flags.Set((colour != SpriteComponent::Palette) ? SpriteCacheCtrlFlag::AllowZoomMin1x32bpp : SpriteCacheCtrlFlag::AllowZoomMin1xPal);
+						offset.control_flags.Set((colour != SpriteComponent::Palette) ? SpriteCacheCtrlFlag::AllowZoomMin2x32bpp : SpriteCacheCtrlFlag::AllowZoomMin2xPal);
 					}
 					if (colour.Any() && zoom == 2) { // ZoomLevel::In2x (2x zoomed in)
-						SetBit(offset.control_flags, (colour != SpriteComponent::Palette) ? SCCF_ALLOW_ZOOM_MIN_2X_32BPP : SCCF_ALLOW_ZOOM_MIN_2X_PAL);
+						offset.control_flags.Set((colour != SpriteComponent::Palette) ? SpriteCacheCtrlFlag::AllowZoomMin2x32bpp : SpriteCacheCtrlFlag::AllowZoomMin2xPal);
 					}
 				}
 			}
@@ -621,7 +620,7 @@ bool LoadNextSprite(SpriteID load_index, SpriteFile &file, uint file_sprite_id)
 	uint8_t grf_type = file.ReadByte();
 
 	SpriteType type;
-	uint8_t control_flags = 0;
+	SpriteCacheCtrlFlags control_flags;
 	if (grf_type == 0xFF) {
 		/* Some NewGRF files have "empty" pseudo-sprites which are 1
 		 * byte long. Catch these so the sprites won't be displayed. */

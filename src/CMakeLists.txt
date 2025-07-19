@@ -454,6 +454,7 @@ add_files(
     spritecache.cpp
     spritecache.h
     spritecache_internal.h
+    spritecache_type.h
     station.cpp
     station_base.h
     station_cmd.cpp

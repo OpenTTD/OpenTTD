@@ -33,7 +33,7 @@ static bool MockLoadNextSprite(SpriteID load_index)
 	sc->id = 0;
 	sc->type = is_mapgen ? SpriteType::MapGen : SpriteType::Normal;
 	sc->warned = false;
-	sc->control_flags = 0;
+	sc->control_flags = {};
 
 	/* Fill with empty sprites up until the default sprite count. */
 	return load_index < SPR_OPENTTD_BASE + OPENTTD_SPRITE_COUNT;
