@@ -79,7 +79,6 @@ static constexpr auto _callback_tuple = std::make_tuple(
 	&CcCreateGroup,
 	&CcFoundRandomTown,
 	&CcRoadStop,
-	&CcBuildIndustry,
 	&CcStartStopVehicle,
 	&CcGame,
 	&CcAddVehicleNewGroup

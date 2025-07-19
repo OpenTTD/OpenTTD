@@ -27,6 +27,4 @@ DEF_CMD_TRAIT(CMD_INDUSTRY_SET_EXCLUSIVITY, CmdIndustrySetExclusivity, CommandFl
 DEF_CMD_TRAIT(CMD_INDUSTRY_SET_TEXT, CmdIndustrySetText, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CMDT_OTHER_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_INDUSTRY_SET_PRODUCTION, CmdIndustrySetProduction, CommandFlag::Deity, CMDT_OTHER_MANAGEMENT)
 
-void CcBuildIndustry(Commands cmd, const CommandCost &result, TileIndex tile, IndustryType indtype, uint32_t, bool, uint32_t);
-
 #endif /* INDUSTRY_CMD_H */
