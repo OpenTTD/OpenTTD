@@ -10,6 +10,7 @@
 #ifndef TOWN_H
 #define TOWN_H
 
+#include "misc/history_type.hpp"
 #include "viewport_type.h"
 #include "timer/timer_game_tick.h"
 #include "town_map.h"
@@ -74,16 +75,56 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	uint8_t exclusive_counter = 0; ///< months till the exclusivity expires
 	TypedIndexContainer<std::array<int16_t, MAX_COMPANIES>, CompanyID> ratings{};  ///< ratings of each company for this town
 
-	std::array<TransportedCargoStat<uint32_t>, NUM_CARGO> supplied{}; ///< Cargo statistics about supplied cargo.
+	struct SuppliedHistory {
+		uint32_t production = 0; ///< Total produced
+		uint32_t transported = 0; ///< Total transported
+
+		uint8_t PctTransported() const
+		{
+			if (this->production == 0) return 0;
+			return ClampTo<uint8_t>(this->transported * 256 / this->production);
+		}
+	};
+
+	struct SuppliedCargo {
+		CargoType cargo = INVALID_CARGO;
+		HistoryData<SuppliedHistory> history{};
+
+		SuppliedCargo() = default;
+		SuppliedCargo(CargoType cargo) : cargo(cargo) {}
+	};
+
+	using SuppliedCargoes = std::vector<SuppliedCargo>;
+
+	SuppliedCargoes supplied{}; ///< Cargo statistics about supplied cargo.
 	std::array<TransportedCargoStat<uint16_t>, NUM_TAE> received{}; ///< Cargo statistics about received cargotypes.
 	std::array<uint32_t, NUM_TAE> goal{}; ///< Amount of cargo required for the town to grow.
+	ValidHistoryMask valid_history = 0; ///< Mask of valid history records.
 
 	EncodedString text{}; ///< General text with additional information.
 
+	inline SuppliedCargo &GetOrCreateCargoSupplied(CargoType cargo)
+	{
+		assert(IsValidCargoType(cargo));
+		auto it = std::ranges::lower_bound(this->supplied, cargo, std::less{}, &SuppliedCargo::cargo);
+		if (it == std::end(this->supplied) || it->cargo != cargo) it = this->supplied.emplace(it, cargo);
+		return *it;
+	}
+
+	inline SuppliedCargoes::const_iterator GetCargoSupplied(CargoType cargo) const
+	{
+		if (!IsValidCargoType(cargo)) return std::end(this->supplied);
+		auto it = std::ranges::lower_bound(this->supplied, cargo, std::less{}, &SuppliedCargo::cargo);
+		if (it == std::end(this->supplied) || it->cargo != cargo) return std::end(supplied);
+		return it;
+	}
+
 	inline uint8_t GetPercentTransported(CargoType cargo_type) const
 	{
-		if (!IsValidCargoType(cargo_type)) return 0;
-		return this->supplied[cargo_type].old_act * 256 / (this->supplied[cargo_type].old_max + 1);
+		auto it = this->GetCargoSupplied(cargo_type);
+		if (it == std::end(this->supplied)) return 0;
+
+		return it->history[LAST_MONTH].PctTransported();
 	}
 
 	StationList stations_near{}; ///< NOSAVE: List of nearby stations.

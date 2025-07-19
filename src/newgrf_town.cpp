@@ -15,6 +15,15 @@
 
 #include "safeguards.h"
 
+template <typename Tproj>
+static uint16_t TownHistoryHelper(const Town *t, CargoLabel label, uint period, Tproj proj)
+{
+	auto it = t->GetCargoSupplied(GetCargoTypeByLabel(label));
+	if (it == std::end(t->supplied)) return 0;
+
+	return ClampTo<uint16_t>(std::invoke(proj, it->history[period]));
+}
+
 /* virtual */ uint32_t TownScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const
 {
 	if (this->t == nullptr) {
@@ -22,7 +31,6 @@
 		return UINT_MAX;
 	}
 
-	CargoType cargo_type;
 	switch (variable) {
 		/* Larger towns */
 		case 0x40:
@@ -87,22 +95,22 @@
 		case 0xB2: return this->t->statues.base();
 		case 0xB6: return ClampTo<uint16_t>(this->t->cache.num_houses);
 		case 0xB9: return this->t->growth_rate / Ticks::TOWN_GROWTH_TICKS;
-		case 0xBA: cargo_type = GetCargoTypeByLabel(CT_PASSENGERS); return IsValidCargoType(cargo_type) ? ClampTo<uint16_t>(this->t->supplied[cargo_type].new_max) : 0;
-		case 0xBB: cargo_type = GetCargoTypeByLabel(CT_PASSENGERS); return IsValidCargoType(cargo_type) ? GB(ClampTo<uint16_t>(this->t->supplied[cargo_type].new_max), 8, 8) : 0;
-		case 0xBC: cargo_type = GetCargoTypeByLabel(CT_MAIL); return IsValidCargoType(cargo_type) ? ClampTo<uint16_t>(this->t->supplied[cargo_type].new_max) : 0;
-		case 0xBD: cargo_type = GetCargoTypeByLabel(CT_MAIL); return IsValidCargoType(cargo_type) ? GB(ClampTo<uint16_t>(this->t->supplied[cargo_type].new_max), 8, 8) : 0;
-		case 0xBE: cargo_type = GetCargoTypeByLabel(CT_PASSENGERS); return IsValidCargoType(cargo_type) ? ClampTo<uint16_t>(this->t->supplied[cargo_type].new_act) : 0;
-		case 0xBF: cargo_type = GetCargoTypeByLabel(CT_PASSENGERS); return IsValidCargoType(cargo_type) ? GB(ClampTo<uint16_t>(this->t->supplied[cargo_type].new_act), 8, 8) : 0;
-		case 0xC0: cargo_type = GetCargoTypeByLabel(CT_MAIL); return IsValidCargoType(cargo_type) ? ClampTo<uint16_t>(this->t->supplied[cargo_type].new_act) : 0;
-		case 0xC1: cargo_type = GetCargoTypeByLabel(CT_MAIL); return IsValidCargoType(cargo_type) ? GB(ClampTo<uint16_t>(this->t->supplied[cargo_type].new_act), 8, 8) : 0;
-		case 0xC2: cargo_type = GetCargoTypeByLabel(CT_PASSENGERS); return IsValidCargoType(cargo_type) ? ClampTo<uint16_t>(this->t->supplied[cargo_type].old_max) : 0;
-		case 0xC3: cargo_type = GetCargoTypeByLabel(CT_PASSENGERS); return IsValidCargoType(cargo_type) ? GB(ClampTo<uint16_t>(this->t->supplied[cargo_type].old_max), 8, 8) : 0;
-		case 0xC4: cargo_type = GetCargoTypeByLabel(CT_MAIL); return IsValidCargoType(cargo_type) ? ClampTo<uint16_t>(this->t->supplied[cargo_type].old_max) : 0;
-		case 0xC5: cargo_type = GetCargoTypeByLabel(CT_MAIL); return IsValidCargoType(cargo_type) ? GB(ClampTo<uint16_t>(this->t->supplied[cargo_type].old_max), 8, 8) : 0;
-		case 0xC6: cargo_type = GetCargoTypeByLabel(CT_PASSENGERS); return IsValidCargoType(cargo_type) ? ClampTo<uint16_t>(this->t->supplied[cargo_type].old_act) : 0;
-		case 0xC7: cargo_type = GetCargoTypeByLabel(CT_PASSENGERS); return IsValidCargoType(cargo_type) ? GB(ClampTo<uint16_t>(this->t->supplied[cargo_type].old_act), 8, 8) : 0;
-		case 0xC8: cargo_type = GetCargoTypeByLabel(CT_MAIL); return IsValidCargoType(cargo_type) ? ClampTo<uint16_t>(this->t->supplied[cargo_type].old_act) : 0;
-		case 0xC9: cargo_type = GetCargoTypeByLabel(CT_MAIL); return IsValidCargoType(cargo_type) ? GB(ClampTo<uint16_t>(this->t->supplied[cargo_type].old_act), 8, 8) : 0;
+		case 0xBA: return TownHistoryHelper(this->t, CT_PASSENGERS, THIS_MONTH, &Town::SuppliedHistory::production);
+		case 0xBB: return TownHistoryHelper(this->t, CT_PASSENGERS, THIS_MONTH, &Town::SuppliedHistory::production) >> 8;
+		case 0xBC: return TownHistoryHelper(this->t, CT_MAIL, THIS_MONTH, &Town::SuppliedHistory::production);
+		case 0xBD: return TownHistoryHelper(this->t, CT_MAIL, THIS_MONTH, &Town::SuppliedHistory::production) >> 8;
+		case 0xBE: return TownHistoryHelper(this->t, CT_PASSENGERS, THIS_MONTH, &Town::SuppliedHistory::transported);
+		case 0xBF: return TownHistoryHelper(this->t, CT_PASSENGERS, THIS_MONTH, &Town::SuppliedHistory::transported) >> 8;
+		case 0xC0: return TownHistoryHelper(this->t, CT_MAIL, THIS_MONTH, &Town::SuppliedHistory::transported);
+		case 0xC1: return TownHistoryHelper(this->t, CT_MAIL, THIS_MONTH, &Town::SuppliedHistory::transported) >> 8;
+		case 0xC2: return TownHistoryHelper(this->t, CT_PASSENGERS, LAST_MONTH, &Town::SuppliedHistory::production);
+		case 0xC3: return TownHistoryHelper(this->t, CT_PASSENGERS, LAST_MONTH, &Town::SuppliedHistory::production) >> 8;
+		case 0xC4: return TownHistoryHelper(this->t, CT_MAIL, LAST_MONTH, &Town::SuppliedHistory::production);
+		case 0xC5: return TownHistoryHelper(this->t, CT_MAIL, LAST_MONTH, &Town::SuppliedHistory::production) >> 8;
+		case 0xC6: return TownHistoryHelper(this->t, CT_PASSENGERS, LAST_MONTH, &Town::SuppliedHistory::transported);
+		case 0xC7: return TownHistoryHelper(this->t, CT_PASSENGERS, LAST_MONTH, &Town::SuppliedHistory::transported) >> 8;
+		case 0xC8: return TownHistoryHelper(this->t, CT_MAIL, LAST_MONTH, &Town::SuppliedHistory::transported);
+		case 0xC9: return TownHistoryHelper(this->t, CT_MAIL, LAST_MONTH, &Town::SuppliedHistory::transported) >> 8;
 		case 0xCA: return this->t->GetPercentTransported(GetCargoTypeByLabel(CT_PASSENGERS));
 		case 0xCB: return this->t->GetPercentTransported(GetCargoTypeByLabel(CT_MAIL));
 		case 0xCC: return this->t->received[TAE_FOOD].new_act;
