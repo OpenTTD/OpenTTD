@@ -83,7 +83,7 @@ void AIInstance::Died()
 
 void AIInstance::LoadDummyScript()
 {
-	ScriptAllocatorScope alloc_scope(this->engine);
+	ScriptAllocatorScope alloc_scope(this->engine.get());
 	Script_CreateDummy(this->engine->GetVM(), STR_ERROR_AI_NO_AI_FOUND, "AI");
 }
 

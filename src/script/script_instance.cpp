@@ -50,8 +50,8 @@ static void PrintFunc(bool error_msg, std::string_view message)
 
 ScriptInstance::ScriptInstance(std::string_view api_name)
 {
-	this->storage = new ScriptStorage();
-	this->engine  = new Squirrel(api_name);
+	this->storage = std::make_unique<ScriptStorage>();
+	this->engine = std::make_unique<Squirrel>(api_name);
 	this->engine->SetPrintFunction(&PrintFunc);
 }
 
@@ -59,10 +59,10 @@ void ScriptInstance::Initialize(const std::string &main_script, const std::strin
 {
 	ScriptObject::ActiveInstance active(*this);
 
-	this->controller = new ScriptController(company);
+	this->controller = std::make_unique<ScriptController>(company);
 
 	/* Register the API functions and classes */
-	this->engine->SetGlobalPointer(this->engine);
+	this->engine->SetGlobalPointer(this->engine.get());
 	this->RegisterAPI();
 	if (this->IsDead()) {
 		/* Failed to register API; a message has already been logged. */
@@ -81,12 +81,11 @@ void ScriptInstance::Initialize(const std::string &main_script, const std::strin
 		}
 
 		/* Create the main-class */
-		this->instance = new SQObject();
-		if (!this->engine->CreateClassInstance(instance_name, this->controller, this->instance)) {
+		this->instance = std::make_unique<SQObject>();
+		if (!this->engine->CreateClassInstance(instance_name, this->controller.get(), this->instance.get())) {
 			/* If CreateClassInstance has returned false instance has not been
 			 * registered with squirrel, so avoid trying to Release it by clearing it now */
-			delete this->instance;
-			this->instance = nullptr;
+			this->instance.reset();
 			this->Died();
 			return;
 		}
@@ -158,11 +157,10 @@ ScriptInstance::~ScriptInstance()
 	ScriptObject::ActiveInstance active(*this);
 	this->in_shutdown = true;
 
-	if (instance != nullptr) this->engine->ReleaseObject(this->instance);
-	if (engine != nullptr) delete this->engine;
-	delete this->storage;
-	delete this->controller;
-	delete this->instance;
+	if (instance != nullptr) this->engine->ReleaseObject(this->instance.get());
+
+	/* Engine must be reset explicitly in scope of the active instance. */
+	this->engine.reset();
 }
 
 void ScriptInstance::Continue()
@@ -179,11 +177,9 @@ void ScriptInstance::Died()
 
 	this->last_allocated_memory = this->GetAllocatedMemory(); // Update cache
 
-	if (this->instance != nullptr) this->engine->ReleaseObject(this->instance);
-	delete this->instance;
-	delete this->engine;
-	this->instance = nullptr;
-	this->engine = nullptr;
+	if (this->instance != nullptr) this->engine->ReleaseObject(this->instance.get());
+	this->engine.reset();
+	this->instance.reset();
 }
 
 void ScriptInstance::GameLoop()
