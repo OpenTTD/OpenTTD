@@ -605,7 +605,7 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlags flags)
 			if (flags.Test(DoCommandFlag::Execute)) {
 				Town *town = o->town;
 				town->statues.Reset(GetTileOwner(tile));
-				SetWindowDirty(WC_TOWN_AUTHORITY, town->index);
+				SetWindowDirty(WC_TOWN_VIEW, town->index);
 			}
 			break;
 
@@ -888,7 +888,7 @@ static void ChangeTileOwner_Object(TileIndex tile, Owner old_owner, Owner new_ow
 			do_clear = true;
 		}
 
-		SetWindowDirty(WC_TOWN_AUTHORITY, t->index);
+		SetWindowDirty(WC_TOWN_VIEW, t->index);
 	} else {
 		do_clear = true;
 	}
