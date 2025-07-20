@@ -95,18 +95,18 @@ public:
 	 * @param video The destination pointer (video-buffer).
 	 * @param x The x position within video-buffer.
 	 * @param y The y position within video-buffer.
-	 * @param colour A 8bpp mapping colour.
+	 * @param colour A pixel colour.
 	 */
-	virtual void SetPixel(void *video, int x, int y, uint8_t colour) = 0;
+	virtual void SetPixel(void *video, int x, int y, PixelColour colour) = 0;
 
 	/**
 	 * Make a single horizontal line in a single colour on the video-buffer.
 	 * @param video The destination pointer (video-buffer).
 	 * @param width The length of the line.
 	 * @param height The height of the line.
-	 * @param colour A 8bpp mapping colour.
+	 * @param colour A pixel colour.
 	 */
-	virtual void DrawRect(void *video, int width, int height, uint8_t colour) = 0;
+	virtual void DrawRect(void *video, int width, int height, PixelColour colour) = 0;
 
 	/**
 	 * Draw a line with a given colour.
@@ -117,11 +117,11 @@ public:
 	 * @param y2 The y coordinate to where the lines goes.
 	 * @param screen_width The width of the screen you are drawing in (to avoid buffer-overflows).
 	 * @param screen_height The height of the screen you are drawing in (to avoid buffer-overflows).
-	 * @param colour A 8bpp mapping colour.
+	 * @param colour A pixel colour.
 	 * @param width Line width.
 	 * @param dash Length of dashes for dashed lines. 0 means solid line.
 	 */
-	virtual void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8_t colour, int width, int dash = 0) = 0;
+	virtual void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, PixelColour colour, int width, int dash = 0) = 0;
 
 	/**
 	 * Copy from a buffer to the screen.

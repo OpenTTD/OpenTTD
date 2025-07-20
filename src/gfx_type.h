@@ -245,7 +245,6 @@ using Colour = std::conditional_t<std::endian::native == std::endian::little, Co
 
 static_assert(sizeof(Colour) == sizeof(uint32_t));
 
-
 /** Available font sizes */
 enum FontSize : uint8_t {
 	FS_NORMAL, ///< Index of the normal font in the font tables.
@@ -402,5 +401,15 @@ enum StringAlignment : uint8_t {
 	SA_FORCE       = 1 << 4, ///< Force the alignment, i.e. don't swap for RTL languages.
 };
 DECLARE_ENUM_AS_BIT_SET(StringAlignment)
+
+/** Colour for pixel/line drawing. */
+struct PixelColour {
+	uint8_t p; ///< Palette index.
+
+	constexpr PixelColour() : p(0) {}
+	explicit constexpr PixelColour(uint8_t p) : p(p) {}
+
+	constexpr inline TextColour ToTextColour() const { return static_cast<TextColour>(this->p) | TC_IS_PALETTE_COLOUR; }
+};
 
 #endif /* GFX_TYPE_H */

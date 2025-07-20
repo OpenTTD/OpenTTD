@@ -97,11 +97,11 @@ static ChangeInfoResult CargoReserveInfo(uint first, uint last, int prop, ByteRe
 				break;
 
 			case 0x13: // Colour for station rating bars
-				cs->rating_colour = buf.ReadByte();
+				cs->rating_colour = PixelColour{buf.ReadByte()};
 				break;
 
 			case 0x14: // Colour for cargo graph
-				cs->legend_colour = buf.ReadByte();
+				cs->legend_colour = PixelColour{buf.ReadByte()};
 				break;
 
 			case 0x15: // Freight status

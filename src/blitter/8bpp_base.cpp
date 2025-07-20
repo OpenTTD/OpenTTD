@@ -29,23 +29,23 @@ void *Blitter_8bppBase::MoveTo(void *video, int x, int y)
 	return (uint8_t *)video + x + y * _screen.pitch;
 }
 
-void Blitter_8bppBase::SetPixel(void *video, int x, int y, uint8_t colour)
+void Blitter_8bppBase::SetPixel(void *video, int x, int y, PixelColour colour)
 {
-	*((uint8_t *)video + x + y * _screen.pitch) = colour;
+	*((uint8_t *)video + x + y * _screen.pitch) = colour.p;
 }
 
-void Blitter_8bppBase::DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8_t colour, int width, int dash)
+void Blitter_8bppBase::DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, PixelColour colour, int width, int dash)
 {
 	this->DrawLineGeneric(x, y, x2, y2, screen_width, screen_height, width, dash, [=](int x, int y) {
-		*((uint8_t *)video + x + y * _screen.pitch) = colour;
+		*((uint8_t *)video + x + y * _screen.pitch) = colour.p;
 	});
 }
 
-void Blitter_8bppBase::DrawRect(void *video, int width, int height, uint8_t colour)
+void Blitter_8bppBase::DrawRect(void *video, int width, int height, PixelColour colour)
 {
 	std::byte *p = static_cast<std::byte *>(video);
 	do {
-		std::fill_n(p, width, static_cast<std::byte>(colour));
+		std::fill_n(p, width, static_cast<std::byte>(colour.p));
 		p += _screen.pitch;
 	} while (--height);
 }

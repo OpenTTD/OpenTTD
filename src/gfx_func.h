@@ -103,11 +103,11 @@ bool DrawStringMultiLineWithClipping(int left, int right, int top, int bottom, s
 
 void DrawCharCentered(char32_t c, const Rect &r, TextColour colour);
 
-void GfxFillRect(int left, int top, int right, int bottom, int colour, FillRectMode mode = FILLRECT_OPAQUE);
-void GfxFillPolygon(std::span<const Point> shape, int colour, FillRectMode mode = FILLRECT_OPAQUE);
-void GfxDrawLine(int left, int top, int right, int bottom, int colour, int width = 1, int dash = 0);
+void GfxFillRect(int left, int top, int right, int bottom, const std::variant<PixelColour, PaletteID> &colour, FillRectMode mode = FILLRECT_OPAQUE);
+void GfxFillPolygon(std::span<const Point> shape, const std::variant<PixelColour, PaletteID> &colour, FillRectMode mode = FILLRECT_OPAQUE);
+void GfxDrawLine(int left, int top, int right, int bottom, PixelColour colour, int width = 1, int dash = 0);
 void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3);
-void DrawRectOutline(const Rect &r, int colour, int width = 1, int dash = 0);
+void DrawRectOutline(const Rect &r, PixelColour colour, int width = 1, int dash = 0);
 
 /* Versions of DrawString/DrawStringMultiLine that accept a Rect instead of separate left, right, top and bottom parameters. */
 inline int DrawString(const Rect &r, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FS_NORMAL)
@@ -135,7 +135,7 @@ inline bool DrawStringMultiLineWithClipping(const Rect &r, std::string_view str,
 	return DrawStringMultiLineWithClipping(r.left, r.right, r.top, r.bottom, str, colour, align, underline, fontsize);
 }
 
-inline void GfxFillRect(const Rect &r, int colour, FillRectMode mode = FILLRECT_OPAQUE)
+inline void GfxFillRect(const Rect &r, const std::variant<PixelColour, PaletteID> &colour, FillRectMode mode = FILLRECT_OPAQUE)
 {
 	GfxFillRect(r.left, r.top, r.right, r.bottom, colour, mode);
 }

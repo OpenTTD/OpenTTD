@@ -1986,8 +1986,8 @@ struct CargoesField {
 	static Dimension cargo_space;
 	static Dimension cargo_stub;
 
-	static const int INDUSTRY_LINE_COLOUR;
-	static const int CARGO_LINE_COLOUR;
+	static const PixelColour INDUSTRY_LINE_COLOUR;
+	static const PixelColour CARGO_LINE_COLOUR;
 
 	static int small_height, normal_height;
 	static int cargo_field_width;
@@ -2395,8 +2395,8 @@ int CargoesField::vert_inter_industry_space; ///< Amount of space between two in
 
 int CargoesField::blob_distance; ///< Distance of the industry legend colour from the edge of the industry box.
 
-const int CargoesField::INDUSTRY_LINE_COLOUR = PC_YELLOW; ///< Line colour of the industry type box.
-const int CargoesField::CARGO_LINE_COLOUR    = PC_YELLOW; ///< Line colour around the cargo.
+const PixelColour CargoesField::INDUSTRY_LINE_COLOUR = PC_YELLOW; ///< Line colour of the industry type box.
+const PixelColour CargoesField::CARGO_LINE_COLOUR    = PC_YELLOW; ///< Line colour around the cargo.
 
 /** A single row of #CargoesField. */
 struct CargoesRow {

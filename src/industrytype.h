@@ -119,7 +119,7 @@ struct IndustrySpec {
 	IndustryLifeTypes life_type;                 ///< This is also known as Industry production flag, in newgrf specs
 	LandscapeTypes climate_availability; ///< Bitmask, giving landscape enums as bit position
 	IndustryBehaviours behaviour;                ///< How this industry will behave, and how others entities can use it
-	uint8_t map_colour;                            ///< colour used for the small map
+	PixelColour map_colour; ///< colour used for the small map
 	StringID name;                              ///< Displayed name of the industry
 	StringID new_industry_text;                 ///< Message appearing when the industry is built
 	StringID closure_text;                      ///< Message appearing when the industry closes
