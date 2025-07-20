@@ -1629,6 +1629,7 @@ static CargoTypes GetProducedCargoOfHouse(const HouseSpec *hs)
 struct BuildHouseWindow : public PickerWindow {
 	std::string house_info{};
 	static inline bool house_protected;
+	static inline bool overbuild;
 
 	BuildHouseWindow(WindowDesc &desc, Window *parent) : PickerWindow(desc, parent, 0, HousePickerCallbacks::instance)
 	{
@@ -1743,6 +1744,14 @@ struct BuildHouseWindow : public PickerWindow {
 				this->SetDirty();
 				break;
 
+			case WID_BH_OVERBUILD_TOGGLE:
+				BuildHouseWindow::overbuild = !BuildHouseWindow::overbuild;
+				this->SetWidgetLoweredState(WID_BH_OVERBUILD_TOGGLE, BuildHouseWindow::overbuild);
+
+				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+				this->SetDirty();
+				break;
+
 			default:
 				this->PickerWindow::OnClick(pt, widget, click_count);
 				break;
@@ -1768,6 +1777,8 @@ struct BuildHouseWindow : public PickerWindow {
 
 		this->SetWidgetLoweredState(WID_BH_PROTECT_OFF, !BuildHouseWindow::house_protected);
 		this->SetWidgetLoweredState(WID_BH_PROTECT_ON, BuildHouseWindow::house_protected);
+		this->SetWidgetLoweredState(WID_BH_OVERBUILD_TOGGLE, BuildHouseWindow::overbuild);
+
 
 		this->SetWidgetDisabledState(WID_BH_PROTECT_OFF, hasflag);
 		this->SetWidgetDisabledState(WID_BH_PROTECT_ON, hasflag);
@@ -1776,7 +1787,7 @@ struct BuildHouseWindow : public PickerWindow {
 	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
 	{
 		const HouseSpec *spec = HouseSpec::Get(HousePickerCallbacks::sel_type);
-		Command<CMD_PLACE_HOUSE>::Post(STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index(), BuildHouseWindow::house_protected);
+		Command<CMD_PLACE_HOUSE>::Post(STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index(), BuildHouseWindow::house_protected, BuildHouseWindow::overbuild);
 	}
 
 	const IntervalTimer<TimerWindow> view_refresh_interval = {std::chrono::milliseconds(2500), [this](auto) {
@@ -1811,9 +1822,9 @@ static constexpr NWidgetPart _nested_build_house_widgets[] = {
 						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BH_PROTECT_OFF), SetMinimalSize(60, 12), SetStringTip(STR_HOUSE_PICKER_PROTECT_OFF, STR_HOUSE_PICKER_PROTECT_TOOLTIP),
 						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BH_PROTECT_ON), SetMinimalSize(60, 12), SetStringTip(STR_HOUSE_PICKER_PROTECT_ON, STR_HOUSE_PICKER_PROTECT_TOOLTIP),
 					EndContainer(),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BH_OVERBUILD_TOGGLE), SetMinimalSize(60, 12), SetStringTip(STR_HOUSE_PICKER_OVERBUILD, STR_HOUSE_PICKER_OVERBUILD_TOOLTIP),
 				EndContainer(),
 			EndContainer(),
-
 		EndContainer(),
 		NWidgetFunction(MakePickerTypeWidgets),
 	EndContainer(),
