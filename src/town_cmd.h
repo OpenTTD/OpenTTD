@@ -27,7 +27,7 @@ CommandCost CmdTownCargoGoal(DoCommandFlags flags, TownID town_id, TownAcceptanc
 CommandCost CmdTownSetText(DoCommandFlags flags, TownID town_id, const EncodedString &text);
 CommandCost CmdExpandTown(DoCommandFlags flags, TownID town_id, uint32_t grow_amount, TownExpandModes modes);
 CommandCost CmdDeleteTown(DoCommandFlags flags, TownID town_id);
-CommandCost CmdPlaceHouse(DoCommandFlags flags, TileIndex tile, HouseID house, bool house_protected);
+CommandCost CmdPlaceHouse(DoCommandFlags flags, TileIndex tile, HouseID house, bool house_protected, bool replace);
 
 DEF_CMD_TRAIT(CMD_FOUND_TOWN,       CmdFoundTown,      CommandFlags({CommandFlag::Deity, CommandFlag::NoTest}),  CommandType::LandscapeConstruction) // founding random town can fail only in exec run
 DEF_CMD_TRAIT(CMD_RENAME_TOWN,      CmdRenameTown,     CommandFlags({CommandFlag::Deity, CommandFlag::Server}),  CommandType::OtherManagement)

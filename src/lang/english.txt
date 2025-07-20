@@ -2885,6 +2885,9 @@ STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Choose whether 
 STR_HOUSE_PICKER_PROTECT_OFF                                    :Off
 STR_HOUSE_PICKER_PROTECT_ON                                     :On
 
+STR_HOUSE_PICKER_REPLACE                                        :Replace existing
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Choose whether to automatically remove an existing house on the tile where this house is placed
+
 STR_STATION_CLASS_DFLT                                          :Default
 STR_STATION_CLASS_DFLT_STATION                                  :Default station
 STR_STATION_CLASS_DFLT_ROADSTOP                                 :Default road stop
