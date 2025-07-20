@@ -580,10 +580,11 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 
 	const uint shadow_offset = ScaleGUITrad(1);
 
-	auto draw_line = [&](const ParagraphLayouter::Line &line, bool do_shadow, int left, int min_x, int max_x, bool truncation, TextColour &last_colour) {
+	auto draw_line = [&](const ParagraphLayouter::Line &line, bool do_shadow, int left, int min_x, int max_x, bool truncation, TextColour initial_colour) {
 		const DrawPixelInfo *dpi = _cur_dpi;
 		int dpi_left = dpi->left;
 		int dpi_right = dpi->left + dpi->width - 1;
+		TextColour last_colour = initial_colour;
 
 		for (int run_index = 0; run_index < line.CountRuns(); run_index++) {
 			const ParagraphLayouter::VisualRun &run = line.GetVisualRun(run_index);
@@ -593,13 +594,10 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 
 			FontCache *fc = f->fc;
 			TextColour colour = f->colour;
-			if (colour == TC_INVALID || HasFlag(last_colour, TC_FORCED)) {
-				colour = last_colour;
-			} else {
-				/* Update the last colour for the truncation ellipsis. */
-				last_colour = colour;
-			}
+			if (colour == TC_INVALID || HasFlag(initial_colour, TC_FORCED)) colour = initial_colour;
 			bool colour_has_shadow = (colour & TC_NO_SHADE) == 0 && colour != TC_BLACK;
+			/* Update the last colour for the truncation ellipsis. */
+			last_colour = colour;
 			if (do_shadow && (!fc->GetDrawGlyphShadow() || !colour_has_shadow)) continue;
 			SetColourRemap(do_shadow ? TC_BLACK : colour);
 
@@ -625,16 +623,16 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 				GfxMainBlitter(sprite, begin_x + (do_shadow ? shadow_offset : 0), top + (do_shadow ? shadow_offset : 0), BlitterMode::ColourRemap);
 			}
 		}
+		return last_colour;
 	};
 
 	/* Draw shadow, then foreground */
 	for (bool do_shadow : {true, false}) {
-		TextColour last_colour = default_colour;
-		draw_line(line, do_shadow, left - offset_x, min_x, max_x, truncation, last_colour);
+		TextColour colour = draw_line(line, do_shadow, left - offset_x, min_x, max_x, truncation, default_colour);
 
 		if (truncation) {
 			int x = (_current_text_dir == TD_RTL) ? left : (right - truncation_width);
-			draw_line(*truncation_layout->front(), do_shadow, x, INT32_MIN, INT32_MAX, false, last_colour);
+			draw_line(*truncation_layout->front(), do_shadow, x, INT32_MIN, INT32_MAX, false, colour);
 		}
 	}
 
