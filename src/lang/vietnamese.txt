@@ -627,7 +627,6 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Không h
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Bật/tắt đồ thị cho hàng hóa này
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
-STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Lịch Sử Sản Xuất
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Đã cung cấp
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Đã vận chuyển
 
@@ -3976,8 +3975,6 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Sản l�
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Sản lượng phút trước:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% đã vận chuyển)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Xem vị trí trung tâm của nhà máy. Ctrl+Click mở cửa sổ mới để xem
-STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}Biểu Đồ Sản Xuất
-STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Hiển thị biểu đồ lịch sử sản xuất của nhà máy
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Mức sản lượng: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Nhà máy này đã thông báo sắp đóng cửa!
 

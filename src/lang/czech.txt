@@ -720,7 +720,6 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Skryje v
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Zobrazit nebo skrýt graf pro určitý druh nákladu
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
-STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Historie produkce
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Vyprodukováno
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Přepraveno
 
@@ -4069,8 +4068,6 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produkce
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Produkce v minulé minutě:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% přepraveno)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Vystředit pohled na průmysl. Ctrl+Klik otevře nový pohled na umístění průmyslu
-STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}Graf výroby
-STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Zobrazí graf historie produkce průmyslu
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produkce: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Průmysl oznámila blížící se uzavření!
 

@@ -772,7 +772,6 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Скры
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Включить/отключить отображение груза на графике
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
-STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}График производительности: {INDUSTRY}
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Произведено
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Перевезено
 
@@ -4199,8 +4198,6 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Прои
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Произведено за минуту:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% перевезено)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Показать предприятие в основном окне. Ctrl+щелчок{NBSP}- показать в дополнительном окне.
-STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}График производительности
-STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Показать график производительности этого предприятия
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Производительность: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Предприятие скоро закрывается!
 

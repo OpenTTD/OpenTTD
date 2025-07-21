@@ -634,7 +634,6 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}在货�
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}切换显示货物
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
-STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - 产量历史
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :已生产
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :已运输
 
@@ -4024,8 +4023,6 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}上月�
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}上分钟产量：
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK}（已运输 {COMMA}%）
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}将屏幕中心移动到当前工业的位置。按住 <Ctrl> 键点选会在新视点中显示工业位置
-STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}产量图表
-STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}显示工业产量历史图表
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}生产等级：{YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}此工业已经宣布即刻停业倒闭！
 

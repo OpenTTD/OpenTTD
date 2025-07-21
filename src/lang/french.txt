@@ -634,7 +634,6 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}N'affich
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Afficher/Cacher le type de marchandise
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
-STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Historique de production
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Produit
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transporté
 
@@ -4002,8 +4001,6 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producti
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Production la minute précédente{NBSP}:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}{NBSP}% transporté{P "" s})
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrer la vue sur l'industrie. Ctrl-clic pour ouvrir une nouvelle vue sur l'industrie.
-STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}Graphe de production
-STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Affiche le graphe de l'historique de la production des industries
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Niveau de production{NBSP}: {YELLOW}{COMMA}{NBSP}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}L'industrie a annoncé sa fermeture imminente{NBSP}!
 

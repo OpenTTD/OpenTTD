@@ -770,7 +770,6 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Не п�
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Ввімк/вимик графік типів вантажу
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
-STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Історія виробництва
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Вироблено
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Перевезено
 
@@ -4150,8 +4149,6 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Виро
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Вироблено за минулу хвилину:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% перевезено)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Показати підприємство у центрі екрану. Ctrl+клац мишею відкриє нове вікно з видом на підприємство
-STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}Графік продуктивності
-STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Відобразити графік продуктивності підприємства
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Обсяг виробництва: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Підприємство оголосило про близьке закриття!
 

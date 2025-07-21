@@ -1013,7 +1013,6 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ukryj ws
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Przełącz ukrywanie/wyświetlanie wykresu danego typu ładunku
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
-STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Historia Produkcji
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Wyprodukowano
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Przetransportowano
 
@@ -4404,8 +4403,6 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Wyproduk
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Wyprodukowano w poprzedniej minucie:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% przetransportowano)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Wyśrodkuj widok główny na lokalizacji przedsiębiorstwa. Użyj Ctrl, aby otworzyć nowy podgląd na jego lokalizację
-STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}Wykres Produkcji
-STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Wyświetl wykres historii produkcji tego przedsiębiorstwa
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Poziom produkcji: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Przedsiębiorstwo ogłosiło likwidację!
 

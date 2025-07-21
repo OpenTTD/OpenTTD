@@ -635,7 +635,6 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}No mostr
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Mostra/amaga el tipus de càrrega al gràfic
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
-STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Historial de producció
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Produït
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportat
 
@@ -4025,8 +4024,6 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producci
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Producció durant l'últim minut:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}{NBSP}% transportat)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centra la vista principal al lloc de la indústria. Amb Ctrl+clic, s'obre una vista nova centrada al lloc on és la indústria.
-STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}Gràfic de producció
-STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Mostra el gràfic de l'evolució de la producció de la indústria.
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivell de producció: {YELLOW}{COMMA}{NBSP}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}La indústria ha anunciat la seva clausura imminent!
 

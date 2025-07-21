@@ -635,7 +635,6 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Non amos
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Amosar/ocultar gráfica para o tipo de carga
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
-STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Historial de produción
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Producido
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportado
 
@@ -4025,8 +4024,6 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produci�
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Producción no último minuto:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportado)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrar a vista principal na localización da industria. Ctrl+Clic abre unha nova fiestra na localización da industria
-STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}Gráfico de produción
-STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Amosa o gráfico co histórico de produción industrial
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivel de produción: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}A industria anunció un peche inminente
 

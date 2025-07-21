@@ -633,7 +633,6 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Peidio a
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Toglu'r graff ar gyfer y math llwyth yma
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
-STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Hanes Cynhyrchu
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Cynhyrchwyd
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Cludwyd
 
@@ -3994,8 +3993,6 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Cynnyrch
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Cynnyrch y munud olaf:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% wedi'i gludo)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Canoli'r brif olygfa ar y diwydiant. Ctrl+Clic i agor ffenest golwg newydd ar leoliad y diwydiant
-STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}Graff Cynhyrchiant
-STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Dangos graff o hanes cynhyrchu diwydiant
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Lefel cynhyrchu: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Mae'r diwydiant wedi datgan ei fod ar fin cau!
 
