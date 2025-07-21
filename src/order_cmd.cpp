@@ -1692,7 +1692,7 @@ void CheckOrders(const Vehicle *v)
 	if (_settings_client.gui.order_review_system == OrderReviewSystem::Off) return;
 
 	/* Ignore crashed vehicles. */
-	if (v->vehstatus.Test(VehState::Crashed)) return;
+	if (v->vehstatus.Any({VehState::Derailed, VehState::Crashed})) return;
 
 	/* Maybe ignore stopped vehicles. */
 	if (_settings_client.gui.order_review_system == OrderReviewSystem::ExcludeStopped && v->vehstatus.Test(VehState::Stopped)) return;

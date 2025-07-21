@@ -99,6 +99,8 @@ struct Train final : public GroundVehicle<Train, VehicleType::Train> {
 	uint16_t crash_anim_pos = 0; ///< Crash animation counter.
 	uint16_t wait_counter = 0; ///< Ticks waiting in front of a signal, ticks being stuck or a counter for forced proceeding through signals.
 
+	uint8_t when_next_derail_test = 0; ///< Counter for testing if train will derail.
+
 	TrainCache tcache{}; ///< Set of cached variables, recalculated on load and each time a vehicle is added to/removed from the consist.
 
 	/** Link between the two ends of a multiheaded engine. */
@@ -133,6 +135,7 @@ struct Train final : public GroundVehicle<Train, VehicleType::Train> {
 	void OnNewCalendarDay() override;
 	void OnNewEconomyDay() override;
 	uint Crash(bool flooded = false) override;
+	uint Derail() override;
 	Trackdir GetVehicleTrackdir() const override;
 	TileIndex GetOrderStationLocation(StationID station) override;
 	ClosestDepot FindClosestDepot() override;

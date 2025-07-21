@@ -249,6 +249,7 @@ enum class Commands : uint8_t {
 
 	MoveRailVehicle, ///< move a rail vehicle (in the depot)
 	ForceTrainProceed, ///< proceed a train to pass a red signal
+	ForceTrainDerail, ///< derail (debug tool)
 	ReverseTrainDirection, ///< turn a train around
 
 	ClearOrderBackup, ///< clear the order backup of a given user/tile

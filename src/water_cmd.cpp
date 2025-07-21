@@ -1068,7 +1068,7 @@ static void FloodVehicle(Vehicle *v)
  */
 static void FloodVehicleProc(Vehicle *v, int z)
 {
-	if (v->vehstatus.Test(VehState::Crashed)) return;
+	if (v->vehstatus.Any({VehState::Derailed, VehState::Crashed})) return;
 
 	switch (v->type) {
 		default: break;

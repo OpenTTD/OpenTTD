@@ -604,7 +604,7 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 			return t->IsFrontEngine() // Only the engines
 				&& Company::IsHumanID(t->owner) // Don't break AIs
 				&& IsPlainRailTile(t->tile) // No tunnels
-				&& !t->vehstatus.Test(VehState::Crashed); // Not crashed
+				&& !t->vehstatus.Any({VehState::Derailed, VehState::Crashed}); // Not crashed
 		};
 
 		uint n = 0; // Total number of targetable trains.

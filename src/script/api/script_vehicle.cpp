@@ -345,7 +345,7 @@
 	if (!IsPrimaryVehicle(vehicle_id)) return -1;
 
 	const ::Vehicle *v = ::Vehicle::Get(vehicle_id);
-	return !v->vehstatus.Any({::VehState::Stopped, ::VehState::Crashed}) ? v->GetDisplaySpeed() : 0; // km-ish/h
+	return !v->vehstatus.Any({::VehState::Stopped, ::VehState::Crashed}) ? v->GetDisplaySpeed() : 0; // km-ish/h  //::VehState::Derailed
 }
 
 /* static */ ScriptVehicle::VehicleState ScriptVehicle::GetState(VehicleID vehicle_id)
@@ -356,6 +356,7 @@
 	VehStates vehstatus = v->vehstatus;
 
 	if (vehstatus.Test(::VehState::Crashed)) return ScriptVehicle::VS_CRASHED;
+	if (vehstatus.Any({::VehState::Derailed, ::VehState::WillDerail})) return ScriptVehicle::VS_DERAILED;
 	if (v->breakdown_ctr != 0) return ScriptVehicle::VS_BROKEN;
 	if (v->IsStoppedInDepot()) return ScriptVehicle::VS_IN_DEPOT;
 	if (vehstatus.Test(::VehState::Stopped)) return ScriptVehicle::VS_STOPPED;

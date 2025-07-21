@@ -211,7 +211,7 @@ bool Vehicle::NeedsServicing() const
 {
 	/* Stopped or crashed vehicles will not move, as such making unmovable
 	 * vehicles to go for service is lame. */
-	if (this->vehstatus.Any({VehState::Stopped, VehState::Crashed})) return false;
+	if (this->vehstatus.Any({VehState::Stopped, VehState::Crashed, VehState::Derailed})) return false;
 
 	/* Are we ready for the next service cycle? */
 	const Company *c = Company::Get(this->owner);
@@ -299,7 +299,7 @@ bool Vehicle::NeedsAutomaticServicing() const
 
 uint Vehicle::Crash(bool)
 {
-	assert(!this->vehstatus.Test(VehState::Crashed));
+	assert(!this->vehstatus.Any({VehState::Derailed, VehState::Crashed}));
 	assert(this->Previous() == nullptr); // IsPrimaryVehicle fails for free-wagon-chains
 
 	uint pass = 0;
@@ -321,6 +321,35 @@ uint Vehicle::Crash(bool)
 
 	delete this->cargo_payment;
 	assert(this->cargo_payment == nullptr); // cleared by ~CargoPayment
+
+	return RandomRange(pass + 1); // Randomise deceased passengers.
+}
+
+uint Vehicle::Derail()
+{
+	assert(!this->vehstatus.Test(VehState::Derailed));
+	assert(this->Previous() == nullptr); // IsPrimaryVehicle fails for free-wagon-chains.
+
+	uint pass = 0;
+	/* Stop the vehicle. */
+	if (this->IsPrimaryVehicle()) this->vehstatus.Set(VehState::TrainSlowing);
+	if (this->IsPrimaryVehicle()) this->vehstatus.Reset(VehState::Stopped);
+	/* Crash all wagons, and count passengers. */
+	for (Vehicle *v = this; v != nullptr; v = v->Next()) {
+		/* We do not transfer reserver cargo back, so TotalCount() instead of StoredCount(). */
+		if (IsCargoInClass(v->cargo_type, CargoClass::Passengers)) pass += v->cargo.TotalCount();
+		v->vehstatus.Set(VehState::WillDerail);
+		v->MarkAllViewportsDirty();
+	}
+
+	/* Dirty some windows */
+	InvalidateWindowClassesData(GetWindowClassForVehicleType(this->type), 0);
+	SetWindowWidgetDirty(WindowClass::VehicleView, this->index, WID_VV_START_STOP);
+	SetWindowDirty(WindowClass::VehicleDetails, this->index);
+	SetWindowDirty(WindowClass::VehicleDepot, this->tile);
+
+	delete this->cargo_payment;
+	assert(this->cargo_payment == nullptr); // Cleared by ~CargoPayment.
 
 	return RandomRange(pass + 1); // Randomise deceased passengers.
 }
@@ -1027,6 +1056,9 @@ void CallVehicleTicks()
 				/* Do not play any sound when crashed */
 				if (front->vehstatus.Test(VehState::Crashed)) continue;
 
+				/* Do not play any sound when derailed */
+				if (front->vehstatus.Test(VehState::Derailed)) continue;
+
 				/* Do not play any sound when in depot or tunnel */
 				if (v->vehstatus.Test(VehState::Hidden)) continue;
 
@@ -1120,7 +1152,7 @@ static void DoDrawVehicle(const Vehicle *v)
 {
 	PaletteID pal = PAL_NONE;
 
-	if (v->vehstatus.Test(VehState::DefaultPalette)) pal = v->vehstatus.Test(VehState::Crashed) ? PALETTE_CRASH : GetVehiclePalette(v);
+	if (v->vehstatus.Test(VehState::DefaultPalette)) pal = v->vehstatus.Any({VehState::Crashed, VehState::Derailed}) ? PALETTE_CRASH : GetVehiclePalette(v);
 
 	/* Check whether the vehicle shall be transparent due to the game state */
 	bool shadowed = v->vehstatus.Test(VehState::Shadow);
@@ -1135,7 +1167,7 @@ static void DoDrawVehicle(const Vehicle *v)
 	StartSpriteCombine();
 	for (uint i = 0; i < v->sprite_cache.sprite_seq.count; ++i) {
 		PaletteID pal2 = v->sprite_cache.sprite_seq.seq[i].pal;
-		if (!pal2 || v->vehstatus.Test(VehState::Crashed)) pal2 = pal;
+		if (!pal2 || v->vehstatus.Any({VehState::Crashed, VehState::Derailed})) pal2 = pal;
 		AddSortableSpriteToDraw(v->sprite_cache.sprite_seq.seq[i].sprite, pal2, v->x_pos, v->y_pos, v->z_pos, v->bounds, shadowed);
 	}
 	EndSpriteCombine();
@@ -1468,8 +1500,8 @@ void AgeVehicle(Vehicle *v)
 	/* Don't warn if warnings are disabled */
 	if (!_settings_client.gui.old_vehicle_warn) return;
 
-	/* Don't warn about vehicles which are non-primary (e.g., part of an articulated vehicle), don't belong to us, are crashed, or are stopped */
-	if (v->Previous() != nullptr || v->owner != _local_company || v->vehstatus.Any({VehState::Crashed, VehState::Stopped})) return;
+	/* Don't warn about vehicles which are non-primary (e.g., part of an articulated vehicle), don't belong to us, are crashed, derailed, or stopped */
+	if (v->Previous() != nullptr || v->owner != _local_company || v->vehstatus.Any({VehState::Crashed, VehState::Derailed, VehState::Stopped})) return;
 
 	const Company *c = Company::Get(v->owner);
 	/* Don't warn if a renew is active */
@@ -2405,7 +2437,7 @@ void Vehicle::LeaveStation()
 	HideFillingPercent(&this->fill_percent_te_id);
 	trip_occupancy = CalcPercentVehicleFilled(this, nullptr);
 
-	if (this->type == VehicleType::Train && !this->vehstatus.Test(VehState::Crashed)) {
+	if (this->type == VehicleType::Train && !this->vehstatus.Any({VehState::Crashed, VehState::Derailed})) {
 		/* Trigger station animation (trains only) */
 		TileIndex tile = this->GetMovingFront()->tile;
 		if (IsTileType(tile, TileType::Station)) {
@@ -2415,6 +2447,7 @@ void Vehicle::LeaveStation()
 
 		Train::From(this)->flags.Set(VehicleRailFlag::LeavingStation);
 	}
+	/* Road vehicles can't derail. */
 	if (this->type == VehicleType::Road && !this->vehstatus.Test(VehState::Crashed)) {
 		/* Trigger road stop animation */
 		if (IsStationRoadStopTile(this->tile)) {
@@ -2548,7 +2581,7 @@ void Vehicle::LeaveUnbunchingDepot()
 	Vehicle *u = this->FirstShared();
 	for (; u != nullptr; u = u->NextShared()) {
 		/* Ignore vehicles that are manually stopped or crashed. */
-		if (u->vehstatus.Any({VehState::Stopped, VehState::Crashed})) continue;
+		if (u->vehstatus.Any({VehState::Stopped, VehState::Crashed, VehState::Derailed})) continue;
 
 		num_vehicles++;
 		total_travel_time += u->round_trip_time;
@@ -2565,7 +2598,7 @@ void Vehicle::LeaveUnbunchingDepot()
 	u = this->FirstShared();
 	for (; u != nullptr; u = u->NextShared()) {
 		/* Ignore vehicles that are manually stopped or crashed. */
-		if (u->vehstatus.Any({VehState::Stopped, VehState::Crashed})) continue;
+		if (u->vehstatus.Any({VehState::Stopped, VehState::Crashed, VehState::Derailed})) continue;
 
 		u->depot_unbunching_next_departure = next_departure;
 		InvalidateWindowData(WindowClass::VehicleView, u->index);
@@ -2603,7 +2636,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlags flags, DepotCommandFlags command
 	CommandCost ret = CheckOwnership(this->owner);
 	if (ret.Failed()) return ret;
 
-	if (this->vehstatus.Test(VehState::Crashed)) return CMD_ERROR;
+	if (this->vehstatus.Any({VehState::Crashed, VehState::Derailed})) return CMD_ERROR;
 	if (this->IsStoppedInDepot()) return CMD_ERROR;
 
 	/* No matter why we're headed to the depot, unbunching data is no longer valid. */

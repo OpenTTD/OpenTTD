@@ -80,7 +80,7 @@ void CheckTrainsLengths()
 	bool first = true;
 
 	for (const Train *v : Train::Iterate()) {
-		if (v->First() == v && !v->vehstatus.Test(VehState::Crashed)) {
+		if (v->First() == v && !v->vehstatus.Any({VehState::Derailed, VehState::Crashed})) {
 			for (const Train *u = v->GetMovingFront(), *w = v->GetMovingNext(); w != nullptr; u = w, w = w->GetMovingNext()) {
 				if (u->track != Track::Depot) {
 					if ((w->track != Track::Depot &&
@@ -641,7 +641,7 @@ static std::vector<VehicleID> GetFreeWagonsInDepot(TileIndex tile)
 
 	for (Vehicle *v : VehiclesOnTile(tile)) {
 		if (v->type != VehicleType::Train) continue;
-		if (v->vehstatus.Test(VehState::Crashed)) continue;
+		if (v->vehstatus.Any({VehState::Derailed, VehState::Crashed})) continue;
 		if (!Train::From(v)->IsFreeWagon()) continue;
 
 		free_wagons.push_back(v->index);
@@ -1263,7 +1263,7 @@ CommandCost CmdMoveRailVehicle(DoCommandFlags flags, VehicleID src_veh, VehicleI
 	if (ret.Failed()) return ret;
 
 	/* Do not allow moving crashed vehicles inside the depot, it is likely to cause asserts later */
-	if (src->vehstatus.Test(VehState::Crashed)) return CMD_ERROR;
+	if (src->vehstatus.Any({VehState::Derailed, VehState::Crashed})) return CMD_ERROR;
 
 	/* if nothing is selected as destination, try and find a matching vehicle to drag to. */
 	Train *dst;
@@ -1277,7 +1277,7 @@ CommandCost CmdMoveRailVehicle(DoCommandFlags flags, VehicleID src_veh, VehicleI
 		if (ret.Failed()) return ret;
 
 		/* Do not allow appending to crashed vehicles, too */
-		if (dst->vehstatus.Test(VehState::Crashed)) return CMD_ERROR;
+		if (dst->vehstatus.Any({VehState::Derailed, VehState::Crashed})) return CMD_ERROR;
 	}
 
 	/* if an articulated part is being handled, deal with its parent vehicle */
@@ -1755,7 +1755,7 @@ bool TrainOnCrossing(TileIndex tile)
  */
 static bool TrainApproachingCrossingEnum(const Vehicle *v, TileIndex tile)
 {
-	if (v->type != VehicleType::Train || v->vehstatus.Test(VehState::Crashed)) return false;
+	if (v->type != VehicleType::Train || v->vehstatus.Any({VehState::Derailed, VehState::Crashed})) return false;
 
 	const Train *t = Train::From(v);
 	if (!t->IsMovingFront()) return false;
@@ -2152,7 +2152,7 @@ CommandCost CmdReverseTrainDirection(DoCommandFlags flags, VehicleID veh_id, boo
 	} else {
 		/* turn the whole train around */
 		if (!v->IsPrimaryVehicle()) return CMD_ERROR;
-		if (v->vehstatus.Test(VehState::Crashed) || v->breakdown_ctr != 0) return CMD_ERROR;
+		if (v->vehstatus.Any({VehState::Derailed, VehState::Crashed}) || v->breakdown_ctr != 0) return CMD_ERROR;
 
 		if (flags.Test(DoCommandFlag::Execute)) {
 			/* Properly leave the station if we are loading and won't be loading anymore */
@@ -2236,6 +2236,32 @@ CommandCost CmdForceTrainProceed(DoCommandFlags flags, VehicleID veh_id)
 }
 
 /**
+ * Force a train to derail (debug tool).
+ * @param flags Type of operation.
+ * @param veh_id Train to derail.
+ * @return The cost of this operation or an error.
+ */
+CommandCost CmdForceTrainDerail(DoCommandFlags flags, VehicleID veh_id)
+{
+	Train *t = Train::GetIfValid(veh_id);
+	if (t == nullptr) return CMD_ERROR;
+
+	if (!t->IsPrimaryVehicle()) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(t->owner);
+	if (ret.Failed()) return ret;
+
+
+	if (flags.Test(DoCommandFlag::Execute)) {
+		if(!t->vehstatus.Any(VehState::Derailed))
+			t->Derail();
+		SetWindowDirty(WindowClass::VehicleView, t->index);
+	}
+
+	return CommandCost();
+}
+
+/**
  * Try to find a depot nearby.
  * @param v %Train that wants a depot.
  * @param max_distance Maximal search distance.
@@ -2244,7 +2270,7 @@ CommandCost CmdForceTrainProceed(DoCommandFlags flags, VehicleID veh_id)
  */
 static FindDepotData FindClosestTrainDepot(Train *v, int max_distance)
 {
-	assert(!v->vehstatus.Test(VehState::Crashed));
+	assert(!v->vehstatus.Any({VehState::Derailed, VehState::Crashed}));
 
 	return YapfTrainFindNearestDepot(v, max_distance);
 }
@@ -3066,14 +3092,42 @@ void Train::MarkDirty()
  */
 int Train::UpdateSpeed()
 {
+	int out = 0;
+
 	switch (_settings_game.vehicle.train_acceleration_model) {
 		default: NOT_REACHED();
 		case AccelerationModel::Original:
-			return this->DoUpdateSpeed(this->acceleration * (this->GetAccelerationStatus() == AS_BRAKE ? -4 : 2), 0, this->GetCurrentMaxSpeed());
+			out = this->DoUpdateSpeed(this->acceleration * (this->GetAccelerationStatus() == AS_BRAKE ? -4 : 2), 0, this->GetCurrentMaxSpeed());
+			break;
 
 		case AccelerationModel::Realistic:
-			return this->DoUpdateSpeed(this->GetAcceleration(), this->GetAccelerationStatus() == AS_BRAKE ? 0 : 2, this->GetCurrentMaxSpeed());
+			out = this->DoUpdateSpeed(this->GetAcceleration(), this->GetAccelerationStatus() == AS_BRAKE ? 0 : 2, this->GetCurrentMaxSpeed());
+			break;
 	}
+
+	if (this->vehstatus.Any({VehState::Derailed, VehState::Crashed})) {
+		return out;
+	}
+
+	this->when_next_derail_test -= 1;
+
+	int last_speed = this->gcache.last_speed;
+
+	if (last_speed > 50 && !this->when_next_derail_test) {
+		int is_slowing_down = 1 + (this->cur_speed < last_speed)*3;
+		int over_speed_limit = last_speed-50;
+
+		int probability = (over_speed_limit*over_speed_limit/100+1) * is_slowing_down * 2;
+
+		if(RandomRange(0b1111111111111111) < (0b1111111111111111 & (probability))) {
+			int num_victims = this->Derail();
+			AddTileNewsItem(GetEncodedString(STR_NEWS_TRAIN_CRASH, num_victims), NewsType::Accident, this->tile);
+			this->ReserveTrackUnderConsist();
+		}
+		this->when_next_derail_test = RandomRange(0xFFFFFFFF);
+	}
+
+	return out;
 }
 
 /**
@@ -3198,6 +3252,7 @@ uint Train::Crash(bool flooded)
 {
 	uint victims = 0;
 	if (this->IsFrontEngine()) {
+		if (this->vehstatus.Test(VehState::Derailed)) return 0;
 		victims += 2; // driver
 
 		/* Remove the reserved path in front of the train if it is not stuck.
@@ -3228,6 +3283,44 @@ uint Train::Crash(bool flooded)
 }
 
 /**
+ * The train vehicle derailed!
+ * Update its status and other parts around it.
+ * @return Number of people killed.
+ */
+uint Train::Derail()
+{
+	uint victims = 0;
+	if (this->IsFrontEngine()) {
+		if (this->vehstatus.Any({VehState::Crashed, VehState::WillDerail})) return 0; // Can't derail right now.
+		victims += 1; // driver
+
+		/* Remove the reserved path in front of the train if it is not stuck.
+		 * Also clear all reserved tracks the train is currently on. */
+		if (!this->flags.Test(VehicleRailFlag::Stuck)) FreeTrainTrackReservation(this);
+		for (const Train *v = this; v != nullptr; v = v->Next()) {
+			ClearPathReservation(v, v->tile, v->GetVehicleTrackdir());
+			if (IsTileType(v->tile, TileType::TunnelBridge)) {
+				/* ClearPathReservation will not free the wormhole exit
+				 * if the train has just entered the wormhole. */
+				SetTunnelBridgeReservation(GetOtherTunnelBridgeEnd(v->tile), false);
+			}
+		}
+
+		/* we may need to update crossing we were approaching,
+		 * but must be updated after the train has been marked crashed */
+		TileIndex crossing = TrainApproachingCrossingTile(this->GetMovingFront());
+		if (crossing != INVALID_TILE) UpdateLevelCrossing(crossing);
+
+		/* Remove the loading indicators (if any) */
+		HideFillingPercent(&this->fill_percent_te_id);
+	}
+
+	victims += this->GroundVehicleBase::Derail();
+
+	return victims;
+}
+
+/**
  * Marks train as crashed and creates an AI event.
  * Doesn't do anything if the train is crashed already.
  * @param v first vehicle of chain
@@ -3238,7 +3331,7 @@ static uint TrainCrashed(Train *v)
 	uint victims = 0;
 
 	/* do not crash train twice */
-	if (!v->vehstatus.Test(VehState::Crashed)) {
+	if (!v->vehstatus.Any({VehState::Derailed, VehState::Crashed})) {
 		victims = v->Crash();
 		TileIndex tile = v->GetMovingFront()->tile;
 		AI::NewEvent(v->owner, new ScriptEventVehicleCrashed(v->index, tile, ScriptEventVehicleCrashed::CRASH_TRAIN, victims, v->owner));
@@ -3454,7 +3547,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 
 								/* check if a train is waiting on the other side */
 								if (!HasVehicleOnTile(o_tile, [&exitdir](const Vehicle *u) {
-										if (u->type != VehicleType::Train || u->vehstatus.Test(VehState::Crashed)) return false;
+										if (u->type != VehicleType::Train || u->vehstatus.Any({VehState::Crashed, VehState::Derailed})) return false;
 										const Train *t = Train::From(u);
 
 										/* not front engine of a train, inside wormhole or depot, crashed */
@@ -3719,7 +3812,7 @@ static void DeleteLastWagon(Train *v)
 		/* If there are still crashed vehicles on the tile, give the track reservation to them */
 		TrackBits remaining_trackbits{};
 		for (const Vehicle *u : VehiclesOnTile(tile)) {
-			if (u->type != VehicleType::Train || !u->vehstatus.Test(VehState::Crashed)) continue;
+			if (u->type != VehicleType::Train || !u->vehstatus.Any({VehState::Derailed, VehState::Crashed})) continue;
 			TrackBits train_tbits = Train::From(u)->track;
 			if (train_tbits == Track::Wormhole) {
 				/* Vehicle is inside a wormhole, u->track contains no useful value then. */
@@ -3812,6 +3905,24 @@ static bool HandleCrashedTrain(Train *v)
 	}
 
 	if (state <= 240 && !(v->tick_counter & 3)) ChangeTrainDirRandomly(v);
+
+	if (state >= 4440 && !(v->tick_counter & 0x1F)) {
+		bool ret = v->Next() != nullptr;
+		DeleteLastWagon(v);
+		return ret;
+	}
+
+	return true;
+}
+
+/**
+ * Handle a derailed train.
+ * @param v First train vehicle.
+ * @return %Vehicle chain still exists.
+ */
+static bool HandleDerailedTrain(Train *v)
+{
+	int state = ++v->crash_anim_pos;
 
 	if (state >= 4440 && !(v->tick_counter & 0x1F)) {
 		bool ret = v->Next() != nullptr;
@@ -3919,7 +4030,7 @@ static bool TrainCanLeaveTile(const Train *moving_front)
 static TileIndex TrainApproachingCrossingTile(const Train *moving_front)
 {
 	assert(moving_front->IsMovingFront());
-	assert(!moving_front->First()->vehstatus.Test(VehState::Crashed));
+	assert(!moving_front->First()->vehstatus.Any({VehState::Crashed, VehState::Derailed}));
 
 	if (!TrainCanLeaveTile(moving_front)) return INVALID_TILE;
 
@@ -4005,6 +4116,11 @@ static bool TrainLocoHandler(Train *consist, bool mode)
 	/* train has crashed? */
 	if (consist->vehstatus.Test(VehState::Crashed)) {
 		return mode ? true : HandleCrashedTrain(consist); // 'this' can be deleted here
+	}
+
+	/* Has train derailed? */
+	if (consist->vehstatus.Test(VehState::Derailed)) {
+		return mode ? true : HandleDerailedTrain(consist); // 'this' can be deleted here.
 	}
 
 	if (consist->force_proceed != TFP_NONE) {
@@ -4186,7 +4302,7 @@ bool Train::Tick()
 		if (!TrainLocoHandler(this, false)) return false;
 
 		return TrainLocoHandler(this, true);
-	} else if (this->IsFreeWagon() && this->vehstatus.Test(VehState::Crashed)) {
+	} else if (this->IsFreeWagon() && this->vehstatus.Any({VehState::Derailed, VehState::Crashed})) {
 		/* Delete flooded standalone wagon chain */
 		if (++this->crash_anim_pos >= 4400) {
 			delete this;
@@ -4285,7 +4401,7 @@ void Train::OnNewEconomyDay()
  */
 Trackdir Train::GetVehicleTrackdir() const
 {
-	if (this->vehstatus.Test(VehState::Crashed)) return Trackdir::Invalid;
+	if (this->vehstatus.Any({VehState::Derailed, VehState::Crashed})) return Trackdir::Invalid;
 
 	if (this->track == Track::Depot) {
 		/* We'll assume the train is facing outwards */

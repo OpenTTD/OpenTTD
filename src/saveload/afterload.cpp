@@ -2552,7 +2552,7 @@ bool AfterLoadGame()
 				UpdateAircraftCache(v);
 				AircraftNextAirportPos_and_Order(v);
 				/* get aircraft back on running altitude */
-				if (!v->vehstatus.Test(VehState::Crashed)) {
+				if (!v->vehstatus.Any({VehState::Derailed, VehState::Crashed})) {
 					GetAircraftFlightLevelBounds(v, &v->z_pos, nullptr);
 					SetAircraftPosition(v, v->x_pos, v->y_pos, GetAircraftFlightLevel(v));
 				}
@@ -2754,7 +2754,7 @@ bool AfterLoadGame()
 					t->gv_flags.Reset({GroundVehicleFlag::GoingUp, GroundVehicleFlag::GoingDown});
 
 					/* Crashed vehicles can't be going up/down. */
-					if (t->vehstatus.Test(VehState::Crashed)) break;
+					if (t->vehstatus.Any({VehState::Derailed, VehState::Crashed})) break;
 
 					/* Only X/Y tracks can be sloped. */
 					if (t->track != Track::X && t->track != Track::Y) break;
@@ -2767,7 +2767,7 @@ bool AfterLoadGame()
 					rv->gv_flags.Reset({GroundVehicleFlag::GoingUp, GroundVehicleFlag::GoingDown});
 
 					/* Crashed vehicles can't be going up/down. */
-					if (rv->vehstatus.Test(VehState::Crashed)) break;
+					if (rv->vehstatus.Any({VehState::Derailed, VehState::Crashed})) break;
 
 					if (rv->state == RVSB_IN_DEPOT || rv->state == RVSB_WORMHOLE) break;
 
@@ -3305,7 +3305,7 @@ bool AfterLoadGame()
 			if (rv->cur_speed > 0) continue;
 
 			/* Ignore crashed vehicles. */
-			if (rv->vehstatus.Test(VehState::Crashed)) continue;
+			if (rv->vehstatus.Any({VehState::Derailed, VehState::Crashed})) continue;
 
 			/* Ignore vehicles not on level crossings. */
 			TileIndex cur_tile = rv->tile;

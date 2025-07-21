@@ -104,6 +104,19 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	}
 
 	/**
+	 * Common code executed for derailed ground vehicles.
+	 * @return Number of victims.
+	 */
+	uint Derail() override
+	{
+		/* Derailed vehicles aren't going up or down. */
+		for (T *v = T::From(this); v != nullptr; v = v->Next()) {
+			v->gv_flags.Reset({GroundVehicleFlag::GoingUp, GroundVehicleFlag::GoingDown});
+		}
+		return this->Vehicle::Derail();
+	}
+
+	/**
 	 * Calculates the total slope resistance for this vehicle.
 	 * @return Slope resistance.
 	 */
