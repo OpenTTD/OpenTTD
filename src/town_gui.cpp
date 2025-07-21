@@ -1734,11 +1734,9 @@ struct BuildHouseWindow : public PickerWindow {
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
-			case WID_BH_PROTECT_OFF:
-			case WID_BH_PROTECT_ON:
-				BuildHouseWindow::house_protected = (widget == WID_BH_PROTECT_ON);
-				this->SetWidgetLoweredState(WID_BH_PROTECT_OFF, !BuildHouseWindow::house_protected);
-				this->SetWidgetLoweredState(WID_BH_PROTECT_ON, BuildHouseWindow::house_protected);
+			case WID_BH_PROTECT_TOGGLE:
+				BuildHouseWindow::house_protected = !BuildHouseWindow::house_protected;
+				this->SetWidgetLoweredState(WID_BH_PROTECT_TOGGLE, BuildHouseWindow::house_protected);
 
 				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
@@ -1775,13 +1773,10 @@ struct BuildHouseWindow : public PickerWindow {
 		bool hasflag = spec->extra_flags.Test(HouseExtraFlag::BuildingIsProtected);
 		if (hasflag) BuildHouseWindow::house_protected = true;
 
-		this->SetWidgetLoweredState(WID_BH_PROTECT_OFF, !BuildHouseWindow::house_protected);
-		this->SetWidgetLoweredState(WID_BH_PROTECT_ON, BuildHouseWindow::house_protected);
+		this->SetWidgetLoweredState(WID_BH_PROTECT_TOGGLE, BuildHouseWindow::house_protected);
 		this->SetWidgetLoweredState(WID_BH_OVERBUILD_TOGGLE, BuildHouseWindow::overbuild);
 
-
-		this->SetWidgetDisabledState(WID_BH_PROTECT_OFF, hasflag);
-		this->SetWidgetDisabledState(WID_BH_PROTECT_ON, hasflag);
+		this->SetWidgetDisabledState(WID_BH_PROTECT_TOGGLE, hasflag);
 	}
 
 	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
@@ -1817,11 +1812,7 @@ static constexpr NWidgetPart _nested_build_house_widgets[] = {
 			NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
 				NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_picker, 0), SetPadding(WidgetDimensions::unscaled.picker),
 					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_BH_INFO), SetFill(1, 1), SetMinimalTextLines(10, 0),
-					NWidget(WWT_LABEL, INVALID_COLOUR), SetStringTip(STR_HOUSE_PICKER_PROTECT_TITLE, STR_NULL), SetFill(1, 0),
-					NWidget(NWID_HORIZONTAL), SetPIPRatio(1, 0, 1),
-						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BH_PROTECT_OFF), SetMinimalSize(60, 12), SetStringTip(STR_HOUSE_PICKER_PROTECT_OFF, STR_HOUSE_PICKER_PROTECT_TOOLTIP),
-						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BH_PROTECT_ON), SetMinimalSize(60, 12), SetStringTip(STR_HOUSE_PICKER_PROTECT_ON, STR_HOUSE_PICKER_PROTECT_TOOLTIP),
-					EndContainer(),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BH_PROTECT_TOGGLE), SetMinimalSize(60, 12), SetStringTip(STR_HOUSE_PICKER_PROTECT, STR_HOUSE_PICKER_PROTECT_TOOLTIP),
 					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BH_OVERBUILD_TOGGLE), SetMinimalSize(60, 12), SetStringTip(STR_HOUSE_PICKER_OVERBUILD, STR_HOUSE_PICKER_OVERBUILD_TOOLTIP),
 				EndContainer(),
 			EndContainer(),
