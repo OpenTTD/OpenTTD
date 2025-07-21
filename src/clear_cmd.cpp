@@ -69,36 +69,45 @@ static void DrawClearLandFence(const TileInfo *ti)
 	/* combine fences into one sprite object */
 	StartSpriteCombine();
 
-	int maxz = GetSlopeMaxPixelZ(ti->tileh);
+	SpriteBounds bounds{{}, {TILE_SIZE, TILE_SIZE, 4}, {}};
+
+	bounds.extent.z += GetSlopeMaxPixelZ(ti->tileh);
 
 	uint fence_nw = GetFence(ti->tile, DIAGDIR_NW);
 	if (fence_nw != 0) {
-		int z = GetSlopePixelZInCorner(ti->tileh, CORNER_W);
+		bounds.offset.x = 0;
+		bounds.offset.y = -static_cast<int>(TILE_SIZE);
+		bounds.offset.z = GetSlopePixelZInCorner(ti->tileh, CORNER_W);
 		SpriteID sprite = _clear_land_fence_sprites[fence_nw - 1] + _fence_mod_by_tileh_nw[ti->tileh];
-		AddSortableSpriteToDraw(sprite, PAL_NONE, ti->x, ti->y - 16, 16, 32, maxz - z + 4, ti->z + z, false, 0, 16, -z);
+		AddSortableSpriteToDraw(sprite, PAL_NONE, *ti, bounds, false);
 	}
 
 	uint fence_ne = GetFence(ti->tile, DIAGDIR_NE);
 	if (fence_ne != 0) {
-		int z = GetSlopePixelZInCorner(ti->tileh, CORNER_E);
+		bounds.offset.x = -static_cast<int>(TILE_SIZE);
+		bounds.offset.y = 0;
+		bounds.offset.z = GetSlopePixelZInCorner(ti->tileh, CORNER_E);
 		SpriteID sprite = _clear_land_fence_sprites[fence_ne - 1] + _fence_mod_by_tileh_ne[ti->tileh];
-		AddSortableSpriteToDraw(sprite, PAL_NONE, ti->x - 16, ti->y, 32, 16, maxz - z + 4, ti->z + z, false, 16, 0, -z);
+		AddSortableSpriteToDraw(sprite, PAL_NONE, *ti, bounds, false);
 	}
 
 	uint fence_sw = GetFence(ti->tile, DIAGDIR_SW);
 	uint fence_se = GetFence(ti->tile, DIAGDIR_SE);
 
 	if (fence_sw != 0 || fence_se != 0) {
-		int z = GetSlopePixelZInCorner(ti->tileh, CORNER_S);
+		bounds.offset.x = 0;
+		bounds.offset.y = 0;
+		bounds.offset.z = GetSlopePixelZInCorner(ti->tileh, CORNER_S);
 
 		if (fence_sw != 0) {
 			SpriteID sprite = _clear_land_fence_sprites[fence_sw - 1] + _fence_mod_by_tileh_sw[ti->tileh];
-			AddSortableSpriteToDraw(sprite, PAL_NONE, ti->x, ti->y, 16, 16, maxz - z + 4, ti->z + z, false, 0, 0, -z);
+			AddSortableSpriteToDraw(sprite, PAL_NONE, *ti, bounds, false);
 		}
 
 		if (fence_se != 0) {
 			SpriteID sprite = _clear_land_fence_sprites[fence_se - 1] + _fence_mod_by_tileh_se[ti->tileh];
-			AddSortableSpriteToDraw(sprite, PAL_NONE, ti->x, ti->y, 16, 16, maxz - z + 4, ti->z + z, false, 0, 0, -z);
+			AddSortableSpriteToDraw(sprite, PAL_NONE, *ti, bounds, false);
+
 		}
 	}
 	EndSpriteCombine();

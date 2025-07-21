@@ -10,6 +10,7 @@
 #ifndef VEHICLE_BASE_H
 #define VEHICLE_BASE_H
 
+#include "sprite.h"
 #include "track_type.h"
 #include "command_type.h"
 #include "order_base.h"
@@ -293,13 +294,7 @@ public:
 	 * 0xff == reserved for another custom sprite
 	 */
 	uint8_t spritenum = 0;
-	uint8_t x_extent = 0; ///< x-extent of vehicle bounding box
-	uint8_t y_extent = 0; ///< y-extent of vehicle bounding box
-	uint8_t z_extent = 0; ///< z-extent of vehicle bounding box
-	int8_t x_bb_offs = 0; ///< x offset of vehicle bounding box
-	int8_t y_bb_offs = 0; ///< y offset of vehicle bounding box
-	int8_t x_offs = 0; ///< x offset for vehicle sprite
-	int8_t y_offs = 0; ///< y offset for vehicle sprite
+	SpriteBounds bounds{}; ///< Bounding box of vehicle.
 	EngineID engine_type = EngineID::Invalid(); ///< The type of engine used for this vehicle.
 
 	TextEffectID fill_percent_te_id = INVALID_TE_ID; ///< a text-effect id to a loading indicator object

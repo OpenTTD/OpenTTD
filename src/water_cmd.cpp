@@ -806,11 +806,7 @@ static void DrawWaterTileStruct(const TileInfo *ti, std::span<const DrawTileSeqS
 	for (const DrawTileSeqStruct &dtss : seq) {
 		uint tile_offs = offset + dtss.image.sprite;
 		if (feature < CF_END) tile_offs = GetCanalSpriteOffset(feature, ti->tile, tile_offs);
-		AddSortableSpriteToDraw(base + tile_offs, palette,
-			ti->x + dtss.delta_x, ti->y + dtss.delta_y,
-			dtss.size_x, dtss.size_y,
-			dtss.size_z, ti->z + dtss.delta_z,
-			IsTransparencySet(TO_BUILDINGS));
+		AddSortableSpriteToDraw(base + tile_offs, palette, *ti, dtss, IsTransparencySet(TO_BUILDINGS));
 	}
 }
 

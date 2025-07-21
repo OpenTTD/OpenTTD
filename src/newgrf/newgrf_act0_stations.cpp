@@ -90,12 +90,12 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 
 						/* no relative bounding box support */
 						DrawTileSeqStruct &dtss = tmp_layout.emplace_back();
-						dtss.delta_x = delta_x;
-						dtss.delta_y = buf.ReadByte();
-						dtss.delta_z = buf.ReadByte();
-						dtss.size_x = buf.ReadByte();
-						dtss.size_y = buf.ReadByte();
-						dtss.size_z = buf.ReadByte();
+						dtss.origin.x = delta_x;
+						dtss.origin.y = buf.ReadByte();
+						dtss.origin.z = buf.ReadByte();
+						dtss.extent.x = buf.ReadByte();
+						dtss.extent.y = buf.ReadByte();
+						dtss.extent.z = buf.ReadByte();
 
 						ReadSpriteLayoutSprite(buf, false, true, false, GSF_STATIONS, &dtss.image);
 						/* On error, bail out immediately. Temporary GRF data was already freed */
