@@ -471,7 +471,7 @@ static constexpr NWidgetPart _nested_build_dock_station_widgets[] = {
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BDSW_BACKGROUND),
 		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0), SetPadding(WidgetDimensions::unscaled.picker),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, BDSW_ACCEPTANCE), SetResize(0, 1), SetMinimalTextLines(2, WidgetDimensions::unscaled.vsep_normal),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, BDSW_ACCEPTANCE), SetResize(0, 1), SetMinimalTextLines(2, WidgetDimensions::unscaled.vsep_normal), SetMinimalSize(150, 0),
 		EndContainer(),
 	EndContainer(),
 };
