@@ -1148,7 +1148,7 @@ struct GameOptionsWindow : Window {
 				int selected;
 				DropDownList list = this->BuildDropDownList(widget, &selected);
 				if (!list.empty()) {
-					ShowDropDownList(this, std::move(list), selected, widget);
+					this->HandleDropdownListButtonClick(std::move(list), selected, widget);
 				} else {
 					if (widget == WID_GO_RESOLUTION_DROPDOWN) ShowErrorMessage(GetEncodedString(STR_ERROR_RESOLUTION_LIST_FAILED), {}, WL_ERROR);
 				}
@@ -1180,7 +1180,7 @@ struct GameOptionsWindow : Window {
 				int selected;
 				DropDownList list = this->BuildDropDownList(widget, &selected);
 				if (!list.empty()) {
-					ShowDropDownList(this, std::move(list), this->filter.mode, widget);
+					this->HandleDropdownListButtonClick(std::move(list), this->filter.mode, widget);
 				}
 				break;
 			}
@@ -1189,7 +1189,7 @@ struct GameOptionsWindow : Window {
 				int selected;
 				DropDownList list = this->BuildDropDownList(widget, &selected);
 				if (!list.empty()) {
-					ShowDropDownList(this, std::move(list), this->filter.type, widget);
+					this->HandleDropdownListButtonClick(std::move(list), this->filter.type, widget);
 				}
 				break;
 			}

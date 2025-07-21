@@ -493,7 +493,7 @@ public:
 	{
 		switch (widget) {
 			case WID_AP_CLASS_DROPDOWN:
-				ShowDropDownList(this, BuildAirportClassDropDown(), _selected_airport_class, WID_AP_CLASS_DROPDOWN);
+				this->HandleDropdownListButtonClick(BuildAirportClassDropDown(), _selected_airport_class, WID_AP_CLASS_DROPDOWN);
 				break;
 
 			case WID_AP_AIRPORT_LIST: {

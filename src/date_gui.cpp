@@ -96,7 +96,7 @@ struct SetDateWindow : Window {
 				break;
 		}
 
-		ShowDropDownList(this, std::move(list), selected, widget);
+		this->HandleDropdownListButtonClick(std::move(list), selected, widget);
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override

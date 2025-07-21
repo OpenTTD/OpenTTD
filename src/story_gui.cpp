@@ -805,7 +805,7 @@ public:
 						selected++;
 					}
 
-					ShowDropDownList(this, std::move(list), selected, widget);
+					this->HandleDropdownListButtonClick(std::move(list), selected, widget);
 				}
 				break;
 			}

@@ -20,6 +20,7 @@
 #include "table/strings.h"
 
 #include "safeguards.h"
+#include "window_gui.h"
 
 
 /* == BaseSettingEntry methods == */

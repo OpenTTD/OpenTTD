@@ -937,7 +937,7 @@ public:
 				break;
 
 			case WID_TD_SORT_CRITERIA: // Click on sort criteria dropdown
-				ShowDropDownMenu(this, TownDirectoryWindow::sorter_names, this->towns.SortType(), WID_TD_SORT_CRITERIA, 0, 0);
+				this->HandleDropdownMenuButtonClick(TownDirectoryWindow::sorter_names, this->towns.SortType(), WID_TD_SORT_CRITERIA, 0, 0);
 				break;
 
 			case WID_TD_LIST: { // Click on Town Matrix
