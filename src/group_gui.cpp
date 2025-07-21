@@ -700,15 +700,15 @@ public:
 				break;
 
 			case WID_GL_GROUP_BY_DROPDOWN: // Select grouping option dropdown menu
-				ShowDropDownMenu(this, this->vehicle_group_by_names, this->grouping, WID_GL_GROUP_BY_DROPDOWN, 0, 0);
+				this->HandleDropdownMenuButtonClick(this->vehicle_group_by_names, this->grouping, WID_GL_GROUP_BY_DROPDOWN, 0, 0);
 				return;
 
 			case WID_GL_SORT_BY_DROPDOWN: // Select sorting criteria dropdown menu
-				ShowDropDownMenu(this, this->GetVehicleSorterNames(), this->vehgroups.SortType(),  WID_GL_SORT_BY_DROPDOWN, 0, (this->vli.vtype == VEH_TRAIN || this->vli.vtype == VEH_ROAD) ? 0 : (1 << 10));
+				this->HandleDropdownMenuButtonClick(this->GetVehicleSorterNames(), this->vehgroups.SortType(),  WID_GL_SORT_BY_DROPDOWN, 0, (this->vli.vtype == VEH_TRAIN || this->vli.vtype == VEH_ROAD) ? 0 : (1 << 10));
 				return;
 
 			case WID_GL_FILTER_BY_CARGO: // Select filtering criteria dropdown menu
-				ShowDropDownList(this, this->BuildCargoDropDownList(false), this->cargo_filter_criteria, widget);
+				this->HandleDropdownListButtonClick(this->BuildCargoDropDownList(false), this->cargo_filter_criteria, widget);
 				break;
 
 			case WID_GL_ALL_VEHICLES: // All vehicles button
@@ -849,7 +849,7 @@ public:
 				break;
 
 			case WID_GL_MANAGE_VEHICLES_DROPDOWN: {
-				ShowDropDownList(this, this->BuildActionDropdownList(true, Group::IsValidID(this->vli.ToGroupID()), IsDefaultGroupID(this->vli.ToGroupID())), -1, WID_GL_MANAGE_VEHICLES_DROPDOWN);
+				this->HandleDropdownListButtonClick(this->BuildActionDropdownList(true, Group::IsValidID(this->vli.ToGroupID()), IsDefaultGroupID(this->vli.ToGroupID())), -1, WID_GL_MANAGE_VEHICLES_DROPDOWN);
 				break;
 			}
 

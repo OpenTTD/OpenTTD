@@ -658,12 +658,12 @@ public:
 				break;
 
 			case WID_STL_SORTDROPBTN: // select sorting criteria dropdown menu
-				ShowDropDownMenu(this, CompanyStationsWindow::sorter_names, this->stations.SortType(), WID_STL_SORTDROPBTN, 0, 0);
+				this->HandleDropdownMenuButtonClick(CompanyStationsWindow::sorter_names, this->stations.SortType(), WID_STL_SORTDROPBTN, 0, 0);
 				break;
 
 			case WID_STL_CARGODROPDOWN:
 				this->filter_expanded = false;
-				ShowDropDownList(this, this->BuildCargoDropDownList(this->filter_expanded), -1, widget, 0, false, true);
+				this->HandleDropdownListButtonClick(this->BuildCargoDropDownList(this->filter_expanded), -1, widget, 0, false, true);
 				break;
 		}
 	}
@@ -2005,14 +2005,14 @@ struct StationViewWindow : public Window {
 				 * sorting criteria for columns 1, 2, and 3. Column 0 is always
 				 * sorted by cargo type. The others can theoretically be sorted
 				 * by different things but there is no UI for that. */
-				ShowDropDownMenu(this, StationViewWindow::sort_names,
+				this->HandleDropdownMenuButtonClick(StationViewWindow::sort_names,
 						this->current_mode * 2 + (this->sortings[1] == CargoSortType::Count ? 1 : 0),
 						WID_SV_SORT_BY, 0, 0);
 				break;
 			}
 
 			case WID_SV_GROUP_BY: {
-				ShowDropDownMenu(this, StationViewWindow::group_names, this->grouping_index, WID_SV_GROUP_BY, 0, 0);
+				this->HandleDropdownMenuButtonClick(StationViewWindow::group_names, this->grouping_index, WID_SV_GROUP_BY, 0, 0);
 				break;
 			}
 

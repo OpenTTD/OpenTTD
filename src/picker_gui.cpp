@@ -441,12 +441,12 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 
 		case WID_PW_CONFIGURE_BADGES:
 			if (this->badge_classes.GetClasses().empty()) break;
-			ShowDropDownList(this, BuildBadgeClassConfigurationList(this->badge_classes, 1, {}), -1, widget, 0, false, true);
+			this->HandleDropdownListButtonClick(BuildBadgeClassConfigurationList(this->badge_classes, 1, {}), -1, widget, 0, false, true);
 			break;
 
 		default:
 			if (IsInsideMM(widget, this->badge_filters.first, this->badge_filters.second)) {
-				ShowDropDownList(this, this->GetWidget<NWidgetBadgeFilter>(widget)->GetDropDownList(), -1, widget, 0, false);
+				this->HandleDropdownListButtonClick(this->GetWidget<NWidgetBadgeFilter>(widget)->GetDropDownList(), -1, widget, 0, false);
 			}
 			break;
 	}

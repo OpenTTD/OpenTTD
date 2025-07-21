@@ -14,7 +14,6 @@
 #include "gfx_func.h"
 #include "gfx_type.h"
 #include "palette_func.h"
-#include "window_gui.h"
 
 /**
  * Base list item class from which others are derived.
