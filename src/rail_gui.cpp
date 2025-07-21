@@ -1580,10 +1580,13 @@ public:
 					if (w != nullptr) ToggleRailButton_Remove(w);
 				}
 
+				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+
 				break;
 
 			case WID_BS_CONVERT:
 				_convert_signal_button = !_convert_signal_button;
+				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				break;
 
 			case WID_BS_DRAG_SIGNALS_DENSITY_DECREASE:

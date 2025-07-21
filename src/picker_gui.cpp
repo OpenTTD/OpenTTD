@@ -398,6 +398,8 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 				SetBit(this->callbacks.mode, PFM_ALL);
 			}
 			this->InvalidateData({PickerInvalidation::Class, PickerInvalidation::Type, PickerInvalidation::Position});
+
+			if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 			break;
 
 		case WID_PW_SHRINK:

@@ -286,6 +286,8 @@ public:
 
 				new_show_state ? _town_local_authority_kdtree.Insert(index) : _town_local_authority_kdtree.Remove(index);
 
+				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+
 				this->town->show_zone = new_show_state;
 				this->SetWidgetLoweredState(widget, new_show_state);
 				MarkWholeScreenDirty();

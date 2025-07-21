@@ -19,6 +19,7 @@
 #include "depot_base.h"
 #include "spritecache.h"
 #include "strings_func.h"
+#include "sound_func.h"
 #include "vehicle_func.h"
 #include "company_func.h"
 #include "tilehighlight_func.h"
@@ -815,6 +816,8 @@ struct DepotWindow : Window {
 				} else {
 					ResetObjectToPlace();
 				}
+
+				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				break;
 
 			case WID_D_LOCATION:
