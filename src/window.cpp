@@ -36,6 +36,7 @@
 #include "framerate_type.h"
 #include "network/network_func.h"
 #include "news_func.h"
+#include "sound_func.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
 
@@ -596,6 +597,7 @@ void Window::HandleButtonClick(WidgetID widget)
 	this->LowerWidget(widget);
 	this->SetTimeout();
 	this->SetWidgetDirty(widget);
+	SndClickBeep();
 }
 
 static void StartWindowDrag(Window *w);
