@@ -398,6 +398,7 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 				SetBit(this->callbacks.mode, PFM_ALL);
 			}
 			this->InvalidateData({PickerInvalidation::Class, PickerInvalidation::Type, PickerInvalidation::Position});
+			SndClickBeep();
 			break;
 
 		case WID_PW_SHRINK:
