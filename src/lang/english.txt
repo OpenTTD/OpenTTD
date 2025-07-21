@@ -2757,11 +2757,6 @@ STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} 
 STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Average travel time: {UNITS_DAYS_OR_SECONDS}
 
 # Base for station construction window(s)
-STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Coverage area highlight
-STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Off
-STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}On
-STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Don't highlight coverage area of proposed site
-STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Highlight coverage area of proposed site
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Accepts: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Supplies: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}Maintenance cost: {GOLD}{CURRENCY_SHORT}/year

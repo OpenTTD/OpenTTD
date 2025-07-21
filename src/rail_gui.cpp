@@ -1102,8 +1102,6 @@ public:
 			this->LowerWidget(WID_BRAS_PLATFORM_NUM_BEGIN + _settings_client.gui.station_numtracks);
 			this->LowerWidget(WID_BRAS_PLATFORM_LEN_BEGIN + _settings_client.gui.station_platlength);
 		}
-		this->SetWidgetLoweredState(WID_BRAS_HIGHLIGHT_OFF, !_settings_client.gui.station_show_coverage);
-		this->SetWidgetLoweredState(WID_BRAS_HIGHLIGHT_ON, _settings_client.gui.station_show_coverage);
 
 		this->PickerWindow::OnInit();
 	}
@@ -1141,7 +1139,7 @@ public:
 
 		int rad = (_settings_game.station.modified_catchment) ? CA_TRAIN : CA_UNMODIFIED;
 
-		if (_settings_client.gui.station_show_coverage) SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
+		SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 
 		for (uint bits = 0; bits < 7; bits++) {
 			bool disable = bits >= _settings_game.station.station_spread;
@@ -1344,17 +1342,6 @@ public:
 				break;
 			}
 
-			case WID_BRAS_HIGHLIGHT_OFF:
-			case WID_BRAS_HIGHLIGHT_ON:
-				_settings_client.gui.station_show_coverage = (widget != WID_BRAS_HIGHLIGHT_OFF);
-
-				this->SetWidgetLoweredState(WID_BRAS_HIGHLIGHT_OFF, !_settings_client.gui.station_show_coverage);
-				this->SetWidgetLoweredState(WID_BRAS_HIGHLIGHT_ON, _settings_client.gui.station_show_coverage);
-				SndClickBeep();
-				this->SetDirty();
-				SetViewportCatchmentStation(nullptr, true);
-				break;
-
 			default:
 				this->PickerWindow::OnClick(pt, widget, click_count);
 				break;
@@ -1423,11 +1410,6 @@ static constexpr NWidgetPart _nested_station_builder_widgets[] = {
 					EndContainer(),
 					NWidget(NWID_HORIZONTAL), SetPIPRatio(1, 0, 1),
 						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BRAS_PLATFORM_DRAG_N_DROP), SetMinimalSize(75, 12), SetStringTip(STR_STATION_BUILD_DRAG_DROP, STR_STATION_BUILD_DRAG_DROP_TOOLTIP),
-					EndContainer(),
-					NWidget(WWT_LABEL, INVALID_COLOUR), SetStringTip(STR_STATION_BUILD_COVERAGE_AREA_TITLE), SetFill(1, 0),
-					NWidget(NWID_HORIZONTAL), SetPIPRatio(1, 0, 1),
-						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BRAS_HIGHLIGHT_OFF), SetMinimalSize(60, 12), SetStringTip(STR_STATION_BUILD_COVERAGE_OFF, STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP),
-						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BRAS_HIGHLIGHT_ON), SetMinimalSize(60, 12), SetStringTip(STR_STATION_BUILD_COVERAGE_ON, STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP),
 					EndContainer(),
 					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_BRAS_COVERAGE_TEXTS), SetFill(1, 1), SetResize(1, 0), SetMinimalTextLines(2, 0),
 				EndContainer(),

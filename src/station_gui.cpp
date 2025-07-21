@@ -168,7 +168,7 @@ void CheckRedrawStationCoverage(const Window *w)
 		_thd.dirty &= ~1;
 		w->SetDirty();
 
-		if (_settings_client.gui.station_show_coverage && _thd.drawstyle == HT_RECT) {
+		if (_thd.drawstyle == HT_RECT) {
 			FindStationsAroundSelection<StationTypeFilter>();
 		}
 	}

@@ -56,8 +56,6 @@ enum BuildRailStationWidgets : WidgetID {
 
 	WID_BRAS_PLATFORM_DRAG_N_DROP, ///< Button to enable drag and drop type station placement.
 
-	WID_BRAS_HIGHLIGHT_OFF,        ///< Button for turning coverage highlighting off.
-	WID_BRAS_HIGHLIGHT_ON,         ///< Button for turning coverage highlighting on.
 	WID_BRAS_COVERAGE_TEXTS,       ///< Empty space for the coverage texts.
 
 	WID_BRAS_PLATFORM_NUM_BEGIN = WID_BRAS_PLATFORM_NUM_1 - 1, ///< Helper for determining the chosen platform width.
