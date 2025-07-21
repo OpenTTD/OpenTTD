@@ -3955,144 +3955,146 @@ static void UpdateStationRating(Station *st)
 
 	for (const CargoSpec *cs : CargoSpec::Iterate()) {
 		GoodsEntry *ge = &st->goods[cs->Index()];
-		/* Slowly increase the rating back to its original level in the case we
-		 *  didn't deliver cargo yet to this station. This happens when a bribe
-		 *  failed while you didn't moved that cargo yet to a station. */
-		if (!ge->HasRating() && ge->rating < INITIAL_STATION_RATING) {
-			ge->rating++;
+
+		/* The station might not currently be moving this cargo. */
+		if (!ge->HasRating()) {
+			/* Slowly increase the rating back to its original level in the case we
+			 *  didn't deliver cargo yet to this station. This happens when a bribe
+			 *  failed while you didn't moved that cargo yet to a station. */
+			if (ge->rating < INITIAL_STATION_RATING) ge->rating++;
+
+			/* Nothing else to do with this cargo. */
+			continue;
 		}
 
-		/* Only change the rating if we are moving this cargo */
-		if (ge->HasRating()) {
-			byte_inc_sat(&ge->time_since_pickup);
-			if (ge->time_since_pickup == 255 && _settings_game.order.selectgoods) {
-				ge->status.Reset(GoodsEntry::State::Rating);
-				ge->last_speed = 0;
-				TruncateCargo(cs, ge);
-				waiting_changed = true;
-				continue;
-			}
+		byte_inc_sat(&ge->time_since_pickup);
+		if (ge->time_since_pickup == 255 && _settings_game.order.selectgoods) {
+			ge->status.Reset(GoodsEntry::State::Rating);
+			ge->last_speed = 0;
+			TruncateCargo(cs, ge);
+			waiting_changed = true;
+			continue;
+		}
 
-			bool skip = false;
-			int rating = 0;
-			uint waiting = ge->HasData() ? ge->GetData().cargo.AvailableCount() : 0;
+		bool skip = false;
+		int rating = 0;
+		uint waiting = ge->HasData() ? ge->GetData().cargo.AvailableCount() : 0;
 
-			/* num_dests is at least 1 if there is any cargo as
-			 * StationID::Invalid() is also a destination.
-			 */
-			uint num_dests = ge->HasData() ? static_cast<uint>(ge->GetData().cargo.Packets()->MapSize()) : 0;
+		/* num_dests is at least 1 if there is any cargo as
+		 * StationID::Invalid() is also a destination.
+		 */
+		uint num_dests = ge->HasData() ? static_cast<uint>(ge->GetData().cargo.Packets()->MapSize()) : 0;
 
-			/* Average amount of cargo per next hop, but prefer solitary stations
-			 * with only one or two next hops. They are allowed to have more
-			 * cargo waiting per next hop.
-			 * With manual cargo distribution waiting_avg = waiting / 2 as then
-			 * StationID::Invalid() is the only destination.
-			 */
-			uint waiting_avg = waiting / (num_dests + 1);
+		/* Average amount of cargo per next hop, but prefer solitary stations
+		 * with only one or two next hops. They are allowed to have more
+		 * cargo waiting per next hop.
+		 * With manual cargo distribution waiting_avg = waiting / 2 as then
+		 * StationID::Invalid() is the only destination.
+		 */
+		uint waiting_avg = waiting / (num_dests + 1);
 
-			if (_cheats.station_rating.value) {
-				ge->rating = rating = MAX_STATION_RATING;
+		if (_cheats.station_rating.value) {
+			ge->rating = rating = MAX_STATION_RATING;
+			skip = true;
+		} else if (cs->callback_mask.Test(CargoCallbackMask::StationRatingCalc)) {
+			/* Perform custom station rating. If it succeeds the speed, days in transit and
+			 * waiting cargo ratings must not be executed. */
+
+			/* NewGRFs expect last speed to be 0xFF when no vehicle has arrived yet. */
+			uint last_speed = ge->HasVehicleEverTriedLoading() ? ge->last_speed : 0xFF;
+
+			uint32_t var18 = ClampTo<uint8_t>(ge->time_since_pickup)
+				| (ClampTo<uint16_t>(ge->max_waiting_cargo) << 8)
+				| (ClampTo<uint8_t>(last_speed) << 24);
+			/* Convert to the 'old' vehicle types */
+			uint32_t var10 = (st->last_vehicle_type == VEH_INVALID) ? 0x0 : (st->last_vehicle_type + 0x10);
+			uint16_t callback = GetCargoCallback(CBID_CARGO_STATION_RATING_CALC, var10, var18, cs);
+			if (callback != CALLBACK_FAILED) {
 				skip = true;
-			} else if (cs->callback_mask.Test(CargoCallbackMask::StationRatingCalc)) {
-				/* Perform custom station rating. If it succeeds the speed, days in transit and
-				 * waiting cargo ratings must not be executed. */
+				rating = GB(callback, 0, 14);
 
-				/* NewGRFs expect last speed to be 0xFF when no vehicle has arrived yet. */
-				uint last_speed = ge->HasVehicleEverTriedLoading() ? ge->last_speed : 0xFF;
+				/* Simulate a 15 bit signed value */
+				if (HasBit(callback, 14)) rating -= 0x4000;
+			}
+		}
 
-				uint32_t var18 = ClampTo<uint8_t>(ge->time_since_pickup)
-					| (ClampTo<uint16_t>(ge->max_waiting_cargo) << 8)
-					| (ClampTo<uint8_t>(last_speed) << 24);
-				/* Convert to the 'old' vehicle types */
-				uint32_t var10 = (st->last_vehicle_type == VEH_INVALID) ? 0x0 : (st->last_vehicle_type + 0x10);
-				uint16_t callback = GetCargoCallback(CBID_CARGO_STATION_RATING_CALC, var10, var18, cs);
-				if (callback != CALLBACK_FAILED) {
-					skip = true;
-					rating = GB(callback, 0, 14);
+		if (!skip) {
+			int b = ge->last_speed - 85;
+			if (b >= 0) rating += b >> 2;
 
-					/* Simulate a 15 bit signed value */
-					if (HasBit(callback, 14)) rating -= 0x4000;
+			uint8_t waittime = ge->time_since_pickup;
+			if (st->last_vehicle_type == VEH_SHIP) waittime >>= 2;
+			if (waittime <= 21) rating += 25;
+			if (waittime <= 12) rating += 25;
+			if (waittime <= 6) rating += 45;
+			if (waittime <= 3) rating += 35;
+
+			rating -= 90;
+			if (ge->max_waiting_cargo <= 1500) rating += 55;
+			if (ge->max_waiting_cargo <= 1000) rating += 35;
+			if (ge->max_waiting_cargo <= 600) rating += 10;
+			if (ge->max_waiting_cargo <= 300) rating += 20;
+			if (ge->max_waiting_cargo <= 100) rating += 10;
+		}
+
+		if (Company::IsValidID(st->owner) && st->town->statues.Test(st->owner)) rating += 26;
+
+		uint8_t age = ge->last_age;
+		if (age < 3) rating += 10;
+		if (age < 2) rating += 10;
+		if (age < 1) rating += 13;
+
+		{
+			int or_ = ge->rating; // old rating
+
+			/* only modify rating in steps of -2, -1, 0, 1 or 2 */
+			ge->rating = rating = ClampTo<uint8_t>(or_ + Clamp(rating - or_, -2, 2));
+
+			/* if rating is <= 64 and more than 100 items waiting on average per destination,
+			 * remove some random amount of goods from the station */
+			if (rating <= 64 && waiting_avg >= 100) {
+				int dec = Random() & 0x1F;
+				if (waiting_avg < 200) dec &= 7;
+				waiting -= (dec + 1) * num_dests;
+				waiting_changed = true;
+			}
+
+			/* if rating is <= 127 and there are any items waiting, maybe remove some goods. */
+			if (rating <= 127 && waiting != 0) {
+				uint32_t r = Random();
+				if (rating <= (int)GB(r, 0, 7)) {
+					/* Need to have int, otherwise it will just overflow etc. */
+					waiting = std::max((int)waiting - (int)((GB(r, 8, 2) - 1) * num_dests), 0);
+					waiting_changed = true;
 				}
 			}
 
-			if (!skip) {
-				int b = ge->last_speed - 85;
-				if (b >= 0) rating += b >> 2;
+			/* At some point we really must cap the cargo. Previously this
+			 * was a strict 4095, but now we'll have a less strict, but
+			 * increasingly aggressive truncation of the amount of cargo. */
+			static const uint WAITING_CARGO_THRESHOLD  = 1 << 12;
+			static const uint WAITING_CARGO_CUT_FACTOR = 1 <<  6;
+			static const uint MAX_WAITING_CARGO        = 1 << 15;
 
-				uint8_t waittime = ge->time_since_pickup;
-				if (st->last_vehicle_type == VEH_SHIP) waittime >>= 2;
-				if (waittime <= 21) rating += 25;
-				if (waittime <= 12) rating += 25;
-				if (waittime <= 6) rating += 45;
-				if (waittime <= 3) rating += 35;
+			if (waiting > WAITING_CARGO_THRESHOLD) {
+				uint difference = waiting - WAITING_CARGO_THRESHOLD;
+				waiting -= (difference / WAITING_CARGO_CUT_FACTOR);
 
-				rating -= 90;
-				if (ge->max_waiting_cargo <= 1500) rating += 55;
-				if (ge->max_waiting_cargo <= 1000) rating += 35;
-				if (ge->max_waiting_cargo <= 600) rating += 10;
-				if (ge->max_waiting_cargo <= 300) rating += 20;
-				if (ge->max_waiting_cargo <= 100) rating += 10;
+				waiting = std::min(waiting, MAX_WAITING_CARGO);
+				waiting_changed = true;
 			}
 
-			if (Company::IsValidID(st->owner) && st->town->statues.Test(st->owner)) rating += 26;
+			/* We can't truncate cargo that's already reserved for loading.
+			 * Thus StoredCount() here. */
+			if (waiting_changed && waiting < (ge->HasData() ? ge->GetData().cargo.AvailableCount() : 0)) {
+				/* Feed back the exact own waiting cargo at this station for the
+				 * next rating calculation. */
+				ge->max_waiting_cargo = 0;
 
-			uint8_t age = ge->last_age;
-			if (age < 3) rating += 10;
-			if (age < 2) rating += 10;
-			if (age < 1) rating += 13;
-
-			{
-				int or_ = ge->rating; // old rating
-
-				/* only modify rating in steps of -2, -1, 0, 1 or 2 */
-				ge->rating = rating = ClampTo<uint8_t>(or_ + Clamp(rating - or_, -2, 2));
-
-				/* if rating is <= 64 and more than 100 items waiting on average per destination,
-				 * remove some random amount of goods from the station */
-				if (rating <= 64 && waiting_avg >= 100) {
-					int dec = Random() & 0x1F;
-					if (waiting_avg < 200) dec &= 7;
-					waiting -= (dec + 1) * num_dests;
-					waiting_changed = true;
-				}
-
-				/* if rating is <= 127 and there are any items waiting, maybe remove some goods. */
-				if (rating <= 127 && waiting != 0) {
-					uint32_t r = Random();
-					if (rating <= (int)GB(r, 0, 7)) {
-						/* Need to have int, otherwise it will just overflow etc. */
-						waiting = std::max((int)waiting - (int)((GB(r, 8, 2) - 1) * num_dests), 0);
-						waiting_changed = true;
-					}
-				}
-
-				/* At some point we really must cap the cargo. Previously this
-				 * was a strict 4095, but now we'll have a less strict, but
-				 * increasingly aggressive truncation of the amount of cargo. */
-				static const uint WAITING_CARGO_THRESHOLD  = 1 << 12;
-				static const uint WAITING_CARGO_CUT_FACTOR = 1 <<  6;
-				static const uint MAX_WAITING_CARGO        = 1 << 15;
-
-				if (waiting > WAITING_CARGO_THRESHOLD) {
-					uint difference = waiting - WAITING_CARGO_THRESHOLD;
-					waiting -= (difference / WAITING_CARGO_CUT_FACTOR);
-
-					waiting = std::min(waiting, MAX_WAITING_CARGO);
-					waiting_changed = true;
-				}
-
-				/* We can't truncate cargo that's already reserved for loading.
-				 * Thus StoredCount() here. */
-				if (waiting_changed && waiting < (ge->HasData() ? ge->GetData().cargo.AvailableCount() : 0)) {
-					/* Feed back the exact own waiting cargo at this station for the
-					 * next rating calculation. */
-					ge->max_waiting_cargo = 0;
-
-					TruncateCargo(cs, ge, ge->GetData().cargo.AvailableCount() - waiting);
-				} else {
-					/* If the average number per next hop is low, be more forgiving. */
-					ge->max_waiting_cargo = waiting_avg;
-				}
+				TruncateCargo(cs, ge, ge->GetData().cargo.AvailableCount() - waiting);
+			} else {
+				/* If the average number per next hop is low, be more forgiving. */
+				ge->max_waiting_cargo = waiting_avg;
 			}
 		}
 	}
