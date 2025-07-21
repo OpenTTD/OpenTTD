@@ -3946,6 +3946,10 @@ static void TruncateCargo(const CargoSpec *cs, GoodsEntry *ge, uint amount = UIN
 	}
 }
 
+/**
+ * Periodic update of a station's rating.
+ * @param st The station to update.
+ */
 static void UpdateStationRating(Station *st)
 {
 	bool waiting_changed = false;
@@ -3968,6 +3972,8 @@ static void UpdateStationRating(Station *st)
 		}
 
 		byte_inc_sat(&ge->time_since_pickup);
+
+		/* If this cargo hasn't been picked up in a long time, get rid of it. */
 		if (ge->time_since_pickup == 255 && _settings_game.order.selectgoods) {
 			ge->status.Reset(GoodsEntry::State::Rating);
 			ge->last_speed = 0;
@@ -4351,6 +4357,14 @@ static const IntervalTimer<TimerGameEconomy> _economy_stations_monthly({TimerGam
 	}
 });
 
+/**
+ * Forcibly modify station ratings near a given tile.
+ * Used when a crash hurts a company's station ratings nearby, or when local authority actions affect nearby ratings.
+ * @param tile The center of the ratings change area.
+ * @param owner The station owner whose stations are affected.
+ * @param amount The amount to change the rating.
+ * @param radius The radius to search for stations, from the origin tile.
+ */
 void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint radius)
 {
 	ForAllStationsRadius(tile, radius, [&](Station *st) {
