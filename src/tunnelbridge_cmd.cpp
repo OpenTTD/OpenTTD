@@ -138,15 +138,58 @@ bool HasBridgeFlatRamp(Slope tileh, Axis axis)
 	return (tileh != SLOPE_FLAT);
 }
 
-static inline std::span<const PalSpriteID> GetBridgeSpriteTable(int index, BridgePieces table)
+/**
+ * Get the sprite table for a rail/road bridge piece.
+ * @param bridge_type Bridge type.
+ * @param piece Bridge piece.
+ * @return Sprite table for the bridge piece.
+ */
+static std::span<const PalSpriteID> GetBridgeSpriteTable(BridgeType bridge_type, BridgePieces piece)
 {
-	const BridgeSpec *bridge = GetBridgeSpec(index);
-	assert(table < NUM_BRIDGE_PIECES);
-	if (table < bridge->sprite_table.size() && !bridge->sprite_table[table].empty()) return bridge->sprite_table[table];
+	assert(piece < NUM_BRIDGE_PIECES);
 
-	return _bridge_sprite_table[index][table];
+	const BridgeSpec *bridge = GetBridgeSpec(bridge_type);
+	if (piece < bridge->sprite_table.size() && !bridge->sprite_table[piece].empty()) return bridge->sprite_table[piece];
+
+	return _bridge_sprite_table[bridge_type][piece];
 }
 
+/**
+ * Get the sprite table transport type base offset for a rail/road bridge.
+ * @param transport_type Transport type of bridge.
+ * @param ramp Tile of bridge ramp.
+ * @return Offset for transport type.
+ */
+static uint8_t GetBridgeSpriteTableBaseOffset(TransportType transport_type, TileIndex ramp)
+{
+	switch (transport_type) {
+		case TRANSPORT_RAIL: return GetRailTypeInfo(GetRailType(ramp))->bridge_offset;
+		case TRANSPORT_ROAD: return 8;
+		default: NOT_REACHED();
+	}
+}
+
+/**
+ * Get bridge sprite table base offset for the ramp part of bridge.
+ * @param diagdir Direction of ramp.
+ * @return Offset for direction.
+ */
+static uint8_t GetBridgeRampDirectionBaseOffset(DiagDirection diagdir)
+{
+	/* Bridge ramps are ordered SW, SE, NE, NW instead of NE, SE, SW, NW. */
+	static constexpr uint8_t ramp_offsets[DIAGDIR_END] = {2, 1, 0, 3};
+	return ramp_offsets[diagdir];
+}
+
+/**
+ * Get bridge sprite table base offset for the middle part of bridge.
+ * @param axis Axis of bridge.
+ * @return Offset for axis.
+ */
+static uint8_t GetBridgeMiddleAxisBaseOffset(Axis axis)
+{
+	return axis == AXIS_X ? 0 : 4;
+}
 
 /**
  * Determines the foundation for the bridge head, and tests if the resulting slope is valid.
@@ -1404,34 +1447,20 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 		DrawBridgeMiddle(ti);
 	} else { // IsBridge(ti->tile)
-		const PalSpriteID *psid;
-		int base_offset;
-		bool ice = HasTunnelBridgeSnowOrDesert(ti->tile);
-
-		if (transport_type == TRANSPORT_RAIL) {
-			base_offset = GetRailTypeInfo(GetRailType(ti->tile))->bridge_offset;
-			assert(base_offset != 8); // This one is used for roads
-		} else {
-			base_offset = 8;
-		}
-
-		/* as the lower 3 bits are used for other stuff, make sure they are clear */
-		assert( (base_offset & 0x07) == 0x00);
-
 		DrawFoundation(ti, GetBridgeFoundation(ti->tileh, DiagDirToAxis(tunnelbridge_direction)));
 
-		/* HACK Wizardry to convert the bridge ramp direction into a sprite offset */
-		base_offset += (6 - tunnelbridge_direction) % 4;
-
-		/* Table number BRIDGE_PIECE_HEAD always refers to the bridge heads for any bridge type */
+		uint base_offset = GetBridgeRampDirectionBaseOffset(tunnelbridge_direction);
+		std::span<const PalSpriteID> psid;
 		if (transport_type != TRANSPORT_WATER) {
 			if (ti->tileh == SLOPE_FLAT) base_offset += 4; // sloped bridge head
-			psid = &GetBridgeSpriteTable(GetBridgeType(ti->tile), BRIDGE_PIECE_HEAD)[base_offset];
+			base_offset += GetBridgeSpriteTableBaseOffset(transport_type, ti->tile);
+			psid = GetBridgeSpriteTable(GetBridgeType(ti->tile), BRIDGE_PIECE_HEAD);
 		} else {
-			psid = _aqueduct_sprites + base_offset;
+			psid = _aqueduct_sprite_table_heads;
 		}
+		psid = psid.subspan(base_offset, 1);
 
-		if (!ice) {
+		if (!HasTunnelBridgeSnowOrDesert(ti->tile)) {
 			TileIndex next = ti->tile + TileOffsByDiagDir(tunnelbridge_direction);
 			if (ti->tileh != SLOPE_FLAT && ti->z == 0 && HasTileWaterClass(next) && GetWaterClass(next) == WATER_CLASS_SEA) {
 				DrawShoreTile(ti->tileh);
@@ -1451,7 +1480,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		 * it doesn't disappear behind it
 		 */
 		/* Bridge heads are drawn solid no matter how invisibility/transparency is set */
-		AddSortableSpriteToDraw(psid->sprite, psid->pal, *ti, {{}, {TILE_SIZE, TILE_SIZE, static_cast<uint8_t>(ti->tileh == SLOPE_FLAT ? 0 : TILE_HEIGHT)}, {}});
+		AddSortableSpriteToDraw(psid[0].sprite, psid[0].pal, *ti, {{}, {TILE_SIZE, TILE_SIZE, static_cast<uint8_t>(ti->tileh == SLOPE_FLAT ? 0 : TILE_HEIGHT)}, {}});
 
 		if (transport_type == TRANSPORT_ROAD) {
 			uint offset = tunnelbridge_direction;
@@ -1572,33 +1601,21 @@ void DrawBridgeMiddle(const TileInfo *ti)
 	TileIndex rampnorth = GetNorthernBridgeEnd(ti->tile);
 	TileIndex rampsouth = GetSouthernBridgeEnd(ti->tile);
 	TransportType transport_type = GetTunnelBridgeTransportType(rampsouth);
-
 	Axis axis = GetBridgeAxis(ti->tile);
-	BridgePieces piece = CalcBridgePiece(
-		GetTunnelBridgeLength(ti->tile, rampnorth) + 1,
-		GetTunnelBridgeLength(ti->tile, rampsouth) + 1
-	);
 
-	const PalSpriteID *psid;
+	uint base_offset = GetBridgeMiddleAxisBaseOffset(axis);
+	std::span<const PalSpriteID> psid;
 	bool drawfarpillar;
 	if (transport_type != TRANSPORT_WATER) {
-		BridgeType type =  GetBridgeType(rampsouth);
-		drawfarpillar = !HasBit(GetBridgeSpec(type)->flags, 0);
-
-		uint base_offset;
-		if (transport_type == TRANSPORT_RAIL) {
-			base_offset = GetRailTypeInfo(GetRailType(rampsouth))->bridge_offset;
-		} else {
-			base_offset = 8;
-		}
-
-		psid = &GetBridgeSpriteTable(type, piece)[base_offset];
+		BridgeType bridge_type = GetBridgeType(rampsouth);
+		drawfarpillar = !HasBit(GetBridgeSpec(bridge_type)->flags, 0);
+		base_offset += GetBridgeSpriteTableBaseOffset(transport_type, rampsouth);
+		psid = GetBridgeSpriteTable(bridge_type, CalcBridgePiece(GetTunnelBridgeLength(ti->tile, rampnorth) + 1, GetTunnelBridgeLength(ti->tile, rampsouth) + 1));
 	} else {
 		drawfarpillar = true;
-		psid = _aqueduct_sprites;
+		psid = _aqueduct_sprite_table_middle;
 	}
-
-	if (axis != AXIS_X) psid += 4;
+	psid = psid.subspan(base_offset, 3);
 
 	int x = ti->x;
 	int y = ti->y;
@@ -1614,13 +1631,11 @@ void DrawBridgeMiddle(const TileInfo *ti)
 	/* Draw floor and far part of bridge*/
 	if (!IsInvisibilitySet(TO_BRIDGES)) {
 		if (axis == AXIS_X) {
-			AddSortableSpriteToDraw(psid->sprite, psid->pal, x, y, z, {{0, 0, BRIDGE_Z_START}, {TILE_SIZE, 1, 40}, {0, 0, -BRIDGE_Z_START}}, IsTransparencySet(TO_BRIDGES));
+			AddSortableSpriteToDraw(psid[0].sprite, psid[0].pal, x, y, z, {{0, 0, BRIDGE_Z_START}, {TILE_SIZE, 1, 40}, {0, 0, -BRIDGE_Z_START}}, IsTransparencySet(TO_BRIDGES));
 		} else {
-			AddSortableSpriteToDraw(psid->sprite, psid->pal, x, y, z, {{0, 0, BRIDGE_Z_START}, {1, TILE_SIZE, 40}, {0, 0, -BRIDGE_Z_START}}, IsTransparencySet(TO_BRIDGES));
+			AddSortableSpriteToDraw(psid[0].sprite, psid[0].pal, x, y, z, {{0, 0, BRIDGE_Z_START}, {1, TILE_SIZE, 40}, {0, 0, -BRIDGE_Z_START}}, IsTransparencySet(TO_BRIDGES));
 		}
 	}
-
-	psid++;
 
 	if (transport_type == TRANSPORT_ROAD) {
 		/* DrawBridgeRoadBits() calls EndSpriteCombine() and StartSpriteCombine() */
@@ -1654,10 +1669,10 @@ void DrawBridgeMiddle(const TileInfo *ti)
 	if (!IsInvisibilitySet(TO_BRIDGES)) {
 		if (axis == AXIS_X) {
 			y += 12;
-			if (psid->sprite & SPRITE_MASK) AddSortableSpriteToDraw(psid->sprite, psid->pal, x, y, z, {{0, 3, BRIDGE_Z_START}, {TILE_SIZE, 1, 40}, {0, -3, -BRIDGE_Z_START}}, IsTransparencySet(TO_BRIDGES));
+			if (psid[1].sprite & SPRITE_MASK) AddSortableSpriteToDraw(psid[1].sprite, psid[1].pal, x, y, z, {{0, 3, BRIDGE_Z_START}, {TILE_SIZE, 1, 40}, {0, -3, -BRIDGE_Z_START}}, IsTransparencySet(TO_BRIDGES));
 		} else {
 			x += 12;
-			if (psid->sprite & SPRITE_MASK) AddSortableSpriteToDraw(psid->sprite, psid->pal, x, y, z, {{3, 0, BRIDGE_Z_START}, {1, TILE_SIZE, 40}, {-3, 0, -BRIDGE_Z_START}}, IsTransparencySet(TO_BRIDGES));
+			if (psid[1].sprite & SPRITE_MASK) AddSortableSpriteToDraw(psid[1].sprite, psid[1].pal, x, y, z, {{3, 0, BRIDGE_Z_START}, {1, TILE_SIZE, 40}, {-3, 0, -BRIDGE_Z_START}}, IsTransparencySet(TO_BRIDGES));
 		}
 	}
 
@@ -1667,8 +1682,7 @@ void DrawBridgeMiddle(const TileInfo *ti)
 	/* Do not draw anything more if bridges are invisible */
 	if (IsInvisibilitySet(TO_BRIDGES)) return;
 
-	psid++;
-	DrawBridgePillars(*psid, ti, axis, drawfarpillar, x, y, z);
+	DrawBridgePillars(psid[2], ti, axis, drawfarpillar, x, y, z);
 }
 
 
