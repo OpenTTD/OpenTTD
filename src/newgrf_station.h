@@ -168,7 +168,11 @@ struct StationSpec : NewGRFSpecBase<StationClassID> {
 		Blocked = 2, ///< Tile is blocked to vehicles.
 	};
 	using TileFlags = EnumBitSet<TileFlag, uint8_t>;
-	std::vector<TileFlags> tileflags; ///< List of tile flags.
+
+	struct TileSpec {
+		TileFlags flags{}; ///< Tile flags.
+	};
+	std::vector<TileSpec> tilespecs; ///< Per-layout-tile information.
 
 	AnimationInfo<StationAnimationTriggers> animation;
 
