@@ -727,8 +727,11 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Εμφά
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Εναλλαγή γραφήματος αυτού του τύπου φορτίου
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Ιστορικό φορτίου
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Παράχθηκε/αν
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Μεταφέρθηκε/αν
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Παραδόθηκε
+STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Αναμονή
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Εμφάνιση λεπτομεριών αποδόσεων
 
@@ -4117,6 +4120,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Παρα
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Παραγωγή τελευταίου λεπτού:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% μεταφέρθηκαν)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Κεντράρισμα εικόνας στην περιοχή της βιομηχανίας. Ctrl+Κλικ για άνοιγμα νέου παραθύρου προβολής στην περιοχή της βιομηχανίας
+STR_INDUSTRY_VIEW_CARGO_GRAPH                                   :{BLACK}Γράφημα φορτίου
+STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}Εμφανίζει το γράφημα του ιστορικού του φορτίου της βιομηχανίας
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Επίπεδο παραγωγής: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Η βιομηχανία έχει ανακοινώσει άμεσο κλείσιμο!
 

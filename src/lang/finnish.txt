@@ -634,8 +634,11 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Älä n�
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Valitse, näytetäänkö tämän rahdin kuvaaja
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} – rahtihistoria
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Tuotettu
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Kuljetettu
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Toimitettu
+STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Odottava
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Näytä tarkat suorituskykyarviot
 
@@ -4023,6 +4026,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Tuotanto
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Tuotanto viime minuutissa:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}{NBSP}% kuljetettu)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Keskitä päänäkymä tuotantolaitoksen sijaintiin. Ctrl+napsautus avataksesi uuden näkymäikkunan laitoksen sijaintiin
+STR_INDUSTRY_VIEW_CARGO_GRAPH                                   :{BLACK}Rahdin kuvaaja
+STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}Näyttää tuotantolaitoksen rahtihistorian kuvaajana
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Tuotantotaso: {YELLOW}{COMMA}{NBSP}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Teollisuuslaitos ilmoittaa välittömästä lakkautuksesta!
 
