@@ -153,6 +153,7 @@ static std::unique_ptr<GRFConfig> GetDefaultExtraGRFConfig()
 	gc->palette |= GRFP_GRF_DOS;
 	FillGRFDetails(*gc, false, BASESET_DIR);
 	gc->flags.Reset(GRFConfigFlag::InitOnly);
+	gc->flags.Set(GRFConfigFlag::System);
 	return gc;
 }
 
@@ -165,6 +166,7 @@ static std::unique_ptr<GRFConfig> GetBasesetExtraGRFConfig()
 	auto gc = std::make_unique<GRFConfig>(BaseGraphics::GetUsedSet()->GetOrCreateExtraConfig());
 	if (gc->param.empty()) gc->SetParameterDefaults();
 	gc->flags.Reset(GRFConfigFlag::InitOnly);
+	gc->flags.Set(GRFConfigFlag::System);
 	return gc;
 }
 
