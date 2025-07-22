@@ -468,7 +468,7 @@ void DrawVehicleEngine(int left, int right, int preferred_x, int y, EngineID eng
 
 	switch (e->type) {
 		case VehicleType::Train:
-			DrawTrainEngine(left, right, preferred_x, y, engine, pal, image_type);
+			DrawTrainEngine(left, right, preferred_x, y, engine, pal, image_type, SpriteRotation::None);
 			break;
 
 		case VehicleType::Road:

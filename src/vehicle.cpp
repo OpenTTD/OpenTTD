@@ -147,12 +147,13 @@ void VehicleSpriteSeq::GetBounds(Rect *bounds) const
  * @param y Y position
  * @param default_pal Vehicle palette
  * @param force_pal Whether to ignore individual palettes, and draw everything with \a default_pal.
+ * @param rotate How to rotate the vehicle sprite.
  */
-void VehicleSpriteSeq::Draw(int x, int y, PaletteID default_pal, bool force_pal) const
+void VehicleSpriteSeq::Draw(int x, int y, PaletteID default_pal, bool force_pal, SpriteRotation rotate) const
 {
 	for (uint i = 0; i < this->count; ++i) {
 		PaletteID pal = force_pal || !this->seq[i].pal ? default_pal : this->seq[i].pal;
-		DrawSprite(this->seq[i].sprite, pal, x, y);
+		DrawSprite(this->seq[i].sprite, pal, x, y, nullptr, _gui_zoom, rotate);
 	}
 }
 
@@ -1167,7 +1168,51 @@ static void DoDrawVehicle(const Vehicle *v)
 	for (uint i = 0; i < v->sprite_cache.sprite_seq.count; ++i) {
 		PaletteID pal2 = v->sprite_cache.sprite_seq.seq[i].pal;
 		if (!pal2 || v->vehstatus.Any({VehState::Crashed, VehState::Derailed})) pal2 = pal;
-		AddSortableSpriteToDraw(v->sprite_cache.sprite_seq.seq[i].sprite, pal2, v->x_pos, v->y_pos, v->z_pos, v->bounds, shadowed);
+		SpriteRotation rotate = SpriteRotation::None;
+		SpriteBounds bounds = v->bounds;
+
+		if (v->vehstatus.Any({VehState::WillDerail, VehState::Derailed})) {
+			/* Expand bounds a little bit. */
+			bounds.origin.x -= bounds.extent.x >> 1;
+			bounds.origin.y -= bounds.extent.y >> 1;
+			bounds.offset.x += bounds.extent.x >> 1;
+			bounds.offset.y += bounds.extent.y >> 1;
+			bounds.extent.x *= 2;
+			bounds.extent.y *= 2;
+
+			/* Move train back on rails. */
+			switch (v->direction) {
+				case Direction::N:
+				case Direction::S:
+					bounds.offset.x -= 6;
+					bounds.offset.y -= 1;
+					rotate = SpriteRotation::Left;
+					break;
+
+				case Direction::NE:
+				case Direction::SW:
+					bounds.offset.y -= 2;
+					rotate = SpriteRotation::Left;
+					break;
+
+				case Direction::E:
+				case Direction::W:
+					bounds.offset.y += 6;
+					bounds.offset.x -= 2;
+					rotate = SpriteRotation::Left;
+					break;
+
+				case Direction::SE:
+				case Direction::NW:
+					bounds.offset.y += 1;
+					bounds.offset.x -= 4;
+					rotate = SpriteRotation::Right;
+					break;
+
+				default: NOT_REACHED();
+			}
+		}
+		AddSortableSpriteToDraw(v->sprite_cache.sprite_seq.seq[i].sprite, pal2, v->x_pos, v->y_pos, v->z_pos, bounds, shadowed, nullptr, rotate);
 	}
 	EndSpriteCombine();
 }

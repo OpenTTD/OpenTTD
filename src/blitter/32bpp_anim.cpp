@@ -261,11 +261,11 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 	}
 }
 
-void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
+void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom, SpriteRotation rotate)
 {
 	if (_screen_disable_anim) {
 		/* This means our output is not to the screen, so we can't be doing any animation stuff, so use our parent Draw() */
-		Blitter_32bppOptimized::Draw(bp, mode, zoom);
+		Blitter_32bppOptimized::Draw(bp, mode, zoom, rotate);
 		return;
 	}
 

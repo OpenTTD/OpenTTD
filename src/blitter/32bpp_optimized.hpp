@@ -21,7 +21,7 @@ public:
 		uint8_t data[];                      ///< Data, all zoomlevels.
 	};
 
-	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom) override;
+	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom, SpriteRotation rotate) override;
 	Sprite *Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator) override;
 
 	std::string_view GetName() override { return "32bpp-optimized"; }
@@ -29,7 +29,7 @@ public:
 	template <BlitterMode mode, bool Tpal_to_rgb = false> void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
 
 protected:
-	template <bool Tpal_to_rgb> void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
+	template <bool Tpal_to_rgb> void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom, SpriteRotation rotate);
 	template <bool Tpal_to_rgb> Sprite *EncodeInternal(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator);
 };
 

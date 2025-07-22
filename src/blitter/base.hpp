@@ -70,8 +70,16 @@ public:
 	 * @param bp Parameters for the blitting of the image.
 	 * @param mode The blitting mode to perform.
 	 * @param zoom The zoom level to draw at.
+	 * @param rotate How to rotate the sprite.
 	 */
-	virtual void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom) = 0;
+	virtual void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom, SpriteRotation rotate = SpriteRotation::None) = 0;
+
+	/**
+	 * Whether this blitter supports sprite rotation.
+	 * @note As now only 40bpp_animated blitter supports sprite rotation it is important not to rotate sizes for others blitters.
+	 * @return \c true iff this blitter can rotate sprites.
+	 */
+	virtual bool CanRotateSprites() { return false; }
 
 	/**
 	 * Draw a colourtable to the screen. This is: the colour of the screen is read

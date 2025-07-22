@@ -439,4 +439,11 @@ enum class DirectionKey {
 };
 using DirectionKeys = EnumBitSet<DirectionKey, uint8_t>; ///< Bitset of the direction keys.
 
+/** Possible rotations of sprites when they are drawn. */
+enum class SpriteRotation : int8_t {
+	Right = -1, ///< Rotates sprite by -90 degrees.
+	None = 0, ///< Does not rotate sprite.
+	Left = 1, ///< Rotates sprite by +90 degrees.
+};
+
 #endif /* GFX_TYPE_H */

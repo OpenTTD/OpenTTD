@@ -16,7 +16,7 @@
 /** Instantiation of the simple 8bpp blitter factory. */
 static FBlitter_8bppSimple iFBlitter_8bppSimple;
 
-void Blitter_8bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
+void Blitter_8bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom, [[maybe_unused]] SpriteRotation rotate)
 {
 	const uint8_t *src, *src_line;
 	uint8_t *dst, *dst_line;

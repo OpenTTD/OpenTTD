@@ -12,12 +12,16 @@
 
 #include "core/enum_type.hpp"
 
-/** Data structure describing a sprite. */
-struct Sprite {
+/** Same as Sprite but without the data part. */
+struct SpriteNoData {
 	uint16_t height; ///< Height of the sprite.
 	uint16_t width;  ///< Width of the sprite.
 	int16_t x_offs;  ///< Number of pixels to shift the sprite to the right.
 	int16_t y_offs;  ///< Number of pixels to shift the sprite downwards.
+};
+
+/** Data structure describing a sprite. */
+struct Sprite : SpriteNoData {
 	std::byte data[]; ///< Sprite data.
 };
 

@@ -660,8 +660,9 @@ static void AddCombinedSprite(SpriteID image, PaletteID pal, int x, int y, int z
  * @param bounds Bounding box extent towards positive X/Y/Z (world).
  * @param transparent if true, switch the palette between the provided palette and the transparent palette,
  * @param sub Only draw a part of the sprite.
+ * @param rotate How to rotate the sprite.
  */
-void AddSortableSpriteToDraw(SpriteID image, PaletteID pal, int x, int y, int z, const SpriteBounds &bounds, bool transparent, const SubSprite *sub)
+void AddSortableSpriteToDraw(SpriteID image, PaletteID pal, int x, int y, int z, const SpriteBounds &bounds, bool transparent, const SubSprite *sub, SpriteRotation rotate)
 {
 	int32_t left, right, top, bottom;
 
@@ -738,6 +739,8 @@ void AddSortableSpriteToDraw(SpriteID image, PaletteID pal, int x, int y, int z,
 	ps.zmax = z + bounds.extent.z - 1;
 
 	ps.first_child = LAST_CHILD_NONE;
+
+	ps.rotate = rotate;
 
 	_vd.last_child = LAST_CHILD_PARENT;
 
@@ -1608,10 +1611,10 @@ static void ViewportSortParentSprites(ParentSpriteToSortVector *psdv)
 	 * Also use special constants to indicate sorting state without
 	 * adding extra fields to ParentSpriteToDraw structure.
 	 */
-	const uint32_t ORDER_COMPARED = UINT32_MAX; // Sprite was compared but we still need to compare the ones preceding it
-	const uint32_t ORDER_RETURNED = UINT32_MAX - 1; // Mark sorted sprite in case there are other occurrences of it in the stack
+	const uint16_t ORDER_COMPARED = UINT16_MAX; // Sprite was compared but we still need to compare the ones preceding it
+	const uint16_t ORDER_RETURNED = UINT16_MAX - 1; // Mark sorted sprite in case there are other occurrences of it in the stack
 	std::stack<ParentSpriteToDraw *> sprite_order;
-	uint32_t next_order = 0;
+	uint16_t next_order = 0;
 
 	std::forward_list<std::pair<int64_t, ParentSpriteToDraw *>> sprite_list;  // We store sprites in a list sorted by xmin+ymin
 
@@ -1720,16 +1723,17 @@ static void ViewportSortParentSprites(ParentSpriteToSortVector *psdv)
 static void ViewportDrawParentSprites(const ParentSpriteToSortVector *psd, const ChildScreenSpriteToDrawVector *csstdv)
 {
 	for (const ParentSpriteToDraw *ps : *psd) {
-		if (ps->image != SPR_EMPTY_BOUNDING_BOX) DrawSpriteViewport(ps->image, ps->pal, ps->x, ps->y, ps->sub);
+		SpriteRotation rotate = ps->rotate;
+		if (ps->image != SPR_EMPTY_BOUNDING_BOX) DrawSpriteViewport(ps->image, ps->pal, ps->x, ps->y, ps->sub, rotate);
 
 		int child_idx = ps->first_child;
 		while (child_idx >= 0) {
 			const ChildScreenSpriteToDraw *cs = &(*csstdv)[child_idx];
 			child_idx = cs->next;
 			if (cs->relative) {
-				DrawSpriteViewport(cs->image, cs->pal, ps->left + cs->x, ps->top + cs->y, cs->sub);
+				DrawSpriteViewport(cs->image, cs->pal, ps->left + cs->x, ps->top + cs->y, cs->sub, rotate);
 			} else {
-				DrawSpriteViewport(cs->image, cs->pal, ps->x + cs->x, ps->y + cs->y, cs->sub);
+				DrawSpriteViewport(cs->image, cs->pal, ps->x + cs->x, ps->y + cs->y, cs->sub, rotate);
 			}
 		}
 	}
