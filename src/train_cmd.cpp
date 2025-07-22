@@ -3109,6 +3109,11 @@ int Train::UpdateSpeed()
 		return out;
 	}
 
+	if(this->vehstatus.Test(VehState::WillDerail)) {
+		if (this->cur_speed > 1) return out; // Train has not stopped yet.
+		this->ApplyDerail();
+	}
+
 	this->when_next_derail_test -= 1;
 
 	int last_speed = this->gcache.last_speed;
@@ -3293,6 +3298,21 @@ uint Train::Derail()
 	if (this->IsFrontEngine()) {
 		if (this->vehstatus.Any({VehState::Crashed, VehState::WillDerail})) return 0; // Can't derail right now.
 		victims += 1; // driver
+	}
+
+	victims += this->GroundVehicleBase::Derail();
+
+	return victims;
+}
+
+/**
+ * The train vehicle derailed!
+ * Update its status and other parts around it.
+ */
+void Train::ApplyDerail()
+{
+	if (this->IsFrontEngine()) {
+		if (this->vehstatus.Any({VehState::Crashed, VehState::Derailed})) return; // Can't derail crashed vehicle.
 
 		/* Remove the reserved path in front of the train if it is not stuck.
 		 * Also clear all reserved tracks the train is currently on. */
@@ -3313,11 +3333,12 @@ uint Train::Derail()
 
 		/* Remove the loading indicators (if any) */
 		HideFillingPercent(&this->fill_percent_te_id);
+
 	}
 
-	victims += this->GroundVehicleBase::Derail();
+	this->GroundVehicleBase::ApplyDerail();
 
-	return victims;
+	this->ReserveTrackUnderConsist();
 }
 
 /**

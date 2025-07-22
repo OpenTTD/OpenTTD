@@ -136,6 +136,7 @@ struct Train final : public GroundVehicle<Train, VehicleType::Train> {
 	void OnNewEconomyDay() override;
 	uint Crash(bool flooded = false) override;
 	uint Derail() override;
+	void ApplyDerail() override;
 	Trackdir GetVehicleTrackdir() const override;
 	TileIndex GetOrderStationLocation(StationID station) override;
 	ClosestDepot FindClosestDepot() override;
