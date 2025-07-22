@@ -1017,10 +1017,10 @@ static CommandCost ClearTile_TunnelBridge(TileIndex tile, DoCommandFlags flags)
  * @param h         Bounding box size in Y direction
  * @param subsprite Optional subsprite for drawing halfpillars
  */
-static inline void DrawPillar(const PalSpriteID *psid, int x, int y, int z, uint8_t w, uint8_t h, const SubSprite *subsprite)
+static inline void DrawPillar(const PalSpriteID &psid, int x, int y, int z, uint8_t w, uint8_t h, const SubSprite *subsprite)
 {
 	static const int PILLAR_Z_OFFSET = TILE_HEIGHT - BRIDGE_Z_START; ///< Start offset of pillar wrt. bridge (downwards)
-	AddSortableSpriteToDraw(psid->sprite, psid->pal, x, y, z, {{0, 0, -PILLAR_Z_OFFSET}, {w, h, BB_HEIGHT_UNDER_BRIDGE}, {0, 0, PILLAR_Z_OFFSET}}, IsTransparencySet(TO_BRIDGES), subsprite);
+	AddSortableSpriteToDraw(psid.sprite, psid.pal, x, y, z, {{0, 0, -PILLAR_Z_OFFSET}, {w, h, BB_HEIGHT_UNDER_BRIDGE}, {0, 0, PILLAR_Z_OFFSET}}, IsTransparencySet(TO_BRIDGES), subsprite);
 }
 
 /**
@@ -1034,7 +1034,7 @@ static inline void DrawPillar(const PalSpriteID *psid, int x, int y, int z, uint
  * @param h        Bounding box size in Y direction
  * @return Reached Z at the bottom
  */
-static int DrawPillarColumn(int z_bottom, int z_top, const PalSpriteID *psid, int x, int y, int w, int h)
+static int DrawPillarColumn(int z_bottom, int z_top, const PalSpriteID &psid, int x, int y, int w, int h)
 {
 	int cur_z;
 	for (cur_z = z_top; cur_z >= z_bottom; cur_z -= TILE_HEIGHT) {
@@ -1054,7 +1054,7 @@ static int DrawPillarColumn(int z_bottom, int z_top, const PalSpriteID *psid, in
  * @param y Sprite Y position of front pillar.
  * @param z_bridge Absolute height of bridge bottom.
  */
-static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo *ti, Axis axis, bool drawfarpillar, int x, int y, int z_bridge)
+static void DrawBridgePillars(const PalSpriteID &psid, const TileInfo *ti, Axis axis, bool drawfarpillar, int x, int y, int z_bridge)
 {
 	static const int bounding_box_size[2]  = {16, 2}; ///< bounding box size of pillars along bridge direction
 	static const int back_pillar_offset[2] = { 0, 9}; ///< sprite position offset of back facing pillar
@@ -1065,7 +1065,7 @@ static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo *ti, Axis 
 		{ { -INF, -INF,  15, INF }, {   16, -INF, INF, INF } }, // Y axis, north and south
 	};
 
-	if (psid->sprite == 0) return;
+	if (psid.sprite == 0) return;
 
 	/* Determine ground height under pillars */
 	DiagDirection south_dir = AxisToDiagDir(axis);
@@ -1668,7 +1668,7 @@ void DrawBridgeMiddle(const TileInfo *ti)
 	if (IsInvisibilitySet(TO_BRIDGES)) return;
 
 	psid++;
-	DrawBridgePillars(psid, ti, axis, drawfarpillar, x, y, z);
+	DrawBridgePillars(*psid, ti, axis, drawfarpillar, x, y, z);
 }
 
 
