@@ -1307,8 +1307,8 @@ static CommandCost CalculateRailStationCost(TileArea tile_area, DoCommandFlags f
 static StationSpec::TileFlags GetStationTileFlags(StationGfx gfx, const StationSpec *statspec)
 {
 	/* Default stations do not draw pylons under roofs (gfx >= 4) */
-	if (statspec == nullptr || gfx >= statspec->tileflags.size()) return gfx < 4 ? StationSpec::TileFlag::Pylons : StationSpec::TileFlags{};
-	return statspec->tileflags[gfx];
+	if (statspec == nullptr || gfx >= statspec->tilespecs.size()) return gfx < 4 ? StationSpec::TileFlag::Pylons : StationSpec::TileFlags{};
+	return statspec->tilespecs[gfx].flags;
 }
 
 /**
