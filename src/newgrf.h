@@ -130,6 +130,7 @@ struct GRFFile {
 	std::vector<std::unique_ptr<struct RoadStopSpec>> roadstops;
 
 	std::vector<uint32_t> param{};
+	std::vector<bool> unsafe_param{};
 
 	std::vector<GRFLabel> labels{}; ///< List of labels
 
@@ -164,10 +165,13 @@ struct GRFFile {
 	~GRFFile();
 
 	/** Get GRF Parameter with range checking */
-	uint32_t GetParam(uint number) const
+	uint32_t GetParam(uint number, bool allow_unsafe = false) const
 	{
 		/* Note: We implicitly test for number < this->param.size() and return 0 for invalid parameters.
 		 *       In fact this is the more important test, as param is zeroed anyway. */
+		if (!allow_unsafe) {
+			if (number < std::size(this->unsafe_param) && this->unsafe_param[number]) return 0;
+		}
 		return (number < std::size(this->param)) ? this->param[number] : 0;
 	}
 };

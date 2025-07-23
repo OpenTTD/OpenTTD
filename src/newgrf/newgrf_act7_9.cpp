@@ -113,7 +113,7 @@ void InitializePatchFlags()
 	                   |                                                       (1U << 0x02); // extended string range
 }
 
-uint32_t GetParamVal(uint8_t param, uint32_t *cond_val)
+uint32_t GetParamVal(uint8_t param, uint32_t *cond_val, bool *unsafe)
 {
 	/* First handle variable common with VarAction2 */
 	uint32_t value;
@@ -149,7 +149,15 @@ uint32_t GetParamVal(uint8_t param, uint32_t *cond_val)
 
 		default:
 			/* GRF Parameter */
-			if (param < 0x80) return _cur_gps.grffile->GetParam(param);
+			if (param < 0x80) {
+				if (unsafe != nullptr) {
+					if (param < _cur_gps.grffile->unsafe_param.size()) {
+						*unsafe |= _cur_gps.grffile->unsafe_param[param];
+						return _cur_gps.grffile->GetParam(param, true);
+					}
+				}
+				return _cur_gps.grffile->GetParam(param);
+			}
 
 			/* In-game variable. */
 			GrfMsg(1, "Unsupported in-game variable 0x{:02X}", param);
@@ -234,12 +242,17 @@ static void SkipIf(ByteReader &buf)
 		}
 	} else if (param == 0x88) {
 		/* GRF ID checks */
-
 		GRFConfig *c = GetGRFConfig(cond_val, mask);
+		bool unsafe = GB(cond_val & mask, 0, 8) == (0xFF & mask) || (c != nullptr && c->flags.Test(GRFConfigFlag::System));
 
 		if (c != nullptr && c->flags.Test(GRFConfigFlag::Static) && !_cur_gps.grfconfig->flags.Test(GRFConfigFlag::Static) && _networking) {
 			DisableStaticNewGRFInfluencingNonStaticNewGRFs(*c);
 			c = nullptr;
+		}
+
+		if (unsafe) {
+			GrfMsg(1, "SkipIf: GRFID 0x{:08X} is system GRF, skipping unsafe test", std::byteswap(cond_val));
+			return;
 		}
 
 		if (condtype != 10 && c == nullptr) {
