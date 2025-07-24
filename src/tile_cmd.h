@@ -136,6 +136,16 @@ typedef Foundation GetFoundationProc(TileIndex tile, Slope tileh);
 typedef CommandCost TerraformTileProc(TileIndex tile, DoCommandFlags flags, int z_new, Slope tileh_new);
 
 /**
+ * Tile callback function signature to test if a bridge can be built above a tile.
+ * @param tile The involved tile.
+ * @param flags Command flags passed to the build command.
+ * @param axis Axis of bridge being built.
+ * @param height Absolute height of bridge platform.
+ * @return Error code or extra cost for building bridge above the tile.
+ */
+using CheckBuildAboveProc = CommandCost(TileIndex tile, DoCommandFlags flags, Axis axis, int height);
+
+/**
  * Set of callback functions for performing tile operations of a given tile type.
  * @see TileType
  */
@@ -154,6 +164,7 @@ struct TileTypeProcs {
 	VehicleEnterTileProc *vehicle_enter_tile_proc; ///< Called when a vehicle enters a tile
 	GetFoundationProc *get_foundation_proc;
 	TerraformTileProc *terraform_tile_proc;        ///< Called when a terraforming operation is about to take place
+	CheckBuildAboveProc *check_build_above_proc;
 };
 
 extern const TileTypeProcs * const _tile_type_procs[16];
