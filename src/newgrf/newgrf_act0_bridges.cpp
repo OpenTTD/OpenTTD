@@ -93,6 +93,7 @@ static ChangeInfoResult BridgeChangeInfo(uint first, uint last, int prop, ByteRe
 						MapSpriteMappingRecolour(&bridge->sprite_table[tableid][sprite]);
 					}
 				}
+				if (!bridge->ctrl_flags.Test(BridgeSpecCtrlFlag::CustomPillarFlags)) bridge->ctrl_flags.Set(BridgeSpecCtrlFlag::InvalidPillarFlags);
 				break;
 			}
 
@@ -118,6 +119,22 @@ static ChangeInfoResult BridgeChangeInfo(uint first, uint last, int prop, ByteRe
 
 			case 0x13: // 16 bits cost multiplier
 				bridge->price = buf.ReadWord();
+				break;
+
+			case 0x14: // Purchase sprite in JGRPP.
+				buf.ReadWord();
+				buf.ReadWord();
+				break;
+
+			case 0x15: // Pillar information for the 6 middle bridge pieces.
+				// Bridge heads do not have pillars.
+				static_assert(NUM_BRIDGE_MIDDLE_PIECES == 6);
+				for (uint j = 0; j != NUM_BRIDGE_MIDDLE_PIECES; ++j) {
+					bridge->pillar_flags[j][AXIS_X] = BridgePillarFlags{buf.ReadByte()};
+					bridge->pillar_flags[j][AXIS_Y] = BridgePillarFlags{buf.ReadByte()};
+				}
+				bridge->ctrl_flags.Reset(BridgeSpecCtrlFlag::InvalidPillarFlags);
+				bridge->ctrl_flags.Set(BridgeSpecCtrlFlag::CustomPillarFlags);
 				break;
 
 			default:
