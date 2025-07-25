@@ -41,10 +41,9 @@ inline const Sprite *GetSprite(SpriteID sprite, SpriteType type)
 	return (Sprite*)GetRawSprite(sprite, type);
 }
 
-inline const uint8_t *GetNonSprite(SpriteID sprite, SpriteType type)
+inline const RecolourSprite *GetRecolourSprite(SpriteID sprite)
 {
-	assert(type == SpriteType::Recolour);
-	return (uint8_t*)GetRawSprite(sprite, type);
+	return static_cast<RecolourSprite *>(GetRawSprite(sprite, SpriteType::Recolour));
 }
 
 void GfxInitSpriteMem();
