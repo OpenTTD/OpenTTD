@@ -303,6 +303,7 @@ enum Colours : uint32_t {
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(Colours)
 DECLARE_ENUM_AS_ADDABLE(Colours)
+DECLARE_ENUM_AS_BIT_SET(Colours)
 
 /** Colour of the strings, see _string_colourmap in table/string_colours.h or docs/ottd-colourtext-palette.png */
 enum TextColour : uint32_t {
@@ -418,6 +419,17 @@ struct PixelColour {
 	constexpr inline bool HasRGB() const { return (this->r | this->g | this->b) != 0; }
 	constexpr inline Colour ToColour() const { return {this->r, this->g, this->b}; }
 	TextColour ToTextColour() const;
+};
+
+struct HsvColour {
+	static constexpr int HUE_MAX = 360 * 128; ///< Maximum value for hue.
+	static constexpr int SAT_MAX = UINT8_MAX; ///< Maximum value for saturation.
+	static constexpr int VAL_MAX = UINT8_MAX; ///< Maximum value for value.
+	static constexpr int HUE_RGN = HUE_MAX / 6;
+
+	uint16_t h; ///< Hue ranging from 0 to HUE_MAX.
+	uint8_t s; ///< Saturation ranging from 0 to SAT_MAX.
+	uint8_t v; ///< Value (brightness) ranging from 0 to VAL_MAX.
 };
 
 #endif /* GFX_TYPE_H */

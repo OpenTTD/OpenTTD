@@ -83,6 +83,10 @@ enum ColourShade : uint8_t {
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(ColourShade)
 
+HsvColour ConvertRgbToHsv(Colour rgb);
+Colour ConvertHsvToRgb(HsvColour hsv);
+HsvColour AdjustHsvColourBrightness(HsvColour hsv, ColourShade shade, int contrast);
+
 PixelColour GetColourGradient(Colours colour, ColourShade shade);
 void SetColourGradient(Colours colour, ColourShade shade, PixelColour palette_colour);
 
@@ -136,6 +140,47 @@ inline constexpr uint8_t StretchBits(uint8_t v)
 {
 	return (v << (8 - TNumBits)) | (v >> (8 - (8 - TNumBits) * 2));
 }
+
+struct ColoursPacker
+{
+	Colours &c;
+
+	explicit constexpr ColoursPacker(Colours &c) : c(c) { }
+
+	/*
+	 * Constants for the bit packing used by Colours.
+	 */
+	static constexpr const uint IS_CUSTOM_BIT = 4;
+	static constexpr const uint INDEX_START = 0; ///< Packed start of index component
+	static constexpr const uint INDEX_SIZE = 4; ///< Packed size of index component
+	static constexpr const uint HUE_START = 7; ///< Packed start of hue component
+	static constexpr const uint HUE_SIZE = 9; ///< Packed size of hue component
+	static constexpr const uint SAT_START = 16; ///< Packed start of saturation component
+	static constexpr const uint SAT_SIZE = 6; ///< Packed size of saturation component
+	static constexpr const uint VAL_START = 22; ///< Packed start of value component
+	static constexpr const uint VAL_SIZE = 6; ///< Packed size of value component
+	static constexpr const uint CON_START = 28; ///< Packed start of contrast component
+	static constexpr const uint CON_SIZE = 4; ///< Packed size of contrast component
+
+	/* Colours is considered unused and blank if only the I component is set. */
+	inline constexpr bool IsCustom() const { return HasBit(this->c, IS_CUSTOM_BIT); }
+
+	inline constexpr uint8_t GetIndex() const { return GB(this->c, INDEX_START, INDEX_SIZE); }
+	inline constexpr uint16_t GetHue() const { return GB(this->c, HUE_START, HUE_SIZE) * HsvColour::HUE_MAX / (1U << 9); }
+	inline constexpr uint8_t GetSaturation() const { return StretchBits<SAT_SIZE>(GB(this->c, SAT_START, SAT_SIZE)); }
+	inline constexpr uint8_t GetValue() const { return StretchBits<VAL_SIZE>(GB(this->c, VAL_START, VAL_SIZE)); }
+	inline constexpr uint8_t GetContrast() const { return StretchBits<CON_SIZE>(GB(this->c, CON_START, CON_SIZE)); }
+
+	inline void SetCustom(bool v) { SB(this->c, IS_CUSTOM_BIT, 1, v); }
+
+	inline void SetIndex(uint8_t v) { SB(this->c, INDEX_START, INDEX_SIZE, v); }
+	inline void SetHue(uint16_t v) { SB(this->c, HUE_START, HUE_SIZE, v * (1U << HUE_SIZE) / HsvColour::HUE_MAX); }
+	inline void SetSaturation(uint8_t v) { SB(this->c, SAT_START, SAT_SIZE, v >> (8 - SAT_SIZE)); }
+	inline void SetValue(uint8_t v) { SB(this->c, VAL_START, VAL_SIZE, v >> (8 - VAL_SIZE)); }
+	inline void SetContrast(uint8_t v) { SB(this->c, CON_START, CON_SIZE, v >> (8 - CON_SIZE)); }
+
+	inline constexpr HsvColour Hsv() const { return {this->GetHue(), this->GetSaturation(), this->GetValue()}; }
+};
 
 struct TextColourPacker
 {
