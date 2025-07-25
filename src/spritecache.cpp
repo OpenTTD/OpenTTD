@@ -427,6 +427,19 @@ void RecolourSprite::Read(SpriteFile &file, size_t entries)
 	}
 }
 
+void RecolourSpriteRGBA::Read(SpriteFile &file, size_t entries)
+{
+	this->RecolourSprite::Read(file, entries);
+
+	/* Colour is byte-arranged differently by platform, so read components individually. */
+	for (uint i = 0; i < entries; ++i) {
+		this->rgba[i].r = file.ReadByte();
+		this->rgba[i].g = file.ReadByte();
+		this->rgba[i].b = file.ReadByte();
+		this->rgba[i].a = file.ReadByte();
+	}
+}
+
 /**
  * Load a recolour sprite into memory.
  * @param file GRF we're reading from.
@@ -450,7 +463,8 @@ static void *ReadRecolourSprite(SpriteFile &file, size_t file_pos, uint num, Spr
 		entries = num;
 	}
 
-	RecolourSprite *rs = allocator.New<RecolourSprite>();
+	num -= entries;
+	RecolourSprite *rs = (num == entries * 4) ? allocator.New<RecolourSpriteRGBA>() : allocator.New<RecolourSprite>();
 	rs->Read(file, entries);
 	return rs;
 }
