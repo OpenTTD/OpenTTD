@@ -1855,6 +1855,9 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 	/* Pseudo sprite processing is finished; free temporary stuff */
 	_cur_gps.ClearDataForNextFile();
 
+	/* Make note of last sprite ID loaded for dynamic sprite management */
+	ClearDynamicSprites();
+
 	/* Call any functions that should be run after GRFs have been loaded. */
 	AfterLoadGRFs();
 
