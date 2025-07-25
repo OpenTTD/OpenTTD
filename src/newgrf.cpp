@@ -1678,6 +1678,9 @@ static void AfterLoadGRFs()
 	InitRailTypes();
 	InitRoadTypes();
 
+	/* Force cached palettes to be refreshed */
+	ResetVehicleColourMap();
+
 	for (Engine *e : Engine::IterateType(VEH_ROAD)) {
 		if (_gted[e->index].rv_max_speed != 0) {
 			/* Set RV maximum speed from the mph/0.8 unit value */
