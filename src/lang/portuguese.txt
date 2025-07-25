@@ -20,7 +20,7 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
-STR_UNDEFINED                                                   :(frase indefinida)
+STR_UNDEFINED                                                   :(cadeia de caracteres indefinida)
 STR_JUST_NOTHING                                                :Nada
 
 # Cargo related strings
