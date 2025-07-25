@@ -323,7 +323,7 @@ void Blitter_32bppAnim::DrawColourMappingRect(void *dst, int width, int height, 
 
 void Blitter_32bppAnim::SetPixel(void *video, int x, int y, PixelColour colour)
 {
-	*((Colour *)video + x + y * _screen.pitch) = LookupColourInPalette(colour.p);
+	*((Colour *)video + x + y * _screen.pitch) = colour.HasRGB() ? colour.ToColour() : LookupColourInPalette(colour.p);
 
 	/* Set the colour in the anim-buffer too, if we are rendering to the screen */
 	if (_screen_disable_anim) return;
@@ -333,7 +333,7 @@ void Blitter_32bppAnim::SetPixel(void *video, int x, int y, PixelColour colour)
 
 void Blitter_32bppAnim::DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, PixelColour colour, int width, int dash)
 {
-	const Colour c = LookupColourInPalette(colour.p);
+	const Colour c = colour.HasRGB() ? colour.ToColour() : LookupColourInPalette(colour.p);
 
 	if (_screen_disable_anim)  {
 		this->DrawLineGeneric(x, y, x2, y2, screen_width, screen_height, width, dash, [&](int x, int y) {
@@ -357,7 +357,7 @@ void Blitter_32bppAnim::DrawRect(void *video, int width, int height, PixelColour
 		return;
 	}
 
-	Colour colour32 = LookupColourInPalette(colour.p);
+	Colour colour32 = colour.HasRGB() ? colour.ToColour() : LookupColourInPalette(colour.p);
 	uint16_t *anim_line = this->ScreenToAnimOffset((uint32_t *)video) + this->anim_buf;
 
 	do {
