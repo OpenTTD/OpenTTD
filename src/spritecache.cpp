@@ -767,7 +767,7 @@ static void DeleteEntriesFromSpriteCache(size_t to_remove)
 	SpriteID i = 0;
 	for (; i != static_cast<SpriteID>(_spritecache.size()) && candidate_bytes < to_remove; i++) {
 		const SpriteCache *sc = GetSpriteCache(i);
-		if (sc->ptr != nullptr) {
+		if (sc->ptr != nullptr && sc->file != nullptr) {
 			push({ sc->lru, i, sc->length });
 			if (candidate_bytes >= to_remove) break;
 		}
@@ -776,7 +776,7 @@ static void DeleteEntriesFromSpriteCache(size_t to_remove)
 	 * only sprites with LRU values <= the maximum (i.e. the top of the heap) need to be considered */
 	for (; i != static_cast<SpriteID>(_spritecache.size()); i++) {
 		const SpriteCache *sc = GetSpriteCache(i);
-		if (sc->ptr != nullptr && sc->lru <= candidates.front().lru) {
+		if (sc->ptr != nullptr && sc->file != nullptr && sc->lru <= candidates.front().lru) {
 			push({ sc->lru, i, sc->length });
 			while (!candidates.empty() && candidate_bytes - candidates.front().size >= to_remove) {
 				pop();
@@ -831,6 +831,29 @@ void *UniquePtrSpriteAllocator::AllocatePtr(size_t size)
 	this->data = std::make_unique<std::byte[]>(size);
 	this->size = size;
 	return this->data.get();
+}
+
+/**
+ * Allocate and inject memory for a memory-based sprite.
+ */
+void InjectSprite(SpriteType type, SpriteID load_index, std::function<void(SpriteAllocator &)> func)
+{
+	if (SpriteExists(load_index)) GetSpriteCache(load_index)->ClearSpriteData();
+
+	SpriteCache *sc = AllocateSpriteCache(load_index);
+	sc->file_pos      = SIZE_MAX;
+	sc->file          = nullptr;
+	sc->id            = 0;
+	sc->lru           = 0;
+	sc->type          = type;
+	sc->warned        = false;
+	sc->control_flags = {};
+
+	UniquePtrSpriteAllocator cache_allocator;
+	func(cache_allocator);
+	sc->ptr = std::move(cache_allocator.data);
+	sc->length = static_cast<uint32_t>(cache_allocator.size);
+	_spritecache_bytes_used += sc->length;
 }
 
 /**
@@ -966,3 +989,44 @@ void GfxClearFontSpriteCache()
 }
 
 /* static */ SpriteCollMap<ReusableBuffer<SpriteLoader::CommonPixel>> SpriteLoader::Sprite::buffer;
+
+static SpriteID _sprites_end; ///< First usable free sprite ID.
+static std::vector<uint32_t> _dynamic_sprites; ///< List of used/free custom sprite slots.
+
+/**
+ * Clear custom sprites mapping and set first usable free sprite ID.
+ */
+void ClearDynamicSprites()
+{
+	_dynamic_sprites.clear();
+	_sprites_end = _spritecache.size();
+}
+
+/**
+ * Allocate a custom sprite ID.
+ */
+SpriteID AllocateDynamicSprite()
+{
+	/* Find first unused slot, or make one. */
+	auto it = std::ranges::find(_dynamic_sprites, 0);
+	if (it == std::end(_dynamic_sprites)) it = _dynamic_sprites.emplace(it, 0);
+
+	(*it)++;
+	return _sprites_end + std::distance(std::begin(_dynamic_sprites), it);
+}
+
+/**
+ * Mark a custom sprite ID as deallocated.
+ * The sprite slot is merely marked as reusable.
+ */
+void DeallocateDynamicSprite(SpriteID sprite)
+{
+	if (sprite >= _sprites_end && sprite < _sprites_end + _dynamic_sprites.size()) {
+		assert(_dynamic_sprites[sprite - _sprites_end] > 0);
+		--_dynamic_sprites[sprite - _sprites_end];
+
+		if (_dynamic_sprites[sprite - _sprites_end] == 0) {
+			GetSpriteCache(sprite)->ClearSpriteData();
+		}
+	}
+}
