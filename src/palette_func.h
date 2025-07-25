@@ -90,6 +90,9 @@ HsvColour AdjustHsvColourBrightness(HsvColour hsv, ColourShade shade, int contra
 PixelColour GetColourGradient(Colours colour, ColourShade shade);
 void SetColourGradient(Colours colour, ColourShade shade, PixelColour palette_colour);
 
+std::pair<Colour, uint8_t> GetCompanyColourRGB(Colours colour);
+PaletteID CreateCompanyColourRemap(Colours rgb1, Colours rgb2, bool twocc, PaletteID basemap, PaletteID hint);
+
 /**
  * Return the colour for a particular greyscale level.
  * @param level Intensity, 0 = black, 15 = white

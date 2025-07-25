@@ -14,6 +14,7 @@
 #include "company_type.h"
 #include "gfx_type.h"
 #include "vehicle_type.h"
+#include "livery.h"
 
 bool CheckTakeoverVehicleLimit(CompanyID cbig, CompanyID small);
 void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner);
@@ -24,6 +25,8 @@ void CompanyAdminUpdate(const Company *company);
 void CompanyAdminBankrupt(CompanyID company_id);
 void UpdateLandscapingLimits();
 void UpdateCompanyLiveries(Company *c);
+void ClearLivery(Livery &livery);
+void UpdateLivery(Livery &livery, bool always_update);
 
 Money GetAvailableMoney(CompanyID company);
 Money GetAvailableMoneyForCommand();
@@ -37,7 +40,9 @@ extern CompanyID _local_company;
 extern CompanyID _current_company;
 
 extern TypedIndexContainer<std::array<Colours, MAX_COMPANIES>, CompanyID> _company_colours;
+extern TypedIndexContainer<std::array<PaletteID, MAX_COMPANIES>, CompanyID> _company_palettes;
 extern std::string _company_manager_face;
+
 PaletteID GetCompanyPalette(CompanyID company);
 
 /**

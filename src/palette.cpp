@@ -15,6 +15,7 @@
 #include "landscape_type.h"
 #include "palette_func.h"
 #include "settings_type.h"
+#include "sprite.h"
 #include "thread.h"
 
 #include "table/palettes.h"
@@ -84,6 +85,7 @@ static uint CalculateColourDistance(const Colour &col1, int r2, int g2, int b2)
 /* Palette indexes for conversion. See docs/palettes/palette_key.png */
 const uint8_t PALETTE_INDEX_CC_START = 198; ///< Palette index of start of company colour remap area.
 const uint8_t PALETTE_INDEX_CC_END = PALETTE_INDEX_CC_START + 8; ///< Palette index of end of company colour remap area.
+const uint8_t PALETTE_INDEX_CC2_START = 80; ///< Palette index of start of second company colour remap area.
 const uint8_t PALETTE_INDEX_START = 1; ///< Palette index of start of defined palette.
 const uint8_t PALETTE_INDEX_END = 215; ///< Palette index of end of defined palette.
 
@@ -498,4 +500,47 @@ TextColour PixelColour::ToTextColour() const
 		tcp.SetB(this->b);
 	}
 	return tc;
+}
+
+std::pair<Colour, uint8_t> GetCompanyColourRGB(Colours colour)
+{
+	static constexpr uint8_t CC_PALETTE_CONTRAST = 90;
+
+	PaletteID pal = GetColourPalette(colour);
+	const RecolourSprite *map = GetRecolourSprite(pal);
+
+	Colour rgb = _palette.palette[map->palette[PALETTE_INDEX_CC_START + SHADE_NORMAL]];
+	return {rgb, CC_PALETTE_CONTRAST};
+}
+
+PaletteID CreateCompanyColourRemap(Colours colour1, Colours colour2, bool twocc, PaletteID basemap, PaletteID hint)
+{
+	DeallocateDynamicSprite(hint);
+	PaletteID pal = AllocateDynamicSprite();
+
+	InjectSprite(SpriteType::Recolour, pal, [&](SpriteAllocator &allocator) {
+		const RecolourSprite *base = GetRecolourSprite(basemap);
+		RecolourSpriteRGBA *p = allocator.Allocate<RecolourSpriteRGBA>(sizeof(RecolourSpriteRGBA));
+
+		/* Copy base remap */
+		std::ranges::copy(base->palette, p->palette);
+		std::ranges::transform(p->palette, p->rgba, [](const uint8_t &col) { return _palette.palette[col]; });
+
+		auto apply_colour = [](RecolourSpriteRGBA &remap, uint8_t index, Colours colour) {
+			ColoursPacker cp{colour};
+			if (!cp.IsCustom()) return;
+
+			HsvColour hsv = cp.Hsv();
+			uint8_t con = cp.GetContrast();
+			for (ColourShade shade = SHADE_BEGIN; shade != SHADE_END; ++shade) {
+				remap.rgba[index + shade] = ConvertHsvToRgb(AdjustHsvColourBrightness(hsv, shade, con));
+				remap.palette[index + shade] = GetNearestColourIndex(remap.rgba[index + shade]);
+			}
+		};
+
+		apply_colour(*p, PALETTE_INDEX_CC_START, colour1);
+		if (twocc) apply_colour(*p, PALETTE_INDEX_CC2_START, colour2);
+	});
+
+	return pal;
 }
