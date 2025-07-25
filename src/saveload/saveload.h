@@ -407,6 +407,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_INDUSTRY_NUM_VALID_HISTORY,         ///< 356  PR#14416 Store number of valid history records for industries.
 	SLV_INDUSTRY_ACCEPTED_HISTORY,          ///< 357  PR#14321 Add per-industry history of cargo delivered and waiting.
 	SLV_TOWN_SUPPLY_HISTORY,                ///< 358  PR#14461 Town supply history.
+	SLV_CUSTOM_COMPANY_COLOURS,             ///< 359  PR#11634 Custom company colours.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };

@@ -280,7 +280,7 @@ struct SubSprite {
 	int left, top, right, bottom;
 };
 
-enum Colours : uint8_t {
+enum Colours : uint32_t {
 	COLOUR_BEGIN,
 	COLOUR_DARK_BLUE = COLOUR_BEGIN,
 	COLOUR_PALE_GREEN,
@@ -299,7 +299,7 @@ enum Colours : uint8_t {
 	COLOUR_GREY,
 	COLOUR_WHITE,
 	COLOUR_END,
-	INVALID_COLOUR = 0xFF,
+	INVALID_COLOUR = UINT32_MAX,
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(Colours)
 DECLARE_ENUM_AS_ADDABLE(Colours)
