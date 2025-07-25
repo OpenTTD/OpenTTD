@@ -402,3 +402,8 @@ void SetColourGradient(Colours colour, ColourShade shade, PixelColour palette_in
 	assert(shade < SHADE_END);
 	ColourGradients::gradient[colour % COLOUR_END][shade % SHADE_END] = palette_index;
 }
+
+PixelColour::PixelColour(Colour colour) : r(colour.r), g(colour.g), b(colour.b)
+{
+	this->p = GetNearestColourIndex(colour);
+}
