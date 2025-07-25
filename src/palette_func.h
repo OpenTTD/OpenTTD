@@ -124,4 +124,43 @@ static constexpr PixelColour PC_FIELDS             {0x25};           ///< Light 
 static constexpr PixelColour PC_TREES              {0x57};           ///< Green palette colour for trees.
 static constexpr PixelColour PC_WATER              {0xC9};           ///< Dark blue palette colour for water.
 
+/**
+ * Stretch TNumBits to fill 8 bits.
+ * The most-significant digits are repeated as least-significant digits so that the full 8 bit range is used, e.g.:
+ * 000000 -> 00000000, 111100 -> 11110011, 111111 -> 11111111
+ * @param v Value of TNumBits to stretch.
+ * @returns 8 bit stretched value.
+ */
+template <uint TNumBits>
+inline constexpr uint8_t StretchBits(uint8_t v)
+{
+	return (v << (8 - TNumBits)) | (v >> (8 - (8 - TNumBits) * 2));
+}
+
+struct TextColourPacker
+{
+	TextColour &tc;
+
+	constexpr TextColourPacker(TextColour &tc) : tc(tc) { }
+
+	static constexpr uint8_t R_START = 12; ///< Packed start of red component
+	static constexpr uint8_t R_SIZE  =  6; ///< Packed size of red component
+
+	static constexpr uint8_t G_START = 18; ///< Packed start of green component
+	static constexpr uint8_t G_SIZE  =  6; ///< Packed size of green component
+
+	static constexpr uint8_t B_START = 24; ///< Packed start of blue component
+	static constexpr uint8_t B_SIZE  =  6; ///< Packed size of blue component
+
+	inline constexpr uint8_t GetR() const { return StretchBits<R_SIZE>(GB(this->tc, R_START, R_SIZE)); }
+	inline constexpr uint8_t GetG() const { return StretchBits<G_SIZE>(GB(this->tc, G_START, G_SIZE)); }
+	inline constexpr uint8_t GetB() const { return StretchBits<B_SIZE>(GB(this->tc, B_START, B_SIZE)); }
+
+	inline constexpr void SetR(uint8_t v) { SB(this->tc, R_START, R_SIZE, v >> (8 - R_SIZE)); }
+	inline constexpr void SetG(uint8_t v) { SB(this->tc, G_START, G_SIZE, v >> (8 - G_SIZE)); }
+	inline constexpr void SetB(uint8_t v) { SB(this->tc, B_START, B_SIZE, v >> (8 - B_SIZE)); }
+
+	inline constexpr Colour ToColour() const { return Colour(this->GetR(), this->GetG(), this->GetB()); }
+};
+
 #endif /* PALETTE_FUNC_H */
