@@ -407,3 +407,16 @@ PixelColour::PixelColour(Colour colour) : r(colour.r), g(colour.g), b(colour.b)
 {
 	this->p = GetNearestColourIndex(colour);
 }
+
+TextColour PixelColour::ToTextColour() const
+{
+	TextColour tc = static_cast<TextColour>(this->p) | TC_IS_PALETTE_COLOUR;
+	if (this->HasRGB()) {
+		tc |= TC_IS_RGB_COLOUR;
+		TextColourPacker tcp(tc);
+		tcp.SetR(this->r);
+		tcp.SetG(this->g);
+		tcp.SetB(this->b);
+	}
+	return tc;
+}
