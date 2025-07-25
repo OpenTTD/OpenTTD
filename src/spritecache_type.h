@@ -11,6 +11,7 @@
 #define SPRITECACHE_TYPE_H
 
 #include "core/enum_type.hpp"
+#include "spriteloader/sprite_file_type.hpp"
 
 /** Data structure describing a sprite. */
 struct Sprite {
@@ -19,6 +20,13 @@ struct Sprite {
 	int16_t x_offs;  ///< Number of pixels to shift the sprite to the right.
 	int16_t y_offs;  ///< Number of pixels to shift the sprite downwards.
 	std::byte data[]; ///< Sprite data.
+};
+
+/** Data structure describing a palette remap. */
+struct RecolourSprite {
+	static constexpr size_t PALETTE_SIZE = 256; ///< Number of entries in a recolour sprite.
+
+	uint8_t palette[PALETTE_SIZE];
 };
 
 enum class SpriteCacheCtrlFlag : uint8_t {

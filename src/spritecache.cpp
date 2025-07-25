@@ -407,6 +407,27 @@ static bool ResizeSprites(SpriteLoader::SpriteCollection &sprite, ZoomLevels spr
 }
 
 /**
+ * Read palette recolour sprite data.
+ * @param file SpriteFile to read from.
+ * @param entries Number of entries to read.
+ */
+static void ReadPaletteRecolourSprite(SpriteFile &file, size_t entries, RecolourSprite &rs)
+{
+	assert(entries <= RecolourSprite::PALETTE_SIZE);
+	if (file.NeedsPaletteRemap()) {
+		/* Remapping from "Windows" to "DOS" requires a temporary buffer as entries are overwritten. */
+		std::array<uint8_t, RecolourSprite::PALETTE_SIZE> tmp{};
+		file.ReadBlock(tmp.data(), entries);
+
+		for (uint i = 0; i < entries; ++i) {
+			rs.palette[i] = _palmap_w2d[tmp[_palmap_d2w[i]]];
+		}
+	} else {
+		file.ReadBlock(rs.palette, entries);
+	}
+}
+
+/**
  * Load a recolour sprite into memory.
  * @param file GRF we're reading from.
  * @param file_pos Position within file.
@@ -416,31 +437,22 @@ static bool ResizeSprites(SpriteLoader::SpriteCollection &sprite, ZoomLevels spr
  */
 static void *ReadRecolourSprite(SpriteFile &file, size_t file_pos, uint num, SpriteAllocator &allocator)
 {
-	/* "Normal" recolour sprites are ALWAYS 257 bytes. Then there is a small
-	 * number of recolour sprites that are 17 bytes that only exist in DOS
-	 * GRFs which are the same as 257 byte recolour sprites, but with the last
-	 * 240 bytes zeroed.  */
-	static const uint RECOLOUR_SPRITE_SIZE = 257;
-	uint8_t *dest = allocator.Allocate<uint8_t>(std::max(RECOLOUR_SPRITE_SIZE, num));
-
 	file.SeekTo(file_pos, SEEK_SET);
-	if (file.NeedsPaletteRemap()) {
-		uint8_t *dest_tmp = new uint8_t[std::max(RECOLOUR_SPRITE_SIZE, num)];
 
-		/* Only a few recolour sprites are less than 257 bytes */
-		if (num < RECOLOUR_SPRITE_SIZE) std::fill_n(dest_tmp, RECOLOUR_SPRITE_SIZE, 0);
-		file.ReadBlock(dest_tmp, num);
+	/* The first byte of the recolour sprite records the number of entries, with
+	 * the caveat that as this is a single byte 256 is recorded as 0. */
+	uint entries = file.ReadByte();
+	if (entries == 0) entries = 256;
+	--num;
 
-		/* The data of index 0 is never used; "literal 00" according to the (New)GRF specs. */
-		for (uint i = 1; i < RECOLOUR_SPRITE_SIZE; i++) {
-			dest[i] = _palmap_w2d[dest_tmp[_palmap_d2w[i - 1] + 1]];
-		}
-		delete[] dest_tmp;
-	} else {
-		file.ReadBlock(dest, num);
+	if (entries > num) {
+		Debug(grf, 1, "ReadRecolourSprite: Expected recolour sprite with {} entries but only {} present", entries, num);
+		entries = num;
 	}
 
-	return dest;
+	RecolourSprite *rs = allocator.Allocate<RecolourSprite>(sizeof(RecolourSprite));
+	ReadPaletteRecolourSprite(file, entries, *rs);
+	return rs;
 }
 
 /**
@@ -784,6 +796,10 @@ void IncreaseSpriteLRU()
 
 void SpriteCache::ClearSpriteData()
 {
+	if (this->ptr == nullptr) return;
+
+	if (this->type == SpriteType::Recolour) reinterpret_cast<RecolourSprite *>(this->ptr.get())->~RecolourSprite();
+
 	_spritecache_bytes_used -= this->length;
 	this->ptr.reset();
 }
