@@ -3394,6 +3394,8 @@ bool AfterLoadGame()
 	}
 
 	for (Company *c : Company::Iterate()) {
+		UpdateLivery(c->livery[LS_DEFAULT], true);
+		_company_palettes[c->index] = c->livery[LS_DEFAULT].cached_pal_1cc;
 		UpdateCompanyLiveries(c);
 	}
 

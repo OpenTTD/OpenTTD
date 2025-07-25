@@ -87,6 +87,10 @@ struct Livery {
 	Flags in_use{}; ///< Livery flags.
 	Colours colour1 = COLOUR_BEGIN; ///< First colour, for all vehicles.
 	Colours colour2 = COLOUR_BEGIN; ///< Second colour, for vehicles with 2CC support.
+
+	PaletteID cached_pal_1cc = 0; ///< NOSAVE: cached 1CC palette.
+	PaletteID cached_pal_2cc = 0; ///< NOSAVE: cached 2CC palette.
+	PaletteID cached_pal_2cr = 0; ///< NOSAVE: cached reversed 2CC palette.
 };
 
 void ResetCompanyLivery(Company *c);

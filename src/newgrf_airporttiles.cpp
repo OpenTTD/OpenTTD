@@ -17,6 +17,7 @@
 #include "water.h"
 #include "landscape.h"
 #include "company_base.h"
+#include "company_func.h"
 #include "town.h"
 #include "newgrf_animation_base.h"
 
@@ -241,7 +242,7 @@ static uint16_t GetAirportTileCallback(CallbackID callback, uint32_t param1, uin
 	return object.ResolveCallback(regs100);
 }
 
-static void AirportDrawTileLayout(const TileInfo *ti, const DrawTileSpriteSpan &dts, Colours colour)
+static void AirportDrawTileLayout(const TileInfo *ti, const DrawTileSpriteSpan &dts, PaletteID cc_pal)
 {
 	SpriteID image = dts.ground.sprite;
 	SpriteID pal = dts.ground.pal;
@@ -250,11 +251,11 @@ static void AirportDrawTileLayout(const TileInfo *ti, const DrawTileSpriteSpan &
 		if (image == SPR_FLAT_WATER_TILE && IsTileOnWater(ti->tile)) {
 			DrawWaterClassGround(ti);
 		} else {
-			DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, GetColourPalette(colour)));
+			DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, cc_pal));
 		}
 	}
 
-	DrawNewGRFTileSeq(ti, &dts, TO_BUILDINGS, 0, GetColourPalette(colour));
+	DrawNewGRFTileSeq(ti, &dts, TO_BUILDINGS, 0, cc_pal);
 }
 
 bool DrawNewAirportTile(TileInfo *ti, Station *st, const AirportTileSpec *airts)
@@ -278,7 +279,7 @@ bool DrawNewAirportTile(TileInfo *ti, Station *st, const AirportTileSpec *airts)
 
 	auto processor = group->ProcessRegisters(object, nullptr);
 	auto dts = processor.GetLayout();
-	AirportDrawTileLayout(ti, dts, Company::Get(st->owner)->colour);
+	AirportDrawTileLayout(ti, dts, GetCompanyPalette(st->owner));
 	return true;
 }
 

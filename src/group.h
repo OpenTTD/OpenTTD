@@ -88,6 +88,7 @@ struct Group : GroupPool::PoolItem<&_group_pool> {
 
 	Group(GroupID index, CompanyID owner = INVALID_OWNER, VehicleType vehicle_type = VEH_INVALID) :
 		GroupPool::PoolItem<&_group_pool>(index), owner(owner), vehicle_type(vehicle_type) {}
+	~Group();
 };
 
 
