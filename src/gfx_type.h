@@ -404,11 +404,18 @@ DECLARE_ENUM_AS_BIT_SET(StringAlignment)
 
 /** Colour for pixel/line drawing. */
 struct PixelColour {
-	uint8_t p; ///< Palette index.
+	uint8_t p = 0; ///< Palette index.
+	uint8_t r = 0; ///< Red component.
+	uint8_t g = 0; ///< Green component.
+	uint8_t b = 0; ///< Blue component.
 
-	constexpr PixelColour() : p(0) {}
+	constexpr PixelColour() {}
 	explicit constexpr PixelColour(uint8_t p) : p(p) {}
+	constexpr PixelColour(uint8_t p, Colour colour) : p(p), r(colour.r), g(colour.g), b(colour.b) {}
+	PixelColour(Colour colour);
 
+	constexpr inline bool HasRGB() const { return (this->r | this->g | this->b) != 0; }
+	constexpr inline Colour ToColour() const { return {this->r, this->g, this->b}; }
 	constexpr inline TextColour ToTextColour() const { return static_cast<TextColour>(this->p) | TC_IS_PALETTE_COLOUR; }
 };
 
