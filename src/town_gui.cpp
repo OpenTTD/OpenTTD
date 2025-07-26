@@ -57,36 +57,21 @@ TownKdtree _town_local_authority_kdtree{};
 
 typedef GUIList<const Town*, const bool &> GUITownList;
 
-static constexpr NWidgetPart _nested_town_authority_widgets[] = {
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_TA_CAPTION),
-		NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_TA_ZONE_BUTTON), SetMinimalSize(50, 0), SetStringTip(STR_LOCAL_AUTHORITY_ZONE, STR_LOCAL_AUTHORITY_ZONE_TOOLTIP),
-		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
-		NWidget(WWT_DEFSIZEBOX, COLOUR_BROWN),
-		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
-	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_BROWN, WID_TA_RATING_INFO), SetMinimalSize(317, 92), SetResize(1, 1), EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_BROWN, WID_TA_COMMAND_LIST), SetMinimalSize(317, 52), SetResize(1, 0), SetToolTip(STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP), EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_BROWN, WID_TA_ACTION_INFO), SetMinimalSize(317, 52), SetResize(1, 0), EndContainer(),
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TA_EXECUTE),  SetMinimalSize(317, 12), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_LOCAL_AUTHORITY_DO_IT_BUTTON, STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP),
-		NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
-	EndContainer()
-};
-
-/** Town authority window. */
-struct TownAuthorityWindow : Window {
+/* Town view window. */
+struct TownViewWindow : Window {
 private:
-	Town *town = nullptr; ///< Town being displayed.
+	Town *town = nullptr; ///< Town displayed by the window.
 	TownAction sel_action = TownAction::End; ///< Currently selected town action, TownAction::End means no action selected.
-	TownActions displayed_actions_on_previous_painting{}; ///< Actions that were available on the previous call to OnPaint()
 	TownActions enabled_actions{}; ///< Actions that are enabled in settings.
 	TownActions available_actions{}; ///< Actions that are available to execute for the current company.
 	std::array<StringID, to_underlying(TownAction::End)> action_tooltips{};
 
 	Dimension icon_size{}; ///< Dimensions of company icon
 	Dimension exclusive_size{}; ///< Dimensions of exclusive icon
+	uint rating_line_height = 0;
+
+	static inline uint initial_visible_pane = 0;
+	uint visible_pane = 0;
 
 	/**
 	 * Gets all town authority actions enabled in settings.
@@ -107,10 +92,17 @@ private:
 	}
 
 public:
-	TownAuthorityWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
+	static const int WID_TV_HEIGHT_NORMAL = 150;
+
+	TownViewWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
+		this->visible_pane = TownViewWindow::initial_visible_pane;
+
+		this->CreateNestedTree();
+
 		this->town = Town::Get(window_number);
 		this->enabled_actions = GetEnabledActions();
+		this->available_actions = GetMaskOfTownActions(_local_company, this->town);
 
 		auto realtime = TimerGameEconomy::UsingWallclockUnits();
 		this->action_tooltips[0] = STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING;
@@ -122,238 +114,7 @@ public:
 		this->action_tooltips[6] = realtime ? STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES : STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS;
 		this->action_tooltips[7] = STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE;
 
-		this->InitNested(window_number);
-	}
-
-	void OnInit() override
-	{
-		this->icon_size      = GetSpriteSize(SPR_COMPANY_ICON);
-		this->exclusive_size = GetSpriteSize(SPR_EXCLUSIVE_TRANSPORT);
-	}
-
-	void OnPaint() override
-	{
-		this->available_actions = GetMaskOfTownActions(_local_company, this->town);
-		if (this->available_actions != displayed_actions_on_previous_painting) this->SetDirty();
-		displayed_actions_on_previous_painting = this->available_actions;
-
-		this->SetWidgetLoweredState(WID_TA_ZONE_BUTTON, this->town->show_zone);
-		this->SetWidgetDisabledState(WID_TA_EXECUTE, (this->sel_action == TownAction::End) || !this->available_actions.Test(this->sel_action));
-
-		this->DrawWidgets();
-		if (!this->IsShaded())
-		{
-			this->DrawRatings();
-			this->DrawActions();
-		}
-	}
-
-	StringID GetRatingString(int rating) const
-	{
-		if (rating > RATING_EXCELLENT) return STR_CARGO_RATING_OUTSTANDING;
-		if (rating > RATING_VERYGOOD)  return STR_CARGO_RATING_EXCELLENT;
-		if (rating > RATING_GOOD)      return STR_CARGO_RATING_VERY_GOOD;
-		if (rating > RATING_MEDIOCRE)  return STR_CARGO_RATING_GOOD;
-		if (rating > RATING_POOR)      return STR_CARGO_RATING_MEDIOCRE;
-		if (rating > RATING_VERYPOOR)  return STR_CARGO_RATING_POOR;
-		if (rating > RATING_APPALLING) return STR_CARGO_RATING_VERY_POOR;
-		return STR_CARGO_RATING_APPALLING;
-	}
-
-	/** Draw the contents of the ratings panel. May request a resize of the window if the contents does not fit. */
-	void DrawRatings()
-	{
-		Rect r = this->GetWidget<NWidgetBase>(WID_TA_RATING_INFO)->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
-
-		int text_y_offset      = (this->resize.step_height - GetCharacterHeight(FS_NORMAL)) / 2;
-		int icon_y_offset      = (this->resize.step_height - this->icon_size.height) / 2;
-		int exclusive_y_offset = (this->resize.step_height - this->exclusive_size.height) / 2;
-
-		DrawString(r.left, r.right, r.top + text_y_offset, STR_LOCAL_AUTHORITY_COMPANY_RATINGS);
-		r.top += this->resize.step_height;
-
-		bool rtl = _current_text_dir == TD_RTL;
-		Rect icon      = r.WithWidth(this->icon_size.width, rtl);
-		Rect exclusive = r.Indent(this->icon_size.width + WidgetDimensions::scaled.hsep_normal, rtl).WithWidth(this->exclusive_size.width, rtl);
-		Rect text      = r.Indent(this->icon_size.width + WidgetDimensions::scaled.hsep_normal + this->exclusive_size.width + WidgetDimensions::scaled.hsep_normal, rtl);
-
-		/* Draw list of companies */
-		for (const Company *c : Company::Iterate()) {
-			if ((this->town->have_ratings.Test(c->index) || this->town->exclusivity == c->index)) {
-				DrawCompanyIcon(c->index, icon.left, text.top + icon_y_offset);
-
-				if (this->town->exclusivity == c->index) {
-					DrawSprite(SPR_EXCLUSIVE_TRANSPORT, GetCompanyPalette(c->index), exclusive.left, text.top + exclusive_y_offset);
-				}
-
-				int rating = this->town->ratings[c->index];
-				DrawString(text.left, text.right, text.top + text_y_offset, GetString(STR_LOCAL_AUTHORITY_COMPANY_RATING, c->index, c->index, GetRatingString(rating)));
-				text.top += this->resize.step_height;
-			}
-		}
-
-		text.bottom = text.top - 1;
-		if (text.bottom > r.bottom) {
-			/* If the company list is too big to fit, mark ourself dirty and draw again. */
-			ResizeWindow(this, 0, text.bottom - r.bottom, false);
-		}
-	}
-
-	/** Draws the contents of the actions panel. May re-initialise window to resize panel, if the list does not fit. */
-	void DrawActions()
-	{
-		Rect r = this->GetWidget<NWidgetBase>(WID_TA_COMMAND_LIST)->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
-
-		DrawString(r, STR_LOCAL_AUTHORITY_ACTIONS_TITLE);
-		r.top += GetCharacterHeight(FS_NORMAL);
-
-		/* Draw list of actions */
-		for (TownAction i = {}; i != TownAction::End; ++i) {
-			/* Don't show actions if disabled in settings. */
-			if (!this->enabled_actions.Test(i)) continue;
-
-			/* Set colour of action based on ability to execute and if selected. */
-			TextColour action_colour = TC_GREY | TC_NO_SHADE;
-			if (this->available_actions.Test(i)) action_colour = TC_ORANGE;
-			if (this->sel_action == i) action_colour = TC_WHITE;
-
-			DrawString(r, STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + to_underlying(i), action_colour);
-			r.top += GetCharacterHeight(FS_NORMAL);
-		}
-	}
-
-	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
-	{
-		if (widget == WID_TA_CAPTION) return GetString(STR_LOCAL_AUTHORITY_CAPTION, this->window_number);
-
-		return this->Window::GetWidgetString(widget, stringid);
-	}
-
-	void DrawWidget(const Rect &r, WidgetID widget) const override
-	{
-		switch (widget) {
-			case WID_TA_ACTION_INFO:
-				if (this->sel_action != TownAction::End) {
-					Money action_cost = _price[PR_TOWN_ACTION] * GetTownActionCost(this->sel_action) >> 8;
-					bool affordable = Company::IsValidID(_local_company) && action_cost < GetAvailableMoney(_local_company);
-
-					DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.framerect),
-						GetString(this->action_tooltips[to_underlying(this->sel_action)], action_cost),
-						affordable ? TC_YELLOW : TC_RED);
-				}
-				break;
-		}
-	}
-
-	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
-	{
-		switch (widget) {
-			case WID_TA_ACTION_INFO: {
-				assert(size.width > padding.width && size.height > padding.height);
-				Dimension d = {0, 0};
-				for (TownAction i = {}; i != TownAction::End; ++i) {
-					Money price = _price[PR_TOWN_ACTION] * GetTownActionCost(i) >> 8;
-					d = maxdim(d, GetStringMultiLineBoundingBox(GetString(this->action_tooltips[to_underlying(i)], price), size));
-				}
-				d.width += padding.width;
-				d.height += padding.height;
-				size = maxdim(size, d);
-				break;
-			}
-
-			case WID_TA_COMMAND_LIST:
-				size.height = (to_underlying(TownAction::End) + 1) * GetCharacterHeight(FS_NORMAL) + padding.height;
-				size.width = GetStringBoundingBox(STR_LOCAL_AUTHORITY_ACTIONS_TITLE).width;
-				for (TownAction i = {}; i != TownAction::End; ++i) {
-					size.width = std::max(size.width, GetStringBoundingBox(STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + to_underlying(i)).width + padding.width);
-				}
-				size.width += padding.width;
-				break;
-
-			case WID_TA_RATING_INFO:
-				fill.height = resize.height = std::max({this->icon_size.height + WidgetDimensions::scaled.vsep_normal, this->exclusive_size.height + WidgetDimensions::scaled.vsep_normal, (uint)GetCharacterHeight(FS_NORMAL)});
-				size.height = 9 * resize.height + padding.height;
-				break;
-		}
-	}
-
-	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
-	{
-		switch (widget) {
-			case WID_TA_ZONE_BUTTON: {
-				bool new_show_state = !this->town->show_zone;
-				TownID index = this->town->index;
-
-				new_show_state ? _town_local_authority_kdtree.Insert(index) : _town_local_authority_kdtree.Remove(index);
-
-				this->town->show_zone = new_show_state;
-				this->SetWidgetLoweredState(widget, new_show_state);
-				MarkWholeScreenDirty();
-				break;
-			}
-
-			case WID_TA_COMMAND_LIST: {
-				int y = this->GetRowFromWidget(pt.y, WID_TA_COMMAND_LIST, 1, GetCharacterHeight(FS_NORMAL)) - 1;
-
-				auto action = this->enabled_actions.GetNthSetBit(y);
-				if (!action.has_value()) break;
-
-				this->sel_action = *action;
-				this->SetDirty();
-
-				/* When double-clicking, continue */
-				if (click_count == 1 || !this->available_actions.Test(this->sel_action)) break;
-				[[fallthrough]];
-			}
-
-			case WID_TA_EXECUTE:
-				Command<CMD_DO_TOWN_ACTION>::Post(STR_ERROR_CAN_T_DO_THIS, this->town->xy, static_cast<TownID>(this->window_number), this->sel_action);
-				break;
-		}
-	}
-
-	/** Redraw the whole window on a regular interval. */
-	const IntervalTimer<TimerWindow> redraw_interval = {std::chrono::seconds(3), [this](auto) {
-		this->SetDirty();
-	}};
-
-	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
-	{
-		if (!gui_scope) return;
-
-		this->enabled_actions = this->GetEnabledActions();
-		if (!this->enabled_actions.Test(this->sel_action)) {
-			this->sel_action = TownAction::End;
-		}
-	}
-};
-
-static WindowDesc _town_authority_desc(
-	WDP_AUTO, "view_town_authority", 317, 222,
-	WC_TOWN_AUTHORITY, WC_NONE,
-	{},
-	_nested_town_authority_widgets
-);
-
-static void ShowTownAuthorityWindow(uint town)
-{
-	AllocateWindowDescFront<TownAuthorityWindow>(_town_authority_desc, town);
-}
-
-
-/* Town view window. */
-struct TownViewWindow : Window {
-private:
-	Town *town = nullptr; ///< Town displayed by the window.
-
-public:
-	static const int WID_TV_HEIGHT_NORMAL = 150;
-
-	TownViewWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
-	{
-		this->CreateNestedTree();
-
-		this->town = Town::Get(window_number);
+		this->SetPaneState();
 
 		this->FinishInitNested(window_number);
 
@@ -363,6 +124,23 @@ public:
 
 		/* disable renaming town in network games if you are not the server */
 		this->SetWidgetDisabledState(WID_TV_CHANGE_NAME, _networking && !_network_server);
+	}
+
+	void SetPaneState()
+	{
+		if (auto *nwid = this->GetWidget<NWidgetStacked>(WID_TV_PANE_SEL); nwid != nullptr) {
+			nwid->SetDisplayedPlane(this->visible_pane);
+			this->SetWidgetLoweredState(WID_TV_PANE_INFO, this->visible_pane == 0);
+			this->SetWidgetLoweredState(WID_TV_PANE_RATINGS, this->visible_pane == 1);
+			this->SetWidgetLoweredState(WID_TV_PANE_ACTIONS, this->visible_pane == 2);
+		}
+	}
+
+	void OnInit() override
+	{
+		this->icon_size = GetScaledSpriteSize(SPR_COMPANY_ICON);
+		this->exclusive_size = GetScaledSpriteSize(SPR_EXCLUSIVE_TRANSPORT);
+		this->rating_line_height = std::max({this->icon_size.height, this->exclusive_size.height, (uint)GetCharacterHeight(FS_NORMAL)});
 	}
 
 	void Close([[maybe_unused]] int data = 0) override
@@ -382,14 +160,24 @@ public:
 	{
 		extern const Town *_viewport_highlight_town;
 		this->SetWidgetLoweredState(WID_TV_CATCHMENT, _viewport_highlight_town == this->town);
-
+		this->SetWidgetLoweredState(WID_TV_ZONE, this->town->show_zone);
+		this->SetWidgetDisabledState(WID_TV_EXECUTE, this->visible_pane != 2 || this->sel_action == TownAction::End || !this->available_actions.Test(this->sel_action));
 		this->DrawWidgets();
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
-		if (widget != WID_TV_INFO) return;
+		switch (widget) {
+			case WID_TV_INFO: this->DrawInfo(r); break;
+			case WID_TV_RATING_INFO: this->DrawRatings(r); break;
+			case WID_TV_COMMAND_LIST: this->DrawActions(r); break;
+			case WID_TV_ACTION_INFO: this->DrawActionInfo(r); break;
+			default: break;
+		}
+	}
 
+	void DrawInfo(const Rect &r) const
+	{
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 
 		DrawString(tr, GetString(STR_TOWN_VIEW_POPULATION_HOUSES, this->town->cache.population, this->town->cache.num_houses));
@@ -465,6 +253,86 @@ public:
 		}
 	}
 
+	static StringID GetRatingString(int rating)
+	{
+		if (rating > RATING_EXCELLENT) return STR_CARGO_RATING_OUTSTANDING;
+		if (rating > RATING_VERYGOOD)  return STR_CARGO_RATING_EXCELLENT;
+		if (rating > RATING_GOOD)      return STR_CARGO_RATING_VERY_GOOD;
+		if (rating > RATING_MEDIOCRE)  return STR_CARGO_RATING_GOOD;
+		if (rating > RATING_POOR)      return STR_CARGO_RATING_MEDIOCRE;
+		if (rating > RATING_VERYPOOR)  return STR_CARGO_RATING_POOR;
+		if (rating > RATING_APPALLING) return STR_CARGO_RATING_VERY_POOR;
+		return STR_CARGO_RATING_APPALLING;
+	}
+
+	/** Draw the contents of the ratings panel. May request a resize of the window if the contents does not fit. */
+	void DrawRatings(const Rect &r) const
+	{
+		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
+
+		int text_y_offset      = (this->rating_line_height - GetCharacterHeight(FS_NORMAL)) / 2;
+		int icon_y_offset      = (this->rating_line_height - this->icon_size.height) / 2;
+		int exclusive_y_offset = (this->rating_line_height - this->exclusive_size.height) / 2;
+
+		DrawString(tr.left, tr.right, tr.top + text_y_offset, STR_LOCAL_AUTHORITY_COMPANY_RATINGS);
+		tr.top += this->rating_line_height;
+
+		bool rtl = _current_text_dir == TD_RTL;
+		Rect icon      = tr.WithWidth(this->icon_size.width, rtl);
+		Rect exclusive = tr.Indent(this->icon_size.width + WidgetDimensions::scaled.hsep_normal, rtl).WithWidth(this->exclusive_size.width, rtl);
+		Rect text      = tr.Indent(this->icon_size.width + WidgetDimensions::scaled.hsep_normal + this->exclusive_size.width + WidgetDimensions::scaled.hsep_normal, rtl);
+
+		/* Draw list of companies */
+		for (const Company *c : Company::Iterate()) {
+			if ((this->town->have_ratings.Test(c->index) || this->town->exclusivity == c->index)) {
+				DrawCompanyIcon(c->index, icon.left, text.top + icon_y_offset);
+
+				if (this->town->exclusivity == c->index) {
+					DrawSprite(SPR_EXCLUSIVE_TRANSPORT, GetCompanyPalette(c->index), exclusive.left, text.top + exclusive_y_offset);
+				}
+
+				int rating = this->town->ratings[c->index];
+				DrawString(text.left, text.right, text.top + text_y_offset, GetString(STR_LOCAL_AUTHORITY_COMPANY_RATING, c->index, c->index, GetRatingString(rating)));
+				text.top += this->rating_line_height;
+			}
+		}
+	}
+
+	/** Draws the contents of the actions panel. May re-initialise window to resize panel, if the list does not fit. */
+	void DrawActions(const Rect &r) const
+	{
+		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
+
+		DrawString(tr, STR_LOCAL_AUTHORITY_ACTIONS_TITLE);
+		tr.top += GetCharacterHeight(FS_NORMAL);
+
+		/* Draw list of actions */
+		for (TownAction i = {}; i != TownAction::End; ++i) {
+			/* Don't show actions if disabled in settings. */
+			if (!this->enabled_actions.Test(i)) continue;
+
+			/* Set colour of action based on ability to execute and if selected. */
+			TextColour action_colour = TC_GREY | TC_NO_SHADE;
+			if (this->available_actions.Test(i)) action_colour = TC_ORANGE;
+			if (this->sel_action == i) action_colour = TC_WHITE;
+
+			DrawString(tr, STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + to_underlying(i), action_colour);
+			tr.top += GetCharacterHeight(FS_NORMAL);
+		}
+	}
+
+	void DrawActionInfo(const Rect &r) const
+	{
+		if (this->sel_action == TownAction::End) return;
+
+		Money action_cost = _price[PR_TOWN_ACTION] * GetTownActionCost(this->sel_action) >> 8;
+		bool affordable = Company::IsValidID(_local_company) && action_cost < GetAvailableMoney(_local_company);
+
+		DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.framerect),
+			GetString(this->action_tooltips[to_underlying(this->sel_action)], action_cost),
+			affordable ? TC_YELLOW : TC_RED);
+	}
+
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
@@ -474,10 +342,6 @@ public:
 				} else {
 					ScrollMainWindowToTile(this->town->xy);
 				}
-				break;
-
-			case WID_TV_SHOW_AUTHORITY: // town authority
-				ShowTownAuthorityWindow(this->window_number);
 				break;
 
 			case WID_TV_CHANGE_NAME: // rename
@@ -503,14 +367,68 @@ public:
 			case WID_TV_DELETE: // delete town - only available on Scenario editor
 				Command<CMD_DELETE_TOWN>::Post(STR_ERROR_TOWN_CAN_T_DELETE, static_cast<TownID>(this->window_number));
 				break;
+
+			case WID_TV_ZONE: {
+				bool new_show_state = !this->town->show_zone;
+				TownID index = this->town->index;
+
+				new_show_state ? _town_local_authority_kdtree.Insert(index) : _town_local_authority_kdtree.Remove(index);
+
+				this->town->show_zone = new_show_state;
+				this->SetWidgetLoweredState(widget, new_show_state);
+				MarkWholeScreenDirty();
+				break;
+			}
+
+			case WID_TV_COMMAND_LIST: {
+				int y = this->GetRowFromWidget(pt.y, widget, WidgetDimensions::scaled.framerect.top, GetCharacterHeight(FS_NORMAL)) - 1;
+
+				auto action = this->enabled_actions.GetNthSetBit(y);
+				if (!action.has_value()) break;
+
+				this->sel_action = *action;
+				this->SetDirty();
+
+				/* When double-clicking, continue */
+				if (click_count == 1 || !this->available_actions.Test(this->sel_action)) break;
+				[[fallthrough]];
+			}
+
+			case WID_TV_EXECUTE:
+				Command<CMD_DO_TOWN_ACTION>::Post(STR_ERROR_CAN_T_DO_THIS, this->town->xy, static_cast<TownID>(this->window_number), this->sel_action);
+				break;
+
+			case WID_TV_PANE_INFO:
+				TownViewWindow::initial_visible_pane = this->visible_pane = 0;
+				this->ResizePanes();
+				break;
+
+			case WID_TV_PANE_RATINGS:
+				TownViewWindow::initial_visible_pane = this->visible_pane = 1;
+				this->ResizePanes();
+				break;
+
+			case WID_TV_PANE_ACTIONS:
+				TownViewWindow::initial_visible_pane = this->visible_pane = 2;
+				this->ResizePanes();
+				break;
 		}
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
-			case WID_TV_INFO:
-				size.height = GetDesiredInfoHeight(size.width) + padding.height;
+			case WID_TV_COMMAND_LIST:
+				if (this->visible_pane != 2) {
+					size.height = 0;
+				} else {
+					size.height = (to_underlying(TownAction::End) + 1) * GetCharacterHeight(FS_NORMAL) + padding.height;
+					size.width = GetStringBoundingBox(STR_LOCAL_AUTHORITY_ACTIONS_TITLE).width;
+					for (TownAction i = {}; i != TownAction::End; ++i) {
+						size.width = std::max(size.width, GetStringBoundingBox(STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + to_underlying(i)).width + padding.width);
+					}
+					size.width += padding.width;
+				}
 				break;
 		}
 	}
@@ -521,6 +439,7 @@ public:
 	 */
 	uint GetDesiredInfoHeight(int width) const
 	{
+		width -= WidgetDimensions::scaled.framerect.Horizontal();
 		uint aimed_height = static_cast<uint>(1 + CargoSpec::town_production_cargoes[TPE_PASSENGERS].size() + CargoSpec::town_production_cargoes[TPE_MAIL].size()) * GetCharacterHeight(FS_NORMAL);
 
 		bool first = true;
@@ -540,23 +459,76 @@ public:
 		if (_settings_game.economy.station_noise_level) aimed_height += GetCharacterHeight(FS_NORMAL);
 
 		if (!this->town->text.empty()) {
-			aimed_height += GetStringHeight(this->town->text.GetDecodedString(), width - WidgetDimensions::scaled.framerect.Horizontal());
+			aimed_height += GetStringHeight(this->town->text.GetDecodedString(), width);
 		}
 
-		return aimed_height;
+		return aimed_height + WidgetDimensions::scaled.framerect.Vertical();
 	}
 
-	void ResizeWindowAsNeeded()
+	uint GetDesiredRatingHeight(int) const
 	{
-		const NWidgetBase *nwid_info = this->GetWidget<NWidgetBase>(WID_TV_INFO);
-		uint aimed_height = GetDesiredInfoHeight(nwid_info->current_x);
-		if (aimed_height > nwid_info->current_y || (aimed_height < nwid_info->current_y && nwid_info->current_y > nwid_info->smallest_y)) {
-			this->ReInit();
+		int lines = 1;
+		for (const Company *c : Company::Iterate()) {
+			if ((this->town->have_ratings.Test(c->index) || this->town->exclusivity == c->index)) {
+				++lines;
+			}
 		}
+		return this->rating_line_height * std::max(3, lines) + WidgetDimensions::scaled.framerect.Vertical();
+	}
+
+	uint GetDesiredActionInfoHeight(int width) const
+	{
+		width -= WidgetDimensions::scaled.framerect.Horizontal();
+		int height = 0;
+		for (TownAction i = {}; i != TownAction::End; ++i) {
+			Money price = _price[PR_TOWN_ACTION] * GetTownActionCost(i) >> 8;
+			height = std::max(height, GetStringHeight(GetString(this->action_tooltips[to_underlying(i)], price), width));
+		}
+		return height + WidgetDimensions::scaled.framerect.Vertical();
+	}
+
+	bool UpdatePaneSizes()
+	{
+		bool changed = false;
+
+		auto *sel = this->GetWidget<NWidgetStacked>(WID_TV_PANE_SEL);
+		if (sel != nullptr) {
+			if (auto *nwid = this->GetWidget<NWidgetCore>(WID_TV_INFO); nwid != nullptr) {
+				uint y = this->visible_pane == 0 ? GetDesiredInfoHeight(nwid->current_x) : 0;
+				changed |= nwid->UpdateVerticalSize(y);
+			}
+
+			if (auto *nwid = this->GetWidget<NWidgetCore>(WID_TV_RATING_INFO); nwid != nullptr) {
+				uint y = this->visible_pane == 1 ? GetDesiredRatingHeight(nwid->current_x) : 0;
+				changed |= nwid->UpdateVerticalSize(y);
+			}
+
+			if (auto *nwid = this->GetWidget<NWidgetCore>(WID_TV_ACTION_INFO); nwid != nullptr) {
+				uint y = this->visible_pane == 2 ? GetDesiredActionInfoHeight(nwid->current_x) : 0;
+				changed |= nwid->UpdateVerticalSize(y);
+			}
+		}
+
+		return changed;
+	}
+
+	void ResizePanes()
+	{
+		this->SetPaneState();
+
+		/* We want to resize the window while maintaining the size of the viewport. */
+		auto *nwid = this->GetWidget<NWidgetViewport>(WID_TV_VIEWPORT);
+		int old_y = static_cast<int>(nwid->current_y);
+		this->OnResize();
+		int new_y = static_cast<int>(nwid->current_y);
+
+		if (old_y != new_y) ResizeWindow(this, 0, old_y - new_y, false, false);
 	}
 
 	void OnResize() override
 	{
+		if (this->UpdatePaneSizes()) this->ReInit(0, 0);
+
 		if (this->viewport != nullptr) {
 			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_TV_VIEWPORT);
 			nvp->UpdateViewportCoordinates(this);
@@ -573,6 +545,11 @@ public:
 		}
 	}
 
+	/** Redraw the whole window on a regular interval. */
+	const IntervalTimer<TimerWindow> redraw_interval = {std::chrono::seconds(3), [this](auto) {
+		this->SetDirty();
+	}};
+
 	/**
 	 * Some data on this window has become invalid.
 	 * @param data Information about the changed data.
@@ -581,9 +558,16 @@ public:
 	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
+
 		/* Called when setting station noise or required cargoes have changed, in order to resize the window */
+		this->enabled_actions = GetEnabledActions();
+		this->available_actions = GetMaskOfTownActions(_local_company, this->town);
+		if (!this->enabled_actions.Test(this->sel_action)) {
+			this->sel_action = TownAction::End;
+		}
+
 		this->SetDirty(); // refresh display for current size. This will allow to avoid glitches when downgrading
-		this->ResizeWindowAsNeeded();
+		this->ResizePanes();
 	}
 
 	void OnQueryTextFinished(std::optional<std::string> str) override
@@ -614,10 +598,23 @@ static constexpr NWidgetPart _nested_town_game_view_widgets[] = {
 			NWidget(NWID_VIEWPORT, INVALID_COLOUR, WID_TV_VIEWPORT), SetMinimalSize(254, 86), SetFill(1, 0), SetResize(1, 1),
 		EndContainer(),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_BROWN, WID_TV_INFO), SetMinimalSize(260, 32), SetResize(1, 0), SetFill(1, 0), EndContainer(),
-	NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TV_SHOW_AUTHORITY), SetMinimalSize(80, 12), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON, STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP),
-		NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_TV_CATCHMENT), SetMinimalSize(40, 12), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_BUTTON_CATCHMENT, STR_TOOLTIP_CATCHMENT),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_TV_PANE_INFO), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_TOWN_VIEW_INFO, STR_TOWN_VIEW_INFO_TOOLTIP),
+		NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_TV_PANE_RATINGS), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_TOWN_VIEW_RATINGS, STR_TOWN_VIEW_RATINGS_TOOLTIP),
+		NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_TV_PANE_ACTIONS), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_TOWN_VIEW_ACTIONS, STR_TOWN_VIEW_ACTIONS_TOOLTIP),
+	EndContainer(),
+	NWidget(NWID_SELECTION, INVALID_COLOUR, WID_TV_PANE_SEL),
+		NWidget(WWT_PANEL, COLOUR_BROWN, WID_TV_INFO), SetResize(1, 0), SetFill(1, 1), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_BROWN, WID_TV_RATING_INFO), SetResize(1, 0), SetFill(1, 1), EndContainer(),
+		NWidget(NWID_VERTICAL),
+			NWidget(WWT_PANEL, COLOUR_BROWN, WID_TV_COMMAND_LIST), SetResize(1, 0), SetFill(1, 1), SetToolTip(STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP), EndContainer(),
+			NWidget(WWT_PANEL, COLOUR_BROWN, WID_TV_ACTION_INFO), SetResize(1, 0), SetFill(1, 0), EndContainer(),
+		EndContainer(),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TV_EXECUTE), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_LOCAL_AUTHORITY_DO_IT_BUTTON, STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP),
+		NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_TV_ZONE), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_LOCAL_AUTHORITY_ZONE, STR_LOCAL_AUTHORITY_ZONE_TOOLTIP),
+		NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_TV_CATCHMENT), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_BUTTON_CATCHMENT, STR_TOOLTIP_CATCHMENT),
 		NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
 	EndContainer(),
 };

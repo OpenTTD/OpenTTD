@@ -190,12 +190,6 @@ enum WindowClass : uint16_t {
 
 
 	/**
-	 * Town authority; %Window numbers:
-	 *   - #TownID = #TownAuthorityWidgets
-	 */
-	WC_TOWN_AUTHORITY,
-
-	/**
 	 * Vehicle details; %Window numbers:
 	 *   - #VehicleID = #VehicleDetailsWidgets
 	 */
