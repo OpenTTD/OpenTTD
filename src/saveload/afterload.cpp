@@ -1024,6 +1024,27 @@ bool AfterLoadGame()
 		_settings_game.construction.freeform_edges = false;
 	}
 
+	/* Handle infinite water borders. */
+	if (IsSavegameVersionBefore(SLV_INFINITE_WATER_BORDERS)) {
+		if (CheckWaterBorders(true)) {
+			/* We passed the water borders check, yay! */
+			_settings_game.game_creation.water_borders = BORDERFLAGS_ALL;
+
+			/* Flatten void tiles, which may have been affected by terraforming near the map edge. */
+			for (uint x = 0; x <= Map::SizeX(); x++) {
+				SetTileHeightOutsideMap(x, 0, 0);
+				SetTileHeightOutsideMap(x, Map::SizeY(), 0);
+			}
+			for (uint y = 1; y < Map::SizeY(); y++) {
+				SetTileHeightOutsideMap(0, y, 0);
+				SetTileHeightOutsideMap(Map::SizeX(), y, 0);
+			}
+		} else {
+			/* Not all edges are ocean. */
+			_settings_game.game_creation.water_borders = BorderFlag{};
+		}
+	}
+
 	/* From version 9.0, we update the max passengers of a town (was sometimes negative
 	 *  before that. */
 	if (IsSavegameVersionBefore(SLV_9)) {
