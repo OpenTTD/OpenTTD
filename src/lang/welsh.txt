@@ -267,6 +267,7 @@ STR_UNITS_YEARS                                                 :{NUM}{NBSP}blwy
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}cyfnod{P "" ""}
 
 STR_LIST_SEPARATOR                                              :,{SPACE}
+STR_TRUNCATION_ELLIPSIS                                         :...
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Hidlydd:
@@ -285,7 +286,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Cau ffen
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Teitl ffenestr - llusgwch hwn i symud ffenestr
 STR_TOOLTIP_SHADE                                               :{BLACK}Cysgodi'r ffenest - dangos y bar teitl yn unig
 STR_TOOLTIP_DEBUG                                               :{BLACK}Dangos gwybodaeth dadnamu NewGRF
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}Ailfeintio'r ffenestr i'w faint rhagosodedig. Bydd Ctrl+Clic yn storio'r maint presenol fel rhagosodiad
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Ailfeintio'r ffenestr i'w faint rhagosodedig. Bydd Ctrl+Clic yn storio'r maint presenol fel rhagosodiad. Dwbl Ctrl+Clic i ailosod y rhagosodiad a storiwyd
 STR_TOOLTIP_STICKY                                              :{BLACK}Nodi'r ffenest yma fel un na ellir ei gau can yr allwedd 'Cau Pob Ffenestr'. Bydd Ctrl+Clicio'n cadw'r dewis fel rhagosodiad
 STR_TOOLTIP_RESIZE                                              :{BLACK}Cliciwch a llusgo er mwyn newid maint y ffenestr
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Toglu maint ffenestri mawr/bach
@@ -633,8 +634,11 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Peidio a
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Toglu'r graff ar gyfer y math llwyth yma
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Hanes Llwyth
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Cynhyrchwyd
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Cludwyd
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Danfonwyd
+STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Yn aros
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Dangos manwl amcangyfrif perfformiad
 
@@ -964,11 +968,14 @@ STR_GAME_OPTIONS_TAB_SOUND                                      :Sain
 STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Dewis gosodiadau sain a cherddoriaeth
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Cymdeithasol
 STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Dewis gosodiadau integreiddio cymdeithasol
+STR_GAME_OPTIONS_TAB_ADVANCED                                   :Uwch
+STR_GAME_OPTIONS_TAB_ADVANCED_TOOLTIP                           :Newid gosodiadau uwch
 
 STR_GAME_OPTIONS_VOLUME                                         :Lefel Sain
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Effeithiau sŵn
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Cerddoriaeth
 
+STR_GAME_OPTIONS_SETTING                                        :{STRING}: {ORANGE}{STRING}
 
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
@@ -1056,6 +1063,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Bydd ticio'r bl
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Gyriant presennol: {STRING}
 
+STR_GAME_OPTIONS_INTERFACE                                      :Rhyngwyneb
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Maint rhyngwyneb
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Llusgwch y llithrwr i osod maint y rhyngwyneb. Daliwhc Ctrl i ganiatáu addasiad parhaol
@@ -1080,6 +1088,7 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Mae hwn yn agor
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Rhagolwg o ganlyniad yr arolwg
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Dangos canlyniadau arolwg y gêm sy'n rhedeg
 
+STR_GAME_OPTIONS_DISPLAY                                        :Dangos
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :Dangos cyfradd adnewyddu
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Dewis y cyfradd adnewyddu sgrin i'w defnyddio
@@ -1101,7 +1110,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Gwybodaeth bell
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Nôl Cynnwys
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Gwirio am gynnwys newydd a diweddar i'w lawrlwytho
 
-STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(dim ategolion integreiddio gyda llwyfannau cymdeithasol wedi'u gosod)
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :(dim ategolion integreiddio gyda llwyfannau cymdeithasol wedi'u gosod)
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Llwyfan:
@@ -1295,6 +1304,9 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Cyfradd chwyddi
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Costau rhedeg: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Gosod lefel costau cynnal a chadw ar gerbydau a thanadeiledd
 ###length 3
+STR_CONFIG_SETTING_RUNNING_COSTS_LOW                            :Isel
+STR_CONFIG_SETTING_RUNNING_COSTS_MEDIUM                         :Cymhedrol
+STR_CONFIG_SETTING_RUNNING_COSTS_HIGH                           :Uchel
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Cyflymder adeiladu: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Cyfyngu'r nifer o weithredoedd adeiliadu ar gyfer AIau
@@ -1317,6 +1329,9 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Dim cymhorthdal
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costau adeiladu: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Gosod lefel costau prynnu ac adeiladu
 ###length 3
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_LOW                       :Isel
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_MEDIUM                    :Cymhedrol
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Uchel
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Dirwasgiadau: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Os y galluogir, gall dirwasgiadau ddigwydd yn ysbeidiol. Yn ystod dirwasgiad bydd lefelau gweithgynhyrchu'n is o lawer (gan ddychwelyd at y lefel gwreiddiol wedi diwedd y dirwasgiad)
@@ -2072,9 +2087,9 @@ STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Mae llwythi ARF
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Dull dosrannu ar gyfer llwythi eraill: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :Mae "anghymesur" yn golygu y gall llwythi mympwyol eu gyrru yn y naill cyfeiriad neu'r llall. Mae "â llaw" yn golygu ni fydd dosrannu diofyn yn digwydd ar gyfer y llwythi hyn
 ###length 3
-STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :â llaw
-STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :anghymesur
-STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :cymesur
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :Â llaw
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :Anghymesur
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :Cymesur
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Manylder dosrannu: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Mae'r gosodiad yma'n pennu faint o amser prosesydd y bydd cyfrifo'r graff cyswllt yn ei gymeryd. Os yw'n cymryd gormod o amser efallai bydd peth oedi ar y gêm. Os ydych yn gosod gwerth isel, fodd bynnag, ni fydd y dosraniad yn fanwl gywir, a gallwch nodi nad yw llwythi'n cael ei yrru i'r mannau y byddech y disgwyl
@@ -2189,6 +2204,8 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... dim 
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... gyriant caledwedd graffig wedi chwalu'r gêm. Cyflymu caledwedd wedi;i analluogi
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Gêm Newydd
 STR_INTRO_LOAD_GAME                                             :{BLACK}Llwytho Gêm
@@ -2322,16 +2339,19 @@ STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Dewis wy
 STR_FACE_LOAD                                                   :{BLACK}Llwytho
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Llwytho hoff wyneb
 STR_FACE_LOAD_DONE                                              :{WHITE}Llwythwyd eich hoff wyneb o'r ffeil ffurfweddu OpenTTD
-STR_FACE_FACECODE                                               :{BLACK}Wyneb chwaraewr rhif:
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Gweld ac/neu osod rhif wyneb llywydd y cwmni
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Gweld ac/neu osod rhif gwyneb llywydd
-STR_FACE_FACECODE_SET                                           :{WHITE}Cafodd rhif wyneb newydd ei osod
-STR_FACE_FACECODE_ERR                                           :{WHITE}Methu gosod rhif wyneb llywydd - rhaid iddo fod yn rhif rhwng 0 a 4,294,967,295!
+STR_FACE_FACECODE                                               :{BLACK}Cod gwyneb chwaraewr
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Gweld ac/neu osod cod gwyneb llywydd y cwmni
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Gweld ac/neu osod cod gwyneb llywydd
+STR_FACE_FACECODE_SET                                           :{WHITE}Cafodd cod gwyneb newydd ei osod
+STR_FACE_FACECODE_ERR                                           :{WHITE}Methu gosod cod wyneb llywydd - rhaid iddo fod yn label a rhif dilys
 STR_FACE_SAVE                                                   :{BLACK}Cadw
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Cadw hoff wyneb
 STR_FACE_SAVE_DONE                                              :{WHITE}Bydd yr wyneb hwn yn cael ei gadw fel eich ffefryn yn y ffeil ffurfweddu OpenTTD
+STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
+STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Ie
 STR_FACE_NO                                                     :Na
+STR_FACE_STYLE                                                  :Arddull:
 STR_FACE_HAIR                                                   :Gwallt:
 STR_FACE_EYEBROWS                                               :Aeliau:
 STR_FACE_EYECOLOUR                                              :Lliw llygaid
@@ -2804,6 +2824,10 @@ STR_PICKER_MODE_USED_TOOLTIP                                    :Toglu dangos ei
 STR_PICKER_MODE_SAVED                                           :Wedi'u Cadw
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Toglu dangos eitemau wedi'u cadw yn unig
 
+STR_PICKER_PREVIEW_SHRINK                                       :-
+STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Lleihau ucher delewddau rhagolwg. Mae Ctrl+Clic yn lleihau at yr isafswm
+STR_PICKER_PREVIEW_EXPAND                                       :+
+STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Cynyddu ucher delewddau rhagolwg. Mae Ctrl+Clic yn cynyddu at yr uchafswm
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Dewis dosbarth gorsaf i'w ddangos
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Dewis math gorsaf i'w adeiladu. Mae Ctrl+Clic yn adio neu tynnu o'r eitemau a gedwir
@@ -3044,6 +3068,11 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Dewiswch
 STR_FOUND_TOWN_CITY                                             :{BLACK}Dinas
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Mae dinasoedd yn tyfu'n gynt na threfi arferol{}Yn dibynnu ar y gosodiadau, maent hefyd yn fwy pan gânt eu sefydlu
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Ehangu tref:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Adeiladau
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Cynyddu adeiladau trefi
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Lonydd
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Cynyddu lonau mewn trefi
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Cynllun ffyrdd tref
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Dewiswch y cynllun ffyrdd i'w ddefnyddio ar gyfer y dref hon
@@ -3668,6 +3697,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}newid en
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Ehangu
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Cynyddu maint tref
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Ehangu adeiladau
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Cynyddu adeiladau'r dref
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Ehangu lonydd
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Cynyddu lonau y dref
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Dileu
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Dileu'r dref hon yn llwyr
 
@@ -3993,6 +4026,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Cynnyrch
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Cynnyrch y munud olaf:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% wedi'i gludo)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Canoli'r brif olygfa ar y diwydiant. Ctrl+Clic i agor ffenest golwg newydd ar leoliad y diwydiant
+STR_INDUSTRY_VIEW_CARGO_GRAPH                                   :{BLACK}Graff Llwythi
+STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}Yn dangos graff o hanes llwythi diwydiant
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Lefel cynhyrchu: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Mae'r diwydiant wedi datgan ei fod ar fin cau!
 
@@ -4404,10 +4439,10 @@ STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Dangos g
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Dangos gorchmynion awyren. Mae Ctrl + clic yn dangos amserlen y awyren
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Dangos manylion trên
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Dangos manylion cerbyd ffordd
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Dangos manylion llong
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Dangos manylion awyren
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Dangos manylion trên. Ctrl+Clic i ddangos grŵp y trên
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Dangos manylion cerbyd ffordd. Ctrl+Clic i ddangos grŵp y cerbyd
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Dangos manylion llong. Ctrl+Clic i ddangos grŵp y llong
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Dangos manylion awyren. Ctrl+Clic i ddangos grŵp yr awyren
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Gweithred presennol trên - clicio i stopio/cychwyn trên
@@ -4731,14 +4766,15 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Amserlen
 STR_TIMETABLE_NO_TRAVEL                                         :Dim teithio
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Teithio (awtomatig; amserlennir gan y gorchymyn defnyddiwr nesaf)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Teithio (heb ei amserlenu)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Teithio heb oresgyn {VELOCITY} (heb ei amserlenu)
 STR_TIMETABLE_TRAVEL_FOR                                        :Teithio am{STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Teithio am {STRING} heb oresgyn {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Teithio (am {STRING}, heb ei amserlennu)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Teitho (am {STRING}, heb ei amserlennu) dim cyflymach na {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(aros am {STRING}, heb ei amserlennu)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(teithio am {STRING}, heb ei amserlennu)
-STR_TIMETABLE_STAY_FOR                                          :aros am {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :a theithio am {STRING}
+STR_TIMETABLE_STAY_FOR                                          :{SPACE}aros am {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}a theithio am {STRING}
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Bydd yr amserlen hon yn cymryd tua {STRING} i'w chwblhau
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Bydd yr amserlen hon yn cymryd {STRING} i'w chwblhau
@@ -4967,6 +5003,7 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Rhaid i'
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Mae'r tir yn goleddu i'r cyfeiriad anghywir
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Does dim modd gwneud hynny...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Rhaid dymchwel adeilad yn gyntaf
+STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}... adeilad wedi ei amddiffyn
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Does dim modd clirio’r ardal hon...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... safle anaddas
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... eisoes wedi'i adeiladu
@@ -5846,6 +5883,7 @@ STR_CURRENCY_SHORT_GIGA                                         :{NBSP}bn
 STR_CURRENCY_SHORT_TERA                                         :{NBSP}tn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_LEFT_ARROW                                             :{LEFT_ARROW}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
@@ -5885,3 +5923,11 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Agod ffurfweddu bathodyn
+STR_BADGE_CONFIG_RESET                                          :Ailosod
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Eiconau Bathodyn
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Hidlau Bathodyn
+STR_BADGE_CONFIG_PREVIEW                                        :Rhagolwg Delwedd
+STR_BADGE_CONFIG_NAME                                           :Enw
+STR_BADGE_FILTER_ANY_LABEL                                      :Unrhyw {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :Mae {STRING} yn {STRING}

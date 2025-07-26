@@ -631,17 +631,20 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}無
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}於貨物運費表顯示所有類型的貨物
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}於貨物運費表隱藏所有類型的貨物
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}切換該貨物類型圖示
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}切換顯示貨物
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - 貨物記錄
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :已產出
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :已運送
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :已運送
+STR_GRAPH_INDUSTRY_RANGE_WAITING                                :庫存
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}顯示詳細營運評比
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}顯示公司圖表的圖例
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}切換該公司圖表
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}切換顯示公司
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}公司排行榜
@@ -4023,6 +4026,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}上月�
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}上分鐘產量︰
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} (運送了 {COMMA}%)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}將工業置於畫面正中央。按住 <Ctrl> 點選可於工業位置開啟新檢視視窗
+STR_INDUSTRY_VIEW_CARGO_GRAPH                                   :{BLACK}貨物圖表
+STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}檢視工業貨物運送記錄圖表
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}產出等級：{YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}該工業已宣佈關閉！
 
