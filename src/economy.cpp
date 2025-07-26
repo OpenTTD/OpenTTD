@@ -1101,7 +1101,7 @@ static Money DeliverGoods(int num_pieces, CargoType cargo_type, StationID dest, 
 	uint accepted_ind = DeliverGoodsToIndustry(st, cargo_type, num_pieces, src.type == SourceType::Industry ? src.ToIndustryID() : IndustryID::Invalid(), company->index);
 
 	/* If this cargo type is always accepted, accept all */
-	uint accepted_total = HasBit(st->always_accepted, cargo_type) ? num_pieces : accepted_ind;
+	uint accepted_total = st->always_accepted.Test(cargo_type) ? num_pieces : accepted_ind;
 
 	/* Update station statistics */
 	if (accepted_total > 0) {
@@ -1394,7 +1394,7 @@ struct PrepareRefitAction
 	bool operator()(const Vehicle *v)
 	{
 		this->consist_capleft[v->cargo_type] -= v->cargo_cap - v->cargo.ReservedCount();
-		this->refit_mask |= EngInfo(v->engine_type)->refit_mask;
+		this->refit_mask.Set(EngInfo(v->engine_type)->refit_mask);
 		return true;
 	}
 };
@@ -1487,7 +1487,7 @@ static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station 
 	if (is_auto_refit) {
 		/* Get a refittable cargo type with waiting cargo for next_station or StationID::Invalid(). */
 		new_cargo_type = v_start->cargo_type;
-		for (CargoType cargo_type : SetCargoBitIterator(refit_mask)) {
+		for (CargoType cargo_type : refit_mask) {
 			if (st->goods[cargo_type].HasData() && st->goods[cargo_type].GetData().cargo.HasCargoFor(next_station)) {
 				/* Try to find out if auto-refitting would succeed. In case the refit is allowed,
 				 * the returned refit capacity will be greater than zero. */
@@ -1646,10 +1646,10 @@ static void LoadUnloadVehicle(Vehicle *front)
 	bool completely_emptied = true;
 	bool anything_unloaded  = false;
 	bool anything_loaded    = false;
-	CargoTypes full_load_amount = 0;
-	CargoTypes cargo_not_full   = 0;
-	CargoTypes cargo_full       = 0;
-	CargoTypes reservation_left = 0;
+	CargoTypes full_load_amount{};
+	CargoTypes cargo_not_full{};
+	CargoTypes cargo_full{};
+	CargoTypes reservation_left{};
 
 	front->cur_speed = 0;
 
@@ -1780,14 +1780,14 @@ static void LoadUnloadVehicle(Vehicle *front)
 				if (v->cargo.ActionCount(VehicleCargoList::MTA_LOAD) > 0) {
 					/* Remember if there are reservations left so that we don't stop
 					 * loading before they're loaded. */
-					SetBit(reservation_left, v->cargo_type);
+					reservation_left.Set(v->cargo_type);
 				}
 
 				/* Store whether the maximum possible load amount was loaded or not.*/
 				if (loaded == cap_left) {
-					SetBit(full_load_amount, v->cargo_type);
+					full_load_amount.Set(v->cargo_type);
 				} else {
-					ClrBit(full_load_amount, v->cargo_type);
+					full_load_amount.Reset(v->cargo_type);
 				}
 
 				/* TODO: Regarding this, when we do gradual loading, we
@@ -1820,9 +1820,9 @@ static void LoadUnloadVehicle(Vehicle *front)
 		}
 
 		if (v->cargo.StoredCount() >= v->cargo_cap) {
-			SetBit(cargo_full, v->cargo_type);
+			cargo_full.Set(v->cargo_type);
 		} else {
-			SetBit(cargo_not_full, v->cargo_type);
+			cargo_not_full.Set(v->cargo_type);
 		}
 	}
 
@@ -1852,7 +1852,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 		}
 		/* We loaded less cargo than possible for all cargo types and it's not full
 		 * load and we're not supposed to wait any longer: stop loading. */
-		if (!anything_unloaded && full_load_amount == 0 && reservation_left == 0 && !(front->current_order.GetLoadType() & OLFB_FULL_LOAD) &&
+		if (!anything_unloaded && full_load_amount.None() && reservation_left.None() && !(front->current_order.GetLoadType() & OLFB_FULL_LOAD) &&
 				front->current_order_time >= std::max(front->current_order.GetTimetabledWait() - front->lateness_counter, 0)) {
 			front->vehicle_flags.Set(VehicleFlag::StopLoading);
 		}
@@ -1866,10 +1866,10 @@ static void LoadUnloadVehicle(Vehicle *front)
 				/* if the aircraft carries passengers and is NOT full, then
 				 * continue loading, no matter how much mail is in */
 				if ((front->type == VEH_AIRCRAFT && IsCargoInClass(front->cargo_type, CargoClass::Passengers) && front->cargo_cap > front->cargo.StoredCount()) ||
-						(cargo_not_full != 0 && (cargo_full & ~cargo_not_full) == 0)) { // There are still non-full cargoes
+						(cargo_not_full.Any() && cargo_full.Reset(cargo_not_full).None())) { // There are still non-full cargoes
 					finished_loading = false;
 				}
-			} else if (cargo_not_full != 0) {
+			} else if (cargo_not_full.Any()) {
 				finished_loading = false;
 			}
 
