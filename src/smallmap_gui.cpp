@@ -1735,7 +1735,6 @@ public:
 			case WID_SM_CENTERMAP: // Center the smallmap again
 				this->SmallMapCenterOnCurrentPos();
 				this->HandleButtonClick(WID_SM_CENTERMAP);
-				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				break;
 
 			case WID_SM_TOGGLETOWNNAME: // Toggle town names

@@ -660,7 +660,7 @@ private:
 		} else {
 			sel = default_col;
 		}
-		ShowDropDownList(this, std::move(list), sel, widget);
+		this->HandleDropdownListButtonClick(std::move(list), sel, widget);
 	}
 
 	void BuildGroupList(CompanyID owner)

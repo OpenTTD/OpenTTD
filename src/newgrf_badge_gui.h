@@ -15,6 +15,7 @@
 #include "newgrf_badge.h"
 #include "newgrf_badge_type.h"
 #include "timer/timer_game_calendar.h"
+#include "widget_type.h"
 
 class GUIBadgeClasses : public UsedBadgeClasses {
 public:

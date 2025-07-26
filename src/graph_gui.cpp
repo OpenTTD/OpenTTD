@@ -17,6 +17,7 @@
 #include "cargotype.h"
 #include "strings_func.h"
 #include "window_func.h"
+#include "sound_func.h"
 #include "gfx_func.h"
 #include "core/geometry_func.hpp"
 #include "currency.h"
@@ -90,6 +91,8 @@ struct GraphLegendWindow : Window {
 		InvalidateWindowData(WC_DELIVERED_CARGO, 0);
 		InvalidateWindowData(WC_PERFORMANCE_HISTORY, 0);
 		InvalidateWindowData(WC_COMPANY_VALUE, 0);
+
+		if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 	}
 
 	/**
@@ -716,6 +719,8 @@ public:
 			case WID_GRAPH_RANGE_MATRIX: {
 				int row = GetRowFromWidget(pt.y, widget, 0, GetCharacterHeight(FS_SMALL) + WidgetDimensions::scaled.framerect.Vertical());
 
+				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+
 				if (HasBit(this->masked_range, row)) break;
 				ToggleBit(this->excluded_range, row);
 				this->SetDirty();
@@ -1254,6 +1259,8 @@ struct BaseCargoGraphWindow : BaseGraphWindow {
 			case WID_GRAPH_MATRIX: {
 				int row = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_GRAPH_MATRIX);
 				if (row >= this->vscroll->GetCount()) return;
+
+				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 
 				for (const CargoSpec *cs : _sorted_cargo_specs) {
 					if (!HasBit(this->cargo_types, cs->Index())) continue;

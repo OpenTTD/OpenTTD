@@ -1798,15 +1798,15 @@ public:
 				break;
 
 			case WID_ID_DROPDOWN_CRITERIA:
-				ShowDropDownMenu(this, IndustryDirectoryWindow::sorter_names, this->industries.SortType(), WID_ID_DROPDOWN_CRITERIA, 0, 0);
+				this->HandleDropdownMenuButtonClick(IndustryDirectoryWindow::sorter_names, this->industries.SortType(), WID_ID_DROPDOWN_CRITERIA, 0, 0);
 				break;
 
 			case WID_ID_FILTER_BY_ACC_CARGO: // Cargo filter dropdown
-				ShowDropDownList(this, this->BuildCargoDropDownList(), this->accepted_cargo_filter_criteria, widget);
+				this->HandleDropdownListButtonClick(this->BuildCargoDropDownList(), this->accepted_cargo_filter_criteria, widget);
 				break;
 
 			case WID_ID_FILTER_BY_PROD_CARGO: // Cargo filter dropdown
-				ShowDropDownList(this, this->BuildCargoDropDownList(), this->produced_cargo_filter_criteria, widget);
+				this->HandleDropdownListButtonClick(this->BuildCargoDropDownList(), this->produced_cargo_filter_criteria, widget);
 				break;
 
 			case WID_ID_INDUSTRY_LIST: {
@@ -3092,7 +3092,7 @@ struct IndustryCargoesWindow : public Window {
 				}
 				if (!lst.empty()) {
 					int selected = (this->ind_cargo >= NUM_INDUSTRYTYPES) ? (int)(this->ind_cargo - NUM_INDUSTRYTYPES) : -1;
-					ShowDropDownList(this, std::move(lst), selected, WID_IC_CARGO_DROPDOWN);
+					this->HandleDropdownListButtonClick(std::move(lst), selected, WID_IC_CARGO_DROPDOWN);
 				}
 				break;
 			}
@@ -3106,7 +3106,7 @@ struct IndustryCargoesWindow : public Window {
 				}
 				if (!lst.empty()) {
 					int selected = (this->ind_cargo < NUM_INDUSTRYTYPES) ? (int)this->ind_cargo : -1;
-					ShowDropDownList(this, std::move(lst), selected, WID_IC_IND_DROPDOWN);
+					this->HandleDropdownListButtonClick(std::move(lst), selected, WID_IC_IND_DROPDOWN);
 				}
 				break;
 			}

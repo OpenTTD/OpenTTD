@@ -286,6 +286,8 @@ public:
 
 				new_show_state ? _town_local_authority_kdtree.Insert(index) : _town_local_authority_kdtree.Remove(index);
 
+				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+
 				this->town->show_zone = new_show_state;
 				this->SetWidgetLoweredState(widget, new_show_state);
 				MarkWholeScreenDirty();
@@ -937,7 +939,7 @@ public:
 				break;
 
 			case WID_TD_SORT_CRITERIA: // Click on sort criteria dropdown
-				ShowDropDownMenu(this, TownDirectoryWindow::sorter_names, this->towns.SortType(), WID_TD_SORT_CRITERIA, 0, 0);
+				this->HandleDropdownMenuButtonClick(TownDirectoryWindow::sorter_names, this->towns.SortType(), WID_TD_SORT_CRITERIA, 0, 0);
 				break;
 
 			case WID_TD_LIST: { // Click on Town Matrix
