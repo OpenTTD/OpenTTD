@@ -151,3 +151,22 @@ bool SpriteFontCache::GetDrawGlyphShadow()
 {
 	return false;
 }
+
+class SpriteFontCacheFactory : public FontCacheFactory {
+public:
+	SpriteFontCacheFactory() : FontCacheFactory("sprite", "Sprite font provider") {}
+
+	std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype) override
+	{
+		if (fonttype != FontType::Sprite) return nullptr;
+
+		return std::make_unique<SpriteFontCache>(fs);
+	}
+
+	bool FindFallbackFont(struct FontCacheSettings *, const std::string &, class MissingGlyphSearcher *) override
+	{
+		return false;
+	}
+};
+
+static SpriteFontCacheFactory s_sprite_fontcache_factory;

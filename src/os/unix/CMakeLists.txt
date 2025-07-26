@@ -12,6 +12,7 @@ add_files(
 
 add_files(
     font_unix.cpp
+    font_unix.h
     CONDITION Fontconfig_FOUND
 )
 
