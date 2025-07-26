@@ -10,6 +10,7 @@
 #ifndef NEWGRF_STATION_H
 #define NEWGRF_STATION_H
 
+#include "bridge_type.h"
 #include "core/enum_type.hpp"
 #include "newgrf_animation_type.h"
 #include "newgrf_badge_type.h"
@@ -168,7 +169,13 @@ struct StationSpec : NewGRFSpecBase<StationClassID> {
 		Blocked = 2, ///< Tile is blocked to vehicles.
 	};
 	using TileFlags = EnumBitSet<TileFlag, uint8_t>;
-	std::vector<TileFlags> tileflags; ///< List of tile flags.
+
+	struct TileSpec {
+		TileFlags flags{}; ///< Tile flags.
+		uint8_t height = 0; ///< Minimum height for a bridge above, 0 for none
+		BridgePillarFlags disallowed_pillars = BRIDGEPILLARFLAGS_ALL; ///< Disallowed pillar flags for a bridge above
+	};
+	std::vector<TileSpec> tilespecs; ///< Per-layout-tile information.
 
 	AnimationInfo<StationAnimationTriggers> animation;
 

@@ -13,6 +13,7 @@
 #include "core/geometry_type.hpp"
 #include "command_type.h"
 #include "vehicle_type.h"
+#include "bridge_type.h"
 #include "cargo_type.h"
 #include "track_type.h"
 #include "tile_map.h"
@@ -135,6 +136,8 @@ typedef Foundation GetFoundationProc(TileIndex tile, Slope tileh);
  */
 typedef CommandCost TerraformTileProc(TileIndex tile, DoCommandFlags flags, int z_new, Slope tileh_new);
 
+using CheckBuildAboveProc = CommandCost(TileIndex tile, DoCommandFlags flags, Axis axis, int height, BridgePillarFlags bridge_pillars);
+
 /**
  * Set of callback functions for performing tile operations of a given tile type.
  * @see TileType
@@ -154,6 +157,7 @@ struct TileTypeProcs {
 	VehicleEnterTileProc *vehicle_enter_tile_proc; ///< Called when a vehicle enters a tile
 	GetFoundationProc *get_foundation_proc;
 	TerraformTileProc *terraform_tile_proc;        ///< Called when a terraforming operation is about to take place
+	CheckBuildAboveProc *check_build_above_proc;
 };
 
 extern const TileTypeProcs * const _tile_type_procs[16];
