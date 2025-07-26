@@ -73,6 +73,7 @@ static const std::array<CurrencySpec, CURRENCY_END> origin_currency_specs = {{
 	{    1, "", TimerGameCalendar::Year{2014}, "",         NBSP "Ls",      "LVL", 1, STR_GAME_OPTIONS_CURRENCY_LVL    }, ///< latvian lats
 	{  400, "", TimerGameCalendar::Year{2002}, "",         "$00",          "PTE", 1, STR_GAME_OPTIONS_CURRENCY_PTE    }, ///< portuguese escudo
 	{   50, "", CF_NOEURO,                     "",         NBSP "\u20B4",  "UAH", 1, STR_GAME_OPTIONS_CURRENCY_UAH    }, ///< ukrainian hryvnia
+	{35000, "", CF_NOEURO,                     "",         NBSP "\u20AB",  "VND", 1, STR_GAME_OPTIONS_CURRENCY_VND    }, ///< Vietnamese Dong
 }};
 
 /** Array of currencies used by the system */

@@ -69,6 +69,7 @@ enum Currencies : uint8_t {
 	CURRENCY_LVL,       ///< Latvian Lats
 	CURRENCY_PTE,       ///< Portuguese Escudo
 	CURRENCY_UAH,       ///< Ukrainian Hryvnia
+	CURRENCY_VND,       ///< Vietnamese Dong
 	CURRENCY_END,       ///< always the last item
 };
 
