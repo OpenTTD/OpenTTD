@@ -201,7 +201,6 @@ struct GUISettings {
 	uint8_t station_numtracks;                ///< the number of platforms to default on for rail stations
 	uint8_t station_platlength;               ///< the platform length, in tiles, for rail stations
 	bool   station_dragdrop;                 ///< whether drag and drop is enabled for stations
-	bool   station_show_coverage;            ///< whether to highlight coverage area
 	bool   persistent_buildingtools;         ///< keep the building tools active after usage
 	bool   expenses_layout;                  ///< layout of expenses window
 	uint32_t last_newgrf_count;                ///< the numbers of NewGRFs we found during the last scan
