@@ -21,4 +21,7 @@ void SndPlayVehicleFx(SoundID sound, const Vehicle *v);
 void SndPlayFx(SoundID sound);
 void SndCopyToPool();
 
+void SndClickBeep();
+void SndConfirmBeep();
+
 #endif /* SOUND_FUNC_H */

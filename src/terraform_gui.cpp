@@ -621,7 +621,7 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 				if (!IsInsideMM(size, 1, 8 + 1)) return;
 				_terraform_size = size;
 
-				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+				SndClickBeep();
 				this->SetDirty();
 				break;
 			}

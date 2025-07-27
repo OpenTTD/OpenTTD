@@ -509,7 +509,7 @@ public:
 				this->SetWidgetLoweredState(WID_AP_BTN_DONTHILIGHT, !_settings_client.gui.station_show_coverage);
 				this->SetWidgetLoweredState(WID_AP_BTN_DOHILIGHT, _settings_client.gui.station_show_coverage);
 				this->SetDirty();
-				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+				SndClickBeep();
 				this->UpdateSelectSize();
 				SetViewportCatchmentStation(nullptr, true);
 				break;

@@ -247,6 +247,22 @@ void SndPlayFx(SoundID sound)
 	StartSound(sound, 0.5, UINT8_MAX);
 }
 
+/**
+ * Play a beep sound for a click event if enabled in settings.
+ */
+void SndClickBeep()
+{
+	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+}
+
+/**
+ * Play a beep sound for a confirm event if enabled in settings.
+ */
+void SndConfirmBeep()
+{
+	if (_settings_client.sound.confirm) SndPlayFx(SND_15_BEEP);
+}
+
 /** Names corresponding to the sound set's files */
 static const std::string_view _sound_file_names[] = { "samples" };
 

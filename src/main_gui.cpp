@@ -64,7 +64,7 @@ bool HandlePlacePushButton(Window *w, WidgetID widget, CursorID cursor, HighLigh
 {
 	if (w->IsWidgetDisabled(widget)) return false;
 
-	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+	SndClickBeep();
 	w->SetDirty();
 
 	if (w->IsWidgetLowered(widget)) {
