@@ -1,0 +1,36 @@
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+   -1 * 0	 0C "Bridge decks"
+   -1 * 3	 05 1B 18
+
+   -1 sprites/bridge_decks.png 8bpp   96  16  64  31 -31    0 normal
+   -1 sprites/bridge_decks.png 8bpp   16  16  64  31 -31    0 normal
+   -1 sprites/bridge_decks.png 8bpp  176  16  64  39 -31   -8 normal
+   -1 sprites/bridge_decks.png 8bpp  256  16  64  23 -31    0 normal
+   -1 sprites/bridge_decks.png 8bpp  336  16  64  23 -31    0 normal
+   -1 sprites/bridge_decks.png 8bpp  416  16  64  39 -31   -8 normal
+
+   -1 sprites/bridge_decks.png 8bpp   96  71  64  31 -31    0 normal
+   -1 sprites/bridge_decks.png 8bpp   16  71  64  31 -31    0 normal
+   -1 sprites/bridge_decks.png 8bpp  176  71  64  39 -31   -8 normal
+   -1 sprites/bridge_decks.png 8bpp  256  71  64  23 -31    0 normal
+   -1 sprites/bridge_decks.png 8bpp  336  71  64  23 -31    0 normal
+   -1 sprites/bridge_decks.png 8bpp  416  71  64  39 -31   -8 normal
+
+   -1 sprites/bridge_decks.png 8bpp   96 126  64  31 -31    0 normal
+   -1 sprites/bridge_decks.png 8bpp   16 126  64  31 -31    0 normal
+   -1 sprites/bridge_decks.png 8bpp  176 126  64  39 -31   -8 normal
+   -1 sprites/bridge_decks.png 8bpp  256 126  64  23 -31    0 normal
+   -1 sprites/bridge_decks.png 8bpp  336 126  64  23 -31    0 normal
+   -1 sprites/bridge_decks.png 8bpp  416 126  64  39 -31   -8 normal
+
+// X and Y axis are swapped for road surface.
+   -1 sprites/bridge_decks.png 8bpp   16 181  64  31 -31    0 normal
+   -1 sprites/bridge_decks.png 8bpp   96 181  64  31 -31    0 normal
+   -1 sprites/bridge_decks.png 8bpp  176 181  64  39 -31   -8 normal
+   -1 sprites/bridge_decks.png 8bpp  256 181  64  23 -31    0 normal
+   -1 sprites/bridge_decks.png 8bpp  336 181  64  23 -31    0 normal
+   -1 sprites/bridge_decks.png 8bpp  416 181  64  39 -31   -8 normal
