@@ -635,8 +635,11 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ocultar 
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Mostrar u ocultar gráfica de este tipo de carga
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Historial de carga
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Producido
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportado
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Entregada
+STR_GRAPH_INDUSTRY_RANGE_WAITING                                :En espera
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Mostrar detalles de nivel de desempeño
 
@@ -4024,6 +4027,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producci
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Producción último minuto:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportad{G 0 o a o a}{P 0 "" s})
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrar vista en la industria. Ctrl+Clic abre una vista aparte en su ubicación
+STR_INDUSTRY_VIEW_CARGO_GRAPH                                   :{BLACK}Gráfica de carga
+STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}Mostrar la gráfica del historial de carga de la industria
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivel de producción: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}¡La industria ha anunciado su cierre inminente!
 
@@ -4999,6 +5004,7 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Se requi
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Tierra inclinada en dirección errónea
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}No se puede hacer eso...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Primero se debe demoler el edificio
+STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}... el edificio está protegido
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}No se puede despejar esta zona...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... lugar no apto
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... ya construido

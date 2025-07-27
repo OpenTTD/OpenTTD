@@ -635,8 +635,11 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Non amos
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Amosar/ocultar gráfica para o tipo de carga
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Histórico de carga
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Producido
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportado
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Entregada
+STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Agardando
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Amosar puntuacións de rendemento detalladas
 
@@ -4024,6 +4027,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produci�
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Producción no último minuto:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportado)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrar a vista principal na localización da industria. Ctrl+Clic abre unha nova fiestra na localización da industria
+STR_INDUSTRY_VIEW_CARGO_GRAPH                                   :{BLACK}Gráfica de carga
+STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}Amosa o gráfico do histórico de cargas da industria
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivel de produción: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}A industria anunció un peche inminente
 
@@ -4999,6 +5004,7 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Precísa
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Terreo inclinado na dirección incorrecta
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Non podes facer iso...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Debes demole-lo edificio primeiro
+STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}... a estrutura está protexida
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Non podes limpar esta área...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... emprazamento inadecuado
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... xa construído

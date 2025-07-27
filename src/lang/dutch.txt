@@ -634,8 +634,11 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Geen vra
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Grafiek voor dit vrachttype weergeven-verbergen
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Vrachtgeschiedenis
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Geproduceerd
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Vervoerd
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Afgeleverd
+STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Wachtend
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Gedetailleerde prestatiescores weergeven
 
@@ -4023,6 +4026,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producti
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Productie vorige minuut:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% vervoerd)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centreer het hoofdscherm op de locatie van de industrie. Ctrl+klik opent een nieuws venster op de locatie van de industrie
+STR_INDUSTRY_VIEW_CARGO_GRAPH                                   :{BLACK}Vrachtgrafiek
+STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}Geeft de grafiek weer van de geschiedenis van de vracht
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Productieniveau: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}De industrie heeft een dreigende sluiting aangekondigd!
 
@@ -4998,6 +5003,7 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Vlak lan
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Landhelling is in de verkeerde richting
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Kan dit niet uitvoeren...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Gebouw moet eerst gesloopt worden
+STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}... gebouw is beschermd
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Kan dit gebied niet ontruimen...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... locatie ongeschikt
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... reeds gebouwd
