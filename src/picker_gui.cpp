@@ -384,7 +384,7 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 				this->callbacks.SetSelectedClass(*it);
 				this->InvalidateData({PickerInvalidation::Type, PickerInvalidation::Position, PickerInvalidation::Validate});
 			}
-			if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+			SndClickBeep();
 			CloseWindowById(WC_SELECT_STATION, 0);
 			break;
 		}
@@ -434,7 +434,7 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 				this->callbacks.SetSelectedType(item.index);
 				this->InvalidateData(PickerInvalidation::Position);
 			}
-			if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+			SndClickBeep();
 			CloseWindowById(WC_SELECT_STATION, 0);
 			break;
 		}

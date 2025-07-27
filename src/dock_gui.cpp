@@ -469,7 +469,7 @@ public:
 				this->RaiseWidget(_settings_client.gui.station_show_coverage + BDSW_LT_OFF);
 				_settings_client.gui.station_show_coverage = (widget != BDSW_LT_OFF);
 				this->LowerWidget(_settings_client.gui.station_show_coverage + BDSW_LT_OFF);
-				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+				SndClickBeep();
 				this->SetDirty();
 				SetViewportCatchmentStation(nullptr, true);
 				break;
@@ -580,7 +580,7 @@ public:
 				this->RaiseWidget(WID_BDD_X + _ship_depot_direction);
 				_ship_depot_direction = (widget == WID_BDD_X ? AXIS_X : AXIS_Y);
 				this->LowerWidget(WID_BDD_X + _ship_depot_direction);
-				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+				SndClickBeep();
 				UpdateDocksDirection();
 				this->SetDirty();
 				break;

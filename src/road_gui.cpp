@@ -582,7 +582,7 @@ struct BuildRoadToolbarWindow : Window {
 
 				CloseWindowById(WC_SELECT_STATION, 0);
 				ToggleRoadButton_Remove(this);
-				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+				SndClickBeep();
 				break;
 
 			case WID_ROT_CONVERT_ROAD:
@@ -1145,7 +1145,7 @@ struct BuildRoadDepotWindow : public PickerWindowBase {
 				this->RaiseWidget(WID_BROD_DEPOT_NE + _road_depot_orientation);
 				_road_depot_orientation = (DiagDirection)(widget - WID_BROD_DEPOT_NE);
 				this->LowerWidget(WID_BROD_DEPOT_NE + _road_depot_orientation);
-				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+				SndClickBeep();
 				this->SetDirty();
 				break;
 
@@ -1477,7 +1477,7 @@ public:
 				this->RaiseWidget(WID_BROS_STATION_NE + _roadstop_gui.orientation);
 				_roadstop_gui.orientation = (DiagDirection)(widget - WID_BROS_STATION_NE);
 				this->LowerWidget(WID_BROS_STATION_NE + _roadstop_gui.orientation);
-				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+				SndClickBeep();
 				this->SetDirty();
 				CloseWindowById(WC_SELECT_STATION, 0);
 				break;
@@ -1487,7 +1487,7 @@ public:
 				this->RaiseWidget(_settings_client.gui.station_show_coverage + WID_BROS_LT_OFF);
 				_settings_client.gui.station_show_coverage = (widget != WID_BROS_LT_OFF);
 				this->LowerWidget(_settings_client.gui.station_show_coverage + WID_BROS_LT_OFF);
-				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+				SndClickBeep();
 				this->SetDirty();
 				SetViewportCatchmentStation(nullptr, true);
 				break;

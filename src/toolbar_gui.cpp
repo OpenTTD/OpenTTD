@@ -117,7 +117,7 @@ public:
 static void PopupMainToolbarMenu(Window *w, WidgetID widget, DropDownList &&list, int def)
 {
 	ShowDropDownList(w, std::move(list), def, widget, 0, true);
-	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+	SndClickBeep();
 }
 
 /**
@@ -204,7 +204,7 @@ static CallBackFunction ToolbarPauseClick(Window *)
 	if (_networking && !_network_server) return CBF_NONE; // only server can pause the game
 
 	if (Command<CMD_PAUSE>::Post(PauseMode::Normal, _pause_mode.None())) {
-		if (_settings_client.sound.confirm) SndPlayFx(SND_15_BEEP);
+		SndConfirmBeep();
 	}
 	return CBF_NONE;
 }
@@ -220,7 +220,7 @@ static CallBackFunction ToolbarFastForwardClick(Window *)
 
 	ChangeGameSpeed(_game_speed == 100);
 
-	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+	SndClickBeep();
 	return CBF_NONE;
 }
 
@@ -291,7 +291,7 @@ static CallBackFunction ToolbarOptionsClick(Window *w)
 	list.push_back(MakeDropDownListCheckedItem(IsTransparencySet(TO_SIGNS), STR_SETTINGS_MENU_TRANSPARENT_SIGNS, OME_SHOW_STATIONSIGNS));
 
 	ShowDropDownList(w, std::move(list), 0, WID_TN_SETTINGS, 140, true);
-	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+	SndClickBeep();
 	return CBF_NONE;
 }
 
@@ -684,7 +684,7 @@ static CallBackFunction ToolbarGraphsClick(Window *w)
 	if (_toolbar_mode != TB_NORMAL) AddDropDownLeagueTableOptions(list);
 
 	ShowDropDownList(w, std::move(list), GRMN_OPERATING_PROFIT_GRAPH, WID_TN_GRAPHS, 140, true);
-	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+	SndClickBeep();
 
 	return CBF_NONE;
 }
@@ -697,7 +697,7 @@ static CallBackFunction ToolbarLeagueClick(Window *w)
 
 	int selected = list[0]->result;
 	ShowDropDownList(w, std::move(list), selected, WID_TN_LEAGUE, 140, true);
-	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+	SndClickBeep();
 
 	return CBF_NONE;
 }
@@ -857,7 +857,7 @@ static CallBackFunction ToolbarZoomInClick(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_IN, GetMainWindow())) {
 		w->HandleButtonClick((_game_mode == GM_EDITOR) ? (WidgetID)WID_TE_ZOOM_IN : (WidgetID)WID_TN_ZOOM_IN);
-		if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+		SndClickBeep();
 	}
 	return CBF_NONE;
 }
@@ -868,7 +868,7 @@ static CallBackFunction ToolbarZoomOutClick(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_OUT, GetMainWindow())) {
 		w->HandleButtonClick((_game_mode == GM_EDITOR) ? (WidgetID)WID_TE_ZOOM_OUT : (WidgetID)WID_TN_ZOOM_OUT);
-		if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+		SndClickBeep();
 	}
 	return CBF_NONE;
 }
@@ -878,7 +878,7 @@ static CallBackFunction ToolbarZoomOutClick(Window *w)
 static CallBackFunction ToolbarBuildRailClick(Window *w)
 {
 	ShowDropDownList(w, GetRailTypeDropDownList(), _last_built_railtype, WID_TN_RAILS, 140, true);
-	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+	SndClickBeep();
 	return CBF_NONE;
 }
 
@@ -900,7 +900,7 @@ static CallBackFunction MenuClickBuildRail(int index)
 static CallBackFunction ToolbarBuildRoadClick(Window *w)
 {
 	ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_ROAD), _last_built_roadtype, WID_TN_ROADS, 140, true);
-	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+	SndClickBeep();
 	return CBF_NONE;
 }
 
@@ -922,7 +922,7 @@ static CallBackFunction MenuClickBuildRoad(int index)
 static CallBackFunction ToolbarBuildTramClick(Window *w)
 {
 	ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_TRAM), _last_built_tramtype, WID_TN_TRAMS, 140, true);
-	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+	SndClickBeep();
 	return CBF_NONE;
 }
 
@@ -946,7 +946,7 @@ static CallBackFunction ToolbarBuildWaterClick(Window *w)
 	DropDownList list;
 	list.push_back(MakeDropDownListIconItem(SPR_IMG_BUILD_CANAL, PAL_NONE, STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION, 0));
 	ShowDropDownList(w, std::move(list), 0, WID_TN_WATER, 140, true);
-	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+	SndClickBeep();
 	return CBF_NONE;
 }
 
@@ -968,7 +968,7 @@ static CallBackFunction ToolbarBuildAirClick(Window *w)
 	DropDownList list;
 	list.push_back(MakeDropDownListIconItem(SPR_IMG_AIRPORT, PAL_NONE, STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION, 0));
 	ShowDropDownList(w, std::move(list), 0, WID_TN_AIR, 140, true);
-	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+	SndClickBeep();
 	return CBF_NONE;
 }
 
@@ -992,7 +992,7 @@ static CallBackFunction ToolbarForestClick(Window *w)
 	list.push_back(MakeDropDownListIconItem(SPR_IMG_PLANTTREES, PAL_NONE, STR_LANDSCAPING_MENU_PLANT_TREES, 1));
 	list.push_back(MakeDropDownListIconItem(SPR_IMG_SIGN, PAL_NONE, STR_LANDSCAPING_MENU_PLACE_SIGN, 2));
 	ShowDropDownList(w, std::move(list), 0, WID_TN_LANDSCAPE, 100, true);
-	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+	SndClickBeep();
 	return CBF_NONE;
 }
 
@@ -1188,7 +1188,7 @@ static CallBackFunction ToolbarSwitchClick(Window *w)
 
 	w->ReInit();
 	w->SetWidgetLoweredState(_game_mode == GM_EDITOR ? (WidgetID)WID_TE_SWITCH_BAR : (WidgetID)WID_TN_SWITCH_BAR, _toolbar_mode == TB_LOWER);
-	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+	SndClickBeep();
 	return CBF_NONE;
 }
 
@@ -1232,7 +1232,7 @@ static CallBackFunction ToolbarScenDateForward(Window *w)
 static CallBackFunction ToolbarScenGenLand(Window *w)
 {
 	w->HandleButtonClick(WID_TE_LAND_GENERATE);
-	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+	SndClickBeep();
 
 	ShowEditorTerraformToolbar();
 	return CBF_NONE;
@@ -1256,7 +1256,7 @@ static CallBackFunction ToolbarScenGenTown(int index)
 static CallBackFunction ToolbarScenGenIndustry(Window *w)
 {
 	w->HandleButtonClick(WID_TE_INDUSTRY);
-	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+	SndClickBeep();
 	ShowBuildIndustryWindow();
 	return CBF_NONE;
 }
@@ -1264,7 +1264,7 @@ static CallBackFunction ToolbarScenGenIndustry(Window *w)
 static CallBackFunction ToolbarScenBuildRoadClick(Window *w)
 {
 	ShowDropDownList(w, GetScenRoadTypeDropDownList(RTTB_ROAD), _last_built_roadtype, WID_TE_ROADS, 140, true);
-	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+	SndClickBeep();
 	return CBF_NONE;
 }
 
@@ -1284,7 +1284,7 @@ static CallBackFunction ToolbarScenBuildRoad(int index)
 static CallBackFunction ToolbarScenBuildTramClick(Window *w)
 {
 	ShowDropDownList(w, GetScenRoadTypeDropDownList(RTTB_TRAM), _last_built_tramtype, WID_TE_TRAMS, 140, true);
-	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+	SndClickBeep();
 	return CBF_NONE;
 }
 
@@ -1304,7 +1304,7 @@ static CallBackFunction ToolbarScenBuildTram(int index)
 static CallBackFunction ToolbarScenBuildDocks(Window *w)
 {
 	w->HandleButtonClick(WID_TE_WATER);
-	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+	SndClickBeep();
 	ShowBuildDocksScenToolbar();
 	return CBF_NONE;
 }
@@ -1312,7 +1312,7 @@ static CallBackFunction ToolbarScenBuildDocks(Window *w)
 static CallBackFunction ToolbarScenPlantTrees(Window *w)
 {
 	w->HandleButtonClick(WID_TE_TREES);
-	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+	SndClickBeep();
 	ShowBuildTreesToolbar();
 	return CBF_NONE;
 }
@@ -1320,7 +1320,7 @@ static CallBackFunction ToolbarScenPlantTrees(Window *w)
 static CallBackFunction ToolbarScenPlaceSign(Window *w)
 {
 	w->HandleButtonClick(WID_TE_SIGNS);
-	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+	SndClickBeep();
 	return SelectSignTool();
 }
 
@@ -2407,7 +2407,7 @@ struct ScenarioEditorToolbarWindow : Window {
 	{
 		CallBackFunction cbf = _scen_toolbar_dropdown_procs[widget](index);
 		if (cbf != CBF_NONE) _last_started_action = cbf;
-		if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+		SndClickBeep();
 	}
 
 	EventState OnHotkey(int hotkey) override

@@ -319,7 +319,7 @@ public:
 				if (_object_gui.sel_type != std::numeric_limits<uint16_t>::max()) {
 					_object_gui.sel_view = this->GetWidget<NWidgetBase>(widget)->GetParentWidget<NWidgetMatrix>()->GetCurrentElement();
 					this->InvalidateData(PickerInvalidation::Position);
-					if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+					SndClickBeep();
 				}
 				break;
 

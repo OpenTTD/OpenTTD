@@ -102,7 +102,7 @@ class BuildTreesWindow : public Window
 
 		if (this->tree_to_plant >= 0) {
 			/* Activate placement */
-			if (_settings_client.sound.confirm) SndPlayFx(SND_15_BEEP);
+			SndConfirmBeep();
 			SetObjectToPlace(SPR_CURSOR_TREE, PAL_NONE, HT_RECT | HT_DIAGONAL, this->window_class, this->window_number);
 			this->tree_to_plant = current_tree; // SetObjectToPlace may call ResetObjectToPlace which may reset tree_to_plant to -1
 		} else {
@@ -180,7 +180,7 @@ public:
 				break;
 
 			case WID_BT_MANY_RANDOM: // place trees randomly over the landscape
-				if (_settings_client.sound.confirm) SndPlayFx(SND_15_BEEP);
+				SndConfirmBeep();
 				PlaceTreesRandomly();
 				MarkWholeScreenDirty();
 				break;
