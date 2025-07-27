@@ -683,13 +683,16 @@ struct MusicWindow : public Window {
 
 	void UpdateDisabledButtons()
 	{
-		/* Disable music control widgets if there is no music
-		 * -- except Programme button! So you can still select a music set. */
+		/* Disable stop and play if there is no music. */
+		this->SetWidgetsDisabledState(BaseMusic::GetUsedSet()->num_available == 0, WID_M_STOP, WID_M_PLAY);
+		/* Disable most music control widgets if there is no music, or we are in the intro menu. */
 		this->SetWidgetsDisabledState(
-			BaseMusic::GetUsedSet()->num_available == 0,
-			WID_M_PREV, WID_M_NEXT, WID_M_STOP, WID_M_PLAY, WID_M_SHUFFLE,
+			BaseMusic::GetUsedSet()->num_available == 0 || _game_mode == GM_MENU,
+			WID_M_PREV, WID_M_NEXT, WID_M_SHUFFLE,
 			WID_M_ALL, WID_M_OLD, WID_M_NEW, WID_M_EZY, WID_M_CUSTOM1, WID_M_CUSTOM2
 			);
+		/* Also disable programme button in the intro menu (not in game; it is desirable to allow change of music set.) */
+		this->SetWidgetsDisabledState(_game_mode == GM_MENU, WID_M_PROGRAMME);
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
