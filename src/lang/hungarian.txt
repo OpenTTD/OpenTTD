@@ -697,8 +697,11 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ne mutas
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Adott rakomány grafikonjának mutatása be/ki
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Rakománytörténet
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Előállított
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Szállítva
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Leszállítva
+STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Várakozik
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Részletes teljesítményértékelés mutatása
 
@@ -4087,6 +4090,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Múlt ha
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Termelés az elmúlt percben:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% elszállítva)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}A fő nézetet a gazdasági épületre állítja. Ctrl+kattintással új nézet nyílik a gazdasági épület helyzeténél
+STR_INDUSTRY_VIEW_CARGO_GRAPH                                   :{BLACK}Rakomány grafikon
+STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}Megmutatja az iparág rakománytörténetének grafikonját
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Termelési szint: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}A gyár bejelentette a közelgő bezárását!
 
@@ -5062,6 +5067,7 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Sima tal
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Rossz irányba lejt a föld
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Nem teheted ezt...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Előbb le kell rombolnod az épületet
+STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}... a(z) épület védett
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Nem tisztíthatod meg ezt a területet...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... nem alkalmas rá a hely
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... már van itt

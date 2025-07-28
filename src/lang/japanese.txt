@@ -437,6 +437,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRFの設定
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :透過表示設定
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :街名を表示
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :駅名を表示
+STR_SETTINGS_MENU_STATION_NAMES_BUS                             :バス停
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :中継駅名を表示
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :標識を表示
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :競争者の標識と名前を表示
@@ -522,6 +523,7 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :OpenTTDにつ�
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :スプライトを整列
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :バウンディングボックスの表示切替
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :ダーティーブロックの色付け切替
+STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :ウィジェットの枠線の表示切替
 
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1
@@ -1203,12 +1205,14 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :中央
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :右
 
 
+STR_CONFIG_SETTING_INFINITE_MONEY                               :無限の資金: {STRING}
+STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :無制限の支出を許容し、会社の破産も無効にします
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :初期の借入最大額: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :初期の借入限度額を設定します (インフレは考慮されません)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :初期の借入限度額を設定します (インフレは考慮されません)。「借入金なし」に設定した場合、ゲームスクリプトか「無限の資金」オプションによる提供がない限り、資金は利用できなくなります。
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :借入金なし {RED}ゲームスクリプトで資金を受給する必要があります
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :借入金なし
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :金利: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :借入利率を設定します (インフレ設定を有効にしたときのインフレ率にも影響します)
@@ -1247,7 +1251,7 @@ STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :設定を有効
 STR_CONFIG_SETTING_DISASTERS                                    :災害: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :設定を有効にすると時折、乗り物や交通インフラを遮断・破壊する災害が起きるようになります
 
-STR_CONFIG_SETTING_CITY_APPROVAL                                :議会の姿勢: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL                                :地方自治体の姿勢: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :会社が街で引き起こした騒音(主に空港)や環境破壊がどの程度、街での評価や更なる建設行為に影響するかを設定します
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :マップ高さ限界: {STRING}
@@ -1351,10 +1355,10 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :する (フル�
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :する
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :する (ビューポートでも有効)
 
-STR_CONFIG_SETTING_BRIBE                                        :議会の買収: {STRING}
+STR_CONFIG_SETTING_BRIBE                                        :地方自治体の贈賄: {STRING}
 ###length 2
-STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :街で議会買収を企てられるようになります。成功すれば街での評判が良くなりますが、地元当局に事が発覚した場合罰金を受けた上評判が悪くなり、その上その街では半年間何もできなくなります
-STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :会社が議会買収を企てられるようにします。もし当局に事が発覚した場合、買収した会社は当該自治体では半年間何もできなくなります
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :地方自治体への贈賄を企てられるようにします。もし当局に事が発覚した場合、贈賄を試みた会社は当該自治体では半年間何もできなくなります
+STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :地方自治体への贈賄を企てられるようにします。もし当局に事が発覚した場合、贈賄を試みた会社は当該自治体では半年間何もできなくなります
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :独占運送契約の締結: {STRING}
 ###length 2
@@ -1424,6 +1428,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :有効にする
 
 ###setting-zero-is-special
 
+STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :老朽車両の自動交換: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :有効にすると、耐用年数を越えた輸送機器は自動で更新されるようになります(交換には一度格納施設に戻る必要があります)。具体的な交換時期は下の設定で変更できます。
@@ -1858,7 +1863,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :街の自治体
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :街路との平面交差を許可: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :有効にすると、会社が作る道路と街路とが交差できるようになります
 
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :空港建設に対する街の騒音レベル規制: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :騒音レベルに基づいた空港建設の制限: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :この設定を無効にすると、街に作れる空港は最大2つまでになります。有効にした場合は、各空港の騒音レベルの総和が街の騒音許容レベル以下になるようにしか建てられません。騒音レベルは空港の大きさ・街からの距離により、騒音許容レベルは街の人口により左右されます
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :ゲーム中での街新設: {STRING}
@@ -1936,9 +1941,9 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :初期の都市
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :ゲーム開始時に都市が普通の街に比べて平均して何倍の人口規模になるかを設定します
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :行先分配グラフを{STRING}秒毎に更新
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :行先分配グラフの更新の間の待ち時間。各更新はグラフの一部だけのルートを再計算します。即ち、この設定を〇〇秒に指定する場合、全グラフが〇〇秒毎に更新されるのではありません。間隔が短ければ短いほどCPU時間を消費します。長ければ長いほど貨物流通の新規ルートの行先分配に時間がかかります。
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :行先分配グラフの再計算間隔。各計算タイミングでは一部のグラフのみが再計算されます。よって、ここ設定した X 秒ごとにグラフ全体が更新されるというわけではありません。再計算の間隔が短ければ短いほどCPU時間を消費します。長ければ長いほど貨物流通の新規ルートの行先分配に時間がかかります。
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :行先分配の更新に{STRING}秒を割り当て
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :行先分配グラフの更新に割り当てられる時間。更新が始まると、スレッドが生成されて、指定の時間に実行させられます。短ければ短いほど間に合わない可能性が高まります。その場合、ゲームは停止して計算完了を待ちます。長ければ長いほどルート変更の際に行先分配の更新に時間がかかります。
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :行先分配グラフの再計算に割り当てられる時間。再計算が始まると、グラフの処理のために指定した生存秒数だけ実行可能なスレッドが作られます。生存秒数が短ければ短いほど再計算が間に合わない可能性が高まります。その際、ゲームは一時停止して計算完了を待ちます。生存秒数が長ければ長いほど、ルート変更の際に行先分配の更新に時間がかかります。
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :旅客の行先分配法: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :旅客がどのように行き先別に分配されるかを設定します。「対称」ではAからBへ向かう乗客とほぼ同数が、BからAに向かうようになります。 「非対称」ではそれぞれの方向に向かう旅客数は独立に決められます。「無効」では行き先別分配をしなくなります。
@@ -1954,7 +1959,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :非対称
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :対称
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :分配精度: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :この値を高くすると、リンクグラフ演算の為CPUへの負荷が大きくなります。演算に時間がかかりすぎると、目に見えてタイムラグが起こる場合があります。しかし低い値に設定すると、分配が不正確になり、望まれる場所に貨物が送られなくなる場合があります
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :この設定値を高く設定すればするほど、行先分配グラフの計算に要するCPU時間が長くなります。計算に時間がかかりすぎると遅延が発生する可能性があります。一方、設定値を低く設定すると分配が不正確になり、荷物が意図された場所に送られない場合があります。
 
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :距離効果: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :0より大きい値に設定すると、ある貨物の生産先Aと受取可能先Bとの距離がAからBへ送られる貨物量に影響を及ぼすようになります。高い値を設定すればするほど、遠い施設に送られる貨物量は少なくなり、近場の施設に送られる量が大きくなります
@@ -2058,8 +2063,10 @@ STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}ファ�
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}ビデオ設定にエラーがあります...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... 対応する GPU が見つかりません。ハードウェアアクセラレーションは無効になります。
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPUドライバーがゲームをクラッシュさせました。ハードウェアアクセラレーションは無効になりました
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
 
 STR_INTRO_NEW_GAME                                              :{BLACK}新しいゲーム
 STR_INTRO_LOAD_GAME                                             :{BLACK}ロード
@@ -2070,6 +2077,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}マル�
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}基本設定
 STR_INTRO_HIGHSCORE                                             :{BLACK}ハイスコア
+STR_INTRO_HELP                                                  :{BLACK}ヘルプとマニュアル
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}オンラインコンテンツの確認
 STR_INTRO_QUIT                                                  :{BLACK}終了
 
@@ -2121,14 +2129,14 @@ STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}コミ�
 STR_CHEATS                                                      :{WHITE}サンドボックスのオプション
 STR_CHEAT_MONEY                                                 :{LTBLUE}預金残高を{CURRENCY_LONG}増やす
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}会社: {ORANGE}{COMMA}を乗っ取ってプレイする
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}魔法のブルドーザー(産業拠点等、何でも撤去できる): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}魔法のブルドーザー(産業拠点など何でも撤去可能): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}トンネルの平面交差を許容: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}ジェット機の小型空港での墜落率を減少: {ORANGE}{STRING}
 STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}マップの最高高度を変更: {ORANGE}{NUM}
 STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}マップの最大高度
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}日付を変更: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}現在日時を変更
-STR_CHEAT_SETUP_PROD                                            :{LTBLUE}生産量変更: {ORANGE}{STRING}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}産業の生産量の変更を有効化: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - 配色
@@ -2457,6 +2465,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :リンクグラ
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :退出
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} が参加してきました
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} がゲームに参加してきました (クライアント #{NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {0:STRING} が{STRING}の経営に参画してきました
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} がゲームを観覧し始めました
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} が新会社 (#{NUM}) を設立しました
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} が退出しました({STRING})
@@ -2672,6 +2681,7 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}道路�
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}建設したい橋の種類をクリックしてください
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING}{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{STRING}{} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING}{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :吊橋(S造)
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :桁橋(S造)
@@ -3458,7 +3468,7 @@ STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :道路補修に
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :社長の彫像を建設
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :市街地開発に出資
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :独占運送契約を締結
-STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :議会を買収
+STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :地方自治体への贈賄
 ###next-name-looks-similar
 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}旅客と貨物を確保する為に、街で新聞広告を実施します。{}より多くの旅客と貨物が自社の交通網を利用するようになります。{}{POP_COLOUR}費用: {CURRENCY_LONG}
@@ -3466,7 +3476,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}旅客と貨物を確保する為に、街でTV-CMを開始します{}街の中心部の大範囲にある駅の評価が一時的に高まります。{}{POP_COLOUR}費用: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}社を称える彫像を建設します{}この街の駅の評価を恒久的に高めます。{}{POP_COLOUR}費用: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}市街地の開発に出資します{}街の成長速度が一時的に早まります。{}{POP_COLOUR}費用: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}買収を行い、議会内の評判を高めます。注意: 露見した場合は処罰されます{}{POP_COLOUR}費用: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}贈賄を通じて地方自治体内の評判を高めます。注意: 露見した場合は処罰されます{}{POP_COLOUR}費用: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} 目標
@@ -4374,6 +4384,7 @@ STR_ORDER_REFIT_STOP_ORDER                                      :({STRING}に改
 STR_ORDER_STOP_ORDER                                            :(運用停止)
 
 
+STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(駅を使用できません){POP_COLOUR} {STRING} {STATION}
 
 STR_ORDER_IMPLICIT                                              :(自動)
@@ -4432,6 +4443,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}ダイ�
 STR_TIMETABLE_NO_TRAVEL                                         :運行計画無
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :該当区間を運行 (次の手動指令により自動設定)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :該当区間を運行 (ダイヤ設定無)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :最高速度{VELOCITY}で該当区間を運行 (ダイヤ設定無)
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING}で該当区間を運行
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{STRING}で該当区間を運行(最高速度{VELOCITY})
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :運行({0:STRING}・ダイヤ設定無)
@@ -4525,14 +4537,14 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}下に�
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}選択したAIの順位を下げる
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}ゲームスクリプト
-STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}パラメータ
+STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}パラメーター
 STR_AI_CONFIG_AI                                                :{SILVER}AI
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}AIを選択
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}ゲームスクリプトを選択
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}他のスクリプトをロードします。Ctrl+クリックで全ての利用可能バージョンを表示します
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}設定
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}スクリプトのパラメータを設定します
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}スクリプトのパラメーターを設定します
 
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}使用可能な{STRING}
@@ -4556,8 +4568,8 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}ハイ�
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}ミニマップのスクリーンショット
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :ゲームスクリプト
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}AIのパラメーター
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}ゲームスクリプトのパラメーター
 STR_AI_SETTINGS_RESET                                           :{BLACK}リセット
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
@@ -4638,6 +4650,7 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}スク�
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}メッセージ
+STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}{COMPANY}からのメッセージ
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}マップからはみ出します
@@ -4656,12 +4669,13 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}一度�
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}一度にできる撤去量を越えています
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}木の本数が多すぎます
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}名前は重複してはいけません
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{STRING}があります
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}ポーズ中にはできない行動です
 
 # Local authority errors
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}議会が反対しています
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN}議会はこれ以上の空港建設を認可しない方針です
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN}の地元民が騒音公害を理由に空港建設に反対しています
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}の地方自治体が反対しています
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN}の地方自治体はこれ以上の空港建設を許可しません
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN}の地方自治体は騒音公害の懸念から空港建設を許可しません
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}あなたの行った贈収賄が地元当局に露見しました!
 
 # Levelling errors
@@ -5535,3 +5549,8 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :バッジ設定を開く
+STR_BADGE_CONFIG_RESET                                          :リセット
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}バッジのアイコン
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}バッジのフィルター
+STR_BADGE_CONFIG_NAME                                           :名前
