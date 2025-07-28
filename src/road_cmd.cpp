@@ -1858,7 +1858,7 @@ static void DrawTile_Road(TileInfo *ti)
 			break;
 		}
 	}
-	DrawBridgeMiddle(ti);
+	DrawBridgeMiddle(ti, {});
 }
 
 /**

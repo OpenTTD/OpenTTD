@@ -2525,7 +2525,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 		DrawRailTileSeq(ti, dts, TO_BUILDINGS, relocation, 0, _drawtile_track_palette);
 	}
-	DrawBridgeMiddle(ti);
+	DrawBridgeMiddle(ti, {});
 }
 
 void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
