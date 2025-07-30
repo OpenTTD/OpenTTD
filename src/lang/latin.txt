@@ -738,6 +738,8 @@ STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Censione
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Aestimationes societatis
 
 
+
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Mercedes Onerum
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Merces tradendi 10 oneris unitates (aut 10,000 litra) per 20 quadra
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Omnia Monstrare

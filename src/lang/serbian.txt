@@ -793,6 +793,8 @@ STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Ocena u�
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Vrednosti preduzeća
 
 
+
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Stope prihoda od tereta
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Isplata za dostavu 10 jedinica (ili 10 hiljada litara) tereta na razdaljinu od 20 kvadrata
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Prikaži sve

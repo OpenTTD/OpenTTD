@@ -925,6 +925,8 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Ґраф
 
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Апошнія 72 хвіліны
 
+
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Тарыфы на перавозку грузаў
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Дзён у дарозе
 STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}Секунд у дарозе

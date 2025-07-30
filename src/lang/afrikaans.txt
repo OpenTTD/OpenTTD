@@ -556,6 +556,8 @@ STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Maatskap
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Maatskappywaarde
 
 
+
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Vragbetalingstariewe
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Inkomste vir aflewering van 10 eenhede (of 10,000 liter) vrag oor 'n afstand van 20 teëls
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Skakel alles aan

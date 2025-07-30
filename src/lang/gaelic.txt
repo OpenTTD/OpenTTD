@@ -746,6 +746,8 @@ STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Rangacha
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Luachan na companaidh
 
 
+
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Reataichean pàighidh carago
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pàigheadh airson lìbhrigeadh dhe 10 aonadan (no 10,000 liotair) dhe charago le astar dhe 20 ceàrnag
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Cuir a h-uile an comas
