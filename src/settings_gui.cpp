@@ -970,6 +970,7 @@ struct GameOptionsWindow : Window {
 
 				this->SetWidgetLoweredState(WID_GO_SURVEY_PARTICIPATE_BUTTON, _settings_client.network.participate_survey == PS_YES);
 				this->SetWidgetDirty(WID_GO_SURVEY_PARTICIPATE_BUTTON);
+				this->SetWidgetDirty(WID_GO_SURVEY_PARTICIPATE_TEXT);
 				break;
 
 			case WID_GO_SURVEY_LINK_BUTTON:
