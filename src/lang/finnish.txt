@@ -622,8 +622,14 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Yhtiöid
 
 STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Viime 24 minuuttia
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Viime 72 minuuttia
+STR_GRAPH_LAST_288_MINUTES_TIME_LABEL                           :{TINY_FONT}{BLACK}Viime 288 minuuttia
 
+STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLACK}2 vuotta (kuukausittain)
+STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 vuotta (neljännesvuosittain)
+STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 vuotta (vuosittain)
 
+STR_GRAPH_TOGGLE_RANGE                                          :Valitse, näytetäänkö tämän osion kuvaaja
+STR_GRAPH_SELECT_SCALE                                          :Muuta kuvaajan vaaka-asteikkoa
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Rahtitaksat
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Vuorokausia kuljetuksessa

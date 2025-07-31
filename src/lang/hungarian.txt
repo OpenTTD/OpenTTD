@@ -685,8 +685,14 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Vállala
 
 STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Utolsó 24 perc
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Utolsó 72 perc
+STR_GRAPH_LAST_288_MINUTES_TIME_LABEL                           :{TINY_FONT}{BLACK}Az utolsó 288 perc
 
+STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLACK}2 év (havonta)
+STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 év (negyedévente)
+STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 év (évente)
 
+STR_GRAPH_TOGGLE_RANGE                                          :Grafikon megjelenítése ehhez az adatsorhoz
+STR_GRAPH_SELECT_SCALE                                          :A grafikon vízszintes skálájának módosítása
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Rakományok szállítási díja
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Napok szállítás közben

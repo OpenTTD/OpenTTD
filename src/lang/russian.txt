@@ -760,8 +760,14 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Граф
 
 STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Последние 24 минуты
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Последние 72 минуты
+STR_GRAPH_LAST_288_MINUTES_TIME_LABEL                           :{TINY_FONT}{BLACK}Последние 288 минут
 
+STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLACK}2 года (помесячно)
+STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 лет (поквартально)
+STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 года
 
+STR_GRAPH_TOGGLE_RANGE                                          :Включить/отключить отображение графика
+STR_GRAPH_SELECT_SCALE                                          :Сменить горизонтальный масштаб графика
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Оплата за перевозку грузов
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Дней в пути

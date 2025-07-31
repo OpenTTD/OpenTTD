@@ -620,10 +620,16 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}運送�
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}公司效率指標 (最高 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}公司市值圖表
 
-STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}最後 24 分鐘
-STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}最後 72 分鐘
+STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}最近 24 分鐘
+STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}最近 72 分鐘
+STR_GRAPH_LAST_288_MINUTES_TIME_LABEL                           :{TINY_FONT}{BLACK}最近 288 分鐘
 
+STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLACK}2 年（每月）
+STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 年（每季）
+STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 年（每年）
 
+STR_GRAPH_TOGGLE_RANGE                                          :切換本數據範圍的圖表
+STR_GRAPH_SELECT_SCALE                                          :變更圖表的水平比例
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}貨物運費表
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}運輸所用天數

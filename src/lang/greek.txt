@@ -715,8 +715,14 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Γράφ
 
 STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Τελευταία 24 λεπτά
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Τελευταία 72 λεπτά
+STR_GRAPH_LAST_288_MINUTES_TIME_LABEL                           :{TINY_FONT}{BLACK}Τελευταία 288 λεπτά
 
+STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLACK}2 έτη (μηνιαία)
+STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 έτη (τετραμηνιαία)
+STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 έτη (ετήσια)
 
+STR_GRAPH_TOGGLE_RANGE                                          :Εναλλαγή γραφήματος για αυτό το εύρος στοιχείων
+STR_GRAPH_SELECT_SCALE                                          :Αλλαγή οριζόντιας κλίμακας γραφήματος
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Ποσοστά Πληρωμής Φορτίων
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Ημέρες σε μετάβαση
