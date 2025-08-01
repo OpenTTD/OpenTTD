@@ -127,6 +127,7 @@ inline void Blitter_40bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 
 	/* store so we don't have to access it via bp every time (compiler assumes pointer aliasing) */
 	const uint8_t *remap = bp->remap->palette;
+	const Colour *remap_rgba = GetRGBARecolour(bp->remap);
 
 	for (int y = 0; y < bp->height; y++) {
 		/* next dst line begins here */
@@ -226,6 +227,49 @@ inline void Blitter_40bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 								uint r = remap[m];
 								if (r != 0) {
 									*dst = this->ComposeColourPANoCheck(this->LookupColourInPalette(r), src_px->a, b);
+									*anim = 0; // Animation colours don't work with alpha-blending.
+								}
+							}
+							anim++;
+							dst++;
+							src_px++;
+							src_n++;
+						} while (--n != 0);
+					}
+					break;
+
+				case BlitterMode::RGBAColourRemap:
+					if (src_px->a == 255) {
+						do {
+							uint8_t m = GB(*src_n, 0, 8);
+							/* In case the m-channel is zero, only apply the crash remap by darkening the RGB colour. */
+							if (m == 0) {
+								*dst = *src_px;
+								*anim = 0;
+							} else {
+								const Colour &c = remap_rgba[GB(m, 0, 8)];
+								if (c.a != 0) {
+									*dst = ComposeColourRGBANoCheck(c.r, c.g, c.b, c.a, *dst);
+									*anim = 0;
+								}
+							}
+							anim++;
+							dst++;
+							src_px++;
+							src_n++;
+						} while (--n != 0);
+					} else {
+						do {
+							uint8_t m = GB(*src_n, 0, 8);
+							Colour b = this->RealizeBlendedColour(*anim, *dst);
+							if (m == 0) {
+								Colour c = *src_px;
+								*dst = this->ComposeColourRGBANoCheck(c.r, c.g, c.b, src_px->a / 255, b);
+								*anim = 0;
+							} else {
+								const Colour &c = remap_rgba[m];
+								if (c.a != 0) {
+									*dst = this->ComposeColourPANoCheck(c, c.a * src_px->a / 255, b);
 									*anim = 0; // Animation colours don't work with alpha-blending.
 								}
 							}
@@ -353,6 +397,7 @@ void Blitter_40bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 		default: NOT_REACHED();
 		case BlitterMode::Normal: Draw<BlitterMode::Normal>(bp, zoom); return;
 		case BlitterMode::ColourRemap: Draw<BlitterMode::ColourRemap>(bp, zoom); return;
+		case BlitterMode::RGBAColourRemap: Draw<BlitterMode::RGBAColourRemap>(bp, zoom); return;
 		case BlitterMode::Transparent: Draw<BlitterMode::Transparent>(bp, zoom); return;
 		case BlitterMode::TransparentRemap: Draw<BlitterMode::TransparentRemap>(bp, zoom); return;
 		case BlitterMode::CrashRemap: Draw<BlitterMode::CrashRemap>(bp, zoom); return;

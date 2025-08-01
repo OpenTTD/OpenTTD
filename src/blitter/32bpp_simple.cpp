@@ -24,6 +24,7 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 	const Blitter_32bppSimple::Pixel *src, *src_line;
 	Colour *dst, *dst_line;
 	const uint8_t *remap = bp->remap->palette;
+	const Colour *remap_rgba = GetRGBARecolour(bp->remap);
 
 	/* Find where to start reading in the source sprite */
 	src_line = (const Blitter_32bppSimple::Pixel *)bp->sprite + (bp->skip_top * bp->sprite_width + bp->skip_left) * ScaleByZoom(1, zoom);
@@ -44,6 +45,18 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 						if (src->a != 0) *dst = ComposeColourRGBA(src->r, src->g, src->b, src->a, *dst);
 					} else {
 						if (remap[src->m] != 0) *dst = ComposeColourPA(AdjustBrightness(this->LookupColourInPalette(remap[src->m]), src->v), src->a, *dst);
+					}
+					break;
+
+				case BlitterMode::RGBAColourRemap:
+					/* In case the m-channel is zero, do not remap this pixel in any way */
+					if (src->m == 0) {
+						if (src->a != 0) *dst = ComposeColourRGBA(src->r, src->g, src->b, src->a, *dst);
+					} else {
+						const Colour &c = remap_rgba[src->m];
+						if (c.a != 0) {
+							*dst = ComposeColourPA(AdjustBrightness(c, src->v), src->a, *dst);
+						}
 					}
 					break;
 

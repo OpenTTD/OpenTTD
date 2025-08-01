@@ -17,6 +17,7 @@
 enum class BlitterMode : uint8_t {
 	Normal, ///< Perform the simple blitting.
 	ColourRemap, ///< Perform a colour remapping.
+	RGBAColourRemap, ///< Perform a colour remapping.
 	Transparent, ///< Perform transparency darkening remapping.
 	TransparentRemap, ///< Perform transparency colour remapping.
 	CrashRemap, ///< Perform a crash remapping.
