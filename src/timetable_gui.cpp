@@ -445,7 +445,7 @@ struct TimetableWindow : Window {
 
 			if (i % 2 == 0) {
 				DrawOrderString(v, &orders[order_id], order_id, tr.top, i == selected, true, tr.left, middle, tr.right);
-				if (order_id > v->orders->GetNext(order_id)) final_order = true;
+				if (v->orders->GetNext(order_id) == 0) final_order = true;
 				order_id = v->orders->GetNext(order_id);
 			} else {
 				TextColour colour;
