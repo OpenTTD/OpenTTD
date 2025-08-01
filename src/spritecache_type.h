@@ -11,6 +11,7 @@
 #define SPRITECACHE_TYPE_H
 
 #include "core/enum_type.hpp"
+#include "gfx_type.h"
 #include "spriteloader/sprite_file_type.hpp"
 
 /** Data structure describing a sprite. */
@@ -26,8 +27,18 @@ struct Sprite {
 struct RecolourSprite {
 	static constexpr size_t PALETTE_SIZE = 256; ///< Number of entries in a recolour sprite.
 
+	bool is_rgba;
 	uint8_t palette[PALETTE_SIZE];
 };
+
+struct RecolourSpriteRGBA : RecolourSprite {
+	Colour rgba[PALETTE_SIZE];
+};
+
+inline const Colour *GetRGBARecolour(const RecolourSprite *rs)
+{
+	return rs->is_rgba ? static_cast<const RecolourSpriteRGBA *>(rs)->rgba : nullptr;
+}
 
 enum class SpriteCacheCtrlFlag : uint8_t {
 	AllowZoomMin1xPal, ///< Allow use of sprite min zoom setting at 1x in palette mode.

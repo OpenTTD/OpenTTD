@@ -555,8 +555,15 @@ void SetupColoursAndInitialWindow()
 	for (Colours i = COLOUR_BEGIN; i != COLOUR_END; i++) {
 		const RecolourSprite *rs = GetRecolourSprite(GetColourPalette(i));
 		assert(rs != nullptr);
-		for (ColourShade j = SHADE_BEGIN; j < SHADE_END; ++j) {
-			SetColourGradient(i, j, PixelColour{rs->palette[0xC6 + j]});
+		if (rs->is_rgba) {
+			const Colour *rgba = GetRGBARecolour(rs);
+			for (ColourShade j = SHADE_BEGIN; j < SHADE_END; ++j) {
+				SetColourGradient(i, j, PixelColour{rs->palette[0xC6 + j], rgba[j]});
+			}
+		} else {
+			for (ColourShade j = SHADE_BEGIN; j < SHADE_END; ++j) {
+				SetColourGradient(i, j, PixelColour{rs->palette[0xC6 + j]});
+			}
 		}
 	}
 

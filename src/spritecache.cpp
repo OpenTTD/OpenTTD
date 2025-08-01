@@ -427,6 +427,17 @@ static void ReadPaletteRecolourSprite(SpriteFile &file, size_t entries, Recolour
 	}
 }
 
+static void ReadRGBARecolourSprite(SpriteFile &file, size_t entries, RecolourSpriteRGBA &rs)
+{
+	/* Colour is byte-arranged differently by platform, so read components individually. */
+	for (uint i = 0; i < entries; ++i) {
+		rs.rgba[i].r = file.ReadByte();
+		rs.rgba[i].g = file.ReadByte();
+		rs.rgba[i].b = file.ReadByte();
+		rs.rgba[i].a = file.ReadByte();
+	}
+}
+
 /**
  * Load a recolour sprite into memory.
  * @param file GRF we're reading from.
@@ -450,7 +461,18 @@ static void *ReadRecolourSprite(SpriteFile &file, size_t file_pos, uint num, Spr
 		entries = num;
 	}
 
+	num -= entries;
+	if (num == entries * 4) {
+		RecolourSpriteRGBA *rs_rgba = allocator.Allocate<RecolourSpriteRGBA>(sizeof(RecolourSpriteRGBA));
+
+		rs_rgba->is_rgba = true;
+		ReadPaletteRecolourSprite(file, entries, *rs_rgba);
+		ReadRGBARecolourSprite(file, entries, *rs_rgba);
+		return rs_rgba;
+	}
+
 	RecolourSprite *rs = allocator.Allocate<RecolourSprite>(sizeof(RecolourSprite));
+	rs->is_rgba = false;
 	ReadPaletteRecolourSprite(file, entries, *rs);
 	return rs;
 }

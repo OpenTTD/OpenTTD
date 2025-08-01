@@ -983,13 +983,13 @@ Dimension GetSpriteSize(SpriteID sprid, Point *offset, ZoomLevel zoom)
  * @param pal The palette to get the blitter mode for.
  * @return The blitter mode associated with the palette.
  */
-static BlitterMode GetBlitterMode(PaletteID pal)
+static BlitterMode GetBlitterMode(PaletteID pal, const RecolourSprite &recolour)
 {
 	switch (pal) {
 		case PAL_NONE:          return BlitterMode::Normal;
 		case PALETTE_CRASH:     return BlitterMode::CrashRemap;
 		case PALETTE_ALL_BLACK: return BlitterMode::BlackRemap;
-		default:                return BlitterMode::ColourRemap;
+		default:                return recolour.is_rgba && BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 32 ? BlitterMode::RGBAColourRemap : BlitterMode::ColourRemap;
 	}
 }
 
@@ -1014,7 +1014,7 @@ void DrawSpriteViewport(SpriteID img, PaletteID pal, int x, int y, const SubSpri
 		} else {
 			_colour_remap_ptr = GetRecolourSprite(GB(pal, 0, PALETTE_WIDTH));
 		}
-		GfxMainBlitterViewport(GetSprite(real_sprite, SpriteType::Normal), x, y, GetBlitterMode(pal), sub, real_sprite);
+		GfxMainBlitterViewport(GetSprite(real_sprite, SpriteType::Normal), x, y, GetBlitterMode(pal, *_colour_remap_ptr), sub, real_sprite);
 	} else {
 		GfxMainBlitterViewport(GetSprite(real_sprite, SpriteType::Normal), x, y, BlitterMode::Normal, sub, real_sprite);
 	}
@@ -1042,7 +1042,7 @@ void DrawSprite(SpriteID img, PaletteID pal, int x, int y, const SubSprite *sub,
 		} else {
 			_colour_remap_ptr = GetRecolourSprite(GB(pal, 0, PALETTE_WIDTH));
 		}
-		GfxMainBlitter(GetSprite(real_sprite, SpriteType::Normal), x, y, GetBlitterMode(pal), sub, real_sprite, zoom);
+		GfxMainBlitter(GetSprite(real_sprite, SpriteType::Normal), x, y, GetBlitterMode(pal, *_colour_remap_ptr), sub, real_sprite, zoom);
 	} else {
 		GfxMainBlitter(GetSprite(real_sprite, SpriteType::Normal), x, y, BlitterMode::Normal, sub, real_sprite, zoom);
 	}
