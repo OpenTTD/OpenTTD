@@ -625,7 +625,7 @@ STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLA
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Últimos 72 minutos
 STR_GRAPH_LAST_288_MINUTES_TIME_LABEL                           :{TINY_FONT}{BLACK}Últimos 288 minutos
 
-STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLACK}2 anos (mensalmente)
+STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLACK}2 anos (mensal)
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 anos (trimestral)
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 anos (anual)
 
