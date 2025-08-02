@@ -3699,9 +3699,14 @@ STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Town gro
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Town is {RED}not{BLACK} growing
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Noise limit in town: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centre the main view on town location. Ctrl+Click to open a new viewport on town location
-STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Local Authority
-STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Show information on local authority
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Change town name
+
+STR_TOWN_VIEW_INFO                                              :Information
+STR_TOWN_VIEW_INFO_TOOLTIP                                      :Switch to town information tab
+STR_TOWN_VIEW_RATINGS                                           :Ratings
+STR_TOWN_VIEW_RATINGS_TOOLTIP                                   :Switch to local authority ratings tab
+STR_TOWN_VIEW_ACTIONS                                           :Actions
+STR_TOWN_VIEW_ACTIONS_TOOLTIP                                   :Switch to local authority actions tab
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Expand
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Increase size of town
@@ -3714,8 +3719,6 @@ STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Delete t
 
 STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Rename Town
 
-# Town local authority window
-STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} local authority
 STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Zone
 STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Show zone within local authority boundaries
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Transport company ratings:
