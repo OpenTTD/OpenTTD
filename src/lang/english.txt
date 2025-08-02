@@ -648,6 +648,10 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transported
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Delivered
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Waiting
 
+STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Cargo History
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Supply
+STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transported
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Show detailed performance ratings
 
 # Graph key window
@@ -3702,6 +3706,8 @@ STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centre t
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Local Authority
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Show information on local authority
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Change town name
+STR_TOWN_VIEW_CARGO_GRAPH                                       :Cargo Graph
+STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :Show graph of town's cargo history
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Expand
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Increase size of town
