@@ -389,7 +389,7 @@ static std::tuple<CommandCost, uint, uint16_t, CargoArray> RefitVehicle(Vehicle 
 
 		/* If the vehicle is not refittable, or does not allow automatic refitting,
 		 * count its capacity nevertheless if the cargo matches */
-		bool refittable = HasBit(e->info.refit_mask, new_cargo_type) && (!auto_refit || e->info.misc_flags.Test(EngineMiscFlag::AutoRefit));
+		bool refittable = e->info.refit_mask.Test(new_cargo_type) && (!auto_refit || e->info.misc_flags.Test(EngineMiscFlag::AutoRefit));
 		if (!refittable && v->cargo_type != new_cargo_type) {
 			uint amount = e->DetermineCapacity(v, nullptr);
 			if (amount > 0) cargo_capacities[v->cargo_type] += amount;

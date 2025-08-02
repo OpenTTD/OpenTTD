@@ -34,16 +34,16 @@ static ChangeInfoResult CargoReserveInfo(uint first, uint last, int prop, ByteRe
 	}
 
 	for (uint id = first; id < last; ++id) {
-		CargoSpec *cs = CargoSpec::Get(id);
+		CargoSpec *cs = CargoSpec::Get(static_cast<CargoType>(id));
 
 		switch (prop) {
 			case 0x08: // Bit number of cargo
 				cs->bitnum = buf.ReadByte();
 				if (cs->IsValid()) {
 					cs->grffile = _cur_gps.grffile;
-					SetBit(_cargo_mask, id);
+					_cargo_mask.Set(cs->Index());
 				} else {
-					ClrBit(_cargo_mask, id);
+					_cargo_mask.Reset(cs->Index());
 				}
 				BuildCargoLabelMap();
 				break;

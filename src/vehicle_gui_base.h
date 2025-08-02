@@ -116,7 +116,7 @@ struct BaseVehicleListWindow : public Window {
 	void UpdateVehicleGroupBy(GroupBy group_by);
 	void SortVehicleList();
 	void BuildVehicleList();
-	void SetCargoFilter(uint8_t index);
+	void SetCargoFilter(CargoType index);
 	void SetCargoFilterArray();
 	void FilterVehicleList();
 	StringID GetCargoFilterLabel(CargoType cargo_type) const;

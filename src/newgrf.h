@@ -134,7 +134,7 @@ struct GRFFile {
 	std::vector<GRFLabel> labels{}; ///< List of labels
 
 	std::vector<CargoLabel> cargo_list{}; ///< Cargo translation table (local ID -> label)
-	std::array<uint8_t, NUM_CARGO> cargo_map{}; ///< Inverse cargo translation table (CargoType -> local ID)
+	TypedIndexContainer<std::array<uint8_t, NUM_CARGO>, CargoType> cargo_map{}; ///< Inverse cargo translation table (CargoType -> local ID)
 
 	std::vector<BadgeID> badge_list{}; ///< Badge translation table (local index -> global index)
 	std::unordered_map<uint16_t, BadgeID> badge_map{};
