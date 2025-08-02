@@ -17,6 +17,7 @@
 enum class BlitterMode : uint8_t {
 	Normal, ///< Perform the simple blitting.
 	ColourRemap, ///< Perform a colour remapping.
+	RGBAColourRemap, ///< Perform a colour remapping.
 	Transparent, ///< Perform transparency darkening remapping.
 	TransparentRemap, ///< Perform transparency colour remapping.
 	CrashRemap, ///< Perform a crash remapping.
@@ -31,7 +32,7 @@ public:
 	/** Parameters related to blitting. */
 	struct BlitterParams {
 		const void *sprite; ///< Pointer to the sprite how ever the encoder stored it
-		const uint8_t *remap;  ///< XXX -- Temporary storage for remap array
+		const RecolourSprite *remap;  ///< Pointer to the RecolourSprite to use with remapping.
 
 		int skip_left;      ///< How much pixels of the source to skip on the left (based on zoom of dst)
 		int skip_top;       ///< How much pixels of the source to skip on the top (based on zoom of dst)

@@ -325,7 +325,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyInfo(const Company
 	p->Send_uint8 (c->index);
 	p->Send_string(GetString(STR_COMPANY_NAME, c->index));
 	p->Send_string(GetString(STR_PRESIDENT_NAME, c->index));
-	p->Send_uint8 (c->colour);
+	p->Send_uint8 (c->colour & 0xF);
 	p->Send_bool  (true);
 	p->Send_uint32(c->inaugurated_year.base());
 	p->Send_bool  (c->is_ai);
@@ -348,7 +348,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyUpdate(const Compa
 	p->Send_uint8 (c->index);
 	p->Send_string(GetString(STR_COMPANY_NAME, c->index));
 	p->Send_string(GetString(STR_PRESIDENT_NAME, c->index));
-	p->Send_uint8 (c->colour);
+	p->Send_uint8 (c->colour & 0xF);
 	p->Send_bool  (true);
 	p->Send_uint8 (CeilDiv(c->months_of_bankruptcy, 3)); // send as quarters_of_bankruptcy
 

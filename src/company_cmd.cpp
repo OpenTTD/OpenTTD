@@ -35,6 +35,7 @@
 #include "smallmap_gui.h"
 #include "game/game.hpp"
 #include "goal_base.h"
+#include "spritecache.h"
 #include "story_base.h"
 #include "company_cmd.h"
 #include "timer/timer.h"
@@ -55,6 +56,7 @@ void UpdateObjectColours(const Company *c);
 CompanyID _local_company;   ///< Company controlled by the human player at this client. Can also be #COMPANY_SPECTATOR.
 CompanyID _current_company; ///< Company currently doing an action.
 TypedIndexContainer<std::array<Colours, MAX_COMPANIES>, CompanyID> _company_colours; ///< NOSAVE: can be determined from company structs.
+TypedIndexContainer<std::array<PaletteID, MAX_COMPANIES>, CompanyID> _company_palettes; ///< NOSAVE: can be determined from company structs.
 std::string _company_manager_face; ///< for company manager face storage in openttd.cfg
 uint _cur_company_tick_index;             ///< used to generate a name for one company that doesn't have a name yet per tick
 
@@ -163,7 +165,7 @@ TextColour GetDrawStringCompanyColour(CompanyID company)
  */
 PaletteID GetCompanyPalette(CompanyID company)
 {
-	return GetColourPalette(_company_colours[company]);
+	return _company_palettes[company];
 }
 
 /**
@@ -513,7 +515,7 @@ static Colours GenerateCompanyColour()
 
 	/* Move the colours that look similar to each company's colour to the side */
 	for (const Company *c : Company::Iterate()) {
-		Colours pcolour = c->colour;
+		Colours pcolour = Colours(c->colour & 0xF);
 
 		for (uint i = 0; i < COLOUR_END; i++) {
 			if (colours[i] == pcolour) {
@@ -566,6 +568,40 @@ restart:;
 	}
 }
 
+void ClearLivery(Livery &livery)
+{
+	DeallocateDynamicSprite(livery.cached_pal_1cc);
+	DeallocateDynamicSprite(livery.cached_pal_2cc);
+	DeallocateDynamicSprite(livery.cached_pal_2cr);
+
+	livery.cached_pal_1cc = PALETTE_RECOLOUR_START + GB(livery.colour1, 0, 4);
+	livery.cached_pal_2cc = SPR_2CCMAP_BASE + GB(livery.colour1, 0, 4) + GB(livery.colour2, 0, 4) * 16;
+	livery.cached_pal_2cr = SPR_2CCMAP_BASE + GB(livery.colour2, 0, 4) + GB(livery.colour1, 0, 4) * 16;
+}
+
+/**
+ * Update cached palettes for a livery.
+ * @param livery Livery to update.
+ * @param always_update Always update instead of clearing livery (for LS_DEFAULT which is always needed).
+ */
+void UpdateLivery(Livery &livery, bool always_update)
+{
+	if ((always_update || livery.in_use != 0) && (ColoursPacker(livery.colour1).IsCustom() || ColoursPacker(livery.colour2).IsCustom())) {
+		PaletteID pal_1cc = PALETTE_RECOLOUR_START + GB(livery.colour1, 0, 4);
+		livery.cached_pal_1cc = CreateCompanyColourRemap(livery.colour1, livery.colour1, false, pal_1cc, livery.cached_pal_1cc);
+
+		if (_loaded_newgrf_features.has_2CC) {
+			PaletteID pal_2cc = SPR_2CCMAP_BASE + GB(livery.colour1, 0, 4) + GB(livery.colour2, 0, 4) * 16;
+			livery.cached_pal_2cc = CreateCompanyColourRemap(livery.colour1, livery.colour2, true, pal_2cc, livery.cached_pal_2cc);
+
+			PaletteID pal_2cr = SPR_2CCMAP_BASE + GB(livery.colour2, 0, 4) + GB(livery.colour1, 0, 4) * 16;
+			livery.cached_pal_2cr = CreateCompanyColourRemap(livery.colour2, livery.colour1, true, pal_2cr, livery.cached_pal_2cr);
+		}
+	} else {
+		ClearLivery(livery);
+	}
+}
+
 /**
  * Reset the livery schemes to the company's primary colour.
  * This is used on loading games without livery information and on new company start up.
@@ -577,6 +613,7 @@ void ResetCompanyLivery(Company *c)
 		c->livery[scheme].in_use  = 0;
 		c->livery[scheme].colour1 = c->colour;
 		c->livery[scheme].colour2 = c->colour;
+		UpdateLivery(c->livery[scheme], scheme == LS_DEFAULT);
 	}
 
 	for (Group *g : Group::Iterate()) {
@@ -584,8 +621,12 @@ void ResetCompanyLivery(Company *c)
 			g->livery.in_use  = 0;
 			g->livery.colour1 = c->colour;
 			g->livery.colour2 = c->colour;
+			UpdateLivery(g->livery, false);
 		}
 	}
+
+	_company_colours[c->index] = c->livery[LS_DEFAULT].colour1;
+	_company_palettes[c->index] = c->livery[LS_DEFAULT].cached_pal_1cc;
 }
 
 /**
@@ -613,7 +654,6 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = CompanyID::Invalid(
 	c->colour = colour;
 
 	ResetCompanyLivery(c);
-	_company_colours[c->index] = c->colour;
 
 	/* Scale the initial loan based on the inflation rounded down to the loan interval. The maximum loan has already been inflation adjusted. */
 	c->money = c->current_loan = std::min<int64_t>((INITIAL_LOAN * _economy.inflation_prices >> 16) / LOAN_INTERVAL * LOAN_INTERVAL, _economy.max_loan);
@@ -1076,11 +1116,16 @@ CommandCost CmdSetCompanyManagerFace(DoCommandFlags flags, uint32_t bits, uint s
  */
 void UpdateCompanyLiveries(Company *c)
 {
+	UpdateLivery(c->livery[LS_DEFAULT], true);
 	for (int i = 1; i < LS_END; i++) {
 		if (!HasBit(c->livery[i].in_use, 0)) c->livery[i].colour1 = c->livery[LS_DEFAULT].colour1;
 		if (!HasBit(c->livery[i].in_use, 1)) c->livery[i].colour2 = c->livery[LS_DEFAULT].colour2;
+		UpdateLivery(c->livery[i], false);
 	}
 	UpdateCompanyGroupLiveries(c);
+
+	_company_colours[c->index] = c->livery[LS_DEFAULT].colour1;
+	_company_palettes[c->index] = c->livery[LS_DEFAULT].cached_pal_1cc;
 }
 
 /**
@@ -1093,7 +1138,7 @@ void UpdateCompanyLiveries(Company *c)
  */
 CommandCost CmdSetCompanyColour(DoCommandFlags flags, LiveryScheme scheme, bool primary, Colours colour)
 {
-	if (scheme >= LS_END || (colour >= COLOUR_END && colour != INVALID_COLOUR)) return CMD_ERROR;
+	if (scheme >= LS_END) return CMD_ERROR;
 
 	/* Default scheme can't be reset to invalid. */
 	if (scheme == LS_DEFAULT && colour == INVALID_COLOUR) return CMD_ERROR;
@@ -1117,9 +1162,11 @@ CommandCost CmdSetCompanyColour(DoCommandFlags flags, LiveryScheme scheme, bool 
 			 * original and cached company colours too. */
 			if (scheme == LS_DEFAULT) {
 				UpdateCompanyLiveries(c);
-				_company_colours[_current_company] = colour;
+				/* Update cached colour/palette for company */
 				c->colour = colour;
 				CompanyAdminUpdate(c);
+			} else {
+				UpdateLivery(c->livery[scheme], false);
 			}
 		} else {
 			if (scheme != LS_DEFAULT) AssignBit(c->livery[scheme].in_use, 1, colour != INVALID_COLOUR);
@@ -1128,6 +1175,8 @@ CommandCost CmdSetCompanyColour(DoCommandFlags flags, LiveryScheme scheme, bool 
 
 			if (scheme == LS_DEFAULT) {
 				UpdateCompanyLiveries(c);
+			} else {
+				UpdateLivery(c->livery[scheme], false);
 			}
 		}
 

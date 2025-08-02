@@ -11,6 +11,8 @@
 #define SPRITECACHE_TYPE_H
 
 #include "core/enum_type.hpp"
+#include "gfx_type.h"
+#include "spriteloader/sprite_file_type.hpp"
 
 /** Data structure describing a sprite. */
 struct Sprite {
@@ -19,6 +21,29 @@ struct Sprite {
 	int16_t x_offs;  ///< Number of pixels to shift the sprite to the right.
 	int16_t y_offs;  ///< Number of pixels to shift the sprite downwards.
 	std::byte data[]; ///< Sprite data.
+};
+
+/** Data structure describing a palette remap. */
+class RecolourSprite {
+public:
+	static constexpr size_t PALETTE_SIZE = 256; ///< Number of entries in a recolour sprite.
+
+	virtual ~RecolourSprite() {}
+	virtual void Read(SpriteFile &file, size_t entries);
+	inline const uint8_t *GetPaletteRemap() const { return this->palette.data(); }
+	virtual bool IsRGB() const { return false; }
+	virtual const Colour *GetRGBARemap() const { return nullptr; }
+
+	std::array<uint8_t, PALETTE_SIZE> palette{}; ///< Palette index remap, mapping from one palette index to another.
+};
+
+class RecolourSpriteRGBA : public RecolourSprite {
+public:
+	void Read(SpriteFile &file, size_t entries) override;
+	bool IsRGB() const override { return true; }
+	const Colour *GetRGBARemap() const override { return this->rgba.data(); }
+
+	std::array<Colour, PALETTE_SIZE> rgba{}; ///< RGBA remap, mapping from palette index to colour.
 };
 
 enum class SpriteCacheCtrlFlag : uint8_t {

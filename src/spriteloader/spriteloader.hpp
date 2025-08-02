@@ -117,6 +117,18 @@ public:
 		return static_cast<T *>(this->AllocatePtr(size));
 	}
 
+	/**
+	 * Allocate memory and construct an object in the sprite cache.
+	 * @tparam T Type to construct.
+	 * @tparam Targs The constructor parameter types.
+	 * @param args Parameters for the constructor.
+	 */
+	template <typename T, typename... Targs>
+	T *New(Targs &&... args)
+	{
+		return new (this->Allocate<T>(sizeof(T))) T(std::forward<Targs &&>(args)...);
+	}
+
 protected:
 	/**
 	 * Allocate memory for a sprite.
