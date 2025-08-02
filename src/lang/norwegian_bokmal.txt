@@ -269,6 +269,7 @@ STR_UNITS_YEARS                                                 :{NUM}{NBSP}år
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}period{P "" er}
 
 STR_LIST_SEPARATOR                                              :,{SPACE}
+STR_TRUNCATION_ELLIPSIS                                         :...
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrer:
@@ -623,7 +624,11 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Graf ove
 
 STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Siste 24 minutter
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Siste 72 minutter
+STR_GRAPH_LAST_288_MINUTES_TIME_LABEL                           :{TINY_FONT}{BLACK}Siste 288 minutter
 
+STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLACK}2 år (månedlig)
+STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 år (kvartalsvis)
+STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 år (årlig)
 
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Varetakster
@@ -637,8 +642,11 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Skjul al
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Vis/skjul graf for en bestemt varetype
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Varehistorikk
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Produsert
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportert
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Levert
+STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Venter
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Vis detaljerte prestasjonsmålinger
 
@@ -4026,6 +4034,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produksj
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Produksjon forrige minutt:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}{NBSP}% transportert)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Sentrer hovedvisningen på industrilokasjon. Ctrl+klikk for å åpne et nytt tilleggsvindu på industrilokasjon
+STR_INDUSTRY_VIEW_CARGO_GRAPH                                   :{BLACK}Varegraf
+STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}Viser graf med historikk for industrivarer
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produksjonsnivå: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Næringen har annonsert snarlig nedleggelse!
 
@@ -4165,7 +4175,7 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Rekkevid
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Flytype: {GOLD}{STRING}
 
 ###length 3
-STR_CARGO_TYPE_FILTER_ALL                                       :Alle cargo typer
+STR_CARGO_TYPE_FILTER_ALL                                       :Alle varetyper
 STR_CARGO_TYPE_FILTER_FREIGHT                                   :Frakt
 STR_CARGO_TYPE_FILTER_NONE                                      :Ingen
 

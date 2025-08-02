@@ -622,8 +622,14 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Grafiek 
 
 STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Laatste 24 minuten
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Laatste 72 minuten
+STR_GRAPH_LAST_288_MINUTES_TIME_LABEL                           :{TINY_FONT}{BLACK}Laatste 288 minuten
 
+STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLACK}2 jaar (maandelijks)
+STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 jaar (per kwartaal)
+STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 jaar (jaarlijks)
 
+STR_GRAPH_TOGGLE_RANGE                                          :Grafiek weergeven-verbergen voor dit gegevensbereik
+STR_GRAPH_SELECT_SCALE                                          :Horizontale schaal van grafiek aanpassen
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Vrachtprijzen
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Dagen onderweg
