@@ -654,26 +654,27 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_TROPICAL:
 			case WID_GL_TOYLAND:
 				SetNewLandscapeType(LandscapeType(widget - WID_GL_TEMPERATE));
+				SndClickBeep();
 				break;
 
 			case WID_GL_MAPSIZE_X_PULLDOWN: // Mapsize X
-				ShowDropDownList(this, BuildMapsizeDropDown(), _settings_newgame.game_creation.map_x, WID_GL_MAPSIZE_X_PULLDOWN);
+				this->HandleDropdownListButtonClick(BuildMapsizeDropDown(), _settings_newgame.game_creation.map_x, WID_GL_MAPSIZE_X_PULLDOWN);
 				break;
 
 			case WID_GL_MAPSIZE_Y_PULLDOWN: // Mapsize Y
-				ShowDropDownList(this, BuildMapsizeDropDown(), _settings_newgame.game_creation.map_y, WID_GL_MAPSIZE_Y_PULLDOWN);
+				this->HandleDropdownListButtonClick(BuildMapsizeDropDown(), _settings_newgame.game_creation.map_y, WID_GL_MAPSIZE_Y_PULLDOWN);
 				break;
 
 			case WID_GL_TOWN_PULLDOWN: // Number of towns
-				ShowDropDownMenu(this, _num_towns, _settings_newgame.difficulty.number_towns, WID_GL_TOWN_PULLDOWN, 0, 0);
+				this->HandleDropdownMenuButtonClick(_num_towns, _settings_newgame.difficulty.number_towns, WID_GL_TOWN_PULLDOWN, 0, 0);
 				break;
 
 			case WID_GL_TOWNNAME_DROPDOWN: // Townname generator
-				ShowDropDownList(this, BuildTownNameDropDown(), _settings_newgame.game_creation.town_name, WID_GL_TOWNNAME_DROPDOWN);
+				this->HandleDropdownListButtonClick(BuildTownNameDropDown(), _settings_newgame.game_creation.town_name, WID_GL_TOWNNAME_DROPDOWN);
 				break;
 
 			case WID_GL_INDUSTRY_PULLDOWN: // Number of industries
-				ShowDropDownMenu(this, _num_inds, _settings_newgame.difficulty.industry_density, WID_GL_INDUSTRY_PULLDOWN, 0, 0);
+				this->HandleDropdownMenuButtonClick(_num_inds, _settings_newgame.difficulty.industry_density, WID_GL_INDUSTRY_PULLDOWN, 0, 0);
 				break;
 
 			case WID_GL_GENERATE_BUTTON: { // Generate
@@ -718,6 +719,7 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_HEIGHTMAP_HEIGHT_TEXT: // Height level text
 				this->widget_id = WID_GL_HEIGHTMAP_HEIGHT_TEXT;
 				ShowQueryString(GetString(STR_JUST_INT, _settings_newgame.game_creation.heightmap_height), STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT, 4, this, CS_NUMERAL, QueryStringFlag::EnableDefault);
+				SndClickBeep();
 				break;
 
 
@@ -753,6 +755,7 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_SNOW_COVERAGE_TEXT: // Snow coverage text
 				this->widget_id = WID_GL_SNOW_COVERAGE_TEXT;
 				ShowQueryString(GetString(STR_JUST_INT, _settings_newgame.game_creation.snow_coverage), STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT, 4, this, CS_NUMERAL, QueryStringFlag::EnableDefault);
+				SndClickBeep();
 				break;
 
 			case WID_GL_DESERT_COVERAGE_DOWN:
@@ -770,15 +773,16 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_DESERT_COVERAGE_TEXT: // Desert line text
 				this->widget_id = WID_GL_DESERT_COVERAGE_TEXT;
 				ShowQueryString(GetString(STR_JUST_INT, _settings_newgame.game_creation.desert_coverage), STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT, 4, this, CS_NUMERAL, QueryStringFlag::EnableDefault);
+				SndClickBeep();
 				break;
 
 			case WID_GL_HEIGHTMAP_ROTATION_PULLDOWN: // Heightmap rotation
-				ShowDropDownMenu(this, _rotation, _settings_newgame.game_creation.heightmap_rotation, WID_GL_HEIGHTMAP_ROTATION_PULLDOWN, 0, 0);
+				this->HandleDropdownMenuButtonClick(_rotation, _settings_newgame.game_creation.heightmap_rotation, WID_GL_HEIGHTMAP_ROTATION_PULLDOWN, 0, 0);
 				break;
 
 			case WID_GL_TERRAIN_PULLDOWN: // Terrain type
 				/* For the original map generation only the first four are valid. */
-				ShowDropDownMenu(this, _elevations, _settings_newgame.difficulty.terrain_type, WID_GL_TERRAIN_PULLDOWN, 0, _settings_newgame.game_creation.land_generator == LG_ORIGINAL ? ~0xF : 0);
+				this->HandleDropdownMenuButtonClick(_elevations, _settings_newgame.difficulty.terrain_type, WID_GL_TERRAIN_PULLDOWN, 0, _settings_newgame.game_creation.land_generator == LG_ORIGINAL ? ~0xF : 0);
 				break;
 
 			case WID_GL_WATER_PULLDOWN: { // Water quantity
@@ -787,45 +791,50 @@ struct GenerateLandscapeWindow : public Window {
 				if (_settings_newgame.game_creation.land_generator == LG_ORIGINAL) {
 					SetBit(hidden_mask, CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY);
 				}
-				ShowDropDownMenu(this, _sea_lakes, _settings_newgame.difficulty.quantity_sea_lakes, WID_GL_WATER_PULLDOWN, 0, hidden_mask);
+				this->HandleDropdownMenuButtonClick(_sea_lakes, _settings_newgame.difficulty.quantity_sea_lakes, WID_GL_WATER_PULLDOWN, 0, hidden_mask);
 				break;
 			}
 
 			case WID_GL_RIVER_PULLDOWN: // Amount of rivers
-				ShowDropDownMenu(this, _rivers, _settings_newgame.game_creation.amount_of_rivers, WID_GL_RIVER_PULLDOWN, 0, 0);
+				this->HandleDropdownMenuButtonClick(_rivers, _settings_newgame.game_creation.amount_of_rivers, WID_GL_RIVER_PULLDOWN, 0, 0);
 				break;
 
 			case WID_GL_SMOOTHNESS_PULLDOWN: // Map smoothness
-				ShowDropDownMenu(this, _smoothness, _settings_newgame.game_creation.tgen_smoothness, WID_GL_SMOOTHNESS_PULLDOWN, 0, 0);
+				this->HandleDropdownMenuButtonClick(_smoothness, _settings_newgame.game_creation.tgen_smoothness, WID_GL_SMOOTHNESS_PULLDOWN, 0, 0);
 				break;
 
 			case WID_GL_VARIETY_PULLDOWN: // Map variety
-				ShowDropDownMenu(this, _variety, _settings_newgame.game_creation.variety, WID_GL_VARIETY_PULLDOWN, 0, 0);
+				this->HandleDropdownMenuButtonClick(_variety, _settings_newgame.game_creation.variety, WID_GL_VARIETY_PULLDOWN, 0, 0);
 				break;
 
 			/* Freetype map borders */
 			case WID_GL_WATER_NW:
 				_settings_newgame.game_creation.water_borders.Flip(BorderFlag::NorthWest);
+				SndClickBeep();
 				this->InvalidateData();
 				break;
 
 			case WID_GL_WATER_NE:
 				_settings_newgame.game_creation.water_borders.Flip(BorderFlag::NorthEast);
+				SndClickBeep();
 				this->InvalidateData();
 				break;
 
 			case WID_GL_WATER_SE:
 				_settings_newgame.game_creation.water_borders.Flip(BorderFlag::SouthEast);
+				SndClickBeep();
 				this->InvalidateData();
 				break;
 
 			case WID_GL_WATER_SW:
 				_settings_newgame.game_creation.water_borders.Flip(BorderFlag::SouthWest);
+				SndClickBeep();
 				this->InvalidateData();
 				break;
 
 			case WID_GL_BORDERS_RANDOM:
 				_settings_newgame.game_creation.water_borders = (_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? BorderFlag{} : BorderFlag::Random;
+				SndClickBeep();
 				this->InvalidateData();
 				break;
 
@@ -1134,11 +1143,11 @@ struct CreateScenarioWindow : public Window
 				break;
 
 			case WID_CS_MAPSIZE_X_PULLDOWN: // Mapsize X
-				ShowDropDownList(this, BuildMapsizeDropDown(), _settings_newgame.game_creation.map_x, WID_CS_MAPSIZE_X_PULLDOWN);
+				this->HandleDropdownListButtonClick(BuildMapsizeDropDown(), _settings_newgame.game_creation.map_x, WID_CS_MAPSIZE_X_PULLDOWN);
 				break;
 
 			case WID_CS_MAPSIZE_Y_PULLDOWN: // Mapsize Y
-				ShowDropDownList(this, BuildMapsizeDropDown(), _settings_newgame.game_creation.map_y, WID_CS_MAPSIZE_Y_PULLDOWN);
+				this->HandleDropdownListButtonClick(BuildMapsizeDropDown(), _settings_newgame.game_creation.map_y, WID_CS_MAPSIZE_Y_PULLDOWN);
 				break;
 
 			case WID_CS_EMPTY_WORLD: // Empty world / flat world

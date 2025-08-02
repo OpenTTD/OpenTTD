@@ -30,12 +30,14 @@
 #include "hotkeys.h"
 #include "toolbar_gui.h"
 #include "statusbar_gui.h"
+#include "dropdown_func.h"
 #include "error.h"
 #include "game/game.hpp"
 #include "video/video_driver.hpp"
 #include "framerate_type.h"
 #include "network/network_func.h"
 #include "news_func.h"
+#include "sound_func.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
 
@@ -587,6 +589,38 @@ EventState Window::OnHotkey(int hotkey)
 }
 
 /**
+ * Handle the player clicking on a dropdown list.
+ * @param list     Prepopulated DropDownList.
+ * @param selected The initially selected list item.
+ * @param button   The widget within the parent window that is used to determine
+ *                 the list's location.
+ * @param width    Override the minimum width determined by the selected widget and list contents.
+ * @param instant_close Set to true if releasing mouse button should close the
+ *                      list regardless of where the cursor is.
+ * @param persist  Set if this dropdown should stay open after an option is selected.
+ */
+void Window::HandleDropdownListButtonClick(DropDownList &&list, int selected, WidgetID button, uint width, bool instant_close, bool persist)
+{
+	SndClickBeep();
+	ShowDropDownList(this, std::forward<DropDownList>(list), selected, button, width, instant_close, persist);
+}
+
+/**
+ * Handle the player clicking on a dropdown menu.
+ * @param strings       Menu list.
+ * @param selected      Index of initial selected item.
+ * @param button        Button widget number of the parent window \a w that wants the dropdown menu.
+ * @param disabled_mask Bitmask for disabled items (items with their bit set are displayed, but not selectable in the dropdown list).
+ * @param hidden_mask   Bitmask for hidden items (items with their bit set are not copied to the dropdown list).
+ * @param width         Minimum width of the dropdown menu.
+ */
+void Window::HandleDropdownMenuButtonClick(std::span<const StringID> strings, int selected, WidgetID button, uint32_t disabled_mask, uint32_t hidden_mask, uint width)
+{
+	SndClickBeep();
+	ShowDropDownMenu(this, strings, selected, button, disabled_mask, hidden_mask, width);
+}
+
+/**
  * Do all things to make a button look clicked and mark it to be
  * unclicked in a few ticks.
  * @param widget the widget to "click"
@@ -596,6 +630,7 @@ void Window::HandleButtonClick(WidgetID widget)
 	this->LowerWidget(widget);
 	this->SetTimeout();
 	this->SetWidgetDirty(widget);
+	SndClickBeep();
 }
 
 static void StartWindowDrag(Window *w);

@@ -13,6 +13,7 @@
 #include "vehiclelist.h"
 #include "vehicle_type.h"
 #include "viewport_type.h"
+#include "dropdown_type.h"
 #include "company_type.h"
 #include "tile_type.h"
 #include "widget_type.h"
@@ -499,6 +500,8 @@ public:
 	EventState HandleEditBoxKey(WidgetID wid, char32_t key, uint16_t keycode);
 	virtual void InsertTextString(WidgetID wid, std::string_view str, bool marked, std::optional<size_t> caret, std::optional<size_t> insert_location, std::optional<size_t> replacement_end);
 
+	void HandleDropdownListButtonClick(DropDownList &&list, int selected, WidgetID button, uint width = 0, bool instant_close = false, bool persist = false);
+	void HandleDropdownMenuButtonClick(std::span<const StringID> strings, int selected, WidgetID button, uint32_t disabled_mask, uint32_t hidden_mask, uint width = 0);
 	void HandleButtonClick(WidgetID widget);
 	int GetRowFromWidget(int clickpos, WidgetID widget, int padding, int line_height = -1) const;
 

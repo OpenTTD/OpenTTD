@@ -941,7 +941,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				}
 
 				this->CloseChildWindows(WC_QUERY_STRING); // Remove the parameter query window
-				ShowDropDownList(this, std::move(list), this->preset, WID_NS_PRESET_LIST);
+				this->HandleDropdownListButtonClick(std::move(list), this->preset, WID_NS_PRESET_LIST);
 				break;
 			}
 

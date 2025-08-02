@@ -534,16 +534,16 @@ public:
 				DropDownList list;
 				list.push_back(MakeDropDownListStringItem(STR_REPLACE_ENGINES, 1));
 				list.push_back(MakeDropDownListStringItem(STR_REPLACE_WAGONS, 0));
-				ShowDropDownList(this, std::move(list), this->replace_engines ? 1 : 0, WID_RV_TRAIN_ENGINEWAGON_DROPDOWN);
+				this->HandleDropdownListButtonClick(std::move(list), this->replace_engines ? 1 : 0, WID_RV_TRAIN_ENGINEWAGON_DROPDOWN);
 				break;
 			}
 
 			case WID_RV_RAIL_TYPE_DROPDOWN: // Railtype selection dropdown menu
-				ShowDropDownList(this, GetRailTypeDropDownList(true, true), this->sel_railtype, widget);
+				this->HandleDropdownListButtonClick(GetRailTypeDropDownList(true, true), this->sel_railtype, widget);
 				break;
 
 			case WID_RV_ROAD_TYPE_DROPDOWN: // Roadtype selection dropdown menu
-				ShowDropDownList(this, GetRoadTypeDropDownList(RTTB_ROAD | RTTB_TRAM, true, true), this->sel_roadtype, widget);
+				this->HandleDropdownListButtonClick(GetRoadTypeDropDownList(RTTB_ROAD | RTTB_TRAM, true, true), this->sel_roadtype, widget);
 				break;
 
 			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE: {
@@ -563,7 +563,7 @@ public:
 					ReplaceClick_StartReplace(false);
 				} else {
 					bool replacment_when_old = EngineHasReplacementWhenOldForCompany(Company::Get(_local_company), this->sel_engine[0], this->sel_group);
-					ShowDropDownMenu(this, _start_replace_dropdown, replacment_when_old ? 1 : 0, WID_RV_START_REPLACE, !this->replace_engines ? 1 << 1 : 0, 0);
+					this->HandleDropdownMenuButtonClick(_start_replace_dropdown, replacment_when_old ? 1 : 0, WID_RV_START_REPLACE, !this->replace_engines ? 1 << 1 : 0, 0);
 				}
 				break;
 			}
