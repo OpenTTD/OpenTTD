@@ -11,16 +11,16 @@
 
 #include "../../misc/autorelease.hpp"
 #include "../../debug.h"
-#include "../../fontdetection.h"
+#include "../../fontcache.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
+#include "font_unix.h"
 
 #include <fontconfig/fontconfig.h>
-
-#include "../../safeguards.h"
-
 #include <ft2build.h>
 #include FT_FREETYPE_H
+
+#include "../../safeguards.h"
 
 extern FT_Library _ft_library;
 
@@ -61,6 +61,12 @@ static std::tuple<std::string, std::string> SplitFontFamilyAndStyle(std::string_
 	return { std::string(font_name.substr(0, separator)), std::string(font_name.substr(begin)) };
 }
 
+/**
+ * Load a freetype font face with the given font name.
+ * @param font_name The name of the font to load.
+ * @param face The face that has been found.
+ * @return The error we encountered.
+ */
 FT_Error GetFontByFaceName(std::string_view font_name, FT_Face *face)
 {
 	FT_Error err = FT_Err_Cannot_Open_Resource;
@@ -117,7 +123,7 @@ FT_Error GetFontByFaceName(std::string_view font_name, FT_Face *face)
 	return err;
 }
 
-bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, MissingGlyphSearcher *callback)
+bool FontConfigFindFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, MissingGlyphSearcher *callback)
 {
 	bool ret = false;
 
@@ -182,6 +188,6 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 	if (best_font == nullptr) return false;
 
 	callback->SetFontNames(settings, best_font, &best_index);
-	InitFontCache(callback->Monospace() ? FontSizes{FS_MONO} : FONTSIZES_REQUIRED);
+	FontCache::LoadFontCaches(callback->Monospace() ? FontSizes{FS_MONO} : FONTSIZES_REQUIRED);
 	return true;
 }

@@ -32,7 +32,8 @@ public:
 	static void InitializeFontCaches()
 	{
 		for (FontSize fs = FS_BEGIN; fs != FS_END; fs++) {
-			if (FontCache::caches[fs] == nullptr) new MockFontCache(fs); /* FontCache inserts itself into to the cache. */
+			if (FontCache::Get(fs) != nullptr) continue;
+			FontCache::Register(std::make_unique<MockFontCache>(fs));
 		}
 	}
 };

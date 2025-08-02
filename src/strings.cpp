@@ -17,7 +17,6 @@
 #include "newgrf_text.h"
 #include "fileio_func.h"
 #include "signs_base.h"
-#include "fontdetection.h"
 #include "error.h"
 #include "error_func.h"
 #include "strings_func.h"
@@ -2278,7 +2277,7 @@ std::string_view GetCurrentLanguageIsoCode()
  */
 bool MissingGlyphSearcher::FindMissingGlyphs()
 {
-	InitFontCache(this->Monospace() ? FontSizes{FS_MONO} : FONTSIZES_REQUIRED);
+	FontCache::LoadFontCaches(this->Monospace() ? FontSizes{FS_MONO} : FONTSIZES_REQUIRED);
 
 	this->Reset();
 	for (auto text = this->NextString(); text.has_value(); text = this->NextString()) {
@@ -2376,7 +2375,7 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 		_fcsettings.mono.os_handle = nullptr;
 		_fcsettings.medium.os_handle = nullptr;
 
-		bad_font = !SetFallbackFont(&_fcsettings, _langpack.langpack->isocode, searcher);
+		bad_font = !FontProviderManager::FindFallbackFont(&_fcsettings, _langpack.langpack->isocode, searcher);
 
 		_fcsettings = std::move(backup);
 
@@ -2395,7 +2394,7 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 			/* Our fallback font does miss characters too, so keep the
 			 * user chosen font as that is more likely to be any good than
 			 * the wild guess we made */
-			InitFontCache(searcher->Monospace() ? FontSizes{FS_MONO} : FONTSIZES_REQUIRED);
+			FontCache::LoadFontCaches(searcher->Monospace() ? FontSizes{FS_MONO} : FONTSIZES_REQUIRED);
 		}
 	}
 #endif
