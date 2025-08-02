@@ -356,6 +356,23 @@ public:
 	}
 
 	/**
+	 * Test if tile-based direction cost should be added. This separates ships travelling in opposite direction.
+	 * @param tile Tile of current node.
+	 * @param td Trackdir of current node.
+	 * @returns true iff a tile-based direction cost should be added.
+	 */
+	inline bool AddDirectionCost(TileIndex tile, Trackdir td)
+	{
+		const bool odd_x = TileX(tile) & 1;
+		const bool odd_y = TileY(tile) & 1;
+		if (td == TRACKDIR_X_NE) return odd_y;
+		if (td == TRACKDIR_X_SW) return !odd_y;
+		if (td == TRACKDIR_Y_NW) return odd_x;
+		if (td == TRACKDIR_Y_SE) return !odd_x;
+		return (odd_x ^ odd_y) ^ HasBit(TRACKDIR_BIT_RIGHT_N | TRACKDIR_BIT_LEFT_S | TRACKDIR_BIT_UPPER_W | TRACKDIR_BIT_LOWER_E, td);
+	}
+
+	/**
 	 * Called by YAPF to calculate the cost from the origin to the given node.
 	 * Calculates only the cost of given node, adds it to the parent node cost
 	 * and stores the result into Node::cost member.
@@ -375,6 +392,9 @@ public:
 			});
 			c += count * 3 * YAPF_TILE_LENGTH;
 		}
+
+		/* Encourage separation between ships traveling in different directions. */
+		if (AddDirectionCost(n.GetTile(), n.GetTrackdir())) c += YAPF_TILE_LENGTH;
 
 		/* Skipped tile cost for aqueducts. */
 		c += YAPF_TILE_LENGTH * tf->tiles_skipped;
