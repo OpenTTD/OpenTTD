@@ -406,6 +406,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_FACE_STYLES,                        ///< 355  PR#14319 Addition of face styles, replacing gender and ethnicity.
 	SLV_INDUSTRY_NUM_VALID_HISTORY,         ///< 356  PR#14416 Store number of valid history records for industries.
 	SLV_INDUSTRY_ACCEPTED_HISTORY,          ///< 357  PR#14321 Add per-industry history of cargo delivered and waiting.
+	SLV_REMOVE_MAGIC_BULLDOZER,             ///< 358  PR#13265 Remove Magic Bulldozer cheat.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
