@@ -33,6 +33,8 @@ uint8_t HighestSnowLine();
 uint8_t LowestSnowLine();
 void ClearSnowLine();
 
+bool CheckWaterBorders(bool allow_non_flat_void);
+
 int GetSlopeZInCorner(Slope tileh, Corner corner);
 std::tuple<Slope, int> GetFoundationSlope(TileIndex tile);
 
