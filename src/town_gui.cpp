@@ -46,6 +46,7 @@
 #include "timer/timer_window.h"
 #include "zoom_func.h"
 #include "hotkeys.h"
+#include "graph_gui.h"
 
 #include "widgets/town_widget.h"
 
@@ -400,7 +401,12 @@ public:
 		for (auto tpe : {TPE_PASSENGERS, TPE_MAIL}) {
 			for (const CargoSpec *cs : CargoSpec::town_production_cargoes[tpe]) {
 				CargoType cargo_type = cs->Index();
-				DrawString(tr, GetString(str_last_period, 1ULL << cargo_type, this->town->supplied[cargo_type].old_act, this->town->supplied[cargo_type].old_max));
+				auto it = this->town->GetCargoSupplied(cargo_type);
+				if (it == std::end(this->town->supplied)) {
+					DrawString(tr, GetString(str_last_period, 1ULL << cargo_type, 0, 0));
+				} else {
+					DrawString(tr, GetString(str_last_period, 1ULL << cargo_type, it->history[LAST_MONTH].transported, it->history[LAST_MONTH].production));
+				}
 				tr.top += GetCharacterHeight(FS_NORMAL);
 			}
 		}
@@ -503,6 +509,11 @@ public:
 			case WID_TV_DELETE: // delete town - only available on Scenario editor
 				Command<CMD_DELETE_TOWN>::Post(STR_ERROR_TOWN_CAN_T_DELETE, static_cast<TownID>(this->window_number));
 				break;
+
+			case WID_TV_GRAPH: {
+				ShowTownCargoGraph(this->window_number);
+				break;
+			}
 		}
 	}
 
@@ -618,6 +629,7 @@ static constexpr NWidgetPart _nested_town_game_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TV_SHOW_AUTHORITY), SetMinimalSize(80, 12), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON, STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP),
 		NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_TV_CATCHMENT), SetMinimalSize(40, 12), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_BUTTON_CATCHMENT, STR_TOOLTIP_CATCHMENT),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TV_GRAPH), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_TOWN_VIEW_CARGO_GRAPH, STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP),
 		NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
 	EndContainer(),
 };

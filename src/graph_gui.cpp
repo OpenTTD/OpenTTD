@@ -27,6 +27,7 @@
 #include "timer/timer_game_economy.h"
 #include "zoom_func.h"
 #include "industry.h"
+#include "town.h"
 
 #include "widgets/graph_widget.h"
 
@@ -1857,6 +1858,150 @@ static WindowDesc _industry_production_desc(
 void ShowIndustryProductionGraph(WindowNumber window_number)
 {
 	AllocateWindowDescFront<IndustryProductionGraphWindow>(_industry_production_desc, window_number);
+}
+
+struct TownCargoGraphWindow : BaseCargoGraphWindow {
+	static inline constexpr StringID RANGE_LABELS[] = {
+		STR_GRAPH_TOWN_RANGE_PRODUCED,
+		STR_GRAPH_TOWN_RANGE_TRANSPORTED,
+	};
+
+	static inline CargoTypes excluded_cargo_types{};
+
+	TownCargoGraphWindow(WindowDesc &desc, WindowNumber window_number) : BaseCargoGraphWindow(desc, STR_JUST_COMMA)
+	{
+		this->num_on_x_axis = GRAPH_NUM_MONTHS;
+		this->num_vert_lines = GRAPH_NUM_MONTHS;
+		this->month_increment = 1;
+		this->x_values_reversed = true;
+		this->x_values_increment = ECONOMY_MONTH_MINUTES;
+		this->draw_dates = !TimerGameEconomy::UsingWallclockUnits();
+		this->ranges = RANGE_LABELS;
+
+		this->InitializeWindow(window_number, STR_GRAPH_LAST_24_MINUTES_TIME_LABEL);
+	}
+
+	void OnInit() override
+	{
+		this->BaseCargoGraphWindow::OnInit();
+
+		this->scales = TimerGameEconomy::UsingWallclockUnits() ? MONTHLY_SCALE_WALLCLOCK : MONTHLY_SCALE_CALENDAR;
+	}
+
+	CargoTypes GetCargoTypes(WindowNumber window_number) const override
+	{
+		CargoTypes cargo_types{};
+		const Town *t = Town::Get(window_number);
+		for (const auto &s : t->supplied) {
+			if (IsValidCargoType(s.cargo)) SetBit(cargo_types, s.cargo);
+		}
+		return cargo_types;
+	}
+
+	CargoTypes &GetExcludedCargoTypes() const override
+	{
+		return TownCargoGraphWindow::excluded_cargo_types;
+	}
+
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
+	{
+		if (widget == WID_GRAPH_CAPTION) return GetString(STR_GRAPH_TOWN_CARGO_CAPTION, this->window_number);
+
+		return this->Window::GetWidgetString(widget, stringid);
+	}
+
+	void UpdateStatistics(bool initialize) override
+	{
+		int mo = TimerGameEconomy::month - this->num_vert_lines;
+		auto yr = TimerGameEconomy::year;
+		while (mo < 0) {
+			yr--;
+			mo += 12;
+		}
+
+		if (!initialize && this->excluded_data == this->GetExcludedCargoTypes() && this->num_on_x_axis == this->num_vert_lines && this->year == yr && this->month == mo) {
+			/* There's no reason to get new stats */
+			return;
+		}
+
+		this->excluded_data = this->GetExcludedCargoTypes();
+		this->year = yr;
+		this->month = mo;
+
+		const Town *t = Town::Get(this->window_number);
+
+		this->data.clear();
+		for (const auto &s : t->supplied) {
+			if (!IsValidCargoType(s.cargo)) continue;
+			const CargoSpec *cs = CargoSpec::Get(s.cargo);
+
+			this->data.reserve(this->data.size() + 2);
+
+			DataSet &produced = this->data.emplace_back();
+			produced.colour = cs->legend_colour;
+			produced.exclude_bit = cs->Index();
+			produced.range_bit = 0;
+
+			DataSet &transported = this->data.emplace_back();
+			transported.colour = cs->legend_colour;
+			transported.exclude_bit = cs->Index();
+			transported.range_bit = 1;
+			transported.dash = 2;
+
+			FillFromHistory<GRAPH_NUM_MONTHS>(s.history, t->valid_history, *this->scales[this->selected_scale].history_range,
+				Filler{produced, &Town::SuppliedHistory::production},
+				Filler{transported, &Town::SuppliedHistory::transported});
+		}
+
+		this->SetDirty();
+	}
+};
+
+static constexpr NWidgetPart _nested_town_cargo_graph_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_GRAPH_CAPTION),
+		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
+		NWidget(WWT_DEFSIZEBOX, COLOUR_BROWN),
+		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_BROWN, WID_GRAPH_BACKGROUND), SetMinimalSize(568, 128),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GRAPH_GRAPH), SetMinimalSize(495, 0), SetFill(1, 1), SetResize(1, 1),
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1),
+				NWidget(WWT_MATRIX, COLOUR_BROWN, WID_GRAPH_RANGE_MATRIX), SetFill(1, 0), SetResize(0, 0), SetMatrixDataTip(1, 0, STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 4),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_GRAPH_ENABLE_CARGOES), SetStringTip(STR_GRAPH_CARGO_ENABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_GRAPH_DISABLE_CARGOES), SetStringTip(STR_GRAPH_CARGO_DISABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL), SetFill(1, 0),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 4),
+				NWidget(NWID_HORIZONTAL),
+					NWidget(WWT_MATRIX, COLOUR_BROWN, WID_GRAPH_MATRIX), SetFill(1, 0), SetResize(0, 2), SetMatrixDataTip(1, 0, STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO), SetScrollbar(WID_GRAPH_MATRIX_SCROLLBAR),
+					NWidget(NWID_VSCROLLBAR, COLOUR_BROWN, WID_GRAPH_MATRIX_SCROLLBAR),
+				EndContainer(),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 4),
+				NWidget(WWT_MATRIX, COLOUR_BROWN, WID_GRAPH_SCALE_MATRIX), SetFill(1, 0), SetResize(0, 0), SetMatrixDataTip(1, 0, STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(5, 0), SetFill(0, 1), SetResize(0, 1),
+		EndContainer(),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_TEXT, INVALID_COLOUR, WID_GRAPH_FOOTER), SetFill(1, 0), SetResize(1, 0), SetPadding(2, 0, 2, 0), SetTextStyle(TC_BLACK, FS_SMALL), SetAlignment(SA_CENTER),
+			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_GRAPH_RESIZE), SetResizeWidgetTypeTip(RWV_HIDE_BEVEL, STR_TOOLTIP_RESIZE),
+		EndContainer(),
+	EndContainer(),
+};
+
+static WindowDesc _town_cargo_graph_desc(
+	WDP_AUTO, "graph_town_cargo", 0, 0,
+	WC_TOWN_CARGO_GRAPH, WC_TOWN_VIEW,
+	{},
+	_nested_town_cargo_graph_widgets
+);
+
+void ShowTownCargoGraph(WindowNumber window_number)
+{
+	AllocateWindowDescFront<TownCargoGraphWindow>(_town_cargo_graph_desc, window_number);
 }
 
 /**
