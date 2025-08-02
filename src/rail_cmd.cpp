@@ -2525,7 +2525,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 		DrawRailTileSeq(ti, dts, TO_BUILDINGS, relocation, 0, _drawtile_track_palette);
 	}
-	DrawBridgeMiddle(ti);
+	DrawBridgeMiddle(ti, {});
 }
 
 void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
@@ -3070,6 +3070,11 @@ static CommandCost TerraformTile_Track(TileIndex tile, DoCommandFlags flags, int
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }
 
+static CommandCost CheckBuildAbove_Track(TileIndex tile, DoCommandFlags flags, Axis, int)
+{
+	if (IsPlainRail(tile)) return CommandCost();
+	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
+}
 
 extern const TileTypeProcs _tile_type_rail_procs = {
 	DrawTile_Track,           // draw_tile_proc
@@ -3086,4 +3091,5 @@ extern const TileTypeProcs _tile_type_rail_procs = {
 	VehicleEnter_Track,       // vehicle_enter_tile_proc
 	GetFoundation_Track,      // get_foundation_proc
 	TerraformTile_Track,      // terraform_tile_proc
+	CheckBuildAbove_Track, // check_build_above_proc
 };

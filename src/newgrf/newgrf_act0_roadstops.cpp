@@ -49,6 +49,13 @@ static ChangeInfoResult IgnoreRoadStopProperty(uint prop, ByteReader &buf)
 			buf.ReadDWord();
 			break;
 
+		case 0x13:
+		case 0x14:
+			buf.ReadWord();
+			buf.ReadWord();
+			buf.ReadWord();
+			break;
+
 		case 0x16: // Badge list
 			SkipBadgeList(buf);
 			break;
@@ -132,6 +139,18 @@ static ChangeInfoResult RoadStopChangeInfo(uint first, uint last, int prop, Byte
 
 			case 0x12: // General flags
 				rs->flags = static_cast<RoadStopSpecFlags>(buf.ReadDWord()); // Future-proofing, size this as 4 bytes, but we only need two byte's worth of flags at present
+				break;
+
+			case 0x13: // Bridge height.
+				for (uint j = 0; j != 6; ++j) {
+					rs->tilespecs[j].height = buf.ReadByte();
+				}
+				break;
+
+			case 0x14: // Disallow pillars.
+				for (uint j = 0; j != 6; ++j) {
+					rs->tilespecs[j].disallowed_pillars = BridgePillarFlags{buf.ReadByte()};
+				}
 				break;
 
 			case 0x15: // Cost multipliers

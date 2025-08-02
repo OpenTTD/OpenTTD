@@ -184,12 +184,12 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 
 			case 0x11: { // Pylon placement
 				uint8_t pylons = buf.ReadByte();
-				if (statspec->tileflags.size() < 8) statspec->tileflags.resize(8);
+				if (statspec->tilespecs.size() < 8) statspec->tilespecs.resize(8);
 				for (int j = 0; j < 8; ++j) {
 					if (HasBit(pylons, j)) {
-						statspec->tileflags[j].Set(StationSpec::TileFlag::Pylons);
+						statspec->tilespecs[j].flags.Set(StationSpec::TileFlag::Pylons);
 					} else {
-						statspec->tileflags[j].Reset(StationSpec::TileFlag::Pylons);
+						statspec->tilespecs[j].flags.Reset(StationSpec::TileFlag::Pylons);
 					}
 				}
 				break;
@@ -209,12 +209,12 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 
 			case 0x14: { // Overhead wire placement
 				uint8_t wires = buf.ReadByte();
-				if (statspec->tileflags.size() < 8) statspec->tileflags.resize(8);
+				if (statspec->tilespecs.size() < 8) statspec->tilespecs.resize(8);
 				for (int j = 0; j < 8; ++j) {
 					if (HasBit(wires, j)) {
-						statspec->tileflags[j].Set(StationSpec::TileFlag::NoWires);
+						statspec->tilespecs[j].flags.Set(StationSpec::TileFlag::NoWires);
 					} else {
-						statspec->tileflags[j].Reset(StationSpec::TileFlag::NoWires);
+						statspec->tilespecs[j].flags.Reset(StationSpec::TileFlag::NoWires);
 					}
 				}
 				break;
@@ -222,12 +222,12 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 
 			case 0x15: { // Blocked tiles
 				uint8_t blocked = buf.ReadByte();
-				if (statspec->tileflags.size() < 8) statspec->tileflags.resize(8);
+				if (statspec->tilespecs.size() < 8) statspec->tilespecs.resize(8);
 				for (int j = 0; j < 8; ++j) {
 					if (HasBit(blocked, j)) {
-						statspec->tileflags[j].Set(StationSpec::TileFlag::Blocked);
+						statspec->tilespecs[j].flags.Set(StationSpec::TileFlag::Blocked);
 					} else {
-						statspec->tileflags[j].Reset(StationSpec::TileFlag::Blocked);
+						statspec->tilespecs[j].flags.Reset(StationSpec::TileFlag::Blocked);
 					}
 				}
 				break;
@@ -268,11 +268,11 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 				break;
 			}
 
-			case 0x1B: // Minimum bridge height (not implemented)
-				buf.ReadWord();
-				buf.ReadWord();
-				buf.ReadWord();
-				buf.ReadWord();
+			case 0x1B: // Minimum bridge height (old variable)
+				if (statspec->tilespecs.size() < 8) statspec->tilespecs.resize(8);
+				for (int j = 0; j < 8; ++j) {
+					statspec->tilespecs[j].height = buf.ReadByte();
+				}
 				break;
 
 			case 0x1C: // Station Name
@@ -285,14 +285,34 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 
 			case 0x1E: { // Extended tile flags (replaces prop 11, 14 and 15)
 				uint16_t tiles = buf.ReadExtendedByte();
-				auto flags = reinterpret_cast<const StationSpec::TileFlags *>(buf.ReadBytes(tiles));
-				statspec->tileflags.assign(flags, flags + tiles);
+				if (statspec->tilespecs.size() < tiles) statspec->tilespecs.resize(tiles);
+				for (uint j = 0; j != tiles; ++j) {
+					statspec->tilespecs[j].flags = StationSpec::TileFlags{buf.ReadByte()};
+				}
 				break;
 			}
 
 			case 0x1F: // Badge list
 				statspec->badges = ReadBadgeList(buf, GSF_STATIONS);
 				break;
+
+			case 0x20: { // Minimum bridge height (extended)
+				uint16_t tiles = buf.ReadExtendedByte();
+				if (statspec->tilespecs.size() < tiles) statspec->tilespecs.resize(tiles);
+				for (int j = 0; j != tiles; ++j) {
+					statspec->tilespecs[j].height = buf.ReadByte();
+				}
+				break;
+			}
+
+			case 0x21: { // Disallowed bridge pillars
+				uint16_t tiles = buf.ReadExtendedByte();
+				if (statspec->tilespecs.size() < tiles) statspec->tilespecs.resize(tiles);
+				for (int j = 0; j != tiles; ++j) {
+					statspec->tilespecs[j].disallowed_pillars = BridgePillarFlags{buf.ReadByte()};
+				}
+				break;
+			}
 
 			default:
 				ret = CIR_UNKNOWN;

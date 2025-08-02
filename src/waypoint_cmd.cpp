@@ -174,15 +174,15 @@ static CommandCost IsValidTileForWaypoint(TileIndex tile, Axis axis, StationID *
 		return CommandCost(STR_ERROR_FLAT_LAND_REQUIRED);
 	}
 
-	if (IsBridgeAbove(tile)) return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
-
 	return CommandCost();
 }
 
 extern void GetStationLayout(uint8_t *layout, uint numtracks, uint plat_len, const StationSpec *statspec);
 extern CommandCost FindJoiningWaypoint(StationID existing_station, StationID station_to_join, bool adjacent, TileArea ta, Waypoint **wp, bool is_road);
 extern CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta);
-extern CommandCost CalculateRoadStopCost(TileArea tile_area, DoCommandFlags flags, bool is_drive_through, StationType station_type, Axis axis, DiagDirection ddir, StationID *est, RoadType rt, Money unit_cost);
+extern CommandCost CalculateRoadStopCost(TileArea tile_area, DoCommandFlags flags, bool is_drive_through, StationType station_type, const RoadStopSpec *roadstopspec, Axis axis, DiagDirection ddir, StationID *est, RoadType rt, Money unit_cost);
+extern CommandCost IsRailStationBridgeAboveOk(TileIndex tile, const StationSpec *statspec, uint8_t layout);
+
 extern CommandCost RemoveRoadWaypointStop(TileIndex tile, DoCommandFlags flags, int replacement_spec_index);
 
 /**
@@ -231,11 +231,21 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 	/* Make sure the area below consists of clear tiles. (OR tiles belonging to a certain rail station) */
 	StationID est = StationID::Invalid();
 
+	const StationSpec *spec = StationClass::Get(spec_class)->GetSpec(spec_index);
+	std::vector<uint8_t> layout(count);
+	if (spec != nullptr) {
+		/* For NewGRF waypoints we like to have their style. */
+		GetStationLayout(layout.data(), count, 1, spec);
+	}
+
 	/* Check whether the tiles we're building on are valid rail or not. */
 	TileIndexDiff offset = TileOffsByAxis(OtherAxis(axis));
 	for (int i = 0; i < count; i++) {
 		TileIndex tile = start_tile + i * offset;
 		CommandCost ret = IsValidTileForWaypoint(tile, axis, &est);
+		if (ret.Failed()) return ret;
+
+		ret = IsRailStationBridgeAboveOk(tile, spec, layout[i]);
 		if (ret.Failed()) return ret;
 	}
 
@@ -285,12 +295,6 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 
 		wp->UpdateVirtCoord();
 
-		const StationSpec *spec = StationClass::Get(spec_class)->GetSpec(spec_index);
-		std::vector<uint8_t> layout(count);
-		if (spec != nullptr) {
-			/* For NewGRF waypoints we like to have their style. */
-			GetStationLayout(layout.data(), count, 1, spec);
-		}
 		uint8_t map_spec_index = AllocateSpecToStation(spec, wp, true);
 
 		Company *c = Company::Get(wp->owner);
@@ -364,7 +368,7 @@ CommandCost CmdBuildRoadWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 		unit_cost = _price[PR_BUILD_STATION_TRUCK];
 	}
 	StationID est = StationID::Invalid();
-	CommandCost cost = CalculateRoadStopCost(roadstop_area, flags, true, StationType::RoadWaypoint, axis, AxisToDiagDir(axis), &est, INVALID_ROADTYPE, unit_cost);
+	CommandCost cost = CalculateRoadStopCost(roadstop_area, flags, true, StationType::RoadWaypoint, roadstopspec, axis, AxisToDiagDir(axis), &est, INVALID_ROADTYPE, unit_cost);
 	if (cost.Failed()) return cost;
 
 	Waypoint *wp = nullptr;
