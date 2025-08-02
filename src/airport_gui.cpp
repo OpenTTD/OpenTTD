@@ -261,8 +261,6 @@ public:
 
 		this->FinishInitNested(TRANSPORT_AIR);
 
-		this->SetWidgetLoweredState(WID_AP_BTN_DONTHILIGHT, !_settings_client.gui.station_show_coverage);
-		this->SetWidgetLoweredState(WID_AP_BTN_DOHILIGHT, _settings_client.gui.station_show_coverage);
 		this->OnInvalidateData();
 
 		/* Ensure airport class is valid (changing NewGRFs). */
@@ -485,7 +483,7 @@ public:
 			this->SetWidgetDisabledState(WID_AP_LAYOUT_INCREASE, _selected_airport_layout + 1U >= as->layouts.size());
 
 			int rad = _settings_game.station.modified_catchment ? as->catchment : (uint)CA_UNMODIFIED;
-			if (_settings_client.gui.station_show_coverage) SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
+			SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 		}
 	}
 
@@ -503,16 +501,6 @@ public:
 				if (as->IsAvailable()) this->SelectOtherAirport(num_clicked);
 				break;
 			}
-
-			case WID_AP_BTN_DONTHILIGHT: case WID_AP_BTN_DOHILIGHT:
-				_settings_client.gui.station_show_coverage = (widget != WID_AP_BTN_DONTHILIGHT);
-				this->SetWidgetLoweredState(WID_AP_BTN_DONTHILIGHT, !_settings_client.gui.station_show_coverage);
-				this->SetWidgetLoweredState(WID_AP_BTN_DOHILIGHT, _settings_client.gui.station_show_coverage);
-				this->SetDirty();
-				SndClickBeep();
-				this->UpdateSelectSize();
-				SetViewportCatchmentStation(nullptr, true);
-				break;
 
 			case WID_AP_LAYOUT_DECREASE:
 				_selected_airport_layout--;
@@ -602,15 +590,6 @@ static constexpr NWidgetPart _nested_build_airport_widgets[] = {
 					NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_AP_LAYOUT_INCREASE), SetMinimalSize(12, 0), SetArrowWidgetTypeTip(AWV_INCREASE),
 				EndContainer(),
 				NWidget(WWT_EMPTY, INVALID_COLOUR, WID_AP_EXTRA_TEXT), SetFill(1, 0), SetMinimalSize(150, 0),
-				NWidget(WWT_LABEL, INVALID_COLOUR), SetStringTip(STR_STATION_BUILD_COVERAGE_AREA_TITLE), SetFill(1, 0),
-				NWidget(NWID_HORIZONTAL), SetPIP(14, 0, 14), SetPIPRatio(1, 0, 1),
-					NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_AP_BTN_DONTHILIGHT), SetMinimalSize(60, 12), SetFill(1, 0),
-													SetStringTip(STR_STATION_BUILD_COVERAGE_OFF, STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP),
-						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_AP_BTN_DOHILIGHT), SetMinimalSize(60, 12), SetFill(1, 0),
-													SetStringTip(STR_STATION_BUILD_COVERAGE_ON, STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP),
-					EndContainer(),
-				EndContainer(),
 			EndContainer(),
 			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_AP_ACCEPTANCE), SetResize(0, 1), SetFill(1, 0), SetMinimalTextLines(2, WidgetDimensions::unscaled.vsep_normal),
 		EndContainer(),

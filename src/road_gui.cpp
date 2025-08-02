@@ -1342,7 +1342,6 @@ public:
 		}
 
 		this->LowerWidget(WID_BROS_STATION_NE + _roadstop_gui.orientation);
-		this->LowerWidget(WID_BROS_LT_OFF + _settings_client.gui.station_show_coverage);
 
 		this->window_class = (rs == RoadStopType::Bus) ? WC_BUS_STATION : WC_TRUCK_STATION;
 	}
@@ -1369,11 +1368,7 @@ public:
 		this->DrawWidgets();
 
 		int rad = _settings_game.station.modified_catchment ? ((this->window_class == WC_BUS_STATION) ? CA_BUS : CA_TRUCK) : CA_UNMODIFIED;
-		if (_settings_client.gui.station_show_coverage) {
-			SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
-		} else {
-			SetTileSelectSize(1, 1);
-		}
+		SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 
 		if (this->IsShaded()) return;
 
@@ -1482,16 +1477,6 @@ public:
 				CloseWindowById(WC_SELECT_STATION, 0);
 				break;
 
-			case WID_BROS_LT_OFF:
-			case WID_BROS_LT_ON:
-				this->RaiseWidget(_settings_client.gui.station_show_coverage + WID_BROS_LT_OFF);
-				_settings_client.gui.station_show_coverage = (widget != WID_BROS_LT_OFF);
-				this->LowerWidget(_settings_client.gui.station_show_coverage + WID_BROS_LT_OFF);
-				SndClickBeep();
-				this->SetDirty();
-				SetViewportCatchmentStation(nullptr, true);
-				break;
-
 			default:
 				this->PickerWindow::OnClick(pt, widget, click_count);
 				break;
@@ -1551,13 +1536,6 @@ static constexpr NWidgetPart _nested_road_station_picker_widgets[] = {
 							EndContainer(),
 						EndContainer(),
 					EndContainer(),
-					NWidget(WWT_LABEL, INVALID_COLOUR), SetStringTip(STR_STATION_BUILD_COVERAGE_AREA_TITLE), SetFill(1, 0),
-					NWidget(NWID_HORIZONTAL), SetPIPRatio(1, 0, 1),
-						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BROS_LT_OFF), SetMinimalSize(60, 12),
-								SetStringTip(STR_STATION_BUILD_COVERAGE_OFF, STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP),
-						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BROS_LT_ON), SetMinimalSize(60, 12),
-								SetStringTip(STR_STATION_BUILD_COVERAGE_ON, STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP),
-					EndContainer(),
 					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_BROS_ACCEPTANCE), SetFill(1, 1), SetResize(1, 0), SetMinimalTextLines(2, 0),
 				EndContainer(),
 			EndContainer(),
@@ -1590,13 +1568,6 @@ static constexpr NWidgetPart _nested_tram_station_picker_widgets[] = {
 					NWidget(NWID_HORIZONTAL_LTR), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0), SetPIPRatio(1, 0, 1),
 						NWidget(WWT_PANEL, COLOUR_GREY, WID_BROS_STATION_X), SetFill(0, 0), EndContainer(),
 						NWidget(WWT_PANEL, COLOUR_GREY, WID_BROS_STATION_Y), SetFill(0, 0), EndContainer(),
-					EndContainer(),
-					NWidget(WWT_LABEL, INVALID_COLOUR), SetStringTip(STR_STATION_BUILD_COVERAGE_AREA_TITLE), SetFill(1, 0),
-					NWidget(NWID_HORIZONTAL), SetPIPRatio(1, 0, 1),
-						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BROS_LT_OFF), SetMinimalSize(60, 12),
-								SetStringTip(STR_STATION_BUILD_COVERAGE_OFF, STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP),
-						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BROS_LT_ON), SetMinimalSize(60, 12),
-								SetStringTip(STR_STATION_BUILD_COVERAGE_ON, STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP),
 					EndContainer(),
 					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_BROS_ACCEPTANCE), SetFill(1, 1), SetResize(1, 0), SetMinimalTextLines(2, 0),
 				EndContainer(),
