@@ -2894,9 +2894,10 @@ static bool TryBuildTownHouse(Town *t, TileIndex tile, TownExpandModes modes)
  * @param tile Tile on which to place the house.
  * @param HouseID The HouseID of the house spec.
  * @param is_protected Whether the house is protected from the town upgrading it.
+ * @param replace Whether to automatically demolish an existing house on this tile, if present.
  * @return Empty cost or an error.
  */
-CommandCost CmdPlaceHouse(DoCommandFlags flags, TileIndex tile, HouseID house, bool is_protected)
+CommandCost CmdPlaceHouse(DoCommandFlags flags, TileIndex tile, HouseID house, bool is_protected, bool replace)
 {
 	if (_game_mode != GM_EDITOR && _settings_game.economy.place_houses == PH_FORBIDDEN) return CMD_ERROR;
 
@@ -2906,39 +2907,45 @@ CommandCost CmdPlaceHouse(DoCommandFlags flags, TileIndex tile, HouseID house, b
 	const HouseSpec *hs = HouseSpec::Get(house);
 	if (!hs->enabled) return CMD_ERROR;
 
-	Town *t = ClosestTownFromTile(tile, UINT_MAX);
-
-	/* cannot build on these slopes... */
-	Slope slope = GetTileSlope(tile);
-	if (IsSteepSlope(slope)) return CommandCost(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
-
-	/* building under a bridge? */
-	if (IsBridgeAbove(tile)) return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
-
-	/* can we clear the land? */
-	CommandCost cost = Command<CMD_LANDSCAPE_CLEAR>::Do({DoCommandFlag::Auto, DoCommandFlag::NoWater}, tile);
-	if (!cost.Succeeded()) return cost;
-
 	int maxz = GetTileMaxZ(tile);
 
-	/* Make sure there is no slope? */
-	bool noslope = hs->building_flags.Test(BuildingFlag::NotSloped);
-	if (noslope && slope != SLOPE_FLAT) return CommandCost(STR_ERROR_FLAT_LAND_REQUIRED);
-
-	TileArea ta = tile;
+	/* Check each tile of a multi-tile house. */
+	TileArea ta(tile, 1, 1);
 	if (hs->building_flags.Test(BuildingFlag::Size2x2)) ta.Add(TileAddXY(tile, 1, 1));
 	if (hs->building_flags.Test(BuildingFlag::Size2x1)) ta.Add(TileAddByDiagDir(tile, DIAGDIR_SW));
 	if (hs->building_flags.Test(BuildingFlag::Size1x2)) ta.Add(TileAddByDiagDir(tile, DIAGDIR_SE));
 
-	/* Check additional tiles covered by this house. */
-	for (const TileIndex &subtile : ta) {
-		cost = Command<CMD_LANDSCAPE_CLEAR>::Do({DoCommandFlag::Auto, DoCommandFlag::NoWater}, subtile);
-		if (!cost.Succeeded()) return cost;
+	for (const TileIndex subtile : ta) {
+		/* Houses cannot be built on steep slopes. */
+		Slope slope = GetTileSlope(subtile);
+		if (IsSteepSlope(slope)) return CommandCost(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 
-		if (!CheckBuildHouseSameZ(subtile, maxz, noslope)) return CommandCost(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
+		/* Houses cannot be built under bridges. */
+		if (IsBridgeAbove(subtile)) return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+
+		/* Make sure there is no slope? */
+		bool noslope = hs->building_flags.Test(BuildingFlag::NotSloped);
+		if (noslope && slope != SLOPE_FLAT) return CommandCost(STR_ERROR_FLAT_LAND_REQUIRED);
+
+		/* All tiles of a multi-tile house must have the same z-level. */
+		if (GetTileMaxZ(subtile) != maxz) return CommandCost(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
+
+		/* We might be replacing an existing house, otherwise check if we can clear land. */
+		if (!(replace && GetTileType(subtile) == MP_HOUSE)) {
+			CommandCost cost = Command<CMD_LANDSCAPE_CLEAR>::Do({DoCommandFlag::Auto, DoCommandFlag::NoWater}, subtile);
+			if (!cost.Succeeded()) return cost;
+		}
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
+		/* If replacing, clear any existing houses first. */
+		if (replace) {
+			for (const TileIndex &subtile : ta) {
+				if (GetTileType(subtile) == MP_HOUSE) ClearTownHouse(Town::GetByTile(subtile), subtile);
+			}
+		}
+
+		Town *t = ClosestTownFromTile(tile, UINT_MAX);
 		bool house_completed = _settings_game.economy.place_houses == PH_ALLOWED_CONSTRUCTED;
 		BuildTownHouse(t, tile, hs, house, Random(), house_completed, is_protected);
 	}
