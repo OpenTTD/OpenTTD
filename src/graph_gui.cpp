@@ -1185,7 +1185,7 @@ struct BaseCargoGraphWindow : BaseGraphWindow {
 
 	BaseCargoGraphWindow(WindowDesc &desc, StringID format_str_y_axis) : BaseGraphWindow(desc, format_str_y_axis) {}
 
-	void InitializeWindow(WindowNumber number, StringID footer_wallclock = STR_EMPTY, StringID footer_calendar = STR_EMPTY)
+	void InitializeWindow(WindowNumber number, StringID footer_wallclock = STR_NULL, StringID footer_calendar = STR_NULL)
 	{
 		this->CreateNestedTree();
 
@@ -1704,7 +1704,7 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 		if (!i->IsCargoProduced()) this->masked_range = (1U << 0) | (1U << 1);
 		if (!i->IsCargoAccepted()) this->masked_range = (1U << 2) | (1U << 3);
 
-		this->InitializeWindow(window_number, STR_GRAPH_LAST_24_MINUTES_TIME_LABEL);
+		this->InitializeWindow(window_number);
 	}
 
 	void OnInit() override
@@ -1878,7 +1878,7 @@ struct TownCargoGraphWindow : BaseCargoGraphWindow {
 		this->draw_dates = !TimerGameEconomy::UsingWallclockUnits();
 		this->ranges = RANGE_LABELS;
 
-		this->InitializeWindow(window_number, STR_GRAPH_LAST_24_MINUTES_TIME_LABEL);
+		this->InitializeWindow(window_number);
 	}
 
 	void OnInit() override
