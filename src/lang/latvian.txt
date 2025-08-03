@@ -640,6 +640,7 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Saražots
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Pārvadāts
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Rādīt detalizētus uzņēmējdarbības vērtējumus
 
 # Graph key window

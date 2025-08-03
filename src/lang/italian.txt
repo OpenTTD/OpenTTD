@@ -630,6 +630,7 @@ STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Attiva/d
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Mostra valutazione dettagliata prestazioni
 
 # Graph key window

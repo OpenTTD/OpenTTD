@@ -542,6 +542,7 @@ STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK} ظرز�
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK} کارکردگی کی تفصیلی درجہ بندی دکھائیے
 
 # Graph key window

@@ -786,6 +786,7 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Перевез�
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Доставлено
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :В ожидании
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Показать составляющие части рейтинга
 
 # Graph key window

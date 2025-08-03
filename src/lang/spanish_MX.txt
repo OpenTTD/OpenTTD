@@ -649,6 +649,7 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportado
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Entregada
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :En espera
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Mostrar detalles de nivel de desempeño
 
 # Graph key window

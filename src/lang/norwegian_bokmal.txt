@@ -648,6 +648,7 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportert
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Levert
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Venter
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Vis detaljerte prestasjonsmålinger
 
 # Graph key window

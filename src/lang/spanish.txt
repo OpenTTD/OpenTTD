@@ -639,6 +639,7 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Producido
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportado
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Muestra detalles del nivel de desempeño
 
 # Graph key window

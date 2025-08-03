@@ -642,6 +642,7 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Đã vận chuy
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Đã giao
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Đang chờ...
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Hiện chi tiết đánh giá chỉ số năng suất
 
 # Graph key window

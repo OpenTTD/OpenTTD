@@ -725,6 +725,7 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Vyprodukováno
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Přepraveno
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Zobrazit podrobné hodnocení výkonu
 
 # Graph key window

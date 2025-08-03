@@ -642,6 +642,7 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :已运输
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :已送抵
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :库存
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}查看详细数据
 
 # Graph key window

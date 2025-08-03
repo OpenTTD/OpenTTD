@@ -642,6 +642,7 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Cludwyd
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Danfonwyd
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Yn aros
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Dangos manwl amcangyfrif perfformiad
 
 # Graph key window

@@ -649,6 +649,7 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :수송량
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :수송됨
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :대기 중
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}상세 성취도를 봅니다.
 
 # Graph key window

@@ -614,6 +614,7 @@ STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}この�
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}格付の詳細情報を表示します
 
 # Graph key window

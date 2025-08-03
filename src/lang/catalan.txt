@@ -640,6 +640,7 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Produït
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportat
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Mostra ratis de rendiment detallats
 
 # Graph key window

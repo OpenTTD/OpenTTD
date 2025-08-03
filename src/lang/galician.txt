@@ -643,6 +643,7 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportado
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Entregada
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Agardando
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Amosar puntuacións de rendemento detalladas
 
 # Graph key window

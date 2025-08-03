@@ -648,6 +648,7 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Vervoerd
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Afgeleverd
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Wachtend
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Gedetailleerde prestatiescores weergeven
 
 # Graph key window

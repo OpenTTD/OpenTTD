@@ -648,6 +648,7 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Kuljetettu
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Toimitettu
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Odottava
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Näytä tarkat suorituskykyarviot
 
 # Graph key window

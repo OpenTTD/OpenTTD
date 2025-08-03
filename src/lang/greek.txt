@@ -741,6 +741,7 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Μεταφέρ�
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Παραδόθηκε
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Αναμονή
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Εμφάνιση λεπτομεριών αποδόσεων
 
 # Graph key window

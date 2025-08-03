@@ -244,6 +244,7 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 
 
+
 # Graph key window
 
 # Company league window

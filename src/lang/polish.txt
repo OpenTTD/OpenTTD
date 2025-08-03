@@ -1001,8 +1001,14 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Wykres w
 
 STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Ostatnie 24 minuty
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Ostatnie 72 minuty
+STR_GRAPH_LAST_288_MINUTES_TIME_LABEL                           :{TINY_FONT}{BLACK}Ostatnie 288 minut
 
+STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLACK}2 lata (miesięczny)
+STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 lat (kwartalny)
+STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 lata (roczny)
 
+STR_GRAPH_TOGGLE_RANGE                                          :Przełącz ukrywanie/wyświetlanie wykresu dla tego zakresu danych
+STR_GRAPH_SELECT_SCALE                                          :Zmień skalę poziomą wykresu
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Stawki płatności za ładunek
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Dni w transporcie
@@ -1020,6 +1026,7 @@ STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Wyprodukowany
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Przetransportowany
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Dostarczony
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Oczekujący
+
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Pokaż szczegóły oceny wydajności
 

@@ -711,6 +711,7 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Szállítva
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Leszállítva
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Várakozik
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Részletes teljesítményértékelés mutatása
 
 # Graph key window

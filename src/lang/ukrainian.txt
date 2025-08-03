@@ -775,6 +775,7 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Вироблено
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Перевезено
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Показати детальні оцінки ефективності
 
 # Graph key window
