@@ -116,7 +116,7 @@ bool GetHistory(const HistoryData<T> &history, ValidHistoryMask valid_history, c
  * @param fillers Fillers to fill with history data.
  */
 template <uint N, typename T, typename... Tfillers>
-void FillFromHistory(const HistoryData<T> &history, ValidHistoryMask valid_history, const HistoryRange &hr, Tfillers... fillers)
+void FillFromHistory(const HistoryData<T> &history, ValidHistoryMask valid_history, const HistoryRange &hr, Tfillers &&... fillers)
 {
 	T result{};
 	for (uint i = 0; i != N; ++i) {
@@ -129,14 +129,21 @@ void FillFromHistory(const HistoryData<T> &history, ValidHistoryMask valid_histo
 }
 
 /**
- * Fill some data with empty records.
+ * Fill some data with optional historical data.
+ * @param history Historical data to fill from, or nullptr if not present.
  * @param valid_history Mask of valid history records.
  * @param hr History range to fill with.
  * @param fillers Fillers to fill with history data.
  */
-template <uint N, typename... Tfillers>
-void FillFromEmpty(ValidHistoryMask valid_history, const HistoryRange &hr, Tfillers... fillers)
+template <uint N, typename T, typename... Tfillers>
+void FillFromHistory(const HistoryData<T> *history, ValidHistoryMask valid_history, const HistoryRange &hr, Tfillers &&... fillers)
 {
+	if (history != nullptr) {
+		FillFromHistory<N>(*history, valid_history, hr, std::forward<Tfillers &&>(fillers)...);
+		return;
+	}
+
+	/* History isn't present, fill zero or invalid instead. */
 	for (uint i = 0; i != N; ++i) {
 		if (IsValidHistory(valid_history, hr, N - i - 1)) {
 			(fillers.MakeZero(i), ...);
