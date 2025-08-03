@@ -364,7 +364,7 @@ static bool PadSprites(SpriteLoader::SpriteCollection &sprite, ZoomLevels sprite
 static bool ResizeSprites(SpriteLoader::SpriteCollection &sprite, ZoomLevels sprite_avail, SpriteEncoder *encoder)
 {
 	/* Create a fully zoomed image if it does not exist */
-	ZoomLevel first_avail;
+	ZoomLevel first_avail = ZoomLevel::End;
 	for (ZoomLevel zoom = ZoomLevel::Min; zoom <= ZoomLevel::Max; ++zoom) {
 		if (!sprite_avail.Test(zoom)) continue;
 		first_avail = zoom;
