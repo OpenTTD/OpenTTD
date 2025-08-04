@@ -628,8 +628,8 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 年（每季）
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 年（每年）
 
-STR_GRAPH_TOGGLE_RANGE                                          :切換本數據範圍的圖表
-STR_GRAPH_SELECT_SCALE                                          :變更圖表的水平比例
+STR_GRAPH_TOGGLE_RANGE                                          :切換圖表數據範圍
+STR_GRAPH_SELECT_SCALE                                          :變更圖表水平比例
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}貨物運費表
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}運輸所用天數
@@ -648,6 +648,9 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :已運送
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :已運送
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :庫存
 
+STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - 貨物記錄
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :供應
+STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :已運送
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}顯示詳細營運評比
 
@@ -3703,6 +3706,8 @@ STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}將市�
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}地方政府
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}顯示地方政府資訊
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}修改市鎮名稱
+STR_TOWN_VIEW_CARGO_GRAPH                                       :貨物圖表
+STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :檢視市鎮貨物運送記錄圖表
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}擴展
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}擴大市鎮大小

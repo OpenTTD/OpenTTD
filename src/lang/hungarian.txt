@@ -711,6 +711,9 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Szállítva
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Leszállítva
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Várakozik
 
+STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Rakománytörténet
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Ellátás
+STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Elszállítva
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Részletes teljesítményértékelés mutatása
 
@@ -3767,6 +3770,8 @@ STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}A fő n�
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Önkormányzat
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Az önkormányzat adatainak megmutatása
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}A város nevének megváltoztatása
+STR_TOWN_VIEW_CARGO_GRAPH                                       :Rakomány grafikon
+STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :Megmutatja a város rakománytörténetének grafikonját
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Növelés
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}A település méretének növelése

@@ -786,6 +786,9 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Перевез�
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Доставлено
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :В ожидании
 
+STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Пассажиры и грузы
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Запрос
+STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Перевезено
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Показать составляющие части рейтинга
 
@@ -3878,6 +3881,8 @@ STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Пока
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Администрация
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Взаимодействие с администрацией города
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Переименовать город
+STR_TOWN_VIEW_CARGO_GRAPH                                       :График доставки
+STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :Показать график пассажиропотоков и объёмов грузоперевозок в городе
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Расширить
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Увеличить размер города
@@ -4210,8 +4215,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Прои
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Произведено за минуту:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% перевезено)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Показать предприятие в основном окне. Ctrl+щелчок{NBSP}- показать в дополнительном окне.
-STR_INDUSTRY_VIEW_CARGO_GRAPH                                   :{BLACK}График доставки
-STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}Показать график продукции предприятия
+STR_INDUSTRY_VIEW_CARGO_GRAPH                                   :{BLACK}Графики грузоперевозок
+STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}Показать график объёмов грузоперевозок для предприятия
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Производительность: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Предприятие скоро закрывается!
 

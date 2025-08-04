@@ -622,8 +622,14 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}公司�
 
 STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}最近 24 分
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}最近 72 分
+STR_GRAPH_LAST_288_MINUTES_TIME_LABEL                           :{TINY_FONT}{BLACK}最近 288 分
 
+STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLACK}2 年（每月）
+STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 年（每季）
+STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 年（每年）
 
+STR_GRAPH_TOGGLE_RANGE                                          :切换图表数据范围
+STR_GRAPH_SELECT_SCALE                                          :改变图标水平比例
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}货物运费表
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}运输所用天数
@@ -642,6 +648,9 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :已运输
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :已送抵
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :库存
 
+STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - 货物历史
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :供应
+STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :已运输
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}查看详细数据
 
@@ -3697,6 +3706,8 @@ STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}将屏�
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}地方政府
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}显示地方政府的信息
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}城镇改名
+STR_TOWN_VIEW_CARGO_GRAPH                                       :货物图表
+STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :显示城镇货物历史图表
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}扩展
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}增加城镇人口和面积

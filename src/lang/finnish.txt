@@ -648,6 +648,9 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Kuljetettu
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Toimitettu
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Odottava
 
+STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} – rahtihistoria
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Tarjonta
+STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Kuljetettu
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Näytä tarkat suorituskykyarviot
 
@@ -3703,6 +3706,8 @@ STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Keskitä
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Paikallisviranomaiset
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Näytä tietoja paikallisviranomaisista
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Vaihda kunnan nimeä.
+STR_TOWN_VIEW_CARGO_GRAPH                                       :Rahdin kuvaaja
+STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :Näytä kunnan rahtihistoria kuvaajana
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Laajenna
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Laajenna kuntaa

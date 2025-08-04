@@ -649,6 +649,9 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportado
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Entregue
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Aguardando
 
+STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Histórico de Carga
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Abastecimento
+STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transportado
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Mostrar avaliações detalhadas de desempenho
 
@@ -3704,6 +3707,8 @@ STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrali
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Autoridade Local
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Mostrar informações sobre a autoridade local
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Alterar o nome da localidade
+STR_TOWN_VIEW_CARGO_GRAPH                                       :Gráfico de Carga
+STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :Mostrar gráfico do histórico de carga desta localidade
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Expandir
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Aumentar o tamanho da localidade

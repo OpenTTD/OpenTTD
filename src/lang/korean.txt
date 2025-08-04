@@ -649,6 +649,9 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :수송량
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :수송됨
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :대기 중
 
+STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - 화물 이력
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :공급
+STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :수송됨
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}상세 성취도를 봅니다.
 
@@ -3704,6 +3707,8 @@ STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}이 도�
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}지역 당국
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}지역 당국의 정보를 보여줍니다
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}이 도시 이름을 변경합니다.
+STR_TOWN_VIEW_CARGO_GRAPH                                       :화물 그래프
+STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :도시의 화물 이력 그래프를 보여줍니다
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}확장
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}도시의 크기를 키웁니다.

@@ -1027,6 +1027,9 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Przetransportow
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Dostarczony
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Oczekujący
 
+STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Historia Ładunków
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Dostępny
+STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Przetransportowany
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Pokaż szczegóły oceny wydajności
 
@@ -4083,6 +4086,8 @@ STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Wyśrodk
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Lokalne Władze
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Pokaż informacje o lokalnych władzach
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Zmień nazwę miasta
+STR_TOWN_VIEW_CARGO_GRAPH                                       :Wykres Ładunków
+STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :Wyświetl na wykresie historię stanu ładunków w tym mieście
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Rozszerz
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Zwiększ rozmiar miasta
@@ -4415,7 +4420,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Wyproduk
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Wyprodukowano w poprzedniej minucie:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% przetransportowano)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Wyśrodkuj widok główny na lokalizacji przedsiębiorstwa. Użyj Ctrl, aby otworzyć nowy podgląd na jego lokalizację
-STR_INDUSTRY_VIEW_CARGO_GRAPH                                   :{BLACK}Wykres Produkcji
+STR_INDUSTRY_VIEW_CARGO_GRAPH                                   :{BLACK}Wykres Ładunków
 STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}Wyświetl na wykresie historię stanu ładunków w tym przedsiębiorstwie
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Poziom produkcji: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Przedsiębiorstwo ogłosiło likwidację!
