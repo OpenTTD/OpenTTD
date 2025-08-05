@@ -3707,8 +3707,8 @@ STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar 
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Autoridade Local
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Ver informações sobre a autoridade local
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Alterar o nome da localidade
-STR_TOWN_VIEW_CARGO_GRAPH                                       :Gráfico de Carga
-STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :Mostrar gráfico do histórico de carga desta localidade
+STR_TOWN_VIEW_CARGO_GRAPH                                       :Gráfico da Carga
+STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :Mostrar gráfico do histórico da carga desta localidade
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Expandir
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Aumentar o tamanho da cidade
