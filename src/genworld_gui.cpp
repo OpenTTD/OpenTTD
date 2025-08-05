@@ -654,6 +654,7 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_TROPICAL:
 			case WID_GL_TOYLAND:
 				SetNewLandscapeType(LandscapeType(widget - WID_GL_TEMPERATE));
+				SndClickBeep();
 				break;
 
 			case WID_GL_MAPSIZE_X_PULLDOWN: // Mapsize X
@@ -718,6 +719,7 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_HEIGHTMAP_HEIGHT_TEXT: // Height level text
 				this->widget_id = WID_GL_HEIGHTMAP_HEIGHT_TEXT;
 				ShowQueryString(GetString(STR_JUST_INT, _settings_newgame.game_creation.heightmap_height), STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT, 4, this, CS_NUMERAL, QueryStringFlag::EnableDefault);
+				SndClickBeep();
 				break;
 
 
@@ -753,6 +755,7 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_SNOW_COVERAGE_TEXT: // Snow coverage text
 				this->widget_id = WID_GL_SNOW_COVERAGE_TEXT;
 				ShowQueryString(GetString(STR_JUST_INT, _settings_newgame.game_creation.snow_coverage), STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT, 4, this, CS_NUMERAL, QueryStringFlag::EnableDefault);
+				SndClickBeep();
 				break;
 
 			case WID_GL_DESERT_COVERAGE_DOWN:
@@ -770,6 +773,7 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_DESERT_COVERAGE_TEXT: // Desert line text
 				this->widget_id = WID_GL_DESERT_COVERAGE_TEXT;
 				ShowQueryString(GetString(STR_JUST_INT, _settings_newgame.game_creation.desert_coverage), STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT, 4, this, CS_NUMERAL, QueryStringFlag::EnableDefault);
+				SndClickBeep();
 				break;
 
 			case WID_GL_HEIGHTMAP_ROTATION_PULLDOWN: // Heightmap rotation
@@ -806,26 +810,31 @@ struct GenerateLandscapeWindow : public Window {
 			/* Freetype map borders */
 			case WID_GL_WATER_NW:
 				_settings_newgame.game_creation.water_borders.Flip(BorderFlag::NorthWest);
+				SndClickBeep();
 				this->InvalidateData();
 				break;
 
 			case WID_GL_WATER_NE:
 				_settings_newgame.game_creation.water_borders.Flip(BorderFlag::NorthEast);
+				SndClickBeep();
 				this->InvalidateData();
 				break;
 
 			case WID_GL_WATER_SE:
 				_settings_newgame.game_creation.water_borders.Flip(BorderFlag::SouthEast);
+				SndClickBeep();
 				this->InvalidateData();
 				break;
 
 			case WID_GL_WATER_SW:
 				_settings_newgame.game_creation.water_borders.Flip(BorderFlag::SouthWest);
+				SndClickBeep();
 				this->InvalidateData();
 				break;
 
 			case WID_GL_BORDERS_RANDOM:
 				_settings_newgame.game_creation.water_borders = (_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? BorderFlag{} : BorderFlag::Random;
+				SndClickBeep();
 				this->InvalidateData();
 				break;
 

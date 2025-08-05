@@ -1580,10 +1580,12 @@ public:
 					if (w != nullptr) ToggleRailButton_Remove(w);
 				}
 
+				SndClickBeep();
 				break;
 
 			case WID_BS_CONVERT:
 				_convert_signal_button = !_convert_signal_button;
+				SndClickBeep();
 				break;
 
 			case WID_BS_DRAG_SIGNALS_DENSITY_DECREASE:

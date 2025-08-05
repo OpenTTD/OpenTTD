@@ -289,6 +289,7 @@ public:
 
 				this->town->show_zone = new_show_state;
 				this->SetWidgetLoweredState(widget, new_show_state);
+				SndClickBeep();
 				MarkWholeScreenDirty();
 				break;
 			}

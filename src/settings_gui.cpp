@@ -953,6 +953,7 @@ struct GameOptionsWindow : Window {
 			case WID_GO_TAB_SOUND:
 			case WID_GO_TAB_ADVANCED:
 			case WID_GO_TAB_SOCIAL:
+				SndClickBeep();
 				this->SetTab(widget);
 				break;
 
