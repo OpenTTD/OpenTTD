@@ -1414,11 +1414,10 @@ CommandCost CmdModifyOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID s
  */
 static bool CheckAircraftOrderDistance(const Aircraft *v_new, const Vehicle *v_order)
 {
-	assert(v_order->orders != nullptr);
-	const OrderList &orderlist = *v_order->orders;
 	if (v_new->acache.cached_max_range == 0) return true;
-	if (orderlist.GetNumOrders() == 0) return true;
+	if (v_order->GetNumOrders() == 0) return true;
 
+	const OrderList &orderlist = *v_order->orders;
 	auto orders = orderlist.GetOrders();
 
 	/* Iterate over all orders to check the distance between all
