@@ -253,9 +253,7 @@ protected:
 
 	template <typename Tprojection>
 	struct Filler : BaseFiller {
-		const Tprojection &proj; ///< Projection to apply.
-
-		constexpr Filler(DataSet &dataset, const Tprojection &proj) : BaseFiller(dataset), proj(proj) {}
+		Tprojection proj; ///< Projection to apply.
 
 		inline void Fill(uint i, const auto &data) const { this->dataset.values[i] = std::invoke(this->proj, data); }
 	};
@@ -1776,16 +1774,16 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 			produced.colour = cs->legend_colour;
 			produced.exclude_bit = cs->Index();
 			produced.range_bit = 0;
-			auto produced_filler = Filler{produced, &Industry::ProducedHistory::production};
 
 			DataSet &transported = this->data.emplace_back();
 			transported.colour = cs->legend_colour;
 			transported.exclude_bit = cs->Index();
 			transported.range_bit = 1;
 			transported.dash = 2;
-			auto transported_filler = Filler{transported, &Industry::ProducedHistory::transported};
 
-			FillFromHistory<GRAPH_NUM_MONTHS>(p.history, i->valid_history, *this->scales[this->selected_scale].history_range, produced_filler, transported_filler);
+			FillFromHistory<GRAPH_NUM_MONTHS>(p.history, i->valid_history, *this->scales[this->selected_scale].history_range,
+				Filler{{produced}, &Industry::ProducedHistory::production},
+				Filler{{transported}, &Industry::ProducedHistory::transported});
 		}
 
 		for (const auto &a : i->accepted) {
@@ -1799,20 +1797,16 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 			accepted.exclude_bit = cs->Index();
 			accepted.range_bit = 2;
 			accepted.dash = 1;
-			auto accepted_filler = Filler{accepted, &Industry::AcceptedHistory::accepted};
 
 			DataSet &waiting = this->data.emplace_back();
 			waiting.colour = cs->legend_colour;
 			waiting.exclude_bit = cs->Index();
 			waiting.range_bit = 3;
 			waiting.dash = 4;
-			auto waiting_filler = Filler{waiting, &Industry::AcceptedHistory::waiting};
 
-			if (a.history == nullptr) {
-				FillFromEmpty<GRAPH_NUM_MONTHS>(i->valid_history, *this->scales[this->selected_scale].history_range, accepted_filler, waiting_filler);
-			} else {
-				FillFromHistory<GRAPH_NUM_MONTHS>(*a.history, i->valid_history, *this->scales[this->selected_scale].history_range, accepted_filler, waiting_filler);
-			}
+			FillFromHistory<GRAPH_NUM_MONTHS>(a.history.get(), i->valid_history, *this->scales[this->selected_scale].history_range,
+				Filler{{accepted}, &Industry::AcceptedHistory::accepted},
+				Filler{{waiting}, &Industry::AcceptedHistory::waiting});
 		}
 
 		this->SetDirty();
@@ -1955,8 +1949,8 @@ struct TownCargoGraphWindow : BaseCargoGraphWindow {
 			transported.dash = 2;
 
 			FillFromHistory<GRAPH_NUM_MONTHS>(s.history, t->valid_history, *this->scales[this->selected_scale].history_range,
-				Filler{produced, &Town::SuppliedHistory::production},
-				Filler{transported, &Town::SuppliedHistory::transported});
+				Filler{{produced}, &Town::SuppliedHistory::production},
+				Filler{{transported}, &Town::SuppliedHistory::transported});
 		}
 
 		this->SetDirty();
