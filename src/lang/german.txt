@@ -972,7 +972,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Währung auswä
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 45
+###length 46
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Britische Pfund
 STR_GAME_OPTIONS_CURRENCY_USD                                   :US-Dollar
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro

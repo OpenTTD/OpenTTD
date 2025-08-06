@@ -830,7 +830,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Gjaldsoyra eind
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Úrval av gjaldsoyra eindum
 
 
-###length 45
+###length 46
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Bretsk Pund
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollarar
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Evrir

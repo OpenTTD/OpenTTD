@@ -867,7 +867,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :หน่วย
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :การเลือกสกุลเงิน
 
 
-###length 45
+###length 46
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :ปอนด์สเตอร์ลิง
 STR_GAME_OPTIONS_CURRENCY_USD                                   :ดอลลาร์สหรัฐ
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :ยูโร

@@ -849,7 +849,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Diru unitateak
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Diru unitatearen aukeraketa
 
 
-###length 45
+###length 46
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar Amerikarrak
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euroa

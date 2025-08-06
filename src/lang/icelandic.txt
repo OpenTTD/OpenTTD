@@ -829,7 +829,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Gjaldmiðill
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Val á gjaldmiðli
 
 
-###length 45
+###length 46
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Sterlingspund
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Bandaríkjadalur
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Evra

@@ -649,6 +649,7 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportado
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Entregada
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :En espera
 
+STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Historial de carga
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Mostrar detalles de nivel de desempeño
 
@@ -994,7 +995,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Elegir divisa
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 45
+###length 46
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra británica
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dólar estadounidense
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro

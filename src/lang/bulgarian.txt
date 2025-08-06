@@ -973,7 +973,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Избор на
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 45
+###length 46
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Британска лира
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Американски долар
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Евро

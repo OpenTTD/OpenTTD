@@ -630,6 +630,8 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 år (kvartalsvis)
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 år (årlig)
 
+STR_GRAPH_TOGGLE_RANGE                                          :Aktiver graf for dette dataområdet
+STR_GRAPH_SELECT_SCALE                                          :Endre horisontal grafskala
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Varetakster
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Dager underveis
@@ -648,6 +650,9 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportert
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Levert
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Venter
 
+STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Varehistorikk
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Leveranse
+STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transportert
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Vis detaljerte prestasjonsmålinger
 
@@ -993,7 +998,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Velg valutaenhe
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 45
+###length 46
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Britiske pund
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerikanske dollar
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
@@ -3703,6 +3708,8 @@ STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Sentrer 
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Lokale myndigheter
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Vis informasjon om lokale myndigheter
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Endre navn på byen
+STR_TOWN_VIEW_CARGO_GRAPH                                       :Varegraf
+STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :Vis graf med byens varehistorikk
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Utvid
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Øk bystørrelse
@@ -5012,6 +5019,7 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Flatt la
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Landet heller i feil retning
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Kan ikke gjøre dette...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Bygningen må rives først
+STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}... bygning er vernet
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Kan ikke rydde dette området...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...{NBSP}feltet er uegnet
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... allerede bygget

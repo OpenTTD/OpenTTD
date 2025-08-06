@@ -267,6 +267,7 @@ STR_UNITS_YEARS                                                 :{NUM}{NBSP}år{
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}period{P "" er}
 
 STR_LIST_SEPARATOR                                              :,{SPACE}
+STR_TRUNCATION_ELLIPSIS                                         :...
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Sökfilter:
@@ -621,8 +622,14 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Företag
 
 STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Senaste 24 minuterna
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Senaste 72 minuterna
+STR_GRAPH_LAST_288_MINUTES_TIME_LABEL                           :{TINY_FONT}{BLACK}Senaste 288 minuterna
 
+STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLACK}2 år (månadsvis)
+STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 år (kvartalsvis)
+STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 år (årsvis)
 
+STR_GRAPH_TOGGLE_RANGE                                          :Växla graf för dataintervall
+STR_GRAPH_SELECT_SCALE                                          :Ändra horisontell skala på grafen
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Fraktförtjänster
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Dagar av resa
@@ -635,9 +642,15 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Visa ing
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Slå på/av denna godstyps graf
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Godshistorik
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Producerat
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transporterat
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Levererat
+STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Väntande
 
+STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Godshistorik
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Producerat
+STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transporterat
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Visa detaljerad prestationsgradering
 
@@ -983,7 +996,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Välj valutaenh
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 45
+###length 46
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Brittiskt pund
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerikansk dollar
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
@@ -1303,6 +1316,9 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Räntenivå fö
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Driftkostnader: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Sätt nivån för underhålls- och driftkostnader för fordon och infrastruktur
 ###length 3
+STR_CONFIG_SETTING_RUNNING_COSTS_LOW                            :Låga
+STR_CONFIG_SETTING_RUNNING_COSTS_MEDIUM                         :Medel
+STR_CONFIG_SETTING_RUNNING_COSTS_HIGH                           :Höga
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Konstruktionshastighet: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Begränsar antalet konstruktionshandlingar för datorspelare
@@ -1325,6 +1341,9 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Inga subvention
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Konstruktionskostnader: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Sätt nivån för konstruktions- och inköpskostnader
 ###length 3
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_LOW                       :Låga
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_MEDIUM                    :Mellan
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Höga
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Lågkonjunkturer: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Om det är aktiverat kan lågkonjunkturer uppstå regelbundet. Under en lågkonjunktur är all produktion avsevärt lägre (men återgår till det normala när lågkonjunkturen är över)
@@ -2080,9 +2099,9 @@ STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Den BEPANSRADE 
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distributionssätt för övriga godsklasser: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asymmetriskt" innebär att en godtycklig mängd gods kan skickas i vardera riktningen. "Manuellt" innebär att ingen automatisk distribution av dessa godstyper sker
 ###length 3
-STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuellt
-STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetriskt
-STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symmetriskt
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :Manuellt
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :Asymmetriskt
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :Symmetriskt
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Distributionsnoggrannhet: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Ju högre du sätter denna, desto längre CPU-tid kommer beräkningen av länkgrafen ta. Om det tar för lång tid kan spelet lagga. Om du däremot sätter den till ett lågt värde kommer distributionen att bli inexakt, vilket kan leda till att godset inte skickas dit du förväntar dig
@@ -2332,16 +2351,19 @@ STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Enkelt a
 STR_FACE_LOAD                                                   :{BLACK}Ladda
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Ladda favoritansikte
 STR_FACE_LOAD_DONE                                              :{WHITE}Ditt favoritansikte har laddats från OpenTTDs konfigurationsfil.
-STR_FACE_FACECODE                                               :{BLACK}Spelaransikte-nummer
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Visa och/eller välj ansiktsnummer
+STR_FACE_FACECODE                                               :{BLACK}Spelarens ansiktsnummer
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Visa och/eller välj ansiktsnummer för VD
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Visa och/eller välj ansiktsnummer
-STR_FACE_FACECODE_SET                                           :{WHITE}Nytt ansiktsnummer har valts
-STR_FACE_FACECODE_ERR                                           :{WHITE}Kunde inte ange ansiktsnumret. Det måste vara en siffra mellan 0 och 4.294.967.295!
+STR_FACE_FACECODE_SET                                           :{WHITE}Nytt VD-ansikte har valts
+STR_FACE_FACECODE_ERR                                           :{WHITE}Kunde inte ange ansiktsnumret för VD. Det måste vara en siffra mellan 0 och 4.294.967.295!
 STR_FACE_SAVE                                                   :{BLACK}Spara
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Spara favoritansikte
 STR_FACE_SAVE_DONE                                              :{WHITE}Det här ansiktet kommer att sparas som ditt favoritansikte i OpenTTDs konfigurationsfil.
+STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
+STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :Nej
+STR_FACE_STYLE                                                  :Stil:
 STR_FACE_HAIR                                                   :Hår:
 STR_FACE_EYEBROWS                                               :Ögonbryn:
 STR_FACE_EYECOLOUR                                              :Ögonfärg:
@@ -2814,6 +2836,10 @@ STR_PICKER_MODE_USED_TOOLTIP                                    :Slå av/på vis
 STR_PICKER_MODE_SAVED                                           :Sparade
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Slå på/av visning av endast sparade objekt
 
+STR_PICKER_PREVIEW_SHRINK                                       :-
+STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Minska höjden på förhandsvisningen. Ctrl+Click för att minska till minimum
+STR_PICKER_PREVIEW_EXPAND                                       :+
+STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Öka höjden på förhandsvisningen. Ctrl+Click för att öka till max
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Välj vilken klass av stationer som ska visas
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Välj en stationstyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
@@ -3054,6 +3080,11 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Välj st
 STR_FOUND_TOWN_CITY                                             :{BLACK}Stad
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Storstäder växer snabbare än vanliga städer{}Beroende på inställningarna så är de större när de grundas
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Utöka stad:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Byggnader
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Öka antalet byggnader i städerna
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Vägar
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Öka antal vägar i städerna
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Utformning av stadens vägnät:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Välj vägnätets utformning för denna stad
@@ -3675,9 +3706,15 @@ STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrera
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Lokala myndigheter
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Visa information om de lokala myndigheterna
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Byt namn på staden
+STR_TOWN_VIEW_CARGO_GRAPH                                       :Godsgraf
+STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :Visa graf över stadens godshistorik
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Utöka
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Öka stadens storlek
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Utöka byggnader
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Öka byggnader i staden
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Utöka vägar
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Öka antal vägar i staden
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Ta bort
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Ta bort staden helt och hållet
 
@@ -4003,6 +4040,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produkti
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Produktion förra minuten:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transporterat)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrera huvudvyn ovanför industrin. Ctrl+Klick för att öppna en ny fönstervy industrins läge
+STR_INDUSTRY_VIEW_CARGO_GRAPH                                   :{BLACK}Godsgraf
+STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}Visar grafen för industrins godshistorik
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produktionsnivå: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Industrin har annonserat att den snart kommer att stänga!
 
@@ -4978,6 +5017,7 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Platt ma
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Marken lutar åt fel håll
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Kan inte utföra detta...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Byggnad måste rivas först
+STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}... byggnaden är skyddad
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Kan inte röja området...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... platsen passar inte
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... redan byggd
@@ -5897,3 +5937,11 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Öppna märkeskonfiguration
+STR_BADGE_CONFIG_RESET                                          :Återställ
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Märkesikoner
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Märkesfilter
+STR_BADGE_CONFIG_PREVIEW                                        :Förhandsvisning
+STR_BADGE_CONFIG_NAME                                           :Namn
+STR_BADGE_FILTER_ANY_LABEL                                      :Någon {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} är {STRING}

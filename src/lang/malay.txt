@@ -833,7 +833,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Unit kewangan
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Pilihan unit kewangan
 
 
-###length 45
+###length 46
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Paun British
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar Amerika
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro

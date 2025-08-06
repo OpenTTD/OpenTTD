@@ -1279,7 +1279,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Выбар ва
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 45
+###length 46
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Брытанскі фунт
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Даляр ЗША
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Эўра

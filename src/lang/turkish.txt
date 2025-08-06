@@ -970,7 +970,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Para birimi seÃ
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 45
+###length 46
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Sterlin
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerikan DolarÄ±
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Avro

@@ -996,7 +996,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Rahayksiköiden
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 45
+###length 46
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Englannin punta
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Yhdysvaltain dollari
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro

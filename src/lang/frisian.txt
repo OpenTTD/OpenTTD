@@ -861,7 +861,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Muntienheid
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Muntienheidseleksje
 
 
-###length 45
+###length 46
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Britske Pûn
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerikaanske Dollars
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro

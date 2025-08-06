@@ -1089,7 +1089,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Επιλογή 
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 45
+###length 46
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Στερλίνα Ηνωμένου Βασιλείου
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Δολλάριο Η.Π.Α.
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Ευρώ

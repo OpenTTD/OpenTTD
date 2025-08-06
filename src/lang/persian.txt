@@ -916,7 +916,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :انتخاب و
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 45
+###length 46
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :پوند
 STR_GAME_OPTIONS_CURRENCY_USD                                   :دلار
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :یورو

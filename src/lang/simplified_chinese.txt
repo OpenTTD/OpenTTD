@@ -645,7 +645,7 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - 货物历史
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :已生产
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :已运输
-STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :已送抵
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :已接受
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :库存
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - 货物历史
@@ -996,7 +996,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :选择货币单
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING}（{STRING}）
 
-###length 45
+###length 46
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :英镑
 STR_GAME_OPTIONS_CURRENCY_USD                                   :美元
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :欧元

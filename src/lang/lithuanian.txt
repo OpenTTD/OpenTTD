@@ -1153,7 +1153,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Valiutos pasiri
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 45
+###length 46
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Svarai sterlingų
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerikos Doleris
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Eurai
