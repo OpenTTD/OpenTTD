@@ -47,6 +47,9 @@ public:
 
 		return true;
 	}
+
+private:
+	static SoundLoader_Raw instance;
 };
 
-static SoundLoader_Raw s_sound_loader_raw;
+/* static */ SoundLoader_Raw SoundLoader_Raw::instance{};

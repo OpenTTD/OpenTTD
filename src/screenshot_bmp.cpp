@@ -145,6 +145,9 @@ public:
 
 		return true;
 	}
+
+private:
+	static ScreenshotProvider_Bmp instance;
 };
 
-static ScreenshotProvider_Bmp s_screenshot_provider_bmp;
+/* static */ ScreenshotProvider_Bmp ScreenshotProvider_Bmp::instance{};
