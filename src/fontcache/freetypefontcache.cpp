@@ -46,9 +46,6 @@ public:
 	const void *GetOSHandle() override { return &face; }
 };
 
-FT_Library _ft_library = nullptr;
-
-
 /**
  * Create a new FreeTypeFontCache.
  * @param fs     The font size that is going to be cached.
@@ -110,93 +107,6 @@ void FreeTypeFontCache::SetFontSize(int pixels)
 	} else {
 		/* Both FT_Set_Pixel_Sizes and FT_Select_Size failed. */
 		Debug(fontcache, 0, "Font size selection failed. Using FontCache defaults.");
-	}
-}
-
-static FT_Error LoadFont(FontSize fs, FT_Face face, std::string_view font_name, uint size)
-{
-	Debug(fontcache, 2, "Requested '{}', using '{} {}'", font_name, face->family_name, face->style_name);
-
-	/* Attempt to select the unicode character map */
-	FT_Error error = FT_Select_Charmap(face, ft_encoding_unicode);
-	if (error == FT_Err_Ok) goto found_face; // Success
-
-	if (error == FT_Err_Invalid_CharMap_Handle) {
-		/* Try to pick a different character map instead. We default to
-		 * the first map, but platform_id 0 encoding_id 0 should also
-		 * be unicode (strange system...) */
-		FT_CharMap found = face->charmaps[0];
-		int i;
-
-		for (i = 0; i < face->num_charmaps; i++) {
-			FT_CharMap charmap = face->charmaps[i];
-			if (charmap->platform_id == 0 && charmap->encoding_id == 0) {
-				found = charmap;
-			}
-		}
-
-		if (found != nullptr) {
-			error = FT_Set_Charmap(face, found);
-			if (error == FT_Err_Ok) goto found_face;
-		}
-	}
-
-	FT_Done_Face(face);
-	return error;
-
-found_face:
-	new FreeTypeFontCache(fs, face, size);
-	return FT_Err_Ok;
-}
-
-/**
- * Loads the freetype font.
- * First type to load the fontname as if it were a path. If that fails,
- * try to resolve the filename of the font using fontconfig, where the
- * format is 'font family name' or 'font family name, font style'.
- * @param fs The font size to load.
- */
-void LoadFreeTypeFont(FontSize fs)
-{
-	FontCacheSubSetting *settings = GetFontCacheSubSetting(fs);
-
-	std::string font = GetFontCacheFontName(fs);
-	if (font.empty()) return;
-
-	if (_ft_library == nullptr) {
-		if (FT_Init_FreeType(&_ft_library) != FT_Err_Ok) {
-			ShowInfo("Unable to initialize FreeType, using sprite fonts instead");
-			return;
-		}
-
-		Debug(fontcache, 2, "Initialized");
-	}
-
-	FT_Face face = nullptr;
-
-	/* If font is an absolute path to a ttf, try loading that first. */
-	int32_t index = 0;
-	if (settings->os_handle != nullptr) index = *static_cast<const int32_t *>(settings->os_handle);
-	FT_Error error = FT_New_Face(_ft_library, font.c_str(), index, &face);
-
-	if (error != FT_Err_Ok) {
-		/* Check if font is a relative filename in one of our search-paths. */
-		std::string full_font = FioFindFullPath(BASE_DIR, font);
-		if (!full_font.empty()) {
-			error = FT_New_Face(_ft_library, full_font.c_str(), 0, &face);
-		}
-	}
-
-	/* Try loading based on font face name (OS-wide fonts). */
-	if (error != FT_Err_Ok) error = GetFontByFaceName(font, &face);
-
-	if (error == FT_Err_Ok) {
-		error = LoadFont(fs, face, font, GetFontCacheFontSize(fs));
-		if (error != FT_Err_Ok) {
-			ShowInfo("Unable to use '{}' for {} font, FreeType reported error 0x{:X}, using sprite font instead", font, FontSizeToName(fs), error);
-		}
-	} else {
-		FT_Done_Face(face);
 	}
 }
 
@@ -296,14 +206,109 @@ GlyphID FreeTypeFontCache::MapCharToGlyph(char32_t key, bool allow_fallback)
 	return glyph;
 }
 
-/**
- * Free everything allocated w.r.t. freetype.
- */
-void UninitFreeType()
-{
-	FT_Done_FreeType(_ft_library);
-	_ft_library = nullptr;
-}
+FT_Library _ft_library = nullptr;
+
+class FreeTypeFontCacheFactory : public FontCacheFactory {
+public:
+	FreeTypeFontCacheFactory() : FontCacheFactory("freetype", "FreeType font provider") {}
+
+	virtual ~FreeTypeFontCacheFactory()
+	{
+		FT_Done_FreeType(_ft_library);
+		_ft_library = nullptr;
+	}
+
+	/**
+	 * Loads the freetype font.
+	 * First try to load the fontname as if it were a path. If that fails,
+	 * try to resolve the filename of the font using fontconfig, where the
+	 * format is 'font family name' or 'font family name, font style'.
+	 * @param fs The font size to load.
+	 */
+	std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype) override
+	{
+		if (fonttype != FontType::TrueType) return nullptr;
+
+		FontCacheSubSetting *settings = GetFontCacheSubSetting(fs);
+
+		std::string font = GetFontCacheFontName(fs);
+		if (font.empty()) return nullptr;
+
+		if (_ft_library == nullptr) {
+			if (FT_Init_FreeType(&_ft_library) != FT_Err_Ok) {
+				ShowInfo("Unable to initialize FreeType, using sprite fonts instead");
+				return nullptr;
+			}
+
+			Debug(fontcache, 2, "Initialized");
+		}
+
+		FT_Face face = nullptr;
+
+		/* If font is an absolute path to a ttf, try loading that first. */
+		int32_t index = 0;
+		if (settings->os_handle != nullptr) index = *static_cast<const int32_t *>(settings->os_handle);
+		FT_Error error = FT_New_Face(_ft_library, font.c_str(), index, &face);
+
+		if (error != FT_Err_Ok) {
+			/* Check if font is a relative filename in one of our search-paths. */
+			std::string full_font = FioFindFullPath(BASE_DIR, font);
+			if (!full_font.empty()) {
+				error = FT_New_Face(_ft_library, full_font.c_str(), 0, &face);
+			}
+		}
+
+		/* Try loading based on font face name (OS-wide fonts). */
+		if (error != FT_Err_Ok) error = GetFontByFaceName(font, &face);
+
+		if (error != FT_Err_Ok) {
+			FT_Done_Face(face);
+			return nullptr;
+		}
+
+		return LoadFont(fs, face, font, GetFontCacheFontSize(fs));
+	}
+
+private:
+	static std::unique_ptr<FontCache> LoadFont(FontSize fs, FT_Face face, std::string_view font_name, uint size)
+	{
+		Debug(fontcache, 2, "Requested '{}', using '{} {}'", font_name, face->family_name, face->style_name);
+
+		/* Attempt to select the unicode character map */
+		FT_Error error = FT_Select_Charmap(face, ft_encoding_unicode);
+		if (error == FT_Err_Invalid_CharMap_Handle) {
+			/* Try to pick a different character map instead. We default to
+			 * the first map, but platform_id 0 encoding_id 0 should also
+			 * be unicode (strange system...) */
+			FT_CharMap found = face->charmaps[0];
+
+			for (int i = 0; i < face->num_charmaps; ++i) {
+				FT_CharMap charmap = face->charmaps[i];
+				if (charmap->platform_id == 0 && charmap->encoding_id == 0) {
+					found = charmap;
+				}
+			}
+
+			if (found != nullptr) {
+				error = FT_Set_Charmap(face, found);
+			}
+		}
+
+		if (error != FT_Err_Ok) {
+			FT_Done_Face(face);
+
+			ShowInfo("Unable to use '{}' for {} font, FreeType reported error 0x{:X}, using sprite font instead", font_name, FontSizeToName(fs), error);
+			return nullptr;
+		}
+
+		return std::make_unique<FreeTypeFontCache>(fs, face, size);
+	}
+
+private:
+	static FreeTypeFontCacheFactory instance;
+};
+
+/* static */ FreeTypeFontCacheFactory FreeTypeFontCacheFactory::instance;
 
 #if !defined(WITH_FONTCONFIG)
 

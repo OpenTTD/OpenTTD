@@ -287,88 +287,101 @@ const Sprite *CoreTextFontCache::InternalGetGlyph(GlyphID key, bool use_aa)
 	return this->SetGlyphPtr(key, std::move(new_glyph)).GetSprite();
 }
 
-static CTFontDescriptorRef LoadFontFromFile(const std::string &font_name)
-{
-	if (!MacOSVersionIsAtLeast(10, 6, 0)) return nullptr;
+class CoreTextFontCacheFactory : public FontCacheFactory {
+public:
+	CoreTextFontCacheFactory() : FontCacheFactory("coretext", "CoreText font loader") {}
 
-	/* Might be a font file name, try load it. Direct font loading is
-	 * only supported starting on OSX 10.6. */
-	CFAutoRelease<CFStringRef> path;
+	/**
+	 * Loads the TrueType font.
+	 * If a CoreText font description is present, e.g. from the automatic font
+	 * fallback search, use it. Otherwise, try to resolve it by font name.
+	 * @param fs The font size to load.
+	 */
+	std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype) override
+	{
+		if (fonttype != FontType::TrueType) return nullptr;
 
-	/* See if this is an absolute path. */
-	if (FileExists(font_name)) {
-		path.reset(CFStringCreateWithCString(kCFAllocatorDefault, font_name.c_str(), kCFStringEncodingUTF8));
-	} else {
-		/* Scan the search-paths to see if it can be found. */
-		std::string full_font = FioFindFullPath(BASE_DIR, font_name);
-		if (!full_font.empty()) {
-			path.reset(CFStringCreateWithCString(kCFAllocatorDefault, full_font.c_str(), kCFStringEncodingUTF8));
+		FontCacheSubSetting *settings = GetFontCacheSubSetting(fs);
+
+		std::string font = GetFontCacheFontName(fs);
+		if (font.empty()) return nullptr;
+
+		CFAutoRelease<CTFontDescriptorRef> font_ref;
+
+		if (settings->os_handle != nullptr) {
+			font_ref.reset(static_cast<CTFontDescriptorRef>(const_cast<void *>(settings->os_handle)));
+			CFRetain(font_ref.get()); // Increase ref count to match a later release.
 		}
-	}
 
-	if (path) {
-		/* Try getting a font descriptor to see if the system can use it. */
-		CFAutoRelease<CFURLRef> url(CFURLCreateWithFileSystemPath(kCFAllocatorDefault, path.get(), kCFURLPOSIXPathStyle, false));
-		CFAutoRelease<CFArrayRef> descs(CTFontManagerCreateFontDescriptorsFromURL(url.get()));
-
-		if (descs && CFArrayGetCount(descs.get()) > 0) {
-			CTFontDescriptorRef font_ref = (CTFontDescriptorRef)CFArrayGetValueAtIndex(descs.get(), 0);
-			CFRetain(font_ref);
-			return font_ref;
+		if (!font_ref && MacOSVersionIsAtLeast(10, 6, 0)) {
+			/* Might be a font file name, try load it. */
+			font_ref.reset(LoadFontFromFile(font));
+			if (!font_ref) ShowInfo("Unable to load file '{}' for {} font, using default OS font selection instead", font, FontSizeToName(fs));
 		}
-	}
 
-	return nullptr;
-}
+		if (!font_ref) {
+			CFAutoRelease<CFStringRef> name(CFStringCreateWithCString(kCFAllocatorDefault, font.c_str(), kCFStringEncodingUTF8));
 
-/**
- * Loads the TrueType font.
- * If a CoreText font description is present, e.g. from the automatic font
- * fallback search, use it. Otherwise, try to resolve it by font name.
- * @param fs The font size to load.
- */
-void LoadCoreTextFont(FontSize fs)
-{
-	FontCacheSubSetting *settings = GetFontCacheSubSetting(fs);
+			/* Simply creating the font using CTFontCreateWithNameAndSize will *always* return
+			* something, no matter the name. As such, we can't use it to check for existence.
+			* We instead query the list of all font descriptors that match the given name which
+			* does not do this stupid name fallback. */
+			CFAutoRelease<CTFontDescriptorRef> name_desc(CTFontDescriptorCreateWithNameAndSize(name.get(), 0.0));
+			CFAutoRelease<CFSetRef> mandatory_attribs(CFSetCreate(kCFAllocatorDefault, const_cast<const void **>(reinterpret_cast<const void * const *>(&kCTFontNameAttribute)), 1, &kCFTypeSetCallBacks));
+			CFAutoRelease<CFArrayRef> descs(CTFontDescriptorCreateMatchingFontDescriptors(name_desc.get(), mandatory_attribs.get()));
 
-	std::string font = GetFontCacheFontName(fs);
-	if (font.empty()) return;
-
-	CFAutoRelease<CTFontDescriptorRef> font_ref;
-
-	if (settings->os_handle != nullptr) {
-		font_ref.reset(static_cast<CTFontDescriptorRef>(const_cast<void *>(settings->os_handle)));
-		CFRetain(font_ref.get()); // Increase ref count to match a later release.
-	}
-
-	if (!font_ref && MacOSVersionIsAtLeast(10, 6, 0)) {
-		/* Might be a font file name, try load it. */
-		font_ref.reset(LoadFontFromFile(font));
-		if (!font_ref) ShowInfo("Unable to load file '{}' for {} font, using default OS font selection instead", font, FontSizeToName(fs));
-	}
-
-	if (!font_ref) {
-		CFAutoRelease<CFStringRef> name(CFStringCreateWithCString(kCFAllocatorDefault, font.c_str(), kCFStringEncodingUTF8));
-
-		/* Simply creating the font using CTFontCreateWithNameAndSize will *always* return
-		 * something, no matter the name. As such, we can't use it to check for existence.
-		 * We instead query the list of all font descriptors that match the given name which
-		 * does not do this stupid name fallback. */
-		CFAutoRelease<CTFontDescriptorRef> name_desc(CTFontDescriptorCreateWithNameAndSize(name.get(), 0.0));
-		CFAutoRelease<CFSetRef> mandatory_attribs(CFSetCreate(kCFAllocatorDefault, const_cast<const void **>(reinterpret_cast<const void * const *>(&kCTFontNameAttribute)), 1, &kCFTypeSetCallBacks));
-		CFAutoRelease<CFArrayRef> descs(CTFontDescriptorCreateMatchingFontDescriptors(name_desc.get(), mandatory_attribs.get()));
-
-		/* Assume the first result is the one we want. */
-		if (descs && CFArrayGetCount(descs.get()) > 0) {
-			font_ref.reset((CTFontDescriptorRef)CFArrayGetValueAtIndex(descs.get(), 0));
-			CFRetain(font_ref.get());
+			/* Assume the first result is the one we want. */
+			if (descs && CFArrayGetCount(descs.get()) > 0) {
+				font_ref.reset((CTFontDescriptorRef)CFArrayGetValueAtIndex(descs.get(), 0));
+				CFRetain(font_ref.get());
+			}
 		}
+
+		if (!font_ref) {
+			ShowInfo("Unable to use '{}' for {} font, using sprite font instead", font, FontSizeToName(fs));
+			return nullptr;
+		}
+
+		return std::make_unique<CoreTextFontCache>(fs, std::move(font_ref), GetFontCacheFontSize(fs));
 	}
 
-	if (!font_ref) {
-		ShowInfo("Unable to use '{}' for {} font, using sprite font instead", font, FontSizeToName(fs));
-		return;
+private:
+	static CTFontDescriptorRef LoadFontFromFile(const std::string &font_name)
+	{
+		if (!MacOSVersionIsAtLeast(10, 6, 0)) return nullptr;
+
+		/* Might be a font file name, try load it. Direct font loading is
+		 * only supported starting on OSX 10.6. */
+		CFAutoRelease<CFStringRef> path;
+
+		/* See if this is an absolute path. */
+		if (FileExists(font_name)) {
+			path.reset(CFStringCreateWithCString(kCFAllocatorDefault, font_name.c_str(), kCFStringEncodingUTF8));
+		} else {
+			/* Scan the search-paths to see if it can be found. */
+			std::string full_font = FioFindFullPath(BASE_DIR, font_name);
+			if (!full_font.empty()) {
+				path.reset(CFStringCreateWithCString(kCFAllocatorDefault, full_font.c_str(), kCFStringEncodingUTF8));
+			}
+		}
+
+		if (path) {
+			/* Try getting a font descriptor to see if the system can use it. */
+			CFAutoRelease<CFURLRef> url(CFURLCreateWithFileSystemPath(kCFAllocatorDefault, path.get(), kCFURLPOSIXPathStyle, false));
+			CFAutoRelease<CFArrayRef> descs(CTFontManagerCreateFontDescriptorsFromURL(url.get()));
+
+			if (descs && CFArrayGetCount(descs.get()) > 0) {
+				CTFontDescriptorRef font_ref = (CTFontDescriptorRef)CFArrayGetValueAtIndex(descs.get(), 0);
+				CFRetain(font_ref);
+				return font_ref;
+			}
+		}
+
+		return nullptr;
 	}
 
-	new CoreTextFontCache(fs, std::move(font_ref), GetFontCacheFontSize(fs));
-}
+private:
+	static CoreTextFontCacheFactory instance;
+};
+
+/* static */ CoreTextFontCacheFactory CoreTextFontCacheFactory::instance;
