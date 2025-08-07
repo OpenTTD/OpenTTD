@@ -657,13 +657,13 @@ static const DrawTileSeqStruct _station_display_datas_road_waypoint_Y[] = {
 };
 
 static const DrawTileSeqStruct _station_display_datas_waypoint_X[] = {
-	TILE_SEQ_LINE( 0,  0,  0, 16,  5, 23, SPR_WAYPOINT_X_1 | (1U << PALETTE_MODIFIER_COLOUR))
-	TILE_SEQ_LINE( 0, 11,  0, 16,  5, 23, SPR_WAYPOINT_X_2 | (1U << PALETTE_MODIFIER_COLOUR))
+	TILE_SEQ_LINE( 0,  0,  0, 16,  5, 16, SPR_WAYPOINT_X_1 | (1U << PALETTE_MODIFIER_COLOUR))
+	TILE_SEQ_LINE( 0, 11,  0, 16,  5, 16, SPR_WAYPOINT_X_2 | (1U << PALETTE_MODIFIER_COLOUR))
 };
 
 static const DrawTileSeqStruct _station_display_datas_waypoint_Y[] = {
-	TILE_SEQ_LINE( 0,  0,  0,  5, 16, 23, SPR_WAYPOINT_Y_1 | (1U << PALETTE_MODIFIER_COLOUR))
-	TILE_SEQ_LINE(11,  0,  0,  5, 16, 23, SPR_WAYPOINT_Y_2 | (1U << PALETTE_MODIFIER_COLOUR))
+	TILE_SEQ_LINE( 0,  0,  0,  5, 16, 16, SPR_WAYPOINT_Y_1 | (1U << PALETTE_MODIFIER_COLOUR))
+	TILE_SEQ_LINE(11,  0,  0,  5, 16, 16, SPR_WAYPOINT_Y_2 | (1U << PALETTE_MODIFIER_COLOUR))
 };
 
 #undef TILE_SEQ_LINE
