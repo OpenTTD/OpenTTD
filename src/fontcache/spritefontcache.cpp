@@ -163,6 +163,11 @@ public:
 		return std::make_unique<SpriteFontCache>(fs);
 	}
 
+	bool FindFallbackFont(struct FontCacheSettings *, const std::string &, class MissingGlyphSearcher *) override
+	{
+		return false;
+	}
+
 private:
 	static SpriteFontCacheFactory instance;
 };
