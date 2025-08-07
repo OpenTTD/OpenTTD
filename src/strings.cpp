@@ -17,7 +17,6 @@
 #include "newgrf_text.h"
 #include "fileio_func.h"
 #include "signs_base.h"
-#include "fontdetection.h"
 #include "error.h"
 #include "error_func.h"
 #include "strings_func.h"
@@ -2376,7 +2375,7 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 		_fcsettings.mono.os_handle = nullptr;
 		_fcsettings.medium.os_handle = nullptr;
 
-		bad_font = !SetFallbackFont(&_fcsettings, _langpack.langpack->isocode, searcher);
+		bad_font = !FontProviderManager::FindFallbackFont(&_fcsettings, _langpack.langpack->isocode, searcher);
 
 		_fcsettings = std::move(backup);
 

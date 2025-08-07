@@ -8,14 +8,14 @@
 /** @file freetypefontcache.cpp FreeType font cache implementation. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "../fontcache.h"
-#include "../fontdetection.h"
 #include "../blitter/factory.hpp"
-#include "../core/math_func.hpp"
 #include "../zoom_func.h"
 #include "../fileio_func.h"
 #include "../error_func.h"
+#include "../../os/unix/font_unix.h"
 #include "truetypefontcache.h"
 
 #include "../table/control_codes.h"
@@ -258,8 +258,10 @@ public:
 			}
 		}
 
+#ifdef WITH_FONTCONFIG
 		/* Try loading based on font face name (OS-wide fonts). */
 		if (error != FT_Err_Ok) error = GetFontByFaceName(font, &face);
+#endif /* WITH_FONTCONFIG */
 
 		if (error != FT_Err_Ok) {
 			FT_Done_Face(face);
@@ -267,6 +269,15 @@ public:
 		}
 
 		return LoadFont(fs, face, font, GetFontCacheFontSize(fs));
+	}
+
+	bool FindFallbackFont(struct FontCacheSettings *settings, const std::string &language_isocode, class MissingGlyphSearcher *callback) override
+	{
+#ifdef WITH_FONTCONFIG
+		if (FontConfigFindFallbackFont(settings, language_isocode, callback)) return true;
+#endif /* WITH_FONTCONFIG */
+
+		return false;
 	}
 
 private:
@@ -309,11 +320,5 @@ private:
 };
 
 /* static */ FreeTypeFontCacheFactory FreeTypeFontCacheFactory::instance;
-
-#if !defined(WITH_FONTCONFIG)
-
-FT_Error GetFontByFaceName(std::string_view font_name, FT_Face *face) { return FT_Err_Cannot_Open_Resource; }
-
-#endif /* !defined(WITH_FONTCONFIG) */
 
 #endif /* WITH_FREETYPE */
