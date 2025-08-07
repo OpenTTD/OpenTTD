@@ -83,6 +83,9 @@ public:
 
 		return true;
 	}
+
+private:
+	static SoundLoader_Opus instance;
 };
 
-static SoundLoader_Opus s_sound_loader_opus;
+/* static */ SoundLoader_Opus SoundLoader_Opus::instance{};

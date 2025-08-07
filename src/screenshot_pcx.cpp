@@ -149,6 +149,9 @@ public:
 
 		return success;
 	}
+
+private:
+	static ScreenshotProvider_Pcx instance;
 };
 
-static const ScreenshotProvider_Pcx s_screenshot_provider_pcx;
+/* static */ ScreenshotProvider_Pcx ScreenshotProvider_Pcx::instance{};

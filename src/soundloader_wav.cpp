@@ -96,6 +96,9 @@ public:
 
 		return false;
 	}
+
+private:
+	static SoundLoader_Wav instance;
 };
 
-static SoundLoader_Wav s_sound_loader_wav;
+/* static */ SoundLoader_Wav SoundLoader_Wav::instance{};
