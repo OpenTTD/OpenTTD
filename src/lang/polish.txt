@@ -1385,7 +1385,7 @@ STR_GAME_OPTIONS_CURRENCY_ATS                                   :Szyling austria
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Frank belgijski
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Frank szwajcarski
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :Korona czeska
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :Marki niemieckie
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Marka niemiecka
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Korona duńska
 STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta hiszpańska
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Marka fińska
@@ -1396,7 +1396,7 @@ STR_GAME_OPTIONS_CURRENCY_ISK                                   :Korona islandzk
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira włoska
 STR_GAME_OPTIONS_CURRENCY_NLG                                   :Gulden holenderski
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Korona norweska
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polski złoty
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Złoty polski
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Lej rumuński
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rubel rosyjski
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tolar słowenski
@@ -1422,6 +1422,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit malezyj
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Łat łotewski
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escudo portugalskie
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Hrywna ukraińska
+STR_GAME_OPTIONS_CURRENCY_VND                                   :Dong wietnamski
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Automatyczny zapis
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Wybierz częstotliwość automatycznego zapisu stanu gry

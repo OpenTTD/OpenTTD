@@ -267,6 +267,8 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}minu
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}Jahr{P "" e}
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}Zykl{P "us" "en"}
 
+STR_LIST_SEPARATOR                                              :,{SPACE}
+STR_TRUNCATION_ELLIPSIS                                         :…
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filter:
@@ -285,7 +287,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fenster 
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titelleiste klicken und ziehen, um das Fenster zu verschieben
 STR_TOOLTIP_SHADE                                               :{BLACK}Fenster einklappen – Nur die Titelleiste zeigen
 STR_TOOLTIP_DEBUG                                               :{BLACK}Zeige Daten für NewGRF-Fehlerbeseitigung
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}Standardgröße des Fensters wieder herstellen. Strg+Klick um die aktuelle Größe als Standard zu speichern
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Standardgröße des Fensters wieder herstellen. Strg+Klick um die aktuelle Größe als Standard zu speichern. Doppelt Strg+Klick machen, um Standard wiederherzustellen
 STR_TOOLTIP_STICKY                                              :{BLACK}Fenster wird nicht durch die „Schließe alle Fenster“-Taste geschlossen. Strg+Klick, um den Status als Standard zu speichern
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klicken und Ziehen zum Ändern der Größe des Fensters
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Zwischen Fenstergrößen umschalten
@@ -451,6 +453,12 @@ STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Sandkasten-Opti
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparenzeinstellungen
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Städtenamen anzeigen
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stationsnamen anzeigen
+STR_SETTINGS_MENU_STATION_NAMES_TRAIN                           :Bahnhöfe
+STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :Lkw-Haltestellen
+STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Bushaltestellen
+STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :Häfen
+STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :Flughäfen
+STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :Geist
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Wegpunktnamen anzeigen
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Schilder anzeigen
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Fremde Stationsnamen u. Schilder zeigen
@@ -615,8 +623,14 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmenwe
 
 STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Letzten 24 Minuten
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Letzten 72 Minuten
+STR_GRAPH_LAST_288_MINUTES_TIME_LABEL                           :{TINY_FONT}{BLACK}Letzte 288 Minuten
 
+STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLACK}2 Jahre (monatlich)
+STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 Jahre (vierteljährlich)
+STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 Jahre (jährlich)
 
+STR_GRAPH_TOGGLE_RANGE                                          :Diagramm für diesen Datenbereich umschalten
+STR_GRAPH_SELECT_SCALE                                          :Horizontale Skala des Diagramms ändern
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Frachtbeförderungspreise
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Tage unterwegs
@@ -629,7 +643,15 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Zeige ke
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Diagramm für diesen Frachttyp ein/aus
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} – Frachthistorie
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Produziert
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportiert
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Geliefert
+STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Warten
 
+STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} – Frachthistorie
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Angebot
+STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transportiert
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Zeige detailierte Leistungsaufschlüsselung
 
@@ -930,7 +952,7 @@ STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLAC
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subventionsende:{}{}{STRING}transport von {STRING} nach {STRING} wird nicht mehr subventioniert
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subventionsangebot:{}{}Erster {STRING} von {STRING} nach {STRING} wird {UNITS_YEARS_OR_MINUTES} von den örtlichen Behörden subventioniert!
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvention vergeben an {STRING}!{}{}{STRING} von {STRING} nach {STRING} erhält für {UNITS_YEARS_OR_MINUTES}  einen 50% höheren Preis!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvention vergeben an {STRING}!{}{}{STRING} von {STRING} nach {STRING} erhält für {UNITS_YEARS_OR_MINUTES} einen 50% höheren Preis!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subvention vergeben an {STRING}!{}{}{STRING} von {STRING} nach {STRING} erhält für {UNITS_YEARS_OR_MINUTES} den doppelten Preis!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvention vergeben an {STRING}!{}{}{STRING} von {STRING} nach {STRING} erhält für {UNITS_YEARS_OR_MINUTES} den dreifachen Preis!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvention vergeben an {STRING}!{}{}{STRING} von {STRING} nach {STRING} erhält für {UNITS_YEARS_OR_MINUTES} den vierfachen Preis!
@@ -959,11 +981,14 @@ STR_GAME_OPTIONS_TAB_SOUND                                      :Sound
 STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Sound- und Musikeinstellungen auswählen
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Soziales
 STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Soziale-Medien-Integrationseinstellungen auswählen
+STR_GAME_OPTIONS_TAB_ADVANCED                                   :Erweitert
+STR_GAME_OPTIONS_TAB_ADVANCED_TOOLTIP                           :Erweiterte Einstellungen ändern
 
 STR_GAME_OPTIONS_VOLUME                                         :Lautstärke
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Sound-Effekte
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Musik
 
+STR_GAME_OPTIONS_SETTING                                        :{STRING}: {ORANGE}{STRING}
 
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
@@ -1017,6 +1042,8 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesische Ru
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysische Ringgit
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lettlandischer Lats
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portugiesische Escudo
+STR_GAME_OPTIONS_CURRENCY_UAH                                   :Ukrainische Griwna
+STR_GAME_OPTIONS_CURRENCY_VND                                   :Vietnamesischer Dong
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Autosicherung
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Abstand zwischen den automatischen Spielesicherungen wählen
@@ -1050,6 +1077,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Dieses Kästche
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Aktueller Treiber: {STRING}
 
+STR_GAME_OPTIONS_INTERFACE                                      :Oberfläche
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Oberflächengröße
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Schieberegler ziehen, um die Größe der Benutzeroberfläche zu wählen. Strg+Ziehen für eine stetige Anpassung
@@ -1074,6 +1102,7 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Dies öffnet ei
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Vorschau des Datenerhebungsergebnisses
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Zeige die Datenerhebungsergebnisse des gerade laufenden Spiels an
 
+STR_GAME_OPTIONS_DISPLAY                                        :Anzeige
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :Bildwiederholrate
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Zu verwendende Bildwiederholrate auswählen
@@ -1095,7 +1124,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Zusätzliche In
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Inhalt holen
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Nach neuen und aktualisierten Inhalt zum Herunterladen prüfen
 
-STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(keine Plugins für Soziale Medien installiert!)
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :(keine Plugins für Soziale Medien installiert)
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Bahnsteig:
@@ -1210,7 +1239,7 @@ STR_CITY_APPROVAL_TOLERANT                                      :Mäßig
 STR_CITY_APPROVAL_HOSTILE                                       :Gering
 STR_CITY_APPROVAL_PERMISSIVE                                    :Hoch (kein Effekt auf Firmenaktionen)
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Keine KI gefunden ...{}Verschiedene KI sind via „Erweiterungen herunterladen“ verfügbar
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Keine geeignete KIs verfügbar …{}{}Verschiedene KIs sind via „Online-Inhalt“ verfügbar
 
 # Settings tree in the Game Options window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :Filter:
@@ -1289,6 +1318,9 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Zinssatz für K
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Betriebskosten: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Stellt die Höhe der Unterhalts- und Betriebskosten für Fahrzeuge und Infrastruktur ein
 ###length 3
+STR_CONFIG_SETTING_RUNNING_COSTS_LOW                            :Niedrig
+STR_CONFIG_SETTING_RUNNING_COSTS_MEDIUM                         :Mittel
+STR_CONFIG_SETTING_RUNNING_COSTS_HIGH                           :Hoch
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Baugeschwindigkeit: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Begrenzt der eingestellten Baugeschwindigkeit entsprechend die Anzahl der Bau-Aktionen der KIs
@@ -1311,6 +1343,9 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Keine Subventio
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Baukosten: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Höhe der Bau- und Einkaufskosten festlegen
 ###length 3
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_LOW                       :Niedrig
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_MEDIUM                    :Mittel
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Hoch
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Rezessionen: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Falls aktiv, können Rezessionen von Zeit zu Zeit auftreten. Während einer Rezession ist die Produktion aller Industrien viel niedriger (und kehrt zum Ende der Rezession zur gleichen Höhe zurück wie vor der Rezession)
@@ -1924,7 +1959,8 @@ STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nie
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Wirtschaftstyp: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :„Geglättet“ sorgt für öftere, kleinere Produktionsänderungen. „Statisch“ stoppt Produktionsänderungen und Industrieschließungen. Diese Einstellung hat womöglich keinen Effekt, wenn durch NewGRFs eigene Industrietypen bereitgestellt werden
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :„Geglättet“ sorgt für öftere, kleinere Produktionsänderungen. „Statisch“ stoppt Produktionsänderungen und Industrieschließungen. Diese Einstellung hat womöglich keinen Effekt, wenn durch NewGRFs eigene Industrietypen bereitgestellt werden.{}{}Es kann unter einer statischen Produktion immer noch der Anschein erweckt werden, dass die monatliche Industrieproduktion variiert, weil die Produktion an festgelegten Intervallen ausgelöst wird, was nicht exakt den Monaten entspricht
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT_PERIOD                 :„Geglättet“ sorgt für öftere, kleinere Produktionsänderungen. „Statisch“ stoppt Produktionsänderungen und Industrieschließungen. Diese Einstellung hat womöglich keinen Effekt, wenn durch NewGRFs eigene Industrietypen bereitgestellt werden.{}{}Es kann unter einer statischen Produktion immer noch der Anschein erweckt werden, dass die minütliche Industrieproduktion variiert, weil die Produktion an festgelegten Intervallen ausgelöst wird, was nicht exakt den Minuten entspricht
 
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
@@ -1979,7 +2015,12 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Verboten
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Erlaubt
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Erlaubt, mit wählbarem Straßenbauplan
 
+STR_CONFIG_SETTING_HOUSE_PLACER                                 :Platzierung individueller Stadthäuser: {STRING}
+STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :Wenn diese Einstellung aktiviert wird, können Spieler Stadthäuser manuell platzieren
 ###length 3
+STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :Verboten
+STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :Erlaubt
+STR_CONFIG_SETTING_HOUSE_PLACER_FULLY_CONSTRUCTED               :Erlaubt, voll gebaut
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Güterproduktion in Städten: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Die Gütermenge, die von Häusern einer Stadt relativ zur Gesamtbevölkerung der Stadt produziert wird.{}Quadratisch: eine doppelt so große Stadt generiert viermal so viele Passagiere.{}Linear: eine doppelt so große Stadt generiert doppelt so viele Passagiere
@@ -2008,7 +2049,7 @@ STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maximale Fenste
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Anzahl nicht angehefteter, offener Fenster, bevor alte Fenster automatisch geschlossen werden, um Platz für neue Fenster zu schaffen
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :deaktiviert
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Deaktiviert
 
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximale Hineinzoomstufe: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maximale Vergrößerung für Kartenansichten. Bedenke, dass höhere Vergrößerungsstufen mehr Arbeitsspeicher benötigen
@@ -2060,9 +2101,9 @@ STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Werttransporte 
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Verteilungsschema für sonstige Frachtarten: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :„Asymmetrisch“ heißt, dass Waren in beliebigen Mengen hin- und her geschickt werden können. „Manuell“ heißt, dass keine automatische Verteilung der Waren stattfindet
 ###length 3
-STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuell
-STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetrisch
-STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symmetrisch
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :Manuell
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :Asymmetrisch
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :Symmetrisch
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Genauigkeit für die Berechnung der Warenverteilung: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Je höher dieser Wert ist, desto genauer und rechenintensiver ist die Berechnung der Warenverteilung. Wird ein zu hoher Wert gewählt, kann das Spiel bei der Berechnung „hängen“. Wird ein zu niedriger Wert gewählt, kann es vorkommen, dass Waren nicht dorthin geschickt werden, wo man erwarten würde dass sie hin sollen
@@ -2177,6 +2218,8 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... kein
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}… GPU-Treiber brachte das Spiel zum Absturz. Hardwarebeschleunigung deaktiviert
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Neues Spiel
 STR_INTRO_LOAD_GAME                                             :{BLACK}Spiel laden
@@ -2188,7 +2231,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Mehrspie
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spieleinstellungen
 STR_INTRO_HIGHSCORE                                             :{BLACK}Bestenliste
 STR_INTRO_HELP                                                  :{BLACK}Hilfe u. Anleitungen
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Erweiterungen herunterladen
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Online-Inhalt
 STR_INTRO_QUIT                                                  :{BLACK}Beenden
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Ein neues Spiel beginnen. Strg+Klick überspringt Karteneinstellungen
@@ -2231,6 +2274,7 @@ STR_HELP_WINDOW_README                                          :{BLACK}Liesmich
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Änderungsprotokoll
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Bekannte Fehler
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}Lizenz
+STR_HELP_WINDOW_FONTS                                           :{BLACK}Schriften
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Anleitung / Wiki
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Einen Fehler melden
@@ -2309,16 +2353,19 @@ STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Einfache
 STR_FACE_LOAD                                                   :{BLACK}Laden
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Lade bevorzugtes Gesicht
 STR_FACE_LOAD_DONE                                              :{WHITE}Das bevorzugte Gesicht wurde aus der OpenTTD-Konfigurationsdatei geladen
-STR_FACE_FACECODE                                               :{BLACK}Gesichtsnummer
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Nummer des Managergesichts betrachten und/oder setzen
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Nummer des Gesichts betrachten / festlegen
-STR_FACE_FACECODE_SET                                           :{WHITE}Neue Nummer wurde für das Gesicht registriert
-STR_FACE_FACECODE_ERR                                           :{WHITE}Konnte keine Nummer für das Gesicht setzen, sie muss zwischen 0 und 4.294.967.295 liegen!
+STR_FACE_FACECODE                                               :{BLACK}Spielergesichtscode
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Code des Managergesichts betrachten und/oder setzen
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Code des Gesichts betrachten/festlegen
+STR_FACE_FACECODE_SET                                           :{WHITE}Neues Präsidentengesicht wurde gesetzt
+STR_FACE_FACECODE_ERR                                           :{WHITE}Konnte keinen Code für das Gesicht setzen; muss eine gültige Beschriftung und Nummer sein
 STR_FACE_SAVE                                                   :{BLACK}Speichern
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Speichere bevorzugtes Gesicht
 STR_FACE_SAVE_DONE                                              :{WHITE}Dieses Gesicht wird als bevorzugtes Gesicht in der OpenTTD-Konfigurationsdatei gespeichert
+STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
+STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :Nein
+STR_FACE_STYLE                                                  :Stil:
 STR_FACE_HAIR                                                   :Frisur:
 STR_FACE_EYEBROWS                                               :Augenbrauen:
 STR_FACE_EYECOLOUR                                              :Augenfarbe:
@@ -2598,13 +2645,14 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :Warten auf Neub
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :geht
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} ist dem Spiel beigetreten
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} ist dem Spiel beigetreten (Teilnehmer #{NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} ist {STRING} beigetreten
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ist den Zuschauern beigetreten
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} hat eine neue Firma gegründet (#{NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} hat das Spiel verlassen ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} hat den eigenen Namen zu {STRING} geändert
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} gab {CURRENCY_LONG} an {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Der Server hat das Spiel beendet
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Der Server startet neu...{}Bitte warten...
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Der Server startet neu …{}{}Bitte warten …
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} wurde vom Server hinausgeworfen. Grund: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Serverregistration fehlgeschlagen
@@ -2613,7 +2661,7 @@ STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Dein Ser
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Andere Spieler werden nicht in der Lage sein, sich zu deinem Server zu verbinden
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Herunterladen von Erweiterungen
+STR_CONTENT_TITLE                                               :{WHITE}Online-Inhalt
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Art
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Art der Erweiterung
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Name
@@ -2790,6 +2838,10 @@ STR_PICKER_MODE_USED_TOOLTIP                                    :Anzeige von nur
 STR_PICKER_MODE_SAVED                                           :Gespeichert
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Anzeige von nur gespeicherten Einträgen umschalten
 
+STR_PICKER_PREVIEW_SHRINK                                       :-
+STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Höhe von Vorschaubildern verringern. Strg+Klick, um Minimum zu verringern
+STR_PICKER_PREVIEW_EXPAND                                       :+
+STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Höhe von Vorschaubildern erhöhen. Strg+Klick, um Maximum zu erhöhen
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Wählen Sie eine anzuzeigende Stationsklasse
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Wählen Sie einen Stationstyp zum Bauen. Strg+Klick, um in gespeicherten Einträgen hinzuzufügen oder zu entfernen
@@ -2805,6 +2857,15 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Wählen Sie ein
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Wählen Sie einen Haustyp zum Bauen. Strg+Klick, um in gespeicherten Einträgen hinzuzufügen oder zu entfernen
 
 STR_HOUSE_PICKER_CAPTION                                        :Hausauswahl
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Name: {ORANGE}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Bewohner: {ORANGE}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Jahre: {ORANGE}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Jahre: {ORANGE}Beliebig
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Jahre: {ORANGE}Ab {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Jahre: {ORANGE}Bis {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Größe: {ORANGE}{NUM}×{NUM} Kacheln
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Akzeptierte Fracht: {ORANGE}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Produzierte Fracht: {ORANGE}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Rand
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Peripherie
@@ -2812,6 +2873,10 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Äußere Vorort
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Innere Vororte
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Stadtmitte
 
+STR_HOUSE_PICKER_PROTECT_TITLE                                  :Aufwertungen verhindern
+STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Auswählen, ob dieses Haus vor dem Ersetzen geschützt wird, wenn die Stadt wächst.
+STR_HOUSE_PICKER_PROTECT_OFF                                    :Aus
+STR_HOUSE_PICKER_PROTECT_ON                                     :An
 
 STR_STATION_CLASS_DFLT                                          :Standard
 STR_STATION_CLASS_DFLT_STATION                                  :Standart-Haltestelle
@@ -2844,6 +2909,7 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Straßen
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Brückenauswahl – Auf die gewünschte Brücke klicken, um sie zu bauen
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{STRING},{} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Stahlhängebrücke
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Stahlträgerbrücke
@@ -2902,7 +2968,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Ausricht
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Wasserstraßenbau
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Wasserstraßen
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Kanäle bauen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Kanäle bauen. Strg+Klick+Ziehen, um Gebiet diagonal zu wählen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Schleusen bauen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Werft bauen (für den Kauf und die Wartung von Schiffen benötigt). Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Hafen bauen. Strg+Klick, um eine andere Station zum Verbinden auszuwählen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
@@ -3016,6 +3082,11 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Stadtgr�
 STR_FOUND_TOWN_CITY                                             :{BLACK}Großstadt
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Großstädte wachsen schneller als normale Städte und sind (abhängig von den Einstellungen) bereits bei der Gründung größer
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Stadterweiterung:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Gebäude
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Gebäude von Städten vermehren
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Straßen
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Straßen von Städten vermehren
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Städtischer Straßenbauplan:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Straßenbauplan für diese Stadt auswählen
@@ -3088,6 +3159,8 @@ STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Straßen
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Höchstgeschwindigkeit Schiene: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Höchstgeschwindigkeit Straße: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Höchstgeschwindigkeit Straßenbahn: {LTBLUE}{VELOCITY}
+STR_LAND_AREA_INFORMATION_TOWN_CAN_UPGRADE                      :{BLACK}Stadt kann aufgewertet werden: {LTBLUE}Ja
+STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE                   :{BLACK}Stadt kann aufgewertet werden: {LTBLUE}Nein
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Felsen
@@ -3096,6 +3169,9 @@ STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Kahles Land
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Gras
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Ackerland
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Wüste
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS                           :Schneebedeckte Felsen
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND                      :Schneebedecktes unebenes Land
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS                           :Schneebedecktes Gras
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Schienen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Schienen: Gleise mit Blocksignal
@@ -3564,17 +3640,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Kompati
 STR_NEWGRF_LIST_MISSING                                         :{RED}Fehlende Dateien
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Verhalten des NewGRFs „{STRING}“ wird voraussichtlich zu Synchronisationsfehlern und/oder Absturz des Spiels führen
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Ändert die Antriebseigenschaften für „{1:ENGINE}“ außerhalb von Depots
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Verändert die Fahrzeuglänge von „{1:ENGINE}“ außerhalb eines Depots
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Ändert die Ladekapazität für „{1:ENGINE}“ ohne Umrüst-Auftrag außerhalb von Depots
+STR_NEWGRF_BROKEN                                               :{WHITE}Verhalten des NewGRFs „{PUSH_COLOUR}{0:STRING}{POP_COLOUR}“ wird voraussichtlich zu Synchronisationsfehlern und/oder Absturz des Spiels führen
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Ändert die Antriebseigenschaften für „{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}“ außerhalb von Depots
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Verändert die Fahrzeuglänge von „{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}“ außerhalb eines Depots
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Ändert die Ladekapazität für „{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}“ ohne Umrüst-Auftrag außerhalb von Depots
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Zug „{VEHICLE}“ der Firma „{COMPANY}“ hat eine ungültige Länge. Vermutlich ein NewGRF-Problem. Spiel kann desynchronisieren oder abstürzen
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF „{0:STRING}“ liefert falsche Informationen
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Fracht / Ersetzungsinformationen für „{1:ENGINE}“ weichen von der Einkaufsliste nach dem Kauf ab. Das kann dazu führen, dass das Umrüsten beim autmatisches Ersetzen oder Erneuern nicht korrekt funktioniert
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}„{1:STRING}“ verursachte eine Endlosschleife in Produktions-Rückruffunktion
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF „{PUSH_COLOUR}{0:STRING}{POP_COLOUR}“ liefert falsche Informationen
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Fracht/Ersetzungsinformationen für „{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}“ weichen von der Einkaufsliste nach dem Kauf ab. Das kann dazu führen, dass das Umrüsten beim autmatisches Ersetzen oder Erneuern nicht korrekt funktioniert
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}„{PUSH_COLOUR}{1:STRING}{POP_COLOUR}“ verursachte eine Endlosschleife in der Produktions-Rückruffunktion
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Rückruffunktion {1:HEX} lieferte des unbekannte/ungülte Resultat {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}„{1:STRING}“ lieferte eine ungültige Frachtart in der Produktions-Rückruffunktion {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}„{PUSH_COLOUR}{1:STRING}{POP_COLOUR}“ lieferte eine ungültige Frachtart in der Produktions-Rückruffunktion bei {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<ungültige Frachtart>
@@ -3632,9 +3708,15 @@ STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Hauptans
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Stadtverwaltung
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Öffnet Fenster zur Interaktion mit der Stadtverwaltung
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Stadt umbenennen
+STR_TOWN_VIEW_CARGO_GRAPH                                       :Frachtdiagramm
+STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :Diagramm der Frachthistorie der Stadt anzeigen
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Ausdehnen
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Stadt vergrößern
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Gebäude erweitern
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Gebäude der Stadt vermehren
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Straßen erweitern
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Straßen der Stadt erweitern
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Löschen
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Diese Stadt vollständig löschen
 
@@ -3960,6 +4042,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produkti
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Produktion in der letzten Minute:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% befördert)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Hauptansicht auf den Industriestandort zentrieren. Mit Strg+Klick wird eine neue Zusatzansicht auf den Industriestandort geöffnet
+STR_INDUSTRY_VIEW_CARGO_GRAPH                                   :{BLACK}Frachtdiagramm
+STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}Zeigt das Diagramm der Industriefrachthistorie
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produktionsrate: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Diese Industrie wird in Kürze schließen!
 
@@ -3968,6 +4052,10 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produzie
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Benötigt:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX                    :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} warten{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_NOSUFFIX                         :{YELLOW}{0:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX                  :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} warten
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Produktion ändern (Vielfache von 8, maximal 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Produktionsrate ändern (prozentual, bis zu 800%)
@@ -4367,10 +4455,10 @@ STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Aufträg
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Aufträge des Flugzeugs anzeigen. Strg+Klick öffnet den Fahrplan
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Zeige Einzelheiten des Zuges
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Einzelheiten des Straßenfahrzeuges anzeigen
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Zeige Einzelheiten des Schiffes
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Zeige Einzelheiten des Flugzeuges
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Zeige Einzelheiten des Zuges. Strg+Klick, um Zuggruppe anzuzeigen
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Einzelheiten des Straßenfahrzeuges anzeigen. Strg+Klick, um Fahrzeuggruppe anzuzeigen
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Zeige Einzelheiten des Schiffes. Strg+Klick, um Schiffsgruppe anzuzeigen
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Zeige Einzelheiten des Luftfahrzeugs. Strg+Klick, um Luftfahrzeugsgruppe anzuzeigen
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Momentane Zugaktion – Klicken zum Starten/Anhalten des Zuges
@@ -4625,54 +4713,56 @@ STR_ORDER_ROAD_VEHICLE_DEPOT                                    :{G=n}Straßenfa
 STR_ORDER_SHIP_DEPOT                                            :{G=w}Werft
 ###next-name-looks-similar
 
+STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT                           :{STRING} der nächste Hangar
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {G "der nächste" "die nächste" "das nächste" "die nächsten"} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
-STR_ORDER_REFIT_ORDER                                           :(auf {STRING} umrüsten)
-STR_ORDER_REFIT_STOP_ORDER                                      :(auf {STRING} umrüsten und stoppen)
-STR_ORDER_STOP_ORDER                                            :(Stopp)
+STR_ORDER_REFIT_ORDER                                           :{SPACE}(auf {STRING} umrüsten)
+STR_ORDER_REFIT_STOP_ORDER                                      :{SPACE}(auf {STRING} umrüsten und stoppen)
+STR_ORDER_STOP_ORDER                                            :{SPACE}(Stopp)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(Warte auf Entpulkung)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :{SPACE}(Warte auf Entpulkung)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Station unbenutzbar){POP_COLOUR} {STRING} {STATION}
 
-STR_ORDER_IMPLICIT                                              :(Implizit)
+STR_ORDER_IMPLICIT                                              :{SPACE}(Implizit)
 
-STR_ORDER_FULL_LOAD                                             :(Voll beladen)
-STR_ORDER_FULL_LOAD_ANY                                         :(Mit einer Fracht voll beladen)
-STR_ORDER_NO_LOAD                                               :(Nicht beladen)
-STR_ORDER_UNLOAD                                                :(Entladen und laden)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Entladen und auf volle Ladung warten)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Entladen und voll beladen mit beliebiger Fracht)
-STR_ORDER_UNLOAD_NO_LOAD                                        :(Entladen und leer verlassen)
-STR_ORDER_TRANSFER                                              :(Umladen und laden)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Umladen und auf volle Ladung warten)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Umladen und voll beladen mit beliebiger Fracht)
-STR_ORDER_TRANSFER_NO_LOAD                                      :(Umladen und leer verlassen)
-STR_ORDER_NO_UNLOAD                                             :(Nicht entladen, aber laden)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nicht entladen, aber auf volle Ladung warten)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nicht entladen, aber voll beladen mit beliebiger Fracht)
-STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Weder entladen noch beladen)
+STR_ORDER_FULL_LOAD                                             :{SPACE}(Voll beladen)
+STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Mit einer Fracht voll beladen)
+STR_ORDER_NO_LOAD                                               :{SPACE}(Nicht beladen)
+STR_ORDER_UNLOAD                                                :{SPACE}(Entladen und laden)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Entladen und auf volle Ladung warten)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Entladen und voll beladen mit beliebiger Fracht)
+STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Entladen und leer verlassen)
+STR_ORDER_TRANSFER                                              :{SPACE}(Umladen und laden)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Umladen und auf volle Ladung warten)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Umladen und voll beladen mit beliebiger Fracht)
+STR_ORDER_TRANSFER_NO_LOAD                                      :{SPACE}(Umladen und leer verlassen)
+STR_ORDER_NO_UNLOAD                                             :{SPACE}(Nicht entladen, aber laden)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :{SPACE}(Nicht entladen, aber auf volle Ladung warten)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :{SPACE}(Nicht entladen, aber voll beladen mit beliebiger Fracht)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{SPACE}(Weder entladen noch beladen)
 
-STR_ORDER_AUTO_REFIT                                            :(Umrüstung auf {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Volladen mit Umrüstung auf {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Volladen einer Frachtart und Umrüstung auf {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Entladen und laden mit Umrüstung auf {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Umladen und warten auf volle Zuladung mit Umrüstung auf {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Entladen und warten auf volle Zuladung einer Frachtart mit Umrüstung auf {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Umladen und laden mit Umrüstung auf {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Umladen und warten auf volle Zuladung mit Umrüstung auf {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Umladen und warten auf volle Zuladung einer Frachtart mit Umrüstung auf {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(Nicht entladen und laden mit Umrüstung auf {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Nicht entladen und warten auf volle Zuladung mit Umrüstung auf {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Nicht entladen und warten auf volle Zuladung einer Fracht mit Umrüstung auf {STRING})
+STR_ORDER_AUTO_REFIT                                            :{SPACE}(Umrüstung auf {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Volladen mit Umrüstung auf {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Volladen einer Frachtart und Umrüstung auf {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Entladen und laden mit Umrüstung auf {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Umladen und warten auf volle Zuladung mit Umrüstung auf {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Entladen und warten auf volle Zuladung einer Frachtart mit Umrüstung auf {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :{SPACE}(Umladen und laden mit Umrüstung auf {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :{SPACE}(Umladen und warten auf volle Zuladung mit Umrüstung auf {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :{SPACE}(Umladen und warten auf volle Zuladung einer Frachtart mit Umrüstung auf {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :{SPACE}(Nicht entladen und laden mit Umrüstung auf {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :{SPACE}(Nicht entladen und warten auf volle Zuladung mit Umrüstung auf {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :{SPACE}(Nicht entladen und warten auf volle Zuladung einer Fracht mit Umrüstung auf {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :verfügbare Fracht
 
 ###length 3
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[am Anfang]
-STR_ORDER_STOP_LOCATION_MIDDLE                                  :[in der Mitte]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[am Ende]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :{SPACE}[am Anfang]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :{SPACE}[in der Mitte]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :{SPACE}[am Ende]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (Nächster Auftrag ist außer Reichweite)
 
@@ -4692,15 +4782,17 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Fahrplan
 STR_TIMETABLE_NO_TRAVEL                                         :Nicht unterwegs
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Unterwegs (automatisch; Fahrplan abhängig vom nächsten manuellen Auftrag)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Unterwegs (ohne Fahrplan)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Fahrt (ohne Fahrplan) mit höchstens {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} unterwegs
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Fahrt zu {STRING} mit höchstens {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Fahre ({STRING}, ohne Fahrplan)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Fahre ({STRING}, ohne Fahrplan) mit höchstens {VELOCITY}
-STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(warte {STRING}, ohne Fahrplan)
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(fahre {STRING}, ohne Fahrplan)
-STR_TIMETABLE_STAY_FOR                                          :und {STRING} lang bleiben
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :und {STRING} lang unterwegs
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(warte {STRING}, ohne Fahrplan)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(fahre {STRING}, ohne Fahrplan)
+STR_TIMETABLE_STAY_FOR                                          :{SPACE}und {STRING} lang bleiben
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}und {STRING} lang unterwegs
 
+STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Dieser Fahrplan braucht ungefähr {STRING} zum Abschließen
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Dieser Fahrplan benötigt {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Dieser Fahrplan benötigt mindestens {STRING} (nicht alle geplant)
 
@@ -4717,12 +4809,14 @@ STR_TIMETABLE_START_SECONDS_QUERY                               :Sekunden bis de
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zeit ändern
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zeitrahmen für den markierten Auftrag ändern. Mit Strg+Klick wird die Zeit für alle Aufträge festgelegt
+STR_TIMETABLE_CHANGE_TIME_QUERY                                 :Zeit ändern
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Zeit löschen
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Zeitrahmen für den markierten Auftrag löschen. Mit Strg+Klick wird die Zeit für alle Aufträge gelöscht
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Tempolimit ändern
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Tempolimit beim Ausführen des ausgewählten Auftrags ändern. Strg+Klick legt das Tempo für alle Aufträge fest
+STR_TIMETABLE_CHANGE_SPEED_QUERY                                :Tempolimit ändern
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Tempolimit löschen
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Tempolimit für das Ausführen des ausgewählten Auftrags löschen. Mit Strg+Klick wird das Tempo für alle Aufträge gelöscht
@@ -4825,8 +4919,8 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Reliefka
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Übersichtskartenscreenshot
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :KI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spielskript
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}KI-Parameters
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Spielskriptparameter
 STR_AI_SETTINGS_RESET                                           :{BLACK}Zurücksetzen
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
@@ -4886,7 +4980,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<nicht verfügb
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spiel wurde in einer Version ohne Straßenbahnunterstützung gespeichert. Alle Straßenbahnen wurden entfernt
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Spielfeldgenerierung wurde abgebrochen ...{}... kein geeigneter Platz für eine Stadt gefunden
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Spielfeldgenerierung wurde abgebrochen …{}{}… kein geeigneter Platz für eine Stadt
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... in diesem Szenario gibt es keine Stadt
 
 STR_ERROR_PNGMAP                                                :{WHITE}Landschaft kann nicht aus PNG-Datei geladen werden...
@@ -4915,6 +5009,7 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Screensh
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Nachricht
+STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Nachricht von {COMPANY}
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Zu weit vom Spielfeldrand entfernt
@@ -4924,15 +5019,17 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Ebenes L
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Das Land neigt sich in die falsche Richtung
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Befehl nicht ausführbar ...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Gebäude muss erst abgerissen werden
+STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}… Gebäude ist geschützt
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Gebiet kann nicht geräumt werden ...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... ungeeigneter Standort
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... ist bereits gebaut
-STR_ERROR_OWNED_BY                                              :{WHITE}... Eigentum von {STRING}
+STR_ERROR_OWNED_BY                                              :{WHITE}… Eigentum von {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... das Gebiet gehört einer anderen Firma
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... Obergrenze für Landschaftsbau erreicht
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... Obergrenze für Abrissarbeiten erreicht
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... Obergrenze für Baumpflanzungen erreicht
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Name bereits vergeben
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{STRING} im Weg
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Nicht erlaubt, während das Spiel angehalten ist
 
 # Local authority errors
@@ -4975,7 +5072,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... zu d
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... zu viele Städte
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... es ist kein Platz mehr auf dem Spielfeld
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Straßenarbeiten sind im Gange
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Stadt kann nicht gelöscht werden ...{}Eine Station oder ein Depot bezieht sich auf diese Stadt oder ein Feld im städtischen Besitz kann nicht entfernt werden.
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Stadt kann nicht gelöscht werden …{}{}Eine Station oder ein Depot bezieht sich auf diese Stadt oder ein Feld im städtischen Besitz kann nicht entfernt werden.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... es gibt keinen geeigneten Standort für die Statue im Zentrum dieser Stadt
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Haus kann nicht gebaut werden …
 
@@ -5249,8 +5346,16 @@ STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Schiff k
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Flugzeug kann nicht verkauft werden ...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :{WHITE}Es können nicht alle Schienenfahrzeuge verkauft werden …
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :{WHITE}Es können nicht alle Straßenfahrzeuge verkauft werden …
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Es können nicht alle Schiffe verkauft werden …
+STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}Es können nicht alle Luftfahrzeuge verkauft werden …
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}Schienenfahrzeuge können nicht automatisch ersetzt werden …
+STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}Straßenfahrzeuge können nicht automatisch ersetzt werden …
+STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}Schiffe können nicht automatisch ersetzt werden …
+STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}Luftfahrzeuge können nicht automatisch ersetzt werden …
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Zu viele Fahrzeuge im Spiel
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Das Wartungsintervall kann nicht geändert werden ...
@@ -5770,7 +5875,7 @@ STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STR
 STR_SAVEGAME_NAME_SPECTATOR                                     :Zuschauer, {1:STRING}
 
 # Viewport strings
-STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data
@@ -5794,6 +5899,7 @@ STR_CURRENCY_SHORT_GIGA                                         :{NBSP}Mrd.
 STR_CURRENCY_SHORT_TERA                                         :{NBSP}Bio.
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_LEFT_ARROW                                             :{LEFT_ARROW}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
@@ -5832,3 +5938,12 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
+STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Kennzeichenkonfiguration öffnen
+STR_BADGE_CONFIG_RESET                                          :Zurücksetzen
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Kennzeichensymbole
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Kennzeichenfilter
+STR_BADGE_CONFIG_PREVIEW                                        :Vorschaubild
+STR_BADGE_CONFIG_NAME                                           :Name
+STR_BADGE_FILTER_ANY_LABEL                                      :{G "Beliebiger" "Beliebige" "Beliebiges" "Beliebige"} {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} ist {STRING}

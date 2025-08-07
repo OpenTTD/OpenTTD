@@ -645,7 +645,7 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - 貨物記錄
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :已產出
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :已運送
-STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :已運送
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :已接受
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :庫存
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - 貨物記錄
@@ -1042,6 +1042,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :馬來西亞令
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :拉脫維亞勒斯
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :葡萄牙埃斯庫多
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :烏克蘭赫里夫尼亞
+STR_GAME_OPTIONS_CURRENCY_VND                                   :越南盾
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :自動存檔
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :選擇自動存檔頻率

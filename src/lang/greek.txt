@@ -1135,6 +1135,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ρινγκίτ 
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Λετονικά Λατς
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Πορτογαλικό Εσκούδο
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Ουκρανικά Γρίβνα
+STR_GAME_OPTIONS_CURRENCY_VND                                   :Βιετναμέζικο Dong
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Αυτόματη αποθήκευση
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Επιλογή διαστήματος μεταξύ αυτόματων αποθηκεύσεων

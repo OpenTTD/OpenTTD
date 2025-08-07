@@ -1043,6 +1043,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit da Mal�
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lats da Letônia
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escudo Português
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Hryvnia Ucraniana
+STR_GAME_OPTIONS_CURRENCY_VND                                   :Dong Vietnamita
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Salvar automaticamente
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Escolher o intervalo para salvar o jogo automaticamente
