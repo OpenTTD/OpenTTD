@@ -844,3 +844,9 @@
 // U+E29D: Small left arrow
    -1 * 6   12 01 01 01 9D E2
    -1 sprites/chars.png 8bpp  10  430   5  5   0   1 normal
+
+// U+E29B: Town
+// U+E29C: City
+   -1 * 6   12 01 00 02 9B E2
+   -1 sprites/chars.png 8bpp  20  430  10 10   0   0 normal
+   -1 sprites/chars.png 8bpp  40  430  10 10   0   0 normal
