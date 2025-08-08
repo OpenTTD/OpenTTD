@@ -458,7 +458,7 @@ STR_SETTINGS_MENU_STATION_NAMES_BUS                             :公車站
 STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :碼頭
 STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :機場
 STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :廢置
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :顯示號誌站名稱
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :顯示中途站名稱
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :顯示標誌
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :顯示競爭對手的標誌和車站名稱
 STR_SETTINGS_MENU_FULL_ANIMATION                                :完整動畫
@@ -2744,7 +2744,7 @@ STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}切換�
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}切換樹木是否透明。按住 CTRL 點選可鎖定
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}切換房屋是否透明。按住 CTRL 點選可鎖定
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}切換工業是否透明。按住 CTRL 點選可鎖定
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}切換建築物是否透明，如車站、廠棚、號誌站等。按住 CTRL 點選可鎖定
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}切換建築物是否透明，如車站、廠棚、中途站等。按住 <Ctrl> 點選可鎖定
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}切換橋樑是否透明。按住 CTRL 點選可鎖定
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}切換公用設施是否透明，如燈塔、天線塔等。按住 CTRL 點選可鎖定
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}切換供電線是否透明。按住 CTRL 點選可鎖定
@@ -2784,8 +2784,8 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}維護�
 STR_JOIN_STATION_CAPTION                                        :{WHITE}合併車站
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}建造獨立車站
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}聯合路徑
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}建立個別路徑
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}合併中途站
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}建立個別中途站
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}此設施已被禁用，因為沒有任何此設施可用的載具
@@ -2799,12 +2799,12 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :鋪設磁浮軌
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}鋪設鐵道。按住 <Ctrl> 點選可拆除鐵道。按住 <Shift> 則可顯示預估成本
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}以自動模式鋪設鐵道。按住 <Ctrl> 點選可拆除鐵道。按住 <Shift> 則可顯示預估成本
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}興建鐵道機廠（用來購置及維護列車）。按住 <Shift> 則可顯示預估成本
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}設立鐵道號誌站。按住 <Ctrl> 點選合併號誌站。按住 <Shift> 點選可顯示預估成本
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}設立鐵道中途站。按住 <Ctrl> 點選合併中途站。按住 <Shift> 點選可顯示預估成本
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}興建火車站。按住 <Ctrl> 點選可興建相鄰車站。按住 <Shift> 則可顯示預估成本
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}建造鐵道號誌。建造時按住 <Ctrl> 鍵以對號誌套用不同風格樣式。{}建造時拖曳以在拖曳區間內依照設定的間距均勻建造號誌。按住 <Ctrl> 鍵拖曳以按設定的間距建造號誌至下一個岔路或車站又或號誌。按住 <Shift> 以顯示預計費用
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}興建鐵道橋樑。按住 <Shift> 可顯示預估成本
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}挖掘鐵道隧道。按住 <Shift> 可顯示預估成本
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切換興建或移除鐵道、號誌、號誌站及車站。 按住 <Ctrl> 點選可同時移除號誌站及車站中的軌道
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切換興建或移除鐵道、號誌、中途站以及車站。 按住 <Ctrl> 點選可同時移除中途站及車站中的軌道
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}轉換或升級鐵道類型。按住 <Shift> 點選則可顯示預估成本
 
 STR_RAIL_NAME_RAILROAD                                          :鐵道
@@ -2817,7 +2817,7 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}鐵道�
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}選擇鐵道機廠的方向
 
 # Rail waypoint construction window
-STR_WAYPOINT_CAPTION                                            :{WHITE}號誌站
+STR_WAYPOINT_CAPTION                                            :{WHITE}中途站
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}選擇火車站
@@ -2844,8 +2844,8 @@ STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :放大預覽圖
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :選擇顯示的車站種類
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :選擇建設的車站類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除
-STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :選擇顯示的號誌站種類
-STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :選擇建設的號誌站類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :選擇顯示的中途站種類
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :選擇建設的中途站類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :選擇顯示的公車站種類
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :選擇建設的公車站類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :選擇顯示的貨車場種類
@@ -2880,8 +2880,8 @@ STR_HOUSE_PICKER_PROTECT_ON                                     :開啟
 STR_STATION_CLASS_DFLT                                          :預設
 STR_STATION_CLASS_DFLT_STATION                                  :預設車站
 STR_STATION_CLASS_DFLT_ROADSTOP                                 :預設車站
-STR_STATION_CLASS_WAYP                                          :號誌站
-STR_STATION_CLASS_WAYP_WAYPOINT                                 :預設號誌站
+STR_STATION_CLASS_WAYP                                          :中途站
+STR_STATION_CLASS_WAYP_WAYPOINT                                 :預設中途站
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}號誌選擇
@@ -2929,8 +2929,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}使用�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}使用自動模式鋪設電車路軌。 按住 <Ctrl> 可拆除電車路軌。按住 <Shift> 可顯示預估成本
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}興建車廠 (用來購置及維護車輛)。按住 <Shift> 可顯示預估成本
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}興建電車機廠 (用來購置及維護電車)。按住 <Shift> 則可顯示預估成本
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}設立道路號誌站。 按住 <Ctrl> 點選合併號誌站。按住 <Shift> 點選可顯示成本估算
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}設立電車號誌站。 按住 <Ctrl> 點選合併號誌站。按住 <Shift> 點選可顯示成本估算
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}設立道路中途站。 按住 <Ctrl> 點選合併中途站。按住 <Shift> 點選可顯示成本估算
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}設立電車中途站。 按住 <Ctrl> 點選合併中途站。按住 <Shift> 點選可顯示成本估算
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}興建公車站。按住 <Ctrl> 可興建相鄰車站，按住 <Shift> 可預估興建的費用
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}興建載客電車站。按住 <Ctrl> 可興建相鄰車站，按住 <Shift> 可顯示預估的興建費用
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}興建貨運站。按住 <Ctrl> 點選可興建相鄰車站。按住 <Shift> 則可顯示預估成本
@@ -2971,7 +2971,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}開鑿�
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}興建水閘。按住 <Shift> 可顯示預估的興建費用
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}興建船塢 (用以購買及維護船舶)。按住 <Shift> 則可顯示預估成本
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}興建碼頭。按住 <Ctrl> 可興建相鄰車站，按住 <Shift> 可顯示預估的興建費用
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}放置浮標，可用作號誌站。按住 <Shift> 可顯示預估的放置費用
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}放置浮標，可用作中途站。按住 <Shift> 點選可顯示預估成本
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}興建水道橋。按住 <Shift> 可顯示預估的興建費用
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}修建運河。在海平面上按 <Ctrl> 點選會淹沒週遭土地
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}劃出河流範圍。按住 <Ctrl> 點選以對角線選擇
@@ -3217,7 +3217,7 @@ STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :貨運站
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :公車站
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :船塢
 STR_LAI_STATION_DESCRIPTION_BUOY                                :浮標
-STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :號誌站
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :中途站
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :水
 STR_LAI_WATER_DESCRIPTION_CANAL                                 :運河
@@ -3903,12 +3903,12 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}防止�
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}將號誌站置於畫面正中央。按住 <Ctrl> 點選可於號誌站位置開啟新檢視視窗
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}修改號誌站名稱
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}將中途站置於畫面正中央。按住 <Ctrl> 點選可於中途站位置開啟新檢視視窗
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}修改中途站名稱
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}將浮標置於畫面正中央。按住 <Ctrl> 點選可於浮標位置開啟新檢視視窗
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}修改浮標名稱
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}編輯號誌站名稱
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}編輯中途站名稱
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} 財務狀況 {BLACK}{COMPANY_NUM}
@@ -4616,8 +4616,8 @@ STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - 共享指�
 STR_ORDER_NON_STOP                                              :{BLACK}直達
 STR_ORDER_GO_TO                                                 :前往
 STR_ORDER_GO_NON_STOP_TO                                        :直達
-STR_ORDER_GO_VIA                                                :經由
-STR_ORDER_GO_NON_STOP_VIA                                       :直達且經由
+STR_ORDER_GO_VIA                                                :途經
+STR_ORDER_GO_NON_STOP_VIA                                       :途經直達
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}修改選取指令的停靠行為
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}滿載任一種類客貨
@@ -4695,13 +4695,13 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :前往最近的
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :前往最近的機棚
 STR_ORDER_CONDITIONAL                                           :條件式跳躍指令
 STR_ORDER_SHARE                                                 :共享指令清單
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}在選定的指令前插入新指令，或在指令表的末端新增指令。按住 <Ctrl> 點選車站會新增「滿載任一種類客貨」指令、點選號誌站會新增「直達」指令，而點選機廠則會新增「自動調節班次」指令。點選其他車輛以複製其指令清單，或按住 <Ctrl> 點選以共享指令清單。如指令清單上有任何指令涉及機廠，則該車輛不受自動維護功能影響。
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}在選定的指令前插入新指令，或在指令表的末端新增指令。按住 <Ctrl> 點選車站會新增「滿載任一種類客貨」指令、點選中途站會新增「直達」指令，而點選機廠則會新增「自動調節班次」指令。點選其他車輛以複製其指令清單，或按住 <Ctrl> 點選以共享指令清單。如指令清單上有任何指令涉及機廠，則該車輛不受自動維護功能影響
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}顯示所有共享此指令清單的車輛
 
 # String parts to build the order string
-STR_ORDER_GO_TO_WAYPOINT                                        :經過 {WAYPOINT}
-STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :前往 {WAYPOINT} 不停靠
+STR_ORDER_GO_TO_WAYPOINT                                        :途經 {WAYPOINT}
+STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :途經 {WAYPOINT} 直達
 
 STR_ORDER_SERVICE_AT                                            :前往維護
 STR_ORDER_SERVICE_NON_STOP_AT                                   :直接前往維護
@@ -5144,18 +5144,18 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}必須�
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}必須先摧毀機場
 
 # Waypoint related errors
-STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}太接近多個已存在的號誌站
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}太接近另一個號誌站
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}距離多個中途站過近
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}距離另一個中途站過近
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}無法在此興建鐵道號誌站……
-STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}無法在此興建道路號誌站……
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}無法在此鐵道興建中途站……
+STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}無法在此道路興建中途站……
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}無法在此放置浮標...
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}無法修改號誌站名稱...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}無法修改中途站名稱……
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}無法移除此處的鐵道號誌站……
-STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}無法移除此處的道路號誌站……
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}必須先移除鐵道號誌站
-STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}必須先移除道路號誌站
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}無法移除此鐵道的中途站……
+STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}無法移除此道路的中途站……
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}必須先移除鐵道中途站
+STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}必須先移除道路中途站
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... 被浮標擋住
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}……浮標正被其他公司使用！
 
@@ -5414,8 +5414,8 @@ STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}沒有�
 STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}沒有適合聯結式公路車的停車站.{}聯結式公路車需要通過式的停車站，而非港式的停車站
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}這架飛機不能降落在這個直昇機場
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}這架直昇機不能降落在這個機場
-STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}沒有鐵道號誌站
-STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}沒有道路號誌站
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}沒有鐵道中途站
+STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}沒有道路中途站
 STR_ERROR_NO_BUOY                                               :{WHITE}沒有浮標
 
 # Timetable related errors
@@ -5850,8 +5850,8 @@ STR_FORMAT_BUOY_NAME                                            :{TOWN} 浮標
 STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} 浮標 #{COMMA}
 
 ###length 2
-STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} 號誌站
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} 第 {COMMA} 號誌站
+STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} 中途站
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} 中途站 #{COMMA}
 
 ###length 6
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} 鐵道機廠
