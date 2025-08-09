@@ -12,6 +12,7 @@
 #ifndef NEWGRF_ROADSTATION_H
 #define NEWGRF_ROADSTATION_H
 
+#include "bridge.h"
 #include "newgrf_animation_type.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_badge_type.h"
@@ -70,6 +71,12 @@ enum class RoadStopSpecFlag : uint8_t {
 	DrawModeRegister = 8, ///< Read draw mode from register 0x100.
 };
 using RoadStopSpecFlags = EnumBitSet<RoadStopSpecFlag, uint8_t>;
+
+enum class RoadStopSpecIntlFlag : uint8_t {
+	BridgeHeightsSet,           ///< bridge_height[6] is set.
+	BridgeDisallowedPillarsSet, ///< bridge_disallowed_pillars[6] is set.
+};
+using RoadStopSpecIntlFlags = EnumBitSet<RoadStopSpecIntlFlag, uint8_t>;
 
 enum RoadStopView : uint8_t {
 	RSV_BAY_NE                  = 0, ///< Bay road stop, facing Northeast
@@ -133,16 +140,19 @@ struct RoadStopSpec : NewGRFSpecBase<RoadStopClassID> {
 	RoadStopDrawModes draw_mode = {RoadStopDrawMode::Road, RoadStopDrawMode::Overlay};
 	RoadStopCallbackMasks callback_mask{};
 	RoadStopSpecFlags flags{};
+	RoadStopSpecIntlFlags internal_flags{};
 
 	CargoTypes cargo_triggers = 0; ///< Bitmask of cargo types which cause trigger re-randomizing
 
 	AnimationInfo<StationAnimationTriggers> animation;
 
 	uint8_t bridge_height[6];             ///< Minimum height for a bridge above, 0 for none
-	uint8_t bridge_disallowed_pillars[6]; ///< Disallowed pillar flags for a bridge above
+	BridgePiecePillarFlags bridge_disallowed_pillars[6]; ///< Disallowed pillar flags for a bridge above
 
 	uint8_t build_cost_multiplier = 16;  ///< Build cost multiplier per tile.
 	uint8_t clear_cost_multiplier = 16;  ///< Clear cost multiplier per tile.
+
+	uint8_t height;                      ///< The height of this structure, in heightlevels; max MAX_TILE_HEIGHT.
 
 	std::vector<BadgeID> badges;
 
