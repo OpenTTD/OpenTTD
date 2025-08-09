@@ -268,12 +268,14 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 				break;
 			}
 
-			case 0x1B: // Minimum bridge height (not implemented)
-				buf.ReadWord();
-				buf.ReadWord();
-				buf.ReadWord();
-				buf.ReadWord();
+			case 0x1B: { // Minimum bridge height (old fixed-length property)
+				static constexpr uint TILES = 8;
+				if (statspec->bridgeable_info.size() < TILES) statspec->bridgeable_info.resize(TILES);
+				for (int j = 0; j != TILES; ++j) {
+					statspec->bridgeable_info[j].height = buf.ReadByte();
+				}
 				break;
+			}
 
 			case 0x1C: // Station Name
 				AddStringForMapping(GRFStringID{buf.ReadWord()}, &statspec->name);
@@ -293,6 +295,24 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 			case 0x1F: // Badge list
 				statspec->badges = ReadBadgeList(buf, GSF_STATIONS);
 				break;
+
+			case 0x20: { // Minimum bridge height (extended)
+				uint16_t tiles = buf.ReadExtendedByte();
+				if (statspec->bridgeable_info.size() < tiles) statspec->bridgeable_info.resize(tiles);
+				for (int j = 0; j != tiles; ++j) {
+					statspec->bridgeable_info[j].height = buf.ReadByte();
+				}
+				break;
+			}
+
+			case 0x21: { // Disallowed bridge pillars
+				uint16_t tiles = buf.ReadExtendedByte();
+				if (statspec->bridgeable_info.size() < tiles) statspec->bridgeable_info.resize(tiles);
+				for (int j = 0; j != tiles; ++j) {
+					statspec->bridgeable_info[j].disallowed_pillars = BridgePillarFlags{buf.ReadByte()};
+				}
+				break;
+			}
 
 			default:
 				ret = CIR_UNKNOWN;
