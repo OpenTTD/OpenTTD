@@ -4232,11 +4232,11 @@ STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}يجب �
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}جاور اكثر من نقطه عبور متواجده
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}قريب للغايه من نقطه عبور اخرى
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}تعذر بناء نقطه العبور هنا...
+STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}تعذر بناء نقطه العبور هنا...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}تعذر وضع العوامه هنا...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}تعذر إعاده تسميه نقطه العبور
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}لا يمكن ازالة نقطة عبور القطار من هنا...
+STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}لا يمكن ازالة نقطة عبور القطار من هنا...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}يجب إزالة السكه الحديديه اولاً
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... توجد عوامه فى المسار
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... العوامه مُستخدمه من قِبَل شركه اخرى!
