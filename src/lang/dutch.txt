@@ -648,6 +648,9 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Vervoerd
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Afgeleverd
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Wachtend
 
+STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Vrachtgeschiedenis
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Toevoer
+STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Vervoerd
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Gedetailleerde prestatiescores weergeven
 
@@ -1039,6 +1042,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Maleisische Rin
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Letse lats
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portugese Escudo
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Oekraïense hryvnia
+STR_GAME_OPTIONS_CURRENCY_VND                                   :Vietnamese Dong
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Automatisch opslaan
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Tijdsduur kiezen tussen automatisch opgeslagen spellen
@@ -3703,6 +3707,8 @@ STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centreer
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Gemeente
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Geef informatie over de gemeente weer
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Hiermee hernoem je deze plaats
+STR_TOWN_VIEW_CARGO_GRAPH                                       :Vrachtgrafiek
+STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :Geeft de grafiek weer van de geschiedenis van de vracht van de stad
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Vergroot
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Vergroot stadsgrootte
