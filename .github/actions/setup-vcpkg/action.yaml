@@ -1,0 +1,50 @@
+name: 'Setup vcpkg'
+description: 'Installs vcpkg and initialises binary caching via NuGet'
+inputs:
+  vcpkg-location:
+    description: 'Where to install vcpkg'
+    required: true
+  mono-install-command:
+    description: 'Command to run to install mono'
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install vcpkg
+      shell: bash
+      run: |
+        git clone https://github.com/microsoft/vcpkg "${{ inputs.vcpkg-location }}"
+        cd "${{ inputs.vcpkg-location }}"
+        ./bootstrap-vcpkg.$(if [ "${{ runner.os }}" = "Windows" ]; then echo "bat"; else echo "sh"; fi) -disableMetrics
+
+    - name: Install mono
+      if: inputs.mono-install-command
+      shell: bash
+      run: |
+        ${{ inputs.mono-install-command }}
+        echo "MONO=mono" >> "$GITHUB_ENV"
+
+    - name: Setup NuGet Credentials
+      shell: bash
+      env:
+        FEED_URL: 'https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json'
+      run: |
+        cd "${{ inputs.vcpkg-location }}"
+        ${{ env.MONO }} $(./vcpkg fetch nuget | tail -n 1) \
+          sources add \
+          -source "${{ env.FEED_URL }}" \
+          -storepasswordincleartext \
+          -name "GitHub" \
+          -username "${{ github.repository_owner }}" \
+          -password "${{ github.token }}"
+        ${{ env.MONO }} $(./vcpkg fetch nuget | tail -n 1) \
+          setapikey "${{ github.token }}" \
+          -source "${{ env.FEED_URL }}"
+
+    - name: Setup vcpkg caching
+      uses: actions/github-script@v7
+      with:
+        script: |
+          core.exportVariable('VCPKG_BINARY_SOURCES', 'clear;nuget,GitHub,readwrite')
+
