@@ -196,7 +196,7 @@ public:
 
 	constexpr auto operator <=>(const EnumBitSet &) const noexcept = default;
 
-	static constexpr size_t DecayValueType(const BaseClass::ValueType &value) { return to_underlying(value); }
+	static constexpr size_t DecayValueType(const EnumType &value) { return to_underlying(value); }
 };
 
 #endif /* ENUM_TYPE_HPP */
