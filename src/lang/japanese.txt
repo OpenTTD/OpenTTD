@@ -4789,12 +4789,12 @@ STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}先に�
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}複数の既存中継駅と隣接しています
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}他の中継駅に近すぎます
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}ここには中継駅を建設できません
+STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}ここには中継駅を建設できません
 STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}ここには中継点を建設できません...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}ここにはブイを設置できません
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}中継駅名を変更できません
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}この中継駅を撤去できません
+STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}この中継駅を撤去できません
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}中継駅を先に撤去してください
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}ブイがあります
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}このブイは他社のものです!

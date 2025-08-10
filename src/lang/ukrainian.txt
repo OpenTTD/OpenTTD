@@ -5257,12 +5257,12 @@ STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Споч
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Суміжне більш ніж з однією існуючою точкою маршруту
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Надто близько до іншої точки маршруту
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Тут не можна встановити точку шляху..
+STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}Тут не можна встановити точку шляху..
 STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Неможливо побудувати точку шляху тут...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Неможливо розмістити бакен тут...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Не можна перейменувати точку маршруту...
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Тут не можна прибрати точку шляху..
+STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Тут не можна прибрати точку шляху..
 STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Неможливо прибрати цю точку шляху...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Спочатку приберіть залізничну точку шляху
 STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}Спочатку приберіть дорожню точку шляху
