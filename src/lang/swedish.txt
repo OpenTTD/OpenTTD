@@ -1042,6 +1042,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysisk ringg
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lettiska Lats
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portugisisk escudo
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Ukrainsk hryvnia
+STR_GAME_OPTIONS_CURRENCY_VND                                   :Vietnamesisk dong
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Autospara
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Välj intervall för automatiskt sparande av spelet

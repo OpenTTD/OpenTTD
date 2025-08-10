@@ -1043,6 +1043,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringuite Malaio
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Latse Letão
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escudo Português
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Grívnia Ucraniana
+STR_GAME_OPTIONS_CURRENCY_VND                                   :Dongue Vietnamita
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Guardar automaticamente
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Selecionar o intervalo para guardar o jogo automaticamente
