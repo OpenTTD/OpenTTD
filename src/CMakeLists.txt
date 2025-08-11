@@ -462,6 +462,7 @@ add_files(
     station_gui.cpp
     station_gui.h
     station_kdtree.h
+    station_layout_type.h
     station_map.h
     station_type.h
     statusbar_gui.cpp
