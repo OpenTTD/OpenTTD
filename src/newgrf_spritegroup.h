@@ -21,18 +21,10 @@
 #include "newgrf_storage.h"
 #include "newgrf_commons.h"
 
-/* List of different sprite group types */
-enum SpriteGroupType : uint8_t {
-	SGT_REAL,
-	SGT_DETERMINISTIC,
-	SGT_RANDOMIZED,
-	SGT_CALLBACK,
-	SGT_RESULT,
-	SGT_TILELAYOUT,
-	SGT_INDUSTRY_PRODUCTION,
-};
-
 struct SpriteGroup;
+struct ResultSpriteGroup;
+struct TileLayoutSpriteGroup;
+struct IndustryProductionSpriteGroup;
 struct ResolverObject;
 using CallbackResult = uint16_t;
 
@@ -42,7 +34,7 @@ using CallbackResult = uint16_t;
  * - CallbackResult: Callback result.
  * - SpriteGroup: ResultSpriteGroup, TileLayoutSpriteGroup, IndustryProductionSpriteGroup
  */
-using ResolverResult = std::variant<std::monostate, CallbackResult, const SpriteGroup *>;
+using ResolverResult = std::variant<std::monostate, CallbackResult, const ResultSpriteGroup *, const TileLayoutSpriteGroup *, const IndustryProductionSpriteGroup *>;
 
 /* SPRITE_WIDTH is 24. ECS has roughly 30 sprite groups per real sprite.
  * Adding an 'extra' margin would be assuming 64 sprite groups per real
@@ -54,15 +46,14 @@ extern SpriteGroupPool _spritegroup_pool;
 /* Common wrapper for all the different sprite group types */
 struct SpriteGroup : SpriteGroupPool::PoolItem<&_spritegroup_pool> {
 protected:
-	SpriteGroup(SpriteGroupType type) : type(type) {}
+	SpriteGroup() {} // Not `= default` as that resets PoolItem->index.
 	/** Base sprite group resolver */
-	virtual ResolverResult Resolve([[maybe_unused]] ResolverObject &object) const { return this; };
+	virtual ResolverResult Resolve(ResolverObject &object) const = 0;
 
 public:
 	virtual ~SpriteGroup() = default;
 
 	uint32_t nfo_line = 0;
-	SpriteGroupType type{};
 
 	static ResolverResult Resolve(const SpriteGroup *group, ResolverObject &object, bool top_level = true);
 };
@@ -71,7 +62,7 @@ public:
 /* 'Real' sprite groups contain a list of other result or callback sprite
  * groups. */
 struct RealSpriteGroup : SpriteGroup {
-	RealSpriteGroup() : SpriteGroup(SGT_REAL) {}
+	RealSpriteGroup() : SpriteGroup() {}
 
 	/* Loaded = in motion, loading = not moving
 	 * Each group contains several spritesets, for various loading stages */
@@ -166,7 +157,7 @@ struct DeterministicSpriteGroupRange {
 
 
 struct DeterministicSpriteGroup : SpriteGroup {
-	DeterministicSpriteGroup() : SpriteGroup(SGT_DETERMINISTIC) {}
+	DeterministicSpriteGroup() : SpriteGroup() {}
 
 	VarSpriteGroupScope var_scope{};
 	DeterministicSpriteGroupSize size{};
@@ -188,7 +179,7 @@ enum RandomizedSpriteGroupCompareMode : uint8_t {
 };
 
 struct RandomizedSpriteGroup : SpriteGroup {
-	RandomizedSpriteGroup() : SpriteGroup(SGT_RANDOMIZED) {}
+	RandomizedSpriteGroup() : SpriteGroup() {}
 
 	VarSpriteGroupScope var_scope{};  ///< Take this object:
 
@@ -212,7 +203,7 @@ struct CallbackResultSpriteGroup : SpriteGroup {
 	 * Creates a spritegroup representing a callback result
 	 * @param value The value that was used to represent this callback result
 	 */
-	explicit CallbackResultSpriteGroup(CallbackResult value) : SpriteGroup(SGT_CALLBACK), result(value) {}
+	explicit CallbackResultSpriteGroup(CallbackResult value) : SpriteGroup(), result(value) {}
 
 	CallbackResult result = 0;
 
@@ -224,43 +215,37 @@ protected:
 /* A result sprite group returns the first SpriteID and the number of
  * sprites in the set */
 struct ResultSpriteGroup : SpriteGroup {
-	static constexpr SpriteGroupType TYPE = SGT_RESULT;
-
 	/**
 	 * Creates a spritegroup representing a sprite number result.
 	 * @param sprite The sprite number.
 	 * @param num_sprites The number of sprites per set.
 	 * @return A spritegroup representing the sprite number result.
 	 */
-	ResultSpriteGroup(SpriteID sprite, uint8_t num_sprites) :
-		SpriteGroup(TYPE),
-		num_sprites(num_sprites),
-		sprite(sprite)
-	{
-	}
+	ResultSpriteGroup(SpriteID sprite, uint8_t num_sprites) : SpriteGroup(), num_sprites(num_sprites), sprite(sprite) {}
 
 	uint8_t num_sprites = 0;
 	SpriteID sprite = 0;
+
+protected:
+	ResolverResult Resolve(ResolverObject &) const override { return this; }
 };
 
 /**
  * Action 2 sprite layout for houses, industry tiles, objects and airport tiles.
  */
 struct TileLayoutSpriteGroup : SpriteGroup {
-	static constexpr SpriteGroupType TYPE = SGT_TILELAYOUT;
-
-	TileLayoutSpriteGroup() : SpriteGroup(TYPE) {}
-	~TileLayoutSpriteGroup() {}
+	TileLayoutSpriteGroup() : SpriteGroup() {}
 
 	NewGRFSpriteLayout dts{};
 
 	SpriteLayoutProcessor ProcessRegisters(const ResolverObject &object, uint8_t *stage) const;
+
+protected:
+	ResolverResult Resolve(ResolverObject &) const override { return this; }
 };
 
 struct IndustryProductionSpriteGroup : SpriteGroup {
-	static constexpr SpriteGroupType TYPE = SGT_INDUSTRY_PRODUCTION;
-
-	IndustryProductionSpriteGroup() : SpriteGroup(TYPE) {}
+	IndustryProductionSpriteGroup() : SpriteGroup() {}
 
 	uint8_t version = 0; ///< Production callback version used, or 0xFF if marked invalid
 	uint8_t num_input = 0; ///< How many subtract_input values are valid
@@ -271,6 +256,8 @@ struct IndustryProductionSpriteGroup : SpriteGroup {
 	std::array<CargoType, INDUSTRY_NUM_OUTPUTS> cargo_output{}; ///< Which output cargoes to add to (only cb version 2)
 	uint8_t again = 0;
 
+protected:
+	ResolverResult Resolve(ResolverObject &) const override { return this; }
 };
 
 /**
@@ -374,9 +361,9 @@ public:
 	inline const TSpriteGroup *Resolve()
 	{
 		auto result = this->DoResolve();
-		const auto *group = std::get_if<const SpriteGroup *>(&result);
-		if (group == nullptr || *group == nullptr || (*group)->type != TSpriteGroup::TYPE) return nullptr;
-		return static_cast<const TSpriteGroup *>(*group);
+		const auto *group = std::get_if<const TSpriteGroup *>(&result);
+		if (group == nullptr) return nullptr;
+		return *group;
 	}
 
 	/**

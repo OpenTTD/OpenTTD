@@ -74,11 +74,17 @@ void NewGRFProfiler::EndResolve(const ResolverResult &result)
 		{
 			return cb_result;
 		}
-		uint32_t operator()(const SpriteGroup *group)
+		uint32_t operator()(const ResultSpriteGroup *group)
 		{
-			if (group == nullptr) return 0;
-			if (group->type != SGT_RESULT) return group->nfo_line;
-			return GetSpriteLocalID(static_cast<const ResultSpriteGroup *>(group)->sprite);
+			return group == nullptr ? 0 : GetSpriteLocalID(group->sprite);
+		}
+		uint32_t operator()(const TileLayoutSpriteGroup *group)
+		{
+			return group == nullptr ? 0 : group->nfo_line;
+		}
+		uint32_t operator()(const IndustryProductionSpriteGroup *group)
+		{
+			return group == nullptr ? 0 : group->nfo_line;
 		}
 	};
 	this->cur_call.result = std::visit(visitor{}, result);
