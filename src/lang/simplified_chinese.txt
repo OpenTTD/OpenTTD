@@ -1042,6 +1042,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :马来西亚林
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :拉脱维亚拉特
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :葡萄牙埃斯库多
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :乌克兰格里夫纳
+STR_GAME_OPTIONS_CURRENCY_VND                                   :越南盾
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :自动保存
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :选择自动保存周期
