@@ -17,8 +17,8 @@
 
 /** Yapf Node for ships */
 template <class Tkey_>
-struct CYapfShipNodeT : CYapfNodeT<Tkey_, CYapfShipNodeT<Tkey_> > {
-	typedef CYapfNodeT<Tkey_, CYapfShipNodeT<Tkey_> > base;
+struct CYapfShipNodeT : CYapfNodeT<Tkey_, CYapfShipNodeT<Tkey_>> {
+	typedef CYapfNodeT<Tkey_, CYapfShipNodeT<Tkey_>> base;
 
 	TileIndex segment_last_tile;
 	Trackdir segment_last_td;

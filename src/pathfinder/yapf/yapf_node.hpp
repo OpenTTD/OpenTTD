@@ -44,8 +44,7 @@ struct CYapfNodeKeyExitDir {
 	}
 };
 
-struct CYapfNodeKeyTrackDir : public CYapfNodeKeyExitDir
-{
+struct CYapfNodeKeyTrackDir : public CYapfNodeKeyExitDir {
 	inline int CalcHash() const
 	{
 		return this->td | (this->tile.base() << 4);

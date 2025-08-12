@@ -60,8 +60,7 @@ class WaterRegionData {
  * only to tiles within the square section, there is no knowledge about the rest of the map. This makes it easy to invalidate
  * and update a water region if any changes are made to it, such as construction or terraforming.
  */
-class WaterRegion
-{
+class WaterRegion {
 private:
 	WaterRegionData &data;
 	const OrthogonalTileArea tile_area;
