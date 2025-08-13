@@ -637,8 +637,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}将 10 单位（或 10,000 升）货物运输 20 个方格
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}所有
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}无
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}在货物运输价格表中显示所有货物
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}在货物运费表中隐藏所有货物
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}在图表中显示所有货物
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}在图表中隐藏所有货物
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}切换显示货物
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 

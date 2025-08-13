@@ -1016,8 +1016,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Dochód z przewozu 10 jednostek (lub 10,000 litrów) ładunku na odległość 20 pól
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Wszystkie
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Żaden
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Wyświetl wszystkie ładunki na wykresie stawek za ładunek
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ukryj wszystkie ładunki na wykresie stawek za ładunek
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Wyświetl wszystkie ładunki na wykresie
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ukryj wszystkie ładunki na wykresie
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Przełącz ukrywanie/wyświetlanie wykresu ładunku danego typu
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 

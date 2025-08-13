@@ -638,8 +638,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pagamento por entregar 10 unidades (ou 10 mil litros) de carga numa distância de 20 quadrados
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Ativar tudo
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Desativar tudo
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Mostrar todas as cargas no gráfico de tarifas por carga
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Não mostrar cargas no gráfico de tarifas por carga
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Mostrar todas as cargas no gráfico
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Não mostrar cargas no gráfico
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Mostrar/Ocultar gráfico para este tipo de carga
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 

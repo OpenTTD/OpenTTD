@@ -637,8 +637,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Payment for delivering 10 units (or 10,000 liters) of cargo a distance of 20 squares
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}All
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}None
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Display all cargos on the cargo payment rates graph
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Display no cargos on the cargo payment rates graph
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Display all cargos on the graph
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Display no cargos on the graph
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Toggle graph of this cargo type
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -2098,7 +2098,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Symmetric" mea
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Distribution mode for the ARMORED cargo class: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :The ARMORED cargo class contains valuables in the temperate, diamonds in the subtropical, or gold in the subarctic climate. NewGRFs may change that. "Symmetric" means that roughly the same amount of that cargo will be sent from a station A to a station B as from B to A. "Asymmetric" means that arbitrary amounts of that cargo can be sent in either direction. "Manual" means that no automatic distribution will take place for that cargo. It is recommended to set this to asymmetric or manual when playing subarctic or subtropic, as banks only receive cargo in these climates. For temperate you can also choose symmetric as banks will send valuables back to the origin bank
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distribution mode for other cargo classes: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asymmetric" means that arbitrary amounts of cargo can be sent in either direction. "Manual" means that no automatic distribution will take place for those cargoes
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asymmetric" means that arbitrary amounts of cargo can be sent in either direction. "Manual" means that no automatic distribution will take place for those cargos
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :Manual
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :Asymmetric
@@ -5414,7 +5414,7 @@ STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}There ar
 STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}There are no stops which are suitable for articulated road vehicles.{}Articulated road vehicles require a drive-through stop, not a bay stop
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}This plane cannot land at this heliport
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}This helicopter cannot land at this airport
-STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}There is no railroad waypoint
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}There is no rail waypoint
 STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}There is no road waypoint
 STR_ERROR_NO_BUOY                                               :{WHITE}There is no buoy
 

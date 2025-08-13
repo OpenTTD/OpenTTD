@@ -637,8 +637,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}將 10 單位 (或 10,000 公升) 貨物運送 20 格的費用
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}全部
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}無
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}於貨物運費表顯示所有類型的貨物
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}於貨物運費表隱藏所有類型的貨物
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}在圖表中顯示所有貨物
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}在圖表中隱藏所有貨物
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}切換顯示貨物
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
