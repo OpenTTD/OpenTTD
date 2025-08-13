@@ -115,7 +115,7 @@ static constexpr NWidgetPart _nested_generate_landscape_widgets[] = {
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_VARIETY_PULLDOWN), SetToolTip(STR_CONFIG_SETTING_VARIETY_HELPTEXT), SetFill(1, 1),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_SMOOTHNESS_PULLDOWN), SetToolTip(STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT), SetFill(1, 1),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_RIVER_PULLDOWN), SetToolTip(STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT), SetFill(1, 1),
-						NWidget(WWT_TEXTBTN, COLOUR_ORANGE, WID_GL_BORDERS_RANDOM), SetToolTip(STR_MAPGEN_BORDER_TYPE_TOOLTIP), SetFill(1, 1),
+						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_BORDERS_PULLDOWN), SetToolTip(STR_MAPGEN_BORDER_TYPE_TOOLTIP), SetFill(1, 1),
 					EndContainer(),
 				EndContainer(),
 
@@ -379,6 +379,7 @@ static DropDownList BuildTownNameDropDown()
 static const StringID _elevations[]  = {STR_TERRAIN_TYPE_VERY_FLAT, STR_TERRAIN_TYPE_FLAT, STR_TERRAIN_TYPE_HILLY, STR_TERRAIN_TYPE_MOUNTAINOUS, STR_TERRAIN_TYPE_ALPINIST, STR_TERRAIN_TYPE_CUSTOM};
 static const StringID _sea_lakes[]   = {STR_SEA_LEVEL_VERY_LOW, STR_SEA_LEVEL_LOW, STR_SEA_LEVEL_MEDIUM, STR_SEA_LEVEL_HIGH, STR_SEA_LEVEL_CUSTOM};
 static const StringID _rivers[]      = {STR_RIVERS_NONE, STR_RIVERS_FEW, STR_RIVERS_MODERATE, STR_RIVERS_LOT};
+static const StringID _borders[]     = {STR_MAPGEN_BORDER_RANDOMIZE, STR_MAPGEN_BORDER_MANUAL, STR_MAPGEN_BORDER_INFINITE_WATER};
 static const StringID _smoothness[]  = {STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH, STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH, STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH, STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH};
 static const StringID _rotation[]    = {STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE, STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE};
 static const StringID _num_towns[]   = {STR_NUM_VERY_LOW, STR_NUM_LOW, STR_NUM_NORMAL, STR_NUM_HIGH, STR_NUM_CUSTOM};
@@ -471,7 +472,7 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_RIVER_PULLDOWN:      return GetString(_rivers[_settings_newgame.game_creation.amount_of_rivers]);
 			case WID_GL_SMOOTHNESS_PULLDOWN: return GetString(_smoothness[_settings_newgame.game_creation.tgen_smoothness]);
 			case WID_GL_VARIETY_PULLDOWN:    return GetString(_variety[_settings_newgame.game_creation.variety]);
-			case WID_GL_BORDERS_RANDOM:      return GetString((_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? STR_MAPGEN_BORDER_RANDOMIZE : STR_MAPGEN_BORDER_MANUAL);
+			case WID_GL_BORDERS_PULLDOWN: return GetString(_borders[_settings_newgame.game_creation.water_border_presets]);
 			case WID_GL_WATER_NE: return GetString((_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? STR_MAPGEN_BORDER_RANDOM : _settings_newgame.game_creation.water_borders.Test(BorderFlag::NorthEast) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM);
 			case WID_GL_WATER_NW: return GetString((_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? STR_MAPGEN_BORDER_RANDOM : _settings_newgame.game_creation.water_borders.Test(BorderFlag::NorthWest) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM);
 			case WID_GL_WATER_SE: return GetString((_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? STR_MAPGEN_BORDER_RANDOM : _settings_newgame.game_creation.water_borders.Test(BorderFlag::SouthEast) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM);
@@ -507,11 +508,9 @@ struct GenerateLandscapeWindow : public Window {
 		if (mode == GLWM_GENERATE) {
 			this->SetWidgetDisabledState(WID_GL_SMOOTHNESS_PULLDOWN, _settings_newgame.game_creation.land_generator == LG_ORIGINAL);
 			this->SetWidgetDisabledState(WID_GL_VARIETY_PULLDOWN, _settings_newgame.game_creation.land_generator == LG_ORIGINAL);
-			this->SetWidgetDisabledState(WID_GL_BORDERS_RANDOM, _settings_newgame.game_creation.land_generator == LG_ORIGINAL || !_settings_newgame.construction.freeform_edges);
+			this->SetWidgetDisabledState(WID_GL_BORDERS_PULLDOWN, _settings_newgame.game_creation.land_generator == LG_ORIGINAL);
 			this->SetWidgetsDisabledState(_settings_newgame.game_creation.land_generator == LG_ORIGINAL || !_settings_newgame.construction.freeform_edges || _settings_newgame.game_creation.water_borders == BorderFlag::Random,
 					WID_GL_WATER_NW, WID_GL_WATER_NE, WID_GL_WATER_SE, WID_GL_WATER_SW);
-
-			this->SetWidgetLoweredState(WID_GL_BORDERS_RANDOM, _settings_newgame.game_creation.water_borders == BorderFlag::Random);
 
 			this->SetWidgetLoweredState(WID_GL_WATER_NW, _settings_newgame.game_creation.water_borders.Test(BorderFlag::NorthWest));
 			this->SetWidgetLoweredState(WID_GL_WATER_NE, _settings_newgame.game_creation.water_borders.Test(BorderFlag::NorthEast));
@@ -622,10 +621,7 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_SMOOTHNESS_PULLDOWN: strs = _smoothness; break;
 			case WID_GL_VARIETY_PULLDOWN:    strs = _variety; break;
 			case WID_GL_HEIGHTMAP_ROTATION_PULLDOWN: strs = _rotation; break;
-			case WID_GL_BORDERS_RANDOM:
-				d = maxdim(GetStringBoundingBox(STR_MAPGEN_BORDER_RANDOMIZE), GetStringBoundingBox(STR_MAPGEN_BORDER_MANUAL));
-				break;
-
+			case WID_GL_BORDERS_PULLDOWN:    strs = _borders; break;
 			case WID_GL_WATER_NE:
 			case WID_GL_WATER_NW:
 			case WID_GL_WATER_SE:
@@ -807,7 +803,11 @@ struct GenerateLandscapeWindow : public Window {
 				ShowDropDownMenu(this, _variety, _settings_newgame.game_creation.variety, WID_GL_VARIETY_PULLDOWN, 0, 0);
 				break;
 
-			/* Freetype map borders */
+			/* Map borders */
+			case WID_GL_BORDERS_PULLDOWN:
+				ShowDropDownMenu(this, _borders, _settings_newgame.game_creation.water_border_presets, WID_GL_BORDERS_PULLDOWN, 0, 0);
+				break;
+
 			case WID_GL_WATER_NW:
 				_settings_newgame.game_creation.water_borders.Flip(BorderFlag::NorthWest);
 				SndClickBeep();
@@ -828,16 +828,6 @@ struct GenerateLandscapeWindow : public Window {
 
 			case WID_GL_WATER_SW:
 				_settings_newgame.game_creation.water_borders.Flip(BorderFlag::SouthWest);
-				SndClickBeep();
-				this->InvalidateData();
-				break;
-
-			case WID_GL_BORDERS_RANDOM:
-				if (_settings_newgame.game_creation.water_borders == BorderFlag::Random) {
-					_settings_newgame.game_creation.water_borders.Reset();
-				} else {
-					_settings_newgame.game_creation.water_borders = BorderFlag::Random;
-				}
 				SndClickBeep();
 				this->InvalidateData();
 				break;
@@ -905,6 +895,25 @@ struct GenerateLandscapeWindow : public Window {
 					ShowQueryString(GetString(STR_JUST_INT, _settings_newgame.game_creation.custom_terrain_type), STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT, 4, this, CS_NUMERAL, {});
 				}
 				_settings_newgame.difficulty.terrain_type = index;
+				break;
+			}
+
+			case WID_GL_BORDERS_PULLDOWN: {
+				switch (index) {
+					case BFP_RANDOM:
+						_settings_newgame.game_creation.water_borders = BorderFlag::Random;
+						_settings_newgame.construction.freeform_edges = true;
+						break;
+					case BFP_MANUAL:
+						_settings_newgame.game_creation.water_borders = {};
+						_settings_newgame.construction.freeform_edges = true;
+						break;
+					case BFP_INFINITE_WATER:
+						_settings_newgame.game_creation.water_borders = BORDERFLAGS_ALL;
+						_settings_newgame.construction.freeform_edges = false;
+						break;
+				}
+				_settings_newgame.game_creation.water_border_presets = static_cast<BorderFlagPresets>(index);
 				break;
 			}
 
