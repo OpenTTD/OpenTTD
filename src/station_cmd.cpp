@@ -1125,7 +1125,7 @@ StationGfx RailStationTileLayout::Iterator::operator*() const
 	}
 
 	/* None of the above so must be north or south part of larger station. */
-	return ((this->position / this->stl.length) & (this->stl.platforms % 2)) ? 4 : 6;
+	return (((this->position / this->stl.length) % 2) == (this->stl.platforms % 2)) ? 4 : 6;
 }
 
 /**
