@@ -68,6 +68,7 @@
 #include "timer/timer_game_tick.h"
 #include "cheat_type.h"
 #include "road_func.h"
+#include "station_layout_type.h"
 
 #include "widgets/station_widget.h"
 
@@ -1094,54 +1095,37 @@ CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta)
 	return CommandCost();
 }
 
-static inline uint8_t *CreateSingle(uint8_t *layout, int n)
+RailStationTileLayout::RailStationTileLayout(const StationSpec *spec, uint8_t platforms, uint8_t length) : platforms(platforms), length(length)
 {
-	int i = n;
-	do *layout++ = 0; while (--i);
-	layout[((n - 1) >> 1) - n] = 2;
-	return layout;
+	if (spec == nullptr) return;
+
+	/* Look for a predefined layout for the required size. */
+	auto found = spec->layouts.find(GetStationLayoutKey(platforms, length));
+	if (found != std::end(spec->layouts)) this->layout = found->second;
 }
 
-static inline uint8_t *CreateMulti(uint8_t *layout, int n, uint8_t b)
+StationGfx RailStationTileLayout::Iterator::operator*() const
 {
-	int i = n;
-	do *layout++ = b; while (--i);
-	if (n > 4) {
-		layout[0 - n] = 0;
-		layout[n - 1 - n] = 0;
-	}
-	return layout;
-}
+	/* Use predefined layout if it exists. Mask bit zero which will indicate axis. */
+	if (!stl.layout.empty()) return this->stl.layout[this->position] & ~1;
 
-/**
- * Create the station layout for the given number of tracks and platform length.
- * @param layout    The layout to write to.
- * @param numtracks The number of tracks to write.
- * @param plat_len  The length of the platforms.
- * @param statspec  The specification of the station to (possibly) get the layout from.
- */
-void GetStationLayout(uint8_t *layout, uint numtracks, uint plat_len, const StationSpec *statspec)
-{
-	if (statspec != nullptr) {
-		auto found = statspec->layouts.find(GetStationLayoutKey(numtracks, plat_len));
-		if (found != std::end(statspec->layouts)) {
-			/* Custom layout defined, copy to buffer. */
-			std::copy(std::begin(found->second), std::end(found->second), layout);
-			return;
-		}
+	if (this->stl.length == 1) {
+		/* Special case for 1-long platforms, all bare platforms except one small building. */
+		return this->position == ((this->stl.platforms - 1) / 2) ? 2 : 0;
 	}
 
-	if (plat_len == 1) {
-		CreateSingle(layout, numtracks);
-	} else {
-		if (numtracks & 1) layout = CreateSingle(layout, plat_len);
-		int n = numtracks >> 1;
-
-		while (--n >= 0) {
-			layout = CreateMulti(layout, plat_len, 4);
-			layout = CreateMulti(layout, plat_len, 6);
-		}
+	if ((this->position < this->stl.length && (this->stl.platforms % 2 == 1))) {
+		/* Number of tracks is odd, make the first platform bare with a small building. */
+		return this->position == ((this->stl.length - 1) / 2) ? 2 : 0;
 	}
+
+	if (this->stl.length > 4 && ((this->position % this->stl.length) == 0 || (this->position % this->stl.length) == this->stl.length - 1)) {
+		/* Station is longer than 4 tiles, place bare platforms at either end. */
+		return 0;
+	}
+
+	/* None of the above so must be north or south part of larger station. */
+	return ((this->position / this->stl.length) & (this->stl.platforms % 2)) ? 4 : 6;
 }
 
 /**
@@ -1427,19 +1411,17 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 		TileIndexDiff track_delta = TileOffsByAxis(OtherAxis(axis)); // offset to go to the next track
 		Track track = AxisToTrack(axis);
 
-		std::vector<uint8_t> layouts(numtracks * plat_len);
-		GetStationLayout(layouts.data(), numtracks, plat_len, statspec);
+		RailStationTileLayout stl{statspec, numtracks, plat_len};
+		auto it = stl.begin();
 
 		uint8_t numtracks_orig = numtracks;
 
 		Company *c = Company::Get(st->owner);
-		size_t layout_idx = 0;
 		TileIndex tile_track = tile_org;
 		do {
 			TileIndex tile = tile_track;
 			int w = plat_len;
 			do {
-				uint8_t layout = layouts[layout_idx++];
 				if (IsRailStationTile(tile) && HasStationReservation(tile)) {
 					/* Check for trains having a reservation for this tile. */
 					Train *v = GetTrainForReservation(tile, AxisToTrack(GetRailStationAxis(tile)));
@@ -1458,7 +1440,8 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 				/* Remove animation if overbuilding */
 				DeleteAnimatedTile(tile);
 				uint8_t old_specindex = HasStationTileRail(tile) ? GetCustomStationSpecIndex(tile) : 0;
-				MakeRailStation(tile, st->owner, st->index, axis, layout & ~1, rt);
+
+				MakeRailStation(tile, st->owner, st->index, axis, *it++, rt);
 				/* Free the spec if we overbuild something */
 				DeallocateSpecFromStation(st, old_specindex);
 

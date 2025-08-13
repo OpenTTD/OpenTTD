@@ -31,6 +31,7 @@
 #include "company_gui.h"
 #include "waypoint_cmd.h"
 #include "landscape_cmd.h"
+#include "station_layout_type.h"
 
 #include "table/strings.h"
 
@@ -179,7 +180,6 @@ static CommandCost IsValidTileForWaypoint(TileIndex tile, Axis axis, StationID *
 	return CommandCost();
 }
 
-extern void GetStationLayout(uint8_t *layout, uint numtracks, uint plat_len, const StationSpec *statspec);
 extern CommandCost FindJoiningWaypoint(StationID existing_station, StationID station_to_join, bool adjacent, TileArea ta, Waypoint **wp, bool is_road);
 extern CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta);
 extern CommandCost CalculateRoadStopCost(TileArea tile_area, DoCommandFlags flags, bool is_drive_through, StationType station_type, Axis axis, DiagDirection ddir, StationID *est, RoadType rt, Money unit_cost);
@@ -286,12 +286,10 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 		wp->UpdateVirtCoord();
 
 		const StationSpec *spec = StationClass::Get(spec_class)->GetSpec(spec_index);
-		std::vector<uint8_t> layout(count);
-		if (spec != nullptr) {
-			/* For NewGRF waypoints we like to have their style. */
-			GetStationLayout(layout.data(), count, 1, spec);
-		}
 		uint8_t map_spec_index = AllocateSpecToStation(spec, wp, true);
+
+		RailStationTileLayout stl{spec, count, 1};
+		auto it = stl.begin();
 
 		Company *c = Company::Get(wp->owner);
 		for (int i = 0; i < count; i++) {
@@ -301,7 +299,7 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 			bool reserved = IsTileType(tile, MP_RAILWAY) ?
 					HasBit(GetRailReservationTrackBits(tile), AxisToTrack(axis)) :
 					HasStationReservation(tile);
-			MakeRailWaypoint(tile, wp->owner, wp->index, axis, layout[i], GetRailType(tile));
+			MakeRailWaypoint(tile, wp->owner, wp->index, axis, *it++, GetRailType(tile));
 			SetCustomStationSpecIndex(tile, map_spec_index);
 
 			SetRailStationTileFlags(tile, spec);
