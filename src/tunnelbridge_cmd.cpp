@@ -280,7 +280,6 @@ static CommandCost CheckBuildAbove(TileIndex tile, DoCommandFlags flags, Axis ax
 	if (_tile_type_procs[GetTileType(tile)]->check_build_above_proc != nullptr) {
 		return _tile_type_procs[GetTileType(tile)]->check_build_above_proc(tile, flags, axis, height);
 	}
-
 	/* A tile without a handler must be cleared. */
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }
@@ -441,6 +440,14 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 		/* If bridge belonged to bankrupt company, it has a new owner now */
 		is_new_owner = (owner == OWNER_NONE);
 		if (is_new_owner) owner = company;
+
+		/* Check if the new bridge is compatible with tiles underneath. */
+		TileIndexDiff delta = (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
+		for (TileIndex tile = tile_start + delta; tile != tile_end; tile += delta) {
+			CommandCost ret = CheckBuildAbove(tile, flags, direction, z_start + 1);
+			if (ret.Failed()) return ret;
+			cost.AddCost(ret.GetCost());
+		}
 	} else {
 		/* Build a new bridge. */
 
@@ -491,7 +498,7 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 				return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 			}
 
-			ret = CheckBuildAbove(tile, flags, direction, z_start);
+			ret = CheckBuildAbove(tile, flags, direction, z_start + 1);
 			if (ret.Failed()) return ret;
 			cost.AddCost(ret.GetCost());
 
