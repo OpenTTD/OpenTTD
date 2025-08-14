@@ -294,6 +294,24 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 				statspec->badges = ReadBadgeList(buf, GSF_STATIONS);
 				break;
 
+			case 0x20: { // Minimum bridge height (extended)
+				uint16_t tiles = buf.ReadExtendedByte();
+				if (statspec->bridgeable_info.size() < tiles) statspec->bridgeable_info.resize(tiles);
+				for (int j = 0; j != tiles; ++j) {
+					statspec->bridgeable_info[j].height = buf.ReadByte();
+				}
+				break;
+			}
+
+			case 0x21: { // Disallowed bridge pillars
+				uint16_t tiles = buf.ReadExtendedByte();
+				if (statspec->bridgeable_info.size() < tiles) statspec->bridgeable_info.resize(tiles);
+				for (int j = 0; j != tiles; ++j) {
+					statspec->bridgeable_info[j].disallowed_pillars = BridgePillarFlags{buf.ReadByte()};
+				}
+				break;
+			}
+
 			default:
 				ret = CIR_UNKNOWN;
 				break;
