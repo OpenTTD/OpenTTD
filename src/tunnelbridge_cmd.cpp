@@ -12,7 +12,6 @@
  */
 
 #include "stdafx.h"
-#include "newgrf_object.h"
 #include "viewport_func.h"
 #include "command_func.h"
 #include "town.h"
@@ -20,7 +19,6 @@
 #include "ship.h"
 #include "roadveh.h"
 #include "pathfinder/yapf/yapf_cache.h"
-#include "pathfinder/water_regions.h"
 #include "newgrf_sound.h"
 #include "autoslope.h"
 #include "tunnelbridge_map.h"
@@ -39,7 +37,6 @@
 #include "object_base.h"
 #include "water.h"
 #include "company_gui.h"
-#include "station_func.h"
 #include "tunnelbridge_cmd.h"
 #include "landscape_cmd.h"
 #include "terraform_cmd.h"
@@ -278,6 +275,16 @@ static Money TunnelBridgeClearCost(TileIndex tile, Price base_price)
 	return base_cost;
 }
 
+static CommandCost CheckBuildAbove(TileIndex tile, DoCommandFlags flags, Axis axis, int height)
+{
+	if (_tile_type_procs[GetTileType(tile)]->check_build_above_proc != nullptr) {
+		return _tile_type_procs[GetTileType(tile)]->check_build_above_proc(tile, flags, axis, height);
+	}
+
+	/* A tile without a handler must be cleared. */
+	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
+}
+
 /**
  * Build a Bridge
  * @param flags type of operation
@@ -484,43 +491,9 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 				return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 			}
 
-			switch (GetTileType(tile)) {
-				case MP_WATER:
-					if (!IsWater(tile) && !IsCoast(tile)) goto not_valid_below;
-					break;
-
-				case MP_RAILWAY:
-					if (!IsPlainRail(tile)) goto not_valid_below;
-					break;
-
-				case MP_ROAD:
-					if (IsRoadDepot(tile)) goto not_valid_below;
-					break;
-
-				case MP_TUNNELBRIDGE:
-					if (IsTunnel(tile)) break;
-					if (direction == DiagDirToAxis(GetTunnelBridgeDirection(tile))) goto not_valid_below;
-					if (z_start < GetBridgeHeight(tile)) goto not_valid_below;
-					break;
-
-				case MP_OBJECT: {
-					const ObjectSpec *spec = ObjectSpec::GetByTile(tile);
-					if (!spec->flags.Test(ObjectFlag::AllowUnderBridge)) goto not_valid_below;
-					if (GetTileMaxZ(tile) + spec->height > z_start) goto not_valid_below;
-					break;
-				}
-
-				case MP_CLEAR:
-					break;
-
-				default:
-	not_valid_below:;
-					/* try and clear the middle landscape */
-					ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
-					if (ret.Failed()) return ret;
-					cost.AddCost(ret.GetCost());
-					break;
-			}
+			ret = CheckBuildAbove(tile, flags, direction, z_start);
+			if (ret.Failed()) return ret;
+			cost.AddCost(ret.GetCost());
 
 			if (flags.Test(DoCommandFlag::Execute)) {
 				/* We do this here because when replacing a bridge with another
@@ -2119,6 +2092,17 @@ static CommandCost TerraformTile_TunnelBridge(TileIndex tile, DoCommandFlags fla
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }
 
+static CommandCost CheckBuildAbove_TunnelBridge(TileIndex tile, DoCommandFlags flags, Axis axis, int height)
+{
+	if (IsTunnel(tile)) return CommandCost();
+
+	if (axis != DiagDirToAxis(GetTunnelBridgeDirection(tile)) && height >= GetBridgeHeight(tile)) {
+		return CommandCost();
+	}
+
+	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
+}
+
 extern const TileTypeProcs _tile_type_tunnelbridge_procs = {
 	DrawTile_TunnelBridge,           // draw_tile_proc
 	GetSlopePixelZ_TunnelBridge,     // get_slope_z_proc
@@ -2134,4 +2118,5 @@ extern const TileTypeProcs _tile_type_tunnelbridge_procs = {
 	VehicleEnter_TunnelBridge,       // vehicle_enter_tile_proc
 	GetFoundation_TunnelBridge,      // get_foundation_proc
 	TerraformTile_TunnelBridge,      // terraform_tile_proc
+	CheckBuildAbove_TunnelBridge, // check_build_above_proc
 };

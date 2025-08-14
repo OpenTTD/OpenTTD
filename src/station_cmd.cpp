@@ -5165,4 +5165,5 @@ extern const TileTypeProcs _tile_type_station_procs = {
 	VehicleEnter_Station,       // vehicle_enter_tile_proc
 	GetFoundation_Station,      // get_foundation_proc
 	TerraformTile_Station,      // terraform_tile_proc
+	nullptr, // check_build_above_proc
 };
