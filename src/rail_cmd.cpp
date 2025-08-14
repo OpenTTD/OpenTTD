@@ -1902,10 +1902,6 @@ static void DrawSingleSignal(TileIndex tile, const RailTypeInfo *rti, Track trac
 	AddSortableSpriteToDraw(sprite, PAL_NONE, x, y, GetSaveSlopeZ(x, y, track), {{}, {1, 1, BB_HEIGHT_UNDER_BRIDGE}, {}});
 }
 
-static uint32_t _drawtile_track_palette;
-
-
-
 /** Offsets for drawing fences */
 struct FenceOffset : SpriteBounds {
 	Corner height_ref; ///< Corner to use height offset from.
@@ -1941,53 +1937,53 @@ static const FenceOffset _fence_offsets[] = {
  * @param num_sprites Number of fence sprites.
  * @param rfo Fence to draw.
  */
-static void DrawTrackFence(const TileInfo *ti, SpriteID base_image, uint num_sprites, RailFenceOffset rfo)
+static void DrawTrackFence(const TileInfo *ti, const PalSpriteID &psid, uint num_sprites, RailFenceOffset rfo)
 {
 	int z = ti->z;
 	if (_fence_offsets[rfo].height_ref != CORNER_INVALID) {
 		z += GetSlopePixelZInCorner(RemoveHalftileSlope(ti->tileh), _fence_offsets[rfo].height_ref);
 	}
-	AddSortableSpriteToDraw(base_image + (rfo % num_sprites), _drawtile_track_palette, ti->x, ti->y, z, _fence_offsets[rfo]);
+	AddSortableSpriteToDraw(psid.sprite + (rfo % num_sprites), psid.pal, ti->x, ti->y, z, _fence_offsets[rfo]);
 }
 
 /**
  * Draw fence at NW border matching the tile slope.
  */
-static void DrawTrackFence_NW(const TileInfo *ti, SpriteID base_image, uint num_sprites)
+static void DrawTrackFence_NW(const TileInfo *ti, const PalSpriteID &psid, uint num_sprites)
 {
 	RailFenceOffset rfo = RFO_FLAT_X_NW;
 	if (ti->tileh & SLOPE_NW) rfo = (ti->tileh & SLOPE_W) ? RFO_SLOPE_SW_NW : RFO_SLOPE_NE_NW;
-	DrawTrackFence(ti, base_image, num_sprites, rfo);
+	DrawTrackFence(ti, psid, num_sprites, rfo);
 }
 
 /**
  * Draw fence at SE border matching the tile slope.
  */
-static void DrawTrackFence_SE(const TileInfo *ti, SpriteID base_image, uint num_sprites)
+static void DrawTrackFence_SE(const TileInfo *ti, const PalSpriteID &psid, uint num_sprites)
 {
 	RailFenceOffset rfo = RFO_FLAT_X_SE;
 	if (ti->tileh & SLOPE_SE) rfo = (ti->tileh & SLOPE_S) ? RFO_SLOPE_SW_SE : RFO_SLOPE_NE_SE;
-	DrawTrackFence(ti, base_image, num_sprites, rfo);
+	DrawTrackFence(ti, psid, num_sprites, rfo);
 }
 
 /**
  * Draw fence at NE border matching the tile slope.
  */
-static void DrawTrackFence_NE(const TileInfo *ti, SpriteID base_image, uint num_sprites)
+static void DrawTrackFence_NE(const TileInfo *ti, const PalSpriteID &psid, uint num_sprites)
 {
 	RailFenceOffset rfo = RFO_FLAT_Y_NE;
 	if (ti->tileh & SLOPE_NE) rfo = (ti->tileh & SLOPE_E) ? RFO_SLOPE_SE_NE : RFO_SLOPE_NW_NE;
-	DrawTrackFence(ti, base_image, num_sprites, rfo);
+	DrawTrackFence(ti, psid, num_sprites, rfo);
 }
 
 /**
  * Draw fence at SW border matching the tile slope.
  */
-static void DrawTrackFence_SW(const TileInfo *ti, SpriteID base_image, uint num_sprites)
+static void DrawTrackFence_SW(const TileInfo *ti, const PalSpriteID &psid, uint num_sprites)
 {
 	RailFenceOffset rfo = RFO_FLAT_Y_SW;
 	if (ti->tileh & SLOPE_SW) rfo = (ti->tileh & SLOPE_S) ? RFO_SLOPE_SE_SW : RFO_SLOPE_NW_SW;
-	DrawTrackFence(ti, base_image, num_sprites, rfo);
+	DrawTrackFence(ti, psid, num_sprites, rfo);
 }
 
 /**
@@ -1995,32 +1991,35 @@ static void DrawTrackFence_SW(const TileInfo *ti, SpriteID base_image, uint num_
  * @param ti Tile drawing information.
  * @param rti Rail type information.
  */
-static void DrawTrackDetails(const TileInfo *ti, const RailTypeInfo *rti)
+static void DrawTrackDetails(const TileInfo *ti, const RailTypeInfo *rti, PaletteID pal)
 {
 	/* Base sprite for track fences.
 	 * Note: Halftile slopes only have fences on the upper part. */
 	uint num_sprites = 0;
-	SpriteID base_image = GetCustomRailSprite(rti, ti->tile, RTSG_FENCES, IsHalftileSlope(ti->tileh) ? TCX_UPPER_HALFTILE : TCX_NORMAL, &num_sprites);
-	if (base_image == 0) {
-		base_image = SPR_TRACK_FENCE_FLAT_X;
+	PalSpriteID psid{
+		.sprite = GetCustomRailSprite(rti, ti->tile, RTSG_FENCES, IsHalftileSlope(ti->tileh) ? TCX_UPPER_HALFTILE : TCX_NORMAL, &num_sprites),
+		.pal = pal,
+	};
+	if (psid.sprite == 0) {
+		psid.sprite = SPR_TRACK_FENCE_FLAT_X;
 		num_sprites = 8;
 	}
 
 	assert(num_sprites > 0);
 
 	switch (GetRailGroundType(ti->tile)) {
-		case RAIL_GROUND_FENCE_NW:     DrawTrackFence_NW(ti, base_image, num_sprites); break;
-		case RAIL_GROUND_FENCE_SE:     DrawTrackFence_SE(ti, base_image, num_sprites); break;
-		case RAIL_GROUND_FENCE_SENW:   DrawTrackFence_NW(ti, base_image, num_sprites);
-		                               DrawTrackFence_SE(ti, base_image, num_sprites); break;
-		case RAIL_GROUND_FENCE_NE:     DrawTrackFence_NE(ti, base_image, num_sprites); break;
-		case RAIL_GROUND_FENCE_SW:     DrawTrackFence_SW(ti, base_image, num_sprites); break;
-		case RAIL_GROUND_FENCE_NESW:   DrawTrackFence_NE(ti, base_image, num_sprites);
-		                               DrawTrackFence_SW(ti, base_image, num_sprites); break;
-		case RAIL_GROUND_FENCE_VERT1:  DrawTrackFence(ti, base_image, num_sprites, RFO_FLAT_LEFT);  break;
-		case RAIL_GROUND_FENCE_VERT2:  DrawTrackFence(ti, base_image, num_sprites, RFO_FLAT_RIGHT); break;
-		case RAIL_GROUND_FENCE_HORIZ1: DrawTrackFence(ti, base_image, num_sprites, RFO_FLAT_UPPER); break;
-		case RAIL_GROUND_FENCE_HORIZ2: DrawTrackFence(ti, base_image, num_sprites, RFO_FLAT_LOWER); break;
+		case RAIL_GROUND_FENCE_NW:     DrawTrackFence_NW(ti, psid, num_sprites); break;
+		case RAIL_GROUND_FENCE_SE:     DrawTrackFence_SE(ti, psid, num_sprites); break;
+		case RAIL_GROUND_FENCE_SENW:   DrawTrackFence_NW(ti, psid, num_sprites);
+		                               DrawTrackFence_SE(ti, psid, num_sprites); break;
+		case RAIL_GROUND_FENCE_NE:     DrawTrackFence_NE(ti, psid, num_sprites); break;
+		case RAIL_GROUND_FENCE_SW:     DrawTrackFence_SW(ti, psid, num_sprites); break;
+		case RAIL_GROUND_FENCE_NESW:   DrawTrackFence_NE(ti, psid, num_sprites);
+		                               DrawTrackFence_SW(ti, psid, num_sprites); break;
+		case RAIL_GROUND_FENCE_VERT1:  DrawTrackFence(ti, psid, num_sprites, RFO_FLAT_LEFT);  break;
+		case RAIL_GROUND_FENCE_VERT2:  DrawTrackFence(ti, psid, num_sprites, RFO_FLAT_RIGHT); break;
+		case RAIL_GROUND_FENCE_HORIZ1: DrawTrackFence(ti, psid, num_sprites, RFO_FLAT_UPPER); break;
+		case RAIL_GROUND_FENCE_HORIZ2: DrawTrackFence(ti, psid, num_sprites, RFO_FLAT_LOWER); break;
 		case RAIL_GROUND_WATER: {
 			Corner track_corner;
 			if (IsHalftileSlope(ti->tileh)) {
@@ -2031,10 +2030,10 @@ static void DrawTrackDetails(const TileInfo *ti, const RailTypeInfo *rti)
 				track_corner = OppositeCorner(GetHighestSlopeCorner(ComplementSlope(ti->tileh)));
 			}
 			switch (track_corner) {
-				case CORNER_W: DrawTrackFence(ti, base_image, num_sprites, RFO_FLAT_LEFT);  break;
-				case CORNER_S: DrawTrackFence(ti, base_image, num_sprites, RFO_FLAT_LOWER); break;
-				case CORNER_E: DrawTrackFence(ti, base_image, num_sprites, RFO_FLAT_RIGHT); break;
-				case CORNER_N: DrawTrackFence(ti, base_image, num_sprites, RFO_FLAT_UPPER); break;
+				case CORNER_W: DrawTrackFence(ti, psid, num_sprites, RFO_FLAT_LEFT);  break;
+				case CORNER_S: DrawTrackFence(ti, psid, num_sprites, RFO_FLAT_LOWER); break;
+				case CORNER_E: DrawTrackFence(ti, psid, num_sprites, RFO_FLAT_RIGHT); break;
+				case CORNER_N: DrawTrackFence(ti, psid, num_sprites, RFO_FLAT_UPPER); break;
 				default: NOT_REACHED();
 			}
 			break;
@@ -2410,15 +2409,14 @@ static void DrawSignals(TileIndex tile, TrackBits rails, const RailTypeInfo *rti
 static void DrawTile_Track(TileInfo *ti)
 {
 	const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
-
-	_drawtile_track_palette = GetCompanyPalette(GetTileOwner(ti->tile));
+	PaletteID pal = GetCompanyPalette(GetTileOwner(ti->tile));
 
 	if (IsPlainRail(ti->tile)) {
 		TrackBits rails = GetTrackBits(ti->tile);
 
 		DrawTrackBits(ti, rails);
 
-		if (HasBit(_display_opt, DO_FULL_DETAIL)) DrawTrackDetails(ti, rti);
+		if (HasBit(_display_opt, DO_FULL_DETAIL)) DrawTrackDetails(ti, rti, pal);
 
 		if (HasRailCatenaryDrawn(GetRailType(ti->tile))) DrawRailCatenary(ti);
 
@@ -2426,8 +2424,6 @@ static void DrawTile_Track(TileInfo *ti)
 	} else {
 		/* draw depot */
 		const DrawTileSprites *dts;
-		PaletteID pal = PAL_NONE;
-		SpriteID relocation;
 
 		if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
@@ -2455,7 +2451,7 @@ static void DrawTile_Track(TileInfo *ti)
 			}
 		}
 
-		DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, _drawtile_track_palette));
+		DrawGroundSprite(image, GroundSpritePaletteTransform(image, PAL_NONE, pal));
 
 		if (rti->UsesOverlay()) {
 			SpriteID ground = GetCustomRailSprite(rti, ti->tile, RTSG_GROUND);
@@ -2519,11 +2515,11 @@ static void DrawTile_Track(TileInfo *ti)
 			}
 		}
 		int depot_sprite = GetCustomRailSprite(rti, ti->tile, RTSG_DEPOT);
-		relocation = depot_sprite != 0 ? depot_sprite - SPR_RAIL_DEPOT_SE_1 : rti->GetRailtypeSpriteOffset();
+		int relocation = depot_sprite != 0 ? depot_sprite - SPR_RAIL_DEPOT_SE_1 : rti->GetRailtypeSpriteOffset();
 
 		if (HasRailCatenaryDrawn(GetRailType(ti->tile))) DrawRailCatenary(ti);
 
-		DrawRailTileSeq(ti, dts, TO_BUILDINGS, relocation, 0, _drawtile_track_palette);
+		DrawRailTileSeq(ti, dts, TO_BUILDINGS, relocation, 0, pal);
 	}
 	DrawBridgeMiddle(ti);
 }
