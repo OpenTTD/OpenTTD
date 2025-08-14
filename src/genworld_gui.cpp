@@ -833,7 +833,11 @@ struct GenerateLandscapeWindow : public Window {
 				break;
 
 			case WID_GL_BORDERS_RANDOM:
-				_settings_newgame.game_creation.water_borders = (_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? BorderFlag{} : BorderFlag::Random;
+				if (_settings_newgame.game_creation.water_borders == BorderFlag::Random) {
+					_settings_newgame.game_creation.water_borders.Reset();
+				} else {
+					_settings_newgame.game_creation.water_borders = BorderFlag::Random;
+				}
 				SndClickBeep();
 				this->InvalidateData();
 				break;
