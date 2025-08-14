@@ -4162,6 +4162,7 @@ extern const TileTypeProcs _tile_type_town_procs = {
 	nullptr,                    // vehicle_enter_tile_proc
 	GetFoundation_Town,      // get_foundation_proc
 	TerraformTile_Town,      // terraform_tile_proc
+	nullptr, // check_build_above_proc
 };
 
 std::span<const DrawBuildingsTileStruct> GetTownDrawTileData()
