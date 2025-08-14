@@ -483,7 +483,7 @@ static void DrawTile_Object(TileInfo *ti)
 		DrawNewObjectTile(ti, spec);
 	}
 
-	DrawBridgeMiddle(ti);
+	DrawBridgeMiddle(ti, {});
 }
 
 static int GetSlopePixelZ_Object(TileIndex tile, uint x, uint y, bool)

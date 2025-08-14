@@ -1699,9 +1699,18 @@ static void DrawRoadBits(TileInfo *ti)
 /** Tile callback function for rendering a road tile to the screen */
 static void DrawTile_Road(TileInfo *ti)
 {
+	BridgePillarFlags blocked_pillars{};
 	switch (GetRoadTileType(ti->tile)) {
 		case ROAD_TILE_NORMAL:
 			DrawRoadBits(ti);
+
+			if (IsBridgeAbove(ti->tile)) {
+				RoadBits bits = GetAllRoadBits(ti->tile);
+				if ((bits & ROAD_NE) != 0) blocked_pillars.Set(BridgePillarFlag::EdgeNE);
+				if ((bits & ROAD_SE) != 0) blocked_pillars.Set(BridgePillarFlag::EdgeSE);
+				if ((bits & ROAD_SW) != 0) blocked_pillars.Set(BridgePillarFlag::EdgeSW);
+				if ((bits & ROAD_NW) != 0) blocked_pillars.Set(BridgePillarFlag::EdgeNW);
+			}
 			break;
 
 		case ROAD_TILE_CROSSING: {
@@ -1809,7 +1818,7 @@ static void DrawTile_Road(TileInfo *ti)
 
 			/* Draw rail catenary */
 			if (HasRailCatenaryDrawn(GetRailType(ti->tile))) DrawRailCatenary(ti);
-
+			blocked_pillars = {BridgePillarFlag::EdgeSW, BridgePillarFlag::EdgeNE, BridgePillarFlag::EdgeNW, BridgePillarFlag::EdgeSE};
 			break;
 		}
 
@@ -1855,10 +1864,11 @@ static void DrawTile_Road(TileInfo *ti)
 			}
 
 			DrawRailTileSeq(ti, dts, TO_BUILDINGS, relocation, 0, palette);
+			/* Depots can't have bridges above so no blocked pillars. */
 			break;
 		}
 	}
-	DrawBridgeMiddle(ti);
+	DrawBridgeMiddle(ti, blocked_pillars);
 }
 
 /**

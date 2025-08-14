@@ -926,12 +926,14 @@ static void DrawTile_Water(TileInfo *ti)
 	switch (GetWaterTileType(ti->tile)) {
 		case WATER_TILE_CLEAR:
 			DrawWaterClassGround(ti);
-			DrawBridgeMiddle(ti);
+			/* A plain water tile can be traversed in any direction, so setting blocked pillars here would mean all bridges
+			 * with edges would have no pillars above water. Instead prefer current behaviour of ships passing through. */
+			DrawBridgeMiddle(ti, {});
 			break;
 
 		case WATER_TILE_COAST: {
 			DrawShoreTile(ti->tileh);
-			DrawBridgeMiddle(ti);
+			DrawBridgeMiddle(ti, {});
 			break;
 		}
 

@@ -152,7 +152,7 @@ static void DrawTile_Clear(TileInfo *ti)
 			break;
 	}
 
-	DrawBridgeMiddle(ti);
+	DrawBridgeMiddle(ti, {});
 }
 
 static int GetSlopePixelZ_Clear(TileIndex tile, uint x, uint y, bool)
