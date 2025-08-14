@@ -1031,4 +1031,5 @@ extern const TileTypeProcs _tile_type_trees_procs = {
 	nullptr,                     // vehicle_enter_tile_proc
 	GetFoundation_Trees,      // get_foundation_proc
 	TerraformTile_Trees,      // terraform_tile_proc
+	nullptr, // check_build_above_proc
 };

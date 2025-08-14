@@ -929,6 +929,16 @@ static CommandCost TerraformTile_Object(TileIndex tile, DoCommandFlags flags, in
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }
 
+static CommandCost CheckBuildAbove_Object(TileIndex tile, DoCommandFlags flags, Axis, int height)
+{
+	const ObjectSpec *spec = ObjectSpec::GetByTile(tile);
+	if (spec->flags.Test(ObjectFlag::AllowUnderBridge) && GetTileMaxZ(tile) + spec->height <= height) {
+		return CommandCost();
+	}
+
+	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
+}
+
 extern const TileTypeProcs _tile_type_object_procs = {
 	DrawTile_Object,             // draw_tile_proc
 	GetSlopePixelZ_Object,       // get_slope_z_proc
@@ -944,4 +954,5 @@ extern const TileTypeProcs _tile_type_object_procs = {
 	nullptr,                        // vehicle_enter_tile_proc
 	GetFoundation_Object,        // get_foundation_proc
 	TerraformTile_Object,        // terraform_tile_proc
+	CheckBuildAbove_Object, // check_build_above_proc
 };
