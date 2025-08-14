@@ -63,7 +63,7 @@ inline const BridgeSpec *GetBridgeSpec(BridgeType i)
 	return &_bridge[i];
 }
 
-void DrawBridgeMiddle(const TileInfo *ti);
+void DrawBridgeMiddle(const TileInfo *ti, BridgePillarFlags blocked_pillars);
 
 CommandCost CheckBridgeAvailability(BridgeType bridge_type, uint bridge_len, DoCommandFlags flags = {});
 int CalcBridgeLenCostFactor(int x);

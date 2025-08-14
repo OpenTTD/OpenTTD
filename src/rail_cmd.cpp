@@ -2409,6 +2409,7 @@ static void DrawSignals(TileIndex tile, TrackBits rails, const RailTypeInfo *rti
 static void DrawTile_Track(TileInfo *ti)
 {
 	const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
+	BridgePillarFlags blocked_pillars{};
 	PaletteID pal = GetCompanyPalette(GetTileOwner(ti->tile));
 
 	if (IsPlainRail(ti->tile)) {
@@ -2421,17 +2422,25 @@ static void DrawTile_Track(TileInfo *ti)
 		if (HasRailCatenaryDrawn(GetRailType(ti->tile))) DrawRailCatenary(ti);
 
 		if (HasSignals(ti->tile)) DrawSignals(ti->tile, rails, rti);
+
+		if (IsBridgeAbove(ti->tile)) {
+			if ((rails & TRACK_BIT_3WAY_NE) != 0) blocked_pillars.Set(BridgePillarFlag::EdgeNE);
+			if ((rails & TRACK_BIT_3WAY_SE) != 0) blocked_pillars.Set(BridgePillarFlag::EdgeSE);
+			if ((rails & TRACK_BIT_3WAY_SW) != 0) blocked_pillars.Set(BridgePillarFlag::EdgeSW);
+			if ((rails & TRACK_BIT_3WAY_NW) != 0) blocked_pillars.Set(BridgePillarFlag::EdgeNW);
+		}
 	} else {
 		/* draw depot */
 		const DrawTileSprites *dts;
+		DiagDirection dir = GetRailDepotDirection(ti->tile);
 
 		if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
 		if (IsInvisibilitySet(TO_BUILDINGS)) {
 			/* Draw rail instead of depot */
-			dts = &_depot_invisible_gfx_table[GetRailDepotDirection(ti->tile)];
+			dts = &_depot_invisible_gfx_table[dir];
 		} else {
-			dts = &_depot_gfx_table[GetRailDepotDirection(ti->tile)];
+			dts = &_depot_gfx_table[dir];
 		}
 
 		SpriteID image;
@@ -2520,8 +2529,9 @@ static void DrawTile_Track(TileInfo *ti)
 		if (HasRailCatenaryDrawn(GetRailType(ti->tile))) DrawRailCatenary(ti);
 
 		DrawRailTileSeq(ti, dts, TO_BUILDINGS, relocation, 0, pal);
+		/* Depots can't have bridges above so no blocked pillars. */
 	}
-	DrawBridgeMiddle(ti);
+	DrawBridgeMiddle(ti, blocked_pillars);
 }
 
 void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
