@@ -398,10 +398,17 @@ void Town::UpdateVirtCoord()
 
 	if (this->cache.sign.kdtree_valid) _viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeTown(this->index));
 
-	std::string town_string = GetString(STR_TOWN_NAME, this->index);
+	std::string town_string;
+	if (this->larger_town) {
+		town_string = GetString(_settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_CITY_POP : STR_VIEWPORT_TOWN_CITY, this->index, this->cache.population);
+	} else {
+		town_string = GetString(_settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_POP : STR_TOWN_NAME, this->index, this->cache.population);
+	}
+
 	this->cache.sign.UpdatePosition(pt.x, pt.y - 24 * ZOOM_BASE,
-		_settings_client.gui.population_in_label ? GetString(STR_VIEWPORT_TOWN_POP, this->index, this->cache.population) : town_string,
-		town_string);
+		town_string,
+		GetString(STR_TOWN_NAME, this->index, this->cache.population)
+);
 
 	_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeTown(this->index));
 

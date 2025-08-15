@@ -146,6 +146,8 @@ static const CmdStruct _cmd_structs[] = {
 	{"RIGHT_ARROW",       EmitSingleChar, SCC_RIGHT_ARROW,        0, std::nullopt, {CmdFlag::DontCount}},
 	{"SMALL_LEFT_ARROW",  EmitSingleChar, SCC_LESS_THAN,          0, std::nullopt, {CmdFlag::DontCount}},
 	{"SMALL_RIGHT_ARROW", EmitSingleChar, SCC_GREATER_THAN,       0, std::nullopt, {CmdFlag::DontCount}},
+	{"TOWN_ICON",         EmitSingleChar, SCC_TOWN,               0, std::nullopt, {CmdFlag::DontCount}},
+	{"CITY_ICON",         EmitSingleChar, SCC_CITY,               0, std::nullopt, {CmdFlag::DontCount}},
 
 	/* The following are directional formatting codes used to get the RTL strings right:
 	 * http://www.unicode.org/unicode/reports/tr9/#Directional_Formatting_Codes */
