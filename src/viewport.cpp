@@ -1360,9 +1360,9 @@ static void ViewportAddTownStrings(DrawPixelInfo *dpi, const std::vector<const T
 	if (small) flags.Set({ViewportStringFlag::Small, ViewportStringFlag::Shadow});
 
 	StringID stringid_town = !small && _settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_POP : STR_TOWN_NAME;
-	StringID stringid_city = stringid_town;
+	StringID stringid_town_city = stringid_town;
 	if (!small) {
-		stringid_city = _settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_CITY_POP : STR_VIEWPORT_TOWN_CITY;
+		stringid_town_city = _settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_CITY_POP : STR_VIEWPORT_TOWN_CITY;
 	}
 
 	for (const Town *t : towns) {
@@ -1370,7 +1370,7 @@ static void ViewportAddTownStrings(DrawPixelInfo *dpi, const std::vector<const T
 		if (str == nullptr) continue;
 
 		if (t->larger_town) {
-			*str = GetString(stringid_city, t->index, t->cache.population);
+			*str = GetString(stringid_town_city, t->index, t->cache.population);
 		} else {
 			*str = GetString(stringid_town, t->index, t->cache.population);
 		}
