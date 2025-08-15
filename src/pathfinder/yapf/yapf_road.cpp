@@ -11,6 +11,7 @@
 #include "yapf.hpp"
 #include "yapf_node_road.hpp"
 #include "../../roadstop_base.h"
+#include "../../roadveh.h"
 
 #include "../../safeguards.h"
 
@@ -239,8 +240,37 @@ public:
 	{
 		if (v->current_order.IsType(OT_GOTO_STATION)) {
 			this->dest_station = v->current_order.GetDestination().ToStationID();
-			this->station_type = v->IsBus() ? StationType::Bus : StationType::Truck;
-			this->dest_tile = CalcClosestStationTile(this->dest_station, v->tile, this->station_type);
+			
+			// Check if this is a "go via" order (no load/unload)
+			bool is_via_order = (v->current_order.GetLoadType() & OLFB_NO_LOAD) && 
+			                    (v->current_order.GetUnloadType() & OUFB_NO_UNLOAD);
+			
+			if (is_via_order) {
+				// For "go via" orders, consider both stop types and use closest
+				StationType primary_type = v->IsBus() ? StationType::Bus : StationType::Truck;
+				StationType alt_type = v->IsBus() ? StationType::Truck : StationType::Bus;
+				
+				TileIndex primary_tile = CalcClosestStationTile(this->dest_station, v->tile, primary_type);
+				TileIndex alt_tile = CalcClosestStationTile(this->dest_station, v->tile, alt_type);
+				
+				if (primary_tile != INVALID_TILE && 
+				    (alt_tile == INVALID_TILE || DistanceManhattan(v->tile, primary_tile) <= DistanceManhattan(v->tile, alt_tile))) {
+					this->station_type = primary_type;
+					this->dest_tile = primary_tile;
+				} else if (alt_tile != INVALID_TILE) {
+					this->station_type = alt_type;
+					this->dest_tile = alt_tile;
+				} else {
+					// Fallback to primary type
+					this->station_type = primary_type;
+					this->dest_tile = CalcClosestStationTile(this->dest_station, v->tile, this->station_type);
+				}
+			} else {
+				// Regular "go to" order - use vehicle's natural stop type
+				this->station_type = v->IsBus() ? StationType::Bus : StationType::Truck;
+				this->dest_tile = CalcClosestStationTile(this->dest_station, v->tile, this->station_type);
+			}
+			
 			this->non_artic = !v->HasArticulatedPart();
 			this->dest_trackdirs = INVALID_TRACKDIR_BIT;
 		} else if (v->current_order.IsType(OT_GOTO_WAYPOINT)) {
@@ -278,10 +308,28 @@ public:
 	inline bool PfDetectDestinationTile(TileIndex tile, Trackdir trackdir)
 	{
 		if (this->dest_station != StationID::Invalid()) {
-			return IsTileType(tile, MP_STATION) &&
-				GetStationIndex(tile) == this->dest_station &&
-				(this->station_type == GetStationType(tile)) &&
-				(this->non_artic || IsDriveThroughStopTile(tile));
+			if (!IsTileType(tile, MP_STATION) || GetStationIndex(tile) != this->dest_station) {
+				return false;
+			}
+			
+			StationType tile_station_type = GetStationType(tile);
+			
+			// For via orders (waypoints), allow cross-type station access using waypoint mode
+			if (tile_station_type != this->station_type) {
+				// Check if this is a valid cross-type access for road vehicles
+				if ((this->station_type == StationType::Bus && tile_station_type == StationType::Truck) ||
+				    (this->station_type == StationType::Truck && tile_station_type == StationType::Bus)) {
+					// Use waypoint mode logic for cross-type access
+					const Station *st = Station::Get(this->dest_station);
+					const RoadVehicle *rv = RoadVehicle::From(Yapf().GetVehicle());
+					const RoadStop *stop = st->GetPrimaryRoadStop(rv, true); // waypoint mode
+					return stop != nullptr;
+				}
+				return false;
+			}
+			
+			// Same type - use original logic
+			return (this->non_artic || IsDriveThroughStopTile(tile));
 		}
 
 		return tile == this->dest_tile && HasTrackdir(this->dest_trackdirs, trackdir);
@@ -410,11 +458,30 @@ public:
 			 * tiles of the dest tile */
 			const Station *st = Yapf().GetDestinationStation();
 			if (st) {
-				const RoadStop *stop = st->GetPrimaryRoadStop(v);
+				// Check if this is a "go via" order for waypoint mode
+				bool is_via_order = v->current_order.IsType(OT_GOTO_STATION) &&
+				                   (v->current_order.GetLoadType() & OLFB_NO_LOAD) &&
+				                   (v->current_order.GetUnloadType() & OUFB_NO_UNLOAD);
+				
+				const RoadStop *stop = st->GetPrimaryRoadStop(v, is_via_order);
 				if (stop != nullptr && (IsDriveThroughStopTile(stop->xy) || stop->GetNextRoadStop(v) != nullptr)) {
 					/* Destination station has at least 2 usable road stops, or first is a drive-through stop,
 					 * trim end of path cache within a number of tiles of road stop tile area */
 					TileArea non_cached_area = v->IsBus() ? st->bus_station : st->truck_station;
+					
+					// For "go via" orders, also consider the other station type's area
+					bool is_via_order = (v->current_order.GetLoadType() & OLFB_NO_LOAD) && 
+					                    (v->current_order.GetUnloadType() & OUFB_NO_UNLOAD);
+					if (is_via_order) {
+						TileArea alt_area = v->IsBus() ? st->truck_station : st->bus_station;
+						if (alt_area.tile != INVALID_TILE) {
+							// Expand the area to include both station types
+							for (TileIndex tile : alt_area) {
+								non_cached_area.Add(tile);
+							}
+						}
+					}
+					
 					non_cached_area.Expand(YAPF_ROADVEH_PATH_CACHE_DESTINATION_LIMIT);
 
 					/* Find the first tile not contained by the non-cachable area, and remove from the cache. */

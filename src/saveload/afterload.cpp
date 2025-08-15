@@ -3446,6 +3446,8 @@ void ReloadNewGRFData()
 	RecomputePrices();
 	/* reload vehicles */
 	ResetVehicleHash();
+	/* Clear road vehicle path caches to fix issue #14485 */
+	ResetRoadVehiclePathCaches();
 	AfterLoadLabelMaps();
 	AfterLoadVehiclesPhase1(false);
 	AfterLoadVehiclesPhase2(false);

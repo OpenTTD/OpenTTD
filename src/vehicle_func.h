@@ -190,6 +190,7 @@ void VehicleLengthChanged(const Vehicle *u);
 
 void ResetVehicleHash();
 void ResetVehicleColourMap();
+void ResetRoadVehiclePathCaches();
 
 uint8_t GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoType dest_cargo_type);
 

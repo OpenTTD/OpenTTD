@@ -912,10 +912,17 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 		} else {
 			/* Our station */
 			RoadStopType rstype = v->IsBus() ? RoadStopType::Bus : RoadStopType::Truck;
+			RoadStopType tile_rstype = GetRoadStopType(tile);
 
-			if (GetRoadStopType(tile) != rstype) {
-				/* Wrong station type */
-				trackdirs = TRACKDIR_BIT_NONE;
+			if (tile_rstype != rstype) {
+				/* Wrong station type - check if vehicle can use this station for waypoint purposes */
+				Station *st = Station::GetIfValid(GetStationIndex(tile));
+				if (st != nullptr && st->GetPrimaryRoadStop(v, true) != nullptr) {
+					/* Vehicle can use this station in waypoint mode - allow passage */
+				} else {
+					/* Vehicle cannot use this station - block passage */
+					trackdirs = TRACKDIR_BIT_NONE;
+				}
 			} else {
 				/* Proper station type, check if there is free loading bay */
 				if (!_settings_game.pf.roadveh_queue && IsBayRoadStopTile(tile) &&

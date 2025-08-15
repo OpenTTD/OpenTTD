@@ -224,6 +224,41 @@ RoadStop *Station::GetPrimaryRoadStop(const RoadVehicle *v) const
 }
 
 /**
+ * Get the primary road stop that the given vehicle can use, with waypoint mode support.
+ * @param v the vehicle to get the first road stop for
+ * @param waypoint_mode if true, allow both bus and truck stops for waypoints
+ * @return the first roadstop that this vehicle can use
+ */
+RoadStop *Station::GetPrimaryRoadStop(const RoadVehicle *v, bool waypoint_mode) const
+{
+	if (!waypoint_mode) {
+		return GetPrimaryRoadStop(v);  // Use existing behavior
+	}
+
+	// For waypoint mode, try both stop types and return the first compatible one
+	RoadStopType primary_type = v->IsBus() ? RoadStopType::Bus : RoadStopType::Truck;
+	RoadStopType alt_type = v->IsBus() ? RoadStopType::Truck : RoadStopType::Bus;
+
+	// First try the vehicle's natural stop type
+	RoadStop *rs = this->GetPrimaryRoadStop(primary_type);
+	for (; rs != nullptr; rs = rs->next) {
+		if (!HasTileAnyRoadType(rs->xy, v->compatible_roadtypes)) continue;
+		if (IsBayRoadStopTile(rs->xy) && v->HasArticulatedPart()) continue;
+		return rs;  // Found compatible stop of primary type
+	}
+
+	// If no compatible stop of primary type, try alternate type
+	rs = this->GetPrimaryRoadStop(alt_type);
+	for (; rs != nullptr; rs = rs->next) {
+		if (!HasTileAnyRoadType(rs->xy, v->compatible_roadtypes)) continue;
+		if (IsBayRoadStopTile(rs->xy) && v->HasArticulatedPart()) continue;
+		return rs;  // Found compatible stop of alternate type
+	}
+
+	return nullptr;  // No compatible stops found
+}
+
+/**
  * Called when new facility is built on the station. If it is the first facility
  * it initializes also 'xy' and 'random_bits' members
  */

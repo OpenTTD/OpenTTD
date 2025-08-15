@@ -658,6 +658,15 @@ void ResetVehicleColourMap()
 	for (Vehicle *v : Vehicle::Iterate()) { v->colourmap = PAL_NONE; }
 }
 
+void ResetRoadVehiclePathCaches()
+{
+	for (RoadVehicle *v : RoadVehicle::Iterate()) {
+		if (v->IsFrontEngine()) {
+			v->path.clear();
+		}
+	}
+}
+
 /**
  * List of vehicles that should check for autoreplace this tick.
  * Mapping of vehicle -> leave depot immediately after autoreplace.
@@ -3062,12 +3071,15 @@ bool CanVehicleUseStation(EngineID engine_type, const Station *st)
  */
 bool CanVehicleUseStation(const Vehicle *v, const Station *st)
 {
-	if (v->type == VEH_ROAD) return st->GetPrimaryRoadStop(RoadVehicle::From(v)) != nullptr;
+	if (v->type == VEH_ROAD) {
+		const RoadVehicle *rv = RoadVehicle::From(v);
+		// For road vehicles, check if there's any compatible road stop
+		// This allows cross-type usage for waypoints while maintaining loading restrictions
+		return st->GetPrimaryRoadStop(rv, true) != nullptr;  // Use waypoint mode
+	}
 
 	return CanVehicleUseStation(v->engine_type, st);
-}
-
-/**
+}/**
  * Get reason string why this station can't be used by the given vehicle.
  * @param v The vehicle to test.
  * @param st The station to test for.
