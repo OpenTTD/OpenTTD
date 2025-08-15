@@ -669,6 +669,7 @@ SettingsContainer &GetSettingsTree()
 				general->Add(new SettingEntry("gui.window_snap_radius"));
 				general->Add(new SettingEntry("gui.window_soft_limit"));
 				general->Add(new SettingEntry("gui.right_click_wnd_close"));
+				general->Add(new SettingEntry("gui.toolbar_dropdown_autoselect"));
 			}
 
 			SettingsPage *viewports = interface->Add(new SettingsPage(STR_CONFIG_SETTING_INTERFACE_VIEWPORTS));
