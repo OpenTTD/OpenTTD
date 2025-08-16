@@ -3423,8 +3423,11 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Southwes
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Freeform
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Water
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Random
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Random
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
+
+###length 3
+STR_MAPGEN_BORDER_RANDOMIZE                                     :Random
+STR_MAPGEN_BORDER_MANUAL                                        :Manual
+STR_MAPGEN_BORDER_ALL_WATER                                     :All Water
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Heightmap rotation:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Heightmap name:
