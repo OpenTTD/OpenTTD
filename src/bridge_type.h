@@ -55,4 +55,10 @@ static constexpr BridgePillarFlags BRIDGEPILLARFLAGS_ALL{
 	BridgePillarFlag::EdgeNE, BridgePillarFlag::EdgeSE, BridgePillarFlag::EdgeSW, BridgePillarFlag::EdgeNW,
 };
 
+/** Information about a tile structure that may have a bridge above. */
+struct BridgeableTileInfo {
+	uint8_t height = 0; ///< Minimum height for a bridge above. 0 means a bridge is not allowed.
+	BridgePillarFlags disallowed_pillars = BRIDGEPILLARFLAGS_ALL; ///< Disallowed pillar flags for a bridge above
+};
+
 #endif /* BRIDGE_TYPE_H */

@@ -12,6 +12,7 @@
 #ifndef NEWGRF_ROADSTATION_H
 #define NEWGRF_ROADSTATION_H
 
+#include "bridge_type.h"
 #include "newgrf_animation_type.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_badge_type.h"
@@ -138,12 +139,10 @@ struct RoadStopSpec : NewGRFSpecBase<RoadStopClassID> {
 
 	AnimationInfo<StationAnimationTriggers> animation;
 
-	uint8_t bridge_height[6];             ///< Minimum height for a bridge above, 0 for none
-	uint8_t bridge_disallowed_pillars[6]; ///< Disallowed pillar flags for a bridge above
-
 	uint8_t build_cost_multiplier = 16;  ///< Build cost multiplier per tile.
 	uint8_t clear_cost_multiplier = 16;  ///< Clear cost multiplier per tile.
 
+	std::array<BridgeableTileInfo, 6> bridgeable_info{}; ///< Per tile layout bridge information.
 	std::vector<BadgeID> badges;
 
 	/**

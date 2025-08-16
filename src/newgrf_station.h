@@ -11,6 +11,7 @@
 #define NEWGRF_STATION_H
 
 #include "core/enum_type.hpp"
+#include "bridge_type.h"
 #include "newgrf_animation_type.h"
 #include "newgrf_badge_type.h"
 #include "newgrf_callbacks.h"
@@ -169,6 +170,7 @@ struct StationSpec : NewGRFSpecBase<StationClassID> {
 	};
 	using TileFlags = EnumBitSet<TileFlag, uint8_t>;
 	std::vector<TileFlags> tileflags; ///< List of tile flags.
+	std::vector<BridgeableTileInfo> bridgeable_info; ///< Per tile layout bridge information.
 
 	AnimationInfo<StationAnimationTriggers> animation;
 
