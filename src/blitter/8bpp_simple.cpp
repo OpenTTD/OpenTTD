@@ -20,6 +20,7 @@ void Blitter_8bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoom
 {
 	const uint8_t *src, *src_line;
 	uint8_t *dst, *dst_line;
+	const uint8_t *remap = bp->remap->palette;
 
 	/* Find where to start reading in the source sprite */
 	src_line = (const uint8_t *)bp->sprite + (bp->skip_top * bp->sprite_width + bp->skip_left) * ScaleByZoom(1, zoom);
@@ -38,12 +39,12 @@ void Blitter_8bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoom
 			switch (mode) {
 				case BlitterMode::ColourRemap:
 				case BlitterMode::CrashRemap:
-					colour = bp->remap[*src];
+					colour = remap[*src];
 					break;
 
 				case BlitterMode::Transparent:
 				case BlitterMode::TransparentRemap:
-					if (*src != 0) colour = bp->remap[*dst];
+					if (*src != 0) colour = remap[*dst];
 					break;
 
 				case BlitterMode::BlackRemap:

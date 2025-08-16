@@ -170,6 +170,8 @@ STR_ITEMS                                                       :{COMMA}{NBSP}it
 STR_CRATES                                                      :{COMMA}{NBSP}crate{P "" s}
 
 STR_COLOUR_DEFAULT                                              :Default
+STR_COLOUR_CUSTOM                                               :Custom...
+STR_COLOUR_PRESET                                               :Preset {NUM}
 ###length 17
 STR_COLOUR_DARK_BLUE                                            :Dark Blue
 STR_COLOUR_PALE_GREEN                                           :Pale Green
@@ -2337,6 +2339,11 @@ STR_LIVERY_SMALL_PLANE                                          :Small Aeroplane
 STR_LIVERY_LARGE_PLANE                                          :Large Aeroplane
 STR_LIVERY_PASSENGER_TRAM                                       :Passenger Tram
 STR_LIVERY_FREIGHT_TRAM                                         :Freight Tram
+
+STR_LIVERY_HUE                                                  :{BLACK}Hue
+STR_LIVERY_SATURATION                                           :{BLACK}Saturation
+STR_LIVERY_LIGHTNESS                                            :{BLACK}Lightness
+STR_LIVERY_CONTRAST                                             :{BLACK}Contrast
 
 # Face selection window
 STR_FACE_CAPTION                                                :{WHITE}Face Selection

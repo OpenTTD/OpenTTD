@@ -16,7 +16,7 @@
 #include "vehiclelist.h"
 #include "vehiclelist_cmd.h"
 
-enum Colours : uint8_t;
+enum Colours : uint32_t;
 enum class GroupFlag : uint8_t;
 
 /** Action for \c CmdAlterGroup. */

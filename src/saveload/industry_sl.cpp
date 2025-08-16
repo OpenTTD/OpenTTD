@@ -179,7 +179,8 @@ static const SaveLoad _industry_desc[] = {
 
 	    SLE_VAR(Industry, type,                       SLE_UINT8),
 	    SLE_VAR(Industry, owner,                      SLE_UINT8),
-	    SLE_VAR(Industry, random_colour,              SLE_UINT8),
+	SLE_CONDVAR(Industry, random_colour,              SLE_FILE_U8 | SLE_VAR_U32,  SL_MIN_VERSION,             SLV_CUSTOM_COMPANY_COLOURS),
+	SLE_CONDVAR(Industry, random_colour,              SLE_UINT32,                 SLV_CUSTOM_COMPANY_COLOURS, SL_MAX_VERSION),
 	SLE_CONDVAR(Industry, last_prod_year,             SLE_FILE_U8 | SLE_VAR_I32,  SL_MIN_VERSION, SLV_31),
 	SLE_CONDVAR(Industry, last_prod_year,             SLE_INT32,                 SLV_31, SL_MAX_VERSION),
 	    SLE_VAR(Industry, was_cargo_delivered,        SLE_UINT8),

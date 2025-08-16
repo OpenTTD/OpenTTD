@@ -1949,7 +1949,7 @@ static bool ConCompanies(std::span<std::string_view> argv)
 		/* Grab the company name */
 		std::string company_name = GetString(STR_COMPANY_NAME, c->index);
 
-		std::string colour = GetString(STR_COLOUR_DARK_BLUE + _company_colours[c->index]);
+		std::string colour = GetString(STR_COLOUR_DARK_BLUE + (_company_colours[c->index] % COLOUR_END));
 		IConsolePrint(CC_INFO, "#:{}({}) Company Name: '{}'  Year Founded: {}  Money: {}  Loan: {}  Value: {}  (T:{}, R:{}, P:{}, S:{}) {}",
 			c->index + 1, colour, company_name,
 			c->inaugurated_year, (int64_t)c->money, (int64_t)c->current_loan, (int64_t)CalculateCompanyValue(c),

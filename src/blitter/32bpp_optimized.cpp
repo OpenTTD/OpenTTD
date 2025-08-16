@@ -48,7 +48,8 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 	Colour *dst = (Colour *)bp->dst + bp->top * bp->pitch + bp->left;
 
 	/* store so we don't have to access it via bp every time (compiler assumes pointer aliasing) */
-	const uint8_t *remap = bp->remap;
+	const uint8_t *remap = bp->remap->palette;
+	const Colour *remap_rgba = GetRGBARecolour(bp->remap);
 
 	for (int y = 0; y < bp->height; y++) {
 		/* next dst line begins here */
@@ -134,6 +135,37 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 							} else {
 								uint r = remap[GB(m, 0, 8)];
 								if (r != 0) *dst = ComposeColourPANoCheck(AdjustBrightness(this->LookupColourInPalette(r), GB(m, 8, 8)), src_px->a, *dst);
+							}
+							dst++;
+							src_px++;
+							src_n++;
+						} while (--n != 0);
+					}
+					break;
+
+				case BlitterMode::RGBAColourRemap:
+					if (src_px->a == 255) {
+						do {
+							uint m = *src_n;
+							/* In case the m-channel is zero, do not remap this pixel in any way */
+							if (m == 0) {
+								*dst = src_px->data;
+							} else {
+								const Colour c = remap_rgba[GB(m, 0, 8)];
+								*dst = AdjustBrightness(c, GB(m, 8, 8));
+							}
+							dst++;
+							src_px++;
+							src_n++;
+						} while (--n != 0);
+					} else {
+						do {
+							uint m = *src_n;
+							if (m == 0) {
+								*dst = ComposeColourRGBANoCheck(src_px->r, src_px->g, src_px->b, src_px->a, *dst);
+							} else {
+								const Colour c = remap_rgba[GB(m, 0, 8)];
+								*dst = ComposeColourPANoCheck(AdjustBrightness(c, GB(m, 8, 8)), src_px->a, *dst);
 							}
 							dst++;
 							src_px++;
@@ -263,6 +295,7 @@ void Blitter_32bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, 
 		default: NOT_REACHED();
 		case BlitterMode::Normal: Draw<BlitterMode::Normal, Tpal_to_rgb>(bp, zoom); return;
 		case BlitterMode::ColourRemap: Draw<BlitterMode::ColourRemap, Tpal_to_rgb>(bp, zoom); return;
+		case BlitterMode::RGBAColourRemap: Draw<BlitterMode::RGBAColourRemap, Tpal_to_rgb>(bp, zoom); return;
 		case BlitterMode::Transparent: Draw<BlitterMode::Transparent, Tpal_to_rgb>(bp, zoom); return;
 		case BlitterMode::TransparentRemap: Draw<BlitterMode::TransparentRemap, Tpal_to_rgb>(bp, zoom); return;
 		case BlitterMode::CrashRemap: Draw<BlitterMode::CrashRemap, Tpal_to_rgb>(bp, zoom); return;

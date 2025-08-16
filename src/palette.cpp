@@ -15,6 +15,7 @@
 #include "landscape_type.h"
 #include "palette_func.h"
 #include "settings_type.h"
+#include "sprite.h"
 #include "thread.h"
 
 #include "table/palettes.h"
@@ -84,6 +85,7 @@ static uint CalculateColourDistance(const Colour &col1, int r2, int g2, int b2)
 /* Palette indexes for conversion. See docs/palettes/palette_key.png */
 const uint8_t PALETTE_INDEX_CC_START = 198; ///< Palette index of start of company colour remap area.
 const uint8_t PALETTE_INDEX_CC_END = PALETTE_INDEX_CC_START + 8; ///< Palette index of end of company colour remap area.
+const uint8_t PALETTE_INDEX_CC2_START = 80; ///< Palette index of start of second company colour remap area.
 const uint8_t PALETTE_INDEX_START = 1; ///< Palette index of start of defined palette.
 const uint8_t PALETTE_INDEX_END = 215; ///< Palette index of end of defined palette.
 
@@ -368,6 +370,81 @@ TextColour GetContrastColour(PixelColour background, uint8_t threshold)
 	return sq1000_brightness < ((uint) threshold) * ((uint) threshold) * 1000 ? TC_WHITE : TC_BLACK;
 }
 
+HsvColour ConvertRgbToHsv(Colour rgb)
+{
+	HsvColour hsv;
+
+	uint8_t rgbmin = std::min({rgb.r, rgb.g, rgb.b});
+	uint8_t rgbmax = std::max({rgb.r, rgb.g, rgb.b});
+
+	hsv.v = rgbmax;
+	if (hsv.v == 0) {
+		hsv.h = 0;
+		hsv.s = 0;
+		return hsv;
+	}
+
+	int d = rgbmax - rgbmin;
+	hsv.s = HsvColour::SAT_MAX * d / rgbmax;
+	if (hsv.s == 0) {
+		hsv.h = 0;
+		return hsv;
+	}
+
+	int hue;
+	if (rgbmax == rgb.r) {
+		hue = HsvColour::HUE_RGN * 0 + HsvColour::HUE_RGN * ((int)rgb.g - (int)rgb.b) / d;
+	} else if (rgbmax == rgb.g) {
+		hue = HsvColour::HUE_RGN * 2 + HsvColour::HUE_RGN * ((int)rgb.b - (int)rgb.r) / d;
+	} else {
+		hue = HsvColour::HUE_RGN * 4 + HsvColour::HUE_RGN * ((int)rgb.r - (int)rgb.g) / d;
+	}
+	if (hue > HsvColour::HUE_MAX) hue -= HsvColour::HUE_MAX;
+	if (hue < 0) hue += HsvColour::HUE_MAX;
+	hsv.h = hue;
+
+	return hsv;
+}
+
+Colour ConvertHsvToRgb(HsvColour hsv)
+{
+	if (hsv.s == 0) return Colour(hsv.v, hsv.v, hsv.v);
+	if (hsv.h >= HsvColour::HUE_MAX) hsv.h = 0;
+
+	int region = hsv.h / HsvColour::HUE_RGN;
+	int remainder = (hsv.h - (region * HsvColour::HUE_RGN)) * 6;
+	int p = (hsv.v * (HsvColour::SAT_MAX - hsv.s)) / HsvColour::SAT_MAX;
+	int q = (hsv.v * (HsvColour::SAT_MAX - ((hsv.s * remainder) / HsvColour::HUE_MAX))) / HsvColour::SAT_MAX;
+	int t = (hsv.v * (HsvColour::SAT_MAX - ((hsv.s * (HsvColour::HUE_MAX - remainder)) / HsvColour::HUE_MAX))) / HsvColour::SAT_MAX;
+
+	switch (region) {
+		case 0: return Colour(hsv.v, t, p);
+		case 1: return Colour(q, hsv.v, p);
+		case 2: return Colour(p, hsv.v, t);
+		case 3: return Colour(p, q, hsv.v);
+		case 4: return Colour(t, p, hsv.v);
+		default: return Colour(hsv.v, p, q);
+	}
+}
+
+/**
+ * Adjust brightness of an HSV colour.
+ * @param hsv colour to adjust.
+ * @param shade shade to apply.
+ * @param contrast contrast of shade.
+ * @returns Adjusted HSV colour.
+ **/
+HsvColour AdjustHsvColourBrightness(HsvColour hsv, ColourShade shade, int contrast)
+{
+	HsvColour r = hsv;
+	int amt = (shade - SHADE_NORMAL) * (16 + contrast) / 8;
+	int overflow = (hsv.v + amt) - HsvColour::VAL_MAX;
+	r.v = ClampTo<uint8_t>(hsv.v + amt);
+	r.s = ClampTo<uint8_t>(hsv.s - std::max(0, overflow));
+	return r;
+}
+
+
 /**
  * Lookup table of colour shades for all 16 colour gradients.
  * 8 colours per gradient from darkest (0) to lightest (7)
@@ -387,6 +464,10 @@ struct ColourGradients
  */
 PixelColour GetColourGradient(Colours colour, ColourShade shade)
 {
+	ColoursPacker cp(colour);
+	if (cp.IsCustom()) {
+		return ConvertHsvToRgb(AdjustHsvColourBrightness(cp.Hsv(), shade, cp.GetContrast()));
+	}
 	return ColourGradients::gradient[colour % COLOUR_END][shade % SHADE_END];
 }
 
@@ -401,4 +482,65 @@ void SetColourGradient(Colours colour, ColourShade shade, PixelColour palette_in
 	assert(colour < COLOUR_END);
 	assert(shade < SHADE_END);
 	ColourGradients::gradient[colour % COLOUR_END][shade % SHADE_END] = palette_index;
+}
+
+PixelColour::PixelColour(Colour colour) : r(colour.r), g(colour.g), b(colour.b)
+{
+	this->p = GetNearestColourIndex(colour);
+}
+
+TextColour PixelColour::ToTextColour() const
+{
+	TextColour tc = static_cast<TextColour>(this->p) | TC_IS_PALETTE_COLOUR;
+	if (this->HasRGB()) {
+		tc |= TC_IS_RGB_COLOUR;
+		TextColourPacker tcp(tc);
+		tcp.SetR(this->r);
+		tcp.SetG(this->g);
+		tcp.SetB(this->b);
+	}
+	return tc;
+}
+
+std::pair<Colour, uint8_t> GetCompanyColourRGB(Colours colour)
+{
+	static constexpr uint8_t CC_PALETTE_CONTRAST = 90;
+
+	PaletteID pal = GetColourPalette(colour);
+	const RecolourSprite *map = GetRecolourSprite(pal);
+
+	Colour rgb = _palette.palette[map->palette[PALETTE_INDEX_CC_START + SHADE_NORMAL]];
+	return {rgb, CC_PALETTE_CONTRAST};
+}
+
+PaletteID CreateCompanyColourRemap(Colours colour1, Colours colour2, bool twocc, PaletteID basemap, PaletteID hint)
+{
+	DeallocateDynamicSprite(hint);
+	PaletteID pal = AllocateDynamicSprite();
+
+	InjectSprite(SpriteType::Recolour, pal, [&](SpriteAllocator &allocator) {
+		const RecolourSprite *base = GetRecolourSprite(basemap);
+		RecolourSpriteRGBA *p = allocator.Allocate<RecolourSpriteRGBA>(sizeof(RecolourSpriteRGBA));
+
+		/* Copy base remap */
+		std::ranges::copy(base->palette, p->palette);
+		std::ranges::transform(p->palette, p->rgba, [](const uint8_t &col) { return _palette.palette[col]; });
+
+		auto apply_colour = [](RecolourSpriteRGBA &remap, uint8_t index, Colours colour) {
+			ColoursPacker cp{colour};
+			if (!cp.IsCustom()) return;
+
+			HsvColour hsv = cp.Hsv();
+			uint8_t con = cp.GetContrast();
+			for (ColourShade shade = SHADE_BEGIN; shade != SHADE_END; ++shade) {
+				remap.rgba[index + shade] = ConvertHsvToRgb(AdjustHsvColourBrightness(hsv, shade, con));
+				remap.palette[index + shade] = GetNearestColourIndex(remap.rgba[index + shade]);
+			}
+		};
+
+		apply_colour(*p, PALETTE_INDEX_CC_START, colour1);
+		if (twocc) apply_colour(*p, PALETTE_INDEX_CC2_START, colour2);
+	});
+
+	return pal;
 }
