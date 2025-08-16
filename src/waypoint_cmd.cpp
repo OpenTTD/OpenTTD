@@ -264,6 +264,10 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 		if (!Waypoint::CanAllocateItem()) return CommandCost(STR_ERROR_TOO_MANY_STATIONS_LOADING);
 	}
 
+	const StationSpec *spec = StationClass::Get(spec_class)->GetSpec(spec_index);
+	auto specindex = AllocateSpecToStation(spec, wp, flags.Test(DoCommandFlag::Execute));
+	if (!specindex.has_value()) return CommandCost(STR_ERROR_TOO_MANY_STATION_SPECS);
+
 	if (flags.Test(DoCommandFlag::Execute)) {
 		if (wp == nullptr) {
 			wp = new Waypoint(start_tile);
@@ -285,9 +289,6 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 
 		wp->UpdateVirtCoord();
 
-		const StationSpec *spec = StationClass::Get(spec_class)->GetSpec(spec_index);
-		uint8_t map_spec_index = AllocateSpecToStation(spec, wp, true);
-
 		RailStationTileLayout stl{spec, count, 1};
 		auto it = stl.begin();
 
@@ -300,7 +301,7 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 					HasBit(GetRailReservationTrackBits(tile), AxisToTrack(axis)) :
 					HasStationReservation(tile);
 			MakeRailWaypoint(tile, wp->owner, wp->index, axis, *it++, GetRailType(tile));
-			SetCustomStationSpecIndex(tile, map_spec_index);
+			SetCustomStationSpecIndex(tile, *specindex);
 
 			SetRailStationTileFlags(tile, spec);
 
@@ -385,8 +386,9 @@ CommandCost CmdBuildRoadWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 		if (!Waypoint::CanAllocateItem()) return CommandCost(STR_ERROR_TOO_MANY_STATIONS_LOADING);
 	}
 
-	/* Check if we can allocate a custom stationspec to this station */
-	if (AllocateSpecToRoadStop(roadstopspec, wp, false) == -1) return CommandCost(STR_ERROR_TOO_MANY_STATION_SPECS);
+	/* Check if we can allocate a custom roadstopspec to this station */
+	auto specindex = AllocateSpecToRoadStop(roadstopspec, wp, flags.Test(DoCommandFlag::Execute));
+	if (!specindex.has_value()) return CommandCost(STR_ERROR_TOO_MANY_STATION_SPECS);
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		if (wp == nullptr) {
@@ -415,8 +417,6 @@ CommandCost CmdBuildRoadWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 
 		wp->UpdateVirtCoord();
 
-		uint8_t map_spec_index = AllocateSpecToRoadStop(roadstopspec, wp, true);
-
 		/* Check every tile in the area. */
 		for (TileIndex cur_tile : roadstop_area) {
 			/* Get existing road types and owners before any tile clearing */
@@ -426,7 +426,7 @@ CommandCost CmdBuildRoadWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 			Owner tram_owner = tram_rt != INVALID_ROADTYPE ? GetRoadOwner(cur_tile, RTT_TRAM) : _current_company;
 
 			if (IsRoadWaypointTile(cur_tile)) {
-				RemoveRoadWaypointStop(cur_tile, flags, map_spec_index);
+				RemoveRoadWaypointStop(cur_tile, flags, *specindex);
 			}
 
 			wp->road_waypoint_area.Add(cur_tile);
@@ -444,7 +444,7 @@ CommandCost CmdBuildRoadWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 			UpdateCompanyRoadInfrastructure(tram_rt, tram_owner, ROAD_STOP_TRACKBIT_FACTOR);
 
 			MakeDriveThroughRoadStop(cur_tile, wp->owner, road_owner, tram_owner, wp->index, StationType::RoadWaypoint, road_rt, tram_rt, axis);
-			SetCustomRoadStopSpecIndex(cur_tile, map_spec_index);
+			SetCustomRoadStopSpecIndex(cur_tile, *specindex);
 			if (roadstopspec != nullptr) wp->SetRoadStopRandomBits(cur_tile, 0);
 
 			Company::Get(wp->owner)->infrastructure.station++;

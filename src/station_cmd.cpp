@@ -1378,8 +1378,8 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 
 	/* Check if we can allocate a custom stationspec to this station */
 	const StationSpec *statspec = StationClass::Get(spec_class)->GetSpec(spec_index);
-	int specindex = AllocateSpecToStation(statspec, st, flags.Test(DoCommandFlag::Execute));
-	if (specindex == -1) return CommandCost(STR_ERROR_TOO_MANY_STATION_SPECS);
+	auto specindex = AllocateSpecToStation(statspec, st, flags.Test(DoCommandFlag::Execute));
+	if (!specindex.has_value()) return CommandCost(STR_ERROR_TOO_MANY_STATION_SPECS);
 
 	if (statspec != nullptr) {
 		/* Perform NewStation checks */
@@ -1445,7 +1445,7 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 				/* Free the spec if we overbuild something */
 				DeallocateSpecFromStation(st, old_specindex);
 
-				SetCustomStationSpecIndex(tile, specindex);
+				SetCustomStationSpecIndex(tile, *specindex);
 				SetStationTileRandomBits(tile, GB(Random(), 0, 4));
 				SetAnimationFrame(tile, 0);
 
@@ -2005,8 +2005,8 @@ CommandCost CmdBuildRoadStop(DoCommandFlags flags, TileIndex tile, uint8_t width
 	if (ret.Failed()) return ret;
 
 	/* Check if we can allocate a custom stationspec to this station */
-	int specindex = AllocateSpecToRoadStop(roadstopspec, st, flags.Test(DoCommandFlag::Execute));
-	if (specindex == -1) return CommandCost(STR_ERROR_TOO_MANY_STATION_SPECS);
+	auto specindex = AllocateSpecToRoadStop(roadstopspec, st, flags.Test(DoCommandFlag::Execute));
+	if (!specindex.has_value()) return CommandCost(STR_ERROR_TOO_MANY_STATION_SPECS);
 
 	if (roadstopspec != nullptr) {
 		/* Perform NewGRF checks */
@@ -2028,7 +2028,7 @@ CommandCost CmdBuildRoadStop(DoCommandFlags flags, TileIndex tile, uint8_t width
 			Owner tram_owner = tram_rt != INVALID_ROADTYPE ? GetRoadOwner(cur_tile, RTT_TRAM) : _current_company;
 
 			if (IsTileType(cur_tile, MP_STATION) && IsStationRoadStop(cur_tile)) {
-				RemoveRoadStop(cur_tile, flags, specindex);
+				RemoveRoadStop(cur_tile, flags, *specindex);
 			}
 
 			if (roadstopspec != nullptr) {
@@ -2076,7 +2076,7 @@ CommandCost CmdBuildRoadStop(DoCommandFlags flags, TileIndex tile, uint8_t width
 			UpdateCompanyRoadInfrastructure(tram_rt, tram_owner, ROAD_STOP_TRACKBIT_FACTOR);
 			Company::Get(st->owner)->infrastructure.station++;
 
-			SetCustomRoadStopSpecIndex(cur_tile, specindex);
+			SetCustomRoadStopSpecIndex(cur_tile, *specindex);
 			if (roadstopspec != nullptr) {
 				st->SetRoadStopRandomBits(cur_tile, GB(Random(), 0, 8));
 				TriggerRoadStopAnimation(st, cur_tile, StationAnimationTrigger::Built);

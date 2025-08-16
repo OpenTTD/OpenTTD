@@ -213,13 +213,8 @@ SpriteID GetCustomStationFoundationRelocation(const StationSpec *statspec, BaseS
 uint16_t GetStationCallback(CallbackID callback, uint32_t param1, uint32_t param2, const StationSpec *statspec, BaseStation *st, TileIndex tile, std::span<int32_t> regs100 = {});
 CommandCost PerformStationTileSlopeCheck(TileIndex north_tile, TileIndex cur_tile, const StationSpec *statspec, Axis axis, uint8_t plat_len, uint8_t numtracks);
 
-/* Allocate a StationSpec to a Station. This is called once per build operation. */
-int AllocateSpecToStation(const StationSpec *statspec, BaseStation *st, bool exec);
-
-/* Deallocate a StationSpec from a Station. Called when removing a single station tile. */
+std::optional<uint8_t> AllocateSpecToStation(const StationSpec *statspec, BaseStation *st, bool exec);
 void DeallocateSpecFromStation(BaseStation *st, uint8_t specindex);
-
-/* Draw representation of a station tile for GUI purposes. */
 bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID sclass, uint station);
 
 void AnimateStationTile(TileIndex tile);
