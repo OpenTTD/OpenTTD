@@ -82,7 +82,7 @@ void Blitter::DrawLineGeneric(int x1, int y1, int x2, int y2, int screen_width, 
 			frac_low += dx;
 			y_low -= stepy;
 		}
-		while (frac_high >= 0) {
+		while (frac_high >= dy) {
 			frac_high -= dx;
 			y_high += stepy;
 		}
@@ -145,7 +145,7 @@ void Blitter::DrawLineGeneric(int x1, int y1, int x2, int y2, int screen_width, 
 			frac_low += dy;
 			x_low -= stepx;
 		}
-		while (frac_high >= 0) {
+		while (frac_high >= dx) {
 			frac_high -= dy;
 			x_high += stepx;
 		}
