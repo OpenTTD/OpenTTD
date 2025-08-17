@@ -235,22 +235,22 @@ CoreTextParagraphLayout::CoreTextVisualRun::CoreTextVisualRun(CTRunRef run, Font
 	this->glyphs.resize(CTRunGetGlyphCount(run));
 
 	/* Query map of glyphs to source string index. */
-	CFIndex map[this->glyphs.size()];
-	CTRunGetStringIndices(run, CFRangeMake(0, 0), map);
+	auto map = std::make_unique<CFIndex[]>(this->glyphs.size());
+	CTRunGetStringIndices(run, CFRangeMake(0, 0), map.get());
 
 	this->glyph_to_char.resize(this->glyphs.size());
 	for (size_t i = 0; i < this->glyph_to_char.size(); i++) this->glyph_to_char[i] = (int)map[i];
 
-	CGPoint pts[this->glyphs.size()];
-	CTRunGetPositions(run, CFRangeMake(0, 0), pts);
-	CGSize advs[this->glyphs.size()];
-	CTRunGetAdvances(run, CFRangeMake(0, 0), advs);
+	auto pts = std::make_unique<CGPoint[]>(this->glyphs.size());
+	CTRunGetPositions(run, CFRangeMake(0, 0), pts.get());
+	auto advs = std::make_unique<CGSize[]>(this->glyphs.size());
+	CTRunGetAdvances(run, CFRangeMake(0, 0), advs.get());
 	this->positions.reserve(this->glyphs.size());
 
 	/* Convert glyph array to our data type. At the same time, substitute
 	 * the proper glyphs for our private sprite glyphs. */
-	CGGlyph gl[this->glyphs.size()];
-	CTRunGetGlyphs(run, CFRangeMake(0, 0), gl);
+	auto gl = std::make_unique<CGGlyph[]>(this->glyphs.size());
+	CTRunGetGlyphs(run, CFRangeMake(0, 0), gl.get());
 	for (size_t i = 0; i < this->glyphs.size(); i++) {
 		if (buff[this->glyph_to_char[i]] >= SCC_SPRITE_START && buff[this->glyph_to_char[i]] <= SCC_SPRITE_END && (gl[i] == 0 || gl[i] == 3)) {
 			/* A glyph of 0 indidicates not found, while apparently 3 is what char 0xFFFC maps to. */
