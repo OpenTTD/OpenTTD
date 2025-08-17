@@ -5876,6 +5876,8 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :Espectador, {1:
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_CITY                                          :{TOWN} {CITY_ICON}
+STR_VIEWPORT_TOWN_CITY_POP                                      :{TOWN} ({COMMA}) {CITY_ICON}
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data

@@ -3858,8 +3858,8 @@ STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}
 STR_STATION_VIEW_GROUP                                          :{BLACK}群组方式
 STR_STATION_VIEW_WAITING_STATION                                :等候装载的货物，按站名排序
 STR_STATION_VIEW_WAITING_AMOUNT                                 :等候装载的货物，按总量排序
-STR_STATION_VIEW_PLANNED_STATION                                :计划发出的货物，按站名排序
-STR_STATION_VIEW_PLANNED_AMOUNT                                 :计划发出的货物，按总量排序
+STR_STATION_VIEW_PLANNED_STATION                                :计划处理的货物，按站名排序
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :计划处理的货物，按总量排序
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT}来自 {STATION}
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT}途经 {STATION}
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT}前往 {STATION}
@@ -5875,6 +5875,8 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :观众，{1:STR
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{TOWN}（{COMMA}）
+STR_VIEWPORT_TOWN_CITY                                          :{TOWN}{CITY_ICON}
+STR_VIEWPORT_TOWN_CITY_POP                                      :{TOWN}（{COMMA}）{CITY_ICON}
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data
