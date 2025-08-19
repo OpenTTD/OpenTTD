@@ -1243,6 +1243,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :بنفشی
 ###length 4
 
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :تعمیراتی کام کے دوران پیمائشی ٹول ٹپ دکھائیں: {STRING}
 
 STR_CONFIG_SETTING_LIVERIES                                     :کمپنی کے رنگ دکھائیں: {STRING}

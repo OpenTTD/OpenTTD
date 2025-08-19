@@ -1691,6 +1691,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Mover mapa com 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Suavizar deslocamento da navegação no mapa: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla como a vista principal navega para uma posição específica ao clicar no mapa pequeno ou ao dar um comando para navegar para um objeto específico no mapa. Se ativo, a vista principal navega suavemente, se inativo a vista salta diretamente para o destino.
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostrar medidas nas várias ferramentas de construção: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Mostrar distâncias em mosaicos e diferenças de altura enquanto arrasta o rato durante tarefas de construção
 

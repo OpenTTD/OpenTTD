@@ -1436,6 +1436,7 @@ STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Skuif kaart met
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Maak kykpoort beweegings glad: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Beheer hoe die hoofvertoonvenster skuif na 'n spesifieke posisie - as dit geaktiveer is, dan skuif die venster glad na die posisie toe, andersins skuif die venster direk na die posisie toe.
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Toon 'n meting wanneer jy verskeie bou-gereedskap gebruik: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Vertoon teëlafstand en hoogteverskil gedurende bouwerk.
 

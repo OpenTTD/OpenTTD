@@ -1662,6 +1662,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Mută harta cu 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Derulare ușoară vizor: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controlează modul de deplasare a imaginii din ecranul principal când se face click pe harta mică sau când se execută o comandă de deplasare către un obiect anume de pe hartă. Dacă este activată, imaginea se deplasează în mod fluid, altfel imaginea sare direct la zona dorită
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Arată o indicație de distanță la folosirea uneltelor de construcție: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Afișează distanțele în pătrățele și diferențele de înălțime la mișcarea mouse-ului în timpul operațiilor de construcție
 

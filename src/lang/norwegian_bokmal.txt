@@ -1692,6 +1692,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Panorer kartet 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Myk panorering av synsfelt: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Velge hvordan synsfeltet panorerer til en bestemt posisjon når du klikker på det lille kartet, eller ved utstedelse av en kommando for å gå til et bestemt objekt på kartet. Hvis aktivert, panorerer synsfeltet jevnt, og hvis deaktivert hopper det direkte til det valgte punktet
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Vis målingsverktøy ved bruk av byggingsverktøy: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Vise avstander mellom kartelementer samt høydeforskjeller når du drar linjer ved byggevirksomhet
 

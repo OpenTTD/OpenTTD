@@ -1530,6 +1530,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :இடது �
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :பார்படத்தின் இலகுவான பக்கமுருட்டல்: {STRING}
 
 
+
 STR_CONFIG_SETTING_LIVERIES                                     :நிறுவன livery களைக் காட்டு: {STRING}
 ###length 3
 STR_CONFIG_SETTING_LIVERIES_NONE                                :ஒன்றுமில்லை

@@ -1649,6 +1649,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Sol Fare Tuşu 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Düzgün bakış noktası kaydırması: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Küçük haritaya tıklandığında veya harita üzerindeki belli bir nesneye gidilmesi için komut verildiğinde ana görüntünün nasıl kaydırılacağını kontrol eder. Etkinleştirildiğinde harita kayarak ilerler, kapatıldığında ise doğrudan hedeflenen noktaya atlama yapar.
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :İnşa araçları kullanılırken ölçüm ipucu göster: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :İnşaat işlemleri sırasında fareyi sürükleyince kare-uzaklıkları ve yükseklik farklarını göster.
 

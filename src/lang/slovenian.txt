@@ -1567,6 +1567,7 @@ STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Premikaj zemlje
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Gladek premik pogleda: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Način pomika pogleda na določen objekt majhnega zemljevida (centriranje pogleda). Omogočeno - pogled drsi, onemogočeno - pogled preskoči.
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Prikaz merilnega nasveta med uporabo gradbenih orodij: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Prikaz dolžine in višinskih razlik pri gradnji z vlečenjem.
 

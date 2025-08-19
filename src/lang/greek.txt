@@ -1783,6 +1783,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Μετακίν�
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Ομαλή μετάβαση οθόνης: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Ελέγξτε τον τρόπο με τον οποίο η κύρια προβολή κυλίεται σε μια συγκεκριμένη θέση όταν πατάτε πάνω στον μικρό χάρτη ή όταν δίνετε εντολή για μετάβαση σε ένα συγκεκριμένο αντικείμενο στον χάρτη. Όταν είναι ενεργοποιημένη, η κύλιση γίνεται ομαλά, και όταν είναι απενεργοποιημένη μεταβαίνει απ' ευθείας στο επιλεγμένο σημείο
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Εμφάνιση εργαλείου μετρήσεως όταν χρησιμοποιούνται διάφορα εργαλεία: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Εμφάνιση αποστάσεων τετραγωνίδιων και υψομετρικών διαφορών όταν γίνονται λειτουργίες κατασκευών με σύρσιμο του ποντικιού
 
@@ -5980,6 +5981,8 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :Θεατής, {
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_CITY                                          :{TOWN} {CITY_ICON}
+STR_VIEWPORT_TOWN_CITY_POP                                      :{TOWN} ({COMMA}) {CITY_ICON}
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data

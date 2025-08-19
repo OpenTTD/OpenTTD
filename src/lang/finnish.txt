@@ -1690,6 +1690,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Siirrä karttaa
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Näkymän tasainen vieritys: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Hallitse, kuinka päänäkymä siirtyy valittuun paikkaan napsautettaessa karttaa tai käytettäessä näkymän sijaintia muuttavaa komentoa. Mikäli käytössä, päänäkymä siirtyy uuteen sijaintiin pehmeästi, muutoin se hyppää suoraan valittuun sijaintiin.
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Näytä mittauksen työkaluvihje, kun käytetään rakennustyökaluja: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Näytä etäisyydet ja korkeuserot vedettäessä rakennustoimintojen aikana
 

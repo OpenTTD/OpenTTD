@@ -1690,6 +1690,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :鼠标左键移
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :平滑视角滚动：{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :设置在缩略图上点击或者发出转到特定目标的命令时主视角的转换方式。启用时，视角平缓滚动，否则直接跳转到目标位置
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :建设时显示测量数据：{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :建设时显示距离格数和地形高差
 

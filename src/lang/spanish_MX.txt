@@ -1688,6 +1688,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Recorrer mapa c
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Desplazamiento suave: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Desplazamiento de la vista principal a una ubicación en el minimapa o al ver un objeto determinado en el mapa. Al activarse, el desplazamiento es suave; al desactivarse, el desplazamiento es instantáneo
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostrar información de medidas al usar las herramientas de construcción: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Mostrar distancias en número de casillas y las diferencias de altura cuando se realicen labores de construcción
 

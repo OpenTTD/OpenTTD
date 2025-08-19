@@ -1661,6 +1661,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Movu la mapon p
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Glata rulumado de vidujo: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Regu kiel la ĉefa vidujo rulumas al specifa pozicio kiam oni klakas en la mapeto aŭ petas rulumi al specifa objekto sur la mapo. Se tiu ĉi agordo estas aktiva, la vidujo rulumas glate, se malaktiva, ĝi tuj saltas al la celpunkto
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Montru mezuran konsilbalonon ĉe uzo de konstruiloj: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Montru kahel-distancojn kaj altec-diferencojn dum mustrenado por konstruado
 
