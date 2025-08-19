@@ -559,7 +559,14 @@ const RoadStopSpec *GetRoadStopSpec(TileIndex t)
 	return specindex < st->roadstop_speclist.size() ? st->roadstop_speclist[specindex].spec : nullptr;
 }
 
-int AllocateSpecToRoadStop(const RoadStopSpec *statspec, BaseStation *st, bool exec)
+/**
+ * Allocate a RoadStopSpec to a Station. This is called once per build operation.
+ * @param statspec RoadStopSpec to allocate.
+ * @param st Station to allocate it to.
+ * @param exec Whether to actually allocate the spec.
+ * @return Index within the Station's road stop spec list, or std::nullopt if the allocation failed.
+ */
+std::optional<uint8_t> AllocateSpecToRoadStop(const RoadStopSpec *statspec, BaseStation *st, bool exec)
 {
 	uint i;
 
@@ -577,7 +584,7 @@ int AllocateSpecToRoadStop(const RoadStopSpec *statspec, BaseStation *st, bool e
 
 	if (i == NUM_ROADSTOPSPECS_PER_STATION) {
 		/* Full, give up */
-		return -1;
+		return std::nullopt;
 	}
 
 	if (exec) {
@@ -592,6 +599,11 @@ int AllocateSpecToRoadStop(const RoadStopSpec *statspec, BaseStation *st, bool e
 	return i;
 }
 
+/**
+ * Deallocate a RoadStopSpec from a Station. Called when removing a single roadstop tile.
+ * @param st Station to work with.
+ * @param specindex Index of the custom roadstop within the Station's roadstop spec list.
+ */
 void DeallocateSpecFromRoadStop(BaseStation *st, uint8_t specindex)
 {
 	/* specindex of 0 (default) is never freeable */

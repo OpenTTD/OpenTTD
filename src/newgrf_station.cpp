@@ -697,9 +697,9 @@ CommandCost PerformStationTileSlopeCheck(TileIndex north_tile, TileIndex cur_til
  * @param statspec StationSpec to allocate.
  * @param st Station to allocate it to.
  * @param exec Whether to actually allocate the spec.
- * @return Index within the Station's spec list, or -1 if the allocation failed.
+ * @return Index within the Station's station spec list, or std::nullopt if the allocation failed.
  */
-int AllocateSpecToStation(const StationSpec *statspec, BaseStation *st, bool exec)
+std::optional<uint8_t> AllocateSpecToStation(const StationSpec *statspec, BaseStation *st, bool exec)
 {
 	uint i;
 
@@ -719,7 +719,7 @@ int AllocateSpecToStation(const StationSpec *statspec, BaseStation *st, bool exe
 			if (st->speclist[i].spec == statspec) return i;
 		}
 
-		return -1;
+		return std::nullopt;
 	}
 
 	if (exec) {
@@ -738,8 +738,7 @@ int AllocateSpecToStation(const StationSpec *statspec, BaseStation *st, bool exe
 /**
  * Deallocate a StationSpec from a Station. Called when removing a single station tile.
  * @param st Station to work with.
- * @param specindex Index of the custom station within the Station's spec list.
- * @return Indicates whether the StationSpec was deallocated.
+ * @param specindex Index of the custom station within the Station's station spec list.
  */
 void DeallocateSpecFromStation(BaseStation *st, uint8_t specindex)
 {

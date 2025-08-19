@@ -136,7 +136,8 @@ void MoveWaypointsToBaseStations()
 		SetRailStationReservation(tile, reserved);
 
 		if (wp.spec != nullptr) {
-			SetCustomStationSpecIndex(tile, AllocateSpecToStation(wp.spec, new_wp, true));
+			auto specindex = AllocateSpecToStation(wp.spec, new_wp, true);
+			SetCustomStationSpecIndex(tile, specindex.value_or(0));
 		}
 		new_wp->rect.BeforeAddTile(tile, StationRect::ADD_FORCE);
 
