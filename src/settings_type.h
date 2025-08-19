@@ -433,38 +433,7 @@ struct YAPFSettings {
 	bool   disable_node_optimization;        ///< whether to use exit-dir instead of trackdir in node key
 	uint32_t max_search_nodes;                 ///< stop path-finding when this number of nodes visited
 	uint32_t maximum_go_to_depot_penalty;      ///< What is the maximum penalty that may be endured for going to a depot
-	uint32_t road_slope_penalty;               ///< penalty for up-hill slope
-	uint32_t road_curve_penalty;               ///< penalty for curves
-	uint32_t road_crossing_penalty;            ///< penalty for level crossing
-	uint32_t road_stop_penalty;                ///< penalty for going through a drive-through road stop
-	uint32_t road_stop_occupied_penalty;       ///< penalty multiplied by the fill percentage of a drive-through road stop
-	uint32_t road_stop_bay_occupied_penalty;   ///< penalty multiplied by the fill percentage of a road bay
-	bool   rail_firstred_twoway_eol;         ///< treat first red two-way signal as dead end
-	uint32_t rail_firstred_penalty;            ///< penalty for first red signal
-	uint32_t rail_firstred_exit_penalty;       ///< penalty for first red exit signal
-	uint32_t rail_lastred_penalty;             ///< penalty for last red signal
-	uint32_t rail_lastred_exit_penalty;        ///< penalty for last red exit signal
-	uint32_t rail_station_penalty;             ///< penalty for non-target station tile
-	uint32_t rail_slope_penalty;               ///< penalty for up-hill slope
-	uint32_t rail_curve45_penalty;             ///< penalty for curve
-	uint32_t rail_curve90_penalty;             ///< penalty for 90-deg curve
-	uint32_t rail_depot_reverse_penalty;       ///< penalty for reversing in the depot
-	uint32_t rail_crossing_penalty;            ///< penalty for level crossing
-	uint32_t rail_look_ahead_max_signals;      ///< max. number of signals taken into consideration in look-ahead load balancer
-	int32_t  rail_look_ahead_signal_p0;        ///< constant in polynomial penalty function
-	int32_t  rail_look_ahead_signal_p1;        ///< constant in polynomial penalty function
-	int32_t  rail_look_ahead_signal_p2;        ///< constant in polynomial penalty function
-	uint32_t rail_pbs_cross_penalty;           ///< penalty for crossing a reserved tile
-	uint32_t rail_pbs_station_penalty;         ///< penalty for crossing a reserved station tile
-	uint32_t rail_pbs_signal_back_penalty;     ///< penalty for passing a pbs signal from the backside
-	uint32_t rail_doubleslip_penalty;          ///< penalty for passing a double slip switch
-
-	uint32_t rail_longer_platform_penalty;           ///< penalty for longer  station platform than train
-	uint32_t rail_longer_platform_per_tile_penalty;  ///< penalty for longer  station platform than train (per tile)
-	uint32_t rail_shorter_platform_penalty;          ///< penalty for shorter station platform than train
-	uint32_t rail_shorter_platform_per_tile_penalty; ///< penalty for shorter station platform than train (per tile)
-	uint32_t ship_curve45_penalty;                   ///< penalty for 45-deg curve for ships
-	uint32_t ship_curve90_penalty;                   ///< penalty for 90-deg curve for ships
+	bool rail_firstred_twoway_eol;             ///< treat first red two-way signal as dead end
 };
 
 /** Settings related to all pathfinders. */

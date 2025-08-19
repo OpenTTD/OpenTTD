@@ -14,6 +14,12 @@
 
 #include "../../safeguards.h"
 
+constexpr int ROAD_SLOPE_PENALTY = 2 * YAPF_TILE_LENGTH;
+constexpr int ROAD_CURVE_PENALTY = 1 * YAPF_TILE_LENGTH;
+constexpr int ROAD_CROSSING_PENALTY = 3 * YAPF_TILE_LENGTH;
+constexpr int ROAD_STOP_PENALTY = 8 * YAPF_TILE_LENGTH;
+constexpr int ROAD_STOP_OCCUPIED_PENALTY = 8 * YAPF_TILE_LENGTH;
+constexpr int ROAD_STOP_BAY_OCCUPIED_PENALTY = 15 * YAPF_TILE_LENGTH;
 
 template <class Types>
 class CYapfCostRoadT {
@@ -48,7 +54,7 @@ protected:
 
 		if (z2 - z1 > 1) {
 			/* Slope up */
-			return Yapf().PfGetSettings().road_slope_penalty;
+			return ROAD_SLOPE_PENALTY;
 		}
 		return 0;
 	}
@@ -64,7 +70,7 @@ protected:
 				case MP_ROAD:
 					/* Increase the cost for level crossings */
 					if (IsLevelCrossing(tile)) {
-						cost += Yapf().PfGetSettings().road_crossing_penalty;
+						cost += ROAD_CROSSING_PENALTY;
 					}
 					break;
 
@@ -74,17 +80,17 @@ protected:
 					const RoadStop *rs = RoadStop::GetByTile(tile, GetRoadStopType(tile));
 					if (IsDriveThroughStopTile(tile)) {
 						/* Increase the cost for drive-through road stops */
-						cost += Yapf().PfGetSettings().road_stop_penalty;
+						cost += ROAD_STOP_PENALTY;
 						DiagDirection dir = TrackdirToExitdir(trackdir);
 						if (!RoadStop::IsDriveThroughRoadStopContinuation(tile, tile - TileOffsByDiagDir(dir))) {
 							/* When we're the first road stop in a 'queue' of them we increase
 							 * cost based on the fill percentage of the whole queue. */
 							const RoadStop::Entry &entry = rs->GetEntry(dir);
-							cost += entry.GetOccupied() * Yapf().PfGetSettings().road_stop_occupied_penalty / entry.GetLength();
+							cost += entry.GetOccupied() * ROAD_STOP_OCCUPIED_PENALTY / entry.GetLength();
 						}
 					} else {
 						/* Increase cost for filled road stops */
-						cost += Yapf().PfGetSettings().road_stop_bay_occupied_penalty * (!rs->IsFreeBay(0) + !rs->IsFreeBay(1)) / 2;
+						cost += ROAD_STOP_BAY_OCCUPIED_PENALTY * (!rs->IsFreeBay(0) + !rs->IsFreeBay(1)) / 2;
 					}
 					break;
 				}
@@ -94,7 +100,7 @@ protected:
 			}
 		} else {
 			/* non-diagonal trackdir */
-			cost = YAPF_TILE_CORNER_LENGTH + Yapf().PfGetSettings().road_curve_penalty;
+			cost = YAPF_TILE_CORNER_LENGTH + ROAD_CURVE_PENALTY;
 		}
 		return cost;
 	}

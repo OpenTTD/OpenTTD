@@ -13,10 +13,10 @@
 #include "../tile_type.h"
 
 /** Length (penalty) of one tile with YAPF */
-static const int YAPF_TILE_LENGTH = 100;
+static constexpr int YAPF_TILE_LENGTH = 100;
 
 /** Length (penalty) of a corner with YAPF */
-static const int YAPF_TILE_CORNER_LENGTH = 71;
+static constexpr int YAPF_TILE_CORNER_LENGTH = 71;
 
 /**
  * This penalty is the equivalent of "infinite", which means that paths that
@@ -24,13 +24,13 @@ static const int YAPF_TILE_CORNER_LENGTH = 71;
  * without it. Be careful with not applying this penalty too often, or the
  * total path cost might overflow.
  */
-static const int YAPF_INFINITE_PENALTY = 1000 * YAPF_TILE_LENGTH;
+static constexpr int YAPF_INFINITE_PENALTY = 1000 * YAPF_TILE_LENGTH;
 
 /** Maximum segments of road vehicle path cache */
-static const int YAPF_ROADVEH_PATH_CACHE_SEGMENTS = 8;
+static constexpr int YAPF_ROADVEH_PATH_CACHE_SEGMENTS = 8;
 
 /** Distance from destination road stops to not cache any further */
-static const int YAPF_ROADVEH_PATH_CACHE_DESTINATION_LIMIT = 8;
+static constexpr int YAPF_ROADVEH_PATH_CACHE_DESTINATION_LIMIT = 8;
 
 /**
  * Helper container to find a depot

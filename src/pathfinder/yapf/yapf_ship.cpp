@@ -23,6 +23,9 @@ constexpr int MAX_SHIP_PF_NODES = (NUMBER_OR_WATER_REGIONS_LOOKAHEAD + 1) * WATE
 
 constexpr int SHIP_LOST_PATH_LENGTH = 8; // The length of the (aimless) path assigned when a ship is lost.
 
+constexpr int SHIP_CURVE45_PENALTY = 1 * YAPF_TILE_LENGTH;
+constexpr int SHIP_CURVE90_PENALTY = 6 * YAPF_TILE_LENGTH;
+
 template <class Types>
 class CYapfDestinationTileWaterT {
 public:
@@ -344,10 +347,10 @@ public:
 
 		if (HasTrackdir(TrackdirCrossesTrackdirs(td1), td2)) {
 			/* 90-deg curve penalty. */
-			return Yapf().PfGetSettings().ship_curve90_penalty;
+			return SHIP_CURVE90_PENALTY;
 		} else if (td2 != NextTrackdir(td1)) {
 			/* 45-deg curve penalty. */
-			return Yapf().PfGetSettings().ship_curve45_penalty;
+			return SHIP_CURVE45_PENALTY;
 		}
 		return 0;
 	}
