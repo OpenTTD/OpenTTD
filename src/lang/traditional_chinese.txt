@@ -1690,6 +1690,8 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :使用左鍵移
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :畫面平滑移動：{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :設定在小地圖中點選一個位置時，主畫面的顯示方式。啟用時，畫面會平緩移動到所點選的位置；否則畫面會直接跳到所點選的位置
 
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT                  :傳統工具列選單的選擇方法：{STRING}
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT_HELPTEXT         :選擇工具列選單的選擇方法。如果關閉，在點選工具列開啟選單時將維持開啟狀態，直到作出選擇為止。如果啟用，則工具列選單將在放開滑鼠按鈕時自動選擇預設或目前所選的項目。
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :使用某些建設工具時顯示度量提示：{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :當點選建造工具後拖曳滑鼠時，是否顯示兩端的方格距離及高度差異。

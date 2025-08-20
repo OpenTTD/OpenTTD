@@ -639,8 +639,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Betaling for levering av ti vareenheter (eller 10,000 liter) over en avstand på 20 ruter
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Alle
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Ingen
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Vis alle varer på varetakstgrafen
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Skjul alle varer på varetakstgrafen
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Vis alle varer på grafen
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Skjul alle varer på grafen
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Vis/skjul graf for en bestemt varetype
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -1692,6 +1692,8 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Panorer kartet 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Myk panorering av synsfelt: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Velge hvordan synsfeltet panorerer til en bestemt posisjon når du klikker på det lille kartet, eller ved utstedelse av en kommando for å gå til et bestemt objekt på kartet. Hvis aktivert, panorerer synsfeltet jevnt, og hvis deaktivert hopper det direkte til det valgte punktet
 
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT                  :Tradisjonell oppførsel for valg av verktøylinjemeny: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT_HELPTEXT         :Velg valgfunksjon for verktøylinjemenyer. Hvis av, vil verktøylinjemenyene forbli åpne til et valg gjøres. Hvis på, vil verktøylinjemenyene aktiveres når museknappen slippes.
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Vis målingsverktøy ved bruk av byggingsverktøy: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Vise avstander mellom kartelementer samt høydeforskjeller når du drar linjer ved byggevirksomhet
@@ -5417,7 +5419,7 @@ STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Det er i
 STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Det er ingen holdeplasser som egner seg for leddede kjøretøy{}Leddede kjøretøy krever holdeplasser med gjennomkjøring
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Dette flyet kan ikke lande på denne helikopterplassen
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Dette helikopteret kan ikke lande på denne flyplassen
-STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Det finnes ingen jernbaneveipunkt
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Det finnes ingen baneveipunkt
 STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}Det finnes ingen veipunkt for vei
 STR_ERROR_NO_BUOY                                               :{WHITE}Det finnes ingen bøye
 
@@ -5878,6 +5880,8 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :Tilskuer, {1:ST
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_CITY                                          :{TOWN} {CITY_ICON}
+STR_VIEWPORT_TOWN_CITY_POP                                      :{TOWN} ({COMMA}) {CITY_ICON}
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data

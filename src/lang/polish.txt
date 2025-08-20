@@ -2070,6 +2070,8 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Przeciągnij ma
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Wygładź przesuwanie widoku: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Określ, w jaki sposób widok główny ma być przesuwany do określonej lokalizacji po kliknięciu na minimapie lub po użyciu funkcji przeniesienia do określonego obiektu na mapie. Jeśli opcja ta jest włączona, widok przesuwa się płynnie, natomiast jeśli jest wyłączona, przeskakuje natychmiast do wybranego miejsca
 
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT                  :Tradycyjne zachowanie menu pod paskiem narzędzi: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT_HELPTEXT         :Określ zachowanie rozwijanych menu pod głównym paskiem narzędzi. Jeśli ta opcja jest wyłączona, menu pozostanie rozwinięte do momentu dokonania wyboru. Jeśli ta opcja jest włączona, pozycja menu zostanie aktywowana po zwolnieniu przycisku myszy.
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Pokaż dymek z pomiarem podczas używania różnych narzędzi: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Wyświetlaj długość budowanych odcinków i różnicę wysokości przy przeciąganiu w trakcie operacji budowlanych

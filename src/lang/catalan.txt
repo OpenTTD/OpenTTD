@@ -623,8 +623,14 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Gràfic 
 
 STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Últims 24 minuts
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Últims 72 minuts
+STR_GRAPH_LAST_288_MINUTES_TIME_LABEL                           :{TINY_FONT}{BLACK}Últims 288 minuts
 
+STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLACK}2 anys (mensual)
+STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 anys (trimestral)
+STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 anys (anual)
 
+STR_GRAPH_TOGGLE_RANGE                                          :Commuta el gràfic per al rang d'aquestes dades
+STR_GRAPH_SELECT_SCALE                                          :Canvia l'escala horitzontal del gràfic
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tarifes de pagament de càrregues
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Dies en trànsit
@@ -632,14 +638,20 @@ STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pagament per entregar 10 unitats (o 10.000 litres) de càrrega a una distància de 20 caselles
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Totes
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Cap
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Mostra totes les càrregues al gràfic de ratis de pagament de càrregues
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}No mostris càrregues al gràfic de ratis de pagament de càrregues
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Mostra totes les càrregues al gràfic.
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}No mostris cap càrrega al gràfic.
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Mostra/amaga el tipus de càrrega al gràfic
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Historial de càrregues
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Produït
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportat
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Entregades
+STR_GRAPH_INDUSTRY_RANGE_WAITING                                :En espera
 
+STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Historial de càrregues
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Subministrament
+STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transportades
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Mostra ratis de rendiment detallats
 
@@ -1031,6 +1043,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lats letó
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escut portuguès
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Hryvnia ucraïnès
+STR_GAME_OPTIONS_CURRENCY_VND                                   :Dong vietnamita
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Desa automàticament
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Selecciona l'interval de desada automàtica de la partida
@@ -1678,6 +1691,8 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Mou el mapa amb
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Desplaçament suau de la vista: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla com la vista principal es desplaça a una posició específica quan es fa clic al minimapa o quan s'envia una ordre de desplaçar-se a un objecte específic al mapa. Si està activat, la vista es desplaça suaument; si està desactivat, salta directament al punt assenyalat
 
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT                  :Comportament de la selecció dels menús de la barra d'eines tradicional: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT_HELPTEXT         :Escolliu el comportament de selecció dels menús de les barres d'eines. Si està desactivat, els menús es mantindran oberts fins que es faci una selecció. Si està activat, els menús de la barra d'eines s'activaran quan se solti el botó del ratolí.
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostra un cartell de mesura quan estiguis utilitzant vàries eines de construcció: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Mostra les distàncies-cel·la i les diferències d'alçada quan s'arrossegui durant la construcció
@@ -3696,6 +3711,8 @@ STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra l
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Autoritat local
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Mostra informació de l'autoritat local
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Canvia el nom de la població
+STR_TOWN_VIEW_CARGO_GRAPH                                       :Gràfic de càrregues
+STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :Mostra el gràfic de l'historial de càrregues de la població.
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Eixampla
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Incrementa la mida de la població
@@ -4028,6 +4045,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producci
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Producció durant l'últim minut:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}{NBSP}% transportat)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centra la vista principal al lloc de la indústria. Amb Ctrl+clic, s'obre una vista nova centrada al lloc on és la indústria.
+STR_INDUSTRY_VIEW_CARGO_GRAPH                                   :{BLACK}Gràfic de càrregues
+STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}Mostra el gràfic de l'historial de càrregues de la indústria.
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivell de producció: {YELLOW}{COMMA}{NBSP}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}La indústria ha anunciat la seva clausura imminent!
 
@@ -5399,7 +5418,7 @@ STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}No hi ha
 STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}No hi ha parades que siguin adequades per a vehicles de carretera articulats.{}Aquest tipus de vehicles necessiten una estació de pas, no pas una estació final
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}L'avió no pot aterrar en aquest aeroport
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}L'helicòpter no pot aterrar en aquest aeroport
-STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}No hi ha cap punt de pas ferroviari
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}No hi ha cap punt de pas.
 STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}No hi ha cap punt de control de carretera.
 STR_ERROR_NO_BUOY                                               :{WHITE}No hi ha cap boia
 
@@ -5860,6 +5879,8 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :{G=Masculin}Esp
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_CITY                                          :{TOWN} {CITY_ICON}
+STR_VIEWPORT_TOWN_CITY_POP                                      :{TOWN} ({COMMA}) {CITY_ICON}
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data

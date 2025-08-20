@@ -638,8 +638,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}10 단위(1만 리터)의 화물을 20칸 거리만큼 운송할 때의 운송비 지급량
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}모두
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}없음
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}화물 운송단가 비율 그래프에서 모든 화물을 표시
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}화물 운송단가 비율 그래프에서 모든 화물을 표시 안 함
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}그래프에 모든 화물을 표시
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}그래프에 모든 화물을 숨김
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}이 화물의 그래프를 표시하거나 숨깁니다
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -1043,6 +1043,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :말레이시아
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :라트비아 라츠
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :포르투갈 이스쿠두
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :우크라이나 흐리우냐
+STR_GAME_OPTIONS_CURRENCY_VND                                   :베트남 동
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :자동 저장
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :게임 자동 저장 간격을 선택
@@ -1690,6 +1691,8 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :마우스 왼�
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :게임 화면을 이동시킬 때 부드럽게 이동: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :소형 지도를 클릭하여 특정 지역으로 스크롤되거나 지도 상의 특정 장소로 이동하는 경우에 주 화면이 어떻게 스크롤 되는지를 설정합니다. 이 설정을 켜면, 화면이 목표 지점까지 부드럽게 이동하고, 설정을 끄면 목표 지점으로 곧바로 넘어가게 됩니다.
 
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT                  :도구 메뉴 자동 선택: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT_HELPTEXT         :메뉴를 선택했을 때의 행동을 고릅니다. 이 설정을 끄면, 메뉴에서 항목을 선택하기 전까지는 메뉴가 열린 상태로 유지됩니다. 이 설정을 켜면, 마우스 버튼을 놓는 순간 메뉴가 바로 클릭됩니다.
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :건설도구 사용시 거리 도움말 표시: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :철도/도로 등의 기반시설을 건설할 때 거리와 높이 차이 등을 표시합니다
@@ -5876,6 +5879,8 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :관전자의 �
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_CITY                                          :{TOWN} {CITY_ICON}
+STR_VIEWPORT_TOWN_CITY_POP                                      :{TOWN} ({COMMA}) {CITY_ICON}
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data
