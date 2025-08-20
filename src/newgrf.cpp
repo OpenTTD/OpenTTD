@@ -1678,6 +1678,9 @@ static void AfterLoadGRFs()
 	InitRailTypes();
 	InitRoadTypes();
 
+	/* Force cached palettes to be refreshed */
+	ResetVehicleColourMap();
+
 	for (Engine *e : Engine::IterateType(VEH_ROAD)) {
 		if (_gted[e->index].rv_max_speed != 0) {
 			/* Set RV maximum speed from the mph/0.8 unit value */
@@ -1854,6 +1857,9 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 
 	/* Pseudo sprite processing is finished; free temporary stuff */
 	_cur_gps.ClearDataForNextFile();
+
+	/* Make note of last sprite ID loaded for dynamic sprite management */
+	ClearDynamicSprites();
 
 	/* Call any functions that should be run after GRFs have been loaded. */
 	AfterLoadGRFs();

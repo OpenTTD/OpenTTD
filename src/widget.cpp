@@ -300,8 +300,6 @@ void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, Fra
 	if (flags.Test(FrameFlag::Transparent)) {
 		GfxFillRect(left, top, right, bottom, PALETTE_TO_TRANSPARENT, FILLRECT_RECOLOUR);
 	} else {
-		assert(colour < COLOUR_END);
-
 		const PixelColour dark         = GetColourGradient(colour, SHADE_DARK);
 		const PixelColour medium_dark  = GetColourGradient(colour, SHADE_LIGHT);
 		const PixelColour medium_light = GetColourGradient(colour, SHADE_LIGHTER);

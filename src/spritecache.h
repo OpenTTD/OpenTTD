@@ -41,10 +41,9 @@ inline const Sprite *GetSprite(SpriteID sprite, SpriteType type)
 	return (Sprite*)GetRawSprite(sprite, type);
 }
 
-inline const uint8_t *GetNonSprite(SpriteID sprite, SpriteType type)
+inline const RecolourSprite *GetRecolourSprite(SpriteID sprite)
 {
-	assert(type == SpriteType::Recolour);
-	return (uint8_t*)GetRawSprite(sprite, type);
+	return static_cast<RecolourSprite *>(GetRawSprite(sprite, SpriteType::Recolour));
 }
 
 void GfxInitSpriteMem();
@@ -60,5 +59,10 @@ size_t GetGRFSpriteOffset(uint32_t id);
 bool LoadNextSprite(SpriteID load_index, SpriteFile &file, uint file_sprite_id);
 bool SkipSpriteData(SpriteFile &file, uint8_t type, uint16_t num);
 void DupSprite(SpriteID old_spr, SpriteID new_spr);
+void InjectSprite(SpriteType type, SpriteID load_index, std::function<void(SpriteAllocator &)> func);
+
+void ClearDynamicSprites();
+SpriteID AllocateDynamicSprite();
+void DeallocateDynamicSprite(SpriteID spite);
 
 #endif /* SPRITECACHE_H */

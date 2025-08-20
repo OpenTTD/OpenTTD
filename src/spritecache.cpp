@@ -407,6 +407,38 @@ static bool ResizeSprites(SpriteLoader::SpriteCollection &sprite, ZoomLevels spr
 }
 
 /**
+ * Read palette recolour sprite data.
+ * @param file SpriteFile to read from.
+ * @param entries Number of entries to read.
+ */
+static void ReadPaletteRecolourSprite(SpriteFile &file, size_t entries, RecolourSprite &rs)
+{
+	assert(entries <= RecolourSprite::PALETTE_SIZE);
+	if (file.NeedsPaletteRemap()) {
+		/* Remapping from "Windows" to "DOS" requires a temporary buffer as entries are overwritten. */
+		std::array<uint8_t, RecolourSprite::PALETTE_SIZE> tmp{};
+		file.ReadBlock(tmp.data(), entries);
+
+		for (uint i = 0; i < entries; ++i) {
+			rs.palette[i] = _palmap_w2d[tmp[_palmap_d2w[i]]];
+		}
+	} else {
+		file.ReadBlock(rs.palette, entries);
+	}
+}
+
+static void ReadRGBARecolourSprite(SpriteFile &file, size_t entries, RecolourSpriteRGBA &rs)
+{
+	/* Colour is byte-arranged differently by platform, so read components individually. */
+	for (uint i = 0; i < entries; ++i) {
+		rs.rgba[i].r = file.ReadByte();
+		rs.rgba[i].g = file.ReadByte();
+		rs.rgba[i].b = file.ReadByte();
+		rs.rgba[i].a = file.ReadByte();
+	}
+}
+
+/**
  * Load a recolour sprite into memory.
  * @param file GRF we're reading from.
  * @param file_pos Position within file.
@@ -416,31 +448,33 @@ static bool ResizeSprites(SpriteLoader::SpriteCollection &sprite, ZoomLevels spr
  */
 static void *ReadRecolourSprite(SpriteFile &file, size_t file_pos, uint num, SpriteAllocator &allocator)
 {
-	/* "Normal" recolour sprites are ALWAYS 257 bytes. Then there is a small
-	 * number of recolour sprites that are 17 bytes that only exist in DOS
-	 * GRFs which are the same as 257 byte recolour sprites, but with the last
-	 * 240 bytes zeroed.  */
-	static const uint RECOLOUR_SPRITE_SIZE = 257;
-	uint8_t *dest = allocator.Allocate<uint8_t>(std::max(RECOLOUR_SPRITE_SIZE, num));
-
 	file.SeekTo(file_pos, SEEK_SET);
-	if (file.NeedsPaletteRemap()) {
-		uint8_t *dest_tmp = new uint8_t[std::max(RECOLOUR_SPRITE_SIZE, num)];
 
-		/* Only a few recolour sprites are less than 257 bytes */
-		if (num < RECOLOUR_SPRITE_SIZE) std::fill_n(dest_tmp, RECOLOUR_SPRITE_SIZE, 0);
-		file.ReadBlock(dest_tmp, num);
+	/* The first byte of the recolour sprite records the number of entries, with
+	 * the caveat that as this is a single byte 256 is recorded as 0. */
+	uint entries = file.ReadByte();
+	if (entries == 0) entries = 256;
+	--num;
 
-		/* The data of index 0 is never used; "literal 00" according to the (New)GRF specs. */
-		for (uint i = 1; i < RECOLOUR_SPRITE_SIZE; i++) {
-			dest[i] = _palmap_w2d[dest_tmp[_palmap_d2w[i - 1] + 1]];
-		}
-		delete[] dest_tmp;
-	} else {
-		file.ReadBlock(dest, num);
+	if (entries > num) {
+		Debug(grf, 1, "ReadRecolourSprite: Expected recolour sprite with {} entries but only {} present", entries, num);
+		entries = num;
 	}
 
-	return dest;
+	num -= entries;
+	if (num == entries * 4) {
+		RecolourSpriteRGBA *rs_rgba = allocator.Allocate<RecolourSpriteRGBA>(sizeof(RecolourSpriteRGBA));
+
+		rs_rgba->is_rgba = true;
+		ReadPaletteRecolourSprite(file, entries, *rs_rgba);
+		ReadRGBARecolourSprite(file, entries, *rs_rgba);
+		return rs_rgba;
+	}
+
+	RecolourSprite *rs = allocator.Allocate<RecolourSprite>(sizeof(RecolourSprite));
+	rs->is_rgba = false;
+	ReadPaletteRecolourSprite(file, entries, *rs);
+	return rs;
 }
 
 /**
@@ -733,7 +767,7 @@ static void DeleteEntriesFromSpriteCache(size_t to_remove)
 	SpriteID i = 0;
 	for (; i != static_cast<SpriteID>(_spritecache.size()) && candidate_bytes < to_remove; i++) {
 		const SpriteCache *sc = GetSpriteCache(i);
-		if (sc->ptr != nullptr) {
+		if (sc->ptr != nullptr && sc->file != nullptr) {
 			push({ sc->lru, i, sc->length });
 			if (candidate_bytes >= to_remove) break;
 		}
@@ -742,7 +776,7 @@ static void DeleteEntriesFromSpriteCache(size_t to_remove)
 	 * only sprites with LRU values <= the maximum (i.e. the top of the heap) need to be considered */
 	for (; i != static_cast<SpriteID>(_spritecache.size()); i++) {
 		const SpriteCache *sc = GetSpriteCache(i);
-		if (sc->ptr != nullptr && sc->lru <= candidates.front().lru) {
+		if (sc->ptr != nullptr && sc->file != nullptr && sc->lru <= candidates.front().lru) {
 			push({ sc->lru, i, sc->length });
 			while (!candidates.empty() && candidate_bytes - candidates.front().size >= to_remove) {
 				pop();
@@ -784,6 +818,10 @@ void IncreaseSpriteLRU()
 
 void SpriteCache::ClearSpriteData()
 {
+	if (this->ptr == nullptr) return;
+
+	if (this->type == SpriteType::Recolour) reinterpret_cast<RecolourSprite *>(this->ptr.get())->~RecolourSprite();
+
 	_spritecache_bytes_used -= this->length;
 	this->ptr.reset();
 }
@@ -793,6 +831,29 @@ void *UniquePtrSpriteAllocator::AllocatePtr(size_t size)
 	this->data = std::make_unique<std::byte[]>(size);
 	this->size = size;
 	return this->data.get();
+}
+
+/**
+ * Allocate and inject memory for a memory-based sprite.
+ */
+void InjectSprite(SpriteType type, SpriteID load_index, std::function<void(SpriteAllocator &)> func)
+{
+	if (SpriteExists(load_index)) GetSpriteCache(load_index)->ClearSpriteData();
+
+	SpriteCache *sc = AllocateSpriteCache(load_index);
+	sc->file_pos      = SIZE_MAX;
+	sc->file          = nullptr;
+	sc->id            = 0;
+	sc->lru           = 0;
+	sc->type          = type;
+	sc->warned        = false;
+	sc->control_flags = {};
+
+	UniquePtrSpriteAllocator cache_allocator;
+	func(cache_allocator);
+	sc->ptr = std::move(cache_allocator.data);
+	sc->length = static_cast<uint32_t>(cache_allocator.size);
+	_spritecache_bytes_used += sc->length;
 }
 
 /**
@@ -928,3 +989,44 @@ void GfxClearFontSpriteCache()
 }
 
 /* static */ SpriteCollMap<ReusableBuffer<SpriteLoader::CommonPixel>> SpriteLoader::Sprite::buffer;
+
+static SpriteID _sprites_end; ///< First usable free sprite ID.
+static std::vector<uint32_t> _dynamic_sprites; ///< List of used/free custom sprite slots.
+
+/**
+ * Clear custom sprites mapping and set first usable free sprite ID.
+ */
+void ClearDynamicSprites()
+{
+	_dynamic_sprites.clear();
+	_sprites_end = _spritecache.size();
+}
+
+/**
+ * Allocate a custom sprite ID.
+ */
+SpriteID AllocateDynamicSprite()
+{
+	/* Find first unused slot, or make one. */
+	auto it = std::ranges::find(_dynamic_sprites, 0);
+	if (it == std::end(_dynamic_sprites)) it = _dynamic_sprites.emplace(it, 0);
+
+	(*it)++;
+	return _sprites_end + std::distance(std::begin(_dynamic_sprites), it);
+}
+
+/**
+ * Mark a custom sprite ID as deallocated.
+ * The sprite slot is merely marked as reusable.
+ */
+void DeallocateDynamicSprite(SpriteID sprite)
+{
+	if (sprite >= _sprites_end && sprite < _sprites_end + _dynamic_sprites.size()) {
+		assert(_dynamic_sprites[sprite - _sprites_end] > 0);
+		--_dynamic_sprites[sprite - _sprites_end];
+
+		if (_dynamic_sprites[sprite - _sprites_end] == 0) {
+			GetSpriteCache(sprite)->ClearSpriteData();
+		}
+	}
+}

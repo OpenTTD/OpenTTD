@@ -2045,7 +2045,6 @@ LiveryScheme GetEngineLiveryScheme(EngineID engine_type, EngineID parent_engine_
 const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID parent_engine_type, const Vehicle *v, uint8_t livery_setting)
 {
 	const Company *c = Company::Get(company);
-	LiveryScheme scheme = LS_DEFAULT;
 
 	if (livery_setting == LIT_ALL || (livery_setting == LIT_COMPANY && company == _local_company)) {
 		if (v != nullptr) {
@@ -2063,11 +2062,12 @@ const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID 
 		 * whether any _other_ liveries are in use. */
 		if (c->livery[LS_DEFAULT].in_use != 0) {
 			/* Determine the livery scheme to use */
-			scheme = GetEngineLiveryScheme(engine_type, parent_engine_type, v);
+			LiveryScheme scheme = GetEngineLiveryScheme(engine_type, parent_engine_type, v);
+			if (c->livery[scheme].in_use != 0) return &c->livery[scheme];
 		}
 	}
 
-	return &c->livery[scheme];
+	return &c->livery[LS_DEFAULT];
 }
 
 
@@ -2080,6 +2080,15 @@ static PaletteID GetEngineColourMap(EngineID engine_type, CompanyID company, Eng
 
 	const Engine *e = Engine::Get(engine_type);
 
+	/* Default livery for spectators */
+	static const Livery default_livery = {
+		0, COLOUR_GREY, COLOUR_GREY,
+		PALETTE_RECOLOUR_START, SPR_2CCMAP_BASE, SPR_2CCMAP_BASE,
+	};
+
+	bool twocc = e->info.misc_flags.Test(EngineMiscFlag::Uses2CC);
+	const Livery *livery = Company::IsValidID(company) ? GetEngineLivery(engine_type, company, parent_engine_type, v, _settings_client.gui.liveries) : &default_livery;
+
 	/* Check if we should use the colour map callback */
 	if (e->info.callback_mask.Test(VehicleCallbackMask::ColourRemap)) {
 		uint16_t callback = GetVehicleCallback(CBID_VEHICLE_COLOUR_MAPPING, 0, 0, engine_type, v);
@@ -2090,6 +2099,15 @@ static PaletteID GetEngineColourMap(EngineID engine_type, CompanyID company, Eng
 			/* If bit 14 is set, then the company colours are applied to the
 			 * map else it's returned as-is. */
 			if (!HasBit(callback, 14)) {
+				/* Test if this is the standard remap/reversed remap */
+				if (map == PALETTE_RECOLOUR_START + (livery->colour1 & 0xF)) {
+					map = livery->cached_pal_1cc;
+				} else if (map == SPR_2CCMAP_BASE + (livery->colour1 & 0xF) + (livery->colour2 & 0xF) * 16) {
+					map = livery->cached_pal_2cc;
+				} else if (map == SPR_2CCMAP_BASE + (livery->colour2 & 0xF) + (livery->colour1 & 0xF) * 16) {
+					map = livery->cached_pal_2cr;
+				}
+
 				/* Update cache */
 				if (v != nullptr) const_cast<Vehicle *>(v)->colourmap = map;
 				return map;
@@ -2097,17 +2115,19 @@ static PaletteID GetEngineColourMap(EngineID engine_type, CompanyID company, Eng
 		}
 	}
 
-	bool twocc = e->info.misc_flags.Test(EngineMiscFlag::Uses2CC);
-
 	if (map == PAL_NONE) map = twocc ? (PaletteID)SPR_2CCMAP_BASE : (PaletteID)PALETTE_RECOLOUR_START;
 
 	/* Spectator has news shown too, but has invalid company ID - as well as dedicated server */
 	if (!Company::IsValidID(company)) return map;
 
-	const Livery *livery = GetEngineLivery(engine_type, company, parent_engine_type, v, _settings_client.gui.liveries);
-
-	map += livery->colour1;
-	if (twocc) map += livery->colour2 * 16;
+	if (map == PALETTE_RECOLOUR_START || map == SPR_2CCMAP_BASE) {
+		/* Use cached palette when using default remaps */
+		map = twocc ? livery->cached_pal_2cc : livery->cached_pal_1cc;
+	} else {
+		/* Add offsets for custom NewGRF remaps */
+		map += livery->colour1;
+		if (twocc) map += livery->colour2 * 16;
+	}
 
 	/* Update cache */
 	if (v != nullptr) const_cast<Vehicle *>(v)->colourmap = map;

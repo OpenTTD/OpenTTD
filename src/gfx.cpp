@@ -72,8 +72,8 @@ int _gui_scale_cfg;                         ///< GUI scale in config.
  * @ingroup dirty
  */
 static Rect _invalid_rect;
-static const uint8_t *_colour_remap_ptr;
-static uint8_t _string_colourremap[3]; ///< Recoloursprite for stringdrawing. The grf loader ensures that #SpriteType::Font sprites only use colours 0 to 2.
+static const RecolourSprite *_colour_remap_ptr;
+static RecolourSpriteRGBA _string_colourremap; ///< RecolourSprite for string drawing.
 
 static const uint DIRTY_BLOCK_HEIGHT   = 8;
 static const uint DIRTY_BLOCK_WIDTH    = 64;
@@ -470,19 +470,34 @@ void DrawRectOutline(const Rect &r, PixelColour colour, int width, int dash)
  * Set the colour remap to be for the given colour.
  * @param colour the new colour of the remap.
  */
-static void SetColourRemap(TextColour colour)
+static BlitterMode SetColourRemap(TextColour colour)
 {
-	if (colour == TC_INVALID) return;
+	if (colour == TC_INVALID) return BlitterMode::ColourRemap;
 
 	/* Black strings have no shading ever; the shading is black, so it
 	 * would be invisible at best, but it actually makes it illegible. */
-	bool no_shade   = (colour & TC_NO_SHADE) != 0 || colour == TC_BLACK;
+	bool no_shade = (colour & TC_NO_SHADE) != 0 || colour == TC_BLACK;
+
+	if ((colour & TC_IS_RGB_COLOUR) && BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 32) {
+		/* Unpack RGB TextColour */
+		TextColourPacker tcp(colour);
+		_string_colourremap.is_rgba = true;
+		_string_colourremap.rgba[1] = tcp.ToColour();
+		_string_colourremap.rgba[2] = _cur_palette.palette[no_shade ? 0 : PC_BLACK.p];
+		_colour_remap_ptr = &_string_colourremap;
+
+		return BlitterMode::RGBAColourRemap;
+	}
+
 	bool raw_colour = (colour & TC_IS_PALETTE_COLOUR) != 0;
 	colour &= ~(TC_NO_SHADE | TC_IS_PALETTE_COLOUR | TC_FORCED);
 
-	_string_colourremap[1] = raw_colour ? (uint8_t)colour : _string_colourmap[colour].p;
-	_string_colourremap[2] = no_shade ? 0 : 1;
-	_colour_remap_ptr = _string_colourremap;
+	_string_colourremap.is_rgba = false;
+	_string_colourremap.palette[1] = raw_colour ? (uint8_t)colour : _string_colourmap[colour].p;
+	_string_colourremap.palette[2] = no_shade ? 0 : PC_BLACK.p;
+	_colour_remap_ptr = &_string_colourremap;
+
+	return BlitterMode::ColourRemap;
 }
 
 /**
@@ -602,7 +617,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 			/* Update the last colour for the truncation ellipsis. */
 			last_colour = colour;
 			if (do_shadow && (!fc->GetDrawGlyphShadow() || !colour_has_shadow)) continue;
-			SetColourRemap(do_shadow ? TC_BLACK : colour);
+			BlitterMode bm = SetColourRemap(do_shadow ? TC_BLACK : colour); // the last run also sets the colour for the truncation dots
 
 			for (int i = 0; i < run.GetGlyphCount(); i++) {
 				GlyphID glyph = glyphs[i];
@@ -623,7 +638,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 
 				if (do_shadow && (glyph & SPRITE_GLYPH) != 0) continue;
 
-				GfxMainBlitter(sprite, begin_x + (do_shadow ? shadow_offset : 0), top + (do_shadow ? shadow_offset : 0), BlitterMode::ColourRemap);
+				GfxMainBlitter(sprite, begin_x + (do_shadow ? shadow_offset : 0), top + (do_shadow ? shadow_offset : 0), bm);
 			}
 		}
 		return last_colour;
@@ -640,7 +655,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 	}
 
 	if (underline) {
-		GfxFillRect(left, y + h, right, y + h + WidgetDimensions::scaled.bevel.top - 1, PixelColour{_string_colourremap[1]});
+		GfxFillRect(left, y + h, right, y + h + WidgetDimensions::scaled.bevel.top - 1, PixelColour{_string_colourremap.palette[1]});
 	}
 
 	return (align & SA_HOR_MASK) == SA_RIGHT ? left : right;
@@ -948,11 +963,11 @@ Dimension GetStringListBoundingBox(std::span<const StringID> list, FontSize font
  */
 void DrawCharCentered(char32_t c, const Rect &r, TextColour colour)
 {
-	SetColourRemap(colour);
+	BlitterMode bm = SetColourRemap(colour);
 	GfxMainBlitter(GetGlyph(FS_NORMAL, c),
 		CentreBounds(r.left, r.right, GetCharacterWidth(FS_NORMAL, c)),
 		CentreBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)),
-		BlitterMode::ColourRemap);
+		bm);
 }
 
 /**
@@ -983,13 +998,13 @@ Dimension GetSpriteSize(SpriteID sprid, Point *offset, ZoomLevel zoom)
  * @param pal The palette to get the blitter mode for.
  * @return The blitter mode associated with the palette.
  */
-static BlitterMode GetBlitterMode(PaletteID pal)
+static BlitterMode GetBlitterMode(PaletteID pal, const RecolourSprite &recolour)
 {
 	switch (pal) {
 		case PAL_NONE:          return BlitterMode::Normal;
 		case PALETTE_CRASH:     return BlitterMode::CrashRemap;
 		case PALETTE_ALL_BLACK: return BlitterMode::BlackRemap;
-		default:                return BlitterMode::ColourRemap;
+		default:                return recolour.is_rgba && BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 32 ? BlitterMode::RGBAColourRemap : BlitterMode::ColourRemap;
 	}
 }
 
@@ -1006,15 +1021,17 @@ void DrawSpriteViewport(SpriteID img, PaletteID pal, int x, int y, const SubSpri
 	SpriteID real_sprite = GB(img, 0, SPRITE_WIDTH);
 	if (HasBit(img, PALETTE_MODIFIER_TRANSPARENT)) {
 		pal = GB(pal, 0, PALETTE_WIDTH);
-		_colour_remap_ptr = GetNonSprite(pal, SpriteType::Recolour) + 1;
+		_colour_remap_ptr = GetRecolourSprite(pal);
 		GfxMainBlitterViewport(GetSprite(real_sprite, SpriteType::Normal), x, y, pal == PALETTE_TO_TRANSPARENT ? BlitterMode::Transparent : BlitterMode::TransparentRemap, sub, real_sprite);
 	} else if (pal != PAL_NONE) {
+		BlitterMode bm;
 		if (HasBit(pal, PALETTE_TEXT_RECOLOUR)) {
-			SetColourRemap((TextColour)GB(pal, 0, PALETTE_WIDTH));
+			bm = SetColourRemap((TextColour)GB(pal, 0, PALETTE_WIDTH));
 		} else {
-			_colour_remap_ptr = GetNonSprite(GB(pal, 0, PALETTE_WIDTH), SpriteType::Recolour) + 1;
+			_colour_remap_ptr = GetRecolourSprite(GB(pal, 0, PALETTE_WIDTH));
+			bm = GetBlitterMode(pal, *_colour_remap_ptr);
 		}
-		GfxMainBlitterViewport(GetSprite(real_sprite, SpriteType::Normal), x, y, GetBlitterMode(pal), sub, real_sprite);
+		GfxMainBlitterViewport(GetSprite(real_sprite, SpriteType::Normal), x, y, bm, sub, real_sprite);
 	} else {
 		GfxMainBlitterViewport(GetSprite(real_sprite, SpriteType::Normal), x, y, BlitterMode::Normal, sub, real_sprite);
 	}
@@ -1034,15 +1051,17 @@ void DrawSprite(SpriteID img, PaletteID pal, int x, int y, const SubSprite *sub,
 	SpriteID real_sprite = GB(img, 0, SPRITE_WIDTH);
 	if (HasBit(img, PALETTE_MODIFIER_TRANSPARENT)) {
 		pal = GB(pal, 0, PALETTE_WIDTH);
-		_colour_remap_ptr = GetNonSprite(pal, SpriteType::Recolour) + 1;
+		_colour_remap_ptr = GetRecolourSprite(pal);
 		GfxMainBlitter(GetSprite(real_sprite, SpriteType::Normal), x, y, pal == PALETTE_TO_TRANSPARENT ? BlitterMode::Transparent : BlitterMode::TransparentRemap, sub, real_sprite, zoom);
 	} else if (pal != PAL_NONE) {
+		BlitterMode bm;
 		if (HasBit(pal, PALETTE_TEXT_RECOLOUR)) {
-			SetColourRemap((TextColour)GB(pal, 0, PALETTE_WIDTH));
+			bm = SetColourRemap((TextColour)GB(pal, 0, PALETTE_WIDTH));
 		} else {
-			_colour_remap_ptr = GetNonSprite(GB(pal, 0, PALETTE_WIDTH), SpriteType::Recolour) + 1;
+			_colour_remap_ptr = GetRecolourSprite(GB(pal, 0, PALETTE_WIDTH));
+			bm = GetBlitterMode(pal, *_colour_remap_ptr);
 		}
-		GfxMainBlitter(GetSprite(real_sprite, SpriteType::Normal), x, y, GetBlitterMode(pal), sub, real_sprite, zoom);
+		GfxMainBlitter(GetSprite(real_sprite, SpriteType::Normal), x, y, bm, sub, real_sprite, zoom);
 	} else {
 		GfxMainBlitter(GetSprite(real_sprite, SpriteType::Normal), x, y, BlitterMode::Normal, sub, real_sprite, zoom);
 	}

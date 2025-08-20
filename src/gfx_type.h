@@ -280,7 +280,7 @@ struct SubSprite {
 	int left, top, right, bottom;
 };
 
-enum Colours : uint8_t {
+enum Colours : uint32_t {
 	COLOUR_BEGIN,
 	COLOUR_DARK_BLUE = COLOUR_BEGIN,
 	COLOUR_PALE_GREEN,
@@ -299,13 +299,14 @@ enum Colours : uint8_t {
 	COLOUR_GREY,
 	COLOUR_WHITE,
 	COLOUR_END,
-	INVALID_COLOUR = 0xFF,
+	INVALID_COLOUR = UINT32_MAX,
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(Colours)
 DECLARE_ENUM_AS_ADDABLE(Colours)
+DECLARE_ENUM_AS_BIT_SET(Colours)
 
 /** Colour of the strings, see _string_colourmap in table/string_colours.h or docs/ottd-colourtext-palette.png */
-enum TextColour : uint16_t {
+enum TextColour : uint32_t {
 	TC_BEGIN       = 0x00,
 	TC_FROMSTRING  = 0x00,
 	TC_BLUE        = 0x00,
@@ -331,9 +332,10 @@ enum TextColour : uint16_t {
 	TC_IS_PALETTE_COLOUR = 0x100, ///< Colour value is already a real palette colour index, not an index of a StringColour.
 	TC_NO_SHADE          = 0x200, ///< Do not add shading to this text colour.
 	TC_FORCED            = 0x400, ///< Ignore colour changes from strings.
+	TC_IS_RGB_COLOUR     = 0x800, ///< Colour includes RGB component.
 
 	TC_COLOUR_MASK = 0xFF, ///< Mask to test if TextColour (without flags) is within limits.
-	TC_FLAGS_MASK = 0x700, ///< Mask to test if TextColour (with flags) is within limits.
+	TC_FLAGS_MASK = 0xF00, ///< Mask to test if TextColour (with flags) is within limits.
 };
 DECLARE_ENUM_AS_BIT_SET(TextColour)
 
@@ -404,12 +406,30 @@ DECLARE_ENUM_AS_BIT_SET(StringAlignment)
 
 /** Colour for pixel/line drawing. */
 struct PixelColour {
-	uint8_t p; ///< Palette index.
+	uint8_t p = 0; ///< Palette index.
+	uint8_t r = 0; ///< Red component.
+	uint8_t g = 0; ///< Green component.
+	uint8_t b = 0; ///< Blue component.
 
-	constexpr PixelColour() : p(0) {}
+	constexpr PixelColour() {}
 	explicit constexpr PixelColour(uint8_t p) : p(p) {}
+	constexpr PixelColour(uint8_t p, Colour colour) : p(p), r(colour.r), g(colour.g), b(colour.b) {}
+	PixelColour(Colour colour);
 
-	constexpr inline TextColour ToTextColour() const { return static_cast<TextColour>(this->p) | TC_IS_PALETTE_COLOUR; }
+	constexpr inline bool HasRGB() const { return (this->r | this->g | this->b) != 0; }
+	constexpr inline Colour ToColour() const { return {this->r, this->g, this->b}; }
+	TextColour ToTextColour() const;
+};
+
+struct HsvColour {
+	static constexpr int HUE_MAX = 360 * 128; ///< Maximum value for hue.
+	static constexpr int SAT_MAX = UINT8_MAX; ///< Maximum value for saturation.
+	static constexpr int VAL_MAX = UINT8_MAX; ///< Maximum value for value.
+	static constexpr int HUE_RGN = HUE_MAX / 6;
+
+	uint16_t h; ///< Hue ranging from 0 to HUE_MAX.
+	uint8_t s; ///< Saturation ranging from 0 to SAT_MAX.
+	uint8_t v; ///< Value (brightness) ranging from 0 to VAL_MAX.
 };
 
 #endif /* GFX_TYPE_H */

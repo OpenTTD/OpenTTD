@@ -85,7 +85,7 @@ void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Z
 			switch (mode) {
 				case BlitterMode::ColourRemap:
 				case BlitterMode::CrashRemap: {
-					const uint8_t *remap = bp->remap;
+					const uint8_t *remap = bp->remap->palette;
 					do {
 						uint m = remap[*src];
 						if (m != 0) *dst = m;
@@ -101,7 +101,7 @@ void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Z
 
 				case BlitterMode::Transparent:
 				case BlitterMode::TransparentRemap: {
-					const uint8_t *remap = bp->remap;
+					const uint8_t *remap = bp->remap->palette;
 					src += pixels;
 					do {
 						*dst = remap[*dst];
