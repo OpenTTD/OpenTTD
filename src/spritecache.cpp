@@ -429,14 +429,30 @@ static void ReadPaletteRecolourSprite(SpriteFile &file, size_t entries, Recolour
 	}
 }
 
-static void ReadRGBARecolourSprite(SpriteFile &file, size_t entries, RecolourSpriteRGBA &rs)
+/**
+ * Read RGBA palette recolour sprite data.
+ * @param file SpriteFile to read from.
+ * @param[in,out] rs RecolourSpriteRGBA to read into.
+ */
+static void ReadRGBARecolourSprite(SpriteFile &file, RecolourSpriteRGBA &rs)
 {
-	/* Colour is byte-arranged differently by platform, so read components individually. */
-	for (uint i = 0; i < entries; ++i) {
-		rs.rgba[i].r = file.ReadByte();
-		rs.rgba[i].g = file.ReadByte();
-		rs.rgba[i].b = file.ReadByte();
-		rs.rgba[i].a = file.ReadByte();
+	/* By default all entries are unmapped. */
+	std::ranges::fill(rs.rgba, UNMAPPED_COLOUR);
+
+	while (true) {
+		uint count = file.ReadWord();
+		if (count == 0) break;
+
+		uint index = file.ReadByte();
+		for (uint i = index; i != index + count; ++i) {
+			/* Wrap out-of-range index back into range. */
+			Colour &c = rs.rgba[i % std::size(rs.rgba)];
+			/* Colour is byte-arranged differently by platform, so read components individually. */
+			c.r = file.ReadByte();
+			c.g = file.ReadByte();
+			c.b = file.ReadByte();
+			c.a = file.ReadByte();
+		}
 	}
 }
 
@@ -464,12 +480,12 @@ static void *ReadRecolourSprite(SpriteFile &file, size_t file_pos, uint num, Spr
 	}
 
 	num -= entries;
-	if (num == entries * 4) {
+	if (num > 2) {
 		RecolourSpriteRGBA *rs_rgba = allocator.Allocate<RecolourSpriteRGBA>(sizeof(RecolourSpriteRGBA));
 
 		rs_rgba->is_rgba = true;
 		ReadPaletteRecolourSprite(file, entries, *rs_rgba);
-		ReadRGBARecolourSprite(file, entries, *rs_rgba);
+		ReadRGBARecolourSprite(file, *rs_rgba);
 		return rs_rgba;
 	}
 
