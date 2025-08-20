@@ -244,6 +244,8 @@ using Colour = std::conditional_t<std::endian::native == std::endian::little, Co
 
 static_assert(sizeof(Colour) == sizeof(uint32_t));
 
+static constexpr Colour UNMAPPED_COLOUR{255, 0, 255, 0};
+
 /** Available font sizes */
 enum FontSize : uint8_t {
 	FS_NORMAL, ///< Index of the normal font in the font tables.

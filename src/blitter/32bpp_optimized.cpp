@@ -151,7 +151,7 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 							if (m == 0) {
 								*dst = src_px->data;
 							} else {
-								const Colour c = remap_rgba[GB(m, 0, 8)];
+								Colour c = this->LookupColourInRemapPalette(remap_rgba, GB(m, 0, 8));
 								*dst = AdjustBrightness(c, GB(m, 8, 8));
 							}
 							dst++;
@@ -164,7 +164,7 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 							if (m == 0) {
 								*dst = ComposeColourRGBANoCheck(src_px->r, src_px->g, src_px->b, src_px->a, *dst);
 							} else {
-								const Colour c = remap_rgba[GB(m, 0, 8)];
+								Colour c = this->LookupColourInRemapPalette(remap_rgba, GB(m, 0, 8));
 								*dst = ComposeColourPANoCheck(AdjustBrightness(c, GB(m, 8, 8)), src_px->a, *dst);
 							}
 							dst++;

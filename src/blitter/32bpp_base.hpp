@@ -40,6 +40,12 @@ public:
 		return _cur_palette.palette[index];
 	}
 
+	inline Colour LookupColourInRemapPalette(const Colour *remap_rgba, uint index)
+	{
+		if (remap_rgba[index] == UNMAPPED_COLOUR) return this->LookupColourInPalette(index);
+		return remap_rgba[index];
+	}
+
 	/**
 	 * Compose a colour based on RGBA values and the current pixel value.
 	 * @param r The red component of the colour to blend between 0 and 255 (inclusive).

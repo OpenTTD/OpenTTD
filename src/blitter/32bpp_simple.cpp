@@ -53,7 +53,7 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 					if (src->m == 0) {
 						if (src->a != 0) *dst = ComposeColourRGBA(src->r, src->g, src->b, src->a, *dst);
 					} else {
-						const Colour &c = remap_rgba[src->m];
+						Colour c = this->LookupColourInRemapPalette(remap_rgba, src->m);
 						if (c.a != 0) {
 							*dst = ComposeColourPA(AdjustBrightness(c, src->v), src->a, *dst);
 						}

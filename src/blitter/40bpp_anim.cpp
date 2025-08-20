@@ -247,7 +247,7 @@ inline void Blitter_40bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 								*dst = *src_px;
 								*anim = 0;
 							} else {
-								const Colour &c = remap_rgba[GB(m, 0, 8)];
+								Colour c = this->LookupColourInRemapPalette(remap_rgba, GB(m, 0, 8));
 								if (c.a != 0) {
 									*dst = ComposeColourRGBANoCheck(c.r, c.g, c.b, c.a, *dst);
 									*anim = 0;
@@ -267,7 +267,7 @@ inline void Blitter_40bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 								*dst = this->ComposeColourRGBANoCheck(c.r, c.g, c.b, src_px->a / 255, b);
 								*anim = 0;
 							} else {
-								const Colour &c = remap_rgba[m];
+								Colour c = this->LookupColourInRemapPalette(remap_rgba, GB(m, 0, 8));
 								if (c.a != 0) {
 									*dst = this->ComposeColourPANoCheck(c, c.a * src_px->a / 255, b);
 									*anim = 0; // Animation colours don't work with alpha-blending.
