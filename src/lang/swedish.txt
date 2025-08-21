@@ -1690,6 +1690,8 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Rör kartan med
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Mjuk scrollning av vy: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Kontrollera hur huvudvyn skrollar till en specifik position vid klick på minikartan eller när ett kommando används för att skrolla till ett specifikt objekt på kartan. Om det är aktiverat skrollar vyn mjukt, om det är inaktiverat hoppar den direkt till målet
 
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT                  :Traditionellt valbeteende hos verktygsfälts menyer: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT_HELPTEXT         :Välj valbeteende för menyer i verktygsfält. Om "av" så kommer verktygsfälts menyer hållas öppna tills ett val har gjorts. Om "på" så kommer verktygsfälts menyer aktiveras när musknappen släpps.
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Visa måtthjälptext vid användning av byggverktyg: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Visa rutavstånd och höjdskillnader vid dragning med musen under byggoperationer
