@@ -411,30 +411,15 @@ static Station *GetClosestDeletedStation(TileIndex tile)
 }
 
 
-void Station::GetTileArea(TileArea *ta, StationType type) const
+TileArea Station::GetTileArea(StationType type) const
 {
 	switch (type) {
-		case StationType::Rail:
-			*ta = this->train_station;
-			return;
-
-		case StationType::Airport:
-			*ta = this->airport;
-			return;
-
-		case StationType::Truck:
-			*ta = this->truck_station;
-			return;
-
-		case StationType::Bus:
-			*ta = this->bus_station;
-			return;
-
+		case StationType::Rail: return this->train_station;
+		case StationType::Airport: return this->airport;
+		case StationType::Truck: return this->truck_station;
+		case StationType::Bus: return this->bus_station;
 		case StationType::Dock:
-		case StationType::Oilrig:
-			*ta = this->docking_station;
-			return;
-
+		case StationType::Oilrig: return this->docking_station;
 		default: NOT_REACHED();
 	}
 }

@@ -73,38 +73,36 @@ enum TriggerArea : uint8_t {
 	TA_WHOLE,
 };
 
-struct ETileArea : TileArea {
-	ETileArea(const BaseStation *st, TileIndex tile, TriggerArea ta)
-	{
-		switch (ta) {
-			default: NOT_REACHED();
+/**
+ * Get the tile area of a rail station with trigger area type.
+ * @param st The rail station or rail waypoint.
+ * @param tile Origin tile.
+ * @param ta Trigger area type.
+ * @return The tile area.
+ */
+TileArea GetRailTileArea(const BaseStation *st, TileIndex tile, TriggerArea ta)
+{
+	switch (ta) {
+		default: NOT_REACHED();
 
-			case TA_TILE:
-				this->tile = tile;
-				this->w    = 1;
-				this->h    = 1;
-				break;
+		case TA_TILE:
+			return {tile, 1, 1};
 
-			case TA_PLATFORM: {
-				TileIndex start, end;
-				Axis axis = GetRailStationAxis(tile);
-				TileIndexDiff delta = TileOffsByAxis(axis);
+		case TA_PLATFORM: {
+			TileIndex start, end;
+			Axis axis = GetRailStationAxis(tile);
+			TileIndexDiff delta = TileOffsByAxis(axis);
 
-				for (end = tile; IsRailStationTile(end + delta) && IsCompatibleTrainStationTile(end + delta, tile); end += delta) { /* Nothing */ }
-				for (start = tile; IsRailStationTile(start - delta) && IsCompatibleTrainStationTile(start - delta, tile); start -= delta) { /* Nothing */ }
+			for (end = tile; IsRailStationTile(end + delta) && IsCompatibleTrainStationTile(end + delta, tile); end += delta) { /* Nothing */ }
+			for (start = tile; IsRailStationTile(start - delta) && IsCompatibleTrainStationTile(start - delta, tile); start -= delta) { /* Nothing */ }
 
-				this->tile = start;
-				this->w = TileX(end) - TileX(start) + 1;
-				this->h = TileY(end) - TileY(start) + 1;
-				break;
-			}
-
-			case TA_WHOLE:
-				st->GetTileArea(this, Station::IsExpected(st) ? StationType::Rail : StationType::RailWaypoint);
-				break;
+			return TileArea(start, TileX(end) - TileX(start) + 1, TileY(end) - TileY(start) + 1);
 		}
+
+		case TA_WHOLE:
+			return st->GetTileArea(Station::IsExpected(st) ? StationType::Rail : StationType::RailWaypoint);
 	}
-};
+}
 
 
 /**
@@ -745,9 +743,8 @@ void DeallocateSpecFromStation(BaseStation *st, uint8_t specindex)
 	/* specindex of 0 (default) is never freeable */
 	if (specindex == 0) return;
 
-	ETileArea area = ETileArea(st, INVALID_TILE, TA_WHOLE);
 	/* Check all tiles over the station to check if the specindex is still in use */
-	for (TileIndex tile : area) {
+	for (TileIndex tile : GetRailTileArea(st, INVALID_TILE, TA_WHOLE)) {
 		if (st->TileBelongsToRailStation(tile) && GetCustomStationSpecIndex(tile) == specindex) {
 			return;
 		}
@@ -911,10 +908,9 @@ void TriggerStationAnimation(BaseStation *st, TileIndex trigger_tile, StationAni
 	if (!st->cached_anim_triggers.Test(trigger)) return;
 
 	uint16_t random_bits = Random();
-	ETileArea area = ETileArea(st, trigger_tile, tas[static_cast<size_t>(trigger)]);
 
 	/* Check all tiles over the station to check if the specindex is still in use */
-	for (TileIndex tile : area) {
+	for (TileIndex tile : GetRailTileArea(st, trigger_tile, tas[static_cast<size_t>(trigger)])) {
 		if (st->TileBelongsToRailStation(tile)) {
 			const StationSpec *ss = GetStationSpec(tile);
 			if (ss != nullptr && ss->animation.triggers.Test(trigger)) {
@@ -951,7 +947,6 @@ void TriggerStationRandomisation(BaseStation *st, TileIndex trigger_tile, Statio
 	if (IsValidCargoType(cargo_type) && !HasBit(st->cached_cargo_triggers, cargo_type)) return;
 
 	uint32_t whole_reseed = 0;
-	ETileArea area = ETileArea(st, trigger_tile, tas[static_cast<size_t>(trigger)]);
 
 	/* Bitmask of completely empty cargo types to be matched. */
 	CargoTypes empty_mask{};
@@ -964,7 +959,7 @@ void TriggerStationRandomisation(BaseStation *st, TileIndex trigger_tile, Statio
 	StationRandomTriggers used_random_triggers;
 
 	/* Check all tiles over the station to check if the specindex is still in use */
-	for (TileIndex tile : area) {
+	for (TileIndex tile : GetRailTileArea(st, trigger_tile, tas[static_cast<size_t>(trigger)])) {
 		if (st->TileBelongsToRailStation(tile)) {
 			const StationSpec *ss = GetStationSpec(tile);
 			if (ss == nullptr) continue;
