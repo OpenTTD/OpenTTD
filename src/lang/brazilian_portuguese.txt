@@ -2883,7 +2883,7 @@ STR_HOUSE_PICKER_PROTECT_ON                                     :Ativado
 
 STR_STATION_CLASS_DFLT                                          :Padrão
 STR_STATION_CLASS_DFLT_STATION                                  :Estação padrão
-STR_STATION_CLASS_DFLT_ROADSTOP                                 :Parada de estrada padrão
+STR_STATION_CLASS_DFLT_ROADSTOP                                 :Parada rodoviária padrão
 STR_STATION_CLASS_WAYP                                          :Pontos de controle
 STR_STATION_CLASS_WAYP_WAYPOINT                                 :Ponto de controle padrão
 
@@ -5263,6 +5263,11 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Início 
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... os extremos da ponte devem estar sobre a terra
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... ponte muito longa
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}A ponte terminaria fora do mapa
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Ponte é muito baixa para uma estação
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Ponte é muito baixa para uma parada rodoviária
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Ponte é muito baixa para uma boia
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Ponte é muito baixa para um ponto de controle ferroviário
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Ponte é muito baixa para um ponto de controle rodoviário
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Não é possível construir túnel aqui...
