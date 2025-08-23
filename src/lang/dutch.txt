@@ -1690,6 +1690,8 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Kaart verplaats
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Kijkvenster vloeiend verplaatsen: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Bepaalt hoe het hoofdvenster naar een specifieke positie schuift wanneer je op de minikaart klikt of je opdracht geeft om naar een specifiek object op de kaart te bladeren. Als dit is ingeschakeld, dan schuift het kijkvenster soepel; als dit is uitgeschakeld, ga je rechtstreeks naar de gewenste plek.
 
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT                  :Traditioneel gedrag voor kiezen werkbalkmenu's: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT_HELPTEXT         :Kies het gedrag van werkbalkmenu's. Bij Uit, blijven de werkbalkmenu's open tot je een keus hebt gemaakt. Bij Aan, worden werkbalkmenu's actief als je de muisknop loslaat.
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Maten weergeven bij het gebruik van diverse bouwgereedschappen: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Geef tegelafstanden en hoogteverschillen weer bij het slepen tijdens het bouwen
@@ -5260,6 +5262,11 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Begin en
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... uiteinden van brug moeten beiden op land zijn
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... brug te lang
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Brug zou eindigen buiten de kaart
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Brug te laag voor station
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Brug te laag voor halte
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Brug te laag voor boei
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Brug te laag voor spoorroutepunt
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Brug te laag voor wegroutepunt
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kan hier geen tunnel bouwen...
@@ -5876,6 +5883,8 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :Toeschouwer, {1
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_CITY                                          :{TOWN} {CITY_ICON}
+STR_VIEWPORT_TOWN_CITY_POP                                      :{TOWN} ({COMMA}) {CITY_ICON}
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data

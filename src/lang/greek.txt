@@ -1783,6 +1783,8 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Μετακίν�
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Ομαλή μετάβαση οθόνης: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Ελέγξτε τον τρόπο με τον οποίο η κύρια προβολή κυλίεται σε μια συγκεκριμένη θέση όταν πατάτε πάνω στον μικρό χάρτη ή όταν δίνετε εντολή για μετάβαση σε ένα συγκεκριμένο αντικείμενο στον χάρτη. Όταν είναι ενεργοποιημένη, η κύλιση γίνεται ομαλά, και όταν είναι απενεργοποιημένη μεταβαίνει απ' ευθείας στο επιλεγμένο σημείο
 
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT                  :Παραδοσιακή συμπεριφορά επιλογής μενού γραμμής εργαλείων: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT_HELPTEXT         :Επιλέξτε τη συμπεριφορά επιλογής των μενού της γραμμής εργαλείων. Εάν είναι απενεργοποιημένη, τα μενού της γραμμής εργαλείων θα παραμείνουν ανοιχτά μέχρι να γίνει μια επιλογή. Εάν είναι ενεργοποιημένη, τα μενού της γραμμής εργαλείων θα ενεργοποιηθούν όταν αφήσετε το κουμπί του ποντικιού.
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Εμφάνιση εργαλείου μετρήσεως όταν χρησιμοποιούνται διάφορα εργαλεία: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Εμφάνιση αποστάσεων τετραγωνίδιων και υψομετρικών διαφορών όταν γίνονται λειτουργίες κατασκευών με σύρσιμο του ποντικιού
@@ -5361,6 +5363,11 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Η αρ�
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... και τα δύο άκρα της γέφυρας πρέπει να είναι σε έδαφος
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... η γέφυρα είναι πολλή μακριά
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Η γέφυρα θα καταλήξει εκτός χάρτη
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Η γέφυρα είναι πολύ χαμηλή για σταθμό
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Η γέφυρα είναι πολύ χαμηλή για οδική στάση
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Η γέφυρα είναι πολύ χαμηλή για σημαδούρα
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Η γέφυρα είναι πολύ χαμηλή για σιδηροδρομικό σημείο αναφοράς
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Η γέφυρα είναι πολύ χαμηλή για οδικό σημείο αναφοράς
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Δεν μπορεί να κατασκευαστεί σήραγγα εδώ...

@@ -4381,18 +4381,18 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :ajoneuvoja
 STR_REPLACE_VEHICLE_SHIP                                        :laivoja
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :lentokoneita
 
-STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Valitse korvattava veturityyppi.
-STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Valitse vasemmalla näkyvän veturityypinn korvaava uusi veturityyppi.
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Valitse korvattava liikennevälineen tyyppi
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Valitse uusi liikennevälineen tyyppi, jota haluat käyttää vasemmalla valitun liikennevälinetyypin tilalla
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Aloita kulkuneuvojen korvaaminen
 STR_REPLACE_VEHICLES_NOW                                        :Korvaa kaikki kulkuneuvot heti
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Korvaa vain vanhat kulkuneuvot
-STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Napsauta aloittaaksesi vasemmalta valitun veturityypin korvauksen oikealta valitulla veturityypillä.
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Napsauta aloittaaksesi vasemmalta valitun liikennevälinetyypin korvaaminen oikealta valitulla liikennevälineen tyypillä
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Ei korvata
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Ei kulkuneuvoa valittuna
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} kun vanha
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Lopeta kulkuneuvojen korvaaminen
-STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Napsauta pysäyttääksesi vasemmalta valitun veturityypin korvauksen.
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Napsauta pysäyttääksesi vasemmalla valitun liikennevälineen korvaaminen
 
 STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Vaihda toiseen korvausikkunaan
 STR_REPLACE_ENGINES                                             :Veturit
@@ -4401,11 +4401,11 @@ STR_REPLACE_ALL_RAILTYPE                                        :Kaikki junat
 STR_REPLACE_ALL_ROADTYPE                                        :Kaikki ajoneuvot
 
 ###length 2
-STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Valitse rautatietyyppi, jolle veturikorvaukset tehdään.
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Valitse raidetyyppi, jolle veturikorvaukset tehdään
 STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Valitse tien tyyppi, jolle ajoneuvojen korvaukset tehdään
 ###next-name-looks-similar
 
-STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Näyttää, millä vasemmalta valittu veturi korvataan, jos millään.
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Näyttää, millä vasemmalta valittu liikenneväline korvataan, jos korvataan
 STR_REPLACE_RAIL_VEHICLES                                       :Junat
 STR_REPLACE_ELRAIL_VEHICLES                                     :Sähköjunat
 STR_REPLACE_MONORAIL_VEHICLES                                   :Yksiraiteiset
