@@ -1754,6 +1754,8 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :A térkép mozg
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Finomított nézőpont-görgetés: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Beállítható, hogy a fő nézet hogyan mozogjon egy adott pozícióra a térképre kattintáskor ha egy adott objektumra történik mozgás. Bekapcsolva a nézet egyenletesen mozog, kikapcsolva közvetlenül a kijelölt helyre ugrik
 
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT                  :Tradicionális eszköztár menü kiválasztási viselkedése:{STRING}
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT_HELPTEXT         :A kiválasztás viselkedése az eszköztár menüben. Ha kikapcsolt, az eszköztár menük nyitva maradnak, amíg nincs kiválasztva valami. Ha bekapcsolt, akkor a menük az egér gomb elengedésére aktiválódnak.
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Területinformációk mutatása építési eszközök használatakor: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Mezők közti távolságok és magasságkülönbségek megjelenítése húzás közben építkezéskor
@@ -5324,6 +5326,11 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}A kezdet
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... a híd mindkét végének szárazföldön kell lennie
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... a híd túl hosszú
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}A híd a térképen túl végződne
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}A híd túl alacsony az állomáshoz
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}A híd túl alacsony a megállóhoz
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}A híd túl alacsony a bójához
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}A híd túl alacsony a vasúti ellenőrzőponthoz
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}BA híd túl alacsony az útponthoz
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Nem áshatsz ide alagutat...
@@ -5981,6 +5988,8 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :Megfigyelő, {1
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_CITY                                          :{TOWN} {CITY_ICON}
+STR_VIEWPORT_TOWN_CITY_POP                                      :{TOWN} ({COMMA}) {CITY_ICON}
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data
