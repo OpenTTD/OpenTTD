@@ -37,6 +37,7 @@ enum OrderWidgets : WidgetID {
 	WID_O_SEL_TOP_ROW,               ///< #NWID_SELECTION widget for the top row of the 'your non-trains' order window.
 	WID_O_SEL_BOTTOM_MIDDLE,         ///< #NWID_SELECTION widget for the middle part of the bottom row of the 'your train' order window.
 	WID_O_SHARED_ORDER_LIST,         ///< Open list of shared vehicles.
+	WID_O_END,                       ///< End of the list of widgets.
 };
 
 #endif /* WIDGETS_ORDER_WIDGET_H */
