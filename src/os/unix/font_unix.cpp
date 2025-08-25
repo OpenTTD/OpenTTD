@@ -123,6 +123,22 @@ FT_Error GetFontByFaceName(std::string_view font_name, FT_Face *face)
 	return err;
 }
 
+/**
+ * Get distance between font weight and preferred font weights.
+ * @param weight Font weight from FontConfig.
+ * @return Distance from preferred weight, where lower values are preferred.
+ */
+static int GetPreferredWeightDistance(int weight)
+{
+	/* Prefer a font between normal and medium weight. */
+	static constexpr int PREFERRED_WEIGHT_MIN = FC_WEIGHT_NORMAL;
+	static constexpr int PREFERRED_WEIGHT_MAX = FC_WEIGHT_MEDIUM;
+
+	if (weight < PREFERRED_WEIGHT_MIN) return std::abs(weight - PREFERRED_WEIGHT_MIN);
+	if (weight > PREFERRED_WEIGHT_MAX) return weight - PREFERRED_WEIGHT_MAX;
+	return 0;
+}
+
 bool FontConfigFindFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, MissingGlyphSearcher *callback)
 {
 	bool ret = false;
@@ -164,9 +180,10 @@ bool FontConfigFindFallbackFont(FontCacheSettings *settings, const std::string &
 		FcPatternGetInteger(font, FC_SLANT, 0, &value);
 		if (value != 0) continue;
 
-		/* We want the fatter font as they look better at small sizes. */
+		/* We want a font near to medium weight. */
 		FcPatternGetInteger(font, FC_WEIGHT, 0, &value);
-		if (value <= best_weight) continue;
+		int weight = GetPreferredWeightDistance(value);
+		if (best_weight != -1 && weight > best_weight) continue;
 
 		/* Possible match based on attributes, get index. */
 		int32_t index;
@@ -179,7 +196,7 @@ bool FontConfigFindFallbackFont(FontCacheSettings *settings, const std::string &
 		Debug(fontcache, 1, "Font \"{}\" misses{} glyphs", FromFcString(file), missing ? "" : " no");
 
 		if (!missing) {
-			best_weight = value;
+			best_weight = weight;
 			best_font = FromFcString(file);
 			best_index = index;
 		}
