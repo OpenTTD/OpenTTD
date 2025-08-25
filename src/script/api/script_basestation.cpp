@@ -34,6 +34,12 @@
 	return ScriptCompany::ToScriptCompanyID(::BaseStation::Get(station_id)->owner);
 }
 
+/* static */ StationID ScriptBaseStation::GetBaseStationID(TileIndex tile)
+{
+	if (!::IsValidTile(tile) || !::IsTileType(tile, MP_STATION) || ::BaseStation::GetByTile(tile) == nullptr) return StationID::Invalid();
+	return ::GetStationIndex(tile);
+}
+
 /* static */ std::optional<std::string> ScriptBaseStation::GetName(StationID station_id)
 {
 	if (!IsValidBaseStation(station_id)) return std::nullopt;
