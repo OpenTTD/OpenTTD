@@ -22,13 +22,13 @@ class CoreTextFontCache : public TrueTypeFontCache {
 	std::string font_name;                        ///< Cached font name.
 
 	void SetFontSize(int pixels);
-	const Sprite *InternalGetGlyph(GlyphID key, bool use_aa) override;
+	TrueTypeFontCache::GlyphEntry *InternalGetGlyph(GlyphID key, bool use_aa) override;
 public:
 	CoreTextFontCache(FontSize fs, CFAutoRelease<CTFontDescriptorRef> &&font, int pixels);
 	~CoreTextFontCache() {}
 
 	void ClearFontCache() override;
-	GlyphID MapCharToGlyph(char32_t key, bool allow_fallback = true) override;
+	GlyphID MapCharToGlyph(char32_t key) override;
 	std::string GetFontName() override { return font_name; }
 	bool IsBuiltInFont() override { return false; }
 	const void *GetOSHandle() override { return font.get(); }
