@@ -5260,13 +5260,13 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}橋樑�
 STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}這座橋對這個地形而言太高了
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}開始與結束位置必須在同一直線上
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... 橋樑的兩端應在陸地上
-STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... 橋樑過長
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}……橋樑過長
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}橋的終點將會在地圖外
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}橋樑過低，無法興建鐵道車站
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}橋樑過低，無法興建車站
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}橋樑過低，無法興建車站
 STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}橋樑過低，無法放置浮標
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}橋樑過低，無法興建鐵道中途站
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}橋樑過低，無法興建道路中途站
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}橋樑過低，無法興建中途站
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}橋樑過低，無法興建中途站
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}無法在此挖掘隧道...

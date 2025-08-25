@@ -5262,6 +5262,11 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start an
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... ends of bridge must both be on land
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... bridge too long
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Bridge would end out of the map
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Bridge is too low for station
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Bridge is too low for road stop
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Bridge is too low for buoy
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Bridge is too low for rail waypoint
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Bridge is too low for road waypoint
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Can't build tunnel here...

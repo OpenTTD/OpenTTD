@@ -5262,6 +5262,11 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}起止�
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}……桥梁两端必须都位于地面上
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}……桥梁太长
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}桥梁终点将越出地图
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}桥梁过低，无法建设车站
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}桥梁过低，无法建设车站
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}桥梁过低，无法放置浮标
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}桥梁过低，无法建设路点
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}桥梁过低，无法建设路点
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}不能在这里开凿隧道……
