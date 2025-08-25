@@ -117,6 +117,7 @@ public:
 
 protected:
 	Key dest;
+	bool any_ship_depot = false;
 
 public:
 	void SetDestination(const WaterRegionPatchDesc &water_region_patch)
@@ -124,18 +125,32 @@ public:
 		this->dest.Set(water_region_patch);
 	}
 
+	void SetAnyShipDepotDestination()
+	{
+		this->any_ship_depot = true;
+	}
+
 protected:
+	TestTileIndexCallBack detect_ship_depot = [&](const TileIndex tile)
+	{
+		return IsShipDepotTile(tile) && GetShipDepotPart(tile) == DEPOT_PART_NORTH && IsTileOwner(tile, Yapf().GetVehicle()->owner);
+	};
+
 	Tpf &Yapf() { return *static_cast<Tpf*>(this); }
 
 public:
-	inline bool PfDetectDestination(Node &n) const
+	inline bool PfDetectDestination(Node &n)
 	{
+		if (this->any_ship_depot) {
+			return TestTileInWaterRegionPatch(n.key.water_region_patch, this->detect_ship_depot);
+		}
+
 		return n.key == this->dest;
 	}
 
 	inline bool PfCalcEstimate(Node &n)
 	{
-		if (this->PfDetectDestination(n)) {
+		if (this->any_ship_depot || this->PfDetectDestination(n)) {
 			n.estimate = n.cost;
 			return true;
 		}
@@ -213,6 +228,31 @@ public:
 		assert(!path.empty());
 		return path;
 	}
+
+	static std::vector<WaterRegionPatchDesc> FindShipDepotRegionPath(const Ship *v)
+	{
+		const WaterRegionPatchDesc start_water_region_patch = GetWaterRegionPatchInfo(v->tile);
+
+		/* We reserve 4 nodes (patches) per water region. The vast majority of water regions have 1 or 2 regions so this should be a pretty
+		 * safe limit. We cap the limit at 65536 which is at a region size of 16x16 is equivalent to one node per region for a 4096x4096 map. */
+		Tpf pf(std::min(static_cast<int>(Map::Size() * NODES_PER_REGION) / WATER_REGION_NUMBER_OF_TILES, MAX_NUMBER_OF_NODES));
+		pf.AddOrigin(start_water_region_patch);
+		pf.SetAnyShipDepotDestination();
+
+		/* Find best path. */
+		if (!pf.FindPath(v)) return {}; // Path not found.
+
+		std::vector<WaterRegionPatchDesc> path;
+		Node *node = pf.GetBestNode();
+		while (node != nullptr) {
+			path.push_back(node->key.water_region_patch);
+			node = node->parent;
+		}
+
+		assert(!path.empty());
+		std::ranges::reverse(path);
+		return path;
+	}
 };
 
 /** Cost Provider of YAPF for water regions. */
@@ -288,5 +328,8 @@ struct CYapfRegionWater : CYapfT<CYapfRegion_TypesT<CYapfRegionWater, CRegionNod
  */
 std::vector<WaterRegionPatchDesc> YapfShipFindWaterRegionPath(const Ship *v, TileIndex start_tile, int max_returned_path_length)
 {
+	const bool find_closest_depot = start_tile == INVALID_TILE;
+
+	if (find_closest_depot) return CYapfRegionWater::FindShipDepotRegionPath(v);
 	return CYapfRegionWater::FindWaterRegionPath(v, start_tile, max_returned_path_length);
 }
