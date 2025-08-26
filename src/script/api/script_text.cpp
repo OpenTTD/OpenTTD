@@ -181,7 +181,7 @@ void ScriptText::SetPadParameterCount(HSQUIRRELVM vm)
 			}
 		}
 	}
-	sq_pop(vm, top);
+	sq_settop(vm, top);
 }
 
 EncodedString ScriptText::GetEncodedText()
