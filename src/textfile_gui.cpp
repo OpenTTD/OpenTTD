@@ -308,7 +308,7 @@ const TextfileWindow::Hyperlink *TextfileWindow::GetHyperlink(Point pt) const
 
 	/* Build line layout to figure out character position that was clicked. */
 	const Line &line = this->lines[line_index];
-	Layouter layout(line.text, line.wrapped_width, FS_MONO);
+	Layouter layout(line.text, line.wrapped_width == 0 ? INT32_MAX : line.wrapped_width, FS_MONO);
 	assert(subline < layout.size());
 	ptrdiff_t char_index = layout.GetCharAtPosition(pt.x - WidgetDimensions::scaled.frametext.left, subline);
 	if (char_index < 0) return nullptr;
