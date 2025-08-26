@@ -196,6 +196,15 @@ These include:
 You may also want the guide to [compiling OpenTTD](./COMPILING.md).
 
 
+## Use of AI
+
+OpenTTD is a labour of love, created by people.
+
+It takes a lot of work to review contributions.
+Pull Requests which are clearly written by AI tools, or which are submitted with a description written by an AI, will be closed.
+In other words, "if you don't fully understand your code, we can't be bothered to either."
+
+
 ## Project goals
 
 ### What are the goals of the official branch?
