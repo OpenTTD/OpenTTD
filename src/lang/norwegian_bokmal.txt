@@ -5264,6 +5264,11 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start og
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...{NBSP}broens ender må være på land
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... broen er for lang
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Bro vil ende utenfor kartet
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Broen er for lav for en stasjon
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Broen er for lav for en holdeplass
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Broen er for lav for en bøye
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Broen er for lav for et veipunkt
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Broen er for lav for et veipunkt
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kan ikke bygge tunnel her...
