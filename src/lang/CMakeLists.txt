@@ -45,6 +45,7 @@ set(LANG_SOURCE_FILES
         ${CMAKE_CURRENT_SOURCE_DIR}/macedonian.txt
         ${CMAKE_CURRENT_SOURCE_DIR}/malay.txt
         ${CMAKE_CURRENT_SOURCE_DIR}/maltese.txt
+        ${CMAKE_CURRENT_SOURCE_DIR}/maori.txt
         ${CMAKE_CURRENT_SOURCE_DIR}/marathi.txt
         ${CMAKE_CURRENT_SOURCE_DIR}/norwegian_bokmal.txt
         ${CMAKE_CURRENT_SOURCE_DIR}/norwegian_nynorsk.txt
