@@ -514,7 +514,7 @@ public:
 					} else if (item == this->highlighted) {
 						GfxFillRect(br.left, tr.top, br.right, tr.bottom, PC_VERY_DARK_BLUE);
 					}
-					DrawString(tr, item->title, _fios_colours[item->type.detailed]);
+					DrawString(tr, item->title.GetDecodedString(), _fios_colours[item->type.detailed]);
 					tr = tr.Translate(0, this->resize.step_height);
 				}
 				break;
@@ -728,7 +728,7 @@ public:
 					}
 					if (this->fop == SLO_SAVE) {
 						/* Copy clicked name to editbox */
-						this->filename_editbox.text.Assign(file->title);
+						this->filename_editbox.text.Assign(file->title.GetDecodedString());
 						this->SetWidgetDirty(WID_SL_SAVE_OSK_TITLE);
 					}
 				} else if (!_load_check_data.HasErrors()) {
@@ -860,7 +860,7 @@ public:
 		} else {
 			for (auto &it : this->fios_items) {
 				this->string_filter.ResetState();
-				this->string_filter.AddLine(it.title);
+				this->string_filter.AddLine(it.title.GetDecodedString());
 				/* We set the vector to show this fios element as filtered depending on the result of the filter */
 				if (this->string_filter.GetState()) {
 					this->display_list.push_back(&it);
