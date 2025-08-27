@@ -1690,6 +1690,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Nekehia te mahe
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Panuku tirohanga mōhanihani: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Tautuhitia me pēwhea te panuku a te tirohanga matua ki tētahi tauwāhi ina pāwhiri ki te mahereiti, ina tono rānei kia panuku ki tētahi mea i te mahere. Ina kā, ka mōhanihani te panuku a te tirohanga, ina poko, ka peke ki te keo pū
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Whakaaria he whakamāramatanga hunahuna ina whakamahia ētahi taputapu hangahanga: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Whakaaria ngā tawhiti o ngā papariki me ngā rerekētanga i te teitei ina tō i ngā mahi hangahanga
 
@@ -3594,8 +3595,8 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Whakatūpato: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Hapa: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Hapa whakamate: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Kua whakahoki te newGRF ko {STRING} i tētahi hapa whakamate: {}{STRING}
-STR_NEWGRF_ERROR_POPUP                                          :{WHITE}Kua whakahoki te newGRF ko {STRING} i tētahi hapa: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Kua whakahoki te newGRF ko {STRING} i tētahi hapa whakamate:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}Kua whakahoki te newGRF ko {STRING} i tētahi hapa:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :Kāore a {1:STRING} e mahi tahi me te whakaputanga TTDPatch i pūrongotia e OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :Mō te whakaputanga {2:STRING} o TTD a {1:STRING}
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :I hoahoaina a {1:STRING} kia whakamahia me {2:STRING}
