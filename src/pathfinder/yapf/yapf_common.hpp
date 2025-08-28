@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file yapf_common.hpp Commonly used classes for YAPF. */
+/** @file yapf_common.hpp Commonly used classes and utilities for YAPF. */
 
 #ifndef YAPF_COMMON_HPP
 #define YAPF_COMMON_HPP
@@ -119,6 +119,30 @@ class CYapfT
 {
 };
 
+/**
+ * Calculates the octile distance cost between a starting tile / trackdir and a destination tile.
+ * @param start_tile Starting tile.
+ * @param start_td Starting trackdir.
+ * @param destination_tile Destination tile.
+ * @return Octile distance cost between starting tile / trackdir and destination tile.
+ */
+inline int OctileDistanceCost(TileIndex start_tile, Trackdir start_td, TileIndex destination_tile)
+{
+	static constexpr int dg_dir_to_x_offs[] = {-1, 0, 1, 0};
+	static constexpr int dg_dir_to_y_offs[] = {0, 1, 0, -1};
 
+	const DiagDirection exitdir = TrackdirToExitdir(start_td);
+
+	const int x1 = 2 * TileX(start_tile) + dg_dir_to_x_offs[static_cast<int>(exitdir)];
+	const int y1 = 2 * TileY(start_tile) + dg_dir_to_y_offs[static_cast<int>(exitdir)];
+	const int x2 = 2 * TileX(destination_tile);
+	const int y2 = 2 * TileY(destination_tile);
+	const int dx = abs(x1 - x2);
+	const int dy = abs(y1 - y2);
+	const int dmin = std::min(dx, dy);
+	const int dxy = abs(dx - dy);
+
+	return dmin * YAPF_TILE_CORNER_LENGTH + (dxy - 1) * (YAPF_TILE_LENGTH / 2);
+}
 
 #endif /* YAPF_COMMON_HPP */
