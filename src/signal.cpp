@@ -363,7 +363,10 @@ static SigFlags ExploreSegment(Owner owner)
 			case MP_ROAD:
 				if (!IsLevelCrossing(tile)) continue;
 				if (GetTileOwner(tile) != owner) continue;
-				if (DiagDirToAxis(enterdir) == GetCrossingRoadAxis(tile)) continue; // different axis
+				// Skip if the rail direction's axis is different from the road axis at the level crossing.
+				// The previous comparison used '==' while the comment stated 'different axis', causing the
+				// function to erroneously skip valid same-axis crossings and process different-axis ones.
+				if (DiagDirToAxis(enterdir) != GetCrossingRoadAxis(tile)) continue; // different axis
 
 				if (!flags.Test(SigFlag::Train) && HasVehicleOnTile(tile, IsTrainAndNotInDepot)) flags.Set(SigFlag::Train);
 				tile += TileOffsByDiagDir(exitdir);
