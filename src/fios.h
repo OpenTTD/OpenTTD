@@ -78,7 +78,7 @@ extern LoadCheckData _load_check_data;
 struct FiosItem {
 	FiosType type;
 	int64_t mtime;
-	std::string title;
+	EncodedString title;
 	std::string name;
 	bool operator< (const FiosItem &other) const;
 };

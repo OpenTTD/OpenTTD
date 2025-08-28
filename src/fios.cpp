@@ -52,7 +52,7 @@ bool FiosItem::operator< (const FiosItem &other) const
 	if ((_savegame_sort_order & SORT_BY_NAME) == 0 && (*this).mtime != other.mtime) {
 		r = ClampTo<int32_t>(this->mtime - other.mtime);
 	} else {
-		r = StrNaturalCompare((*this).title, other.title);
+		r = StrNaturalCompare(this->title.GetDecodedString(), other.title.GetDecodedString());
 	}
 	if (r == 0) return false;
 	return (_savegame_sort_order & SORT_DESCENDING) ? r > 0 : r < 0;
@@ -105,7 +105,7 @@ const FiosItem *FileList::FindItem(std::string_view file)
 	for (const auto &it : *this) {
 		const FiosItem *item = &it;
 		if (file == item->name) return item;
-		if (file == item->title) return item;
+		if (file == item->title.GetDecodedString()) return item;
 	}
 
 	/* If no name matches, try to parse it as number */
@@ -120,7 +120,7 @@ const FiosItem *FileList::FindItem(std::string_view file)
 	for (const auto &it : *this) {
 		const FiosItem *item = &it;
 		if (long_file == item->name) return item;
-		if (long_file == item->title) return item;
+		if (long_file == item->title.GetDecodedString()) return item;
 	}
 
 	return nullptr;
@@ -145,7 +145,7 @@ bool FiosBrowseTo(const FiosItem *item)
 		case DFT_FIOS_DRIVE:
 #if defined(_WIN32)
 			assert(_fios_path != nullptr);
-			*_fios_path = std::string{ item->title, 0, 1 } + ":" PATHSEP;
+			*_fios_path = std::string{ item->name, 0, 1 } + ":" PATHSEP;
 #endif
 			break;
 
@@ -297,9 +297,9 @@ bool FiosFileScanner::AddFile(const std::string &filename, size_t, const std::st
 	/* If the file doesn't have a title, use its filename */
 	if (title.empty()) {
 		auto ps = filename.rfind(PATHSEPCHAR);
-		fios->title = StrMakeValid(filename.substr((ps == std::string::npos ? 0 : ps + 1)));
+		fios->title = GetEncodedString(STR_JUST_RAW_STRING, StrMakeValid(filename.substr((ps == std::string::npos ? 0 : ps + 1))));
 	} else {
-		fios->title = StrMakeValid(title);
+		fios->title = GetEncodedString(STR_JUST_RAW_STRING, StrMakeValid(title));
 	};
 
 	return true;
@@ -329,7 +329,7 @@ static void FiosGetFileList(SaveLoadOperation fop, bool show_dirs, FiosGetTypeAn
 			fios.type = FIOS_TYPE_PARENT;
 			fios.mtime = 0;
 			fios.name = "..";
-			fios.title = GetString(STR_SAVELOAD_PARENT_DIRECTORY, ".."sv);
+			fios.title = GetEncodedString(STR_SAVELOAD_PARENT_DIRECTORY, ".."sv);
 			sort_start = file_list.size();
 		}
 
@@ -343,7 +343,7 @@ static void FiosGetFileList(SaveLoadOperation fop, bool show_dirs, FiosGetTypeAn
 			fios.type = FIOS_TYPE_DIR;
 			fios.mtime = 0;
 			fios.name = FS2OTTD(dir_entry.path().filename().native());
-			fios.title = GetString(STR_SAVELOAD_DIRECTORY, fios.name + PATHSEP);
+			fios.title = GetEncodedString(STR_SAVELOAD_DIRECTORY, fios.name + PATHSEP);
 		}
 
 		/* Sort the subdirs always by name, ascending, remember user-sorting order */
@@ -736,7 +736,7 @@ FiosNumberedSaveName::FiosNumberedSaveName(const std::string &prefix) : prefix(p
 		std::sort(list.begin(), list.end());
 		_savegame_sort_order = order;
 
-		std::string_view name = list.begin()->title;
+		std::string name = list.begin()->title.GetDecodedString();
 		std::from_chars(name.data() + this->prefix.size(), name.data() + name.size(), this->number);
 	}
 }
