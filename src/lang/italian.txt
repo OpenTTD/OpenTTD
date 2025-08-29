@@ -959,11 +959,14 @@ STR_GAME_OPTIONS_TAB_SOUND                                      :Suono
 STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Scegliere le impostazioni audio e musicali
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Social
 STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Scegli le impostazioni di integrazione social
+STR_GAME_OPTIONS_TAB_ADVANCED                                   :Avanzate
+STR_GAME_OPTIONS_TAB_ADVANCED_TOOLTIP                           :Cambia impostazioni avanzate
 
 STR_GAME_OPTIONS_VOLUME                                         :Volume
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Effetti sonori
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Musica
 
+STR_GAME_OPTIONS_SETTING                                        :{STRING}: {ORANGE}{STRING}
 
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Valuta
@@ -1016,6 +1019,8 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia indonesia
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit malaysiano
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lats lettoni
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escudo portoghese
+STR_GAME_OPTIONS_CURRENCY_UAH                                   :Grivna Ucraina
+STR_GAME_OPTIONS_CURRENCY_VND                                   :Dong Vietnamita
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Salvataggi automatici
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Seleziona l'intervallo fra i salvataggi automatici della partita
@@ -1049,6 +1054,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Seleziona quest
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Driver attuale: {STRING}
 
+STR_GAME_OPTIONS_INTERFACE                                      :Interfaccia
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Dimensione dell'interfaccia
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Trascinare il cursore per impostare le dimensioni dell'interfaccia. Ctrl+trascina per una regolazione continua
@@ -1073,6 +1079,7 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Apre un browser
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Anteprima del risultato del sondaggio
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Mostra il risultato del sondaggio della partita in corso
 
+STR_GAME_OPTIONS_DISPLAY                                        :Mostra
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :Frequenza di aggiornameno dello schermo
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Seleziona la frequenza di aggiornamento dello schermo da utilizzare
@@ -1688,6 +1695,8 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Muovi mappa col
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Scorrimento morbido delle visuali: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controlla il modo in cui la visuale principale scorre verso una specifica posizione quando si fa clic sulla minimappa o si ordina di visualizzare un oggetto specifico sulla mappa. Se abilitata, la visuale scorre in modo morbido. Se disabilitata, salta direttamente al punto prescelto
 
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT                  :Comportamento tradizionale di selezione dei menu della barra degli strumenti: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT_HELPTEXT         :Scegli il comportamento di selezione dei menu della barra degli strumenti. Se disattivato, l'elenco dei menu della barra degli strumenti rimarrà aperto finché non si effettua una selezione. Se attivato, si apre il menu su cui si trova il puntatore al rilascio del pulsante del mouse.
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostra un tooltip di misura durante la costruzione: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Mostra le distanze in caselle e le differenze di altezza quando si trascina durante le operazioni di costruzione
@@ -2897,6 +2906,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Costruis
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Costruisce sezioni di tranvia usando la modalità automatica. Ctrl+Clic per rimuovere la sezione tranviaria. Premere anche Shift per visualizzare solo la stima dei costi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Costruisce un deposito automezzi (per comprare e manutenere i veicoli). Premere anche Shift per visualizzare solo la stima dei costi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Costruisce un deposito tranviario (per comprare e manutenere i veicoli). Premere anche Shift per mostrare solo la stima dei costi
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Costruisce un waypoint sulla strada. Ctrl+Clic per selezionare un altro waypoint da unire. Premere anche Shift per mostrare solo la stima dei costi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Costruisce una stazione degli autobus. Ctrl+Clic per selezionare un'altra stazione da unire. Premere anche Shift per visualizzare solo la stima dei costi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Costruisce la stazione del tram passeggeri. Ctrl+Clic per selezionare un'altra stazione da unire. Premere anche Shift per visualizzare solo la stima dei costi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Costruisce una stazione dei camion. Ctrl+Clic per selezionare un'altra stazione da unire. Premere anche Shift per visualizzare solo la stima dei costi
@@ -5270,6 +5280,8 @@ STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Impossib
 ###length VEHICLE_TYPES
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}Non puoi rimpiazzare automaticamente gli autoveicoli...
+STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}Non puoi rimpiazzare automaticamente l'aeromobile...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Troppi veicoli nel gioco
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Impossibile cambiare l'intervallo di manutenzione...
