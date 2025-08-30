@@ -816,7 +816,7 @@ static inline CommandCost CheckAllowRemoveTunnelBridge(TileIndex tile)
 			if (tram_rt != INVALID_ROADTYPE) tram_owner = GetRoadOwner(tile, RTT_TRAM);
 
 			/* We can remove unowned road and if the town allows it */
-			if (road_owner == OWNER_TOWN && _current_company != OWNER_TOWN && !(_settings_game.construction.extra_dynamite || _cheats.magic_bulldozer.value)) {
+			if (road_owner == OWNER_TOWN && _current_company != OWNER_TOWN && !(_settings_game.construction.extra_dynamite)) {
 				/* Town does not allow */
 				return CheckTileOwnership(tile);
 			}
