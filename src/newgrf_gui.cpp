@@ -156,7 +156,7 @@ struct NewGRFParametersWindow : public Window {
 		grf_config(c),
 		editable(editable)
 	{
-		this->action14present = (this->grf_config.num_valid_params != this->grf_config.param.size() || !this->grf_config.param_info.empty());
+		this->action14present = (this->grf_config.num_valid_params != GRFConfig::MAX_NUM_PARAMS || !this->grf_config.param_info.empty());
 
 		this->CreateNestedTree();
 		this->GetWidget<NWidgetCore>(WID_NP_CAPTION)->SetStringTip(is_baseset ? STR_BASEGRF_PARAMETERS_CAPTION : STR_NEWGRF_PARAMETERS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
@@ -481,7 +481,7 @@ struct NewGRFParametersWindow : public Window {
 			this->SetWidgetDisabledState(WID_NP_NUMPAR_INC, !this->editable || std::size(this->grf_config.param) >= this->grf_config.num_valid_params);
 		}
 
-		this->vscroll->SetCount(this->action14present ? this->grf_config.num_valid_params : GRFConfig::MAX_NUM_PARAMS);
+		this->vscroll->SetCount(this->action14present ? this->grf_config.num_valid_params : this->grf_config.param.size());
 		if (this->clicked_row != INT32_MAX && this->clicked_row >= this->vscroll->GetCount()) {
 			this->clicked_row = INT32_MAX;
 			this->CloseChildWindows(WC_QUERY_STRING);
