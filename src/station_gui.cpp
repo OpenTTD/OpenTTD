@@ -2458,6 +2458,7 @@ void ShowSelectBaseStationIfNeeded(TileArea ta, StationPickerCmdProc&& proc)
 {
 	if (StationJoinerNeeded<T>(proc)) {
 		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
+		FindStationsNearby<T>(ta, false);
 		new SelectStationWindow<T>(_select_station_desc, ta, std::move(proc));
 	} else {
 		proc(false, StationID::Invalid());
