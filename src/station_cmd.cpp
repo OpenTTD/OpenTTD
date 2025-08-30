@@ -904,6 +904,9 @@ static StringID GetBridgeTooLowMessageForStationType(StationType type)
  */
 static CommandCost IsStationBridgeAboveOk(TileIndex tile, std::span<const BridgeableTileInfo> bridgeable_info, StationType type, StationGfx layout, int bridge_height, StringID disallowed_msg = INVALID_STRING_ID)
 {
+	if (_settings_game.station.bridges_over_stations == BridgesOverStations::IgnoreHeight) return CommandCost{};
+	if (_settings_game.station.bridges_over_stations == BridgesOverStations::None) return CommandCost(STR_ERROR_BRIDGES_OVER_STATIONS_NOT_ALLOWED);
+
 	int height = layout < std::size(bridgeable_info) ? bridgeable_info[layout].height : 0;
 
 	if (height == 0) {

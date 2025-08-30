@@ -1374,6 +1374,14 @@ STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Allow landscapi
 STR_CONFIG_SETTING_CATCHMENT                                    :Allow more realistically sized catchment areas: {STRING2}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Have differently sized catchment areas for different types of stations and airports
 
+STR_CONFIG_SETTING_BRIDGES_OVER_STATIONS                        :Allow bridges over stations: {STRING2}
+STR_CONFIG_SETTING_BRIDGES_OVER_STATIONS_HELPTEXT               :Choose if bridges can be built over stations, and whether to enforce a minimum height requirement. Ignoring height allows using station NewGRFs which don't have height information, but can cause clipping
+
+###length 3
+STR_CONFIG_SETTING_BRIDGES_OVER_STATIONS_NONE                   :None
+STR_CONFIG_SETTING_BRIDGES_OVER_STATIONS_CHECK_HEIGHT           :Check height
+STR_CONFIG_SETTING_BRIDGES_OVER_STATIONS_IGNORE_HEIGHT          :Ignore height
+
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Company stations can serve industries with attached neutral stations: {STRING2}
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :When enabled, industries with attached stations (such as Oil Rigs) may also be served by company-owned stations built nearby. When disabled, these industries may only be served by their attached stations. Any nearby company stations won't be able to serve them, nor will the attached station serve anything else other than the industry
 
@@ -5346,6 +5354,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :bridge is {HEIG
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :bridge is {HEIGHT} too low for rail waypoint
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :bridge is {HEIGHT} too low for road waypoint
 STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :bridge is {HEIGHT} too low for lock
+STR_ERROR_BRIDGES_OVER_STATIONS_NOT_ALLOWED                     :bridges over stations are not allowed
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :Can't build tunnel here...
