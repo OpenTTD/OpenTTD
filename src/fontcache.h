@@ -10,20 +10,38 @@
 #ifndef FONTCACHE_H
 #define FONTCACHE_H
 
+#include "gfx_type.h"
 #include "provider_manager.h"
-#include "string_type.h"
-#include "spritecache.h"
 
 /** Glyphs are characters from a font. */
 typedef uint32_t GlyphID;
-static const GlyphID SPRITE_GLYPH = 1U << 30;
+using FontIndex = uint8_t;
+
+static const FontIndex INVALID_FONT_INDEX = std::numeric_limits<FontIndex>::max();
+
+/** Default heights for the different sizes of fonts. */
+static constexpr int DEFAULT_FONT_HEIGHT[FS_END]   = {10, 6, 18, 10};
+static constexpr int DEFAULT_FONT_ASCENDER[FS_END] = { 8, 5, 15,  8};
 
 /** Font cache for basic fonts. */
 class FontCache {
 protected:
-	static std::array<std::unique_ptr<FontCache>, FS_END> caches; ///< All the font caches.
-	std::unique_ptr<FontCache> parent; ///< The parent of this font cache.
+	using FontCaches = std::vector<std::unique_ptr<FontCache>>;
+	static FontCaches caches;
+
+	struct FontMetrics {
+		int ascender;
+		int descender;
+		int y_offset;
+
+		inline int Height() const { return this->ascender - this->descender; }
+	};
+
+	static std::array<FontMetrics, FS_END> metrics;
+	static std::array<FontIndex, FS_END> default_font_index;
+
 	const FontSize fs; ///< The size of the font.
+	FontIndex font_index; ///< The index of the font.
 	int height = 0; ///< The height of the font.
 	int ascender = 0; ///< The ascender value of the font.
 	int descender = 0; ///< The descender value of the font.
@@ -46,11 +64,28 @@ public:
 
 	static int GetDefaultFontHeight(FontSize fs);
 
+	static void AddFallback(FontSizes fontsizes, std::string_view name, std::span<const std::byte> os_data = {});
+
+	/**
+	 * Add a fallback font, with OS-specific handle.
+	 * @param fontsizes Fontsizes to add fallback to.
+	 * @param name Name of font to add.
+	 * @param handle OS-specific handle or data of font.
+	 */
+	template <typename T>
+	static void AddFallbackWithHandle(FontSizes fontsizes, std::string_view name, T &handle)
+	{
+		auto os_data = std::as_bytes(std::span(&handle, 1));
+		FontCache::AddFallback(fontsizes, name, os_data);
+	}
+
 	/**
 	 * Get the FontSize of the font.
 	 * @return The FontSize.
 	 */
 	inline FontSize GetSize() const { return this->fs; }
+
+	inline FontIndex GetIndex() const { return this->font_index; }
 
 	/**
 	 * Get the height of the font.
@@ -84,7 +119,9 @@ public:
 	 * @param key The key to look up.
 	 * @return The sprite.
 	 */
-	virtual const Sprite *GetGlyph(GlyphID key) = 0;
+	virtual void DrawGlyph(GlyphID key, const Rect &r)= 0;
+
+	virtual void DrawGlyphShadow(GlyphID, const Rect &) = 0;
 
 	/**
 	 * Get the width of the glyph with the given key.
@@ -99,13 +136,14 @@ public:
 	 */
 	virtual bool GetDrawGlyphShadow() = 0;
 
+	virtual bool DrawAsGlyph() { return true; }
+
 	/**
 	 * Map a character into a glyph.
 	 * @param key The character.
-	 * @param fallback Allow fallback to the parent font.
 	 * @return The glyph ID used to draw the character.
 	 */
-	virtual GlyphID MapCharToGlyph(char32_t key, bool fallback = true) = 0;
+	virtual GlyphID MapCharToGlyph(char32_t key) = 0;
 
 	/**
 	 * Get the native OS font handle, if there is one.
@@ -122,25 +160,57 @@ public:
 	 */
 	virtual std::string GetFontName() = 0;
 
+	virtual int GetGlyphYOffset();
+
+	/**
+	 * Get span of all FontCaches.
+	 * @return Span of all FontCaches.
+	 */
+	static inline std::span<const std::unique_ptr<FontCache>> Get()
+	{
+		return FontCache::caches;
+	}
+
 	/**
 	 * Get the font cache of a given font size.
 	 * @param fs The font size to look up.
 	 * @return The font cache.
 	 */
-	static inline FontCache *Get(FontSize fs)
+	static inline FontCache *Get(FontIndex font_index)
 	{
-		assert(fs < FS_END);
-		return FontCache::caches[fs].get();
+		assert(font_index < FontCache::caches.size());
+		return FontCache::caches[font_index].get();
 	}
 
-	static std::string GetName(FontSize fs);
-
-	/**
-	 * Check whether the font cache has a parent.
-	 */
-	inline bool HasParent()
+	static inline int GetCharacterHeight(FontSize fs)
 	{
-		return this->parent != nullptr;
+		return FontCache::metrics[fs].Height();
+	}
+
+	static void UpdateCharacterHeight(FontSize fs);
+
+	static inline FontIndex GetDefaultFontIndex(FontSize fs)
+	{
+		return FontCache::default_font_index[fs];
+	}
+
+	static inline class FontCache *GetDefaultFontCache(FontSize fs)
+	{
+		FontIndex index = FontCache::GetDefaultFontIndex(fs);
+		if (index != INVALID_FONT_INDEX) return FontCache::Get(index);
+		NOT_REACHED();
+	}
+
+	static inline FontIndex GetFontIndexForCharacter(FontSize fs, char32_t c)
+	{
+		for (auto it = std::rbegin(FontCache::caches); it != std::rend(FontCache::caches); ++it) {
+			FontCache *fc = it->get();
+			if (fc == nullptr) continue;
+			if (fc->GetSize() != fs) continue;
+			if (fc->MapCharToGlyph(c) == 0) continue;
+			return std::distance(std::begin(FontCache::caches), std::next(it).base());
+		}
+		return INVALID_FONT_INDEX;
 	}
 
 	/**
@@ -150,22 +220,21 @@ public:
 };
 
 /** Get the Sprite for a glyph */
-inline const Sprite *GetGlyph(FontSize size, char32_t key)
+inline void DrawGlyph(FontSize size, char32_t key, const Rect &r)
 {
-	FontCache *fc = FontCache::Get(size);
-	return fc->GetGlyph(fc->MapCharToGlyph(key));
+	FontIndex font_index = FontCache::GetFontIndexForCharacter(size, key);
+	FontCache *fc = font_index != INVALID_FONT_INDEX ? FontCache::Get(font_index) : FontCache::GetDefaultFontCache(size);
+	if (fc == nullptr) return;
+	fc->DrawGlyph(fc->MapCharToGlyph(key), r);
 }
 
 /** Get the width of a glyph */
 inline uint GetGlyphWidth(FontSize size, char32_t key)
 {
-	FontCache *fc = FontCache::Get(size);
+	FontIndex font_index = FontCache::GetFontIndexForCharacter(size, key);
+	FontCache *fc = font_index != INVALID_FONT_INDEX ? FontCache::Get(font_index) : FontCache::GetDefaultFontCache(size);
+	if (fc == nullptr) return 0;
 	return fc->GetGlyphWidth(fc->MapCharToGlyph(key));
-}
-
-inline bool GetDrawGlyphShadow(FontSize size)
-{
-	return FontCache::Get(size)->GetDrawGlyphShadow();
 }
 
 /** Settings for a single font. */
@@ -173,7 +242,13 @@ struct FontCacheSubSetting {
 	std::string font; ///< The name of the font, or path to the font.
 	uint size;        ///< The (requested) size of the font.
 
-	const void *os_handle = nullptr; ///< Optional native OS font info. Only valid during font search.
+	struct FontCacheFallback {
+		std::string name;
+		std::vector<std::byte> os_handle;
+		bool dynamic;
+	};
+
+	std::vector<FontCacheFallback> fallback_fonts;
 };
 
 /** Settings for the four different fonts. */
@@ -214,6 +289,7 @@ void SetFont(FontSize fontsize, const std::string &font, uint size);
 enum class FontType : uint8_t {
 	Sprite, ///< Bitmap sprites from GRF files.
 	TrueType, ///< Scalable TrueType fonts.
+	Icon, ///< Icon sprites.
 };
 
 /** Factory for FontCaches. */
@@ -229,14 +305,14 @@ public:
 		ProviderManager<FontCacheFactory>::Unregister(*this);
 	}
 
-	virtual std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype) = 0;
-	virtual bool FindFallbackFont(struct FontCacheSettings *settings, const std::string &language_isocode, class MissingGlyphSearcher *callback) = 0;
+	virtual std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype, bool search, const std::string &font_name, std::span<const std::byte> os_handle) = 0;
+	virtual bool FindFallbackFont(const std::string &language_isocode, FontSizes fontsizes, class MissingGlyphSearcher *callback) = 0;
 };
 
 class FontProviderManager : ProviderManager<FontCacheFactory> {
 public:
-	static std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype);
-	static bool FindFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, MissingGlyphSearcher *callback);
+	static std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype, bool search, const std::string &font_name, std::span<const std::byte> os_handle);
+	static bool FindFallbackFont(const std::string &language_isocode, FontSizes fontsizes, class MissingGlyphSearcher *callback);
 };
 
 /* Implemented in spritefontcache.cpp */
