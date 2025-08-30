@@ -78,41 +78,41 @@ inline bool IsIndustryCompleted(Tile t)
 	return HasBit(t.m1(), 7);
 }
 
-IndustryType GetIndustryType(Tile tile);
+IndustryType GetIndustryType(Tile t);
 
 /**
  * Set if the industry that owns the tile as under construction or not
- * @param tile the tile to query
- * @pre IsTileType(tile, MP_INDUSTRY)
+ * @param t the tile to query
+ * @pre IsTileType(t, MP_INDUSTRY)
  */
-inline void SetIndustryCompleted(Tile tile)
+inline void SetIndustryCompleted(Tile t)
 {
-	assert(IsTileType(tile, MP_INDUSTRY));
-	SetBit(tile.m1(), 7);
+	assert(IsTileType(t, MP_INDUSTRY));
+	SetBit(t.m1(), 7);
 }
 
 /**
  * Returns the industry construction stage of the specified tile
- * @param tile the tile to query
- * @pre IsTileType(tile, MP_INDUSTRY)
+ * @param t the tile to query
+ * @pre IsTileType(t, MP_INDUSTRY)
  * @return the construction stage
  */
-inline uint8_t GetIndustryConstructionStage(Tile tile)
+inline uint8_t GetIndustryConstructionStage(Tile t)
 {
-	assert(IsTileType(tile, MP_INDUSTRY));
-	return IsIndustryCompleted(tile) ? (uint8_t)INDUSTRY_COMPLETED : GB(tile.m1(), 0, 2);
+	assert(IsTileType(t, MP_INDUSTRY));
+	return IsIndustryCompleted(t) ? (uint8_t)INDUSTRY_COMPLETED : GB(t.m1(), 0, 2);
 }
 
 /**
  * Sets the industry construction stage of the specified tile
- * @param tile the tile to query
+ * @param t the tile to query
  * @param value the new construction stage
- * @pre IsTileType(tile, MP_INDUSTRY)
+ * @pre IsTileType(t, MP_INDUSTRY)
  */
-inline void SetIndustryConstructionStage(Tile tile, uint8_t value)
+inline void SetIndustryConstructionStage(Tile t, uint8_t value)
 {
-	assert(IsTileType(tile, MP_INDUSTRY));
-	SB(tile.m1(), 0, 2, value);
+	assert(IsTileType(t, MP_INDUSTRY));
+	SB(t.m1(), 0, 2, value);
 }
 
 /**
@@ -155,116 +155,116 @@ inline void SetIndustryGfx(Tile t, IndustryGfx gfx)
 
 /**
  * Returns this industry tile's construction counter value
- * @param tile the tile to query
- * @pre IsTileType(tile, MP_INDUSTRY)
+ * @param t the tile to query
+ * @pre IsTileType(t, MP_INDUSTRY)
  * @return the construction counter
  */
-inline uint8_t GetIndustryConstructionCounter(Tile tile)
+inline uint8_t GetIndustryConstructionCounter(Tile t)
 {
-	assert(IsTileType(tile, MP_INDUSTRY));
-	return GB(tile.m1(), 2, 2);
+	assert(IsTileType(t, MP_INDUSTRY));
+	return GB(t.m1(), 2, 2);
 }
 
 /**
  * Sets this industry tile's construction counter value
- * @param tile the tile to query
+ * @param t the tile to query
  * @param value the new value for the construction counter
- * @pre IsTileType(tile, MP_INDUSTRY)
+ * @pre IsTileType(t, MP_INDUSTRY)
  */
-inline void SetIndustryConstructionCounter(Tile tile, uint8_t value)
+inline void SetIndustryConstructionCounter(Tile t, uint8_t value)
 {
-	assert(IsTileType(tile, MP_INDUSTRY));
-	SB(tile.m1(), 2, 2, value);
+	assert(IsTileType(t, MP_INDUSTRY));
+	SB(t.m1(), 2, 2, value);
 }
 
 /**
  * Reset the construction stage counter of the industry,
  * as well as the completion bit.
  * In fact, it is the same as restarting construction from the ground up.
- * @param tile the tile to query
- * @pre IsTileType(tile, MP_INDUSTRY)
+ * @param t the tile to query
+ * @pre IsTileType(t, MP_INDUSTRY)
  */
-inline void ResetIndustryConstructionStage(Tile tile)
+inline void ResetIndustryConstructionStage(Tile t)
 {
-	assert(IsTileType(tile, MP_INDUSTRY));
-	SB(tile.m1(), 0, 4, 0);
-	SB(tile.m1(), 7, 1, 0);
+	assert(IsTileType(t, MP_INDUSTRY));
+	SB(t.m1(), 0, 4, 0);
+	SB(t.m1(), 7, 1, 0);
 }
 
 /**
  * Get the animation loop number
- * @param tile the tile to get the animation loop number of
- * @pre IsTileType(tile, MP_INDUSTRY)
+ * @param t the tile to get the animation loop number of
+ * @pre IsTileType(t, MP_INDUSTRY)
  */
-inline uint8_t GetIndustryAnimationLoop(Tile tile)
+inline uint8_t GetIndustryAnimationLoop(Tile t)
 {
-	assert(IsTileType(tile, MP_INDUSTRY));
-	return tile.m4();
+	assert(IsTileType(t, MP_INDUSTRY));
+	return t.m4();
 }
 
 /**
  * Set the animation loop number
- * @param tile the tile to set the animation loop number of
+ * @param t the tile to set the animation loop number of
  * @param count the new animation frame number
- * @pre IsTileType(tile, MP_INDUSTRY)
+ * @pre IsTileType(t, MP_INDUSTRY)
  */
-inline void SetIndustryAnimationLoop(Tile tile, uint8_t count)
+inline void SetIndustryAnimationLoop(Tile t, uint8_t count)
 {
-	assert(IsTileType(tile, MP_INDUSTRY));
-	tile.m4() = count;
+	assert(IsTileType(t, MP_INDUSTRY));
+	t.m4() = count;
 }
 
 /**
  * Get the random bits for this tile.
  * Used for grf callbacks
- * @param tile the tile to query
- * @pre IsTileType(tile, MP_INDUSTRY)
+ * @param t the tile to query
+ * @pre IsTileType(t, MP_INDUSTRY)
  * @return requested bits
  */
-inline uint8_t GetIndustryRandomBits(Tile tile)
+inline uint8_t GetIndustryRandomBits(Tile t)
 {
-	assert(IsTileType(tile, MP_INDUSTRY));
-	return tile.m3();
+	assert(IsTileType(t, MP_INDUSTRY));
+	return t.m3();
 }
 
 /**
  * Set the random bits for this tile.
  * Used for grf callbacks
- * @param tile the tile to query
+ * @param t the tile to query
  * @param bits the random bits
- * @pre IsTileType(tile, MP_INDUSTRY)
+ * @pre IsTileType(t, MP_INDUSTRY)
  */
-inline void SetIndustryRandomBits(Tile tile, uint8_t bits)
+inline void SetIndustryRandomBits(Tile t, uint8_t bits)
 {
-	assert(IsTileType(tile, MP_INDUSTRY));
-	tile.m3() = bits;
+	assert(IsTileType(t, MP_INDUSTRY));
+	t.m3() = bits;
 }
 
 /**
  * Get the activated triggers bits for this industry tile
  * Used for grf callbacks
- * @param tile the tile to query
- * @pre IsTileType(tile, MP_INDUSTRY)
+ * @param t the tile to query
+ * @pre IsTileType(t, MP_INDUSTRY)
  * @return requested triggers
  */
-inline IndustryRandomTriggers GetIndustryRandomTriggers(Tile tile)
+inline IndustryRandomTriggers GetIndustryRandomTriggers(Tile t)
 {
-	assert(IsTileType(tile, MP_INDUSTRY));
-	return static_cast<IndustryRandomTriggers>(GB(tile.m6(), 3, 3));
+	assert(IsTileType(t, MP_INDUSTRY));
+	return static_cast<IndustryRandomTriggers>(GB(t.m6(), 3, 3));
 }
 
 
 /**
  * Set the activated triggers bits for this industry tile
  * Used for grf callbacks
- * @param tile the tile to query
+ * @param t the tile to query
  * @param triggers the triggers to set
- * @pre IsTileType(tile, MP_INDUSTRY)
+ * @pre IsTileType(t, MP_INDUSTRY)
  */
-inline void SetIndustryRandomTriggers(Tile tile, IndustryRandomTriggers triggers)
+inline void SetIndustryRandomTriggers(Tile t, IndustryRandomTriggers triggers)
 {
-	assert(IsTileType(tile, MP_INDUSTRY));
-	SB(tile.m6(), 3, 3, triggers.base());
+	assert(IsTileType(t, MP_INDUSTRY));
+	SB(t.m6(), 3, 3, triggers.base());
 }
 
 /**

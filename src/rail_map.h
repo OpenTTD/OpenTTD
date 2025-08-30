@@ -76,14 +76,14 @@ inline bool HasSignals(Tile t)
 
 /**
  * Add/remove the 'has signal' bit from the RailTileType
- * @param tile the tile to add/remove the signals to/from
+ * @param t the tile to add/remove the signals to/from
  * @param signals whether the rail tile should have signals or not
- * @pre IsPlainRailTile(tile)
+ * @pre IsPlainRailTile(t)
  */
-inline void SetHasSignals(Tile tile, bool signals)
+inline void SetHasSignals(Tile t, bool signals)
 {
-	assert(IsPlainRailTile(tile));
-	AssignBit(tile.m5(), 6, signals);
+	assert(IsPlainRailTile(t));
+	AssignBit(t.m5(), 6, signals);
 }
 
 /**
@@ -130,13 +130,13 @@ inline void SetRailType(Tile t, RailType r)
 
 /**
  * Gets the track bits of the given tile
- * @param tile the tile to get the track bits from
+ * @param t the tile to get the track bits from
  * @return the track bits of the tile
  */
-inline TrackBits GetTrackBits(Tile tile)
+inline TrackBits GetTrackBits(Tile t)
 {
-	assert(IsPlainRailTile(tile));
-	return (TrackBits)GB(tile.m5(), 0, 6);
+	assert(IsPlainRailTile(t));
+	return (TrackBits)GB(t.m5(), 0, 6);
 }
 
 /**
@@ -152,14 +152,14 @@ inline void SetTrackBits(Tile t, TrackBits b)
 
 /**
  * Returns whether the given track is present on the given tile.
- * @param tile  the tile to check the track presence of
+ * @param t  the tile to check the track presence of
  * @param track the track to search for on the tile
- * @pre IsPlainRailTile(tile)
+ * @pre IsPlainRailTile(t)
  * @return true if and only if the given track exists on the tile
  */
-inline bool HasTrack(Tile tile, Track track)
+inline bool HasTrack(Tile t, Track track)
 {
-	return HasBit(GetTrackBits(tile), track);
+	return HasBit(GetTrackBits(t), track);
 }
 
 /**
@@ -217,35 +217,35 @@ inline void SetTrackReservation(Tile t, TrackBits b)
 
 /**
  * Try to reserve a specific track on a tile
- * @pre IsPlainRailTile(t) && HasTrack(tile, t)
- * @param tile the tile
- * @param t the rack to reserve
+ * @pre IsPlainRailTile(t) && HasTrack(t, track)
+ * @param t the tile
+ * @param track the track to reserve
  * @return true if successful
  */
-inline bool TryReserveTrack(Tile tile, Track t)
+inline bool TryReserveTrack(Tile t, Track track)
 {
-	assert(HasTrack(tile, t));
-	TrackBits bits = TrackToTrackBits(t);
-	TrackBits res = GetRailReservationTrackBits(tile);
+	assert(HasTrack(t, track));
+	TrackBits bits = TrackToTrackBits(track);
+	TrackBits res = GetRailReservationTrackBits(t);
 	if ((res & bits) != TRACK_BIT_NONE) return false;  // already reserved
 	res |= bits;
 	if (TracksOverlap(res)) return false;  // crossing reservation present
-	SetTrackReservation(tile, res);
+	SetTrackReservation(t, res);
 	return true;
 }
 
 /**
  * Lift the reservation of a specific track on a tile
- * @pre IsPlainRailTile(t) && HasTrack(tile, t)
- * @param tile the tile
- * @param t the track to free
+ * @pre IsPlainRailTile(t) && HasTrack(t, track)
+ * @param t the tile
+ * @param track the track to free
  */
-inline void UnreserveTrack(Tile tile, Track t)
+inline void UnreserveTrack(Tile t, Track track)
 {
-	assert(HasTrack(tile, t));
-	TrackBits res = GetRailReservationTrackBits(tile);
-	res &= ~TrackToTrackBits(t);
-	SetTrackReservation(tile, res);
+	assert(HasTrack(t, track));
+	TrackBits res = GetRailReservationTrackBits(t);
+	res &= ~TrackToTrackBits(track);
+	SetTrackReservation(t, res);
 }
 
 /**
@@ -345,22 +345,22 @@ inline void SetSignalVariant(Tile t, Track track, SignalVariant v)
 
 /**
  * Set the states of the signals (Along/AgainstTrackDir)
- * @param tile  the tile to set the states for
+ * @param t  the tile to set the states for
  * @param state the new state
  */
-inline void SetSignalStates(Tile tile, uint state)
+inline void SetSignalStates(Tile t, uint state)
 {
-	SB(tile.m4(), 4, 4, state);
+	SB(t.m4(), 4, 4, state);
 }
 
 /**
  * Set the states of the signals (Along/AgainstTrackDir)
- * @param tile  the tile to set the states for
+ * @param t  the tile to set the states for
  * @return the state of the signals
  */
-inline uint GetSignalStates(Tile tile)
+inline uint GetSignalStates(Tile t)
 {
-	return GB(tile.m4(), 4, 4);
+	return GB(t.m4(), 4, 4);
 }
 
 /**
@@ -376,22 +376,22 @@ inline SignalState GetSingleSignalState(Tile t, uint8_t signalbit)
 
 /**
  * Set whether the given signals are present (Along/AgainstTrackDir)
- * @param tile    the tile to set the present signals for
+ * @param t    the tile to set the present signals for
  * @param signals the signals that have to be present
  */
-inline void SetPresentSignals(Tile tile, uint signals)
+inline void SetPresentSignals(Tile t, uint signals)
 {
-	SB(tile.m3(), 4, 4, signals);
+	SB(t.m3(), 4, 4, signals);
 }
 
 /**
  * Get whether the given signals are present (Along/AgainstTrackDir)
- * @param tile the tile to get the present signals for
+ * @param t the tile to get the present signals for
  * @return the signals that are present
  */
-inline uint GetPresentSignals(Tile tile)
+inline uint GetPresentSignals(Tile t)
 {
-	return GB(tile.m3(), 4, 4);
+	return GB(t.m3(), 4, 4);
 }
 
 /**
@@ -409,10 +409,10 @@ inline bool IsSignalPresent(Tile t, uint8_t signalbit)
  * Checks for the presence of signals (either way) on the given track on the
  * given rail tile.
  */
-inline bool HasSignalOnTrack(Tile tile, Track track)
+inline bool HasSignalOnTrack(Tile t, Track track)
 {
 	assert(IsValidTrack(track));
-	return GetRailTileType(tile) == RAIL_TILE_SIGNALS && (GetPresentSignals(tile) & SignalOnTrack(track)) != 0;
+	return GetRailTileType(t) == RAIL_TILE_SIGNALS && (GetPresentSignals(t) & SignalOnTrack(track)) != 0;
 }
 
 /**
@@ -422,10 +422,10 @@ inline bool HasSignalOnTrack(Tile tile, Track track)
  * Along meaning if you are currently driving on the given trackdir, this is
  * the signal that is facing us (for which we stop when it's red).
  */
-inline bool HasSignalOnTrackdir(Tile tile, Trackdir trackdir)
+inline bool HasSignalOnTrackdir(Tile t, Trackdir trackdir)
 {
 	assert (IsValidTrackdir(trackdir));
-	return GetRailTileType(tile) == RAIL_TILE_SIGNALS && GetPresentSignals(tile) & SignalAlongTrackdir(trackdir);
+	return GetRailTileType(t) == RAIL_TILE_SIGNALS && GetPresentSignals(t) & SignalAlongTrackdir(trackdir);
 }
 
 /**
@@ -434,51 +434,51 @@ inline bool HasSignalOnTrackdir(Tile tile, Trackdir trackdir)
  * Along meaning if you are currently driving on the given trackdir, this is
  * the signal that is facing us (for which we stop when it's red).
  */
-inline SignalState GetSignalStateByTrackdir(Tile tile, Trackdir trackdir)
+inline SignalState GetSignalStateByTrackdir(Tile t, Trackdir trackdir)
 {
 	assert(IsValidTrackdir(trackdir));
-	assert(HasSignalOnTrack(tile, TrackdirToTrack(trackdir)));
-	return GetSignalStates(tile) & SignalAlongTrackdir(trackdir) ?
+	assert(HasSignalOnTrack(t, TrackdirToTrack(trackdir)));
+	return GetSignalStates(t) & SignalAlongTrackdir(trackdir) ?
 		SIGNAL_STATE_GREEN : SIGNAL_STATE_RED;
 }
 
 /**
  * Sets the state of the signal along the given trackdir.
  */
-inline void SetSignalStateByTrackdir(Tile tile, Trackdir trackdir, SignalState state)
+inline void SetSignalStateByTrackdir(Tile t, Trackdir trackdir, SignalState state)
 {
 	if (state == SIGNAL_STATE_GREEN) { // set 1
-		SetSignalStates(tile, GetSignalStates(tile) | SignalAlongTrackdir(trackdir));
+		SetSignalStates(t, GetSignalStates(t) | SignalAlongTrackdir(trackdir));
 	} else {
-		SetSignalStates(tile, GetSignalStates(tile) & ~SignalAlongTrackdir(trackdir));
+		SetSignalStates(t, GetSignalStates(t) & ~SignalAlongTrackdir(trackdir));
 	}
 }
 
 /**
  * Is a pbs signal present along the trackdir?
- * @param tile the tile to check
+ * @param t the tile to check
  * @param td the trackdir to check
  */
-inline bool HasPbsSignalOnTrackdir(Tile tile, Trackdir td)
+inline bool HasPbsSignalOnTrackdir(Tile t, Trackdir td)
 {
-	return IsTileType(tile, MP_RAILWAY) && HasSignalOnTrackdir(tile, td) &&
-			IsPbsSignal(GetSignalType(tile, TrackdirToTrack(td)));
+	return IsTileType(t, MP_RAILWAY) && HasSignalOnTrackdir(t, td) &&
+			IsPbsSignal(GetSignalType(t, TrackdirToTrack(td)));
 }
 
 /**
  * Is a one-way signal blocking the trackdir? A one-way signal on the
  * trackdir against will block, but signals on both trackdirs won't.
- * @param tile the tile to check
+ * @param t the tile to check
  * @param td the trackdir to check
  */
-inline bool HasOnewaySignalBlockingTrackdir(Tile tile, Trackdir td)
+inline bool HasOnewaySignalBlockingTrackdir(Tile t, Trackdir td)
 {
-	return IsTileType(tile, MP_RAILWAY) && HasSignalOnTrackdir(tile, ReverseTrackdir(td)) &&
-			!HasSignalOnTrackdir(tile, td) && IsOnewaySignal(tile, TrackdirToTrack(td));
+	return IsTileType(t, MP_RAILWAY) && HasSignalOnTrackdir(t, ReverseTrackdir(td)) &&
+			!HasSignalOnTrackdir(t, td) && IsOnewaySignal(t, TrackdirToTrack(td));
 }
 
 
-RailType GetTileRailType(Tile tile);
+RailType GetTileRailType(Tile t);
 
 /** The ground 'under' the rail */
 enum RailGroundType : uint8_t {
@@ -531,35 +531,35 @@ inline void MakeRailNormal(Tile t, Owner o, TrackBits b, RailType r)
 
 /**
  * Sets the exit direction of a rail depot.
- * @param tile Tile of the depot.
+ * @param t Tile of the depot.
  * @param dir  Direction of the depot exit.
  */
-inline void SetRailDepotExitDirection(Tile tile, DiagDirection dir)
+inline void SetRailDepotExitDirection(Tile t, DiagDirection dir)
 {
-	assert(IsRailDepotTile(tile));
-	SB(tile.m5(), 0, 2, dir);
+	assert(IsRailDepotTile(t));
+	SB(t.m5(), 0, 2, dir);
 }
 
 /**
  * Make a rail depot.
- * @param tile      Tile to make a depot on.
+ * @param t      Tile to make a depot on.
  * @param owner     New owner of the depot.
  * @param depot_id  New depot ID.
  * @param dir       Direction of the depot exit.
  * @param rail_type Rail type of the depot.
  */
-inline void MakeRailDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirection dir, RailType rail_type)
+inline void MakeRailDepot(Tile t, Owner owner, DepotID depot_id, DiagDirection dir, RailType rail_type)
 {
-	SetTileType(tile, MP_RAILWAY);
-	SetTileOwner(tile, owner);
-	SetDockingTile(tile, false);
-	tile.m2() = depot_id.base();
-	tile.m3() = 0;
-	tile.m4() = 0;
-	tile.m5() = RAIL_TILE_DEPOT << 6 | dir;
-	SB(tile.m6(), 2, 4, 0);
-	tile.m7() = 0;
-	tile.m8() = rail_type;
+	SetTileType(t, MP_RAILWAY);
+	SetTileOwner(t, owner);
+	SetDockingTile(t, false);
+	t.m2() = depot_id.base();
+	t.m3() = 0;
+	t.m4() = 0;
+	t.m5() = RAIL_TILE_DEPOT << 6 | dir;
+	SB(t.m6(), 2, 4, 0);
+	t.m7() = 0;
+	t.m8() = rail_type;
 }
 
 #endif /* RAIL_MAP_H */

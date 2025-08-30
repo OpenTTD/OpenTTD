@@ -101,15 +101,15 @@ void ResetIndustries()
  * Retrieve the type for this industry.  Although it is accessed by a tile,
  * it will return the general type of industry, and not the sprite index
  * as would do GetIndustryGfx.
- * @param tile that is queried
- * @pre IsTileType(tile, MP_INDUSTRY)
+ * @param t that is queried
+ * @pre IsTileType(t, MP_INDUSTRY)
  * @return general type for this industry, as defined in industry.h
  */
-IndustryType GetIndustryType(Tile tile)
+IndustryType GetIndustryType(Tile t)
 {
-	assert(IsTileType(tile, MP_INDUSTRY));
+	assert(IsTileType(t, MP_INDUSTRY));
 
-	const Industry *ind = Industry::GetByTile(tile);
+	const Industry *ind = Industry::GetByTile(t);
 	assert(ind != nullptr);
 	return ind->type;
 }

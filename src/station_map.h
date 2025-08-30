@@ -282,24 +282,24 @@ StationGfx GetTranslatedAirportTileID(StationGfx gfx);
 
 /**
  * Get the decorations of a road waypoint.
- * @param tile The tile to query.
+ * @param t The tile to query.
  * @return The road decoration of the tile.
  */
-static inline Roadside GetRoadWaypointRoadside(Tile tile)
+static inline Roadside GetRoadWaypointRoadside(Tile t)
 {
-	assert(IsRoadWaypointTile(tile));
-	return (Roadside)GB(tile.m3(), 2, 2);
+	assert(IsRoadWaypointTile(t));
+	return (Roadside)GB(t.m3(), 2, 2);
 }
 
 /**
  * Set the decorations of a road waypoint.
- * @param tile The tile to change.
- * @param s    The new road decoration of the tile.
+ * @param t The tile to change.
+ * @param s The new road decoration of the tile.
  */
-static inline void SetRoadWaypointRoadside(Tile tile, Roadside s)
+static inline void SetRoadWaypointRoadside(Tile t, Roadside s)
 {
-	assert(IsRoadWaypointTile(tile));
-	SB(tile.m3(), 2, 2, s);
+	assert(IsRoadWaypointTile(t));
+	SB(t.m3(), 2, 2, s);
 }
 
 /**

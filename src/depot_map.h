@@ -15,33 +15,35 @@
 
 /**
  * Check if a tile is a depot and it is a depot of the given type.
+ * @param t the tile
+ * @param type the transport type
  */
-inline bool IsDepotTypeTile(Tile tile, TransportType type)
+inline bool IsDepotTypeTile(Tile t, TransportType type)
 {
 	switch (type) {
 		default: NOT_REACHED();
 		case TRANSPORT_RAIL:
-			return IsRailDepotTile(tile);
+			return IsRailDepotTile(t);
 
 		case TRANSPORT_ROAD:
-			return IsRoadDepotTile(tile);
+			return IsRoadDepotTile(t);
 
 		case TRANSPORT_WATER:
-			return IsShipDepotTile(tile);
+			return IsShipDepotTile(t);
 
 		case TRANSPORT_AIR:
-			return IsHangarTile(tile);
+			return IsHangarTile(t);
 	}
 }
 
 /**
  * Is the given tile a tile with a depot on it?
- * @param tile the tile to check
+ * @param t the tile to check
  * @return true if and only if there is a depot on the tile.
  */
-inline bool IsDepotTile(Tile tile)
+inline bool IsDepotTile(Tile t)
 {
-	return IsRailDepotTile(tile) || IsRoadDepotTile(tile) || IsShipDepotTile(tile) || IsHangarTile(tile);
+	return IsRailDepotTile(t) || IsRoadDepotTile(t) || IsShipDepotTile(t) || IsHangarTile(t);
 }
 
 /**

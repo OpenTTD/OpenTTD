@@ -49,16 +49,16 @@ inline uint TileHeightOutsideMap(int x, int y)
  *
  * This function sets the height of the northern corner of a tile.
  *
- * @param tile The tile to change the height
+ * @param t The tile to change the height
  * @param height The new height value of the tile
- * @pre tile < Map::Size()
+ * @pre t < Map::Size()
  * @pre height <= MAX_TILE_HEIGHT
  */
-inline void SetTileHeight(Tile tile, uint height)
+inline void SetTileHeight(Tile t, uint height)
 {
-	assert(tile < Map::Size());
+	assert(t < Map::Size());
 	assert(height <= MAX_TILE_HEIGHT);
-	tile.height() = height;
+	t.height() = height;
 }
 
 /**
@@ -66,12 +66,12 @@ inline void SetTileHeight(Tile tile, uint height)
  *
  * This function returns the height of the northern corner of a tile in pixels.
  *
- * @param tile The tile to get the height
+ * @param t The tile to get the height
  * @return The height of the tile in pixel
  */
-inline uint TilePixelHeight(Tile tile)
+inline uint TilePixelHeight(Tile t)
 {
-	return TileHeight(tile) * TILE_HEIGHT;
+	return TileHeight(t) * TILE_HEIGHT;
 }
 
 /**
@@ -89,29 +89,29 @@ inline uint TilePixelHeightOutsideMap(int x, int y)
 /**
  * Get the tiletype of a given tile.
  *
- * @param tile The tile to get the TileType
+ * @param t The tile to get the TileType
  * @return The tiletype of the tile
- * @pre tile < Map::Size()
+ * @pre t < Map::Size()
  */
-debug_inline static TileType GetTileType(Tile tile)
+debug_inline static TileType GetTileType(Tile t)
 {
-	assert(tile < Map::Size());
-	return (TileType)GB(tile.type(), 4, 4);
+	assert(t < Map::Size());
+	return (TileType)GB(t.type(), 4, 4);
 }
 
 /**
  * Check if a tile is within the map (not a border)
  *
- * @param tile The tile to check
+ * @param t The tile to check
  * @return Whether the tile is in the interior of the map
- * @pre tile < Map::Size()
+ * @pre t < Map::Size()
  */
-inline bool IsInnerTile(Tile tile)
+inline bool IsInnerTile(Tile t)
 {
-	assert(tile < Map::Size());
+	assert(t < Map::Size());
 
-	uint x = TileX(tile);
-	uint y = TileY(tile);
+	uint x = TileX(t);
+	uint y = TileY(t);
 
 	return x < Map::MaxX() && y < Map::MaxY() && ((x > 0 && y > 0) || !_settings_game.construction.freeform_edges);
 }
@@ -123,19 +123,19 @@ inline bool IsInnerTile(Tile tile)
  * MP_VOID is selected the tile must be at the south-west or
  * south-east edges of the map and vice versa.
  *
- * @param tile The tile to save the new type
+ * @param t The tile to save the new type
  * @param type The type to save
- * @pre tile < Map::Size()
+ * @pre t < Map::Size()
  * @pre type MP_VOID <=> tile is on the south-east or south-west edge.
  */
-inline void SetTileType(Tile tile, TileType type)
+inline void SetTileType(Tile t, TileType type)
 {
-	assert(tile < Map::Size());
+	assert(t < Map::Size());
 	/* VOID tiles (and no others) are exactly allowed at the lower left and right
 	 * edges of the map. If _settings_game.construction.freeform_edges is true,
 	 * the upper edges of the map are also VOID tiles. */
-	assert(IsInnerTile(tile) == (type != MP_VOID));
-	SB(tile.type(), 4, 4, type);
+	assert(IsInnerTile(t) == (type != MP_VOID));
+	SB(t.type(), 4, 4, type);
 }
 
 /**
@@ -143,24 +143,24 @@ inline void SetTileType(Tile tile, TileType type)
  *
  * This function checks if a tile has the given tiletype.
  *
- * @param tile The tile to check
+ * @param t The tile to check
  * @param type The type to check against
  * @return true If the type matches against the type of the tile
  */
-debug_inline static bool IsTileType(Tile tile, TileType type)
+debug_inline static bool IsTileType(Tile t, TileType type)
 {
-	return GetTileType(tile) == type;
+	return GetTileType(t) == type;
 }
 
 /**
  * Checks if a tile is valid
  *
- * @param tile The tile to check
+ * @param t The tile to check
  * @return True if the tile is on the map and not one of MP_VOID.
  */
-inline bool IsValidTile(Tile tile)
+inline bool IsValidTile(Tile t)
 {
-	return tile < Map::Size() && !IsTileType(tile, MP_VOID);
+	return t < Map::Size() && !IsTileType(t, MP_VOID);
 }
 
 /**
@@ -170,18 +170,18 @@ inline bool IsValidTile(Tile tile)
  * for tiles which type is one of MP_HOUSE, MP_VOID and MP_INDUSTRY
  * as no company owned any of these buildings.
  *
- * @param tile The tile to check
+ * @param t The tile to check
  * @return The owner of the tile
- * @pre IsValidTile(tile)
+ * @pre IsValidTile(t)
  * @pre The type of the tile must not be MP_HOUSE and MP_INDUSTRY
  */
-inline Owner GetTileOwner(Tile tile)
+inline Owner GetTileOwner(Tile t)
 {
-	assert(IsValidTile(tile));
-	assert(!IsTileType(tile, MP_HOUSE));
-	assert(!IsTileType(tile, MP_INDUSTRY));
+	assert(IsValidTile(t));
+	assert(!IsTileType(t, MP_HOUSE));
+	assert(!IsTileType(t, MP_INDUSTRY));
 
-	return (Owner)GB(tile.m1(), 0, 5);
+	return (Owner)GB(t.m1(), 0, 5);
 }
 
 /**
@@ -190,55 +190,55 @@ inline Owner GetTileOwner(Tile tile)
  * This function sets the owner status of a tile. Note that you cannot
  * set a owner for tiles of type MP_HOUSE, MP_VOID and MP_INDUSTRY.
  *
- * @param tile The tile to change the owner status.
+ * @param t The tile to change the owner status.
  * @param owner The new owner.
- * @pre IsValidTile(tile)
+ * @pre IsValidTile(t)
  * @pre The type of the tile must not be MP_HOUSE and MP_INDUSTRY
  */
-inline void SetTileOwner(Tile tile, Owner owner)
+inline void SetTileOwner(Tile t, Owner owner)
 {
-	assert(IsValidTile(tile));
-	assert(!IsTileType(tile, MP_HOUSE));
-	assert(!IsTileType(tile, MP_INDUSTRY));
+	assert(IsValidTile(t));
+	assert(!IsTileType(t, MP_HOUSE));
+	assert(!IsTileType(t, MP_INDUSTRY));
 
-	SB(tile.m1(), 0, 5, owner.base());
+	SB(t.m1(), 0, 5, owner.base());
 }
 
 /**
  * Checks if a tile belongs to the given owner
  *
- * @param tile The tile to check
+ * @param t The tile to check
  * @param owner The owner to check against
  * @return True if a tile belongs the the given owner
  */
-inline bool IsTileOwner(Tile tile, Owner owner)
+inline bool IsTileOwner(Tile t, Owner owner)
 {
-	return GetTileOwner(tile) == owner;
+	return GetTileOwner(t) == owner;
 }
 
 /**
  * Set the tropic zone
- * @param tile the tile to set the zone of
+ * @param t the tile to set the zone of
  * @param type the new type
- * @pre tile < Map::Size()
+ * @pre t < Map::Size()
  */
-inline void SetTropicZone(Tile tile, TropicZone type)
+inline void SetTropicZone(Tile t, TropicZone type)
 {
-	assert(tile < Map::Size());
-	assert(!IsTileType(tile, MP_VOID) || type == TROPICZONE_NORMAL);
-	SB(tile.type(), 0, 2, type);
+	assert(t < Map::Size());
+	assert(!IsTileType(t, MP_VOID) || type == TROPICZONE_NORMAL);
+	SB(t.type(), 0, 2, type);
 }
 
 /**
  * Get the tropic zone
- * @param tile the tile to get the zone of
- * @pre tile < Map::Size()
+ * @param t the tile to get the zone of
+ * @pre t < Map::Size()
  * @return the zone type
  */
-inline TropicZone GetTropicZone(Tile tile)
+inline TropicZone GetTropicZone(Tile t)
 {
-	assert(tile < Map::Size());
-	return (TropicZone)GB(tile.type(), 0, 2);
+	assert(t < Map::Size());
+	return (TropicZone)GB(t.type(), 0, 2);
 }
 
 /**

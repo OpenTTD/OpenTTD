@@ -119,12 +119,12 @@ inline RoadBits GetRoadBits(Tile t, RoadTramType rtt)
 /**
  * Get all set RoadBits on the given tile
  *
- * @param tile The tile from which we want to get the RoadBits
+ * @param t The tile from which we want to get the RoadBits
  * @return all set RoadBits of the tile
  */
-inline RoadBits GetAllRoadBits(Tile tile)
+inline RoadBits GetAllRoadBits(Tile t)
 {
-	return GetRoadBits(tile, RTT_ROAD) | GetRoadBits(tile, RTT_TRAM);
+	return GetRoadBits(t, RTT_ROAD) | GetRoadBits(t, RTT_TRAM);
 }
 
 /**
@@ -326,32 +326,32 @@ inline Axis GetCrossingRailAxis(Tile t)
 
 /**
  * Get the road bits of a level crossing.
- * @param tile The tile to query.
+ * @param t The tile to query.
  * @return The present road bits.
  */
-inline RoadBits GetCrossingRoadBits(Tile tile)
+inline RoadBits GetCrossingRoadBits(Tile t)
 {
-	return GetCrossingRoadAxis(tile) == AXIS_X ? ROAD_X : ROAD_Y;
+	return GetCrossingRoadAxis(t) == AXIS_X ? ROAD_X : ROAD_Y;
 }
 
 /**
  * Get the rail track of a level crossing.
- * @param tile The tile to query.
+ * @param t The tile to query.
  * @return The rail track.
  */
-inline Track GetCrossingRailTrack(Tile tile)
+inline Track GetCrossingRailTrack(Tile t)
 {
-	return AxisToTrack(GetCrossingRailAxis(tile));
+	return AxisToTrack(GetCrossingRailAxis(t));
 }
 
 /**
  * Get the rail track bits of a level crossing.
- * @param tile The tile to query.
+ * @param t The tile to query.
  * @return The rail track bits.
  */
-inline TrackBits GetCrossingRailBits(Tile tile)
+inline TrackBits GetCrossingRailBits(Tile t)
 {
-	return AxisToTrackBits(GetCrossingRailAxis(tile));
+	return AxisToTrackBits(GetCrossingRailAxis(t));
 }
 
 
@@ -467,22 +467,22 @@ enum Roadside : uint8_t {
 
 /**
  * Get the decorations of a road.
- * @param tile The tile to query.
+ * @param t The tile to query.
  * @return The road decoration of the tile.
  */
-inline Roadside GetRoadside(Tile tile)
+inline Roadside GetRoadside(Tile t)
 {
-	return (Roadside)GB(tile.m6(), 3, 3);
+	return (Roadside)GB(t.m6(), 3, 3);
 }
 
 /**
  * Set the decorations of a road.
- * @param tile The tile to change.
- * @param s    The new road decoration of the tile.
+ * @param t The tile to change.
+ * @param s The new road decoration of the tile.
  */
-inline void SetRoadside(Tile tile, Roadside s)
+inline void SetRoadside(Tile t, Roadside s)
 {
-	SB(tile.m6(), 3, 3, s);
+	SB(t.m6(), 3, 3, s);
 }
 
 /**
@@ -549,7 +549,7 @@ inline DiagDirection GetRoadDepotDirection(Tile t)
 }
 
 
-RoadBits GetAnyRoadBits(Tile tile, RoadTramType rtt, bool straight_tunnel_bridge_entrance = false);
+RoadBits GetAnyRoadBits(Tile t, RoadTramType rtt, bool straight_tunnel_bridge_entrance = false);
 
 /**
  * Set the road road type of a tile.
@@ -654,36 +654,36 @@ inline void MakeRoadCrossing(Tile t, Owner road, Owner tram, Owner rail, Axis ro
 
 /**
  * Sets the exit direction of a road depot.
- * @param tile Tile of the depot.
+ * @param t Tile of the depot.
  * @param dir  Direction of the depot exit.
  */
-inline void SetRoadDepotExitDirection(Tile tile, DiagDirection dir)
+inline void SetRoadDepotExitDirection(Tile t, DiagDirection dir)
 {
-	assert(IsRoadDepotTile(tile));
-	SB(tile.m5(), 0, 2, dir);
+	assert(IsRoadDepotTile(t));
+	SB(t.m5(), 0, 2, dir);
 }
 
 /**
  * Make a road depot.
- * @param tile      Tile to make a depot on.
+ * @param t      Tile to make a depot on.
  * @param owner     New owner of the depot.
  * @param depot_id  New depot ID.
  * @param dir       Direction of the depot exit.
  * @param rt        Road type of the depot.
  */
-inline void MakeRoadDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirection dir, RoadType rt)
+inline void MakeRoadDepot(Tile t, Owner owner, DepotID depot_id, DiagDirection dir, RoadType rt)
 {
-	SetTileType(tile, MP_ROAD);
-	SetTileOwner(tile, owner);
-	tile.m2() = depot_id.base();
-	tile.m3() = 0;
-	tile.m4() = INVALID_ROADTYPE;
-	tile.m5() = ROAD_TILE_DEPOT << 6 | dir;
-	SB(tile.m6(), 2, 4, 0);
-	tile.m7() = owner.base();
-	tile.m8() = INVALID_ROADTYPE << 6;
-	SetRoadType(tile, GetRoadTramType(rt), rt);
-	SetRoadOwner(tile, RTT_TRAM, owner);
+	SetTileType(t, MP_ROAD);
+	SetTileOwner(t, owner);
+	t.m2() = depot_id.base();
+	t.m3() = 0;
+	t.m4() = INVALID_ROADTYPE;
+	t.m5() = ROAD_TILE_DEPOT << 6 | dir;
+	SB(t.m6(), 2, 4, 0);
+	t.m7() = owner.base();
+	t.m8() = INVALID_ROADTYPE << 6;
+	SetRoadType(t, GetRoadTramType(rt), rt);
+	SetRoadOwner(t, RTT_TRAM, owner);
 }
 
 #endif /* ROAD_MAP_H */
