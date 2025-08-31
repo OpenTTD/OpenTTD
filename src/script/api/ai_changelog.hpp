@@ -28,6 +28,7 @@
  * \li AICargo::CC_POTABLE
  * \li AICargo::CC_NON_POTABLE
  * \li AIVehicleList_Waypoint
+ * \li AIError::ERR_BRIDGE_TOO_LOW
  *
  * Other changes:
  * \li AIBridge::GetBridgeID renamed to AIBridge::GetBridgeType

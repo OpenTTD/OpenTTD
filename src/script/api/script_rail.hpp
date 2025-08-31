@@ -262,6 +262,7 @@ public:
 	 * @exception ScriptStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION
 	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS
 	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN
+	 * @exception ScriptError::ERR_BRIDGE_TOO_LOW
 	 * @return Whether the station has been/can be build or not.
 	 */
 	static bool BuildRailStation(TileIndex tile, RailTrack direction, SQInteger num_platforms, SQInteger platform_length, StationID station_id);
@@ -299,6 +300,7 @@ public:
 	 * @exception ScriptStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION
 	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS
 	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN
+	 * @exception ScriptError::ERR_BRIDGE_TOO_LOW
 	 * @return Whether the station has been/can be build or not.
 	 */
 	static bool BuildNewGRFRailStation(TileIndex tile, RailTrack direction, SQInteger num_platforms, SQInteger platform_length, StationID station_id, CargoType cargo_type, IndustryType source_industry, IndustryType goal_industry, SQInteger distance, bool source_station);
@@ -312,6 +314,7 @@ public:
 	 * @pre IsRailTypeAvailable(GetCurrentRailType()).
 	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptError::ERR_FLAT_LAND_REQUIRED
+	 * @exception ScriptError::ERR_BRIDGE_TOO_LOW
 	 * @return Whether the rail waypoint has been/can be build or not.
 	 */
 	static bool BuildRailWaypoint(TileIndex tile);

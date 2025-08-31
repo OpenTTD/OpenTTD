@@ -135,6 +135,7 @@ public:
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
 	 * @exception ScriptError::ERR_SITE_UNSUITABLE
 	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS
+	 * @exception ScriptError::ERR_BRIDGE_TOO_LOW
 	 * @return Whether the buoy has been/can be build or not.
 	 */
 	static bool BuildBuoy(TileIndex tile);
