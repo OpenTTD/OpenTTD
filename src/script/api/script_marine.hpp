@@ -123,6 +123,7 @@ public:
 	 * @exception ScriptError::ERR_SITE_UNSUITABLE
 	 * @exception ScriptStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION
 	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS
+	 * @exception ScriptError::ERR_STATION_TOO_SPREAD_OUT
 	 * @return Whether the dock has been/can be build or not.
 	 */
 	static bool BuildDock(TileIndex tile, StationID station_id);
@@ -136,6 +137,7 @@ public:
 	 * @exception ScriptError::ERR_SITE_UNSUITABLE
 	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS
 	 * @exception ScriptError::ERR_BRIDGE_TOO_LOW
+	 * @exception ScriptError::ERR_STATION_TOO_SPREAD_OUT
 	 * @return Whether the buoy has been/can be build or not.
 	 */
 	static bool BuildBuoy(TileIndex tile);
