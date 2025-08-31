@@ -2939,7 +2939,7 @@ void StartStopVehicle(const Vehicle *v, bool texteffect)
 }
 
 /** Checks whether the vehicle may be refitted at the moment.*/
-static bool IsVehicleRefitable(const Vehicle *v)
+static bool IsVehicleRefittable(const Vehicle *v)
 {
 	if (!v->IsStoppedInDepot()) return false;
 
@@ -3079,11 +3079,11 @@ public:
 	{
 		const Vehicle *v = Vehicle::Get(this->window_number);
 		bool is_localcompany = v->owner == _local_company;
-		bool refitable_and_stopped_in_depot = IsVehicleRefitable(v);
+		bool refittable_and_stopped_in_depot = IsVehicleRefittable(v);
 
 		this->SetWidgetDisabledState(WID_VV_RENAME, !is_localcompany);
 		this->SetWidgetDisabledState(WID_VV_GOTO_DEPOT, !is_localcompany);
-		this->SetWidgetDisabledState(WID_VV_REFIT, !refitable_and_stopped_in_depot || !is_localcompany);
+		this->SetWidgetDisabledState(WID_VV_REFIT, !refittable_and_stopped_in_depot || !is_localcompany);
 		this->SetWidgetDisabledState(WID_VV_CLONE, !is_localcompany);
 
 		if (v->type == VEH_TRAIN) {

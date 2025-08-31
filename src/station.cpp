@@ -115,7 +115,7 @@ Station::~Station()
 		}
 		lg->RemoveNode(this->goods[cargo].node);
 		if (lg->Size() == 0) {
-			LinkGraphSchedule::instance.Unqueue(lg);
+			LinkGraphSchedule::instance.Dequeue(lg);
 			delete lg;
 		}
 	}
