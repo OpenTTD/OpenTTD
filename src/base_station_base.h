@@ -243,7 +243,7 @@ struct SpecializedStation : public BaseStation {
 
 	/**
 	 * Gets station with given index
-	 * @return pointer to station with given index casted to T *
+	 * @return pointer to station with given index cast to T *
 	 */
 	static inline T *Get(auto index)
 	{

@@ -246,7 +246,7 @@ enum TTDPAircraftMovementActions : uint8_t {
 	AMA_TTDP_PAD1_TO_TAKEOFF,
 	AMA_TTDP_PAD2_TO_TAKEOFF,
 	AMA_TTDP_PAD3_TO_TAKEOFF,
-	AMA_TTDP_HANGAR_TO_TAKOFF,
+	AMA_TTDP_HANGAR_TO_TAKEOFF,
 	AMA_TTDP_LANDING_TO_HANGAR,
 	AMA_TTDP_IN_FLIGHT,
 };
@@ -1243,7 +1243,7 @@ int GetEngineProperty(EngineID engine, PropertyID property, int orig_value, cons
 }
 
 /**
- * Test for vehicle build probablity type.
+ * Test for vehicle build probability type.
  * @param v Vehicle whose build probability to test.
  * @param type Build probability type to test for.
  * @returns True or false depending on the probability result, or std::nullopt if the callback failed.

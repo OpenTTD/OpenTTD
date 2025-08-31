@@ -49,7 +49,7 @@ enum IndustryGraphics : uint8_t {
 	GFX_PLASTIC_FOUNTAIN_ANIMATED_8    = 155,
 	GFX_BUBBLE_GENERATOR               = 161,
 	GFX_BUBBLE_CATCHER                 = 162,
-	GFX_TOFFEE_QUARY                   = 165,
+	GFX_TOFFEE_QUARRY                  = 165,
 	GFX_SUGAR_MINE_SIEVE               = 174,
 	GFX_WATERTILE_SPECIALCHECK         = 255,  ///< not really a tile, but rather a very special check
 };

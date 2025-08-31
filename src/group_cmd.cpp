@@ -96,7 +96,7 @@ uint16_t GroupStatistics::GetNumEngines(EngineID engine) const
 }
 
 /**
- * Returns the GroupStatistic for the ALL_GROUPO of a vehicle type.
+ * Returns the GroupStatistic for the ALL_GROUP of a vehicle type.
  * @param v Vehicle.
  * @return GroupStatistics for the ALL_GROUP of the vehicle type.
  */

@@ -109,7 +109,7 @@ ServerNetworkAdminSocketHandler::~ServerNetworkAdminSocketHandler()
 }
 
 /**
- * Handle the acception of a connection.
+ * Handle the acceptance of a connection.
  * @param s The socket of the new connection.
  * @param address The address of the peer.
  */

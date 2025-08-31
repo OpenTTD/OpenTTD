@@ -1674,7 +1674,7 @@ static void AircraftEventHandler_Flying(Aircraft *v, const AirportFTAClass *apc)
 			if (current->heading == landingtype) {
 				/* save speed before, since if AirportHasBlock is false, it resets them to 0
 				 * we don't want that for plane in air
-				 * hack for speed thingie */
+				 * hack for speed thingy */
 				uint16_t tcur_speed = v->cur_speed;
 				uint16_t tsubspeed = v->subspeed;
 				if (!AirportHasBlock(v, current, apc)) {

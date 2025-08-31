@@ -870,7 +870,7 @@ public:
 					if (_game_mode == GM_EDITOR || !t->have_ratings.Test(_local_company)) {
 						DrawSprite(SPR_TOWN_RATING_NA, PAL_NONE, icon_x, tr.top + (this->resize.step_height - icon_size.height) / 2);
 					} else {
-						SpriteID icon = SPR_TOWN_RATING_APALLING;
+						SpriteID icon = SPR_TOWN_RATING_APPALLING;
 						if (t->ratings[_local_company] > RATING_VERYPOOR) icon = SPR_TOWN_RATING_MEDIOCRE;
 						if (t->ratings[_local_company] > RATING_GOOD)     icon = SPR_TOWN_RATING_GOOD;
 						DrawSprite(icon, PAL_NONE, icon_x, tr.top + (this->resize.step_height - icon_size.height) / 2);

@@ -262,7 +262,7 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 			std::copy_n(reinterpret_cast<const std::byte *>(runp->ai_addr), runp->ai_addrlen, reinterpret_cast<std::byte *>(&this->address));
 #ifdef __EMSCRIPTEN__
 			/* Emscripten doesn't zero sin_zero, but as we compare addresses
-			 * to see if they are the same address, we need them to be zero'd.
+			 * to see if they are the same address, we need them to be zeroed.
 			 * Emscripten is, as far as we know, the only OS not doing this.
 			 *
 			 * https://github.com/emscripten-core/emscripten/issues/12998

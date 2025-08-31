@@ -1427,7 +1427,7 @@ static bool GrowTownWithTunnel(const Town *t, const TileIndex tile, const DiagDi
 			slope_tile += delta;
 		}
 
-		/* More population means longer tunnels, but make sure we can at least cover the smallest mountain which neccesitates tunneling. */
+		/* More population means longer tunnels, but make sure we can at least cover the smallest mountain which necessitates tunneling. */
 		max_tunnel_length = (t->cache.population / 1000) + 7;
 	} else {
 		/* When tunneling under an obstruction, the length limit is 5, enough to tunnel under a four-track railway. */
@@ -1435,7 +1435,7 @@ static bool GrowTownWithTunnel(const Town *t, const TileIndex tile, const DiagDi
 	}
 
 	uint8_t tunnel_length = 0;
-	TileIndex tunnel_tile = tile; // Iteratator to store the other end tile of the tunnel.
+	TileIndex tunnel_tile = tile; // Iterator to store the other end tile of the tunnel.
 
 	/* Find the end tile of the tunnel for length and continuation checks. */
 	do {
@@ -1636,7 +1636,7 @@ static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, Dia
 		if (cur_rb & target_rb) {
 			/* If it's a road turn possibly build a house in a corner.
 			 * Use intersection with straight road as an indicator
-			 * that we randomed corner house position.
+			 * that we randomised corner house position.
 			 * A turn (and we check for that later) always has only
 			 * one common bit with a straight road so it has the same
 			 * chance to be chosen as the house on the side of a road.

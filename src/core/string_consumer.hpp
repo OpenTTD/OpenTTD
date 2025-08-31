@@ -74,7 +74,7 @@ public:
 	[[nodiscard]] size_type GetBytesLeft() const noexcept { return this->src.size() - this->position; }
 
 	/**
-	 * Check wheter any bytes were already read.
+	 * Check whether any bytes were already read.
 	 */
 	[[nodiscard]] bool AnyBytesRead() const noexcept { return this->position > 0; }
 	/**
@@ -543,12 +543,12 @@ public:
 	void Skip(size_type len);
 
 	/**
-	 * Find first occurence of 'str'.
+	 * Find first occurrence of 'str'.
 	 * @return Offset from current reader position. 'npos' if no match found.
 	 */
 	[[nodiscard]] size_type Find(std::string_view str) const;
 	/**
-	 * Find first occurence of 8-bit char 'c'.
+	 * Find first occurrence of 8-bit char 'c'.
 	 * @return Offset from current reader position. 'npos' if no match found.
 	 */
 	[[nodiscard]] size_type FindChar(char c) const
@@ -556,18 +556,18 @@ public:
 		return this->Find({&c, 1});
 	}
 	/**
-	 * Find first occurence of UTF-8 char 'c'.
+	 * Find first occurrence of UTF-8 char 'c'.
 	 * @return Offset from current reader position. 'npos' if no match found.
 	 */
 	[[nodiscard]] size_type FindUtf8(char32_t c) const;
 
 	/**
-	 * Find first occurence of any 8-bit char in 'chars'.
+	 * Find first occurrence of any 8-bit char in 'chars'.
 	 * @return Offset from current reader position. 'npos' if no match found.
 	 */
 	[[nodiscard]] size_type FindCharIn(std::string_view chars) const;
 	/**
-	 * Find first occurence of any 8-bit char not in 'chars'.
+	 * Find first occurrence of any 8-bit char not in 'chars'.
 	 * @return Offset from current reader position. 'npos' if no match found.
 	 */
 	[[nodiscard]] size_type FindCharNotIn(std::string_view chars) const;

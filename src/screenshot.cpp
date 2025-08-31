@@ -285,7 +285,7 @@ static bool MakeLargeWorldScreenshot(ScreenshotType t, uint32_t width = 0, uint3
 }
 
 /**
- * Callback for generating a heightmap. Supports 8bpp grayscale only.
+ * Callback for generating a heightmap. Supports 8bpp greyscale only.
  * @param buffer   Destination buffer.
  * @param y        Line number of the first line to write.
  * @param n        Number of lines to write.

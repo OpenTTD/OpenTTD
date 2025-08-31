@@ -1065,7 +1065,7 @@ static void DrawTileHighlightType(const TileInfo *ti, TileHighlightType tht)
 }
 
 /**
- * Highlights tiles insede local authority of selected towns.
+ * Highlights tiles inside local authority of selected towns.
  * @param *ti TileInfo Tile that is being drawn
  */
 static void HighlightTownLocalAuthorityTiles(const TileInfo *ti)
@@ -1104,7 +1104,7 @@ static void HighlightTownLocalAuthorityTiles(const TileInfo *ti)
  */
 static void DrawTileSelection(const TileInfo *ti)
 {
-	/* Highlight tiles insede local authority of selected towns. */
+	/* Highlight tiles inside local authority of selected towns. */
 	HighlightTownLocalAuthorityTiles(ti);
 
 	/* Draw a red error square? */
@@ -1590,7 +1590,7 @@ static void ViewportSortParentSprites(ParentSpriteToSortVector *psdv)
 	 * adding extra fields to ParentSpriteToDraw structure.
 	 */
 	const uint32_t ORDER_COMPARED = UINT32_MAX; // Sprite was compared but we still need to compare the ones preceding it
-	const uint32_t ORDER_RETURNED = UINT32_MAX - 1; // Makr sorted sprite in case there are other occurrences of it in the stack
+	const uint32_t ORDER_RETURNED = UINT32_MAX - 1; // Mark sorted sprite in case there are other occurrences of it in the stack
 	std::stack<ParentSpriteToDraw *> sprite_order;
 	uint32_t next_order = 0;
 

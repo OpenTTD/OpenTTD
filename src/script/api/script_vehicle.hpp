@@ -370,7 +370,7 @@ public:
 	 *   is owned by you.
 	 * @pre ScriptEngine::IsBuildable(engine_id).
 	 * @pre ScriptCargo::IsValidCargo(cargo).
-	 * @return The capacity the vehicle will have when refited.
+	 * @return The capacity the vehicle will have when refitted.
 	 */
 	static SQInteger GetBuildWithRefitCapacity(TileIndex depot, EngineID engine_id, CargoType cargo);
 
@@ -431,7 +431,7 @@ public:
 	 * @pre ScriptCargo::IsValidCargo(cargo).
 	 * @pre You must own the vehicle.
 	 * @pre The vehicle must be stopped in the depot.
-	 * @return The capacity the vehicle will have when refited.
+	 * @return The capacity the vehicle will have when refitted.
 	 */
 	static SQInteger GetRefitCapacity(VehicleID vehicle_id, CargoType cargo);
 

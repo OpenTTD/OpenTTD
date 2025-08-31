@@ -746,7 +746,7 @@ public:
 	/**
 	 * Copy certain configurations and statistics of a vehicle after successful autoreplace/renew
 	 * The function shall copy everything that cannot be copied by a command (like orders / group etc),
-	 * and that shall not be resetted for the new vehicle.
+	 * and that shall not be reset for the new vehicle.
 	 * @param src The old vehicle
 	 */
 	inline void CopyVehicleConfigAndStatistics(Vehicle *src)
@@ -1129,7 +1129,7 @@ struct SpecializedVehicle : public Vehicle {
 
 	/**
 	 * Gets vehicle with given index
-	 * @return pointer to vehicle with given index casted to T *
+	 * @return pointer to vehicle with given index cast to T *
 	 */
 	static inline T *Get(auto index)
 	{

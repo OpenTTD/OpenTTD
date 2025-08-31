@@ -201,7 +201,7 @@ enum GlobalHotKeys : int32_t {
 	GHK_TOGGLE_TRANSPARENCY,
 	GHK_TOGGLE_INVISIBILITY = GHK_TOGGLE_TRANSPARENCY + 9,
 	GHK_TRANSPARENCY_TOOLBAR = GHK_TOGGLE_INVISIBILITY + 8,
-	GHK_TRANSPARANCY,
+	GHK_TRANSPARENCY,
 	GHK_CHAT,
 	GHK_CHAT_ALL,
 	GHK_CHAT_COMPANY,
@@ -382,7 +382,7 @@ struct MainWindow : Window
 				ShowTransparencyToolbar();
 				break;
 
-			case GHK_TRANSPARANCY:
+			case GHK_TRANSPARENCY:
 				ResetRestoreAllTransparency();
 				break;
 
@@ -515,7 +515,7 @@ struct MainWindow : Window
 		Hotkey('7' | WKC_CTRL | WKC_SHIFT, "invisibility_structures", GHK_TOGGLE_INVISIBILITY + 6),
 		Hotkey('8' | WKC_CTRL | WKC_SHIFT, "invisibility_catenary", GHK_TOGGLE_INVISIBILITY + 7),
 		Hotkey('X' | WKC_CTRL, "transparency_toolbar", GHK_TRANSPARENCY_TOOLBAR),
-		Hotkey('X', "toggle_transparency", GHK_TRANSPARANCY),
+		Hotkey('X', "toggle_transparency", GHK_TRANSPARENCY),
 		Hotkey({WKC_RETURN, 'T'}, "chat", GHK_CHAT),
 		Hotkey({WKC_SHIFT | WKC_RETURN, WKC_SHIFT | 'T'}, "chat_all", GHK_CHAT_ALL),
 		Hotkey({WKC_CTRL | WKC_RETURN, WKC_CTRL | 'T'}, "chat_company", GHK_CHAT_COMPANY),

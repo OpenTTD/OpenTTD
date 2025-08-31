@@ -932,7 +932,7 @@ static bool LoadOldCompanyEconomy(LoadgameState &ls, int)
 
 	if (!LoadChunk(ls, &c->cur_economy, _company_economy_chunk)) return false;
 
-	/* Don't ask, but the number in TTD(Patch) are inversed to OpenTTD */
+	/* Don't ask, but the number in TTD(Patch) are inverted to OpenTTD */
 	c->cur_economy.income   = -c->cur_economy.income;
 	c->cur_economy.expenses = -c->cur_economy.expenses;
 

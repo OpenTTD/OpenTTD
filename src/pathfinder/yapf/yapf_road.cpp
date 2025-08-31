@@ -404,7 +404,7 @@ public:
 					TileArea non_cached_area = v->IsBus() ? st->bus_station : st->truck_station;
 					non_cached_area.Expand(YAPF_ROADVEH_PATH_CACHE_DESTINATION_LIMIT);
 
-					/* Find the first tile not contained by the non-cachable area, and remove from the cache. */
+					/* Find the first tile not contained by the non-cacheable area, and remove from the cache. */
 					auto it = std::find_if(std::begin(path_cache), std::end(path_cache), [&non_cached_area](const auto &pc) { return !non_cached_area.Contains(pc.tile); });
 					path_cache.erase(std::begin(path_cache), it);
 				}

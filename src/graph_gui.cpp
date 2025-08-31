@@ -1602,7 +1602,7 @@ struct PerformanceRatingDetailWindow : Window {
 		/* Draw it */
 		DrawString(this->bar_left, this->bar_right, text_top, GetString(STR_PERFORMANCE_DETAIL_PERCENT, Clamp<int64_t>(val, 0, needed) * 100 / needed), TC_FROMSTRING, SA_HOR_CENTER);
 
-		/* SCORE_LOAN is inversed */
+		/* SCORE_LOAN is inverted */
 		if (score_type == SCORE_LOAN) val = needed - val;
 
 		/* Draw the amount we have against what is needed

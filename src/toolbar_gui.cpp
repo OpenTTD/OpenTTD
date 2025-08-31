@@ -81,7 +81,7 @@ RailType _last_built_railtype;
 RoadType _last_built_roadtype;
 RoadType _last_built_tramtype;
 
-/** Toobar modes */
+/** Toolbar modes */
 enum ToolbarMode : uint8_t {
 	TB_NORMAL,
 	TB_UPPER,
@@ -1117,7 +1117,7 @@ void ToggleDirtyBlocks()
 }
 
 /**
- * Toggle drawing of widget outlihes.
+ * Toggle drawing of widget outlines.
  * @note has only an effect when newgrf_developer_tools are active.
  */
 void ToggleWidgetOutlines()
@@ -1426,8 +1426,8 @@ public:
 		this->current_y = given_height;
 
 		/* Figure out what are the visible buttons */
-		uint arrangable_count, button_count, spacer_count;
-		const WidgetID *arrangement = GetButtonArrangement(given_width, arrangable_count, button_count, spacer_count);
+		uint arrangeable_count, button_count, spacer_count;
+		const WidgetID *arrangement = GetButtonArrangement(given_width, arrangeable_count, button_count, spacer_count);
 
 		/* Create us ourselves a quick lookup table from WidgetID to slot. */
 		std::map<WidgetID, uint> lookup;
@@ -1448,8 +1448,8 @@ public:
 		uint button_i = 0;
 
 		/* Index into the arrangement indices. */
-		const WidgetID *slotp = rtl ? &arrangement[arrangable_count - 1] : arrangement;
-		for (uint i = 0; i < arrangable_count; i++) {
+		const WidgetID *slotp = rtl ? &arrangement[arrangeable_count - 1] : arrangement;
+		for (uint i = 0; i < arrangeable_count; i++) {
 			uint slot = lookup[*slotp];
 			auto &child_wid = this->children[slot];
 			/* If we have space to give to the spacers, do that. */
@@ -1495,24 +1495,24 @@ public:
 	/**
 	 * Get the arrangement of the buttons for the toolbar.
 	 * @param width the new width of the toolbar.
-	 * @param arrangable_count output of the number of visible items.
+	 * @param arrangeable_count output of the number of visible items.
 	 * @param button_count output of the number of visible buttons.
 	 * @param spacer_count output of the number of spacers.
 	 * @return the button configuration.
 	 */
-	virtual const WidgetID *GetButtonArrangement(uint &width, uint &arrangable_count, uint &button_count, uint &spacer_count) const = 0;
+	virtual const WidgetID *GetButtonArrangement(uint &width, uint &arrangeable_count, uint &button_count, uint &spacer_count) const = 0;
 };
 
 /** Container for the 'normal' main toolbar */
 class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
-	const WidgetID *GetButtonArrangement(uint &width, uint &arrangable_count, uint &button_count, uint &spacer_count) const override
+	const WidgetID *GetButtonArrangement(uint &width, uint &arrangeable_count, uint &button_count, uint &spacer_count) const override
 	{
 		static const uint SMALLEST_ARRANGEMENT = 14;
 		static const uint BIGGEST_ARRANGEMENT  = 20;
 
 		/* The number of buttons of each row of the toolbar should match the number of items which we want to be visible.
-		 * The total number of buttons should be equal to arrangable_count * 2.
-		 * No bad things happen, but we could see strange behaviours if we have buttons < (arrangable_count * 2) like a
+		 * The total number of buttons should be equal to arrangeable_count * 2.
+		 * No bad things happen, but we could see strange behaviours if we have buttons < (arrangeable_count * 2) like a
 		 * pause button appearing on the right of the lower toolbar and weird resizing of the widgets even if there is
 		 * enough space.
 		 */
@@ -1811,7 +1811,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 		/* If at least BIGGEST_ARRANGEMENT fit, just spread all the buttons nicely */
 		uint full_buttons = std::max(CeilDiv(width, this->smallest_x), SMALLEST_ARRANGEMENT);
 		if (full_buttons > BIGGEST_ARRANGEMENT) {
-			button_count = arrangable_count = lengthof(arrange_all);
+			button_count = arrangeable_count = lengthof(arrange_all);
 			spacer_count = this->spacers;
 			return arrange_all;
 		}
@@ -1819,7 +1819,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 		/* Introduce the split toolbar */
 		static const WidgetID * const arrangements[] = { arrange14, arrange15, arrange16, arrange17, arrange18, arrange19, arrange20 };
 
-		button_count = arrangable_count = full_buttons;
+		button_count = arrangeable_count = full_buttons;
 		spacer_count = this->spacers;
 		return arrangements[full_buttons - SMALLEST_ARRANGEMENT] + ((_toolbar_mode == TB_LOWER) ? full_buttons : 0);
 	}
@@ -1845,7 +1845,7 @@ class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
 		}
 	}
 
-	const WidgetID *GetButtonArrangement(uint &width, uint &arrangable_count, uint &button_count, uint &spacer_count) const override
+	const WidgetID *GetButtonArrangement(uint &width, uint &arrangeable_count, uint &button_count, uint &spacer_count) const override
 	{
 		static const WidgetID arrange_all[] = {
 			WID_TE_PAUSE,
@@ -1918,8 +1918,8 @@ class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
 		size_t min_full_width = (lengthof(arrange_all) - std::size(this->panel_widths)) * this->smallest_x + this->panel_widths[0] + this->panel_widths[1];
 		if (width >= min_full_width) {
 			width -= this->panel_widths[0] + this->panel_widths[1];
-			arrangable_count = lengthof(arrange_all);
-			button_count = arrangable_count - 2;
+			arrangeable_count = lengthof(arrange_all);
+			button_count = arrangeable_count - 2;
 			spacer_count = this->spacers;
 			return arrange_all;
 		}
@@ -1928,18 +1928,18 @@ class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
 		size_t min_small_width = (lengthof(arrange_switch) - std::size(this->panel_widths)) * this->smallest_x / 2 + this->panel_widths[1];
 		if (width > min_small_width) {
 			width -= this->panel_widths[1];
-			arrangable_count = lengthof(arrange_nopanel);
-			button_count = arrangable_count - 1;
+			arrangeable_count = lengthof(arrange_nopanel);
+			button_count = arrangeable_count - 1;
 			spacer_count = this->spacers - 1;
 			return arrange_nopanel;
 		}
 
 		/* Split toolbar */
 		width -= this->panel_widths[1];
-		arrangable_count = lengthof(arrange_switch) / 2;
-		button_count = arrangable_count - 1;
+		arrangeable_count = lengthof(arrange_switch) / 2;
+		button_count = arrangeable_count - 1;
 		spacer_count = 0;
-		return arrange_switch + ((_toolbar_mode == TB_LOWER) ? arrangable_count : 0);
+		return arrange_switch + ((_toolbar_mode == TB_LOWER) ? arrangeable_count : 0);
 	}
 };
 

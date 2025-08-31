@@ -1117,7 +1117,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MOVE(Packet &p)
 	ClientID client_id   = (ClientID)p.Recv_uint32();
 	CompanyID company_id = (CompanyID)p.Recv_uint8();
 
-	Debug(net, 9, "Client::Receive_SERVER_MOVE(): client_id={}, comapny_id={}", client_id, company_id);
+	Debug(net, 9, "Client::Receive_SERVER_MOVE(): client_id={}, company_id={}", client_id, company_id);
 
 	if (client_id == 0) {
 		/* definitely an invalid client id, debug message and do nothing. */

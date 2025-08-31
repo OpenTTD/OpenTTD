@@ -28,7 +28,7 @@ INSTANTIATE_POOL_METHODS(LinkGraphJob)
 
 /**
  * Create a link graph job from a link graph. The link graph will be copied so
- * that the calculations don't interfer with the normal operations on the
+ * that the calculations don't interfere with the normal operations on the
  * original. The job is immediately started.
  * @param orig Original LinkGraph to be copied.
  */

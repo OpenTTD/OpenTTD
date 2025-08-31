@@ -1771,7 +1771,7 @@ void ShowOrdersWindow(const Vehicle *v)
 	/* Using a different WindowDescs for _local_company causes problems.
 	 * Due to this we have to close order windows in ChangeWindowOwner/CloseCompanyWindows,
 	 * because we cannot change switch the WindowDescs and keeping the old WindowDesc results
-	 * in crashed due to missing widges.
+	 * in crashed due to missing widget.
 	 * TODO Rewrite the order GUI to not use different WindowDescs.
 	 */
 	if (v->owner != _local_company) {

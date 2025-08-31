@@ -44,7 +44,7 @@ enum Currencies : uint8_t {
 	CURRENCY_NLG,       ///< Dutch Gulden
 	CURRENCY_NOK,       ///< Norwegian Krone
 	CURRENCY_PLN,       ///< Polish Zloty
-	CURRENCY_RON,       ///< Romenian Leu
+	CURRENCY_RON,       ///< Romanian Leu
 	CURRENCY_RUR,       ///< Russian Rouble
 	CURRENCY_SIT,       ///< Slovenian Tolar
 	CURRENCY_SEK,       ///< Swedish Krona

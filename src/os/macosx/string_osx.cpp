@@ -170,8 +170,8 @@ static const CTRunDelegateCallbacks _sprite_font_callback = {
 	CFAutoRelease<CFStringRef> base(CFStringCreateWithCharactersNoCopy(kCFAllocatorDefault, buff, length, kCFAllocatorNull));
 	CFAttributedStringReplaceString(str.get(), CFRangeMake(0, 0), base.get());
 
-	const UniChar replacment_char = 0xFFFC;
-	CFAutoRelease<CFStringRef> replacment_str(CFStringCreateWithCharacters(kCFAllocatorDefault, &replacment_char, 1));
+	const UniChar replacement_char = 0xFFFC;
+	CFAutoRelease<CFStringRef> replacement_str(CFStringCreateWithCharacters(kCFAllocatorDefault, &replacement_char, 1));
 
 	/* Apply font and colour ranges to our string. This is important to make sure
 	 * that we get proper glyph boundaries on style changes. */
@@ -199,7 +199,7 @@ static const CTRunDelegateCallbacks _sprite_font_callback = {
 			if (buff[c] >= SCC_SPRITE_START && buff[c] <= SCC_SPRITE_END && font->fc->MapCharToGlyph(buff[c], false) == 0) {
 				CFAutoRelease<CTRunDelegateRef> del(CTRunDelegateCreate(&_sprite_font_callback, (void *)(size_t)(buff[c] | (font->fc->GetSize() << 24))));
 				/* According to the official documentation, if a run delegate is used, the char should always be 0xFFFC. */
-				CFAttributedStringReplaceString(str.get(), CFRangeMake(c, 1), replacment_str.get());
+				CFAttributedStringReplaceString(str.get(), CFRangeMake(c, 1), replacement_str.get());
 				CFAttributedStringSetAttribute(str.get(), CFRangeMake(c, 1), kCTRunDelegateAttributeName, del.get());
 			}
 		}
@@ -253,7 +253,7 @@ CoreTextParagraphLayout::CoreTextVisualRun::CoreTextVisualRun(CTRunRef run, Font
 	CTRunGetGlyphs(run, CFRangeMake(0, 0), gl.get());
 	for (size_t i = 0; i < this->glyphs.size(); i++) {
 		if (buff[this->glyph_to_char[i]] >= SCC_SPRITE_START && buff[this->glyph_to_char[i]] <= SCC_SPRITE_END && (gl[i] == 0 || gl[i] == 3)) {
-			/* A glyph of 0 indidicates not found, while apparently 3 is what char 0xFFFC maps to. */
+			/* A glyph of 0 indicates not found, while apparently 3 is what char 0xFFFC maps to. */
 			this->glyphs[i] = font->fc->MapCharToGlyph(buff[this->glyph_to_char[i]]);
 			this->positions.emplace_back(pts[i].x, pts[i].x + advs[i].width - 1, (font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(font->fc->GetSize()))) / 2); // Align sprite font to centre
 		} else {

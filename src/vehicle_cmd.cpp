@@ -357,7 +357,7 @@ struct RefitResult {
  * @param new_subtype  Cargo subtype to refit to. 0xFF means to try keeping the same subtype according to GetBestFittingSubType().
  * @param flags        Command flags
  * @param auto_refit   Refitting is done as automatic refitting outside a depot.
- * @return Refit cost + refittet capacity + mail capacity (aircraft).
+ * @return Refit cost + refitted capacity + mail capacity (aircraft).
  */
 static std::tuple<CommandCost, uint, uint16_t, CargoArray> RefitVehicle(Vehicle *v, bool only_this, uint8_t num_vehicles, CargoType new_cargo_type, uint8_t new_subtype, DoCommandFlags flags, bool auto_refit)
 {

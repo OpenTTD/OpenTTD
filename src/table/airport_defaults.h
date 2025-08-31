@@ -114,7 +114,7 @@ static const std::initializer_list<AirportTileLayout> _tile_table_city = {
 	{ _tile_table_city_0, DIR_N },
 };
 
-/** Tiles for Metropolitain Airport (large) - 2 runways */
+/** Tiles for Metropolitan Airport (large) - 2 runways */
 static const std::initializer_list<AirportTileTable> _tile_table_metropolitan_0 = {
 	MK(0, 0, APT_BUILDING_1),
 	MK(1, 0, APT_APRON_FENCE_NW),

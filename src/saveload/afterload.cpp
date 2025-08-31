@@ -3035,7 +3035,7 @@ bool AfterLoadGame()
 		/* Fix articulated road vehicles.
 		 * Some curves were shorter than other curves.
 		 * Now they have the same length, but that means that trailing articulated parts will
-		 * take longer to go through the curve than the parts in front which already left the courve.
+		 * take longer to go through the curve than the parts in front which already left the curve.
 		 * So, make articulated parts catch up. */
 		bool roadside = _settings_game.vehicle.road_side == 1;
 		std::vector<uint> skip_frames;

@@ -888,7 +888,7 @@ typedef std::set<std::unique_ptr<CargoDataEntry>, CargoSorter> CargoDataSet;
 /**
  * A cargo data entry representing one possible row in the station view window's
  * top part. Cargo data entries form a tree where each entry can have several
- * children. Parents keep track of the sums of their childrens' cargo counts.
+ * children. Parents keep track of the sums of their children's cargo counts.
  */
 class CargoDataEntry {
 public:

@@ -50,7 +50,7 @@ public:
 
 	/**
 	 * Create a new subsidy.
-	 * @param cargo_type The type of cargo to cary for the subsidy.
+	 * @param cargo_type The type of cargo to carry for the subsidy.
 	 * @param from_type The type of the subsidy on the 'from' side.
 	 * @param from_id The ID of the 'from' side.
 	 * @param to_type The type of the subsidy on the 'to' side.
