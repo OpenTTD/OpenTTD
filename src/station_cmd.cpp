@@ -4246,11 +4246,11 @@ void IncreaseStats(Station *st, CargoType cargo, StationID next_station_id, uint
 		if (ge1.link_graph != ge2.link_graph) {
 			LinkGraph *lg2 = LinkGraph::Get(ge2.link_graph);
 			if (lg->Size() < lg2->Size()) {
-				LinkGraphSchedule::instance.Unqueue(lg);
+				LinkGraphSchedule::instance.Dequeue(lg);
 				lg2->Merge(lg); // Updates GoodsEntries of lg
 				lg = lg2;
 			} else {
-				LinkGraphSchedule::instance.Unqueue(lg2);
+				LinkGraphSchedule::instance.Dequeue(lg2);
 				lg->Merge(lg2); // Updates GoodsEntries of lg2
 			}
 		}
