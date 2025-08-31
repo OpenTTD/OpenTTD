@@ -571,7 +571,7 @@ public:
 	}
 
 	/**
-	 * Returns sum of cargo still available for loading at the sation.
+	 * Returns sum of cargo still available for loading at the station.
 	 * (i.e. not counting cargo which is already reserved for loading)
 	 * @return Cargo on board the vehicle.
 	 */

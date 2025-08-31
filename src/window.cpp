@@ -706,7 +706,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 				int dx = (w->resize.step_width  == 0) ? 0 : def_width  - w->width;
 				int dy = (w->resize.step_height == 0) ? 0 : def_height - w->height;
 				/* dx and dy has to go by step.. calculate it.
-				 * The cast to int is necessary else dx/dy are implicitly casted to unsigned int, which won't work. */
+				 * The cast to int is necessary else dx/dy are implicitly cast to unsigned int, which won't work. */
 				if (w->resize.step_width  > 1) dx -= dx % (int)w->resize.step_width;
 				if (w->resize.step_height > 1) dy -= dy % (int)w->resize.step_height;
 				ResizeWindow(w, dx, dy, false);
@@ -996,7 +996,7 @@ void Window::ReInit(int rx, int ry, bool reposition)
 	int dx = (this->resize.step_width  == 0) ? 0 : window_width  - this->width;
 	int dy = (this->resize.step_height == 0) ? 0 : window_height - this->height;
 	/* dx and dy has to go by step.. calculate it.
-	 * The cast to int is necessary else dx/dy are implicitly casted to unsigned int, which won't work. */
+	 * The cast to int is necessary else dx/dy are implicitly cast to unsigned int, which won't work. */
 	if (this->resize.step_width  > 1) dx -= dx % (int)this->resize.step_width;
 	if (this->resize.step_height > 1) dy -= dy % (int)this->resize.step_height;
 
@@ -1490,7 +1490,7 @@ void Window::FindWindowPlacementAndResize(int def_width, int def_height, bool al
 			int enlarge_y = std::max(std::min(def_height - this->height, free_height   - this->height), 0);
 
 			/* X and Y has to go by step.. calculate it.
-			 * The cast to int is necessary else x/y are implicitly casted to
+			 * The cast to int is necessary else x/y are implicitly cast to
 			 * unsigned int, which won't work. */
 			if (this->resize.step_width  > 1) enlarge_x -= enlarge_x % (int)this->resize.step_width;
 			if (this->resize.step_height > 1) enlarge_y -= enlarge_y % (int)this->resize.step_height;
@@ -2066,7 +2066,7 @@ static void EnsureVisibleCaption(Window *w, int nx, int ny)
  * Resize the window.
  * Update all the widgets of a window based on their resize flags
  * Both the areas of the old window and the new sized window are set dirty
- * ensuring proper redrawal.
+ * ensuring proper redrawing.
  * @param w       Window to resize
  * @param delta_x Delta x-size of changed window (positive if larger, etc.)
  * @param delta_y Delta y-size of changed window
@@ -2266,7 +2266,7 @@ static EventState HandleWindowDragging()
 			}
 
 			/* X and Y has to go by step.. calculate it.
-			 * The cast to int is necessary else x/y are implicitly casted to
+			 * The cast to int is necessary else x/y are implicitly cast to
 			 * unsigned int, which won't work. */
 			if (w->resize.step_width  > 1) x -= x % (int)w->resize.step_width;
 			if (w->resize.step_height > 1) y -= y % (int)w->resize.step_height;
@@ -2293,7 +2293,7 @@ static EventState HandleWindowDragging()
 				_drag_delta.x += x;
 			}
 
-			/* ResizeWindow sets both pre- and after-size to dirty for redrawal */
+			/* ResizeWindow sets both pre- and after-size to dirty for redrawing */
 			ResizeWindow(w, x, y);
 			return ES_HANDLED;
 		}
@@ -2377,7 +2377,7 @@ static void HandleScrollbarScrolling(Window *w)
 }
 
 /**
- * Handle active widget (mouse draggin on widget) with the mouse.
+ * Handle active widget (mouse dragging on widget) with the mouse.
  * @return State of handling the event.
  */
 static EventState HandleActiveWidget()

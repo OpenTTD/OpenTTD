@@ -213,7 +213,7 @@ enum TownCouncilAttitudes {
  */
 enum TownRatingCheckType {
 	ROAD_REMOVE         = 0,      ///< Removal of a road owned by the town.
-	TUNNELBRIDGE_REMOVE = 1,      ///< Removal of a tunnel or bridge owned by the towb.
+	TUNNELBRIDGE_REMOVE = 1,      ///< Removal of a tunnel or bridge owned by the town.
 	TOWN_RATING_CHECK_TYPE_COUNT, ///< Number of town checking action types.
 };
 

@@ -354,7 +354,7 @@ ScriptObject::DisableDoCommandScope::DisableDoCommandScope()
 
 /* static */ SQInteger ScriptObject::Constructor(HSQUIRRELVM)
 {
-	throw Script_FatalError("This class is not instantiable");
+	throw Script_FatalError("This class is not instantiatable");
 }
 
 /* static */ SQInteger ScriptObject::_cloned(HSQUIRRELVM vm)

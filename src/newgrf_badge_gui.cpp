@@ -363,7 +363,7 @@ DropDownList BuildBadgeClassConfigurationList(const GUIBadgeClasses &gui_classes
  * Toggle badge class visibility.
  * @param feature Feature being used.
  * @param class_badge Class badge.
- * @param click Dropdown click reuslt.
+ * @param click Dropdown click result.
  */
 static void BadgeClassToggleVisibility(GrfSpecFeature feature, Badge &class_badge, int click_result, BadgeFilterChoices &choices)
 {
@@ -570,7 +570,7 @@ void ResetBadgeFilter(BadgeFilterChoices &choices, BadgeClassID badge_class_inde
 
 /**
  * Set badge filter choice for a class.
- * @param choides Badge filter choides.
+ * @param choices Badge filter choices.
  * @param badge_index Badge to set. The badge class is inferred from the badge.
  * @note if the badge_index is invalid, the filter will be reset instead.
  */

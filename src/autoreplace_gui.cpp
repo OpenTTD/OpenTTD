@@ -562,8 +562,8 @@ public:
 					this->HandleButtonClick(WID_RV_START_REPLACE);
 					ReplaceClick_StartReplace(false);
 				} else {
-					bool replacment_when_old = EngineHasReplacementWhenOldForCompany(Company::Get(_local_company), this->sel_engine[0], this->sel_group);
-					ShowDropDownMenu(this, _start_replace_dropdown, replacment_when_old ? 1 : 0, WID_RV_START_REPLACE, !this->replace_engines ? 1 << 1 : 0, 0);
+					bool replacement_when_old = EngineHasReplacementWhenOldForCompany(Company::Get(_local_company), this->sel_engine[0], this->sel_group);
+					ShowDropDownMenu(this, _start_replace_dropdown, replacement_when_old ? 1 : 0, WID_RV_START_REPLACE, !this->replace_engines ? 1 << 1 : 0, 0);
 				}
 				break;
 			}

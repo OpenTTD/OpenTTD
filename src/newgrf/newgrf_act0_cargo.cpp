@@ -142,7 +142,7 @@ static ChangeInfoResult CargoReserveInfo(uint first, uint last, int prop, ByteRe
 				cs->callback_mask = static_cast<CargoCallbackMasks>(buf.ReadByte());
 				break;
 
-			case 0x1D: // Vehicle capacity muliplier
+			case 0x1D: // Vehicle capacity multiplier
 				cs->multiplier = std::max<uint16_t>(1u, buf.ReadWord());
 				break;
 

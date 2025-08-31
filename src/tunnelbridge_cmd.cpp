@@ -267,7 +267,7 @@ static Money TunnelBridgeClearCost(TileIndex tile, Price base_price)
 		} break;
 
 		case TRANSPORT_RAIL: base_cost += RailClearCost(GetRailType(tile)); break;
-		/* Aquaducts have their own clear price. */
+		/* Aqueducts have their own clear price. */
 		case TRANSPORT_WATER: base_cost = _price[PR_CLEAR_AQUEDUCT]; break;
 		default: break;
 	}

@@ -1428,7 +1428,7 @@ private:
 	}
 
 	/**
-	 * Crete new company button is clicked.
+	 * Create new company button is clicked.
 	 * @param w The instance of this window.
 	 * @param pt The point where this button was clicked.
 	 */
@@ -1621,7 +1621,7 @@ public:
 	{
 		this->RebuildList();
 
-		/* Currently server information is not sync'd to clients, so we cannot show it on clients. */
+		/* Currently server information is not synced to clients, so we cannot show it on clients. */
 		this->GetWidget<NWidgetStacked>(WID_CL_SERVER_SELECTOR)->SetDisplayedPlane(_network_server ? 0 : SZSP_HORIZONTAL);
 		this->SetWidgetDisabledState(WID_CL_SERVER_NAME_EDIT, !_network_server);
 	}
@@ -2065,7 +2065,7 @@ struct NetworkJoinStatusWindow : Window {
 						}
 						[[fallthrough]];
 
-					default: // Waiting is 15%, so the resting receivement of map is maximum 70%
+					default: // Waiting is 15%, so the remaining downloading of the map is maximum 70%
 						progress = 15 + _network_join_bytes * (100 - 15) / _network_join_bytes_total;
 						break;
 				}

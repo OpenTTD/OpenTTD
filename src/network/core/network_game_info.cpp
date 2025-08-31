@@ -42,7 +42,7 @@ NetworkServerGameInfo _network_game_info; ///< Information about our game.
 
 /**
  * Get the network version string used by this build.
- * The returned string is guaranteed to be at most NETWORK_REVISON_LENGTH bytes including '\0' terminator.
+ * The returned string is guaranteed to be at most NETWORK_REVISION_LENGTH bytes including '\0' terminator.
  */
 std::string_view GetNetworkRevisionString()
 {

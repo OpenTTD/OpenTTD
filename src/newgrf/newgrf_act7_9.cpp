@@ -44,7 +44,7 @@ void InitializePatchFlags()
 	                   |                                                       (1U << 0x09)  // trainrefit
 	                   |                                                       (0U << 0x0B)  // subsidiaries
 	                   |         ((_settings_game.order.gradual_loading ? 1U : 0U) << 0x0C)  // gradualloading
-	                   |                                                       (1U << 0x12)  // unifiedmaglevmode - set bit 0 mode. Not revelant to OTTD
+	                   |                                                       (1U << 0x12)  // unifiedmaglevmode - set bit 0 mode. Not relevant to OTTD
 	                   |                                                       (1U << 0x13)  // unifiedmaglevmode - set bit 1 mode
 	                   |                                                       (1U << 0x14)  // bridgespeedlimits
 	                   |                                                       (1U << 0x16)  // eternalgame
@@ -55,7 +55,7 @@ void InitializePatchFlags()
 	                   | ((_settings_game.construction.train_signal_side == 1 ? 1U : 0U) << 0x1B)  // signalsontrafficside
 	                   |       ((_settings_game.vehicle.disable_elrails ? 0U : 1U) << 0x1C); // electrifiedrailway
 
-	_ttdpatch_flags[2] =                                                       (1U << 0x01)  // loadallgraphics - obsolote
+	_ttdpatch_flags[2] =                                                       (1U << 0x01)  // loadallgraphics - obsolete
 	                   |                                                       (1U << 0x03)  // semaphores
 	                   |                                                       (1U << 0x0A)  // newobjects
 	                   |                                                       (0U << 0x0B)  // enhancedgui

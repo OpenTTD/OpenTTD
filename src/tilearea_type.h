@@ -77,7 +77,7 @@ struct DiagonalTileArea {
 	 * Construct this tile area with some set values.
 	 * @param tile The base tile.
 	 * @param a The "x" extent.
-	 * @param b The "y" estent.
+	 * @param b The "y" extent.
 	 */
 	DiagonalTileArea(TileIndex tile = INVALID_TILE, int16_t a = 0, int16_t b = 0) : tile(tile), a(a), b(b)
 	{

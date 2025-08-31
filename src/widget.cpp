@@ -1169,7 +1169,7 @@ void NWidgetCore::SetString(StringID string)
 
 /**
  * Set string and tool tip of the nested widget.
- * @param stringThe new string.
+ * @param string The new string.
  * @param tool_tip The new tool_tip.
  */
 void NWidgetCore::SetStringTip(StringID string, StringID tool_tip)
@@ -3397,7 +3397,7 @@ std::unique_ptr<NWidgetBase> MakeNWidgets(std::span<const NWidgetPart> nwid_part
  * between the title bar and the window body if the first widget in the parts array looks like a title bar (it is a horizontal
  * container with a caption widget) and has a shade box widget.
  * @param nwid_parts Span of nested widget parts.
- * @param[out] shade_select Pointer to the inserted shade selection widget (\c nullptr if not unserted).
+ * @param[out] shade_select Pointer to the inserted shade selection widget (\c nullptr if not inserted).
  * @return Root of the nested widget tree, a vertical container containing the entire GUI.
  * @ingroup NestedWidgetParts
  */

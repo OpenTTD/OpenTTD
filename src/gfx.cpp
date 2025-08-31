@@ -850,7 +850,7 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
 /**
  * Draw a multiline string, possibly over multiple lines, if the region is within the current display clipping area.
  * @note With clipping, it is not possible to determine how tall the rendered text will be, as it's not layouted.
- *       Regulard DrawStringMultiLine must be used if the height needs to be known.
+ *       Regular DrawStringMultiLine must be used if the height needs to be known.
  *
  * @param left   The left most position to draw on.
  * @param right  The right most position to draw on.

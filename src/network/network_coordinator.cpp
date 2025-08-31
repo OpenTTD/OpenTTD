@@ -656,7 +656,7 @@ void ClientNetworkCoordinatorSocketHandler::CloseTurnHandler(std::string_view to
 	turn_it->second->CloseSocket();
 
 	/* We don't remove turn_handler here, as we can be called from within that
-	 * turn_handler instance, so our object cannot be free'd yet. Instead, we
+	 * turn_handler instance, so our object cannot be freed yet. Instead, we
 	 * check later if the connection is closed, and free the object then. */
 }
 

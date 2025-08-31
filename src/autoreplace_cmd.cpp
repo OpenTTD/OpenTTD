@@ -435,7 +435,7 @@ static CommandCost CopyHeadSpecificThings(Vehicle *old_head, Vehicle *new_head, 
 
 	/* Last do those things which do never fail (resp. we do not care about), but which are not undo-able */
 	if (cost.Succeeded() && old_head != new_head && flags.Test(DoCommandFlag::Execute)) {
-		/* Copy other things which cannot be copied by a command and which shall not stay resetted from the build vehicle command */
+		/* Copy other things which cannot be copied by a command and which shall not stay reset from the build vehicle command */
 		new_head->CopyVehicleConfigAndStatistics(old_head);
 		GroupStatistics::AddProfitLastYear(new_head);
 
