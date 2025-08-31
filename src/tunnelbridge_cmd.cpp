@@ -2103,7 +2103,7 @@ static CommandCost CheckBuildAbove_TunnelBridge(TileIndex tile, DoCommandFlags f
 {
 	if (IsTunnel(tile)) return CommandCost();
 
-	if (axis != DiagDirToAxis(GetTunnelBridgeDirection(tile)) && height >= GetBridgeHeight(tile)) {
+	if (axis != DiagDirToAxis(GetTunnelBridgeDirection(tile)) && height > GetBridgeHeight(tile)) {
 		return CommandCost();
 	}
 
