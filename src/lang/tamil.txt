@@ -2491,10 +2491,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}பர�
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}நிலையத்தினை இணை
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}தனியாக ஒரு நிலையத்தினை கட்டு
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}தனியாக ஒரு நிலையத்தினை கட்டு
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}பாதைப்புள்ளியினை இணை
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}தனியொரு பாதைப்புள்ளிடினை கட்டு
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}தனியொரு பாதைப்புள்ளிடினை கட்டு
 
 # Generic toolbar
 
@@ -4499,7 +4499,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}மே�
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... அதிகபட்ச கடன் அளவு {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}மேலும் கடன் வாங்க இயலாது...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... திரும்பிச் செலுத்த எந்தக் கடனும் இல்லை
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... திரும்பிச் செலுத்த எந்தக் கடனும் இல்லை
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} தேவைப்படுகிறது
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}கடனினைத் திருப்பி கட்ட இயலாது...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}வங்கியிலிருந்து கடனாக பெறப்பட்டத் தொகையினை தங்களால் கொடுக்க இயலாது...

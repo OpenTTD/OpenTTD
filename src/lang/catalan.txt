@@ -2786,10 +2786,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Cost de 
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Ajunta la nova estació a...
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Construeix una estació separada
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Construeix una estació separada
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Uneix punt de pas
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Construeix un punt de pas separat
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Construeix un punt de pas separat
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}S'ha desactivat ja que actualment no disposeu de vehicles per usar aquesta infraestructura.
@@ -5057,7 +5057,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}No es po
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... el màxim import permès del préstec és {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}No pots demanar més diners...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... No queda préstec per amortitzar
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... No queda préstec per amortitzar
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} necessaris
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}No es pot amortitzar préstec...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}No es poden regalar els diners deixats pel banc...

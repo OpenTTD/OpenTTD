@@ -2753,10 +2753,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Ennerhal
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Statioun verbannen
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Eng separat Statioun bauen
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Eng separat Statioun bauen
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Weepunkt verbannen
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Separate Weepunkt bauen
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Separate Weepunkt bauen
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Ausgeschalt, well et grad keng Gefierer fir dës Infrastruktur gëtt
@@ -5005,7 +5005,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Kann den
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maximale Kredit ass {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Kann net méi Geld léinen...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... keen Kredit zeréckzebezuelen
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... keen Kredit zeréckzebezuelen
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... et ginn {CURRENCY_LONG} gebraucht
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kann de Kredit net zeréckbezuelen...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kann keng Suen ginn déi vun der Bank geléint sinn...

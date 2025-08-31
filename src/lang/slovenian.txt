@@ -2456,10 +2456,10 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Dobavlja
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Združi postaje
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Izgradnja ločene postaje
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Izgradnja ločene postaje
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Združi točke poti
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Zgradi ločeno točko poti
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Zgradi ločeno točko poti
 
 # Generic toolbar
 
@@ -4304,7 +4304,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Ni mogo�
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... najvišje dovoljeno posojilo je {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Ni mogoča izposoja več denarja...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... ni posojila za odplačati
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... ni posojila za odplačati
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... potrebuješ {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Ni mogoče odplačati posojila...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Ni mogoča oddaja denarja, ki je izposojen od banke...

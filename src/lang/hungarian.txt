@@ -2849,10 +2849,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Üzemelt
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Állomás egyesítése
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Különálló állomás építése
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Különálló állomás építése
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Ellenőrző pont egyesítése
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Különálló ellenőrző pont építése
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Különálló ellenőrző pont építése
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Kikapcsolva, mivel semmilyen jármű sem tudná használni
@@ -5120,7 +5120,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Nem vál
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...{CURRENCY_LONG} a megengedett legnagyobb kölcsön.
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Nem kölcsönözhetsz több pénzt...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... nincs visszafizetendő kölcsönöd
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... nincs visszafizetendő kölcsönöd
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} kellene hozzá
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Nem törleszthetsz a kölcsönből...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Nem tudod a banktól kölcsönkapott pénzt továbbadni...

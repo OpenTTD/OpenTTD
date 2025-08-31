@@ -2484,10 +2484,10 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Solátha
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Ceangail stáisiún
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Tóg stáisiún ar leithligh
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Tóg stáisiún ar leithligh
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Ceangail pointe bealaigh
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Tóg pointe bealaigh ar leithligh
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Tóg pointe bealaigh ar leithligh
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Díchumasaithe toisc nach bhfuil aon fheithicil ar fáil faoi láthair don bhonneagar seo
@@ -4509,7 +4509,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Ní féi
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... is é uasmhéid na hiasachta a cheadaítear ná {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Ní féidir a thuilleadh airgid a fháil ar iasacht...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... níl aon iasacht le haisíoc
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... níl aon iasacht le haisíoc
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} ag teastáil
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Ní féidir an iasacht a aisíoc...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Ní féidir airgead a thabhairt uait atá ar iasacht ón mbanc...

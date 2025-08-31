@@ -2663,10 +2663,10 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Suplai: 
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Gabung stasiun
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Pisahkan stasiun
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Pisahkan stasiun
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Gabungkan waypoint
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Pisahkan waypoint
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Pisahkan waypoint
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Dinonaktifkan karena saat ini tidak ada kendaraan yang tersedia untuk infrastruktur ini
@@ -4782,7 +4782,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Tidak da
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... besar pinjaman maksimal yang diizinkan adalah {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Tidak dapat meminjam uang lagi...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... tidak ada hutang yang harus dibayar
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... tidak ada hutang yang harus dibayar
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... dibutuhkan {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Tidak dapat membayar hutang...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Tidak dapat memberikan uang yang berasal dari pinjaman bank...

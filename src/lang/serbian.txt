@@ -2858,10 +2858,10 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Snabdeva
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Pridruži stanicu
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Izgradi zasebnu stanicu
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Izgradi zasebnu stanicu
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Spoji putanje
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Napravi zasebnu putanju
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Napravi zasebnu putanju
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Isključeno jer trenutno ne postoje dostupna vozila za ovu infrastrukturu
@@ -5001,7 +5001,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Vlasnik 
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maksimalan dozvoljen zajam iznosi: {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Nije moguće pozajmiti još novca...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... nema duga
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... nema duga
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... potrebno {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Nije moguće vratiti deo zajma...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Nemoguće je dati novac koji je pozajmljen od banke...

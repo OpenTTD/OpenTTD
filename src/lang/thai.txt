@@ -2346,10 +2346,10 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}สิ�
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}รวมสถานี
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}สร้างสถานีแยกต่างหาก
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}สร้างสถานีแยกต่างหาก
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}รวมจุดตรวจ
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}สร้างจุดตรวจแยกต่างหาก
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}สร้างจุดตรวจแยกต่างหาก
 
 # Generic toolbar
 
@@ -4261,7 +4261,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}ไม�
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... ปริมาณเงินสูงสุดที่สามารถกู้ได้ {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}ไม่สามารถกู้เงินเพิ่มได้จากนี้แล้ว...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... ไม่มีหนี้ที่ค้างชำระแล้ว
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... ไม่มีหนี้ที่ค้างชำระแล้ว
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} ต้องการ
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}ไม่สามารถใช้หนี้ได้...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}ไม่สามารถส่งเงินได้ นี่คือเงินกู้ที่มาจากธนาคาร...

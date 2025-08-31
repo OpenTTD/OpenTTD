@@ -3165,10 +3165,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Koszt ut
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Połącz stację
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Zbuduj oddzielną stację
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Zbuduj oddzielną stację
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Połącz posterunki
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Zbuduj oddzielny posterunek
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Zbuduj oddzielny posterunek
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Nieaktywne, ponieważ nie są dostępne pojazdy korzystające z takiej infrastruktury
@@ -5442,7 +5442,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Nie moż
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maksymalna dozwolona pożyczka wynosi {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Nie można pożyczyć więcej pieniędzy...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... pożyczka już jest spłacona
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... pożyczka już jest spłacona
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...{CURRENCY_LONG} wymagane
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Nie można zwrócić pożyczki...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Nie możesz wydać pieniędzy, które są pożyczone z banku...

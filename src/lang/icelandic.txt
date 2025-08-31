@@ -2161,10 +2161,10 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Birgðir
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Tengja stöðvar
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Reisa aðra stöð
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Reisa aðra stöð
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Tengja millistöð
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Reisa aðra millistöð
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Reisa aðra millistöð
 
 # Generic toolbar
 
@@ -3926,7 +3926,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Get ekki
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... hámarksleyfi á láni er {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Ekki hægt að fá meiri pening lánaðan...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... ekkert lán til að borga
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... ekkert lán til að borga
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} vantar
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Getur ekki borgað lán...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Það er ekki hægt að gefa peninga sem teknir eru að láni frá bankanum...

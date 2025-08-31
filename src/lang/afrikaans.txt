@@ -2330,10 +2330,10 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Verskaf:
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Sluit by stasie aan
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Bou 'n aparte stasie
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Bou 'n aparte stasie
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Verbind roetebaken
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Bou 'n aparte roetebaken
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Bou 'n aparte roetebaken
 
 # Generic toolbar
 
@@ -4274,7 +4274,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Bestuurd
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maksimum toegelaate lening groote is {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Kan nie meer geld leen nie...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... geen lening om terug te betaal
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... geen lening om terug te betaal
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} vereis
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kan nie lening terugbetaal nie...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kan nie geld wat van die bank geleen is weggee nie...

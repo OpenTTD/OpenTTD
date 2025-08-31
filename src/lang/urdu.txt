@@ -1932,10 +1932,10 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{GOLD}{CARGO_LI
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}اسٹیشن ملائیں
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}الگ اسٹیشن تعمیر کریں
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}الگ اسٹیشن تعمیر کریں
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}گزرگاہ ملائیں
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}الگ سے گزرگاہ تعمیر کریں
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}الگ سے گزرگاہ تعمیر کریں
 
 # Generic toolbar
 

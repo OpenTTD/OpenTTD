@@ -2786,10 +2786,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Custo de
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Juntar estação
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Construir uma estação separada
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Construir uma estação separada
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Juntar ponto de controlo
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Construir um ponto de controlo separado
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Construir um ponto de controlo separado
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Desativado pois não existem atualmente veículos disponíveis para esta infraestrutura
@@ -5057,7 +5057,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Não é 
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... o empréstimo máximo permitido é de {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Não é possível pedir mais dinheiro emprestado...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... não há empréstimo para pagar
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... não há empréstimo para pagar
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... é necessário {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Não é possível pagar empréstimo...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Não é possível ceder capital proveniente de empréstimo bancário...

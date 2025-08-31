@@ -2784,10 +2784,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Wartungs
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Verbinde mit Station
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Errichte eine getrennte Station
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Errichte eine getrennte Station
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Verbinde mit Wegpunkt
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Errichte einen getrennten Wegpunkt
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Errichte einen getrennten Wegpunkt
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :Deaktiviert, da aktuell keine Fahrzeuge für diese Infrastruktur verfügbar sind.
@@ -5055,7 +5055,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Managern
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maximale Kredithöhe beträgt {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Weitere Kreditaufnahme nicht möglich ...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... Kredit bereits getilgt
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... Kredit bereits getilgt
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... erfordert {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kredit kann nicht getilgt werden ...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Von der Bank geliehenes Geld kann nicht abgegeben werden ...

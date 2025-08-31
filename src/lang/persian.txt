@@ -2236,10 +2236,10 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}تدار
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}پیوستن ایستگاه
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}ساخت یک ایستگاه جداگانه
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}ساخت یک ایستگاه جداگانه
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}پیوستن نقطه مسیر
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}ساخت یک نقطه مسیر جداگانه
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}ساخت یک نقطه مسیر جداگانه
 
 # Generic toolbar
 

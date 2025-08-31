@@ -3046,10 +3046,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Утры
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Аб'яднаць станцыі
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Пабудаваць асобную станцыю
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Пабудаваць асобную станцыю
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Аб'яднаць маршрутныя пункты
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Пабудаваць асобны маршрутны пункт
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Пабудаваць асобны маршрутны пункт
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Адключана, бо няма прыдатных транспартных сродкаў для гэтай інфраструктуры
@@ -5245,7 +5245,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Нема
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... больш за {CURRENCY_LONG} пазыкі Вам не дадуць.
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Немагчыма заняць больш грошай...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... пазыка цалкам пагашана
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... пазыка цалкам пагашана
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... патрабуецца {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Немагчыма пагасіць пазыку...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Немагчыма аддаць пазычаныя банкам грошы...

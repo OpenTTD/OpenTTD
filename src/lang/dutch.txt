@@ -2785,10 +2785,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Onderhou
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Station samenvoegen
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Een losstaand station bouwen
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Een losstaand station bouwen
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Routepunt samenvoegen
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Los routepunt bouwen
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Los routepunt bouwen
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Momenteel uitgeschakeld omdat er geen voertuigen zijn voor deze infrastructuur
@@ -5056,7 +5056,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Kan dire
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maximaal toegestane lening bedraagt {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Kan geen geld meer lenen...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... geen lening om af te betalen
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... geen lening om af te betalen
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} benodigd
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kan de lening niet afbetalen..
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kan geen geld weggeven dat van de bank geleend is...

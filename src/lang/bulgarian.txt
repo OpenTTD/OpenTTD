@@ -2745,10 +2745,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Разх
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Присъедини станцията
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Направи отделна станция
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Направи отделна станция
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Съедини междинен пункт
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Построй отделен междинен пункт
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Построй отделен междинен пункт
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Деактивирано, тъй като в момента няма налични превозни средства за тази инфраструктура
@@ -4967,7 +4967,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Не м�
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... максимално разрешеният размер на заема е {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Не може да изтеглите повече пари...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... няма заем за изплащане
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... няма заем за изплащане
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} са необходими
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Не може да изплатите заема...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Не може да се харчат пари които са заети от банка...
