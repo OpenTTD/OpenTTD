@@ -99,8 +99,9 @@ public:
 	{
 		SQFunctionProto *f;
 		//I compact the whole class and members in a single memory allocation
-		f = (SQFunctionProto *)sq_vm_malloc(_FUNC_SIZE(ninstructions,nliterals,nparameters,nfunctions,noutervalues,nlineinfos,nlocalvarinfos,ndefaultparams));
-		new (f) SQFunctionProto(ninstructions, nliterals, nparameters, nfunctions, noutervalues, nlineinfos, nlocalvarinfos, ndefaultparams);
+		SQInteger size = _FUNC_SIZE(ninstructions, nliterals, nparameters, nfunctions, noutervalues, nlineinfos, nlocalvarinfos, ndefaultparams);
+		f = (SQFunctionProto *)sq_vm_malloc(size);
+		new (f, size) SQFunctionProto(ninstructions, nliterals, nparameters, nfunctions, noutervalues, nlineinfos, nlocalvarinfos, ndefaultparams);
 		return f;
 	}
 	void Release() override {

@@ -58,7 +58,7 @@ HSQUIRRELVM sq_open(SQInteger initialstacksize)
 	SQVM *v;
 	sq_new(ss, SQSharedState);
 	v = (SQVM *)SQ_MALLOC(sizeof(SQVM));
-	new (v) SQVM(ss);
+	new (v, sizeof(SQVM)) SQVM(ss);
 	ss->_root_vm = v;
 	if(v->Init(nullptr, initialstacksize)) {
 		return v;
@@ -76,7 +76,7 @@ HSQUIRRELVM sq_newthread(HSQUIRRELVM friendvm, SQInteger initialstacksize)
 	ss=_ss(friendvm);
 
 	v= (SQVM *)SQ_MALLOC(sizeof(SQVM));
-	new (v) SQVM(ss);
+	new (v, sizeof(SQVM)) SQVM(ss);
 
 	if(v->Init(friendvm, initialstacksize)) {
 		friendvm->Push(v);

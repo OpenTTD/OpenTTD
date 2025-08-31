@@ -11,7 +11,7 @@ private:
 public:
 	static SQClosure *Create(SQSharedState *ss,SQFunctionProto *func){
 		SQClosure *nc=(SQClosure*)SQ_MALLOC(sizeof(SQClosure));
-		new (nc) SQClosure(ss,func);
+		new (nc, sizeof(SQClosure)) SQClosure(ss,func);
 		return nc;
 	}
 	void Release() override {
@@ -49,7 +49,7 @@ private:
 public:
 	static SQGenerator *Create(SQSharedState *ss,SQClosure *closure){
 		SQGenerator *nc=(SQGenerator*)SQ_MALLOC(sizeof(SQGenerator));
-		new (nc) SQGenerator(ss,closure);
+		new (nc, sizeof(SQGenerator)) SQGenerator(ss,closure);
 		return nc;
 	}
 	~SQGenerator()
@@ -85,7 +85,7 @@ public:
 	static SQNativeClosure *Create(SQSharedState *ss,SQFUNCTION func)
 	{
 		SQNativeClosure *nc=(SQNativeClosure*)SQ_MALLOC(sizeof(SQNativeClosure));
-		new (nc) SQNativeClosure(ss,func);
+		new (nc, sizeof(SQNativeClosure)) SQNativeClosure(ss,func);
 		return nc;
 	}
 	SQNativeClosure *Clone()

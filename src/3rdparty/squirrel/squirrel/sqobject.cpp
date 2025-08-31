@@ -91,7 +91,8 @@ SQUnsignedInteger TranslateIndex(const SQObjectPtr &idx)
 SQWeakRef *SQRefCounted::GetWeakRef(SQObjectType type)
 {
 	if(!_weakref) {
-		sq_new(_weakref,SQWeakRef);
+		_weakref = (SQWeakRef *)sq_vm_malloc(sizeof(SQWeakRef));
+		new (_weakref, sizeof(SQWeakRef)) SQWeakRef();
 		_weakref->_obj._type = type;
 		_weakref->_obj._unVal.pRefCounted = this;
 	}

@@ -14,7 +14,7 @@ struct SQUserData : SQDelegable
 	static SQUserData* Create(SQSharedState *ss, SQInteger size)
 	{
 		SQUserData* ud = (SQUserData*)SQ_MALLOC(sizeof(SQUserData)+(size-1));
-		new (ud) SQUserData(ss, size);
+		new (ud, sizeof(SQUserData)+(size-1)) SQUserData(ss, size);
 		return ud;
 	}
 #ifndef NO_GARBAGE_COLLECTOR
