@@ -2778,10 +2778,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Costo di
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Unisci stazione
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Costruisci stazione separata
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Costruisci stazione separata
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Unisci waypoint
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Costruisci waypoint separato
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Costruisci waypoint separato
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Disabilitato perché non ci sono veicoli disponibili per questa infrastruttura
@@ -4987,7 +4987,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Impossib
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... il prestito massimo concesso è di {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Impossibile chiedere in prestito altro denaro...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... debito già estinto
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... debito già estinto
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} richiesti
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Impossibile ripagare il prestito...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Impossibile trasferire denaro prestato dalla banca...

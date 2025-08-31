@@ -2747,10 +2747,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Cost de 
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Unește stația
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Construiește o stație separată
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Construiește o stație separată
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Unește punctul de tranzit
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Construiește un punct de tranzit separat
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Construiește un punct de tranzit separat
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Dezactivat, deoarece momentan nu sunt vehicule disponibile pentru acest tip de infrastructură
@@ -4984,7 +4984,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Nu se po
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... creditul maxim permis este de {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Nu mai poți împrumuta bani...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... nu ai nici un credit de plătit
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... nu ai nici un credit de plătit
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... ai nevoie de {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Nu poți plăti creditul...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Nu poți dona din banii împrumutați de la bancă...

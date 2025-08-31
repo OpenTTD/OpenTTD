@@ -2057,10 +2057,10 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Bekalan-
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Gabungkan stesen
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Bina stesen asingan
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Bina stesen asingan
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Sambungkan tandatuju
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Bina tandatuju yang berasingan
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Bina tandatuju yang berasingan
 
 # Generic toolbar
 
@@ -3835,7 +3835,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Nama pen
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... saiz pinjaman maksimum yang dibenarkan ialah {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Tidak boleh meminjam wang lagi...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... tiada pinjaman untuk dibayar semula
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... tiada pinjaman untuk dibayar semula
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} diperlukan
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Tidak boleh membayar semula pinjaman...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Tidak boleh memberi wang yang dipinjamkan oleh bank...

@@ -2222,10 +2222,10 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{GOLD}{CARGO_LI
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}اربط المحطات
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW} بناء محطة مفصلة
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW} بناء محطة مفصلة
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}اربط نقطة العبور
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW} ابني نقطة عبور مستقلة
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW} ابني نقطة عبور مستقلة
 
 # Generic toolbar
 
@@ -4145,7 +4145,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}لا ي�
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... اعلى دين مسموح به : {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}بلغت الحد الاقصى للقرض
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... لا يوجد دين للسداد
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... لا يوجد دين للسداد
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...{CURRENCY_LONG} مطلوب
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}لا يمكن تسديد الدين
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}لا يمكن التخلي عن النقود المعطاة من البنك على سبيل الاعارة ...

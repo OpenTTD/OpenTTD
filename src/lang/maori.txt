@@ -2785,10 +2785,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Utu taut
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Honoa te teihana
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Hangaia he teihana motuhake
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Hangaia he teihana motuhake
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Honoa te aratohu
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Hangaia he aratohu motuhake
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Hangaia he aratohu motuhake
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Tē āhei ināianei i te mea kāore he waka i te wātea mō tēnei tūāhanga
@@ -5056,7 +5056,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Tē taea
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... ko te {CURRENCY_LONG} te mōrahi o te moni taurewa ka tukuna
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Tē taea te mino atu i te moni...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... kāore he moni taurewa hei whakaea
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... kāore he moni taurewa hei whakaea
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} e hiahiatia ana
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Tē taea te whakaea te moni taurewa...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Tē taea te hoatu te moni kua minoa mai i te pēke...

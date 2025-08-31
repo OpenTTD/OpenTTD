@@ -2786,10 +2786,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Coût d'
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Joindre une station
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Construire une station séparée
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Construire une station séparée
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Joindre un point de contrôle
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Construire un point de contrôle séparé
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Construire un point de contrôle séparé
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Désactivé car aucun véhicule n'est actuellement disponible pour cette infrastructure
@@ -5057,7 +5057,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Impossib
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... le prêt maximum est de {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Impossible d'emprunter plus...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... emprunt déjà remboursé
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... emprunt déjà remboursé
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} nécessaires
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Impossible de rembourser...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Impossible de distribuer de l'argent emprunté à la banque...

@@ -2786,10 +2786,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}유지�
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}같은 이름으로 정거장 만들기
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}분리된 역을 새로 만들기
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}분리된 역을 새로 만들기
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}연결할 경유지
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}분리된 경유지를 새로 만들기
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}분리된 경유지를 새로 만들기
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}현재 이 기반시설에서 사용할 수 있는 차량이 없어 비활성화되었습니다
@@ -5057,7 +5057,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}사장�
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... 최대로 빌릴 수 있는 대출금은 {CURRENCY_LONG} 입니다
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}돈을 더 빌릴 수 없습니다...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... 값아야 할 대출금이 없습니다
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... 값아야 할 대출금이 없습니다
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} 만큼의 돈이 필요합니다
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}대출금을 갚을 수 없습니다...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}은행에서 빌린 돈은 송금할 수 없습니다...

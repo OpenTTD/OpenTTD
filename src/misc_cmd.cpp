@@ -86,7 +86,7 @@ CommandCost CmdDecreaseLoan(DoCommandFlags flags, LoanCommand cmd, Money amount)
 {
 	Company *c = Company::Get(_current_company);
 
-	if (c->current_loan == 0) return CommandCost(STR_ERROR_LOAN_ALREADY_REPAYED);
+	if (c->current_loan == 0) return CommandCost(STR_ERROR_LOAN_ALREADY_REPAID);
 
 	Money loan;
 	switch (cmd) {

@@ -2948,10 +2948,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Соде
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Объединить станции
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Построить отдельную станцию
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Построить отдельную станцию
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Объединить маршрутные точки
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Поставить отдельную маршрутную точку
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Поставить отдельную маршрутную точку
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Отключено, так как нет подходящих транспортных средств для этой инфраструктуры
@@ -5243,7 +5243,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Нево
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... максимально допустимая сумма кредита - {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Невозможно занять больше денег...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... кредит полностью погашен.
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... кредит полностью погашен.
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... требуется {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Невозможно выплатить сумму...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Невозможно отдать занятые у банка деньги...

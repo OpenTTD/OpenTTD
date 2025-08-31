@@ -2784,10 +2784,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Custo de
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Unir estación
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Construír unha estación separada
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Construír unha estación separada
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Unir punto de ruta
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Constrúe un un punto de ruta separado
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Constrúe un un punto de ruta separado
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Deshabilitada xa que non hai vehículos dispoñibles actualmente para esta infraestrutura.
@@ -5055,7 +5055,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Non se p
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... o préstamo máximo permitido é de {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Non se pode solicitar máis diñeiro...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... non queda préstamo a devolver
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... non queda préstamo a devolver
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... precisas {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Non se pode devolve-lo préstamo...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Non podes da-lo diñeiro prestado polo banco...
