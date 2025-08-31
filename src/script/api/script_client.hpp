@@ -62,7 +62,7 @@ public:
 	 * @return The economy-date when client has joined.
 	 * @see \ref ScriptEconomyTime
 	 */
-	static ScriptDate::Date GetJoinDate(ClientID client);
+	static ScriptEconomyDate *GetJoinDate(ClientID client);
 };
 
 

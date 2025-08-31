@@ -85,7 +85,7 @@ public:
 	 *  awarded.
 	 * @see \ref ScriptEconomyTime
 	 */
-	static ScriptDate::Date GetExpireDate(SubsidyID subsidy_id);
+	static ScriptEconomyDate *GetExpireDate(SubsidyID subsidy_id);
 
 	/**
 	 * Get the cargo type that has to be transported in order to be awarded this
