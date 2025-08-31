@@ -623,8 +623,14 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Gráfico
 
 STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Últimos 24 minutos
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Últimos 72 minutos
+STR_GRAPH_LAST_288_MINUTES_TIME_LABEL                           :{TINY_FONT}{BLACK}Últimos 288 minutos
 
+STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLACK}2 años (mensualmente)
+STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 años (trimestral)
+STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 años (anualmente)
 
+STR_GRAPH_TOGGLE_RANGE                                          :Amosar/ocultar gráfica para este rango de datas
+STR_GRAPH_SELECT_SCALE                                          :Mudar escala horizontal do gráfico
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Taxas de pago por carga
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Días en tránsito
@@ -632,8 +638,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pagamento por transportar 10 unidades (ou 1.000 litros) de carga unha distancia de 20 cadros
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Todo
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Nada
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Amosar tódalas cargas no gráfico de pagos por carga
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Non amosar ningunha carga no gráfico de pagos por carga
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Amosar tódalas cargas no gráfico
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Non amosar ningunha carga no gráfico
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Amosar/ocultar gráfica para o tipo de carga
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -643,6 +649,9 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportado
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Entregada
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Agardando
 
+STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Histórico de carga
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Suministros
+STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transportado
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Amosar puntuacións de rendemento detalladas
 
@@ -1034,6 +1043,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit malaio
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lats letón
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escudo portugués
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Hrivna ucraína
+STR_GAME_OPTIONS_CURRENCY_VND                                   :Dong Vietnamita
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Autogravado
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Selecciona o intervalo entre autogravados
@@ -3699,6 +3709,8 @@ STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar 
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Autoridade local
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Mostra-la información sobre a autoridade local
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Cambia-lo nome da cidade
+STR_TOWN_VIEW_CARGO_GRAPH                                       :Gráfica de carga
+STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :Amosar gráfico do histórico de cargas da vila
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Expandir
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Incrementa-lo tamaño da cidade
@@ -5249,6 +5261,11 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}O inicio
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... ambos extremos da ponte deben estar en terra
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... ponte demasiado longa
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}A ponte remataría fóra do mapa
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}A ponte é demasiado baixa para a estación
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}A ponte é demasiado baixa para unha estación de estrada
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}A ponte é demasiado baixa para a boia
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}A ponte é demasiado baixa para un punto de ruta de ferrocarril
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}A ponte é demasiado baixa para un punto de ruta de estrada
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Non se pode construír un túnel aí...
@@ -5865,6 +5882,8 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :Espectador, {1:
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_CITY                                          :{TOWN} {CITY_ICON}
+STR_VIEWPORT_TOWN_CITY_POP                                      :{TOWN} ({COMMA}) {CITY_ICON}
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data
