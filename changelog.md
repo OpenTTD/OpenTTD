@@ -51,6 +51,7 @@
 - Change: Draw boolean settings toggles as a slider widget (#14051, #14071)
 - Change: Don't replace stripped control codes with '?' for scripts (#14028)
 - Change: [Script] Move GSStation::GetOwner to GSBaseStation::GetOwner (#13406)
+- Fix #14561: Vehicle effects were missing for vehicle on bridge (#14563)
 - Fix #14553: Parameter configuration of pre-action 14 NewGRFs did not work (#14554)
 - Fix: File/directory titles not updated if language is changed (#14542)
 - Fix: Missing space after old file type identifier (#14541)
