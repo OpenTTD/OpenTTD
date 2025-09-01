@@ -711,6 +711,7 @@ struct MusicWindow : public Window {
 
 			case WID_M_TRACK_NR: {
 				Dimension d = GetStringBoundingBox(STR_MUSIC_TRACK_NONE);
+				d = maxdim(d, GetStringBoundingBox(GetString(STR_MUSIC_TRACK_DIGIT, GetParamMaxDigits(2, FS_SMALL), 2)));
 				d.width += padding.width;
 				d.height += padding.height + WidgetDimensions::scaled.fullbevel.bottom;
 				size = maxdim(size, d);
