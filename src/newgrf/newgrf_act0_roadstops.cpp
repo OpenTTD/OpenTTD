@@ -51,9 +51,7 @@ static ChangeInfoResult IgnoreRoadStopProperty(uint prop, ByteReader &buf)
 
 		case 0x13:
 		case 0x14:
-			buf.ReadWord();
-			buf.ReadWord();
-			buf.ReadWord();
+			buf.Skip(buf.ReadExtendedByte());
 			break;
 
 		case 0x16: // Badge list
