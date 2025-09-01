@@ -1691,6 +1691,8 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Move-lo mapa co
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Desprazamento de vista suave: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla como a vista principal se despraza a unha posición específica cando se fai clic no minimapa ou cando se emprega un comando para desprazarse a un obxecto específico sobre o mapa. Se se activa, a vista desprázase suavemente, se se desactiva salta directamente
 
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT                  :Comportamento tradicional de selección do menú da barra de ferramentas: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT_HELPTEXT         :Escoller o comportamento de selección dos menús da barra de ferramentas. Se está desactivado, os menús permanecerán abertos ata que se faga unha selección. Se está activado, os menús activaranse ao soltar o botón do rato.
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostrar medidas ao usar as ferramentas de construción: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Amosa as distancias en cadros e as diferencias de cota ao arrastrar durante as operacións de construción

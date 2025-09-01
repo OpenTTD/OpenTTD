@@ -1326,7 +1326,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Vitesse de cons
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limite le nombre d'actions de constructions pour les IAs
 
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Pannes des véhicules{NBSP}: {STRING}
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Contrôle la fréquence des pannes des véhicule incorrectement entretenus
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Contrôle la fréquence des pannes des véhicules incorrectement entretenus
 
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicateur de subvention{NBSP}: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Définit combien rapportent les lignes subventionnées

@@ -622,8 +622,14 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Biểu �
 
 STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}24 phút cuối
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}72 phút cuối
+STR_GRAPH_LAST_288_MINUTES_TIME_LABEL                           :{TINY_FONT}{BLACK}288 phút cuối
 
+STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLACK}2 năm (theo từng tháng)
+STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 năm (theo từng quý)
+STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 năm (theo từng năm)
 
+STR_GRAPH_TOGGLE_RANGE                                          :Bật/tắt đồ thị cho khoảng dữ liệu này
+STR_GRAPH_SELECT_SCALE                                          :Chỉnh tỷ lệ chiều ngang của đồ thị
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Bảng Giá Cước Vận Chuyển Hàng Hóa
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Số ngày trong trung chuyển
@@ -631,8 +637,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Tiền trả khi vận chuyển 10 đơn vị (hay 10,000 lít) hàng hóa trên mỗi 20 ô
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Toàn bộ
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Không
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Hiển thị toàn bộ loại hàng trên đồ thị tỉ lệ trả tiền của loại hàng
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Không hiển thị các loại hàng trên đồ thị tỉ lệ trả tiền của loại hàng
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Hiển thị toàn bộ loại hàng trên đồ thị
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Không hiển thị các loại hàng trên đồ thị
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Bật/tắt đồ thị cho hàng hóa này
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -642,6 +648,9 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Đã vận chuy
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Đã giao
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Đang chờ...
 
+STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Lịch sử hàng hoá
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Nguồn cung
+STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Đã vận chuyển
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Hiện chi tiết đánh giá chỉ số năng suất
 
@@ -1033,6 +1042,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit Malaysi
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lát-vi-a Lats
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escudo Bồ Đào Nha
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Hryvnia Ukraina
+STR_GAME_OPTIONS_CURRENCY_VND                                   :Việt Nam Đồng
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Lưu tự động
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Lựa chọn khoảng thời gian tự động lưu
@@ -1680,6 +1690,8 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Kéo cuộn b�
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Cuộn uyển chuyển cửa sổ: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Điều khiển cách màn hình chính cuộn tới vị trí cụ thể khi nháy chuột vào bản đồ nhỏ hoặc khi gõ lệnh cuộn tới đối tượng trên bản đồ. Nếu bật, thì sẽ cuộn trượt, nếu tắt thì nhảy thẳng tới vị trí đó.
 
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT                  :Hành vi khi chọn menu từ thanh công cụ truyền thông: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT_HELPTEXT         :Chọn hành vi lựa chọn của menu thanh công cụ. Nếu tắt, menu thanh công cụ sẽ còn hiển thị cho đến khi đã chọn một lựa chọn. Nếu bật, menu thanh công cụ sẽ hiển thị khi thả nút chuột.
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Hiện bảng đo lường khi dùng các công cụ xây dựng: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Hiển thị khoảng cách ô và chênh lệch độ cao khi kéo thả trong khi xây dựng
@@ -3698,6 +3710,8 @@ STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Xem trun
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Chính quyền địa phương
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Xem thông tin về Chính quyền địa phương
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Đổi tên đô thị
+STR_TOWN_VIEW_CARGO_GRAPH                                       :Đồ thị hàng hoá
+STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :Hiển thị đồ thị lịch sử hàng hoá của thị trấn
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Mở rộng
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Tăng quy mô đô thị
@@ -5248,6 +5262,11 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Điểu 
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... hai đầu cầu phải được gá vào đất
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... cầu quá dài
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Cầu có thể vượt quá phạm vi bản đồ
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Cầu quá thấp cho ga
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Cầu quá thấp cho điểm dừng chân
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Cầu quá thấp cho phao
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Cầu quá thấp cho điểm mốc đường ray
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Cầu quá thấp cho điểm mốc đường
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Không thể đào hầm ở đây...
@@ -5403,7 +5422,7 @@ STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Không c
 STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Không có điểm dừng phù hợp với xe kéo rơ moóc.{}Xe kéo rơ moóc cần điểm dừng ngắn trên đường, không phải bến dừng
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Không thể hạ cánh máy bay tại bãi đỗ trực thăng này
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Không thể hạ cánh trực thăng ở sân bay này
-STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Không có điểm mốc tàu hỏa
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Không có điểm mốc đường ray
 STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}Không có điểm mốc đường bộ
 STR_ERROR_NO_BUOY                                               :{WHITE}Không có cái phao nào
 
@@ -5864,6 +5883,8 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :Tham quan, {1:S
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_CITY                                          :{TOWN} {CITY_ICON}
+STR_VIEWPORT_TOWN_CITY_POP                                      :{TOWN} ({COMMA}) {CITY_ICON}
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data
