@@ -108,8 +108,7 @@ enum WindowKeyCodes : uint16_t {
 
 /** A single sprite of a list of animated cursors */
 struct AnimCursor {
-	static const CursorID LAST = std::numeric_limits<CursorID>::max();
-	CursorID sprite;   ///< Must be set to LAST_ANIM when it is the last sprite of the loop
+	CursorID sprite; ///< Must be set to LAST_ANIM when it is the last sprite of the loop
 	uint8_t display_time; ///< Amount of ticks this sprite will be shown
 };
 
@@ -139,8 +138,8 @@ struct CursorVars {
 
 	Point draw_pos, draw_size;    ///< position and size bounding-box for drawing
 
-	const AnimCursor *animate_list; ///< in case of animated cursor, list of frames
-	const AnimCursor *animate_cur;  ///< in case of animated cursor, current frame
+	std::span<const AnimCursor> animate_list{}; ///< in case of animated cursor, list of frames
+	std::span<const AnimCursor>::iterator animate_cur = std::end(animate_list);  ///< in case of animated cursor, current frame
 	uint animate_timeout;           ///< in case of animated cursor, number of ticks to show the current cursor
 
 	bool visible;                 ///< cursor is visible
