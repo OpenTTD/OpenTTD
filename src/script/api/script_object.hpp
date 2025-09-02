@@ -164,18 +164,28 @@ protected:
 	 */
 	template <Commands Tcmd, typename Tret, typename... Targs>
 	struct ScriptDoCommandHelper<Tcmd, Tret(*)(DoCommandFlags, Targs...)> {
+		static bool DoMsg(StringID msg, Script_SuspendCallbackProc *callback, Targs... args)
+		{
+			return Execute(msg, callback, std::forward_as_tuple(args...));
+		}
+
+		static bool DoMsg(StringID msg, Targs... args)
+		{
+			return Execute(msg, nullptr, std::forward_as_tuple(args...));
+		}
+
 		static bool Do(Script_SuspendCallbackProc *callback, Targs... args)
 		{
-			return Execute(callback, std::forward_as_tuple(args...));
+			return Execute((StringID)0, callback, std::forward_as_tuple(args...));
 		}
 
 		static bool Do(Targs... args)
 		{
-			return Execute(nullptr, std::forward_as_tuple(args...));
+			return Execute((StringID)0, nullptr, std::forward_as_tuple(args...));
 		}
 
 	private:
-		static bool Execute(Script_SuspendCallbackProc *callback, std::tuple<Targs...> args);
+		static bool Execute(StringID msg, Script_SuspendCallbackProc *callback, std::tuple<Targs...> args);
 	};
 
 	template <Commands Tcmd>
@@ -395,7 +405,7 @@ namespace ScriptObjectInternal {
 }
 
 template <Commands Tcmd, typename Tret, typename... Targs>
-bool ScriptObject::ScriptDoCommandHelper<Tcmd, Tret(*)(DoCommandFlags, Targs...)>::Execute(Script_SuspendCallbackProc *callback, std::tuple<Targs...> args)
+bool ScriptObject::ScriptDoCommandHelper<Tcmd, Tret(*)(DoCommandFlags, Targs...)>::Execute(StringID msg, Script_SuspendCallbackProc *callback, std::tuple<Targs...> args)
 {
 	auto [err, estimate_only, asynchronous, networking] = ScriptObject::DoCommandPrep();
 	if (err) return false;
@@ -419,7 +429,7 @@ bool ScriptObject::ScriptDoCommandHelper<Tcmd, Tret(*)(DoCommandFlags, Targs...)
 	if (!estimate_only && networking) ScriptObject::SetLastCommand(EndianBufferWriter<CommandDataBuffer>::FromValue(args), Tcmd);
 
 	/* Try to perform the command. */
-	Tret res = ::Command<Tcmd>::Unsafe((StringID)0, (!asynchronous && networking) ? ScriptObject::GetDoCommandCallback() : nullptr, false, estimate_only, tile, args);
+	Tret res = ::Command<Tcmd>::Unsafe(msg, (!asynchronous && networking) ? ScriptObject::GetDoCommandCallback() : nullptr, false, estimate_only, tile, args);
 
 	if constexpr (std::is_same_v<Tret, CommandCost>) {
 		return ScriptObject::DoCommandProcessResult(res, callback, estimate_only, asynchronous);

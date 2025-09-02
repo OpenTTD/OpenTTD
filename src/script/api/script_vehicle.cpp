@@ -162,7 +162,7 @@
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, IsValidVehicle(vehicle_id) && ScriptCargo::IsValidCargo(cargo));
 
-	return ScriptObject::Command<CMD_REFIT_VEHICLE>::Do(vehicle_id, cargo, 0, false, false, 0);
+	return ScriptObject::Command<CMD_REFIT_VEHICLE>::DoMsg(GetCmdRefitVehMsg(::Vehicle::Get(vehicle_id)), vehicle_id, cargo, 0, false, false, 0);
 }
 
 
@@ -172,7 +172,7 @@
 	EnforcePrecondition(false, IsValidVehicle(vehicle_id));
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
-	return ScriptObject::Command<CMD_SELL_VEHICLE>::Do(vehicle_id, v->type == VEH_TRAIN, false, INVALID_CLIENT_ID);
+	return ScriptObject::Command<CMD_SELL_VEHICLE>::DoMsg(GetCmdSellVehMsg(v), vehicle_id, v->type == VEH_TRAIN, false, INVALID_CLIENT_ID);
 }
 
 /* static */ bool ScriptVehicle::_SellWagonInternal(VehicleID vehicle_id, SQInteger wagon, bool sell_attached_wagons)
@@ -202,7 +202,7 @@
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, IsPrimaryVehicle(vehicle_id));
 
-	return ScriptObject::Command<CMD_SEND_VEHICLE_TO_DEPOT>::Do(vehicle_id, DepotCommandFlags{}, {});
+	return ScriptObject::Command<CMD_SEND_VEHICLE_TO_DEPOT>::DoMsg(GetCmdSendToDepotMsg(::Vehicle::Get(vehicle_id)), vehicle_id, DepotCommandFlags{}, {});
 }
 
 /* static */ bool ScriptVehicle::SendVehicleToDepotForServicing(VehicleID vehicle_id)
@@ -210,7 +210,7 @@
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, IsPrimaryVehicle(vehicle_id));
 
-	return ScriptObject::Command<CMD_SEND_VEHICLE_TO_DEPOT>::Do(vehicle_id, DepotCommandFlag::Service, {});
+	return ScriptObject::Command<CMD_SEND_VEHICLE_TO_DEPOT>::DoMsg(GetCmdSendToDepotMsg(::Vehicle::Get(vehicle_id)), vehicle_id, DepotCommandFlag::Service, {});
 }
 
 /* static */ bool ScriptVehicle::IsInDepot(VehicleID vehicle_id)
