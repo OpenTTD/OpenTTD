@@ -553,7 +553,7 @@ SQString *SQStringTable::Add(std::string_view new_string)
 	}
 
 	SQString *t=(SQString *)SQ_MALLOC(len+sizeof(SQString));
-	new (t) SQString(new_string);
+	new (t, len+sizeof(SQString)) SQString(new_string);
 	t->_next = _strings[slot];
 	_strings[slot] = t;
 	_slotused++;
