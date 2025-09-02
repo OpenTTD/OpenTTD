@@ -539,10 +539,10 @@ struct MusicTrackSelectionWindow : public Window {
 				Dimension d = {0, 0};
 
 				for (const auto &song : _music.music_set) {
-					Dimension d2 = GetStringBoundingBox(GetString(STR_PLAYLIST_TRACK_NAME, song.tracknr, 2, song.songname));
-					d.width = std::max(d.width, d2.width);
-					d.height += d2.height;
+					d = maxdim(d, GetStringBoundingBox(GetString(STR_PLAYLIST_TRACK_NAME, song.tracknr, 2, song.songname)));
 				}
+				d.height *= std::max(NUM_SONGS_AVAILABLE, NUM_SONGS_PLAYLIST);
+
 				d.width += padding.width;
 				d.height += padding.height;
 				size = maxdim(size, d);
