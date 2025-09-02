@@ -201,7 +201,7 @@ STR_COLOUR_SECONDARY_GREEN                                      :Verde
 STR_COLOUR_SECONDARY_DARK_GREEN                                 :Verde Escuro
 STR_COLOUR_SECONDARY_BLUE                                       :Azul
 STR_COLOUR_SECONDARY_CREAM                                      :Creme
-STR_COLOUR_SECONDARY_MAUVE                                      :Lilás
+STR_COLOUR_SECONDARY_MAUVE                                      :Malva
 STR_COLOUR_SECONDARY_PURPLE                                     :Roxo
 STR_COLOUR_SECONDARY_ORANGE                                     :Laranja
 STR_COLOUR_SECONDARY_BROWN                                      :Castanho
@@ -737,7 +737,7 @@ STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Seleccio
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Seleccionar programa 'Ezy Street'
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Seleccionar programa 'Personalizado 1'
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Seleccionar programa 'Personalizado 2'
-STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Alternar programa aleatório
+STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Ligar/Desligar reprodução aleatória
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Mostrar janela de selecção de faixas de música
 
 # Playlist window
@@ -1398,8 +1398,8 @@ STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Ângulo de inclínação para veículos rodoviários: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Declive de um mosaico inclinado para um veiculo de estrada. Valores mais altos tornam mais difícil de subir.
 
-STR_CONFIG_SETTING_FORBID_90_DEG                                :Proibir comboios fazer curvas de 90º: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Curvas de 90 graus ocorrem quando uma pista horizontal é diretamente seguida por outra vertical num mosaico adjacente, fazendo com que o comboio vire 90 graus quando atravessa a fronteira dos mosaicos, ao invés dos habituais 45 graus para outras combinações de pistas
+STR_CONFIG_SETTING_FORBID_90_DEG                                :Proibir comboios de fazer curvas de 90º: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Curvas de 90 graus ocorrem quando uma linha horizontal é diretamente seguida por outra vertical num mosaico adjacente, fazendo com que o comboio vire 90 graus quando atravessa a aresta dos mosaicos, ao invés dos habituais 45 graus para outras combinações de linhas
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permitir juntar estações não adjacentes: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permite acrescentar partes a uma estação sem tocar diretamente nas partes já existentes, fazendo Ctrl+Clique enquanto coloca as novas partes
@@ -3883,7 +3883,7 @@ STR_STATION_VIEW_GROUP_D_S_V                                    :Destino-Origem-
 STR_STATION_VIEW_GROUP_D_V_S                                    :Destino-Via-Origem
 
 ###length 8
-STR_CARGO_RATING_APPALLING                                      :Inexistente
+STR_CARGO_RATING_APPALLING                                      :Péssimo
 STR_CARGO_RATING_VERY_POOR                                      :Muito Fraco
 STR_CARGO_RATING_POOR                                           :Fraco
 STR_CARGO_RATING_MEDIOCRE                                       :Medíocre
