@@ -39,8 +39,8 @@
 
 struct MusicSystem {
 	struct PlaylistEntry : MusicSongInfo {
-		const MusicSet *set;  ///< music set the song comes from
-		uint set_index;        ///< index of song in set
+		const MusicSet *set; ///< music set the song comes from
+		uint set_index; ///< index of song in set
 
 		PlaylistEntry(const MusicSet *set, uint set_index) : MusicSongInfo(set->songinfo[set_index]), set(set), set_index(set_index) { }
 		bool IsValid() const { return !this->songname.empty(); }
