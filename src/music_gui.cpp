@@ -59,7 +59,6 @@ struct MusicSystem {
 	};
 
 	Playlist active_playlist{}; ///< current play order of songs, including any shuffle
-	Playlist displayed_playlist{}; ///< current playlist as displayed in GUI, never in shuffled order
 	Playlist music_set{}; ///< all songs in current music set, in set order
 
 	PlaylistChoices selected_playlist{};
@@ -152,9 +151,8 @@ void MusicSystem::ChangePlaylist(PlaylistChoices pl)
 	if (pl != PLCH_THEMEONLY) _settings_client.music.playlist = pl;
 
 	if (_game_mode != GM_MENU || pl == PLCH_THEMEONLY) {
-		this->displayed_playlist = this->standard_playlists[pl];
-		this->active_playlist = this->displayed_playlist;
 		this->selected_playlist = pl;
+		this->active_playlist = this->standard_playlists[this->selected_playlist];
 		this->playlist_position = 0;
 
 		if (_settings_client.music.shuffle) this->Shuffle();
@@ -211,7 +209,7 @@ void MusicSystem::Shuffle()
 	_settings_client.music.shuffle = true;
 
 	uint set_index = this->GetSetIndex();
-	this->active_playlist = this->displayed_playlist;
+	this->active_playlist = this->standard_playlists[this->selected_playlist];
 	for (size_t i = 0; i < this->active_playlist.size(); i++) {
 		size_t shuffle_index = InteractiveRandom() % (this->active_playlist.size() - i);
 		std::swap(this->active_playlist[i], this->active_playlist[i + shuffle_index]);
@@ -230,7 +228,7 @@ void MusicSystem::Unshuffle()
 	_settings_client.music.shuffle = false;
 
 	uint set_index = this->GetSetIndex();
-	this->active_playlist = this->displayed_playlist;
+	this->active_playlist = this->standard_playlists[this->selected_playlist];
 	this->SetPositionBySetIndex(set_index);
 
 	InvalidateWindowData(WC_MUSIC_TRACK_SELECTION, 0);
@@ -338,7 +336,6 @@ void MusicSystem::PlaylistAdd(size_t song_index)
 
 	/* Add it to the appropriate playlist, and the display */
 	this->standard_playlists[this->selected_playlist].push_back(entry);
-	this->displayed_playlist.push_back(entry);
 
 	/* Add it to the active playlist, if playback is shuffled select a random position to add at */
 	if (this->active_playlist.empty()) {
@@ -346,7 +343,7 @@ void MusicSystem::PlaylistAdd(size_t song_index)
 		if (this->IsPlaying()) this->Play();
 	} else if (this->IsShuffle()) {
 		/* Generate a random position between 0 and n (inclusive, new length) to insert at */
-		size_t maxpos = this->displayed_playlist.size();
+		size_t maxpos = this->active_playlist.size() + 1;
 		size_t newpos = InteractiveRandom() % maxpos;
 		this->active_playlist.insert(this->active_playlist.begin() + newpos, entry);
 		/* Make sure to shift up the current playback position if the song was inserted before it */
@@ -374,7 +371,6 @@ void MusicSystem::PlaylistRemove(size_t song_index)
 	/* Remove from "simple" playlists */
 	PlaylistEntry song = pl[song_index];
 	pl.erase(pl.begin() + song_index);
-	this->displayed_playlist.erase(this->displayed_playlist.begin() + song_index);
 
 	/* Find in actual active playlist (may be shuffled) and remove,
 	 * if it's the current song restart playback */
