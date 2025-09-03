@@ -72,7 +72,7 @@ public:
 	/** Called by YAPF to detect if node ends in the desired destination. */
 	inline bool PfDetectDestination(Node &n)
 	{
-		return this->PfDetectDestinationTile(n.segment_last_tile, n.segment_last_td);
+		return this->PfDetectDestinationTile(n.GetTile(), n.GetTrackdir());
 	}
 
 	inline bool PfDetectDestinationTile(TileIndex tile, Trackdir trackdir)
@@ -101,7 +101,7 @@ public:
 			return true;
 		}
 
-		n.estimate = n.cost + OctileDistanceCost(n.segment_last_tile, n.segment_last_td, destination_tile);
+		n.estimate = n.cost + OctileDistanceCost(n.GetTile(), n.GetTrackdir(), destination_tile);
 		assert(n.estimate >= n.parent->estimate);
 		return true;
 	}
