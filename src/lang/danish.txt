@@ -3648,7 +3648,7 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Den ænd
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Det ændrede køretøj kapacitet til '{1:ENGINE}' når det ikke er inde i et depot eller genmontering
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Toget '{VEHICLE}' fra selskabet '{COMPANY}' har ugyldig længde. Det skyldes sandsynligvis at problem med en NewGRF. Risiko for at spillet mister synkronisering eller går ned.
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' indeholder forkert information
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' indeholder forkert information
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Fragt-/tilpasningsinformation for '{1:ENGINE}' afviger fra indkøbslisten efter konstruktion. Dette kan medføre, at autofornyelse ikke fungerer korrekt.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' forårsagede en uendelig løkke i produktions-callback'en.
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback {1:HEX} returnerede ukendt/ugyldigt resultat {2:HEX}
@@ -4734,8 +4734,8 @@ STR_ORDER_FULL_LOAD                                             :{SPACE}(Fuld la
 STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Fuld last vilkårlig type fragt)
 STR_ORDER_NO_LOAD                                               :{SPACE}(Ingen last)
 STR_ORDER_UNLOAD                                                :{SPACE}(Los og medtag fragt)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Los og vent på fuld last)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Los og vent på fuld last af hvilken som helst type fragt)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Los af og vent på fuld last)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Los og vent på fuld last af hvilken som helst type fragt)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Los og efterlad tom)
 STR_ORDER_TRANSFER                                              :{SPACE}(Overfør og last fragt)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Overfør og vent på fuld last)
@@ -4750,8 +4750,8 @@ STR_ORDER_AUTO_REFIT                                            :{SPACE}(Auto-ti
 STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Fuld last med auto-tilpas til {STRING})
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Fuld vilkårlig last med auto-tilpas til {STRING})
 STR_ORDER_UNLOAD_REFIT                                          :(Los og medtag last med auto-tilpas til {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Los og vent på fuld last med auto-tilpas til {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Los og vent på fuld vilkårlig last med auto-tilpas til {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Los og vent på fuld last med auto-tilpas til {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Los og vent på fuld vilkårlig last med auto-tilpas til {STRING})
 STR_ORDER_TRANSFER_REFIT                                        :(Overfør og medtag last med auto-tilpas til {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :{SPACE}(Overfør og vent på fuld last med auto-tilpas til {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :{SPACE}(Overfør og vent på fuld vilkårlig last med auto-tilpas til {STRING})
@@ -4762,9 +4762,9 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :{SPACE}(Ingen l
 STR_ORDER_AUTO_REFIT_ANY                                        :tilgængelig last
 
 ###length 3
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[nærmeste ende]
-STR_ORDER_STOP_LOCATION_MIDDLE                                  :[midten]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[fjerneste ende]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :{SPACE}[nær ende]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :{SPACE}[midten]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :{SPACE}[fjerneste ende]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (Næste destination er uden for område)
 
