@@ -16,19 +16,8 @@
 #include "yapf_node.hpp"
 
 /** Yapf Node for ships */
-template <class Tkey_>
-struct CYapfShipNodeT : CYapfNodeT<Tkey_, CYapfShipNodeT<Tkey_>> {
-	typedef CYapfNodeT<Tkey_, CYapfShipNodeT<Tkey_>> base;
-
-	TileIndex segment_last_tile;
-	Trackdir segment_last_td;
-
-	void Set(CYapfShipNodeT *parent, TileIndex tile, Trackdir td, bool is_choice)
-	{
-		this->base::Set(parent, tile, td, is_choice);
-		this->segment_last_tile = tile;
-		this->segment_last_td   = td;
-	}
+template <class TKey>
+struct CYapfShipNodeT : CYapfNodeT<TKey, CYapfShipNodeT<TKey>> {
 };
 
 /* now define two major node types (that differ by key type) */
