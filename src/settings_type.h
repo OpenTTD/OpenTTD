@@ -431,7 +431,6 @@ struct ScriptSettings {
 
 /** Settings related to the yet another pathfinder. */
 struct YAPFSettings {
-	bool   disable_node_optimization;        ///< whether to use exit-dir instead of trackdir in node key
 	uint32_t max_search_nodes;                 ///< stop path-finding when this number of nodes visited
 	uint32_t maximum_go_to_depot_penalty;      ///< What is the maximum penalty that may be endured for going to a depot
 	uint32_t road_slope_penalty;               ///< penalty for up-hill slope

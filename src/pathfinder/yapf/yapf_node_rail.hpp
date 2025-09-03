@@ -110,9 +110,8 @@ struct CYapfRailSegment {
 };
 
 /** Yapf Node for rail YAPF */
-template <class Tkey_>
-struct CYapfRailNodeT : CYapfNodeT<Tkey_, CYapfRailNodeT<Tkey_>> {
-	typedef CYapfNodeT<Tkey_, CYapfRailNodeT<Tkey_>> base;
+struct CYapfRailNode : CYapfNodeT<CYapfNodeKeyTrackDir, CYapfRailNode> {
+	typedef CYapfNodeT<CYapfNodeKeyTrackDir, CYapfRailNode> base;
 	typedef CYapfRailSegment CachedData;
 
 	CYapfRailSegment *segment;
@@ -128,7 +127,7 @@ struct CYapfRailNodeT : CYapfNodeT<Tkey_, CYapfRailNodeT<Tkey_>> {
 	SignalType last_red_signal_type;
 	SignalType last_signal_type;
 
-	inline void Set(CYapfRailNodeT *parent, TileIndex tile, Trackdir td, bool is_choice)
+	inline void Set(CYapfRailNode *parent, TileIndex tile, Trackdir td, bool is_choice)
 	{
 		this->base::Set(parent, tile, td, is_choice);
 		this->segment = nullptr;
@@ -206,12 +205,6 @@ struct CYapfRailNodeT : CYapfNodeT<Tkey_, CYapfRailNodeT<Tkey_>> {
 	}
 };
 
-/* now define two major node types (that differ by key type) */
-typedef CYapfRailNodeT<CYapfNodeKeyExitDir>  CYapfRailNodeExitDir;
-typedef CYapfRailNodeT<CYapfNodeKeyTrackDir> CYapfRailNodeTrackDir;
-
-/* Default NodeList types */
-typedef NodeList<CYapfRailNodeExitDir , 8, 10> CRailNodeListExitDir;
-typedef NodeList<CYapfRailNodeTrackDir, 8, 10> CRailNodeListTrackDir;
+typedef NodeList<CYapfRailNode, 8, 10> CRailNodeList;
 
 #endif /* YAPF_NODE_RAIL_HPP */
