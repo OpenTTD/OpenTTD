@@ -1682,14 +1682,16 @@ static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y, uin
 }
 
 /** Draw small order list in the vehicle GUI, but without the little black arrow.  This is used for shared order groups. */
-static void DrawSmallOrderList(const OrderList &orderlist, int left, int right, int y, uint order_arrow_width)
+static void DrawSmallOrderList(const OrderList *orderlist, int left, int right, int y, uint order_arrow_width)
 {
+	if (orderlist == nullptr) return;
+
 	bool rtl = _current_text_dir == TD_RTL;
 	int l_offset = rtl ? 0 : order_arrow_width;
 	int r_offset = rtl ? order_arrow_width : 0;
 	int i = 0;
 
-	for (const Order &order : orderlist.GetOrders()) {
+	for (const Order &order : orderlist->GetOrders()) {
 		if (order.IsType(OT_GOTO_STATION)) {
 			DrawString(left + l_offset, right - r_offset, y, GetString(STR_STATION_NAME, order.GetDestination()), TC_BLACK, SA_LEFT, false, FS_SMALL);
 
@@ -1844,7 +1846,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 					DrawVehicleImage(vehgroup.vehicles_begin[i], {image_left + WidgetDimensions::scaled.hsep_wide * i, ir.top, image_right, ir.bottom}, selected_vehicle, EIT_IN_LIST, 0);
 				}
 
-				if (show_orderlist) DrawSmallOrderList(*(vehgroup.vehicles_begin[0])->orders, olr.left, olr.right, ir.top + GetCharacterHeight(FS_SMALL), this->order_arrow_width);
+				if (show_orderlist) DrawSmallOrderList(vehgroup.vehicles_begin[0]->orders, olr.left, olr.right, ir.top + GetCharacterHeight(FS_SMALL), this->order_arrow_width);
 
 				DrawString(ir.left, ir.right, ir.top + WidgetDimensions::scaled.framerect.top, GetString(STR_JUST_COMMA, vehgroup.NumVehicles()), TC_BLACK);
 				break;
