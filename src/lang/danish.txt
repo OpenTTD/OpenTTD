@@ -951,7 +951,7 @@ STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLAC
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Tilskudsordning tilbagetrukket:{}{}{STRING} fra {STRING} til {STRING} modtager ikke længere tilskud.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Tilskudsordning i udbud:{}{}Første {STRING} fra {STRING} til {STRING} vil udløse et {UNITS_YEARS_OR_MINUTES}s tilskud fra den lokale myndighed!
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Servicetilskud tildelt til {STRING}!{}{}{STRING} fra {STRING} til {STRING} vil betale 50% ekstra for de næste {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Servicetilskud tildelt {STRING}!{}{}{STRING} fra {STRING} til {STRING} vil betale 50% ekstra for de næste {UNITS_YEARS_OR_MINUTES}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Servicetilskud tildelt {STRING}!{}{}{STRING} fra {STRING} til {STRING} vil betale dobbelt takster for den næste {UNITS_YEARS_OR_MINUTES}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Tilskudsordning tildelt {STRING}!{}{}{STRING} fra {STRING} til {STRING} betaler tredobbelte takster for de næste {UNITS_YEARS_OR_MINUTES}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Tilskudsordning tildelt {STRING}!{}{}{STRING} fra {STRING} til {STRING} betaler firedobbelt takster for de næste {UNITS_YEARS_OR_MINUTES}!
@@ -1096,7 +1096,7 @@ STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Automatiseret undersøgelse
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Deltag i automatiseret undersøgelse
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :Når det er aktiveret, sender OpenTTD en undersøgelse, når du forlader et spil
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :Om GPDR og privatliv
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Om undersøgelse og privatliv
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Dette åbner en browser med mere information om den automatiserede undersøgelse
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Forhåndsvisning af undersøgelsesresultat
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Vis undersøgelsesresultatet af det aktuelle spil
@@ -2051,7 +2051,7 @@ STR_CONFIG_SETTING_SOFT_LIMIT                                   :Vinduesbegræsn
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Antal ikke klæbende vinduer åbnet før gamle vinduer automatisk bliver lukket for at gøre plads til nye vinduer
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :deaktiveret
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Deaktiveret
 
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maksimalt zoom-in niveau: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maximalt zoom-in niveau for skærmbilledet. Højere zoom niveau vil øge hukommelseskravet
@@ -2970,7 +2970,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Vælg re
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Bygning af vandveje
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Vandveje
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Byg kanaler. Tryk på Shift for kun at vise omkostningsestimat
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Byg kanaler. Ctrl+Klik+Træk for at vælge området diagonalt. Tryk på Shift for kun at vise omkostningsestimat
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Byg en sluse. Shift skifter mellem at bygge og vise prisoverslag.
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Byg en skibsdok (til køb og servicering af skibe). Shift skifter mellem at bygge og vise prisoverslag.
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Byg en havn. Ctrl muliggør sammenslutning af stationer. Shift skifter mellem at bygge og vise prisoverslag.
@@ -3652,7 +3652,7 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Fragt-/tilpasningsinformation for '{1:ENGINE}' afviger fra indkøbslisten efter konstruktion. Dette kan medføre, at autofornyelse ikke fungerer korrekt.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' forårsagede en uendelig løkke i produktions-callback'en.
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback {1:HEX} returnerede ukendt/ugyldigt resultat {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' returnerede ugyldig godstype i produktion-callback ved {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' returnerede ugyldig godstype i produktion-callback ved {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<ikke gyldigt gods>
@@ -3804,7 +3804,7 @@ STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Tilskuds
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} fra {STRING} til {STRING}{YELLOW} ({STRING})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Ingen -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Tilskudsordninger der allerede er vundet:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} fra {STRING} til {STRING}{YELLOW} ({COMPANY}{YELLOW}, indtil {STRING})
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} fra {STRING} til {STRING}{YELLOW} ({COMPANY}{YELLOW}, {STRING})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik på servicen for at centrere skærmen over industrien/byen. Ctrl+Klik åbner et nyt vindue ved industriens/byens lokalitet.
 STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :ved {DATE_SHORT}
 STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :inden {UNITS_MONTHS_OR_MINUTES}
@@ -4460,7 +4460,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Vis flye
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Vis detaljer om toget
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Vis køretøjets detaljer
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Vis detaljer omkring skibet
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Vis detaljet omkring flyet
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Vis detaljet omkring flyet. Ctrl+Klik for at vise flyets gruppe
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Togets nuværende aktivitet - klik for at stoppe/starte toget
@@ -4723,7 +4723,7 @@ STR_ORDER_REFIT_ORDER                                           :{SPACE}(Tilpas 
 STR_ORDER_REFIT_STOP_ORDER                                      :{SPACE}(Tilpas til {STRING} og stop)
 STR_ORDER_STOP_ORDER                                            :(Stop)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(vent med at afkoble)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :{SPACE}(vent med at afkoble)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Kan ikke bruge station){POP_COLOUR} {STRING} {STATION}
@@ -4982,7 +4982,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<ikke tilgænge
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spillet er gemt i en version uden sporveje. Alle sporveje er blevet fjernet.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kortgenerering afbrudt...{}... ingen brugbare lokaliteter til byer
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kortgenerering afbrudt...{}{}... ingen brugbare lokaliteter til byer
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... der er ingen byer i dette scenarie
 
 STR_ERROR_PNGMAP                                                :{WHITE}Kan ikke indlæse landskab fra PNG...
@@ -5074,7 +5074,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... for 
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... for mange byer
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... der er ikke mere plads på kortet
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vejarbejde i gang
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan ikke slette denne by...{}En station eller et depot refererer til byen, eller en brik der er ejet a byen kan ikke fjernes
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan ikke slette denne by...{}{}En station eller et depot refererer til byen, eller en brik der er ejet a byen kan ikke fjernes
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... Der er ingen egnede steder at placere en statue
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Kan ikke bygge hus...
 
