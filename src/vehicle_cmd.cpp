@@ -849,7 +849,8 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 	CommandCost ret = CheckOwnership(v->owner);
 	if (ret.Failed()) return { ret, VehicleID::Invalid() };
 
-	if (v->type == VEH_TRAIN && (!v->IsFrontEngine() || Train::From(v)->crash_anim_pos >= 4400)) return { CMD_ERROR, VehicleID::Invalid() };
+	/* Crashed trains can only be cloned before cleanup begins. */
+	if (v->type == VEH_TRAIN && (!v->IsFrontEngine() || Train::From(v)->crash_anim_pos >= 4400)) return { CommandCost(STR_ERROR_VEHICLE_IS_DESTROYED), VehicleID::Invalid() };
 
 	/* check that we can allocate enough vehicles */
 	if (!flags.Test(DoCommandFlag::Execute)) {
