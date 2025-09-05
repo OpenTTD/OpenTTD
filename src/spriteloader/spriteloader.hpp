@@ -32,13 +32,13 @@ using SpriteComponents = EnumBitSet<SpriteComponent, uint8_t, SpriteComponent::E
  */
 template <class T>
 class SpriteCollMap {
-	std::array<T, to_underlying(ZoomLevel::End)> data{};
+	std::array<T, std::to_underlying(ZoomLevel::End)> data{};
 public:
-	inline constexpr T &operator[](const ZoomLevel &zoom) { return this->data[to_underlying(zoom)]; }
-	inline constexpr const T &operator[](const ZoomLevel &zoom) const { return this->data[to_underlying(zoom)]; }
+	inline constexpr T &operator[](const ZoomLevel &zoom) { return this->data[std::to_underlying(zoom)]; }
+	inline constexpr const T &operator[](const ZoomLevel &zoom) const { return this->data[std::to_underlying(zoom)]; }
 
-	T &Root() { return this->data[to_underlying(ZoomLevel::Min)]; }
-	const T &Root() const { return this->data[to_underlying(ZoomLevel::Min)]; }
+	T &Root() { return this->data[std::to_underlying(ZoomLevel::Min)]; }
+	const T &Root() const { return this->data[std::to_underlying(ZoomLevel::Min)]; }
 };
 
 /** Interface for the loader of our sprites. */

@@ -406,7 +406,7 @@ void CombinedAuthenticationServerHandler::Add(CombinedAuthenticationServerHandle
 {
 	Debug(net, 9, "Sending {} authentication request", this->GetName());
 
-	p.Send_uint8(to_underlying(this->handlers.back()->GetAuthenticationMethod()));
+	p.Send_uint8(std::to_underlying(this->handlers.back()->GetAuthenticationMethod()));
 	this->handlers.back()->SendRequest(p);
 }
 

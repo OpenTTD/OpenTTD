@@ -330,7 +330,7 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 		company = OWNER_TOWN;
 
 		/* If we are not within a town, we are not owned by the town */
-		if (town == nullptr || DistanceSquare(tile_start, town->xy) > town->cache.squared_town_zone_radius[to_underlying(HouseZone::TownEdge)]) {
+		if (town == nullptr || DistanceSquare(tile_start, town->xy) > town->cache.squared_town_zone_radius[std::to_underlying(HouseZone::TownEdge)]) {
 			company = OWNER_NONE;
 		}
 	}
@@ -654,7 +654,7 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 		company = OWNER_TOWN;
 
 		/* If we are not within a town, we are not owned by the town */
-		if (town == nullptr || DistanceSquare(start_tile, town->xy) > town->cache.squared_town_zone_radius[to_underlying(HouseZone::TownEdge)]) {
+		if (town == nullptr || DistanceSquare(start_tile, town->xy) > town->cache.squared_town_zone_radius[std::to_underlying(HouseZone::TownEdge)]) {
 			company = OWNER_NONE;
 		}
 	}

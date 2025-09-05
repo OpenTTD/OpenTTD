@@ -12,10 +12,6 @@
 
 #include "base_bitset_type.hpp"
 
-/** Implementation of std::to_underlying (from C++23) */
-template <typename enum_type>
-constexpr std::underlying_type_t<enum_type> to_underlying(enum_type e) { return static_cast<std::underlying_type_t<enum_type>>(e); }
-
 /** Trait to enable prefix/postfix incrementing operators. */
 template <typename enum_type>
 struct is_enum_incrementable {
@@ -29,7 +25,7 @@ constexpr bool is_enum_incrementable_v = is_enum_incrementable<enum_type>::value
 template <typename enum_type, std::enable_if_t<is_enum_incrementable_v<enum_type>, bool> = true>
 inline constexpr enum_type &operator ++(enum_type &e)
 {
-	e = static_cast<enum_type>(to_underlying(e) + 1);
+	e = static_cast<enum_type>(std::to_underlying(e) + 1);
 	return e;
 }
 
@@ -46,7 +42,7 @@ inline constexpr enum_type operator ++(enum_type &e, int)
 template <typename enum_type, std::enable_if_t<is_enum_incrementable_v<enum_type>, bool> = true>
 inline constexpr enum_type &operator --(enum_type &e)
 {
-	e = static_cast<enum_type>(to_underlying(e) - 1);
+	e = static_cast<enum_type>(std::to_underlying(e) - 1);
 	return e;
 }
 
@@ -78,7 +74,7 @@ constexpr bool is_enum_sequential_v = is_enum_sequential<enum_type>::value;
 template <typename enum_type, std::enable_if_t<is_enum_sequential_v<enum_type>, bool> = true>
 inline constexpr enum_type operator+(enum_type e, int offset)
 {
-	return static_cast<enum_type>(to_underlying(e) + offset);
+	return static_cast<enum_type>(std::to_underlying(e) + offset);
 }
 
 template <typename enum_type, std::enable_if_t<is_enum_sequential_v<enum_type>, bool> = true>
@@ -92,7 +88,7 @@ inline constexpr enum_type &operator+=(enum_type &e, int offset)
 template <typename enum_type, std::enable_if_t<is_enum_sequential_v<enum_type>, bool> = true>
 inline constexpr enum_type operator-(enum_type e, int offset)
 {
-	return static_cast<enum_type>(to_underlying(e) - offset);
+	return static_cast<enum_type>(std::to_underlying(e) - offset);
 }
 
 template <typename enum_type, std::enable_if_t<is_enum_sequential_v<enum_type>, bool> = true>
@@ -106,7 +102,7 @@ inline constexpr enum_type &operator-=(enum_type &e, int offset)
 template <typename enum_type, std::enable_if_t<is_enum_sequential_v<enum_type>, bool> = true>
 inline constexpr auto operator-(enum_type a, enum_type b)
 {
-	return to_underlying(a) - to_underlying(b);
+	return std::to_underlying(a) - std::to_underlying(b);
 }
 
 /** For some enums it is useful to add/sub more than 1 */
@@ -117,19 +113,19 @@ inline constexpr auto operator-(enum_type a, enum_type b)
 
 /** Operators to allow to work with enum as with type safe bit set in C++ */
 #define DECLARE_ENUM_AS_BIT_SET(enum_type) \
-	inline constexpr enum_type operator | (enum_type m1, enum_type m2) { return static_cast<enum_type>(to_underlying(m1) | to_underlying(m2)); } \
-	inline constexpr enum_type operator & (enum_type m1, enum_type m2) { return static_cast<enum_type>(to_underlying(m1) & to_underlying(m2)); } \
-	inline constexpr enum_type operator ^ (enum_type m1, enum_type m2) { return static_cast<enum_type>(to_underlying(m1) ^ to_underlying(m2)); } \
+	inline constexpr enum_type operator | (enum_type m1, enum_type m2) { return static_cast<enum_type>(std::to_underlying(m1) | std::to_underlying(m2)); } \
+	inline constexpr enum_type operator & (enum_type m1, enum_type m2) { return static_cast<enum_type>(std::to_underlying(m1) & std::to_underlying(m2)); } \
+	inline constexpr enum_type operator ^ (enum_type m1, enum_type m2) { return static_cast<enum_type>(std::to_underlying(m1) ^ std::to_underlying(m2)); } \
 	inline constexpr enum_type& operator |= (enum_type& m1, enum_type m2) { m1 = m1 | m2; return m1; } \
 	inline constexpr enum_type& operator &= (enum_type& m1, enum_type m2) { m1 = m1 & m2; return m1; } \
 	inline constexpr enum_type& operator ^= (enum_type& m1, enum_type m2) { m1 = m1 ^ m2; return m1; } \
-	inline constexpr enum_type operator ~(enum_type m) { return static_cast<enum_type>(~to_underlying(m)); }
+	inline constexpr enum_type operator ~(enum_type m) { return static_cast<enum_type>(~std::to_underlying(m)); }
 
 /** Operator that allows this enumeration to be added to any other enumeration. */
 #define DECLARE_ENUM_AS_ADDABLE(EnumType) \
 	template <typename OtherEnumType, typename = typename std::enable_if<std::is_enum_v<OtherEnumType>, OtherEnumType>::type> \
 	constexpr OtherEnumType operator + (OtherEnumType m1, EnumType m2) { \
-		return static_cast<OtherEnumType>(to_underlying(m1) + to_underlying(m2)); \
+		return static_cast<OtherEnumType>(std::to_underlying(m1) + std::to_underlying(m2)); \
 	}
 
 /**
@@ -162,7 +158,7 @@ debug_inline constexpr void ToggleFlag(T &x, const T y)
 /** Helper template structure to get the mask for an EnumBitSet from the end enum value. */
 template <typename Tstorage, typename Tenum, Tenum Tend_value>
 struct EnumBitSetMask {
-	static constexpr Tstorage value = std::numeric_limits<Tstorage>::max() >> (std::numeric_limits<Tstorage>::digits - to_underlying(Tend_value));
+	static constexpr Tstorage value = std::numeric_limits<Tstorage>::max() >> (std::numeric_limits<Tstorage>::digits - std::to_underlying(Tend_value));
 };
 
 /**
@@ -196,7 +192,7 @@ public:
 
 	constexpr auto operator <=>(const EnumBitSet &) const noexcept = default;
 
-	static constexpr size_t DecayValueType(const BaseClass::ValueType &value) { return to_underlying(value); }
+	static constexpr size_t DecayValueType(const BaseClass::ValueType &value) { return std::to_underlying(value); }
 };
 
 #endif /* ENUM_TYPE_HPP */

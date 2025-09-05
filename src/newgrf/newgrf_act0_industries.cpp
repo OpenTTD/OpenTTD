@@ -557,11 +557,11 @@ static ChangeInfoResult IndustriesChangeInfo(uint first, uint last, int prop, By
 				break;
 
 			case 0x17: // Probability in random game
-				indsp->appear_creation[to_underlying(_settings_game.game_creation.landscape)] = buf.ReadByte();
+				indsp->appear_creation[std::to_underlying(_settings_game.game_creation.landscape)] = buf.ReadByte();
 				break;
 
 			case 0x18: // Probability during gameplay
-				indsp->appear_ingame[to_underlying(_settings_game.game_creation.landscape)] = buf.ReadByte();
+				indsp->appear_ingame[std::to_underlying(_settings_game.game_creation.landscape)] = buf.ReadByte();
 				break;
 
 			case 0x19: // Map colour

@@ -891,7 +891,7 @@ static const DrawTileSpriteSpan _station_display_datas_waypoint[] = {
  * As these are drawn/build like stations, they may use the same number of layouts. */
 static_assert(lengthof(_station_display_datas_rail) == lengthof(_station_display_datas_waypoint));
 
-static const std::array<std::span<const DrawTileSpriteSpan>, to_underlying(StationType::End)> _station_display_datas = {{
+static const std::array<std::span<const DrawTileSpriteSpan>, std::to_underlying(StationType::End)> _station_display_datas = {{
 	_station_display_datas_rail,
 	_station_display_datas_airport,
 	_station_display_datas_truck,
@@ -941,7 +941,7 @@ static const BridgeableTileInfo _station_bridgeable_info_road_waypoint[] = {
 	{2, {BridgePillarFlag::EdgeNW, BridgePillarFlag::EdgeSE}}, // Y-axis waypoint.
 };
 
-static const std::array<std::span<const BridgeableTileInfo>, to_underlying(StationType::End)> _station_bridgeable_info = {{
+static const std::array<std::span<const BridgeableTileInfo>, std::to_underlying(StationType::End)> _station_bridgeable_info = {{
 	_station_bridgeable_info_rail, // Rail
 	{}, // Airport
 	_station_bridgeable_info_roadstop, // Truck

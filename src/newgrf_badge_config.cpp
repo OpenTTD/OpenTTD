@@ -67,7 +67,7 @@ std::span<BadgeClassConfigItem> GetBadgeClassConfiguration(GrfSpecFeature featur
 {
 	assert(BadgeClassConfig::CONFIGURABLE_FEATURES.Test(feature));
 	assert(feature < std::size(_badge_config.features));
-	return _badge_config.features[to_underlying(feature)];
+	return _badge_config.features[std::to_underlying(feature)];
 }
 
 /**
@@ -186,7 +186,7 @@ static void BadgeClassSaveConfigFeature(IniFile &ini, GrfSpecFeature feature)
 	IniGroup &group = ini.GetOrCreateGroup(BadgeClassConfig::sections[feature]);
 	group.Clear();
 
-	for (const auto &item : _badge_config.features[to_underlying(feature)]) {
+	for (const auto &item : _badge_config.features[std::to_underlying(feature)]) {
 		group.CreateItem(item.label).SetValue(fmt::format("{}{}{}", item.show_filter ? "?" : "", item.show_icon ? "" : "!", item.column));
 	}
 }

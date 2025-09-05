@@ -77,7 +77,7 @@ private:
 template <typename T> requires std::is_base_of_v<PoolIDBase, T>
 constexpr auto operator+(const std::integral auto &val, const T &pool_id) { return pool_id + val; }
 template <typename Te, typename Tp> requires std::is_enum_v<Te> && std::is_base_of_v<PoolIDBase, Tp>
-constexpr auto operator+(const Te &val, const Tp &pool_id) { return pool_id + to_underlying(val); }
+constexpr auto operator+(const Te &val, const Tp &pool_id) { return pool_id + std::to_underlying(val); }
 
 /** Base class for base of all pools. */
 struct PoolBase {
