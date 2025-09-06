@@ -16,16 +16,9 @@
 #include "yapf_node.hpp"
 
 /** Yapf Node for ships */
-template <class TKey>
-struct CYapfShipNodeT : CYapfNodeT<TKey, CYapfShipNodeT<TKey>> {
+struct CYapfShipNode : CYapfNodeT<CYapfNodeKeyExitDir, CYapfShipNode> {
 };
 
-/* now define two major node types (that differ by key type) */
-typedef CYapfShipNodeT<CYapfNodeKeyExitDir>  CYapfShipNodeExitDir;
-typedef CYapfShipNodeT<CYapfNodeKeyTrackDir> CYapfShipNodeTrackDir;
-
-/* Default NodeList types */
-typedef NodeList<CYapfShipNodeExitDir , 10, 12> CShipNodeListExitDir;
-typedef NodeList<CYapfShipNodeTrackDir, 10, 12> CShipNodeListTrackDir;
+typedef NodeList<CYapfShipNode, 10, 12> CShipNodeList;
 
 #endif /* YAPF_NODE_SHIP_HPP */

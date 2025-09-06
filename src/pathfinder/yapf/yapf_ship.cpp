@@ -398,13 +398,13 @@ public:
  * Config struct of YAPF for ships.
  * Defines all 6 base YAPF modules as classes providing services for CYapfBaseT.
  */
-template <class Tpf_, class Ttrack_follower, class Tnode_list>
+template <class Tpf_>
 struct CYapfShip_TypesT {
-	typedef CYapfShip_TypesT<Tpf_, Ttrack_follower, Tnode_list>  Types;         ///< Shortcut for this struct type.
-	typedef Tpf_                                                 Tpf;           ///< Pathfinder type.
-	typedef Ttrack_follower                                      TrackFollower; ///< Track follower helper class.
-	typedef Tnode_list                                           NodeList;
-	typedef Ship                                                 VehicleType;
+	typedef CYapfShip_TypesT<Tpf_> Types;         ///< Shortcut for this struct type.
+	typedef Tpf_                   Tpf;           ///< Pathfinder type.
+	typedef CFollowTrackWater      TrackFollower; ///< Track follower helper class.
+	typedef CShipNodeList          NodeList;
+	typedef Ship                   VehicleType;
 
 	/** Pathfinder components (modules). */
 	typedef CYapfBaseT<Types>                 PfBase;        ///< Base pathfinder class.
@@ -415,7 +415,7 @@ struct CYapfShip_TypesT {
 	typedef CYapfCostShipT<Types>             PfCost;        ///< Cost provider.
 };
 
-struct CYapfShip : CYapfT<CYapfShip_TypesT<CYapfShip, CFollowTrackWater, CShipNodeListExitDir>> {
+struct CYapfShip : CYapfT<CYapfShip_TypesT<CYapfShip>> {
 	explicit CYapfShip(int max_nodes) { this->max_search_nodes = max_nodes; }
 };
 
