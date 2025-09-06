@@ -1835,7 +1835,12 @@ bool AdjustGUIZoom(bool automatic)
 			w->top    = (w->top    * _gui_scale) / old_scale;
 		}
 		if (w->viewport != nullptr) {
-			w->viewport->zoom = Clamp(w->viewport->zoom - zoom_shift, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
+			/* check if zoom_shift will cause an underflow and set zoom to the min value */
+			if ((int)w->viewport->zoom < zoom_shift) {
+				w->viewport->zoom = _settings_client.gui.zoom_min;
+			} else {
+				w->viewport->zoom = Clamp(w->viewport->zoom - zoom_shift, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
+			}
 		}
 	}
 
