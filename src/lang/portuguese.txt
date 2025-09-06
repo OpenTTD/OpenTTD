@@ -492,7 +492,7 @@ STR_GRAPH_MENU_INCOME_GRAPH                                     :Rendimentos
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Carga entregue
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Histórico de avaliação
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Valor da empresa
-STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tarifas por carga
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tarifas por tipo de carga
 
 # Company league menu
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Classificação de empresas
@@ -608,8 +608,8 @@ STR_MONTH_NOV                                                   :Novembro
 STR_MONTH_DEC                                                   :Dezembro
 
 # Graph window
-STR_GRAPH_KEY_BUTTON                                            :{BLACK}Chave
-STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Mostrar chave dos gráficos
+STR_GRAPH_KEY_BUTTON                                            :{BLACK}Legenda
+STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Mostrar legenda dos gráficos estatísticos
 STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
@@ -632,11 +632,11 @@ STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLA
 STR_GRAPH_TOGGLE_RANGE                                          :Alternar o gráfico para este intervalo de dados
 STR_GRAPH_SELECT_SCALE                                          :Alterar a escala horizontal do gráfico
 
-STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tarifas por carga
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tarifas por tipo de carga
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Dias em trânsito
 STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}Segundos em trânsito
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pagamento por entregar 10 unidades (ou 10 000 litros) de carga numa distância de 20 quadrados
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Tudo
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Todos
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Nenhum
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Mostrar todas as cargas no gráfico
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Não mostrar cargas no gráfico
@@ -656,7 +656,7 @@ STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transportado
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Exibir classificações detalhadas de desempenho
 
 # Graph key window
-STR_GRAPH_KEY_CAPTION                                           :{WHITE}Chave dos gráficos da empresa
+STR_GRAPH_KEY_CAPTION                                           :{WHITE}Legenda dos gráficos da empresa
 STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Alternar o gráfico desta empresa
 
 # Company league window
@@ -2286,7 +2286,7 @@ STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Comunida
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Opções da 'sandbox'
 STR_CHEAT_MONEY                                                 :{LTBLUE}Aumentar dinheiro em {CURRENCY_LONG}
-STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jogando como empresa: {ORANGE}{COMMA}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jogar como a empresa: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Escavadora mágica (remove indústrias, objetos imóveis): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Os túneis podem cruzar-se: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Aviões a jato não irão ter acidentes (frequentes) em aeroportos pequenos: {ORANGE}{STRING}
@@ -2295,7 +2295,7 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Editar a
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Alterar data: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Alterar ano atual
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ativar modificação de valores de produção: {ORANGE}{STRING}
-STR_CHEAT_STATION_RATING                                        :{LTBLUE}Fixar as classificações da estação em 100%: {ORANGE}{STRING}
+STR_CHEAT_STATION_RATING                                        :{LTBLUE}Afixar as classificações da estação em 100%: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Novo Esquema de Cores
@@ -3068,7 +3068,7 @@ STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Cobrir o
 STR_FOUND_TOWN_LOAD_FROM_FILE                                   :{BLACK}Carregar de um ficheiro
 STR_FOUND_TOWN_LOAD_FROM_FILE_TOOLTIP                           :{BLACK}Importar dados da localidade de um ficheiro JSON
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Expandir todas as localidades
-STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Fazer com que todas as localidades cresçam ligeiramente
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Fazer com que todas as localidades cresçam de forma ligeira
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nome da localidade:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Introduza o nome da localidade
@@ -3124,7 +3124,7 @@ STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Casas
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Clique na indústria para ver os seus fornecedores e clientes
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Clique na mercadoria para ver os seus fornecedores e clientes
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Cadeia da Indústria
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Mostrar indústrias a fornecer e aceitar mercadorias
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Mostrar indústrias a fornecer e a aceitar mercadorias
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Ligar ao mapa pequeno
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Também seleccionar as indústrias mostradas no mapa pequeno
 STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Selecionar carga
@@ -3815,7 +3815,7 @@ STR_SUBSIDIES_SUBSIDISED_EXPIRY_TIME                            :{UNITS_MONTHS_O
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Livro de História
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Livro de História Global
-STR_STORY_BOOK_SPECTATOR                                        :Livro de Histórico Global
+STR_STORY_BOOK_SPECTATOR                                        :Livro de Histórias Global
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Página nº {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Saltar para uma pagina especifica escolhendo-a nesta lista
@@ -3883,7 +3883,7 @@ STR_STATION_VIEW_GROUP_D_S_V                                    :Destino-Origem-
 STR_STATION_VIEW_GROUP_D_V_S                                    :Destino-Via-Origem
 
 ###length 8
-STR_CARGO_RATING_APPALLING                                      :Péssimo
+STR_CARGO_RATING_APPALLING                                      :Horrível
 STR_CARGO_RATING_VERY_POOR                                      :Muito Fraco
 STR_CARGO_RATING_POOR                                           :Fraco
 STR_CARGO_RATING_MEDIOCRE                                       :Medíocre
@@ -4481,12 +4481,12 @@ STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Sem energi
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Esperando por caminho livre
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Longe de mais do próximo destino
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - Dirige-se para {0:STATION}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - Dirige-se para {G 0 "" "o " "a " "os " "as "}{0:STATION}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - Sem ordens
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - Dirige-se para {0:WAYPOINT}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - Dirige-se para {0:DEPOT}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - Manutenção em {0:DEPOT}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - Desagrupar e efetuar manutenção em {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - Dirige-se para {G 0 "" "o " "a " "os " "as "}{0:WAYPOINT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - Dirige-se para {G 0 "" "o " "a " "os " "as "}{0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - Manutenção {G 0 em no na nos nas} {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - Desagrupar e efetuar manutenção {G 0 em no na nos nas} {0:DEPOT}
 
 STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{1:VELOCITY} - Não é possível chegar a {0:STATION}
 STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{1:VELOCITY} - Não é possível chegar a {0:WAYPOINT}
@@ -4997,10 +4997,10 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... não
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... a imagem é demasiado grande
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Aviso de redimensionamento
-STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Redimensionar muito o mapa não é recomendado. Continuar com o processo de geração?
+STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Não é recomendado redimensionar demasiado o mapa. Continuar com o processo de geração?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Só foi encontrado um conjunto de sons de reserva. Se deseja sons, instale um conjunto de sons através do sistema de descarregamento de conteúdo.
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Só foi encontrado um conjunto de sons de reserva. Se deseja efeitos sonoros no jogo, instale um conjunto de sons através do sistema de descarregamento de conteúdo.
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Captura de ecrã enorme
@@ -5855,23 +5855,23 @@ STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} #{COMMA
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} de {0:TOWN}
 
 ###length 2
-STR_FORMAT_BUOY_NAME                                            :Boia de {TOWN}
-STR_FORMAT_BUOY_NAME_SERIAL                                     :Boia de {TOWN} #{COMMA}
+STR_FORMAT_BUOY_NAME                                            :{G=f}Boia de {TOWN}
+STR_FORMAT_BUOY_NAME_SERIAL                                     :{G=f}Boia de {TOWN} #{COMMA}
 
 ###length 2
-STR_FORMAT_WAYPOINT_NAME                                        :Ponto de controlo {TOWN}
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Ponto de controlo {TOWN}#{COMMA}
+STR_FORMAT_WAYPOINT_NAME                                        :{G=m}Ponto de controlo de {TOWN}
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{G=m}Ponto de controlo de {TOWN}#{COMMA}
 
 ###length 6
-STR_FORMAT_DEPOT_NAME_TRAIN                                     :Depósito Ferroviário de {TOWN}
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Depósito Ferroviário de {TOWN} #{COMMA}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Garagem Rodoviária de {TOWN}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Garagem Rodoviária de {TOWN} #{COMMA}
-STR_FORMAT_DEPOT_NAME_SHIP                                      :Estaleiro Naval de {TOWN}
-STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Estaleiro Naval de {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{G=m}Depósito Ferroviário de {TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{G=m}Depósito Ferroviário de {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{G=f}Garagem Rodoviária de {TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{G=f}Garagem Rodoviária de {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{G=m}Estaleiro Naval de {TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{G=m}Estaleiro Naval de {TOWN} #{COMMA}
 ###next-name-looks-similar
 
-STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Hangar de {STATION}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{G=m}Hangar de {STATION}
 # _SERIAL version of AIRACRAFT doesn't exist
 
 STR_UNKNOWN_STATION                                             :estação desconhecida

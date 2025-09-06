@@ -2616,7 +2616,7 @@ STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :已有人使用
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :密碼錯誤
 STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :不在允許名單內
 STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :已請求的驗證方式均不可用
-STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :DoCommand 內含錯誤的 company-id
+STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :DoCommand 內含錯誤的公司 ID
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :被伺服器踢除
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :想試著作弊
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :伺服器已滿

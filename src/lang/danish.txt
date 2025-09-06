@@ -669,7 +669,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Rutesupervisor
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Direktør
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Administrerende direktør
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Forretningschef
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Præsident
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Direktør
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Matador
 
 # Performance detail window
@@ -947,8 +947,8 @@ STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Åbn gru
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST                   :{WHITE}{STATION} accepterer ikke længere: {CARGO_LIST}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION} accepterer nu: {CARGO_LIST}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Licitation af tilskudsordning udløbet:{}{}{STRING} fra {STRING} til {STRING} vil ikke længere udløse tilskud.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Tilskudsordning tilbagetrukket:{}{}{STRING} fra {STRING} til {STRING} modtager ikke længere tilskud.
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Licitation af tilskudsordning udløbet:{}{}{STRING} fra {STRING} til {STRING} vil ikke længere udløse tilskud
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Tilskudsordning tilbagetrukket:{}{}{STRING} fra {STRING} til {STRING} modtager ikke længere tilskud
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Tilskudsordning i udbud:{}{}Første {STRING} fra {STRING} til {STRING} vil udløse et {UNITS_YEARS_OR_MINUTES}s tilskud fra den lokale myndighed!
 ###length 4
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Servicetilskud tildelt {STRING}!{}{}{STRING} fra {STRING} til {STRING} vil betale 50% ekstra for de næste {UNITS_YEARS_OR_MINUTES}!
@@ -1123,7 +1123,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Yderligere info
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Hent indhold
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Søg efter nyt og opdateret indhold, der skal downloades
 
-STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(ingen plugins til at integrere med sociale platforme installeret)
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :(ingen plugins til at integrere med sociale platforme installeret)
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Platform:
@@ -1238,7 +1238,7 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Fjendtlig
 STR_CITY_APPROVAL_PERMISSIVE                                    :Passiv (ingen indvirkning på virksomhedens handlinger)
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Der blev ikke fundet en egnet computer-spiller...{}Du kan downloade flere forskellige computer-spillere gennem 'Online Indhold'.
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Der blev ikke fundet en egnet computer-spiller...{}{}Du kan downloade flere forskellige computer-spillere gennem 'Online Indhold'
 
 # Settings tree in the Game Options window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :Filterstreng:
@@ -2103,9 +2103,9 @@ STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :PANSRET last-kl
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distributionsmodel for andre lastklasser: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asymmetrisk" betyder, at vilkårlige mængder last kan sendes i begge retninger. "manuel" betyder, at der ikke finder nogen automatisk distribution sted for disse laster
 ###length 3
-STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuel
-STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetrisk
-STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symmetrisk
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :Manuel
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :Asymmetrisk
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :Symmetrisk
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Distributionsnøjagtighed: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Jo højere du sætter denne indstilling, jo mere CPU-tid vil beregningen af forbindelsesgrafen tage. Hvis den tager for længe, kan du opleve lag. Hvis du derimod sætter indstillingen til en lav værdi, vil distributionen være unøjagtig, og du kan opleve last ikke blive sendt til de steder, du forventer
@@ -2356,10 +2356,10 @@ STR_FACE_LOAD                                                   :{BLACK}Hent
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Hent favoritansigt
 STR_FACE_LOAD_DONE                                              :{WHITE}Dit favoritansigt er indlæst fra OpenTTD konfigurationsfilen.
 STR_FACE_FACECODE                                               :{BLACK}Spiller ansigts nr.
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Vis og/eller indstil spillers ansigtsnummer
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Vis og/eller indstil spillers ansigtskode på firmaets direktør
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Vis og/eller indstil spillers ansigtsnummer
-STR_FACE_FACECODE_SET                                           :{WHITE}Ny præsidents ansigt er sat
-STR_FACE_FACECODE_ERR                                           :{WHITE}Præsidentens ansigtskode kunne ikke angives - skal være en gyldig etiket og nummer
+STR_FACE_FACECODE_SET                                           :{WHITE}Nyt direktøransigt er valgt
+STR_FACE_FACECODE_ERR                                           :{WHITE}Direktørens ansigtskode kunne ikke angives - skal være en gyldig etiket og nummer
 STR_FACE_SAVE                                                   :{BLACK}Gem
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Gem favoritansigt
 STR_FACE_SAVE_DONE                                              :{WHITE}Dette ansigt bliver gemt som din favorit i OpenTTD konfigurationsfilen.
@@ -2654,7 +2654,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ha
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} har ændret sit navn til {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} gav {CURRENCY_LONG} til {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serveren har lukket ned for dette spil
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Serveren genstarter...{}Vent venligst...
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Serveren genstarter...{}{}Vent venligst...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} blev smidt ud. Grund: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Server registrering mislykkedes
@@ -3642,15 +3642,15 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Har fun
 STR_NEWGRF_LIST_MISSING                                         :{RED}Manglende filer
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Denne NewGRFs opførsel '{0:STRING}' vil sandsynligvis forårsage at spillet går ned.
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Den ændrer status for '{1:ENGINE}' når den ikke er i depot
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Den ændrer toglængden for '{1:ENGINE}' mens den ikke er i depot
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Det ændrede køretøj kapacitet til '{1:ENGINE}' når det ikke er inde i et depot eller genmontering
+STR_NEWGRF_BROKEN                                               :{WHITE}Denne NewGRFs opførsel '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' vil sandsynligvis forårsage at spillet går ud af synkronisering og/eller går ned
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Den ændrer status for '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' når den ikke er i depot
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Den ændrer toglængden for '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' mens den ikke er i depot
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Det ændrede køretøj kapacitet til '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' når det ikke er inde i et depot eller genmontering
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Toget '{VEHICLE}' fra selskabet '{COMPANY}' har ugyldig længde. Det skyldes sandsynligvis at problem med en NewGRF. Risiko for at spillet mister synkronisering eller går ned.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' indeholder forkert information
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Fragt-/tilpasningsinformation for '{1:ENGINE}' afviger fra indkøbslisten efter konstruktion. Dette kan medføre, at autofornyelse ikke fungerer korrekt.
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' forårsagede en uendelig løkke i produktions-callback'en.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' forårsagede en uendelig løkke i produktions-callback'en
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback {1:HEX} returnerede ukendt/ugyldigt resultat {2:HEX}
 STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' returnerede ugyldig godstype i produktion-callback ved {2:HEX}
 
@@ -4457,9 +4457,9 @@ STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Vis skib
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Vis flyets ordrer. Ctrl+Klik for at vise flyets tidsplan
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Vis detaljer om toget
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Vis køretøjets detaljer
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Vis detaljer omkring skibet
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Vis detaljer om toget. Ctrl+Klik for at vise togets gruppe
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Vis køretøjets detaljer. Ctrl+Klik for at vise køretøjets gruppe
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Vis detaljer omkring skibet. Ctrl+Klik for at vise skipets gruppe
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Vis detaljet omkring flyet. Ctrl+Klik for at vise flyets gruppe
 
 ###length VEHICLE_TYPES
@@ -4721,7 +4721,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 
 STR_ORDER_REFIT_ORDER                                           :{SPACE}(Tilpas til {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :{SPACE}(Tilpas til {STRING} og stop)
-STR_ORDER_STOP_ORDER                                            :(Stop)
+STR_ORDER_STOP_ORDER                                            :{SPACE}(Stop)
 
 STR_ORDER_WAIT_TO_UNBUNCH                                       :{SPACE}(vent med at afkoble)
 
@@ -4736,11 +4736,11 @@ STR_ORDER_NO_LOAD                                               :{SPACE}(Ingen l
 STR_ORDER_UNLOAD                                                :{SPACE}(Los og medtag fragt)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Los af og vent på fuld last)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Los og vent på fuld last af hvilken som helst type fragt)
-STR_ORDER_UNLOAD_NO_LOAD                                        :(Los og efterlad tom)
+STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Los og efterlad tom)
 STR_ORDER_TRANSFER                                              :{SPACE}(Overfør og last fragt)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Overfør og vent på fuld last)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Overfør og vent på fuld last af hvilken som helst type fragt)
-STR_ORDER_TRANSFER_NO_LOAD                                      :(Overfør og efterlad tom)
+STR_ORDER_TRANSFER_NO_LOAD                                      :{SPACE}(Overfør og efterlad tom)
 STR_ORDER_NO_UNLOAD                                             :{SPACE}(Los ikke og last fragt)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :{SPACE}(Los ikke og vent på fuld last)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :{SPACE}(Los ikke af og vent på fuld last af hvilken som helst type)
@@ -4749,10 +4749,10 @@ STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{SPACE}(Los ikk
 STR_ORDER_AUTO_REFIT                                            :{SPACE}(Auto-tilpas til {STRING})
 STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Fuld last med auto-tilpas til {STRING})
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Fuld vilkårlig last med auto-tilpas til {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Los og medtag last med auto-tilpas til {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Los og medtag last med auto-tilpas til {STRING})
 STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Los og vent på fuld last med auto-tilpas til {STRING})
 STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Los og vent på fuld vilkårlig last med auto-tilpas til {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Overfør og medtag last med auto-tilpas til {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :{SPACE}(Overfør og medtag last med auto-tilpas til {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :{SPACE}(Overfør og vent på fuld last med auto-tilpas til {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :{SPACE}(Overfør og vent på fuld vilkårlig last med auto-tilpas til {STRING})
 STR_ORDER_NO_UNLOAD_REFIT                                       :{SPACE}(Ingen losning og medtag last med with auto-tilpas til {STRING})
@@ -4790,9 +4790,9 @@ STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Rejs mod {STRIN
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Køreplan (for {STRING}, ikke skemalagt)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Køreplan (for {STRING}, ikke skemalagt) med på de fleste {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(ophold for {STRING}, ikke skemalagt)
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(rejse for {STRING}, ikke skemalagt)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(rejse for {STRING}, ikke skemalagt)
 STR_TIMETABLE_STAY_FOR                                          :{SPACE}og vent i {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :og rejs i {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}og rejs i {STRING}
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Denne tidsplan vil tage ca {STRING} at fuldføre
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Denne køreplan vil tage {STRING} at fuldføre
@@ -5422,7 +5422,7 @@ STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Der er i
 STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Der er ingen stop, der er egnede til leddelte vejkøretøjer.{}Leddelte vejkøretøjer kræver et gennemkørselsstop, ikke et slutstop
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Dette fly kan ikke lande på denne heliport
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Denne helikopter kan ikke lande i denne lufthavn
-STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Der er ikke noget Jernbane vejpunkt
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Der er ikke noget jernbane-rutepunkt
 STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}Der er intet rutepunkt
 STR_ERROR_NO_BUOY                                               :{WHITE}Der er ingen bøje
 
