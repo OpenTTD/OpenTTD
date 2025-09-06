@@ -309,7 +309,7 @@ static WindowDesc *_news_window_layout[] = {
 
 static WindowDesc &GetNewsWindowLayout(NewsStyle style)
 {
-	uint layout = to_underlying(style);
+	uint layout = std::to_underlying(style);
 	assert(layout < lengthof(_news_window_layout));
 	return *_news_window_layout[layout];
 }
@@ -337,7 +337,7 @@ static const NewsTypeData _news_type_data[] = {
 	NewsTypeData("news_display.general",           60, SND_BEGIN       ),  ///< NewsType::General
 };
 
-static_assert(std::size(_news_type_data) == to_underlying(NewsType::End));
+static_assert(std::size(_news_type_data) == std::to_underlying(NewsType::End));
 
 /**
  * Return the news display option.
@@ -697,7 +697,7 @@ private:
 /** Open up an own newspaper window for the news item */
 static void ShowNewspaper(const NewsItem *ni)
 {
-	SoundFx sound = _news_type_data[to_underlying(ni->type)].sound;
+	SoundFx sound = _news_type_data[std::to_underlying(ni->type)].sound;
 	if (sound != 0 && _settings_client.sound.news_full) SndPlayFx(sound);
 
 	new NewsWindow(GetNewsWindowLayout(ni->style), ni);
@@ -765,9 +765,9 @@ static void MoveToNextTickerItem()
 		const NewsType type = _statusbar_news->type;
 
 		/* check the date, don't show too old items */
-		if (TimerGameEconomy::date - _news_type_data[to_underlying(type)].age > _statusbar_news->economy_date) continue;
+		if (TimerGameEconomy::date - _news_type_data[std::to_underlying(type)].age > _statusbar_news->economy_date) continue;
 
-		switch (_news_type_data[to_underlying(type)].GetDisplay()) {
+		switch (_news_type_data[std::to_underlying(type)].GetDisplay()) {
 			default: NOT_REACHED();
 			case NewsDisplay::Off: // Show nothing only a small reminder in the status bar.
 				InvalidateWindowData(WC_STATUS_BAR, 0, SBI_SHOW_REMINDER);
@@ -803,9 +803,9 @@ static void MoveToNextNewsItem()
 		const NewsType type = _current_news->type;
 
 		/* check the date, don't show too old items */
-		if (TimerGameEconomy::date - _news_type_data[to_underlying(type)].age > _current_news->economy_date) continue;
+		if (TimerGameEconomy::date - _news_type_data[std::to_underlying(type)].age > _current_news->economy_date) continue;
 
-		switch (_news_type_data[to_underlying(type)].GetDisplay()) {
+		switch (_news_type_data[std::to_underlying(type)].GetDisplay()) {
 			default: NOT_REACHED();
 			case NewsDisplay::Off: // Show nothing only a small reminder in the status bar, skipped here.
 				break;
@@ -1065,7 +1065,7 @@ void DeleteInvalidEngineNews()
 static void RemoveOldNewsItems()
 {
 	DeleteNews<MIN_NEWS_AMOUNT>([](const auto &ni) {
-		return TimerGameEconomy::date - _news_type_data[to_underlying(ni.type)].age * _settings_client.gui.news_message_timeout > ni.economy_date;
+		return TimerGameEconomy::date - _news_type_data[std::to_underlying(ni.type)].age * _settings_client.gui.news_message_timeout > ni.economy_date;
 	});
 }
 
@@ -1162,7 +1162,7 @@ void ShowLastNewsMessage()
 	}
 	bool wrap = false;
 	for (;;) {
-		if (_news_type_data[to_underlying(ni->type)].GetDisplay() != NewsDisplay::Off) {
+		if (_news_type_data[std::to_underlying(ni->type)].GetDisplay() != NewsDisplay::Off) {
 			ShowNewsMessage(ni);
 			break;
 		}

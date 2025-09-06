@@ -52,8 +52,8 @@ const PalSpriteID tree_sprites[] = {
  */
 static Dimension GetMaxTreeSpriteSize()
 {
-	const uint16_t base = _tree_base_by_landscape[to_underlying(_settings_game.game_creation.landscape)];
-	const uint16_t count = _tree_count_by_landscape[to_underlying(_settings_game.game_creation.landscape)];
+	const uint16_t base = _tree_base_by_landscape[std::to_underlying(_settings_game.game_creation.landscape)];
+	const uint16_t count = _tree_count_by_landscape[std::to_underlying(_settings_game.game_creation.landscape)];
 
 	Dimension size, this_size;
 	Point offset;
@@ -130,7 +130,7 @@ class BuildTreesWindow : public Window
 	{
 		TreeType treetype = (TreeType)this->tree_to_plant;
 		if (this->tree_to_plant == TREE_INVALID) {
-			treetype = (TreeType)(InteractiveRandomRange(_tree_count_by_landscape[to_underlying(_settings_game.game_creation.landscape)]) + _tree_base_by_landscape[to_underlying(_settings_game.game_creation.landscape)]);
+			treetype = (TreeType)(InteractiveRandomRange(_tree_count_by_landscape[std::to_underlying(_settings_game.game_creation.landscape)]) + _tree_base_by_landscape[std::to_underlying(_settings_game.game_creation.landscape)]);
 		}
 		const uint radius = this->mode == PM_FOREST_LG ? 12 : 5;
 		const uint count = this->mode == PM_FOREST_LG ? 12 : 5;
@@ -258,8 +258,8 @@ public:
  */
 static std::unique_ptr<NWidgetBase> MakeTreeTypeButtons()
 {
-	const uint8_t type_base = _tree_base_by_landscape[to_underlying(_settings_game.game_creation.landscape)];
-	const uint8_t type_count = _tree_count_by_landscape[to_underlying(_settings_game.game_creation.landscape)];
+	const uint8_t type_base = _tree_base_by_landscape[std::to_underlying(_settings_game.game_creation.landscape)];
+	const uint8_t type_count = _tree_count_by_landscape[std::to_underlying(_settings_game.game_creation.landscape)];
 
 	/* Toyland has 9 tree types, which look better in 3x3 than 4x3 */
 	const int num_columns = type_count == 9 ? 3 : 4;

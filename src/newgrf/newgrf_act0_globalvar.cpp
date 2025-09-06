@@ -433,7 +433,7 @@ bool GetGlobalVariable(uint8_t param, uint32_t *value, const GRFFile *grffile)
 		}
 
 		case 0x03: // current climate, 0=temp, 1=arctic, 2=trop, 3=toyland
-			*value = to_underlying(_settings_game.game_creation.landscape);
+			*value = std::to_underlying(_settings_game.game_creation.landscape);
 			return true;
 
 		case 0x06: // road traffic side, bit 4 clear=left, set=right

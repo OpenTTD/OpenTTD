@@ -95,7 +95,7 @@ void MoveBuoysToWaypoints()
 				Tile tile(t);
 				if (!IsTileType(tile, MP_STATION) || GetStationIndex(tile) != index) continue;
 
-				SB(tile.m6(), 3, 3, to_underlying(StationType::RailWaypoint));
+				SB(tile.m6(), 3, 3, std::to_underlying(StationType::RailWaypoint));
 				wp->rect.BeforeAddTile(t, StationRect::ADD_FORCE);
 			}
 

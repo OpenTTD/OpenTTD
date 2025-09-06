@@ -106,9 +106,9 @@ uint32_t RoadStopScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] u
 
 		/* Town zone and Manhattan distance of closest town */
 		case 0x45: {
-			if (this->tile == INVALID_TILE) return to_underlying(HouseZone::TownEdge) << 16;
+			if (this->tile == INVALID_TILE) return std::to_underlying(HouseZone::TownEdge) << 16;
 			const Town *t = (this->st == nullptr) ? ClosestTownFromTile(this->tile, UINT_MAX) : this->st->town;
-			return t != nullptr ? (to_underlying(GetTownRadiusGroup(t, this->tile)) << 16 | ClampTo<uint16_t>(DistanceManhattan(this->tile, t->xy))) : to_underlying(HouseZone::TownEdge) << 16;
+			return t != nullptr ? (std::to_underlying(GetTownRadiusGroup(t, this->tile)) << 16 | ClampTo<uint16_t>(DistanceManhattan(this->tile, t->xy))) : std::to_underlying(HouseZone::TownEdge) << 16;
 		}
 
 		/* Get square of Euclidean distance of closest town */
@@ -394,7 +394,7 @@ void TriggerRoadStopAnimation(BaseStation *st, TileIndex trigger_tile, StationAn
 			if (IsValidCargoType(cargo_type)) {
 				var18_extra |= ss->grf_prop.grffile->cargo_map[cargo_type] << 8;
 			}
-			RoadStopAnimationBase::ChangeAnimationFrame(CBID_STATION_ANIMATION_TRIGGER, ss, st, cur_tile, (random_bits << 16) | GB(Random(), 0, 16), to_underlying(trigger) | var18_extra);
+			RoadStopAnimationBase::ChangeAnimationFrame(CBID_STATION_ANIMATION_TRIGGER, ss, st, cur_tile, (random_bits << 16) | GB(Random(), 0, 16), std::to_underlying(trigger) | var18_extra);
 		}
 	};
 
