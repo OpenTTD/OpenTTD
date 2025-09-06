@@ -365,23 +365,26 @@ void MusicSystem::PlaylistRemove(size_t song_index)
 {
 	if (!this->IsCustomPlaylist()) return;
 
-	Playlist &pl = this->standard_playlists[this->selected_playlist];
-	if (song_index >= pl.size()) return;
+	if (song_index >= this->active_playlist.size()) return;
 
-	/* Remove from "simple" playlists */
-	PlaylistEntry song = pl[song_index];
-	pl.erase(pl.begin() + song_index);
+	PlaylistEntry song = this->active_playlist[song_index];
+	this->active_playlist.erase(std::next(std::begin(this->active_playlist), song_index));
 
-	/* Find in actual active playlist (may be shuffled) and remove,
-	 * if it's the current song restart playback */
-	for (size_t i = 0; i < this->active_playlist.size(); i++) {
-		Playlist::iterator s2 = this->active_playlist.begin() + i;
-		if (s2->filename == song.filename && s2->cat_index == song.cat_index) {
-			this->active_playlist.erase(s2);
-			if ((int)i == this->playlist_position && this->IsPlaying()) this->Play();
-			break;
-		}
+	Playlist &playlist = this->standard_playlists[this->selected_playlist];
+	auto it = std::end(playlist);
+	if (this->IsShuffle()) {
+		/* Playlist is shuffled, so remove the first instance. */
+		it = std::ranges::find_if(playlist, [&song](const auto &s) { return s.filename == song.filename && s.cat_index == song.cat_index; });
+	} else if (song_index < playlist.size()) {
+		/* Not shuffled, we can remove the entry directly. */
+		it = std::next(std::begin(playlist), song_index);
 	}
+
+	if (it == std::end(playlist)) return;
+	it = playlist.erase(it);
+
+	/* If it's the current song restart playback. */
+	if (this->IsPlaying() && std::distance(std::begin(playlist), it) == this->playlist_position) this->Play();
 
 	this->SaveCustomPlaylist(this->selected_playlist);
 
