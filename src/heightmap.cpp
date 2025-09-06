@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "heightmap.h"
+#include "landscape.h"
 #include "clear_map.h"
 #include "strings_func.h"
 #include "void_map.h"
@@ -523,6 +524,10 @@ bool LoadHeightmap(DetailedFileType dft, std::string_view filename)
 	GreyscaleToMapHeights(x, y, map);
 
 	FixSlopes();
+
+	/* If all map borders are water, we will draw infinite water. */
+	_settings_game.construction.freeform_edges = !IsMapSurroundedByWater();
+
 	MarkWholeScreenDirty();
 
 	return true;
