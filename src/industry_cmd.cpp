@@ -490,22 +490,38 @@ static CommandCost ClearTile_Industry(TileIndex tile, DoCommandFlags flags)
 	Industry *i = Industry::GetByTile(tile);
 	const IndustrySpec *indspec = GetIndustrySpec(i->type);
 
-	/* water can destroy industries
-	 * in editor you can bulldoze industries
-	 * with magic_bulldozer cheat you can destroy industries
-	 * (area around OILRIG is water, so water shouldn't flood it
-	 */
-	if ((_current_company != OWNER_WATER && _game_mode != GM_EDITOR &&
-			!_cheats.magic_bulldozer.value) ||
-			flags.Test(DoCommandFlag::Auto) ||
-			(_current_company == OWNER_WATER &&
-				(indspec->behaviour.Test(IndustryBehaviour::BuiltOnWater) ||
-				HasBit(GetIndustryTileSpec(GetIndustryGfx(tile))->slopes_refused, 5)))) {
+	/* Flooding can always destroy industries. */
+	bool flooding = _current_company == OWNER_WATER && (indspec->behaviour.Test(IndustryBehaviour::BuiltOnWater) || HasBit(GetIndustryTileSpec(GetIndustryGfx(tile))->slopes_refused, 5));
 
-		if (flags.Test(DoCommandFlag::Auto)) {
-			return CommandCostWithParam(STR_ERROR_GENERIC_OBJECT_IN_THE_WAY, indspec->name);
+	/* Check if the player can bulldoze the industry. */
+	if (!flooding) {
+		switch (_settings_game.construction.bulldoze_industries) {
+			/* If we can't bulldoze industries at all, return the proper error. */
+			case BIS_OFF:
+				/* If we are attempting to clear the tile to build something else, tell the player that the industry is in their way. */
+				if (flags.Test(DoCommandFlag::Auto)) return CommandCostWithParam(STR_ERROR_GENERIC_OBJECT_IN_THE_WAY, indspec->name);
+
+				/* Player is trying to bulldoze the industry. */
+				return CommandCost(STR_ERROR_INDUSTRIES_CANNOT_BE_REMOVED);
+
+			case BIS_UNSERVED:
+				/* Don't bulldoze industries that have recently had any cargo transported...*/
+				for (const auto &p : i->produced) {
+					if (p.history[LAST_MONTH].PctTransported() > 0) return CommandCost(STR_ERROR_INDUSTRY_IN_USE);
+				}
+
+				/* ...or received. */
+				for (const auto &a : i->accepted) {
+					if (a.last_accepted + EconomyTime::DAYS_IN_ECONOMY_YEAR > TimerGameEconomy::date) return CommandCost(STR_ERROR_INDUSTRY_IN_USE);
+				}
+				break;
+
+			case BIS_ON:
+				/* Allow the industry to be demolished. */
+				break;
+
+			default: NOT_REACHED();
 		}
-		return CommandCost(INVALID_STRING_ID);
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
