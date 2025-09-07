@@ -176,24 +176,24 @@ bool ValParamRoadType(RoadType roadtype)
  */
 RoadTypes AddDateIntroducedRoadTypes(RoadTypes current, TimerGameCalendar::Date date)
 {
+	extern RoadTypeInfo _roadtypes[ROADTYPE_END];
 	RoadTypes rts = current;
 
-	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
-		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
+	for (RoadTypeInfo &rti : _roadtypes) {
 		/* Unused road type. */
-		if (rti->label == 0) continue;
+		if (rti.label == 0) continue;
 
 		/* Not date introduced. */
-		if (!IsInsideMM(rti->introduction_date, 0, CalendarTime::MAX_DATE.base())) continue;
+		if (!IsInsideMM(rti.introduction_date, 0, CalendarTime::MAX_DATE.base())) continue;
 
 		/* Not yet introduced at this date. */
-		if (rti->introduction_date > date) continue;
+		if (rti.introduction_date > date) continue;
 
 		/* Have we introduced all required roadtypes? */
-		RoadTypes required = rti->introduction_required_roadtypes;
+		RoadTypes required = rti.introduction_required_roadtypes;
 		if (!rts.All(required)) continue;
 
-		rts.Set(rti->introduces_roadtypes);
+		rts.Set(rti.introduces_roadtypes);
 	}
 
 	/* When we added roadtypes we need to run this method again; the added
