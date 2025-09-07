@@ -28,12 +28,14 @@ add_files(
     road_land.h
     roadtypes.h
     roadveh_movement.h
+    signal_data.h
     sprites.h
     station_land.h
     strgen_tables.h
     string_colours.h
     town_land.h
     townname.h
+    track_data.h
     track_land.h
     train_sprites.h
     tree_land.h
