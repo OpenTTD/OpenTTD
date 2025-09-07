@@ -11,6 +11,7 @@
 #define RAIL_TYPE_H
 
 #include "core/enum_type.hpp"
+#include "core/flatset_type.hpp"
 #include "core/strong_typedef_type.hpp"
 #include "transport_mapping.hpp"
 
@@ -24,22 +25,21 @@ static const RailTypeLabel RAILTYPE_LABEL_MAGLEV   = 'MGLV';
 /**
  * Enumeration for all possible railtypes.
  */
-enum RailType : uint8_t {
+enum RailType : uint16_t {
 	RAILTYPE_BEGIN    = 0,          ///< Used for iterations
 	RAILTYPE_RAIL     = 0,          ///< Standard non-electric rails
 	RAILTYPE_ELECTRIC = 1,          ///< Electric rails
 	RAILTYPE_MONO     = 2,          ///< Monorail
 	RAILTYPE_MAGLEV   = 3,          ///< Maglev
-	RAILTYPE_END      = 64,         ///< Used for iterations
-	INVALID_RAILTYPE  = 0xFF,       ///< Flag for invalid railtype
+	INVALID_RAILTYPE = UINT16_MAX, ///< Flag for invalid railtype
 };
 
 /** Allow incrementing of Track variables */
 DECLARE_INCREMENT_DECREMENT_OPERATORS(RailType)
 
-using RailTypes = EnumBitSet<RailType, uint64_t>;
+using RailTypes = FlatBitSet<RailType>;
 
-static constexpr RailTypes INVALID_RAILTYPES{UINT64_MAX};
+static const RailTypes INVALID_RAILTYPES{};
 
 /** Mapped rail type. */
 using RailTypeMapping = TransportMapping<RailType, INVALID_RAILTYPE, 64, struct RailTypeMappingTag>;

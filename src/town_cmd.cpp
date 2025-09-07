@@ -965,7 +965,7 @@ RoadType GetTownRoadType()
 	const RoadTypeInfo *best = nullptr;
 	const uint16_t assume_max_speed = 50;
 
-	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
+	for (RoadType rt = ROADTYPE_BEGIN; rt != GetNumRoadTypes(); rt++) {
 		if (RoadTypeIsTram(rt)) continue;
 
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
@@ -997,7 +997,7 @@ RoadType GetTownRoadType()
 static TimerGameCalendar::Date GetTownRoadTypeFirstIntroductionDate()
 {
 	const RoadTypeInfo *best = nullptr;
-	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
+	for (RoadType rt = ROADTYPE_BEGIN; rt != GetNumRoadTypes(); rt++) {
 		if (RoadTypeIsTram(rt)) continue;
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 		if (rti->label == 0) continue; // Unused road type.

@@ -30,7 +30,7 @@ public:
 		return this->compatible_railtypes.Test(rt);
 	}
 
-	RailTypes GetCompatibleRailTypes() const
+	const RailTypes &GetCompatibleRailTypes() const
 	{
 		return this->compatible_railtypes;
 	}

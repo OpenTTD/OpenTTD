@@ -19,7 +19,7 @@ ScriptRailTypeList::ScriptRailTypeList()
 	EnforceDeityOrCompanyModeValid_Void();
 	bool is_deity = ScriptCompanyMode::IsDeity();
 	::CompanyID owner = ScriptObject::GetCompany();
-	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
+	for (RailType rt = RAILTYPE_BEGIN; rt != GetNumRailTypes(); rt++) {
 		if (is_deity || ::HasRailTypeAvail(owner, rt)) this->AddItem(rt);
 	}
 }
