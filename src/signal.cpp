@@ -17,6 +17,8 @@
 #include "company_base.h"
 #include "pbs.h"
 
+#include "table/signal_data.h"
+
 #include "safeguards.h"
 
 
