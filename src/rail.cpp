@@ -211,3 +211,5 @@ RailType GetRailTypeByLabel(RailTypeLabel label, bool allow_alternate_labels)
 	/* No matching label was found, so it is invalid */
 	return INVALID_RAILTYPE;
 }
+
+RailTypeMapping _railtype_mapping;

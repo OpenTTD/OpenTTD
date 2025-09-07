@@ -537,8 +537,11 @@ CommandCost CmdBuildSingleRail(DoCommandFlags flags, TileIndex tile, RailType ra
 						cost.AddCost(num_new_tram_pieces * RoadBuildCost(roadtype_tram));
 					}
 
+					MapRailType map_railtype = _railtype_mapping.AllocateMapType(railtype, flags.Test(DoCommandFlag::Execute));
+					if (map_railtype == RailTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_RAILTYPES};
+
 					if (flags.Test(DoCommandFlag::Execute)) {
-						MakeRoadCrossing(tile, road_owner, tram_owner, _current_company, (track == TRACK_X ? AXIS_Y : AXIS_X), railtype, roadtype_road, roadtype_tram, GetTownIndex(tile));
+						MakeRoadCrossing(tile, road_owner, tram_owner, _current_company, (track == TRACK_X ? AXIS_Y : AXIS_X), map_railtype, roadtype_road, roadtype_tram, GetTownIndex(tile));
 						UpdateLevelCrossing(tile, false);
 						MarkDirtyAdjacentLevelCrossingTiles(tile, GetCrossingRoadAxis(tile));
 						Company::Get(_current_company)->infrastructure.rail[railtype] += LEVELCROSSING_TRACKBIT_FACTOR;
@@ -579,8 +582,11 @@ CommandCost CmdBuildSingleRail(DoCommandFlags flags, TileIndex tile, RailType ra
 				cost.AddCost(_price[PR_CLEAR_ROUGH]);
 			}
 
+			MapRailType map_railtype = _railtype_mapping.AllocateMapType(railtype, flags.Test(DoCommandFlag::Execute));
+			if (map_railtype == RailTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_RAILTYPES};
+
 			if (flags.Test(DoCommandFlag::Execute)) {
-				MakeRailNormal(tile, _current_company, trackbit, railtype);
+				MakeRailNormal(tile, _current_company, trackbit, map_railtype);
 				if (water_ground) {
 					SetRailGroundType(tile, RAIL_GROUND_WATER);
 					if (IsPossibleDockingTile(tile)) CheckForDockingTile(tile);
@@ -1004,13 +1010,16 @@ CommandCost CmdBuildTrainDepot(DoCommandFlags flags, TileIndex tile, RailType ra
 		if (!Depot::CanAllocateItem()) return CMD_ERROR;
 	}
 
+	MapRailType map_railtype = _railtype_mapping.AllocateMapType(railtype, flags.Test(DoCommandFlag::Execute));
+	if (map_railtype == RailTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_RAILTYPES};
+
 	if (flags.Test(DoCommandFlag::Execute)) {
 		if (rotate_existing_depot) {
 			SetRailDepotExitDirection(tile, dir);
 		} else {
 			Depot *d = new Depot(tile);
 
-			MakeRailDepot(tile, _current_company, d->index, dir, railtype);
+			MakeRailDepot(tile, _current_company, d->index, dir, map_railtype);
 			MakeDefaultName(d);
 
 			Company::Get(_current_company)->infrastructure.rail[railtype]++;
@@ -1549,6 +1558,9 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 	CommandCost error = CommandCost(STR_ERROR_NO_SUITABLE_RAILROAD_TRACK); // by default, there is no track to convert.
 	bool found_convertible_track = false; // whether we actually did convert some track (see bug #7633)
 
+	MapRailType map_railtype = _railtype_mapping.AllocateMapType(totype, flags.Test(DoCommandFlag::Execute));
+	if (map_railtype == RailTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_RAILTYPES};
+
 	std::unique_ptr<TileIterator> iter = TileIterator::Create(area_start, area_end, diagonal);
 	for (; (tile = *iter) != INVALID_TILE; ++(*iter)) {
 		TileType tt = GetTileType(tile);
@@ -1624,7 +1636,7 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 					DirtyCompanyInfrastructureWindows(c->index);
 				}
 
-				SetRailType(tile, totype);
+				SetMapRailType(tile, map_railtype);
 				MarkTileDirtyByTile(tile);
 				/* update power of train on this tile */
 				for (Vehicle *v : VehiclesOnTile(tile)) {
@@ -1703,8 +1715,8 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 					c->infrastructure.rail[totype] += num_pieces;
 					DirtyCompanyInfrastructureWindows(c->index);
 
-					SetRailType(tile, totype);
-					SetRailType(endtile, totype);
+					SetMapRailType(tile, map_railtype);
+					SetMapRailType(endtile, map_railtype);
 
 					for (Vehicle *v : VehiclesOnTile(tile)) {
 						if (v->type == VEH_TRAIN) include(affected_trains, Train::From(v)->First());
