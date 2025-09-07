@@ -72,22 +72,22 @@ void ResetRoadTypes()
 	_roadtypes_tram = {ROADTYPE_TRAM};
 }
 
-void ResolveRoadTypeGUISprites(RoadTypeInfo *rti)
+static void ResolveRoadTypeGUISprites(RoadTypeInfo &rti)
 {
-	SpriteID cursors_base = GetCustomRoadSprite(rti, INVALID_TILE, ROTSG_CURSORS);
+	SpriteID cursors_base = GetCustomRoadSprite(&rti, INVALID_TILE, ROTSG_CURSORS);
 	if (cursors_base != 0) {
-		rti->gui_sprites.build_y_road = cursors_base +  0;
-		rti->gui_sprites.build_x_road = cursors_base +  1;
-		rti->gui_sprites.auto_road    = cursors_base +  2;
-		rti->gui_sprites.build_depot  = cursors_base +  3;
-		rti->gui_sprites.build_tunnel = cursors_base +  4;
-		rti->gui_sprites.convert_road = cursors_base +  5;
-		rti->cursor.road_swne         = cursors_base +  6;
-		rti->cursor.road_nwse         = cursors_base +  7;
-		rti->cursor.autoroad          = cursors_base +  8;
-		rti->cursor.depot             = cursors_base +  9;
-		rti->cursor.tunnel            = cursors_base + 10;
-		rti->cursor.convert_road      = cursors_base + 11;
+		rti.gui_sprites.build_y_road = cursors_base +  0;
+		rti.gui_sprites.build_x_road = cursors_base +  1;
+		rti.gui_sprites.auto_road    = cursors_base +  2;
+		rti.gui_sprites.build_depot  = cursors_base +  3;
+		rti.gui_sprites.build_tunnel = cursors_base +  4;
+		rti.gui_sprites.convert_road = cursors_base +  5;
+		rti.cursor.road_swne         = cursors_base +  6;
+		rti.cursor.road_nwse         = cursors_base +  7;
+		rti.cursor.autoroad          = cursors_base +  8;
+		rti.cursor.depot             = cursors_base +  9;
+		rti.cursor.tunnel            = cursors_base + 10;
+		rti.cursor.convert_road      = cursors_base + 11;
 	}
 }
 
@@ -114,7 +114,7 @@ void InitRoadTypes()
 	for (RoadTypeInfo &rti : _roadtypes) {
 		RoadType rt = rti.Index();
 
-		ResolveRoadTypeGUISprites(&rti);
+		ResolveRoadTypeGUISprites(rti);
 		_roadtypes_hidden_mask.Set(rt, rti.flags.Test(RoadTypeFlag::Hidden));
 
 		if (rti.label == 0) continue;

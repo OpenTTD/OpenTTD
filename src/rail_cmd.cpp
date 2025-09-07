@@ -72,26 +72,26 @@ void ResetRailTypes()
 	_railtypes_hidden_mask = {};
 }
 
-void ResolveRailTypeGUISprites(RailTypeInfo *rti)
+static void ResolveRailTypeGUISprites(RailTypeInfo &rti)
 {
-	SpriteID cursors_base = GetCustomRailSprite(rti, INVALID_TILE, RTSG_CURSORS);
+	SpriteID cursors_base = GetCustomRailSprite(&rti, INVALID_TILE, RTSG_CURSORS);
 	if (cursors_base != 0) {
-		rti->gui_sprites.build_ns_rail = cursors_base +  0;
-		rti->gui_sprites.build_x_rail  = cursors_base +  1;
-		rti->gui_sprites.build_ew_rail = cursors_base +  2;
-		rti->gui_sprites.build_y_rail  = cursors_base +  3;
-		rti->gui_sprites.auto_rail     = cursors_base +  4;
-		rti->gui_sprites.build_depot   = cursors_base +  5;
-		rti->gui_sprites.build_tunnel  = cursors_base +  6;
-		rti->gui_sprites.convert_rail  = cursors_base +  7;
-		rti->cursor.rail_ns   = cursors_base +  8;
-		rti->cursor.rail_swne = cursors_base +  9;
-		rti->cursor.rail_ew   = cursors_base + 10;
-		rti->cursor.rail_nwse = cursors_base + 11;
-		rti->cursor.autorail  = cursors_base + 12;
-		rti->cursor.depot     = cursors_base + 13;
-		rti->cursor.tunnel    = cursors_base + 14;
-		rti->cursor.convert   = cursors_base + 15;
+		rti.gui_sprites.build_ns_rail = cursors_base +  0;
+		rti.gui_sprites.build_x_rail  = cursors_base +  1;
+		rti.gui_sprites.build_ew_rail = cursors_base +  2;
+		rti.gui_sprites.build_y_rail  = cursors_base +  3;
+		rti.gui_sprites.auto_rail     = cursors_base +  4;
+		rti.gui_sprites.build_depot   = cursors_base +  5;
+		rti.gui_sprites.build_tunnel  = cursors_base +  6;
+		rti.gui_sprites.convert_rail  = cursors_base +  7;
+		rti.cursor.rail_ns   = cursors_base +  8;
+		rti.cursor.rail_swne = cursors_base +  9;
+		rti.cursor.rail_ew   = cursors_base + 10;
+		rti.cursor.rail_nwse = cursors_base + 11;
+		rti.cursor.autorail  = cursors_base + 12;
+		rti.cursor.depot     = cursors_base + 13;
+		rti.cursor.tunnel    = cursors_base + 14;
+		rti.cursor.convert   = cursors_base + 15;
 	}
 
 	/* Array of default GUI signal sprite numbers. */
@@ -105,10 +105,10 @@ void ResolveRailTypeGUISprites(RailTypeInfo *rti)
 
 	for (SignalType type = SIGTYPE_BLOCK; type < SIGTYPE_END; type = (SignalType)(type + 1)) {
 		for (SignalVariant var = SIG_ELECTRIC; var <= SIG_SEMAPHORE; var = (SignalVariant)(var + 1)) {
-			SpriteID red   = GetCustomSignalSprite(rti, INVALID_TILE, type, var, SIGNAL_STATE_RED, true);
-			SpriteID green = GetCustomSignalSprite(rti, INVALID_TILE, type, var, SIGNAL_STATE_GREEN, true);
-			rti->gui_sprites.signals[type][var][0] = (red != 0)   ? red + SIGNAL_TO_SOUTH   : _signal_lookup[var][type];
-			rti->gui_sprites.signals[type][var][1] = (green != 0) ? green + SIGNAL_TO_SOUTH : _signal_lookup[var][type] + 1;
+			SpriteID red   = GetCustomSignalSprite(&rti, INVALID_TILE, type, var, SIGNAL_STATE_RED, true);
+			SpriteID green = GetCustomSignalSprite(&rti, INVALID_TILE, type, var, SIGNAL_STATE_GREEN, true);
+			rti.gui_sprites.signals[type][var][0] = (red != 0)   ? red + SIGNAL_TO_SOUTH   : _signal_lookup[var][type];
+			rti.gui_sprites.signals[type][var][1] = (green != 0) ? green + SIGNAL_TO_SOUTH : _signal_lookup[var][type] + 1;
 		}
 	}
 }
@@ -133,7 +133,7 @@ void InitRailTypes()
 	for (RailTypeInfo &rti : _railtypes) {
 		RailType rt = rti.Index();
 
-		ResolveRailTypeGUISprites(&rti);
+		ResolveRailTypeGUISprites(rti);
 		_railtypes_hidden_mask.Set(rt, rti.flags.Test(RailTypeFlag::Hidden));
 
 		if (rti.label == 0) continue;
