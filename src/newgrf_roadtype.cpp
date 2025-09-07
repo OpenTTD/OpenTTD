@@ -222,13 +222,16 @@ void PreloadRoadTypeMaps()
 {
 	_roadtype_mapping.Init();
 	_tramtype_mapping.Init();
-	for (auto it = std::begin(_roadtype_list); it != std::end(_roadtype_list); ++it) {
-		RoadType rt = GetRoadTypeByLabel(it->label);
+	for (const auto &lo : _roadtype_list) {
+		if (lo.label == 0) continue;
+		RoadType rt = GetRoadTypeByLabel(lo.label);
 		if (rt == INVALID_ROADTYPE) continue;
 
 		RoadTramType rtt = GetRoadTramType(rt);
-		if (rtt == RTT_ROAD) _roadtype_mapping.Set(static_cast<MapRoadType>(std::distance(std::begin(_roadtype_list), it)), rt);
-		if (rtt == RTT_TRAM) _tramtype_mapping.Set(static_cast<MapTramType>(std::distance(std::begin(_roadtype_list), it)), rt);
+		if (static_cast<RoadTramType>(lo.subtype) != rtt) continue;
+
+		if (rtt == RTT_ROAD) _roadtype_mapping.Set(static_cast<MapRoadType>(lo.index), rt);
+		if (rtt == RTT_TRAM) _tramtype_mapping.Set(static_cast<MapTramType>(lo.index), rt);
 	}
 }
 
@@ -300,7 +303,7 @@ void ConvertRoadTypes()
 void SetCurrentRoadTypeLabelList()
 {
 	_roadtype_list.clear();
-	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
+	for (RoadType rt = ROADTYPE_BEGIN; rt != GetNumRoadTypes(); rt++) {
 		if (MapRoadType map_roadtype = _roadtype_mapping.GetMappedType(rt); map_roadtype != RoadTypeMapping::INVALID_MAP_TYPE) {
 			_roadtype_list.emplace_back(GetRoadTypeInfo(rt)->label, map_roadtype.base(), GetRoadTramType(rt));
 		}
