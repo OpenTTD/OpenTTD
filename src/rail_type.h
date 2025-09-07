@@ -11,6 +11,8 @@
 #define RAIL_TYPE_H
 
 #include "core/enum_type.hpp"
+#include "core/strong_typedef_type.hpp"
+#include "transport_mapping.hpp"
 
 typedef uint32_t RailTypeLabel;
 
@@ -38,5 +40,12 @@ DECLARE_INCREMENT_DECREMENT_OPERATORS(RailType)
 using RailTypes = EnumBitSet<RailType, uint64_t>;
 
 static constexpr RailTypes INVALID_RAILTYPES{UINT64_MAX};
+
+/** Mapped rail type. */
+using RailTypeMapping = TransportMapping<RailType, INVALID_RAILTYPE, 64, struct RailTypeMappingTag>;
+extern RailTypeMapping _railtype_mapping;
+
+/** Alias for mapped rail type. */
+using MapRailType = RailTypeMapping::MapType;
 
 #endif /* RAIL_TYPE_H */

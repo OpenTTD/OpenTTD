@@ -738,12 +738,12 @@ inline void MakeStation(Tile t, Owner o, StationID sid, StationType st, uint8_t 
  * @param sid the station to which this tile belongs
  * @param a the axis of this tile
  * @param section the StationGfx to be used for this tile
- * @param rt the railtype of this tile
+ * @param map_railtype the map rail type of this tile
  */
-inline void MakeRailStation(Tile t, Owner o, StationID sid, Axis a, uint8_t section, RailType rt)
+inline void MakeRailStation(Tile t, Owner o, StationID sid, Axis a, uint8_t section, MapRailType map_railtype)
 {
 	MakeStation(t, o, sid, StationType::Rail, section + a);
-	SetRailType(t, rt);
+	SetMapRailType(t, map_railtype);
 	SetRailStationReservation(t, false);
 }
 
@@ -754,12 +754,12 @@ inline void MakeRailStation(Tile t, Owner o, StationID sid, Axis a, uint8_t sect
  * @param sid the waypoint to which this tile belongs
  * @param a the axis of this tile
  * @param section the StationGfx to be used for this tile
- * @param rt the railtype of this tile
+ * @param map_railtype the map rail type of this tile
  */
-inline void MakeRailWaypoint(Tile t, Owner o, StationID sid, Axis a, uint8_t section, RailType rt)
+inline void MakeRailWaypoint(Tile t, Owner o, StationID sid, Axis a, uint8_t section, MapRailType map_railtype)
 {
 	MakeStation(t, o, sid, StationType::RailWaypoint, section + a);
-	SetRailType(t, rt);
+	SetMapRailType(t, map_railtype);
 	SetRailStationReservation(t, false);
 }
 

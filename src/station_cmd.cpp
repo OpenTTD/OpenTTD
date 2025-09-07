@@ -1427,6 +1427,9 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 
 	if (!ValParamRailType(rt) || !IsValidAxis(axis)) return CMD_ERROR;
 
+	MapRailType map_railtype = _railtype_mapping.AllocateMapType(rt, flags.Test(DoCommandFlag::Execute));
+	if (map_railtype == RailTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_RAILTYPES};
+
 	/* Check if the given station class is valid */
 	if (static_cast<uint>(spec_class) >= StationClass::GetClassCount()) return CMD_ERROR;
 	const StationClass *cls = StationClass::Get(spec_class);
@@ -1553,7 +1556,7 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 				DeleteAnimatedTile(tile);
 				uint8_t old_specindex = HasStationTileRail(tile) ? GetCustomStationSpecIndex(tile) : 0;
 
-				MakeRailStation(tile, st->owner, st->index, axis, *it, rt);
+				MakeRailStation(tile, st->owner, st->index, axis, *it, map_railtype);
 				/* Free the spec if we overbuild something */
 				DeallocateSpecFromStation(st, old_specindex);
 
@@ -1772,7 +1775,7 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, std::vector<T *> &affected_st
 			uint specindex = GetCustomStationSpecIndex(tile);
 			Track track = GetRailStationTrack(tile);
 			Owner owner = GetTileOwner(tile);
-			RailType rt = GetRailType(tile);
+			MapRailType map_railtype = GetMapRailType(tile);
 			Train *v = nullptr;
 
 			if (HasStationReservation(tile)) {
@@ -1781,11 +1784,11 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, std::vector<T *> &affected_st
 			}
 
 			bool build_rail = keep_rail && !IsStationTileBlocked(tile);
-			if (!build_rail && !IsStationTileBlocked(tile)) Company::Get(owner)->infrastructure.rail[rt]--;
+			if (!build_rail && !IsStationTileBlocked(tile)) Company::Get(owner)->infrastructure.rail[_railtype_mapping.GetType(map_railtype)]--;
 
 			DoClearSquare(tile);
 			DeleteNewGRFInspectWindow(GSF_STATIONS, tile.base());
-			if (build_rail) MakeRailNormal(tile, owner, TrackToTrackBits(track), rt);
+			if (build_rail) MakeRailNormal(tile, owner, TrackToTrackBits(track), map_railtype);
 			Company::Get(owner)->infrastructure.station--;
 			DirtyCompanyInfrastructureWindows(owner);
 

@@ -633,12 +633,12 @@ inline void MakeRoadNormal(Tile t, RoadBits bits, RoadType road_rt, RoadType tra
  * @param tram    New owner of tram tracks.
  * @param rail    New owner of the rail track.
  * @param roaddir Axis of the road.
- * @param rat     New rail type.
+ * @param map_railtype New map rail type.
  * @param road_rt The road roadtype to set for the tile.
  * @param tram_rt The tram roadtype to set for the tile.
  * @param town    Town ID if the road is a town-owned road.
  */
-inline void MakeRoadCrossing(Tile t, Owner road, Owner tram, Owner rail, Axis roaddir, RailType rat, RoadType road_rt, RoadType tram_rt, TownID town)
+inline void MakeRoadCrossing(Tile t, Owner road, Owner tram, Owner rail, Axis roaddir, MapRailType map_railtype, RoadType road_rt, RoadType tram_rt, TownID town)
 {
 	SetTileType(t, MP_ROAD);
 	SetTileOwner(t, rail);
@@ -648,7 +648,7 @@ inline void MakeRoadCrossing(Tile t, Owner road, Owner tram, Owner rail, Axis ro
 	t.m5() = ROAD_TILE_CROSSING << 6 | roaddir;
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = road.base();
-	t.m8() = INVALID_ROADTYPE << 6 | rat;
+	t.m8() = INVALID_ROADTYPE << 6 | map_railtype.base();
 	SetRoadTypes(t, road_rt, tram_rt);
 	SetRoadOwner(t, RTT_TRAM, tram);
 }
