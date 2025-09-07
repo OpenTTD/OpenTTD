@@ -47,14 +47,13 @@ struct RAILChunkHandler : ChunkHandler {
 
 		int index = 0;
 		LabelObject<RailTypeLabel> lo;
-		for (RailType r = RAILTYPE_BEGIN; r != RAILTYPE_END; r++) {
-			const RailTypeInfo *rti = GetRailTypeInfo(r);
-			if (rti->label == 0) continue;
+		for (const RailTypeInfo &rti : GetRailTypeInfo()) {
+			if (rti.label == 0) continue;
 
-			MapRailType map_railtype = _railtype_mapping.GetMappedType(rti->Index());
+			MapRailType map_railtype = _railtype_mapping.GetMappedType(rti.Index());
 			if (map_railtype == RailTypeMapping::INVALID_MAP_TYPE) continue;
 
-			lo.label = rti->label;
+			lo.label = rti.label;
 			lo.index = map_railtype.base();
 
 			SlSetArrayIndex(index++);
@@ -95,24 +94,23 @@ struct ROTTChunkHandler : ChunkHandler {
 
 		int index = 0;
 		LabelObject<RoadTypeLabel> lo;
-		for (RoadType r = ROADTYPE_BEGIN; r != ROADTYPE_END; r++) {
-			const RoadTypeInfo *rti = GetRoadTypeInfo(r);
-			if (rti->label == 0) continue;
+		for (const RoadTypeInfo &rti : GetRoadTypeInfo()) {
+			if (rti.label == 0) continue;
 
-			if (GetRoadTramType(r) == RTT_ROAD) {
-				MapRoadType map_roadtype = _roadtype_mapping.GetMappedType(rti->Index());
+			if (GetRoadTramType(rti.Index()) == RTT_ROAD) {
+				MapRoadType map_roadtype = _roadtype_mapping.GetMappedType(rti.Index());
 				if (map_roadtype == RoadTypeMapping::INVALID_MAP_TYPE) continue;
 
 				lo.index = map_roadtype.base();
 			} else {
-				MapTramType map_tramtype = _tramtype_mapping.GetMappedType(rti->Index());
+				MapTramType map_tramtype = _tramtype_mapping.GetMappedType(rti.Index());
 				if (map_tramtype == TramTypeMapping::INVALID_MAP_TYPE) continue;
 
 				lo.index = map_tramtype.base();
 			}
 
-			lo.label = rti->label;
-			lo.subtype = GetRoadTramType(r);
+			lo.label = rti.label;
+			lo.subtype = GetRoadTramType(rti.Index());
 
 			SlSetArrayIndex(index++);
 			SlObject(&lo, description);
@@ -124,7 +122,7 @@ struct ROTTChunkHandler : ChunkHandler {
 		const std::vector<SaveLoad> slt = SlCompatTableHeader(description, _label_object_sl_compat);
 		bool convert = IsSavegameVersionBefore(SLV_TRANSPORT_TYPE_MAPPING);
 
-		_roadtype_list.reserve(ROADTYPE_END);
+		_roadtype_list.reserve(64);
 
 		LabelObject<RoadTypeLabel> lo;
 

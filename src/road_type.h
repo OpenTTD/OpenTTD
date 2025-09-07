@@ -11,6 +11,7 @@
 #define ROAD_TYPE_H
 
 #include "core/enum_type.hpp"
+#include "core/flatset_type.hpp"
 #include "transport_mapping.hpp"
 
 typedef uint32_t RoadTypeLabel;
@@ -21,16 +22,15 @@ static const RoadTypeLabel ROADTYPE_LABEL_TRAM = 'ELRL';
 /**
  * The different roadtypes we support
  */
-enum RoadType : uint8_t {
+enum RoadType : uint16_t {
 	ROADTYPE_BEGIN   = 0,    ///< Used for iterations
 	ROADTYPE_ROAD    = 0,    ///< Basic road type
 	ROADTYPE_TRAM    = 1,    ///< Trams
-	ROADTYPE_END     = 63,   ///< Used for iterations
-	INVALID_ROADTYPE = 63,   ///< flag for invalid roadtype
+	INVALID_ROADTYPE = UINT16_MAX, ///< flag for invalid roadtype
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(RoadType)
 
-using RoadTypes = EnumBitSet<RoadType, uint64_t>;
+using RoadTypes = FlatBitSet<RoadType>;
 
 /**
  * The different types of road type.
