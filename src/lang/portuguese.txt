@@ -449,7 +449,7 @@ STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opções do Jog
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Definições de IA
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Definições de script de jogo
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Definições NewGRF
-STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Opções da 'sandbox'
+STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Opções de Simulação Livre
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opções de Transparência
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Mostrar nomes de localidades
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Mostrar nomes de estações
@@ -764,7 +764,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Grande magnata
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Magnata do século
 STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}"{STRING}" ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} conquista o estatuto de '{STRING}'!
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} alcança o estatuto de '{STRING}'!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} de {COMPANY} conquista o estatuto de '{STRING}'!
 
 # Smallmap window
@@ -857,13 +857,13 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mensagem
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeiro comboio chega a {STATION}!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeiro autocarro chega a {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeiro camião chega a {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeiro eléctrico de passageiros chega a {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeiro eléctrico de mercadorias chega a {STATION}!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeiro navio chega a {STATION}!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeira aeronave chega a {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeiro comboio chega {G a ao à aos às} {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeiro autocarro chega {G a ao à aos às} {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeiro camião chega {G a ao à aos às} {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeiro eléctrico de passageiros chega {G a ao à aos às} {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeiro eléctrico de mercadorias chega {G a ao à aos às} {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeiro navio chega {G a ao à aos às} {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeira aeronave chega {G a ao à aos às} {STATION}!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Acidente de Comboios!{}{COMMA} pessoa{P "" s} morre{P u ram} na explosão após a colisão!
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Acidente com Veículo Rodoviário!{}Condutor morre na explosão após a colisão com um comboio!
@@ -1035,7 +1035,7 @@ STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraniano
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Novo Rublo Russo
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso Mexicano
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Novo Dólar Taiwanês
-STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi chinês
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :Remimbi chinês
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dólar de Hong Kong
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia Indiana
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia Indonésia
@@ -1660,7 +1660,7 @@ STR_CONFIG_SETTING_STATION_SPREAD                               :Espalhamento da
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Área máxima pela qual uma estação pode estar distribuída. Nota que valores elevados irão abrandar o jogo
 
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Manutenção automática de helicópteros em heliportos: {STRING}
-STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Efectuar manutenção aos helicópteros após cada aterragem, mesmo que não haja hangar no aeroporto
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Efetuar manutenção aos helicópteros após cada aterragem, mesmo que não haja um hangar no aeroporto
 
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Ligar ferramentas de paisagem com as de construção: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Quando se abre a barra de construção para um tipo de transporte, abrir também a barra de terraplanagem
@@ -1681,7 +1681,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Cinza para verm
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Escala de cinza
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Comportamento de deslocação da janela de exibição: {STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportamento na deslocação do mapa. As opções de "posição do rato bloqueada" não funcionam em todos os sistemas, tais como versões baseadas na web, ecrãs sensíveis ao toque, Linux com Wayland, e outros.
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportamento na deslocação do mapa. As opções de "posição do rato bloqueada" não funcionam em todos os sistemas, tais como versões web, com ecrã táctil, Wayland em Linux e outros.
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Mover janela de exibição com Botão Direito Rato, posição do rato bloqueada
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Mover mapa com Botão Direito Rato, posição do rato bloqueada
@@ -2032,7 +2032,7 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Quadrático (or
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linear
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Criação de árvores no decorrer do jogo: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controlar o aparecimento aleatório de árvores durante o jogo. Isto poderá afectar indústrias que dependem do crescimento de árvores, como as madeireiras
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controlar o crescimento espontâneo de novas árvores durante o jogo. Isto poderá afetar indústrias que dependem de árvores, como as serrações
 ###length 4
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Crescer mas não espalhar {RED}(inutiliza a serração)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Crescer mas espalhar apenas nas florestas tropicais
@@ -2093,7 +2093,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Tamanho relativ
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Atualizar o gráfico de distribuição a cada {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tempo de intervalo entre recalculos subsequentes do gráfico de ligações. Cada recalculo calcula os planos para um componente do gráfico. Isso significa que um valor X para esta configuração não significa que todo o gráfico será atualizado a cada X segundos. Apenas algum componente será. Quanto mais curto escolher, mais tempo de CPU será necessário para calcular. Quanto mais tempo for definido, mais tempo levará até que a distribuição de carga inicie nas novas rotas
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Usar {STRING} para recalcular o gráfico de distribuição
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tempo gasto para cada recalculo de um componente de gráfico de ligação. Quando um recalculo é iniciado, um encadeamento é gerado e pode ser executado nesse número de segundos. Quanto mais curto você definir, mais provável será que o encadeamento não seja concluído quando deveria. Então o jogo para até que aconteça ("lag"). Quanto mais tempo você definir, mais tempo levará para a distribuição ser atualizada quando as rotas mudarem
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tempo gasto para cada recalculo de um componente de gráfico de ligação. Quando um recalculo é iniciado, um encadeamento é gerado e pode ser executado nesse número de segundos. Quanto mais curto você definir, mais provável será que o encadeamento não seja concluído quando deveria. Então o jogo para até que possa continuar. Quanto mais tempo você definir, mais tempo levará para a distribuição ser atualizada quando as rotas mudarem
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modo de distribuição para os passageiros: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simétrico" significa que aproximadamente o mesmo numero de passageiros irá de uma estação A para uma estação B e de B para A. "Assimétrico" significa que um numero arbitrário de passageiros poderá seguir em qualquer direção. "Manual" significa que nenhuma distribuição automática terá lugar para passageiros
@@ -2284,7 +2284,7 @@ STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Reportar
 STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Comunidade
 
 # Cheat window
-STR_CHEATS                                                      :{WHITE}Opções da 'sandbox'
+STR_CHEATS                                                      :{WHITE}Opções de Simulação Livre
 STR_CHEAT_MONEY                                                 :{LTBLUE}Aumentar dinheiro em {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jogar como a empresa: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Escavadora mágica (remove indústrias, objetos imóveis): {ORANGE}{STRING}
@@ -3759,7 +3759,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Subornar a autoridade local para aumentar a sua avaliação e anular o direito de transporte exclusivo da concorrência, correndo o risco de uma penalidade severa se for apanhado.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
 
 # Goal window
-STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Objectivos
+STR_GOALS_CAPTION                                               :{WHITE}Objetivos de {COMPANY}
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Objetivos globais
 STR_GOALS_SPECTATOR                                             :Objectivos Globais
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Global
@@ -3936,7 +3936,7 @@ STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Navios
 STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}Infraestrutura
 STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Comboios
 STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Veículos Rodoviários
-STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Aeronave
+STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Aeronaves
 STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Navios
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Juros do Empréstimo
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Outros
@@ -4472,26 +4472,26 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Ação a
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}A carregar / descarregar
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}A partir
-STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}Em espera por desagrupar
+STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}Em espera para desagrupar
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Acidentado!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Avariado
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Parado
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}{VELOCITY} - A parar
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Sem energia
-STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Esperando por caminho livre
+STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}A esperar por caminho livre
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Longe de mais do próximo destino
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - Dirige-se para {G 0 "" "o " "a " "os " "as "}{0:STATION}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - Sem ordens
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - Dirige-se para {G 0 "" "o " "a " "os " "as "}{0:WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - Dirige-se para {G 0 "" "o " "a " "os " "as "}{0:DEPOT}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - Manutenção {G 0 em no na nos nas} {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - Efetuar manutenção {G 0 em no na nos nas} {0:DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - Desagrupar e efetuar manutenção {G 0 em no na nos nas} {0:DEPOT}
 
-STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{1:VELOCITY} - Não é possível chegar a {0:STATION}
-STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{1:VELOCITY} - Não é possível chegar a {0:WAYPOINT}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELOCITY} - Não é possível chegar a {0:DEPOT}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - Não é possível chegar a {0:DEPOT}
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{1:VELOCITY} - Não é possível chegar {G 0 a ao à aos às} {0:STATION}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{1:VELOCITY} - Não é possível chegar {G 0 a ao à aos às} {0:WAYPOINT}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELOCITY} - Não é possível chegar {G 0 a ao à aos às} {0:DEPOT}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - Não é possível chegar {G 0 a ao à aos às} {0:DEPOT}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Parou
@@ -4980,7 +4980,7 @@ STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Impossível esc
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Falha ao verificar integridade de dados
 STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :Salvar o jogo é feito com uma versão modificada
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<indisponível>
-STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}O jogo foi salvo numa versão sem suporte para eléctricos. Todos os elétricos foram removidos.
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}O jogo foi guardado numa versão sem suporte para elétricos. Todos os elétricos foram removidos.
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Geração do mapa cancelada...{}{}... não existem locais adequados para localidades
