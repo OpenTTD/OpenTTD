@@ -1604,10 +1604,11 @@ struct CompanyInfrastructureWindow : Window
 			this->list.emplace_back(InfrastructureItemType::Header, STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT);
 
 			for (const RailType &rt : _sorted_railtypes) {
-				if (c->infrastructure.rail[rt] == 0) continue;
-				Money monthly_cost = RailMaintenanceCost(rt, c->infrastructure.rail[rt], rail_total);
+				auto it = c->infrastructure.rail.find(rt);
+				if (it == std::end(c->infrastructure.rail) || it->second == 0) continue;
+				Money monthly_cost = RailMaintenanceCost(rt, it->second, rail_total);
 				total_monthly_cost += monthly_cost;
-				this->list.emplace_back(InfrastructureItemType::Value, GetRailTypeInfo(rt)->strings.name, c->infrastructure.rail[rt], monthly_cost);
+				this->list.emplace_back(InfrastructureItemType::Value, GetRailTypeInfo(rt)->strings.name, it->second, monthly_cost);
 			}
 
 			if (c->infrastructure.signal > 0) {
@@ -1624,10 +1625,11 @@ struct CompanyInfrastructureWindow : Window
 
 			for (const RoadType &rt : _sorted_roadtypes) {
 				if (!RoadTypeIsRoad(rt)) continue;
-				if (c->infrastructure.road[rt] == 0) continue;
-				Money monthly_cost = RoadMaintenanceCost(rt, c->infrastructure.road[rt], road_total);
+				auto it = c->infrastructure.road.find(rt);
+				if (it == std::end(c->infrastructure.road) || it->second == 0) continue;
+				Money monthly_cost = RoadMaintenanceCost(rt, it->second, road_total);
 				total_monthly_cost += monthly_cost;
-				this->list.emplace_back(InfrastructureItemType::Value, GetRoadTypeInfo(rt)->strings.name, c->infrastructure.road[rt], monthly_cost);
+				this->list.emplace_back(InfrastructureItemType::Value, GetRoadTypeInfo(rt)->strings.name, it->second, monthly_cost);
 			}
 		}
 
@@ -1638,10 +1640,11 @@ struct CompanyInfrastructureWindow : Window
 
 			for (const RoadType &rt : _sorted_roadtypes) {
 				if (!RoadTypeIsTram(rt)) continue;
-				if (c->infrastructure.road[rt] == 0) continue;
-				Money monthly_cost = RoadMaintenanceCost(rt, c->infrastructure.road[rt], tram_total);
+				auto it = c->infrastructure.road.find(rt);
+				if (it == std::end(c->infrastructure.road) || it->second == 0) continue;
+				Money monthly_cost = RoadMaintenanceCost(rt, it->second, tram_total);
 				total_monthly_cost += monthly_cost;
-				this->list.emplace_back(InfrastructureItemType::Value, GetRoadTypeInfo(rt)->strings.name, c->infrastructure.road[rt], monthly_cost);
+				this->list.emplace_back(InfrastructureItemType::Value, GetRoadTypeInfo(rt)->strings.name, it->second, monthly_cost);
 			}
 		}
 
@@ -2072,8 +2075,7 @@ struct CompanyWindow : Window
 			y += GetCharacterHeight(FS_NORMAL);
 		}
 
-		/* GetRoadTotal() skips tram pieces, but we actually want road and tram here. */
-		uint road_pieces = std::accumulate(std::begin(c->infrastructure.road), std::end(c->infrastructure.road), 0U);
+		uint road_pieces = c->infrastructure.GetRoadTotal() + c->infrastructure.GetTramTotal();
 		if (road_pieces != 0) {
 			DrawString(r.left, r.right, y, GetString(STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD, road_pieces));
 			y += GetCharacterHeight(FS_NORMAL);

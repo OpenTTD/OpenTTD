@@ -30,8 +30,8 @@ struct CompanyEconomyEntry {
 };
 
 struct CompanyInfrastructure {
-	std::array<uint32_t, RAILTYPE_END> rail{}; ///< Count of company owned track bits for each rail type.
-	std::array<uint32_t, ROADTYPE_END> road{}; ///< Count of company owned track bits for each road type.
+	std::map<RailType, uint32_t> rail{}; ///< Count of company owned track bits for each rail type.
+	std::map<RoadType, uint32_t> road{}; ///< Count of company owned track bits for each road type.
 	uint32_t signal = 0; ///< Count of company owned signals.
 	uint32_t water = 0; ///< Count of company owned track bits for canals.
 	uint32_t station = 0; ///< Count of company owned station tiles.
@@ -39,16 +39,23 @@ struct CompanyInfrastructure {
 
 	auto operator<=>(const CompanyInfrastructure &) const = default;
 
-	/** Get total sum of all owned track bits. */
-	uint32_t GetRailTotal() const
-	{
-		return std::accumulate(std::begin(this->rail), std::end(this->rail), 0U);
-	}
-
+	uint32_t GetRailTotal() const;
 	uint32_t GetRoadTramTotal(RoadTramType rtt) const;
 
 	inline uint32_t GetRoadTotal() const { return GetRoadTramTotal(RTT_ROAD); }
 	inline uint32_t GetTramTotal() const { return GetRoadTramTotal(RTT_TRAM); }
+
+	inline uint32_t GetRailCount(RailType railtype) const
+	{
+		auto it = this->rail.find(railtype);
+		return it == std::end(this->rail) ? 0 : it->second;
+	}
+
+	inline uint32_t GetRoadCount(RoadType roadtype) const
+	{
+		auto it = this->road.find(roadtype);
+		return it == std::end(this->road) ? 0 : it->second;
+	}
 };
 
 class FreeUnitIDGenerator {
