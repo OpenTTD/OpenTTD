@@ -5294,6 +5294,7 @@ STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :Can't remove si
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :Can't convert signals here...
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :there is no railway track
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :there are no signals
+STR_ERROR_TOO_MANY_RAILTYPES                                    :too many rail types in use
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :Can't convert rail type here...
 

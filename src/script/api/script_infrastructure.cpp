@@ -79,6 +79,7 @@
 	::RoadType rt = static_cast<::RoadType>(roadtype);
 	company = ScriptCompany::ResolveCompanyID(company);
 	if (company == ScriptCompany::COMPANY_INVALID || rt >= ROADTYPE_END || !_settings_game.economy.infrastructure_maintenance) return 0;
+	if (company == ScriptCompany::COMPANY_INVALID || rt >= ROADTYPE_END || !_settings_game.economy.infrastructure_maintenance) return 0;
 
 	const ::Company *c = ::Company::Get(ScriptCompany::FromScriptCompanyID(company));
 	return ::RoadMaintenanceCost(rt, c->infrastructure.GetRoadCount(rt), RoadTypeIsRoad(rt) ? c->infrastructure.GetRoadTotal() : c->infrastructure.GetTramTotal());
