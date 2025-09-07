@@ -272,8 +272,7 @@ struct RailTypeMapSpriteGroupHandler : MapSpriteGroupHandler {
 		RailType railtype = local_id < std::size(type_map) ? type_map[local_id] : INVALID_RAILTYPE;
 		if (railtype == INVALID_RAILTYPE) return;
 
-		extern RailTypeInfo _railtypes[RAILTYPE_END];
-		RailTypeInfo &rti = _railtypes[railtype];
+		RailTypeInfo &rti = GetRailTypeInfo()[railtype];
 		rti.grffile[cid] = _cur_gps.grffile;
 		rti.group[cid] = group;
 	}
@@ -291,8 +290,7 @@ struct RoadTypeMapSpriteGroupHandler : MapSpriteGroupHandler {
 		RoadType roadtype = local_id < std::size(type_map) ? type_map[local_id] : INVALID_ROADTYPE;
 		if (roadtype == INVALID_ROADTYPE) return;
 
-		extern RoadTypeInfo _roadtypes[ROADTYPE_END];
-		RoadTypeInfo &rti = _roadtypes[roadtype];
+		RoadTypeInfo &rti = GetRoadTypeInfo()[roadtype];
 		rti.grffile[cid] = _cur_gps.grffile;
 		rti.group[cid] = group;
 	}

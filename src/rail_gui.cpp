@@ -1946,7 +1946,7 @@ static void SetDefaultRailGui()
 	switch (_settings_client.gui.default_rail_type) {
 		case 2: {
 			/* Find the most used rail type */
-			std::array<uint, RAILTYPE_END> count{};
+			std::vector<uint> count(GetNumRailTypes());
 			for (const auto t : Map::Iterate()) {
 				if (IsTileType(t, MP_RAILWAY) || IsLevelCrossingTile(t) || HasStationTileRail(t) ||
 						(IsTileType(t, MP_TUNNELBRIDGE) && GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL)) {

@@ -51,7 +51,7 @@
 /** Helper type for lists/vectors of road vehicles */
 typedef std::vector<RoadVehicle *> RoadVehicleList;
 
-RoadTypeInfo _roadtypes[ROADTYPE_END];
+std::vector<RoadTypeInfo> _roadtypes;
 std::vector<RoadType> _sorted_roadtypes; ///< Sorted list of road types.
 RoadTypes _roadtypes_hidden_mask; ///< Bitset of hidden roadtypes.
 RoadTypes _roadtypes_road; ///< Bitset of road roadtypes.
@@ -62,10 +62,8 @@ RoadTypes _roadtypes_tram; ///< Bitset of tram roadtypes.
  */
 void ResetRoadTypes()
 {
-	static_assert(std::size(_original_roadtypes) <= std::size(_roadtypes));
-
-	auto insert = std::copy(std::begin(_original_roadtypes), std::end(_original_roadtypes), std::begin(_roadtypes));
-	std::fill(insert, std::end(_roadtypes), RoadTypeInfo{});
+	_roadtypes.clear();
+	std::copy(std::begin(_original_roadtypes), std::end(_original_roadtypes), std::back_inserter(_roadtypes));
 
 	_roadtypes_hidden_mask = {};
 	_roadtypes_road = {ROADTYPE_ROAD};
@@ -129,13 +127,12 @@ void InitRoadTypes()
 RoadType AllocateRoadType(RoadTypeLabel label, RoadTramType rtt)
 {
 	auto it = std::ranges::find(_roadtypes, 0, &RoadTypeInfo::label);
-	if (it == std::end(_roadtypes)) return INVALID_ROADTYPE;
+	if (it == std::end(_roadtypes)) it = _roadtypes.emplace(it, _original_roadtypes[(rtt == RTT_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD]);
 
 	RoadTypeInfo &rti = *it;
 	RoadType rt = rti.Index();
 
-	/* Set up new road type based on default tram or road. */
-	rti = _original_roadtypes[(rtt == RTT_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD];
+	/* Set up new road type */
 	rti.label = label;
 	rti.alternate_labels.clear();
 	rti.flags = {};

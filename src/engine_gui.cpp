@@ -48,7 +48,7 @@ StringID GetEngineCategoryName(EngineID engine)
 		case VEH_SHIP:              return STR_ENGINE_PREVIEW_SHIP;
 		case VEH_TRAIN:
 			assert(e->VehInfo<RailVehicleInfo>().railtypes.Any());
-			return GetRailTypeInfo(e->VehInfo<RailVehicleInfo>().railtypes.GetNthSetBit(0).value())->strings.new_loco;
+			return GetRailTypeInfo(*e->VehInfo<RailVehicleInfo>().railtypes.begin())->strings.new_loco;
 	}
 }
 
@@ -182,7 +182,7 @@ static std::string GetTrainEngineInfoString(const Engine &e)
 	res << GetString(STR_ENGINE_PREVIEW_COST_WEIGHT, e.GetCost(), e.GetDisplayWeight());
 	res << '\n';
 
-	if (e.VehInfo<RailVehicleInfo>().railtypes.Count() > 1) {
+	if (e.VehInfo<RailVehicleInfo>().railtypes.size() > 1) {
 		std::string railtypes{};
 		std::string_view list_separator = GetListSeparator();
 

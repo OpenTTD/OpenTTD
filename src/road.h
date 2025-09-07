@@ -186,7 +186,7 @@ public:
  * @param rtt RoadTramType.
  * @return Mask of road types for RoadTramType.
  */
-inline RoadTypes GetMaskForRoadTramType(RoadTramType rtt)
+inline const RoadTypes &GetMaskForRoadTramType(RoadTramType rtt)
 {
 	extern RoadTypes _roadtypes_road;
 	extern RoadTypes _roadtypes_tram;
@@ -209,8 +209,20 @@ inline RoadTramType GetRoadTramType(RoadType roadtype)
 }
 
 inline RoadTramType OtherRoadTramType(RoadTramType rtt)
+
 {
 	return rtt == RTT_ROAD ? RTT_TRAM : RTT_ROAD;
+}
+
+inline std::span<RoadTypeInfo> GetRoadTypeInfo()
+{
+	extern std::vector<RoadTypeInfo> _roadtypes;
+	return _roadtypes;
+}
+
+inline size_t GetNumRoadTypes()
+{
+	return std::size(GetRoadTypeInfo());
 }
 
 /**
@@ -220,9 +232,8 @@ inline RoadTramType OtherRoadTramType(RoadTramType rtt)
  */
 inline const RoadTypeInfo *GetRoadTypeInfo(RoadType roadtype)
 {
-	extern RoadTypeInfo _roadtypes[ROADTYPE_END];
-	assert(roadtype < ROADTYPE_END);
-	return &_roadtypes[roadtype];
+	assert(roadtype < GetNumRoadTypes());
+	return &GetRoadTypeInfo()[roadtype];
 }
 
 /**
@@ -245,7 +256,7 @@ inline bool HasPowerOnRoad(RoadType enginetype, RoadType tiletype)
  */
 inline Money RoadBuildCost(RoadType roadtype)
 {
-	assert(roadtype < ROADTYPE_END);
+	assert(roadtype < GetNumRoadTypes());
 	return (_price[PR_BUILD_ROAD] * GetRoadTypeInfo(roadtype)->cost_multiplier) >> 3;
 }
 
@@ -256,7 +267,7 @@ inline Money RoadBuildCost(RoadType roadtype)
  */
 inline Money RoadClearCost(RoadType roadtype)
 {
-	assert(roadtype < ROADTYPE_END);
+	assert(roadtype < GetNumRoadTypes());
 
 	/* Flat fee for removing road. */
 	if (RoadTypeIsRoad(roadtype)) return _price[PR_CLEAR_ROAD];
@@ -288,7 +299,7 @@ inline Money RoadConvertCost(RoadType from, RoadType to)
  */
 inline bool RoadNoLevelCrossing(RoadType roadtype)
 {
-	assert(roadtype < ROADTYPE_END);
+	assert(roadtype < GetNumRoadTypes());
 	return GetRoadTypeInfo(roadtype)->flags.Test(RoadTypeFlag::NoLevelCrossing);
 }
 

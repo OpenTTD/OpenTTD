@@ -86,7 +86,11 @@ public:
 
 		/* Check for an unused entry. */
 		it = std::ranges::find(this->map, INVALID_TYPE);
-		if (it == std::end(this->map)) return INVALID_MAP_TYPE;
+		if (it == std::end(this->map)) {
+			/* Didn't find an unused slot, use slower path to find a free map type. */
+			it = this->FindUnusedMapType();
+			if (it == std::end(this->map)) return INVALID_MAP_TYPE;
+		}
 
 		if (exec) *it = type;
 
@@ -101,6 +105,8 @@ private:
 	{
 		return static_cast<MapType>(iter - std::begin(this->map));
 	}
+
+	MapStorage::iterator FindUnusedMapType();
 };
 
 #endif /* TRANSPORT_MAPPING_HPP */

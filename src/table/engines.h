@@ -410,7 +410,7 @@ static constexpr EngineInfo _orig_engine_info[] = {
 #define RC_E PR_RUNNING_TRAIN_ELECTRIC
 #define RC_W INVALID_PRICE
 
-static constexpr RailVehicleInfo _orig_rail_vehicle_info[] = {
+static const RailVehicleInfo _orig_rail_vehicle_info[] = {
 	/*   image_index  max_speed          running_cost      engclass
 	 *   |  type      |        power       |  running_cost_class
 	 *   |  |    cost_factor   |    weight |  |      capacity
