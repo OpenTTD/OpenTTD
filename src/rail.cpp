@@ -101,24 +101,24 @@ bool ValParamRailType(const RailType rail)
  */
 RailTypes AddDateIntroducedRailTypes(RailTypes current, TimerGameCalendar::Date date)
 {
+	extern RailTypeInfo _railtypes[RAILTYPE_END];
 	RailTypes rts = current;
 
-	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
-		const RailTypeInfo *rti = GetRailTypeInfo(rt);
+	for (RailTypeInfo &rti : _railtypes) {
 		/* Unused rail type. */
-		if (rti->label == 0) continue;
+		if (rti.label == 0) continue;
 
 		/* Not date introduced. */
-		if (!IsInsideMM(rti->introduction_date, 0, CalendarTime::MAX_DATE.base())) continue;
+		if (!IsInsideMM(rti.introduction_date, 0, CalendarTime::MAX_DATE.base())) continue;
 
 		/* Not yet introduced at this date. */
-		if (rti->introduction_date > date) continue;
+		if (rti.introduction_date > date) continue;
 
 		/* Have we introduced all required railtypes? */
-		RailTypes required = rti->introduction_required_railtypes;
+		RailTypes required = rti.introduction_required_railtypes;
 		if (!rts.All(required)) continue;
 
-		rts.Set(rti->introduces_railtypes);
+		rts.Set(rti.introduces_railtypes);
 	}
 
 	/* When we added railtypes we need to run this method again; the added
