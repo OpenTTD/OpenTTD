@@ -919,6 +919,15 @@ static const BridgeableTileInfo _station_bridgeable_info_waypoint[] = {
 	{2, {BridgePillarFlag::EdgeNW, BridgePillarFlag::EdgeSE}}, // Y-axis waypoint.
 };
 
+static const BridgeableTileInfo _station_bridgeable_info_dock[] = {
+	{2, {}}, // Northeast slope.
+	{2, {}}, // Southeast slope.
+	{2, {}}, // Southwest slope.
+	{2, {}}, // Northwest slope.
+	{3, {}}, // X-axis part on water.
+	{3, {}}, // Y-axis part on water.
+};
+
 static const BridgeableTileInfo _station_bridgeable_info_buoy[] = {
 	{1, {}},
 };
@@ -947,7 +956,7 @@ static const std::array<std::span<const BridgeableTileInfo>, to_underlying(Stati
 	_station_bridgeable_info_roadstop, // Truck
 	_station_bridgeable_info_roadstop, // Bus
 	{}, // Oilrig
-	{}, // Dock
+	_station_bridgeable_info_dock, // Dock
 	_station_bridgeable_info_buoy, // Buoy
 	_station_bridgeable_info_waypoint, // RailWaypoint
 	_station_bridgeable_info_road_waypoint, // RoadWaypoint
