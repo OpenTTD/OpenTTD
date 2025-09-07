@@ -182,6 +182,20 @@ static std::string GetTrainEngineInfoString(const Engine &e)
 	res << GetString(STR_ENGINE_PREVIEW_COST_WEIGHT, e.GetCost(), e.GetDisplayWeight());
 	res << '\n';
 
+	if (e.u.rail.railtypes.Count() > 1) {
+		std::string railtypes{};
+		std::string_view list_separator = GetListSeparator();
+
+		for (const auto &rt : _sorted_railtypes) {
+			if (!e.u.rail.railtypes.Test(rt)) continue;
+
+			if (!railtypes.empty()) railtypes += list_separator;
+			AppendStringInPlace(railtypes, GetRailTypeInfo(rt)->strings.name);
+		}
+		res << GetString(STR_ENGINE_PREVIEW_RAILTYPES, railtypes);
+		res << '\n';
+	}
+
 	bool is_maglev = true;
 	for (RailType rt : e.u.rail.railtypes) {
 		is_maglev &= GetRailTypeInfo(rt)->acceleration_type == VehicleAccelerationModel::Maglev;
