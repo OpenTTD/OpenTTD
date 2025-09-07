@@ -4183,6 +4183,7 @@ STR_PURCHASE_INFO_ALL_BUT                                       :All but {CARGO_
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Tractive Effort: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Range: {GOLD}{COMMA} tiles
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Aircraft type: {GOLD}{STRING}
+STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Rail types: {GOLD}{RAW_STRING}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :All cargo types
@@ -4366,6 +4367,7 @@ STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Running Cost: {
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Running Cost: {CURRENCY_LONG}/period
 STR_ENGINE_PREVIEW_CAPACITY                                     :Capacity: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :Capacity: {CARGO_LONG}, {CARGO_LONG}
+STR_ENGINE_PREVIEW_RAILTYPES                                    :Rail types: {RAW_STRING}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Replace {STRING} - {STRING1}

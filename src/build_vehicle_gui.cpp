@@ -632,6 +632,19 @@ static int DrawRailEnginePurchaseInfo(int left, int right, int y, EngineID engin
 	}
 	y += GetCharacterHeight(FS_NORMAL);
 
+	/* Supported rail types */
+	std::string railtypes{};
+	std::string_view list_separator = GetListSeparator();
+
+	for (const auto &rt : _sorted_railtypes) {
+		if (!rvi->railtypes.Test(rt)) continue;
+
+		if (!railtypes.empty()) railtypes += list_separator;
+		AppendStringInPlace(railtypes, GetRailTypeInfo(rt)->strings.name);
+	}
+	DrawString(left, right, y, GetString(STR_PURCHASE_INFO_RAILTYPES, railtypes));
+	y += GetCharacterHeight(FS_NORMAL);
+
 	/* Max speed - Engine power */
 	DrawString(left, right, y, GetString(STR_PURCHASE_INFO_SPEED_POWER, PackVelocity(e->GetDisplayMaxSpeed(), e->type), e->GetPower()));
 	y += GetCharacterHeight(FS_NORMAL);
