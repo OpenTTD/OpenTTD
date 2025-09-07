@@ -13,6 +13,7 @@
 #include "road_type.h"
 #include "gfx_type.h"
 #include "core/bitmath_func.hpp"
+#include "core/flatset_type.hpp"
 #include "strings_type.h"
 #include "timer/timer_game_calendar.h"
 #include "core/enum_type.hpp"
@@ -137,7 +138,7 @@ public:
 	/**
 	 * Road type labels this type provides in addition to the main label.
 	 */
-	std::vector<RoadTypeLabel> alternate_labels;
+	FlatSet<RoadTypeLabel> alternate_labels;
 
 	/**
 	 * Colour on mini-map

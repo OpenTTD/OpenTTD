@@ -15,6 +15,7 @@
 #include "gfx_type.h"
 #include "core/bitmath_func.hpp"
 #include "core/enum_type.hpp"
+#include "core/flatset_type.hpp"
 #include "economy_func.h"
 #include "slope_type.h"
 #include "strings_type.h"
@@ -227,7 +228,7 @@ public:
 	/**
 	 * Rail type labels this type provides in addition to the main label.
 	 */
-	std::vector<RailTypeLabel> alternate_labels;
+	FlatSet<RailTypeLabel> alternate_labels;
 
 	/**
 	 * Colour on mini-map
