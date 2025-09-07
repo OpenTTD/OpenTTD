@@ -1290,14 +1290,27 @@ int CompanyServiceInterval(const Company *c, VehicleType type)
 }
 
 /**
+ * Get total sum of all owned track bits.
+ * @return Combined total rail track bits.
+ */
+uint32_t CompanyInfrastructure::GetRailTotal() const
+{
+	uint32_t total = 0;
+	for (const auto &[_, count] : this->rail) {
+		total += count;
+	}
+	return total;
+}
+
+/**
  * Get total sum of all owned road bits.
  * @return Combined total road road bits.
  */
 uint32_t CompanyInfrastructure::GetRoadTotal() const
 {
 	uint32_t total = 0;
-	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
-		if (RoadTypeIsRoad(rt)) total += this->road[rt];
+	for (const auto &[roadtype, count] : this->road) {
+		if (RoadTypeIsRoad(roadtype)) total += count;
 	}
 	return total;
 }
@@ -1309,8 +1322,8 @@ uint32_t CompanyInfrastructure::GetRoadTotal() const
 uint32_t CompanyInfrastructure::GetTramTotal() const
 {
 	uint32_t total = 0;
-	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
-		if (RoadTypeIsTram(rt)) total += this->road[rt];
+	for (const auto &[roadtype, count] : this->road) {
+		if (RoadTypeIsTram(roadtype)) total += count;
 	}
 	return total;
 }
