@@ -655,14 +655,14 @@ static void CompaniesGenStatistics()
 
 			CommandCost cost(EXPENSES_PROPERTY);
 			uint32_t rail_total = c->infrastructure.GetRailTotal();
-			for (RailType rt = RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) {
-				if (c->infrastructure.rail[rt] != 0) cost.AddCost(RailMaintenanceCost(rt, c->infrastructure.rail[rt], rail_total));
+			for (const auto &[railtype, count] : c->infrastructure.rail) {
+				if (count != 0) cost.AddCost(RailMaintenanceCost(railtype, count, rail_total));
 			}
 			cost.AddCost(SignalMaintenanceCost(c->infrastructure.signal));
 			uint32_t road_total = c->infrastructure.GetRoadTotal();
 			uint32_t tram_total = c->infrastructure.GetTramTotal();
-			for (RoadType rt = ROADTYPE_BEGIN; rt < ROADTYPE_END; rt++) {
-				if (c->infrastructure.road[rt] != 0) cost.AddCost(RoadMaintenanceCost(rt, c->infrastructure.road[rt], RoadTypeIsRoad(rt) ? road_total : tram_total));
+			for (const auto &[roadtype, count] : c->infrastructure.road) {
+				if (count != 0) cost.AddCost(RoadMaintenanceCost(roadtype, count, RoadTypeIsRoad(roadtype) ? road_total : tram_total));
 			}
 			cost.AddCost(CanalMaintenanceCost(c->infrastructure.water));
 			cost.AddCost(StationMaintenanceCost(c->infrastructure.station));
