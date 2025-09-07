@@ -154,7 +154,7 @@ RailType GetRailTypeTranslation(uint8_t railtype, const GRFFile *grffile)
 {
 	if (grffile == nullptr || grffile->railtype_list.empty()) {
 		/* No railtype table present. Return railtype as-is (if valid), so it works for original railtypes. */
-		if (railtype >= RAILTYPE_END || GetRailTypeInfo(static_cast<RailType>(railtype))->label == 0) return INVALID_RAILTYPE;
+		if (railtype >= GetNumRailTypes() || GetRailTypeInfo(static_cast<RailType>(railtype))->label == 0) return INVALID_RAILTYPE;
 
 		return static_cast<RailType>(railtype);
 	} else {
@@ -192,11 +192,12 @@ std::vector<LabelObject<RailTypeLabel>> _railtype_list;
 void PreloadRailTypeMaps()
 {
 	_railtype_mapping.Init();
-	for (auto it = std::begin(_railtype_list); it != std::end(_railtype_list); ++it) {
-		RailType rt = GetRailTypeByLabel(it->label);
+	for (const auto &lo : _railtype_list) {
+		if (lo.label == 0) continue;
+		RailType rt = GetRailTypeByLabel(lo.label);
 		if (rt == INVALID_RAILTYPE) continue;
 
-		_railtype_mapping.Set(static_cast<MapRailType>(std::distance(std::begin(_railtype_list), it)), rt);
+		_railtype_mapping.Set(static_cast<MapRailType>(lo.index), rt);
 	}
 }
 
@@ -260,7 +261,7 @@ void ConvertRailTypes()
 void SetCurrentRailTypeLabelList()
 {
 	_railtype_list.clear();
-	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
+	for (RailType rt = RAILTYPE_BEGIN; rt != GetNumRailTypes(); rt++) {
 		if (MapRailType map_railtype = _railtype_mapping.GetMappedType(rt); map_railtype != RailTypeMapping::INVALID_MAP_TYPE) {
 			_railtype_list.emplace_back(GetRailTypeInfo(rt)->label, map_railtype.base(), 0);
 		}

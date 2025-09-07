@@ -43,7 +43,7 @@
 /** Helper type for lists/vectors of trains */
 typedef std::vector<Train *> TrainList;
 
-RailTypeInfo _railtypes[RAILTYPE_END];
+std::vector<RailTypeInfo> _railtypes;
 std::vector<RailType> _sorted_railtypes; ///< Sorted list of rail types.
 RailTypes _railtypes_hidden_mask;
 
@@ -64,10 +64,8 @@ enum SignalOffsets {
  */
 void ResetRailTypes()
 {
-	static_assert(std::size(_original_railtypes) <= std::size(_railtypes));
-
-	auto insert = std::copy(std::begin(_original_railtypes), std::end(_original_railtypes), std::begin(_railtypes));
-	std::fill(insert, std::end(_railtypes), RailTypeInfo{});
+	_railtypes.clear();
+	std::copy(std::begin(_original_railtypes), std::end(_original_railtypes), std::back_inserter(_railtypes));
 
 	_railtypes_hidden_mask = {};
 }
@@ -148,13 +146,12 @@ void InitRailTypes()
 RailType AllocateRailType(RailTypeLabel label)
 {
 	auto it = std::ranges::find(_railtypes, 0, &RailTypeInfo::label);
-	if (it == std::end(_railtypes)) return INVALID_RAILTYPE;
+	if (it == std::end(_railtypes)) it = _railtypes.emplace(it, _original_railtypes[RAILTYPE_RAIL]);
 
 	RailTypeInfo &rti = *it;
 	RailType rt = rti.Index();
 
-	/* Set up new rail type based on default rail. */
-	rti = _original_railtypes[RAILTYPE_RAIL];
+	/* Set up new rail type */
 	rti.label = label;
 	rti.alternate_labels.clear();
 
