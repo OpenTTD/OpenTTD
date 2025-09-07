@@ -264,21 +264,19 @@ RoadTypes GetRoadTypes(bool introduces)
  */
 RoadType GetRoadTypeByLabel(RoadTypeLabel label, bool allow_alternate_labels)
 {
+	extern RoadTypeInfo _roadtypes[ROADTYPE_END];
+
 	if (label == 0) return INVALID_ROADTYPE;
 
-	/* Loop through each road type until the label is found */
-	for (RoadType r = ROADTYPE_BEGIN; r != ROADTYPE_END; r++) {
-		const RoadTypeInfo *rti = GetRoadTypeInfo(r);
-		if (rti->label == label) return r;
+	auto it = std::ranges::find(_roadtypes, label, &RoadTypeInfo::label);
+	if (it == std::end(_roadtypes) && allow_alternate_labels) {
+		/* Test if any road type defines the label as an alternate. */
+		it = std::ranges::find_if(_roadtypes, [label](const RoadTypeInfo &rti) {
+			return std::ranges::find(rti.alternate_labels, label) != rti.alternate_labels.end();
+		});
 	}
 
-	if (allow_alternate_labels) {
-		/* Test if any road type defines the label as an alternate. */
-		for (RoadType r = ROADTYPE_BEGIN; r != ROADTYPE_END; r++) {
-			const RoadTypeInfo *rti = GetRoadTypeInfo(r);
-			if (std::ranges::find(rti->alternate_labels, label) != rti->alternate_labels.end()) return r;
-		}
-	}
+	if (it != std::end(_roadtypes)) return it->Index();
 
 	/* No matching label was found, so it is invalid */
 	return INVALID_ROADTYPE;
