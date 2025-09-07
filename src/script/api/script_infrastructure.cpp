@@ -104,8 +104,9 @@
 		case INFRASTRUCTURE_ROAD: {
 			Money cost;
 			uint32_t road_total = c->infrastructure.GetRoadTotal();
+			uint32_t tram_total = c->infrastructure.GetTramTotal();
 			for (::RoadType rt = ::ROADTYPE_BEGIN; rt != ::ROADTYPE_END; rt++) {
-				cost += RoadMaintenanceCost(rt, c->infrastructure.road[rt], road_total);
+				cost += RoadMaintenanceCost(rt, c->infrastructure.road[rt], RoadTypeIsRoad(rt) ? road_total : tram_total);
 			}
 			return cost;
 		}
