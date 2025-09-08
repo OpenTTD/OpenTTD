@@ -864,7 +864,7 @@ static StringID GetBridgeTooLowMessageForStationType(StationType type)
 		STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP, // Truck
 		STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP, // Bus
 		INVALID_STRING_ID, // Oilrig
-		INVALID_STRING_ID, // Dock
+		STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK, // Dock
 		STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY, // Buoy
 		STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT, // RailWaypoint
 		STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT, // RoadWaypoint
@@ -938,6 +938,21 @@ CommandCost IsRoadStationBridgeAboveOk(TileIndex tile, const RoadStopSpec *spec,
 	TileIndex rampsouth = GetSouthernBridgeEnd(tile);
 	auto bridgeable_info = spec == nullptr ? GetStationBridgeableTileInfo(type) : spec->bridgeable_info;
 	return IsStationBridgeAboveOk(tile, bridgeable_info, type, layout, GetBridgeHeight(rampsouth), STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+}
+
+/**
+ * Test if a dock can be built below a bridge.
+ * @param tile Tile to test.
+ * @param layout Layout piece of station to test.
+ * @return Command result.
+ */
+static CommandCost IsDockBridgeAboveOk(TileIndex tile, StationGfx layout)
+{
+	if (!IsBridgeAbove(tile)) return CommandCost();
+
+	TileIndex rampsouth = GetSouthernBridgeEnd(tile);
+	auto bridgeable_info = GetStationBridgeableTileInfo(StationType::Dock);
+	return IsStationBridgeAboveOk(tile, bridgeable_info, StationType::Dock, layout, GetBridgeHeight(rampsouth), STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 }
 
 /**
@@ -2872,7 +2887,8 @@ CommandCost CmdBuildDock(DoCommandFlags flags, TileIndex tile, StationID station
 	CommandCost ret = CheckIfAuthorityAllowsNewStation(tile, flags);
 	if (ret.Failed()) return ret;
 
-	if (IsBridgeAbove(tile)) return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+	ret = IsDockBridgeAboveOk(tile, to_underlying(direction));
+	if (ret.Failed()) return ret;
 
 	CommandCost cost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_STATION_DOCK]);
 	ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
@@ -2885,7 +2901,8 @@ CommandCost CmdBuildDock(DoCommandFlags flags, TileIndex tile, StationID station
 		return CommandCost(STR_ERROR_SITE_UNSUITABLE);
 	}
 
-	if (IsBridgeAbove(tile_cur)) return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+	ret = IsDockBridgeAboveOk(tile_cur, GFX_DOCK_BASE_WATER_PART + to_underlying(DiagDirToAxis(direction)));
+	if (ret.Failed()) return ret;
 
 	/* Get the water class of the water tile before it is cleared.*/
 	WaterClass wc = GetWaterClass(tile_cur);
