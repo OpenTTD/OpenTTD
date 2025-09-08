@@ -2324,8 +2324,8 @@ STR_LIVERY_DIESEL                                               :Locomotiva Dies
 STR_LIVERY_ELECTRIC                                             :Locomotiva Elétrica
 STR_LIVERY_MONORAIL                                             :Locomotiva Monotrilho
 STR_LIVERY_MAGLEV                                               :Locomotiva Maglev
-STR_LIVERY_DMU                                                  :DMU
-STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_DMU                                                  :Trem-unidade Diesel
+STR_LIVERY_EMU                                                  :Trem-unidade Elétrico
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Vagão de Passageiros (Vapor)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Vagão de Passageiros (Diesel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Vagão de Passageiros (Elétrico)
@@ -4834,10 +4834,10 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Agendado
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Alternar entre esperado e agendado
 
-STR_TIMETABLE_ARRIVAL_DATE                                      :A: {COLOUR}{DATE_TINY}
-STR_TIMETABLE_DEPARTURE_DATE                                    :D: {COLOUR}{DATE_TINY}
-STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :A: {COLOUR}{COMMA} s
-STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :D: {COLOUR}{COMMA} s
+STR_TIMETABLE_ARRIVAL_DATE                                      :C: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE_DATE                                    :P: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :C: {COLOUR}{COMMA} s
+STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :P: {COLOUR}{COMMA} s
 
 
 # Date window (for timetable)
