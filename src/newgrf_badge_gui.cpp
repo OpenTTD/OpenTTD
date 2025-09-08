@@ -205,22 +205,29 @@ public:
 
 	uint Width() const override
 	{
+		if (this->dim.width == 0) return this->TBase::Width();
 		return this->dim.width + WidgetDimensions::scaled.hsep_wide + this->TBase::Width();
 	}
 
 	int OnClick(const Rect &r, const Point &pt) const override
 	{
-		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
-		return this->TBase::OnClick(r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), pt);
+		if (this->dim.width == 0) {
+			return this->TBase::OnClick(r, pt);
+		} else {
+			bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+			return this->TBase::OnClick(r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), pt);
+		}
 	}
 
 	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
 	{
-		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
-
-		DrawBadgeColumn(r.WithWidth(this->dim.width, rtl), 0, *this->gui_classes, this->badges, this->feature, this->introduction_date, PAL_NONE);
-
-		this->TBase::Draw(full, r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), sel, click_result, bg_colour);
+		if (this->dim.width == 0) {
+			this->TBase::Draw(full, r, sel, click_result, bg_colour);
+		} else {
+			bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+			DrawBadgeColumn(r.WithWidth(this->dim.width, rtl), 0, *this->gui_classes, this->badges, this->feature, this->introduction_date, PAL_NONE);
+			this->TBase::Draw(full, r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), sel, click_result, bg_colour);
+		}
 	}
 
 private:
