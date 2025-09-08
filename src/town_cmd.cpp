@@ -725,7 +725,7 @@ static CommandCost ClearTile_Town(TileIndex tile, DoCommandFlags flags)
 	Town *t = Town::GetByTile(tile);
 
 	if (Company::IsValidID(_current_company)) {
-		if (!_cheats.magic_bulldozer.value && !flags.Test(DoCommandFlag::NoTestTownRating)) {
+		if (!flags.Test(DoCommandFlag::NoTestTownRating)) {
 			/* NewGRFs can add indestructible houses. */
 			if (rating > RATING_MAXIMUM) {
 				return CommandCost(STR_ERROR_BUILDING_IS_PROTECTED);
@@ -4006,12 +4006,8 @@ static int GetRating(const Town *t)
  */
 void ChangeTownRating(Town *t, int add, int max, DoCommandFlags flags)
 {
-	/* if magic_bulldozer cheat is active, town doesn't penalize for removing stuff */
-	if (t == nullptr || flags.Test(DoCommandFlag::NoModifyTownRating) ||
-			!Company::IsValidID(_current_company) ||
-			(_cheats.magic_bulldozer.value && add < 0)) {
-		return;
-	}
+	if (t == nullptr || !Company::IsValidID(_current_company)) return;
+	if (flags.Test(DoCommandFlag::NoModifyTownRating)) return;
 
 	int rating = GetRating(t);
 	if (add < 0) {
@@ -4043,11 +4039,8 @@ void ChangeTownRating(Town *t, int add, int max, DoCommandFlags flags)
  */
 CommandCost CheckforTownRating(DoCommandFlags flags, Town *t, TownRatingCheckType type)
 {
-	/* if magic_bulldozer cheat is active, town doesn't restrict your destructive actions */
-	if (t == nullptr || !Company::IsValidID(_current_company) ||
-			_cheats.magic_bulldozer.value || flags.Test(DoCommandFlag::NoTestTownRating)) {
-		return CommandCost();
-	}
+	if (t == nullptr || !Company::IsValidID(_current_company)) return CommandCost();
+	if (flags.Test(DoCommandFlag::NoTestTownRating)) return CommandCost();
 
 	/* minimum rating needed to be allowed to remove stuff */
 	static const int needed_rating[][TOWN_RATING_CHECK_TYPE_COUNT] = {
