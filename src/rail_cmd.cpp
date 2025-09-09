@@ -148,34 +148,33 @@ void InitRailTypes()
  */
 RailType AllocateRailType(RailTypeLabel label)
 {
-	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
-		RailTypeInfo *rti = &_railtypes[rt];
+	auto it = std::ranges::find(_railtypes, 0, &RailTypeInfo::label);
+	if (it == std::end(_railtypes)) return INVALID_RAILTYPE;
 
-		if (rti->label == 0) {
-			/* Set up new rail type */
-			*rti = _original_railtypes[RAILTYPE_RAIL];
-			rti->label = label;
-			rti->alternate_labels.clear();
+	RailTypeInfo &rti = *it;
+	RailType rt = rti.Index();
 
-			/* Make us compatible with ourself. */
-			rti->powered_railtypes    = rt;
-			rti->compatible_railtypes = rt;
+	/* Set up new rail type based on default rail. */
+	rti = _original_railtypes[RAILTYPE_RAIL];
+	rti.label = label;
+	rti.alternate_labels.clear();
 
-			/* We also introduce ourself. */
-			rti->introduces_railtypes = rt;
+	/* Make us compatible with ourself. */
+	rti.powered_railtypes = rt;
+	rti.compatible_railtypes = rt;
 
-			/* Default sort order; order of allocation, but with some
-			 * offsets so it's easier for NewGRF to pick a spot without
-			 * changing the order of other (original) rail types.
-			 * The << is so you can place other railtypes in between the
-			 * other railtypes, the 7 is to be able to place something
-			 * before the first (default) rail type. */
-			rti->sorting_order = rt << 4 | 7;
-			return rt;
-		}
-	}
+	/* We also introduce ourself. */
+	rti.introduces_railtypes = rt;
 
-	return INVALID_RAILTYPE;
+	/* Default sort order; order of allocation, but with some
+	 * offsets so it's easier for NewGRF to pick a spot without
+	 * changing the order of other (original) rail types.
+	 * The << is so you can place other railtypes in between the
+	 * other railtypes, the 7 is to be able to place something
+	 * before the first (default) rail type. */
+	rti.sorting_order = rt << 4 | 7;
+
+	return rt;
 }
 
 static const uint8_t _track_sloped_sprites[14] = {

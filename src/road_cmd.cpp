@@ -129,43 +129,38 @@ void InitRoadTypes()
  */
 RoadType AllocateRoadType(RoadTypeLabel label, RoadTramType rtt)
 {
-	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
-		RoadTypeInfo *rti = &_roadtypes[rt];
+	auto it = std::ranges::find(_roadtypes, 0, &RoadTypeInfo::label);
+	if (it == std::end(_roadtypes)) return INVALID_ROADTYPE;
 
-		if (rti->label == 0) {
-			/* Set up new road type */
-			*rti = _original_roadtypes[(rtt == RTT_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD];
-			rti->label = label;
-			rti->alternate_labels.clear();
-			rti->flags = {};
-			rti->introduction_date = CalendarTime::INVALID_DATE;
+	RoadTypeInfo &rti = *it;
+	RoadType rt = rti.Index();
 
-			/* Make us compatible with ourself. */
-			rti->powered_roadtypes = rt;
+	/* Set up new road type based on default tram or road. */
+	rti = _original_roadtypes[(rtt == RTT_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD];
+	rti.label = label;
+	rti.alternate_labels.clear();
+	rti.flags = {};
+	rti.introduction_date = CalendarTime::INVALID_DATE;
 
-			/* We also introduce ourself. */
-			rti->introduces_roadtypes = rt;
+	/* Make us compatible with ourself. */
+	rti.powered_roadtypes = rt;
 
-			/* Default sort order; order of allocation, but with some
-			 * offsets so it's easier for NewGRF to pick a spot without
-			 * changing the order of other (original) road types.
-			 * The << is so you can place other roadtypes in between the
-			 * other roadtypes, the 7 is to be able to place something
-			 * before the first (default) road type. */
-			rti->sorting_order = rt << 2 | 7;
+	/* We also introduce ourself. */
+	rti.introduces_roadtypes = rt;
 
-			/* Set bitmap of road/tram types */
-			if (rtt == RTT_TRAM) {
-				_roadtypes_tram.Set(rt);
-			} else {
-				_roadtypes_road.Set(rt);
-			}
+	/* Default sort order; order of allocation, but with some
+	 * offsets so it's easier for NewGRF to pick a spot without
+	 * changing the order of other (original) road types.
+	 * The << is so you can place other roadtypes in between the
+	 * other roadtypes, the 7 is to be able to place something
+	 * before the first (default) road type. */
+	rti.sorting_order = rt << 2 | 7;
 
-			return rt;
-		}
-	}
+	/* Set bitmap of road/tram types */
+	_roadtypes_road.Set(rt, rtt == RTT_ROAD);
+	_roadtypes_tram.Set(rt, rtt == RTT_TRAM);
 
-	return INVALID_ROADTYPE;
+	return rt;
 }
 
 /**
