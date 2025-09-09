@@ -489,9 +489,9 @@ DropDownList NWidgetBadgeFilter::GetDropDownList() const
  * @param feature GRF feature for filters.
  * @return First and last widget indexes of filter widgets.
  */
-std::pair<WidgetID, WidgetID> AddBadgeDropdownFilters(NWidgetContainer &container, WidgetID widget, Colours colour, GrfSpecFeature feature)
+std::pair<WidgetID, WidgetID> AddBadgeDropdownFilters(NWidgetContainer &container, WidgetID widget, Colours colour, GrfSpecFeature feature, bool clear_container)
 {
-	container.Clear();
+	if(clear_container) container.Clear();
 	WidgetID first = ++widget;
 
 	/* Get list of classes used by feature. */
