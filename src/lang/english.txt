@@ -4187,6 +4187,12 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Range: {
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Aircraft type: {GOLD}{STRING}
 STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Rail types: {GOLD}{RAW_STRING}
 
+STR_ENGINE_PREVIEW_ALL_TYPES                                    :All vehicle types
+STR_ENGINE_PREVIEW_TRAIN_ONLY                                   :Trains only
+STR_ENGINE_PREVIEW_ROAD_VEHICLE_ONLY                            :Road Vehicles only
+STR_ENGINE_PREVIEW_SHIP_ONLY                                    :Ships only
+STR_ENGINE_PREVIEW_AIRCRAFT_ONLY                                :Aircraft only
+
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :All cargo types
 STR_CARGO_TYPE_FILTER_FREIGHT                                   :Freight
