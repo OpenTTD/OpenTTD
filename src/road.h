@@ -185,6 +185,8 @@ public:
 	{
 		return this->group[ROTSG_GROUND] != nullptr;
 	}
+
+	RoadType Index() const;
 };
 
 /**
@@ -229,19 +231,6 @@ inline const RoadTypeInfo *GetRoadTypeInfo(RoadType roadtype)
 	extern RoadTypeInfo _roadtypes[ROADTYPE_END];
 	assert(roadtype < ROADTYPE_END);
 	return &_roadtypes[roadtype];
-}
-
-/**
- * Returns the railtype for a Railtype information.
- * @param rti Pointer to static RailTypeInfo
- * @return Railtype in static railtype definitions
- */
-inline RoadType GetRoadTypeInfoIndex(const RoadTypeInfo *rti)
-{
-	extern RoadTypeInfo _roadtypes[ROADTYPE_END];
-	size_t index = rti - _roadtypes;
-	assert(index < ROADTYPE_END && rti == _roadtypes + index);
-	return static_cast<RoadType>(index);
 }
 
 /**
