@@ -102,8 +102,8 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_vehicle_widget
 
 
 bool _engine_sort_direction; ///< \c false = descending, \c true = ascending.
-uint8_t _engine_sort_last_criteria[]       = {0, 0, 0, 0};                 ///< Last set sort criteria, for each vehicle type.
-bool _engine_sort_last_order[]          = {false, false, false, false}; ///< Last set direction of the sort order, for each vehicle type.
+uint8_t _engine_sort_last_criteria[]    = {0, 0, 0, 0, 0}; ///< Last set sort criteria, for each vehicle type.
+bool _engine_sort_last_order[]          = {false, false, false, false, false}; ///< Last set direction of the sort order, for each vehicle type.
 bool _engine_sort_show_hidden_engines[] = {false, false, false, false}; ///< Last set 'show hidden engines' setting for each vehicle type.
 static CargoType _engine_sort_last_cargo_criteria[] = {CargoFilterCriteria::CF_ANY, CargoFilterCriteria::CF_ANY, CargoFilterCriteria::CF_ANY, CargoFilterCriteria::CF_ANY}; ///< Last set filter criteria, for each vehicle type.
 
@@ -485,6 +485,15 @@ EngList_SortTypeFunction * const _engine_sort_functions[][11] = {{
 	&EngineReliabilitySorter,
 	&AircraftEngineCargoSorter,
 	&AircraftRangeSorter,
+}, {
+	/* Any type of vehicle */
+	&EngineNumberSorter,
+	&EngineCostSorter,
+	&EngineSpeedSorter,
+	&EngineIntroDateSorter,
+	&EngineNameSorter,
+	&EngineRunningCostSorter,
+	&EngineReliabilitySorter,
 }};
 
 /** Dropdown menu strings for the vehicle sort criteria. */
@@ -535,6 +544,15 @@ const std::initializer_list<const StringID> _engine_sort_listing[] = {{
 	STR_SORT_BY_RELIABILITY,
 	STR_SORT_BY_CARGO_CAPACITY,
 	STR_SORT_BY_RANGE,
+}, {
+	/* Any type of vehicle */
+	STR_SORT_BY_ENGINE_ID,
+	STR_SORT_BY_COST,
+	STR_SORT_BY_MAX_SPEED,
+	STR_SORT_BY_INTRO_DATE,
+	STR_SORT_BY_NAME,
+	STR_SORT_BY_RUNNING_COST,
+	STR_SORT_BY_RELIABILITY,
 }};
 
 /** Filters vehicles by cargo and engine (in case of rail vehicle). */
@@ -817,7 +835,7 @@ static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_
  * @param engine The engine whose additional text to get.
  * @return The std::string if present, otherwise std::nullopt.
  */
-static std::optional<std::string> GetNewGRFAdditionalText(EngineID engine)
+std::optional<std::string> GetNewGRFAdditionalText(EngineID engine)
 {
 	std::array<int32_t, 16> regs100;
 	uint16_t callback = GetVehicleCallback(CBID_VEHICLE_ADDITIONAL_TEXT, 0, 0, engine, nullptr, regs100);
@@ -963,7 +981,7 @@ static void DrawEngineBadgeColumn(const Rect &r, int column_group, const GUIBadg
  * @param show_count Whether to show the amount of engines or not
  * @param selected_group the group to list the engines of
  */
-void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_list, const Scrollbar &sb, EngineID selected_id, bool show_count, GroupID selected_group, const GUIBadgeClasses &badge_classes)
+void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_list, const Scrollbar &sb, EngineID selected_id, bool show_count, GroupID selected_group, const GUIBadgeClasses &badge_classes, const std::array<GUIBadgeClasses, VEH_COMPANY_END> *badge_classes_array)
 {
 	static const std::array<int8_t, VehicleType::VEH_COMPANY_END> sprite_y_offsets = { 0, 0, -1, -1 };
 
@@ -1007,6 +1025,10 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 		const auto &item = *it;
 		const Engine *e = Engine::Get(item.engine_id);
 
+		if(badge_classes_array != nullptr) {
+			badge_column_widths = badge_classes_array->at(e->type).GetColumnWidths();
+		}
+
 		uint indent       = item.indent * WidgetDimensions::scaled.hsep_indent;
 		bool has_variants = item.flags.Test(EngineDisplayFlag::HasVariants);
 		bool is_folded    = item.flags.Test(EngineDisplayFlag::IsFolded);
@@ -1041,7 +1063,11 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 
 		if (badge_column_widths.size() >= 1 && badge_column_widths[0] > 0) {
 			Rect br = tr.WithWidth(badge_column_widths[0], rtl);
-			DrawEngineBadgeColumn(br, 0, badge_classes, e, pal);
+			if(badge_classes_array != nullptr) {
+				DrawEngineBadgeColumn(br, 0, badge_classes_array->at(e->type), e, pal);
+			} else {
+				DrawEngineBadgeColumn(br, 0, badge_classes, e, pal);
+			}
 			tr = tr.Indent(badge_column_widths[0], rtl);
 		}
 
@@ -1052,7 +1078,11 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 
 		if (badge_column_widths.size() >= 2 && badge_column_widths[1] > 0) {
 			Rect br = tr.WithWidth(badge_column_widths[1], rtl);
-			DrawEngineBadgeColumn(br, 1, badge_classes, e, pal);
+			if(badge_classes_array != nullptr) {
+				DrawEngineBadgeColumn(br, 1, badge_classes_array->at(e->type), e, pal);
+			} else {
+				DrawEngineBadgeColumn(br, 1, badge_classes, e, pal);
+			}
 			tr = tr.Indent(badge_column_widths[1], rtl);
 		}
 
@@ -1073,7 +1103,11 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 
 		if (badge_column_widths.size() >= 3 && badge_column_widths[2] > 0) {
 			Rect br = tr.WithWidth(badge_column_widths[2], !rtl).Indent(WidgetDimensions::scaled.hsep_wide, rtl);
-			DrawEngineBadgeColumn(br, 2, badge_classes, e, pal);
+			if(badge_classes_array != nullptr) {
+				DrawEngineBadgeColumn(br, 2, badge_classes_array->at(e->type), e, pal);
+			} else {
+				DrawEngineBadgeColumn(br, 2, badge_classes, e, pal);
+			}
 			tr = tr.Indent(badge_column_widths[2], !rtl);
 		}
 
@@ -1169,8 +1203,6 @@ struct BuildVehicleWindow : Window {
 	Scrollbar *vscroll = nullptr;
 	TestedEngineDetails te{}; ///< Tested cost and capacity after refit.
 	GUIBadgeClasses badge_classes{};
-
-	static constexpr int BADGE_COLUMNS = 3; ///< Number of columns available for badges (0 = left of image, 1 = between image and name, 2 = after name)
 
 	StringFilter string_filter{}; ///< Filter for vehicle name
 	QueryString vehicle_editbox; ///< Filter editbox
@@ -1952,6 +1984,7 @@ struct BuildVehicleWindow : Window {
 
 	virtual void OnResize() override
 	{
+		if (this->vscroll == nullptr) return;
 		this->vscroll->SetCapacityFromWidget(this, WID_BV_LIST);
 	}
 
