@@ -129,15 +129,14 @@ static bool CompareRailTypes(const RailType &first, const RailType &second)
  */
 void InitRailTypes()
 {
-	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
-		RailTypeInfo *rti = &_railtypes[rt];
-		ResolveRailTypeGUISprites(rti);
-		if (rti->flags.Test(RailTypeFlag::Hidden)) _railtypes_hidden_mask.Set(rt);
-	}
-
 	_sorted_railtypes.clear();
-	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
-		if (_railtypes[rt].label == 0) continue;
+	for (RailTypeInfo &rti : _railtypes) {
+		RailType rt = rti.Index();
+
+		ResolveRailTypeGUISprites(&rti);
+		_railtypes_hidden_mask.Set(rt, rti.flags.Test(RailTypeFlag::Hidden));
+
+		if (rti.label == 0) continue;
 		_sorted_railtypes.push_back(rt);
 	}
 	std::sort(_sorted_railtypes.begin(), _sorted_railtypes.end(), CompareRailTypes);
