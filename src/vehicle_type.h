@@ -28,6 +28,7 @@ enum VehicleType : uint8_t {
 	VEH_AIRCRAFT,                 ///< %Aircraft vehicle type.
 
 	VEH_COMPANY_END,              ///< Last company-ownable type.
+	VEH_ANY = VEH_COMPANY_END,    ///< Either a train or a road vehicle or a ship or an aircraft.
 
 	VEH_EFFECT = VEH_COMPANY_END, ///< Effect vehicle type (smoke, explosions, sparks, bubbles)
 	VEH_DISASTER,                 ///< Disaster vehicle type.

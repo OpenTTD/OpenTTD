@@ -102,8 +102,8 @@ static constexpr NWidgetPart _nested_build_vehicle_widgets[] = {
 
 
 bool _engine_sort_direction; ///< \c false = descending, \c true = ascending.
-uint8_t _engine_sort_last_criteria[]       = {0, 0, 0, 0};                 ///< Last set sort criteria, for each vehicle type.
-bool _engine_sort_last_order[]          = {false, false, false, false}; ///< Last set direction of the sort order, for each vehicle type.
+uint8_t _engine_sort_last_criteria[]    = {0, 0, 0, 0, 0}; ///< Last set sort criteria, for each vehicle type.
+bool _engine_sort_last_order[]          = {false, false, false, false, false}; ///< Last set direction of the sort order, for each vehicle type.
 bool _engine_sort_show_hidden_engines[] = {false, false, false, false}; ///< Last set 'show hidden engines' setting for each vehicle type.
 static CargoType _engine_sort_last_cargo_criteria[] = {CargoFilterCriteria::CF_ANY, CargoFilterCriteria::CF_ANY, CargoFilterCriteria::CF_ANY, CargoFilterCriteria::CF_ANY}; ///< Last set filter criteria, for each vehicle type.
 
@@ -485,6 +485,15 @@ EngList_SortTypeFunction * const _engine_sort_functions[][11] = {{
 	&EngineReliabilitySorter,
 	&AircraftEngineCargoSorter,
 	&AircraftRangeSorter,
+}, {
+	/* Any type of vehicle */
+	&EngineNumberSorter,
+	&EngineCostSorter,
+	&EngineSpeedSorter,
+	&EngineIntroDateSorter,
+	&EngineNameSorter,
+	&EngineRunningCostSorter,
+	&EngineReliabilitySorter,
 }};
 
 /** Dropdown menu strings for the vehicle sort criteria. */
@@ -535,6 +544,15 @@ const std::initializer_list<const StringID> _engine_sort_listing[] = {{
 	STR_SORT_BY_RELIABILITY,
 	STR_SORT_BY_CARGO_CAPACITY,
 	STR_SORT_BY_RANGE,
+}, {
+	/* Any type of vehicle */
+	STR_SORT_BY_ENGINE_ID,
+	STR_SORT_BY_COST,
+	STR_SORT_BY_MAX_SPEED,
+	STR_SORT_BY_INTRO_DATE,
+	STR_SORT_BY_NAME,
+	STR_SORT_BY_RUNNING_COST,
+	STR_SORT_BY_RELIABILITY,
 }};
 
 /** Filters vehicles by cargo and engine (in case of rail vehicle). */
