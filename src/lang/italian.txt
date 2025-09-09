@@ -452,6 +452,9 @@ STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Opzioni sandbox
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opzioni trasparenza
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Mostra nomi città
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Mostra nomi stazioni
+STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :Stazione dei camion
+STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Fermate del bus
+STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :Aeroporti
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Mostra nomi waypoint
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Mostra cartelli
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Mostra nomi e cartelli degli avversari
@@ -614,6 +617,7 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unità d
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Valutazione prestazioni compagnie (massima valutazione=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Grafico del valore aziendale
 
+STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Ultimi 24 minuti
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Ultimi 72 minuti
 
 
@@ -629,7 +633,13 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Non most
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Attiva/disattiva il grafico per il tipo di carico
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Storico delle merci
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Prodotto
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Trasportato
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Consegnato
+STR_GRAPH_INDUSTRY_RANGE_WAITING                                :In attesa
 
+STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Trasportato
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Mostra valutazione dettagliata prestazioni
 
@@ -2021,7 +2031,12 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Non permessa
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Permessa
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Permessa, disposizione strade personalizzata
 
+STR_CONFIG_SETTING_HOUSE_PLACER                                 :Posizionare le singole case nelle  città: {STRING}
+STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :Attivare questa impostazione permette ai giocatori di posizionare le case manualmente
 ###length 3
+STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :Non consentito
+STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :Consentito
+STR_CONFIG_SETTING_HOUSE_PLACER_FULLY_CONSTRUCTED               :Permesso, completamente costruito
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Generazione passeggeri e posta: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Quantità di carichi (passeggeri e posta) prodotta dalle case in relazione alla popolazione della città.{}Quadratica: Una città grande il doppio genera il quadruplo di passeggeri.{}Lineare: Una città grande il doppio genera il doppio di passeggeri
@@ -2219,6 +2234,8 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... non 
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Il driver della GPU ha mandato in crash il gioco. Accelerazione hardware disattivata
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nuova partita
 STR_INTRO_LOAD_GAME                                             :{BLACK}Carica partita
@@ -2359,8 +2376,11 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Impossib
 STR_FACE_SAVE                                                   :{BLACK}Salva
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Salva come faccia preferita
 STR_FACE_SAVE_DONE                                              :{WHITE}La faccia corrente è stata salvata come preferita nel file di configurazione di OpenTTD
+STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
+STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Sì
 STR_FACE_NO                                                     :No
+STR_FACE_STYLE                                                  :Stile:
 STR_FACE_HAIR                                                   :Capelli:
 STR_FACE_EYEBROWS                                               :Sopracciglia:
 STR_FACE_EYECOLOUR                                              :Colore occhi:
@@ -2837,16 +2857,27 @@ STR_PICKER_MODE_USED_TOOLTIP                                    :Attiva/disattiv
 STR_PICKER_MODE_SAVED                                           :Salvato
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Attiva/disattiva la visualizzazione solo degli elementi salvati
 
+STR_PICKER_PREVIEW_SHRINK                                       :-
+STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Riduce l'altezza delle aneprime. Ctrl+Click per ridurre al minimo
+STR_PICKER_PREVIEW_EXPAND                                       :+
+STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Aumenta l'altezza delle anteprime. Ctrl+Click per aumentare al massimo
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Seleziona una classe di stazioni da visualizzare
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Seleziona un tipo di stazione da costruire. Ctrl+Click per aggiungere o rimuovere dagli oggetti salvati
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Seleziona una classe di fermate dell'autobus da visualizzare
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Seleziona un tipo di fermata dell'autobus da costrure. Ctrl+Click per aggiungere o rimuovere elementi salvati
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Seleziona una classe di stazioni dei camion da visualizzare
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Seleziona un tipo di stazione dei camion da costruire. Ctrl+Click per aggiungere o rimuovere dagli oggetti salvati
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Seleziona una classe di oggetti da visualizzare
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Seleziona un tipo d'oggetto da costruire. Ctrl+Clic per aggiungere o rimuovere in elementi salvati. Ctrl+Clic+trascinamento per selezionare l'area in diagonale. Premere anche Shift per mostrare solo la stima dei costi.
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Seleziona una zona cittadina da mostrare
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Seleziona un tipo di casa da costruire. Ctrl+Click per aggiungere o rimuovere dagli oggetti salvati
 
 STR_HOUSE_PICKER_CAPTION                                        :Selezione casa
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Nome: {ORANGE}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Popolazione: {ORANGE}{NUM}
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Carichi accettati: {ORANGE}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Carichi prodotti: {ORANGE}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Bordo
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Periferie
@@ -3057,6 +3088,11 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Selezion
 STR_FOUND_TOWN_CITY                                             :{BLACK}Metropoli
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Le metropoli crescono più rapidamente delle normali città.{}A seconda delle impostazioni, sono più grandi quando vengono fondate.
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Espansione cittadina:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Edifici
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Aumenta gli edifici delle città
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Strade
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Aumenta le strade delle città
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Disposizione strade:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Seleziona la disposizione delle strade per questa città
@@ -3137,6 +3173,9 @@ STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Terreno spoglio
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Erba
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Campi
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Deserto
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS                           :Rocce ricoperte di neve
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND                      :Terreno accidentato ricoperto di neve
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS                           :Erba ricoperta di neve
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Ferrovia
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Ferrovia con segnali di blocco
@@ -3291,6 +3330,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Salva sc
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Carica scenario
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Carica heightmap
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Salva Heightmap
+STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Carica i dati relativi alle città
 STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Fare clic qui per spostarsi nella cartella di salvataggio predefinita
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} liber{P o i}
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Elenco delle unità, delle cartelle e dei file delle partite salvate
@@ -3302,6 +3342,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Salva la
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Carica
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Carica la partita selezionata
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Carica l'heightmap selezionata
+STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Carica i dati relativi alle città selezionati
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Dettagli partita
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Informazioni non disponibili
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3663,9 +3704,14 @@ STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra l
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Autorità locale
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Mostra informazioni sull'autorità locale
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Cambia il nome della città
+STR_TOWN_VIEW_CARGO_GRAPH                                       :Grafo delle merci
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Espandi
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Aumenta la dimensione della città
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Espandi gli edifici
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Aumenta gli edifici della città
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Espandi le strade
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Aumenta le strade della città
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Elimina
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Elimina completamente questa città
 
@@ -3910,6 +3956,7 @@ STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Presidente)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inaugurata nel: {WHITE}{NUM}
+STR_COMPANY_VIEW_INAUGURATED_TITLE_WALLCLOCK                    :{GOLD}Inaugurato: {WHITE}{NUM} (period {NUM})
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Schema colori:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Veicoli:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} tren{P o i}
@@ -3997,6 +4044,9 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produce:
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Richiede:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX                    :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} {3:STRING} in attesa
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_NOSUFFIX                         :{YELLOW}{0:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX                  :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} In attesa...
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Cambia produzione (multiplo di 8, fino a 2040)
@@ -4655,6 +4705,8 @@ STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Deposito autome
 STR_ORDER_SHIP_DEPOT                                            :Deposito navale
 ###next-name-looks-similar
 
+STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT                           :{STRING} l'hangar più vicino
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} più vicino {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Riadatta per {STRING})
@@ -4753,6 +4805,7 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Elimina 
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Cambia limite di velocità
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Cambia l'impostazione del limite di velocità per l'ordine selezionato. Ctrl+Clic lo imposta per tutti gli ordini
+STR_TIMETABLE_CHANGE_SPEED_QUERY                                :Cambia limite di velocità
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Elimina limite di velocità
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Elimina l'impostazione del limite di velocità per l'ordine selezionato. Ctrl+Clic la rimuove da tutti gli ordini
@@ -4954,6 +5007,7 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Richiest
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Terreno inclinato nella direzione sbagliata
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Impossibile farlo...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}L'edificio deve essere demolito prima
+STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}...vl'edificio è protetto
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Impossibile ripulire l'area...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... sito inadatto
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... già costruito
@@ -5192,6 +5246,7 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Inizio e
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... gli estremi del ponte devono trovarsi entrambi sul terreno
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... ponte troppo lungo
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Il ponte terminerebbe fuori dalla mappa
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Ponte troppo basso per una fermata
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Impossibile costruire il tunnel qui...
@@ -5278,6 +5333,10 @@ STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Impossib
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Impossibile vendere l'aeromobile...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :{WHITE}Impossibile vendere tutti i veicoli ferroviari...
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :{WHITE}Impossibile vendere tutti gli automezzi...
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Impossibile vendere tutte le navi...
+STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}Impossibile vendere tutti gli aeromobili...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}Non puoi rimpiazzare automaticamente gli autoveicoli...
@@ -5800,7 +5859,9 @@ STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STR
 STR_SAVEGAME_NAME_SPECTATOR                                     :Spettatore, {1:STRING}
 
 # Viewport strings
-STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_CITY                                          :{TOWN} {CITY_ICON}
+STR_VIEWPORT_TOWN_CITY_POP                                      :{TOWN} ({COMMA}) {CITY_ICON}
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data
@@ -5862,3 +5923,5 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
+STR_BADGE_FILTER_ANY_LABEL                                      :Qualunque {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} è {STRING}
