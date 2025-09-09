@@ -20,6 +20,18 @@
 #include "safeguards.h"
 
 /**
+ * Get the RailType for this RailTypeInfo.
+ * @return RailType in static RailTypeInfo definitions.
+ */
+RailType RailTypeInfo::Index() const
+{
+	extern RailTypeInfo _railtypes[RAILTYPE_END];
+	size_t index = this - _railtypes;
+	assert(index < RAILTYPE_END);
+	return static_cast<RailType>(index);
+}
+
+/**
  * Return the rail type of tile, or INVALID_RAILTYPE if this is no rail tile.
  */
 RailType GetTileRailType(Tile tile)
