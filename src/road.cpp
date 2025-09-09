@@ -24,6 +24,18 @@
 #include "safeguards.h"
 
 /**
+ * Get the RoadType for this RoadTypeInfo.
+ * @return RoadType in static RoadTypeInfo definitions.
+ */
+RoadType RoadTypeInfo::Index() const
+{
+	extern RoadTypeInfo _roadtypes[ROADTYPE_END];
+	size_t index = this - _roadtypes;
+	assert(index < ROADTYPE_END);
+	return static_cast<RoadType>(index);
+}
+
+/**
  * Return if the tile is a valid tile for a crossing.
  *
  * @param tile the current tile
