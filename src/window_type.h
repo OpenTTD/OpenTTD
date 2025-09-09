@@ -606,7 +606,7 @@ enum WindowClass : uint16_t {
 
 	/**
 	 * Engine preview window; %Window numbers:
-	 *   - #EngineID = #EnginePreviewWidgets
+	 *   - 0 = #EnginePreviewWidgets
 	 */
 	WC_ENGINE_PREVIEW,
 

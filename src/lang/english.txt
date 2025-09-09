@@ -4202,6 +4202,16 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Range: {
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Aircraft type: {GOLD}{STRING}
 STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Rail types: {GOLD}{RAW_STRING}
 
+STR_ENGINE_PREVIEW_ALL_TYPES                                    :All
+STR_ENGINE_PREVIEW_TRAIN_TOGGLE                                 :Trains {TRAIN}
+STR_ENGINE_PREVIEW_ROAD_VEHICLE_TOGGLE                          :Road Vehicles {LORRY} {BUS}
+STR_ENGINE_PREVIEW_SHIP_TOGGLE                                  :Ships {SHIP}
+STR_ENGINE_PREVIEW_AIRCRAFT_TOGGLE                              :Aircrafts {PLANE}
+STR_TOOLTIP_ENGINE_PREVIEW_TOGGLE                               :{BLACK}Toggle this type vehicles visibility. Ctrl+Click to show only vehicles of this type.
+STR_TOOLTIP_ENGINE_PREVIEW_ALL_TYPES                            :{BLACK}Click to show vehicles of all types. Ctrl+Click to hide vehicles of all types.
+STR_ENGINE_PREVIEW_ACCEPT                                       :Accept
+STR_ENGINE_PREVIEW_ACCEPT_ALL_VISIBLE                           :Accept all vehicles in the list
+
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :All cargo types
 STR_CARGO_TYPE_FILTER_FREIGHT                                   :Freight

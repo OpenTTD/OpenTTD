@@ -499,12 +499,13 @@ DropDownList NWidgetBadgeFilter::GetDropDownList(PaletteID palette) const
  * @param widget Widget index to apply to first filter.
  * @param colour Background colour of widgets.
  * @param feature GRF feature for filters.
+ * @param clear_container Whether the container should be cleared before filters are apended.
  * @return First and last widget indexes of filter widgets.
  */
-std::pair<WidgetID, WidgetID> AddBadgeDropdownFilters(Window *window, WidgetID container_id, WidgetID widget, Colours colour, GrfSpecFeature feature)
+std::pair<WidgetID, WidgetID> AddBadgeDropdownFilters(Window *window, WidgetID container_id, WidgetID widget, Colours colour, GrfSpecFeature feature, bool clear_container)
 {
 	auto container = window->GetWidget<NWidgetContainer>(container_id);
-	container->Clear(window);
+	if(clear_container) container->Clear(window);
 	WidgetID first = ++widget;
 
 	/* Get list of classes used by feature. */
