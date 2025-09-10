@@ -410,6 +410,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_STATIONS_UNDER_BRIDGES,             ///< 359  PR#14477 Allow stations under bridges.
 
 	SLV_DOCKS_UNDER_BRIDGES,                ///< 360  PR#14594 Allow docks under bridges.
+	SLV_LOCKS_UNDER_BRIDGES,                ///< 361  PR#14595 Allow locks under bridges.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
