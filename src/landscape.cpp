@@ -32,7 +32,6 @@
 #include "object_base.h"
 #include "company_func.h"
 #include "company_gui.h"
-#include "pathfinder/aystar.h"
 #include "saveload/saveload.h"
 #include "framerate_type.h"
 #include "landscape_cmd.h"
