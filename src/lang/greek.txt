@@ -5365,6 +5365,7 @@ STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... η �
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Η γέφυρα θα καταλήξει εκτός χάρτη
 STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Η γέφυρα είναι πολύ χαμηλή για σταθμό
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Η γέφυρα είναι πολύ χαμηλή για οδική στάση
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Η γέφυρα είναι πολύ χαμηλή για αποβάθρα
 STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Η γέφυρα είναι πολύ χαμηλή για σημαδούρα
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Η γέφυρα είναι πολύ χαμηλή για σιδηροδρομικό σημείο αναφοράς
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Η γέφυρα είναι πολύ χαμηλή για οδικό σημείο αναφοράς

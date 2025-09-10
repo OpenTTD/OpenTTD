@@ -5264,6 +5264,7 @@ STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... cầ
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Cầu có thể vượt quá phạm vi bản đồ
 STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Cầu quá thấp cho ga
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Cầu quá thấp cho điểm dừng chân
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Cầu quá thấp để xây dựng cảng
 STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Cầu quá thấp cho phao
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Cầu quá thấp cho điểm mốc đường ray
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Cầu quá thấp cho điểm mốc đường

@@ -309,7 +309,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Ao ativa
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Ao ativar este botão, os aviões ocultos também serão exibidos
 
 # Query window
-STR_BUTTON_DEFAULT                                              :{BLACK}Padrão
+STR_BUTTON_DEFAULT                                              :{BLACK}Predefinição
 STR_BUTTON_CANCEL                                               :{BLACK}Cancelar
 STR_BUTTON_OK                                                   :{BLACK}Confirmar
 
@@ -373,7 +373,7 @@ STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Lucro médio es
 STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD                          :Lucro médio neste período
 
 # Group by options for vehicle list
-STR_GROUP_BY_NONE                                               :Nenhuma
+STR_GROUP_BY_NONE                                               :Nenhum
 STR_GROUP_BY_SHARED_ORDERS                                      :Ordens partilhadas
 
 # Order button in shared orders vehicle list
@@ -508,14 +508,14 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Financiar nova 
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Construção de caminhos-de-ferro
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Construção de caminhos-de-ferro eletrificados
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Construção de monocarris
-STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Construção de Maglev
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Construção de linhas maglev
 
 # Road construction menu
-STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Construção de estrada
+STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Construção de estradas
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Construção de carris para elétricos
 
 # Waterways construction menu
-STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Construção de hidrovia
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Construção de vias fluviais
 
 # Aairport construction menu
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Construção de aeroportos
@@ -866,10 +866,10 @@ STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeira aeronave chega {G a ao à aos às} {STATION}!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Acidente de Comboios!{}{COMMA} pessoa{P "" s} morre{P u ram} na explosão após a colisão!
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Acidente com Veículo Rodoviário!{}Condutor morre na explosão após a colisão com um comboio!
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Acidente com Veículo Rodoviário{}{COMMA} pessoa{P "" s} morre{P u ram} na explosão após a colisão com um comboio!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Acidente Rodoviário!{}Condutor morre na explosão após a colisão com comboio!
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Acidente Rodoviário!{}{COMMA} pessoa{P "" s} morre{P u ram} na explosão após a colisão com comboio!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Acidente de Aeronave!{}{COMMA} pessoa{P "" s} morre{P u ram} na explosão em {STATION}!
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Acidente de Aeronave!{}Avião ficou sem combustível, {COMMA} pessoa{P "" s} morre{P u ram} no incêndio!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Acidente Aéreo!{}Aeronave ficou sem combustível, {COMMA} pessoa{P "" s} morre{P u ram} no incêndio!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Acidente de Zepelim em {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Veículo rodoviário destruído em colisão com OVNI!
@@ -887,7 +887,7 @@ STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} foi encerrada por credores e todos os ativos foram vendidos!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nova empresa de transportes!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} inicia construção em {TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} foi comprada por {STRING} por um valor não revelado!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} foi adquirida por {STRING} por um valor não declarado!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Presidente)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} subsidiou a construção da nova localidade de {TOWN}!
@@ -939,9 +939,9 @@ STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} parou porque a ordem de adaptação falhou
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Renovação automática falhou para {VEHICLE}{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Novo modelo de {STRING} agora disponível!
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}U{G 0 m m ma ns mas} nov{G 0 "o modelo de" o a os as} {STRING} est{G 0 á á á am am} agora disponíve{G 0 l l l is is}!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Novo modelo de {STRING} agora disponível! - {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}U{G 0 m m ma ns mas} nov{G 0 "o modelo de" o a os as} {STRING} est{G 0 á á á am am} agora disponíve{G 0 l l l is is}! - {ENGINE}
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Abrir a janela de grupo focada no grupo do veículo
 
@@ -960,8 +960,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLAC
 STR_NEWS_ROAD_REBUILDING_MONTHS                                 :{BIG_FONT}{BLACK}Tráfego caótico em {TOWN}!{}{}Iniciativa de reconstrução das estradas financiada por {STRING} provoca 6 meses de sofrimento aos motoristas!
 STR_NEWS_ROAD_REBUILDING_MINUTES                                :{BIG_FONT}{BLACK}Tráfego caótico em {TOWN}!{}{}Iniciativa de reconstrução das estradas financiada por {STRING} provoca 6 minutos de sofrimento aos motoristas!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopólio dos Transportes!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS                    :{BIG_FONT}{BLACK}A autoridade local de {TOWN} assinou um contrato com {STRING} por 12 meses de direitos exclusivos de transporte!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLACK}A autoridade local de {TOWN} assinou um contrato com {STRING} por 12 minutos de direitos exclusivos de transporte!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS                    :{BIG_FONT}{BLACK}A autoridade local de {TOWN} assinou um contrato com {STRING} por 12 meses de direitos de exclusividade de transporte!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLACK}A autoridade local de {TOWN} assinou um contrato com {STRING} por 12 minutos de direitos de exclusividade de transporte!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Visualizador {COMMA}
@@ -1222,7 +1222,7 @@ STR_SUBSIDY_X4                                                  :x4
 STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Terreno temperado
 STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Terreno subárctico
 STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Terreno subtropical
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Terreno terra dos brinquedos
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Terreno da terra dos brinquedos
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Muito Plano
@@ -2753,7 +2753,7 @@ STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Comutar 
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Comutar transparência para estruturas como faróis-terrestres e antenas. Ctrl+Clique parabloquear.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Comutar transparência para catenária. Ctrl+Clique para bloquear.
 STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}Comutar transparência do texto de carregamento e custo/receita. Ctrl+Clique para bloquear.
-STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Definir objectos como invisíveis em vez de transparentes
+STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Definir objetos como invisíveis em vez de transparentes
 
 # Linkgraph legend window
 STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Legenda de Fluxo de Carga
@@ -2795,10 +2795,10 @@ STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Constru
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Desativado pois não existem atualmente veículos disponíveis para esta infraestrutura
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construção de caminhos-de-ferro
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construção de caminhos-de-ferro eletrificados
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construção de monocarris
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construção de Maglev
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construção de Caminhos-de-ferro
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construção de Caminhos-de-ferro Eletrificados
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construção de Monocarris
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construção de Linhas Maglev
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir linha férrea. Ctrl+Clique para remover a linha férrea. Pressione também Shift para apenas mostrar o custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir caminhos-de-ferro usando o modo automático. Ctrl+Clique para remover a via férrea. Pressione também Shift para apenas mostrar o custo estimado
@@ -2895,7 +2895,7 @@ STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sinal de
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sinal combinado (semáforo){}O sinal combinado funciona simultaneamente como um sinal de entrada e de saída. Isto permite a construção de ramificações complexas de pré-sinais.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sinal de trajeto (semáforo){}Permite que vários comboios passem simultaneamente um bloco de linha, desde que consigam reservar um caminho seguro sem prejudicar o veículo seguinte. Os sinais de trajeto padrão podem ser cruzados no sentido contrário.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Sinal de sentido único (semáforo){}Funciona de maneira similar a um sinal de trajeto, mas não pode ser cruzado no sentido contrário.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sinal Normal(elétrico){}Este é o tipo mais básico de sinal. Permite apenas a passagem de um comboio de cada vez dentro da mesma divisão de linha.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sinal Normal (elétrico){}Este é o tipo mais básico de sinal. Permite apenas a passagem de um comboio de cada vez dentro da mesma secção de linha.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sinal de entrada (elétrico){}Apresenta-se verde enquanto existir um ou mais sinais de saída verdes no seguimento da linha. De outro modo ficará vermelho.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinal de saída (elétrico){}Funciona da mesma forma que o sinal normal, mas é necessário para ativar a cor correta nos pré-sinais de entrada e combinado.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinal combinado (elétrico){}O sinal combinado funciona simultaneamente como um sinal de entrada e de saída. Isto permite construir ramificações complexas de pré-sinais.
@@ -2925,8 +2925,8 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Tubular, Silíc
 
 
 # Road construction toolbar
-STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construção de estradas
-STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construção de linha de elétrico
+STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construção de Estradas
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construção de Linhas de Elétrico
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construir secção de estrada. Ctrl+Clique para remover secção de estrada. Pressione também Shift para apenas mostrar o custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construir secção de carris para elétricos. Ctrl+Clique para remover secção de carris de elétricos. Pressione também Shift para apenas mostrar o custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construir estradas usando o modo automático. Ctrl+Clique para remover secção de estrada. Pressione também Shift para apenas mostrar o custo estimado
@@ -2938,7 +2938,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Construi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construir paragem de autocarros. Ctrl+Clique para selecionar outra estação para fazer a união. Pressione também Shift para apenas mostrar o custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construir paragem de elétricos para passageiros. Ctrl+Clique para selecionar outra estação para se unir. Pressione também Shift para apenas mostrar o custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construir terminal de carga para camiões. Ctrl+Clique para selecionar outra estação para fazer a união. Pressione também Shift para apenas mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construir paragem de elétricos para carga. Ctrl+Clique para selecionar outra estação para se unir. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construir terminal de carga para elétricos. Ctrl+Clique para selecionar outra estação para fazer a união. Pressione também Shift para apenas mostrar o custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Ativar/Desativar estradas de sentido único
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construir ponte rodoviária. Pressione também Shift para apenas mostrar o custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construir ponte para elétricos. Pressione também Shift para apenas mostrar o custo estimado
@@ -2961,15 +2961,15 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Selecion
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientação da paragem de autocarros
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Selecionar a orientação da paragem de autocarros
-STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Orientação da estação de carga
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Orientação do terminal de carga para camiões
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Selecionar a orientação do terminal de carga para camiões
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orientação da Estação de Elétricos de Passageiros
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Selecionar orientação da estação de elétricos
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Orientação da Estação de Elétricos
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Selecionar orientação da estação de elétricos
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orientação da Paragem de Elétricos de Passageiros
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Selecionar orientação da paragem de elétricos de passageiros
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Orientação do Terminal de Carga para Elétricos
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Selecionar orientação do terminal de carga para elétricos
 
 # Waterways toolbar (last two for SE only)
-STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construção de hidrovia
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construção de Vias Fluviais
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Canais
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construir canais. Ctrl+Clique+Arrastar para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construir eclusas. Pressione também Shift para apenas mostrar o custo estimado
@@ -3727,8 +3727,8 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Renomear Locali
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Autoridade local de {TOWN}
-STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Zona
-STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Mostrar a zona dentro dos limites da autoridade local
+STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Região
+STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Mostrar a área da região onde é exercida a autoridade local
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Classificações de empresas de transporte:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Ações disponíveis:
@@ -3743,7 +3743,7 @@ STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Iniciar uma cam
 STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Financiar a reconstrução das estradas locais
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Construir estátua do proprietário da empresa
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Financiar novos edifícios
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Comprar exclusividade da rede de transportes
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Negociar exclusividade da rede de transportes
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Subornar a autoridade local
 ###next-name-looks-similar
 
@@ -3754,9 +3754,9 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}Financiar a reconstrução da rede urbana de estradas.{}Provoca uma perturbação considerável no tráfego rodoviário até 6 minutos.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Construir uma estátua em honra da sua empresa.{}Produz um aumento permanente na avaliação das estações nesta localidade.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Financiar a construção de novos edifícios na localidade.{}Produz um aumento temporário do crescimento desta localidade.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Comprar os direitos exclusivos de transporte na localidade por 12 meses.{}A autoridade local não permitirá que passageiros e cargas usem as estações dos concorrentes. Um suborno bem sucedido feito por um concorrente irá cancelar este contrato.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Comprar os direitos exclusivos de transporte na localidade por 12 minutos.{}A autoridade local não permitirá que passageiros e cargas usem as estações dos concorrentes. Um suborno bem sucedido feito por um concorrente irá cancelar este contrato.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Subornar a autoridade local para aumentar a sua avaliação e anular o direito de transporte exclusivo da concorrência, correndo o risco de uma penalidade severa se for apanhado.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Negociar os direitos exclusivos de transporte na localidade por 12 meses.{}A autoridade local não permitirá que passageiros e cargas usem as estações da concorrência. Um suborno bem sucedido feito pela concorrência irá cancelar este contrato.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Negociar os direitos exclusivos de transporte na localidade por 12 minutos.{}A autoridade local não permitirá que passageiros e cargas usem as estações da concorrência. Um suborno bem sucedido feito pela concorrência irá cancelar este contrato.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Suborne a autoridade local para aumentar a sua avaliação e anular os direitos de exclusividade da concorrência, correndo o risco de uma penalização severa se for apanhado.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Objetivos de {COMPANY}
@@ -3909,7 +3909,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Não per
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrar visualização na localização do ponto de controlo. Ctrl+Clique para abrir um novo visualizador na localização do ponto de controlo
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Mudar o nome do ponto de controlo
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar visualização na localização da boia. Ctrl+Clique para abrir um novo visualizador na localização da boia
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar visualização principal na localização da boia. Ctrl+Clique para abrir um novo visualizador na localização da boia
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Alterar o nome da boia
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editar nome do ponto de controlo
@@ -4147,14 +4147,14 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Novos Veículos
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Novos Veículos Monocarril
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Novos Veículos Maglev
 
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Novos veículos rodoviários
-STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Novos elétricos
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Novos Veículos Rodoviários
+STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Novos Elétricos
 
 # Vehicle availability
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Novos Veículos Ferroviários
-STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Novos veículos rodoviários
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :Novos navios
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Novos Veículos Rodoviários
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Novos Navios
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nova aeronave
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Custo: {GOLD}{CURRENCY_LONG}{BLACK} Peso: {GOLD}{WEIGHT_SHORT}
@@ -4197,10 +4197,10 @@ STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Lista de
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Lista de seleção de aeronaves. Clique numa aeronave para informações. Ctrl+Clique para mostrar/ocultar este tipo de aeronave
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Comprar veículo
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Comprar veículo
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Comprar navio
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Comprar aeronave
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Comprar Veículo
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Comprar Veículo
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Comprar Navio
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Comprar Aeronave
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Comprar e reconverter veiculo
@@ -4344,18 +4344,18 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Está p
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mensagem de um fabricante de veículos
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Projectámos um novo modelo de {STRING} - gostaria de ter um ano de exclusividade de uso deste veículo, de modo a que possamos avaliar o seu desempenho antes de o disponibilizar globalmente?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Desenvolvemos u{G 0 m m ma ns mas} nov{G 0 "o modelo de" o a os as} {STRING} - estaria interessado num ano de exclusividade de uso deste{G 0 "" "" "" s s} veículo{G 0 "" "" "" s s}, de modo a que possamos avaliar o {G 0 "seu " "seu " "seu " "" ""}desempenho antes de o{G 0 "" "" "" s s} disponibilizar globalmente?
 
-STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :locomotiva ferroviária
-STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :locomotiva de caminhos-de-ferro electrificados
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :locomotiva monocarril
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :locomotiva maglev
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}locomotiva ferroviária
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :{G=f}locomotiva elétrica ferroviária
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}locomotiva monocarril
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}locomotiva maglev
 
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :veículo rodoviário
-STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :elétrico
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}veículo rodoviário
+STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :{G=m}elétrico
 
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :aeronave
-STR_ENGINE_PREVIEW_SHIP                                         :navio
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=f}aeronave
+STR_ENGINE_PREVIEW_SHIP                                         :{G=m}navio
 
 STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Custo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Custo: {CURRENCY_LONG}  Velocidade Máx.: {VELOCITY}
@@ -4824,7 +4824,7 @@ STR_TIMETABLE_CHANGE_SPEED_QUERY                                :Alterar limite 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Remover limite de velocidade
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Limpar a velocidade máxima de viagem da ordem selecionada. Ctrl+Clique para limpar a velocidade para todas as ordens.
 
-STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Apagar Contador Atraso
+STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reiniciar Contador de Atrasos
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reiniciar o contador de atraso, para que o veículo esteja pontual. Ctrl+Clique para reiniciar o grupo todo, para que o último veículo esteja pontual e todos os outros estejam adiantados.
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Preencher automaticamente
@@ -4916,7 +4916,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Selecion
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Tirar uma captura de ecrã
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Captura de ecrã normal
 STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Ampliação máxima
-STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Ampliação padrão
+STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Captura de ecrã com ampliação predefinida
 STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Mapa completo
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Mapa de alturas
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Captura de ecrã do minimapa
@@ -5107,9 +5107,9 @@ STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Altera o
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Não é possível construir estação ferroviária aqui...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Não é possível construir paragem de autocarros...
-STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Não é possível construir estação de carregamento de camiões...
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Não é possível construir terminal de carga para camiões...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Não é possível construir estação de passageiros para elétricos...
-STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Não é possível construir estação de carga para elétricos...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Não é possível construir terminal de carga para elétricos...
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Não é possível construir doca aqui...
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Não é possível construir aeroporto aqui...
 
@@ -5135,15 +5135,15 @@ STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}É preci
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Impossível remover estação...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Impossível remover estação...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Impossível remover paragem de elétricos de passageiros
-STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Impossível remover estação de elétricos de mercadorias...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Impossível remover terminal de elétricos de mercadorias...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Deverá remover a paragem rodoviária primeiro
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... não há nenhuma estação aqui
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Precisa de demolir a estação primeiro
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Precisa de demolir a paragem de autocarros primeiro
-STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Precisa de demolir a estação de carga primeiro
-STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Precisa demolir estação de elétricos primeiro
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Precisa demolir estação de elétricos primeiro
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Precisa de demolir o terminal de carga para camiões primeiro
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Precisa demolir paragem de elétricos de passageiros primeiro
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Precisa demolir terminal de carga para elétricos primeiro
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Deverá demolir a doca primeiro
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Precisa de demolir o aeroporto primeiro
 
@@ -5258,13 +5258,14 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Deverá 
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Não é possível iniciar e finalizar no mesmo ponto
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Extremos da ponte não estão ao mesmo nível
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Ponte muito baixa para o terreno
-STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Ponte é demasiado alta para este terreno.
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}A ponte é demasiado alta para este terreno.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Início e fim devem estar alinhados
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... ambos os extremos da ponte devem estar em terra
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... ponte demasiado longa
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}A ponte terminaria fora do mapa
 STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}A ponte é demasiado baixa para uma estação
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}A ponte é demasiado baixa para uma paragem rodoviária
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}A ponte é demasiado baixa para a doca
 STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}A ponte é demasiado baixa para uma boia
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}A ponte é demasiado baixa para um ponto de controlo ferroviário
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}A ponte é demasiado baixa para um ponto de controlo rodoviário
@@ -5272,14 +5273,14 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}A ponte 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Não é possível construir túnel aqui...
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}O sítio não é adequado para a entrada do túnel
-STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Deverá demolir o túnel primeiro
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Precisa de demolir o túnel primeiro
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Há outro túnel no caminho
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}O túnel terminaria fora do mapa
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Não é possível escavar o terreno para o outro lado do túnel
 STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... túnel demasiado longo
 
 # Object related errors
-STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... demasiados objectos
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... demasiados objetos
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Não é possível construir objecto...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objecto no caminho
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... sede de empresa no caminho
@@ -5454,7 +5455,7 @@ STR_BASESOUNDS_WIN_DESCRIPTION                                  :Efeitos sonoros
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Um conjunto de sons vazio.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Música original da edição Windows de Transport Tycoon Deluxe.
 STR_BASEMUSIC_DOS_DESCRIPTION                                   :Música original da edição DOS de Transport Tycoon Deluxe.
-STR_BASEMUSIC_TTO_DESCRIPTION                                   :Música original da edição DOS de Transport Tycoon (Original) e Transport Tycoon: World Editor
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Música original das edições DOS de Transport Tycoon (Original) e de Transport Tycoon: World Editor
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Um conjunto de música vazio.
 
 ##id 0x2000
@@ -5787,17 +5788,17 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Camião de Bolh
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Camião de Bolhas Wizzowow
 
 ###length 11
-STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :Navio petroleiro MPS
-STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :Navio petroleiro CS-Inc.
-STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :Navio de passageiros MPS
-STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :Navio de passageiros FFP
+STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :Navio Petroleiro MPS
+STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :Navio Petroleiro CS-Inc.
+STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :Navio de Passageiros MPS
+STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :Navio de Passageiros FFP
 STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Hidroflutuador Bakewell 300
-STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Navio de passageiros Chugger-Chug
-STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Navio de passageiros Shivershake
-STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Navio cargueiro Yate
-STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Navio cargueiro Bakewell
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Navio cargueiro MightyMover
-STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Navio cargueiro Powernaut
+STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Navio de Passageiros Chugger-Chug
+STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Navio de Passageiros Shivershake
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Navio Cargueiro Yate
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Navio Cargueiro Bakewell
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Navio Cargueiro MightyMover
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Navio Cargueiro Powernaut
 
 ###length 41
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52

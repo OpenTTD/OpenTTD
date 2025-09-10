@@ -5427,14 +5427,14 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Lokalne 
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Twoja próba przekupstwa została wykryta przez miejscowych śledczych
 
 # Levelling errors
-STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Nie można tutaj podnieść lądu...
-STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Nie można tutaj obniżyć lądu...
+STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Nie można tutaj podnieść terenu...
+STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Nie można tutaj obniżyć terenu...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Nie można tutaj wyrównać terenu...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Wykop zniszczyłby tunel
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... już na poziomie morza
 STR_ERROR_TOO_HIGH                                              :{WHITE}... zbyt wysoko
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... już wyrównany
-STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Potem most powyżej byłby zbyt wysoko.
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Most nad nim byłby zbyt wysoki.
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Nie można zmienić nazwy firmy...
@@ -5650,6 +5650,7 @@ STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... za d
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Koniec mostu poza mapą
 STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Most jest zbyt niski dla stacji
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Most jest zbyt niski dla przystanku
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Most jest zbyt niski dla portu
 STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Most jest zbyt niski dla boi
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Most jest zbyt niski dla posterunku kolejowego
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Most jest zbyt niski dla posterunku drogowego
