@@ -63,9 +63,6 @@ enum RoadTypeSpriteGroup : uint8_t {
 	ROTSG_END,
 };
 
-/** List of road type labels. */
-typedef std::vector<RoadTypeLabel> RoadTypeLabelList;
-
 class RoadTypeInfo {
 public:
 	/**
@@ -140,7 +137,7 @@ public:
 	/**
 	 * Road type labels this type provides in addition to the main label.
 	 */
-	RoadTypeLabelList alternate_labels;
+	std::vector<RoadTypeLabel> alternate_labels;
 
 	/**
 	 * Colour on mini-map

@@ -95,7 +95,7 @@ static const RailTypeInfo _original_railtypes[] = {
 		RAILTYPE_LABEL_RAIL,
 
 		/* alternate labels */
-		RailTypeLabelList(),
+		{},
 
 		/* map colour */
 		PC_GREY,
@@ -197,7 +197,7 @@ static const RailTypeInfo _original_railtypes[] = {
 		RAILTYPE_LABEL_ELECTRIC,
 
 		/* alternate labels */
-		RailTypeLabelList(),
+		{},
 
 		/* map colour */
 		PC_GREY,
@@ -295,7 +295,7 @@ static const RailTypeInfo _original_railtypes[] = {
 		RAILTYPE_LABEL_MONO,
 
 		/* alternate labels */
-		RailTypeLabelList(),
+		{},
 
 		/* map colour */
 		PC_GREY,
@@ -393,7 +393,7 @@ static const RailTypeInfo _original_railtypes[] = {
 		RAILTYPE_LABEL_MAGLEV,
 
 		/* alternate labels */
-		RailTypeLabelList(),
+		{},
 
 		/* map colour */
 		PC_GREY,
