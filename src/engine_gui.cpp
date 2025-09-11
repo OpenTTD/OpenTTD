@@ -189,42 +189,16 @@ struct EnginePreviewWindow : Window {
 					h = GetEngineListHeight(this->veh_type_filter_criteria);
 					this->vehicle_type = this->veh_type_filter_criteria;
 				} else {
-					h = GetEngineListHeight(VEH_TRAIN);
-					if (h > GetEngineListHeight(VEH_ROAD)) {
-						if (h > GetEngineListHeight(VEH_SHIP)) {
-							if (h > GetEngineListHeight(VEH_AIRCRAFT)) {
-								this->vehicle_type = VEH_TRAIN;
-							} else {
-								h = GetEngineListHeight(VEH_AIRCRAFT);
-								this->vehicle_type = VEH_AIRCRAFT;
-							}
-						} else {
-							h = GetEngineListHeight(VEH_SHIP);
-							if (h > GetEngineListHeight(VEH_AIRCRAFT)) {
-								this->vehicle_type = VEH_SHIP;
-							} else {
-								h = GetEngineListHeight(VEH_AIRCRAFT);
-								this->vehicle_type = VEH_AIRCRAFT;
-							}
+					h = GetEngineListHeight(VEH_BEGIN);
+					this->vehicle_type = VEH_BEGIN;
+					VehicleType next_type = VEH_BEGIN;
+					++next_type;
+					while (next_type < VEH_COMPANY_END) {
+						if (h < GetEngineListHeight(next_type)) {
+							h = GetEngineListHeight(next_type);
+							this->vehicle_type = next_type;
 						}
-					} else {
-						h = GetEngineListHeight(VEH_ROAD);
-						if (h > GetEngineListHeight(VEH_SHIP)) {
-							if (h > GetEngineListHeight(VEH_AIRCRAFT)) {
-								this->vehicle_type = VEH_ROAD;
-							} else {
-								h = GetEngineListHeight(VEH_AIRCRAFT);
-								this->vehicle_type = VEH_AIRCRAFT;
-							}
-						} else {
-							h = GetEngineListHeight(VEH_SHIP);
-							if (h > GetEngineListHeight(VEH_AIRCRAFT)) {
-								this->vehicle_type = VEH_SHIP;
-							} else {
-								h = GetEngineListHeight(VEH_AIRCRAFT);
-								this->vehicle_type = VEH_AIRCRAFT;
-							}
-						}
+						++next_type;
 					}
 				}
 
