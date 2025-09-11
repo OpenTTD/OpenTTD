@@ -242,7 +242,7 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 		CommandCost ret = IsValidTileForWaypoint(tile, axis, &est);
 		if (ret.Failed()) return ret;
 
-		ret = IsRailStationBridgeAboveOk(tile, spec, StationType::RailWaypoint, *it++);
+		ret = IsRailStationBridgeAboveOk(tile, spec, StationType::RailWaypoint, *it++ + axis);
 		if (ret.Failed()) return ret;
 	}
 
