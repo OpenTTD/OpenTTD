@@ -802,8 +802,8 @@ STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Rotas de Transporte
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Floresta
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Estação Ferroviária
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Terminal de Carga para Camiões
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Paragem de Autocarros
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Terminal de Carga para Camiões/Elétricos
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Paragem de Autocarros/Elétricos de Passageiros
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Aeroporto/Heliporto
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Doca
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Terreno Irregular
@@ -827,7 +827,7 @@ STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STR
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Nenhum
-STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Tudo
+STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Todos
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mostrar altura
 STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Mostrar nomes das indústrias
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Não mostrar indústrias no mapa
@@ -939,9 +939,9 @@ STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} parou porque a ordem de adaptação falhou
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Renovação automática falhou para {VEHICLE}{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}U{G 0 m m ma ns mas} nov{G 0 "o modelo de" o a os as} {STRING} est{G 0 á á á am am} agora disponíve{G 0 l l l is is}!
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}U{G 0 m m ma ns mas} nov{G 0 "o modelo de" o a os as} {STRING} est{G 0 á á á am am} disponíve{G 0 l l l is is}!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}U{G 0 m m ma ns mas} nov{G 0 "o modelo de" o a os as} {STRING} est{G 0 á á á am am} agora disponíve{G 0 l l l is is}! - {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}U{G 0 m m ma ns mas} nov{G 0 "o modelo de" o a os as} {STRING} est{G 0 á á á am am} disponíve{G 0 l l l is is}! - {ENGINE}
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Abrir a janela de grupo focada no grupo do veículo
 
@@ -5004,7 +5004,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Só foi 
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Captura de ecrã enorme
-STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}A captura vai ter uma resolução de {COMMA} x {COMMA} pixeis. Pode demorar um bocado para realizar a captura. Deseja continuar?
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}A captura vai ter uma resolução de {COMMA} x {COMMA} pixeis. Pode demorar algum tempo para realizar a captura. Deseja continuar?
 
 STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Mapa de alturas guardado com sucesso como '{STRING}'. O pico mais alto é {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Captura de ecrã gravada para o disco como '{STRING}' com sucesso
@@ -5257,18 +5257,18 @@ STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Não é 
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Deverá demolir a ponte primeiro
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Não é possível iniciar e finalizar no mesmo ponto
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Extremos da ponte não estão ao mesmo nível
-STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Ponte muito baixa para o terreno
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}A ponte é demasiado baixa para o terreno.
 STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}A ponte é demasiado alta para este terreno.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Início e fim devem estar alinhados
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... ambos os extremos da ponte devem estar em terra
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... ponte demasiado longa
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}A ponte terminaria fora do mapa
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}A ponte é demasiado baixa para uma estação
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}A ponte é demasiado baixa para uma paragem rodoviária
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}A ponte é demasiado baixa para a estação
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}A ponte é demasiado baixa para a paragem rodoviária
 STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}A ponte é demasiado baixa para a doca
-STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}A ponte é demasiado baixa para uma boia
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}A ponte é demasiado baixa para um ponto de controlo ferroviário
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}A ponte é demasiado baixa para um ponto de controlo rodoviário
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}A ponte é demasiado baixa para a boia
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}A ponte é demasiado baixa para o ponto de controlo ferroviário
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}A ponte é demasiado baixa para o ponto de controlo rodoviário
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Não é possível construir túnel aqui...

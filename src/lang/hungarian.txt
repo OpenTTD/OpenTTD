@@ -5328,6 +5328,7 @@ STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... a h�
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}A híd a térképen túl végződne
 STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}A híd túl alacsony az állomáshoz
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}A híd túl alacsony a megállóhoz
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}A híd túl alacsony a kikötőhöz
 STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}A híd túl alacsony a bójához
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}A híd túl alacsony a vasúti ellenőrzőponthoz
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}BA híd túl alacsony az útponthoz
