@@ -667,7 +667,7 @@ static void MakeCzechTownName(StringBuilder &builder, uint32_t seed)
 		for (ending = ending_start; ending <= ending_stop; ending++) {
 			const CzechNameSubst *e = &_name_czech_subst_ending[ending];
 
-			if ((e->choose & choose) == choose && e->allow.Any(allow)) {
+			if (e->choose.All(choose) && e->allow.Any(allow)) {
 				map[i++] = ending;
 			}
 		}
@@ -681,7 +681,7 @@ static void MakeCzechTownName(StringBuilder &builder, uint32_t seed)
 		assert(gender != CZG_FREE && gender != CZG_NFREE);
 	}
 
-	if (do_prefix && (_name_czech_adj[prefix].choose & choose) != choose) {
+	if (do_prefix && !_name_czech_adj[prefix].choose.All(choose)) {
 		/* Throw away non-matching prefix. */
 		do_prefix = false;
 	}
