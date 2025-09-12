@@ -108,6 +108,7 @@ struct EnginePreviewWindow : Window {
 
 	EnginePreviewWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
+		this->UpdateWindowsVehicleType();
 		this->InitNested(window_number);
 
 		this->vscroll = this->GetScrollbar(WID_EP_SCROLLBAR);
@@ -184,30 +185,12 @@ struct EnginePreviewWindow : Window {
 			}
 
 			case WID_EP_LIST: {
-				uint h;
-				if (this->veh_type_filter_criteria != VEH_ANY) {
-					h = GetEngineListHeight(this->veh_type_filter_criteria);
-					this->vehicle_type = this->veh_type_filter_criteria;
-				} else {
-					h = GetEngineListHeight(VEH_BEGIN);
-					this->vehicle_type = VEH_BEGIN;
-					VehicleType next_type = VEH_BEGIN;
-					++next_type;
-					while (next_type < VEH_COMPANY_END) {
-						if (h < GetEngineListHeight(next_type)) {
-							h = GetEngineListHeight(next_type);
-							this->vehicle_type = next_type;
-						}
-						++next_type;
-					}
-				}
-
 				VehicleCellSize tcs = GetVehicleImageCellSize(VEH_TRAIN, EIT_PURCHASE);
 				VehicleCellSize rcs = GetVehicleImageCellSize(VEH_ROAD, EIT_PURCHASE);
 				VehicleCellSize scs = GetVehicleImageCellSize(VEH_SHIP, EIT_PURCHASE);
 				VehicleCellSize acs = GetVehicleImageCellSize(VEH_AIRCRAFT, EIT_PURCHASE);
 
-				fill.height = resize.height = h;
+				fill.height = resize.height = GetEngineListHeight(this->vehicle_type);
 				size.height = 3 * resize.height;
 				size.width = std::max(size.width, std::max({tcs.extend_left, rcs.extend_left, scs.extend_left, acs.extend_left}) + std::max({tcs.extend_right, rcs.extend_right, scs.extend_right, acs.extend_right}) + 165) + padding.width;
 				break;
@@ -303,6 +286,25 @@ struct EnginePreviewWindow : Window {
 		}
 	}
 
+	void UpdateWindowsVehicleType()
+	{
+		if (this->veh_type_filter_criteria != VEH_ANY) {
+			this->vehicle_type = this->veh_type_filter_criteria;
+			return;
+		}
+		uint max_h = GetEngineListHeight(VEH_BEGIN);
+		this->vehicle_type = VEH_BEGIN;
+		VehicleType next_type = VEH_BEGIN;
+		++next_type;
+		while (next_type < VEH_COMPANY_END) {
+			if (max_h < GetEngineListHeight(next_type)) {
+				max_h = GetEngineListHeight(next_type);
+				this->vehicle_type = next_type;
+			}
+			++next_type;
+		}
+	}
+
 	void OnDropdownSelect(WidgetID widget, int index, int /*click_result*/) override
 	{
 		switch (widget) {
@@ -320,6 +322,8 @@ struct EnginePreviewWindow : Window {
 					this->sort_criteria = _engine_sort_last_criteria[this->veh_type_filter_criteria];
 					this->descending_sort_order = _engine_sort_last_order[this->veh_type_filter_criteria];
 					this->FilterEngineList();
+					this->UpdateWindowsVehicleType();
+					this->GetWidget<NWidgetLeaf>(WID_EP_LIST)->SetupSmallestSize(this);
 				}
 				break;
 
