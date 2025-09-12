@@ -179,7 +179,7 @@ RoadTypes AddDateIntroducedRoadTypes(RoadTypes current, TimerGameCalendar::Date 
 
 		/* Have we introduced all required roadtypes? */
 		RoadTypes required = rti->introduction_required_roadtypes;
-		if ((rts & required) != required) continue;
+		if (!rts.All(required)) continue;
 
 		rts.Set(rti->introduces_roadtypes);
 	}

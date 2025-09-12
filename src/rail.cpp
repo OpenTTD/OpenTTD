@@ -104,7 +104,7 @@ RailTypes AddDateIntroducedRailTypes(RailTypes current, TimerGameCalendar::Date 
 
 		/* Have we introduced all required railtypes? */
 		RailTypes required = rti->introduction_required_railtypes;
-		if ((rts & required) != required) continue;
+		if (!rts.All(required)) continue;
 
 		rts.Set(rti->introduces_railtypes);
 	}
