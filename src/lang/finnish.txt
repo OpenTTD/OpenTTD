@@ -5268,6 +5268,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Silta on
 STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Silta on liian matala poijun ylle
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Silta on liian matala rautatien reittipisteen ylle
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Silta on liian matala tien reittipisteen ylle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Silta on liian matala sulun ylle
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Tunnelia ei voi rakentaa...

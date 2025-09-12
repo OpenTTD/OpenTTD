@@ -5268,6 +5268,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}橋樑�
 STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}橋樑過低，無法放置浮標
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}橋樑過低，無法興建中途站
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}橋樑過低，無法興建中途站
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}橋樑過低，無法興建水閘
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}無法在此挖掘隧道...

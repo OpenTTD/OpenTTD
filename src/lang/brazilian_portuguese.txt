@@ -5269,6 +5269,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}A ponte 
 STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Ponte é muito baixa para uma boia
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Ponte é muito baixa para um ponto de controle ferroviário
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Ponte é muito baixa para um ponto de controle rodoviário
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}A ponte é muito baixa para eclusa
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Não é possível construir túnel aqui...

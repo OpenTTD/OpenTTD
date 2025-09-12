@@ -5269,6 +5269,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}다리 �
 STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}다리 밑에 부표를 두기에는 다리 높이가 너무 낮습니다
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}다리 밑에 철도 경유지를 두기에는 다리 높이가 너무 낮습니다
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}다리 밑에 도로 경유지를 두기에는 다리 높이가 너무 낮습니다
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}다리 밑에 항구를 두기에는 다리 높이가 너무 낮습니다
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}여기에 터널을 지을 수 없습니다...

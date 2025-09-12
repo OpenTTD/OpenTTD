@@ -5268,6 +5268,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Bron är
 STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Bro för låg för boj
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Bro för låg för järnvägsriktmärke
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Bro för låg för vägriktmärke
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Bro för låg för sluss
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kan inte bygga tunnel här...

@@ -5654,6 +5654,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Most jes
 STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Most jest zbyt niski dla boi
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Most jest zbyt niski dla posterunku kolejowego
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Most jest zbyt niski dla posterunku drogowego
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Most jest zbyt niski dla śluzy
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Nie można tutaj zbudować tunelu...

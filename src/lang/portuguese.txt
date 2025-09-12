@@ -1084,7 +1084,7 @@ STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Arrastar o cont
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Detetar automaticamente o tamanho
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Marque esta opção para detetar automaticamente o tamanho do interface
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Escalar chanfros
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Escalar rebordos
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Marque esta opção para dimensionar os chanfros por tamanho de interface
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Usar o tipo de letra com gráficos tradicionais
@@ -1708,10 +1708,10 @@ STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Escolher chat d
 STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Trocar o mapeamento entre o chat interno da empresa e o chat público para <ENTER> e <Ctrl+ENTER> respetivamente
 
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Velocidade da roda do rato no mapa: {STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Controlo de sensibilidade da roda de rolagem do rato
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Controlo de sensibilidade da roda de deslocamento do rato
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Função da roda do rato: {STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Ativar "scroll" com rodas de rato bidimensionais
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Ativar descolamento com rodas de rato bidimensionais
 ###length 3
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Ampliar mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Percorrer mapa
@@ -2054,9 +2054,9 @@ STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Desativado
 
-STR_CONFIG_SETTING_ZOOM_MIN                                     :Nível maximo de ampliação: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN                                     :Nível máximo de ampliação: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :O nível máximo de zoom para visualizadores. Níveis máximos de zoom superiores aumenterão os requisitos de memória
-STR_CONFIG_SETTING_ZOOM_MAX                                     :Nível maximo de redução da câmara: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :Nível máximo de redução da câmara: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :O nível mínimo de zoom para visualizadores. Níveis mínimos de zoom superiores poderão causar lag quando utilizados
 ###length 6
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
@@ -2100,7 +2100,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simétrico" si
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Modo de distribuição para o correio: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Simétrico" significa que aproximadamente a mesma quantidade de correio será enviada de uma estação A para a estação B assim como de B para A. "Assimétrico" significa que uma quantidade arbitrária de correio poderá ser enviada em qualquer direção. "Manual" significa que nenhuma distribuição automática terá lugar para o correio
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Modo de distribuição para a classe de carga BLINDADA: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :A classe de carga BLINDADA contém valores no clima temperado, diamantes no tropical ou ouro no ártico. Os NewGRFs podem mudar isto. "Simétrico" significa que aproximadamente a mesma quantidade de carga será enviada da estação A para a estação B assim como da B para a A. "Assimétrico" significa que quantidades arbitrárias dessa carga podem ser enviadas em qualquer direção. "Manual" significa que nenhuma distribuição automática ocorrerá para essa carga. Recomenda-se que seja definido para assimétrico ou manual quando a jogar no ártico ou no tropical, pois os bancos nesses climas só recebem mercadorias. Para o temperado pode ser também escolhido simétrico pois os bancos irão remeter valores ao banco de origem
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :A classe de carga BLINDADA contém valores no clima temperado, diamantes no tropical ou ouro no ártico. Os NewGRFs podem mudar isto. "Simétrico" significa que aproximadamente a mesma quantidade de carga será enviada da estação A para a estação B assim como da B para a A. "Assimétrico" significa que quantidades arbitrárias dessa carga podem ser enviadas em qualquer direção. "Manual" significa que nenhuma distribuição automática ocorrerá para essa carga. Recomenda-se que seja definido para assimétrico ou manual quando a jogar no ártico ou no clima tropical, pois os bancos nesses climas só recebem mercadorias. Para o clima temperado pode ser também escolhido simétrico pois os bancos irão remeter valores ao banco de origem
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Modo de distribuição para outras classes de carga: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Assimétrico" significa que quantidades arbitrárias de carga podem ser enviadas em qualquer direção. "Manual" significa que nenhuma distribuição automática ocorrerá para essas cargas
 ###length 3
@@ -2554,7 +2554,7 @@ STR_NETWORK_ASK_SURVEY_LINK                                     :Sobre sondagem 
 STR_NETWORK_ASK_SURVEY_NO                                       :Não
 STR_NETWORK_ASK_SURVEY_YES                                      :Sim
 
-STR_NETWORK_SPECTATORS                                          :Espectadores
+STR_NETWORK_SPECTATORS                                          :Espetadores
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Entrar
@@ -3837,7 +3837,7 @@ STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Todos os tipos 
 STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Múltiplos tipos de carga
 STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Sem tipos de carga
 STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING                    :Apenas sem classificação de carga
-STR_STATION_LIST_CARGO_FILTER_SELECT_ALL                        :Selecionar tudo e sem avaliação
+STR_STATION_LIST_CARGO_FILTER_SELECT_ALL                        :Selecionar todos e sem avaliação
 STR_STATION_LIST_CARGO_FILTER_NO_RATING                         :Sem classificação de carga
 STR_STATION_LIST_CARGO_FILTER_EXPAND                            :Mostrar mais...
 
@@ -5269,6 +5269,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}A ponte 
 STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}A ponte é demasiado baixa para a boia
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}A ponte é demasiado baixa para o ponto de controlo ferroviário
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}A ponte é demasiado baixa para o ponto de controlo rodoviário
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}A ponte é demasiado baixa para a eclusa
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Não é possível construir túnel aqui...
