@@ -100,3 +100,4 @@
 #include "palette.nfo"
 #include "road_waypoints.nfo"
 #include "overlay_rocks.nfo"
+#include "bridge_decks.nfo"
