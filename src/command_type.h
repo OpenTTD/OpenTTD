@@ -29,6 +29,7 @@ class CommandCost {
 	Owner owner = CompanyID::Invalid(); ///< Originator owner of error.
 	StringID extra_message = INVALID_STRING_ID; ///< Additional warning message for when success is unset
 	EncodedString encoded_message{}; ///< Encoded error message, used if the error message includes parameters.
+	EncodedString encoded_extra_message{}; ///< Encoded extra error message, used if the extra error message includes parameters.
 
 public:
 	/**
@@ -81,6 +82,26 @@ public:
 	EncodedString &GetEncodedMessage()
 	{
 		return this->encoded_message;
+	}
+
+	/**
+	 * Set the encoded extra message string. If set, this is used by the error message window instead of the extra error message StringID,
+	 * to allow more information to be displayed to the local player.
+	 * @note Do not set an encoded extra message if the error is not for the local player, as it will never be seen.
+	 * @param message EncodedString extra message to set.
+	 */
+	void SetEncodedExtraMessage(EncodedString &&message)
+	{
+		this->encoded_extra_message = std::move(message);
+	}
+
+	/**
+	 * Get the last encoded extra error message.
+	 * @returns Reference to the encoded extra message.
+	 */
+	EncodedString &GetEncodedExtraMessage()
+	{
+		return this->encoded_extra_message;
 	}
 
 	/**

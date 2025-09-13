@@ -891,7 +891,14 @@ static CommandCost IsStationBridgeAboveOk(TileIndex tile, std::span<const Bridge
 		/* Get normal error message associated with clearing the tile. */
 		return Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlag::Auto, tile);
 	}
-	if (GetTileMaxZ(tile) + height > bridge_height) return CommandCost{GetBridgeTooLowMessageForStationType(type)};
+	if (GetTileMaxZ(tile) + height > bridge_height) {
+		CommandCost cost = CommandCost{GetBridgeTooLowMessageForStationType(type), STR_ERROR_BRIDGE_HAS_TO_BE_HIGHER};
+		if (IsLocalCompany()) {
+			int height_diff = (GetTileMaxZ(tile) + height - bridge_height) * TILE_HEIGHT_STEP;
+			cost.SetEncodedExtraMessage(GetEncodedString(STR_ERROR_BRIDGE_HAS_TO_BE_HIGHER, height_diff));
+		}
+		return cost;
+	}
 
 	return CommandCost{};
 }
