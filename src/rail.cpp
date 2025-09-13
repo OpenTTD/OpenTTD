@@ -132,11 +132,13 @@ RailTypes GetCompanyRailTypes(CompanyID company, bool introduces)
 			const RailVehicleInfo *rvi = &e->u.rail;
 
 			if (rvi->railveh_type != RAILVEH_WAGON) {
-				assert(rvi->railtype < RAILTYPE_END);
+				assert(rvi->railtypes.Any());
 				if (introduces) {
-					rts.Set(GetRailTypeInfo(rvi->railtype)->introduces_railtypes);
+					for (RailType rt : rvi->railtypes) {
+						rts.Set(GetRailTypeInfo(rt)->introduces_railtypes);
+					}
 				} else {
-					rts.Set(rvi->railtype);
+					rts.Set(rvi->railtypes);
 				}
 			}
 		}
@@ -161,11 +163,13 @@ RailTypes GetRailTypes(bool introduces)
 
 		const RailVehicleInfo *rvi = &e->u.rail;
 		if (rvi->railveh_type != RAILVEH_WAGON) {
-			assert(rvi->railtype < RAILTYPE_END);
+			assert(rvi->railtypes.Any());
 			if (introduces) {
-				rts.Set(GetRailTypeInfo(rvi->railtype)->introduces_railtypes);
+				for (RailType rt : rvi->railtypes) {
+					rts.Set(GetRailTypeInfo(rt)->introduces_railtypes);
+				}
 			} else {
-				rts.Set(rvi->railtype);
+				rts.Set(rvi->railtypes);
 			}
 		}
 	}
