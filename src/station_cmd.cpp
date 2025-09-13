@@ -1480,14 +1480,23 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 	RailStationTileLayout stl{statspec, numtracks, plat_len};
 	auto it = stl.begin();
 	TileIndex tile_track = tile_org;
-	for (uint i = 0; i != numtracks; ++i) {
+	for (uint i = 0; i != numtracks; ++i, tile_track += track_delta) {
 		TileIndex tile = tile_track;
-		for (uint j = 0; j != plat_len; ++j) {
-			ret = IsRailStationBridgeAboveOk(tile, statspec, StationType::Rail, *it++ + axis);
+		for (uint j = 0; j != plat_len; ++j, tile += tile_delta, ++it) {
+			/* Don't check the layout if there's no bridge above anyway. */
+			if (!IsBridgeAbove(tile)) continue;
+
+			StationGfx gfx = *it + axis;
+			if (statspec != nullptr) {
+				uint32_t platinfo = GetPlatformInfo(AXIS_X, gfx, plat_len, numtracks, j, i, false);
+				/* As the station is not yet completely finished, the station does not yet exist. */
+				uint16_t callback = GetStationCallback(CBID_STATION_BUILD_TILE_LAYOUT, platinfo, 0, statspec, nullptr, tile);
+				if (callback != CALLBACK_FAILED && callback <= UINT8_MAX) gfx = (callback & ~1) + axis;
+			}
+
+			ret = IsRailStationBridgeAboveOk(tile, statspec, StationType::Rail, gfx);
 			if (ret.Failed()) return ret;
-			tile += tile_delta;
 		}
-		tile_track += track_delta;
 	}
 
 	/* Check if we can allocate a custom stationspec to this station */
