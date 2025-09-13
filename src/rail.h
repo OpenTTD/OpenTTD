@@ -286,6 +286,8 @@ public:
 	{
 		return 82 * this->fallback_railtype;
 	}
+
+	RailType Index() const;
 };
 
 
@@ -299,19 +301,6 @@ inline const RailTypeInfo *GetRailTypeInfo(RailType railtype)
 	extern RailTypeInfo _railtypes[RAILTYPE_END];
 	assert(railtype < RAILTYPE_END);
 	return &_railtypes[railtype];
-}
-
-/**
- * Returns the railtype for a Railtype information.
- * @param rti Pointer to static RailTypeInfo
- * @return Railtype in static railtype definitions
- */
-inline RailType GetRailTypeInfoIndex(const RailTypeInfo *rti)
-{
-	extern RailTypeInfo _railtypes[RAILTYPE_END];
-	size_t index = rti - _railtypes;
-	assert(index < RAILTYPE_END && rti == _railtypes + index);
-	return static_cast<RailType>(index);
 }
 
 /**
