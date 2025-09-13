@@ -16,14 +16,13 @@
 #include "yapf_node.hpp"
 
 /** Yapf Node for road YAPF */
-template <class Tkey_>
-struct CYapfRoadNodeT : CYapfNodeT<Tkey_, CYapfRoadNodeT<Tkey_>> {
-	typedef CYapfNodeT<Tkey_, CYapfRoadNodeT<Tkey_>> base;
+struct CYapfRoadNode : CYapfNodeT<CYapfNodeKeyExitDir, CYapfRoadNode> {
+	typedef CYapfNodeT<CYapfNodeKeyExitDir, CYapfRoadNode> base;
 
 	TileIndex segment_last_tile;
 	Trackdir segment_last_td;
 
-	void Set(CYapfRoadNodeT *parent, TileIndex tile, Trackdir td, bool is_choice)
+	void Set(CYapfRoadNode *parent, TileIndex tile, Trackdir td, bool is_choice)
 	{
 		this->base::Set(parent, tile, td, is_choice);
 		this->segment_last_tile = tile;
@@ -31,12 +30,6 @@ struct CYapfRoadNodeT : CYapfNodeT<Tkey_, CYapfRoadNodeT<Tkey_>> {
 	}
 };
 
-/* now define two major node types (that differ by key type) */
-typedef CYapfRoadNodeT<CYapfNodeKeyExitDir>  CYapfRoadNodeExitDir;
-typedef CYapfRoadNodeT<CYapfNodeKeyTrackDir> CYapfRoadNodeTrackDir;
-
-/* Default NodeList types */
-typedef NodeList<CYapfRoadNodeExitDir , 8, 10> CRoadNodeListExitDir;
-typedef NodeList<CYapfRoadNodeTrackDir, 8, 10> CRoadNodeListTrackDir;
+typedef NodeList<CYapfRoadNode, 8, 10> CRoadNodeList;
 
 #endif /* YAPF_NODE_ROAD_HPP */

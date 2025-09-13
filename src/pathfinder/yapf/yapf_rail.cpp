@@ -528,13 +528,13 @@ public:
 	}
 };
 
-template <class Tpf_, class Ttrack_follower, class Tnode_list, template <class Types> class TdestinationT, template <class Types> class TfollowT>
+template <class Tpf_, class Ttrack_follower, template <class Types> class TdestinationT, template <class Types> class TfollowT>
 struct CYapfRail_TypesT {
-	typedef CYapfRail_TypesT<Tpf_, Ttrack_follower, Tnode_list, TdestinationT, TfollowT>  Types;
+	typedef CYapfRail_TypesT<Tpf_, Ttrack_follower, TdestinationT, TfollowT>  Types;
 
 	typedef Tpf_                                Tpf;
 	typedef Ttrack_follower                     TrackFollower;
-	typedef Tnode_list                          NodeList;
+	typedef CRailNodeList                       NodeList;
 	typedef Train                               VehicleType;
 	typedef CYapfBaseT<Types>                   PfBase;
 	typedef TfollowT<Types>                     PfFollow;
@@ -544,21 +544,21 @@ struct CYapfRail_TypesT {
 	typedef CYapfCostRailT<Types>               PfCost;
 };
 
-struct CYapfRail1         : CYapfT<CYapfRail_TypesT<CYapfRail1        , CFollowTrackRail    , CRailNodeListTrackDir, CYapfDestinationTileOrStationRailT, CYapfFollowRailT>> {};
-struct CYapfRail2         : CYapfT<CYapfRail_TypesT<CYapfRail2        , CFollowTrackRailNo90, CRailNodeListTrackDir, CYapfDestinationTileOrStationRailT, CYapfFollowRailT>> {};
+struct CYapfRail         : CYapfT<CYapfRail_TypesT<CYapfRail        , CFollowTrackRail    , CYapfDestinationTileOrStationRailT, CYapfFollowRailT>> {};
+struct CYapfRailNo90     : CYapfT<CYapfRail_TypesT<CYapfRailNo90    , CFollowTrackRailNo90, CYapfDestinationTileOrStationRailT, CYapfFollowRailT>> {};
 
-struct CYapfAnyDepotRail1 : CYapfT<CYapfRail_TypesT<CYapfAnyDepotRail1, CFollowTrackRail    , CRailNodeListTrackDir, CYapfDestinationAnyDepotRailT     , CYapfFollowAnyDepotRailT>> {};
-struct CYapfAnyDepotRail2 : CYapfT<CYapfRail_TypesT<CYapfAnyDepotRail2, CFollowTrackRailNo90, CRailNodeListTrackDir, CYapfDestinationAnyDepotRailT     , CYapfFollowAnyDepotRailT>> {};
+struct CYapfAnyDepotRail     : CYapfT<CYapfRail_TypesT<CYapfAnyDepotRail,     CFollowTrackRail    , CYapfDestinationAnyDepotRailT     , CYapfFollowAnyDepotRailT>> {};
+struct CYapfAnyDepotRailNo90 : CYapfT<CYapfRail_TypesT<CYapfAnyDepotRailNo90, CFollowTrackRailNo90, CYapfDestinationAnyDepotRailT     , CYapfFollowAnyDepotRailT>> {};
 
-struct CYapfAnySafeTileRail1 : CYapfT<CYapfRail_TypesT<CYapfAnySafeTileRail1, CFollowTrackFreeRail    , CRailNodeListTrackDir, CYapfDestinationAnySafeTileRailT , CYapfFollowAnySafeTileRailT>> {};
-struct CYapfAnySafeTileRail2 : CYapfT<CYapfRail_TypesT<CYapfAnySafeTileRail2, CFollowTrackFreeRailNo90, CRailNodeListTrackDir, CYapfDestinationAnySafeTileRailT , CYapfFollowAnySafeTileRailT>> {};
+struct CYapfAnySafeTileRail     : CYapfT<CYapfRail_TypesT<CYapfAnySafeTileRail    , CFollowTrackFreeRail    , CYapfDestinationAnySafeTileRailT , CYapfFollowAnySafeTileRailT>> {};
+struct CYapfAnySafeTileRailNo90 : CYapfT<CYapfRail_TypesT<CYapfAnySafeTileRailNo90, CFollowTrackFreeRailNo90, CYapfDestinationAnySafeTileRailT , CYapfFollowAnySafeTileRailT>> {};
 
 
 Track YapfTrainChooseTrack(const Train *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool &path_found, bool reserve_track, PBSTileInfo *target, TileIndex *dest)
 {
 	Trackdir td_ret = _settings_game.pf.forbid_90_deg
-		? CYapfRail2::stChooseRailTrack(v, tile, enterdir, tracks, path_found, reserve_track, target, dest)
-		: CYapfRail1::stChooseRailTrack(v, tile, enterdir, tracks, path_found, reserve_track, target, dest);
+		? CYapfRailNo90::stChooseRailTrack(v, tile, enterdir, tracks, path_found, reserve_track, target, dest)
+		: CYapfRail::stChooseRailTrack(v, tile, enterdir, tracks, path_found, reserve_track, target, dest);
 
 	return (td_ret != INVALID_TRACKDIR) ? TrackdirToTrack(td_ret) : FindFirstTrack(tracks);
 }
@@ -610,8 +610,8 @@ bool YapfTrainCheckReverse(const Train *v)
 	if (reverse_penalty == 0) reverse_penalty = 1;
 
 	bool reverse = _settings_game.pf.forbid_90_deg
-		? CYapfRail2::stCheckReverseTrain(v, tile, td, tile_rev, td_rev, reverse_penalty)
-		: CYapfRail1::stCheckReverseTrain(v, tile, td, tile_rev, td_rev, reverse_penalty);
+		? CYapfRailNo90::stCheckReverseTrain(v, tile, td, tile_rev, td_rev, reverse_penalty)
+		: CYapfRail::stCheckReverseTrain(v, tile, td, tile_rev, td_rev, reverse_penalty);
 
 	return reverse;
 }
@@ -625,15 +625,15 @@ FindDepotData YapfTrainFindNearestDepot(const Train *v, int max_penalty)
 	Trackdir td_rev = ReverseTrackdir(last_veh->GetVehicleTrackdir());
 
 	return _settings_game.pf.forbid_90_deg
-		? CYapfAnyDepotRail2::stFindNearestDepotTwoWay(v, origin.tile, origin.trackdir, last_tile, td_rev, max_penalty, YAPF_INFINITE_PENALTY)
-		: CYapfAnyDepotRail1::stFindNearestDepotTwoWay(v, origin.tile, origin.trackdir, last_tile, td_rev, max_penalty, YAPF_INFINITE_PENALTY);
+		? CYapfAnyDepotRailNo90::stFindNearestDepotTwoWay(v, origin.tile, origin.trackdir, last_tile, td_rev, max_penalty, YAPF_INFINITE_PENALTY)
+		: CYapfAnyDepotRail::stFindNearestDepotTwoWay(v, origin.tile, origin.trackdir, last_tile, td_rev, max_penalty, YAPF_INFINITE_PENALTY);
 }
 
 bool YapfTrainFindNearestSafeTile(const Train *v, TileIndex tile, Trackdir td, bool override_railtype)
 {
 	return _settings_game.pf.forbid_90_deg
-		? CYapfAnySafeTileRail2::stFindNearestSafeTile(v, tile, td, override_railtype)
-		: CYapfAnySafeTileRail1::stFindNearestSafeTile(v, tile, td, override_railtype);
+		? CYapfAnySafeTileRailNo90::stFindNearestSafeTile(v, tile, td, override_railtype)
+		: CYapfAnySafeTileRail::stFindNearestSafeTile(v, tile, td, override_railtype);
 }
 
 /** if any track changes, this counter is incremented - that will invalidate segment cost cache */
