@@ -916,6 +916,7 @@ static const Units _units_height[] = {
 	{ { 3.0 }, STR_UNITS_HEIGHT_IMPERIAL, 0 }, // "Wrong" conversion factor for more nicer GUI values
 	{ { 1.0 }, STR_UNITS_HEIGHT_METRIC,   0 },
 	{ { 1.0 }, STR_UNITS_HEIGHT_SI,       0 },
+	{ { .02 }, STR_UNITS_HEIGHT_GAMEUNITS,0 },
 };
 
 /** Unit conversions for time in calendar days or wallclock seconds */
