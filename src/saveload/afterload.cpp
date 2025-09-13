@@ -1328,39 +1328,39 @@ bool AfterLoadGame()
 		}
 	}
 
-	/* Elrails got added in rev 24 */
+	/* Elrails got added in rev 24 but can be disabled since version 38 */
 	if (IsSavegameVersionBefore(SLV_24)) {
-		RailType min_rail = RAILTYPE_ELECTRIC;
-
 		for (Train *v : Train::Iterate()) {
 			RailType rt = RailVehInfo(v->engine_type)->railtype;
 
 			v->railtype = rt;
-			if (rt == RAILTYPE_ELECTRIC) min_rail = RAILTYPE_RAIL;
 		}
 
-		/* .. so we convert the entire map from normal to elrail (so maintain "fairness") */
+		_settings_game.vehicle.disable_elrails = true;
+
+		/* We update the entire map to keep monorail and maglev in place */
+		RailType monorail = (RailType)1; // monorail was 1 before elrails were introduced
 		for (const auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
 				case MP_RAILWAY:
-					SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
+					SetRailType(t, UpdateRailType(GetRailType(t), monorail));
 					break;
 
 				case MP_ROAD:
 					if (IsLevelCrossing(t)) {
-						SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
+						SetRailType(t, UpdateRailType(GetRailType(t), monorail));
 					}
 					break;
 
 				case MP_STATION:
 					if (HasStationRail(t)) {
-						SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
+						SetRailType(t, UpdateRailType(GetRailType(t), monorail));
 					}
 					break;
 
 				case MP_TUNNELBRIDGE:
 					if (GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) {
-						SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
+						SetRailType(t, UpdateRailType(GetRailType(t), monorail));
 					}
 					break;
 
@@ -1369,6 +1369,14 @@ bool AfterLoadGame()
 			}
 		}
 	}
+	else if (IsSavegameVersionBefore(SLV_38)) {
+		/* since we cannot know the preference of a user, let elrails enabled; it
+		 * can be disabled manually */
+		_settings_game.vehicle.disable_elrails = false;
+	}
+	/* do the same as when elrails were enabled/disabled manually just now */
+	UpdateDisableElrailSettingState(_settings_game.vehicle.disable_elrails, false);
+	InitializeRailGUI();
 
 	/* In version 16.1 of the savegame a company can decide if trains, which get
 	 * replaced, shall keep their old length. In all prior versions, just default
@@ -1499,13 +1507,6 @@ bool AfterLoadGame()
 			v->current_order.SetRefit(CARGO_NO_REFIT);
 		}
 	}
-
-	/* from version 38 we have optional elrails, since we cannot know the
-	 * preference of a user, let elrails enabled; it can be disabled manually */
-	if (IsSavegameVersionBefore(SLV_38)) _settings_game.vehicle.disable_elrails = false;
-	/* do the same as when elrails were enabled/disabled manually just now */
-	UpdateDisableElrailSettingState(_settings_game.vehicle.disable_elrails, false);
-	InitializeRailGUI();
 
 	/* From version 53, the map array was changed for house tiles to allow
 	 * space for newhouses grf features. A new byte, m7, was also added. */
