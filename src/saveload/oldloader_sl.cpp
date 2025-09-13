@@ -1814,7 +1814,7 @@ bool LoadTTDMain(LoadgameState &ls)
 	FixTTDDepots();
 
 	/* Fix some general stuff */
-	if (to_underlying(_settings_game.game_creation.landscape) >= NUM_LANDSCAPE) _settings_game.game_creation.landscape = LandscapeType::Temperate;
+	if (std::to_underlying(_settings_game.game_creation.landscape) >= NUM_LANDSCAPE) _settings_game.game_creation.landscape = LandscapeType::Temperate;
 
 	/* Fix the game to be compatible with OpenTTD */
 	FixOldTowns();

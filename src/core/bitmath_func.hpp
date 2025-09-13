@@ -319,20 +319,4 @@ private:
 	Tbitset bitset;
 };
 
-namespace std {
-	/**
-	 * Custom implementation of std::byteswap; remove once we build with C++23.
-	 * Perform an endianness bitswap on x.
-	 * @param x the variable to bitswap
-	 * @return the bitswapped value.
-	 */
-	template <typename T>
-	[[nodiscard]] constexpr enable_if_t<is_integral_v<T>, T> byteswap(T x) noexcept
-	{
-		if constexpr (sizeof(T) == 1) return x;
-		if constexpr (sizeof(T) == 2) return (x >> 8) | (x << 8);
-		if constexpr (sizeof(T) == 4) return ((x >> 24) & 0xFF) | ((x >> 8) & 0xFF00) | ((x << 8) & 0xFF0000) | ((x << 24) & 0xFF000000);
-	}
-}
-
 #endif /* BITMATH_FUNC_HPP */
