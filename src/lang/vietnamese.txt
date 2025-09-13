@@ -1461,10 +1461,10 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Cửa sổ chí
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Cửa sổ chính
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Mọi cửa sổ bổ sung
 
-STR_CONFIG_SETTING_BRIBE                                        :Cho phép hối lộ chính quyền địa phương: {STRING}
+STR_CONFIG_SETTING_BRIBE                                        :Cho phép đút lót chính quyền địa phương: {STRING}
 ###length 2
-STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Cho phép công ty thử hối lộ quan chức địa phương. Nếu việc hối lộ bị phát giác, công ty sẽ không được làm gì ở địa phương đó 6 tháng
-STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :Cho phép các công ty hối lộ quan chức địa phương. Nếu việc hối lộ bị phát giác bởi điều tra viên, thì công ty sẽ không được hoạt động ở địa phương đó trong 6 phút
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Cho phép công ty thử đút lót quan chức địa phương. Nếu việc đút lót bị phát hiện, công ty sẽ không được làm gì ở địa phương đó trong sáu tháng
+STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :Cho phép các công ty đút lót quan chức địa phương. Nếu việc đút lót bị phát hiện bởi thanh tra viên, thì công ty sẽ không được hoạt động ở địa phương đó trong sáu phút
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Cho phép mua quyền vận tải độc quyền: {STRING}
 ###length 2
@@ -2163,7 +2163,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Hoàng Gia (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metric (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :Tiêu Chuẩn Đo Lường
+STR_CONFIG_SETTING_LOCALISATION                                 :Tiêu chuẩn đo lường
 STR_CONFIG_SETTING_GRAPHICS                                     :Đồ họa
 STR_CONFIG_SETTING_SOUND                                        :Âm thanh
 STR_CONFIG_SETTING_INTERFACE                                    :Giao diện
@@ -2232,7 +2232,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Ván Ch�
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Cấu Hình Trò Chơi
 STR_INTRO_HIGHSCORE                                             :{BLACK}Bảng Thành Tích
-STR_INTRO_HELP                                                  :{BLACK}Trợ giúp & hướng dẫn
+STR_INTRO_HELP                                                  :{BLACK}Trợ Giúp & Hướng Dẫn
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Nội Dung Trực Tuyến
 STR_INTRO_QUIT                                                  :{BLACK}Thoát
 
@@ -3704,7 +3704,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (đã được vận chuyển)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Thị trấn phát triển mỗi {ORANGE}{UNITS_DAYS_OR_SECONDS}
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Thị trấn phát triển mỗi {ORANGE}{UNITS_DAYS_OR_SECONDS} (đã được góp vốn)
-STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Thị trấn {RED}không còn{BLACK} phát triển
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Thị trấn đang {RED}không{BLACK} phát triển
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Độ ồn giới hạn trong đô thị: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Xem trung tâm đô thị. Ctrl+Click mở cửa sổ mới về vị trí đô thị
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Chính quyền địa phương
@@ -3743,7 +3743,7 @@ STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Tài trợ cả
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Xây tượng đài công ty
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Tài trợ xây nhà cửa
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Mua độc quyền kinh doanh vận tải
-STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Hối lộ quan chức địa phương
+STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Đút lót quan chức địa phương
 ###next-name-looks-similar
 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Thực hiện chiến dịch quảng cáo nhỏ để thu hút khách và hàng hoá vận chuyển.{}Tăng xếp hạng cho các trạm gần trung tâm trong thời gian ngắn.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
@@ -3753,8 +3753,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}Tài trợ cải tạo lại mạng đường phố trong đô thị.{}Nó sẽ gây ra sự gián đoạn với giao thông đường bộ đáng kể trong vòng 6 phút.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Dựng tượng đài tôn vinh để quảng bá hình ảnh công ty.{}Tăng xếp hạng cho các trạm trong khu vực.{}{POP_COLOUR} Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Tài trợ xây dựng các toà nhà để thúc đẩy phát triển đô thị.{}Tăng sự phát triển đô thị trong một thời gian ngắn.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Mua hợp đồng giấy phép vận tải độc quyền ở địa phương trong 12 tháng.{}Chính quyền địa phương sẽ không cho hành khách và hàng hoá sử dụng các ga, bến, cảng của đối thủ. Nhưng nếu đối thủ thực hiện hối lộ thành công thì sẽ huỷ bỏ hợp đồng này.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Mua hợp đồng giấy phép vận tải độc quyền ở địa phương trong 12 phút.{}Chính quyền địa phương sẽ không cho hành khách và hàng hoá sử dụng các ga, bến, cảng của đối thủ. Nhưng nếu đối thủ thực hiện hối lộ thành công thì sẽ huỷ bỏ hợp đồng này.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Mua hợp đồng giấy phép vận tải độc quyền ở địa phương trong 12 tháng.{}Chính quyền địa phương sẽ không cho hành khách và hàng hoá sử dụng các ga, bến, cảng của đối thủ. Nhưng nếu đối thủ thực hiện đút lót thành công thì sẽ huỷ bỏ hợp đồng này.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Mua hợp đồng giấy phép vận tải độc quyền ở địa phương trong 12 phút.{}Chính quyền địa phương sẽ không cho hành khách và hàng hoá sử dụng các ga, bến, cảng của đối thủ. Nhưng nếu đối thủ thực hiện đút lót thành công thì sẽ huỷ bỏ hợp đồng này.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Đút lót quan chức địa phương để nâng cao quyền lợi và hủy bỏ độc quyền kinh doanh vận tải của đối thủ, có nguy cơ bị phạt nặng nếu vụ việc bị bại lộ.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
 
 # Goal window
@@ -4480,10 +4480,10 @@ STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Không có
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Chờ đường thông
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Quá xa để tới điểm kế tiếp
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - Nhắm tới {0:STATION}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - Hướng tới {0:STATION}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - Không lộ trình
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - Nhắm tới {0:WAYPOINT}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - Nhắm tới {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - Hướng tới {0:WAYPOINT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - Hướng tới {0:DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - Phục vụ tại {0:DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - Gỡ gộp và bảo trì ở {0:DEPOT}
 
@@ -5038,7 +5038,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Không c
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Chính quyền {TOWN} từ chối bạn làm việc này
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Chính quyền {TOWN} từ chối có thêm một sân bay nữa trong địa phận của họ
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Chính quyền {TOWN} từ chối sân bay vì dân chúng phàn nàn là quá ồn ào
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Sự cố gắng trong việc hối lộ của bạn đã bị phát hiện bởi các nhà điều tra
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Hành vi đút lót của bạn đã bị thanh tra viên khu vực phát hiện
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Không thể nâng đất ở đây...
@@ -5268,6 +5268,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Cầu qu
 STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Cầu quá thấp cho phao
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Cầu quá thấp cho điểm mốc đường ray
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Cầu quá thấp cho điểm mốc đường
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :Cầu thấp, tàu không qua được khóa
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Không thể đào hầm ở đây...

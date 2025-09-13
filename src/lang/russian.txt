@@ -5455,6 +5455,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Высо
 STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Высота моста недостаточна для установки буя
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Высота моста недостаточна для строительства маршрутной точки
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Высота моста недостаточна для строительства маршрутной точки
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Высота моста недостаточна для строительства шлюза
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Здесь невозможно построить туннель...
