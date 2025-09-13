@@ -292,8 +292,11 @@ void ShowErrorMessage(EncodedString &&summary_msg, int x, int y, CommandCost &cc
 	EncodedString error = std::move(cc.GetEncodedMessage());
 	if (error.empty()) error = GetEncodedStringIfValid(cc.GetErrorMessage());
 
+	EncodedString extra_error = std::move(cc.GetEncodedExtraMessage());
+	if (extra_error.empty()) extra_error = GetEncodedStringIfValid(cc.GetExtraErrorMessage());
+
 	ShowErrorMessage(std::move(summary_msg), std::move(error), WL_INFO, x, y,
-		GetEncodedStringIfValid(cc.GetExtraErrorMessage()), cc.GetErrorOwner());
+		std::move(extra_error), cc.GetErrorOwner());
 }
 
 /**
