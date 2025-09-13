@@ -11,6 +11,7 @@
 #define YAPF_COSTRAIL_HPP
 
 
+#include "../../depot_base.h"
 #include "../../pbs.h"
 #include "../follow_track.hpp"
 #include "../pathfinder_type.h"
@@ -400,6 +401,13 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 			} else if (IsRailDepotTile(cur.tile)) {
 				/* We will end in this pass (depot is possible target) */
 				end_segment_reason.Set(EndSegmentReason::Depot);
+				/* Add a penalty for each non-stopped train in the depot.
+				 * The penalty is capped at 8 trains. */
+				const Depot *d = Depot::GetByTile(cur.tile);
+				if (d) {
+					const uint count = std::min(d->running_vehicles, 8u);
+					segment_cost += Yapf().PfGetSettings().rail_pbs_cross_penalty * count;
+				}
 
 			} else if (cur.tile_type == MP_STATION && IsRailWaypoint(cur.tile)) {
 				if (v->current_order.IsType(OT_GOTO_WAYPOINT) &&

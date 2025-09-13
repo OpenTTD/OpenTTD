@@ -53,6 +53,7 @@
 #include "rev.h"
 #include "highscore.h"
 #include "station_base.h"
+#include "depot_base.h"
 #include "crashlog.h"
 #include "engine_func.h"
 #include "core/random_func.hpp"
@@ -1250,6 +1251,7 @@ void StateGameLoop()
 			SaveOrLoad(name, SLO_SAVE, DFT_GAME_FILE, AUTOSAVE_DIR, false);
 		}
 
+		RebuildDepotOccupancyCache(VEH_TRAIN);
 		CheckCaches();
 
 		/* All these actions has to be done from OWNER_NONE
