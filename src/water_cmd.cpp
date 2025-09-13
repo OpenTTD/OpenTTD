@@ -454,6 +454,13 @@ CommandCost CmdBuildLock(DoCommandFlags flags, TileIndex tile)
 	DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile));
 	if (dir == INVALID_DIAGDIR) return CommandCost(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 
+	TileIndex lower_tile = TileAddByDiagDir(tile, ReverseDiagDir(dir));
+
+	/* If freeform edges are disabled, don't allow building on edge tiles. */
+	if (!_settings_game.construction.freeform_edges && (!IsInsideMM(TileX(lower_tile), 1, Map::MaxX() - 1) || !IsInsideMM(TileY(lower_tile), 1, Map::MaxY() - 1))) {
+		return CommandCost(STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP);
+	}
+
 	return DoBuildLock(tile, dir, flags);
 }
 
