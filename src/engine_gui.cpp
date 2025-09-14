@@ -26,6 +26,9 @@
 #include "engine_cmd.h"
 #include "zoom_func.h"
 #include "dropdown_func.h"
+#include "stringfilter_type.h"
+#include "hotkeys.h"
+#include "querystring_gui.h"
 
 #include "core/geometry_func.hpp"
 
@@ -104,13 +107,19 @@ struct EnginePreviewWindow : Window {
 	bool descending_sort_order = false; ///< Sort direction, @see _engine_sort_direction
 	uint8_t sort_criteria = 0; ///< Current sort criterium.
 
-	EnginePreviewWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
+	StringFilter string_filter{}; ///< Filter for vehicle name
+	QueryString vehicle_editbox; ///< Filter editbox
+
+	EnginePreviewWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc), vehicle_editbox(MAX_LENGTH_VEHICLE_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_VEHICLE_NAME_CHARS)
 	{
 		this->UpdateWindowsVehicleType();
 		this->InitNested(window_number);
 
 		this->vscroll = this->GetScrollbar(WID_EP_SCROLLBAR);
 		assert(this->vscroll != nullptr);
+
+		this->querystrings[WID_EP_FILTER] = &this->vehicle_editbox;
+		this->vehicle_editbox.cancel_button = QueryString::ACTION_CLEAR;
 
 		EnginePreviewWindow::_current_instance = this;
 
@@ -217,6 +226,23 @@ struct EnginePreviewWindow : Window {
 		}
 	}
 
+	/** Filter by name and NewGRF extra text */
+	bool FilterByText(const Engine *e)
+	{
+		/* Do not filter if the filter text box is empty */
+		if (this->string_filter.IsEmpty()) return true;
+
+		/* Filter engine name */
+		this->string_filter.ResetState();
+		this->string_filter.AddLine(GetString(STR_ENGINE_NAME, PackEngineNameDParam(e->index, EngineNameContext::PurchaseList)));
+
+		/* Filter NewGRF extra text */
+		auto text = GetNewGRFAdditionalText(e->index);
+		if (text) this->string_filter.AddLine(*text);
+
+		return this->string_filter.GetState();
+	}
+
 	/**
 	 * Determines which engines should be currently visible.
 	 * Stores the output in the filtered_eng_list.
@@ -225,15 +251,15 @@ struct EnginePreviewWindow : Window {
 	{
 		this->filtered_eng_list.clear();
 
-		if (this->veh_type_filter_criteria == VEH_ANY) {
-			this->filtered_eng_list.insert(this->filtered_eng_list.begin(), this->eng_list.begin(), this->eng_list.end());
-		} else {
-			for (auto it = this->eng_list.begin(); it != this->eng_list.end(); ++it) {
-				const Engine *e = Engine::Get((*it).engine_id);
-				if(e->type == this->veh_type_filter_criteria) {
-					this->filtered_eng_list.push_back((*it));
-				}
+		for (auto it = this->eng_list.begin(); it != this->eng_list.end(); ++it) {
+			const Engine *e = Engine::Get((*it).engine_id);
+
+			if (this->veh_type_filter_criteria != VEH_ANY) {
+				if(e->type != this->veh_type_filter_criteria) continue;
 			}
+			if(!FilterByText(e)) continue;
+
+			this->filtered_eng_list.push_back((*it));
 		}
 
 		_engine_sort_direction = this->descending_sort_order;
@@ -452,6 +478,19 @@ struct EnginePreviewWindow : Window {
 		if (this->selected_engine == EngineID::Invalid()) return;
 		if (Engine::Get(this->selected_engine)->preview_company != _local_company) this->Close();
 	}
+
+	void OnEditboxChanged(WidgetID wid) override
+	{
+		if (wid == WID_EP_FILTER) {
+			this->string_filter.SetFilterTerm(this->vehicle_editbox.text.GetText());
+			this->FilterEngineList();
+			this->SetDirty();
+		}
+	}
+
+	static inline HotkeyList hotkeys{"enginepreview", {
+		Hotkey('F', "focus_filter_box", WID_EP_FILTER),
+	}};
 };
 
 /* Initialise static variables */
@@ -461,7 +500,8 @@ static WindowDesc _engine_preview_desc(
 	WDP_CENTER, {}, 0, 0,
 	WC_ENGINE_PREVIEW, WC_NONE,
 	WindowDefaultFlag::Construction,
-	_nested_engine_preview_widgets
+	_nested_engine_preview_widgets,
+	&EnginePreviewWindow::hotkeys
 );
 
 /**

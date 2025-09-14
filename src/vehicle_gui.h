@@ -118,4 +118,6 @@ void StopGlobalFollowVehicle(const Vehicle *v);
 void DrawVehicleImage(const Vehicle *v, const Rect &r, VehicleID selection, EngineImageType image_type, int skip);
 void SetMouseCursorVehicle(const Vehicle *v, EngineImageType image_type);
 
+std::optional<std::string> GetNewGRFAdditionalText(EngineID engine);
+
 #endif /* VEHICLE_GUI_H */

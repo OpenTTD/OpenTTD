@@ -835,7 +835,7 @@ static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_
  * @param engine The engine whose additional text to get.
  * @return The std::string if present, otherwise std::nullopt.
  */
-static std::optional<std::string> GetNewGRFAdditionalText(EngineID engine)
+std::optional<std::string> GetNewGRFAdditionalText(EngineID engine)
 {
 	std::array<int32_t, 16> regs100;
 	uint16_t callback = GetVehicleCallback(CBID_VEHICLE_ADDITIONAL_TEXT, 0, 0, engine, nullptr, regs100);
