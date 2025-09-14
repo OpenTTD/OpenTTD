@@ -2117,7 +2117,7 @@ STR_CONFIG_SETTING_DEMAND_SIZE                                  :Quantidade de c
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Definir isto para menos de 100% torna a distribuição simétrica reagir mais como a assimétrica. Menos carga será forçada a ser devolvida se uma determinada quantidade for enviada para uma estação. Se for definido para 0% a distribuição simétrica irá reagir como a assimétrica
 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturação de percursos curtos antes de usar percursos de grande capacidade: {STRING}
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Frequentemente existem múltiplos trajectos entre duas estações. Cargodist irá saturar o trajecto mais curto primeiro, depois usar o segundo trajecto mais curto até o saturar, e assim por diante. A saturação é determinada pelo estimativa da capacidade do uso planeado. Ao saturar todos os caminhos, se ainda existir procura, irá sobrecarregar todos os trajectos, com preferência pelos de maior capacidade. No entanto, grande parte das vezes o algoritmo não irá estimar correctamente a capacidade. Esta configuração permite definir até que percentagem um trajecto mais curto deverá ser saturado na primeira passagem antes do algoritmo proceder ao próximo. Defina-o para menos de 100% para evitar estações sobrecarregadas no caso de capacidade super-estimada
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Frequentemente existem múltiplos trajetos entre duas estações. Cargodist irá saturar o trajeto mais curto primeiro, depois usar o segundo trajeto mais curto até o saturar, e assim por diante. A saturação é determinada pelo estimativa da capacidade do uso planeado. Ao saturar todos os caminhos, se ainda existir procura, irá sobrecarregar todos os trajetos, com preferência pelos de maior capacidade. No entanto, grande parte das vezes o algoritmo não irá estimar corretamente a capacidade. Esta configuração permite definir até que percentagem um trajeto mais curto deverá ser saturado na primeira passagem antes do algoritmo proceder ao próximo. Defina-o para menos de 100% para evitar estações sobrecarregadas no caso de capacidade super-estimada
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Unidades de velocidade (terrestre): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Unidades de velocidade (náutica): {STRING}
@@ -2577,7 +2577,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Introduz
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Não foram encontradas interfaces de rede
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}A ligação ao servidor atingiu o tempo limite ou foi recusada
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Impossível ligar devido a incompatibilidade de NewGRF
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Não é possível ligar devido a incompatibilidade de NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}A sincronização do jogo de rede falhou.
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}A conexão do jogo de rede perdeu-se.
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Não foi possível abrir o jogo.
@@ -2586,7 +2586,7 @@ STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Ocorreu 
 STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}O seu nome de jogador não foi definido. O nome pode ser definido no topo da janela de Multi-jogador
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}O seu nome do seu servidor não foi definido. O nome pode ser definido no topo da janela de Multi-jogador
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}A revisão deste cliente não condiz com a revisão do servidor
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Palavra-chave incorrecta
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Palavra-chave incorreta
 STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}Você não está na lista de clientes permitidos
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Servidor cheio
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Foi banido deste servidor
@@ -2612,9 +2612,9 @@ STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :erro de protoco
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF incompatível
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :não autorizado
 STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :foi recebido um pacote inesperado ou inválido
-STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :revisão incorrecta
+STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :revisão incorreta
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nome já está a ser utilizado
-STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :palavra-chave incorrecta
+STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :palavra-chave incorreta
 STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :não está na lista de permissões
 STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :nenhum dos métodos de autenticação solicitados está disponível
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :ID da empresa errado na aplicação de rede
@@ -3626,9 +3626,9 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Revogação da 
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Alerta!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Vai alterar um jogo em andamento. O OpenTTD pode terminar abruptamente.Não envie relatórios de erros sobre estas questões.{}Tem a certeza que quer continuar?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Impossível adicionar ficheiro: GRF ID duplicado
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Não é possível adicionar ficheiro: GRF ID duplicado
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Ficheiro correspondente não encontrado (GRF compatível carregado)
-STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Impossivel adicionar ficheiro: alcançado limite de ficheiros NewGRF
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Não é possível adicionar ficheiro: foi alcançado o limite de NewGRFs
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) compatíveis carregados para ficheiros em falta
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Ficheiro(s) GRF em falta foram desativados
@@ -4441,7 +4441,7 @@ STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Comprar 
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Comprar uma cópia da aeronave. Ctrl+Clique para partilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forçar comboio a prosseguir sem esperar pelo sinal
-STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Inverter direcção do comboio
+STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Inverter direção do comboio
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Forçar veículo a dar a volta
 STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Centrar visualização no destino da ordem. Ctrl+Clique para abrir um novo visualizador na localização do destino da ordem
 
@@ -4610,7 +4610,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Horário
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Mudar para a vista de horário
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de ordens - clique numa ordem para a selecionar. Ctrl+Clique para rolar até ao destino da ordem
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de ordens - clique numa ordem para a selecionar. Ctrl+Clique para deslocar a câmara ao destino da ordem
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Fim de Ordens - -
@@ -4975,8 +4975,8 @@ STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Falha ao
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Erro interno: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Ficheiro corrompido - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Jogo gravado numa versão mais recente do jogo
-STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Impossível ler ficheiro
-STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Impossível escrever ficheiro
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Ficheiro não é legível
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Não é possível escrever ficheiro
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Falha ao verificar integridade de dados
 STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :Salvar o jogo é feito com uma versão modificada
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<indisponível>
@@ -4986,12 +4986,12 @@ STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}O jogo f
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Geração do mapa cancelada...{}{}... não existem locais adequados para localidades
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... não existe nenhuma localidade neste cenário
 
-STR_ERROR_PNGMAP                                                :{WHITE}Impossível carregar paisagem do PNG...
+STR_ERROR_PNGMAP                                                :{WHITE}Não é possível carregar paisagem do PNG...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... ficheiro não encontrado
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... não pode converter tipo de imagem. Necessário PNG de 8 ou 24 bits.
 STR_ERROR_PNGMAP_MISC                                           :{WHITE}... alguma coisa correu mal (provavelmente um ficheiro corrompido)
 
-STR_ERROR_BMPMAP                                                :{WHITE}Impossível carregar paisagem de BMP...
+STR_ERROR_BMPMAP                                                :{WHITE}Não é possível carregar paisagem de BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... não pode converter tipo de imagem
 
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... a imagem é demasiado grande
@@ -5019,7 +5019,7 @@ STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Fora dos
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Muito perto dos limites do mapa
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Dinheiro insuficiente - é necessário {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}É necessário terreno plano
-STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Terreno inclinado na direcção incorrecta
+STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Terreno inclinado na direção incorreta
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Não é possível fazer isto...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}O edifício deve ser demolido primeiro
 STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}... o edifício está protegido
@@ -5082,11 +5082,11 @@ STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Não é 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... demasiadas indústrias
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Não é possível gerar indústrias...
-STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Não é possível construir {STRING} aqui...
+STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Não é possível construir {G 0 "" "o " "a " "os " "as "}{STRING} aqui...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Não é possível construir este tipo de indústria aqui...
 STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}Não é possível prospetar indústria...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... muito perto de outra indústria
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... é necessário construir uma localidade primeiro
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... é necessário fundar uma localidade primeiro
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... só é permitido uma por localidade
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... só pode ser construído em localidades com pelo menos 1200 habitantes
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... só se pode construir em zonas florestais
@@ -5125,17 +5125,17 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Muito pe
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Demasiado perto de outro aeroporto
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Não pode alterar o nome da estação...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... estrada pertence a uma localidade
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... estrada orientada na direcção incorrecta
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... estrada orientada na direção incorreta
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... estações de passagem não podem ter curvas
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... estações de passagem não podem ter cruzamentos
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Não é possível remover parte da estação...
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}É preciso remover a estação primeiro
-STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Impossível remover estação...
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Impossível remover estação...
-STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Impossível remover paragem de elétricos de passageiros
-STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Impossível remover terminal de elétricos de mercadorias...
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Não é possível remover estação...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Não é possível remover terminal de carga...
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Não é possível remover paragem de elétricos de passageiros
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Não é possível remover terminal de elétricos de mercadorias...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Deverá remover a paragem rodoviária primeiro
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... não há nenhuma estação aqui
 
@@ -5178,7 +5178,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... tem 
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Os comboios só podem ser modificados quando parados num depósito ferroviário
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Comboio muito longo
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Impossível inverter a direcção do veículo...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Não é possível inverter a direção do veículo...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... compostos por unidades múltiplas
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Vias férreas incompatíveis
 
@@ -5250,10 +5250,10 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Não é 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... árvore já está plantada aqui
 STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... terreno não indicado para este tipo de árvore
-STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Impossível plantar árvore aqui...
+STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Não é possível plantar árvore aqui...
 
 # Bridge related errors
-STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Não é possível construir ponte aqui...
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Não é possível construir uma ponte aqui...
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Deverá demolir a ponte primeiro
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Não é possível iniciar e finalizar no mesmo ponto
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Extremos da ponte não estão ao mesmo nível
@@ -5290,14 +5290,14 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... já 
 STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}... atingido o limite de construção de objeto
 
 # Group related errors
-STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Impossível criar grupo...
-STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Impossível remover este grupo...
-STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Impossível renomear o grupo...
+STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Não é possível criar grupo...
+STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Não é possível remover este grupo...
+STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Não é possível alterar o nome do grupo...
 STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Não é possível definir grupo parente...
 STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :{WHITE}... não são permitidos ciclos na hierarquia de grupos
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Não é possível remover todos os veículos deste grupo...
-STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Impossível adicionar o veículo a este grupo...
-STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Impossível adicionar veículos com ordens partilhadas ao grupo...
+STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Não é possível adicionar o veículo a este grupo...
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Não é possível adicionar veículos partilhados ao grupo...
 
 # Generic vehicle errors
 
@@ -5386,10 +5386,10 @@ STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Começar
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Não é possível fazer o comboio passar o sinal com perigo...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Não é possível inverter a direcção do comboio...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Não é possível inverter a direção do comboio...
 STR_ERROR_TRAIN_START_NO_POWER                                  :O comboio não tem energia
 
-STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Impossível fazer o veículo dar a volta...
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Não é possível fazer o veículo dar a volta...
 
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Aeronave está em voo
 
@@ -5399,9 +5399,9 @@ STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Demasiad
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Não é possível inserir nova ordem...
 STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Não é possível eliminar esta ordem...
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Não é possível modificar esta ordem...
-STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Impossível mover esta ordem...
-STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Impossível saltar esta ordem...
-STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Impossível saltar ordem selecionada...
+STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Não é possível mover esta ordem...
+STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Não é possível saltar a ordem atual...
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Não é possível saltar a ordem selecionada...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... veiculo não pode ir a todas as estações
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... veiculo não pode ir a essa estação
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... um veículo a partilhar esta ordem não pode ir a essa estação
@@ -5409,7 +5409,7 @@ STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... nem 
 STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... nem todos os veículos estão a partilhar ordens
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Não é possível partilhar a lista de ordens...
-STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Impossível parar de partilhar a lista de ordens...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Não é possível parar de partilhar a lista de ordens...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Não é possível copiar a lista de ordens...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... muito distante do destino anterior
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... o avião não tem alcance suficiente
@@ -5430,7 +5430,7 @@ STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}Não exi
 STR_ERROR_NO_BUOY                                               :{WHITE}Não existe uma boia
 
 # Timetable related errors
-STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Impossível programar veículo...
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Não é possível programar o horário do veículo...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Veículos apenas podem esperar em estações.
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Este veículo não pára nesta estação.
 STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... horário incompleto
