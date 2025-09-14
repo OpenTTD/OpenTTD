@@ -487,6 +487,13 @@ function Regression::Engine()
 		print("    GetRailType():      " + AIEngine.GetRailType(i));
 		print("    GetRoadType():      " + AIEngine.GetRoadType(i));
 		print("    GetPlaneType():     " + AIEngine.GetPlaneType(i));
+		local railtypes = AIEngine.GetAllRailTypes(i);
+		print("    GetAllRailTypes():  " + (railtypes == null ? "null" : "instance"));
+		if (railtypes != null) {
+			foreach(t in railtypes) {
+				print("      " + t);
+			}
+		}
 	}
 	print("  Valid Engines:        " + j);
 }

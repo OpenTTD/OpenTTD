@@ -10,6 +10,7 @@
 #ifndef SCRIPT_ENGINE_HPP
 #define SCRIPT_ENGINE_HPP
 
+#include "script_list.hpp"
 #include "script_vehicle.hpp"
 #include "script_rail.hpp"
 #include "script_airport.hpp"
@@ -258,13 +259,13 @@ public:
 	static ScriptRail::RailType GetRailType(EngineID engine_id);
 
 	/**
-	 * Get all RailType's of the engine.
+	 * Get a list of all RailTypes of the engine.
 	 * @param engine_id The engine to get all RailTypes of.
 	 * @pre IsValidEngine(engine_id).
 	 * @pre GetVehicleType(engine_id) == ScriptVehicle::VT_RAIL.
 	 * @return All rail types of the engine.
 	 */
-	static ScriptRail::RailTypes GetAllRailTypes(EngineID engine_id);
+	static ScriptList *GetAllRailTypes(EngineID engine_id);
 
 	/**
 	 * Check if the engine is articulated.

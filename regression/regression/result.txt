@@ -1407,6 +1407,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 0
     IsValidEngine():    true
     GetName():          Kirby Paul Tank (Steam)
@@ -1425,6 +1426,8 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      0
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  instance
+      0
   Engine 1
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -1443,6 +1446,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 2
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -1461,6 +1465,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 3
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -1479,6 +1484,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 4
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -1497,6 +1503,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 5
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -1515,6 +1522,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 6
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -1533,6 +1541,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 7
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -1551,6 +1560,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 8
     IsValidEngine():    true
     GetName():          Chaney 'Jubilee' (Steam)
@@ -1569,6 +1579,8 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      0
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  instance
+      0
   Engine 9
     IsValidEngine():    true
     GetName():          Ginzu 'A4' (Steam)
@@ -1587,6 +1599,8 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      0
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  instance
+      0
   Engine 10
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -1605,6 +1619,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 11
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -1623,6 +1638,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 12
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -1641,6 +1657,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 13
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -1659,6 +1676,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 14
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -1677,6 +1695,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 15
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -1695,6 +1714,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 16
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -1713,6 +1733,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 17
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -1731,6 +1752,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 18
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -1749,6 +1771,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 19
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -1767,6 +1790,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 20
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -1785,6 +1809,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 21
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -1803,6 +1828,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 22
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -1821,6 +1847,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 23
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -1839,6 +1866,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 24
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -1857,6 +1885,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 25
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -1875,6 +1904,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 26
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -1893,6 +1923,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 27
     IsValidEngine():    true
     GetName():          Passenger Carriage
@@ -1911,6 +1942,8 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      0
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  instance
+      0
   Engine 28
     IsValidEngine():    true
     GetName():          Mail Van
@@ -1929,6 +1962,8 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      0
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  instance
+      0
   Engine 29
     IsValidEngine():    true
     GetName():          Coal Truck
@@ -1947,6 +1982,8 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      0
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  instance
+      0
   Engine 30
     IsValidEngine():    true
     GetName():          Oil Tanker
@@ -1965,6 +2002,8 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      0
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  instance
+      0
   Engine 31
     IsValidEngine():    true
     GetName():          Livestock Van
@@ -1983,6 +2022,8 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      0
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  instance
+      0
   Engine 32
     IsValidEngine():    true
     GetName():          Goods Van
@@ -2001,6 +2042,8 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      0
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  instance
+      0
   Engine 33
     IsValidEngine():    true
     GetName():          Grain Hopper
@@ -2019,6 +2062,8 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      0
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  instance
+      0
   Engine 34
     IsValidEngine():    true
     GetName():          Wood Truck
@@ -2037,6 +2082,8 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      0
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  instance
+      0
   Engine 35
     IsValidEngine():    true
     GetName():          Iron Ore Hopper
@@ -2055,6 +2102,8 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      0
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  instance
+      0
   Engine 36
     IsValidEngine():    true
     GetName():          Steel Truck
@@ -2073,6 +2122,8 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      0
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  instance
+      0
   Engine 37
     IsValidEngine():    true
     GetName():          Armoured Van
@@ -2091,6 +2142,8 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      0
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  instance
+      0
   Engine 38
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2109,6 +2162,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 39
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2127,6 +2181,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 40
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2145,6 +2200,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 41
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2163,6 +2219,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 42
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2181,6 +2238,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 43
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2199,6 +2257,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 44
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2217,6 +2276,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 45
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2235,6 +2295,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 46
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2253,6 +2314,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 47
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2271,6 +2333,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 48
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2289,6 +2352,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 49
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2307,6 +2371,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 50
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2325,6 +2390,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 51
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2343,6 +2409,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 52
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2361,6 +2428,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 53
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2379,6 +2447,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 54
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2397,6 +2466,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 55
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2415,6 +2485,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 56
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2433,6 +2504,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 57
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2451,6 +2523,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 58
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2469,6 +2542,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 59
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2487,6 +2561,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 60
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2505,6 +2580,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 61
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2523,6 +2599,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 62
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2541,6 +2618,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 63
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2559,6 +2637,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 64
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2577,6 +2656,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 65
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2595,6 +2675,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 66
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2613,6 +2694,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 67
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2631,6 +2713,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 68
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2649,6 +2732,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 69
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2667,6 +2751,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 70
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2685,6 +2770,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 71
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2703,6 +2789,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 72
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2721,6 +2808,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 73
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2739,6 +2827,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 74
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2757,6 +2846,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 75
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2775,6 +2865,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 76
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2793,6 +2884,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 77
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2811,6 +2903,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 78
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2829,6 +2922,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 79
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2847,6 +2941,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 80
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2865,6 +2960,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 81
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2883,6 +2979,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 82
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2901,6 +2998,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 83
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2919,6 +3017,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 84
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2937,6 +3036,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 85
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2955,6 +3055,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 86
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2973,6 +3074,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 87
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -2991,6 +3093,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 88
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3009,6 +3112,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 89
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3027,6 +3131,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 90
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3045,6 +3150,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 91
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3063,6 +3169,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 92
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3081,6 +3188,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 93
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3099,6 +3207,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 94
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3117,6 +3226,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 95
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3135,6 +3245,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 96
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3153,6 +3264,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 97
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3171,6 +3283,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 98
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3189,6 +3302,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 99
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3207,6 +3321,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 100
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3225,6 +3340,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 101
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3243,6 +3359,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 102
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3261,6 +3378,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 103
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3279,6 +3397,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 104
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3297,6 +3416,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 105
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3315,6 +3435,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 106
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3333,6 +3454,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 107
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3351,6 +3473,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 108
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3369,6 +3492,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 109
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3387,6 +3511,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 110
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3405,6 +3530,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 111
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3423,6 +3549,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 112
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3441,6 +3568,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 113
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3459,6 +3587,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 114
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3477,6 +3606,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 115
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3495,6 +3625,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 116
     IsValidEngine():    true
     GetName():          MPS Regal Bus
@@ -3513,6 +3644,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      0
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 117
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3531,6 +3663,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 118
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3549,6 +3682,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 119
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3567,6 +3701,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 120
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3585,6 +3720,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 121
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3603,6 +3739,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 122
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3621,6 +3758,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 123
     IsValidEngine():    true
     GetName():          Balogh Coal Truck
@@ -3639,6 +3777,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      0
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 124
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3657,6 +3796,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 125
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3675,6 +3815,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 126
     IsValidEngine():    true
     GetName():          MPS Mail Truck
@@ -3693,6 +3834,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      0
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 127
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3711,6 +3853,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 128
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3729,6 +3872,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 129
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3747,6 +3891,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 130
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3765,6 +3910,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 131
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3783,6 +3929,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 132
     IsValidEngine():    true
     GetName():          Witcombe Oil Tanker
@@ -3801,6 +3948,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      0
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 133
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3819,6 +3967,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 134
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3837,6 +3986,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 135
     IsValidEngine():    true
     GetName():          Talbott Livestock Van
@@ -3855,6 +4005,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      0
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 136
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3873,6 +4024,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 137
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3891,6 +4043,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 138
     IsValidEngine():    true
     GetName():          Balogh Goods Truck
@@ -3909,6 +4062,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      0
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 139
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3927,6 +4081,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 140
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3945,6 +4100,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 141
     IsValidEngine():    true
     GetName():          Hereford Grain Truck
@@ -3963,6 +4119,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      0
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 142
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3981,6 +4138,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 143
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -3999,6 +4157,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 144
     IsValidEngine():    true
     GetName():          Witcombe Wood Truck
@@ -4017,6 +4176,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      0
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 145
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4035,6 +4195,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 146
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4053,6 +4214,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 147
     IsValidEngine():    true
     GetName():          MPS Iron Ore Truck
@@ -4071,6 +4233,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      0
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 148
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4089,6 +4252,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 149
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4107,6 +4271,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 150
     IsValidEngine():    true
     GetName():          Balogh Steel Truck
@@ -4125,6 +4290,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      0
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 151
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4143,6 +4309,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 152
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4161,6 +4328,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 153
     IsValidEngine():    true
     GetName():          Balogh Armoured Truck
@@ -4179,6 +4347,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      0
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 154
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4197,6 +4366,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 155
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4215,6 +4385,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 156
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4233,6 +4404,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 157
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4251,6 +4423,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 158
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4269,6 +4442,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 159
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4287,6 +4461,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 160
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4305,6 +4480,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 161
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4323,6 +4499,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 162
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4341,6 +4518,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 163
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4359,6 +4537,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 164
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4377,6 +4556,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 165
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4395,6 +4575,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 166
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4413,6 +4594,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 167
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4431,6 +4613,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 168
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4449,6 +4632,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 169
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4467,6 +4651,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 170
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4485,6 +4670,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 171
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4503,6 +4689,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 172
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4521,6 +4708,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 173
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4539,6 +4727,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 174
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4557,6 +4746,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 175
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4575,6 +4765,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 176
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4593,6 +4784,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 177
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4611,6 +4803,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 178
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4629,6 +4822,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 179
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4647,6 +4841,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 180
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4665,6 +4860,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 181
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4683,6 +4879,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 182
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4701,6 +4898,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 183
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4719,6 +4917,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 184
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4737,6 +4936,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 185
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4755,6 +4955,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 186
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4773,6 +4974,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 187
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4791,6 +4993,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 188
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4809,6 +5012,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 189
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4827,6 +5031,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 190
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4845,6 +5050,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 191
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4863,6 +5069,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 192
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4881,6 +5088,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 193
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4899,6 +5107,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 194
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4917,6 +5126,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 195
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4935,6 +5145,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 196
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4953,6 +5164,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 197
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4971,6 +5183,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 198
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -4989,6 +5202,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 199
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5007,6 +5221,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 200
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5025,6 +5240,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 201
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5043,6 +5259,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 202
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5061,6 +5278,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 203
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5079,6 +5297,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 204
     IsValidEngine():    true
     GetName():          MPS Oil Tanker
@@ -5097,6 +5316,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 205
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5115,6 +5335,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 206
     IsValidEngine():    true
     GetName():          MPS Passenger Ferry
@@ -5133,6 +5354,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 207
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5151,6 +5373,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 208
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5169,6 +5392,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 209
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5187,6 +5411,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 210
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5205,6 +5430,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 211
     IsValidEngine():    true
     GetName():          Yate Cargo Ship
@@ -5223,6 +5449,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 212
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5241,6 +5468,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 213
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5259,6 +5487,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 214
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5277,6 +5506,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 215
     IsValidEngine():    true
     GetName():          Sampson U52
@@ -5295,6 +5525,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     1
+    GetAllRailTypes():  null
   Engine 216
     IsValidEngine():    true
     GetName():          Coleman Count
@@ -5313,6 +5544,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     1
+    GetAllRailTypes():  null
   Engine 217
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5331,6 +5563,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 218
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5349,6 +5582,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 219
     IsValidEngine():    true
     GetName():          Bakewell Cotswald LB-3
@@ -5367,6 +5601,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     1
+    GetAllRailTypes():  null
   Engine 220
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5385,6 +5620,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 221
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5403,6 +5639,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 222
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5421,6 +5658,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 223
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5439,6 +5677,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 224
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5457,6 +5696,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 225
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5475,6 +5715,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 226
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5493,6 +5734,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 227
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5511,6 +5753,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 228
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5529,6 +5772,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 229
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5547,6 +5791,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 230
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5565,6 +5810,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 231
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5583,6 +5829,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 232
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5601,6 +5848,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 233
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5619,6 +5867,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 234
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5637,6 +5886,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 235
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5655,6 +5905,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 236
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5673,6 +5924,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 237
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5691,6 +5943,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 238
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5709,6 +5962,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 239
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5727,6 +5981,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 240
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5745,6 +6000,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 241
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5763,6 +6019,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 242
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5781,6 +6038,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 243
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5799,6 +6057,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 244
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5817,6 +6076,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 245
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5835,6 +6095,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 246
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5853,6 +6114,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 247
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5871,6 +6133,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 248
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5889,6 +6152,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 249
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5907,6 +6171,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 250
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5925,6 +6190,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 251
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5943,6 +6209,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 252
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5961,6 +6228,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 253
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5979,6 +6247,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 254
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -5997,6 +6266,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 255
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -6015,6 +6285,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Engine 256
     IsValidEngine():    false
     GetName():          (null : 0x00000000)
@@ -6033,6 +6304,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
+    GetAllRailTypes():  null
   Valid Engines:        31
 
 --EngineList--
@@ -9835,7 +10107,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
 constructor failed with: excessive CPU usage in list filter function
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [Start()] regression/main.nut line [2161]
+*FUNCTION [Start()] regression/main.nut line [2168]
 
 [Infinite] CLOSURE
 [list] INSTANCE

@@ -245,12 +245,17 @@
 	return static_cast<ScriptRail::RailType>(::RailVehInfo(engine_id)->railtypes.GetNthSetBit(0).value_or(::RailType::INVALID_RAILTYPE));
 }
 
-/* static */ ScriptRail::RailTypes ScriptEngine::GetAllRailTypes(EngineID engine_id)
+/* static */ ScriptList *ScriptEngine::GetAllRailTypes(EngineID engine_id)
 {
-	if (!IsValidEngine(engine_id)) return ScriptRail::INVALID_RAILTYPES;
-	if (GetVehicleType(engine_id) != ScriptVehicle::VT_RAIL) return ScriptRail::INVALID_RAILTYPES;
+	if (!IsValidEngine(engine_id)) return nullptr;
+	if (GetVehicleType(engine_id) != ScriptVehicle::VT_RAIL) return nullptr;
 
-	return static_cast<ScriptRail::RailTypes>(::RailVehInfo(engine_id)->railtypes.base());
+	ScriptList *list = new ScriptList();
+	for (::RailType railtype : ::RailVehInfo(engine_id)->railtypes) {
+		list->AddItem(railtype);
+	}
+
+	return list;
 }
 
 /* static */ bool ScriptEngine::IsArticulated(EngineID engine_id)
