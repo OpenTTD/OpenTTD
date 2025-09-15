@@ -793,16 +793,12 @@ public:
 	}
 };
 
-static RailType _old_railtype;
-
 class SlVehicleTrain : public DefaultSaveLoadHandler<SlVehicleTrain, Vehicle> {
 public:
 	static inline const SaveLoad description[] = {
 		 SLEG_STRUCT("common", SlVehicleCommon),
 		     SLE_VAR(Train, crash_anim_pos,      SLE_UINT16),
 		     SLE_VAR(Train, force_proceed,       SLE_UINT8),
-		SLEG_CONDVAR("railtype", _old_railtype,  SLE_UINT8, SL_MIN_VERSION, SLV_ENGINE_MULTI_RAILTYPE),
-			 SLE_VAR(Train, railtypes,           SLE_UINT64),
 		     SLE_VAR(Train, track,               SLE_UINT8),
 
 		 SLE_CONDVAR(Train, flags,               SLE_FILE_U8  | SLE_VAR_U16,   SLV_2,  SLV_100),
@@ -822,10 +818,6 @@ public:
 	{
 		if (v->type != VEH_TRAIN) return;
 		SlObject(v, this->GetLoadDescription());
-
-		if (IsSavegameVersionBefore(SLV_ENGINE_MULTI_RAILTYPE)) {
-			Train::From(v)->railtypes = _old_railtype;
-		}
 	}
 
 	void FixPointers(Vehicle *v) const override

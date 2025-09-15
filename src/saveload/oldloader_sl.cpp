@@ -1060,13 +1060,12 @@ static bool LoadOldCompany(LoadgameState &ls, int num)
 static uint32_t _old_order_ptr;
 static uint16_t _old_next_ptr;
 static typename VehicleID::BaseType _current_vehicle_id;
-static RailType _old_railtype;
 
 static const OldChunks vehicle_train_chunk[] = {
 	OCL_SVAR(  OC_UINT8, Train, track ),
 	OCL_SVAR(  OC_UINT8, Train, force_proceed ),
 	OCL_SVAR( OC_UINT16, Train, crash_anim_pos ),
-	OCL_VAR (  OC_UINT8, 1, &_old_railtype),
+	OCL_NULL( 1 ), // railtype
 
 	OCL_NULL( 5 ), ///< Junk
 
@@ -1306,8 +1305,6 @@ bool LoadOldVehicle(LoadgameState &ls, int num)
 					};
 					if (v->spritenum / 2 >= lengthof(spriteset_rail)) return false;
 					v->spritenum = spriteset_rail[v->spritenum / 2]; // adjust railway sprite set offset
-					/* Should be the original values for monorail / rail, can't use RailType constants */
-					Train::From(v)->railtypes = static_cast<RailType>(type == 0x25 ? 1 : 0);
 					break;
 				}
 
@@ -1367,10 +1364,6 @@ bool LoadOldVehicle(LoadgameState &ls, int num)
 			if (v->index != _current_vehicle_id) {
 				Debug(oldloader, 0, "Loading failed - vehicle-array is invalid");
 				return false;
-			}
-
-			if (v->type == VEH_TRAIN) {
-				Train::From(v)->railtypes = _old_railtype;
 			}
 		}
 
