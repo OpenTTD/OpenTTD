@@ -328,9 +328,12 @@ bool FioRemove(const std::string &filename)
 {
 	std::filesystem::path path = OTTD2FS(filename);
 	std::error_code error_code;
-	std::filesystem::remove(path, error_code);
-	if (error_code) {
-		Debug(misc, 0, "Removing {} failed: {}", filename, error_code.message());
+	if (!std::filesystem::remove(path, error_code)) {
+		if (error_code) {
+			Debug(misc, 0, "Removing {} failed: {}", filename, error_code.message());
+		} else {
+			Debug(misc, 0, "Removing {} failed: file does not exist", filename);
+		}
 		return false;
 	}
 	return true;
