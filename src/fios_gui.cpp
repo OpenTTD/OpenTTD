@@ -327,13 +327,13 @@ private:
 	QueryString filename_editbox; ///< Filename editbox.
 	AbstractFileType abstract_filetype{}; /// Type of file to select.
 	SaveLoadOperation fop{}; ///< File operation to perform.
-	FileList fios_items{}; ///< Save game list.
+	FileList fios_items{}; ///< Item list.
 	FiosItem o_dir{}; ///< Original dir (home dir for this browser)
-	const FiosItem *selected = nullptr; ///< Selected game in #fios_items, or \c nullptr.
+	const FiosItem *selected = nullptr; ///< Selected item in #fios_items, or \c nullptr.
 	const FiosItem *highlighted = nullptr; ///< Item in fios_items highlighted by mouse pointer, or \c nullptr.
 	Scrollbar *vscroll = nullptr;
 
-	StringFilter string_filter{}; ///< Filter for available games.
+	StringFilter string_filter{}; ///< Filter for available items.
 	QueryString filter_editbox; ///< Filter editbox;
 	std::vector<FiosItem *> display_list{}; ///< Filtered display list
 
@@ -353,8 +353,10 @@ private:
 	{
 		auto *save_load_window = static_cast<SaveLoadWindow*>(window);
 
+		assert(save_load_window->selected != nullptr);
+
 		if (confirmed) {
-			if (!FiosDelete(save_load_window->filename_editbox.text.GetText())) {
+			if (!FioRemove(save_load_window->selected->name)) {
 				ShowErrorMessage(GetEncodedString(STR_ERROR_UNABLE_TO_DELETE_FILE), {}, WL_ERROR);
 			} else {
 				save_load_window->InvalidateData(SLIWD_RESCAN_FILES);
@@ -909,6 +911,8 @@ public:
 				/* Selection changes */
 				if (!gui_scope) break;
 
+				if (this->fop == SLO_SAVE) this->SetWidgetDisabledState(WID_SL_DELETE_SELECTION, this->selected == nullptr);
+
 				if (this->fop != SLO_LOAD) break;
 
 				switch (this->abstract_filetype) {
@@ -946,6 +950,11 @@ public:
 		if (wid == WID_SL_FILTER) {
 			this->string_filter.SetFilterTerm(this->filter_editbox.text.GetText());
 			this->InvalidateData(SLIWD_FILTER_CHANGES);
+		}
+
+		if (wid == WID_SL_SAVE_OSK_TITLE) {
+			this->selected = nullptr;
+			this->InvalidateData(SLIWD_SELECTION_CHANGES);
 		}
 	}
 };

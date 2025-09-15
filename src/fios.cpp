@@ -230,16 +230,6 @@ std::string FiosMakeHeightmapName(std::string_view name)
 	return FiosMakeFilename(_fios_path, name, fmt::format(".{}", GetCurrentScreenshotExtension()));
 }
 
-/**
- * Delete a file.
- * @param name Filename to delete.
- * @return Whether the file deletion was successful.
- */
-bool FiosDelete(std::string_view name)
-{
-	return FioRemove(FiosMakeSavegameName(name));
-}
-
 typedef std::tuple<FiosType, std::string> FiosGetTypeAndNameProc(SaveLoadOperation fop, std::string_view filename, std::string_view ext);
 
 /**
