@@ -981,7 +981,7 @@ static void DrawEngineBadgeColumn(const Rect &r, int column_group, const GUIBadg
  * @param show_count Whether to show the amount of engines or not
  * @param selected_group the group to list the engines of
  */
-void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_list, const Scrollbar &sb, EngineID selected_id, bool show_count, GroupID selected_group, const GUIBadgeClasses &badge_classes)
+void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_list, const Scrollbar &sb, EngineID selected_id, bool show_count, GroupID selected_group, const GUIBadgeClasses &badge_classes, const std::array<GUIBadgeClasses, VEH_COMPANY_END> *badge_classes_array)
 {
 	static const std::array<int8_t, VehicleType::VEH_COMPANY_END> sprite_y_offsets = { 0, 0, -1, -1 };
 
@@ -1025,6 +1025,10 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 		const auto &item = *it;
 		const Engine *e = Engine::Get(item.engine_id);
 
+		if(badge_classes_array != nullptr) {
+			badge_column_widths = badge_classes_array->at(e->type).GetColumnWidths();
+		}
+
 		uint indent       = item.indent * WidgetDimensions::scaled.hsep_indent;
 		bool has_variants = item.flags.Test(EngineDisplayFlag::HasVariants);
 		bool is_folded    = item.flags.Test(EngineDisplayFlag::IsFolded);
@@ -1059,7 +1063,11 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 
 		if (badge_column_widths.size() >= 1 && badge_column_widths[0] > 0) {
 			Rect br = tr.WithWidth(badge_column_widths[0], rtl);
-			DrawEngineBadgeColumn(br, 0, badge_classes, e, pal);
+			if(badge_classes_array != nullptr) {
+				DrawEngineBadgeColumn(br, 0, badge_classes_array->at(e->type), e, pal);
+			} else {
+				DrawEngineBadgeColumn(br, 0, badge_classes, e, pal);
+			}
 			tr = tr.Indent(badge_column_widths[0], rtl);
 		}
 
@@ -1070,7 +1078,11 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 
 		if (badge_column_widths.size() >= 2 && badge_column_widths[1] > 0) {
 			Rect br = tr.WithWidth(badge_column_widths[1], rtl);
-			DrawEngineBadgeColumn(br, 1, badge_classes, e, pal);
+			if(badge_classes_array != nullptr) {
+				DrawEngineBadgeColumn(br, 1, badge_classes_array->at(e->type), e, pal);
+			} else {
+				DrawEngineBadgeColumn(br, 1, badge_classes, e, pal);
+			}
 			tr = tr.Indent(badge_column_widths[1], rtl);
 		}
 
@@ -1091,7 +1103,11 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 
 		if (badge_column_widths.size() >= 3 && badge_column_widths[2] > 0) {
 			Rect br = tr.WithWidth(badge_column_widths[2], !rtl).Indent(WidgetDimensions::scaled.hsep_wide, rtl);
-			DrawEngineBadgeColumn(br, 2, badge_classes, e, pal);
+			if(badge_classes_array != nullptr) {
+				DrawEngineBadgeColumn(br, 2, badge_classes_array->at(e->type), e, pal);
+			} else {
+				DrawEngineBadgeColumn(br, 2, badge_classes, e, pal);
+			}
 			tr = tr.Indent(badge_column_widths[2], !rtl);
 		}
 
@@ -1187,8 +1203,6 @@ struct BuildVehicleWindow : Window {
 	Scrollbar *vscroll = nullptr;
 	TestedEngineDetails te{}; ///< Tested cost and capacity after refit.
 	GUIBadgeClasses badge_classes{};
-
-	static constexpr int BADGE_COLUMNS = 3; ///< Number of columns available for badges (0 = left of image, 1 = between image and name, 2 = after name)
 
 	StringFilter string_filter{}; ///< Filter for vehicle name
 	QueryString vehicle_editbox; ///< Filter editbox

@@ -38,6 +38,10 @@
 
 #include "safeguards.h"
 
+#include "dropdown_common_type.h"
+
+using DropDownListMoverItem = DropDownMover<DropDownString<DropDownListItem>>;
+
 /**
  * Return the category of an engine.
  * @param engine Engine to examine.
@@ -94,6 +98,10 @@ static constexpr NWidgetPart _nested_engine_preview_widgets[] = {
 	EndContainer(),
 };
 
+static const int BADGE_NEXT_VEH_TYPE = 0xF;
+static const int BADGE_PREVIOUS_VEH_TYPE = 0xE;
+static const int BADGE_VEH_TYPE_WIDGET_INDEX = -2;
+
 struct EnginePreviewWindow : Window {
 	static EnginePreviewWindow *_current_instance;
 
@@ -109,6 +117,11 @@ struct EnginePreviewWindow : Window {
 
 	StringFilter string_filter{}; ///< Filter for vehicle name
 	QueryString vehicle_editbox; ///< Filter editbox
+
+	std::array<GUIBadgeClasses, VEH_COMPANY_END> badge_classes{}; ///< Individual object for each vehicle type.
+	VehicleType badge_veh_type = VEH_BEGIN; ///< Vehicle type of currently shown badge configuration dropdown.
+	std::pair<WidgetID, WidgetID> badge_filters{}; ///< First and last widgets IDs of badge filters.
+	BadgeFilterChoices badge_filter_choices{};
 
 	EnginePreviewWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc), vehicle_editbox(MAX_LENGTH_VEHICLE_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_VEHICLE_NAME_CHARS)
 	{
@@ -136,6 +149,32 @@ struct EnginePreviewWindow : Window {
 		auto it = std::ranges::find_if(this->eng_list, [](const GUIEngineListItem &item) { return !item.flags.Test(EngineDisplayFlag::Shaded); });
 		if (it != this->eng_list.end()) engine = it->engine_id;
 		this->selected_engine = engine;
+	}
+
+	void OnInit() override
+	{
+		this->badge_classes[VEH_TRAIN] = GUIBadgeClasses(static_cast<GrfSpecFeature>(GSF_TRAINS));
+		this->badge_classes[VEH_ROAD] = GUIBadgeClasses(static_cast<GrfSpecFeature>(GSF_ROADVEHICLES));
+		this->badge_classes[VEH_SHIP] = GUIBadgeClasses(static_cast<GrfSpecFeature>(GSF_SHIPS));
+		this->badge_classes[VEH_AIRCRAFT] = GUIBadgeClasses(static_cast<GrfSpecFeature>(GSF_AIRCRAFT));
+
+		if (this->vscroll != nullptr) this->FilterEngineList();
+
+		auto container = this->GetWidget<NWidgetContainer>(WID_EP_BADGE_FILTER);
+
+		if (this->veh_type_filter_criteria == VEH_ANY) {
+			this->badge_filters = AddBadgeDropdownFilters(*container, WID_EP_BADGE_FILTER, COLOUR_LIGHT_BLUE, GSF_TRAINS);
+			for (GrfSpecFeature feature : {GSF_ROADVEHICLES, GSF_SHIPS, GSF_AIRCRAFT}) {
+				std::pair<WidgetID, WidgetID> tmp = AddBadgeDropdownFilters(*container, this->badge_filters.second, COLOUR_LIGHT_BLUE, feature, false);
+				this->badge_filters.first = std::min(this->badge_filters.first, tmp.first);
+				this->badge_filters.second = std::max(this->badge_filters.second, tmp.second);
+			}
+		} else {
+			this->badge_filters = AddBadgeDropdownFilters(*container, WID_EP_BADGE_FILTER, COLOUR_LIGHT_BLUE, static_cast<GrfSpecFeature>(GSF_TRAINS + this->veh_type_filter_criteria));
+		}
+
+		this->widget_lookup.clear();
+		this->nested_root->FillWidgetLookup(this->widget_lookup);
 	}
 
 	/**
@@ -172,6 +211,22 @@ struct EnginePreviewWindow : Window {
 		return list;
 	}
 
+	/**
+	 * Builds widgets for badge configuration dropdown.
+	 * @returns list containing widgets for badge configuration dropdown.
+	 */
+	DropDownList BuildBadgeConfigurationList()
+	{
+		static const auto separators = {STR_BADGE_CONFIG_PREVIEW, STR_BADGE_CONFIG_NAME};
+		if (this->veh_type_filter_criteria == VEH_ANY) {
+			DropDownList out = BuildBadgeClassConfigurationList(this->badge_classes[this->badge_veh_type], BADGE_COLUMNS, separators);
+			out.push_back(MakeDropDownListDividerItem());
+			out.push_back(std::make_unique<DropDownListMoverItem>(BADGE_NEXT_VEH_TYPE, BADGE_PREVIOUS_VEH_TYPE, COLOUR_YELLOW, GetString(this->GetVehTypeFilterLabel(this->badge_veh_type)), BADGE_VEH_TYPE_WIDGET_INDEX));
+			return out;
+		}
+		return BuildBadgeClassConfigurationList(this->badge_classes[this->veh_type_filter_criteria], BADGE_COLUMNS, separators);
+	}
+
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
@@ -197,6 +252,7 @@ struct EnginePreviewWindow : Window {
 				size.width = std::max(size.width, x + std::abs(x_offs));
 				size.height = GetStringHeight(GetString(STR_ENGINE_PREVIEW_MESSAGE, GetEngineCategoryName(engine)), size.width) + WidgetDimensions::scaled.vsep_wide + GetCharacterHeight(FS_NORMAL) + this->vehicle_space;
 				size.height += GetStringHeight(GetEngineInfoString(engine), size.width);
+				size.height += GetCharacterHeight(FS_NORMAL); ///< Space for NewGRF name
 				break;
 			}
 
@@ -208,12 +264,25 @@ struct EnginePreviewWindow : Window {
 
 				fill.height = resize.height = GetEngineListHeight(this->vehicle_type);
 				size.height = 3 * resize.height;
-				size.width = std::max(size.width, std::max({tcs.extend_left, rcs.extend_left, scs.extend_left, acs.extend_left}) + std::max({tcs.extend_right, rcs.extend_right, scs.extend_right, acs.extend_right}) + 165) + padding.width;
+				auto badges_width = std::max({this->badge_classes[VEH_TRAIN].GetTotalColumnsWidth(), this->badge_classes[VEH_ROAD].GetTotalColumnsWidth(), this->badge_classes[VEH_SHIP].GetTotalColumnsWidth(), this->badge_classes[VEH_AIRCRAFT].GetTotalColumnsWidth()});
+				size.width = std::max(size.width, badges_width + std::max({tcs.extend_left, rcs.extend_left, scs.extend_left, acs.extend_left}) + std::max({tcs.extend_right, rcs.extend_right, scs.extend_right, acs.extend_right}) + 165) + padding.width;
 				break;
 			}
 
 			case WID_EP_VEH_TYPE_FILTER_DROPDOWN:
 				size.width = std::max(size.width, GetDropDownListDimension(this->BuildVehTypeDropDownList()).width + padding.width);
+				break;
+
+			case WID_EP_CONFIGURE_BADGES:
+				/* Hide the configuration button if no configurable badges are present. */
+				if (this->veh_type_filter_criteria == VEH_ANY) {
+					for (VehicleType veh_type : {VEH_TRAIN, VEH_ROAD, VEH_SHIP, VEH_AIRCRAFT}) {
+						if (!this->badge_classes[veh_type].GetClasses().empty()) return;
+					}
+				} else {
+					if (!this->badge_classes[this->veh_type_filter_criteria].GetClasses().empty()) return;
+				}
+				size = {0, 0};
 				break;
 
 			case WID_EP_SORT_ASCENDING_DESCENDING: {
@@ -243,6 +312,12 @@ struct EnginePreviewWindow : Window {
 		return this->string_filter.GetState();
 	}
 
+	/** Check if conversion from VehicleType to GrfSpecFeature can be done with addition */
+	static_assert((GSF_TRAINS + VEH_TRAIN) == GSF_TRAINS);
+	static_assert((GSF_TRAINS + VEH_ROAD) == GSF_ROADVEHICLES);
+	static_assert((GSF_TRAINS + VEH_SHIP) == GSF_SHIPS);
+	static_assert((GSF_TRAINS + VEH_AIRCRAFT) == GSF_AIRCRAFT);
+
 	/**
 	 * Determines which engines should be currently visible.
 	 * Stores the output in the filtered_eng_list.
@@ -251,13 +326,19 @@ struct EnginePreviewWindow : Window {
 	{
 		this->filtered_eng_list.clear();
 
+		BadgeDropdownFilter bdf(this->badge_filter_choices);
+
 		for (auto it = this->eng_list.begin(); it != this->eng_list.end(); ++it) {
 			const Engine *e = Engine::Get((*it).engine_id);
 
 			if (this->veh_type_filter_criteria != VEH_ANY) {
 				if(e->type != this->veh_type_filter_criteria) continue;
 			}
-			if(!FilterByText(e)) continue;
+			if (!bdf.Filter(e->badges)) continue;
+
+			/* Filter by name or NewGRF extra text */
+			BadgeTextFilter btf(this->string_filter, GSF_TRAINS+e->type);
+			if(!FilterByText(e) && !btf.Filter(e->badges)) continue;
 
 			this->filtered_eng_list.push_back((*it));
 		}
@@ -289,8 +370,9 @@ struct EnginePreviewWindow : Window {
 		if(e->display_flags.Test(EngineDisplayFlag::Shaded)) flags.Set(EngineDisplayFlag::Shaded);
 		this->eng_list.emplace_back(engine, e->info.variant_id, flags, 0);
 
-		this->FilterEngineList();
 		this->UpdateScrollCapacity();
+		this->ReInit();
+		this->GetWidget<NWidgetLeaf>(WID_EP_CONFIGURE_BADGES)->SetupSmallestSize(this);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
@@ -303,8 +385,16 @@ struct EnginePreviewWindow : Window {
 				y += GetCharacterHeight(FS_NORMAL);
 
 				DrawVehicleEngine(r.left, r.right, this->width >> 1, y + this->vehicle_space / 2, this->selected_engine, GetEnginePalette(this->selected_engine, _local_company), EIT_PREVIEW);
-
 				y += this->vehicle_space;
+
+				/* The NewGRF's name which the vehicle comes from */
+				const Engine *e = Engine::Get(this->selected_engine);
+				const GRFConfig *config = GetGRFConfig(e->GetGRFID());
+				if (_settings_client.gui.show_newgrf_name && config != nullptr) {
+					DrawString(r.left, r.right, y, config->GetName(), TC_YELLOW, SA_HOR_CENTER);
+					y += GetCharacterHeight(FS_NORMAL);
+				}
+
 				DrawStringMultiLine(r.left, r.right, y, r.bottom, GetEngineInfoString(this->selected_engine), TC_BLACK, SA_CENTER);
 				break;
 			}
@@ -318,7 +408,8 @@ struct EnginePreviewWindow : Window {
 					this->selected_engine,
 					false,
 					DEFAULT_GROUP,
-					{}
+					{},
+					&this->badge_classes
 				);
 				break;
 
@@ -356,7 +447,7 @@ struct EnginePreviewWindow : Window {
 		}
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index, int /*click_result*/) override
+	void OnDropdownSelect(WidgetID widget, int index, int click_result) override
 	{
 		switch (widget) {
 			case WID_EP_SORT_DROPDOWN:
@@ -379,7 +470,41 @@ struct EnginePreviewWindow : Window {
 				}
 				break;
 
+			case WID_EP_CONFIGURE_BADGES: {
+				bool reopen = true;
+
+				if (index == BADGE_VEH_TYPE_WIDGET_INDEX && click_result == BADGE_PREVIOUS_VEH_TYPE) {
+					if (this->badge_veh_type == VEH_BEGIN) this->badge_veh_type = VEH_COMPANY_END;
+					this->badge_veh_type--;
+				} else if (index == BADGE_VEH_TYPE_WIDGET_INDEX && click_result == BADGE_NEXT_VEH_TYPE) {
+					this->badge_veh_type++;
+					if (this->badge_veh_type == VEH_COMPANY_END) this->badge_veh_type = VEH_BEGIN;
+				} else {
+					reopen = HandleBadgeConfigurationDropDownClick(static_cast<GrfSpecFeature>(GSF_TRAINS + this->badge_veh_type), BADGE_COLUMNS, index, click_result, this->badge_filter_choices);
+				}
+
+				this->ReInit();
+
+				if (reopen) {
+					ReplaceDropDownList(this, this->BuildBadgeConfigurationList(), -1);
+				} else {
+					this->CloseChildWindows(WC_DROPDOWN_MENU);
+				}
+
+				/* We need to refresh if a filter is removed. */
+				this->FilterEngineList();
+				break;
+			}
+
 			default:
+				if (IsInsideMM(widget, this->badge_filters.first, this->badge_filters.second)) {
+					if (index < 0) {
+						ResetBadgeFilter(this->badge_filter_choices, this->GetWidget<NWidgetBadgeFilter>(widget)->GetBadgeClassID());
+					} else {
+						SetBadgeFilter(this->badge_filter_choices, BadgeID(index));
+					}
+					this->FilterEngineList();
+				}
 				break;
 		}
 		this->SetDirty();
@@ -413,6 +538,20 @@ struct EnginePreviewWindow : Window {
 				_engine_sort_last_order[this->veh_type_filter_criteria] = this->descending_sort_order;
 				this->FilterEngineList();
 				this->SetDirty();
+				break;
+
+			case WID_EP_CONFIGURE_BADGES:
+				if (this->veh_type_filter_criteria == VEH_ANY) {
+					for (VehicleType veh_type : {VEH_TRAIN, VEH_ROAD, VEH_SHIP, VEH_AIRCRAFT}) {
+						if (!this->badge_classes[veh_type].GetClasses().empty()) {
+							ShowDropDownList(this, this->BuildBadgeConfigurationList(), -1, widget, 0, false, true);
+							return;
+						}
+					}
+				} else {
+					if (this->badge_classes[this->veh_type_filter_criteria].GetClasses().empty()) return;
+				}
+				ShowDropDownList(this, this->BuildBadgeConfigurationList(), -1, widget, 0, false, true);
 				break;
 
 			case WID_EP_LIST: {
@@ -452,6 +591,12 @@ struct EnginePreviewWindow : Window {
 					this->SetDirty();
 				}
 				break;
+
+			default:
+				if (IsInsideMM(widget, this->badge_filters.first, this->badge_filters.second)) {
+					ShowDropDownList(this, this->GetWidget<NWidgetBadgeFilter>(widget)->GetDropDownList(), -1, widget, 0, false);
+				}
+				break;
 		}
 	}
 
@@ -468,6 +613,10 @@ struct EnginePreviewWindow : Window {
 				return GetString(this->GetVehTypeFilterLabel(this->veh_type_filter_criteria));
 
 			default:
+				if (IsInsideMM(widget, this->badge_filters.first, this->badge_filters.second)) {
+					return this->GetWidget<NWidgetBadgeFilter>(widget)->GetStringParameter(this->badge_filter_choices);
+				}
+
 				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}

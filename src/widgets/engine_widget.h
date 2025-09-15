@@ -17,13 +17,15 @@ enum EnginePreviewWidgets : WidgetID {
 	WID_EP_VEH_TYPE_FILTER_DROPDOWN, ///< Vehicle type filter dropdown.
 	WID_EP_CONFIGURE_BADGES, ///< Button to configure badges.
 	WID_EP_SORT_DROPDOWN, ///< Criteria of sorting dropdown.
-	WID_EP_BADGE_FILTER, ///< Container for dropdown badge filters.
 	WID_EP_SCROLLBAR, ///< Scrollbar of list.
 	WID_EP_QUESTION, ///< The container for the question.
 	WID_EP_NO,       ///< No button.
 	WID_EP_YES,      ///< Yes button.
 	WID_EP_FILTER, ///< Filter by name.
 	WID_EP_LIST, ///< List of vehicles.
+
+	/* WID_EP_BADGE_FILTER has to be at the end */
+	WID_EP_BADGE_FILTER, ///< Container for dropdown badge filters.
 };
 
 #endif /* WIDGETS_ENGINE_WIDGET_H */
