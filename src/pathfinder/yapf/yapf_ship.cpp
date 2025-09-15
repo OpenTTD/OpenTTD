@@ -391,7 +391,8 @@ public:
 		/* Lock penalty. */
 		if (IsTileType(n.GetTile(), MP_WATER) && IsLock(n.GetTile()) && GetLockPart(n.GetTile()) == LOCK_PART_MIDDLE) {
 			const uint canal_speed = svi->ApplyWaterClassSpeedFrac(svi->max_speed, false);
-			c += (YAPF_TILE_LENGTH * canal_speed) / 16;
+			/* Cost is proportional to the vehicle's speed as the vehicle stops in the lock. */
+			c += (4 * YAPF_TILE_LENGTH * canal_speed) / TILE_HEIGHT / 8;
 		}
 
 		/* Apply it. */
