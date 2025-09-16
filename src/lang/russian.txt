@@ -4358,6 +4358,7 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Всё, кро�
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Макс. тяговое усилие: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Дальность: {GOLD}{COMMA} клет{P ка ки ок}
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Тип возд. судна: {GOLD}{STRING}
+STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Типы рельсов: {GOLD}{STRING}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Все типы грузов
@@ -4549,6 +4550,7 @@ STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Стоимос�
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Стоимость обслуживания: {CURRENCY_LONG}/цикл
 STR_ENGINE_PREVIEW_CAPACITY                                     :Ёмкость: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :Ёмкость: {CARGO_LONG}, {CARGO_LONG}
+STR_ENGINE_PREVIEW_RAILTYPES                                    :Типы рельсов: {STRING}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замена {STRING.gen} - {STRING}
@@ -5366,7 +5368,7 @@ STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Сост
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Поезд слишком длинный
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Не удалось развернуть поезд...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... состоит из нескольких элементов
-STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Несовместимый тип рельс
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Несовместимые типы рельсов
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Невозможно переместить транспортное средство...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Тыловой локомотив всегда следует за его передней частью

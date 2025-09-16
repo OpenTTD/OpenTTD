@@ -4183,6 +4183,7 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Kaikki paitsi {
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maksimivetovoima: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Toimintasäde: {GOLD}{COMMA} ruutua
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Ilma-alustyyppi: {GOLD}{STRING}
+STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Raidetyypit: {GOLD}{STRING}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Kaikki rahtityypit
@@ -4366,6 +4367,7 @@ STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Käyttökustann
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Käyttökustannukset: {CURRENCY_LONG}/jakso
 STR_ENGINE_PREVIEW_CAPACITY                                     :Kapasiteetti: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :Kapasiteetti: {CARGO_LONG}, {CARGO_LONG}
+STR_ENGINE_PREVIEW_RAILTYPES                                    :Raidetyypit: {STRING}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Korvaa {STRING} – {STRING}

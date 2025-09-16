@@ -284,7 +284,7 @@ STR_BUTTON_CATCHMENT                                            :{BLACK}Cobertur
 STR_TOOLTIP_CATCHMENT                                           :{BLACK}Alternar exibição da área de cobertura
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fechar janela
-STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título da janela - arraste isto para mover a janela
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}O título da janela - arraste-o para mover a janela
 STR_TOOLTIP_SHADE                                               :{BLACK}Encolher janela - apenas mostra a barra de título
 STR_TOOLTIP_DEBUG                                               :{BLACK}Mostrar informação de depuração de NewGRF
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}Redimensionar a janela para o tamanho padrão. Ctrl+Clique para guardar o tamanho atual como padrão. Duplo Ctrl+Clique para redefinir o padrão armazenado
@@ -2244,10 +2244,10 @@ STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Iniciar 
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Criar um cenário de jogo personalizado
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Começar um jogo multi-jogador
 
-STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Selecionar terreno do estilo "temperado"
-STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Selecionar terreno do estilo "subárctico"
-STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Selecionar terreno do estilo "subtropical"
-STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Selecionar terreno do estilo "terra dos brinquedos"
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Selecionar terreno do estilo “temperado”
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Selecionar terreno do estilo “subártico”
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Selecionar terreno do estilo “subtropical”
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Selecionar terreno do estilo “terra dos brinquedos”
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Abrir opções de jogo
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Abrir tabela de classificações
@@ -2319,11 +2319,11 @@ STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :Não estão con
 
 ###length 23
 STR_LIVERY_DEFAULT                                              :Pintura Padrão
-STR_LIVERY_STEAM                                                :Locomotivas a Vapor
-STR_LIVERY_DIESEL                                               :Locomotivas Diesel
-STR_LIVERY_ELECTRIC                                             :Locomotivas Eléctricas
-STR_LIVERY_MONORAIL                                             :Locomotivas em Monocarril
-STR_LIVERY_MAGLEV                                               :Locomotivas Maglev (Levitação Magnética)
+STR_LIVERY_STEAM                                                :Locomotiva a Vapor
+STR_LIVERY_DIESEL                                               :Locomotiva a Diesel
+STR_LIVERY_ELECTRIC                                             :Locomotiva Elétrica
+STR_LIVERY_MONORAIL                                             :Locomotiva em Monocarril
+STR_LIVERY_MAGLEV                                               :Locomotiva Maglev (Levitação Magnética)
 STR_LIVERY_DMU                                                  :Unidade Múltipla a Diesel
 STR_LIVERY_EMU                                                  :Unidade Múltipla Elétrica
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Carruagem de Passageiros (Vapor)
@@ -2800,21 +2800,21 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construção de
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construção de Monocarris
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construção de Linhas Maglev
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir linha férrea. Ctrl+Clique para remover a linha férrea. Pressione também Shift para apenas mostrar o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir caminhos-de-ferro usando o modo automático. Ctrl+Clique para remover a via férrea. Pressione também Shift para apenas mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir linha de carril. Ctrl+Clique para remover a linha de carril. Pressione também Shift para apenas mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir linha de carril usando o modo automático para a direção. Ctrl+Clique para remover a linha de carril. Pressione também Shift para apenas mostrar o custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construir depósito ferroviário (para compra e manutenção de comboios). Pressione também Shift para apenas mostrar o custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construir ponto de controlo na ferrovia. Ctrl+Clique para selecionar outro ponto de controlo para se unir. Pressione também Shift para apenas mostrar o custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construir estação ferroviária. Ctrl+Clique para selecionar outra estação para se unir. Pressione também Shift para apenas mostrar o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir sinais na ferrovia. Ctrl+Clique para construir estilo de sinal alternativo{}Clique+Arrastar para preencher a secção de via selecionada com sinais no espaçamento escolhido. Ctrl+Clique+Arrastar para preencher com sinais até à próxima junção, estação ou sinal. Pressione também Shift para apenas mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir sinais na linha ferroviária. Ctrl+Clique para construir estilo de sinal alternativo{}Clique+Arrastar para preencher a secção de via selecionada com sinais no espaçamento escolhido. Ctrl+Clique+Arrastar para preencher com sinais até à próxima junção, estação ou sinal. Pressione também Shift para apenas mostrar o custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir ponte ferroviária. Pressione também Shift para apenas mostrar o custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviário. Pressione também Shift para apenas mostrar o custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alternar entre construir/remover linha férrea, sinais, pontos de controlo e estações. Ctrl+Clique também remove os carris de pontos de passagem e de estações
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converter/Atualizar tipo de via férrea. Pressione também Shift para apenas mostrar o custo estimado
 
-STR_RAIL_NAME_RAILROAD                                          :Caminhos-de-ferro
-STR_RAIL_NAME_ELRAIL                                            :Caminhos-de-ferro elétrificados
-STR_RAIL_NAME_MONORAIL                                          :Monocarril
-STR_RAIL_NAME_MAGLEV                                            :Maglev
+STR_RAIL_NAME_RAILROAD                                          :{G=mp}Caminhos-de-ferro (Convencional)
+STR_RAIL_NAME_ELRAIL                                            :{G=mp}Caminhos-de-ferro eletrificados
+STR_RAIL_NAME_MONORAIL                                          :{G=m}Monocarril
+STR_RAIL_NAME_MAGLEV                                            :Maglev (Levitação Magnética)
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orientação do Depósito Ferroviário
@@ -3176,28 +3176,28 @@ STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS                           :Rochas cobertas
 STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND                      :Terreno irregular coberto de neve
 STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS                           :Relva coberta de neve
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Linha de caminhos-de-ferro
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Linha de caminhos-de-ferro com sinais de bloqueio
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Linha de caminhos-de-ferro com pre-sinais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Linha de caminhos-de-ferro com sinais de saída
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Linha de caminhos-de-ferro com sinais combinados
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Linha de caminhos-de-ferro com sinais de rota
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Linha de caminhos-de-ferro com sinais de sentido único
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Linha de caminhos-de-ferro com sinais de bloqueio e pré-sinais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Linha de caminhos-de-ferro com sinais de bloqueio e de saida
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Linha de caminhos-de-ferro com sinais de bloqueio e combinados
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Linha de caminhos-de-ferro com sinais de bloqueio e de rota
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Linha de caminhos-de-ferro com sinais de bloqueio e de sentido único
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Linha de caminhos-de-ferro com pré-sinais e sinais de saida
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Linha de caminhos-de-ferro com pré-sinais e sinais combinados
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Linha de caminhos-de-ferro com pré-sinais e sinais de rota
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Linha de caminhos-de-ferro com pré-sinais e sinais de sentido único
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Linha de caminhos-de-ferro com sinais de saida e combinados
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Linha de caminhos-de-ferro com sinais de saida e de rota
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Linha de caminhos-de-ferro com sinais de saida e de sentido único
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Linha de caminhos-de-ferro com sinais combinados e de rota
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Linha de caminhos-de-ferro com sinais combinados e de sentido único
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Linha de caminhos-de-ferro com sinais de rota e de sentido único
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Linha de comboio
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Linha de comboio com sinais de bloqueio
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Linha de comboio com pré-sinais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Linha de comboio com sinais de saída
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Linha de comboio com sinais combinados
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Linha de comboio com sinais de rota
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Linha de comboio com sinais de sentido único
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Linha de comboio com sinais de bloqueio e pré-sinais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Linha de comboio com sinais de bloqueio e de saída
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Linha de comboio com sinais de bloqueio e combinados
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Linha de comboio com sinais de bloqueio e de rota
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Linha de comboio com sinais de bloqueio e de sentido único
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Linha de comboio com pré-sinais e sinais de saída
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Linha de comboio com pré-sinais e sinais combinados
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Linha de comboio com pré-sinais e sinais de rota
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Linha de comboio com pré-sinais e sinais de sentido único
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Linha de comboio com sinais de saída e combinados
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Linha de comboio com sinais de saída e de rota
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Linha de comboio com sinais de saída e de sentido único
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Linha de comboio com sinais combinados e de rota
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Linha de comboio com sinais combinados e de sentido único
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Linha de comboio com sinais de rota e de sentido único
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depósito ferroviário para comboios
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Estrada
@@ -3974,7 +3974,7 @@ STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Nenhum
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valor da empresa: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infraestrutura:
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} secç{P ão ões} de caminho-de-ferro
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} secç{P ão ões} de linha ferroviária
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} secç{P ão ões} de estrada
 STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} mosaico{P "" s} com água
 STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} mosaico{P "" s} com estaç{P ão ões}
@@ -4012,7 +4012,7 @@ STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}Na aquis
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infraestrutura de {COMPANY}
-STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Secções de caminho-de-ferro:
+STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Secções de linha ferroviária:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Sinais
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Secções de estrada:
 STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Secções de elétricos:
@@ -4184,6 +4184,7 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Todas menos {CA
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Esforço de Tração Máx: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Alcance: {GOLD}{COMMA} mosaicos
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Tipo de aeronave: {GOLD}{STRING}
+STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Tipos de carril: {GOLD}{STRING}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Todos os tipos de carga
@@ -4367,6 +4368,7 @@ STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Custo de Circul
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Custo de Circulação: {CURRENCY_LONG}/período
 STR_ENGINE_PREVIEW_CAPACITY                                     :Capacidade: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :Capacidade: {CARGO_LONG}, {CARGO_LONG}
+STR_ENGINE_PREVIEW_RAILTYPES                                    :Tipos de carril: {STRING}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substituir {STRING} - {STRING}
@@ -5212,7 +5214,7 @@ STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Estrada 
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Passagens de nível não são permitidas para este tipo de linha
 STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Passagens de nível não são permitidas para este tipo de estrada
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Não é possível construir sinais aqui...
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Não é possível construir linha férrea aqui...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Não é possível construir a linha de carril aqui...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Não é possível remover linha férrea daqui...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Não é possível remover sinais daqui...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Não é possível converter sinais aqui...
