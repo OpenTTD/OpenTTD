@@ -365,8 +365,13 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlags flags, RoadBits pie
 				/* A full diagonal road tile has two road bits. */
 				UpdateCompanyRoadInfrastructure(existing_rt, GetRoadOwner(tile, rtt), -(int)(len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR));
 
-				SetRoadType(other_end, rtt, INVALID_ROADTYPE);
-				SetRoadType(tile,      rtt, INVALID_ROADTYPE);
+				if (rtt == RTT_ROAD) {
+					SetMapRoadTypeRoad(other_end, RoadTypeMapping::INVALID_MAP_TYPE);
+					SetMapRoadTypeRoad(tile, RoadTypeMapping::INVALID_MAP_TYPE);
+				} else { /* rtt == RTT_TRAM */
+					SetMapRoadTypeTram(other_end, TramTypeMapping::INVALID_MAP_TYPE);
+					SetMapRoadTypeTram(tile, TramTypeMapping::INVALID_MAP_TYPE);
+				}
 
 				/* If the owner of the bridge sells all its road, also move the ownership
 				 * to the owner of the other roadtype, unless the bridge owner is a town. */
@@ -390,7 +395,11 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlags flags, RoadBits pie
 			if (flags.Test(DoCommandFlag::Execute)) {
 				/* A full diagonal road tile has two road bits. */
 				UpdateCompanyRoadInfrastructure(existing_rt, GetRoadOwner(tile, rtt), -2);
-				SetRoadType(tile, rtt, INVALID_ROADTYPE);
+				if (rtt == RTT_ROAD) {
+					SetMapRoadTypeRoad(tile, RoadTypeMapping::INVALID_MAP_TYPE);
+				} else { /* rtt == RTT_TRAM */
+					SetMapRoadTypeTram(tile, TramTypeMapping::INVALID_MAP_TYPE);
+				}
 				MarkTileDirtyByTile(tile);
 			}
 		}
@@ -459,7 +468,11 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlags flags, RoadBits pie
 						}
 						if (rtt == RTT_ROAD) SetDisallowedRoadDirections(tile, DRD_NONE);
 						SetRoadBits(tile, ROAD_NONE, rtt);
-						SetRoadType(tile, rtt, INVALID_ROADTYPE);
+						if (rtt == RTT_ROAD) {
+							SetMapRoadTypeRoad(tile, RoadTypeMapping::INVALID_MAP_TYPE);
+						} else { /* rtt == RTT_TRAM */
+							SetMapRoadTypeTram(tile, TramTypeMapping::INVALID_MAP_TYPE);
+						}
 						MarkTileDirtyByTile(tile);
 					}
 				} else {
@@ -505,7 +518,11 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlags flags, RoadBits pie
 						DirtyCompanyInfrastructureWindows(c->index);
 					}
 				} else {
-					SetRoadType(tile, rtt, INVALID_ROADTYPE);
+					if (rtt == RTT_ROAD) {
+						SetMapRoadTypeRoad(tile, RoadTypeMapping::INVALID_MAP_TYPE);
+					} else { /* rtt == RTT_TRAM */
+						SetMapRoadTypeTram(tile, TramTypeMapping::INVALID_MAP_TYPE);
+					}
 				}
 				MarkTileDirtyByTile(tile);
 				YapfNotifyTrackLayoutChange(tile, railtrack);
@@ -627,6 +644,11 @@ CommandCost CmdBuildRoad(DoCommandFlags flags, TileIndex tile, RoadBits pieces, 
 
 	Slope tileh = GetTileSlope(tile);
 	RoadTramType rtt = GetRoadTramType(rt);
+
+	MapRoadType map_roadtype = rtt == RTT_ROAD ? _roadtype_mapping.AllocateMapType(rt, flags.Test(DoCommandFlag::Execute)) : RoadTypeMapping::INVALID_MAP_TYPE;
+	if (rtt == RTT_ROAD && map_roadtype == RoadTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_ROADTYPES};
+	MapTramType map_tramtype = rtt == RTT_TRAM ? _tramtype_mapping.AllocateMapType(rt, flags.Test(DoCommandFlag::Execute)) : TramTypeMapping::INVALID_MAP_TYPE;
+	if (rtt == RTT_TRAM && map_tramtype == TramTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_TRAMTYPES};
 
 	bool need_to_clear = false;
 	switch (GetTileType(tile)) {
@@ -765,7 +787,7 @@ CommandCost CmdBuildRoad(DoCommandFlags flags, TileIndex tile, RoadBits pieces, 
 
 				/* Always add road to the roadtypes (can't draw without it) */
 				bool reserved = HasBit(GetRailReservationTrackBits(tile), railtrack);
-				MakeRoadCrossing(tile, company, company, GetTileOwner(tile), roaddir, GetMapRailType(tile), rtt == RTT_ROAD ? rt : INVALID_ROADTYPE, (rtt == RTT_TRAM) ? rt : INVALID_ROADTYPE, town_id);
+				MakeRoadCrossing(tile, company, company, GetTileOwner(tile), roaddir, GetMapRailType(tile), map_roadtype, map_tramtype, town_id);
 				SetCrossingReservation(tile, reserved);
 				UpdateLevelCrossing(tile, false);
 				MarkDirtyAdjacentLevelCrossingTiles(tile, GetCrossingRoadAxis(tile));
@@ -874,7 +896,7 @@ do_clear:;
 			case MP_ROAD: {
 				RoadTileType rttype = GetRoadTileType(tile);
 				if (existing == ROAD_NONE || rttype == ROAD_TILE_CROSSING) {
-					SetRoadType(tile, rtt, rt);
+					SetMapRoadTypes(tile, map_roadtype, map_tramtype, rtt);
 					SetRoadOwner(tile, rtt, company);
 					if (rtt == RTT_ROAD) SetTownIndex(tile, town_id);
 				}
@@ -885,8 +907,8 @@ do_clear:;
 			case MP_TUNNELBRIDGE: {
 				TileIndex other_end = GetOtherTunnelBridgeEnd(tile);
 
-				SetRoadType(other_end, rtt, rt);
-				SetRoadType(tile, rtt, rt);
+				SetMapRoadTypes(other_end, map_roadtype, map_tramtype, rtt);
+				SetMapRoadTypes(tile, map_roadtype, map_tramtype, rtt);
 				SetRoadOwner(other_end, rtt, company);
 				SetRoadOwner(tile, rtt, company);
 
@@ -902,13 +924,13 @@ do_clear:;
 
 			case MP_STATION: {
 				assert(IsDriveThroughStopTile(tile));
-				SetRoadType(tile, rtt, rt);
+				SetMapRoadTypes(tile, map_roadtype, map_tramtype, rtt);
 				SetRoadOwner(tile, rtt, company);
 				break;
 			}
 
 			default:
-				MakeRoadNormal(tile, pieces, (rtt == RTT_ROAD) ? rt : INVALID_ROADTYPE, (rtt == RTT_TRAM) ? rt : INVALID_ROADTYPE, town_id, company, company);
+				MakeRoadNormal(tile, pieces, map_roadtype, map_tramtype, town_id, company, company);
 				break;
 		}
 
@@ -1172,12 +1194,19 @@ CommandCost CmdBuildRoadDepot(DoCommandFlags flags, TileIndex tile, RoadType rt,
 		if (!Depot::CanAllocateItem()) return CMD_ERROR;
 	}
 
+	RoadTramType rtt = GetRoadTramType(rt);
+
+	MapRoadType map_roadtype = rtt == RTT_ROAD ? _roadtype_mapping.AllocateMapType(rt, flags.Test(DoCommandFlag::Execute)) : RoadTypeMapping::INVALID_MAP_TYPE;
+	if (rtt == RTT_ROAD && map_roadtype == RoadTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_ROADTYPES};
+	MapTramType map_tramtype = rtt == RTT_TRAM ? _tramtype_mapping.AllocateMapType(rt, flags.Test(DoCommandFlag::Execute)) : TramTypeMapping::INVALID_MAP_TYPE;
+	if (rtt == RTT_TRAM && map_tramtype == TramTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_TRAMTYPES};
+
 	if (flags.Test(DoCommandFlag::Execute)) {
 		if (rotate_existing_depot) {
 			SetRoadDepotExitDirection(tile, dir);
 		} else {
 			Depot *dep = new Depot(tile);
-			MakeRoadDepot(tile, _current_company, dep->index, dir, rt);
+			MakeRoadDepot(tile, _current_company, dep->index, dir, map_roadtype, map_tramtype);
 			MakeDefaultName(dep);
 
 			/* A road depot has two road bits. */
@@ -2071,8 +2100,9 @@ static void TileLoop_Road(TileIndex tile)
 		/* Possibly change road type */
 		if (GetRoadOwner(tile, RTT_ROAD) == OWNER_TOWN) {
 			RoadType rt = GetTownRoadType();
-			if (rt != GetRoadTypeRoad(tile)) {
-				SetRoadType(tile, RTT_ROAD, rt);
+			MapRoadType map_roadtype = _roadtype_mapping.AllocateMapType(rt, true);
+			if (map_roadtype != RoadTypeMapping::INVALID_MAP_TYPE && map_roadtype != GetMapRoadTypeRoad(tile)) {
+				SetMapRoadTypeRoad(tile, map_roadtype);
 			}
 		}
 
@@ -2445,6 +2475,11 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 	CommandCost error = CommandCost((rtt == RTT_TRAM) ? STR_ERROR_NO_SUITABLE_TRAMWAY : STR_ERROR_NO_SUITABLE_ROAD); // by default, there is no road to convert.
 	bool found_convertible_road = false; // whether we actually did convert any road/tram (see bug #7633)
 
+	MapRoadType map_roadtype = rtt == RTT_ROAD ? _roadtype_mapping.AllocateMapType(to_type, flags.Test(DoCommandFlag::Execute)) : RoadTypeMapping::INVALID_MAP_TYPE;
+	if (rtt == RTT_ROAD && map_roadtype == RoadTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_ROADTYPES};
+	MapTramType map_tramtype = rtt == RTT_TRAM ? _tramtype_mapping.AllocateMapType(to_type, flags.Test(DoCommandFlag::Execute)) : TramTypeMapping::INVALID_MAP_TYPE;
+	if (rtt == RTT_TRAM && map_tramtype == TramTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_TRAMTYPES};
+
 	std::unique_ptr<TileIterator> iter = TileIterator::Create(area_start, area_end, diagonal);
 	for (; (tile = *iter) != INVALID_TILE; ++(*iter)) {
 		/* Is road present on tile? */
@@ -2530,7 +2565,7 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 				}
 
 				/* Perform the conversion */
-				SetRoadType(tile, rtt, to_type);
+				SetMapRoadTypes(tile, map_roadtype, map_tramtype, rtt);
 				MarkTileDirtyByTile(tile);
 
 				/* update power of train on this tile */
@@ -2590,8 +2625,8 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 				}
 
 				/* Perform the conversion */
-				SetRoadType(tile,    rtt, to_type);
-				SetRoadType(endtile, rtt, to_type);
+				SetMapRoadTypes(tile,    map_roadtype, map_tramtype, rtt);
+				SetMapRoadTypes(endtile, map_roadtype, map_tramtype, rtt);
 
 				for (Vehicle *v : VehiclesOnTile(tile)) {
 					if (v->type == VEH_ROAD) include(affected_rvs, RoadVehicle::From(v)->First());

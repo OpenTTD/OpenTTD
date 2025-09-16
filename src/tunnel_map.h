@@ -45,9 +45,10 @@ bool IsTunnelInWayDir(TileIndex tile, int z, DiagDirection dir);
  * @param t the entrance of the tunnel
  * @param o the owner of the entrance
  * @param d the direction facing out of the tunnel
- * @param r the road type used in the tunnel
+ * @param map_roadtype the map road type used in the tunnel
+ * @param map_tramtype the map tram type used in the tunnel
  */
-inline void MakeRoadTunnel(Tile t, Owner o, DiagDirection d, RoadType road_rt, RoadType tram_rt)
+inline void MakeRoadTunnel(Tile t, Owner o, DiagDirection d, MapRoadType map_roadtype, MapTramType map_tramtype)
 {
 	SetTileType(t, MP_TUNNELBRIDGE);
 	SetTileOwner(t, o);
@@ -60,7 +61,7 @@ inline void MakeRoadTunnel(Tile t, Owner o, DiagDirection d, RoadType road_rt, R
 	t.m8() = 0;
 	SetRoadOwner(t, RTT_ROAD, o);
 	if (o != OWNER_TOWN) SetRoadOwner(t, RTT_TRAM, o);
-	SetRoadTypes(t, road_rt, tram_rt);
+	SetMapRoadTypes(t, map_roadtype, map_tramtype);
 }
 
 /**
