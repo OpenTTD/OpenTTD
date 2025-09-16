@@ -8,6 +8,7 @@
 /** @file engine_gui.cpp GUI to show engine related information. */
 
 #include "stdafx.h"
+#include <bitset>
 #include "window_gui.h"
 #include "engine_base.h"
 #include "command_func.h"
@@ -74,7 +75,11 @@ static constexpr NWidgetPart _nested_engine_preview_widgets[] = {
 			NWidget(WWT_DROPDOWN, COLOUR_LIGHT_BLUE, WID_EP_SORT_DROPDOWN), SetResize(1, 0), SetFill(1, 0), SetToolTip(STR_TOOLTIP_SORT_CRITERIA),
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_DROPDOWN, COLOUR_LIGHT_BLUE, WID_EP_VEH_TYPE_FILTER_DROPDOWN), SetResize(1, 0), SetFill(1, 0), SetToolTip(STR_TOOLTIP_FILTER_CRITERIA),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_EP_SHOW_ALL_VEH_TYPES), SetToolTip(STR_TOOLTIP_ENGINE_PREVIEW_ALL_TYPES),
+			NWidget(WWT_TEXTBTN, COLOUR_LIGHT_BLUE, WID_EP_TRAIN_TOGGLE), SetResize(1, 0), SetFill(1, 0), SetToolTip(STR_TOOLTIP_ENGINE_PREVIEW_TOGGLE),
+			NWidget(WWT_TEXTBTN, COLOUR_LIGHT_BLUE, WID_EP_ROAD_VEHICLE_TOGGLE), SetResize(1, 0), SetFill(1, 0), SetToolTip(STR_TOOLTIP_ENGINE_PREVIEW_TOGGLE),
+			NWidget(WWT_TEXTBTN, COLOUR_LIGHT_BLUE, WID_EP_SHIP_TOGGLE), SetResize(1, 0), SetFill(1, 0), SetToolTip(STR_TOOLTIP_ENGINE_PREVIEW_TOGGLE),
+			NWidget(WWT_TEXTBTN, COLOUR_LIGHT_BLUE, WID_EP_AIRCRAFT_TOGGLE), SetResize(1, 0), SetFill(1, 0), SetToolTip(STR_TOOLTIP_ENGINE_PREVIEW_TOGGLE),
 			NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, WID_EP_CONFIGURE_BADGES), SetAspect(WidgetDimensions::ASPECT_UP_DOWN_BUTTON), SetResize(0, 0), SetFill(0, 1), SetSpriteTip(SPR_EXTRA_MENU, STR_BADGE_CONFIG_MENU_TOOLTIP),
 		EndContainer(),
 		NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE),
@@ -110,8 +115,9 @@ struct EnginePreviewWindow : Window {
 	GUIEngineList filtered_eng_list{}; ///< List of currently visible engines
 	EngineID selected_engine = EngineID::Invalid(); ///< Currently selected engine, or #EngineID::Invalid()
 	Scrollbar *vscroll = nullptr;
-	VehicleType vehicle_type = VEH_ANY; ///< Type of vehicles currently shown in the window.
-	VehicleType veh_type_filter_criteria = VEH_ANY; ///< Selected vehicle type filter
+	VehicleType vehicle_type = VEH_INVALID; ///< Type of vehicles currently shown in the window.
+	std::bitset<VEH_COMPANY_END> is_veh_type_visible; ///< Whether vehicles of a given type are visible
+	std::array<uint16_t, VEH_COMPANY_END> number_of_vehicles{}; ///< Number of vehicles in eng_list per vehicle type.
 	bool descending_sort_order = false; ///< Sort direction, @see _engine_sort_direction
 	uint8_t sort_criteria = 0; ///< Current sort criterium.
 
@@ -125,7 +131,10 @@ struct EnginePreviewWindow : Window {
 
 	EnginePreviewWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc), vehicle_editbox(MAX_LENGTH_VEHICLE_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_VEHICLE_NAME_CHARS)
 	{
-		this->UpdateWindowsVehicleType();
+		/* Turn of all toggles. */
+		this->is_veh_type_visible.reset();
+		this->number_of_vehicles.fill(0);
+
 		this->InitNested(window_number);
 
 		this->vscroll = this->GetScrollbar(WID_EP_SCROLLBAR);
@@ -136,12 +145,37 @@ struct EnginePreviewWindow : Window {
 
 		EnginePreviewWindow::_current_instance = this;
 
-		this->sort_criteria = _engine_sort_last_criteria[this->veh_type_filter_criteria];
-		this->descending_sort_order = _engine_sort_last_order[this->veh_type_filter_criteria];
+		this->sort_criteria = _engine_sort_last_criteria[VEH_COMPANY_END];
+		this->descending_sort_order = _engine_sort_last_order[VEH_COMPANY_END];
 
 		/* There is no way to recover the window; so disallow closure via DEL; unless SHIFT+DEL */
 		this->flags.Set(WindowFlag::Sticky);
+
+		for (auto widget : {WID_EP_TRAIN_TOGGLE, WID_EP_ROAD_VEHICLE_TOGGLE, WID_EP_SHIP_TOGGLE, WID_EP_AIRCRAFT_TOGGLE}) this->LowerWidget(widget);
 	}
+
+	/**
+	 * Finds out which type is currently selected.
+	 * @return The currently selected type or VEH_COMPANY_END if nothing is selected.
+	 * @pre Up to one vehicle type can be visible.
+	 */
+	VehicleType GetOnlyVisibleType() const {
+		/* Return VEH_COMPANY_END if no vehicle type is visible */
+		if(this->is_veh_type_visible.count() == 0) return VEH_COMPANY_END;
+
+		assert(this->is_veh_type_visible.count() == 1);
+		VehicleType veh_type = VEH_BEGIN;
+		for (; veh_type < VEH_COMPANY_END; ++veh_type) {
+			if (this->is_veh_type_visible.test(veh_type)) break;
+		}
+		return veh_type;
+	}
+
+	/** Check if conversion from VehicleType to GrfSpecFeature can be done with addition */
+	static_assert((GSF_TRAINS + VEH_TRAIN) == GSF_TRAINS);
+	static_assert((GSF_TRAINS + VEH_ROAD) == GSF_ROADVEHICLES);
+	static_assert((GSF_TRAINS + VEH_SHIP) == GSF_SHIPS);
+	static_assert((GSF_TRAINS + VEH_AIRCRAFT) == GSF_AIRCRAFT);
 
 	void OnInit() override
 	{
@@ -150,23 +184,55 @@ struct EnginePreviewWindow : Window {
 		this->badge_classes[VEH_SHIP] = GUIBadgeClasses(static_cast<GrfSpecFeature>(GSF_SHIPS));
 		this->badge_classes[VEH_AIRCRAFT] = GUIBadgeClasses(static_cast<GrfSpecFeature>(GSF_AIRCRAFT));
 
+		this->UpdateWindowsVehicleType();
+
+		this->GetWidget<NWidgetLeaf>(WID_EP_LIST)->SetupSmallestSize(this);
 		if (this->vscroll != nullptr) this->FilterEngineList();
 
 		auto container = this->GetWidget<NWidgetContainer>(WID_EP_BADGE_FILTER);
 
-		if (this->veh_type_filter_criteria == VEH_ANY) {
-			this->badge_filters = AddBadgeDropdownFilters(*container, WID_EP_BADGE_FILTER, COLOUR_LIGHT_BLUE, GSF_TRAINS);
-			for (GrfSpecFeature feature : {GSF_ROADVEHICLES, GSF_SHIPS, GSF_AIRCRAFT}) {
-				std::pair<WidgetID, WidgetID> tmp = AddBadgeDropdownFilters(*container, this->badge_filters.second, COLOUR_LIGHT_BLUE, feature, false);
-				this->badge_filters.first = std::min(this->badge_filters.first, tmp.first);
-				this->badge_filters.second = std::max(this->badge_filters.second, tmp.second);
+		this->badge_filters.first = INT_MAX; ///< Set min to max value.
+		this->badge_filters.second = WID_EP_BADGE_FILTER;
+		bool clear = true;
+
+		uint8_t number_of_0_in_number_of_vehicles = 0;
+
+		for (VehicleType veh_type = VEH_BEGIN; veh_type < VEH_COMPANY_END; ++veh_type) {
+			if(this->number_of_vehicles[veh_type] == 0) ++number_of_0_in_number_of_vehicles;
+
+			if(!this->is_veh_type_visible.test(veh_type)) continue;
+			std::pair<WidgetID, WidgetID> tmp = AddBadgeDropdownFilters(*container, this->badge_filters.second, COLOUR_LIGHT_BLUE, static_cast<GrfSpecFeature>(GSF_TRAINS + veh_type), clear);
+			clear = false;
+			this->badge_filters.first = std::min(this->badge_filters.first, tmp.first);
+			this->badge_filters.second = std::max(this->badge_filters.second, tmp.second);
+		}
+
+		if (number_of_0_in_number_of_vehicles == 3) {
+			for (VehicleType veh_type = VEH_BEGIN; veh_type < VEH_COMPANY_END; ++veh_type) {
+				if (this->is_veh_type_visible.count() == 0) this->is_veh_type_visible.set(veh_type, this->number_of_vehicles[veh_type] != 0);
 			}
-		} else {
-			this->badge_filters = AddBadgeDropdownFilters(*container, WID_EP_BADGE_FILTER, COLOUR_LIGHT_BLUE, static_cast<GrfSpecFeature>(GSF_TRAINS + this->veh_type_filter_criteria));
+		}
+
+		for (WidgetID widget : {WID_EP_SHOW_ALL_VEH_TYPES, WID_EP_TRAIN_TOGGLE, WID_EP_ROAD_VEHICLE_TOGGLE, WID_EP_SHIP_TOGGLE, WID_EP_AIRCRAFT_TOGGLE}) {
+			this->SetWidgetDisabledState(widget, number_of_0_in_number_of_vehicles == 3);
+		}
+
+		if(this->badge_filters.first == INT_MAX) {
+			container->Clear();
+			this->badge_filters.first = ++this->badge_filters.second;
+		}
+
+		if (this->is_veh_type_visible.count() != 0) {
+			while (!this->is_veh_type_visible.test(this->badge_veh_type)) {
+				this->badge_veh_type++;
+				if (this->badge_veh_type == VEH_COMPANY_END) this->badge_veh_type = VEH_BEGIN;
+			}
 		}
 
 		this->widget_lookup.clear();
 		this->nested_root->FillWidgetLookup(this->widget_lookup);
+
+		this->UpdateTogglesState();
 	}
 
 	/**
@@ -177,30 +243,13 @@ struct EnginePreviewWindow : Window {
 	StringID GetVehTypeFilterLabel(VehicleType vehicle_type) const
 	{
 		switch (vehicle_type) {
-			case VEH_ANY: return STR_ENGINE_PREVIEW_ALL_TYPES;
-			case VEH_TRAIN: return STR_ENGINE_PREVIEW_TRAIN_ONLY;
-			case VEH_ROAD: return STR_ENGINE_PREVIEW_ROAD_VEHICLE_ONLY;
-			case VEH_SHIP: return STR_ENGINE_PREVIEW_SHIP_ONLY;
-			case VEH_AIRCRAFT: return STR_ENGINE_PREVIEW_AIRCRAFT_ONLY;
+			case VEH_INVALID: return STR_ENGINE_PREVIEW_ALL_TYPES;
+			case VEH_TRAIN: return STR_ENGINE_PREVIEW_TRAIN_TOGGLE;
+			case VEH_ROAD: return STR_ENGINE_PREVIEW_ROAD_VEHICLE_TOGGLE;
+			case VEH_SHIP: return STR_ENGINE_PREVIEW_SHIP_TOGGLE;
+			case VEH_AIRCRAFT: return STR_ENGINE_PREVIEW_AIRCRAFT_TOGGLE;
 			default: NOT_REACHED();
 		}
-	}
-
-	/**
-	 * Builds widgets for vehicle type filter dropdown.
-	 * @returns list containing widgets for vehicle type filter dropdown.
-	 */
-	DropDownList BuildVehTypeDropDownList() const
-	{
-		DropDownList list;
-
-		list.push_back(MakeDropDownListStringItem(this->GetVehTypeFilterLabel(VEH_ANY), VEH_ANY));
-		list.push_back(MakeDropDownListStringItem(this->GetVehTypeFilterLabel(VEH_TRAIN), VEH_TRAIN));
-		list.push_back(MakeDropDownListStringItem(this->GetVehTypeFilterLabel(VEH_ROAD), VEH_ROAD));
-		list.push_back(MakeDropDownListStringItem(this->GetVehTypeFilterLabel(VEH_SHIP), VEH_SHIP));
-		list.push_back(MakeDropDownListStringItem(this->GetVehTypeFilterLabel(VEH_AIRCRAFT), VEH_AIRCRAFT));
-
-		return list;
 	}
 
 	/**
@@ -210,13 +259,13 @@ struct EnginePreviewWindow : Window {
 	DropDownList BuildBadgeConfigurationList()
 	{
 		static const auto separators = {STR_BADGE_CONFIG_PREVIEW, STR_BADGE_CONFIG_NAME};
-		if (this->veh_type_filter_criteria == VEH_ANY) {
+		if (this->is_veh_type_visible.count() > 1) {
 			DropDownList out = BuildBadgeClassConfigurationList(this->badge_classes[this->badge_veh_type], BADGE_COLUMNS, separators);
 			out.push_back(MakeDropDownListDividerItem());
 			out.push_back(std::make_unique<DropDownListMoverItem>(BADGE_NEXT_VEH_TYPE, BADGE_PREVIOUS_VEH_TYPE, COLOUR_YELLOW, GetString(this->GetVehTypeFilterLabel(this->badge_veh_type)), BADGE_VEH_TYPE_WIDGET_INDEX));
 			return out;
 		}
-		return BuildBadgeClassConfigurationList(this->badge_classes[this->veh_type_filter_criteria], BADGE_COLUMNS, separators);
+		return BuildBadgeClassConfigurationList(this->badge_classes[this->GetOnlyVisibleType()], BADGE_COLUMNS, separators);
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -261,18 +310,14 @@ struct EnginePreviewWindow : Window {
 				break;
 			}
 
-			case WID_EP_VEH_TYPE_FILTER_DROPDOWN:
-				size.width = std::max(size.width, GetDropDownListDimension(this->BuildVehTypeDropDownList()).width + padding.width);
-				break;
-
 			case WID_EP_CONFIGURE_BADGES:
 				/* Hide the configuration button if no configurable badges are present. */
-				if (this->veh_type_filter_criteria == VEH_ANY) {
+				if (this->is_veh_type_visible.count() > 1) {
 					for (VehicleType veh_type : {VEH_TRAIN, VEH_ROAD, VEH_SHIP, VEH_AIRCRAFT}) {
 						if (!this->badge_classes[veh_type].GetClasses().empty()) return;
 					}
 				} else {
-					if (!this->badge_classes[this->veh_type_filter_criteria].GetClasses().empty()) return;
+					if (!this->badge_classes[this->GetOnlyVisibleType()].GetClasses().empty()) return;
 				}
 				size = {0, 0};
 				break;
@@ -284,6 +329,60 @@ struct EnginePreviewWindow : Window {
 				size = maxdim(size, d);
 				break;
 			}
+
+			case WID_EP_SHOW_ALL_VEH_TYPES:
+				if (this->IsWidgetDisabled(WID_EP_SHOW_ALL_VEH_TYPES)) {
+					size = {0, 0}; ///< Hide if there are previews of only one vehicle type.
+				}
+				break;
+
+			case WID_EP_TRAIN_TOGGLE:
+				if (this->number_of_vehicles[VEH_TRAIN] == 0) {
+					/* Hide if there are no trains to preview. */
+					size = {0, 0};
+					fill = {0, 0};
+					resize = {0, 0};
+				} else {
+					fill = {1, 0};
+					resize = {1, 0};
+				}
+				break;
+
+			case WID_EP_ROAD_VEHICLE_TOGGLE:
+				if (this->number_of_vehicles[VEH_ROAD] == 0) {
+					/* Hide if there are no road vehicles to preview. */
+					size = {0, 0};
+					fill = {0, 0};
+					resize = {0, 0};
+				} else {
+					fill = {1, 0};
+					resize = {1, 0};
+				}
+				break;
+
+			case WID_EP_SHIP_TOGGLE:
+				if (this->number_of_vehicles[VEH_SHIP] == 0) {
+					/* Hide if there are no ships to preview. */
+					size = {0, 0};
+					fill = {0, 0};
+					resize = {0, 0};
+				} else {
+					fill = {1, 0};
+					resize = {1, 0};
+				}
+				break;
+
+			case WID_EP_AIRCRAFT_TOGGLE:
+				if (this->number_of_vehicles[VEH_AIRCRAFT] == 0) {
+					/* Hide if there are no aircrafts to preview. */
+					size = {0, 0};
+					fill = {0, 0};
+					resize = {0, 0};
+				} else {
+					fill = {1, 0};
+					resize = {1, 0};
+				}
+				break;
 		}
 	}
 
@@ -304,12 +403,6 @@ struct EnginePreviewWindow : Window {
 		return this->string_filter.GetState();
 	}
 
-	/** Check if conversion from VehicleType to GrfSpecFeature can be done with addition */
-	static_assert((GSF_TRAINS + VEH_TRAIN) == GSF_TRAINS);
-	static_assert((GSF_TRAINS + VEH_ROAD) == GSF_ROADVEHICLES);
-	static_assert((GSF_TRAINS + VEH_SHIP) == GSF_SHIPS);
-	static_assert((GSF_TRAINS + VEH_AIRCRAFT) == GSF_AIRCRAFT);
-
 	/**
 	 * Determines which engines should be currently visible.
 	 * Stores the output in the filtered_eng_list.
@@ -323,9 +416,8 @@ struct EnginePreviewWindow : Window {
 		for (auto it = this->eng_list.begin(); it != this->eng_list.end(); ++it) {
 			const Engine *e = Engine::Get((*it).engine_id);
 
-			if (this->veh_type_filter_criteria != VEH_ANY) {
-				if(e->type != this->veh_type_filter_criteria) continue;
-			}
+			if(!this->is_veh_type_visible.test(e->type)) continue;
+
 			if (!bdf.Filter(e->badges)) continue;
 
 			/* Filter by name or NewGRF extra text */
@@ -336,7 +428,11 @@ struct EnginePreviewWindow : Window {
 		}
 
 		_engine_sort_direction = this->descending_sort_order;
-		EngList_Sort(this->filtered_eng_list, _engine_sort_functions[this->veh_type_filter_criteria][this->sort_criteria]);
+		if (this->is_veh_type_visible.count() > 1) {
+			EngList_Sort(this->filtered_eng_list, _engine_sort_functions[VEH_COMPANY_END][this->sort_criteria]);
+		} else {
+			EngList_Sort(this->filtered_eng_list, _engine_sort_functions[this->GetOnlyVisibleType()][this->sort_criteria]);
+		}
 
 		this->vscroll->SetCount(this->filtered_eng_list.size());
 	}
@@ -363,6 +459,9 @@ struct EnginePreviewWindow : Window {
 		this->eng_list.emplace_back(engine, e->info.variant_id, flags, 0);
 
 		if (this->selected_engine == EngineID::Invalid()) this->selected_engine = engine;
+
+		this->number_of_vehicles[e->type] += 1;
+		if (this->number_of_vehicles[e->type] == 1) this->is_veh_type_visible.set(e->type);
 
 		this->UpdateScrollCapacity();
 		this->ReInit();
@@ -416,28 +515,14 @@ struct EnginePreviewWindow : Window {
 	/** Determines which type of vehicles is currently being shown in the window. */
 	void UpdateWindowsVehicleType()
 	{
-		if (this->veh_type_filter_criteria != VEH_ANY) {
-			/* Only vehicles of one type are visible */
-			this->vehicle_type = this->veh_type_filter_criteria;
-			return;
-		}
-
-		/**
-		 * Vehicles of multiple types are visible.
-		 * Choose type with the biggest row height,
-		 * as draw engine list function does not support multiple types.
-		 */
-
-		uint max_h = GetEngineListHeight(VEH_BEGIN);
+		uint max_h = 0;
 		this->vehicle_type = VEH_BEGIN;
-		VehicleType next_type = VEH_BEGIN;
-		++next_type;
-		while (next_type < VEH_COMPANY_END) {
+		for (VehicleType next_type = VEH_BEGIN; next_type < VEH_COMPANY_END; ++next_type) {
+			if(!this->is_veh_type_visible.test(next_type)) continue;
 			if (max_h < GetEngineListHeight(next_type)) {
 				max_h = GetEngineListHeight(next_type);
 				this->vehicle_type = next_type;
 			}
-			++next_type;
 		}
 	}
 
@@ -447,19 +532,11 @@ struct EnginePreviewWindow : Window {
 			case WID_EP_SORT_DROPDOWN:
 				if (this->sort_criteria != index) {
 					this->sort_criteria = index;
-					_engine_sort_last_criteria[this->veh_type_filter_criteria] = this->sort_criteria;
-					this->FilterEngineList();
-				}
-				break;
-
-			case WID_EP_VEH_TYPE_FILTER_DROPDOWN: // Select a vehicle type filter criteria
-				if (static_cast<int>(this->veh_type_filter_criteria) != index) {
-					this->veh_type_filter_criteria = static_cast<VehicleType>(index);
-					this->sort_criteria = _engine_sort_last_criteria[this->veh_type_filter_criteria];
-					this->descending_sort_order = _engine_sort_last_order[this->veh_type_filter_criteria];
-					this->UpdateWindowsVehicleType();
-					this->GetWidget<NWidgetLeaf>(WID_EP_LIST)->SetupSmallestSize(this);
-					this->ReInit();
+					if(this->is_veh_type_visible.count() > 1) {
+						_engine_sort_last_criteria[VEH_COMPANY_END] = this->sort_criteria;
+					} else {
+						_engine_sort_last_criteria[this->GetOnlyVisibleType()] = this->sort_criteria;
+					}
 					this->FilterEngineList();
 				}
 				break;
@@ -468,11 +545,15 @@ struct EnginePreviewWindow : Window {
 				bool reopen = true;
 
 				if (index == BADGE_VEH_TYPE_WIDGET_INDEX && click_result == BADGE_PREVIOUS_VEH_TYPE) {
-					if (this->badge_veh_type == VEH_BEGIN) this->badge_veh_type = VEH_COMPANY_END;
-					this->badge_veh_type--;
+					do {
+						if (this->badge_veh_type == VEH_BEGIN) this->badge_veh_type = VEH_COMPANY_END;
+						this->badge_veh_type--;
+					} while (!this->is_veh_type_visible.test(this->badge_veh_type));
 				} else if (index == BADGE_VEH_TYPE_WIDGET_INDEX && click_result == BADGE_NEXT_VEH_TYPE) {
-					this->badge_veh_type++;
-					if (this->badge_veh_type == VEH_COMPANY_END) this->badge_veh_type = VEH_BEGIN;
+					do {
+						this->badge_veh_type++;
+						if (this->badge_veh_type == VEH_COMPANY_END) this->badge_veh_type = VEH_BEGIN;
+					} while (!this->is_veh_type_visible.test(this->badge_veh_type));
 				} else {
 					reopen = HandleBadgeConfigurationDropDownClick(static_cast<GrfSpecFeature>(GSF_TRAINS + this->badge_veh_type), BADGE_COLUMNS, index, click_result, this->badge_filter_choices);
 				}
@@ -524,6 +605,11 @@ struct EnginePreviewWindow : Window {
 		for (auto it = this->eng_list.begin(); it != this->eng_list.end(); ++it) {
 			if ((*it).engine_id == engine) {
 				this->eng_list.erase(it);
+
+				const Engine *e = Engine::Get(engine);
+				this->number_of_vehicles[e->type] -= 1;
+				if (this->number_of_vehicles[e->type] == 0) this->is_veh_type_visible.reset(e->type);
+
 				break;
 			}
 		}
@@ -533,7 +619,7 @@ struct EnginePreviewWindow : Window {
 			return;
 		}
 
-		this->FilterEngineList();
+		this->ReInit();
 
 		if(engine == this->selected_engine) {
 			if(this->filtered_eng_list.size() == 0) {
@@ -546,26 +632,80 @@ struct EnginePreviewWindow : Window {
 		this->SetDirty();
 	}
 
+	void ToogleVehTypeVisible(VehicleType veh_type) {
+		this->is_veh_type_visible.flip(veh_type);
+
+		if(this->is_veh_type_visible.count() > 1) {
+			this->sort_criteria = _engine_sort_last_criteria[VEH_COMPANY_END];
+			this->descending_sort_order = _engine_sort_last_order[VEH_COMPANY_END];
+		} else {
+			this->sort_criteria = _engine_sort_last_criteria[this->GetOnlyVisibleType()];
+			this->descending_sort_order = _engine_sort_last_order[this->GetOnlyVisibleType()];
+		}
+		this->ReInit();
+	}
+
+	void UpdateTogglesState() {
+		this->SetWidgetLoweredState(WID_EP_TRAIN_TOGGLE, this->is_veh_type_visible.test(VEH_TRAIN));
+		this->SetWidgetLoweredState(WID_EP_ROAD_VEHICLE_TOGGLE, this->is_veh_type_visible.test(VEH_ROAD));
+		this->SetWidgetLoweredState(WID_EP_SHIP_TOGGLE, this->is_veh_type_visible.test(VEH_SHIP));
+		this->SetWidgetLoweredState(WID_EP_AIRCRAFT_TOGGLE, this->is_veh_type_visible.test(VEH_AIRCRAFT));
+	}
+
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
-			case WID_EP_VEH_TYPE_FILTER_DROPDOWN: // Select vehicle type filtering criteria dropdown menu
-				ShowDropDownList(this, this->BuildVehTypeDropDownList(), this->veh_type_filter_criteria, widget);
+			case WID_EP_SHOW_ALL_VEH_TYPES:
+				this->is_veh_type_visible.set();
+				if (_ctrl_pressed) this->is_veh_type_visible.reset();
+
+				this->sort_criteria = _engine_sort_last_criteria[VEH_COMPANY_END];
+				this->descending_sort_order = _engine_sort_last_order[VEH_COMPANY_END];
+
+				this->ReInit();
+				break;
+
+			case WID_EP_TRAIN_TOGGLE:
+				if (_ctrl_pressed) this->is_veh_type_visible.reset();
+				ToogleVehTypeVisible(VEH_TRAIN);
+				break;
+
+			case WID_EP_ROAD_VEHICLE_TOGGLE:
+				if (_ctrl_pressed) this->is_veh_type_visible.reset();
+				ToogleVehTypeVisible(VEH_ROAD);
+				break;
+
+			case WID_EP_SHIP_TOGGLE:
+				if (_ctrl_pressed) this->is_veh_type_visible.reset();
+				ToogleVehTypeVisible(VEH_SHIP);
+				break;
+
+			case WID_EP_AIRCRAFT_TOGGLE:
+				if (_ctrl_pressed) this->is_veh_type_visible.reset();
+				ToogleVehTypeVisible(VEH_AIRCRAFT);
 				break;
 
 			case WID_EP_SORT_DROPDOWN: // Select sorting criteria dropdown menu
-				DisplayVehicleSortDropDown(this, this->veh_type_filter_criteria, this->sort_criteria, WID_EP_SORT_DROPDOWN);
+				if (this->is_veh_type_visible.count() > 1) {
+					DisplayVehicleSortDropDown(this, VEH_COMPANY_END, this->sort_criteria, WID_EP_SORT_DROPDOWN);
+				} else {
+					DisplayVehicleSortDropDown(this, this->GetOnlyVisibleType(), this->sort_criteria, WID_EP_SORT_DROPDOWN);
+				}
 				break;
 
 			case WID_EP_SORT_ASCENDING_DESCENDING:
 				this->descending_sort_order ^= true;
-				_engine_sort_last_order[this->veh_type_filter_criteria] = this->descending_sort_order;
+				if (this->is_veh_type_visible.count() > 1) {
+					_engine_sort_last_order[VEH_COMPANY_END] = this->descending_sort_order;
+				} else {
+					_engine_sort_last_order[this->GetOnlyVisibleType()] = this->descending_sort_order;
+				}
 				this->FilterEngineList();
 				this->SetDirty();
 				break;
 
 			case WID_EP_CONFIGURE_BADGES:
-				if (this->veh_type_filter_criteria == VEH_ANY) {
+				if (this->is_veh_type_visible.count() > 1) {
 					for (VehicleType veh_type : {VEH_TRAIN, VEH_ROAD, VEH_SHIP, VEH_AIRCRAFT}) {
 						if (!this->badge_classes[veh_type].GetClasses().empty()) {
 							ShowDropDownList(this, this->BuildBadgeConfigurationList(), -1, widget, 0, false, true);
@@ -573,7 +713,7 @@ struct EnginePreviewWindow : Window {
 						}
 					}
 				} else {
-					if (this->badge_classes[this->veh_type_filter_criteria].GetClasses().empty()) return;
+					if (this->badge_classes[this->GetOnlyVisibleType()].GetClasses().empty()) return;
 				}
 				ShowDropDownList(this, this->BuildBadgeConfigurationList(), -1, widget, 0, false, true);
 				break;
@@ -615,10 +755,26 @@ struct EnginePreviewWindow : Window {
 				return GetString(STR_ENGINE_PREVIEW_CAPTION);
 
 			 case WID_EP_SORT_DROPDOWN:
-				 return GetString(std::data(_engine_sort_listing[this->veh_type_filter_criteria])[this->sort_criteria]);
+				if (this->is_veh_type_visible.count() > 1) {
+					return GetString(std::data(_engine_sort_listing[VEH_COMPANY_END])[this->sort_criteria]);
+				} else {
+					return GetString(std::data(_engine_sort_listing[this->GetOnlyVisibleType()])[this->sort_criteria]);
+				}
 
-			case WID_EP_VEH_TYPE_FILTER_DROPDOWN:
-				return GetString(this->GetVehTypeFilterLabel(this->veh_type_filter_criteria));
+			case WID_EP_SHOW_ALL_VEH_TYPES:
+				return GetString(this->GetVehTypeFilterLabel(VEH_INVALID));
+
+			case WID_EP_TRAIN_TOGGLE:
+				return GetString(this->GetVehTypeFilterLabel(VEH_TRAIN));
+
+			case WID_EP_ROAD_VEHICLE_TOGGLE:
+				return GetString(this->GetVehTypeFilterLabel(VEH_ROAD));
+
+			case WID_EP_SHIP_TOGGLE:
+				return GetString(this->GetVehTypeFilterLabel(VEH_SHIP));
+
+			case WID_EP_AIRCRAFT_TOGGLE:
+				return GetString(this->GetVehTypeFilterLabel(VEH_AIRCRAFT));
 
 			default:
 				if (IsInsideMM(widget, this->badge_filters.first, this->badge_filters.second)) {
