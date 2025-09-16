@@ -141,14 +141,6 @@ struct EnginePreviewWindow : Window {
 
 		/* There is no way to recover the window; so disallow closure via DEL; unless SHIFT+DEL */
 		this->flags.Set(WindowFlag::Sticky);
-
-		EngineID engine = static_cast<EngineID>(window_number);
-		this->AddNewOffert(engine);
-
-		/* Select the first unshaded engine in the list as default when opening the window */
-		auto it = std::ranges::find_if(this->eng_list, [](const GUIEngineListItem &item) { return !item.flags.Test(EngineDisplayFlag::Shaded); });
-		if (it != this->eng_list.end()) engine = it->engine_id;
-		this->selected_engine = engine;
 	}
 
 	void OnInit() override
@@ -359,7 +351,7 @@ struct EnginePreviewWindow : Window {
 	 * Appends an engine offered for a preview to the end of the engine list.
 	 * @param engine ID of the engine offered for the preview.
 	 */
-	void AddNewOffert(EngineID &engine)
+	void AddNewOffer(EngineID &engine)
 	{
 		assert(this->vscroll != nullptr);
 
@@ -369,6 +361,8 @@ struct EnginePreviewWindow : Window {
 		/* Ignore folding and variants. */
 		if(e->display_flags.Test(EngineDisplayFlag::Shaded)) flags.Set(EngineDisplayFlag::Shaded);
 		this->eng_list.emplace_back(engine, e->info.variant_id, flags, 0);
+
+		if (this->selected_engine == EngineID::Invalid()) this->selected_engine = engine;
 
 		this->UpdateScrollCapacity();
 		this->ReInit();
@@ -522,6 +516,36 @@ struct EnginePreviewWindow : Window {
 		this->Window::Close(data);
 	}
 
+	/**
+	 * Searches for the engine in the engine list and then removes it from the list.
+	 * @param engine ID of the engine to remove from the engine list.
+	 */
+	void RemoveOffer(EngineID &engine) {
+		for (auto it = this->eng_list.begin(); it != this->eng_list.end(); ++it) {
+			if ((*it).engine_id == engine) {
+				this->eng_list.erase(it);
+				break;
+			}
+		}
+
+		if(this->eng_list.size() == 0) {
+			this->Close();
+			return;
+		}
+
+		this->FilterEngineList();
+
+		if(engine == this->selected_engine) {
+			if(this->filtered_eng_list.size() == 0) {
+				this->selected_engine = this->eng_list[0].engine_id;
+			} else {
+				this->selected_engine = this->filtered_eng_list[0].engine_id;
+			}
+		}
+
+		this->SetDirty();
+	}
+
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
@@ -573,23 +597,7 @@ struct EnginePreviewWindow : Window {
 
 			case WID_EP_NO:
 				if (_shift_pressed) return;
-				for (auto it = this->eng_list.begin(); it != this->eng_list.end(); ++it) {
-					if ((*it).engine_id == this->selected_engine) {
-						this->eng_list.erase(it);
-						break;
-					}
-				}
-				if(this->eng_list.size() == 0) {
-					this->Close();
-				} else {
-					this->FilterEngineList();
-					if(this->filtered_eng_list.size() == 0) {
-						this->selected_engine = this->eng_list[0].engine_id;
-					} else {
-						this->selected_engine = this->filtered_eng_list[0].engine_id;
-					}
-					this->SetDirty();
-				}
+				RemoveOffer(this->selected_engine);
 				break;
 
 			default:
@@ -624,8 +632,39 @@ struct EnginePreviewWindow : Window {
 	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
-		if (this->selected_engine == EngineID::Invalid()) return;
-		if (Engine::Get(this->selected_engine)->preview_company != _local_company) this->Close();
+		for (auto it = this->eng_list.begin(); it != this->eng_list.end();) {
+			if (!Engine::IsValidID(it->engine_id) || it->engine_id == EngineID::Invalid()) {
+				if (it->engine_id == this->selected_engine) this->selected_engine = EngineID::Invalid();
+				this->eng_list.erase(it);
+				it = this->eng_list.begin();
+				continue;
+			}
+			const Engine *e = Engine::Get(it->engine_id);
+			if (e->preview_company != _local_company) {
+				if (it->engine_id == this->selected_engine) this->selected_engine = EngineID::Invalid();
+				this->eng_list.erase(it);
+				it = this->eng_list.begin();
+				continue;
+			}
+			++it;
+		}
+
+		if(this->eng_list.size() == 0) {
+			this->Close();
+			return;
+		}
+
+		this->FilterEngineList();
+
+		if(this->selected_engine == EngineID::Invalid()) {
+			if(this->filtered_eng_list.size() == 0) {
+				this->selected_engine = this->eng_list[0].engine_id;
+			} else {
+				this->selected_engine = this->filtered_eng_list[0].engine_id;
+			}
+		}
+
+		this->SetDirty();
 	}
 
 	void OnEditboxChanged(WidgetID wid) override
@@ -658,14 +697,31 @@ static WindowDesc _engine_preview_desc(
  * Otherwise, adds a new offer to the existing window.
  * @param engine The engine offered for testing.
  */
-void ShowEnginePreviewWindow(EngineID engine)
+void ShowEnginePreviewWindow(Engine *e)
 {
+	EngineID engine = e->index;
 	if(EnginePreviewWindow::_current_instance == nullptr) {
-		AllocateWindowDescFront<EnginePreviewWindow>(_engine_preview_desc, engine);
-	} else {
-		EnginePreviewWindow::_current_instance->AddNewOffert(engine);
-		EnginePreviewWindow::_current_instance->SetDirty();
+		AllocateWindowDescFront<EnginePreviewWindow>(_engine_preview_desc, 0);
 	}
+	assert(EnginePreviewWindow::_current_instance != nullptr);
+	EnginePreviewWindow::_current_instance->AddNewOffer(engine);
+	EnginePreviewWindow::_current_instance->SetDirty();
+}
+
+/**
+ * Removes offer from existing EnginePreviewWindow.
+ * Closes window if it contains no offers.
+ * @param engine The engine offered for testing.
+ */
+void CloseEnginePreviewWindow(Engine *e)
+{
+	EngineID engine = e->index;
+
+	if (EnginePreviewWindow::_current_instance == nullptr) {
+		/* Window has been closed. */
+		return;
+	}
+	EnginePreviewWindow::_current_instance->RemoveOffer(engine);
 }
 
 /**

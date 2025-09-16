@@ -615,7 +615,8 @@ void SetupEngines()
 	}
 }
 
-void ShowEnginePreviewWindow(EngineID engine);
+void ShowEnginePreviewWindow(Engine *e);
+void CloseEnginePreviewWindow(Engine *e);
 
 /**
  * Determine whether an engine type is a wagon (and not a loco).
@@ -894,7 +895,7 @@ static void AcceptEnginePreview(EngineID eid, CompanyID company, int recursion_d
 	 *       In singleplayer this function is called from the preview window, so
 	 *       we have to use the GUI-scope scheduling of InvalidateWindowData.
 	 */
-	InvalidateWindowData(WC_ENGINE_PREVIEW, eid);
+	InvalidateWindowData(WC_ENGINE_PREVIEW, 0);
 
 	/* Don't search for variants to include if we are 10 levels deep already. */
 	if (recursion_depth >= 10) return;
@@ -969,11 +970,10 @@ static const IntervalTimer<TimerGameCalendar> _calendar_engines_daily({TimerGame
 	if (TimerGameCalendar::year >= _year_engine_aging_stops) return;
 
 	for (Engine *e : Engine::Iterate()) {
-		EngineID i = e->index;
 		if (e->flags.Test(EngineFlag::ExclusivePreview)) {
 			if (e->preview_company != CompanyID::Invalid()) {
 				if (!--e->preview_wait) {
-					CloseWindowById(WC_ENGINE_PREVIEW, i);
+					CloseEnginePreviewWindow(e);
 					e->preview_company = CompanyID::Invalid();
 				}
 			} else if (e->preview_asked.Count() < MAX_COMPANIES) {
@@ -991,8 +991,8 @@ static const IntervalTimer<TimerGameCalendar> _calendar_engines_daily({TimerGame
 				 * boost that they wouldn't have gotten against other human companies. The check on
 				 * the line below is just to make AIs not notice that they have a preview if they
 				 * cannot build the vehicle. */
-				if (!IsVehicleTypeDisabled(e->type, true)) AI::NewEvent(e->preview_company, new ScriptEventEnginePreview(i));
-				if (IsInteractiveCompany(e->preview_company)) ShowEnginePreviewWindow(i);
+				if (!IsVehicleTypeDisabled(e->type, true)) AI::NewEvent(e->preview_company, new ScriptEventEnginePreview(e->index));
+				if (IsInteractiveCompany(e->preview_company)) ShowEnginePreviewWindow(e);
 			}
 		}
 	}
@@ -1133,7 +1133,7 @@ static void NewVehicleAvailable(Engine *e)
 	if (e->type == VEH_AIRCRAFT) InvalidateWindowData(WC_BUILD_TOOLBAR, TRANSPORT_AIR);
 
 	/* Close pending preview windows */
-	CloseWindowById(WC_ENGINE_PREVIEW, index);
+	CloseEnginePreviewWindow(e);
 }
 
 /** Monthly update of the availability, reliability, and preview offers of the engines. */
