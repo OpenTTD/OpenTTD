@@ -14,9 +14,13 @@
 enum EnginePreviewWidgets : WidgetID {
 	WID_EP_CAPTION, ///< Caption of window.
 	WID_EP_SORT_ASCENDING_DESCENDING, ///< Sort direction.
-	WID_EP_VEH_TYPE_FILTER_DROPDOWN, ///< Vehicle type filter dropdown.
+	WID_EP_ROAD_VEHICLE_TOGGLE, ///< Toggles visibility of road vehicles.
+	WID_EP_SHOW_ALL_VEH_TYPES, ///< Toggles visibility of all vehicles.
 	WID_EP_CONFIGURE_BADGES, ///< Button to configure badges.
+	WID_EP_AIRCRAFT_TOGGLE, ///< Toggles visibility of aircrafts.
 	WID_EP_SORT_DROPDOWN, ///< Criteria of sorting dropdown.
+	WID_EP_TRAIN_TOGGLE, ///< Toggles visibility of trains.
+	WID_EP_SHIP_TOGGLE, ///< Toggles visibility of ships.
 	WID_EP_SCROLLBAR, ///< Scrollbar of list.
 	WID_EP_QUESTION, ///< The container for the question.
 	WID_EP_NO,       ///< No button.
