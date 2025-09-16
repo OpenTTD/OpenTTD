@@ -11,6 +11,7 @@
 #define ROAD_TYPE_H
 
 #include "core/enum_type.hpp"
+#include "transport_mapping.hpp"
 
 typedef uint32_t RoadTypeLabel;
 
@@ -82,5 +83,18 @@ enum DisallowedRoadDirections : uint8_t {
 	DRD_END,        ///< Sentinel
 };
 DECLARE_ENUM_AS_BIT_SET(DisallowedRoadDirections)
+
+/** Mapped road type. */
+using RoadTypeMapping = TransportMapping<RoadType, INVALID_ROADTYPE, 63, struct RoadTypeMappingTag>;
+extern RoadTypeMapping _roadtype_mapping;
+
+/** Mapped tram type. */
+using TramTypeMapping = TransportMapping<RoadType, INVALID_ROADTYPE, 63, struct TramTypeMappingTag>;
+extern TramTypeMapping _tramtype_mapping;
+
+/** Alias for mapped road type. */
+using MapRoadType = RoadTypeMapping::MapType;
+/** Alias for mapped tram type. */
+using MapTramType = TramTypeMapping::MapType;
 
 #endif /* ROAD_TYPE_H */
