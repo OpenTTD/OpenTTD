@@ -17,7 +17,6 @@
 #include "tile_map.h"
 #include "road_type.h"
 
-
 /** The different types of road tiles. */
 enum RoadTileType : uint8_t {
 	ROAD_TILE_NORMAL,   ///< Normal road
@@ -144,21 +143,31 @@ inline void SetRoadBits(Tile t, RoadBits r, RoadTramType rtt)
 	}
 }
 
-inline RoadType GetRoadTypeRoad(Tile t)
+inline MapRoadType GetMapRoadTypeRoad(Tile t)
 {
 	assert(MayHaveRoad(t));
-	return (RoadType)GB(t.m4(), 0, 6);
+	return static_cast<MapRoadType>(GB(t.m4(), 0, 6));
+}
+
+inline MapTramType GetMapRoadTypeTram(Tile t)
+{
+	assert(MayHaveRoad(t));
+	return static_cast<MapTramType>(GB(t.m8(), 6, 6));
+}
+
+inline RoadType GetRoadTypeRoad(Tile t)
+{
+	return _roadtype_mapping.GetType(GetMapRoadTypeRoad(t));
 }
 
 inline RoadType GetRoadTypeTram(Tile t)
 {
-	assert(MayHaveRoad(t));
-	return (RoadType)GB(t.m8(), 6, 6);
+	return _tramtype_mapping.GetType(GetMapRoadTypeTram(t));
 }
 
 inline RoadType GetRoadType(Tile t, RoadTramType rtt)
 {
-	return (rtt == RTT_TRAM) ? GetRoadTypeTram(t) : GetRoadTypeRoad(t);
+	return (rtt == RTT_ROAD) ? GetRoadTypeRoad(t) : GetRoadTypeTram(t);
 }
 
 /**
@@ -170,20 +179,20 @@ inline RoadTypes GetPresentRoadTypes(Tile t)
 {
 	RoadTypes result{};
 	if (MayHaveRoad(t)) {
-		if (GetRoadTypeRoad(t) != INVALID_ROADTYPE) result.Set(GetRoadTypeRoad(t));
-		if (GetRoadTypeTram(t) != INVALID_ROADTYPE) result.Set(GetRoadTypeTram(t));
+		if (GetMapRoadTypeRoad(t) != RoadTypeMapping::INVALID_MAP_TYPE) result.Set(_roadtype_mapping.GetType(GetMapRoadTypeRoad(t)));
+		if (GetMapRoadTypeTram(t) != TramTypeMapping::INVALID_MAP_TYPE) result.Set(_tramtype_mapping.GetType(GetMapRoadTypeTram(t)));
 	}
 	return result;
 }
 
 inline bool HasRoadTypeRoad(Tile t)
 {
-	return GetRoadTypeRoad(t) != INVALID_ROADTYPE;
+	return GetMapRoadTypeRoad(t) != RoadTypeMapping::INVALID_MAP_TYPE;
 }
 
 inline bool HasRoadTypeTram(Tile t)
 {
-	return GetRoadTypeTram(t) != INVALID_ROADTYPE;
+	return GetMapRoadTypeTram(t) != TramTypeMapping::INVALID_MAP_TYPE;
 }
 
 /**
@@ -554,75 +563,72 @@ RoadBits GetAnyRoadBits(Tile tile, RoadTramType rtt, bool straight_tunnel_bridge
 /**
  * Set the road road type of a tile.
  * @param t The tile to change.
- * @param rt The road type to set.
+ * @param map_roadtype The map road type to set.
  */
-inline void SetRoadTypeRoad(Tile t, RoadType rt)
+inline void SetMapRoadTypeRoad(Tile t, MapRoadType map_roadtype)
 {
 	assert(MayHaveRoad(t));
-	assert(rt == INVALID_ROADTYPE || RoadTypeIsRoad(rt));
-	SB(t.m4(), 0, 6, rt);
+	SB(t.m4(), 0, 6, map_roadtype.base());
 }
 
 /**
  * Set the tram road type of a tile.
  * @param t The tile to change.
- * @param rt The road type to set.
+ * @param map_tramtype The map tram type to set.
  */
-inline void SetRoadTypeTram(Tile t, RoadType rt)
+inline void SetMapRoadTypeTram(Tile t, MapTramType map_tramtype)
 {
 	assert(MayHaveRoad(t));
-	assert(rt == INVALID_ROADTYPE || RoadTypeIsTram(rt));
-	SB(t.m8(), 6, 6, rt);
-}
-
-/**
- * Set the road type of a tile.
- * @param t The tile to change.
- * @param rtt Set road or tram type.
- * @param rt The road type to set.
- */
-inline void SetRoadType(Tile t, RoadTramType rtt, RoadType rt)
-{
-	if (rtt == RTT_TRAM) {
-		SetRoadTypeTram(t, rt);
-	} else {
-		SetRoadTypeRoad(t, rt);
-	}
+	SB(t.m8(), 6, 6, map_tramtype.base());
 }
 
 /**
  * Set the present road types of a tile.
  * @param t  The tile to change.
- * @param road_rt The road roadtype to set for the tile.
- * @param tram_rt The tram roadtype to set for the tile.
+ * @param map_roadtype The map road type to set for the tile.
+ * @param map_tramtype The map tram type to set for the tile.
  */
-inline void SetRoadTypes(Tile t, RoadType road_rt, RoadType tram_rt)
+inline void SetMapRoadTypes(Tile t, MapRoadType map_roadtype, MapTramType map_tramtype)
 {
-	SetRoadTypeRoad(t, road_rt);
-	SetRoadTypeTram(t, tram_rt);
+	SetMapRoadTypeRoad(t, map_roadtype);
+	SetMapRoadTypeTram(t, map_tramtype);
+}
+
+
+/**
+ * Conditionally Set the present road types of a tile.
+ * @param t  The tile to change.
+ * @param map_roadtype The map road type to set for the tile.
+ * @param map_tramtype The map tram type to set for the tile.
+ * @param rtts Road Tram type bits to set.
+ */
+inline void SetMapRoadTypes(Tile t, MapRoadType map_roadtype, MapTramType map_tramtype, RoadTramType rtt)
+{
+	if (rtt == RTT_ROAD) SetMapRoadTypeRoad(t, map_roadtype);
+	if (rtt == RTT_TRAM) SetMapRoadTypeTram(t, map_tramtype);
 }
 
 /**
  * Make a normal road tile.
  * @param t       Tile to make a normal road.
  * @param bits    Road bits to set for all present road types.
- * @param road_rt The road roadtype to set for the tile.
- * @param tram_rt The tram roadtype to set for the tile.
+ * @param map_roadtype The map road type to set for the tile.
+ * @param map_tramtype The map tram type to set for the tile.
  * @param town    Town ID if the road is a town-owned road.
  * @param road    New owner of road.
  * @param tram    New owner of tram tracks.
  */
-inline void MakeRoadNormal(Tile t, RoadBits bits, RoadType road_rt, RoadType tram_rt, TownID town, Owner road, Owner tram)
+inline void MakeRoadNormal(Tile t, RoadBits bits, MapRoadType map_roadtype, MapTramType map_tramtype, TownID town, Owner road, Owner tram)
 {
 	SetTileType(t, MP_ROAD);
 	SetTileOwner(t, road);
 	t.m2() = town.base();
-	t.m3() = (tram_rt != INVALID_ROADTYPE ? bits : 0);
-	t.m5() = (road_rt != INVALID_ROADTYPE ? bits : 0) | ROAD_TILE_NORMAL << 6;
+	t.m3() = (map_tramtype != TramTypeMapping::INVALID_MAP_TYPE ? bits : 0);
+	t.m5() = (map_roadtype != RoadTypeMapping::INVALID_MAP_TYPE ? bits : 0) | ROAD_TILE_NORMAL << 6;
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
 	t.m8() = 0;
-	SetRoadTypes(t, road_rt, tram_rt);
+	SetMapRoadTypes(t, map_roadtype, map_tramtype);
 	SetRoadOwner(t, RTT_TRAM, tram);
 }
 
@@ -634,22 +640,22 @@ inline void MakeRoadNormal(Tile t, RoadBits bits, RoadType road_rt, RoadType tra
  * @param rail    New owner of the rail track.
  * @param roaddir Axis of the road.
  * @param map_railtype New map rail type.
- * @param road_rt The road roadtype to set for the tile.
- * @param tram_rt The tram roadtype to set for the tile.
+ * @param map_roadtype The map road type to set for the tile.
+ * @param map_tramtype The map tram type to set for the tile.
  * @param town    Town ID if the road is a town-owned road.
  */
-inline void MakeRoadCrossing(Tile t, Owner road, Owner tram, Owner rail, Axis roaddir, MapRailType map_railtype, RoadType road_rt, RoadType tram_rt, TownID town)
+inline void MakeRoadCrossing(Tile t, Owner road, Owner tram, Owner rail, Axis roaddir, MapRailType map_railtype, MapRoadType map_roadtype, MapTramType map_tramtype, TownID town)
 {
 	SetTileType(t, MP_ROAD);
 	SetTileOwner(t, rail);
 	t.m2() = town.base();
 	t.m3() = 0;
-	t.m4() = INVALID_ROADTYPE;
+	t.m4() = RoadTypeMapping::INVALID_MAP_TYPE.base();
 	t.m5() = ROAD_TILE_CROSSING << 6 | roaddir;
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = road.base();
-	t.m8() = INVALID_ROADTYPE << 6 | map_railtype.base();
-	SetRoadTypes(t, road_rt, tram_rt);
+	t.m8() = TramTypeMapping::INVALID_MAP_TYPE.base() << 6 | map_railtype.base();
+	SetMapRoadTypes(t, map_roadtype, map_tramtype);
 	SetRoadOwner(t, RTT_TRAM, tram);
 }
 
@@ -670,20 +676,21 @@ inline void SetRoadDepotExitDirection(Tile tile, DiagDirection dir)
  * @param owner     New owner of the depot.
  * @param depot_id  New depot ID.
  * @param dir       Direction of the depot exit.
- * @param rt        Road type of the depot.
+ * @param map_roadtype Map road type of the depot.
+ * @param map_tramtype Map road type of the depot.
  */
-inline void MakeRoadDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirection dir, RoadType rt)
+inline void MakeRoadDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirection dir, MapRoadType map_roadtype, MapTramType map_tramtype)
 {
 	SetTileType(tile, MP_ROAD);
 	SetTileOwner(tile, owner);
 	tile.m2() = depot_id.base();
 	tile.m3() = 0;
-	tile.m4() = INVALID_ROADTYPE;
+	tile.m4() = RoadTypeMapping::INVALID_MAP_TYPE.base();
 	tile.m5() = ROAD_TILE_DEPOT << 6 | dir;
 	SB(tile.m6(), 2, 6, 0);
 	tile.m7() = owner.base();
-	tile.m8() = INVALID_ROADTYPE << 6;
-	SetRoadType(tile, GetRoadTramType(rt), rt);
+	tile.m8() = TramTypeMapping::INVALID_MAP_TYPE.base() << 6;
+	SetMapRoadTypes(tile, map_roadtype, map_tramtype);
 	SetRoadOwner(tile, RTT_TRAM, owner);
 }
 

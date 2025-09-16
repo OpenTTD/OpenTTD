@@ -17,6 +17,7 @@
 #include "depot_base.h"
 #include "town.h"
 #include "tunnelbridge_map.h"
+#include "company_base.h"
 
 #include "safeguards.h"
 

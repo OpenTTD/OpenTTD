@@ -312,6 +312,9 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 	CompanyID company = _current_company;
 
 	MapRailType map_railtype = RailTypeMapping::INVALID_MAP_TYPE;
+	RoadTramType rtt = RTT_ROAD;
+	MapRoadType map_roadtype = RoadTypeMapping::INVALID_MAP_TYPE;
+	MapTramType map_tramtype = TramTypeMapping::INVALID_MAP_TYPE;
 
 	if (!IsValidTile(tile_start)) return CommandCost(STR_ERROR_BRIDGE_THROUGH_MAP_BORDER);
 
@@ -319,6 +322,11 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 	switch (transport_type) {
 		case TRANSPORT_ROAD:
 			if (!ValParamRoadType(roadtype)) return CMD_ERROR;
+			rtt = GetRoadTramType(roadtype);
+			map_roadtype = rtt == RTT_ROAD ? _roadtype_mapping.AllocateMapType(roadtype, flags.Test(DoCommandFlag::Execute)) : RoadTypeMapping::INVALID_MAP_TYPE;
+			if (rtt == RTT_ROAD && map_roadtype == RoadTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_ROADTYPES};
+			map_tramtype = rtt == RTT_TRAM ? _tramtype_mapping.AllocateMapType(roadtype, flags.Test(DoCommandFlag::Execute)) : TramTypeMapping::INVALID_MAP_TYPE;
+			if (rtt == RTT_TRAM && map_tramtype == TramTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_TRAMTYPES};
 			break;
 
 		case TRANSPORT_RAIL:
@@ -567,8 +575,8 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 				}
 				Owner owner_road = hasroad ? GetRoadOwner(tile_start, RTT_ROAD) : company;
 				Owner owner_tram = hastram ? GetRoadOwner(tile_start, RTT_TRAM) : company;
-				MakeRoadBridgeRamp(tile_start, owner, owner_road, owner_tram, bridge_type, dir, road_rt, tram_rt);
-				MakeRoadBridgeRamp(tile_end,   owner, owner_road, owner_tram, bridge_type, ReverseDiagDir(dir), road_rt, tram_rt);
+				MakeRoadBridgeRamp(tile_start, owner, owner_road, owner_tram, bridge_type, dir, map_roadtype, map_tramtype);
+				MakeRoadBridgeRamp(tile_end,   owner, owner_road, owner_tram, bridge_type, ReverseDiagDir(dir), map_roadtype, map_tramtype);
 				break;
 			}
 
@@ -643,6 +651,9 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 	CompanyID company = _current_company;
 
 	MapRailType map_railtype = RailTypeMapping::INVALID_MAP_TYPE;
+	RoadTramType rtt = RTT_ROAD;
+	MapRoadType map_roadtype = RoadTypeMapping::INVALID_MAP_TYPE;
+	MapTramType map_tramtype = TramTypeMapping::INVALID_MAP_TYPE;
 
 	_build_tunnel_endtile = TileIndex{};
 	switch (transport_type) {
@@ -654,6 +665,11 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 
 		case TRANSPORT_ROAD:
 			if (!ValParamRoadType(roadtype)) return CMD_ERROR;
+			rtt = GetRoadTramType(roadtype);
+			map_roadtype = rtt == RTT_ROAD ? _roadtype_mapping.AllocateMapType(roadtype, flags.Test(DoCommandFlag::Execute)) : RoadTypeMapping::INVALID_MAP_TYPE;
+			if (rtt == RTT_ROAD && map_roadtype == RoadTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_ROADTYPES};
+			map_tramtype = rtt == RTT_TRAM ? _tramtype_mapping.AllocateMapType(roadtype, flags.Test(DoCommandFlag::Execute)) : TramTypeMapping::INVALID_MAP_TYPE;
+			if (rtt == RTT_TRAM && map_tramtype == TramTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_TRAMTYPES};
 			break;
 
 		default: return CMD_ERROR;
@@ -795,10 +811,8 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 			YapfNotifyTrackLayoutChange(start_tile, DiagDirToDiagTrack(direction));
 		} else {
 			if (c != nullptr) c->infrastructure.road[roadtype] += num_pieces * 2; // A full diagonal road has two road bits.
-			RoadType road_rt = RoadTypeIsRoad(roadtype) ? roadtype : INVALID_ROADTYPE;
-			RoadType tram_rt = RoadTypeIsTram(roadtype) ? roadtype : INVALID_ROADTYPE;
-			MakeRoadTunnel(start_tile, company, direction,                 road_rt, tram_rt);
-			MakeRoadTunnel(end_tile,   company, ReverseDiagDir(direction), road_rt, tram_rt);
+			MakeRoadTunnel(start_tile, company, direction,                 map_roadtype, map_tramtype);
+			MakeRoadTunnel(end_tile,   company, ReverseDiagDir(direction), map_roadtype, map_tramtype);
 		}
 		DirtyCompanyInfrastructureWindows(company);
 	}
