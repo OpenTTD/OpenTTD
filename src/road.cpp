@@ -278,3 +278,6 @@ RoadType GetRoadTypeByLabel(RoadTypeLabel label, bool allow_alternate_labels)
 	/* No matching label was found, so it is invalid */
 	return INVALID_ROADTYPE;
 }
+
+RoadTypeMapping _roadtype_mapping;
+TramTypeMapping _tramtype_mapping;

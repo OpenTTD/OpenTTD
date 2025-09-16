@@ -508,11 +508,11 @@ CommandCost CmdBuildSingleRail(DoCommandFlags flags, TileIndex tile, RailType ra
 
 				if (RailNoLevelCrossings(railtype)) return CommandCost(STR_ERROR_CROSSING_DISALLOWED_RAIL);
 
-				RoadType roadtype_road = GetRoadTypeRoad(tile);
-				RoadType roadtype_tram = GetRoadTypeTram(tile);
+				MapRoadType map_roadtype = GetMapRoadTypeRoad(tile);
+				MapTramType map_tramtype = GetMapRoadTypeTram(tile);
 
-				if (roadtype_road != INVALID_ROADTYPE && RoadNoLevelCrossing(roadtype_road)) return CommandCost(STR_ERROR_CROSSING_DISALLOWED_ROAD);
-				if (roadtype_tram != INVALID_ROADTYPE && RoadNoLevelCrossing(roadtype_tram)) return CommandCost(STR_ERROR_CROSSING_DISALLOWED_ROAD);
+				if (map_roadtype != RoadTypeMapping::INVALID_MAP_TYPE && RoadNoLevelCrossing(_roadtype_mapping.GetType(map_roadtype))) return CommandCost(STR_ERROR_CROSSING_DISALLOWED_ROAD);
+				if (map_tramtype != TramTypeMapping::INVALID_MAP_TYPE && RoadNoLevelCrossing(_tramtype_mapping.GetType(map_tramtype))) return CommandCost(STR_ERROR_CROSSING_DISALLOWED_ROAD);
 
 				RoadBits road = GetRoadBits(tile, RTT_ROAD);
 				RoadBits tram = GetRoadBits(tile, RTT_TRAM);
@@ -529,29 +529,29 @@ CommandCost CmdBuildSingleRail(DoCommandFlags flags, TileIndex tile, RailType ra
 
 					uint num_new_road_pieces = (road != ROAD_NONE) ? 2 - CountBits(road) : 0;
 					if (num_new_road_pieces > 0) {
-						cost.AddCost(num_new_road_pieces * RoadBuildCost(roadtype_road));
+						cost.AddCost(num_new_road_pieces * RoadBuildCost(_roadtype_mapping.GetType(map_roadtype)));
 					}
 
 					uint num_new_tram_pieces = (tram != ROAD_NONE) ? 2 - CountBits(tram) : 0;
 					if (num_new_tram_pieces > 0) {
-						cost.AddCost(num_new_tram_pieces * RoadBuildCost(roadtype_tram));
+						cost.AddCost(num_new_tram_pieces * RoadBuildCost(_tramtype_mapping.GetType(map_tramtype)));
 					}
 
 					MapRailType map_railtype = _railtype_mapping.AllocateMapType(railtype, flags.Test(DoCommandFlag::Execute));
 					if (map_railtype == RailTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_RAILTYPES};
 
 					if (flags.Test(DoCommandFlag::Execute)) {
-						MakeRoadCrossing(tile, road_owner, tram_owner, _current_company, (track == TRACK_X ? AXIS_Y : AXIS_X), map_railtype, roadtype_road, roadtype_tram, GetTownIndex(tile));
+						MakeRoadCrossing(tile, road_owner, tram_owner, _current_company, (track == TRACK_X ? AXIS_Y : AXIS_X), map_railtype, map_roadtype, map_tramtype, GetTownIndex(tile));
 						UpdateLevelCrossing(tile, false);
 						MarkDirtyAdjacentLevelCrossingTiles(tile, GetCrossingRoadAxis(tile));
 						Company::Get(_current_company)->infrastructure.rail[railtype] += LEVELCROSSING_TRACKBIT_FACTOR;
 						DirtyCompanyInfrastructureWindows(_current_company);
 						if (num_new_road_pieces > 0 && Company::IsValidID(road_owner)) {
-							Company::Get(road_owner)->infrastructure.road[roadtype_road] += num_new_road_pieces;
+							Company::Get(road_owner)->infrastructure.road[_roadtype_mapping.GetType(map_roadtype)] += num_new_road_pieces;
 							DirtyCompanyInfrastructureWindows(road_owner);
 						}
 						if (num_new_tram_pieces > 0 && Company::IsValidID(tram_owner)) {
-							Company::Get(tram_owner)->infrastructure.road[roadtype_tram] += num_new_tram_pieces;
+							Company::Get(tram_owner)->infrastructure.road[_tramtype_mapping.GetType(map_tramtype)] += num_new_tram_pieces;
 							DirtyCompanyInfrastructureWindows(tram_owner);
 						}
 					}
@@ -658,7 +658,7 @@ CommandCost CmdRemoveSingleRail(DoCommandFlags flags, TileIndex tile, Track trac
 				owner = GetTileOwner(tile);
 				Company::Get(owner)->infrastructure.rail[GetRailType(tile)] -= LEVELCROSSING_TRACKBIT_FACTOR;
 				DirtyCompanyInfrastructureWindows(owner);
-				MakeRoadNormal(tile, GetCrossingRoadBits(tile), GetRoadTypeRoad(tile), GetRoadTypeTram(tile), GetTownIndex(tile), GetRoadOwner(tile, RTT_ROAD), GetRoadOwner(tile, RTT_TRAM));
+				MakeRoadNormal(tile, GetCrossingRoadBits(tile), GetMapRoadTypeRoad(tile), GetMapRoadTypeTram(tile), GetTownIndex(tile), GetRoadOwner(tile, RTT_ROAD), GetRoadOwner(tile, RTT_TRAM));
 				DeleteNewGRFInspectWindow(GSF_RAILTYPES, tile.base());
 			}
 			break;
