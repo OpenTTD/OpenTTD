@@ -904,12 +904,18 @@ static void FinaliseEngineArray()
 	}
 
 	/* Check engine variants don't point back on themselves (either directly or via a loop) then set appropriate flags
-	 * on variant engine. This is performed separately as all variant engines need to have been resolved. */
+	 * on variant engine. This is performed separately as all variant engines need to have been resolved.
+	 * Use Floyd's cycle-detection algorithm to handle the case where a cycle is present but does
+	 * not include the starting engine ID. */
 	for (Engine *e : Engine::Iterate()) {
 		EngineID parent = e->info.variant_id;
+		EngineID parent_slow = parent;
+		bool update_slow = false;
 		while (parent != EngineID::Invalid()) {
 			parent = Engine::Get(parent)->info.variant_id;
-			if (parent != e->index) continue;
+			if (update_slow) parent_slow = Engine::Get(parent_slow)->info.variant_id;
+			update_slow = !update_slow;
+			if (parent != e->index && parent != parent_slow) continue;
 
 			/* Engine looped back on itself, so clear the variant. */
 			e->info.variant_id = EngineID::Invalid();
