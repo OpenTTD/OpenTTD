@@ -71,16 +71,16 @@ bool CheckAutoreplaceValidity(EngineID from, EngineID to, CompanyID company)
 	switch (type) {
 		case VEH_TRAIN: {
 			/* make sure the railtypes are compatible */
-			if (!GetAllCompatibleRailTypes(e_from->u.rail.railtypes).Any(GetAllCompatibleRailTypes(e_to->u.rail.railtypes))) return false;
+			if (!GetAllCompatibleRailTypes(e_from->VehInfo<RailVehicleInfo>().railtypes).Any(GetAllCompatibleRailTypes(e_to->VehInfo<RailVehicleInfo>().railtypes))) return false;
 
 			/* make sure we do not replace wagons with engines or vice versa */
-			if ((e_from->u.rail.railveh_type == RAILVEH_WAGON) != (e_to->u.rail.railveh_type == RAILVEH_WAGON)) return false;
+			if ((e_from->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_WAGON) != (e_to->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_WAGON)) return false;
 			break;
 		}
 
 		case VEH_ROAD:
 			/* make sure the roadtypes are compatible */
-			if (!GetRoadTypeInfo(e_from->u.road.roadtype)->powered_roadtypes.Any(GetRoadTypeInfo(e_to->u.road.roadtype)->powered_roadtypes)) return false;
+			if (!GetRoadTypeInfo(e_from->VehInfo<RoadVehicleInfo>().roadtype)->powered_roadtypes.Any(GetRoadTypeInfo(e_to->VehInfo<RoadVehicleInfo>().roadtype)->powered_roadtypes)) return false;
 
 			/* make sure that we do not replace a tram with a normal road vehicles or vice versa */
 			if (e_from->info.misc_flags.Test(EngineMiscFlag::RoadIsTram) != e_to->info.misc_flags.Test(EngineMiscFlag::RoadIsTram)) return false;
@@ -88,7 +88,7 @@ bool CheckAutoreplaceValidity(EngineID from, EngineID to, CompanyID company)
 
 		case VEH_AIRCRAFT:
 			/* make sure that we do not replace a plane with a helicopter or vice versa */
-			if ((e_from->u.air.subtype & AIR_CTOL) != (e_to->u.air.subtype & AIR_CTOL)) return false;
+			if ((e_from->VehInfo<AircraftVehicleInfo>().subtype & AIR_CTOL) != (e_to->VehInfo<AircraftVehicleInfo>().subtype & AIR_CTOL)) return false;
 			break;
 
 		default: break;

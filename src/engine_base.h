@@ -64,12 +64,8 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	EngineID display_last_variant = EngineID::Invalid(); ///< NOSAVE client-side-only last variant selected.
 	EngineInfo info{};
 
-	union {
-		RailVehicleInfo rail;
-		RoadVehicleInfo road;
-		ShipVehicleInfo ship;
-		AircraftVehicleInfo air;
-	} u{};
+	/* Vehicle-type specific information, not used for Disaster or Effect vehicles. */
+	std::variant<std::monostate, RailVehicleInfo, RoadVehicleInfo, ShipVehicleInfo, AircraftVehicleInfo> u{};
 
 	uint16_t list_position = 0;
 
@@ -177,6 +173,18 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 		bool operator() (size_t index) { return Engine::Get(index)->type == this->vt; }
 	};
 
+	template <typename T>
+	inline T &VehInfo()
+	{
+		return std::get<T>(this->u);
+	}
+
+	template <typename T>
+	inline const T &VehInfo() const
+	{
+		return std::get<T>(this->u);
+	}
+
 	/**
 	 * Returns an iterable ensemble of all valid engines of the given type
 	 * @param vt the VehicleType for engines to be valid
@@ -234,22 +242,22 @@ inline const EngineInfo *EngInfo(EngineID e)
 
 inline const RailVehicleInfo *RailVehInfo(EngineID e)
 {
-	return &Engine::Get(e)->u.rail;
+	return &Engine::Get(e)->VehInfo<RailVehicleInfo>();
 }
 
 inline const RoadVehicleInfo *RoadVehInfo(EngineID e)
 {
-	return &Engine::Get(e)->u.road;
+	return &Engine::Get(e)->VehInfo<RoadVehicleInfo>();
 }
 
 inline const ShipVehicleInfo *ShipVehInfo(EngineID e)
 {
-	return &Engine::Get(e)->u.ship;
+	return &Engine::Get(e)->VehInfo<ShipVehicleInfo>();
 }
 
 inline const AircraftVehicleInfo *AircraftVehInfo(EngineID e)
 {
-	return &Engine::Get(e)->u.air;
+	return &Engine::Get(e)->VehInfo<AircraftVehicleInfo>();
 }
 
 #endif /* ENGINE_BASE_H */
