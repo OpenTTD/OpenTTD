@@ -1404,7 +1404,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -1443,7 +1443,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -1462,7 +1462,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -1481,7 +1481,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -1500,7 +1500,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -1519,7 +1519,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -1538,7 +1538,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -1557,7 +1557,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -1616,7 +1616,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -1635,7 +1635,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -1654,7 +1654,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -1673,7 +1673,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -1692,7 +1692,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -1711,7 +1711,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -1730,7 +1730,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -1749,7 +1749,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -1768,7 +1768,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -1787,7 +1787,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -1806,7 +1806,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -1825,7 +1825,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -1844,7 +1844,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -1863,7 +1863,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -1882,7 +1882,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -1901,7 +1901,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -1920,7 +1920,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2159,7 +2159,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2178,7 +2178,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2197,7 +2197,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2216,7 +2216,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2235,7 +2235,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2254,7 +2254,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2273,7 +2273,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2292,7 +2292,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2311,7 +2311,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2330,7 +2330,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2349,7 +2349,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2368,7 +2368,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2387,7 +2387,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2406,7 +2406,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2425,7 +2425,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2444,7 +2444,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2463,7 +2463,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2482,7 +2482,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2501,7 +2501,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2520,7 +2520,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2539,7 +2539,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2558,7 +2558,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2577,7 +2577,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2596,7 +2596,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2615,7 +2615,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2634,7 +2634,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2653,7 +2653,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2672,7 +2672,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2691,7 +2691,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2710,7 +2710,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2729,7 +2729,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2748,7 +2748,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2767,7 +2767,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2786,7 +2786,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2805,7 +2805,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2824,7 +2824,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2843,7 +2843,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2862,7 +2862,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2881,7 +2881,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2900,7 +2900,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2919,7 +2919,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2938,7 +2938,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2957,7 +2957,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2976,7 +2976,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -2995,7 +2995,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3014,7 +3014,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3033,7 +3033,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3052,7 +3052,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3071,7 +3071,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3090,7 +3090,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3109,7 +3109,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3128,7 +3128,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3147,7 +3147,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3166,7 +3166,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3185,7 +3185,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3204,7 +3204,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3223,7 +3223,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3242,7 +3242,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3261,7 +3261,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3280,7 +3280,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3299,7 +3299,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3318,7 +3318,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3337,7 +3337,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3356,7 +3356,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3375,7 +3375,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3394,7 +3394,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3413,7 +3413,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3432,7 +3432,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3451,7 +3451,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3470,7 +3470,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3489,7 +3489,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3508,7 +3508,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3527,7 +3527,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3546,7 +3546,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3565,7 +3565,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3584,7 +3584,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3603,7 +3603,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3622,7 +3622,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3641,7 +3641,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        10
     GetMaxTractiveEffort(): 29
     GetVehicleType():   1
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      0
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3660,7 +3660,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3679,7 +3679,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3698,7 +3698,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3717,7 +3717,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3736,7 +3736,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3755,7 +3755,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3774,7 +3774,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        9
     GetMaxTractiveEffort(): 26
     GetVehicleType():   1
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      0
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3793,7 +3793,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3812,7 +3812,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3831,7 +3831,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        9
     GetMaxTractiveEffort(): 26
     GetVehicleType():   1
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      0
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3850,7 +3850,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3869,7 +3869,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3888,7 +3888,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3907,7 +3907,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3926,7 +3926,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3945,7 +3945,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        9
     GetMaxTractiveEffort(): 26
     GetVehicleType():   1
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      0
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3964,7 +3964,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -3983,7 +3983,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4002,7 +4002,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        9
     GetMaxTractiveEffort(): 26
     GetVehicleType():   1
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      0
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4021,7 +4021,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4040,7 +4040,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4059,7 +4059,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        9
     GetMaxTractiveEffort(): 26
     GetVehicleType():   1
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      0
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4078,7 +4078,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4097,7 +4097,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4116,7 +4116,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        9
     GetMaxTractiveEffort(): 26
     GetVehicleType():   1
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      0
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4135,7 +4135,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4154,7 +4154,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4173,7 +4173,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        9
     GetMaxTractiveEffort(): 26
     GetVehicleType():   1
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      0
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4192,7 +4192,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4211,7 +4211,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4230,7 +4230,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        9
     GetMaxTractiveEffort(): 26
     GetVehicleType():   1
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      0
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4249,7 +4249,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4268,7 +4268,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4287,7 +4287,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        9
     GetMaxTractiveEffort(): 26
     GetVehicleType():   1
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      0
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4306,7 +4306,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4325,7 +4325,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4344,7 +4344,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        9
     GetMaxTractiveEffort(): 26
     GetVehicleType():   1
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      0
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4363,7 +4363,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4382,7 +4382,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4401,7 +4401,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4420,7 +4420,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4439,7 +4439,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4458,7 +4458,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4477,7 +4477,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4496,7 +4496,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4515,7 +4515,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4534,7 +4534,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4553,7 +4553,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4572,7 +4572,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4591,7 +4591,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4610,7 +4610,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4629,7 +4629,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4648,7 +4648,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4667,7 +4667,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4686,7 +4686,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4705,7 +4705,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4724,7 +4724,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4743,7 +4743,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4762,7 +4762,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4781,7 +4781,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4800,7 +4800,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4819,7 +4819,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4838,7 +4838,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4857,7 +4857,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4876,7 +4876,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4895,7 +4895,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4914,7 +4914,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4933,7 +4933,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4952,7 +4952,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4971,7 +4971,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -4990,7 +4990,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5009,7 +5009,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5028,7 +5028,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5047,7 +5047,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5066,7 +5066,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5085,7 +5085,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5104,7 +5104,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5123,7 +5123,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5142,7 +5142,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5161,7 +5161,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5180,7 +5180,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5199,7 +5199,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5218,7 +5218,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5237,7 +5237,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5256,7 +5256,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5275,7 +5275,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5294,7 +5294,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5313,7 +5313,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   2
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5332,7 +5332,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5351,7 +5351,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   2
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5370,7 +5370,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5389,7 +5389,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5408,7 +5408,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5427,7 +5427,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5446,7 +5446,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   2
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5465,7 +5465,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5484,7 +5484,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5503,7 +5503,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5522,7 +5522,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   3
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     1
     GetAllRailTypes():  null
@@ -5541,7 +5541,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   3
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     1
     GetAllRailTypes():  null
@@ -5560,7 +5560,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5579,7 +5579,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5598,7 +5598,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   3
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     1
     GetAllRailTypes():  null
@@ -5617,7 +5617,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5636,7 +5636,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5655,7 +5655,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5674,7 +5674,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5693,7 +5693,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5712,7 +5712,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5731,7 +5731,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5750,7 +5750,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5769,7 +5769,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5788,7 +5788,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5807,7 +5807,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5826,7 +5826,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5845,7 +5845,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5864,7 +5864,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5883,7 +5883,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5902,7 +5902,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5921,7 +5921,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5940,7 +5940,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5959,7 +5959,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5978,7 +5978,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -5997,7 +5997,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -6016,7 +6016,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -6035,7 +6035,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -6054,7 +6054,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -6073,7 +6073,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -6092,7 +6092,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -6111,7 +6111,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -6130,7 +6130,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -6149,7 +6149,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -6168,7 +6168,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -6187,7 +6187,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -6206,7 +6206,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -6225,7 +6225,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -6244,7 +6244,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -6263,7 +6263,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -6282,7 +6282,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
@@ -6301,7 +6301,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
     GetVehicleType():   255
-    GetRailType():      255
+    GetRailType():      -1
     GetRoadType():      -1
     GetPlaneType():     -1
     GetAllRailTypes():  null
