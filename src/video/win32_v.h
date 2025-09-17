@@ -49,7 +49,6 @@ protected:
 	bool buffer_locked;     ///< Video buffer was locked by the main thread.
 
 	Dimension GetScreenSize() const override;
-	float GetDPIScale() override;
 	void InputLoop() override;
 	bool LockVideoBuffer() override;
 	void UnlockVideoBuffer() override;

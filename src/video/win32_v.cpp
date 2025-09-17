@@ -1079,47 +1079,6 @@ Dimension VideoDriver_Win32Base::GetScreenSize() const
 	return { static_cast<uint>(GetSystemMetrics(SM_CXSCREEN)), static_cast<uint>(GetSystemMetrics(SM_CYSCREEN)) };
 }
 
-float VideoDriver_Win32Base::GetDPIScale()
-{
-	typedef UINT (WINAPI *PFNGETDPIFORWINDOW)(HWND hwnd);
-	typedef UINT (WINAPI *PFNGETDPIFORSYSTEM)(VOID);
-	typedef HRESULT (WINAPI *PFNGETDPIFORMONITOR)(HMONITOR hMonitor, int dpiType, UINT *dpiX, UINT *dpiY);
-
-	static PFNGETDPIFORWINDOW _GetDpiForWindow = nullptr;
-	static PFNGETDPIFORSYSTEM _GetDpiForSystem = nullptr;
-	static PFNGETDPIFORMONITOR _GetDpiForMonitor = nullptr;
-
-	static bool init_done = false;
-	if (!init_done) {
-		init_done = true;
-		static LibraryLoader _user32("user32.dll");
-		static LibraryLoader _shcore("shcore.dll");
-		_GetDpiForWindow = _user32.GetFunction("GetDpiForWindow");
-		_GetDpiForSystem = _user32.GetFunction("GetDpiForSystem");
-		_GetDpiForMonitor = _shcore.GetFunction("GetDpiForMonitor");
-	}
-
-	UINT cur_dpi = 0;
-
-	if (cur_dpi == 0 && _GetDpiForWindow != nullptr && this->main_wnd != nullptr) {
-		/* Per window DPI is supported since Windows 10 Ver 1607. */
-		cur_dpi = _GetDpiForWindow(this->main_wnd);
-	}
-	if (cur_dpi == 0 && _GetDpiForMonitor != nullptr && this->main_wnd != nullptr) {
-		/* Per monitor is supported since Windows 8.1. */
-		UINT dpiX, dpiY;
-		if (SUCCEEDED(_GetDpiForMonitor(MonitorFromWindow(this->main_wnd, MONITOR_DEFAULTTOPRIMARY), 0 /* MDT_EFFECTIVE_DPI */, &dpiX, &dpiY))) {
-			cur_dpi = dpiX; // X and Y are always identical.
-		}
-	}
-	if (cur_dpi == 0 && _GetDpiForSystem != nullptr) {
-		/* Fall back to system DPI. */
-		cur_dpi = _GetDpiForSystem();
-	}
-
-	return cur_dpi > 0 ? cur_dpi / 96.0f : 1.0f; // Default Windows DPI value is 96.
-}
-
 bool VideoDriver_Win32Base::LockVideoBuffer()
 {
 	if (this->buffer_locked) return false;

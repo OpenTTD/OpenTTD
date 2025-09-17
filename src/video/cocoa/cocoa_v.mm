@@ -283,12 +283,6 @@ Dimension VideoDriver_Cocoa::GetScreenSize() const
 	return { static_cast<uint>(NSWidth(frame)), static_cast<uint>(NSHeight(frame)) };
 }
 
-/** Get DPI scale of our window. */
-float VideoDriver_Cocoa::GetDPIScale()
-{
-	return this->cocoaview != nil ? [ this->cocoaview getContentsScale ] : 1.0f;
-}
-
 /** Lock video buffer for drawing if it isn't already mapped. */
 bool VideoDriver_Cocoa::LockVideoBuffer()
 {
