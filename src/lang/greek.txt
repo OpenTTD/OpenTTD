@@ -3441,6 +3441,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Φίλτρο:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Αντικατάσταση Αρχείου
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Είστε σίγουροι οτι θέλετε να αντικαταστήσετε το υπάρχων αρχείο;
+STR_SAVELOAD_DELETE_TITLE                                       :{WHITE}Διαγραφή αρχείου
+STR_SAVELOAD_DELETE_WARNING                                     :{YELLOW}Είστε σίγουροι ότι θέλετε να διαγράψετε το αρχείο;
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (Κατάλογος)
 STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Γονικός κατάλογος)
 

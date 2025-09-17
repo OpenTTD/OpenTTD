@@ -3348,6 +3348,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filter udtryk:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Overskriv fil
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Er du sikker på du vil overskrive den eksisterende fil?
+STR_SAVELOAD_DELETE_TITLE                                       :{WHITE}Slet fil
+STR_SAVELOAD_DELETE_WARNING                                     :{YELLOW}Er du sikker på, at du vil slette filen?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (Mappe)
 STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Overmappe)
 

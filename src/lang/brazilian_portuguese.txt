@@ -410,7 +410,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Construi
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construir aeroporto
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Abrir menu de paisagismo, menu de árvores ou colocar uma placa
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Abrir janela de som/música
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Abrir última mensagem/notícia, histórico de mensagens ou apagar todas as mensagens
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Abrir última mensagem/notícia, histórico de mensagens ou excluir todas as mensagens
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Abrir informações do terreno, menu de captura de tela, créditos do OpenTTD ou ferramentas de desenvolvedor
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Trocar barra de ferramentas
 
@@ -531,7 +531,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Som/música
 # Message menu
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Última mensagem/notícia
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Histórico de mensagens
-STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Apagar todas as mensagens
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Excluir todas as mensagens
 
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informações do terreno
@@ -3334,7 +3334,7 @@ STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Clique a
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} livres
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lista de unidades, diretórios e arquivos de jogos salvos
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Nome selecionado para salvar o jogo
-STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Apagar
+STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Excluir
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Excluir o jogo salvo selecionado
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Salvar
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Salvar o jogo atual usando o nome escolhido
@@ -3349,6 +3349,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtro:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Substituir Arquivo
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Você quer mesmo substituir o arquivo existente?
+STR_SAVELOAD_DELETE_TITLE                                       :{WHITE}Excluir Arquivo
+STR_SAVELOAD_DELETE_WARNING                                     :{YELLOW}Você quer mesmo excluir o arquivo?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (Diretório)
 STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Diretório raiz)
 
@@ -4816,15 +4818,15 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modifica
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Alterar o período de tempo que a ordem selecionada deve durar. Ctrl+Clique para definir o tempo para todas as ordens
 STR_TIMETABLE_CHANGE_TIME_QUERY                                 :Modificar tempo
 
-STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Apagar Tempo
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Apagar o período de tempo da ordem selecionada. Ctrl+Clique para apagar o tempo de todas as ordens
+STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Remover Tempo
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Remover o período de tempo da ordem selecionada. Ctrl+Clique para remover o tempo de todas as ordens
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Modificar limite de velocidade
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Alterar a velocidade máxima de viagem da ordem selecionada. Ctrl+Clique para definir a velocidade para todas as ordens
 STR_TIMETABLE_CHANGE_SPEED_QUERY                                :Modificar limite de velocidade
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Remover limite de velocidade
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Apagar a velocidade máxima de viagem da ordem selecionada. Ctrl+Clique para apagar a velocidade de todas as ordens
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Remover a velocidade máxima de viagem da ordem selecionada. Ctrl+Clique para remover a velocidade de todas as ordens
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reiniciar Contador de Atrasos
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reiniciar o contador de atrasos para o veículo ficar pontual. Ctrl+Clique para reiniciar todo o grupo e, com isso, fazer o veículo mais atrasado ficar pontual e todos os outros ficarem adiantados
@@ -4972,7 +4974,7 @@ STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Gravaç�
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Salvamento automático falhou
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Não é possível ler a unidade
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Falha ao salvar jogo...
-STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Não é possível apagar o arquivo
+STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Não é possível excluir o arquivo
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Falha ao abrir jogo...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Erro interno: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Jogo salvo está corrompido - {STRING}

@@ -3348,6 +3348,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Suodatin:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Tiedosto on jo olemassa
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Haluatko varmasti korvata olemassaolevan tiedoston?
+STR_SAVELOAD_DELETE_TITLE                                       :{WHITE}Poista tiedosto
+STR_SAVELOAD_DELETE_WARNING                                     :{YELLOW}Haluatko varmasti poistaa tiedoston?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (hakemisto)
 STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (ylähakemisto)
 
