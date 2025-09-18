@@ -667,7 +667,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Engenheiro
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Gestor de Tráfego
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Coordenador de Transportes
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Supervisor de Rotas
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Director
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Diretor
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Chefe Executivo
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Diretor Executivo
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Presidente
@@ -684,9 +684,9 @@ STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Ver deta
 ###length 10
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Veículos:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Estações:
-STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Mín. lucros:
-STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Mín. rendim.:
-STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Máx. rendim.:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Lucro mín.:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Rendim. mín.:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Rendim. máx.:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Entregue:
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Carga:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Dinheiro:
@@ -754,18 +754,18 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Clique n
 
 # Highscore window
 STR_HIGHSCORE_TOP_COMPANIES                                     :{BIG_FONT}{BLACK}As melhores empresas
-STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
-STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Negociante
-STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Empresário
-STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrial
+STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}º
+STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Empresário
+STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Empreendedor
+STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrialista
 STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Capitalista
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Magnata
-STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Grande magnata
-STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Magnata do século
+STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Grande Magnata
+STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Magnata do Século
 STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIG_FONT}"{STRING}" ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} alcança o estatuto de '{STRING}'!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} de {COMPANY} conquista o estatuto de '{STRING}'!
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}“{STRING}” ({COMMA})
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} alcança o estatuto de “{STRING}”!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} de {COMPANY} conquista o estatuto de “{STRING}”!
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}Mapa - {STRING}
@@ -897,8 +897,8 @@ STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Est{G 0 á á á ão ão} a ser feit{G 0 o o a os as} {G 0 "um " "um " "uma " "" ""}nov{G 0 o o a os as} {STRING} perto de {TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{G 0 "" "O " "A " "Os " "As "}{STRING} anuncia{G 0 "" "" "" m m} fecho iminente!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Problemas de abastecimento levam{G 0 "" " o" " a" " os" " as"} {STRING} a anunciar{G 0 "" "" "" em em} fecho iminente!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Escassez de árvores nas proximidades leva{G 0 "" " o" " a" " os" " as"} {STRING} a anunciar{G 0 "" "" "" em em} fecho iminente!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Problemas de abastecimento leva{G 0 "" "" "" m m} {G 0 "" "o " "a " "o " "as "}{STRING} a anunciar{G 0 "" "" "" em em} fecho iminente!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Escassez de árvores nas proximidades leva{G 0 "" "" "" m m} {G 0 "" "o " "a " "os " "as "}{STRING} a anunciar{G 0 "" "" "" em em} fecho iminente!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}União Monetária Europeia!{}{}O Euro é introduzido como moeda única para todas as transacções no seu país!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Recessão Mundial!{}{}Especialistas financeiros temem crise económica!
@@ -1783,7 +1783,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Mostrar horári
 STR_CONFIG_SETTING_QUICKGOTO                                    :Criação rápida de ordens de veículos: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Pré-selecionar o 'cursor Ir Para' ao abrir a janela de ordens
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Tipo padrão de ferrovia (ao criar ou abrir jogo): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Tipo padrão de linha ferroviária (ao criar/abrir jogo): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tipo de carril selecionado após o início ou carregamento de um jogo. 'primeiro disponível' seleciona o tipo mais antigo de carril, 'último disponível' seleciona o tipo mais recente de carril e 'mais utilizado' seleciona o tipo mais utilizado atualmente
 ###length 3
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Primeiro disponível
@@ -2515,8 +2515,8 @@ STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Juntar-s
 STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP               :{BLACK}Autorizar este cliente a ingressar na sua empresa
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Enviar uma mensagem a este jogador
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Enviar uma mensagem a todos os jogadores desta empresa
-STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Enviar uma mensagem a todos os espectadores
-STR_NETWORK_CLIENT_LIST_SPECTATORS                              :Espectadores
+STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Enviar uma mensagem a todos os espetadores
+STR_NETWORK_CLIENT_LIST_SPECTATORS                              :Espetadores
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nova empresa)
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Criar uma nova empresa e aderir à mesma
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Este é você
@@ -2529,7 +2529,7 @@ STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}O númer
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Local
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Jogadores remotos não conseguem conetar
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Público
-STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}Atrás de NAT
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}Atrás de um NAT
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via retransmissão
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Expulsar
@@ -2649,7 +2649,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :a sair
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} entrou no jogo
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} entrou no jogo (Client #{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} juntou-se a {STRING}
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} entrou como espectador
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} entrou como espetador
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} iniciou uma nova empresa (#{NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} deixou o jogo ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} mudou o nome para {STRING}
@@ -2803,16 +2803,16 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construção de
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir linha ferroviária. Ctrl+Clique para remover a linha. Pressione também Shift para apenas mostrar o custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir linha ferroviária usando o modo automático para a direção. Ctrl+Clique para remover a linha. Pressione também Shift para apenas mostrar o custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construir depósito ferroviário (para compra e manutenção de comboios). Pressione também Shift para apenas mostrar o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construir ponto de controlo na ferrovia. Ctrl+Clique para selecionar outro ponto de controlo para se unir. Pressione também Shift para apenas mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construir ponto de controlo na linha ferroviária. Ctrl+Clique para selecionar outro ponto de controlo para fazer a união. Pressione também Shift para apenas mostrar o custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construir estação ferroviária. Ctrl+Clique para selecionar outra estação para se unir. Pressione também Shift para apenas mostrar o custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir sinais na linha ferroviária. Ctrl+Clique para construir estilo de sinal alternativo{}Clique+Arrastar para preencher a secção de via selecionada com sinais no espaçamento escolhido. Ctrl+Clique+Arrastar para preencher com sinais até à próxima junção, estação ou sinal. Pressione também Shift para apenas mostrar o custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir ponte ferroviária. Pressione também Shift para apenas mostrar o custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviário. Pressione também Shift para apenas mostrar o custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alternar entre construir/remover linha férrea, sinais, pontos de controlo e estações. Ctrl+Clique também remove os carris de pontos de passagem e de estações
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converter/Atualizar tipo de via férrea. Pressione também Shift para apenas mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converter/Atualizar tipo de carril. Pressione também Shift para apenas mostrar o custo estimado
 
-STR_RAIL_NAME_RAILROAD                                          :{G=mp}Caminhos-de-ferro
-STR_RAIL_NAME_ELRAIL                                            :{G=mp}Caminhos-de-ferro eletrificados
+STR_RAIL_NAME_RAILROAD                                          :{G=m}Caminho-de-ferro
+STR_RAIL_NAME_ELRAIL                                            :{G=m}Caminho-de-ferro eletrificado
 STR_RAIL_NAME_MONORAIL                                          :{G=m}Monocarril
 STR_RAIL_NAME_MAGLEV                                            :Maglev (Levitação Magnética)
 
@@ -3118,8 +3118,8 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Tem a c
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadeia da Indústria - {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cadeia de Carga - {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Indústrias produtoras
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Indústrias receptoras
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Produtores
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Recetores
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Casas
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Clique na indústria para ver os seus fornecedores e clientes
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Clique na mercadoria para ver os seus fornecedores e clientes
@@ -3885,7 +3885,7 @@ STR_STATION_VIEW_GROUP_D_S_V                                    :Destino-Origem-
 STR_STATION_VIEW_GROUP_D_V_S                                    :Destino-Via-Origem
 
 ###length 8
-STR_CARGO_RATING_APPALLING                                      :Horrível
+STR_CARGO_RATING_APPALLING                                      :Péssimo
 STR_CARGO_RATING_VERY_POOR                                      :Muito Fraco
 STR_CARGO_RATING_POOR                                           :Fraco
 STR_CARGO_RATING_MEDIOCRE                                       :Medíocre
@@ -4186,7 +4186,7 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Todas menos {CA
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Esforço de Tração Máx: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Alcance: {GOLD}{COMMA} mosaicos
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Tipo de aeronave: {GOLD}{STRING}
-STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Tipos de carril: {GOLD}{STRING}
+STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Tipo de carril: {GOLD}{STRING}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Todos os tipos de carga
@@ -4370,7 +4370,7 @@ STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Custo de Circul
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Custo de Circulação: {CURRENCY_LONG}/período
 STR_ENGINE_PREVIEW_CAPACITY                                     :Capacidade: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :Capacidade: {CARGO_LONG}, {CARGO_LONG}
-STR_ENGINE_PREVIEW_RAILTYPES                                    :Tipos de carril: {STRING}
+STR_ENGINE_PREVIEW_RAILTYPES                                    :Tipo de carril: {STRING}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substituir {STRING} - {STRING}
@@ -4435,7 +4435,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK} Centrar
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Mandar comboio para o depósito. Ctrl+Clique para fazer apenas manutenção
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Mandar veículo para a garagem. Ctrl+Clique para fazer apenas manutenção
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Mandar navio para o estaleiro. Ctrl+Clique para fazer apenas manutenção
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Enviar navio para o estaleiro. Ctrl+Clique para fazer apenas manutenção
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Mandar aeronave para o hangar. Ctrl+Clique para fazer apenas manutenção
 
 ###length VEHICLE_TYPES
@@ -5886,7 +5886,7 @@ STR_COMPANY_SOMEONE                                             :alguém
 
 STR_SAVEGAME_DURATION_REALTIME                                  :{NUM}h {NUM}m
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
-STR_SAVEGAME_NAME_SPECTATOR                                     :Espectador, {1:STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :Espetador, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
