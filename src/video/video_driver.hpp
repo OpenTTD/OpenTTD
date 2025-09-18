@@ -166,16 +166,6 @@ public:
 		return {};
 	}
 
-	/**
-	 * Get a suggested default GUI scale taking screen DPI into account.
-	 */
-	virtual int GetSuggestedUIScale()
-	{
-		float dpi_scale = this->GetDPIScale();
-
-		return Clamp(dpi_scale * 100, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE);
-	}
-
 	virtual std::string_view GetInfoString() const
 	{
 		return this->GetName();
@@ -232,12 +222,6 @@ protected:
 	 * Get the resolution of the main screen.
 	 */
 	virtual Dimension GetScreenSize() const { return { DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT }; }
-
-	/**
-	 * Get DPI scaling factor of the screen OTTD is displayed on.
-	 * @return 1.0 for default platform DPI, > 1.0 for higher DPI values, and < 1.0 for smaller DPI values.
-	 */
-	virtual float GetDPIScale() { return 1.0f; }
 
 	/**
 	 * Apply resolution auto-detection and clamp to sensible defaults.

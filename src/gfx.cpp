@@ -1325,6 +1325,10 @@ void ScreenSizeChanged()
 
 	/* screen size changed and the old bitmap is invalid now, so we don't want to undraw it */
 	_cursor.visible = false;
+
+	if (VideoDriver::GetInstance() != nullptr) {
+		if (AdjustGUIZoom(true)) ReInitAllWindows(true);
+	}
 }
 
 void UndrawMouseCursor()
@@ -1785,7 +1789,12 @@ void UpdateGUIZoom()
 {
 	/* Determine real GUI zoom to use. */
 	if (_gui_scale_cfg == -1) {
-		_gui_scale = VideoDriver::GetInstance()->GetSuggestedUIScale();
+		/* Minimum design size of the game is 640x480. */
+		float xs = _screen.width / 640.f;
+		float ys = _screen.height / 480.f;
+		int scale = std::min(xs, ys) * 100;
+		/* Round down scaling to 25% increments and clamp to limits. */
+		_gui_scale = Clamp((scale / 25) * 25, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE);
 	} else {
 		_gui_scale = Clamp(_gui_scale_cfg, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE);
 	}
