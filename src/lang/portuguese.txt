@@ -763,7 +763,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Magnata
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Grande Magnata
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Magnata do Século
 STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIG_FONT}“{STRING}” ({COMMA})
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}"{STRING}" ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} alcança o estatuto de “{STRING}”!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} de {COMPANY} conquista o estatuto de “{STRING}”!
 
@@ -1583,7 +1583,7 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Mostrar a popul
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Espessura das linhas dos gráficos estatísticos: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Largura da linha nos gráficos. Uma linha mais estreita é de leitura mais precisa, enquanto uma linha mais espessa é mais fácil de ver e as cores distinguem-se melhor.
 
-STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Exibir o nome do "NewGRF" na janela de compra de veículos: {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Mostrar o nome do NewGRF na janela de compra de veículos: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Adiciona uma linha à janela de compra de veículos, mostrando a qual "NewGRF" pertence o veículo selecionado
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mostrar as cargas que os veículos podem transportar nas janelas de listagem: {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Quando ativo, a carga transportável do veículo aparecerá acima nas listas de veículos
@@ -4433,10 +4433,10 @@ STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centrar 
 STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK} Centrar a visualização na localização da aeronave. Clique duplo para seguir a aeronave na visualização principal. Ctrl+Clique para abrir um novo visualizador na localização da aeronave
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Mandar comboio para o depósito. Ctrl+Clique para fazer apenas manutenção
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Mandar veículo para a garagem. Ctrl+Clique para fazer apenas manutenção
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Enviar navio para o estaleiro. Ctrl+Clique para fazer apenas manutenção
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Mandar aeronave para o hangar. Ctrl+Clique para fazer apenas manutenção
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Enviar comboio para o depósito. Ctrl+Clique para fazer apenas a manutenção
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Enviar o veículo para a garagem. Ctrl+Clique para fazer apenas a manutenção
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Enviar navio para o estaleiro. Ctrl+Clique para fazer apenas a manutenção
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Enviar a aeronave para o hangar. Ctrl+Clique para fazer apenas a manutenção
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Comprar uma cópia do comboio, incluindo todos os veículos rebocados. Ctrl+Clique para partilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
@@ -4445,7 +4445,7 @@ STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Comprar 
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Comprar uma cópia da aeronave. Ctrl+Clique para partilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forçar comboio a prosseguir sem esperar pelo sinal
-STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Inverter direção do comboio
+STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Inverter sentido do comboio
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Forçar veículo a dar a volta
 STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Centrar visualização no destino da ordem. Ctrl+Clique para abrir um novo visualizador na localização do destino da ordem
 
@@ -5182,7 +5182,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... tem 
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Os comboios só podem ser modificados quando parados num depósito ferroviário
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Comboio muito longo
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Não é possível inverter a direção do veículo...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Não é possível inverter o sentido do veículo...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... compostos por unidades múltiplas
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Vias férreas incompatíveis
 
@@ -5336,10 +5336,10 @@ STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Não é 
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Não é possível iniciar/parar aeronave...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Não é possível mandar o comboio para o depósito ferroviário...
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Não é possível mandar o veículo para a garagem...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Não é possível mandar navio para o estaleiro naval...
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Não é possível mandar aeronave para o hangar...
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Não é possível enviar o comboio para o depósito ferroviário...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Não é possível enviar o veículo para a garagem...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Não é possível enviar o navio para o estaleiro naval...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Não é possível enviar a aeronave para o hangar...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Não é possível comprar veículo ferroviário...
@@ -5390,7 +5390,7 @@ STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Começar
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Não é possível fazer o comboio passar o sinal com perigo...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Não é possível inverter a direção do comboio...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Não é possível inverter o sentido do comboio...
 STR_ERROR_TRAIN_START_NO_POWER                                  :O comboio não tem energia
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Não é possível fazer o veículo dar a volta...
