@@ -44,9 +44,8 @@ public:
 	/**
 	 * Types of rail known to the game.
 	 */
-	enum RailType : uint8_t {
-		/* Note: these values represent part of the in-game static values */
-		RAILTYPE_INVALID  = ::INVALID_RAILTYPE, ///< Invalid RailType.
+	enum RailType {
+		RAILTYPE_INVALID = -1, ///< Invalid RailType.
 	};
 
 	/**
