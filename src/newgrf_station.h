@@ -123,7 +123,7 @@ using StationSpecFlags = EnumBitSet<StationSpecFlag, uint8_t>;
 struct StationSpec : NewGRFSpecBase<StationClassID> {
 	StationSpec() : name(0),
 		disallowed_platforms(0), disallowed_lengths(0),
-		cargo_threshold(0), cargo_triggers(0),
+		cargo_threshold(0), cargo_triggers{},
 		callback_mask(0), flags(0)
 	{}
 

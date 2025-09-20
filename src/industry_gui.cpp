@@ -1289,12 +1289,12 @@ static bool CargoFilter(const Industry * const *industry, const std::pair<CargoT
 
 	bool accepted_cargo_matches;
 
-	switch (accepted_cargo) {
-		case CargoFilterCriteria::CF_ANY:
+	switch (accepted_cargo.base()) {
+		case CargoFilterCriteria::CF_ANY.base():
 			accepted_cargo_matches = true;
 			break;
 
-		case CargoFilterCriteria::CF_NONE:
+		case CargoFilterCriteria::CF_NONE.base():
 			accepted_cargo_matches = !(*industry)->IsCargoAccepted();
 			break;
 
@@ -1305,12 +1305,12 @@ static bool CargoFilter(const Industry * const *industry, const std::pair<CargoT
 
 	bool produced_cargo_matches;
 
-	switch (produced_cargo) {
-		case CargoFilterCriteria::CF_ANY:
+	switch (produced_cargo.base()) {
+		case CargoFilterCriteria::CF_ANY.base():
 			produced_cargo_matches = true;
 			break;
 
-		case CargoFilterCriteria::CF_NONE:
+		case CargoFilterCriteria::CF_NONE.base():
 			produced_cargo_matches = !(*industry)->IsCargoProduced();
 			break;
 
@@ -1396,9 +1396,9 @@ protected:
 
 	StringID GetCargoFilterLabel(CargoType cargo_type) const
 	{
-		switch (cargo_type) {
-			case CargoFilterCriteria::CF_ANY: return STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES;
-			case CargoFilterCriteria::CF_NONE: return STR_INDUSTRY_DIRECTORY_FILTER_NONE;
+		switch (cargo_type.base()) {
+			case CargoFilterCriteria::CF_ANY.base(): return STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES;
+			case CargoFilterCriteria::CF_NONE.base(): return STR_INDUSTRY_DIRECTORY_FILTER_NONE;
 			default: return CargoSpec::Get(cargo_type)->name;
 		}
 	}
@@ -1776,14 +1776,14 @@ public:
 		DropDownList list;
 
 		/* Add item for disabling filtering. */
-		list.push_back(MakeDropDownListStringItem(this->GetCargoFilterLabel(CargoFilterCriteria::CF_ANY), CargoFilterCriteria::CF_ANY));
+		list.push_back(MakeDropDownListStringItem(this->GetCargoFilterLabel(CargoFilterCriteria::CF_ANY), CargoFilterCriteria::CF_ANY.base()));
 		/* Add item for industries not producing anything, e.g. power plants */
-		list.push_back(MakeDropDownListStringItem(this->GetCargoFilterLabel(CargoFilterCriteria::CF_NONE), CargoFilterCriteria::CF_NONE));
+		list.push_back(MakeDropDownListStringItem(this->GetCargoFilterLabel(CargoFilterCriteria::CF_NONE), CargoFilterCriteria::CF_NONE.base()));
 
 		/* Add cargos */
 		Dimension d = GetLargestCargoIconSize();
 		for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
-			list.push_back(MakeDropDownListIconItem(d, cs->GetCargoIcon(), PAL_NONE, cs->name, cs->Index()));
+			list.push_back(MakeDropDownListIconItem(d, cs->GetCargoIcon(), PAL_NONE, cs->name, cs->Index().base()));
 		}
 
 		return list;
@@ -1802,11 +1802,11 @@ public:
 				break;
 
 			case WID_ID_FILTER_BY_ACC_CARGO: // Cargo filter dropdown
-				ShowDropDownList(this, this->BuildCargoDropDownList(), this->accepted_cargo_filter_criteria, widget);
+				ShowDropDownList(this, this->BuildCargoDropDownList(), this->accepted_cargo_filter_criteria.base(), widget);
 				break;
 
 			case WID_ID_FILTER_BY_PROD_CARGO: // Cargo filter dropdown
-				ShowDropDownList(this, this->BuildCargoDropDownList(), this->produced_cargo_filter_criteria, widget);
+				ShowDropDownList(this, this->BuildCargoDropDownList(), this->produced_cargo_filter_criteria.base(), widget);
 				break;
 
 			case WID_ID_INDUSTRY_LIST: {
@@ -1835,13 +1835,13 @@ public:
 			}
 
 			case WID_ID_FILTER_BY_ACC_CARGO: {
-				this->SetAcceptedCargoFilter(index);
+				this->SetAcceptedCargoFilter(static_cast<CargoType>(index));
 				this->BuildSortIndustriesList();
 				break;
 			}
 
 			case WID_ID_FILTER_BY_PROD_CARGO: {
-				this->SetProducedCargoFilter(index);
+				this->SetProducedCargoFilter(static_cast<CargoType>(index));
 				this->BuildSortIndustriesList();
 				break;
 			}
@@ -2648,7 +2648,7 @@ struct IndustryCargoesWindow : public Window {
 			const IndustrySpec *indsp = GetIndustrySpec(this->ind_cargo);
 			return GetString(STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION, indsp->name);
 		} else {
-			const CargoSpec *csp = CargoSpec::Get(this->ind_cargo - NUM_INDUSTRYTYPES);
+			const CargoSpec *csp = CargoSpec::Get(static_cast<CargoType>(this->ind_cargo - NUM_INDUSTRYTYPES));
 			return GetString(STR_INDUSTRY_CARGOES_CARGO_CAPTION, csp->name);
 		}
 	}
@@ -2661,9 +2661,9 @@ struct IndustryCargoesWindow : public Window {
 	 */
 	static bool HasCommonValidCargo(const std::span<const CargoType> cargoes1, const std::span<const CargoType> cargoes2)
 	{
-		for (const CargoType cargo_type1 : cargoes1) {
+		for (const CargoType &cargo_type1 : cargoes1) {
 			if (!IsValidCargoType(cargo_type1)) continue;
-			for (const CargoType cargo_type2 : cargoes2) {
+			for (const CargoType &cargo_type2 : cargoes2) {
 				if (cargo_type1 == cargo_type2) return true;
 			}
 		}
@@ -2677,7 +2677,7 @@ struct IndustryCargoesWindow : public Window {
 	 */
 	static bool HousesCanSupply(const std::span<const CargoType> cargoes)
 	{
-		for (const CargoType cargo_type : cargoes) {
+		for (const CargoType &cargo_type : cargoes) {
 			if (!IsValidCargoType(cargo_type)) continue;
 			TownProductionEffect tpe = CargoSpec::Get(cargo_type)->town_production_effect;
 			if (tpe == TPE_PASSENGERS || tpe == TPE_MAIL) return true;
@@ -2694,7 +2694,7 @@ struct IndustryCargoesWindow : public Window {
 	{
 		HouseZones climate_mask = GetClimateMaskForLandscape();
 
-		for (const CargoType cargo_type : cargoes) {
+		for (const CargoType &cargo_type : cargoes) {
 			if (!IsValidCargoType(cargo_type)) continue;
 
 			for (const auto &hs : HouseSpec::Specs()) {
@@ -2875,7 +2875,7 @@ struct IndustryCargoesWindow : public Window {
 	 */
 	void ComputeCargoDisplay(CargoType cargo_type)
 	{
-		this->ind_cargo = cargo_type + NUM_INDUSTRYTYPES;
+		this->ind_cargo = cargo_type.base() + NUM_INDUSTRYTYPES;
 		_displayed_industries.reset();
 
 		this->fields.clear();
@@ -3088,7 +3088,7 @@ struct IndustryCargoesWindow : public Window {
 				DropDownList lst;
 				Dimension d = GetLargestCargoIconSize();
 				for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
-					lst.push_back(MakeDropDownListIconItem(d, cs->GetCargoIcon(), PAL_NONE, cs->name, cs->Index()));
+					lst.push_back(MakeDropDownListIconItem(d, cs->GetCargoIcon(), PAL_NONE, cs->name, cs->Index().base()));
 				}
 				if (!lst.empty()) {
 					int selected = (this->ind_cargo >= NUM_INDUSTRYTYPES) ? (int)(this->ind_cargo - NUM_INDUSTRYTYPES) : -1;
@@ -3119,7 +3119,7 @@ struct IndustryCargoesWindow : public Window {
 
 		switch (widget) {
 			case WID_IC_CARGO_DROPDOWN:
-				this->ComputeCargoDisplay(index);
+				this->ComputeCargoDisplay(static_cast<CargoType>(index));
 				break;
 
 			case WID_IC_IND_DROPDOWN:

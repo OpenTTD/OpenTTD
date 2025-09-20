@@ -227,10 +227,10 @@ void BaseVehicleListWindow::BuildVehicleList()
 
 	GenerateVehicleSortList(&this->vehicles, this->vli);
 
-	CargoTypes used = 0;
+	CargoTypes used{};
 	for (const Vehicle *v : this->vehicles) {
 		for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
-			if (u->cargo_cap > 0) SetBit(used, u->cargo_type);
+			if (u->cargo_cap > 0) used.Set(u->cargo_type);
 		}
 	}
 	this->used_cargoes = used;
@@ -483,10 +483,10 @@ void BaseVehicleListWindow::OnInit()
 
 StringID BaseVehicleListWindow::GetCargoFilterLabel(CargoType cargo_type) const
 {
-	switch (cargo_type) {
-		case CargoFilterCriteria::CF_ANY: return STR_CARGO_TYPE_FILTER_ALL;
-		case CargoFilterCriteria::CF_FREIGHT: return STR_CARGO_TYPE_FILTER_FREIGHT;
-		case CargoFilterCriteria::CF_NONE: return STR_CARGO_TYPE_FILTER_NONE;
+	switch (cargo_type.base()) {
+		case CargoFilterCriteria::CF_ANY.base(): return STR_CARGO_TYPE_FILTER_ALL;
+		case CargoFilterCriteria::CF_FREIGHT.base(): return STR_CARGO_TYPE_FILTER_FREIGHT;
+		case CargoFilterCriteria::CF_NONE.base(): return STR_CARGO_TYPE_FILTER_NONE;
 		default: return CargoSpec::Get(cargo_type)->name;
 	}
 }
@@ -501,17 +501,17 @@ DropDownList BaseVehicleListWindow::BuildCargoDropDownList(bool full) const
 	DropDownList list;
 
 	/* Add item for disabling filtering. */
-	list.push_back(MakeDropDownListStringItem(this->GetCargoFilterLabel(CargoFilterCriteria::CF_ANY), CargoFilterCriteria::CF_ANY));
+	list.push_back(MakeDropDownListStringItem(this->GetCargoFilterLabel(CargoFilterCriteria::CF_ANY), CargoFilterCriteria::CF_ANY.base()));
 	/* Add item for freight (i.e. vehicles with cargo capacity and with no passenger capacity). */
-	list.push_back(MakeDropDownListStringItem(this->GetCargoFilterLabel(CargoFilterCriteria::CF_FREIGHT), CargoFilterCriteria::CF_FREIGHT));
+	list.push_back(MakeDropDownListStringItem(this->GetCargoFilterLabel(CargoFilterCriteria::CF_FREIGHT), CargoFilterCriteria::CF_FREIGHT.base()));
 	/* Add item for vehicles not carrying anything, e.g. train engines. */
-	list.push_back(MakeDropDownListStringItem(this->GetCargoFilterLabel(CargoFilterCriteria::CF_NONE), CargoFilterCriteria::CF_NONE));
+	list.push_back(MakeDropDownListStringItem(this->GetCargoFilterLabel(CargoFilterCriteria::CF_NONE), CargoFilterCriteria::CF_NONE.base()));
 
 	/* Add cargos */
 	Dimension d = GetLargestCargoIconSize();
 	for (const CargoSpec *cs : _sorted_cargo_specs) {
-		if (!full && !HasBit(this->used_cargoes, cs->Index())) continue;
-		list.push_back(MakeDropDownListIconItem(d, cs->GetCargoIcon(), PAL_NONE, cs->name, cs->Index(), false, !HasBit(this->used_cargoes, cs->Index())));
+		if (!full && !this->used_cargoes.Test(cs->Index())) continue;
+		list.push_back(MakeDropDownListIconItem(d, cs->GetCargoIcon(), PAL_NONE, cs->name, cs->Index().base(), false, !this->used_cargoes.Test(cs->Index())));
 	}
 
 	return list;
@@ -619,7 +619,7 @@ uint8_t GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoType dest_ca
 		for (Vehicle *v = v_for; v != nullptr; v = v->HasArticulatedPart() ? v->GetNextArticulatedPart() : nullptr) {
 			const Engine *e = v->GetEngine();
 			if (!e->CanCarryCargo() || !e->info.callback_mask.Test(VehicleCallbackMask::CargoSuffix)) continue;
-			if (!HasBit(e->info.refit_mask, dest_cargo_type) && v->cargo_type != dest_cargo_type) continue;
+			if (!e->info.refit_mask.Test(dest_cargo_type) && v->cargo_type != dest_cargo_type) continue;
 
 			CargoType old_cargo_type = v->cargo_type;
 			uint8_t old_cargo_subtype = v->cargo_subtype;
@@ -791,7 +791,7 @@ struct RefitWindow : public Window {
 			for (const auto &cs : _sorted_cargo_specs) {
 				CargoType cargo_type = cs->Index();
 				/* Skip cargo type if it's not listed */
-				if (!HasBit(cmask, cargo_type)) continue;
+				if (!cmask.Test(cargo_type)) continue;
 
 				auto &list = this->refit_list[cargo_type];
 				bool first_vehicle = list.empty();
@@ -1359,25 +1359,24 @@ void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order, Window *pare
 uint ShowRefitOptionsList(int left, int right, int y, EngineID engine)
 {
 	/* List of cargo types of this engine */
-	CargoTypes cmask = GetUnionOfArticulatedRefitMasks(engine, false);
-	/* List of cargo types available in this climate */
-	CargoTypes lmask = _cargo_mask;
+	CargoTypes present = GetUnionOfArticulatedRefitMasks(engine, false);
 
 	/* Draw nothing if the engine is not refittable */
-	if (HasAtMostOneBit(cmask)) return y;
+	if (HasAtMostOneBit(present.base())) return y;
 
 	std::string str;
-	if (cmask == lmask) {
+	if (present == _cargo_mask) {
 		/* Engine can be refitted to all types in this climate */
 		str = GetString(STR_PURCHASE_INFO_REFITTABLE_TO, STR_PURCHASE_INFO_ALL_TYPES, std::monostate{});
 	} else {
 		/* Check if we are able to refit to more cargo types and unable to. If
 		 * so, invert the cargo types to list those that we can't refit to. */
-		if (CountBits(cmask ^ lmask) < CountBits(cmask) && CountBits(cmask ^ lmask) <= 7) {
-			cmask ^= lmask;
-			str = GetString(STR_PURCHASE_INFO_REFITTABLE_TO, STR_PURCHASE_INFO_ALL_BUT, cmask);
+		CargoTypes excluded = CargoTypes{present}.Flip(_cargo_mask);
+		uint num_excluded = excluded.Count();
+		if (num_excluded < present.Count() && num_excluded <= 7) {
+			str = GetString(STR_PURCHASE_INFO_REFITTABLE_TO, STR_PURCHASE_INFO_ALL_BUT, excluded);
 		} else {
-			str = GetString(STR_PURCHASE_INFO_REFITTABLE_TO, STR_JUST_CARGO_LIST, cmask);
+			str = GetString(STR_PURCHASE_INFO_REFITTABLE_TO, STR_JUST_CARGO_LIST, present);
 		}
 	}
 
@@ -1795,12 +1794,12 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 
 				if (_settings_client.gui.show_cargo_in_vehicle_lists) {
 					/* Get the cargoes the vehicle can carry */
-					CargoTypes vehicle_cargoes = 0;
+					CargoTypes vehicle_cargoes{};
 
 					for (auto u = v; u != nullptr; u = u->Next()) {
 						if (u->cargo_cap == 0) continue;
 
-						SetBit(vehicle_cargoes, u->cargo_type);
+						vehicle_cargoes.Set(u->cargo_type);
 					}
 
 					if (!v->name.empty()) {
@@ -2112,7 +2111,7 @@ public:
 				return;
 
 			case WID_VL_FILTER_BY_CARGO: // Cargo filter dropdown
-				ShowDropDownList(this, this->BuildCargoDropDownList(false), this->cargo_filter_criteria, widget);
+				ShowDropDownList(this, this->BuildCargoDropDownList(false), this->cargo_filter_criteria.base(), widget);
 				break;
 
 			case WID_VL_LIST: { // Matrix to show vehicles
@@ -2184,7 +2183,7 @@ public:
 				break;
 
 			case WID_VL_FILTER_BY_CARGO:
-				this->SetCargoFilter(index);
+				this->SetCargoFilter(static_cast<CargoType>(index));
 				break;
 
 			case WID_VL_MANAGE_VEHICLES_DROPDOWN:

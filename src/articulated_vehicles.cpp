@@ -117,12 +117,12 @@ static inline std::pair<CargoType, uint16_t> GetVehicleDefaultCapacity(EngineID 
 static inline CargoTypes GetAvailableVehicleCargoTypes(EngineID engine, bool include_initial_cargo_type)
 {
 	const Engine *e = Engine::Get(engine);
-	if (!e->CanCarryCargo()) return 0;
+	if (!e->CanCarryCargo()) return {};
 
 	CargoTypes cargoes = e->info.refit_mask;
 
 	if (include_initial_cargo_type) {
-		SetBit(cargoes, e->GetDefaultCargoType());
+		cargoes.Set(e->GetDefaultCargoType());
 	}
 
 	return cargoes;
@@ -165,11 +165,11 @@ CargoArray GetCapacityOfArticulatedParts(EngineID engine)
  */
 CargoTypes GetCargoTypesOfArticulatedParts(EngineID engine)
 {
-	CargoTypes cargoes = 0;
+	CargoTypes cargoes{};
 	const Engine *e = Engine::Get(engine);
 
 	if (auto [cargo, cap] = GetVehicleDefaultCapacity(engine); IsValidCargoType(cargo) && cap > 0) {
-		SetBit(cargoes, cargo);
+		cargoes.Set(cargo);
 	}
 
 	if (!e->IsGroundVehicle()) return cargoes;
@@ -181,7 +181,7 @@ CargoTypes GetCargoTypesOfArticulatedParts(EngineID engine)
 		if (artic_engine == EngineID::Invalid()) break;
 
 		if (auto [cargo, cap] = GetVehicleDefaultCapacity(artic_engine); IsValidCargoType(cargo) && cap > 0) {
-			SetBit(cargoes, cargo);
+			cargoes.Set(cargo);
 		}
 	}
 
@@ -224,7 +224,7 @@ void GetArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type, 
 	const Engine *e = Engine::Get(engine);
 	CargoTypes veh_cargoes = GetAvailableVehicleCargoTypes(engine, include_initial_cargo_type);
 	*union_mask = veh_cargoes;
-	*intersection_mask = (veh_cargoes != 0) ? veh_cargoes : ALL_CARGOTYPES;
+	*intersection_mask = veh_cargoes.Any() ? veh_cargoes : ALL_CARGOTYPES;
 
 	if (!e->IsGroundVehicle()) return;
 	if (!e->info.callback_mask.Test(VehicleCallbackMask::ArticEngine)) return;
@@ -234,8 +234,8 @@ void GetArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type, 
 		if (artic_engine == EngineID::Invalid()) break;
 
 		veh_cargoes = GetAvailableVehicleCargoTypes(artic_engine, include_initial_cargo_type);
-		*union_mask |= veh_cargoes;
-		if (veh_cargoes != 0) *intersection_mask &= veh_cargoes;
+		union_mask->Set(veh_cargoes);
+		if (veh_cargoes.Any()) *intersection_mask = *intersection_mask & veh_cargoes;
 	}
 }
 
@@ -261,12 +261,12 @@ CargoTypes GetUnionOfArticulatedRefitMasks(EngineID engine, bool include_initial
  */
 CargoTypes GetCargoTypesOfArticulatedVehicle(const Vehicle *v, CargoType *cargo_type)
 {
-	CargoTypes cargoes = 0;
+	CargoTypes cargoes{};
 	CargoType first_cargo = INVALID_CARGO;
 
 	do {
 		if (IsValidCargoType(v->cargo_type) && v->GetEngine()->CanCarryCargo()) {
-			SetBit(cargoes, v->cargo_type);
+			cargoes.Set(v->cargo_type);
 			if (!IsValidCargoType(first_cargo)) first_cargo = v->cargo_type;
 			if (first_cargo != v->cargo_type) {
 				if (cargo_type != nullptr) {
@@ -299,24 +299,24 @@ void CheckConsistencyOfArticulatedVehicle(const Vehicle *v)
 	GetArticulatedRefitMasks(v->engine_type, true, &purchase_refit_union, &purchase_refit_intersection);
 	CargoArray purchase_default_capacity = GetCapacityOfArticulatedParts(v->engine_type);
 
-	CargoTypes real_refit_union = 0;
+	CargoTypes real_refit_union{};
 	CargoTypes real_refit_intersection = ALL_CARGOTYPES;
-	CargoTypes real_default_cargoes = 0;
+	CargoTypes real_default_cargoes{};
 
 	do {
 		CargoTypes refit_mask = GetAvailableVehicleCargoTypes(v->engine_type, true);
-		real_refit_union |= refit_mask;
-		if (refit_mask != 0) real_refit_intersection &= refit_mask;
+		real_refit_union.Set(refit_mask);
+		if (refit_mask.Any()) real_refit_intersection = real_refit_intersection & refit_mask;
 
 		assert(v->cargo_type < NUM_CARGO);
-		if (v->cargo_cap > 0) SetBit(real_default_cargoes, v->cargo_type);
+		if (v->cargo_cap > 0) real_default_cargoes.Set(v->cargo_type);
 
 		v = v->HasArticulatedPart() ? v->GetNextArticulatedPart() : nullptr;
 	} while (v != nullptr);
 
 	/* Check whether the vehicle carries more cargoes than expected */
 	bool carries_more = false;
-	for (CargoType cargo_type : SetCargoBitIterator(real_default_cargoes)) {
+	for (CargoType cargo_type : real_default_cargoes) {
 		if (purchase_default_capacity[cargo_type] == 0) {
 			carries_more = true;
 			break;

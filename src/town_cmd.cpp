@@ -787,7 +787,7 @@ static void AddAcceptedCargoSetMask(CargoType cargo, uint amount, CargoArray &ac
 {
 	if (!IsValidCargoType(cargo) || amount == 0) return;
 	acceptance[cargo] += amount;
-	SetBit(always_accepted, cargo);
+	always_accepted.Set(cargo);
 }
 
 /**

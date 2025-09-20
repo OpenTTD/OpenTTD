@@ -435,7 +435,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 
 		case 0x42: { // Consist cargo information
 			if (!HasBit(v->grf_cache.cache_valid, NCVV_CONSIST_CARGO_INFORMATION)) {
-				std::array<uint8_t, NUM_CARGO> common_cargoes{};
+				TypedIndexContainer<std::array<uint8_t, NUM_CARGO>, CargoType> common_cargoes{};
 				uint8_t cargo_classes = 0;
 				uint8_t user_def_data = 0;
 
@@ -470,12 +470,12 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 
 				/* Note: We have to store the untranslated cargotype in the cache as the cache can be read by different NewGRFs,
 				 *       which will need different translations */
-				v->grf_cache.consist_cargo_information = cargo_classes | (common_cargo_type << 8) | (common_subtype << 16) | (user_def_data << 24);
+				v->grf_cache.consist_cargo_information = cargo_classes | (common_cargo_type.base() << 8) | (common_subtype << 16) | (user_def_data << 24);
 				SetBit(v->grf_cache.cache_valid, NCVV_CONSIST_CARGO_INFORMATION);
 			}
 
 			/* The cargo translation is specific to the accessing GRF, and thus cannot be cached. */
-			CargoType common_cargo_type = (v->grf_cache.consist_cargo_information >> 8) & 0xFF;
+			CargoType common_cargo_type = static_cast<CargoType>(GB(v->grf_cache.consist_cargo_information, 8, 8));
 
 			/* Note:
 			 *  - Unlike everywhere else the cargo translation table is only used since grf version 8, not 7.
@@ -833,7 +833,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 		case 0x36: return v->subspeed;
 		case 0x37: return v->acceleration;
 		case 0x38: break; // not implemented
-		case 0x39: return v->cargo_type;
+		case 0x39: return v->cargo_type.base();
 		case 0x3A: return v->cargo_cap;
 		case 0x3B: return GB(v->cargo_cap, 8, 8);
 		case 0x3C: return ClampTo<uint16_t>(v->cargo.StoredCount());

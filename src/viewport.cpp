@@ -1839,7 +1839,7 @@ void ViewportDoDraw(const Viewport &vp, int left, int top, int right, int bottom
 	dp.height = UnScaleByZoom(dp.height, zoom);
 	AutoRestoreBackup cur_dpi(_cur_dpi, &dp);
 
-	if (vp.overlay != nullptr && vp.overlay->GetCargoMask() != 0 && vp.overlay->GetCompanyMask().Any()) {
+	if (vp.overlay != nullptr && vp.overlay->GetCargoMask().Any() && vp.overlay->GetCompanyMask().Any()) {
 		/* translate to window coordinates */
 		dp.left = x;
 		dp.top = y;
@@ -2513,7 +2513,7 @@ void RebuildViewportOverlay(Window *w)
 {
 	if (w->viewport->overlay != nullptr &&
 			w->viewport->overlay->GetCompanyMask().Any() &&
-			w->viewport->overlay->GetCargoMask() != 0) {
+			w->viewport->overlay->GetCargoMask().Any()) {
 		w->viewport->overlay->SetDirty();
 		w->SetDirty();
 	}
