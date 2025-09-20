@@ -271,7 +271,8 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 		if (!Waypoint::CanAllocateItem()) return CommandCost(STR_ERROR_TOO_MANY_STATIONS_LOADING);
 	}
 
-	auto specindex = AllocateSpecToStation(spec, wp, flags.Test(DoCommandFlag::Execute));
+	/* Check if we can allocate a custom spec to this waypoint. */
+	auto specindex = AllocateSpecToStation(spec, wp);
 	if (!specindex.has_value()) return CommandCost(STR_ERROR_TOO_MANY_STATION_SPECS);
 
 	if (flags.Test(DoCommandFlag::Execute)) {
@@ -284,6 +285,7 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 		wp->owner = GetTileOwner(start_tile);
 
 		wp->rect.BeforeAddRect(start_tile, width, height, StationRect::ADD_TRY);
+		if (specindex.has_value()) AssignSpecToStation(spec, wp, *specindex);
 
 		wp->delete_ctr = 0;
 		wp->facilities.Set(StationFacility::Train);
@@ -391,8 +393,8 @@ CommandCost CmdBuildRoadWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 		if (!Waypoint::CanAllocateItem()) return CommandCost(STR_ERROR_TOO_MANY_STATIONS_LOADING);
 	}
 
-	/* Check if we can allocate a custom roadstopspec to this station */
-	auto specindex = AllocateSpecToRoadStop(roadstopspec, wp, flags.Test(DoCommandFlag::Execute));
+	/* Check if we can allocate a custom spec to this waypoint. */
+	auto specindex = AllocateSpecToRoadStop(roadstopspec, wp);
 	if (!specindex.has_value()) return CommandCost(STR_ERROR_TOO_MANY_STATION_SPECS);
 
 	if (flags.Test(DoCommandFlag::Execute)) {
@@ -406,6 +408,7 @@ CommandCost CmdBuildRoadWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 		wp->owner = _current_company;
 
 		wp->rect.BeforeAddRect(start_tile, width, height, StationRect::ADD_TRY);
+		if (specindex.has_value()) AssignSpecToRoadStop(roadstopspec, wp, *specindex);
 
 		if (roadstopspec != nullptr) {
 			/* Include this road stop spec's animation trigger bitmask

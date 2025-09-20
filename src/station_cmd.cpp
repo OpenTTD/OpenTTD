@@ -1491,7 +1491,7 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 	}
 
 	/* Check if we can allocate a custom stationspec to this station */
-	auto specindex = AllocateSpecToStation(statspec, st, flags.Test(DoCommandFlag::Execute));
+	auto specindex = AllocateSpecToStation(statspec, st);
 	if (!specindex.has_value()) return CommandCost(STR_ERROR_TOO_MANY_STATION_SPECS);
 
 	if (statspec != nullptr) {
@@ -1514,6 +1514,7 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 
 		st->rect.BeforeAddRect(tile_org, w_org, h_org, StationRect::ADD_TRY);
 
+		if (specindex.has_value()) AssignSpecToStation(statspec, st, *specindex);
 		if (statspec != nullptr) {
 			/* Include this station spec's animation trigger bitmask
 			 * in the station's cached copy. */
@@ -2113,7 +2114,7 @@ CommandCost CmdBuildRoadStop(DoCommandFlags flags, TileIndex tile, uint8_t width
 	if (ret.Failed()) return ret;
 
 	/* Check if we can allocate a custom stationspec to this station */
-	auto specindex = AllocateSpecToRoadStop(roadstopspec, st, flags.Test(DoCommandFlag::Execute));
+	auto specindex = AllocateSpecToRoadStop(roadstopspec, st);
 	if (!specindex.has_value()) return CommandCost(STR_ERROR_TOO_MANY_STATION_SPECS);
 
 	if (roadstopspec != nullptr) {
@@ -2127,6 +2128,7 @@ CommandCost CmdBuildRoadStop(DoCommandFlags flags, TileIndex tile, uint8_t width
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
+		if (specindex.has_value()) AssignSpecToRoadStop(roadstopspec, st, *specindex);
 		/* Check every tile in the area. */
 		for (TileIndex cur_tile : roadstop_area) {
 			/* Get existing road types and owners before any tile clearing */
