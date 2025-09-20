@@ -681,6 +681,7 @@ private:
 
 		switch (widget) {
 			case WID_N_VEH_TITLE:
+				if (this->ni->flags.Test(NewsFlag::CustomHeadline)) return GetString(STR_NEWS_BIGFONT_HEADLINE) + this->ni->headline.GetDecodedString();
 				return GetString(STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE, GetEngineCategoryName(engine));
 
 			case WID_N_VEH_NAME:
