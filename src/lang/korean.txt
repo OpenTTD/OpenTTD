@@ -2539,7 +2539,7 @@ STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :삭제
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}관리자 기능
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}'{STRING}' 플레이어를 정말로 추방하시겠습니까?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}'{STRING}' 플레이어를 정말로 차단하시겠습니까?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}'{COMPANY}' 회사를 정말로 삭제하시겠습니까?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}정말 '{COMPANY}' 회사를 삭제하시겠습니까?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}중계를 이용할까요?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}'{0:STRING}' 서버와 연결하는 데 실패했습니다.{} '{1:STRING}'{G 1 "을" "를"} 통해 연결을 중계하시겠습니까?
@@ -3348,7 +3348,9 @@ STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}검색:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}파일 덮어쓰기
-STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}정말로 이미 존재하는 파일에 덮어씌우시겠습니까?
+STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}정말 이미 존재하는 파일에 덮어씌우시겠습니까?
+STR_SAVELOAD_DELETE_TITLE                                       :{WHITE}파일 삭제
+STR_SAVELOAD_DELETE_WARNING                                     :{YELLOW}정말 이 파일을 삭제하시겠습니까?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (폴더)
 STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (상위 폴더)
 
@@ -4126,7 +4128,7 @@ STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}선택�
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}클릭하면 전체 자동 교체로부터 이 그룹을 보호합니다. CTRL+클릭하면 하위 그룹도 보호합니다
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}그룹 삭제
-STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}이 그룹과 하위 그룹을 정말 삭제하시겠습니까?
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}정말 이 그룹과 하위 그룹을 삭제하시겠습니까?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :경로를 공유 중인 차량 추가
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :모든 차량 제거
@@ -4184,6 +4186,7 @@ STR_PURCHASE_INFO_ALL_BUT                                       :{CARGO_LIST} �
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}최고 견인력: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}항속거리: {GOLD}{COMMA}칸
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}항공기 종류: {GOLD}{STRING}
+STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}철도 종류: {GOLD}{STRING}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :모든 화물
@@ -4367,6 +4370,7 @@ STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :유지비: {CUR
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :유지비: {CURRENCY_LONG}/기간
 STR_ENGINE_PREVIEW_CAPACITY                                     :수송량: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :수송량: {CARGO_LONG}, {CARGO_LONG}
+STR_ENGINE_PREVIEW_RAILTYPES                                    :철도 종류: {STRING}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} 교체 - {STRING}
@@ -5180,7 +5184,7 @@ STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}차량�
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}열차가 너무 깁니다!
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}차량을 뒤집을 수 없습니다...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}여러 대가 연결된 차량은 뒤집을 수 없습니다...
-STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :알맞지 않은 철도 타입입니다
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :알맞지 않은 철도 종류입니다
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}차량을 옮길 수 없습니다...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}뒷쪽 기관차는 앞쪽 기관차와 항상 붙어있어야 합니다

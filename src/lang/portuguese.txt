@@ -54,7 +54,7 @@ STR_CARGO_PLURAL_COLA                                           :{G=m}Xarope de 
 STR_CARGO_PLURAL_CANDYFLOSS                                     :{G=m}Algodão Doce
 STR_CARGO_PLURAL_BUBBLES                                        :{G=fp}Bolhas
 STR_CARGO_PLURAL_TOFFEE                                         :{G=m}Caramelo
-STR_CARGO_PLURAL_BATTERIES                                      :{G=fp}Baterias
+STR_CARGO_PLURAL_BATTERIES                                      :{G=fp}Pilhas
 STR_CARGO_PLURAL_PLASTIC                                        :{G=m}Plástico
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :{G=mp}Refrigerantes
 
@@ -88,7 +88,7 @@ STR_CARGO_SINGULAR_COLA                                         :{G=m}Xarope de 
 STR_CARGO_SINGULAR_CANDYFLOSS                                   :{G=m}Algodão Doce
 STR_CARGO_SINGULAR_BUBBLE                                       :{G=f}Bolha
 STR_CARGO_SINGULAR_TOFFEE                                       :{G=m}Caramelo
-STR_CARGO_SINGULAR_BATTERY                                      :{G=f}Bateria
+STR_CARGO_SINGULAR_BATTERY                                      :{G=f}Pilha
 STR_CARGO_SINGULAR_PLASTIC                                      :{G=m}Plástico
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=m}Refrigerante
 
@@ -4435,7 +4435,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK} Centrar
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Enviar comboio para o depósito. Ctrl+Clique para fazer apenas a manutenção
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Enviar o veículo para a garagem. Ctrl+Clique para fazer apenas a manutenção
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Enviar navio para o estaleiro. Ctrl+Clique para fazer apenas a manutenção
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Enviar o navio para o estaleiro. Ctrl+Clique para fazer apenas a manutenção
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Enviar a aeronave para o hangar. Ctrl+Clique para fazer apenas a manutenção
 
 ###length VEHICLE_TYPES
@@ -5529,7 +5529,7 @@ STR_INDUSTRY_NAME_FARM_2                                        :{G=f}Quinta
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=f}Serração
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=f}Floresta de Algodão Doce
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=f}Fábrica de Doces
-STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=m}Campo de Baterias
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=m}Campo de Pilhas
 STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=mp}Poços de Xarope de Cola
 STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=f}Loja de Brinquedos
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=f}Fábrica de Brinquedos
@@ -5636,7 +5636,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Vagão de Bolha
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Cisterna de Xarope de Cola
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Vagão de Doces
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Vagão de Brinquedos
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Vagão de Baterias
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Vagão de Pilhas
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Vagão de Refrigerantes
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Vagão de Plástico
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Elétrico)
@@ -5666,7 +5666,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Vagão de Bolha
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Cisterna de Xarope de Cola
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Vagão de Doces
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Vagão de Brinquedos
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Vagão de Baterias
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Vagão de Pilhas
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Vagão de Refrigerantes
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Vagão de Plástico
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (Elétrico)
@@ -5698,7 +5698,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Vagão de Bolha
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Cisterna de Xarope de Cola
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Vagão de Doces
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Vagão de Brinquedos
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Vagão de Baterias
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Vagão de Pilhas
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Vagão de Refrigerantes
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Vagão de Plástico
 
@@ -5779,9 +5779,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Camião de Brin
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :Camião de Doces MightyMover
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Camião de Doces Powernaught
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Camião de Doces Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :Camião de Baterias MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Camião de Baterias Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Camião de Baterias Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :Camião de Pilhas MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Camião de Pilhas Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Camião de Pilhas Wizzowow
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :Camião de Refrigerantes MightyMover
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Camião de Refrigerantes Powernaught
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Camião de Refrigerantes Wizzowow
