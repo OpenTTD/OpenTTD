@@ -35,7 +35,7 @@
 			case 0x43: return TimerGameCalendar::date.base();
 			case 0x44: return to_underlying(HouseZone::TownEdge);
 			case 0x45: {
-				auto rt = GetRailTypeInfoIndex(this->rti);
+				RailType rt = this->rti->Index();
 				uint8_t local = GetReverseRailTypeTranslation(rt, this->ro.grffile);
 				if (local == 0xFF) local = 0xFE;
 				return 0xFFFF | local << 16;
