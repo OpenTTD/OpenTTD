@@ -918,7 +918,7 @@ void TriggerStationAnimation(BaseStation *st, TileIndex trigger_tile, StationAni
 				if (IsValidCargoType(cargo_type)) {
 					var18_extra |= ss->grf_prop.grffile->cargo_map[cargo_type] << 8;
 				}
-				StationAnimationBase::ChangeAnimationFrame(CBID_STATION_ANIMATION_TRIGGER, ss, st, tile, (random_bits << 16) | GB(Random(), 0, 16), to_underlying(trigger) | var18_extra);
+				StationAnimationBase::ChangeAnimationFrame(CBID_STATION_ANIMATION_TRIGGER, ss, st, tile, (random_bits << 16) | GB(Random(), 0, 16), std::to_underlying(trigger) | var18_extra);
 			}
 		}
 	}

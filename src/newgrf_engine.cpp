@@ -1250,7 +1250,7 @@ int GetEngineProperty(EngineID engine, PropertyID property, int orig_value, cons
  */
 std::optional<bool> TestVehicleBuildProbability(Vehicle *v, EngineID engine, BuildProbabilityType type)
 {
-	uint16_t p = GetVehicleCallback(CBID_VEHICLE_BUILD_PROBABILITY, to_underlying(type), 0, engine, v);
+	uint16_t p = GetVehicleCallback(CBID_VEHICLE_BUILD_PROBABILITY, std::to_underlying(type), 0, engine, v);
 	if (p == CALLBACK_FAILED) return std::nullopt;
 
 	const uint16_t PROBABILITY_RANGE = 100;
