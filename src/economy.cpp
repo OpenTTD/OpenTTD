@@ -1760,7 +1760,18 @@ static void LoadUnloadVehicle(Vehicle *front)
 
 		/* if last speed is 0, we treat that as if no vehicle has ever visited the station. */
 		ge->last_speed = ClampTo<uint8_t>(t);
-		ge->last_age = ClampTo<uint8_t>(TimerGameCalendar::year - front->build_year);
+
+		/* Value vehicle age based on the chosen station rating model. */
+		if (_settings_game.difficulty.station_rating_mode == SRM_IMPROVED) {
+			/* Only penalise vehicles old enough to need replacement (vehicle age, not model age). */
+			static const uint8_t MAX_RATING_AGE = 3; ///< The vehicle is old, penalise the rating by the maximum amount.
+			static const uint8_t NO_AGE_PENALTY = 0; ///< The vehicle is within its lifespan, do not penalise the rating.
+			bool old = front->age > front->max_age;
+			ge->last_age = old ? MAX_RATING_AGE : NO_AGE_PENALTY;
+		} else {
+			/* The original model has a steep dropoff for brand-new vehicles, store the actual age. */
+			ge->last_age = ClampTo<uint8_t>(TimerGameCalendar::year - front->build_year);
+		}
 
 		assert(v->cargo_cap >= v->cargo.StoredCount());
 		/* Capacity available for loading more cargo. */
