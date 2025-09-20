@@ -1123,7 +1123,8 @@ static void NewVehicleAvailable(Engine *e)
 		AddNewsItem(GetEncodedString(STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE,
 				GetEngineCategoryName(index),
 				PackEngineNameDParam(index, EngineNameContext::PreviewNews)),
-			NewsType::NewVehicles, NewsStyle::Vehicle, {}, index);
+			NewsType::NewVehicles, NewsStyle::Vehicle, {}, index, {},
+			std::make_unique<EnginePreviewNewsInformation>(GetString(STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE, GetEngineCategoryName(index))));
 	}
 
 	/* Update the toolbar. */
