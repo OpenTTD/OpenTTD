@@ -1371,6 +1371,9 @@ STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Allow landscapi
 STR_CONFIG_SETTING_CATCHMENT                                    :Allow more realistically sized catchment areas: {STRING2}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Have differently sized catchment areas for different types of stations and airports
 
+STR_CONFIG_SETTING_BRIDGES_IGNORE_STATION_HEIGHT                :Bridges ignore station height restrictions
+STR_CONFIG_SETTING_BRIDGES_IGNORE_STATION_HEIGHT_HELPTEXT       :When enabled, bridges can be built over any station, regardless of its height
+
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Company stations can serve industries with attached neutral stations: {STRING2}
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :When enabled, industries with attached stations (such as Oil Rigs) may also be served by company-owned stations built nearby. When disabled, these industries may only be served by their attached stations. Any nearby company stations won't be able to serve them, nor will the attached station serve anything else other than the industry
 
