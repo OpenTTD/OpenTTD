@@ -91,6 +91,7 @@ enum class NewsFlag : uint8_t {
 	NoTransparency, ///< News item disables transparency in the viewport.
 	Shaded, ///< News item uses shaded colours.
 	VehicleParam0, ///< String param 0 contains a vehicle ID. (special autoreplace behaviour)
+	CustomHeadline, ///< Used in NewVehicles type for company that had preview of that engine.
 };
 using NewsFlags = EnumBitSet<NewsFlag, uint8_t>;
 

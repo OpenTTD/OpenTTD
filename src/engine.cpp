@@ -1080,6 +1080,7 @@ CommandCost CmdEngineCtrl(DoCommandFlags flags, EngineID engine_id, CompanyID co
 static void NewVehicleAvailable(Engine *e)
 {
 	EngineID index = e->index;
+	bool show_new_vehicle_available = !e->company_avail.Test(_local_company);
 
 	/* In case the company didn't build the vehicle during the intro period,
 	 * prevent that company from getting future intro periods for a while. */
@@ -1087,12 +1088,38 @@ static void NewVehicleAvailable(Engine *e)
 		for (Company *c : Company::Iterate()) {
 			if (!e->company_avail.Test(c->index)) continue;
 
+			CommandCost subtract_amount(EXPENSES_OTHER, static_cast<Money>(0));
+
 			/* Check the company's 'ALL_GROUP' group statistics. This only includes countable vehicles, which is fine
 			 * as those are the only engines that can be given exclusive previews. */
 			if (GetGroupNumEngines(c->index, ALL_GROUP, e->index) == 0) {
 				/* The company did not build this engine during preview. */
 				c->block_preview = 20;
+				/* Punish bigger companies more. */
+				Money fine = static_cast<Money>(pow((GetGroupNumVehicle(c->index, ALL_GROUP, e->type) + 7)/16.0, 2) * static_cast<double>(e->GetCost()));
+				subtract_amount.AddCost(fine);
+				if (_local_company == c->index) {
+					/* Inform players that they have failed to build this engine during preview. */
+					AddNewsItem(GetEncodedString(STR_NEWS_ENGINE_PREVIEW_FAILED,
+							PackEngineNameDParam(index, EngineNameContext::PreviewNews),
+							fine),
+						NewsType::NewVehicles, NewsStyle::Vehicle, {NewsFlag::CustomHeadline}, index);
+				}
+			} else {
+				/* Reward smaller companies more. */
+				Money reward = static_cast<Money>(sqrt(GetGroupNumEngines(c->index, ALL_GROUP, e->index)/4.0) * static_cast<double>(e->GetCost()));
+				subtract_amount.AddCost(-reward);
+				if (_local_company == c->index) {
+					/* Inform players that they have succeded to build this engine during preview. */
+					AddNewsItem(GetEncodedString(STR_NEWS_ENGINE_PREVIEW_SUCCESSFUL,
+							PackEngineNameDParam(index, EngineNameContext::PreviewNews),
+							reward),
+						NewsType::NewVehicles, NewsStyle::Vehicle, {NewsFlag::CustomHeadline}, index);
+				}
 			}
+			Backup<CompanyID> cur_company(_current_company, c->index);
+			SubtractMoneyFromCompany(subtract_amount);
+			cur_company.Restore();
 		}
 	}
 
@@ -1120,7 +1147,7 @@ static void NewVehicleAvailable(Engine *e)
 	if (!IsVehicleTypeDisabled(e->type, true)) AI::BroadcastNewEvent(new ScriptEventEngineAvailable(index));
 
 	/* Only provide the "New Vehicle available" news paper entry, if engine can be built. */
-	if (!IsVehicleTypeDisabled(e->type, false) && !e->info.extra_flags.Test(ExtraEngineFlag::NoNews)) {
+	if (!IsVehicleTypeDisabled(e->type, false) && !e->info.extra_flags.Test(ExtraEngineFlag::NoNews) && show_new_vehicle_available) {
 		AddNewsItem(GetEncodedString(STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE,
 				GetEngineCategoryName(index),
 				PackEngineNameDParam(index, EngineNameContext::PreviewNews)),
