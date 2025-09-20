@@ -98,6 +98,13 @@ enum PlaceHouses : uint8_t {
 	PH_ALLOWED_CONSTRUCTED,
 };
 
+/** Possible values for the "station_rating_mode" setting. */
+enum StationRatingMode : uint8_t {
+	SRM_ORIGINAL = 0,
+	SRM_IMPROVED,
+	SRM_PERFECT,
+};
+
 /** Settings related to the difficulty of the game */
 struct DifficultySettings {
 	uint8_t competitor_start_time;            ///< Unused value, used to load old savegames.
@@ -122,6 +129,7 @@ struct DifficultySettings {
 	bool   disasters;                        ///< are disasters enabled
 	uint8_t town_council_tolerance;           ///< minimum required town ratings to be allowed to demolish stuff
 	bool   infinite_money;                   ///< whether spending money despite negative balance is allowed
+	uint8_t station_rating_mode;                 ///< the mode of station rating calculation
 };
 
 /** Settings relating to viewport/smallmap scrolling. */

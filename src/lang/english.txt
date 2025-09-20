@@ -1374,6 +1374,13 @@ STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Have differentl
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Company stations can serve industries with attached neutral stations: {STRING2}
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :When enabled, industries with attached stations (such as Oil Rigs) may also be served by company-owned stations built nearby. When disabled, these industries may only be served by their attached stations. Any nearby company stations won't be able to serve them, nor will the attached station serve anything else other than the industry
 
+STR_CONFIG_SETTING_STATION_RATING_MODE                          :Station rating calculation: {STRING2}
+STR_CONFIG_SETTING_STATION_RATING_MODE_HELPTEXT                 :Select the model for station ratings. The "original" model penalises slow vehicles, old vehicles, infrequent pickups, cargo waiting at the station, and whether the company has built a statue in the town. The "improved" model does other stuff ... TODO: finish writing this :)
+###length 3
+STR_CONFIG_SETTING_STATION_RATING_MODE_ORIGINAL                 :Original
+STR_CONFIG_SETTING_STATION_RATING_MODE_IMPROVED                 :Improved
+STR_CONFIG_SETTING_STATION_RATING_MODE_PERFECT                  :Perfect
+
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Allow removal of more town-owned roads, bridges and tunnels: {STRING2}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Make it easier to remove town-owned infrastructure and buildings
 
