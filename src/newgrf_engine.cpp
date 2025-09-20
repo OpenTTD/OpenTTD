@@ -1138,7 +1138,7 @@ static void GetRotorOverrideSprite(EngineID engine, const struct Aircraft *v, En
 
 	/* Only valid for helicopters */
 	assert(e->type == VEH_AIRCRAFT);
-	assert(!(e->u.air.subtype & AIR_CTOL));
+	assert(!(e->VehInfo<AircraftVehicleInfo>().subtype & AIR_CTOL));
 
 	/* We differ from TTDPatch by resolving the sprite using the primary vehicle 'v', and not using the rotor vehicle 'v->Next()->Next()'.
 	 * TTDPatch copies some variables between the vehicles each time, to somehow synchronize the rotor vehicle with the primary vehicle.

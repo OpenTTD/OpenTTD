@@ -43,12 +43,12 @@ StringID GetEngineCategoryName(EngineID engine)
 	switch (e->type) {
 		default: NOT_REACHED();
 		case VEH_ROAD:
-			return GetRoadTypeInfo(e->u.road.roadtype)->strings.new_engine;
+			return GetRoadTypeInfo(e->VehInfo<RoadVehicleInfo>().roadtype)->strings.new_engine;
 		case VEH_AIRCRAFT:          return STR_ENGINE_PREVIEW_AIRCRAFT;
 		case VEH_SHIP:              return STR_ENGINE_PREVIEW_SHIP;
 		case VEH_TRAIN:
-			assert(e->u.rail.railtypes.Any());
-			return GetRailTypeInfo(e->u.rail.railtypes.GetNthSetBit(0).value())->strings.new_loco;
+			assert(e->VehInfo<RailVehicleInfo>().railtypes.Any());
+			return GetRailTypeInfo(e->VehInfo<RailVehicleInfo>().railtypes.GetNthSetBit(0).value())->strings.new_loco;
 	}
 }
 
@@ -182,12 +182,12 @@ static std::string GetTrainEngineInfoString(const Engine &e)
 	res << GetString(STR_ENGINE_PREVIEW_COST_WEIGHT, e.GetCost(), e.GetDisplayWeight());
 	res << '\n';
 
-	if (e.u.rail.railtypes.Count() > 1) {
+	if (e.VehInfo<RailVehicleInfo>().railtypes.Count() > 1) {
 		std::string railtypes{};
 		std::string_view list_separator = GetListSeparator();
 
 		for (const auto &rt : _sorted_railtypes) {
-			if (!e.u.rail.railtypes.Test(rt)) continue;
+			if (!e.VehInfo<RailVehicleInfo>().railtypes.Test(rt)) continue;
 
 			if (!railtypes.empty()) railtypes += list_separator;
 			AppendStringInPlace(railtypes, GetRailTypeInfo(rt)->strings.name);
@@ -197,7 +197,7 @@ static std::string GetTrainEngineInfoString(const Engine &e)
 	}
 
 	bool is_maglev = true;
-	for (RailType rt : e.u.rail.railtypes) {
+	for (RailType rt : e.VehInfo<RailVehicleInfo>().railtypes) {
 		is_maglev &= GetRailTypeInfo(rt)->acceleration_type == VehicleAccelerationModel::Maglev;
 	}
 

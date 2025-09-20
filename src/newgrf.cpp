@@ -272,7 +272,7 @@ Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t internal_id
 	}
 	if (type == VEH_TRAIN) {
 		_gted[e->index].railtypelabels.clear();
-		for (RailType rt : e->u.rail.railtypes) _gted[e->index].railtypelabels.push_back(GetRailTypeInfo(rt)->label);
+		for (RailType rt : e->VehInfo<RailVehicleInfo>().railtypes) _gted[e->index].railtypelabels.push_back(GetRailTypeInfo(rt)->label);
 	}
 
 	GrfMsg(5, "Created new engine at index {} for GRFID {:x}, type {}, index {}", e->index, std::byteswap(file->grfid), type, internal_id);
@@ -427,7 +427,7 @@ void ResetNewGRFData()
 	/* Fill rail type label temporary data for default trains */
 	for (const Engine *e : Engine::IterateType(VEH_TRAIN)) {
 		_gted[e->index].railtypelabels.clear();
-		for (RailType rt : e->u.rail.railtypes) _gted[e->index].railtypelabels.push_back(GetRailTypeInfo(rt)->label);
+		for (RailType rt : e->VehInfo<RailVehicleInfo>().railtypes) _gted[e->index].railtypelabels.push_back(GetRailTypeInfo(rt)->label);
 	}
 
 	/* Reset GRM reservations */
@@ -661,7 +661,7 @@ static void CalculateRefitMasks()
 		/* If the NewGRF did not set any cargo properties, we apply default values. */
 		if (_gted[engine].defaultcargo_grf == nullptr) {
 			/* If the vehicle has any capacity, apply the default refit masks */
-			if (e->type != VEH_TRAIN || e->u.rail.capacity != 0) {
+			if (e->type != VEH_TRAIN || e->VehInfo<RailVehicleInfo>().capacity != 0) {
 				static constexpr LandscapeType T = LandscapeType::Temperate;
 				static constexpr LandscapeType A = LandscapeType::Arctic;
 				static constexpr LandscapeType S = LandscapeType::Tropic;
@@ -716,8 +716,8 @@ static void CalculateRefitMasks()
 							}
 							break;
 					}
-					e->u.ship.old_refittable = true;
-				} else if (e->type == VEH_TRAIN && e->u.rail.railveh_type != RAILVEH_WAGON) {
+					e->VehInfo<ShipVehicleInfo>().old_refittable = true;
+				} else if (e->type == VEH_TRAIN && e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON) {
 					/* Train engines default to all cargoes, so you can build single-cargo consists with fast engines.
 					 * Trains loading multiple cargoes may start stations accepting unwanted cargoes. */
 					_gted[engine].cargo_allowed = {CargoClass::Passengers, CargoClass::Mail, CargoClass::Armoured, CargoClass::Express, CargoClass::Bulk, CargoClass::PieceGoods, CargoClass::Liquid};
@@ -792,7 +792,7 @@ static void CalculateRefitMasks()
 
 		/* Ensure that the vehicle is either not refittable, or that the default cargo is one of the refittable cargoes.
 		 * Note: Vehicles refittable to no cargo are handle differently to vehicle refittable to a single cargo. The latter might have subtypes. */
-		if (!only_defaultcargo && (e->type != VEH_SHIP || e->u.ship.old_refittable) && IsValidCargoType(ei->cargo_type) && !HasBit(ei->refit_mask, ei->cargo_type)) {
+		if (!only_defaultcargo && (e->type != VEH_SHIP || e->VehInfo<ShipVehicleInfo>().old_refittable) && IsValidCargoType(ei->cargo_type) && !HasBit(ei->refit_mask, ei->cargo_type)) {
 			ei->cargo_type = INVALID_CARGO;
 		}
 
@@ -819,7 +819,7 @@ static void CalculateRefitMasks()
 				ei->cargo_type = (CargoType)FindFirstBit(ei->refit_mask);
 			}
 		}
-		if (!IsValidCargoType(ei->cargo_type) && e->type == VEH_TRAIN && e->u.rail.railveh_type != RAILVEH_WAGON && e->u.rail.capacity == 0) {
+		if (!IsValidCargoType(ei->cargo_type) && e->type == VEH_TRAIN && e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON && e->VehInfo<RailVehicleInfo>().capacity == 0) {
 			/* For train engines which do not carry cargo it does not matter if their cargo type is invalid.
 			 * Fallback to the first available instead, if the cargo type has not been changed (as indicated by
 			 * cargo_label not being CT_INVALID). */
@@ -830,7 +830,7 @@ static void CalculateRefitMasks()
 		if (!IsValidCargoType(ei->cargo_type)) ei->climates = {};
 
 		/* Clear refit_mask for not refittable ships */
-		if (e->type == VEH_SHIP && !e->u.ship.old_refittable) {
+		if (e->type == VEH_SHIP && !e->VehInfo<ShipVehicleInfo>().old_refittable) {
 			ei->refit_mask = 0;
 		}
 	}
@@ -867,16 +867,16 @@ static void FinaliseEngineArray()
 
 		switch (e->type) {
 			case VEH_TRAIN:
-				for (RailType rt : e->u.rail.railtypes) {
+				for (RailType rt : e->VehInfo<RailVehicleInfo>().railtypes) {
 					AppendCopyableBadgeList(e->badges, GetRailTypeInfo(rt)->badges, GSF_TRAINS);
 				}
 				break;
-			case VEH_ROAD: AppendCopyableBadgeList(e->badges, GetRoadTypeInfo(e->u.road.roadtype)->badges, GSF_ROADVEHICLES); break;
+			case VEH_ROAD: AppendCopyableBadgeList(e->badges, GetRoadTypeInfo(e->VehInfo<RoadVehicleInfo>().roadtype)->badges, GSF_ROADVEHICLES); break;
 			default: break;
 		}
 
 		/* Skip wagons, there livery is defined via the engine */
-		if (e->type != VEH_TRAIN || e->u.rail.railveh_type != RAILVEH_WAGON) {
+		if (e->type != VEH_TRAIN || e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON) {
 			LiveryScheme ls = GetEngineLiveryScheme(e->index, EngineID::Invalid(), nullptr);
 			SetBit(_loaded_newgrf_features.used_liveries, ls);
 			/* Note: For ships and roadvehicles we assume that they cannot be refitted between passenger and freight */
@@ -1693,14 +1693,14 @@ static void AfterLoadGRFs()
 	for (Engine *e : Engine::IterateType(VEH_ROAD)) {
 		if (_gted[e->index].rv_max_speed != 0) {
 			/* Set RV maximum speed from the mph/0.8 unit value */
-			e->u.road.max_speed = _gted[e->index].rv_max_speed * 4;
+			e->VehInfo<RoadVehicleInfo>().max_speed = _gted[e->index].rv_max_speed * 4;
 		}
 
 		RoadTramType rtt = e->info.misc_flags.Test(EngineMiscFlag::RoadIsTram) ? RTT_TRAM : RTT_ROAD;
 
 		const GRFFile *file = e->GetGRF();
 		if (file == nullptr || _gted[e->index].roadtramtype == 0) {
-			e->u.road.roadtype = (rtt == RTT_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
+			e->VehInfo<RoadVehicleInfo>().roadtype = (rtt == RTT_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
 			continue;
 		}
 
@@ -1713,7 +1713,7 @@ static void AfterLoadGRFs()
 			RoadTypeLabel rtl = (*list)[_gted[e->index].roadtramtype];
 			RoadType rt = GetRoadTypeByLabel(rtl);
 			if (rt != INVALID_ROADTYPE && GetRoadTramType(rt) == rtt) {
-				e->u.road.roadtype = rt;
+				e->VehInfo<RoadVehicleInfo>().roadtype = rt;
 				continue;
 			}
 		}
@@ -1730,8 +1730,8 @@ static void AfterLoadGRFs()
 		}
 
 		if (railtypes.Any()) {
-			e->u.rail.railtypes = railtypes;
-			e->u.rail.intended_railtypes = railtypes;
+			e->VehInfo<RailVehicleInfo>().railtypes = railtypes;
+			e->VehInfo<RailVehicleInfo>().intended_railtypes = railtypes;
 		} else {
 			/* Rail type is not available, so disable this engine */
 			e->info.climates = {};

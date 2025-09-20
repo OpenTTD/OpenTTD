@@ -37,7 +37,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 		if (e == nullptr) return CIR_INVALID_ID; // No engine could be allocated, so neither can any next vehicles
 
 		EngineInfo *ei = &e->info;
-		ShipVehicleInfo *svi = &e->u.ship;
+		ShipVehicleInfo *svi = &e->VehInfo<ShipVehicleInfo>();
 
 		switch (prop) {
 			case 0x08: { // Sprite ID

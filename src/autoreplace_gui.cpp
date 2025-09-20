@@ -140,7 +140,7 @@ class ReplaceVehicleWindow : public Window {
 				case VEH_ROAD:
 					if (draw_left && this->sel_roadtype != INVALID_ROADTYPE) {
 						/* Ensure that the roadtype is specific to the selected one */
-						if (e->u.road.roadtype != this->sel_roadtype) continue;
+						if (e->VehInfo<RoadVehicleInfo>().roadtype != this->sel_roadtype) continue;
 					}
 					break;
 
