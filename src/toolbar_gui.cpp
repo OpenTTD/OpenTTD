@@ -2109,15 +2109,6 @@ struct MainToolbarWindow : Window {
 		}
 	}};
 
-	void OnTimeout() override
-	{
-		/* We do not want to automatically raise the pause, fast forward and
-		 * switchbar buttons; they have to stay down when pressed etc. */
-		for (WidgetID i = WID_TN_SETTINGS; i < WID_TN_SWITCH_BAR; i++) {
-			this->RaiseWidgetWhenLowered(i);
-		}
-	}
-
 	/**
 	 * Some data on this window has become invalid.
 	 * @param data Information about the changed data.
@@ -2176,43 +2167,43 @@ struct MainToolbarWindow : Window {
 static std::unique_ptr<NWidgetBase> MakeMainToolbar()
 {
 	/** Sprites to use for the different toolbar buttons */
-	static const SpriteID toolbar_button_sprites[] = {
-		SPR_IMG_PAUSE,           // WID_TN_PAUSE
-		SPR_IMG_FASTFORWARD,     // WID_TN_FAST_FORWARD
-		SPR_IMG_SETTINGS,        // WID_TN_SETTINGS
-		SPR_IMG_SAVE,            // WID_TN_SAVE
-		SPR_IMG_SMALLMAP,        // WID_TN_SMALL_MAP
-		SPR_IMG_TOWN,            // WID_TN_TOWNS
-		SPR_IMG_SUBSIDIES,       // WID_TN_SUBSIDIES
-		SPR_IMG_COMPANY_LIST,    // WID_TN_STATIONS
-		SPR_IMG_COMPANY_FINANCE, // WID_TN_FINANCES
-		SPR_IMG_COMPANY_GENERAL, // WID_TN_COMPANIES
-		SPR_IMG_STORY_BOOK,      // WID_TN_STORY
-		SPR_IMG_GOAL,            // WID_TN_GOAL
-		SPR_IMG_GRAPHS,          // WID_TN_GRAPHS
-		SPR_IMG_COMPANY_LEAGUE,  // WID_TN_LEAGUE
-		SPR_IMG_INDUSTRY,        // WID_TN_INDUSTRIES
-		SPR_IMG_TRAINLIST,       // WID_TN_TRAINS
-		SPR_IMG_TRUCKLIST,       // WID_TN_ROADVEHS
-		SPR_IMG_SHIPLIST,        // WID_TN_SHIPS
-		SPR_IMG_AIRPLANESLIST,   // WID_TN_AIRCRAFT
-		SPR_IMG_ZOOMIN,          // WID_TN_ZOOMIN
-		SPR_IMG_ZOOMOUT,         // WID_TN_ZOOMOUT
-		SPR_IMG_BUILDRAIL,       // WID_TN_RAILS
-		SPR_IMG_BUILDROAD,       // WID_TN_ROADS
-		SPR_IMG_BUILDTRAMS,      // WID_TN_TRAMS
-		SPR_IMG_BUILDWATER,      // WID_TN_WATER
-		SPR_IMG_BUILDAIR,        // WID_TN_AIR
-		SPR_IMG_LANDSCAPING,     // WID_TN_LANDSCAPE
-		SPR_IMG_MUSIC,           // WID_TN_MUSIC_SOUND
-		SPR_IMG_MESSAGES,        // WID_TN_MESSAGES
-		SPR_IMG_QUERY,           // WID_TN_HELP
-		SPR_IMG_SWITCH_TOOLBAR,  // WID_TN_SWITCH_BAR
+	static const std::tuple<WidgetID, WidgetType, SpriteID> toolbar_button_sprites[] = {
+		{WID_TN_PAUSE,        WWT_IMGBTN,     SPR_IMG_PAUSE},
+		{WID_TN_FAST_FORWARD, WWT_IMGBTN,     SPR_IMG_FASTFORWARD},
+		{WID_TN_SETTINGS,     WWT_IMGBTN,     SPR_IMG_SETTINGS},
+		{WID_TN_SAVE,         WWT_IMGBTN_2,   SPR_IMG_SAVE},
+		{WID_TN_SMALL_MAP,    WWT_IMGBTN,     SPR_IMG_SMALLMAP},
+		{WID_TN_TOWNS,        WWT_IMGBTN,     SPR_IMG_TOWN},
+		{WID_TN_SUBSIDIES,    WWT_IMGBTN,     SPR_IMG_SUBSIDIES},
+		{WID_TN_STATIONS,     WWT_IMGBTN,     SPR_IMG_COMPANY_LIST},
+		{WID_TN_FINANCES,     WWT_IMGBTN,     SPR_IMG_COMPANY_FINANCE},
+		{WID_TN_COMPANIES,    WWT_IMGBTN,     SPR_IMG_COMPANY_GENERAL},
+		{WID_TN_STORY,        WWT_IMGBTN,     SPR_IMG_STORY_BOOK},
+		{WID_TN_GOAL,         WWT_IMGBTN,     SPR_IMG_GOAL},
+		{WID_TN_GRAPHS,       WWT_IMGBTN,     SPR_IMG_GRAPHS},
+		{WID_TN_LEAGUE,       WWT_IMGBTN,     SPR_IMG_COMPANY_LEAGUE},
+		{WID_TN_INDUSTRIES,   WWT_IMGBTN,     SPR_IMG_INDUSTRY},
+		{WID_TN_TRAINS,       WWT_IMGBTN,     SPR_IMG_TRAINLIST},
+		{WID_TN_ROADVEHS,     WWT_IMGBTN,     SPR_IMG_TRUCKLIST},
+		{WID_TN_SHIPS,        WWT_IMGBTN,     SPR_IMG_SHIPLIST},
+		{WID_TN_AIRCRAFT,     WWT_IMGBTN,     SPR_IMG_AIRPLANESLIST},
+		{WID_TN_ZOOM_IN,      WWT_PUSHIMGBTN, SPR_IMG_ZOOMIN},
+		{WID_TN_ZOOM_OUT,     WWT_PUSHIMGBTN, SPR_IMG_ZOOMOUT},
+		{WID_TN_RAILS,        WWT_IMGBTN,     SPR_IMG_BUILDRAIL},
+		{WID_TN_ROADS,        WWT_IMGBTN,     SPR_IMG_BUILDROAD},
+		{WID_TN_TRAMS,        WWT_IMGBTN,     SPR_IMG_BUILDTRAMS},
+		{WID_TN_WATER,        WWT_IMGBTN,     SPR_IMG_BUILDWATER},
+		{WID_TN_AIR,          WWT_IMGBTN,     SPR_IMG_BUILDAIR},
+		{WID_TN_LANDSCAPE,    WWT_IMGBTN,     SPR_IMG_LANDSCAPING},
+		{WID_TN_MUSIC_SOUND,  WWT_IMGBTN,     SPR_IMG_MUSIC},
+		{WID_TN_MESSAGES,     WWT_IMGBTN,     SPR_IMG_MESSAGES},
+		{WID_TN_HELP,         WWT_IMGBTN,     SPR_IMG_QUERY},
+		{WID_TN_SWITCH_BAR,   WWT_IMGBTN,     SPR_IMG_SWITCH_TOOLBAR},
 	};
 
 	auto hor = std::make_unique<NWidgetMainToolbarContainer>();
-	for (WidgetID i = 0; i < WID_TN_END; i++) {
-		switch (i) {
+	for (const auto &[widget, tp, sprite] : toolbar_button_sprites) {
+		switch (widget) {
 			case WID_TN_SMALL_MAP:
 			case WID_TN_FINANCES:
 			case WID_TN_VEHICLE_START:
@@ -2222,7 +2213,7 @@ static std::unique_ptr<NWidgetBase> MakeMainToolbar()
 				hor->Add(std::make_unique<NWidgetSpacer>(0, 0));
 				break;
 		}
-		auto leaf = std::make_unique<NWidgetLeaf>(i == WID_TN_SAVE ? WWT_IMGBTN_2 : WWT_IMGBTN, COLOUR_GREY, i, WidgetData{.sprite = toolbar_button_sprites[i]}, STR_TOOLBAR_TOOLTIP_PAUSE_GAME + i);
+		auto leaf = std::make_unique<NWidgetLeaf>(tp, COLOUR_GREY, widget, WidgetData{.sprite = sprite}, STR_TOOLBAR_TOOLTIP_PAUSE_GAME + widget);
 		leaf->SetMinimalSize(20, 20);
 		hor->Add(std::move(leaf));
 	}
