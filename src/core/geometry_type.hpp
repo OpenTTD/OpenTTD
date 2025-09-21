@@ -261,8 +261,8 @@ struct Rect {
 	[[nodiscard]] inline Rect CentreTo(int width, int height) const
 	{
 		int new_left = CentreBounds(this->left, this->right, width);
-		int new_right = CentreBounds(this->top, this->bottom, height);
-		return {new_left, new_right, new_left + width, new_right + height};
+		int new_top = CentreBounds(this->top, this->bottom, height);
+		return {new_left, new_top, new_left + width - 1, new_top + height - 1};
 	}
 };
 
