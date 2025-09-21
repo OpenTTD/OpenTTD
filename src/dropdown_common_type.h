@@ -41,8 +41,8 @@ public:
 		PixelColour c2 = GetColourGradient(bg_colour, SHADE_LIGHTEST);
 
 		int mid = CentreBounds(full.top, full.bottom, 0);
-		GfxFillRect(full.left, mid - WidgetDimensions::scaled.bevel.bottom, full.right, mid - 1, c1);
-		GfxFillRect(full.left, mid, full.right, mid + WidgetDimensions::scaled.bevel.top - 1, c2);
+		GfxFillRect(full.WithY(mid - WidgetDimensions::scaled.bevel.bottom, mid - 1), c1);
+		GfxFillRect(full.WithY(mid, mid + WidgetDimensions::scaled.bevel.top - 1), c2);
 	}
 };
 
