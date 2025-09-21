@@ -510,8 +510,9 @@ static inline void DrawVerticalScrollbar(const Rect &r, Colours colour, bool up_
 	PixelColour c2 = GetColourGradient(colour, SHADE_LIGHTEST);
 
 	/* draw "shaded" background */
-	GfxFillRect(r.left, r.top + height, r.right, r.bottom - height, c2);
-	GfxFillRect(r.left, r.top + height, r.right, r.bottom - height, c1, FILLRECT_CHECKER);
+	Rect bg = r.Shrink(0, height);
+	GfxFillRect(bg, c2);
+	GfxFillRect(bg, c1, FILLRECT_CHECKER);
 
 	/* track positions. These fractions are based on original 1x dimensions, but scale better. */
 	int left  = r.left + r.Width() * 3 / 11; /*  left track is positioned 3/11ths from the left */
@@ -520,10 +521,10 @@ static inline void DrawVerticalScrollbar(const Rect &r, Colours colour, bool up_
 	const uint8_t br = WidgetDimensions::scaled.bevel.right;
 
 	/* draw shaded lines */
-	GfxFillRect(left - bl,  r.top + height, left       - 1, r.bottom - height, c1);
-	GfxFillRect(left,       r.top + height, left + br  - 1, r.bottom - height, c2);
-	GfxFillRect(right - bl, r.top + height, right      - 1, r.bottom - height, c1);
-	GfxFillRect(right,      r.top + height, right + br - 1, r.bottom - height, c2);
+	GfxFillRect(bg.WithX(left - bl,  left       - 1), c1);
+	GfxFillRect(bg.WithX(left,       left + br  - 1), c2);
+	GfxFillRect(bg.WithX(right - bl, right      - 1), c1);
+	GfxFillRect(bg.WithX(right,      right + br - 1), c2);
 
 	auto [top, bottom] = HandleScrollbarHittest(scrollbar, r.top, r.bottom, false);
 	DrawFrameRect(r.left, top, r.right, bottom, colour, bar_dragged ? FrameFlag::Lowered : FrameFlags{});
@@ -549,8 +550,9 @@ static inline void DrawHorizontalScrollbar(const Rect &r, Colours colour, bool l
 	PixelColour c2 = GetColourGradient(colour, SHADE_LIGHTEST);
 
 	/* draw "shaded" background */
-	GfxFillRect(r.left + width, r.top, r.right - width, r.bottom, c2);
-	GfxFillRect(r.left + width, r.top, r.right - width, r.bottom, c1, FILLRECT_CHECKER);
+	Rect bg = r.Shrink(width, 0);
+	GfxFillRect(bg, c2);
+	GfxFillRect(bg, c1, FILLRECT_CHECKER);
 
 	/* track positions. These fractions are based on original 1x dimensions, but scale better. */
 	int top    = r.top + r.Height() * 3 / 11; /*    top track is positioned 3/11ths from the top */
@@ -559,10 +561,10 @@ static inline void DrawHorizontalScrollbar(const Rect &r, Colours colour, bool l
 	const uint8_t bb = WidgetDimensions::scaled.bevel.bottom;
 
 	/* draw shaded lines */
-	GfxFillRect(r.left + width, top - bt,    r.right - width, top         - 1, c1);
-	GfxFillRect(r.left + width, top,         r.right - width, top + bb    - 1, c2);
-	GfxFillRect(r.left + width, bottom - bt, r.right - width, bottom      - 1, c1);
-	GfxFillRect(r.left + width, bottom,      r.right - width, bottom + bb - 1, c2);
+	GfxFillRect(bg.WithY(top - bt,    top         - 1), c1);
+	GfxFillRect(bg.WithY(top,         top + bb    - 1), c2);
+	GfxFillRect(bg.WithY(bottom - bt, bottom      - 1), c1);
+	GfxFillRect(bg.WithY(bottom,      bottom + bb - 1), c2);
 
 	/* draw actual scrollbar */
 	auto [left, right] = HandleScrollbarHittest(scrollbar, r.left, r.right, true);
