@@ -344,7 +344,7 @@ static bool RoadToolbar_CtrlChanged(Window *w)
 /** Road toolbar window handler. */
 struct BuildRoadToolbarWindow : Window {
 	RoadType roadtype = INVALID_ROADTYPE; ///< Road type to build.
-	int last_started_action = INVALID_WID_ROT; ///< Last started user action.
+	WidgetID last_started_action = INVALID_WIDGET; ///< Last started user action.
 
 	BuildRoadToolbarWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc), roadtype(_cur_roadtype)
 	{

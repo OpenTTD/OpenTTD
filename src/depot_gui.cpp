@@ -260,7 +260,7 @@ struct DepotWindow : Window {
 	VehicleType type = VEH_INVALID;
 	bool generate_list = true;
 	bool check_unitnumber_digits = true;
-	WidgetID hovered_widget = -1; ///< Index of the widget being hovered during drag/drop. -1 if no drag is in progress.
+	WidgetID hovered_widget = INVALID_WIDGET; ///< Index of the widget being hovered during drag/drop. \c INVALID_WIDGET if no drag is in progress.
 	VehicleList vehicle_list{};
 	VehicleList wagon_list{};
 	uint unitnumber_digits = 2;
@@ -1001,10 +1001,10 @@ struct DepotWindow : Window {
 		this->vehicle_over = VehicleID::Invalid();
 		this->SetWidgetDirty(WID_D_MATRIX);
 
-		if (this->hovered_widget != -1) {
+		if (this->hovered_widget != INVALID_WIDGET) {
 			this->SetWidgetLoweredState(this->hovered_widget, false);
 			this->SetWidgetDirty(this->hovered_widget);
-			this->hovered_widget = -1;
+			this->hovered_widget = INVALID_WIDGET;
 		}
 	}
 
@@ -1116,7 +1116,7 @@ struct DepotWindow : Window {
 				this->SetDirty();
 				break;
 		}
-		this->hovered_widget = -1;
+		this->hovered_widget = INVALID_WIDGET;
 		_cursor.vehchain = false;
 	}
 

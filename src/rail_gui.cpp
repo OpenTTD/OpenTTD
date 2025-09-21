@@ -438,7 +438,7 @@ static void HandleAutoSignalPlacement()
 /** Rail toolbar management class. */
 struct BuildRailToolbarWindow : Window {
 	RailType railtype = INVALID_RAILTYPE; ///< Rail type to build.
-	int last_user_action = INVALID_WID_RAT; ///< Last started user action.
+	WidgetID last_user_action = INVALID_WIDGET; ///< Last started user action.
 
 	BuildRailToolbarWindow(WindowDesc &desc, RailType railtype) : Window(desc), railtype(railtype)
 	{
