@@ -561,20 +561,22 @@ const RoadStopSpec *GetRoadStopSpec(TileIndex t)
 
 /**
  * Allocate a RoadStopSpec to a Station. This is called once per build operation.
- * @param statspec RoadStopSpec to allocate.
+ * @param spec RoadStopSpec to allocate.
  * @param st Station to allocate it to.
- * @param exec Whether to actually allocate the spec.
  * @return Index within the Station's road stop spec list, or std::nullopt if the allocation failed.
  */
-std::optional<uint8_t> AllocateSpecToRoadStop(const RoadStopSpec *statspec, BaseStation *st, bool exec)
+std::optional<uint8_t> AllocateSpecToRoadStop(const RoadStopSpec *spec, BaseStation *st)
 {
 	uint i;
 
-	if (statspec == nullptr || st == nullptr) return 0;
+	if (spec == nullptr) return 0;
+
+	/* If station doesn't exist yet then the first slot is available. */
+	if (st == nullptr) return 1;
 
 	/* Try to find the same spec and return that one */
 	for (i = 1; i < st->roadstop_speclist.size() && i < NUM_ROADSTOPSPECS_PER_STATION; i++) {
-		if (st->roadstop_speclist[i].spec == statspec) return i;
+		if (st->roadstop_speclist[i].spec == spec) return i;
 	}
 
 	/* Try to find an unused spec slot */
@@ -587,16 +589,25 @@ std::optional<uint8_t> AllocateSpecToRoadStop(const RoadStopSpec *statspec, Base
 		return std::nullopt;
 	}
 
-	if (exec) {
-		if (i >= st->roadstop_speclist.size()) st->roadstop_speclist.resize(i + 1);
-		st->roadstop_speclist[i].spec     = statspec;
-		st->roadstop_speclist[i].grfid    = statspec->grf_prop.grfid;
-		st->roadstop_speclist[i].localidx = statspec->grf_prop.local_id;
-
-		RoadStopUpdateCachedTriggers(st);
-	}
-
 	return i;
+}
+
+/**
+ * Assign a previously allocated RoadStopSpec specindex to a Station.
+ * @param spec RoadStopSpec to assign..
+ * @param st Station to allocate it to.
+ * @param specindex Spec index of allocation.
+ */
+void AssignSpecToRoadStop(const RoadStopSpec *spec, BaseStation *st, uint8_t specindex)
+{
+	if (specindex == 0) return;
+	if (specindex >= st->roadstop_speclist.size()) st->roadstop_speclist.resize(specindex + 1);
+
+	st->roadstop_speclist[specindex].spec = spec;
+	st->roadstop_speclist[specindex].grfid = spec->grf_prop.grfid;
+	st->roadstop_speclist[specindex].localidx = spec->grf_prop.local_id;
+
+	RoadStopUpdateCachedTriggers(st);
 }
 
 /**

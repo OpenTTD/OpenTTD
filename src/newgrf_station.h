@@ -215,7 +215,8 @@ SpriteID GetCustomStationFoundationRelocation(const StationSpec *statspec, BaseS
 uint16_t GetStationCallback(CallbackID callback, uint32_t param1, uint32_t param2, const StationSpec *statspec, BaseStation *st, TileIndex tile, std::span<int32_t> regs100 = {});
 CommandCost PerformStationTileSlopeCheck(TileIndex north_tile, TileIndex cur_tile, const StationSpec *statspec, Axis axis, uint8_t plat_len, uint8_t numtracks);
 
-std::optional<uint8_t> AllocateSpecToStation(const StationSpec *statspec, BaseStation *st, bool exec);
+std::optional<uint8_t> AllocateSpecToStation(const StationSpec *spec, BaseStation *st);
+void AssignSpecToStation(const StationSpec *spec, BaseStation *st, uint8_t specindex);
 void DeallocateSpecFromStation(BaseStation *st, uint8_t specindex);
 bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID sclass, uint station);
 
