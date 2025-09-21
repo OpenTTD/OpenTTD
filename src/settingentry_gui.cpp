@@ -94,22 +94,22 @@ uint BaseSettingEntry::Draw(GameSettings *settings_ptr, int left, int right, int
 	if (cur_row >= max_row) return cur_row;
 
 	bool rtl = _current_text_dir == TD_RTL;
-	int offset = (rtl ? -(int)_setting_circle_size.width : (int)_setting_circle_size.width) / 2;
+	int offset = (rtl ? -static_cast<int>(BaseSettingEntry::circle_size.width) : static_cast<int>(BaseSettingEntry::circle_size.width)) / 2;
 	int level_width = rtl ? -WidgetDimensions::scaled.hsep_indent : WidgetDimensions::scaled.hsep_indent;
 
 	int x = rtl ? right : left;
 	if (cur_row >= first_row) {
 		PixelColour colour = GetColourGradient(COLOUR_ORANGE, SHADE_NORMAL);
-		y += (cur_row - first_row) * SETTING_HEIGHT; // Compute correct y start position
+		y += (cur_row - first_row) * BaseSettingEntry::line_height; // Compute correct y start position
 
 		/* Draw vertical for parent nesting levels */
 		for (uint lvl = 0; lvl < this->level; lvl++) {
-			if (!HasBit(parent_last, lvl)) GfxDrawLine(x + offset, y, x + offset, y + SETTING_HEIGHT - 1, colour);
+			if (!HasBit(parent_last, lvl)) GfxDrawLine(x + offset, y, x + offset, y + BaseSettingEntry::line_height - 1, colour);
 			x += level_width;
 		}
 		/* draw own |- prefix */
-		int halfway_y = y + SETTING_HEIGHT / 2;
-		int bottom_y = flags.Test(SettingEntryFlag::LastField) ? halfway_y : y + SETTING_HEIGHT - 1;
+		int halfway_y = y + BaseSettingEntry::line_height / 2;
+		int bottom_y = flags.Test(SettingEntryFlag::LastField) ? halfway_y : y + BaseSettingEntry::line_height - 1;
 		GfxDrawLine(x + offset, y, x + offset, bottom_y, colour);
 		/* Small horizontal line from the last vertical line */
 		GfxDrawLine(x + offset, halfway_y, x + level_width - (rtl ? -WidgetDimensions::scaled.hsep_normal : WidgetDimensions::scaled.hsep_normal), halfway_y, colour);
@@ -274,7 +274,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 	uint buttons_left = rtl ? right + 1 - SETTING_BUTTON_WIDTH : left;
 	uint text_left  = left + (rtl ? 0 : SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide);
 	uint text_right = right - (rtl ? SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide : 0);
-	uint button_y = y + (SETTING_HEIGHT - SETTING_BUTTON_HEIGHT) / 2;
+	uint button_y = y + (BaseSettingEntry::line_height - SETTING_BUTTON_HEIGHT) / 2;
 
 	/* We do not allow changes of some items when we are a client in a networkgame */
 	bool editable = sd->IsEditable();
@@ -293,7 +293,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 				editable && value != (sd->flags.Test(SettingFlag::GuiZeroIsSpecial) ? 0 : min_val), editable && static_cast<uint32_t>(value) != max_val);
 	}
 	auto [param1, param2] = sd->GetValueParams(value);
-	DrawString(text_left, text_right, y + (SETTING_HEIGHT - GetCharacterHeight(FS_NORMAL)) / 2, GetString(sd->GetTitle(), STR_CONFIG_SETTING_VALUE, param1, param2), highlight ? TC_WHITE : TC_LIGHT_BLUE);
+	DrawString(text_left, text_right, y + (BaseSettingEntry::line_height - GetCharacterHeight(FS_NORMAL)) / 2, GetString(sd->GetTitle(), STR_CONFIG_SETTING_VALUE, param1, param2), highlight ? TC_WHITE : TC_LIGHT_BLUE);
 }
 
 /* == SettingsContainer methods == */
@@ -611,8 +611,8 @@ uint SettingsPage::Draw(GameSettings *settings_ptr, int left, int right, int y, 
 void SettingsPage::DrawSetting(GameSettings *, int left, int right, int y, bool) const
 {
 	bool rtl = _current_text_dir == TD_RTL;
-	DrawSprite((this->folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED), PAL_NONE, rtl ? right - _setting_circle_size.width : left, y + (SETTING_HEIGHT - _setting_circle_size.height) / 2);
-	DrawString(rtl ? left : left + _setting_circle_size.width + WidgetDimensions::scaled.hsep_normal, rtl ? right - _setting_circle_size.width - WidgetDimensions::scaled.hsep_normal : right, y + (SETTING_HEIGHT - GetCharacterHeight(FS_NORMAL)) / 2, this->title, TC_ORANGE);
+	DrawSprite((this->folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED), PAL_NONE, rtl ? right - BaseSettingEntry::circle_size.width : left, y + (BaseSettingEntry::line_height - BaseSettingEntry::circle_size.height) / 2);
+	DrawString(rtl ? left : left + BaseSettingEntry::circle_size.width + WidgetDimensions::scaled.hsep_normal, rtl ? right - BaseSettingEntry::circle_size.width - WidgetDimensions::scaled.hsep_normal : right, y + (BaseSettingEntry::line_height - GetCharacterHeight(FS_NORMAL)) / 2, this->title, TC_ORANGE);
 }
 
 /** Construct settings tree */
