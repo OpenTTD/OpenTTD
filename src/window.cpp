@@ -594,6 +594,9 @@ EventState Window::OnHotkey(int hotkey)
  */
 void Window::HandleButtonClick(WidgetID widget)
 {
+	/* Button click for this widget may already have been handled. */
+	if (this->IsWidgetLowered(widget) && this->timeout_timer == TIMEOUT_DURATION) return;
+
 	this->LowerWidget(widget);
 	this->SetTimeout();
 	this->SetWidgetDirty(widget);
