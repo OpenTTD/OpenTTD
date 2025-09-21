@@ -98,7 +98,7 @@ static TileIndex GetOtherAqueductEnd(TileIndex tile_from, TileIndex *tile_to = n
 
 /** Toolbar window for constructing water infrastructure. */
 struct BuildDocksToolbarWindow : Window {
-	DockToolbarWidgets last_clicked_widget = WID_DT_INVALID; ///< Contains the last widget that has been clicked on this toolbar.
+	WidgetID last_clicked_widget = INVALID_WIDGET; ///< Contains the last widget that has been clicked on this toolbar.
 
 	BuildDocksToolbarWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
@@ -189,7 +189,7 @@ struct BuildDocksToolbarWindow : Window {
 
 			default: return;
 		}
-		this->last_clicked_widget = (DockToolbarWidgets)widget;
+		this->last_clicked_widget = widget;
 	}
 
 	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override

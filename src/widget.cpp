@@ -269,12 +269,12 @@ void ScrollbarClickHandler(Window *w, NWidgetCore *nw, int x, int y)
  * @param *w Window to look inside
  * @param  x The Window client X coordinate
  * @param  y The Window client y coordinate
- * @return A widget index, or -1 if no widget was found.
+ * @return A widget index, or \c INVALID_WIDGET if no widget was found.
  */
 WidgetID GetWidgetFromPos(const Window *w, int x, int y)
 {
 	NWidgetCore *nw = w->nested_root->GetWidgetFromPos(x, y);
-	return (nw != nullptr) ? nw->GetIndex() : -1;
+	return (nw != nullptr) ? nw->GetIndex() : INVALID_WIDGET;
 }
 
 /**
@@ -1885,7 +1885,7 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, int x, int y, uint g
  * @param width  Horizontal size of the spacer widget.
  * @param height Vertical size of the spacer widget.
  */
-NWidgetSpacer::NWidgetSpacer(int width, int height) : NWidgetResizeBase(NWID_SPACER, -1, 0, 0)
+NWidgetSpacer::NWidgetSpacer(int width, int height) : NWidgetResizeBase(NWID_SPACER, INVALID_WIDGET, 0, 0)
 {
 	this->SetMinimalSize(width, height);
 	this->SetResize(0, 0);
@@ -3408,7 +3408,7 @@ std::unique_ptr<NWidgetBase> MakeWindowNWidgetTree(std::span<const NWidgetPart> 
 
 	if (hor_cont != nullptr && hor_cont->GetWidgetOfType(WWT_CAPTION) != nullptr && hor_cont->GetWidgetOfType(WWT_SHADEBOX) != nullptr) {
 		/* If the first widget has a title bar and a shade box, silently add a shade selection widget in the tree. */
-		auto shade_stack = std::make_unique<NWidgetStacked>(-1);
+		auto shade_stack = std::make_unique<NWidgetStacked>(INVALID_WIDGET);
 		*shade_select = shade_stack.get();
 		/* Load the remaining parts into the shade stack. */
 		shade_stack->Add(MakeNWidgets({nwid_begin, nwid_end}, std::make_unique<NWidgetVertical>()));

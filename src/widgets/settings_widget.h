@@ -85,7 +85,7 @@ enum GameOptionsWidgets : WidgetID {
 	WID_GO_RESTRICT_DROPDOWN,  ///< The drop down box to restrict the list of settings
 	WID_GO_TYPE_DROPDOWN,      ///< The drop down box to choose client/game/company/all settings
 
-	WID_GO_SETTING_DROPDOWN = -1, ///< Dynamically created dropdown for changing setting value.
+	WID_GO_SETTING_DROPDOWN = INVALID_WIDGET, ///< Dynamically created dropdown for changing setting value.
 };
 
 /** Widgets of the #CustomCurrencyWindow class. */

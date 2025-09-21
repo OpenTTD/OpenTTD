@@ -22,8 +22,6 @@ enum TerraformToolbarWidgets : WidgetID {
 	WID_TT_PLANT_TREES,                       ///< Plant trees button (note: opens separate window, no place-push-button).
 	WID_TT_PLACE_SIGN,                        ///< Place sign button.
 	WID_TT_PLACE_OBJECT,                      ///< Place object button.
-
-	INVALID_WID_TT = -1,
 };
 
 /** Widgets of the #ScenarioEditorLandscapeGenerationWindow class. */
@@ -44,8 +42,6 @@ enum EditorTerraformToolbarWidgets : WidgetID {
 	WID_ETT_DECREASE_SIZE,                       ///< Downwards arrow button to decrease terraforming size.
 	WID_ETT_NEW_SCENARIO,                        ///< Button for generating a new scenario.
 	WID_ETT_RESET_LANDSCAPE,                     ///< Button for removing all company-owned property.
-
-	INVALID_WID_ETT = -1,
 };
 
 #endif /* WIDGETS_TERRAFORM_WIDGET_H */

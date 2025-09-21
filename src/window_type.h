@@ -19,6 +19,9 @@
  */
 using WidgetID = int;
 
+/** An invalid widget index. */
+static constexpr WidgetID INVALID_WIDGET = -1;
+
 /** %Window numbers. */
 enum WindowNumberEnum : uint8_t {
 	WN_GAME_OPTIONS_AI = 0,          ///< AI settings.

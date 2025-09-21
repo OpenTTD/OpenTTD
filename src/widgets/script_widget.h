@@ -28,7 +28,7 @@ enum ScriptSettingsWidgets : WidgetID {
 	WID_SCRS_SCROLLBAR,  ///< Scrollbar to scroll through all settings.
 	WID_SCRS_RESET,      ///< Reset button.
 
-	WID_SCRS_SETTING_DROPDOWN = -1, ///< Dynamically created dropdown for changing setting value.
+	WID_SCRS_SETTING_DROPDOWN = INVALID_WIDGET, ///< Dynamically created dropdown for changing setting value.
 };
 
 /** Widgets of the #ScriptDebugWindow class. */
