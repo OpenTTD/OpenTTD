@@ -139,57 +139,48 @@ static inline Point GetAlignedPosition(const Rect &r, const Dimension &d, String
 
 /**
  * Compute the vertical position of the draggable part of scrollbar
- * @param sb     Scrollbar list data
- * @param top    Top position of the scrollbar (top position of the up-button)
- * @param bottom Bottom position of the scrollbar (bottom position of the down-button)
+ * @param sb Scrollbar list data
+ * @param mi Minimum coordinate of the scroll bar.
+ * @param ma Maximum coordinate of the scroll bar.
  * @param horizontal Whether the scrollbar is horizontal or not
- * @return A Point, with x containing the top coordinate of the draggable part, and
- *                       y containing the bottom coordinate of the draggable part
+ * @return A pair, with first containing the minimum coordinate of the draggable part, and
+ *                      second containing the maximum coordinate of the draggable part
  */
-static Point HandleScrollbarHittest(const Scrollbar *sb, int top, int bottom, bool horizontal)
+static std::pair<int, int> HandleScrollbarHittest(const Scrollbar *sb, int mi, int ma, bool horizontal)
 {
 	/* Base for reversion */
-	int rev_base = top + bottom;
-	int button_size;
-	if (horizontal) {
-		button_size = NWidgetScrollbar::GetHorizontalDimension().width;
-	} else {
-		button_size = NWidgetScrollbar::GetVerticalDimension().height;
-	}
-	top += button_size;    // top points to just below the up-button
-	bottom -= button_size; // bottom points to just before the down-button
+	int rev_base = mi + ma;
+	int button_size = horizontal ? NWidgetScrollbar::GetHorizontalDimension().width : NWidgetScrollbar::GetVerticalDimension().height;
+
+	mi += button_size; // now points to just after the up/left-button
+	ma -= button_size; // now points to just before the down/right-button
 
 	int count = sb->GetCount();
 	int cap = sb->GetCapacity();
 
 	if (count > cap) {
-		int height = bottom + 1 - top;
+		int height = ma + 1 - mi;
 		int slider_height = std::max(button_size, cap * height / count);
 		height -= slider_height;
 
-		top += height * sb->GetPosition() / (count - cap);
-		bottom = top + slider_height - 1;
+		mi += height * sb->GetPosition() / (count - cap);
+		ma = mi + slider_height - 1;
 	}
 
-	Point pt;
-	if (horizontal && _current_text_dir == TD_RTL) {
-		pt.x = rev_base - bottom;
-		pt.y = rev_base - top;
-	} else {
-		pt.x = top;
-		pt.y = bottom;
-	}
-	return pt;
+	/* Reverse coordinates for RTL. */
+	if (horizontal && _current_text_dir == TD_RTL) return {rev_base - ma, rev_base - mi};
+
+	return {mi, ma};
 }
 
 /**
  * Compute new position of the scrollbar after a click and updates the window flags.
- * @param w   Window on which a scroll was performed.
- * @param sb  Scrollbar
- * @param mi  Minimum coordinate of the scroll bar.
- * @param ma  Maximum coordinate of the scroll bar.
- * @param x   The X coordinate of the mouse click.
- * @param y   The Y coordinate of the mouse click.
+ * @param w Window on which a scroll was performed.
+ * @param sb Scrollbar
+ * @param x The X coordinate of the mouse click.
+ * @param y The Y coordinate of the mouse click.
+ * @param mi Minimum coordinate of the scroll bar.
+ * @param ma Maximum coordinate of the scroll bar.
  */
 static void ScrollbarClickPositioning(Window *w, NWidgetScrollbar *sb, int x, int y, int mi, int ma)
 {
@@ -224,15 +215,15 @@ static void ScrollbarClickPositioning(Window *w, NWidgetScrollbar *sb, int x, in
 		}
 		w->mouse_capture_widget = sb->GetIndex();
 	} else {
-		Point pt = HandleScrollbarHittest(sb, mi, ma, sb->type == NWID_HSCROLLBAR);
+		auto [start, end] = HandleScrollbarHittest(sb, mi, ma, sb->type == NWID_HSCROLLBAR);
 
-		if (pos < pt.x) {
+		if (pos < start) {
 			changed = sb->UpdatePosition(rtl ? 1 : -1, Scrollbar::SS_BIG);
-		} else if (pos > pt.y) {
+		} else if (pos > end) {
 			changed = sb->UpdatePosition(rtl ? -1 : 1, Scrollbar::SS_BIG);
 		} else {
-			_scrollbar_start_pos = pt.x - mi - button_size;
-			_scrollbar_size = ma - mi - button_size * 2 - (pt.y - pt.x);
+			_scrollbar_start_pos = start - mi - button_size;
+			_scrollbar_size = ma - mi - button_size * 2 - (end - start);
 			w->mouse_capture_widget = sb->GetIndex();
 			_cursorpos_drag_start = _cursor.pos;
 		}
@@ -534,8 +525,8 @@ static inline void DrawVerticalScrollbar(const Rect &r, Colours colour, bool up_
 	GfxFillRect(right - bl, r.top + height, right      - 1, r.bottom - height, c1);
 	GfxFillRect(right,      r.top + height, right + br - 1, r.bottom - height, c2);
 
-	Point pt = HandleScrollbarHittest(scrollbar, r.top, r.bottom, false);
-	DrawFrameRect(r.left, pt.x, r.right, pt.y, colour, bar_dragged ? FrameFlag::Lowered : FrameFlags{});
+	auto [top, bottom] = HandleScrollbarHittest(scrollbar, r.top, r.bottom, false);
+	DrawFrameRect(r.left, top, r.right, bottom, colour, bar_dragged ? FrameFlag::Lowered : FrameFlags{});
 }
 
 /**
@@ -574,8 +565,8 @@ static inline void DrawHorizontalScrollbar(const Rect &r, Colours colour, bool l
 	GfxFillRect(r.left + width, bottom,      r.right - width, bottom + bb - 1, c2);
 
 	/* draw actual scrollbar */
-	Point pt = HandleScrollbarHittest(scrollbar, r.left, r.right, true);
-	DrawFrameRect(pt.x, r.top, pt.y, r.bottom, colour, bar_dragged ? FrameFlag::Lowered : FrameFlags{});
+	auto [left, right] = HandleScrollbarHittest(scrollbar, r.left, r.right, true);
+	DrawFrameRect(left, r.top, right, r.bottom, colour, bar_dragged ? FrameFlag::Lowered : FrameFlags{});
 }
 
 /**
