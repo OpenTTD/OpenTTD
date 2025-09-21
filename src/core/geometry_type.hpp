@@ -211,8 +211,8 @@ struct Rect {
 	[[nodiscard]] inline Rect WithWidth(int width, bool end) const
 	{
 		return end
-			? Rect {this->right - width + 1, this->top, this->right,            this->bottom}
-			: Rect {this->left,              this->top, this->left + width - 1, this->bottom};
+			? this->WithX(this->right - width + 1, this->right)
+			: this->WithX(this->left, this->left + width - 1);
 	}
 
 	/**
@@ -224,21 +224,21 @@ struct Rect {
 	[[nodiscard]] inline Rect Indent(int indent, bool end) const
 	{
 		return end
-			? Rect {this->left,          this->top, this->right - indent, this->bottom}
-			: Rect {this->left + indent, this->top, this->right,          this->bottom};
+			? this->WithX(this->left, this->right - indent)
+			: this->WithX(this->left + indent, this->right);
 	}
 
 	/**
 	 * Copy Rect and set its height.
-	 * @param width height in pixels for new Rect.
+	 * @param height height in pixels for new Rect.
 	 * @param end   if set, set height at end of Rect, i.e. at bottom.
 	 * @return the new resized Rect.
 	 */
 	[[nodiscard]] inline Rect WithHeight(int height, bool end = false) const
 	{
 		return end
-			? Rect {this->left, this->bottom - height + 1, this->right, this->bottom}
-			: Rect {this->left, this->top,                 this->right, this->top + height - 1};
+			? this->WithY(this->bottom - height + 1, this->bottom)
+			: this->WithY(this->top, this->top + height - 1);
 	}
 
 	/**
@@ -264,6 +264,36 @@ struct Rect {
 		int new_top = CentreBounds(this->top, this->bottom, height);
 		return {new_left, new_top, new_left + width - 1, new_top + height - 1};
 	}
+
+	/**
+	 * Create a new Rect, replacing the left and right coordiates.
+	 * @param new_left New left coordinate.
+	 * @param new_right New right coordinate.
+	 * @return The new Rect.
+	 */
+	[[nodiscard]] inline Rect WithX(int new_left, int new_right) const { return {new_left, this->top, new_right, this->bottom}; }
+
+	/**
+	 * Create a new Rect, replacing the top and bottom coordiates.
+	 * @param new_top New top coordinate.
+	 * @param new_bottom New bottom coordinate.
+	 * @return The new Rect.
+	 */
+	[[nodiscard]] inline Rect WithY(int new_top, int new_bottom) const { return {this->left, new_top, this->right, new_bottom}; }
+
+	/**
+	 * Create a new Rect, replacing the left and right coordiates.
+	 * @param other Rect containing the new left and right coordinates.
+	 * @return The new Rect.
+	 */
+	[[nodiscard]] inline Rect WithX(const Rect &other) const { return this->WithX(other.left, other.right); }
+
+	/**
+	 * Create a new Rect, replacing the top and bottom coordiates.
+	 * @param other Rect containing the new top and bottom coordinates.
+	 * @return The new Rect.
+	 */
+	[[nodiscard]] inline Rect WithY(const Rect &other) const { return this->WithY(other.top, other.bottom); }
 };
 
 /**
