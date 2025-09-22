@@ -17,6 +17,15 @@ enum BuildDockDepotWidgets : WidgetID {
 	WID_BDD_Y,          ///< Y-direction button.
 };
 
+/** Widgets of the #BuildDocksStationWindow window. */
+enum BuildDocksStationWidgets : WidgetID {
+	WID_BDSW_BACKGROUND, ///< Background panel.
+	WID_BDSW_LT_OFF,     ///< 'Off' button of coverage high light.
+	WID_BDSW_LT_ON,      ///< 'On' button of coverage high light.
+	WID_BDSW_INFO,       ///< 'Coverage highlight' label.
+	WID_BDSW_ACCEPTANCE, ///< Acceptance info.
+};
+
 /** Widgets of the #BuildDocksToolbarWindow class. */
 enum DockToolbarWidgets : WidgetID {
 	WID_DT_CANAL,          ///< Build canal button.

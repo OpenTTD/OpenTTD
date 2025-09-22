@@ -412,21 +412,12 @@ Window *ShowBuildDocksScenToolbar()
 	return AllocateWindowDescFront<BuildDocksToolbarWindow>(_build_docks_scen_toolbar_desc, TRANSPORT_WATER);
 }
 
-/** Widget numbers of the build-dock GUI. */
-enum BuildDockStationWidgets {
-	BDSW_BACKGROUND, ///< Background panel.
-	BDSW_LT_OFF,     ///< 'Off' button of coverage high light.
-	BDSW_LT_ON,      ///< 'On' button of coverage high light.
-	BDSW_INFO,       ///< 'Coverage highlight' label.
-	BDSW_ACCEPTANCE, ///< Acceptance info.
-};
-
 struct BuildDocksStationWindow : public PickerWindowBase {
 public:
 	BuildDocksStationWindow(WindowDesc &desc, Window *parent) : PickerWindowBase(desc, parent)
 	{
 		this->InitNested(TRANSPORT_WATER);
-		this->LowerWidget(_settings_client.gui.station_show_coverage + BDSW_LT_OFF);
+		this->LowerWidget(_settings_client.gui.station_show_coverage + WID_BDSW_LT_OFF);
 	}
 
 	void Close([[maybe_unused]] int data = 0) override
@@ -448,7 +439,7 @@ public:
 		}
 
 		/* strings such as 'Size' and 'Coverage Area' */
-		Rect r = this->GetWidget<NWidgetBase>(BDSW_ACCEPTANCE)->GetCurrentRect();
+		Rect r = this->GetWidget<NWidgetBase>(WID_BDSW_ACCEPTANCE)->GetCurrentRect();
 		const int bottom = r.bottom;
 		r.bottom = INT_MAX; // Allow overflow as we want to know the required height.
 		r.top = DrawStationCoverageAreaText(r, SCT_ALL, rad, false) + WidgetDimensions::scaled.vsep_normal;
@@ -464,11 +455,11 @@ public:
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
-			case BDSW_LT_OFF:
-			case BDSW_LT_ON:
-				this->RaiseWidget(_settings_client.gui.station_show_coverage + BDSW_LT_OFF);
-				_settings_client.gui.station_show_coverage = (widget != BDSW_LT_OFF);
-				this->LowerWidget(_settings_client.gui.station_show_coverage + BDSW_LT_OFF);
+			case WID_BDSW_LT_OFF:
+			case WID_BDSW_LT_ON:
+				this->RaiseWidget(_settings_client.gui.station_show_coverage + WID_BDSW_LT_OFF);
+				_settings_client.gui.station_show_coverage = (widget != WID_BDSW_LT_OFF);
+				this->LowerWidget(_settings_client.gui.station_show_coverage + WID_BDSW_LT_OFF);
 				SndClickBeep();
 				this->SetDirty();
 				SetViewportCatchmentStation(nullptr, true);
@@ -492,16 +483,16 @@ static constexpr NWidgetPart _nested_build_dock_station_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetStringTip(STR_STATION_BUILD_DOCK_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BDSW_BACKGROUND),
+	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_BDSW_BACKGROUND),
 		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0), SetPadding(WidgetDimensions::unscaled.picker),
 			NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_picker, 0),
-				NWidget(WWT_LABEL, INVALID_COLOUR, BDSW_INFO), SetStringTip(STR_STATION_BUILD_COVERAGE_AREA_TITLE), SetFill(1, 0),
+				NWidget(WWT_LABEL, INVALID_COLOUR, WID_BDSW_INFO), SetStringTip(STR_STATION_BUILD_COVERAGE_AREA_TITLE), SetFill(1, 0),
 				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize), SetPIP(14, 0, 14),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, BDSW_LT_OFF), SetMinimalSize(60, 12), SetFill(1, 0), SetStringTip(STR_STATION_BUILD_COVERAGE_OFF, STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, BDSW_LT_ON), SetMinimalSize(60, 12), SetFill(1, 0), SetStringTip(STR_STATION_BUILD_COVERAGE_ON, STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BDSW_LT_OFF), SetMinimalSize(60, 12), SetFill(1, 0), SetStringTip(STR_STATION_BUILD_COVERAGE_OFF, STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BDSW_LT_ON), SetMinimalSize(60, 12), SetFill(1, 0), SetStringTip(STR_STATION_BUILD_COVERAGE_ON, STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP),
 				EndContainer(),
 			EndContainer(),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, BDSW_ACCEPTANCE), SetResize(0, 1), SetMinimalTextLines(2, WidgetDimensions::unscaled.vsep_normal),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_BDSW_ACCEPTANCE), SetResize(0, 1), SetMinimalTextLines(2, WidgetDimensions::unscaled.vsep_normal),
 		EndContainer(),
 	EndContainer(),
 };
