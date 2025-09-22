@@ -146,7 +146,7 @@ void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
 
 	for (Train *u = this; u != nullptr; u = u->Next()) {
 		const Engine *e_u = u->GetEngine();
-		const RailVehicleInfo *rvi_u = &e_u->u.rail;
+		const RailVehicleInfo *rvi_u = &e_u->VehInfo<RailVehicleInfo>();
 
 		if (!e_u->info.misc_flags.Test(EngineMiscFlag::RailTilts)) train_can_tilt = false;
 		min_curve_speed_mod = std::min(min_curve_speed_mod, u->GetCurveSpeedModifier());
@@ -441,7 +441,7 @@ int Train::GetCursorImageOffset() const
 		int reference_width = TRAININFO_DEFAULT_VEHICLE_WIDTH;
 
 		const Engine *e = this->GetEngine();
-		if (e->GetGRF() != nullptr && IsCustomVehicleSpriteNum(e->u.rail.image_index)) {
+		if (e->GetGRF() != nullptr && IsCustomVehicleSpriteNum(e->VehInfo<RailVehicleInfo>().image_index)) {
 			reference_width = e->GetGRF()->traininfo_vehicle_width;
 		}
 
@@ -461,7 +461,7 @@ int Train::GetDisplayImageWidth(Point *offset) const
 	int vehicle_pitch = 0;
 
 	const Engine *e = this->GetEngine();
-	if (e->GetGRF() != nullptr && IsCustomVehicleSpriteNum(e->u.rail.image_index)) {
+	if (e->GetGRF() != nullptr && IsCustomVehicleSpriteNum(e->VehInfo<RailVehicleInfo>().image_index)) {
 		reference_width = e->GetGRF()->traininfo_vehicle_width;
 		vehicle_pitch = e->GetGRF()->traininfo_vehicle_pitch;
 	}
@@ -515,7 +515,7 @@ static void GetRailIcon(EngineID engine, bool rear_head, int &y, EngineImageType
 {
 	const Engine *e = Engine::Get(engine);
 	Direction dir = rear_head ? DIR_E : DIR_W;
-	uint8_t spritenum = e->u.rail.image_index;
+	uint8_t spritenum = e->VehInfo<RailVehicleInfo>().image_index;
 
 	if (IsCustomVehicleSpriteNum(spritenum)) {
 		GetCustomVehicleIcon(engine, dir, image_type, result);
@@ -636,7 +636,7 @@ static std::vector<VehicleID> GetFreeWagonsInDepot(TileIndex tile)
  */
 static CommandCost CmdBuildRailWagon(DoCommandFlags flags, TileIndex tile, const Engine *e, Vehicle **ret)
 {
-	const RailVehicleInfo *rvi = &e->u.rail;
+	const RailVehicleInfo *rvi = &e->VehInfo<RailVehicleInfo>();
 
 	/* Check that the wagon can drive on the track in question */
 	if (!IsCompatibleRail(rvi->railtypes, GetRailType(tile))) return CMD_ERROR;
@@ -770,7 +770,7 @@ static void AddRearEngineToMultiheadedTrain(Train *v)
  */
 CommandCost CmdBuildRailVehicle(DoCommandFlags flags, TileIndex tile, const Engine *e, Vehicle **ret)
 {
-	const RailVehicleInfo *rvi = &e->u.rail;
+	const RailVehicleInfo *rvi = &e->VehInfo<RailVehicleInfo>();
 
 	if (rvi->railveh_type == RAILVEH_WAGON) return CmdBuildRailWagon(flags, tile, e, ret);
 
@@ -4074,15 +4074,15 @@ Money Train::GetRunningCost() const
 
 	do {
 		const Engine *e = v->GetEngine();
-		if (e->u.rail.running_cost_class == INVALID_PRICE) continue;
+		if (e->VehInfo<RailVehicleInfo>().running_cost_class == INVALID_PRICE) continue;
 
-		uint cost_factor = GetVehicleProperty(v, PROP_TRAIN_RUNNING_COST_FACTOR, e->u.rail.running_cost);
+		uint cost_factor = GetVehicleProperty(v, PROP_TRAIN_RUNNING_COST_FACTOR, e->VehInfo<RailVehicleInfo>().running_cost);
 		if (cost_factor == 0) continue;
 
 		/* Halve running cost for multiheaded parts */
 		if (v->IsMultiheaded()) cost_factor /= 2;
 
-		cost += GetPrice(e->u.rail.running_cost_class, cost_factor, e->GetGRF());
+		cost += GetPrice(e->VehInfo<RailVehicleInfo>().running_cost_class, cost_factor, e->GetGRF());
 	} while ((v = v->GetNextVehicle()) != nullptr);
 
 	return cost;

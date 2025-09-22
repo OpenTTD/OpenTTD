@@ -35,7 +35,8 @@ using EngineDisplayFlags = EnumBitSet<EngineDisplayFlag, uint8_t>;
 typedef Pool<Engine, EngineID, 64> EnginePool;
 extern EnginePool _engine_pool;
 
-struct Engine : EnginePool::PoolItem<&_engine_pool> {
+class Engine : public EnginePool::PoolItem<&_engine_pool> {
+public:
 	CompanyMask company_avail{}; ///< Bit for each company whether the engine is available for that company.
 	CompanyMask company_hidden{}; ///< Bit for each company whether the engine is normally hidden in the build gui for that company.
 	CompanyMask preview_asked{}; ///< Bit for each company which has already been offered a preview.
@@ -64,13 +65,6 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	EngineID display_last_variant = EngineID::Invalid(); ///< NOSAVE client-side-only last variant selected.
 	EngineInfo info{};
 
-	union {
-		RailVehicleInfo rail;
-		RoadVehicleInfo road;
-		ShipVehicleInfo ship;
-		AircraftVehicleInfo air;
-	} u{};
-
 	uint16_t list_position = 0;
 
 	/* NewGRF related data */
@@ -78,6 +72,11 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	std::vector<WagonOverride> overrides{};
 	std::vector<BadgeID> badges{};
 
+private:
+	/* Vehicle-type specific information. */
+	std::variant<std::monostate, RailVehicleInfo, RoadVehicleInfo, ShipVehicleInfo, AircraftVehicleInfo> vehicle_info{};
+
+public:
 	Engine() {}
 	Engine(VehicleType type, uint16_t local_id);
 	bool IsEnabled() const;
@@ -177,6 +176,18 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 		bool operator() (size_t index) { return Engine::Get(index)->type == this->vt; }
 	};
 
+	template <typename T>
+	inline T &VehInfo()
+	{
+		return std::get<T>(this->vehicle_info);
+	}
+
+	template <typename T>
+	inline const T &VehInfo() const
+	{
+		return std::get<T>(this->vehicle_info);
+	}
+
 	/**
 	 * Returns an iterable ensemble of all valid engines of the given type
 	 * @param vt the VehicleType for engines to be valid
@@ -234,22 +245,22 @@ inline const EngineInfo *EngInfo(EngineID e)
 
 inline const RailVehicleInfo *RailVehInfo(EngineID e)
 {
-	return &Engine::Get(e)->u.rail;
+	return &Engine::Get(e)->VehInfo<RailVehicleInfo>();
 }
 
 inline const RoadVehicleInfo *RoadVehInfo(EngineID e)
 {
-	return &Engine::Get(e)->u.road;
+	return &Engine::Get(e)->VehInfo<RoadVehicleInfo>();
 }
 
 inline const ShipVehicleInfo *ShipVehInfo(EngineID e)
 {
-	return &Engine::Get(e)->u.ship;
+	return &Engine::Get(e)->VehInfo<ShipVehicleInfo>();
 }
 
 inline const AircraftVehicleInfo *AircraftVehInfo(EngineID e)
 {
-	return &Engine::Get(e)->u.air;
+	return &Engine::Get(e)->VehInfo<AircraftVehicleInfo>();
 }
 
 #endif /* ENGINE_BASE_H */

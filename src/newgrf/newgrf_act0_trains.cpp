@@ -35,7 +35,7 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 		if (e == nullptr) return CIR_INVALID_ID; // No engine could be allocated, so neither can any next vehicles
 
 		EngineInfo *ei = &e->info;
-		RailVehicleInfo *rvi = &e->u.rail;
+		RailVehicleInfo *rvi = &e->VehInfo<RailVehicleInfo>();
 
 		switch (prop) {
 			case 0x05: { // Track type

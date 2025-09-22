@@ -204,7 +204,7 @@ RoadTypes GetCompanyRoadTypes(CompanyID company, bool introduces)
 
 		if (ei->climates.Test(_settings_game.game_creation.landscape) &&
 				(e->company_avail.Test(company) || TimerGameCalendar::date >= e->intro_date + CalendarTime::DAYS_IN_YEAR)) {
-			const RoadVehicleInfo *rvi = &e->u.road;
+			const RoadVehicleInfo *rvi = &e->VehInfo<RoadVehicleInfo>();
 			assert(rvi->roadtype < ROADTYPE_END);
 			if (introduces) {
 				rts.Set(GetRoadTypeInfo(rvi->roadtype)->introduces_roadtypes);
@@ -231,7 +231,7 @@ RoadTypes GetRoadTypes(bool introduces)
 		const EngineInfo *ei = &e->info;
 		if (!ei->climates.Test(_settings_game.game_creation.landscape)) continue;
 
-		const RoadVehicleInfo *rvi = &e->u.road;
+		const RoadVehicleInfo *rvi = &e->VehInfo<RoadVehicleInfo>();
 		assert(rvi->roadtype < ROADTYPE_END);
 		if (introduces) {
 			rts.Set(GetRoadTypeInfo(rvi->roadtype)->introduces_roadtypes);
