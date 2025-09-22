@@ -453,7 +453,7 @@ public:
 			tr.top += GetCharacterHeight(FS_NORMAL);
 		}
 
-		if (HasBit(this->town->flags, TOWN_IS_GROWING)) {
+		if (this->town->flags.Test(TownFlag::IsGrowing)) {
 			DrawString(tr, GetString(this->town->fund_buildings_months == 0 ? STR_TOWN_VIEW_TOWN_GROWS_EVERY : STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED, RoundDivSU(this->town->growth_rate + 1, Ticks::DAY_TICKS)));
 			tr.top += GetCharacterHeight(FS_NORMAL);
 		} else {
