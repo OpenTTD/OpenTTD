@@ -476,12 +476,12 @@ public:
 	{
 		switch (widget) {
 			case WID_NG_MATRIX:
-				fill.height = resize.height = std::max(GetSpriteSize(SPR_BLOT).height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
+				fill.height = resize.height = std::max<uint>(this->blot.height, GetCharacterHeight(FS_NORMAL)) + padding.height;
 				size.height = 12 * resize.height;
 				break;
 
 			case WID_NG_LASTJOINED:
-				size.height = std::max(GetSpriteSize(SPR_BLOT).height, (uint)GetCharacterHeight(FS_NORMAL)) + WidgetDimensions::scaled.matrix.Vertical();
+				size.height = std::max<uint>(this->blot.height, GetCharacterHeight(FS_NORMAL)) + WidgetDimensions::scaled.matrix.Vertical();
 				break;
 
 			case WID_NG_LASTJOINED_SPACER:
