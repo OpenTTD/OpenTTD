@@ -866,7 +866,7 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlags flags)
 
 		/* Check if you are allowed to remove the tunnel owned by a town
 		 * Removal depends on difficulty settings */
-		ret = CheckforTownRating(flags, t, TUNNELBRIDGE_REMOVE);
+		ret = CheckforTownRating(flags, t, TownRatingCheckType::TunnelBridgeRemove);
 		if (ret.Failed()) return ret;
 	}
 
@@ -947,7 +947,7 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlags flags)
 
 		/* Check if you are allowed to remove the bridge owned by a town
 		 * Removal depends on difficulty settings */
-		ret = CheckforTownRating(flags, t, TUNNELBRIDGE_REMOVE);
+		ret = CheckforTownRating(flags, t, TownRatingCheckType::TunnelBridgeRemove);
 		if (ret.Failed()) return ret;
 	}
 
