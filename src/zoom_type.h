@@ -12,8 +12,12 @@
 
 #include "core/enum_type.hpp"
 
-/** All zoom levels we know. */
-enum class ZoomLevel : uint8_t {
+/**
+ * All zoom levels we know.
+ *
+ * The underlying type is signed so subtract-and-Clamp works without need for casting.
+ */
+enum class ZoomLevel : int8_t {
 	/* Our possible zoom-levels */
 	Begin = 0, ///< Begin for iteration.
 	Min = Begin, ///< Minimum zoom level.
