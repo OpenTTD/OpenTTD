@@ -25,7 +25,7 @@
 /** Unique identification number of an engine. */
 using EngineID = PoolID<uint16_t, struct EngineIDTag, 64000, 0xFFFF>;
 
-struct Engine;
+class Engine;
 
 /** Available types of rail vehicles. */
 enum RailVehicleTypes : uint8_t {
@@ -50,10 +50,30 @@ enum class VehicleAccelerationModel : uint8_t {
 	Maglev,   ///< Maglev acceleration model.
 };
 
+/** Meaning of the various bits of the visual effect. */
+enum VisualEffect : uint8_t {
+	VE_OFFSET_START        = 0, ///< First bit that contains the offset (0 = front, 8 = centre, 15 = rear)
+	VE_OFFSET_COUNT        = 4, ///< Number of bits used for the offset
+	VE_OFFSET_CENTRE       = 8, ///< Value of offset corresponding to a position above the centre of the vehicle
+
+	VE_TYPE_START          = 4, ///< First bit used for the type of effect
+	VE_TYPE_COUNT          = 2, ///< Number of bits used for the effect type
+	VE_TYPE_DEFAULT        = 0, ///< Use default from engine class
+	VE_TYPE_STEAM          = 1, ///< Steam plumes
+	VE_TYPE_DIESEL         = 2, ///< Diesel fumes
+	VE_TYPE_ELECTRIC       = 3, ///< Electric sparks
+
+	VE_DISABLE_EFFECT      = 6, ///< Flag to disable visual effect
+	VE_ADVANCED_EFFECT     = VE_DISABLE_EFFECT, ///< Flag for advanced effects
+	VE_DISABLE_WAGON_POWER = 7, ///< Flag to disable wagon power
+
+	VE_DEFAULT = 0xFF,          ///< Default value to indicate that visual effect should be based on engine class
+};
+
 /** Information about a rail vehicle. */
 struct RailVehicleInfo {
 	uint8_t image_index = 0;
-	RailVehicleTypes railveh_type{};
+	RailVehicleTypes railveh_type = RAILVEH_WAGON;
 	uint8_t cost_factor = 0; ///< Purchase cost factor;      For multiheaded engines the sum of both engine prices.
 	RailTypes railtypes{}; ///< Railtypes, mangled if elrail is disabled.
 	RailTypes intended_railtypes{}; ///< Intended railtypes, regardless of elrail being enabled or disabled.
@@ -67,7 +87,7 @@ struct RailVehicleInfo {
 	uint8_t capacity = 0; ///< Cargo capacity of vehicle; For multiheaded engines the capacity of each single engine.
 	uint16_t pow_wag_power = 0; ///< Extra power applied to consist if wagon should be powered
 	uint8_t pow_wag_weight = 0; ///< Extra weight applied to consist if wagon should be powered
-	uint8_t visual_effect = 0; ///< Bitstuffed NewGRF visual effect data
+	uint8_t visual_effect = VE_DEFAULT; ///< Bitstuffed NewGRF visual effect data
 	uint8_t shorten_factor = 0; ///< length on main map for this type is 8 - shorten_factor
 	uint8_t tractive_effort = 0; ///< Tractive effort coefficient
 	uint8_t air_drag = 0; ///< Coefficient of air drag
@@ -80,12 +100,12 @@ struct ShipVehicleInfo {
 	uint8_t image_index = 0;
 	uint8_t cost_factor = 0;
 	uint8_t running_cost = 0;
-	uint8_t acceleration = 0; ///< Acceleration (1 unit = 1/3.2 mph per tick = 0.5 km-ish/h per tick)
+	uint8_t acceleration = 1; ///< Acceleration (1 unit = 1/3.2 mph per tick = 0.5 km-ish/h per tick)
 	uint16_t max_speed = 0; ///< Maximum speed (1 unit = 1/3.2 mph = 0.5 km-ish/h)
 	uint16_t capacity = 0;
 	SoundID sfx{};
 	bool old_refittable = 0; ///< Is ship refittable; only used during initialisation. Later use EngineInfo::refit_mask.
-	uint8_t visual_effect = 0; ///< Bitstuffed NewGRF visual effect data
+	uint8_t visual_effect = VE_DEFAULT; ///< Bitstuffed NewGRF visual effect data
 	uint8_t ocean_speed_frac = 0; ///< Fraction of maximum speed for ocean tiles.
 	uint8_t canal_speed_frac = 0; ///< Fraction of maximum speed for canal/river tiles.
 
@@ -133,9 +153,9 @@ struct RoadVehicleInfo {
 	uint8_t capacity = 0;
 	uint8_t weight = 0; ///< Weight in 1/4t units
 	uint8_t power = 0; ///< Power in 10hp units
-	uint8_t tractive_effort = 0; ///< Coefficient of tractive effort
+	uint8_t tractive_effort = 0x4C; ///< Coefficient of tractive effort
 	uint8_t air_drag = 0; ///< Coefficient of air drag
-	uint8_t visual_effect = 0; ///< Bitstuffed NewGRF visual effect data
+	uint8_t visual_effect = VE_DEFAULT; ///< Bitstuffed NewGRF visual effect data
 	uint8_t shorten_factor = 0; ///< length on main map for this type is 8 - shorten_factor
 	RoadType roadtype{}; ///< Road type
 };

@@ -64,26 +64,6 @@ struct NewGRFCache {
 	auto operator<=>(const NewGRFCache &) const = default;
 };
 
-/** Meaning of the various bits of the visual effect. */
-enum VisualEffect : uint8_t {
-	VE_OFFSET_START        = 0, ///< First bit that contains the offset (0 = front, 8 = centre, 15 = rear)
-	VE_OFFSET_COUNT        = 4, ///< Number of bits used for the offset
-	VE_OFFSET_CENTRE       = 8, ///< Value of offset corresponding to a position above the centre of the vehicle
-
-	VE_TYPE_START          = 4, ///< First bit used for the type of effect
-	VE_TYPE_COUNT          = 2, ///< Number of bits used for the effect type
-	VE_TYPE_DEFAULT        = 0, ///< Use default from engine class
-	VE_TYPE_STEAM          = 1, ///< Steam plumes
-	VE_TYPE_DIESEL         = 2, ///< Diesel fumes
-	VE_TYPE_ELECTRIC       = 3, ///< Electric sparks
-
-	VE_DISABLE_EFFECT      = 6, ///< Flag to disable visual effect
-	VE_ADVANCED_EFFECT     = VE_DISABLE_EFFECT, ///< Flag for advanced effects
-	VE_DISABLE_WAGON_POWER = 7, ///< Flag to disable wagon power
-
-	VE_DEFAULT = 0xFF,          ///< Default value to indicate that visual effect should be based on engine class
-};
-
 /** Models for spawning visual effects. */
 enum VisualEffectSpawnModel : uint8_t {
 	VESM_NONE              = 0, ///< No visual effect

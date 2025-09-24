@@ -582,7 +582,7 @@ void UpdateDisableElrailSettingState(bool disable, bool update_vehicles)
 {
 	/* walk through all train engines */
 	for (Engine *e : Engine::IterateType(VEH_TRAIN)) {
-		RailVehicleInfo *rv_info = &e->u.rail;
+		RailVehicleInfo *rv_info = &e->VehInfo<RailVehicleInfo>();
 		/* update railtype of engines intended to use elrail */
 		if (rv_info->intended_railtypes.Test(RAILTYPE_ELECTRIC)) {
 			rv_info->railtypes.Set(RAILTYPE_ELECTRIC, !disable);
