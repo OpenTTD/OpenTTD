@@ -927,7 +927,7 @@ static CompanyID GetPreviewCompany(Engine *e)
 			/* Check whether the company uses similar vehicles */
 			for (const Vehicle *v : Vehicle::Iterate()) {
 				if (v->owner != c->index || v->type != e->type) continue;
-				if (!v->GetEngine()->CanCarryCargo() || !HasBit(cargomask, v->cargo_type)) continue;
+				if (!v->GetEngine()->CanCarryCargo() || !cargomask.Test(v->cargo_type)) continue;
 
 				best_hist = c->old_economy[0].performance_history;
 				best_company = c->index;
@@ -1295,7 +1295,7 @@ bool IsEngineRefittable(EngineID engine)
 	if (!e->CanCarryCargo()) return false;
 
 	const EngineInfo *ei = &e->info;
-	if (ei->refit_mask == 0) return false;
+	if (ei->refit_mask.None()) return false;
 
 	/* Are there suffixes?
 	 * Note: This does not mean the suffixes are actually available for every consist at any time. */
@@ -1303,9 +1303,7 @@ bool IsEngineRefittable(EngineID engine)
 
 	/* Is there any cargo except the default cargo? */
 	CargoType default_cargo = e->GetDefaultCargoType();
-	CargoTypes default_cargo_mask = 0;
-	SetBit(default_cargo_mask, default_cargo);
-	return IsValidCargoType(default_cargo) && ei->refit_mask != default_cargo_mask;
+	return IsValidCargoType(default_cargo) && ei->refit_mask != default_cargo;
 }
 
 /**

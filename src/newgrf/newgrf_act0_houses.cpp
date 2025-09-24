@@ -305,7 +305,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 				uint8_t count = buf.ReadByte();
 				for (uint8_t j = 0; j < count; j++) {
 					CargoType cargo = GetCargoTranslation(buf.ReadByte(), _cur_gps.grffile);
-					if (IsValidCargoType(cargo)) SetBit(housespec->watched_cargoes, cargo);
+					if (IsValidCargoType(cargo)) housespec->watched_cargoes.Set(cargo);
 				}
 				break;
 			}

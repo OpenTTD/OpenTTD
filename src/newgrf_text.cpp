@@ -1,3 +1,4 @@
+
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -864,7 +865,7 @@ static void ProcessNewGRFStringControlCode(char32_t scc, StringConsumer &consume
 
 		case SCC_NEWGRF_PRINT_WORD_CARGO_NAME: {
 			CargoType cargo = GetCargoTranslation(stack.PopUnsignedWord(), stack.grffile);
-			params.emplace_back(cargo < NUM_CARGO ? 1ULL << cargo : 0);
+			params.emplace_back(cargo < NUM_CARGO ? CargoTypes{cargo}.base() : CargoTypes{}.base());
 			break;
 		}
 	}

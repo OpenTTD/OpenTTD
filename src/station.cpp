@@ -100,7 +100,7 @@ Station::~Station()
 		if (a->targetairport == this->index) a->targetairport = StationID::Invalid();
 	}
 
-	for (CargoType cargo = 0; cargo < NUM_CARGO; ++cargo) {
+	for (CargoType cargo{}; cargo < NUM_CARGO; ++cargo) {
 		LinkGraph *lg = LinkGraph::GetIfValid(this->goods[cargo].link_graph);
 		if (lg == nullptr) continue;
 

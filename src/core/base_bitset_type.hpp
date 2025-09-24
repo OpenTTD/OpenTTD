@@ -109,6 +109,16 @@ public:
 	}
 
 	/**
+	 * Flip all bits.
+	 * @returns The bit set
+	 */
+	inline constexpr Timpl &Flip()
+	{
+		this->data ^= Tmask;
+		return static_cast<Timpl&>(*this);
+	}
+
+	/**
 	 * Flip the value-th bit.
 	 * @param value Bit to flip.
 	 * @returns The bit set

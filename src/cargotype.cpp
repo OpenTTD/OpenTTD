@@ -21,7 +21,7 @@
 
 #include "safeguards.h"
 
-CargoSpec CargoSpec::array[NUM_CARGO];
+TypedIndexContainer<std::array<CargoSpec, NUM_CARGO>, CargoType> CargoSpec::array{};
 std::array<std::vector<const CargoSpec *>, NUM_TPE> CargoSpec::town_production_cargoes{};
 
 /**
@@ -63,7 +63,7 @@ void SetupCargoForClimate(LandscapeType l)
 {
 	assert(to_underlying(l) < std::size(_default_climate_cargo));
 
-	_cargo_mask = 0;
+	_cargo_mask.Reset();
 	_default_cargo_labels.clear();
 	_climate_dependent_cargo_labels.fill(CT_INVALID);
 	_climate_independent_cargo_labels.fill(CT_INVALID);
@@ -92,9 +92,9 @@ void SetupCargoForClimate(LandscapeType l)
 		*insert = std::visit(visitor{}, cl);
 
 		if (insert->IsValid()) {
-			SetBit(_cargo_mask, insert->Index());
+			_cargo_mask.Set(insert->Index());
 			_default_cargo_labels.push_back(insert->label);
-			_climate_dependent_cargo_labels[insert->Index()] = insert->label;
+			_climate_dependent_cargo_labels[insert->Index().base()] = insert->label;
 			_climate_independent_cargo_labels[insert->bitnum] = insert->label;
 		}
 		++insert;
@@ -186,7 +186,7 @@ SpriteID CargoSpec::GetCargoIcon() const
 	return sprite;
 }
 
-std::array<uint8_t, NUM_CARGO> _sorted_cargo_types; ///< Sort order of cargoes by cargo type.
+TypedIndexContainer<std::array<uint8_t, NUM_CARGO>, CargoType> _sorted_cargo_types; ///< Sort order of cargoes by cargo type.
 std::vector<const CargoSpec *> _sorted_cargo_specs;   ///< Cargo specifications sorted alphabetically by name.
 std::span<const CargoSpec *> _sorted_standard_cargo_specs; ///< Standard cargo specifications sorted alphabetically by name.
 
@@ -238,14 +238,14 @@ void InitializeSortedCargoSpecs()
 	}
 
 	/* Count the number of standard cargos and fill the mask. */
-	_standard_cargo_mask = 0;
+	_standard_cargo_mask.Reset();
 	uint8_t nb_standard_cargo = 0;
 	for (const auto &cargo : _sorted_cargo_specs) {
 		assert(cargo->town_production_effect != INVALID_TPE);
 		CargoSpec::town_production_cargoes[cargo->town_production_effect].push_back(cargo);
 		if (cargo->classes.Test(CargoClass::Special)) break;
 		nb_standard_cargo++;
-		SetBit(_standard_cargo_mask, cargo->Index());
+		_standard_cargo_mask.Set(cargo->Index());
 	}
 
 	/* _sorted_standard_cargo_specs is a subset of _sorted_cargo_specs. */
