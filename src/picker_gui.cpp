@@ -358,7 +358,7 @@ void PickerWindow::DrawWidget(const Rect &r, WidgetID widget) const
 		}
 
 		case WID_PW_TYPE_NAME:
-			DrawString(r, this->callbacks.GetTypeName(this->callbacks.GetSelectedClass(), this->callbacks.GetSelectedType()), TC_ORANGE, SA_CENTER);
+			DrawString(r, this->callbacks.GetTypeName(this->callbacks.GetSelectedClass(), this->callbacks.GetSelectedType()), TC_GOLD, SA_CENTER);
 			break;
 	}
 }
