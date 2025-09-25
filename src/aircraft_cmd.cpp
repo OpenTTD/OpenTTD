@@ -1692,6 +1692,38 @@ static void AircraftEventHandler_Flying(Aircraft *v, const AirportFTAClass *apc)
 			current = current->next.get();
 		}
 	}
+
+	if(st == nullptr || st->airport.tile == INVALID_TILE) {
+		/*
+		after 15000 ticks aircraft crashes if it's in the air and there are no valid airports left
+		if the accident setting in ON
+		*/
+		if(v->current_order_time > 15000){
+			if(_settings_game.vehicle.plane_crashes != 0){
+				CrashAirplane(v);
+				return;
+			} else {
+				// if the accident setting is OFF, fly out of bounds
+				const int map_min_x = 0;
+				const int map_max_x = (int)(Map::SizeX() * TILE_SIZE);
+				const bool go_left = (v->x_pos - map_min_x) <= (map_max_x - v->x_pos);
+				const int target_x = go_left ? -10 * (int)TILE_SIZE : map_max_x + 9 * (int)TILE_SIZE;
+				const int target_y = v->y_pos;
+
+				/* go out of bounds and remove aircraft*/
+				v->direction = GetDirectionTowards(v, target_x, target_y);
+				GetNewVehiclePosResult gp = GetNewVehiclePos(v);
+				SetAircraftPosition(v, gp.x, gp.y, GetAircraftFlightLevel(v));
+
+				if ((go_left && gp.x < target_x) || (!go_left && gp.x > target_x)) {
+					delete v;
+					return;
+				}
+				
+				return;
+			}
+		}
+	}
 	v->state = FLYING;
 	v->pos = apc->layout[v->pos].next_position;
 }
