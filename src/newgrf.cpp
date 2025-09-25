@@ -148,9 +148,12 @@ GRFError *DisableGrf(StringID message, GRFConfig *config)
 
 	if (message == STR_NULL) return nullptr;
 
-	config->error = {STR_NEWGRF_ERROR_MSG_FATAL, message};
-	if (config == _cur_gps.grfconfig) config->error->param_value[0] = _cur_gps.nfo_line;
-	return &config->error.value();
+	auto it = std::ranges::find(config->errors, _cur_gps.nfo_line, &GRFError::nfo_line);
+	if (it == std::end(config->errors)) {
+		it = config->errors.emplace(it, STR_NEWGRF_ERROR_MSG_FATAL, _cur_gps.nfo_line, message);
+	}
+	if (config == _cur_gps.grfconfig) it->param_value[0] = _cur_gps.nfo_line;
+	return &*it;
 }
 
 /**
@@ -392,7 +395,7 @@ static void ResetNewGRF()
 static void ResetNewGRFErrors()
 {
 	for (const auto &c : _grfconfig) {
-		c->error.reset();
+		c->errors.clear();
 	}
 }
 
@@ -1841,7 +1844,7 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 				if (num_non_static == NETWORK_MAX_GRF_COUNT) {
 					Debug(grf, 0, "'{}' is not loaded as the maximum number of non-static GRFs has been reached", c->filename);
 					c->status = GCS_DISABLED;
-					c->error  = {STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED};
+					c->errors.emplace_back(STR_NEWGRF_ERROR_MSG_FATAL, 0, STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED);
 					continue;
 				}
 				num_non_static++;
