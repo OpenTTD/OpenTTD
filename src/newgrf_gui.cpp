@@ -51,17 +51,20 @@ void ShowNewGRFError()
 
 	for (const auto &c : _grfconfig) {
 		/* Only show Fatal and Error level messages */
-		if (!c->error.has_value() || (c->error->severity != STR_NEWGRF_ERROR_MSG_FATAL && c->error->severity != STR_NEWGRF_ERROR_MSG_ERROR)) continue;
+		if (c->errors.empty()) continue;
+
+		const GRFError &error = c->errors.back();
+		if (error.severity != STR_NEWGRF_ERROR_MSG_FATAL && error.severity != STR_NEWGRF_ERROR_MSG_ERROR) continue;
 
 		std::vector<StringParameter> params;
 		params.emplace_back(c->GetName());
-		params.emplace_back(c->error->message != STR_NULL ? c->error->message : STR_JUST_RAW_STRING);
-		params.emplace_back(c->error->custom_message);
+		params.emplace_back(error.message != STR_NULL ? error.message : STR_JUST_RAW_STRING);
+		params.emplace_back(error.custom_message);
 		params.emplace_back(c->filename);
-		params.emplace_back(c->error->data);
-		for (const uint32_t &value : c->error->param_value) params.emplace_back(value);
+		params.emplace_back(error.data);
+		for (const uint32_t &value : error.param_value) params.emplace_back(value);
 
-		if (c->error->severity == STR_NEWGRF_ERROR_MSG_FATAL) {
+		if (error.severity == STR_NEWGRF_ERROR_MSG_FATAL) {
 			ShowErrorMessage(GetEncodedStringWithArgs(STR_NEWGRF_ERROR_FATAL_POPUP, params), {}, WL_CRITICAL);
 		} else {
 			ShowErrorMessage(GetEncodedStringWithArgs(STR_NEWGRF_ERROR_POPUP, params), {}, WL_ERROR);
@@ -81,15 +84,15 @@ static StringID GetGRFPaletteString(uint8_t palette)
 static void ShowNewGRFInfo(const GRFConfig &c, const Rect &r, bool show_params)
 {
 	Rect tr = r.Shrink(WidgetDimensions::scaled.frametext);
-	if (c.error.has_value()) {
-		std::array<StringParameter, 3 + std::tuple_size_v<decltype(c.error->param_value)>> params{};
+	for (const GRFError &error : c.errors) {
+		std::array<StringParameter, 3 + std::tuple_size_v<decltype(error.param_value)>> params{};
 		auto it = params.begin();
-		*it++ = c.error->custom_message; // is skipped by built-in messages
+		*it++ = error.custom_message; // is skipped by built-in messages
 		*it++ = c.filename;
-		*it++ = c.error->data;
-		for (const uint32_t &value : c.error->param_value) *it++ = value;
+		*it++ = error.data;
+		for (const uint32_t &value : error.param_value) *it++ = value;
 
-		tr.top = DrawStringMultiLine(tr, GetString(c.error->severity, GetStringWithArgs(c.error->message != STR_NULL ? c.error->message : STR_JUST_RAW_STRING, {params.begin(), it})));
+		tr.top = DrawStringMultiLine(tr, GetString(error.severity, GetStringWithArgs(error.message != STR_NULL ? error.message : STR_JUST_RAW_STRING, {params.begin(), it})));
 	}
 
 	/* Draw filename or not if it is not known (GRF sent over internet) */
@@ -868,8 +871,8 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 							}
 						}
 						DrawSprite(SPR_SQUARE, pal, square_left, tr.top + square_offset_y);
-						if (c->error.has_value()) DrawSprite(SPR_WARNING_SIGN, 0, warning_left, tr.top + warning_offset_y);
-						uint txtoffset = !c->error.has_value() ? 0 : warning.width;
+						if (!c->errors.empty()) DrawSprite(SPR_WARNING_SIGN, 0, warning_left, tr.top + warning_offset_y);
+						uint txtoffset = c->errors.empty() ? 0 : warning.width;
 						DrawString(text_left + (rtl ? 0 : txtoffset), text_right - (rtl ? txtoffset : 0), tr.top + offset_y, std::move(text), h ? TC_WHITE : TC_ORANGE);
 						tr.top += step_height;
 					}
