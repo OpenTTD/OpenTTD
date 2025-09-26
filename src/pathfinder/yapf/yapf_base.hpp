@@ -35,7 +35,6 @@
  *  Requirements to your pathfinder class derived from CYapfBaseT:
  *  --------------------------------------------------------------
  *  Your pathfinder derived class needs to implement following methods:
- *    inline void PfSetStartupNodes()
  *    inline void PfFollowNode(Node &org)
  *    inline bool PfCalcCost(Node &n)
  *    inline bool PfCalcEstimate(Node &n)
@@ -104,8 +103,6 @@ public:
 	{
 		this->vehicle = v;
 
-		Yapf().PfSetStartupNodes();
-
 		for (;;) {
 			this->num_steps++;
 			Node *best_open_node = this->nodes.GetBestOpenNode();
@@ -162,14 +159,13 @@ public:
 	/** Add new node (created by CreateNewNode and filled with data) into open list */
 	inline void AddStartupNode(Node &n)
 	{
+		assert(n.parent == nullptr);
+		assert(this->num_steps == 0);
+
 		Yapf().PfNodeCacheFetch(n);
 		/* insert the new node only if it is not there */
 		if (this->nodes.FindOpenNode(n.key) == nullptr) {
 			this->nodes.InsertOpenNode(n);
-		} else {
-			/* if we are here, it means that node is already there - how it is possible?
-			 *   probably the train is in the position that both its ends point to the same tile/exit-dir
-			 *   very unlikely, but it happened */
 		}
 	}
 
@@ -191,6 +187,8 @@ public:
 	 */
 	void AddNewNode(Node &n, const TrackFollower &tf)
 	{
+		assert(n.parent != nullptr);
+
 		/* evaluate the node */
 		bool cached = Yapf().PfNodeCacheFetch(n);
 		if (!cached) {
