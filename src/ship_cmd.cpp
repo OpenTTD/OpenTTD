@@ -359,7 +359,12 @@ static bool CheckReverseShip(const Ship *v, Trackdir *trackdir = nullptr)
 	return YapfShipCheckReverse(v, trackdir);
 }
 
-static bool CheckShipLeaveDepot(Ship *v)
+/**
+ * Checks whether a ship should stay in the depot.
+ * @param v Ship to check.
+ * @return True if the ship should stay in the depot, false if it has to leave.
+ */
+static bool CheckShipStayInDepot(Ship *v)
 {
 	if (!v->IsChainInDepot()) return false;
 
@@ -382,34 +387,13 @@ static bool CheckShipLeaveDepot(Ship *v)
 			return u->type == VEH_SHIP && u->cur_speed != 0;
 		})) return true;
 
-	TileIndex tile = v->tile;
-	Axis axis = GetShipDepotAxis(tile);
+	assert(v->GetVehicleTrackdir() == TRACKDIR_X_NE || v->GetVehicleTrackdir() == TRACKDIR_Y_NW);
+	v->direction = DiagDirToDir(TrackdirToExitdir(v->GetVehicleTrackdir()));
+	if (CheckReverseShip(v)) v->direction = ReverseDir(v->direction);
 
-	DiagDirection north_dir = ReverseDiagDir(AxisToDiagDir(axis));
-	TileIndex north_neighbour = TileAdd(tile, TileOffsByDiagDir(north_dir));
-	DiagDirection south_dir = AxisToDiagDir(axis);
-	TileIndex south_neighbour = TileAdd(tile, 2 * TileOffsByDiagDir(south_dir));
-
-	TrackBits north_tracks = DiagdirReachesTracks(north_dir) & GetTileShipTrackStatus(north_neighbour);
-	TrackBits south_tracks = DiagdirReachesTracks(south_dir) & GetTileShipTrackStatus(south_neighbour);
-	if (north_tracks && south_tracks) {
-		if (CheckReverseShip(v)) north_tracks = TRACK_BIT_NONE;
-	}
-
-	if (north_tracks) {
-		/* Leave towards north */
-		v->rotation = v->direction = DiagDirToDir(north_dir);
-	} else if (south_tracks) {
-		/* Leave towards south */
-		v->rotation = v->direction = DiagDirToDir(south_dir);
-	} else {
-		/* Both ways blocked */
-		return false;
-	}
-
-	v->state = AxisToTrackBits(axis);
+	v->state = AxisToTrackBits(GetShipDepotAxis(v->tile));
+	v->rotation = v->direction;
 	v->vehstatus.Reset(VehState::Hidden);
-
 	v->cur_speed = 0;
 	v->UpdateViewport(true, true);
 	SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
@@ -698,7 +682,7 @@ static void ShipController(Ship *v)
 
 	if (v->current_order.IsType(OT_LOADING)) return;
 
-	if (CheckShipLeaveDepot(v)) return;
+	if (CheckShipStayInDepot(v)) return;
 
 	v->ShowVisualEffect();
 
