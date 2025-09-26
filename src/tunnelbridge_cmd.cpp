@@ -304,15 +304,13 @@ static CommandCost CheckBuildAbove(TileIndex tile, DoCommandFlags flags, Axis ax
  * @param tile_start start tile
  * @param transport_type transport type.
  * @param bridge_type bridge type (hi bh)
- * @param road_rail_type rail type or road types.
+ * @param railtype rail type for rail bridge, or \c INVALID_RAILTYPE
+ * @param roadtype road type for road bridge, or \c INVALID_ROADTYPE
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex tile_start, TransportType transport_type, BridgeType bridge_type, uint8_t road_rail_type)
+CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex tile_start, TransportType transport_type, BridgeType bridge_type, RailType railtype, RoadType roadtype)
 {
 	CompanyID company = _current_company;
-
-	RailType railtype = INVALID_RAILTYPE;
-	RoadType roadtype = INVALID_ROADTYPE;
 
 	for (TileIndex t : {tile_start, tile_end}) {
 		if (!IsValidTile(t)) return CommandCost(STR_ERROR_BRIDGE_THROUGH_MAP_BORDER);
@@ -324,12 +322,10 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 	/* type of bridge */
 	switch (transport_type) {
 		case TRANSPORT_ROAD:
-			roadtype = (RoadType)road_rail_type;
 			if (!ValParamRoadType(roadtype)) return CMD_ERROR;
 			break;
 
 		case TRANSPORT_RAIL:
-			railtype = (RailType)road_rail_type;
 			if (!ValParamRailType(railtype)) return CMD_ERROR;
 			break;
 
@@ -641,24 +637,21 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
  * @param flags type of operation
  * @param start_tile start tile of tunnel
  * @param transport_type transport type
- * @param road_rail_type railtype or roadtype
+ * @param railtype rail type for rail tunnel, or \c INVALID_RAILTYPE
+ * @param roadtype road type for road tunnel, or \c INVALID_ROADTYPE
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, TransportType transport_type, uint8_t road_rail_type)
+CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, TransportType transport_type, RailType railtype, RoadType roadtype)
 {
 	CompanyID company = _current_company;
 
-	RailType railtype = INVALID_RAILTYPE;
-	RoadType roadtype = INVALID_ROADTYPE;
 	_build_tunnel_endtile = TileIndex{};
 	switch (transport_type) {
 		case TRANSPORT_RAIL:
-			railtype = (RailType)road_rail_type;
 			if (!ValParamRailType(railtype)) return CMD_ERROR;
 			break;
 
 		case TRANSPORT_ROAD:
-			roadtype = (RoadType)road_rail_type;
 			if (!ValParamRoadType(roadtype)) return CMD_ERROR;
 			break;
 
