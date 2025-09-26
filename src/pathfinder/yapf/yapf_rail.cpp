@@ -544,14 +544,37 @@ struct CYapfRail_TypesT {
 	typedef CYapfCostRailT<Types>               PfCost;
 };
 
-struct CYapfRail         : CYapfT<CYapfRail_TypesT<CYapfRail        , CFollowTrackRail    , CYapfDestinationTileOrStationRailT, CYapfFollowRailT>> {};
-struct CYapfRailNo90     : CYapfT<CYapfRail_TypesT<CYapfRailNo90    , CFollowTrackRailNo90, CYapfDestinationTileOrStationRailT, CYapfFollowRailT>> {};
+template <typename Types>
+struct CYapfRailBase : CYapfT<Types> {
+	typedef typename Types::NodeList::Item Node;
 
-struct CYapfAnyDepotRail     : CYapfT<CYapfRail_TypesT<CYapfAnyDepotRail,     CFollowTrackRail    , CYapfDestinationAnyDepotRailT     , CYapfFollowAnyDepotRailT>> {};
-struct CYapfAnyDepotRailNo90 : CYapfT<CYapfRail_TypesT<CYapfAnyDepotRailNo90, CFollowTrackRailNo90, CYapfDestinationAnyDepotRailT     , CYapfFollowAnyDepotRailT>> {};
+	/**
+	 * In some cases an intermediate node branch should be pruned.
+	 * The most prominent case is when a red EOL signal is encountered, but
+	 * there was a segment change (e.g. a rail type change) before that. If
+	 * the branch would not be pruned, the rail type change location would
+	 * remain the best intermediate node, and thus the vehicle would still
+	 * go towards the red EOL signal.
+	 */
+	void PruneIntermediateNodeBranch(Node *n)
+	{
+		bool intermediate_on_branch = false;
+		while (n != nullptr && !n->segment->end_segment_reason.Test(EndSegmentReason::ChoiceFollows)) {
+			if (n == this->best_intermediate_node) intermediate_on_branch = true;
+			n = n->parent;
+		}
+		if (intermediate_on_branch) this->best_intermediate_node = n;
+	}
+};
 
-struct CYapfAnySafeTileRail     : CYapfT<CYapfRail_TypesT<CYapfAnySafeTileRail    , CFollowTrackFreeRail    , CYapfDestinationAnySafeTileRailT , CYapfFollowAnySafeTileRailT>> {};
-struct CYapfAnySafeTileRailNo90 : CYapfT<CYapfRail_TypesT<CYapfAnySafeTileRailNo90, CFollowTrackFreeRailNo90, CYapfDestinationAnySafeTileRailT , CYapfFollowAnySafeTileRailT>> {};
+struct CYapfRail         : CYapfRailBase<CYapfRail_TypesT<CYapfRail        , CFollowTrackRail    , CYapfDestinationTileOrStationRailT, CYapfFollowRailT>> {};
+struct CYapfRailNo90     : CYapfRailBase<CYapfRail_TypesT<CYapfRailNo90    , CFollowTrackRailNo90, CYapfDestinationTileOrStationRailT, CYapfFollowRailT>> {};
+
+struct CYapfAnyDepotRail     : CYapfRailBase<CYapfRail_TypesT<CYapfAnyDepotRail,     CFollowTrackRail    , CYapfDestinationAnyDepotRailT     , CYapfFollowAnyDepotRailT>> {};
+struct CYapfAnyDepotRailNo90 : CYapfRailBase<CYapfRail_TypesT<CYapfAnyDepotRailNo90, CFollowTrackRailNo90, CYapfDestinationAnyDepotRailT     , CYapfFollowAnyDepotRailT>> {};
+
+struct CYapfAnySafeTileRail     : CYapfRailBase<CYapfRail_TypesT<CYapfAnySafeTileRail    , CFollowTrackFreeRail    , CYapfDestinationAnySafeTileRailT , CYapfFollowAnySafeTileRailT>> {};
+struct CYapfAnySafeTileRailNo90 : CYapfRailBase<CYapfRail_TypesT<CYapfAnySafeTileRailNo90, CFollowTrackFreeRailNo90, CYapfDestinationAnySafeTileRailT , CYapfFollowAnySafeTileRailT>> {};
 
 
 Track YapfTrainChooseTrack(const Train *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool &path_found, bool reserve_track, PBSTileInfo *target, TileIndex *dest)
