@@ -187,6 +187,11 @@ public:
 	}
 
 	RoadType Index() const;
+
+	/**
+	 * Infrastructure counts for unowned road pieces.
+	 */
+	static inline std::map<RoadType, uint32_t> infrastructure_counts{};
 };
 
 /**

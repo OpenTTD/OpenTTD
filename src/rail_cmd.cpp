@@ -546,13 +546,23 @@ CommandCost CmdBuildSingleRail(DoCommandFlags flags, TileIndex tile, RailType ra
 						MarkDirtyAdjacentLevelCrossingTiles(tile, GetCrossingRoadAxis(tile));
 						Company::Get(_current_company)->infrastructure.rail[railtype] += LEVELCROSSING_TRACKBIT_FACTOR;
 						DirtyCompanyInfrastructureWindows(_current_company);
-						if (num_new_road_pieces > 0 && Company::IsValidID(road_owner)) {
-							Company::Get(road_owner)->infrastructure.road[_roadtype_mapping.GetType(map_roadtype)] += num_new_road_pieces;
-							DirtyCompanyInfrastructureWindows(road_owner);
+						if (num_new_road_pieces > 0) {
+							RoadType roadtype = _roadtype_mapping.GetType(map_roadtype);
+							if (Company::IsValidID(road_owner)) {
+								Company::Get(road_owner)->infrastructure.road[roadtype] += num_new_road_pieces;
+								DirtyCompanyInfrastructureWindows(road_owner);
+							} else {
+								RoadTypeInfo::infrastructure_counts[roadtype] += num_new_road_pieces;
+							}
 						}
-						if (num_new_tram_pieces > 0 && Company::IsValidID(tram_owner)) {
-							Company::Get(tram_owner)->infrastructure.road[_tramtype_mapping.GetType(map_tramtype)] += num_new_tram_pieces;
-							DirtyCompanyInfrastructureWindows(tram_owner);
+						if (num_new_tram_pieces > 0) {
+							RoadType tramtype = _tramtype_mapping.GetType(map_tramtype);
+							if (Company::IsValidID(tram_owner)) {
+								Company::Get(tram_owner)->infrastructure.road[tramtype] += num_new_tram_pieces;
+								DirtyCompanyInfrastructureWindows(tram_owner);
+							} else {
+								RoadTypeInfo::infrastructure_counts[tramtype] += num_new_tram_pieces;
+							}
 						}
 					}
 					break;
