@@ -76,14 +76,14 @@ struct WaterRegionNode : CYapfNodeT<WaterRegionPatchKey, WaterRegionNode> {
 using WaterRegionNodeList = NodeList<WaterRegionNode, NODE_LIST_HASH_BITS_OPEN, NODE_LIST_HASH_BITS_CLOSED>;
 
 /* We don't need a follower but YAPF requires one. */
-struct DummyFollower : public CFollowTrackWater {};
+struct WaterRegionFollower : public CFollowTrackWater {};
 
 class YapfShipRegions;
 
 /* Types struct required for YAPF internals. */
 struct WaterRegionTypes {
 	using Tpf = YapfShipRegions;
-	using TrackFollower = DummyFollower;
+	using TrackFollower = WaterRegionFollower;
 	using NodeList = WaterRegionNodeList;
 	using VehicleType = Ship;
 };

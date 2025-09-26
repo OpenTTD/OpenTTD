@@ -22,7 +22,7 @@ struct YapfRiverBuilderNode : CYapfNodeT<CYapfNodeKeyTrackDir, YapfRiverBuilderN
 using RiverBuilderNodeList = NodeList<YapfRiverBuilderNode, 8, 10>;
 
 /* We don't need a follower but YAPF requires one. */
-struct DummyFollower {};
+struct RiverBuilderFollower {};
 
 /* We don't need a vehicle but YAPF requires one. */
 struct DummyVehicle : Vehicle {};
@@ -32,7 +32,7 @@ class YapfRiverBuilder;
 /* Types struct required for YAPF components. */
 struct RiverBuilderTypes {
 	using Tpf = YapfRiverBuilder;
-	using TrackFollower = DummyFollower;
+	using TrackFollower = RiverBuilderFollower;
 	using NodeList = RiverBuilderNodeList;
 	using VehicleType = DummyVehicle;
 };
@@ -74,7 +74,7 @@ public:
 		return n.GetTile() == this->end_tile;
 	}
 
-	inline bool PfCalcCost(Node &n, const DummyFollower *)
+	inline bool PfCalcCost(Node &n, const RiverBuilderFollower *)
 	{
 		n.cost = n.parent->cost + 1 + RandomRange(_settings_game.game_creation.river_route_random);
 		return true;
@@ -94,7 +94,7 @@ public:
 			if (IsValidTile(t) && RiverFlowsDown(old_node.GetTile(), t)) {
 				Node &node = Yapf().CreateNewNode();
 				node.Set(&old_node, t, INVALID_TRACKDIR, true);
-				Yapf().AddNewNode(node, DummyFollower{});
+				Yapf().AddNewNode(node, RiverBuilderFollower{});
 			}
 		}
 	}
