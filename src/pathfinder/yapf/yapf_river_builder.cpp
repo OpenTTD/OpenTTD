@@ -47,7 +47,6 @@ public:
 	using Key = Node::Key;
 
 protected:
-	TileIndex start_tile; ///< Start tile of the river
 	TileIndex end_tile; ///< End tile of the river
 
 	inline YapfRiverBuilder &Yapf()
@@ -58,14 +57,10 @@ protected:
 public:
 	YapfRiverBuilder(TileIndex start_tile, TileIndex end_tile)
 	{
-		this->start_tile = start_tile;
 		this->end_tile = end_tile;
-	}
 
-	void PfSetStartupNodes()
-	{
 		Node &node = Yapf().CreateNewNode();
-		node.Set(nullptr, this->start_tile, INVALID_TRACKDIR, false);
+		node.Set(nullptr, start_tile, INVALID_TRACKDIR, false);
 		Yapf().AddStartupNode(node);
 	}
 

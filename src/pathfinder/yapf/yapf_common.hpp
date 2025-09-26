@@ -23,9 +23,6 @@ public:
 	typedef typename Node::Key Key; ///< key to hash tables
 
 protected:
-	TileIndex origin_tile; ///< origin tile
-	TrackdirBits origin_trackdirs; ///< origin trackdir mask
-
 	/** to access inherited path finder */
 	inline Tpf &Yapf()
 	{
@@ -36,19 +33,12 @@ public:
 	/** Set origin tile / trackdir mask */
 	void SetOrigin(TileIndex tile, TrackdirBits trackdirs)
 	{
-		this->origin_tile = tile;
-		this->origin_trackdirs = trackdirs;
-	}
-
-	/** Called when YAPF needs to place origin nodes into open list */
-	void PfSetStartupNodes()
-	{
-		bool is_choice = (KillFirstBit(this->origin_trackdirs) != TRACKDIR_BIT_NONE);
-		for (TrackdirBits tdb = this->origin_trackdirs; tdb != TRACKDIR_BIT_NONE; tdb = KillFirstBit(tdb)) {
+		bool is_choice = (KillFirstBit(trackdirs) != TRACKDIR_BIT_NONE);
+		for (TrackdirBits tdb = trackdirs; tdb != TRACKDIR_BIT_NONE; tdb = KillFirstBit(tdb)) {
 			Trackdir td = (Trackdir)FindFirstBit(tdb);
-			Node &n1 = Yapf().CreateNewNode();
-			n1.Set(nullptr, this->origin_tile, td, is_choice);
-			Yapf().AddStartupNode(n1);
+			Node &node = Yapf().CreateNewNode();
+			node.Set(nullptr, tile, td, is_choice);
+			Yapf().AddStartupNode(node);
 		}
 	}
 };
@@ -62,12 +52,6 @@ public:
 	typedef typename Node::Key Key; ///< key to hash tables
 
 protected:
-	TileIndex origin_tile; ///< first origin tile
-	Trackdir origin_td; ///< first origin trackdir
-	TileIndex reverse_tile; ///< second (reverse) origin tile
-	Trackdir reverse_td; ///< second (reverse) origin trackdir
-	int reverse_penalty; ///< penalty to be added for using the reverse origin
-
 	/** to access inherited path finder */
 	inline Tpf &Yapf()
 	{
@@ -76,28 +60,19 @@ protected:
 
 public:
 	/** set origin (tiles, trackdirs, etc.) */
-	void SetOrigin(TileIndex tile, Trackdir td, TileIndex tiler = INVALID_TILE, Trackdir tdr = INVALID_TRACKDIR, int reverse_penalty = 0)
+	void SetOrigin(TileIndex forward_tile, Trackdir forward_td, TileIndex reverse_tile = INVALID_TILE,
+			Trackdir reverse_td = INVALID_TRACKDIR, int reverse_penalty = 0)
 	{
-		this->origin_tile = tile;
-		this->origin_td = td;
-		this->reverse_tile = tiler;
-		this->reverse_td = tdr;
-		this->reverse_penalty = reverse_penalty;
-	}
-
-	/** Called when YAPF needs to place origin nodes into open list */
-	void PfSetStartupNodes()
-	{
-		if (this->origin_tile != INVALID_TILE && this->origin_td != INVALID_TRACKDIR) {
-			Node &n1 = Yapf().CreateNewNode();
-			n1.Set(nullptr, this->origin_tile, this->origin_td, false);
-			Yapf().AddStartupNode(n1);
+		if (forward_tile != INVALID_TILE && forward_td != INVALID_TRACKDIR) {
+			Node &node = Yapf().CreateNewNode();
+			node.Set(nullptr, forward_tile, forward_td, false);
+			Yapf().AddStartupNode(node);
 		}
-		if (this->reverse_tile != INVALID_TILE && this->reverse_td != INVALID_TRACKDIR) {
-			Node &n2 = Yapf().CreateNewNode();
-			n2.Set(nullptr, this->reverse_tile, this->reverse_td, false);
-			n2.cost = this->reverse_penalty;
-			Yapf().AddStartupNode(n2);
+		if (reverse_tile != INVALID_TILE && reverse_td != INVALID_TRACKDIR) {
+			Node &node = Yapf().CreateNewNode();
+			node.Set(nullptr, reverse_tile, reverse_td, false);
+			node.cost = reverse_penalty;
+			Yapf().AddStartupNode(node);
 		}
 	}
 };

@@ -113,7 +113,12 @@ public:
 	void AddOrigin(const WaterRegionPatchDesc &water_region_patch)
 	{
 		if (water_region_patch.label == INVALID_WATER_REGION_PATCH) return;
-		if (!HasOrigin(water_region_patch)) this->origin_keys.emplace_back(water_region_patch);
+		if (!HasOrigin(water_region_patch)) {
+			this->origin_keys.emplace_back(water_region_patch);
+			Node &node = Yapf().CreateNewNode();
+			node.Set(nullptr, water_region_patch);
+			Yapf().AddStartupNode(node);
+		}
 	}
 
 	bool HasOrigin(const WaterRegionPatchDesc &water_region_patch)
@@ -124,15 +129,6 @@ public:
 	void SetDestination(const WaterRegionPatchDesc &water_region_patch)
 	{
 		this->dest.Set(water_region_patch);
-	}
-
-	void PfSetStartupNodes()
-	{
-		for (const WaterRegionPatchKey &origin_key : this->origin_keys) {
-			Node &node = Yapf().CreateNewNode();
-			node.Set(nullptr, origin_key);
-			Yapf().AddStartupNode(node);
-		}
 	}
 
 	inline void PfFollowNode(Node &old_node)
