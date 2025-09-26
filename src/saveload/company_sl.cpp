@@ -127,6 +127,7 @@ void AfterLoadCompanyStats()
 {
 	/* Reset infrastructure statistics to zero. */
 	for (Company *c : Company::Iterate()) c->infrastructure = {};
+	RoadTypeInfo::infrastructure_counts.clear();
 
 	/* Collect airport count. */
 	for (const Station *st : Station::Iterate()) {
@@ -163,9 +164,16 @@ void AfterLoadCompanyStats()
 				for (RoadTramType rtt : _roadtramtypes) {
 					RoadType rt = GetRoadType(tile, rtt);
 					if (rt == INVALID_ROADTYPE) continue;
-					c = Company::GetIfValid(IsRoadDepot(tile) ? GetTileOwner(tile) : GetRoadOwner(tile, rtt));
+
 					/* A level crossings and depots have two road bits. */
-					if (c != nullptr) c->infrastructure.road[rt] += IsNormalRoad(tile) ? CountBits(GetRoadBits(tile, rtt)) : 2;
+					uint num_pieces = IsNormalRoad(tile) ? CountBits(GetRoadBits(tile, rtt)) : 2;
+
+					c = Company::GetIfValid(IsRoadDepot(tile) ? GetTileOwner(tile) : GetRoadOwner(tile, rtt));
+					if (c != nullptr) {
+						c->infrastructure.road[rt] += num_pieces;
+					} else {
+						RoadTypeInfo::infrastructure_counts[rt] += num_pieces;
+					}
 				}
 				break;
 			}
@@ -188,7 +196,11 @@ void AfterLoadCompanyStats()
 							RoadType rt = GetRoadType(tile, rtt);
 							if (rt == INVALID_ROADTYPE) continue;
 							c = Company::GetIfValid(GetRoadOwner(tile, rtt));
-							if (c != nullptr) c->infrastructure.road[rt] += 2; // A road stop has two road bits.
+							if (c != nullptr) {
+								c->infrastructure.road[rt] += 2; // A road stop has two road bits.
+							} else {
+								RoadTypeInfo::infrastructure_counts[rt] += 2;
+							}
 						}
 						break;
 					}
@@ -246,7 +258,11 @@ void AfterLoadCompanyStats()
 								RoadType rt = GetRoadType(tile, rtt);
 								if (rt == INVALID_ROADTYPE) continue;
 								c = Company::GetIfValid(GetRoadOwner(tile, rtt));
-								if (c != nullptr) c->infrastructure.road[rt] += len * 2; // A full diagonal road has two road bits.
+								if (c != nullptr) {
+									c->infrastructure.road[rt] += len * 2; // A full diagonal road has two road bits.
+								} else {
+									RoadTypeInfo::infrastructure_counts[rt] += len * 2;
+								}
 							}
 							break;
 						}
