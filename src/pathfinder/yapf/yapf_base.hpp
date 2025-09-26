@@ -185,7 +185,7 @@ public:
 	 * AddNewNode() - called by Tderived::PfFollowNode() for each child node.
 	 *  Nodes are evaluated here and added into open list
 	 */
-	void AddNewNode(Node &n, const TrackFollower &tf)
+	void AddNewNode(Node &n, const TrackFollower &follower)
 	{
 		assert(n.parent != nullptr);
 
@@ -197,7 +197,7 @@ public:
 			this->stats_cache_hits++;
 		}
 
-		bool valid = Yapf().PfCalcCost(n, &tf);
+		bool valid = Yapf().PfCalcCost(n, &follower);
 
 		if (valid) valid = Yapf().PfCalcEstimate(n);
 

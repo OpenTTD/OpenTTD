@@ -177,17 +177,17 @@ struct CYapfRailNode : CYapfNodeT<CYapfNodeKeyTrackDir, CYapfRailNode> {
 	template <class Tbase, class Tfunc, class Tpf>
 	bool IterateTiles(const Train *v, Tpf &yapf, Tbase &obj, bool (Tfunc::*func)(TileIndex, Trackdir)) const
 	{
-		typename Tbase::TrackFollower ft(v, yapf.GetCompatibleRailTypes());
+		typename Tbase::TrackFollower follower{v, yapf.GetCompatibleRailTypes()};
 		TileIndex cur = this->base::GetTile();
 		Trackdir  cur_td = this->base::GetTrackdir();
 
 		while (cur != this->GetLastTile() || cur_td != this->GetLastTrackdir()) {
 			if (!((obj.*func)(cur, cur_td))) return false;
 
-			if (!ft.Follow(cur, cur_td)) break;
-			cur = ft.new_tile;
-			assert(KillFirstBit(ft.new_td_bits) == TRACKDIR_BIT_NONE);
-			cur_td = FindFirstTrackdir(ft.new_td_bits);
+			if (!follower.Follow(cur, cur_td)) break;
+			cur = follower.new_tile;
+			assert(KillFirstBit(follower.new_td_bits) == TRACKDIR_BIT_NONE);
+			cur_td = FindFirstTrackdir(follower.new_td_bits);
 		}
 
 		return (obj.*func)(cur, cur_td);
