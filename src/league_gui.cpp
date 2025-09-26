@@ -111,14 +111,14 @@ public:
 
 		bool rtl = _current_text_dir == TD_RTL;
 		Rect ordinal = ir.WithWidth(this->ordinal_width, rtl);
-		uint icon_left = ir.Indent(rtl ? this->text_width : this->ordinal_width, rtl).left;
-		Rect text    = ir.WithWidth(this->text_width, !rtl);
+		Rect icon = ir.Indent(this->ordinal_width + WidgetDimensions::scaled.hsep_wide, rtl).WithWidth(this->icon.width, rtl);
+		Rect text = ir.Indent(this->ordinal_width + this->icon.width + WidgetDimensions::scaled.hsep_wide * 2, rtl);
 
 		for (uint i = 0; i != this->companies.size(); i++) {
 			const Company *c = this->companies[i];
 			DrawString(ordinal.left, ordinal.right, ir.top + text_y_offset, GetString(STR_COMPANY_LEAGUE_COMPANY_RANK, i + 1));
 
-			DrawCompanyIcon(c->index, icon_left, ir.top + icon_y_offset);
+			DrawCompanyIcon(c->index, icon.left, ir.top + icon_y_offset);
 
 			DrawString(text.left, text.right, ir.top + text_y_offset, GetString(STR_COMPANY_LEAGUE_COMPANY_NAME, c->index, c->index, GetPerformanceTitleFromValue(c->old_economy[0].performance_history)));
 			ir.top += this->line_height;
@@ -133,7 +133,6 @@ public:
 		for (uint i = 0; i < MAX_COMPANIES; i++) {
 			this->ordinal_width = std::max(this->ordinal_width, GetStringBoundingBox(GetString(STR_COMPANY_LEAGUE_COMPANY_RANK, i + 1)).width);
 		}
-		this->ordinal_width += WidgetDimensions::scaled.hsep_wide; // Keep some extra spacing
 
 		uint widest_width = 0;
 		StringID widest_title = STR_NULL;
@@ -154,7 +153,7 @@ public:
 
 		this->text_width = widest_width + WidgetDimensions::scaled.hsep_indent * 3; // Keep some extra spacing
 
-		size.width = WidgetDimensions::scaled.framerect.Horizontal() + this->ordinal_width + this->icon.width + this->text_width + WidgetDimensions::scaled.hsep_wide;
+		size.width = WidgetDimensions::scaled.framerect.Horizontal() + this->ordinal_width + WidgetDimensions::scaled.hsep_wide + this->icon.width + WidgetDimensions::scaled.hsep_wide + this->text_width;
 		size.height = this->line_height * MAX_COMPANIES + WidgetDimensions::scaled.framerect.Vertical();
 	}
 
