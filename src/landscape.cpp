@@ -638,6 +638,36 @@ void ClearSnowLine()
 }
 
 /**
+ * Check if all tiles on the map edge should be considered water borders.
+ * @return true If the edge of the map is flat and height 0, allowing for infinite water borders.
+ */
+bool IsMapSurroundedByWater()
+{
+	auto check_tile = [](uint x, uint y) -> bool {
+		auto [slope, h] = GetTilePixelSlopeOutsideMap(x, y);
+		return ((slope == SLOPE_FLAT) && (h == 0));
+	};
+
+	/* Check the map corners. */
+	if (!check_tile(0, 0)) return false;
+	if (!check_tile(0, Map::SizeY())) return false;
+	if (!check_tile(Map::SizeX(), 0)) return false;
+	if (!check_tile(Map::SizeX(), Map::SizeY())) return false;
+
+	/* Check the map edges.*/
+	for (uint x = 0; x <= Map::SizeX(); x++) {
+		if (!check_tile(x, 0)) return false;
+		if (!check_tile(x, Map::SizeY())) return false;
+	}
+	for (uint y = 1; y < Map::SizeY(); y++) {
+		if (!check_tile(0, y)) return false;
+		if (!check_tile(Map::SizeX(), y)) return false;
+	}
+
+	return true;
+}
+
+/**
  * Clear a piece of landscape
  * @param flags of operation to conduct
  * @param tile tile to clear

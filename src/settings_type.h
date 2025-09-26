@@ -64,6 +64,13 @@ enum IndustryDensity : uint8_t {
 	ID_END,       ///< Number of industry density settings.
 };
 
+/** Possible options for the Borders pulldown in the Genworld GUI. */
+enum BorderFlagPresets : uint8_t {
+	BFP_RANDOM = 0,
+	BFP_MANUAL,
+	BFP_INFINITE_WATER,
+};
+
 /** Possible values for the "timekeeping_units" setting. */
 enum TimekeepingUnits : uint8_t {
 	TKU_CALENDAR = 0,
@@ -375,6 +382,7 @@ struct GameCreationSettings {
 	uint8_t town_name;                        ///< the town name generator used for town names
 	LandscapeType landscape;                        ///< the landscape we're currently in
 	BorderFlags water_borders;                    ///< bitset of the borders that are water
+	BorderFlagPresets water_border_presets;    ///< presets for map border options
 	uint16_t custom_town_number;               ///< manually entered number of towns
 	uint16_t custom_industry_number;           ///< manually entered number of industries
 	uint8_t variety;                          ///< variety level applied to TGP
