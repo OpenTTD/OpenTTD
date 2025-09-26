@@ -86,11 +86,11 @@ static void _DoCommandReturnBuildBridge1(class ScriptInstance &instance)
 		case ScriptVehicle::VT_ROAD:
 			ScriptObject::SetCallbackVariable(0, start.base());
 			ScriptObject::SetCallbackVariable(1, end.base());
-			return ScriptObject::Command<CMD_BUILD_BRIDGE>::Do(&::_DoCommandReturnBuildBridge1, end, start, TRANSPORT_ROAD, bridge_type, ScriptRoad::GetCurrentRoadType());
+			return ScriptObject::Command<CMD_BUILD_BRIDGE>::Do(&::_DoCommandReturnBuildBridge1, end, start, TRANSPORT_ROAD, bridge_type, INVALID_RAILTYPE, static_cast<::RoadType>(ScriptRoad::GetCurrentRoadType()));
 		case ScriptVehicle::VT_RAIL:
-			return ScriptObject::Command<CMD_BUILD_BRIDGE>::Do(end, start, TRANSPORT_RAIL, bridge_type, ScriptRail::GetCurrentRailType());
+			return ScriptObject::Command<CMD_BUILD_BRIDGE>::Do(end, start, TRANSPORT_RAIL, bridge_type, static_cast<::RailType>(ScriptRail::GetCurrentRailType()), INVALID_ROADTYPE);
 		case ScriptVehicle::VT_WATER:
-			return ScriptObject::Command<CMD_BUILD_BRIDGE>::Do(end, start, TRANSPORT_WATER, bridge_type, 0);
+			return ScriptObject::Command<CMD_BUILD_BRIDGE>::Do(end, start, TRANSPORT_WATER, bridge_type, INVALID_RAILTYPE, INVALID_ROADTYPE);
 		default: NOT_REACHED();
 	}
 }

@@ -10,16 +10,18 @@
 #ifndef TUNNELBRIDGE_CMD_H
 #define TUNNELBRIDGE_CMD_H
 
+#include "bridge_type.h"
 #include "command_type.h"
+#include "rail_type.h"
+#include "road_type.h"
 #include "transport_type.h"
-#include "bridge.h"
 
-CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex tile_start, TransportType transport_type, BridgeType bridge_type, uint8_t road_rail_type);
-CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, TransportType transport_type, uint8_t road_rail_type);
+CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex tile_start, TransportType transport_type, BridgeType bridge_type, RailType railtype, RoadType roadtype);
+CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, TransportType transport_type, RailType railtype, RoadType roadtype);
 
 DEF_CMD_TRAIT(CMD_BUILD_BRIDGE, CmdBuildBridge, CommandFlags({CommandFlag::Deity, CommandFlag::Auto, CommandFlag::NoWater}), CommandType::LandscapeConstruction)
 DEF_CMD_TRAIT(CMD_BUILD_TUNNEL, CmdBuildTunnel, CommandFlags({CommandFlag::Deity, CommandFlag::Auto}),                       CommandType::LandscapeConstruction)
 
-void CcBuildBridge(Commands cmd, const CommandCost &result, TileIndex end_tile, TileIndex tile_start, TransportType transport_type, BridgeType, uint8_t);
+void CcBuildBridge(Commands cmd, const CommandCost &result, TileIndex end_tile, TileIndex tile_start, TransportType transport_type, BridgeType, RailType railtype, RoadType roadtype);
 
 #endif /* TUNNELBRIDGE_CMD_H */
