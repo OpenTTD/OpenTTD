@@ -182,10 +182,12 @@ void UpdateCompanyRoadInfrastructure(RoadType rt, Owner o, int count)
 	if (rt == INVALID_ROADTYPE) return;
 
 	Company *c = Company::GetIfValid(o);
-	if (c == nullptr) return;
-
-	c->infrastructure.road[rt] += count;
-	DirtyCompanyInfrastructureWindows(c->index);
+	if (c != nullptr) {
+		c->infrastructure.road[rt] += count;
+		DirtyCompanyInfrastructureWindows(c->index);
+	} else {
+		RoadTypeInfo::infrastructure_counts[rt] += count;
+	}
 }
 
 /** Invalid RoadBits on slopes.  */
@@ -2346,7 +2348,11 @@ static void ChangeTileOwner_Road(TileIndex tile, Owner old_owner, Owner new_owne
 				/* A level crossing has two road bits. No need to dirty windows here, we'll redraw the whole screen anyway. */
 				uint num_bits = IsLevelCrossing(tile) ? 2 : CountBits(GetRoadBits(tile, rtt));
 				Company::Get(old_owner)->infrastructure.road[rt] -= num_bits;
-				if (new_owner != INVALID_OWNER) Company::Get(new_owner)->infrastructure.road[rt] += num_bits;
+				if (new_owner != INVALID_OWNER) {
+					Company::Get(new_owner)->infrastructure.road[rt] += num_bits;
+				} else {
+					RoadTypeInfo::infrastructure_counts[rt] += num_bits;
+				}
 			}
 
 			SetRoadOwner(tile, rtt, new_owner == INVALID_OWNER ? OWNER_NONE : new_owner);
@@ -2438,6 +2444,8 @@ static void ConvertRoadTypeOwner(TileIndex tile, uint num_pieces, Owner owner, R
 
 	switch (owner.base()) {
 	case OWNER_NONE.base():
+		RoadTypeInfo::infrastructure_counts[from_type] += num_pieces;
+		RoadTypeInfo::infrastructure_counts[to_type] += num_pieces;
 		SetRoadOwner(tile, GetRoadTramType(to_type), (Owner)_current_company);
 		UpdateCompanyRoadInfrastructure(to_type, _current_company, num_pieces);
 		break;

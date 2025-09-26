@@ -4722,7 +4722,11 @@ static void ChangeTileOwner_Station(TileIndex tile, Owner old_owner, Owner new_o
 				if (rt != INVALID_ROADTYPE) {
 					/* A drive-through road-stop has always two road bits. No need to dirty windows here, we'll redraw the whole screen anyway. */
 					Company::Get(old_owner)->infrastructure.road[rt] -= 2;
-					if (new_owner != INVALID_OWNER) Company::Get(new_owner)->infrastructure.road[rt] += 2;
+					if (new_owner != INVALID_OWNER) {
+						Company::Get(new_owner)->infrastructure.road[rt] += 2;
+					} else {
+						RoadTypeInfo::infrastructure_counts[rt] += 2;
+					}
 				}
 				SetRoadOwner(tile, rtt, new_owner == INVALID_OWNER ? OWNER_NONE : new_owner);
 			}

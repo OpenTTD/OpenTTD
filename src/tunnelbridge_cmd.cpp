@@ -562,15 +562,21 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 					if (hasroad && GetRoadOwner(tile_start, RTT_ROAD) == OWNER_NONE) hasroad = false;
 					if (hastram && GetRoadOwner(tile_start, RTT_TRAM) == OWNER_NONE) hastram = false;
 				}
-				if (c != nullptr) {
-					/* Add all new road types to the company infrastructure counter. */
-					if (!hasroad && road_rt != INVALID_ROADTYPE) {
-						/* A full diagonal road tile has two road bits. */
+				/* Add all new road types to the company infrastructure counter. */
+				if (!hasroad && road_rt != INVALID_ROADTYPE) {
+					/* A full diagonal road tile has two road bits. */
+					if (c != nullptr) {
 						c->infrastructure.road[road_rt] += bridge_len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR;
+					} else {
+						RoadTypeInfo::infrastructure_counts[road_rt] += bridge_len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR;
 					}
-					if (!hastram && tram_rt != INVALID_ROADTYPE) {
-						/* A full diagonal road tile has two road bits. */
+				}
+				if (!hastram && tram_rt != INVALID_ROADTYPE) {
+					/* A full diagonal road tile has two road bits. */
+					if (c != nullptr) {
 						c->infrastructure.road[tram_rt] += bridge_len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR;
+					} else {
+						RoadTypeInfo::infrastructure_counts[tram_rt] += bridge_len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR;
 					}
 				}
 				Owner owner_road = hasroad ? GetRoadOwner(tile_start, RTT_ROAD) : company;
@@ -810,7 +816,11 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 			AddSideToSignalBuffer(start_tile, INVALID_DIAGDIR, company);
 			YapfNotifyTrackLayoutChange(start_tile, DiagDirToDiagTrack(direction));
 		} else {
-			if (c != nullptr) c->infrastructure.road[roadtype] += num_pieces * 2; // A full diagonal road has two road bits.
+			if (c != nullptr) {
+				c->infrastructure.road[roadtype] += num_pieces * 2; // A full diagonal road has two road bits.
+			} else {
+				RoadTypeInfo::infrastructure_counts[roadtype] += num_pieces * 2;
+			}
 			MakeRoadTunnel(start_tile, company, direction,                 map_roadtype, map_tramtype);
 			MakeRoadTunnel(end_tile,   company, ReverseDiagDir(direction), map_roadtype, map_tramtype);
 		}
@@ -1890,7 +1900,11 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, Owner old_owner, Owner 
 					/* Update company infrastructure counts. A full diagonal road tile has two road bits.
 					 * No need to dirty windows here, we'll redraw the whole screen anyway. */
 					Company::Get(old_owner)->infrastructure.road[rt] -= num_pieces * 2;
-					if (new_owner != INVALID_OWNER) Company::Get(new_owner)->infrastructure.road[rt] += num_pieces * 2;
+					if (new_owner != INVALID_OWNER) {
+						Company::Get(new_owner)->infrastructure.road[rt] += num_pieces * 2;
+					} else {
+						RoadTypeInfo::infrastructure_counts[rt] += num_pieces * 2;
+					}
 				}
 
 				SetRoadOwner(tile, rtt, new_owner == INVALID_OWNER ? OWNER_NONE : new_owner);
