@@ -365,7 +365,8 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlags
 
 	for (LockPart lock_part = LOCK_PART_MIDDLE; TileIndex t : {tile, tile - delta, tile + delta}) {
 		if (IsBridgeAbove(t) && GetBridgeHeight(GetSouthernBridgeEnd(t)) < GetTileMaxZ(t) + GetLockPartMinimalBridgeHeight(lock_part)) {
-			return CommandCost(STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK);
+			int height_diff = (GetTileMaxZ(tile) + GetLockPartMinimalBridgeHeight(lock_part) - GetBridgeHeight(GetSouthernBridgeEnd(t))) * TILE_HEIGHT_STEP;
+			return CommandCostWithParam(STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK, height_diff);
 		}
 		++lock_part;
 	}
@@ -1445,7 +1446,8 @@ static CommandCost CheckBuildAbove_Water(TileIndex tile, DoCommandFlags flags, A
 	if (IsWater(tile) || IsCoast(tile)) return CommandCost();
 	if (IsLock(tile)) {
 		if (GetTileMaxZ(tile) + GetLockPartMinimalBridgeHeight(GetLockPart(tile)) <= height) return CommandCost();
-		return CommandCost(STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK);
+		int height_diff = (GetTileMaxZ(tile) + GetLockPartMinimalBridgeHeight(GetLockPart(tile)) - height) * TILE_HEIGHT_STEP;
+		return CommandCostWithParam(STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK, height_diff);
 	}
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }
