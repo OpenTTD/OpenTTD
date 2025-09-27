@@ -1693,6 +1693,16 @@ static void AircraftEventHandler_Flying(Aircraft *v, const AirportFTAClass *apc)
 			current = current->next.get();
 		}
 	}
+
+	/**
+	 * If the aircraft is in the air and there are no valid airport left then crash.
+	 */
+	if(st == nullptr || st->airport.tile == INVALID_TILE) {
+		if(v->current_order_time > 15000){
+			CrashAirplane(v);
+			return;
+		}
+	}
 	v->state = FLYING;
 	v->pos = apc->layout[v->pos].next_position;
 }
