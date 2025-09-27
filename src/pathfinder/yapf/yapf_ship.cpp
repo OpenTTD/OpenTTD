@@ -133,11 +133,11 @@ public:
 	 */
 	inline void PfFollowNode(Node &old_node)
 	{
-		TrackFollower F(Yapf().GetVehicle());
-		if (F.Follow(old_node.key.tile, old_node.key.td)) {
+		TrackFollower follower{Yapf().GetVehicle()};
+		if (follower.Follow(old_node.key.tile, old_node.key.td)) {
 			if (this->water_region_corridor.empty()
-					|| std::ranges::find(this->water_region_corridor, GetWaterRegionInfo(F.new_tile)) != this->water_region_corridor.end()) {
-				Yapf().AddMultipleNodes(&old_node, F);
+					|| std::ranges::find(this->water_region_corridor, GetWaterRegionInfo(follower.new_tile)) != this->water_region_corridor.end()) {
+				Yapf().AddMultipleNodes(&old_node, follower);
 			}
 		}
 	}
@@ -166,7 +166,7 @@ public:
 	/** Returns a random tile/trackdir that can be reached from the current tile/trackdir, or tile/INVALID_TRACK if none is available. */
 	static std::pair<TileIndex, Trackdir> GetRandomFollowUpTileTrackdir(const Ship *v, TileIndex tile, Trackdir dir)
 	{
-		TrackFollower follower(v);
+		TrackFollower follower{v};
 		if (follower.Follow(tile, dir)) {
 			TrackdirBits dirs = follower.new_td_bits;
 			const TrackdirBits dirs_without_90_degree = dirs & ~TrackdirCrossesTrackdirs(dir);
@@ -361,7 +361,7 @@ public:
 	 * Calculates only the cost of given node, adds it to the parent node cost
 	 * and stores the result into Node::cost member.
 	 */
-	inline bool PfCalcCost(Node &n, const TrackFollower *tf)
+	inline bool PfCalcCost(Node &n, const TrackFollower *follower)
 	{
 		/* Base tile cost depending on distance. */
 		int c = IsDiagonalTrackdir(n.GetTrackdir()) ? YAPF_TILE_LENGTH : YAPF_TILE_CORNER_LENGTH;
@@ -381,12 +381,12 @@ public:
 		if (!IsPreferredShipDirection(n.GetTile(), n.GetTrackdir())) c += YAPF_TILE_LENGTH;
 
 		/* Skipped tile cost for aqueducts. */
-		c += YAPF_TILE_LENGTH * tf->tiles_skipped;
+		c += YAPF_TILE_LENGTH * follower->tiles_skipped;
 
 		/* Ocean/canal speed penalty. */
 		const ShipVehicleInfo *svi = ShipVehInfo(Yapf().GetVehicle()->engine_type);
 		uint8_t speed_frac = (GetEffectiveWaterClass(n.GetTile()) == WATER_CLASS_SEA) ? svi->ocean_speed_frac : svi->canal_speed_frac;
-		if (speed_frac > 0) c += YAPF_TILE_LENGTH * (1 + tf->tiles_skipped) * speed_frac / (256 - speed_frac);
+		if (speed_frac > 0) c += YAPF_TILE_LENGTH * (1 + follower->tiles_skipped) * speed_frac / (256 - speed_frac);
 
 		/* Lock penalty. */
 		if (IsTileType(n.GetTile(), MP_WATER) && IsLock(n.GetTile()) && GetLockPart(n.GetTile()) == LOCK_PART_MIDDLE) {
