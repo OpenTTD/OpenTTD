@@ -1478,11 +1478,8 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 	TileIndexDiff track_delta = TileOffsByAxis(OtherAxis(axis)); // offset to go to the next track
 
 	RailStationTileLayout stl{statspec, numtracks, plat_len};
-	auto it = stl.begin();
-	TileIndex tile_track = tile_org;
-	for (uint i = 0; i != numtracks; ++i, tile_track += track_delta) {
-		TileIndex tile = tile_track;
-		for (uint j = 0; j != plat_len; ++j, tile += tile_delta, ++it) {
+	for (auto [i, it, tile_track] = std::make_tuple(0, stl.begin(), tile_org); i != numtracks; ++i, tile_track += track_delta) {
+		for (auto [j, tile] = std::make_tuple(0, tile_track); j != plat_len; ++j, tile += tile_delta, ++it) {
 			/* Don't check the layout if there's no bridge above anyway. */
 			if (!IsBridgeAbove(tile)) continue;
 
@@ -1531,14 +1528,9 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 		}
 
 		Track track = AxisToTrack(axis);
-
-		auto it = stl.begin();
-
 		Company *c = Company::Get(st->owner);
-		TileIndex tile_track = tile_org;
-		for (uint i = 0; i != numtracks; ++i) {
-			TileIndex tile = tile_track;
-			for (uint j = 0; j != plat_len; ++j) {
+		for (auto [i, it, tile_track] = std::make_tuple(0, stl.begin(), tile_org); i != numtracks; ++i, tile_track += track_delta) {
+			for (auto [j, tile] = std::make_tuple(0, tile_track); j != plat_len; ++j, tile += tile_delta, ++it) {
 				if (IsRailStationTile(tile) && HasStationReservation(tile)) {
 					/* Check for trains having a reservation for this tile. */
 					Train *v = GetTrainForReservation(tile, AxisToTrack(GetRailStationAxis(tile)));
@@ -1558,7 +1550,7 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 				DeleteAnimatedTile(tile);
 				uint8_t old_specindex = HasStationTileRail(tile) ? GetCustomStationSpecIndex(tile) : 0;
 
-				MakeRailStation(tile, st->owner, st->index, axis, *it++, rt);
+				MakeRailStation(tile, st->owner, st->index, axis, *it, rt);
 				/* Free the spec if we overbuild something */
 				DeallocateSpecFromStation(st, old_specindex);
 
@@ -1588,12 +1580,9 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 
 				if (!IsStationTileBlocked(tile)) c->infrastructure.rail[rt]++;
 				c->infrastructure.station++;
-
-				tile += tile_delta;
 			}
 			AddTrackToSignalBuffer(tile_track, track, _current_company);
 			YapfNotifyTrackLayoutChange(tile_track, track);
-			tile_track += track_delta;
 		}
 
 		for (uint i = 0; i < affected_vehicles.size(); ++i) {
