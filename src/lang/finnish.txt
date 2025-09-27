@@ -3428,6 +3428,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Lounas
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Vapaa
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vesi
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Sattumanvarainen
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Sattumanvarainen
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuaalinen
 

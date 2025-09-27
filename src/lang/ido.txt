@@ -1071,6 +1071,8 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 
 # Strings for map borders at game generation
 
+###length 3
+
 
 
 # SE Map generation

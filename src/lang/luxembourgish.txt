@@ -3385,6 +3385,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Südwest
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Fräiform
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Waasser
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Zoufälleg
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Zoufall
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuell
 

@@ -3376,6 +3376,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Edel
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Vaba
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vesi
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Suvaline
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Suvaline
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Määratud
 

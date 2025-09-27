@@ -3428,6 +3428,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Southwes
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Freeform
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Water
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Random
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Random
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 

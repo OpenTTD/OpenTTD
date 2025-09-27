@@ -3338,6 +3338,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Güneyba
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Serbest
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Su
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Rastgele
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Rastgele
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}El ile
 

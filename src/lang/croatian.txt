@@ -3012,6 +3012,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Jugozapa
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Slobodni oblik
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Voda
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Nasumično
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Nasumično
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Ručno
 

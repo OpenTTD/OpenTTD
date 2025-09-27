@@ -3429,6 +3429,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Sud-oest
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Forma lliure
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Aigua
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Aleatori
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Aleatori
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 

@@ -2630,6 +2630,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Suðvest
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Frjálsar
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vatn
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Slembin
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Slembnar
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Forvaldar
 

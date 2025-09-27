@@ -3000,6 +3000,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Africus
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Quilibet
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Aqua
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Fortuiti
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Fortuiti
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manu
 

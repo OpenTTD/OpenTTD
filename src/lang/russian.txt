@@ -3603,6 +3603,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Юго-�
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Свободный
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Водный
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Случайно
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Случайно
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Вручную
 

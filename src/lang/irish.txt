@@ -3043,6 +3043,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Iardheis
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Saorfhoirme
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Uisce
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Randamach
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Randamach
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}De láimh
 

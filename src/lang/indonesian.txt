@@ -3240,6 +3240,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Barat Da
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Bebas
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Perairan
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Acak
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Acak
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 

@@ -3429,6 +3429,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Sud-Oues
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Forme libre
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Eau
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Aléatoire
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Aléatoire
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuel
 

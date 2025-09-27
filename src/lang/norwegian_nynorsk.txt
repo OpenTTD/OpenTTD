@@ -2710,6 +2710,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Sørvest
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Frihands
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vatn
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Tilfeldig
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Tilfeldig
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuell
 

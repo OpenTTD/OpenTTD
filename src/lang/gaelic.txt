@@ -3032,6 +3032,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Iar-dhea
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Cruth saor
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Uisge
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Air thuaiream
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Air thuaiream
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}A làimh
 

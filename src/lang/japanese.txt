@@ -3176,6 +3176,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}南西
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}自由形成
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}水域
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}ランダム
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}ランダム設定
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}手動設定
 

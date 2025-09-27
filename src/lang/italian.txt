@@ -3428,6 +3428,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Sud-oves
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Variabile
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Acqua
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Casuale
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Casuale
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuale
 

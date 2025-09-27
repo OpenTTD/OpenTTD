@@ -3428,6 +3428,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Sydvest
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Fri udformning
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vand
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Tilfældige
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Tilfældige
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuel
 

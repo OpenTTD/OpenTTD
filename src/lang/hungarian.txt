@@ -3492,6 +3492,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Délnyug
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Szárazföld
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Víz
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Véletlen
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Véletlen
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Kézi
 

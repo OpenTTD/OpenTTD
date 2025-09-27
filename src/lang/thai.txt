@@ -2861,6 +2861,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}ตะ�
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}ไม่ยึดติดรูปแบบ
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}น้ำ
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}สุ่ม
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}สุ่ม
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}ปรับแต่งเอง
 

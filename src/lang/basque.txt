@@ -2687,6 +2687,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Hegomend
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Modu askea
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Ura
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Ausazkoa
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Ausazkoa
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Eskuz egin
 

@@ -3428,6 +3428,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Sydväst
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Fri form
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vatten
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}På måfå
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}På måfå
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuella
 

@@ -3425,6 +3425,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Südwest
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Beliebig
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Wasser
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Zufällig
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Zufällig
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuell
 

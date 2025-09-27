@@ -3537,6 +3537,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}півд
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}вільний формат
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}вода
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}довільно
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}довільно
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}вручну
 

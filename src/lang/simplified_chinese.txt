@@ -3428,6 +3428,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}西南
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}自由形式
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}水面
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}随机
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}随机
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}手动
 

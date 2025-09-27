@@ -3045,6 +3045,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}דרום
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}יד חופשית
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}מים
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}אקראי
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}אקראי
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}ידני
 

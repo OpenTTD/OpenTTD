@@ -3428,6 +3428,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Tây Nam
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Dạng Tự Do
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Nước
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Ngẫu Nhiên
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Ngẫu Nhiên
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Điều Chỉnh
 

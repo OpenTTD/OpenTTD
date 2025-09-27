@@ -3463,6 +3463,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Pietvaka
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Laisva forma
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vanduo
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Atsitiktinis
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Atsitiktiniai
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Pasirinktiniai
 

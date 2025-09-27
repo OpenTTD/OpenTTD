@@ -1004,6 +1004,8 @@ STR_MAPGEN_TOWN_NAME_ITALIAN                                    :इटैलि
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}जल
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}यादृच्छिक
 
+###length 3
+
 
 
 # SE Map generation

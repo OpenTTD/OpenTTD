@@ -3378,6 +3378,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Juho-zá
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Náhodne
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Voda
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Náhodne
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Náhodne
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuálne
 

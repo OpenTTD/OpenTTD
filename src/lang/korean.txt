@@ -3429,6 +3429,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}남서
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}변경 가능
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}물
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}임의
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}임의
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}사용자 정의
 

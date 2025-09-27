@@ -2769,6 +2769,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK} الج�
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK} حر
 STR_MAPGEN_BORDER_WATER                                         :{BLACK} ماء
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK} عشوائي
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK} عشوائيا
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK} يدوي
 

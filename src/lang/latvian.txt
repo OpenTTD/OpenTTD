@@ -3431,6 +3431,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Dienvidr
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Brīvā forma
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Ūdens
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Nejauša
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Nejaušas
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuāli
 

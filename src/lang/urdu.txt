@@ -2222,6 +2222,8 @@ STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :{BLACK}کھیل
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}فری فارم
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}پانی
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}بے ترتیب
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}بے ترتیب
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}دستی
 

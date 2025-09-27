@@ -3376,6 +3376,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Sud-vest
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Pământ
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Apă
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Aleator
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Aleator
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 

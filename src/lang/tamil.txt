@@ -3023,6 +3023,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}தெ�
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}இலவசமாக
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}தண்ணீர்
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}ஏதொவொன்று
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}ஏதோவொன்று
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}எனது
 

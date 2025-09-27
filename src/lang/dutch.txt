@@ -3428,6 +3428,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Zuidwest
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Vrije vorm
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Water
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Willekeurig
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Willekeurig
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Handmatig
 

@@ -3431,6 +3431,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Jugozapa
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Kopno
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}More
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Proizvoljno
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Proizvoljno
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Podešeno
 

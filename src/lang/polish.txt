@@ -3808,6 +3808,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Płd.-za
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Ląd
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Woda
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Losowe
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Losowo
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Użytkownika
 

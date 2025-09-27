@@ -3426,6 +3426,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Tongamā
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Hanga noa
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Wai
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Matapōkere
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Matapōkere
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Ā-ringa
 

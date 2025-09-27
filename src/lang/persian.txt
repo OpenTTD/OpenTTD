@@ -2785,6 +2785,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}جنوب
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}قالب آزاد
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}دریا
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}تصادفی
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}تصادفی
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}دستی
 

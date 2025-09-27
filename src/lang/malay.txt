@@ -2527,6 +2527,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Barat da
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Bebas
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Air
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Rambang
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Rambang
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 

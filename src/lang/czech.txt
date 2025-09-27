@@ -3466,6 +3466,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Jihozáp
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}terén
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}voda
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}náhodně
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}náhodně
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}vlastní
 

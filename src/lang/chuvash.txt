@@ -1222,6 +1222,8 @@ STR_MAPGEN_TOWN_NAME_CATALAN                                    :Катталу�
 
 # Strings for map borders at game generation
 
+###length 3
+
 
 
 # SE Map generation

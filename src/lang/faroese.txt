@@ -2524,6 +2524,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Útsynni
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Freeform
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vatn
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Tilvildarligt
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Tilvildarligt
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuelt
 

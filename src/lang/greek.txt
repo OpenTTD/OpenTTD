@@ -3521,6 +3521,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Νοτι
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Ελεύθερη μορφή
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Νερό
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Τυχαία
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Τυχαία
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Χειροκίνητος
 

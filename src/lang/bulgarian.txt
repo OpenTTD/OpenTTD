@@ -3358,6 +3358,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Югоз
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Произволни
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Вода
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Случаен
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Случаен
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Ръчно нагалсени
 

@@ -3256,6 +3256,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Sudokcid
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Libermana
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Akvo
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Hazarde
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Hazarde
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Permane
 

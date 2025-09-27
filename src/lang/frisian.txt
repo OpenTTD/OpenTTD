@@ -2660,6 +2660,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Súdwest
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Frij foarmje
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Wetter
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Samar wat
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Samar wat
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Hânmjittich
 

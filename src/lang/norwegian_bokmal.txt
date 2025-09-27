@@ -3430,6 +3430,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Sørvest
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Frihånds
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Sjø
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Tilfeldig
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Tilfeldige
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuelle
 

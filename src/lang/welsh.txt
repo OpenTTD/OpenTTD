@@ -3414,6 +3414,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}De Orlle
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Ffurfrydd
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Dŵr
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Ar hap
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Ar hap
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Â Llaw
 
