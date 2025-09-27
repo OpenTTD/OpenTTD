@@ -634,7 +634,7 @@ public:
 		} else { // show game info
 			tr.top = DrawStringMultiLine(tr, GetString(STR_NETWORK_SERVER_LIST_CLIENTS, sel->info.clients_on, sel->info.clients_max, sel->info.companies_on, sel->info.companies_max));
 
-			tr.top = DrawStringMultiLine(tr, GetString(STR_NETWORK_SERVER_LIST_LANDSCAPE, STR_CLIMATE_TEMPERATE_LANDSCAPE + to_underlying(sel->info.landscape))); // landscape
+			tr.top = DrawStringMultiLine(tr, GetString(STR_NETWORK_SERVER_LIST_LANDSCAPE, STR_CLIMATE_TEMPERATE_LANDSCAPE + std::to_underlying(sel->info.landscape))); // landscape
 
 			tr.top = DrawStringMultiLine(tr, GetString(STR_NETWORK_SERVER_LIST_MAP_SIZE, sel->info.map_width, sel->info.map_height)); // map size
 

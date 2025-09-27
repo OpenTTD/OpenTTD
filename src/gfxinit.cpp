@@ -190,8 +190,8 @@ static void LoadSpriteTables()
 	 */
 	if (_settings_game.game_creation.landscape != LandscapeType::Temperate) {
 		LoadGrfFileIndexed(
-			used_set->files[GFT_ARCTIC + to_underlying(_settings_game.game_creation.landscape) - 1].filename,
-			_landscape_spriteindexes[to_underlying(_settings_game.game_creation.landscape) - 1],
+			used_set->files[GFT_ARCTIC + std::to_underlying(_settings_game.game_creation.landscape) - 1].filename,
+			_landscape_spriteindexes[std::to_underlying(_settings_game.game_creation.landscape) - 1],
 			PAL_DOS != used_set->palette
 		);
 	}

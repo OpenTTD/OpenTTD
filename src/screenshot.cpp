@@ -247,8 +247,8 @@ static Viewport SetupScreenshotViewport(ScreenshotType t, uint32_t width = 0, ui
 				vp.virtual_width  = w->viewport->virtual_width;
 				vp.virtual_height = w->viewport->virtual_height;
 			} else {
-				vp.virtual_width = width << to_underlying(vp.zoom);
-				vp.virtual_height = height << to_underlying(vp.zoom);
+				vp.virtual_width = width << std::to_underlying(vp.zoom);
+				vp.virtual_height = height << std::to_underlying(vp.zoom);
 			}
 
 			/* Compute pixel coordinates */
