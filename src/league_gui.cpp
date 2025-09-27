@@ -57,7 +57,7 @@ static inline StringID GetPerformanceTitleFromValue(uint value)
 class PerformanceLeagueWindow : public Window {
 private:
 	GUIList<const Company *> companies{};
-	uint ordinal_width = 0; ///< The width of the ordinal number
+	uint rank_width = 0; ///< The width of the rank
 	uint text_width = 0; ///< The width of the actual text
 	int line_height = 0; ///< Height of the text lines
 	Dimension icon{}; ///< Dimension of the company icon.
@@ -110,17 +110,17 @@ public:
 		int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
 
 		bool rtl = _current_text_dir == TD_RTL;
-		Rect ordinal = ir.WithWidth(this->ordinal_width, rtl);
-		Rect icon = ir.Indent(this->ordinal_width + WidgetDimensions::scaled.hsep_wide, rtl).WithWidth(this->icon.width, rtl);
-		Rect text = ir.Indent(this->ordinal_width + this->icon.width + WidgetDimensions::scaled.hsep_wide * 2, rtl);
+		Rect rank_rect = ir.WithWidth(this->rank_width, rtl);
+		Rect icon_rect = ir.Indent(this->rank_width + WidgetDimensions::scaled.hsep_wide, rtl).WithWidth(this->icon.width, rtl);
+		Rect text_rect = ir.Indent(this->rank_width + this->icon.width + WidgetDimensions::scaled.hsep_wide * 2, rtl);
 
 		for (uint i = 0; i != this->companies.size(); i++) {
 			const Company *c = this->companies[i];
-			DrawString(ordinal.left, ordinal.right, ir.top + text_y_offset, GetString(STR_COMPANY_LEAGUE_COMPANY_RANK, i + 1));
+			DrawString(rank_rect.left, rank_rect.right, ir.top + text_y_offset, GetString(STR_COMPANY_LEAGUE_COMPANY_RANK, i + 1));
 
-			DrawCompanyIcon(c->index, icon.left, ir.top + icon_y_offset);
+			DrawCompanyIcon(c->index, icon_rect.left, ir.top + icon_y_offset);
 
-			DrawString(text.left, text.right, ir.top + text_y_offset, GetString(STR_COMPANY_LEAGUE_COMPANY_NAME, c->index, c->index, GetPerformanceTitleFromValue(c->old_economy[0].performance_history)));
+			DrawString(text_rect.left, text_rect.right, ir.top + text_y_offset, GetString(STR_COMPANY_LEAGUE_COMPANY_NAME, c->index, c->index, GetPerformanceTitleFromValue(c->old_economy[0].performance_history)));
 			ir.top += this->line_height;
 		}
 	}
@@ -129,9 +129,9 @@ public:
 	{
 		if (widget != WID_PLT_BACKGROUND) return;
 
-		this->ordinal_width = 0;
+		this->rank_width = 0;
 		for (uint i = 0; i < MAX_COMPANIES; i++) {
-			this->ordinal_width = std::max(this->ordinal_width, GetStringBoundingBox(GetString(STR_COMPANY_LEAGUE_COMPANY_RANK, i + 1)).width);
+			this->rank_width = std::max(this->rank_width, GetStringBoundingBox(GetString(STR_COMPANY_LEAGUE_COMPANY_RANK, i + 1)).width);
 		}
 
 		uint widest_width = 0;
@@ -153,7 +153,7 @@ public:
 
 		this->text_width = widest_width + WidgetDimensions::scaled.hsep_indent * 3; // Keep some extra spacing
 
-		size.width = WidgetDimensions::scaled.framerect.Horizontal() + this->ordinal_width + WidgetDimensions::scaled.hsep_wide + this->icon.width + WidgetDimensions::scaled.hsep_wide + this->text_width;
+		size.width = WidgetDimensions::scaled.framerect.Horizontal() + this->rank_width + WidgetDimensions::scaled.hsep_wide + this->icon.width + WidgetDimensions::scaled.hsep_wide + this->text_width;
 		size.height = this->line_height * MAX_COMPANIES + WidgetDimensions::scaled.framerect.Vertical();
 	}
 
