@@ -752,7 +752,7 @@ static inline void DrawButtonDropdown(const Rect &r, Colours colour, bool clicke
 	Rect text = r.Indent(NWidgetLeaf::dropdown_dimension.width, !rtl);
 	DrawFrameRect(text, colour, clicked_button ? FrameFlag::Lowered : FrameFlags{});
 	if (!str.empty()) {
-		text = text.CentreTo(text.Width(), GetCharacterHeight(FS_NORMAL)).Shrink(WidgetDimensions::scaled.dropdowntext, RectPadding::zero);
+		text = text.CentreToHeight(GetCharacterHeight(FS_NORMAL)).Shrink(WidgetDimensions::scaled.dropdowntext, RectPadding::zero);
 		DrawString(text, str, TC_BLACK, align);
 	}
 

@@ -280,7 +280,7 @@ public:
 		bool rtl = (_current_text_dir == TD_RTL);
 		int w = SETTING_BUTTON_WIDTH;
 
-		Rect br = r.WithWidth(w, TEnd ^ rtl).CentreTo(w, SETTING_BUTTON_HEIGHT);
+		Rect br = r.WithWidth(w, TEnd ^ rtl).CentreToHeight(SETTING_BUTTON_HEIGHT);
 		if (br.WithWidth(w / 2, rtl).Contains(pt)) return this->click_up;
 		if (br.WithWidth(w / 2, !rtl).Contains(pt)) return this->click_down;
 
@@ -298,7 +298,7 @@ public:
 			if (click_result == this->click_down) state = 2;
 		}
 
-		Rect br = r.WithWidth(w, TEnd ^ rtl).CentreTo(w, SETTING_BUTTON_HEIGHT);
+		Rect br = r.WithWidth(w, TEnd ^ rtl).CentreToHeight(SETTING_BUTTON_HEIGHT);
 		DrawUpDownButtons(br.left, br.top, this->button_colour, state, this->click_up != 0, this->click_down != 0);
 
 		this->TBase::Draw(full, r.Indent(w + WidgetDimensions::scaled.hsep_wide, TEnd ^ rtl), sel, click_result, bg_colour);
