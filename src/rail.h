@@ -493,7 +493,9 @@ inline Money RailConvertCost(RailType from, RailType to)
 inline Money RailMaintenanceCost(RailType railtype, uint32_t num, uint32_t total_num)
 {
 	assert(railtype < RAILTYPE_END);
-	return (_price[PR_INFRASTRUCTURE_RAIL] * GetRailTypeInfo(railtype)->maintenance_multiplier * num * (1 + IntSqrt(total_num))) >> 11; // 4 bits fraction for the multiplier and 7 bits scaling.
+	Money cost = (_price[PR_INFRASTRUCTURE_RAIL] * GetRailTypeInfo(railtype)->maintenance_multiplier * num * (1 + IntSqrt(total_num))) >> 11; // 4 bits fraction for the multiplier and 7 bits scaling.
+	if (num != 0 && cost == 0) cost = 1;
+	return cost;
 }
 
 /**
