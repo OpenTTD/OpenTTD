@@ -69,7 +69,7 @@ uint32_t GetTrackTypes(TileIndex tile, const GRFFile *grffile)
 			case 0x43: return TimerGameCalendar::date.base();
 			case 0x44: return to_underlying(HouseZone::TownEdge);
 			case 0x45: {
-				auto rt = GetRoadTypeInfoIndex(this->rti);
+				RoadType rt = this->rti->Index();
 				uint8_t local = GetReverseRoadTypeTranslation(rt, this->ro.grffile);
 				if (local == 0xFF) local = 0xFE;
 				if (RoadTypeIsRoad(rt)) {
