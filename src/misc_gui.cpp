@@ -833,7 +833,7 @@ Rect QueryString::GetBoundingRect(const Window *w, WidgetID wid, size_t from, si
 	const auto p1 = GetCharPosInString(tb->GetText(), from, FS_NORMAL);
 	const auto p2 = from != to ? GetCharPosInString(tb->GetText(), to, FS_NORMAL) : p1;
 
-	return { Clamp(r.left + p1.left, r.left, r.right), r.top, Clamp(r.left + p2.right, r.left, r.right), r.bottom };
+	return r.WithX(Clamp(r.left + p1.left, r.left, r.right), Clamp(r.left + p2.right, r.left, r.right));
 }
 
 /**

@@ -673,7 +673,7 @@ public:
 				case ContentInfo::State::DoesNotExist: sprite = SPR_BLOT; pal = PALETTE_TO_RED; break;
 				default: NOT_REACHED();
 			}
-			DrawSpriteIgnorePadding(sprite, pal, {checkbox.left, mr.top, checkbox.right, mr.bottom}, SA_CENTER);
+			DrawSpriteIgnorePadding(sprite, pal, checkbox.WithY(mr), SA_CENTER);
 
 			StringID str = STR_CONTENT_TYPE_BASE_GRAPHICS + ci->type - CONTENT_TYPE_BASE_GRAPHICS;
 			DrawString(type.left, type.right, mr.top + text_y_offset, str, TC_BLACK, SA_HOR_CENTER);

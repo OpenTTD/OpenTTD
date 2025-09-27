@@ -401,7 +401,7 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t v
 				if (vscroll_pos <= 0 && vscroll_pos > -vscroll_cap) {
 					int py = r.top - line_height * vscroll_pos + text_y_offset;
 					if (i > 0 || separate_sprite_row) {
-						if (vscroll_pos != 0) GfxFillRect(r.left, py - WidgetDimensions::scaled.matrix.top - 1, r.right, py - WidgetDimensions::scaled.matrix.top, GetColourGradient(COLOUR_GREY, SHADE_LIGHT));
+						if (vscroll_pos != 0) GfxFillRect(r.WithY(py - WidgetDimensions::scaled.matrix.top - 1, py - WidgetDimensions::scaled.matrix.top), GetColourGradient(COLOUR_GREY, SHADE_LIGHT));
 					}
 					switch (det_tab) {
 						case TDW_TAB_CARGO:

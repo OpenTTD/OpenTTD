@@ -1030,7 +1030,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 
 		if (has_variants) {
 			Rect fr = tr.WithWidth(circle_width, rtl);
-			DrawSpriteIgnorePadding(is_folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED, PAL_NONE, {fr.left, textr.top, fr.right, textr.bottom}, SA_CENTER);
+			DrawSpriteIgnorePadding(is_folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED, PAL_NONE, fr.WithY(textr), SA_CENTER);
 		}
 
 		tr = tr.Indent(circle_width + WidgetDimensions::scaled.hsep_normal, rtl);

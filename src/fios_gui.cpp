@@ -527,9 +527,9 @@ public:
 					const FiosItem *item = *it;
 
 					if (item == this->selected) {
-						GfxFillRect(br.left, tr.top, br.right, tr.bottom, PC_DARK_BLUE);
+						GfxFillRect(br.WithY(tr), PC_DARK_BLUE);
 					} else if (item == this->highlighted) {
-						GfxFillRect(br.left, tr.top, br.right, tr.bottom, PC_VERY_DARK_BLUE);
+						GfxFillRect(br.WithY(tr), PC_VERY_DARK_BLUE);
 					}
 					DrawString(tr, item->title.GetDecodedString(), _fios_colours[item->type.detailed]);
 					tr = tr.Translate(0, this->resize.step_height);
