@@ -261,6 +261,32 @@ public:
 };
 
 /**
+ * Drop down spacer component.
+ * @tparam TBase Base component.
+ * @tparam TEnd Position space at end if true, or start if false.
+ */
+template <class TBase, bool TEnd = false>
+class DropDownSpacer : public TBase {
+public:
+	template <typename... Args>
+	explicit DropDownSpacer(Args&&... args) : TBase(std::forward<Args>(args)...) {}
+
+	uint Width() const override { return WidgetDimensions::scaled.hsep_wide + this->TBase::Width(); }
+
+	int OnClick(const Rect &r, const Point &pt) const override
+	{
+		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+		return this->TBase::OnClick(r.Indent(WidgetDimensions::scaled.hsep_wide, rtl), pt);
+	}
+
+	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
+	{
+		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+		this->TBase::Draw(full, r.Indent(WidgetDimensions::scaled.hsep_wide, rtl), sel, click_result, bg_colour);
+	}
+};
+
+/**
  * Drop down component that makes the item unselectable.
  * @tparam TBase Base component.
  */
