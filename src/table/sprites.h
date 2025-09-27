@@ -321,8 +321,16 @@ static const uint16_t ROAD_WAYPOINTS_SPRITE_COUNT = 4;
 static constexpr SpriteID SPR_OVERLAY_ROCKS_BASE = SPR_ROAD_WAYPOINTS_BASE + ROAD_WAYPOINTS_SPRITE_COUNT;
 static constexpr uint16_t OVERLAY_ROCKS_SPRITE_COUNT = 19 * 5; /* Rock overlays: plain, snow 1, snow 2, snow 3 and full snow. */
 
+/** Bridge deck sprites. */
+static constexpr SpriteID SPR_BRIDGE_DECKS_BASE = SPR_OVERLAY_ROCKS_BASE + OVERLAY_ROCKS_SPRITE_COUNT;
+static constexpr uint16_t BRIDGE_DECKS_SPRITE_COUNT = 6 * 4; /* Bridge deck sprites: 6 directions * (3 track types + 1 road type). */
+static const SpriteID SPR_BRIDGE_DECKS_RAIL = SPR_BRIDGE_DECKS_BASE + 0;
+static const SpriteID SPR_BRIDGE_DECKS_MONO = SPR_BRIDGE_DECKS_BASE + 6;
+static const SpriteID SPR_BRIDGE_DECKS_MGLV = SPR_BRIDGE_DECKS_BASE + 12;
+static const SpriteID SPR_BRIDGE_DECKS_ROAD = SPR_BRIDGE_DECKS_BASE + 18;
+
 /* From where can we start putting NewGRFs? */
-static const SpriteID SPR_NEWGRFS_BASE = SPR_OVERLAY_ROCKS_BASE + OVERLAY_ROCKS_SPRITE_COUNT;
+static const SpriteID SPR_NEWGRFS_BASE = SPR_BRIDGE_DECKS_BASE + BRIDGE_DECKS_SPRITE_COUNT;
 
 /* Manager face sprites */
 static const SpriteID SPR_GRADIENT = 874; // background gradient behind manager face
