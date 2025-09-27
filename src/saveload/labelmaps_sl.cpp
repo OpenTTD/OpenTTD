@@ -38,17 +38,25 @@ struct RAILChunkHandler : ChunkHandler {
 
 	static inline const SaveLoad description[] = {
 		SLE_VAR(LabelObject<RailTypeLabel>, label, SLE_UINT32),
+		SLE_VAR(LabelObject<RailTypeLabel>, index, SLE_UINT8),
 	};
 
 	void Save() const override
 	{
 		SlTableHeader(description);
 
+		int index = 0;
 		LabelObject<RailTypeLabel> lo;
-		for (RailType r = RAILTYPE_BEGIN; r != RAILTYPE_END; r++) {
-			lo.label = GetRailTypeInfo(r)->label;
+		for (const RailTypeInfo &rti : GetRailTypeInfo()) {
+			if (rti.label == 0) continue;
 
-			SlSetArrayIndex(r);
+			MapRailType map_railtype = _railtype_mapping.GetMappedType(rti.Index());
+			if (map_railtype == RailTypeMapping::INVALID_MAP_TYPE) continue;
+
+			lo.label = rti.label;
+			lo.index = map_railtype.base();
+
+			SlSetArrayIndex(index++);
 			SlObject(&lo, description);
 		}
 	}
@@ -56,13 +64,16 @@ struct RAILChunkHandler : ChunkHandler {
 	void Load() const override
 	{
 		const std::vector<SaveLoad> slt = SlCompatTableHeader(description, _label_object_sl_compat);
+		bool convert = IsSavegameVersionBefore(SLV_TRANSPORT_TYPE_MAPPING);
 
-		_railtype_list.reserve(RAILTYPE_END);
+		_railtype_list.reserve(RailTypeMapping::MAX_SIZE);
 
 		LabelObject<RailTypeLabel> lo;
 
-		while (SlIterateArray() != -1) {
+		int index;
+		while ((index = SlIterateArray()) != -1) {
 			SlObject(&lo, slt);
+			if (convert) lo.index = index;
 			_railtype_list.push_back(lo);
 		}
 	}
@@ -73,6 +84,7 @@ struct ROTTChunkHandler : ChunkHandler {
 
 	static inline const SaveLoad description[] = {
 		SLE_VAR(LabelObject<RoadTypeLabel>, label, SLE_UINT32),
+		SLE_VAR(LabelObject<RoadTypeLabel>, index, SLE_UINT8),
 		SLE_VAR(LabelObject<RoadTypeLabel>, subtype, SLE_UINT8),
 	};
 
@@ -80,13 +92,27 @@ struct ROTTChunkHandler : ChunkHandler {
 	{
 		SlTableHeader(description);
 
+		int index = 0;
 		LabelObject<RoadTypeLabel> lo;
-		for (RoadType r = ROADTYPE_BEGIN; r != ROADTYPE_END; r++) {
-			const RoadTypeInfo *rti = GetRoadTypeInfo(r);
-			lo.label = rti->label;
-			lo.subtype = GetRoadTramType(r);
+		for (const RoadTypeInfo &rti : GetRoadTypeInfo()) {
+			if (rti.label == 0) continue;
 
-			SlSetArrayIndex(r);
+			if (GetRoadTramType(rti.Index()) == RTT_ROAD) {
+				MapRoadType map_roadtype = _roadtype_mapping.GetMappedType(rti.Index());
+				if (map_roadtype == RoadTypeMapping::INVALID_MAP_TYPE) continue;
+
+				lo.index = map_roadtype.base();
+			} else {
+				MapTramType map_tramtype = _tramtype_mapping.GetMappedType(rti.Index());
+				if (map_tramtype == TramTypeMapping::INVALID_MAP_TYPE) continue;
+
+				lo.index = map_tramtype.base();
+			}
+
+			lo.label = rti.label;
+			lo.subtype = GetRoadTramType(rti.Index());
+
+			SlSetArrayIndex(index++);
 			SlObject(&lo, description);
 		}
 	}
@@ -94,13 +120,16 @@ struct ROTTChunkHandler : ChunkHandler {
 	void Load() const override
 	{
 		const std::vector<SaveLoad> slt = SlCompatTableHeader(description, _label_object_sl_compat);
+		bool convert = IsSavegameVersionBefore(SLV_TRANSPORT_TYPE_MAPPING);
 
-		_roadtype_list.reserve(ROADTYPE_END);
+		_roadtype_list.reserve(64);
 
 		LabelObject<RoadTypeLabel> lo;
 
-		while (SlIterateArray() != -1) {
+		int index;
+		while ((index = SlIterateArray()) != -1) {
 			SlObject(&lo, slt);
+			if (convert) lo.index = index;
 			_roadtype_list.push_back(lo);
 		}
 	}

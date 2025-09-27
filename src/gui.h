@@ -10,6 +10,8 @@
 #ifndef GUI_H
 #define GUI_H
 
+#include "rail_type.h"
+#include "road_type.h"
 #include "strings_type.h"
 #include "vehicle_type.h"
 #include "economy_type.h"
@@ -72,7 +74,7 @@ void ShowExtraViewportWindow(TileIndex tile = INVALID_TILE);
 void ShowExtraViewportWindowForTileUnderCursor();
 
 /* bridge_gui.cpp */
-void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transport_type, uint8_t bridge_type);
+void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transport_type, RailType railtype, RoadType roadtype);
 
 /* music_gui.cpp */
 void ShowMusicWindow();

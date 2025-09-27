@@ -10,6 +10,8 @@
 #include "stdafx.h"
 #include "rail_map.h"
 #include "road_map.h"
+#include "station_map.h"
+#include "tunnelbridge_map.h"
 #include "water_map.h"
 #include "genworld.h"
 #include "company_func.h"
@@ -22,6 +24,17 @@
 #include "roadveh.h"
 
 #include "safeguards.h"
+
+/**
+ * Get the RoadType for this RoadTypeInfo.
+ * @return RoadType in static RoadTypeInfo definitions.
+ */
+RoadType RoadTypeInfo::Index() const
+{
+	size_t index = this - GetRoadTypeInfo().data();
+	assert(index < GetNumRoadTypes());
+	return static_cast<RoadType>(index);
+}
 
 /**
  * Return if the tile is a valid tile for a crossing.
@@ -123,13 +136,14 @@ bool HasRoadTypeAvail(const CompanyID company, RoadType roadtype)
 		 * owned by towns. So if a town may build it, it should be buildable by them too.
 		 */
 		return !rti->flags.Test( RoadTypeFlag::Hidden) || rti->flags.Test( RoadTypeFlag::TownBuild);
-	} else {
-		const Company *c = Company::GetIfValid(company);
-		if (c == nullptr) return false;
-		RoadTypes avail = c->avail_roadtypes;
-		avail.Reset(_roadtypes_hidden_mask);
-		return avail.Test(roadtype);
 	}
+
+	if (_roadtypes_hidden_mask.Test(roadtype)) return false;
+
+	const Company *c = Company::GetIfValid(company);
+	if (c == nullptr) return false;
+
+	return c->avail_roadtypes.Test(roadtype);
 }
 
 /**
@@ -151,7 +165,7 @@ bool HasAnyRoadTypesAvail(CompanyID company, RoadTramType rtt)
  */
 bool ValParamRoadType(RoadType roadtype)
 {
-	return roadtype < ROADTYPE_END && HasRoadTypeAvail(_current_company, roadtype);
+	return roadtype < GetNumRoadTypes() && HasRoadTypeAvail(_current_company, roadtype);
 }
 
 /**
@@ -162,26 +176,24 @@ bool ValParamRoadType(RoadType roadtype)
  * @return The road types that should be available when date
  *         introduced road types are taken into account as well.
  */
-RoadTypes AddDateIntroducedRoadTypes(RoadTypes current, TimerGameCalendar::Date date)
+RoadTypes AddDateIntroducedRoadTypes(const RoadTypes &current, TimerGameCalendar::Date date)
 {
 	RoadTypes rts = current;
 
-	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
-		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
+	for (RoadTypeInfo &rti : GetRoadTypeInfo()) {
 		/* Unused road type. */
-		if (rti->label == 0) continue;
+		if (rti.label == 0) continue;
 
 		/* Not date introduced. */
-		if (!IsInsideMM(rti->introduction_date, 0, CalendarTime::MAX_DATE.base())) continue;
+		if (!IsInsideMM(rti.introduction_date, 0, CalendarTime::MAX_DATE.base())) continue;
 
 		/* Not yet introduced at this date. */
-		if (rti->introduction_date > date) continue;
+		if (rti.introduction_date > date) continue;
 
 		/* Have we introduced all required roadtypes? */
-		RoadTypes required = rti->introduction_required_roadtypes;
-		if (!rts.All(required)) continue;
+		if (!rts.All(rti.introduction_required_roadtypes)) continue;
 
-		rts.Set(rti->introduces_roadtypes);
+		rts.Set(rti.introduces_roadtypes);
 	}
 
 	/* When we added roadtypes we need to run this method again; the added
@@ -205,7 +217,7 @@ RoadTypes GetCompanyRoadTypes(CompanyID company, bool introduces)
 		if (ei->climates.Test(_settings_game.game_creation.landscape) &&
 				(e->company_avail.Test(company) || TimerGameCalendar::date >= e->intro_date + CalendarTime::DAYS_IN_YEAR)) {
 			const RoadVehicleInfo *rvi = &e->VehInfo<RoadVehicleInfo>();
-			assert(rvi->roadtype < ROADTYPE_END);
+			assert(rvi->roadtype < GetNumRoadTypes());
 			if (introduces) {
 				rts.Set(GetRoadTypeInfo(rvi->roadtype)->introduces_roadtypes);
 			} else {
@@ -232,7 +244,7 @@ RoadTypes GetRoadTypes(bool introduces)
 		if (!ei->climates.Test(_settings_game.game_creation.landscape)) continue;
 
 		const RoadVehicleInfo *rvi = &e->VehInfo<RoadVehicleInfo>();
-		assert(rvi->roadtype < ROADTYPE_END);
+		assert(rvi->roadtype < GetNumRoadTypes());
 		if (introduces) {
 			rts.Set(GetRoadTypeInfo(rvi->roadtype)->introduces_roadtypes);
 		} else {
@@ -252,22 +264,60 @@ RoadTypes GetRoadTypes(bool introduces)
  */
 RoadType GetRoadTypeByLabel(RoadTypeLabel label, bool allow_alternate_labels)
 {
+	auto roadtypes = GetRoadTypeInfo();
+
 	if (label == 0) return INVALID_ROADTYPE;
 
-	/* Loop through each road type until the label is found */
-	for (RoadType r = ROADTYPE_BEGIN; r != ROADTYPE_END; r++) {
-		const RoadTypeInfo *rti = GetRoadTypeInfo(r);
-		if (rti->label == label) return r;
+	auto it = std::ranges::find(roadtypes, label, &RoadTypeInfo::label);
+	if (it == std::end(roadtypes) && allow_alternate_labels) {
+		/* Test if any road type defines the label as an alternate. */
+		it = std::ranges::find_if(roadtypes, [label](const RoadTypeInfo &rti) {
+			return std::ranges::find(rti.alternate_labels, label) != rti.alternate_labels.end();
+		});
 	}
 
-	if (allow_alternate_labels) {
-		/* Test if any road type defines the label as an alternate. */
-		for (RoadType r = ROADTYPE_BEGIN; r != ROADTYPE_END; r++) {
-			const RoadTypeInfo *rti = GetRoadTypeInfo(r);
-			if (std::ranges::find(rti->alternate_labels, label) != rti->alternate_labels.end()) return r;
-		}
-	}
+	if (it != std::end(roadtypes)) return it->Index();
 
 	/* No matching label was found, so it is invalid */
 	return INVALID_ROADTYPE;
 }
+
+static RoadTypes GetUsedRoadTypes(RoadTramType rtt)
+{
+	RoadTypes used_types;
+	for (const Company *c : Company::Iterate()) {
+		for (const auto &[roadtype, count] : c->infrastructure.road) {
+			if (count > 0 && GetRoadTramType(roadtype) == rtt) used_types.Set(roadtype);
+		}
+	}
+
+	for (const auto &[roadtype, count] : RoadTypeInfo::infrastructure_counts) {
+		if (count > 0 && GetRoadTramType(roadtype) == rtt) used_types.Set(roadtype);
+	}
+	return used_types;
+}
+
+template <> auto RoadTypeMapping::FindUnusedMapType() -> MapStorage::iterator
+{
+	RoadTypes used_types = GetUsedRoadTypes(RoadTramType::RTT_ROAD);
+	if (used_types.size() < RoadTypeMapping::MAX_SIZE) {
+		for (auto it = std::begin(this->map); it != std::end(this->map); ++it) {
+			if (!used_types.contains(*it)) return it;
+		}
+	}
+	return std::end(this->map);
+}
+
+template <> auto TramTypeMapping::FindUnusedMapType() -> MapStorage::iterator
+{
+	RoadTypes used_types = GetUsedRoadTypes(RoadTramType::RTT_TRAM);
+	if (used_types.size() < RoadTypeMapping::MAX_SIZE) {
+		for (auto it = std::begin(this->map); it != std::end(this->map); ++it) {
+			if (!used_types.contains(*it)) return it;
+		}
+	}
+	return std::end(this->map);
+}
+
+RoadTypeMapping _roadtype_mapping;
+TramTypeMapping _tramtype_mapping;
