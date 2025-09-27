@@ -942,6 +942,13 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}New {STRING} now available!  -  {ENGINE}
 
+STR_NEWS_ENGINE_PREVIEW_SUCCESSFUL_HEADLINE                     :{BIG_FONT}{BLACK}Vehicle manufacturer is very glad for our contribution in performance inspection of new {STRING}!
+STR_NEWS_ENGINE_PREVIEW_FAILED_HEADLINE                         :{BIG_FONT}{BLACK}Vehicle manufacturer is disappointed with our lack of contribution in performance inspection of new {STRING}!
+STR_NEWS_ENGINE_PREVIEW_SUCCESSFUL                              :{BLACK}Vehicle manufacturer is very glad for our contribution in performance inspection of {ENGINE}{BLACK}!
+STR_NEWS_ENGINE_PREVIEW_FAILED                                  :{BLACK}Vehicle manufacturer is disappointed with our lack of contribution in performance inspection of {ENGINE}{BLACK}!
+STR_NEWS_ENGINE_PREVIEW_REWARD                                  :{BIG_FONT}{BLACK}We were paid {GREEN}{CURRENCY_LONG}{BLACK} as a reward.
+STR_NEWS_ENGINE_PREVIEW_FINE                                    :{BIG_FONT}{BLACK}We were forced to pay a fine of {RED}{CURRENCY_LONG}{BLACK}!
+
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Open the group window focused on the vehicle's group
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST                   :{WHITE}{STATION} no longer accepts: {CARGO_LIST}
