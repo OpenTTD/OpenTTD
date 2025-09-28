@@ -240,24 +240,24 @@ private:
 	 */
 	uint ComputeGroupInfoSize()
 	{
-		this->column_size[VGC_FOLD] = maxdim(GetSpriteSize(SPR_CIRCLE_FOLDED), GetSpriteSize(SPR_CIRCLE_UNFOLDED));
+		this->column_size[VGC_FOLD] = maxdim(GetScaledSpriteSize(SPR_CIRCLE_FOLDED), GetScaledSpriteSize(SPR_CIRCLE_UNFOLDED));
 		this->tiny_step_height = this->column_size[VGC_FOLD].height;
 
 		this->column_size[VGC_NAME] = maxdim(GetStringBoundingBox(STR_GROUP_DEFAULT_TRAINS + this->vli.vtype), GetStringBoundingBox(STR_GROUP_ALL_TRAINS + this->vli.vtype));
 		this->column_size[VGC_NAME].width = std::max(170u, this->column_size[VGC_NAME].width) + WidgetDimensions::scaled.hsep_indent;
 		this->tiny_step_height = std::max(this->tiny_step_height, this->column_size[VGC_NAME].height);
 
-		this->column_size[VGC_PROTECT] = GetSpriteSize(SPR_GROUP_REPLACE_PROTECT);
+		this->column_size[VGC_PROTECT] = GetScaledSpriteSize(SPR_GROUP_REPLACE_PROTECT);
 		this->tiny_step_height = std::max(this->tiny_step_height, this->column_size[VGC_PROTECT].height);
 
-		this->column_size[VGC_AUTOREPLACE] = GetSpriteSize(SPR_GROUP_REPLACE_ACTIVE);
+		this->column_size[VGC_AUTOREPLACE] = GetScaledSpriteSize(SPR_GROUP_REPLACE_ACTIVE);
 		this->tiny_step_height = std::max(this->tiny_step_height, this->column_size[VGC_AUTOREPLACE].height);
 
 		this->column_size[VGC_PROFIT].width = 0;
 		this->column_size[VGC_PROFIT].height = 0;
 		static const SpriteID profit_sprites[] = {SPR_PROFIT_NA, SPR_PROFIT_NEGATIVE, SPR_PROFIT_SOME, SPR_PROFIT_LOT};
 		for (const auto &profit_sprite : profit_sprites) {
-			Dimension d = GetSpriteSize(profit_sprite);
+			Dimension d = GetScaledSpriteSize(profit_sprite);
 			this->column_size[VGC_PROFIT] = maxdim(this->column_size[VGC_PROFIT], d);
 		}
 		this->tiny_step_height = std::max(this->tiny_step_height, this->column_size[VGC_PROFIT].height);
