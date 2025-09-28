@@ -47,7 +47,7 @@
 
 void Aircraft::UpdateDeltaXY()
 {
-	this->bounds = {{-1, -1, 0}, {2, 2, 0}, {}};
+	this->bounds = { {-1, -1, 0}, {2, 2, 0}, {} };
 
 	switch (this->subtype) {
 		default: NOT_REACHED();
@@ -250,10 +250,10 @@ void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height, int &xoff
 	Rect rect;
 	seq.GetBounds(&rect);
 
-	width  = UnScaleGUI(rect.Width());
+	width = UnScaleGUI(rect.Width());
 	height = UnScaleGUI(rect.Height());
-	xoffs  = UnScaleGUI(rect.left);
-	yoffs  = UnScaleGUI(rect.top);
+	xoffs = UnScaleGUI(rect.left);
+	yoffs = UnScaleGUI(rect.top);
 }
 
 /**
@@ -295,8 +295,8 @@ CommandCost CmdBuildAircraft(DoCommandFlags flags, TileIndex tile, const Engine 
 		u->z_pos = GetSlopePixelZ(x, y);
 		v->z_pos = u->z_pos + 1;
 
-		v->vehstatus = {VehState::Hidden, VehState::Stopped, VehState::DefaultPalette};
-		u->vehstatus = {VehState::Hidden, VehState::Unclickable, VehState::Shadow};
+		v->vehstatus = { VehState::Hidden, VehState::Stopped, VehState::DefaultPalette };
+		u->vehstatus = { VehState::Hidden, VehState::Unclickable, VehState::Shadow };
 
 		v->spritenum = avi->image_index;
 
@@ -374,7 +374,7 @@ CommandCost CmdBuildAircraft(DoCommandFlags flags, TileIndex tile, const Engine 
 			w->x_pos = v->x_pos;
 			w->y_pos = v->y_pos;
 			w->z_pos = v->z_pos + ROTOR_Z_OFFSET;
-			w->vehstatus = {VehState::Hidden, VehState::Unclickable};
+			w->vehstatus = { VehState::Hidden, VehState::Unclickable };
 			w->spritenum = 0xFF;
 			w->subtype = AIR_ROTOR;
 			w->sprite_cache.sprite_seq.Set(SPR_ROTOR_STOPPED);
@@ -786,9 +786,9 @@ int GetAircraftFlightLevel(T *v, bool takeoff)
 		SetBit(v->flags, VAF_IN_MIN_HEIGHT_CORRECTION);
 		z += takeoff ? 2 : 1;
 	} else if (!takeoff && (z > aircraft_max_altitude ||
-			(HasBit(v->flags, VAF_IN_MAX_HEIGHT_CORRECTION) && z > aircraft_middle_altitude))) {
-		/* Descend lower. You are an aircraft, not an space ship.
-		 * And again, don't stop correcting altitude too early. */
+		(HasBit(v->flags, VAF_IN_MAX_HEIGHT_CORRECTION) && z > aircraft_middle_altitude))) {
+	/* Descend lower. You are an aircraft, not an space ship.
+	 * And again, don't stop correcting altitude too early. */
 		SetBit(v->flags, VAF_IN_MAX_HEIGHT_CORRECTION);
 		z--;
 	} else if (HasBit(v->flags, VAF_IN_MIN_HEIGHT_CORRECTION) && z >= aircraft_middle_altitude) {
@@ -986,7 +986,7 @@ static bool AircraftController(Aircraft *v)
 	}
 
 	/* Get distance from destination pos to current pos. */
-	uint dist = abs(x + amd.x - v->x_pos) +  abs(y + amd.y - v->y_pos);
+	uint dist = abs(x + amd.x - v->x_pos) + abs(y + amd.y - v->y_pos);
 
 	/* Need exact position? */
 	if (!amd.flags.Test(AirportMovingDataFlag::ExactPosition) && dist <= (amd.flags.Test(AirportMovingDataFlag::SlowTurn) ? 8U : 4U)) return true;
@@ -1020,9 +1020,15 @@ static bool AircraftController(Aircraft *v)
 	bool hard_limit = true;
 
 	if (amd.flags.Test(AirportMovingDataFlag::NoSpeedClamp)) speed_limit = SPEED_LIMIT_NONE;
-	if (amd.flags.Test(AirportMovingDataFlag::Hold)) { speed_limit = SPEED_LIMIT_HOLD;     hard_limit = false; }
-	if (amd.flags.Test(AirportMovingDataFlag::Land)) { speed_limit = SPEED_LIMIT_APPROACH; hard_limit = false; }
-	if (amd.flags.Test(AirportMovingDataFlag::Brake)) { speed_limit = SPEED_LIMIT_TAXI;     hard_limit = false; }
+	if (amd.flags.Test(AirportMovingDataFlag::Hold)) {
+		speed_limit = SPEED_LIMIT_HOLD;     hard_limit = false;
+	}
+	if (amd.flags.Test(AirportMovingDataFlag::Land)) {
+		speed_limit = SPEED_LIMIT_APPROACH; hard_limit = false;
+	}
+	if (amd.flags.Test(AirportMovingDataFlag::Brake)) {
+		speed_limit = SPEED_LIMIT_TAXI;     hard_limit = false;
+	}
 
 	int count = UpdateAircraftSpeed(v, speed_limit, hard_limit);
 	if (count == 0) return false;
@@ -1043,13 +1049,13 @@ static bool AircraftController(Aircraft *v)
 		if (nudge_towards_target || amd.flags.Test(AirportMovingDataFlag::Land)) {
 			/* move vehicle one pixel towards target */
 			gp.x = (v->x_pos != (x + amd.x)) ?
-					v->x_pos + ((x + amd.x > v->x_pos) ? 1 : -1) :
-					v->x_pos;
+				v->x_pos + ((x + amd.x > v->x_pos) ? 1 : -1) :
+				v->x_pos;
 			gp.y = (v->y_pos != (y + amd.y)) ?
-					v->y_pos + ((y + amd.y > v->y_pos) ? 1 : -1) :
-					v->y_pos;
+				v->y_pos + ((y + amd.y > v->y_pos) ? 1 : -1) :
+				v->y_pos;
 
-			/* Oilrigs must keep v->tile as st->airport.tile, since the landing pad is in a non-airport tile */
+		/* Oilrigs must keep v->tile as st->airport.tile, since the landing pad is in a non-airport tile */
 			gp.new_tile = (st->airport.type == AT_OILRIG) ? st->airport.tile : TileVirtXY(gp.x, gp.y);
 
 		} else {
@@ -1093,7 +1099,7 @@ static bool AircraftController(Aircraft *v)
 
 		v->tile = gp.new_tile;
 		/* If vehicle is in the air, use tile coordinate 0. */
-		if (amd.flags.Any({AirportMovingDataFlag::Takeoff, AirportMovingDataFlag::SlowTurn, AirportMovingDataFlag::Land})) v->tile = TileIndex{};
+		if (amd.flags.Any({ AirportMovingDataFlag::Takeoff, AirportMovingDataFlag::SlowTurn, AirportMovingDataFlag::Land })) v->tile = TileIndex{};
 
 		/* Adjust Z for land or takeoff? */
 		int z = v->z_pos;
@@ -1103,7 +1109,7 @@ static bool AircraftController(Aircraft *v)
 		} else if (amd.flags.Test(AirportMovingDataFlag::Hold)) {
 			/* Let the plane drop from normal flight altitude to holding pattern altitude */
 			if (z > GetAircraftHoldMaxAltitude(v)) z--;
-		} else if (amd.flags.All({AirportMovingDataFlag::SlowTurn, AirportMovingDataFlag::NoSpeedClamp})) {
+		} else if (amd.flags.All({ AirportMovingDataFlag::SlowTurn, AirportMovingDataFlag::NoSpeedClamp })) {
 			z = GetAircraftFlightLevel(v);
 		}
 
@@ -1114,7 +1120,7 @@ static bool AircraftController(Aircraft *v)
 		 * We also know that the airport itself has to be completely flat (otherwise it is not a valid airport).
 		 * Therefore, use the height of this hangar to calculate our z-value. */
 		int airport_z = v->z_pos;
-		if (amd.flags.Any({AirportMovingDataFlag::Land, AirportMovingDataFlag::Brake}) && st != nullptr) {
+		if (amd.flags.Any({ AirportMovingDataFlag::Land, AirportMovingDataFlag::Brake }) && st != nullptr) {
 			assert(st->airport.HasHangar());
 			TileIndex hangar_tile = st->airport.GetHangarTile(0);
 			airport_z = GetTileMaxPixelZ(hangar_tile) + 1; // To avoid clashing with the shadow
@@ -1179,7 +1185,7 @@ static bool HandleCrashedAircraft(Aircraft *v)
 	Station *st = GetTargetAirportIfValid(v);
 
 	/* make aircraft crash down to the ground */
-	if (v->crashed_counter < 500 && st == nullptr && ((v->crashed_counter % 3) == 0) ) {
+	if (v->crashed_counter < 500 && st == nullptr && ((v->crashed_counter % 3) == 0)) {
 		int z = GetSlopePixelZ(Clamp(v->x_pos, 0, Map::MaxX() * TILE_SIZE), Clamp(v->y_pos, 0, Map::MaxY() * TILE_SIZE));
 		v->z_pos -= 1;
 		if (v->z_pos <= z) {
@@ -1693,11 +1699,9 @@ static void AircraftEventHandler_Flying(Aircraft *v, const AirportFTAClass *apc)
 		}
 	}
 
-	/**
-	 * If the aircraft is in the air and there are no valid airport left then crash.
-	 */
-	if(st == nullptr || st->airport.tile == INVALID_TILE) {
-		if(v->current_order_time > 15000){
+	/* If the aircraft is in the air and there are no valid airport left then crash. */
+	if (st == nullptr || st->airport.tile == INVALID_TILE) {
+		if (v->current_order_time > Ticks::DAY_TICKS * 5) {
 			CrashAirplane(v);
 			return;
 		}
@@ -1766,7 +1770,7 @@ static void AircraftEventHandler_HeliEndLanding(Aircraft *v, const AirportFTACla
  */
 typedef void AircraftStateHandler(Aircraft *v, const AirportFTAClass *apc);
 /** Array of handler functions for each target of the aircraft. */
-static AircraftStateHandler * const _aircraft_state_handlers[] = {
+static AircraftStateHandler *const _aircraft_state_handlers[] = {
 	AircraftEventHandler_General,        // TO_ALL         =  0
 	AircraftEventHandler_InHangar,       // HANGAR         =  1
 	AircraftEventHandler_AtTerminal,     // TERM1          =  2
@@ -1822,7 +1826,7 @@ static bool AirportMove(Aircraft *v, const AirportFTAClass *apc)
 {
 	/* error handling */
 	if (v->pos >= apc->nofelements) {
-		Debug(misc, 0, "[Ap] position {} is not valid for current airport. Max position is {}", v->pos, apc->nofelements-1);
+		Debug(misc, 0, "[Ap] position {} is not valid for current airport. Max position is {}", v->pos, apc->nofelements - 1);
 		assert(v->pos < apc->nofelements);
 	}
 
