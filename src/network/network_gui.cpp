@@ -1442,7 +1442,7 @@ protected:
 	{
 		bool rtl = _current_text_dir == TD_RTL;
 		for (auto &button : buttons) {
-			Rect br = r.CentreTo(r.Width(), button->height).WithWidth(button->width, !rtl);
+			Rect br = r.CentreToHeight(button->height).WithWidth(button->width, !rtl);
 			DrawFrameRect(br, button->colour, {});
 			DrawSpriteIgnorePadding(button->sprite, PAL_NONE, br, SA_CENTER);
 			if (button->disabled) {
@@ -1467,7 +1467,7 @@ public:
 		PaletteID pal = Company::IsValidID(this->company_id) ? GetCompanyPalette(this->company_id) : PALETTE_TO_GREY;
 		DrawSpriteIgnorePadding(SPR_COMPANY_ICON, pal, r.WithWidth(d.width, rtl), SA_CENTER);
 
-		Rect tr = r.CentreTo(r.Width(), GetCharacterHeight(FS_NORMAL)).Indent(d.width + WidgetDimensions::scaled.hsep_normal, rtl);
+		Rect tr = r.CentreToHeight(GetCharacterHeight(FS_NORMAL)).Indent(d.width + WidgetDimensions::scaled.hsep_normal, rtl);
 		if (this->company_id == COMPANY_SPECTATOR) {
 			DrawString(tr, STR_NETWORK_CLIENT_LIST_SPECTATORS, TC_SILVER);
 		} else if (this->company_id == COMPANY_NEW_COMPANY) {
@@ -1493,7 +1493,7 @@ public:
 		bool rtl = _current_text_dir == TD_RTL;
 		r = this->DrawButtons(r);
 
-		Rect tr = r.CentreTo(r.Width(), GetCharacterHeight(FS_NORMAL));
+		Rect tr = r.CentreToHeight(GetCharacterHeight(FS_NORMAL));
 
 		SpriteID player_icon = 0;
 		if (ci->client_id == _network_own_client_id) {

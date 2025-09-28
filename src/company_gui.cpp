@@ -1333,8 +1333,8 @@ public:
 				Rect ir = r.Shrink(WidgetDimensions::scaled.frametext, RectPadding::zero).WithHeight(this->line_height);
 				bool rtl = _current_text_dir == TD_RTL;
 
-				Rect br = ir.CentreTo(ir.Width(), SETTING_BUTTON_HEIGHT).WithWidth(SETTING_BUTTON_WIDTH, rtl);
-				Rect tr = ir.Shrink(RectPadding::zero, WidgetDimensions::scaled.matrix).CentreTo(ir.Width(), GetCharacterHeight(FS_NORMAL)).Indent(SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide, rtl);
+				Rect br = ir.CentreToHeight(SETTING_BUTTON_HEIGHT).WithWidth(SETTING_BUTTON_WIDTH, rtl);
+				Rect tr = ir.Shrink(RectPadding::zero, WidgetDimensions::scaled.matrix).CentreToHeight(GetCharacterHeight(FS_NORMAL)).Indent(SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide, rtl);
 
 				DrawArrowButtons(br.left, br.top, COLOUR_YELLOW, this->selected_var == UINT_MAX - 1 ? this->click_state : 0, true, true);
 				DrawString(tr, GetString(STR_FACE_SETTING_NUMERIC, STR_FACE_STYLE, this->face.style + 1, GetNumCompanyManagerFaceStyles()), TC_WHITE);
@@ -1352,8 +1352,8 @@ public:
 					const uint8_t var = static_cast<uint8_t>(*it - vars.data());
 					const FaceVar &facevar = **it;
 
-					Rect br = ir.CentreTo(ir.Width(), SETTING_BUTTON_HEIGHT).WithWidth(SETTING_BUTTON_WIDTH, rtl);
-					Rect tr = ir.Shrink(RectPadding::zero, WidgetDimensions::scaled.matrix).CentreTo(ir.Width(), GetCharacterHeight(FS_NORMAL)).Indent(SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide, rtl);
+					Rect br = ir.CentreToHeight(SETTING_BUTTON_HEIGHT).WithWidth(SETTING_BUTTON_WIDTH, rtl);
+					Rect tr = ir.Shrink(RectPadding::zero, WidgetDimensions::scaled.matrix).CentreToHeight(GetCharacterHeight(FS_NORMAL)).Indent(SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide, rtl);
 
 					uint val = vars[var].GetBits(this->face);
 					if (facevar.type == FaceVarType::Toggle) {

@@ -216,7 +216,7 @@ public:
 		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
 		int w = SETTING_BUTTON_WIDTH;
 
-		if (r.WithWidth(w, rtl).CentreTo(w, SETTING_BUTTON_HEIGHT).Contains(pt)) return this->click;
+		if (r.WithWidth(w, rtl).CentreToHeight(SETTING_BUTTON_HEIGHT).Contains(pt)) return this->click;
 
 		return this->TBase::OnClick(r.Indent(w + WidgetDimensions::scaled.hsep_wide, rtl), pt);
 	}
@@ -226,7 +226,7 @@ public:
 		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
 		int w = SETTING_BUTTON_WIDTH;
 
-		Rect br = r.WithWidth(w, rtl).CentreTo(w, SETTING_BUTTON_HEIGHT);
+		Rect br = r.WithWidth(w, rtl).CentreToHeight(SETTING_BUTTON_HEIGHT);
 		DrawBoolButton(br.left, br.top, this->button_colour, this->background_colour, this->on, true);
 
 		this->TBase::Draw(full, r.Indent(w + WidgetDimensions::scaled.hsep_wide, rtl), sel, click_result, bg_colour);
