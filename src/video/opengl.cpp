@@ -697,14 +697,13 @@ std::optional<std::string_view> OpenGLBackend::Init(const Dimension &screen_res)
 	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->anim_pbo);
 	if (_glGetError() != GL_NO_ERROR) return "Can't allocate pixel buffer for video buffer";
 
-	/* Prime vertex buffer with a full-screen quad and store
+	/* Prime vertex buffer with a full-screen triangle and store
 	 * the corresponding state in a vertex array object. */
 	static const Simple2DVertex vert_array[] = {
 		/*  x     y    u    v */
-		{  1.f, -1.f, 1.f, 1.f },
-		{  1.f,  1.f, 1.f, 0.f },
-		{ -1.f, -1.f, 0.f, 1.f },
 		{ -1.f,  1.f, 0.f, 0.f },
+		{  3.f,  1.f, 2.f, 0.f },
+		{ -1.f, -3.f, 0.f, 2.f },
 	};
 
 	/* Create VAO. */
@@ -1060,7 +1059,7 @@ void OpenGLBackend::Paint()
 		_glUseProgram(BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 8 ? this->pal_program : this->vid_program);
 	}
 	_glBindVertexArray(this->vao_quad);
-	_glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+	_glDrawArrays(GL_TRIANGLE_STRIP, 0, 3);
 
 	_glEnable(GL_BLEND);
 }
