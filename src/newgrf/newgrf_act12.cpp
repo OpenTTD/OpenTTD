@@ -10,6 +10,7 @@
 #include "../stdafx.h"
 #include "../debug.h"
 #include "../fontcache.h"
+#include "../spritecache.h"
 #include "newgrf_bytereader.h"
 #include "newgrf_internal.h"
 

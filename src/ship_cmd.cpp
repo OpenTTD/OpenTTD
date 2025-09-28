@@ -19,7 +19,6 @@
 #include "pathfinder/yapf/yapf.h"
 #include "pathfinder/yapf/yapf_ship_regions.h"
 #include "newgrf_sound.h"
-#include "spritecache.h"
 #include "strings_func.h"
 #include "window_func.h"
 #include "timer/timer_game_calendar.h"

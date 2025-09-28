@@ -16,7 +16,6 @@
 #include "news_func.h"
 #include "newgrf_engine.h"
 #include "newgrf_sound.h"
-#include "spritecache.h"
 #include "error_func.h"
 #include "strings_func.h"
 #include "command_func.h"

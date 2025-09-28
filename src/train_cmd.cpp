@@ -26,7 +26,6 @@
 #include "newgrf_station.h"
 #include "effectvehicle_func.h"
 #include "network/network.h"
-#include "spritecache.h"
 #include "core/random_func.hpp"
 #include "company_base.h"
 #include "newgrf.h"

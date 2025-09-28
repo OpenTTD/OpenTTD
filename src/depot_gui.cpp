@@ -17,7 +17,7 @@
 #include "viewport_func.h"
 #include "command_func.h"
 #include "depot_base.h"
-#include "spritecache.h"
+#include "spritecache_type.h"
 #include "strings_func.h"
 #include "sound_func.h"
 #include "vehicle_func.h"

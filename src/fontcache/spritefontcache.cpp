@@ -10,6 +10,7 @@
 #include "../stdafx.h"
 #include "../fontcache.h"
 #include "../gfx_layout.h"
+#include "../spritecache.h"
 #include "../string_func.h"
 #include "../zoom_func.h"
 #include "spritefontcache.h"
