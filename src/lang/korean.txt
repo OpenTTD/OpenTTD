@@ -3431,8 +3431,9 @@ STR_MAPGEN_BORDER_WATER                                         :{BLACK}물
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}임의
 
 ###length 3
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}임의
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}사용자 정의
+STR_MAPGEN_BORDER_RANDOMIZE                                     :임의
+STR_MAPGEN_BORDER_MANUAL                                        :사용자 정의
+STR_MAPGEN_BORDER_INFINITE_WATER                                :물 (지도 밖까지 모두)
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}높이맵 방향:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}높이맵 이름:

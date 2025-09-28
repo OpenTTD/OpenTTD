@@ -3523,8 +3523,9 @@ STR_MAPGEN_BORDER_WATER                                         :{BLACK}Νερό
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Τυχαία
 
 ###length 3
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Τυχαία
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Χειροκίνητος
+STR_MAPGEN_BORDER_RANDOMIZE                                     :Τυχαία
+STR_MAPGEN_BORDER_MANUAL                                        :Χειροκίνητος
+STR_MAPGEN_BORDER_INFINITE_WATER                                :Απεριόριστo Νερό
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Περιστροφή χάρτη υψομετρίας:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Όνομα χάρτη υψομετρίας:

@@ -3431,8 +3431,9 @@ STR_MAPGEN_BORDER_WATER                                         :{BLACK}Água
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Aleatório
 
 ###length 3
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Aleatório
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
+STR_MAPGEN_BORDER_RANDOMIZE                                     :Aleatório
+STR_MAPGEN_BORDER_MANUAL                                        :Manual
+STR_MAPGEN_BORDER_INFINITE_WATER                                :Água Infinita
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotação do mapa de altitudes:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome do mapa de altitudes:

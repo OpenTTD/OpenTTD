@@ -3605,8 +3605,9 @@ STR_MAPGEN_BORDER_WATER                                         :{BLACK}Водн
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Случайно
 
 ###length 3
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Случайно
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Вручную
+STR_MAPGEN_BORDER_RANDOMIZE                                     :Случайно
+STR_MAPGEN_BORDER_MANUAL                                        :Вручную
+STR_MAPGEN_BORDER_INFINITE_WATER                                :Бескрайний океан
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Поворот карты:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Название карты:

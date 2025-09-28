@@ -3810,8 +3810,9 @@ STR_MAPGEN_BORDER_WATER                                         :{BLACK}Woda
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Losowe
 
 ###length 3
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Losowo
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Użytkownika
+STR_MAPGEN_BORDER_RANDOMIZE                                     :Losowe
+STR_MAPGEN_BORDER_MANUAL                                        :Ustalone
+STR_MAPGEN_BORDER_INFINITE_WATER                                :Bezkres Wód
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Obrót mapy wysokości:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nazwa mapy wysokosci:

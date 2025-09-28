@@ -3430,8 +3430,9 @@ STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vesi
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Sattumanvarainen
 
 ###length 3
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Sattumanvarainen
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuaalinen
+STR_MAPGEN_BORDER_RANDOMIZE                                     :Satunnaiset
+STR_MAPGEN_BORDER_MANUAL                                        :Aseta käsin
+STR_MAPGEN_BORDER_INFINITE_WATER                                :Ääretön vesi
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Korkeuskartan kierto:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Korkeuskartan nimi:

@@ -3431,8 +3431,9 @@ STR_MAPGEN_BORDER_WATER                                         :{BLACK}Aigua
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Aleatori
 
 ###length 3
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Aleatori
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
+STR_MAPGEN_BORDER_RANDOMIZE                                     :Aleatori
+STR_MAPGEN_BORDER_MANUAL                                        :Manual
+STR_MAPGEN_BORDER_INFINITE_WATER                                :Aigua infinita
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotació del mapa d'alçades:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nom del mapa d'alçades:
