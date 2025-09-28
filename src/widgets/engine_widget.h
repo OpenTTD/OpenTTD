@@ -12,9 +12,24 @@
 
 /** Widgets of the #EnginePreviewWindow class. */
 enum EnginePreviewWidgets : WidgetID {
+	WID_EP_CAPTION, ///< Caption of window.
+	WID_EP_SORT_ASCENDING_DESCENDING, ///< Sort direction.
+	WID_EP_ROAD_VEHICLE_TOGGLE, ///< Toggles visibility of road vehicles.
+	WID_EP_SHOW_ALL_VEH_TYPES, ///< Toggles visibility of all vehicles.
+	WID_EP_CONFIGURE_BADGES, ///< Button to configure badges.
+	WID_EP_AIRCRAFT_TOGGLE, ///< Toggles visibility of aircrafts.
+	WID_EP_SORT_DROPDOWN, ///< Criteria of sorting dropdown.
+	WID_EP_TRAIN_TOGGLE, ///< Toggles visibility of trains.
+	WID_EP_SHIP_TOGGLE, ///< Toggles visibility of ships.
+	WID_EP_SCROLLBAR, ///< Scrollbar of list.
 	WID_EP_QUESTION, ///< The container for the question.
 	WID_EP_NO,       ///< No button.
 	WID_EP_YES,      ///< Yes button.
+	WID_EP_FILTER, ///< Filter by name.
+	WID_EP_LIST, ///< List of vehicles.
+
+	/* WID_EP_BADGE_FILTER has to be at the end */
+	WID_EP_BADGE_FILTER, ///< Container for dropdown badge filters.
 };
 
 #endif /* WIDGETS_ENGINE_WIDGET_H */
