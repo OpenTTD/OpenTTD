@@ -281,19 +281,17 @@ private:
 
 	/**
 	 * Draw a row in the group list.
-	 * @param y Top of the row.
-	 * @param left Left of the row.
-	 * @param right Right of the row.
+	 * @param r Rect to draw row in.
 	 * @param g_id Group to list.
 	 * @param indent Indentation level.
 	 * @param protection Whether autoreplace protection is set.
 	 * @param has_children Whether the group has children and should have a fold / unfold button.
 	 */
-	void DrawGroupInfo(int y, int left, int right, GroupID g_id, uint16_t level_mask = 0, uint8_t indent = 0, bool protection = false, bool has_children = false) const
+	void DrawGroupInfo(Rect r, GroupID g_id, uint16_t level_mask = 0, uint8_t indent = 0, bool protection = false, bool has_children = false) const
 	{
 		/* Highlight the group if a vehicle is dragged over it */
 		if (g_id == this->group_over) {
-			GfxFillRect(left + WidgetDimensions::scaled.bevel.left, y + WidgetDimensions::scaled.framerect.top, right - WidgetDimensions::scaled.bevel.right, y + this->tiny_step_height - 1 - WidgetDimensions::scaled.framerect.bottom, GetColourGradient(COLOUR_GREY, SHADE_LIGHTEST));
+			GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(COLOUR_GREY, SHADE_LIGHTEST));
 		}
 
 		if (g_id == NEW_GROUP) return;
@@ -307,24 +305,28 @@ private:
 		const int level_width = rtl ? -WidgetDimensions::scaled.hsep_indent : WidgetDimensions::scaled.hsep_indent;
 		const PixelColour linecolour = GetColourGradient(COLOUR_ORANGE, SHADE_NORMAL);
 
+		r = r.Shrink(WidgetDimensions::scaled.framerect, RectPadding::zero);
 		if (indent > 0) {
 			/* Draw tree continuation lines. */
-			int tx = (rtl ? right - WidgetDimensions::scaled.framerect.right : left + WidgetDimensions::scaled.framerect.left) + offset;
+			int tx = (rtl ? r.right : r.left) + offset;
 			for (uint lvl = 1; lvl <= indent; ++lvl) {
-				if (HasBit(level_mask, lvl)) GfxDrawLine(tx, y, tx, y + this->tiny_step_height - 1, linecolour, WidgetDimensions::scaled.fullbevel.top);
+				if (HasBit(level_mask, lvl)) GfxDrawLine(tx, r.top, tx, r.bottom, linecolour, WidgetDimensions::scaled.fullbevel.top);
 				if (lvl < indent) tx += level_width;
 			}
 			/* Draw our node in the tree. */
-			int ycentre = y + this->tiny_step_height / 2 - 1;
-			if (!HasBit(level_mask, indent)) GfxDrawLine(tx, y, tx, ycentre, linecolour, WidgetDimensions::scaled.fullbevel.top);
+			int ycentre = CentreBounds(r.top, r.bottom, WidgetDimensions::scaled.fullbevel.top);
+			if (!HasBit(level_mask, indent)) GfxDrawLine(tx, r.top, tx, ycentre, linecolour, WidgetDimensions::scaled.fullbevel.top);
 			GfxDrawLine(tx, ycentre, tx + offset - (rtl ? -1 : 1), ycentre, linecolour, WidgetDimensions::scaled.fullbevel.top);
 		}
 
 		/* draw fold / unfold button */
-		int x = rtl ? right - WidgetDimensions::scaled.framerect.right - this->column_size[VGC_FOLD].width + 1 : left + WidgetDimensions::scaled.framerect.left;
+		r = r.Indent(indent * WidgetDimensions::scaled.hsep_indent, rtl);
 		if (has_children) {
-			DrawSprite(Group::Get(g_id)->folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED, PAL_NONE, x + indent * level_width, y + (this->tiny_step_height - this->column_size[VGC_FOLD].height) / 2);
+			DrawSpriteIgnorePadding(Group::Get(g_id)->folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED, PAL_NONE, r.WithWidth(this->column_size[VGC_FOLD].width, rtl), SA_CENTER);
 		}
+
+		/* Group name text column shrinks to fit available space. */
+		int text_width = this->column_size[VGC_NAME].width - indent * WidgetDimensions::scaled.hsep_indent;
 
 		/* draw group name */
 		std::string str;
@@ -335,19 +337,22 @@ private:
 		} else {
 			str = GetString(STR_GROUP_NAME, g_id);
 		}
-		x = rtl ? x - WidgetDimensions::scaled.hsep_normal - this->column_size[VGC_NAME].width : x + WidgetDimensions::scaled.hsep_normal + this->column_size[VGC_FOLD].width;
-		DrawString(x + (rtl ? 0 : indent * WidgetDimensions::scaled.hsep_indent), x + this->column_size[VGC_NAME].width - 1 - (rtl ? indent * WidgetDimensions::scaled.hsep_indent : 0), y + (this->tiny_step_height - this->column_size[VGC_NAME].height) / 2, std::move(str), colour);
+		r = r.Indent(this->column_size[VGC_FOLD].width + WidgetDimensions::scaled.hsep_normal, rtl);
+		DrawString(r.WithWidth(text_width, rtl).CentreToHeight(this->column_size[VGC_NAME].height), std::move(str), colour);
 
 		/* draw autoreplace protection */
-		x = rtl ? x - WidgetDimensions::scaled.hsep_wide - this->column_size[VGC_PROTECT].width : x + WidgetDimensions::scaled.hsep_wide + this->column_size[VGC_NAME].width;
-		if (protection) DrawSprite(SPR_GROUP_REPLACE_PROTECT, PAL_NONE, x, y + (this->tiny_step_height - this->column_size[VGC_PROTECT].height) / 2);
+		r = r.Indent(text_width + WidgetDimensions::scaled.hsep_wide, rtl);
+		if (protection) {
+			DrawSpriteIgnorePadding(SPR_GROUP_REPLACE_PROTECT, PAL_NONE, r.WithWidth(this->column_size[VGC_PROTECT].width, rtl), SA_CENTER);
+		}
 
 		/* draw autoreplace status */
-		x = rtl ? x - WidgetDimensions::scaled.hsep_normal - this->column_size[VGC_AUTOREPLACE].width : x + WidgetDimensions::scaled.hsep_normal + this->column_size[VGC_PROTECT].width;
-		if (stats.autoreplace_defined) DrawSprite(SPR_GROUP_REPLACE_ACTIVE, stats.autoreplace_finished ? PALETTE_CRASH : PAL_NONE, x, y + (this->tiny_step_height - this->column_size[VGC_AUTOREPLACE].height) / 2);
+		r = r.Indent(this->column_size[VGC_PROTECT].width + WidgetDimensions::scaled.hsep_normal, rtl);
+		if (stats.autoreplace_defined) {
+			DrawSpriteIgnorePadding(SPR_GROUP_REPLACE_ACTIVE, stats.autoreplace_finished ? PALETTE_CRASH : PAL_NONE, r.WithWidth(this->column_size[VGC_AUTOREPLACE].width, rtl), SA_CENTER);
+		}
 
 		/* draw the profit icon */
-		x = rtl ? x - WidgetDimensions::scaled.hsep_normal - this->column_size[VGC_PROFIT].width : x + WidgetDimensions::scaled.hsep_normal + this->column_size[VGC_AUTOREPLACE].width;
 		SpriteID spr;
 		uint num_vehicle_min_age = GetGroupNumVehicleMinAge(this->vli.company, g_id, this->vli.vtype);
 		Money profit_last_year_min_age = GetGroupProfitLastYearMinAge(this->vli.company, g_id, this->vli.vtype);
@@ -360,16 +365,18 @@ private:
 		} else {
 			spr = SPR_PROFIT_LOT;
 		}
-		DrawSprite(spr, PAL_NONE, x, y + (this->tiny_step_height - this->column_size[VGC_PROFIT].height) / 2);
+
+		r = r.Indent(this->column_size[VGC_AUTOREPLACE].width + WidgetDimensions::scaled.hsep_normal, rtl);
+		DrawSpriteIgnorePadding(spr, PAL_NONE, r.WithWidth(this->column_size[VGC_PROFIT].width, rtl), SA_CENTER);
 
 		/* draw the number of vehicles of the group */
-		x = rtl ? x - WidgetDimensions::scaled.hsep_normal - this->column_size[VGC_NUMBER].width : x + WidgetDimensions::scaled.hsep_normal + this->column_size[VGC_PROFIT].width;
+		r = r.Indent(this->column_size[VGC_PROFIT].width + WidgetDimensions::scaled.hsep_normal, rtl);
 		int num_vehicle_with_subgroups = GetGroupNumVehicle(this->vli.company, g_id, this->vli.vtype);
 		int num_vehicle = GroupStatistics::Get(this->vli.company, g_id, this->vli.vtype).num_vehicle;
 		if (IsAllGroupID(g_id) || IsDefaultGroupID(g_id) || num_vehicle_with_subgroups == num_vehicle) {
-			DrawString(x, x + this->column_size[VGC_NUMBER].width - 1, y + (this->tiny_step_height - this->column_size[VGC_NUMBER].height) / 2, GetString(STR_JUST_COMMA, num_vehicle), colour, SA_RIGHT | SA_FORCE, false, FS_SMALL);
+			DrawString(r.CentreToHeight(this->column_size[VGC_NUMBER].height), GetString(STR_JUST_COMMA, num_vehicle), colour, SA_RIGHT | SA_FORCE, false, FS_SMALL);
 		} else {
-			DrawString(x, x + this->column_size[VGC_NUMBER].width - 1, y + (this->tiny_step_height - this->column_size[VGC_NUMBER].height) / 2, GetString(STR_GROUP_COUNT_WITH_SUBGROUP, num_vehicle, num_vehicle_with_subgroups - num_vehicle), colour, SA_RIGHT | SA_FORCE);
+			DrawString(r.CentreToHeight(this->column_size[VGC_NUMBER].height), GetString(STR_GROUP_COUNT_WITH_SUBGROUP, num_vehicle, num_vehicle_with_subgroups - num_vehicle), colour, SA_RIGHT | SA_FORCE);
 		}
 	}
 
@@ -594,11 +601,11 @@ public:
 	{
 		switch (widget) {
 			case WID_GL_ALL_VEHICLES:
-				DrawGroupInfo(r.top, r.left, r.right, ALL_GROUP);
+				DrawGroupInfo(r, ALL_GROUP);
 				break;
 
 			case WID_GL_DEFAULT_VEHICLES:
-				DrawGroupInfo(r.top, r.left, r.right, DEFAULT_GROUP);
+				DrawGroupInfo(r, DEFAULT_GROUP);
 				break;
 
 			case WID_GL_INFO: {
@@ -634,19 +641,18 @@ public:
 			}
 
 			case WID_GL_LIST_GROUP: {
-				int y1 = r.top;
+				Rect row = r.WithHeight(this->tiny_step_height);
+
 				auto [first, last] = this->group_sb->GetVisibleRangeIterators(this->groups);
 				for (auto it = first; it != last; ++it) {
 					const Group *g = it->group;
-
 					assert(g->owner == this->owner);
 
-					DrawGroupInfo(y1, r.left, r.right, g->index, it->level_mask, it->indent, g->flags.Test(GroupFlag::ReplaceProtection), g->folded || (std::next(it) != std::end(this->groups) && std::next(it)->indent > it->indent));
-
-					y1 += this->tiny_step_height;
+					DrawGroupInfo(row, g->index, it->level_mask, it->indent, g->flags.Test(GroupFlag::ReplaceProtection), g->folded || (std::next(it) != std::end(this->groups) && std::next(it)->indent > it->indent));
+					row = row.Translate(0, this->tiny_step_height);
 				}
 				if ((uint)this->group_sb->GetPosition() + this->group_sb->GetCapacity() > this->groups.size()) {
-					DrawGroupInfo(y1, r.left, r.right, NEW_GROUP);
+					DrawGroupInfo(row, NEW_GROUP);
 				}
 				break;
 			}
@@ -733,11 +739,10 @@ public:
 
 				if (it->group->folded || (std::next(it) != std::end(this->groups) && std::next(it)->indent > it->indent)) {
 					/* The group has children, check if the user clicked the fold / unfold button. */
-					NWidgetCore *group_display = this->GetWidget<NWidgetCore>(widget);
-					int x = _current_text_dir == TD_RTL ?
-							group_display->pos_x + group_display->current_x - WidgetDimensions::scaled.framerect.right - it->indent * WidgetDimensions::scaled.hsep_indent - this->column_size[VGC_FOLD].width :
-							group_display->pos_x + WidgetDimensions::scaled.framerect.left + it->indent * WidgetDimensions::scaled.hsep_indent;
-					if (click_count > 1 || (pt.x >= x && pt.x < (int)(x + this->column_size[VGC_FOLD].width))) {
+					bool rtl = _current_text_dir == TD_RTL;
+					Rect r = this->GetWidget<NWidgetCore>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect, RectPadding::zero);
+					r = r.Indent(it->indent * WidgetDimensions::scaled.hsep_indent, rtl).WithWidth(this->column_size[VGC_FOLD].width, rtl);
+					if (click_count > 1 || r.Contains(pt)) {
 
 						GroupID g = this->vli.ToGroupID();
 						if (!IsAllGroupID(g) && !IsDefaultGroupID(g)) {
