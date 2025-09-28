@@ -10,9 +10,9 @@
 #ifndef FONTCACHE_H
 #define FONTCACHE_H
 
+#include "gfx_type.h"
 #include "provider_manager.h"
-#include "string_type.h"
-#include "spritecache.h"
+#include "spritecache_type.h"
 
 /** Glyphs are characters from a font. */
 typedef uint32_t GlyphID;

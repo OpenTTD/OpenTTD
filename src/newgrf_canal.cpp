@@ -13,7 +13,6 @@
 #include "newgrf_canal.h"
 #include "water.h"
 #include "water_map.h"
-#include "spritecache.h"
 
 #include "safeguards.h"
 

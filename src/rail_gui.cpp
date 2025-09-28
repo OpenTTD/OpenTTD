@@ -29,7 +29,6 @@
 #include "dropdown_func.h"
 #include "tunnelbridge.h"
 #include "tilehighlight_func.h"
-#include "spritecache.h"
 #include "core/geometry_func.hpp"
 #include "hotkeys.h"
 #include "engine_base.h"

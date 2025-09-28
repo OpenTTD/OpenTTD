@@ -13,7 +13,7 @@
 #include "core/math_func.hpp"
 #include "gfx_type.h"
 #include "spritecache_type.h"
-#include "spriteloader/spriteloader.hpp"
+#include "spriteloader/sprite_file_type.hpp"
 
 #include "table/sprites.h"
 
