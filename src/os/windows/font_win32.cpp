@@ -276,7 +276,7 @@ public:
 	* fallback search, use it. Otherwise, try to resolve it by font name.
 	* @param fs The font size to load.
 	*/
-	std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype) override
+	std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype) const override
 	{
 		if (fonttype != FontType::TrueType) return nullptr;
 
@@ -308,7 +308,7 @@ public:
 		return LoadWin32Font(fs, logfont, GetFontCacheFontSize(fs), font);
 	}
 
-	bool FindFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, MissingGlyphSearcher *callback) override
+	bool FindFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, MissingGlyphSearcher *callback) const override
 	{
 		Debug(fontcache, 1, "Trying fallback fonts");
 		EFCParam langInfo;

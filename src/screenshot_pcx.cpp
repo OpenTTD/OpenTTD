@@ -41,7 +41,7 @@ class ScreenshotProvider_Pcx : public ScreenshotProvider {
 public:
 	ScreenshotProvider_Pcx() : ScreenshotProvider("pcx", "PCX", 20) {}
 
-	bool MakeImage(std::string_view name, const ScreenshotCallback &callb, uint w, uint h, int pixelformat, const Colour *palette) override
+	bool MakeImage(std::string_view name, const ScreenshotCallback &callb, uint w, uint h, int pixelformat, const Colour *palette) const override
 	{
 		uint maxlines;
 		uint y;

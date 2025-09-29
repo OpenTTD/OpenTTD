@@ -211,7 +211,7 @@ public:
 	 * fallback search, use it. Otherwise, try to resolve it by font name.
 	 * @param fs The font size to load.
 	 */
-	std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype) override
+	std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype) const override
 	{
 		if (fonttype != FontType::TrueType) return nullptr;
 
@@ -259,7 +259,7 @@ public:
 		return std::make_unique<CoreTextFontCache>(fs, std::move(font_ref), GetFontCacheFontSize(fs));
 	}
 
-	bool FindFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, MissingGlyphSearcher *callback) override
+	bool FindFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, MissingGlyphSearcher *callback) const override
 	{
 		/* Determine fallback font using CoreText. This uses the language isocode
 		 * to find a suitable font. CoreText is available from 10.5 onwards. */
