@@ -3234,7 +3234,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Inscribe
 # Town directory window
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nulla -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Urbs){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nomina oppidorum - preme in nomen ut conspectus supra oppidum locetur. Ctrl+Preme ut novam fenestram conspectus supra oppidum aperiatur
 STR_TOWN_POPULATION                                             :{BLACK}Incolae mundi: {COMMA}
 

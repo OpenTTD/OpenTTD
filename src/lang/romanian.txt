@@ -3631,7 +3631,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Introdu 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Orașe ({COMMA} din {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nimic -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (oraș){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Numele orașelor - clic pe un nume pentru a centra imaginea pe orașul respectiv. Ctrl+Click pentru a deshide o fereastra cu locația orașului
 STR_TOWN_POPULATION                                             :{BLACK}Populația totală: {COMMA}
 

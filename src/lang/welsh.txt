@@ -3676,7 +3676,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Rhowch e
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Trefi ({COMMA} o {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Dim -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Dinas){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Enwau trefi - cliciwch ar enw tref i ganoli'r brif olygfa ar y dref. Ctrl+Clic i agor ffenest golwg newydd ar leoliad y dref
 STR_TOWN_POPULATION                                             :{BLACK}Poblogaeth y Byd: {COMMA}
 

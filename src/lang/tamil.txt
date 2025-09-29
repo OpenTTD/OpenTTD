@@ -3243,7 +3243,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}கு�
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}நகரங்கள் ({1:COMMA}இல் {0:COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- ஒன்றுமில்லை -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (மாநகரம்){BLACK} ({COMMA})
 STR_TOWN_POPULATION                                             :{BLACK}உலக மக்கள்தொகை: {COMMA}
 
 # Town view window

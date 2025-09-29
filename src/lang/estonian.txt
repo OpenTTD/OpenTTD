@@ -3628,7 +3628,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Sisesta 
 # Town directory window
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Puudub -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Linn){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Astuste nimed - vajuta nimele, et viia vaade asustusele. Ctrl+klõps avab uue vaate linna asukohas
 STR_TOWN_POPULATION                                             :{BLACK}Maailma rahvaarv: {COMMA}
 

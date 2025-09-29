@@ -3690,7 +3690,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Geef een
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Steden ({COMMA} van {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE} Geen
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (groeistad){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Plaatsnamen - klik op naam om het scherm te centreren op de stad. Ctrl+klik opent een nieuw kijkvenster op de locatie van de stad
 STR_TOWN_POPULATION                                             :{BLACK}Wereldbevolking: {COMMA}
 

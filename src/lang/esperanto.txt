@@ -3479,7 +3479,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Enigu no
 # Town directory window
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}-Neniu -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Urbego){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Urbonomoj - klaku nomon por centri vidpukto ĉe la urbo. Ctrl+Klak por malfermi novan vidujon ĉe la urba loko
 STR_TOWN_POPULATION                                             :{BLACK}Monda enloĝantaro: {COMMA}
 

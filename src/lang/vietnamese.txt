@@ -3690,7 +3690,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Nhập t
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Đô Thị ({COMMA} đến {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Không Có -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (đô thị){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Tên các đô thị - nháy vào tên để xem trung tâm đô thị. Ctrl+Click mở cửa sổ mới của đô thị
 STR_TOWN_POPULATION                                             :{BLACK}Dân số thế giới: {COMMA}
 

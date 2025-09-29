@@ -3003,7 +3003,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}برای
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}شهرها ({COMMA} از {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- هیچکدام -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (City){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}نام شهرها - برای مرکز قرار دادن نمای اصلی روی شهر، روی نام کلیک کنید. Ctrl+Click برای باز کردن یک نمای جدید در موقعیت شهر.
 STR_TOWN_POPULATION                                             :{BLACK}جمعیت جهان: {COMMA}
 

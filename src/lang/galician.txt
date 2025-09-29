@@ -3349,6 +3349,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtro:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Sobrescribir arquivo
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Estás seguro de que queres rescribir este arquivo?
+STR_SAVELOAD_DELETE_TITLE                                       :{WHITE}Borrar ficheiro
+STR_SAVELOAD_DELETE_WARNING                                     :{YELLOW}Estás seguro de que queres borrar este ficheiro?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (Directorio)
 STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Directorio pai)
 
@@ -3429,8 +3431,9 @@ STR_MAPGEN_BORDER_WATER                                         :{BLACK}Auga
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Aleatorio
 
 ###length 3
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Aleatorio
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
+STR_MAPGEN_BORDER_RANDOMIZE                                     :Aleatorio
+STR_MAPGEN_BORDER_MANUAL                                        :Manual
+STR_MAPGEN_BORDER_INFINITE_WATER                                :Auga infinita
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotación do mapa de alturas:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome do mapa de alturas:
@@ -3689,7 +3692,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Escribe 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Vilas ({COMMA} de {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ningunha -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Vila){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nomes de vilas - pincha no nome para centrar a vista na vila. Ctrl+Clic abre unha nova fiestra na localización da vila
 STR_TOWN_POPULATION                                             :{BLACK}Poboación mundial: {COMMA}
 
@@ -4186,6 +4188,7 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Todos excepto {
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Esforzo máximo de tracción: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Autonomía: {GOLD}{COMMA} cadros
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Tipo de aeronave: {GOLD}{STRING}
+STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Tipos de ferrocarril: {GOLD}{STRING}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Todos os tipos de carga
@@ -4369,6 +4372,7 @@ STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Custo de mantem
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Custo de mantemento: {CURRENCY_LONG}/período
 STR_ENGINE_PREVIEW_CAPACITY                                     :Capacidade: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :Capacidade: {CARGO_LONG}, {CARGO_LONG}
+STR_ENGINE_PREVIEW_RAILTYPES                                    :Tipos de ferrocarril: {STRING}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substituír {STRING} - {STRING}
@@ -5267,9 +5271,11 @@ STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... pont
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}A ponte remataría fóra do mapa
 STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}A ponte é demasiado baixa para a estación
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}A ponte é demasiado baixa para unha estación de estrada
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}A ponte é moi baixa para o porto
 STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}A ponte é demasiado baixa para a boia
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}A ponte é demasiado baixa para un punto de ruta de ferrocarril
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}A ponte é demasiado baixa para un punto de ruta de estrada
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}A ponte é moi baixa para a exclusa
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Non se pode construír un túnel aí...

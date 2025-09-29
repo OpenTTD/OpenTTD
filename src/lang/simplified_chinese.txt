@@ -3690,7 +3690,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}为标�
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}城镇（{COMMA} 座，共 {COMMA}座）
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- 无 -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK}（{COMMA}）
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW}（都市）{BLACK}（{COMMA}）
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK} 城镇名称 - 点击名称可以将屏幕中心{}移动到城镇所在的位置。按住 <Ctrl> 点选将会在新视点中显示城镇位置
 STR_TOWN_POPULATION                                             :{BLACK}地图人口总数：{COMMA}
 

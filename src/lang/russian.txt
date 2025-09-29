@@ -3866,7 +3866,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Введ
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Города ({COMMA} / {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Нет -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Мегаполис){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Список городов. Щелчок по названию показывает город в основном окне. Ctrl+щелчок показывает в дополнительном окне.
 STR_TOWN_POPULATION                                             :{BLACK}Население: {COMMA}
 

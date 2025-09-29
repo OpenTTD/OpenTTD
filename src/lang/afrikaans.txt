@@ -3075,7 +3075,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Tik 'n n
 # Town directory window
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Geen -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Stad){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Dorpname - klik op 'n naam om skerm daarna te skuif. Ctrl+klik om 'n nuwe venster vir die dorp oop te maak
 STR_TOWN_POPULATION                                             :{BLACK}Wêreldbevolking: {COMMA}
 

@@ -3594,7 +3594,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Tabela i
 # Town directory window
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Hiçbiri -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Şehir){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Şehir isimleri - şehre bakmak için ismine tıkla. Ctrl + Sol Tıklama şehrin olduğu yere ait bir görünüm penceresi açar.
 STR_TOWN_POPULATION                                             :{BLACK}Dünya nüfusu: {COMMA}
 

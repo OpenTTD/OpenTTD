@@ -2992,7 +2992,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}ادخل
 # Town directory window
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}-بدون-
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{RLE}{TOWN}{BLACK} {RLM}({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{RLE}{TOWN}{YELLOW} (مدينة){BLACK} {RLM}({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}اسم المدينة - اضغط على الاسم لتوسيط الشاشة عليها. اضغط + كنترول لفتح شاشة عرض جديدة للضاحية.
 STR_TOWN_POPULATION                                             :{BLACK}سكان العالم: {COMMA}
 

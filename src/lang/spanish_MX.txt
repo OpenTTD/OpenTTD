@@ -3684,7 +3684,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Indicar 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Pueblos ({COMMA} de {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ninguno -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (ciudad){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nombres de pueblos. Clic en un nombre centra la vista principal en el pueblo. Ctrl+Clic abre una vista aparte en su ubicación
 STR_TOWN_POPULATION                                             :{BLACK}Población mundial: {COMMA}
 
