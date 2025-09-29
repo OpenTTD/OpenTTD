@@ -48,10 +48,10 @@ uint _heightmap_highest_peak;         ///< When saving a heightmap, this contain
  */
 static ScreenshotProvider *GetScreenshotProvider()
 {
-	auto providers = ProviderManager<ScreenshotProvider>::GetProviders();
+	const auto &providers = ProviderManager<ScreenshotProvider>::GetProviders();
 	if (providers.empty()) return nullptr;
 
-	auto it = std::ranges::find_if(providers, [](const auto &p) { return p->GetName() == _screenshot_format_name; });
+	auto it = std::ranges::find(providers, _screenshot_format_name, &ScreenshotProvider::GetName);
 	if (it != std::end(providers)) return *it;
 
 	return providers.front();
