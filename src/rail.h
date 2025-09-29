@@ -131,6 +131,7 @@ public:
 		SpriteID single_sloped;///< single piece of rail for slopes
 		SpriteID crossing;     ///< level crossing, rail in X direction
 		SpriteID tunnel;       ///< tunnel sprites base
+		SpriteID bridge_deck;  ///< bridge deck sprites base
 	} base_sprites;
 
 	/**
