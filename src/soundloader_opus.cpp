@@ -34,7 +34,7 @@ public:
 	static constexpr size_t DECODE_BUFFER_SAMPLES = 5760 * 2;
 	static constexpr size_t DECODE_BUFFER_BYTES = DECODE_BUFFER_SAMPLES * sizeof(opus_int16);
 
-	bool Load(SoundEntry &sound, bool new_format, std::vector<std::byte> &data) override
+	bool Load(SoundEntry &sound, bool new_format, std::vector<std::byte> &data) const override
 	{
 		if (!new_format) return false;
 

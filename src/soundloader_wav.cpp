@@ -23,7 +23,7 @@ public:
 
 	static constexpr uint16_t DEFAULT_SAMPLE_RATE = 11025;
 
-	bool Load(SoundEntry &sound, bool new_format, std::vector<std::byte> &data) override
+	bool Load(SoundEntry &sound, bool new_format, std::vector<std::byte> &data) const override
 	{
 		RandomAccessFile &file = *sound.file;
 

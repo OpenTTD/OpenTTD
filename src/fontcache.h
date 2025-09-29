@@ -229,8 +229,8 @@ public:
 		ProviderManager<FontCacheFactory>::Unregister(*this);
 	}
 
-	virtual std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype) = 0;
-	virtual bool FindFallbackFont(struct FontCacheSettings *settings, const std::string &language_isocode, class MissingGlyphSearcher *callback) = 0;
+	virtual std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype) const = 0;
+	virtual bool FindFallbackFont(struct FontCacheSettings *settings, const std::string &language_isocode, class MissingGlyphSearcher *callback) const = 0;
 };
 
 class FontProviderManager : ProviderManager<FontCacheFactory> {

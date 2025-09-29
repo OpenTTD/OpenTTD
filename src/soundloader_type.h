@@ -26,7 +26,7 @@ public:
 		ProviderManager<SoundLoader>::Unregister(*this);
 	}
 
-	virtual bool Load(SoundEntry &sound, bool new_format, std::vector<std::byte> &data) = 0;
+	virtual bool Load(SoundEntry &sound, bool new_format, std::vector<std::byte> &data) const = 0;
 };
 
 #endif /* SOUNDLOADER_TYPE_H */

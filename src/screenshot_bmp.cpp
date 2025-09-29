@@ -43,7 +43,7 @@ class ScreenshotProvider_Bmp : public ScreenshotProvider {
 public:
 	ScreenshotProvider_Bmp() : ScreenshotProvider("bmp", "BMP", 10) {}
 
-	bool MakeImage(std::string_view name, const ScreenshotCallback &callb, uint w, uint h, int pixelformat, const Colour *palette) override
+	bool MakeImage(std::string_view name, const ScreenshotCallback &callb, uint w, uint h, int pixelformat, const Colour *palette) const override
 	{
 		uint bpp; // bytes per pixel
 		switch (pixelformat) {

@@ -22,7 +22,7 @@ public:
 	static constexpr uint16_t RAW_SAMPLE_RATE = 11025; ///< Sample rate of raw pcm samples.
 	static constexpr uint8_t RAW_SAMPLE_BITS = 8; ///< Bit depths of raw pcm samples.
 
-	bool Load(SoundEntry &sound, bool new_format, std::vector<std::byte> &data) override
+	bool Load(SoundEntry &sound, bool new_format, std::vector<std::byte> &data) const override
 	{
 		/* Raw sounds are apecial case for the jackhammer sound (name in Windows sample.cat is "Corrupt sound")
 		 * It's not a RIFF file, but raw PCM data.
