@@ -15,9 +15,6 @@
 #include "../ini_type.h"
 #include "../error_func.h"
 
-#include <filesystem>
-#include <fstream>
-
 #include "../safeguards.h"
 
 /**
@@ -222,7 +219,7 @@ static std::optional<std::string_view> FindItemValue(std::string_view name, cons
 static void DumpLine(const IniItem *item, const IniGroup *grp, const IniGroup *default_grp, OutputStore &output)
 {
 	/* Prefix with #if/#ifdef/#ifndef */
-	static const auto pp_lines = {"if", "ifdef", "ifndef"};
+	static const std::initializer_list<std::string_view> pp_lines = {"if", "ifdef", "ifndef"};
 	int count = 0;
 	for (const auto &name : pp_lines) {
 		auto condition = FindItemValue(name, grp, default_grp);
@@ -269,7 +266,7 @@ static void DumpLine(const IniItem *item, const IniGroup *grp, const IniGroup *d
  */
 static void DumpSections(const IniLoadFile &ifile)
 {
-	static const auto special_group_names = {PREAMBLE_GROUP_NAME, POSTAMBLE_GROUP_NAME, DEFAULTS_GROUP_NAME, TEMPLATES_GROUP_NAME, VALIDATION_GROUP_NAME};
+	static const std::initializer_list<std::string_view> special_group_names = {PREAMBLE_GROUP_NAME, POSTAMBLE_GROUP_NAME, DEFAULTS_GROUP_NAME, TEMPLATES_GROUP_NAME, VALIDATION_GROUP_NAME};
 
 	const IniGroup *default_grp = ifile.GetGroup(DEFAULTS_GROUP_NAME);
 	const IniGroup *templates_grp = ifile.GetGroup(TEMPLATES_GROUP_NAME);
@@ -453,12 +450,12 @@ int CDECL main(int argc, char *argv[])
 		fp.reset();
 
 		std::error_code error_code;
-		if (CompareFiles(tmp_output, *output_file)) {
+		if (CompareFiles(tmp_output.data(), output_file->data())) {
 			/* Files are equal. tmp2.xxx is not needed. */
-			std::filesystem::remove(tmp_output, error_code);
+			std::filesystem::remove(tmp_output.data(), error_code);
 		} else {
 			/* Rename tmp2.xxx to output file. */
-			std::filesystem::rename(tmp_output, *output_file, error_code);
+			std::filesystem::rename(tmp_output.data(), output_file->data(), error_code);
 			if (error_code) FatalError("rename({}, {}) failed: {}", tmp_output, *output_file, error_code.message());
 		}
 	}
