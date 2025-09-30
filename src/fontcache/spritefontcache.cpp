@@ -94,6 +94,7 @@ void InitializeUnicodeGlyphMap(FontSize fs)
 			SetUnicodeGlyph(fs, unicode_map.code, 0);
 		} else {
 			SpriteID sprite = base + key - ASCII_LETTERSTART;
+			if (!SpriteExists(sprite)) continue;
 			SetUnicodeGlyph(fs, unicode_map.code, sprite);
 		}
 	}
