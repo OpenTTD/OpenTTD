@@ -3494,8 +3494,9 @@ STR_MAPGEN_BORDER_WATER                                         :{BLACK}Víz
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Véletlen
 
 ###length 3
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Véletlen
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Kézi
+STR_MAPGEN_BORDER_RANDOMIZE                                     :Véletlen
+STR_MAPGEN_BORDER_MANUAL                                        :Kézi
+STR_MAPGEN_BORDER_INFINITE_WATER                                :Végtelen víz
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Magasságtérkép elforgatása:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Magasságtérkép neve:
@@ -3754,6 +3755,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Felirat 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Városok ({COMMA}, {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nincs -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{BLACK} ({COMMA}) {YELLOW}{CITY_ICON}
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Városnevek - kattints egy névre a város megnézéséhez. Ctrl+kattintással új nézet nyílik a városnál
 STR_TOWN_POPULATION                                             :{BLACK}Világnépesség: {COMMA}
 

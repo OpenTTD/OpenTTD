@@ -3784,6 +3784,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Δώστ
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Πόλεις ({COMMA} από {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Τίποτα -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{BLACK} ({COMMA}) {YELLOW}{CITY_ICON}
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Ονόματα πόλεων - πατήστε στο όνομα για κεντράρισμα της κύριας προβολής στην πόλη. Ctrl+Κλικ για άνοιγμα νέου παραθύρου προβολής στην τοποθεσία της πόλης
 STR_TOWN_POPULATION                                             :{BLACK}Παγκόσμιος πληθυσμός: {COMMA}
 
