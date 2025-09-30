@@ -923,7 +923,7 @@ void TextfileWindow::LoadText(std::string_view buf)
 	this->AfterLoadText();
 	this->ReflowContent();
 
-	CheckForMissingGlyphs(true, this);
+	CheckForMissingGlyphs(this);
 
 	/* The font may have changed when searching for glyphs, so ensure widget sizes are updated just in case. */
 	this->ReInit();

@@ -2356,15 +2356,14 @@ class LanguagePackGlyphSearcher : public MissingGlyphSearcher {
  * mean it might use characters that are not in the
  * font, which is the whole reason this check has
  * been added.
- * @param base_font Whether to look at the base font as well.
  * @param searcher  The methods to use to search for strings to check.
  *                  If nullptr the loaded language pack searcher is used.
  */
-void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
+void CheckForMissingGlyphs(MissingGlyphSearcher *searcher)
 {
 	static LanguagePackGlyphSearcher pack_searcher;
 	if (searcher == nullptr) searcher = &pack_searcher;
-	bool bad_font = !base_font || searcher->FindMissingGlyphs();
+	bool bad_font = searcher->FindMissingGlyphs();
 #if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
 	if (bad_font) {
 		/* We found an unprintable character... lets try whether we can find
@@ -2390,7 +2389,7 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 			ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, std::move(err_str)), {}, WL_WARNING);
 		}
 
-		if (bad_font && base_font) {
+		if (bad_font) {
 			/* Our fallback font does miss characters too, so keep the
 			 * user chosen font as that is more likely to be any good than
 			 * the wild guess we made */
