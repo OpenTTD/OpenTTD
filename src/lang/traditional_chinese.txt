@@ -3430,8 +3430,9 @@ STR_MAPGEN_BORDER_WATER                                         :{BLACK}水域
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}隨機
 
 ###length 3
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}隨機
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}手動
+STR_MAPGEN_BORDER_RANDOMIZE                                     :隨機
+STR_MAPGEN_BORDER_MANUAL                                        :手動
+STR_MAPGEN_BORDER_INFINITE_WATER                                :無盡水域
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}高度圖旋轉：
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}高度圖名稱：
@@ -3690,6 +3691,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}輸入�
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}市鎮（{COMMA} 座，總共 {COMMA} 座）
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- 無 -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{BLACK}（{COMMA}）{YELLOW}{CITY_ICON}
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}市鎮名稱 - 點選名稱可將市鎮置於畫面正中央。按住 <Ctrl> 點選可於市鎮位置開啟新檢視視窗
 STR_TOWN_POPULATION                                             :{BLACK}世界人口：{COMMA}
 
