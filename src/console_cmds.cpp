@@ -2319,6 +2319,18 @@ static bool ConContent(std::span<std::string_view> argv)
 }
 #endif /* defined(WITH_ZLIB) */
 
+/**
+ * Get string representation of a font load reason.
+ * @param load_reason The font load reason.
+ * @return String representation.
+ */
+static std::string_view FontLoadReasonToName(FontLoadReason load_reason)
+{
+	static const std::string_view LOAD_REASON_TO_NAME[] = { "default", "configured", "language" };
+	static_assert(std::size(LOAD_REASON_TO_NAME) == to_underlying(FontLoadReason::End));
+	return LOAD_REASON_TO_NAME[to_underlying(load_reason)];
+}
+
 static bool ConFont(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -2367,17 +2379,18 @@ static bool ConFont(std::span<std::string_view> argv)
 		SetFont(argfs, font, size);
 	}
 
-	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
-		FontCache *fc = FontCache::Get(fs);
-		FontCacheSubSetting *setting = GetFontCacheSubSetting(fs);
-		/* Make sure all non sprite fonts are loaded. */
-		if (!setting->font.empty() && !fc->HasParent()) {
-			FontCache::LoadFontCaches(fs);
-			fc = FontCache::Get(fs);
-		}
-		IConsolePrint(CC_DEFAULT, "{} font:", FontSizeToName(fs));
-		IConsolePrint(CC_DEFAULT, "Currently active: \"{}\", size {}", fc->GetFontName(), fc->GetFontSize());
-		IConsolePrint(CC_DEFAULT, "Requested: \"{}\", size {}", setting->font, setting->size);
+	IConsolePrint(CC_INFO, "Configured fonts:");
+	for (uint i = 0; FontSize fs : FONTSIZES_ALL) {
+		const FontCacheSubSetting *setting = GetFontCacheSubSetting(fs);
+		IConsolePrint(CC_DEFAULT, "{}) {} font: \"{}\", size {}", i, FontSizeToName(fs), setting->font, setting->size);
+		++i;
+	}
+
+	IConsolePrint(CC_INFO, "Currently active fonts:");
+	for (uint i = 0; const auto &fc : FontCache::Get()) {
+		if (fc == nullptr) continue;
+		IConsolePrint(CC_DEFAULT, "{}) {} font: \"{}\" size {} [{}]", i, FontSizeToName(fc->GetSize()), fc->GetFontName(), fc->GetFontSize(), FontLoadReasonToName(fc->GetFontLoadReason()));
+		++i;
 	}
 
 	return true;

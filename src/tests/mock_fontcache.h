@@ -25,15 +25,16 @@ public:
 	const Sprite *GetGlyph(GlyphID) override { return nullptr; }
 	uint GetGlyphWidth(GlyphID) override { return this->height / 2; }
 	bool GetDrawGlyphShadow() override { return false; }
-	GlyphID MapCharToGlyph(char32_t key, [[maybe_unused]] bool allow_fallback = true) override { return key; }
+	GlyphID MapCharToGlyph(char32_t key) override { return key; }
 	std::string GetFontName() override { return "mock"; }
 	bool IsBuiltInFont() override { return true; }
 
 	static void InitializeFontCaches()
 	{
+		FontCache::caches.clear();
 		for (FontSize fs = FS_BEGIN; fs != FS_END; fs++) {
-			if (FontCache::Get(fs) != nullptr) continue;
-			FontCache::Register(std::make_unique<MockFontCache>(fs));
+			FontCache::Register(std::make_unique<MockFontCache>(fs), FontLoadReason::Default);
+			FontCache::UpdateCharacterHeight(fs);
 		}
 	}
 };
