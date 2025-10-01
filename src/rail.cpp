@@ -194,20 +194,16 @@ RailTypes GetRailTypes(bool introduces)
  */
 RailType GetRailTypeByLabel(RailTypeLabel label, bool allow_alternate_labels)
 {
+	extern RailTypeInfo _railtypes[RAILTYPE_END];
 	if (label == 0) return INVALID_RAILTYPE;
 
-	/* Loop through each rail type until the label is found */
-	for (RailType r = RAILTYPE_BEGIN; r != RAILTYPE_END; r++) {
-		const RailTypeInfo *rti = GetRailTypeInfo(r);
-		if (rti->label == label) return r;
+	auto it = std::ranges::find(_railtypes, label, &RailTypeInfo::label);
+	if (it == std::end(_railtypes) && allow_alternate_labels) {
+		/* Test if any rail type defines the label as an alternate. */
+		it = std::ranges::find_if(_railtypes, [label](const RailTypeInfo &rti) { return rti.alternate_labels.contains(label); });
 	}
 
-	if (allow_alternate_labels) {
-		/* Test if any rail type defines the label as an alternate. */
-		for (RailType r = RAILTYPE_BEGIN; r != RAILTYPE_END; r++) {
-			if (GetRailTypeInfo(r)->alternate_labels.contains(label)) return r;
-		}
-	}
+	if (it != std::end(_railtypes)) return it->Index();
 
 	/* No matching label was found, so it is invalid */
 	return INVALID_RAILTYPE;
