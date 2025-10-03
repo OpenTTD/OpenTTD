@@ -36,9 +36,9 @@ public:
 		bool is_choice = (KillFirstBit(trackdirs) != TRACKDIR_BIT_NONE);
 		for (TrackdirBits tdb = trackdirs; tdb != TRACKDIR_BIT_NONE; tdb = KillFirstBit(tdb)) {
 			Trackdir td = (Trackdir)FindFirstBit(tdb);
-			Node &node = Yapf().CreateNewNode();
+			Node node;
 			node.Set(nullptr, tile, td, is_choice);
-			Yapf().AddStartupNode(node);
+			Yapf().AddStartupNode(std::move(node));
 		}
 	}
 };
@@ -64,15 +64,15 @@ public:
 			Trackdir reverse_td = INVALID_TRACKDIR, int reverse_penalty = 0)
 	{
 		if (forward_tile != INVALID_TILE && forward_td != INVALID_TRACKDIR) {
-			Node &node = Yapf().CreateNewNode();
+			Node node;
 			node.Set(nullptr, forward_tile, forward_td, false);
-			Yapf().AddStartupNode(node);
+			Yapf().AddStartupNode(std::move(node));
 		}
 		if (reverse_tile != INVALID_TILE && reverse_td != INVALID_TRACKDIR) {
-			Node &node = Yapf().CreateNewNode();
+			Node node;
 			node.Set(nullptr, reverse_tile, reverse_td, false);
 			node.cost = reverse_penalty;
-			Yapf().AddStartupNode(node);
+			Yapf().AddStartupNode(std::move(node));
 		}
 	}
 };

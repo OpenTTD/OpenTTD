@@ -27,16 +27,9 @@ protected:
 	std::deque<Titem> items; ///< Storage of the nodes.
 	HashTable<Titem, Thash_bits_open> open_nodes; ///< Hash table of pointers to open nodes.
 	HashTable<Titem, Thash_bits_closed> closed_nodes; ///< Hash table of pointers to closed nodes.
-	CBinaryHeapT<Titem> open_queue; ///< Priority queue of pointers to open nodes.
-	Titem *new_node; ///< New node under construction.
+	CBinaryHeapT<Titem> open_queue{2048}; ///< Priority queue of pointers to open nodes.
 
 public:
-	/** default constructor */
-	NodeList() : open_queue(2048)
-	{
-		this->new_node = nullptr;
-	}
-
 	/** return number of open nodes */
 	inline int OpenCount()
 	{
@@ -55,32 +48,13 @@ public:
 		return this->items.Length();
 	}
 
-	/** allocate new data item from items */
-	inline Titem &CreateNewNode()
-	{
-		if (this->new_node == nullptr) this->new_node = &this->items.emplace_back();
-		return *this->new_node;
-	}
-
-	/** Notify the nodelist that we don't want to discard the given node. */
-	inline void FoundBestNode(Titem &item)
-	{
-		/* for now it is enough to invalidate new_node if it is our given node */
-		if (&item == this->new_node) {
-			this->new_node = nullptr;
-		}
-		/* TODO: do we need to store best nodes found in some extra list/array? Probably not now. */
-	}
-
 	/** insert given item as open node (into open_nodes and open_queue) */
-	inline void InsertOpenNode(Titem &item)
+	inline void InsertOpenNode(Titem &&item)
 	{
 		assert(this->closed_nodes.Find(item.GetKey()) == nullptr);
-		this->open_nodes.Push(item);
-		this->open_queue.Include(&item);
-		if (&item == this->new_node) {
-			this->new_node = nullptr;
-		}
+		auto& emplaced_item = this->items.emplace_back(std::move(item));
+		this->open_nodes.Push(emplaced_item);
+		this->open_queue.Include(&emplaced_item);
 	}
 
 	/** return the best open node */

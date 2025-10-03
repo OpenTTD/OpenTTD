@@ -59,9 +59,9 @@ public:
 	{
 		this->end_tile = end_tile;
 
-		Node &node = Yapf().CreateNewNode();
+		Node node;
 		node.Set(nullptr, start_tile, INVALID_TRACKDIR, false);
-		Yapf().AddStartupNode(node);
+		Yapf().AddStartupNode(std::move(node));
 	}
 
 	inline bool PfDetectDestination(Node &n) const
@@ -87,9 +87,9 @@ public:
 		for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; ++d) {
 			const TileIndex t = old_node.GetTile() + TileOffsByDiagDir(d);
 			if (IsValidTile(t) && RiverFlowsDown(old_node.GetTile(), t)) {
-				Node &node = Yapf().CreateNewNode();
+				Node node;
 				node.Set(&old_node, t, INVALID_TRACKDIR, true);
-				Yapf().AddNewNode(node, RiverBuilderFollower{});
+				Yapf().AddNewNode(std::move(node), RiverBuilderFollower{});
 			}
 		}
 	}
