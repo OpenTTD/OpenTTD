@@ -62,5 +62,6 @@ uint8_t GetReverseRailTypeTranslation(RailType railtype, const GRFFile *grffile)
 void ConvertRailTypes();
 void SetCurrentRailTypeLabelList();
 void ClearRailTypeLabelList();
+void PreloadRailTypeMaps();
 
 #endif /* NEWGRF_RAILTYPE_H */

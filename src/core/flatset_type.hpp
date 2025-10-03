@@ -73,4 +73,61 @@ public:
 	auto operator<=>(const FlatSet<Tkey, Tcompare> &) const = default;
 };
 
+/**
+ * Adapter for FlatSet that provides part of the (Base)BitSet-like interface.
+ * @tparam Tkey key type.
+ * @tparam Tcompare key comparator.
+ */
+template <typename Tkey, typename Tcompare = std::less<>>
+struct FlatBitSet : FlatSet<Tkey> {
+	FlatBitSet() = default;
+
+	FlatBitSet(Tkey value)
+	{
+		this->Set(value);
+	}
+
+	FlatBitSet(std::initializer_list<const Tkey> values)
+	{
+		for (const Tkey &value : values) {
+			this->Set(value);
+		}
+	}
+
+	void Set(Tkey value) { this->insert(value); }
+
+	void Set(Tkey value, bool set)
+	{
+		if (set) {
+			this->insert(value);
+		} else {
+			this->erase(value);
+		}
+	}
+
+	bool Test(Tkey value) const { return this->contains(value); }
+
+	bool Any() const { return this->size() != 0; }
+
+	void Set(const FlatBitSet &other)
+	{
+		std::ranges::for_each(other, [this](const Tkey &value) { this->insert(value); });
+	}
+
+	void Reset(const FlatBitSet &other)
+	{
+		std::ranges::for_each(other, [this](const Tkey &value) { this->erase(value); });
+	}
+
+	bool Any(const FlatBitSet &other) const
+	{
+		return std::ranges::any_of(other, [this](const Tkey &value) { return this->contains(value); });
+	}
+
+	bool All(const FlatBitSet &other) const
+	{
+		return std::ranges::all_of(other, [this](const Tkey &value) { return this->contains(value); });
+	}
+};
+
 #endif /* FLATSET_TYPE_HPP */

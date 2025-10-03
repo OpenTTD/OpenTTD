@@ -218,13 +218,31 @@ uint8_t GetReverseRoadTypeTranslation(RoadType roadtype, const GRFFile *grffile)
 
 std::vector<LabelObject<RoadTypeLabel>> _roadtype_list;
 
+void PreloadRoadTypeMaps()
+{
+	_roadtype_mapping.Init();
+	_tramtype_mapping.Init();
+	for (const auto &lo : _roadtype_list) {
+		if (lo.label == 0) continue;
+		RoadType rt = GetRoadTypeByLabel(lo.label);
+		if (rt == INVALID_ROADTYPE) continue;
+
+		RoadTramType rtt = GetRoadTramType(rt);
+		if (static_cast<RoadTramType>(lo.subtype) != rtt) continue;
+
+		if (rtt == RTT_ROAD) _roadtype_mapping.Set(static_cast<MapRoadType>(lo.index), rt);
+		if (rtt == RTT_TRAM) _tramtype_mapping.Set(static_cast<MapTramType>(lo.index), rt);
+	}
+}
+
 /**
  * Test if any saved road type labels are different to the currently loaded
  * road types. Road types stored in the map will be converted if necessary.
  */
 void ConvertRoadTypes()
 {
-	std::vector<RoadType> roadtype_conversion_map;
+	std::vector<MapRoadType> roadtype_conversion_map;
+	std::vector<MapTramType> tramtype_conversion_map;
 	bool needs_conversion = false;
 	for (auto it = std::begin(_roadtype_list); it != std::end(_roadtype_list); ++it) {
 		RoadType rt = GetRoadTypeByLabel(it->label);
@@ -232,31 +250,46 @@ void ConvertRoadTypes()
 			rt = it->subtype ? ROADTYPE_TRAM : ROADTYPE_ROAD;
 		}
 
-		roadtype_conversion_map.push_back(rt);
+		if (it->subtype == 0) {
+			roadtype_conversion_map.push_back(_roadtype_mapping.AllocateMapType(rt, true));
 
-		/* Conversion is needed if the road type is in a different position than the list. */
-		if (it->label != 0 && rt != std::distance(std::begin(_roadtype_list), it)) needs_conversion = true;
+			if (it->label == 0) continue;
+			if (needs_conversion) continue;
+
+			/* Conversion is needed if the road type is in a different position than the list. */
+			if (_roadtype_mapping.GetMappedType(rt).base() != it->index) needs_conversion = true;
+		}
+
+		if (it->subtype == 1) {
+			tramtype_conversion_map.push_back(_tramtype_mapping.AllocateMapType(rt, true));
+
+			if (it->label == 0) continue;
+			if (needs_conversion) continue;
+
+			/* Conversion is needed if the road type is in a different position than the list. */
+			if (_tramtype_mapping.GetMappedType(rt).base() != it->index) needs_conversion = true;
+		}
 	}
 	if (!needs_conversion) return;
 
 	for (TileIndex t : Map::Iterate()) {
 		switch (GetTileType(t)) {
 			case MP_ROAD:
-				if (RoadType rt = GetRoadTypeRoad(t); rt != INVALID_ROADTYPE) SetRoadTypeRoad(t, roadtype_conversion_map[rt]);
-				if (RoadType rt = GetRoadTypeTram(t); rt != INVALID_ROADTYPE) SetRoadTypeTram(t, roadtype_conversion_map[rt]);
+				if (RoadType rt = GetRoadTypeRoad(t); rt != INVALID_ROADTYPE) SetMapRoadTypeRoad(t, roadtype_conversion_map[rt]);
+				if (RoadType rt = GetRoadTypeTram(t); rt != INVALID_ROADTYPE) SetMapRoadTypeTram(t, tramtype_conversion_map[rt]);
 				break;
 
 			case MP_STATION:
 				if (IsAnyRoadStop(t)) {
-					if (RoadType rt = GetRoadTypeRoad(t); rt != INVALID_ROADTYPE) SetRoadTypeRoad(t, roadtype_conversion_map[rt]);
-					if (RoadType rt = GetRoadTypeTram(t); rt != INVALID_ROADTYPE) SetRoadTypeTram(t, roadtype_conversion_map[rt]);
+					if (RoadType rt = GetRoadTypeRoad(t); rt != INVALID_ROADTYPE) SetMapRoadTypeRoad(t, roadtype_conversion_map[rt]);
+					if (RoadType rt = GetRoadTypeTram(t); rt != INVALID_ROADTYPE) SetMapRoadTypeTram(t, tramtype_conversion_map[rt]);
 				}
 				break;
 
 			case MP_TUNNELBRIDGE:
 				if (GetTunnelBridgeTransportType(t) == TRANSPORT_ROAD) {
-					if (RoadType rt = GetRoadTypeRoad(t); rt != INVALID_ROADTYPE) SetRoadTypeRoad(t, roadtype_conversion_map[rt]);
-					if (RoadType rt = GetRoadTypeTram(t); rt != INVALID_ROADTYPE) SetRoadTypeTram(t, roadtype_conversion_map[rt]);
+					if (RoadType rt = GetRoadTypeRoad(t); rt != INVALID_ROADTYPE) SetMapRoadTypeRoad(t, roadtype_conversion_map[rt]);
+					if (RoadType rt = GetRoadTypeTram(t); rt != INVALID_ROADTYPE) SetMapRoadTypeTram(t, tramtype_conversion_map[rt]);
 				}
 				break;
 
@@ -270,8 +303,13 @@ void ConvertRoadTypes()
 void SetCurrentRoadTypeLabelList()
 {
 	_roadtype_list.clear();
-	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
-		_roadtype_list.emplace_back(GetRoadTypeInfo(rt)->label, GetRoadTramType(rt));
+	for (RoadType rt = ROADTYPE_BEGIN; rt != GetNumRoadTypes(); rt++) {
+		if (MapRoadType map_roadtype = _roadtype_mapping.GetMappedType(rt); map_roadtype != RoadTypeMapping::INVALID_MAP_TYPE) {
+			_roadtype_list.emplace_back(GetRoadTypeInfo(rt)->label, map_roadtype.base(), GetRoadTramType(rt));
+		}
+		if (MapTramType map_tramtype = _tramtype_mapping.GetMappedType(rt); map_tramtype != TramTypeMapping::INVALID_MAP_TYPE) {
+			_roadtype_list.emplace_back(GetRoadTypeInfo(rt)->label, map_tramtype.base(), GetRoadTramType(rt));
+		}
 	}
 }
 

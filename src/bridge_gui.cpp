@@ -54,7 +54,7 @@ typedef GUIList<BuildBridgeData> GUIBridgeList; ///< List of bridges, used in #B
  * @param tile_start start tile
  * @param transport_type transport type.
  */
-void CcBuildBridge(Commands, const CommandCost &result, TileIndex end_tile, TileIndex tile_start, TransportType transport_type, BridgeType, uint8_t)
+void CcBuildBridge(Commands, const CommandCost &result, TileIndex end_tile, TileIndex tile_start, TransportType transport_type, BridgeType, RailType, RoadType)
 {
 	if (result.Failed()) return;
 	if (_settings_client.sound.confirm) SndPlayTileFx(SND_27_CONSTRUCTION_BRIDGE, end_tile);
@@ -86,7 +86,8 @@ private:
 	TileIndex start_tile = INVALID_TILE;
 	TileIndex end_tile = INVALID_TILE;
 	TransportType transport_type = INVALID_TRANSPORT;
-	uint8_t road_rail_type = 0;
+	RailType railtype = INVALID_RAILTYPE;
+	RoadType roadtype = INVALID_ROADTYPE;
 	GUIBridgeList bridges{};
 	int icon_width = 0; ///< Scaled width of the the bridge icon sprite.
 	Scrollbar *vscroll = nullptr;
@@ -117,7 +118,7 @@ private:
 			default: break;
 		}
 		Command<CMD_BUILD_BRIDGE>::Post(STR_ERROR_CAN_T_BUILD_BRIDGE_HERE, CcBuildBridge,
-					this->end_tile, this->start_tile, this->transport_type, type, this->road_rail_type);
+					this->end_tile, this->start_tile, this->transport_type, type, this->railtype, this->roadtype);
 	}
 
 	/** Sort the builable bridges */
@@ -154,11 +155,12 @@ private:
 	}
 
 public:
-	BuildBridgeWindow(WindowDesc &desc, TileIndex start, TileIndex end, TransportType transport_type, uint8_t road_rail_type, GUIBridgeList &&bl) : Window(desc),
+	BuildBridgeWindow(WindowDesc &desc, TileIndex start, TileIndex end, TransportType transport_type, RailType railtype, RoadType roadtype, GUIBridgeList &&bl) : Window(desc),
 		start_tile(start),
 		end_tile(end),
 		transport_type(transport_type),
-		road_rail_type(road_rail_type),
+		railtype(railtype),
+		roadtype(roadtype),
 		bridges(std::move(bl))
 	{
 		this->CreateNestedTree();
@@ -354,7 +356,7 @@ static WindowDesc _build_bridge_desc(
  * @param transport_type The transport type
  * @param road_rail_type The road/rail type
  */
-void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transport_type, uint8_t road_rail_type)
+void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transport_type, RailType railtype, RoadType roadtype)
 {
 	CloseWindowByClass(WC_BUILD_BRIDGE);
 
@@ -373,13 +375,13 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 		default: break; // water ways and air routes don't have bridge types
 	}
 	if (_ctrl_pressed && CheckBridgeAvailability(last_bridge_type, bridge_len).Succeeded()) {
-		Command<CMD_BUILD_BRIDGE>::Post(STR_ERROR_CAN_T_BUILD_BRIDGE_HERE, CcBuildBridge, end, start, transport_type, last_bridge_type, road_rail_type);
+		Command<CMD_BUILD_BRIDGE>::Post(STR_ERROR_CAN_T_BUILD_BRIDGE_HERE, CcBuildBridge, end, start, transport_type, last_bridge_type, railtype, roadtype);
 		return;
 	}
 
 	/* only query bridge building possibility once, result is the same for all bridges!
 	 * returns CMD_ERROR on failure, and price on success */
-	CommandCost ret = Command<CMD_BUILD_BRIDGE>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_BRIDGE>()) | DoCommandFlag::QueryCost, end, start, transport_type, 0, road_rail_type);
+	CommandCost ret = Command<CMD_BUILD_BRIDGE>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_BRIDGE>()) | DoCommandFlag::QueryCost, end, start, transport_type, 0, railtype, roadtype);
 
 	GUIBridgeList bl;
 	if (!ret.Failed()) {
@@ -396,10 +398,10 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 					road_rt = GetRoadTypeRoad(start);
 					tram_rt = GetRoadTypeTram(start);
 				}
-				if (RoadTypeIsRoad((RoadType)road_rail_type)) {
-					road_rt = (RoadType)road_rail_type;
+				if (RoadTypeIsRoad(roadtype)) {
+					road_rt = roadtype;
 				} else {
-					tram_rt = (RoadType)road_rail_type;
+					tram_rt = roadtype;
 				}
 
 				if (road_rt != INVALID_ROADTYPE) infra_cost += (bridge_len + 2) * 2 * RoadBuildCost(road_rt);
@@ -407,7 +409,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 
 				break;
 			}
-			case TRANSPORT_RAIL: infra_cost = (bridge_len + 2) * RailBuildCost((RailType)road_rail_type); break;
+			case TRANSPORT_RAIL: infra_cost = (bridge_len + 2) * RailBuildCost(railtype); break;
 			default: break;
 		}
 
@@ -432,7 +434,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 	}
 
 	if (!bl.empty()) {
-		new BuildBridgeWindow(_build_bridge_desc, start, end, transport_type, road_rail_type, std::move(bl));
+		new BuildBridgeWindow(_build_bridge_desc, start, end, transport_type, railtype, roadtype, std::move(bl));
 	} else {
 		ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_BUILD_BRIDGE_HERE), TileX(end) * TILE_SIZE, TileY(end) * TILE_SIZE, ret);
 	}
