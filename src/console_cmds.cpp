@@ -2699,7 +2699,7 @@ static std::string FormatLabel(uint32_t label)
 		return fmt::format("{:c}{:c}{:c}{:c}", GB(label, 24, 8), GB(label, 16, 8), GB(label, 8, 8), GB(label, 0, 8));
 	}
 
-	return fmt::format("{:08X}", std::byteswap(label));
+	return fmt::format("{:08X}", label);
 }
 
 static void ConDumpRoadTypes()
