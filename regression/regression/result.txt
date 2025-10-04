@@ -10006,6 +10006,15 @@ ERROR: IsEnd() is invalid as Begin() is never called
   foreach():
     20 => 23596
 
+--Company Gender--
+  GetPresidentGender():              1
+  SetPresidentGender():              true
+  GetPresidentGender():              0
+  SetPresidentGender():              true
+  GetPresidentGender():              1
+  SetPresidentGender():              false
+  GetPresidentGender():              1
+
   First Subsidy Test
       --Subsidy (0) --
         IsValidSubsidy():      true
@@ -10107,7 +10116,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
 constructor failed with: excessive CPU usage in list filter function
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [Start()] regression/main.nut line [2168]
+*FUNCTION [Start()] regression/main.nut line [2184]
 
 [Infinite] CLOSURE
 [list] INSTANCE
