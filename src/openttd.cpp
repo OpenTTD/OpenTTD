@@ -88,12 +88,12 @@
 
 #include "table/strings.h"
 
-#include "safeguards.h"
-
 #ifdef __EMSCRIPTEN__
 #	include <emscripten.h>
 #	include <emscripten/html5.h>
 #endif
+
+#include "safeguards.h"
 
 void CallLandscapeTick();
 void DoPaletteAnimations();

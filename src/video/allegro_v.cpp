@@ -28,13 +28,13 @@
 #include "allegro_v.h"
 #include <allegro.h>
 
-#include "../safeguards.h"
-
 #ifdef _DEBUG
 /* Allegro replaces SEGV/ABRT signals meaning that the debugger will never
  * be triggered, so rereplace the signals and make the debugger useful. */
 #include <signal.h>
 #endif
+
+#include "../safeguards.h"
 
 static FVideoDriver_Allegro iFVideoDriver_Allegro;
 

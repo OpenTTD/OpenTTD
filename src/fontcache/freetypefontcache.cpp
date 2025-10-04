@@ -7,6 +7,8 @@
 
 /** @file freetypefontcache.cpp FreeType font cache implementation. */
 
+#ifdef WITH_FREETYPE
+
 #include "../stdafx.h"
 
 #include "../debug.h"
@@ -20,13 +22,12 @@
 
 #include "../table/control_codes.h"
 
-#include "../safeguards.h"
-
-#ifdef WITH_FREETYPE
 #include <ft2build.h>
 #include FT_FREETYPE_H
 #include FT_GLYPH_H
 #include FT_TRUETYPE_TABLES_H
+
+#include "../safeguards.h"
 
 /** Font cache for fonts that are based on a freetype font. */
 class FreeTypeFontCache : public TrueTypeFontCache {
