@@ -61,6 +61,8 @@
 #include "table/pricebase.h"
 
 #include "safeguards.h"
+#include "base_media_base.h"
+#include "core/string_consumer.hpp"
 
 
 /* Initialize the cargo payment-pool */
@@ -899,6 +901,7 @@ void StartupIndustryDailyChanges(bool init_counter)
 	 * Since it is based on "fractional parts", the leftover days will not make much of a difference
 	 * on the overall total number of changes performed */
 	_economy.industry_daily_increment = (1 << map_size) / 31;
+	Debug(misc, 0, "Industry daily increment is {} because of map size {}", _economy.industry_daily_increment, map_size);
 
 	if (init_counter) {
 		/* A new game or a savegame from an older version will require the counter to be initialized */

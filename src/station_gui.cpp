@@ -1907,7 +1907,9 @@ struct StationViewWindow : public Window {
 					cs->name,
 					lg != nullptr ? lg->Monthly((*lg)[ge->node].supply) : 0,
 					STR_CARGO_RATING_APPALLING + (ge->rating >> 5),
-					ToPercent8(ge->rating)));
+					ge->target_rating,
+					ge->rating
+				));
 			tr.top += GetCharacterHeight(FS_NORMAL);
 		}
 		return CeilDiv(tr.top - r.top - WidgetDimensions::scaled.framerect.top, GetCharacterHeight(FS_NORMAL));

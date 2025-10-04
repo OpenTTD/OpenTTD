@@ -14,7 +14,6 @@
 #define BASE_BITSET_TYPE_HPP
 
 #include "bitmath_func.hpp"
-#include <limits>
 
 /**
  * Base for bit set wrapper.

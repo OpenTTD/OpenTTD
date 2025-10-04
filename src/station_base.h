@@ -233,7 +233,7 @@ struct GoodsEntry {
 	uint8_t time_since_pickup = 255;
 
 	uint8_t rating = INITIAL_STATION_RATING; ///< %Station rating for this cargo.
-
+	uint8_t target_rating = INITIAL_STATION_RATING;
 	/**
 	 * Maximum speed (up to 255) of the last vehicle that tried to load this cargo.
 	 * This does not imply there was any cargo to load.

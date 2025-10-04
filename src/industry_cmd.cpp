@@ -2832,6 +2832,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 
 	bool callback_enabled = indspec->callback_mask.Test(monthly ? IndustryCallbackMask::MonthlyProdChange : IndustryCallbackMask::ProductionChange);
 	if (callback_enabled) {
+		Debug(misc, 0, "Callback is enabled");
 		std::array<int32_t, 1> regs100;
 		uint16_t res = GetIndustryCallback(monthly ? CBID_INDUSTRY_MONTHLYPROD_CHANGE : CBID_INDUSTRY_PRODUCTION_CHANGE, 0, Random(), i, i->type, i->location.tile, regs100);
 		if (res != CALLBACK_FAILED) { // failed callback means "do nothing"
@@ -3038,6 +3039,7 @@ static const IntervalTimer<TimerGameEconomy> _economy_industries_daily({TimerGam
 	 * the lower 16 bit are a fractional part that might accumulate over several days until it
 	 * is sufficient for an industry. */
 	uint16_t change_loop = _economy.industry_daily_change_counter >> 16;
+	Debug(misc, 0, "Industry daily change counter is {}, bitshifted is {}", _economy.industry_daily_change_counter, change_loop);
 
 	/* Reset the active part of the counter, just keeping the "fractional part" */
 	_economy.industry_daily_change_counter &= 0xFFFF;
@@ -3045,6 +3047,7 @@ static const IntervalTimer<TimerGameEconomy> _economy_industries_daily({TimerGam
 	if (change_loop == 0) {
 		return;  // Nothing to do? get out
 	}
+	Debug(misc, 0, "Doing something with industries daily loop!");
 
 	Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
 

@@ -3845,9 +3845,11 @@ static void UpdateStationRating(Station *st)
 
 	byte_inc_sat(&st->time_since_load);
 	byte_inc_sat(&st->time_since_unload);
+	Debug(misc, 0, "Load/unload: {} {}", st->time_since_load, st->time_since_unload);
 
 	for (const CargoSpec *cs : CargoSpec::Iterate()) {
 		GoodsEntry *ge = &st->goods[cs->Index()];
+		Debug(misc, 0, "Checking goods entry for: {} - it's {}", cs->Index(), ge->rating);
 		/* Slowly increase the rating back to its original level in the case we
 		 *  didn't deliver cargo yet to this station. This happens when a bribe
 		 *  failed while you didn't moved that cargo yet to a station. */
@@ -3857,8 +3859,10 @@ static void UpdateStationRating(Station *st)
 
 		/* Only change the rating if we are moving this cargo */
 		if (ge->HasRating()) {
+			Debug(misc, 0, "It has a rating");
 			byte_inc_sat(&ge->time_since_pickup);
 			if (ge->time_since_pickup == 255 && _settings_game.order.selectgoods) {
+				Debug(misc, 0, "Resetting rating - time since pickup is 255");
 				ge->status.Reset(GoodsEntry::State::Rating);
 				ge->last_speed = 0;
 				TruncateCargo(cs, ge);
@@ -3909,8 +3913,12 @@ static void UpdateStationRating(Station *st)
 			}
 
 			if (!skip) {
+				Debug(misc, 0, "Last speed score: {}", ge->last_speed);
 				int b = ge->last_speed - 85;
+				Debug(misc, 0, "Minus 85: {}", b);
 				if (b >= 0) rating += b >> 2;
+				Debug(misc, 0, "Rating so far: {}", rating);
+
 
 				uint8_t waittime = ge->time_since_pickup;
 				if (st->last_vehicle_type == VEH_SHIP) waittime >>= 2;
@@ -3918,6 +3926,7 @@ static void UpdateStationRating(Station *st)
 				if (waittime <= 12) rating += 25;
 				if (waittime <= 6) rating += 45;
 				if (waittime <= 3) rating += 35;
+				Debug(misc, 0, "Wait time is {}, so rating is now: {}", waittime, rating);
 
 				rating -= 90;
 				if (ge->max_waiting_cargo <= 1500) rating += 55;
@@ -3925,20 +3934,24 @@ static void UpdateStationRating(Station *st)
 				if (ge->max_waiting_cargo <= 600) rating += 10;
 				if (ge->max_waiting_cargo <= 300) rating += 20;
 				if (ge->max_waiting_cargo <= 100) rating += 10;
+				Debug(misc, 0, "Max waiting cargo is {}, so rating is now: {}", ge->max_waiting_cargo, rating);
+
 			}
 
 			if (Company::IsValidID(st->owner) && st->town->statues.Test(st->owner)) rating += 26;
+			Debug(misc, 0, "Rating after statue bonus: {}", rating);
 
 			uint8_t age = ge->last_age;
 			if (age < 3) rating += 10;
 			if (age < 2) rating += 10;
 			if (age < 1) rating += 13;
-
+			Debug(misc, 0, "Last age is {}, so rating is now: {}", age, rating);
 			{
 				int or_ = ge->rating; // old rating
 
 				/* only modify rating in steps of -2, -1, 0, 1 or 2 */
-				ge->rating = rating = ClampTo<uint8_t>(or_ + Clamp(rating - or_, -2, 2));
+				ge->target_rating = rating;
+				ge->rating = rating = ClampTo<uint8_t>(or_ + Clamp(rating - or_, -2, 2));				
 
 				/* if rating is <= 64 and more than 100 items waiting on average per destination,
 				 * remove some random amount of goods from the station */
