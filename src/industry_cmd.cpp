@@ -45,6 +45,7 @@
 #include "industry_cmd.h"
 #include "landscape_cmd.h"
 #include "terraform_cmd.h"
+#include "map_func.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_economy.h"
@@ -2290,12 +2291,15 @@ static Industry *CreateNewIndustry(TileIndex tile, IndustryType type, IndustryAv
 /**
  * Compute the appearance probability for an industry during map creation.
  * @param it Industry type to compute.
+ * @param water Whether to get probability of land-based, water-based, (or both, if std::nullopt), industry types.
  * @param[out] force_at_least_one Returns whether at least one instance should be forced on map creation.
  * @return Relative probability for the industry to appear.
  */
-static uint32_t GetScaledIndustryGenerationProbability(IndustryType it, bool *force_at_least_one)
+static uint32_t GetScaledIndustryGenerationProbability(IndustryType it, std::optional<bool> water, bool *force_at_least_one)
 {
 	const IndustrySpec *ind_spc = GetIndustrySpec(it);
+	if (water.has_value() && ind_spc->behaviour.Test(IndustryBehaviour::BuiltOnWater) != *water) return 0;
+
 	uint32_t chance = ind_spc->appear_creation[to_underlying(_settings_game.game_creation.landscape)];
 	if (!ind_spc->enabled || ind_spc->layouts.empty() ||
 			(_game_mode != GM_EDITOR && _settings_game.difficulty.industry_density == ID_FUND_ONLY) ||
@@ -2387,11 +2391,11 @@ static Industry *PlaceIndustry(IndustryType type, IndustryAvailabilityCallType c
  * @param type IndustryType of the desired industry
  * @param try_hard Try very hard to find a place. (Used to place at least one industry per type)
  */
-static void PlaceInitialIndustry(IndustryType type, bool try_hard)
+static void PlaceInitialIndustry(IndustryType type, bool water, bool try_hard)
 {
 	Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
 
-	IncreaseGeneratingWorldProgress(GWP_INDUSTRY);
+	IncreaseGeneratingWorldProgress(water ? GWP_WATER_INDUSTRY : GWP_LAND_INDUSTRY);
 	PlaceIndustry(type, IACT_MAPGENERATION, try_hard);
 
 	cur_company.Restore();
@@ -2445,6 +2449,31 @@ void IndustryBuildData::EconomyMonthlyLoop()
 	}
 }
 
+struct IndustryGenerationProbabilities {
+	std::array<uint32_t, NUM_INDUSTRYTYPES> probs{};
+	std::array<bool, NUM_INDUSTRYTYPES> force_one{};
+	uint64_t total = 0;
+	uint num_forced = 0;
+};
+
+/**
+ * Get scaled industry generation probabilities.
+ * @param water Whether to get land or water industry probabilities.
+ * @returns Probability information.
+ */
+static IndustryGenerationProbabilities GetScaledProbabilities(bool water)
+{
+	IndustryGenerationProbabilities p{};
+
+	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
+		p.probs[it] = GetScaledIndustryGenerationProbability(it, water, &p.force_one[it]);
+		p.total += p.probs[it];;
+		if (p.force_one[it]) p.num_forced++;
+	}
+
+	return p;
+}
+
 /**
  * This function will create random industries during game creation.
  * It will scale the amount of industries by mapsize and difficulty level.
@@ -2453,46 +2482,54 @@ void GenerateIndustries()
 {
 	if (_game_mode != GM_EDITOR && _settings_game.difficulty.industry_density == ID_FUND_ONLY) return; // No industries in the game.
 
-	uint32_t industry_probs[NUM_INDUSTRYTYPES];
-	bool force_at_least_one[NUM_INDUSTRYTYPES];
-	uint32_t total_prob = 0;
-	uint num_forced = 0;
+	/* Get the probabilities for all industries. This is done first as we need the total of
+	 * both land and water for scaling later. */
+	IndustryGenerationProbabilities lprob = GetScaledProbabilities(false);
+	IndustryGenerationProbabilities wprob = GetScaledProbabilities(true);
 
-	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
-		industry_probs[it] = GetScaledIndustryGenerationProbability(it, force_at_least_one + it);
-		total_prob += industry_probs[it];
-		if (force_at_least_one[it]) num_forced++;
-	}
+	/* Run generation twice, for land and water industries in turn. */
+	for (bool water = false;; water = true) {
+		auto &p = water ? wprob : lprob;
 
-	uint total_amount = GetNumberOfIndustries();
-	if (total_prob == 0 || total_amount < num_forced) {
-		/* Only place the forced ones */
-		total_amount = num_forced;
-	}
+		/* Total number of industries scaled by land/water proportion. */
+		uint total_amount = p.total * GetNumberOfIndustries() / (lprob.total + wprob.total);
 
-	SetGeneratingWorldProgress(GWP_INDUSTRY, total_amount);
+		/* Scale land-based industries to the land proportion. */
+		if (!water) total_amount = Map::ScaleByLandProportion(total_amount);
 
-	/* Try to build one industry per type independent of any probabilities */
-	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
-		if (force_at_least_one[it]) {
-			assert(total_amount > 0);
-			total_amount--;
-			PlaceInitialIndustry(it, true);
+		/* Ensure that forced industries are generated even if the scaled amounts are too low. */
+		if (p.total == 0 || total_amount < p.num_forced) {
+			/* Only place the forced ones */
+			total_amount = p.num_forced;
 		}
+
+		SetGeneratingWorldProgress(water ? GWP_WATER_INDUSTRY : GWP_LAND_INDUSTRY, total_amount);
+
+		/* Try to build one industry per type independent of any probabilities */
+		for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
+			if (p.force_one[it]) {
+				assert(total_amount > 0);
+				total_amount--;
+				PlaceInitialIndustry(it, water, true);
+			}
+		}
+
+		/* Add the remaining industries according to their probabilities */
+		for (uint i = 0; i < total_amount; i++) {
+			uint32_t r = RandomRange(p.total);
+			IndustryType it = 0;
+			while (r >= p.probs[it]) {
+				r -= p.probs[it];
+				it++;
+				assert(it < NUM_INDUSTRYTYPES);
+			}
+			assert(p.probs[it] > 0);
+			PlaceInitialIndustry(it, water, false);
+		}
+
+		if (water) break;
 	}
 
-	/* Add the remaining industries according to their probabilities */
-	for (uint i = 0; i < total_amount; i++) {
-		uint32_t r = RandomRange(total_prob);
-		IndustryType it = 0;
-		while (r >= industry_probs[it]) {
-			r -= industry_probs[it];
-			it++;
-			assert(it < NUM_INDUSTRYTYPES);
-		}
-		assert(industry_probs[it] > 0);
-		PlaceInitialIndustry(it, false);
-	}
 	_industry_builder.Reset();
 }
 
@@ -3119,7 +3156,7 @@ void CheckIndustries()
 		if (Industry::GetIndustryTypeCount(it) > 0) continue; // Types of existing industries can be skipped.
 
 		bool force_at_least_one;
-		uint32_t chance = GetScaledIndustryGenerationProbability(it, &force_at_least_one);
+		uint32_t chance = GetScaledIndustryGenerationProbability(it, std::nullopt, &force_at_least_one);
 		if (chance == 0 || !force_at_least_one) continue; // Types that are not available can be skipped.
 
 		const IndustrySpec *is = GetIndustrySpec(it);
