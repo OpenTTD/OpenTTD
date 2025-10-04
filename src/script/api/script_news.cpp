@@ -50,5 +50,29 @@ static NewsReference CreateReference(ScriptNews::NewsReferenceType ref_type, SQI
 
 	::CompanyID c = ScriptCompany::FromScriptCompanyID(company);
 
-	return ScriptObject::Command<CMD_CUSTOM_NEWS_ITEM>::Do((::NewsType)type, c, CreateReference(ref_type, reference), encoded);
+	return ScriptObject::Command<CMD_CUSTOM_NEWS_ITEM>::Do((::NewsType)type, c, CreateReference(ref_type, reference), INVALID_STRING_ID, encoded, {}, {});
+}
+
+/* static */ bool ScriptNews::CreateWithInfo(NewsType type, Text *text, ScriptCompany::CompanyID company, NewsReferenceType ref_type, SQInteger reference, StringID title, Text *additional_message1, Text *additional_message2)
+{
+	ScriptObjectRef counter(text);
+
+	EnforceDeityMode(false);
+	EnforcePrecondition(false, text != nullptr);
+	EncodedString encoded = text->GetEncodedText();
+	EnforcePreconditionEncodedText(false, encoded);
+	EnforcePrecondition(false, type == NT_ECONOMY || type == NT_SUBSIDIES || type == NT_GENERAL);
+	EnforcePrecondition(false, company == ScriptCompany::COMPANY_INVALID || ScriptCompany::ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID);
+	EnforcePrecondition(false, (ref_type == NR_NONE) ||
+	                           (ref_type == NR_TILE     && ScriptMap::IsValidTile(::TileIndex(reference))) ||
+	                           (ref_type == NR_STATION  && ScriptStation::IsValidStation(static_cast<StationID>(reference))) ||
+	                           (ref_type == NR_INDUSTRY && ScriptIndustry::IsValidIndustry(static_cast<IndustryID>(reference))) ||
+	                           (ref_type == NR_TOWN     && ScriptTown::IsValidTown(static_cast<TownID>(reference))));
+
+	::CompanyID c = ScriptCompany::FromScriptCompanyID(company);
+
+	auto msg1 = additional_message1->GetEncodedText();
+	auto msg2 = additional_message2->GetEncodedText();
+
+	return ScriptObject::Command<CMD_CUSTOM_NEWS_ITEM>::Do((::NewsType)type, c, CreateReference(ref_type, reference), title, encoded, msg1, msg2);
 }
