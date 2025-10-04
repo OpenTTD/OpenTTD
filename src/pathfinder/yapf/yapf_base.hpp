@@ -146,18 +146,7 @@ public:
 		return (this->best_dest_node != nullptr) ? this->best_dest_node : this->best_intermediate_node;
 	}
 
-	/**
-	 * Calls NodeList::CreateNewNode() - allocates new node that can be filled and used
-	 *  as argument for AddStartupNode() or AddNewNode()
-	 */
-	inline Node &CreateNewNode()
-	{
-		Node &node = this->nodes.CreateNewNode();
-		return node;
-	}
-
-	/** Add new node (created by CreateNewNode and filled with data) into open list */
-	inline void AddStartupNode(Node &n)
+	inline void AddStartupNode(Node &&n)
 	{
 		assert(n.parent == nullptr);
 		assert(this->num_steps == 0);
@@ -165,7 +154,7 @@ public:
 		Yapf().PfNodeCacheFetch(n);
 		/* insert the new node only if it is not there */
 		if (this->nodes.FindOpenNode(n.key) == nullptr) {
-			this->nodes.InsertOpenNode(n);
+			this->nodes.InsertOpenNode(std::move(n));
 		}
 	}
 
@@ -175,17 +164,13 @@ public:
 		bool is_choice = (KillFirstBit(tf.new_td_bits) != TRACKDIR_BIT_NONE);
 		for (TrackdirBits rtds = tf.new_td_bits; rtds != TRACKDIR_BIT_NONE; rtds = KillFirstBit(rtds)) {
 			Trackdir td = (Trackdir)FindFirstBit(rtds);
-			Node &n = Yapf().CreateNewNode();
-			n.Set(parent, tf.new_tile, td, is_choice);
-			Yapf().AddNewNode(n, tf);
+			Node node;
+			node.Set(parent, tf.new_tile, td, is_choice);
+			Yapf().AddNewNode(std::move(node), tf);
 		}
 	}
 
-	/**
-	 * AddNewNode() - called by Tderived::PfFollowNode() for each child node.
-	 *  Nodes are evaluated here and added into open list
-	 */
-	void AddNewNode(Node &n, const TrackFollower &follower)
+	void AddNewNode(Node &&n, const TrackFollower &follower)
 	{
 		assert(n.parent != nullptr);
 
@@ -214,11 +199,9 @@ public:
 			/* another node exists with the same key in the open list
 			 * is it better than new one? */
 			if (n.GetCostEstimate() < open_node->GetCostEstimate()) {
-				/* update the old node by value from new one */
+				/* Replace old node with the new one */
 				this->nodes.PopOpenNode(n.GetKey());
-				*open_node = n;
-				/* add the updated old node back to open list */
-				this->nodes.InsertOpenNode(*open_node);
+				this->nodes.InsertOpenNode(std::move(n));
 				if (set_intermediate) this->best_intermediate_node = open_node;
 			}
 			return;
@@ -244,7 +227,7 @@ public:
 		}
 		/* the new node is really new
 		 * add it to the open list */
-		this->nodes.InsertOpenNode(n);
+		this->nodes.InsertOpenNode(std::move(n));
 		if (set_intermediate) this->best_intermediate_node = &n;
 	}
 

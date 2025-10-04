@@ -115,9 +115,9 @@ public:
 		if (water_region_patch.label == INVALID_WATER_REGION_PATCH) return;
 		if (!HasOrigin(water_region_patch)) {
 			this->origin_keys.emplace_back(water_region_patch);
-			Node &node = Yapf().CreateNewNode();
+			Node node;
 			node.Set(nullptr, water_region_patch);
-			Yapf().AddStartupNode(node);
+			Yapf().AddStartupNode(std::move(node));
 		}
 	}
 
@@ -134,9 +134,9 @@ public:
 	inline void PfFollowNode(Node &old_node)
 	{
 		VisitWaterRegionPatchCallback visit_func = [&](const WaterRegionPatchDesc &water_region_patch) {
-			Node &node = Yapf().CreateNewNode();
+			Node node;
 			node.Set(&old_node, water_region_patch);
-			Yapf().AddNewNode(node, TrackFollower{});
+			Yapf().AddNewNode(std::move(node), TrackFollower{});
 		};
 		VisitWaterRegionPatchNeighbours(old_node.key.water_region_patch, visit_func);
 	}
