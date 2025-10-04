@@ -48,7 +48,7 @@ DECLARE_INCREMENT_DECREMENT_OPERATORS(ZoomLevel)
 DECLARE_ENUM_AS_SEQUENTIAL(ZoomLevel)
 using ZoomLevels = EnumBitSet<ZoomLevel, uint8_t>;
 
-static const uint ZOOM_BASE_SHIFT = to_underlying(ZoomLevel::Normal);
+static const uint ZOOM_BASE_SHIFT = std::to_underlying(ZoomLevel::Normal);
 static uint const ZOOM_BASE = 1U << ZOOM_BASE_SHIFT;
 
 extern int _gui_scale;

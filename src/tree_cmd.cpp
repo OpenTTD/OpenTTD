@@ -515,7 +515,7 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 
 	if (start_tile >= Map::Size()) return CMD_ERROR;
 	/* Check the tree type within the current climate */
-	if (tree_to_plant != TREE_INVALID && !IsInsideBS(tree_to_plant, _tree_base_by_landscape[to_underlying(_settings_game.game_creation.landscape)], _tree_count_by_landscape[to_underlying(_settings_game.game_creation.landscape)])) return CMD_ERROR;
+	if (tree_to_plant != TREE_INVALID && !IsInsideBS(tree_to_plant, _tree_base_by_landscape[std::to_underlying(_settings_game.game_creation.landscape)], _tree_count_by_landscape[std::to_underlying(_settings_game.game_creation.landscape)])) return CMD_ERROR;
 
 	Company *c = (_game_mode != GM_EDITOR) ? Company::GetIfValid(_current_company) : nullptr;
 	int limit = (c == nullptr ? INT32_MAX : GB(c->tree_limit, 16, 16));

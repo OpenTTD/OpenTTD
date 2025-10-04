@@ -91,7 +91,7 @@ inline WaterTileType GetWaterTileType(Tile t)
 inline void SetWaterTileType(Tile t, WaterTileType type)
 {
 	assert(IsTileType(t, MP_WATER));
-	SB(t.m5(), WBL_TYPE_BEGIN, WBL_TYPE_COUNT, to_underlying(type));
+	SB(t.m5(), WBL_TYPE_BEGIN, WBL_TYPE_COUNT, std::to_underlying(type));
 }
 
 /**

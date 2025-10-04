@@ -68,7 +68,7 @@ enum class HouseZone : uint8_t {
 };
 using HouseZones = EnumBitSet<HouseZone, uint16_t>;
 
-static constexpr uint NUM_HOUSE_ZONES = to_underlying(HouseZone::TownEnd);
+static constexpr uint NUM_HOUSE_ZONES = std::to_underlying(HouseZone::TownEnd);
 static_assert(NUM_HOUSE_ZONES == 5);
 
 static constexpr HouseZones HZ_ZONE_ALL = {

@@ -615,7 +615,7 @@ CommandCost CmdBuildRoad(DoCommandFlags flags, TileIndex tile, RoadBits pieces, 
 			company = OWNER_TOWN;
 
 			/* If we are not within a town, we are not owned by the town */
-			if (town == nullptr || DistanceSquare(tile, town->xy) > town->cache.squared_town_zone_radius[to_underlying(HouseZone::TownEdge)]) {
+			if (town == nullptr || DistanceSquare(tile, town->xy) > town->cache.squared_town_zone_radius[std::to_underlying(HouseZone::TownEdge)]) {
 				company = OWNER_NONE;
 			}
 		}
@@ -2030,7 +2030,7 @@ static void TileLoop_Road(TileIndex tile)
 
 		{
 			/* Adjust road ground type depending on 'grp' (grp is the distance to the center) */
-			const Roadside *new_rs = (_settings_game.game_creation.landscape == LandscapeType::Toyland) ? _town_road_types_2[to_underlying(grp)] : _town_road_types[to_underlying(grp)];
+			const Roadside *new_rs = (_settings_game.game_creation.landscape == LandscapeType::Toyland) ? _town_road_types_2[std::to_underlying(grp)] : _town_road_types[std::to_underlying(grp)];
 			Roadside cur_rs = GetRoadside(tile);
 
 			/* We have our desired type, do nothing */

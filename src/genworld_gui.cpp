@@ -399,7 +399,7 @@ struct GenerateLandscapeWindow : public Window {
 	{
 		this->InitNested(number);
 
-		this->LowerWidget(to_underlying(_settings_newgame.game_creation.landscape) + WID_GL_TEMPERATE);
+		this->LowerWidget(std::to_underlying(_settings_newgame.game_creation.landscape) + WID_GL_TEMPERATE);
 
 		this->mode = this->window_number;
 
@@ -1074,7 +1074,7 @@ struct CreateScenarioWindow : public Window
 	CreateScenarioWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->InitNested(window_number);
-		this->LowerWidget(to_underlying(_settings_newgame.game_creation.landscape) + WID_CS_TEMPERATE);
+		this->LowerWidget(std::to_underlying(_settings_newgame.game_creation.landscape) + WID_CS_TEMPERATE);
 	}
 
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
@@ -1151,7 +1151,7 @@ struct CreateScenarioWindow : public Window
 			case WID_CS_ARCTIC:
 			case WID_CS_TROPICAL:
 			case WID_CS_TOYLAND:
-				this->RaiseWidget(to_underlying(_settings_newgame.game_creation.landscape) + WID_CS_TEMPERATE);
+				this->RaiseWidget(std::to_underlying(_settings_newgame.game_creation.landscape) + WID_CS_TEMPERATE);
 				SetNewLandscapeType(LandscapeType(widget - WID_CS_TEMPERATE));
 				break;
 
