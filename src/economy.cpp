@@ -56,6 +56,7 @@
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_economy.h"
+#include "misc_cmd.h"
 
 #include "table/strings.h"
 #include "table/pricebase.h"
@@ -837,6 +838,21 @@ static void CompaniesPayInterest()
 		SubtractMoneyFromCompany(CommandCost(EXPENSES_LOAN_INTEREST, up_to_this_month - up_to_previous_month));
 
 		SubtractMoneyFromCompany(CommandCost(EXPENSES_OTHER, _price[PR_STATION_VALUE] >> 2));
+	}
+	cur_company.Restore();
+}
+
+/** Let all companies auto repay their loan. */
+static void CompaniesAutoRepayLoan()
+{
+	Backup<CompanyID> cur_company(_current_company);
+	for (const Company *c : Company::Iterate()) {
+		if (!c->auto_repay_loan) continue;
+		if (c->current_loan <= 0) continue;
+		if (GetAvailableMoney(c->index) < (Money)LOAN_INTERVAL) continue;
+
+		cur_company.Change(c->index);
+		Command<CMD_DECREASE_LOAN>::Do({DoCommandFlag::Execute}, LoanCommand::Max, 0);
 	}
 	cur_company.Restore();
 }
@@ -1977,6 +1993,7 @@ static const IntervalTimer<TimerGameCalendar> _calendar_inflation_monthly({Timer
 static const IntervalTimer<TimerGameEconomy> _economy_companies_monthly({ TimerGameEconomy::MONTH, TimerGameEconomy::Priority::COMPANY }, [](auto)
 {
 	CompaniesGenStatistics();
+	CompaniesAutoRepayLoan();
 	CompaniesPayInterest();
 	HandleEconomyFluctuations();
 });

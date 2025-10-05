@@ -97,6 +97,7 @@ const SaveLoadCompat _company_sl_compat[] = {
 	SLC_VAR("face"),
 	SLC_VAR("money"),
 	SLC_VAR("current_loan"),
+	SLC_VAR("auto_repay_loan"),
 	SLC_VAR("colour"),
 	SLC_VAR("money_fraction"),
 	SLC_NULL(1, SL_MIN_VERSION, SLV_58),
