@@ -62,14 +62,14 @@ struct Dimension {
 
 	bool operator< (const Dimension &other) const
 	{
-		int x = (*this).width - other.width;
+		int x = this->width - other.width;
 		if (x != 0) return x < 0;
-		return (*this).height < other.height;
+		return this->height < other.height;
 	}
 
 	bool operator== (const Dimension &other) const
 	{
-		return (*this).width == other.width && (*this).height == other.height;
+		return this->width == other.width && this->height == other.height;
 	}
 };
 

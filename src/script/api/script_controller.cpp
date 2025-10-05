@@ -116,7 +116,7 @@ ScriptController::ScriptController(::CompanyID company) :
 
 	LoadedLibraryList::iterator it = controller.loaded_library.find(library_name);
 	if (it != controller.loaded_library.end()) {
-		fake_class = (*it).second;
+		fake_class = it->second;
 	} else {
 		int next_number = ++controller.loaded_library_count;
 

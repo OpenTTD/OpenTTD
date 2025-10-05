@@ -54,7 +54,7 @@ ScriptError::ScriptErrorMapString ScriptError::error_map_string = ScriptError::S
 
 	ScriptErrorMap::iterator it = error_map.find(internal_string_id);
 	if (it == error_map.end()) return ERR_UNKNOWN;
-	return (*it).second;
+	return it->second;
 }
 
 /* static */ void ScriptError::RegisterErrorMap(StringID internal_string_id, ScriptErrorType ai_error_msg)
