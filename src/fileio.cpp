@@ -593,7 +593,7 @@ bool ExtractTar(const std::string &tar_filename, Subdirectory subdir)
 	/* We don't know the file. */
 	if (it == _tar_list[subdir].end()) return false;
 
-	const auto &dirname = (*it).second;
+	const auto &dirname = it->second;
 
 	/* The file doesn't have a sub directory! */
 	if (dirname.empty()) {

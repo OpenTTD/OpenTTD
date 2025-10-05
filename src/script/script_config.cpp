@@ -85,7 +85,7 @@ int ScriptConfig::GetSetting(const std::string &name) const
 {
 	const auto it = this->settings.find(name);
 	if (it == this->settings.end()) return this->info->GetSettingDefaultValue(name);
-	return (*it).second;
+	return it->second;
 }
 
 void ScriptConfig::SetSetting(std::string_view name, int value)

@@ -118,9 +118,9 @@ public:
 
 	inline TileIterator& operator ++() override
 	{
-		(*this).OrthogonalTileIterator::operator++();
+		this->OrthogonalTileIterator::operator++();
 		while (this->tile != INVALID_TILE && !this->bitmap->HasTile(TileIndex(this->tile))) {
-			(*this).OrthogonalTileIterator::operator++();
+			this->OrthogonalTileIterator::operator++();
 		}
 		return *this;
 	}
