@@ -4390,7 +4390,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}You are
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Message from vehicle manufacturer
+STR_ENGINE_PREVIEW_CAPTION_COUNT                                :{WHITE}Message from vehicle manufacturer ({COMMA} of {COMMA})
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}We have just designed a new {STRING} - would you be interested in a year's exclusive use of this vehicle, so we can see how it performs before making it universally available?
+
+STR_ENGINE_PREVIEW_PREVIOUS                                     :Previous
+STR_ENGINE_PREVIEW_PREVIOUS_TOOLTIP                             :Click to step to the previous new vehicle
+STR_ENGINE_PREVIEW_NEXT                                         :Next
+STR_ENGINE_PREVIEW_NEXT_TOOLTIP                                 :Click to step to the next new vehicle
+STR_ENGINE_PREVIEW_ENGINE_LIST                                  :{COMMA}: {ENGINE}
+STR_ENGINE_PREVIEW_ENGINE_LIST_TOOLTIP                          :Click to jump to a new vehicle
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :railway locomotive
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :electrified railway locomotive
