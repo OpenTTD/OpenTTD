@@ -68,6 +68,64 @@ static constexpr std::initializer_list<NWidgetPart> _nested_engine_preview_widge
 	EndContainer(),
 };
 
+/* Inplementation located in "build_vehicle_gui.cpp". */
+struct BuildVehicleWindow : Window {
+	VehicleType vehicle_type = VEH_INVALID; ///< Type of vehicles shown in the window.
+	union {
+		RailType railtype;   ///< Rail type to show, or #INVALID_RAILTYPE.
+		RoadType roadtype;   ///< Road type to show, or #INVALID_ROADTYPE.
+	} filter{}; ///< Filter to apply.
+	bool descending_sort_order = false; ///< Sort direction, @see _engine_sort_direction
+	uint8_t sort_criteria = 0; ///< Current sort criterium.
+	bool show_hidden_engines = false; ///< State of the 'show hidden engines' button.
+	bool listview_mode = false; ///< If set, only display the available vehicles and do not show a 'build' button.
+	EngineID sel_engine = EngineID::Invalid(); ///< Currently selected engine, or #EngineID::Invalid()
+	EngineID rename_engine = EngineID::Invalid(); ///< Engine being renamed.
+	GUIEngineList eng_list{};
+	CargoType cargo_filter_criteria{}; ///< Selected cargo filter
+	int details_height = 0; ///< Minimal needed height of the details panels, in text lines (found so far).
+	Scrollbar *vscroll = nullptr;
+	TestedEngineDetails te{}; ///< Tested cost and capacity after refit.
+	GUIBadgeClasses badge_classes{};
+
+	StringFilter string_filter{}; ///< Filter for vehicle name
+	QueryString vehicle_editbox; ///< Filter editbox
+
+	std::pair<WidgetID, WidgetID> badge_filters{}; ///< First and last widgets IDs of badge filters.
+	BadgeFilterChoices badge_filter_choices{};
+
+	BuildVehicleWindow(WindowDesc &desc) : Window(desc), vehicle_editbox(MAX_LENGTH_VEHICLE_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_VEHICLE_NAME_CHARS) {}
+
+	void SetBuyVehicleText();
+	void UpdateFilterByTile();
+	StringID GetCargoFilterLabel(CargoType cargo_type) const;
+	void SetCargoFilterArray();
+	void SelectEngine(EngineID engine);
+	void FilterEngineList();
+	bool FilterSingleEngine(EngineID eid);
+	bool FilterByText(const Engine *e);
+	void GenerateBuildTrainList(GUIEngineList &list);
+	void GenerateBuildRoadVehList();
+	void GenerateBuildShipList();
+	void GenerateBuildAircraftList();
+	void GenerateBuildList();
+	DropDownList BuildCargoDropDownList() const;
+	void BuildVehicle();
+
+	virtual void OnInit() override;
+	virtual DropDownList BuildBadgeConfigurationList() const;
+	virtual void OnClick(Point pt, WidgetID widget, int click_count) override;
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true) override;
+	virtual std::string GetWidgetString(WidgetID widget, StringID stringid) const override;
+	virtual void UpdateWidgetSize(WidgetID widget, Dimension &size, const Dimension &padding, Dimension &fill, Dimension &resize) override;
+	virtual void DrawWidget(const Rect &r, WidgetID widget) const override;
+	virtual void OnPaint() override;
+	virtual void OnQueryTextFinished(std::optional<std::string> str) override;
+	virtual void OnDropdownSelect(WidgetID widget, int index, int click_result) override;
+	virtual void OnResize() override;
+	virtual void OnEditboxChanged(WidgetID wid) override;
+};
+
 struct EnginePreviewWindow : Window {
 	int vehicle_space = 0; // The space to show the vehicle image
 

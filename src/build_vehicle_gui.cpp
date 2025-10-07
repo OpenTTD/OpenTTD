@@ -1192,6 +1192,8 @@ struct BuildVehicleWindow : Window {
 		}
 	}
 
+	BuildVehicleWindow(WindowDesc &desc) : Window(desc), vehicle_editbox(MAX_LENGTH_VEHICLE_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_VEHICLE_NAME_CHARS) {}
+
 	BuildVehicleWindow(WindowDesc &desc, TileIndex tile, VehicleType type) : Window(desc), vehicle_editbox(MAX_LENGTH_VEHICLE_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_VEHICLE_NAME_CHARS)
 	{
 		this->vehicle_type = type;
@@ -1329,7 +1331,7 @@ struct BuildVehicleWindow : Window {
 		this->te.FillDefaultCapacities(e);
 	}
 
-	void OnInit() override
+	virtual void OnInit() override
 	{
 		this->badge_classes = GUIBadgeClasses(static_cast<GrfSpecFeature>(GSF_TRAINS + this->vehicle_type));
 		this->SetCargoFilterArray();
@@ -1613,7 +1615,7 @@ struct BuildVehicleWindow : Window {
 		return list;
 	}
 
-	DropDownList BuildBadgeConfigurationList() const
+	virtual DropDownList BuildBadgeConfigurationList() const
 	{
 		static const auto separators = {STR_BADGE_CONFIG_PREVIEW, STR_BADGE_CONFIG_NAME};
 		return BuildBadgeClassConfigurationList(this->badge_classes, BADGE_COLUMNS, separators, COLOUR_GREY);
@@ -1648,7 +1650,7 @@ struct BuildVehicleWindow : Window {
 		}
 	}
 
-	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
+	virtual void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_BV_SORT_ASCENDING_DESCENDING:
@@ -1742,7 +1744,7 @@ struct BuildVehicleWindow : Window {
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
+	virtual void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		/* When switching to original acceleration model for road vehicles, clear the selected sort criteria if it is not available now. */
@@ -1755,7 +1757,7 @@ struct BuildVehicleWindow : Window {
 		this->eng_list.ForceRebuild();
 	}
 
-	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
+	virtual std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_BV_CAPTION:
@@ -1792,7 +1794,7 @@ struct BuildVehicleWindow : Window {
 		}
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
+	virtual void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
 			case WID_BV_LIST:
@@ -1838,7 +1840,7 @@ struct BuildVehicleWindow : Window {
 		}
 	}
 
-	void DrawWidget(const Rect &r, WidgetID widget) const override
+	virtual void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_BV_LIST:
@@ -1860,7 +1862,7 @@ struct BuildVehicleWindow : Window {
 		}
 	}
 
-	void OnPaint() override
+	virtual void OnPaint() override
 	{
 		this->GenerateBuildList();
 		this->vscroll->SetCount(this->eng_list.size());
@@ -1889,14 +1891,14 @@ struct BuildVehicleWindow : Window {
 		}
 	}
 
-	void OnQueryTextFinished(std::optional<std::string> str) override
+	virtual void OnQueryTextFinished(std::optional<std::string> str) override
 	{
 		if (!str.has_value()) return;
 
 		Command<CMD_RENAME_ENGINE>::Post(STR_ERROR_CAN_T_RENAME_TRAIN_TYPE + this->vehicle_type, this->rename_engine, *str);
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index, int click_result) override
+	virtual void OnDropdownSelect(WidgetID widget, int index, int click_result) override
 	{
 		switch (widget) {
 			case WID_BV_SORT_DROPDOWN:
@@ -1948,12 +1950,12 @@ struct BuildVehicleWindow : Window {
 		this->SetDirty();
 	}
 
-	void OnResize() override
+	virtual void OnResize() override
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_BV_LIST);
 	}
 
-	void OnEditboxChanged(WidgetID wid) override
+	virtual void OnEditboxChanged(WidgetID wid) override
 	{
 		if (wid == WID_BV_FILTER) {
 			this->string_filter.SetFilterTerm(this->vehicle_editbox.text.GetText());
