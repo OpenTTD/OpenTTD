@@ -263,63 +263,6 @@ std::unique_ptr<DropDownListItem> MakeDropDownListBadgeIconItem(const std::share
 	return std::make_unique<DropDownListBadgeIconItem>(gui_classes, badges, feature, introduction_date, GetString(STR_JUST_CURRENCY_SHORT, cost), dim, sprite, palette, std::move(str), value, masked, shaded);
 }
 
-/**
- * Drop down component that shows extra buttons to indicate that the item can be moved up or down.
- */
-template <class TBase, bool TEnd = true, FontSize TFs = FS_NORMAL>
-class DropDownMover : public TBase {
-public:
-	template <typename... Args>
-	explicit DropDownMover(int click_up, int click_down, Colours button_colour, Args &&...args)
-		: TBase(std::forward<Args>(args)...), click_up(click_up), click_down(click_down), button_colour(button_colour)
-	{
-	}
-
-	uint Height() const override
-	{
-		return std::max<uint>(SETTING_BUTTON_HEIGHT, this->TBase::Height());
-	}
-
-	uint Width() const override
-	{
-		return SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide + this->TBase::Width();
-	}
-
-	int OnClick(const Rect &r, const Point &pt) const override
-	{
-		bool rtl = (_current_text_dir == TD_RTL);
-		int w = SETTING_BUTTON_WIDTH;
-
-		Rect br = r.WithWidth(w, TEnd ^ rtl).CentreToHeight(SETTING_BUTTON_HEIGHT);
-		if (br.WithWidth(w / 2, rtl).Contains(pt)) return this->click_up;
-		if (br.WithWidth(w / 2, !rtl).Contains(pt)) return this->click_down;
-
-		return this->TBase::OnClick(r.Indent(w + WidgetDimensions::scaled.hsep_wide, TEnd ^ rtl), pt);
-	}
-
-	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
-	{
-		bool rtl = (_current_text_dir == TD_RTL);
-		int w = SETTING_BUTTON_WIDTH;
-
-		int state = 0;
-		if (sel && click_result != 0) {
-			if (click_result == this->click_up) state = 1;
-			if (click_result == this->click_down) state = 2;
-		}
-
-		Rect br = r.WithWidth(w, TEnd ^ rtl).CentreToHeight(SETTING_BUTTON_HEIGHT);
-		DrawUpDownButtons(br.left, br.top, this->button_colour, state, this->click_up != 0, this->click_down != 0);
-
-		this->TBase::Draw(full, r.Indent(w + WidgetDimensions::scaled.hsep_wide, TEnd ^ rtl), sel, click_result, bg_colour);
-	}
-
-private:
-	int click_up; ///< Click result for up button. Button is inactive if 0.
-	int click_down; ///< Click result for down button. Button is inactive if 0.
-	Colours button_colour; ///< Colour of buttons.
-};
-
 using DropDownListToggleMoverItem = DropDownMover<DropDownToggle<DropDownString<DropDownListItem>>>;
 using DropDownListToggleItem = DropDownToggle<DropDownString<DropDownListItem>>;
 
