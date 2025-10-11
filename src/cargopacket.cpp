@@ -404,13 +404,13 @@ void VehicleCargoList::AgeCargo()
  * @return MoveToAction to be performed.
  */
 /* static */ VehicleCargoList::MoveToAction VehicleCargoList::ChooseAction(const CargoPacket *cp, StationID cargo_next,
-		StationID current_station, bool accepted, StationIDStack next_station)
+		StationID current_station, bool accepted, std::span<const StationID> next_station)
 {
 	if (cargo_next == StationID::Invalid()) {
 		return (accepted && cp->first_station != current_station) ? MTA_DELIVER : MTA_KEEP;
 	} else if (cargo_next == current_station) {
 		return MTA_DELIVER;
-	} else if (next_station.Contains(cargo_next)) {
+	} else if (std::ranges::find(next_station, cargo_next) != std::end(next_station)) {
 		return MTA_KEEP;
 	} else {
 		return MTA_TRANSFER;
@@ -432,7 +432,7 @@ void VehicleCargoList::AgeCargo()
  * @param current_tile Current tile the cargo handling is happening on.
  * return If any cargo will be unloaded.
  */
-bool VehicleCargoList::Stage(bool accepted, StationID current_station, StationIDStack next_station, uint8_t order_flags, const GoodsEntry *ge, CargoType cargo, CargoPayment *payment, TileIndex current_tile)
+bool VehicleCargoList::Stage(bool accepted, StationID current_station, std::span<const StationID> next_station, uint8_t order_flags, const GoodsEntry *ge, CargoType cargo, CargoPayment *payment, TileIndex current_tile)
 {
 	this->AssertCountConsistency();
 	assert(this->action_counts[MTA_LOAD] == 0);
@@ -468,9 +468,9 @@ bool VehicleCargoList::Stage(bool accepted, StationID current_station, StationID
 			} else {
 				FlowStat new_shares = flow_it->second;
 				new_shares.ChangeShare(current_station, INT_MIN);
-				StationIDStack excluded = next_station;
-				while (!excluded.IsEmpty() && !new_shares.GetShares()->empty()) {
-					new_shares.ChangeShare(excluded.Pop(), INT_MIN);
+				for (auto station_it = next_station.rbegin(); station_it != next_station.rend(); ++station_it) {
+					if (!new_shares.GetShares()->empty()) break;
+					new_shares.ChangeShare(*station_it, INT_MIN);
 				}
 				if (new_shares.GetShares()->empty()) {
 					cargo_next = StationID::Invalid();
@@ -739,11 +739,11 @@ bool StationCargoList::ShiftCargo(Taction &action, StationID next)
  * @return Amount of cargo actually moved.
  */
 template <class Taction>
-uint StationCargoList::ShiftCargo(Taction action, StationIDStack next, bool include_invalid)
+uint StationCargoList::ShiftCargo(Taction action, std::span<const StationID> next, bool include_invalid)
 {
 	uint max_move = action.MaxMove();
-	while (!next.IsEmpty()) {
-		this->ShiftCargo(action, next.Pop());
+	for (auto it = next.rbegin(); it != next.rend(); ++it) {
+		this->ShiftCargo(action, *it);
 		if (action.MaxMove() == 0) break;
 	}
 	if (include_invalid && action.MaxMove() > 0) {
@@ -814,7 +814,7 @@ uint StationCargoList::Truncate(uint max_move, StationCargoAmountMap *cargo_per_
  * @param current_tile Current tile the cargo handling is happening on.
  * @return Amount of cargo actually reserved.
  */
-uint StationCargoList::Reserve(uint max_move, VehicleCargoList *dest, StationIDStack next_station, TileIndex current_tile)
+uint StationCargoList::Reserve(uint max_move, VehicleCargoList *dest, std::span<const StationID> next_station, TileIndex current_tile)
 {
 	return this->ShiftCargo(CargoReservation(this, dest, max_move, current_tile), next_station, true);
 }
@@ -831,7 +831,7 @@ uint StationCargoList::Reserve(uint max_move, VehicleCargoList *dest, StationIDS
  *       modes of loading are exclusive, though. If cargo is reserved we don't
  *       need to load unreserved cargo.
  */
-uint StationCargoList::Load(uint max_move, VehicleCargoList *dest, StationIDStack next_station, TileIndex current_tile)
+uint StationCargoList::Load(uint max_move, VehicleCargoList *dest, std::span<const StationID> next_station, TileIndex current_tile)
 {
 	uint move = std::min(dest->ActionCount(VehicleCargoList::MTA_LOAD), max_move);
 	if (move > 0) {
@@ -839,7 +839,7 @@ uint StationCargoList::Load(uint max_move, VehicleCargoList *dest, StationIDStac
 		dest->Reassign<VehicleCargoList::MTA_LOAD, VehicleCargoList::MTA_KEEP>(move);
 		return move;
 	} else {
-		return this->ShiftCargo(CargoLoad(this, dest, max_move, current_tile), next_station, true);
+		return this->ShiftCargo(CargoLoad{this, dest, max_move, current_tile}, next_station, true);
 	}
 }
 
@@ -853,7 +853,7 @@ uint StationCargoList::Load(uint max_move, VehicleCargoList *dest, StationIDStac
  */
 uint StationCargoList::Reroute(uint max_move, StationCargoList *dest, StationID avoid, StationID avoid2, const GoodsEntry *ge)
 {
-	return this->ShiftCargo(StationCargoReroute(this, dest, max_move, avoid, avoid2, ge), avoid, false);
+	return this->ShiftCargo(StationCargoReroute(this, dest, max_move, avoid, avoid2, ge), {&avoid, 1}, false);
 }
 
 /*

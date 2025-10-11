@@ -1270,7 +1270,7 @@ void PrepareUnload(Vehicle *front_v)
 	assert(CargoPayment::CanAllocateItem());
 	front_v->cargo_payment = new CargoPayment(front_v);
 
-	StationIDStack next_station = front_v->GetNextStoppingStation();
+	std::vector<StationID> next_station = front_v->GetNextStoppingStation();
 	if (front_v->orders == nullptr || (front_v->current_order.GetUnloadType() & OUFB_NO_UNLOAD) == 0) {
 		Station *st = Station::Get(front_v->last_station_visited);
 		for (Vehicle *v = front_v; v != nullptr; v = v->Next()) {
@@ -1433,7 +1433,7 @@ struct FinalizeRefitAction
 {
 	CargoArray &consist_capleft;  ///< Capacities left in the consist.
 	Station *st;                  ///< Station to reserve cargo from.
-	StationIDStack &next_station; ///< Next hops to reserve cargo for.
+	std::span<const StationID> next_station; ///< Next hops to reserve cargo for.
 	bool do_reserve;              ///< If the vehicle should reserve.
 
 	/**
@@ -1443,7 +1443,7 @@ struct FinalizeRefitAction
 	 * @param next_station Next hops to reserve cargo for.
 	 * @param do_reserve If we should reserve cargo or just add up the capacities.
 	 */
-	FinalizeRefitAction(CargoArray &consist_capleft, Station *st, StationIDStack &next_station, bool do_reserve) :
+	FinalizeRefitAction(CargoArray &consist_capleft, Station *st, std::span<const StationID> next_station, bool do_reserve) :
 		consist_capleft(consist_capleft), st(st), next_station(next_station), do_reserve(do_reserve) {}
 
 	/**
@@ -1471,7 +1471,7 @@ struct FinalizeRefitAction
  * @param next_station Possible next stations the vehicle can travel to.
  * @param new_cargo_type Target cargo for refit.
  */
-static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station *st, StationIDStack next_station, CargoType new_cargo_type)
+static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station *st, std::span<const StationID> next_station, CargoType new_cargo_type)
 {
 	Vehicle *v_start = v->GetFirstEnginePart();
 	if (!IterateVehicleParts(v_start, IsEmptyAction())) return;
@@ -1538,16 +1538,16 @@ static bool MayLoadUnderExclusiveRights(const Station *st, const Vehicle *v)
 
 struct ReserveCargoAction {
 	Station *st;
-	StationIDStack *next_station;
+	std::span<const StationID> next_station;
 
-	ReserveCargoAction(Station *st, StationIDStack *next_station) :
+	ReserveCargoAction(Station *st, std::span<const StationID> next_station) :
 		st(st), next_station(next_station) {}
 
 	bool operator()(Vehicle *v)
 	{
 		if (v->cargo_cap > v->cargo.RemainingCount() && MayLoadUnderExclusiveRights(st, v)) {
 			st->goods[v->cargo_type].GetOrCreateData().cargo.Reserve(v->cargo_cap - v->cargo.RemainingCount(),
-					&v->cargo, *next_station, v->GetCargoTile());
+					&v->cargo, next_station, v->GetCargoTile());
 		}
 
 		return true;
@@ -1563,7 +1563,7 @@ struct ReserveCargoAction {
  * @param consist_capleft If given, save free capacities after reserving there.
  * @param next_station Station(s) the vehicle will stop at next.
  */
-static void ReserveConsist(Station *st, Vehicle *u, CargoArray *consist_capleft, StationIDStack *next_station)
+static void ReserveConsist(Station *st, Vehicle *u, CargoArray *consist_capleft, std::span<const StationID> next_station)
 {
 	/* If there is a cargo payment not all vehicles of the consist have tried to do the refit.
 	 * In that case, only reserve if it's a fixed refit and the equivalent of "articulated chain"
@@ -1618,14 +1618,14 @@ static void LoadUnloadVehicle(Vehicle *front)
 	StationID last_visited = front->last_station_visited;
 	Station *st = Station::Get(last_visited);
 
-	StationIDStack next_station = front->GetNextStoppingStation();
+	std::vector<StationID> next_station = front->GetNextStoppingStation();
 	bool use_autorefit = front->current_order.IsRefit() && front->current_order.GetRefitCargo() == CARGO_AUTO_REFIT;
 	CargoArray consist_capleft{};
 	if (_settings_game.order.improved_load && use_autorefit ?
 			front->cargo_payment == nullptr : (front->current_order.GetLoadType() & OLFB_FULL_LOAD) != 0) {
 		ReserveConsist(st, front,
 				(use_autorefit && front->load_unload_ticks != 0) ? &consist_capleft : nullptr,
-				&next_station);
+				next_station);
 	}
 
 	/* We have not waited enough time till the next round of loading/unloading */
