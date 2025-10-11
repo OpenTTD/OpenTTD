@@ -132,11 +132,11 @@ LinkGraphJob::~LinkGraphJob()
 					!(*lg)[node_id].HasEdgeTo(dest_id) ||
 					(*lg)[node_id][dest_id].LastUpdate() == EconomyTime::INVALID_DATE) {
 				/* Edge has been removed. Delete flows. */
-				StationIDStack erased = flows.DeleteFlows(to);
+				std::vector<StationID> erased = flows.DeleteFlows(to);
 				/* Delete old flows for source stations which have been deleted
 				 * from the new flows. This avoids flow cycles between old and
 				 * new flows. */
-				while (!erased.IsEmpty()) geflows.erase(erased.Pop());
+				for (const StationID &station : erased) geflows.erase(station);
 			} else if ((*lg)[node_id][dest_id].last_unrestricted_update == EconomyTime::INVALID_DATE) {
 				/* Edge is fully restricted. */
 				flows.RestrictFlows(to);
