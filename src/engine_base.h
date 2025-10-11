@@ -16,6 +16,7 @@
 #include "core/pool_type.hpp"
 #include "newgrf_commons.h"
 #include "timer/timer_game_calendar.h"
+#include "news_type.h"
 
 struct WagonOverride {
 	std::vector<EngineID> engines;
@@ -40,6 +41,7 @@ public:
 	CompanyMask company_avail{}; ///< Bit for each company whether the engine is available for that company.
 	CompanyMask company_hidden{}; ///< Bit for each company whether the engine is normally hidden in the build gui for that company.
 	CompanyMask preview_asked{}; ///< Bit for each company which has already been offered a preview.
+	bool custom_behavior_on_preview_end = false; ///< Whether the GS override the normal behavior.
 
 	std::string name{}; ///< Custom name of engine.
 
