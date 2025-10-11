@@ -155,7 +155,7 @@ public:
 
 	void AddFlow(StationID origin, StationID via, uint amount);
 	void PassOnFlow(StationID origin, StationID via, uint amount);
-	StationIDStack DeleteFlows(StationID via);
+	std::vector<StationID> DeleteFlows(StationID via);
 	void RestrictFlows(StationID via);
 	void ReleaseFlows(StationID via);
 	void FinalizeLocalConsumption(StationID self);
