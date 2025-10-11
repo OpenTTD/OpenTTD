@@ -20,6 +20,7 @@
 #include "../fileio_func.h"
 #include "../framerate_type.h"
 #include "../window_func.h"
+#include "../zoom_func.h"
 #include "sdl2_v.h"
 #include <SDL.h>
 #ifdef __EMSCRIPTEN__
@@ -524,6 +525,27 @@ bool VideoDriver_SDL_Base::PollEvent()
 			}
 			break;
 		}
+
+		case SDL_CONTROLLERDEVICEADDED: {
+			Debug(driver, 1, "SDL2: Gamepad device added, index: {}", ev.cdevice.which);
+			/* Try to open the newly connected gamepad */
+			if (this->gamepad == nullptr) {
+				this->OpenGamepad();
+			}
+			break;
+		}
+
+		case SDL_CONTROLLERDEVICEREMOVED: {
+			Debug(driver, 1, "SDL2: Gamepad device removed, instance ID: {}", ev.cdevice.which);
+			/* Close gamepad if it was removed */
+			if (this->gamepad != nullptr && ev.cdevice.which == SDL_JoystickInstanceID(SDL_GameControllerGetJoystick(this->gamepad))) {
+				Debug(driver, 1, "SDL2: Current gamepad was removed, closing and reopening");
+				this->CloseGamepad();
+				/* Try to open another gamepad if available */
+				this->OpenGamepad();
+			}
+			break;
+		}
 	}
 
 	return true;
@@ -539,6 +561,12 @@ static std::optional<std::string_view> InitializeSDL()
 #endif
 
 	if (SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) return SDL_GetError();
+
+	/* Initialize gamepad subsystem for gamepad scrolling support */
+	if (SDL_InitSubSystem(SDL_INIT_GAMECONTROLLER) < 0) {
+		Debug(driver, 1, "SDL2: Failed to initialize gamepad subsystem: {}", SDL_GetError());
+	}
+
 	return std::nullopt;
 }
 
@@ -590,6 +618,11 @@ std::optional<std::string_view> VideoDriver_SDL_Base::Start(const StringList &pa
 	SDL_StopTextInput();
 	this->edit_box_focused = false;
 
+	/* Initialize gamepad for scrolling */
+	Debug(driver, 1, "SDL2: Attempting to initialize gamepad support");
+	Debug(driver, 1, "SDL2: Gamepad stick selection setting: {}", _settings_client.gui.gamepad_stick_selection);
+	this->OpenGamepad();
+
 #ifdef __EMSCRIPTEN__
 	this->is_game_threaded = false;
 #else
@@ -601,6 +634,8 @@ std::optional<std::string_view> VideoDriver_SDL_Base::Start(const StringList &pa
 
 void VideoDriver_SDL_Base::Stop()
 {
+	this->CloseGamepad();
+	SDL_QuitSubSystem(SDL_INIT_GAMECONTROLLER);
 	SDL_QuitSubSystem(SDL_INIT_VIDEO);
 	if (SDL_WasInit(SDL_INIT_EVERYTHING) == 0) {
 		SDL_Quit(); // If there's nothing left, quit SDL
@@ -629,6 +664,9 @@ void VideoDriver_SDL_Base::InputLoop()
 		(keys[SDL_SCANCODE_DOWN]  ? 8 : 0);
 
 	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
+
+	/* Process gamepad input for scrolling */
+	this->ProcessGamepadInput();
 }
 
 void VideoDriver_SDL_Base::LoopOnce()
@@ -754,4 +792,85 @@ void VideoDriver_SDL_Base::UnlockVideoBuffer()
 	}
 
 	this->buffer_locked = false;
+}
+
+void VideoDriver_SDL_Base::OpenGamepad()
+{
+	/* Don't open gamepad if already open or if gamepad scrolling is disabled */
+	if (this->gamepad != nullptr) {
+		Debug(driver, 1, "SDL2: Gamepad already open, skipping");
+		return;
+	}
+
+	if (_settings_client.gui.gamepad_stick_selection == GSS_DISABLED) {
+		Debug(driver, 1, "SDL2: Gamepad scrolling disabled, not opening gamepad");
+		return;
+	}
+
+	/* Check if any gamepads are available */
+	int num_gamepads = SDL_NumJoysticks();
+	Debug(driver, 1, "SDL2: Found {} joystick(s)", num_gamepads);
+
+	for (int i = 0; i < num_gamepads; i++) {
+		if (SDL_IsGameController(i)) {
+			Debug(driver, 1, "SDL2: Joystick {} is a gamepad, attempting to open", i);
+			this->gamepad = SDL_GameControllerOpen(i);
+			if (this->gamepad != nullptr) {
+				Debug(driver, 1, "SDL2: Opened gamepad: {}", SDL_GameControllerName(this->gamepad));
+				break;
+			} else {
+				Debug(driver, 1, "SDL2: Failed to open gamepad {}: {}", i, SDL_GetError());
+			}
+		} else {
+			Debug(driver, 1, "SDL2: Joystick {} is not a gamepad", i);
+		}
+	}
+
+	if (this->gamepad == nullptr) {
+		Debug(driver, 1, "SDL2: No gamepad opened");
+	}
+}
+
+void VideoDriver_SDL_Base::CloseGamepad()
+{
+	if (this->gamepad != nullptr) {
+		SDL_GameControllerClose(this->gamepad);
+		this->gamepad = nullptr;
+		Debug(driver, 1, "SDL2: Closed gamepad");
+	}
+}
+
+void VideoDriver_SDL_Base::ProcessGamepadInput()
+{
+	/* Skip if gamepad is not available */
+	if (this->gamepad == nullptr) {
+		static bool logged_no_gamepad = false;
+		if (!logged_no_gamepad) {
+			Debug(driver, 2, "SDL2: No gamepad available for input processing");
+			logged_no_gamepad = true;
+		}
+		return;
+	}
+
+	/* Check if gamepad is still connected */
+	if (!SDL_GameControllerGetAttached(this->gamepad)) {
+		Debug(driver, 1, "SDL2: Gamepad disconnected, closing and reopening");
+		this->CloseGamepad();
+		return;
+	}
+
+	/* Get analog stick values based on stick selection */
+	Sint16 stick_x = 0, stick_y = 0;
+	if (_settings_client.gui.gamepad_stick_selection == GSS_LEFT_STICK) {
+		stick_x = SDL_GameControllerGetAxis(this->gamepad, SDL_CONTROLLER_AXIS_LEFTX);
+		stick_y = SDL_GameControllerGetAxis(this->gamepad, SDL_CONTROLLER_AXIS_LEFTY);
+		Debug(driver, 3, "SDL2: Left stick raw values: x={}, y={}", stick_x, stick_y);
+	} else if (_settings_client.gui.gamepad_stick_selection == GSS_RIGHT_STICK) {
+		stick_x = SDL_GameControllerGetAxis(this->gamepad, SDL_CONTROLLER_AXIS_RIGHTX);
+		stick_y = SDL_GameControllerGetAxis(this->gamepad, SDL_CONTROLLER_AXIS_RIGHTY);
+		Debug(driver, 3, "SDL2: Right stick raw values: x={}, y={}", stick_x, stick_y);
+	}
+
+	/* Use the common gamepad handling function */
+	HandleGamepadScrolling(stick_x, stick_y, 32767);
 }
