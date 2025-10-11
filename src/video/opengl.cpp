@@ -1405,7 +1405,7 @@ OpenGLSprite::OpenGLSprite(SpriteType sprite_type, const SpriteLoader::SpriteCol
 	this->x_offs = root_sprite.x_offs;
 	this->y_offs = root_sprite.y_offs;
 
-	int levels = sprite_type == SpriteType::Font ? 1 : to_underlying(ZoomLevel::End);
+	int levels = sprite_type == SpriteType::Font ? 1 : std::to_underlying(ZoomLevel::End);
 	assert(levels > 0);
 	(void)_glGetError();
 
@@ -1442,7 +1442,7 @@ OpenGLSprite::OpenGLSprite(SpriteType sprite_type, const SpriteLoader::SpriteCol
 	/* Upload texture data. */
 	for (ZoomLevel zoom = ZoomLevel::Min; zoom <= (sprite_type == SpriteType::Font ? ZoomLevel::Min : ZoomLevel::Max); ++zoom) {
 		const auto &src_sprite = sprite[zoom];
-		this->Update(src_sprite.width, src_sprite.height, to_underlying(zoom), src_sprite.data);
+		this->Update(src_sprite.width, src_sprite.height, std::to_underlying(zoom), src_sprite.data);
 	}
 
 	assert(_glGetError() == GL_NO_ERROR);
