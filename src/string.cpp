@@ -28,7 +28,10 @@
 
 #ifdef WITH_ICU_I18N
 /* Required by StrNaturalCompare. */
+#	include <unicode/brkiter.h>
+#	include <unicode/stsearch.h>
 #	include <unicode/ustring.h>
+#	include <unicode/utext.h>
 #	include "language.h"
 #	include "gfx_func.h"
 #endif /* WITH_ICU_I18N */
@@ -453,8 +456,6 @@ int StrNaturalCompare(std::string_view s1, std::string_view s2, bool ignore_garb
 
 #ifdef WITH_ICU_I18N
 
-#include <unicode/stsearch.h>
-
 /**
  * Search if a string is contained in another string using the current locale.
  *
@@ -600,9 +601,6 @@ bool ConvertHexToBytes(std::string_view hex, std::span<uint8_t> bytes)
 }
 
 #elif defined(WITH_ICU_I18N)
-
-#include <unicode/utext.h>
-#include <unicode/brkiter.h>
 
 /** String iterator using ICU as a backend. */
 class IcuStringIterator : public StringIterator

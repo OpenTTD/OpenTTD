@@ -14,7 +14,6 @@
 #include "../../fios.h"
 #include "../../thread.h"
 
-
 #include <dirent.h>
 #include <unistd.h>
 #include <sys/stat.h>
@@ -25,6 +24,10 @@
 #ifdef WITH_SDL2
 #include <SDL.h>
 #endif
+
+#ifdef WITH_ICONV
+#include <iconv.h>
+#endif /* WITH_ICONV */
 
 #ifdef __EMSCRIPTEN__
 #	include <emscripten.h>
@@ -84,10 +87,6 @@ bool FiosIsHiddenFile(const std::filesystem::path &path)
 }
 
 #ifdef WITH_ICONV
-
-#include <iconv.h>
-#include "../../debug.h"
-#include "../../string_func.h"
 
 std::optional<std::string> GetCurrentLocale(const char *param);
 

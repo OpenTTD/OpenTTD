@@ -22,6 +22,10 @@
 
 #include "table/strings.h"
 
+#ifdef WITH_PNG
+#include <png.h>
+#endif /* WITH_PNG */
+
 #include "safeguards.h"
 
 /**
@@ -71,8 +75,6 @@ static inline uint8_t RGBToGreyscale(uint8_t red, uint8_t green, uint8_t blue)
 
 
 #ifdef WITH_PNG
-
-#include <png.h>
 
 /**
  * The PNG Heightmap loader.

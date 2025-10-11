@@ -32,6 +32,13 @@
 #include <winrt/Windows.UI.ViewManagement.h>
 #endif
 
+#ifdef WITH_OPENGL
+#include <GL/gl.h>
+#include "../3rdparty/opengl/glext.h"
+#include "../3rdparty/opengl/wglext.h"
+#include "opengl.h"
+#endif /* WITH_OPENGL */
+
 #include "../safeguards.h"
 
 /* Missing define in MinGW headers. */
@@ -1284,11 +1291,6 @@ void VideoDriver_Win32GDI::Paint()
 #endif
 
 #ifdef WITH_OPENGL
-
-#include <GL/gl.h>
-#include "../3rdparty/opengl/glext.h"
-#include "../3rdparty/opengl/wglext.h"
-#include "opengl.h"
 
 #ifndef PFD_SUPPORT_COMPOSITION
 #	define PFD_SUPPORT_COMPOSITION 0x00008000
