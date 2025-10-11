@@ -83,6 +83,7 @@ struct CompanyProperties {
 	uint8_t money_fraction = 0; ///< Fraction of money of the company, too small to represent in #money.
 	Money current_loan = 0; ///< Amount of money borrowed from the bank.
 	Money max_loan = COMPANY_MAX_LOAN_DEFAULT; ///< Max allowed amount of the loan or COMPANY_MAX_LOAN_DEFAULT.
+	bool auto_repay_loan = false; ///< Whether to auto repay loan when possible.
 
 	Colours colour = COLOUR_BEGIN; ///< Company colour.
 
