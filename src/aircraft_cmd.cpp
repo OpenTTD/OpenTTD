@@ -135,7 +135,8 @@ static StationID FindNearestHangar(const Aircraft *v)
 			next_dest = Station::GetIfValid(v->current_order.GetDestination().ToStationID());
 		} else {
 			last_dest = GetTargetAirportIfValid(v);
-			next_dest = Station::GetIfValid(v->GetNextStoppingStation().value);
+			std::vector<StationID> next_station = v->GetNextStoppingStation();
+			if (!next_station.empty()) next_dest = Station::GetIfValid(next_station.back());
 		}
 	}
 
