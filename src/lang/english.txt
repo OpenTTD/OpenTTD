@@ -3861,7 +3861,7 @@ STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Ratings
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Show station ratings
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Supply per month and local rating:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Supply per minute and local rating:
-STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA} tgt) ({COMMA} now)
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {RED}{NUM}{WHITE} + {ORANGE}{NUM}{WHITE} - {YELLOW}90{WHITE} + {GREEN}{NUM}{WHITE} + {BLUE}{NUM}{WHITE} + {PURPLE}{NUM}{WHITE} = {NUM}
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Group by
 STR_STATION_VIEW_WAITING_STATION                                :Station: Waiting
@@ -4992,8 +4992,9 @@ STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Game was
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Map generation aborted...{}{}... no suitable town locations
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... there is no town in this scenario
 
-STR_ERROR_PNGMAP                                                :{WHITE}Can't load landscape from PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... file not found
+# Just using these as spares
+STR_ERROR_PNGMAP                                                :{YELLOW}Blamed for cargo! MWC is {COMMA}!
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}Set my own MWC: {COMMA}
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... could not convert image type. 8 or 24-bit PNG image needed
 STR_ERROR_PNGMAP_MISC                                           :{WHITE}... something just went wrong (probably corrupted file)
 

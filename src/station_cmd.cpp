@@ -185,7 +185,7 @@ static bool CMSAMine(TileIndex tile)
 		/* The industry extracts something non-liquid, i.e. no oil or plastic, so it is a mine.
 		 * Also the production of passengers and mail is ignored. */
 		if (IsValidCargoType(p.cargo) &&
-				!CargoSpec::Get(p.cargo)->classes.Any({CargoClass::Liquid, CargoClass::Passengers, CargoClass::Mail})) {
+				!CargoSpec::Get(p.cargo)->classes.Any({ CargoClass::Liquid, CargoClass::Passengers, CargoClass::Mail })) {
 			return true;
 		}
 	}
@@ -331,8 +331,8 @@ static StringID GenerateStationName(Station *st, TileIndex tile, StationNaming n
 
 	/* Check woods */
 	if (sni.IsAvailable(STR_SV_STNAME_WOODS) && (
-				CountMapSquareAround(tile, CMSATree) >= 8 ||
-				CountMapSquareAround(tile, IsTileForestIndustry) >= 2)
+		CountMapSquareAround(tile, CMSATree) >= 8 ||
+		CountMapSquareAround(tile, IsTileForestIndustry) >= 2)
 			) {
 		return _settings_game.game_creation.landscape == LandscapeType::Tropic ? STR_SV_STNAME_FOREST : STR_SV_STNAME_WOODS;
 	}
@@ -623,8 +623,8 @@ void UpdateStationAcceptance(Station *st, bool show_msg)
 
 		/* Make sure the station can accept the goods type. */
 		bool is_passengers = IsCargoInClass(cargo, CargoClass::Passengers);
-		if ((!is_passengers && !st->facilities.Any({StationFacility::Train, StationFacility::TruckStop, StationFacility::Airport, StationFacility::Dock})) ||
-				(is_passengers && !st->facilities.Any({StationFacility::Train, StationFacility::BusStop, StationFacility::Airport, StationFacility::Dock}))) {
+		if ((!is_passengers && !st->facilities.Any({ StationFacility::Train, StationFacility::TruckStop, StationFacility::Airport, StationFacility::Dock })) ||
+				(is_passengers && !st->facilities.Any({ StationFacility::Train, StationFacility::BusStop, StationFacility::Airport, StationFacility::Dock }))) {
 			amt = 0;
 		}
 
@@ -887,11 +887,11 @@ static CommandCost IsStationBridgeAboveOk(TileIndex tile, std::span<const Bridge
 	int height = layout < std::size(bridgeable_info) ? bridgeable_info[layout].height : 0;
 
 	if (height == 0) {
-		if (disallowed_msg != INVALID_STRING_ID) return CommandCost{disallowed_msg};
+		if (disallowed_msg != INVALID_STRING_ID) return CommandCost{ disallowed_msg };
 		/* Get normal error message associated with clearing the tile. */
 		return Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlag::Auto, tile);
 	}
-	if (GetTileMaxZ(tile) + height > bridge_height) return CommandCost{GetBridgeTooLowMessageForStationType(type)};
+	if (GetTileMaxZ(tile) + height > bridge_height) return CommandCost{ GetBridgeTooLowMessageForStationType(type) };
 
 	return CommandCost{};
 }
@@ -1477,7 +1477,7 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 	TileIndexDiff tile_delta = TileOffsByAxis(axis); // offset to go to the next platform tile
 	TileIndexDiff track_delta = TileOffsByAxis(OtherAxis(axis)); // offset to go to the next track
 
-	RailStationTileLayout stl{statspec, numtracks, plat_len};
+	RailStationTileLayout stl{ statspec, numtracks, plat_len };
 	for (auto [i, it, tile_track] = std::make_tuple(0, stl.begin(), tile_org); i != numtracks; ++i, tile_track += track_delta) {
 		for (auto [j, tile] = std::make_tuple(0, tile_track); j != plat_len; ++j, tile += tile_delta, ++it) {
 			/* Don't check the layout if there's no bridge above anyway. */
@@ -1904,7 +1904,7 @@ CommandCost RemoveRailStation(T *st, DoCommandFlags flags, Money removal_cost)
 	for (TileIndex tile : ta) {
 		/* only remove tiles that are actually train station tiles */
 		if (st->TileBelongsToRailStation(tile)) {
-			std::vector<T*> affected_stations; // dummy
+			std::vector<T *> affected_stations; // dummy
 			CommandCost ret = RemoveFromRailBaseStation(TileArea(tile, 1, 1), affected_stations, flags, removal_cost, false);
 			if (ret.Failed()) return ret;
 			cost.AddCost(ret.GetCost());
@@ -2194,7 +2194,7 @@ CommandCost CmdBuildRoadStop(DoCommandFlags flags, TileIndex tile, uint8_t width
 		}
 
 		if (st != nullptr) {
-			st->AfterStationTileSetChange(true, is_truck_stop ? StationType::Truck: StationType::Bus);
+			st->AfterStationTileSetChange(true, is_truck_stop ? StationType::Truck : StationType::Bus);
 		}
 	}
 	return cost;
@@ -2299,15 +2299,15 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlags flags, int repl
 			[](const Vehicle *v) { return v->type == VEH_ROAD; },
 			[station_id](const Order *order) { return order->IsType(OT_GOTO_STATION) && order->GetDestination() == station_id; },
 			[station_id, tile](Vehicle *v) {
-				if (v->current_order.IsType(OT_GOTO_STATION) && v->dest_tile == tile) {
-					v->SetDestTile(v->GetOrderStationLocation(station_id));
-				}
+			if (v->current_order.IsType(OT_GOTO_STATION) && v->dest_tile == tile) {
+				v->SetDestTile(v->GetOrderStationLocation(station_id));
 			}
+		}
 		);
 
 		st->rect.AfterRemoveTile(st, tile);
 
-		if (replacement_spec_index < 0) st->AfterStationTileSetChange(false, is_truck ? StationType::Truck: StationType::Bus);
+		if (replacement_spec_index < 0) st->AfterStationTileSetChange(false, is_truck ? StationType::Truck : StationType::Bus);
 
 		st->RemoveRoadStopTileData(tile);
 		if ((int)specindex != replacement_spec_index) DeallocateSpecFromRoadStop(st, specindex);
@@ -2378,7 +2378,7 @@ CommandCost RemoveRoadWaypointStop(TileIndex tile, DoCommandFlags flags, int rep
 
 			/* if we deleted the whole waypoint, delete the road facility. */
 			if (wp->road_waypoint_area.tile == INVALID_TILE) {
-				wp->facilities.Reset({StationFacility::BusStop, StationFacility::TruckStop});
+				wp->facilities.Reset({ StationFacility::BusStop, StationFacility::TruckStop });
 				SetWindowWidgetDirty(WC_STATION_VIEW, wp->index, WID_SV_ROADVEHS);
 				wp->UpdateVirtCoord();
 				DeleteStationIfEmpty(wp);
@@ -3204,12 +3204,12 @@ static bool DrawCustomStationFoundations(const StationSpec *statspec, BaseStatio
 			UINT8_MAX, UINT8_MAX, UINT8_MAX,         0, // Invalid,  Invalid,   Invalid,   SLOPE_SW
 			UINT8_MAX,         1,         2,         3, // Invalid,  SLOPE_EW,  SLOPE_SE,  SLOPE_WSE
 			UINT8_MAX,         4,         5,         6, // Invalid,  SLOPE_NW,  SLOPE_NS,  SLOPE_NWS
-			        7,         8,         9,            // SLOPE_NE, SLOPE_ENW, SLOPE_SEN
+					7,         8,         9,            // SLOPE_NE, SLOPE_ENW, SLOPE_SEN
 		};
 		assert(ti->tileh < std::size(foundation_parts));
 		if (foundation_parts[ti->tileh] == UINT8_MAX) return false;
 
-		AddSortableSpriteToDraw(image + foundation_parts[ti->tileh], PAL_NONE, *ti, {{}, {TILE_SIZE, TILE_SIZE, TILE_HEIGHT - 1}, {}});
+		AddSortableSpriteToDraw(image + foundation_parts[ti->tileh], PAL_NONE, *ti, { {}, {TILE_SIZE, TILE_SIZE, TILE_HEIGHT - 1}, {} });
 	} else {
 		/* Draw simple foundations, built up from 8 possible foundation sprites.
 		 * Each set bit represents one of the eight composite sprites to be drawn.
@@ -3233,7 +3233,7 @@ static bool DrawCustomStationFoundations(const StationSpec *statspec, BaseStatio
 
 		StartSpriteCombine();
 		for (uint i : SetBitIterator(parts)) {
-			AddSortableSpriteToDraw(image + i, PAL_NONE, *ti, {{}, {TILE_SIZE, TILE_SIZE, TILE_HEIGHT - 1}, {}});
+			AddSortableSpriteToDraw(image + i, PAL_NONE, *ti, { {}, {TILE_SIZE, TILE_SIZE, TILE_HEIGHT - 1}, {} });
 		}
 		EndSpriteCombine();
 	}
@@ -3398,7 +3398,7 @@ static void DrawTile_Station(TileInfo *ti)
 
 	if (draw_ground && !IsAnyRoadStop(ti->tile)) {
 		SpriteID image = t->ground.sprite;
-		PaletteID pal  = t->ground.pal;
+		PaletteID pal = t->ground.pal;
 		RailTrackOffset overlay_offset;
 		if (rti != nullptr && rti->UsesOverlay() && SplitGroundSpriteForOverlay(ti, &image, &overlay_offset)) {
 			SpriteID ground = GetCustomRailSprite(rti, ti->tile, RTSG_GROUND);
@@ -3455,7 +3455,7 @@ static void DrawTile_Station(TileInfo *ti)
 		/* Draw ground sprite */
 		if (draw_ground) {
 			SpriteID image = t->ground.sprite;
-			PaletteID pal  = t->ground.pal;
+			PaletteID pal = t->ground.pal;
 			image += HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE) ? ground_relocation : total_offset;
 			if (GB(image, 0, SPRITE_WIDTH) != 0) {
 				if (HasBit(pal, SPRITE_MODIFIER_CUSTOM_SPRITE)) pal += ground_relocation;
@@ -3599,7 +3599,7 @@ void FillTileDescRailStation(TileIndex tile, TileDesc &td)
 
 	if (spec != nullptr) {
 		td.station_class = StationClass::Get(spec->class_index)->name;
-		td.station_name  = spec->name;
+		td.station_name = spec->name;
 
 		if (spec->grf_prop.HasGrfFile()) {
 			const GRFConfig *gc = GetGRFConfig(spec->grf_prop.grfid);
@@ -3648,7 +3648,8 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc &td)
 			break;
 		case StationType::Truck:    str = STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA; break;
 		case StationType::Bus:      str = STR_LAI_STATION_DESCRIPTION_BUS_STATION; break;
-		case StationType::Oilrig: {
+		case StationType::Oilrig:
+		{
 			const Industry *i = Station::GetByTile(tile)->industry;
 			const IndustrySpec *is = GetIndustrySpec(i->type);
 			td.owner[0] = i->owner;
@@ -3739,7 +3740,8 @@ static void TileLoop_Station(TileIndex tile)
 			TriggerRoadStopAnimation(st, tile, StationAnimationTrigger::TileLoop);
 			break;
 
-		case StationType::RoadWaypoint: {
+		case StationType::RoadWaypoint:
+		{
 			switch (_settings_game.game_creation.landscape) {
 				case LandscapeType::Arctic:
 					if (IsRoadWaypointOnSnowOrDesert(tile) != (GetTileZ(tile) > GetSnowLine())) {
@@ -3943,6 +3945,12 @@ static void TruncateCargo(const CargoSpec *cs, GoodsEntry *ge, uint amount = UIN
 
 		GoodsEntry &source_ge = source_station->goods[cs->Index()];
 		source_ge.max_waiting_cargo = std::max(source_ge.max_waiting_cargo, i->second);
+		TileIndex t = source_station->xy;
+		auto x = TileX(t) * TILE_SIZE;
+		auto y = TileY(t) * TILE_SIZE;
+		auto z = GetTileZ(t);
+		ShowBlameStationAnimation(x, y, z, std::max(source_ge.max_waiting_cargo, i->second));
+		SetWindowClassesDirty(WC_STATION_VIEW);
 	}
 }
 
@@ -3956,33 +3964,9 @@ static void UpdateStationRating(Station *st)
 
 	byte_inc_sat(&st->time_since_load);
 	byte_inc_sat(&st->time_since_unload);
-	Debug(misc, 0, "Load/unload: {} {}", st->time_since_load, st->time_since_unload);
 
 	for (const CargoSpec *cs : CargoSpec::Iterate()) {
 		GoodsEntry *ge = &st->goods[cs->Index()];
-<<<<<<< HEAD
-		Debug(misc, 0, "Checking goods entry for: {} - it's {}", cs->Index(), ge->rating);
-		/* Slowly increase the rating back to its original level in the case we
-		 *  didn't deliver cargo yet to this station. This happens when a bribe
-		 *  failed while you didn't moved that cargo yet to a station. */
-		if (!ge->HasRating() && ge->rating < INITIAL_STATION_RATING) {
-			ge->rating++;
-		}
-
-		/* Only change the rating if we are moving this cargo */
-		if (ge->HasRating()) {
-			Debug(misc, 0, "It has a rating");
-			byte_inc_sat(&ge->time_since_pickup);
-			if (ge->time_since_pickup == 255 && _settings_game.order.selectgoods) {
-				Debug(misc, 0, "Resetting rating - time since pickup is 255");
-				ge->status.Reset(GoodsEntry::State::Rating);
-				ge->last_speed = 0;
-				TruncateCargo(cs, ge);
-				waiting_changed = true;
-				continue;
-			}
-=======
-
 		/* The station might not currently be moving this cargo. */
 		if (!ge->HasRating()) {
 			/* Slowly increase the rating back to its original level in the case we
@@ -3995,7 +3979,6 @@ static void UpdateStationRating(Station *st)
 		}
 
 		byte_inc_sat(&ge->time_since_pickup);
->>>>>>> a617d009cca418255a9682fd83c9cebc6423303e
 
 		/* If this cargo hasn't been picked up in a long time, get rid of it. */
 		if (ge->time_since_pickup == 255 && _settings_game.order.selectgoods) {
@@ -4049,35 +4032,47 @@ static void UpdateStationRating(Station *st)
 		}
 
 		if (!skip) {
+			ge->last_score_part_speed = 0;
 			int b = ge->last_speed - 85;
-			if (b >= 0) rating += b >> 2;
-
+			if (b >= 0) {
+				rating += b >> 2;
+				ge->last_score_part_speed = b >> 2;
+			}
 			uint8_t waittime = ge->time_since_pickup;
 			if (st->last_vehicle_type == VEH_SHIP) waittime >>= 2;
+			int rating_before_waittime = rating;
 			if (waittime <= 21) rating += 25;
 			if (waittime <= 12) rating += 25;
 			if (waittime <= 6) rating += 45;
 			if (waittime <= 3) rating += 35;
+			ge->last_score_part_waittime = rating - rating_before_waittime;
 
 			rating -= 90;
+			int rating_before_mwc = rating;
 			if (ge->max_waiting_cargo <= 1500) rating += 55;
 			if (ge->max_waiting_cargo <= 1000) rating += 35;
 			if (ge->max_waiting_cargo <= 600) rating += 10;
 			if (ge->max_waiting_cargo <= 300) rating += 20;
 			if (ge->max_waiting_cargo <= 100) rating += 10;
+			ge->last_score_part_mwc = rating - rating_before_mwc;
 		}
 
+		int rating_before_statue = rating;
 		if (Company::IsValidID(st->owner) && st->town->statues.Test(st->owner)) rating += 26;
+		ge->last_score_part_statue = rating - rating_before_statue;
 
+		int rating_before_age = rating;
 		uint8_t age = ge->last_age;
 		if (age < 3) rating += 10;
 		if (age < 2) rating += 10;
 		if (age < 1) rating += 13;
+		ge->last_score_part_age = rating - rating_before_age;
 
 		{
 			int or_ = ge->rating; // old rating
 
 			/* only modify rating in steps of -2, -1, 0, 1 or 2 */
+			ge->target_rating = rating;
 			ge->rating = rating = ClampTo<uint8_t>(or_ + Clamp(rating - or_, -2, 2));
 
 			/* if rating is <= 64 and more than 100 items waiting on average per destination,
@@ -4099,101 +4094,12 @@ static void UpdateStationRating(Station *st)
 				}
 			}
 
-<<<<<<< HEAD
-			if (!skip) {
-				Debug(misc, 0, "Last speed score: {}", ge->last_speed);
-				int b = ge->last_speed - 85;
-				Debug(misc, 0, "Minus 85: {}", b);
-				if (b >= 0) rating += b >> 2;
-				Debug(misc, 0, "Rating so far: {}", rating);
-
-
-				uint8_t waittime = ge->time_since_pickup;
-				if (st->last_vehicle_type == VEH_SHIP) waittime >>= 2;
-				if (waittime <= 21) rating += 25;
-				if (waittime <= 12) rating += 25;
-				if (waittime <= 6) rating += 45;
-				if (waittime <= 3) rating += 35;
-				Debug(misc, 0, "Wait time is {}, so rating is now: {}", waittime, rating);
-
-				rating -= 90;
-				if (ge->max_waiting_cargo <= 1500) rating += 55;
-				if (ge->max_waiting_cargo <= 1000) rating += 35;
-				if (ge->max_waiting_cargo <= 600) rating += 10;
-				if (ge->max_waiting_cargo <= 300) rating += 20;
-				if (ge->max_waiting_cargo <= 100) rating += 10;
-				Debug(misc, 0, "Max waiting cargo is {}, so rating is now: {}", ge->max_waiting_cargo, rating);
-
-			}
-
-			if (Company::IsValidID(st->owner) && st->town->statues.Test(st->owner)) rating += 26;
-			Debug(misc, 0, "Rating after statue bonus: {}", rating);
-
-			uint8_t age = ge->last_age;
-			if (age < 3) rating += 10;
-			if (age < 2) rating += 10;
-			if (age < 1) rating += 13;
-			Debug(misc, 0, "Last age is {}, so rating is now: {}", age, rating);
-			{
-				int or_ = ge->rating; // old rating
-
-				/* only modify rating in steps of -2, -1, 0, 1 or 2 */
-				ge->target_rating = rating;
-				ge->rating = rating = ClampTo<uint8_t>(or_ + Clamp(rating - or_, -2, 2));				
-
-				/* if rating is <= 64 and more than 100 items waiting on average per destination,
-				 * remove some random amount of goods from the station */
-				if (rating <= 64 && waiting_avg >= 100) {
-					int dec = Random() & 0x1F;
-					if (waiting_avg < 200) dec &= 7;
-					waiting -= (dec + 1) * num_dests;
-					waiting_changed = true;
-				}
-
-				/* if rating is <= 127 and there are any items waiting, maybe remove some goods. */
-				if (rating <= 127 && waiting != 0) {
-					uint32_t r = Random();
-					if (rating <= (int)GB(r, 0, 7)) {
-						/* Need to have int, otherwise it will just overflow etc. */
-						waiting = std::max((int)waiting - (int)((GB(r, 8, 2) - 1) * num_dests), 0);
-						waiting_changed = true;
-					}
-				}
-
-				/* At some point we really must cap the cargo. Previously this
-				 * was a strict 4095, but now we'll have a less strict, but
-				 * increasingly aggressive truncation of the amount of cargo. */
-				static const uint WAITING_CARGO_THRESHOLD  = 1 << 12;
-				static const uint WAITING_CARGO_CUT_FACTOR = 1 <<  6;
-				static const uint MAX_WAITING_CARGO        = 1 << 15;
-
-				if (waiting > WAITING_CARGO_THRESHOLD) {
-					uint difference = waiting - WAITING_CARGO_THRESHOLD;
-					waiting -= (difference / WAITING_CARGO_CUT_FACTOR);
-
-					waiting = std::min(waiting, MAX_WAITING_CARGO);
-					waiting_changed = true;
-				}
-
-				/* We can't truncate cargo that's already reserved for loading.
-				 * Thus StoredCount() here. */
-				if (waiting_changed && waiting < (ge->HasData() ? ge->GetData().cargo.AvailableCount() : 0)) {
-					/* Feed back the exact own waiting cargo at this station for the
-					 * next rating calculation. */
-					ge->max_waiting_cargo = 0;
-
-					TruncateCargo(cs, ge, ge->GetData().cargo.AvailableCount() - waiting);
-				} else {
-					/* If the average number per next hop is low, be more forgiving. */
-					ge->max_waiting_cargo = waiting_avg;
-				}
-=======
 			/* At some point we really must cap the cargo. Previously this
-			 * was a strict 4095, but now we'll have a less strict, but
-			 * increasingly aggressive truncation of the amount of cargo. */
-			static const uint WAITING_CARGO_THRESHOLD  = 1 << 12;
-			static const uint WAITING_CARGO_CUT_FACTOR = 1 <<  6;
-			static const uint MAX_WAITING_CARGO        = 1 << 15;
+				* was a strict 4095, but now we'll have a less strict, but
+				* increasingly aggressive truncation of the amount of cargo. */
+			static const uint WAITING_CARGO_THRESHOLD = 1 << 12;
+			static const uint WAITING_CARGO_CUT_FACTOR = 1 << 6;
+			static const uint MAX_WAITING_CARGO = 1 << 15;
 
 			if (waiting > WAITING_CARGO_THRESHOLD) {
 				uint difference = waiting - WAITING_CARGO_THRESHOLD;
@@ -4214,7 +4120,12 @@ static void UpdateStationRating(Station *st)
 			} else {
 				/* If the average number per next hop is low, be more forgiving. */
 				ge->max_waiting_cargo = waiting_avg;
->>>>>>> a617d009cca418255a9682fd83c9cebc6423303e
+				ge->dests = num_dests;
+				TileIndex t = st->xy;
+				auto x = TileX(t) * TILE_SIZE;
+				auto y = TileY(t) * TILE_SIZE;
+				auto z = GetTileZ(t);
+				ShowMwcAnimation(x, y, z, ge->max_waiting_cargo);
 			}
 		}
 	}
@@ -4440,10 +4351,7 @@ void OnTick_Station()
 	for (BaseStation *st : BaseStation::Iterate()) {
 		StationHandleSmallTick(st);
 
-		/* Clean up the link graph about once a week. */
-		if (Station::IsExpected(st) && (TimerGameTick::counter + st->index) % Ticks::STATION_LINKGRAPH_TICKS == 0) {
-			DeleteStaleLinks(Station::From(st));
-		};
+		// ...
 
 		/* Spread out big-tick over STATION_ACCEPTANCE_TICKS ticks. */
 		if ((TimerGameTick::counter + st->index) % Ticks::STATION_ACCEPTANCE_TICKS == 0) {
@@ -4451,18 +4359,12 @@ void OnTick_Station()
 			if (!StationHandleBigTick(st)) continue;
 		}
 
-		/* Spread out station animation over STATION_ACCEPTANCE_TICKS ticks. */
-		if ((TimerGameTick::counter + st->index) % Ticks::STATION_ACCEPTANCE_TICKS == 0) {
-			TriggerStationAnimation(st, st->xy, StationAnimationTrigger::AcceptanceTick);
-			TriggerRoadStopAnimation(st, st->xy, StationAnimationTrigger::AcceptanceTick);
-			if (Station::IsExpected(st)) TriggerAirportAnimation(Station::From(st), AirportAnimationTrigger::AcceptanceTick);
-		}
+		// ...
 	}
 }
 
 /** Economy monthly loop for stations. */
-static const IntervalTimer<TimerGameEconomy> _economy_stations_monthly({TimerGameEconomy::MONTH, TimerGameEconomy::Priority::STATION}, [](auto)
-{
+static const IntervalTimer<TimerGameEconomy> _economy_stations_monthly({ TimerGameEconomy::MONTH, TimerGameEconomy::Priority::STATION }, [](auto) {
 	for (Station *st : Station::Iterate()) {
 		for (GoodsEntry &ge : st->goods) {
 			ge.status.Set(GoodsEntry::State::LastMonth, ge.status.Test(GoodsEntry::State::CurrentMonth));
@@ -4773,7 +4675,7 @@ void BuildOilRig(TileIndex tile)
 	st->airport.rotation = DIR_N;
 	st->airport.Add(tile);
 	st->ship_station.Add(tile);
-	st->facilities = {StationFacility::Airport, StationFacility::Dock};
+	st->facilities = { StationFacility::Airport, StationFacility::Dock };
 	st->build_date = TimerGameCalendar::date;
 	UpdateStationDockingTiles(st);
 
@@ -4804,7 +4706,7 @@ void DeleteOilRig(TileIndex tile)
 	MakeWaterKeepingClass(tile, OWNER_NONE);
 
 	/* The oil rig station is not supposed to be shared with anything else */
-	[[maybe_unused]] static constexpr StationFacilities expected_facility{StationFacility::Airport, StationFacility::Dock};
+	[[maybe_unused]] static constexpr StationFacilities expected_facility{ StationFacility::Airport, StationFacility::Dock };
 	assert(st->facilities == expected_facility && st->airport.type == AT_OILRIG);
 	if (st->industry != nullptr && st->industry->neutral_station == st) {
 		/* Don't leave dangling neutral station pointer */
@@ -4882,15 +4784,15 @@ static void ChangeTileOwner_Station(TileIndex tile, Owner old_owner, Owner new_o
 		if (IsDriveThroughStopTile(tile)) {
 			/* Remove the drive-through road stop */
 			if (IsRoadWaypoint(tile)) {
-				Command<CMD_REMOVE_FROM_ROAD_WAYPOINT>::Do({DoCommandFlag::Execute, DoCommandFlag::Bankrupt}, tile, tile);
+				Command<CMD_REMOVE_FROM_ROAD_WAYPOINT>::Do({ DoCommandFlag::Execute, DoCommandFlag::Bankrupt }, tile, tile);
 			} else {
-				Command<CMD_REMOVE_ROAD_STOP>::Do({DoCommandFlag::Execute, DoCommandFlag::Bankrupt}, tile, 1, 1, (GetStationType(tile) == StationType::Truck) ? RoadStopType::Truck : RoadStopType::Bus, false);
+				Command<CMD_REMOVE_ROAD_STOP>::Do({ DoCommandFlag::Execute, DoCommandFlag::Bankrupt }, tile, 1, 1, (GetStationType(tile) == StationType::Truck) ? RoadStopType::Truck : RoadStopType::Bus, false);
 			}
 			assert(IsTileType(tile, MP_ROAD));
 			/* Change owner of tile and all roadtypes */
 			ChangeTileOwner(tile, old_owner, new_owner);
 		} else {
-			Command<CMD_LANDSCAPE_CLEAR>::Do({DoCommandFlag::Execute, DoCommandFlag::Bankrupt}, tile);
+			Command<CMD_LANDSCAPE_CLEAR>::Do({ DoCommandFlag::Execute, DoCommandFlag::Bankrupt }, tile);
 			/* Set tile owner of water under (now removed) buoy and dock to OWNER_NONE.
 			 * Update owner of buoy if it was not removed (was in orders).
 			 * Do not update when owned by OWNER_WATER (sea and rivers). */
@@ -4964,14 +4866,15 @@ CommandCost ClearTile_Station(TileIndex tile, DoCommandFlags flags)
 		case StationType::Rail:     return RemoveRailStation(tile, flags);
 		case StationType::RailWaypoint: return RemoveRailWaypoint(tile, flags);
 		case StationType::Airport:  return RemoveAirport(tile, flags);
-		case StationType::Truck:    [[fallthrough]];
+		case StationType::Truck: [[fallthrough]];
 		case StationType::Bus:
 			if (IsDriveThroughStopTile(tile)) {
 				CommandCost remove_road = CanRemoveRoadWithStop(tile, flags);
 				if (remove_road.Failed()) return remove_road;
 			}
 			return RemoveRoadStop(tile, flags);
-		case StationType::RoadWaypoint: {
+		case StationType::RoadWaypoint:
+		{
 			CommandCost remove_road = CanRemoveRoadWithStop(tile, flags);
 			if (remove_road.Failed()) return remove_road;
 			return RemoveRoadWaypointStop(tile, flags);
@@ -4993,7 +4896,8 @@ static CommandCost TerraformTile_Station(TileIndex tile, DoCommandFlags flags, i
 		if (GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new)) {
 			switch (GetStationType(tile)) {
 				case StationType::RailWaypoint:
-				case StationType::Rail: {
+				case StationType::Rail:
+				{
 					if (!AutoslopeCheckForAxis(tile, z_new, tileh_new, GetRailStationAxis(tile))) break;
 					return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 				}
@@ -5003,7 +4907,8 @@ static CommandCost TerraformTile_Station(TileIndex tile, DoCommandFlags flags, i
 
 				case StationType::Truck:
 				case StationType::Bus:
-				case StationType::RoadWaypoint: {
+				case StationType::RoadWaypoint:
+				{
 					if (IsDriveThroughStopTile(tile)) {
 						if (!AutoslopeCheckForAxis(tile, z_new, tileh_new, GetDriveThroughStopAxis(tile))) break;
 					} else {
@@ -5061,7 +4966,7 @@ StationID FlowStat::GetVia(StationID excluded, StationID excluded2) const
 	uint new_max = this->unrestricted - interval;
 	uint rand = RandomRange(new_max);
 	SharesMap::const_iterator it2 = (rand < begin) ? this->shares.upper_bound(rand) :
-			this->shares.upper_bound(rand + interval);
+		this->shares.upper_bound(rand + interval);
 	assert(it2 != this->shares.end() && it2->first <= this->unrestricted);
 	if (it2->second != excluded && it2->second != excluded2) return it2->second;
 

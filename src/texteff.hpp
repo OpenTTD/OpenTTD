@@ -40,6 +40,8 @@ void UpdateFillingPercent(TextEffectID te_id, uint8_t percent, StringID colour);
 void HideFillingPercent(TextEffectID *te_id);
 
 void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost);
+void ShowBlameStationAnimation(int x, int y, int z, int blame);
+void ShowMwcAnimation(int x, int y, int z, int score);
 void ShowFeederIncomeAnimation(int x, int y, int z, Money transfer, Money income);
 
 #endif /* TEXTEFF_HPP */

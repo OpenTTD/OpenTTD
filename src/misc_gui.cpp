@@ -521,6 +521,36 @@ void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost)
 }
 
 /**
+ * Display animated income or costs on the map. Does nothing if cost is zero.
+ * @param x    World X position of the animation location.
+ * @param y    World Y position of the animation location.
+ * @param z    World Z position of the animation location.
+ * @param cost Estimated cost (or income if negative).
+ */
+void ShowBlameStationAnimation(int x, int y, int z, int blame)
+{
+	return;
+	Point pt = RemapCoords(x, y, z);
+	StringID msg = STR_ERROR_PNGMAP;
+	AddTextEffect(GetEncodedString(msg, blame), pt.x, pt.y, Ticks::DAY_TICKS, TE_RISING);
+}
+
+/**
+ * Display animated income or costs on the map. Does nothing if cost is zero.
+ * @param x    World X position of the animation location.
+ * @param y    World Y position of the animation location.
+ * @param z    World Z position of the animation location.
+ * @param cost Estimated cost (or income if negative).
+ */
+void ShowMwcAnimation(int x, int y, int z, int blame)
+{
+	return;
+	Point pt = RemapCoords(x, y, z);
+	StringID msg = STR_ERROR_PNGMAP_FILE_NOT_FOUND;
+	AddTextEffect(GetEncodedString(msg, blame), pt.x, pt.y, Ticks::DAY_TICKS, TE_RISING);
+}
+
+/**
  * Display animated feeder income.
  * @param x        World X position of the animation location.
  * @param y        World Y position of the animation location.

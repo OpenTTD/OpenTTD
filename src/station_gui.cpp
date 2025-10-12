@@ -1912,10 +1912,12 @@ struct StationViewWindow : public Window {
 			DrawString(tr.Indent(WidgetDimensions::scaled.hsep_indent, rtl),
 				GetString(STR_STATION_VIEW_CARGO_SUPPLY_RATING,
 					cs->name,
-					lg != nullptr ? lg->Monthly((*lg)[ge->node].supply) : 0,
-					STR_CARGO_RATING_APPALLING + (ge->rating >> 5),
-					ge->target_rating,
-					ge->rating
+					ge->last_score_part_speed,
+					ge->last_score_part_waittime,
+					ge->last_score_part_mwc,
+					ge->last_score_part_statue,
+					ge->last_score_part_age,
+					ge->target_rating
 				));
 			tr.top += GetCharacterHeight(FS_NORMAL);
 		}

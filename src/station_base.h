@@ -234,6 +234,12 @@ struct GoodsEntry {
 
 	uint8_t rating = INITIAL_STATION_RATING; ///< %Station rating for this cargo.
 	uint8_t target_rating = INITIAL_STATION_RATING;
+	uint8_t last_score_part_speed = 0;
+	uint8_t last_score_part_waittime = 0;
+	uint8_t last_score_part_mwc = 0;
+	uint8_t last_score_part_statue = 0;
+	uint8_t last_score_part_age = 0;
+
 	/**
 	 * Maximum speed (up to 255) of the last vehicle that tried to load this cargo.
 	 * This does not imply there was any cargo to load.
@@ -244,6 +250,7 @@ struct GoodsEntry {
 	 *  - Aircraft: 8 * mph
 	 */
 	uint8_t last_speed = 0;
+	uint8_t dests = 0;
 
 	/**
 	 * Age in years (up to 255) of the last vehicle that tried to load this cargo.
