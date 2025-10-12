@@ -60,9 +60,7 @@ private:
 			default:
 				NOT_REACHED();
 		}
-		TileArea ta;
-		this->wp->GetTileArea(&ta, type);
-		return ta.GetCenterTile();
+		return this->wp->GetTileArea(type).GetCenterTile();
 	}
 
 public:

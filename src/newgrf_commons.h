@@ -6,7 +6,7 @@
  */
 
 /**
- * @file newgrf_commons.h This file simplyfies and embeds a common mechanism of
+ * @file newgrf_commons.h This file simplifies and embeds a common mechanism of
  * loading/saving and mapping of grf entities.
  */
 

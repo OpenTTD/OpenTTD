@@ -1437,6 +1437,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :مقیاس خا
 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :تصویر صاف در نمای اضافه: {STRING}
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :نمایش متن کمکی وقتی از چندین ابزار استفاده می شود: {STRING}
 
 STR_CONFIG_SETTING_LIVERIES                                     :نمایش طراحی مخصوص وسیله نقلیه : {STRING}
@@ -2235,10 +2236,10 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}تدار
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}پیوستن ایستگاه
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}ساخت یک ایستگاه جداگانه
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}ساخت یک ایستگاه جداگانه
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}پیوستن نقطه مسیر
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}ساخت یک نقطه مسیر جداگانه
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}ساخت یک نقطه مسیر جداگانه
 
 # Generic toolbar
 
@@ -2784,6 +2785,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}جنوب
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}قالب آزاد
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}دریا
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}تصادفی
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}تصادفی
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}دستی
 
@@ -3000,7 +3003,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}برای
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}شهرها ({COMMA} از {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- هیچکدام -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (City){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}نام شهرها - برای مرکز قرار دادن نمای اصلی روی شهر، روی نام کلیک کنید. Ctrl+Click برای باز کردن یک نمای جدید در موقعیت شهر.
 STR_TOWN_POPULATION                                             :{BLACK}جمعیت جهان: {COMMA}
 

@@ -637,8 +637,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}將 10 單位 (或 10,000 公升) 貨物運送 20 格的費用
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}全部
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}無
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}於貨物運費表顯示所有類型的貨物
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}於貨物運費表隱藏所有類型的貨物
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}在圖表中顯示所有貨物
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}在圖表中隱藏所有貨物
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}切換顯示貨物
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -1690,6 +1690,9 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :使用左鍵移
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :畫面平滑移動：{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :設定在小地圖中點選一個位置時，主畫面的顯示方式。啟用時，畫面會平緩移動到所點選的位置；否則畫面會直接跳到所點選的位置
 
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT                  :自動選取下拉式功能表項目：{STRING}
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT_HELPTEXT         :自訂下拉式功能表的動作。如果設定關閉，在點選功能表開啟下拉式選單時將維持開啟狀態，直到作出選擇為止。如果設定啟用，下拉式功能表則將在放開滑鼠按鈕時選取當前所選的項目。
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :使用某些建設工具時顯示度量提示：{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :當點選建造工具後拖曳滑鼠時，是否顯示兩端的方格距離及高度差異。
 
@@ -2613,7 +2616,7 @@ STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :已有人使用
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :密碼錯誤
 STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :不在允許名單內
 STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :已請求的驗證方式均不可用
-STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :DoCommand 內含錯誤的 company-id
+STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :DoCommand 內含錯誤的公司 ID
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :被伺服器踢除
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :想試著作弊
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :伺服器已滿
@@ -2782,10 +2785,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}維護�
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}合併車站
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}建造獨立車站
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}建造獨立車站
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}合併中途站
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}建立個別中途站
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}建立個別中途站
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}此設施已被禁用，因為沒有任何此設施可用的載具
@@ -3345,6 +3348,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF�
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}篩選：
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}覆蓋檔案
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}你確定要覆蓋現有存檔嗎？
+STR_SAVELOAD_DELETE_TITLE                                       :{WHITE}刪除檔案
+STR_SAVELOAD_DELETE_WARNING                                     :{YELLOW}您確定要刪除檔案嗎？
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (路徑)
 STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (上層資料夾)
 
@@ -3423,8 +3428,11 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}西南�
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}自由地形
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}水域
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}隨機
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}隨機
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}手動
+
+###length 3
+STR_MAPGEN_BORDER_RANDOMIZE                                     :隨機
+STR_MAPGEN_BORDER_MANUAL                                        :手動
+STR_MAPGEN_BORDER_INFINITE_WATER                                :無盡水域
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}高度圖旋轉：
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}高度圖名稱：
@@ -3683,7 +3691,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}輸入�
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}市鎮（{COMMA} 座，總共 {COMMA} 座）
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- 無 -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (城市){BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{BLACK}（{COMMA}）{YELLOW}{CITY_ICON}
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}市鎮名稱 - 點選名稱可將市鎮置於畫面正中央。按住 <Ctrl> 點選可於市鎮位置開啟新檢視視窗
 STR_TOWN_POPULATION                                             :{BLACK}世界人口：{COMMA}
 
@@ -4180,6 +4188,7 @@ STR_PURCHASE_INFO_ALL_BUT                                       :所有貨物（
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}最大牽引力：{GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}範圍：{GOLD}{COMMA} 方格
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}飛機類型：{GOLD}{STRING}
+STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}軌道類型：{GOLD}{STRING}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :所有貨物種類
@@ -4363,6 +4372,7 @@ STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :營運成本：
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :營運成本：{CURRENCY_LONG}/週期
 STR_ENGINE_PREVIEW_CAPACITY                                     :容量：{CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :容量：{CARGO_LONG}、{CARGO_LONG}
+STR_ENGINE_PREVIEW_RAILTYPES                                    :軌道類型：{STRING}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}替換 {STRING} - {STRING}
@@ -5053,7 +5063,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}無法�
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... 貸款額度上限是 {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}無法再借更多錢...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... 不需償還貸款
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... 不需償還貸款
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... 需要 {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}無法償還貸款...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}無法把貸款的錢流通出去...
@@ -5176,7 +5186,7 @@ STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}列車�
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}列車過長
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}無法調轉車輛方向...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... 由多節車廂組成
-STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :軌道種類不相容
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :軌道類型不相容
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}無法移動車輛...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}後端車頭一定要跟著前端車頭
@@ -5257,8 +5267,15 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}橋樑�
 STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}這座橋對這個地形而言太高了
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}開始與結束位置必須在同一直線上
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... 橋樑的兩端應在陸地上
-STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... 橋樑過長
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}……橋樑過長
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}橋的終點將會在地圖外
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}橋樑過低，無法興建車站
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}橋樑過低，無法興建車站
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}橋樑過低，無法興建碼頭
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}橋樑過低，無法放置浮標
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}橋樑過低，無法興建中途站
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}橋樑過低，無法興建中途站
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}橋樑過低，無法興建水閘
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}無法在此挖掘隧道...
@@ -5875,6 +5892,8 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :觀眾，{1:STR
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{TOWN} （ {COMMA} ）
+STR_VIEWPORT_TOWN_CITY                                          :{TOWN}{CITY_ICON}
+STR_VIEWPORT_TOWN_CITY_POP                                      :{TOWN}（{COMMA}）{CITY_ICON}
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data

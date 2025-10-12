@@ -1436,6 +1436,7 @@ STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Skuif kaart met
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Maak kykpoort beweegings glad: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Beheer hoe die hoofvertoonvenster skuif na 'n spesifieke posisie - as dit geaktiveer is, dan skuif die venster glad na die posisie toe, andersins skuif die venster direk na die posisie toe.
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Toon 'n meting wanneer jy verskeie bou-gereedskap gebruik: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Vertoon teëlafstand en hoogteverskil gedurende bouwerk.
 
@@ -2329,10 +2330,10 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Verskaf:
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Sluit by stasie aan
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Bou 'n aparte stasie
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Bou 'n aparte stasie
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Verbind roetebaken
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Bou 'n aparte roetebaken
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Bou 'n aparte roetebaken
 
 # Generic toolbar
 
@@ -2845,6 +2846,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Suidwes
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Vryeform
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Water
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Lukraak
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Lukraak
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Handmatig
 
@@ -3072,7 +3075,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Tik 'n n
 # Town directory window
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Geen -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Stad){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Dorpname - klik op 'n naam om skerm daarna te skuif. Ctrl+klik om 'n nuwe venster vir die dorp oop te maak
 STR_TOWN_POPULATION                                             :{BLACK}Wêreldbevolking: {COMMA}
 
@@ -4273,7 +4275,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Bestuurd
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maksimum toegelaate lening groote is {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Kan nie meer geld leen nie...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... geen lening om terug te betaal
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... geen lening om terug te betaal
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} vereis
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kan nie lening terugbetaal nie...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kan nie geld wat van die bank geleen is weggee nie...

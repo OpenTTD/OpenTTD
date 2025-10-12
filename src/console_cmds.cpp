@@ -569,7 +569,7 @@ static bool ConListFiles(std::span<std::string_view> argv)
 
 	_console_file_list_savegame.ValidateFileList(true);
 	for (uint i = 0; i < _console_file_list_savegame.size(); i++) {
-		IConsolePrint(CC_DEFAULT, "{}) {}", i, _console_file_list_savegame[i].title);
+		IConsolePrint(CC_DEFAULT, "{}) {}", i, _console_file_list_savegame[i].title.GetDecodedString());
 	}
 
 	return true;
@@ -585,7 +585,7 @@ static bool ConListScenarios(std::span<std::string_view> argv)
 
 	_console_file_list_scenario.ValidateFileList(true);
 	for (uint i = 0; i < _console_file_list_scenario.size(); i++) {
-		IConsolePrint(CC_DEFAULT, "{}) {}", i, _console_file_list_scenario[i].title);
+		IConsolePrint(CC_DEFAULT, "{}) {}", i, _console_file_list_scenario[i].title.GetDecodedString());
 	}
 
 	return true;
@@ -601,7 +601,7 @@ static bool ConListHeightmaps(std::span<std::string_view> argv)
 
 	_console_file_list_heightmap.ValidateFileList(true);
 	for (uint i = 0; i < _console_file_list_heightmap.size(); i++) {
-		IConsolePrint(CC_DEFAULT, "{}) {}", i, _console_file_list_heightmap[i].title);
+		IConsolePrint(CC_DEFAULT, "{}) {}", i, _console_file_list_heightmap[i].title.GetDecodedString());
 	}
 
 	return true;
@@ -2699,7 +2699,7 @@ static std::string FormatLabel(uint32_t label)
 		return fmt::format("{:c}{:c}{:c}{:c}", GB(label, 24, 8), GB(label, 16, 8), GB(label, 8, 8), GB(label, 0, 8));
 	}
 
-	return fmt::format("{:08X}", std::byteswap(label));
+	return fmt::format("{:08X}", label);
 }
 
 static void ConDumpRoadTypes()

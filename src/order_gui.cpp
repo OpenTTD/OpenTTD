@@ -116,14 +116,14 @@ static const StringID _station_load_types[][5][5] = {
 	}
 };
 
-static const StringID _order_non_stop_drowdown[] = {
+static const StringID _order_non_stop_dropdown[] = {
 	STR_ORDER_GO_TO,
 	STR_ORDER_GO_NON_STOP_TO,
 	STR_ORDER_GO_VIA,
 	STR_ORDER_GO_NON_STOP_VIA,
 };
 
-static const StringID _order_full_load_drowdown[] = {
+static const StringID _order_full_load_dropdown[] = {
 	STR_ORDER_DROP_LOAD_IF_POSSIBLE,
 	STR_EMPTY,
 	STR_ORDER_DROP_FULL_LOAD_ALL,
@@ -131,7 +131,7 @@ static const StringID _order_full_load_drowdown[] = {
 	STR_ORDER_DROP_NO_LOADING,
 };
 
-static const StringID _order_unload_drowdown[] = {
+static const StringID _order_unload_dropdown[] = {
 	STR_ORDER_DROP_UNLOAD_IF_ACCEPTED,
 	STR_ORDER_DROP_UNLOAD,
 	STR_ORDER_DROP_TRANSFER,
@@ -1254,7 +1254,7 @@ public:
 				} else {
 					const Order *o = this->vehicle->GetOrder(this->OrderGetSel());
 					assert(o != nullptr);
-					ShowDropDownMenu(this, _order_non_stop_drowdown, o->GetNonStopType(), WID_O_NON_STOP, 0,
+					ShowDropDownMenu(this, _order_non_stop_dropdown, o->GetNonStopType(), WID_O_NON_STOP, 0,
 													o->IsType(OT_GOTO_STATION) ? 0 : (o->IsType(OT_GOTO_WAYPOINT) ? 3 : 12));
 				}
 				break;
@@ -1283,7 +1283,7 @@ public:
 				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
 					this->OrderClick_FullLoad(OLF_FULL_LOAD_ANY, true);
 				} else {
-					ShowDropDownMenu(this, _order_full_load_drowdown, this->vehicle->GetOrder(this->OrderGetSel())->GetLoadType(), WID_O_FULL_LOAD, 0, 2);
+					ShowDropDownMenu(this, _order_full_load_dropdown, this->vehicle->GetOrder(this->OrderGetSel())->GetLoadType(), WID_O_FULL_LOAD, 0, 2);
 				}
 				break;
 
@@ -1291,7 +1291,7 @@ public:
 				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
 					this->OrderClick_Unload(OUFB_UNLOAD, true);
 				} else {
-					ShowDropDownMenu(this, _order_unload_drowdown, this->vehicle->GetOrder(this->OrderGetSel())->GetUnloadType(), WID_O_UNLOAD, 0, 8);
+					ShowDropDownMenu(this, _order_unload_dropdown, this->vehicle->GetOrder(this->OrderGetSel())->GetUnloadType(), WID_O_UNLOAD, 0, 8);
 				}
 				break;
 
@@ -1771,7 +1771,7 @@ void ShowOrdersWindow(const Vehicle *v)
 	/* Using a different WindowDescs for _local_company causes problems.
 	 * Due to this we have to close order windows in ChangeWindowOwner/CloseCompanyWindows,
 	 * because we cannot change switch the WindowDescs and keeping the old WindowDesc results
-	 * in crashed due to missing widges.
+	 * in crashed due to missing widget.
 	 * TODO Rewrite the order GUI to not use different WindowDescs.
 	 */
 	if (v->owner != _local_company) {

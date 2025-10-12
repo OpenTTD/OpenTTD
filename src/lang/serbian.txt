@@ -1804,6 +1804,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Pomeranje mape 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Ravnomeran prelaz prozora: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Odredi kako se glavni prikaz pomiče na određeno mesto kada se klikne na malu kartu ili kada se daje naredba za pomicanje na određeni objekat na karti. Ako je omogućeno, prikaz se pomiče glatko, ako je onemogućeno, prikaz izravno skače na ciljano mesto
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Prikazivati mere dok se koriste alati za gradnju: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Prikaži udaljenost u poljima i visinsku razliku kod povlačenja prilikom gradnje
 
@@ -2857,10 +2858,10 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Snabdeva
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Pridruži stanicu
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Izgradi zasebnu stanicu
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Izgradi zasebnu stanicu
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Spoji putanje
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Napravi zasebnu putanju
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Napravi zasebnu putanju
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Isključeno jer trenutno ne postoje dostupna vozila za ovu infrastrukturu
@@ -3430,6 +3431,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Jugozapa
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Kopno
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}More
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Proizvoljno
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Proizvoljno
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Podešeno
 
@@ -3673,7 +3676,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Unos naz
 # Town directory window
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Prazno -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (City){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Imena naselja - klikom na naziv glavni pogled se premešta na to naselje. Ctrl+klik otvara novi pogled na lokaciju naselja
 STR_TOWN_POPULATION                                             :{BLACK}Svetska populacija: {COMMA}
 
@@ -5000,7 +5002,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Vlasnik 
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maksimalan dozvoljen zajam iznosi: {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Nije moguće pozajmiti još novca...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... nema duga
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... nema duga
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... potrebno {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Nije moguće vratiti deo zajma...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Nemoguće je dati novac koji je pozajmljen od banke...

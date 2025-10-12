@@ -902,3 +902,62 @@ static const std::array<std::span<const DrawTileSpriteSpan>, to_underlying(Stati
 	_station_display_datas_waypoint,
 	_station_display_datas_road_waypoint,
 }};
+
+static const BridgeableTileInfo _station_bridgeable_info_rail[] = {
+	{2, {BridgePillarFlag::EdgeSW, BridgePillarFlag::EdgeNE}}, // X-axis empty platform.
+	{2, {BridgePillarFlag::EdgeNW, BridgePillarFlag::EdgeSE}}, // Y-axis empty platform.
+	{2, {BridgePillarFlag::EdgeSW, BridgePillarFlag::EdgeNE}}, // X-axis small building.
+	{2, {BridgePillarFlag::EdgeNW, BridgePillarFlag::EdgeSE}}, // Y-axis small building.
+	{5, {BridgePillarFlag::EdgeSW, BridgePillarFlag::EdgeNE, BridgePillarFlag::EdgeSE, BridgePillarFlag::CornerE, BridgePillarFlag::CornerS}}, // X large building north.
+	{5, {BridgePillarFlag::EdgeNW, BridgePillarFlag::EdgeSE, BridgePillarFlag::EdgeSW, BridgePillarFlag::CornerS, BridgePillarFlag::CornerW}}, // Y large building north.
+	{5, {BridgePillarFlag::EdgeSW, BridgePillarFlag::EdgeNE, BridgePillarFlag::EdgeNW, BridgePillarFlag::CornerN, BridgePillarFlag::CornerW}}, // X large building south.
+	{5, {BridgePillarFlag::EdgeNW, BridgePillarFlag::EdgeSE, BridgePillarFlag::EdgeNE, BridgePillarFlag::CornerN, BridgePillarFlag::CornerE}}, // Y large building south.
+};
+
+static const BridgeableTileInfo _station_bridgeable_info_waypoint[] = {
+	{2, {BridgePillarFlag::EdgeSW, BridgePillarFlag::EdgeNE}}, // X-axis waypoint.
+	{2, {BridgePillarFlag::EdgeNW, BridgePillarFlag::EdgeSE}}, // Y-axis waypoint.
+};
+
+static const BridgeableTileInfo _station_bridgeable_info_dock[] = {
+	{2, {}}, // Northeast slope.
+	{2, {}}, // Southeast slope.
+	{2, {}}, // Southwest slope.
+	{2, {}}, // Northwest slope.
+	{3, {}}, // X-axis part on water.
+	{3, {}}, // Y-axis part on water.
+};
+
+static const BridgeableTileInfo _station_bridgeable_info_buoy[] = {
+	{1, {}},
+};
+
+static const BridgeableTileInfo _station_bridgeable_info_roadstop[] = {
+	{2, {BridgePillarFlag::EdgeNE}}, // NE bay.
+	{2, {BridgePillarFlag::EdgeSE}}, // SE bay.
+	{2, {BridgePillarFlag::EdgeSW}}, // SW bay.
+	{2, {BridgePillarFlag::EdgeNW}}, // NW bay.
+	{2, {BridgePillarFlag::EdgeSW, BridgePillarFlag::EdgeNE}}, // X-axis drive-through.
+	{2, {BridgePillarFlag::EdgeNW, BridgePillarFlag::EdgeSE}}, // Y-axis drive-through.
+};
+
+static const BridgeableTileInfo _station_bridgeable_info_road_waypoint[] = {
+	{}, // NE bay (unused)
+	{}, // SE bay (unused)
+	{}, // SW bay (unused)
+	{}, // NW bay (unused)
+	{2, {BridgePillarFlag::EdgeSW, BridgePillarFlag::EdgeNE}}, // X-axis waypoint.
+	{2, {BridgePillarFlag::EdgeNW, BridgePillarFlag::EdgeSE}}, // Y-axis waypoint.
+};
+
+static const std::array<std::span<const BridgeableTileInfo>, to_underlying(StationType::End)> _station_bridgeable_info = {{
+	_station_bridgeable_info_rail, // Rail
+	{}, // Airport
+	_station_bridgeable_info_roadstop, // Truck
+	_station_bridgeable_info_roadstop, // Bus
+	{}, // Oilrig
+	_station_bridgeable_info_dock, // Dock
+	_station_bridgeable_info_buoy, // Buoy
+	_station_bridgeable_info_waypoint, // RailWaypoint
+	_station_bridgeable_info_road_waypoint, // RoadWaypoint
+}};

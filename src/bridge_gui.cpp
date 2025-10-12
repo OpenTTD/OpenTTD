@@ -379,13 +379,10 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 
 	/* only query bridge building possibility once, result is the same for all bridges!
 	 * returns CMD_ERROR on failure, and price on success */
-	StringID errmsg = INVALID_STRING_ID;
 	CommandCost ret = Command<CMD_BUILD_BRIDGE>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_BRIDGE>()) | DoCommandFlag::QueryCost, end, start, transport_type, 0, road_rail_type);
 
 	GUIBridgeList bl;
-	if (ret.Failed()) {
-		errmsg = ret.GetErrorMessage();
-	} else {
+	if (!ret.Failed()) {
 		/* check which bridges can be built */
 		const uint tot_bridgedata_len = CalcBridgeLenCostFactor(bridge_len + 2);
 
@@ -431,16 +428,12 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 			}
 		}
 		/* give error cause if no bridges available here*/
-		if (!any_available)
-		{
-			errmsg = type_check.GetErrorMessage();
-		}
+		if (!any_available) ret = type_check;
 	}
 
 	if (!bl.empty()) {
 		new BuildBridgeWindow(_build_bridge_desc, start, end, transport_type, road_rail_type, std::move(bl));
 	} else {
-		ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_BUILD_BRIDGE_HERE), GetEncodedString(errmsg),
-			WL_INFO, TileX(end) * TILE_SIZE, TileY(end) * TILE_SIZE);
+		ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_BUILD_BRIDGE_HERE), TileX(end) * TILE_SIZE, TileY(end) * TILE_SIZE, ret);
 	}
 }

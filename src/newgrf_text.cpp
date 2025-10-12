@@ -437,6 +437,8 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 				break;
 			}
 
+			case 0x9B: builder.PutUtf8(SCC_TOWN);             break;
+			case 0x9C: builder.PutUtf8(SCC_CITY);             break;
 			case 0x9E: builder.PutUtf8(0x20AC);               break; // Euro
 			case 0x9F: builder.PutUtf8(0x0178);               break; // Y with diaeresis
 			case 0xA0: builder.PutUtf8(SCC_UP_ARROW);         break;

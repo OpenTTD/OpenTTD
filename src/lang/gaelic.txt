@@ -1617,6 +1617,7 @@ STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Gluais am mapa 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Sgroladh mìn nam port-seallaidh: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Tagh mar a ghluaiseas am prìomh-shealladh gu ionad sònraichte. Ma tha seo dheth, thèid leum dhan ionad a chaidh a thaghadh sa bhad
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Seall gliocasan-sgrìn tomhais le innealan togail: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Seall faide eadar leacan is diofar an àirde nuair a nì thu slaodadh fhad ’s a bhios tu a' togail rudeigin
 
@@ -2499,10 +2500,10 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Solairea
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Co-aonaich an stèisean
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Tog stèisean fa leth
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Tog stèisean fa leth
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Co-aonaich a' phuing-thurais
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Tog puing-thurais fa leth
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Tog puing-thurais fa leth
 
 # Generic toolbar
 
@@ -3031,6 +3032,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Iar-dhea
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Cruth saor
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Uisge
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Air thuaiream
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Air thuaiream
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}A làimh
 
@@ -4417,7 +4420,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Chan urr
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... is {CURRENCY_LONG} an t-iasad as motha a tha ceadaichte dhut
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Chan urrainn dhut barrachd airgid fhaighinn air iasad...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... chan eil iasad ri pàigheadh ann
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... chan eil iasad ri pàigheadh ann
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... feum air {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Cha ghabh an t-iasad pàigheadh air ais...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Chan urrainn dhut airgead a thoirt seachad a chaidh a thoirt dhut mar iasad leis a’ bhanca...

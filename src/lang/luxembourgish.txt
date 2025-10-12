@@ -1665,6 +1665,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Kaart mat der l
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Glaate Scrolling: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Kontrolléiert wéi d'Haptusiicht op eng bestëmmten Positioun scrollt, wann een op déi kléng Kaart klickt oder en Befehl fir ob en spezifescht Objet ze scrollen gëtt. Wann ugeschalt, gëtt bis dohin gescrollt, wann ausgeschalt, spréngt d'Vue op den Zielobjet
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Weis en Mooss-Tooltip wann verschidde Bau-Tools benotzt ginn: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Weis Felderdistanzen an Héichtenënnerscheed beim Zéien während dem Bauen un
 
@@ -2752,10 +2753,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Ennerhal
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Statioun verbannen
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Eng separat Statioun bauen
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Eng separat Statioun bauen
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Weepunkt verbannen
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Separate Weepunkt bauen
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Separate Weepunkt bauen
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Ausgeschalt, well et grad keng Gefierer fir dës Infrastruktur gëtt
@@ -3384,6 +3385,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Südwest
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Fräiform
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Waasser
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Zoufälleg
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Zoufall
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuell
 
@@ -3644,7 +3647,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Gëff en
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Stied ({COMMA} vu {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Keng -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Stad){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Stiednimm - klick op den Numm fir d'Usiicht drop ze zentréieren. Ctrl+Klick erstellt eng nei Usiicht vun der Stad
 STR_TOWN_POPULATION                                             :{BLACK}Weltbevölkerung: {COMMA}
 
@@ -5004,7 +5006,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Kann den
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maximale Kredit ass {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Kann net méi Geld léinen...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... keen Kredit zeréckzebezuelen
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... keen Kredit zeréckzebezuelen
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... et ginn {CURRENCY_LONG} gebraucht
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kann de Kredit net zeréckbezuelen...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kann keng Suen ginn déi vun der Bank geléint sinn...

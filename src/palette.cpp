@@ -29,7 +29,7 @@ static std::recursive_mutex _palette_mutex; ///< To coordinate access to _cur_pa
  * PALETTE_BITS reduces the bits-per-channel of 32bpp graphics data to allow faster palette lookups from
  * a smaller lookup table.
  *
- * 6 bpc is chosen as this results in a palette lookup table of 256KiB with adequate fidelty.
+ * 6 bpc is chosen as this results in a palette lookup table of 256KiB with adequate fidelity.
  * In contrast, a 5 bpc lookup table would be 32KiB, and 7 bpc would be 2MiB.
  *
  * Values in the table are filled as they are first encountered -- larger lookup table means more colour

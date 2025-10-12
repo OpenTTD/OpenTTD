@@ -64,6 +64,13 @@ enum IndustryDensity : uint8_t {
 	ID_END,       ///< Number of industry density settings.
 };
 
+/** Possible options for the Borders pulldown in the Genworld GUI. */
+enum BorderFlagPresets : uint8_t {
+	BFP_RANDOM = 0,
+	BFP_MANUAL,
+	BFP_INFINITE_WATER,
+};
+
 /** Possible values for the "timekeeping_units" setting. */
 enum TimekeepingUnits : uint8_t {
 	TKU_CALENDAR = 0,
@@ -185,6 +192,7 @@ struct GUISettings {
 	uint8_t  scrollwheel_multiplier;           ///< how much 'wheel' per incoming event from the OS?
 	bool   timetable_arrival_departure;      ///< show arrivals and departures in vehicle timetables
 	RightClickClose  right_click_wnd_close;  ///< close window with right click
+	bool   toolbar_dropdown_autoselect;      ///< should toolbar dropdown buttons autoselect when releasing the mouse button
 	bool   pause_on_newgame;                 ///< whether to start new games paused or not
 	SignalGUISettings signal_gui_mode;       ///< select which signal types are shown in the signal GUI
 	SignalCycleSettings cycle_signal_types;  ///< Which signal types to cycle with the build signal tool.
@@ -374,6 +382,7 @@ struct GameCreationSettings {
 	uint8_t town_name;                        ///< the town name generator used for town names
 	LandscapeType landscape;                        ///< the landscape we're currently in
 	BorderFlags water_borders;                    ///< bitset of the borders that are water
+	BorderFlagPresets water_border_presets;    ///< presets for map border options
 	uint16_t custom_town_number;               ///< manually entered number of towns
 	uint16_t custom_industry_number;           ///< manually entered number of industries
 	uint8_t variety;                          ///< variety level applied to TGP
@@ -430,7 +439,6 @@ struct ScriptSettings {
 
 /** Settings related to the yet another pathfinder. */
 struct YAPFSettings {
-	bool   disable_node_optimization;        ///< whether to use exit-dir instead of trackdir in node key
 	uint32_t max_search_nodes;                 ///< stop path-finding when this number of nodes visited
 	uint32_t maximum_go_to_depot_penalty;      ///< What is the maximum penalty that may be endured for going to a depot
 	uint32_t road_slope_penalty;               ///< penalty for up-hill slope

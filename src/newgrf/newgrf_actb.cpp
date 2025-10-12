@@ -73,9 +73,6 @@ static void GRFLoadError(ByteReader &buf)
 		/* This is a fatal error, so make sure the GRF is deactivated and no
 		 * more of it gets loaded. */
 		DisableGrf();
-
-		/* Make sure we show fatal errors, instead of silly infos from before */
-		_cur_gps.grfconfig->error.reset();
 	}
 
 	if (message_id >= lengthof(msgstr) && message_id != 0xFF) {
@@ -88,39 +85,41 @@ static void GRFLoadError(ByteReader &buf)
 		return;
 	}
 
-	/* For now we can only show one message per newgrf file. */
-	if (_cur_gps.grfconfig->error.has_value()) return;
+	/* An error may be emitted multiple times in different loading stages. Re-use if so. */
+	auto it = std::ranges::find(_cur_gps.grfconfig->errors, _cur_gps.nfo_line, &GRFError::nfo_line);
+	if (it == std::end(_cur_gps.grfconfig->errors)) {
+		it = _cur_gps.grfconfig->errors.emplace(it, sevstr[severity], _cur_gps.nfo_line);
+	}
 
-	_cur_gps.grfconfig->error = {sevstr[severity]};
-	GRFError *error = &_cur_gps.grfconfig->error.value();
+	GRFError &error = *it;
 
 	if (message_id == 0xFF) {
 		/* This is a custom error message. */
 		if (buf.HasData()) {
 			std::string_view message = buf.ReadString();
 
-			error->custom_message = TranslateTTDPatchCodes(_cur_gps.grffile->grfid, lang, true, message, SCC_RAW_STRING_POINTER);
+			error.custom_message = TranslateTTDPatchCodes(_cur_gps.grffile->grfid, lang, true, message, SCC_RAW_STRING_POINTER);
 		} else {
 			GrfMsg(7, "GRFLoadError: No custom message supplied.");
-			error->custom_message.clear();
+			error.custom_message.clear();
 		}
 	} else {
-		error->message = msgstr[message_id];
+		error.message = msgstr[message_id];
 	}
 
 	if (buf.HasData()) {
 		std::string_view data = buf.ReadString();
 
-		error->data = TranslateTTDPatchCodes(_cur_gps.grffile->grfid, lang, true, data);
+		error.data = TranslateTTDPatchCodes(_cur_gps.grffile->grfid, lang, true, data);
 	} else {
 		GrfMsg(7, "GRFLoadError: No message data supplied.");
-		error->data.clear();
+		error.data.clear();
 	}
 
 	/* Only two parameter numbers can be used in the string. */
-	for (uint i = 0; i < error->param_value.size() && buf.HasData(); i++) {
+	for (uint i = 0; i < error.param_value.size() && buf.HasData(); i++) {
 		uint param_number = buf.ReadByte();
-		error->param_value[i] = _cur_gps.grffile->GetParam(param_number);
+		error.param_value[i] = _cur_gps.grffile->GetParam(param_number);
 	}
 }
 

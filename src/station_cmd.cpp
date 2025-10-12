@@ -68,10 +68,12 @@
 #include "timer/timer_game_tick.h"
 #include "cheat_type.h"
 #include "road_func.h"
+#include "station_layout_type.h"
 
 #include "widgets/station_widget.h"
 
 #include "table/strings.h"
+#include "table/station_land.h"
 
 #include <bitset>
 
@@ -409,30 +411,15 @@ static Station *GetClosestDeletedStation(TileIndex tile)
 }
 
 
-void Station::GetTileArea(TileArea *ta, StationType type) const
+TileArea Station::GetTileArea(StationType type) const
 {
 	switch (type) {
-		case StationType::Rail:
-			*ta = this->train_station;
-			return;
-
-		case StationType::Airport:
-			*ta = this->airport;
-			return;
-
-		case StationType::Truck:
-			*ta = this->truck_station;
-			return;
-
-		case StationType::Bus:
-			*ta = this->bus_station;
-			return;
-
+		case StationType::Rail: return this->train_station;
+		case StationType::Airport: return this->airport;
+		case StationType::Truck: return this->truck_station;
+		case StationType::Bus: return this->bus_station;
 		case StationType::Dock:
-		case StationType::Oilrig:
-			*ta = this->docking_station;
-			return;
-
+		case StationType::Oilrig: return this->docking_station;
 		default: NOT_REACHED();
 	}
 }
@@ -865,6 +852,110 @@ static CommandCost CheckFlatLandAirport(AirportTileTableIterator tile_iter, DoCo
 }
 
 /**
+ * Get station-type-specific string for a bridge that is too low.
+ * @param type Station type.
+ * @return bridge too low string.
+ */
+static StringID GetBridgeTooLowMessageForStationType(StationType type)
+{
+	static constexpr std::array<StringID, to_underlying(StationType::End)> too_low_msgs = {
+		STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION, // Rail
+		INVALID_STRING_ID, // Airport
+		STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP, // Truck
+		STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP, // Bus
+		INVALID_STRING_ID, // Oilrig
+		STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK, // Dock
+		STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY, // Buoy
+		STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT, // RailWaypoint
+		STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT, // RoadWaypoint
+	};
+	return too_low_msgs[to_underlying(type)];
+};
+
+/**
+ * Test if a bridge can be built above a station.
+ * @param tile Tile to test.
+ * @param spec Custom station spec to test.
+ * @param type Type of station.
+ * @param layout Layout piece of road station to test.
+ * @param bridge_height Height of bridge to test.
+ * @param disallowed_msg Error message if bridge is disallowed.
+ * @return Command result.
+ */
+static CommandCost IsStationBridgeAboveOk(TileIndex tile, std::span<const BridgeableTileInfo> bridgeable_info, StationType type, StationGfx layout, int bridge_height, StringID disallowed_msg = INVALID_STRING_ID)
+{
+	int height = layout < std::size(bridgeable_info) ? bridgeable_info[layout].height : 0;
+
+	if (height == 0) {
+		if (disallowed_msg != INVALID_STRING_ID) return CommandCost{disallowed_msg};
+		/* Get normal error message associated with clearing the tile. */
+		return Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlag::Auto, tile);
+	}
+	if (GetTileMaxZ(tile) + height > bridge_height) return CommandCost{GetBridgeTooLowMessageForStationType(type)};
+
+	return CommandCost{};
+}
+
+/**
+ * Get bridgeable tile information for a station type.
+ * @param type Station type.
+ * @return bridgeable tile information.
+ */
+static std::span<const BridgeableTileInfo> GetStationBridgeableTileInfo(StationType type)
+{
+	return _station_bridgeable_info[to_underlying(type)];
+}
+
+/**
+ * Test if a rail station can be built below a bridge.
+ * @param tile Tile to test.
+ * @param spec Custom station spec to test.
+ * @param type Type of rail station.
+ * @param layout Layout piece of station to test.
+ * @return Command result.
+ */
+CommandCost IsRailStationBridgeAboveOk(TileIndex tile, const StationSpec *spec, StationType type, StationGfx layout)
+{
+	if (!IsBridgeAbove(tile)) return CommandCost();
+
+	TileIndex rampsouth = GetSouthernBridgeEnd(tile);
+	auto bridgeable_info = spec == nullptr ? GetStationBridgeableTileInfo(type) : spec->bridgeable_info;
+	return IsStationBridgeAboveOk(tile, bridgeable_info, type, layout, GetBridgeHeight(rampsouth), STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+}
+
+/**
+ * Test if a road station can be built below a bridge.
+ * @param tile Tile to test.
+ * @param spec Custom roadstop spec to test.
+ * @param type Type of road station.
+ * @param layout Layout piece of station to test.
+ * @return Command result.
+ */
+CommandCost IsRoadStationBridgeAboveOk(TileIndex tile, const RoadStopSpec *spec, StationType type, StationGfx layout)
+{
+	if (!IsBridgeAbove(tile)) return CommandCost();
+
+	TileIndex rampsouth = GetSouthernBridgeEnd(tile);
+	auto bridgeable_info = spec == nullptr ? GetStationBridgeableTileInfo(type) : spec->bridgeable_info;
+	return IsStationBridgeAboveOk(tile, bridgeable_info, type, layout, GetBridgeHeight(rampsouth), STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+}
+
+/**
+ * Test if a dock can be built below a bridge.
+ * @param tile Tile to test.
+ * @param layout Layout piece of station to test.
+ * @return Command result.
+ */
+static CommandCost IsDockBridgeAboveOk(TileIndex tile, StationGfx layout)
+{
+	if (!IsBridgeAbove(tile)) return CommandCost();
+
+	TileIndex rampsouth = GetSouthernBridgeEnd(tile);
+	auto bridgeable_info = GetStationBridgeableTileInfo(StationType::Dock);
+	return IsStationBridgeAboveOk(tile, bridgeable_info, StationType::Dock, layout, GetBridgeHeight(rampsouth), STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+}
+
+/**
  * Checks if a rail station can be built at the given tile.
  * @param tile_cur Tile to check.
  * @param north_tile North tile of the area being checked.
@@ -888,7 +979,7 @@ static CommandCost CheckFlatLandRailStation(TileIndex tile_cur, TileIndex north_
 	const StationSpec *statspec = StationClass::Get(spec_class)->GetSpec(spec_index);
 	bool slope_cb = statspec != nullptr && statspec->callback_mask.Test(StationCallbackMask::SlopeCheck);
 
-	CommandCost ret = CheckBuildableTile(tile_cur, invalid_dirs, allowed_z, false);
+	CommandCost ret = CheckBuildableTile(tile_cur, invalid_dirs, allowed_z, false, false);
 	if (ret.Failed()) return ret;
 	cost.AddCost(ret.GetCost());
 
@@ -953,6 +1044,7 @@ static CommandCost CheckFlatLandRailStation(TileIndex tile_cur, TileIndex north_
  * Checks if a road stop can be built at the given tile.
  * @param cur_tile Tile to check.
  * @param allowed_z Height allowed for the tile. If allowed_z is negative, it will be set to the height of this tile.
+ * @param spec Spec of road stop to be built.
  * @param flags Operation to perform.
  * @param invalid_dirs Prohibited directions (set of DiagDirections).
  * @param is_drive_through True if trying to build a drive-through station.
@@ -962,13 +1054,16 @@ static CommandCost CheckFlatLandRailStation(TileIndex tile_cur, TileIndex north_
  * @param rt Road type to build, may be INVALID_ROADTYPE if an existing road is required.
  * @return The cost in case of success, or an error code if it failed.
  */
-static CommandCost CheckFlatLandRoadStop(TileIndex cur_tile, int &allowed_z, DoCommandFlags flags, DiagDirections invalid_dirs, bool is_drive_through, StationType station_type, Axis axis, StationID *station, RoadType rt)
+static CommandCost CheckFlatLandRoadStop(TileIndex cur_tile, int &allowed_z, const RoadStopSpec *spec, DoCommandFlags flags, DiagDirections invalid_dirs, bool is_drive_through, StationType station_type, Axis axis, StationID *station, RoadType rt)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
-	CommandCost ret = CheckBuildableTile(cur_tile, invalid_dirs, allowed_z, !is_drive_through);
+	CommandCost ret = CheckBuildableTile(cur_tile, invalid_dirs, allowed_z, !is_drive_through, false);
 	if (ret.Failed()) return ret;
 	cost.AddCost(ret.GetCost());
+
+	ret = IsRoadStationBridgeAboveOk(cur_tile, spec, station_type, is_drive_through ? GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET + axis : FindFirstBit(invalid_dirs.base()));
+	if (ret.Failed()) return ret;
 
 	/* If station is set, then we have special handling to allow building on top of already existing stations.
 	 * Station points to StationID::Invalid() if we can build on any station.
@@ -1094,54 +1189,37 @@ CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta)
 	return CommandCost();
 }
 
-static inline uint8_t *CreateSingle(uint8_t *layout, int n)
+RailStationTileLayout::RailStationTileLayout(const StationSpec *spec, uint8_t platforms, uint8_t length) : platforms(platforms), length(length)
 {
-	int i = n;
-	do *layout++ = 0; while (--i);
-	layout[((n - 1) >> 1) - n] = 2;
-	return layout;
+	if (spec == nullptr) return;
+
+	/* Look for a predefined layout for the required size. */
+	auto found = spec->layouts.find(GetStationLayoutKey(platforms, length));
+	if (found != std::end(spec->layouts)) this->layout = found->second;
 }
 
-static inline uint8_t *CreateMulti(uint8_t *layout, int n, uint8_t b)
+StationGfx RailStationTileLayout::Iterator::operator*() const
 {
-	int i = n;
-	do *layout++ = b; while (--i);
-	if (n > 4) {
-		layout[0 - n] = 0;
-		layout[n - 1 - n] = 0;
-	}
-	return layout;
-}
+	/* Use predefined layout if it exists. Mask bit zero which will indicate axis. */
+	if (!stl.layout.empty()) return this->stl.layout[this->position] & ~1;
 
-/**
- * Create the station layout for the given number of tracks and platform length.
- * @param layout    The layout to write to.
- * @param numtracks The number of tracks to write.
- * @param plat_len  The length of the platforms.
- * @param statspec  The specification of the station to (possibly) get the layout from.
- */
-void GetStationLayout(uint8_t *layout, uint numtracks, uint plat_len, const StationSpec *statspec)
-{
-	if (statspec != nullptr) {
-		auto found = statspec->layouts.find(GetStationLayoutKey(numtracks, plat_len));
-		if (found != std::end(statspec->layouts)) {
-			/* Custom layout defined, copy to buffer. */
-			std::copy(std::begin(found->second), std::end(found->second), layout);
-			return;
-		}
+	if (this->stl.length == 1) {
+		/* Special case for 1-long platforms, all bare platforms except one small building. */
+		return this->position == ((this->stl.platforms - 1) / 2) ? 2 : 0;
 	}
 
-	if (plat_len == 1) {
-		CreateSingle(layout, numtracks);
-	} else {
-		if (numtracks & 1) layout = CreateSingle(layout, plat_len);
-		int n = numtracks >> 1;
-
-		while (--n >= 0) {
-			layout = CreateMulti(layout, plat_len, 4);
-			layout = CreateMulti(layout, plat_len, 6);
-		}
+	if ((this->position < this->stl.length && (this->stl.platforms % 2 == 1))) {
+		/* Number of tracks is odd, make the first platform bare with a small building. */
+		return this->position == ((this->stl.length - 1) / 2) ? 2 : 0;
 	}
+
+	if (this->stl.length > 4 && ((this->position % this->stl.length) == 0 || (this->position % this->stl.length) == this->stl.length - 1)) {
+		/* Station is longer than 4 tiles, place bare platforms at either end. */
+		return 0;
+	}
+
+	/* None of the above so must be north or south part of larger station. */
+	return (((this->position / this->stl.length) % 2) == (this->stl.platforms % 2)) ? 4 : 6;
 }
 
 /**
@@ -1362,6 +1440,9 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 		w_org = numtracks;
 	}
 
+	/* Check if the first tile and the last tile are valid */
+	if (!IsValidTile(tile_org) || TileAddWrap(tile_org, w_org - 1, h_org - 1) == INVALID_TILE) return CMD_ERROR;
+
 	bool reuse = (station_to_join != NEW_STATION);
 	if (!reuse) station_to_join = StationID::Invalid();
 	bool distant_join = (station_to_join != StationID::Invalid());
@@ -1392,10 +1473,32 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 		if (ret.Failed()) return ret;
 	}
 
-	/* Check if we can allocate a custom stationspec to this station */
 	const StationSpec *statspec = StationClass::Get(spec_class)->GetSpec(spec_index);
-	int specindex = AllocateSpecToStation(statspec, st, flags.Test(DoCommandFlag::Execute));
-	if (specindex == -1) return CommandCost(STR_ERROR_TOO_MANY_STATION_SPECS);
+	TileIndexDiff tile_delta = TileOffsByAxis(axis); // offset to go to the next platform tile
+	TileIndexDiff track_delta = TileOffsByAxis(OtherAxis(axis)); // offset to go to the next track
+
+	RailStationTileLayout stl{statspec, numtracks, plat_len};
+	for (auto [i, it, tile_track] = std::make_tuple(0, stl.begin(), tile_org); i != numtracks; ++i, tile_track += track_delta) {
+		for (auto [j, tile] = std::make_tuple(0, tile_track); j != plat_len; ++j, tile += tile_delta, ++it) {
+			/* Don't check the layout if there's no bridge above anyway. */
+			if (!IsBridgeAbove(tile)) continue;
+
+			StationGfx gfx = *it + axis;
+			if (statspec != nullptr) {
+				uint32_t platinfo = GetPlatformInfo(AXIS_X, gfx, plat_len, numtracks, j, i, false);
+				/* As the station is not yet completely finished, the station does not yet exist. */
+				uint16_t callback = GetStationCallback(CBID_STATION_BUILD_TILE_LAYOUT, platinfo, 0, statspec, nullptr, tile);
+				if (callback != CALLBACK_FAILED && callback <= UINT8_MAX) gfx = (callback & ~1) + axis;
+			}
+
+			ret = IsRailStationBridgeAboveOk(tile, statspec, StationType::Rail, gfx);
+			if (ret.Failed()) return ret;
+		}
+	}
+
+	/* Check if we can allocate a custom stationspec to this station */
+	auto specindex = AllocateSpecToStation(statspec, st);
+	if (!specindex.has_value()) return CommandCost(STR_ERROR_TOO_MANY_STATION_SPECS);
 
 	if (statspec != nullptr) {
 		/* Perform NewStation checks */
@@ -1417,29 +1520,17 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 
 		st->rect.BeforeAddRect(tile_org, w_org, h_org, StationRect::ADD_TRY);
 
+		if (specindex.has_value()) AssignSpecToStation(statspec, st, *specindex);
 		if (statspec != nullptr) {
 			/* Include this station spec's animation trigger bitmask
 			 * in the station's cached copy. */
 			st->cached_anim_triggers.Set(statspec->animation.triggers);
 		}
 
-		TileIndexDiff tile_delta = TileOffsByAxis(axis); // offset to go to the next platform tile
-		TileIndexDiff track_delta = TileOffsByAxis(OtherAxis(axis)); // offset to go to the next track
 		Track track = AxisToTrack(axis);
-
-		std::vector<uint8_t> layouts(numtracks * plat_len);
-		GetStationLayout(layouts.data(), numtracks, plat_len, statspec);
-
-		uint8_t numtracks_orig = numtracks;
-
 		Company *c = Company::Get(st->owner);
-		size_t layout_idx = 0;
-		TileIndex tile_track = tile_org;
-		do {
-			TileIndex tile = tile_track;
-			int w = plat_len;
-			do {
-				uint8_t layout = layouts[layout_idx++];
+		for (auto [i, it, tile_track] = std::make_tuple(0, stl.begin(), tile_org); i != numtracks; ++i, tile_track += track_delta) {
+			for (auto [j, tile] = std::make_tuple(0, tile_track); j != plat_len; ++j, tile += tile_delta, ++it) {
 				if (IsRailStationTile(tile) && HasStationReservation(tile)) {
 					/* Check for trains having a reservation for this tile. */
 					Train *v = GetTrainForReservation(tile, AxisToTrack(GetRailStationAxis(tile)));
@@ -1458,17 +1549,18 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 				/* Remove animation if overbuilding */
 				DeleteAnimatedTile(tile);
 				uint8_t old_specindex = HasStationTileRail(tile) ? GetCustomStationSpecIndex(tile) : 0;
-				MakeRailStation(tile, st->owner, st->index, axis, layout & ~1, rt);
+
+				MakeRailStation(tile, st->owner, st->index, axis, *it, rt);
 				/* Free the spec if we overbuild something */
 				DeallocateSpecFromStation(st, old_specindex);
 
-				SetCustomStationSpecIndex(tile, specindex);
+				SetCustomStationSpecIndex(tile, *specindex);
 				SetStationTileRandomBits(tile, GB(Random(), 0, 4));
 				SetAnimationFrame(tile, 0);
 
 				if (statspec != nullptr) {
 					/* Use a fixed axis for GetPlatformInfo as our platforms / numtracks are always the right way around */
-					uint32_t platinfo = GetPlatformInfo(AXIS_X, GetStationGfx(tile), plat_len, numtracks_orig, plat_len - w, numtracks_orig - numtracks, false);
+					uint32_t platinfo = GetPlatformInfo(AXIS_X, GetStationGfx(tile), plat_len, numtracks, j, i, false);
 
 					/* As the station is not yet completely finished, the station does not yet exist. */
 					uint16_t callback = GetStationCallback(CBID_STATION_BUILD_TILE_LAYOUT, platinfo, 0, statspec, nullptr, tile);
@@ -1488,13 +1580,10 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 
 				if (!IsStationTileBlocked(tile)) c->infrastructure.rail[rt]++;
 				c->infrastructure.station++;
-
-				tile += tile_delta;
-			} while (--w);
+			}
 			AddTrackToSignalBuffer(tile_track, track, _current_company);
 			YapfNotifyTrackLayoutChange(tile_track, track);
-			tile_track += track_delta;
-		} while (--numtracks);
+		}
 
 		for (uint i = 0; i < affected_vehicles.size(); ++i) {
 			/* Restore reservations of trains. */
@@ -1504,9 +1593,9 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 		/* Check whether we need to expand the reservation of trains already on the station. */
 		TileArea update_reservation_area;
 		if (axis == AXIS_X) {
-			update_reservation_area = TileArea(tile_org, 1, numtracks_orig);
+			update_reservation_area = TileArea(tile_org, 1, numtracks);
 		} else {
-			update_reservation_area = TileArea(tile_org, numtracks_orig, 1);
+			update_reservation_area = TileArea(tile_org, numtracks, 1);
 		}
 
 		for (TileIndex tile : update_reservation_area) {
@@ -1906,6 +1995,7 @@ static CommandCost FindJoiningRoadStop(StationID existing_stop, StationID statio
  * @param flags Operation to perform.
  * @param is_drive_through True if trying to build a drive-through station.
  * @param station_type Station type (bus, truck or road waypoint).
+ * @param roadstopspec Spec of road stop being built.
  * @param axis Axis of a drive-through road stop.
  * @param ddir Entrance direction (#DiagDirection) for normal stops. Converted to the axis for drive-through stops.
  * @param station StationID to be queried and returned if available.
@@ -1913,7 +2003,7 @@ static CommandCost FindJoiningRoadStop(StationID existing_stop, StationID statio
  * @param unit_cost The cost to build one road stop of the current type.
  * @return The cost in case of success, or an error code if it failed.
  */
-CommandCost CalculateRoadStopCost(TileArea tile_area, DoCommandFlags flags, bool is_drive_through, StationType station_type, Axis axis, DiagDirection ddir, StationID *est, RoadType rt, Money unit_cost)
+CommandCost CalculateRoadStopCost(TileArea tile_area, DoCommandFlags flags, bool is_drive_through, StationType station_type, const RoadStopSpec *roadstopspec, Axis axis, DiagDirection ddir, StationID *est, RoadType rt, Money unit_cost)
 {
 	DiagDirections invalid_dirs{};
 	if (is_drive_through) {
@@ -1927,7 +2017,7 @@ CommandCost CalculateRoadStopCost(TileArea tile_area, DoCommandFlags flags, bool
 	int allowed_z = -1;
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	for (TileIndex cur_tile : tile_area) {
-		CommandCost ret = CheckFlatLandRoadStop(cur_tile, allowed_z, flags, invalid_dirs, is_drive_through, station_type, axis, est, rt);
+		CommandCost ret = CheckFlatLandRoadStop(cur_tile, allowed_z, roadstopspec, flags, invalid_dirs, is_drive_through, station_type, axis, est, rt);
 		if (ret.Failed()) return ret;
 
 		bool is_preexisting_roadstop = IsTileType(cur_tile, MP_STATION) && IsAnyRoadStop(cur_tile);
@@ -2008,7 +2098,7 @@ CommandCost CmdBuildRoadStop(DoCommandFlags flags, TileIndex tile, uint8_t width
 		unit_cost = _price[is_truck_stop ? PR_BUILD_STATION_TRUCK : PR_BUILD_STATION_BUS];
 	}
 	StationID est = StationID::Invalid();
-	CommandCost cost = CalculateRoadStopCost(roadstop_area, flags, is_drive_through, is_truck_stop ? StationType::Truck : StationType::Bus, axis, ddir, &est, rt, unit_cost);
+	CommandCost cost = CalculateRoadStopCost(roadstop_area, flags, is_drive_through, is_truck_stop ? StationType::Truck : StationType::Bus, roadstopspec, axis, ddir, &est, rt, unit_cost);
 	if (cost.Failed()) return cost;
 
 	Station *st = nullptr;
@@ -2022,8 +2112,8 @@ CommandCost CmdBuildRoadStop(DoCommandFlags flags, TileIndex tile, uint8_t width
 	if (ret.Failed()) return ret;
 
 	/* Check if we can allocate a custom stationspec to this station */
-	int specindex = AllocateSpecToRoadStop(roadstopspec, st, flags.Test(DoCommandFlag::Execute));
-	if (specindex == -1) return CommandCost(STR_ERROR_TOO_MANY_STATION_SPECS);
+	auto specindex = AllocateSpecToRoadStop(roadstopspec, st);
+	if (!specindex.has_value()) return CommandCost(STR_ERROR_TOO_MANY_STATION_SPECS);
 
 	if (roadstopspec != nullptr) {
 		/* Perform NewGRF checks */
@@ -2036,6 +2126,7 @@ CommandCost CmdBuildRoadStop(DoCommandFlags flags, TileIndex tile, uint8_t width
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
+		if (specindex.has_value()) AssignSpecToRoadStop(roadstopspec, st, *specindex);
 		/* Check every tile in the area. */
 		for (TileIndex cur_tile : roadstop_area) {
 			/* Get existing road types and owners before any tile clearing */
@@ -2045,7 +2136,7 @@ CommandCost CmdBuildRoadStop(DoCommandFlags flags, TileIndex tile, uint8_t width
 			Owner tram_owner = tram_rt != INVALID_ROADTYPE ? GetRoadOwner(cur_tile, RTT_TRAM) : _current_company;
 
 			if (IsTileType(cur_tile, MP_STATION) && IsStationRoadStop(cur_tile)) {
-				RemoveRoadStop(cur_tile, flags, specindex);
+				RemoveRoadStop(cur_tile, flags, *specindex);
 			}
 
 			if (roadstopspec != nullptr) {
@@ -2093,7 +2184,7 @@ CommandCost CmdBuildRoadStop(DoCommandFlags flags, TileIndex tile, uint8_t width
 			UpdateCompanyRoadInfrastructure(tram_rt, tram_owner, ROAD_STOP_TRACKBIT_FACTOR);
 			Company::Get(st->owner)->infrastructure.station++;
 
-			SetCustomRoadStopSpecIndex(cur_tile, specindex);
+			SetCustomRoadStopSpecIndex(cur_tile, *specindex);
 			if (roadstopspec != nullptr) {
 				st->SetRoadStopRandomBits(cur_tile, GB(Random(), 0, 8));
 				TriggerRoadStopAnimation(st, cur_tile, StationAnimationTrigger::Built);
@@ -2796,7 +2887,8 @@ CommandCost CmdBuildDock(DoCommandFlags flags, TileIndex tile, StationID station
 	CommandCost ret = CheckIfAuthorityAllowsNewStation(tile, flags);
 	if (ret.Failed()) return ret;
 
-	if (IsBridgeAbove(tile)) return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+	ret = IsDockBridgeAboveOk(tile, to_underlying(direction));
+	if (ret.Failed()) return ret;
 
 	CommandCost cost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_STATION_DOCK]);
 	ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
@@ -2809,7 +2901,8 @@ CommandCost CmdBuildDock(DoCommandFlags flags, TileIndex tile, StationID station
 		return CommandCost(STR_ERROR_SITE_UNSUITABLE);
 	}
 
-	if (IsBridgeAbove(tile_cur)) return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+	ret = IsDockBridgeAboveOk(tile_cur, GFX_DOCK_BASE_WATER_PART + to_underlying(DiagDirToAxis(direction)));
+	if (ret.Failed()) return ret;
 
 	/* Get the water class of the water tile before it is cleared.*/
 	WaterClass wc = GetWaterClass(tile_cur);
@@ -2993,8 +3086,6 @@ static CommandCost RemoveDock(TileIndex tile, DoCommandFlags flags)
 	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_STATION_DOCK]);
 }
 
-#include "table/station_land.h"
-
 /**
  * Get station tile layout for a station type and its station gfx.
  * @param st Station type to draw.
@@ -3071,6 +3162,18 @@ bool SplitGroundSpriteForOverlay(const TileInfo *ti, SpriteID *ground, RailTrack
 
 	*ground = snow_desert ? SPR_FLAT_SNOW_DESERT_TILE : SPR_FLAT_GRASS_TILE;
 	return true;
+}
+
+/**
+ * Get blocked pillar information for a station tile.
+ * @param bridgeable_info
+ * @param layout Tile layout of rail station.
+ * @return blocked pillar information.
+ */
+static BridgePillarFlags GetStationBlockedPillars(std::span<const BridgeableTileInfo> bridgeable_info, uint8_t layout)
+{
+	if (layout < std::size(bridgeable_info)) return bridgeable_info[layout].disallowed_pillars;
+	return BRIDGEPILLARFLAGS_ALL;
 }
 
 /**
@@ -3154,6 +3257,7 @@ static void DrawTile_Station(TileInfo *ti)
 	BaseStation *st = nullptr;
 	const StationSpec *statspec = nullptr;
 	uint tile_layout = 0;
+	auto bridgeable_info = GetStationBridgeableTileInfo(GetStationType(ti->tile));
 
 	if (HasStationRail(ti->tile)) {
 		rti = GetRailTypeInfo(GetRailType(ti->tile));
@@ -3182,6 +3286,7 @@ static void DrawTile_Station(TileInfo *ti)
 				}
 			}
 		}
+		if (statspec != nullptr) bridgeable_info = statspec->bridgeable_info;
 	} else {
 		total_offset = 0;
 	}
@@ -3228,7 +3333,7 @@ static void DrawTile_Station(TileInfo *ti)
 		palette = PALETTE_TO_GREY;
 	}
 
-	if (layout == nullptr && (t == nullptr || t->GetSequence().empty())) t = GetStationTileLayout(GetStationType(ti->tile), gfx);
+	if (layout == nullptr && t == nullptr) t = GetStationTileLayout(GetStationType(ti->tile), gfx);
 
 	/* don't show foundation for docks */
 	if (ti->tileh != SLOPE_FLAT && !IsDock(ti->tile)) {
@@ -3372,6 +3477,7 @@ static void DrawTile_Station(TileInfo *ti)
 				DrawGroundSprite(ground + view, PAL_NONE);
 			}
 		}
+		if (stopspec != nullptr) bridgeable_info = stopspec->bridgeable_info;
 
 		if (stopspec == nullptr || !stopspec->flags.Test(RoadStopSpecFlag::NoCatenary)) {
 			/* Draw road, tram catenary */
@@ -3385,6 +3491,7 @@ static void DrawTile_Station(TileInfo *ti)
 	}
 
 	DrawRailTileSeq(ti, t, TO_BUILDINGS, total_offset, relocation, palette);
+	DrawBridgeMiddle(ti, GetStationBlockedPillars(bridgeable_info, GetStationGfx(ti->tile)));
 }
 
 void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, RoadType roadtype, int image)
@@ -3839,6 +3946,10 @@ static void TruncateCargo(const CargoSpec *cs, GoodsEntry *ge, uint amount = UIN
 	}
 }
 
+/**
+ * Periodic update of a station's rating.
+ * @param st The station to update.
+ */
 static void UpdateStationRating(Station *st)
 {
 	bool waiting_changed = false;
@@ -3849,6 +3960,7 @@ static void UpdateStationRating(Station *st)
 
 	for (const CargoSpec *cs : CargoSpec::Iterate()) {
 		GoodsEntry *ge = &st->goods[cs->Index()];
+<<<<<<< HEAD
 		Debug(misc, 0, "Checking goods entry for: {} - it's {}", cs->Index(), ge->rating);
 		/* Slowly increase the rating back to its original level in the case we
 		 *  didn't deliver cargo yet to this station. This happens when a bribe
@@ -3869,49 +3981,125 @@ static void UpdateStationRating(Station *st)
 				waiting_changed = true;
 				continue;
 			}
+=======
 
-			bool skip = false;
-			int rating = 0;
-			uint waiting = ge->HasData() ? ge->GetData().cargo.AvailableCount() : 0;
+		/* The station might not currently be moving this cargo. */
+		if (!ge->HasRating()) {
+			/* Slowly increase the rating back to its original level in the case we
+			 *  didn't deliver cargo yet to this station. This happens when a bribe
+			 *  failed while you didn't moved that cargo yet to a station. */
+			if (ge->rating < INITIAL_STATION_RATING) ge->rating++;
 
-			/* num_dests is at least 1 if there is any cargo as
-			 * StationID::Invalid() is also a destination.
-			 */
-			uint num_dests = ge->HasData() ? static_cast<uint>(ge->GetData().cargo.Packets()->MapSize()) : 0;
+			/* Nothing else to do with this cargo. */
+			continue;
+		}
 
-			/* Average amount of cargo per next hop, but prefer solitary stations
-			 * with only one or two next hops. They are allowed to have more
-			 * cargo waiting per next hop.
-			 * With manual cargo distribution waiting_avg = waiting / 2 as then
-			 * StationID::Invalid() is the only destination.
-			 */
-			uint waiting_avg = waiting / (num_dests + 1);
+		byte_inc_sat(&ge->time_since_pickup);
+>>>>>>> a617d009cca418255a9682fd83c9cebc6423303e
 
-			if (_cheats.station_rating.value) {
-				ge->rating = rating = MAX_STATION_RATING;
+		/* If this cargo hasn't been picked up in a long time, get rid of it. */
+		if (ge->time_since_pickup == 255 && _settings_game.order.selectgoods) {
+			ge->status.Reset(GoodsEntry::State::Rating);
+			ge->last_speed = 0;
+			TruncateCargo(cs, ge);
+			waiting_changed = true;
+			continue;
+		}
+
+		bool skip = false;
+		int rating = 0;
+		uint waiting = ge->HasData() ? ge->GetData().cargo.AvailableCount() : 0;
+
+		/* num_dests is at least 1 if there is any cargo as
+		 * StationID::Invalid() is also a destination.
+		 */
+		uint num_dests = ge->HasData() ? static_cast<uint>(ge->GetData().cargo.Packets()->MapSize()) : 0;
+
+		/* Average amount of cargo per next hop, but prefer solitary stations
+		 * with only one or two next hops. They are allowed to have more
+		 * cargo waiting per next hop.
+		 * With manual cargo distribution waiting_avg = waiting / 2 as then
+		 * StationID::Invalid() is the only destination.
+		 */
+		uint waiting_avg = waiting / (num_dests + 1);
+
+		if (_cheats.station_rating.value) {
+			ge->rating = rating = MAX_STATION_RATING;
+			skip = true;
+		} else if (cs->callback_mask.Test(CargoCallbackMask::StationRatingCalc)) {
+			/* Perform custom station rating. If it succeeds the speed, days in transit and
+			 * waiting cargo ratings must not be executed. */
+
+			/* NewGRFs expect last speed to be 0xFF when no vehicle has arrived yet. */
+			uint last_speed = ge->HasVehicleEverTriedLoading() ? ge->last_speed : 0xFF;
+
+			uint32_t var18 = ClampTo<uint8_t>(ge->time_since_pickup)
+				| (ClampTo<uint16_t>(ge->max_waiting_cargo) << 8)
+				| (ClampTo<uint8_t>(last_speed) << 24);
+			/* Convert to the 'old' vehicle types */
+			uint32_t var10 = (st->last_vehicle_type == VEH_INVALID) ? 0x0 : (st->last_vehicle_type + 0x10);
+			uint16_t callback = GetCargoCallback(CBID_CARGO_STATION_RATING_CALC, var10, var18, cs);
+			if (callback != CALLBACK_FAILED) {
 				skip = true;
-			} else if (cs->callback_mask.Test(CargoCallbackMask::StationRatingCalc)) {
-				/* Perform custom station rating. If it succeeds the speed, days in transit and
-				 * waiting cargo ratings must not be executed. */
+				rating = GB(callback, 0, 14);
 
-				/* NewGRFs expect last speed to be 0xFF when no vehicle has arrived yet. */
-				uint last_speed = ge->HasVehicleEverTriedLoading() ? ge->last_speed : 0xFF;
+				/* Simulate a 15 bit signed value */
+				if (HasBit(callback, 14)) rating -= 0x4000;
+			}
+		}
 
-				uint32_t var18 = ClampTo<uint8_t>(ge->time_since_pickup)
-					| (ClampTo<uint16_t>(ge->max_waiting_cargo) << 8)
-					| (ClampTo<uint8_t>(last_speed) << 24);
-				/* Convert to the 'old' vehicle types */
-				uint32_t var10 = (st->last_vehicle_type == VEH_INVALID) ? 0x0 : (st->last_vehicle_type + 0x10);
-				uint16_t callback = GetCargoCallback(CBID_CARGO_STATION_RATING_CALC, var10, var18, cs);
-				if (callback != CALLBACK_FAILED) {
-					skip = true;
-					rating = GB(callback, 0, 14);
+		if (!skip) {
+			int b = ge->last_speed - 85;
+			if (b >= 0) rating += b >> 2;
 
-					/* Simulate a 15 bit signed value */
-					if (HasBit(callback, 14)) rating -= 0x4000;
+			uint8_t waittime = ge->time_since_pickup;
+			if (st->last_vehicle_type == VEH_SHIP) waittime >>= 2;
+			if (waittime <= 21) rating += 25;
+			if (waittime <= 12) rating += 25;
+			if (waittime <= 6) rating += 45;
+			if (waittime <= 3) rating += 35;
+
+			rating -= 90;
+			if (ge->max_waiting_cargo <= 1500) rating += 55;
+			if (ge->max_waiting_cargo <= 1000) rating += 35;
+			if (ge->max_waiting_cargo <= 600) rating += 10;
+			if (ge->max_waiting_cargo <= 300) rating += 20;
+			if (ge->max_waiting_cargo <= 100) rating += 10;
+		}
+
+		if (Company::IsValidID(st->owner) && st->town->statues.Test(st->owner)) rating += 26;
+
+		uint8_t age = ge->last_age;
+		if (age < 3) rating += 10;
+		if (age < 2) rating += 10;
+		if (age < 1) rating += 13;
+
+		{
+			int or_ = ge->rating; // old rating
+
+			/* only modify rating in steps of -2, -1, 0, 1 or 2 */
+			ge->rating = rating = ClampTo<uint8_t>(or_ + Clamp(rating - or_, -2, 2));
+
+			/* if rating is <= 64 and more than 100 items waiting on average per destination,
+			 * remove some random amount of goods from the station */
+			if (rating <= 64 && waiting_avg >= 100) {
+				int dec = Random() & 0x1F;
+				if (waiting_avg < 200) dec &= 7;
+				waiting -= (dec + 1) * num_dests;
+				waiting_changed = true;
+			}
+
+			/* if rating is <= 127 and there are any items waiting, maybe remove some goods. */
+			if (rating <= 127 && waiting != 0) {
+				uint32_t r = Random();
+				if (rating <= (int)GB(r, 0, 7)) {
+					/* Need to have int, otherwise it will just overflow etc. */
+					waiting = std::max((int)waiting - (int)((GB(r, 8, 2) - 1) * num_dests), 0);
+					waiting_changed = true;
 				}
 			}
 
+<<<<<<< HEAD
 			if (!skip) {
 				Debug(misc, 0, "Last speed score: {}", ge->last_speed);
 				int b = ge->last_speed - 85;
@@ -3999,6 +4187,34 @@ static void UpdateStationRating(Station *st)
 					/* If the average number per next hop is low, be more forgiving. */
 					ge->max_waiting_cargo = waiting_avg;
 				}
+=======
+			/* At some point we really must cap the cargo. Previously this
+			 * was a strict 4095, but now we'll have a less strict, but
+			 * increasingly aggressive truncation of the amount of cargo. */
+			static const uint WAITING_CARGO_THRESHOLD  = 1 << 12;
+			static const uint WAITING_CARGO_CUT_FACTOR = 1 <<  6;
+			static const uint MAX_WAITING_CARGO        = 1 << 15;
+
+			if (waiting > WAITING_CARGO_THRESHOLD) {
+				uint difference = waiting - WAITING_CARGO_THRESHOLD;
+				waiting -= (difference / WAITING_CARGO_CUT_FACTOR);
+
+				waiting = std::min(waiting, MAX_WAITING_CARGO);
+				waiting_changed = true;
+			}
+
+			/* We can't truncate cargo that's already reserved for loading.
+			 * Thus StoredCount() here. */
+			if (waiting_changed && waiting < (ge->HasData() ? ge->GetData().cargo.AvailableCount() : 0)) {
+				/* Feed back the exact own waiting cargo at this station for the
+				 * next rating calculation. */
+				ge->max_waiting_cargo = 0;
+
+				TruncateCargo(cs, ge, ge->GetData().cargo.AvailableCount() - waiting);
+			} else {
+				/* If the average number per next hop is low, be more forgiving. */
+				ge->max_waiting_cargo = waiting_avg;
+>>>>>>> a617d009cca418255a9682fd83c9cebc6423303e
 			}
 		}
 	}
@@ -4169,11 +4385,11 @@ void IncreaseStats(Station *st, CargoType cargo, StationID next_station_id, uint
 		if (ge1.link_graph != ge2.link_graph) {
 			LinkGraph *lg2 = LinkGraph::Get(ge2.link_graph);
 			if (lg->Size() < lg2->Size()) {
-				LinkGraphSchedule::instance.Unqueue(lg);
+				LinkGraphSchedule::instance.Dequeue(lg);
 				lg2->Merge(lg); // Updates GoodsEntries of lg
 				lg = lg2;
 			} else {
-				LinkGraphSchedule::instance.Unqueue(lg2);
+				LinkGraphSchedule::instance.Dequeue(lg2);
 				lg->Merge(lg2); // Updates GoodsEntries of lg2
 			}
 		}
@@ -4255,6 +4471,14 @@ static const IntervalTimer<TimerGameEconomy> _economy_stations_monthly({TimerGam
 	}
 });
 
+/**
+ * Forcibly modify station ratings near a given tile.
+ * Used when a crash hurts a company's station ratings nearby, or when local authority actions affect nearby ratings.
+ * @param tile The center of the ratings change area.
+ * @param owner The station owner whose stations are affected.
+ * @param amount The amount to change the rating.
+ * @param radius The radius to search for stations, from the origin tile.
+ */
 void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint radius)
 {
 	ForAllStationsRadius(tile, radius, [&](Station *st) {
@@ -5180,6 +5404,29 @@ uint FlowStatMap::GetFlowFromVia(StationID from, StationID via) const
 	return i->second.GetShare(via);
 }
 
+static CommandCost CheckBuildAbove_Station(TileIndex tile, DoCommandFlags, Axis, int height)
+{
+	StationType type = GetStationType(tile);
+	auto bridgeable_info = GetStationBridgeableTileInfo(type);
+
+	switch (type) {
+		case StationType::Rail:
+		case StationType::RailWaypoint:
+			if (const StationSpec *spec = GetStationSpec(tile); spec != nullptr) bridgeable_info = spec->bridgeable_info;
+			break;
+
+		case StationType::Bus:
+		case StationType::Truck:
+		case StationType::RoadWaypoint:
+			if (const RoadStopSpec *spec = GetRoadStopSpec(tile); spec != nullptr) bridgeable_info = spec->bridgeable_info;
+			break;
+
+		default: break;
+	}
+
+	return IsStationBridgeAboveOk(tile, bridgeable_info, type, GetStationGfx(tile), height);
+}
+
 extern const TileTypeProcs _tile_type_station_procs = {
 	DrawTile_Station,           // draw_tile_proc
 	GetSlopePixelZ_Station,     // get_slope_z_proc
@@ -5195,4 +5442,5 @@ extern const TileTypeProcs _tile_type_station_procs = {
 	VehicleEnter_Station,       // vehicle_enter_tile_proc
 	GetFoundation_Station,      // get_foundation_proc
 	TerraformTile_Station,      // terraform_tile_proc
+	CheckBuildAbove_Station, // check_build_above_proc
 };

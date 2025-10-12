@@ -10,6 +10,7 @@
 #include "../../stdafx.h"
 #include "../../debug.h"
 #include "../../gfx_func.h"
+#include "../../strings_func.h"
 #include "../../textbuf_gui.h"
 #include "../../fileio_func.h"
 #include <windows.h>
@@ -28,6 +29,8 @@
 #include "../../language.h"
 #include "../../thread.h"
 #include "../../library_loader.h"
+
+#include "table/strings.h"
 
 #include "../../safeguards.h"
 
@@ -75,7 +78,7 @@ void FiosGetDrives(FileList &file_list)
 		fios->mtime = 0;
 		fios->name += (char)(s[0] & 0xFF);
 		fios->name += ':';
-		fios->title = fios->name;
+		fios->title = GetEncodedString(STR_JUST_RAW_STRING, fios->name);
 		while (*s++ != '\0') { /* Nothing */ }
 	}
 }
@@ -404,7 +407,7 @@ std::optional<std::string> GetCurrentLocale(const char *)
 	if (GetLocaleInfoA(userUiLocale, LOCALE_SISO639LANGNAME, lang, static_cast<int>(std::size(lang))) == 0 ||
 	    GetLocaleInfoA(userUiLocale, LOCALE_SISO3166CTRYNAME, country, static_cast<int>(std::size(country))) == 0) {
 		/* Unable to retrieve the locale. */
-		return nullptr;
+		return std::nullopt;
 	}
 	/* Format it as 'en_us'. */
 	return fmt::format("{}_{}", std::string_view{lang, 2}, std::string_view{country, 2});

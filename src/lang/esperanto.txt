@@ -1661,6 +1661,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Movu la mapon p
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Glata rulumado de vidujo: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Regu kiel la ĉefa vidujo rulumas al specifa pozicio kiam oni klakas en la mapeto aŭ petas rulumi al specifa objekto sur la mapo. Se tiu ĉi agordo estas aktiva, la vidujo rulumas glate, se malaktiva, ĝi tuj saltas al la celpunkto
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Montru mezuran konsilbalonon ĉe uzo de konstruiloj: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Montru kahel-distancojn kaj altec-diferencojn dum mustrenado por konstruado
 
@@ -2684,10 +2685,10 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Provizoj
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Ligi stacion
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Konstrui apartan stacion
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Konstrui apartan stacion
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Ligi vojpunkton
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Krei apartan vojpunkton
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Krei apartan vojpunkton
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Malaktiva ĉar ĉi-momente ne haveblas veturiloj por tia ĉi infrastrukturo
@@ -3255,6 +3256,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Sudokcid
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Libermana
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Akvo
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Hazarde
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Hazarde
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Permane
 
@@ -3476,7 +3479,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Enigu no
 # Town directory window
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}-Neniu -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Urbego){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Urbonomoj - klaku nomon por centri vidpukto ĉe la urbo. Ctrl+Klak por malfermi novan vidujon ĉe la urba loko
 STR_TOWN_POPULATION                                             :{BLACK}Monda enloĝantaro: {COMMA}
 
@@ -4781,7 +4783,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Ne povas
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maksimuma permesata prunto estas {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Ne povas prunti pli da mono...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... ne estas repagebla prunto
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... ne estas repagebla prunto
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} necesas
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Ne povas repagi prunton...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Ne povas donaci monon pruntitan de la banko...

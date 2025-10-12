@@ -455,7 +455,7 @@ void LoadTownData()
 			default: NOT_REACHED();
 		}
 
-		TownID town_id; // The TownID of the town in OpenTTD. Not imported, but set during the founding proceess and stored here for convenience.
+		TownID town_id; // The TownID of the town in OpenTTD. Not imported, but set during the founding process and stored here for convenience.
 		/* Try founding on the target tile, and if that doesn't work, find the nearest suitable tile up to 16 tiles away.
 		 * The target might be on water, blocked somehow, or on a steep slope that can't be terraformed by the founding command. */
 		for (auto tile : SpiralTileSequence(target_tile, 16, 0, 0)) {

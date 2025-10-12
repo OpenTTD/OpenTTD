@@ -13,34 +13,25 @@
 #include "gfx_type.h"
 #include "tile_cmd.h"
 #include "timer/timer_game_calendar.h"
-
-/**
- * This enum is related to the definition of bridge pieces,
- * which is used to determine the proper sprite table to use
- * while drawing a given bridge part.
- */
-enum BridgePieces : uint8_t {
-	BRIDGE_PIECE_NORTH = 0,
-	BRIDGE_PIECE_SOUTH,
-	BRIDGE_PIECE_INNER_NORTH,
-	BRIDGE_PIECE_INNER_SOUTH,
-	BRIDGE_PIECE_MIDDLE_ODD,
-	BRIDGE_PIECE_MIDDLE_EVEN,
-	BRIDGE_PIECE_HEAD,
-	NUM_BRIDGE_PIECES,
-};
-
-DECLARE_INCREMENT_DECREMENT_OPERATORS(BridgePieces)
+#include "bridge_type.h"
 
 static const uint MAX_BRIDGES = 13; ///< Maximal number of available bridge specs.
 constexpr uint SPRITES_PER_BRIDGE_PIECE = 32; ///< Number of sprites there are per bridge piece.
 
-typedef uint BridgeType; ///< Bridge spec number.
+/* Container for Bridge pillar flags for each axis of each bridge middle piece. */
+using BridgeMiddlePillarFlags = std::array<std::array<BridgePillarFlags, AXIS_END>, NUM_BRIDGE_MIDDLE_PIECES>;
 
 /**
  * Struct containing information about a single bridge type
  */
 struct BridgeSpec {
+	/** Internal flags about each BridgeSpec. */
+	enum class ControlFlag : uint8_t {
+		CustomPillarFlags, ///< Bridge has set custom pillar flags.
+		InvalidPillarFlags, ///< Bridge pillar flags are not valid, i.e. only the tile layout has been modified.
+	};
+	using ControlFlags = EnumBitSet<ControlFlag, uint8_t>;
+
 	TimerGameCalendar::Year avail_year; ///< the year where it becomes available
 	uint8_t min_length;                    ///< the minimum length (not counting start and end tile)
 	uint16_t max_length;                  ///< the maximum length (not counting start and end tile)
@@ -52,6 +43,8 @@ struct BridgeSpec {
 	StringID transport_name[2];         ///< description of the bridge, when built for road or rail
 	std::vector<std::vector<PalSpriteID>> sprite_table; ///< table of sprites for drawing the bridge
 	uint8_t flags;                         ///< bit 0 set: disable drawing of far pillars.
+	ControlFlags ctrl_flags{}; ///< control flags
+	BridgeMiddlePillarFlags pillar_flags{}; ///< bridge pillar flags.
 };
 
 extern BridgeSpec _bridge[MAX_BRIDGES];
@@ -70,7 +63,7 @@ inline const BridgeSpec *GetBridgeSpec(BridgeType i)
 	return &_bridge[i];
 }
 
-void DrawBridgeMiddle(const TileInfo *ti);
+void DrawBridgeMiddle(const TileInfo *ti, BridgePillarFlags blocked_pillars);
 
 CommandCost CheckBridgeAvailability(BridgeType bridge_type, uint bridge_len, DoCommandFlags flags = {});
 int CalcBridgeLenCostFactor(int x);

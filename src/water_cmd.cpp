@@ -302,6 +302,21 @@ static CommandCost RemoveShipDepot(TileIndex tile, DoCommandFlags flags)
 }
 
 /**
+ * Get the minimal height required for a bridge above a lock part.
+ * @param lock_part the lock part.
+ * @return the minimal bridge height.
+ */
+static uint8_t GetLockPartMinimalBridgeHeight(LockPart lock_part)
+{
+	static constexpr uint8_t MINIMAL_BRIDGE_HEIGHT[LOCK_PART_END] = {
+		2, // LOCK_PART_MIDDLE
+		3, // LOCK_PART_LOWER
+		2, // LOCK_PART_UPPER
+	};
+	return MINIMAL_BRIDGE_HEIGHT[to_underlying(lock_part)];
+}
+
+/**
  * Builds a lock.
  * @param tile Central tile of the lock.
  * @param dir Uphill direction.
@@ -348,8 +363,11 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlags
 	}
 	WaterClass wc_upper = IsWaterTile(tile + delta) ? GetWaterClass(tile + delta) : WATER_CLASS_CANAL;
 
-	if (IsBridgeAbove(tile) || IsBridgeAbove(tile - delta) || IsBridgeAbove(tile + delta)) {
-		return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+	for (LockPart lock_part = LOCK_PART_MIDDLE; TileIndex t : {tile, tile - delta, tile + delta}) {
+		if (IsBridgeAbove(t) && GetBridgeHeight(GetSouthernBridgeEnd(t)) < GetTileMaxZ(t) + GetLockPartMinimalBridgeHeight(lock_part)) {
+			return CommandCost(STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK);
+		}
+		++lock_part;
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
@@ -435,6 +453,13 @@ CommandCost CmdBuildLock(DoCommandFlags flags, TileIndex tile)
 {
 	DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile));
 	if (dir == INVALID_DIAGDIR) return CommandCost(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
+
+	TileIndex lower_tile = TileAddByDiagDir(tile, ReverseDiagDir(dir));
+
+	/* If freeform edges are disabled, don't allow building on edge tiles. */
+	if (!_settings_game.construction.freeform_edges && (!IsInsideMM(TileX(lower_tile), 1, Map::MaxX() - 1) || !IsInsideMM(TileY(lower_tile), 1, Map::MaxY() - 1))) {
+		return CommandCost(STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP);
+	}
 
 	return DoBuildLock(tile, dir, flags);
 }
@@ -926,17 +951,22 @@ static void DrawTile_Water(TileInfo *ti)
 	switch (GetWaterTileType(ti->tile)) {
 		case WATER_TILE_CLEAR:
 			DrawWaterClassGround(ti);
-			DrawBridgeMiddle(ti);
+			/* A plain water tile can be traversed in any direction, so setting blocked pillars here would mean all bridges
+			 * with edges would have no pillars above water. Instead prefer current behaviour of ships passing through. */
+			DrawBridgeMiddle(ti, {});
 			break;
 
 		case WATER_TILE_COAST: {
 			DrawShoreTile(ti->tileh);
-			DrawBridgeMiddle(ti);
+			DrawBridgeMiddle(ti, {});
 			break;
 		}
 
 		case WATER_TILE_LOCK:
 			DrawWaterLock(ti);
+			DrawBridgeMiddle(ti, DiagDirToAxis(GetLockDirection(ti->tile)) == AXIS_X
+				? BridgePillarFlags{BridgePillarFlag::EdgeNE, BridgePillarFlag::EdgeSW}
+				: BridgePillarFlags{BridgePillarFlag::EdgeNW, BridgePillarFlag::EdgeSE});
 			break;
 
 		case WATER_TILE_DEPOT:
@@ -1410,6 +1440,15 @@ static CommandCost TerraformTile_Water(TileIndex tile, DoCommandFlags flags, int
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }
 
+static CommandCost CheckBuildAbove_Water(TileIndex tile, DoCommandFlags flags, Axis, int height)
+{
+	if (IsWater(tile) || IsCoast(tile)) return CommandCost();
+	if (IsLock(tile)) {
+		if (GetTileMaxZ(tile) + GetLockPartMinimalBridgeHeight(GetLockPart(tile)) <= height) return CommandCost();
+		return CommandCost(STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK);
+	}
+	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
+}
 
 extern const TileTypeProcs _tile_type_water_procs = {
 	DrawTile_Water,           // draw_tile_proc
@@ -1426,4 +1465,5 @@ extern const TileTypeProcs _tile_type_water_procs = {
 	VehicleEnter_Water,       // vehicle_enter_tile_proc
 	GetFoundation_Water,      // get_foundation_proc
 	TerraformTile_Water,      // terraform_tile_proc
+	CheckBuildAbove_Water, // check_build_above_proc
 };

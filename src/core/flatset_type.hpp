@@ -54,7 +54,7 @@ public:
 	 * @param key Key to test.
 	 * @return true iff the key exists in the set.
 	 */
-	bool contains(const Tkey &key)
+	bool contains(const Tkey &key) const
 	{
 		return std::ranges::binary_search(this->data, key, Tcompare{});
 	}

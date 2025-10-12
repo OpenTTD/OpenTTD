@@ -622,8 +622,14 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Biểu �
 
 STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}24 phút cuối
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}72 phút cuối
+STR_GRAPH_LAST_288_MINUTES_TIME_LABEL                           :{TINY_FONT}{BLACK}288 phút cuối
 
+STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLACK}2 năm (theo từng tháng)
+STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 năm (theo từng quý)
+STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 năm (theo từng năm)
 
+STR_GRAPH_TOGGLE_RANGE                                          :Bật/tắt đồ thị cho khoảng dữ liệu này
+STR_GRAPH_SELECT_SCALE                                          :Chỉnh tỷ lệ chiều ngang của đồ thị
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Bảng Giá Cước Vận Chuyển Hàng Hóa
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Số ngày trong trung chuyển
@@ -631,8 +637,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Tiền trả khi vận chuyển 10 đơn vị (hay 10,000 lít) hàng hóa trên mỗi 20 ô
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Toàn bộ
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Không
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Hiển thị toàn bộ loại hàng trên đồ thị tỉ lệ trả tiền của loại hàng
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Không hiển thị các loại hàng trên đồ thị tỉ lệ trả tiền của loại hàng
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Hiển thị toàn bộ loại hàng trên đồ thị
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Không hiển thị các loại hàng trên đồ thị
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Bật/tắt đồ thị cho hàng hóa này
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -642,6 +648,9 @@ STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Đã vận chuy
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Đã giao
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Đang chờ...
 
+STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Lịch sử hàng hoá
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Nguồn cung
+STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Đã vận chuyển
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Hiện chi tiết đánh giá chỉ số năng suất
 
@@ -1033,6 +1042,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit Malaysi
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lát-vi-a Lats
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escudo Bồ Đào Nha
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Hryvnia Ukraina
+STR_GAME_OPTIONS_CURRENCY_VND                                   :Việt Nam Đồng
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Lưu tự động
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Lựa chọn khoảng thời gian tự động lưu
@@ -1451,10 +1461,10 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Cửa sổ chí
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Cửa sổ chính
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Mọi cửa sổ bổ sung
 
-STR_CONFIG_SETTING_BRIBE                                        :Cho phép hối lộ chính quyền địa phương: {STRING}
+STR_CONFIG_SETTING_BRIBE                                        :Cho phép đút lót chính quyền địa phương: {STRING}
 ###length 2
-STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Cho phép công ty thử hối lộ quan chức địa phương. Nếu việc hối lộ bị phát giác, công ty sẽ không được làm gì ở địa phương đó 6 tháng
-STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :Cho phép các công ty hối lộ quan chức địa phương. Nếu việc hối lộ bị phát giác bởi điều tra viên, thì công ty sẽ không được hoạt động ở địa phương đó trong 6 phút
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Cho phép công ty thử đút lót quan chức địa phương. Nếu việc đút lót bị phát hiện, công ty sẽ không được làm gì ở địa phương đó trong sáu tháng
+STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :Cho phép các công ty đút lót quan chức địa phương. Nếu việc đút lót bị phát hiện bởi thanh tra viên, thì công ty sẽ không được hoạt động ở địa phương đó trong sáu phút
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Cho phép mua quyền vận tải độc quyền: {STRING}
 ###length 2
@@ -1679,6 +1689,9 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Kéo cuộn b�
 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Cuộn uyển chuyển cửa sổ: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Điều khiển cách màn hình chính cuộn tới vị trí cụ thể khi nháy chuột vào bản đồ nhỏ hoặc khi gõ lệnh cuộn tới đối tượng trên bản đồ. Nếu bật, thì sẽ cuộn trượt, nếu tắt thì nhảy thẳng tới vị trí đó.
+
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT                  :Hành vi khi chọn menu từ thanh công cụ truyền thông: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT_HELPTEXT         :Chọn hành vi lựa chọn của menu thanh công cụ. Nếu tắt, menu thanh công cụ sẽ còn hiển thị cho đến khi đã chọn một lựa chọn. Nếu bật, menu thanh công cụ sẽ hiển thị khi thả nút chuột.
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Hiện bảng đo lường khi dùng các công cụ xây dựng: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Hiển thị khoảng cách ô và chênh lệch độ cao khi kéo thả trong khi xây dựng
@@ -2150,7 +2163,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Hoàng Gia (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metric (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :Tiêu Chuẩn Đo Lường
+STR_CONFIG_SETTING_LOCALISATION                                 :Tiêu chuẩn đo lường
 STR_CONFIG_SETTING_GRAPHICS                                     :Đồ họa
 STR_CONFIG_SETTING_SOUND                                        :Âm thanh
 STR_CONFIG_SETTING_INTERFACE                                    :Giao diện
@@ -2219,7 +2232,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Ván Ch�
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Cấu Hình Trò Chơi
 STR_INTRO_HIGHSCORE                                             :{BLACK}Bảng Thành Tích
-STR_INTRO_HELP                                                  :{BLACK}Trợ giúp & hướng dẫn
+STR_INTRO_HELP                                                  :{BLACK}Trợ Giúp & Hướng Dẫn
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Nội Dung Trực Tuyến
 STR_INTRO_QUIT                                                  :{BLACK}Thoát
 
@@ -2772,10 +2785,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Chi phí
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Nối ga, bến
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Tạo một ga, bến riêng rẽ
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Tạo một ga, bến riêng rẽ
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Nối điểm mốc
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Tạo một điểm mốc riêng rẽ
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Tạo một điểm mốc riêng rẽ
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Đã bị tắt bởi chưa có phương tiện nào có sẵn cho hạ tầng này
@@ -3335,6 +3348,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Lọc:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Ghi đè file
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Bạn có chắc chắn ghi đè lên file đang tồn tại?
+STR_SAVELOAD_DELETE_TITLE                                       :{WHITE}Xóa File
+STR_SAVELOAD_DELETE_WARNING                                     :{WHITE}Bạn có chắc chắn muốn xóa file này?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (Thư mục)
 STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Thư mục cha)
 
@@ -3413,6 +3428,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Tây Nam
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Dạng Tự Do
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Nước
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Ngẫu Nhiên
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Ngẫu Nhiên
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Điều Chỉnh
 
@@ -3673,7 +3690,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Nhập t
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Đô Thị ({COMMA} đến {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Không Có -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (đô thị){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Tên các đô thị - nháy vào tên để xem trung tâm đô thị. Ctrl+Click mở cửa sổ mới của đô thị
 STR_TOWN_POPULATION                                             :{BLACK}Dân số thế giới: {COMMA}
 
@@ -3691,12 +3707,14 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (đã được vận chuyển)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Thị trấn phát triển mỗi {ORANGE}{UNITS_DAYS_OR_SECONDS}
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Thị trấn phát triển mỗi {ORANGE}{UNITS_DAYS_OR_SECONDS} (đã được góp vốn)
-STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Thị trấn {RED}không còn{BLACK} phát triển
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Thị trấn đang {RED}không{BLACK} phát triển
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Độ ồn giới hạn trong đô thị: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Xem trung tâm đô thị. Ctrl+Click mở cửa sổ mới về vị trí đô thị
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Chính quyền địa phương
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Xem thông tin về Chính quyền địa phương
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Đổi tên đô thị
+STR_TOWN_VIEW_CARGO_GRAPH                                       :Đồ thị hàng hoá
+STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :Hiển thị đồ thị lịch sử hàng hoá của thị trấn
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Mở rộng
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Tăng quy mô đô thị
@@ -3728,7 +3746,7 @@ STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Tài trợ cả
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Xây tượng đài công ty
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Tài trợ xây nhà cửa
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Mua độc quyền kinh doanh vận tải
-STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Hối lộ quan chức địa phương
+STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Đút lót quan chức địa phương
 ###next-name-looks-similar
 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Thực hiện chiến dịch quảng cáo nhỏ để thu hút khách và hàng hoá vận chuyển.{}Tăng xếp hạng cho các trạm gần trung tâm trong thời gian ngắn.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
@@ -3738,8 +3756,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}Tài trợ cải tạo lại mạng đường phố trong đô thị.{}Nó sẽ gây ra sự gián đoạn với giao thông đường bộ đáng kể trong vòng 6 phút.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Dựng tượng đài tôn vinh để quảng bá hình ảnh công ty.{}Tăng xếp hạng cho các trạm trong khu vực.{}{POP_COLOUR} Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Tài trợ xây dựng các toà nhà để thúc đẩy phát triển đô thị.{}Tăng sự phát triển đô thị trong một thời gian ngắn.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Mua hợp đồng giấy phép vận tải độc quyền ở địa phương trong 12 tháng.{}Chính quyền địa phương sẽ không cho hành khách và hàng hoá sử dụng các ga, bến, cảng của đối thủ. Nhưng nếu đối thủ thực hiện hối lộ thành công thì sẽ huỷ bỏ hợp đồng này.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Mua hợp đồng giấy phép vận tải độc quyền ở địa phương trong 12 phút.{}Chính quyền địa phương sẽ không cho hành khách và hàng hoá sử dụng các ga, bến, cảng của đối thủ. Nhưng nếu đối thủ thực hiện hối lộ thành công thì sẽ huỷ bỏ hợp đồng này.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Mua hợp đồng giấy phép vận tải độc quyền ở địa phương trong 12 tháng.{}Chính quyền địa phương sẽ không cho hành khách và hàng hoá sử dụng các ga, bến, cảng của đối thủ. Nhưng nếu đối thủ thực hiện đút lót thành công thì sẽ huỷ bỏ hợp đồng này.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Mua hợp đồng giấy phép vận tải độc quyền ở địa phương trong 12 phút.{}Chính quyền địa phương sẽ không cho hành khách và hàng hoá sử dụng các ga, bến, cảng của đối thủ. Nhưng nếu đối thủ thực hiện đút lót thành công thì sẽ huỷ bỏ hợp đồng này.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Đút lót quan chức địa phương để nâng cao quyền lợi và hủy bỏ độc quyền kinh doanh vận tải của đối thủ, có nguy cơ bị phạt nặng nếu vụ việc bị bại lộ.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
 
 # Goal window
@@ -4168,6 +4186,7 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Tất cả tr�
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Lực kéo tối đa: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Tầm xa: {GOLD}{COMMA} ô
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Kiểu máy bay: {GOLD}{STRING}
+STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Kiểu đường ray: {GOLD}{STRING}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Tất cả hàng hóa
@@ -4351,6 +4370,7 @@ STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Chi phí hoạt
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Chi phí hoạt động: {CURRENCY_LONG}/kỳ
 STR_ENGINE_PREVIEW_CAPACITY                                     :Tải trọng: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :Tải trọng: {CARGO_LONG}, {CARGO_LONG}
+STR_ENGINE_PREVIEW_RAILTYPES                                    :Kiểu đường ray: {STRING}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Thay thế {STRING} - {STRING}
@@ -4465,10 +4485,10 @@ STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Không có
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Chờ đường thông
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Quá xa để tới điểm kế tiếp
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - Nhắm tới {0:STATION}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - Hướng tới {0:STATION}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - Không lộ trình
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - Nhắm tới {0:WAYPOINT}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - Nhắm tới {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - Hướng tới {0:WAYPOINT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - Hướng tới {0:DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - Phục vụ tại {0:DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - Gỡ gộp và bảo trì ở {0:DEPOT}
 
@@ -5023,7 +5043,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Không c
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Chính quyền {TOWN} từ chối bạn làm việc này
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Chính quyền {TOWN} từ chối có thêm một sân bay nữa trong địa phận của họ
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Chính quyền {TOWN} từ chối sân bay vì dân chúng phàn nàn là quá ồn ào
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Sự cố gắng trong việc hối lộ của bạn đã bị phát hiện bởi các nhà điều tra
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Hành vi đút lót của bạn đã bị thanh tra viên khu vực phát hiện
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Không thể nâng đất ở đây...
@@ -5041,7 +5061,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Không t
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... hạn mức vay tối đa là {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Không thể vay thêm được tiền...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... không vay đâu cần trả
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... không vay đâu cần trả
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... cần {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Không thể trả nợ...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Không thể đem tặng tiền mà bạn vay từ ngân hàng...
@@ -5247,6 +5267,13 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Điểu 
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... hai đầu cầu phải được gá vào đất
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... cầu quá dài
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Cầu có thể vượt quá phạm vi bản đồ
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Cầu quá thấp cho ga
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Cầu quá thấp cho điểm dừng chân
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Cầu quá thấp để xây dựng cảng
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Cầu quá thấp cho phao
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Cầu quá thấp cho điểm mốc đường ray
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Cầu quá thấp cho điểm mốc đường
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :Cầu thấp, tàu không qua được khóa
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Không thể đào hầm ở đây...
@@ -5402,7 +5429,7 @@ STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Không c
 STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Không có điểm dừng phù hợp với xe kéo rơ moóc.{}Xe kéo rơ moóc cần điểm dừng ngắn trên đường, không phải bến dừng
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Không thể hạ cánh máy bay tại bãi đỗ trực thăng này
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Không thể hạ cánh trực thăng ở sân bay này
-STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Không có điểm mốc tàu hỏa
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Không có điểm mốc đường ray
 STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}Không có điểm mốc đường bộ
 STR_ERROR_NO_BUOY                                               :{WHITE}Không có cái phao nào
 
@@ -5863,6 +5890,8 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :Tham quan, {1:S
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_CITY                                          :{TOWN} {CITY_ICON}
+STR_VIEWPORT_TOWN_CITY_POP                                      :{TOWN} ({COMMA}) {CITY_ICON}
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data

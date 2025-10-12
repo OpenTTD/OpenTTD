@@ -560,6 +560,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :बैंगन
 
 
 
+
 ###length 3
 
 
@@ -1002,6 +1003,8 @@ STR_MAPGEN_TOWN_NAME_ITALIAN                                    :इटैलि
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}जल
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}यादृच्छिक
+
+###length 3
 
 
 

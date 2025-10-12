@@ -33,14 +33,14 @@ enum MusicTrackType : uint8_t {
 
 /** Metadata about a music track. */
 struct MusicSongInfo {
-	std::string songname;    ///< name of song displayed in UI
-	uint8_t tracknr;            ///< track number of song displayed in UI
-	std::string filename;    ///< file on disk containing song (when used in MusicSet class)
+	std::string songname; ///< name of song displayed in UI
+	std::string filename; ///< file on disk containing song (when used in MusicSet class)
+	int cat_index; ///< entry index in CAT file, for filetype==MTT_MPSMIDI
+	int override_start; ///< MIDI ticks to skip over in beginning
+	int override_end; ///< MIDI tick to end the song at (0 if no override)
+	uint8_t tracknr; ///< track number of song displayed in UI
 	MusicTrackType filetype; ///< decoder required for song file
-	int cat_index;           ///< entry index in CAT file, for filetype==MTT_MPSMIDI
-	bool loop;               ///< song should play in a tight loop if possible, never ending
-	int override_start;      ///< MIDI ticks to skip over in beginning
-	int override_end;        ///< MIDI tick to end the song at (0 if no override)
+	bool loop; ///< song should play in a tight loop if possible, never ending
 };
 
 template <> struct BaseSetTraits<struct MusicSet> {

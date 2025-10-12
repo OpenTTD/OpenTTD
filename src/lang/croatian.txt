@@ -1546,6 +1546,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Pomiči mapu sa
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Glatko klizanje kroz mini pogled: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Odredi kako se glavni prikaz pomiče na određeno mjesto kada se klikne na malu kartu ili kada se izda naredba za pomicanje na određeni objekt na karti. Ako je uključeno, prikaz se pomiče glatko, ako je isključeno, prikaz izravno skače na ciljnu lokaciju
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Pokaži mjerni naputak prilikom korištenja raznih alata za izgradnju: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Prikaži udaljenost u poljima i visinsku razliku kod povlačenja prilikom gradnje
 
@@ -2472,10 +2473,10 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Zalihe: 
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Spoji postaju
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Izgradi odvojenu postaju
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Izgradi odvojenu postaju
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Spoji čvorište
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Izgradi zasebno čvorište
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Izgradi zasebno čvorište
 
 # Generic toolbar
 
@@ -3011,6 +3012,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Jugozapa
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Slobodni oblik
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Voda
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Nasumično
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Nasumično
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Ručno
 
@@ -3246,7 +3249,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Unesi im
 # Town directory window
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ništa -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Grad){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Imena gradova - klikni na ime kako bi centrirao pogled na grad. Ctrl+klik otvara novi prozor sa lokacijom grada
 STR_TOWN_POPULATION                                             :{BLACK}Svjetsko stanovništvo: {COMMA}
 
@@ -4459,7 +4461,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Nije mog
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... najveći dopušteni zajam iznosi {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Nije moguće posuditi još više novaca...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... nema zajma za otplatu
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... nema zajma za otplatu
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...{CURRENCY_LONG} potrebno
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Nije moguće otplatiti zajam...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Nije moguće dati novac koji je pozajmljen od banke...

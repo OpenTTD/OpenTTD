@@ -37,6 +37,16 @@ static const uint16_t MAX_TOWN_GROWTH_TICKS = 930; ///< Max amount of original t
 typedef Pool<Town, TownID, 64> TownPool;
 extern TownPool _town_pool;
 
+/** Flags controlling various town behaviours. */
+enum class TownFlag : uint8_t {
+	IsGrowing = 0, ///< Conditions for town growth are met. Grow according to Town::growth_rate.
+	HasChurch = 1, ///< There can be only one church by town.
+	HasStadium = 2, ///< There can be only one stadium by town.
+	CustomGrowth = 3, ///< Growth rate is controlled by GS.
+};
+
+using TownFlags = EnumBitSet<TownFlag, uint8_t>;
+
 /** Data structure with cached data of towns. */
 struct TownCache {
 	uint32_t num_houses = 0; ///< Amount of houses
@@ -62,7 +72,7 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	std::string name{}; ///< Custom town name. If empty, the town was not renamed and uses the generated name.
 	mutable std::string cached_name{}; ///< NOSAVE: Cache of the resolved name of the town, if not using a custom town name
 
-	uint8_t flags = 0; ///< See #TownFlags.
+	TownFlags flags{}; ///< See #TownFlags.
 
 	uint16_t noise_reached = 0; ///< level of noise that all the airports are generating
 
@@ -211,10 +221,10 @@ enum TownCouncilAttitudes {
  * Action types that a company must ask permission for to a town authority.
  * @see CheckforTownRating
  */
-enum TownRatingCheckType {
-	ROAD_REMOVE         = 0,      ///< Removal of a road owned by the town.
-	TUNNELBRIDGE_REMOVE = 1,      ///< Removal of a tunnel or bridge owned by the towb.
-	TOWN_RATING_CHECK_TYPE_COUNT, ///< Number of town checking action types.
+enum class TownRatingCheckType : uint8_t {
+	RoadRemove, ///< Removal of a road owned by the town.
+	TunnelBridgeRemove, ///< Removal of a tunnel or bridge owned by the town.
+	End,
 };
 
 /** Special values for town list window for the data parameter of #InvalidateWindowData. */
@@ -222,20 +232,6 @@ enum TownDirectoryInvalidateWindowData {
 	TDIWD_FORCE_REBUILD,
 	TDIWD_POPULATION_CHANGE,
 	TDIWD_FORCE_RESORT,
-};
-
-/**
- * This enum is used in conjunction with town->flags.
- * IT simply states what bit is used for.
- * It is pretty unrealistic (IMHO) to only have one church/stadium
- * per town, NO MATTER the population of it.
- * And there are 5 more bits available on flags...
- */
-enum TownFlags {
-	TOWN_IS_GROWING     = 0,   ///< Conditions for town growth are met. Grow according to Town::growth_rate.
-	TOWN_HAS_CHURCH     = 1,   ///< There can be only one church by town.
-	TOWN_HAS_STADIUM    = 2,   ///< There can be only one stadium by town.
-	TOWN_CUSTOM_GROWTH  = 3,   ///< Growth rate is controlled by GS.
 };
 
 CommandCost CheckforTownRating(DoCommandFlags flags, Town *t, TownRatingCheckType type);

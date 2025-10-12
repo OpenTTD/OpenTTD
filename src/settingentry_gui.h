@@ -14,9 +14,6 @@
 #include "settings_internal.h"
 #include "stringfilter_type.h"
 
-extern Dimension _setting_circle_size;
-extern int SETTING_HEIGHT;
-
 /**
  * Flags for #SettingEntry
  * @note The #SEF_BUTTONS_MASK matches expectations of the formal parameter 'state' of #DrawArrowButtons
@@ -85,6 +82,9 @@ struct BaseSettingEntry {
 	virtual bool UpdateFilterState(SettingFilter &filter, bool force_visible) = 0;
 
 	virtual uint Draw(GameSettings *settings_ptr, int left, int right, int y, uint first_row, uint max_row, BaseSettingEntry *selected, uint cur_row = 0, uint parent_last = 0) const;
+
+	static inline Dimension circle_size; ///< Dimension of the circle +/- icon.
+	static inline int line_height; ///< Height of a single setting.
 
 protected:
 	virtual void DrawSetting(GameSettings *settings_ptr, int left, int right, int y, bool highlight) const = 0;

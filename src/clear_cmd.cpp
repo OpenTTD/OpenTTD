@@ -152,7 +152,7 @@ static void DrawTile_Clear(TileInfo *ti)
 			break;
 	}
 
-	DrawBridgeMiddle(ti);
+	DrawBridgeMiddle(ti, {});
 }
 
 static int GetSlopePixelZ_Clear(TileIndex tile, uint x, uint y, bool)
@@ -390,6 +390,12 @@ static CommandCost TerraformTile_Clear(TileIndex tile, DoCommandFlags flags, int
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }
 
+static CommandCost CheckBuildAbove_Clear(TileIndex, DoCommandFlags, Axis, int)
+{
+	/* Can always build above clear tiles. */
+	return CommandCost();
+}
+
 extern const TileTypeProcs _tile_type_clear_procs = {
 	DrawTile_Clear,           ///< draw_tile_proc
 	GetSlopePixelZ_Clear,     ///< get_slope_z_proc
@@ -405,4 +411,5 @@ extern const TileTypeProcs _tile_type_clear_procs = {
 	nullptr,                     ///< vehicle_enter_tile_proc
 	GetFoundation_Clear,      ///< get_foundation_proc
 	TerraformTile_Clear,      ///< terraform_tile_proc
+	CheckBuildAbove_Clear, // check_build_above_proc
 };

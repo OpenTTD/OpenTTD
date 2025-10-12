@@ -1680,6 +1680,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Symud map gyda 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Sgrolio prif ffenestr llyfn: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Rheoli syt y mae'r prif olygfa'n sgrolio at leoliad penodol pan yn clicio ar y map bychan neu yn rhoi gorchymyn i sgrolio at wrthrych penodol
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Dangos cymorth mesur wrth ddefnyddio'r offer adeiladu amrywiol: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Dangos pellterau teil a gwahaniaethau uchder wrth lusgo tra'n adeiladu
 
@@ -2772,10 +2773,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Cost cyn
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Uno gorsaf
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Adeiladu gorsaf ar wahân
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Adeiladu gorsaf ar wahân
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Uno pwynt llwybro
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Adeiladu pwynt llwybro annibynnol
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Adeiladu pwynt llwybro annibynnol
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Analluogwyd gan nad oes cerbydau ar gael i'r tanadeiledd yma ar hyn o bryd
@@ -3413,6 +3414,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}De Orlle
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Ffurfrydd
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Dŵr
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Ar hap
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Ar hap
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Â Llaw
 
@@ -3673,7 +3676,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Rhowch e
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Trefi ({COMMA} o {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Dim -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Dinas){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Enwau trefi - cliciwch ar enw tref i ganoli'r brif olygfa ar y dref. Ctrl+Clic i agor ffenest golwg newydd ar leoliad y dref
 STR_TOWN_POPULATION                                             :{BLACK}Poblogaeth y Byd: {COMMA}
 
@@ -5041,7 +5043,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Does dim
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... mae'r uchafswm benthyciad posib yn {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Does dim modd i chi fenthyg rhagor o arian...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... nid oes benthyciad i'w ad-dalu
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... nid oes benthyciad i'w ad-dalu
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... angen {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Does dim modd ad-dalu benthyciad...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Does dim modd rhoi arian sydd wedi ei fenthyg gan y banc i ffwrdd...

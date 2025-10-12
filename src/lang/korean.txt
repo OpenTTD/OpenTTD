@@ -638,8 +638,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}10 단위(1만 리터)의 화물을 20칸 거리만큼 운송할 때의 운송비 지급량
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}모두
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}없음
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}화물 운송단가 비율 그래프에서 모든 화물을 표시
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}화물 운송단가 비율 그래프에서 모든 화물을 표시 안 함
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}그래프에 모든 화물을 표시
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}그래프에 모든 화물을 숨김
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}이 화물의 그래프를 표시하거나 숨깁니다
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -1043,6 +1043,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :말레이시아
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :라트비아 라츠
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :포르투갈 이스쿠두
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :우크라이나 흐리우냐
+STR_GAME_OPTIONS_CURRENCY_VND                                   :베트남 동
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :자동 저장
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :게임 자동 저장 간격을 선택
@@ -1689,6 +1690,9 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :마우스 왼�
 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :게임 화면을 이동시킬 때 부드럽게 이동: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :소형 지도를 클릭하여 특정 지역으로 스크롤되거나 지도 상의 특정 장소로 이동하는 경우에 주 화면이 어떻게 스크롤 되는지를 설정합니다. 이 설정을 켜면, 화면이 목표 지점까지 부드럽게 이동하고, 설정을 끄면 목표 지점으로 곧바로 넘어가게 됩니다.
+
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT                  :도구 메뉴 자동 선택: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT_HELPTEXT         :메뉴를 선택했을 때의 행동을 고릅니다. 이 설정을 끄면, 메뉴에서 항목을 선택하기 전까지는 메뉴가 열린 상태로 유지됩니다. 이 설정을 켜면, 마우스 버튼을 놓는 순간 메뉴가 바로 클릭됩니다.
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :건설도구 사용시 거리 도움말 표시: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :철도/도로 등의 기반시설을 건설할 때 거리와 높이 차이 등을 표시합니다
@@ -2535,7 +2539,7 @@ STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :삭제
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}관리자 기능
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}'{STRING}' 플레이어를 정말로 추방하시겠습니까?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}'{STRING}' 플레이어를 정말로 차단하시겠습니까?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}'{COMPANY}' 회사를 정말로 삭제하시겠습니까?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}정말 '{COMPANY}' 회사를 삭제하시겠습니까?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}중계를 이용할까요?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}'{0:STRING}' 서버와 연결하는 데 실패했습니다.{} '{1:STRING}'{G 1 "을" "를"} 통해 연결을 중계하시겠습니까?
@@ -2782,10 +2786,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}유지�
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}같은 이름으로 정거장 만들기
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}분리된 역을 새로 만들기
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}분리된 역을 새로 만들기
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}연결할 경유지
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}분리된 경유지를 새로 만들기
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}분리된 경유지를 새로 만들기
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}현재 이 기반시설에서 사용할 수 있는 차량이 없어 비활성화되었습니다
@@ -3344,7 +3348,9 @@ STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}검색:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}파일 덮어쓰기
-STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}정말로 이미 존재하는 파일에 덮어씌우시겠습니까?
+STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}정말 이미 존재하는 파일에 덮어씌우시겠습니까?
+STR_SAVELOAD_DELETE_TITLE                                       :{WHITE}파일 삭제
+STR_SAVELOAD_DELETE_WARNING                                     :{YELLOW}정말 이 파일을 삭제하시겠습니까?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (폴더)
 STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (상위 폴더)
 
@@ -3423,8 +3429,11 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}남서
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}변경 가능
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}물
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}임의
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}임의
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}사용자 정의
+
+###length 3
+STR_MAPGEN_BORDER_RANDOMIZE                                     :임의
+STR_MAPGEN_BORDER_MANUAL                                        :사용자 정의
+STR_MAPGEN_BORDER_INFINITE_WATER                                :물 (지도 밖까지 모두)
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}높이맵 방향:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}높이맵 이름:
@@ -3683,7 +3692,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}팻말 �
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}도시 목록 ({1:COMMA}개 중 {0:COMMA}개)
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}(없음)
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (대도시){BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{BLACK} ({COMMA}) {YELLOW}{CITY_ICON}
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}도시 이름 - 이 도시로 시점을 변경하려면 클릭하세요. CTRL+클릭하면 이 도시 위치를 기준으로 새로운 외부 화면을 엽니다
 STR_TOWN_POPULATION                                             :{BLACK}총 인구 수: {COMMA}
 
@@ -4122,7 +4131,7 @@ STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}선택�
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}클릭하면 전체 자동 교체로부터 이 그룹을 보호합니다. CTRL+클릭하면 하위 그룹도 보호합니다
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}그룹 삭제
-STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}이 그룹과 하위 그룹을 정말 삭제하시겠습니까?
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}정말 이 그룹과 하위 그룹을 삭제하시겠습니까?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :경로를 공유 중인 차량 추가
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :모든 차량 제거
@@ -4180,6 +4189,7 @@ STR_PURCHASE_INFO_ALL_BUT                                       :{CARGO_LIST} �
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}최고 견인력: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}항속거리: {GOLD}{COMMA}칸
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}항공기 종류: {GOLD}{STRING}
+STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}철도 종류: {GOLD}{STRING}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :모든 화물
@@ -4363,6 +4373,7 @@ STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :유지비: {CUR
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :유지비: {CURRENCY_LONG}/기간
 STR_ENGINE_PREVIEW_CAPACITY                                     :수송량: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :수송량: {CARGO_LONG}, {CARGO_LONG}
+STR_ENGINE_PREVIEW_RAILTYPES                                    :철도 종류: {STRING}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} 교체 - {STRING}
@@ -5053,7 +5064,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}사장�
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... 최대로 빌릴 수 있는 대출금은 {CURRENCY_LONG} 입니다
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}돈을 더 빌릴 수 없습니다...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... 값아야 할 대출금이 없습니다
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... 값아야 할 대출금이 없습니다
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} 만큼의 돈이 필요합니다
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}대출금을 갚을 수 없습니다...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}은행에서 빌린 돈은 송금할 수 없습니다...
@@ -5176,7 +5187,7 @@ STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}차량�
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}열차가 너무 깁니다!
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}차량을 뒤집을 수 없습니다...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}여러 대가 연결된 차량은 뒤집을 수 없습니다...
-STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :알맞지 않은 철도 타입입니다
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :알맞지 않은 철도 종류입니다
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}차량을 옮길 수 없습니다...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}뒷쪽 기관차는 앞쪽 기관차와 항상 붙어있어야 합니다
@@ -5259,6 +5270,13 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}시작�
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... 다리의 양 끝은 모두 땅이어야 합니다
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... 다리가 너무 깁니다!
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}다리 끝이 지도 밖을 넘어갑니다
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}다리 밑에 역을 두기에는 다리 높이가 너무 낮습니다
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}다리 밑에 도로 정류장을 두기에는 다리 높이가 너무 낮습니다
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}다리 밑에 항구를 두기에는 다리 높이가 너무 낮습니다
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}다리 밑에 부표를 두기에는 다리 높이가 너무 낮습니다
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}다리 밑에 철도 경유지를 두기에는 다리 높이가 너무 낮습니다
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}다리 밑에 도로 경유지를 두기에는 다리 높이가 너무 낮습니다
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}다리 밑에 항구를 두기에는 다리 높이가 너무 낮습니다
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}여기에 터널을 지을 수 없습니다...
@@ -5875,6 +5893,8 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :관전자의 �
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_CITY                                          :{TOWN} {CITY_ICON}
+STR_VIEWPORT_TOWN_CITY_POP                                      :{TOWN} ({COMMA}) {CITY_ICON}
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data

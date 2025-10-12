@@ -178,7 +178,7 @@ public:
 
 		for (auto &h : p->history) {
 			if (--len > p->history.size()) break; // unsigned so wraps after hitting zero.
-			SlObject(&h, this->GetDescription());
+			SlObject(&h, this->GetLoadDescription());
 		}
 	}
 };

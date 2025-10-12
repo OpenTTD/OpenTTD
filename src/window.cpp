@@ -594,6 +594,9 @@ EventState Window::OnHotkey(int hotkey)
  */
 void Window::HandleButtonClick(WidgetID widget)
 {
+	/* Button click for this widget may already have been handled. */
+	if (this->IsWidgetLowered(widget) && this->timeout_timer == TIMEOUT_DURATION) return;
+
 	this->LowerWidget(widget);
 	this->SetTimeout();
 	this->SetWidgetDirty(widget);
@@ -619,12 +622,18 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 	if (nw != nullptr) nw->disp_flags.Reset(NWidgetDisplayFlag::DropdownClosed);
 
 	bool focused_widget_changed = false;
+
 	/* If clicked on a window that previously did not have focus */
-	if (_focused_window != w &&                 // We already have focus, right?
-			!w->window_desc.flags.Test(WindowDefaultFlag::NoFocus) &&  // Don't lose focus to toolbars
-			widget_type != WWT_CLOSEBOX) {          // Don't change focused window if 'X' (close button) was clicked
-		focused_widget_changed = true;
-		SetFocusedWindow(w);
+	if (_focused_window != w) {
+		/* Don't switch focus to an unfocusable window, or if the 'X' (close button) was clicked. */
+		if (!w->window_desc.flags.Test(WindowDefaultFlag::NoFocus) && widget_type != WWT_CLOSEBOX) {
+			focused_widget_changed = true;
+			SetFocusedWindow(w);
+		} else if (_focused_window != nullptr && _focused_window->window_class == WC_DROPDOWN_MENU) {
+			/* The previously focused window was a dropdown menu, but the user clicked on another window that
+			 * isn't focusable. Close the dropdown menu anyway. */
+			SetFocusedWindow(nullptr);
+		}
 	}
 
 	if (nw == nullptr) return; // exit if clicked outside of widgets
@@ -700,7 +709,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 				int dx = (w->resize.step_width  == 0) ? 0 : def_width  - w->width;
 				int dy = (w->resize.step_height == 0) ? 0 : def_height - w->height;
 				/* dx and dy has to go by step.. calculate it.
-				 * The cast to int is necessary else dx/dy are implicitly casted to unsigned int, which won't work. */
+				 * The cast to int is necessary else dx/dy are implicitly cast to unsigned int, which won't work. */
 				if (w->resize.step_width  > 1) dx -= dx % (int)w->resize.step_width;
 				if (w->resize.step_height > 1) dy -= dy % (int)w->resize.step_height;
 				ResizeWindow(w, dx, dy, false);
@@ -990,7 +999,7 @@ void Window::ReInit(int rx, int ry, bool reposition)
 	int dx = (this->resize.step_width  == 0) ? 0 : window_width  - this->width;
 	int dy = (this->resize.step_height == 0) ? 0 : window_height - this->height;
 	/* dx and dy has to go by step.. calculate it.
-	 * The cast to int is necessary else dx/dy are implicitly casted to unsigned int, which won't work. */
+	 * The cast to int is necessary else dx/dy are implicitly cast to unsigned int, which won't work. */
 	if (this->resize.step_width  > 1) dx -= dx % (int)this->resize.step_width;
 	if (this->resize.step_height > 1) dy -= dy % (int)this->resize.step_height;
 
@@ -1484,7 +1493,7 @@ void Window::FindWindowPlacementAndResize(int def_width, int def_height, bool al
 			int enlarge_y = std::max(std::min(def_height - this->height, free_height   - this->height), 0);
 
 			/* X and Y has to go by step.. calculate it.
-			 * The cast to int is necessary else x/y are implicitly casted to
+			 * The cast to int is necessary else x/y are implicitly cast to
 			 * unsigned int, which won't work. */
 			if (this->resize.step_width  > 1) enlarge_x -= enlarge_x % (int)this->resize.step_width;
 			if (this->resize.step_height > 1) enlarge_y -= enlarge_y % (int)this->resize.step_height;
@@ -1800,7 +1809,7 @@ void Window::InitNested(WindowNumber window_number)
  * Empty constructor, initialization has been moved to #InitNested() called from the constructor of the derived class.
  * @param desc The description of the window.
  */
-Window::Window(WindowDesc &desc) : window_desc(desc), scale(_gui_scale), mouse_capture_widget(-1)
+Window::Window(WindowDesc &desc) : window_desc(desc), scale(_gui_scale), mouse_capture_widget(INVALID_WIDGET)
 {
 	this->z_position = _z_windows.insert(_z_windows.end(), this);
 }
@@ -1882,7 +1891,7 @@ static void DecreaseWindowCounters()
 					NWidgetScrollbar *sb = static_cast<NWidgetScrollbar*>(nwid);
 					if (sb->disp_flags.Any({NWidgetDisplayFlag::ScrollbarUp, NWidgetDisplayFlag::ScrollbarDown})) {
 						sb->disp_flags.Reset({NWidgetDisplayFlag::ScrollbarUp, NWidgetDisplayFlag::ScrollbarDown});
-						w->mouse_capture_widget = -1;
+						w->mouse_capture_widget = INVALID_WIDGET;
 						sb->SetDirty(w);
 					}
 				}
@@ -2060,7 +2069,7 @@ static void EnsureVisibleCaption(Window *w, int nx, int ny)
  * Resize the window.
  * Update all the widgets of a window based on their resize flags
  * Both the areas of the old window and the new sized window are set dirty
- * ensuring proper redrawal.
+ * ensuring proper redrawing.
  * @param w       Window to resize
  * @param delta_x Delta x-size of changed window (positive if larger, etc.)
  * @param delta_y Delta y-size of changed window
@@ -2154,8 +2163,8 @@ static EventState HandleWindowDragging()
 			int ny = y;
 
 			if (_settings_client.gui.window_snap_radius != 0) {
-				int hsnap = _settings_client.gui.window_snap_radius;
-				int vsnap = _settings_client.gui.window_snap_radius;
+				int hsnap = ScaleGUITrad(_settings_client.gui.window_snap_radius);
+				int vsnap = ScaleGUITrad(_settings_client.gui.window_snap_radius);
 				int delta;
 
 				for (const Window *v : Window::Iterate()) {
@@ -2260,7 +2269,7 @@ static EventState HandleWindowDragging()
 			}
 
 			/* X and Y has to go by step.. calculate it.
-			 * The cast to int is necessary else x/y are implicitly casted to
+			 * The cast to int is necessary else x/y are implicitly cast to
 			 * unsigned int, which won't work. */
 			if (w->resize.step_width  > 1) x -= x % (int)w->resize.step_width;
 			if (w->resize.step_height > 1) y -= y % (int)w->resize.step_height;
@@ -2287,7 +2296,7 @@ static EventState HandleWindowDragging()
 				_drag_delta.x += x;
 			}
 
-			/* ResizeWindow sets both pre- and after-size to dirty for redrawal */
+			/* ResizeWindow sets both pre- and after-size to dirty for redrawing */
 			ResizeWindow(w, x, y);
 			return ES_HANDLED;
 		}
@@ -2371,7 +2380,7 @@ static void HandleScrollbarScrolling(Window *w)
 }
 
 /**
- * Handle active widget (mouse draggin on widget) with the mouse.
+ * Handle active widget (mouse dragging on widget) with the mouse.
  * @return State of handling the event.
  */
 static EventState HandleActiveWidget()
@@ -2381,7 +2390,7 @@ static EventState HandleActiveWidget()
 			/* Abort if no button is clicked any more. */
 			if (!_left_button_down) {
 				w->SetWidgetDirty(w->mouse_capture_widget);
-				w->mouse_capture_widget = -1;
+				w->mouse_capture_widget = INVALID_WIDGET;
 				return ES_HANDLED;
 			}
 

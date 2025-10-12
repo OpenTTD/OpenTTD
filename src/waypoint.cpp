@@ -32,23 +32,12 @@ void DrawWaypointSprite(int x, int y, StationClassID station_class, uint16_t sta
 	}
 }
 
-void Waypoint::GetTileArea(TileArea *ta, StationType type) const
+TileArea Waypoint::GetTileArea(StationType type) const
 {
 	switch (type) {
-		case StationType::RailWaypoint:
-			*ta = this->train_station;
-			return;
-
-		case StationType::RoadWaypoint:
-			*ta = this->road_waypoint_area;
-			return;
-
-		case StationType::Buoy:
-			ta->tile = this->xy;
-			ta->w    = 1;
-			ta->h    = 1;
-			break;
-
+		case StationType::RailWaypoint: return this->train_station;
+		case StationType::RoadWaypoint: return this->road_waypoint_area;
+		case StationType::Buoy: return {this->xy, 1, 1};
 		default: NOT_REACHED();
 	}
 }

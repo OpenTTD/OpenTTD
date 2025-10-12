@@ -1065,7 +1065,7 @@ static void DrawTileHighlightType(const TileInfo *ti, TileHighlightType tht)
 }
 
 /**
- * Highlights tiles insede local authority of selected towns.
+ * Highlights tiles inside local authority of selected towns.
  * @param *ti TileInfo Tile that is being drawn
  */
 static void HighlightTownLocalAuthorityTiles(const TileInfo *ti)
@@ -1104,7 +1104,7 @@ static void HighlightTownLocalAuthorityTiles(const TileInfo *ti)
  */
 static void DrawTileSelection(const TileInfo *ti)
 {
-	/* Highlight tiles insede local authority of selected towns. */
+	/* Highlight tiles inside local authority of selected towns. */
 	HighlightTownLocalAuthorityTiles(ti);
 
 	/* Draw a red error square? */
@@ -1359,12 +1359,21 @@ static void ViewportAddTownStrings(DrawPixelInfo *dpi, const std::vector<const T
 	ViewportStringFlags flags{};
 	if (small) flags.Set({ViewportStringFlag::Small, ViewportStringFlag::Shadow});
 
-	StringID stringid = !small && _settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_POP : STR_TOWN_NAME;
+	StringID stringid_town = !small && _settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_POP : STR_TOWN_NAME;
+	StringID stringid_town_city = stringid_town;
+	if (!small) {
+		stringid_town_city = _settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_CITY_POP : STR_VIEWPORT_TOWN_CITY;
+	}
+
 	for (const Town *t : towns) {
 		std::string *str = ViewportAddString(dpi, &t->cache.sign, flags, INVALID_COLOUR);
 		if (str == nullptr) continue;
 
-		*str = GetString(stringid, t->index, t->cache.population);
+		if (t->larger_town) {
+			*str = GetString(stringid_town_city, t->index, t->cache.population);
+		} else {
+			*str = GetString(stringid_town, t->index, t->cache.population);
+		}
 	}
 }
 
@@ -1581,7 +1590,7 @@ static void ViewportSortParentSprites(ParentSpriteToSortVector *psdv)
 	 * adding extra fields to ParentSpriteToDraw structure.
 	 */
 	const uint32_t ORDER_COMPARED = UINT32_MAX; // Sprite was compared but we still need to compare the ones preceding it
-	const uint32_t ORDER_RETURNED = UINT32_MAX - 1; // Makr sorted sprite in case there are other occurrences of it in the stack
+	const uint32_t ORDER_RETURNED = UINT32_MAX - 1; // Mark sorted sprite in case there are other occurrences of it in the stack
 	std::stack<ParentSpriteToDraw *> sprite_order;
 	uint32_t next_order = 0;
 
@@ -1628,8 +1637,8 @@ static void ViewportSortParentSprites(ParentSpriteToSortVector *psdv)
 		auto ssum = std::max(s->xmax, s->xmin) + std::max(s->ymax, s->ymin);
 		auto prev = sprite_list.before_begin();
 		auto x = sprite_list.begin();
-		while (x != sprite_list.end() && ((*x).first <= ssum)) {
-			auto p = (*x).second;
+		while (x != sprite_list.end() && x->first <= ssum) {
+			auto p = x->second;
 			if (p == s) {
 				/* We found the current sprite, remove it and move on. */
 				x = sprite_list.erase_after(prev);

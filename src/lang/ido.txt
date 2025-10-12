@@ -690,6 +690,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violkolora
 
 
 
+
 ###length 3
 
 
@@ -1069,6 +1070,8 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 ###length 21
 
 # Strings for map borders at game generation
+
+###length 3
 
 
 

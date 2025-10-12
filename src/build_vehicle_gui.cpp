@@ -632,14 +632,33 @@ static int DrawRailEnginePurchaseInfo(int left, int right, int y, EngineID engin
 	}
 	y += GetCharacterHeight(FS_NORMAL);
 
+	/* Supported rail types */
+	std::string railtypes{};
+	std::string_view list_separator = GetListSeparator();
+
+	for (const auto &rt : _sorted_railtypes) {
+		if (!rvi->railtypes.Test(rt)) continue;
+
+		if (!railtypes.empty()) railtypes += list_separator;
+		AppendStringInPlace(railtypes, GetRailTypeInfo(rt)->strings.name);
+	}
+	DrawString(left, right, y, GetString(STR_PURCHASE_INFO_RAILTYPES, railtypes));
+	y += GetCharacterHeight(FS_NORMAL);
+
 	/* Max speed - Engine power */
 	DrawString(left, right, y, GetString(STR_PURCHASE_INFO_SPEED_POWER, PackVelocity(e->GetDisplayMaxSpeed(), e->type), e->GetPower()));
 	y += GetCharacterHeight(FS_NORMAL);
 
 	/* Max tractive effort - not applicable if old acceleration or maglev */
-	if (_settings_game.vehicle.train_acceleration_model != AM_ORIGINAL && GetRailTypeInfo(rvi->railtype)->acceleration_type != 2) {
-		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_MAX_TE, e->GetDisplayMaxTractiveEffort()));
-		y += GetCharacterHeight(FS_NORMAL);
+	if (_settings_game.vehicle.train_acceleration_model != AM_ORIGINAL) {
+		bool is_maglev = true;
+		for (RailType rt : rvi->railtypes) {
+			is_maglev &= GetRailTypeInfo(rt)->acceleration_type == VehicleAccelerationModel::Maglev;
+		}
+		if (!is_maglev) {
+			DrawString(left, right, y, GetString(STR_PURCHASE_INFO_MAX_TE, e->GetDisplayMaxTractiveEffort()));
+			y += GetCharacterHeight(FS_NORMAL);
+		}
 	}
 
 	/* Running cost */
@@ -707,8 +726,8 @@ static int DrawShipPurchaseInfo(int left, int right, int y, EngineID engine_numb
 
 	/* Purchase cost - Max speed */
 	uint raw_speed = e->GetDisplayMaxSpeed();
-	uint ocean_speed = e->u.ship.ApplyWaterClassSpeedFrac(raw_speed, true);
-	uint canal_speed = e->u.ship.ApplyWaterClassSpeedFrac(raw_speed, false);
+	uint ocean_speed = e->VehInfo<ShipVehicleInfo>().ApplyWaterClassSpeedFrac(raw_speed, true);
+	uint canal_speed = e->VehInfo<ShipVehicleInfo>().ApplyWaterClassSpeedFrac(raw_speed, false);
 
 	if (ocean_speed == canal_speed) {
 		if (te.cost != 0) {
@@ -866,10 +885,10 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, 
 	switch (e->type) {
 		default: NOT_REACHED();
 		case VEH_TRAIN:
-			if (e->u.rail.railveh_type == RAILVEH_WAGON) {
-				y = DrawRailWagonPurchaseInfo(left, right, y, engine_number, &e->u.rail, te);
+			if (e->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_WAGON) {
+				y = DrawRailWagonPurchaseInfo(left, right, y, engine_number, &e->VehInfo<RailVehicleInfo>(), te);
 			} else {
-				y = DrawRailEnginePurchaseInfo(left, right, y, engine_number, &e->u.rail, te);
+				y = DrawRailEnginePurchaseInfo(left, right, y, engine_number, &e->VehInfo<RailVehicleInfo>(), te);
 			}
 			articulated_cargo = true;
 			break;
@@ -901,7 +920,7 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, 
 	}
 
 	/* Draw details that apply to all types except rail wagons. */
-	if (e->type != VEH_TRAIN || e->u.rail.railveh_type != RAILVEH_WAGON) {
+	if (e->type != VEH_TRAIN || e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON) {
 		/* Design date - Life length */
 		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_DESIGNED_LIFE, ymd.year, TimerGameCalendar::DateToYear(e->GetLifeLengthInDays())));
 		y += GetCharacterHeight(FS_NORMAL);
@@ -1011,7 +1030,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 
 		if (has_variants) {
 			Rect fr = tr.WithWidth(circle_width, rtl);
-			DrawSpriteIgnorePadding(is_folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED, PAL_NONE, {fr.left, textr.top, fr.right, textr.bottom}, SA_CENTER);
+			DrawSpriteIgnorePadding(is_folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED, PAL_NONE, fr.WithY(textr), SA_CENTER);
 		}
 
 		tr = tr.Indent(circle_width + WidgetDimensions::scaled.hsep_normal, rtl);
@@ -1376,9 +1395,9 @@ struct BuildVehicleWindow : Window {
 		for (const Engine *e : Engine::IterateType(VEH_TRAIN)) {
 			if (!this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
 			EngineID eid = e->index;
-			const RailVehicleInfo *rvi = &e->u.rail;
+			const RailVehicleInfo *rvi = &e->VehInfo<RailVehicleInfo>();
 
-			if (this->filter.railtype != INVALID_RAILTYPE && !HasPowerOnRail(rvi->railtype, this->filter.railtype)) continue;
+			if (this->filter.railtype != INVALID_RAILTYPE && !HasPowerOnRail(rvi->railtypes, this->filter.railtype)) continue;
 			if (!IsEngineBuildable(eid, VEH_TRAIN, _local_company)) continue;
 
 			/* Filter now! So num_engines and num_wagons is valid */
@@ -1407,7 +1426,7 @@ struct BuildVehicleWindow : Window {
 			if (std::ranges::find(list, variant, &GUIEngineListItem::engine_id) == list.end()) {
 				const Engine *e = Engine::Get(variant);
 				list.emplace_back(variant, e->info.variant_id, e->display_flags | EngineDisplayFlag::Shaded, 0);
-				if (e->u.rail.railveh_type != RAILVEH_WAGON) num_engines++;
+				if (e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON) num_engines++;
 			}
 		}
 
@@ -1436,12 +1455,14 @@ struct BuildVehicleWindow : Window {
 		this->eng_list.clear();
 
 		BadgeTextFilter btf(this->string_filter, GSF_ROADVEHICLES);
+		BadgeDropdownFilter bdf(this->badge_filter_choices);
 
 		for (const Engine *e : Engine::IterateType(VEH_ROAD)) {
 			if (!this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_ROAD, _local_company)) continue;
-			if (this->filter.roadtype != INVALID_ROADTYPE && !HasPowerOnRoad(e->u.road.roadtype, this->filter.roadtype)) continue;
+			if (this->filter.roadtype != INVALID_ROADTYPE && !HasPowerOnRoad(e->VehInfo<RoadVehicleInfo>().roadtype, this->filter.roadtype)) continue;
+			if (!bdf.Filter(e->badges)) continue;
 
 			/* Filter by name or NewGRF extra text */
 			if (!FilterByText(e) && !btf.Filter(e->badges)) continue;
@@ -1460,11 +1481,13 @@ struct BuildVehicleWindow : Window {
 		this->eng_list.clear();
 
 		BadgeTextFilter btf(this->string_filter, GSF_SHIPS);
+		BadgeDropdownFilter bdf(this->badge_filter_choices);
 
 		for (const Engine *e : Engine::IterateType(VEH_SHIP)) {
 			if (!this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_SHIP, _local_company)) continue;
+			if (!bdf.Filter(e->badges)) continue;
 
 			/* Filter by name or NewGRF extra text */
 			if (!FilterByText(e) && !btf.Filter(e->badges)) continue;
@@ -1486,6 +1509,7 @@ struct BuildVehicleWindow : Window {
 		const Station *st = this->listview_mode ? nullptr : Station::GetByTile(TileIndex(this->window_number));
 
 		BadgeTextFilter btf(this->string_filter, GSF_AIRCRAFT);
+		BadgeDropdownFilter bdf(this->badge_filter_choices);
 
 		/* Make list of all available planes.
 		 * Also check to see if the previously selected plane is still available,
@@ -1497,6 +1521,7 @@ struct BuildVehicleWindow : Window {
 			if (!IsEngineBuildable(eid, VEH_AIRCRAFT, _local_company)) continue;
 			/* First VEH_END window_numbers are fake to allow a window open for all different types at once */
 			if (!this->listview_mode && !CanVehicleUseStation(eid, st)) continue;
+			if (!bdf.Filter(e->badges)) continue;
 
 			/* Filter by name or NewGRF extra text */
 			if (!FilterByText(e) && !btf.Filter(e->badges)) continue;

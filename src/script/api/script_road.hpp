@@ -446,6 +446,8 @@ public:
 	 * @exception ScriptStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION
 	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS
 	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN
+	 * @exception ScriptError::ERR_BRIDGE_TOO_LOW
+	 * @exception ScriptError::ERR_STATION_TOO_SPREAD_OUT
 	 * @return Whether the station has been/can be build or not.
 	 */
 	static bool BuildRoadStation(TileIndex tile, TileIndex front, RoadVehicleType road_veh_type, StationID station_id);
@@ -471,6 +473,8 @@ public:
 	 * @exception ScriptStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION
 	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS
 	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN
+	 * @exception ScriptError::ERR_BRIDGE_TOO_LOW
+	 * @exception ScriptError::ERR_STATION_TOO_SPREAD_OUT
 	 * @return Whether the station has been/can be build or not.
 	 */
 	static bool BuildDriveThroughRoadStation(TileIndex tile, TileIndex front, RoadVehicleType road_veh_type, StationID station_id);

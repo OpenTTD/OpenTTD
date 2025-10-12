@@ -700,8 +700,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Fizetség 10 egységnyi (vagy 10000 liter) rakomány 20 négyzet távolságra való szállítsa esetén
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Mind
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Egyik sem
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK})Összes rakomány megjelenítése a rakományok szállítási díja grafikonon
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ne mutasson rakományokat a rakományok szállítási díja grafikonon
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK})Összes rakomány megjelenítése a grafikonon
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ne mutasson rakományokat a grafikonon
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Adott rakomány grafikonjának mutatása be/ki
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -1753,6 +1753,9 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :A térkép mozg
 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Finomított nézőpont-görgetés: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Beállítható, hogy a fő nézet hogyan mozogjon egy adott pozícióra a térképre kattintáskor ha egy adott objektumra történik mozgás. Bekapcsolva a nézet egyenletesen mozog, kikapcsolva közvetlenül a kijelölt helyre ugrik
+
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT                  :Tradicionális eszköztár menü kiválasztási viselkedése:{STRING}
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT_HELPTEXT         :A kiválasztás viselkedése az eszköztár menüben. Ha kikapcsolt, az eszköztár menük nyitva maradnak, amíg nincs kiválasztva valami. Ha bekapcsolt, akkor a menük az egér gomb elengedésére aktiválódnak.
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Területinformációk mutatása építési eszközök használatakor: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Mezők közti távolságok és magasságkülönbségek megjelenítése húzás közben építkezéskor
@@ -2846,10 +2849,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Üzemelt
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Állomás egyesítése
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Különálló állomás építése
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Különálló állomás építése
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Ellenőrző pont egyesítése
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Különálló ellenőrző pont építése
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Különálló ellenőrző pont építése
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Kikapcsolva, mivel semmilyen jármű sem tudná használni
@@ -3409,6 +3412,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Szűrő:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Fájl felülírása
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Biztos vagy benne, hogy felülírod a létező fájlt?
+STR_SAVELOAD_DELETE_TITLE                                       :{WHITE}Fájl törlése
+STR_SAVELOAD_DELETE_WARNING                                     :{YELLOW}Biztosan törölni akarod ezt a fájlt?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (Könyvtár)
 STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Szülőkönyvtár)
 
@@ -3487,8 +3492,11 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Délnyug
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Szárazföld
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Víz
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Véletlen
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Véletlen
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Kézi
+
+###length 3
+STR_MAPGEN_BORDER_RANDOMIZE                                     :Véletlen
+STR_MAPGEN_BORDER_MANUAL                                        :Kézi
+STR_MAPGEN_BORDER_INFINITE_WATER                                :Végtelen víz
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Magasságtérkép elforgatása:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Magasságtérkép neve:
@@ -3747,7 +3755,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Felirat 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Városok ({COMMA}, {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nincs -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Város){BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{BLACK} ({COMMA}) {YELLOW}{CITY_ICON}
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Városnevek - kattints egy névre a város megnézéséhez. Ctrl+kattintással új nézet nyílik a városnál
 STR_TOWN_POPULATION                                             :{BLACK}Világnépesség: {COMMA}
 
@@ -4244,6 +4252,7 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Mindenre, kivé
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maximális vonóerő: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Hatótávolság: {GOLD}{COMMA} mező
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Típus: {GOLD}{STRING}
+STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Sín típusok: {GOLD}{STRING}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Minden rakománytípus
@@ -4427,6 +4436,7 @@ STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Üzemeletetés:
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Üzemeltetés: {CURRENCY_LONG}/időszak
 STR_ENGINE_PREVIEW_CAPACITY                                     :Kapacitás: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :Kapacitás: {CARGO_LONG}, {CARGO_LONG}
+STR_ENGINE_PREVIEW_RAILTYPES                                    :Sín típusok: {STRING}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} lecserélése - {STRING}
@@ -5117,7 +5127,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Nem vál
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...{CURRENCY_LONG} a megengedett legnagyobb kölcsön.
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Nem kölcsönözhetsz több pénzt...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... nincs visszafizetendő kölcsönöd
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... nincs visszafizetendő kölcsönöd
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} kellene hozzá
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Nem törleszthetsz a kölcsönből...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Nem tudod a banktól kölcsönkapott pénzt továbbadni...
@@ -5323,6 +5333,13 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}A kezdet
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... a híd mindkét végének szárazföldön kell lennie
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... a híd túl hosszú
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}A híd a térképen túl végződne
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}A híd túl alacsony az állomáshoz
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}A híd túl alacsony a megállóhoz
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}A híd túl alacsony a kikötőhöz
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}A híd túl alacsony a bójához
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}A híd túl alacsony a vasúti ellenőrzőponthoz
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}BA híd túl alacsony az útponthoz
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}A híd túl alacsony a zároláshoz
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Nem áshatsz ide alagutat...
@@ -5980,6 +5997,8 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :Megfigyelő, {1
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_CITY                                          :{TOWN} {CITY_ICON}
+STR_VIEWPORT_TOWN_CITY_POP                                      :{TOWN} ({COMMA}) {CITY_ICON}
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data

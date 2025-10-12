@@ -637,8 +637,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}将 10 单位（或 10,000 升）货物运输 20 个方格
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}所有
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}无
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}在货物运输价格表中显示所有货物
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}在货物运费表中隐藏所有货物
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}在图表中显示所有货物
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}在图表中隐藏所有货物
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}切换显示货物
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -1042,6 +1042,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :马来西亚林
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :拉脱维亚拉特
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :葡萄牙埃斯库多
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :乌克兰格里夫纳
+STR_GAME_OPTIONS_CURRENCY_VND                                   :越南盾
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :自动保存
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :选择自动保存周期
@@ -1688,6 +1689,9 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :鼠标左键移
 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :平滑视角滚动：{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :设置在缩略图上点击或者发出转到特定目标的命令时主视角的转换方式。启用时，视角平缓滚动，否则直接跳转到目标位置
+
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT                  :自动选择工具栏下拉菜单项目：{STRING}
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT_HELPTEXT         :选择工具栏下拉菜单的行为。关闭时，点选工具栏按钮后下拉菜单将保持常开，直到做出选择为止。启用时，将自动选取鼠标松开时指向的项目。
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :建设时显示测量数据：{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :建设时显示距离格数和地形高差
@@ -2781,10 +2785,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}维护�
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}合并车站
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}建造分体车站
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}建造分体车站
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}合并路点
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}建造分体路点
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}建造分体路点
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}由于没有可使用此类设施的载具，已禁用此设施
@@ -3344,6 +3348,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF�
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}搜索：
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}覆盖文件
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}确定覆盖已有文件吗？
+STR_SAVELOAD_DELETE_TITLE                                       :{WHITE}删除文件
+STR_SAVELOAD_DELETE_WARNING                                     :{YELLOW}确定删除文件吗？
 STR_SAVELOAD_DIRECTORY                                          :{STRING}（目录）
 STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING}（上级目录）
 
@@ -3422,6 +3428,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}西南
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}自由形式
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}水面
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}随机
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}随机
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}手动
 
@@ -3682,7 +3690,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}为标�
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}城镇（{COMMA} 座，共 {COMMA}座）
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- 无 -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK}（{COMMA}）
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW}（都市）{BLACK}（{COMMA}）
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK} 城镇名称 - 点击名称可以将屏幕中心{}移动到城镇所在的位置。按住 <Ctrl> 点选将会在新视点中显示城镇位置
 STR_TOWN_POPULATION                                             :{BLACK}地图人口总数：{COMMA}
 
@@ -3857,8 +3864,8 @@ STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}
 STR_STATION_VIEW_GROUP                                          :{BLACK}群组方式
 STR_STATION_VIEW_WAITING_STATION                                :等候装载的货物，按站名排序
 STR_STATION_VIEW_WAITING_AMOUNT                                 :等候装载的货物，按总量排序
-STR_STATION_VIEW_PLANNED_STATION                                :计划发出的货物，按站名排序
-STR_STATION_VIEW_PLANNED_AMOUNT                                 :计划发出的货物，按总量排序
+STR_STATION_VIEW_PLANNED_STATION                                :计划处理的货物，按站名排序
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :计划处理的货物，按总量排序
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT}来自 {STATION}
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT}途经 {STATION}
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT}前往 {STATION}
@@ -4179,6 +4186,7 @@ STR_PURCHASE_INFO_ALL_BUT                                       :所有货物（
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}最大牵引力：{GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}航行距离：{GOLD}{COMMA} 格
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}飞机类型：{GOLD}{STRING}
+STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}轨道类型：{GOLD}{STRING}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :所有货物类型
@@ -4362,6 +4370,7 @@ STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :运行费用：
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :运行费用：{CURRENCY_LONG}/周期
 STR_ENGINE_PREVIEW_CAPACITY                                     :容量：{CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :容量：{CARGO_LONG}、{CARGO_LONG}
+STR_ENGINE_PREVIEW_RAILTYPES                                    :轨道类型：{STRING}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}更新 {STRING} - {STRING}
@@ -5052,7 +5061,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}不能�
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}……最大贷款额度是{CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}无法借更多钱……
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}……没有要偿还的贷款
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}……没有要偿还的贷款
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}……需要{CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}不能偿还贷款……
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}不能给予银行贷款……
@@ -5258,6 +5267,13 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}起止�
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}……桥梁两端必须都位于地面上
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}……桥梁太长
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}桥梁终点将越出地图
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}桥梁过低，无法建设车站
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}桥梁过低，无法建设车站
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}桥梁过低，无法建设码头
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}桥梁过低，无法放置浮标
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}桥梁过低，无法建设路点
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}桥梁过低，无法建设路点
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}桥梁过低，无法建设船闸
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}不能在这里开凿隧道……
@@ -5874,6 +5890,8 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :观众，{1:STR
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{TOWN}（{COMMA}）
+STR_VIEWPORT_TOWN_CITY                                          :{TOWN}{CITY_ICON}
+STR_VIEWPORT_TOWN_CITY_POP                                      :{TOWN}（{COMMA}）{CITY_ICON}
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data

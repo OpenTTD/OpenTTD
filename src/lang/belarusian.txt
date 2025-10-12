@@ -1957,6 +1957,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Перамяш�
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Павольная пракрутка ў вакне прагляду: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Кантралюе, што адбудзецца ў галоўным вакне, калі пстрыкнуць у малым вакне прагляду па нейкай кропцы. Калі ўключана, позірк будзе павольна перамяшчацца па мапе ў галоўным вакне. Калі выключана — экран адразу прыгне ў вызначанае месца.
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Паказваць замеры пры будаўніцтве: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Паказваць адлегласьць у клетках і розьніцу ў вышынях, калі нешта будуецца "працяжкай" (з націснутай кнопкай мышы).
 
@@ -3045,10 +3046,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Утры
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Аб'яднаць станцыі
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Пабудаваць асобную станцыю
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Пабудаваць асобную станцыю
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Аб'яднаць маршрутныя пункты
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Пабудаваць асобны маршрутны пункт
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Пабудаваць асобны маршрутны пункт
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Адключана, бо няма прыдатных транспартных сродкаў для гэтай інфраструктуры
@@ -3630,6 +3631,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Паўд
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Зямля
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Вада
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Выпадковы
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Выпадковыя
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Уручную
 
@@ -3877,7 +3880,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Увяд
 # Town directory window
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Няма -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Мегаполіс){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Сьпіс гарадоў: пстрычка па назьве паказвае горад у асноўным вакне. Ctrl+пстрычка — у дадатковым вакне.
 STR_TOWN_POPULATION                                             :{BLACK}Насельніцтва: {COMMA}
 
@@ -5244,7 +5246,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Нема
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... больш за {CURRENCY_LONG} пазыкі Вам не дадуць.
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Немагчыма заняць больш грошай...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... пазыка цалкам пагашана
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... пазыка цалкам пагашана
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... патрабуецца {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Немагчыма пагасіць пазыку...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Немагчыма аддаць пазычаныя банкам грошы...

@@ -1649,6 +1649,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Sol Fare Tuşu 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Düzgün bakış noktası kaydırması: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Küçük haritaya tıklandığında veya harita üzerindeki belli bir nesneye gidilmesi için komut verildiğinde ana görüntünün nasıl kaydırılacağını kontrol eder. Etkinleştirildiğinde harita kayarak ilerler, kapatıldığında ise doğrudan hedeflenen noktaya atlama yapar.
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :İnşa araçları kullanılırken ölçüm ipucu göster: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :İnşaat işlemleri sırasında fareyi sürükleyince kare-uzaklıkları ve yükseklik farklarını göster.
 
@@ -2723,10 +2724,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Bakım m
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}İstasyonu birleştir
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Ayrı bir istasyon inşa et
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Ayrı bir istasyon inşa et
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Yerimini birleştir
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Ayrı bir yerimi yap
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Ayrı bir yerimi yap
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Şu anda bu altyapı için hiçbir araç bulunmadığından devre dışı bırakıldı
@@ -3337,6 +3338,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Güneyba
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Serbest
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Su
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Rastgele
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Rastgele
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}El ile
 
@@ -3591,7 +3594,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Tabela i
 # Town directory window
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Hiçbiri -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Şehir){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Şehir isimleri - şehre bakmak için ismine tıkla. Ctrl + Sol Tıklama şehrin olduğu yere ait bir görünüm penceresi açar.
 STR_TOWN_POPULATION                                             :{BLACK}Dünya nüfusu: {COMMA}
 
@@ -4937,7 +4939,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Yönetic
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... izin verilen azami borç {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Daha fazla kredi alınamaz...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... ödenecek borç yok
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... ödenecek borç yok
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} gerekli
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kredi ödenemiyor...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Bankadan borç alınan para verilemez...

@@ -10,6 +10,7 @@
 #include "../stdafx.h"
 #include "../fontcache.h"
 #include "../gfx_layout.h"
+#include "../spritecache.h"
 #include "../string_func.h"
 #include "../zoom_func.h"
 #include "spritefontcache.h"
@@ -93,6 +94,7 @@ void InitializeUnicodeGlyphMap(FontSize fs)
 			SetUnicodeGlyph(fs, unicode_map.code, 0);
 		} else {
 			SpriteID sprite = base + key - ASCII_LETTERSTART;
+			if (!SpriteExists(sprite)) continue;
 			SetUnicodeGlyph(fs, unicode_map.code, sprite);
 		}
 	}
@@ -156,14 +158,14 @@ class SpriteFontCacheFactory : public FontCacheFactory {
 public:
 	SpriteFontCacheFactory() : FontCacheFactory("sprite", "Sprite font provider") {}
 
-	std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype) override
+	std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype) const override
 	{
 		if (fonttype != FontType::Sprite) return nullptr;
 
 		return std::make_unique<SpriteFontCache>(fs);
 	}
 
-	bool FindFallbackFont(struct FontCacheSettings *, const std::string &, class MissingGlyphSearcher *) override
+	bool FindFallbackFont(struct FontCacheSettings *, const std::string &, class MissingGlyphSearcher *) const override
 	{
 		return false;
 	}

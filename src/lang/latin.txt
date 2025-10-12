@@ -1615,6 +1615,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Tabula movetur 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Movere conspectum leniter: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Quomodo conspectus vagatur ad quemdam locum globulo sinistro in tabula premendi aut cum iubetur vagari ad quamdam rem in tabula. Electa, conspectus leniter vagatur. Neglecta, statim salit ad locum
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Ostendere nuntium adiuvans apud varia ferramenta construendi: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Ostendere spatium atque altitudinem inter tegulas dum mus trahitur in construendo
 
@@ -2512,10 +2513,10 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Produntu
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Iungere stationem
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Struere discretam stationem
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Struere discretam stationem
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Iungere interlocum
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Struere discretum interlocum
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Struere discretum interlocum
 
 # Generic toolbar
 
@@ -2999,6 +3000,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Africus
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Quilibet
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Aqua
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Fortuiti
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Fortuiti
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manu
 
@@ -3231,7 +3234,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Inscribe
 # Town directory window
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nulla -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Urbs){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nomina oppidorum - preme in nomen ut conspectus supra oppidum locetur. Ctrl+Preme ut novam fenestram conspectus supra oppidum aperiatur
 STR_TOWN_POPULATION                                             :{BLACK}Incolae mundi: {COMMA}
 
@@ -4408,7 +4410,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Non lice
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... creditum maximum est {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Non licet plurem pecuniae mutuari...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... non est creditum solvendum
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... non est creditum solvendum
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} poscitur
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Non licet creditum reddere...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Non licet pecuniam mutuam largiri...

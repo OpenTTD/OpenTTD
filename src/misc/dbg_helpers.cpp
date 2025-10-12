@@ -91,7 +91,7 @@ bool DumpTarget::FindKnownName(size_t type_id, const void *ptr, std::string &nam
 	KNOWN_NAMES::const_iterator it = m_known_names.find(KnownStructKey(type_id, ptr));
 	if (it != m_known_names.end()) {
 		/* we have found it */
-		name = (*it).second;
+		name = it->second;
 		return true;
 	}
 	return false;

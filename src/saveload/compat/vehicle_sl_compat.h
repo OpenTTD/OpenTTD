@@ -100,7 +100,7 @@ const SaveLoadCompat _vehicle_train_sl_compat[] = {
 	SLC_VAR("common"),
 	SLC_VAR("crash_anim_pos"),
 	SLC_VAR("force_proceed"),
-	SLC_VAR("railtype"),
+	SLC_NULL(1, SL_MIN_VERSION, SLV_ENGINE_MULTI_RAILTYPE),
 	SLC_VAR("track"),
 	SLC_VAR("flags"),
 	SLC_NULL(2, SLV_2, SLV_60),

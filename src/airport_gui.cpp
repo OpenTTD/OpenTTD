@@ -84,7 +84,7 @@ static void PlaceAirport(TileIndex tile)
 
 /** Airport build toolbar window handler. */
 struct BuildAirToolbarWindow : Window {
-	int last_user_action = INVALID_WID_AT; // Last started user action.
+	WidgetID last_user_action = INVALID_WIDGET; // Last started user action.
 
 	BuildAirToolbarWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{

@@ -16,7 +16,6 @@
 #include "news_func.h"
 #include "newgrf_engine.h"
 #include "newgrf_sound.h"
-#include "spritecache.h"
 #include "error_func.h"
 #include "strings_func.h"
 #include "command_func.h"
@@ -200,7 +199,7 @@ void GetRotorImage(const Aircraft *v, EngineImageType image_type, VehicleSpriteS
 static void GetAircraftIcon(EngineID engine, EngineImageType image_type, VehicleSpriteSeq *result)
 {
 	const Engine *e = Engine::Get(engine);
-	uint8_t spritenum = e->u.air.image_index;
+	uint8_t spritenum = e->VehInfo<AircraftVehicleInfo>().image_index;
 
 	if (IsCustomVehicleSpriteNum(spritenum)) {
 		GetCustomVehicleIcon(engine, DIR_W, image_type, result);
@@ -267,7 +266,7 @@ void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height, int &xoff
  */
 CommandCost CmdBuildAircraft(DoCommandFlags flags, TileIndex tile, const Engine *e, Vehicle **ret)
 {
-	const AircraftVehicleInfo *avi = &e->u.air;
+	const AircraftVehicleInfo *avi = &e->VehInfo<AircraftVehicleInfo>();
 	const Station *st = Station::GetByTile(tile);
 
 	/* Prevent building aircraft types at places which can't handle them */
@@ -438,7 +437,7 @@ static void CheckIfAircraftNeedsService(Aircraft *v)
 Money Aircraft::GetRunningCost() const
 {
 	const Engine *e = this->GetEngine();
-	uint cost_factor = GetVehicleProperty(this, PROP_AIRCRAFT_RUNNING_COST_FACTOR, e->u.air.running_cost);
+	uint cost_factor = GetVehicleProperty(this, PROP_AIRCRAFT_RUNNING_COST_FACTOR, e->VehInfo<AircraftVehicleInfo>().running_cost);
 	return GetPrice(PR_RUNNING_AIRCRAFT, cost_factor, e->GetGRF());
 }
 
@@ -1674,7 +1673,7 @@ static void AircraftEventHandler_Flying(Aircraft *v, const AirportFTAClass *apc)
 			if (current->heading == landingtype) {
 				/* save speed before, since if AirportHasBlock is false, it resets them to 0
 				 * we don't want that for plane in air
-				 * hack for speed thingie */
+				 * hack for speed thingy */
 				uint16_t tcur_speed = v->cur_speed;
 				uint16_t tsubspeed = v->subspeed;
 				if (!AirportHasBlock(v, current, apc)) {

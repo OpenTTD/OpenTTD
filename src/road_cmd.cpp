@@ -110,15 +110,14 @@ static bool CompareRoadTypes(const RoadType &first, const RoadType &second)
  */
 void InitRoadTypes()
 {
-	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
-		RoadTypeInfo *rti = &_roadtypes[rt];
-		ResolveRoadTypeGUISprites(rti);
-		if (rti->flags.Test(RoadTypeFlag::Hidden)) _roadtypes_hidden_mask.Set(rt);
-	}
-
 	_sorted_roadtypes.clear();
-	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
-		if (_roadtypes[rt].label == 0) continue;
+	for (RoadTypeInfo &rti : _roadtypes) {
+		RoadType rt = rti.Index();
+
+		ResolveRoadTypeGUISprites(&rti);
+		_roadtypes_hidden_mask.Set(rt, rti.flags.Test(RoadTypeFlag::Hidden));
+
+		if (rti.label == 0) continue;
 		_sorted_roadtypes.push_back(rt);
 	}
 	std::sort(_sorted_roadtypes.begin(), _sorted_roadtypes.end(), CompareRoadTypes);
@@ -129,43 +128,38 @@ void InitRoadTypes()
  */
 RoadType AllocateRoadType(RoadTypeLabel label, RoadTramType rtt)
 {
-	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
-		RoadTypeInfo *rti = &_roadtypes[rt];
+	auto it = std::ranges::find(_roadtypes, 0, &RoadTypeInfo::label);
+	if (it == std::end(_roadtypes)) return INVALID_ROADTYPE;
 
-		if (rti->label == 0) {
-			/* Set up new road type */
-			*rti = _original_roadtypes[(rtt == RTT_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD];
-			rti->label = label;
-			rti->alternate_labels.clear();
-			rti->flags = {};
-			rti->introduction_date = CalendarTime::INVALID_DATE;
+	RoadTypeInfo &rti = *it;
+	RoadType rt = rti.Index();
 
-			/* Make us compatible with ourself. */
-			rti->powered_roadtypes = rt;
+	/* Set up new road type based on default tram or road. */
+	rti = _original_roadtypes[(rtt == RTT_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD];
+	rti.label = label;
+	rti.alternate_labels.clear();
+	rti.flags = {};
+	rti.introduction_date = CalendarTime::INVALID_DATE;
 
-			/* We also introduce ourself. */
-			rti->introduces_roadtypes = rt;
+	/* Make us compatible with ourself. */
+	rti.powered_roadtypes = rt;
 
-			/* Default sort order; order of allocation, but with some
-			 * offsets so it's easier for NewGRF to pick a spot without
-			 * changing the order of other (original) road types.
-			 * The << is so you can place other roadtypes in between the
-			 * other roadtypes, the 7 is to be able to place something
-			 * before the first (default) road type. */
-			rti->sorting_order = rt << 2 | 7;
+	/* We also introduce ourself. */
+	rti.introduces_roadtypes = rt;
 
-			/* Set bitmap of road/tram types */
-			if (rtt == RTT_TRAM) {
-				_roadtypes_tram.Set(rt);
-			} else {
-				_roadtypes_road.Set(rt);
-			}
+	/* Default sort order; order of allocation, but with some
+	 * offsets so it's easier for NewGRF to pick a spot without
+	 * changing the order of other (original) road types.
+	 * The << is so you can place other roadtypes in between the
+	 * other roadtypes, the 7 is to be able to place something
+	 * before the first (default) road type. */
+	rti.sorting_order = rt << 2 | 7;
 
-			return rt;
-		}
-	}
+	/* Set bitmap of road/tram types */
+	_roadtypes_road.Set(rt, rtt == RTT_ROAD);
+	_roadtypes_tram.Set(rt, rtt == RTT_TRAM);
 
-	return INVALID_ROADTYPE;
+	return rt;
 }
 
 /**
@@ -282,7 +276,7 @@ CommandCost CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, R
 
 	/* check if you're allowed to remove the street owned by a town
 	 * removal allowance depends on difficulty setting */
-	CommandCost ret = CheckforTownRating(flags, t, ROAD_REMOVE);
+	CommandCost ret = CheckforTownRating(flags, t, TownRatingCheckType::RoadRemove);
 	if (ret.Failed()) return ret;
 
 	/* Get a bitmask of which neighbouring roads has a tile */
@@ -794,7 +788,7 @@ CommandCost CmdBuildRoad(DoCommandFlags flags, TileIndex tile, RoadBits pieces, 
 
 		case MP_TUNNELBRIDGE: {
 			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) goto do_clear;
-			/* Only allow building the outern roadbit, so building long roads stops at existing bridges */
+			/* Only allow building the outer roadbit, so building long roads stops at existing bridges */
 			if (MirrorRoadBits(DiagDirToRoadBits(GetTunnelBridgeDirection(tile))) != pieces) goto do_clear;
 			if (HasTileRoadType(tile, rtt)) return CommandCost(STR_ERROR_ALREADY_BUILT);
 			/* Don't allow adding roadtype to the bridge/tunnel when vehicles are already driving on it */
@@ -1699,9 +1693,18 @@ static void DrawRoadBits(TileInfo *ti)
 /** Tile callback function for rendering a road tile to the screen */
 static void DrawTile_Road(TileInfo *ti)
 {
+	BridgePillarFlags blocked_pillars{};
 	switch (GetRoadTileType(ti->tile)) {
 		case ROAD_TILE_NORMAL:
 			DrawRoadBits(ti);
+
+			if (IsBridgeAbove(ti->tile)) {
+				RoadBits bits = GetAllRoadBits(ti->tile);
+				if ((bits & ROAD_NE) != 0) blocked_pillars.Set(BridgePillarFlag::EdgeNE);
+				if ((bits & ROAD_SE) != 0) blocked_pillars.Set(BridgePillarFlag::EdgeSE);
+				if ((bits & ROAD_SW) != 0) blocked_pillars.Set(BridgePillarFlag::EdgeSW);
+				if ((bits & ROAD_NW) != 0) blocked_pillars.Set(BridgePillarFlag::EdgeNW);
+			}
 			break;
 
 		case ROAD_TILE_CROSSING: {
@@ -1809,7 +1812,7 @@ static void DrawTile_Road(TileInfo *ti)
 
 			/* Draw rail catenary */
 			if (HasRailCatenaryDrawn(GetRailType(ti->tile))) DrawRailCatenary(ti);
-
+			blocked_pillars = {BridgePillarFlag::EdgeSW, BridgePillarFlag::EdgeNE, BridgePillarFlag::EdgeNW, BridgePillarFlag::EdgeSE};
 			break;
 		}
 
@@ -1855,10 +1858,11 @@ static void DrawTile_Road(TileInfo *ti)
 			}
 
 			DrawRailTileSeq(ti, dts, TO_BUILDINGS, relocation, 0, palette);
+			/* Depots can't have bridges above so no blocked pillars. */
 			break;
 		}
 	}
-	DrawBridgeMiddle(ti);
+	DrawBridgeMiddle(ti, blocked_pillars);
 }
 
 /**
@@ -2482,7 +2486,7 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 		 * acceptance of destructive actions. */
 		if (owner == OWNER_TOWN) {
 			Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
-			CommandCost ret = CheckforTownRating({}, t, tt == MP_TUNNELBRIDGE ? TUNNELBRIDGE_REMOVE : ROAD_REMOVE);
+			CommandCost ret = CheckforTownRating({}, t, tt == MP_TUNNELBRIDGE ? TownRatingCheckType::TunnelBridgeRemove : TownRatingCheckType::RoadRemove);
 			if (ret.Failed()) {
 				error = std::move(ret);
 				continue;
@@ -2616,6 +2620,11 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 	return found_convertible_road ? cost : error;
 }
 
+static CommandCost CheckBuildAbove_Road(TileIndex tile, DoCommandFlags flags, Axis, int)
+{
+	if (!IsRoadDepot(tile)) return CommandCost();
+	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
+}
 
 /** Tile callback functions for road tiles */
 extern const TileTypeProcs _tile_type_road_procs = {
@@ -2633,4 +2642,5 @@ extern const TileTypeProcs _tile_type_road_procs = {
 	VehicleEnter_Road,       // vehicle_enter_tile_proc
 	GetFoundation_Road,      // get_foundation_proc
 	TerraformTile_Road,      // terraform_tile_proc
+	CheckBuildAbove_Road, // check_build_above_proc
 };

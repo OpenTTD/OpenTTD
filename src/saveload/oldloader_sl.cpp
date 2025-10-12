@@ -932,7 +932,7 @@ static bool LoadOldCompanyEconomy(LoadgameState &ls, int)
 
 	if (!LoadChunk(ls, &c->cur_economy, _company_economy_chunk)) return false;
 
-	/* Don't ask, but the number in TTD(Patch) are inversed to OpenTTD */
+	/* Don't ask, but the number in TTD(Patch) are inverted to OpenTTD */
 	c->cur_economy.income   = -c->cur_economy.income;
 	c->cur_economy.expenses = -c->cur_economy.expenses;
 
@@ -1065,7 +1065,7 @@ static const OldChunks vehicle_train_chunk[] = {
 	OCL_SVAR(  OC_UINT8, Train, track ),
 	OCL_SVAR(  OC_UINT8, Train, force_proceed ),
 	OCL_SVAR( OC_UINT16, Train, crash_anim_pos ),
-	OCL_SVAR(  OC_UINT8, Train, railtype ),
+	OCL_NULL( 1 ), // railtype
 
 	OCL_NULL( 5 ), ///< Junk
 
@@ -1305,8 +1305,6 @@ bool LoadOldVehicle(LoadgameState &ls, int num)
 					};
 					if (v->spritenum / 2 >= lengthof(spriteset_rail)) return false;
 					v->spritenum = spriteset_rail[v->spritenum / 2]; // adjust railway sprite set offset
-					/* Should be the original values for monorail / rail, can't use RailType constants */
-					Train::From(v)->railtype = static_cast<RailType>(type == 0x25 ? 1 : 0);
 					break;
 				}
 

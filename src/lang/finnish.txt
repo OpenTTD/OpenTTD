@@ -637,8 +637,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Maksu 10 yksikön (tai 10 000 litran) rahdin kuljettamisesta 20 ruudun päähän
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Kaikki
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Ei mitään
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Näytä kaikki rahdit rahtitaksojen kaaviossa
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Älä näytä mitään rahteja rahtitaksojen kaaviossa
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Näytä kaaviossa kaikki rahdit
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Älä näytä kaaviossa mitään rahteja
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Valitse, näytetäänkö tämän rahdin kuvaaja
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -1689,6 +1689,9 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Siirrä karttaa
 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Näkymän tasainen vieritys: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Hallitse, kuinka päänäkymä siirtyy valittuun paikkaan napsautettaessa karttaa tai käytettäessä näkymän sijaintia muuttavaa komentoa. Mikäli käytössä, päänäkymä siirtyy uuteen sijaintiin pehmeästi, muutoin se hyppää suoraan valittuun sijaintiin.
+
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT                  :Perinteinen työkalupalkin valikoiden valintatapa: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT_HELPTEXT         :Valitse työkalupalkin valikoiden valintatapa. Jos tämä asetus on pois päältä, työkalupalkin valikot pysyvät auki, kunnes jotain valitaan. Jos tämä on päällä, työkalupalkin valikot aktivoituvat hiiren painikkeen vapauttamisesta.
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Näytä mittauksen työkaluvihje, kun käytetään rakennustyökaluja: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Näytä etäisyydet ja korkeuserot vedettäessä rakennustoimintojen aikana
@@ -2782,10 +2785,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Ylläpit
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Liitä asema
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Rakenna erillinen asema
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Rakenna erillinen asema
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Liitä reittipiste
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Rakenna erillinen reittipiste
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Rakenna erillinen reittipiste
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Ei käytössä, koska tälle infrastruktuurille ei ole kulkuneuvoja tällä hetkellä
@@ -3345,6 +3348,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Suodatin:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Tiedosto on jo olemassa
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Haluatko varmasti korvata olemassaolevan tiedoston?
+STR_SAVELOAD_DELETE_TITLE                                       :{WHITE}Poista tiedosto
+STR_SAVELOAD_DELETE_WARNING                                     :{YELLOW}Haluatko varmasti poistaa tiedoston?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (hakemisto)
 STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (ylähakemisto)
 
@@ -3423,8 +3428,11 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Lounas
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Vapaa
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vesi
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Sattumanvarainen
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Sattumanvarainen
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuaalinen
+
+###length 3
+STR_MAPGEN_BORDER_RANDOMIZE                                     :Satunnaiset
+STR_MAPGEN_BORDER_MANUAL                                        :Aseta käsin
+STR_MAPGEN_BORDER_INFINITE_WATER                                :Ääretön vesi
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Korkeuskartan kierto:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Korkeuskartan nimi:
@@ -3683,7 +3691,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Syötä 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Kunnat ({COMMA}/{COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ei mitään -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (kaupunki){BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{BLACK} ({COMMA}) {YELLOW}{CITY_ICON}
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Kuntien nimet – keskitä päänäkymä kuntaan napsauttamalla nimeä. Ctrl+napsautus avaa uuden näkymäikkunan kunnan sijaintiin
 STR_TOWN_POPULATION                                             :{BLACK}Maailman asukasluku: {COMMA}
 
@@ -4180,6 +4188,7 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Kaikki paitsi {
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maksimivetovoima: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Toimintasäde: {GOLD}{COMMA} ruutua
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Ilma-alustyyppi: {GOLD}{STRING}
+STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Raidetyypit: {GOLD}{STRING}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Kaikki rahtityypit
@@ -4363,6 +4372,7 @@ STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Käyttökustann
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Käyttökustannukset: {CURRENCY_LONG}/jakso
 STR_ENGINE_PREVIEW_CAPACITY                                     :Kapasiteetti: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :Kapasiteetti: {CARGO_LONG}, {CARGO_LONG}
+STR_ENGINE_PREVIEW_RAILTYPES                                    :Raidetyypit: {STRING}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Korvaa {STRING} – {STRING}
@@ -4378,18 +4388,18 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :ajoneuvoja
 STR_REPLACE_VEHICLE_SHIP                                        :laivoja
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :lentokoneita
 
-STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Valitse korvattava veturityyppi.
-STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Valitse vasemmalla näkyvän veturityypinn korvaava uusi veturityyppi.
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Valitse korvattava liikennevälineen tyyppi
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Valitse uusi liikennevälineen tyyppi, jota haluat käyttää vasemmalla valitun liikennevälinetyypin tilalla
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Aloita kulkuneuvojen korvaaminen
 STR_REPLACE_VEHICLES_NOW                                        :Korvaa kaikki kulkuneuvot heti
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Korvaa vain vanhat kulkuneuvot
-STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Napsauta aloittaaksesi vasemmalta valitun veturityypin korvauksen oikealta valitulla veturityypillä.
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Napsauta aloittaaksesi vasemmalta valitun liikennevälinetyypin korvaaminen oikealta valitulla liikennevälineen tyypillä
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Ei korvata
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Ei kulkuneuvoa valittuna
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} kun vanha
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Lopeta kulkuneuvojen korvaaminen
-STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Napsauta pysäyttääksesi vasemmalta valitun veturityypin korvauksen.
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Napsauta pysäyttääksesi vasemmalla valitun liikennevälineen korvaaminen
 
 STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Vaihda toiseen korvausikkunaan
 STR_REPLACE_ENGINES                                             :Veturit
@@ -4398,11 +4408,11 @@ STR_REPLACE_ALL_RAILTYPE                                        :Kaikki junat
 STR_REPLACE_ALL_ROADTYPE                                        :Kaikki ajoneuvot
 
 ###length 2
-STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Valitse rautatietyyppi, jolle veturikorvaukset tehdään.
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Valitse raidetyyppi, jolle veturikorvaukset tehdään
 STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Valitse tien tyyppi, jolle ajoneuvojen korvaukset tehdään
 ###next-name-looks-similar
 
-STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Näyttää, millä vasemmalta valittu veturi korvataan, jos millään.
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Näyttää, millä vasemmalta valittu liikenneväline korvataan, jos korvataan
 STR_REPLACE_RAIL_VEHICLES                                       :Junat
 STR_REPLACE_ELRAIL_VEHICLES                                     :Sähköjunat
 STR_REPLACE_MONORAIL_VEHICLES                                   :Yksiraiteiset
@@ -4701,7 +4711,7 @@ STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Näytä 
 
 # String parts to build the order string
 STR_ORDER_GO_TO_WAYPOINT                                        :Kierrä reittipisteen {WAYPOINT} kautta
-STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Mene pysäht. pisteen {WAYPOINT} kautta
+STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Mene pysähtymättä reittipisteen {WAYPOINT} kautta
 
 STR_ORDER_SERVICE_AT                                            :Huolto
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Huolto pysäytyksettä
@@ -5053,7 +5063,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Pääjoh
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... suurin sallittu lainan suuruus on {CURRENCY_LONG}.
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Lisälainan otto ei onnistu...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... ei lainaa maksettavana.
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... ei lainaa maksettavana.
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... tarvitaan {CURRENCY_LONG}.
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Lainaa ei voi lyhentää...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Pankista lainattua rahaa ei voi antaa pois...
@@ -5147,12 +5157,12 @@ STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Lentoken
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Vieressä on useampi kuin yksi olemassaoleva reittipiste.
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Liian lähellä toista reittipistettä
 
-STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}Junien reittipistettä ei voi rakentaa tähän...
+STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}Rautatien reittipistettä ei voi rakentaa tähän…
 STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Tien reittipistettä ei voi rakentaa tähän…
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Poijua ei voi sijoittaa tähän...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Reittipisteen nimeä ei voi muuttaa...
 
-STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Junien reittipistettä ei voi poistaa...
+STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Rautatien reittipistettä ei voi poistaa tästä…
 STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Tien reittipistettä ei voi poistaa tästä…
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Rautatien reittipiste täytyy poistaa ensin
 STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}Tien reittipiste täytyy poistaa ensin
@@ -5259,6 +5269,13 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Alku- ja
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... sillan molempien päiden pitää sijaita maalla.
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... silta liian pitkä
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Silta päättyisi kartan ulkopuolelle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Silta on liian matala aseman ylle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Silta on liian matala pysäkin ylle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Silta on liian matala sataman ylle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Silta on liian matala poijun ylle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Silta on liian matala rautatien reittipisteen ylle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Silta on liian matala tien reittipisteen ylle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Silta on liian matala sulun ylle
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Tunnelia ei voi rakentaa...
@@ -5875,6 +5892,8 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :Katsoja, {1:STR
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_CITY                                          :{TOWN} {CITY_ICON}
+STR_VIEWPORT_TOWN_CITY_POP                                      :{TOWN} ({COMMA}) {CITY_ICON}
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data

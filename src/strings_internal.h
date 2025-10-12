@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file strings_interal.h Types and functions related to the internal workings of formatting OpenTTD's strings. */
+/** @file strings_internal.h Types and functions related to the internal workings of formatting OpenTTD's strings. */
 
 #ifndef STRINGS_INTERNAL_H
 #define STRINGS_INTERNAL_H

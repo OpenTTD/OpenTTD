@@ -253,6 +253,11 @@ CommandCost CmdBuildObject(DoCommandFlags flags, TileIndex tile, ObjectType type
 					Owner o = GetTileOwner(t);
 					if (o != OWNER_NONE && o != OWNER_WATER) cost.AddCost(CheckOwnership(o, t));
 
+					/* If freeform edges are disabled, don't allow building on edge tiles. */
+					if (!_settings_game.construction.freeform_edges && (!IsInsideMM(TileX(t), 1, Map::MaxX() - 1) || !IsInsideMM(TileY(t), 1, Map::MaxY() - 1))) {
+						return CommandCost(STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP);
+					}
+
 					/* However, the tile has to be clear of vehicles. */
 					cost.AddCost(EnsureNoVehicleOnGround(t));
 				}
@@ -298,10 +303,10 @@ CommandCost CmdBuildObject(DoCommandFlags flags, TileIndex tile, ObjectType type
 			for (TileIndex t : ta) {
 				if (HasTileWaterGround(t)) {
 					if (!IsWaterTile(t)) {
-						Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlags{flags}.Reset(DoCommandFlag::NoWater).Set(DoCommandFlag::NoModifyTownRating), t);
+						Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlags{flags}.Reset(DoCommandFlag::NoWater), t);
 					}
 				} else {
-					Command<CMD_LANDSCAPE_CLEAR>::Do(flags | DoCommandFlag::NoModifyTownRating, t);
+					Command<CMD_LANDSCAPE_CLEAR>::Do(flags, t);
 				}
 			}
 		}
@@ -483,7 +488,7 @@ static void DrawTile_Object(TileInfo *ti)
 		DrawNewObjectTile(ti, spec);
 	}
 
-	DrawBridgeMiddle(ti);
+	DrawBridgeMiddle(ti, {});
 }
 
 static int GetSlopePixelZ_Object(TileIndex tile, uint x, uint y, bool)
@@ -929,6 +934,16 @@ static CommandCost TerraformTile_Object(TileIndex tile, DoCommandFlags flags, in
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }
 
+static CommandCost CheckBuildAbove_Object(TileIndex tile, DoCommandFlags flags, Axis, int height)
+{
+	const ObjectSpec *spec = ObjectSpec::GetByTile(tile);
+	if (spec->flags.Test(ObjectFlag::AllowUnderBridge) && GetTileMaxZ(tile) + spec->height <= height) {
+		return CommandCost();
+	}
+
+	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
+}
+
 extern const TileTypeProcs _tile_type_object_procs = {
 	DrawTile_Object,             // draw_tile_proc
 	GetSlopePixelZ_Object,       // get_slope_z_proc
@@ -944,4 +959,5 @@ extern const TileTypeProcs _tile_type_object_procs = {
 	nullptr,                        // vehicle_enter_tile_proc
 	GetFoundation_Object,        // get_foundation_proc
 	TerraformTile_Object,        // terraform_tile_proc
+	CheckBuildAbove_Object, // check_build_above_proc
 };

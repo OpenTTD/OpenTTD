@@ -1751,6 +1751,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Pohyb v mapě p
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Plynulé posouvání po mapě: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Ovládá jak se hlavní pohled posouvá na specifické místo na mapě, kliknutím na minimapu nebo spuštěním příkazu na posun na specifický objekt na mapě. Pokud zapnuto, pohled se posouvá plynule, pokud vypnuto, skáče pohled přímo na cílové místo
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Ukázat rozměry při použití stavebních nástrojů: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Zobrazovat vzdálenost a výškový rozdíl při výstavbě tahem.
 
@@ -2832,10 +2833,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Náklady
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Spojování stanic
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Postavit samostatnou stanici
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Postavit samostatnou stanici
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Spojování směrování
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Postavit samostatné směrování
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Postavit samostatné směrování
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Zakázáno, protože pro tento typ infrastruktury aktuálně nejsou dostupná žádná vozidla
@@ -3465,6 +3466,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Jihozáp
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}terén
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}voda
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}náhodně
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}náhodně
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}vlastní
 
@@ -3720,7 +3723,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Zadej n�
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Města ({COMMA} z {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nic -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (velkoměsto){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Jména měst - pohled na město zaměříš kliknutím na jeho jméno. Při stisknutém Ctrl otevřeš nový pohled
 STR_TOWN_POPULATION                                             :{BLACK}Populace světa: {COMMA}
 
@@ -5079,7 +5081,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Nelze p�
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... nejvyšší možná výše půjčky je {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Nelze půjčit více peněz...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... žádný dluh ke splacení
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... žádný dluh ke splacení
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... je potřeba {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Nelze splatit dluh...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Nelze darovat peníze půjčené z banky...

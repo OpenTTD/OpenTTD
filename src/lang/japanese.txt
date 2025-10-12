@@ -1567,6 +1567,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :左クリック
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :画面のスムーズスクロール: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :ミニマップでの移動や「現在位置に移動」などのコマンドを使用した際にメイン画面がどのように移動するかを設定します。有効にした場合はスムーズにスクロールして移動します。無効の場合は目的地に直接ジャンプします
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :測定ツールチップ表示: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :タイルをまたぐような建設活動の際に、距離や面積、高低差などの情報を表示するようになります
 
@@ -2601,10 +2602,10 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}供給�
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}停留施設を統合
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}統合せずに建設
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}統合せずに建設
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}通過点を統合
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}統合せずに建設
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}統合せずに建設
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}現在このインフラで運用できる車両がないため無効化されています
@@ -3175,6 +3176,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}南西
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}自由形成
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}水域
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}ランダム
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}ランダム設定
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}手動設定
 
@@ -3421,7 +3424,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}標識�
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}街一覧 ({COMMA} の {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- なし-
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (都市){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}街の名前 - メイン画面を街の場所に移動するには名前をクリックします。Ctrl+クリックで新しいビューポートに表示します
 STR_TOWN_POPULATION                                             :{BLACK}地域人口: {COMMA}人
 
@@ -4697,7 +4699,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}社長�
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}最高借入金は{CURRENCY_LONG}です
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}これ以上は借入できません
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}全額返済済みです
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}全額返済済みです
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}{CURRENCY_LONG}が必要です
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}借入金を返済できません
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}借入金を送金することはできません

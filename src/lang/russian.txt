@@ -1841,6 +1841,9 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :перемещ�
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Плавное перемещение: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Настройка перемещения обзора в основном окне при щелчке по миникарте или по команде обзора какого-нибудь объекта. Если включено, то обзор смещается плавно; если отключено - то мгновенно.
 
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT                  :Автовыбор пунктов выпадающего меню: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT_HELPTEXT         :Настройка поведения выпадающего меню. Если настроено "нет", то меню остаётся открытым, пока не выбран какой-либо его пункт. Если настроено "да", то пункт меню активируется при отпускании кнопки мыши.
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Показывать замеры при строительстве: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Показывать расстояния и разницу высот при строительстве
 
@@ -2945,10 +2948,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Соде
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Объединить станции
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Построить отдельную станцию
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Построить отдельную станцию
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Объединить маршрутные точки
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Поставить отдельную маршрутную точку
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Поставить отдельную маршрутную точку
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Отключено, так как нет подходящих транспортных средств для этой инфраструктуры
@@ -3520,6 +3523,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Фильтр:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Перезапись файла
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Перезаписать файл?
+STR_SAVELOAD_DELETE_TITLE                                       :{WHITE}Удаление файла
+STR_SAVELOAD_DELETE_WARNING                                     :{YELLOW}Вы уверены, что хотите удалить файл?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (Каталог)
 STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Родительский каталог)
 
@@ -3598,8 +3603,11 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Юго-�
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Свободный
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Водный
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Случайно
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Случайно
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Вручную
+
+###length 3
+STR_MAPGEN_BORDER_RANDOMIZE                                     :Случайно
+STR_MAPGEN_BORDER_MANUAL                                        :Вручную
+STR_MAPGEN_BORDER_INFINITE_WATER                                :Бескрайний океан
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Поворот карты:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Название карты:
@@ -3858,7 +3866,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Введ
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Города ({COMMA} / {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Нет -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Мегаполис){BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{BLACK} ({COMMA}) {YELLOW}{CITY_ICON}
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Список городов. Щелчок по названию показывает город в основном окне. Ctrl+щелчок показывает в дополнительном окне.
 STR_TOWN_POPULATION                                             :{BLACK}Население: {COMMA}
 
@@ -4355,6 +4363,7 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Всё, кро�
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Макс. тяговое усилие: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Дальность: {GOLD}{COMMA} клет{P ка ки ок}
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Тип возд. судна: {GOLD}{STRING}
+STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Типы рельсов: {GOLD}{STRING}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Все типы грузов
@@ -4546,6 +4555,7 @@ STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Стоимос�
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Стоимость обслуживания: {CURRENCY_LONG}/цикл
 STR_ENGINE_PREVIEW_CAPACITY                                     :Ёмкость: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :Ёмкость: {CARGO_LONG}, {CARGO_LONG}
+STR_ENGINE_PREVIEW_RAILTYPES                                    :Типы рельсов: {STRING}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замена {STRING.gen} - {STRING}
@@ -5240,7 +5250,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Нево
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... максимально допустимая сумма кредита - {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Невозможно занять больше денег...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... кредит полностью погашен.
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... кредит полностью погашен.
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... требуется {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Невозможно выплатить сумму...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Невозможно отдать занятые у банка деньги...
@@ -5363,7 +5373,7 @@ STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Сост
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Поезд слишком длинный
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Не удалось развернуть поезд...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... состоит из нескольких элементов
-STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Несовместимый тип рельс
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Несовместимые типы рельсов
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Невозможно переместить транспортное средство...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Тыловой локомотив всегда следует за его передней частью
@@ -5446,6 +5456,13 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Нача
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... оба конца моста должны опираться на землю
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... мост слишком длинный
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Мост выходит за пределы карты
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Высота моста недостаточна для строительства станции
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Высота моста недостаточна для строительства остановки
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Высота моста недостаточна для строительства пристани
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Высота моста недостаточна для установки буя
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Высота моста недостаточна для строительства маршрутной точки
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Высота моста недостаточна для строительства маршрутной точки
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Высота моста недостаточна для строительства шлюза
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Здесь невозможно построить туннель...
@@ -6136,6 +6153,8 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :Зритель,
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_CITY                                          :{TOWN} {CITY_ICON}
+STR_VIEWPORT_TOWN_CITY_POP                                      :{TOWN} ({COMMA}) {CITY_ICON}
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data

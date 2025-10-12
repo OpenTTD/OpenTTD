@@ -159,7 +159,7 @@ void NetworkHTTPRequest::WinHttpCallback(DWORD code, void *info, DWORD length)
 			DWORD size = *(DWORD *)info;
 
 			/* Next step: read the data in a temporary allocated buffer.
-			 * The buffer will be free'd by OnReceiveData() in the next step. */
+			 * The buffer will be freed by OnReceiveData() in the next step. */
 			char *buffer = size == 0 ? nullptr : new char[size];
 			WinHttpReadData(this->request, buffer, size, 0);
 		} break;
@@ -278,7 +278,7 @@ bool NetworkHTTPRequest::Receive()
 /**
  * Destructor of the HTTP request.
  *
- * Makes sure all handlers are closed, and all memory is free'd.
+ * Makes sure all handlers are closed, and all memory is freed.
  */
 NetworkHTTPRequest::~NetworkHTTPRequest()
 {

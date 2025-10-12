@@ -1530,6 +1530,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :இடது �
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :பார்படத்தின் இலகுவான பக்கமுருட்டல்: {STRING}
 
 
+
 STR_CONFIG_SETTING_LIVERIES                                     :நிறுவன livery களைக் காட்டு: {STRING}
 ###length 3
 STR_CONFIG_SETTING_LIVERIES_NONE                                :ஒன்றுமில்லை
@@ -2490,10 +2491,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}பர�
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}நிலையத்தினை இணை
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}தனியாக ஒரு நிலையத்தினை கட்டு
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}தனியாக ஒரு நிலையத்தினை கட்டு
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}பாதைப்புள்ளியினை இணை
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}தனியொரு பாதைப்புள்ளிடினை கட்டு
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}தனியொரு பாதைப்புள்ளிடினை கட்டு
 
 # Generic toolbar
 
@@ -3022,6 +3023,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}தெ�
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}இலவசமாக
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}தண்ணீர்
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}ஏதொவொன்று
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}ஏதோவொன்று
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}எனது
 
@@ -3240,7 +3243,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}கு�
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}நகரங்கள் ({1:COMMA}இல் {0:COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- ஒன்றுமில்லை -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (மாநகரம்){BLACK} ({COMMA})
 STR_TOWN_POPULATION                                             :{BLACK}உலக மக்கள்தொகை: {COMMA}
 
 # Town view window
@@ -4498,7 +4500,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}மே�
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... அதிகபட்ச கடன் அளவு {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}மேலும் கடன் வாங்க இயலாது...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... திரும்பிச் செலுத்த எந்தக் கடனும் இல்லை
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... திரும்பிச் செலுத்த எந்தக் கடனும் இல்லை
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} தேவைப்படுகிறது
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}கடனினைத் திருப்பி கட்ட இயலாது...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}வங்கியிலிருந்து கடனாக பெறப்பட்டத் தொகையினை தங்களால் கொடுக்க இயலாது...

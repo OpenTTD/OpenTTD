@@ -1703,6 +1703,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Kaarti liigutat
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Keskenda vaade sujuvalt: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Mõjutab, kuidas põhivõõde liigub sihtpunkti pärast pisikaardil klõpsamist, või vaate muutmise käsu sisestamist. Sisse lüliitades liigub vaade sujuvalt, muidu hüppab vaade kohe sihtpunkti
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Näita ehitustarvikute kasutamisel mõõdistamisabi: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Näitab ehitamise ajal kahe ruudu kaugus- ja kõrgusvahemikke
 
@@ -2782,10 +2783,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Hooldusk
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Liida jaamale
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Ehita eraldi jaam
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Ehita eraldi jaam
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Liida teemärgis
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Ehita eraldi teemärgis
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Ehita eraldi teemärgis
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Välja lülitatud, sest ükski saadaval sõiduk ei sobi selle infrastruktuuriga
@@ -3375,6 +3376,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Edel
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Vaba
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vesi
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Suvaline
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Suvaline
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Määratud
 
@@ -3625,7 +3628,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Sisesta 
 # Town directory window
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Puudub -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Linn){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Astuste nimed - vajuta nimele, et viia vaade asustusele. Ctrl+klõps avab uue vaate linna asukohas
 STR_TOWN_POPULATION                                             :{BLACK}Maailma rahvaarv: {COMMA}
 
@@ -4973,7 +4975,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Ei saa p
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... suurim lubatud laen on {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Rohkem raha ei saa laenata...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... pole laenu, mida tagasi maksta
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... pole laenu, mida tagasi maksta
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... vajad {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Ei saa laenu tagasi maksta...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Ei saa anda raha, mis on laenatud pangast.

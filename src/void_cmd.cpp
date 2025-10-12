@@ -21,7 +21,12 @@
 
 static void DrawTile_Void(TileInfo *ti)
 {
-	DrawGroundSprite(SPR_FLAT_BARE_LAND + SlopeToSpriteOffset(ti->tileh), PALETTE_ALL_BLACK);
+	/* If freeform edges are off, draw infinite water off the edges of the map. */
+	if (!_settings_game.construction.freeform_edges) {
+		DrawGroundSprite(SPR_FLAT_WATER_TILE + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
+	} else {
+		DrawGroundSprite(SPR_FLAT_BARE_LAND + SlopeToSpriteOffset(ti->tileh), PALETTE_ALL_BLACK);
+	}
 }
 
 
@@ -87,4 +92,5 @@ extern const TileTypeProcs _tile_type_void_procs = {
 	nullptr,                     // vehicle_enter_tile_proc
 	GetFoundation_Void,       // get_foundation_proc
 	TerraformTile_Void,       // terraform_tile_proc
+	nullptr, // check_build_above_proc
 };

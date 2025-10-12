@@ -35,14 +35,6 @@ jobs:
     - name: Enable Rust cache
       uses: Swatinem/rust-cache@v2
 
-    - name: Setup vcpkg caching
-      uses: actions/github-script@v7
-      with:
-        script: |
-          core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
-          core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
-          core.exportVariable('VCPKG_BINARY_SOURCES', 'clear;x-gha,readwrite')
-
     - name: Install dependencies
       run: |
         echo "::group::Install system dependencies"
@@ -113,19 +105,15 @@ jobs:
           # EOF
         echo "::endgroup::"
 
-        # We use vcpkg for our dependencies, to get more up-to-date version.
-        echo "::group::Install vcpkg and dependencies"
-
-        git clone https://github.com/microsoft/vcpkg /vcpkg
-
-        (
-          cd /vcpkg
-          ./bootstrap-vcpkg.sh -disableMetrics
-        )
-
         echo "::group::Install breakpad dependencies"
         cargo install --locked dump_syms
         echo "::endgroup::"
+
+    - name: Setup vcpkg
+      uses: ./.github/actions/setup-vcpkg
+      with:
+        vcpkg-location: /vcpkg
+        mono-install-command: 'yum install -y mono-complete'
 
     - name: Install GCC problem matcher
       uses: ammaraskar/gcc-problem-matcher@master

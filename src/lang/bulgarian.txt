@@ -1665,6 +1665,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Премест�
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Плавно местене на камера: {STRING.n}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Ако настройката е активирана, когато натиснете на малката карта, камерата ще се придвижи до тази позиция плавно. Ако не е активирана, камерата ще отиде там директно
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Подсказка за разстояние при строене: {STRING.f}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Показване на разстояните между полетата и разликите във височините им докато строите
 
@@ -2744,10 +2745,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Разх
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Присъедини станцията
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Направи отделна станция
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Направи отделна станция
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Съедини междинен пункт
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Построй отделен междинен пункт
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Построй отделен междинен пункт
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Деактивирано, тъй като в момента няма налични превозни средства за тази инфраструктура
@@ -3357,6 +3358,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Югоз
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Произволни
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Вода
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Случаен
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Случаен
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Ръчно нагалсени
 
@@ -3617,7 +3620,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Въве
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Градове ({COMMA} от {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Отсъства -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (метрополис){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Имена на градовете - натиснете на името, за да центрирате камерата върху този град. Ctrl+Click отваря прозорец с нов изглед към града
 STR_TOWN_POPULATION                                             :{BLACK}Обща популация на картата: {COMMA}
 
@@ -4966,7 +4968,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Не м�
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... максимално разрешеният размер на заема е {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Не може да изтеглите повече пари...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... няма заем за изплащане
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... няма заем за изплащане
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} са необходими
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Не може да изплатите заема...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Не може да се харчат пари които са заети от банка...

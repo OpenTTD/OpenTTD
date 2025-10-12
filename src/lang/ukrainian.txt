@@ -1807,6 +1807,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Переміщ�
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Плавна прокрутка у вікні: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Налаштування способу прокрутки основного екрану при клацанні мишею по зменшенній карті, або інших діях, що призводять до переміщення по карті (кнопки "Оглянути", тощо). При включенні опції переміщення карти відбувається плавно. При виключенні - відбувається моментальне переміщення в необхідну точку
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Показувати підказки про розміри під час побудови: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Відображати довжини та різниці висот в підказках в процесі побудови
 
@@ -2899,10 +2900,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Варт
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Об'єднати станцію
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Побудувати окрему станцію
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Побудувати окрему станцію
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}З'єднати точку маршруту
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Створити окрему точку маршруту
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Створити окрему точку маршруту
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Відключено через поточну відсутність транспорту для цієї інфраструктури
@@ -3536,6 +3537,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}півд
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}вільний формат
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}вода
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}довільно
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}довільно
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}вручну
 
@@ -3796,7 +3799,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Введ
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Міста ({COMMA} of {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- немає -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Мегаполіс){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Назви міст - натисніть на назву, щоб показати місто у центрі екрану. Ctrl+клац мишею відкриває нове вікно з видом на місто
 STR_TOWN_POPULATION                                             :{BLACK}Населення світу: {COMMA}
 
@@ -5163,7 +5165,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Немо
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... найбільший дозволений розмір позики {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Неможливо взяти ще позику...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... позика вже повернута
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... позика вже повернута
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... потрібно {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Неможливо повернути позику...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Неможливо передати гроші, позичені у банку...

@@ -13,6 +13,7 @@
 #include "road_type.h"
 #include "gfx_type.h"
 #include "core/bitmath_func.hpp"
+#include "core/flatset_type.hpp"
 #include "strings_type.h"
 #include "timer/timer_game_calendar.h"
 #include "core/enum_type.hpp"
@@ -62,9 +63,6 @@ enum RoadTypeSpriteGroup : uint8_t {
 	ROTSG_ONEWAY,         ///< Optional: One-way indicator images
 	ROTSG_END,
 };
-
-/** List of road type labels. */
-typedef std::vector<RoadTypeLabel> RoadTypeLabelList;
 
 class RoadTypeInfo {
 public:
@@ -140,7 +138,7 @@ public:
 	/**
 	 * Road type labels this type provides in addition to the main label.
 	 */
-	RoadTypeLabelList alternate_labels;
+	FlatSet<RoadTypeLabel> alternate_labels;
 
 	/**
 	 * Colour on mini-map
@@ -188,6 +186,8 @@ public:
 	{
 		return this->group[ROTSG_GROUND] != nullptr;
 	}
+
+	RoadType Index() const;
 };
 
 /**
@@ -232,19 +232,6 @@ inline const RoadTypeInfo *GetRoadTypeInfo(RoadType roadtype)
 	extern RoadTypeInfo _roadtypes[ROADTYPE_END];
 	assert(roadtype < ROADTYPE_END);
 	return &_roadtypes[roadtype];
-}
-
-/**
- * Returns the railtype for a Railtype information.
- * @param rti Pointer to static RailTypeInfo
- * @return Railtype in static railtype definitions
- */
-inline RoadType GetRoadTypeInfoIndex(const RoadTypeInfo *rti)
-{
-	extern RoadTypeInfo _roadtypes[ROADTYPE_END];
-	size_t index = rti - _roadtypes;
-	assert(index < ROADTYPE_END && rti == _roadtypes + index);
-	return static_cast<RoadType>(index);
 }
 
 /**

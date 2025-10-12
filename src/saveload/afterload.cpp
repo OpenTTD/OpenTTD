@@ -1333,10 +1333,10 @@ bool AfterLoadGame()
 		RailType min_rail = RAILTYPE_ELECTRIC;
 
 		for (Train *v : Train::Iterate()) {
-			RailType rt = RailVehInfo(v->engine_type)->railtype;
+			RailTypes rts = RailVehInfo(v->engine_type)->railtypes;
 
-			v->railtype = rt;
-			if (rt == RAILTYPE_ELECTRIC) min_rail = RAILTYPE_RAIL;
+			v->railtypes = rts;
+			if (rts.Test(RAILTYPE_ELECTRIC)) min_rail = RAILTYPE_RAIL;
 		}
 
 		/* .. so we convert the entire map from normal to elrail (so maintain "fairness") */
@@ -3035,7 +3035,7 @@ bool AfterLoadGame()
 		/* Fix articulated road vehicles.
 		 * Some curves were shorter than other curves.
 		 * Now they have the same length, but that means that trailing articulated parts will
-		 * take longer to go through the curve than the parts in front which already left the courve.
+		 * take longer to go through the curve than the parts in front which already left the curve.
 		 * So, make articulated parts catch up. */
 		bool roadside = _settings_game.vehicle.road_side == 1;
 		std::vector<uint> skip_frames;
@@ -3120,7 +3120,7 @@ bool AfterLoadGame()
 		/* Convert towns growth_rate and grow_counter to ticks */
 		for (Town *t : Town::Iterate()) {
 			/* 0x8000 = TOWN_GROWTH_RATE_CUSTOM previously */
-			if (t->growth_rate & 0x8000) SetBit(t->flags, TOWN_CUSTOM_GROWTH);
+			if (t->growth_rate & 0x8000) t->flags.Set(TownFlag::CustomGrowth);
 			if (t->growth_rate != TOWN_GROWTH_RATE_NONE) {
 				t->growth_rate = TownTicksToGameTicks(t->growth_rate & ~0x8000);
 			}

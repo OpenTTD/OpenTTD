@@ -113,7 +113,7 @@ Sprite *Blitter_32bppSSE_Base::Encode(SpriteType sprite_type, const SpriteLoader
 				else break;
 				dst_rgba++;
 			}
-			(*dst_rgba_line).data = nb_pix_transp;
+			dst_rgba_line->data = nb_pix_transp;
 
 			Colour *nb_right = dst_rgba_line + 1;
 			dst_rgba_line = reinterpret_cast<Colour *>(reinterpret_cast<std::byte *>(dst_rgba_line) + info.sprite_line_size);
@@ -126,7 +126,7 @@ Sprite *Blitter_32bppSSE_Base::Encode(SpriteType sprite_type, const SpriteLoader
 				else break;
 				dst_rgba--;
 			}
-			(*nb_right).data = nb_pix_transp;
+			nb_right->data = nb_pix_transp;
 		}
 	}
 

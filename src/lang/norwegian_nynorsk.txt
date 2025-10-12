@@ -1388,6 +1388,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Fiolett
 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Jamn rulling i tilleggsvindauge: {STRING}
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Syne eit målingverktøytips når ymse byggjeverktøy brukast: {STRING}
 
 STR_CONFIG_SETTING_LIVERIES                                     :Syne firmaovertakingar: {STRING}
@@ -2232,10 +2233,10 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Forsynin
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Spleisa stasjonen
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Bygg ein seperat stasjon
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Bygg ein seperat stasjon
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Spleis kontrollpunkt
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Bygg eit seperat kontrollpunkt
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Bygg eit seperat kontrollpunkt
 
 # Generic toolbar
 
@@ -2709,6 +2710,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Sørvest
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Frihands
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vatn
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Tilfeldig
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Tilfeldig
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuell
 
@@ -4083,7 +4086,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Kan ikkj
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maks. lån er {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Kan ikkje låne meir pengar...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... lånet er allereie betalt attende
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... lånet er allereie betalt attende
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... du treng {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kan ikkje betale lånet attende...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kan ikkje gje vekk pengar som er lånt frå banken...

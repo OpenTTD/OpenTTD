@@ -196,7 +196,7 @@ static bool IsValidCompanyManagerFace(CompanyManagerFace cmf)
 	return true;
 }
 
-static CompanyMask _dirty_company_finances{}; ///< Bitmask of compamy finances that should be marked dirty.
+static CompanyMask _dirty_company_finances{}; ///< Bitmask of company finances that should be marked dirty.
 
 /**
  * Mark all finance windows owned by a company as needing a refresh.
@@ -1512,7 +1512,7 @@ std::optional<CompanyManagerFace> ParseCompanyManagerFaceCode(std::string_view s
 		auto bits = consumer.TryReadIntegerBase<uint32_t>(10, true);
 		if (!bits.has_value() || consumer.AnyBytesLeft()) return std::nullopt;
 
-		/* Ensure style laberl is valid. */
+		/* Ensure style label is valid. */
 		auto style = FindCompanyManagerFaceLabel(label);
 		if (!style.has_value()) return std::nullopt;
 

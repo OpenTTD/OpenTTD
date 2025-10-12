@@ -1662,6 +1662,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Mută harta cu 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Derulare ușoară vizor: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controlează modul de deplasare a imaginii din ecranul principal când se face click pe harta mică sau când se execută o comandă de deplasare către un obiect anume de pe hartă. Dacă este activată, imaginea se deplasează în mod fluid, altfel imaginea sare direct la zona dorită
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Arată o indicație de distanță la folosirea uneltelor de construcție: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Afișează distanțele în pătrățele și diferențele de înălțime la mișcarea mouse-ului în timpul operațiilor de construcție
 
@@ -2746,10 +2747,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Cost de 
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Unește stația
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Construiește o stație separată
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Construiește o stație separată
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Unește punctul de tranzit
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Construiește un punct de tranzit separat
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Construiește un punct de tranzit separat
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Dezactivat, deoarece momentan nu sunt vehicule disponibile pentru acest tip de infrastructură
@@ -3375,6 +3376,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Sud-vest
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Pământ
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Apă
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Aleator
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Aleator
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 
@@ -3628,7 +3631,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Introdu 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Orașe ({COMMA} din {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nimic -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (oraș){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Numele orașelor - clic pe un nume pentru a centra imaginea pe orașul respectiv. Ctrl+Click pentru a deshide o fereastra cu locația orașului
 STR_TOWN_POPULATION                                             :{BLACK}Populația totală: {COMMA}
 
@@ -4983,7 +4985,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Nu se po
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... creditul maxim permis este de {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Nu mai poți împrumuta bani...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... nu ai nici un credit de plătit
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... nu ai nici un credit de plătit
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... ai nevoie de {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Nu poți plăti creditul...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Nu poți dona din banii împrumutați de la bancă...

@@ -46,12 +46,12 @@ uint _heightmap_highest_peak;         ///< When saving a heightmap, this contain
  * If the selected provider is not found, then the first provider will be used instead.
  * @returns ScreenshotProvider, or null if none exist.
  */
-static ScreenshotProvider *GetScreenshotProvider()
+static const ScreenshotProvider *GetScreenshotProvider()
 {
-	auto providers = ProviderManager<ScreenshotProvider>::GetProviders();
+	const auto &providers = ProviderManager<ScreenshotProvider>::GetProviders();
 	if (providers.empty()) return nullptr;
 
-	auto it = std::ranges::find_if(providers, [](const auto &p) { return p->GetName() == _screenshot_format_name; });
+	auto it = std::ranges::find(providers, _screenshot_format_name, &ScreenshotProvider::GetName);
 	if (it != std::end(providers)) return *it;
 
 	return providers.front();
@@ -285,7 +285,7 @@ static bool MakeLargeWorldScreenshot(ScreenshotType t, uint32_t width = 0, uint3
 }
 
 /**
- * Callback for generating a heightmap. Supports 8bpp grayscale only.
+ * Callback for generating a heightmap. Supports 8bpp greyscale only.
  * @param buffer   Destination buffer.
  * @param y        Line number of the first line to write.
  * @param n        Number of lines to write.

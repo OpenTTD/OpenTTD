@@ -66,7 +66,9 @@ enum LockPart : uint8_t {
 	LOCK_PART_MIDDLE = 0, ///< Middle part of a lock.
 	LOCK_PART_LOWER  = 1, ///< Lower part of a lock.
 	LOCK_PART_UPPER  = 2, ///< Upper part of a lock.
+	LOCK_PART_END,
 };
+DECLARE_INCREMENT_DECREMENT_OPERATORS(LockPart);
 
 bool IsPossibleDockingTile(Tile t);
 
@@ -323,10 +325,10 @@ inline DiagDirection GetLockDirection(Tile t)
  * @return The part.
  * @pre IsTileType(t, MP_WATER) && IsLock(t)
  */
-inline uint8_t GetLockPart(Tile t)
+inline LockPart GetLockPart(Tile t)
 {
 	assert(IsLock(t));
-	return GB(t.m5(), WBL_LOCK_PART_BEGIN, WBL_LOCK_PART_COUNT);
+	return static_cast<LockPart>(GB(t.m5(), WBL_LOCK_PART_BEGIN, WBL_LOCK_PART_COUNT));
 }
 
 /**

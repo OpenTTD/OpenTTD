@@ -34,7 +34,7 @@ struct SQClass : public CHAINABLE_OBJ
 public:
 	static SQClass* Create(SQSharedState *ss,SQClass *base) {
 		SQClass *newclass = (SQClass *)SQ_MALLOC(sizeof(SQClass));
-		new (newclass) SQClass(ss, base);
+		new (newclass, sizeof(SQClass)) SQClass(ss, base);
 		return newclass;
 	}
 	~SQClass();
@@ -90,7 +90,7 @@ public:
 
 		SQInteger size = calcinstancesize(theclass);
 		SQInstance *newinst = (SQInstance *)SQ_MALLOC(size);
-		new (newinst) SQInstance(ss, theclass,size);
+		new (newinst, size) SQInstance(ss, theclass,size);
 		if(theclass->_udsize) {
 			newinst->_userpointer = ((unsigned char *)newinst) + (size - theclass->_udsize);
 		}
@@ -100,7 +100,7 @@ public:
 	{
 		SQInteger size = calcinstancesize(_class);
 		SQInstance *newinst = (SQInstance *)SQ_MALLOC(size);
-		new (newinst) SQInstance(ss, this,size);
+		new (newinst, size) SQInstance(ss, this,size);
 		if(_class->_udsize) {
 			newinst->_userpointer = ((unsigned char *)newinst) + (size - _class->_udsize);
 		}

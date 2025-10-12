@@ -155,7 +155,7 @@ void PlaceProc_DemolishArea(TileIndex tile)
 
 /** Terra form toolbar managing class. */
 struct TerraformToolbarWindow : Window {
-	int last_user_action = INVALID_WID_TT; ///< Last started user action.
+	WidgetID last_user_action = INVALID_WIDGET; ///< Last started user action.
 
 	TerraformToolbarWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
@@ -529,7 +529,7 @@ static void ResetLandscapeConfirmationCallback(Window *, bool confirmed)
 
 /** Landscape generation window handler in the scenario editor. */
 struct ScenarioEditorLandscapeGenerationWindow : Window {
-	int last_user_action = INVALID_WID_ETT; ///< Last started user action.
+	WidgetID last_user_action = INVALID_WIDGET; ///< Last started user action.
 
 	ScenarioEditorLandscapeGenerationWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{

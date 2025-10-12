@@ -46,7 +46,7 @@ public:
 	static SQTable* Create(SQSharedState *ss,SQInteger nInitialSize)
 	{
 		SQTable *newtable = (SQTable*)SQ_MALLOC(sizeof(SQTable));
-		new (newtable) SQTable(ss, nInitialSize);
+		new (newtable, sizeof(SQTable)) SQTable(ss, nInitialSize);
 		newtable->_delegate = nullptr;
 		return newtable;
 	}

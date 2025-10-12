@@ -1355,6 +1355,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Blákollulitur
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Mjúka sýnisglugga skrulling: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Stýr hvussu høvuðs sýni skrullar til eitt ávíst stað tá tú trýstir á lítlakorti ella tú tú gevur eini boð um at skrulla til ein ávísan lut á kortinum. Um gilda, skrullar sýni mjúgdliga, um ógilda leypur sýni beint til staði
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Vís eina mátingar vegleiðing tá tú brúkar ymisku byggji amboðini: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Vís punta fjarstøðir og hæddar munir tá tú togar undir bygging
 
@@ -2119,10 +2120,10 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Veitur: 
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Bind støð saman
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Bygg serstaka støð
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Bygg serstaka støð
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Bind waypoint saman
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Bygg eitt serstakt waypoint
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Bygg eitt serstakt waypoint
 
 # Generic toolbar
 
@@ -2523,6 +2524,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Útsynni
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Freeform
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vatn
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Tilvildarligt
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Tilvildarligt
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuelt
 
@@ -3699,7 +3702,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Kann ikk
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... hægst loyvda lán er {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Kann ikki lána meira pening...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... einki lán at gjalda aftur
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... einki lán at gjalda aftur
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} neyðugar
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kann ikki gjalda lán aftur...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kann ikki geva pening burtur ið er lándur frá bankanum...

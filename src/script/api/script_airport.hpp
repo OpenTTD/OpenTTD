@@ -147,7 +147,7 @@ public:
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
 	 * @exception ScriptError::ERR_FLAT_LAND_REQUIRED
 	 * @exception ScriptError::ERR_LOCAL_AUTHORITY_REFUSES
-	 * @exception ScriptStation::ERR_STATION_TOO_LARGE
+	 * @exception ScriptError::ERR_STATION_TOO_SPREAD_OUT
 	 * @exception ScriptStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION
 	 * @return Whether the airport has been/can be build or not.
 	 */

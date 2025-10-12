@@ -29,7 +29,6 @@
 #include "dropdown_func.h"
 #include "tunnelbridge.h"
 #include "tilehighlight_func.h"
-#include "spritecache.h"
 #include "core/geometry_func.hpp"
 #include "hotkeys.h"
 #include "engine_base.h"
@@ -438,7 +437,7 @@ static void HandleAutoSignalPlacement()
 /** Rail toolbar management class. */
 struct BuildRailToolbarWindow : Window {
 	RailType railtype = INVALID_RAILTYPE; ///< Rail type to build.
-	int last_user_action = INVALID_WID_RAT; ///< Last started user action.
+	WidgetID last_user_action = INVALID_WIDGET; ///< Last started user action.
 
 	BuildRailToolbarWindow(WindowDesc &desc, RailType railtype) : Window(desc), railtype(railtype)
 	{
@@ -2066,12 +2065,12 @@ DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
 		const RailTypeInfo *rti = GetRailTypeInfo(rt);
 
 		if (for_replacement) {
-			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, GetString(rti->strings.replace_text), rt, !avail_railtypes.Test(rt)));
+			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, RailBuildCost(rt), GetString(rti->strings.replace_text), rt, !avail_railtypes.Test(rt)));
 		} else {
 			std::string str = rti->max_speed > 0
 				? GetString(STR_TOOLBAR_RAILTYPE_VELOCITY, rti->strings.menu_text, rti->max_speed)
 				: GetString(rti->strings.menu_text);
-			list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, d, rti->gui_sprites.build_x_rail, PAL_NONE, std::move(str), rt, !avail_railtypes.Test(rt)));
+			list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, RailBuildCost(rt), d, rti->gui_sprites.build_x_rail, PAL_NONE, std::move(str), rt, !avail_railtypes.Test(rt)));
 		}
 	}
 

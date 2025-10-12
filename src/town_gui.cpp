@@ -453,7 +453,7 @@ public:
 			tr.top += GetCharacterHeight(FS_NORMAL);
 		}
 
-		if (HasBit(this->town->flags, TOWN_IS_GROWING)) {
+		if (this->town->flags.Test(TownFlag::IsGrowing)) {
 			DrawString(tr, GetString(this->town->fund_buildings_months == 0 ? STR_TOWN_VIEW_TOWN_GROWS_EVERY : STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED, RoundDivSU(this->town->growth_rate + 1, Ticks::DAY_TICKS)));
 			tr.top += GetCharacterHeight(FS_NORMAL);
 		} else {
@@ -870,7 +870,7 @@ public:
 					if (_game_mode == GM_EDITOR || !t->have_ratings.Test(_local_company)) {
 						DrawSprite(SPR_TOWN_RATING_NA, PAL_NONE, icon_x, tr.top + (this->resize.step_height - icon_size.height) / 2);
 					} else {
-						SpriteID icon = SPR_TOWN_RATING_APALLING;
+						SpriteID icon = SPR_TOWN_RATING_APPALLING;
 						if (t->ratings[_local_company] > RATING_VERYPOOR) icon = SPR_TOWN_RATING_MEDIOCRE;
 						if (t->ratings[_local_company] > RATING_GOOD)     icon = SPR_TOWN_RATING_GOOD;
 						DrawSprite(icon, PAL_NONE, icon_x, tr.top + (this->resize.step_height - icon_size.height) / 2);

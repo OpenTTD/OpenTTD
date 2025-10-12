@@ -1422,6 +1422,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Griis nei read
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Loaitsfinster floeiend scrolle : {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Bepaalt hoe it haadfinster scrollt. By ynskeakeljen sil dit floeiend wêze. By útskeakeljen ljept it byld direktst nei de selektearre lokaasje
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Under it gebrûk fan de ferskate bou-arken diminsjes sjen litte: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Lit it oantal teilen en it hichteferskil sjen ûnder it dellizzen fan ynfrastruktuer
 
@@ -2211,10 +2212,10 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Levert: 
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Stasjon gearfoegje
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}In apart stasjon bouwe
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}In apart stasjon bouwe
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Kontrôlepost gearfoegje
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}In apart kontrôlepost bouwe
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}In apart kontrôlepost bouwe
 
 # Generic toolbar
 
@@ -2659,6 +2660,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Súdwest
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Frij foarmje
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Wetter
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Samar wat
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Samar wat
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Hânmjittich
 
@@ -3873,7 +3876,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Kin namm
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maksmaal tasteane liening is {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Kin net mear jild liene
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... gjin liening werom te betelje
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... gjin liening werom te betelje
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...{CURRENCY_LONG} nedich
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kin liening net werombetelje...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kin gjin jild dat fan de bank lient is weijaan...

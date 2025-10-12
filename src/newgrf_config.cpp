@@ -40,7 +40,7 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 	name(config.name),
 	info(config.info),
 	url(config.url),
-	error(config.error),
+	errors(config.errors),
 	version(config.version),
 	min_loadable_version(config.min_loadable_version),
 	flags(config.flags),
@@ -155,15 +155,6 @@ GRFConfigList _grfconfig;
 GRFConfigList _grfconfig_newgame;
 GRFConfigList _grfconfig_static;
 uint _missing_extra_graphics = 0;
-
-/**
- * Construct a new GRFError.
- * @param severity The severity of this error.
- * @param message The actual error-string.
- */
-GRFError::GRFError(StringID severity, StringID message) : message(message), severity(severity)
-{
-}
 
 /**
  * Get the value of the given user-changeable parameter.
@@ -472,7 +463,7 @@ compatible_grf:
 				c->ident.md5sum = f->ident.md5sum;
 				c->name = f->name;
 				c->info = f->name;
-				c->error.reset();
+				c->errors.clear();
 				c->version = f->version;
 				c->min_loadable_version = f->min_loadable_version;
 				c->num_valid_params = f->num_valid_params;

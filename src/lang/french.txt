@@ -268,6 +268,7 @@ STR_UNITS_YEARS                                                 :{G=f}{NUM}{NBSP
 STR_UNITS_PERIODS                                               :{G=f}{NUM}{NBSP}période{P "" s}
 
 STR_LIST_SEPARATOR                                              :,{SPACE}
+STR_TRUNCATION_ELLIPSIS                                         :...
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtre{NBSP}:
@@ -621,9 +622,15 @@ STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Historiq
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Graphique de la valeur de la compagnie
 
 STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}24 dernières minutes
-STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Dernières 72 minutes
+STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}72 dernières minutes
+STR_GRAPH_LAST_288_MINUTES_TIME_LABEL                           :{TINY_FONT}{BLACK}288 dernières minutes
 
+STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLACK}2 ans (mensuel)
+STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 ans (trimestriel)
+STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 ans (annuel)
 
+STR_GRAPH_TOGGLE_RANGE                                          :Basculer le graphique pour les données de cette échelle
+STR_GRAPH_SELECT_SCALE                                          :Modifier l'échelle horizontale du graphique
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Valeur des marchandises
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Jours de trajet
@@ -636,9 +643,15 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}N'affich
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Afficher/Cacher le type de marchandise
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Historique des cargaisons
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Produit
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transporté
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Livré
+STR_GRAPH_INDUSTRY_RANGE_WAITING                                :En attente
 
+STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Historique des cargaisons
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Production
+STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transporté
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Afficher le détail de l'évaluation de la performance
 
@@ -799,7 +812,7 @@ STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT}{BLACK}Région tropicale
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Champs
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Arbres
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Rochers
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Roches
 STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}Eau
 STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINY_FONT}{BLACK}Sans propriétaire
 STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}Villes
@@ -1030,6 +1043,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysian Ringg
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lats letton
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escudo portugais
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Hryvnia Ukrainienne
+STR_GAME_OPTIONS_CURRENCY_VND                                   :Dong Vietnamien
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Sauvegarde automatique
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Sélectionner l'intervalle de temps entre les sauvegardes automatiques
@@ -1304,12 +1318,15 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Taux d’intér
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Coûts d'entretien{NBSP}: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Définit le niveau des coûts d'entretien et de fonctionnement des véhicules et des infrastructures
 ###length 3
+STR_CONFIG_SETTING_RUNNING_COSTS_LOW                            :Faible
+STR_CONFIG_SETTING_RUNNING_COSTS_MEDIUM                         :Moyen
+STR_CONFIG_SETTING_RUNNING_COSTS_HIGH                           :Élevé
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Vitesse de construction{NBSP}: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limite le nombre d'actions de constructions pour les IAs
 
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Pannes des véhicules{NBSP}: {STRING}
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Contrôle la fréquence des pannes des véhicule incorrectement entretenus
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Contrôle la fréquence des pannes des véhicules incorrectement entretenus
 
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicateur de subvention{NBSP}: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Définit combien rapportent les lignes subventionnées
@@ -1326,6 +1343,9 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Pas de subventi
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Coûts de construction{NBSP}: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Définit le niveau des coûts de construction et d'achat
 ###length 3
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_LOW                       :Faible
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_MEDIUM                    :Moyen
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Élevé
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Récessions{NBSP}: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Si activé, des récessions peuvent se produire périodiquement. Pendant une récession, toute la production baisse de façon significative (elle retourne à son niveau antérieur à la fin de la récession).
@@ -1670,6 +1690,9 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Défilement de 
 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Défilement régulier de la vue{NBSP}: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Contrôle comment la vue principale défile jusqu'à une position spécifique lors d'un clic sur la mini-carte ou pour atteindre un objet précis sur la carte. Si activé, la vue défile doucement, si désactivé elle saute directement à la cible
+
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT                  :Comportement traditionnel de la sélection de barres d'outils : {STRING}
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT_HELPTEXT         :Choisir le comportement lors de la sélection de barres d'outils. Si désactivé, les menus de barres d'outils restent ouverts jusqu'à ce qu'une sélection soit faite. Si activé, les menus de barres d'outils s'activent lorsque le clic est relâché.
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Montrer une infobulle de mesure lors de l'utilisation de divers outils de construction{NBSP}: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Affiche les distances et les différences de hauteur lors des opérations de construction
@@ -2067,9 +2090,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Aucune
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicateur initial pour la taille des métropoles{NBSP}: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Taille moyenne des métropoles par rapport aux villes normales au début de la partie
 
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Mise à jour le graphe de distribution toutes les {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Mise à jour du graphe de distribution toutes les {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Intervalle entre les recalculs successifs du graphe de liaison. Chaque recalcul planifie un composant du graphe. Cela signifie qu'une valeur X pour ce paramètre ne signifie pas que l'ensemble du graphe sera mis à jour toutes les X secondes. Seul un composant le sera. Plus vous définissez cet intervalle court, plus le temps de processeur nécessaire pour le calcul sera important. Plus vous définissez cet intervalle long, plus il faudra de temps pour que la distribution de marchandises commence sur de nouveaux itinéraires
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Prend {STRING} pour le recalcul du graphe de distribution
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Recalcul du graphe de distribution toutes les {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Temps pris pour chaque recalcul d'un composant du graphe de liaison. Lorsqu'un recalcul est lancé, un fil d'exécution est créé et autorisé à fonctionner pendant ce nombre de secondes. Plus vous définissez cette durée courte, plus il est probable que le fil ne soit pas terminé lorsqu'il est censé l'être. Ensuite, le jeu s'arrête jusqu'à ce qu'il le soit ("lag"). Plus vous définissez cette durée longue, plus il faut de temps pour que la distribution soit mise à jour lorsque les itinéraires changent
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Type de distribution pour les passagers{NBSP}: {STRING}
@@ -2081,9 +2104,9 @@ STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :La classe de ca
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Type de distribution pour les autres classes de cargaison{NBSP}: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asymétrique" signifie qu'une quantité arbitraire de cargaison peut être envoyée dans les deux directions. "Manuel" signifie qu'aucune distribution n'est mise en place pour la cargaison
 ###length 3
-STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuel
-STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymétrique
-STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symétrique
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :Manuel
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :Asymétrique
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :Symétrique
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Précision de la distribution{NBSP}: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Plus ce réglage est élevé, plus le recalcul du graphe de distribution occupe de temps CPU. S'il est trop élevé, cela peut produire de la latence ("lag"). Au contraire, plus la valeur est basse, plus la distribution sera imprécise et l'on risque de voir des cargaisons ne pas aller vers la destination attendue
@@ -2333,16 +2356,19 @@ STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Sélecti
 STR_FACE_LOAD                                                   :{BLACK}Charger
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Charger le visage favori
 STR_FACE_LOAD_DONE                                              :{WHITE}Votre visage favori a été chargé depuis le fichier de configuration d'OpenTTD.
-STR_FACE_FACECODE                                               :{BLACK}N° de visage
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Voir et/ou définir le numéro de visage
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Voir et/ou définir le numéro de visage
-STR_FACE_FACECODE_SET                                           :{WHITE}Le nouveau numéro de visage a été défini
-STR_FACE_FACECODE_ERR                                           :{WHITE}Impossible de définir le numéro de visage - doit être un nombre entre 0 et 4{NBSP}294{NBSP}967{NBSP}295{NBSP}!
+STR_FACE_FACECODE                                               :{BLACK}Code de visage
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Voir et/ou définir le code de visage
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Voir et/ou définir le code de visage
+STR_FACE_FACECODE_SET                                           :{WHITE}Le nouveau code de visage a été défini
+STR_FACE_FACECODE_ERR                                           :{WHITE}Impossible de définir le code de visage - doit être un nombre entre 0 et 4{NBSP}294{NBSP}967{NBSP}295{NBSP}!
 STR_FACE_SAVE                                                   :{BLACK}Enregistrer
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Enregistrer le visage favori
 STR_FACE_SAVE_DONE                                              :{WHITE}Ce visage sera enregistré comme favori dans le fichier de configuration d'OpenTTD.
+STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
+STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Oui
 STR_FACE_NO                                                     :Non
+STR_FACE_STYLE                                                  :Style{NBSP}:
 STR_FACE_HAIR                                                   :Cheveux{NBSP}:
 STR_FACE_EYEBROWS                                               :Yeux{NBSP}:
 STR_FACE_EYECOLOUR                                              :Couleur des yeux{NBSP}:
@@ -2760,10 +2786,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Coût d'
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Joindre une station
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Construire une station séparée
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Construire une station séparée
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Joindre un point de contrôle
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Construire un point de contrôle séparé
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Construire un point de contrôle séparé
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Désactivé car aucun véhicule n'est actuellement disponible pour cette infrastructure
@@ -2815,6 +2841,10 @@ STR_PICKER_MODE_USED_TOOLTIP                                    :Basculer l'affi
 STR_PICKER_MODE_SAVED                                           :Sauvegardé
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Basculer l'affichage exclusif des éléments sauvegardés
 
+STR_PICKER_PREVIEW_SHRINK                                       :-
+STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Réduire la hauteur des images d'aperçu. Ctrl-clic pour réduire au maximum
+STR_PICKER_PREVIEW_EXPAND                                       :+
+STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Augmenter la hauteur des images d'aperçu. Ctrl-clic pour augmenter au maximum
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Séléctionner un type de station à afficher
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Séléctionner un type de station à construire. Ctrl+Clic pour ajouter ou retirer des éléments sauvegardés.
@@ -3055,6 +3085,11 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Sélecti
 STR_FOUND_TOWN_CITY                                             :{BLACK}Métropole
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Les métropoles se développent plus vite que les villes.{}Leur taille à la création dépend du paramétrage de la configuration.
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Extension des villes{NBSP}:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Bâtiments
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Augmenter les bâtiments de la ville
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Routes
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Augmenter les routes de la ville
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Agencement des routes{NBSP}:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Sélectionner l'agencement des routes pour cette ville
@@ -3314,6 +3349,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF{
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtre{NBSP}:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Écraser le fichier
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Êtes-vous sûr de vouloir écraser le fichier existant{NBSP}?
+STR_SAVELOAD_DELETE_TITLE                                       :{WHITE}Supprimer le fichier
+STR_SAVELOAD_DELETE_WARNING                                     :{YELLOW}Êtes-vous sûr de vouloir supprimer ce fichier ?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (Répertoire)
 STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Répertoire parent)
 
@@ -3392,6 +3429,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Sud-Oues
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Forme libre
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Eau
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Aléatoire
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Aléatoire
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuel
 
@@ -3652,7 +3691,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Entrer u
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Villes ({COMMA} de {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}− Aucune −
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Métropole){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Noms des villes - Cliquer sur un nom pour centrer la vue principale sur la ville. Ctrl-clic pour ouvrir une nouvelle vue sur la ville.
 STR_TOWN_POPULATION                                             :{BLACK}Population mondiale{NBSP}: {COMMA}
 
@@ -3676,9 +3714,15 @@ STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrer 
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Municipalité
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Afficher des informations sur la municipalité
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Renommer la ville
+STR_TOWN_VIEW_CARGO_GRAPH                                       :Graphe des cargaisons
+STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :Affiche le graphe de l'historique des cargaisons de la ville
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Agrandir
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Augmenter la taille de la ville
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Augmenter les bâtiments
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Augmenter les bâtiments de la ville
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Étendre les routes
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Augmenter les routes de la ville
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Supprimer
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Supprimer complètement cette ville
 
@@ -4004,6 +4048,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producti
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Production la minute précédente{NBSP}:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}{NBSP}% transporté{P "" s})
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrer la vue sur l'industrie. Ctrl-clic pour ouvrir une nouvelle vue sur l'industrie.
+STR_INDUSTRY_VIEW_CARGO_GRAPH                                   :{BLACK}Graphe des cargaisons
+STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}Affiche le graphe de l'historique des cargaisons des industries
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Niveau de production{NBSP}: {YELLOW}{COMMA}{NBSP}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}L'industrie a annoncé sa fermeture imminente{NBSP}!
 
@@ -4141,6 +4187,7 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Tous sauf {CARG
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Effort de traction max.{NBSP}: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Rayon d'action{NBSP}: {GOLD}{COMMA}{NBSP}cases
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Type d'aéronef{NBSP}: {GOLD}{STRING}
+STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Types de rail : {GOLD}{STRING}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Tous les types de cargaison
@@ -4324,6 +4371,7 @@ STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Coûts d'entret
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Coûts d'entretien{NBSP}: {CURRENCY_LONG}/période
 STR_ENGINE_PREVIEW_CAPACITY                                     :Capacité{NBSP}: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :Capacité{NBSP}: {CARGO_LONG}, {CARGO_LONG}
+STR_ENGINE_PREVIEW_RAILTYPES                                    :Types de rail : {STRING}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Remplacer {STRING} - {STRING}
@@ -4979,6 +5027,7 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Terrain 
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Terrain en pente dans la mauvaise direction
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Impossible d'exécuter...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}L'édifice doit d'abord être démoli
+STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}... le bâtiment est protégé
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Impossible de démolir...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... site non convenable
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... déjà construit
@@ -5013,7 +5062,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Impossib
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... le prêt maximum est de {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Impossible d'emprunter plus...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... emprunt déjà remboursé
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... emprunt déjà remboursé
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} nécessaires
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Impossible de rembourser...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Impossible de distribuer de l'argent emprunté à la banque...
@@ -5219,6 +5268,12 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Le débu
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... les deux extrémités du pont doivent être sur la terre ferme
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... pont trop long
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Le pont finirait en dehors de la carte
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Le pont est trop bas pour les gares
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Le pont est trop bas pour les arrêts de bus
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Le pont est trop bas pour les bouées
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Le pont est trop bas pour les points de contrôle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Le pont est trop bas pour les points de contrôle de route
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Ce pont est trop bas pour le verrouillage
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Impossible de construire un tunnel ici...
@@ -5835,6 +5890,8 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :Spectateur, {1:
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_CITY                                          :{TOWN} {CITY_ICON}
+STR_VIEWPORT_TOWN_CITY_POP                                      :{TOWN} ({COMMA}) {CITY_ICON}
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data

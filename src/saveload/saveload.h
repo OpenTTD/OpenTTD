@@ -407,6 +407,11 @@ enum SaveLoadVersion : uint16_t {
 	SLV_INDUSTRY_NUM_VALID_HISTORY,         ///< 356  PR#14416 Store number of valid history records for industries.
 	SLV_INDUSTRY_ACCEPTED_HISTORY,          ///< 357  PR#14321 Add per-industry history of cargo delivered and waiting.
 	SLV_TOWN_SUPPLY_HISTORY,                ///< 358  PR#14461 Town supply history.
+	SLV_STATIONS_UNDER_BRIDGES,             ///< 359  PR#14477 Allow stations under bridges.
+
+	SLV_DOCKS_UNDER_BRIDGES,                ///< 360  PR#14594 Allow docks under bridges.
+	SLV_LOCKS_UNDER_BRIDGES,                ///< 361  PR#14595 Allow locks under bridges.
+	SLV_ENGINE_MULTI_RAILTYPE,              ///< 362  PR#14357 Train engines can have multiple railtypes.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
@@ -423,7 +428,7 @@ struct FileToSaveLoad {
 	SaveLoadOperation file_op;       ///< File operation to perform.
 	FiosType ftype;                  ///< File type.
 	std::string name;                ///< Name of the file.
-	std::string title;               ///< Internal name of the game.
+	EncodedString title;             ///< Internal name of the game.
 
 	void SetMode(const FiosType &ft, SaveLoadOperation fop = SLO_LOAD);
 	void Set(const FiosItem &item);

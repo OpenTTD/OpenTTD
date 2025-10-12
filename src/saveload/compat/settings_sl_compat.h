@@ -185,7 +185,7 @@ const SaveLoadCompat _settings_sl_compat[] = {
 	SLC_NULL(4, SLV_47, SLV_TABLE_CHUNKS),
 	SLC_NULL(8, SLV_130, SLV_TABLE_CHUNKS),
 	SLC_NULL(4, SLV_131, SLV_TABLE_CHUNKS),
-	SLC_VAR("pf.yapf.disable_node_optimization"),
+	SLC_NULL(1, SLV_28, SLV_TABLE_CHUNKS),
 	SLC_VAR("pf.yapf.max_search_nodes"),
 	SLC_VAR("pf.yapf.rail_firstred_twoway_eol"),
 	SLC_VAR("pf.yapf.rail_firstred_penalty"),

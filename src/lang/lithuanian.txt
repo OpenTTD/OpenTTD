@@ -1811,6 +1811,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Tempti žemėla
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Tolydi vaizdo slinktis: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Įjungus šią nuostatą ir pakeitus pagrindinio lango rodomą vietą (pvz., spragtelėjus žemėlapyje), vaizdas slinksis tolydžiai. Priešingu atveju vaizdas pasikeis akimirksniu, šuoliškai.
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Rodyti matavimo pastabą, kai naudojami įvairūs statybų įrankiai: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Velkant statybos operacijų metu rodyti atstumus ir aukščių skirtumus tarp pradinio ir galutinio taškų
 
@@ -2878,10 +2879,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Prieži�
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Sujungti stoteles
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Statyti atskirą stotelę
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Statyti atskirą stotelę
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Sujungti kontrolės punktus
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Statyti atskirą kontrolės punktą
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Statyti atskirą kontrolės punktą
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Išjungta, nes nėra jokių šiai infrastruktūrai prieinamų transporto priemonių
@@ -3462,6 +3463,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Pietvaka
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Laisva forma
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vanduo
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Atsitiktinis
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Atsitiktiniai
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Pasirinktiniai
 
@@ -3713,7 +3716,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Įrašyk
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Miestai ({COMMA} of {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}Nėra
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Miestas){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Spragtelėjus ant pavadinimo, miestas bus parodytas ekrano centre. Spragtelėkite laikant nuspaudus „Ctrl“ klavišą, kad atverti papildomą peržiūros langą į pasirinktą miestą
 STR_TOWN_POPULATION                                             :{BLACK}Pasaulio populiacija: {COMMA}
 
@@ -5072,7 +5074,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Direktor
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... daugiausia pasiskolinti galima {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Daugiau skolintis negalima...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... visa paskola gražinta
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... visa paskola gražinta
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...reikia turėti {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Skolos grąžinti negalima...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Negalima dovanoti iš banko pasiskolintų pinigų...

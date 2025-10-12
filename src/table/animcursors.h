@@ -15,66 +15,48 @@
  */
 
 /**
- * Creates two array entries that define one
- *  status of the cursor.
- *  @param Sprite The Sprite to be displayed
- *  @param display_time The Number of ticks to display the sprite
- */
-#define ANIM_CURSOR_LINE(Sprite, display_time) { Sprite, display_time },
-
-/**
- * This indicates the termination of the cursor list
- */
-#define ANIM_CURSOR_END() ANIM_CURSOR_LINE(AnimCursor::LAST, 0)
-
-/**
  * Animated cursor elements for demolition
  */
-static const AnimCursor _demolish_animcursor[] = {
-	ANIM_CURSOR_LINE(SPR_CURSOR_DEMOLISH_FIRST, 8)
-	ANIM_CURSOR_LINE(SPR_CURSOR_DEMOLISH_1,     8)
-	ANIM_CURSOR_LINE(SPR_CURSOR_DEMOLISH_2,     8)
-	ANIM_CURSOR_LINE(SPR_CURSOR_DEMOLISH_LAST,  8)
-	ANIM_CURSOR_END()
+static constexpr AnimCursor _demolish_animcursor[] = {
+	{SPR_CURSOR_DEMOLISH_FIRST, 8},
+	{SPR_CURSOR_DEMOLISH_1,     8},
+	{SPR_CURSOR_DEMOLISH_2,     8},
+	{SPR_CURSOR_DEMOLISH_LAST,  8},
 };
 
 /**
  * Animated cursor elements for lower land
  */
-static const AnimCursor _lower_land_animcursor[] = {
-	ANIM_CURSOR_LINE(SPR_CURSOR_LOWERLAND_FIRST, 10)
-	ANIM_CURSOR_LINE(SPR_CURSOR_LOWERLAND_1,     10)
-	ANIM_CURSOR_LINE(SPR_CURSOR_LOWERLAND_LAST,  29)
-	ANIM_CURSOR_END()
+static constexpr AnimCursor _lower_land_animcursor[] = {
+	{SPR_CURSOR_LOWERLAND_FIRST, 10},
+	{SPR_CURSOR_LOWERLAND_1,     10},
+	{SPR_CURSOR_LOWERLAND_LAST,  29},
 };
 
 /**
  * Animated cursor elements for raise land
  */
-static const AnimCursor _raise_land_animcursor[] = {
-	ANIM_CURSOR_LINE(SPR_CURSOR_RAISELAND_FIRST, 10)
-	ANIM_CURSOR_LINE(SPR_CURSOR_RAISELAND_1,     10)
-	ANIM_CURSOR_LINE(SPR_CURSOR_RAISELAND_LAST,  29)
-	ANIM_CURSOR_END()
+static constexpr AnimCursor _raise_land_animcursor[] = {
+	{SPR_CURSOR_RAISELAND_FIRST, 10},
+	{SPR_CURSOR_RAISELAND_1,     10},
+	{SPR_CURSOR_RAISELAND_LAST,  29},
 };
 
 /**
  * Animated cursor elements for the goto icon
  */
-static const AnimCursor _order_goto_animcursor[] = {
-	ANIM_CURSOR_LINE(SPR_CURSOR_PICKSTATION_FIRST, 10)
-	ANIM_CURSOR_LINE(SPR_CURSOR_PICKSTATION_1,     10)
-	ANIM_CURSOR_LINE(SPR_CURSOR_PICKSTATION_LAST,  29)
-	ANIM_CURSOR_END()
+static constexpr AnimCursor _order_goto_animcursor[] = {
+	{SPR_CURSOR_PICKSTATION_FIRST, 10},
+	{SPR_CURSOR_PICKSTATION_1,     10},
+	{SPR_CURSOR_PICKSTATION_LAST,  29},
 };
 
 /**
  * Animated cursor elements for the build signal icon
  */
-static const AnimCursor _build_signals_animcursor[] = {
-	ANIM_CURSOR_LINE(SPR_CURSOR_BUILDSIGNALS_FIRST, 20)
-	ANIM_CURSOR_LINE(SPR_CURSOR_BUILDSIGNALS_LAST,  20)
-	ANIM_CURSOR_END()
+static constexpr AnimCursor _build_signals_animcursor[] = {
+	{SPR_CURSOR_BUILDSIGNALS_FIRST, 20},
+	{SPR_CURSOR_BUILDSIGNALS_LAST,  20},
 };
 
 /**
@@ -82,7 +64,7 @@ static const AnimCursor _build_signals_animcursor[] = {
  *  definitions we have above. This is the only thing that is
  *  accessed directly from other files
  */
-static const AnimCursor * const _animcursors[] = {
+static constexpr std::span<const AnimCursor> _animcursors[] = {
 	_demolish_animcursor,
 	_lower_land_animcursor,
 	_raise_land_animcursor,

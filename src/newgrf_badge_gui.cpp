@@ -205,22 +205,29 @@ public:
 
 	uint Width() const override
 	{
+		if (this->dim.width == 0) return this->TBase::Width();
 		return this->dim.width + WidgetDimensions::scaled.hsep_wide + this->TBase::Width();
 	}
 
 	int OnClick(const Rect &r, const Point &pt) const override
 	{
-		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
-		return this->TBase::OnClick(r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), pt);
+		if (this->dim.width == 0) {
+			return this->TBase::OnClick(r, pt);
+		} else {
+			bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+			return this->TBase::OnClick(r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), pt);
+		}
 	}
 
 	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
 	{
-		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
-
-		DrawBadgeColumn(r.WithWidth(this->dim.width, rtl), 0, *this->gui_classes, this->badges, this->feature, this->introduction_date, PAL_NONE);
-
-		this->TBase::Draw(full, r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), sel, click_result, bg_colour);
+		if (this->dim.width == 0) {
+			this->TBase::Draw(full, r, sel, click_result, bg_colour);
+		} else {
+			bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+			DrawBadgeColumn(r.WithWidth(this->dim.width, rtl), 0, *this->gui_classes, this->badges, this->feature, this->introduction_date, PAL_NONE);
+			this->TBase::Draw(full, r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), sel, click_result, bg_colour);
+		}
 	}
 
 private:
@@ -233,17 +240,17 @@ private:
 	Dimension dim{};
 };
 
-using DropDownListBadgeItem = DropDownBadges<DropDownListStringItem>;
-using DropDownListBadgeIconItem = DropDownBadges<DropDownListIconItem>;
+using DropDownListBadgeItem = DropDownBadges<DropDownString<DropDownSpacer<DropDownListStringItem, true>, FS_SMALL, true>>;
+using DropDownListBadgeIconItem = DropDownBadges<DropDownString<DropDownSpacer<DropDownListIconItem, true>, FS_SMALL, true>>;
 
-std::unique_ptr<DropDownListItem> MakeDropDownListBadgeItem(const std::shared_ptr<GUIBadgeClasses> &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, std::string &&str, int value, bool masked, bool shaded)
+std::unique_ptr<DropDownListItem> MakeDropDownListBadgeItem(const std::shared_ptr<GUIBadgeClasses> &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, Money cost, std::string &&str, int value, bool masked, bool shaded)
 {
-	return std::make_unique<DropDownListBadgeItem>(gui_classes, badges, feature, introduction_date, std::move(str), value, masked, shaded);
+	return std::make_unique<DropDownListBadgeItem>(gui_classes, badges, feature, introduction_date, GetString(STR_JUST_CURRENCY_SHORT, cost), std::move(str), value, masked, shaded);
 }
 
-std::unique_ptr<DropDownListItem> MakeDropDownListBadgeIconItem(const std::shared_ptr<GUIBadgeClasses> &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, const Dimension &dim, SpriteID sprite, PaletteID palette, std::string &&str, int value, bool masked, bool shaded)
+std::unique_ptr<DropDownListItem> MakeDropDownListBadgeIconItem(const std::shared_ptr<GUIBadgeClasses> &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, Money cost, const Dimension &dim, SpriteID sprite, PaletteID palette, std::string &&str, int value, bool masked, bool shaded)
 {
-	return std::make_unique<DropDownListBadgeIconItem>(gui_classes, badges, feature, introduction_date, dim, sprite, palette, std::move(str), value, masked, shaded);
+	return std::make_unique<DropDownListBadgeIconItem>(gui_classes, badges, feature, introduction_date, GetString(STR_JUST_CURRENCY_SHORT, cost), dim, sprite, palette, std::move(str), value, masked, shaded);
 }
 
 /**
@@ -273,7 +280,7 @@ public:
 		bool rtl = (_current_text_dir == TD_RTL);
 		int w = SETTING_BUTTON_WIDTH;
 
-		Rect br = r.WithWidth(w, TEnd ^ rtl).CentreTo(w, SETTING_BUTTON_HEIGHT);
+		Rect br = r.WithWidth(w, TEnd ^ rtl).CentreToHeight(SETTING_BUTTON_HEIGHT);
 		if (br.WithWidth(w / 2, rtl).Contains(pt)) return this->click_up;
 		if (br.WithWidth(w / 2, !rtl).Contains(pt)) return this->click_down;
 
@@ -291,7 +298,7 @@ public:
 			if (click_result == this->click_down) state = 2;
 		}
 
-		Rect br = r.WithWidth(w, TEnd ^ rtl).CentreTo(w, SETTING_BUTTON_HEIGHT);
+		Rect br = r.WithWidth(w, TEnd ^ rtl).CentreToHeight(SETTING_BUTTON_HEIGHT);
 		DrawUpDownButtons(br.left, br.top, this->button_colour, state, this->click_up != 0, this->click_down != 0);
 
 		this->TBase::Draw(full, r.Indent(w + WidgetDimensions::scaled.hsep_wide, TEnd ^ rtl), sel, click_result, bg_colour);
@@ -363,7 +370,7 @@ DropDownList BuildBadgeClassConfigurationList(const GUIBadgeClasses &gui_classes
  * Toggle badge class visibility.
  * @param feature Feature being used.
  * @param class_badge Class badge.
- * @param click Dropdown click reuslt.
+ * @param click Dropdown click result.
  */
 static void BadgeClassToggleVisibility(GrfSpecFeature feature, Badge &class_badge, int click_result, BadgeFilterChoices &choices)
 {
@@ -570,7 +577,7 @@ void ResetBadgeFilter(BadgeFilterChoices &choices, BadgeClassID badge_class_inde
 
 /**
  * Set badge filter choice for a class.
- * @param choides Badge filter choides.
+ * @param choices Badge filter choices.
  * @param badge_index Badge to set. The badge class is inferred from the badge.
  * @note if the badge_index is invalid, the filter will be reset instead.
  */

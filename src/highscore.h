@@ -15,7 +15,7 @@
 #include "settings_type.h"
 
 struct HighScore {
-	std::string name; ///< The name of the companyy and president.
+	std::string name; ///< The name of the company and president.
 	StringID title = INVALID_STRING_ID; ///< NOSAVE, has troubles with changing string-numbers.
 	uint16_t score = 0; ///< The score for this high score. Do NOT change type, will break hs.dat
 };

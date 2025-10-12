@@ -74,7 +74,7 @@ public:
 	 * Remove a link graph from the execution queue.
 	 * @param lg Link graph to be removed.
 	 */
-	void Unqueue(LinkGraph *lg) { this->schedule.remove(lg); }
+	void Dequeue(LinkGraph *lg) { this->schedule.remove(lg); }
 };
 
 void StateGameLoop_LinkGraphPauseControl();

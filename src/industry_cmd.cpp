@@ -701,7 +701,7 @@ static void AnimateTile_Industry(TileIndex tile)
 		if ((TimerGameTick::counter & 1) == 0) AnimateSugarSieve(tile);
 		break;
 
-	case GFX_TOFFEE_QUARY:
+	case GFX_TOFFEE_QUARRY:
 		if ((TimerGameTick::counter & 3) == 0) AnimateToffeeQuarry(tile);
 		break;
 
@@ -793,7 +793,7 @@ static void MakeIndustryTileBigger(TileIndex tile)
 
 	case GFX_TOY_FACTORY:
 	case GFX_BUBBLE_CATCHER:
-	case GFX_TOFFEE_QUARY:
+	case GFX_TOFFEE_QUARRY:
 		SetAnimationFrame(tile, 0);
 		SetIndustryAnimationLoop(tile, 0);
 		break;
@@ -938,7 +938,7 @@ static void TileLoop_Industry(TileIndex tile)
 		TileLoopIndustry_BubbleGenerator(tile);
 		break;
 
-	case GFX_TOFFEE_QUARY:
+	case GFX_TOFFEE_QUARRY:
 		AddAnimatedTile(tile);
 		break;
 
@@ -1761,17 +1761,25 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	auto &industries = Industry::industries[type];
 	industries.insert(i->index);
 
+	size_t produced_count = 0;
 	for (size_t index = 0; index < std::size(indspec->produced_cargo); ++index) {
-		if (!IsValidCargoType(indspec->produced_cargo[index])) break;
-
+		if (IsValidCargoType(indspec->produced_cargo[index])) {
+			produced_count = index + 1;
+		}
+	}
+	for (size_t index = 0; index < produced_count; ++index) {
 		Industry::ProducedCargo &p = i->produced.emplace_back();
 		p.cargo = indspec->produced_cargo[index];
 		p.rate = indspec->production_rate[index];
 	}
 
+	size_t accepted_count = 0;
 	for (size_t index = 0; index < std::size(indspec->accepts_cargo); ++index) {
-		if (!IsValidCargoType(indspec->accepts_cargo[index])) break;
-
+		if (IsValidCargoType(indspec->accepts_cargo[index])) {
+			accepted_count = index + 1;
+		}
+	}
+	for (size_t index = 0; index < accepted_count; ++index) {
 		Industry::AcceptedCargo &a = i->accepted.emplace_back();
 		a.cargo = indspec->accepts_cargo[index];
 	}
@@ -3227,6 +3235,7 @@ extern const TileTypeProcs _tile_type_industry_procs = {
 	nullptr,                        // vehicle_enter_tile_proc
 	GetFoundation_Industry,      // get_foundation_proc
 	TerraformTile_Industry,      // terraform_tile_proc
+	nullptr, // check_build_above_proc
 };
 
 bool IndustryCompare::operator() (const IndustryListEntry &lhs, const IndustryListEntry &rhs) const

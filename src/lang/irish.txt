@@ -1482,6 +1482,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Bog an léarsc�
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Scrollú mín do na fuinneoga amhairc: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Roghnaigh an chaoi a scrollóidh an príomhamharc chuig suíomh ar leith má chliceálann tú ar an léarscáil bheag nó má thugann tú ordú scrollú chuig oibiacht ar leith ar an léarscáil. Má tá sé cumasaithe, scrollóidh an fhuinneog amhairc go mín, má tá sé díchumasaithe léimfidh sé go díreach chuig an suíomh sin.
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Taispeáin leid uirlise tomhais agu uirlisí tógála áirithe in úsáid: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Taispeánfar faid na dtíleanna agus difríochtaí san airde agus tú ag tarraingt le linn duit a bheith i mbun tógála
 
@@ -2483,10 +2484,10 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Solátha
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Ceangail stáisiún
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Tóg stáisiún ar leithligh
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Tóg stáisiún ar leithligh
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Ceangail pointe bealaigh
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Tóg pointe bealaigh ar leithligh
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Tóg pointe bealaigh ar leithligh
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Díchumasaithe toisc nach bhfuil aon fheithicil ar fáil faoi láthair don bhonneagar seo
@@ -3042,6 +3043,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Iardheis
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Saorfhoirme
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Uisce
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Randamach
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Randamach
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}De láimh
 
@@ -3278,7 +3281,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Iontrái
 # Town directory window
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ceann ar bith -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Cathair){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Ainmneacha bailte - cliceáil ar ainm le go mbeidh an baile i lár an scáileán. Osclaítear amharc nua ar shuíomh an bhaile le Ctrl+Cliceáil
 STR_TOWN_POPULATION                                             :{BLACK}Daonra domhanda: {COMMA}
 
@@ -4508,7 +4510,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Ní féi
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... is é uasmhéid na hiasachta a cheadaítear ná {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Ní féidir a thuilleadh airgid a fháil ar iasacht...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... níl aon iasacht le haisíoc
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... níl aon iasacht le haisíoc
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} ag teastáil
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Ní féidir an iasacht a aisíoc...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Ní féidir airgead a thabhairt uait atá ar iasacht ón mbanc...

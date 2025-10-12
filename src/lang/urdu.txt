@@ -1243,6 +1243,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :بنفشی
 ###length 4
 
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :تعمیراتی کام کے دوران پیمائشی ٹول ٹپ دکھائیں: {STRING}
 
 STR_CONFIG_SETTING_LIVERIES                                     :کمپنی کے رنگ دکھائیں: {STRING}
@@ -1931,10 +1932,10 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{GOLD}{CARGO_LI
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}اسٹیشن ملائیں
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}الگ اسٹیشن تعمیر کریں
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}الگ اسٹیشن تعمیر کریں
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}گزرگاہ ملائیں
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}الگ سے گزرگاہ تعمیر کریں
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}الگ سے گزرگاہ تعمیر کریں
 
 # Generic toolbar
 
@@ -2221,6 +2222,8 @@ STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :{BLACK}کھیل
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}فری فارم
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}پانی
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}بے ترتیب
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}بے ترتیب
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}دستی
 

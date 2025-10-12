@@ -24,7 +24,7 @@ struct GRFFile;
 class CommandCost {
 	Money cost;                                 ///< The cost of this action
 	StringID message;                           ///< Warning message for when success is unset
-	ExpensesType expense_type;                  ///< the type of expence as shown on the finances view
+	ExpensesType expense_type;                  ///< the type of expense as shown on the finances view
 	bool success;                               ///< Whether the command went fine up to this moment
 	Owner owner = CompanyID::Invalid(); ///< Originator owner of error.
 	StringID extra_message = INVALID_STRING_ID; ///< Additional warning message for when success is unset

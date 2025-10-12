@@ -13,7 +13,7 @@ private:
 public:
 	static SQArray* Create(SQSharedState *ss,SQInteger nInitialSize){
 		SQArray *newarray=(SQArray*)SQ_MALLOC(sizeof(SQArray));
-		new (newarray) SQArray(ss,nInitialSize);
+		new (newarray, sizeof(SQArray)) SQArray(ss,nInitialSize);
 		return newarray;
 	}
 #ifndef NO_GARBAGE_COLLECTOR

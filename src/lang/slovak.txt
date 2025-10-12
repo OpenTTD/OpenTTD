@@ -1715,6 +1715,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Pohyb mapy s ľ
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Plynulé posúvanie pohľadu: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Nastaví ako bude reagovať posúvanie na špecifickú pozíciu po kliknutí na minimapu, alebo po zadaní príkazu na presun na zadaný objekt. Ak je zapnuté, pohľad sa presúva plynulo. Ak je vypnuté, pohľad skočí priamo na zadané miesto/objekt.
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Zobraziť údaje o rozmeroch pri výstavbe: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Zobrazí vzdialenosť v políčkach a prevýšenie pri konštrukcii ťahaním
 
@@ -2789,10 +2790,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Výdavky
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Spojiť stanicu
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Postaviť stanicu oddelene
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Postaviť stanicu oddelene
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Spojiť smerový bod
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Postaviť smerový bod oddelene
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Postaviť smerový bod oddelene
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Vypnuté, pretože v súčasnosti nie sú dostuné žiadne vozidlá pre tento typ infraštruktúry
@@ -3377,6 +3378,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Juho-zá
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Náhodne
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Voda
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Náhodne
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Náhodne
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuálne
 
@@ -3627,7 +3630,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Zadajte 
 # Town directory window
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Žiadne -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Veľkomesto){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Názvy miest - kliknite na názov pre pohľad na mesto. Ctrl+Klik otvorí nové okno s pohľadom na mesto
 STR_TOWN_POPULATION                                             :{BLACK}Svetová populácia: {COMMA}
 
@@ -4974,7 +4976,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Meno pre
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... úverovy limit je {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Nemôžete si požičať viac peňazí...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... úver už bol splatený
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... úver už bol splatený
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... Potrebuješ {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Úver sa nedá splatiť...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Nie je možné presunúť peniaze, ktoré sú požičané z banky...

@@ -55,7 +55,7 @@ private:
 };
 
 /**
- * Uper-parent object of all API classes. You should never use this class in
+ * Upper-parent object of all API classes. You should never use this class in
  *   your script, as it doesn't publish any public functions. It is used
  *   internally to have a common place to handle general things, like internal
  *   command processing, and command-validation checks.
@@ -143,7 +143,7 @@ public:
 	static void InitializeRandomizers();
 
 	/**
-	 * Used when trying to instanciate ScriptObject from squirrel.
+	 * Used when trying to instantiate ScriptObject from squirrel.
 	 */
 	static SQInteger Constructor(HSQUIRRELVM);
 

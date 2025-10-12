@@ -87,8 +87,8 @@ void ViewportSortParentSpritesSSE41(ParentSpriteToSortVector *psdv)
 		auto ssum = std::max(s->xmax, s->xmin) + std::max(s->ymax, s->ymin);
 		auto prev = sprite_list.before_begin();
 		auto x = sprite_list.begin();
-		while (x != sprite_list.end() && ((*x).first <= ssum)) {
-			auto p = (*x).second;
+		while (x != sprite_list.end() && x->first <= ssum) {
+			auto p = x->second;
 			if (p == s) {
 				/* We found the current sprite, remove it and move on. */
 				x = sprite_list.erase_after(prev);

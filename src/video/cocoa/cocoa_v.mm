@@ -141,7 +141,7 @@ std::optional<std::string_view> VideoDriver_Cocoa::Initialize()
 /**
  * Set dirty a rectangle managed by a cocoa video subdriver.
  * @param left Left x cooordinate of the dirty rectangle.
- * @param top Uppder y coordinate of the dirty rectangle.
+ * @param top Upper y coordinate of the dirty rectangle.
  * @param width Width of the dirty rectangle.
  * @param height Height of the dirty rectangle.
  */
@@ -281,12 +281,6 @@ Dimension VideoDriver_Cocoa::GetScreenSize() const
 {
 	NSRect frame = [ [ NSScreen mainScreen ] frame ];
 	return { static_cast<uint>(NSWidth(frame)), static_cast<uint>(NSHeight(frame)) };
-}
-
-/** Get DPI scale of our window. */
-float VideoDriver_Cocoa::GetDPIScale()
-{
-	return this->cocoaview != nil ? [ this->cocoaview getContentsScale ] : 1.0f;
 }
 
 /** Lock video buffer for drawing if it isn't already mapped. */

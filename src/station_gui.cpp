@@ -848,30 +848,6 @@ static constexpr NWidgetPart _nested_station_view_widgets[] = {
 	EndContainer(),
 };
 
-/**
- * Draws icons of waiting cargo in the StationView window
- *
- * @param cargo type of cargo
- * @param waiting number of waiting units
- * @param left  left most coordinate to draw on
- * @param right right most coordinate to draw on
- * @param y y coordinate
- */
-static void DrawCargoIcons(CargoType cargo, uint waiting, int left, int right, int y)
-{
-	int width = ScaleSpriteTrad(10);
-	uint num = std::min<uint>((waiting + (width / 2)) / width, (right - left) / width); // maximum is width / 10 icons so it won't overflow
-	if (num == 0) return;
-
-	SpriteID sprite = CargoSpec::Get(cargo)->GetCargoIcon();
-
-	int x = _current_text_dir == TD_RTL ? left : right - num * width;
-	do {
-		DrawSprite(sprite, PAL_NONE, x, y);
-		x += width;
-	} while (--num);
-}
-
 enum SortOrder : uint8_t {
 	SO_DESCENDING,
 	SO_ASCENDING
@@ -912,7 +888,7 @@ typedef std::set<std::unique_ptr<CargoDataEntry>, CargoSorter> CargoDataSet;
 /**
  * A cargo data entry representing one possible row in the station view window's
  * top part. Cargo data entries form a tree where each entry can have several
- * children. Parents keep track of the sums of their childrens' cargo counts.
+ * children. Parents keep track of the sums of their children's cargo counts.
  */
 class CargoDataEntry {
 public:
@@ -1296,6 +1272,8 @@ struct StationViewWindow : public Window {
 	uint expand_shrink_width = 0; ///< The width allocated to the expand/shrink 'button'
 	int rating_lines = RATING_LINES; ///< Number of lines in the cargo ratings view.
 	int accepts_lines = ACCEPTS_LINES; ///< Number of lines in the accepted cargo view.
+	int line_height = 0; ///< Height of a cargo line.
+	Dimension cargo_icon_size{}; ///< Size of largest cargo icon.
 	Scrollbar *vscroll = nullptr;
 
 	/* Height of the #WID_SV_ACCEPT_RATING_LIST widget for different views. */
@@ -1353,6 +1331,13 @@ struct StationViewWindow : public Window {
 		this->sort_orders[0] = SO_ASCENDING;
 		this->SelectSortOrder((SortOrder)_settings_client.gui.station_gui_sort_order);
 		this->owner = Station::Get(window_number)->owner;
+	}
+
+	void OnInit() override
+	{
+		this->cargo_icon_size = GetLargestCargoIconSize();
+		this->line_height = std::max<int>(GetCharacterHeight(FS_NORMAL), this->cargo_icon_size.height);
+		this->expand_shrink_width = std::max(GetCharacterWidth(FS_NORMAL, '-'), GetCharacterWidth(FS_NORMAL, '+'));
 	}
 
 	void Close([[maybe_unused]] int data = 0) override
@@ -1416,9 +1401,8 @@ struct StationViewWindow : public Window {
 	{
 		switch (widget) {
 			case WID_SV_WAITING:
-				fill.height = resize.height = GetCharacterHeight(FS_NORMAL);
+				fill.height = resize.height = this->line_height;
 				size.height = 4 * resize.height + padding.height;
-				this->expand_shrink_width = std::max(GetStringBoundingBox("-").width, GetStringBoundingBox("+").width);
 				break;
 
 			case WID_SV_ACCEPT_RATING_LIST:
@@ -1786,6 +1770,28 @@ struct StationViewWindow : public Window {
 	}
 
 	/**
+	* Draw icons of waiting cargo.
+	* @param cargo type of cargo
+	* @param waiting number of waiting units
+	* @param r Rect to draw within
+	*/
+	void DrawCargoIcons(CargoType cargo, uint waiting, const Rect &r) const
+	{
+		int width = ScaleSpriteTrad(10);
+		uint num = std::min<uint>((waiting + (width / 2)) / width, r.Width() / width); // maximum is width / 10 icons so it won't overflow
+		if (num == 0) return;
+
+		SpriteID sprite = CargoSpec::Get(cargo)->GetCargoIcon();
+
+		int x = _current_text_dir == TD_RTL ? r.left : r.right - num * width;
+		int y = CentreBounds(r.top, r.bottom, this->cargo_icon_size.height);
+		do {
+			DrawSprite(sprite, PAL_NONE, x, y);
+			x += width;
+		} while (--num);
+	}
+
+	/**
 	 * Draw the given cargo entries in the station GUI.
 	 * @param entry Root entry for all cargo to be drawn.
 	 * @param r Screen rectangle to draw into.
@@ -1805,6 +1811,7 @@ struct StationViewWindow : public Window {
 		} else {
 			entry.Resort(CargoSortType::Count, this->sort_orders[column]);
 		}
+		int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
 		for (CargoDataSet::iterator i = entry.Begin(); i != entry.End(); ++i) {
 			CargoDataEntry &cd = **i;
 
@@ -1815,10 +1822,10 @@ struct StationViewWindow : public Window {
 			if (pos > -maxrows && pos <= 0) {
 				StringID str = STR_EMPTY;
 				StationID station = StationID::Invalid();
-				int y = r.top - pos * GetCharacterHeight(FS_NORMAL);
+				int y = r.top - pos * this->line_height;
 				if (this->groupings[column] == GR_CARGO) {
 					str = STR_STATION_VIEW_WAITING_CARGO;
-					DrawCargoIcons(cd.GetCargo(), cd.GetCount(), r.left + this->expand_shrink_width, r.right - this->expand_shrink_width, y);
+					this->DrawCargoIcons(cd.GetCargo(), cd.GetCount(), Rect(r.left + this->expand_shrink_width, y, r.right - this->expand_shrink_width, y + this->line_height - 1));
 				} else {
 					if (!auto_distributed) grouping = GR_SOURCE;
 					station = cd.GetStation();
@@ -1834,7 +1841,7 @@ struct StationViewWindow : public Window {
 				Rect text = r.Indent(column * WidgetDimensions::scaled.hsep_indent, rtl).Indent(this->expand_shrink_width, !rtl);
 				Rect shrink = r.WithWidth(this->expand_shrink_width, !rtl);
 
-				DrawString(text.left, text.right, y, GetString(str, cargo, cd.GetCount(), station));
+				DrawString(text.left, text.right, y + text_y_offset, GetString(str, cargo, cd.GetCount(), station));
 
 				if (column < NUM_COLUMNS - 1) {
 					std::string_view sym;
@@ -1852,7 +1859,7 @@ struct StationViewWindow : public Window {
 							}
 						}
 					}
-					if (!sym.empty()) DrawString(shrink.left, shrink.right, y, sym, TC_YELLOW);
+					if (!sym.empty()) DrawString(shrink.left, shrink.right, y + text_y_offset, sym, TC_YELLOW);
 				}
 				this->SetDisplayedRow(cd);
 			}
@@ -2316,7 +2323,7 @@ struct SelectStationWindow : Window {
 		if (widget != WID_JS_PANEL) return;
 
 		/* Determine the widest string */
-		Dimension d = GetStringBoundingBox(T::IsWaypoint() ? STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT : STR_JOIN_STATION_CREATE_SPLITTED_STATION);
+		Dimension d = GetStringBoundingBox(T::IsWaypoint() ? STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT : STR_JOIN_STATION_CREATE_SPLIT_STATION);
 		for (const auto &station : _stations_nearby_list) {
 			if (station == NEW_STATION) continue;
 			const BaseStation *st = BaseStation::Get(station);
@@ -2340,7 +2347,7 @@ struct SelectStationWindow : Window {
 		auto [first, last] = this->vscroll->GetVisibleRangeIterators(_stations_nearby_list);
 		for (auto it = first; it != last; ++it, tr.top += this->resize.step_height) {
 			if (*it == NEW_STATION) {
-				DrawString(tr, T::IsWaypoint() ? STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT : STR_JOIN_STATION_CREATE_SPLITTED_STATION);
+				DrawString(tr, T::IsWaypoint() ? STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT : STR_JOIN_STATION_CREATE_SPLIT_STATION);
 			} else {
 				const BaseStation *st = BaseStation::Get(*it);
 				DrawString(tr, T::IsWaypoint()
@@ -2453,6 +2460,7 @@ void ShowSelectBaseStationIfNeeded(TileArea ta, StationPickerCmdProc&& proc)
 {
 	if (StationJoinerNeeded<T>(proc)) {
 		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
+		FindStationsNearby<T>(ta, false);
 		new SelectStationWindow<T>(_select_station_desc, ta, std::move(proc));
 	} else {
 		proc(false, StationID::Invalid());

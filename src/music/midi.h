@@ -10,7 +10,7 @@
 #ifndef MUSIC_MIDI_H
 #define MUSIC_MIDI_H
 
-/** Header of a Stanard MIDI File */
+/** Header of a Standard MIDI File */
 struct SMFHeader {
 	uint16_t format;
 	uint16_t tracks;
@@ -73,7 +73,7 @@ enum MidiController : uint8_t {
 	MIDICT_GENERAL4          =  19,
 	/* Offset from MSB to LSB of continuous controllers */
 	MIDICTOFS_HIGHRES        =  32,
-	/* Stanard continuous controllers (LSB control) */
+	/* Standard continuous controllers (LSB control) */
 	MIDICT_BANKSELECT_LO     = MIDICTOFS_HIGHRES + MIDICT_BANKSELECT,
 	MIDICT_MODWHEEL_LO       = MIDICTOFS_HIGHRES + MIDICT_MODWHEEL,
 	MIDICT_BREATH_LO         = MIDICTOFS_HIGHRES + MIDICT_BREATH,

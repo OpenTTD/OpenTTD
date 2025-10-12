@@ -1691,6 +1691,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Bewege die Kart
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Weicher Bildlauf beim Springen zu einer Position: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Lege fest, auf welche Weise die Hauptansicht an eine bestimmte Position wechselt (z.B. wenn ein Punkt auf der Weltkarte angeklickt wird oder der Standort eines Bahnhofs angezeigt werden soll). Ist diese Option eingeschaltet, schwenkt die Ansicht über die Karte, bis sie am gewünschten Punkt angekommen ist. Ist sie ausgeschaltet, springt die Ansicht sofort an die gewünschte Position
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Beim Bauen Tooltip mit Abmessungen anzeigen: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Zeige Distanzen und Höhendifferenzen an, wenn mit der Maus während eines Bauvorgangs gezogen wird
 
@@ -2783,10 +2784,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Wartungs
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Verbinde mit Station
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Errichte eine getrennte Station
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Errichte eine getrennte Station
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Verbinde mit Wegpunkt
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Errichte einen getrennten Wegpunkt
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Errichte einen getrennten Wegpunkt
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :Deaktiviert, da aktuell keine Fahrzeuge für diese Infrastruktur verfügbar sind.
@@ -3424,6 +3425,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Südwest
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Beliebig
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Wasser
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Zufällig
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Zufällig
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuell
 
@@ -3684,7 +3687,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Text fü
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Städte ({COMMA} von {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Keine -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Großstadt){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Städtenamen – Klick auf den Namen zentriert Hauptansicht auf die Stadt. Mit Strg+Klick wird eine neue Zusatzansicht auf die Stadt geöffnet
 STR_TOWN_POPULATION                                             :{BLACK}Weltbevölkerung: {COMMA}
 
@@ -5054,7 +5056,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Managern
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maximale Kredithöhe beträgt {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Weitere Kreditaufnahme nicht möglich ...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... Kredit bereits getilgt
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... Kredit bereits getilgt
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... erfordert {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kredit kann nicht getilgt werden ...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Von der Bank geliehenes Geld kann nicht abgegeben werden ...

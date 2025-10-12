@@ -1603,6 +1603,7 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Pindahkan peta 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Pergeseran pandangan viewport secara halus: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Menyetel bagaimana tampilan utama menggeser posisi di peta kecil. Jika dinyalakan, peta akan bergeser secara halus. Jika dimatikan, peta langsung menuju tempat yang di klik
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Tampilkan ukuran ketika menggunakan alat pembangun: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Tampilkan perbedaan jarak dan tinggi ubin saat proses pembangunan
 
@@ -2662,10 +2663,10 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Suplai: 
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Gabung stasiun
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Pisahkan stasiun
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Pisahkan stasiun
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Gabungkan waypoint
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Pisahkan waypoint
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Pisahkan waypoint
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Dinonaktifkan karena saat ini tidak ada kendaraan yang tersedia untuk infrastruktur ini
@@ -3239,6 +3240,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Barat Da
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Bebas
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Perairan
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Acak
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Acak
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 
@@ -3484,7 +3487,6 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Masukkan
 # Town directory window
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Tidak Ada -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Kota){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nama-nama kota - Klik pada nama untuk mengarahkan pandangan utama pada kota. Ctrl+Click akan membuka viewport baru pada lokasi kota
 STR_TOWN_POPULATION                                             :{BLACK}Populasi Dunia: {COMMA}
 
@@ -4781,7 +4783,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Tidak da
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... besar pinjaman maksimal yang diizinkan adalah {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Tidak dapat meminjam uang lagi...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... tidak ada hutang yang harus dibayar
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... tidak ada hutang yang harus dibayar
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... dibutuhkan {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Tidak dapat membayar hutang...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Tidak dapat memberikan uang yang berasal dari pinjaman bank...

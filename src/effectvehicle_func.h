@@ -17,7 +17,7 @@ enum EffectVehicleType : uint8_t {
 	EV_CHIMNEY_SMOKE            =  0, ///< Smoke of power plant (industry).
 	EV_STEAM_SMOKE              =  1, ///< Smoke of steam engines.
 	EV_DIESEL_SMOKE             =  2, ///< Smoke of diesel engines.
-	EV_ELECTRIC_SPARK           =  3, ///< Sparcs of electric engines.
+	EV_ELECTRIC_SPARK           =  3, ///< Sparks of electric engines.
 	EV_CRASH_SMOKE              =  4, ///< Smoke of disasters.
 	EV_EXPLOSION_LARGE          =  5, ///< Various explosions.
 	EV_BREAKDOWN_SMOKE          =  6, ///< Smoke of broken vehicles except aircraft.

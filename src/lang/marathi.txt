@@ -907,6 +907,7 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            : वाहन �
 
 
 
+
 ###length 3
 
 
@@ -1322,6 +1323,8 @@ STR_MAPGEN_TOWN_NAME_ITALIAN                                    :ईटेलि
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}पाणी
+
+###length 3
 
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 

@@ -328,9 +328,12 @@ bool FioRemove(const std::string &filename)
 {
 	std::filesystem::path path = OTTD2FS(filename);
 	std::error_code error_code;
-	std::filesystem::remove(path, error_code);
-	if (error_code) {
-		Debug(misc, 0, "Removing {} failed: {}", filename, error_code.message());
+	if (!std::filesystem::remove(path, error_code)) {
+		if (error_code) {
+			Debug(misc, 0, "Removing {} failed: {}", filename, error_code.message());
+		} else {
+			Debug(misc, 0, "Removing {} failed: file does not exist", filename);
+		}
 		return false;
 	}
 	return true;
@@ -590,7 +593,7 @@ bool ExtractTar(const std::string &tar_filename, Subdirectory subdir)
 	/* We don't know the file. */
 	if (it == _tar_list[subdir].end()) return false;
 
-	const auto &dirname = (*it).second;
+	const auto &dirname = it->second;
 
 	/* The file doesn't have a sub directory! */
 	if (dirname.empty()) {

@@ -246,7 +246,7 @@ enum TTDPAircraftMovementActions : uint8_t {
 	AMA_TTDP_PAD1_TO_TAKEOFF,
 	AMA_TTDP_PAD2_TO_TAKEOFF,
 	AMA_TTDP_PAD3_TO_TAKEOFF,
-	AMA_TTDP_HANGAR_TO_TAKOFF,
+	AMA_TTDP_HANGAR_TO_TAKEOFF,
 	AMA_TTDP_LANDING_TO_HANGAR,
 	AMA_TTDP_IN_FLIGHT,
 };
@@ -565,7 +565,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 					RailType rt = GetTileRailType(v->tile);
 					const RailTypeInfo *rti = GetRailTypeInfo(rt);
 					return (rti->flags.Test(RailTypeFlag::Catenary) ? 0x200 : 0) |
-						(HasPowerOnRail(Train::From(v)->railtype, rt) ? 0x100 : 0) |
+						(HasPowerOnRail(Train::From(v)->railtypes, rt) ? 0x100 : 0) |
 						GetReverseRailTypeTranslation(rt, object->ro.grffile);
 				}
 
@@ -709,6 +709,17 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 			return count;
 		}
 
+		case 0x65:
+			if (v->type == VEH_TRAIN) {
+				RailType rt = GetRailType(v->tile);
+				return GetBadgeVariableResult(*object->ro.grffile, GetRailTypeInfo(rt)->badges, parameter);
+			}
+			if (v->type == VEH_ROAD) {
+				RoadType rt = GetRoadType(v->tile, GetRoadTramType(RoadVehicle::From(v)->roadtype));
+				return GetBadgeVariableResult(*object->ro.grffile, GetRoadTypeInfo(rt)->badges, parameter);
+			}
+			return UINT_MAX;
+
 		case 0x7A: return GetBadgeVariableResult(*object->ro.grffile, v->GetEngine()->badges, parameter);
 
 		case 0xFE:
@@ -721,7 +732,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 				const Train *u = is_powered_wagon ? t->First() : t; // for powered wagons the engine defines the type of engine (i.e. railtype)
 				RailType railtype = GetRailType(v->tile);
 				bool powered = t->IsEngine() || is_powered_wagon;
-				bool has_power = HasPowerOnRail(u->railtype, railtype);
+				bool has_power = HasPowerOnRail(u->railtypes, railtype);
 
 				if (powered && has_power) SetBit(modflags, 5);
 				if (powered && !has_power) SetBit(modflags, 6);
@@ -904,7 +915,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 			Train *t = Train::From(v);
 			switch (variable - 0x80) {
 				case 0x62: return t->track;
-				case 0x66: return t->railtype;
+				case 0x66: return t->railtypes.GetNthSetBit(0).value_or(RailType::INVALID_RAILTYPE);
 				case 0x73: return 0x80 + VEHICLE_LENGTH - t->gcache.cached_veh_length;
 				case 0x74: return t->gcache.cached_power;
 				case 0x75: return GB(t->gcache.cached_power,  8, 24);
@@ -1127,7 +1138,7 @@ static void GetRotorOverrideSprite(EngineID engine, const struct Aircraft *v, En
 
 	/* Only valid for helicopters */
 	assert(e->type == VEH_AIRCRAFT);
-	assert(!(e->u.air.subtype & AIR_CTOL));
+	assert(!(e->VehInfo<AircraftVehicleInfo>().subtype & AIR_CTOL));
 
 	/* We differ from TTDPatch by resolving the sprite using the primary vehicle 'v', and not using the rotor vehicle 'v->Next()->Next()'.
 	 * TTDPatch copies some variables between the vehicles each time, to somehow synchronize the rotor vehicle with the primary vehicle.
@@ -1232,7 +1243,7 @@ int GetEngineProperty(EngineID engine, PropertyID property, int orig_value, cons
 }
 
 /**
- * Test for vehicle build probablity type.
+ * Test for vehicle build probability type.
  * @param v Vehicle whose build probability to test.
  * @param type Build probability type to test for.
  * @returns True or false depending on the probability result, or std::nullopt if the callback failed.

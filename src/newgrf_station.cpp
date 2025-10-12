@@ -73,38 +73,36 @@ enum TriggerArea : uint8_t {
 	TA_WHOLE,
 };
 
-struct ETileArea : TileArea {
-	ETileArea(const BaseStation *st, TileIndex tile, TriggerArea ta)
-	{
-		switch (ta) {
-			default: NOT_REACHED();
+/**
+ * Get the tile area of a rail station with trigger area type.
+ * @param st The rail station or rail waypoint.
+ * @param tile Origin tile.
+ * @param ta Trigger area type.
+ * @return The tile area.
+ */
+TileArea GetRailTileArea(const BaseStation *st, TileIndex tile, TriggerArea ta)
+{
+	switch (ta) {
+		default: NOT_REACHED();
 
-			case TA_TILE:
-				this->tile = tile;
-				this->w    = 1;
-				this->h    = 1;
-				break;
+		case TA_TILE:
+			return {tile, 1, 1};
 
-			case TA_PLATFORM: {
-				TileIndex start, end;
-				Axis axis = GetRailStationAxis(tile);
-				TileIndexDiff delta = TileOffsByAxis(axis);
+		case TA_PLATFORM: {
+			TileIndex start, end;
+			Axis axis = GetRailStationAxis(tile);
+			TileIndexDiff delta = TileOffsByAxis(axis);
 
-				for (end = tile; IsRailStationTile(end + delta) && IsCompatibleTrainStationTile(end + delta, tile); end += delta) { /* Nothing */ }
-				for (start = tile; IsRailStationTile(start - delta) && IsCompatibleTrainStationTile(start - delta, tile); start -= delta) { /* Nothing */ }
+			for (end = tile; IsRailStationTile(end + delta) && IsCompatibleTrainStationTile(end + delta, tile); end += delta) { /* Nothing */ }
+			for (start = tile; IsRailStationTile(start - delta) && IsCompatibleTrainStationTile(start - delta, tile); start -= delta) { /* Nothing */ }
 
-				this->tile = start;
-				this->w = TileX(end) - TileX(start) + 1;
-				this->h = TileY(end) - TileY(start) + 1;
-				break;
-			}
-
-			case TA_WHOLE:
-				st->GetTileArea(this, Station::IsExpected(st) ? StationType::Rail : StationType::RailWaypoint);
-				break;
+			return TileArea(start, TileX(end) - TileX(start) + 1, TileY(end) - TileY(start) + 1);
 		}
+
+		case TA_WHOLE:
+			return st->GetTileArea(Station::IsExpected(st) ? StationType::Rail : StationType::RailWaypoint);
 	}
-};
+}
 
 
 /**
@@ -694,16 +692,18 @@ CommandCost PerformStationTileSlopeCheck(TileIndex north_tile, TileIndex cur_til
 
 /**
  * Allocate a StationSpec to a Station. This is called once per build operation.
- * @param statspec StationSpec to allocate.
+ * @param spec StationSpec to allocate.
  * @param st Station to allocate it to.
- * @param exec Whether to actually allocate the spec.
- * @return Index within the Station's spec list, or -1 if the allocation failed.
+ * @return Index within the Station's station spec list, or std::nullopt if the allocation failed.
  */
-int AllocateSpecToStation(const StationSpec *statspec, BaseStation *st, bool exec)
+std::optional<uint8_t> AllocateSpecToStation(const StationSpec *spec, BaseStation *st)
 {
 	uint i;
 
-	if (statspec == nullptr || st == nullptr) return 0;
+	if (spec == nullptr) return 0;
+
+	/* If station doesn't exist yet then the first slot is available. */
+	if (st == nullptr) return 1;
 
 	for (i = 1; i < st->speclist.size() && i < NUM_STATIONSSPECS_PER_STATION; i++) {
 		if (st->speclist[i].spec == nullptr && st->speclist[i].grfid == 0) break;
@@ -716,39 +716,45 @@ int AllocateSpecToStation(const StationSpec *statspec, BaseStation *st, bool exe
 		 * but it's fairly unlikely that one reaches the limit anyways.
 		 */
 		for (i = 1; i < st->speclist.size() && i < NUM_STATIONSSPECS_PER_STATION; i++) {
-			if (st->speclist[i].spec == statspec) return i;
+			if (st->speclist[i].spec == spec) return i;
 		}
 
-		return -1;
-	}
-
-	if (exec) {
-		if (i >= st->speclist.size()) st->speclist.resize(i + 1);
-		st->speclist[i].spec     = statspec;
-		st->speclist[i].grfid    = statspec->grf_prop.grfid;
-		st->speclist[i].localidx = statspec->grf_prop.local_id;
-
-		StationUpdateCachedTriggers(st);
+		return std::nullopt;
 	}
 
 	return i;
 }
 
+/**
+ * Assign a previously allocated StationSpec specindex to a Station.
+ * @param spec StationSpec to assign..
+ * @param st Station to allocate it to.
+ * @param specindex Spec index of allocation.
+ */
+void AssignSpecToStation(const StationSpec *spec, BaseStation *st, uint8_t specindex)
+{
+	if (specindex == 0) return;
+	if (specindex >= st->speclist.size()) st->speclist.resize(specindex + 1);
+
+	st->speclist[specindex].spec = spec;
+	st->speclist[specindex].grfid = spec->grf_prop.grfid;
+	st->speclist[specindex].localidx = spec->grf_prop.local_id;
+
+	StationUpdateCachedTriggers(st);
+}
 
 /**
  * Deallocate a StationSpec from a Station. Called when removing a single station tile.
  * @param st Station to work with.
- * @param specindex Index of the custom station within the Station's spec list.
- * @return Indicates whether the StationSpec was deallocated.
+ * @param specindex Index of the custom station within the Station's station spec list.
  */
 void DeallocateSpecFromStation(BaseStation *st, uint8_t specindex)
 {
 	/* specindex of 0 (default) is never freeable */
 	if (specindex == 0) return;
 
-	ETileArea area = ETileArea(st, INVALID_TILE, TA_WHOLE);
 	/* Check all tiles over the station to check if the specindex is still in use */
-	for (TileIndex tile : area) {
+	for (TileIndex tile : GetRailTileArea(st, INVALID_TILE, TA_WHOLE)) {
 		if (st->TileBelongsToRailStation(tile) && GetCustomStationSpecIndex(tile) == specindex) {
 			return;
 		}
@@ -912,10 +918,9 @@ void TriggerStationAnimation(BaseStation *st, TileIndex trigger_tile, StationAni
 	if (!st->cached_anim_triggers.Test(trigger)) return;
 
 	uint16_t random_bits = Random();
-	ETileArea area = ETileArea(st, trigger_tile, tas[static_cast<size_t>(trigger)]);
 
 	/* Check all tiles over the station to check if the specindex is still in use */
-	for (TileIndex tile : area) {
+	for (TileIndex tile : GetRailTileArea(st, trigger_tile, tas[static_cast<size_t>(trigger)])) {
 		if (st->TileBelongsToRailStation(tile)) {
 			const StationSpec *ss = GetStationSpec(tile);
 			if (ss != nullptr && ss->animation.triggers.Test(trigger)) {
@@ -952,7 +957,6 @@ void TriggerStationRandomisation(BaseStation *st, TileIndex trigger_tile, Statio
 	if (IsValidCargoType(cargo_type) && !HasBit(st->cached_cargo_triggers, cargo_type)) return;
 
 	uint32_t whole_reseed = 0;
-	ETileArea area = ETileArea(st, trigger_tile, tas[static_cast<size_t>(trigger)]);
 
 	/* Bitmask of completely empty cargo types to be matched. */
 	CargoTypes empty_mask{};
@@ -965,7 +969,7 @@ void TriggerStationRandomisation(BaseStation *st, TileIndex trigger_tile, Statio
 	StationRandomTriggers used_random_triggers;
 
 	/* Check all tiles over the station to check if the specindex is still in use */
-	for (TileIndex tile : area) {
+	for (TileIndex tile : GetRailTileArea(st, trigger_tile, tas[static_cast<size_t>(trigger)])) {
 		if (st->TileBelongsToRailStation(tile)) {
 			const StationSpec *ss = GetStationSpec(tile);
 			if (ss == nullptr) continue;

@@ -703,6 +703,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Симĕс
 
 
 
+
 ###length 3
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Ҫук
 
@@ -1220,6 +1221,8 @@ STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Итали
 STR_MAPGEN_TOWN_NAME_CATALAN                                    :Катталун
 
 # Strings for map borders at game generation
+
+###length 3
 
 
 

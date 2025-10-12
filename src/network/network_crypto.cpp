@@ -92,7 +92,7 @@ bool X25519DerivedKeys::Exchange(const X25519PublicKey &peer_public_key, X25519K
 }
 
 /**
- * Encryption handler implementation for monocypther encryption after a X25519 key exchange.
+ * Encryption handler implementation for monocypher encryption after a X25519 key exchange.
  */
 class X25519EncryptionHandler : public NetworkEncryptionHandler {
 private:

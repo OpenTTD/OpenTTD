@@ -130,11 +130,10 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 
 	/**
 	 * Get the tile area for a given station type.
-	 * @param ta tile area to fill.
 	 * @param type the type of the area
+	 * @return The tile area.
 	 */
-	virtual void GetTileArea(TileArea *ta, StationType type) const = 0;
-
+	virtual TileArea GetTileArea(StationType type) const = 0;
 
 	/**
 	 * Obtain the length of a platform
@@ -244,7 +243,7 @@ struct SpecializedStation : public BaseStation {
 
 	/**
 	 * Gets station with given index
-	 * @return pointer to station with given index casted to T *
+	 * @return pointer to station with given index cast to T *
 	 */
 	static inline T *Get(auto index)
 	{

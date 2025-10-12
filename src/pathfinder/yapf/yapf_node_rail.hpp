@@ -17,8 +17,7 @@
 #include "yapf_type.hpp"
 
 /** key for cached segment cost for rail YAPF */
-struct CYapfRailSegmentKey
-{
+struct CYapfRailSegmentKey {
 	uint32_t value;
 
 	inline CYapfRailSegmentKey(const CYapfNodeKeyTrackDir &node_key)
@@ -64,8 +63,7 @@ struct CYapfRailSegmentKey
 };
 
 /** cached segment cost for rail YAPF */
-struct CYapfRailSegment
-{
+struct CYapfRailSegment {
 	typedef CYapfRailSegmentKey Key;
 
 	CYapfRailSegmentKey key;
@@ -112,11 +110,8 @@ struct CYapfRailSegment
 };
 
 /** Yapf Node for rail YAPF */
-template <class Tkey_>
-struct CYapfRailNodeT
-	: CYapfNodeT<Tkey_, CYapfRailNodeT<Tkey_> >
-{
-	typedef CYapfNodeT<Tkey_, CYapfRailNodeT<Tkey_> > base;
+struct CYapfRailNode : CYapfNodeT<CYapfNodeKeyTrackDir, CYapfRailNode> {
+	typedef CYapfNodeT<CYapfNodeKeyTrackDir, CYapfRailNode> base;
 	typedef CYapfRailSegment CachedData;
 
 	CYapfRailSegment *segment;
@@ -132,7 +127,7 @@ struct CYapfRailNodeT
 	SignalType last_red_signal_type;
 	SignalType last_signal_type;
 
-	inline void Set(CYapfRailNodeT *parent, TileIndex tile, Trackdir td, bool is_choice)
+	inline void Set(CYapfRailNode *parent, TileIndex tile, Trackdir td, bool is_choice)
 	{
 		this->base::Set(parent, tile, td, is_choice);
 		this->segment = nullptr;
@@ -182,17 +177,17 @@ struct CYapfRailNodeT
 	template <class Tbase, class Tfunc, class Tpf>
 	bool IterateTiles(const Train *v, Tpf &yapf, Tbase &obj, bool (Tfunc::*func)(TileIndex, Trackdir)) const
 	{
-		typename Tbase::TrackFollower ft(v, yapf.GetCompatibleRailTypes());
+		typename Tbase::TrackFollower follower{v, yapf.GetCompatibleRailTypes()};
 		TileIndex cur = this->base::GetTile();
 		Trackdir  cur_td = this->base::GetTrackdir();
 
 		while (cur != this->GetLastTile() || cur_td != this->GetLastTrackdir()) {
 			if (!((obj.*func)(cur, cur_td))) return false;
 
-			if (!ft.Follow(cur, cur_td)) break;
-			cur = ft.new_tile;
-			assert(KillFirstBit(ft.new_td_bits) == TRACKDIR_BIT_NONE);
-			cur_td = FindFirstTrackdir(ft.new_td_bits);
+			if (!follower.Follow(cur, cur_td)) break;
+			cur = follower.new_tile;
+			assert(KillFirstBit(follower.new_td_bits) == TRACKDIR_BIT_NONE);
+			cur_td = FindFirstTrackdir(follower.new_td_bits);
 		}
 
 		return (obj.*func)(cur, cur_td);
@@ -210,12 +205,6 @@ struct CYapfRailNodeT
 	}
 };
 
-/* now define two major node types (that differ by key type) */
-typedef CYapfRailNodeT<CYapfNodeKeyExitDir>  CYapfRailNodeExitDir;
-typedef CYapfRailNodeT<CYapfNodeKeyTrackDir> CYapfRailNodeTrackDir;
-
-/* Default NodeList types */
-typedef NodeList<CYapfRailNodeExitDir , 8, 10> CRailNodeListExitDir;
-typedef NodeList<CYapfRailNodeTrackDir, 8, 10> CRailNodeListTrackDir;
+typedef NodeList<CYapfRailNode, 8, 10> CRailNodeList;
 
 #endif /* YAPF_NODE_RAIL_HPP */

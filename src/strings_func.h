@@ -195,6 +195,6 @@ public:
 	bool FindMissingGlyphs();
 };
 
-void CheckForMissingGlyphs(bool base_font = true, MissingGlyphSearcher *search = nullptr);
+void CheckForMissingGlyphs(MissingGlyphSearcher *search = nullptr);
 
 #endif /* STRINGS_FUNC_H */

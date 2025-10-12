@@ -52,7 +52,7 @@ extern bool ScriptAdminMakeJSON(nlohmann::json &json, HSQUIRRELVM vm, SQInteger 
 static std::optional<std::string> TestScriptAdminMakeJSON(std::string_view squirrel)
 {
 	auto vm = sq_open(1024);
-	/* sq_compile creates a closure with our snipper, which is a table.
+	/* sq_compile creates a closure with our snippet, which is a table.
 	 * Add "return " to get the table on the stack. */
 	std::string buffer = fmt::format("return {}", squirrel);
 

@@ -178,7 +178,7 @@ public:
 	static constexpr int PREVIEW_LEFT = 31; ///< Offset from left edge to draw preview.
 	static constexpr int PREVIEW_BOTTOM = 31; ///< Offset from bottom edge to draw preview.
 
-	static constexpr int STEP_PREVIEW_HEIGHT = 16; ///< Step for decreasing or increase preivew button height.
+	static constexpr int STEP_PREVIEW_HEIGHT = 16; ///< Step for decreasing or increase preview button height.
 	static constexpr int MAX_PREVIEW_HEIGHT = PREVIEW_HEIGHT * 3; ///< Maximum height of each preview button.
 
 	static constexpr uint EDITBOX_MAX_SIZE = 16; ///< The maximum number of characters for the filter edit box.

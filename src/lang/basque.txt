@@ -1381,6 +1381,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Bioleta
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Mapan zehar mugitzerakoan, abiadura moteltzea: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Kontrolatu nola mugituko den ikuspegia lehio nagusitik zehar, puntu jakin batera joateko mapa txikian sakatzen denean edo objektu zehatz batera joateko agintzen denean
 
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Eraikitze tresna ezberdinak erabiltzerakoan neurtresna erakutsi: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Erakutsi lauki kopuruak eta garaiera ezberdintasunak eraikuntza ekintzetan sagua arrastatzerakoan
 
@@ -2209,10 +2210,10 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Hornidur
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Geltokia batu
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Geltoki bereizitua eraiki
+STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}Geltoki bereizitua eraiki
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Bidepuntua lotu
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Ibilbide puntu bereizitua eraiki
+STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Ibilbide puntu bereizitua eraiki
 
 # Generic toolbar
 
@@ -2686,6 +2687,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Hegomend
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Modu askea
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Ura
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Ausazkoa
+
+###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Ausazkoa
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Eskuz egin
 
@@ -4033,7 +4036,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Ezin da 
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... geheienzko milegua {CURRENCY_LONG} da
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Ezin da diru gehiago eskatu...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... ez dago mailegurik ordaintzeko
+STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... ez dago mailegurik ordaintzeko
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} beharrezkoa
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Ezin da mailegua ordaindu...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Ezin da mailegatutako dirua eman...

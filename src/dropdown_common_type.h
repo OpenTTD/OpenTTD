@@ -41,8 +41,8 @@ public:
 		PixelColour c2 = GetColourGradient(bg_colour, SHADE_LIGHTEST);
 
 		int mid = CentreBounds(full.top, full.bottom, 0);
-		GfxFillRect(full.left, mid - WidgetDimensions::scaled.bevel.bottom, full.right, mid - 1, c1);
-		GfxFillRect(full.left, mid, full.right, mid + WidgetDimensions::scaled.bevel.top - 1, c2);
+		GfxFillRect(full.WithY(mid - WidgetDimensions::scaled.bevel.bottom, mid - 1), c1);
+		GfxFillRect(full.WithY(mid, mid + WidgetDimensions::scaled.bevel.top - 1), c2);
 	}
 };
 
@@ -216,7 +216,7 @@ public:
 		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
 		int w = SETTING_BUTTON_WIDTH;
 
-		if (r.WithWidth(w, rtl).CentreTo(w, SETTING_BUTTON_HEIGHT).Contains(pt)) return this->click;
+		if (r.WithWidth(w, rtl).CentreToHeight(SETTING_BUTTON_HEIGHT).Contains(pt)) return this->click;
 
 		return this->TBase::OnClick(r.Indent(w + WidgetDimensions::scaled.hsep_wide, rtl), pt);
 	}
@@ -226,7 +226,7 @@ public:
 		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
 		int w = SETTING_BUTTON_WIDTH;
 
-		Rect br = r.WithWidth(w, rtl).CentreTo(w, SETTING_BUTTON_HEIGHT);
+		Rect br = r.WithWidth(w, rtl).CentreToHeight(SETTING_BUTTON_HEIGHT);
 		DrawBoolButton(br.left, br.top, this->button_colour, this->background_colour, this->on, true);
 
 		this->TBase::Draw(full, r.Indent(w + WidgetDimensions::scaled.hsep_wide, rtl), sel, click_result, bg_colour);
@@ -257,6 +257,32 @@ public:
 	{
 		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
 		this->TBase::Draw(full, r.Indent(this->indent * WidgetDimensions::scaled.hsep_indent, rtl), sel, click_result, bg_colour);
+	}
+};
+
+/**
+ * Drop down spacer component.
+ * @tparam TBase Base component.
+ * @tparam TEnd Position space at end if true, or start if false.
+ */
+template <class TBase, bool TEnd = false>
+class DropDownSpacer : public TBase {
+public:
+	template <typename... Args>
+	explicit DropDownSpacer(Args&&... args) : TBase(std::forward<Args>(args)...) {}
+
+	uint Width() const override { return WidgetDimensions::scaled.hsep_wide + this->TBase::Width(); }
+
+	int OnClick(const Rect &r, const Point &pt) const override
+	{
+		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+		return this->TBase::OnClick(r.Indent(WidgetDimensions::scaled.hsep_wide, rtl), pt);
+	}
+
+	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
+	{
+		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+		this->TBase::Draw(full, r.Indent(WidgetDimensions::scaled.hsep_wide, rtl), sel, click_result, bg_colour);
 	}
 };
 

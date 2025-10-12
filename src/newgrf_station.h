@@ -11,6 +11,7 @@
 #define NEWGRF_STATION_H
 
 #include "core/enum_type.hpp"
+#include "bridge_type.h"
 #include "newgrf_animation_type.h"
 #include "newgrf_badge_type.h"
 #include "newgrf_callbacks.h"
@@ -169,6 +170,7 @@ struct StationSpec : NewGRFSpecBase<StationClassID> {
 	};
 	using TileFlags = EnumBitSet<TileFlag, uint8_t>;
 	std::vector<TileFlags> tileflags; ///< List of tile flags.
+	std::vector<BridgeableTileInfo> bridgeable_info; ///< Per tile layout bridge information.
 
 	AnimationInfo<StationAnimationTriggers> animation;
 
@@ -213,13 +215,9 @@ SpriteID GetCustomStationFoundationRelocation(const StationSpec *statspec, BaseS
 uint16_t GetStationCallback(CallbackID callback, uint32_t param1, uint32_t param2, const StationSpec *statspec, BaseStation *st, TileIndex tile, std::span<int32_t> regs100 = {});
 CommandCost PerformStationTileSlopeCheck(TileIndex north_tile, TileIndex cur_tile, const StationSpec *statspec, Axis axis, uint8_t plat_len, uint8_t numtracks);
 
-/* Allocate a StationSpec to a Station. This is called once per build operation. */
-int AllocateSpecToStation(const StationSpec *statspec, BaseStation *st, bool exec);
-
-/* Deallocate a StationSpec from a Station. Called when removing a single station tile. */
+std::optional<uint8_t> AllocateSpecToStation(const StationSpec *spec, BaseStation *st);
+void AssignSpecToStation(const StationSpec *spec, BaseStation *st, uint8_t specindex);
 void DeallocateSpecFromStation(BaseStation *st, uint8_t specindex);
-
-/* Draw representation of a station tile for GUI purposes. */
 bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID sclass, uint station);
 
 void AnimateStationTile(TileIndex tile);
