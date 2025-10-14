@@ -12,13 +12,6 @@
 
 #include "sdl2_v.h"
 
-/**
- * Prevents the system from going to sleep.
- *
- * @param inhibited If true, sleep will be disabled. If false, sleep will be enabled.
- */
-void SetScreensaverInhibited(bool inhibited);
-
 /** The SDL video driver using default SDL backend. */
 class VideoDriver_SDL_Default : public VideoDriver_SDL_Base {
 public:
@@ -30,6 +23,8 @@ protected:
 	void Paint() override;
 
 	void ReleaseVideoPointer() override {}
+
+	void SetScreensaverInhibited(bool inhibited) override;
 
 private:
 	void UpdatePalette();

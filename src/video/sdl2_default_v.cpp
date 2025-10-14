@@ -33,14 +33,6 @@
 
 #include "../safeguards.h"
 
-void SetScreensaverInhibited(bool inhibited) {
-	if (inhibited) {
-		SDL_DisableScreenSaver();
-	} else {
-		SDL_EnableScreenSaver();
-	}
-}
-
 static FVideoDriver_SDL_Default iFVideoDriver_SDL_Default;
 
 static SDL_Surface *_sdl_surface;
@@ -180,4 +172,12 @@ bool VideoDriver_SDL_Default::AllocateBackingStore(int w, int h, bool force)
 void *VideoDriver_SDL_Default::GetVideoPointer()
 {
 	return _sdl_surface->pixels;
+}
+
+void VideoDriver_SDL_Default::SetScreensaverInhibited(bool inhibited) {
+	if (inhibited) {
+		SDL_DisableScreenSaver();
+	} else {
+		SDL_EnableScreenSaver();
+	}
 }

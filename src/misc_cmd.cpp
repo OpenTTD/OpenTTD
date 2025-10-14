@@ -22,12 +22,12 @@
 #include "texteff.hpp"
 #include "core/backup_type.hpp"
 #include "misc_cmd.h"
+// For VideoDriver->SetScreensaverInhibited
+#include "video/video_driver.hpp"
 
 #include "table/strings.h"
 
 #include "safeguards.h"
-
-extern void SetScreensaverInhibited(bool inhibited);
 
 /**
  * Increase the loan of your company.
@@ -196,10 +196,10 @@ CommandCost CmdPause(DoCommandFlags flags, PauseMode mode, bool pause)
 
 			if (pause) {
 				_pause_mode.Set(mode);
-				SetScreensaverInhibited(false);
+				VideoDriver::GetInstance()->SetScreensaverInhibited(false);
 			} else {
 				_pause_mode.Reset(mode);
-				SetScreensaverInhibited(true);
+				VideoDriver::GetInstance()->SetScreensaverInhibited(true);
 
 				/* If the only remaining reason to be paused is that we saw a command during pause, unpause. */
 				if (_pause_mode == PauseMode::CommandDuringPause) {
