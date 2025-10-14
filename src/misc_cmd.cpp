@@ -7,6 +7,7 @@
 
 /** @file misc_cmd.cpp Some misc functions that are better fitted in other files, but never got moved there... */
 
+#include "openttd.h"
 #include "stdafx.h"
 #include "command_func.h"
 #include "economy_func.h"
@@ -196,10 +197,8 @@ CommandCost CmdPause(DoCommandFlags flags, PauseMode mode, bool pause)
 
 			if (pause) {
 				_pause_mode.Set(mode);
-				VideoDriver::GetInstance()->SetScreensaverInhibited(false);
 			} else {
 				_pause_mode.Reset(mode);
-				VideoDriver::GetInstance()->SetScreensaverInhibited(true);
 
 				/* If the only remaining reason to be paused is that we saw a command during pause, unpause. */
 				if (_pause_mode == PauseMode::CommandDuringPause) {
@@ -208,6 +207,9 @@ CommandCost CmdPause(DoCommandFlags flags, PauseMode mode, bool pause)
 			}
 
 			NetworkHandlePauseChange(prev_mode, mode);
+
+			// Screensaver should always be inhibited unless we're paused
+			VideoDriver::GetInstance()->SetScreensaverInhibited(!_pause_mode.Any());
 		}
 
 		SetWindowDirty(WC_STATUS_BAR, 0);
