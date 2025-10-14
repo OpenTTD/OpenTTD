@@ -173,11 +173,3 @@ void *VideoDriver_SDL_Default::GetVideoPointer()
 {
 	return _sdl_surface->pixels;
 }
-
-void VideoDriver_SDL_Default::SetScreensaverInhibited(bool inhibited) {
-	if (inhibited) {
-		SDL_DisableScreenSaver();
-	} else {
-		SDL_EnableScreenSaver();
-	}
-}

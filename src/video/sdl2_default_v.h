@@ -24,8 +24,6 @@ protected:
 
 	void ReleaseVideoPointer() override {}
 
-	void SetScreensaverInhibited(bool inhibited) override;
-
 private:
 	void UpdatePalette();
 	void MakePalette();
