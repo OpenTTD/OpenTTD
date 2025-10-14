@@ -27,6 +27,8 @@
 
 #include "safeguards.h"
 
+extern void SetScreensaverInhibited(bool inhibited);
+
 /**
  * Increase the loan of your company.
  * @param flags operation to perform
@@ -194,8 +196,10 @@ CommandCost CmdPause(DoCommandFlags flags, PauseMode mode, bool pause)
 
 			if (pause) {
 				_pause_mode.Set(mode);
+				SetScreensaverInhibited(false);
 			} else {
 				_pause_mode.Reset(mode);
+				SetScreensaverInhibited(true);
 
 				/* If the only remaining reason to be paused is that we saw a command during pause, unpause. */
 				if (_pause_mode == PauseMode::CommandDuringPause) {

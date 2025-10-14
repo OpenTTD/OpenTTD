@@ -33,6 +33,14 @@
 
 #include "../safeguards.h"
 
+void SetScreensaverInhibited(bool inhibited) {
+	if (inhibited) {
+		SDL_DisableScreenSaver();
+	} else {
+		SDL_EnableScreenSaver();
+	}
+}
+
 static FVideoDriver_SDL_Default iFVideoDriver_SDL_Default;
 
 static SDL_Surface *_sdl_surface;

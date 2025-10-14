@@ -12,6 +12,8 @@
 
 #include "sdl2_v.h"
 
+void SetScreensaverInhibited(bool inhibited);
+
 /** The SDL video driver using default SDL backend. */
 class VideoDriver_SDL_Default : public VideoDriver_SDL_Base {
 public:
