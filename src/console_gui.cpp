@@ -453,7 +453,7 @@ void IConsoleClose()
 static std::optional<std::string_view> IConsoleHistoryAdd(std::string_view cmd)
 {
 	/* Strip all spaces at the begin */
-	while (IsWhitespace(cmd[0])) cmd.remove_prefix(1);
+	while (!cmd.empty() && IsWhitespace(cmd[0])) cmd.remove_prefix(1);
 
 	/* Do not put empty command in history */
 	if (cmd.empty()) return std::nullopt;
