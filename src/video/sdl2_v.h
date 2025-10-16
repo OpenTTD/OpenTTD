@@ -14,6 +14,10 @@
 
 #include "video_driver.hpp"
 
+/* Forward declaration of SDL_GameController */
+struct _SDL_GameController;
+typedef struct _SDL_GameController SDL_GameController;
+
 /** The SDL video driver. */
 class VideoDriver_SDL_Base : public VideoDriver {
 public:
@@ -68,6 +72,13 @@ protected:
 	virtual void ReleaseVideoPointer() = 0;
 	/** Create the main window. */
 	virtual bool CreateMainWindow(uint w, uint h, uint flags = 0);
+
+protected:
+	/** Gamepad support for map scrolling */
+	SDL_GameController *gamepad = nullptr; ///< Currently opened gamepad.
+	void OpenGamepad();
+	void CloseGamepad();
+	void ProcessGamepadInput();
 
 private:
 	void LoopOnce();
