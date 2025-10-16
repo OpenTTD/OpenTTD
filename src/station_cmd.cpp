@@ -5200,14 +5200,14 @@ void FlowStatMap::FinalizeLocalConsumption(StationID self)
  * @return IDs of source stations for which the complete FlowStat, not only a
  *         share, has been erased.
  */
-StationIDStack FlowStatMap::DeleteFlows(StationID via)
+std::vector<StationID> FlowStatMap::DeleteFlows(StationID via)
 {
-	StationIDStack ret;
+	std::vector<StationID> ret;
 	for (FlowStatMap::iterator f_it = this->begin(); f_it != this->end();) {
 		FlowStat &s_flows = f_it->second;
 		s_flows.ChangeShare(via, INT_MIN);
 		if (s_flows.GetShares()->empty()) {
-			ret.Push(f_it->first);
+			ret.push_back(f_it->first);
 			this->erase(f_it++);
 		} else {
 			++f_it;
