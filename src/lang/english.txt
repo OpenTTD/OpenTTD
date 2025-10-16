@@ -4021,7 +4021,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Signals
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Road pieces:
 STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Tram pieces:
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Water tiles:
-STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canals
+STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Water infrastructure
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stations:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Station tiles
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Airports
