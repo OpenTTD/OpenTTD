@@ -415,6 +415,7 @@ struct GameOptionsWindow : Window {
 	bool reload = false;
 	bool gui_scale_changed = false;
 	int gui_scale = 0;
+	static inline int previous_gui_scale = 0; ///< Previous GUI scale.
 	static inline WidgetID active_tab = WID_GO_TAB_GENERAL;
 
 	GameOptionsWindow(WindowDesc &desc) : Window(desc), filter_editbox(50)
@@ -1076,9 +1077,12 @@ struct GameOptionsWindow : Window {
 			case WID_GO_GUI_SCALE_AUTO:
 			{
 				if (_gui_scale_cfg == -1) {
-					_gui_scale_cfg = _gui_scale;
+					_gui_scale_cfg = this->previous_gui_scale; // Load the previous GUI scale
 					this->SetWidgetLoweredState(WID_GO_GUI_SCALE_AUTO, false);
+					if (AdjustGUIZoom(false)) ReInitAllWindows(true);
+					this->gui_scale = _gui_scale;
 				} else {
+					this->previous_gui_scale = _gui_scale; // Set the previous GUI scale value as the current one
 					_gui_scale_cfg = -1;
 					this->SetWidgetLoweredState(WID_GO_GUI_SCALE_AUTO, true);
 					if (AdjustGUIZoom(false)) ReInitAllWindows(true);
