@@ -3431,8 +3431,9 @@ STR_MAPGEN_BORDER_WATER                                         :{BLACK}Eau
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Aléatoire
 
 ###length 3
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Aléatoire
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuel
+STR_MAPGEN_BORDER_RANDOMIZE                                     :Aléatoire
+STR_MAPGEN_BORDER_MANUAL                                        :Manuel
+STR_MAPGEN_BORDER_INFINITE_WATER                                :Eau à l'infini
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotation de la carte d'altitude{NBSP}:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nom de la carte d'altitude{NBSP}:
@@ -3691,6 +3692,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Entrer u
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Villes ({COMMA} de {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}− Aucune −
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{BLACK} ({COMMA}) {YELLOW}{CITY_ICON}
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Noms des villes - Cliquer sur un nom pour centrer la vue principale sur la ville. Ctrl-clic pour ouvrir une nouvelle vue sur la ville.
 STR_TOWN_POPULATION                                             :{BLACK}Population mondiale{NBSP}: {COMMA}
 
@@ -5270,6 +5272,7 @@ STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... pont
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Le pont finirait en dehors de la carte
 STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Le pont est trop bas pour les gares
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Le pont est trop bas pour les arrêts de bus
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Le pont est trop bas pour le port
 STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Le pont est trop bas pour les bouées
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Le pont est trop bas pour les points de contrôle
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Le pont est trop bas pour les points de contrôle de route

@@ -3432,8 +3432,9 @@ STR_MAPGEN_BORDER_WATER                                         :{BLACK}Sjø
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Tilfeldig
 
 ###length 3
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Tilfeldige
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuelle
+STR_MAPGEN_BORDER_RANDOMIZE                                     :Tilfeldige
+STR_MAPGEN_BORDER_MANUAL                                        :Manuelle
+STR_MAPGEN_BORDER_INFINITE_WATER                                :Uendelig vann
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Høydekartrotering:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Høydekartnavn:
@@ -3692,6 +3693,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Skriv in
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Byer ({COMMA} av {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ingen -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{BLACK} ({COMMA}) {YELLOW}{CITY_ICON}
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Bynavn - klikk på navnet for å gå til byen. Ctrl+klikk for å åpne et nytt tilleggsvindu over byen
 STR_TOWN_POPULATION                                             :{BLACK}Verdensbefolkning: {COMMA}
 
