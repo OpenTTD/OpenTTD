@@ -714,9 +714,10 @@ public:
 	 * Get the next station the vehicle will stop at.
 	 * @return ID of the next station the vehicle will stop at or StationID::Invalid().
 	 */
-	inline std::vector<StationID> GetNextStoppingStation() const
+	inline void GetNextStoppingStation(std::vector<StationID> &next_station) const
 	{
-		return (this->orders == nullptr) ? std::vector<StationID>{} : this->orders->GetNextStoppingStation(this);
+		if (this->orders == nullptr) return;
+		this->orders->GetNextStoppingStation(next_station, this);
 	}
 
 	void ResetRefitCaps();

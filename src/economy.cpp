@@ -1270,7 +1270,8 @@ void PrepareUnload(Vehicle *front_v)
 	assert(CargoPayment::CanAllocateItem());
 	front_v->cargo_payment = new CargoPayment(front_v);
 
-	std::vector<StationID> next_station = front_v->GetNextStoppingStation();
+	std::vector<StationID> next_station;
+	front_v->GetNextStoppingStation(next_station);
 	if (front_v->orders == nullptr || (front_v->current_order.GetUnloadType() & OUFB_NO_UNLOAD) == 0) {
 		Station *st = Station::Get(front_v->last_station_visited);
 		for (Vehicle *v = front_v; v != nullptr; v = v->Next()) {
@@ -1618,7 +1619,8 @@ static void LoadUnloadVehicle(Vehicle *front)
 	StationID last_visited = front->last_station_visited;
 	Station *st = Station::Get(last_visited);
 
-	std::vector<StationID> next_station = front->GetNextStoppingStation();
+	std::vector<StationID> next_station;
+	front->GetNextStoppingStation(next_station);
 	bool use_autorefit = front->current_order.IsRefit() && front->current_order.GetRefitCargo() == CARGO_AUTO_REFIT;
 	CargoArray consist_capleft{};
 	if (_settings_game.order.improved_load && use_autorefit ?
