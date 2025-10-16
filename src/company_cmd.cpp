@@ -1218,6 +1218,26 @@ CommandCost CmdRenameCompany(DoCommandFlags flags, const std::string &text)
 }
 
 /**
+ * Set the block_preview of the company.
+ * @param flags operation to perform.
+ * @param quarters number of quarters that the company is not allowed to get new exclusive engine previews.
+ * @return the cost of this operation or an error.
+ */
+CommandCost CmdSetCompanyBlockPreview(DoCommandFlags flags, uint8_t quarters)
+{
+	if (flags.Test(DoCommandFlag::Execute)) {
+		Company *c = Company::Get(_current_company);
+		c->block_preview = quarters;
+		CompanyAdminUpdate(c);
+
+		AI::BroadcastNewEvent(new ScriptEventBlockEnginePreviewChanged(c->index));
+		Game::NewEvent(new ScriptEventBlockEnginePreviewChanged(c->index));
+	}
+
+	return CommandCost();
+}
+
+/**
  * Is the given name in use as president name of a company?
  * @param name Name to search.
  * @return \c true if the name us unique (that is, not in use), else \c false.
