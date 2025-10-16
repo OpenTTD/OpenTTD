@@ -367,7 +367,7 @@ public:
 	 */
 	inline VehicleOrderID GetNumManualOrders() const { return this->num_manual_orders; }
 
-	std::vector<StationID> GetNextStoppingStation(const Vehicle *v, VehicleOrderID first = INVALID_VEH_ORDER_ID, uint hops = 0) const;
+	void GetNextStoppingStation(std::vector<StationID> &next_station, const Vehicle *v, VehicleOrderID first = INVALID_VEH_ORDER_ID, uint hops = 0) const;
 	VehicleOrderID GetNextDecisionNode(VehicleOrderID next, uint hops) const;
 
 	void InsertOrderAt(Order &&order, VehicleOrderID index);

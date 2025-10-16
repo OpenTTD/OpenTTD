@@ -361,14 +361,14 @@ VehicleOrderID OrderList::GetNextDecisionNode(VehicleOrderID next, uint hops) co
  * @pre The vehicle is currently loading and v->last_station_visited is meaningful.
  * @note This function may draw a random number. Don't use it from the GUI.
  */
-std::vector<StationID> OrderList::GetNextStoppingStation(const Vehicle *v, VehicleOrderID first, uint hops) const
+void OrderList::GetNextStoppingStation(std::vector<StationID> &next_station, const Vehicle *v, VehicleOrderID first, uint hops) const
 {
 	VehicleOrderID next = first;
 	if (first == INVALID_VEH_ORDER_ID) {
 		next = v->cur_implicit_order_index;
 		if (next >= this->GetNumOrders()) {
 			next = this->GetFirstOrder();
-			if (next == INVALID_VEH_ORDER_ID) return {};
+			if (next == INVALID_VEH_ORDER_ID) return;
 		} else {
 			/* GetNext never returns INVALID_VEH_ORDER_ID if there is a valid station in the list.
 			 * As the given "next" is already valid and a station in the list, we
@@ -392,10 +392,9 @@ std::vector<StationID> OrderList::GetNextStoppingStation(const Vehicle *v, Vehic
 			} else if (skip_to == INVALID_VEH_ORDER_ID || skip_to == first) {
 				next = (advance == first) ? INVALID_VEH_ORDER_ID : advance;
 			} else {
-				std::vector<StationID> st1 = this->GetNextStoppingStation(v, skip_to, hops);
-				std::vector<StationID> st2 = this->GetNextStoppingStation(v, advance, hops);
-				std::copy(st2.rbegin(), st2.rend(), std::back_inserter(st1));
-				return st1;
+				this->GetNextStoppingStation(next_station, v, skip_to, hops);
+				this->GetNextStoppingStation(next_station, v, advance, hops);
+				return;
 			}
 			++hops;
 		}
@@ -404,11 +403,11 @@ std::vector<StationID> OrderList::GetNextStoppingStation(const Vehicle *v, Vehic
 		if (next == INVALID_VEH_ORDER_ID || ((orders[next].IsType(OT_GOTO_STATION) || orders[next].IsType(OT_IMPLICIT)) &&
 				orders[next].GetDestination() == v->last_station_visited &&
 				(orders[next].GetUnloadType() & (OUFB_TRANSFER | OUFB_UNLOAD)) != 0)) {
-			return {};
+			return;
 		}
 	} while (orders[next].IsType(OT_GOTO_DEPOT) || orders[next].GetDestination() == v->last_station_visited);
 
-	return {orders[next].GetDestination().ToStationID()};
+	next_station.push_back(orders[next].GetDestination().ToStationID());
 }
 
 /**
