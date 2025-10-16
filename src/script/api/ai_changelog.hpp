@@ -30,6 +30,8 @@
  * \li AIVehicleList_Waypoint
  * \li AIError::ERR_BRIDGE_TOO_LOW
  * \li AIRail::GetAllRailTypes
+ * \li AIList::GetSorterType
+ * \li AIList::GetSorterDirection
  *
  * Other changes:
  * \li AIBridge::GetBridgeID renamed to AIBridge::GetBridgeType
