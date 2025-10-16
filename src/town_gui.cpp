@@ -1789,7 +1789,34 @@ struct BuildHouseWindow : public PickerWindow {
 	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
 	{
 		const HouseSpec *spec = HouseSpec::Get(HousePickerCallbacks::sel_type);
-		Command<CMD_PLACE_HOUSE>::Post(STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index(), BuildHouseWindow::house_protected);
+
+		if (spec->building_flags.Test(BuildingFlag::Size1x1)) {
+			VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_PLACE_HOUSE);
+		} else {
+			Command<CMD_PLACE_HOUSE>::Post(STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index(), BuildHouseWindow::house_protected);
+		}
+	}
+
+	void OnPlaceDrag(ViewportPlaceMethod select_method, [[maybe_unused]] ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt) override
+	{
+		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
+	}
+
+	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, [[maybe_unused]] ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile) override
+	{
+		if (pt.x == -1) return;
+
+		assert(select_proc == DDSP_PLACE_HOUSE);
+
+		if (!_settings_game.construction.freeform_edges) {
+			/* When end_tile is MP_VOID, the error tile will not be visible to the
+			 * user. This happens when terraforming at the southern border. */
+			if (TileX(end_tile) == Map::MaxX()) end_tile += TileDiffXY(-1, 0);
+			if (TileY(end_tile) == Map::MaxY()) end_tile += TileDiffXY(0, -1);
+		}
+		const HouseSpec *spec = HouseSpec::Get(HousePickerCallbacks::sel_type);
+		Command<CMD_PLACE_HOUSE_AREA>::Post(STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER,
+			end_tile, start_tile, spec->Index(), BuildHouseWindow::house_protected, (_ctrl_pressed ? true : false));
 	}
 
 	const IntervalTimer<TimerWindow> view_refresh_interval = {std::chrono::milliseconds(2500), [this](auto) {
