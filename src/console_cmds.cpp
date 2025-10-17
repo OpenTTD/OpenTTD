@@ -2715,7 +2715,7 @@ static void ConDumpRoadTypes()
 	IConsolePrint(CC_DEFAULT, "    T = buildable by towns");
 
 	std::map<uint32_t, const GRFFile *> grfs;
-	for (RoadType rt = ROADTYPE_BEGIN; rt < ROADTYPE_END; rt++) {
+	for (RoadType rt = ROADTYPE_BEGIN; rt < GetNumRoadTypes(); rt++) {
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 		if (rti->label == 0) continue;
 		uint32_t grfid = 0;
@@ -2753,7 +2753,7 @@ static void ConDumpRailTypes()
 	IConsolePrint(CC_DEFAULT, "    d = always disallow 90 degree turns");
 
 	std::map<uint32_t, const GRFFile *> grfs;
-	for (RailType rt = RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) {
+	for (RailType rt = RAILTYPE_BEGIN; rt < GetNumRailTypes(); rt++) {
 		const RailTypeInfo *rti = GetRailTypeInfo(rt);
 		if (rti->label == 0) continue;
 		uint32_t grfid = 0;

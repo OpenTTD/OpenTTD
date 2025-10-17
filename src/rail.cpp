@@ -25,9 +25,8 @@
  */
 RailType RailTypeInfo::Index() const
 {
-	extern RailTypeInfo _railtypes[RAILTYPE_END];
-	size_t index = this - _railtypes;
-	assert(index < RAILTYPE_END);
+	size_t index = this - GetRailTypeInfo().data();
+	assert(index < GetNumRailTypes());
 	return static_cast<RailType>(index);
 }
 
@@ -89,7 +88,7 @@ bool HasAnyRailTypesAvail(const CompanyID company)
  */
 bool ValParamRailType(const RailType rail)
 {
-	return rail < RAILTYPE_END && HasRailTypeAvail(_current_company, rail);
+	return rail < GetNumRailTypes() && HasRailTypeAvail(_current_company, rail);
 }
 
 /**
@@ -99,26 +98,24 @@ bool ValParamRailType(const RailType rail)
  * @return The rail types that should be available when date
  *         introduced rail types are taken into account as well.
  */
-RailTypes AddDateIntroducedRailTypes(RailTypes current, TimerGameCalendar::Date date)
+RailTypes AddDateIntroducedRailTypes(const RailTypes &current, TimerGameCalendar::Date date)
 {
 	RailTypes rts = current;
 
-	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
-		const RailTypeInfo *rti = GetRailTypeInfo(rt);
+	for (RailTypeInfo &rti : GetRailTypeInfo()) {
 		/* Unused rail type. */
-		if (rti->label == 0) continue;
+		if (rti.label == 0) continue;
 
 		/* Not date introduced. */
-		if (!IsInsideMM(rti->introduction_date, 0, CalendarTime::MAX_DATE.base())) continue;
+		if (!IsInsideMM(rti.introduction_date, 0, CalendarTime::MAX_DATE.base())) continue;
 
 		/* Not yet introduced at this date. */
-		if (rti->introduction_date > date) continue;
+		if (rti.introduction_date > date) continue;
 
 		/* Have we introduced all required railtypes? */
-		RailTypes required = rti->introduction_required_railtypes;
-		if (!rts.All(required)) continue;
+		if (!rts.All(rti.introduction_required_railtypes)) continue;
 
-		rts.Set(rti->introduces_railtypes);
+		rts.Set(rti.introduces_railtypes);
 	}
 
 	/* When we added railtypes we need to run this method again; the added
@@ -194,17 +191,49 @@ RailTypes GetRailTypes(bool introduces)
  */
 RailType GetRailTypeByLabel(RailTypeLabel label, bool allow_alternate_labels)
 {
-	extern RailTypeInfo _railtypes[RAILTYPE_END];
+	auto railtypes = GetRailTypeInfo();
 	if (label == 0) return INVALID_RAILTYPE;
 
-	auto it = std::ranges::find(_railtypes, label, &RailTypeInfo::label);
-	if (it == std::end(_railtypes) && allow_alternate_labels) {
+	auto it = std::ranges::find(railtypes, label, &RailTypeInfo::label);
+	if (it == std::end(railtypes) && allow_alternate_labels) {
 		/* Test if any rail type defines the label as an alternate. */
-		it = std::ranges::find_if(_railtypes, [label](const RailTypeInfo &rti) { return rti.alternate_labels.contains(label); });
+		it = std::ranges::find_if(railtypes, [label](const RailTypeInfo &rti) { return rti.alternate_labels.contains(label); });
 	}
 
-	if (it != std::end(_railtypes)) return it->Index();
+	if (it != std::end(railtypes)) return it->Index();
 
 	/* No matching label was found, so it is invalid */
 	return INVALID_RAILTYPE;
 }
+
+/**
+ * Get a set of rail types that are currently in use on the map.
+ * @return Used rail types.
+ */
+static RailTypes GetUsedRailTypes()
+{
+	RailTypes used_types;
+	for (const Company *c : Company::Iterate()) {
+		for (const auto &[railtype, count] : c->infrastructure.rail) {
+			if (count > 0) used_types.Set(railtype);
+		}
+	}
+	return used_types;
+}
+
+/**
+ * Get the first unused mapped rail type position.
+ * @return iterator to first unused mapped rail type.
+ */
+template <> auto RailTypeMapping::FindUnusedMapType() -> MapStorage::iterator
+{
+	RailTypes used_types = GetUsedRailTypes();
+	if (used_types.size() < RailTypeMapping::MAX_SIZE) {
+		for (auto it = std::begin(this->map); it != std::end(this->map); ++it) {
+			if (!used_types.contains(*it)) return it;
+		}
+	}
+	return std::end(this->map);
+}
+
+RailTypeMapping _railtype_mapping;

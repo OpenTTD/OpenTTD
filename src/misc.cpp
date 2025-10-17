@@ -167,4 +167,8 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 	_gamelog.Mode();
 	_gamelog.GRFAddList(_grfconfig);
 	_gamelog.StopAction();
+
+	_railtype_mapping.Init();
+	_roadtype_mapping.Init();
+	_tramtype_mapping.Init();
 }

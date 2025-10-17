@@ -140,13 +140,13 @@ struct GRFFile {
 	std::unordered_map<uint16_t, BadgeID> badge_map{};
 
 	std::vector<RailTypeLabel> railtype_list{}; ///< Railtype translation table
-	std::array<RailType, RAILTYPE_END> railtype_map{};
+	std::vector<RailType> railtype_map{};
 
 	std::vector<RoadTypeLabel> roadtype_list{}; ///< Roadtype translation table (road)
-	std::array<RoadType, ROADTYPE_END> roadtype_map{};
+	std::vector<RoadType> roadtype_map{};
 
 	std::vector<RoadTypeLabel> tramtype_list{}; ///< Roadtype translation table (tram)
-	std::array<RoadType, ROADTYPE_END> tramtype_map{};
+	std::vector<RoadType> tramtype_map{};
 
 	std::array<CanalProperties, CF_END> canal_local_properties{}; ///< Canal properties as set by this NewGRF
 
