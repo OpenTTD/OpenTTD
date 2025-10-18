@@ -1291,26 +1291,14 @@ int CompanyServiceInterval(const Company *c, VehicleType type)
 
 /**
  * Get total sum of all owned road bits.
+ * @param rtt RoadTramType to get total for.
  * @return Combined total road road bits.
  */
-uint32_t CompanyInfrastructure::GetRoadTotal() const
+uint32_t CompanyInfrastructure::GetRoadTramTotal(RoadTramType rtt) const
 {
 	uint32_t total = 0;
-	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
-		if (RoadTypeIsRoad(rt)) total += this->road[rt];
-	}
-	return total;
-}
-
-/**
- * Get total sum of all owned tram bits.
- * @return Combined total of tram road bits.
- */
-uint32_t CompanyInfrastructure::GetTramTotal() const
-{
-	uint32_t total = 0;
-	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
-		if (RoadTypeIsTram(rt)) total += this->road[rt];
+	for (RoadType rt : GetMaskForRoadTramType(rtt)) {
+		total += this->road[rt];
 	}
 	return total;
 }

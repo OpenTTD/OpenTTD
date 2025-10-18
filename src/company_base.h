@@ -45,8 +45,10 @@ struct CompanyInfrastructure {
 		return std::accumulate(std::begin(this->rail), std::end(this->rail), 0U);
 	}
 
-	uint32_t GetRoadTotal() const;
-	uint32_t GetTramTotal() const;
+	uint32_t GetRoadTramTotal(RoadTramType rtt) const;
+
+	inline uint32_t GetRoadTotal() const { return GetRoadTramTotal(RTT_ROAD); }
+	inline uint32_t GetTramTotal() const { return GetRoadTramTotal(RTT_TRAM); }
 };
 
 class FreeUnitIDGenerator {
