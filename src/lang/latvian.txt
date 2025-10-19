@@ -3353,6 +3353,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtrs:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Pārrakstīt datni
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Vai tiešām vēlaties pārrakstīt esošās datnes?
+STR_SAVELOAD_DELETE_TITLE                                       :{WHITE}Dzēst Failu
+STR_SAVELOAD_DELETE_WARNING                                     :{YELLOW}Vai tiešām vēlaties dzēst failu?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (Vietne)
 STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Īpašnieka katalogs)
 
@@ -3433,8 +3435,9 @@ STR_MAPGEN_BORDER_WATER                                         :{BLACK}Ūdens
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Nejauša
 
 ###length 3
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Nejaušas
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuāli
+STR_MAPGEN_BORDER_RANDOMIZE                                     :Nejaušas
+STR_MAPGEN_BORDER_MANUAL                                        :Manuāli
+STR_MAPGEN_BORDER_INFINITE_WATER                                :Bezgalīgs Ūdens
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Augstumu kartes pagriešana:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Augstumu kartes nosaukums:
@@ -3696,6 +3699,7 @@ STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Pilsēta
 STR_TOWN_DIRECTORY_NONE                                         :{G=m}{ORANGE}- Neviens -
 STR_TOWN_DIRECTORY_NONE.kas                                     :{ORANGE}- Neviena -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{BLACK} ({COMMA}) {YELLOW}{CITY_ICON}
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Pilsētu nosaukumi - klikšķināt uz nosaukuma, lai centrētu skatu uz to.Ctrl+klikšķis atvērs skatu uz pilsētu jaunā skatlaukā
 STR_TOWN_POPULATION                                             :{BLACK}Pasaules iedzīvotāju skaits: {COMMA}
 
@@ -4195,6 +4199,7 @@ STR_PURCHASE_INFO_ALL_BUT                                       :visu, izņemot 
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maksimālais vilces spēks: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Apgabas: {GOLD}{COMMA} lauciņi
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Lidaparāta veids: {GOLD}{STRING}
+STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Sliežu veidi: {GOLD}{STRING}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Visi kravu veidi
@@ -4378,6 +4383,7 @@ STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Darbības izmak
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Darbības izmaksas: {CURRENCY_LONG}/periodā
 STR_ENGINE_PREVIEW_CAPACITY                                     :Ietilpība: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :Ietilpība: {CARGO_LONG}, {CARGO_LONG}
+STR_ENGINE_PREVIEW_RAILTYPES                                    :Sliežu veidi: {STRING}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Nomainīt {STRING} - {STRING}
