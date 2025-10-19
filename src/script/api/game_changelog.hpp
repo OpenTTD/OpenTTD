@@ -39,6 +39,7 @@
  * \li GSVehicleList_Station accepts an optional GSVehicle::VehicleType parameter
  * \li GSList instances can now be cloned
  * \li GSRail::GetRailType will only return the first RailType of an engine, use GSRail::GetAllRailTypes instead
+ * \li GSVehicleList_Station no longer works for waypoints
  *
  * \b 14.0
  *
