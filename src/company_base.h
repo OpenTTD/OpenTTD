@@ -120,6 +120,8 @@ struct CompanyProperties {
 
 	EngineRenewList engine_renew_list = nullptr; ///< Engine renewals of this company.
 	CompanySettings settings{}; ///< settings specific for each company
+
+	RailTypes hidden_railtypes{}; ///< Whether the rail type is normally hidden in the build gui for that company.
 };
 
 struct Company : CompanyProperties, CompanyPool::PoolItem<&_company_pool> {

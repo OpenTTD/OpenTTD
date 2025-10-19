@@ -2210,7 +2210,7 @@ static void GetTileDesc_Road(TileIndex tile, TileDesc &td)
 			rail_owner = GetTileOwner(tile);
 
 			const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
-			td.railtype = rti->strings.name;
+			td.railtype = rti->strings[RailTypeInfo::Strings::Name];
 			td.rail_speed = rti->max_speed;
 
 			break;

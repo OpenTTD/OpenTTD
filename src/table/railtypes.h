@@ -58,6 +58,9 @@ static const RailTypeInfo _original_railtypes[] = {
 			STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE,
 		},
 
+		/* custom_name */
+		{},
+
 		/* Offset of snow tiles */
 		SPR_RAIL_SNOW_OFFSET,
 
@@ -160,6 +163,9 @@ static const RailTypeInfo _original_railtypes[] = {
 			STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE,
 		},
 
+		/* custom_name */
+		{},
+
 		/* Offset of snow tiles */
 		SPR_RAIL_SNOW_OFFSET,
 
@@ -258,6 +264,9 @@ static const RailTypeInfo _original_railtypes[] = {
 			STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE,
 		},
 
+		/* custom_name */
+		{},
+
 		/* Offset of snow tiles */
 		SPR_MONO_SNOW_OFFSET,
 
@@ -355,6 +364,9 @@ static const RailTypeInfo _original_railtypes[] = {
 			STR_REPLACE_MAGLEV_VEHICLES,
 			STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE,
 		},
+
+		/* custom_name */
+		{},
 
 		/* Offset of snow tiles */
 		SPR_MGLV_SNOW_OFFSET,

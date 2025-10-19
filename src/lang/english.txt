@@ -370,6 +370,8 @@ STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Average profit 
 STR_SORT_BY_AVERAGE_PROFIT_LAST_PERIOD                          :Average profit last period
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Average profit this year
 STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD                          :Average profit this period
+STR_SORT_BY_RAIL_TYPE_ID                                        :Rail type ID (classic sort)
+STR_SORT_BY_MAINTENANCE_COST                                    :Maintenance cost
 
 # Group by options for vehicle list
 STR_GROUP_BY_NONE                                               :None
@@ -508,6 +510,7 @@ STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Railway constru
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Electrified railway construction
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Monorail construction
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Maglev construction
+STR_RAIL_TYPE_CUSTOM_MENU_TEXT                                  :{RAW_STRING} construction
 
 # Road construction menu
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Road construction
@@ -2798,6 +2801,7 @@ STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Railway Constru
 STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Electrified Railway Construction
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Monorail Construction
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Maglev Construction
+STR_RAIL_TYPE_CUSTOM_TOOLBAR_CAPTION                            :{RAW_STRING} Construction
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Build railway track. Ctrl+Click to remove railway track. Also press Shift to show cost estimate only
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Build railway track using the Autorail mode. Ctrl+Click to remove railway track. Also press Shift to show cost estimate only
@@ -4151,6 +4155,7 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :New Electric Ra
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :New Monorail Vehicles
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :New Maglev Vehicles
 
+###length 2
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :New Road Vehicles
 STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :New Tram Vehicles
 
@@ -4189,6 +4194,8 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Tra
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Range: {GOLD}{COMMA} tiles
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Aircraft type: {GOLD}{STRING}
 STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Rail types: {GOLD}{RAW_STRING}
+STR_PURCHASE_INFO_MAINTENANCE_YEAR                              :{BLACK}Maintenance Cost: {GOLD}{CURRENCY_LONG}/year
+STR_PURCHASE_INFO_MAINTENANCE_PERIOD                            :{BLACK}Maintenance Cost: {GOLD}{CURRENCY_LONG}/period
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :All cargo types
@@ -4260,6 +4267,18 @@ STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Rename t
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Rename road vehicle type
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Rename ship type
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Rename aircraft type
+
+STR_RAIL_TYPE_LIST_AVAILABLE_TRACKS                             :Available Rail Types
+STR_RAIL_TYPE_CUSTOM_BUILD_CAPTION                              :New {RAW_STRING} Vehicles
+STR_QUERY_RENAME_RAIL_TYPE_CAPTION                              :{WHITE}Rename railway type
+STR_RAIL_TYPE_RENAME_BUTTON                                     :{BLACK}Rename
+STR_RAIL_TYPE_RENAME_TOOLTIP                                    :{BLACK}Rename rail type
+STR_SHOW_HIDDEN_RAIL_TYPES                                      :{BLACK}Show hidden
+STR_SHOW_HIDDEN_RAIL_TYPES_TOOLTIP                              :{BLACK}By enabling this button, the hidden rail types are also displayed
+STR_RAIL_TYPE_SHOW_TOGGLE_BUTTON                                :{BLACK}Display
+STR_RAIL_TYPE_HIDE_TOGGLE_BUTTON                                :{BLACK}Hide
+STR_RAIL_TYPE_LIST_TOOLTIP                                      :{BLACK}Rail type selection list. Click on rail type for information. Ctrl+Click to show/hide this rail type
+STR_RAIL_TYPE_HIDE_SHOW_TOGGLE_TOOLTIP                          :{BLACK}Toggle hiding/displaying of the rail type
 
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
@@ -4355,6 +4374,7 @@ STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :railway locomot
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :electrified railway locomotive
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monorail locomotive
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev locomotive
+STR_RAIL_TYPE_CUSTOM_NEW_LOCOMOTIVE                             :{RAW_STRING} locomotive
 
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :road vehicle
 STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :tramway vehicle
@@ -4417,6 +4437,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Rail Vehicles
 STR_REPLACE_ELRAIL_VEHICLES                                     :Electrified Rail Vehicles
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorail Vehicles
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev Vehicles
+STR_RAIL_TYPE_CUSTOM_REPLACE_TEXT                               :{RAW_STRING} Vehicles
 
 STR_REPLACE_ROAD_VEHICLES                                       :Road Vehicles
 STR_REPLACE_TRAM_VEHICLES                                       :Tramway Vehicles
@@ -5349,11 +5370,12 @@ STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Can't bu
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Can't buy ship...
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Can't buy aircraft...
 
-###length VEHICLE_TYPES
+###length 5
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Can't rename train vehicle type...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Can't rename road vehicle type...
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Can't rename ship type...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Can't rename aircraft type...
+STR_ERROR_CAN_T_RENAME_RAIL_TYPE                                :{WHITE}Can't rename railway type...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Can't sell railway vehicle...
@@ -5954,7 +5976,7 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{RAW_STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{RAW_STRING}
 STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Open badge configuration

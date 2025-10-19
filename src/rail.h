@@ -23,6 +23,9 @@
 #include "signal_type.h"
 #include "settings_type.h"
 #include "newgrf_badge_type.h"
+#include "strings_func.h"
+
+#include "table/strings.h"
 
 /** Railtype flag bit numbers. */
 enum class RailTypeFlag : uint8_t {
@@ -115,6 +118,16 @@ enum RailFenceOffset : uint8_t {
  */
 class RailTypeInfo {
 public:
+	enum Strings : uint8_t {
+		Name, ///< Name of this rail type.
+		ToolbarCaption, ///< Caption in the construction toolbar GUI for this rail type.
+		MenuText, ///< Name of this rail type in the main toolbar dropdown.
+		BuildCaption, ///< Caption of the build vehicle GUI for this rail type.
+		ReplaceText, ///< Text used in the autoreplace GUI.
+		NewLoco, ///< Name of an engine for this type of rail in the engine preview GUI.
+		End, ///< Used to determine size of enum.
+	};
+
 	/**
 	 * Struct containing the main sprites. @note not all sprites are listed, but only
 	 *  the ones used directly in the code
@@ -162,14 +175,8 @@ public:
 		CursorID convert;    ///< Cursor for converting track
 	} cursor;                    ///< Cursors associated with the rail type.
 
-	struct {
-		StringID name;            ///< Name of this rail type.
-		StringID toolbar_caption; ///< Caption in the construction toolbar GUI for this rail type.
-		StringID menu_text;       ///< Name of this rail type in the main toolbar dropdown.
-		StringID build_caption;   ///< Caption of the build vehicle GUI for this rail type.
-		StringID replace_text;    ///< Text used in the autoreplace GUI.
-		StringID new_loco;        ///< Name of an engine for this type of rail in the engine preview GUI.
-	} strings;                        ///< Strings associated with the rail type.
+	StringID strings[RailTypeInfo::Strings::End]; ///< Strings associated with the rail type.
+	std::string custom_name; ///< Renamed name by user, other strings are auto generated from custom_name.
 
 	/** sprite number difference between a piece of track on a snowy ground and the corresponding one on normal ground */
 	SpriteID snow_offset;
@@ -287,6 +294,27 @@ public:
 	inline uint GetRailtypeSpriteOffset() const
 	{
 		return 82 * this->fallback_railtype;
+	}
+
+	/**
+	 * Gets string associated with the rail type.
+	 * @param index of the associated string.
+	 * @returns the associated string.
+	 */
+	inline std::string GetString(RailTypeInfo::Strings index) const
+	{
+		assert(index < RailTypeInfo::Strings::End);
+		if (custom_name.size() == 0) return ::GetString(this->strings[index]);
+
+		switch (index) {
+			case RailTypeInfo::Strings::Name: return this->custom_name;
+			case RailTypeInfo::Strings::ToolbarCaption: return ::GetString(STR_RAIL_TYPE_CUSTOM_TOOLBAR_CAPTION, this->custom_name);
+			case RailTypeInfo::Strings::MenuText: return ::GetString(STR_RAIL_TYPE_CUSTOM_MENU_TEXT, this->custom_name);
+			case RailTypeInfo::Strings::BuildCaption: return ::GetString(STR_RAIL_TYPE_CUSTOM_BUILD_CAPTION, this->custom_name);
+			case RailTypeInfo::Strings::ReplaceText: return ::GetString(STR_RAIL_TYPE_CUSTOM_REPLACE_TEXT, this->custom_name);
+			case RailTypeInfo::Strings::NewLoco: return ::GetString(STR_RAIL_TYPE_CUSTOM_NEW_LOCOMOTIVE, this->custom_name);
+			default: NOT_REACHED();
+		}
 	}
 
 	RailType Index() const;

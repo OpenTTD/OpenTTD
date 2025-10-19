@@ -556,9 +556,9 @@ struct BuildRailToolbarWindow : Window {
 		if (widget == WID_RAT_CAPTION) {
 			const RailTypeInfo *rti = GetRailTypeInfo(this->railtype);
 			if (rti->max_speed > 0) {
-				return GetString(STR_TOOLBAR_RAILTYPE_VELOCITY, rti->strings.toolbar_caption, PackVelocity(rti->max_speed, VEH_TRAIN));
+				return GetString(STR_TOOLBAR_RAILTYPE_VELOCITY, rti->GetString(RailTypeInfo::Strings::ToolbarCaption), PackVelocity(rti->max_speed, VEH_TRAIN));
 			}
-			return GetString(rti->strings.toolbar_caption);
+			return rti->GetString(RailTypeInfo::Strings::ToolbarCaption);
 		}
 
 		return this->Window::GetWidgetString(widget, stringid);
@@ -2065,11 +2065,11 @@ DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
 		const RailTypeInfo *rti = GetRailTypeInfo(rt);
 
 		if (for_replacement) {
-			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, RailBuildCost(rt), GetString(rti->strings.replace_text), rt, !avail_railtypes.Test(rt)));
+			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, RailBuildCost(rt), rti->GetString(RailTypeInfo::Strings::ReplaceText), rt, !avail_railtypes.Test(rt)));
 		} else {
 			std::string str = rti->max_speed > 0
-				? GetString(STR_TOOLBAR_RAILTYPE_VELOCITY, rti->strings.menu_text, rti->max_speed)
-				: GetString(rti->strings.menu_text);
+				? GetString(STR_TOOLBAR_RAILTYPE_VELOCITY, rti->GetString(RailTypeInfo::Strings::MenuText), rti->max_speed)
+				: rti->GetString(RailTypeInfo::Strings::MenuText);
 			list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, RailBuildCost(rt), d, rti->gui_sprites.build_x_rail, PAL_NONE, std::move(str), rt, !avail_railtypes.Test(rt)));
 		}
 	}

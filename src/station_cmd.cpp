@@ -3609,7 +3609,7 @@ void FillTileDescRailStation(TileIndex tile, TileDesc &td)
 
 	const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
 	td.rail_speed = rti->max_speed;
-	td.railtype = rti->strings.name;
+	td.railtype = rti->strings[RailTypeInfo::Strings::Name];
 }
 
 void FillTileDescAirport(TileIndex tile, TileDesc &td)

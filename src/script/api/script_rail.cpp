@@ -28,7 +28,7 @@
 {
 	if (!IsRailTypeAvailable(rail_type)) return std::nullopt;
 
-	return ::StrMakeValid(::GetString(GetRailTypeInfo((::RailType)rail_type)->strings.menu_text), {});
+	return ::StrMakeValid(GetRailTypeInfo((::RailType)rail_type)->GetString(RailTypeInfo::Strings::MenuText), {});
 }
 
 /* static */ bool ScriptRail::IsRailTile(TileIndex tile)

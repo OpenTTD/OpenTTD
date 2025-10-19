@@ -732,6 +732,12 @@ enum WindowClass : uint16_t {
 	 */
 	WC_HELPWIN,
 
+	/**
+	 * Build rail; %Window numbers:
+	 *   - 0 = #BuildRailWidgets
+	 */
+	WC_BUILD_RAIL,
+
 	WC_INVALID = 0xFFFF, ///< Invalid window.
 };
 

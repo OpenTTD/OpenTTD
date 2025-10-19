@@ -13,6 +13,8 @@
 #include "../core/string_builder.hpp"
 #include "saveload_internal.h"
 
+#include "../rail.h"
+
 #include "table/strings.h"
 
 #include "../safeguards.h"
@@ -127,9 +129,50 @@ struct NAMEChunkHandler : ChunkHandler {
 	}
 };
 
+static const SaveLoad _rail_type_info[] = {
+	SLE_CONDSSTR(RailTypeInfo, custom_name, SLE_STR, SLV_NEW_RAILTYPE_MENU, SL_MAX_VERSION),
+};
+
+RailTypeInfo _tmp_railtypes[RAILTYPE_END];
+
+struct RLNMChunkHandler : ChunkHandler {
+	RLNMChunkHandler() : ChunkHandler('RLNM', CH_TABLE) {}
+
+	void Save() const override
+	{
+		SlTableHeader(_rail_type_info);
+
+		extern RailTypeInfo _railtypes[RAILTYPE_END];
+
+		for (RailType rt = RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) {
+			RailTypeInfo *rti = &_railtypes[rt];
+			SlSetArrayIndex(rt);
+			SlObject(rti, _rail_type_info);
+		}
+	}
+
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlTableHeader(_rail_type_info);
+
+		/* As rail type info is loaded before rail types are initialized we need to load
+		 * this information into a temporary array. This is then copied into the
+		 * rail type info pool after processing NewGRFs. */
+
+		int index;
+		while ((index = SlIterateArray()) != -1) {
+			if (static_cast<RailType>(index) > RAILTYPE_END) continue;
+			RailTypeInfo *rti = &_tmp_railtypes[static_cast<RailType>(index)];
+			SlObject(rti, slt);
+		}
+	}
+};
+
 static const NAMEChunkHandler NAME;
+static const RLNMChunkHandler RLNM;
 static const ChunkHandlerRef name_chunk_handlers[] = {
 	NAME,
+	RLNM,
 };
 
 extern const ChunkHandlerTable _name_chunk_handlers(name_chunk_handlers);

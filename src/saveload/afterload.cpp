@@ -3360,6 +3360,16 @@ bool AfterLoadGame()
 		}
 	}
 
+	/* Copy custom rail type names from tmp array. */
+	extern RailTypeInfo _tmp_railtypes[RAILTYPE_END];
+	extern RailTypeInfo _railtypes[RAILTYPE_END];
+
+	for (RailType rt = RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) {
+		RailTypeInfo *rti = &_railtypes[rt];
+		RailTypeInfo *tmp_rti = &_tmp_railtypes[rt];
+		rti->custom_name = tmp_rti->custom_name;
+	}
+
 	if (IsSavegameVersionBefore(SLV_SCRIPT_RANDOMIZER)) {
 		ScriptObject::InitializeRandomizers();
 	}
