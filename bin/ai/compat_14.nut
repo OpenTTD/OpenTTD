@@ -44,3 +44,11 @@ foreach(name, object in CompatScriptRootTable) {
 	if (object.constructor != AIObject.constructorCompat14) continue;
 	object.constructor <- function() : (name) { AILog.Error("'" + name + "' is not instantiable"); }
 }
+
+AIStation.GetStationIDCompat14 <- AIStation.GetStationID;
+AIStation.GetStationID <- function(tile)
+{
+	local id = AIStation.GetStationIDCompat14(tile);
+	if (id == AIBaseStation.STATION_INVALID) return AIWaypoint.GetWaypointID(tile);
+	return id;
+}
