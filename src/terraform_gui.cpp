@@ -367,6 +367,11 @@ Window *ShowTerraformToolbar(Window *link)
 	Window *w;
 	if (link == nullptr) {
 		w = AllocateWindowDescFront<TerraformToolbarWindow>(_terraform_desc, 0);
+		if (_settings_client.gui.link_terraform_toolbar) {
+			/* Align the terraform toolbar under the main toolbar. */
+			w->top -= w->height;
+			w->SetDirty();
+		}
 		return w;
 	}
 
