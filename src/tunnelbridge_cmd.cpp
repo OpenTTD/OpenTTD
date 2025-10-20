@@ -1445,7 +1445,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		DrawBridgeMiddle(ti, BridgePillarFlag::EdgeNE + tunnelbridge_direction);
 	} else { // IsBridge(ti->tile)
 		DrawFoundation(ti, GetBridgeFoundation(ti->tileh, DiagDirToAxis(tunnelbridge_direction)));
-		bool is_custom_layout; // Set if rail/road bridge uses a custom layout.
+		bool is_custom_layout = false; // Set if rail/road bridge uses a custom layout.
 
 		uint base_offset = GetBridgeRampDirectionBaseOffset(tunnelbridge_direction);
 		std::span<const PalSpriteID> psid;
