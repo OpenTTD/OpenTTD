@@ -2138,6 +2138,27 @@ CommandCost CmdReverseTrainDirection(DoCommandFlags flags, VehicleID veh_id, boo
 }
 
 /**
+ * Determine to what force_proceed should be changed.
+ * If we are forced to proceed, cancel that order.
+ * If we are marked stuck we would want to force the train to
+ * proceed to the next signal unless we are stuck just before
+ * the next signal. In the other cases we would like to pass
+ * the signal at danger and run till the next signal we encounter.
+ * @param t The train to determine the new value of force_proceed for.
+ * @return The next state of force_proceed.
+ */
+static TrainForceProceeding DetermineNextTrainForceProceeding(const Train *t)
+{
+	if (t->force_proceed == TFP_SIGNAL) return TFP_NONE;
+	if (!t->flags.Test(VehicleRailFlag::Stuck)) return t->IsChainInDepot() ? TFP_STUCK : TFP_SIGNAL;
+
+	TileIndex next_tile = TileAddByDiagDir(t->tile, TrackdirToExitdir(t->GetVehicleTrackdir()));
+	if (next_tile == INVALID_TILE || !IsTileType(next_tile, MP_RAILWAY) || !HasSignals(next_tile)) return TFP_STUCK;
+	TrackBits new_tracks = DiagdirReachesTracks(TrackdirToExitdir(t->GetVehicleTrackdir())) & GetTrackBits(next_tile);
+	return new_tracks != TRACK_BIT_NONE && HasSignalOnTrack(next_tile, FindFirstTrack(new_tracks)) ? TFP_SIGNAL : TFP_STUCK;
+}
+
+/**
  * Force a train through a red signal
  * @param flags type of operation
  * @param veh_id train to ignore the red signal
@@ -2155,12 +2176,7 @@ CommandCost CmdForceTrainProceed(DoCommandFlags flags, VehicleID veh_id)
 
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		/* If we are forced to proceed, cancel that order.
-		 * If we are marked stuck we would want to force the train
-		 * to proceed to the next signal. In the other cases we
-		 * would like to pass the signal at danger and run till the
-		 * next signal we encounter. */
-		t->force_proceed = t->force_proceed == TFP_SIGNAL ? TFP_NONE : t->flags.Test(VehicleRailFlag::Stuck) || t->IsChainInDepot() ? TFP_STUCK : TFP_SIGNAL;
+		t->force_proceed = DetermineNextTrainForceProceeding(t);
 		SetWindowDirty(WC_VEHICLE_VIEW, t->index);
 
 		/* Unbunching data is no longer valid. */
