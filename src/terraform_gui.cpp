@@ -257,7 +257,8 @@ struct TerraformToolbarWindow : Window {
 	Point OnInitialPosition([[maybe_unused]] int16_t sm_width, [[maybe_unused]] int16_t sm_height, [[maybe_unused]] int window_number) override
 	{
 		Point pt = GetToolbarAlignedWindowPosition(sm_width);
-		pt.y += sm_height;
+		if (FindWindowByClass(WC_BUILD_TOOLBAR) != nullptr && !_settings_client.gui.link_terraform_toolbar) pt.y += sm_height;
+
 		return pt;
 	}
 
@@ -364,19 +365,13 @@ Window *ShowTerraformToolbar(Window *link)
 {
 	if (!Company::IsValidID(_local_company)) return nullptr;
 
-	Window *w;
-	if (link == nullptr) {
-		w = AllocateWindowDescFront<TerraformToolbarWindow>(_terraform_desc, 0);
-		return w;
-	}
-
 	/* Delete the terraform toolbar to place it again. */
 	CloseWindowById(WC_SCEN_LAND_GEN, 0, true);
-	w = AllocateWindowDescFront<TerraformToolbarWindow>(_terraform_desc, 0);
-	/* Align the terraform toolbar under the main toolbar. */
-	w->top -= w->height;
-	w->SetDirty();
-	/* Put the linked toolbar to the left / right of it. */
+
+	if (link == nullptr) return AllocateWindowDescFront<TerraformToolbarWindow>(_terraform_desc, 0);
+
+	Window *w = AllocateWindowDescFront<TerraformToolbarWindow>(_terraform_desc, 0);
+	/* Put the linked toolbar to the left / right of the main toolbar. */
 	link->left = w->left + (_current_text_dir == TD_RTL ? w->width : -link->width);
 	link->top  = w->top;
 	link->SetDirty();
