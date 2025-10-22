@@ -27,7 +27,6 @@
 #include "effectvehicle_func.h"
 #include "landscape_type.h"
 #include "animated_tile_func.h"
-#include "core/flatset_type.hpp"
 #include "core/random_func.hpp"
 #include "object_base.h"
 #include "company_func.h"
@@ -42,6 +41,8 @@
 
 #include "table/strings.h"
 #include "table/sprites.h"
+
+#include <unordered_set>
 
 #include "safeguards.h"
 
@@ -1240,28 +1241,29 @@ bool RiverFlowsDown(TileIndex begin, TileIndex end)
  */
 static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint min_river_length)
 {
-	uint height_begin = TileHeight(begin);
-
 	if (IsWaterTile(begin)) {
 		return { DistanceManhattan(spring, begin) > min_river_length, GetTileZ(begin) == 0 };
 	}
 
-	FlatSet<TileIndex> marks;
+	int height_begin = TileHeight(begin);
+
+	std::unordered_set<TileIndex> marks;
 	marks.insert(begin);
 
-	/* Breadth first search for the closest tile we can flow down to. */
-	std::list<TileIndex> queue;
+	std::vector<TileIndex> queue;
 	queue.push_back(begin);
 
+	/* Breadth first search for the closest tile we can flow down to.
+	 * We keep the queue to find the Nth tile for lake guessing. The tiles
+	 * in the queue are neatly ordered by insertion.
+	 */
 	bool found = false;
-	uint count = 0; // Number of tiles considered; to be used for lake location guessing.
 	TileIndex end;
-	do {
-		end = queue.front();
-		queue.pop_front();
+	for (size_t i = 0; i != queue.size(); i++) {
+		end = queue[i];
 
-		uint height_end = TileHeight(end);
-		if (IsTileFlat(end) && (height_end < height_begin || (height_end == height_begin && IsWaterTile(end)))) {
+		int height_end;
+		if (IsTileFlat(end, &height_end) && (height_end < height_begin || (height_end == height_begin && IsWaterTile(end)))) {
 			found = true;
 			break;
 		}
@@ -1270,31 +1272,29 @@ static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint 
 			TileIndex t = end + TileOffsByDiagDir(d);
 			if (IsValidTile(t) && !marks.contains(t) && RiverFlowsDown(end, t)) {
 				marks.insert(t);
-				count++;
 				queue.push_back(t);
 			}
 		}
-	} while (!queue.empty());
+	}
 
 	bool main_river = false;
 	if (found) {
 		/* Flow further down hill. */
 		std::tie(found, main_river) = FlowRiver(spring, end, min_river_length);
-	} else if (count > 32) {
+	} else if (queue.size() > 32) {
 		/* Maybe we can make a lake. Find the Nth of the considered tiles. */
-		auto cit = marks.cbegin();
-		std::advance(cit, RandomRange(count - 1));
-		TileIndex lake_centre = *cit;
+		TileIndex lake_centre = queue[RandomRange(static_cast<uint32_t>(queue.size()))];
+		int height_lake;
 
 		if (IsValidTile(lake_centre) &&
-				/* A river, or lake, can only be built on flat slopes. */
-				IsTileFlat(lake_centre) &&
-				/* We want the lake to be built at the height of the river. */
-				TileHeight(begin) == TileHeight(lake_centre) &&
 				/* We don't want the lake at the entry of the valley. */
 				lake_centre != begin &&
 				/* We don't want lakes in the desert. */
 				(_settings_game.game_creation.landscape != LandscapeType::Tropic || GetTropicZone(lake_centre) != TROPICZONE_DESERT) &&
+				/* A river, or lake, can only be built on flat slopes. */
+				IsTileFlat(lake_centre, &height_lake) &&
+				/* We want the lake to be built at the height of the river. */
+				height_lake == height_begin &&
 				/* We only want a lake if the river is long enough. */
 				DistanceManhattan(spring, lake_centre) > min_river_length) {
 			end = lake_centre;
@@ -1304,7 +1304,7 @@ static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint 
 			/* Run the loop twice, so artefacts from going circular in one direction get (mostly) hidden. */
 			for (uint loops = 0; loops < 2; ++loops) {
 				for (auto tile : SpiralTileSequence(lake_centre, diameter)) {
-					MakeLake(tile, height_begin);
+					MakeLake(tile, height_lake);
 				}
 			}
 
@@ -1312,7 +1312,6 @@ static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint 
 		}
 	}
 
-	marks.clear();
 	if (found) YapfBuildRiver(begin, end, spring, main_river);
 	return { found, main_river };
 }
