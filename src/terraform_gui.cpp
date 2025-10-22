@@ -33,6 +33,7 @@
 #include "engine_base.h"
 #include "terraform_gui.h"
 #include "terraform_cmd.h"
+#include "window_type.h"
 #include "zoom_func.h"
 #include "rail_cmd.h"
 #include "landscape_cmd.h"
@@ -257,7 +258,8 @@ struct TerraformToolbarWindow : Window {
 	Point OnInitialPosition([[maybe_unused]] int16_t sm_width, [[maybe_unused]] int16_t sm_height, [[maybe_unused]] int window_number) override
 	{
 		Point pt = GetToolbarAlignedWindowPosition(sm_width);
-		pt.y += sm_height;
+		if (FindWindowByClass(WC_BUILD_TOOLBAR) != nullptr && !_settings_client.gui.link_terraform_toolbar) pt.y += sm_height;
+
 		return pt;
 	}
 
@@ -371,10 +373,7 @@ Window *ShowTerraformToolbar(Window *link)
 	if (link == nullptr) return AllocateWindowDescFront<TerraformToolbarWindow>(_terraform_desc, 0);
 
 	w = AllocateWindowDescFront<TerraformToolbarWindow>(_terraform_desc, 0);
-	/* Align the terraform toolbar under the main toolbar. */
-	w->top -= w->height;
-	w->SetDirty();
-	/* Put the linked toolbar to the left / right of it. */
+	/* Put the linked toolbar to the left / right of the main toolbar. */
 	link->left = w->left + (_current_text_dir == TD_RTL ? w->width : -link->width);
 	link->top  = w->top;
 	link->SetDirty();
