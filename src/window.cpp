@@ -3636,7 +3636,10 @@ void HandleGamepadScrolling(int stick_x, int stick_y, int max_axis_value)
 			    pt.x < w->viewport->left - w->left + w->viewport->width &&
 			    pt.y >= w->viewport->top - w->top &&
 			    pt.y < w->viewport->top - w->top + w->viewport->height) {
-				target_window = w;
+				/* Respect the same lock as RMB-drag scrolling: some viewports disable scrolling entirely. */
+				if (!w->flags.Test(WindowFlag::DisableVpScroll)) {
+					target_window = w;
+				}
 			}
 		}
 
