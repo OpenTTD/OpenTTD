@@ -32,6 +32,7 @@
 #include "command_func.h"
 #include "airport_cmd.h"
 #include "station_cmd.h"
+#include "window_type.h"
 #include "zoom_func.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
@@ -161,6 +162,19 @@ struct BuildAirToolbarWindow : Window {
 		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
 	}
 
+	Point OnInitialPosition([[maybe_unused]] int16_t sm_width, [[maybe_unused]] int16_t sm_height, [[maybe_unused]] int window_number) override
+	{
+		Point pt = GetToolbarAlignedWindowPosition(sm_width);
+		Window *w;
+		w = FindWindowByClass(WC_SCEN_LAND_GEN);
+
+		if (w != nullptr && !_settings_client.gui.link_terraform_toolbar) {
+			pt.x = w->left + (_current_text_dir == TD_RTL ? w->width : -sm_width);
+		}
+
+		return pt;
+	}
+
 	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile) override
 	{
 		if (pt.x != -1 && select_proc == DDSP_DEMOLISH_AREA) {
@@ -211,7 +225,7 @@ static constexpr NWidgetPart _nested_air_toolbar_widgets[] = {
 };
 
 static WindowDesc _air_toolbar_desc(
-	WDP_ALIGN_TOOLBAR, "toolbar_air", 0, 0,
+	WDP_MANUAL, "toolbar_air", 0, 0,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WindowDefaultFlag::Construction,
 	_nested_air_toolbar_widgets,
