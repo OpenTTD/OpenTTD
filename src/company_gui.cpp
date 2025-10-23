@@ -329,7 +329,7 @@ static constexpr NWidgetPart _nested_company_finances_widgets[] = {
 		NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_CF_INCREASE_LOAN), SetFill(1, 0), SetToolTip(STR_FINANCES_BORROW_TOOLTIP),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_CF_REPAY_LOAN), SetFill(1, 0), SetToolTip(STR_FINANCES_REPAY_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_CF_AUTO_REPAY), SetStringTip(STR_FINANCES_AUTO_REPAY_BUTTON, STR_FINANCES_AUTO_REPAY_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_CF_AUTO_LOAN), SetStringTip(STR_FINANCES_AUTO_LOAN_BUTTON, STR_FINANCES_AUTO_LOAN_TOOLTIP),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_CF_INFRASTRUCTURE), SetFill(1, 0), SetStringTip(STR_FINANCES_INFRASTRUCTURE_BUTTON, STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP),
 		EndContainer(),
 	EndContainer(),
@@ -486,8 +486,7 @@ struct CompanyFinancesWindow : Window {
 			const Company *c = Company::Get(company);
 			this->SetWidgetDisabledState(WID_CF_INCREASE_LOAN, c->current_loan >= c->GetMaxLoan()); // Borrow button only shows when there is any more money to loan.
 			this->SetWidgetDisabledState(WID_CF_REPAY_LOAN, company != _local_company || c->current_loan == 0); // Repay button only shows when there is any more money to repay.
-			this->SetWidgetDisabledState(WID_CF_AUTO_REPAY, IsWidgetDisabled(WID_CF_REPAY_LOAN));
-			this->SetWidgetLoweredState(WID_CF_AUTO_REPAY, c->auto_repay_loan);
+			this->SetWidgetLoweredState(WID_CF_AUTO_LOAN, c->auto_loan);
 		}
 
 		this->DrawWidgets();
@@ -516,8 +515,8 @@ struct CompanyFinancesWindow : Window {
 				Command<CMD_DECREASE_LOAN>::Post(STR_ERROR_CAN_T_REPAY_LOAN, _ctrl_pressed ? LoanCommand::Max : LoanCommand::Interval, 0);
 				break;
 
-			case WID_CF_AUTO_REPAY: // toggle auto repay
-				Command<CMD_TOGGLE_AUTO_REPAY_LOAN>::Post(STR_ERROR_CAN_T_REPAY_LOAN, LoanCommand::Toggle);
+			case WID_CF_AUTO_LOAN: // toggle auto repay
+				Command<CMD_TOGGLE_AUTO_LOAN>::Post(STR_ERROR_CAN_T_REPAY_LOAN, LoanCommand::Toggle);
 				break;
 
 			case WID_CF_INFRASTRUCTURE: // show infrastructure details

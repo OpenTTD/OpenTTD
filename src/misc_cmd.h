@@ -29,7 +29,7 @@ CommandCost CmdMoneyCheat(DoCommandFlags flags, Money amount);
 CommandCost CmdChangeBankBalance(DoCommandFlags flags, TileIndex tile, Money delta, CompanyID company, ExpensesType expenses_type);
 CommandCost CmdIncreaseLoan(DoCommandFlags flags, LoanCommand cmd, Money amount);
 CommandCost CmdDecreaseLoan(DoCommandFlags flags, LoanCommand cmd, Money amount);
-CommandCost CmdToggleAutoRepayLoan(DoCommandFlags flags, LoanCommand cmd);
+CommandCost CmdToggleAutoLoan(DoCommandFlags flags, LoanCommand cmd);
 CommandCost CmdSetCompanyMaxLoan(DoCommandFlags flags, CompanyID company, Money amount);
 CommandCost CmdPause(DoCommandFlags flags, PauseMode mode, bool pause);
 
@@ -37,7 +37,7 @@ DEF_CMD_TRAIT(CMD_MONEY_CHEAT,          CmdMoneyCheat,        CommandFlags({Comm
 DEF_CMD_TRAIT(CMD_CHANGE_BANK_BALANCE,  CmdChangeBankBalance, CommandFlag::Deity,               CMDT_MONEY_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_INCREASE_LOAN,        CmdIncreaseLoan,      {},                       CMDT_MONEY_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_DECREASE_LOAN,        CmdDecreaseLoan,      {},                       CMDT_MONEY_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_TOGGLE_AUTO_REPAY_LOAN, CmdToggleAutoRepayLoan, {},                   CMDT_MONEY_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_TOGGLE_AUTO_LOAN,     CmdToggleAutoLoan,    {},                       CMDT_MONEY_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_SET_COMPANY_MAX_LOAN, CmdSetCompanyMaxLoan, CommandFlag::Deity,               CMDT_MONEY_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_PAUSE,                CmdPause,             CommandFlags({CommandFlag::Server, CommandFlag::NoEst}), CMDT_SERVER_SETTING)
 

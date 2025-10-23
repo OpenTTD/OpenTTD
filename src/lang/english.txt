@@ -3961,8 +3961,8 @@ STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Borrow {
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Increase size of loan. Ctrl+Click to borrow as much as possible
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Repay {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Repay part of loan. Ctrl+Click to repay as much loan as possible
-STR_FINANCES_AUTO_REPAY_BUTTON                                  :{BLACK}Auto Repay
-STR_FINANCES_AUTO_REPAY_TOOLTIP                                 :{BLACK}Toggle auto repay loan functionality
+STR_FINANCES_AUTO_LOAN_BUTTON                                   :{BLACK}Automatic Loan
+STR_FINANCES_AUTO_LOAN_TOOLTIP                                  :{BLACK}Toggle auto repay/take loan functionality
 STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infrastructure
 
 # Company view

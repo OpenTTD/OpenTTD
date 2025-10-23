@@ -65,9 +65,6 @@ CommandCost CmdIncreaseLoan(DoCommandFlags flags, LoanCommand cmd, Money amount)
 	if (c->money > Money::max() - loan) return CMD_ERROR;
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		/* Turn off auto repay so new taken loan won't be repaid instantly. */
-		Command<CMD_TOGGLE_AUTO_REPAY_LOAN>::Do(flags, LoanCommand::TurnOff);
-
 		c->money        += loan;
 		c->current_loan += loan;
 		InvalidateCompanyWindows(c);
@@ -126,18 +123,15 @@ CommandCost CmdDecreaseLoan(DoCommandFlags flags, LoanCommand cmd, Money amount)
  *            otherwise sets the value.
  * @return the cost of this operation or an error
  */
-CommandCost CmdToggleAutoRepayLoan(DoCommandFlags flags, LoanCommand cmd)
+CommandCost CmdToggleAutoLoan(DoCommandFlags flags, LoanCommand cmd)
 {
 	Company *c = Company::Get(_current_company);
 
-	/* Do not allow to turn on auto repay if there is no loan to repay. */
-	if (!c->auto_repay_loan && c->current_loan == 0) return CommandCost(STR_ERROR_LOAN_ALREADY_REPAID);
-
 	if (flags.Test(DoCommandFlag::Execute)) {
 		if (cmd == LoanCommand::Toggle) {
-			if (!c->auto_repay_loan) cmd = LoanCommand::TurnOn;
+			if (!c->auto_loan) cmd = LoanCommand::TurnOn;
 		}
-		c->auto_repay_loan = cmd == LoanCommand::TurnOn;
+		c->auto_loan = cmd == LoanCommand::TurnOn;
 		InvalidateCompanyWindows(c);
 	}
 	return CommandCost();

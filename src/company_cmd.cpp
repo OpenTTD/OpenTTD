@@ -222,7 +222,7 @@ static const IntervalTimer<TimerWindow> invalidate_company_windows_interval(std:
 			w->SetWidgetDirty(WID_CF_LOAN_VALUE);
 			w->SetWidgetDirty(WID_CF_BALANCE_VALUE);
 			w->SetWidgetDirty(WID_CF_MAXLOAN_VALUE);
-			for (auto widget : {WID_CF_INCREASE_LOAN, WID_CF_REPAY_LOAN, WID_CF_AUTO_REPAY, WID_CF_INFRASTRUCTURE}) {
+			for (auto widget : {WID_CF_INCREASE_LOAN, WID_CF_REPAY_LOAN, WID_CF_AUTO_LOAN, WID_CF_INFRASTRUCTURE}) {
 				w->SetWidgetDirty(widget);
 			}
 		}
