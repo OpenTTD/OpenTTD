@@ -32,7 +32,6 @@
 #include "command_func.h"
 #include "airport_cmd.h"
 #include "station_cmd.h"
-#include "window_type.h"
 #include "zoom_func.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
