@@ -33,7 +33,6 @@
 #include "engine_base.h"
 #include "terraform_gui.h"
 #include "terraform_cmd.h"
-#include "window_type.h"
 #include "zoom_func.h"
 #include "rail_cmd.h"
 #include "landscape_cmd.h"
