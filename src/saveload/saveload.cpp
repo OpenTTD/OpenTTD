@@ -2861,7 +2861,7 @@ static std::pair<const SaveLoadFormat &, uint8_t> GetSavegameFormat(std::string_
 		std::string_view name = has_comp_level ? full_name.substr(0, separator) : full_name;
 
 		for (const auto &slf : _saveload_formats) {
-			if (slf.init_write != nullptr && name.compare(slf.name) == 0) {
+			if (slf.init_write != nullptr && name == slf.name) {
 				if (has_comp_level) {
 					auto complevel = full_name.substr(separator + 1);
 

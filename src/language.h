@@ -67,10 +67,8 @@ struct LanguagePackHeader {
 	 */
 	uint8_t GetGenderIndex(std::string_view gender_str) const
 	{
-		for (uint8_t i = 0; i < MAX_NUM_GENDERS; i++) {
-			if (gender_str.compare(this->genders[i]) == 0) return i;
-		}
-		return MAX_NUM_GENDERS;
+		auto it = std::ranges::find(this->genders, gender_str);
+		return static_cast<uint8_t>(std::distance(std::begin(this->genders), it));
 	}
 
 	/**
@@ -80,10 +78,8 @@ struct LanguagePackHeader {
 	 */
 	uint8_t GetCaseIndex(std::string_view case_str) const
 	{
-		for (uint8_t i = 0; i < MAX_NUM_CASES; i++) {
-			if (case_str.compare(this->cases[i]) == 0) return i;
-		}
-		return MAX_NUM_CASES;
+		auto it = std::ranges::find(this->cases, case_str);
+		return static_cast<uint8_t>(std::distance(std::begin(this->cases), it));
 	}
 };
 /** Make sure the size is right. */

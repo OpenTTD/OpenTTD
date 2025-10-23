@@ -1451,7 +1451,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_RCON(Packet &p)
 		/* We are allowed, nothing more to validate. */
 	} else if (_settings_client.network.rcon_password.empty()) {
 		return NETWORK_RECV_STATUS_OKAY;
-	} else if (_settings_client.network.rcon_password.compare(password) != 0) {
+	} else if (_settings_client.network.rcon_password != password) {
 		Debug(net, 1, "[rcon] Wrong password from client-id {}", this->client_id);
 		return NETWORK_RECV_STATUS_OKAY;
 	}
@@ -1648,7 +1648,7 @@ bool NetworkServerChangeClientName(ClientID client_id, const std::string &new_na
 {
 	/* Check if the name's already in use */
 	for (NetworkClientInfo *ci : NetworkClientInfo::Iterate()) {
-		if (ci->client_name.compare(new_name) == 0) return false;
+		if (ci->client_name == new_name) return false;
 	}
 
 	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);

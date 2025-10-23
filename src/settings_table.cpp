@@ -572,7 +572,7 @@ static void MaxVehiclesChanged(int32_t)
  */
 static bool ReplaceAsteriskWithEmptyPassword(std::string &newval)
 {
-	if (newval.compare("*") == 0) newval.clear();
+	if (newval == "*") newval.clear();
 	return true;
 }
 

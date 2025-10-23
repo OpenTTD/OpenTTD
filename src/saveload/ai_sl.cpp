@@ -111,7 +111,7 @@ struct AIPLChunkHandler : ChunkHandler {
 					 * latest version of the AI instead. */
 					config->Change(_ai_saveload_name, -1, false);
 					if (!config->HasScript()) {
-						if (_ai_saveload_name.compare("%_dummy") != 0) {
+						if (_ai_saveload_name != "%_dummy") {
 							Debug(script, 0, "The savegame has an AI by the name '{}', version {} which is no longer available.", _ai_saveload_name, _ai_saveload_version);
 							Debug(script, 0, "Configuration switched to Random AI.");
 						}
@@ -136,7 +136,7 @@ struct AIPLChunkHandler : ChunkHandler {
 				 * latest version of the AI instead. */
 				config->Change(_ai_saveload_name, -1, false);
 				if (!config->HasScript()) {
-					if (_ai_saveload_name.compare("%_dummy") != 0) {
+					if (_ai_saveload_name != "%_dummy") {
 						Debug(script, 0, "The savegame has an AI by the name '{}', version {} which is no longer available.", _ai_saveload_name, _ai_saveload_version);
 						Debug(script, 0, "A random other AI will be loaded in its place.");
 					} else {

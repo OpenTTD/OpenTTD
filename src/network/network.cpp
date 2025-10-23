@@ -875,14 +875,14 @@ static void CheckClientAndServerName()
 {
 	static const std::string fallback_client_name = "Unnamed Client";
 	StrTrimInPlace(_settings_client.network.client_name);
-	if (_settings_client.network.client_name.empty() || _settings_client.network.client_name.compare(fallback_client_name) == 0) {
+	if (_settings_client.network.client_name.empty() || _settings_client.network.client_name == fallback_client_name) {
 		Debug(net, 1, "No \"client_name\" has been set, using \"{}\" instead. Please set this now using the \"name <new name>\" command", fallback_client_name);
 		_settings_client.network.client_name = fallback_client_name;
 	}
 
 	static const std::string fallback_server_name = "Unnamed Server";
 	StrTrimInPlace(_settings_client.network.server_name);
-	if (_settings_client.network.server_name.empty() || _settings_client.network.server_name.compare(fallback_server_name) == 0) {
+	if (_settings_client.network.server_name.empty() || _settings_client.network.server_name == fallback_server_name) {
 		Debug(net, 1, "No \"server_name\" has been set, using \"{}\" instead. Please set this now using the \"server_name <new name>\" command", fallback_server_name);
 		_settings_client.network.server_name = fallback_server_name;
 	}

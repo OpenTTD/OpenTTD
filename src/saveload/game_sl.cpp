@@ -80,7 +80,7 @@ struct GSDTChunkHandler : ChunkHandler {
 				 * latest version of the GameScript instead. */
 				config->Change(_game_saveload_name, -1, false);
 				if (!config->HasScript()) {
-					if (_game_saveload_name.compare("%_dummy") != 0) {
+					if (_game_saveload_name != "%_dummy") {
 						Debug(script, 0, "The savegame has an GameScript by the name '{}', version {} which is no longer available.", _game_saveload_name, _game_saveload_version);
 						Debug(script, 0, "This game will continue to run without GameScript.");
 					} else {

@@ -79,7 +79,7 @@ bool BaseSet<T>::FillSetDetails(const IniFile &ini, const std::string &path, con
 
 	/* Add the translations of the descriptions too. */
 	for (const IniItem &titem : metadata->items) {
-		if (titem.name.compare(0, 12, "description.") != 0) continue;
+		if (!titem.name.starts_with("description.")) continue;
 
 		this->description[titem.name.substr(12)] = titem.value.value_or("");
 	}
