@@ -21,20 +21,6 @@
 #include "newgrf_badge_type.h"
 #include "economy_func.h"
 
-
-enum RoadTramType : bool {
-	RTT_ROAD,
-	RTT_TRAM,
-};
-
-enum RoadTramTypes : uint8_t {
-	RTTB_ROAD = 1 << RTT_ROAD,
-	RTTB_TRAM = 1 << RTT_TRAM,
-};
-DECLARE_ENUM_AS_BIT_SET(RoadTramTypes)
-
-static const RoadTramType _roadtramtypes[] = { RTT_ROAD, RTT_TRAM };
-
 /** Roadtype flag bit numbers. */
 enum class RoadTypeFlag : uint8_t {
 	Catenary        = 0, ///< Bit number for adding catenary
