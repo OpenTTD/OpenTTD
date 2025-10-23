@@ -734,7 +734,7 @@ struct BuildRailToolbarWindow : Window {
 		Window *w;
 		w = FindWindowByClass(WC_SCEN_LAND_GEN);
 
-		if (w != nullptr && !_settings_client.gui.link_terraform_toolbar) {
+		if (w != nullptr && w->top == pt.y && !_settings_client.gui.link_terraform_toolbar) {
 			pt.x = w->left + (_current_text_dir == TD_RTL ? w->width : -sm_width);
 		}
 
