@@ -473,7 +473,8 @@ struct SubstituteGRFFileProps : StandardGRFFileProps {
 /** Container for a label for rail or road type conversion. */
 template <typename T>
 struct LabelObject {
-	T label = {}; ///< Label of rail or road type.
+	T label{}; ///< Label of rail or road type.
+	uint8_t index = 0; ///< Local index of rail or road type.
 	uint8_t subtype = 0; ///< Subtype of type (road or tram).
 };
 

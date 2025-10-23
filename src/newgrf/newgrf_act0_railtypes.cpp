@@ -28,7 +28,7 @@ static ChangeInfoResult RailTypeChangeInfo(uint first, uint last, int prop, Byte
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
 
-	extern RailTypeInfo _railtypes[RAILTYPE_END];
+	extern std::vector<RailTypeInfo> _railtypes;
 	const auto &type_map = _cur_gps.grffile->railtype_map;
 
 	if (last > std::size(type_map)) {
@@ -163,13 +163,10 @@ static ChangeInfoResult RailTypeReserveInfo(uint first, uint last, int prop, Byt
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
 
-	extern RailTypeInfo _railtypes[RAILTYPE_END];
+	extern std::vector<RailTypeInfo> _railtypes;
 	auto &type_map = _cur_gps.grffile->railtype_map;
 
-	if (last > std::size(type_map)) {
-		GrfMsg(1, "RailTypeReserveInfo: Rail type {} is invalid, max {}, ignoring", last, std::size(type_map));
-		return CIR_INVALID_ID;
-	}
+	if (type_map.size() < last) type_map.resize(last, INVALID_RAILTYPE);
 
 	for (uint id = first; id < last; ++id) {
 		switch (prop) {

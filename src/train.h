@@ -322,7 +322,8 @@ protected: // These functions should not be called outside acceleration code.
 	 */
 	inline uint16_t GetMaxTrackSpeed() const
 	{
-		return GetRailTypeInfo(GetRailType(this->tile))->max_speed;
+		RailType rt = GetRailType(this->tile);
+		return GetRailTypeInfo(rt)->max_speed;
 	}
 
 	/**

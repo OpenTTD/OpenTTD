@@ -307,25 +307,32 @@ static CommandCost CheckBuildAbove(TileIndex tile, DoCommandFlags flags, Axis ax
  * @param road_rail_type rail type or road types.
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex tile_start, TransportType transport_type, BridgeType bridge_type, uint8_t road_rail_type)
+CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex tile_start, TransportType transport_type, BridgeType bridge_type, RailType railtype, RoadType roadtype)
 {
 	CompanyID company = _current_company;
 
-	RailType railtype = INVALID_RAILTYPE;
-	RoadType roadtype = INVALID_ROADTYPE;
+	MapRailType map_railtype = RailTypeMapping::INVALID_MAP_TYPE;
+	RoadTramType rtt = RTT_ROAD;
+	MapRoadType map_roadtype = RoadTypeMapping::INVALID_MAP_TYPE;
+	MapTramType map_tramtype = TramTypeMapping::INVALID_MAP_TYPE;
 
 	if (!IsValidTile(tile_start)) return CommandCost(STR_ERROR_BRIDGE_THROUGH_MAP_BORDER);
 
 	/* type of bridge */
 	switch (transport_type) {
 		case TRANSPORT_ROAD:
-			roadtype = (RoadType)road_rail_type;
 			if (!ValParamRoadType(roadtype)) return CMD_ERROR;
+			rtt = GetRoadTramType(roadtype);
+			map_roadtype = rtt == RTT_ROAD ? _roadtype_mapping.AllocateMapType(roadtype, flags.Test(DoCommandFlag::Execute)) : RoadTypeMapping::INVALID_MAP_TYPE;
+			if (rtt == RTT_ROAD && map_roadtype == RoadTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_ROADTYPES};
+			map_tramtype = rtt == RTT_TRAM ? _tramtype_mapping.AllocateMapType(roadtype, flags.Test(DoCommandFlag::Execute)) : TramTypeMapping::INVALID_MAP_TYPE;
+			if (rtt == RTT_TRAM && map_tramtype == TramTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_TRAMTYPES};
 			break;
 
 		case TRANSPORT_RAIL:
-			railtype = (RailType)road_rail_type;
 			if (!ValParamRailType(railtype)) return CMD_ERROR;
+			map_railtype = _railtype_mapping.AllocateMapType(railtype, flags.Test(DoCommandFlag::Execute));
+			if (map_railtype == RailTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_RAILTYPES};
 			break;
 
 		case TRANSPORT_WATER:
@@ -543,8 +550,8 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 			case TRANSPORT_RAIL:
 				/* Add to company infrastructure count if required. */
 				if (is_new_owner && c != nullptr) c->infrastructure.rail[railtype] += bridge_len * TUNNELBRIDGE_TRACKBIT_FACTOR;
-				MakeRailBridgeRamp(tile_start, owner, bridge_type, dir,                 railtype);
-				MakeRailBridgeRamp(tile_end,   owner, bridge_type, ReverseDiagDir(dir), railtype);
+				MakeRailBridgeRamp(tile_start, owner, bridge_type, dir,                 map_railtype);
+				MakeRailBridgeRamp(tile_end,   owner, bridge_type, ReverseDiagDir(dir), map_railtype);
 				SetTunnelBridgeReservation(tile_start, pbs_reservation);
 				SetTunnelBridgeReservation(tile_end,   pbs_reservation);
 				break;
@@ -555,21 +562,27 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 					if (hasroad && GetRoadOwner(tile_start, RTT_ROAD) == OWNER_NONE) hasroad = false;
 					if (hastram && GetRoadOwner(tile_start, RTT_TRAM) == OWNER_NONE) hastram = false;
 				}
-				if (c != nullptr) {
-					/* Add all new road types to the company infrastructure counter. */
-					if (!hasroad && road_rt != INVALID_ROADTYPE) {
-						/* A full diagonal road tile has two road bits. */
+				/* Add all new road types to the company infrastructure counter. */
+				if (!hasroad && road_rt != INVALID_ROADTYPE) {
+					/* A full diagonal road tile has two road bits. */
+					if (c != nullptr) {
 						c->infrastructure.road[road_rt] += bridge_len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR;
+					} else {
+						RoadTypeInfo::infrastructure_counts[road_rt] += bridge_len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR;
 					}
-					if (!hastram && tram_rt != INVALID_ROADTYPE) {
-						/* A full diagonal road tile has two road bits. */
+				}
+				if (!hastram && tram_rt != INVALID_ROADTYPE) {
+					/* A full diagonal road tile has two road bits. */
+					if (c != nullptr) {
 						c->infrastructure.road[tram_rt] += bridge_len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR;
+					} else {
+						RoadTypeInfo::infrastructure_counts[tram_rt] += bridge_len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR;
 					}
 				}
 				Owner owner_road = hasroad ? GetRoadOwner(tile_start, RTT_ROAD) : company;
 				Owner owner_tram = hastram ? GetRoadOwner(tile_start, RTT_TRAM) : company;
-				MakeRoadBridgeRamp(tile_start, owner, owner_road, owner_tram, bridge_type, dir, road_rt, tram_rt);
-				MakeRoadBridgeRamp(tile_end,   owner, owner_road, owner_tram, bridge_type, ReverseDiagDir(dir), road_rt, tram_rt);
+				MakeRoadBridgeRamp(tile_start, owner, owner_road, owner_tram, bridge_type, dir, map_roadtype, map_tramtype);
+				MakeRoadBridgeRamp(tile_end,   owner, owner_road, owner_tram, bridge_type, ReverseDiagDir(dir), map_roadtype, map_tramtype);
 				break;
 			}
 
@@ -639,22 +652,30 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
  * @param road_rail_type railtype or roadtype
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, TransportType transport_type, uint8_t road_rail_type)
+CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, TransportType transport_type, RailType railtype, RoadType roadtype)
 {
 	CompanyID company = _current_company;
 
-	RailType railtype = INVALID_RAILTYPE;
-	RoadType roadtype = INVALID_ROADTYPE;
+	MapRailType map_railtype = RailTypeMapping::INVALID_MAP_TYPE;
+	RoadTramType rtt = RTT_ROAD;
+	MapRoadType map_roadtype = RoadTypeMapping::INVALID_MAP_TYPE;
+	MapTramType map_tramtype = TramTypeMapping::INVALID_MAP_TYPE;
+
 	_build_tunnel_endtile = TileIndex{};
 	switch (transport_type) {
 		case TRANSPORT_RAIL:
-			railtype = (RailType)road_rail_type;
 			if (!ValParamRailType(railtype)) return CMD_ERROR;
+			map_railtype = _railtype_mapping.AllocateMapType(railtype, flags.Test(DoCommandFlag::Execute));
+			if (map_railtype == RailTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_RAILTYPES};
 			break;
 
 		case TRANSPORT_ROAD:
-			roadtype = (RoadType)road_rail_type;
 			if (!ValParamRoadType(roadtype)) return CMD_ERROR;
+			rtt = GetRoadTramType(roadtype);
+			map_roadtype = rtt == RTT_ROAD ? _roadtype_mapping.AllocateMapType(roadtype, flags.Test(DoCommandFlag::Execute)) : RoadTypeMapping::INVALID_MAP_TYPE;
+			if (rtt == RTT_ROAD && map_roadtype == RoadTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_ROADTYPES};
+			map_tramtype = rtt == RTT_TRAM ? _tramtype_mapping.AllocateMapType(roadtype, flags.Test(DoCommandFlag::Execute)) : TramTypeMapping::INVALID_MAP_TYPE;
+			if (rtt == RTT_TRAM && map_tramtype == TramTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_TRAMTYPES};
 			break;
 
 		default: return CMD_ERROR;
@@ -790,16 +811,18 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 		uint num_pieces = (tiles + 2) * TUNNELBRIDGE_TRACKBIT_FACTOR;
 		if (transport_type == TRANSPORT_RAIL) {
 			if (c != nullptr) c->infrastructure.rail[railtype] += num_pieces;
-			MakeRailTunnel(start_tile, company, direction,                 railtype);
-			MakeRailTunnel(end_tile,   company, ReverseDiagDir(direction), railtype);
+			MakeRailTunnel(start_tile, company, direction,                 map_railtype);
+			MakeRailTunnel(end_tile,   company, ReverseDiagDir(direction), map_railtype);
 			AddSideToSignalBuffer(start_tile, INVALID_DIAGDIR, company);
 			YapfNotifyTrackLayoutChange(start_tile, DiagDirToDiagTrack(direction));
 		} else {
-			if (c != nullptr) c->infrastructure.road[roadtype] += num_pieces * 2; // A full diagonal road has two road bits.
-			RoadType road_rt = RoadTypeIsRoad(roadtype) ? roadtype : INVALID_ROADTYPE;
-			RoadType tram_rt = RoadTypeIsTram(roadtype) ? roadtype : INVALID_ROADTYPE;
-			MakeRoadTunnel(start_tile, company, direction,                 road_rt, tram_rt);
-			MakeRoadTunnel(end_tile,   company, ReverseDiagDir(direction), road_rt, tram_rt);
+			if (c != nullptr) {
+				c->infrastructure.road[roadtype] += num_pieces * 2; // A full diagonal road has two road bits.
+			} else {
+				RoadTypeInfo::infrastructure_counts[roadtype] += num_pieces * 2;
+			}
+			MakeRoadTunnel(start_tile, company, direction,                 map_roadtype, map_tramtype);
+			MakeRoadTunnel(end_tile,   company, ReverseDiagDir(direction), map_roadtype, map_tramtype);
 		}
 		DirtyCompanyInfrastructureWindows(company);
 	}
@@ -1877,7 +1900,11 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, Owner old_owner, Owner 
 					/* Update company infrastructure counts. A full diagonal road tile has two road bits.
 					 * No need to dirty windows here, we'll redraw the whole screen anyway. */
 					Company::Get(old_owner)->infrastructure.road[rt] -= num_pieces * 2;
-					if (new_owner != INVALID_OWNER) Company::Get(new_owner)->infrastructure.road[rt] += num_pieces * 2;
+					if (new_owner != INVALID_OWNER) {
+						Company::Get(new_owner)->infrastructure.road[rt] += num_pieces * 2;
+					} else {
+						RoadTypeInfo::infrastructure_counts[rt] += num_pieces * 2;
+					}
 				}
 
 				SetRoadOwner(tile, rtt, new_owner == INVALID_OWNER ? OWNER_NONE : new_owner);
