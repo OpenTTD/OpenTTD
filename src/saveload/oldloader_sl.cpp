@@ -1052,6 +1052,7 @@ static bool LoadOldCompany(LoadgameState &ls, int num)
 	}
 
 	c->auto_loan = false;
+	c->auto_loan_threshold = 0;
 	_company_colours[num] = c->colour;
 	c->inaugurated_year -= EconomyTime::ORIGINAL_BASE_YEAR;
 

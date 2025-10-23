@@ -20,7 +20,6 @@ enum class LoanCommand : uint8_t {
 	Amount,
 
 	/* Values for toggle auto loan call. */
-	Toggle,
 	TurnOn,
 	TurnOff,
 };
@@ -29,7 +28,7 @@ CommandCost CmdMoneyCheat(DoCommandFlags flags, Money amount);
 CommandCost CmdChangeBankBalance(DoCommandFlags flags, TileIndex tile, Money delta, CompanyID company, ExpensesType expenses_type);
 CommandCost CmdIncreaseLoan(DoCommandFlags flags, LoanCommand cmd, Money amount);
 CommandCost CmdDecreaseLoan(DoCommandFlags flags, LoanCommand cmd, Money amount);
-CommandCost CmdToggleAutoLoan(DoCommandFlags flags, LoanCommand cmd);
+CommandCost CmdToggleAutoLoan(DoCommandFlags flags, LoanCommand cmd, Money amount);
 CommandCost CmdSetCompanyMaxLoan(DoCommandFlags flags, CompanyID company, Money amount);
 CommandCost CmdPause(DoCommandFlags flags, PauseMode mode, bool pause);
 

@@ -845,44 +845,10 @@ static void CompaniesPayInterest()
 /** Let all companies auto repay/take their loan. */
 static void CompaniesAutoLoan()
 {
-	Backup<CompanyID> cur_company(_current_company);
 	for (const Company *c : Company::Iterate()) {
 		if (!c->auto_loan) continue;
-
-		Money threshold = (Money)LOAN_INTERVAL;
-		Money interval = (Money)LOAN_INTERVAL;
-		Money money = GetAvailableMoney(c->index);
-
-		if (money < threshold) {
-			Money max_loan = c->GetMaxLoan();
-			if (c->current_loan >= max_loan) continue;
-
-			/* Take new loan. */
-			Money loan = interval * (static_cast<long>(threshold - money + interval) / LOAN_INTERVAL);
-			cur_company.Change(c->index);
-			if (loan + c->current_loan > max_loan) {
-				Command<CMD_INCREASE_LOAN>::Do({DoCommandFlag::Execute}, LoanCommand::Max, 0);
-			} else {
-				Command<CMD_INCREASE_LOAN>::Do({DoCommandFlag::Execute}, LoanCommand::Amount, loan);
-			}
-
-			continue; ///< Skip auto repay code.
-		}
-
-		if (c->current_loan <= 0 || money < interval) continue;
-
-		threshold = interval * (static_cast<long>(threshold + interval) / LOAN_INTERVAL);
-		if (money < threshold) continue;
-
-		Money loan = interval * (static_cast<long>(money - threshold + interval) / LOAN_INTERVAL);
-		cur_company.Change(c->index);
-		if (c->current_loan - loan <= 0) {
-			Command<CMD_DECREASE_LOAN>::Do({DoCommandFlag::Execute}, LoanCommand::Max, 0);
-		} else {
-			Command<CMD_DECREASE_LOAN>::Do({DoCommandFlag::Execute}, LoanCommand::Amount, loan);
-		}
+		c->AutoLoan();
 	}
-	cur_company.Restore();
 }
 
 static void HandleEconomyFluctuations()

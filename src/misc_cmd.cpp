@@ -119,19 +119,17 @@ CommandCost CmdDecreaseLoan(DoCommandFlags flags, LoanCommand cmd, Money amount)
 /**
  * Change the auto repay loan status of your company.
  * @param flags operation to perform
- * @param cmd when LoanCommand::Toggle: toggles the value,
- *            otherwise sets the value.
+ * @param cmd whether turn on or off
  * @return the cost of this operation or an error
  */
-CommandCost CmdToggleAutoLoan(DoCommandFlags flags, LoanCommand cmd)
+CommandCost CmdToggleAutoLoan(DoCommandFlags flags, LoanCommand cmd, Money amount)
 {
 	Company *c = Company::Get(_current_company);
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		if (cmd == LoanCommand::Toggle) {
-			if (!c->auto_loan) cmd = LoanCommand::TurnOn;
-		}
 		c->auto_loan = cmd == LoanCommand::TurnOn;
+		if (c->auto_loan) c->auto_loan_threshold = amount;
+		c->AutoLoan();
 		InvalidateCompanyWindows(c);
 	}
 	return CommandCost();

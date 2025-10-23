@@ -329,7 +329,7 @@ static constexpr NWidgetPart _nested_company_finances_widgets[] = {
 		NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_CF_INCREASE_LOAN), SetFill(1, 0), SetToolTip(STR_FINANCES_BORROW_TOOLTIP),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_CF_REPAY_LOAN), SetFill(1, 0), SetToolTip(STR_FINANCES_REPAY_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_CF_AUTO_LOAN), SetStringTip(STR_FINANCES_AUTO_LOAN_BUTTON, STR_FINANCES_AUTO_LOAN_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_CF_AUTO_LOAN), SetFill(1, 0), SetStringTip(STR_FINANCES_AUTO_LOAN_BUTTON, STR_FINANCES_AUTO_LOAN_TOOLTIP),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_CF_INFRASTRUCTURE), SetFill(1, 0), SetStringTip(STR_FINANCES_INFRASTRUCTURE_BUTTON, STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP),
 		EndContainer(),
 	EndContainer(),
@@ -516,13 +516,28 @@ struct CompanyFinancesWindow : Window {
 				break;
 
 			case WID_CF_AUTO_LOAN: // toggle auto repay
-				Command<CMD_TOGGLE_AUTO_LOAN>::Post(STR_ERROR_CAN_T_REPAY_LOAN, LoanCommand::Toggle);
+				if (Company::Get(this->window_number)->auto_loan) {
+					Command<CMD_TOGGLE_AUTO_LOAN>::Post(STR_ERROR_CAN_T_CHANGE_AUTO_LOAN, LoanCommand::TurnOff, 0);
+				} else {
+					ShowQueryString({}, STR_FINANCES_AUTO_LOAN_QUERY_CAPTION, 30, this, CS_NUMERAL, {});
+				}
 				break;
 
 			case WID_CF_INFRASTRUCTURE: // show infrastructure details
 				ShowCompanyInfrastructure(this->window_number);
 				break;
 		}
+	}
+
+	void OnQueryTextFinished(std::optional<std::string> str) override
+	{
+		if (!str.has_value()) return;
+
+		auto value = ParseInteger<uint64_t>(*str, 10, true);
+		if (!value.has_value()) return;
+		Money money = *value / GetCurrency().rate;
+
+		Command<CMD_TOGGLE_AUTO_LOAN>::Post(STR_ERROR_CAN_T_CHANGE_AUTO_LOAN, LoanCommand::TurnOn, money);
 	}
 
 	void RefreshVisibleColumns()
