@@ -23,6 +23,8 @@
 /* static */ uint Map::size;      ///< The number of tiles on the map
 /* static */ uint Map::tile_mask; ///< _map_size - 1 (to mask the mapsize)
 
+/* static */ uint Map::initial_land_count; ///< Initial number of land tiles on the map.
+
 /* static */ std::unique_ptr<Tile::TileBase[]> Tile::base_tiles; ///< Base tiles of the map
 /* static */ std::unique_ptr<Tile::TileExtended[]> Tile::extended_tiles; ///< Extended tiles of the map
 
@@ -56,6 +58,20 @@
 	Tile::extended_tiles = std::make_unique<Tile::TileExtended[]>(Map::size);
 
 	AllocateWaterRegions();
+}
+
+/* static */ void Map::CountLandTiles()
+{
+	/* Count number of tiles that are land. */
+	Map::initial_land_count = 0;
+	for (const auto tile : Map::Iterate()) {
+		Map::initial_land_count += IsWaterTile(tile) ? 0 : 1;
+	}
+
+	/* Compensate for default values being set for (or users are most familiar with) at least
+	 * very low sea level. Dividing by 12 adds roughly 8%. */
+	Map::initial_land_count += Map::initial_land_count / 12;
+	Map::initial_land_count = std::min(Map::initial_land_count, Map::size);
 }
 
 

@@ -3473,7 +3473,8 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Landscap
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}River generation
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Rough and rocky area generation
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Town generation
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Industry generation
+STR_GENERATION_LAND_INDUSTRY_GENERATION                         :{BLACK}Land industry generation
+STR_GENERATION_WATER_INDUSTRY_GENERATION                        :{BLACK}Water industry generation
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Object generation
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Tree generation
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Setting up game

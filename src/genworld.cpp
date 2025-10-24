@@ -139,11 +139,13 @@ static void _GenerateWorld()
 			if (_game_mode != GM_MENU) FlatEmptyWorld(_settings_game.game_creation.se_flat_world_height);
 
 			ConvertGroundTilesIntoWaterTiles();
+			Map::CountLandTiles();
 			IncreaseGeneratingWorldProgress(GWP_OBJECT);
 
 			_settings_game.game_creation.snow_line_height = DEF_SNOWLINE_HEIGHT;
 		} else {
 			GenerateClearTile();
+			Map::CountLandTiles();
 
 			/* Only generate towns, tree and industries in newgame mode. */
 			if (_game_mode != GM_EDITOR) {
