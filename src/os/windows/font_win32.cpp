@@ -38,9 +38,8 @@ struct EFCParam {
 
 	bool Add(const std::wstring_view &font)
 	{
-		for (const auto &entry : this->fonts) {
-			if (font.compare(entry) == 0) return false;
-		}
+		auto it = std::ranges::find(this->fonts, font);
+		if (it != std::end(this->fonts)) return false;
 
 		this->fonts.emplace_back(font);
 

@@ -633,8 +633,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_JOIN(Packet &p)
 
 	std::string password = p.Recv_string(NETWORK_PASSWORD_LENGTH);
 
-	if (_settings_client.network.admin_password.empty() ||
-			_settings_client.network.admin_password.compare(password) != 0) {
+	if (_settings_client.network.admin_password.empty() || _settings_client.network.admin_password != password) {
 		/* Password is invalid */
 		return this->SendError(NETWORK_ERROR_WRONG_PASSWORD);
 	}
