@@ -127,6 +127,13 @@
   <li><span style="font-weight: bold;">m7:</span><br>
    Animation frame/state. Used for houses, industries, objects and stations.
   </li>
+  <li><span style="font-weight: bold;">m8:</span><br>
+   <ul>
+    <li>
+     Bit 14: Presence of any tunnels below.
+    </li>
+   </ul>
+  </li>
  </ul>
 
  <p>OTTD's class-specific periodic tile processing routine is called once every +256 ticks for each tile.</p>
@@ -237,6 +244,7 @@
       </table>
      </li>
      <li>m6 bits 4..2: type of hedge on NW border of the tile</li>
+     <li>m8 bit 14: presence of any tunnels below</li>
     </ul>
    </td>
   </tr>
@@ -547,6 +555,7 @@
         </table>
        </li>
        <li>m5 bit 4: pbs reservation state</li>
+       <li>m8 bit 14: presence of any tunnels below</li>
       </ul>
      </li>
     </ul>
@@ -690,6 +699,7 @@
         </table>
        </li>
        <li>m7 bits 4..0: <a href="#OwnershipInfo">owner</a> of the road type 0 (normal road)</li>
+       <li>m8 bit 14: presence of any tunnels below</li>
       </ul>
      </li>
     </ul>
@@ -760,7 +770,7 @@
        </li>
       </ul>
      </li>
-     <li>m8 bits 15..12 : free</li>
+     <li>m8 bit 14: presence of any tunnels below</li>
      <li>m8 bits 11..0 : <a href="landscape_externals.html">town building type</a></li>
     </ul>
     <small><a name="newhouses"></a>Newhouses is the name englobing a newGRF feature developed by TTDPatch devs (mainly Csaboka).<br>
@@ -861,6 +871,7 @@
        </tr>
       </table>
      </li>
+     <li>m8 bit 14: presence of any tunnels below</li>
     </ul>
    </td>
   </tr>
@@ -1034,6 +1045,7 @@
      <li>m7 bits 4..0: <a href="#OwnershipInfo">owner</a> of road (road stops)</li>
      <li>m7: animation frame (railway stations/waypoints, airports)</li>
      <li>m8 bit 15: Snow or desert present (road waypoints)</li>
+     <li>m8 bit 14: presence of any tunnels below</li>
      <li>m8 bits 11..6: <a href="#TramType">Tramtype</a></li>
      <li>m8 bits 5..0: <a href="#TrackType">track type</a> for railway stations/waypoints</li>
      <li>m8 bits 5..0: custom road stop/waypoint id; 0 means standard graphics</li>
@@ -1139,9 +1151,9 @@
           </ul>
          </td>
         </tr>
-       </table>
-      </li>
+      </table>
      </li>
+     <li>m8 bit 14: presence of any tunnels below</li>
     </ul>
    </td>
   </tr>
@@ -1485,6 +1497,7 @@
      <li>m6 bit 2: bit 8 of type (see m5)</li>
      <li>m6 bits 1..0: animated tile state</li>
      <li>m7: animation frame</li>
+     <li>m8 bit 14: presence of any tunnels below</li>
     </ul>
    </td>
   </tr>
@@ -1637,6 +1650,7 @@
      </li>
      <li>m7 bits 4..0: <a href="#OwnershipInfo">owner</a> of road</li>
      <li>m7 bit 5 set = on snow or desert</li>
+     <li>m8 bit 14: presence of any tunnels below</li>
      <li>m8 bits 11..6: <a href="#TramType">Tramtype</a></li>
      <li>m8 bits 5..0: <a href="#TrackType">track type</a> for railway</li>
     </ul>
@@ -1658,6 +1672,7 @@
      <li>m5: index into the array of objects, bits 16 to 23 (lower bits in m2)</li>
      <li>m6 bits 1..0: animated tile state</li>
      <li>m7: animation counter</li>
+     <li>m8 bit 14: presence of any tunnels below</li>
     </ul>
    </td>
   </tr>

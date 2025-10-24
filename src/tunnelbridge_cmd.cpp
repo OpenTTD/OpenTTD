@@ -801,6 +801,10 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 			MakeRoadTunnel(start_tile, company, direction,                 road_rt, tram_rt);
 			MakeRoadTunnel(end_tile,   company, ReverseDiagDir(direction), road_rt, tram_rt);
 		}
+		for (TileIndex middle_tile = start_tile + delta; middle_tile != end_tile; middle_tile += delta) {
+			SetTunnelFlag(middle_tile);
+		}
+
 		DirtyCompanyInfrastructureWindows(company);
 	}
 
@@ -893,9 +897,9 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlags flags)
 	uint len = GetTunnelBridgeLength(tile, endtile) + 2; // Don't forget the end tiles.
 
 	if (flags.Test(DoCommandFlag::Execute)) {
+		DiagDirection dir = GetTunnelBridgeDirection(tile);
 		if (GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) {
 			/* We first need to request values before calling DoClearSquare */
-			DiagDirection dir = GetTunnelBridgeDirection(tile);
 			Track track = DiagDirToDiagTrack(dir);
 			Owner owner = GetTileOwner(tile);
 
@@ -929,6 +933,8 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlags flags)
 			DoClearSquare(tile);
 			DoClearSquare(endtile);
 		}
+
+		UpdateTunnelPresenceFlags(tile, endtile, dir);
 	}
 
 	return CommandCost(EXPENSES_CONSTRUCTION, len * base_cost);

@@ -727,7 +727,7 @@ inline void MakeStation(Tile t, Owner o, StationID sid, StationType st, uint8_t 
 	SB(t.m6(), 2, 1, 0);
 	SB(t.m6(), 3, 4, to_underlying(st));
 	t.m7() = 0;
-	t.m8() = 0;
+	t.m8() = GB(t.m8(), 14, 1) << 14;
 }
 
 /**

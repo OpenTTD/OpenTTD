@@ -136,7 +136,7 @@ inline void MakeBridgeRamp(Tile t, Owner o, BridgeType bridgetype, DiagDirection
 	t.m5() = 1 << 7 | tt << 2 | d;
 	SB(t.m6(), 2, 4, bridgetype);
 	t.m7() = 0;
-	t.m8() = 0;
+	t.m8() = GB(t.m8(), 14, 1) << 14;
 }
 
 /**

@@ -3383,6 +3383,22 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(SLV_TUNNEL_PRESENCE_FLAG)) {
+		/* Presence of tunnels underground is added to map array. */
+		for (const TileIndex tile : Map::Iterate()) {
+			if (!IsTunnelTile(tile)) continue;
+
+			DiagDirection dir = GetTunnelBridgeDirection(tile);
+			if (dir == DIAGDIR_NE || dir == DIAGDIR_NW) continue;
+
+			TileIndex end = GetOtherTunnelEnd(tile);
+			TileIndexDiff delta = TileOffsByDiagDir(dir);
+			for (TileIndex t = tile + delta; t != end; t += delta) {
+				SetTunnelFlag(t);
+			}
+		}
+	}
+
 	for (Company *c : Company::Iterate()) {
 		UpdateCompanyLiveries(c);
 	}
