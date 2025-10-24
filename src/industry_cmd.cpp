@@ -1835,13 +1835,13 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 		if (indspec->callback_mask.Test(IndustryCallbackMask::Production256Ticks)) {
 			IndustryProductionCallback(i, 1);
 			for (auto &p : i->produced) {
-				p.history[LAST_MONTH].production = ScaleByCargoScale(p.waiting * 8, false);
+				if (IsValidCargoType(p.cargo)) p.history[LAST_MONTH].production = ScaleByCargoScale(p.waiting * 8, false);
 				p.waiting = 0;
 			}
 		}
 
 		for (auto &p : i->produced) {
-			p.history[LAST_MONTH].production += ScaleByCargoScale(p.rate * 8, false);
+			if (IsValidCargoType(p.cargo)) p.history[LAST_MONTH].production += ScaleByCargoScale(p.rate * 8, false);
 		}
 
 		UpdateValidHistory(i->valid_history, HISTORY_YEAR, TimerGameEconomy::month);
