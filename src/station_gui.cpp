@@ -632,7 +632,7 @@ public:
 					this->ToggleWidgetLoweredState(widget);
 				} else {
 					for (StationFacility i : this->filter.facilities) {
-						this->RaiseWidget(to_underlying(i) + WID_STL_TRAIN);
+						this->RaiseWidget(std::to_underlying(i) + WID_STL_TRAIN);
 					}
 					this->filter.facilities = {};
 					this->filter.facilities.Set(static_cast<StationFacility>(widget - WID_STL_TRAIN));

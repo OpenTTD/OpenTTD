@@ -44,7 +44,7 @@ namespace SQConvert {
 	template <typename T> requires std::is_enum_v<T> struct Return<T> {
 		static inline int Set(HSQUIRRELVM vm, T res)
 		{
-			sq_pushinteger(vm, to_underlying(res));
+			sq_pushinteger(vm, std::to_underlying(res));
 			return 1;
 		}
 	};

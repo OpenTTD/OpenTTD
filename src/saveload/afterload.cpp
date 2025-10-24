@@ -912,7 +912,7 @@ bool AfterLoadGame()
 						ResetSignalHandlers();
 						return false;
 					}
-					SB(t.m6(), 3, 3, to_underlying(st));
+					SB(t.m6(), 3, 3, std::to_underlying(st));
 					break;
 				}
 			}

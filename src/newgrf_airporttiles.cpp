@@ -170,7 +170,7 @@ static uint32_t GetAirportTileIDAtOffset(TileIndex tile, const Station *st, uint
 		case 0x41: return GetTerrainType(this->tile);
 
 		/* Current town zone of the tile in the nearest town */
-		case 0x42: return to_underlying(GetTownRadiusGroup(ClosestTownFromTile(this->tile, UINT_MAX), this->tile));
+		case 0x42: return std::to_underlying(GetTownRadiusGroup(ClosestTownFromTile(this->tile, UINT_MAX), this->tile));
 
 		/* Position relative to most northern airport tile. */
 		case 0x43: return GetRelativePosition(this->tile, this->st->airport.tile);
@@ -310,7 +310,7 @@ static bool DoTriggerAirportTileAnimation(Station *st, TileIndex tile, AirportAn
 	const AirportTileSpec *ats = AirportTileSpec::GetByTile(tile);
 	if (!ats->animation.triggers.Test(trigger)) return false;
 
-	AirportTileAnimationBase::ChangeAnimationFrame(CBID_AIRPTILE_ANIMATION_TRIGGER, ats, st, tile, random, to_underlying(trigger) | var18_extra);
+	AirportTileAnimationBase::ChangeAnimationFrame(CBID_AIRPTILE_ANIMATION_TRIGGER, ats, st, tile, random, std::to_underlying(trigger) | var18_extra);
 	return true;
 }
 

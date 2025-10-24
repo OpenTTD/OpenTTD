@@ -65,16 +65,16 @@ static uint16_t TownHistoryHelper(const Town *t, CargoLabel label, uint period, 
 		case 0x8A: return this->t->grow_counter / Ticks::TOWN_GROWTH_TICKS;
 		case 0x92: return this->t->flags.base(); // In original game, 0x92 and 0x93 are one word.
 		case 0x93: return 0;
-		case 0x94: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[to_underlying(HouseZone::TownEdge)]);
-		case 0x95: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[to_underlying(HouseZone::TownEdge)]), 8, 8);
-		case 0x96: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[to_underlying(HouseZone::TownOutskirt)]);
-		case 0x97: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[to_underlying(HouseZone::TownOutskirt)]), 8, 8);
-		case 0x98: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[to_underlying(HouseZone::TownOuterSuburb)]);
-		case 0x99: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[to_underlying(HouseZone::TownOuterSuburb)]), 8, 8);
-		case 0x9A: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[to_underlying(HouseZone::TownInnerSuburb)]);
-		case 0x9B: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[to_underlying(HouseZone::TownInnerSuburb)]), 8, 8);
-		case 0x9C: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[to_underlying(HouseZone::TownCentre)]);
-		case 0x9D: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[to_underlying(HouseZone::TownCentre)]), 8, 8);
+		case 0x94: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[std::to_underlying(HouseZone::TownEdge)]);
+		case 0x95: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[std::to_underlying(HouseZone::TownEdge)]), 8, 8);
+		case 0x96: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[std::to_underlying(HouseZone::TownOutskirt)]);
+		case 0x97: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[std::to_underlying(HouseZone::TownOutskirt)]), 8, 8);
+		case 0x98: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[std::to_underlying(HouseZone::TownOuterSuburb)]);
+		case 0x99: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[std::to_underlying(HouseZone::TownOuterSuburb)]), 8, 8);
+		case 0x9A: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[std::to_underlying(HouseZone::TownInnerSuburb)]);
+		case 0x9B: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[std::to_underlying(HouseZone::TownInnerSuburb)]), 8, 8);
+		case 0x9C: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[std::to_underlying(HouseZone::TownCentre)]);
+		case 0x9D: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[std::to_underlying(HouseZone::TownCentre)]), 8, 8);
 		case 0x9E: return this->t->ratings[0];
 		case 0x9F: return GB(this->t->ratings[0], 8, 8);
 		case 0xA0: return this->t->ratings[1];

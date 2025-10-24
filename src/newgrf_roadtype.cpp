@@ -67,7 +67,7 @@ uint32_t GetTrackTypes(TileIndex tile, const GRFFile *grffile)
 			case 0x41: return 0;
 			case 0x42: return 0;
 			case 0x43: return TimerGameCalendar::date.base();
-			case 0x44: return to_underlying(HouseZone::TownEdge);
+			case 0x44: return std::to_underlying(HouseZone::TownEdge);
 			case 0x45: {
 				RoadType rt = this->rti->Index();
 				uint8_t local = GetReverseRoadTypeTranslation(rt, this->ro.grffile);
@@ -95,7 +95,7 @@ uint32_t GetTrackTypes(TileIndex tile, const GRFFile *grffile)
 			} else {
 				t = ClosestTownFromTile(this->tile, UINT_MAX);
 			}
-			return to_underlying(t != nullptr ? GetTownRadiusGroup(t, this->tile) : HouseZone::TownEdge);
+			return std::to_underlying(t != nullptr ? GetTownRadiusGroup(t, this->tile) : HouseZone::TownEdge);
 		}
 		case 0x45:
 			return GetTrackTypes(this->tile, ro.grffile);

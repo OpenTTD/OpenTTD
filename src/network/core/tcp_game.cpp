@@ -30,6 +30,11 @@ static std::vector<std::unique_ptr<NetworkGameSocketHandler>> _deferred_deletion
 NetworkGameSocketHandler::NetworkGameSocketHandler(SOCKET s) : NetworkTCPSocketHandler(s),
 		last_frame(_frame_counter), last_frame_server(_frame_counter), last_packet(std::chrono::steady_clock::now()) {}
 
+NetworkGameSocketHandler::~NetworkGameSocketHandler()
+{
+	/* Non-inlined destructor due to CommandQueue being a vector of a partial type. */
+}
+
 /**
  * Functions to help ReceivePacket/SendPacket a bit
  *  A socket can make errors. When that happens this handles what to do.

@@ -24,10 +24,10 @@ public:
 	 */
 	enum LandscapeType {
 		/* Note: these values represent part of the in-game LandscapeType enum */
-		LT_TEMPERATE  = to_underlying(::LandscapeType::Temperate), ///< Temperate climate.
-		LT_ARCTIC     = to_underlying(::LandscapeType::Arctic),    ///< Arctic climate.
-		LT_TROPIC     = to_underlying(::LandscapeType::Tropic),    ///< Tropic climate.
-		LT_TOYLAND    = to_underlying(::LandscapeType::Toyland),   ///< Toyland climate.
+		LT_TEMPERATE  = std::to_underlying(::LandscapeType::Temperate), ///< Temperate climate.
+		LT_ARCTIC     = std::to_underlying(::LandscapeType::Arctic),    ///< Arctic climate.
+		LT_TROPIC     = std::to_underlying(::LandscapeType::Tropic),    ///< Tropic climate.
+		LT_TOYLAND    = std::to_underlying(::LandscapeType::Toyland),   ///< Toyland climate.
 	};
 
 	/**

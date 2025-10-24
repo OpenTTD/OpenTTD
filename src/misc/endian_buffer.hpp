@@ -63,7 +63,7 @@ public:
 	EndianBufferWriter &operator <<(const T data)
 	{
 		if constexpr (std::is_enum_v<T>) {
-			this->Write(to_underlying(data));
+			this->Write(std::to_underlying(data));
 		} else {
 			this->Write(data);
 		}

@@ -38,7 +38,7 @@ inline AnimatedTileState GetAnimatedTileState(Tile t)
  */
 inline void SetAnimatedTileState(Tile t, AnimatedTileState state)
 {
-	SB(t.m6(), 0, 2, to_underlying(state));
+	SB(t.m6(), 0, 2, std::to_underlying(state));
 }
 
 #endif /* ANIMATED_TILE_MAP_H */

@@ -725,7 +725,7 @@ inline void MakeStation(Tile t, Owner o, StationID sid, StationType st, uint8_t 
 	t.m4() = 0;
 	t.m5() = section;
 	SB(t.m6(), 2, 1, 0);
-	SB(t.m6(), 3, 4, to_underlying(st));
+	SB(t.m6(), 3, 4, std::to_underlying(st));
 	t.m7() = 0;
 	t.m8() = 0;
 }
