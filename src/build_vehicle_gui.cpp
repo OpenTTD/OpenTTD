@@ -1731,7 +1731,9 @@ struct BuildVehicleWindow : Window {
 
 			default:
 				if (IsInsideMM(widget, this->badge_filters.first, this->badge_filters.second)) {
-					ShowDropDownList(this, this->GetWidget<NWidgetBadgeFilter>(widget)->GetDropDownList(), -1, widget, 0, false);
+					const Livery &l = Company::Get(_local_company)->livery[LS_DEFAULT];
+					PaletteID palette = SPR_2CCMAP_BASE + l.colour1 + l.colour2 * 16;
+					ShowDropDownList(this, this->GetWidget<NWidgetBadgeFilter>(widget)->GetDropDownList(palette), -1, widget, 0, false);
 				}
 				break;
 		}
