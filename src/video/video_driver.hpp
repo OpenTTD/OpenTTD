@@ -187,6 +187,13 @@ public:
 	void GameLoopPause();
 
 	/**
+	* Prevents the system from going to sleep.
+	*
+	* @param inhibited If true, sleep will be disabled. If false, sleep will be enabled.
+	*/
+	virtual void SetScreensaverInhibited([[maybe_unused]] bool inhibited) {}
+
+	/**
 	 * Get the currently active instance of the video driver.
 	 */
 	static VideoDriver *GetInstance()
