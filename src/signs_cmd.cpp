@@ -68,7 +68,7 @@ CommandCost CmdRenameSign(DoCommandFlags flags, SignID sign_id, const std::strin
 {
 	Sign *si = Sign::GetIfValid(sign_id);
 	if (si == nullptr) return CMD_ERROR;
-	if (!CompanyCanRenameSign(si)) return CMD_ERROR;
+	if (!CompanyCanEditSign(si)) return CMD_ERROR;
 
 	/* Rename the signs when empty, otherwise remove it */
 	if (!text.empty()) {
