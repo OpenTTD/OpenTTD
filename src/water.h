@@ -41,6 +41,7 @@ void CheckForDockingTile(TileIndex t);
 void MakeRiverAndModifyDesertZoneAround(TileIndex tile);
 void RiverMakeWider(TileIndex tile, TileIndex origin_tile);
 bool RiverFlowsDown(TileIndex begin, TileIndex end);
+void ModifyDesertZoneAroundRiver(TileIndex tile);
 static const uint RIVER_OFFSET_DESERT_DISTANCE = 5; ///< Circular tile search diameter to create non-desert around a river tile.
 
 bool IsWateredTile(TileIndex tile, Direction from);
