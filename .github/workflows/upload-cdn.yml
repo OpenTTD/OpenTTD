@@ -21,7 +21,7 @@ jobs:
 
     steps:
     - name: Download all bundles
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v6
 
     - name: Calculate checksums
       run: |
@@ -70,14 +70,14 @@ jobs:
         done
 
     - name: Store bundles
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: cdn-bundles
         path: bundles/*
         retention-days: 5
 
     - name: Store breakpad symbols
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: cdn-symbols
         path: symbols/*
@@ -130,7 +130,7 @@ jobs:
         installation_retrieval_payload: "OpenTTD/workflows"
 
     - name: Trigger 'Publish Docs'
-      uses: peter-evans/repository-dispatch@v3
+      uses: peter-evans/repository-dispatch@v4
       with:
         token: ${{ steps.generate_token.outputs.token }}
         repository: OpenTTD/workflows
