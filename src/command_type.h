@@ -265,6 +265,7 @@ enum Commands : uint8_t {
 
 	CMD_INCREASE_LOAN,                ///< increase the loan from the bank
 	CMD_DECREASE_LOAN,                ///< decrease the loan from the bank
+	CMD_TOGGLE_AUTO_LOAN,             ///< toggle auto repay/take loan functionality
 	CMD_SET_COMPANY_MAX_LOAN,         ///< sets the max loan for the company
 
 	CMD_WANT_ENGINE_PREVIEW,          ///< confirm the preview of an engine
