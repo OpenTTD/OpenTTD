@@ -619,7 +619,7 @@ inline void MakeRoadNormal(Tile t, RoadBits bits, RoadType road_rt, RoadType tra
 	t.m2() = town.base();
 	t.m3() = (tram_rt != INVALID_ROADTYPE ? bits : 0);
 	t.m5() = (road_rt != INVALID_ROADTYPE ? bits : 0) | ROAD_TILE_NORMAL << 6;
-	SB(t.m6(), 2, 4, 0);
+	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
 	SetRoadTypes(t, road_rt, tram_rt);
 	SetRoadOwner(t, RTT_TRAM, tram);
@@ -645,7 +645,7 @@ inline void MakeRoadCrossing(Tile t, Owner road, Owner tram, Owner rail, Axis ro
 	t.m3() = 0;
 	t.m4() = INVALID_ROADTYPE;
 	t.m5() = ROAD_TILE_CROSSING << 6 | roaddir;
-	SB(t.m6(), 2, 4, 0);
+	SB(t.m6(), 2, 6, 0);
 	t.m7() = road.base();
 	t.m8() = INVALID_ROADTYPE << 6 | rat;
 	SetRoadTypes(t, road_rt, tram_rt);
@@ -679,7 +679,7 @@ inline void MakeRoadDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirectio
 	tile.m3() = 0;
 	tile.m4() = INVALID_ROADTYPE;
 	tile.m5() = ROAD_TILE_DEPOT << 6 | dir;
-	SB(tile.m6(), 2, 4, 0);
+	SB(tile.m6(), 2, 6, 0);
 	tile.m7() = owner.base();
 	tile.m8() = INVALID_ROADTYPE << 6;
 	SetRoadType(tile, GetRoadTramType(rt), rt);

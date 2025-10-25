@@ -285,6 +285,7 @@ inline void MakeIndustry(Tile t, IndustryID index, IndustryGfx gfx, uint8_t rand
 	SetIndustryGfx(t, gfx); // m5, part of m6
 	SetIndustryRandomTriggers(t, {}); // rest of m6
 	SetWaterClass(t, wc);
+	SB(t.m6(), 6, 2, 0);
 	t.m7() = 0;
 }
 

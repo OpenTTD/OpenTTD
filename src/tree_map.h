@@ -250,7 +250,7 @@ inline void MakeTree(Tile t, TreeType type, uint count, TreeGrowthStage growth, 
 	t.m3() = type;
 	t.m4() = 0 << 5 | 0 << 2;
 	t.m5() = count << 6 | static_cast<uint>(growth);
-	SB(t.m6(), 2, 4, 0);
+	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
 }
 
