@@ -1593,7 +1593,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :Unit SI (m³)
 
 ###length 3
 
-###length 3
+###length 4
 
 STR_CONFIG_SETTING_SOUND                                        :Bunyi
 STR_CONFIG_SETTING_INTERFACE                                    :Antaramuka (Interface)

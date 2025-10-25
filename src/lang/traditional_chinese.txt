@@ -2158,7 +2158,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :國際單位（
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :高度單位：{STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :在界面上以所選擇的單位表示高度。
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :英制（英呎）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :米制（米）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :國際單位（米）
@@ -3471,7 +3471,6 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}景觀�
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}產生河流
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}產生荒地與岩石地貌
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}市鎮生成
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}工業生成
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}無法移動
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}產生樹木
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}設定遊戲
@@ -5269,13 +5268,6 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}開始�
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... 橋樑的兩端應在陸地上
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}……橋樑過長
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}橋的終點將會在地圖外
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}橋樑過低，無法興建車站
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}橋樑過低，無法興建車站
-STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}橋樑過低，無法興建碼頭
-STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}橋樑過低，無法放置浮標
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}橋樑過低，無法興建中途站
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}橋樑過低，無法興建中途站
-STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}橋樑過低，無法興建水閘
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}無法在此挖掘隧道...

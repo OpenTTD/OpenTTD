@@ -2158,7 +2158,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Höjdenhet: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Närhelst en höjd visas i användargränssnittet, visa den i de valda enheterna
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Brittisk (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisk (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -3471,7 +3471,6 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Landskap
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generera Flod
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Svår och stenig markgenerering
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Stadsgenerering
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Industrigenerering
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generera objekt
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generera Träd
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Ställer in spel
@@ -5269,13 +5268,6 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start- o
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... brons båda ändar måste vara på land
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... för lång bro
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Bron slutar utanför kartans gränser
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Bro för låg för station
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Bro för låg för depå
-STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Bron är för låg för en kaj
-STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Bro för låg för boj
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Bro för låg för järnvägsriktmärke
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Bro för låg för vägriktmärke
-STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Bro för låg för sluss
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kan inte bygga tunnel här...

@@ -2172,7 +2172,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Unità di altezza: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Seleziona le unità di misura da utilizzare per mostrare le altezze nell'interfaccia utente
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperiali (piedi)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metriche (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -3469,7 +3469,6 @@ STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generazi
 STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Generazione paesaggio
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generazione fiumi
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generazione aree brulle e rocciose
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Generazione industrie
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generazione oggetti inamovibili
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generazione alberi
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Impostazione partita
@@ -5247,7 +5246,6 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Inizio e
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... gli estremi del ponte devono trovarsi entrambi sul terreno
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... ponte troppo lungo
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Il ponte terminerebbe fuori dalla mappa
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Ponte troppo basso per una fermata
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Impossibile costruire il tunnel qui...

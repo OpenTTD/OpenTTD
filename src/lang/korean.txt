@@ -2159,7 +2159,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :국제표준규
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :높이 단위: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :높이를 표시할 때 선택한 단위를 사용하여 나타냅니다
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :야드파운드법 (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :미터법 (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :국제표준규격 (m)
@@ -3472,7 +3472,6 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}지형 �
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}강 제작
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}거친 암석지대 만드는 중
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}도시 생성
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}산업시설 생성
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}움직일수 없는 객체 만드는 중
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}나무 심는 중
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}게임 설정 중
@@ -5270,13 +5269,6 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}시작�
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... 다리의 양 끝은 모두 땅이어야 합니다
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... 다리가 너무 깁니다!
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}다리 끝이 지도 밖을 넘어갑니다
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}다리 밑에 역을 두기에는 다리 높이가 너무 낮습니다
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}다리 밑에 도로 정류장을 두기에는 다리 높이가 너무 낮습니다
-STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}다리 밑에 항구를 두기에는 다리 높이가 너무 낮습니다
-STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}다리 밑에 부표를 두기에는 다리 높이가 너무 낮습니다
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}다리 밑에 철도 경유지를 두기에는 다리 높이가 너무 낮습니다
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}다리 밑에 도로 경유지를 두기에는 다리 높이가 너무 낮습니다
-STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}다리 밑에 항구를 두기에는 다리 높이가 너무 낮습니다
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}여기에 터널을 지을 수 없습니다...

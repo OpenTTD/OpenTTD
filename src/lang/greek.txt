@@ -2251,7 +2251,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Μονάδες μέτρησης ύψους: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Όποτε εμφανίζεται ένα ύψος στη διεπαφή χρήστη, να εμφανίζεται στην επιλεγμένη μονάδα
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Αυτοκρατορικό (πόδια)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Μετρικό (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -3564,7 +3564,6 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Δημι
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Δημιουργία ποταμού
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Δημιουργία άγριας και πετρώδης περιοχής
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Δημιουργία πόλης
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Δημιουργία βιομηχανίας
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Δημιουργία μη μετακινούμενων
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Δημιουργία δέντρων
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Ρύθμιση παιχνιδιού
@@ -5370,13 +5369,6 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Η αρ�
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... και τα δύο άκρα της γέφυρας πρέπει να είναι σε έδαφος
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... η γέφυρα είναι πολλή μακριά
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Η γέφυρα θα καταλήξει εκτός χάρτη
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Η γέφυρα είναι πολύ χαμηλή για σταθμό
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Η γέφυρα είναι πολύ χαμηλή για οδική στάση
-STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Η γέφυρα είναι πολύ χαμηλή για αποβάθρα
-STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Η γέφυρα είναι πολύ χαμηλή για σημαδούρα
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Η γέφυρα είναι πολύ χαμηλή για σιδηροδρομικό σημείο αναφοράς
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Η γέφυρα είναι πολύ χαμηλή για οδικό σημείο αναφοράς
-STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Η γέφυρα είναι πολύ χαμηλή για κλείδωμα
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Δεν μπορεί να κατασκευαστεί σήραγγα εδώ...

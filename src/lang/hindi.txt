@@ -719,7 +719,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :अंतर्
 
 ###length 3
 
-###length 3
+###length 4
 
 STR_CONFIG_SETTING_INTERFACE_GENERAL                            :सामान्य
 STR_CONFIG_SETTING_COMPANY                                      :कंपनी

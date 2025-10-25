@@ -1700,7 +1700,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Meðalstærð b
 
 ###length 3
 
-###length 3
+###length 4
 
 STR_CONFIG_SETTING_SOUND                                        :Hljóð
 STR_CONFIG_SETTING_INTERFACE                                    :Viðmót

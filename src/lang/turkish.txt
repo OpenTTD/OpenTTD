@@ -2106,7 +2106,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (Uluslararas
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Yükseklik ölçü birimi: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Kullanıcı arayüzünde yükseklikler görüntülendiğinde, bunları seçili ölçü biriminde göster
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (Ingiliz ölçü birimleri) (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrik (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (Uluslararası Ölçüm Sistemi) (m)
@@ -3380,7 +3380,6 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Peyzaj o
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Nehir oluşturma
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Engebeli ve kayalık alan oluştur
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Kasaba Oluşumu
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Endüstri Oluşumu
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Nesne oluşturma
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Ağaç üretimi
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Oyun ayarlanıyor

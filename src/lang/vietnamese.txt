@@ -2158,7 +2158,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Đơn vị độ cao: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Khi độ cao thể hiện trên giao diện, thì hiển thị nó trên đơn vị đã chọn
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Hoàng Gia (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metric (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -3470,7 +3470,6 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Khởi t
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Khởi tạo sông suối
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Sinh đá và sự gồ ghề
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Khởi tạo thị trấn
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Khởi tạo nhà máy
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Sinh đối tượng cứng
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Trồng cây
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Thiết lập ván chơi
@@ -5267,13 +5266,6 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Điểu 
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... hai đầu cầu phải được gá vào đất
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... cầu quá dài
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Cầu có thể vượt quá phạm vi bản đồ
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Cầu quá thấp cho ga
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Cầu quá thấp cho điểm dừng chân
-STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Cầu quá thấp để xây dựng cảng
-STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Cầu quá thấp cho phao
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Cầu quá thấp cho điểm mốc đường ray
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Cầu quá thấp cho điểm mốc đường
-STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :Cầu thấp, tàu không qua được khóa
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Không thể đào hầm ở đây...

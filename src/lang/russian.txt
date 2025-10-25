@@ -2309,7 +2309,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :СИ (кН)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Система единиц для высоты: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Показывать значения высоты в выбранной системе единиц
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :английская (фут)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :метрическая (м)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :СИ (м)
@@ -3646,7 +3646,6 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Созд
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Создание рек
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Расстановка декораций и камней
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Создание городов
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Создание предприятий
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Создание объектов
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Высадка лесов
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Настройка
@@ -5456,13 +5455,6 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Нача
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... оба конца моста должны опираться на землю
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... мост слишком длинный
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Мост выходит за пределы карты
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Высота моста недостаточна для строительства станции
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Высота моста недостаточна для строительства остановки
-STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Высота моста недостаточна для строительства пристани
-STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Высота моста недостаточна для установки буя
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Высота моста недостаточна для строительства маршрутной точки
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Высота моста недостаточна для строительства маршрутной точки
-STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Высота моста недостаточна для строительства шлюза
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Здесь невозможно построить туннель...

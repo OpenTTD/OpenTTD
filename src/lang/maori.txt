@@ -2158,7 +2158,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Waeine teitei: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Ina whakaaria he teitei i te tāhono kaiwhakamahi, whakaaria i te waeine kua tīpakona
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Ingarangi (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Ngahuru (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -3468,7 +3468,6 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Hanga wh
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Hanga awa
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Hanga rohe tuarangaranga, tokatoka hoki
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Hanga tāone
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Hanga ahumahi
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Hanga mea
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Hanga rākau
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Whakatatū i te kēmu
@@ -5263,11 +5262,6 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Me tōti
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... me tū ki te whenua ngā pito e rua o te arawhiti
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... he roa rawa te arawhiti
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Ka mutu te arawhiti i waho i te mahere
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}He hakahaka rawa te arawhiti mō te teihana
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}He hakahaka rawa te arawhiti mō te tūnga rori
-STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}He hakahaka rawa te arawhiti mō te kārewa
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}He hakahaka rawa te arawhiti mō te aratohu rerewhenua
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}He hakahaka rawa te arawhiti mō te aratohu rori
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Tē taea te hanga te anaroa i konei...

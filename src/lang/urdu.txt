@@ -1482,7 +1482,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :شہر کا ش�
 
 ###length 3
 
-###length 3
+###length 4
 
 STR_CONFIG_SETTING_INTERFACE                                    :انٹرفیس
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :تعمیرات

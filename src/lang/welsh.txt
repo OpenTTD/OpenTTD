@@ -2146,7 +2146,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Unedau uchder: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Pan y dangosir uchder yn y rhyngwyneb defnyddiwr, ei ddangos yn yr unedau a ddewiswyd
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrig (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -3456,7 +3456,6 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Creu tir
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Cynhyrchu afonydd
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Cynhyrchu ardaloedd creigiog a chnapiog
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Creu trefi
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Creu diwydiant
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Cynhyrchu gwrthrych
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Cynhyrchu coed
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Gosod gêm yn ei le

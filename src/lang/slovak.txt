@@ -2172,7 +2172,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Jednotky výšky: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Vždy, keď sa zobrazí výška v užívateľskom rozhraní, zobrazí sa vo vybraných jednotkách
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperialne (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrické (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -3420,7 +3420,6 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :Generujem kraji
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generovanie riek
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generovanie nerovností a skál
 STR_GENERATION_TOWN_GENERATION                                  :Vytváranie mesta
-STR_GENERATION_INDUSTRY_GENERATION                              :Vytváranie priemyslu
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generovanie objektov
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generovanie stromov
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Nastavovanie hry
