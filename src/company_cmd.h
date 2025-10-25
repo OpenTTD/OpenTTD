@@ -13,6 +13,7 @@
 #include "command_type.h"
 #include "company_type.h"
 #include "livery.h"
+#include "rail_type.h"
 
 enum ClientID : uint32_t;
 enum Colours : uint8_t;
@@ -24,6 +25,7 @@ CommandCost CmdRenameCompany(DoCommandFlags flags, const std::string &text);
 CommandCost CmdRenamePresident(DoCommandFlags flags, const std::string &text);
 CommandCost CmdSetCompanyManagerFace(DoCommandFlags flags, uint style, uint32_t bits);
 CommandCost CmdSetCompanyColour(DoCommandFlags flags, LiveryScheme scheme, bool primary, Colours colour);
+CommandCost CmdSetRailTypeCompanyHidden(DoCommandFlags flags, RailType rail_type, bool is_hidden);
 
 DEF_CMD_TRAIT(CMD_COMPANY_CTRL,             CmdCompanyCtrl,           CommandFlags({CommandFlag::Spectator, CommandFlag::ClientID, CommandFlag::NoEst}), CMDT_SERVER_SETTING)
 DEF_CMD_TRAIT(CMD_COMPANY_ALLOW_LIST_CTRL,  CmdCompanyAllowListCtrl,  CommandFlag::NoEst,                    CMDT_SERVER_SETTING)
@@ -32,5 +34,6 @@ DEF_CMD_TRAIT(CMD_RENAME_COMPANY,           CmdRenameCompany,         {},       
 DEF_CMD_TRAIT(CMD_RENAME_PRESIDENT,         CmdRenamePresident,       {},                                          CMDT_COMPANY_SETTING)
 DEF_CMD_TRAIT(CMD_SET_COMPANY_MANAGER_FACE, CmdSetCompanyManagerFace, {},                                          CMDT_COMPANY_SETTING)
 DEF_CMD_TRAIT(CMD_SET_COMPANY_COLOUR,       CmdSetCompanyColour,      {},                                          CMDT_COMPANY_SETTING)
+DEF_CMD_TRAIT(CMD_SET_RAIL_TYPE_COMPANY_HIDDEN, CmdSetRailTypeCompanyHidden, {}, CMDT_COMPANY_SETTING)
 
 #endif /* COMPANY_CMD_H */

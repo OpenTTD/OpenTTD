@@ -351,7 +351,7 @@ public:
 			case WID_RV_RAIL_TYPE_DROPDOWN: {
 				Dimension d = {0, 0};
 				for (const RailType &rt : _sorted_railtypes) {
-					d = maxdim(d, GetStringBoundingBox(GetRailTypeInfo(rt)->strings.replace_text));
+					d = maxdim(d, GetStringBoundingBox(GetRailTypeInfo(rt)->GetString(RailTypeInfo::Strings::ReplaceText)));
 				}
 				d.width += padding.width;
 				d.height += padding.height;
@@ -417,7 +417,8 @@ public:
 				return GetString(this->replace_engines ? STR_REPLACE_ENGINES : STR_REPLACE_WAGONS);
 
 			case WID_RV_RAIL_TYPE_DROPDOWN:
-				return GetString(this->sel_railtype == INVALID_RAILTYPE ? STR_REPLACE_ALL_RAILTYPE : GetRailTypeInfo(this->sel_railtype)->strings.replace_text);
+				if (this->sel_railtype == INVALID_RAILTYPE) return GetString(STR_REPLACE_ALL_RAILTYPE);
+				return GetRailTypeInfo(this->sel_railtype)->GetString(RailTypeInfo::Strings::ReplaceText);
 
 			case WID_RV_ROAD_TYPE_DROPDOWN:
 				return GetString(this->sel_roadtype == INVALID_ROADTYPE ? STR_REPLACE_ALL_ROADTYPE : GetRoadTypeInfo(this->sel_roadtype)->strings.replace_text);

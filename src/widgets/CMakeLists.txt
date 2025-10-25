@@ -4,6 +4,7 @@ add_files(
     autoreplace_widget.h
     bootstrap_widget.h
     bridge_widget.h
+    build_rail_widget.h
     build_vehicle_widget.h
     cheat_widget.h
     company_widget.h

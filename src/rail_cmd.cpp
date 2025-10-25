@@ -33,6 +33,7 @@
 #include "object_map.h"
 #include "rail_cmd.h"
 #include "landscape_cmd.h"
+#include "string_func.h"
 
 #include "table/strings.h"
 #include "table/railtypes.h"
@@ -2777,7 +2778,7 @@ static void GetTileDesc_Track(TileIndex tile, TileDesc &td)
 {
 	const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
 	td.rail_speed = rti->max_speed;
-	td.railtype = rti->strings.name;
+	td.railtype = rti->strings[RailTypeInfo::Strings::Name];
 	td.owner[0] = GetTileOwner(tile);
 	switch (GetRailTileType(tile)) {
 		case RAIL_TILE_NORMAL:
@@ -3078,6 +3079,38 @@ static CommandCost CheckBuildAbove_Track(TileIndex tile, DoCommandFlags flags, A
 {
 	if (IsPlainRail(tile)) return CommandCost();
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
+}
+
+/**
+ * Rename a rail type.
+ * @param flags operation to perform
+ * @param rail_id rail type to rename
+ * @param text the new name or an empty string when resetting to the default
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdRenameRailType(DoCommandFlags flags, RailType rail_id, const std::string &text)
+{
+	if (rail_id >= RAILTYPE_END) return CMD_ERROR;
+	RailTypeInfo *rti = &_railtypes[rail_id];
+	if (rti == nullptr) return CMD_ERROR; ///< Just in case.
+
+	bool reset = text.empty();
+
+	if (!reset) {
+		if (Utf8StringLength(text) >= MAX_LENGTH_RAIL_TRACK_NAME_CHARS) return CMD_ERROR;
+	}
+
+	if (flags.Test(DoCommandFlag::Execute)) {
+		if (reset) {
+			rti->custom_name.clear();
+		} else {
+			rti->custom_name = text;
+		}
+
+		MarkWholeScreenDirty();
+	}
+
+	return CommandCost();
 }
 
 extern const TileTypeProcs _tile_type_rail_procs = {

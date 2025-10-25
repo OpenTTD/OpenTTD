@@ -640,7 +640,7 @@ static int DrawRailEnginePurchaseInfo(int left, int right, int y, EngineID engin
 		if (!rvi->railtypes.Test(rt)) continue;
 
 		if (!railtypes.empty()) railtypes += list_separator;
-		AppendStringInPlace(railtypes, GetRailTypeInfo(rt)->strings.name);
+		railtypes += GetRailTypeInfo(rt)->GetString(RailTypeInfo::Strings::Name);
 	}
 	DrawString(left, right, y, GetString(STR_PURCHASE_INFO_RAILTYPES, railtypes));
 	y += GetCharacterHeight(FS_NORMAL);
@@ -1761,7 +1761,7 @@ struct BuildVehicleWindow : Window {
 			case WID_BV_CAPTION:
 				if (this->vehicle_type == VEH_TRAIN && !this->listview_mode) {
 					const RailTypeInfo *rti = GetRailTypeInfo(this->filter.railtype);
-					return GetString(rti->strings.build_caption);
+					return rti->GetString(RailTypeInfo::Strings::BuildCaption);
 				}
 				if (this->vehicle_type == VEH_ROAD && !this->listview_mode) {
 					const RoadTypeInfo *rti = GetRoadTypeInfo(this->filter.roadtype);

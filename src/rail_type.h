@@ -19,6 +19,8 @@ static const RailTypeLabel RAILTYPE_LABEL_ELECTRIC = 'ELRL';
 static const RailTypeLabel RAILTYPE_LABEL_MONO     = 'MONO';
 static const RailTypeLabel RAILTYPE_LABEL_MAGLEV   = 'MGLV';
 
+static const uint MAX_LENGTH_RAIL_TRACK_NAME_CHARS = 32; ///< The maximum length of a rail track name in characters including '\0'
+
 /**
  * Enumeration for all possible railtypes.
  */

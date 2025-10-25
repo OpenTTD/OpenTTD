@@ -37,18 +37,18 @@
  * @param engine Engine to examine.
  * @return String describing the category ("road veh", "train". "airplane", or "ship") of the engine.
  */
-StringID GetEngineCategoryName(EngineID engine)
+std::string GetEngineCategoryName(EngineID engine)
 {
 	const Engine *e = Engine::Get(engine);
 	switch (e->type) {
 		default: NOT_REACHED();
 		case VEH_ROAD:
-			return GetRoadTypeInfo(e->VehInfo<RoadVehicleInfo>().roadtype)->strings.new_engine;
-		case VEH_AIRCRAFT:          return STR_ENGINE_PREVIEW_AIRCRAFT;
-		case VEH_SHIP:              return STR_ENGINE_PREVIEW_SHIP;
+			return GetString(GetRoadTypeInfo(e->VehInfo<RoadVehicleInfo>().roadtype)->strings.new_engine);
+		case VEH_AIRCRAFT:          return GetString(STR_ENGINE_PREVIEW_AIRCRAFT);
+		case VEH_SHIP:              return GetString(STR_ENGINE_PREVIEW_SHIP);
 		case VEH_TRAIN:
 			assert(e->VehInfo<RailVehicleInfo>().railtypes.Any());
-			return GetRailTypeInfo(e->VehInfo<RailVehicleInfo>().railtypes.GetNthSetBit(0).value())->strings.new_loco;
+			return GetRailTypeInfo(e->VehInfo<RailVehicleInfo>().railtypes.GetNthSetBit(0).value())->GetString(RailTypeInfo::Strings::NewLoco);
 	}
 }
 
@@ -190,7 +190,7 @@ static std::string GetTrainEngineInfoString(const Engine &e)
 			if (!e.VehInfo<RailVehicleInfo>().railtypes.Test(rt)) continue;
 
 			if (!railtypes.empty()) railtypes += list_separator;
-			AppendStringInPlace(railtypes, GetRailTypeInfo(rt)->strings.name);
+			railtypes += GetRailTypeInfo(rt)->GetString(RailTypeInfo::Strings::Name);
 		}
 		res << GetString(STR_ENGINE_PREVIEW_RAILTYPES, railtypes);
 		res << '\n';

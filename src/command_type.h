@@ -262,6 +262,7 @@ enum Commands : uint8_t {
 
 	CMD_SET_COMPANY_MANAGER_FACE,     ///< set the manager's face of the company
 	CMD_SET_COMPANY_COLOUR,           ///< set the colour of the company
+	CMD_SET_RAIL_TYPE_COMPANY_HIDDEN, ///< set visibility of the rail type in build window
 
 	CMD_INCREASE_LOAN,                ///< increase the loan from the bank
 	CMD_DECREASE_LOAN,                ///< decrease the loan from the bank
@@ -276,6 +277,7 @@ enum Commands : uint8_t {
 	CMD_RENAME_PRESIDENT,             ///< change the president name
 	CMD_RENAME_STATION,               ///< rename a station
 	CMD_RENAME_DEPOT,                 ///< rename a depot
+	CMD_RENAME_RAIL_TYPE,             ///< rename a rail type
 
 	CMD_PLACE_SIGN,                   ///< place a sign
 	CMD_RENAME_SIGN,                  ///< rename a sign

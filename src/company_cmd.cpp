@@ -1171,6 +1171,27 @@ CommandCost CmdSetCompanyColour(DoCommandFlags flags, LiveryScheme scheme, bool 
 }
 
 /**
+ * Change visibility of the rail type in build rail window.
+ * @param flags operation to perform
+ * @param rail_type rail type to set
+ * @param is_hidden the new visibility
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdSetRailTypeCompanyHidden(DoCommandFlags flags, RailType rail_type, bool is_hidden)
+{
+	if (rail_type >= RAILTYPE_END) return CMD_ERROR;
+
+	Company *c = Company::Get(_current_company);
+
+	if (flags.Test(DoCommandFlag::Execute)) {
+		c->hidden_railtypes.Set(rail_type, is_hidden);
+		InvalidateWindowClassesData(WC_BUILD_RAIL);
+	}
+
+	return CommandCost();
+}
+
+/**
  * Is the given name in use as name of a company?
  * @param name Name to search.
  * @return \c true if the name us unique (that is, not in use), else \c false.

@@ -2772,7 +2772,7 @@ static void ConDumpRailTypes()
 				rti->flags.Test(RailTypeFlag::Allow90Deg)      ? 'a' : '-',
 				rti->flags.Test(RailTypeFlag::Disallow90Deg)   ? 'd' : '-',
 				std::byteswap(grfid),
-				GetStringPtr(rti->strings.name)
+				rti->GetString(RailTypeInfo::Strings::Name)
 		);
 	}
 	for (const auto &grf : grfs) {

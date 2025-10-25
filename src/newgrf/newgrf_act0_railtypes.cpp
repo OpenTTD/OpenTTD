@@ -50,27 +50,27 @@ static ChangeInfoResult RailTypeChangeInfo(uint first, uint last, int prop, Byte
 
 			case 0x09: { // Toolbar caption of railtype (sets name as well for backwards compatibility for grf ver < 8)
 				GRFStringID str{buf.ReadWord()};
-				AddStringForMapping(str, &rti->strings.toolbar_caption);
+				AddStringForMapping(str, &rti->strings[RailTypeInfo::Strings::ToolbarCaption]);
 				if (_cur_gps.grffile->grf_version < 8) {
-					AddStringForMapping(str, &rti->strings.name);
+					AddStringForMapping(str, &rti->strings[RailTypeInfo::Strings::Name]);
 				}
 				break;
 			}
 
 			case 0x0A: // Menu text of railtype
-				AddStringForMapping(GRFStringID{buf.ReadWord()}, &rti->strings.menu_text);
+				AddStringForMapping(GRFStringID{buf.ReadWord()}, &rti->strings[RailTypeInfo::Strings::MenuText]);
 				break;
 
 			case 0x0B: // Build window caption
-				AddStringForMapping(GRFStringID{buf.ReadWord()}, &rti->strings.build_caption);
+				AddStringForMapping(GRFStringID{buf.ReadWord()}, &rti->strings[RailTypeInfo::Strings::BuildCaption]);
 				break;
 
 			case 0x0C: // Autoreplace text
-				AddStringForMapping(GRFStringID{buf.ReadWord()}, &rti->strings.replace_text);
+				AddStringForMapping(GRFStringID{buf.ReadWord()}, &rti->strings[RailTypeInfo::Strings::ReplaceText]);
 				break;
 
 			case 0x0D: // New locomotive text
-				AddStringForMapping(GRFStringID{buf.ReadWord()}, &rti->strings.new_loco);
+				AddStringForMapping(GRFStringID{buf.ReadWord()}, &rti->strings[RailTypeInfo::Strings::NewLoco]);
 				break;
 
 			case 0x0E: // Compatible railtype list
@@ -134,7 +134,7 @@ static ChangeInfoResult RailTypeChangeInfo(uint first, uint last, int prop, Byte
 				break;
 
 			case 0x1B: // Name of railtype (overridden by prop 09 for grf ver < 8)
-				AddStringForMapping(GRFStringID{buf.ReadWord()}, &rti->strings.name);
+				AddStringForMapping(GRFStringID{buf.ReadWord()}, &rti->strings[RailTypeInfo::Strings::Name]);
 				break;
 
 			case 0x1C: // Maintenance cost factor
