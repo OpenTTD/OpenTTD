@@ -460,6 +460,24 @@ public:
 	 * @return Secondary colour of livery.
 	 */
 	static ScriptCompany::Colours GetSecondaryLiveryColour(LiveryScheme scheme);
+
+	/**
+	 * Set the gender of the president of your company.
+	 * @param quarters Number of quarters that the company is not allowed to get new exclusive engine previews.
+	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
+	 * @pre quarters >= 0.
+	 * @return True if the block preview was changed.
+	 * @api -ai
+	 */
+	static bool SetBlockPreview(SQInteger quarters);
+
+	/**
+	 * Get the gender of the president of the given company.
+	 * @param company The company to get the block preview off.
+	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
+	 * @return Number of quarters that the company is not allowed to get new exclusive engine previews.
+	 */
+	static SQInteger GetBlockPreview(ScriptCompany::CompanyID company);
 };
 
 DECLARE_INCREMENT_DECREMENT_OPERATORS(ScriptCompany::CompanyID)
