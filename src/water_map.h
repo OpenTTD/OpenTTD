@@ -393,6 +393,7 @@ inline void MakeShore(Tile t)
 	SetWaterTileType(t, WATER_TILE_COAST);
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
+	t.m8() = 0;
 }
 
 /**
@@ -415,6 +416,7 @@ inline void MakeWater(Tile t, Owner o, WaterClass wc, uint8_t random_bits)
 	SetWaterTileType(t, WATER_TILE_CLEAR);
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
+	t.m8() = 0;
 }
 
 /**
@@ -470,6 +472,7 @@ inline void MakeShipDepot(Tile t, Owner o, DepotID did, DepotPart part, Axis a, 
 	SetWaterTileType(t, WATER_TILE_DEPOT);
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
+	t.m8() = 0;
 }
 
 /**
@@ -494,6 +497,7 @@ inline void MakeLockTile(Tile t, Owner o, LockPart part, DiagDirection dir, Wate
 	SetWaterTileType(t, WATER_TILE_LOCK);
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
+	t.m8() = 0;
 }
 
 /**

@@ -252,6 +252,7 @@ inline void MakeTree(Tile t, TreeType type, uint count, TreeGrowthStage growth, 
 	t.m5() = count << 6 | static_cast<uint>(growth);
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
+	t.m8() = 0;
 }
 
 #endif /* TREE_MAP_H */

@@ -621,6 +621,7 @@ inline void MakeRoadNormal(Tile t, RoadBits bits, RoadType road_rt, RoadType tra
 	t.m5() = (road_rt != INVALID_ROADTYPE ? bits : 0) | ROAD_TILE_NORMAL << 6;
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
+	t.m8() = 0;
 	SetRoadTypes(t, road_rt, tram_rt);
 	SetRoadOwner(t, RTT_TRAM, tram);
 }
