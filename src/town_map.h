@@ -386,6 +386,7 @@ inline void MakeHouseTile(Tile t, TownID tid, uint8_t counter, uint8_t stage, Ho
 	SetHouseProtected(t, house_protected);
 	SetAnimationFrame(t, 0);
 	SetHouseProcessingTime(t, HouseSpec::Get(type)->processing_time);
+	SB(t.m8(), 12, 4, 0);
 }
 
 #endif /* TOWN_MAP_H */
