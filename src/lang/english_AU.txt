@@ -254,6 +254,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}ft
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
+STR_UNITS_HEIGHT_GAMEUNITS                                      :{DECIMAL}{NBSP}level{P "" s}
 
 # Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}day{P "" s}
@@ -2162,6 +2163,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Whenever height
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metric (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_GAMEUNITS          :Game units (levels)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :Localisation
 STR_CONFIG_SETTING_GRAPHICS                                     :Graphics
@@ -3471,6 +3473,8 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Landscap
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}River generation
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Rough and rocky area generation
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Town generation
+STR_GENERATION_LAND_INDUSTRY_GENERATION                         :{BLACK}Land industry generation
+STR_GENERATION_WATER_INDUSTRY_GENERATION                        :{BLACK}Water industry generation
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Object generation
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Tree generation
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Setting up game
@@ -5268,6 +5272,13 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start an
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... ends of bridge must both be on land
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... bridge too long
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Bridge would end out of the map
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Bridge is {HEIGHT} too low for station
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Bridge is {HEIGHT} too low for road stop
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Bridge is {HEIGHT} too low for dock
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Bridge is {HEIGHT} too low for buoy
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Bridge is {HEIGHT} too low for rail waypoint
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Bridge is {HEIGHT} too low for road waypoint
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Bridge is {HEIGHT} too low for lock
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Can't build tunnel here...

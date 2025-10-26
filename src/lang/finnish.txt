@@ -254,6 +254,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}ft
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
+STR_UNITS_HEIGHT_GAMEUNITS                                      :{DECIMAL}{NBSP}taso{P "" a}
 
 # Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}vrk
@@ -2124,8 +2125,8 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Kun käyttölii
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Brittiläinen (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrinen (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :Pelin yksiköt (ruutua/vrk)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :Pelin yksiköt (ruutua/s)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :Pelin yksiköt (ruutuja/vrk)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :Pelin yksiköt (ruutuja/s)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Solmut
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Kulkuneuvon tehon yksikkö: {STRING}
@@ -2162,6 +2163,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Kun käyttölii
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Brittiläinen (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrinen (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_GAMEUNITS          :Pelin yksiköt (tasoja)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :Mittayksiköt ja päivämäärät
 STR_CONFIG_SETTING_GRAPHICS                                     :Grafiikka
@@ -2962,8 +2964,8 @@ STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Linja-au
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Valitse linja-autoaseman suunta
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Lastauslaiturin suunta
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Valitse lastauslaiturin suunta
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Aseman suunta
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Valitse aseman suunta
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Raitiotien matkustaja-aseman suunta
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Valitse raitiotien matkustaja-aseman suunta
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Rahtiaseman suunta
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Valitse rahtiaseman suunta
 
@@ -3471,6 +3473,8 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Maaston 
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Jokien luominen
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Karun ja kivisen alueen luominen
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Kuntien luominen
+STR_GENERATION_LAND_INDUSTRY_GENERATION                         :{BLACK}Teollisuuden luominen maalla
+STR_GENERATION_WATER_INDUSTRY_GENERATION                        :{BLACK}Teollisuuden luominen vedessä
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Siirtämättömän luominen
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Puiden luominen
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Valmistellaan peliä
@@ -5268,6 +5272,13 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Alku- ja
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... sillan molempien päiden pitää sijaita maalla.
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... silta liian pitkä
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Silta päättyisi kartan ulkopuolelle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Silta on {HEIGHT} liian matala aseman ylle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Silta on {HEIGHT} liian matala pysäkin ylle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Silta on {HEIGHT} liian matala sataman ylle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Silta on {HEIGHT} liian matala poijun ylle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Silta on {HEIGHT} liian matala rautatien reittipisteen ylle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Silta on {HEIGHT} liian matala tien reittipisteen ylle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Silta on {HEIGHT} liian matala sulun ylle
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Tunnelia ei voi rakentaa...

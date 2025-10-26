@@ -633,6 +633,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}st{P opa opy óp}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
+STR_UNITS_HEIGHT_GAMEUNITS                                      :{DECIMAL}{NBSP}skok{P "" i ów} poziomu
 
 # Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}d{P zień ni ni}
@@ -2542,6 +2543,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Jeśli kiedykol
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperialne (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metryczne (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_GAMEUNITS          :Jednostki gry (skoki poziomu)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :Lokalizacja
 STR_CONFIG_SETTING_GRAPHICS                                     :Grafika
@@ -3851,6 +3853,8 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Tworzeni
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Tworzenie rzek
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Tworzenie terenów skalistych i nierówności
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Tworzenie miast
+STR_GENERATION_LAND_INDUSTRY_GENERATION                         :{BLACK}Tworzenie fabryk na lądzie
+STR_GENERATION_WATER_INDUSTRY_GENERATION                        :{BLACK}Tworzenie przemysłu na wodzie
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Rozmieszczanie obiektów
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Rozmieszczanie drzew
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Konfigurowanie rozgrywki
@@ -5654,6 +5658,13 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Począte
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... końce mostu muszą znajdować się na lądzie
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... za długi most
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Koniec mostu poza mapą
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Most jest o {HEIGHT} za niski dla stacji
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Most jest o {HEIGHT} za niski dla przystanku
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Most jest o {HEIGHT} za niski dla portu
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Most jest o {HEIGHT} za niski dla boi
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Most jest o {HEIGHT} za niski dla posterunku kolejowego
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Most jest o {HEIGHT} za niski dla posterunku drogowego
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Most jest o {HEIGHT} za niski dla śluzy
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Nie można tutaj zbudować tunelu...

@@ -380,6 +380,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}фут{P "" а ов}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}м
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}м
+STR_UNITS_HEIGHT_GAMEUNITS                                      :{DECIMAL}{NBSP}уров{P ень ня ней}
 
 # Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}д{P ень ня ней}
@@ -2275,8 +2276,8 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Показыв�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :английская (миль/ч)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :метрическая (км/ч)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :СИ (м/с)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :Внутренние единицы (клеток/день)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :Внутренние единицы (клеток/сек.)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :Игровые единицы (клеток/день)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :Игровые единицы (клеток/сек.)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :узлы
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Система единиц для мощности: {STRING}
@@ -2313,6 +2314,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Показыв�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :английская (фут)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :метрическая (м)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :СИ (м)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_GAMEUNITS          :Игровые единицы (уровни)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :Локализация
 STR_CONFIG_SETTING_GRAPHICS                                     :Графика
@@ -3646,6 +3648,8 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Созд
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Создание рек
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Расстановка декораций и камней
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Создание городов
+STR_GENERATION_LAND_INDUSTRY_GENERATION                         :{BLACK}Создание наземных предприятий
+STR_GENERATION_WATER_INDUSTRY_GENERATION                        :{BLACK}Создание водных предприятий
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Создание объектов
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Высадка лесов
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Настройка
@@ -5455,6 +5459,13 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Нача
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... оба конца моста должны опираться на землю
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... мост слишком длинный
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Мост выходит за пределы карты
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Высота моста {HEIGHT} недостаточна для строительства станции
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Высота моста {HEIGHT} недостаточна для строительства остановки
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Высота моста {HEIGHT} недостаточна для строительства пристани
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Высота моста {HEIGHT} недостаточна для установки буя
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Высота моста {HEIGHT} недостаточна для строительства маршрутной точки
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Высота моста {HEIGHT} недостаточна для строительства маршрутной точки
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Высота моста {HEIGHT} недостаточна для строительства шлюза
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Здесь невозможно построить туннель...

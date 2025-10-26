@@ -255,6 +255,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}ft
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
+STR_UNITS_HEIGHT_GAMEUNITS                                      :{DECIMAL}{NBSP}níve{P l is}
 
 # Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}dia{P "" s}
@@ -2163,6 +2164,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Sempre que uma 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Métrico (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_GAMEUNITS          :Unidades do jogo (níveis)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :Localização
 STR_CONFIG_SETTING_GRAPHICS                                     :Gráficos
@@ -3472,6 +3474,8 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Geraçã
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Geração de rios
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Geração de áreas irregulares e rochosas
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Geração de localidades
+STR_GENERATION_LAND_INDUSTRY_GENERATION                         :{BLACK}Geração de indústrias terrestres
+STR_GENERATION_WATER_INDUSTRY_GENERATION                        :{BLACK}Geração de indústrias fluviais
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Geração de objetos
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Geração de árvores
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Configurando o jogo
@@ -5269,6 +5273,13 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Início 
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... os extremos da ponte devem estar sobre a terra
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... ponte muito longa
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}A ponte terminaria fora do mapa
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}A ponte está {HEIGHT} abaixo do necessário para a estação
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}A ponte está {HEIGHT} abaixo do necessário para a parada rodoviária
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}A ponte está {HEIGHT} abaixo do necessário para a doca
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}A ponte está {HEIGHT} abaixo do necessário para a boia
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}A ponte está {HEIGHT} abaixo do necessário para o ponto de controle ferroviário
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}A ponte está {HEIGHT} abaixo do necessário para o ponto de controle rodoviário
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}A ponte está {HEIGHT} abaixo do necessário para a eclusa
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Não é possível construir túnel aqui...
@@ -5906,7 +5917,7 @@ STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
 STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
 STR_CURRENCY_SHORT_MEGA                                         :{NBSP}M
-STR_CURRENCY_SHORT_GIGA                                         :{NBSP}G
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}B
 STR_CURRENCY_SHORT_TERA                                         :{NBSP}T
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
