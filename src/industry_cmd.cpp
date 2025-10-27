@@ -2494,8 +2494,8 @@ void GenerateIndustries()
 		/* Total number of industries scaled by land/water proportion. */
 		uint total_amount = p.total * GetNumberOfIndustries() / (lprob.total + wprob.total);
 
-		/* Scale land-based industries to the land proportion. */
-		if (!water) total_amount = Map::ScaleByLandProportion(total_amount);
+		/* Scale land-based industries to the land proportion, unless the player has set a custom industry count. */
+		if (!water && _settings_game.difficulty.industry_density != ID_CUSTOM) total_amount = Map::ScaleByLandProportion(total_amount);
 
 		/* Ensure that forced industries are generated even if the scaled amounts are too low. */
 		if (p.total == 0 || total_amount < p.num_forced) {

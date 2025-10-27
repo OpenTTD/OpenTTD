@@ -2421,7 +2421,7 @@ bool GenerateTowns(TownLayout layout, std::optional<uint> number)
 	if (number.has_value()) {
 		total = number.value();
 	} else if (_settings_game.difficulty.number_towns == static_cast<uint>(CUSTOM_TOWN_NUMBER_DIFFICULTY)) {
-		total = Map::ScaleByLandProportion(GetDefaultTownsForMapSize());
+		total = GetDefaultTownsForMapSize();
 	} else {
 		total = Map::ScaleByLandProportion(GetDefaultTownsForMapSize() + (Random() & 7));
 	}
