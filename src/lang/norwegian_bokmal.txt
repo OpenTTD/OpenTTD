@@ -256,6 +256,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}fot
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
+STR_UNITS_HEIGHT_GAMEUNITS                                      :{DECIMAL}{NBSP}nivå{P "" er}
 
 # Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}dag{P "" er}
@@ -2164,6 +2165,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Når en høyde 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperisk (fot)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisk (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_GAMEUNITS          :Spillenheter (nivåer)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :Lokalisering
 STR_CONFIG_SETTING_GRAPHICS                                     :Grafikk
@@ -3470,9 +3472,11 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}{NB
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generer en verden
 STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Landskapsgenerering
-STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Skap elver
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Elvegenerering
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generering av ulendt og steinete område
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Bygenerering
+STR_GENERATION_LAND_INDUSTRY_GENERATION                         :{BLACK}Landindustrigenerering
+STR_GENERATION_WATER_INDUSTRY_GENERATION                        :{BLACK}Vannindustrigenerering
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Objektgenerering
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Tregenerering
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Klargjør spillet
@@ -5270,6 +5274,13 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start og
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...{NBSP}broens ender må være på land
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... broen er for lang
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Bro vil ende utenfor kartet
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Broen er {HEIGHT} for lav for en stasjon
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Broen er {HEIGHT} for lav for en holdeplass
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Broen er {HEIGHT} for lav for en havn
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Broen er {HEIGHT} for lav for en bøye
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Broen er {HEIGHT} for lav for et veipunkt
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Broen er {HEIGHT} for lav for et veipunkt
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Broen er {HEIGHT} for lav for en sluse
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kan ikke bygge tunnel her...

@@ -5918,7 +5918,7 @@ STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_CURRENCY_SHORT_KILO                                         :{NBSP}mil
 STR_CURRENCY_SHORT_MEGA                                         :{NBSP}milh.
 STR_CURRENCY_SHORT_GIGA                                         :{NBSP}mil milh.
-STR_CURRENCY_SHORT_TERA                                         :{NBSP}bilh.
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}bil.
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_LEFT_ARROW                                             :{LEFT_ARROW}

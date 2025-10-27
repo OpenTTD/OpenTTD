@@ -633,7 +633,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}st{P opa opy óp}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
-STR_UNITS_HEIGHT_GAMEUNITS                                      :{DECIMAL}{NBSP}skok{P "" i ów} poziomu
+STR_UNITS_HEIGHT_GAMEUNITS                                      :{DECIMAL}{NBSP}poziom{P "" y ów}
 
 # Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}d{P zień ni ni}
@@ -2543,7 +2543,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Jeśli kiedykol
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperialne (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metryczne (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_GAMEUNITS          :Jednostki gry (skoki poziomu)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_GAMEUNITS          :Jednostki gry (poziomy)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :Lokalizacja
 STR_CONFIG_SETTING_GRAPHICS                                     :Grafika
@@ -2928,7 +2928,7 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nie
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Tak, ten jeden raz
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Tak, nie pytaj ponownie
 
-STR_NETWORK_ASK_SURVEY_CAPTION                                  :Uczestniczyć w automatycznej ankiecie?
+STR_NETWORK_ASK_SURVEY_CAPTION                                  :Uczestnictwo w automatycznej ankiecie?
 STR_NETWORK_ASK_SURVEY_TEXT                                     :Czy chcesz wziąć udział w automatycznej ankiecie?{}OpenTTD prześle ankietę przy opuszczaniu gry.{}Możesz to zmienić w dowolnym momencie w „Opcjach gry”.
 STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Podejrzyj wynik ankiety
 STR_NETWORK_ASK_SURVEY_LINK                                     :O ankiecie i prywatności
@@ -3853,7 +3853,7 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Tworzeni
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Tworzenie rzek
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Tworzenie terenów skalistych i nierówności
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Tworzenie miast
-STR_GENERATION_LAND_INDUSTRY_GENERATION                         :{BLACK}Tworzenie fabryk na lądzie
+STR_GENERATION_LAND_INDUSTRY_GENERATION                         :{BLACK}Tworzenie przemysłu na lądzie
 STR_GENERATION_WATER_INDUSTRY_GENERATION                        :{BLACK}Tworzenie przemysłu na wodzie
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Rozmieszczanie obiektów
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Rozmieszczanie drzew
