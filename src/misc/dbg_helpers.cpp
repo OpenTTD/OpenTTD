@@ -23,13 +23,13 @@ static const std::string_view trackdir_names[] = {
 /** Return name of given Trackdir. */
 std::string ValueStr(Trackdir td)
 {
-	return fmt::format("{} ({})", to_underlying(td), ItemAtT(td, trackdir_names, "UNK", INVALID_TRACKDIR, "INV"));
+	return fmt::format("{} ({})", to_underlying(td), ItemAt(td, trackdir_names, "UNK", INVALID_TRACKDIR, "INV"));
 }
 
 /** Return composed name of given TrackdirBits. */
 std::string ValueStr(TrackdirBits td_bits)
 {
-	return fmt::format("{} ({})", to_underlying(td_bits), ComposeNameT(td_bits, trackdir_names, "UNK", INVALID_TRACKDIR_BIT, "INV"));
+	return fmt::format("{} ({})", to_underlying(td_bits), ComposeName(td_bits, trackdir_names, "UNK", INVALID_TRACKDIR_BIT, "INV"));
 }
 
 
@@ -41,7 +41,7 @@ static const std::string_view diagdir_names[] = {
 /** Return name of given DiagDirection. */
 std::string ValueStr(DiagDirection dd)
 {
-	return fmt::format("{} ({})", to_underlying(dd), ItemAtT(dd, diagdir_names, "UNK", INVALID_DIAGDIR, "INV"));
+	return fmt::format("{} ({})", to_underlying(dd), ItemAt(dd, diagdir_names, "UNK", INVALID_DIAGDIR, "INV"));
 }
 
 
@@ -53,7 +53,7 @@ static const std::string_view signal_type_names[] = {
 /** Return name of given SignalType. */
 std::string ValueStr(SignalType t)
 {
-	return fmt::format("{} ({})", to_underlying(t), ItemAtT(t, signal_type_names, "UNK"));
+	return fmt::format("{} ({})", to_underlying(t), ItemAt(t, signal_type_names, "UNK"));
 }
 
 
