@@ -2042,6 +2042,9 @@ DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
 
 	if (all_option) {
 		list.push_back(MakeDropDownListStringItem(STR_REPLACE_ALL_RAILTYPE, INVALID_RAILTYPE));
+	} else if(!for_replacement) {
+		list.push_back(MakeDropDownListStringItem(STR_OPEN_RAIL_TYPE_LIST, -1));
+		list.push_back(MakeDropDownListDividerItem());
 	}
 
 	Dimension d = { 0, 0 };
@@ -2073,6 +2076,8 @@ DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
 			list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, RailBuildCost(rt), d, rti->gui_sprites.build_x_rail, PAL_NONE, std::move(str), rt, !avail_railtypes.Test(rt)));
 		}
 	}
+
+	if(!for_replacement && !all_option && list.size() == 2) list.clear();
 
 	if (list.empty()) {
 		/* Empty dropdowns are not allowed */

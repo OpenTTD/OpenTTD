@@ -1782,6 +1782,9 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 
 	if (all_option) {
 		list.push_back(MakeDropDownListStringItem(STR_REPLACE_ALL_ROADTYPE, INVALID_ROADTYPE));
+	} else if(!for_replacement) {
+		list.push_back(MakeDropDownListStringItem(HasBit(rtts, RTT_TRAM) ? STR_OPEN_TRAM_TYPE_LIST : STR_OPEN_ROAD_TYPE_LIST, -1));
+		list.push_back(MakeDropDownListDividerItem());
 	}
 
 	Dimension d = { 0, 0 };
@@ -1813,6 +1816,8 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 			list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GSF_ROADTYPES, rti->introduction_date, RoadBuildCost(rt), d, rti->gui_sprites.build_x_road, PAL_NONE, std::move(str), rt, !avail_roadtypes.Test(rt)));
 		}
 	}
+
+	if(!for_replacement && !all_option && list.size() == 2) list.clear();
 
 	if (list.empty()) {
 		/* Empty dropdowns are not allowed */

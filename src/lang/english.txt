@@ -4198,6 +4198,9 @@ STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Rail typ
 STR_PURCHASE_INFO_MAINTENANCE_YEAR                              :{BLACK}Maintenance Cost: {GOLD}{CURRENCY_LONG}/year
 STR_PURCHASE_INFO_MAINTENANCE_PERIOD                            :{BLACK}Maintenance Cost: {GOLD}{CURRENCY_LONG}/period
 
+STR_OPEN_RAIL_TYPE_LIST                                         :Open track type selection menu
+STR_OPEN_ROAD_TYPE_LIST                                         :Open road type selection menu
+STR_OPEN_TRAM_TYPE_LIST                                         :Open tram track type selection menu
 STR_RAIL_TYPE_LIST_AVAILABLE_TYPES                              :Available Rail Types
 STR_ROAD_TYPE_LIST_AVAILABLE_TYPES                              :Available Road Types
 STR_TRAM_TYPE_LIST_AVAILABLE_TYPES                              :Available Tram track Types
