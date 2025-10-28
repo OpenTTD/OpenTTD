@@ -241,11 +241,11 @@ STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL}{NBSP}
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{DECIMAL}{NBSP}加侖
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{DECIMAL}{NBSP}升
-STR_UNITS_VOLUME_SHORT_SI                                       :{DECIMAL}{NBSP}米³
+STR_UNITS_VOLUME_SHORT_SI                                       :{DECIMAL}{NBSP}立方公尺
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{DECIMAL}{NBSP}加侖
 STR_UNITS_VOLUME_LONG_METRIC                                    :{DECIMAL}{NBSP}公升
-STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL}{NBSP}立方米
+STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL}{NBSP}立方公尺
 
 STR_UNITS_FORCE_IMPERIAL                                        :{DECIMAL}{NBSP}磅力
 STR_UNITS_FORCE_METRIC                                          :{DECIMAL}{NBSP}公斤力
@@ -2162,8 +2162,8 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :在界面上以
 ###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :英制（英呎）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :米制（米）
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :國際單位（米）
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_GAMEUNITS          :遊戲單位（層次）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :國際單位（公尺）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_GAMEUNITS          :遊戲單位（層）
 
 STR_CONFIG_SETTING_LOCALISATION                                 :本地化
 STR_CONFIG_SETTING_GRAPHICS                                     :圖形

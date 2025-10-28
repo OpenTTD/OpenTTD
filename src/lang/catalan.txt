@@ -255,6 +255,7 @@ STR_UNITS_FORCE_SI                                              :{G=Masculin}{DE
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}ft
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{G=Masculin}{DECIMAL}{NBSP}m
+STR_UNITS_HEIGHT_GAMEUNITS                                      :{DECIMAL}{NBSP}nivell{P "" s}
 
 # Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}di{P a es}
@@ -2163,6 +2164,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Quan es mostren
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (peu)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Mètric (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_GAMEUNITS          :Unitats de la partida (nivells)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :Localització
 STR_CONFIG_SETTING_GRAPHICS                                     :Gràfics
@@ -3472,6 +3474,8 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Generaci
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generació de rius
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generació d'una àrea escarpada i rocosa
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Generació de poblacions
+STR_GENERATION_LAND_INDUSTRY_GENERATION                         :{BLACK}Generació d'indústries terrestres
+STR_GENERATION_WATER_INDUSTRY_GENERATION                        :{BLACK}Generació d'indústries a l'aigua
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generació inamovible
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generació d'arbres
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Configurant la partida
@@ -5269,6 +5273,13 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Inici i 
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... els extrems del pont han d'estar tots dos a terra
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... el pont és massa llarg
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}El pont acabaria fora del mapa
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}El pont és {HEIGHT} massa baix per a l'estació.
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}El pont és {HEIGHT} massa baix per a la parada de carretera.
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}El pont és {HEIGHT} massa baix per al moll.
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}El pont és {HEIGHT} massa baix per a la boia.
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}El pont és {HEIGHT} massa baix per al punt de pas.
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}El pont és {HEIGHT} massa baix per al punt de pas de carretera.
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}El pont és {HEIGHT} massa baix per a la resclosa.
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Aquí no es pot construir el túnel...
