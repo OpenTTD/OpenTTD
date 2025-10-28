@@ -72,7 +72,7 @@ inline std::string ValueStr(EndSegmentReasons flags)
 		"PATH_TOO_LONG", "FIRST_TWO_WAY_RED", "LOOK_AHEAD_END", "TARGET_REACHED"
 	};
 
-	return fmt::format("0x{:04X} ({})", flags.base(), ComposeNameT(flags, end_segment_reason_names, "UNK"));
+	return fmt::format("0x{:04X} ({})", flags.base(), ComposeName(flags, end_segment_reason_names, "UNK"));
 }
 
 #endif /* YAPF_TYPE_HPP */
