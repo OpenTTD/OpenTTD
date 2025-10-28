@@ -552,6 +552,7 @@ add_files(
     tunnelbridge_cmd.cpp
     tunnelbridge_cmd.h
     tunnelbridge_map.h
+    type_selection_gui.cpp
     vehicle.cpp
     vehicle_base.h
     vehicle_cmd.cpp

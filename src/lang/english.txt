@@ -371,6 +371,9 @@ STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Average profit 
 STR_SORT_BY_AVERAGE_PROFIT_LAST_PERIOD                          :Average profit last period
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Average profit this year
 STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD                          :Average profit this period
+STR_SORT_BY_RAIL_TYPE_ID                                        :Rail type ID (classic sort)
+STR_SORT_BY_ROAD_TYPE_ID                                        :Road/Tram track type ID (classic sort)
+STR_SORT_BY_MAINTENANCE_COST                                    :Maintenance cost
 
 # Group by options for vehicle list
 STR_GROUP_BY_NONE                                               :None
@@ -4192,6 +4195,15 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Tra
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Range: {GOLD}{COMMA} tiles
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Aircraft type: {GOLD}{STRING}
 STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Rail types: {GOLD}{RAW_STRING}
+STR_PURCHASE_INFO_MAINTENANCE_YEAR                              :{BLACK}Maintenance Cost: {GOLD}{CURRENCY_LONG}/year
+STR_PURCHASE_INFO_MAINTENANCE_PERIOD                            :{BLACK}Maintenance Cost: {GOLD}{CURRENCY_LONG}/period
+
+STR_RAIL_TYPE_LIST_AVAILABLE_TYPES                              :Available Rail Types
+STR_ROAD_TYPE_LIST_AVAILABLE_TYPES                              :Available Road Types
+STR_TRAM_TYPE_LIST_AVAILABLE_TYPES                              :Available Tram track Types
+STR_RAIL_TYPE_LIST_TOOLTIP                                      :{BLACK}Rail type selection list. Click on rail type for information.
+STR_ROAD_TYPE_LIST_TOOLTIP                                      :{BLACK}Road type selection list. Click on road type for information.
+STR_TRAM_TYPE_LIST_TOOLTIP                                      :{BLACK}Tram track type selection list. Click on tram type for information.
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :All cargo types

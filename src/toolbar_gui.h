@@ -88,7 +88,7 @@ inline uint8_t GetLastBuiltType(GrfSpecFeature feature)
  * @param feature one of GSF_RAILTYPES, GSF_ROADTYPES, GSF_TRAMTYPES.
  * @param type New value for _last_built_railtype, _last_built_roadtype or _last_built_tramtype
  */
-inline void GetLastBuiltType(GrfSpecFeature feature, uint8_t type)
+inline void SetLastBuiltType(GrfSpecFeature feature, uint8_t type)
 {
 	switch (feature) {
 		case GSF_RAILTYPES: _last_built_railtype = (RailType)type; return;
@@ -115,5 +115,7 @@ inline Window *ShowBuildToolbar(GrfSpecFeature feature, uint8_t type)
 		default: NOT_REACHED();
 	}
 }
+
+void ShowTypeSelectionWindow(GrfSpecFeature feature);
 
 #endif /* TOOLBAR_GUI_H */
