@@ -10,6 +10,10 @@
 #ifndef TOOLBAR_GUI_H
 #define TOOLBAR_GUI_H
 
+#include "newgrf.h"
+#include "rail_gui.h"
+#include "road_gui.h"
+
 enum MainToolbarHotkeys : int32_t {
 	MTHK_PAUSE,
 	MTHK_FASTFORWARD,
@@ -59,5 +63,57 @@ void ToggleDirtyBlocks();
 void ToggleWidgetOutlines();
 
 extern uint _toolbar_width;
+
+extern RailType _last_built_railtype;
+extern RoadType _last_built_roadtype;
+extern RoadType _last_built_tramtype;
+
+/**
+ * Get the last built type for provided feature.
+ * @param feature one of GSF_RAILTYPES, GSF_ROADTYPES, GSF_TRAMTYPES.
+ * @return value of _last_built_railtype, _last_built_roadtype or _last_built_tramtype
+ */
+inline uint8_t GetLastBuiltType(GrfSpecFeature feature)
+{
+	switch (feature) {
+		case GSF_RAILTYPES: return _last_built_railtype;
+		case GSF_ROADTYPES: return _last_built_roadtype;
+		case GSF_TRAMTYPES: return _last_built_tramtype;
+		default: NOT_REACHED();
+	}
+}
+
+/**
+ * Set the last built type for provided feature.
+ * @param feature one of GSF_RAILTYPES, GSF_ROADTYPES, GSF_TRAMTYPES.
+ * @param type New value for _last_built_railtype, _last_built_roadtype or _last_built_tramtype
+ */
+inline void GetLastBuiltType(GrfSpecFeature feature, uint8_t type)
+{
+	switch (feature) {
+		case GSF_RAILTYPES: _last_built_railtype = (RailType)type; return;
+		case GSF_ROADTYPES: _last_built_roadtype = (RoadType)type; return;
+		case GSF_TRAMTYPES: _last_built_tramtype = (RoadType)type; return;
+		default: NOT_REACHED();
+	}
+}
+
+/**
+ * Shows the build toolbar for provided feature.
+ * @param feature one of GSF_RAILTYPES, GSF_ROADTYPES, GSF_TRAMTYPES.
+ * @param type Depending on the feature it is a railtype, a roadtype or a tramtype.
+ * @return newly opened toolbar, or nullptr if the toolbar could not be opened.
+ */
+inline Window *ShowBuildToolbar(GrfSpecFeature feature, uint8_t type)
+{
+	switch (feature) {
+		case GSF_ROADTYPES:
+		case GSF_TRAMTYPES:
+			return ShowBuildRoadToolbar((RoadType)type);
+
+		case GSF_RAILTYPES: return ShowBuildRailToolbar((RailType)type);
+		default: NOT_REACHED();
+	}
+}
 
 #endif /* TOOLBAR_GUI_H */
