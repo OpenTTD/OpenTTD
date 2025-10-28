@@ -76,7 +76,17 @@ GUIBadgeClasses::GUIBadgeClasses(GrfSpecFeature feature) : UsedBadgeClasses(feat
 		if (class_badge->name == STR_NULL) continue;
 
 		Dimension size = GetBadgeMaximalDimension(class_index, feature);
-		if (size.width == 0) continue;
+
+		switch (feature) {
+			default:
+				if (size.width == 0) continue;
+				break;
+
+			case GSF_RAILTYPES:
+			case GSF_ROADTYPES:
+			case GSF_TRAMTYPES:
+				break;
+		}
 
 		const auto [config, sort_order] = GetBadgeClassConfigItem(feature, class_badge->label);
 
