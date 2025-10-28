@@ -246,10 +246,8 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 
 			const Company *c = Company::GetIfValid(this->industry->founder);
 			if (c != nullptr) {
-				const Livery *l = &c->livery[LS_DEFAULT];
-
 				is_ai = c->is_ai;
-				colours = l->colour1 + l->colour2 * 16;
+				colours = c->GetCompanyRecolourOffset(LS_DEFAULT);
 			}
 
 			return this->industry->founder.base() | (is_ai ? 0x10000 : 0) | (colours << 24);
