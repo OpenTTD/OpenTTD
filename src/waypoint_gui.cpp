@@ -14,6 +14,7 @@
 #include "vehiclelist.h"
 #include "vehicle_gui.h"
 #include "viewport_func.h"
+#include "tilehighlight_func.h"
 #include "strings_func.h"
 #include "command_func.h"
 #include "company_func.h"
@@ -64,6 +65,7 @@ private:
 	}
 
 public:
+	WidgetID last_user_action = INVALID_WIDGET; ///< Last started user action.
 	/**
 	 * Construct the window.
 	 * @param desc The description of the window.
@@ -88,6 +90,9 @@ public:
 		if (this->vt != VEH_SHIP) {
 			this->GetWidget<NWidgetCore>(WID_W_CENTER_VIEW)->SetToolTip(STR_WAYPOINT_VIEW_CENTER_TOOLTIP);
 			this->GetWidget<NWidgetCore>(WID_W_RENAME)->SetToolTip(STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME);
+		}
+		if (this->vt == VEH_SHIP) {
+			this->DisableWidget(WID_W_MOVE);
 		}
 		this->FinishInitNested(window_number);
 
@@ -118,6 +123,7 @@ public:
 	{
 		extern const Waypoint *_viewport_highlight_waypoint;
 		this->SetWidgetDisabledState(WID_W_CATCHMENT, !this->wp->IsInUse());
+		this->SetWidgetDisabledState(WID_W_MOVE, !this->wp->IsInUse());
 		this->SetWidgetLoweredState(WID_W_CATCHMENT, _viewport_highlight_waypoint == this->wp);
 
 		this->DrawWidgets();
@@ -138,6 +144,14 @@ public:
 				ShowQueryString(GetString(STR_WAYPOINT_NAME, this->wp->index), STR_EDIT_WAYPOINT_NAME, MAX_LENGTH_STATION_NAME_CHARS, this, CS_ALPHANUMERAL, {QueryStringFlag::EnableDefault, QueryStringFlag::LengthIsInChars});
 				break;
 
+			case WID_W_MOVE: // move
+				this->last_user_action = widget;
+				if (this->IsWidgetLowered(WID_W_CATCHMENT) == this->IsWidgetLowered(WID_W_MOVE)) {
+					SetViewportCatchmentWaypoint(Waypoint::Get(this->window_number), !this->IsWidgetLowered(WID_W_CATCHMENT));
+				}
+				HandlePlacePushButton(this, WID_W_MOVE, SPR_CURSOR_SIGN, HT_RECT);
+				break;
+
 			case WID_W_SHOW_VEHICLES: // show list of vehicles having this waypoint in their orders
 				ShowVehicleListWindow(this->wp->owner, this->vt, this->wp->index);
 				break;
@@ -146,6 +160,22 @@ public:
 				SetViewportCatchmentWaypoint(Waypoint::Get(this->window_number), !this->IsWidgetLowered(WID_W_CATCHMENT));
 				break;
 		}
+	}
+
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
+	{
+		switch (this->last_user_action) {
+			case WID_W_MOVE: // Move name button
+				//@Todo move function
+				break;
+
+			default: NOT_REACHED();
+		}
+	}
+
+	void OnPlaceObjectAbort() override
+	{
+		this->RaiseButtons();
 	}
 
 	/**
@@ -189,6 +219,7 @@ static constexpr NWidgetPart _nested_waypoint_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_W_RENAME), SetAspect(WidgetDimensions::ASPECT_RENAME), SetSpriteTip(SPR_RENAME, STR_BUOY_VIEW_RENAME_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_GREY, WID_W_MOVE), SetAspect(WidgetDimensions::ASPECT_RENAME), SetSpriteTip(SPR_ARROW_DOWN, STR_WAYPOINT_VIEW_MOVE_WAYPOINT_NAME),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_W_CAPTION),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_W_CENTER_VIEW), SetAspect(WidgetDimensions::ASPECT_LOCATION), SetSpriteTip(SPR_GOTO_LOCATION, STR_BUOY_VIEW_CENTER_TOOLTIP),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),

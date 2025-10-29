@@ -3917,6 +3917,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Prevent 
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centre main view on waypoint location. Ctrl+Click to open a new viewport on waypoint location
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Change waypoint name
+STR_WAYPOINT_VIEW_MOVE_WAYPOINT_NAME                            :{BLACK}Move waypoint name
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centre main view on buoy location. Ctrl+Click to open a new viewport on buoy location
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Change buoy name
 

@@ -47,6 +47,8 @@
 #include "tunnelbridge_map.h"
 
 #include "widgets/rail_widget.h"
+#include "widgets/station_widget.h"
+#include "widgets/waypoint_widget.h"
 
 #include "table/strings.h"
 
@@ -792,8 +794,15 @@ struct BuildRailToolbarWindow : Window {
 
 	void OnPlaceObjectAbort() override
 	{
+		Window *w;
+		w = _focused_window;
+
 		if (this->IsWidgetLowered(WID_RAT_BUILD_STATION)) SetViewportCatchmentStation(nullptr, true);
-		if (this->IsWidgetLowered(WID_RAT_BUILD_WAYPOINT)) SetViewportCatchmentWaypoint(nullptr, true);
+		if (this->IsWidgetLowered(WID_RAT_BUILD_WAYPOINT)) {
+			if (w == nullptr || w->window_class != WC_WAYPOINT_VIEW) {
+				SetViewportCatchmentWaypoint(nullptr, true);
+			} else if (w->IsWidgetLowered(WID_W_MOVE)) SetViewportCatchmentWaypoint(nullptr, true);
+		}
 
 		this->RaiseButtons();
 		this->DisableWidget(WID_RAT_REMOVE);
