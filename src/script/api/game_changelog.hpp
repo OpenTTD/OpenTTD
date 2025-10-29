@@ -33,6 +33,8 @@
  * \li GSEngine::GetAllRailTypes
  * \li GSList::GetSorterType
  * \li GSList::GetSorterDirection
+ * \li GSList::SetSorterType
+ * \li GSList::SetSorterDirection
  *
  * Other changes:
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType

@@ -32,6 +32,8 @@
  * \li AIEngine::GetAllRailTypes
  * \li AIList::GetSorterType
  * \li AIList::GetSorterDirection
+ * \li AIList::SetSorterType
+ * \li AIList::SetSorterDirection
  *
  * Other changes:
  * \li AIBridge::GetBridgeID renamed to AIBridge::GetBridgeType
