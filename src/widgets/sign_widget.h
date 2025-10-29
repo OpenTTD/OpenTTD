@@ -22,14 +22,16 @@ enum SignListWidgets : WidgetID {
 
 /** Widgets of the #SignWindow class. */
 enum QueryEditSignWidgets : WidgetID {
-	WID_QES_CAPTION,  ///< Caption of the window.
-	WID_QES_LOCATION, ///< Scroll to sign location.
-	WID_QES_TEXT,     ///< Text of the query.
-	WID_QES_OK,       ///< OK button.
-	WID_QES_CANCEL,   ///< Cancel button.
-	WID_QES_DELETE,   ///< Delete button.
-	WID_QES_PREVIOUS, ///< Previous button.
-	WID_QES_NEXT,     ///< Next button.
+	WID_QES_CAPTION,     ///< Caption of the window.
+	WID_QES_LOCATION,    ///< Scroll to sign location.
+	WID_QES_TEXT,        ///< Text of the query.
+	WID_QES_OK,          ///< OK button.
+	WID_QES_CANCEL,      ///< Cancel button.
+	WID_QES_DELETE,      ///< Delete button.
+	WID_QES_COLOUR_PANE, ///< Pane to show/hide the color dropdown.
+	WID_QES_COLOUR,      ///< Colour selection dropdown.
+	WID_QES_PREVIOUS,    ///< Previous button.
+	WID_QES_NEXT,        ///< Next button.
 };
 
 #endif /* SIGN_WIDGET_H */
