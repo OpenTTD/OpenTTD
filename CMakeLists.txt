@@ -162,6 +162,7 @@ if(APPLE)
     find_library(AUDIOUNIT_LIBRARY AudioUnit)
     find_library(COCOA_LIBRARY Cocoa)
     find_library(QUARTZCORE_LIBRARY QuartzCore)
+    find_library(GAMECONTROLLER_LIBRARY GameController)
 endif()
 
 if(NOT EMSCRIPTEN AND NOT OPTION_DEDICATED)
@@ -204,6 +205,9 @@ if(APPLE)
     endif()
     if(NOT QUARTZCORE_LIBRARY)
         message(FATAL_ERROR "QuartzCore is required for this platform")
+    endif()
+    if(NOT GAMECONTROLLER_LIBRARY)
+        message(FATAL_ERROR "GameController is required for this platform")
     endif()
 endif()
 
@@ -348,6 +352,7 @@ if(APPLE)
         ${AUDIOUNIT_LIBRARY}
         ${COCOA_LIBRARY}
         ${QUARTZCORE_LIBRARY}
+        ${GAMECONTROLLER_LIBRARY}
     )
 
     add_definitions(

@@ -22,6 +22,7 @@
 #define Point OTTDPoint
 #import <Cocoa/Cocoa.h>
 #import <QuartzCore/QuartzCore.h>
+#import <GameController/GameController.h>
 #undef Rect
 #undef Point
 
@@ -109,6 +110,8 @@ void VideoDriver_Cocoa::Stop()
 {
 	if (!_cocoa_video_started) return;
 
+	this->CloseGamepad();
+
 	CocoaExitApplication();
 
 	/* Release window mode resources */
@@ -134,6 +137,30 @@ std::optional<std::string_view> VideoDriver_Cocoa::Initialize()
 
 	this->UpdateAutoResolution();
 	this->orig_res = _cur_resolution;
+
+	/* Set up gamepad connection/disconnection notifications */
+	[[NSNotificationCenter defaultCenter] addObserverForName:GCControllerDidConnectNotification
+		object:nil
+		queue:nil
+		usingBlock:^(NSNotification * _Nonnull) {
+			Debug(driver, 2, "Cocoa: Gamepad connected notification received");
+			if (this->gamepad_controller == nullptr) {
+				this->OpenGamepad();
+			}
+		}];
+
+	[[NSNotificationCenter defaultCenter] addObserverForName:GCControllerDidDisconnectNotification
+		object:nil
+		queue:nil
+		usingBlock:^(NSNotification * _Nonnull note) {
+			GCController *controller = note.object;
+			if (controller == this->gamepad_controller) {
+				Debug(driver, 2, "Cocoa: Active gamepad disconnected notification received");
+				this->CloseGamepad();
+				/* Try to open another gamepad if one is available */
+				this->OpenGamepad();
+			}
+		}];
 
 	return std::nullopt;
 }
@@ -475,6 +502,88 @@ void VideoDriver_Cocoa::InputLoop()
 	this->fast_forward_key_pressed = _tab_is_down;
 
 	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
+
+	this->ProcessGamepadInput();
+}
+
+bool VideoDriver_Cocoa::OpenGamepad()
+{
+	/* Don't open gamepad if already open or if gamepad scrolling is disabled */
+	if (this->gamepad_controller != nullptr) {
+		Debug(driver, 2, "Cocoa: Gamepad already open, skipping");
+		return true;
+	}
+
+	if (_settings_client.gui.gamepad_stick_selection == GSS_DISABLED) {
+		Debug(driver, 2, "Cocoa: Gamepad scrolling disabled, not opening gamepad");
+		return false;
+	}
+
+	/* Check if any gamepads are available */
+	NSArray<GCController *> *controllers = [GCController controllers];
+	if (controllers.count > 0) {
+		this->gamepad_controller = [controllers firstObject];
+		Debug(driver, 2, "Cocoa: Opened gamepad: {}", [this->gamepad_controller.vendorName UTF8String]);
+		return true;
+	}
+
+	Debug(driver, 2, "Cocoa: No gamepads available");
+	return false;
+}
+
+void VideoDriver_Cocoa::CloseGamepad()
+{
+	if (this->gamepad_controller != nullptr) {
+		this->gamepad_controller = nullptr;
+		Debug(driver, 2, "Cocoa: Closed gamepad");
+	}
+}
+
+void VideoDriver_Cocoa::ProcessGamepadInput()
+{
+	/* Skip if gamepad is not available */
+	if (this->gamepad_controller == nullptr) {
+		static bool logged_no_gamepad = false;
+		if (!logged_no_gamepad) {
+			Debug(driver, 2, "Cocoa: No gamepad available for input processing");
+			logged_no_gamepad = true;
+		}
+		return;
+	}
+
+	/* Check if controller is still connected */
+	if (!this->gamepad_controller.isAttachedToDevice) {
+		Debug(driver, 2, "Cocoa: Gamepad disconnected, closing and reopening");
+		this->CloseGamepad();
+		this->OpenGamepad();
+		return;
+	}
+
+	/* Get the extended gamepad profile (standard gamepad with analog sticks) */
+	GCExtendedGamepad *gamepad = this->gamepad_controller.extendedGamepad;
+	if (gamepad == nil) {
+		static bool logged_no_extended = false;
+		if (!logged_no_extended) {
+			Debug(driver, 2, "Cocoa: Gamepad does not support extended profile");
+			logged_no_extended = true;
+		}
+		return;
+	}
+
+	/* Get analog stick values based on stick selection */
+	float stick_x = 0.0f, stick_y = 0.0f;
+	if (_settings_client.gui.gamepad_stick_selection == GSS_LEFT_STICK) {
+		stick_x = gamepad.leftThumbstick.xAxis.value;
+		stick_y = gamepad.leftThumbstick.yAxis.value;
+	} else if (_settings_client.gui.gamepad_stick_selection == GSS_RIGHT_STICK) {
+		stick_x = gamepad.rightThumbstick.xAxis.value;
+		stick_y = gamepad.rightThumbstick.yAxis.value;
+	}
+
+	/* Use the common gamepad handling function
+	 * GameController framework returns values in range [-1.0, 1.0]
+	 * https://developer.apple.com/documentation/gamecontroller/gccontrolleraxisinput/value */
+	HandleGamepadScrolling(stick_x, stick_y, 1.0f);
 }
 
 /** Main game loop. */
@@ -608,6 +717,9 @@ std::optional<std::string_view> VideoDriver_CocoaQuartz::Start(const StringList 
 	this->UpdateVideoModes();
 
 	this->is_game_threaded = !GetDriverParamBool(param, "no_threads") && !GetDriverParamBool(param, "no_thread");
+
+	/* Try to open gamepad */
+	this->OpenGamepad();
 
 	return std::nullopt;
 
