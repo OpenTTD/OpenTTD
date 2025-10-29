@@ -71,6 +71,7 @@
 #include "station_layout_type.h"
 
 #include "widgets/station_widget.h"
+#include "widgets/misc_widget.h"
 
 #include "table/strings.h"
 #include "table/station_land.h"

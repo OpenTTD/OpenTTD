@@ -33,6 +33,8 @@
 #include "landscape_cmd.h"
 #include "station_layout_type.h"
 
+#include "widgets/misc_widget.h"
+
 #include "table/strings.h"
 
 #include "safeguards.h"

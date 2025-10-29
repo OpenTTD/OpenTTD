@@ -20,10 +20,12 @@
 #include "company_base.h"
 #include "window_func.h"
 #include "waypoint_base.h"
+#include "station_base.h"
 #include "waypoint_cmd.h"
 #include "zoom_func.h"
 
 #include "widgets/waypoint_widget.h"
+#include "widgets/misc_widget.h"
 
 #include "table/strings.h"
 
@@ -87,7 +89,7 @@ public:
 		}
 		if (this->vt != VEH_SHIP) {
 			this->GetWidget<NWidgetCore>(WID_W_CENTER_VIEW)->SetToolTip(STR_WAYPOINT_VIEW_CENTER_TOOLTIP);
-			this->GetWidget<NWidgetCore>(WID_W_RENAME)->SetToolTip(STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME);
+			this->GetWidget<NWidgetCore>(WID_W_RENAME)->SetToolTip(STR_WAYPOINT_VIEW_EDIT_TOOLTIP);
 		}
 		this->FinishInitNested(window_number);
 
@@ -125,6 +127,8 @@ public:
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
+		Window *w = FindWindowByClass(WC_QUERY_STRING);
+
 		switch (widget) {
 			case WID_W_CENTER_VIEW: // scroll to location
 				if (_ctrl_pressed) {
@@ -135,7 +139,8 @@ public:
 				break;
 
 			case WID_W_RENAME: // rename
-				ShowQueryString(GetString(STR_WAYPOINT_NAME, this->wp->index), STR_EDIT_WAYPOINT_NAME, MAX_LENGTH_STATION_NAME_CHARS, this, CS_ALPHANUMERAL, {QueryStringFlag::EnableDefault, QueryStringFlag::LengthIsInChars});
+				ShowQueryString(GetString(STR_WAYPOINT_NAME, this->wp->index), STR_WAYPOINT_VIEW_EDIT_WAYPOINT_SIGN, MAX_LENGTH_STATION_NAME_CHARS, this, CS_ALPHANUMERAL,
+		{QueryStringFlag::EnableDefault, QueryStringFlag::LengthIsInChars, QueryStringFlag::EnableMove});
 				break;
 
 			case WID_W_SHOW_VEHICLES: // show list of vehicles having this waypoint in their orders
@@ -144,6 +149,11 @@ public:
 
 			case WID_W_CATCHMENT:
 				SetViewportCatchmentWaypoint(Waypoint::Get(this->window_number), !this->IsWidgetLowered(WID_W_CATCHMENT));
+
+				if (w != nullptr && this->IsWidgetLowered(WID_W_CATCHMENT)) {
+					if (w->parent->window_class == WC_STATION_VIEW && w->IsWidgetLowered(WID_QS_MOVE)) SetViewportStationRect(Station::Get(w->parent->window_number), true);
+					if (w->parent->window_class == WC_WAYPOINT_VIEW && w->IsWidgetLowered(WID_QS_MOVE)) SetViewportWaypointRect(Waypoint::Get(w->parent->window_number), true);
+				}
 				break;
 		}
 	}

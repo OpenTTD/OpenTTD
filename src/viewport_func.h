@@ -104,7 +104,9 @@ struct Waypoint;
 struct Town;
 
 void SetViewportCatchmentStation(const Station *st, bool sel);
+void SetViewportStationRect(const Station *st, bool sel);
 void SetViewportCatchmentWaypoint(const Waypoint *wp, bool sel);
+void SetViewportWaypointRect(const Waypoint *wp, bool sel);
 void SetViewportCatchmentTown(const Town *t, bool sel);
 void MarkCatchmentTilesDirty();
 
