@@ -847,6 +847,24 @@ bool ScriptList::GetSorterDirection()
 	return this->sort_ascending;
 }
 
+bool ScriptList::SetSorterType(SorterType type)
+{
+	if (type != SORT_BY_ITEM && type != SORT_BY_VALUE) return false;
+
+	this->Sort(type, this->sort_ascending);
+
+	return true;
+}
+
+bool ScriptList::SetSorterDirection(bool direction)
+{
+	if (direction != SORT_ASCENDING && direction != SORT_DESCENDING) return false;
+
+	this->Sort(this->sorter_type, direction);
+
+	return true;
+}
+
 SQInteger ScriptList::_get(HSQUIRRELVM vm)
 {
 	if (sq_gettype(vm, 2) != OT_INTEGER) return SQ_ERROR;

@@ -183,6 +183,16 @@ function Regression::TestInit()
 		print("   " + idx);
 	}
 
+	print("  SetSorterType():      " + list.SetSorterType(AIList.SORT_BY_ITEM));
+	print("  SetSorterType():      " + list.SetSorterType(AIList.SORT_BY_VALUE));
+	print("  SetSorterType():      " + list.SetSorterType(0));
+	print("  SetSorterType():      " + list.SetSorterType(-1));
+	print("  SetSorterType():      " + list.SetSorterType(2));
+	print("  SetSorterDirection(): " + list.SetSorterDirection(AIList.SORT_DESCENDING));
+	print("  SetSorterDirection(): " + list.SetSorterDirection(AIList.SORT_ASCENDING));
+	print("  SetSorterDirection(): " + list.SetSorterDirection(false));
+	print("  SetSorterDirection(): " + list.SetSorterDirection(true));
+
 	print(" Ops:      " + this.GetOpsTillSuspend());
 }
 

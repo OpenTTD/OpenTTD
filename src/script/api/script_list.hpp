@@ -370,6 +370,22 @@ public:
 	 */
 	bool GetSorterDirection();
 
+	/**
+	 * Set this list sorter type.
+	 * @param type sorter type to set for this list.
+	 * @return true if this list sorter type is set.
+	 * @see ScriptList::SorterType
+	 */
+	bool SetSorterType(SorterType type);
+
+	/**
+	 * Set this list sorter direction.
+	 * @param direction sorter direction to set for this list.
+	 * @return true if this list sorter direction is set.
+	 * @see SORT_ASCENDING SORT_DESCENDING
+	 */
+	bool SetSorterDirection(bool direction);
+
 #ifndef DOXYGEN_API
 	/**
 	 * Used for 'foreach()' and [] get from Squirrel.

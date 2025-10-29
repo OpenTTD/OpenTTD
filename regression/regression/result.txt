@@ -93,7 +93,16 @@
    20
    30
    40
- Ops:      8601
+  SetSorterType():      true
+  SetSorterType():      true
+  SetSorterType():      true
+  SetSorterType():      false
+  SetSorterType():      false
+  SetSorterDirection(): true
+  SetSorterDirection(): true
+  SetSorterDirection(): true
+  SetSorterDirection(): true
+ Ops:      8533
 
 --Std--
  abs(-21): 21
@@ -10124,7 +10133,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
 constructor failed with: excessive CPU usage in list filter function
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [Start()] regression/main.nut line [2196]
+*FUNCTION [Start()] regression/main.nut line [2206]
 
 [Infinite] CLOSURE
 [list] INSTANCE
