@@ -276,13 +276,14 @@ struct BuildDocksToolbarWindow : Window {
 
 	void OnPlaceObjectAbort() override
 	{
-		Window *w;
-		w = _focused_window;
+		const Window *w = _focused_window;
 
 		if (this->IsWidgetLowered(WID_DT_STATION)) {
 			if (w == nullptr || w->window_class != WC_STATION_VIEW) {
 				SetViewportCatchmentStation(nullptr, true);
-			} else if (w->IsWidgetLowered(WID_SV_MOVE)) SetViewportCatchmentStation(nullptr, true);
+			} else if (w->IsWidgetLowered(WID_SV_MOVE)) {
+				SetViewportCatchmentStation(nullptr, true);
+			}
 		}
 
 		this->RaiseButtons();
