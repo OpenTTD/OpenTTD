@@ -815,6 +815,7 @@ static constexpr NWidgetPart _nested_station_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_SV_RENAME), SetAspect(WidgetDimensions::ASPECT_RENAME), SetSpriteTip(SPR_RENAME, STR_STATION_VIEW_RENAME_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_GREY, WID_SV_MOVE), SetAspect(WidgetDimensions::ASPECT_RENAME), SetSpriteTip(SPR_ARROW_DOWN, STR_STATION_VIEW_MOVE_NAME_TOOLTIP),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SV_CAPTION),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_SV_LOCATION), SetAspect(WidgetDimensions::ASPECT_LOCATION), SetSpriteTip(SPR_GOTO_LOCATION, STR_STATION_VIEW_CENTER_TOOLTIP),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
@@ -1317,6 +1318,8 @@ struct StationViewWindow : public Window {
 	CargoDataEntry cached_destinations{}; ///< Cache for the flows passing through this station.
 	CargoDataVector displayed_rows{}; ///< Parent entry of currently displayed rows (including collapsed ones).
 
+	WidgetID last_user_action = INVALID_WIDGET; ///< Last started user action.
+
 	StationViewWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->CreateNestedTree();
@@ -1430,6 +1433,7 @@ struct StationViewWindow : public Window {
 
 		/* disable some buttons */
 		this->SetWidgetDisabledState(WID_SV_RENAME,   st->owner != _local_company);
+		this->SetWidgetDisabledState(WID_SV_MOVE,     st->owner != _local_company || !st->IsInUse());
 		this->SetWidgetDisabledState(WID_SV_TRAINS,   !st->facilities.Test(StationFacility::Train));
 		this->SetWidgetDisabledState(WID_SV_ROADVEHS, !st->facilities.Test(StationFacility::TruckStop) && !st->facilities.Test(StationFacility::BusStop));
 		this->SetWidgetDisabledState(WID_SV_SHIPS,    !st->facilities.Test(StationFacility::Dock));
@@ -1994,6 +1998,14 @@ struct StationViewWindow : public Window {
 						this, CS_ALPHANUMERAL, {QueryStringFlag::EnableDefault, QueryStringFlag::LengthIsInChars});
 				break;
 
+			case WID_SV_MOVE: // move
+				this->last_user_action = widget;
+				if (this->IsWidgetLowered(WID_SV_CATCHMENT) == this->IsWidgetLowered(WID_SV_MOVE)) {
+					SetViewportCatchmentStation(Station::Get(this->window_number), !this->IsWidgetLowered(WID_SV_CATCHMENT));
+				}
+				HandlePlacePushButton(this, WID_SV_MOVE, SPR_CURSOR_SIGN, HT_RECT);
+				break;
+
 			case WID_SV_CLOSE_AIRPORT:
 				Command<CMD_OPEN_CLOSE_AIRPORT>::Post(this->window_number);
 				break;
@@ -2138,6 +2150,22 @@ struct StationViewWindow : public Window {
 	void OnResize() override
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_SV_WAITING, WidgetDimensions::scaled.framerect.Vertical());
+	}
+
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
+	{
+		switch (this->last_user_action) {
+			case WID_SV_MOVE: // Move name button
+				//@Todo move function
+				break;
+
+			default: NOT_REACHED();
+		}
+	}
+
+	void OnPlaceObjectAbort() override
+	{
+		this->RaiseButtons();
 	}
 
 	/**

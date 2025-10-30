@@ -797,7 +797,11 @@ struct BuildRailToolbarWindow : Window {
 		Window *w;
 		w = _focused_window;
 
-		if (this->IsWidgetLowered(WID_RAT_BUILD_STATION)) SetViewportCatchmentStation(nullptr, true);
+		if (this->IsWidgetLowered(WID_RAT_BUILD_STATION)) {
+			if (w == nullptr || w->window_class != WC_STATION_VIEW) {
+				SetViewportCatchmentStation(nullptr, true);
+			} else if (w->IsWidgetLowered(WID_SV_MOVE)) SetViewportCatchmentStation(nullptr, true);
+		}
 		if (this->IsWidgetLowered(WID_RAT_BUILD_WAYPOINT)) {
 			if (w == nullptr || w->window_class != WC_WAYPOINT_VIEW) {
 				SetViewportCatchmentWaypoint(nullptr, true);

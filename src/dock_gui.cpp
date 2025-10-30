@@ -34,6 +34,7 @@
 #include "timer/timer_game_calendar.h"
 
 #include "widgets/dock_widget.h"
+#include "widgets/station_widget.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -275,7 +276,14 @@ struct BuildDocksToolbarWindow : Window {
 
 	void OnPlaceObjectAbort() override
 	{
-		if (_game_mode != GM_EDITOR && this->IsWidgetLowered(WID_DT_STATION)) SetViewportCatchmentStation(nullptr, true);
+		Window *w;
+		w = _focused_window;
+
+		if (this->IsWidgetLowered(WID_DT_STATION)) {
+			if (w == nullptr || w->window_class != WC_STATION_VIEW) {
+				SetViewportCatchmentStation(nullptr, true);
+			} else if (w->IsWidgetLowered(WID_SV_MOVE)) SetViewportCatchmentStation(nullptr, true);
+		}
 
 		this->RaiseButtons();
 

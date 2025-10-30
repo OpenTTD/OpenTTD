@@ -37,6 +37,7 @@
 #include "timer/timer_game_calendar.h"
 
 #include "widgets/airport_widget.h"
+#include "widgets/station_widget.h"
 
 #include "table/strings.h"
 
@@ -170,7 +171,14 @@ struct BuildAirToolbarWindow : Window {
 
 	void OnPlaceObjectAbort() override
 	{
-		if (this->IsWidgetLowered(WID_AT_AIRPORT)) SetViewportCatchmentStation(nullptr, true);
+		Window *w;
+		w = _focused_window;
+
+		if (this->IsWidgetLowered(WID_AT_AIRPORT)) {
+			if (w == nullptr || w->window_class != WC_STATION_VIEW) {
+				SetViewportCatchmentStation(nullptr, true);
+			} else if (w->IsWidgetLowered(WID_SV_MOVE)) SetViewportCatchmentStation(nullptr, true);
+		}
 
 		this->RaiseButtons();
 
