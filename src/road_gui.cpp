@@ -670,13 +670,7 @@ struct BuildRoadToolbarWindow : Window {
 	{
 		const Window *w = _focused_window;
 
-		if (_game_mode != GM_EDITOR && (this->IsWidgetLowered(WID_ROT_BUS_STATION) || this->IsWidgetLowered(WID_ROT_TRUCK_STATION))) {
-			if (w == nullptr || w->window_class != WC_STATION_VIEW) {
-				SetViewportCatchmentStation(nullptr, true);
-			} else if (w->IsWidgetLowered(WID_SV_MOVE)) {
-				SetViewportCatchmentStation(nullptr, true);
-			}
-		}
+		if (_game_mode != GM_EDITOR && (this->IsWidgetLowered(WID_ROT_BUS_STATION) || this->IsWidgetLowered(WID_ROT_TRUCK_STATION))) SetViewportCatchmentStation(nullptr, true);
 		if (_game_mode != GM_EDITOR && this->IsWidgetLowered(WID_ROT_BUILD_WAYPOINT)) {
 			if (w == nullptr || w->window_class != WC_WAYPOINT_VIEW) {
 				SetViewportCatchmentWaypoint(nullptr, true);

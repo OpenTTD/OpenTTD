@@ -171,15 +171,7 @@ struct BuildAirToolbarWindow : Window {
 
 	void OnPlaceObjectAbort() override
 	{
-		const Window *w = _focused_window;
-
-		if (this->IsWidgetLowered(WID_AT_AIRPORT)) {
-			if (w == nullptr || w->window_class != WC_STATION_VIEW) {
-				SetViewportCatchmentStation(nullptr, true);
-			} else if (w->IsWidgetLowered(WID_SV_MOVE)) {
-				SetViewportCatchmentStation(nullptr, true);
-			}
-		}
+		if (this->IsWidgetLowered(WID_AT_AIRPORT)) SetViewportCatchmentStation(nullptr, true);
 
 		this->RaiseButtons();
 

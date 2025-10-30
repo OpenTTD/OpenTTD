@@ -1351,6 +1351,7 @@ struct StationViewWindow : public Window {
 		CloseWindowById(WC_AIRCRAFT_LIST, VehicleListIdentifier(VL_STATION_LIST, VEH_AIRCRAFT, this->owner, this->window_number).ToWindowNumber(), false);
 
 		SetViewportCatchmentStation(Station::Get(this->window_number), false);
+		SetViewportStationRect(Station::Get(this->window_number), false);
 		this->Window::Close();
 	}
 
@@ -1968,6 +1969,7 @@ struct StationViewWindow : public Window {
 
 			case WID_SV_CATCHMENT:
 				SetViewportCatchmentStation(Station::Get(this->window_number), !this->IsWidgetLowered(WID_SV_CATCHMENT));
+				SetWidgetLoweredState(WID_SV_MOVE, false);
 				break;
 
 			case WID_SV_LOCATION:
@@ -2000,10 +2002,9 @@ struct StationViewWindow : public Window {
 
 			case WID_SV_MOVE: // move
 				this->last_user_action = widget;
-				if (this->IsWidgetLowered(WID_SV_CATCHMENT) == this->IsWidgetLowered(WID_SV_MOVE)) {
-					SetViewportCatchmentStation(Station::Get(this->window_number), !this->IsWidgetLowered(WID_SV_CATCHMENT));
-				}
+				SetViewportStationRect(Station::Get(this->window_number), !this->IsWidgetLowered(WID_SV_MOVE));
 				HandlePlacePushButton(this, WID_SV_MOVE, SPR_CURSOR_SIGN, HT_RECT);
+				SetWidgetLoweredState(WID_SV_CATCHMENT, false);
 				break;
 
 			case WID_SV_CLOSE_AIRPORT:
@@ -2165,6 +2166,8 @@ struct StationViewWindow : public Window {
 
 	void OnPlaceObjectAbort() override
 	{
+		SetViewportStationRect(nullptr, true);
+
 		this->RaiseButtons();
 	}
 
