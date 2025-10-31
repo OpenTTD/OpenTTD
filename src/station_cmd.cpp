@@ -4494,10 +4494,8 @@ std::tuple<CommandCost, StationID> CmdMoveStationName(DoCommandFlags flags, Stat
 	}
 
 	const StationRect *r = &st->rect;
-	/* Check if tile is inside StationRect */
-	if (TileX(TileXY(r->left, r->top)) > TileX(tile) || TileX(tile) > TileX(TileXY(r->right, r->bottom)) ||
-		TileY(TileXY(r->left, r->top)) > TileY(tile) || TileY(tile) > TileY(TileXY(r->right, r->bottom))) {
-			return { CommandCost(STR_ERROR_SITE_UNSUITABLE), StationID::Invalid() };
+	if (!r->PtInExtendedRect(TileX(tile), TileY(tile))) {
+		return { CommandCost(STR_ERROR_SITE_UNSUITABLE), StationID::Invalid() };
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
