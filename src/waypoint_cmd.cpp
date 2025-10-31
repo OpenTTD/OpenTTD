@@ -16,6 +16,7 @@
 #include "waypoint_base.h"
 #include "pathfinder/yapf/yapf_cache.h"
 #include "pathfinder/water_regions.h"
+#include "tilehighlight_func.h"
 #include "strings_func.h"
 #include "viewport_func.h"
 #include "viewport_kdtree.h"
@@ -607,4 +608,45 @@ CommandCost CmdRenameWaypoint(DoCommandFlags flags, StationID waypoint_id, const
 		wp->UpdateVirtCoord();
 	}
 	return CommandCost();
+}
+
+/**
+ * Move a waypoint name.
+ * @param flags type of operation
+ * @param waypoint_id id of waypoint
+ * @param tile to move the waypoint name to
+ * @return the cost of this operation or an error
+ */
+std::tuple<CommandCost, StationID> CmdMoveWaypointName(DoCommandFlags flags, StationID waypoint_id, TileIndex tile)
+{
+	Waypoint *wp = Waypoint::GetIfValid(waypoint_id);
+	if (wp == nullptr) return { CMD_ERROR, StationID::Invalid() };
+
+	if (wp->owner != OWNER_NONE) {
+		CommandCost ret = CheckOwnership(wp->owner);
+		if (ret.Failed()) return { ret, StationID::Invalid() };
+	}
+
+	if (!IsTileType(tile, MP_STATION)) return { CommandCost(STR_ERROR_SITE_UNSUITABLE), StationID::Invalid() };
+	if (GetStationIndex(tile) != waypoint_id) return {CommandCost(STR_ERROR_SITE_UNSUITABLE), StationID::Invalid() };
+
+	if (flags.Test(DoCommandFlag::Execute)) {
+		wp->xy = tile;
+
+		wp->UpdateVirtCoord();
+	}
+	return { CommandCost(), waypoint_id };
+}
+
+/**
+ * Callback function that is called after a name is moved
+ * @param result of the operation
+ */
+void CcMoveWaypointName(Commands, const CommandCost &result, StationID waypoint_id)
+{
+	if (result.Failed()) return;
+
+	ResetObjectToPlace();
+	Waypoint *wp = Waypoint::Get(waypoint_id);
+	SetViewportCatchmentWaypoint(wp, false);
 }

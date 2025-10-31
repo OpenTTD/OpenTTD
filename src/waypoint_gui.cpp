@@ -166,7 +166,7 @@ public:
 	{
 		switch (this->last_user_action) {
 			case WID_W_MOVE: // Move name button
-				//@Todo move function
+				Command<CMD_MOVE_WAYPOINT_NAME>::Post(STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME, CcMoveWaypointName, this->window_number, tile);
 				break;
 
 			default: NOT_REACHED();

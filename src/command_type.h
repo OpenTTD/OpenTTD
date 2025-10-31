@@ -214,6 +214,7 @@ enum Commands : uint8_t {
 
 	CMD_BUILD_RAIL_WAYPOINT,          ///< build a waypoint
 	CMD_RENAME_WAYPOINT,              ///< rename a waypoint
+	CMD_MOVE_WAYPOINT_NAME,           ///< move a waypoint name
 	CMD_REMOVE_FROM_RAIL_WAYPOINT,    ///< remove a (rectangle of) tiles from a rail waypoint
 
 	CMD_BUILD_ROAD_WAYPOINT,          ///< build a road waypoint
