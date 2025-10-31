@@ -388,6 +388,16 @@ static bool RenameSign(SignID index, std::string_view text)
 	return remove;
 }
 
+/**
+ * Actually move the sign.
+ * @param index the sign to move.
+ * @param tile on which to move the sign to.
+ */
+void MoveSign(SignID index, TileIndex tile)
+{
+	Command<CMD_MOVE_SIGN>::Post(STR_ERROR_CAN_T_PLACE_SIGN_HERE, index, tile);
+}
+
 struct SignWindow : Window, SignList {
 	QueryString name_editbox;
 	SignID cur_sign{};
@@ -514,7 +524,9 @@ struct SignWindow : Window, SignList {
 	{
 		switch (this->last_user_action) {
 			case WID_QES_MOVE: // Place sign button
-				//@Todo move function
+				RenameSign(this->cur_sign, this->name_editbox.text.GetText());
+				MoveSign(this->cur_sign, tile);
+				this->Close();
 				break;
 
 			default: NOT_REACHED();

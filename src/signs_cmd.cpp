@@ -96,6 +96,36 @@ CommandCost CmdRenameSign(DoCommandFlags flags, SignID sign_id, const std::strin
 }
 
 /**
+ * Move a sign to the given coordinates. Ownership of signs
+ * has no meaning/effect whatsoever except for eyecandy.
+ * @param flags type of operation
+ * @param sign_id index of the sign to be moved
+ * @param tile tile to place the sign at
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdMoveSign(DoCommandFlags flags, SignID sign_id, TileIndex tile)
+{
+	Sign *si = Sign::GetIfValid(sign_id);
+	if (si == nullptr) return CMD_ERROR;
+	if (!CompanyCanEditSign(si)) return CMD_ERROR;
+
+	/* Move the sign */
+	if (flags.Test(DoCommandFlag::Execute)) {
+		int x = TileX(tile) * TILE_SIZE;
+		int y = TileY(tile) * TILE_SIZE;
+
+		si->x = x;
+		si->y = y;
+		si->z = GetSlopePixelZ(x, y);
+		if (_game_mode != GM_EDITOR) si->owner = _current_company;
+
+		si->UpdateVirtCoord();
+	}
+
+	return CommandCost();
+}
+
+/**
  * Callback function that is called after a sign is placed
  * @param result of the operation
  * @param new_sign ID of the placed sign.

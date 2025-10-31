@@ -279,6 +279,7 @@ enum Commands : uint8_t {
 
 	CMD_PLACE_SIGN,                   ///< place a sign
 	CMD_RENAME_SIGN,                  ///< rename a sign
+	CMD_MOVE_SIGN,                    ///< move a sign
 
 	CMD_TURN_ROADVEH,                 ///< turn a road vehicle around
 
