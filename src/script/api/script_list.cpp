@@ -100,7 +100,7 @@ public:
 		this->item_next = *this->bucket_list_iter;
 
 		SQInteger item_current = this->item_next;
-		FindNext();
+		this->FindNext();
 		return item_current;
 	}
 
@@ -139,7 +139,7 @@ public:
 		if (this->IsEnd()) return 0;
 
 		SQInteger item_current = this->item_next;
-		FindNext();
+		this->FindNext();
 		return item_current;
 	}
 
@@ -149,7 +149,7 @@ public:
 
 		/* If we remove the 'next' item, skip to the next */
 		if (item == this->item_next) {
-			FindNext();
+			this->FindNext();
 			return;
 		}
 	}
@@ -194,7 +194,7 @@ public:
 		this->item_next = *this->bucket_list_iter;
 
 		SQInteger item_current = this->item_next;
-		FindNext();
+		this->FindNext();
 		return item_current;
 	}
 
@@ -234,7 +234,7 @@ public:
 		if (this->IsEnd()) return 0;
 
 		SQInteger item_current = this->item_next;
-		FindNext();
+		this->FindNext();
 		return item_current;
 	}
 
@@ -244,7 +244,7 @@ public:
 
 		/* If we remove the 'next' item, skip to the next */
 		if (item == this->item_next) {
-			FindNext();
+			this->FindNext();
 			return;
 		}
 	}
@@ -277,7 +277,7 @@ public:
 		this->item_next = this->item_iter->first;
 
 		SQInteger item_current = this->item_next;
-		FindNext();
+		this->FindNext();
 		return item_current;
 	}
 
@@ -296,7 +296,7 @@ public:
 			return;
 		}
 		++this->item_iter;
-		if (this->item_iter != this->list->items.end()) item_next = this->item_iter->first;
+		if (this->item_iter != this->list->items.end()) this->item_next = this->item_iter->first;
 	}
 
 	SQInteger Next() override
@@ -304,7 +304,7 @@ public:
 		if (this->IsEnd()) return 0;
 
 		SQInteger item_current = this->item_next;
-		FindNext();
+		this->FindNext();
 		return item_current;
 	}
 
@@ -314,7 +314,7 @@ public:
 
 		/* If we remove the 'next' item, skip to the next */
 		if (item == this->item_next) {
-			FindNext();
+			this->FindNext();
 			return;
 		}
 	}
@@ -351,7 +351,7 @@ public:
 		this->item_next = this->item_iter->first;
 
 		SQInteger item_current = this->item_next;
-		FindNext();
+		this->FindNext();
 		return item_current;
 	}
 
@@ -375,7 +375,7 @@ public:
 		} else {
 			--this->item_iter;
 		}
-		if (this->item_iter != this->list->items.end()) item_next = this->item_iter->first;
+		if (this->item_iter != this->list->items.end()) this->item_next = this->item_iter->first;
 	}
 
 	SQInteger Next() override
@@ -383,7 +383,7 @@ public:
 		if (this->IsEnd()) return 0;
 
 		SQInteger item_current = this->item_next;
-		FindNext();
+		this->FindNext();
 		return item_current;
 	}
 
@@ -393,7 +393,7 @@ public:
 
 		/* If we remove the 'next' item, skip to the next */
 		if (item == this->item_next) {
-			FindNext();
+			this->FindNext();
 			return;
 		}
 	}
@@ -763,7 +763,7 @@ void ScriptList::RemoveList(ScriptList *list)
 	this->modifications++;
 
 	if (list == this) {
-		Clear();
+		this->Clear();
 	} else {
 		for (const auto &item : list->items) {
 			this->RemoveItem(item.first);
