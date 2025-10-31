@@ -2157,7 +2157,7 @@ struct StationViewWindow : public Window {
 	{
 		switch (this->last_user_action) {
 			case WID_SV_MOVE: // Move name button
-				//@Todo move function
+				Command<CMD_MOVE_STATION_NAME>::Post(STR_ERROR_CAN_T_MOVE_STATION_NAME, CcMoveStationName, this->window_number, tile);
 				break;
 
 			default: NOT_REACHED();
