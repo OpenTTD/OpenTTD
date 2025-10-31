@@ -15,6 +15,9 @@ enum TypeSelectionWidgets : WidgetID {
 	WID_TS_CAPTION, ///< Caption of window.
 	WID_TS_SORT_ASCENDING_DESCENDING, ///< Sort direction.
 	WID_TS_SORT_DROPDOWN, ///< Criteria of sorting dropdown.
+	WID_TS_SPEED_SORT,
+	WID_TS_NAME_SORT,
+	WID_TS_COST_SORT,
 	WID_TS_FILTER, ///< Filter by name.
 	WID_TS_LIST, ///< List of types.
 	WID_TS_SCROLLBAR, ///< Scrollbar of list.

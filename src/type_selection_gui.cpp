@@ -74,6 +74,35 @@ uint GetTrackListHeight()
 	return std::max<uint>(GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.matrix.Vertical(), GetTrackImageCellSize().height);
 }
 
+class TableContainer : public NWidgetHorizontal {
+public:
+	TableContainer(NWidContainerFlags flags = {}, WidgetID index = INVALID_WIDGET, WidgetType type = NWID_HORIZONTAL) : NWidgetHorizontal(flags, index, type) {}
+
+	void Add(std::unique_ptr<NWidgetBase> &&wid) override
+	{
+		auto container = std::make_unique<NWidgetVertical>(NWidContainerFlag{});
+		container->Add(std::move(wid));
+		container->Add(MakeNWidgets(std::array<const NWidgetPart, 5>{{NWidget(WWT_MATRIX, COLOUR_DARK_GREEN, WID_TS_LIST), SetResize(1, 1), SetFill(1, 0), SetMatrixDataTip(1, 0), SetScrollbar(WID_TS_SCROLLBAR)}}, nullptr));
+		this->NWidgetHorizontal::Add(std::move(container));
+	}
+};
+
+static std::unique_ptr<NWidgetBase> MakeTable()
+{
+	auto container = std::make_unique<TableContainer>(NWidContainerFlag{});
+	std::array<const NWidgetPart, 8> captions{{
+		NWidget(WWT_PUSHTXTBTN, COLOUR_DARK_GREEN, WID_TS_NAME_SORT), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_SORT_BY_NAME, STR_TOOLTIP_SORT_ORDER),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_DARK_GREEN, WID_TS_SPEED_SORT), SetStringTip(STR_SORT_BY_MAX_SPEED, STR_TOOLTIP_SORT_ORDER),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_DARK_GREEN, WID_TS_COST_SORT), SetStringTip(STR_SORT_BY_COST, STR_TOOLTIP_SORT_ORDER),
+	}};
+	return MakeNWidgets(std::move(captions), std::move(container));
+}
+
+static std::unique_ptr<NWidgetBase> MakeBadgeTableContainer()
+{
+	return std::make_unique<TableContainer>(NWidContainerFlag{}, WID_TS_BADGE_FILTER);
+}
+
 static constexpr NWidgetPart _nested_type_selection_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -93,12 +122,11 @@ static constexpr NWidgetPart _nested_type_selection_widgets[] = {
 			EndContainer(),
 			NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TS_CONFIGURE_BADGES), SetAspect(WidgetDimensions::ASPECT_UP_DOWN_BUTTON), SetResize(0, 0), SetFill(0, 1), SetSpriteTip(SPR_EXTRA_MENU, STR_BADGE_CONFIG_MENU_TOOLTIP),
 		EndContainer(),
-		NWidget(NWID_VERTICAL, NWidContainerFlag{}, WID_TS_BADGE_FILTER),
-		EndContainer(),
 	EndContainer(),
 	/* Vehicle list. */
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_MATRIX, COLOUR_DARK_GREEN, WID_TS_LIST), SetResize(1, 1), SetFill(1, 0), SetMatrixDataTip(1, 0), SetScrollbar(WID_TS_SCROLLBAR),
+		NWidgetFunction(MakeTable),
+		NWidgetFunction(MakeBadgeTableContainer),
 		NWidget(NWID_VSCROLLBAR, COLOUR_DARK_GREEN, WID_TS_SCROLLBAR),
 	EndContainer(),
 	/* Panel with details. */
@@ -644,6 +672,9 @@ struct TypeSelectionWindow : Window {
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
+			case WID_TS_SPEED_SORT:
+			case WID_TS_NAME_SORT:
+			case WID_TS_COST_SORT:
 			case WID_TS_SORT_ASCENDING_DESCENDING:
 				this->descending_sort_order ^= true;
 				_select_type_sort_last_order = this->descending_sort_order;
@@ -727,13 +758,16 @@ struct TypeSelectionWindow : Window {
 			case WID_TS_LIST:
 				fill.height = resize.height = GetTrackListHeight();
 				size.height = 3 * resize.height;
-				size.width = std::max(size.width, this->badge_classes.GetTotalColumnsWidth() + GetTrackImageCellSize().width + 165) + padding.width;
+				size.width = std::max(size.width, this->badge_classes.GetTotalColumnsWidth() + GetTrackImageCellSize().width /*+ 165*/) + padding.width;
 				break;
 
 			case WID_TS_PANEL:
 				size.height = GetCharacterHeight(FS_NORMAL) * this->details_height + padding.height;
 				break;
 
+			case WID_TS_SPEED_SORT:
+			case WID_TS_NAME_SORT:
+			case WID_TS_COST_SORT:
 			case WID_TS_SORT_ASCENDING_DESCENDING: {
 				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->GetString());
 				d.width += padding.width + Window::SortButtonWidth() * 2; // Doubled since the string is centred and it also looks better.
@@ -761,6 +795,21 @@ struct TypeSelectionWindow : Window {
 					this->badge_classes,
 					this->feature
 				);
+				break;
+
+			case WID_TS_COST_SORT:
+				if (this->sort_criteria != 1) break;
+				this->DrawSortButtonState(WID_TS_COST_SORT, this->descending_sort_order ? SBS_DOWN : SBS_UP);
+				break;
+			
+			case WID_TS_SPEED_SORT:
+				if (this->sort_criteria != 2) break;
+				this->DrawSortButtonState(WID_TS_SPEED_SORT, this->descending_sort_order ? SBS_DOWN : SBS_UP);
+				break;
+
+			case WID_TS_NAME_SORT:
+				if (this->sort_criteria != 4) break;
+				this->DrawSortButtonState(WID_TS_NAME_SORT, this->descending_sort_order ? SBS_DOWN : SBS_UP);
 				break;
 
 			case WID_TS_SORT_ASCENDING_DESCENDING:
