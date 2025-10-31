@@ -276,6 +276,7 @@ enum Commands : uint8_t {
 	CMD_RENAME_COMPANY,               ///< change the company name
 	CMD_RENAME_PRESIDENT,             ///< change the president name
 	CMD_RENAME_STATION,               ///< rename a station
+	CMD_MOVE_STATION_NAME,            ///< move a station name
 	CMD_RENAME_DEPOT,                 ///< rename a depot
 
 	CMD_PLACE_SIGN,                   ///< place a sign

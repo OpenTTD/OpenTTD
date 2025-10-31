@@ -613,7 +613,7 @@ CommandCost CmdRenameWaypoint(DoCommandFlags flags, StationID waypoint_id, const
  * @param flags type of operation
  * @param waypoint_id id of waypoint
  * @param tile to move the waypoint name to
- * @return the cost of this operation or an error
+ * @return the cost of this operation or an error and the waypoint ID
  */
 std::tuple<CommandCost, StationID> CmdMoveWaypointName(DoCommandFlags flags, StationID waypoint_id, TileIndex tile)
 {
@@ -650,6 +650,7 @@ std::tuple<CommandCost, StationID> CmdMoveWaypointName(DoCommandFlags flags, Sta
 /**
  * Callback function that is called after a name is moved
  * @param result of the operation
+ * @param waypoint_id ID of the changed waypoint
  */
 void CcMoveWaypointName(Commands, const CommandCost &result, StationID waypoint_id)
 {

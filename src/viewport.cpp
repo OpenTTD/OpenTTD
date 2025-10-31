@@ -1029,9 +1029,7 @@ static TileHighlightType GetTileHighlightType(TileIndex t)
 	if (_viewport_highlight_station_rect != nullptr) {
 		if (IsTileType(t, MP_STATION) && GetStationIndex(t) == _viewport_highlight_station_rect->index) return THT_WHITE;
 		const StationRect *r = &_viewport_highlight_station_rect->rect;
-		/* Check if tile is inside StationRect */
-		if (TileX(TileXY(r->left, r->top)) <= TileX(t) && TileX(t) <= TileX(TileXY(r->right, r->bottom)) &&
-		TileY(TileXY(r->left, r->top)) <= TileY(t) && TileY(t) <= TileY(TileXY(r->right, r->bottom))) return THT_BLUE;
+		if (r->PtInExtendedRect(TileX(t), TileY(t))) return THT_BLUE;
 	}
 
 	if (_viewport_highlight_waypoint != nullptr) {

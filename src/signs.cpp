@@ -55,9 +55,9 @@ void UpdateAllSignVirtCoords()
 }
 
 /**
- * Check if the current company can edit a given sign.
+ * Check if the current company can rename or move a given sign.
  * @param *si The sign in question.
- * @return true if the sign can be edited, else false.
+ * @return true if the sign can be renamed or moved, else false.
  */
 bool CompanyCanEditSign(const Sign *si)
 {

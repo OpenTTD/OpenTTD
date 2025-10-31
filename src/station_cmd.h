@@ -30,6 +30,7 @@ CommandCost CmdRemoveFromRailStation(DoCommandFlags flags, TileIndex start, Tile
 CommandCost CmdBuildRoadStop(DoCommandFlags flags, TileIndex tile, uint8_t width, uint8_t length, RoadStopType stop_type, bool is_drive_through, DiagDirection ddir, RoadType rt, RoadStopClassID spec_class, uint16_t spec_index, StationID station_to_join, bool adjacent);
 CommandCost CmdRemoveRoadStop(DoCommandFlags flags, TileIndex tile, uint8_t width, uint8_t height, RoadStopType stop_type, bool remove_road);
 CommandCost CmdRenameStation(DoCommandFlags flags, StationID station_id, const std::string &text);
+std::tuple<CommandCost, StationID> CmdMoveStationName(DoCommandFlags flags, StationID station_id, TileIndex tile);
 CommandCost CmdOpenCloseAirport(DoCommandFlags flags, StationID station_id);
 
 DEF_CMD_TRAIT(CMD_BUILD_AIRPORT,            CmdBuildAirport,          CommandFlags({CommandFlag::Auto, CommandFlag::NoWater}), CommandType::LandscapeConstruction)
@@ -39,6 +40,9 @@ DEF_CMD_TRAIT(CMD_REMOVE_FROM_RAIL_STATION, CmdRemoveFromRailStation, {},       
 DEF_CMD_TRAIT(CMD_BUILD_ROAD_STOP,          CmdBuildRoadStop,         CommandFlags({CommandFlag::Auto, CommandFlag::NoWater}), CommandType::LandscapeConstruction)
 DEF_CMD_TRAIT(CMD_REMOVE_ROAD_STOP,         CmdRemoveRoadStop,        {},                       CommandType::LandscapeConstruction)
 DEF_CMD_TRAIT(CMD_RENAME_STATION,           CmdRenameStation,         {},                       CommandType::OtherManagement)
+DEF_CMD_TRAIT(CMD_MOVE_STATION_NAME,        CmdMoveStationName,       {},                       CommandType::OtherManagement)
 DEF_CMD_TRAIT(CMD_OPEN_CLOSE_AIRPORT,       CmdOpenCloseAirport,      {},                       CommandType::RouteManagement)
+
+void CcMoveStationName(Commands cmd, const CommandCost &result, StationID station_id);
 
 #endif /* STATION_CMD_H */
