@@ -628,10 +628,10 @@ std::tuple<CommandCost, StationID> CmdMoveWaypointName(DoCommandFlags flags, Sta
 	}
 
 	if (!IsTileType(tile, MP_STATION)) return { CommandCost(STR_ERROR_SITE_UNSUITABLE), StationID::Invalid() };
-	if (GetStationIndex(tile) != waypoint_id) return {CommandCost(STR_ERROR_SITE_UNSUITABLE), StationID::Invalid() };
+	if (GetStationIndex(tile) != waypoint_id) return { CommandCost(STR_ERROR_SITE_UNSUITABLE), StationID::Invalid() };
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		wp->xy = tile;
+		wp->MoveSign(tile);
 
 		wp->UpdateVirtCoord();
 	}
