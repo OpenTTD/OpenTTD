@@ -2843,7 +2843,7 @@ static constexpr NWidgetPart _nested_vehicle_view_widgets[] = {
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_VV_CLONE), SetMinimalSize(18, 18), SetSpriteTip(SPR_EMPTY /* filled later */),
 			EndContainer(),
 			/* For trains only, 'ignore signal' button. */
-			NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_VV_FORCE_PROCEED), SetMinimalSize(18, 18),
+			NWidget(WWT_IMGBTN, COLOUR_GREY, WID_VV_FORCE_PROCEED), SetMinimalSize(18, 18),
 											SetSpriteTip(SPR_IGNORE_SIGNALS, STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP),
 			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_VV_SELECT_REFIT_TURN),
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_VV_REFIT), SetMinimalSize(18, 18), SetSpriteTip(SPR_REFIT_VEHICLE),
@@ -3088,7 +3088,9 @@ public:
 		this->SetWidgetDisabledState(WID_VV_CLONE, !is_localcompany);
 
 		if (v->type == VEH_TRAIN) {
-			this->SetWidgetLoweredState(WID_VV_FORCE_PROCEED, Train::From(v)->force_proceed == TFP_SIGNAL);
+			const Train *t = Train::From(v);
+			bool state = t->force_proceed == TFP_SIGNAL || (t->flags.Test(VehicleRailFlag::Stuck) && t->force_proceed == TFP_STUCK);
+			this->SetWidgetLoweredState(WID_VV_FORCE_PROCEED, state);
 			this->SetWidgetDisabledState(WID_VV_FORCE_PROCEED, !is_localcompany);
 		}
 
