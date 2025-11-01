@@ -1321,6 +1321,7 @@ function Regression::Road()
 	print("    GetRoadStationFrontTile():     " + AIRoad.GetRoadStationFrontTile(33411 + 256));
 	print("    GetRoadStationFrontTile():     " + AIRoad.GetRoadStationFrontTile(33412 + 256));
 	print("    IsDriveThroughRoadStationTile: " + AIRoad.IsDriveThroughRoadStationTile(33415));
+	print("    IsRoadStationTile():           " + AIRoad.IsRoadStationTile(33415));
 	print("    IsBuildable():                 " + AITile.IsBuildable(33415));
 	print("    GetDriveThroughBackTile():     " + AIRoad.GetDriveThroughBackTile(33415));
 	print("    GetRoadStationFrontTile():     " + AIRoad.GetRoadStationFrontTile(33415));
