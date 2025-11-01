@@ -185,7 +185,7 @@ public:
 };
 
 /** The widgets of the waypoint view. */
-static constexpr NWidgetPart _nested_waypoint_view_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_waypoint_view_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_W_RENAME), SetAspect(WidgetDimensions::ASPECT_RENAME), SetSpriteTip(SPR_RENAME, STR_BUOY_VIEW_RENAME_TOOLTIP),

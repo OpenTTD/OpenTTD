@@ -65,7 +65,7 @@ void LoadCheckData::Clear()
 }
 
 /** Load game/scenario with optional content download */
-static constexpr NWidgetPart _nested_load_dialog_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_load_dialog_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SL_CAPTION),
@@ -128,7 +128,7 @@ static constexpr NWidgetPart _nested_load_dialog_widgets[] = {
 };
 
 /** Load heightmap with content download */
-static constexpr NWidgetPart _nested_load_heightmap_dialog_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_load_heightmap_dialog_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SL_CAPTION),
@@ -175,7 +175,7 @@ static constexpr NWidgetPart _nested_load_heightmap_dialog_widgets[] = {
 };
 
 /** Load town data */
-static constexpr NWidgetPart _nested_load_town_data_dialog_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_load_town_data_dialog_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SL_CAPTION),
@@ -217,7 +217,7 @@ static constexpr NWidgetPart _nested_load_town_data_dialog_widgets[] = {
 };
 
 /** Save game/scenario */
-static constexpr NWidgetPart _nested_save_dialog_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_save_dialog_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SL_CAPTION),
