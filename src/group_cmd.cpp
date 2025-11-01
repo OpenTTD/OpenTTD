@@ -306,8 +306,8 @@ static void PropagateChildLivery(const Group *g, bool reset_cache)
 
 	for (const GroupID &childgroup : g->children) {
 		Group *cg = Group::Get(childgroup);
-		if (!HasBit(cg->livery.in_use, 0)) cg->livery.colour1 = g->livery.colour1;
-		if (!HasBit(cg->livery.in_use, 1)) cg->livery.colour2 = g->livery.colour2;
+		if (!cg->livery.in_use.Test(Livery::Flag::Primary)) cg->livery.colour1 = g->livery.colour1;
+		if (!cg->livery.in_use.Test(Livery::Flag::Secondary)) cg->livery.colour2 = g->livery.colour2;
 		PropagateChildLivery(cg, reset_cache);
 	}
 }
@@ -321,8 +321,8 @@ void UpdateCompanyGroupLiveries(const Company *c)
 {
 	for (Group *g : Group::Iterate()) {
 		if (g->owner == c->index && g->parent == GroupID::Invalid()) {
-			if (!HasBit(g->livery.in_use, 0)) g->livery.colour1 = c->livery[LS_DEFAULT].colour1;
-			if (!HasBit(g->livery.in_use, 1)) g->livery.colour2 = c->livery[LS_DEFAULT].colour2;
+			if (!g->livery.in_use.Test(Livery::Flag::Primary)) g->livery.colour1 = c->livery[LS_DEFAULT].colour1;
+			if (!g->livery.in_use.Test(Livery::Flag::Secondary)) g->livery.colour2 = c->livery[LS_DEFAULT].colour2;
 			PropagateChildLivery(g, false);
 		}
 	}
@@ -480,11 +480,11 @@ CommandCost CmdAlterGroup(DoCommandFlags flags, AlterGroupMode mode, GroupID gro
 
 			GroupStatistics::UpdateAutoreplace(g->owner);
 
-			if (!HasBit(g->livery.in_use, 0) || !HasBit(g->livery.in_use, 1)) {
+			if (!g->livery.in_use.All({Livery::Flag::Primary, Livery::Flag::Secondary})) {
 				/* Update livery with new parent's colours if either colour is default. */
 				const Livery *livery = GetParentLivery(g);
-				if (!HasBit(g->livery.in_use, 0)) g->livery.colour1 = livery->colour1;
-				if (!HasBit(g->livery.in_use, 1)) g->livery.colour2 = livery->colour2;
+				if (!g->livery.in_use.Test(Livery::Flag::Primary)) g->livery.colour1 = livery->colour1;
+				if (!g->livery.in_use.Test(Livery::Flag::Secondary)) g->livery.colour2 = livery->colour2;
 
 				PropagateChildLivery(g, true);
 				MarkWholeScreenDirty();
@@ -684,11 +684,11 @@ CommandCost CmdSetGroupLivery(DoCommandFlags flags, GroupID group_id, bool prima
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		if (primary) {
-			AssignBit(g->livery.in_use, 0, colour != INVALID_COLOUR);
+			g->livery.in_use.Set(Livery::Flag::Primary, colour != INVALID_COLOUR);
 			if (colour == INVALID_COLOUR) colour = GetParentLivery(g)->colour1;
 			g->livery.colour1 = colour;
 		} else {
-			AssignBit(g->livery.in_use, 1, colour != INVALID_COLOUR);
+			g->livery.in_use.Set(Livery::Flag::Secondary, colour != INVALID_COLOUR);
 			if (colour == INVALID_COLOUR) colour = GetParentLivery(g)->colour2;
 			g->livery.colour2 = colour;
 		}

@@ -10,6 +10,7 @@
 #ifndef LIVERY_H
 #define LIVERY_H
 
+#include "core/enum_type.hpp"
 #include "company_type.h"
 #include "gfx_type.h"
 
@@ -76,7 +77,13 @@ DECLARE_ENUM_AS_ADDABLE(LiveryClass)
 
 /** Information about a particular livery. */
 struct Livery {
-	uint8_t in_use = 0;  ///< Bit 0 set if this livery should override the default livery first colour, Bit 1 for the second colour.
+	enum class Flag : uint8_t {
+		Primary = 0, ///< Primary colour is set.
+		Secondary = 1, ///< Secondary colour is set.
+	};
+	using Flags = EnumBitSet<Flag, uint8_t>;
+
+	Flags in_use{}; ///< Livery flags.
 	Colours colour1 = COLOUR_BEGIN; ///< First colour, for all vehicles.
 	Colours colour2 = COLOUR_BEGIN; ///< Second colour, for vehicles with 2CC support.
 };
