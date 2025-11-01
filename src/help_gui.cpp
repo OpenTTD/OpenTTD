@@ -175,7 +175,7 @@ private:
 	}
 };
 
-static constexpr NWidgetPart _nested_helpwin_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_helpwin_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetStringTip(STR_HELP_WINDOW_CAPTION),

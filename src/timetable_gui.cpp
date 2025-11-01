@@ -797,7 +797,7 @@ struct TimetableWindow : Window {
 	}};
 };
 
-static constexpr NWidgetPart _nested_timetable_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_timetable_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_VT_CAPTION),

@@ -329,7 +329,7 @@ struct SignListWindow : Window, SignList {
 	}, SignListGlobalHotkeys};
 };
 
-static constexpr NWidgetPart _nested_sign_list_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_sign_list_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_SIL_CAPTION),
@@ -504,7 +504,7 @@ struct SignWindow : Window, SignList {
 	}
 };
 
-static constexpr NWidgetPart _nested_query_sign_edit_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_query_sign_edit_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_QES_CAPTION), SetTextStyle(TC_WHITE),

@@ -47,7 +47,7 @@ struct ScreenshotWindow : Window {
 	}
 };
 
-static constexpr NWidgetPart _nested_screenshot[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_screenshot = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_SCREENSHOT_CAPTION),

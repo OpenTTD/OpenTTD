@@ -698,7 +698,7 @@ public:
 	}
 };
 
-static constexpr NWidgetPart _nested_replace_rail_vehicle_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_replace_rail_vehicle_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_RV_CAPTION),
@@ -762,7 +762,7 @@ static WindowDesc _replace_rail_vehicle_desc(
 	_nested_replace_rail_vehicle_widgets
 );
 
-static constexpr NWidgetPart _nested_replace_road_vehicle_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_replace_road_vehicle_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_RV_CAPTION),
@@ -820,7 +820,7 @@ static WindowDesc _replace_road_vehicle_desc(
 	_nested_replace_road_vehicle_widgets
 );
 
-static constexpr NWidgetPart _nested_replace_vehicle_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_replace_vehicle_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_RV_CAPTION), SetMinimalSize(433, 14),

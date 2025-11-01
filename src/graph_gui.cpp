@@ -133,7 +133,7 @@ static std::unique_ptr<NWidgetBase> MakeNWidgetCompanyLines()
 	return vert;
 }
 
-static constexpr NWidgetPart _nested_graph_legend_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_graph_legend_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN), SetStringTip(STR_GRAPH_KEY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -935,7 +935,7 @@ struct OperatingProfitGraphWindow : BaseCompanyGraphWindow {
 	}
 };
 
-static constexpr NWidgetPart _nested_operating_profit_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_operating_profit_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN), SetStringTip(STR_GRAPH_OPERATING_PROFIT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -988,7 +988,7 @@ struct IncomeGraphWindow : BaseCompanyGraphWindow {
 	}
 };
 
-static constexpr NWidgetPart _nested_income_graph_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_income_graph_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN), SetStringTip(STR_GRAPH_INCOME_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -1039,7 +1039,7 @@ struct DeliveredCargoGraphWindow : BaseCompanyGraphWindow {
 	}
 };
 
-static constexpr NWidgetPart _nested_delivered_cargo_graph_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_delivered_cargo_graph_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN), SetStringTip(STR_GRAPH_CARGO_DELIVERED_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -1096,7 +1096,7 @@ struct PerformanceHistoryGraphWindow : BaseCompanyGraphWindow {
 	}
 };
 
-static constexpr NWidgetPart _nested_performance_history_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_performance_history_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN), SetStringTip(STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -1148,7 +1148,7 @@ struct CompanyValueGraphWindow : BaseCompanyGraphWindow {
 	}
 };
 
-static constexpr NWidgetPart _nested_company_value_graph_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_company_value_graph_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN), SetStringTip(STR_GRAPH_COMPANY_VALUES_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -1412,7 +1412,7 @@ struct PaymentRatesGraphWindow : BaseCargoGraphWindow {
 	}
 };
 
-static constexpr NWidgetPart _nested_cargo_payment_rates_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_cargo_payment_rates_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN), SetStringTip(STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -1813,7 +1813,7 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 	}
 };
 
-static constexpr NWidgetPart _nested_industry_production_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_industry_production_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_GRAPH_CAPTION),
@@ -1957,7 +1957,7 @@ struct TownCargoGraphWindow : BaseCargoGraphWindow {
 	}
 };
 
-static constexpr NWidgetPart _nested_town_cargo_graph_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_town_cargo_graph_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_GRAPH_CAPTION),
@@ -2042,7 +2042,7 @@ std::unique_ptr<NWidgetBase> MakeCompanyButtonRowsGraphGUI()
 	return MakeCompanyButtonRows(WID_PRD_COMPANY_FIRST, WID_PRD_COMPANY_LAST, COLOUR_BROWN, 8, STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP);
 }
 
-static constexpr NWidgetPart _nested_performance_rating_detail_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_performance_rating_detail_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN), SetStringTip(STR_PERFORMANCE_DETAIL, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),

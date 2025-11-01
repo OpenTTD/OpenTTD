@@ -343,7 +343,7 @@ struct SelectGameWindow : public Window {
 	}
 };
 
-static constexpr NWidgetPart _nested_select_game_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_select_game_widgets = {
 	NWidget(WWT_CAPTION, COLOUR_BROWN), SetStringTip(STR_INTRO_CAPTION),
 	NWidget(WWT_PANEL, COLOUR_BROWN),
 		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.sparse),

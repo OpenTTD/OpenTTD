@@ -377,7 +377,7 @@ static std::string_view GetAIName(int ai_index)
 }
 
 /** @hideinitializer */
-static constexpr NWidgetPart _framerate_window_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _framerate_window_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_FRW_CAPTION),
@@ -695,7 +695,7 @@ static WindowDesc _framerate_display_desc(
 
 
 /** @hideinitializer */
-static constexpr NWidgetPart _frametime_graph_window_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _frametime_graph_window_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_FGW_CAPTION), SetTextStyle(TC_WHITE),

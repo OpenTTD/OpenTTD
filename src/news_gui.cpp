@@ -102,7 +102,7 @@ static TileIndex GetReferenceTile(const NewsReference &reference)
 }
 
 /* Normal news items. */
-static constexpr NWidgetPart _nested_normal_news_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_normal_news_widgets = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
 		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
 			NWidget(NWID_LAYER, INVALID_COLOUR),
@@ -134,7 +134,7 @@ static WindowDesc _normal_news_desc(
 );
 
 /* New vehicles news items. */
-static constexpr NWidgetPart _nested_vehicle_news_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_vehicle_news_widgets = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
 		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
 			NWidget(NWID_LAYER, INVALID_COLOUR),
@@ -182,7 +182,7 @@ static WindowDesc _vehicle_news_desc(
 );
 
 /* Company news items. */
-static constexpr NWidgetPart _nested_company_news_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_company_news_widgets = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
 		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
 			NWidget(NWID_LAYER, INVALID_COLOUR),
@@ -227,7 +227,7 @@ static WindowDesc _company_news_desc(
 );
 
 /* Thin news items. */
-static constexpr NWidgetPart _nested_thin_news_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_thin_news_widgets = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
 		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
 			NWidget(NWID_LAYER, INVALID_COLOUR),
@@ -261,7 +261,7 @@ static WindowDesc _thin_news_desc(
 );
 
 /* Small news items. */
-static constexpr NWidgetPart _nested_small_news_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_small_news_widgets = {
 	/* Caption + close box. The caption is not WWT_CAPTION as the window shall not be moveable and so on. */
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, WID_N_CLOSEBOX),
@@ -1275,7 +1275,7 @@ struct MessageHistoryWindow : Window {
 	}
 };
 
-static constexpr NWidgetPart _nested_message_history[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_message_history = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN), SetStringTip(STR_MESSAGE_HISTORY, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),

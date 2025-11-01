@@ -74,7 +74,7 @@ void SetNewLandscapeType(LandscapeType landscape)
 }
 
 /** Widgets of GenerateLandscapeWindow when generating world */
-static constexpr NWidgetPart _nested_generate_landscape_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_generate_landscape_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN), SetStringTip(STR_MAPGEN_WORLD_GENERATION_CAPTION),
@@ -198,7 +198,7 @@ static constexpr NWidgetPart _nested_generate_landscape_widgets[] = {
 };
 
 /** Widgets of GenerateLandscapeWindow when loading heightmap */
-static constexpr NWidgetPart _nested_heightmap_load_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_heightmap_load_widgets = {
 	/* Window header. */
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -1244,7 +1244,7 @@ struct CreateScenarioWindow : public Window
 	}
 };
 
-static constexpr NWidgetPart _nested_create_scenario_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_create_scenario_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN), SetStringTip(STR_SE_MAPGEN_CAPTION),
@@ -1317,7 +1317,7 @@ void ShowCreateScenario()
 	new CreateScenarioWindow(_create_scenario_desc, GLWM_SCENARIO);
 }
 
-static constexpr NWidgetPart _nested_generate_progress_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_generate_progress_widgets = {
 	NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_GENERATION_WORLD, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.modalpopup),

@@ -210,7 +210,7 @@ struct StatusBarWindow : Window {
 	}};
 };
 
-static constexpr NWidgetPart _nested_main_status_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_main_status_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_GREY, WID_S_LEFT), SetMinimalSize(140, 12), EndContainer(),
 		NWidget(WWT_PUSHBTN, COLOUR_GREY, WID_S_MIDDLE), SetMinimalSize(40, 12), SetToolTip(STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS), SetResize(1, 0),

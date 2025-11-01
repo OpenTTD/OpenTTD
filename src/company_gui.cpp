@@ -286,7 +286,7 @@ static void DrawYearColumn(const Rect &r, TimerGameEconomy::Year year, const Exp
 	DrawPrice(sum, r.left, r.right, y, TC_WHITE);
 }
 
-static constexpr NWidgetPart _nested_company_finances_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_company_finances_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_CF_CAPTION),
@@ -1062,7 +1062,7 @@ public:
 	}
 };
 
-static constexpr NWidgetPart _nested_select_company_livery_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_select_company_livery_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SCL_CAPTION),
@@ -1161,7 +1161,7 @@ void DrawCompanyManagerFace(const CompanyManagerFace &cmf, Colours colour, const
 }
 
 /** Nested widget description for the company manager face selection dialog */
-static constexpr NWidgetPart _nested_select_company_manager_face_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_select_company_manager_face_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SCMF_CAPTION), SetStringTip(STR_FACE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -1536,7 +1536,7 @@ static void DoSelectCompanyManagerFace(Window *parent)
 	new SelectCompanyManagerFaceWindow(_select_company_manager_face_desc, parent);
 }
 
-static constexpr NWidgetPart _nested_company_infrastructure_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_company_infrastructure_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_CI_CAPTION),
@@ -1840,7 +1840,7 @@ static void ShowCompanyInfrastructure(CompanyID company)
 	AllocateWindowDescFront<CompanyInfrastructureWindow>(_company_infrastructure_desc, company);
 }
 
-static constexpr NWidgetPart _nested_company_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_company_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_C_CAPTION),
@@ -2405,7 +2405,7 @@ private:
 	Money company_value{}; ///< The value of the company for which the user can buy it.
 };
 
-static constexpr NWidgetPart _nested_buy_company_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_buy_company_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE),
 		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, WID_BC_CAPTION),

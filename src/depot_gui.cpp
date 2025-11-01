@@ -47,7 +47,7 @@
  */
 
 /** Nested widget definition for train depots. */
-static constexpr NWidgetPart _nested_train_depot_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_train_depot_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_D_SHOW_RENAME), SetAspect(WidgetDimensions::ASPECT_RENAME), // rename button

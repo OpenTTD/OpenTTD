@@ -38,7 +38,7 @@
 
 #include "safeguards.h"
 
-static constexpr NWidgetPart _nested_group_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_group_widgets = {
 	NWidget(NWID_HORIZONTAL), // Window header
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_GL_CAPTION),

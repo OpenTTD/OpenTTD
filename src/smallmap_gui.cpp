@@ -1963,14 +1963,14 @@ public:
 };
 
 /** Widget parts of the smallmap display. */
-static constexpr NWidgetPart _nested_smallmap_display[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_smallmap_display = {
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_SM_MAP_BORDER),
 		NWidget(WWT_INSET, COLOUR_BROWN, WID_SM_MAP), SetMinimalSize(346, 140), SetResize(1, 1), SetPadding(2, 2, 2, 2), EndContainer(),
 	EndContainer(),
 };
 
 /** Widget parts of the smallmap legend bar + image buttons. */
-static constexpr NWidgetPart _nested_smallmap_bar[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_smallmap_bar = {
 	NWidget(WWT_PANEL, COLOUR_BROWN),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SM_LEGEND), SetResize(1, 1),
@@ -2020,7 +2020,7 @@ static std::unique_ptr<NWidgetBase> SmallMapDisplay()
 	return map_display;
 }
 
-static constexpr NWidgetPart _nested_smallmap_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_smallmap_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_SM_CAPTION),

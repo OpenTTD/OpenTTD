@@ -133,7 +133,7 @@ static inline void IConsoleResetHistoryPos()
 static std::optional<std::string_view> IConsoleHistoryAdd(std::string_view cmd);
 static void IConsoleHistoryNavigate(int direction);
 
-static constexpr NWidgetPart _nested_console_window_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_console_window_widgets = {
 	NWidget(WWT_EMPTY, INVALID_COLOUR, WID_C_BACKGROUND), SetResize(1, 1),
 };
 

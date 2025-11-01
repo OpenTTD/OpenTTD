@@ -738,7 +738,7 @@ void PickerWindow::EnsureSelectedTypeIsVisible()
 /** Create nested widgets for the class picker widgets. */
 std::unique_ptr<NWidgetBase> MakePickerClassWidgets()
 {
-	static constexpr NWidgetPart picker_class_widgets[] = {
+	static constexpr std::initializer_list<NWidgetPart> picker_class_widgets = {
 		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_PW_CLASS_SEL),
 			NWidget(NWID_VERTICAL),
 				NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
@@ -761,7 +761,7 @@ std::unique_ptr<NWidgetBase> MakePickerClassWidgets()
 /** Create nested widgets for the type picker widgets. */
 std::unique_ptr<NWidgetBase> MakePickerTypeWidgets()
 {
-	static constexpr NWidgetPart picker_type_widgets[] = {
+	static constexpr std::initializer_list<NWidgetPart> picker_type_widgets = {
 		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_PW_TYPE_SEL),
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_HORIZONTAL),

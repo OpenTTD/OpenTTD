@@ -385,7 +385,7 @@ public:
 	}, BuildObjectGlobalHotkeys};
 };
 
-static constexpr NWidgetPart _nested_build_object_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_build_object_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetStringTip(STR_OBJECT_BUILD_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
