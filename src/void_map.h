@@ -27,6 +27,7 @@ inline void MakeVoid(Tile t)
 	t.m5() = 0;
 	t.m6() = 0;
 	t.m7() = 0;
+	t.m8() = 0;
 }
 
 #endif /* VOID_MAP_H */

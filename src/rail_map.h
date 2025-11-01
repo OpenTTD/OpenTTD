@@ -524,7 +524,7 @@ inline void MakeRailNormal(Tile t, Owner o, TrackBits b, RailType r)
 	t.m3() = 0;
 	t.m4() = 0;
 	t.m5() = RAIL_TILE_NORMAL << 6 | b;
-	SB(t.m6(), 2, 4, 0);
+	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
 	t.m8() = r;
 }
@@ -557,7 +557,7 @@ inline void MakeRailDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirectio
 	tile.m3() = 0;
 	tile.m4() = 0;
 	tile.m5() = RAIL_TILE_DEPOT << 6 | dir;
-	SB(tile.m6(), 2, 4, 0);
+	SB(tile.m6(), 2, 6, 0);
 	tile.m7() = 0;
 	tile.m8() = rail_type;
 }

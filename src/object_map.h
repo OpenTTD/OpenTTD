@@ -80,8 +80,9 @@ inline void MakeObject(Tile t, Owner o, ObjectID index, WaterClass wc, uint8_t r
 	t.m3() = random;
 	t.m4() = 0;
 	t.m5() = index.base() >> 16;
-	SB(t.m6(), 2, 4, 0);
+	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
+	t.m8() = 0;
 }
 
 #endif /* OBJECT_MAP_H */
