@@ -755,3 +755,12 @@ void VideoDriver_SDL_Base::UnlockVideoBuffer()
 
 	this->buffer_locked = false;
 }
+
+void VideoDriver_SDL_Base::SetScreensaverInhibited(bool inhibited)
+{
+	if (inhibited) {
+		SDL_DisableScreenSaver();
+	} else {
+		SDL_EnableScreenSaver();
+	}
+}
