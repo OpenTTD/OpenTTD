@@ -65,7 +65,7 @@ public:
 
 	BadgeClassID GetBadgeClassID() const { return this->badge_class; }
 	std::string GetStringParameter(const BadgeFilterChoices &choices) const;
-	DropDownList GetDropDownList() const;
+	DropDownList GetDropDownList(PaletteID palette = PAL_NONE) const;
 
 private:
 	GrfSpecFeature feature; ///< Feature of this dropdown.
