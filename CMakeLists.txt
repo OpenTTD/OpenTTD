@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.28)
 
 if(NOT BINARY_NAME)
     set(BINARY_NAME openttd)
@@ -8,6 +8,10 @@ project(${BINARY_NAME}
     VERSION 15.0
     LANGUAGES CXX
 )
+
+# Tell CMake that we explicitly want `import std`. This will initialize the
+# property on all targets declared after this to 1
+set(CMAKE_CXX_MODULE_STD 1)
 
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
     message(FATAL_ERROR "In-source builds not allowed. Please run \"cmake ..\" from the build directory. You may need to delete \"${CMAKE_SOURCE_DIR}/CMakeCache.txt\" first.")
@@ -236,9 +240,48 @@ include_directories(${CMAKE_SOURCE_DIR}/src/3rdparty/squirrel/include)
 
 include(MSVCFilters)
 
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+	add_compile_options(
+	    -std=c++20
+    	-fmodules-ts
+	)
+	
+	add_library(std_lib OBJECT std.cxx)
+else()
+	# CMake 3.30 is required for C++23 `import std` support; we use 3.29.20240416
+	# here so that in-development versions satisfy it. 
+	cmake_minimum_required(VERSION 3.29.20240416 FATAL_ERROR)
+
+	# Set experimental flag to enable `import std` support from CMake.
+	# This must be enabled before C++ language support.
+	set(CMAKE_EXPERIMENTAL_CXX_IMPORT_STD
+		# This specific value changes as experimental support evolves. See
+		# `Help/dev/experimental.rst` in the CMake source corresponding to
+		# your CMake build for the exact value to use.
+		"0e5b6991-d74f-4b3d-a41c-cf096e0b2508"
+	)
+
+	# Tell CMake that we explicitly want `import std`. This will initialize the
+	# property on all targets declared after this to 1
+	set(CMAKE_CXX_MODULE_STD 1)
+
+	set(CMAKE_CXX_STANDARD 23)
+
+	# Empty library for compability with gcc
+	add_library(std_lib OBJECT )
+endif()
+
 add_library(openttd_lib OBJECT ${GENERATED_SOURCE_FILES})
 add_executable(openttd WIN32)
 add_executable(openttd_test)
+
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+	add_custom_command(
+		OUTPUT std.cxx
+        COMMAND /bin/sh ${CMAKE_SOURCE_DIR}/compile_std_headers.sh
+	)
+endif()
+
 set_target_properties(openttd PROPERTIES OUTPUT_NAME "${BINARY_NAME}")
 # All other files are added via target_sources()
 
@@ -277,6 +320,7 @@ target_link_libraries(openttd_lib
 )
 
 target_link_libraries(openttd
+	std_lib
     openttd_lib
     openttd::media
     openttd::basesets
