@@ -474,7 +474,7 @@ public:
 	NWidgetContainer(WidgetType tp, WidgetID index = INVALID_WIDGET) : NWidgetBase(tp, index) {}
 
 	void AdjustPaddingForZoom() override;
-	void Add(std::unique_ptr<NWidgetBase> &&wid);
+	virtual void Add(std::unique_ptr<NWidgetBase> &&wid);
 	void FillWidgetLookup(WidgetLookup &widget_lookup) override;
 
 	void Draw(const Window *w) override;

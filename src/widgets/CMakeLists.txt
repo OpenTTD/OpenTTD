@@ -57,6 +57,7 @@ add_files(
     town_widget.h
     transparency_widget.h
     tree_widget.h
+    type_selection_widget.h
     vehicle_widget.h
     viewport_widget.h
     waypoint_widget.h

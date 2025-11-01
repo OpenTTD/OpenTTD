@@ -732,6 +732,12 @@ enum WindowClass : uint16_t {
 	 */
 	WC_HELPWIN,
 
+	/**
+	 * Selection for railtype, roadtype or tramtype; %Window numbers:
+	 *   - #GrfSpecFeature = #TypeSelectionWidgets
+	 */
+	WC_TYPE_SELECTION,
+
 	WC_INVALID = 0xFFFF, ///< Invalid window.
 };
 

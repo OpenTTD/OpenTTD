@@ -869,7 +869,7 @@ static CallBackFunction ToolbarZoomOutClick(Window *w)
 
 static CallBackFunction ToolbarBuildRailClick(Window *w)
 {
-	ShowDropDownList(w, GetRailTypeDropDownList(), _last_built_railtype, WID_TN_RAILS, 140, _settings_client.gui.toolbar_dropdown_autoselect);
+	ShowDropDownList(w, GetRailTypeDropDownList(), -1, WID_TN_RAILS, 140, _settings_client.gui.toolbar_dropdown_autoselect);
 	return CBF_NONE;
 }
 
@@ -881,6 +881,11 @@ static CallBackFunction ToolbarBuildRailClick(Window *w)
  */
 static CallBackFunction MenuClickBuildRail(int index)
 {
+	if (index == -1) {
+		ShowBuildRailToolbar(_last_built_railtype);
+		ShowTypeSelectionWindow(GSF_RAILTYPES);
+		return CBF_NONE;
+	}
 	_last_built_railtype = (RailType)index;
 	ShowBuildRailToolbar(_last_built_railtype);
 	return CBF_NONE;
@@ -890,7 +895,7 @@ static CallBackFunction MenuClickBuildRail(int index)
 
 static CallBackFunction ToolbarBuildRoadClick(Window *w)
 {
-	ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_ROAD), _last_built_roadtype, WID_TN_ROADS, 140, _settings_client.gui.toolbar_dropdown_autoselect);
+	ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_ROAD), -1, WID_TN_ROADS, 140, _settings_client.gui.toolbar_dropdown_autoselect);
 	return CBF_NONE;
 }
 
@@ -902,6 +907,11 @@ static CallBackFunction ToolbarBuildRoadClick(Window *w)
  */
 static CallBackFunction MenuClickBuildRoad(int index)
 {
+	if (index == -1) {
+		ShowBuildRoadToolbar(_last_built_roadtype);
+		ShowTypeSelectionWindow(GSF_ROADTYPES);
+		return CBF_NONE;
+	}
 	_last_built_roadtype = (RoadType)index;
 	ShowBuildRoadToolbar(_last_built_roadtype);
 	return CBF_NONE;
@@ -911,7 +921,7 @@ static CallBackFunction MenuClickBuildRoad(int index)
 
 static CallBackFunction ToolbarBuildTramClick(Window *w)
 {
-	ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_TRAM), _last_built_tramtype, WID_TN_TRAMS, 140, _settings_client.gui.toolbar_dropdown_autoselect);
+	ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_TRAM), -1, WID_TN_TRAMS, 140, _settings_client.gui.toolbar_dropdown_autoselect);
 	return CBF_NONE;
 }
 
@@ -923,6 +933,11 @@ static CallBackFunction ToolbarBuildTramClick(Window *w)
  */
 static CallBackFunction MenuClickBuildTram(int index)
 {
+	if (index == -1) {
+		ShowBuildRoadToolbar(_last_built_tramtype);
+		ShowTypeSelectionWindow(GSF_TRAMTYPES);
+		return CBF_NONE;
+	}
 	_last_built_tramtype = (RoadType)index;
 	ShowBuildRoadToolbar(_last_built_tramtype);
 	return CBF_NONE;
@@ -945,6 +960,7 @@ static CallBackFunction ToolbarBuildWaterClick(Window *w)
  */
 static CallBackFunction MenuClickBuildWater(int)
 {
+	CloseWindowByClass(WC_TYPE_SELECTION);
 	ShowBuildDocksToolbar();
 	return CBF_NONE;
 }
@@ -966,6 +982,7 @@ static CallBackFunction ToolbarBuildAirClick(Window *w)
  */
 static CallBackFunction MenuClickBuildAir(int)
 {
+	CloseWindowByClass(WC_TYPE_SELECTION);
 	ShowBuildAirToolbar();
 	return CBF_NONE;
 }
