@@ -1051,6 +1051,8 @@ static bool LoadOldCompany(LoadgameState &ls, int num)
 		if (c->money == 893288) c->money = c->current_loan = 100000;
 	}
 
+	c->auto_loan = false;
+	c->auto_loan_threshold = 0;
 	_company_colours[num] = c->colour;
 	c->inaugurated_year -= EconomyTime::ORIGINAL_BASE_YEAR;
 

@@ -37,6 +37,7 @@
 #include "goal_base.h"
 #include "story_base.h"
 #include "company_cmd.h"
+#include "misc_cmd.h"
 #include "timer/timer.h"
 #include "timer/timer_game_economy.h"
 #include "timer/timer_game_tick.h"
@@ -108,6 +109,47 @@ Money Company::GetMaxLoan() const
 {
 	if (this->max_loan == COMPANY_MAX_LOAN_DEFAULT) return _economy.max_loan;
 	return this->max_loan;
+}
+
+/** Auto repay/take loan. */
+void Company::AutoLoan() const
+{
+	Money threshold = this->auto_loan_threshold;
+	Money interval = (Money)LOAN_INTERVAL;
+	Money money = GetAvailableMoney(this->index);
+
+	if (money < threshold) {
+		Money max_loan = this->GetMaxLoan();
+		if (this->current_loan >= max_loan) return;
+
+		/* Take new loan. */
+		Money loan = interval * static_cast<int>(static_cast<long>(threshold - money + interval) / LOAN_INTERVAL);
+		Backup<CompanyID> cur_company(_current_company);
+		cur_company.Change(this->index);
+		if (loan + this->current_loan > max_loan) {
+			Command<CMD_INCREASE_LOAN>::Do({DoCommandFlag::Execute}, LoanCommand::Max, 0);
+		} else {
+			Command<CMD_INCREASE_LOAN>::Do({DoCommandFlag::Execute}, LoanCommand::Amount, loan);
+		}
+		cur_company.Restore();
+
+		return; ///< Skip auto repay code.
+	}
+
+	if (this->current_loan <= 0 || money < interval) return;
+
+	threshold = interval * static_cast<int>(static_cast<long>(threshold + interval - 1) / LOAN_INTERVAL);
+	if (money < threshold) return;
+
+	Money loan = interval * static_cast<int>(static_cast<long>(money - threshold) / LOAN_INTERVAL);
+	Backup<CompanyID> cur_company(_current_company);
+	cur_company.Change(this->index);
+	if (this->current_loan - loan <= 0) {
+		Command<CMD_DECREASE_LOAN>::Do({DoCommandFlag::Execute}, LoanCommand::Max, 0);
+	} else {
+		Command<CMD_DECREASE_LOAN>::Do({DoCommandFlag::Execute}, LoanCommand::Amount, loan);
+	}
+	cur_company.Restore();
 }
 
 /**
@@ -222,6 +264,9 @@ static const IntervalTimer<TimerWindow> invalidate_company_windows_interval(std:
 			w->SetWidgetDirty(WID_CF_LOAN_VALUE);
 			w->SetWidgetDirty(WID_CF_BALANCE_VALUE);
 			w->SetWidgetDirty(WID_CF_MAXLOAN_VALUE);
+			for (auto widget : {WID_CF_INCREASE_LOAN, WID_CF_REPAY_LOAN, WID_CF_AUTO_LOAN, WID_CF_INFRASTRUCTURE}) {
+				w->SetWidgetDirty(widget);
+			}
 		}
 		SetWindowWidgetDirty(WC_COMPANY, cid, WID_C_DESC_COMPANY_VALUE);
 	}

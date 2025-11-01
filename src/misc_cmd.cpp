@@ -117,6 +117,25 @@ CommandCost CmdDecreaseLoan(DoCommandFlags flags, LoanCommand cmd, Money amount)
 }
 
 /**
+ * Change the auto repay loan status of your company.
+ * @param flags operation to perform
+ * @param cmd whether turn on or off
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdToggleAutoLoan(DoCommandFlags flags, LoanCommand cmd, Money amount)
+{
+	Company *c = Company::Get(_current_company);
+
+	if (flags.Test(DoCommandFlag::Execute)) {
+		c->auto_loan = cmd == LoanCommand::TurnOn;
+		if (c->auto_loan) c->auto_loan_threshold = amount;
+		c->AutoLoan();
+		InvalidateCompanyWindows(c);
+	}
+	return CommandCost();
+}
+
+/**
  * Sets the max loan amount of your company. Does not respect the global loan setting.
  * @param company the company ID.
  * @param amount the new max loan amount, will be rounded down to the multitude of LOAN_INTERVAL. If set to COMPANY_MAX_LOAN_DEFAULT reset the max loan to default(global) value.
