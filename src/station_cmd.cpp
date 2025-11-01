@@ -4073,7 +4073,7 @@ static void UpdateStationRating(Station *st)
 				uint32_t r = Random();
 				if (rating <= (int)GB(r, 0, 7)) {
 					/* Need to have int, otherwise it will just overflow etc. */
-					waiting = std::max((int)waiting - (int)((GB(r, 8, 2) - 1) * num_dests), 0);
+					waiting = std::max((int)waiting - (int)((GB(r, 8, 2) + 1) * num_dests), 0);
 					waiting_changed = true;
 				}
 			}
