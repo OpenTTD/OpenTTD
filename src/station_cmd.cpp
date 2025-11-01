@@ -4477,6 +4477,24 @@ CommandCost CmdRenameStation(DoCommandFlags flags, StationID station_id, const s
 }
 
 /**
+ * Check if a tile is the base tile of another station
+ * @param tile the tile to check
+ * @param wp pointer to the currently active waypoint
+ * @return true if the tile is the base tile of another station
+ */
+bool IsOtherStationBaseTile (TileIndex tile, Station *st)
+{
+	bool other_station = false;
+	ForAllStationsRadius(tile, 0, [&](BaseStation *s) {
+		if (s != nullptr) {
+			if (s != st && s->xy == tile) other_station = true;
+		}
+	});
+	if (other_station) return true;
+	return false;
+}
+
+/**
  * Move a station name.
  * @param flags type of operation
  * @param station_id id of the station
@@ -4497,6 +4515,8 @@ std::tuple<CommandCost, StationID> CmdMoveStationName(DoCommandFlags flags, Stat
 	if (!r->PtInExtendedRect(TileX(tile), TileY(tile))) {
 		return { CommandCost(STR_ERROR_SITE_UNSUITABLE), StationID::Invalid() };
 	}
+
+	if (IsOtherStationBaseTile(tile, st)) return { CommandCost(STR_ERROR_SITE_UNSUITABLE), StationID::Invalid() };
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		st->MoveSign(tile);

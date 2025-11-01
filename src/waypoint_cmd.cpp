@@ -20,6 +20,7 @@
 #include "strings_func.h"
 #include "viewport_func.h"
 #include "viewport_kdtree.h"
+#include "station_kdtree.h"
 #include "window_func.h"
 #include "timer/timer_game_calendar.h"
 #include "vehicle_func.h"
@@ -611,6 +612,24 @@ CommandCost CmdRenameWaypoint(DoCommandFlags flags, StationID waypoint_id, const
 }
 
 /**
+ * Check if a tile is the base tile of another station
+ * @param tile the tile to check
+ * @param wp pointer to the currently active waypoint
+ * @return true if the tile is the base tile of another station
+ */
+bool IsOtherStationBaseTile (TileIndex tile, Waypoint *wp)
+{
+	bool other_station = false;
+	ForAllStationsRadius(tile, 0, [&](BaseStation *st) {
+		if (st != nullptr) {
+			if (st != wp && st->xy == tile) other_station = true;
+		}
+	});
+	if (other_station) return true;
+	return false;
+}
+
+/**
  * Move a waypoint name.
  * @param flags type of operation
  * @param waypoint_id id of waypoint
@@ -628,7 +647,7 @@ std::tuple<CommandCost, StationID> CmdMoveWaypointName(DoCommandFlags flags, Sta
 	}
 
 	if (!IsTileType(tile, MP_STATION)) return { CommandCost(STR_ERROR_SITE_UNSUITABLE), StationID::Invalid() };
-	if (GetStationIndex(tile) != waypoint_id) return { CommandCost(STR_ERROR_SITE_UNSUITABLE), StationID::Invalid() };
+	if (IsOtherStationBaseTile(tile, wp)) return { CommandCost(STR_ERROR_SITE_UNSUITABLE), StationID::Invalid() };
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		wp->MoveSign(tile);
