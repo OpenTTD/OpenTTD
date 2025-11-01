@@ -16,6 +16,7 @@ enum WaypointWidgets : WidgetID {
 	WID_W_VIEWPORT,      ///< The viewport on this waypoint.
 	WID_W_CENTER_VIEW,   ///< Center the main view on this waypoint.
 	WID_W_RENAME,        ///< Rename this waypoint.
+	WID_W_MOVE,          ///< Move this waypoint.
 	WID_W_SHOW_VEHICLES, ///< Show the vehicles visiting this waypoint.
 	WID_W_CATCHMENT,     ///< Coverage button.
 };

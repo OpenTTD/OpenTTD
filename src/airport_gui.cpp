@@ -37,6 +37,7 @@
 #include "timer/timer_game_calendar.h"
 
 #include "widgets/airport_widget.h"
+#include "widgets/station_widget.h"
 
 #include "table/strings.h"
 

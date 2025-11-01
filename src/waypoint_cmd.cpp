@@ -16,9 +16,11 @@
 #include "waypoint_base.h"
 #include "pathfinder/yapf/yapf_cache.h"
 #include "pathfinder/water_regions.h"
+#include "tilehighlight_func.h"
 #include "strings_func.h"
 #include "viewport_func.h"
 #include "viewport_kdtree.h"
+#include "station_kdtree.h"
 #include "window_func.h"
 #include "timer/timer_game_calendar.h"
 #include "vehicle_func.h"
@@ -607,4 +609,63 @@ CommandCost CmdRenameWaypoint(DoCommandFlags flags, StationID waypoint_id, const
 		wp->UpdateVirtCoord();
 	}
 	return CommandCost();
+}
+
+/**
+ * Check if a tile is the base tile of another station
+ * @param tile the tile to check
+ * @param wp pointer to the currently active waypoint
+ * @return true if the tile is the base tile of another station
+ */
+bool IsOtherStationBaseTile (TileIndex tile, Waypoint *wp)
+{
+	bool other_station = false;
+	ForAllStationsRadius(tile, 0, [&](BaseStation *st) {
+		if (st != nullptr) {
+			if (st != wp && st->xy == tile) other_station = true;
+		}
+	});
+	if (other_station) return true;
+	return false;
+}
+
+/**
+ * Move a waypoint name.
+ * @param flags type of operation
+ * @param waypoint_id id of waypoint
+ * @param tile to move the waypoint name to
+ * @return the cost of this operation or an error
+ */
+std::tuple<CommandCost, StationID> CmdMoveWaypointName(DoCommandFlags flags, StationID waypoint_id, TileIndex tile)
+{
+	Waypoint *wp = Waypoint::GetIfValid(waypoint_id);
+	if (wp == nullptr) return { CMD_ERROR, StationID::Invalid() };
+
+	if (wp->owner != OWNER_NONE) {
+		CommandCost ret = CheckOwnership(wp->owner);
+		if (ret.Failed()) return { ret, StationID::Invalid() };
+	}
+
+	if (!IsTileType(tile, MP_STATION)) return { CommandCost(STR_ERROR_SITE_UNSUITABLE), StationID::Invalid() };
+	if (IsOtherStationBaseTile(tile, wp)) return { CommandCost(STR_ERROR_SITE_UNSUITABLE), StationID::Invalid() };
+
+	if (flags.Test(DoCommandFlag::Execute)) {
+		wp->MoveSign(tile);
+
+		wp->UpdateVirtCoord();
+	}
+	return { CommandCost(), waypoint_id };
+}
+
+/**
+ * Callback function that is called after a name is moved
+ * @param result of the operation
+ */
+void CcMoveWaypointName(Commands, const CommandCost &result, StationID waypoint_id)
+{
+	if (result.Failed()) return;
+
+	ResetObjectToPlace();
+	Waypoint *wp = Waypoint::Get(waypoint_id);
+	SetViewportCatchmentWaypoint(wp, false);
 }

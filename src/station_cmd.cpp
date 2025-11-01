@@ -29,6 +29,7 @@
 #include "road_internal.h" /* For drawing catenary/checking road removal */
 #include "autoslope.h"
 #include "water.h"
+#include "tilehighlight_func.h"
 #include "strings_func.h"
 #include "clear_func.h"
 #include "timer/timer_game_calendar.h"
@@ -4474,6 +4475,69 @@ CommandCost CmdRenameStation(DoCommandFlags flags, StationID station_id, const s
 
 	return CommandCost();
 }
+
+/**
+ * Check if a tile is the base tile of another station
+ * @param tile the tile to check
+ * @param wp pointer to the currently active waypoint
+ * @return true if the tile is the base tile of another station
+ */
+bool IsOtherStationBaseTile (TileIndex tile, Station *st)
+{
+	bool other_station = false;
+	ForAllStationsRadius(tile, 0, [&](BaseStation *s) {
+		if (s != nullptr) {
+			if (s != st && s->xy == tile) other_station = true;
+		}
+	});
+	if (other_station) return true;
+	return false;
+}
+
+/**
+ * Move a station name.
+ * @param flags type of operation
+ * @param station_id id of the station
+ * @param tile to move the station name to
+ * @return the cost of this operation or an error
+ */
+std::tuple<CommandCost, StationID> CmdMoveStationName(DoCommandFlags flags, StationID station_id, TileIndex tile)
+{
+	Station *st = Station::GetIfValid(station_id);
+	if (st == nullptr) return { CMD_ERROR, StationID::Invalid() };
+
+	if (st->owner != OWNER_NONE) {
+		CommandCost ret = CheckOwnership(st->owner);
+		if (ret.Failed()) return { ret, StationID::Invalid() };
+	}
+
+	const StationRect *r = &st->rect;
+	if (!r->PtInExtendedRect(TileX(tile), TileY(tile))) {
+		return { CommandCost(STR_ERROR_SITE_UNSUITABLE), StationID::Invalid() };
+	}
+
+	if (IsOtherStationBaseTile(tile, st)) return { CommandCost(STR_ERROR_SITE_UNSUITABLE), StationID::Invalid() };
+
+	if (flags.Test(DoCommandFlag::Execute)) {
+		st->MoveSign(tile);
+
+		st->UpdateVirtCoord();
+	}
+	return { CommandCost(), station_id };
+}
+
+/**
+* Callback function that is called after a name is moved
+* @param result of the operation
+*/
+	void CcMoveStationName(Commands, const CommandCost &result, StationID station_id)
+	{
+		if (result.Failed()) return;
+
+		ResetObjectToPlace();
+		Station *st = Station::Get(station_id);
+		SetViewportStationRect(st, false);
+	}
 
 static void AddNearbyStationsByCatchment(TileIndex tile, StationList &stations, StationList &nearby)
 {

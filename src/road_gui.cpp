@@ -46,6 +46,8 @@
 #include "timer/timer_game_calendar.h"
 
 #include "widgets/road_widget.h"
+#include "widgets/station_widget.h"
+#include "widgets/waypoint_widget.h"
 
 #include "table/strings.h"
 
@@ -666,7 +668,16 @@ struct BuildRoadToolbarWindow : Window {
 
 	void OnPlaceObjectAbort() override
 	{
+		const Window *w = _focused_window;
+
 		if (_game_mode != GM_EDITOR && (this->IsWidgetLowered(WID_ROT_BUS_STATION) || this->IsWidgetLowered(WID_ROT_TRUCK_STATION))) SetViewportCatchmentStation(nullptr, true);
+		if (_game_mode != GM_EDITOR && this->IsWidgetLowered(WID_ROT_BUILD_WAYPOINT)) {
+			if (w == nullptr || w->window_class != WC_WAYPOINT_VIEW) {
+				SetViewportCatchmentWaypoint(nullptr, true);
+			} else if (w->IsWidgetLowered(WID_W_MOVE)) {
+				SetViewportCatchmentWaypoint(nullptr, true);
+			}
+		}
 
 		this->RaiseButtons();
 		this->SetWidgetDisabledState(WID_ROT_REMOVE, true);

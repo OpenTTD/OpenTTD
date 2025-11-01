@@ -34,6 +34,7 @@
 #include "timer/timer_game_calendar.h"
 
 #include "widgets/dock_widget.h"
+#include "widgets/station_widget.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
