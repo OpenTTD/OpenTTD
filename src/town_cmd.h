@@ -28,6 +28,7 @@ CommandCost CmdTownSetText(DoCommandFlags flags, TownID town_id, const EncodedSt
 CommandCost CmdExpandTown(DoCommandFlags flags, TownID town_id, uint32_t grow_amount, TownExpandModes modes);
 CommandCost CmdDeleteTown(DoCommandFlags flags, TownID town_id);
 CommandCost CmdPlaceHouse(DoCommandFlags flags, TileIndex tile, HouseID house, bool house_protected);
+CommandCost CmdPlaceHouseArea(DoCommandFlags flags, TileIndex tile, TileIndex start_tile, HouseID house, bool is_protected, bool diagonal);
 
 DEF_CMD_TRAIT(CMD_FOUND_TOWN,       CmdFoundTown,      CommandFlags({CommandFlag::Deity, CommandFlag::NoTest}),  CMDT_LANDSCAPE_CONSTRUCTION) // founding random town can fail only in exec run
 DEF_CMD_TRAIT(CMD_RENAME_TOWN,      CmdRenameTown,     CommandFlags({CommandFlag::Deity, CommandFlag::Server}),  CMDT_OTHER_MANAGEMENT)
@@ -39,6 +40,7 @@ DEF_CMD_TRAIT(CMD_TOWN_SET_TEXT,    CmdTownSetText,    CommandFlags({CommandFlag
 DEF_CMD_TRAIT(CMD_EXPAND_TOWN,      CmdExpandTown,     CommandFlags({CommandFlag::Deity}),                       CMDT_LANDSCAPE_CONSTRUCTION)
 DEF_CMD_TRAIT(CMD_DELETE_TOWN,      CmdDeleteTown,     CommandFlags({CommandFlag::Offline}),                     CMDT_LANDSCAPE_CONSTRUCTION)
 DEF_CMD_TRAIT(CMD_PLACE_HOUSE,      CmdPlaceHouse,     CommandFlags({CommandFlag::Deity}),                       CMDT_OTHER_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_PLACE_HOUSE_AREA, CmdPlaceHouseArea, CommandFlags({CommandFlag::Deity}),                       CMDT_OTHER_MANAGEMENT)
 
 CommandCallback CcFoundTown;
 void CcFoundRandomTown(Commands cmd, const CommandCost &result, Money, TownID town_id);
