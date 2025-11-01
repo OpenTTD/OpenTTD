@@ -55,7 +55,7 @@ StringID GetEngineCategoryName(EngineID engine)
 static constexpr NWidgetPart _nested_engine_preview_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE),
-		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE), SetStringTip(STR_ENGINE_PREVIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, WID_EP_CAPTION), SetToolTip(STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE),
 		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.modalpopup),
@@ -66,17 +66,35 @@ static constexpr NWidgetPart _nested_engine_preview_widgets[] = {
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
+	NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_EP_PREV), SetStringTip(STR_GOAL_QUESTION_BUTTON_PREVIOUS), SetFill(1, 0),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_EP_NEXT), SetStringTip(STR_GOAL_QUESTION_BUTTON_NEXT), SetFill(1, 0),
+	EndContainer(),
 };
 
 struct EnginePreviewWindow : Window {
 	int vehicle_space = 0; // The space to show the vehicle image
+	size_t index = 0;
+	std::vector<EngineID> engines;
 
-	EnginePreviewWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
+	EnginePreviewWindow(WindowDesc &desc, EngineID engine) : Window(desc)
 	{
-		this->InitNested(window_number);
+		this->engines.push_back(engine);
+
+		this->InitNested();
 
 		/* There is no way to recover the window; so disallow closure via DEL; unless SHIFT+DEL */
 		this->flags.Set(WindowFlag::Sticky);
+	}
+
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
+	{
+		if (widget == WID_EP_CAPTION) {
+			if (this->engines.size() <= 1) return GetString(STR_ENGINE_PREVIEW_CAPTION);
+			return GetString(STR_ENGINE_PREVIEW_CAPTION_COUNT, this->index + 1, this->engines.size());
+		}
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -84,11 +102,11 @@ struct EnginePreviewWindow : Window {
 		if (widget != WID_EP_QUESTION) return;
 
 		/* Get size of engine sprite, on loan from depot_gui.cpp */
-		EngineID engine = static_cast<EngineID>(this->window_number);
 		EngineImageType image_type = EIT_PREVIEW;
 		uint x, y;
 		int x_offs, y_offs;
 
+		EngineID engine = this->engines.front();
 		const Engine *e = Engine::Get(engine);
 		switch (e->type) {
 			default: NOT_REACHED();
@@ -97,9 +115,11 @@ struct EnginePreviewWindow : Window {
 			case VEH_SHIP:     GetShipSpriteSize(    engine, x, y, x_offs, y_offs, image_type); break;
 			case VEH_AIRCRAFT: GetAircraftSpriteSize(engine, x, y, x_offs, y_offs, image_type); break;
 		}
+
 		this->vehicle_space = std::max<int>(ScaleSpriteTrad(40), y - y_offs);
 
 		size.width = std::max(size.width, x + std::abs(x_offs));
+
 		size.height = GetStringHeight(GetString(STR_ENGINE_PREVIEW_MESSAGE, GetEngineCategoryName(engine)), size.width) + WidgetDimensions::scaled.vsep_wide + GetCharacterHeight(FS_NORMAL) + this->vehicle_space;
 		size.height += GetStringHeight(GetEngineInfoString(engine), size.width);
 	}
@@ -108,7 +128,9 @@ struct EnginePreviewWindow : Window {
 	{
 		if (widget != WID_EP_QUESTION) return;
 
-		EngineID engine = static_cast<EngineID>(this->window_number);
+		if (this->index >= this->engines.size()) return;
+
+		EngineID engine = this->engines[index];
 		int y = DrawStringMultiLine(r, GetString(STR_ENGINE_PREVIEW_MESSAGE, GetEngineCategoryName(engine)), TC_FROMSTRING, SA_HOR_CENTER | SA_TOP) + WidgetDimensions::scaled.vsep_wide;
 
 		DrawString(r.left, r.right, y, GetString(STR_ENGINE_NAME, PackEngineNameDParam(engine, EngineNameContext::PreviewNews)), TC_BLACK, SA_HOR_CENTER);
@@ -124,10 +146,26 @@ struct EnginePreviewWindow : Window {
 	{
 		switch (widget) {
 			case WID_EP_YES:
-				Command<CMD_WANT_ENGINE_PREVIEW>::Post(static_cast<EngineID>(this->window_number));
+				if (this->index < this->engines.size()) {
+					Command<CMD_WANT_ENGINE_PREVIEW>::Post(this->engines[this->index]);
+				}
 				[[fallthrough]];
+
 			case WID_EP_NO:
-				if (!_shift_pressed) this->Close();
+				if (!_shift_pressed) {
+					this->engines.erase(this->engines.begin() + this->index);
+					this->InvalidateData();
+				}
+				break;
+
+			case WID_EP_PREV:
+				this->index = (this->index + this->engines.size() - 1) % this->engines.size();
+				this->SetDirty();
+				break;
+
+			case WID_EP_NEXT:
+				this->index = (this->index + 1) % this->engines.size();
+				this->SetDirty();
 				break;
 		}
 	}
@@ -136,8 +174,22 @@ struct EnginePreviewWindow : Window {
 	{
 		if (!gui_scope) return;
 
-		EngineID engine = static_cast<EngineID>(this->window_number);
-		if (Engine::Get(engine)->preview_company != _local_company) this->Close();
+		/* Remove engines that are no longer eligible for preview. */
+		for (auto it = this->engines.begin(); it != this->engines.end(); /* nothing */) {
+			if (Engine::Get(*it)->preview_company != _local_company) {
+				it = this->engines.erase(it);
+			} else {
+				++it;
+			}
+		}
+
+		/* If no engines are remaining, close the window. */
+		if (this->engines.empty()) this->Close();
+
+		/* Ensure selection is valid. */
+		if (this->index >= this->engines.size()) this->index = this->engines.size() - 1;
+
+		this->SetWidgetsDisabledState(this->engines.size() <= 1, WID_EP_PREV, WID_EP_NEXT);
 	}
 };
 
@@ -151,7 +203,13 @@ static WindowDesc _engine_preview_desc(
 
 void ShowEnginePreviewWindow(EngineID engine)
 {
-	AllocateWindowDescFront<EnginePreviewWindow>(_engine_preview_desc, engine);
+	EnginePreviewWindow *w = dynamic_cast<EnginePreviewWindow *>(FindWindowByClass(WC_ENGINE_PREVIEW));
+	if (w == nullptr) {
+		new EnginePreviewWindow(_engine_preview_desc, engine);
+	} else {
+		w->engines.push_back(engine);
+		w->InvalidateData();
+	}
 }
 
 /**
