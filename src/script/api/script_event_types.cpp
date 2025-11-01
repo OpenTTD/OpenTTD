@@ -19,6 +19,7 @@
 #include "../../economy_cmd.h"
 #include "../../engine_cmd.h"
 #include "../../3rdparty/nlohmann/json.hpp"
+#include "../../company_base.h"
 
 #include "table/strings.h"
 
@@ -108,6 +109,11 @@ bool ScriptEventEnginePreview::AcceptPreview()
 	EnforceCompanyModeValid(false);
 	if (!this->IsEngineValid()) return false;
 	return ScriptObject::Command<CMD_WANT_ENGINE_PREVIEW>::Do(this->engine);
+}
+
+void ScriptEventEnginePreviewAccepted::SetCustomBehaviorOnPreviewEnd(bool custom_behavior_on_preview_end) {
+	Engine *e = Engine::Get(this->engine);
+	e->custom_behavior_on_preview_end = custom_behavior_on_preview_end;
 }
 
 bool ScriptEventCompanyAskMerger::AcceptMerger()

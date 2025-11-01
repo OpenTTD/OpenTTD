@@ -24,6 +24,7 @@ CommandCost CmdRenameCompany(DoCommandFlags flags, const std::string &text);
 CommandCost CmdRenamePresident(DoCommandFlags flags, const std::string &text);
 CommandCost CmdSetCompanyManagerFace(DoCommandFlags flags, uint style, uint32_t bits);
 CommandCost CmdSetCompanyColour(DoCommandFlags flags, LiveryScheme scheme, bool primary, Colours colour);
+CommandCost CmdSetCompanyBlockPreview(DoCommandFlags flags, uint8_t quarters);
 
 DEF_CMD_TRAIT(CMD_COMPANY_CTRL,             CmdCompanyCtrl,           CommandFlags({CommandFlag::Spectator, CommandFlag::ClientID, CommandFlag::NoEst}), CMDT_SERVER_SETTING)
 DEF_CMD_TRAIT(CMD_COMPANY_ALLOW_LIST_CTRL,  CmdCompanyAllowListCtrl,  CommandFlag::NoEst,                    CMDT_SERVER_SETTING)
@@ -32,5 +33,6 @@ DEF_CMD_TRAIT(CMD_RENAME_COMPANY,           CmdRenameCompany,         {},       
 DEF_CMD_TRAIT(CMD_RENAME_PRESIDENT,         CmdRenamePresident,       {},                                          CMDT_COMPANY_SETTING)
 DEF_CMD_TRAIT(CMD_SET_COMPANY_MANAGER_FACE, CmdSetCompanyManagerFace, {},                                          CMDT_COMPANY_SETTING)
 DEF_CMD_TRAIT(CMD_SET_COMPANY_COLOUR,       CmdSetCompanyColour,      {},                                          CMDT_COMPANY_SETTING)
+DEF_CMD_TRAIT(CMD_SET_COMPANY_BLOCK_PREVIEW,CmdSetCompanyBlockPreview,{},                                          CMDT_COMPANY_SETTING)
 
 #endif /* COMPANY_CMD_H */

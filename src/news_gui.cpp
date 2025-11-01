@@ -679,12 +679,17 @@ private:
 		assert(std::holds_alternative<EngineID>(ni->ref1));
 		EngineID engine = std::get<EngineID>(this->ni->ref1);
 
+		const EnginePreviewNewsInformation *epni = static_cast<const EnginePreviewNewsInformation*>(this->ni->data.get());
+
 		switch (widget) {
 			case WID_N_VEH_TITLE:
-				return GetString(STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE, GetEngineCategoryName(engine));
+				return GetString(epni->title, GetEngineCategoryName(engine));
 
-			case WID_N_VEH_NAME:
-				return GetString(STR_NEWS_NEW_VEHICLE_TYPE, PackEngineNameDParam(engine, EngineNameContext::PreviewNews));
+			case WID_N_VEH_NAME: {
+				std::string message = GetString(STR_NEWS_NEW_VEHICLE_TYPE, PackEngineNameDParam(engine, EngineNameContext::PreviewNews));
+				for (std::string s : epni->additional_messages) message = s + message;
+				return message;
+			}
 
 			default:
 				NOT_REACHED();
@@ -879,9 +884,10 @@ NewsItem::NewsItem(EncodedString &&headline, NewsType type, NewsStyle style, New
 std::string NewsItem::GetStatusText() const
 {
 	if (this->data != nullptr) {
-		/* CompanyNewsInformation is the only type of additional data used. */
-		const CompanyNewsInformation &cni = *static_cast<const CompanyNewsInformation*>(this->data.get());
-		return GetString(STR_MESSAGE_NEWS_FORMAT, cni.title, this->headline.GetDecodedString());
+		const CompanyNewsInformation *cni = dynamic_cast<const CompanyNewsInformation*>(this->data.get());
+		if (cni != nullptr) {
+			return GetString(STR_MESSAGE_NEWS_FORMAT, cni->title, this->headline.GetDecodedString());
+		}
 	}
 
 	return this->headline.GetDecodedString();
@@ -944,7 +950,7 @@ uint32_t SerialiseNewsReference(const NewsReference &reference)
  * @param text The text of the news message.
  * @return the cost of this operation or an error
  */
-CommandCost CmdCustomNewsItem(DoCommandFlags flags, NewsType type, CompanyID company, NewsReference reference, const EncodedString &text)
+CommandCost CmdCustomNewsItem(DoCommandFlags flags, NewsType type, CompanyID company, NewsReference reference, StringID title, const EncodedString &text, const EncodedString &add_msg1, const EncodedString &add_msg2)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 
@@ -967,7 +973,14 @@ CommandCost CmdCustomNewsItem(DoCommandFlags flags, NewsType type, CompanyID com
 	if (company != INVALID_OWNER && company != _local_company) return CommandCost();
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		AddNewsItem(EncodedString{text}, type, NewsStyle::Normal, {}, reference, {});
+		if (title == INVALID_STRING_ID) {
+			AddNewsItem(EncodedString{text}, type, NewsStyle::Normal, {}, reference, {});
+		} else {
+			auto epni = std::make_unique<EnginePreviewNewsInformation>(title);
+			epni->AddAdditionalMessage(add_msg1);
+			epni->AddAdditionalMessage(add_msg2);
+			AddNewsItem(EncodedString{text}, type, NewsStyle::Normal, {}, reference, {}, std::move(epni));
+		}
 	}
 
 	return CommandCost();
