@@ -309,7 +309,7 @@ const std::initializer_list<GUIBridgeList::SortFunction * const> BuildBridgeWind
 };
 
 /** Widgets of the bridge gui. */
-static constexpr NWidgetPart _nested_build_bridge_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_build_bridge_widgets = {
 	/* Header */
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),

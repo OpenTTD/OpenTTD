@@ -275,7 +275,7 @@ struct GoalListWindow : public Window {
 };
 
 /** Widgets of the #GoalListWindow. */
-static constexpr NWidgetPart _nested_goals_list_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_goals_list_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_GOAL_CAPTION),

@@ -1307,7 +1307,7 @@ struct RefitWindow : public Window {
 	}
 };
 
-static constexpr NWidgetPart _nested_vehicle_refit_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_vehicle_refit_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_VR_CAPTION),
@@ -1595,7 +1595,7 @@ void ChangeVehicleViewWindow(VehicleID from_index, VehicleID to_index)
 	ChangeVehicleWindow(WC_VEHICLE_TIMETABLE, from_index, to_index);
 }
 
-static constexpr NWidgetPart _nested_vehicle_list[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_vehicle_list = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_VL_CAPTION_SELECTION),
@@ -2324,7 +2324,7 @@ static_assert(WID_VD_DETAILS_CAPACITY_OF_EACH == WID_VD_DETAILS_CARGO_CARRIED + 
 static_assert(WID_VD_DETAILS_TOTAL_CARGO      == WID_VD_DETAILS_CARGO_CARRIED + TDW_TAB_TOTALS  );
 
 /** Vehicle details widgets (other than train). */
-static constexpr NWidgetPart _nested_nontrain_vehicle_details_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_nontrain_vehicle_details_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_VD_CAPTION),
@@ -2347,7 +2347,7 @@ static constexpr NWidgetPart _nested_nontrain_vehicle_details_widgets[] = {
 };
 
 /** Train details widgets. */
-static constexpr NWidgetPart _nested_train_vehicle_details_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_train_vehicle_details_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_VD_CAPTION), SetStringTip(STR_VEHICLE_DETAILS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -2820,7 +2820,7 @@ static void ShowVehicleDetailsWindow(const Vehicle *v)
 /* Unified vehicle GUI - Vehicle View Window */
 
 /** Vehicle view widgets. */
-static constexpr NWidgetPart _nested_vehicle_view_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_vehicle_view_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_VV_RENAME), SetAspect(WidgetDimensions::ASPECT_RENAME), SetSpriteTip(SPR_RENAME),

@@ -937,7 +937,7 @@ const std::initializer_list<GUIStoryPageElementList::SortFunction * const> Story
 	&PageElementOrderSorter,
 };
 
-static constexpr NWidgetPart _nested_story_book_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_story_book_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_SB_CAPTION),

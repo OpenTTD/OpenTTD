@@ -759,7 +759,7 @@ const std::initializer_list<GUIStationList::SortFunction * const> CompanyStation
 	&StationRatingMinSorter
 };
 
-static constexpr NWidgetPart _nested_company_stations_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_company_stations_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_STL_CAPTION),
@@ -811,7 +811,7 @@ void ShowCompanyStations(CompanyID company)
 	AllocateWindowDescFront<CompanyStationsWindow>(_company_stations_desc, company);
 }
 
-static constexpr NWidgetPart _nested_station_view_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_station_view_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_SV_RENAME), SetAspect(WidgetDimensions::ASPECT_RENAME), SetSpriteTip(SPR_RENAME, STR_STATION_VIEW_RENAME_TOOLTIP),
@@ -2269,7 +2269,7 @@ static void FindStationsNearby(TileArea ta, bool distant_join)
 	}
 }
 
-static constexpr NWidgetPart _nested_select_station_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_select_station_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, WID_JS_CAPTION), SetStringTip(STR_JOIN_STATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
