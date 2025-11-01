@@ -225,15 +225,15 @@ static std::shared_ptr<GameStrings> LoadTranslations()
 		if (!tar_filename.empty() && (iter = _tar_list[GAME_DIR].find(tar_filename)) != _tar_list[GAME_DIR].end()) {
 			/* The main script is in a tar file, so find all files that
 			 * are in the same tar and add them to the langfile scanner. */
-			for (const auto &tar : _tar_filelist[GAME_DIR]) {
+			for (const auto &[name, entry] : _tar_filelist[GAME_DIR]) {
 				/* Not in the same tar. */
-				if (tar.second.tar_filename != iter->first) continue;
+				if (entry.tar_filename != iter->first) continue;
 
 				/* Check the path and extension. */
-				if (tar.first.size() <= ldir.size() || tar.first.compare(0, ldir.size(), ldir) != 0) continue;
-				if (tar.first.compare(tar.first.size() - 4, 4, ".txt") != 0) continue;
+				if (!name.starts_with(ldir)) continue;
+				if (!name.ends_with(".txt")) continue;
 
-				scanner.AddFile(tar.first, 0, tar_filename);
+				scanner.AddFile(name, 0, tar_filename);
 			}
 		} else {
 			/* Scan filesystem */

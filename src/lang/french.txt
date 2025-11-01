@@ -2159,7 +2159,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Unité de hauteur{NBSP}: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Quand une hauteur est affichée dans l'interface utilisateur, utiliser l'unité sélectionnée
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Impérial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Métrique (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -3472,7 +3472,6 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Généra
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Création des rivières
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Création des zones rugueuses et rocheuses
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Génération des villes
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Génération des industries
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Création des objets inamovibles
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Création des arbres
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Configuration du jeu
@@ -5270,13 +5269,6 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Le débu
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... les deux extrémités du pont doivent être sur la terre ferme
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... pont trop long
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Le pont finirait en dehors de la carte
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Le pont est trop bas pour les gares
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Le pont est trop bas pour les arrêts de bus
-STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Le pont est trop bas pour le port
-STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Le pont est trop bas pour les bouées
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Le pont est trop bas pour les points de contrôle
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Le pont est trop bas pour les points de contrôle de route
-STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Ce pont est trop bas pour le verrouillage
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Impossible de construire un tunnel ici...

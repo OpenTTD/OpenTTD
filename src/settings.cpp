@@ -1547,7 +1547,7 @@ StringList GetGRFPresetList()
 
 	ConfigIniFile ini(_config_file);
 	for (const IniGroup &group : ini.groups) {
-		if (group.name.compare(0, 7, "preset-") == 0) {
+		if (group.name.starts_with("preset-")) {
 			list.push_back(group.name.substr(7));
 		}
 	}

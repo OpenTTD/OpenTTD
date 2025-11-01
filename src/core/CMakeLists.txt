@@ -22,7 +22,6 @@ add_files(
     pool_type.hpp
     random_func.cpp
     random_func.hpp
-    smallstack_type.hpp
     string_builder.cpp
     string_builder.hpp
     string_consumer.cpp

@@ -11,7 +11,6 @@
 #define STATION_TYPE_H
 
 #include "core/pool_type.hpp"
-#include "core/smallstack_type.hpp"
 #include "tilearea_type.h"
 
 using StationID = PoolID<uint16_t, struct StationIDTag, 64000, 0xFFFF>;
@@ -25,8 +24,6 @@ struct Station;
 struct RoadStop;
 struct StationSpec;
 struct Waypoint;
-
-using StationIDStack = SmallStack<StationID, StationID::BaseType, StationID::Invalid().base(), 8, StationID::End().base()>;
 
 /** Station types */
 enum class StationType : uint8_t {

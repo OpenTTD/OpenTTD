@@ -1675,7 +1675,7 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Eingin
 
 ###length 3
 
-###length 3
+###length 4
 
 STR_CONFIG_SETTING_SOUND                                        :Ljóð effektir
 STR_CONFIG_SETTING_INTERFACE                                    :Takførisflati

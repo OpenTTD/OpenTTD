@@ -100,7 +100,7 @@ public:
 		this->item_next = *this->bucket_list_iter;
 
 		SQInteger item_current = this->item_next;
-		FindNext();
+		this->FindNext();
 		return item_current;
 	}
 
@@ -139,7 +139,7 @@ public:
 		if (this->IsEnd()) return 0;
 
 		SQInteger item_current = this->item_next;
-		FindNext();
+		this->FindNext();
 		return item_current;
 	}
 
@@ -149,7 +149,7 @@ public:
 
 		/* If we remove the 'next' item, skip to the next */
 		if (item == this->item_next) {
-			FindNext();
+			this->FindNext();
 			return;
 		}
 	}
@@ -194,7 +194,7 @@ public:
 		this->item_next = *this->bucket_list_iter;
 
 		SQInteger item_current = this->item_next;
-		FindNext();
+		this->FindNext();
 		return item_current;
 	}
 
@@ -234,7 +234,7 @@ public:
 		if (this->IsEnd()) return 0;
 
 		SQInteger item_current = this->item_next;
-		FindNext();
+		this->FindNext();
 		return item_current;
 	}
 
@@ -244,7 +244,7 @@ public:
 
 		/* If we remove the 'next' item, skip to the next */
 		if (item == this->item_next) {
-			FindNext();
+			this->FindNext();
 			return;
 		}
 	}
@@ -277,7 +277,7 @@ public:
 		this->item_next = this->item_iter->first;
 
 		SQInteger item_current = this->item_next;
-		FindNext();
+		this->FindNext();
 		return item_current;
 	}
 
@@ -296,7 +296,7 @@ public:
 			return;
 		}
 		++this->item_iter;
-		if (this->item_iter != this->list->items.end()) item_next = this->item_iter->first;
+		if (this->item_iter != this->list->items.end()) this->item_next = this->item_iter->first;
 	}
 
 	SQInteger Next() override
@@ -304,7 +304,7 @@ public:
 		if (this->IsEnd()) return 0;
 
 		SQInteger item_current = this->item_next;
-		FindNext();
+		this->FindNext();
 		return item_current;
 	}
 
@@ -314,7 +314,7 @@ public:
 
 		/* If we remove the 'next' item, skip to the next */
 		if (item == this->item_next) {
-			FindNext();
+			this->FindNext();
 			return;
 		}
 	}
@@ -351,7 +351,7 @@ public:
 		this->item_next = this->item_iter->first;
 
 		SQInteger item_current = this->item_next;
-		FindNext();
+		this->FindNext();
 		return item_current;
 	}
 
@@ -375,7 +375,7 @@ public:
 		} else {
 			--this->item_iter;
 		}
-		if (this->item_iter != this->list->items.end()) item_next = this->item_iter->first;
+		if (this->item_iter != this->list->items.end()) this->item_next = this->item_iter->first;
 	}
 
 	SQInteger Next() override
@@ -383,7 +383,7 @@ public:
 		if (this->IsEnd()) return 0;
 
 		SQInteger item_current = this->item_next;
-		FindNext();
+		this->FindNext();
 		return item_current;
 	}
 
@@ -393,7 +393,7 @@ public:
 
 		/* If we remove the 'next' item, skip to the next */
 		if (item == this->item_next) {
-			FindNext();
+			this->FindNext();
 			return;
 		}
 	}
@@ -763,7 +763,7 @@ void ScriptList::RemoveList(ScriptList *list)
 	this->modifications++;
 
 	if (list == this) {
-		Clear();
+		this->Clear();
 	} else {
 		for (const auto &item : list->items) {
 			this->RemoveItem(item.first);
@@ -854,18 +854,32 @@ SQInteger ScriptList::_get(HSQUIRRELVM vm)
 SQInteger ScriptList::_set(HSQUIRRELVM vm)
 {
 	if (sq_gettype(vm, 2) != OT_INTEGER) return SQ_ERROR;
-	if (sq_gettype(vm, 3) != OT_INTEGER && sq_gettype(vm, 3) != OT_NULL) {
-		return sq_throwerror(vm, "you can only assign integers to this list");
-	}
 
-	SQInteger idx, val;
+	SQInteger idx;
 	sq_getinteger(vm, 2, &idx);
-	if (sq_gettype(vm, 3) == OT_NULL) {
-		this->RemoveItem(idx);
-		return 0;
+
+	/* Retrieve the return value */
+	SQInteger val;
+	switch (sq_gettype(vm, 3)) {
+		case OT_NULL:
+			this->RemoveItem(idx);
+			return 0;
+
+		case OT_BOOL: {
+			SQBool v;
+			sq_getbool(vm, 3, &v);
+			val = v ? 1 : 0;
+			break;
+		}
+
+		case OT_INTEGER:
+			sq_getinteger(vm, 3, &val);
+			break;
+
+		default:
+			return sq_throwerror(vm, "you can only assign integers to this list");
 	}
 
-	sq_getinteger(vm, 3, &val);
 	if (!this->HasItem(idx)) {
 		this->AddItem(idx, val);
 		return 0;

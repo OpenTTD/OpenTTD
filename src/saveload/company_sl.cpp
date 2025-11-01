@@ -445,11 +445,11 @@ public:
 		for (size_t i = 0; i < num_liveries; i++) {
 			SlObject(&c->livery[i], this->GetLoadDescription());
 			if (update_in_use && i != LS_DEFAULT) {
-				if (c->livery[i].in_use == 0) {
+				if (!c->livery[i].in_use.Any({Livery::Flag::Primary, Livery::Flag::Secondary})) {
 					c->livery[i].colour1 = c->livery[LS_DEFAULT].colour1;
 					c->livery[i].colour2 = c->livery[LS_DEFAULT].colour2;
 				} else {
-					c->livery[i].in_use = 3;
+					c->livery[i].in_use = {Livery::Flag::Primary, Livery::Flag::Secondary};
 				}
 			}
 		}

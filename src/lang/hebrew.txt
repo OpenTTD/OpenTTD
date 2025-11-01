@@ -1939,7 +1939,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :בינלאומ�
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :יחידות גובה: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :כאשר מוצגים גבהים השתמש ביחידות שנבחרו
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :בריטית (רגל)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :מטרי (מטר)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (מטר)
@@ -3082,7 +3082,6 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}יציר
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}יצירת נהרות
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}יצירת איזורים סלעיים
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}יצירת עיירה
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}יצירת תעשייה
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}יצירת מבנים בלתי ניידים
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}יצירת עצים
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}קביעת הגדרות המשחק

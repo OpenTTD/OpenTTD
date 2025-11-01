@@ -1829,7 +1829,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :มาตรฐ
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :หน่วยวัดความสูง: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :การแสดงหน่วยวัดความสูงเมื่อกดดูรายละเอียดของวัตถุต่างๆ
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :อิมพีเรียล (ฟุต)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :เมตริก (เมตร)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :มาตรฐานสากล (เมตร)

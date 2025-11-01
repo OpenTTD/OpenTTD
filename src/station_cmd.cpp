@@ -891,7 +891,10 @@ static CommandCost IsStationBridgeAboveOk(TileIndex tile, std::span<const Bridge
 		/* Get normal error message associated with clearing the tile. */
 		return Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlag::Auto, tile);
 	}
-	if (GetTileMaxZ(tile) + height > bridge_height) return CommandCost{GetBridgeTooLowMessageForStationType(type)};
+	if (GetTileMaxZ(tile) + height > bridge_height) {
+		int height_diff = (GetTileMaxZ(tile) + height - bridge_height) * TILE_HEIGHT_STEP;
+		return CommandCostWithParam(GetBridgeTooLowMessageForStationType(type), height_diff);
+	}
 
 	return CommandCost{};
 }
@@ -5200,14 +5203,14 @@ void FlowStatMap::FinalizeLocalConsumption(StationID self)
  * @return IDs of source stations for which the complete FlowStat, not only a
  *         share, has been erased.
  */
-StationIDStack FlowStatMap::DeleteFlows(StationID via)
+std::vector<StationID> FlowStatMap::DeleteFlows(StationID via)
 {
-	StationIDStack ret;
+	std::vector<StationID> ret;
 	for (FlowStatMap::iterator f_it = this->begin(); f_it != this->end();) {
 		FlowStat &s_flows = f_it->second;
 		s_flows.ChangeShare(via, INT_MIN);
 		if (s_flows.GetShares()->empty()) {
-			ret.Push(f_it->first);
+			ret.push_back(f_it->first);
 			this->erase(f_it++);
 		} else {
 			++f_it;

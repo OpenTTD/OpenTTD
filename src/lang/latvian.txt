@@ -2162,7 +2162,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI, starptautis
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Augstuma mērvienības: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Kad lietotāja saskarnē rāda augstumu, uzrādīt to norādītajās mērvienībās
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :impērijas, britu (pēda)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :metriskās (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI, starptautiskās (m)
@@ -3476,7 +3476,6 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Ainavu v
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Upes radīšana
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Nelīdzena un akmeņaina apvidus radīšana
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Pilsētas veidošana
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Nozares veidošana
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Objekta radīšana
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Koka radīšana
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Iestatīt spēli
@@ -5280,13 +5279,6 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Sākumam
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... abiem tilta galiem jābūt uz zemes
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... tilts ir pārāk garš
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Tilts beigtos ārpus kartes
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Tilts ir pārāk zems stacijai
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Tilts ir pārāk zems, ceļa pieturai
-STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Tilts ir pārāk zems piestātnei
-STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Tilts ir pārāk zems bojai
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Tilts ir pārāk zems dzelzceļa pieturas punktam
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Tilts ir pārāk zems ceļa punktam
-STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Tilts ir pārāk zems slūžām
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Šeit nevar būvēt tuneli...

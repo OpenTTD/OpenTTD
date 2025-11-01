@@ -853,7 +853,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Питӗ хӑв
 
 ###length 3
 
-###length 3
+###length 4
 
 STR_CONFIG_SETTING_INTERFACE                                    :Интерфейс
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Лартӑм

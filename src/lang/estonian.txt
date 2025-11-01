@@ -2163,7 +2163,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI-süsteem (kN
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Kõrgusühikud: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Liideses näidatakse kõrgust valitud mõõdustikus
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Inglise mõõdustik (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Meetermõõdustik (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI-süsteem (m)
@@ -3418,7 +3418,6 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Maastiku
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Jõgede tekitamine
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Mägise ja kivise maa-ala tekitamine
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Asulate tekitamine
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Tööstuse tekitamine
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Objekti tekitamine
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Puude tekitamine
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Mängu seadistamine

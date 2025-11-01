@@ -2125,7 +2125,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Мерни единици за височина: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Показваните височини ще бъдат изписвани в избраните мерни единици
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Имперски (фут)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Метрични (м)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (м)
@@ -3400,7 +3400,6 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Гене
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Генериране на реки
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Генериране на твърда и скална повърност
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Генерация на град
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Генерация на индустрията
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Генериране на обекти
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Генериране на дървета
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Настройване на играта

@@ -8,3 +8,5 @@ updates:
     actions:
       patterns:
       - "*"
+  commit-message:
+    prefix: "Upgrade: "
