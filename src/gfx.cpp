@@ -55,7 +55,7 @@ static uint8_t _stringwidth_table[FS_END][224]; ///< Cache containing width of o
 DrawPixelInfo *_cur_dpi;
 
 static void GfxMainBlitterViewport(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = nullptr, SpriteID sprite_id = SPR_CURSOR_MOUSE);
-static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = nullptr, SpriteID sprite_id = SPR_CURSOR_MOUSE, ZoomLevel zoom = ZoomLevel::Min);
+void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = nullptr, SpriteID sprite_id = SPR_CURSOR_MOUSE, ZoomLevel zoom = ZoomLevel::Min);
 
 static ReusableBuffer<uint8_t> _cursor_backup;
 
@@ -537,7 +537,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 		 * another size would be chosen it won't have truncated too little for
 		 * the truncation dots.
 		 */
-		truncation_layout.emplace(GetEllipsis(), INT32_MAX, line.GetVisualRun(0).GetFont()->fc->GetSize());
+		truncation_layout.emplace(GetEllipsis(), INT32_MAX, line.GetVisualRun(0).GetFont().GetFontCache().GetSize());
 		truncation_width = truncation_layout->GetBounds().width;
 
 		/* Is there enough space even for an ellipsis? */
@@ -593,16 +593,17 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 			const ParagraphLayouter::VisualRun &run = line.GetVisualRun(run_index);
 			const auto &glyphs = run.GetGlyphs();
 			const auto &positions = run.GetPositions();
-			const Font *f = run.GetFont();
+			const Font &f = run.GetFont();
 
-			FontCache *fc = f->fc;
-			TextColour colour = f->colour;
+			FontCache &fc = f.GetFontCache();
+			TextColour colour = f.colour;
 			if (colour == TC_INVALID || HasFlag(initial_colour, TC_FORCED)) colour = initial_colour;
 			bool colour_has_shadow = (colour & TC_NO_SHADE) == 0 && colour != TC_BLACK;
 			/* Update the last colour for the truncation ellipsis. */
 			last_colour = colour;
-			if (do_shadow && (!fc->GetDrawGlyphShadow() || !colour_has_shadow)) continue;
+			if (do_shadow && (!fc.GetDrawGlyphShadow() || !colour_has_shadow)) continue;
 			SetColourRemap(do_shadow ? TC_BLACK : colour);
+			int height = fc.GetAscender() - fc.GetDescender();
 
 			for (int i = 0; i < run.GetGlyphCount(); i++) {
 				GlyphID glyph = glyphs[i];
@@ -610,20 +611,24 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 				/* Not a valid glyph (empty) */
 				if (glyph == 0xFFFF) continue;
 
-				int begin_x = positions[i].left + left;
-				int end_x = positions[i].right + left;
-				int top = positions[i].top + y;
+				Rect r{
+					positions[i].left + left,
+					positions[i].top + y,
+					positions[i].right + left,
+					positions[i].top + y + height,
+				};
 
 				/* Truncated away. */
-				if (truncation && (begin_x < min_x || end_x > max_x)) continue;
+				if (truncation && (r.left < min_x || r.right > max_x)) continue;
+				/* Outside the clipping area. */
+				if (r.left > dpi_right || r.right < dpi_left) continue;
 
-				const Sprite *sprite = fc->GetGlyph(glyph);
-				/* Check clipping (the "+ 1" is for the shadow). */
-				if (begin_x + sprite->x_offs > dpi_right || begin_x + sprite->x_offs + sprite->width /* - 1 + 1 */ < dpi_left) continue;
-
-				if (do_shadow && (glyph & SPRITE_GLYPH) != 0) continue;
-
-				GfxMainBlitter(sprite, begin_x + (do_shadow ? shadow_offset : 0), top + (do_shadow ? shadow_offset : 0), BlitterMode::ColourRemap);
+				if (do_shadow) {
+					r = r.Translate(shadow_offset, shadow_offset);
+					fc.DrawGlyphShadow(glyph, r);
+				} else {
+					fc.DrawGlyph(glyph, r);
+				}
 			}
 		}
 		return last_colour;
@@ -949,10 +954,7 @@ Dimension GetStringListBoundingBox(std::span<const StringID> list, FontSize font
 void DrawCharCentered(char32_t c, const Rect &r, TextColour colour)
 {
 	SetColourRemap(colour);
-	GfxMainBlitter(GetGlyph(FS_NORMAL, c),
-		CentreBounds(r.left, r.right, GetCharacterWidth(FS_NORMAL, c)),
-		CentreBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)),
-		BlitterMode::ColourRemap);
+	DrawGlyph(FS_NORMAL, c, r.CentreTo(GetCharacterWidth(FS_NORMAL, c), GetCharacterHeight(FS_NORMAL)));
 }
 
 /**
@@ -1242,7 +1244,7 @@ static void GfxMainBlitterViewport(const Sprite *sprite, int x, int y, BlitterMo
 	GfxBlitter<ZOOM_BASE, false>(sprite, x, y, mode, sub, sprite_id, _cur_dpi->zoom);
 }
 
-static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub, SpriteID sprite_id, ZoomLevel zoom)
+void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub, SpriteID sprite_id, ZoomLevel zoom)
 {
 	GfxBlitter<1, true>(sprite, x, y, mode, sub, sprite_id, zoom);
 }

@@ -31,17 +31,17 @@ private:
 	void SetFontSize(int pixels);
 
 protected:
-	const Sprite *InternalGetGlyph(GlyphID key, bool aa) override;
+	TrueTypeFontCache::GlyphEntry *InternalGetGlyph(GlyphID key, bool aa) override;
 
 public:
 	Win32FontCache(FontSize fs, const LOGFONT &logfont, int pixels);
 	~Win32FontCache();
 	void ClearFontCache() override;
-	GlyphID MapCharToGlyph(char32_t key, bool allow_fallback = true) override;
+	GlyphID MapCharToGlyph(char32_t key) override;
 	std::string GetFontName() override { return this->fontname; }
 	const void *GetOSHandle() override { return &this->logfont; }
 };
 
-void LoadWin32Font(FontSize fs);
+void LoadWin32Font(FontSize fs, bool search, const std::string &font_name, std::span<const std::byte> os_handle);
 
 #endif /* FONT_WIN32_H */
