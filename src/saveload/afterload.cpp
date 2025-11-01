@@ -66,6 +66,7 @@
 #include "../timer/timer_game_economy.h"
 #include "../timer/timer_game_tick.h"
 #include "../picker_func.h"
+#include "../cheat_type.h"
 
 #include "saveload_internal.h"
 
@@ -792,6 +793,12 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_LINKGRAPH_SECONDS)) {
 		_settings_game.linkgraph.recalc_interval *= CalendarTime::SECONDS_PER_DAY;
 		_settings_game.linkgraph.recalc_time     *= CalendarTime::SECONDS_PER_DAY;
+	}
+
+	/* Convert the Magic Bulldozer cheat to settings. */
+	if (IsSavegameVersionBefore(SLV_REMOVE_MAGIC_BULLDOZER)) {
+		_settings_game.construction.bulldoze_industries = _cheats.magic_bulldozer.value;
+		_settings_game.construction.bulldoze_objects = _cheats.magic_bulldozer.value;
 	}
 
 	/* Load the sprites */
