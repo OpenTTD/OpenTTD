@@ -1808,11 +1808,26 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 	RoadTypes already_in_dropdown;
 	std::vector<RoadType> roadtypes;
 
+	if (c->favourite_roadtypes.Any()) {
+		bool has_added_favourite_type = false;
+		for (RoadType rt : c->favourite_roadtypes) {
+			if (!used_roadtypes.Test(rt)) continue;
+			roadtypes.push_back(rt);
+			has_added_favourite_type = true;
+		}
+		if (has_added_favourite_type) {
+			roadtypes.push_back(ROADTYPE_SUBLIST_END); ///< Mark end of sub list.
+		}
+	}
+
 	roadtypes.insert(roadtypes.end(), _sorted_roadtypes.begin(), _sorted_roadtypes.end());
+
+	size_t num_dividers = 0;
 
 	for (const auto &rt : roadtypes) {
 		if (rt == ROADTYPE_SUBLIST_END) {
 			list.push_back(MakeDropDownListDividerItem());
+			num_dividers += 1;
 			continue;
 		}
 
@@ -1836,7 +1851,8 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 		}
 	}
 
-	if (list.empty()) {
+	if (list.size() <= num_dividers) {
+		list.clear();
 		/* Empty dropdowns are not allowed */
 		list.push_back(MakeDropDownListStringItem(STR_NONE, INVALID_ROADTYPE, true));
 	}
