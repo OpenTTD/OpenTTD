@@ -267,6 +267,7 @@ enum class Commands : uint8_t {
 
 	SetCompanyManagerFace, ///< set the manager's face of the company
 	SetCompanyColour, ///< set the colour of the company
+	SetRailRoadTypeHidden, ///< set visibility of the rail/road/tram type in the dropdown
 
 	IncreaseLoan, ///< increase the loan from the bank
 	DecreaseLoan, ///< decrease the loan from the bank
