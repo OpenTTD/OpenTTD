@@ -42,6 +42,7 @@
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
 #include "picker_gui.h"
+#include "toolbar_gui.h"
 
 #include "station_map.h"
 #include "tunnelbridge_map.h"
@@ -838,7 +839,6 @@ struct BuildRailToolbarWindow : Window {
 	static EventState RailToolbarGlobalHotkeys(int hotkey)
 	{
 		if (_game_mode != GM_NORMAL) return ES_NOT_HANDLED;
-		extern RailType _last_built_railtype;
 		Window *w = ShowBuildRailToolbar(_last_built_railtype);
 		if (w == nullptr) return ES_NOT_HANDLED;
 		return w->OnHotkey(hotkey);
@@ -1927,11 +1927,15 @@ void InitializeRailGui()
  */
 void ReinitGuiAfterToggleElrail(bool disable)
 {
-	extern RailType _last_built_railtype;
-	if (disable && _last_built_railtype == RAILTYPE_ELECTRIC) {
-		_last_built_railtype = _cur_railtype = RAILTYPE_RAIL;
-		BuildRailToolbarWindow *w = dynamic_cast<BuildRailToolbarWindow *>(FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL));
-		if (w != nullptr) w->ModifyRailType(_cur_railtype);
+	if (disable) {
+		if (_last_built_railtype[0] == RAILTYPE_ELECTRIC) {
+			_last_built_railtype[0] = _cur_railtype = RAILTYPE_RAIL;
+			_last_built_railtype[1] = INVALID_RAILTYPE;
+			BuildRailToolbarWindow *w = dynamic_cast<BuildRailToolbarWindow *>(FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL));
+			if (w != nullptr) w->ModifyRailType(_cur_railtype);
+		} else if (_last_built_railtype[1] == RAILTYPE_ELECTRIC) {
+			_last_built_railtype[1] = INVALID_RAILTYPE;
+		}
 	}
 	MarkWholeScreenDirty();
 }
@@ -1941,7 +1945,6 @@ static void SetDefaultRailGui()
 {
 	if (_local_company == COMPANY_SPECTATOR || !Company::IsValidID(_local_company)) return;
 
-	extern RailType _last_built_railtype;
 	RailType rt;
 	switch (_settings_client.gui.default_rail_type) {
 		case 2: {
@@ -1978,7 +1981,8 @@ static void SetDefaultRailGui()
 			NOT_REACHED();
 	}
 
-	_last_built_railtype = _cur_railtype = rt;
+	_last_built_railtype[0] = _cur_railtype = rt;
+	_last_built_railtype[1] = INVALID_RAILTYPE;
 	BuildRailToolbarWindow *w = dynamic_cast<BuildRailToolbarWindow *>(FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL));
 	if (w != nullptr) w->ModifyRailType(_cur_railtype);
 }
@@ -2068,9 +2072,12 @@ DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
 	RailTypes already_in_dropdown;
 
 	std::vector<RailType> railtypes;
-	/* One more than the size of favourite type list in order to contain dropdown list divider. */
-	railtypes.reserve((c->favourite_railtypes.Any() ? c->favourite_railtypes.Count() + 1 : 0)
+	/* One more than the size of last built type list in order to contain dropdown list divider. */
+	railtypes.reserve(_last_built_railtype.size() + 1
+		+ (c->favourite_railtypes.Any() ? c->favourite_railtypes.Count() + 1 : 0) // Also a divider.
 		+ _sorted_railtypes.size());
+	railtypes.insert(railtypes.end(), _last_built_railtype.begin(), _last_built_railtype.end());
+	railtypes.push_back(RAILTYPE_END); ///< Mark end of sub list.
 
 	if (auto fr = c->favourite_railtypes; fr.Reset(c->hidden_railtypes).Any()) {
 		for (RailType rt : fr) {
