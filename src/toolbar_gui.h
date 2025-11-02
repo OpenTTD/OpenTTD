@@ -64,4 +64,22 @@ void ToggleWidgetOutlines();
 
 extern uint _toolbar_width;
 
+template<typename T>
+struct LastUsedTypes : std::array<T, 2> {
+public:
+	void UpdateLastType(const T& value)
+	{
+		if (this->operator[](0) == value) return;
+		this->operator[](1) = this->operator[](0);
+		this->operator[](0) = value;
+	}
+
+	operator T&() { return this->operator[](0); }
+	operator T() const { return this->operator[](0); }
+};
+
+extern LastUsedTypes<RailType> _last_built_railtype;
+extern LastUsedTypes<RoadType> _last_built_roadtype;
+extern LastUsedTypes<RoadType> _last_built_tramtype;
+
 #endif /* TOOLBAR_GUI_H */
