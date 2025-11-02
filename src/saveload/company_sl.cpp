@@ -541,6 +541,12 @@ static const SaveLoad _company_desc[] = {
 	SLE_CONDVAR(CompanyProperties, terraform_limit,       SLE_UINT32,                SLV_156, SL_MAX_VERSION),
 	SLE_CONDVAR(CompanyProperties, clear_limit,           SLE_UINT32,                SLV_156, SL_MAX_VERSION),
 	SLE_CONDVAR(CompanyProperties, tree_limit,            SLE_UINT32,                SLV_175, SL_MAX_VERSION),
+
+	SLE_CONDVAR(CompanyProperties, hidden_railtypes, SLE_UINT64, SLV_NEW_RAIL_ROAD_TYPE_MENU, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, hidden_roadtypes, SLE_UINT64, SLV_NEW_RAIL_ROAD_TYPE_MENU, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, favourite_railtypes, SLE_UINT64, SLV_NEW_RAIL_ROAD_TYPE_MENU, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, favourite_roadtypes, SLE_UINT64, SLV_NEW_RAIL_ROAD_TYPE_MENU, SL_MAX_VERSION),
+
 	SLEG_STRUCT("settings", SlCompanySettings),
 	SLEG_CONDSTRUCT("old_ai", SlCompanyOldAI,                                        SL_MIN_VERSION, SLV_107),
 	SLEG_STRUCT("cur_economy", SlCompanyEconomy),
