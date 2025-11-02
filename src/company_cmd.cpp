@@ -1195,6 +1195,29 @@ CommandCost CmdSetRailRoadTypeCompanyHidden(DoCommandFlags flags, RailType rail_
 }
 
 /**
+ * Change favourite status of the rail type in build rail window.
+ * @param flags operation to perform
+ * @param rail_type rail type to set
+ * @param road_type road/tram type to set
+ * @param is_favourite the new favourite status
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdSetRailRoadTypeCompanyFavourite(DoCommandFlags flags, RailType rail_type, RoadType road_type, bool is_favourite)
+{
+	Company *c = Company::Get(_current_company);
+
+	if (rail_type >= RAILTYPE_END && road_type >= ROADTYPE_END) return CMD_ERROR;
+
+	if (flags.Test(DoCommandFlag::Execute)) {
+		if (rail_type < RAILTYPE_END) c->favourite_railtypes.Set(rail_type, is_favourite);
+		if (road_type < ROADTYPE_END) c->favourite_roadtypes.Set(road_type, is_favourite);
+		InvalidateWindowClassesData(WC_DROPDOWN_MENU);
+	}
+
+	return CommandCost();
+}
+
+/**
  * Is the given name in use as name of a company?
  * @param name Name to search.
  * @return \c true if the name us unique (that is, not in use), else \c false.
