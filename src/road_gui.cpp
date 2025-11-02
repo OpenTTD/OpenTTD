@@ -44,6 +44,7 @@
 #include "picker_gui.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
+#include "toolbar_gui.h"
 
 #include "widgets/road_widget.h"
 
@@ -862,13 +863,11 @@ struct BuildRoadToolbarWindow : Window {
 
 	static EventState RoadToolbarGlobalHotkeys(int hotkey)
 	{
-		extern RoadType _last_built_roadtype;
 		return RoadTramToolbarGlobalHotkeys(hotkey, _last_built_roadtype, RTT_ROAD);
 	}
 
 	static EventState TramToolbarGlobalHotkeys(int hotkey)
 	{
-		extern RoadType _last_built_tramtype;
 		return RoadTramToolbarGlobalHotkeys(hotkey, _last_built_tramtype, RTT_TRAM);
 	}
 
@@ -1808,6 +1807,16 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 
 	RoadTypes already_in_dropdown;
 	std::vector<RoadType> roadtypes;
+
+	if (HasBit(rtts, RTT_ROAD)) {
+		roadtypes.insert(roadtypes.end(), _last_built_roadtype.begin(), _last_built_roadtype.end());
+		roadtypes.push_back(ROADTYPE_SUBLIST_END); ///< Mark end of sub list.
+	}
+
+	if (HasBit(rtts, RTT_TRAM)) {
+		roadtypes.insert(roadtypes.end(), _last_built_tramtype.begin(), _last_built_tramtype.end());
+		roadtypes.push_back(ROADTYPE_SUBLIST_END); ///< Mark end of sub list.
+	}
 
 	if (c->favourite_roadtypes.Any()) {
 		bool has_added_favourite_type = false;

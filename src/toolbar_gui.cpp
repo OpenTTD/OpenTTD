@@ -78,9 +78,9 @@
 /** Width of the toolbar, shared by statusbar. */
 uint _toolbar_width = 0;
 
-RailType _last_built_railtype;
-RoadType _last_built_roadtype;
-RoadType _last_built_tramtype;
+LastUsedTypes<RailType> _last_built_railtype;
+LastUsedTypes<RoadType> _last_built_roadtype;
+LastUsedTypes<RoadType> _last_built_tramtype;
 
 bool _replace_dropdown_list = false;
 
@@ -910,7 +910,7 @@ static CallBackFunction MenuClickBuildRail(int index)
 		const Company *c = Company::Get(_local_company);
 
 		if (c->avail_railtypes.Test((RailType)index)) {
-			_last_built_railtype = (RailType)index;
+			_last_built_railtype.UpdateLastType((RailType)index);
 			ShowBuildRailToolbar(_last_built_railtype);
 		}
 
@@ -954,7 +954,7 @@ static CallBackFunction MenuClickBuildRoad(int index)
 		const Company *c = Company::Get(_local_company);
 
 		if (c->avail_roadtypes.Test((RoadType)index)) {
-			_last_built_roadtype = (RoadType)index;
+			_last_built_roadtype.UpdateLastType((RoadType)index);
 			ShowBuildRoadToolbar(_last_built_roadtype);
 		}
 
@@ -988,7 +988,7 @@ static CallBackFunction MenuClickBuildTram(int index)
 		return MenuClickBuildRoad(index);
 	}
 	CloseWindowByClass(WC_DROPDOWN_MENU);
-	_last_built_tramtype = (RoadType)index;
+	_last_built_tramtype.UpdateLastType((RoadType)index);
 	ShowBuildRoadToolbar(_last_built_tramtype);
 	return CBF_NONE;
 }
@@ -1325,7 +1325,7 @@ static CallBackFunction ToolbarScenBuildRoadClick(Window *w)
 static CallBackFunction ToolbarScenBuildRoad(int index)
 {
 	/* Can't hide road types in the scene editor. */
-	_last_built_roadtype = (RoadType)index;
+	_last_built_roadtype.UpdateLastType((RoadType)index);
 	ShowBuildRoadScenToolbar(_last_built_roadtype);
 	return CBF_NONE;
 }
@@ -1345,7 +1345,7 @@ static CallBackFunction ToolbarScenBuildTramClick(Window *w)
 static CallBackFunction ToolbarScenBuildTram(int index)
 {
 	/* Can't hide tram track types in the scene editor. */
-	_last_built_tramtype = (RoadType)index;
+	_last_built_tramtype.UpdateLastType((RoadType)index);
 	ShowBuildRoadScenToolbar(_last_built_tramtype);
 	return CBF_NONE;
 }
@@ -2639,8 +2639,10 @@ static WindowDesc _toolb_scen_desc(
 void AllocateToolbar()
 {
 	/* Clean old GUI values; railtype is (re)set by rail_gui.cpp */
-	_last_built_roadtype = ROADTYPE_ROAD;
-	_last_built_tramtype = ROADTYPE_TRAM;
+	_last_built_roadtype[0] = ROADTYPE_ROAD;
+	_last_built_tramtype[0] = ROADTYPE_TRAM;
+	_last_built_roadtype[1] = INVALID_ROADTYPE;
+	_last_built_tramtype[1] = INVALID_ROADTYPE;
 
 	if (_game_mode == GM_EDITOR) {
 		new ScenarioEditorToolbarWindow(_toolb_scen_desc);
