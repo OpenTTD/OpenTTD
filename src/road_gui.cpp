@@ -1763,6 +1763,8 @@ void InitializeRoadGUI()
 	if (w != nullptr) w->ModifyRoadType(_cur_roadtype);
 }
 
+static constexpr RoadType ROADTYPE_SUBLIST_END{ROADTYPE_END + 1};
+
 DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, bool all_option)
 {
 	RoadTypes used_roadtypes;
@@ -1803,9 +1805,24 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 	/* Shared list so that each item can take ownership. */
 	auto badge_class_list = std::make_shared<GUIBadgeClasses>(GSF_ROADTYPES);
 
-	for (const auto &rt : _sorted_roadtypes) {
+	RoadTypes already_in_dropdown;
+	std::vector<RoadType> roadtypes;
+
+	roadtypes.insert(roadtypes.end(), _sorted_roadtypes.begin(), _sorted_roadtypes.end());
+
+	for (const auto &rt : roadtypes) {
+		if (rt == ROADTYPE_SUBLIST_END) {
+			list.push_back(MakeDropDownListDividerItem());
+			continue;
+		}
+
 		/* If it's not used ever, don't show it to the user. */
 		if (!used_roadtypes.Test(rt)) continue;
+
+		if (already_in_dropdown.Test(rt)) continue;
+		already_in_dropdown.Set(rt);
+
+		if (c->hidden_roadtypes.Test(rt)) continue;
 
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 

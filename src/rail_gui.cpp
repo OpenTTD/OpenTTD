@@ -2063,9 +2063,25 @@ DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
 	/* Shared list so that each item can take ownership. */
 	auto badge_class_list = std::make_shared<GUIBadgeClasses>(GSF_RAILTYPES);
 
-	for (const auto &rt : _sorted_railtypes) {
+	RailTypes already_in_dropdown;
+
+	std::vector<RailType> railtypes;
+	railtypes.reserve(_sorted_railtypes.size());
+	railtypes.insert(railtypes.end(), _sorted_railtypes.begin(), _sorted_railtypes.end());
+
+	for (const auto &rt : railtypes) {
+		if (rt == RAILTYPE_END) {
+			list.push_back(MakeDropDownListDividerItem());
+			continue;
+		}
+
 		/* If it's not used ever, don't show it to the user. */
 		if (!used_railtypes.Test(rt)) continue;
+
+		if (already_in_dropdown.Test(rt)) continue;
+		already_in_dropdown.Set(rt);
+
+		if (c->hidden_railtypes.Test(rt)) continue;
 
 		const RailTypeInfo *rti = GetRailTypeInfo(rt);
 
