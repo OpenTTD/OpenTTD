@@ -27,6 +27,7 @@ CommandCost CmdRenamePresident(DoCommandFlags flags, const std::string &text);
 CommandCost CmdSetCompanyManagerFace(DoCommandFlags flags, uint style, uint32_t bits);
 CommandCost CmdSetCompanyColour(DoCommandFlags flags, LiveryScheme scheme, bool primary, Colours colour);
 CommandCost CmdSetRailRoadTypeCompanyHidden(DoCommandFlags flags, RailType rail_type, RoadType road_type, bool is_hidden);
+CommandCost CmdSetRailRoadTypeCompanyFavourite(DoCommandFlags flags, RailType rail_type, RoadType road_type, bool is_favourite);
 
 DEF_CMD_TRAIT(CMD_COMPANY_CTRL,             CmdCompanyCtrl,           CommandFlags({CommandFlag::Spectator, CommandFlag::ClientID, CommandFlag::NoEst}), CommandType::ServerSetting)
 DEF_CMD_TRAIT(CMD_COMPANY_ALLOW_LIST_CTRL,  CmdCompanyAllowListCtrl,  CommandFlag::NoEst,                    CommandType::ServerSetting)
@@ -36,5 +37,6 @@ DEF_CMD_TRAIT(CMD_RENAME_PRESIDENT,         CmdRenamePresident,       {},       
 DEF_CMD_TRAIT(CMD_SET_COMPANY_MANAGER_FACE, CmdSetCompanyManagerFace, {},                                          CommandType::CompanySetting)
 DEF_CMD_TRAIT(CMD_SET_COMPANY_COLOUR,       CmdSetCompanyColour,      {},                                          CommandType::CompanySetting)
 DEF_CMD_TRAIT(CMD_SET_RAIL_ROAD_TYPE_HIDDEN, CmdSetRailRoadTypeCompanyHidden, {}, CommandType::CompanySetting)
+DEF_CMD_TRAIT(CMD_SET_RAIL_ROAD_TYPE_FAVOURITE, CmdSetRailRoadTypeCompanyFavourite, {}, CommandType::CompanySetting)
 
 #endif /* COMPANY_CMD_H */
