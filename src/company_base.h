@@ -180,6 +180,18 @@ struct Company : CompanyProperties, CompanyPool::PoolItem<&_company_pool> {
 		return !Company::Get(index)->is_ai;
 	}
 
+	/**
+	 * Get offset for recolour palette of specific company.
+	 * @param livery_scheme Scheme to use for recolour.
+	 * @param use_secondary Specify whether to add secondary colour offset to the result.
+	 * @return palette offset.
+	 */
+	inline uint8_t GetCompanyRecolourOffset(LiveryScheme livery_scheme, bool use_secondary = true) const
+	{
+		const Livery &l = this->livery[livery_scheme];
+		return use_secondary ? l.colour1 + l.colour2 * 16 : l.colour1;
+	}
+
 	static void PostDestructor(size_t index);
 };
 
