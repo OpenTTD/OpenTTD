@@ -469,7 +469,7 @@ bool VehicleCargoList::Stage(bool accepted, StationID current_station, std::span
 				FlowStat new_shares = flow_it->second;
 				new_shares.ChangeShare(current_station, INT_MIN);
 				for (auto station_it = next_station.rbegin(); station_it != next_station.rend(); ++station_it) {
-					if (!new_shares.GetShares()->empty()) break;
+					if (new_shares.GetShares()->empty()) break;
 					new_shares.ChangeShare(*station_it, INT_MIN);
 				}
 				if (new_shares.GetShares()->empty()) {
