@@ -317,6 +317,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}láb
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
+STR_UNITS_HEIGHT_GAMEUNITS                                      :{DECIMAL}{NBSP}szint
 
 # Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}nap
@@ -1404,7 +1405,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{UNITS_YEARS_OR
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Nincsenek támogatások
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Építkezési költségek: {STRING}
-STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Építkezések és beszerzésk költségeinek szintje
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Építkezések és beszerzések költségeinek szintje
 ###length 3
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_LOW                       :Alacsony
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_MEDIUM                    :Közepes
@@ -2226,6 +2227,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :A magassági é
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Angolszász (láb)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrikus (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_GAMEUNITS          :Játékbeli mértékegység (szint)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :Honosítás
 STR_CONFIG_SETTING_GRAPHICS                                     :Megjelenés
@@ -3535,6 +3537,8 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Tájkép
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Folyó generálás
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Durva és köves területek generálása
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Város generálás
+STR_GENERATION_LAND_INDUSTRY_GENERATION                         :{BLACK}Szárazföldi ipar generálás
+STR_GENERATION_WATER_INDUSTRY_GENERATION                        :{BLACK}Vízi ipar generálás
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Mozgathatatlan létesítmények létrehozása
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Fák generálása
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Játék beállítása
@@ -5332,6 +5336,13 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}A kezdet
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... a híd mindkét végének szárazföldön kell lennie
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... a híd túl hosszú
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}A híd a térképen túl végződne
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}A híd {HEIGHT} magas, túl alacsony az állomáshoz
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}A híd {HEIGHT} magas, túl alacsony a megállóhoz
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}A híd {HEIGHT} magas, túl alacsony a kikötőhöz
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}A híd {HEIGHT} magas, túl alacsony a bójához
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}A híd {HEIGHT} magas, túl alacsony a vasúti ellenőrzőponthoz
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}A híd {HEIGHT} magas, túl alacsony az útponthoz
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}A híd {HEIGHT} magas, túl alacsony a zároláshoz
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Nem áshatsz ide alagutat...
