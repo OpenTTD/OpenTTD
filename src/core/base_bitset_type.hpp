@@ -254,8 +254,8 @@ public:
 		return std::nullopt;
 	}
 
-	auto begin() const { return SetBitIterator<Tvalue_type>(this->data).begin(); }
-	auto end() const { return SetBitIterator<Tvalue_type>(this->data).end(); }
+	auto begin() const { return SetBitIterator<Tvalue_type, Tstorage>(this->data).begin(); }
+	auto end() const { return SetBitIterator<Tvalue_type, Tstorage>(this->data).end(); }
 
 private:
 	Tstorage data; ///< Bitmask of values.
