@@ -313,9 +313,8 @@ void EmitGender(StringBuilder &builder, std::string_view param, char32_t)
 
 static const CmdStruct *FindCmd(std::string_view s)
 {
-	for (const auto &cs : _cmd_structs) {
-		if (cs.cmd == s) return &cs;
-	}
+	auto it = std::ranges::find(_cmd_structs, s, &CmdStruct::cmd);
+	if (it != std::end(_cmd_structs)) return &*it;
 	return nullptr;
 }
 
@@ -449,17 +448,11 @@ static bool CheckCommandsMatch(std::string_view a, std::string_view b, std::stri
 
 	for (auto &templ_nc : templ.non_consuming_commands) {
 		/* see if we find it in lang, and zero it out */
-		bool found = false;
-		for (auto &lang_nc : lang.non_consuming_commands) {
-			if (templ_nc.cmd == lang_nc.cmd && templ_nc.param == lang_nc.param) {
-				/* it was found in both. zero it out from lang so we don't find it again */
-				lang_nc.cmd = nullptr;
-				found = true;
-				break;
-			}
-		}
-
-		if (!found) {
+		auto it = std::ranges::find(lang.non_consuming_commands, templ_nc);
+		if (it != std::end(lang.non_consuming_commands)) {
+			/* it was found in both. zero it out from lang so we don't find it again */
+			it->cmd = nullptr;
+		} else {
 			StrgenWarning("{}: command '{}' exists in template file but not in language file", name, templ_nc.cmd->cmd);
 			result = false;
 		}
