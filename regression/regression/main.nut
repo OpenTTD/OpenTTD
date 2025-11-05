@@ -842,6 +842,7 @@ function Regression::List()
 	}
 	list[4000] = 50;
 	list[4006] = 12;
+	list[4012] = true;
 
 	print("  foreach():");
 	foreach (idx, val in list) {
@@ -849,6 +850,7 @@ function Regression::List()
 	}
 	print("  []:");
 	print("    4000 => " + list[4000]);
+	print("    4012 => " + list[4012]);
 
 	print("  clone:");
 	local list3 = clone list;
