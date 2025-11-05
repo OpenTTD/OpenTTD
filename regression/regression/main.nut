@@ -867,25 +867,25 @@ function Regression::List()
 	}
 
 	local it = list.Begin();
-	print("    " + it + " => " + list.GetValue(it) + "  (" + !list.IsEnd() + ")");
+	print("    " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
 	list.Sort(list.SORT_BY_VALUE, list.SORT_ASCENDING);
 	it = list.Next();
-	print("    " + it + " => " + list.GetValue(it) + "  (" + !list.IsEnd() + ")");
+	print("    " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
 
 	it = list.Begin();
-	print("    " + it + " => " + list.GetValue(it) + "  (" + !list.IsEnd() + ")");
+	print("    " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
 
 	list.SetValue(it + 1, -5);
 	it = list.Next();
-	print("    " + it + " => " + list.GetValue(it) + "  (" + !list.IsEnd() + ")");
+	print("    " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
 
 	list.RemoveValue(list.GetValue(it) + 1);
 	it = list.Next();
-	print("    " + it + " => " + list.GetValue(it) + "  (" + !list.IsEnd() + ")");
+	print("    " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
 
 	list.RemoveAboveValue(list.GetValue(it));
 	it = list.Next();
-	print("    " + it + " => " + list.GetValue(it) + "  (" + !list.IsEnd() + ")");
+	print("    " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
 
 	while (!list.IsEnd()) {
 		it = list.Next();
