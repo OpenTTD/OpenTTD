@@ -573,8 +573,10 @@
     4001 => 8002
     4002 => 8004
     4006 => 12
+    4012 => 1
   []:
     4000 => 50
+    4012 => 1
   clone:
   Clone ListDump:
     1005 => 1005
@@ -582,6 +584,7 @@
     4001 => 8002
     4002 => 8004
     4006 => 12
+    4012 => 1
   IsEmpty():     true
     0 => 5  (true)
 ERROR: Next() is invalid as Begin() is never called
@@ -597,6 +600,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     4001 => 8002
     4002 => 8004
     4006 => 12
+    4012 => 1
 
 --Company--
   SetName():            true
@@ -10118,7 +10122,7 @@ Your script made an error: excessive CPU usage in valuator function
 
 CALLSTACK
 *FUNCTION [Valuate()] Valuate line [5]
-*FUNCTION [Start()] regression/main.nut line [2184]
+*FUNCTION [Start()] regression/main.nut line [2186]
 
 LOCALS
 [args] ARRAY
