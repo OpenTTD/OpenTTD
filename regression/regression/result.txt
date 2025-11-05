@@ -590,7 +590,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     0 => 5  (true)
     2 => 6  (true)
     3 => 6  (true)
-    9 => 0  (false)
+    0 => 5  (false)
   Clone ListDump:
     1005 => 1005
     4000 => 50
