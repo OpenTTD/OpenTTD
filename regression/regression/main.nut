@@ -897,6 +897,203 @@ function Regression::List()
 		print("    " + idx + " => " + val);
 	}
 
+	list.RemoveItem(0);
+	local list4 = clone list;
+
+	foreach (sorter_type in [ AIList.SORT_BY_VALUE, AIList.SORT_BY_ITEM ]) {
+		foreach (sorter_direction in [ AIList.SORT_DESCENDING, AIList.SORT_ASCENDING ]) {
+			local type = sorter_type == AIList.SORT_BY_VALUE ? "Value" : "Item";
+			local direction = sorter_direction == AIList.SORT_DESCENDING ? "Descending" : "Ascending";
+			local sorter = "  (" + type + " " + direction + ")";
+			list = clone list4;
+			list.Sort(sorter_type, sorter_direction);
+			print("");
+
+			print("  ListDump:" + sorter);
+			foreach (idx, val in list) {
+				print("    " + idx + " => " + val);
+			}
+			it = list.Begin();
+			print("    Begin(): " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+			it = list.Next();
+			print("    Next():  " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+			it = list.Next();
+			print("    Next():  " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+			it = list.Next();
+			print("    Next():  " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+			it = list.Next();
+			print("    Next():  " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+
+			print("  foreach (idx, val in list) {print}:" + sorter);
+			foreach (idx, val in list) {
+				print("    " + idx + " => " + val + "  (" + list.IsEnd() + ")");
+			}
+			print("    Post loop:  (" + list.IsEnd() + ")");
+			it = list.Next();
+			print("    Post loop Next:  " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+			it = list.Next();
+			print("    Post loop Next:  " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+
+			print("  for (Begin / !IsEnd / Next) {print}:" + sorter);
+			for (it = list.Begin(); !list.IsEnd(); it = list.Next()) {
+				print("    " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+			}
+			print("    Post loop:  " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+			it = list.Next();
+			print("    Post loop Next:  " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+			it = list.Next();
+			print("    Post loop Next:  " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+
+			print("  Begin / while (!IsEnd) {print / Next}:" + sorter);
+			it = list.Begin();
+			while (!list.IsEnd()) {
+				print("    " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+				it = list.Next();
+			}
+			print("    Post loop:  " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+			it = list.Next();
+			print("    Post loop Next:  " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+			it = list.Next();
+			print("    Post loop Next:  " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+
+			print("  Begin / do {{print / Next} while (!IsEnd)}:" + sorter);
+			it = list.Begin();
+			do {
+				print("    " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+				it = list.Next();
+			} while (!list.IsEnd());
+			print("    Post loop:  " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+			it = list.Next();
+			print("    Post loop Next:  " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+			it = list.Next();
+			print("    Post loop Next:  " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+
+			print("  GetValue / SetValue:" + sorter);
+			for (it = list.Begin(); !list.IsEnd(); it = list.Next()) {
+				local old_val = list.GetValue(it);
+				local old_isend = list.IsEnd();
+				local res = list.SetValue(it, old_val);
+				local val = list.GetValue(it);
+				local isend = list.IsEnd();
+				local new_val_to_set = old_val * 1111;
+				local new_res = list.SetValue(it, new_val_to_set);
+				local new_val = list.GetValue(it);
+				local new_isend = list.IsEnd();
+				print("    " + it + " => " + old_val + "  (" + old_isend + ")");
+				print("      => SetValue(" + it + ", " + old_val + ") ? " + res + " => " + val + "  (" + isend + ")");
+				print("      => SetValue(" + it + ", " + new_val_to_set + ") ? " + new_res + " => " + new_val + "  (" + new_isend + ")");
+			}
+			print("    Post loop:  " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+			it = list.Next();
+			print("    Post loop Next:  " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+			it = list.Next();
+			print("    Post loop Next:  " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+
+			list.Clear();
+			list.AddList(list4);
+			print("  GetValue / AddItem:" + sorter);
+			for (it = list.Begin(); !list.IsEnd(); it = list.Next()) {
+				local old_val = list.GetValue(it);
+				local old_isend = list.IsEnd();
+				list.AddItem(it, old_val);
+				local val = list.GetValue(it);
+				local isend = list.IsEnd();
+				local new_val_to_set = old_val * 1111;
+				list.AddItem(it, new_val_to_set);
+				local new_val = list.GetValue(it);
+				local new_isend = list.IsEnd();
+				print("    " + it + " => " + old_val + "  (" + old_isend + ")");
+				print("      => AddItem(" + it + ", " + old_val + ") => " + val + "  (" + isend + ")");
+				print("      => AddItem(" + it + ", " + new_val_to_set + ") => " + new_val + "  (" + new_isend + ")");
+			}
+			print("    Post loop:  " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+			it = list.Next();
+			print("    Post loop Next:  " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+			it = list.Next();
+			print("    Post loop Next:  " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+
+			list.Clear();
+			list.AddList(list4);
+			print("  RemoveItem / HasItem / AddItem:" + sorter);
+			for (it = list.Begin(); !list.IsEnd(); it = list.Next()) {
+				local val = list.GetValue(it);
+				print("    " + it + " => " + val + " / " + list.HasItem(it) + "  (" + list.IsEnd() + ")");
+				list.RemoveItem(it);
+				print("      => RemoveItem(" + it + ") => " + list.GetValue(it) + " / " + list.HasItem(it) + "  (" + list.IsEnd() + ")");
+				if (list.IsEnd()) {
+					list.AddItem(it, val);
+					print("      => AddItem(" + it + ", " + val + ") => " + list.GetValue(it) + " / " + list.HasItem(it) + "  (" + list.IsEnd() + ")");
+				}
+			}
+			print("    Post loop:  " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+			it = list.Next();
+			print("    Post loop Next:  " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+			it = list.Next();
+			print("    Post loop Next:  " + it + " => " + list.GetValue(it) + "  (" + list.IsEnd() + ")");
+		}
+	}
+
+	list.Clear(),
+	list.AddList(list4);
+
+	local list1 = list;
+	local list2 = list3;
+
+	foreach (sorter_type_1 in [ AIList.SORT_BY_VALUE, AIList.SORT_BY_ITEM ]) {
+		foreach (sorter_direction_1 in [ AIList.SORT_DESCENDING, AIList.SORT_ASCENDING ]) {
+			local type_1 = sorter_type_1 == AIList.SORT_BY_VALUE ? "Value" : "Item";
+			local direction_1 = sorter_direction_1 == AIList.SORT_DESCENDING ? "Descending" : "Ascending";
+			local sorter_1 = "  (" + type_1 + " " + direction_1 + ")";
+
+			foreach (sorter_type_2 in [ AIList.SORT_BY_VALUE, AIList.SORT_BY_ITEM ]) {
+				foreach (sorter_direction_2 in [ AIList.SORT_DESCENDING, AIList.SORT_ASCENDING ]) {
+					local type_2 = sorter_type_2 == AIList.SORT_BY_VALUE ? "Value" : "Item";
+					local direction_2 = sorter_direction_2 == AIList.SORT_DESCENDING ? "Descending" : "Ascending";
+					local sorter_2 = "  (" + type_2 + " " + direction_2 + ")";
+
+					local sorter = sorter_1 + sorter_2;
+
+					list1.Clear(),
+					list1.AddList(list4);
+
+					list1.Sort(sorter_type_1, sorter_direction_1);
+					list2.Sort(sorter_type_2, sorter_direction_2);
+
+					print("");
+					print("  SwapList:" + sorter);
+					print("    DumpList 1:" + sorter_1);
+					foreach (idx, val in list1) {
+						print("    " + idx + " => " + val);
+					}
+					print("    DumpList 2:" + sorter_2);
+					foreach (idx, val in list2) {
+						print("    " + idx + " => " + val);
+					}
+					local it1 = list1.Begin();
+					print("    List 1 Begin:  " + it1 + " => " + list1.GetValue(it1) + "  (" + list1.IsEnd() + ")");
+					local it2 = list2.Begin();
+					print("    List 2 Begin:  " + it2 + " => " + list2.GetValue(it2) + "  (" + list2.IsEnd() + ")");
+					it2 = list2.Next();
+					print("    List 2 Next:   " + it2 + " => " + list2.GetValue(it2) + "  (" + list2.IsEnd() + ")");
+					print("    => Swap list 1 with list 2  " + list1.SwapList(list2));
+					it1 = list1.Next();
+					print("    List 1 Next:   " + it1 + " => " + list1.GetValue(it1) + "  (" + list1.IsEnd() + ")");
+					it2 = list2.Next();
+					print("    List 2 Next:   " + it2 + " => " + list2.GetValue(it2) + "  (" + list2.IsEnd() + ")");
+					it2 = list2.Next();
+					print("    List 2 Next:   " + it2 + " => " + list2.GetValue(it2) + "  (" + list2.IsEnd() + ")");
+					print("    => Swap list 1 with list 2  " + list1.SwapList(list2));
+					it1 = list1.Next();
+					print("    List 1 Next:   " + it1 + " => " + list1.GetValue(it1) + "  (" + list1.IsEnd() + ")");
+					it2 = list2.Next();
+					print("    List 2 Next:   " + it2 + " >= " + list2.GetValue(it2) + "  (" + list2.IsEnd() + ")");
+					it2 = list2.Next();
+					print("    List 2 Next:   " + it2 + " >= " + list2.GetValue(it2) + "  (" + list2.IsEnd() + ")");
+				}
+			}
+		}
+	}
+
 }
 
 function Regression::Map()
