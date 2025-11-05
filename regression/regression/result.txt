@@ -586,14 +586,14 @@
     4006 => 12
     4012 => 1
   IsEmpty():     true
-    0 => 5  (true)
+    0 => 5  (false)
 ERROR: Next() is invalid as Begin() is never called
 ERROR: IsEnd() is invalid as Begin() is never called
-    0 => 5  (false)
     0 => 5  (true)
-    2 => 6  (true)
-    3 => 6  (true)
     0 => 5  (false)
+    2 => 6  (false)
+    3 => 6  (false)
+    0 => 5  (true)
   Clone ListDump:
     1005 => 1005
     4000 => 50
