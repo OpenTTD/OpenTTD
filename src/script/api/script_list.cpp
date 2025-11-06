@@ -8,6 +8,7 @@
 /** @file script_list.cpp Implementation of ScriptList. */
 
 #include "../../stdafx.h"
+#include "script_controller.hpp"
 #include "script_list.hpp"
 #include "../../debug.h"
 #include "../../script/squirrel.hpp"
@@ -962,14 +963,27 @@ SQInteger ScriptList::Valuate(HSQUIRRELVM vm)
 	/* Push the function to call */
 	sq_push(vm, 2);
 
-	for (const auto &item : this->items) {
+	auto begin = this->items.begin();
+	if (disabler.GetOriginalValue() && this->resume_item.has_value()) {
+		begin = this->items.lower_bound(this->resume_item.value());
+	}
+
+	for (const auto &[item, _] : std::ranges::subrange(begin, this->items.end())) {
+		if (disabler.GetOriginalValue() && item != this->resume_item && ScriptController::GetOpsTillSuspend() < 0) {
+			this->resume_item = item;
+			/* Pop the valuator function. */
+			sq_poptop(vm);
+			sq_pushbool(vm, SQTrue);
+			return 1;
+		}
+
 		/* Check for changing of items. */
 		int previous_modification_count = this->modifications;
 
 		/* Push the root table as instance object, this is what squirrel does for meta-functions. */
 		sq_pushroottable(vm);
 		/* Push all arguments for the valuator function. */
-		sq_pushinteger(vm, item.first);
+		sq_pushinteger(vm, item);
 		for (int i = 0; i < nparam - 1; i++) {
 			sq_push(vm, i + 3);
 		}
@@ -995,8 +1009,8 @@ SQInteger ScriptList::Valuate(HSQUIRRELVM vm)
 			}
 
 			default: {
-				/* See below for explanation. The extra pop is the return value. */
-				sq_pop(vm, nparam + 4);
+				/* Pop the valuator function and the return value. */
+				sq_pop(vm, 2);
 
 				return sq_throwerror(vm, "return value of valuator is not valid (not integer/bool)");
 			}
@@ -1004,25 +1018,24 @@ SQInteger ScriptList::Valuate(HSQUIRRELVM vm)
 
 		/* Was something changed? */
 		if (previous_modification_count != this->modifications) {
-			/* See below for explanation. The extra pop is the return value. */
-			sq_pop(vm, nparam + 4);
+			/* Pop the valuator function and the return value. */
+			sq_pop(vm, 2);
 
 			return sq_throwerror(vm, "modifying valuated list outside of valuator function");
 		}
 
-		this->SetValue(item.first, value);
+		this->SetValue(item, value);
 
 		/* Pop the return value. */
 		sq_poptop(vm);
 
 		Squirrel::DecreaseOps(vm, 5);
 	}
-	/* Pop from the squirrel stack:
-	 * 1. The root stable (as instance object).
-	 * 2. The valuator function.
-	 * 3. The parameters given to this function.
-	 * 4. The ScriptList instance object. */
-	sq_pop(vm, nparam + 3);
 
-	return 0;
+	/* Pop the valuator function from the squirrel stack. */
+	sq_poptop(vm);
+
+	this->resume_item.reset();
+	sq_pushbool(vm, SQFalse);
+	return 1;
 }
