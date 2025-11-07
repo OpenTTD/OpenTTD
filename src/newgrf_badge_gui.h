@@ -16,6 +16,8 @@
 #include "newgrf_badge_type.h"
 #include "timer/timer_game_calendar.h"
 
+const uint BADGE_SUBCLASS_INDENT_STEP = 1;
+
 class GUIBadgeClasses : public UsedBadgeClasses {
 public:
 	struct Element {
