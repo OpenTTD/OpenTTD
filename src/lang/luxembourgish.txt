@@ -621,7 +621,11 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmewä
 
 STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Lescht 24 Minuten
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Dauert 72 Minutten
+STR_GRAPH_LAST_288_MINUTES_TIME_LABEL                           :{TINY_FONT}{BLACK}Lescht 288 Minuten
 
+STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLACK}2 Joer (pro Mount)
+STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 Joer (véirelsjähreg)
+STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 Joer (jährleg)
 
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Luedungs Bezuelraten
@@ -635,8 +639,11 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Keng Wue
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Schalt d'Grafik fir de Wuerentyp em
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Wuerenhistorie
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Produzéiert
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportéiert
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Geliwwert
+STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Warden
 
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Weis detailléiert Leeschtungsastellungen
@@ -967,11 +974,14 @@ STR_GAME_OPTIONS_TAB_SOUND                                      :Sound
 STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Wiel Sound- a Musikastellungen aus
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Social
 STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Wiel Astellungen déi mat Social Media ze dinn hunn
+STR_GAME_OPTIONS_TAB_ADVANCED                                   :Erweidert
+STR_GAME_OPTIONS_TAB_ADVANCED_TOOLTIP                           :Erweidert Astellungen änneren
 
 STR_GAME_OPTIONS_VOLUME                                         :Volume
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Soundeffekter
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Musik
 
+STR_GAME_OPTIONS_SETTING                                        :{STRING}: {ORANGE}{STRING}
 
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
@@ -1026,6 +1036,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysesche Rin
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lettesch Lat
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portugieseschen Escudo
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Ukrainesch Hryvnia
+STR_GAME_OPTIONS_CURRENCY_VND                                   :Vietnamesesch Dong
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Autospäicheren
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Wiel den Intervall aus fir d'Autospäicherung
@@ -1059,6 +1070,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Wiel des Optiou
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Aktuellen Driver: {STRING}
 
+STR_GAME_OPTIONS_INTERFACE                                      :Interface
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Interfacegréisst
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :De Slider zéien fir d'Gréisst vum Interface ze änneren. Ctrl+Zéien fir eng kontinuéierlech Ännerung
@@ -1083,6 +1095,7 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Dëst start e B
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Preview op d'Emfroresultat
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Weis d'Resultat vun der Emfro vum aktuelle Spill un
 
+STR_GAME_OPTIONS_DISPLAY                                        :Display
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :Bildfrequenz
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Wiel d'Frequenz vum Bildschirm aus
@@ -1298,6 +1311,9 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Zënssaz; kontr
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Betribskäschten: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Fixéier den Niveau vun de Betribskäschten vu Gefierer an Infrastruktur
 ###length 3
+STR_CONFIG_SETTING_RUNNING_COSTS_LOW                            :Niddreg
+STR_CONFIG_SETTING_RUNNING_COSTS_MEDIUM                         :Mëttel
+STR_CONFIG_SETTING_RUNNING_COSTS_HIGH                           :Héich
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Baugeschwindegkeet: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limitéier d'Unzuel u Bauaktiounen fir d'KI
@@ -1665,6 +1681,8 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Kaart mat der l
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Glaate Scrolling: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Kontrolléiert wéi d'Haptusiicht op eng bestëmmten Positioun scrollt, wann een op déi kléng Kaart klickt oder en Befehl fir ob en spezifescht Objet ze scrollen gëtt. Wann ugeschalt, gëtt bis dohin gescrollt, wann ausgeschalt, spréngt d'Vue op den Zielobjet
 
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT                  :Traditionellt Toolbarmenuselektiounsverhalen: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT_HELPTEXT         :Wiel aus wéi d'Selektioun an den Toolbarmenus sech verhält. Wann ausgeschalt, bleiwen d'Menuer opgeklappt bis eng Selektioun gemet gouf. Wann ugeschalt, aktivéiren sech d'Menuer wann d'Maustast lassgelooss gëtt.
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Weis en Mooss-Tooltip wann verschidde Bau-Tools benotzt ginn: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Weis Felderdistanzen an Héichtenënnerscheed beim Zéien während dem Bauen un
@@ -2063,7 +2081,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Ufangs-Gréisst
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Duerchschnëttsgréisst vu Stied an Proportioun zu normalen Dierfer um Spillstart
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Update de Verdeelergraph all {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Zäit tëschend zwou Neiberechnungen vun der Linkgrafik. All Neiberechnung berechent eng Komponent vun der Grafik. Dëst bedeit dass e Wäert X net heescht dass de ganze Graph all X Sekonne geupdate gëtt. Nëmmen eng Komponent gëtt berechent. Wat de Wäert méi kuerz gesat gëtt, wat méi CPU Leeschtung gebraucht gëtt fir alles ze berechnen. Je gréisser de Wäert gesat gëtt desto méi laang brauch et bis d'Wuereverdeelung op neie Route gestart gëtt
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Zäit tëschend zwou Neiberechnungen vun der Linkgrafik. All Neiberechnung berechent eng Komponent vun der Grafik. Dëst bedeit dass e Wäert X net heescht dass déi ganze Grafik all X Sekonne geupdate gëtt. Nëmmen eng Komponent gëtt berechent. Wat de Wäert méi kuerz gesat gëtt, wat méi CPU Leeschtung gebraucht gëtt fir alles ze berechnen. Je gréisser de Wäert gesat gëtt desto méi laang brauch et bis d'Wuereverdeelung op neie Route gestart gëtt
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Benotz {STRING} fir d'Neiberechnung vum Verdeelergraph
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Zäit déi gebrauch gëtt fir all Neiberechnung vun enger Komponent vun der Linkgrafik. Wann eng Neiberechnung gestart gëtt, gëtt e Prozess erstallt den fir des Unzuel u Sekonne lafen dierf. Wat d'Zäit méi kuerz gesat gëtt, wat d'Chance méi grouss ass dass d'Berechnung net fäerdeg gëtt. Dann stopt d'Spill bis d'Berechnung fäerdeg ass ("laggt"). Je länger d'Zäit gesat gëtt desto länger brauch et bis d'Verdeelung geupdate gëtt wann eng Route ännert
 
@@ -2193,6 +2211,8 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... keng
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU driver huet d'Spill gecrasht. Hardwarebeschleunegung ausgeschalt
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Neit Spill
 STR_INTRO_LOAD_GAME                                             :{BLACK}Spill lueden
@@ -2326,16 +2346,19 @@ STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Einfach 
 STR_FACE_LOAD                                                   :{BLACK}Lueden
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Favoriséiert Gesiicht lueden
 STR_FACE_LOAD_DONE                                              :{WHITE}Äert favoriséiert Gesiicht ass aus der OpenTTD Konfiguratiounsdatei geluede ginn.
-STR_FACE_FACECODE                                               :{BLACK}Gesiicht N°.
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Kuckt an wielt d'Gesiichtsnummer vum Firmepresident
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Kuckt an wielt d'Gesiichtsnummer
-STR_FACE_FACECODE_SET                                           :{WHITE}Nei Gesiichtsnummer ass agestallt ginn
-STR_FACE_FACECODE_ERR                                           :{WHITE}Konnt d'Gesiichtsnummer net setzen - muss en numereschen Wäert tëscht 0 an 4,294,967,295 sinn!
+STR_FACE_FACECODE                                               :{BLACK}Gesiichtscode
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Kuckt a wielt de Gesiichtscode vum Firmepresident
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Kuckt a wielt de Gesiichtscode
+STR_FACE_FACECODE_SET                                           :{WHITE}Neit Presidentegesiicht ass agestallt ginn
+STR_FACE_FACECODE_ERR                                           :{WHITE}Konnt de Gesiichtscode net astellen - muss e gültege Label an Nummer sinn
 STR_FACE_SAVE                                                   :{BLACK}Späicheren
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Späichert favoriséiert Gesiicht
 STR_FACE_SAVE_DONE                                              :{WHITE}Dëst Gesiicht gëtt als favoriséiert an der OpenTTD Konfiguratiounsdatei gespäichert.
+STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
+STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Jo
 STR_FACE_NO                                                     :Nee
+STR_FACE_STYLE                                                  :Stil:
 STR_FACE_HAIR                                                   :Hoer:
 STR_FACE_EYEBROWS                                               :Aperhoer:
 STR_FACE_EYECOLOUR                                              :Aafaarf:
@@ -2808,6 +2831,10 @@ STR_PICKER_MODE_USED_TOOLTIP                                    :Wiesselen tësc
 STR_PICKER_MODE_SAVED                                           :Gespäichert
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Wiesselen tëschent gespäicherten Objeten
 
+STR_PICKER_PREVIEW_SHRINK                                       :-
+STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :D'Héicht vun Virschaubiller erofsetzen. Ctrl+Klick fir op de Minimum ze setzen
+STR_PICKER_PREVIEW_EXPAND                                       :+
+STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :D'Héicht vun Virschaubiller eropsetzen. Ctrl+Klick fir op de Maximum ze setzen.
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Wiel eng Statiounsklass fir unzeweisen
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Wiel en Typ vu Statioun fir ze bauen. Ctrl+Klick fir en bei d'gespäichert Objeten dobäizesetzen oder ewechzehuelen
@@ -3307,6 +3334,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filter:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Datei iwwerschreiwen
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Bass du sécher, dass du d'existéirend Datei iwwerschreiwe wëlls?
+STR_SAVELOAD_DELETE_TITLE                                       :{WHITE}Datei läschen
+STR_SAVELOAD_DELETE_WARNING                                     :{YELLOW}}Bass du sécher, dass du des Datei läsche wëlls?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (Verzeechnis)
 STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Een dossier zréck)
 
@@ -3672,6 +3701,10 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Wiesselt
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Erweideren
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Stad méi grouss maachen
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Gebaier erweideren
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Gebaier vun der Stad vergréisseren
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Stroossen erweideren
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Stroosse vun der Stad erweideren
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Läschen
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Des Stad ganz läschen
 
@@ -3997,6 +4030,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produkti
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Produktioun déi läscht Minutt:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportéiert)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Zentréiert d'Siicht op d'Industrie. Ctrl+Klick erstellt eng nei Usiicht op d'Industrie
+STR_INDUSTRY_VIEW_CARGO_GRAPH                                   :{BLACK}Wueregrafik
+STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}Weist d'Grafik vun der Industriewuerenhistorie un
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produktiounslevel: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}D'Industrie annoncéiert dass se zougemaach gëtt
 
@@ -4317,6 +4352,7 @@ STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Betribskäschte
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Betribskäschten: {CURRENCY_LONG}/Period
 STR_ENGINE_PREVIEW_CAPACITY                                     :Kapazitéit: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :Kapazitéit: {CARGO_LONG}, {CARGO_LONG}
+STR_ENGINE_PREVIEW_RAILTYPES                                    :Schinnentypen: {STRING}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Ersetz {STRING} - {STRING}
@@ -5211,6 +5247,7 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start an
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... dei zwee Enner vun der Bréck mussen u Land sinn
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... Bréck ze laang
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Bréck géif ausserhalb der Kaart ukommen
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Bréck ass {HEIGHT} ze niddreg fir e Stroossestop
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kann den Tunnel hei net bauen...
@@ -5827,6 +5864,8 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :Zuschauer, {1:S
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_CITY                                          :{TOWN} {CITY_ICON}
+STR_VIEWPORT_TOWN_CITY_POP                                      :{TOWN} ({COMMA}) {CITY_ICON}
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data
@@ -5850,6 +5889,7 @@ STR_CURRENCY_SHORT_GIGA                                         :{NBSP}mia
 STR_CURRENCY_SHORT_TERA                                         :{NBSP}bn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_LEFT_ARROW                                             :{LEFT_ARROW}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
@@ -5889,3 +5929,11 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Badgekonfiguratioun opman
+STR_BADGE_CONFIG_RESET                                          :Reset
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Badgeikoner
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Badgefilter
+STR_BADGE_CONFIG_PREVIEW                                        :Bildvirschau
+STR_BADGE_CONFIG_NAME                                           :Numm
+STR_BADGE_FILTER_ANY_LABEL                                      :Iergendeen {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} ass {STRING}
