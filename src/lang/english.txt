@@ -2781,7 +2781,9 @@ STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}On
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Don't highlight coverage area of proposed site
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Highlight coverage area of proposed site
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Accepts: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_ACCEPTS_CARGO_NONE                            :{BLACK}Accepts: {RED}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Supplies: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_SUPPLIES_CARGO_NONE                           :{BLACK}Supplies: {RED}{CARGO_LIST}
 STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}Maintenance cost: {GOLD}{CURRENCY_SHORT}/year
 STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Maintenance cost: {GOLD}{CURRENCY_SHORT}/period
 

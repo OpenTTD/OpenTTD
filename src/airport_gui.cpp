@@ -444,8 +444,9 @@ public:
 
 			/* strings such as 'Size' and 'Coverage Area' */
 			r.top = DrawBadgeNameList(r, as->badges, GSF_AIRPORTS) + WidgetDimensions::scaled.vsep_normal;
-			r.top = DrawStationCoverageAreaText(r, SCT_ALL, rad, false) + WidgetDimensions::scaled.vsep_normal;
-			r.top = DrawStationCoverageAreaText(r, SCT_ALL, rad, true);
+			auto [supplied, accepted] = GetStationCoverageAreaCargoTypes(SCT_ALL, rad);
+			r.top = DrawStationCoverageAreaText(r, accepted, false, supplied == 0 && accepted == 0) + WidgetDimensions::scaled.vsep_normal;
+			r.top = DrawStationCoverageAreaText(r, supplied, true, supplied == 0 && accepted == 0);
 		}
 
 		/* Resize background if the window is too small.

@@ -1383,8 +1383,9 @@ public:
 		const int bottom = r.bottom;
 		r.bottom = INT_MAX; // Allow overflow as we want to know the required height.
 		if (spec != nullptr) r.top = DrawBadgeNameList(r, spec->badges, GSF_ROADSTOPS);
-		r.top = DrawStationCoverageAreaText(r, sct, rad, false) + WidgetDimensions::scaled.vsep_normal;
-		r.top = DrawStationCoverageAreaText(r, sct, rad, true);
+		auto [supplied, accepted] = GetStationCoverageAreaCargoTypes(sct, rad);
+		r.top = DrawStationCoverageAreaText(r, accepted, false, supplied == 0 && accepted == 0) + WidgetDimensions::scaled.vsep_normal;
+		r.top = DrawStationCoverageAreaText(r, supplied, true, supplied == 0 && accepted == 0);
 		/* Resize background if the window is too small.
 		 * Never make the window smaller to avoid oscillating if the size change affects the acceptance.
 		 * (This is the case, if making the window bigger moves the mouse into the window.) */

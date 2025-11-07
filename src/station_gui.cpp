@@ -66,37 +66,50 @@ using RailWaypointTypeFilter = GenericWaypointTypeFilter<false, MP_RAILWAY>;
 using RoadWaypointTypeFilter = GenericWaypointTypeFilter<true, MP_ROAD>;
 
 /**
- * Calculates and draws the accepted or supplied cargo around the selected tile(s)
- * @param r Rect where the string is to be drawn.
+ * Calculates the accepted and supplied cargo around the selected tile(s)
  * @param sct which type of cargo is to be displayed (passengers/non-passengers)
  * @param rad radius around selected tile(s) to be searched
+ * @return Returns the supplied and accepted cargo types.
+ */
+std::pair<CargoTypes, CargoTypes> GetStationCoverageAreaCargoTypes(StationCoverageType sct, int rad)
+{
+	if (_thd.drawstyle != HT_RECT) return {};
+	TileIndex tile = TileVirtXY(_thd.pos.x, _thd.pos.y);
+	if (tile >= Map::Size()) return {};
+
+	CargoArray supplied = GetProductionAroundTiles(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE, rad);
+	CargoArray accepted = GetAcceptanceAroundTiles(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE, rad);
+
+	/* Convert cargo counts to a set of cargo bits, and draw the result. */
+	std::pair<CargoTypes, CargoTypes> ret{};
+	for (CargoType cargo = 0; cargo < NUM_CARGO; ++cargo) {
+		switch (sct) {
+			case SCT_PASSENGERS_ONLY: if (!IsCargoInClass(cargo, CargoClass::Passengers)) continue; break;
+			case SCT_NON_PASSENGERS_ONLY: if (IsCargoInClass(cargo, CargoClass::Passengers)) continue; break;
+			case SCT_ALL: break;
+			default: NOT_REACHED();
+		}
+		if (supplied[cargo] >= 1U) SetBit(ret.first, cargo);
+		if (accepted[cargo] >= 8U) SetBit(ret.second, cargo);
+	}
+
+	return ret;
+}
+
+/**
+ * Draws the accepted or supplied cargo.
+ * @param r Rect where the string is to be drawn.
+ * @param cargotypes Cargotypes that are accepted to supplied.
  * @param supplies if supplied cargoes should be drawn, else accepted cargoes
+ * @param warn Set if both accepted and supplied are empty to highlight no coverage.
  * @return Returns the y value below the string that was drawn
  */
-int DrawStationCoverageAreaText(const Rect &r, StationCoverageType sct, int rad, bool supplies)
+int DrawStationCoverageAreaText(const Rect &r, CargoTypes cargotypes, bool supplies, bool warn)
 {
-	TileIndex tile = TileVirtXY(_thd.pos.x, _thd.pos.y);
-	CargoTypes cargo_mask = 0;
-	if (_thd.drawstyle == HT_RECT && tile < Map::Size()) {
-		CargoArray cargoes;
-		if (supplies) {
-			cargoes = GetProductionAroundTiles(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE, rad);
-		} else {
-			cargoes = GetAcceptanceAroundTiles(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE, rad);
-		}
-
-		/* Convert cargo counts to a set of cargo bits, and draw the result. */
-		for (CargoType cargo = 0; cargo < NUM_CARGO; ++cargo) {
-			switch (sct) {
-				case SCT_PASSENGERS_ONLY: if (!IsCargoInClass(cargo, CargoClass::Passengers)) continue; break;
-				case SCT_NON_PASSENGERS_ONLY: if (IsCargoInClass(cargo, CargoClass::Passengers)) continue; break;
-				case SCT_ALL: break;
-				default: NOT_REACHED();
-			}
-			if (cargoes[cargo] >= (supplies ? 1U : 8U)) SetBit(cargo_mask, cargo);
-		}
-	}
-	return DrawStringMultiLine(r, GetString(supplies ? STR_STATION_BUILD_SUPPLIES_CARGO : STR_STATION_BUILD_ACCEPTS_CARGO, cargo_mask));
+	StringID str = supplies
+		? (warn ? STR_STATION_BUILD_SUPPLIES_CARGO_NONE : STR_STATION_BUILD_SUPPLIES_CARGO)
+		: (warn ? STR_STATION_BUILD_ACCEPTS_CARGO_NONE : STR_STATION_BUILD_ACCEPTS_CARGO);
+	return DrawStringMultiLine(r, GetString(str, cargotypes));
 }
 
 /**

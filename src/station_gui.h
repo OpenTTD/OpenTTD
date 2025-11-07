@@ -11,6 +11,7 @@
 #define STATION_GUI_H
 
 #include "core/geometry_type.hpp"
+#include "cargo_type.h"
 #include "command_type.h"
 #include "tilearea_type.h"
 #include "window_type.h"
@@ -24,7 +25,8 @@ enum StationCoverageType : uint8_t {
 	SCT_ALL,                 ///< Draw all cargoes.
 };
 
-int DrawStationCoverageAreaText(const Rect &r, StationCoverageType sct, int rad, bool supplies);
+std::pair<CargoTypes, CargoTypes> GetStationCoverageAreaCargoTypes(StationCoverageType sct, int rad);
+int DrawStationCoverageAreaText(const Rect &r, CargoTypes cargotypes, bool supplies, bool warn);
 void CheckRedrawStationCoverage(const Window *w);
 void CheckRedrawRailWaypointCoverage(const Window *w);
 void CheckRedrawRoadWaypointCoverage(const Window *w);
