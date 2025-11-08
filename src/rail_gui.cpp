@@ -2021,13 +2021,27 @@ void InitializeRailGUI()
 	ResetSignalVariant();
 }
 
+static std::unique_ptr<DropDownListItem> MakeRailTypeDropDownItem(RailType rt, bool masked, bool show_info, const Dimension &dim, const std::shared_ptr<GUIBadgeClasses> &badge_class_list)
+{
+	const RailTypeInfo *rti = GetRailTypeInfo(rt);
+
+	if (show_info) {
+		std::string str = rti->max_speed > 0
+			? GetString(STR_TOOLBAR_RAILTYPE_VELOCITY, rti->strings.menu_text, rti->max_speed)
+			: GetString(rti->strings.menu_text);
+		return MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, RailBuildCost(rt), dim, rti->gui_sprites.build_x_rail, PAL_NONE, std::move(str), rt, masked);
+	} else {
+		return MakeDropDownListBadgeItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, GetString(rti->strings.replace_text), rt, masked);
+	}
+}
+
 /**
  * Create a drop down list for all the rail types of the local company.
  * @param for_replacement Whether this list is for the replacement window.
  * @param all_option Whether to add an 'all types' item.
  * @return The populated and sorted #DropDownList.
  */
-DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
+DropDownList GetRailTypeDropDownList(RailType last_built_railtype, bool for_replacement, bool all_option)
 {
 	RailTypes used_railtypes;
 	RailTypes avail_railtypes;
@@ -2063,20 +2077,23 @@ DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
 	/* Shared list so that each item can take ownership. */
 	auto badge_class_list = std::make_shared<GUIBadgeClasses>(GSF_RAILTYPES);
 
+	bool add_divider = false;
+	if (last_built_railtype != INVALID_RAILTYPE && used_railtypes.Test(last_built_railtype)) {
+		list.push_back(MakeRailTypeDropDownItem(last_built_railtype, !avail_railtypes.Test(last_built_railtype), !for_replacement, d, badge_class_list));
+
+		add_divider = true;
+		used_railtypes.Reset(last_built_railtype);
+	}
+
 	for (const auto &rt : _sorted_railtypes) {
 		/* If it's not used ever, don't show it to the user. */
 		if (!used_railtypes.Test(rt)) continue;
 
-		const RailTypeInfo *rti = GetRailTypeInfo(rt);
-
-		if (for_replacement) {
-			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, GetString(rti->strings.replace_text), rt, !avail_railtypes.Test(rt)));
-		} else {
-			std::string str = rti->max_speed > 0
-				? GetString(STR_TOOLBAR_RAILTYPE_VELOCITY, rti->strings.menu_text, rti->max_speed)
-				: GetString(rti->strings.menu_text);
-			list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, RailBuildCost(rt), d, rti->gui_sprites.build_x_rail, PAL_NONE, std::move(str), rt, !avail_railtypes.Test(rt)));
+		if (add_divider) {
+			list.push_back(MakeDropDownListDividerItem());
+			add_divider = false;
 		}
+		list.push_back(MakeRailTypeDropDownItem(rt, !avail_railtypes.Test(rt), !for_replacement, d, badge_class_list));
 	}
 
 	if (list.empty()) {
