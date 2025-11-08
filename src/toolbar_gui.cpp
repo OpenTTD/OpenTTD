@@ -894,11 +894,16 @@ static CallBackFunction ToolbarBuildRailClick(Window *w)
  */
 static CallBackFunction MenuClickBuildRail(int index)
 {
-	if (_ctrl_pressed) {
+	if (_ctrl_pressed || _shift_pressed) {
 		if (index >= RAILTYPE_END) return CBF_NONE;
 		Company *c = Company::Get(_current_company);
-		bool new_value = !c->hidden_railtypes.Test((RailType)index);
-		Command<CMD_SET_RAIL_ROAD_TYPE_HIDDEN>::Post((RailType)index, INVALID_ROADTYPE, new_value);
+		if (_ctrl_pressed) {
+			bool new_value = !c->hidden_railtypes.Test((RailType)index);
+			Command<CMD_SET_RAIL_ROAD_TYPE_HIDDEN>::Post((RailType)index, INVALID_ROADTYPE, new_value);
+		} else {
+			bool new_value = !c->favourite_railtypes.Test((RailType)index);
+			Command<CMD_SET_RAIL_ROAD_TYPE_FAVOURITE>::Post((RailType)index, INVALID_ROADTYPE, new_value);
+		}
 		return CallBackFunction::ReopenDropdown;
 	}
 	CloseWindowByClass(WC_DROPDOWN_MENU);
@@ -927,11 +932,16 @@ static CallBackFunction ToolbarBuildRoadClick(Window *w)
  */
 static CallBackFunction MenuClickBuildRoad(int index)
 {
-	if (_ctrl_pressed) {
+	if (_ctrl_pressed || _shift_pressed) {
 		if (index >= ROADTYPE_END) return CBF_NONE;
 		Company *c = Company::Get(_current_company);
-		bool new_value = !c->hidden_roadtypes.Test((RoadType)index);
-		Command<CMD_SET_RAIL_ROAD_TYPE_HIDDEN>::Post(INVALID_RAILTYPE, (RoadType)index, new_value);
+		if (_ctrl_pressed) {
+			bool new_value = !c->hidden_roadtypes.Test((RoadType)index);
+			Command<CMD_SET_RAIL_ROAD_TYPE_HIDDEN>::Post(INVALID_RAILTYPE, (RoadType)index, new_value);
+		} else {
+			bool new_value = !c->favourite_roadtypes.Test((RoadType)index);
+			Command<CMD_SET_RAIL_ROAD_TYPE_FAVOURITE>::Post(INVALID_RAILTYPE, (RoadType)index, new_value);
+		}
 		return CallBackFunction::ReopenDropdown;
 	}
 	CloseWindowByClass(WC_DROPDOWN_MENU);
@@ -961,7 +971,7 @@ static CallBackFunction ToolbarBuildTramClick(Window *w)
 static CallBackFunction MenuClickBuildTram(int index)
 {
 	/* Hidden tram track types are stored the same way as hidden road type. */
-	if (_ctrl_pressed) return MenuClickBuildRoad(index);
+	if (_ctrl_pressed || _shift_pressed) return MenuClickBuildRoad(index);
 
 	CloseWindowByClass(WC_DROPDOWN_MENU);
 	_last_built_tramtype = (RoadType)index;

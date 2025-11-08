@@ -37,6 +37,6 @@ DEF_CMD_TRAIT(CMD_RENAME_PRESIDENT,         CmdRenamePresident,       {},       
 DEF_CMD_TRAIT(CMD_SET_COMPANY_MANAGER_FACE, CmdSetCompanyManagerFace, {},                                          CommandType::CompanySetting)
 DEF_CMD_TRAIT(CMD_SET_COMPANY_COLOUR,       CmdSetCompanyColour,      {},                                          CommandType::CompanySetting)
 DEF_CMD_TRAIT(CMD_SET_RAIL_ROAD_TYPE_HIDDEN, CmdSetRailRoadTypeCompanyHidden, {}, CommandType::CompanySetting)
-DEF_CMD_TRAIT(CMD_SET_RAIL_ROAD_TYPE_FAVOURITE, CmdSetRailRoadTypeCompanyFavourite, {}, CommandType::CompanySetting)
+DEF_CMD_TRAIT(CMD_SET_RAIL_ROAD_TYPE_FAVOURITE, CmdSetRailRoadTypeCompanyFavourite, CommandFlag::NoEst, CommandType::CompanySetting)
 
 #endif /* COMPANY_CMD_H */
