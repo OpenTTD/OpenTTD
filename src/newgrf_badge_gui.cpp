@@ -81,7 +81,7 @@ GUIBadgeClasses::GUIBadgeClasses(GrfSpecFeature feature) : UsedBadgeClasses(feat
 		const auto [config, sort_order] = GetBadgeClassConfigItem(feature, class_badge->label);
 
 		this->gui_classes.emplace_back(class_index, config.column, config.show_icon, sort_order, size, class_badge->label);
-		if (size.width != 0 && config.show_icon) max_column = std::max<uint>(max_column, config.column);
+		if (size.width != 0 && config.show_icon) max_column = std::max(max_column, config.column);
 	}
 
 	std::sort(std::begin(this->gui_classes), std::end(this->gui_classes));
@@ -436,7 +436,7 @@ static void BadgeClassMoveNext(GrfSpecFeature feature, Badge &class_badge, uint 
 
 	auto pos_cur = std::ranges::find(gui_classes.GetClasses(), class_badge.class_index, &GUIBadgeClasses::Element::class_index);
 	if (std::next(pos_cur) == std::end(gui_classes.GetClasses())) {
-		if (it->column < static_cast<int>(columns - 1)) ++it->column;
+		if (it->column < columns - 1) ++it->column;
 		return;
 	}
 
