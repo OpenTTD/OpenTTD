@@ -178,6 +178,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 				if (curidx < CURRENCY_END) {
 					_currency_specs[curidx].separator.clear();
 					_currency_specs[curidx].separator.push_back(GB(options, 0, 8));
+					StrMakeValidInPlace(_currency_specs[curidx].separator);
 					/* By specifying only one bit, we prevent errors,
 					 * since newgrf specs said that only 0 and 1 can be set for symbol_pos */
 					_currency_specs[curidx].symbol_pos = GB(options, 8, 1);
