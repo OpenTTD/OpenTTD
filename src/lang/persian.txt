@@ -597,7 +597,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}غیر فعال سازی همه
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}نمایش تمام محموله در نمودار نرخ نرخ پرداخت محموله ها
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}نمایش ندادن محموله ها در نمودار نرخ پرداخت محموله ها
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}روشن/خاموش کردن نمودار برای نوع محموله
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}روشن/خاموش کردن نمودار برای نوع محموله
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
@@ -1924,7 +1924,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}تاری
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}تاریخ فعلی
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}زبان، ویرایش برنامه سرویس دهنده و غیره.
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}برای انتخاب روی یک بازی از لیست کلیک کنید
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}برای انتخاب روی یک بازی از لیست کلیک کنید
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}آخرین سرویس دهنده‌ای که شما به آن پیوسته بودید:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}برای انتخاب سرویس دهنده‌ای که آخرین بار در آن بازی کرده‌اید، کلیک کنید
 
@@ -3063,9 +3063,9 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}رشو�
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} اهداف
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}اهداف جهانی
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}جهانی
-STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}نمایش اهداف سراسری
+STR_GOALS_GLOBAL_BUTTON_TOOLTIP                                 :{BLACK}نمایش اهداف سراسری
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}شرکت
-STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}نمایش اهداف شرکت
+STR_GOALS_COMPANY_BUTTON_TOOLTIP                                :{BLACK}نمایش اهداف شرکت
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- هیچکدام -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3182,7 +3182,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}جلوگ
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}تغییر نام نقطه مسیر
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}تغییر نام نقطه مسیر
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}تغییر نام شناور
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}ویرایش نام نقطه راه
@@ -3575,10 +3575,10 @@ STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}برا�
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (جزئیات)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}نام گذاری قطار
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}نام گذاری ماشین
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}نام گذاری کشتی
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}نامگذاری هواپیما
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}نام گذاری قطار
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}نام گذاری ماشین
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}نام گذاری کشتی
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}نامگذاری هواپیما
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA}سال ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} سال ({COMMA})

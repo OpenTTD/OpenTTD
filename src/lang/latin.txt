@@ -746,7 +746,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Omnia Celare
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Monstrare omnia onera in grapho mercedum onerum
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Monstrare nulla onera in grapho mercedum onerum
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Monstrare celareve aspectum huius oneris in grapho
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Monstrare celareve aspectum huius oneris in grapho
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
@@ -2220,7 +2220,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Dies
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Dies currens
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Lingua, editio servatri, etc.
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Eligere ludum ex indice
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Eligere ludum ex indice
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Servatrum prius iunctum:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Eligere servatrum abs te prius adhibitum
 
@@ -3420,7 +3420,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Facere u
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Movere conspectum supra hunc interlocum. ut nova fenestra conspectus aperiatur supra interlocum
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Mutare nomen interloci
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Mutare nomen interloci
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Movere conspectum supra hoc signum monitorium. ut nova fenestra conspectus aperiatur supra signum monitorium
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Mutare nomen signi monitorii
 
@@ -3868,10 +3868,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Mittere 
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Mittere aeroplanum ad tugurium. Ctrl+Preme ut modo ministretur
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Emet exemplar hamaxostichi electi et omnes currus eius. Ctrl+Preme ut iussa communicentur. Shift+Preme ut pretium monstretur sine emptione
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Emet exemplar vehiculi viarii electi. Ctrl+Preme ut iussa communicentur. Shift+Preme ut pretium monstretur sine emptione
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Emet exemplar navis electae. Ctrl+Preme ut iussa communicentur. Shift+Preme ut pretium monstretur sine emptione
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Emet exemplar aeroplani electi. Ctrl+Preme ut iussa communicentur. Shift+Preme ut pretium monstretur sine emptione
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Emet exemplar hamaxostichi electi et omnes currus eius. Ctrl+Preme ut iussa communicentur. Shift+Preme ut pretium monstretur sine emptione
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Emet exemplar vehiculi viarii electi. Ctrl+Preme ut iussa communicentur. Shift+Preme ut pretium monstretur sine emptione
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Emet exemplar navis electae. Ctrl+Preme ut iussa communicentur. Shift+Preme ut pretium monstretur sine emptione
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Emet exemplar aeroplani electi. Ctrl+Preme ut iussa communicentur. Shift+Preme ut pretium monstretur sine emptione
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Impellere tramen post signale sine mora, etsi signale rubrum est
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Cursum traminis reflectere
@@ -3923,10 +3923,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Incohatu
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Indicia)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nominare tramen
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nominare vehiculum
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nominare navem
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nominare aeroplanum
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Nominare tramen
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Nominare vehiculum
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Nominare navem
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Nominare aeroplanum
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} ann{P us i} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ann{P us i} ({COMMA})

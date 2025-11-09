@@ -534,7 +534,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Fela allt
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Sýna alla farma á farmgjalda línuritinu
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Sýna enga farma á farmgjalda línuritinu
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Taka út/setja inn graf fyrir farmgerðir
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Taka út/setja inn graf fyrir farmgerðir
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
@@ -1886,7 +1886,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Dagsetni
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Núverandi dagsetning
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Tungumál, útgáfa þjóns o.s.frv.
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Ýttu á leik á listanum til að velja hann
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Ýttu á leik á listanum til að velja hann
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Þjónninn sem þú tengdist síðast:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Smelltu til að velja þjóninn sem þú tengdist í síðast
 
@@ -2990,7 +2990,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Koma í 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Færa sjónarhorn á staðsetningu millistöðvar. Ctrl+Smelltu til að opna sýniglugg á þessa staðsetningu
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Breyta nafni á vegleiðara
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Breyta nafni á vegleiðara
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Færa sjónarhorn á staðsetningu bauju. Ctrl+Smelltu til að opna sýnisglugga á þessa staðsetningu.
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Breyta nafni bauju
 
@@ -3396,10 +3396,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Senda sk
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Senda flugvélina i flugskýli
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Þetta býr til aðra alveg eins lest að tengivögnunum meðtöldum. Ctrl+smella til að deila skipunum. Shift+smella sýnir áætlaðan kostnað án þess að kaupa
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Þetta býr til aðra alveg eins bifreið. Ctrl+smella til að deila skipunum. Shift+smella sýnir áætlaðan kostnað án þess að kaupa
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Þetta býr til annað alveg eins skip. Ctrl+smella til að deila skipunum. Shift+smella sýnir áætlaðan kostnað án þess að kaupa
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Þetta býr til aðra alveg eins flugvél. Ctrl+smella til að deila skipunum. Shift+smella sýnir áætlaðan kostnað án þess að kaupa
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Þetta býr til aðra alveg eins lest að tengivögnunum meðtöldum. Ctrl+smella til að deila skipunum. Shift+smella sýnir áætlaðan kostnað án þess að kaupa
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Þetta býr til aðra alveg eins bifreið. Ctrl+smella til að deila skipunum. Shift+smella sýnir áætlaðan kostnað án þess að kaupa
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Þetta býr til annað alveg eins skip. Ctrl+smella til að deila skipunum. Shift+smella sýnir áætlaðan kostnað án þess að kaupa
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Þetta býr til aðra alveg eins flugvél. Ctrl+smella til að deila skipunum. Shift+smella sýnir áætlaðan kostnað án þess að kaupa
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Neyða lest til að halda áfram án þess að bíða eftir réttu umferðarmerki
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Breyta stefnu lestar
@@ -3451,10 +3451,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Ræst
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Upplýsingar)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Skýrðu lestina
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nefna bifreið
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nefna skip
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nefna flugvélina
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Skýrðu lestina
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Nefna bifreið
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Nefna skip
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Nefna flugvélina
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} ár ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ár ({COMMA})

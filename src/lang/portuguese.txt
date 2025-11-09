@@ -630,8 +630,8 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 anos (trimestral)
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 anos (anual)
 
-STR_GRAPH_TOGGLE_RANGE                                          :Alternar o gráfico para este intervalo de dados
-STR_GRAPH_SELECT_SCALE                                          :Alterar a escala horizontal do gráfico
+STR_GRAPH_TOGGLE_RANGE_TOOLTIP                                  :Alternar o gráfico para este intervalo de dados
+STR_GRAPH_SELECT_SCALE_TOOLTIP                                  :Alterar a escala horizontal do gráfico
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tarifas por tipo de carga
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Dias em trânsito
@@ -641,7 +641,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Nenhum
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Mostrar todas as cargas no gráfico
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Não mostrar cargas no gráfico
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Alternar o gráfico para este tipo de carga
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Alternar o gráfico para este tipo de carga
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}Histórico da Carga - {INDUSTRY}
@@ -2410,7 +2410,7 @@ STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Tempo de
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Tempo jogado enquanto{}o jogo não esteve em pausa
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Compatibilidade do servidor e informação de autenticação
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Clique num jogo da lista para o selecionar
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Clique num jogo da lista para o selecionar
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}O servidor em que entraste na última vez:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Clique para indicar o servidor que jogaste a última vez
 
@@ -2794,7 +2794,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Juntar p
 STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Construir um ponto de controlo separado
 
 # Generic toolbar
-STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Desativado pois não existem atualmente veículos disponíveis para esta infraestrutura
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE_TOOLTIP               :{BLACK}Desativado pois não existem atualmente veículos disponíveis para esta infraestrutura
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construção de Caminhos-de-ferro
@@ -3775,9 +3775,9 @@ STR_GOALS_CAPTION                                               :{WHITE}Objetivo
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Objetivos globais
 STR_GOALS_SPECTATOR                                             :Objetivos Globais
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Global
-STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Mostrar objetivos globais
+STR_GOALS_GLOBAL_BUTTON_TOOLTIP                                 :{BLACK}Mostrar objetivos globais
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Empresa
-STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Mostrar as metas da empresa
+STR_GOALS_COMPANY_BUTTON_TOOLTIP                                :{BLACK}Mostrar as metas da empresa
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nenhum -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3920,7 +3920,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Não per
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrar visualização na localização do ponto de controlo. Ctrl+Clique para abrir um novo visualizador na localização do ponto de controlo
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Mudar o nome do ponto de controlo
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Mudar o nome do ponto de controlo
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar visualização principal na localização da boia. Ctrl+Clique para abrir um novo visualizador na localização da boia
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Alterar o nome da boia
 
@@ -4449,10 +4449,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Enviar o
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Enviar a aeronave para o hangar. Ctrl+Clique para fazer apenas a manutenção
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Comprar uma cópia do comboio, incluindo todos os veículos rebocados. Ctrl+Clique para partilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Comprar uma cópia do veículo rodoviário. Ctrl+Clique para partilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Comprar uma cópia do navio. Ctrl+Clique para partilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Comprar uma cópia da aeronave. Ctrl+Clique para partilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Comprar uma cópia do comboio, incluindo todos os veículos rebocados. Ctrl+Clique para partilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Comprar uma cópia do veículo rodoviário. Ctrl+Clique para partilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Comprar uma cópia do navio. Ctrl+Clique para partilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Comprar uma cópia da aeronave. Ctrl+Clique para partilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forçar comboio a prosseguir sem esperar pelo sinal
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Inverter sentido do comboio
@@ -4515,10 +4515,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Iniciado
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detalhes)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Renomear comboio
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Renomear veículo rodoviário
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Renomear navio
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Renomear aeronave
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Renomear comboio
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Renomear veículo rodoviário
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Renomear navio
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Renomear aeronave
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} ano{P "" s} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ano{P "" s} ({COMMA})

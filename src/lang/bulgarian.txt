@@ -627,7 +627,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Без
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Покажи всички товари на графиката за заплащане на товарите
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Скрий всички товари на графиката за заплащане на товарите
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Активирай/деактивирай графиката за видовете товар
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Активирай/деактивирай графиката за видовете товар
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
@@ -2368,7 +2368,7 @@ STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Изиг
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Играно време, докато{}играта не е била на пауза
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Съвместимост на сървъра и информация за удостоверяване
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Кликнете върху игра от списъка, за да я изберете
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Кликнете върху игра от списъка, за да я изберете
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Последно използвания сървър:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Кликнете, за да изберете последно използвания сървър
 
@@ -2751,7 +2751,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Съед
 STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Построй отделен междинен пункт
 
 # Generic toolbar
-STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Деактивирано, тъй като в момента няма налични превозни средства за тази инфраструктура
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE_TOOLTIP               :{BLACK}Деактивирано, тъй като в момента няма налични превозни средства за тази инфраструктура
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Конструкции за Двурелсов път
@@ -3688,9 +3688,9 @@ STR_GOALS_CAPTION                                               :{WHITE}{COMPANY
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Глобални цели
 STR_GOALS_SPECTATOR                                             :Глобални цели
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Глобален
-STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Покажи глобалните цели
+STR_GOALS_GLOBAL_BUTTON_TOOLTIP                                 :{BLACK}Покажи глобалните цели
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Компания
-STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Покажи цели на компанията
+STR_GOALS_COMPANY_BUTTON_TOOLTIP                                :{BLACK}Покажи цели на компанията
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Никакви -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3833,7 +3833,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Забр
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Центриране на камерата върху междинния пункт. Ctrl+Click отваря прозорец с нов изглед към пункта
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Смяна на името на междинния пункт
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Смяна на името на междинния пункт
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Центриране на камерата върху шамандура. Ctrl+Click отваря прозорец с нов изглед към шамандурата
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Промяна на името на шамандурата
 
@@ -4354,10 +4354,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Изпр
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Изпращане на летателното средство в хангар. Ctrl+Click изпраща само за преглед без спиране
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Закупуване на копие на влака, заедно с всички негови вагони. Ctrl+Click за споделяне на заповедите. Shift за показване на цената за построяване
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Закупуване на копие на автомобила. Ctrl+Click за споделяне на заповедите. Shift за показване на цената за построяване
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Закупуване на копие на кораба. Ctrl+Click за споделяне на заповедите. Shift за показване на цената за построяване
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Закупуване на копие на летателния апарат. Ctrl+Click за споделяне на заповедите. Shift за показване на цената за построяване
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Закупуване на копие на влака, заедно с всички негови вагони. Ctrl+Click за споделяне на заповедите. Shift за показване на цената за построяване
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Закупуване на копие на автомобила. Ctrl+Click за споделяне на заповедите. Shift за показване на цената за построяване
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Закупуване на копие на кораба. Ctrl+Click за споделяне на заповедите. Shift за показване на цената за построяване
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Закупуване на копие на летателния апарат. Ctrl+Click за споделяне на заповедите. Shift за показване на цената за построяване
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Игнориране на семафор/сигнал
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Обръщане посоката на влака
@@ -4420,10 +4420,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Пусн
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Подробности)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Преименувай влак
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Преименувай автомобил
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Преименувай кораб
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Преименувай летателно средство
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Преименувай влак
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Преименувай автомобил
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Преименувай кораб
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Преименувай летателно средство
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} годин{P а и} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} годин{P а и} ({COMMA})

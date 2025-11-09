@@ -561,7 +561,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}ปิดทั้งหมด all
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}แสดงสินค้าทั้งหมดในกราฟผลตอบแทนการขนส่งสินค้า
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}ไม่แสดงสินค้าทั้งหมดในกราฟผลตอบแทนการขนส่งสินค้า
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}เปิด/ปิด กราฟสำหรับประเภทของสินค้า
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}เปิด/ปิด กราฟสำหรับประเภทของสินค้า
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
@@ -2031,7 +2031,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}วั�
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}วันที่ปัจจุบัน
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}ภาษา, เวอร์ชันของเซิร์ฟเวอร์, และอื่นๆ
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}คลิกที่เกมจากรายการเพื่อเลือก
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}คลิกที่เกมจากรายการเพื่อเลือก
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}เซิร์ฟเวอร์ที่เข้าร่วมล่าสุด:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}คลิกเพื่อเลือกเซิร์ฟเวอร์ที่เล่นล่าสุด
 
@@ -3143,8 +3143,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}จ่�
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} เป้าหมาย
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}เป้าหมายรวม
 STR_GOALS_SPECTATOR                                             :เป้าหมายโดยรวม
-STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :แสดงเป้าหมายโดยรวม
-STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}แสดงเป้าหมายของบริษัท
+STR_GOALS_GLOBAL_BUTTON_TOOLTIP                                 :แสดงเป้าหมายโดยรวม
+STR_GOALS_COMPANY_BUTTON_TOOLTIP                                :{BLACK}แสดงเป้าหมายของบริษัท
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- ไม่มี -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3272,7 +3272,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}ไม�
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}จุดศูนย์กลางมุมมองสถานี
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}เปลี่ยนชื่อ Waypoint
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}เปลี่ยนชื่อ Waypoint
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}จุดศูนย์กลางมุมมองสถานี
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}เปลี่ยนชื่อทุ่มลอยน้ำ
 
@@ -3714,10 +3714,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}ส่�
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}ส่งอากาศยานไปยังโรงซ่อมบำรุง
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}กดเพื่อซื้อแบบคัดลอกขบวนรถไฟทั้งขบวน
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}กดเพื่อซื้อแบบคัดลอกยานพาหนะ
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}กดเพื่อซื้อแบบคัดลอกยานพาหนะทางน้ำ
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}กดเพื่อซื้อแบบคัดลอกอากาศยาน
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}กดเพื่อซื้อแบบคัดลอกขบวนรถไฟทั้งขบวน
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}กดเพื่อซื้อแบบคัดลอกยานพาหนะ
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}กดเพื่อซื้อแบบคัดลอกยานพาหนะทางน้ำ
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}กดเพื่อซื้อแบบคัดลอกอากาศยาน
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}ให้อำนาจขบวนรถไม่ต้องรอเสาอาณัติสัญญาณต้นนี้ (ไม่สามารถใช้กับ Path Signal ได้)
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}กลับขบวนรถไฟ
@@ -3774,10 +3774,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}เร�
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}รายละเอียดของ {VEHICLE}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}ชื่อ
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}ชื่อ
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}ชื่อ
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}ชื่อ
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}ชื่อ
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}ชื่อ
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}ชื่อ
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}ชื่อ
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} ปี ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ปี ({COMMA})

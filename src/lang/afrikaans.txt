@@ -564,7 +564,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Skakel alles af
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Vertoon alle vragte op die vrag koste grafiek
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Vertoon geen vragte op die vrag betalingskostes grafiek
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Skakel grafiek vir vrag tipe aan/af
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Skakel grafiek vir vrag tipe aan/af
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
@@ -2045,7 +2045,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Datum
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Huidigge datum
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Taal, bediender verwerking, ens.
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klik 'n speletjie in die lys om dit te kies
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Klik 'n speletjie in die lys om dit te kies
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Die bedienaar wat jy laaste aan deelgeneem het
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Die bedienaar wat jy laaste op gespeel het
 
@@ -3263,7 +3263,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Verhoed 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Senter skerm op roetebaken. Ctrl+klik maak 'n nuwe venster oop vir die roetebaken
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Verander roetebaken se naam
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Verander roetebaken se naam
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Sentreer hoofuitsig op boei. Ctrl+klik maak 'n nuwe venster oop vir die boei
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Verander baken naam
 
@@ -3726,10 +3726,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Stuur sk
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Stuur vliegtuig na loods. Ctrl+klik om net te diens
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Dit sal 'n spieëlbeeld van die trein koop. Shift+klik vir kwotasie
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Dit sal 'n spieëlbeeld van die voertuig koop. Shift+klik vir kwotasie
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Dit sal 'n spieëlbeeld van die skip koop. Shift+klik vir kwotasie
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Dit sal 'n spieëlbeeld van die voertuig koop. Ctrl-klik om opdrae te deel. Shift+klik vir kwotasie
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Dit sal 'n spieëlbeeld van die trein koop. Shift+klik vir kwotasie
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Dit sal 'n spieëlbeeld van die voertuig koop. Shift+klik vir kwotasie
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Dit sal 'n spieëlbeeld van die skip koop. Shift+klik vir kwotasie
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Dit sal 'n spieëlbeeld van die voertuig koop. Ctrl-klik om opdrae te deel. Shift+klik vir kwotasie
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forseer trein om voort te gaan sonder om vir sien die uit te klaar
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Agteruit rigting van trein
@@ -3781,10 +3781,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Begin
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Aanwyse)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Benoem trein
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Benoem pad voertuig
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Benoem skip
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Benoem vliegtuig
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Benoem trein
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Benoem pad voertuig
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Benoem skip
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Benoem vliegtuig
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} ja{P ar re} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ja{P ar re} ({COMMA})

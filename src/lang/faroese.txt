@@ -535,7 +535,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Ógilda alt
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Vís allan farm á farmagjalds takst grafi
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Vís ongan farm á farmagjalds takst grafi
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Tendra/sløkk graf fyri farma slag
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Tendra/sløkk graf fyri farma slag
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
@@ -1848,7 +1848,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Dato
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Núverðandi dato
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Mál, servara útgáva, osv.
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Trýst á eitt spæl á listanum fyri at velja ta
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Trýst á eitt spæl á listanum fyri at velja ta
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Servarin tú hevði samband við seinast:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Trýst fyri at velja servaran tú spældi á seinast
 
@@ -2835,7 +2835,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Forða f
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Savna høvuðs sýni á waypoint. Ctrl+trýst letur nýggjan sýnisglugga upp við sýni á waypoint
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Broyt navn á waypoint
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Broyt navn á waypoint
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Savna høvuðs sýni á boyjuna. Ctrl+trýst letur nýggjan sýnisglugga upp á boyjuna
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Broyt navn á boyju
 
@@ -3271,10 +3271,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Starta
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Smálutir)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Gev tokinum eitt navn
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Gev akfarinum eitt navn
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Gev skipinum eitt navn
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Gev flogfarinum eitt navn
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Gev tokinum eitt navn
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Gev akfarinum eitt navn
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Gev skipinum eitt navn
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Gev flogfarinum eitt navn
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} ár ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ár ({COMMA})

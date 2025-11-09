@@ -551,7 +551,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Dena desgaitu
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Zama guztiak ikusi, zama salneurriaren grafikoan
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ez ikusi zamarik zama salneurriaren grafikoan
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Aukeratu zama mota on/off grafikoan
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Aukeratu zama mota on/off grafikoan
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
@@ -1933,7 +1933,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Data
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Egungo data
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Hizkuntza, zerbitzariaren bertsioa, etab.
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Joko bat aukeratzeko Klikatu
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Joko bat aukeratzeko Klikatu
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Erabili duzun azken zerbitzaria:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Klikatu erabili duzun azken zerbitzaria berriro erabiltzeko
 
@@ -3086,7 +3086,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Hegazkin
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Ikuspegi nagusia bidepuntuan kokatu. Ktrl+Klik Ikuspegi lehio berria irekiko du bidepuntuaren kokapenerakin
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Bidepuntuaren izena aldatu
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Bidepuntuaren izena aldatu
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Ikuspegi nagusia buian kokatu. ktrl+Klik Ikuspegi lehio berria irekiko du buiaren kokapenarekin
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Buiaren izena aldatu
 
@@ -3505,10 +3505,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Itsasont
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Hegazkina hangarrera bidali. Ktrl+klik bakarrik mantenimendua egiteko
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Trenaren kopia erosi, bagoiak barne. Ktrl+klik aginduak konpartitzeko. Shift+klik gutxi gora berako kostea
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Errepide ibilgailuaren kopia erosi. Ktrl+klik aginduak konpartitzeko. Shift+klik gutxi gora berako kostea
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Itsasontziaren kopia erosi. Ktrl+klik aginduak konpartitzeko. Shift+klik gutxi gora berako kostea
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Hegazkinaren kopia erosi. Ktrl+klik aginduak konpartitzeko. Shift+klik gutxi gora berako kostea
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Trenaren kopia erosi, bagoiak barne. Ktrl+klik aginduak konpartitzeko. Shift+klik gutxi gora berako kostea
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Errepide ibilgailuaren kopia erosi. Ktrl+klik aginduak konpartitzeko. Shift+klik gutxi gora berako kostea
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Itsasontziaren kopia erosi. Ktrl+klik aginduak konpartitzeko. Shift+klik gutxi gora berako kostea
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Hegazkinaren kopia erosi. Ktrl+klik aginduak konpartitzeko. Shift+klik gutxi gora berako kostea
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Trena gelditzeko esaten dion seinalea pasatzera behartu
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Trenaren norabidea aldatu
@@ -3560,10 +3560,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Hasita
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Xehetasunak)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Trena izendatu
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Errepide ibilgailua izendatu
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Itsasontzia izendatu
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Hegazkina izendatu
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Trena izendatu
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Errepide ibilgailua izendatu
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Itsasontzia izendatu
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Hegazkina izendatu
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} urte ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} urte ({COMMA})

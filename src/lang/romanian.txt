@@ -630,7 +630,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Dezactivează tot
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Afișează toate mărfurile în graficul de plăți
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Nu afișa niciun tip de marfă în graficul de plăți
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Comută ascunderea/afișarea graficului de marfă
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Comută ascunderea/afișarea graficului de marfă
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
@@ -2370,7 +2370,7 @@ STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Timp de 
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Timpul jucat în timp ce{}jocul nu a fost întrerupt
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Limba, versiunea serverului, etc.
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Click pe un joc din listă pentru a-l selecta
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Click pe un joc din listă pentru a-l selecta
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Server-ul la care v-ați conectat data trecută:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Click pentru a alege serverul de data trecută
 
@@ -2753,7 +2753,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Unește 
 STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Construiește un punct de tranzit separat
 
 # Generic toolbar
-STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Dezactivat, deoarece momentan nu sunt vehicule disponibile pentru acest tip de infrastructură
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE_TOOLTIP               :{BLACK}Dezactivat, deoarece momentan nu sunt vehicule disponibile pentru acest tip de infrastructură
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construcție cale ferată
@@ -3699,9 +3699,9 @@ STR_GOALS_CAPTION                                               :{WHITE}{COMPANY
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Obiective globale
 STR_GOALS_SPECTATOR                                             :Obiective globale
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Globale
-STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Afișează obiectivele globale
+STR_GOALS_GLOBAL_BUTTON_TOOLTIP                                 :{BLACK}Afișează obiectivele globale
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Companie
-STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Afișează obiectivele companiei
+STR_GOALS_COMPANY_BUTTON_TOOLTIP                                :{BLACK}Afișează obiectivele companiei
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nici unul -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3844,7 +3844,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Nu permi
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrază fereasta principală pe punctul de tranzit. Ctrl+Click pentru a deshide o fereastra cu locația punctului de tranzit
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Schimbă numele haltei
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Schimbă numele haltei
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrează vizorul principal pe locația balizei. Ctrl+Clic pentru a deschide o nouă fereastră de vizualizare cu locația balizei
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Schimbă numele balizei
 
@@ -4368,10 +4368,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Trimite 
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Trimite aeronava la hangar. Ctrl+Click pentru doar întreținere
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Cumpărați o copie a trenului, inclusiv toate vagoanele. Ctrl+Click pentru a sincroniza comenzile. De asemenea, apăsați Shift pentru a afișa numai estimarea costurilor
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Cumpărați o copie a autovehicolului. Ctrl+Click pentru a partaja comenzi. De asemenea, apăsați Shift pentru a afișa numai estimarea costurilor
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Cumpărați o copie a navei. Ctrl+Click pentru a sincroniza comenzi. De asemenea, apăsați Shift pentru a afișa numai estimarea costurilor
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Cumpărați o copie a aeronavei. Ctrl+Click pentru a sincroniza comenzi. De asemenea, apăsați Shift pentru a afișa numai estimarea costurilor
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Cumpărați o copie a trenului, inclusiv toate vagoanele. Ctrl+Click pentru a sincroniza comenzile. De asemenea, apăsați Shift pentru a afișa numai estimarea costurilor
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Cumpărați o copie a autovehicolului. Ctrl+Click pentru a partaja comenzi. De asemenea, apăsați Shift pentru a afișa numai estimarea costurilor
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Cumpărați o copie a navei. Ctrl+Click pentru a sincroniza comenzi. De asemenea, apăsați Shift pentru a afișa numai estimarea costurilor
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Cumpărați o copie a aeronavei. Ctrl+Click pentru a sincroniza comenzi. De asemenea, apăsați Shift pentru a afișa numai estimarea costurilor
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forțează trenul să ignore semnalizarea de oprire
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Schimbă sensul de circulație al trenului
@@ -4434,10 +4434,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Pornit
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detalii)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Numele trenului
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Numele autovehiculului
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Denumește această navă
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Denumește aeronava
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Numele trenului
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Numele autovehiculului
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Denumește această navă
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Denumește aeronava
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} {P an ani "de ani"} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P an ani "de ani"} ({COMMA})

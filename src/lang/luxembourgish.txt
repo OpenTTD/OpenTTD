@@ -629,8 +629,8 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 Joer (véirelsjähreg)
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 Joer (jährleg)
 
-STR_GRAPH_TOGGLE_RANGE                                          :Grafik emschalte fir des Data Range
-STR_GRAPH_SELECT_SCALE                                          :Horizontal Skala vun der Grafik änneren
+STR_GRAPH_TOGGLE_RANGE_TOOLTIP                                  :Grafik emschalte fir des Data Range
+STR_GRAPH_SELECT_SCALE_TOOLTIP                                  :Horizontal Skala vun der Grafik änneren
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Luedungs Bezuelraten
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Deeg am Transit
@@ -640,7 +640,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Keng
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}All Wueren op der Grafik uweisen
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Keng Wuer op der Grafik uweisen
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Schalt d'Grafik fir de Wuerentyp em
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Schalt d'Grafik fir de Wuerentyp em
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Wuerenhistorie
@@ -2409,7 +2409,7 @@ STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Spillzä
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Zäit gespillt während{}d'Spill net pauséiert war
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Serverkompatibilitéit an Authentikatiounsinfo
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klick op en Spill aus der Lëscht fir et auszewielen
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Klick op en Spill aus der Lëscht fir et auszewielen
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Server deems du d'leschte Kéier bäigetruede bass:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Klick fir de Server ze wielen deens du d'leschte Kéier haas
 
@@ -2793,7 +2793,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Weepunkt
 STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Separate Weepunkt bauen
 
 # Generic toolbar
-STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Ausgeschalt, well et grad keng Gefierer fir dës Infrastruktur gëtt
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE_TOOLTIP               :{BLACK}Ausgeschalt, well et grad keng Gefierer fir dës Infrastruktur gëtt
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Schinnebau
@@ -3770,9 +3770,9 @@ STR_GOALS_CAPTION                                               :{WHITE}{COMPANY
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Global Ziler
 STR_GOALS_SPECTATOR                                             :Global Ziler
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Global
-STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Weis d'global Ziler un
+STR_GOALS_GLOBAL_BUTTON_TOOLTIP                                 :{BLACK}Weis d'global Ziler un
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Firma
-STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Firmenziler uweisen
+STR_GOALS_COMPANY_BUTTON_TOOLTIP                                :{BLACK}Firmenziler uweisen
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Keng -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3915,7 +3915,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Hal de F
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Zentréiert d'Usiicht op de Weepunkt. Ctrl+Klick erstellt eng nei Usiicht um Weepunkt
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Weepunkt Numm änneren
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Weepunkt Numm änneren
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Zentréiert d'Usiicht op d'Boje. Ctrl+Klick erstellt eng nei Usiicht op d'Boje
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Boje ëmbenennen
 
@@ -4444,10 +4444,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Schéckt
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Schéckt de Fliger an den Hangar. Ctrl+Klick mécht nëmmen eng Revisioun
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Baut eng Kopie vun engem Zuch mat all de Waggonen. Ctrl+Klick kopéiert d'Opträg. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Baut eng Kopie vum Stroossegefier. Ctrl+Klick kopéiert och d'Opträg. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Bau eng Kopie vum Schëff. Ctrl+Klick kopéiert och d'Opträg. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Baut eng Kopie vum Fliger. Ctrl+Klick kopéiert d'Opträg. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Baut eng Kopie vun engem Zuch mat all de Waggonen. Ctrl+Klick kopéiert d'Opträg. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Baut eng Kopie vum Stroossegefier. Ctrl+Klick kopéiert och d'Opträg. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Bau eng Kopie vum Schëff. Ctrl+Klick kopéiert och d'Opträg. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Baut eng Kopie vum Fliger. Ctrl+Klick kopéiert d'Opträg. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Zwéngt den Zuch durch d'Signal ze fueren
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Richtung vum Zuch wiesselen
@@ -4510,10 +4510,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Gestart
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detailer)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Zuch benennen
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Stroossegefier benennen
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Schëff benennen
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Fliger benennen
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Zuch benennen
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Stroossegefier benennen
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Schëff benennen
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Fliger benennen
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} Joer ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} Joer ({COMMA})

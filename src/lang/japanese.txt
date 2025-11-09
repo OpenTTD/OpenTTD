@@ -610,7 +610,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}すべて無効化
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}全貨物の運送報酬相場を表示します
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}全貨物の運送報酬相場を非表示にします
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}この貨物の運送報酬相場の表示/非表示を切り替えます
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}この貨物の運送報酬相場の表示/非表示を切り替えます
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
@@ -2239,7 +2239,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}日付
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}ゲームの現在の日付を示します
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}言語、サーバーバージョンなど
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}選択するにはリスト内のゲームをクリックします
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}選択するにはリスト内のゲームをクリックします
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}前回参加したサーバー:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}クリックすると前回参加したサーバーを選択します
 
@@ -2608,7 +2608,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}通過�
 STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}統合せずに建設
 
 # Generic toolbar
-STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}現在このインフラで運用できる車両がないため無効化されています
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE_TOOLTIP               :{BLACK}現在このインフラで運用できる車両がないため無効化されています
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :鉄道敷設
@@ -3488,9 +3488,9 @@ STR_GOALS_CAPTION                                               :{WHITE}{COMPANY
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}大目標
 STR_GOALS_SPECTATOR                                             :グローバルな目標
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}グローバル
-STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}グローバルな目標を表示する
+STR_GOALS_GLOBAL_BUTTON_TOOLTIP                                 :{BLACK}グローバルな目標を表示する
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}会社
-STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}会社の目標を見る
+STR_GOALS_COMPANY_BUTTON_TOOLTIP                                :{BLACK}会社の目標を見る
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- なし -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3624,7 +3624,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}航空�
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}メイン画面をこの中継駅の場所に移動します。Ctrl+クリックではこの通過点の場所を新たなビューポートに表示します
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}中継駅の名称を変更
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}中継駅の名称を変更
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}メイン画面をこのブイの場所に移動します。Ctrl+クリックでこのブイの場所を新たなビューポートに表示します
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}ブイの名称を変更
 
@@ -4121,10 +4121,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}船舶�
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}航空機を格納庫へ回送します。Ctrl+クリックすると点検後、再出庫します
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}列車を複製します。Ctrl+クリックで複製相手が指令を共有します。Shift+クリックで費用の見積が出ます
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}車両を複製します。Ctrl+クリックで複製相手が指令を共有します。Shift+クリックで費用の見積が出ます
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}船舶を複製します。Ctrl+クリックで複製相手が指令を共有します。Shift+クリックで費用の見積が出ます
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}航空機を複製します。Ctrl+クリックで複製相手が指令を共有します。Shift+クリックで費用の見積が出ます
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}列車を複製します。Ctrl+クリックで複製相手が指令を共有します。Shift+クリックで費用の見積が出ます
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}車両を複製します。Ctrl+クリックで複製相手が指令を共有します。Shift+クリックで費用の見積が出ます
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}船舶を複製します。Ctrl+クリックで複製相手が指令を共有します。Shift+クリックで費用の見積が出ます
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}航空機を複製します。Ctrl+クリックで複製相手が指令を共有します。Shift+クリックで費用の見積が出ます
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}赤信号を無視して進行させます
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}運転方向を反転させます
@@ -4185,10 +4185,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}運用�
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (詳細)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}列車に名前を付ける
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}車両に名前を付ける
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}船舶に名前を付ける
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}航空機に名前を付ける
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}列車に名前を付ける
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}車両に名前を付ける
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}船舶に名前を付ける
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}航空機に名前を付ける
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA}年({COMMA}年)
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA}年({COMMA}年)

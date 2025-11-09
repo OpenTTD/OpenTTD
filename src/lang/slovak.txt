@@ -686,7 +686,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Zakázať všetky
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Zobraziť všetky tovary v grafickom prehľade cien
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Nezobraziť žiadne tovary v grafickom prehľade cien
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Graf pre typ nákladu zap./vyp.
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Graf pre typ nákladu zap./vyp.
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
@@ -2415,7 +2415,7 @@ STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Hrací �
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Hrací čas, keď hra{}nebola pozastavená
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Jazyk, verzia serveru, atd.
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Vyberte hru zo zoznamu
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Vyberte hru zo zoznamu
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Server na ktorý si bol pripojený naposledy:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Klikni pre výber servera na ktorom si hral naposledy
 
@@ -2796,7 +2796,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Spojiť 
 STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Postaviť smerový bod oddelene
 
 # Generic toolbar
-STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Vypnuté, pretože v súčasnosti nie sú dostuné žiadne vozidlá pre tento typ infraštruktúry
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE_TOOLTIP               :{BLACK}Vypnuté, pretože v súčasnosti nie sú dostuné žiadne vozidlá pre tento typ infraštruktúry
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Výstavba železnice
@@ -3698,9 +3698,9 @@ STR_GOALS_CAPTION                                               :{WHITE}{COMPANY
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globálne ciele
 STR_GOALS_SPECTATOR                                             :Globálne ciele
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Globálne
-STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Zobraziť globálne ciele
+STR_GOALS_GLOBAL_BUTTON_TOOLTIP                                 :{BLACK}Zobraziť globálne ciele
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Spoločnosť
-STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Zobraziť ciele spoločnosti
+STR_GOALS_COMPANY_BUTTON_TOOLTIP                                :{BLACK}Zobraziť ciele spoločnosti
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nič -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3843,7 +3843,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Zakáž 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Vycentrovať pohľad na pozíciu smerového bodu. Ctrl+Klik otvorí nové okno s pohľadom na smerový bod
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Zmeniť meno smerového bodu
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Zmeniť meno smerového bodu
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Vycentrovať pohľad na pozíciu bóje. Ctrl+Klik otvorí nové okno s pohľadom na bóju
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Zmeniť meno bóje
 
@@ -4362,10 +4362,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Poslať 
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Poslať lietadlo do hangáru. Ctrl+Klik iba servis
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Zakúpiť kópiu vlaku vrátane vagónov. Ctrl+Klik bude zdieľať príkazy. Shift zobrazí odhadovanú cenu
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Zakúpiť kópiu cestného vozidla. Ctrl+Klik bude zdieľať príkazy. Shift zobrazí odhadovanú cenu
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Zakúpiť kópiu lode. Ctrl+Klik bude zdieľať príkazy. Shift zobrazí odhadovanú cenu
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Zakúpiť kópiu lietadla. Ctrl+Klik bude zdieľať príkazy. Shift zobrazí odhadovanú cenu
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Zakúpiť kópiu vlaku vrátane vagónov. Ctrl+Klik bude zdieľať príkazy. Shift zobrazí odhadovanú cenu
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Zakúpiť kópiu cestného vozidla. Ctrl+Klik bude zdieľať príkazy. Shift zobrazí odhadovanú cenu
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Zakúpiť kópiu lode. Ctrl+Klik bude zdieľať príkazy. Shift zobrazí odhadovanú cenu
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Zakúpiť kópiu lietadla. Ctrl+Klik bude zdieľať príkazy. Shift zobrazí odhadovanú cenu
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Prinútiť vlak pokračovať cez návestidlo bez čakania na zelenú
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Otočiť vlak naopak
@@ -4428,10 +4428,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Spusten�
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detaily)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Pomenovať vlak
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Premenovať cestné vozidlo
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Pomenovať loď
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Pomenovať lietadlo
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Pomenovať vlak
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Premenovať cestné vozidlo
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Pomenovať loď
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Pomenovať lietadlo
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} rok{P "" y ov} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} rok{P "" y ov} ({COMMA})

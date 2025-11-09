@@ -630,8 +630,8 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 gadi (ceturkšnos)
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 gadi (gadskārtēji)
 
-STR_GRAPH_TOGGLE_RANGE                                          :Pārslēgt diagrammu šim datu diapazonam
-STR_GRAPH_SELECT_SCALE                                          :Mainīt grafika horizontālo mērogu
+STR_GRAPH_TOGGLE_RANGE_TOOLTIP                                  :Pārslēgt diagrammu šim datu diapazonam
+STR_GRAPH_SELECT_SCALE_TOOLTIP                                  :Mainīt grafika horizontālo mērogu
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Kravas apmaksas cenas
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Dienas ceļā
@@ -641,7 +641,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Nav
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Attēlot visas kravas grafikā
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Nerādīt kravas grafikā
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Paslēgt kravas veida diagrammu
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Paslēgt kravas veida diagrammu
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Kravu vēsture
@@ -2411,7 +2411,7 @@ STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Spēles 
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Spēles laiks, kamēr{} spēle netika apturēta
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Informācija par servera saderību un autentifikāciju
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klikšķināt sarakstā uz spēles, lai to izvēlētos
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Klikšķināt sarakstā uz spēles, lai to izvēlētos
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Serveris, kuram jūs pievienojāties pēdējoreiz:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Klikšķis, lai izvēlētos serveri kurā jūs spēlējāt pēdējoreiz
 
@@ -2795,7 +2795,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Pievieno
 STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Uzbūvēt jaunu maršruta punktu
 
 # Generic toolbar
-STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Atspējots, jo pašlaik šai infrastruktūrai nav pieejami transportlīdzekļi
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE_TOOLTIP               :{BLACK}Atspējots, jo pašlaik šai infrastruktūrai nav pieejami transportlīdzekļi
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Dzelzceļa būvniecība
@@ -3774,9 +3774,9 @@ STR_GOALS_CAPTION                                               :{WHITE}{COMPANY
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globālie mērķi
 STR_GOALS_SPECTATOR                                             :Globālie mērķi
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Globāli
-STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Rādīt gobālus mēķus
+STR_GOALS_GLOBAL_BUTTON_TOOLTIP                                 :{BLACK}Rādīt gobālus mēķus
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Kompānija
-STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Parādīt komānijas mērķus
+STR_GOALS_COMPANY_BUTTON_TOOLTIP                                :{BLACK}Parādīt komānijas mērķus
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nav -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3921,7 +3921,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Novērst
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrēt galveno skatu uz pieturas punktu. Ctrl+klikšķis atvērs skatu uz pieturas punktu jaunā skatlaukā
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Mainīt pieturas punkta nosaukumu
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Mainīt pieturas punkta nosaukumu
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrēt galveno skatu uz boju. Ctrl+klikšķis atvērs skatu uz boju jaunā skatlaukā
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Mainīt bojas nosaukumu
 
@@ -4451,10 +4451,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Sūtīt 
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Sūtīt lidaparātu uz angāru. Ctrl+klikšķis - izvēlēties tikai apkopi
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Pirkt vilciena kopiju ar visiem vagoniem. Izmantojot Ctrl+klikšķis, vilcieni rīkojumus lietos kopīgi. Shift rāda izmaksu vērtību, neveicot pirkumu
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Nopirkt autotransporta līdzekļa kopiju. Izmantojot Ctrl+klikšķis, autotransporta līdzekļi rīkojumus lietos kopīgi. Shift+klikšķis rāda izmaksu novērtējumu, neveicot pirkumu
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Nopirkt kuģa kopiju. Izmantojot Ctrl+klikšķis, kuģi rīkojumus lietos kopīgi.  Shift parāda novērtētās izmaksas, neveicot iegādi
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Pirkt lidmašīnas kopiju. Ctrl+klikšķis, lai kopīgotu pasūtījumus. Nospiežot Shift, rāda izmaksu novērtējumu, neveicot pirkumu
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Pirkt vilciena kopiju ar visiem vagoniem. Izmantojot Ctrl+klikšķis, vilcieni rīkojumus lietos kopīgi. Shift rāda izmaksu vērtību, neveicot pirkumu
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Nopirkt autotransporta līdzekļa kopiju. Izmantojot Ctrl+klikšķis, autotransporta līdzekļi rīkojumus lietos kopīgi. Shift+klikšķis rāda izmaksu novērtējumu, neveicot pirkumu
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Nopirkt kuģa kopiju. Izmantojot Ctrl+klikšķis, kuģi rīkojumus lietos kopīgi.  Shift parāda novērtētās izmaksas, neveicot iegādi
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Pirkt lidmašīnas kopiju. Ctrl+klikšķis, lai kopīgotu pasūtījumus. Nospiežot Shift, rāda izmaksu novērtējumu, neveicot pirkumu
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Piespiest vilcienu doties tālāk, neievērojot signālu
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Apgriezt vilcienu pretējā virzienā
@@ -4517,10 +4517,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Iedarbin
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Sīkāka informācija)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nosaukt vilcienu
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nosaukt autotransporta līdzekli
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nosaukt kuģi
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nosaukt lidaparātu
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Nosaukt vilcienu
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Nosaukt autotransporta līdzekli
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Nosaukt kuģi
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Nosaukt lidaparātu
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} gad{P s i u} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} gad{P s i u} ({COMMA})

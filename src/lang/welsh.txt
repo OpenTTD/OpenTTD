@@ -633,7 +633,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Dim
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Dangos pob llwyth ar y graff cyfraddau taliadau llwythi
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Peidio a dangos llwythi ar y graff cyfraddau talaidau llwythi
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Toglu'r graff ar gyfer y math llwyth yma
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Toglu'r graff ar gyfer y math llwyth yma
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Hanes Llwyth
@@ -2395,7 +2395,7 @@ STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Amser ch
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Amser chwarae pan{}nad oed y gêm wedi'i oedi
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Cydnawsedd gweinydd a gwybodaeth dilysu
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Cliciwch gêm o'r rhestr i'w ddewis
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Cliciwch gêm o'r rhestr i'w ddewis
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Y gweinydd yr ymunoch chi ag o ddiwethaf:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Cliciwch i ddewis y gweinydd y chwaraeoch chi ddiwethaf
 
@@ -2779,7 +2779,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Uno pwyn
 STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Adeiladu pwynt llwybro annibynnol
 
 # Generic toolbar
-STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Analluogwyd gan nad oes cerbydau ar gael i'r tanadeiledd yma ar hyn o bryd
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE_TOOLTIP               :{BLACK}Analluogwyd gan nad oes cerbydau ar gael i'r tanadeiledd yma ar hyn o bryd
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Adeiladu Rheilffyrdd
@@ -3748,9 +3748,9 @@ STR_GOALS_CAPTION                                               :{WHITE}Amcanion
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Amcanion Bydol
 STR_GOALS_SPECTATOR                                             :Amcanion Bydol
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Bydol
-STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Dangos amcanion bydol
+STR_GOALS_GLOBAL_BUTTON_TOOLTIP                                 :{BLACK}Dangos amcanion bydol
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Cwmni
-STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Dangos amcanion y cwmni
+STR_GOALS_COMPANY_BUTTON_TOOLTIP                                :{BLACK}Dangos amcanion y cwmni
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Dim -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3893,7 +3893,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Rhwystro
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Canoli'r brif olygfa ar leoliad y pwynt llwybro. Ctrl+Clic i agor ffenest olygfa newydd ar leoliad y pwynt llwybro
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Newid enw pwynt llwybro
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Newid enw pwynt llwybro
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Canoli'r brif olygfa ar leoliad y bwï. Ctrl+Clic i agor ffenestr olygfa newydd ar leoliad y bwï
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Newid enw bwï
 
@@ -4420,10 +4420,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Gyrru'r 
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Anfon awyren at awyrendy. Ctrl+Clic i roi gwasanaeth yn unig
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Prynu copi o'r trên gan gynnwys pob un o'i gerbydau. Ctrl+Clic i rannu'r gorchmynion. Pwyso Shift hefyd i ddangos amcangyfrif o'r gost yn unig
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Prynu copi o'r cerbyd ffordd. Ctrl+Clic i rannu'r gorchmynion. Pwyso Shift hefyd i ddangos amcangyfrif o'r gost yn unig
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Prynu copi o'r llong. Ctrl+Clic i rannu'r gorchmynion. Pwyso Shift hefyd i ddangos amcangyfrif o'r gost yn unig
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Prynu copi o'r awyren. Ctrl+Clic i rannu'r gorchmynion. Pwyso Shift hefyd i ddangos amcangyfrif o'r gost yn unig
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Prynu copi o'r trên gan gynnwys pob un o'i gerbydau. Ctrl+Clic i rannu'r gorchmynion. Pwyso Shift hefyd i ddangos amcangyfrif o'r gost yn unig
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Prynu copi o'r cerbyd ffordd. Ctrl+Clic i rannu'r gorchmynion. Pwyso Shift hefyd i ddangos amcangyfrif o'r gost yn unig
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Prynu copi o'r llong. Ctrl+Clic i rannu'r gorchmynion. Pwyso Shift hefyd i ddangos amcangyfrif o'r gost yn unig
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Prynu copi o'r awyren. Ctrl+Clic i rannu'r gorchmynion. Pwyso Shift hefyd i ddangos amcangyfrif o'r gost yn unig
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Gorfodi trên i barhau heb fod signal yn ei glirio
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Gwrthdroi cyfeiriad trên
@@ -4486,10 +4486,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Wedi dec
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Manylion)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Enwi trên
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Enwi cerbyd ffordd
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Enwi llong
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Enwi awyren
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Enwi trên
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Enwi cerbyd ffordd
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Enwi llong
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Enwi awyren
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} blwyddyn ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} blwyddyn ({COMMA})

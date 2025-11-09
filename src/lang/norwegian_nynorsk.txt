@@ -563,7 +563,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Gøym alle
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Syn alle varer på varetakstgrafen
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Gøym alle varer på varetakstgrafen
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Syne/gøym graf for ein bestemd varetype
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Syne/gøym graf for ein bestemd varetype
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
@@ -1951,7 +1951,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Dato
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Aktuell dato
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Språk, tenarversjon, etc.
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klikk på eit spel i lista for å velje det
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Klikk på eit spel i lista for å velje det
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Tenaren du brukte sist gong:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Klikk for å velje tenaren du brukte sist gong
 
@@ -3116,7 +3116,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Hindre a
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Midtstill hovedvisninga på kontrollpunktet. CTRL+klikk syner kontrollpunktet i eit nytt tilleggsvindauge
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Byt namn på kontrollpunkt
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Byt namn på kontrollpunkt
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Midtstill hovedvisninga på bøyen. CTRL+klikk syner bøyen i eit nytt tilleggsvindauge
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Byt namn på bøyen
 
@@ -3548,10 +3548,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Send ski
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Send luftfartøyet til hangaren. CTRL+klikk for å berre utføre vedlikehald
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Dette vil lage ein kopi av eit lokomotiv inkludert alle vognene. Ctrl+klikk deler ordrane. Skift+klikk syner prisoverslag utan å kjøpe.
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Dette vil lage ein kopi av eit køyretøy. Ctrl+klikk deler ordrane. Skift+klikk syner prisoverslag utan å kjøpe.
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Dette vil laga ein kopi av eit skip. Ctrl+klikk deler ordrane. Skift+klikk syner prisoverslag utan å kjøpe.
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Dette vil lage ein kopi av eit luftfartøy. Ctrl+klikk deler ordrane. Skift+klikk syner prisoverslag utan å kjøpe.
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Dette vil lage ein kopi av eit lokomotiv inkludert alle vognene. Ctrl+klikk deler ordrane. Skift+klikk syner prisoverslag utan å kjøpe.
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Dette vil lage ein kopi av eit køyretøy. Ctrl+klikk deler ordrane. Skift+klikk syner prisoverslag utan å kjøpe.
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Dette vil laga ein kopi av eit skip. Ctrl+klikk deler ordrane. Skift+klikk syner prisoverslag utan å kjøpe.
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Dette vil lage ein kopi av eit luftfartøy. Ctrl+klikk deler ordrane. Skift+klikk syner prisoverslag utan å kjøpe.
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Tving toget til å køyre utan å ha fått klarsignal
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Byt køyreretning
@@ -3603,10 +3603,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Startet
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detaljar)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Namngje tog
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Namngje køyretøy
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Namngje skip
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Namngje luftfartøy
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Namngje tog
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Namngje køyretøy
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Namngje skip
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Namngje luftfartøy
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} år ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} år ({COMMA})

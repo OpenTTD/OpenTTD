@@ -588,7 +588,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}اوقف الكل
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}اعرض جميع انواع البضائع في جدول اسعار النقل.
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}لا تعرض البضائع في جدول اسعار النقل.
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}اظهار / اخفاء الشحن
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}اظهار / اخفاء الشحن
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
@@ -1919,7 +1919,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}التا
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}التاريخ الحالي
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}اللغة ، نسخة الخادم ، إلخ
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}أضغط على لعبة من القائمة لإختيارها
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}أضغط على لعبة من القائمة لإختيارها
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}الخادم الذي أنضممت إليه آخر مره:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}اضغط للعب الخادم الذي لعبت به آخر مرة.
 
@@ -3157,7 +3157,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}اغلا
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK} ركز شاشة العرض على نقطة العبور
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}غير اسم نقطة العبور
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}غير اسم نقطة العبور
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK} ضع العوامة في مركز الشاشة. Ctrl+Click لفتح نافذة لموقع العوامة
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK} غير اسم العومة
 
@@ -3604,10 +3604,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}ارسل
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}ارسل الطائرة الى حظيرة الصيانة - مفتاح التحكم (كنترول) + الضغط يرسلها للصيانة فقط
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}هذا سوف يشتري نسخة عن قطار بكل عرباته. مفتاح التحكم + الضغط سوف يشارك الاوامر.
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}هذا سوف يشتري عربة مُطابِقة للمُختاره. مفتاح كنترول+النقر بالفأره سيستنسخ نفس الاوامر الاوامر الى العربه الجديده. مفتاح شفت+النقر بالفأره سيحسب التكلفه المُقدره ويعرضها لك
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}هذا سوف يشتري سفينة مطابقة للمختارة. مفتاح التحكم كنترول + الضغط سوف يتشارك بالاوامر.
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}هذا سوف يشتري طائرة مطابقة للمختارة. مفتاح كنترول+نقره بالفأره سينسخ نفس اوامر الطائره السابقه الى الطائره الجديده. مفتاح شفت+نقره بالفأره سيحسب التكلفه المُقَدره ويعرضها لك
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}هذا سوف يشتري نسخة عن قطار بكل عرباته. مفتاح التحكم + الضغط سوف يشارك الاوامر.
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}هذا سوف يشتري عربة مُطابِقة للمُختاره. مفتاح كنترول+النقر بالفأره سيستنسخ نفس الاوامر الاوامر الى العربه الجديده. مفتاح شفت+النقر بالفأره سيحسب التكلفه المُقدره ويعرضها لك
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}هذا سوف يشتري سفينة مطابقة للمختارة. مفتاح التحكم كنترول + الضغط سوف يتشارك بالاوامر.
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}هذا سوف يشتري طائرة مطابقة للمختارة. مفتاح كنترول+نقره بالفأره سينسخ نفس اوامر الطائره السابقه الى الطائره الجديده. مفتاح شفت+نقره بالفأره سيحسب التكلفه المُقَدره ويعرضها لك
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}اجبر القطار على التحرك بدون انتظار الاشارة الخضراء
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}عكس اتجاة القطار
@@ -3661,10 +3661,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}ابتد
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} تفاصيل
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK} اسم القطار
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}تسمية العربة
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}تسمية السفينة
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK} تسمية الطائرة
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK} اسم القطار
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}تسمية العربة
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}تسمية السفينة
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK} تسمية الطائرة
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA}سنة ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA}سنة ({COMMA})

@@ -628,8 +628,8 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 år (quarterly)
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 år (yearly)
 
-STR_GRAPH_TOGGLE_RANGE                                          :Slå graf til/fra for dette dataområde
-STR_GRAPH_SELECT_SCALE                                          :Ændre grafens vandrette skala
+STR_GRAPH_TOGGLE_RANGE_TOOLTIP                                  :Slå graf til/fra for dette dataområde
+STR_GRAPH_SELECT_SCALE_TOOLTIP                                  :Ændre grafens vandrette skala
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Lastudbetalingsrater
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}dage i transit
@@ -639,7 +639,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Ingen
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Vis alle fragter på grafen
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Vis ingen fragter på grafen
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Skift grafen for denne lasttype til/fra
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Skift grafen for denne lasttype til/fra
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Fragt historik
@@ -2407,7 +2407,7 @@ STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Spille t
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Spillet tid, mens{} spillet ikke var sat på pause
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Serverkompatibilitet og godkendelsesoplysninger
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klik på et spil fra listen for at vælge det
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Klik på et spil fra listen for at vælge det
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Den senest tilsluttede server:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Klik for at vælge den server du spillede på sidst
 
@@ -2791,7 +2791,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Forbind 
 STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Byg et separat rutepunkt
 
 # Generic toolbar
-STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Deaktiveret da der aktuelt ikke er nogen fartøjer tilgængelige for denne infrastruktur
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE_TOOLTIP               :{BLACK}Deaktiveret da der aktuelt ikke er nogen fartøjer tilgængelige for denne infrastruktur
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Jernbanekonstruktion
@@ -3766,9 +3766,9 @@ STR_GOALS_CAPTION                                               :{WHITE}{COMPANY
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globale Mål
 STR_GOALS_SPECTATOR                                             :Globale Mål
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Global
-STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Vis globale mål
+STR_GOALS_GLOBAL_BUTTON_TOOLTIP                                 :{BLACK}Vis globale mål
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Selskab
-STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Vis selskabs mål
+STR_GOALS_COMPANY_BUTTON_TOOLTIP                                :{BLACK}Vis selskabs mål
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Ingen -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3911,7 +3911,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Forhindr
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrer skærmen over rutepunktets lokalitet. Ctrl+Klik åbner et nyt vindue ved rutepunktets lokalitet.
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Omdøb rutepunkt
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Omdøb rutepunkt
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrér skærmen ved bøjens placering. Ctrl+klik åbner et nyt vindue ved bøjens placering
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Ændr navnet på bøjen
 
@@ -4440,10 +4440,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Send ski
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Send fly til hangar. Ctrl+klik for kun at servicer
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Dette vil købe en kopi af toget inklusiv alle vogne. Ctrl-klik vil dele ordrer. Shift-klik vil vise prisoverslag.
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Køb en kopi af vejkøretøjet. Ctrl+klik for at dele ordrer. Tryk også på Shift for kun at vise omkostningsestimat
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Dette vil købe en kopi af skibet. Ctrl-klik vil dele ordrer. Shift-klik vil vise prisoverslag.
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Køb en kopi af flyet. Ctrl+klik for at dele ordrer. Tryk også på Shift for kun at vise omkostningsestimat
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Dette vil købe en kopi af toget inklusiv alle vogne. Ctrl-klik vil dele ordrer. Shift-klik vil vise prisoverslag.
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Køb en kopi af vejkøretøjet. Ctrl+klik for at dele ordrer. Tryk også på Shift for kun at vise omkostningsestimat
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Dette vil købe en kopi af skibet. Ctrl-klik vil dele ordrer. Shift-klik vil vise prisoverslag.
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Køb en kopi af flyet. Ctrl+klik for at dele ordrer. Tryk også på Shift for kun at vise omkostningsestimat
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Tving toget til at fortsætte uden at vente på at signalet skifter til grønt
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Vend retningen af toget
@@ -4506,10 +4506,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Startet
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detaljer)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Giv toget et navn
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Giv køretøjet et navn
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Giv skibet et navn
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Navngiv flyet
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Giv toget et navn
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Giv køretøjet et navn
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Giv skibet et navn
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Navngiv flyet
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} år ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} år ({COMMA})
