@@ -493,7 +493,7 @@ struct BuildRailToolbarWindow : Window {
 
 		if (std::ranges::find(can_build_widgets, widget) == std::end(can_build_widgets)) return false;
 
-		GuiShowTooltips(this, GetEncodedString(STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE), close_cond);
+		GuiShowTooltips(this, GetEncodedString(STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE_TOOLTIP), close_cond);
 		return true;
 	}
 

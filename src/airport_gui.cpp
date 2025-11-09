@@ -115,7 +115,7 @@ struct BuildAirToolbarWindow : Window {
 			CloseWindowById(WC_BUILD_STATION, TRANSPORT_AIR);
 
 			/* Show in the tooltip why this button is disabled. */
-			this->GetWidget<NWidgetCore>(WID_AT_AIRPORT)->SetToolTip(STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE);
+			this->GetWidget<NWidgetCore>(WID_AT_AIRPORT)->SetToolTip(STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE_TOOLTIP);
 		} else {
 			this->GetWidget<NWidgetCore>(WID_AT_AIRPORT)->SetToolTip(STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP);
 		}

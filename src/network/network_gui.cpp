@@ -875,7 +875,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_network_game_widgets
 						NWidget(NWID_VERTICAL),
 							NWidgetFunction(MakeResizableHeader),
 							NWidget(WWT_MATRIX, COLOUR_LIGHT_BLUE, WID_NG_MATRIX), SetResize(1, 1), SetFill(1, 0),
-												SetMatrixDataTip(1, 0, STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT), SetScrollbar(WID_NG_SCROLLBAR),
+												SetMatrixDataTip(1, 0, STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP), SetScrollbar(WID_NG_SCROLLBAR),
 						EndContainer(),
 						NWidget(NWID_VSCROLLBAR, COLOUR_LIGHT_BLUE, WID_NG_SCROLLBAR),
 					EndContainer(),
