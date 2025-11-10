@@ -48,6 +48,11 @@ public:
 		if (this->shaded) return (sel ? TC_SILVER : TC_GREY) | TC_NO_SHADE;
 		return sel ? TC_WHITE : TC_BLACK;
 	}
+
+	virtual PixelColour GetSelectedBGColour([[maybe_unused]] Colours window_colour) const
+	{
+		return PC_BLACK;
+	}
 };
 
 /**
