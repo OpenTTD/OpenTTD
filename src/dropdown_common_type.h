@@ -299,8 +299,48 @@ public:
 	bool Selectable() const override { return false; }
 };
 
+/**
+ * Drop down component that changes the colour of the background when item.
+ * @tparam TBase Base component.
+ */
+template <class TBase>
+class DropDownCustomSelectedBGColour : public TBase {
+public:
+	/**
+	 * Colours is converted to PixelColour
+	 * true evalueates to current window colour
+	 * false falls back to TBase::GetSelectedBGColour
+	 */
+	using ColourType = std::variant<PixelColour, Colours, bool>;
+private:
+	ColourType colour;
+	ColourType shift_colour;
+	ColourType ctrl_colour;
+public:
+	template <typename... Args>
+	explicit DropDownCustomSelectedBGColour(const ColourType &colour, const ColourType &shift_colour, const ColourType &ctrl_colour, Args&&... args)
+		: TBase(std::forward<Args>(args)...), colour(colour), shift_colour(shift_colour), ctrl_colour(ctrl_colour)
+	{
+	}
+
+	PixelColour GetSelectedBGColour(Colours window_colour) const override
+	{
+		auto colour = this->colour;
+		if (_shift_pressed) colour = shift_colour;
+		if (_ctrl_pressed) colour = ctrl_colour;
+
+		switch (colour.index()) {
+			default: NOT_REACHED();
+			case 0 /* PixelColour */: return std::get<PixelColour>(colour);
+			case 1 /* Colours */: return GetColourGradient(std::get<Colours>(colour), SHADE_LIGHT);
+			case 2 /* bool */:
+				if (std::get<bool>(colour)) return GetColourGradient(window_colour, SHADE_LIGHT);
+				return this->TBase::GetSelectedBGColour(window_colour);
+		}
+	}
+};
+
 /* Commonly used drop down list items. */
-using DropDownListDividerItem = DropDownDivider<DropDownListItem>;
 using DropDownListStringItem = DropDownString<DropDownListItem>;
 using DropDownListIconItem = DropDownIcon<DropDownString<DropDownListItem>>;
 using DropDownListCheckedItem = DropDownIndent<DropDownCheck<DropDownString<DropDownListItem>>>;
