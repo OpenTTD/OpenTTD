@@ -48,6 +48,16 @@ public:
 		if (this->shaded) return (sel ? TC_SILVER : TC_GREY) | TC_NO_SHADE;
 		return sel ? TC_WHITE : TC_BLACK;
 	}
+
+	/**
+	 * Used to determine the background colour for this item if it is selected.
+	 * @param window_colour The colour of the window containing the dropdown menu.
+	 * @return The background colour for this item.
+	 */
+	virtual PixelColour GetSelectedBGColour([[maybe_unused]] Colours window_colour) const
+	{
+		return PC_BLACK;
+	}
 };
 
 /**
