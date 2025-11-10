@@ -244,7 +244,9 @@ static void DrawStationRatingMiniGraph(const Rect &r, CargoType cargo_type, uint
 	int height = GetCharacterHeight(FS_SMALL) + ScaleGUITrad(1);
 
 	Rect gr = r.WithHeight(height);
-	if (amount > 30) {
+	if (rating == 0) {
+		GfxFillRect(gr, colour, FILLRECT_CHECKER);
+	} else if (amount > 30) {
 		/* Draw total cargo (limited) on station */
 		GfxFillRect(gr.WithWidth(w, rtl), colour);
 	} else {
@@ -257,6 +259,7 @@ static void DrawStationRatingMiniGraph(const Rect &r, CargoType cargo_type, uint
 	}
 
 	DrawString(r, cs->abbrev, tc, SA_CENTER, false, FS_SMALL);
+	if (rating == 0) return;
 
 	/* Draw green/red ratings bar (fits under the waiting bar) */
 	Rect br = r.Shrink(ScaleGUITrad(1)).WithHeight(ScaleGUITrad(1), true);
@@ -272,7 +275,7 @@ static void DrawStationRatingMiniGraph(const Rect &r, CargoType cargo_type, uint
  * @param row Rect to draw row of graphs within.
  * @param rating_width Width of each rating grpah.
  */
-void DrawStationRatingMiniGraphs(const Station *st, const Rect &row, uint rating_width)
+void DrawStationRatingMiniGraphs(const Station *st, const Rect &row, uint rating_width, bool show_accepted)
 {
 	bool rtl = _current_text_dir == TD_RTL;
 	Rect r = row.WithWidth(rating_width, rtl);
@@ -282,10 +285,10 @@ void DrawStationRatingMiniGraphs(const Station *st, const Rect &row, uint rating
 	/* Draw cargo waiting and station ratings */
 	for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
 		const GoodsEntry &ge = st->goods[cs->Index()];
-		if (!ge.HasRating()) continue;
+		if (!ge.HasRating() && (!show_accepted || !ge.status.Test(GoodsEntry::State::Acceptance))) continue;
 		if (r.left < row.left || r.right > row.right) break;
 
-		DrawStationRatingMiniGraph(r, cs->Index(), ge.HasData() ? ge.GetData().cargo.TotalCount() : 0, ge.rating);
+		DrawStationRatingMiniGraph(r, cs->Index(), ge.HasData() ? ge.GetData().cargo.TotalCount() : 0, ge.HasRating() ? ge.rating  : 0);
 
 		r = r.Translate(delta_x, 0);
 	}

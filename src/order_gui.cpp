@@ -367,7 +367,7 @@ void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_
 	DrawString(order_rect, line, colour);
 
 	if (st != nullptr && rating_width > 0) {
-		DrawStationRatingMiniGraphs(st, order_rect.Indent(w + WidgetDimensions::scaled.hsep_wide, rtl), rating_width);
+		DrawStationRatingMiniGraphs(st, order_rect.Indent(w + WidgetDimensions::scaled.hsep_wide, rtl), rating_width, true);
 	}
 }
 

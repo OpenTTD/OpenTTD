@@ -36,6 +36,6 @@ void ShowSelectRailWaypointIfNeeded(TileArea ta, StationPickerCmdProc proc);
 void ShowSelectRoadWaypointIfNeeded(TileArea ta, StationPickerCmdProc proc);
 
 uint GetStationRatingMiniGraphWidth();
-void DrawStationRatingMiniGraphs(const Station *st, const Rect &row, uint rating_width);
+void DrawStationRatingMiniGraphs(const Station *st, const Rect &row, uint rating_width, bool show_accepted = false);
 
 #endif /* STATION_GUI_H */
