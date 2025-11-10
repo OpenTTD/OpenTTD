@@ -193,9 +193,12 @@ public:
 	{
 		for (const auto &gc : gui_classes->GetClasses()) {
 			if (gc.column_group != 0) continue;
-			dim.width += gc.size.width + WidgetDimensions::scaled.hsep_normal;
-			dim.height = std::max(dim.height, gc.size.height);
+			dim.width += ScaleGUITrad(gc.size.width) + WidgetDimensions::scaled.hsep_normal;
+			dim.height = std::max<uint>(dim.height, ScaleGUITrad(gc.size.height));
 		}
+
+		/* Remove trailing `hsep_normal` spacer. */
+		if (dim.width > 0) dim.width -= WidgetDimensions::scaled.hsep_normal;
 	}
 
 	uint Height() const override
@@ -206,7 +209,7 @@ public:
 	uint Width() const override
 	{
 		if (this->dim.width == 0) return this->TBase::Width();
-		return this->dim.width + WidgetDimensions::scaled.hsep_wide + this->TBase::Width();
+		return this->dim.width + WidgetDimensions::scaled.hsep_normal + this->TBase::Width();
 	}
 
 	int OnClick(const Rect &r, const Point &pt) const override
@@ -215,7 +218,7 @@ public:
 			return this->TBase::OnClick(r, pt);
 		} else {
 			bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
-			return this->TBase::OnClick(r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), pt);
+			return this->TBase::OnClick(r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_normal, rtl), pt);
 		}
 	}
 
@@ -226,7 +229,7 @@ public:
 		} else {
 			bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
 			DrawBadgeColumn(r.WithWidth(this->dim.width, rtl), 0, *this->gui_classes, this->badges, this->feature, this->introduction_date, PAL_NONE);
-			this->TBase::Draw(full, r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), sel, click_result, bg_colour);
+			this->TBase::Draw(full, r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_normal, rtl), sel, click_result, bg_colour);
 		}
 	}
 
