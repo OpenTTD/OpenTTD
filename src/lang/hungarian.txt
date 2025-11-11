@@ -3491,6 +3491,10 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Északny
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Északkelet
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Délkelet
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Délnyugat
+STR_MAPGEN_NORTHWEST_TOOLTIP                                    :Víz vagy szabad formájú térképszél bekapcsolása a térkép északnyugati szélén
+STR_MAPGEN_NORTHEAST_TOOLTIP                                    :Víz vagy szabad formájú térképszél bekapcsolása a térkép északkeleti szélén
+STR_MAPGEN_SOUTHEAST_TOOLTIP                                    :Víz vagy szabad formájú térképszél bekapcsolása a térkép délkeleti szélén
+STR_MAPGEN_SOUTHWEST_TOOLTIP                                    :Víz vagy szabad formájú térképszél bekapcsolása a térkép délnyugati szélén
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Szárazföld
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Víz
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Véletlen

@@ -3520,6 +3520,10 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Βορε
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Βορειοανατολικά
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Νοτιοανατολικά
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Νοτιοδυτικά
+STR_MAPGEN_NORTHWEST_TOOLTIP                                    :Εναλλαγή νερού ή ελεύθερης μορφής άκρης στο βορειοδυτικό άκρο του χάρτη
+STR_MAPGEN_NORTHEAST_TOOLTIP                                    :Εναλλαγή νερού ή ελεύθερης μορφής άκρης στο βορειοανατολικό άκρο του χάρτη
+STR_MAPGEN_SOUTHEAST_TOOLTIP                                    :Εναλλαγή νερού ή ελεύθερης μορφής άκρης στο νοτιοανατολικό άκρο του χάρτη
+STR_MAPGEN_SOUTHWEST_TOOLTIP                                    :Εναλλαγή νερού ή ελεύθερης μορφής άκρης στο νοτιοδυτικό άκρο του χάρτη
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Ελεύθερη μορφή
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Νερό
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Τυχαία

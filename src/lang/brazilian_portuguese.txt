@@ -3428,6 +3428,10 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Noroeste
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Nordeste
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Sudeste
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Sudoeste
+STR_MAPGEN_NORTHWEST_TOOLTIP                                    :Alternar entre água ou borda livre na borda noroeste do mapa
+STR_MAPGEN_NORTHEAST_TOOLTIP                                    :Alternar entre água ou borda livre na borda nordeste do mapa
+STR_MAPGEN_SOUTHEAST_TOOLTIP                                    :Alternar entre água ou borda livre na borda sudeste do mapa
+STR_MAPGEN_SOUTHWEST_TOOLTIP                                    :Alternar entre água ou borda livre na borda sudoeste do mapa
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Forma livre
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Água
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Aleatório

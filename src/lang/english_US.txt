@@ -3427,6 +3427,10 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Northwes
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Northeast
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Southeast
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Southwest
+STR_MAPGEN_NORTHWEST_TOOLTIP                                    :Toggle water or freeform edge on the northwest map edge
+STR_MAPGEN_NORTHEAST_TOOLTIP                                    :Toggle water or freeform edge on the northeast map edge
+STR_MAPGEN_SOUTHEAST_TOOLTIP                                    :Toggle water or freeform edge on the southeast map edge
+STR_MAPGEN_SOUTHWEST_TOOLTIP                                    :Toggle water or freeform edge on the southwest map edge
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Freeform
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Water
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Random

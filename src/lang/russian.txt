@@ -3602,6 +3602,10 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Севе
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Северо-восток
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Юго-восток
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Юго-запад
+STR_MAPGEN_NORTHWEST_TOOLTIP                                    :Выбрать тип северо-западного края карты: водный или произвольной формы
+STR_MAPGEN_NORTHEAST_TOOLTIP                                    :Выбрать тип северо-восточного края карты: водный или произвольной формы
+STR_MAPGEN_SOUTHEAST_TOOLTIP                                    :Выбрать тип юго-восточного края карты: водный или произвольной формы
+STR_MAPGEN_SOUTHWEST_TOOLTIP                                    :Выбрать тип юго-западного края карты: водный или произвольной формы
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Свободный
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Водный
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Случайно

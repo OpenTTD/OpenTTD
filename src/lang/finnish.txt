@@ -3427,6 +3427,10 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Luode
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Koillinen
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Kaakko
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Lounas
+STR_MAPGEN_NORTHWEST_TOOLTIP                                    :Valitse, onko kartan luoteislaita vettä vai vapaamuotoista reunaa
+STR_MAPGEN_NORTHEAST_TOOLTIP                                    :Valitse, onko kartan koillislaita vettä vai vapaamuotoista reunaa
+STR_MAPGEN_SOUTHEAST_TOOLTIP                                    :Valitse, onko kartan kaakkoislaita vettä vai vapaamuotoista reunaa
+STR_MAPGEN_SOUTHWEST_TOOLTIP                                    :Valitse, onko kartan lounaislaita vettä vai vapaamuotoista reunaa
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Vapaa
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vesi
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Sattumanvarainen
