@@ -3807,6 +3807,10 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Płn.-za
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Płn.-wsch.
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Płd.-wsch.
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Płd.-zach.
+STR_MAPGEN_NORTHWEST_TOOLTIP                                    :Przełącz między wodą, a lądem na płn.-zach. krawędzi mapy
+STR_MAPGEN_NORTHEAST_TOOLTIP                                    :Przełącz między wodą, a lądem na płn.-wsch. krawędzi mapy
+STR_MAPGEN_SOUTHEAST_TOOLTIP                                    :Przełącz między wodą, a lądem na płd.-wsch. krawędzi mapy
+STR_MAPGEN_SOUTHWEST_TOOLTIP                                    :Przełącz między wodą, a lądem na płd.-zach. krawędzi mapy
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Ląd
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Woda
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Losowe

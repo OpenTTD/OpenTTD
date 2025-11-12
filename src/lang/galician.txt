@@ -255,6 +255,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL} kN
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} pés
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
+STR_UNITS_HEIGHT_GAMEUNITS                                      :{DECIMAL}{NBSP}Nive{P "" is}
 
 # Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}día{P "" s}
@@ -1544,7 +1545,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendario
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Reloxo
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minutos por ano: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Selecciona o número de minutos dun ano do calendario. Por defecto son 12 minutos. Fíxao en 0 para para conxelar o calendario. Increemntar a duración do ano do calendario ralentiza a introdución de vehículos, casas e outra infraestrutura. Non afecta a velocidade dos vehículos ou a simulación económica excepto pola inflación. Este axuste só está dispoñible cando se usa o modo reloxo de cronometraxe
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Selecciona o número de minutos dun ano do calendario. Por defecto son 12 minutos. Fíxao en 0 para para conxelar o calendario. Incrementar a duración do ano do calendario ralentiza a introdución de vehículos, casas e outra infraestrutura. Non afecta a velocidade dos vehículos ou a simulación económica excepto pola inflación. Este axuste só está dispoñible cando se usa o modo reloxo de cronometraxe
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
@@ -2163,6 +2164,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Cando as cotas 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Métrico (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_GAMEUNITS          :Unidades de xogo (niveis)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :Localización
 STR_CONFIG_SETTING_GRAPHICS                                     :Gráficos
@@ -2295,7 +2297,7 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Trocar a
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Cambiar data: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Cambiar o ano actual
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permitir a modificación dos valores de producción: {ORANGE}{STRING}
-STR_CHEAT_STATION_RATING                                        :{LTBLUE}Manter a puntuacuón das estacións ao 100%: {ORANGE}{STRING}
+STR_CHEAT_STATION_RATING                                        :{LTBLUE}Manter a puntuación das estacións ao 100%: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Novo esquema de cor
@@ -3426,6 +3428,10 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Noroeste
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Nordés
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Sueste
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Suroeste
+STR_MAPGEN_NORTHWEST_TOOLTIP                                    :Alternar auga ou borde de forma libre na esquina noroeste do mapa
+STR_MAPGEN_NORTHEAST_TOOLTIP                                    :Alternar auga ou borde de forma libre na esquina nordeste do mapa
+STR_MAPGEN_SOUTHEAST_TOOLTIP                                    :Alternar auga ou borde de forma libre na esquina sudeste do mapa
+STR_MAPGEN_SOUTHWEST_TOOLTIP                                    :Alternar auga ou borde de forma libre na esquina sudoeste do mapa
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Forma libre
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Auga
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Aleatorio
@@ -3472,6 +3478,8 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Xeració
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Xeración de ríos
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Xeración de áreas rochosas e escarpadas
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Xeración de vilas
+STR_GENERATION_LAND_INDUSTRY_GENERATION                         :{BLACK}Xeración de industria terrestre
+STR_GENERATION_WATER_INDUSTRY_GENERATION                        :{BLACK}Xeración de industria marítima
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Xeración de obxectos
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Xeración de árbores
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Configurando partida
@@ -5269,6 +5277,13 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}O inicio
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... ambos extremos da ponte deben estar en terra
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... ponte demasiado longa
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}A ponte remataría fóra do mapa
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}A ponte é {HEIGHT} demasiado baixa para a estación
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}A ponte é {HEIGHT} demasiado baixa para unha estación de estrada
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}A ponte é {HEIGHT} moi baixa para o porto
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}A ponte é {HEIGHT} demasiado baixa para a boia
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}A ponte é {HEIGHT} demasiado baixa para un punto de ruta de ferrocarril
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}A ponte é {HEIGHT} demasiado baixa para un punto de ruta de estrada
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}A ponte é {HEIGHT} moi baixa para a exclusa
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Non se pode construír un túnel aí...
