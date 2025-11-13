@@ -41,9 +41,11 @@ static constexpr uint MAX_BADGE_WIDTH = MAX_BADGE_HEIGHT * 2; ///< Maximal width
 static Dimension GetBadgeMaximalDimension(BadgeClassID class_index, GrfSpecFeature feature)
 {
 	Dimension d = {0, MAX_BADGE_HEIGHT};
+	std::set<BadgeClassID> classes{class_index};
 
 	for (const auto &badge : GetBadges()) {
-		if (badge.class_index != class_index) continue;
+		if (classes.find(badge.class_index) == classes.end()) continue;
+		if (badge.subclass_index != INVALID_BADGE_SUBCLASS) classes.insert(badge.subclass_index);
 
 		PalSpriteID ps = GetBadgeSprite(badge, feature, std::nullopt, PAL_NONE);
 		if (ps.sprite == 0) continue;
@@ -365,6 +367,8 @@ DropDownList BuildBadgeClassConfigurationList(const GUIBadgeClasses &gui_classes
 
 	for (const BadgeClassID &badge_class_index : gui_classes.Classes()) {
 		const Badge *badge = GetClassBadge(badge_class_index);
+
+		if (badge->subclass_index != badge->class_index) continue; ///< Do not show subclasses.
 		if (!badge->flags.Test(BadgeFlag::HasText)) continue;
 
 		const auto [config, _] = GetBadgeClassConfigItem(gui_classes.GetFeature(), badge->label);
@@ -503,8 +507,18 @@ std::string NWidgetBadgeFilter::GetStringParameter(const BadgeFilterChoices &cho
 		return ::GetString(STR_BADGE_FILTER_ANY_LABEL, GetClassBadge(this->badge_class)->name);
 	}
 
-	return ::GetString(STR_BADGE_FILTER_IS_LABEL, GetClassBadge(it->first)->name, GetBadge(it->second)->name);
+	auto class_name = GetClassBadge(it->first)->name;
+
+	auto sub_it = choices.find(GetBadge(it->second)->subclass_index);
+	while (sub_it != std::end(choices)) {
+		it = sub_it;
+		sub_it = choices.find(GetBadge(it->second)->subclass_index);
+	}
+
+	return ::GetString(STR_BADGE_FILTER_IS_LABEL, class_name, GetBadge(it->second)->name);
 }
+
+#include <iostream>
 
 /**
  * Get the drop down list of badges for this filter.
@@ -527,11 +541,40 @@ DropDownList NWidgetBadgeFilter::GetDropDownList() const
 
 	const auto *bc = GetClassBadge(this->badge_class);
 
+	std::map<BadgeClassID, std::vector<BadgeID>> displayed_subclasses{};
+	std::map<BadgeClassID, uint> subclass_indent{};
+
+	size_t count = list.size();
+
+	/* Because badge can't be created before it's class has been created
+	 * and the class can't be created before it's root has been created,
+	 * it is safe to search for all subclasses and badges that belong
+	 * to them with only a single for loop.
+	 */
+
 	for (const Badge &badge : GetBadges()) {
-		if (badge.class_index != this->badge_class) continue;
 		if (badge.index == bc->index) continue;
 		if (badge.name == STR_NULL) continue;
 		if (!badge.features.Test(this->feature)) continue;
+
+		++count;
+
+		if (badge.class_index != this->badge_class) {
+			auto it = displayed_subclasses.find(badge.class_index);
+			if (it != displayed_subclasses.end()) {
+				it->second.push_back(badge.index);
+				if (badge.subclass_index != INVALID_BADGE_SUBCLASS) {
+					displayed_subclasses.insert({badge.subclass_index, {}});
+					subclass_indent[badge.subclass_index] = subclass_indent[badge.class_index] + BADGE_SUBCLASS_INDENT_STEP;
+				}
+			}
+			continue;
+		}
+
+		if (badge.subclass_index != INVALID_BADGE_SUBCLASS) {
+			displayed_subclasses.insert({badge.subclass_index, {}});
+			subclass_indent[badge.subclass_index] = BADGE_SUBCLASS_INDENT_STEP;
+		}
 
 		PalSpriteID ps = GetBadgeSprite(badge, this->feature, std::nullopt, PAL_NONE);
 		if (ps.sprite == 0) {
@@ -542,6 +585,32 @@ DropDownList NWidgetBadgeFilter::GetDropDownList() const
 	}
 
 	std::sort(std::begin(list) + start, std::end(list), DropDownListStringItem::NatSortFunc);
+
+	list.reserve(count); ///< Prevent iterator invalidation.
+
+	for (auto it = list.begin() + start; it != list.end(); ++it) {
+		if (*it == nullptr) {std::cout << "nullptr" << std::endl; continue;}
+		std::cout << (*it)->result << " ";
+		const Badge *parent = GetBadge(BadgeID((*it)->result));
+		std::cout << parent->label << std::endl;
+		BadgeClassID class_index = parent->subclass_index;
+		auto dc_it = displayed_subclasses.find(class_index);
+		if (dc_it == displayed_subclasses.end()) continue;
+
+		auto end = it;
+		for (const BadgeID &index : dc_it->second) {
+			const Badge badge = *GetBadge(index);
+			PalSpriteID ps = GetBadgeSprite(badge, this->feature, std::nullopt, PAL_NONE);
+			if (ps.sprite == 0) {
+				list.insert(it + 1, MakeDropDownListIndentedStringItem(badge.name, index.base(), subclass_indent[class_index]));
+				if (*(it+1) == nullptr) std::cout << "it+1 == nullptr" << std::endl;
+			} else {
+				list.insert(it + 1, MakeDropDownListIndentedIconItem(d, ps.sprite, ps.pal, badge.name, index.base(), subclass_indent[class_index]));
+			}
+			++end;
+		}
+		std::sort(it + 1, end + 1, DropDownListStringItem::NatSortFunc);
+	}
 
 	return list;
 }
@@ -575,12 +644,20 @@ std::pair<WidgetID, WidgetID> AddBadgeDropdownFilters(NWidgetContainer &containe
 
 /**
  * Reset badge filter choice for a class.
+ * Also resets all subclasses.
  * @param choices Badge filter choices.
  * @param badge_class_index Badge class to reset.
  */
 void ResetBadgeFilter(BadgeFilterChoices &choices, BadgeClassID badge_class_index)
 {
-	choices.erase(badge_class_index);
+	auto it = choices.find(badge_class_index);
+	while (it != choices.end()) {
+		const Badge *class_badge = GetBadge(it->second);
+		assert(class_badge != nullptr);
+
+		choices.erase(it);
+		it = choices.find(class_badge->subclass_index);
+	}
 }
 
 /**
@@ -594,5 +671,15 @@ void SetBadgeFilter(BadgeFilterChoices &choices, BadgeID badge_index)
 	const Badge *badge = GetBadge(badge_index);
 	assert(badge != nullptr);
 
-	choices[badge->class_index] = badge_index;
+	const Badge *class_badge = GetClassBadge(badge->class_index);
+	BadgeID subclass_filter = badge_index;
+	while (class_badge != nullptr) {
+		ResetBadgeFilter(choices, class_badge->class_index);
+		choices.insert({class_badge->subclass_index, subclass_filter});
+		subclass_filter = class_badge->index;
+		class_badge = GetClassBadge(class_badge->class_index);
+		if (class_badge->class_index == class_badge->subclass_index) break;
+	}
+
+	choices.insert({class_badge->subclass_index, subclass_filter});
 }

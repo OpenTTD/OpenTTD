@@ -20,8 +20,12 @@ void ShowDropDownMenu(Window *w, std::span<const StringID> strings, int selected
 std::unique_ptr<DropDownListItem> MakeDropDownListDividerItem();
 std::unique_ptr<DropDownListItem> MakeDropDownListStringItem(StringID str, int value, bool masked = false, bool shaded = false);
 std::unique_ptr<DropDownListItem> MakeDropDownListStringItem(std::string &&str, int value, bool masked = false, bool shaded = false);
+std::unique_ptr<DropDownListItem> MakeDropDownListIndentedStringItem(StringID str, int value, uint indent, bool masked = false, bool shaded = false);
+std::unique_ptr<DropDownListItem> MakeDropDownListIndentedStringItem(std::string &&str, int value, uint indent, bool masked = false, bool shaded = false);
 std::unique_ptr<DropDownListItem> MakeDropDownListIconItem(SpriteID sprite, PaletteID palette, StringID str, int value, bool masked = false, bool shaded = false);
 std::unique_ptr<DropDownListItem> MakeDropDownListIconItem(const Dimension &dim, SpriteID sprite, PaletteID palette, StringID str, int value, bool masked = false, bool shaded = false);
+std::unique_ptr<DropDownListItem> MakeDropDownListIndentedIconItem(SpriteID sprite, PaletteID palette, StringID str, int value, uint indent, bool masked = false, bool shaded = false);
+std::unique_ptr<DropDownListItem> MakeDropDownListIndentedIconItem(const Dimension &dim, SpriteID sprite, PaletteID palette, StringID str, int value, uint indent, bool masked = false, bool shaded = false);
 std::unique_ptr<DropDownListItem> MakeDropDownListCheckedItem(bool checked, StringID str, int value, bool masked = false, bool shaded = false, uint indent = 0);
 
 #endif /* DROPDOWN_FUNC_H */

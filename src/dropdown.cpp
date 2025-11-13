@@ -41,6 +41,16 @@ std::unique_ptr<DropDownListItem> MakeDropDownListStringItem(std::string &&str, 
 	return std::make_unique<DropDownListStringItem>(std::move(str), value, masked, shaded);
 }
 
+std::unique_ptr<DropDownListItem> MakeDropDownListIndentedStringItem(StringID str, int value, uint indent, bool masked, bool shaded)
+{
+	return MakeDropDownListIndentedStringItem(GetString(str), value, indent, masked, shaded);
+}
+
+std::unique_ptr<DropDownListItem> MakeDropDownListIndentedStringItem(std::string &&str, int value, uint indent, bool masked, bool shaded)
+{
+	return std::make_unique<DropDownListIndentedStringItem>(indent, std::move(str), value, masked, shaded);
+}
+
 std::unique_ptr<DropDownListItem> MakeDropDownListIconItem(SpriteID sprite, PaletteID palette, StringID str, int value, bool masked, bool shaded)
 {
 	return std::make_unique<DropDownListIconItem>(sprite, palette, GetString(str), value, masked, shaded);
@@ -49,6 +59,16 @@ std::unique_ptr<DropDownListItem> MakeDropDownListIconItem(SpriteID sprite, Pale
 std::unique_ptr<DropDownListItem> MakeDropDownListIconItem(const Dimension &dim, SpriteID sprite, PaletteID palette, StringID str, int value, bool masked, bool shaded)
 {
 	return std::make_unique<DropDownListIconItem>(dim, sprite, palette, GetString(str), value, masked, shaded);
+}
+
+std::unique_ptr<DropDownListItem> MakeDropDownListIndentedIconItem(SpriteID sprite, PaletteID palette, StringID str, int value, uint indent, bool masked, bool shaded)
+{
+	return std::make_unique<DropDownListIndentedIconItem>(indent, sprite, palette, GetString(str), value, masked, shaded);
+}
+
+std::unique_ptr<DropDownListItem> MakeDropDownListIndentedIconItem(const Dimension &dim, SpriteID sprite, PaletteID palette, StringID str, int value, uint indent, bool masked, bool shaded)
+{
+	return std::make_unique<DropDownListIndentedIconItem>(indent, dim, sprite, palette, GetString(str), value, masked, shaded);
 }
 
 std::unique_ptr<DropDownListItem> MakeDropDownListCheckedItem(bool checked, StringID str, int value, bool masked, bool shaded, uint indent)

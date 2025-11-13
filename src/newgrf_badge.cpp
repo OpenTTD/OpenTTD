@@ -88,14 +88,21 @@ Badge &GetOrCreateBadge(std::string_view label)
 	BadgeClassID class_index;
 
 	/* Extract class. */
-	auto sep = label.find_first_of(BADGE_CLASS_SEPARATOR);
+	auto sep = label.find_last_of(BADGE_CLASS_SEPARATOR);
 	if (sep != std::string_view::npos) {
 		/* There is a separator, find (and create if necessary) the class label. */
-		class_index = GetOrCreateBadge(label.substr(0, sep)).class_index;
+		auto parent = GetOrCreateBadge(label.substr(0, sep));
+		if (parent.subclass_index == INVALID_BADGE_SUBCLASS) {
+			class_index = GetOrCreateBadgeClass(parent.index);
+			GetBadge(parent.index)->subclass_index = class_index;
+		} else {
+			class_index = parent.subclass_index;
+		}
 		it = std::end(_badges.specs);
 	}
 
 	BadgeID index = BadgeID(std::distance(std::begin(_badges.specs), it));
+
 	if (sep == std::string_view::npos) {
 		/* There is no separator, so this badge is a class badge. */
 		class_index = GetOrCreateBadgeClass(index);
@@ -263,6 +270,25 @@ void AppendCopyableBadgeList(std::vector<BadgeID> &dst, std::span<const BadgeID>
 	}
 }
 
+/**
+ * Append roots of all subclasses for provided badge.
+ * @param dst Destination badge list.
+ * @param index Badge to start from.
+ */
+void AppendBadgeSubClassesRoots(std::vector<BadgeID> &dst, BadgeID index)
+{
+	const Badge *root = GetClassBadge(GetBadge(index)->class_index);
+
+	while (root->subclass_index != root->class_index) {
+		if (std::ranges::find(dst, root->index) == std::end(dst)) {
+			/* Badge is not present in the destination list. */
+			dst.push_back(root->index);
+		}
+		root = GetClassBadge(root->class_index);
+	}
+
+}
+
 /** Apply features from all badges to their badge classes. */
 void ApplyBadgeFeaturesToClassBadges()
 {
@@ -303,7 +329,7 @@ UsedBadgeClasses::UsedBadgeClasses(GrfSpecFeature feature) : feature(feature)
 		Badge *class_badge = GetBadge(index);
 		if (!class_badge->features.Test(feature)) continue;
 
-		this->classes.push_back(class_badge->class_index);
+		this->classes.push_back(class_badge->subclass_index);
 	}
 
 	std::ranges::sort(this->classes, [](const BadgeClassID &a, const BadgeClassID &b) { return GetClassBadge(a)->label < GetClassBadge(b)->label; });

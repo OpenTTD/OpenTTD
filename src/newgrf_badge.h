@@ -17,17 +17,25 @@
 #include "strings_type.h"
 #include "timer/timer_game_calendar.h"
 
+/**
+ * Both BadgeClassID and BadgeID are uint16_t.
+ * Having only class badges is very unlikely.
+ * Therefore badge classes list should have less elements that badges list.
+ */
+const BadgeClassID INVALID_BADGE_SUBCLASS = BadgeClassID(0xFFFF);
+
 class Badge {
 public:
 	std::string label; ///< Label of badge.
 	BadgeID index; ///< Index assigned to badge.
 	BadgeClassID class_index; ///< Index of class this badge belongs to.
+	BadgeClassID subclass_index; ///< Index of class this badge is root of.
 	BadgeFlags flags = {}; ///< Display flags
 	StringID name = 0; ///< Short name.
 	GrfSpecFeatures features{}; ///< Bitmask of which features use this badge.
 	VariableGRFFileProps<GrfSpecFeature> grf_prop; ///< Sprite information.
 
-	Badge(std::string_view label, BadgeID index, BadgeClassID class_index) : label(label), index(index), class_index(class_index) {}
+	Badge(std::string_view label, BadgeID index, BadgeClassID class_index) : label(label), index(index), class_index(class_index), subclass_index(INVALID_BADGE_SUBCLASS) {}
 };
 
 /** Utility class to create a list of badge classes used by a feature. */
@@ -57,6 +65,7 @@ Badge &GetOrCreateBadge(std::string_view label);
 void MarkBadgeSeen(BadgeID index, GrfSpecFeature feature);
 void AppendCopyableBadgeList(std::vector<BadgeID> &dst, std::span<const BadgeID> src, GrfSpecFeature feature);
 void ApplyBadgeFeaturesToClassBadges();
+void AppendBadgeSubClassesRoots(std::vector<BadgeID> &dst, BadgeID index);
 
 std::span<const Badge> GetBadges();
 Badge *GetBadge(BadgeID index);

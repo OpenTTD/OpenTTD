@@ -103,6 +103,7 @@ std::vector<BadgeID> ReadBadgeList(ByteReader &buf, GrfSpecFeature feature)
 		if (std::ranges::find(badges, index) != std::end(badges)) continue;
 
 		badges.push_back(index);
+		AppendBadgeSubClassesRoots(badges, index);
 		MarkBadgeSeen(index, feature);
 	}
 

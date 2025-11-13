@@ -302,7 +302,9 @@ public:
 /* Commonly used drop down list items. */
 using DropDownListDividerItem = DropDownDivider<DropDownListItem>;
 using DropDownListStringItem = DropDownString<DropDownListItem>;
+using DropDownListIndentedStringItem = DropDownIndent<DropDownString<DropDownListItem>>;
 using DropDownListIconItem = DropDownIcon<DropDownString<DropDownListItem>>;
+using DropDownListIndentedIconItem = DropDownIndent<DropDownIcon<DropDownString<DropDownListItem>>>;
 using DropDownListCheckedItem = DropDownIndent<DropDownCheck<DropDownString<DropDownListItem>>>;
 
 #endif /* DROPDOWN_COMMON_TYPE_H */
