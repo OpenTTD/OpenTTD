@@ -3428,6 +3428,10 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}북서
 STR_MAPGEN_NORTHEAST                                            :{BLACK}북동
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}남동
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}남서
+STR_MAPGEN_NORTHWEST_TOOLTIP                                    :남서쪽 지도 맨 가장자리를 물로 할지 육지로 할지 고릅니다
+STR_MAPGEN_NORTHEAST_TOOLTIP                                    :북동쪽 지도 맨 가장자리를 물로 할지 육지로 할지 고릅니다
+STR_MAPGEN_SOUTHEAST_TOOLTIP                                    :남동쪽 지도 맨 가장자리를 물로 할지 육지로 할지 고릅니다
+STR_MAPGEN_SOUTHWEST_TOOLTIP                                    :남서쪽 지도 맨 가장자리를 물로 할지 육지로 할지 고릅니다
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}변경 가능
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}물
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}임의
