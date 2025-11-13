@@ -508,9 +508,10 @@ std::string NWidgetBadgeFilter::GetStringParameter(const BadgeFilterChoices &cho
 
 /**
  * Get the drop down list of badges for this filter.
+ * @param palette Palette used to remap badge sprites.
  * @return Drop down list for filter.
  */
-DropDownList NWidgetBadgeFilter::GetDropDownList() const
+DropDownList NWidgetBadgeFilter::GetDropDownList(PaletteID palette) const
 {
 	DropDownList list;
 
@@ -533,7 +534,7 @@ DropDownList NWidgetBadgeFilter::GetDropDownList() const
 		if (badge.name == STR_NULL) continue;
 		if (!badge.features.Test(this->feature)) continue;
 
-		PalSpriteID ps = GetBadgeSprite(badge, this->feature, std::nullopt, PAL_NONE);
+		PalSpriteID ps = GetBadgeSprite(badge, this->feature, std::nullopt, palette);
 		if (ps.sprite == 0) {
 			list.push_back(MakeDropDownListStringItem(badge.name, badge.index.base()));
 		} else {
