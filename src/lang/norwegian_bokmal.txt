@@ -3429,6 +3429,10 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Nordvest
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Nordøst
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Sørøst
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Sørvest
+STR_MAPGEN_NORTHWEST_TOOLTIP                                    :Veksle mellom vann eller fri kant ved nordvestre kartkant
+STR_MAPGEN_NORTHEAST_TOOLTIP                                    :Veksle mellom vann eller fri kant ved nordøstre kartkant
+STR_MAPGEN_SOUTHEAST_TOOLTIP                                    :Veksle mellom vann eller fri kant ved sørøstre kartkant
+STR_MAPGEN_SOUTHWEST_TOOLTIP                                    :Veksle mellom vann eller fri kant ved sørvestre kartkant
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Frihånds
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Sjø
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Tilfeldig
