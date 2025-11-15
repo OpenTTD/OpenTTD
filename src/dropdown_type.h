@@ -15,6 +15,7 @@
 #include "gfx_type.h"
 #include "palette_func.h"
 #include "window_gui.h"
+#include "newgrf_badge.h"
 
 /**
  * Base list item class from which others are derived.
@@ -60,6 +61,8 @@ public:
 typedef std::vector<std::unique_ptr<const DropDownListItem>> DropDownList;
 
 void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, WidgetID button, Rect wi_rect, Colours wi_colour, bool instant_close = false, bool persist = false);
+
+Window *ShowSubDropDownListAt(int sub_dropdown_id, Window *w, DropDownList &&list, int selected, WidgetID button, Rect wi_rect, Colours wi_colour, bool instant_close = false, bool persist = false);
 
 void ShowDropDownList(Window *w, DropDownList &&list, int selected, WidgetID button, uint width = 0, bool instant_close = false, bool persist = false);
 

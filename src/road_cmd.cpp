@@ -42,7 +42,6 @@
 #include "road_cmd.h"
 #include "landscape_cmd.h"
 #include "rail_cmd.h"
-
 #include "table/strings.h"
 #include "table/roadtypes.h"
 
