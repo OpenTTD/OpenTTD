@@ -144,21 +144,21 @@ std::string_view GetCommandName(Commands cmd)
 bool IsCommandAllowedWhilePaused(Commands cmd)
 {
 	/* Lookup table for the command types that are allowed for a given pause level setting. */
-	static const int command_type_lookup[] = {
-		CMDPL_ALL_ACTIONS,     ///< CMDT_LANDSCAPE_CONSTRUCTION
-		CMDPL_NO_LANDSCAPING,  ///< CMDT_VEHICLE_CONSTRUCTION
-		CMDPL_NO_LANDSCAPING,  ///< CMDT_MONEY_MANAGEMENT
-		CMDPL_NO_CONSTRUCTION, ///< CMDT_VEHICLE_MANAGEMENT
-		CMDPL_NO_CONSTRUCTION, ///< CMDT_ROUTE_MANAGEMENT
-		CMDPL_NO_CONSTRUCTION, ///< CMDT_OTHER_MANAGEMENT
-		CMDPL_NO_ACTIONS,      ///< CMDT_COMPANY_SETTING
-		CMDPL_NO_ACTIONS,      ///< CMDT_SERVER_SETTING
-		CMDPL_NO_ACTIONS,      ///< CMDT_CHEAT
+	static constexpr CommandPauseLevel command_type_lookup[] = {
+		CommandPauseLevel::AllActions, // CommandType::LandscapeConstruction
+		CommandPauseLevel::NoLandscaping, // CommandType::VehicleConstruction
+		CommandPauseLevel::NoLandscaping, // CommandType::MoneyManagement
+		CommandPauseLevel::NoConstruction, // CommandType::VehicleManagement
+		CommandPauseLevel::NoConstruction, // CommandType::RouteManagement
+		CommandPauseLevel::NoConstruction, // CommandType::OtherManagement
+		CommandPauseLevel::NoActions, // CommandType::CompanySetting
+		CommandPauseLevel::NoActions, // CommandType::ServerSetting
+		CommandPauseLevel::NoActions, // CommandType::Cheat
 	};
-	static_assert(lengthof(command_type_lookup) == CMDT_END);
+	static_assert(std::size(command_type_lookup) == to_underlying(CommandType::End));
 
 	assert(IsValidCommand(cmd));
-	return _game_mode == GM_EDITOR || command_type_lookup[_command_proc_table[cmd].type] <= _settings_game.construction.command_pause_level;
+	return _game_mode == GM_EDITOR || command_type_lookup[to_underlying(_command_proc_table[cmd].type)] <= _settings_game.construction.command_pause_level;
 }
 
 /**
@@ -384,7 +384,7 @@ CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, Comman
 	SubtractMoneyFromCompany(res_exec);
 
 	/* Record if there was a command issues during pause; ignore pause/other setting related changes. */
-	if (_pause_mode.Any() && _command_proc_table[cmd].type != CMDT_SERVER_SETTING) _pause_mode.Set(PauseMode::CommandDuringPause);
+	if (_pause_mode.Any() && _command_proc_table[cmd].type != CommandType::ServerSetting) _pause_mode.Set(PauseMode::CommandDuringPause);
 
 	/* update signals if needed */
 	UpdateSignalsInBuffer();

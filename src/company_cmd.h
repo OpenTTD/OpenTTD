@@ -25,12 +25,12 @@ CommandCost CmdRenamePresident(DoCommandFlags flags, const std::string &text);
 CommandCost CmdSetCompanyManagerFace(DoCommandFlags flags, uint style, uint32_t bits);
 CommandCost CmdSetCompanyColour(DoCommandFlags flags, LiveryScheme scheme, bool primary, Colours colour);
 
-DEF_CMD_TRAIT(CMD_COMPANY_CTRL,             CmdCompanyCtrl,           CommandFlags({CommandFlag::Spectator, CommandFlag::ClientID, CommandFlag::NoEst}), CMDT_SERVER_SETTING)
-DEF_CMD_TRAIT(CMD_COMPANY_ALLOW_LIST_CTRL,  CmdCompanyAllowListCtrl,  CommandFlag::NoEst,                    CMDT_SERVER_SETTING)
-DEF_CMD_TRAIT(CMD_GIVE_MONEY,               CmdGiveMoney,             {},                                          CMDT_MONEY_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_RENAME_COMPANY,           CmdRenameCompany,         {},                                          CMDT_COMPANY_SETTING)
-DEF_CMD_TRAIT(CMD_RENAME_PRESIDENT,         CmdRenamePresident,       {},                                          CMDT_COMPANY_SETTING)
-DEF_CMD_TRAIT(CMD_SET_COMPANY_MANAGER_FACE, CmdSetCompanyManagerFace, {},                                          CMDT_COMPANY_SETTING)
-DEF_CMD_TRAIT(CMD_SET_COMPANY_COLOUR,       CmdSetCompanyColour,      {},                                          CMDT_COMPANY_SETTING)
+DEF_CMD_TRAIT(CMD_COMPANY_CTRL,             CmdCompanyCtrl,           CommandFlags({CommandFlag::Spectator, CommandFlag::ClientID, CommandFlag::NoEst}), CommandType::ServerSetting)
+DEF_CMD_TRAIT(CMD_COMPANY_ALLOW_LIST_CTRL,  CmdCompanyAllowListCtrl,  CommandFlag::NoEst,                    CommandType::ServerSetting)
+DEF_CMD_TRAIT(CMD_GIVE_MONEY,               CmdGiveMoney,             {},                                          CommandType::MoneyManagement)
+DEF_CMD_TRAIT(CMD_RENAME_COMPANY,           CmdRenameCompany,         {},                                          CommandType::CompanySetting)
+DEF_CMD_TRAIT(CMD_RENAME_PRESIDENT,         CmdRenamePresident,       {},                                          CommandType::CompanySetting)
+DEF_CMD_TRAIT(CMD_SET_COMPANY_MANAGER_FACE, CmdSetCompanyManagerFace, {},                                          CommandType::CompanySetting)
+DEF_CMD_TRAIT(CMD_SET_COMPANY_COLOUR,       CmdSetCompanyColour,      {},                                          CommandType::CompanySetting)
 
 #endif /* COMPANY_CMD_H */
