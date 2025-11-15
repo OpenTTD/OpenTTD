@@ -56,6 +56,7 @@
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_economy.h"
+#include "misc_cmd.h"
 
 #include "table/strings.h"
 #include "table/pricebase.h"
@@ -839,6 +840,15 @@ static void CompaniesPayInterest()
 		SubtractMoneyFromCompany(CommandCost(EXPENSES_OTHER, _price[PR_STATION_VALUE] >> 2));
 	}
 	cur_company.Restore();
+}
+
+/** Let all companies auto repay/take their loan. */
+static void CompaniesAutoLoan()
+{
+	for (const Company *c : Company::Iterate()) {
+		if (!c->auto_loan) continue;
+		c->AutoLoan();
+	}
 }
 
 static void HandleEconomyFluctuations()
@@ -1980,6 +1990,7 @@ static const IntervalTimer<TimerGameEconomy> _economy_companies_monthly({ TimerG
 {
 	CompaniesGenStatistics();
 	CompaniesPayInterest();
+	CompaniesAutoLoan();
 	HandleEconomyFluctuations();
 });
 

@@ -329,6 +329,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_company_finances_wid
 		NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_CF_INCREASE_LOAN), SetFill(1, 0), SetToolTip(STR_FINANCES_BORROW_TOOLTIP),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_CF_REPAY_LOAN), SetFill(1, 0), SetToolTip(STR_FINANCES_REPAY_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_CF_AUTO_LOAN), SetFill(1, 0), SetStringTip(STR_FINANCES_AUTO_LOAN_BUTTON, STR_FINANCES_AUTO_LOAN_TOOLTIP),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_CF_INFRASTRUCTURE), SetFill(1, 0), SetStringTip(STR_FINANCES_INFRASTRUCTURE_BUTTON, STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP),
 		EndContainer(),
 	EndContainer(),
@@ -485,6 +486,7 @@ struct CompanyFinancesWindow : Window {
 			const Company *c = Company::Get(company);
 			this->SetWidgetDisabledState(WID_CF_INCREASE_LOAN, c->current_loan >= c->GetMaxLoan()); // Borrow button only shows when there is any more money to loan.
 			this->SetWidgetDisabledState(WID_CF_REPAY_LOAN, company != _local_company || c->current_loan == 0); // Repay button only shows when there is any more money to repay.
+			this->SetWidgetLoweredState(WID_CF_AUTO_LOAN, c->auto_loan);
 		}
 
 		this->DrawWidgets();
@@ -513,16 +515,35 @@ struct CompanyFinancesWindow : Window {
 				Command<CMD_DECREASE_LOAN>::Post(STR_ERROR_CAN_T_REPAY_LOAN, _ctrl_pressed ? LoanCommand::Max : LoanCommand::Interval, 0);
 				break;
 
+			case WID_CF_AUTO_LOAN: // toggle auto repay
+				if (Company::Get(this->window_number)->auto_loan) {
+					Command<CMD_TOGGLE_AUTO_LOAN>::Post(STR_ERROR_CAN_T_CHANGE_AUTO_LOAN, LoanCommand::TurnOff, 0);
+				} else {
+					ShowQueryString({}, STR_FINANCES_AUTO_LOAN_QUERY_CAPTION, 30, this, CS_NUMERAL, {});
+				}
+				break;
+
 			case WID_CF_INFRASTRUCTURE: // show infrastructure details
 				ShowCompanyInfrastructure(this->window_number);
 				break;
 		}
 	}
 
+	void OnQueryTextFinished(std::optional<std::string> str) override
+	{
+		if (!str.has_value()) return;
+
+		auto value = ParseInteger<uint64_t>(*str, 10, true);
+		if (!value.has_value()) return;
+		Money money = *value / GetCurrency().rate;
+
+		Command<CMD_TOGGLE_AUTO_LOAN>::Post(STR_ERROR_CAN_T_CHANGE_AUTO_LOAN, LoanCommand::TurnOn, money);
+	}
+
 	void RefreshVisibleColumns()
 	{
+		const Company *c = Company::Get(this->window_number);
 		for (uint period = 0; period < this->first_visible; ++period) {
-			const Company *c = Company::Get(this->window_number);
 			const Expenses &expenses = c->yearly_expenses[NUM_PERIODS - period - 1];
 			/* Show expenses column if it has any non-zero value in it. */
 			if (std::ranges::any_of(expenses, [](const Money &value) { return value != 0; })) {
