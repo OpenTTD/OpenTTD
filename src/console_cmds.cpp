@@ -2167,7 +2167,7 @@ static bool ConNetworkAuthorizedKey(std::span<std::string_view> argv)
 	}
 
 	for (auto [name, authorized_keys] : _console_cmd_authorized_keys) {
-		if (StrEqualsIgnoreCase(type, name)) continue;
+		if (!StrEqualsIgnoreCase(type, name)) continue;
 
 		PerformNetworkAuthorizedKeyAction(name, authorized_keys, action, authorized_key);
 		return true;
