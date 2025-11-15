@@ -10,6 +10,7 @@
 #ifndef SETTINGS_TYPE_H
 #define SETTINGS_TYPE_H
 
+#include "command_type.h"
 #include "timer/timer_game_calendar.h"
 #include "economy_type.h"
 #include "town_type.h"
@@ -410,7 +411,7 @@ struct ConstructionSettings {
 	uint8_t  industry_platform;                ///< the amount of flat land around an industry
 	bool   freeform_edges;                   ///< allow terraforming the tiles at the map edges
 	uint8_t  extra_tree_placement;             ///< (dis)allow building extra trees in-game
-	uint8_t  command_pause_level;              ///< level/amount of commands that can't be executed while paused
+	CommandPauseLevel command_pause_level; ///< level/amount of commands that can't be executed while paused
 
 	uint32_t terraform_per_64k_frames;         ///< how many tile heights may, over a long period, be terraformed per 65536 frames?
 	uint16_t terraform_frame_burst;            ///< how many tile heights may, over a short period, be terraformed?

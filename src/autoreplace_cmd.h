@@ -18,7 +18,7 @@
 CommandCost CmdAutoreplaceVehicle(DoCommandFlags flags, VehicleID veh_id);
 CommandCost CmdSetAutoReplace(DoCommandFlags flags, GroupID id_g, EngineID old_engine_type, EngineID new_engine_type, bool when_old);
 
-DEF_CMD_TRAIT(CMD_AUTOREPLACE_VEHICLE, CmdAutoreplaceVehicle, {}, CMDT_VEHICLE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_SET_AUTOREPLACE,     CmdSetAutoReplace,     {}, CMDT_VEHICLE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_AUTOREPLACE_VEHICLE, CmdAutoreplaceVehicle, {}, CommandType::VehicleManagement)
+DEF_CMD_TRAIT(CMD_SET_AUTOREPLACE,     CmdSetAutoReplace,     {}, CommandType::VehicleManagement)
 
 #endif /* AUTOREPLACE_CMD_H */

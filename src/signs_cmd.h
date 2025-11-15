@@ -16,8 +16,8 @@
 std::tuple<CommandCost, SignID> CmdPlaceSign(DoCommandFlags flags, TileIndex tile, const std::string &text);
 CommandCost CmdRenameSign(DoCommandFlags flags, SignID sign_id, const std::string &text);
 
-DEF_CMD_TRAIT(CMD_PLACE_SIGN,  CmdPlaceSign,  CommandFlag::Deity, CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_RENAME_SIGN, CmdRenameSign, CommandFlag::Deity, CMDT_OTHER_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_PLACE_SIGN,  CmdPlaceSign,  CommandFlag::Deity, CommandType::OtherManagement)
+DEF_CMD_TRAIT(CMD_RENAME_SIGN, CmdRenameSign, CommandFlag::Deity, CommandType::OtherManagement)
 
 void CcPlaceSign(Commands cmd, const CommandCost &result, SignID new_sign);
 
