@@ -894,9 +894,9 @@ static CallBackFunction ToolbarBuildRailClick(Window *w)
  */
 static CallBackFunction MenuClickBuildRail(int index)
 {
+	const Company *c = Company::Get(_local_company);
 	if (_ctrl_pressed || _shift_pressed) {
 		if (index >= RAILTYPE_END) return CBF_NONE;
-		Company *c = Company::Get(_current_company);
 		if (_ctrl_pressed) {
 			bool new_value = !c->hidden_railtypes.Test((RailType)index);
 			Command<CMD_SET_RAIL_ROAD_TYPE_HIDDEN>::Post((RailType)index, INVALID_ROADTYPE, new_value);
@@ -907,8 +907,12 @@ static CallBackFunction MenuClickBuildRail(int index)
 		return CallBackFunction::ReopenDropdown;
 	}
 	CloseWindowByClass(WC_DROPDOWN_MENU);
-	_last_built_railtype = (RailType)index;
-	ShowBuildRailToolbar(_last_built_railtype);
+
+	if (c->avail_railtypes.Test((RailType)index)) {
+		_last_built_railtype = (RailType)index;
+		ShowBuildRailToolbar(_last_built_railtype);
+	}
+
 	return CBF_NONE;
 }
 
@@ -932,9 +936,9 @@ static CallBackFunction ToolbarBuildRoadClick(Window *w)
  */
 static CallBackFunction MenuClickBuildRoad(int index)
 {
+	const Company *c = Company::Get(_local_company);
 	if (_ctrl_pressed || _shift_pressed) {
 		if (index >= ROADTYPE_END) return CBF_NONE;
-		Company *c = Company::Get(_current_company);
 		if (_ctrl_pressed) {
 			bool new_value = !c->hidden_roadtypes.Test((RoadType)index);
 			Command<CMD_SET_RAIL_ROAD_TYPE_HIDDEN>::Post(INVALID_RAILTYPE, (RoadType)index, new_value);
@@ -945,8 +949,12 @@ static CallBackFunction MenuClickBuildRoad(int index)
 		return CallBackFunction::ReopenDropdown;
 	}
 	CloseWindowByClass(WC_DROPDOWN_MENU);
-	_last_built_roadtype = (RoadType)index;
-	ShowBuildRoadToolbar(_last_built_roadtype);
+
+	if (c->avail_roadtypes.Test((RoadType)index)) {
+		_last_built_roadtype = (RoadType)index;
+		ShowBuildRoadToolbar(_last_built_roadtype);
+	}
+
 	return CBF_NONE;
 }
 
