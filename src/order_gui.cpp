@@ -257,8 +257,8 @@ void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_
 			break;
 
 		case OT_GOTO_STATION: {
-			OrderLoadFlags load = order->GetLoadType();
-			OrderUnloadFlags unload = order->GetUnloadType();
+			OrderLoadType load = order->GetLoadType();
+			OrderUnloadType unload = order->GetUnloadType();
 			bool valid_station = CanVehicleUseStation(v, Station::Get(order->GetDestination().ToStationID()));
 
 			line = GetString(valid_station ? STR_ORDER_GO_TO_STATION : STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION, STR_ORDER_GO_TO + (v->IsGroundVehicle() ? order->GetNonStopType() : OrderNonStopFlags{}).base(), order->GetDestination());
@@ -271,7 +271,7 @@ void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_
 			} else {
 				/* Show non-stop, refit and stop location only in the order window. */
 				if (!order->GetNonStopType().Test(OrderNonStopFlag::NoDestination)) {
-					StringID str = _station_load_types[order->IsRefit()][unload][load];
+					StringID str = _station_load_types[order->IsRefit()][to_underlying(unload)][to_underlying(load)];
 					if (str != INVALID_STRING_ID) {
 						if (order->IsRefit()) {
 							line += GetString(str, order->IsAutoRefit() ? STR_ORDER_AUTO_REFIT_ANY : CargoSpec::Get(order->GetRefitCargo())->name);
@@ -449,7 +449,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			}
 			if (st->facilities.Any(facil)) {
 				order.MakeGoToStation(st->index);
-				if (_ctrl_pressed) order.SetLoadType(OLF_FULL_LOAD_ANY);
+				if (_ctrl_pressed) order.SetLoadType(OrderLoadType::FullLoadAny);
 				if (_settings_client.gui.new_nonstop && v->IsGroundVehicle()) order.SetNonStopType(OrderNonStopFlag::NoIntermediate);
 				order.SetStopLocation(v->type == VEH_TRAIN ? (OrderStopLocation)(_settings_client.gui.stop_location) : OrderStopLocation::FarEnd);
 				return order;
@@ -614,7 +614,7 @@ private:
 	 * @param load_type Load flag to apply. If matches existing load type, toggles to default of 'load if possible'.
 	 * @param toggle If we toggle or not (used for hotkey behavior)
 	 */
-	void OrderClick_FullLoad(OrderLoadFlags load_type, bool toggle = false)
+	void OrderClick_FullLoad(OrderLoadType load_type, bool toggle = false)
 	{
 		VehicleOrderID sel_ord = this->OrderGetSel();
 		const Order *order = this->vehicle->GetOrder(sel_ord);
@@ -622,11 +622,11 @@ private:
 		if (order == nullptr) return;
 
 		if (toggle && order->GetLoadType() == load_type) {
-			load_type = OLF_LOAD_IF_POSSIBLE; // reset to 'default'
+			load_type = OrderLoadType::LoadIfPossible; // reset to 'default'
 		}
 		if (order->GetLoadType() == load_type) return; // If we still match, do nothing
 
-		Command<CMD_MODIFY_ORDER>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER, this->vehicle->tile, this->vehicle->index, sel_ord, MOF_LOAD, load_type);
+		Command<CMD_MODIFY_ORDER>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER, this->vehicle->tile, this->vehicle->index, sel_ord, MOF_LOAD, to_underlying(load_type));
 	}
 
 	/**
@@ -662,7 +662,7 @@ private:
 	 * @param unload_type Unload flag to apply. If matches existing unload type, toggles to default of 'unload if possible'.
 	 * @param toggle If we toggle or not (used for hotkey behavior)
 	 */
-	void OrderClick_Unload(OrderUnloadFlags unload_type, bool toggle = false)
+	void OrderClick_Unload(OrderUnloadType unload_type, bool toggle = false)
 	{
 		VehicleOrderID sel_ord = this->OrderGetSel();
 		const Order *order = this->vehicle->GetOrder(sel_ord);
@@ -670,15 +670,15 @@ private:
 		if (order == nullptr) return;
 
 		if (toggle && order->GetUnloadType() == unload_type) {
-			unload_type = OUF_UNLOAD_IF_POSSIBLE;
+			unload_type = OrderUnloadType::UnloadIfPossible;
 		}
 		if (order->GetUnloadType() == unload_type) return; // If we still match, do nothing
 
-		Command<CMD_MODIFY_ORDER>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER, this->vehicle->tile, this->vehicle->index, sel_ord, MOF_UNLOAD, unload_type);
+		Command<CMD_MODIFY_ORDER>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER, this->vehicle->tile, this->vehicle->index, sel_ord, MOF_UNLOAD, to_underlying(unload_type));
 
 		/* Transfer and unload orders with leave empty as default */
-		if (unload_type == OUFB_TRANSFER || unload_type == OUFB_UNLOAD) {
-			Command<CMD_MODIFY_ORDER>::Post(this->vehicle->tile, this->vehicle->index, sel_ord, MOF_LOAD, OLFB_NO_LOAD);
+		if (unload_type == OrderUnloadType::Transfer || unload_type == OrderUnloadType::Unload) {
+			Command<CMD_MODIFY_ORDER>::Post(this->vehicle->tile, this->vehicle->index, sel_ord, MOF_LOAD, to_underlying(OrderLoadType::NoLoad));
 			this->SetWidgetDirty(WID_O_FULL_LOAD);
 		}
 	}
@@ -995,13 +995,13 @@ public:
 						this->EnableWidget(WID_O_NON_STOP);
 						this->SetWidgetLoweredState(WID_O_NON_STOP, order->GetNonStopType().Test(OrderNonStopFlag::NoIntermediate));
 					}
-					this->SetWidgetLoweredState(WID_O_FULL_LOAD, order->GetLoadType() == OLF_FULL_LOAD_ANY);
-					this->SetWidgetLoweredState(WID_O_UNLOAD, order->GetUnloadType() == OUFB_UNLOAD);
+					this->SetWidgetLoweredState(WID_O_FULL_LOAD, order->GetLoadType() == OrderLoadType::FullLoadAny);
+					this->SetWidgetLoweredState(WID_O_UNLOAD, order->GetUnloadType() == OrderUnloadType::Unload);
 
 					/* Can only do refitting when stopping at the destination and loading cargo.
 					 * Also enable the button if a refit is already set to allow clearing it. */
 					this->SetWidgetDisabledState(WID_O_REFIT_DROPDOWN,
-							order->GetLoadType() == OLFB_NO_LOAD || order->GetNonStopType().Test(OrderNonStopFlag::NoDestination) ||
+							order->GetLoadType() == OrderLoadType::NoLoad || order->GetNonStopType().Test(OrderNonStopFlag::NoDestination) ||
 							((!this->can_do_refit || !this->can_do_autorefit) && !order->IsRefit()));
 
 					break;
@@ -1276,17 +1276,17 @@ public:
 
 			case WID_O_FULL_LOAD:
 				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
-					this->OrderClick_FullLoad(OLF_FULL_LOAD_ANY, true);
+					this->OrderClick_FullLoad(OrderLoadType::FullLoadAny, true);
 				} else {
-					ShowDropDownMenu(this, _order_full_load_dropdown, this->vehicle->GetOrder(this->OrderGetSel())->GetLoadType(), WID_O_FULL_LOAD, 0, 2);
+					ShowDropDownMenu(this, _order_full_load_dropdown, to_underlying(this->vehicle->GetOrder(this->OrderGetSel())->GetLoadType()), WID_O_FULL_LOAD, 0, 2);
 				}
 				break;
 
 			case WID_O_UNLOAD:
 				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
-					this->OrderClick_Unload(OUFB_UNLOAD, true);
+					this->OrderClick_Unload(OrderUnloadType::Unload, true);
 				} else {
-					ShowDropDownMenu(this, _order_unload_dropdown, this->vehicle->GetOrder(this->OrderGetSel())->GetUnloadType(), WID_O_UNLOAD, 0, 8);
+					ShowDropDownMenu(this, _order_unload_dropdown, to_underlying(this->vehicle->GetOrder(this->OrderGetSel())->GetUnloadType()), WID_O_UNLOAD, 0, 8);
 				}
 				break;
 
@@ -1373,11 +1373,11 @@ public:
 				break;
 
 			case WID_O_FULL_LOAD:
-				this->OrderClick_FullLoad((OrderLoadFlags)index);
+				this->OrderClick_FullLoad(static_cast<OrderLoadType>(index));
 				break;
 
 			case WID_O_UNLOAD:
-				this->OrderClick_Unload((OrderUnloadFlags)index);
+				this->OrderClick_Unload(static_cast<OrderUnloadType>(index));
 				break;
 
 			case WID_O_GOTO:
@@ -1450,13 +1450,13 @@ public:
 			case OHK_DELETE:         this->OrderClick_Delete(); break;
 			case OHK_GOTO:           this->OrderClick_Goto(OPOS_GOTO); break;
 			case OHK_NONSTOP:        this->OrderClick_Nonstop(std::nullopt); break;
-			case OHK_FULLLOAD:       this->OrderClick_FullLoad(OLF_FULL_LOAD_ANY, true); break;
-			case OHK_UNLOAD:         this->OrderClick_Unload(OUFB_UNLOAD, true); break;
+			case OHK_FULLLOAD:       this->OrderClick_FullLoad(OrderLoadType::FullLoadAny, true); break;
+			case OHK_UNLOAD:         this->OrderClick_Unload(OrderUnloadType::Unload, true); break;
 			case OHK_NEAREST_DEPOT:  this->OrderClick_NearestDepot(); break;
 			case OHK_ALWAYS_SERVICE: this->OrderClick_Service(std::nullopt); break;
-			case OHK_TRANSFER:       this->OrderClick_Unload(OUFB_TRANSFER, true); break;
-			case OHK_NO_UNLOAD:      this->OrderClick_Unload(OUFB_NO_UNLOAD, true); break;
-			case OHK_NO_LOAD:        this->OrderClick_FullLoad(OLFB_NO_LOAD, true); break;
+			case OHK_TRANSFER:       this->OrderClick_Unload(OrderUnloadType::Transfer, true); break;
+			case OHK_NO_UNLOAD:      this->OrderClick_Unload(OrderUnloadType::NoUnload, true); break;
+			case OHK_NO_LOAD:        this->OrderClick_FullLoad(OrderLoadType::NoLoad, true); break;
 			default: return ES_NOT_HANDLED;
 		}
 		return ES_HANDLED;

@@ -1830,17 +1830,17 @@ bool AfterLoadGame()
 		/* Unload and transfer are now mutual exclusive. */
 		for (OrderList *orderlist : OrderList::Iterate()) {
 			for (Order &order : orderlist->GetOrders()) {
-				if ((order.GetUnloadType() & (OUFB_UNLOAD | OUFB_TRANSFER)) == (OUFB_UNLOAD | OUFB_TRANSFER)) {
-					order.SetUnloadType(OUFB_TRANSFER);
-					order.SetLoadType(OLFB_NO_LOAD);
+				if (order.GetUnloadType() == OrderUnloadType{3}) { // 3 used to mean transfer and don't load.
+					order.SetUnloadType(OrderUnloadType::Transfer);
+					order.SetLoadType(OrderLoadType::NoLoad);
 				}
 			}
 		}
 
 		for (Vehicle *v : Vehicle::Iterate()) {
-			if ((v->current_order.GetUnloadType() & (OUFB_UNLOAD | OUFB_TRANSFER)) == (OUFB_UNLOAD | OUFB_TRANSFER)) {
-				v->current_order.SetUnloadType(OUFB_TRANSFER);
-				v->current_order.SetLoadType(OLFB_NO_LOAD);
+			if (v->current_order.GetUnloadType() == OrderUnloadType{3}) { // 3 used to mean transfer and don't load.
+				v->current_order.SetUnloadType(OrderUnloadType::Transfer);
+				v->current_order.SetLoadType(OrderLoadType::NoLoad);
 			}
 		}
 	} else if (IsSavegameVersionBefore(SLV_DEPOT_UNBUNCHING)) {

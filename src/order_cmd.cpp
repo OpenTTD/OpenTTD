@@ -183,8 +183,8 @@ uint16_t Order::MapOldOrder() const
 	uint16_t order = this->GetType();
 	switch (this->GetType()) {
 		case OT_GOTO_STATION:
-			if (this->GetUnloadType() & OUFB_UNLOAD) SetBit(order, 5);
-			if (this->GetLoadType() & OLFB_FULL_LOAD) SetBit(order, 6);
+			if (this->GetUnloadType() == OrderUnloadType::Unload) SetBit(order, 5);
+			if (this->IsFullLoadOrder()) SetBit(order, 6);
 			if (this->GetNonStopType().Test(OrderNonStopFlag::NoIntermediate)) SetBit(order, 7);
 			order |= GB(this->GetDestination().value, 0, 8) << 8;
 			break;
@@ -194,9 +194,9 @@ uint16_t Order::MapOldOrder() const
 			order |= GB(this->GetDestination().value, 0, 8) << 8;
 			break;
 		case OT_LOADING:
-			if (this->GetLoadType() & OLFB_FULL_LOAD) SetBit(order, 6);
+			if (this->IsFullLoadOrder()) SetBit(order, 6);
 			/* If both "no load" and "no unload" are set, return nothing order instead */
-			if ((this->GetLoadType() & OLFB_NO_LOAD) && (this->GetUnloadType() & OUFB_NO_UNLOAD)) {
+			if (this->GetLoadType() == OrderLoadType::NoLoad && this->GetUnloadType() == OrderUnloadType::NoUnload) {
 				order = OT_NOTHING;
 			}
 			break;
@@ -402,7 +402,7 @@ void OrderList::GetNextStoppingStation(std::vector<StationID> &next_station, con
 		/* Don't return a next stop if the vehicle has to unload everything. */
 		if (next == INVALID_VEH_ORDER_ID || ((orders[next].IsType(OT_GOTO_STATION) || orders[next].IsType(OT_IMPLICIT)) &&
 				orders[next].GetDestination() == v->last_station_visited &&
-				(orders[next].GetUnloadType() & (OUFB_TRANSFER | OUFB_UNLOAD)) != 0)) {
+				(orders[next].GetUnloadType() == OrderUnloadType::Transfer || orders[next].GetUnloadType() == OrderUnloadType::Unload))) {
 			return;
 		}
 	} while (orders[next].IsType(OT_GOTO_DEPOT) || orders[next].GetDestination() == v->last_station_visited);
@@ -652,12 +652,12 @@ CommandCost CmdInsertOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID s
 
 			/* Filter invalid load/unload types. */
 			switch (new_order.GetLoadType()) {
-				case OLF_LOAD_IF_POSSIBLE:
-				case OLFB_NO_LOAD:
+				case OrderLoadType::LoadIfPossible:
+				case OrderLoadType::NoLoad:
 					break;
 
-				case OLFB_FULL_LOAD:
-				case OLF_FULL_LOAD_ANY:
+				case OrderLoadType::FullLoad:
+				case OrderLoadType::FullLoadAny:
 					if (v->HasUnbunchingOrder()) return CommandCost(STR_ERROR_UNBUNCHING_NO_FULL_LOAD);
 					break;
 
@@ -665,8 +665,14 @@ CommandCost CmdInsertOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID s
 					return CMD_ERROR;
 			}
 			switch (new_order.GetUnloadType()) {
-				case OUF_UNLOAD_IF_POSSIBLE: case OUFB_UNLOAD: case OUFB_TRANSFER: case OUFB_NO_UNLOAD: break;
-				default: return CMD_ERROR;
+				case OrderUnloadType::UnloadIfPossible:
+				case OrderUnloadType::Unload:
+				case OrderUnloadType::Transfer:
+				case OrderUnloadType::NoUnload:
+					break;
+
+				default:
+					return CMD_ERROR;
 			}
 
 			/* Filter invalid stop locations */
@@ -955,7 +961,7 @@ static void CancelLoadingDueToDeletedOrder(Vehicle *v)
 	v->current_order.SetNonStopType({});
 	/* When full loading, "cancel" that order so the vehicle doesn't
 	 * stay indefinitely at this station anymore. */
-	if (v->current_order.GetLoadType() & OLFB_FULL_LOAD) v->current_order.SetLoadType(OLF_LOAD_IF_POSSIBLE);
+	if (v->current_order.IsFullLoadOrder()) v->current_order.SetLoadType(OrderLoadType::LoadIfPossible);
 }
 
 /**
@@ -1219,20 +1225,46 @@ CommandCost CmdModifyOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID s
 			if (data >= to_underlying(OrderStopLocation::End)) return CMD_ERROR;
 			break;
 
-		case MOF_UNLOAD:
+		case MOF_UNLOAD: {
 			if (order->GetNonStopType().Test(OrderNonStopFlag::NoDestination)) return CMD_ERROR;
-			if ((data & ~(OUFB_UNLOAD | OUFB_TRANSFER | OUFB_NO_UNLOAD)) != 0) return CMD_ERROR;
-			/* Unload and no-unload are mutual exclusive and so are transfer and no unload. */
-			if (data != 0 && ((data & (OUFB_UNLOAD | OUFB_TRANSFER)) != 0) == ((data & OUFB_NO_UNLOAD) != 0)) return CMD_ERROR;
-			if (data == order->GetUnloadType()) return CMD_ERROR;
-			break;
 
-		case MOF_LOAD:
-			if (order->GetNonStopType().Test(OrderNonStopFlag::NoDestination)) return CMD_ERROR;
-			if (data > OLFB_NO_LOAD || data == 1) return CMD_ERROR;
-			if (data == order->GetLoadType()) return CMD_ERROR;
-			if ((data & (OLFB_FULL_LOAD | OLF_FULL_LOAD_ANY)) && v->HasUnbunchingOrder()) return CommandCost(STR_ERROR_UNBUNCHING_NO_FULL_LOAD);
+			OrderUnloadType unload_type = static_cast<OrderUnloadType>(data);
+			if (unload_type == order->GetUnloadType()) return CMD_ERROR;
+
+			/* Test for invalid types. */
+			switch (unload_type) {
+				case OrderUnloadType::UnloadIfPossible:
+				case OrderUnloadType::Unload:
+				case OrderUnloadType::Transfer:
+				case OrderUnloadType::NoUnload:
+					break;
+
+				default: return CMD_ERROR;
+			}
 			break;
+		}
+
+		case MOF_LOAD: {
+			if (order->GetNonStopType().Test(OrderNonStopFlag::NoDestination)) return CMD_ERROR;
+
+			OrderLoadType load_type = static_cast<OrderLoadType>(data);
+			if (load_type == order->GetLoadType()) return CMD_ERROR;
+
+			/* Test for invalid types. */
+			switch (load_type) {
+				case OrderLoadType::LoadIfPossible:
+				case OrderLoadType::NoLoad:
+					break;
+
+				case OrderLoadType::FullLoad:
+				case OrderLoadType::FullLoadAny:
+					if (v->HasUnbunchingOrder()) return CommandCost(STR_ERROR_UNBUNCHING_NO_FULL_LOAD);
+					break;
+
+				default: return CMD_ERROR;
+			}
+			break;
+		}
 
 		case MOF_DEPOT_ACTION: {
 			OrderDepotAction depot_action = static_cast<OrderDepotAction>(data);
@@ -1300,8 +1332,8 @@ CommandCost CmdModifyOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID s
 				order->SetNonStopType(static_cast<OrderNonStopFlags>(data));
 				if (order->GetNonStopType().Test(OrderNonStopFlag::NoDestination)) {
 					order->SetRefit(CARGO_NO_REFIT);
-					order->SetLoadType(OLF_LOAD_IF_POSSIBLE);
-					order->SetUnloadType(OUF_UNLOAD_IF_POSSIBLE);
+					order->SetLoadType(OrderLoadType::LoadIfPossible);
+					order->SetUnloadType(OrderUnloadType::UnloadIfPossible);
 				}
 				break;
 
@@ -1310,12 +1342,12 @@ CommandCost CmdModifyOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID s
 				break;
 
 			case MOF_UNLOAD:
-				order->SetUnloadType((OrderUnloadFlags)data);
+				order->SetUnloadType(static_cast<OrderUnloadType>(data));
 				break;
 
 			case MOF_LOAD:
-				order->SetLoadType((OrderLoadFlags)data);
-				if (data & OLFB_NO_LOAD) order->SetRefit(CARGO_NO_REFIT);
+				order->SetLoadType(static_cast<OrderLoadType>(data));
+				if (order->GetLoadType() == OrderLoadType::NoLoad) order->SetRefit(CARGO_NO_REFIT);
 				break;
 
 			case MOF_DEPOT_ACTION: {
@@ -1613,7 +1645,7 @@ CommandCost CmdOrderRefit(DoCommandFlags flags, VehicleID veh, VehicleOrderID or
 	/* Automatic refit cargo is only supported for goto station orders. */
 	if (cargo == CARGO_AUTO_REFIT && !order->IsType(OT_GOTO_STATION)) return CMD_ERROR;
 
-	if (order->GetLoadType() & OLFB_NO_LOAD) return CMD_ERROR;
+	if (order->GetLoadType() == OrderLoadType::NoLoad) return CMD_ERROR;
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		order->SetRefit(cargo);
@@ -2153,8 +2185,8 @@ bool Order::CanLoadOrUnload() const
 {
 	return (this->IsType(OT_GOTO_STATION) || this->IsType(OT_IMPLICIT)) &&
 			!this->GetNonStopType().Test(OrderNonStopFlag::NoDestination) &&
-			((this->GetLoadType() & OLFB_NO_LOAD) == 0 ||
-			(this->GetUnloadType() & OUFB_NO_UNLOAD) == 0);
+			(this->GetLoadType() != OrderLoadType::NoLoad ||
+			this->GetUnloadType() != OrderUnloadType::NoUnload);
 }
 
 /**
@@ -2165,6 +2197,7 @@ bool Order::CanLoadOrUnload() const
  */
 bool Order::CanLeaveWithCargo(bool has_cargo) const
 {
-	return (this->GetLoadType() & OLFB_NO_LOAD) == 0 || (has_cargo &&
-			(this->GetUnloadType() & (OUFB_UNLOAD | OUFB_TRANSFER)) == 0);
+	return this->GetLoadType() != OrderLoadType::NoLoad || (has_cargo &&
+			this->GetUnloadType() != OrderUnloadType::Unload &&
+			this->GetUnloadType() != OrderUnloadType::Transfer);
 }

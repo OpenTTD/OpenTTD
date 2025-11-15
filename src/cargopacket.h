@@ -469,7 +469,7 @@ public:
 
 	void InvalidateCache();
 
-	bool Stage(bool accepted, StationID current_station, std::span<const StationID> next_station, uint8_t order_flags, const GoodsEntry *ge, CargoType cargo, CargoPayment *payment, TileIndex current_tile);
+	bool Stage(bool accepted, StationID current_station, std::span<const StationID> next_station, OrderUnloadType unload_type, const GoodsEntry *ge, CargoType cargo, CargoPayment *payment, TileIndex current_tile);
 
 	/**
 	 * Marks all cargo in the vehicle as to be kept. This is mostly useful for

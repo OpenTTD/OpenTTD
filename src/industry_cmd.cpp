@@ -2816,13 +2816,13 @@ int WhoCanServiceIndustry(Industry *ind)
 		 * may have a different cargo type.
 		 */
 		for (const Order &o : v->Orders()) {
-			if (o.IsType(OT_GOTO_STATION) && !(o.GetUnloadType() & OUFB_TRANSFER)) {
+			if (o.IsType(OT_GOTO_STATION) && o.GetUnloadType() != OrderUnloadType::Transfer) {
 				/* Vehicle visits a station to load or unload */
 				Station *st = Station::Get(o.GetDestination().ToStationID());
 				assert(st != nullptr);
 
 				/* Same cargo produced by industry is dropped here => not serviced by vehicle v */
-				if ((o.GetUnloadType() & OUFB_UNLOAD) && !c_accepts) break;
+				if (o.GetUnloadType() == OrderUnloadType::Unload && !c_accepts) break;
 
 				if (ind->stations_near.find(st) != ind->stations_near.end()) {
 					if (v->owner == _local_company) return 2; // Company services industry
