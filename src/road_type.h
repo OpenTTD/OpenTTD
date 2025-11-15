@@ -31,6 +31,12 @@ DECLARE_INCREMENT_DECREMENT_OPERATORS(RoadType)
 
 using RoadTypes = EnumBitSet<RoadType, uint64_t>;
 
+enum RoadTypeSorter : int {
+	ROADTYPE_SORTER_INDEX = INVALID_ROADTYPE + 2,
+	ROADTYPE_SORTER_CHANGE,
+	ROADTYPE_SORTER_CONFIGURE,
+};
+
 /**
  * The different types of road type.
  */

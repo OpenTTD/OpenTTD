@@ -30,6 +30,7 @@
 #include "zoom_func.h"
 #include "dropdown_type.h"
 #include "dropdown_func.h"
+#include "dropdown_gui.hpp"
 #include "engine_base.h"
 #include "station_base.h"
 #include "waypoint_base.h"
@@ -1765,7 +1766,12 @@ void InitializeRoadGUI()
 static constexpr RoadType ROADTYPE_SUBLIST_END{ROADTYPE_END + 1}; ///< Special value to mark the dropdown list divider item.
 static constexpr RoadType ROADTYPE_HIDDABLE_SUBLIST_END{ROADTYPE_SUBLIST_END + 1}; ///< Special value to mark the dropdown list divider item that is only visible when ctrl is pressed.
 
-DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, bool all_option)
+DropDownList RoadTypeDropdownWindow::GetDropdownList(const BadgeFilterChoices &badge_filter_choices) const
+{
+	return GetRoadTypeDropDownList(RTTB_ROAD, false, false, badge_filter_choices);
+}
+
+DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, bool all_option, const BadgeFilterChoices &badge_filter_choices)
 {
 	RoadTypes used_roadtypes;
 	RoadTypes avail_roadtypes;
@@ -1820,7 +1826,8 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 
 	if (c->favourite_roadtypes.Any()) {
 		bool has_added_favourite_type = false;
-		for (RoadType rt : c->favourite_roadtypes) {
+		for (RoadType rt : _sorted_roadtypes) {
+			if (!c->favourite_roadtypes.Test(rt)) continue;
 			if (!used_roadtypes.Test(rt)) continue;
 			if (c->hidden_roadtypes.Test(rt)) continue;
 			roadtypes.push_back(rt);
@@ -1847,6 +1854,7 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 	roadtypes.insert(roadtypes.end(), _sorted_roadtypes.begin(), _sorted_roadtypes.end());
 
 	size_t in_last_sublist = 0;
+	BadgeDropdownFilter bdf(badge_filter_choices);
 
 	for (const auto &rt : roadtypes) {
 		if (rt >= ROADTYPE_SUBLIST_END) {
@@ -1864,6 +1872,8 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 
 		in_last_sublist += 1;
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
+
+		if (!bdf.Filter(rti->badges)) continue;
 
 		if (for_replacement) {
 			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GSF_ROADTYPES, rti->introduction_date, GetString(rti->strings.replace_text), rt, false, !avail_roadtypes.Test(rt) || c->hidden_roadtypes.Test(rt), COLOUR_MAUVE, COLOUR_ORANGE, c->hidden_roadtypes.Test(rt)));

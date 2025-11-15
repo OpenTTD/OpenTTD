@@ -52,6 +52,7 @@ typedef std::vector<RoadVehicle *> RoadVehicleList;
 
 RoadTypeInfo _roadtypes[ROADTYPE_END];
 std::vector<RoadType> _sorted_roadtypes; ///< Sorted list of road types.
+bool _roadtypes_invert_sort_order = false;
 RoadTypes _roadtypes_hidden_mask; ///< Bitset of hidden roadtypes.
 RoadTypes _roadtypes_road; ///< Bitset of road roadtypes.
 RoadTypes _roadtypes_tram; ///< Bitset of tram roadtypes.
@@ -98,10 +99,11 @@ void ResolveRoadTypeGUISprites(RoadTypeInfo *rti)
  */
 static bool CompareRoadTypes(const RoadType &first, const RoadType &second)
 {
+	bool cmp = RoadTypeIsTram(first) < RoadTypeIsTram(second);
 	if (RoadTypeIsRoad(first) == RoadTypeIsRoad(second)) {
-		return GetRoadTypeInfo(first)->sorting_order < GetRoadTypeInfo(second)->sorting_order;
+		cmp = GetRoadTypeInfo(first)->sorting_order < GetRoadTypeInfo(second)->sorting_order;
 	}
-	return RoadTypeIsTram(first) < RoadTypeIsTram(second);
+	return _roadtypes_invert_sort_order ? !cmp : cmp;
 }
 
 /**

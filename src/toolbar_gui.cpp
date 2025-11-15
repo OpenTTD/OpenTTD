@@ -937,12 +937,27 @@ static CallBackFunction MenuClickBuildRail(int index)
 
 /* --- Road button menu --- */
 
+StringID RoadTypeDropdownWindow::GetSortCriteriaString() const { return STR_REPLACE_ALL_ROADTYPE; }
+
+DropDownList RoadTypeDropdownWindow::GetSortDropdownList() const
+{
+	DropDownList list;
+	list.push_back(MakeDropDownListStringItem(STR_REPLACE_ALL_ROADTYPE, INVALID_ROADTYPE));
+	return list;
+}
+
+void RoadTypeDropdownWindow::SetSortOrderInverted(bool is_sort_order_inverted)
+{
+	_roadtypes_invert_sort_order = is_sort_order_inverted;
+	InitRoadTypes();
+}
+
 static CallBackFunction ToolbarBuildRoadClick(Window *w)
 {
 	if (_replace_dropdown_list) {
-		ReplaceDropDownList(w, GetRoadTypeDropDownList(RTTB_ROAD), _last_built_roadtype);
+		ReplaceDropDownList<RoadTypeDropdownWindow>(w, {}, _last_built_roadtype);
 	} else {
-		ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_ROAD), _last_built_roadtype, WID_TN_ROADS, 140, GetToolbarDropDownOptions().Set(DropDownOption::Persist));
+		ShowCustomDropdownList<RoadTypeDropdownWindow>(w, {}, _last_built_roadtype, WID_TN_ROADS, 140, GetToolbarDropDownOptions().Set(DropDownOption::Persist));
 	}
 	return CBF_NONE;
 }

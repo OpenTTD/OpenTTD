@@ -543,7 +543,7 @@ public:
 				break;
 
 			case WID_RV_ROAD_TYPE_DROPDOWN: // Roadtype selection dropdown menu
-				ShowDropDownList(this, GetRoadTypeDropDownList(RTTB_ROAD | RTTB_TRAM, true, true), this->sel_roadtype, widget);
+				ShowDropDownList(this, GetRoadTypeDropDownList(RTTB_ROAD | RTTB_TRAM), this->sel_roadtype, widget);
 				break;
 
 			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE: {
