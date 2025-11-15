@@ -127,6 +127,24 @@ public:
 	DropDownList GetSortDropdownList() const override;
 };
 
+class TramTypeDropdownWindow : public DropdownWindow {
+public:
+	/** @see DropdownWindow::DropdownWindow. */
+	TramTypeDropdownWindow(int window_id, Window *parent, DropDownList &&list, int selected, WidgetID button, const Rect wi_rect, Colours wi_colour, DropDownOptions options) : DropdownWindow(window_id, parent, std::move(list), selected, button, wi_rect, wi_colour, options, true)
+	{
+		this->FinishInitNested(window_id);
+		this->flags.Reset(WindowFlag::WhiteBorder);
+	}
+
+	void SetSortCriteria(int) override {}
+	StringID GetSortCriteriaString() const override;
+	void SetSortOrderInverted(bool is_sort_order_inverted) override;
+	bool IsSortOrderInverted() const override { return _tramtypes_invert_sort_order; }
+	DropDownList GetDropdownList(const BadgeFilterChoices &badge_filter_choices) const override;
+	GrfSpecFeature GetGrfSpecFeature() const override { return GSF_TRAMTYPES; }
+	DropDownList GetSortDropdownList() const override;
+};
+
 /**
  * Concept specifying that the provided type can br used as a dropdown window.
  * @tparam TDropdownWindow Type to check.

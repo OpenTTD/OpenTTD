@@ -296,6 +296,7 @@ bool HasAnyRoadTypesAvail(CompanyID company, RoadTramType rtt);
 
 extern std::vector<RoadType> _sorted_roadtypes;
 extern bool _roadtypes_invert_sort_order;
+extern bool _tramtypes_invert_sort_order;
 extern RoadTypes _roadtypes_hidden_mask;
 
 #endif /* ROAD_H */

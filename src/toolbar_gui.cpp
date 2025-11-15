@@ -996,12 +996,27 @@ static CallBackFunction MenuClickBuildRoad(int index)
 
 /* --- Tram button menu --- */
 
+StringID TramTypeDropdownWindow::GetSortCriteriaString() const { return STR_REPLACE_ALL_ROADTYPE; }
+
+DropDownList TramTypeDropdownWindow::GetSortDropdownList() const
+{
+	DropDownList list;
+	list.push_back(MakeDropDownListStringItem(STR_REPLACE_ALL_ROADTYPE, INVALID_ROADTYPE));
+	return list;
+}
+
+void TramTypeDropdownWindow::SetSortOrderInverted(bool is_sort_order_inverted)
+{
+	_tramtypes_invert_sort_order = is_sort_order_inverted;
+	InitRoadTypes();
+}
+
 static CallBackFunction ToolbarBuildTramClick(Window *w)
 {
 	if (_replace_dropdown_list) {
-		ReplaceDropDownList(w, GetRoadTypeDropDownList(RTTB_TRAM), _last_built_tramtype);
+		ReplaceDropDownList<TramTypeDropdownWindow>(w, {}, _last_built_tramtype);
 	} else {
-		ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_TRAM), _last_built_tramtype, WID_TN_TRAMS, 140, GetToolbarDropDownOptions().Set(DropDownOption::Persist));
+		ShowCustomDropdownList<TramTypeDropdownWindow>(w, {}, _last_built_tramtype, WID_TN_TRAMS, 140, GetToolbarDropDownOptions().Set(DropDownOption::Persist));
 	}
 	return CBF_NONE;
 }
