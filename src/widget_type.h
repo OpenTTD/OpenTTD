@@ -484,7 +484,17 @@ public:
 	inline bool IsEmpty() { return this->children.empty(); }
 
 	NWidgetBase *GetWidgetOfType(WidgetType tp) override;
-	void Clear() { this->children.clear(); }
+	void UnfocusWidgets(Window *parent_window);
+
+	/**
+	 * Clears the container, deleting all widgets that were contained.
+	 * @param parent_window Window that contains the container.
+	 */
+	inline void Clear(Window *parent_window)
+	{
+		this->UnfocusWidgets(parent_window);
+		this->children.clear();
+	}
 
 protected:
 	std::vector<std::unique_ptr<NWidgetBase>> children{}; ///< Child widgets in container.
