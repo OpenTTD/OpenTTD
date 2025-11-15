@@ -1771,6 +1771,11 @@ DropDownList RoadTypeDropdownWindowBase::GetDropDownList(const BadgeFilterChoice
 	return GetRoadTypeDropDownList(RTTB_ROAD, false, false, badge_filter_choices);
 }
 
+DropDownList TramTypeDropdownWindowBase::GetDropDownList(const BadgeFilterChoices &badge_filter_choices) const
+{
+	return GetRoadTypeDropDownList(RTTB_TRAM, false, false, badge_filter_choices);
+}
+
 DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, bool all_option, const BadgeFilterChoices &badge_filter_choices)
 {
 	RoadTypes used_roadtypes;
