@@ -8,6 +8,7 @@
 /** @file toolbar_gui.cpp Code related to the (main) toolbar. */
 
 #include "stdafx.h"
+#include "rail.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "window_func.h"
