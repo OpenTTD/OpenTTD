@@ -515,8 +515,8 @@ void DropdownWindow::OnMouseLoop()
 void DropdownWindow::ReplaceList(DropDownList &&list, std::optional<int> selected_result)
 {
 	this->list = std::move(list);
-	if (selected_result.has_value()) this->selected_result = *selected_result;
 	this->ReInit(0, 0);
+	if (selected_result.has_value()) this->selected_result = *selected_result;
 	this->InitializePositionSize(this->position.x, this->position.y, this->nested_root->smallest_x, this->nested_root->smallest_y);
 	this->FindWindowPlacementAndResize(this->window_desc.GetDefaultWidth(), this->window_desc.GetDefaultHeight(), true);
 	this->SetDirty();

@@ -14,7 +14,7 @@
 #include "window_func.h"
 #include "viewport_func.h"
 #include "command_func.h"
-#include "dropdown_type.h"
+#include "dropdown_gui.hpp"
 #include "dropdown_func.h"
 #include "house.h"
 #include "vehicle_gui.h"
@@ -878,12 +878,27 @@ static CallBackFunction ToolbarZoomOutClick(Window *w)
 
 /* --- Rail button menu --- */
 
+StringID RailTypeDropdownWindow::GetSortCriteriaString() const { return STR_REPLACE_ALL_RAILTYPE; }
+
+DropDownList RailTypeDropdownWindow::GetSortDropdownList() const
+{
+	DropDownList list;
+	list.push_back(MakeDropDownListStringItem(STR_REPLACE_ALL_RAILTYPE, INVALID_RAILTYPE));
+	return list;
+}
+
+void RailTypeDropdownWindow::SetSortOrderInverted(bool is_sort_order_inverted)
+{
+	_railtypes_invert_sort_order = is_sort_order_inverted;
+	InitRailTypes();
+}
+
 static CallBackFunction ToolbarBuildRailClick(Window *w)
 {
 	if (_replace_dropdown_list) {
-		ReplaceDropDownList(w, GetRailTypeDropDownList(), _last_built_railtype);
+		ReplaceDropDownList<RailTypeDropdownWindow>(w, {}, _last_built_railtype);
 	} else {
-		ShowDropDownList(w, GetRailTypeDropDownList(), _last_built_railtype, WID_TN_RAILS, 140, GetToolbarDropDownOptions().Set(DropDownOption::Persist));
+		ShowCustomDropdownList<RailTypeDropdownWindow>(w, {}, _last_built_railtype, WID_TN_RAILS, 140, GetToolbarDropDownOptions().Set(DropDownOption::Persist));
 	}
 	return CBF_NONE;
 }

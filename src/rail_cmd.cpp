@@ -45,6 +45,7 @@ typedef std::vector<Train *> TrainList;
 
 RailTypeInfo _railtypes[RAILTYPE_END];
 std::vector<RailType> _sorted_railtypes; ///< Sorted list of rail types.
+bool _railtypes_invert_sort_order = false;
 RailTypes _railtypes_hidden_mask;
 
 /** Enum holding the signal offset in the sprite sheet according to the side it is representing. */
@@ -121,7 +122,8 @@ void ResolveRailTypeGUISprites(RailTypeInfo *rti)
  */
 static bool CompareRailTypes(const RailType &first, const RailType &second)
 {
-	return GetRailTypeInfo(first)->sorting_order < GetRailTypeInfo(second)->sorting_order;
+	bool cmp = GetRailTypeInfo(first)->sorting_order < GetRailTypeInfo(second)->sorting_order;
+	return _railtypes_invert_sort_order ? !cmp : cmp;
 }
 
 /**

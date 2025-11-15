@@ -27,6 +27,7 @@
 #include "company_func.h"
 #include "dropdown_type.h"
 #include "dropdown_func.h"
+#include "dropdown_gui.hpp"
 #include "tunnelbridge.h"
 #include "tilehighlight_func.h"
 #include "core/geometry_func.hpp"
@@ -2025,6 +2026,11 @@ void InitializeRailGUI()
 	ResetSignalVariant();
 }
 
+DropDownList RailTypeDropdownWindow::GetDropdownList(const BadgeFilterChoices &badge_filter_choices) const
+{
+	return GetRailTypeDropDownList(false, false, badge_filter_choices);
+}
+
 static constexpr RailType RAILTYPE_HIDDABLE_SUBLIST_END{RAILTYPE_END + 1}; ///< Special value to mark the dropdown list divider item that is only visible when ctrl is pressed.
 
 /**
@@ -2033,7 +2039,7 @@ static constexpr RailType RAILTYPE_HIDDABLE_SUBLIST_END{RAILTYPE_END + 1}; ///< 
  * @param all_option Whether to add an 'all types' item.
  * @return The populated and sorted #DropDownList.
  */
-DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
+DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option, const BadgeFilterChoices &badge_filter_choices)
 {
 	RailTypes used_railtypes;
 	RailTypes avail_railtypes;
@@ -2080,8 +2086,8 @@ DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
 	railtypes.push_back(RAILTYPE_END); ///< Mark end of sub list.
 
 	if (auto fr = c->favourite_railtypes; fr.Reset(c->hidden_railtypes).Any()) {
-		for (RailType rt : fr) {
-			railtypes.push_back(rt);
+		for (RailType rt : _sorted_railtypes) {
+			if (fr.Test(rt)) railtypes.push_back(rt);
 		}
 		railtypes.push_back(RAILTYPE_END); ///< Mark end of sub list.
 	}
@@ -2096,6 +2102,7 @@ DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
 	railtypes.insert(railtypes.end(), _sorted_railtypes.begin(), _sorted_railtypes.end());
 
 	size_t in_last_sublist = 0;
+	BadgeDropdownFilter bdf(badge_filter_choices);
 
 	for (const auto &rt : railtypes) {
 		if (rt >= RAILTYPE_END) {
@@ -2113,6 +2120,8 @@ DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
 
 		in_last_sublist += 1;
 		const RailTypeInfo *rti = GetRailTypeInfo(rt);
+
+		if (!bdf.Filter(rti->badges)) continue;
 
 		if (for_replacement) {
 			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, GetString(rti->strings.replace_text), rt, false, !avail_railtypes.Test(rt) || c->hidden_railtypes.Test(rt), COLOUR_MAUVE, COLOUR_ORANGE, c->hidden_railtypes.Test(rt)));
