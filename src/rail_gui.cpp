@@ -2072,7 +2072,15 @@ DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
 
 	if (c->favourite_railtypes.Any()) {
 		for (RailType rt : c->favourite_railtypes) {
+			if (c->hidden_railtypes.Test(rt)) continue;
 			railtypes.push_back(rt);
+		}
+		railtypes.push_back(RAILTYPE_END); ///< Mark end of sub list.
+	}
+
+	if (_ctrl_pressed && c->hidden_railtypes.Any()) {
+		for (RailType rt : _sorted_railtypes) {
+			if (c->hidden_railtypes.Test(rt)) railtypes.push_back(rt);
 		}
 		railtypes.push_back(RAILTYPE_END); ///< Mark end of sub list.
 	}
@@ -2099,12 +2107,12 @@ DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
 		const RailTypeInfo *rti = GetRailTypeInfo(rt);
 
 		if (for_replacement) {
-			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, GetString(rti->strings.replace_text), rt, !avail_railtypes.Test(rt), c->hidden_railtypes.Test(rt)));
+			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, GetString(rti->strings.replace_text), rt, false, !avail_railtypes.Test(rt) || c->hidden_railtypes.Test(rt)));
 		} else {
 			std::string str = rti->max_speed > 0
 				? GetString(STR_TOOLBAR_RAILTYPE_VELOCITY, rti->strings.menu_text, rti->max_speed)
 				: GetString(rti->strings.menu_text);
-			list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, RailBuildCost(rt), d, rti->gui_sprites.build_x_rail, PAL_NONE, std::move(str), rt, !avail_railtypes.Test(rt), c->hidden_railtypes.Test(rt)));
+			list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, RailBuildCost(rt), d, rti->gui_sprites.build_x_rail, PAL_NONE, std::move(str), rt, false, !avail_railtypes.Test(rt) || c->hidden_railtypes.Test(rt)));
 		}
 	}
 

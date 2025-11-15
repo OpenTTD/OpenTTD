@@ -1812,10 +1812,24 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 		bool has_added_favourite_type = false;
 		for (RoadType rt : c->favourite_roadtypes) {
 			if (!used_roadtypes.Test(rt)) continue;
+			if (c->hidden_roadtypes.Test(rt)) continue;
 			roadtypes.push_back(rt);
 			has_added_favourite_type = true;
 		}
 		if (has_added_favourite_type) {
+			roadtypes.push_back(ROADTYPE_SUBLIST_END); ///< Mark end of sub list.
+		}
+	}
+
+	if (_ctrl_pressed) {
+		bool has_added_hidden_type = false;
+		for (RoadType rt : _sorted_roadtypes) {
+			if (!c->hidden_roadtypes.Test(rt)) continue;
+			if (!used_roadtypes.Test(rt)) continue;
+			roadtypes.push_back(rt);
+			has_added_hidden_type = true;
+		}
+		if (has_added_hidden_type) {
 			roadtypes.push_back(ROADTYPE_SUBLIST_END); ///< Mark end of sub list.
 		}
 	}
@@ -1842,12 +1856,12 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 
 		if (for_replacement) {
-			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GSF_ROADTYPES, rti->introduction_date, GetString(rti->strings.replace_text), rt, !avail_roadtypes.Test(rt), c->hidden_roadtypes.Test(rt)));
+			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GSF_ROADTYPES, rti->introduction_date, GetString(rti->strings.replace_text), rt, false, !avail_roadtypes.Test(rt) || c->hidden_roadtypes.Test(rt)));
 		} else {
 			std::string str = rti->max_speed > 0
 				? GetString(STR_TOOLBAR_RAILTYPE_VELOCITY, rti->strings.menu_text, rti->max_speed / 2)
 				: GetString(rti->strings.menu_text);
-			list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GSF_ROADTYPES, rti->introduction_date, RoadBuildCost(rt), d, rti->gui_sprites.build_x_road, PAL_NONE, std::move(str), rt, !avail_roadtypes.Test(rt), c->hidden_roadtypes.Test(rt)));
+			list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GSF_ROADTYPES, rti->introduction_date, RoadBuildCost(rt), d, rti->gui_sprites.build_x_road, PAL_NONE, std::move(str), rt, false, !avail_roadtypes.Test(rt) || c->hidden_roadtypes.Test(rt)));
 		}
 	}
 
