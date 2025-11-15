@@ -33,6 +33,7 @@
 #include "road.h"
 #include "engine_base.h"
 #include "window_func.h"
+#include "sound_func.h"
 #include "road_func.h"
 #include "water.h"
 #include "station_func.h"
@@ -60,6 +61,9 @@
 /** Company GUI constants. */
 static void DoSelectCompanyManagerFace(Window *parent);
 static void ShowCompanyInfrastructure(CompanyID company);
+
+/** Company whose infrastructure is currently highlighted, or INVALID_OWNER if none. */
+static CompanyID _company_infrastructure_highlight = INVALID_OWNER;
 
 /** List of revenues. */
 static const std::initializer_list<ExpensesType> _expenses_list_revenue = {
@@ -1553,6 +1557,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_company_infrastructu
 			NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 		EndContainer(),
 	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_CI_HIGHLIGHT_INFRASTRUCTURE), SetFill(1, 0), SetResize(1, 0), SetPadding(2, 2, 2, 2), SetStringTip(STR_COMPANY_INFRASTRUCTURE_VIEW_HIGHLIGHT_INFRASTRUCTURE, STR_COMPANY_INFRASTRUCTURE_VIEW_HIGHLIGHT_INFRASTRUCTURE_TOOLTIP),
+	EndContainer(),
 };
 
 /**
@@ -1588,6 +1595,7 @@ struct CompanyInfrastructureWindow : Window
 	void OnInit() override
 	{
 		this->UpdateInfrastructureList();
+		this->UpdateHighlightedInfrastructureLoweredState();
 	}
 
 	void UpdateInfrastructureList()
@@ -1805,6 +1813,37 @@ struct CompanyInfrastructureWindow : Window
 		this->SetWidgetDirty(WID_CI_LIST);
 	}};
 
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
+	{
+		if (widget != WID_CI_HIGHLIGHT_INFRASTRUCTURE) 
+			return;
+
+		/* Toggle highlighting */
+		if (_company_infrastructure_highlight == this->window_number) {
+			/* Disable highlighting */
+			_company_infrastructure_highlight = INVALID_OWNER;
+		} else {
+			/* Enable highlighting for this company */
+			_company_infrastructure_highlight = static_cast<CompanyID>(this->window_number);
+		}
+		/* Update button state */
+		this->UpdateHighlightedInfrastructureLoweredState();
+		/* Mark all viewports dirty to redraw tiles */
+		MarkWholeScreenDirty();
+		/* Update other infrastructure windows in case they had highlighting active */
+		InvalidateWindowClassesData(WC_COMPANY_INFRASTRUCTURE);
+		SndClickBeep();
+	}
+
+	~CompanyInfrastructureWindow()
+	{
+		/* Disable highlighting when window is closed */
+		if (_company_infrastructure_highlight == this->window_number) {
+			_company_infrastructure_highlight = INVALID_OWNER;
+			MarkWholeScreenDirty();
+		}
+	}
+
 	void OnResize() override
 	{
 		this->GetScrollbar(WID_CI_SCROLLBAR)->SetCapacityFromWidget(this, WID_CI_LIST, WidgetDimensions::scaled.framerect.top);
@@ -1819,7 +1858,18 @@ struct CompanyInfrastructureWindow : Window
 	{
 		if (!gui_scope) return;
 
+		this->UpdateHighlightedInfrastructureLoweredState();
+
 		this->ReInit();
+	}
+
+	void UpdateHighlightedInfrastructureLoweredState()
+	{
+		bool should_be_lowered = _company_infrastructure_highlight == this->window_number;
+		if (this->IsWidgetLowered(WID_CI_HIGHLIGHT_INFRASTRUCTURE) != should_be_lowered) {
+			this->SetWidgetLoweredState(WID_CI_HIGHLIGHT_INFRASTRUCTURE, should_be_lowered);
+			this->SetWidgetDirty(WID_CI_HIGHLIGHT_INFRASTRUCTURE);
+		}
 	}
 };
 
@@ -2319,6 +2369,15 @@ void DirtyCompanyInfrastructureWindows(CompanyID company)
 {
 	SetWindowDirty(WC_COMPANY, company);
 	SetWindowDirty(WC_COMPANY_INFRASTRUCTURE, company);
+}
+
+/**
+ * Get the company whose infrastructure is currently being highlighted.
+ * @return The company ID, or INVALID_OWNER if none.
+ */
+Owner GetHighlightedInfrastructureCompany()
+{
+	return _company_infrastructure_highlight;
 }
 
 struct BuyCompanyWindow : Window {

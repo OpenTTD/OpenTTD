@@ -25,5 +25,6 @@ void ShowCompany(CompanyID company);
 void InvalidateCompanyWindows(const Company *c);
 void CloseCompanyWindows(CompanyID company);
 void DirtyCompanyInfrastructureWindows(CompanyID company);
+Owner GetHighlightedInfrastructureCompany();
 
 #endif /* COMPANY_GUI_H */

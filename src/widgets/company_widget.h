@@ -123,6 +123,7 @@ enum CompanyInfrastructureWidgets : WidgetID {
 	WID_CI_CAPTION, ///< Caption of window.
 	WID_CI_LIST, ///< Infrastructure list.
 	WID_CI_SCROLLBAR, ///< Infrastructure list scrollbar.
+	WID_CI_HIGHLIGHT_INFRASTRUCTURE, ///< Highlight infrastructure button.
 };
 
 /** Widgets of the #BuyCompanyWindow class. */

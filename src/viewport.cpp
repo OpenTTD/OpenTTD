@@ -86,6 +86,7 @@
 #include "viewport_sprite_sorter.h"
 #include "bridge_map.h"
 #include "company_base.h"
+#include "company_gui.h"
 #include "command_func.h"
 #include "network/network_func.h"
 #include "framerate_type.h"
@@ -1099,6 +1100,33 @@ static void HighlightTownLocalAuthorityTiles(const TileInfo *ti)
 }
 
 /**
+ * Highlights tiles with infrastructure owned by the selected company.
+ * @param *ti TileInfo Tile that is being drawn
+ */
+static void HighlightCompanyInfrastructureTiles(const TileInfo *ti)
+{
+	CompanyID company = GetHighlightedInfrastructureCompany();
+	if (!Company::IsValidID(company)) return;
+	if (!IsValidTile(ti->tile)) return;
+
+	/* Get tile description, which includes all owners (up to 4 for mixed-ownership tiles) */
+	TileDesc td{};
+	td.owner_type[0] = STR_LAND_AREA_INFORMATION_OWNER;
+
+	GetTileDesc(ti->tile, td);
+
+	/* Check if any of the tile's owners match the target company */
+	for (uint i = 0; i < td.owner.size(); i++) {
+		if (td.owner_type[i] == STR_NULL) continue;
+
+		if (td.owner[i] == company) {
+			DrawTileSelectionRect(ti, PAL_NONE);
+			return;
+		}
+	}
+}
+
+/**
  * Checks if the specified tile is selected and if so draws selection using correct selectionstyle.
  * @param *ti TileInfo Tile that is being drawn
  */
@@ -1106,6 +1134,9 @@ static void DrawTileSelection(const TileInfo *ti)
 {
 	/* Highlight tiles inside local authority of selected towns. */
 	HighlightTownLocalAuthorityTiles(ti);
+
+	/* Highlight company infrastructure tiles. */
+	HighlightCompanyInfrastructureTiles(ti);
 
 	/* Draw a red error square? */
 	bool is_redsq = _thd.redsq == ti->tile;
