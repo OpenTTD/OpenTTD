@@ -33,6 +33,7 @@
 #include "timer/timer.h"
 #include "timer/timer_game_tick.h"
 #include "timer/timer_game_calendar.h"
+#include "game/game.hpp"
 
 #include "table/strings.h"
 #include "table/engines.h"
@@ -886,6 +887,9 @@ static void AcceptEnginePreview(EngineID eid, CompanyID company, int recursion_d
 	e->preview_company = CompanyID::Invalid();
 	e->preview_asked.Set();
 
+	e->custom_behavior_on_preview_end = false;
+	Game::NewEvent(new ScriptEventEnginePreviewAccepted(eid, company));
+
 	EnableEngineForCompany(eid, company);
 
 	/* Notify preview window, that it might want to close.
@@ -1071,6 +1075,39 @@ CommandCost CmdEngineCtrl(DoCommandFlags flags, EngineID engine_id, CompanyID co
 	return CommandCost();
 }
 
+/** Vanilla implementation of Engine::WasPreviewSuccessful. */
+static bool VanillaWasPreviewSuccessful(CompanyID c_index, EngineID e_index) {
+	/* Check the company's 'ALL_GROUP' group statistics. This only includes countable vehicles, which is fine
+	 * as those are the only engines that can be given exclusive previews. */
+	return GetGroupNumEngines(c_index, ALL_GROUP, e_index) != 0;
+}
+
+/** Vanilla implementation of Engine::OnPreviewFailed. */
+static void VanillaOnPreviewFailed(Company *c, Engine *e) {
+	auto epni = std::make_unique<EnginePreviewNewsInformation>(STR_NEWS_ENGINE_PREVIEW_FAILED_HEADLINE);
+	c->block_preview = 20;
+	AI::BroadcastNewEvent(new ScriptEventBlockEnginePreviewChanged(c->index));
+	Game::NewEvent(new ScriptEventBlockEnginePreviewChanged(c->index));
+	if (_local_company == c->index) {
+		/* Inform players that they have failed to fulfil preview liabilities. */
+		AddNewsItem(GetEncodedString(STR_NEWS_ENGINE_PREVIEW_FAILED,
+				PackEngineNameDParam(e->index, EngineNameContext::PreviewNews)),
+			NewsType::NewVehicles, NewsStyle::Vehicle, {}, e->index, e->index, std::move(epni));
+	}
+}
+
+/** Vanilla implementation of Engine::OnPreviewSuccessful.
+ *  UNUSED */
+static void VanillaOnPreviewSuccessful(Company *c, Engine *e) {
+	auto epni = std::make_unique<EnginePreviewNewsInformation>(STR_NEWS_ENGINE_PREVIEW_SUCCESSFUL_HEADLINE);
+	if (_local_company == c->index) {
+		/* Inform players that they have succeded in fulfiling preview liabilities. */
+		AddNewsItem(GetEncodedString(STR_NEWS_ENGINE_PREVIEW_SUCCESSFUL,
+				PackEngineNameDParam(e->index, EngineNameContext::PreviewNews)),
+			NewsType::NewVehicles, NewsStyle::Vehicle, {}, e->index, e->index, std::move(epni));
+	}
+}
+
 /**
  * An engine has become available for general use.
  * Also handle the exclusive engine preview contract.
@@ -1079,6 +1116,7 @@ CommandCost CmdEngineCtrl(DoCommandFlags flags, EngineID engine_id, CompanyID co
 static void NewVehicleAvailable(Engine *e)
 {
 	EngineID index = e->index;
+	bool show_new_vehicle_available = !e->company_avail.Test(_local_company);
 
 	/* In case the company didn't build the vehicle during the intro period,
 	 * prevent that company from getting future intro periods for a while. */
@@ -1086,11 +1124,12 @@ static void NewVehicleAvailable(Engine *e)
 		for (Company *c : Company::Iterate()) {
 			if (!e->company_avail.Test(c->index)) continue;
 
-			/* Check the company's 'ALL_GROUP' group statistics. This only includes countable vehicles, which is fine
-			 * as those are the only engines that can be given exclusive previews. */
-			if (GetGroupNumEngines(c->index, ALL_GROUP, e->index) == 0) {
-				/* The company did not build this engine during preview. */
-				c->block_preview = 20;
+			if (e->custom_behavior_on_preview_end) {
+				Game::NewEvent(new ScriptEventEnginePreviewEnded(e->index, c->index));
+			} else if (VanillaWasPreviewSuccessful(c->index, e->index)) {
+				VanillaOnPreviewSuccessful(c, e);
+			} else {
+				VanillaOnPreviewFailed(c, e);
 			}
 		}
 	}
@@ -1119,11 +1158,12 @@ static void NewVehicleAvailable(Engine *e)
 	if (!IsVehicleTypeDisabled(e->type, true)) AI::BroadcastNewEvent(new ScriptEventEngineAvailable(index));
 
 	/* Only provide the "New Vehicle available" news paper entry, if engine can be built. */
-	if (!IsVehicleTypeDisabled(e->type, false) && !e->info.extra_flags.Test(ExtraEngineFlag::NoNews)) {
+	if (!IsVehicleTypeDisabled(e->type, false) && !e->info.extra_flags.Test(ExtraEngineFlag::NoNews) && show_new_vehicle_available) {
 		AddNewsItem(GetEncodedString(STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE,
 				GetEngineCategoryName(index),
 				PackEngineNameDParam(index, EngineNameContext::PreviewNews)),
-			NewsType::NewVehicles, NewsStyle::Vehicle, {}, index);
+			NewsType::NewVehicles, NewsStyle::Vehicle, {}, index, index,
+			std::make_unique<EnginePreviewNewsInformation>());
 	}
 
 	/* Update the toolbar. */
