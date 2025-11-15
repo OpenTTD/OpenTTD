@@ -14,7 +14,7 @@
 #include "window_func.h"
 #include "viewport_func.h"
 #include "command_func.h"
-#include "dropdown_type.h"
+#include "dropdown_gui.hpp"
 #include "dropdown_func.h"
 #include "house.h"
 #include "vehicle_gui.h"
@@ -872,12 +872,27 @@ static CallBackFunction ToolbarZoomOutClick(Window *w)
 
 /* --- Rail button menu --- */
 
+StringID RailTypeDropdownWindowBase::GetSortCriteriaString() const { return STR_REPLACE_ALL_RAILTYPE; }
+
+DropDownList RailTypeDropdownWindowBase::GetSortDropDownList() const
+{
+	DropDownList list;
+	list.push_back(MakeDropDownListStringItem(STR_REPLACE_ALL_RAILTYPE, INVALID_RAILTYPE));
+	return list;
+}
+
+void RailTypeDropdownWindowBase::SetSortOrderInverted(bool is_sort_order_inverted)
+{
+	_railtypes_invert_sort_order = is_sort_order_inverted;
+	InitRailTypes();
+}
+
 static CallBackFunction ToolbarBuildRailClick(Window *w)
 {
 	if (_replace_dropdown_list) {
-		ReplaceDropDownList(w, GetRailTypeDropDownList(), _last_built_railtype);
+		ReplaceDropDownList<RailTypeDropdownWindowBase>(w, {}, _last_built_railtype);
 	} else {
-		ShowDropDownList(w, GetRailTypeDropDownList(), _last_built_railtype, WID_TN_RAILS, 140, _settings_client.gui.toolbar_dropdown_autoselect, true);
+		ShowCustomDropdownList<RailTypeDropdownWindowBase>(w, {}, _last_built_railtype, WID_TN_RAILS, 140, _settings_client.gui.toolbar_dropdown_autoselect, true);
 	}
 	return CBF_NONE;
 }
@@ -1307,7 +1322,7 @@ static CallBackFunction ToolbarScenGenIndustry(Window *w)
 
 static CallBackFunction ToolbarScenBuildRoadClick(Window *w)
 {
-	ShowDropDownList(w, GetScenRoadTypeDropDownList(RTTB_ROAD), _last_built_roadtype, WID_TE_ROADS, 140, _settings_client.gui.toolbar_dropdown_autoselect);
+	ShowDropDownList(w, GetScenRoadTypeDropDownList(RTTB_ROAD), _last_built_roadtype, WID_TE_ROADS, 140, _settings_client.gui.toolbar_dropdown_autoselect, false);
 	return CBF_NONE;
 }
 
@@ -1327,7 +1342,7 @@ static CallBackFunction ToolbarScenBuildRoad(int index)
 
 static CallBackFunction ToolbarScenBuildTramClick(Window *w)
 {
-	ShowDropDownList(w, GetScenRoadTypeDropDownList(RTTB_TRAM), _last_built_tramtype, WID_TE_TRAMS, 140, _settings_client.gui.toolbar_dropdown_autoselect);
+	ShowDropDownList(w, GetScenRoadTypeDropDownList(RTTB_TRAM), _last_built_tramtype, WID_TE_TRAMS, 140, _settings_client.gui.toolbar_dropdown_autoselect, false);
 	return CBF_NONE;
 }
 

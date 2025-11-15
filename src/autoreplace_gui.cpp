@@ -539,7 +539,7 @@ public:
 			}
 
 			case WID_RV_RAIL_TYPE_DROPDOWN: // Railtype selection dropdown menu
-				ShowDropDownList(this, GetRailTypeDropDownList(true, true), this->sel_railtype, widget);
+				ShowDropDownList(this, GetRailTypeDropDownList(), this->sel_railtype, widget);
 				break;
 
 			case WID_RV_ROAD_TYPE_DROPDOWN: // Roadtype selection dropdown menu
