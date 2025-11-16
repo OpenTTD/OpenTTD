@@ -31,9 +31,9 @@ void Order::ConvertFromOldSavegame()
 	/* First handle non-stop - use value from savegame if possible, else use value from config file */
 	if (_settings_client.gui.sg_new_nonstop || (IsSavegameVersionBefore(SLV_22) && _savegame_type != SGT_TTO && _savegame_type != SGT_TTD && _settings_client.gui.new_nonstop)) {
 		/* OFB_NON_STOP */
-		this->SetNonStopType((old_flags & 8) ? ONSF_NO_STOP_AT_ANY_STATION : ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
+		this->SetNonStopType((old_flags & 8) ? OrderNonStopFlags{OrderNonStopFlag::NoIntermediate, OrderNonStopFlag::NoDestination} : OrderNonStopFlag::NoIntermediate);
 	} else {
-		this->SetNonStopType((old_flags & 8) ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
+		this->SetNonStopType((old_flags & 8) ? OrderNonStopFlag::NoIntermediate : OrderNonStopFlags{});
 	}
 
 	switch (this->GetType()) {
@@ -53,7 +53,7 @@ void Order::ConvertFromOldSavegame()
 			this->SetLoadType(_settings_client.gui.sg_full_load_any || IsSavegameVersionBefore(SLV_22) ? OLF_FULL_LOAD_ANY : OLFB_FULL_LOAD);
 		}
 
-		if (this->IsType(OT_GOTO_STATION)) this->SetStopLocation(OSL_PLATFORM_FAR_END);
+		if (this->IsType(OT_GOTO_STATION)) this->SetStopLocation(OrderStopLocation::FarEnd);
 
 		/* Finally fix the unload flags */
 		if ((old_flags & 1) != 0) { // OFB_TRANSFER
@@ -65,12 +65,15 @@ void Order::ConvertFromOldSavegame()
 		}
 	} else {
 		/* Then the depot action flags */
-		this->SetDepotActionType(((old_flags & 6) == 4) ? ODATFB_HALT : ODATF_SERVICE_ONLY);
+		OrderDepotActionFlags action_flags{};
+		if ((old_flags & 6) == 4) action_flags.Set(OrderDepotActionFlag::Halt);
+		this->SetDepotActionType(action_flags);
 
 		/* Finally fix the depot type flags */
-		uint t = ((old_flags & 6) == 6) ? ODTFB_SERVICE : ODTF_MANUAL;
-		if ((old_flags & 2) != 0) t |= ODTFB_PART_OF_ORDERS;
-		this->SetDepotOrderType((OrderDepotTypeFlags)t);
+		OrderDepotTypeFlags type_flags{};
+		if ((old_flags & 6) == 6) type_flags.Set(OrderDepotTypeFlag::Service);
+		if ((old_flags & 2) != 0) type_flags.Set(OrderDepotTypeFlag::PartOfOrders);
+		this->SetDepotOrderType(type_flags);
 	}
 }
 

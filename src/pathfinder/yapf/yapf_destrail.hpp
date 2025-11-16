@@ -152,7 +152,7 @@ public:
 				break;
 
 			case OT_GOTO_DEPOT:
-				if (v->current_order.GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
+				if (v->current_order.GetDepotActionType().Test(OrderDepotActionFlag::NearestDepot)) {
 					this->any_depot = true;
 				}
 				[[fallthrough]];
