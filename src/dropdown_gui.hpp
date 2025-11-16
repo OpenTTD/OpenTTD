@@ -100,7 +100,7 @@ public:
 		this->flags.Reset(WindowFlag::WhiteBorder);
 	}
 
-	void SetSortCriteria(int) override {}
+	void SetSortCriteria(int new_sort_criteria) override;
 	StringID GetSortCriteriaString() const override;
 	void SetSortOrderInverted(bool is_sort_order_inverted) override;
 	bool IsSortOrderInverted() const override { return _railtypes_invert_sort_order; }
