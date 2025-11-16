@@ -220,7 +220,7 @@ static void CheckIfShipNeedsService(Vehicle *v)
 		return;
 	}
 
-	v->current_order.MakeGoToDepot(depot->index, ODTFB_SERVICE);
+	v->current_order.MakeGoToDepot(depot->index, OrderDepotTypeFlag::Service);
 	v->SetDestTile(depot->xy);
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 }

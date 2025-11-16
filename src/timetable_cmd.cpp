@@ -167,7 +167,7 @@ CommandCost CmdChangeTimetable(DoCommandFlags flags, VehicleID veh, VehicleOrder
 	if (wait_time != order->GetWaitTime()) {
 		switch (order->GetType()) {
 			case OT_GOTO_STATION:
-				if (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) return CommandCost(STR_ERROR_TIMETABLE_NOT_STOPPING_HERE);
+				if (order->GetNonStopType().Test(OrderNonStopFlag::NoDestination)) return CommandCost(STR_ERROR_TIMETABLE_NOT_STOPPING_HERE);
 				break;
 
 			case OT_CONDITIONAL:
@@ -317,8 +317,8 @@ static bool VehicleTimetableSorter(Vehicle * const &a, Vehicle * const &b)
 	int j = (int)b_order - (int)a_order;
 
 	/* Are we currently at an ordered station (un)loading? */
-	bool a_load = a->current_order.IsType(OT_LOADING) && a->current_order.GetNonStopType() != ONSF_STOP_EVERYWHERE;
-	bool b_load = b->current_order.IsType(OT_LOADING) && b->current_order.GetNonStopType() != ONSF_STOP_EVERYWHERE;
+	bool a_load = a->current_order.IsType(OT_LOADING) && a->current_order.GetNonStopType().Any();
+	bool b_load = b->current_order.IsType(OT_LOADING) && b->current_order.GetNonStopType().Any();
 
 	/* If the current order is not loading at the ordered station, decrease the order index by one since we have
 	 * not yet arrived at the station (and thus the timetable entry; still in the travelling of the previous one).
