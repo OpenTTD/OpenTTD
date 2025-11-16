@@ -25,7 +25,7 @@
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return ::IsTileType(tile, MP_WATER) && ::GetWaterTileType(tile) == WATER_TILE_DEPOT;
+	return ::IsTileType(tile, MP_WATER) && ::GetWaterTileType(tile) == WaterTileType::Depot;
 }
 
 /* static */ bool ScriptMarine::IsDockTile(TileIndex tile)
@@ -46,7 +46,7 @@
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return ::IsTileType(tile, MP_WATER) && ::GetWaterTileType(tile) == WATER_TILE_LOCK;
+	return ::IsTileType(tile, MP_WATER) && ::GetWaterTileType(tile) == WaterTileType::Lock;
 }
 
 /* static */ bool ScriptMarine::IsCanalTile(TileIndex tile)
@@ -116,7 +116,7 @@
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 
-	return ScriptObject::Command<CMD_BUILD_CANAL>::Do(tile, tile, WATER_CLASS_CANAL, false);
+	return ScriptObject::Command<CMD_BUILD_CANAL>::Do(tile, tile, WaterClass::Canal, false);
 }
 
 /* static */ bool ScriptMarine::RemoveWaterDepot(TileIndex tile)
