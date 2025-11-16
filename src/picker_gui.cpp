@@ -693,6 +693,7 @@ void PickerWindow::BuildPickerTypeList()
 
 	if (!this->has_type_picker) return;
 	this->GetWidget<NWidgetMatrix>(WID_PW_TYPE_MATRIX)->SetCount(static_cast<int>(this->types.size()));
+	this->EnsureSelectedTypeIsVisible();
 }
 
 void PickerWindow::EnsureSelectedTypeIsValid()
@@ -729,9 +730,11 @@ void PickerWindow::EnsureSelectedTypeIsVisible()
 	int index = this->callbacks.GetSelectedType();
 
 	auto it = std::ranges::find_if(this->types, [class_index, index](const auto &item) { return item.class_index == class_index && item.index == index; });
-	if (it == std::end(this->types)) return;
+	int pos = -1;
+	if (it != std::end(this->types)) {
+		pos = static_cast<int>(std::distance(std::begin(this->types), it));
+	}
 
-	int pos = static_cast<int>(std::distance(std::begin(this->types), it));
 	this->GetWidget<NWidgetMatrix>(WID_PW_TYPE_MATRIX)->SetClicked(pos);
 }
 
