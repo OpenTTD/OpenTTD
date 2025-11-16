@@ -1045,22 +1045,73 @@ static bool FindSpring(TileIndex tile)
 }
 
 /**
- * Make a connected lake; fill all tiles in the circular tile search that are connected.
- * @param tile The tile to consider for lake making.
+ * Is this a valid tile for the water feature at the end of a river?
+ * @param tile The tile to check.
+ * @param height The height of the rest of the water feature, which must match.
+ * @return True iff this is a valid tile to be part of the river terminus.
+ */
+static bool IsValidRiverTerminusTile(TileIndex tile, uint height)
+{
+	if (!IsValidTile(tile) || TileHeight(tile) != height || !IsTileFlat(tile)) return false;
+	if (_settings_game.game_creation.landscape == LandscapeType::Tropic && GetTropicZone(tile) == TROPICZONE_DESERT) return false;
+
+	return true;
+}
+
+/**
+ * Make a lake centred on the given tile, of a random diameter.
+ * @param lake_centre The middle tile of the lake.
  * @param height_lake The height of the lake.
  */
-static void MakeLake(TileIndex tile, uint height_lake)
+static void MakeLake(TileIndex lake_centre, uint height_lake)
 {
-	if (!IsValidTile(tile) || TileHeight(tile) != height_lake || !IsTileFlat(tile)) return;
-	if (_settings_game.game_creation.landscape == LandscapeType::Tropic && GetTropicZone(tile) == TROPICZONE_DESERT) return;
+	MakeRiverAndModifyDesertZoneAround(lake_centre);
+	uint diameter = RandomRange(8) + 3;
 
-	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
-		TileIndex t = tile + TileOffsByDiagDir(d);
-		if (IsWaterTile(t)) {
-			MakeRiverAndModifyDesertZoneAround(tile);
-			return;
+	/* Run the loop twice, so artefacts from going circular in one direction get (mostly) hidden. */
+	for (uint loops = 0; loops < 2; ++loops) {
+		for (TileIndex tile : SpiralTileSequence(lake_centre, diameter)) {
+			if (!IsValidRiverTerminusTile(tile, height_lake)) continue;
+			for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
+				TileIndex t = tile + TileOffsByDiagDir(d);
+				if (IsWaterTile(t)) {
+					MakeRiverAndModifyDesertZoneAround(tile);
+					return;
+				}
+			}
 		}
 	}
+}
+
+/**
+ * Try to end a river at a tile which is not the sea.
+ * @param tile The tile to try ending the river at.
+ * @param begin The starting tile of the river.
+ * @return Whether we succesfully ended the river on the given tile.
+ */
+static bool TryMakeRiverTerminus(TileIndex tile, TileIndex begin)
+{
+	if (!IsValidTile(tile)) return false;
+
+	/* We don't want to end the river at the entry of the valley. */
+	if (tile == begin) return false;
+
+	/* We don't want the river to end in the desert. */
+	if (_settings_game.game_creation.landscape == LandscapeType::Tropic && GetTropicZone(tile) == TROPICZONE_DESERT) return false;
+
+	/* Only end on flat slopes. */
+	int height_lake;
+	if (!IsTileFlat(tile, &height_lake)) return false;
+
+	/* Only build at the height of the river. */
+	int height_begin = TileHeight(begin);
+	if (height_lake != height_begin) return false;
+
+	/* Checks successful, build the lake. */
+	MakeLake(tile, height_lake);
+
+	/* This is the new end of the river. */
+	return true;
 }
 
 /**
@@ -1284,31 +1335,12 @@ static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint 
 	} else if (queue.size() > 32) {
 		/* Maybe we can make a lake. Find the Nth of the considered tiles. */
 		TileIndex lake_centre = queue[RandomRange(static_cast<uint32_t>(queue.size()))];
-		int height_lake;
-
-		if (IsValidTile(lake_centre) &&
-				/* We don't want the lake at the entry of the valley. */
-				lake_centre != begin &&
-				/* We don't want lakes in the desert. */
-				(_settings_game.game_creation.landscape != LandscapeType::Tropic || GetTropicZone(lake_centre) != TROPICZONE_DESERT) &&
-				/* A river, or lake, can only be built on flat slopes. */
-				IsTileFlat(lake_centre, &height_lake) &&
-				/* We want the lake to be built at the height of the river. */
-				height_lake == height_begin &&
-				/* We only want a lake if the river is long enough. */
-				DistanceManhattan(spring, lake_centre) > min_river_length) {
-			end = lake_centre;
-			MakeRiverAndModifyDesertZoneAround(lake_centre);
-			uint diameter = RandomRange(8) + 3;
-
-			/* Run the loop twice, so artefacts from going circular in one direction get (mostly) hidden. */
-			for (uint loops = 0; loops < 2; ++loops) {
-				for (auto tile : SpiralTileSequence(lake_centre, diameter)) {
-					MakeLake(tile, height_lake);
-				}
+		if (DistanceManhattan(spring, lake_centre) > min_river_length) {
+			if (TryMakeRiverTerminus(lake_centre, begin)) {
+				/* If successful, this becomes the new end of the river. */
+				end = lake_centre;
+				found = true;
 			}
-
-			found = true;
 		}
 	}
 
