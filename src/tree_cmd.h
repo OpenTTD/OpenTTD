@@ -12,6 +12,8 @@
 
 #include "command_type.h"
 
+void PlaceTree(TileIndex tile, uint32_t r, bool keep_density = false);
+
 CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_tile, uint8_t tree_to_plant, bool diagonal);
 
 DEF_CMD_TRAIT(CMD_PLANT_TREE, CmdPlantTree, CommandFlag::Auto, CommandType::LandscapeConstruction)

@@ -99,6 +99,17 @@ enum RightClickClose : uint8_t {
 	RCC_YES_EXCEPT_STICKY,
 };
 
+/**
+ * List of tree placer algorithm.
+ *
+ * This enumeration defines all possible tree placer algorithm in the game.
+ */
+enum TreePlacer : uint8_t {
+	TP_NONE,     ///< No tree placer algorithm
+	TP_ORIGINAL, ///< The original algorithm
+	TP_IMPROVED, ///< A 'improved' algorithm
+};
+
 /** Possible values for "place_houses" setting. */
 enum PlaceHouses : uint8_t {
 	PH_FORBIDDEN = 0,

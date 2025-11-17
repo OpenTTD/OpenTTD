@@ -29,6 +29,7 @@
 #include "animated_tile_func.h"
 #include "core/random_func.hpp"
 #include "object_base.h"
+#include "tree_cmd.h"
 #include "company_func.h"
 #include "company_gui.h"
 #include "saveload/saveload.h"
@@ -1084,6 +1085,43 @@ static void MakeLake(TileIndex lake_centre, uint height_lake)
 }
 
 /**
+ * Make wetlands around the given tile.
+ * @param centre The starting tile.
+ * @param height The height of the wetlands.
+ * @param river_length The length of the river.
+ */
+static void MakeWetlands(TileIndex centre, uint height, uint river_length)
+{
+	MakeRiverAndModifyDesertZoneAround(centre);
+
+	uint diameter = std::max((river_length), 16u);
+
+	/* Some wetlands have trees planted among the water tiles. */
+	bool has_trees = Chance16(1, 2);
+
+	/* Create the main wetland area. */
+	for (TileIndex tile : SpiralTileSequence(centre, diameter)) {
+		if (!IsValidRiverTerminusTile(tile, height)) continue;
+
+		/* Don't make a perfect square, but a circle with a noisy border. */
+		uint radius = diameter / 2;
+		if ((DistanceSquare(tile, centre) > radius * radius) && Chance16(3, 4)) continue;
+
+		if (Chance16(1, 3)) {
+			/* This tile is water. */
+			MakeRiverAndModifyDesertZoneAround(tile);
+		} else if (IsTileType(tile, MP_CLEAR)) {
+			/* This tile is ground, which we always make rough. */
+			SetClearGroundDensity(tile, CLEAR_ROUGH, 3);
+			/* Maybe place trees? */
+			if (has_trees && _settings_game.game_creation.tree_placer != TP_NONE) {
+				PlaceTree(tile, Random(), true);
+			}
+		}
+	}
+}
+
+/**
  * Try to end a river at a tile which is not the sea.
  * @param tile The tile to try ending the river at.
  * @param begin The starting tile of the river.
@@ -1107,8 +1145,13 @@ static bool TryMakeRiverTerminus(TileIndex tile, TileIndex begin)
 	int height_begin = TileHeight(begin);
 	if (height_lake != height_begin) return false;
 
-	/* Checks successful, build the lake. */
-	MakeLake(tile, height_lake);
+	/* Checks successful, time to build.
+	 * Chance of water feature is split evenly between a lake, a wetland with trees, and a wetland with grass. */
+	if (Chance16(1, 3)) {
+		MakeLake(tile, height_lake);
+	} else {
+		MakeWetlands(tile, height_lake, DistanceManhattan(tile, begin));
+	}
 
 	/* This is the new end of the river. */
 	return true;
