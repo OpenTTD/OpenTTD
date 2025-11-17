@@ -288,7 +288,7 @@ StationGfx GetTranslatedAirportTileID(StationGfx gfx);
 static inline Roadside GetRoadWaypointRoadside(Tile tile)
 {
 	assert(IsRoadWaypointTile(tile));
-	return (Roadside)GB(tile.m3(), 2, 2);
+	return static_cast<Roadside>(GB(tile.m3(), 2, 2));
 }
 
 /**
@@ -299,7 +299,7 @@ static inline Roadside GetRoadWaypointRoadside(Tile tile)
 static inline void SetRoadWaypointRoadside(Tile tile, Roadside s)
 {
 	assert(IsRoadWaypointTile(tile));
-	SB(tile.m3(), 2, 2, s);
+	SB(tile.m3(), 2, 2, to_underlying(s));
 }
 
 /**

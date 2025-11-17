@@ -3768,11 +3768,11 @@ static void TileLoop_Station(TileIndex tile)
 			}
 
 			/* Adjust road ground type depending on 'new_zone' */
-			Roadside new_rs = new_zone != HouseZone::TownEdge ? ROADSIDE_PAVED : ROADSIDE_GRASS;
+			Roadside new_rs = new_zone != HouseZone::TownEdge ? Roadside::Paved : Roadside::Grass;
 			Roadside cur_rs = GetRoadWaypointRoadside(tile);
 
 			if (new_rs != cur_rs) {
-				SetRoadWaypointRoadside(tile, cur_rs == ROADSIDE_BARREN ? new_rs : ROADSIDE_BARREN);
+				SetRoadWaypointRoadside(tile, cur_rs == Roadside::Barren ? new_rs : Roadside::Barren);
 				MarkTileDirtyByTile(tile);
 			}
 

@@ -1002,9 +1002,9 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlags flags)
 
 		for (TileIndex c = tile + delta; c != endtile; c += delta) {
 			/* do not let trees appear from 'nowhere' after removing bridge */
-			if (IsNormalRoadTile(c) && GetRoadside(c) == ROADSIDE_TREES) {
+			if (IsNormalRoadTile(c) && GetRoadside(c) == Roadside::Trees) {
 				int minz = GetTileMaxZ(c) + 3;
-				if (height < minz) SetRoadside(c, ROADSIDE_PAVED);
+				if (height < minz) SetRoadside(c, Roadside::Paved);
 			}
 			ClearBridgeMiddle(c);
 			MarkTileDirtyByTile(c, height - TileHeight(c));

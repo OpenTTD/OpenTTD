@@ -454,15 +454,15 @@ inline void ToggleSnowOrDesert(Tile t)
 
 
 /** The possible road side decorations. */
-enum Roadside : uint8_t {
-	ROADSIDE_BARREN           = 0, ///< Road on barren land
-	ROADSIDE_GRASS            = 1, ///< Road on grass
-	ROADSIDE_PAVED            = 2, ///< Road with paved sidewalks
-	ROADSIDE_STREET_LIGHTS    = 3, ///< Road with street lights on paved sidewalks
+enum class Roadside : uint8_t {
+	Barren = 0, ///< Road on barren land
+	Grass = 1, ///< Road on grass
+	Paved = 2, ///< Road with paved sidewalks
+	StreetLights = 3, ///< Road with street lights on paved sidewalks
 	/* 4 is unused for historical reasons */
-	ROADSIDE_TREES            = 5, ///< Road with trees on paved sidewalks
-	ROADSIDE_GRASS_ROAD_WORKS = 6, ///< Road on grass with road works
-	ROADSIDE_PAVED_ROAD_WORKS = 7, ///< Road with sidewalks and road works
+	Trees = 5, ///< Road with trees on paved sidewalks
+	GrassRoadWorks = 6, ///< Road on grass with road works
+	PavedRoadWorks = 7, ///< Road with sidewalks and road works
 };
 
 /**
@@ -472,7 +472,7 @@ enum Roadside : uint8_t {
  */
 inline Roadside GetRoadside(Tile tile)
 {
-	return (Roadside)GB(tile.m6(), 3, 3);
+	return static_cast<Roadside>(GB(tile.m6(), 3, 3));
 }
 
 /**
@@ -482,7 +482,7 @@ inline Roadside GetRoadside(Tile tile)
  */
 inline void SetRoadside(Tile tile, Roadside s)
 {
-	SB(tile.m6(), 3, 3, s);
+	SB(tile.m6(), 3, 3, to_underlying(s));
 }
 
 /**
@@ -492,7 +492,7 @@ inline void SetRoadside(Tile tile, Roadside s)
  */
 inline bool HasRoadWorks(Tile t)
 {
-	return GetRoadside(t) >= ROADSIDE_GRASS_ROAD_WORKS;
+	return GetRoadside(t) >= Roadside::GrassRoadWorks;
 }
 
 /**
@@ -517,9 +517,14 @@ inline void StartRoadWorks(Tile t)
 	assert(!HasRoadWorks(t));
 	/* Remove any trees or lamps in case or roadwork */
 	switch (GetRoadside(t)) {
-		case ROADSIDE_BARREN:
-		case ROADSIDE_GRASS:  SetRoadside(t, ROADSIDE_GRASS_ROAD_WORKS); break;
-		default:              SetRoadside(t, ROADSIDE_PAVED_ROAD_WORKS); break;
+		case Roadside::Barren:
+		case Roadside::Grass:
+			SetRoadside(t, Roadside::GrassRoadWorks);
+			break;
+
+		default:
+			SetRoadside(t, Roadside::PavedRoadWorks);
+			break;
 	}
 }
 
@@ -531,7 +536,7 @@ inline void StartRoadWorks(Tile t)
 inline void TerminateRoadWorks(Tile t)
 {
 	assert(HasRoadWorks(t));
-	SetRoadside(t, (Roadside)(GetRoadside(t) - ROADSIDE_GRASS_ROAD_WORKS + ROADSIDE_GRASS));
+	SetRoadside(t, GetRoadside(t) == Roadside::GrassRoadWorks ? Roadside::Grass : Roadside::Paved);
 	/* Stop the counter */
 	SB(t.m7(), 0, 4, 0);
 }
