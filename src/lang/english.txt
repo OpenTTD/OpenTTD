@@ -1631,6 +1631,9 @@ STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Choose if the m
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :River amount: {STRING2}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Choose how many rivers to generate
 
+STR_CONFIG_SETTING_GENERATE_OBSTACLES                           :Generate obstacles: {STRING2}
+STR_CONFIG_SETTING_GENERATE_OBSTACLES_HELPTEXT                  :Choose whether to generate obstacles (transmitters and lighthouses)
+
 STR_CONFIG_SETTING_TREE_PLACER                                  :Tree placer algorithm: {STRING2}
 STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Choose the distribution of trees on the map: 'Original' plants trees uniformly scattered, 'Improved' plants them in groups
 ###length 3
