@@ -1354,7 +1354,7 @@ static bool DrawRoadAsSnowOrDesert(bool snow_or_desert, Roadside roadside)
 {
 	return (snow_or_desert &&
 			!(_settings_game.game_creation.landscape == LandscapeType::Tropic && HasGrfMiscBit(GrfMiscBit::DesertPavedRoads) &&
-				roadside != ROADSIDE_BARREN && roadside != ROADSIDE_GRASS && roadside != ROADSIDE_GRASS_ROAD_WORKS));
+				roadside != Roadside::Barren && roadside != Roadside::Grass && roadside != Roadside::GrassRoadWorks));
 }
 
 /**
@@ -1558,11 +1558,16 @@ static SpriteID GetRoadGroundSprite(const TileInfo *ti, Roadside roadside, const
 		}
 
 		switch (roadside) {
-			case ROADSIDE_BARREN:           *pal = PALETTE_TO_BARE_LAND;
-			                                return SPR_FLAT_GRASS_TILE + SlopeToSpriteOffset(ti->tileh);
-			case ROADSIDE_GRASS:
-			case ROADSIDE_GRASS_ROAD_WORKS: return SPR_FLAT_GRASS_TILE + SlopeToSpriteOffset(ti->tileh);
-			default:                        break; // Paved
+			case Roadside::Barren:
+				*pal = PALETTE_TO_BARE_LAND;
+			    return SPR_FLAT_GRASS_TILE + SlopeToSpriteOffset(ti->tileh);
+
+			case Roadside::Grass:
+			case Roadside::GrassRoadWorks:
+				return SPR_FLAT_GRASS_TILE + SlopeToSpriteOffset(ti->tileh);
+
+			default:
+				break; // Paved
 		}
 	}
 
@@ -1572,10 +1577,17 @@ static SpriteID GetRoadGroundSprite(const TileInfo *ti, Roadside roadside, const
 		image += 19;
 	} else {
 		switch (roadside) {
-			case ROADSIDE_BARREN:           *pal = PALETTE_TO_BARE_LAND; break;
-			case ROADSIDE_GRASS:            break;
-			case ROADSIDE_GRASS_ROAD_WORKS: break;
-			default:                        image -= 19; break; // Paved
+			case Roadside::Barren:
+				*pal = PALETTE_TO_BARE_LAND;
+				break;
+
+			case Roadside::Grass:
+			case Roadside::GrassRoadWorks:
+				break;
+
+			default:
+				image -= 19;
+				break; // Paved
 		}
 	}
 
@@ -1659,11 +1671,11 @@ static void DrawRoadBits(TileInfo *ti)
 
 	/* Do not draw details (street lights, trees) under low bridge */
 	Roadside roadside = GetRoadside(ti->tile);
-	if (IsBridgeAbove(ti->tile) && (roadside == ROADSIDE_TREES || roadside == ROADSIDE_STREET_LIGHTS)) {
+	if (IsBridgeAbove(ti->tile) && (roadside == Roadside::Trees || roadside == Roadside::StreetLights)) {
 		int height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile));
 		int minz = GetTileMaxZ(ti->tile) + 2;
 
-		if (roadside == ROADSIDE_TREES) minz++;
+		if (roadside == Roadside::Trees) minz++;
 
 		if (height < minz) return;
 	}
@@ -1672,20 +1684,20 @@ static void DrawRoadBits(TileInfo *ti)
 	if (HasAtMostOneBit(road)) return;
 
 	/* Do not draw details when invisible. */
-	if (roadside == ROADSIDE_TREES && IsInvisibilitySet(TO_TREES)) return;
-	if (roadside == ROADSIDE_STREET_LIGHTS && IsInvisibilitySet(TO_HOUSES)) return;
+	if (roadside == Roadside::Trees && IsInvisibilitySet(TO_TREES)) return;
+	if (roadside == Roadside::StreetLights && IsInvisibilitySet(TO_HOUSES)) return;
 
 	/* Check whether details should be transparent. */
 	bool is_transparent = false;
-	if (roadside == ROADSIDE_TREES && IsTransparencySet(TO_TREES)) {
+	if (roadside == Roadside::Trees && IsTransparencySet(TO_TREES)) {
 		is_transparent = true;
 	}
-	if (roadside == ROADSIDE_STREET_LIGHTS && IsTransparencySet(TO_HOUSES)) {
+	if (roadside == Roadside::StreetLights && IsTransparencySet(TO_HOUSES)) {
 		is_transparent = true;
 	}
 
 	/* Draw extra details. */
-	for (const DrawRoadTileStruct *drts = _road_display_table[roadside][road | tram]; drts->image != 0; drts++) {
+	for (const DrawRoadTileStruct *drts = _road_display_table[to_underlying(roadside)][road | tram]; drts->image != 0; drts++) {
 		DrawRoadDetail(drts->image, ti, drts->subcoord_x, drts->subcoord_y, 0x10, is_transparent);
 	}
 }
@@ -1730,9 +1742,16 @@ static void DrawTile_Road(TileInfo *ti)
 					image += 19;
 				} else {
 					switch (roadside) {
-						case ROADSIDE_BARREN: pal = PALETTE_TO_BARE_LAND; break;
-						case ROADSIDE_GRASS:  break;
-						default:              image -= 19; break; // Paved
+						case Roadside::Barren:
+							pal = PALETTE_TO_BARE_LAND;
+							break;
+
+						case Roadside::Grass:
+							break;
+
+						default:
+							image -= 19;
+							break; // Paved
 					}
 				}
 
@@ -1746,9 +1765,16 @@ static void DrawTile_Road(TileInfo *ti)
 					image += 8;
 				} else {
 					switch (roadside) {
-						case ROADSIDE_BARREN: pal = PALETTE_TO_BARE_LAND; break;
-						case ROADSIDE_GRASS:  break;
-						default:              image += 4; break; // Paved
+						case Roadside::Barren:
+							pal = PALETTE_TO_BARE_LAND;
+							break;
+
+						case Roadside::Grass:
+							break;
+
+						default:
+							image += 4;
+							break; // Paved
 					}
 				}
 
@@ -1956,21 +1982,21 @@ static Foundation GetFoundation_Road(TileIndex tile, Slope tileh)
 }
 
 static const Roadside _town_road_types[][2] = {
-	{ ROADSIDE_GRASS,         ROADSIDE_GRASS },
-	{ ROADSIDE_PAVED,         ROADSIDE_PAVED },
-	{ ROADSIDE_PAVED,         ROADSIDE_PAVED },
-	{ ROADSIDE_TREES,         ROADSIDE_TREES },
-	{ ROADSIDE_STREET_LIGHTS, ROADSIDE_PAVED }
+	{ Roadside::Grass,        Roadside::Grass },
+	{ Roadside::Paved,        Roadside::Paved },
+	{ Roadside::Paved,        Roadside::Paved },
+	{ Roadside::Trees,        Roadside::Trees },
+	{ Roadside::StreetLights, Roadside::Paved }
 };
 
 static_assert(lengthof(_town_road_types) == NUM_HOUSE_ZONES);
 
 static const Roadside _town_road_types_2[][2] = {
-	{ ROADSIDE_GRASS,         ROADSIDE_GRASS },
-	{ ROADSIDE_PAVED,         ROADSIDE_PAVED },
-	{ ROADSIDE_STREET_LIGHTS, ROADSIDE_PAVED },
-	{ ROADSIDE_STREET_LIGHTS, ROADSIDE_PAVED },
-	{ ROADSIDE_STREET_LIGHTS, ROADSIDE_PAVED }
+	{ Roadside::Grass,        Roadside::Grass },
+	{ Roadside::Paved,        Roadside::Paved },
+	{ Roadside::StreetLights, Roadside::Paved },
+	{ Roadside::StreetLights, Roadside::Paved },
+	{ Roadside::StreetLights, Roadside::Paved }
 };
 
 static_assert(lengthof(_town_road_types_2) == NUM_HOUSE_ZONES);
@@ -2040,11 +2066,11 @@ static void TileLoop_Road(TileIndex tile)
 			if (cur_rs == new_rs[1]) {
 				cur_rs = new_rs[0];
 			/* We have barren land, install the pre-type */
-			} else if (cur_rs == ROADSIDE_BARREN) {
+			} else if (cur_rs == Roadside::Barren) {
 				cur_rs = new_rs[1];
 			/* We're totally off limits, remove any installation and make barren land */
 			} else {
-				cur_rs = ROADSIDE_BARREN;
+				cur_rs = Roadside::Barren;
 			}
 			SetRoadside(tile, cur_rs);
 			MarkTileDirtyByTile(tile);
@@ -2222,7 +2248,7 @@ static void GetTileDesc_Road(TileIndex tile, TileDesc &td)
 			break;
 
 		default: {
-			td.str = (road_rt != INVALID_ROADTYPE ? _road_tile_strings[GetRoadside(tile)] : STR_LAI_ROAD_DESCRIPTION_TRAMWAY);
+			td.str = (road_rt != INVALID_ROADTYPE ? _road_tile_strings[to_underlying(GetRoadside(tile))] : STR_LAI_ROAD_DESCRIPTION_TRAMWAY);
 			break;
 		}
 	}

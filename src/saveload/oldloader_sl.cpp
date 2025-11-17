@@ -246,7 +246,7 @@ static bool FixTTOMapArray()
 			case MP_ROAD: // road (depot) or level crossing
 				switch (GB(tile.m5(), 4, 4)) {
 					case 0: // RoadTileType::Normal
-						if (tile.m2() == 4) tile.m2() = 5; // 'small trees' -> ROADSIDE_TREES
+						if (tile.m2() == 4) tile.m2() = 5; // 'small trees' -> Roadside::Trees
 						break;
 					case 1: // RoadTileType::Crossing (there aren't monorail crossings in TTO)
 						tile.m3() = tile.m1(); // set owner of road = owner of rail
