@@ -129,7 +129,7 @@ static void StrMakeValid(Builder &builder, StringConsumer &consumer, StringValid
 		}
 		if (*c == 0) break;
 
-		if ((IsPrintable(*c) && (*c < SCC_SPRITE_START || *c > SCC_SPRITE_END)) ||
+		if ((IsPrintable(*c) && (*c < SCC_SPRITE_START || *c > SCC_SPRITE_END) && (*c < SCC_ICON_START || *c > SCC_ICON_END)) ||
 				(settings.Test(StringValidationSetting::AllowControlCode) && IsSccEncodedCode(*c)) ||
 				(settings.Test(StringValidationSetting::AllowNewline) && *c == '\n')) {
 			builder.PutUtf8(*c);
