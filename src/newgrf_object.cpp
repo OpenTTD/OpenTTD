@@ -87,7 +87,7 @@ bool ObjectSpec::IsEverAvailable() const
  */
 bool ObjectSpec::WasEverAvailable() const
 {
-	return this->IsEverAvailable() && TimerGameCalendar::date > this->introduction_date;
+	return this->IsEverAvailable() && TimerGameCalendar::date >= this->introduction_date;
 }
 
 /**
