@@ -37,7 +37,7 @@
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return (::IsTileType(tile, MP_ROAD) && ::GetRoadTileType(tile) != ROAD_TILE_DEPOT) ||
+	return (::IsTileType(tile, MP_ROAD) && ::GetRoadTileType(tile) != RoadTileType::Depot) ||
 			IsDriveThroughRoadStationTile(tile);
 }
 
@@ -46,7 +46,7 @@
 	if (!::IsValidTile(tile)) return false;
 	if (!IsRoadTypeAvailable(GetCurrentRoadType())) return false;
 
-	return ::IsTileType(tile, MP_ROAD) && ::GetRoadTileType(tile) == ROAD_TILE_DEPOT &&
+	return ::IsTileType(tile, MP_ROAD) && ::GetRoadTileType(tile) == RoadTileType::Depot &&
 			::GetPresentRoadTypes(tile).Test(::RoadType(GetCurrentRoadType()));
 }
 
@@ -465,7 +465,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 
 	switch (::GetTileType(neighbour_tile)) {
 		case MP_ROAD:
-			return (::GetRoadTileType(neighbour_tile) != ROAD_TILE_DEPOT);
+			return (::GetRoadTileType(neighbour_tile) != RoadTileType::Depot);
 
 		case MP_STATION:
 			if (::IsDriveThroughStopTile(neighbour_tile)) {
@@ -623,7 +623,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, IsTileType(tile, MP_ROAD))
-	EnforcePrecondition(false, GetRoadTileType(tile) == ROAD_TILE_DEPOT);
+	EnforcePrecondition(false, GetRoadTileType(tile) == RoadTileType::Depot);
 
 	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile);
 }

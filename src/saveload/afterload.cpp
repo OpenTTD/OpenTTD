@@ -164,7 +164,7 @@ static void ConvertTownOwner()
 	for (auto tile : Map::Iterate()) {
 		switch (GetTileType(tile)) {
 			case MP_ROAD:
-				if (GB(tile.m5(), 4, 2) == ROAD_TILE_CROSSING && HasBit(tile.m3(), 7)) {
+				if (GB(tile.m5(), 4, 2) == to_underlying(RoadTileType::Crossing) && HasBit(tile.m3(), 7)) {
 					tile.m3() = OWNER_TOWN.base();
 				}
 				[[fallthrough]];
@@ -457,7 +457,7 @@ static void FixOwnerOfRailTrack(Tile t)
 		SetTileType(t, MP_ROAD);
 		SetTileOwner(t, road);
 		t.m3() = (hasroad ? bits : 0);
-		t.m5() = (hastram ? bits : 0) | ROAD_TILE_NORMAL << 6;
+		t.m5() = (hastram ? bits : 0) | to_underlying(RoadTileType::Normal) << 6;
 		SB(t.m6(), 2, 4, 0);
 		SetRoadOwner(t, RTT_TRAM, tram);
 		return;
@@ -1007,8 +1007,8 @@ bool AfterLoadGame()
 
 				case MP_ROAD:
 					t.m4() |= (t.m2() << 4);
-					if (GB(t.m5(), 4, 2) == ROAD_TILE_DEPOT) break;
-					if ((GB(t.m5(), 4, 2) == ROAD_TILE_CROSSING ? (Owner)t.m3() : GetTileOwner(t)) == OWNER_TOWN) {
+					if (GB(t.m5(), 4, 2) == to_underlying(RoadTileType::Depot)) break;
+					if ((GB(t.m5(), 4, 2) == to_underlying(RoadTileType::Crossing) ? (Owner)t.m3() : GetTileOwner(t)) == OWNER_TOWN) {
 						SetTownIndex(t, CalcClosestTownFromTile(t)->index);
 					} else {
 						SetTownIndex(t, TownID::Begin());
@@ -1090,15 +1090,15 @@ bool AfterLoadGame()
 					SB(t.m5(), 6, 2, GB(t.m5(), 4, 2));
 					switch (GetRoadTileType(t)) {
 						default: SlErrorCorrupt("Invalid road tile type");
-						case ROAD_TILE_NORMAL:
+						case RoadTileType::Normal:
 							SB(t.m4(), 0, 4, GB(t.m5(), 0, 4));
 							SB(t.m4(), 4, 4, 0);
 							SB(t.m6(), 2, 4, 0);
 							break;
-						case ROAD_TILE_CROSSING:
+						case RoadTileType::Crossing:
 							SB(t.m4(), 5, 2, GB(t.m5(), 2, 2));
 							break;
-						case ROAD_TILE_DEPOT:    break;
+						case RoadTileType::Depot:    break;
 					}
 					SB(t.m7(), 6, 2, 1); // Set pre-NRT road type bits for conversion later.
 					break;
@@ -1131,7 +1131,7 @@ bool AfterLoadGame()
 					SB(t.m7(), 5, 1, GB(t.m3(), 7, 1)); // snow/desert
 					switch (GetRoadTileType(t)) {
 						default: SlErrorCorrupt("Invalid road tile type");
-						case ROAD_TILE_NORMAL:
+						case RoadTileType::Normal:
 							SB(t.m7(), 0, 4, GB(t.m3(), 0, 4));  // road works
 							SB(t.m6(), 3, 3, GB(t.m3(), 4, 3));  // ground
 							SB(t.m3(), 0, 4, GB(t.m4(), 4, 4));   // tram bits
@@ -1139,7 +1139,7 @@ bool AfterLoadGame()
 							SB(t.m5(), 0, 4, GB(t.m4(), 0, 4));   // road bits
 							break;
 
-						case ROAD_TILE_CROSSING:
+						case RoadTileType::Crossing:
 							SB(t.m7(), 0, 5, GB(t.m4(), 0, 5));  // road owner
 							SB(t.m6(), 3, 3, GB(t.m3(), 4, 3));  // ground
 							SB(t.m3(), 4, 4, GB(t.m5(), 0, 4));   // tram owner
@@ -1147,7 +1147,7 @@ bool AfterLoadGame()
 							SB(t.m5(), 5, 1, GB(t.m4(), 5, 1));   // crossing state
 							break;
 
-						case ROAD_TILE_DEPOT:
+						case RoadTileType::Depot:
 							break;
 					}
 					if (!IsRoadDepot(t) && !HasTownOwnedRoad(t)) {
@@ -1241,7 +1241,7 @@ bool AfterLoadGame()
 							SetTileType(t, MP_ROAD);
 							t.m2() = town.base();
 							t.m3() = 0;
-							t.m5() = (axis == AXIS_X ? ROAD_Y : ROAD_X) | ROAD_TILE_NORMAL << 6;
+							t.m5() = (axis == AXIS_X ? ROAD_Y : ROAD_X) | to_underlying(RoadTileType::Normal) << 6;
 							SB(t.m6(), 2, 4, 0);
 							t.m7() = 1 << 6;
 							SetRoadOwner(t, RTT_TRAM, OWNER_NONE);
