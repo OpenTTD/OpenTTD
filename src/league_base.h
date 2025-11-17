@@ -32,7 +32,7 @@ extern LeagueTablePool _league_table_pool;
 struct LeagueTableElement : LeagueTableElementPool::PoolItem<&_league_table_element_pool> {
 	LeagueTableID table = LeagueTableID::Invalid(); ///< Id of the table which this element belongs to
 	int64_t rating = 0; ///< Value that determines ordering of elements in the table (higher=better)
-	CompanyID company = CompanyID::Invalid(); ///< Company Id to show the color blob for or CompanyID::Invalid()
+	CompanyID company = CompanyID::Invalid(); ///< Company Id to show the colour blob for or CompanyID::Invalid()
 	EncodedString text{}; ///< Text of the element
 	EncodedString score{}; ///< String representation of the score associated with the element
 	Link link{}; ///< What opens when element is clicked

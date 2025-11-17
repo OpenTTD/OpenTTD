@@ -30,7 +30,7 @@ public:
 
 	OTTD_CocoaWindow *window;    ///< Pointer to window object
 	OTTD_CocoaView *cocoaview;   ///< Pointer to view object
-	CGColorSpaceRef color_space; ///< Window color space
+	CGColorSpaceRef colour_space; ///< Window colour space
 
 	OTTD_CocoaWindowDelegate *delegate; //!< Window delegate object
 
@@ -101,7 +101,7 @@ private:
 	uint32_t palette[256];  ///< Colour Palette
 
 	void BlitIndexedToView32(int left, int top, int right, int bottom);
-	void UpdatePalette(uint first_color, uint num_colors);
+	void UpdatePalette(uint first_colour, uint num_colours);
 
 public:
 	CGContextRef cgcontext;      ///< Context reference for Quartz subdriver

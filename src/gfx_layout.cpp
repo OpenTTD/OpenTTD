@@ -58,7 +58,7 @@ Font::Font(FontSize size, TextColour colour) :
  * @note In case no ParagraphLayouter could be constructed, line.layout will be nullptr.
  * @param line The cache item to store our layouter in.
  * @param str The string to create a layouter for.
- * @param state The state of the font and color.
+ * @param state The state of the font and colour.
  * @tparam T The type of layouter we want.
  */
 template <typename T>
