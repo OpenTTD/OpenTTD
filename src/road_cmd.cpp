@@ -8,8 +8,10 @@
 /** @file road_cmd.cpp Commands related to road tiles. */
 
 #include "stdafx.h"
+#include "road_type.h"
 #include "road.h"
 #include "road_internal.h"
+#include "string_func.h"
 #include "viewport_func.h"
 #include "command_func.h"
 #include "company_func.h"
@@ -42,6 +44,8 @@
 #include "road_cmd.h"
 #include "landscape_cmd.h"
 #include "rail_cmd.h"
+#include "dropdown_gui.hpp"
+#include "dropdown_func.h"
 #include "table/strings.h"
 #include "table/roadtypes.h"
 
@@ -54,6 +58,8 @@ RoadTypeInfo _roadtypes[ROADTYPE_END];
 std::vector<RoadType> _sorted_roadtypes; ///< Sorted list of road types.
 bool _roadtypes_invert_sort_order = false;
 bool _tramtypes_invert_sort_order = false;
+uint8_t _roadtypes_sort_criteria = 0; ///< Defines by what raodtypes are sorted.
+uint8_t _tramtypes_sort_criteria = 0; ///< Defines by what tram track types are sorted.
 RoadTypes _roadtypes_hidden_mask; ///< Bitset of hidden roadtypes.
 RoadTypes _roadtypes_road; ///< Bitset of road roadtypes.
 RoadTypes _roadtypes_tram; ///< Bitset of tram roadtypes.
@@ -94,7 +100,7 @@ void ResolveRoadTypeGUISprites(RoadTypeInfo *rti)
 
 /**
  * Compare roadtypes based on their sorting order.
- * @param first  The roadtype to compare to.
+ * @param first The roadtype to compare to.
  * @param second The roadtype to compare.
  * @return True iff the first should be sorted before the second.
  */
@@ -113,6 +119,113 @@ static bool CompareRoadTypes(const RoadType &first, const RoadType &second)
 }
 
 /**
+ * Compare roadtypes based on cost.
+ * @tparam TRTT Whether tram tracks or roads are to be compared.
+ * @param first The roadtype to compare to.
+ * @param second The roadtype to compare.
+ * @return True iff the first should be sorted before the second.
+ */
+template<RoadTramType TRTT>
+static bool CompareRoadTypesByCost(const RoadType &first, const RoadType &second)
+{
+	int r = GetRoadTypeInfo(first)->cost_multiplier - GetRoadTypeInfo(second)->cost_multiplier;
+	if (r == 0) return true; // Roadtypes have already been sorted by sorting_order.
+	if constexpr (TRTT == RTT_ROAD) {
+		return _roadtypes_invert_sort_order ? r > 0 : r < 0;
+	} else {
+		return _tramtypes_invert_sort_order ? r > 0 : r < 0;
+	}
+}
+
+/**
+ * Compare roadtypes based on max speed.
+ * @tparam TRTT Whether tram tracks or roads are to be compared.
+ * @param first The roadtype to compare to.
+ * @param second The roadtype to compare.
+ * @return True iff the first should be sorted before the second.
+ */
+template<RoadTramType TRTT>
+static bool CompareRoadTypesBySpeed(const RoadType &first, const RoadType &second)
+{
+	int r = GetRoadTypeInfo(first)->max_speed - GetRoadTypeInfo(second)->max_speed;
+	if (r == 0) return true; // Roadtypes have already been sorted by sorting_order.
+	if (GetRoadTypeInfo(r > 0 ? second : first)->max_speed == 0) r = -r; // 0 is used for no speed limit.
+	if constexpr (TRTT == RTT_ROAD) {
+		return _roadtypes_invert_sort_order ? r > 0 : r < 0;
+	} else {
+		return _tramtypes_invert_sort_order ? r > 0 : r < 0;
+	}
+}
+
+/**
+ * Compare roadtypes based on maintenance cost.
+ * @tparam TRTT Whether tram tracks or roads are to be compared.
+ * @param first The roadtype to compare to.
+ * @param second The roadtype to compare.
+ * @return True iff the first should be sorted before the second.
+ */
+template<RoadTramType TRTT>
+static bool CompareRoadTypesByMaintenanceCost(const RoadType &first, const RoadType &second)
+{
+	int r = GetRoadTypeInfo(first)->maintenance_multiplier - GetRoadTypeInfo(second)->maintenance_multiplier;
+	if (r == 0) return true; // Roadtypes have already been sorted by sorting_order.
+	if constexpr (TRTT == RTT_ROAD) {
+		return _roadtypes_invert_sort_order ? r > 0 : r < 0;
+	} else {
+		return _tramtypes_invert_sort_order ? r > 0 : r < 0;
+	}
+}
+
+/** Cached values for CompareRoadTypesByName to spare many GetString() calls */
+static RoadType _last_sorted_roadtype[2] = { INVALID_ROADTYPE, INVALID_ROADTYPE };
+
+/**
+ * Compare roadtypes based on name.
+ * @tparam TRTT Whether tram tracks or roads are to be compared.
+ * @param first The roadtype to compare to.
+ * @param second The roadtype to compare.
+ * @return True iff the first should be sorted before the second.
+ */
+template<RoadTramType TRTT>
+static bool CompareRoadTypesByName(const RoadType &first, const RoadType &second)
+{
+	static std::string last_name[2] = { {}, {} };
+
+	if (first != _last_sorted_roadtype[0]) {
+		_last_sorted_roadtype[0] = first;
+		last_name[0] = GetString(GetRoadTypeInfo(first)->strings.menu_text);
+	}
+
+	if (second != _last_sorted_roadtype[1]) {
+		_last_sorted_roadtype[1] = second;
+		last_name[1] = GetString(GetRoadTypeInfo(second)->strings.menu_text);
+	}
+
+	int r = StrNaturalCompare(last_name[0], last_name[1]);
+	if (r == 0) return true; // Roadtypes have already been sorted by sorting_order.
+	if constexpr (TRTT == RTT_ROAD) {
+		return _roadtypes_invert_sort_order ? r > 0 : r < 0;
+	} else {
+		return _tramtypes_invert_sort_order ? r > 0 : r < 0;
+	}
+}
+
+typedef bool CompareRoadTypesFunction(const RoadType&, const RoadType&); ///< Type of functions for comparing roadtypes.
+
+/**
+ * Compare functions for the road_type sort criteria.
+ * @tparam TRTT Whether tram tracks or roads are to be compared.
+ */
+template<RoadTramType TRTT>
+static constexpr CompareRoadTypesFunction *_roadtypes_sort_functions[] = {
+	nullptr, // RoadTypes are always sorted by sorting_order. No need to sort them twice.
+	CompareRoadTypesByCost<TRTT>,
+	CompareRoadTypesBySpeed<TRTT>,
+	CompareRoadTypesByMaintenanceCost<TRTT>,
+	CompareRoadTypesByName<TRTT>
+};
+
+/**
  * Resolve sprites of custom road types
  */
 void InitRoadTypes()
@@ -127,7 +240,69 @@ void InitRoadTypes()
 		if (rti.label == 0) continue;
 		_sorted_roadtypes.push_back(rt);
 	}
+
+	if (_sorted_roadtypes.size() == 0) return; // Do not sort empty list.
 	std::sort(_sorted_roadtypes.begin(), _sorted_roadtypes.end(), CompareRoadTypes);
+	auto first_tramtype = _sorted_roadtypes.begin();
+	auto last_roadtype = _sorted_roadtypes.end();
+	--last_roadtype;
+	while (RoadTypeIsRoad(*first_tramtype) && RoadTypeIsTram(*last_roadtype)) {
+		--last_roadtype;
+		++first_tramtype;
+	}
+	if (RoadTypeIsRoad(*last_roadtype)) {
+		first_tramtype = ++last_roadtype; // last_roadtype is not needed anymore.
+	}
+	if (_roadtypes_sort_functions<RTT_ROAD>[_roadtypes_sort_criteria]) std::sort(_sorted_roadtypes.begin(), first_tramtype, _roadtypes_sort_functions<RTT_ROAD>[_roadtypes_sort_criteria]);
+	if (_roadtypes_sort_functions<RTT_TRAM>[_tramtypes_sort_criteria]) std::sort(first_tramtype, _sorted_roadtypes.end(), _roadtypes_sort_functions<RTT_TRAM>[_tramtypes_sort_criteria]);
+}
+
+/**
+ * Array of strings representing sort criteria for roads and tram tracks.
+ * @tparam TRTT Whether tram tracks or roads are to be compared.
+ */
+template<RoadTramType TRTT>
+static constexpr std::array<StringID, sizeof(_roadtypes_sort_functions<TRTT>) / sizeof(_roadtypes_sort_functions<TRTT>[0])> ROADTYPE_SORT_LISTING = {
+	TRTT == RTT_ROAD ? STR_SORT_BY_ROADTYPE_ID : STR_SORT_BY_TRAMTYPE_ID,
+	STR_SORT_BY_COST,
+	STR_SORT_BY_MAX_SPEED,
+	STR_SORT_BY_MAINTENANCE_COST,
+	STR_SORT_BY_NAME
+};
+
+StringID RoadTypeDropdownWindow::GetSortCriteriaString() const
+{
+	return ROADTYPE_SORT_LISTING<RTT_ROAD>[_roadtypes_sort_criteria];
+}
+
+StringID TramTypeDropdownWindow::GetSortCriteriaString() const
+{
+	return ROADTYPE_SORT_LISTING<RTT_TRAM>[_tramtypes_sort_criteria];
+}
+
+/**
+ * Creates dropdown list with all sort criteria for roads or tram tracks.
+ * @tparam TRTT Whether tram tracks or roads are to be compared.
+ * @return The dropdown list of sort criteria.
+ */
+template<RoadTramType TRTT>
+static DropDownList GetRoadTypeSortDropDownList()
+{
+	DropDownList list;
+	for (uint8_t i = 0; i < ROADTYPE_SORT_LISTING<TRTT>.size(); ++i) {
+		list.push_back(MakeDropDownListStringItem(ROADTYPE_SORT_LISTING<TRTT>[i], i));
+	}
+	return list;
+}
+
+DropDownList RoadTypeDropdownWindow::GetSortDropdownList() const
+{
+	return GetRoadTypeSortDropDownList<RTT_ROAD>();
+}
+
+DropDownList TramTypeDropdownWindow::GetSortDropdownList() const
+{
+	return GetRoadTypeSortDropDownList<RTT_TRAM>();
 }
 
 /**
