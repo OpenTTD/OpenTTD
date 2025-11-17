@@ -1095,7 +1095,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_select_company_liver
 };
 
 static WindowDesc _select_company_livery_desc(
-	WDP_AUTO, "company_color_scheme", 0, 0,
+	WDP_AUTO, "company_colour_scheme", 0, 0,
 	WC_COMPANY_COLOUR, WC_NONE,
 	{},
 	_nested_select_company_livery_widgets

@@ -874,7 +874,7 @@ static void MakeNewGameDone()
 	Company *c = Company::Get(CompanyID::Begin());
 	c->settings = _settings_client.company;
 
-	/* Overwrite color from settings if needed
+	/* Overwrite colour from settings if needed
 	 * COLOUR_END corresponds to Random colour */
 
 	if (_settings_client.gui.starting_colour != COLOUR_END) {

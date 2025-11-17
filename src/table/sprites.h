@@ -1622,6 +1622,6 @@ static const PaletteID PALETTE_CRASH               = 804;  ///< Recolour sprite 
 static const PaletteID PALETTE_CHURCH_RED          = 1438; ///< Recolour sprite for reddish churches
 static const PaletteID PALETTE_CHURCH_CREAM        = 1439; ///< Recolour sprite for white churches
 
-static const PaletteID PALETTE_ALL_BLACK           = SPR_PALETTE_BASE; ///< Exchange any color by black, needed for painting fictive tiles outside map
+static const PaletteID PALETTE_ALL_BLACK           = SPR_PALETTE_BASE; ///< Exchange any colour by black, needed for painting fictive tiles outside map
 
 #endif /* SPRITES_H */
