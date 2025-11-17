@@ -675,7 +675,7 @@ bool IsWateredTile(TileIndex tile, Direction from)
 			}
 
 		case MP_RAILWAY:
-			if (GetRailGroundType(tile) == RAIL_GROUND_WATER) {
+			if (GetRailGroundType(tile) == RailGroundType::HalfTileWater) {
 				assert(IsPlainRail(tile));
 				switch (GetTileSlope(tile)) {
 					case SLOPE_W: return (from == DIR_SE) || (from == DIR_E) || (from == DIR_NE);
@@ -1132,7 +1132,7 @@ FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
 			return (GetWaterClass(tile) == WATER_CLASS_SEA) ? FLOOD_ACTIVE : FLOOD_NONE;
 
 		case MP_RAILWAY:
-			if (GetRailGroundType(tile) == RAIL_GROUND_WATER) {
+			if (GetRailGroundType(tile) == RailGroundType::HalfTileWater) {
 				return (IsSlopeWithOneCornerRaised(GetTileSlope(tile)) ? FLOOD_ACTIVE : FLOOD_DRYUP);
 			}
 			return FLOOD_NONE;
@@ -1226,14 +1226,14 @@ static void DoDryUp(TileIndex tile)
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
 			assert(IsPlainRail(tile));
-			assert(GetRailGroundType(tile) == RAIL_GROUND_WATER);
+			assert(GetRailGroundType(tile) == RailGroundType::HalfTileWater);
 
 			RailGroundType new_ground;
 			switch (GetTrackBits(tile)) {
-				case TRACK_BIT_UPPER: new_ground = RAIL_GROUND_FENCE_HORIZ1; break;
-				case TRACK_BIT_LOWER: new_ground = RAIL_GROUND_FENCE_HORIZ2; break;
-				case TRACK_BIT_LEFT:  new_ground = RAIL_GROUND_FENCE_VERT1;  break;
-				case TRACK_BIT_RIGHT: new_ground = RAIL_GROUND_FENCE_VERT2;  break;
+				case TRACK_BIT_UPPER: new_ground = RailGroundType::FenceHoriz1; break;
+				case TRACK_BIT_LOWER: new_ground = RailGroundType::FenceHoriz2; break;
+				case TRACK_BIT_LEFT:  new_ground = RailGroundType::FenceVert1;  break;
+				case TRACK_BIT_RIGHT: new_ground = RailGroundType::FenceVert2;  break;
 				default: NOT_REACHED();
 			}
 			SetRailGroundType(tile, new_ground);

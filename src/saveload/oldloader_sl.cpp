@@ -216,7 +216,7 @@ static bool FixTTOMapArray()
 			 * Instead of using bits in m3 it uses a different tile type. */
 			tile.m3() = 1; // rail type = monorail (in TTD)
 			SetTileType(tile, MP_RAILWAY);
-			tile.m2() = 1; // set monorail ground to RAIL_GROUND_GRASS
+			tile.m2() = 1; // set monorail ground to RailGroundType::Grass
 			tt = MP_RAILWAY;
 		}
 

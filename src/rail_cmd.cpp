@@ -473,7 +473,7 @@ CommandCost CmdBuildSingleRail(DoCommandFlags flags, TileIndex tile, RailType ra
 			}
 
 			if (flags.Test(DoCommandFlag::Execute)) {
-				SetRailGroundType(tile, RAIL_GROUND_BARREN);
+				SetRailGroundType(tile, RailGroundType::Barren);
 				TrackBits bits = GetTrackBits(tile);
 				SetTrackBits(tile, bits | trackbit);
 				/* Subtract old infrastructure count. */
@@ -582,7 +582,7 @@ CommandCost CmdBuildSingleRail(DoCommandFlags flags, TileIndex tile, RailType ra
 			if (flags.Test(DoCommandFlag::Execute)) {
 				MakeRailNormal(tile, _current_company, trackbit, railtype);
 				if (water_ground) {
-					SetRailGroundType(tile, RAIL_GROUND_WATER);
+					SetRailGroundType(tile, RailGroundType::HalfTileWater);
 					if (IsPossibleDockingTile(tile)) CheckForDockingTile(tile);
 				}
 				Company::Get(_current_company)->infrastructure.rail[railtype]++;
@@ -704,7 +704,7 @@ CommandCost CmdRemoveSingleRail(DoCommandFlags flags, TileIndex tile, Track trac
 				if (present == 0) {
 					Slope tileh = GetTileSlope(tile);
 					/* If there is flat water on the lower halftile, convert the tile to shore so the water remains */
-					if (GetRailGroundType(tile) == RAIL_GROUND_WATER && IsSlopeWithOneCornerRaised(tileh)) {
+					if (GetRailGroundType(tile) == RailGroundType::HalfTileWater && IsSlopeWithOneCornerRaised(tileh)) {
 						bool docking = IsDockingTile(tile);
 						MakeShore(tile);
 						SetDockingTile(tile, docking);
@@ -761,7 +761,7 @@ bool FloodHalftile(TileIndex t)
 	assert(IsPlainRailTile(t));
 
 	bool flooded = false;
-	if (GetRailGroundType(t) == RAIL_GROUND_WATER) return flooded;
+	if (GetRailGroundType(t) == RailGroundType::HalfTileWater) return flooded;
 
 	Slope tileh = GetTileSlope(t);
 	TrackBits rail_bits = GetTrackBits(t);
@@ -785,7 +785,7 @@ bool FloodHalftile(TileIndex t)
 
 		if (IsNonContinuousFoundation(GetRailFoundation(tileh, rail_bits))) {
 			flooded = true;
-			SetRailGroundType(t, RAIL_GROUND_WATER);
+			SetRailGroundType(t, RailGroundType::HalfTileWater);
 			MarkTileDirtyByTile(t);
 		}
 	} else {
@@ -793,7 +793,7 @@ bool FloodHalftile(TileIndex t)
 		if (ApplyFoundationToSlope(GetRailFoundation(tileh, rail_bits), tileh) == 0) {
 			if (IsSteepSlope(tileh) || IsSlopeWithThreeCornersRaised(tileh)) {
 				flooded = true;
-				SetRailGroundType(t, RAIL_GROUND_WATER);
+				SetRailGroundType(t, RailGroundType::HalfTileWater);
 				MarkTileDirtyByTile(t);
 			}
 		}
@@ -1810,7 +1810,7 @@ static CommandCost ClearTile_Track(TileIndex tile, DoCommandFlags flags)
 		case RailTileType::Normal: {
 			Slope tileh = GetTileSlope(tile);
 			/* Is there flat water on the lower halftile that gets cleared expensively? */
-			bool water_ground = (GetRailGroundType(tile) == RAIL_GROUND_WATER && IsSlopeWithOneCornerRaised(tileh));
+			bool water_ground = (GetRailGroundType(tile) == RailGroundType::HalfTileWater && IsSlopeWithOneCornerRaised(tileh));
 
 			TrackBits tracks = GetTrackBits(tile);
 			while (tracks != TRACK_BIT_NONE) {
@@ -2006,19 +2006,19 @@ static void DrawTrackDetails(const TileInfo *ti, const RailTypeInfo *rti, Palett
 	assert(num_sprites > 0);
 
 	switch (GetRailGroundType(ti->tile)) {
-		case RAIL_GROUND_FENCE_NW:     DrawTrackFence_NW(ti, psid, num_sprites); break;
-		case RAIL_GROUND_FENCE_SE:     DrawTrackFence_SE(ti, psid, num_sprites); break;
-		case RAIL_GROUND_FENCE_SENW:   DrawTrackFence_NW(ti, psid, num_sprites);
-		                               DrawTrackFence_SE(ti, psid, num_sprites); break;
-		case RAIL_GROUND_FENCE_NE:     DrawTrackFence_NE(ti, psid, num_sprites); break;
-		case RAIL_GROUND_FENCE_SW:     DrawTrackFence_SW(ti, psid, num_sprites); break;
-		case RAIL_GROUND_FENCE_NESW:   DrawTrackFence_NE(ti, psid, num_sprites);
-		                               DrawTrackFence_SW(ti, psid, num_sprites); break;
-		case RAIL_GROUND_FENCE_VERT1:  DrawTrackFence(ti, psid, num_sprites, RFO_FLAT_LEFT);  break;
-		case RAIL_GROUND_FENCE_VERT2:  DrawTrackFence(ti, psid, num_sprites, RFO_FLAT_RIGHT); break;
-		case RAIL_GROUND_FENCE_HORIZ1: DrawTrackFence(ti, psid, num_sprites, RFO_FLAT_UPPER); break;
-		case RAIL_GROUND_FENCE_HORIZ2: DrawTrackFence(ti, psid, num_sprites, RFO_FLAT_LOWER); break;
-		case RAIL_GROUND_WATER: {
+		case RailGroundType::FenceNW:     DrawTrackFence_NW(ti, psid, num_sprites); break;
+		case RailGroundType::FenceSE:     DrawTrackFence_SE(ti, psid, num_sprites); break;
+		case RailGroundType::FenceSENW:   DrawTrackFence_NW(ti, psid, num_sprites);
+		                                  DrawTrackFence_SE(ti, psid, num_sprites); break;
+		case RailGroundType::FenceNE:     DrawTrackFence_NE(ti, psid, num_sprites); break;
+		case RailGroundType::FenceSW:     DrawTrackFence_SW(ti, psid, num_sprites); break;
+		case RailGroundType::FenceNESW:   DrawTrackFence_NE(ti, psid, num_sprites);
+		                                  DrawTrackFence_SW(ti, psid, num_sprites); break;
+		case RailGroundType::FenceVert1:  DrawTrackFence(ti, psid, num_sprites, RFO_FLAT_LEFT);  break;
+		case RailGroundType::FenceVert2:  DrawTrackFence(ti, psid, num_sprites, RFO_FLAT_RIGHT); break;
+		case RailGroundType::FenceHoriz1: DrawTrackFence(ti, psid, num_sprites, RFO_FLAT_UPPER); break;
+		case RailGroundType::FenceHoriz2: DrawTrackFence(ti, psid, num_sprites, RFO_FLAT_LOWER); break;
+		case RailGroundType::HalfTileWater: {
 			Corner track_corner;
 			if (IsHalftileSlope(ti->tileh)) {
 				/* Steep slope or one-corner-raised slope with halftile foundation */
@@ -2072,7 +2072,7 @@ static void DrawTrackBitsOverlay(TileInfo *ti, TrackBits track, const RailTypeIn
 	/* DrawFoundation modifies ti */
 
 	/* Draw ground */
-	if (rgt == RAIL_GROUND_WATER) {
+	if (rgt == RailGroundType::HalfTileWater) {
 		if (track != TRACK_BIT_NONE || IsSteepSlope(ti->tileh)) {
 			/* three-corner-raised slope or steep slope with track on upper part */
 			DrawShoreTile(ti->tileh);
@@ -2084,9 +2084,9 @@ static void DrawTrackBitsOverlay(TileInfo *ti, TrackBits track, const RailTypeIn
 		SpriteID image;
 
 		switch (rgt) {
-			case RAIL_GROUND_BARREN:     image = SPR_FLAT_BARE_LAND;  break;
-			case RAIL_GROUND_ICE_DESERT: image = SPR_FLAT_SNOW_DESERT_TILE; break;
-			default:                     image = SPR_FLAT_GRASS_TILE; break;
+			case RailGroundType::Barren: image = SPR_FLAT_BARE_LAND; break;
+			case RailGroundType::SnowOrDesert: image = SPR_FLAT_SNOW_DESERT_TILE; break;
+			default: image = SPR_FLAT_GRASS_TILE; break;
 		}
 
 		image += SlopeToSpriteOffset(ti->tileh);
@@ -2186,10 +2186,10 @@ static void DrawTrackBitsOverlay(TileInfo *ti, TrackBits track, const RailTypeIn
 
 		SpriteID image;
 		switch (rgt) {
-			case RAIL_GROUND_BARREN:     image = SPR_FLAT_BARE_LAND;  break;
-			case RAIL_GROUND_ICE_DESERT:
-			case RAIL_GROUND_HALF_SNOW:  image = SPR_FLAT_SNOW_DESERT_TILE; break;
-			default:                     image = SPR_FLAT_GRASS_TILE; break;
+			case RailGroundType::Barren: image = SPR_FLAT_BARE_LAND; break;
+			case RailGroundType::SnowOrDesert:
+			case RailGroundType::HalfTileSnow: image = SPR_FLAT_SNOW_DESERT_TILE; break;
+			default: image = SPR_FLAT_GRASS_TILE; break;
 		}
 
 		image += SlopeToSpriteOffset(fake_slope);
@@ -2251,7 +2251,7 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 	/* Select the sprite to use. */
 	if (track == 0) {
 		/* Clear ground (only track on halftile foundation) */
-		if (rgt == RAIL_GROUND_WATER) {
+		if (rgt == RailGroundType::HalfTileWater) {
 			if (IsSteepSlope(ti->tileh)) {
 				DrawShoreTile(ti->tileh);
 				image = 0;
@@ -2260,9 +2260,9 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 			}
 		} else {
 			switch (rgt) {
-				case RAIL_GROUND_BARREN:     image = SPR_FLAT_BARE_LAND;  break;
-				case RAIL_GROUND_ICE_DESERT: image = SPR_FLAT_SNOW_DESERT_TILE; break;
-				default:                     image = SPR_FLAT_GRASS_TILE; break;
+				case RailGroundType::Barren: image = SPR_FLAT_BARE_LAND; break;
+				case RailGroundType::SnowOrDesert: image = SPR_FLAT_SNOW_DESERT_TILE; break;
+				default: image = SPR_FLAT_GRASS_TILE; break;
 			}
 			image += SlopeToSpriteOffset(ti->tileh);
 		}
@@ -2299,9 +2299,9 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 		}
 
 		switch (rgt) {
-			case RAIL_GROUND_BARREN:     pal = PALETTE_TO_BARE_LAND; break;
-			case RAIL_GROUND_ICE_DESERT: image += rti->snow_offset;  break;
-			case RAIL_GROUND_WATER: {
+			case RailGroundType::Barren: pal = PALETTE_TO_BARE_LAND; break;
+			case RailGroundType::SnowOrDesert: image += rti->snow_offset; break;
+			case RailGroundType::HalfTileWater: {
 				/* three-corner-raised slope */
 				DrawShoreTile(ti->tileh);
 				Corner track_corner = OppositeCorner(GetHighestSlopeCorner(ComplementSlope(ti->tileh)));
@@ -2356,9 +2356,9 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 		image = _track_sloped_sprites[fake_slope - 1] + rti->base_sprites.track_y;
 		pal = PAL_NONE;
 		switch (rgt) {
-			case RAIL_GROUND_BARREN:     pal = PALETTE_TO_BARE_LAND; break;
-			case RAIL_GROUND_ICE_DESERT:
-			case RAIL_GROUND_HALF_SNOW:  image += rti->snow_offset;  break; // higher part has snow in this case too
+			case RailGroundType::Barren: pal = PALETTE_TO_BARE_LAND; break;
+			case RailGroundType::SnowOrDesert:
+			case RailGroundType::HalfTileSnow: image += rti->snow_offset; break; // higher part has snow in this case too
 			default: break;
 		}
 		DrawGroundSprite(image, pal, &(_halftile_sub_sprite[halftile_corner]));
@@ -2582,7 +2582,7 @@ static void TileLoop_Track(TileIndex tile)
 	RailGroundType old_ground = GetRailGroundType(tile);
 	RailGroundType new_ground;
 
-	if (old_ground == RAIL_GROUND_WATER) {
+	if (old_ground == RailGroundType::HalfTileWater) {
 		TileLoop_Water(tile);
 		return;
 	}
@@ -2635,9 +2635,9 @@ static void TileLoop_Track(TileIndex tile)
 			if (z > GetSnowLine()) {
 				if (half && z - GetSnowLine() == 1) {
 					/* track on non-continuous foundation, lower part is not under snow */
-					new_ground = RAIL_GROUND_HALF_SNOW;
+					new_ground = RailGroundType::HalfTileSnow;
 				} else {
-					new_ground = RAIL_GROUND_ICE_DESERT;
+					new_ground = RailGroundType::SnowOrDesert;
 				}
 				goto set_ground;
 			}
@@ -2646,7 +2646,7 @@ static void TileLoop_Track(TileIndex tile)
 
 		case LandscapeType::Tropic:
 			if (GetTropicZone(tile) == TROPICZONE_DESERT) {
-				new_ground = RAIL_GROUND_ICE_DESERT;
+				new_ground = RailGroundType::SnowOrDesert;
 				goto set_ground;
 			}
 			break;
@@ -2655,9 +2655,9 @@ static void TileLoop_Track(TileIndex tile)
 			break;
 	}
 
-	new_ground = RAIL_GROUND_GRASS;
+	new_ground = RailGroundType::Grass;
 
-	if (IsPlainRail(tile) && old_ground != RAIL_GROUND_BARREN) { // wait until bottom is green
+	if (IsPlainRail(tile) && old_ground != RailGroundType::Barren) { // wait until bottom is green
 		/* determine direction of fence */
 		TrackBits rail = GetTrackBits(tile);
 
@@ -2681,16 +2681,16 @@ static void TileLoop_Track(TileIndex tile)
 
 		switch (fences.base()) {
 			case DiagDirections{}.base(): break;
-			case DiagDirections{DIAGDIR_NE}.base(): new_ground = RAIL_GROUND_FENCE_NE; break;
-			case DiagDirections{DIAGDIR_SE}.base(): new_ground = RAIL_GROUND_FENCE_SE; break;
-			case DiagDirections{DIAGDIR_SW}.base(): new_ground = RAIL_GROUND_FENCE_SW; break;
-			case DiagDirections{DIAGDIR_NW}.base(): new_ground = RAIL_GROUND_FENCE_NW; break;
-			case DiagDirections{DIAGDIR_NE, DIAGDIR_SW}.base(): new_ground = RAIL_GROUND_FENCE_NESW; break;
-			case DiagDirections{DIAGDIR_SE, DIAGDIR_NW}.base(): new_ground = RAIL_GROUND_FENCE_SENW; break;
-			case DiagDirections{DIAGDIR_NE, DIAGDIR_SE}.base(): new_ground = RAIL_GROUND_FENCE_VERT1; break;
-			case DiagDirections{DIAGDIR_NE, DIAGDIR_NW}.base(): new_ground = RAIL_GROUND_FENCE_HORIZ2; break;
-			case DiagDirections{DIAGDIR_SE, DIAGDIR_SW}.base(): new_ground = RAIL_GROUND_FENCE_HORIZ1; break;
-			case DiagDirections{DIAGDIR_SW, DIAGDIR_NW}.base(): new_ground = RAIL_GROUND_FENCE_VERT2; break;
+			case DiagDirections{DIAGDIR_NE}.base(): new_ground = RailGroundType::FenceNE; break;
+			case DiagDirections{DIAGDIR_SE}.base(): new_ground = RailGroundType::FenceSE; break;
+			case DiagDirections{DIAGDIR_SW}.base(): new_ground = RailGroundType::FenceSW; break;
+			case DiagDirections{DIAGDIR_NW}.base(): new_ground = RailGroundType::FenceNW; break;
+			case DiagDirections{DIAGDIR_NE, DIAGDIR_SW}.base(): new_ground = RailGroundType::FenceNESW; break;
+			case DiagDirections{DIAGDIR_SE, DIAGDIR_NW}.base(): new_ground = RailGroundType::FenceSENW; break;
+			case DiagDirections{DIAGDIR_NE, DIAGDIR_SE}.base(): new_ground = RailGroundType::FenceVert1; break;
+			case DiagDirections{DIAGDIR_NE, DIAGDIR_NW}.base(): new_ground = RailGroundType::FenceHoriz2; break;
+			case DiagDirections{DIAGDIR_SE, DIAGDIR_SW}.base(): new_ground = RailGroundType::FenceHoriz1; break;
+			case DiagDirections{DIAGDIR_SW, DIAGDIR_NW}.base(): new_ground = RailGroundType::FenceVert2; break;
 			default: NOT_REACHED();
 		}
 	}
@@ -2706,7 +2706,7 @@ set_ground:
 static TrackStatus GetTileTrackStatus_Track(TileIndex tile, TransportType mode, uint, DiagDirection side)
 {
 	/* Case of half tile slope with water. */
-	if (mode == TRANSPORT_WATER && IsPlainRail(tile) && GetRailGroundType(tile) == RAIL_GROUND_WATER && IsSlopeWithOneCornerRaised(GetTileSlope(tile))) {
+	if (mode == TRANSPORT_WATER && IsPlainRail(tile) && GetRailGroundType(tile) == RailGroundType::HalfTileWater && IsSlopeWithOneCornerRaised(GetTileSlope(tile))) {
 		TrackBits tb = GetTrackBits(tile);
 		switch (tb) {
 			default: NOT_REACHED();
@@ -3019,8 +3019,8 @@ static CommandCost TestAutoslopeOnRailTile(TileIndex tile, DoCommandFlags flags,
 	/* Make the ground dirty, if surface slope has changed */
 	if (tileh_old != tileh_new) {
 		/* If there is flat water on the lower halftile add the cost for clearing it */
-		if (GetRailGroundType(tile) == RAIL_GROUND_WATER && IsSlopeWithOneCornerRaised(tileh_old)) cost.AddCost(_price[PR_CLEAR_WATER]);
-		if (flags.Test(DoCommandFlag::Execute)) SetRailGroundType(tile, RAIL_GROUND_BARREN);
+		if (GetRailGroundType(tile) == RailGroundType::HalfTileWater && IsSlopeWithOneCornerRaised(tileh_old)) cost.AddCost(_price[PR_CLEAR_WATER]);
+		if (flags.Test(DoCommandFlag::Execute)) SetRailGroundType(tile, RailGroundType::Barren);
 	}
 	return  cost;
 }
@@ -3031,7 +3031,7 @@ static CommandCost TerraformTile_Track(TileIndex tile, DoCommandFlags flags, int
 	if (IsPlainRail(tile)) {
 		TrackBits rail_bits = GetTrackBits(tile);
 		/* Is there flat water on the lower halftile that must be cleared expensively? */
-		bool was_water = (GetRailGroundType(tile) == RAIL_GROUND_WATER && IsSlopeWithOneCornerRaised(tileh_old));
+		bool was_water = (GetRailGroundType(tile) == RailGroundType::HalfTileWater && IsSlopeWithOneCornerRaised(tileh_old));
 
 		/* Allow clearing the water only if there is no ship */
 		if (was_water && HasVehicleOnTile(tile, [](const Vehicle *v) {
@@ -3063,7 +3063,7 @@ static CommandCost TerraformTile_Track(TileIndex tile, DoCommandFlags flags, int
 		}
 
 		/* Make the ground dirty */
-		if (flags.Test(DoCommandFlag::Execute)) SetRailGroundType(tile, RAIL_GROUND_BARREN);
+		if (flags.Test(DoCommandFlag::Execute)) SetRailGroundType(tile, RailGroundType::Barren);
 
 		/* allow terraforming */
 		return CommandCost(EXPENSES_CONSTRUCTION, was_water ? _price[PR_CLEAR_WATER] : (Money)0);

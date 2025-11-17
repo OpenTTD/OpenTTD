@@ -58,7 +58,7 @@ WaterClass GetEffectiveWaterClass(TileIndex tile)
 		return WATER_CLASS_CANAL;
 	}
 	if (IsTileType(tile, MP_RAILWAY)) {
-		assert(GetRailGroundType(tile) == RAIL_GROUND_WATER);
+		assert(GetRailGroundType(tile) == RailGroundType::HalfTileWater);
 		return WATER_CLASS_SEA;
 	}
 	NOT_REACHED();
