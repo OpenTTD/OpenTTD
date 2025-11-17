@@ -133,7 +133,7 @@ void SetWaterClassDependingOnSurroundings(Tile t, bool include_invalid_water_cla
 
 			case MP_RAILWAY:
 				/* Shore or flooded halftile */
-				has_water |= (GetRailGroundType(neighbour) == RAIL_GROUND_WATER);
+				has_water |= (GetRailGroundType(neighbour) == RailGroundType::HalfTileWater);
 				break;
 
 			case MP_TREES:

@@ -481,37 +481,37 @@ inline bool HasOnewaySignalBlockingTrackdir(Tile tile, Trackdir td)
 RailType GetTileRailType(Tile tile);
 
 /** The ground 'under' the rail */
-enum RailGroundType : uint8_t {
-	RAIL_GROUND_BARREN       =  0, ///< Nothing (dirt)
-	RAIL_GROUND_GRASS        =  1, ///< Grassy
-	RAIL_GROUND_FENCE_NW     =  2, ///< Grass with a fence at the NW edge
-	RAIL_GROUND_FENCE_SE     =  3, ///< Grass with a fence at the SE edge
-	RAIL_GROUND_FENCE_SENW   =  4, ///< Grass with a fence at the NW and SE edges
-	RAIL_GROUND_FENCE_NE     =  5, ///< Grass with a fence at the NE edge
-	RAIL_GROUND_FENCE_SW     =  6, ///< Grass with a fence at the SW edge
-	RAIL_GROUND_FENCE_NESW   =  7, ///< Grass with a fence at the NE and SW edges
-	RAIL_GROUND_FENCE_VERT1  =  8, ///< Grass with a fence at the eastern side
-	RAIL_GROUND_FENCE_VERT2  =  9, ///< Grass with a fence at the western side
-	RAIL_GROUND_FENCE_HORIZ1 = 10, ///< Grass with a fence at the southern side
-	RAIL_GROUND_FENCE_HORIZ2 = 11, ///< Grass with a fence at the northern side
-	RAIL_GROUND_ICE_DESERT   = 12, ///< Icy or sandy
-	RAIL_GROUND_WATER        = 13, ///< Grass with a fence and shore or water on the free halftile
-	RAIL_GROUND_HALF_SNOW    = 14, ///< Snow only on higher part of slope (steep or one corner raised)
+enum class RailGroundType : uint8_t {
+	Barren = 0, ///< Nothing (dirt)
+	Grass = 1, ///< Grassy
+	FenceNW = 2, ///< Grass with a fence at the NW edge
+	FenceSE = 3, ///< Grass with a fence at the SE edge
+	FenceSENW = 4, ///< Grass with a fence at the NW and SE edges
+	FenceNE = 5, ///< Grass with a fence at the NE edge
+	FenceSW = 6, ///< Grass with a fence at the SW edge
+	FenceNESW = 7, ///< Grass with a fence at the NE and SW edges
+	FenceVert1 = 8, ///< Grass with a fence at the eastern side
+	FenceVert2 = 9, ///< Grass with a fence at the western side
+	FenceHoriz1 = 10, ///< Grass with a fence at the southern side
+	FenceHoriz2 = 11, ///< Grass with a fence at the northern side
+	SnowOrDesert = 12, ///< Icy or sandy
+	HalfTileWater = 13, ///< Grass with a fence and shore or water on the free halftile
+	HalfTileSnow = 14, ///< Snow only on higher part of slope (steep or one corner raised)
 };
 
 inline void SetRailGroundType(Tile t, RailGroundType rgt)
 {
-	SB(t.m4(), 0, 4, rgt);
+	SB(t.m4(), 0, 4, to_underlying(rgt));
 }
 
 inline RailGroundType GetRailGroundType(Tile t)
 {
-	return (RailGroundType)GB(t.m4(), 0, 4);
+	return static_cast<RailGroundType>(GB(t.m4(), 0, 4));
 }
 
 inline bool IsSnowRailGround(Tile t)
 {
-	return GetRailGroundType(t) == RAIL_GROUND_ICE_DESERT;
+	return GetRailGroundType(t) == RailGroundType::SnowOrDesert;
 }
 
 
