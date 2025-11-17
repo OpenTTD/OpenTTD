@@ -27,7 +27,9 @@ endif()
 
 # Remove previous crash files
 file(GLOB CRASH_FILES "regression/crash*")
-file(REMOVE ${CRASH_FILES})
+if(CRASH_FILES)
+    file(REMOVE ${CRASH_FILES})
+endif()
 
 # Run the regression test
 execute_process(COMMAND ${OPENTTD_EXECUTABLE}
