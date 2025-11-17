@@ -929,13 +929,11 @@ static CallBackFunction MenuClickBuildRail(int index)
 
 /* --- Road button menu --- */
 
-StringID RoadTypeDropdownWindowBase::GetSortCriteriaString() const { return STR_REPLACE_ALL_ROADTYPE; }
-
-DropDownList RoadTypeDropdownWindowBase::GetSortDropDownList() const
+void RoadTypeDropdownWindowBase::SetSortCriteria(int new_sort_criteria)
 {
-	DropDownList list;
-	list.push_back(MakeDropDownListStringItem(STR_REPLACE_ALL_ROADTYPE, INVALID_ROADTYPE));
-	return list;
+	if (new_sort_criteria < 0) return;
+	_roadtypes_sort_criteria = new_sort_criteria;
+	InitRoadTypes();
 }
 
 void RoadTypeDropdownWindowBase::SetSortOrderInverted(bool is_sort_order_inverted)
@@ -988,13 +986,11 @@ static CallBackFunction MenuClickBuildRoad(int index)
 
 /* --- Tram button menu --- */
 
-StringID TramTypeDropdownWindowBase::GetSortCriteriaString() const { return STR_REPLACE_ALL_ROADTYPE; }
-
-DropDownList TramTypeDropdownWindowBase::GetSortDropDownList() const
+void TramTypeDropdownWindowBase::SetSortCriteria(int new_sort_criteria)
 {
-	DropDownList list;
-	list.push_back(MakeDropDownListStringItem(STR_REPLACE_ALL_ROADTYPE, INVALID_ROADTYPE));
-	return list;
+	if (new_sort_criteria < 0) return;
+	_tramtypes_sort_criteria = new_sort_criteria;
+	InitRoadTypes();
 }
 
 void TramTypeDropdownWindowBase::SetSortOrderInverted(bool is_sort_order_inverted)
