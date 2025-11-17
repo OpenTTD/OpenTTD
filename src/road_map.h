@@ -19,10 +19,10 @@
 
 
 /** The different types of road tiles. */
-enum RoadTileType : uint8_t {
-	ROAD_TILE_NORMAL,   ///< Normal road
-	ROAD_TILE_CROSSING, ///< Level crossing
-	ROAD_TILE_DEPOT,    ///< Depot (one entrance)
+enum class RoadTileType : uint8_t {
+	Normal = 0, ///< Normal road
+	Crossing = 1, ///< Level crossing
+	Depot = 2, ///< Depot (one entrance)
 };
 
 bool MayHaveRoad(Tile t);
@@ -36,7 +36,7 @@ bool MayHaveRoad(Tile t);
 debug_inline static RoadTileType GetRoadTileType(Tile t)
 {
 	assert(IsTileType(t, MP_ROAD));
-	return (RoadTileType)GB(t.m5(), 6, 2);
+	return static_cast<RoadTileType>(GB(t.m5(), 6, 2));
 }
 
 /**
@@ -47,7 +47,7 @@ debug_inline static RoadTileType GetRoadTileType(Tile t)
  */
 debug_inline static bool IsNormalRoad(Tile t)
 {
-	return GetRoadTileType(t) == ROAD_TILE_NORMAL;
+	return GetRoadTileType(t) == RoadTileType::Normal;
 }
 
 /**
@@ -68,7 +68,7 @@ debug_inline static bool IsNormalRoadTile(Tile t)
  */
 inline bool IsLevelCrossing(Tile t)
 {
-	return GetRoadTileType(t) == ROAD_TILE_CROSSING;
+	return GetRoadTileType(t) == RoadTileType::Crossing;
 }
 
 /**
@@ -89,7 +89,7 @@ inline bool IsLevelCrossingTile(Tile t)
  */
 debug_inline static bool IsRoadDepot(Tile t)
 {
-	return GetRoadTileType(t) == ROAD_TILE_DEPOT;
+	return GetRoadTileType(t) == RoadTileType::Depot;
 }
 
 /**
@@ -618,7 +618,7 @@ inline void MakeRoadNormal(Tile t, RoadBits bits, RoadType road_rt, RoadType tra
 	SetTileOwner(t, road);
 	t.m2() = town.base();
 	t.m3() = (tram_rt != INVALID_ROADTYPE ? bits : 0);
-	t.m5() = (road_rt != INVALID_ROADTYPE ? bits : 0) | ROAD_TILE_NORMAL << 6;
+	t.m5() = (road_rt != INVALID_ROADTYPE ? bits : 0) | to_underlying(RoadTileType::Normal) << 6;
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
 	t.m8() = 0;
@@ -645,7 +645,7 @@ inline void MakeRoadCrossing(Tile t, Owner road, Owner tram, Owner rail, Axis ro
 	t.m2() = town.base();
 	t.m3() = 0;
 	t.m4() = INVALID_ROADTYPE;
-	t.m5() = ROAD_TILE_CROSSING << 6 | roaddir;
+	t.m5() = to_underlying(RoadTileType::Crossing) << 6 | roaddir;
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = road.base();
 	t.m8() = INVALID_ROADTYPE << 6 | rat;
@@ -679,7 +679,7 @@ inline void MakeRoadDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirectio
 	tile.m2() = depot_id.base();
 	tile.m3() = 0;
 	tile.m4() = INVALID_ROADTYPE;
-	tile.m5() = ROAD_TILE_DEPOT << 6 | dir;
+	tile.m5() = to_underlying(RoadTileType::Depot) << 6 | dir;
 	SB(tile.m6(), 2, 6, 0);
 	tile.m7() = owner.base();
 	tile.m8() = INVALID_ROADTYPE << 6;
