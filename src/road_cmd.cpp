@@ -721,7 +721,7 @@ CommandCost CmdBuildRoad(DoCommandFlags flags, TileIndex tile, RoadBits pieces, 
 				if (ret.Failed()) return ret;
 			}
 
-			if (GetRailTileType(tile) != RAIL_TILE_NORMAL) goto do_clear;
+			if (GetRailTileType(tile) != RailTileType::Normal) goto do_clear;
 
 			if (RoadNoLevelCrossing(rt)) {
 				return CommandCost(STR_ERROR_CROSSING_DISALLOWED_ROAD);

@@ -67,7 +67,7 @@ static void FixTTDMapArray()
 
 			case MP_RAILWAY:
 				/* We save presignals different from TTDPatch, convert them */
-				if (GB(tile.m5(), 6, 2) == 1) { // RAIL_TILE_SIGNALS
+				if (GB(tile.m5(), 6, 2) == 1) { // RailTileType::Signals
 					/* This byte is always zero in TTD for this type of tile */
 					if (tile.m4()) { // Convert the presignals to our own format
 						tile.m4() = (tile.m4() >> 1) & 7;
@@ -226,16 +226,16 @@ static bool FixTTOMapArray()
 
 			case MP_RAILWAY:
 				switch (GB(tile.m5(), 6, 2)) {
-					case 0: // RAIL_TILE_NORMAL
+					case 0: // RailTileType::Normal
 						break;
-					case 1: // RAIL_TILE_SIGNALS
+					case 1: // RailTileType::Signals
 						tile.m4() = (~tile.m5() & 1) << 2;        // signal variant (present only in OTTD)
 						SB(tile.m2(), 6, 2, GB(tile.m5(), 3, 2)); // signal status
 						tile.m3() |= 0xC0;                       // both signals are present
 						tile.m5() = HasBit(tile.m5(), 5) ? 2 : 1; // track direction (only X or Y)
-						tile.m5() |= 0x40;                       // RAIL_TILE_SIGNALS
+						tile.m5() |= 0x40;                       // RailTileType::Signals
 						break;
-					case 3: // RAIL_TILE_DEPOT
+					case 3: // RailTileType::Depot
 						tile.m2() = 0;
 						break;
 					default:

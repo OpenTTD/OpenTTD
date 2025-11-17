@@ -20,10 +20,10 @@
 
 
 /** Different types of Rail-related tiles */
-enum RailTileType : uint8_t {
-	RAIL_TILE_NORMAL   = 0, ///< Normal rail tile without signals
-	RAIL_TILE_SIGNALS  = 1, ///< Normal rail tile with signals
-	RAIL_TILE_DEPOT    = 3, ///< Depot (one entrance)
+enum class RailTileType : uint8_t {
+	Normal = 0, ///< Normal rail tile without signals
+	Signals = 1, ///< Normal rail tile with signals
+	Depot = 3, ///< Depot (one entrance)
 };
 
 /**
@@ -36,12 +36,12 @@ enum RailTileType : uint8_t {
 debug_inline static RailTileType GetRailTileType(Tile t)
 {
 	assert(IsTileType(t, MP_RAILWAY));
-	return (RailTileType)GB(t.m5(), 6, 2);
+	return static_cast<RailTileType>(GB(t.m5(), 6, 2));
 }
 
 /**
  * Returns whether this is plain rails, with or without signals. Iow, if this
- * tiles RailTileType is RAIL_TILE_NORMAL or RAIL_TILE_SIGNALS.
+ * tiles RailTileType is RailTileType::Normal or RailTileType::Signals.
  * @param t the tile to get the information from
  * @pre IsTileType(t, MP_RAILWAY)
  * @return true if and only if the tile is normal rail (with or without signals)
@@ -49,7 +49,7 @@ debug_inline static RailTileType GetRailTileType(Tile t)
 debug_inline static bool IsPlainRail(Tile t)
 {
 	RailTileType rtt = GetRailTileType(t);
-	return rtt == RAIL_TILE_NORMAL || rtt == RAIL_TILE_SIGNALS;
+	return rtt == RailTileType::Normal || rtt == RailTileType::Signals;
 }
 
 /**
@@ -71,7 +71,7 @@ debug_inline static bool IsPlainRailTile(Tile t)
  */
 inline bool HasSignals(Tile t)
 {
-	return GetRailTileType(t) == RAIL_TILE_SIGNALS;
+	return GetRailTileType(t) == RailTileType::Signals;
 }
 
 /**
@@ -83,7 +83,7 @@ inline bool HasSignals(Tile t)
 inline void SetHasSignals(Tile tile, bool signals)
 {
 	assert(IsPlainRailTile(tile));
-	AssignBit(tile.m5(), 6, signals);
+	SB(tile.m5(), 6, 2, to_underlying(signals ? RailTileType::Signals : RailTileType::Normal));
 }
 
 /**
@@ -94,7 +94,7 @@ inline void SetHasSignals(Tile tile, bool signals)
  */
 debug_inline static bool IsRailDepot(Tile t)
 {
-	return GetRailTileType(t) == RAIL_TILE_DEPOT;
+	return GetRailTileType(t) == RailTileType::Depot;
 }
 
 /**
@@ -291,14 +291,14 @@ inline bool IsPbsSignal(SignalType s)
 
 inline SignalType GetSignalType(Tile t, Track track)
 {
-	assert(GetRailTileType(t) == RAIL_TILE_SIGNALS);
+	assert(GetRailTileType(t) == RailTileType::Signals);
 	uint8_t pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 4 : 0;
 	return (SignalType)GB(t.m2(), pos, 3);
 }
 
 inline void SetSignalType(Tile t, Track track, SignalType s)
 {
-	assert(GetRailTileType(t) == RAIL_TILE_SIGNALS);
+	assert(GetRailTileType(t) == RailTileType::Signals);
 	uint8_t pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 4 : 0;
 	SB(t.m2(), pos, 3, s);
 	if (track == INVALID_TRACK) SB(t.m2(), 4, 3, s);
@@ -412,7 +412,7 @@ inline bool IsSignalPresent(Tile t, uint8_t signalbit)
 inline bool HasSignalOnTrack(Tile tile, Track track)
 {
 	assert(IsValidTrack(track));
-	return GetRailTileType(tile) == RAIL_TILE_SIGNALS && (GetPresentSignals(tile) & SignalOnTrack(track)) != 0;
+	return GetRailTileType(tile) == RailTileType::Signals && (GetPresentSignals(tile) & SignalOnTrack(track)) != 0;
 }
 
 /**
@@ -425,7 +425,7 @@ inline bool HasSignalOnTrack(Tile tile, Track track)
 inline bool HasSignalOnTrackdir(Tile tile, Trackdir trackdir)
 {
 	assert (IsValidTrackdir(trackdir));
-	return GetRailTileType(tile) == RAIL_TILE_SIGNALS && GetPresentSignals(tile) & SignalAlongTrackdir(trackdir);
+	return GetRailTileType(tile) == RailTileType::Signals && GetPresentSignals(tile) & SignalAlongTrackdir(trackdir);
 }
 
 /**
@@ -523,7 +523,7 @@ inline void MakeRailNormal(Tile t, Owner o, TrackBits b, RailType r)
 	t.m2() = 0;
 	t.m3() = 0;
 	t.m4() = 0;
-	t.m5() = RAIL_TILE_NORMAL << 6 | b;
+	t.m5() = to_underlying(RailTileType::Normal) << 6 | b;
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
 	t.m8() = r;
@@ -556,7 +556,7 @@ inline void MakeRailDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirectio
 	tile.m2() = depot_id.base();
 	tile.m3() = 0;
 	tile.m4() = 0;
-	tile.m5() = RAIL_TILE_DEPOT << 6 | dir;
+	tile.m5() = to_underlying(RailTileType::Depot) << 6 | dir;
 	SB(tile.m6(), 2, 6, 0);
 	tile.m7() = 0;
 	tile.m8() = rail_type;
