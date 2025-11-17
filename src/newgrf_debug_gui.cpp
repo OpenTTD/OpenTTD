@@ -594,7 +594,7 @@ struct NewGRFInspectWindow : Window {
 	{
 		if (!str.has_value()) return;
 
-		auto val = ParseInteger<int32_t>(*str, 10, true);
+		auto val = ParseInteger<uint32_t>(*str, 16, true);
 		if (!val.has_value()) return;
 		NewGRFInspectWindow::var60params[GetFeatureNum(this->window_number)][this->current_edit_param - 0x60] = *val;
 		this->SetDirty();
