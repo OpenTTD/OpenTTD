@@ -45,9 +45,10 @@ bool IsTunnelInWayDir(TileIndex tile, int z, DiagDirection dir);
  * @param t the entrance of the tunnel
  * @param o the owner of the entrance
  * @param d the direction facing out of the tunnel
- * @param r the road type used in the tunnel
+ * @param map_roadtype the map road type used in the tunnel
+ * @param map_tramtype the map tram type used in the tunnel
  */
-inline void MakeRoadTunnel(Tile t, Owner o, DiagDirection d, RoadType road_rt, RoadType tram_rt)
+inline void MakeRoadTunnel(Tile t, Owner o, DiagDirection d, MapRoadType map_roadtype, MapTramType map_tramtype)
 {
 	SetTileType(t, MP_TUNNELBRIDGE);
 	SetTileOwner(t, o);
@@ -60,7 +61,7 @@ inline void MakeRoadTunnel(Tile t, Owner o, DiagDirection d, RoadType road_rt, R
 	t.m8() = 0;
 	SetRoadOwner(t, RTT_ROAD, o);
 	if (o != OWNER_TOWN) SetRoadOwner(t, RTT_TRAM, o);
-	SetRoadTypes(t, road_rt, tram_rt);
+	SetMapRoadTypes(t, map_roadtype, map_tramtype);
 }
 
 /**
@@ -68,9 +69,9 @@ inline void MakeRoadTunnel(Tile t, Owner o, DiagDirection d, RoadType road_rt, R
  * @param t the entrance of the tunnel
  * @param o the owner of the entrance
  * @param d the direction facing out of the tunnel
- * @param r the rail type used in the tunnel
+ * @param map_railtype the map rail type used in the tunnel
  */
-inline void MakeRailTunnel(Tile t, Owner o, DiagDirection d, RailType r)
+inline void MakeRailTunnel(Tile t, Owner o, DiagDirection d, MapRailType map_railtype)
 {
 	SetTileType(t, MP_TUNNELBRIDGE);
 	SetTileOwner(t, o);
@@ -81,7 +82,7 @@ inline void MakeRailTunnel(Tile t, Owner o, DiagDirection d, RailType r)
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
 	t.m8() = 0;
-	SetRailType(t, r);
+	SetMapRailType(t, map_railtype);
 }
 
 #endif /* TUNNEL_MAP_H */

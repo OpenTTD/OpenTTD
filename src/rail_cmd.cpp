@@ -43,7 +43,7 @@
 /** Helper type for lists/vectors of trains */
 typedef std::vector<Train *> TrainList;
 
-RailTypeInfo _railtypes[RAILTYPE_END];
+std::vector<RailTypeInfo> _railtypes;
 std::vector<RailType> _sorted_railtypes; ///< Sorted list of rail types.
 RailTypes _railtypes_hidden_mask;
 
@@ -64,34 +64,32 @@ enum SignalOffsets {
  */
 void ResetRailTypes()
 {
-	static_assert(std::size(_original_railtypes) <= std::size(_railtypes));
-
-	auto insert = std::copy(std::begin(_original_railtypes), std::end(_original_railtypes), std::begin(_railtypes));
-	std::fill(insert, std::end(_railtypes), RailTypeInfo{});
+	_railtypes.clear();
+	std::copy(std::begin(_original_railtypes), std::end(_original_railtypes), std::back_inserter(_railtypes));
 
 	_railtypes_hidden_mask = {};
 }
 
-void ResolveRailTypeGUISprites(RailTypeInfo *rti)
+static void ResolveRailTypeGUISprites(RailTypeInfo &rti)
 {
-	SpriteID cursors_base = GetCustomRailSprite(rti, INVALID_TILE, RTSG_CURSORS);
+	SpriteID cursors_base = GetCustomRailSprite(&rti, INVALID_TILE, RTSG_CURSORS);
 	if (cursors_base != 0) {
-		rti->gui_sprites.build_ns_rail = cursors_base +  0;
-		rti->gui_sprites.build_x_rail  = cursors_base +  1;
-		rti->gui_sprites.build_ew_rail = cursors_base +  2;
-		rti->gui_sprites.build_y_rail  = cursors_base +  3;
-		rti->gui_sprites.auto_rail     = cursors_base +  4;
-		rti->gui_sprites.build_depot   = cursors_base +  5;
-		rti->gui_sprites.build_tunnel  = cursors_base +  6;
-		rti->gui_sprites.convert_rail  = cursors_base +  7;
-		rti->cursor.rail_ns   = cursors_base +  8;
-		rti->cursor.rail_swne = cursors_base +  9;
-		rti->cursor.rail_ew   = cursors_base + 10;
-		rti->cursor.rail_nwse = cursors_base + 11;
-		rti->cursor.autorail  = cursors_base + 12;
-		rti->cursor.depot     = cursors_base + 13;
-		rti->cursor.tunnel    = cursors_base + 14;
-		rti->cursor.convert   = cursors_base + 15;
+		rti.gui_sprites.build_ns_rail = cursors_base +  0;
+		rti.gui_sprites.build_x_rail  = cursors_base +  1;
+		rti.gui_sprites.build_ew_rail = cursors_base +  2;
+		rti.gui_sprites.build_y_rail  = cursors_base +  3;
+		rti.gui_sprites.auto_rail     = cursors_base +  4;
+		rti.gui_sprites.build_depot   = cursors_base +  5;
+		rti.gui_sprites.build_tunnel  = cursors_base +  6;
+		rti.gui_sprites.convert_rail  = cursors_base +  7;
+		rti.cursor.rail_ns   = cursors_base +  8;
+		rti.cursor.rail_swne = cursors_base +  9;
+		rti.cursor.rail_ew   = cursors_base + 10;
+		rti.cursor.rail_nwse = cursors_base + 11;
+		rti.cursor.autorail  = cursors_base + 12;
+		rti.cursor.depot     = cursors_base + 13;
+		rti.cursor.tunnel    = cursors_base + 14;
+		rti.cursor.convert   = cursors_base + 15;
 	}
 
 	/* Array of default GUI signal sprite numbers. */
@@ -105,10 +103,10 @@ void ResolveRailTypeGUISprites(RailTypeInfo *rti)
 
 	for (SignalType type = SIGTYPE_BLOCK; type < SIGTYPE_END; type = (SignalType)(type + 1)) {
 		for (SignalVariant var = SIG_ELECTRIC; var <= SIG_SEMAPHORE; var = (SignalVariant)(var + 1)) {
-			SpriteID red   = GetCustomSignalSprite(rti, INVALID_TILE, type, var, SIGNAL_STATE_RED, true);
-			SpriteID green = GetCustomSignalSprite(rti, INVALID_TILE, type, var, SIGNAL_STATE_GREEN, true);
-			rti->gui_sprites.signals[type][var][0] = (red != 0)   ? red + SIGNAL_TO_SOUTH   : _signal_lookup[var][type];
-			rti->gui_sprites.signals[type][var][1] = (green != 0) ? green + SIGNAL_TO_SOUTH : _signal_lookup[var][type] + 1;
+			SpriteID red   = GetCustomSignalSprite(&rti, INVALID_TILE, type, var, SIGNAL_STATE_RED, true);
+			SpriteID green = GetCustomSignalSprite(&rti, INVALID_TILE, type, var, SIGNAL_STATE_GREEN, true);
+			rti.gui_sprites.signals[type][var][0] = (red != 0)   ? red + SIGNAL_TO_SOUTH   : _signal_lookup[var][type];
+			rti.gui_sprites.signals[type][var][1] = (green != 0) ? green + SIGNAL_TO_SOUTH : _signal_lookup[var][type] + 1;
 		}
 	}
 }
@@ -133,7 +131,7 @@ void InitRailTypes()
 	for (RailTypeInfo &rti : _railtypes) {
 		RailType rt = rti.Index();
 
-		ResolveRailTypeGUISprites(&rti);
+		ResolveRailTypeGUISprites(rti);
 		_railtypes_hidden_mask.Set(rt, rti.flags.Test(RailTypeFlag::Hidden));
 
 		if (rti.label == 0) continue;
@@ -148,13 +146,12 @@ void InitRailTypes()
 RailType AllocateRailType(RailTypeLabel label)
 {
 	auto it = std::ranges::find(_railtypes, 0, &RailTypeInfo::label);
-	if (it == std::end(_railtypes)) return INVALID_RAILTYPE;
+	if (it == std::end(_railtypes)) it = _railtypes.emplace(it, _original_railtypes[RAILTYPE_RAIL]);
 
 	RailTypeInfo &rti = *it;
 	RailType rt = rti.Index();
 
-	/* Set up new rail type based on default rail. */
-	rti = _original_railtypes[RAILTYPE_RAIL];
+	/* Set up new rail type */
 	rti.label = label;
 	rti.alternate_labels.clear();
 
@@ -508,11 +505,11 @@ CommandCost CmdBuildSingleRail(DoCommandFlags flags, TileIndex tile, RailType ra
 
 				if (RailNoLevelCrossings(railtype)) return CommandCost(STR_ERROR_CROSSING_DISALLOWED_RAIL);
 
-				RoadType roadtype_road = GetRoadTypeRoad(tile);
-				RoadType roadtype_tram = GetRoadTypeTram(tile);
+				MapRoadType map_roadtype = GetMapRoadTypeRoad(tile);
+				MapTramType map_tramtype = GetMapRoadTypeTram(tile);
 
-				if (roadtype_road != INVALID_ROADTYPE && RoadNoLevelCrossing(roadtype_road)) return CommandCost(STR_ERROR_CROSSING_DISALLOWED_ROAD);
-				if (roadtype_tram != INVALID_ROADTYPE && RoadNoLevelCrossing(roadtype_tram)) return CommandCost(STR_ERROR_CROSSING_DISALLOWED_ROAD);
+				if (map_roadtype != RoadTypeMapping::INVALID_MAP_TYPE && RoadNoLevelCrossing(_roadtype_mapping.GetType(map_roadtype))) return CommandCost(STR_ERROR_CROSSING_DISALLOWED_ROAD);
+				if (map_tramtype != TramTypeMapping::INVALID_MAP_TYPE && RoadNoLevelCrossing(_tramtype_mapping.GetType(map_tramtype))) return CommandCost(STR_ERROR_CROSSING_DISALLOWED_ROAD);
 
 				RoadBits road = GetRoadBits(tile, RTT_ROAD);
 				RoadBits tram = GetRoadBits(tile, RTT_TRAM);
@@ -529,27 +526,40 @@ CommandCost CmdBuildSingleRail(DoCommandFlags flags, TileIndex tile, RailType ra
 
 					uint num_new_road_pieces = (road != ROAD_NONE) ? 2 - CountBits(road) : 0;
 					if (num_new_road_pieces > 0) {
-						cost.AddCost(num_new_road_pieces * RoadBuildCost(roadtype_road));
+						cost.AddCost(num_new_road_pieces * RoadBuildCost(_roadtype_mapping.GetType(map_roadtype)));
 					}
 
 					uint num_new_tram_pieces = (tram != ROAD_NONE) ? 2 - CountBits(tram) : 0;
 					if (num_new_tram_pieces > 0) {
-						cost.AddCost(num_new_tram_pieces * RoadBuildCost(roadtype_tram));
+						cost.AddCost(num_new_tram_pieces * RoadBuildCost(_tramtype_mapping.GetType(map_tramtype)));
 					}
 
+					MapRailType map_railtype = _railtype_mapping.AllocateMapType(railtype, flags.Test(DoCommandFlag::Execute));
+					if (map_railtype == RailTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_RAILTYPES};
+
 					if (flags.Test(DoCommandFlag::Execute)) {
-						MakeRoadCrossing(tile, road_owner, tram_owner, _current_company, (track == TRACK_X ? AXIS_Y : AXIS_X), railtype, roadtype_road, roadtype_tram, GetTownIndex(tile));
+						MakeRoadCrossing(tile, road_owner, tram_owner, _current_company, (track == TRACK_X ? AXIS_Y : AXIS_X), map_railtype, map_roadtype, map_tramtype, GetTownIndex(tile));
 						UpdateLevelCrossing(tile, false);
 						MarkDirtyAdjacentLevelCrossingTiles(tile, GetCrossingRoadAxis(tile));
 						Company::Get(_current_company)->infrastructure.rail[railtype] += LEVELCROSSING_TRACKBIT_FACTOR;
 						DirtyCompanyInfrastructureWindows(_current_company);
-						if (num_new_road_pieces > 0 && Company::IsValidID(road_owner)) {
-							Company::Get(road_owner)->infrastructure.road[roadtype_road] += num_new_road_pieces;
-							DirtyCompanyInfrastructureWindows(road_owner);
+						if (num_new_road_pieces > 0) {
+							RoadType roadtype = _roadtype_mapping.GetType(map_roadtype);
+							if (Company::IsValidID(road_owner)) {
+								Company::Get(road_owner)->infrastructure.road[roadtype] += num_new_road_pieces;
+								DirtyCompanyInfrastructureWindows(road_owner);
+							} else {
+								RoadTypeInfo::infrastructure_counts[roadtype] += num_new_road_pieces;
+							}
 						}
-						if (num_new_tram_pieces > 0 && Company::IsValidID(tram_owner)) {
-							Company::Get(tram_owner)->infrastructure.road[roadtype_tram] += num_new_tram_pieces;
-							DirtyCompanyInfrastructureWindows(tram_owner);
+						if (num_new_tram_pieces > 0) {
+							RoadType tramtype = _tramtype_mapping.GetType(map_tramtype);
+							if (Company::IsValidID(tram_owner)) {
+								Company::Get(tram_owner)->infrastructure.road[tramtype] += num_new_tram_pieces;
+								DirtyCompanyInfrastructureWindows(tram_owner);
+							} else {
+								RoadTypeInfo::infrastructure_counts[tramtype] += num_new_tram_pieces;
+							}
 						}
 					}
 					break;
@@ -579,8 +589,11 @@ CommandCost CmdBuildSingleRail(DoCommandFlags flags, TileIndex tile, RailType ra
 				cost.AddCost(_price[PR_CLEAR_ROUGH]);
 			}
 
+			MapRailType map_railtype = _railtype_mapping.AllocateMapType(railtype, flags.Test(DoCommandFlag::Execute));
+			if (map_railtype == RailTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_RAILTYPES};
+
 			if (flags.Test(DoCommandFlag::Execute)) {
-				MakeRailNormal(tile, _current_company, trackbit, railtype);
+				MakeRailNormal(tile, _current_company, trackbit, map_railtype);
 				if (water_ground) {
 					SetRailGroundType(tile, RAIL_GROUND_WATER);
 					if (IsPossibleDockingTile(tile)) CheckForDockingTile(tile);
@@ -652,7 +665,7 @@ CommandCost CmdRemoveSingleRail(DoCommandFlags flags, TileIndex tile, Track trac
 				owner = GetTileOwner(tile);
 				Company::Get(owner)->infrastructure.rail[GetRailType(tile)] -= LEVELCROSSING_TRACKBIT_FACTOR;
 				DirtyCompanyInfrastructureWindows(owner);
-				MakeRoadNormal(tile, GetCrossingRoadBits(tile), GetRoadTypeRoad(tile), GetRoadTypeTram(tile), GetTownIndex(tile), GetRoadOwner(tile, RTT_ROAD), GetRoadOwner(tile, RTT_TRAM));
+				MakeRoadNormal(tile, GetCrossingRoadBits(tile), GetMapRoadTypeRoad(tile), GetMapRoadTypeTram(tile), GetTownIndex(tile), GetRoadOwner(tile, RTT_ROAD), GetRoadOwner(tile, RTT_TRAM));
 				DeleteNewGRFInspectWindow(GSF_RAILTYPES, tile.base());
 			}
 			break;
@@ -1004,13 +1017,16 @@ CommandCost CmdBuildTrainDepot(DoCommandFlags flags, TileIndex tile, RailType ra
 		if (!Depot::CanAllocateItem()) return CMD_ERROR;
 	}
 
+	MapRailType map_railtype = _railtype_mapping.AllocateMapType(railtype, flags.Test(DoCommandFlag::Execute));
+	if (map_railtype == RailTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_RAILTYPES};
+
 	if (flags.Test(DoCommandFlag::Execute)) {
 		if (rotate_existing_depot) {
 			SetRailDepotExitDirection(tile, dir);
 		} else {
 			Depot *d = new Depot(tile);
 
-			MakeRailDepot(tile, _current_company, d->index, dir, railtype);
+			MakeRailDepot(tile, _current_company, d->index, dir, map_railtype);
 			MakeDefaultName(d);
 
 			Company::Get(_current_company)->infrastructure.rail[railtype]++;
@@ -1549,6 +1565,9 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 	CommandCost error = CommandCost(STR_ERROR_NO_SUITABLE_RAILROAD_TRACK); // by default, there is no track to convert.
 	bool found_convertible_track = false; // whether we actually did convert some track (see bug #7633)
 
+	MapRailType map_railtype = _railtype_mapping.AllocateMapType(totype, flags.Test(DoCommandFlag::Execute));
+	if (map_railtype == RailTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_RAILTYPES};
+
 	std::unique_ptr<TileIterator> iter = TileIterator::Create(area_start, area_end, diagonal);
 	for (; (tile = *iter) != INVALID_TILE; ++(*iter)) {
 		TileType tt = GetTileType(tile);
@@ -1624,7 +1643,7 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 					DirtyCompanyInfrastructureWindows(c->index);
 				}
 
-				SetRailType(tile, totype);
+				SetMapRailType(tile, map_railtype);
 				MarkTileDirtyByTile(tile);
 				/* update power of train on this tile */
 				for (Vehicle *v : VehiclesOnTile(tile)) {
@@ -1703,8 +1722,8 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 					c->infrastructure.rail[totype] += num_pieces;
 					DirtyCompanyInfrastructureWindows(c->index);
 
-					SetRailType(tile, totype);
-					SetRailType(endtile, totype);
+					SetMapRailType(tile, map_railtype);
+					SetMapRailType(endtile, map_railtype);
 
 					for (Vehicle *v : VehiclesOnTile(tile)) {
 						if (v->type == VEH_TRAIN) include(affected_trains, Train::From(v)->First());

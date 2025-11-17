@@ -1290,6 +1290,19 @@ int CompanyServiceInterval(const Company *c, VehicleType type)
 }
 
 /**
+ * Get total sum of all owned track bits.
+ * @return Combined total rail track bits.
+ */
+uint32_t CompanyInfrastructure::GetRailTotal() const
+{
+	uint32_t total = 0;
+	for (const auto &[_, count] : this->rail) {
+		total += count;
+	}
+	return total;
+}
+
+/**
  * Get total sum of all owned road bits.
  * @param rtt RoadTramType to get total for.
  * @return Combined total road road bits.
@@ -1297,8 +1310,9 @@ int CompanyServiceInterval(const Company *c, VehicleType type)
 uint32_t CompanyInfrastructure::GetRoadTramTotal(RoadTramType rtt) const
 {
 	uint32_t total = 0;
-	for (RoadType rt : GetMaskForRoadTramType(rtt)) {
-		total += this->road[rt];
+	auto mask = GetMaskForRoadTramType(rtt);
+	for (const auto &[roadtype, count] : this->road) {
+		if (mask.Test(roadtype)) total += count;
 	}
 	return total;
 }

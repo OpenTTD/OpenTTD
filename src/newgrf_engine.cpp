@@ -915,7 +915,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 			Train *t = Train::From(v);
 			switch (variable - 0x80) {
 				case 0x62: return t->track;
-				case 0x66: return t->railtypes.GetNthSetBit(0).value_or(RailType::INVALID_RAILTYPE);
+				case 0x66: return t->railtypes.empty() ? RailType::INVALID_RAILTYPE : *t->railtypes.begin();
 				case 0x73: return 0x80 + VEHICLE_LENGTH - t->gcache.cached_veh_length;
 				case 0x74: return t->gcache.cached_power;
 				case 0x75: return GB(t->gcache.cached_power,  8, 24);

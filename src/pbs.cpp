@@ -188,7 +188,7 @@ void UnreserveRailTrack(TileIndex tile, Track t)
 
 
 /** Follow a reservation starting from a specific tile to the end. */
-static PBSTileInfo FollowReservation(Owner o, RailTypes rts, TileIndex tile, Trackdir trackdir, bool ignore_oneway = false)
+static PBSTileInfo FollowReservation(Owner o, const RailTypes &rts, TileIndex tile, Trackdir trackdir, bool ignore_oneway = false)
 {
 	TileIndex start_tile = tile;
 	Trackdir  start_trackdir = trackdir;

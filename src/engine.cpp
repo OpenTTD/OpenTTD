@@ -1108,11 +1108,17 @@ static void NewVehicleAvailable(Engine *e)
 		/* maybe make another rail type available */
 		assert(e->VehInfo<RailVehicleInfo>().railtypes != RailTypes{});
 		RailTypes introduced = GetAllIntroducesRailTypes(e->VehInfo<RailVehicleInfo>().railtypes);
-		for (Company *c : Company::Iterate()) c->avail_railtypes = AddDateIntroducedRailTypes(c->avail_railtypes | introduced, TimerGameCalendar::date);
+		for (Company *c : Company::Iterate()) {
+			c->avail_railtypes.Set(introduced);
+			c->avail_railtypes = AddDateIntroducedRailTypes(c->avail_railtypes, TimerGameCalendar::date);
+		}
 	} else if (e->type == VEH_ROAD) {
 		/* maybe make another road type available */
-		assert(e->VehInfo<RoadVehicleInfo>().roadtype < ROADTYPE_END);
-		for (Company *c : Company::Iterate()) c->avail_roadtypes = AddDateIntroducedRoadTypes(c->avail_roadtypes | GetRoadTypeInfo(e->VehInfo<RoadVehicleInfo>().roadtype)->introduces_roadtypes, TimerGameCalendar::date);
+		assert(e->VehInfo<RoadVehicleInfo>().roadtype < GetNumRoadTypes());
+		for (Company *c : Company::Iterate()) {
+			c->avail_roadtypes.Set(GetRoadTypeInfo(e->VehInfo<RoadVehicleInfo>().roadtype)->introduces_roadtypes);
+			c->avail_roadtypes = AddDateIntroducedRoadTypes(c->avail_roadtypes, TimerGameCalendar::date);
+		}
 	}
 
 	/* Only broadcast event if AIs are able to build this vehicle type. */

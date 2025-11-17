@@ -541,6 +541,7 @@ add_files(
     transparency.h
     transparency_gui.cpp
     transparency_gui.h
+    transport_mapping.hpp
     transport_type.h
     tree_cmd.cpp
     tree_cmd.h

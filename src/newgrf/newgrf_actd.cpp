@@ -424,16 +424,16 @@ static void ParamSet(ByteReader &buf)
 			break;
 
 		case 0x8F: { // Rail track type cost factors
-			extern RailTypeInfo _railtypes[RAILTYPE_END];
-			_railtypes[RAILTYPE_RAIL].cost_multiplier = GB(res, 0, 8);
+			auto railtypes = GetRailTypeInfo();
+			railtypes[RAILTYPE_RAIL].cost_multiplier = GB(res, 0, 8);
 			if (_settings_game.vehicle.disable_elrails) {
-				_railtypes[RAILTYPE_ELECTRIC].cost_multiplier = GB(res, 0, 8);
-				_railtypes[RAILTYPE_MONO].cost_multiplier = GB(res, 8, 8);
+				railtypes[RAILTYPE_ELECTRIC].cost_multiplier = GB(res, 0, 8);
+				railtypes[RAILTYPE_MONO].cost_multiplier = GB(res, 8, 8);
 			} else {
-				_railtypes[RAILTYPE_ELECTRIC].cost_multiplier = GB(res, 8, 8);
-				_railtypes[RAILTYPE_MONO].cost_multiplier = GB(res, 16, 8);
+				railtypes[RAILTYPE_ELECTRIC].cost_multiplier = GB(res, 8, 8);
+				railtypes[RAILTYPE_MONO].cost_multiplier = GB(res, 16, 8);
 			}
-			_railtypes[RAILTYPE_MAGLEV].cost_multiplier = GB(res, 16, 8);
+			railtypes[RAILTYPE_MAGLEV].cost_multiplier = GB(res, 16, 8);
 			break;
 		}
 

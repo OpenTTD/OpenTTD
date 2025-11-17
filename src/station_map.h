@@ -738,12 +738,12 @@ inline void MakeStation(Tile t, Owner o, StationID sid, StationType st, uint8_t 
  * @param sid the station to which this tile belongs
  * @param a the axis of this tile
  * @param section the StationGfx to be used for this tile
- * @param rt the railtype of this tile
+ * @param map_railtype the map rail type of this tile
  */
-inline void MakeRailStation(Tile t, Owner o, StationID sid, Axis a, uint8_t section, RailType rt)
+inline void MakeRailStation(Tile t, Owner o, StationID sid, Axis a, uint8_t section, MapRailType map_railtype)
 {
 	MakeStation(t, o, sid, StationType::Rail, section + a);
-	SetRailType(t, rt);
+	SetMapRailType(t, map_railtype);
 	SetRailStationReservation(t, false);
 }
 
@@ -754,12 +754,12 @@ inline void MakeRailStation(Tile t, Owner o, StationID sid, Axis a, uint8_t sect
  * @param sid the waypoint to which this tile belongs
  * @param a the axis of this tile
  * @param section the StationGfx to be used for this tile
- * @param rt the railtype of this tile
+ * @param map_railtype the map rail type of this tile
  */
-inline void MakeRailWaypoint(Tile t, Owner o, StationID sid, Axis a, uint8_t section, RailType rt)
+inline void MakeRailWaypoint(Tile t, Owner o, StationID sid, Axis a, uint8_t section, MapRailType map_railtype)
 {
 	MakeStation(t, o, sid, StationType::RailWaypoint, section + a);
-	SetRailType(t, rt);
+	SetMapRailType(t, map_railtype);
 	SetRailStationReservation(t, false);
 }
 
@@ -769,14 +769,14 @@ inline void MakeRailWaypoint(Tile t, Owner o, StationID sid, Axis a, uint8_t sec
  * @param o the owner of the roadstop
  * @param sid the station to which this tile belongs
  * @param rst the type of roadstop to make this tile
- * @param road_rt the road roadtype on this tile
- * @param tram_rt the tram roadtype on this tile
+ * @param map_roadtype the map road type on this tile
+ * @param map_tramtype the map tram type on this tile
  * @param d the direction of the roadstop
  */
-inline void MakeRoadStop(Tile t, Owner o, StationID sid, RoadStopType rst, RoadType road_rt, RoadType tram_rt, DiagDirection d)
+inline void MakeRoadStop(Tile t, Owner o, StationID sid, RoadStopType rst, MapRoadType map_roadtype, MapTramType map_tramtype, DiagDirection d)
 {
 	MakeStation(t, o, sid, (rst == RoadStopType::Bus ? StationType::Bus : StationType::Truck), d);
-	SetRoadTypes(t, road_rt, tram_rt);
+	SetMapRoadTypes(t, map_roadtype, map_tramtype);
 	SetRoadOwner(t, RTT_ROAD, o);
 	SetRoadOwner(t, RTT_TRAM, o);
 }
@@ -789,14 +789,14 @@ inline void MakeRoadStop(Tile t, Owner o, StationID sid, RoadStopType rst, RoadT
  * @param tram the owner of the tram
  * @param sid the station to which this tile belongs
  * @param rst the type of roadstop to make this tile
- * @param road_rt the road roadtype on this tile
- * @param tram_rt the tram roadtype on this tile
+ * @param map_roadtype the map road type on this tile
+ * @param map_tramtype the map tram type on this tile
  * @param a the direction of the roadstop
  */
-inline void MakeDriveThroughRoadStop(Tile t, Owner station, Owner road, Owner tram, StationID sid, StationType rst, RoadType road_rt, RoadType tram_rt, Axis a)
+inline void MakeDriveThroughRoadStop(Tile t, Owner station, Owner road, Owner tram, StationID sid, StationType rst, MapRoadType map_roadtype, MapTramType map_tramtype, Axis a)
 {
 	MakeStation(t, station, sid, rst, GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET + a);
-	SetRoadTypes(t, road_rt, tram_rt);
+	SetMapRoadTypes(t, map_roadtype, map_tramtype);
 	SetRoadOwner(t, RTT_ROAD, road);
 	SetRoadOwner(t, RTT_TRAM, tram);
 }

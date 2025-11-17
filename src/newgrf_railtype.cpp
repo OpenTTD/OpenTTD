@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "core/container_func.hpp"
+#include "core/flatset_type.hpp"
 #include "debug.h"
 #include "newgrf_railtype.h"
 #include "newgrf_roadtype.h"
@@ -16,6 +17,7 @@
 #include "depot_base.h"
 #include "town.h"
 #include "tunnelbridge_map.h"
+#include "company_base.h"
 
 #include "safeguards.h"
 
@@ -152,7 +154,7 @@ RailType GetRailTypeTranslation(uint8_t railtype, const GRFFile *grffile)
 {
 	if (grffile == nullptr || grffile->railtype_list.empty()) {
 		/* No railtype table present. Return railtype as-is (if valid), so it works for original railtypes. */
-		if (railtype >= RAILTYPE_END || GetRailTypeInfo(static_cast<RailType>(railtype))->label == 0) return INVALID_RAILTYPE;
+		if (railtype >= GetNumRailTypes() || GetRailTypeInfo(static_cast<RailType>(railtype))->label == 0) return INVALID_RAILTYPE;
 
 		return static_cast<RailType>(railtype);
 	} else {
@@ -187,13 +189,25 @@ uint8_t GetReverseRailTypeTranslation(RailType railtype, const GRFFile *grffile)
 
 std::vector<LabelObject<RailTypeLabel>> _railtype_list;
 
+void PreloadRailTypeMaps()
+{
+	_railtype_mapping.Init();
+	for (const auto &lo : _railtype_list) {
+		if (lo.label == 0) continue;
+		RailType rt = GetRailTypeByLabel(lo.label);
+		if (rt == INVALID_RAILTYPE) continue;
+
+		_railtype_mapping.Set(static_cast<MapRailType>(lo.index), rt);
+	}
+}
+
 /**
  * Test if any saved rail type labels are different to the currently loaded
  * rail types. Rail types stored in the map will be converted if necessary.
  */
 void ConvertRailTypes()
 {
-	std::vector<RailType> railtype_conversion_map;
+	std::vector<MapRailType> railtype_conversion_map;
 	bool needs_conversion = false;
 
 	for (auto it = std::begin(_railtype_list); it != std::end(_railtype_list); ++it) {
@@ -202,10 +216,13 @@ void ConvertRailTypes()
 			rt = RAILTYPE_RAIL;
 		}
 
-		railtype_conversion_map.push_back(rt);
+		railtype_conversion_map.push_back(_railtype_mapping.AllocateMapType(rt, true));
+
+		if (it->label == 0) continue;
+		if (needs_conversion) continue;
 
 		/* Conversion is needed if the rail type is in a different position than the list. */
-		if (it->label != 0 && rt != std::distance(std::begin(_railtype_list), it)) needs_conversion = true;
+		if (_railtype_mapping.GetMappedType(rt).base() != it->index) needs_conversion = true;
 	}
 
 	if (!needs_conversion) return;
@@ -213,24 +230,24 @@ void ConvertRailTypes()
 	for (const auto t : Map::Iterate()) {
 		switch (GetTileType(t)) {
 			case MP_RAILWAY:
-				SetRailType(t, railtype_conversion_map[GetRailType(t)]);
+				SetMapRailType(t, railtype_conversion_map[GetRailType(t)]);
 				break;
 
 			case MP_ROAD:
 				if (IsLevelCrossing(t)) {
-					SetRailType(t, railtype_conversion_map[GetRailType(t)]);
+					SetMapRailType(t, railtype_conversion_map[GetRailType(t)]);
 				}
 				break;
 
 			case MP_STATION:
 				if (HasStationRail(t)) {
-					SetRailType(t, railtype_conversion_map[GetRailType(t)]);
+					SetMapRailType(t, railtype_conversion_map[GetRailType(t)]);
 				}
 				break;
 
 			case MP_TUNNELBRIDGE:
 				if (GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) {
-					SetRailType(t, railtype_conversion_map[GetRailType(t)]);
+					SetMapRailType(t, railtype_conversion_map[GetRailType(t)]);
 				}
 				break;
 
@@ -244,9 +261,10 @@ void ConvertRailTypes()
 void SetCurrentRailTypeLabelList()
 {
 	_railtype_list.clear();
-
-	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
-		_railtype_list.emplace_back(GetRailTypeInfo(rt)->label, 0);
+	for (RailType rt = RAILTYPE_BEGIN; rt != GetNumRailTypes(); rt++) {
+		if (MapRailType map_railtype = _railtype_mapping.GetMappedType(rt); map_railtype != RailTypeMapping::INVALID_MAP_TYPE) {
+			_railtype_list.emplace_back(GetRailTypeInfo(rt)->label, map_railtype.base(), 0);
+		}
 	}
 }
 

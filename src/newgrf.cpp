@@ -581,19 +581,16 @@ GRFFile::GRFFile(const GRFConfig &config)
 	this->price_base_multipliers.fill(INVALID_PRICE_MODIFIER);
 
 	/* Initialise rail type map with default rail types */
-	this->railtype_map.fill(INVALID_RAILTYPE);
-	this->railtype_map[0] = RAILTYPE_RAIL;
-	this->railtype_map[1] = RAILTYPE_ELECTRIC;
-	this->railtype_map[2] = RAILTYPE_MONO;
-	this->railtype_map[3] = RAILTYPE_MAGLEV;
+	this->railtype_map.emplace_back(RAILTYPE_RAIL);
+	this->railtype_map.emplace_back(RAILTYPE_ELECTRIC);
+	this->railtype_map.emplace_back(RAILTYPE_MONO);
+	this->railtype_map.emplace_back(RAILTYPE_MAGLEV);
 
 	/* Initialise road type map with default road types */
-	this->roadtype_map.fill(INVALID_ROADTYPE);
-	this->roadtype_map[0] = ROADTYPE_ROAD;
+	this->roadtype_map.emplace_back(ROADTYPE_ROAD);
 
 	/* Initialise tram type map with default tram types */
-	this->tramtype_map.fill(INVALID_ROADTYPE);
-	this->tramtype_map[0] = ROADTYPE_TRAM;
+	this->tramtype_map.emplace_back(ROADTYPE_TRAM);
 
 	/* Copy the initial parameter list */
 	this->param = config.param;

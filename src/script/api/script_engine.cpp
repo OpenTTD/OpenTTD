@@ -242,10 +242,9 @@
 	if (!IsValidEngine(engine_id)) return ScriptRail::RAILTYPE_INVALID;
 	if (GetVehicleType(engine_id) != ScriptVehicle::VT_RAIL) return ScriptRail::RAILTYPE_INVALID;
 
-	auto railtype = ::RailVehInfo(engine_id)->railtypes.GetNthSetBit(0);
-	if (!railtype.has_value()) return ScriptRail::RAILTYPE_INVALID;
+	if (::RailVehInfo(engine_id)->railtypes.empty()) return ScriptRail::RAILTYPE_INVALID;
 
-	return static_cast<ScriptRail::RailType>(railtype.value());
+	return static_cast<ScriptRail::RailType>(*::RailVehInfo(engine_id)->railtypes.begin());
 }
 
 /* static */ ScriptList *ScriptEngine::GetAllRailTypes(EngineID engine_id)

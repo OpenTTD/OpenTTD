@@ -69,7 +69,7 @@
 /* static */ bool ScriptRoad::IsRoadTypeAvailable(RoadType road_type)
 {
 	EnforceDeityOrCompanyModeValid(false);
-	return (::RoadType)road_type < ROADTYPE_END && ::HasRoadTypeAvail(ScriptObject::GetCompany(), (::RoadType)road_type);
+	return (::RoadType)road_type < GetNumRoadTypes() && ::HasRoadTypeAvail(ScriptObject::GetCompany(), (::RoadType)road_type);
 }
 
 /* static */ ScriptRoad::RoadType ScriptRoad::GetCurrentRoadType()

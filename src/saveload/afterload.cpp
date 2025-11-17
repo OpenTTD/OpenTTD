@@ -50,6 +50,8 @@
 #include "../subsidy_base.h"
 #include "../subsidy_func.h"
 #include "../newgrf.h"
+#include "../newgrf_railtype.h"
+#include "../newgrf_roadtype.h"
 #include "../newgrf_station.h"
 #include "../engine_func.h"
 #include "../rail_gui.h"
@@ -209,9 +211,9 @@ static void UpdateVoidTiles()
 	for (uint y = 0; y < Map::SizeY(); y++) MakeVoid(TileXY(Map::MaxX(), y));
 }
 
-static inline RailType UpdateRailType(RailType rt, RailType min)
+static inline MapRailType UpdateRailType(MapRailType rt, RailType min)
 {
-	return rt >= min ? (RailType)(rt + 1): rt;
+	return static_cast<MapRailType>(rt.base() >= to_underlying(min) ? rt.base() + 1 : rt.base());
 }
 
 /**
@@ -550,6 +552,50 @@ static void StartScripts()
 	Game::StartNew();
 
 	ShowScriptDebugWindowIfScriptError();
+}
+
+/**
+ * Convert rail/road/tram tiles from raw types to mapped types.
+ */
+static void ConvertTransportMappings()
+{
+	auto convert_railtype = [](TileIndex t) {
+		SetMapRailType(t, _railtype_mapping.AllocateMapType(static_cast<RailType>(GetMapRailType(t).base()), true));
+	};
+	auto convert_roadtype = [](TileIndex t) {
+		/* Tiles with roads have a sentinel value to indicate that road or tram is not used. */
+		if (auto mrt = GetMapRoadTypeRoad(t); mrt != RoadTypeMapping::INVALID_MAP_TYPE) SetMapRoadTypeRoad(t, _roadtype_mapping.AllocateMapType(static_cast<RoadType>(mrt.base()), true));
+		if (auto mtt = GetMapRoadTypeTram(t); mtt != TramTypeMapping::INVALID_MAP_TYPE) SetMapRoadTypeTram(t, _tramtype_mapping.AllocateMapType(static_cast<RoadType>(mtt.base()), true));
+	};
+
+	for (auto t : Map::Iterate()) {
+		switch (GetTileType(t)) {
+			case MP_RAILWAY:
+				convert_railtype(t);
+				break;
+
+			case MP_ROAD:
+				convert_roadtype(t);
+				if (IsLevelCrossingTile(t)) convert_railtype(t);
+				break;
+
+			case MP_STATION:
+				if (HasStationRail(t)) convert_railtype(t);
+				if (IsAnyRoadStop(t)) convert_roadtype(t);
+				break;
+
+			case MP_TUNNELBRIDGE:
+				switch (GetTunnelBridgeTransportType(t)) {
+					case TRANSPORT_RAIL: convert_railtype(t); break;
+					case TRANSPORT_ROAD: convert_roadtype(t); break;
+					default: break;
+				}
+				break;
+
+			default:
+				break;
+		}
+	}
 }
 
 /**
@@ -1192,24 +1238,24 @@ bool AfterLoadGame()
 		for (auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
 				case MP_RAILWAY:
-					SetRailType(t, (RailType)GB(t.m3(), 0, 4));
+					SetMapRailType(t, static_cast<MapRailType>(GB(t.m3(), 0, 4)));
 					break;
 
 				case MP_ROAD:
 					if (IsLevelCrossing(t)) {
-						SetRailType(t, (RailType)GB(t.m3(), 0, 4));
+						SetMapRailType(t, static_cast<MapRailType>(GB(t.m3(), 0, 4)));
 					}
 					break;
 
 				case MP_STATION:
 					if (HasStationRail(t)) {
-						SetRailType(t, (RailType)GB(t.m3(), 0, 4));
+						SetMapRailType(t, static_cast<MapRailType>(GB(t.m3(), 0, 4)));
 					}
 					break;
 
 				case MP_TUNNELBRIDGE:
 					if (GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) {
-						SetRailType(t, (RailType)GB(t.m3(), 0, 4));
+						SetMapRailType(t, static_cast<MapRailType>(GB(t.m3(), 0, 4)));
 					}
 					break;
 
@@ -1232,7 +1278,7 @@ bool AfterLoadGame()
 								t,
 								GetTileOwner(t),
 								axis == AXIS_X ? TRACK_BIT_Y : TRACK_BIT_X,
-								GetRailType(t)
+								GetMapRailType(t)
 							);
 						} else {
 							TownID town = IsTileOwner(t, OWNER_TOWN) ? ClosestTownFromTile(t, UINT_MAX)->index : TownID::Begin();
@@ -1319,11 +1365,12 @@ bool AfterLoadGame()
 			}
 
 			if (has_road) {
-				RoadType road_rt = HasBit(t.m7(), 6) ? ROADTYPE_ROAD : INVALID_ROADTYPE;
-				RoadType tram_rt = HasBit(t.m7(), 7) ? ROADTYPE_TRAM : INVALID_ROADTYPE;
+				/* Conversion from road type to mapped road type happens later. */
+				MapRoadType map_roadtype = HasBit(t.m7(), 6) ? static_cast<MapRoadType>(ROADTYPE_ROAD) : RoadTypeMapping::INVALID_MAP_TYPE;
+				MapTramType map_tramtype = HasBit(t.m7(), 7) ? static_cast<MapTramType>(ROADTYPE_TRAM) : TramTypeMapping::INVALID_MAP_TYPE;
 
-				assert(road_rt != INVALID_ROADTYPE || tram_rt != INVALID_ROADTYPE);
-				SetRoadTypes(t, road_rt, tram_rt);
+				assert(map_roadtype != RoadTypeMapping::INVALID_MAP_TYPE || map_tramtype != TramTypeMapping::INVALID_MAP_TYPE);
+				SetMapRoadTypes(t, map_roadtype, map_tramtype);
 				SB(t.m7(), 6, 2, 0); // Clear pre-NRT road type bits.
 			}
 		}
@@ -1344,24 +1391,24 @@ bool AfterLoadGame()
 		for (const auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
 				case MP_RAILWAY:
-					SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
+					SetMapRailType(t, UpdateRailType(GetMapRailType(t), min_rail));
 					break;
 
 				case MP_ROAD:
 					if (IsLevelCrossing(t)) {
-						SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
+						SetMapRailType(t, UpdateRailType(GetMapRailType(t), min_rail));
 					}
 					break;
 
 				case MP_STATION:
 					if (HasStationRail(t)) {
-						SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
+						SetMapRailType(t, UpdateRailType(GetMapRailType(t), min_rail));
 					}
 					break;
 
 				case MP_TUNNELBRIDGE:
 					if (GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) {
-						SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
+						SetMapRailType(t, UpdateRailType(GetMapRailType(t), min_rail));
 					}
 					break;
 
@@ -1369,6 +1416,12 @@ bool AfterLoadGame()
 					break;
 			}
 		}
+	}
+
+	PreloadRailTypeMaps();
+	PreloadRoadTypeMaps();
+	if (IsSavegameVersionBefore(SLV_TRANSPORT_TYPE_MAPPING)) {
+		ConvertTransportMappings();
 	}
 
 	/* In version 16.1 of the savegame a company can decide if trains, which get

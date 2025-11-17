@@ -1427,6 +1427,9 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 
 	if (!ValParamRailType(rt) || !IsValidAxis(axis)) return CMD_ERROR;
 
+	MapRailType map_railtype = _railtype_mapping.AllocateMapType(rt, flags.Test(DoCommandFlag::Execute));
+	if (map_railtype == RailTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_RAILTYPES};
+
 	/* Check if the given station class is valid */
 	if (static_cast<uint>(spec_class) >= StationClass::GetClassCount()) return CMD_ERROR;
 	const StationClass *cls = StationClass::Get(spec_class);
@@ -1553,7 +1556,7 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 				DeleteAnimatedTile(tile);
 				uint8_t old_specindex = HasStationTileRail(tile) ? GetCustomStationSpecIndex(tile) : 0;
 
-				MakeRailStation(tile, st->owner, st->index, axis, *it, rt);
+				MakeRailStation(tile, st->owner, st->index, axis, *it, map_railtype);
 				/* Free the spec if we overbuild something */
 				DeallocateSpecFromStation(st, old_specindex);
 
@@ -1772,7 +1775,7 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, std::vector<T *> &affected_st
 			uint specindex = GetCustomStationSpecIndex(tile);
 			Track track = GetRailStationTrack(tile);
 			Owner owner = GetTileOwner(tile);
-			RailType rt = GetRailType(tile);
+			MapRailType map_railtype = GetMapRailType(tile);
 			Train *v = nullptr;
 
 			if (HasStationReservation(tile)) {
@@ -1781,11 +1784,11 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, std::vector<T *> &affected_st
 			}
 
 			bool build_rail = keep_rail && !IsStationTileBlocked(tile);
-			if (!build_rail && !IsStationTileBlocked(tile)) Company::Get(owner)->infrastructure.rail[rt]--;
+			if (!build_rail && !IsStationTileBlocked(tile)) Company::Get(owner)->infrastructure.rail[_railtype_mapping.GetType(map_railtype)]--;
 
 			DoClearSquare(tile);
 			DeleteNewGRFInspectWindow(GSF_STATIONS, tile.base());
-			if (build_rail) MakeRailNormal(tile, owner, TrackToTrackBits(track), rt);
+			if (build_rail) MakeRailNormal(tile, owner, TrackToTrackBits(track), map_railtype);
 			Company::Get(owner)->infrastructure.station--;
 			DirtyCompanyInfrastructureWindows(owner);
 
@@ -2128,15 +2131,21 @@ CommandCost CmdBuildRoadStop(DoCommandFlags flags, TileIndex tile, uint8_t width
 		}
 	}
 
+	RoadTramType rtt = GetRoadTramType(rt);
+	MapRoadType new_map_roadtype = rtt == RTT_ROAD ? _roadtype_mapping.AllocateMapType(rt, flags.Test(DoCommandFlag::Execute)) : RoadTypeMapping::INVALID_MAP_TYPE;
+	if (rtt == RTT_ROAD && new_map_roadtype == RoadTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_ROADTYPES};
+	MapTramType new_map_tramtype = rtt == RTT_TRAM ? _tramtype_mapping.AllocateMapType(rt, flags.Test(DoCommandFlag::Execute)) : TramTypeMapping::INVALID_MAP_TYPE;
+	if (rtt == RTT_TRAM && new_map_tramtype == TramTypeMapping::INVALID_MAP_TYPE) return CommandCost{STR_ERROR_TOO_MANY_TRAMTYPES};
+
 	if (flags.Test(DoCommandFlag::Execute)) {
 		if (specindex.has_value()) AssignSpecToRoadStop(roadstopspec, st, *specindex);
 		/* Check every tile in the area. */
 		for (TileIndex cur_tile : roadstop_area) {
 			/* Get existing road types and owners before any tile clearing */
-			RoadType road_rt = MayHaveRoad(cur_tile) ? GetRoadType(cur_tile, RTT_ROAD) : INVALID_ROADTYPE;
-			RoadType tram_rt = MayHaveRoad(cur_tile) ? GetRoadType(cur_tile, RTT_TRAM) : INVALID_ROADTYPE;
-			Owner road_owner = road_rt != INVALID_ROADTYPE ? GetRoadOwner(cur_tile, RTT_ROAD) : _current_company;
-			Owner tram_owner = tram_rt != INVALID_ROADTYPE ? GetRoadOwner(cur_tile, RTT_TRAM) : _current_company;
+			MapRoadType cur_map_roadtype = MayHaveRoad(cur_tile) ? GetMapRoadTypeRoad(cur_tile) : RoadTypeMapping::INVALID_MAP_TYPE;
+			MapTramType cur_map_tramtype = MayHaveRoad(cur_tile) ? GetMapRoadTypeTram(cur_tile) : TramTypeMapping::INVALID_MAP_TYPE;
+			Owner road_owner = cur_map_roadtype != RoadTypeMapping::INVALID_MAP_TYPE ? GetRoadOwner(cur_tile, RTT_ROAD) : _current_company;
+			Owner tram_owner = cur_map_tramtype != TramTypeMapping::INVALID_MAP_TYPE ? GetRoadOwner(cur_tile, RTT_TRAM) : _current_company;
 
 			if (IsTileType(cur_tile, MP_STATION) && IsStationRoadStop(cur_tile)) {
 				RemoveRoadStop(cur_tile, flags, *specindex);
@@ -2169,22 +2178,22 @@ CommandCost CmdBuildRoadStop(DoCommandFlags flags, TileIndex tile, uint8_t width
 				/* Update company infrastructure counts. If the current tile is a normal road tile, remove the old
 				 * bits first. */
 				if (IsNormalRoadTile(cur_tile)) {
-					UpdateCompanyRoadInfrastructure(road_rt, road_owner, -(int)CountBits(GetRoadBits(cur_tile, RTT_ROAD)));
-					UpdateCompanyRoadInfrastructure(tram_rt, tram_owner, -(int)CountBits(GetRoadBits(cur_tile, RTT_TRAM)));
+					UpdateCompanyRoadInfrastructure(_roadtype_mapping.GetType(cur_map_roadtype), road_owner, -(int)CountBits(GetRoadBits(cur_tile, RTT_ROAD)));
+					UpdateCompanyRoadInfrastructure(_tramtype_mapping.GetType(cur_map_tramtype), tram_owner, -(int)CountBits(GetRoadBits(cur_tile, RTT_TRAM)));
 				}
 
-				if (road_rt == INVALID_ROADTYPE && RoadTypeIsRoad(rt)) road_rt = rt;
-				if (tram_rt == INVALID_ROADTYPE && RoadTypeIsTram(rt)) tram_rt = rt;
+				if (cur_map_roadtype == RoadTypeMapping::INVALID_MAP_TYPE && RoadTypeIsRoad(rt)) cur_map_roadtype = new_map_roadtype;
+				if (cur_map_tramtype == TramTypeMapping::INVALID_MAP_TYPE && RoadTypeIsTram(rt)) cur_map_tramtype = new_map_tramtype;
 
-				MakeDriveThroughRoadStop(cur_tile, st->owner, road_owner, tram_owner, st->index, (rs_type == RoadStopType::Bus ? StationType::Bus : StationType::Truck), road_rt, tram_rt, axis);
+				MakeDriveThroughRoadStop(cur_tile, st->owner, road_owner, tram_owner, st->index, (rs_type == RoadStopType::Bus ? StationType::Bus : StationType::Truck), cur_map_roadtype, cur_map_tramtype, axis);
 				road_stop->MakeDriveThrough();
 			} else {
-				if (road_rt == INVALID_ROADTYPE && RoadTypeIsRoad(rt)) road_rt = rt;
-				if (tram_rt == INVALID_ROADTYPE && RoadTypeIsTram(rt)) tram_rt = rt;
-				MakeRoadStop(cur_tile, st->owner, st->index, rs_type, road_rt, tram_rt, ddir);
+				if (cur_map_roadtype == RoadTypeMapping::INVALID_MAP_TYPE && RoadTypeIsRoad(rt)) cur_map_roadtype = new_map_roadtype;
+				if (cur_map_tramtype == TramTypeMapping::INVALID_MAP_TYPE && RoadTypeIsTram(rt)) cur_map_tramtype = new_map_tramtype;
+				MakeRoadStop(cur_tile, st->owner, st->index, rs_type, cur_map_roadtype, cur_map_tramtype, ddir);
 			}
-			UpdateCompanyRoadInfrastructure(road_rt, road_owner, ROAD_STOP_TRACKBIT_FACTOR);
-			UpdateCompanyRoadInfrastructure(tram_rt, tram_owner, ROAD_STOP_TRACKBIT_FACTOR);
+			UpdateCompanyRoadInfrastructure(_roadtype_mapping.GetType(cur_map_roadtype), road_owner, ROAD_STOP_TRACKBIT_FACTOR);
+			UpdateCompanyRoadInfrastructure(_tramtype_mapping.GetType(cur_map_tramtype), tram_owner, ROAD_STOP_TRACKBIT_FACTOR);
 			Company::Get(st->owner)->infrastructure.station++;
 
 			SetCustomRoadStopSpecIndex(cur_tile, *specindex);
@@ -2440,7 +2449,7 @@ static CommandCost RemoveGenericRoadStop(DoCommandFlags flags, const TileArea &r
 
 		/* Restore roads. */
 		if (flags.Test(DoCommandFlag::Execute) && (road_type[RTT_ROAD] != INVALID_ROADTYPE || road_type[RTT_TRAM] != INVALID_ROADTYPE)) {
-			MakeRoadNormal(cur_tile, road_bits, road_type[RTT_ROAD], road_type[RTT_TRAM], ClosestTownFromTile(cur_tile, UINT_MAX)->index,
+			MakeRoadNormal(cur_tile, road_bits, _roadtype_mapping.GetMappedType(road_type[RTT_ROAD]), _tramtype_mapping.GetMappedType(road_type[RTT_TRAM]), ClosestTownFromTile(cur_tile, UINT_MAX)->index,
 					road_owner[RTT_ROAD], road_owner[RTT_TRAM]);
 
 			/* Update company infrastructure counts. */
@@ -4713,7 +4722,11 @@ static void ChangeTileOwner_Station(TileIndex tile, Owner old_owner, Owner new_o
 				if (rt != INVALID_ROADTYPE) {
 					/* A drive-through road-stop has always two road bits. No need to dirty windows here, we'll redraw the whole screen anyway. */
 					Company::Get(old_owner)->infrastructure.road[rt] -= 2;
-					if (new_owner != INVALID_OWNER) Company::Get(new_owner)->infrastructure.road[rt] += 2;
+					if (new_owner != INVALID_OWNER) {
+						Company::Get(new_owner)->infrastructure.road[rt] += 2;
+					} else {
+						RoadTypeInfo::infrastructure_counts[rt] += 2;
+					}
 				}
 				SetRoadOwner(tile, rtt, new_owner == INVALID_OWNER ? OWNER_NONE : new_owner);
 			}
