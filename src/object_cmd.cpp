@@ -769,7 +769,7 @@ static bool TryBuildLightHouse()
 	}
 
 	/* Only build lighthouses at tiles where the border is sea. */
-	if (!IsTileType(tile, MP_WATER)) return false;
+	if (!IsTileType(tile, MP_WATER) || GetWaterClass(tile) != WATER_CLASS_SEA) return false;
 
 	for (int j = 0; j < 19; j++) {
 		int h;
