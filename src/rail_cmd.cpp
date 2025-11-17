@@ -1636,7 +1636,7 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 		switch (tt) {
 			case MP_RAILWAY:
 				switch (GetRailTileType(tile)) {
-					case RAIL_TILE_DEPOT:
+					case RailTileType::Depot:
 						if (flags.Test(DoCommandFlag::Execute)) {
 							/* notify YAPF about the track layout change */
 							YapfNotifyTrackLayoutChange(tile, GetRailDepotTrack(tile));
@@ -1649,7 +1649,7 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 						cost.AddCost(RailConvertCost(type, totype));
 						break;
 
-					default: // RAIL_TILE_NORMAL, RAIL_TILE_SIGNALS
+					default: // RailTileType::Normal, RailTileType::Signals
 						if (flags.Test(DoCommandFlag::Execute)) {
 							/* notify YAPF about the track layout change */
 							TrackBits tracks = GetTrackBits(tile);
@@ -1806,8 +1806,8 @@ static CommandCost ClearTile_Track(TileIndex tile, DoCommandFlags flags)
 	}
 
 	switch (GetRailTileType(tile)) {
-		case RAIL_TILE_SIGNALS:
-		case RAIL_TILE_NORMAL: {
+		case RailTileType::Signals:
+		case RailTileType::Normal: {
 			Slope tileh = GetTileSlope(tile);
 			/* Is there flat water on the lower halftile that gets cleared expensively? */
 			bool water_ground = (GetRailGroundType(tile) == RAIL_GROUND_WATER && IsSlopeWithOneCornerRaised(tileh));
@@ -1836,7 +1836,7 @@ static CommandCost ClearTile_Track(TileIndex tile, DoCommandFlags flags)
 			return cost;
 		}
 
-		case RAIL_TILE_DEPOT:
+		case RailTileType::Depot:
 			return RemoveTrainDepot(tile, flags);
 
 		default:
@@ -2725,11 +2725,11 @@ static TrackStatus GetTileTrackStatus_Track(TileIndex tile, TransportType mode, 
 
 	switch (GetRailTileType(tile)) {
 		default: NOT_REACHED();
-		case RAIL_TILE_NORMAL:
+		case RailTileType::Normal:
 			trackbits = GetTrackBits(tile);
 			break;
 
-		case RAIL_TILE_SIGNALS: {
+		case RailTileType::Signals: {
 			trackbits = GetTrackBits(tile);
 			uint8_t a = GetPresentSignals(tile);
 			uint b = GetSignalStates(tile);
@@ -2752,7 +2752,7 @@ static TrackStatus GetTileTrackStatus_Track(TileIndex tile, TransportType mode, 
 			break;
 		}
 
-		case RAIL_TILE_DEPOT: {
+		case RailTileType::Depot: {
 			DiagDirection dir = GetRailDepotDirection(tile);
 
 			if (side != INVALID_DIAGDIR && side != dir) break;
@@ -2780,11 +2780,11 @@ static void GetTileDesc_Track(TileIndex tile, TileDesc &td)
 	td.railtype = rti->strings.name;
 	td.owner[0] = GetTileOwner(tile);
 	switch (GetRailTileType(tile)) {
-		case RAIL_TILE_NORMAL:
+		case RailTileType::Normal:
 			td.str = STR_LAI_RAIL_DESCRIPTION_TRACK;
 			break;
 
-		case RAIL_TILE_SIGNALS: {
+		case RailTileType::Signals: {
 			static const StringID signal_type[6][6] = {
 				{
 					STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS,
@@ -2849,7 +2849,7 @@ static void GetTileDesc_Track(TileIndex tile, TileDesc &td)
 			break;
 		}
 
-		case RAIL_TILE_DEPOT:
+		case RailTileType::Depot:
 			td.str = STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT;
 			if (_settings_game.vehicle.train_acceleration_model != AM_ORIGINAL) {
 				if (td.rail_speed > 0) {
