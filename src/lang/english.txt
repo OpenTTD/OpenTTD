@@ -373,6 +373,8 @@ STR_SORT_BY_AVERAGE_PROFIT_LAST_PERIOD                          :Average profit 
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Average profit this year
 STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD                          :Average profit this period
 STR_SORT_BY_RAILTYPE_ID                                         :Rail type ID (classic sort)
+STR_SORT_BY_ROADTYPE_ID                                         :Road type ID (classic sort)
+STR_SORT_BY_TRAMTYPE_ID                                         :Tram track type ID (classic sort)
 STR_SORT_BY_MAINTENANCE_COST                                    :Maintenance cost
 
 # Group by options for vehicle list
