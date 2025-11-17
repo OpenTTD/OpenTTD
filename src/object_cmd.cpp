@@ -774,6 +774,9 @@ static bool TryBuildLightHouse()
 	for (int j = 0; j < 19; j++) {
 		int h;
 		if (IsTileType(tile, MP_CLEAR) && IsTileFlat(tile, &h) && h <= 2 && !IsBridgeAbove(tile)) {
+			for (auto t : SpiralTileSequence(tile, 9)) {
+				if (IsObjectTypeTile(t, OBJECT_LIGHTHOUSE)) return false;
+			}
 			BuildObject(OBJECT_LIGHTHOUSE, tile);
 			assert(tile < Map::Size());
 			return true;
