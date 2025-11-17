@@ -1374,7 +1374,7 @@ STR_CONFIG_SETTING_CATCHMENT                                    :Dimensionamento
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Para ter diferentes áreas de cobertura para diferentes tipos de estações e aeroportos
 
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Estações da empresa podem servir indústrias com estações neutras anexadas: {STRING}
-STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Quando ativo, indústrias com estações incluídas (com as Petrolíferas) podem ser servidas por estações-da-empresa construídas nas redondezas. Quando inativo, estas indústrias só podem ser servidas pela sua própria estação. Qualquer estação da empresa não poderá servir a indústria, nem a estação incluída pode servir outra entidade senão a própria indústria
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Quando ativo, indústrias com estações incluídas (com as Plataformas Petrolíferas) podem ser servidas por estações da empresa construídas nas redondezas. Quando inativo, estas indústrias só podem ser servidas pela sua própria estação. Qualquer estação da empresa não poderá servir a indústria, nem a estação incluída pode servir outra entidade senão a própria indústria
 
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permitir remover mais estradas, pontes e túneis detidos pela cidade: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Facilitar a remoçar de edifícios e infraestruturas detidas pela localidade
@@ -1390,7 +1390,7 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Modelo de acele
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Escolha o modelo de física para a aceleração de comboios. O modelo "original" penaliza as inclinações para todos os veículos. O modelo "realista" penaliza as curvas e inclinações tendo em conta várias propriedades do comboio, tais como o comprimento e o esforço de tração
 
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Tipo de aceleração dos veículos rodoviários: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Escolha o modelo de física para a aceleração de veículos de estrada. O modelo "original" penaliza as inclinações para todos os veículos. O modelo "realista" penaliza as curvas e inclinações tendo em conta várias propriedades do motor, tais como o esforço de tração
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Escolha o modelo de física para a aceleração de veículos rodoviários. O modelo "original" penaliza as inclinações para todos os veículos. O modelo "realista" penaliza as curvas e inclinações tendo em conta várias propriedades do motor, tais como o esforço de tração
 
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Ângulo de inclinação para comboios: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Ângulo de inclinação de um mosaico para um comboio. Valores mais elevados tornam a subida mais difícil
@@ -1578,7 +1578,7 @@ STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Parar o rato po
 ###setting-zero-is-special
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Clique com botão direito
 
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Mostra população da localidade na identificação da mesma: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Mostrar a população na etiqueta do nome da localidade: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Mostrar a população das localidades na sua etiqueta no mapa
 
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Espessura das linhas dos gráficos estatísticos: {STRING}
@@ -1664,7 +1664,7 @@ STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Manutenção au
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Efetuar manutenção aos helicópteros após cada aterragem, mesmo que não haja um hangar presente
 
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Ligar ferramentas de paisagem com as de construção: {STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Quando se abre a barra de construção para um tipo de transporte, abrir também a barra de terraplanagem
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Quando se abre a barra de construção para um tipo de transporte, abrir também a barra de modificação de paisagem
 
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Cor do solo usada no mapa pequeno: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Cor do terreno no mapa pequeno
@@ -1817,8 +1817,8 @@ STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Fim do ano: {ST
 STR_CONFIG_SETTING_SOUND_NEW_PERIOD                             :Fim do período: {STRING}
 
 ###length 2
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reproduz um som no final do ano e resume a performance da empresa desse ano em comparação com a do ano anterior
-STR_CONFIG_SETTING_SOUND_NEW_PERIOD_HELPTEXT                    :Reproduz um som no final do período e resume a performance da empresa desse período em comparação com a do período anterior
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reproduzir um efeito sonoro no resumo do desempenho anual da empresa que compara o desempenho desse ano com o ano anterior
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD_HELPTEXT                    :Reproduzir um efeito sonoro no resumo do desempenho periódico da empresa que compara o desempenho desse período com o período anterior
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Construção: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Reproduzir um efeito sonoro nas construções ou outras ações bem sucedidas
@@ -1839,7 +1839,7 @@ STR_CONFIG_SETTING_MAX_TRAINS                                   :Máximo de comb
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Número máximo de comboios que uma empresa pode ter
 
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Máximo de veículos rodoviários por empresa: {STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Número máximo de veículos de estrada que uma empresa pode ter
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Número máximo de veículos rodoviários que uma empresa pode ter
 
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Máximo de aeronaves por empresa: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Número máximo de aeronaves que uma empresa pode ter
@@ -1851,7 +1851,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Desativar combo
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Ativar esta preferência impossibilita a criação de comboios por jogadores controlados pelo computador
 
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Desativar veículos rodoviários para o computador: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Ativar esta preferência impossibilita a construção de veículos de estrada por um jogador controlado pelo computador
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Ativar esta preferência impossibilita a construção de veículos rodoviários por um jogador controlado pelo computador
 
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Desativar aeronaves para o computador: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Ativar esta preferência impossibilita a construção de aeronaves por um jogador controlado pelo computador
@@ -1871,13 +1871,13 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Os intervalos de manutenção são em percentagem: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Quando ativado, os veículos procuram fazer a manutenção quando sua fiabilidade reduz para uma determinada percentagem da fiabilidade máxima.{}{}Por exemplo, se a fiabilidade máxima de um veículo for 90% e o intervalo de manutenção for 20%, o veículo tentará fazer a manutenção quando atinge 72% de fiabilidade
 
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalo de serviço para comboios por omissão: {STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Definir o intervalo de manutenção por omissão para novos veículos sobre carris, se não for configurado um intervalo de manutenção explícito para o veículo
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Intervalo de serviço para veículos de estrada por omissão: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalo de manutenção por omissão para comboios: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Definir o intervalo de manutenção por omissão para novos veículos ferroviários, se não for configurado um intervalo de manutenção explícito para o veículo
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Intervalo de manutenção por omissão para veículos rodoviários: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Definir o intervalo de manutenção por omissão para novos veículos de estrada, se não for configurado um intervalo de manutenção explícito para o veículo
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Intervalo de manutenção para aeronaves por omissão: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Intervalo de manutenção por omissão para aeronaves: {STRING}
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Definir o intervalo de manutenção por omissão para novas aeronaves, se não for configurado um intervalo de manutenção explícito para o veículo
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :Intervalo de serviço para navios por omissão: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Intervalo de manutenção por omissão para navios: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Definir o intervalo de manutenção por omissão para novos navios, se não for configurado um intervalo de manutenção explícito para o veículo
 ###length 3
 STR_CONFIG_SETTING_SERVINT_VALUE_DAYS                           :{COMMA}{NBSP}Dia{P 0 "" s}
@@ -1915,7 +1915,7 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informações d
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Mostrar um jornal quando uma empresa nova é criada, ou quando uma empresa está à beira da falência
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Abertura de indústrias: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Mostrar um jornal quando abre uma indústria nova
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Mostrar um jornal quando se abre uma nova indústria
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Fecho de indústrias: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Mostrar um jornal quando uma indústria fecha
@@ -1926,11 +1926,11 @@ STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Mostrar um jorn
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Alterações de produção nas indústrias servidas pelo jogador: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Mostrar um jornal na alteração da produção de indústrias servidas pelo jogador
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Mudanças na produção das industrias servidas pelo(s) oponentes: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Mudanças na produção das industrias servidas por oponente(s): {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Mostrar um jornal na alteração da produção de indústrias servidas por oponentes
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Alterações na produção de outras indústrias: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Mostrar um jornal na alteração da produção de indústrias servidas por ninguém
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Mostrar um jornal na alteração da produção de indústrias que não estão a ser servidas
 
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Avisos / informações sobre os veículos da empresa: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Mostrar mensagens sobre veículos que requerem atenção
@@ -2007,7 +2007,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Aleatório
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :As localidades têm permissão para construir estradas: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Permite às localidades a construção de estradas para crescimento. Desativar para prevenir a construção de estradas pelas autoridades locais.
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Localidades podem construir passagens de nível: {STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Ativar esta preferência permite às localidades construir cruzamentos nivelados
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Ativar esta preferência permite às localidades construir passagens de nível
 
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Limitar a localização do aeroporto em função do nível de ruído: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Permitir que as localidades bloqueiem a construção de aeroportos em função da aceitação do nível de ruído, que é baseado no total de habitantes da localidade e no tamanho e distância do aeroporto. Se esta definição estiver desativada, as localidades permitirão apenas dois aeroportos, a menos que a atitude da autoridade local esteja definida como "Permissiva"

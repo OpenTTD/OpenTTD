@@ -254,6 +254,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}ft
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
+STR_UNITS_HEIGHT_GAMEUNITS                                      :{DECIMAL}{NBSP}kōeke
 
 # Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}rā
@@ -2162,6 +2163,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Ina whakaaria h
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Ingarangi (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Ngahuru (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_GAMEUNITS          :Waeine kēmu (kōeke)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :Kōwhiringa ā-rohe
 STR_CONFIG_SETTING_GRAPHICS                                     :Whakairoiro
@@ -3348,6 +3350,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Tātari:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Whakakapia te Kōnae
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Kei te tino hiahia rānei koe ki te whakakapi i te kōnae i pupuri kētia?
+STR_SAVELOAD_DELETE_TITLE                                       :{WHITE}Mukua te kōnae
+STR_SAVELOAD_DELETE_WARNING                                     :{YELLOW}Kei te tino hiahia rānei koe ki te muku i te kōnae?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (Tātai)
 STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Tātai matua)
 
@@ -3423,6 +3427,10 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Rakimāu
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Rakimārāwhiti
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Tongamārāwhiti
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Tongamāuru
+STR_MAPGEN_NORTHWEST_TOOLTIP                                    :Hohokona te wai, te tapa noa rānei i te tapa rakimāuru o te mahere
+STR_MAPGEN_NORTHEAST_TOOLTIP                                    :Hohokona te wai, te tapa noa rānei i te tapa rakimārāwhiti o te mahere
+STR_MAPGEN_SOUTHEAST_TOOLTIP                                    :Hohokona te wai, te tapa noa rānei i te tapa tongamārāwhiti o te mahere
+STR_MAPGEN_SOUTHWEST_TOOLTIP                                    :Hohokona te wai, te tapa noa rānei i te tapa tongamāuru o te mahere
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Hanga noa
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Wai
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Matapōkere
@@ -3430,6 +3438,7 @@ STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Matapōk
 ###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Matapōkere
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Ā-ringa
+STR_MAPGEN_BORDER_INFINITE_WATER                                :Wai mutunga kore
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Hurihanga mahereteitei:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Ingoa o te mahereteitei:
@@ -3468,6 +3477,8 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Hanga wh
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Hanga awa
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Hanga rohe tuarangaranga, tokatoka hoki
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Hanga tāone
+STR_GENERATION_LAND_INDUSTRY_GENERATION                         :{BLACK}Hanga ahumahi whenua
+STR_GENERATION_WATER_INDUSTRY_GENERATION                        :{BLACK}Hanga ahumahi wai
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Hanga mea
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Hanga rākau
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Whakatatū i te kēmu
@@ -3687,6 +3698,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Tāurua 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Tāone ({COMMA} o te {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Kore -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{BLACK} ({COMMA}) {YELLOW}{CITY_ICON}
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Ingoa o ngā tāone - pāwhiria he ingoa kia neke i te tirohanga matua ki te tāone. Pātaki+Pāwhiri kia huaki i tētahi atu tirohanga i te tauwāhi o te tāone
 STR_TOWN_POPULATION                                             :{BLACK}Taupori o te ao: {COMMA}
 
@@ -4183,6 +4195,7 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Katoa hāunga t
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Kaha Rapa Mōrahi: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Whānui: {GOLD}{COMMA} Papariki
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Momo waka rererangi: {GOLD}{STRING}
+STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Momo rēra: {GOLD}{STRING}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Momo utanga katoa
@@ -4366,6 +4379,7 @@ STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Utu Whakahaere:
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Utu Whakahaere: {CURRENCY_LONG}/wā
 STR_ENGINE_PREVIEW_CAPACITY                                     :Kītanga: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :Kītanga: {CARGO_LONG}, {CARGO_LONG}
+STR_ENGINE_PREVIEW_RAILTYPES                                    :Momo rēra: {STRING}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Whakakapi {STRING} - {STRING}
@@ -5262,6 +5276,13 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Me tōti
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... me tū ki te whenua ngā pito e rua o te arawhiti
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... he roa rawa te arawhiti
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Ka mutu te arawhiti i waho i te mahere
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}{HEIGHT} e hakahaka rawa ai te arawhiti mō te teihana
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}{HEIGHT} e hakahaka rawa ai te arawhiti mō te tūnga rori
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}{HEIGHT} e hakahaka rawa ai te arawhiti mō te tauranga
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}{HEIGHT} e hakahaka rawa ai te arawhiti mō te kārewa
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}{HEIGHT} e hakahaka rawa ai te arawhiti mō te aratohu rerewhenua
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}{HEIGHT} e hakahaka rawa ai te arawhiti mō te aratohu rori
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}{HEIGHT} e hakahaka rawa ai te arawhiti mō te matatara
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Tē taea te hanga te anaroa i konei...
