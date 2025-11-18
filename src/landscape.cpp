@@ -1327,6 +1327,34 @@ bool RiverFlowsDown(TileIndex begin, TileIndex end)
 }
 
 /**
+ * Find the size of a patch of connected sea tiles.
+ * @param tile The starting tile to search.
+ * @param sea The set of sea tiles found.
+ * @param limit How many tiles to find before cutting the search short.
+ */
+static void CountConnectedSeaTiles(TileIndex tile, std::unordered_set<TileIndex> &sea, const uint limit)
+{
+	/* This tile might not be sea. */
+	if (!IsWaterTile(tile) || GetWaterClass(tile) != WaterClass::Sea || !IsTileFlat(tile)) return;
+
+	/* We have now evaluated this tile and don't want to check it again. */
+	sea.insert(tile);
+
+	/* We might want to cut our search short if the size of the sea is "big enough".
+	 * Count this tile but don't check its neighbors. */
+	if (sea.size() > limit) return;
+
+	/* Count adjacent tiles using recusion. */
+	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
+		TileIndex t = tile + TileOffsByDiagDir(d);
+		if (IsValidTile(t) && !sea.contains(t)) {
+			/* Count connected tiles, but break out if we've found an edge tile. */
+			CountConnectedSeaTiles(t, sea, limit);
+		}
+	}
+}
+
+/**
  * Try to flow the river down from a given begin.
  * @param spring The springing point of the river.
  * @param begin  The begin point we are looking from; somewhere down hill from the spring.
@@ -1358,8 +1386,28 @@ static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint 
 
 		int height_end;
 		if (IsTileFlat(end, &height_end) && (height_end < height_begin || (height_end == height_begin && IsWaterTile(end)))) {
-			found = true;
-			break;
+			if (IsWaterTile(end) && GetWaterClass(end) == WaterClass::Sea && Map::MaxX() > 250 && Map::MaxY() > 250) {
+				/* If we've found the sea, make sure it's large enough. Don't bother on small maps, though. */
+				const uint SEA_SIZE_THRESHOLD = 1024;
+				std::unordered_set<TileIndex> sea;
+				/* Count the connected tiles, if the sea is large we can end the river here. */
+				CountConnectedSeaTiles(end, sea, SEA_SIZE_THRESHOLD);
+				if (sea.size() > SEA_SIZE_THRESHOLD) {
+					found = true;
+					break;
+				} else {
+					/* Sea is too small, flatten it so the river keeps looking or forms a lake / wetland. */
+					for (TileIndex sea_tile : sea) {
+						Command<CMD_TERRAFORM_LAND>::Do(DoCommandFlag::Execute, sea_tile, SLOPE_ELEVATED, false);
+						Slope slope = ComplementSlope(GetTileSlope(sea_tile));
+						Command<CMD_TERRAFORM_LAND>::Do(DoCommandFlag::Execute, sea_tile, slope, true);
+					}
+				}
+			} else {
+				/* We've found a river. */
+				found = true;
+				break;
+			}
 		}
 
 		for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
