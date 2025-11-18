@@ -3388,7 +3388,7 @@ STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Nível d
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Selecione o nível do mar
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Rios:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Suavidade:
-STR_MAPGEN_VARIETY                                              :{BLACK}Variedade da distribuição:
+STR_MAPGEN_VARIETY                                              :{BLACK}Distribuição de variedade:
 STR_MAPGEN_GENERATE                                             :{WHITE}Gerar
 STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Criar o mapa e jogar OpenTTD!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Definições de NewGRF

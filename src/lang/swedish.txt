@@ -3427,6 +3427,10 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Nordväs
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Nordost
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Sydost
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Sydväst
+STR_MAPGEN_NORTHWEST_TOOLTIP                                    :Växla mellan vatten- eller friformskant vid den nordvästra kartkanten
+STR_MAPGEN_NORTHEAST_TOOLTIP                                    :Växla mellan vatten- eller friformskant vid den nordöstra kartkanten
+STR_MAPGEN_SOUTHEAST_TOOLTIP                                    :Växla mellan vatten- eller friformskant vid den sydöstra kartkanten
+STR_MAPGEN_SOUTHWEST_TOOLTIP                                    :Växla mellan vatten- eller friformskant vid den sydvästra kartkanten
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Fri form
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vatten
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}På måfå
