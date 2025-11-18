@@ -33,17 +33,6 @@
 
 #include "safeguards.h"
 
-/**
- * List of tree placer algorithm.
- *
- * This enumeration defines all possible tree placer algorithm in the game.
- */
-enum TreePlacer : uint8_t {
-	TP_NONE,     ///< No tree placer algorithm
-	TP_ORIGINAL, ///< The original algorithm
-	TP_IMPROVED, ///< A 'improved' algorithm
-};
-
 /** Where to place trees while in-game? */
 enum ExtraTreePlacement : uint8_t {
 	ETP_NO_SPREAD,           ///< Grow trees on tiles that have them but don't spread to new ones
@@ -167,14 +156,18 @@ static TreeType GetRandomTreeType(TileIndex tile, uint seed)
  *
  * @param tile The tile to make a tree-tile from
  * @param r The randomness value from a Random() value
+ * @param keep_density Whether to keep the existing ground density of the tile.
  */
-static void PlaceTree(TileIndex tile, uint32_t r)
+void PlaceTree(TileIndex tile, uint32_t r, bool keep_density)
 {
 	TreeType tree = GetRandomTreeType(tile, GB(r, 24, 8));
 
 	if (tree != TREE_INVALID) {
 		PlantTreesOnTile(tile, tree, GB(r, 22, 2), static_cast<TreeGrowthStage>(std::min<uint8_t>(GB(r, 16, 3), 6)));
 		MarkTileDirtyByTile(tile);
+
+		/* Maybe keep the existing ground density.*/
+		if (keep_density) return;
 
 		/* Rerandomize ground, if neither snow nor shore */
 		TreeGround ground = GetTreeGround(tile);
