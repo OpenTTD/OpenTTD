@@ -86,7 +86,7 @@ extern void ClearOldOrders();
  * This as for example docks and shipdepots do not store
  * whether the tile used to be canal or 'normal' water.
  * @param t the tile to change.
- * @param include_invalid_water_class Also consider WATER_CLASS_INVALID, i.e. industry tiles on land
+ * @param include_invalid_water_class Also consider WaterClass::Invalid, i.e. industry tiles on land
  */
 void SetWaterClassDependingOnSurroundings(Tile t, bool include_invalid_water_class)
 {
@@ -94,7 +94,7 @@ void SetWaterClassDependingOnSurroundings(Tile t, bool include_invalid_water_cla
 	 * Note: Wrt. autosloping under industry tiles this is the most fool-proof behaviour. */
 	if (!IsTileFlat(t)) {
 		if (include_invalid_water_class) {
-			SetWaterClass(t, WATER_CLASS_INVALID);
+			SetWaterClass(t, WaterClass::Invalid);
 			return;
 		} else {
 			SlErrorCorrupt("Invalid water class for dry tile");
@@ -105,8 +105,8 @@ void SetWaterClassDependingOnSurroundings(Tile t, bool include_invalid_water_cla
 	MarkTileDirtyByTile(t);
 
 	if (TileX(t) == 0 || TileY(t) == 0 || TileX(t) == Map::MaxX() - 1 || TileY(t) == Map::MaxY() - 1) {
-		/* tiles at map borders are always WATER_CLASS_SEA */
-		SetWaterClass(t, WATER_CLASS_SEA);
+		/* tiles at map borders are always WaterClass::Sea */
+		SetWaterClass(t, WaterClass::Sea);
 		return;
 	}
 
@@ -123,9 +123,9 @@ void SetWaterClassDependingOnSurroundings(Tile t, bool include_invalid_water_cla
 					has_water = true;
 				} else if (!IsLock(neighbour)) {
 					switch (GetWaterClass(neighbour)) {
-						case WATER_CLASS_SEA:   has_water = true; break;
-						case WATER_CLASS_CANAL: has_canal = true; break;
-						case WATER_CLASS_RIVER: has_river = true; break;
+						case WaterClass::Sea:   has_water = true; break;
+						case WaterClass::Canal: has_canal = true; break;
+						case WaterClass::River: has_river = true; break;
 						default: SlErrorCorrupt("Invalid water class for tile");
 					}
 				}
@@ -146,16 +146,16 @@ void SetWaterClassDependingOnSurroundings(Tile t, bool include_invalid_water_cla
 	}
 
 	if (!has_water && !has_canal && !has_river && include_invalid_water_class) {
-		SetWaterClass(t, WATER_CLASS_INVALID);
+		SetWaterClass(t, WaterClass::Invalid);
 		return;
 	}
 
 	if (has_river && !has_canal) {
-		SetWaterClass(t, WATER_CLASS_RIVER);
+		SetWaterClass(t, WaterClass::River);
 	} else if (has_canal || !has_water) {
-		SetWaterClass(t, WATER_CLASS_CANAL);
+		SetWaterClass(t, WaterClass::Canal);
 	} else {
-		SetWaterClass(t, WATER_CLASS_SEA);
+		SetWaterClass(t, WaterClass::Sea);
 	}
 }
 
@@ -853,12 +853,12 @@ bool AfterLoadGame()
 
 			switch (GB(t.m5(), 4, 4)) {
 				case 0x0: /* Previously WBL_TYPE_NORMAL, Clear water or coast. */
-					SetWaterTileType(t, HasBit(t.m5(), WBL_COAST_FLAG) ? WATER_TILE_COAST : WATER_TILE_CLEAR);
+					SetWaterTileType(t, HasBit(t.m5(), WBL_COAST_FLAG) ? WaterTileType::Coast : WaterTileType::Clear);
 					break;
 
-				case 0x1: SetWaterTileType(t, WATER_TILE_LOCK); break; /* Previously WBL_TYPE_LOCK */
-				case 0x8: SetWaterTileType(t, WATER_TILE_DEPOT); break; /* Previously WBL_TYPE_DEPOT */
-				default: SetWaterTileType(t, WATER_TILE_CLEAR); break; /* Shouldn't happen... */
+				case 0x1: SetWaterTileType(t, WaterTileType::Lock); break; /* Previously WBL_TYPE_LOCK */
+				case 0x8: SetWaterTileType(t, WaterTileType::Depot); break; /* Previously WBL_TYPE_DEPOT */
+				default: SetWaterTileType(t, WaterTileType::Clear); break; /* Shouldn't happen... */
 			}
 		}
 	}
@@ -870,7 +870,7 @@ bool AfterLoadGame()
 				default: break;
 
 				case MP_WATER:
-					if (GetWaterTileType(t) == WATER_TILE_LOCK && GetTileOwner(t) == OWNER_WATER) SetTileOwner(t, OWNER_NONE);
+					if (GetWaterTileType(t) == WaterTileType::Lock && GetTileOwner(t) == OWNER_WATER) SetTileOwner(t, OWNER_NONE);
 					break;
 
 				case MP_STATION: {
@@ -1740,7 +1740,7 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_82)) {
 		for (const auto t : Map::Iterate()) {
 			if (IsTileType(t, MP_WATER) &&
-					GetWaterTileType(t) == WATER_TILE_CLEAR &&
+					GetWaterTileType(t) == WaterTileType::Clear &&
 					GetTileOwner(t) == OWNER_WATER &&
 					TileHeight(t) != 0) {
 				SetTileOwner(t, OWNER_NONE);
@@ -1872,7 +1872,7 @@ bool AfterLoadGame()
 							break;
 
 						default:
-							SetWaterClass(t, WATER_CLASS_INVALID);
+							SetWaterClass(t, WaterClass::Invalid);
 							break;
 					}
 					break;
@@ -1883,7 +1883,7 @@ bool AfterLoadGame()
 					break;
 
 				case MP_OBJECT:
-					SetWaterClass(t, WATER_CLASS_INVALID);
+					SetWaterClass(t, WaterClass::Invalid);
 					break;
 
 				default:
@@ -1897,7 +1897,7 @@ bool AfterLoadGame()
 		for (auto t : Map::Iterate()) {
 			/* Move river flag and update canals to use water class */
 			if (IsTileType(t, MP_WATER)) {
-				if (GetWaterClass(t) != WATER_CLASS_RIVER) {
+				if (GetWaterClass(t) != WaterClass::River) {
 					if (IsWater(t)) {
 						Owner o = GetTileOwner(t);
 						if (o == OWNER_WATER) {
@@ -1907,7 +1907,7 @@ bool AfterLoadGame()
 						}
 					} else if (IsShipDepot(t)) {
 						Owner o = (Owner)t.m4(); // Original water owner
-						SetWaterClass(t, o == OWNER_WATER ? WATER_CLASS_SEA : WATER_CLASS_CANAL);
+						SetWaterClass(t, o == OWNER_WATER ? WaterClass::Sea : WaterClass::Canal);
 					}
 				}
 			}
@@ -1931,7 +1931,7 @@ bool AfterLoadGame()
 					(TileX(t) == 0 || TileY(t) == 0 || TileX(t) == Map::MaxX() - 1 || TileY(t) == Map::MaxY() - 1)) {
 				/* Some version 86 savegames have wrong water class at map borders (under buoy, or after removing buoy).
 				 * This conversion has to be done before buoys with invalid owner are removed. */
-				SetWaterClass(t, WATER_CLASS_SEA);
+				SetWaterClass(t, WaterClass::Sea);
 			}
 
 			if (IsBuoyTile(t) || IsDriveThroughStopTile(t) || IsTileType(t, MP_WATER)) {
@@ -2003,7 +2003,7 @@ bool AfterLoadGame()
 				if (GetIndustrySpec(GetIndustryType(t))->behaviour.Test(IndustryBehaviour::BuiltOnWater)) {
 					SetWaterClassDependingOnSurroundings(t, true);
 				} else {
-					SetWaterClass(t, WATER_CLASS_INVALID);
+					SetWaterClass(t, WaterClass::Invalid);
 				}
 			}
 
@@ -2594,7 +2594,7 @@ bool AfterLoadGame()
 		for (const auto t : Map::Iterate()) {
 			if (!IsTileType(t, MP_STATION)) continue;
 			if (!IsBuoy(t) && !IsOilRig(t) && !(IsDock(t) && IsTileFlat(t))) {
-				SetWaterClass(t, WATER_CLASS_INVALID);
+				SetWaterClass(t, WaterClass::Invalid);
 			}
 		}
 
@@ -3149,7 +3149,7 @@ bool AfterLoadGame()
 		/* Move ships from lock slope to upper or lower position. */
 		for (Ship *s : Ship::Iterate()) {
 			/* Suitable tile? */
-			if (!IsTileType(s->tile, MP_WATER) || !IsLock(s->tile) || GetLockPart(s->tile) != LOCK_PART_MIDDLE) continue;
+			if (!IsTileType(s->tile, MP_WATER) || !IsLock(s->tile) || GetLockPart(s->tile) != LockPart::Middle) continue;
 
 			/* We don't need to adjust position when at the tile centre */
 			int x = s->x_pos & 0xF;
@@ -3205,7 +3205,7 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_TREES_WATER_CLASS)) {
 		/* Update water class for trees. */
 		for (const auto t : Map::Iterate()) {
-			if (IsTileType(t, MP_TREES)) SetWaterClass(t, GetTreeGround(t) == TREE_GROUND_SHORE ? WATER_CLASS_SEA : WATER_CLASS_INVALID);
+			if (IsTileType(t, MP_TREES)) SetWaterClass(t, GetTreeGround(t) == TREE_GROUND_SHORE ? WaterClass::Sea : WaterClass::Invalid);
 		}
 	}
 

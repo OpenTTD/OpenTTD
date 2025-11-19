@@ -248,7 +248,7 @@ void AmbientSoundEffectCallback(TileIndex tile)
 	object.generic_scope.feature = GSF_SOUNDFX;
 
 	uint32_t param1_v7 = GetTileType(tile) << 28 | Clamp(TileHeight(tile), 0, 15) << 24 | GB(r, 16, 8) << 16 | GetTerrainType(tile);
-	uint32_t param1_v8 = GetTileType(tile) << 24 | GetTileZ(tile) << 16 | GB(r, 16, 8) << 8 | (HasTileWaterClass(tile) ? GetWaterClass(tile) : 0) << 3 | GetTerrainType(tile);
+	uint32_t param1_v8 = GetTileType(tile) << 24 | GetTileZ(tile) << 16 | GB(r, 16, 8) << 8 | (HasTileWaterClass(tile) ? to_underlying(GetWaterClass(tile)) : 0) << 3 | GetTerrainType(tile);
 
 	/* Run callback. */
 	auto callback = GetGenericCallbackResult(GSF_SOUNDFX, object, param1_v7, param1_v8);

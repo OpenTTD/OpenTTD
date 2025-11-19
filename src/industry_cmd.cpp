@@ -1938,7 +1938,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 		if (it.gfx != GFX_WATERTILE_SPECIALCHECK) {
 			i->location.Add(cur_tile);
 
-			WaterClass wc = (IsWaterTile(cur_tile) ? GetWaterClass(cur_tile) : WATER_CLASS_INVALID);
+			WaterClass wc = (IsWaterTile(cur_tile) ? GetWaterClass(cur_tile) : WaterClass::Invalid);
 
 			Command<CMD_LANDSCAPE_CLEAR>::Do({DoCommandFlag::Execute, DoCommandFlag::NoTestTownRating, DoCommandFlag::NoModifyTownRating}, cur_tile);
 

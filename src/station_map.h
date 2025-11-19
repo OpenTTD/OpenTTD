@@ -714,7 +714,7 @@ inline uint8_t GetStationTileRandomBits(Tile t)
  * @param section the StationGfx to be used for this tile
  * @param wc The water class of the station
  */
-inline void MakeStation(Tile t, Owner o, StationID sid, StationType st, uint8_t section, WaterClass wc = WATER_CLASS_INVALID)
+inline void MakeStation(Tile t, Owner o, StationID sid, StationType st, uint8_t section, WaterClass wc = WaterClass::Invalid)
 {
 	SetTileType(t, MP_STATION);
 	SetTileOwner(t, o);

@@ -195,7 +195,7 @@ void AfterLoadCompanyStats()
 
 					case StationType::Dock:
 					case StationType::Buoy:
-						if (GetWaterClass(tile) == WATER_CLASS_CANAL) {
+						if (GetWaterClass(tile) == WaterClass::Canal) {
 							if (c != nullptr) c->infrastructure.water++;
 						}
 						break;
@@ -210,7 +210,7 @@ void AfterLoadCompanyStats()
 					c = Company::GetIfValid(GetTileOwner(tile));
 					if (c != nullptr) {
 						if (IsShipDepot(tile)) c->infrastructure.water += LOCK_DEPOT_TILE_FACTOR;
-						if (IsLock(tile) && GetLockPart(tile) == LOCK_PART_MIDDLE) {
+						if (IsLock(tile) && GetLockPart(tile) == LockPart::Middle) {
 							/* The middle tile specifies the owner of the lock. */
 							c->infrastructure.water += 3 * LOCK_DEPOT_TILE_FACTOR; // the middle tile specifies the owner of the
 							break; // do not count the middle tile as canal
@@ -220,7 +220,7 @@ void AfterLoadCompanyStats()
 				[[fallthrough]];
 
 			case MP_OBJECT:
-				if (GetWaterClass(tile) == WATER_CLASS_CANAL) {
+				if (GetWaterClass(tile) == WaterClass::Canal) {
 					c = Company::GetIfValid(GetTileOwner(tile));
 					if (c != nullptr) c->infrastructure.water++;
 				}

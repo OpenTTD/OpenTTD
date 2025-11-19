@@ -1462,7 +1462,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 		if (!HasTunnelBridgeSnowOrDesert(ti->tile)) {
 			TileIndex next = ti->tile + TileOffsByDiagDir(tunnelbridge_direction);
-			if (ti->tileh != SLOPE_FLAT && ti->z == 0 && HasTileWaterClass(next) && GetWaterClass(next) == WATER_CLASS_SEA) {
+			if (ti->tileh != SLOPE_FLAT && ti->z == 0 && HasTileWaterClass(next) && GetWaterClass(next) == WaterClass::Sea) {
 				DrawShoreTile(ti->tileh);
 			} else {
 				DrawClearLandTile(ti, 3);
