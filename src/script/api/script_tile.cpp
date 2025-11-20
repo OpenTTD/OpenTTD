@@ -154,6 +154,13 @@
 	return (::IsTileType(tile, MP_CLEAR) && ::IsClearGround(tile, CLEAR_DESERT));
 }
 
+/* static */ bool ScriptTile::IsHouseTile(TileIndex tile)
+{
+	if (!::IsValidTile(tile)) return false;
+
+	return ::IsTileType(tile, MP_HOUSE);
+}
+
 /* static */ ScriptTile::TerrainType ScriptTile::GetTerrainType(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return TERRAIN_NORMAL;
