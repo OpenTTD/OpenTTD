@@ -59,6 +59,7 @@
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_economy.h"
 #include "timer/timer_game_tick.h"
+#include "texteff.hpp"
 
 #include "table/strings.h"
 #include "table/town_land.h"
@@ -655,6 +656,7 @@ static void TileLoop_Town(TileIndex tile)
 				if (GB(TimerGameTick::counter, 8, 2) == GB(tile.base(), 0, 2)) {
 					TownGenerateCargoBinomial(t, TPE_PASSENGERS, hs->population, stations);
 					TownGenerateCargoBinomial(t, TPE_MAIL, hs->mail_generation, stations);
+					//ShowDebugTextAnimation(TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE, GetTileZ(tile), STR_ERROR_BMPMAP_IMAGE_TYPE, 0, 0, 0);
 				}
 				break;
 

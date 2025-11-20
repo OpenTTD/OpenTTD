@@ -79,6 +79,8 @@
 
 #include "safeguards.h"
 
+#include "../../../core/string_consumer.hpp"
+
 /**
  * Static instance of FlowStat::SharesMap.
  * Note: This instance is created on task start.
@@ -3978,6 +3980,10 @@ static void UpdateStationRating(Station *st)
 			continue;
 		}
 
+		if (st->name != "") {
+			Debug(misc, 0, "{} debug", st->name);
+		}
+
 		byte_inc_sat(&ge->time_since_pickup);
 
 		/* If this cargo hasn't been picked up in a long time, get rid of it. */
@@ -4068,6 +4074,13 @@ static void UpdateStationRating(Station *st)
 		if (age < 1) rating += 13;
 		ge->last_score_part_age = rating - rating_before_age;
 
+		if (st->name != "") {
+			auto nameRating = ParseInteger(st->name);
+			if (nameRating.has_value()) {
+				rating = nameRating.value();
+			}
+		}
+
 		{
 			int or_ = ge->rating; // old rating
 
@@ -4089,7 +4102,11 @@ static void UpdateStationRating(Station *st)
 				uint32_t r = Random();
 				if (rating <= (int)GB(r, 0, 7)) {
 					/* Need to have int, otherwise it will just overflow etc. */
+					uint prev_waiting = waiting;
 					waiting = std::max((int)waiting - (int)((GB(r, 8, 2) - 1) * num_dests), 0);
+					if (waiting < prev_waiting) {
+						Debug(misc, 0, "Lost {} cargo from {}", prev_waiting - waiting, st->name);
+					}
 					waiting_changed = true;
 				}
 			}
@@ -4548,10 +4565,20 @@ uint MoveGoodsToStation(CargoType cargo, uint amount, Source source, const Stati
 	Station *first_station = nullptr;
 	typedef std::pair<Station *, uint> StationInfo;
 	std::vector<StationInfo> used_stations;
+	std::vector<const CargoSpec*> mailTypeArray = CargoSpec::town_production_cargoes[TPE_MAIL];
+	std::vector<CargoType> townCargoIndices;
+
+	for (auto tpe : { TPE_PASSENGERS, TPE_MAIL }) {
+		for (const CargoSpec *cs : CargoSpec::town_production_cargoes[tpe]) {
+			townCargoIndices.push_back(cs->Index());
+		}
+	}
 
 	for (Station *st : all_stations) {
 		if (exclusivity != INVALID_OWNER && exclusivity != st->owner) continue;
-		if (!CanMoveGoodsToStation(st, cargo)) continue;
+		if (!CanMoveGoodsToStation(st, cargo)) {
+			continue;
+		}
 
 		/* Avoid allocating a vector if there is only one station to significantly
 		 * improve performance in this common case. */
@@ -4572,6 +4599,10 @@ uint MoveGoodsToStation(CargoType cargo, uint amount, Source source, const Stati
 	if (used_stations.empty()) {
 		/* only one station around */
 		amount *= first_station->goods[cargo].rating + 1;
+		Tile t = first_station->xy;
+		if (std::find(townCargoIndices.begin(), townCargoIndices.end(), cargo) == townCargoIndices.end()) {
+			ShowDebugTextAnimation(TileX(t) * TILE_SIZE, TileY(t) * TILE_SIZE, GetTileZ(t), STR_ERROR_PNGMAP_MISC, CargoSpec::Get(cargo)->name, amount >> 8, -1);
+		}
 		return UpdateStationWaiting(first_station, cargo, amount, source);
 	}
 
@@ -4590,10 +4621,15 @@ uint MoveGoodsToStation(CargoType cargo, uint amount, Source source, const Stati
 		}
 		company_sum[owner] += rating;
 	}
+	Debug(misc, 0, "Best rating overall: {}", best_rating);
+	Debug(misc, 0, "Sum of co bests: {}", best_sum);
+
 
 	/* From now we'll calculate with fractional cargo amounts.
 	 * First determine how much cargo we really have. */
 	amount *= best_rating + 1;
+
+	Debug(misc, 0, "Fractions to distribute: {}", amount);
 
 	uint moving = 0;
 	for (auto &p : used_stations) {
@@ -4601,6 +4637,8 @@ uint MoveGoodsToStation(CargoType cargo, uint amount, Source source, const Stati
 		/* Multiply the amount by (company best / sum of best for each company) to get cargo allocated to a company
 		 * and by (station rating / sum of ratings in a company) to get the result for a single station. */
 		p.second = amount * company_best[owner] * p.first->goods[cargo].rating / best_sum / company_sum[owner];
+		Debug(misc, 0, "Distributed to {}: {}", p.first->name, p.second);
+
 		moving += p.second;
 	}
 
@@ -4613,11 +4651,16 @@ uint MoveGoodsToStation(CargoType cargo, uint amount, Source source, const Stati
 		assert(amount - moving <= used_stations.size());
 		for (uint i = 0; i < amount - moving; i++) {
 			used_stations[i].second++;
+			Debug(misc, 0, "Topped off {}: {}", used_stations[i].first->name, used_stations[i].second);
 		}
 	}
 
 	uint moved = 0;
 	for (auto &p : used_stations) {
+		if (std::find(townCargoIndices.begin(), townCargoIndices.end(), cargo) == townCargoIndices.end()) {
+			Tile t = p.first->xy;
+			ShowDebugTextAnimation(TileX(t) * TILE_SIZE, TileY(t) * TILE_SIZE, GetTileZ(t), STR_ERROR_PNGMAP_MISC, CargoSpec::Get(cargo)->name, p.second >> 8, -1);
+		}
 		moved += UpdateStationWaiting(p.first, cargo, p.second, source);
 	}
 

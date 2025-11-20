@@ -41,6 +41,7 @@ void HideFillingPercent(TextEffectID *te_id);
 
 void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost);
 void ShowBlameStationAnimation(int x, int y, int z, int blame);
+void ShowDebugTextAnimation(int x, int y, int z, StringID msg, StringID sParam, int iParam, int iParam2);
 void ShowMwcAnimation(int x, int y, int z, int score);
 void ShowFeederIncomeAnimation(int x, int y, int z, Money transfer, Money income);
 

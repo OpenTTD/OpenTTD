@@ -539,6 +539,8 @@ static bool TransportIndustryGoods(TileIndex tile)
 
 			uint am = MoveGoodsToStation(p.cargo, cw, {i->index, SourceType::Industry}, i->stations_near, i->exclusive_consumer);
 			p.history[THIS_MONTH].transported += am;
+			TileIndex t = i->location.tile;
+			ShowDebugTextAnimation(TileX(t) * TILE_SIZE, TileY(t) * TILE_SIZE, GetTileZ(t), STR_ERROR_BMPMAP, CargoSpec::Get(p.cargo)->name, am, cw);
 
 			moved_cargo |= (am != 0);
 		}

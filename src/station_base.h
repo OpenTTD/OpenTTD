@@ -233,7 +233,7 @@ struct GoodsEntry {
 	uint8_t time_since_pickup = 255;
 
 	uint8_t rating = INITIAL_STATION_RATING; ///< %Station rating for this cargo.
-	uint8_t target_rating = INITIAL_STATION_RATING;
+	int target_rating = INITIAL_STATION_RATING;
 	uint8_t last_score_part_speed = 0;
 	uint8_t last_score_part_waittime = 0;
 	uint8_t last_score_part_mwc = 0;

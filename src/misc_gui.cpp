@@ -551,6 +551,33 @@ void ShowMwcAnimation(int x, int y, int z, int blame)
 }
 
 /**
+ * Display animated income or costs on the map. Does nothing if cost is zero.
+ * @param x    World X position of the animation location.
+ * @param y    World Y position of the animation location.
+ * @param z    World Z position of the animation location.
+ * @param cost Estimated cost (or income if negative).
+ */
+void ShowDebugTextAnimation(int x, int y, int z, StringID msg, StringID sParam, int iParam, int iParam2)
+{
+	return;
+	Point pt = RemapCoords(x, y, z);
+	if (sParam == 0) {
+		AddTextEffect(GetEncodedString(msg), pt.x, pt.y, Ticks::DAY_TICKS, TE_RISING);
+		return;
+	}
+	if (iParam == -1 && iParam2 == -1) {
+		AddTextEffect(GetEncodedString(msg, sParam), pt.x, pt.y, Ticks::DAY_TICKS, TE_RISING);
+		return;
+	}
+	if (iParam2 == -1) {
+		AddTextEffect(GetEncodedString(msg, iParam, sParam), pt.x, pt.y, Ticks::DAY_TICKS, TE_RISING);
+		return;
+	}
+	AddTextEffect(GetEncodedString(msg, iParam, iParam2, sParam), pt.x, pt.y, Ticks::DAY_TICKS, TE_RISING);
+	return;
+}
+
+/**
  * Display animated feeder income.
  * @param x        World X position of the animation location.
  * @param y        World Y position of the animation location.

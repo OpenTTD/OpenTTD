@@ -220,8 +220,12 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 				if (v->profit_last_year > 0) num++; // For the vehicle score only count profitable vehicles
 				if (v->economy_age > VEHICLE_PROFIT_MIN_AGE) {
 					/* Find the vehicle with the lowest amount of profit */
-					if (min_profit_first || min_profit > v->profit_last_year) {
-						min_profit = v->profit_last_year;
+					int profit_score = v->profit_last_year;
+					if (v->type == VEH_ROAD) {
+						profit_score *= 10;
+					}
+					if (min_profit_first || min_profit > profit_score) {
+						min_profit = profit_score;
 						min_profit_first = false;
 					}
 				}

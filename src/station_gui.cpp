@@ -1917,7 +1917,9 @@ struct StationViewWindow : public Window {
 					ge->last_score_part_mwc,
 					ge->last_score_part_statue,
 					ge->last_score_part_age,
-					ge->target_rating
+					ge->target_rating,
+					ge->rating
+					//ge->rating * 100 / 256
 				));
 			tr.top += GetCharacterHeight(FS_NORMAL);
 		}
