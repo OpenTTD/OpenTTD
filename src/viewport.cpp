@@ -1425,6 +1425,41 @@ static void ViewportAddStationStrings(DrawPixelInfo *dpi, const std::vector<cons
 	}
 }
 
+/**
+ * Add waiting cargo strings to station signs in a viewport.
+ * @param dpi Current viewport area.
+ * @param stations List of stations to add.
+ */
+static void ViewportAddWaitingCargoStrings(DrawPixelInfo *dpi, const std::vector<const BaseStation *> &stations)
+{
+	int line_height = ScaleByZoom(GetCharacterHeight(FS_NORMAL) * 1.5, dpi->zoom);
+
+	for (const BaseStation *st : stations) {
+		if (st == nullptr || !Station::IsExpected(st)) continue;
+
+		int offset = 0;
+		const Station *stx = Station::From(st);
+		if (stx == nullptr) continue;
+
+		for (const CargoSpec *cs : CargoSpec::Iterate()) {
+			const GoodsEntry *ge = &stx->goods[cs->Index()];
+			if (ge->HasData() && ge->GetData().cargo.AvailableCount() > 0) {
+				offset += line_height;
+				std::string str = fmt::format("{}: {}", GetString(cs->name), GetString(STR_JUST_COMMA, ge->GetData().cargo.AvailableCount()));
+
+				ViewportSign *cargoSign = new ViewportSign();
+				cargoSign->UpdatePosition(st->sign.center, st->sign.top - offset, str);
+				std::string *strOnSign = ViewportAddString(dpi, cargoSign, ViewportStringFlag::TransparentRect, COLOUR_WHITE);
+				if (strOnSign == nullptr) continue;
+				*strOnSign = str;
+
+				SpriteID spr = cs->GetCargoIcon();
+				DrawSpriteViewport(spr, PAL_NONE, cargoSign->center, cargoSign->top);
+			}
+		}
+	}
+}
+
 static void ViewportAddKdtreeSigns(DrawPixelInfo *dpi)
 {
 	Rect search_rect{ dpi->left, dpi->top, dpi->left + dpi->width, dpi->top + dpi->height };
@@ -1505,6 +1540,9 @@ static void ViewportAddKdtreeSigns(DrawPixelInfo *dpi)
 
 	ViewportAddSignStrings(dpi, signs, small);
 	ViewportAddStationStrings(dpi, stations, small);
+	if (!small && !IsTransparencySet(TO_SIGNS)) {
+		ViewportAddWaitingCargoStrings(dpi, stations);
+	}
 }
 
 
