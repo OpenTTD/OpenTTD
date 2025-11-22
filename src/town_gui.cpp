@@ -1588,16 +1588,19 @@ public:
 		std::set<PickerItem> dst;
 		for (const auto &item : src) {
 			if (item.grfid == 0) {
-				dst.insert(item);
+				const HouseSpec *hs = HouseSpec::Get(item.local_id);
+				if (hs == nullptr) continue;
+				int class_index = GetClassIdFromHouseZone(hs->building_availability);
+				dst.emplace(item.grfid, item.local_id, class_index, item.local_id);
 			} else {
 				/* Search for spec by grfid and local index. */
 				auto it = std::ranges::find_if(specs, [&item](const HouseSpec &spec) { return spec.grf_prop.grfid == item.grfid && spec.grf_prop.local_id == item.local_id; });
 				if (it == specs.end()) {
 					/* Not preset, hide from UI. */
-					dst.insert({item.grfid, item.local_id, -1, -1});
+					dst.emplace(item.grfid, item.local_id, -1, -1);
 				} else {
 					int class_index = GetClassIdFromHouseZone(it->building_availability);
-					dst.insert( {item.grfid, item.local_id, class_index, it->Index()});
+					dst.emplace(item.grfid, item.local_id, class_index, it->Index());
 				}
 			}
 		}
