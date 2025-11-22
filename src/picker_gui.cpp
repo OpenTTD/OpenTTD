@@ -468,7 +468,7 @@ void PickerWindow::OnDropdownSelect(WidgetID widget, int index, int click_result
 			}
 
 			/* We need to refresh if a filter is removed. */
-			this->InvalidateData({PickerInvalidation::Type, PickerInvalidation::Filter});
+			this->InvalidateData({PickerInvalidation::Type, PickerInvalidation::Filter, PickerInvalidation::Position});
 			break;
 		}
 
@@ -479,7 +479,7 @@ void PickerWindow::OnDropdownSelect(WidgetID widget, int index, int click_result
 				} else {
 					SetBadgeFilter(this->badge_filter_choices, BadgeID(index));
 				}
-				this->InvalidateData({PickerInvalidation::Type, PickerInvalidation::Filter});
+				this->InvalidateData({PickerInvalidation::Type, PickerInvalidation::Filter, PickerInvalidation::Position});
 			}
 			break;
 	}
@@ -555,7 +555,7 @@ void PickerWindow::OnEditboxChanged(WidgetID wid)
 			} else {
 				this->type_string_filter.btf.reset();
 			}
-			this->InvalidateData({PickerInvalidation::Type, PickerInvalidation::Filter});
+			this->InvalidateData({PickerInvalidation::Type, PickerInvalidation::Filter, PickerInvalidation::Position});
 			break;
 
 		default:
@@ -693,7 +693,6 @@ void PickerWindow::BuildPickerTypeList()
 
 	if (!this->has_type_picker) return;
 	this->GetWidget<NWidgetMatrix>(WID_PW_TYPE_MATRIX)->SetCount(static_cast<int>(this->types.size()));
-	this->EnsureSelectedTypeIsVisible();
 }
 
 void PickerWindow::EnsureSelectedTypeIsValid()
