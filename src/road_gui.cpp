@@ -1756,6 +1756,7 @@ void InitializeRoadGui()
 
 /**
  * I really don't know why rail_gui.cpp has this too, shouldn't be included in the other one?
+ * WTF PeterN?
  */
 void InitializeRoadGUI()
 {
