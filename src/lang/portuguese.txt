@@ -1324,7 +1324,7 @@ STR_CONFIG_SETTING_RUNNING_COSTS_MEDIUM                         :Médios
 STR_CONFIG_SETTING_RUNNING_COSTS_HIGH                           :Altos
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocidade de construção: {STRING}
-STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limitar o número de acções de construção para IAs
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limitar o número de ações de construção por jogadores controlados pelo computador
 
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Avarias de veículos: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controla quão frequentemente veículos inadequadamento mantidos podem avariar
@@ -1545,7 +1545,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendário
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Relógio de parede
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minutos por ano: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Escolher o número de minutos por cada ano do calendário. O padrão é 12 minutos. Defina como 0 (zero) para impedir que a hora do calendário seja alterada. O aumento da duração do ano civil retarda a introdução de veículos, casas e outras infra-estruturas. Não afeta a velocidade do veículo nem a simulação económica, exceto a inflação. Esta configuração só está disponível ao usar o relógio de parede
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Escolher o número de minutos por cada ano do calendário. O padrão é 12 minutos. Defina como 0 (zero) para impedir que o tempo do calendário avance. O aumento da duração do ano civil atrasa a introdução de veículos, casas e outras infraestruturas. Não afeta a velocidade dos veículos nem a simulação económica, exceto a inflação. Esta configuração só está disponível ao usar o "relógio de parede" como unidade de cronometragem
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
@@ -1769,7 +1769,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Usar a lista av
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ativar a utilização de listas avançadas de veículos para o agrupamento de veículos
 
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Usar indicadores de carga: {STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Selecionar se os indicadores de carga são mostrados acima de veículos em carga ou descarga
+STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Selecionar se os indicadores de carga são mostrados acima de veículos durante o carregamento e durante a descarga
 
 STR_CONFIG_SETTING_TIMETABLE_MODE                               :Unidades de tempo para horários: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :Selecionar as unidades de tempo usadas nos horários dos veículos
@@ -1860,7 +1860,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Desativar navio
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Ativar esta preferência impossibilita a construção de navios por um jogador controlado pelo computador
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permite IAs em multi-jogador: {STRING}
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Permite a jogadores controlados pelo computador a participação em jogos multi-jogador
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Permite a jogadores controlados pelo computador a participarem em jogos multi-jogador
 
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes antes de os scripts serem suspensos: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Número máximo de passos computacionais que um script pode executar num turno
@@ -2097,7 +2097,7 @@ STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Usar {STRING} p
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tempo gasto para cada recalculo de um componente de gráfico de ligação. Quando um recalculo é iniciado, um encadeamento é gerado e pode ser executado nesse número de segundos. Quanto mais curto você definir, mais provável será que o encadeamento não seja concluído quando deveria. Então o jogo para até que possa continuar. Quanto mais tempo você definir, mais tempo levará para a distribuição ser atualizada quando as rotas mudarem
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modo de distribuição para os passageiros: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simétrico" significa que aproximadamente o mesmo numero de passageiros irá de uma estação A para uma estação B e de B para A. "Assimétrico" significa que um numero arbitrário de passageiros poderá seguir em qualquer direção. "Manual" significa que nenhuma distribuição automática terá lugar para passageiros
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simétrico" significa que aproximadamente o mesmo número de passageiros irá de uma estação A para uma estação B e de B para A. "Assimétrico" significa que um número arbitrário de passageiros poderá seguir em qualquer direção. "Manual" significa que nenhuma distribuição automática terá lugar para passageiros
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Modo de distribuição para o correio: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Simétrico" significa que aproximadamente a mesma quantidade de correio será enviada de uma estação A para a estação B assim como de B para A. "Assimétrico" significa que uma quantidade arbitrária de correio poderá ser enviada em qualquer direção. "Manual" significa que nenhuma distribuição automática terá lugar para o correio
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Modo de distribuição para a classe de carga BLINDADA: {STRING}
@@ -2110,7 +2110,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :Assimétrico
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :Simétrico
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Precisão de distribuição: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Quanto mais alto o definir, mais tempo o CPU demorará a calcular o gráfico de ligações. Se demorar muito poderá notar-se algum lag. Se no entanto for definido um valor reduzido a distribuição será imprecisa, e poderá verificar cargas não serem entregues onde seriam esperadas
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Quanto mais alto o definir, mais tempo o CPU demorará a calcular o gráfico de ligações. Se demorar muito poderá atrasar a execução do jogo. Se no entanto for definido um valor reduzido a distribuição será imprecisa, e poderá verificar cargas não serem entregues onde seriam esperadas
 
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efeito de distância nos pedidos: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Se definir para um valor maior que 0, a distância entre a estação de origem A para alguma carga e um possível destino B terá um efeito na quantidade de carga transportada de A para B. Quanto maior a distância de B para A, menos carga será enviada. Quanto maior o valor definido, menos carga será transportada para estações distantes, e mais carga será levada para estações próximas
