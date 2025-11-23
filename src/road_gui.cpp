@@ -1763,7 +1763,8 @@ void InitializeRoadGUI()
 	if (w != nullptr) w->ModifyRoadType(_cur_roadtype);
 }
 
-static constexpr RoadType ROADTYPE_SUBLIST_END{ROADTYPE_END + 1};
+static constexpr RoadType ROADTYPE_SUBLIST_END{ROADTYPE_END + 1}; ///< Special value to mark the dropdown list divider item.
+static constexpr RoadType ROADTYPE_HIDDABLE_SUBLIST_END{ROADTYPE_SUBLIST_END + 1}; ///< Special value to mark the dropdown list divider item that is only visible when ctrl is pressed.
 
 DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, bool all_option)
 {
@@ -1821,7 +1822,7 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 		}
 	}
 
-	if (_ctrl_pressed) {
+	if (c->hidden_roadtypes.Any()) {
 		bool has_added_hidden_type = false;
 		for (RoadType rt : _sorted_roadtypes) {
 			if (!c->hidden_roadtypes.Test(rt)) continue;
@@ -1830,18 +1831,19 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 			has_added_hidden_type = true;
 		}
 		if (has_added_hidden_type) {
-			roadtypes.push_back(ROADTYPE_SUBLIST_END); ///< Mark end of sub list.
+			roadtypes.push_back(ROADTYPE_HIDDABLE_SUBLIST_END); ///< Mark end of sub list.
 		}
 	}
 
 	roadtypes.insert(roadtypes.end(), _sorted_roadtypes.begin(), _sorted_roadtypes.end());
 
-	size_t num_dividers = 0;
+	size_t in_last_sublist = 0;
 
 	for (const auto &rt : roadtypes) {
-		if (rt == ROADTYPE_SUBLIST_END) {
-			list.push_back(MakeDropDownListDividerItem<FS_SMALL>());
-			num_dividers += 1;
+		if (rt >= ROADTYPE_SUBLIST_END) {
+			if (rt == ROADTYPE_HIDDABLE_SUBLIST_END) list.push_back(MakeDropDownListDividerItem<FS_SMALL>({DropDownListDividerItem<FS_SMALL>::State::Default, DropDownListDividerItem<FS_SMALL>::State::ShiftPressed}));
+			else list.push_back(MakeDropDownListDividerItem<FS_SMALL>());
+			in_last_sublist = 0;
 			continue;
 		}
 
@@ -1851,22 +1853,20 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 		if (already_in_dropdown.Test(rt)) continue;
 		already_in_dropdown.Set(rt);
 
-		if (!_ctrl_pressed && c->hidden_roadtypes.Test(rt)) continue;
-
+		in_last_sublist += 1;
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 
 		if (for_replacement) {
-			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GSF_ROADTYPES, rti->introduction_date, GetString(rti->strings.replace_text), rt, false, !avail_roadtypes.Test(rt) || c->hidden_roadtypes.Test(rt), COLOUR_MAUVE, COLOUR_ORANGE));
+			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GSF_ROADTYPES, rti->introduction_date, GetString(rti->strings.replace_text), rt, false, !avail_roadtypes.Test(rt) || c->hidden_roadtypes.Test(rt), COLOUR_MAUVE, COLOUR_ORANGE, c->hidden_roadtypes.Test(rt)));
 		} else {
 			std::string str = rti->max_speed > 0
 				? GetString(STR_TOOLBAR_RAILTYPE_VELOCITY, rti->strings.menu_text, rti->max_speed / 2)
 				: GetString(rti->strings.menu_text);
-			list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GSF_ROADTYPES, rti->introduction_date, RoadBuildCost(rt), d, rti->gui_sprites.build_x_road, PAL_NONE, std::move(str), rt, false, !avail_roadtypes.Test(rt) || c->hidden_roadtypes.Test(rt), COLOUR_MAUVE, COLOUR_ORANGE));
+			list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GSF_ROADTYPES, rti->introduction_date, RoadBuildCost(rt), d, rti->gui_sprites.build_x_road, PAL_NONE, std::move(str), rt, false, !avail_roadtypes.Test(rt) || c->hidden_roadtypes.Test(rt), COLOUR_MAUVE, COLOUR_ORANGE, c->hidden_roadtypes.Test(rt)));
 		}
 	}
 
-	if (list.size() <= num_dividers) {
-		list.clear();
+	if (in_last_sublist == 0) {
 		/* Empty dropdowns are not allowed */
 		list.push_back(MakeDropDownListStringItem(STR_NONE, INVALID_ROADTYPE, true));
 	}

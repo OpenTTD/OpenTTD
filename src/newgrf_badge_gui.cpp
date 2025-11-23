@@ -254,39 +254,42 @@ private:
 	Dimension dim{};
 };
 
-using DropDownListBadgeItem = DropDownCustomSelectedBGColour<DropDownBadges<DropDownString<DropDownSpacer<DropDownListStringItem, true>, FS_SMALL, true>>>;
-using DropDownListBadgeIconItem = DropDownCustomSelectedBGColour<DropDownBadges<DropDownString<DropDownSpacer<DropDownListIconItem, true>, FS_SMALL, true>>>;
+using DropDownListBadgeItem = DropDownHiddable<DropDownCustomSelectedBGColour<DropDownBadges<DropDownString<DropDownSpacer<DropDownListStringItem, true>, FS_SMALL, true>>>>;
+using DropDownListBadgeIconItem = DropDownHiddable<DropDownCustomSelectedBGColour<DropDownBadges<DropDownString<DropDownSpacer<DropDownListIconItem, true>, FS_SMALL, true>>>>;
 
-std::unique_ptr<DropDownListItem> MakeDropDownListBadgeItem(const std::shared_ptr<GUIBadgeClasses> &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, std::string &&cost_string, std::string &&str, int value, bool masked, bool shaded, std::optional<Colours> ctrl_bg_colour, std::optional<Colours> shift_bg_colour)
+std::unique_ptr<DropDownListItem> MakeDropDownListBadgeItem(const std::shared_ptr<GUIBadgeClasses> &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, std::string &&cost_string, std::string &&str, int value, bool masked, bool shaded, std::optional<Colours> ctrl_bg_colour, std::optional<Colours> shift_bg_colour, bool only_visible_with_ctrl)
 {
 	DropDownListBadgeItem::ColourType ctrl_colour(false);
 	if (ctrl_bg_colour.has_value()) ctrl_colour = ctrl_bg_colour.value();
 	DropDownListBadgeItem::ColourType shift_colour(false);
 	if (shift_bg_colour.has_value()) shift_colour = shift_bg_colour.value();
+	DropDownListBadgeItem::States hidden_states = {};
+	if (only_visible_with_ctrl) hidden_states = {DropDownListBadgeItem::State::Default, DropDownListBadgeItem::State::ShiftPressed};
 	return std::make_unique<DropDownListBadgeItem>(
-			false, shift_colour, ctrl_colour,
+			hidden_states, false, shift_colour, ctrl_colour,
 			gui_classes, badges, feature, introduction_date, std::move(cost_string),
 			std::move(str), value, masked, shaded);
 }
-
-std::unique_ptr<DropDownListItem> MakeDropDownListBadgeItem(const std::shared_ptr<GUIBadgeClasses> &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, std::string &&str, int value, bool masked, bool shaded, std::optional<Colours> ctrl_bg_colour, std::optional<Colours> shift_bg_colour)
+std::unique_ptr<DropDownListItem> MakeDropDownListBadgeItem(const std::shared_ptr<GUIBadgeClasses> &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, std::string &&str, int value, bool masked, bool shaded, std::optional<Colours> ctrl_bg_colour, std::optional<Colours> shift_bg_colour, bool only_visible_with_ctrl)
 {
-	return MakeDropDownListBadgeItem(gui_classes, badges, feature, introduction_date, "", std::move(str), value, masked, shaded, ctrl_bg_colour, shift_bg_colour);
+	return MakeDropDownListBadgeItem(gui_classes, badges, feature, introduction_date, "", std::move(str), value, masked, shaded, ctrl_bg_colour, shift_bg_colour, only_visible_with_ctrl);
 }
 
-std::unique_ptr<DropDownListItem> MakeDropDownListBadgeItem(const std::shared_ptr<GUIBadgeClasses> &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, Money cost, std::string &&str, int value, bool masked, bool shaded, std::optional<Colours> ctrl_bg_colour, std::optional<Colours> shift_bg_colour)
+std::unique_ptr<DropDownListItem> MakeDropDownListBadgeItem(const std::shared_ptr<GUIBadgeClasses> &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, Money cost, std::string &&str, int value, bool masked, bool shaded, std::optional<Colours> ctrl_bg_colour, std::optional<Colours> shift_bg_colour, bool only_visible_with_ctrl)
 {
-	return MakeDropDownListBadgeItem(gui_classes, badges, feature, introduction_date, GetString(STR_JUST_CURRENCY_SHORT, cost), std::move(str), value, masked, shaded, ctrl_bg_colour, shift_bg_colour);
+	return MakeDropDownListBadgeItem(gui_classes, badges, feature, introduction_date, GetString(STR_JUST_CURRENCY_SHORT, cost), std::move(str), value, masked, shaded, ctrl_bg_colour, shift_bg_colour, only_visible_with_ctrl);
 }
 
-std::unique_ptr<DropDownListItem> MakeDropDownListBadgeIconItem(const std::shared_ptr<GUIBadgeClasses> &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, Money cost, const Dimension &dim, SpriteID sprite, PaletteID palette, std::string &&str, int value, bool masked, bool shaded, std::optional<Colours> ctrl_bg_colour, std::optional<Colours> shift_bg_colour)
+std::unique_ptr<DropDownListItem> MakeDropDownListBadgeIconItem(const std::shared_ptr<GUIBadgeClasses> &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, Money cost, const Dimension &dim, SpriteID sprite, PaletteID palette, std::string &&str, int value, bool masked, bool shaded, std::optional<Colours> ctrl_bg_colour, std::optional<Colours> shift_bg_colour, bool only_visible_with_ctrl)
 {
 	DropDownListBadgeIconItem::ColourType ctrl_colour(false);
 	if (ctrl_bg_colour.has_value()) ctrl_colour = ctrl_bg_colour.value();
 	DropDownListBadgeIconItem::ColourType shift_colour(false);
 	if (shift_bg_colour.has_value()) shift_colour = shift_bg_colour.value();
+	DropDownListBadgeIconItem::States hidden_states = {};
+	if (only_visible_with_ctrl) hidden_states = {DropDownListBadgeIconItem::State::Default, DropDownListBadgeIconItem::State::ShiftPressed};
 	return std::make_unique<DropDownListBadgeIconItem>(
-			false, shift_colour, ctrl_colour,
+			hidden_states, false, shift_colour, ctrl_colour,
 			gui_classes, badges, feature, introduction_date, GetString(STR_JUST_CURRENCY_SHORT, cost),
 			dim, sprite, palette, std::move(str), value, masked, shaded);
 }

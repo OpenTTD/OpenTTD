@@ -20,9 +20,9 @@ void ShowDropDownMenu(Window *w, std::span<const StringID> strings, int selected
 
 /* Helper functions for commonly used drop down list items. */
 template <FontSize TFs = FS_NORMAL>
-std::unique_ptr<DropDownListItem> MakeDropDownListDividerItem()
+inline std::unique_ptr<DropDownListItem> MakeDropDownListDividerItem(typename DropDownListDividerItem<TFs>::States hidden_states = {})
 {
-	return std::make_unique<DropDownDivider<DropDownListItem, TFs>>(-1);
+	return std::make_unique<DropDownListDividerItem<TFs>>(hidden_states, -1);
 }
 
 std::unique_ptr<DropDownListItem> MakeDropDownListStringItem(StringID str, int value, bool masked = false, bool shaded = false);

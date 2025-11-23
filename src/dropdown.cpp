@@ -115,7 +115,7 @@ struct DropdownWindow : Window {
 		this->GetWidget<NWidgetCore>(WID_DM_ITEMS)->colour = wi_colour;
 		this->GetWidget<NWidgetCore>(WID_DM_SCROLL)->colour = wi_colour;
 		this->vscroll = this->GetScrollbar(WID_DM_SCROLL);
-		this->UpdateSizeAndPosition();
+		this->UpdateSizeAndPosition(false);
 
 		this->FinishInitNested(0);
 		this->flags.Reset(WindowFlag::WhiteBorder);
@@ -165,8 +165,9 @@ struct DropdownWindow : Window {
 
 	/**
 	 * Update size and position of window to fit dropdown list into available space.
+	 * @param apply_new_size_and_position Iff true the window will be reinitialized.
 	 */
-	void UpdateSizeAndPosition()
+	void UpdateSizeAndPosition(bool apply_new_size_and_position = true)
 	{
 		Rect button_rect = this->wi_rect.Translate(this->parent->left, this->parent->top);
 
@@ -210,6 +211,12 @@ struct DropdownWindow : Window {
 
 		/* If the dropdown is positioned above the parent widget, start selection at the bottom. */
 		if (this->position.y < button_rect.top && list_dim.height > widget_dim.height) this->vscroll->UpdatePosition(INT_MAX);
+
+		if (apply_new_size_and_position) {
+			this->ReInit(0, 0);
+			this->InitializePositionSize(this->position.x, this->position.y, this->nested_root->smallest_x, this->nested_root->smallest_y);
+			this->FindWindowPlacementAndResize(this->window_desc.GetDefaultWidth(), this->window_desc.GetDefaultHeight(), true);
+		}
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -308,6 +315,8 @@ struct DropdownWindow : Window {
 		if (this->last_ctrl_state != _ctrl_pressed || this->last_shift_state != _shift_pressed) {
 			/* Dropdown might contain an item with specified custom bg colours, allow it to update. */
 			this->SetDirty();
+			/* Also handle hiddable items. */
+			this->UpdateSizeAndPosition();
 			this->last_ctrl_state = _ctrl_pressed;
 			this->last_shift_state = _shift_pressed;
 		}
@@ -357,9 +366,6 @@ struct DropdownWindow : Window {
 		this->list = std::move(list);
 		if (selected_result.has_value()) this->selected_result = *selected_result;
 		this->UpdateSizeAndPosition();
-		this->ReInit(0, 0);
-		this->InitializePositionSize(this->position.x, this->position.y, this->nested_root->smallest_x, this->nested_root->smallest_y);
-		this->FindWindowPlacementAndResize(this->window_desc.GetDefaultWidth(), this->window_desc.GetDefaultHeight(), true);
 		this->SetDirty();
 	}
 };

@@ -2021,6 +2021,8 @@ void InitializeRailGUI()
 	ResetSignalVariant();
 }
 
+static constexpr RailType RAILTYPE_HIDDABLE_SUBLIST_END{RAILTYPE_END + 1}; ///< Special value to mark the dropdown list divider item that is only visible when ctrl is pressed.
+
 /**
  * Create a drop down list for all the rail types of the local company.
  * @param for_replacement Whether this list is for the replacement window.
@@ -2070,29 +2072,29 @@ DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
 	railtypes.reserve((c->favourite_railtypes.Any() ? c->favourite_railtypes.Count() + 1 : 0)
 		+ _sorted_railtypes.size());
 
-	if (c->favourite_railtypes.Any()) {
-		for (RailType rt : c->favourite_railtypes) {
-			if (c->hidden_railtypes.Test(rt)) continue;
+	if (auto fr = c->favourite_railtypes; fr.Reset(c->hidden_railtypes).Any()) {
+		for (RailType rt : fr) {
 			railtypes.push_back(rt);
 		}
 		railtypes.push_back(RAILTYPE_END); ///< Mark end of sub list.
 	}
 
-	if (_ctrl_pressed && c->hidden_railtypes.Any()) {
+	if (c->hidden_railtypes.Any()) {
 		for (RailType rt : _sorted_railtypes) {
 			if (c->hidden_railtypes.Test(rt)) railtypes.push_back(rt);
 		}
-		railtypes.push_back(RAILTYPE_END); ///< Mark end of sub list.
+		railtypes.push_back(RAILTYPE_HIDDABLE_SUBLIST_END); ///< Mark end of sub list.
 	}
 
 	railtypes.insert(railtypes.end(), _sorted_railtypes.begin(), _sorted_railtypes.end());
 
-	size_t num_dividers = 0;
+	size_t in_last_sublist = 0;
 
 	for (const auto &rt : railtypes) {
-		if (rt == RAILTYPE_END) {
-			list.push_back(MakeDropDownListDividerItem<FS_SMALL>());
-			num_dividers += 1;
+		if (rt >= RAILTYPE_END) {
+			if (rt == RAILTYPE_HIDDABLE_SUBLIST_END) list.push_back(MakeDropDownListDividerItem<FS_SMALL>({DropDownListDividerItem<FS_SMALL>::State::Default, DropDownListDividerItem<FS_SMALL>::State::ShiftPressed}));
+			else list.push_back(MakeDropDownListDividerItem<FS_SMALL>());
+			in_last_sublist = 0;
 			continue;
 		}
 
@@ -2102,22 +2104,20 @@ DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
 		if (already_in_dropdown.Test(rt)) continue;
 		already_in_dropdown.Set(rt);
 
-		if (!_ctrl_pressed && c->hidden_railtypes.Test(rt)) continue;
-
+		in_last_sublist += 1;
 		const RailTypeInfo *rti = GetRailTypeInfo(rt);
 
 		if (for_replacement) {
-			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, GetString(rti->strings.replace_text), rt, false, !avail_railtypes.Test(rt) || c->hidden_railtypes.Test(rt), COLOUR_MAUVE, COLOUR_ORANGE));
+			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, GetString(rti->strings.replace_text), rt, false, !avail_railtypes.Test(rt) || c->hidden_railtypes.Test(rt), COLOUR_MAUVE, COLOUR_ORANGE, c->hidden_railtypes.Test(rt)));
 		} else {
 			std::string str = rti->max_speed > 0
 				? GetString(STR_TOOLBAR_RAILTYPE_VELOCITY, rti->strings.menu_text, rti->max_speed)
 				: GetString(rti->strings.menu_text);
-			list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, RailBuildCost(rt), d, rti->gui_sprites.build_x_rail, PAL_NONE, std::move(str), rt, false, !avail_railtypes.Test(rt) || c->hidden_railtypes.Test(rt), COLOUR_MAUVE, COLOUR_ORANGE));
+			list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, RailBuildCost(rt), d, rti->gui_sprites.build_x_rail, PAL_NONE, std::move(str), rt, false, !avail_railtypes.Test(rt) || c->hidden_railtypes.Test(rt), COLOUR_MAUVE, COLOUR_ORANGE, c->hidden_railtypes.Test(rt)));
 		}
 	}
 
-	if (list.size() <= num_dividers) {
-		list.clear();
+	if (in_last_sublist == 0) {
 		/* Empty dropdowns are not allowed */
 		list.push_back(MakeDropDownListStringItem(STR_NONE, INVALID_RAILTYPE, true));
 	}
