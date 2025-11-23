@@ -24,10 +24,11 @@ template <> struct std::hash<BadgeClassID> {
 };
 
 enum class BadgeFlag : uint8_t {
-	Copy              = 0, ///< Copy badge to related things.
-	NameListStop      = 1, ///< Stop adding names to the name list after this badge.
+	Copy = 0, ///< Copy badge to related things.
+	NameListStop = 1, ///< Stop adding names to the name list after this badge.
 	NameListFirstOnly = 2, ///< Don't add this name to the name list if not first.
-	UseCompanyColour  = 3, ///< Apply company colour palette to this badge.
+	UseCompanyColour = 3, ///< Apply company colour palette to this badge.
+	NameListSkip = 4, ///< Don't show name in name list at all.
 
 	HasText, ///< Internal flag set if the badge has text.
 };
