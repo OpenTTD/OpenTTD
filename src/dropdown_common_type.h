@@ -347,9 +347,78 @@ public:
 	}
 };
 
+/**
+ * Drop down component that hides its content.
+ * @tparam TBase Base component.
+ */
+template <class TBase>
+class DropDownHiddable : public TBase {
+public:
+	enum class State {
+		Default,
+		CtrlPressed,
+		ShiftPressed,
+	};
+	using States = EnumBitSet<DropDownHiddable<TBase>::State, uint8_t>;
+private:
+	bool hide_on_ctrl;
+	bool hide_on_shift;
+	bool hide_on_default;
+public:
+	template <typename... Args>
+	explicit DropDownHiddable(const DropDownHiddable<TBase>::States &hidden_states, Args&&... args) : TBase(std::forward<Args>(args)...)
+	{
+		this->hide_on_ctrl = hidden_states.Test(DropDownHiddable<TBase>::State::CtrlPressed);
+		this->hide_on_shift = hidden_states.Test(DropDownHiddable<TBase>::State::ShiftPressed);
+		this->hide_on_default = hidden_states.Test(DropDownHiddable<TBase>::State::Default);
+	}
+
+	/**
+	 * Checks if the item should be drawn.
+	 * @return true iff the item is visible.
+	 */
+	bool IsVisible() const
+	{
+		if (this->hide_on_ctrl && _ctrl_pressed) return false;
+		if (this->hide_on_shift && _shift_pressed) return false;
+		if (this->hide_on_default && !_ctrl_pressed && !_shift_pressed) return false;
+		return true;
+	}
+
+	uint Height() const override
+	{
+		if (this->IsVisible()) return this->TBase::Height();
+		return 0;
+	}
+
+	uint Width() const override
+	{
+		if (this->IsVisible()) return this->TBase::Width();
+		return 0;
+	}
+
+	int OnClick(const Rect &r, const Point &pt) const override
+	{
+		if (this->IsVisible()) return this->TBase::OnClick(r, pt);
+		return -1;
+	}
+
+	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
+	{
+		if (this->IsVisible()) this->TBase::Draw(full, r, sel, click_result, bg_colour);
+	}
+};
+
 /* Commonly used drop down list items. */
 using DropDownListStringItem = DropDownString<DropDownListItem>;
 using DropDownListIconItem = DropDownIcon<DropDownString<DropDownListItem>>;
 using DropDownListCheckedItem = DropDownIndent<DropDownCheck<DropDownString<DropDownListItem>>>;
+
+/**
+ * Drop down list divider item.
+ * @tparam TFs Font size -- used to determine height.
+ */
+template<FontSize TFs = FS_NORMAL>
+using DropDownListDividerItem = DropDownHiddable<DropDownDivider<DropDownListItem, TFs>>;
 
 #endif /* DROPDOWN_COMMON_TYPE_H */
