@@ -709,7 +709,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Onemogoči vse
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Prikaži ves tovor na grafu plačil
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ne prikaži tovora na grafu plačil
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Prikaži graf za tip tovora vključen/izključen
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Prikaži graf za tip tovora vključen/izključen
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
@@ -2168,7 +2168,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Datum
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Tekoči datum
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Jezik, različica strežnika, itd.
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klikni na igro v seznamu, da jo izbereš
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Klikni na igro v seznamu, da jo izbereš
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Zadnjič obiskani strežnik:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Klikni za izbiro zadnjič obiskanega strežnika
 
@@ -3340,7 +3340,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Prepreč
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Osredotoči pogled na lokacijo točke poti. Ctrl+Klik odpre nov pogled na lokaciji točke poti
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Spremeni ime točke poti
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Spremeni ime točke poti
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Osredotoči pogled na lokacijo boje. Ctrl+Klik odpre nov pogled na lokaciji boje
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Spremeni ime boje
 
@@ -3765,10 +3765,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Pošlji 
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Pošlji letalo v hangar. Ctrl+Klik samo na servis
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}To bo kupilo kopijo vlaka vključno z vsemi vagoni. Ctrl+Klik skopira tudi navodila. Shift+Klik prikaže predviden strošek brez nakupa
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}To bo kupilo kopijo cestnega vozila. Ctrl+Klik skopira tudi navodila. Shift+Klik prikaže predviden strošek brez nakupa
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}To bo kupilo kopijo ladje. Ctrl+Klik skopira tudi navodila. Shift+Klik prikaže predviden strošek brez nakupa
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}To bo kupilo kopijo letala. Ctrl+Klik skopira tudi navodila. Shift+Klik prikaže predviden strošek brez nakupa
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}To bo kupilo kopijo vlaka vključno z vsemi vagoni. Ctrl+Klik skopira tudi navodila. Shift+Klik prikaže predviden strošek brez nakupa
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}To bo kupilo kopijo cestnega vozila. Ctrl+Klik skopira tudi navodila. Shift+Klik prikaže predviden strošek brez nakupa
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}To bo kupilo kopijo ladje. Ctrl+Klik skopira tudi navodila. Shift+Klik prikaže predviden strošek brez nakupa
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}To bo kupilo kopijo letala. Ctrl+Klik skopira tudi navodila. Shift+Klik prikaže predviden strošek brez nakupa
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Prisili vlak, naj nadaljuje brez čakanja signalov
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Obrni smer vlaka
@@ -3820,10 +3820,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Začeto
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Podrobnosti)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Poimenuj vlak
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Poimenuj cestno vozilo
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Poimenuj ladjo
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Poimenuj letalo
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Poimenuj vlak
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Poimenuj cestno vozilo
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Poimenuj ladjo
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Poimenuj letalo
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} let{P o i a ""} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} let{P o i a ""} ({COMMA})

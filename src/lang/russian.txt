@@ -767,8 +767,8 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 лет (поквартально)
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 года
 
-STR_GRAPH_TOGGLE_RANGE                                          :Включить/отключить отображение графика
-STR_GRAPH_SELECT_SCALE                                          :Сменить горизонтальный масштаб графика
+STR_GRAPH_TOGGLE_RANGE_TOOLTIP                                  :Включить/отключить отображение графика
+STR_GRAPH_SELECT_SCALE_TOOLTIP                                  :Сменить горизонтальный масштаб графика
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Оплата за перевозку грузов
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Дней в пути
@@ -778,7 +778,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Ничего
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Показать все виды грузов на графике
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Скрыть все виды грузов на графике
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Включить/отключить отображение груза на графике
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Включить/отключить отображение груза на графике
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Продукция
@@ -2560,7 +2560,7 @@ STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Прош
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Время, проведённое в игре{}(без учёта времени, когда игра была приостановлена)
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Совместимость с версией сервера и статус аутентификации
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Выберите игру из списка
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Выберите игру из списка
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Последний сервер, к которому вы подключались:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Нажмите для выбора последнего сервера
 
@@ -2956,7 +2956,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Объе
 STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Поставить отдельную маршрутную точку
 
 # Generic toolbar
-STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Отключено, так как нет подходящих транспортных средств для этой инфраструктуры
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE_TOOLTIP               :{BLACK}Отключено, так как нет подходящих транспортных средств для этой инфраструктуры
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Неэлектрифицированная ж/д
@@ -3949,9 +3949,9 @@ STR_GOALS_CAPTION                                               :{WHITE}Зада
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Глобальные задачи
 STR_GOALS_SPECTATOR                                             :Глобальные задачи
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Глобальные
-STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Показать глобальные задачи
+STR_GOALS_GLOBAL_BUTTON_TOOLTIP                                 :{BLACK}Показать глобальные задачи
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Компания
-STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Показать задачи компании
+STR_GOALS_COMPANY_BUTTON_TOOLTIP                                :{BLACK}Показать задачи компании
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Нет -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -4094,7 +4094,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Запр
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Показать маршрутную точку в основном окне. Ctrl+щелчок{}NBSP- показать в дополнительном окне.
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Переименовать маршрутную точку
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Переименовать маршрутную точку
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Показать буй в основном окне. Ctrl+щелчок - показать в дополнительном окне.
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Изменить название буя
 
@@ -4635,10 +4635,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Отпр
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Отправить воздушное судно в ангар. Ctrl+щелчок{NBSP}- провести техническое обслуживание.
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Создать копию состава. Ctrl+щелчок создаст поезд с общим маршрутом. При нажатом Shift{NBSP}- оценка стоимости покупки.
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Создать копию автомобиля. Ctrl+щелчок создаст автомобиль с общим маршрутом. При нажатом Shift - оценка стоимости покупки.
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Создать копию судна. Ctrl+щелчок создаст судно с общим маршрутом. При нажатом Shift - оценка стоимости покупки.
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Создать копию воздушного судна. Ctrl+щелчок создаст копию с общим маршрутом. При нажатом Shift - оценка стоимости покупки.
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Создать копию состава. Ctrl+щелчок создаст поезд с общим маршрутом. При нажатом Shift{NBSP}- оценка стоимости покупки.
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Создать копию автомобиля. Ctrl+щелчок создаст автомобиль с общим маршрутом. При нажатом Shift - оценка стоимости покупки.
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Создать копию судна. Ctrl+щелчок создаст судно с общим маршрутом. При нажатом Shift - оценка стоимости покупки.
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Создать копию воздушного судна. Ctrl+щелчок создаст копию с общим маршрутом. При нажатом Shift - оценка стоимости покупки.
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Заставить поезд проехать на красный сигнал светофора
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Развернуть поезд
@@ -4701,10 +4701,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Запу
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Детали)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Переименовать поезд
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Переименовать автомобиль
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Переименовать судно
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Переименовать воздушное судно
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Переименовать поезд
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Переименовать автомобиль
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Переименовать судно
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Переименовать воздушное судно
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} {P год года лет} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P год года лет} ({COMMA})

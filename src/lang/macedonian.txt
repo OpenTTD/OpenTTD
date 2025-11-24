@@ -529,7 +529,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Оневозможи ги сите
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Приказ на сите Товарот на товар плаќање стапки графикон
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Покажи нема Товарот на товар плаќање стапки графикон
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Вклучи графикон за карго тип за вклучување / исклучување
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Вклучи графикон за карго тип за вклучување / исклучување
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
@@ -1833,7 +1833,7 @@ STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Пре�
 # Vehicle details
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Име на авионот
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Име на авионот
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} година{P "" s} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} година{P "" s} ({COMMA})

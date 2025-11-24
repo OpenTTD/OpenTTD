@@ -629,8 +629,8 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 tau (ā-hauwhā)
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 tau (ā-tau)
 
-STR_GRAPH_TOGGLE_RANGE                                          :Hohokona te kauwhata o tēnei whānui raraunga
-STR_GRAPH_SELECT_SCALE                                          :Panonitia te āwhata huapae o te kauwhata
+STR_GRAPH_TOGGLE_RANGE_TOOLTIP                                  :Hohokona te kauwhata o tēnei whānui raraunga
+STR_GRAPH_SELECT_SCALE_TOOLTIP                                  :Panonitia te āwhata huapae o te kauwhata
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Uara o ngā utu utanga
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Rā e kawea ai
@@ -640,7 +640,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Kore
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Whakaaria ngā momo utanga katoa ki te kauwhata o ngā uara o ngā utu utanga
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Kaua he utanga e whakaaria ki te kauwhata o ngā uara o ngā utu utanga
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Hohokona te kauwhata o tēnei momo utanga
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Hohokona te kauwhata o tēnei momo utanga
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Hītori Utanga
@@ -2409,7 +2409,7 @@ STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Wā kua 
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Wā kua tākaro ai{}kāore te kēmu i okioki
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Hototahi tūmau me te pārongo motuhēhēnga
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Pāwhiria he kēmu nō te rārangi kia tīpakona
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Pāwhiria he kēmu nō te rārangi kia tīpakona
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Te tūmau i honoa e koe i tērā wā:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Pāwhiria kia tīpako i te tūmau i tākaro ai koe i tērā wā
 
@@ -2793,7 +2793,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Honoa te
 STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Hangaia he aratohu motuhake
 
 # Generic toolbar
-STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Tē āhei ināianei i te mea kāore he waka i te wātea mō tēnei tūāhanga
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE_TOOLTIP               :{BLACK}Tē āhei ināianei i te mea kāore he waka i te wātea mō tēnei tūāhanga
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Hanga Rerewhenua
@@ -3774,9 +3774,9 @@ STR_GOALS_CAPTION                                               :{WHITE}Whāinga
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Whāinga o te Katoa
 STR_GOALS_SPECTATOR                                             :Whāinga o te Katoa
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Katoa
-STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Whakaaria ngā whāinga o te katoa
+STR_GOALS_GLOBAL_BUTTON_TOOLTIP                                 :{BLACK}Whakaaria ngā whāinga o te katoa
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Umanga
-STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Whakaaria ngā whāinga o te umanga
+STR_GOALS_COMPANY_BUTTON_TOOLTIP                                :{BLACK}Whakaaria ngā whāinga o te umanga
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Kore -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3919,7 +3919,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Āraia n
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Nekehia te tirohanga matua ki te tauwāhi o te aratohu. Pātaki+Pāwhiri kia huaki i tētahi atu tirohanga i te tauwāhi o te aratohu
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Panonitia te ingoa o te aratohu
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Panonitia te ingoa o te aratohu
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Nekehia te tirohanga matua ki te tauwāhi o te kārewa. Pātaki+Pāwhiri kia huaki i tētahi atu tirohanga i te tauwāhi o te kārewa
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Panonitia te ingoa o te kārewa
 
@@ -4448,10 +4448,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Ungaia t
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Ungaia te waka rererangi ki te whare. Pātaki+Pāwhiri kia tapia anake
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Hokona mai he tārua o te tereina me ana wākena. Pātaki+Pāwhiri kia toha i te rārangi mahi. Pēhi hoki i te Pāhiki kia whakaatu noa iho i te whakataunga tata o te utu
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Hokona mai he tārua o te waka rori. Pātaki+Pāwhiri kia toha i te rārangi mahi. Pēhi hoki i te Pāhiki kia whakaatu noa iho i te whakataunga tata o te utu
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Hokona mai he tārua o te kaipuke. Pātaki+Pāwhiri kia toha i te rārangi mahi. Pēhi hoki i te Pāhiki kia whakaatu noa iho i te whakataunga tata o te utu
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Hokona mai he tārua o te waka rererangi. Pātaki+Pāwhiri kia toha i te rārangi mahi. Pēhi hoki i te Pāhiki kia whakaatu noa iho i te whakataunga tata o te utu
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Hokona mai he tārua o te tereina me ana wākena. Pātaki+Pāwhiri kia toha i te rārangi mahi. Pēhi hoki i te Pāhiki kia whakaatu noa iho i te whakataunga tata o te utu
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Hokona mai he tārua o te waka rori. Pātaki+Pāwhiri kia toha i te rārangi mahi. Pēhi hoki i te Pāhiki kia whakaatu noa iho i te whakataunga tata o te utu
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Hokona mai he tārua o te kaipuke. Pātaki+Pāwhiri kia toha i te rārangi mahi. Pēhi hoki i te Pāhiki kia whakaatu noa iho i te whakataunga tata o te utu
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Hokona mai he tārua o te waka rererangi. Pātaki+Pāwhiri kia toha i te rārangi mahi. Pēhi hoki i te Pāhiki kia whakaatu noa iho i te whakataunga tata o te utu
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Meinga te tereina kia whano ahakoa ka ārai te tohu
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Whakahurihia te ahu o te tereina
@@ -4514,10 +4514,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Kua tīm
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Taipitopito)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Tapaia te tereina
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Tapaia te waka rori
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Tapaia te kaipuke
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Tapaia te waka rererangi
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Tapaia te tereina
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Tapaia te waka rori
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Tapaia te kaipuke
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Tapaia te waka rererangi
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} tau ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} tau ({COMMA})

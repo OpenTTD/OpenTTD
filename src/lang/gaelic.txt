@@ -754,7 +754,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Cuir a h-uile à comas
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Seall a h-uile carago air a' ghraf air reataichean pàighidh carago
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Na seall carago sam bith air a' ghraf air reataichean pàighidh carago
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Toglaich graf air seòrsa dhe charago air/dheth
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Toglaich graf air seòrsa dhe charago air/dheth
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
@@ -2218,7 +2218,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Ceann-la
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Ceann-latha an-dràsta
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Cànan, tionndadh an fhrithealaiche, agus msaa.
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Briog air geama air an liosta gus a thaghadh
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Briog air geama air an liosta gus a thaghadh
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Am frithealaiche sa ghabh thu an turas mu dheireadh:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Briog gus am frithealaiche a thaghadh air an do chluich thu an turas mu dheireadh
 
@@ -3447,7 +3447,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Bac carb
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Meadhanaich am prìomh-shealladh air a' phuing-thurais. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad na puinge-turais
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Thoir ainm ùr air a' phuing-thurais
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Thoir ainm ùr air a' phuing-thurais
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Meadhanaich am prìomh-shealladh air an fhleodrainn. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad na fleodrainn
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Atharraich ainm an fhleodrainn
 
@@ -3879,10 +3879,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Cuir lon
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Cuir carbad-adhair dhan hangar. Cha dèan Ctrl+briogadh ach obair-ghlèidhidh
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Ceannaichidh seo lethbhreac dhe thrèan, a' gabhail a-steach a h-uile carbad. Thoir na h-aon òrduighean dhan tè ùr le Ctrl+briogadh. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' ceannach dad
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Ceannaichidh seo lethbhreac dhe charbad-rathaid. Thoir na h-aon òrduighean dhan fhear ùr le Ctrl+briogadh. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' ceannach dad
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Ceannaichidh seo lethbhreac dhe long. Thoir na h-aon òrduighean dhan tè ùr le Ctrl+briogadh. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' ceannach dad
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Ceannaichidh seo lethbhreac dhe charbad-adhair. Thoir na h-aon òrduighean dhan fhear ùr le Ctrl+briogadh. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' ceannach dad
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Ceannaichidh seo lethbhreac dhe thrèan, a' gabhail a-steach a h-uile carbad. Thoir na h-aon òrduighean dhan tè ùr le Ctrl+briogadh. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' ceannach dad
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Ceannaichidh seo lethbhreac dhe charbad-rathaid. Thoir na h-aon òrduighean dhan fhear ùr le Ctrl+briogadh. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' ceannach dad
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Ceannaichidh seo lethbhreac dhe long. Thoir na h-aon òrduighean dhan tè ùr le Ctrl+briogadh. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' ceannach dad
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Ceannaichidh seo lethbhreac dhe charbad-adhair. Thoir na h-aon òrduighean dhan fhear ùr le Ctrl+briogadh. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' ceannach dad
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Thoir air an trèan leantainn air adhart gun a bhith a' feitheamh air a' chomharra
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Thoir tilleadh air an trèan
@@ -3934,10 +3934,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Air tòi
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Fiosrachadh)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Thoir ainm air an trèan
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Thoir ainm air carbad-rathaid
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Thoir ainm air long
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Thoir ainm air carbad-adhair
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Thoir ainm air an trèan
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Thoir ainm air carbad-rathaid
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Thoir ainm air long
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Thoir ainm air carbad-adhair
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} {P bhliadhna bhliadhna bliadhna bliadhna} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P bhliadhna bhliadhna bliadhna bliadhna} ({COMMA})

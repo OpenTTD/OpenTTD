@@ -629,8 +629,8 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 年（每季）
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 年（每年）
 
-STR_GRAPH_TOGGLE_RANGE                                          :切換圖表數據範圍
-STR_GRAPH_SELECT_SCALE                                          :變更圖表水平比例
+STR_GRAPH_TOGGLE_RANGE_TOOLTIP                                  :切換圖表數據範圍
+STR_GRAPH_SELECT_SCALE_TOOLTIP                                  :變更圖表水平比例
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}貨物運費表
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}運輸所用天數
@@ -640,7 +640,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}無
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}在圖表中顯示所有貨物
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}在圖表中隱藏所有貨物
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}切換顯示貨物
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}切換顯示貨物
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - 貨物記錄
@@ -2409,7 +2409,7 @@ STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}遊戲�
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}已進行遊戲的時間，不計算暫停的時間
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}伺服器相容性和身份驗證資息
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}點選清單內的伺服器即可選擇遊戲
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}點選清單內的伺服器即可選擇遊戲
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}最後加入的伺服器：
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}點選您上次最後加入的伺服器
 
@@ -2793,7 +2793,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}合併�
 STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}建立個別中途站
 
 # Generic toolbar
-STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}此設施已被禁用，因為沒有任何此設施可用的載具
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE_TOOLTIP               :{BLACK}此設施已被禁用，因為沒有任何此設施可用的載具
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :鋪設鐵道
@@ -3770,9 +3770,9 @@ STR_GOALS_CAPTION                                               :{WHITE}{COMPANY
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}全局目標
 STR_GOALS_SPECTATOR                                             :全局目標
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}全局
-STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}顯示全局目標
+STR_GOALS_GLOBAL_BUTTON_TOOLTIP                                 :{BLACK}顯示全局目標
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}公司
-STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}顯示公司目標
+STR_GOALS_COMPANY_BUTTON_TOOLTIP                                :{BLACK}顯示公司目標
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- 當前無目標 -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3915,7 +3915,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}防止�
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}將中途站置於畫面正中央。按住 <Ctrl> 點選可於中途站位置開啟新檢視視窗
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}修改中途站名稱
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}修改中途站名稱
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}將浮標置於畫面正中央。按住 <Ctrl> 點選可於浮標位置開啟新檢視視窗
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}修改浮標名稱
 
@@ -4444,10 +4444,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}將船�
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}將飛機送到機棚，按住 <Ctrt> 點選則只做維護
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}購買一列相同的列車，包含所有車廂。按住<Ctrl> 點選可共享指令，按住 <Shift> 點選則可顯示預估成本
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}購買一部相同的車輛。按住 <Ctrl> 點選可共享指令。按住 <Shift> 則可顯示預估成本
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}購買一艘相同的船舶。按住 <Ctrl> 點選可共享指令。按住 <Shift> 則可顯示預估成本
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}購買一架相同的飛機。按住 <Ctrl> 點選可共享指令。按住 <Shift> 則可顯示預估成本
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}購買一列相同的列車，包含所有車廂。按住<Ctrl> 點選可共享指令，按住 <Shift> 點選則可顯示預估成本
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}購買一部相同的車輛。按住 <Ctrl> 點選可共享指令。按住 <Shift> 則可顯示預估成本
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}購買一艘相同的船舶。按住 <Ctrl> 點選可共享指令。按住 <Shift> 則可顯示預估成本
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}購買一架相同的飛機。按住 <Ctrl> 點選可共享指令。按住 <Shift> 則可顯示預估成本
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}強制列車前進，不等待號誌允許
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}倒轉列車方向
@@ -4510,10 +4510,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}已起�
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (詳細資料)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}命名列車
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}命名車輛
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}命名船舶
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}命名飛機
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}命名列車
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}命名車輛
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}命名船舶
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}命名飛機
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} 年 ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} 年 ({COMMA})

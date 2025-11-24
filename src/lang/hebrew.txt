@@ -603,7 +603,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}בטל הכל
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}הצג את כל המטענים בגרף שיעורי תשלום למטען
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}הצג ללא מטענים בגרף שיעורי תשלום למטען
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}הצג/הסתר סוג מטען
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}הצג/הסתר סוג מטען
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
@@ -2155,7 +2155,7 @@ STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}זמן �
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}זמן משחק כאשר{}המשחק לא היה מושהה
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}'שפה, גירסת שרת וכו
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}בחר משחק מהרשימה
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}בחר משחק מהרשימה
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}השרת אליו התחברת פעם שעברה
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}לחץ להתחברות חוזרת לשרת אליו התחברת לאחרונה
 
@@ -2495,7 +2495,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}חבר �
 STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}בנה נקודת ציון נפרדת
 
 # Generic toolbar
-STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}כרגע מבוטל מכייוון שאין רכבים זמינים לתשתית הזאת
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE_TOOLTIP               :{BLACK}כרגע מבוטל מכייוון שאין רכבים זמינים לתשתית הזאת
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :בניית מסילות
@@ -3340,9 +3340,9 @@ STR_GOALS_CAPTION                                               :{WHITE}{COMPANY
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}מטרות גלובליות
 STR_GOALS_SPECTATOR                                             :מטרות גלובליות
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}גלובלי
-STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}הצג מטרות גלובליות
+STR_GOALS_GLOBAL_BUTTON_TOOLTIP                                 :{BLACK}הצג מטרות גלובליות
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}חברה
-STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}הצג את מטרות החברה
+STR_GOALS_COMPANY_BUTTON_TOOLTIP                                :{BLACK}הצג את מטרות החברה
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- אין -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3473,7 +3473,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}מנע �
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}מרכז תצוגה ראשית על מיקום ציון הדרך. Ctrl+לחיצה פותח תצוגה חדשה על מיקום ציון הדרך
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}שנה שם נקודת ציון
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}שנה שם נקודת ציון
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}מרכז תצוגה ראשית על מיקום מצוף. Ctrl+לחיצה פותח חלון תצוגה חדש על מיקום מצוף
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}שנה שם מצוף
 
@@ -3944,10 +3944,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}שלח �
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Sשלח את כלי הטייס לסככת המטוסים
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}פעולה זו תיצור עותק נוסף של הרכבת וכל קרונותיה. Ctrl+לחיצה ישתף את ההוראות. Shift+לחיצה מציג הערכת עלות ללא רכישה
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}פעולה זו תיצור עותק נוסף של כלי הרכב. Ctrl+לחיצה תשתף את ההוראות. Shift+לחיצה מציג הערכת עלות ללא רכישה
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}פעולה זו תיצור עותק של כלי השייט. Ctrl+לחיצה תשתף את ההוראות. Shift+לחיצה מציג הערכת עלות ללא רכישה
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}פעולה זו תיצור עותק של כלי הטייס. Ctrl+לחיצה תשתף את ההוראות. Shift+לחיצה מציג הערכת עלות ללא רכישה
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}פעולה זו תיצור עותק נוסף של הרכבת וכל קרונותיה. Ctrl+לחיצה ישתף את ההוראות. Shift+לחיצה מציג הערכת עלות ללא רכישה
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}פעולה זו תיצור עותק נוסף של כלי הרכב. Ctrl+לחיצה תשתף את ההוראות. Shift+לחיצה מציג הערכת עלות ללא רכישה
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}פעולה זו תיצור עותק של כלי השייט. Ctrl+לחיצה תשתף את ההוראות. Shift+לחיצה מציג הערכת עלות ללא רכישה
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}פעולה זו תיצור עותק של כלי הטייס. Ctrl+לחיצה תשתף את ההוראות. Shift+לחיצה מציג הערכת עלות ללא רכישה
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}הכרח את הרכבת להמשיך מבלי להמתין לרמזור
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}שנה את כיוון הנסיעה של הרכבת
@@ -4004,10 +4004,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}הותח
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}(פרטים){VEHICLE}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}תן שם לרכבת
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}תן שם לכלי הרכב
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}תן שם לכלי השייט
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}תן שם לכלי הטייס
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}תן שם לרכבת
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}תן שם לכלי הרכב
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}תן שם לכלי השייט
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}תן שם לכלי הטייס
 
 STR_VEHICLE_INFO_AGE                                            :({1:COMMA}) שנים {NBSP}{0:COMMA}
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}({1:COMMA}) שנים {NBSP}{0:COMMA}

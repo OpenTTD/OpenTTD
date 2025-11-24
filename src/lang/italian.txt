@@ -630,7 +630,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Disabilita tutti
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Mostra tutti i tipi di carico sul grafico delle tariffe
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Non mostra alcun tipo di carico sul grafico delle tariffe
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Attiva/disattiva il grafico per il tipo di carico
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Attiva/disattiva il grafico per il tipo di carico
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Storico delle merci
@@ -2420,7 +2420,7 @@ STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Tempo di
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Tempo trascorso mentre{}il gioco non era in pausa
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Lingua, versione del server, etc.
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Fare clic su una partita in elenco per selezionarla
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Fare clic su una partita in elenco per selezionarla
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Ultimo server utilizzato:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Fare clic per selezionare il server su cui si è giocato l'ultima volta
 
@@ -2804,7 +2804,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Unisci w
 STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Costruisci waypoint separato
 
 # Generic toolbar
-STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Disabilitato perché non ci sono veicoli disponibili per questa infrastruttura
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE_TOOLTIP               :{BLACK}Disabilitato perché non ci sono veicoli disponibili per questa infrastruttura
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Costruzione ferrovie
@@ -3755,9 +3755,9 @@ STR_GOALS_CAPTION                                               :{WHITE}Obiettiv
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Obiettivi globali
 STR_GOALS_SPECTATOR                                             :Obiettivi globali
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Globale
-STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Mostra obbiettivi globali
+STR_GOALS_GLOBAL_BUTTON_TOOLTIP                                 :{BLACK}Mostra obbiettivi globali
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Compagnia
-STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Mostra obbiettivi della compagnia
+STR_GOALS_COMPANY_BUTTON_TOOLTIP                                :{BLACK}Mostra obbiettivi della compagnia
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nessuno -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3900,7 +3900,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Impedisc
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centra la vista principale sulla posizione del waypoint. Ctrl+Clic per aprire una nuova finestra sulla posizione del waypoint.
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Cambia il nome del waypoint
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Cambia il nome del waypoint
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la visuale principale sulla posizione della boa. Ctrl+Clic per aprire una nuova finestra di visualizzazione sulla posizione della boa
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Cambia il nome della boa
 
@@ -4424,10 +4424,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Manda na
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Manda l'aeromobile in hangar. Ctrl+Clic per effettuare solo la manutenzione.
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Compra una copia del treno, inclusi tutti i vagoni. Ctrl+Clic per condividere gli ordini. Premere anche Shift per mostrare solo la stima dei costi
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Acquista una copia del veicolo stradale. Ctrl+Clic per condividere gli ordini. Premi anche Shift per mostrare solo il preventivo di costo.
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Compra una copia della nave. Ctrl+Clic per condividere gli ordini. Premere anche Shift per mostrare solo la stima dei costi
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Acquista una copia dell'aeromobile. Ctrl+Clic per condividere gli ordini. Premi anche MAIUSC per mostrare solo il preventivo di costo.
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Compra una copia del treno, inclusi tutti i vagoni. Ctrl+Clic per condividere gli ordini. Premere anche Shift per mostrare solo la stima dei costi
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Acquista una copia del veicolo stradale. Ctrl+Clic per condividere gli ordini. Premi anche Shift per mostrare solo il preventivo di costo.
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Compra una copia della nave. Ctrl+Clic per condividere gli ordini. Premere anche Shift per mostrare solo la stima dei costi
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Acquista una copia dell'aeromobile. Ctrl+Clic per condividere gli ordini. Premi anche MAIUSC per mostrare solo il preventivo di costo.
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forza il treno a proseguire senza aspettare il segnale di via libera
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Inverte la direzione del treno
@@ -4490,10 +4490,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Avviato
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Dettagli)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Rinomina il treno
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Rinomina l'automezzo
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Rinomina la nave
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Rinomina l'aeromobile
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Rinomina il treno
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Rinomina l'automezzo
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Rinomina la nave
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Rinomina l'aeromobile
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} ann{P o i} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ann{P o i} ({COMMA})

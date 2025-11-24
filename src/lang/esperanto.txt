@@ -700,7 +700,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Malaktivu ĉiujn
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Montru ĉiuj ŝarĝojn en la ŝarĝaj pagaj procentoj grafiko
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ne montru ŝarĝojn en la ŝarĝaj pagaj procentoj grafiko
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}(Mal)ŝaltu grafikon por ŝarĝo
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}(Mal)ŝaltu grafikon por ŝarĝo
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
@@ -2326,7 +2326,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Aktuala 
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Ludotempo
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Lingvo, servila versio ktp.
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Alklaku ludon el la listo por elekti ĝin
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Alklaku ludon el la listo por elekti ĝin
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}La servilo kiun vi laste ensalutis:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Klaku por selekti la servilon kie vi ludis la lastan fojon
 
@@ -2691,7 +2691,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Ligi voj
 STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Krei apartan vojpunkton
 
 # Generic toolbar
-STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Malaktiva ĉar ĉi-momente ne haveblas veturiloj por tia ĉi infrastrukturo
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE_TOOLTIP               :{BLACK}Malaktiva ĉar ĉi-momente ne haveblas veturiloj por tia ĉi infrastrukturo
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Konstruado de Fervojo
@@ -3543,10 +3543,10 @@ STR_GOALS_CAPTION                                               :{WHITE}Celoj de
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Tutmondaj celoj
 STR_GOALS_SPECTATOR                                             :Tutmondaj celoj
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Tutmonde
-STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Montru tutmondajn celojn
+STR_GOALS_GLOBAL_BUTTON_TOOLTIP                                 :{BLACK}Montru tutmondajn celojn
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Kompanio
 STR_GOALS_COMPANY_BUTTON.n                                      :{BLACK}Kompanion
-STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Montru celojn de la kompanio
+STR_GOALS_COMPANY_BUTTON_TOOLTIP                                :{BLACK}Montru celojn de la kompanio
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nenia -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3675,7 +3675,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Malperme
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centri ĉefvidon ĉe la vojpunkto. Stir+Klak por malfermi novan vidujon ĉe la loko.
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Ŝanĝi nomon de vojpunkto.
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Ŝanĝi nomon de vojpunkto.
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centri ĉefvidon ĉe la buo. Ctrl+Klak por malfermi novan vidujon ĉe la bua loko.
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Ŝanĝi nomon de la buo.
 
@@ -4187,10 +4187,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Sendi ŝ
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Sendi aviadilon al hangaro. Stir+Klak nur prizorgos
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Aĉeti kopion de la vagonaro kun ĉiuj vagonoj. Ctrl+Klak por kunhavigi la itineron
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Aĉeti kopion de la stratveturilo. Stir+Klak por kunhavigi la itineron. Montri taksatan koston sen aĉeti per majuskliga klavo + klak
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Aĉeti kopion de la ŝipo. Stir+Klak por kunhavigi la itineron. Montri taksatan koston sen aĉeti per majuskliga klavo + klak
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Aĉeti kopion de la aviadilo. Stir+Klak por kunhavigi la itinero. Maj+klak montros la antaŭvidatan koston sen jam aĉetin.
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Aĉeti kopion de la vagonaro kun ĉiuj vagonoj. Ctrl+Klak por kunhavigi la itineron
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Aĉeti kopion de la stratveturilo. Stir+Klak por kunhavigi la itineron. Montri taksatan koston sen aĉeti per majuskliga klavo + klak
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Aĉeti kopion de la ŝipo. Stir+Klak por kunhavigi la itineron. Montri taksatan koston sen aĉeti per majuskliga klavo + klak
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Aĉeti kopion de la aviadilo. Stir+Klak por kunhavigi la itinero. Maj+klak montros la antaŭvidatan koston sen jam aĉetin.
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Igu vagonaron iri malgraŭ signalo
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Inversigu vagonaran direkton
@@ -4251,10 +4251,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Komenca
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detaloj)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nomu vagonaron
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nomi stratveturilon
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nomu ŝipon
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nomu aviadilon
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Nomu vagonaron
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Nomi stratveturilon
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Nomu ŝipon
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Nomu aviadilon
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} jaro{P "" j} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} jaro{P "" j} ({COMMA})

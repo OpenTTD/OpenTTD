@@ -722,8 +722,8 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 έτη (τετραμηνιαία)
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 έτη (ετήσια)
 
-STR_GRAPH_TOGGLE_RANGE                                          :Εναλλαγή γραφήματος για αυτό το εύρος στοιχείων
-STR_GRAPH_SELECT_SCALE                                          :Αλλαγή οριζόντιας κλίμακας γραφήματος
+STR_GRAPH_TOGGLE_RANGE_TOOLTIP                                  :Εναλλαγή γραφήματος για αυτό το εύρος στοιχείων
+STR_GRAPH_SELECT_SCALE_TOOLTIP                                  :Αλλαγή οριζόντιας κλίμακας γραφήματος
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Ποσοστά Πληρωμής Φορτίων
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Ημέρες σε μετάβαση
@@ -733,7 +733,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Κανένα
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Εμφάνιση όλων των εμπορευμάτων στο γράφημα
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Εμφάνιση κανενός εμπορευμάτος στο γράφημα
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Εναλλαγή γραφήματος αυτού του τύπου φορτίου
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Εναλλαγή γραφήματος αυτού του τύπου φορτίου
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Ιστορικό Εμπορευμάτων
@@ -2502,7 +2502,7 @@ STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Χρόν
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Χρόνος παιχνιδιού χωρίς{}το παιχνίδι να βρίσκεται σε παύση
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Στοιχεία συμβατότητας διακομιστή και ελέγχου ταυτότητας
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Πατήστε σε ένα παιχνίδι από τη λίστα για το επιλέξετε
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Πατήστε σε ένα παιχνίδι από τη λίστα για το επιλέξετε
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Ο διακομιστής που συμμετείχατε την τελευταία φορά:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Πατήστε για να επιλέξετε το διακομιστή που συμμετείχατε την τελευταία φορά
 
@@ -2886,7 +2886,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Συνέ
 STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Κατασκευή ενός ξεχωριστού σημείου καθοδήγησης
 
 # Generic toolbar
-STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Απενεργοποιημένο διότι δεν υπάρχουν διαθέσιμα οχήματα για αυτή την υποδομή
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE_TOOLTIP               :{BLACK}Απενεργοποιημένο διότι δεν υπάρχουν διαθέσιμα οχήματα για αυτή την υποδομή
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Κατασκευή Σιδηρόδρομου
@@ -3867,9 +3867,9 @@ STR_GOALS_CAPTION                                               :{WHITE}{COMPANY
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Καθολικοί στόχοι:
 STR_GOALS_SPECTATOR                                             :Καθολικοί στόχοι
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Καθολικοί στόχοι
-STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Εμφάνιση καθολικών στόχων
+STR_GOALS_GLOBAL_BUTTON_TOOLTIP                                 :{BLACK}Εμφάνιση καθολικών στόχων
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Εταιρία
-STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Εμφάνιση στόχων εταιρίας
+STR_GOALS_COMPANY_BUTTON_TOOLTIP                                :{BLACK}Εμφάνιση στόχων εταιρίας
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Κανένας -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -4012,7 +4012,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Αποτ
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Κεντράρισμα της κύριας προβολής στην τοποθεσία του σημείου καθοδήγησης. Ctrl+Κλικ για άνοιγμα νέου παραθύρου προβολής στην τοποθεσία του σημείου καθοδήγησης
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Αλλαγή του ονόματος του σημείου καθοδήγησης
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Αλλαγή του ονόματος του σημείου καθοδήγησης
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Κεντράρισμα της κύριας προβολής στη τοποθεσία της σημαδούρας. Ctrl+Κλικ για άνοιγμα νέου παραθύρου προβολής στην τοποθεσία της σημαδούρας
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Αλλαγή ονόματος σημαδούρας
 
@@ -4549,10 +4549,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Στέλ
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Στέλνει το αεροσκάφος στο υπόστεγο. Με Ctrl+Κλικ κάνει μόνο συντήρηση
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Αγορά αντιγράφου του τρένου μαζί με όλα τα βαγόνια. Ctrl+Κλικ για διαμοιρασμό εντολών. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Αγορά αντιγράφου του οδικού οχήματος. Ctrl+Κλικ για διαμοιρασμό εντολών. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Αγορά αντιγράφου του πλοίου. Ctrl+Κλικ για διαμοιρασμό εντολών. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Αγορά αντιγράφου του αεροσκάφους. Ctrl+Κλικ για διαμοιρασμό εντολών. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Αγορά αντιγράφου του τρένου μαζί με όλα τα βαγόνια. Ctrl+Κλικ για διαμοιρασμό εντολών. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Αγορά αντιγράφου του οδικού οχήματος. Ctrl+Κλικ για διαμοιρασμό εντολών. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Αγορά αντιγράφου του πλοίου. Ctrl+Κλικ για διαμοιρασμό εντολών. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Αγορά αντιγράφου του αεροσκάφους. Ctrl+Κλικ για διαμοιρασμό εντολών. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Αναγκάστε το τρένο να προχωρήσει χωρίς να περιμένει το σηματοδότη να το επιτρέψει
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Αναστροφή κατεύθυνσης τρένου
@@ -4615,10 +4615,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Ξεκί
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Λεπτομέρειες)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Ονομασία τρένου
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Ονομασία οδικού οχήματος
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Ονομασία πλοίου
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Ονομασία αεροσκάφους
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Ονομασία τρένου
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Ονομασία οδικού οχήματος
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Ονομασία πλοίου
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Ονομασία αεροσκάφους
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} χρόν{P ος ια} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} χρόν{P ος ια} ({COMMA})

@@ -572,7 +572,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Díchumasaigh gach
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Taispeáin gach lastas ar ghraf na rátaí íocaíochta lastais
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ná taispeáin lastas ar bith ar ghraf na rátaí íocaíochta lastais
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Scoránaigh an graf don chineál lastais air/as
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Scoránaigh an graf don chineál lastais air/as
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
@@ -2127,7 +2127,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Dáta
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Dáta reatha
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Teanga, leagan an fhreastalaí, srl.
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Cliceáil ar chluiche ón liosta lena roghnú
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Cliceáil ar chluiche ón liosta lena roghnú
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}An freastalaí a ndeachaidh tú isteach ann an uair deiridh:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Cliceáil chun an freastalaí ina raibh tú ag imirt an uair deiridh a roghnú
 
@@ -2490,7 +2490,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Ceangail
 STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Tóg pointe bealaigh ar leithligh
 
 # Generic toolbar
-STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Díchumasaithe toisc nach bhfuil aon fheithicil ar fáil faoi láthair don bhonneagar seo
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE_TOOLTIP               :{BLACK}Díchumasaithe toisc nach bhfuil aon fheithicil ar fáil faoi láthair don bhonneagar seo
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Tógáil Iarnróid
@@ -3343,9 +3343,9 @@ STR_GOALS_CAPTION                                               :{WHITE}Spriocan
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Spriocanna Uilíocha
 STR_GOALS_SPECTATOR                                             :Spriocanna Uilíocha
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Domhanda
-STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Taispeáin na spriocanna uilíocha
+STR_GOALS_GLOBAL_BUTTON_TOOLTIP                                 :{BLACK}Taispeáin na spriocanna uilíocha
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Cuideachta
-STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Spriocanna na cuideachta a thaispeáint
+STR_GOALS_COMPANY_BUTTON_TOOLTIP                                :{BLACK}Spriocanna na cuideachta a thaispeáint
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Ceann ar bith -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3473,7 +3473,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Cuir cos
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Láraigh an príomhamharc ar shuíomh an phointe bealaigh. Osclaítear amharc nua ar shuíomh an phointe bealaigh le Ctrl+Cliceáil
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Athraigh ainm an phointe bealaigh
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Athraigh ainm an phointe bealaigh
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Láraigh an príomhamharc ar shuíomh an bhaoi. Osclaítear amharc nua ar shuíomh an bhaoi le Ctrl+Cliceáil
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Athraigh ainm an bhaoi
 
@@ -3949,10 +3949,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Seol an 
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Seol an t-aerárthach chuig an haingear. Ní dhéanfar ach seirbhísiú le Ctrl+Cliceáil
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Ceannófar cóip den traein lena n-áirítear gach vaigín. Déanfar na horduithe a chomhroinnt le Ctrl+Cliceáil
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Ceannófar cóip den fheithicil bóthair. Déanfar na horduithe a chomhroinnt le Ctrl+Cliceáil
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Ceannófar cóip den long. Déanfar na horduithe a chomhroinnt le Ctrl+Cliceáil
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Ceannófar cóip den aerárthach. Déanfar na horduithe a chomhroinnt le Ctrl+Cliceáil
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Ceannófar cóip den traein lena n-áirítear gach vaigín. Déanfar na horduithe a chomhroinnt le Ctrl+Cliceáil
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Ceannófar cóip den fheithicil bóthair. Déanfar na horduithe a chomhroinnt le Ctrl+Cliceáil
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Ceannófar cóip den long. Déanfar na horduithe a chomhroinnt le Ctrl+Cliceáil
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Ceannófar cóip den aerárthach. Déanfar na horduithe a chomhroinnt le Ctrl+Cliceáil
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Leag ar an traein dul ar aghaidh gan fanacht ar an gcomhartha
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Aisiompaigh treo na traenach
@@ -4013,10 +4013,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Tosaithe
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Sonraí)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Ainmnith traein
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Ainmnigh feithicil bóthair
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Ainmnigh long
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Ainmnigh aerárthach
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Ainmnith traein
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Ainmnigh feithicil bóthair
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Ainmnigh long
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Ainmnigh aerárthach
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} {P bhliain bhliain bliana mbliana bliana} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P bhliain bhliain bliana mbliana bliana} ({COMMA})

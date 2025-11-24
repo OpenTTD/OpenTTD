@@ -935,7 +935,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Схаваць усё
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Паказаць усе грузы на ґрафіку
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Схаваць усе грузы на ґрафіку
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Уключыць/выключыць адлюстраваньне грузу на ґрафіку
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Уключыць/выключыць адлюстраваньне грузу на ґрафіку
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
@@ -2657,7 +2657,7 @@ STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Міну
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Час, праведзены ў гульні{}(без уліку часу, калі гульня была прыпынена)
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Мова, вэрсія сэрвэра й г.д.
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Выберыце гульню са сьпіса й клікніце
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Выберыце гульню са сьпіса й клікніце
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Апошні сэрвэр, да якога вы далучаліся:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Клікніце для выбару апошняга сэрвэра
 
@@ -3052,7 +3052,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Аб'я�
 STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Пабудаваць асобны маршрутны пункт
 
 # Generic toolbar
-STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Адключана, бо няма прыдатных транспартных сродкаў для гэтай інфраструктуры
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE_TOOLTIP               :{BLACK}Адключана, бо няма прыдатных транспартных сродкаў для гэтай інфраструктуры
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Чыгунка
@@ -3949,9 +3949,9 @@ STR_GOALS_CAPTION                                               :{WHITE}Зада
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Глабальныя задачы
 STR_GOALS_SPECTATOR                                             :Агульныя задачы
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Глабальныя
-STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Паказаць глабальныя задачы
+STR_GOALS_GLOBAL_BUTTON_TOOLTIP                                 :{BLACK}Паказаць глабальныя задачы
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Кампанія
-STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Паказаць задачы кампаніі
+STR_GOALS_COMPANY_BUTTON_TOOLTIP                                :{BLACK}Паказаць задачы кампаніі
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Няма -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -4094,7 +4094,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Прад
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Паказаць маршрутны пункт у асноўным вакне. Ctrl+клік — паказаць у дадатковым вакне.
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Перайменаваць маршрутны пункт
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Перайменаваць маршрутны пункт
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Паказаць буй у асноўным вакне. Ctrl+пстрычка — паказаць у дадатковым вакне.
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Зьмяніць назву буя
 
@@ -4635,10 +4635,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Пасл
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Паслаць паветр. судна ў анґар. Ctrl+клік — толькі для абслугоўваньня.
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Набыць копію састава. Ctrl+пстрычка створыць цягнік з агульнымі заданьнямі. Shift+пстрычка — ацэнка кошту набыцьця.
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Набыць копію аўтамабіля. Ctrl+пстрычка створыць аўтамабіль з агульнымі заданьнямі. Shift+пстрычка — ацэнка кошту набыцьця.
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Набыць копію карабля. Ctrl+пстрычка створыць карабель з агульнымі заданьнямі. Shift+пстрычка — ацэнка кошту набыцьця.
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Набыць копію паветр. судна. Ctrl+пстрычка створыць копію з агульнымі заданьнямі. Shift+пстрычка — ацэнка кошту набыцьця.
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Набыць копію састава. Ctrl+пстрычка створыць цягнік з агульнымі заданьнямі. Shift+пстрычка — ацэнка кошту набыцьця.
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Набыць копію аўтамабіля. Ctrl+пстрычка створыць аўтамабіль з агульнымі заданьнямі. Shift+пстрычка — ацэнка кошту набыцьця.
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Набыць копію карабля. Ctrl+пстрычка створыць карабель з агульнымі заданьнямі. Shift+пстрычка — ацэнка кошту набыцьця.
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Набыць копію паветр. судна. Ctrl+пстрычка створыць копію з агульнымі заданьнямі. Shift+пстрычка — ацэнка кошту набыцьця.
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Прымусіць цягнік праехаць чырвоны сыґнал святлафора
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Завярнуць цягнiк у адваротны бок
@@ -4701,10 +4701,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Запу
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Дэталі)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Перайменаваць цягнiк
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Перайменаваць аўтамабiль
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Перайменаваць карабель
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Перайменаваць паветранае судна
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Перайменаваць цягнiк
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Перайменаваць аўтамабiль
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Перайменаваць карабель
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Перайменаваць паветранае судна
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} г{P од ады адоў} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} г{P од ады адоў} ({COMMA})

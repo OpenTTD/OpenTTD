@@ -630,8 +630,8 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 anys (trimestral)
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 anys (anual)
 
-STR_GRAPH_TOGGLE_RANGE                                          :Commuta el gràfic per al rang d'aquestes dades
-STR_GRAPH_SELECT_SCALE                                          :Canvia l'escala horitzontal del gràfic
+STR_GRAPH_TOGGLE_RANGE_TOOLTIP                                  :Commuta el gràfic per al rang d'aquestes dades
+STR_GRAPH_SELECT_SCALE_TOOLTIP                                  :Canvia l'escala horitzontal del gràfic
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tarifes de pagament de càrregues
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Dies en trànsit
@@ -641,7 +641,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Cap
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Mostra totes les càrregues al gràfic.
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}No mostris cap càrrega al gràfic.
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Mostra/amaga el tipus de càrrega al gràfic
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Mostra/amaga el tipus de càrrega al gràfic
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Historial de càrregues
@@ -2410,7 +2410,7 @@ STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Temps de
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Temps de joc{}sense contar pauses
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Compatibilitat amb el servidor i informació d'autenticació
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Clica en una partida de la llista per triar-la
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Clica en una partida de la llista per triar-la
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}El servidor en què vas entrar el darrer cop:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Clica per seleccionar al servidor en què vas jugar el darrer cop:
 
@@ -2794,7 +2794,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Uneix pu
 STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Construeix un punt de pas separat
 
 # Generic toolbar
-STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}S'ha desactivat ja que actualment no disposeu de vehicles per usar aquesta infraestructura.
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE_TOOLTIP               :{BLACK}S'ha desactivat ja que actualment no disposeu de vehicles per usar aquesta infraestructura.
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construcció de ferrocarril
@@ -3775,9 +3775,9 @@ STR_GOALS_CAPTION                                               :{WHITE}{COMPANY
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Objectius globals
 STR_GOALS_SPECTATOR                                             :Objectius globals
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Global
-STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Mostra els objectius globals
+STR_GOALS_GLOBAL_BUTTON_TOOLTIP                                 :{BLACK}Mostra els objectius globals
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Companyia
-STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Mostra els objectius de la companyia
+STR_GOALS_COMPANY_BUTTON_TOOLTIP                                :{BLACK}Mostra els objectius de la companyia
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Cap -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3920,7 +3920,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Evita qu
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centra la vista principal al lloc del punt de pas. Amb Ctrl+clic, s'obre una vista al lloc del punt de pas.
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Canvia el nom del punt de pas
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Canvia el nom del punt de pas
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la vista principal en la boia. Amb Ctrl+clic, s'obre una vista centrada a la boia.
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Canvia el nom de la boia
 
@@ -4449,10 +4449,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Envia el
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Envia l'aeronau a l'hangar. Amb Ctrl+clic, només s'anirà a fer una revisió.
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Compra una còpia d'un tren i tots els seus vagons. Amb Ctrl+clic, es compartiran les ordres. Amb Maj, només es mostrarà el cost estimat de l'acció.
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Compra una còpia d'un vehicle de carretera. Amb Ctrl+clic, es compartiran les ordres. Amb Maj, només es mostrarà el cost estimat de l'acció.
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Compra una còpia d'un vaixell. Amb Ctrl+clic, es compartiran les ordres. Amb Maj, només es mostrarà el cost estimat de l'acció.
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Compra una còpia d'una aeronau. Amb Ctrl+clic, es compartiran les ordres. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Compra una còpia d'un tren i tots els seus vagons. Amb Ctrl+clic, es compartiran les ordres. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Compra una còpia d'un vehicle de carretera. Amb Ctrl+clic, es compartiran les ordres. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Compra una còpia d'un vaixell. Amb Ctrl+clic, es compartiran les ordres. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Compra una còpia d'una aeronau. Amb Ctrl+clic, es compartiran les ordres. Amb Maj, només es mostrarà el cost estimat de l'acció.
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Obliga al tren a actuar sense esperar a tenir el semàfor lliure
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Inverteix la direcció del tren
@@ -4515,10 +4515,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Engegat
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detalls)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Anomena tren
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Anomena automòbil
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Anomena vaixell
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Anomena avió
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Anomena tren
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Anomena automòbil
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Anomena vaixell
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Anomena avió
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} any{P "" s} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} any{P "" s} ({COMMA})

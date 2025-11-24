@@ -719,7 +719,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Vypni vše
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Zobraz všechny druhy nákladu na grafu přepravních sazeb
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Skryje všechny položky na grafu přepravních sazeb
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Zobrazit nebo skrýt graf pro určitý druh nákladu
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Zobrazit nebo skrýt graf pro určitý druh nákladu
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Vyprodukováno
@@ -2455,7 +2455,7 @@ STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Odehran�
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Odehraná doba{}bez započtení pauz
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Jazyk, verze serveru, atd.
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Hru vybereš kliknutím do seznamu
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Hru vybereš kliknutím do seznamu
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Naposledy navštívený server:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Kliknutím vybereš server, kde jsi hrál(a) naposledy
 
@@ -2839,7 +2839,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Spojová
 STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Postavit samostatné směrování
 
 # Generic toolbar
-STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Zakázáno, protože pro tento typ infrastruktury aktuálně nejsou dostupná žádná vozidla
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE_TOOLTIP               :{BLACK}Zakázáno, protože pro tento typ infrastruktury aktuálně nejsou dostupná žádná vozidla
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Výstavba železnice
@@ -3791,9 +3791,9 @@ STR_GOALS_CAPTION                                               :{WHITE}{COMPANY
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globální cíle
 STR_GOALS_SPECTATOR                                             :Globální cíle
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Globální
-STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Zobrazit globání cíle
+STR_GOALS_GLOBAL_BUTTON_TOOLTIP                                 :{BLACK}Zobrazit globání cíle
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Společnost
-STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Zobrazit cíle společnosti
+STR_GOALS_COMPANY_BUTTON_TOOLTIP                                :{BLACK}Zobrazit cíle společnosti
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Žádné -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3936,7 +3936,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Zabráni
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Zaměřit hlavní pohled na umístění bodu na trase. Při stisknutí Ctrl+Klik otevřete nové okno na umístění bodu na trase
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Přejmenovat směrování
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Přejmenovat směrování
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Vystředit pohled na bójku. Ctrl+Klik otevře nové okno náhledu
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Přejmenovat bójku
 
@@ -4463,10 +4463,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Poslat l
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Poslat letadlo do hangáru. Ctrl+Kliknutí pouze pro servis.
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Vytvořit kopii vlaku se všemi vagony. Se stisknutým Ctrl se budou sdílet příkazy. Podrž Shift pro zobrazení odhadu ceny
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Vytvořit kopii silničního vozidla. Se stisknutým Ctrl se budou sdílet příkazy. Podrž Shift pro zobrazení odhadu ceny
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Vytvořit kopii lodě. Se stisknutým Ctrl se budou sdílet příkazy. Podrž Shift pro zobrazení odhadu ceny
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Vytvořit kopii letadla. Se stisknutým Ctrl se budou sdílet příkazy. Podrž Shift pro zobrazení odhadu ceny
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Vytvořit kopii vlaku se všemi vagony. Se stisknutým Ctrl se budou sdílet příkazy. Podrž Shift pro zobrazení odhadu ceny
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Vytvořit kopii silničního vozidla. Se stisknutým Ctrl se budou sdílet příkazy. Podrž Shift pro zobrazení odhadu ceny
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Vytvořit kopii lodě. Se stisknutým Ctrl se budou sdílet příkazy. Podrž Shift pro zobrazení odhadu ceny
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Vytvořit kopii letadla. Se stisknutým Ctrl se budou sdílet příkazy. Podrž Shift pro zobrazení odhadu ceny
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Donuť vlak pokračovat bez čekání na povolení od semaforu
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Otočit vlak
@@ -4529,10 +4529,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Puštěn
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detaily)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Pojmenovat vlak
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Pojmenovat silniční vozidlo
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Pojmenovat loď
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Pojmenovat letadlo
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Pojmenovat vlak
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Pojmenovat silniční vozidlo
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Pojmenovat loď
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Pojmenovat letadlo
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} {P rok roky let} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P rok roky let} ({COMMA})

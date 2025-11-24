@@ -679,7 +679,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Kõik välja
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Näita kõiki kaubatüüpe kaubamaksumuste määrade graafikul
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ära näita kaubatüüpe kaubamaksumuste määrade graafikul
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Vahelda veoseliikide graafik sisse/välja
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Vahelda veoseliikide graafik sisse/välja
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
@@ -2406,7 +2406,7 @@ STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Mängitu
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Mängitud aeg, kui{}mäng ei olnud pausil
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Suhtluskeel, serveri osa, jne.
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Loendis mängu klõpsamine valib selle
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Loendis mängu klõpsamine valib selle
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Server, kus sa viimati mängisid:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Klõpsa, et valida server, kus sa viimati mängisid
 
@@ -2789,7 +2789,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Liida te
 STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Ehita eraldi teemärgis
 
 # Generic toolbar
-STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Välja lülitatud, sest ükski saadaval sõiduk ei sobi selle infrastruktuuriga
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE_TOOLTIP               :{BLACK}Välja lülitatud, sest ükski saadaval sõiduk ei sobi selle infrastruktuuriga
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Rööbasteede ehitamine
@@ -3696,9 +3696,9 @@ STR_GOALS_CAPTION                                               :{WHITE}{COMPANY
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Üldeesmärgid
 STR_GOALS_SPECTATOR                                             :Üleilmsed eesmärgid
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Üleilmne
-STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Näita üleilmseid eesmärke
+STR_GOALS_GLOBAL_BUTTON_TOOLTIP                                 :{BLACK}Näita üleilmseid eesmärke
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Ettevõte
-STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Näita ettevõtte eesmärke
+STR_GOALS_COMPANY_BUTTON_TOOLTIP                                :{BLACK}Näita ettevõtte eesmärke
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Mitte ühtegi -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3841,7 +3841,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Keela õ
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Keskenda vaade teemärgisel. Ctrl+klõps avab teemärgisel uue vaate
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Muuda meldepunkti nime
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Muuda meldepunkti nime
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Keskenda vaade poi kohale. Ctrl+klõps avab poi kohal uue vaateakna
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Muuda poi nime
 
@@ -4360,10 +4360,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Saada la
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Saada õhusõiduk angaari. Ctrl + klõps ainult hooldab
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Ostab samasuguse rongi koos kõikide vagunitega. «Ctrl»+klõps jagab korraldusi. «Shift»+klõps näitab eeldatavat ostuhinda
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Ostab samasuguse maanteesõiduki. «Ctrl»+klõps jagab korraldusi. Lisaks hoia all Shift-klahvi, et vaid näidata eeldatavat hinda
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Ostab samasuguse laeva. Vajuta sellele nuppule, ning seejärel laevale laevaremonditehase sees või väljas. «Ctrl»+klõps jagab korraldusi. «Shift»+klõps näitab eeldatavat ostuhinda
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Ostab samasuguse õhusõiduki. Ctrl+klõpsuga jagatakse sihtpunkte. Lisaks hoia all Shift-klahvi, et vaid näidata eeldatavat hinda
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Ostab samasuguse rongi koos kõikide vagunitega. «Ctrl»+klõps jagab korraldusi. «Shift»+klõps näitab eeldatavat ostuhinda
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Ostab samasuguse maanteesõiduki. «Ctrl»+klõps jagab korraldusi. Lisaks hoia all Shift-klahvi, et vaid näidata eeldatavat hinda
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Ostab samasuguse laeva. Vajuta sellele nuppule, ning seejärel laevale laevaremonditehase sees või väljas. «Ctrl»+klõps jagab korraldusi. «Shift»+klõps näitab eeldatavat ostuhinda
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Ostab samasuguse õhusõiduki. Ctrl+klõpsuga jagatakse sihtpunkte. Lisaks hoia all Shift-klahvi, et vaid näidata eeldatavat hinda
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Sunni rongi signaale eirama
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Pööra rong ümber
@@ -4426,10 +4426,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Started
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (täpsustused)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nimeta rong
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nimeta maanteesõiduk
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nimeta laev
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nimeta õhusõiduk
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Nimeta rong
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Nimeta maanteesõiduk
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Nimeta laev
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Nimeta õhusõiduk
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} aasta{P "" t} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} aasta{P "" t} ({COMMA})

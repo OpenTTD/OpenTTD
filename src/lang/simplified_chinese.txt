@@ -629,8 +629,8 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 年（每季）
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 年（每年）
 
-STR_GRAPH_TOGGLE_RANGE                                          :切换图表数据范围
-STR_GRAPH_SELECT_SCALE                                          :改变图标水平比例
+STR_GRAPH_TOGGLE_RANGE_TOOLTIP                                  :切换图表数据范围
+STR_GRAPH_SELECT_SCALE_TOOLTIP                                  :改变图标水平比例
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}货物运费表
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}运输所用天数
@@ -640,7 +640,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}无
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}在图表中显示所有货物
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}在图表中隐藏所有货物
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}切换显示货物
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}切换显示货物
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - 货物历史
@@ -2409,7 +2409,7 @@ STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :游戏时间
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}有戏已进行的时间，不计暂停的时间
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}服务器兼容性与验证信息
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}点击列表中的服务器可以选定它
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}点击列表中的服务器可以选定它
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}上一次加入的服务器：
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}点击选择您上次加入的服务器
 
@@ -2793,7 +2793,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}合并�
 STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}建造分体路点
 
 # Generic toolbar
-STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}由于没有可使用此类设施的载具，已禁用此设施
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE_TOOLTIP               :{BLACK}由于没有可使用此类设施的载具，已禁用此设施
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :铁路建设
@@ -3770,9 +3770,9 @@ STR_GOALS_CAPTION                                               :{WHITE}{COMPANY
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}全局目标：
 STR_GOALS_SPECTATOR                                             :全局目标
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}全局
-STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}显示全局目标
+STR_GOALS_GLOBAL_BUTTON_TOOLTIP                                 :{BLACK}显示全局目标
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}公司
-STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}显示公司目标
+STR_GOALS_COMPANY_BUTTON_TOOLTIP                                :{BLACK}显示公司目标
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- 无目标 -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3915,7 +3915,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}禁止�
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}将屏幕中心移动到路点所在的位置。按住 <Ctrl> 单击会在新视点中显示路点
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}修改路点名
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}修改路点名
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}将屏幕中心移动到浮标所在的位置。按住 <Ctrl> 单击会在新视点中显示目标位置
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}修改浮标名
 
@@ -4444,10 +4444,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}命令�
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}命令飞机前往机库。按住 <Ctrl> 键操作以仅作维护
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}复制火车。按住 <Ctrl> 键单击以共享调度计划。按住 <Shift> 键单击以显示预计费用
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}复制汽车。按住 <Ctrl> 键单击以共享调度计划，按住 <Shift> 键单击以显示预计费用
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}复制船只。按住 <Ctrl> 键单击以共享调度计划，按住 <Shift> 键单击以显示所需资金
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}复制飞机。按住 <Ctrl> 键单击以共享调度计划。按住 <Shift> 键单击以显示预计费用
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}复制火车。按住 <Ctrl> 键单击以共享调度计划。按住 <Shift> 键单击以显示预计费用
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}复制汽车。按住 <Ctrl> 键单击以共享调度计划，按住 <Shift> 键单击以显示预计费用
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}复制船只。按住 <Ctrl> 键单击以共享调度计划，按住 <Shift> 键单击以显示所需资金
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}复制飞机。按住 <Ctrl> 键单击以共享调度计划。按住 <Shift> 键单击以显示预计费用
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}命令列车强行通过信号
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}命令列车调头
@@ -4510,10 +4510,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}已开�
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE}（详细信息）
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}给列车命名
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}命名汽车
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}命名船只
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}命名飞机
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}给列车命名
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}命名汽车
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}命名船只
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}命名飞机
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} 年（{COMMA}）
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} 年（{COMMA}）

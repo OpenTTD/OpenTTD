@@ -613,7 +613,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Non-aktifkan semua
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Tampilkan semua kargo pada grafik tarif pembayaran kargo
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}menampilkan tidak ada kargo pada grafik tingkat pembayaran kargo
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Pilih jenis kargo yang akan ditampilkan
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Pilih jenis kargo yang akan ditampilkan
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
@@ -2294,7 +2294,7 @@ STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Waktu be
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Waktu dimainkan saat{}permainan tidak dijeda
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Bahasa, versi server, dll.
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klik untuk memilih sesi permainan dari daftar
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Klik untuk memilih sesi permainan dari daftar
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Server yang diikuti dulu:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Klik untuk memilih server yang digunakan sebelumnya
 
@@ -2669,7 +2669,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Gabungka
 STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Pisahkan waypoint
 
 # Generic toolbar
-STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Dinonaktifkan karena saat ini tidak ada kendaraan yang tersedia untuk infrastruktur ini
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE_TOOLTIP               :{BLACK}Dinonaktifkan karena saat ini tidak ada kendaraan yang tersedia untuk infrastruktur ini
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Pembangunan Rel Kereta
@@ -3553,9 +3553,9 @@ STR_GOALS_CAPTION                                               :{WHITE}{COMPANY
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Target Global
 STR_GOALS_SPECTATOR                                             :Target Global
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Global
-STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Tunjukkan target global
+STR_GOALS_GLOBAL_BUTTON_TOOLTIP                                 :{BLACK}Tunjukkan target global
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Perusahaan
-STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Tunjukkan target perusahaan
+STR_GOALS_COMPANY_BUTTON_TOOLTIP                                :{BLACK}Tunjukkan target perusahaan
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Tidak ada -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3687,7 +3687,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Cegah pe
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Arahkan pandangan utama pada lokasi waypoint. Ctrl+Click akan membuka viewport baru pada lokasi waypoint
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Ubah nama waypoint
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Ubah nama waypoint
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Arahkan pandangan utama pada lokasi pelampung. Ctrl+Click akan membuka viewport baru pada lokasi pelampung
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Ubah nama pelampung
 
@@ -4196,10 +4196,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Perintah
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Perintahkan pesawat berhenti di hangar. CTRL+klik hanya akan memerintahkan perbaikan di hangar
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Untuk membeli rangkaian kereta yang sama termasuk gerbongnya. Ctrl-Klik untuk berbagi perintah. Shift untuk menampilkan perkiraan biaya
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Ini akan membeli satu unit kendaraan yang sama. Ctrl+Click akan berbagi perintah. Shift untuk menampilkan perkiraan biaya
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Ini akan membeli satu unit kapal yang sama. Ctrl+Click akan berbagi perintah. Shift untuk menampilkan perkiraan biaya
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Ini akan membali satu unit pesawat yang sama. Ctrl+Click untuk berbagi perintah. Shift untuk menampilkan perkiraan biaya
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Untuk membeli rangkaian kereta yang sama termasuk gerbongnya. Ctrl-Klik untuk berbagi perintah. Shift untuk menampilkan perkiraan biaya
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Ini akan membeli satu unit kendaraan yang sama. Ctrl+Click akan berbagi perintah. Shift untuk menampilkan perkiraan biaya
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Ini akan membeli satu unit kapal yang sama. Ctrl+Click akan berbagi perintah. Shift untuk menampilkan perkiraan biaya
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Ini akan membali satu unit pesawat yang sama. Ctrl+Click untuk berbagi perintah. Shift untuk menampilkan perkiraan biaya
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Paksa kereta terus berjalan tanpa menunggu sinyal hijau
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Balikkan arah laju kereta
@@ -4260,10 +4260,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Mulai
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detail)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nama kereta
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nama kendaraan
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nama kapal
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nama pesawat
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Nama kereta
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Nama kendaraan
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Nama kapal
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Nama pesawat
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} tahun ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} tahun ({COMMA})

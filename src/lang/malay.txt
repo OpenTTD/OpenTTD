@@ -537,7 +537,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Nyahaktifkan Semua
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Paparkan semua muatan pada graf kadar pembayaran muatan
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Tiada paparan muatan pada graf kadar pembayaran muatan
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Papar atau padamkan graf kargo
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Papar atau padamkan graf kargo
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
@@ -1784,7 +1784,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Tarikh
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Tarikh semasa
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Bahasa, versi pelayan, dan sebagainya
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klik salah satu permainan dalam senarai untuk memilihnya
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Klik salah satu permainan dalam senarai untuk memilihnya
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Pelayan yang disambung anda sebelum ini:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Klik untuk memilih pelayan yang anda main sebelum ini
 
@@ -2892,7 +2892,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Halang p
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Pusatkan pemandangan utama ke lokasi tandatuju. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi tandatuju
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Tukar nama tandatuju
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Tukar nama tandatuju
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Pusatkan pemandangan utama ke lokasi pelampung. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi pelampung
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Tukar nama pelampung
 
@@ -3308,10 +3308,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Hantar k
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Hantar pesawat ke hangar. Ctrl+Klik untuk selenggara sahaja
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Ini akan membeli sesalinan keretapi termasuk semua gerabak. Ctrl+Klik akan mengongsikan arahan. Shift+Klik untuk memaparkan anggaran kos tanpa pembelian
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Ini akan membeli sesalinan kenderaan jalanraya. Ctrl+Klik akan mengongsikan arahan. Shift+Klik untuk paparkan anggaran kos tanpa pembelian
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Ini akan membeli sesalinan kapal. Ctrl+Klik akan mengongsikan arahan. Shift+Klik untuk tunjukan anggaran kos tanpa pembelian
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Ini akan membeli sesalinan pesawat. Ctrl+Klik akan mengongsikan arahan. Shift+Klik untuk tunjukkan anggaran kos tanpa pembelian
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Ini akan membeli sesalinan keretapi termasuk semua gerabak. Ctrl+Klik akan mengongsikan arahan. Shift+Klik untuk memaparkan anggaran kos tanpa pembelian
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Ini akan membeli sesalinan kenderaan jalanraya. Ctrl+Klik akan mengongsikan arahan. Shift+Klik untuk paparkan anggaran kos tanpa pembelian
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Ini akan membeli sesalinan kapal. Ctrl+Klik akan mengongsikan arahan. Shift+Klik untuk tunjukan anggaran kos tanpa pembelian
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Ini akan membeli sesalinan pesawat. Ctrl+Klik akan mengongsikan arahan. Shift+Klik untuk tunjukkan anggaran kos tanpa pembelian
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Paksa keretapi untuk maju tanpa menunggu kebenaran lampu isyarat
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Mengubah haluan keretapi ke arah belakang
@@ -3363,10 +3363,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Sudah Mu
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Butiran)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nama keretapi
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nama kenderaan jalanraya
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nama kapal
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Namakan pesawat
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Nama keretapi
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Nama kenderaan jalanraya
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Nama kapal
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Namakan pesawat
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} tahun ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} tahun ({COMMA})

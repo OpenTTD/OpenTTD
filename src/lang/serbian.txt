@@ -801,7 +801,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Sakri sve
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Prikazuje sve vrste tereta na grafikonu prihoda
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Sakrij sve vrste tereta na grafikonu prihoda
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Uključi/Isključi grafikone po vrsti tereta
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO_TOOLTIP                    :{BLACK}Uključi/Isključi grafikone po vrsti tereta
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
@@ -2489,7 +2489,7 @@ STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Trajanje
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Odigrano vreme dok{}igra nije bila pauzirana
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Jezik, verzija servera, itd.
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klikom na igru sa spiska vrši se njen odabir
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT_TOOLTIP            :{BLACK}Klikom na igru sa spiska vrši se njen odabir
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Server sa prošle igre:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Klikom se označava server sa prošle igre
 
@@ -2864,7 +2864,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Spoji pu
 STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Napravi zasebnu putanju
 
 # Generic toolbar
-STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Isključeno jer trenutno ne postoje dostupna vozila za ovu infrastrukturu
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE_TOOLTIP               :{BLACK}Isključeno jer trenutno ne postoje dostupna vozila za ovu infrastrukturu
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Izgradnja železnice
@@ -3742,9 +3742,9 @@ STR_GOALS_CAPTION                                               :{WHITE}{COMPANY
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Opšti ciljevi
 STR_GOALS_SPECTATOR                                             :Opšti ciljevi
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Opšte
-STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Prikaži opšte ciljeve
+STR_GOALS_GLOBAL_BUTTON_TOOLTIP                                 :{BLACK}Prikaži opšte ciljeve
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Preduzeće
-STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Prikaži ciljeve preduzeća
+STR_GOALS_COMPANY_BUTTON_TOOLTIP                                :{BLACK}Prikaži ciljeve preduzeća
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nema -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3884,7 +3884,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Spreči 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Prebacuje glavni pogled na lokaciju čvorišta. Ctrl+klik otvara novi pogled na čvorište
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Promena naziva putanje
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME_TOOLTIP                  :{BLACK}Promena naziva putanje
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Prebacuje glavni pogled na lokaciju bove. Ctrl+klik otvara novi pogled na bovu
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Promeni naziv bove
 
@@ -4412,10 +4412,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Šalje b
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Šalje letelicu u hangar. Ctrl+klik šalje letelicu samo na servis
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Ovime se kupuje kopija kompozicije. Ctrl+klik postavlja zajedničke naredbe. Shift+klik prikazuje procenu troškova bez kupovine
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Ovime se kupuje kopija drumskog vozila. Ctrl+klik postavlja zajedničke naredbe. Shift+klik prikazuje procenu troškova bez kupovine
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Ovime se kupuje kopija broda. Ctrl+klik postavlja zajedničke naredbe. Shift+klik prikazuje procenu troškova bez kupovine
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Ovime se kupuje kopija letelice. Ctrl+klik postavlja zajedničke naredbe. Shift+klik prikazuje procenu troškova bez kupovine
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO_TOOLTIP                       :{BLACK}Ovime se kupuje kopija kompozicije. Ctrl+klik postavlja zajedničke naredbe. Shift+klik prikazuje procenu troškova bez kupovine
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO_TOOLTIP                :{BLACK}Ovime se kupuje kopija drumskog vozila. Ctrl+klik postavlja zajedničke naredbe. Shift+klik prikazuje procenu troškova bez kupovine
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO_TOOLTIP                        :{BLACK}Ovime se kupuje kopija broda. Ctrl+klik postavlja zajedničke naredbe. Shift+klik prikazuje procenu troškova bez kupovine
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO_TOOLTIP                    :{BLACK}Ovime se kupuje kopija letelice. Ctrl+klik postavlja zajedničke naredbe. Shift+klik prikazuje procenu troškova bez kupovine
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Nateraj voz da krene bez čekanja na signal za slobodan kolosek
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Promena smera kretanja voza
@@ -4476,10 +4476,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Pokrenut
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Opširnije)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Naziv voza
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Naziv drumskog vozila
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Naziv broda
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Naziv letelice
+STR_VEHICLE_DETAILS_TRAIN_RENAME_TOOLTIP                        :{BLACK}Naziv voza
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME_TOOLTIP                 :{BLACK}Naziv drumskog vozila
+STR_VEHICLE_DETAILS_SHIP_RENAME_TOOLTIP                         :{BLACK}Naziv broda
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME_TOOLTIP                     :{BLACK}Naziv letelice
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} godin{P a e a} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} godin{P a e a} ({COMMA})
