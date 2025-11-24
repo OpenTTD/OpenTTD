@@ -66,7 +66,6 @@ public:
 	virtual StringID GetTypeTooltip() const = 0;
 	/** Get the number of types in a class. @note Used only to estimate space requirements. */
 	virtual int GetTypeCount(int cls_id) const = 0;
-
 	/** Get the selected type. */
 	virtual int GetSelectedType() const = 0;
 	/** Set the selected type. */
@@ -82,10 +81,37 @@ public:
 	/** Draw preview image of an item. */
 	virtual void DrawType(int x, int y, int cls_id, int id) const = 0;
 
+	/* Collection Callbacks */
+	/** Get the tooltip string for the collection list. */
+	virtual StringID GetCollectionTooltip() const = 0;
+
 	/** Fill a set with all items that are used by the current player. */
 	virtual void FillUsedItems(std::set<PickerItem> &items) = 0;
 	/** Update link between grfid/localidx and class_index/index in saved items. */
-	virtual std::set<PickerItem> UpdateSavedItems(const std::set<PickerItem> &src) = 0;
+	virtual std::map<std::string, std::set<PickerItem>> UpdateSavedItems(const std::map<std::string, std::set<PickerItem>> &src) = 0;
+	/**
+	 * Initialize the list of active collections for sorting purposes.
+	 * @param collections The map of collections to check.
+	 * @return The set of collections with inactive items.
+	 */
+	inline std::set<std::string> InitializeInactiveCollections(const std::map<std::string, std::set<PickerItem>> collections)
+	{
+		std::set<std::string> inactive;
+
+		for (auto it = collections.begin(); it != collections.end(); it++) {
+			for (const PickerItem &item : it->second) {
+				if (item.class_index == -1 || item.index == -1) {
+					inactive.emplace(it->first);
+					break;
+				}
+				if (GetTypeName(item.class_index, item.index) == INVALID_STRING_ID) {
+					inactive.emplace(it->first);
+					break;
+				}
+			}
+		}
+		return inactive;
+	}
 
 	Listing class_last_sorting = { false, 0 }; ///< Default sorting of #PickerClassList.
 	Filtering class_last_filtering = { false, 0 }; ///< Default filtering of #PickerClassList.
@@ -93,13 +119,19 @@ public:
 	Listing type_last_sorting = { false, 0 }; ///< Default sorting of #PickerTypeList.
 	Filtering type_last_filtering = { false, 0 }; ///< Default filtering of #PickerTypeList.
 
+	Listing collection_last_sorting = { false, 0 }; ///< Default sorting of #PickerCollectionList.
+	Filtering collection_last_filtering = { false, 0 }; ///< Default filtering of #PickerCollectionList.
+
 	const std::string ini_group; ///< Ini Group for saving favourites.
 	uint8_t mode = 0; ///< Bitmask of \c PickerFilterModes.
+	std::string sel_collection;          ///< Currently selected collection of saved items.
+	std::string edit_collection;         ///< Collection to rename or delete.
+	std::set<std::string> rm_collection; ///< Set of removed or renamed collections for updating ini file.
 
 	int preview_height = 0; ///< Previously adjusted height.
 
 	std::set<PickerItem> used; ///< Set of items used in the current game by the current company.
-	std::set<PickerItem> saved; ///< Set of saved favourite items.
+	std::map<std::string, std::set<PickerItem>> saved; ///< Set of saved collections of items.
 };
 
 /** Helper for PickerCallbacks when the class system is based on NewGRFClass. */
@@ -128,17 +160,19 @@ public:
 		return GetPickerItem(GetClass(cls_id)->GetSpec(id), cls_id, id);
 	}
 
-	std::set<PickerItem> UpdateSavedItems(const std::set<PickerItem> &src) override
+	std::map<std::string, std::set<PickerItem>> UpdateSavedItems(const std::map<std::string, std::set<PickerItem>> &src) override
 	{
 		if (src.empty()) return {};
 
-		std::set<PickerItem> dst;
-		for (const auto &item : src) {
-			const auto *spec = T::GetByGrf(item.grfid, item.local_id);
-			if (spec == nullptr) {
-				dst.emplace(item.grfid, item.local_id, -1, -1);
-			} else {
-				dst.emplace(GetPickerItem(spec));
+		std::map<std::string, std::set<PickerItem>> dst;
+		for (auto it = src.begin(); it != src.end(); it++) {
+			for (const auto &item : it->second) {
+				const auto *spec = T::GetByGrf(item.grfid, item.local_id);
+				if (spec == nullptr) {
+					dst[it->first].emplace(item.grfid, item.local_id, -1, -1);
+				} else {
+					dst[it->first].emplace(GetPickerItem(spec));
+				}
 			}
 		}
 		return dst;
@@ -153,6 +187,7 @@ struct PickerFilterData : StringFilter {
 
 using PickerClassList = GUIList<int, std::nullptr_t, PickerFilterData &>; ///< GUIList holding classes to display.
 using PickerTypeList = GUIList<PickerItem, std::nullptr_t, PickerFilterData &>; ///< GUIList holding classes/types to display.
+using PickerCollectionList = GUIList<std::string, std::nullptr_t, PickerFilterData &>; ///< GUIList holding collections to display.
 
 class PickerWindow : public PickerWindowBase {
 public:
@@ -165,6 +200,7 @@ public:
 	enum class PickerInvalidation : uint8_t {
 		Class, ///< Refresh the class list.
 		Type, ///< Refresh the type list.
+		Collection, ///< Refresh the collection list.
 		Position, ///< Update scroll positions.
 		Validate, ///< Validate selected item.
 		Filter, ///< Update filter state.
@@ -186,16 +222,20 @@ public:
 	bool has_class_picker = false; ///< Set if this window has a class picker 'component'.
 	bool has_type_picker = false; ///< Set if this window has a type picker 'component'.
 	int preview_height = 0; ///< Height of preview images.
+	std::set<std::string> inactive; ///< Set of collections with inactive items.
 
 	PickerWindow(WindowDesc &desc, Window *parent, int window_number, PickerCallbacks &callbacks);
 	void OnInit() override;
 	void Close(int data = 0) override;
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, const Dimension &padding, Dimension &fill, Dimension &resize) override;
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override;
+	TextColour GetCollectionColour(std::string) const;
 	void DrawWidget(const Rect &r, WidgetID widget) const override;
 	void OnDropdownSelect(WidgetID widget, int index, int click_result) override;
 	void OnResize() override;
+	void static DeletePickerCollectionCallback(Window *win, bool confirmed);
 	void OnClick(Point pt, WidgetID widget, int click_count) override;
+	void OnQueryTextFinished(std::optional<std::string> str) override;
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override;
 	EventState OnHotkey(int hotkey) override;
 	void OnEditboxChanged(WidgetID wid) override;
@@ -229,6 +269,13 @@ private:
 	void BuildPickerTypeList();
 	void EnsureSelectedTypeIsValid();
 	void EnsureSelectedTypeIsVisible();
+
+	PickerCollectionList collections; ///< List of collections.
+	PickerFilterData collection_string_filter;
+	QueryString collection_editbox; ///< Filter editbox
+
+	void BuildPickerCollectionList();
+	void EnsureSelectedCollectionIsVisible();
 
 	GUIBadgeClasses badge_classes;
 	std::pair<WidgetID, WidgetID> badge_filters{};
