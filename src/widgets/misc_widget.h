@@ -35,6 +35,8 @@ enum QueryStringWidgets : WidgetID {
 	WID_QS_DEFAULT, ///< Default button.
 	WID_QS_CANCEL,  ///< Cancel button.
 	WID_QS_OK,      ///< OK button.
+	WID_QS_MOVE,    ///< Move button.
+	WID_QS_MOVE_SEL, ///< Container for move button, which can be hidden.
 };
 
 /** Widgets of the #QueryWindow class. */

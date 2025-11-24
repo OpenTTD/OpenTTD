@@ -20,6 +20,7 @@
 #include "viewport_func.h"
 #include "querystring_gui.h"
 #include "sortlist_type.h"
+#include "tilehighlight_func.h"
 #include "stringfilter_type.h"
 #include "string_func.h"
 #include "core/geometry_func.hpp"
@@ -387,9 +388,20 @@ static bool RenameSign(SignID index, std::string_view text)
 	return remove;
 }
 
+/**
+ * Actually move the sign.
+ * @param index the sign to move.
+ * @param tile on which to move the sign to.
+ */
+void MoveSign(SignID index, TileIndex tile)
+{
+	Command<CMD_MOVE_SIGN>::Post(STR_ERROR_CAN_T_PLACE_SIGN_HERE, index, tile);
+}
+
 struct SignWindow : Window, SignList {
 	QueryString name_editbox;
 	SignID cur_sign{};
+	WidgetID last_user_action = INVALID_WIDGET; ///< Last started user action.
 
 	SignWindow(WindowDesc &desc, const Sign *si) : Window(desc), name_editbox(MAX_LENGTH_SIGN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_SIGN_NAME_CHARS)
 	{
@@ -487,12 +499,6 @@ struct SignWindow : Window, SignList {
 				break;
 			}
 
-			case WID_QES_DELETE:
-				/* Only need to set the buffer to null, the rest is handled as the OK button */
-				RenameSign(this->cur_sign, "");
-				/* don't delete this, we are deleted in Sign::~Sign() -> DeleteRenameSignWindow() */
-				break;
-
 			case WID_QES_OK:
 				if (RenameSign(this->cur_sign, this->name_editbox.text.GetText())) break;
 				[[fallthrough]];
@@ -500,7 +506,36 @@ struct SignWindow : Window, SignList {
 			case WID_QES_CANCEL:
 				this->Close();
 				break;
+
+			case WID_QES_DELETE:
+				/* Only need to set the buffer to null, the rest is handled as the OK button */
+				RenameSign(this->cur_sign, "");
+				/* don't delete this, we are deleted in Sign::~Sign() -> DeleteRenameSignWindow() */
+				break;
+
+			case WID_QES_MOVE:
+				HandlePlacePushButton(this, WID_QES_MOVE, SPR_CURSOR_SIGN, HT_RECT);
+				this->last_user_action = widget;
+				break;
 		}
+	}
+
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
+	{
+		switch (this->last_user_action) {
+			case WID_QES_MOVE: // Place sign button
+				RenameSign(this->cur_sign, this->name_editbox.text.GetText());
+				MoveSign(this->cur_sign, tile);
+				this->Close();
+				break;
+
+			default: NOT_REACHED();
+		}
+	}
+
+	void OnPlaceObjectAbort() override
+	{
+		this->RaiseButtons();
 	}
 };
 
@@ -517,7 +552,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_query_sign_edit_widg
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_QES_OK), SetMinimalSize(61, 12), SetStringTip(STR_BUTTON_OK),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_QES_CANCEL), SetMinimalSize(60, 12), SetStringTip(STR_BUTTON_CANCEL),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_QES_DELETE), SetMinimalSize(60, 12), SetStringTip(STR_TOWN_VIEW_DELETE_BUTTON),
-		NWidget(WWT_PANEL, COLOUR_GREY), SetFill(1, 1), EndContainer(),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_QES_MOVE), SetMinimalSize(60, 12), SetStringTip(STR_BUTTON_MOVE),
 		NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_QES_PREVIOUS), SetMinimalSize(11, 12), SetArrowWidgetTypeTip(AWV_DECREASE, STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP),
 		NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_QES_NEXT), SetMinimalSize(11, 12), SetArrowWidgetTypeTip(AWV_INCREASE, STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP),
 	EndContainer(),
@@ -536,8 +571,8 @@ static WindowDesc _query_sign_edit_desc(
  */
 void HandleClickOnSign(const Sign *si)
 {
-	/* If we can't rename the sign, don't even open the rename GUI. */
-	if (!CompanyCanRenameSign(si)) return;
+	/* If we can't edit the sign, don't even open the rename GUI. */
+	if (!CompanyCanEditSign(si)) return;
 
 	if (_ctrl_pressed && (si->owner == _local_company || (si->owner == OWNER_DEITY && _game_mode == GM_EDITOR))) {
 		RenameSign(si->index, "");

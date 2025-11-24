@@ -28,6 +28,7 @@ enum QueryEditSignWidgets : WidgetID {
 	WID_QES_OK,       ///< OK button.
 	WID_QES_CANCEL,   ///< Cancel button.
 	WID_QES_DELETE,   ///< Delete button.
+	WID_QES_MOVE,     ///< Move Sign button.
 	WID_QES_PREVIOUS, ///< Previous button.
 	WID_QES_NEXT,     ///< Next button.
 };
