@@ -451,7 +451,7 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, Ca
 		}
 	}
 
-	for (uint8_t i = 0; i < std::size(itspec->accepts_cargo); i++) {
+	for (size_t i = 0; i < std::size(itspec->accepts_cargo); i++) {
 		CargoType cargo = accepts_cargo[i];
 		if (!IsValidCargoType(cargo) || cargo_acceptance[i] <= 0) continue; // work only with valid cargoes
 
