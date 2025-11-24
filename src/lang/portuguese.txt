@@ -278,7 +278,7 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Insira u
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Selecionar ordem de agrupamento
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecione a direção de ordenação (descendente/ascendente)
-STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selecione critério de ordenação
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selecione o critério de ordenação
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selecione o critério de filtragem/procura
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordenar por
 STR_BUTTON_CATCHMENT                                            :{BLACK}Cobertura
@@ -289,7 +289,7 @@ STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}O títul
 STR_TOOLTIP_SHADE                                               :{BLACK}Encolher janela - apenas mostra a barra de título
 STR_TOOLTIP_DEBUG                                               :{BLACK}Mostrar informação de depuração de NewGRF
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}Redimensionar a janela para o tamanho padrão. Ctrl+Clique para guardar o tamanho atual como padrão. Duplo Ctrl+Clique para redefinir o padrão armazenado
-STR_TOOLTIP_STICKY                                              :{BLACK}Marcar esta janela como não-encerrável pela tecla 'Fechar Todas as Janelas'. Ctrl+Clique também guarda o estado como padrão.
+STR_TOOLTIP_STICKY                                              :{BLACK}Afixar esta janela como não-encerrável pela tecla 'Fechar Todas as Janelas'. Ctrl+Clique também guarda o estado como padrão.
 STR_TOOLTIP_RESIZE                                              :{BLACK}Clique e arraste para reajustar janela
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alternar entre janela grande/pequena
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de deslize - desloca a lista para cima/baixo
@@ -705,7 +705,7 @@ STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Dinheiro
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unidades de carga entregues nos últimos 4 trimestres.
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Tipos de carga entregues no último trimestre.
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Quantia de dinheiro que esta empresa tem no banco
-STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Tem um empréstimo muito elevado?
+STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}O montante que esta empresa está a contrair em empréstimos
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Total de pontos sobre o máximo de pontos
 
 # Music window
@@ -772,7 +772,7 @@ STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHIT
 STR_SMALLMAP_CAPTION                                            :{WHITE}Mapa - {STRING}
 
 ###length 7
-STR_SMALLMAP_TYPE_CONTOURS                                      :Contornos
+STR_SMALLMAP_TYPE_CONTOURS                                      :Isolinhas
 STR_SMALLMAP_TYPE_VEHICLES                                      :Veículos
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Indústrias
 STR_SMALLMAP_TYPE_ROUTEMAP                                      :Fluxo de Carga
@@ -780,7 +780,7 @@ STR_SMALLMAP_TYPE_ROUTES                                        :Rotas
 STR_SMALLMAP_TYPE_VEGETATION                                    :Vegetação
 STR_SMALLMAP_TYPE_OWNERS                                        :Proprietários
 
-STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Mostrar contornos do terreno no mapa
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Mostrar isolinhas do terreno no mapa
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Mostrar veículos no mapa
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Mostrar indústrias no mapa
 STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Mostrar fluxo de carga no mapa
@@ -3006,7 +3006,7 @@ STR_AIRPORT_INTERNATIONAL                                       :Internacional
 STR_AIRPORT_COMMUTER                                            :Transbordo
 STR_AIRPORT_INTERCONTINENTAL                                    :Intercontinental
 STR_AIRPORT_HELIPORT                                            :Heliporto
-STR_AIRPORT_HELIDEPOT                                           :Heli Hangar
+STR_AIRPORT_HELIDEPOT                                           :Heli-Hangar
 STR_AIRPORT_HELISTATION                                         :Heliponto
 
 STR_AIRPORT_CLASS_SMALL                                         :Aeroportos pequenos
@@ -3966,7 +3966,7 @@ STR_FINANCES_MAX_LOAN                                           :{WHITE}Emprést
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BANK_BALANCE                                       :{WHITE}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pedir empréstimo de {CURRENCY_LONG}
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Aumentar tamanho do empréstimo. Ctrl+Clique para pedir emprestado o máximo possível
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Aumentar o valor do empréstimo. Ctrl+Clique para pedir emprestado o máximo possível
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Pagar empréstimo de {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Pagar uma parte do empréstimo. Ctrl+Clique para pagar o máximo de empréstimo possível
 STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infraestrutura
@@ -3998,7 +3998,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construi
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Ver sede
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Ver sede da empresa
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Mover sede
-STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Reconstruir sede da empresa noutro sítio por 1% do valor da empresa. Pressione também Shift para apenas mostrar o custo estimado
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Reconstruir a sede da empresa noutro local por 1% do valor da empresa. Pressione também Shift para apenas mostrar o custo estimado
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detalhes
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Ver contagens de infraestrutura detalhadas
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Dar dinheiro
@@ -4111,7 +4111,7 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Enviar para han
 
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Pressione botão esquerdo do rato para imobilizar todos os veículos na lista
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Pressione botão esquerdo do rato para iniciar todos os veículos na lista
-STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ver lista de modelos disponíveis de locomotivas para este tipo de veículo.
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ver lista de modelos disponíveis para este tipo de veículo.
 
 STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Ordens partilhadas de {COMMA} veículo{P "" s}
 
@@ -4134,7 +4134,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupos -
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Clique para criar um grupo
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Remover o grupo selecionado
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Mudar o nome do grupo selecionado
-STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Alterar a imagem do grupo selecionado
+STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Alterar a cor do grupo selecionado
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Clique para proteger este grupo da auto-substituição global. Ctrl+Clique para proteger também sub-grupos
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Apagar Grupo
@@ -4479,7 +4479,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Mostrar 
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Ação do comboio atual - clique para parar / iniciar o comboio
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}Ação do veículo atual - Clique para parar/iniciar o veículo
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}Ação do veículo atual - Clique para parar / iniciar o veículo
 STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}Ação do navio atual - Clique para parar / iniciar o navio
 STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Ação atual da aeronave - clique para parar / iniciar a aeronave
 
