@@ -3713,14 +3713,17 @@ static void ClearViewportCatchment()
 void SetViewportCatchmentStation(const Station *st, bool sel)
 {
 	SetWindowDirtyForViewportCatchment();
+	/* Mark tiles dirty for redrawing and update selected station if a different station is already highlighted. */
 	if (sel && _viewport_highlight_station != st) {
 		ClearViewportCatchment();
 		_viewport_highlight_station = st;
 		MarkCatchmentTilesDirty();
+	/* Mark tiles dirty for redrawing and clear station selection if deselecting highlight. */
 	} else if (!sel && _viewport_highlight_station == st) {
 		MarkCatchmentTilesDirty();
 		_viewport_highlight_station = nullptr;
 	}
+	/* Redraw the currently selected station window */
 	if (_viewport_highlight_station != nullptr) SetWindowDirty(WC_STATION_VIEW, _viewport_highlight_station->index);
 }
 
@@ -3733,15 +3736,18 @@ void SetViewportCatchmentStation(const Station *st, bool sel)
 void SetViewportStationRect(const Station *st, bool sel)
 {
 	SetWindowDirtyForViewportCatchment();
-	if (sel && _viewport_highlight_station_rect != st) { // mark tiles dirty for redrawing and update selected station if a different station is already highlighted
+	/* Mark tiles dirty for redrawing and update selected station if a different station is already highlighted. */
+	if (sel && _viewport_highlight_station_rect != st) {
 		ClearViewportCatchment();
 		_viewport_highlight_station_rect = st;
 		MarkCatchmentTilesDirty();
-	} else if (!sel && _viewport_highlight_station_rect == st) { // mark tiles dirty for redrawing and clear station selection if deselecting highlight
+	/* Mark tiles dirty for redrawing and clear station selection if deselecting highlight. */
+	} else if (!sel && _viewport_highlight_station_rect == st) {
 		MarkCatchmentTilesDirty();
 		_viewport_highlight_station_rect = nullptr;
 	}
-	if (_viewport_highlight_station_rect != nullptr) SetWindowDirty(WC_STATION_VIEW, _viewport_highlight_station_rect->index); // redraw the currently selected station window
+	/* Redraw the currently selected station window */
+	if (_viewport_highlight_station_rect != nullptr) SetWindowDirty(WC_STATION_VIEW, _viewport_highlight_station_rect->index);
 }
 
 /**
@@ -3753,14 +3759,17 @@ void SetViewportStationRect(const Station *st, bool sel)
 void SetViewportCatchmentWaypoint(const Waypoint *wp, bool sel)
 {
 	SetWindowDirtyForViewportCatchment();
+	/* Mark tiles dirty for redrawing and update selected waypoint if a different waypoint is already highlighted. */
 	if (sel && _viewport_highlight_waypoint != wp) {
 		ClearViewportCatchment();
 		_viewport_highlight_waypoint = wp;
 		MarkCatchmentTilesDirty();
+	/* Mark tiles dirty for redrawing and clear waypoint selection if deselecting highlight. */
 	} else if (!sel && _viewport_highlight_waypoint == wp) {
 		MarkCatchmentTilesDirty();
 		_viewport_highlight_waypoint = nullptr;
 	}
+	/* Redraw the currently selected waypoint window */
 	if (_viewport_highlight_waypoint != nullptr) SetWindowDirty(WC_WAYPOINT_VIEW, _viewport_highlight_waypoint->index);
 }
 
@@ -3773,15 +3782,18 @@ void SetViewportCatchmentWaypoint(const Waypoint *wp, bool sel)
 void SetViewportWaypointRect(const Waypoint *wp, bool sel)
 {
 	SetWindowDirtyForViewportCatchment();
-	if (sel && _viewport_highlight_waypoint_rect != wp) { // mark tiles dirty for redrawing and update selected waypoint if a different waypoint is already highlighted
+	/* Mark tiles dirty for redrawing and update selected waypoint if a different waypoint is already highlighted. */
+	if (sel && _viewport_highlight_waypoint_rect != wp) {
 		ClearViewportCatchment();
 		_viewport_highlight_waypoint_rect = wp;
 		MarkCatchmentTilesDirty();
-	} else if (!sel && _viewport_highlight_waypoint_rect == wp) { // mark tiles dirty for redrawing and clear waypoint selection if deselecting highlight
+	/* Mark tiles dirty for redrawing and clear waypoint selection if deselecting highlight. */
+	} else if (!sel && _viewport_highlight_waypoint_rect == wp) {
 		MarkCatchmentTilesDirty();
 		_viewport_highlight_waypoint_rect = nullptr;
 	}
-	if (_viewport_highlight_waypoint_rect != nullptr) SetWindowDirty(WC_WAYPOINT_VIEW, _viewport_highlight_waypoint_rect->index); // redraw the currently selected waypoint window
+	/* Redraw the currently selected waypoint window */
+	if (_viewport_highlight_waypoint_rect != nullptr) SetWindowDirty(WC_WAYPOINT_VIEW, _viewport_highlight_waypoint_rect->index);
 }
 
 /**
@@ -3793,14 +3805,17 @@ void SetViewportWaypointRect(const Waypoint *wp, bool sel)
 void SetViewportCatchmentTown(const Town *t, bool sel)
 {
 	SetWindowDirtyForViewportCatchment();
+	/* Mark tiles dirty for redrawing and update selected town if a different town is already highlighted. */
 	if (sel && _viewport_highlight_town != t) {
 		ClearViewportCatchment();
 		_viewport_highlight_town = t;
 		MarkWholeScreenDirty();
+	/* Mark tiles dirty for redrawing and clear town selection if deselecting highlight. */
 	} else if (!sel && _viewport_highlight_town == t) {
 		_viewport_highlight_town = nullptr;
 		MarkWholeScreenDirty();
 	}
+	/* Redraw the currently selected town window */
 	if (_viewport_highlight_town != nullptr) SetWindowDirty(WC_TOWN_VIEW, _viewport_highlight_town->index);
 }
 
