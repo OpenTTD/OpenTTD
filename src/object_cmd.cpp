@@ -744,47 +744,45 @@ static void AnimateTile_Object(TileIndex tile)
 
 /**
  * Try to build a lighthouse.
- * @return True iff building a lighthouse succeeded.
+ * @param town The town to build the lighthouse near.
  */
-static bool TryBuildLightHouse()
+static void TryBuildLightHouse(Town *town)
 {
-	uint maxx = Map::MaxX();
-	uint maxy = Map::MaxY();
-	uint r = Random();
+	TileIndex start_tile = town->xy;
 
-	/* Scatter the lighthouses more evenly around the perimeter */
-	int perimeter = (GB(r, 16, 16) % (2 * (maxx + maxy))) - maxy;
-	DiagDirection dir;
-	for (dir = DIAGDIR_NE; perimeter > 0; dir++) {
-		perimeter -= (DiagDirToAxis(dir) == AXIS_X) ? maxx : maxy;
+	/* As a sanity check to speed up generation, a town in the mountains is unlikely to have a lighthouse. */
+	if (GetTileZ(start_tile) > 4) return;
+
+	/* Create a perimeter a random distance around the town to search. */
+	auto radius = town->cache.squared_town_zone_radius[to_underlying(HouseZone::TownEdge)];
+	radius = std::sqrt(radius);
+	radius += RandomRange(radius);
+
+	/* Find the northern tile of the perimeter. */
+	for (uint i = 0; i < radius; i++) {
+		start_tile = TileAddByDir(start_tile, DIR_N);
+		if (!IsValidTile(start_tile)) return;
 	}
 
-	TileIndex tile;
-	switch (dir) {
-		default:
-		case DIAGDIR_NE: tile = TileXY(maxx - 1, r % maxy); break;
-		case DIAGDIR_SE: tile = TileXY(r % maxx, 1); break;
-		case DIAGDIR_SW: tile = TileXY(1,        r % maxy); break;
-		case DIAGDIR_NW: tile = TileXY(r % maxx, maxy - 1); break;
-	}
+	/* Search the perimeter. */
+	for (TileIndex coast_tile : SpiralTileSequence(start_tile, 1, radius * 2, radius * 2)) {
+		if (!IsValidTile(coast_tile)) continue;
 
-	/* Only build lighthouses at tiles where the border is sea. */
-	if (!IsTileType(tile, MP_WATER) || GetWaterClass(tile) != WaterClass::Sea) return false;
+		/* We're looking for a coast tile to tell us we're near the sea. */
+		if (!IsTileType(coast_tile, MP_WATER) || GetWaterTileType(coast_tile) != WaterTileType::Coast) continue;
 
-	for (int j = 0; j < 19; j++) {
-		int h;
-		if (IsTileType(tile, MP_CLEAR) && IsTileFlat(tile, &h) && h <= 2 && !IsBridgeAbove(tile)) {
-			for (auto t : SpiralTileSequence(tile, 9)) {
-				if (IsObjectTypeTile(t, OBJECT_LIGHTHOUSE)) return false;
-			}
-			BuildObject(OBJECT_LIGHTHOUSE, tile);
-			assert(tile < Map::Size());
-			return true;
+		/* If we find another lighthouse, skip building one in this town entirely. */
+		for (auto t : SpiralTileSequence(coast_tile, 9)) {
+			if (IsObjectTypeTile(t, OBJECT_LIGHTHOUSE)) return;
 		}
-		tile += TileOffsByDiagDir(dir);
-		if (!IsValidTile(tile)) return false;
+
+		/* Find a suitable tile nearby to build. */
+		for (TileIndex build_tile : SpiralTileSequence(coast_tile, 2)) {
+			if (!IsTileType(build_tile, MP_CLEAR) || !IsTileFlat(build_tile) || IsBridgeAbove(build_tile)) continue;
+			BuildObject(OBJECT_LIGHTHOUSE, build_tile);
+			return;
+		}
 	}
-	return false;
 }
 
 /**
@@ -833,7 +831,7 @@ void GenerateObjects()
 
 		/* Scale by map size */
 		if (spec.flags.Test(ObjectFlag::ScaleByWater) && _settings_game.construction.freeform_edges) {
-			/* Scale the amount of lighthouses with the amount of land at the borders.
+			/* Maybe scale the object count by the amount of land at the borders.
 			 * The -6 is because the top borders are MP_VOID (-2) and all corners
 			 * are counted twice (-4). */
 			amount = Map::ScaleBySize1D(amount * num_water_tiles) / (2 * Map::MaxY() + 2 * Map::MaxX() - 6);
@@ -843,22 +841,27 @@ void GenerateObjects()
 			amount = Map::ScaleBySize(amount);
 		}
 
-		/* Now try to place the requested amount of this object */
-		for (uint j = Map::ScaleBySize(1000); j != 0 && amount != 0 && Object::CanAllocateItem(); j--) {
-			switch (spec.Index()) {
-				case OBJECT_TRANSMITTER:
+		/* Ready to place objects. */
+		switch (spec.Index()) {
+			case OBJECT_TRANSMITTER:
+				for (uint j = Map::ScaleBySize(1000); j != 0 && amount != 0 && Object::CanAllocateItem(); j--) {
 					if (TryBuildTransmitter()) amount--;
-					break;
+				}
+				break;
 
-				case OBJECT_LIGHTHOUSE:
-					if (TryBuildLightHouse()) amount--;
-					break;
+			case OBJECT_LIGHTHOUSE:
+				for (Town *town : Town::Iterate()) {
+					if (!Object::CanAllocateItem()) break;
+					TryBuildLightHouse(town);
+				}
+				break;
 
-				default:
+			default:
+				for (uint j = Map::ScaleBySize(1000); j != 0 && amount != 0 && Object::CanAllocateItem(); j--) {
 					uint8_t view = RandomRange(spec.views);
-					if (CmdBuildObject({DoCommandFlag::Execute, DoCommandFlag::Auto, DoCommandFlag::NoTestTownRating, DoCommandFlag::NoModifyTownRating}, RandomTile(), spec.Index(), view).Succeeded()) amount--;
-					break;
-			}
+					if (CmdBuildObject({ DoCommandFlag::Execute, DoCommandFlag::Auto, DoCommandFlag::NoTestTownRating, DoCommandFlag::NoModifyTownRating }, RandomTile(), spec.Index(), view).Succeeded()) amount--;
+				}
+				break;
 		}
 		IncreaseGeneratingWorldProgress(GWP_OBJECT);
 	}
