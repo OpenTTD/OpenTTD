@@ -14,6 +14,7 @@
 #include "viewport_func.h"
 #include "company_base.h"
 #include "town.h"
+#include "industry.h"
 #include "bridge_map.h"
 #include "genworld.h"
 #include "autoslope.h"
@@ -787,20 +788,44 @@ static void TryBuildLightHouse(Town *town)
 
 /**
  * Try to build a transmitter.
- * @return True iff a transmitter was built.
+ * @param industry The industry to build the transmitter near.
  */
-static bool TryBuildTransmitter()
+static void TryBuildTransmitter(Industry *industry)
 {
-	TileIndex tile = RandomTile();
-	int h;
-	if (IsTileType(tile, MP_CLEAR) && IsTileFlat(tile, &h) && h >= 4 && !IsBridgeAbove(tile)) {
-		for (auto t : SpiralTileSequence(tile, 9)) {
-			if (IsObjectTypeTile(t, OBJECT_TRANSMITTER)) return false;
-		}
-		BuildObject(OBJECT_TRANSMITTER, tile);
-		return true;
+	const IndustrySpec *indspec = GetIndustrySpec(industry->type);
+
+	/* Don't touch water industries. */
+	if (indspec->behaviour.Test(IndustryBehaviour::BuiltOnWater)) return;
+
+	/* Create a perimeter a random distance around the industry to search. */
+	auto radius = std::max(industry->location.h, industry->location.w) * 2;
+	radius += RandomRange(radius);
+
+	TileIndex start_tile = industry->location.tile;
+
+	/* Find the northern tile of the perimeter. */
+	for (int i = 0; i < radius; i++) {
+		start_tile = TileAddByDir(start_tile, DIR_N);
+		if (!IsValidTile(start_tile)) return;
 	}
-	return false;
+
+	/* Search the perimeter. */
+	for (TileIndex build_tile : SpiralTileSequence(start_tile, 1, radius * 2, radius * 2)) {
+		if (!IsValidTile(build_tile)) continue;
+
+		/* Transmitters must be built at elevation 4 or above. */
+		int h;
+		if (!IsTileFlat(build_tile, &h) || h < 4) continue;
+
+		/* Don't build right beside another transmitter. */
+		for (auto t : SpiralTileSequence(build_tile, 9)) {
+			if (IsObjectTypeTile(t, OBJECT_TRANSMITTER)) continue;
+		}
+
+		/* Found a suitable tile to build. */
+		BuildObject(OBJECT_TRANSMITTER, build_tile);
+		return;
+	}
 }
 
 void GenerateObjects()
@@ -844,8 +869,9 @@ void GenerateObjects()
 		/* Ready to place objects. */
 		switch (spec.Index()) {
 			case OBJECT_TRANSMITTER:
-				for (uint j = Map::ScaleBySize(1000); j != 0 && amount != 0 && Object::CanAllocateItem(); j--) {
-					if (TryBuildTransmitter()) amount--;
+				for (Industry *industry : Industry::Iterate()) {
+					if (!Object::CanAllocateItem()) break;
+					TryBuildTransmitter(industry);
 				}
 				break;
 
