@@ -3609,14 +3609,12 @@ STR_CARGO_RATING_EXCELLENT                                      :すばらしい
 STR_CARGO_RATING_OUTSTANDING                                    :最高
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}メイン画面をこの停留施設の場所に移動します。Ctrl+クリックではこの停留施設の場所を新たなビューポートに表示します
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}駅名を変更します
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}この駅が指令リストに入っている全列車を表示します
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}このバス停/荷役所が指令リストに入っている全車両を表示します
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}この空港が指令リストに入っている全航空機を表示します
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}この埠頭が指令リストに入っている全船舶を表示します
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :停留施設の名称を変更
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}空港を閉鎖
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}航空機がこの空港に着陸できないようにします
@@ -3624,11 +3622,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}航空�
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}メイン画面をこの中継駅の場所に移動します。Ctrl+クリックではこの通過点の場所を新たなビューポートに表示します
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}中継駅の名称を変更
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}メイン画面をこのブイの場所に移動します。Ctrl+クリックでこのブイの場所を新たなビューポートに表示します
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}ブイの名称を変更
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}中継駅名を表示
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} 経営状況　{BLACK}{COMPANY_NUM}

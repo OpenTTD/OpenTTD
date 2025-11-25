@@ -3432,14 +3432,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Uabhasach math
 STR_CARGO_RATING_OUTSTANDING                                    :Barraichte
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Meadhanaich am prìomh-shealladh air an stèisean. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad an stèisein
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Atharraich ainm an stèisein
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Seall a h-uile trèan is an stèisean seo air a' chlàr-ama aice
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Seall a h-uile carbad-rathaid is an stèisean seo air a' chlàr-ama aige
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Seall a h-uile carbad-adhair is am port-adhair seo air an clàr-ama aige
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Seall a h-uile long is am port seo air a' chlàr-ama aice
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Thoir ainm ùr air an stèisean/ionad-luchdaidh
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Dùin am port-adhair
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Bac carbadan-adhair bho laighe air a' phort-adhair seo
@@ -3447,11 +3445,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Bac carb
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Meadhanaich am prìomh-shealladh air a' phuing-thurais. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad na puinge-turais
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Thoir ainm ùr air a' phuing-thurais
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Meadhanaich am prìomh-shealladh air an fhleodrainn. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad na fleodrainn
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Atharraich ainm an fhleodrainn
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Deasaich ainm na puinge-turais
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Maoin aig {COMPANY} {BLACK}{COMPANY_NUM}

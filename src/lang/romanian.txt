@@ -3829,14 +3829,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Excelent
 STR_CARGO_RATING_OUTSTANDING                                    :Fantastic
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrează imaginea pe locația stației. Ctrl+Click pentru a deshide o fereastra cu locația stației
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Schimbă numele stației
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Afiseaza toate trenurile care opresc in aceasta statie
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Afiseaza toate autovehiculele care opresc in aceasta statie
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Afiseaza toate aeronavele care opresc in aceasta statie
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Afiseaza toate navele care opresc in aceasta statie
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Redenumește stația
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Închide aeroport
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Nu permite avioanelor să aterizeze pe acest aeroport
@@ -3844,11 +3842,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Nu permi
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrază fereasta principală pe punctul de tranzit. Ctrl+Click pentru a deshide o fereastra cu locația punctului de tranzit
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Schimbă numele haltei
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrează vizorul principal pe locația balizei. Ctrl+Clic pentru a deschide o nouă fereastră de vizualizare cu locația balizei
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Schimbă numele balizei
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editează numele haltei
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Situația financiară a companiei {COMPANY} {BLACK}{COMPANY_NUM}

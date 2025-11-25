@@ -3660,14 +3660,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Bonege
 STR_CARGO_RATING_OUTSTANDING                                    :Elstare bonege
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centri ĉefvidon ĉe la stacio. Stir+Klak por malfermi novan vidujon ĉe la stacioloko.
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Ŝanĝu nomon de stacio
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Montru ĉiujn vagonarojn kun ĉi tiu stacio en la plano
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Montru ĉiujn stratveturilojn kun ĉi tiu stacio en la plano
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Montru ĉiujn aviadilojn kun ĉi tiu stacio en la plano
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Montru ĉiujn ŝipojn kun ĉi tiu stacio en la plano
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Alinomi stacion/ŝarĝejon
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Fermu la flughavenon
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Malpermesu al aviadiloj surteriĝi ĉe tiu ĉi flughaveno
@@ -3675,11 +3673,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Malperme
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centri ĉefvidon ĉe la vojpunkto. Stir+Klak por malfermi novan vidujon ĉe la loko.
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Ŝanĝi nomon de vojpunkto.
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centri ĉefvidon ĉe la buo. Ctrl+Klak por malfermi novan vidujon ĉe la bua loko.
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Ŝanĝi nomon de la buo.
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ŝanĝu vojpunktonomon
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Financoj de {COMPANY} {BLACK}{COMPANY_NUM}

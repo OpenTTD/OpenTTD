@@ -3904,14 +3904,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Utmärkt
 STR_CARGO_RATING_OUTSTANDING                                    :Enastående
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrera huvudvyn på stationen. Ctrl+Klick öppnar en ny fönstervy över stationens läge
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Byt namn på stationen
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Visa alla tåg där denna station finns med i rutten
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Visa alla vägfordon där denna station finns med i rutten
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Visa alla flygplan där denna station finns med i rutten
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Visa alla skepp där denna station finns med i rutten
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Byt namn på station
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Stäng flygplats
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Hindra flygplan från att landa på den här flygplatsen
@@ -3919,11 +3917,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Hindra f
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrera huvudvyn på riktmärket. Ctrl+Klick för att öppna en ny fönstervy över riktmärkets läge
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Byt namn på riktmärke
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrera huvudvyn på bojen. Ctrl+klicka för att öppna en ny skärmvy över bojens läge
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Ändra namn på boj
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ändra namn på riktmärke
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Budget {BLACK}{COMPANY_NUM}

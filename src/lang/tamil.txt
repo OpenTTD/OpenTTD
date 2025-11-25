@@ -3425,24 +3425,20 @@ STR_CARGO_RATING_EXCELLENT                                      :சிறப்
 STR_CARGO_RATING_OUTSTANDING                                    :மிகச்சிறப்பு
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}நிலைய இருப்பிடத்தின் மையக் காட்சி. Ctrl + Click நிலைய இருப்பிடத்தில் புதிய காட்சிப்பலகையைத் திறக்கிறது
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}நிலையத்தின் பெயரை மாற்று
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}இந்த நிலையத்தினை அட்டவணையில் வைத்துள்ள அனைத்து இரயில்களையும் காட்டு
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}இந்த நிலையத்தினை அட்டவணையில் வைத்துள்ள அனைத்து சாலை வாகனங்களையும் காட்டு
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}இந்த நிலையத்தினை அட்டவணையில் வைத்துள்ள அனைத்து விமானங்களையும் காட்டு
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}இந்த நிலையத்தினை அட்டவணையில் வைத்துள்ள அனைத்து கப்பல்களையும் காட்டு
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :நிலையம்/சரக்கேற்றும் பகுதியின் பெயரினை மாற்றவும்
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}விமான நிலையத்தினை மூடு
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}விமானத்தை இந்த விமான நிலையத்தில் தரையிரங்க அனுமதிக்காதே
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}பாதைப்புள்ளியின் பெயரை மாற்று
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}மிதவையின் பெயரை மாற்று
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}பாதைப்புள்ளியின் பெயரை திருத்து
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} நிதிநிலைமை {BLACK}{COMPANY_NUM}

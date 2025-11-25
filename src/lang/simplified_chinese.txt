@@ -3900,14 +3900,12 @@ STR_CARGO_RATING_EXCELLENT                                      :卓越
 STR_CARGO_RATING_OUTSTANDING                                    :完美（最高评价）
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}将屏幕中心移动到车站所在的位置。按住 <Ctrl> 单击会在新视点中显示目标位置
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}重命名车站
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}显示所有调度计划中含有此车站的列车
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}显示所有调度计划中含有此车站的汽车
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}显示所有调度计划中含有此机场的飞机
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}显示所有调度计划中含有此码头的船只
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :重命名车站
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}关闭机场
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}禁止飞机降落本场
@@ -3915,11 +3913,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}禁止�
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}将屏幕中心移动到路点所在的位置。按住 <Ctrl> 单击会在新视点中显示路点
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}修改路点名
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}将屏幕中心移动到浮标所在的位置。按住 <Ctrl> 单击会在新视点中显示目标位置
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}修改浮标名
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}编辑路点名称
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} 财务报表 {BLACK}{COMPANY_NUM}

@@ -3248,14 +3248,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Uitstekend
 STR_CARGO_RATING_OUTSTANDING                                    :Treffend
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Skuif skerm na stasie. Ctrl+klik maak 'n nuwe venster oop vir die stasie
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Verander naam van stasie
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Toon alle treine wat hierdie stasie op hul skedule het
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Toon alle pad voertuie wat hierdie stasie op hul skedule het
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Toon alle vliegtuie wat hierdie stasie op hul skedule het
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Toon alle skepe wat hierdie stasie op hul skedule het
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Hernoem stasie/laai area
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Maak lughawe toe
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Verhoed dat vliegtuie by hierdie lughawe te land
@@ -3263,11 +3261,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Verhoed 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Senter skerm op roetebaken. Ctrl+klik maak 'n nuwe venster oop vir die roetebaken
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Verander roetebaken se naam
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Sentreer hoofuitsig op boei. Ctrl+klik maak 'n nuwe venster oop vir die boei
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Verander baken naam
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Redigeer roetebaken se naam
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finansies {BLACK}{COMPANY_NUM}

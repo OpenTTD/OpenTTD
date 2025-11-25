@@ -3905,14 +3905,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Excelente
 STR_CARGO_RATING_OUTSTANDING                                    :Excepcional
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centra a vista principal na localización da estación. Ctrl+Clic abre un novo punto de vista da localización da estación
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Cambiar o nome da estación
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Mostrar tódolos trens que teñen esta estación nas súas ordes
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Mostrar tódolos vehículos de estrada que teñen esta estación nas súas ordes
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Mostrar tódolos avións que teñen esta estación nas súas ordes
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Mostrar tódolos barcos que teñen esta estación nas súas ordes
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Renomear estación/área de carga
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Pechar aeroporto
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Evita que os avións aterren neste aeroporto
@@ -3920,11 +3918,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Evita qu
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centra a vista principal na localización do punto de ruta. Ctrl+Clic abre unha nova ventá na localización do punto de ruta
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Cambiar o nome do punto de ruta
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar a vista principal na localización da boia. Ctrl+Clic abre unha nova ventá na localización da boia
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Cambiar o nome da boia
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editar o nome do punto de ruta
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finanzas {BLACK}{COMPANY_NUM}

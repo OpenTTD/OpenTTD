@@ -3423,14 +3423,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Izvrsno
 STR_CARGO_RATING_OUTSTANDING                                    :Izvanredno
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centriraj glavni pogled na lokaciju postaje. Ctrl+klik otvara novi prozor sa lokacijom postaje
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Promijeni ime postaje
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Pokaži sve vlakove koji imaju ovu postaju u svom rasporedu
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Pokaži sva cestovna vozila koja imaju ovu postaju u svom rasporedu
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Pokaži sve zrakoplove koji imaju ovu postaju u svom rasporedu
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Pokaži sve brodove koji imaju ovu postaju u svom rasporedu
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Preimenuj postaju/terminal
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Zatvori zračnu luku
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Spriječi slijetanje zrakoplova u ovu zračnu luku
@@ -3438,11 +3436,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Spriječ
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centriraj glavni pogled na lokaciju čvorišta. Ctrl+klik otvara novi pogled na lokaciju čvorišta.
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Promijeni ime čvorišta
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centriraj glavni pogled na lokaciju plutače. Ctrl+klik otvara novi pogled na lokaciju plutače.
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Promijeni ime plutače
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Promijeni ime čvorišta
 
 # Finances window
 STR_FINANCES_CAPTION                                            :Financije tvrtke {WHITE}{COMPANY} {BLACK}{COMPANY_NUM}

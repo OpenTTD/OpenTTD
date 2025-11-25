@@ -4284,14 +4284,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Wspaniałe
 STR_CARGO_RATING_OUTSTANDING                                    :Niezwykłe
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Wyśrodkuj widok główny na lokalizacji stacji. Użyj Ctrl, aby otworzyć nowy podgląd na jej lokalizację
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Zmień nazwę stacji
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Pokaż wszystkie pociągi, które mają tę stację w swoim rozkładzie
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Pokaż wszystkie pojazdy, które mają tę stację w swoim rozkładzie
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Pokaż wszystkie samoloty, które mają tę stację w swoim rozkładzie
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Pokaż wszystkie statki, które mają tę stację w swoim rozkładzie
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Zmień nazwę stacji
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Zamknij lotnisko
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Nie zezwalaj maszynie lądować na tym lotnisku
@@ -4299,11 +4297,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Nie zezw
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Wyśrodkuj widok główny na lokalizacji posterunku. Użyj Ctrl, aby otworzyć nowy podgląd na jego lokalizację
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Zmień nazwę posterunku
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Wyśrodkuj widok główny na lokalizacji boi. Użyj Ctrl, aby otworzyć nowy podgląd na jej lokalizację
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Zmień nazwę boi
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edytuj nazwę posterunku
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Finanse {COMPANY} {BLACK}{COMPANY_NUM}

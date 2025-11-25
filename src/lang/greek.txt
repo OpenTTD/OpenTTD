@@ -3997,14 +3997,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Εξαιρετ�
 STR_CARGO_RATING_OUTSTANDING                                    :Καταπληκτική
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Κεντράρισμα της κύριας προβολής στην τοποθεσία του σταθμού. Ctrl+Κλικ για άνοιγμα νέου παραθύρου προβολής στην τοποθεσία του σταθμού
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Αλλαγή ονόματος του σταθμού
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Εμφάνιση όλων των τρένων που έχουν αυτό τον σταθμό στο δρομολόγιό τους
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Εμφάνιση όλων των οχημάτων που έχουν αυτόν τον σταθμό στο δρομολόγιό τους
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Εμφάνιση όλων των αεροσκαφών που έχουν αυτόν τον σταθμό στο δρομολόγιό τους
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Εμφάνιση όλων των πλοίων που έχουν αυτόν τον σταθμό στο δρομολόγιό τους
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Μετονομασία περιοχής σταθμού/φόρτωσης
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Κλείσιμο αεροδρομίου
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Αποτροπή προσγείωσης αεροσκαφών σε αυτό το αεροδρόμιο
@@ -4012,11 +4010,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Αποτ
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Κεντράρισμα της κύριας προβολής στην τοποθεσία του σημείου καθοδήγησης. Ctrl+Κλικ για άνοιγμα νέου παραθύρου προβολής στην τοποθεσία του σημείου καθοδήγησης
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Αλλαγή του ονόματος του σημείου καθοδήγησης
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Κεντράρισμα της κύριας προβολής στη τοποθεσία της σημαδούρας. Ctrl+Κλικ για άνοιγμα νέου παραθύρου προβολής στην τοποθεσία της σημαδούρας
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Αλλαγή ονόματος σημαδούρας
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Διαμόρφωση ονόματος σημείου καθοδήγησης
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Οικονομικά {BLACK}{COMPANY_NUM}

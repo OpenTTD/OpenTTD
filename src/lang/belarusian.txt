@@ -4079,14 +4079,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Выдатны
 STR_CARGO_RATING_OUTSTANDING                                    :Цудоўны
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Паказаць станцыю ў асноўным вакне. Ctrl+клік — паказаць у дадатковым вакне.
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Перайменаваць станцыю
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Паказаць усе цягнiкi, у раскладзе якіх ёсьць гэтая станцыя
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Паказаць усе аўтамабiлi, у раскладзе якіх ёсьць гэты тэрмiнал/прыпынак
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Паказаць увесь авiятранспарт, у раскладзе якога ёсьць гэты аэрапорт
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Паказаць усе караблі, у раскладзе якіх ёсьць гэтая прыстань
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Перайменаваць станцыю
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Закрыць аэрапорт
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Прадухiляць пасадку паветранаго судна ў гэтым аэрапорце
@@ -4094,11 +4092,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Прад
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Паказаць маршрутны пункт у асноўным вакне. Ctrl+клік — паказаць у дадатковым вакне.
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Перайменаваць маршрутны пункт
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Паказаць буй у асноўным вакне. Ctrl+пстрычка — паказаць у дадатковым вакне.
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Зьмяніць назву буя
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Назва маршрутнага пункта
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Фінансы — {COMPANY} {BLACK}{COMPANY_NUM}

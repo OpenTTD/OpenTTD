@@ -3325,14 +3325,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Izvrstno
 STR_CARGO_RATING_OUTSTANDING                                    :Sijajno
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Osredotoči pogled na lokacijo postaje. Ctrl+Klik odpre nov pogled na lokaciji postaje
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Spremeni ime postaje
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Prikaz vsah vlakov, ki imajo to postajo na urniku
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Prikaz vseh cestnih vozil, ki imajo to postajo na urniku
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Prikaz vseh letal, ki imajo to postajo na urniku
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Prikaz vseh ladij, ki imajo to postajo na urniku
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Preimenuj postajo
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Zapri letališče
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Prepreči letalom pristajanje na tem letališču
@@ -3340,11 +3338,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Prepreč
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Osredotoči pogled na lokacijo točke poti. Ctrl+Klik odpre nov pogled na lokaciji točke poti
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Spremeni ime točke poti
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Osredotoči pogled na lokacijo boje. Ctrl+Klik odpre nov pogled na lokaciji boje
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Spremeni ime boje
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Uredi ime točke poti
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finance {BLACK}{COMPANY_NUM}

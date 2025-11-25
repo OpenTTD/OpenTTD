@@ -3143,25 +3143,21 @@ STR_CARGO_RATING_EXCELLENT                                      :ممتاز
 STR_CARGO_RATING_OUTSTANDING                                    :خارق
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}وسط الشاشة على موقع المحطة
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}غير اسم المحطة
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK} عرض جميع القطارات المرتبطة بهذه المحطة
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK} عرض جميع العربات المرتبطة بهذه المحطة
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK} عرض جميع القطارات المرتبطة بهذه المحطة
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}عرض جميع السفن المرتبطة بهذا المرفئ
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :اعادة تسمية المحطة
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}اغلاق المطار
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK} ركز شاشة العرض على نقطة العبور
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}غير اسم نقطة العبور
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK} ضع العوامة في مركز الشاشة. Ctrl+Click لفتح نافذة لموقع العوامة
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK} غير اسم العومة
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}عدل اسم نقطة العبور
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} {BLACK} {COMPANY_NUM} سجل المحاسبة

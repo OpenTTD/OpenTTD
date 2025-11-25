@@ -3041,21 +3041,17 @@ STR_CARGO_RATING_EXCELLENT                                      :Geweldich
 STR_CARGO_RATING_OUTSTANDING                                    :Poerbêst
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Sintrearje it byld op de lokaasje fan dit stasjon
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Feroarje stasjonsnamme
 
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Jou stasjon in nije namme
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Fleanfjild slute
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Sintrearje it byld op de lokaasje fan dizze kontrôlepost
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Namme fan kontrôlepost oanpasse
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Sintrearje it byld op de lokaasje fan dizze boei
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Namme fan boei oanpasse
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Namme fan kontrôlepost oanpasse
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finânsjes {BLACK}{COMPANY_NUM}

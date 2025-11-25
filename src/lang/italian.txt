@@ -3885,14 +3885,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Eccellente
 STR_CARGO_RATING_OUTSTANDING                                    :Eccezionale
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centra la vista principale sulla posizione della stazione. Ctrl+Clic per aprire una nuova finestra sulla posizione della stazione
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Cambia il nome della stazione
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Mostra tutti i treni che hanno questa stazione pianificata
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Mostra tutti gli automezzi che hanno questa stazione pianificata
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Mostra tutti gli aeromobili che hanno questa stazione pianificata
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Mostra tutte le navi che hanno questa stazione pianificata
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Rinomina stazione/area di carico
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Chiudi aeroporto
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Impedisce agli aeromobili di atterrare in questo aeroporto
@@ -3900,11 +3898,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Impedisc
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centra la vista principale sulla posizione del waypoint. Ctrl+Clic per aprire una nuova finestra sulla posizione del waypoint.
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Cambia il nome del waypoint
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la visuale principale sulla posizione della boa. Ctrl+Clic per aprire una nuova finestra di visualizzazione sulla posizione della boa
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Cambia il nome della boa
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Rinomina il waypoint
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Finanze della {COMPANY} {BLACK}{COMPANY_NUM}

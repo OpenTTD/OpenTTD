@@ -3458,14 +3458,12 @@ STR_CARGO_RATING_EXCELLENT                                      :מצויין
 STR_CARGO_RATING_OUTSTANDING                                    :מדהים
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}מרכז תצוגה ראשית על מיקום תחנה. Ctrl+לחיצה פותח חלונית תצוגה חדשה על מיקום תחנה
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}שנה שם של תחנה
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}הצג את כל הרכבות העוברות דרך תחנה זו
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}הצג את כל הרכבים העוברים דרך תחנה זו
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}הצג את כל כלי הטייס העוברים דרך תחנה זו
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}הצג את כל כלי השייט העוברים דרך תחנה זו
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :שנה שם של תחנה/אזור טעינה
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}סגור נמל תעופה
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}מנע ממטוסים לנחות בנמל תעופה זה
@@ -3473,11 +3471,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}מנע �
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}מרכז תצוגה ראשית על מיקום ציון הדרך. Ctrl+לחיצה פותח תצוגה חדשה על מיקום ציון הדרך
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}שנה שם נקודת ציון
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}מרכז תצוגה ראשית על מיקום מצוף. Ctrl+לחיצה פותח חלון תצוגה חדש על מיקום מצוף
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}שנה שם מצוף
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}ערוך שם נקודת ציון
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} נתונים כלכליים {BLACK}{COMPANY_NUM}

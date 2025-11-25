@@ -4079,14 +4079,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Отличны�
 STR_CARGO_RATING_OUTSTANDING                                    :Великолепный
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Показать станцию в основном окне. Ctrl+щелчок - показать в дополнительном окне.
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Переименовать станцию
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Показать список поездов, маршрут которых проходит через эту станцию
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Показать список автомобилей, маршрут которых проходит через эту станцию/остановку
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Показать список воздушных судов, маршрут которых проходит через этот аэропорт
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Показать список судов, маршрут которых проходит через эту пристань
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Название станции
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Закрыть аэропорт
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Запретить воздушным судам садиться в этом аэропорту
@@ -4094,11 +4092,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Запр
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Показать маршрутную точку в основном окне. Ctrl+щелчок{}NBSP- показать в дополнительном окне.
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Переименовать маршрутную точку
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Показать буй в основном окне. Ctrl+щелчок - показать в дополнительном окне.
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Изменить название буя
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Название маршрутной точки
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Финансы - {COMPANY} {BLACK}{COMPANY_NUM}
