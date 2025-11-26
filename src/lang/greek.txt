@@ -374,6 +374,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Ενερ
 STR_BUTTON_DEFAULT                                              :{BLACK}Προεπιλογή
 STR_BUTTON_CANCEL                                               :{BLACK}Ακύρωση
 STR_BUTTON_OK                                                   :{BLACK}OK
+STR_BUTTON_MOVE                                                 :{BLACK}Μετακίνηση
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-= qwertyuiop[]asdfghjkl;'#\zxcvbnm,./ .
@@ -3780,7 +3781,7 @@ STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Αντι
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Εναλλαγή ταύτισης μεγέθους κατά τη σύγκρισης ονομάτων πινακίδων με τον όρο φιλτραρισμού
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Επεξεργασία κειμένου πινακίδας
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Επεξεργασία πινακίδας
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Κεντράρισμα της κύριας προβολής στη τοποθεσία της πινακίδας. Ctrl+Κλικ για άνοιγμα νέου παραθύρου προβολής στην τοποθεσία της πινακίδας
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Μετάβαση στην επόμενη πινακίδα
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Μετάβαση στη προηγούμενη πινακίδα
@@ -3997,12 +3998,14 @@ STR_CARGO_RATING_EXCELLENT                                      :Εξαιρετ�
 STR_CARGO_RATING_OUTSTANDING                                    :Καταπληκτική
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Κεντράρισμα της κύριας προβολής στην τοποθεσία του σταθμού. Ctrl+Κλικ για άνοιγμα νέου παραθύρου προβολής στην τοποθεσία του σταθμού
+STR_STATION_VIEW_EDIT_TOOLTIP                                   :{BLACK}Μετονομασία σταθμού ή μετακίνηση σήματος
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Εμφάνιση όλων των τρένων που έχουν αυτό τον σταθμό στο δρομολόγιό τους
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Εμφάνιση όλων των οχημάτων που έχουν αυτόν τον σταθμό στο δρομολόγιό τους
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Εμφάνιση όλων των αεροσκαφών που έχουν αυτόν τον σταθμό στο δρομολόγιό τους
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Εμφάνιση όλων των πλοίων που έχουν αυτόν τον σταθμό στο δρομολόγιό τους
 
+STR_STATION_VIEW_EDIT_STATION_SIGN                              :{WHITE}Επεξεργασία πινακίδας σταθμού
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Κλείσιμο αεροδρομίου
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Αποτροπή προσγείωσης αεροσκαφών σε αυτό το αεροδρόμιο
@@ -4010,9 +4013,11 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Αποτ
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Κεντράρισμα της κύριας προβολής στην τοποθεσία του σημείου καθοδήγησης. Ctrl+Κλικ για άνοιγμα νέου παραθύρου προβολής στην τοποθεσία του σημείου καθοδήγησης
+STR_WAYPOINT_VIEW_EDIT_TOOLTIP                                  :{BLACK}Μετονομασία σημείου καθοδήγησης ή μετακίνηση σήματος
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Κεντράρισμα της κύριας προβολής στη τοποθεσία της σημαδούρας. Ctrl+Κλικ για άνοιγμα νέου παραθύρου προβολής στην τοποθεσία της σημαδούρας
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Αλλαγή ονόματος σημαδούρας
 
+STR_WAYPOINT_VIEW_EDIT_WAYPOINT_SIGN                            :{WHITE}Επεξεργασία πινακίδας σημείου καθοδήγησης
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Οικονομικά {BLACK}{COMPANY_NUM}
@@ -5234,6 +5239,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Πάρα
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Πολύ κοντά σε άλλη αποβάθρα
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Πολύ κοντά σε άλλο αεροδρόμιο
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Δεν μπορεί να μετονομαστεί ο σταθμός...
+STR_ERROR_CAN_T_MOVE_STATION_NAME                               :{WHITE}Δεν είναι δυνατή η μετακίνηση του σήματος του σταθμού...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... δρόμος ιδιοκτησία κάποιας πόλης
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... ο δρόμος βλέπει σε λάθος κατεύθυνση
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... οι μη τερματικοί σταθμοί δε μπορούν να έχουν στροφές
@@ -5265,6 +5271,7 @@ STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}Δεν �
 STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Δεν μπορεί να κατασκευαστεί οδικό σημείο καθοδήγησης εδώ...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Δεν μπορεί να τοποθετηθεί σημαδούρα εδώ...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Δεν μπορεί να αλλάξει το όνομα του σημείου καθοδήγησης...
+STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :{WHITE}Δεν είναι δυνατή η μετακίνηση του σήματος του σημείου καθοδήγησης...
 
 STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Αδύνατο να αφαιρεθεί το σημείο καθοδήγησης τρένου από εδώ...
 STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Αδύνατο να αφαιρεθεί το οδικό σημείο καθοδήγησης από εδώ...

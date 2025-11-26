@@ -438,6 +438,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Если
 STR_BUTTON_DEFAULT                                              :{BLACK}По умолчанию
 STR_BUTTON_CANCEL                                               :{BLACK}Отмена
 STR_BUTTON_OK                                                   :{BLACK}OK
+STR_BUTTON_MOVE                                                 :{BLACK}Переместить
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-= qwertyuiop[]asdfghjkl;'#\zxcvbnm,./ .
@@ -3862,7 +3863,7 @@ STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Реги
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Переключить проверку регистра при сравнении названий табличек с фильтром
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Изменить текст таблички
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Изменение таблички
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Показать метку в основном окне. Ctrl+щелчок - показать в дополнительном окне.
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}К следующей табличке
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}К предыдущей табличке
@@ -4079,12 +4080,14 @@ STR_CARGO_RATING_EXCELLENT                                      :Отличны�
 STR_CARGO_RATING_OUTSTANDING                                    :Великолепный
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Показать станцию в основном окне. Ctrl+щелчок - показать в дополнительном окне.
+STR_STATION_VIEW_EDIT_TOOLTIP                                   :{BLACK}Переименовать станцию или переместить метку
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Показать список поездов, маршрут которых проходит через эту станцию
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Показать список автомобилей, маршрут которых проходит через эту станцию/остановку
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Показать список воздушных судов, маршрут которых проходит через этот аэропорт
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Показать список судов, маршрут которых проходит через эту пристань
 
+STR_STATION_VIEW_EDIT_STATION_SIGN                              :{WHITE}Редактировать метку
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Закрыть аэропорт
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Запретить воздушным судам садиться в этом аэропорту
@@ -4092,9 +4095,11 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Запр
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Показать маршрутную точку в основном окне. Ctrl+щелчок{}NBSP- показать в дополнительном окне.
+STR_WAYPOINT_VIEW_EDIT_TOOLTIP                                  :{BLACK}Переименовать маршрутную точку или переместить метку
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Показать буй в основном окне. Ctrl+щелчок - показать в дополнительном окне.
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Изменить название буя
 
+STR_WAYPOINT_VIEW_EDIT_WAYPOINT_SIGN                            :{WHITE}Редактировать метку
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Финансы - {COMPANY} {BLACK}{COMPANY_NUM}
@@ -5320,6 +5325,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Слиш
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Слишком близко к другой пристани
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Слишком близко к другому аэропорту
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Невозможно переименовать станцию...
+STR_ERROR_CAN_T_MOVE_STATION_NAME                               :{WHITE}Невозможно переместить метку станции...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... эта дорога принадлежит городу
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... неверное направление дороги
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... на проходных остановках нельзя делать повороты
@@ -5351,6 +5357,7 @@ STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}Здес
 STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Здесь невозможно поставить маршрутную точку...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Не удалось установить здесь буй...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Невозможно переименовать маршрутную точку...
+STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :{WHITE}Невозможно переместить метку маршрутной точки...
 
 STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Невозможно удалить маршрутную точку...
 STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Невозможно удалить маршрутную точку...

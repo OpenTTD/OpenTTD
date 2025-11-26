@@ -691,6 +691,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Włącze
 STR_BUTTON_DEFAULT                                              :{BLACK}Domyślna
 STR_BUTTON_CANCEL                                               :{BLACK}Anuluj
 STR_BUTTON_OK                                                   :{BLACK}OK
+STR_BUTTON_MOVE                                                 :{BLACK}Przenieś
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./
@@ -844,7 +845,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Wyświetlanie n
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Pełne animacje
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Wszystkie detale
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Przeźroczyste budynki
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Przeźroczyste tablice
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Przeźroczyste napisy
 
 # File menu
 STR_FILE_MENU_SAVE_GAME                                         :Zapisz grę
@@ -4067,7 +4068,7 @@ STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Wielkoś
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Przełącz uwzględnianie wielkości liter przy porównywaniu tekstu napisu z filtrem
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Edycja treści napisu
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Edytuj napis
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Wyśrodkuj widok główny na lokalizacji napisu. Użyj Ctrl, aby otworzyć nowy podgląd na jego lokalizację
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Idź do następnego napisu
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Idź do poprzedniego napisu
@@ -4284,12 +4285,14 @@ STR_CARGO_RATING_EXCELLENT                                      :Wspaniałe
 STR_CARGO_RATING_OUTSTANDING                                    :Niezwykłe
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Wyśrodkuj widok główny na lokalizacji stacji. Użyj Ctrl, aby otworzyć nowy podgląd na jej lokalizację
+STR_STATION_VIEW_EDIT_TOOLTIP                                   :{BLACK}Zmień lub przenieś nazwę stacji
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Pokaż wszystkie pociągi, które mają tę stację w swoim rozkładzie
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Pokaż wszystkie pojazdy, które mają tę stację w swoim rozkładzie
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Pokaż wszystkie samoloty, które mają tę stację w swoim rozkładzie
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Pokaż wszystkie statki, które mają tę stację w swoim rozkładzie
 
+STR_STATION_VIEW_EDIT_STATION_SIGN                              :{WHITE}Edytuj nazwę stacji
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Zamknij lotnisko
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Nie zezwalaj maszynie lądować na tym lotnisku
@@ -4297,9 +4300,11 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Nie zezw
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Wyśrodkuj widok główny na lokalizacji posterunku. Użyj Ctrl, aby otworzyć nowy podgląd na jego lokalizację
+STR_WAYPOINT_VIEW_EDIT_TOOLTIP                                  :{BLACK}Zmień lub przenieś nazwę posterunku
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Wyśrodkuj widok główny na lokalizacji boi. Użyj Ctrl, aby otworzyć nowy podgląd na jej lokalizację
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Zmień nazwę boi
 
+STR_WAYPOINT_VIEW_EDIT_WAYPOINT_SIGN                            :{WHITE}Edytuj nazwę posterunku
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Finanse {COMPANY} {BLACK}{COMPANY_NUM}
@@ -5519,6 +5524,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Zbyt wie
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Zbyt blisko innego portu
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Zbyt blisko innego lotniska
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Nie można zmienić nazwy stacji...
+STR_ERROR_CAN_T_MOVE_STATION_NAME                               :{WHITE}Nie można przenieść nazwy stacji...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... droga należąca do miasta
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... droga jest zorientowana w złym kierunku
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... przystanki przelotowe nie mogą mieć zakrętów
@@ -5550,6 +5556,7 @@ STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}Nie moż
 STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Nie można tutaj zbudować posterunku drogowego...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Nie można tutaj ustawić boi...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nie można zmienić nazwy posterunku...
+STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :{WHITE}Nie można przenieść nazwy posterunku...
 
 STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Nie można stąd usunąć posterunku kolejowego...
 STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Nie można stąd usunąć posterunku drogowego...
@@ -5577,7 +5584,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Nie moż
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... składa się z wielu jednostek
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Niezgodne typy torów
 
-STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Nie można ruszyć pojazdem...
+STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Nie można przenieść pojazdu...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Tylna lokomotywa zawsze porusza się razem z przednią
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Nie można znaleźć drogi do najbliższych warsztatów
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Nie można znaleźć zajezdni

@@ -313,6 +313,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Ativando
 STR_BUTTON_DEFAULT                                              :{BLACK}Padrão
 STR_BUTTON_CANCEL                                               :{BLACK}Cancelar
 STR_BUTTON_OK                                                   :{BLACK}OK
+STR_BUTTON_MOVE                                                 :{BLACK}Mover
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-= qwertyuiop[]asdfghjkl;'#\zxcvbnm,./ .
@@ -3688,7 +3689,7 @@ STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Diferenc
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Considerar correspondência de maiúsculas e minúsculas quando comparar os nomes das placas com a palavra-chave fornecida
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Editar texto da placa
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Editar a placa
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Centralizar visualização principal na localização da placa. Ctrl+Clique para abrir uma nova visualização na localização da placa
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Ir para a próxima placa
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Ir para a placa anterior
@@ -3905,12 +3906,14 @@ STR_CARGO_RATING_EXCELLENT                                      :Excelente
 STR_CARGO_RATING_OUTSTANDING                                    :Excepcional
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centralizar visualização principal na localização da estação. Ctrl+Clique para abrir uma nova visualização na localização da estação
+STR_STATION_VIEW_EDIT_TOOLTIP                                   :{BLACK}Renomear a estação ou mover a placa
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Mostrar todos os trens que têm esta estação na sua programação
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Mostrar todos os veículos que têm esta estação na sua programação
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Mostrar todas as aeronaves que têm esta estação na sua programação
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Mostrar todas as embarcações que têm esta estação na sua programação
 
+STR_STATION_VIEW_EDIT_STATION_SIGN                              :{WHITE}Editar a placa da estação
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Fechar aeroporto
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Não permitir o pouso de aviões neste aeroporto
@@ -3918,9 +3921,11 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Não per
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centralizar visualização principal na localização do ponto de controle. Ctrl+Clique para abrir uma nova visualização na localização do ponto de controle
+STR_WAYPOINT_VIEW_EDIT_TOOLTIP                                  :{BLACK}Renomear o ponto de controle ou mover a placa
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centralizar visualização principal na localização da boia. Ctrl+Clique para abrir uma nova visualização na localização da boia
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Alterar o nome da boia
 
+STR_WAYPOINT_VIEW_EDIT_WAYPOINT_SIGN                            :{WHITE}Editar a placa do ponto de controle
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Finanças de {COMPANY} {BLACK}{COMPANY_NUM}
@@ -5134,6 +5139,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Há esta
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Muito perto de outra doca
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Muito perto de outro aeroporto
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Não é possível renomear a estação...
+STR_ERROR_CAN_T_MOVE_STATION_NAME                               :{WHITE}Não é possível mover a placa da estação...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... estrada pertence a uma localidade
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... estrada orientada na direção errada
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... estações de passagem não podem ter curvas
@@ -5165,6 +5171,7 @@ STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}Não é 
 STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Não é possível construir ponto de controle rodoviário aqui...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Não é possível colocar boia aqui...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Não é possível alterar o nome do ponto de controle...
+STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :{WHITE}Não é possível mover a placa do ponto de controle...
 
 STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Não é possível remover ponto de controle ferroviário aqui...
 STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Não é possível remover ponto de controle rodoviário aqui...
