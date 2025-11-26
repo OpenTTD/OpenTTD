@@ -74,6 +74,7 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	TimerGameCalendar::Date build_date{}; ///< Date of construction
 
 	uint16_t random_bits = 0; ///< Random bits assigned to this station
+	std::unordered_map<TileIndex, StationRandomTriggers> tile_waiting_random_triggers;
 	StationRandomTriggers waiting_random_triggers; ///< Waiting triggers (NewGRF), shared by all station parts/tiles, road stops, ... essentially useless and broken by design.
 	StationAnimationTriggers cached_anim_triggers; ///< NOSAVE: Combined animation trigger bitmask, used to determine if trigger processing should happen.
 	StationAnimationTriggers cached_roadstop_anim_triggers; ///< NOSAVE: Combined animation trigger bitmask for road stops, used to determine if trigger processing should happen.
