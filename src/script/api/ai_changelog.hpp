@@ -30,6 +30,11 @@
  * \li AIVehicleList_Waypoint
  * \li AIError::ERR_BRIDGE_TOO_LOW
  * \li AIEngine::GetAllRailTypes
+ * \li AIAirport::GetAirportPlaneCompatibility
+ * \li AIAirport::APC_INCOMPATIBLE
+ * \li AIAirport::APC_COMPATIBLE
+ * \li AIAirport::APC_SHORT_RUNWAY
+ * \li AIAirport::APC_INVALID
  *
  * Other changes:
  * \li AIBridge::GetBridgeID renamed to AIBridge::GetBridgeType

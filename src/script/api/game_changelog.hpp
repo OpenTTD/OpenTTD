@@ -31,6 +31,11 @@
  * \li GSBaseStation::GetOwner
  * \li GSError::ERR_BRIDGE_TOO_LOW
  * \li GSEngine::GetAllRailTypes
+ * \li GSAirport::GetAirportPlaneCompatibility
+ * \li GSAirport::APC_INCOMPATIBLE
+ * \li GSAirport::APC_COMPATIBLE
+ * \li GSAirport::APC_SHORT_RUNWAY
+ * \li GSAirport::APC_INVALID
  *
  * Other changes:
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
