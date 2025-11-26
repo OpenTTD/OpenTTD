@@ -30,6 +30,9 @@ function Regression::TestInit()
 	print("");
 	print(" Value Descending");
 	local list = AIList();
+	print("  GetSorterType():      " + list.GetSorterType());
+	print("  GetSorterDirection(): " + list.GetSorterDirection());
+
 	list.AddItem( 5, 10);
 	list.AddItem(10, 10);
 	list.AddItem(15, 20);
@@ -65,6 +68,9 @@ function Regression::TestInit()
 	list.Sort(AIList.SORT_BY_VALUE, AIList.SORT_ASCENDING);
 	print("");
 	print(" Value Ascending");
+	print("  GetSorterType():      " + list.GetSorterType());
+	print("  GetSorterDirection(): " + list.GetSorterDirection());
+
 	list.AddItem( 5, 10);
 	list.AddItem(10, 10);
 	list.AddItem(15, 20);
@@ -100,6 +106,9 @@ function Regression::TestInit()
 	list.Sort(AIList.SORT_BY_ITEM, AIList.SORT_DESCENDING);
 	print("");
 	print(" Item Descending");
+	print("  GetSorterType():      " + list.GetSorterType());
+	print("  GetSorterDirection(): " + list.GetSorterDirection());
+
 	list.AddItem( 5, 10);
 	list.AddItem(10, 10);
 	list.AddItem(15, 20);
@@ -135,6 +144,9 @@ function Regression::TestInit()
 	list.Sort(AIList.SORT_BY_ITEM, AIList.SORT_ASCENDING);
 	print("");
 	print(" Item Ascending");
+	print("  GetSorterType():      " + list.GetSorterType());
+	print("  GetSorterDirection(): " + list.GetSorterDirection());
+
 	list.AddItem( 5, 10);
 	list.AddItem(10, 10);
 	list.AddItem(15, 20);
@@ -170,6 +182,16 @@ function Regression::TestInit()
 	foreach (idx, val in list) {
 		print("   " + idx);
 	}
+
+	print("  SetSorterType():      " + list.SetSorterType(AIList.SORT_BY_ITEM));
+	print("  SetSorterType():      " + list.SetSorterType(AIList.SORT_BY_VALUE));
+	print("  SetSorterType():      " + list.SetSorterType(0));
+	print("  SetSorterType():      " + list.SetSorterType(-1));
+	print("  SetSorterType():      " + list.SetSorterType(2));
+	print("  SetSorterDirection(): " + list.SetSorterDirection(AIList.SORT_DESCENDING));
+	print("  SetSorterDirection(): " + list.SetSorterDirection(AIList.SORT_ASCENDING));
+	print("  SetSorterDirection(): " + list.SetSorterDirection(false));
+	print("  SetSorterDirection(): " + list.SetSorterDirection(true));
 
 	print(" Ops:      " + this.GetOpsTillSuspend());
 }
