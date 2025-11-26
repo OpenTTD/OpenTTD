@@ -11,6 +11,7 @@
 #include "script_map.hpp"
 #include "script_station.hpp"
 #include "script_cargo.hpp"
+#include "script_waypoint.hpp"
 #include "../../station_base.h"
 #include "../../landscape_cmd.h"
 #include "../../road_cmd.h"
@@ -18,6 +19,7 @@
 #include "../../strings_func.h"
 #include "../../newgrf_roadstop.h"
 #include "../../script/squirrel_helper_type.hpp"
+#include "../../waypoint_cmd.h"
 
 #include "../../safeguards.h"
 
@@ -38,7 +40,7 @@
 	if (!::IsValidTile(tile)) return false;
 
 	return (::IsTileType(tile, MP_ROAD) && ::GetRoadTileType(tile) != RoadTileType::Depot) ||
-			IsDriveThroughRoadStationTile(tile);
+			::IsDriveThroughStopTile(tile);
 }
 
 /* static */ bool ScriptRoad::IsRoadDepotTile(TileIndex tile)
@@ -63,7 +65,15 @@
 	if (!::IsValidTile(tile)) return false;
 	if (!IsRoadTypeAvailable(GetCurrentRoadType())) return false;
 
-	return ::IsDriveThroughStopTile(tile) && ::GetPresentRoadTypes(tile).Test(::RoadType(GetCurrentRoadType()));
+	return ::IsDriveThroughStopTile(tile) && ::IsStationRoadStopTile(tile) && ::GetPresentRoadTypes(tile).Test(::RoadType(GetCurrentRoadType()));
+}
+
+/* static */ bool ScriptRoad::IsRoadWaypointTile(TileIndex tile)
+{
+	if (!::IsValidTile(tile)) return false;
+	if (!IsRoadTypeAvailable(GetCurrentRoadType())) return false;
+
+	return ::IsRoadWaypointTile(tile) && ::GetPresentRoadTypes(tile).Test(::RoadType(GetCurrentRoadType()));
 }
 
 /* static */ bool ScriptRoad::IsRoadTypeAvailable(RoadType road_type)
@@ -501,20 +511,20 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	return depot + ::TileOffsByDiagDir(::GetRoadDepotDirection(depot));
 }
 
-/* static */ TileIndex ScriptRoad::GetRoadStationFrontTile(TileIndex station)
+/* static */ TileIndex ScriptRoad::GetRoadStationFrontTile(TileIndex tile)
 {
-	if (!IsRoadStationTile(station)) return INVALID_TILE;
+	if (!IsRoadStationTile(tile) && !IsRoadWaypoint(tile)) return INVALID_TILE;
 
-	if (::IsBayRoadStopTile(station)) return station + ::TileOffsByDiagDir(::GetBayRoadStopDir(station));
+	if (::IsBayRoadStopTile(tile)) return tile + ::TileOffsByDiagDir(::GetBayRoadStopDir(tile));
 
-	return station - ::TileOffsByAxis(::GetDriveThroughStopAxis(station));
+	return tile - ::TileOffsByAxis(::GetDriveThroughStopAxis(tile));
 }
 
-/* static */ TileIndex ScriptRoad::GetDriveThroughBackTile(TileIndex station)
+/* static */ TileIndex ScriptRoad::GetDriveThroughBackTile(TileIndex tile)
 {
-	if (!IsDriveThroughRoadStationTile(station)) return INVALID_TILE;
+	if (!IsDriveThroughRoadStationTile(tile) && !IsRoadWaypointTile(tile)) return INVALID_TILE;
 
-	return station + ::TileOffsByAxis(::GetDriveThroughStopAxis(station));
+	return tile + ::TileOffsByAxis(::GetDriveThroughStopAxis(tile));
 }
 
 /* static */ bool ScriptRoad::_BuildRoadInternal(TileIndex start, TileIndex end, bool one_way, bool full)
@@ -594,6 +604,28 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	return _BuildRoadStationInternal(tile, front, road_veh_type, true, station_id);
 }
 
+/* static */ bool ScriptRoad::BuildRoadWaypoint(TileIndex tile, StationID waypoint_id)
+{
+	EnforceCompanyModeValid(false);
+	EnforcePrecondition(false, ::IsValidTile(tile));
+	EnforcePrecondition(false, IsRoadTile(tile));
+	EnforcePrecondition(false, IsRoadTypeAvailable(GetCurrentRoadType()));
+	EnforcePrecondition(false, waypoint_id == ScriptBaseStation::STATION_NEW || waypoint_id == ScriptBaseStation::STATION_JOIN_ADJACENT || ScriptWaypoint::IsValidWaypoint(waypoint_id));
+
+	::RoadBits bits = ::GetAllRoadBits(tile);
+	::Axis axis = ::INVALID_AXIS;
+	if ((bits & ::ROAD_Y) == ::ROAD_NONE) {
+		axis = ::AXIS_X;
+	} else if ((bits & ::ROAD_X) == ::ROAD_NONE) {
+		axis = ::AXIS_Y;
+	}
+	EnforcePrecondition(false, ::IsValidAxis(axis));
+
+	StationID to_join = ScriptWaypoint::IsValidWaypoint(waypoint_id) ? waypoint_id : ::StationID::Invalid();
+	bool adjacent = waypoint_id != ScriptBaseStation::STATION_JOIN_ADJACENT;
+	return ScriptObject::Command<CMD_BUILD_ROAD_WAYPOINT>::Do(tile, axis, 1, 1, ::ROADSTOP_CLASS_WAYP, 0, to_join, adjacent);
+}
+
 /* static */ bool ScriptRoad::RemoveRoad(TileIndex start, TileIndex end)
 {
 	EnforceCompanyModeValid(false);
@@ -638,6 +670,15 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	return ScriptObject::Command<CMD_REMOVE_ROAD_STOP>::Do(tile, 1, 1, GetRoadStopType(tile), false);
 }
 
+/* static */ bool ScriptRoad::RemoveRoadWaypointTileRectangle(TileIndex tile, TileIndex tile2)
+{
+	EnforceCompanyModeValid(false);
+	EnforcePrecondition(false, ::IsValidTile(tile));
+	EnforcePrecondition(false, ::IsValidTile(tile2));
+
+	return ScriptObject::Command<CMD_REMOVE_FROM_ROAD_WAYPOINT>::Do(tile, tile2);
+}
+
 /* static */ Money ScriptRoad::GetBuildCost(RoadType roadtype, BuildType build_type)
 {
 	if (!ScriptRoad::IsRoadTypeAvailable(roadtype)) return -1;
@@ -646,7 +687,8 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 		case BT_ROAD:       return ::RoadBuildCost((::RoadType)roadtype);
 		case BT_DEPOT:      return ::GetPrice(PR_BUILD_DEPOT_ROAD, 1, nullptr);
 		case BT_BUS_STOP:   return ::GetPrice(PR_BUILD_STATION_BUS, 1, nullptr);
-		case BT_TRUCK_STOP: return ::GetPrice(PR_BUILD_STATION_TRUCK, 1, nullptr);
+		case BT_TRUCK_STOP:
+		case BT_WAYPOINT: return ::GetPrice(PR_BUILD_STATION_TRUCK, 1, nullptr);
 		default: return -1;
 	}
 }

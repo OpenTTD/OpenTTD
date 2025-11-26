@@ -30,6 +30,11 @@
  * \li AIVehicleList_Waypoint
  * \li AIError::ERR_BRIDGE_TOO_LOW
  * \li AIEngine::GetAllRailTypes
+ * \li AIRoad::IsRoadWaypointTile
+ * \li AIRoad::BuildRoadWaypoint
+ * \li AIRoad::RemoveRoadWaypointTileRectangle
+ * \li AIWaypoint::WAYPOINT_ROAD
+ * \li AIRoad::BT_WAYPOINT
  *
  * Other changes:
  * \li AIBridge::GetBridgeID renamed to AIBridge::GetBridgeType

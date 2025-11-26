@@ -567,10 +567,12 @@ function Regression::Prices()
 	print("  ROADTYPE_ROAD,BT_DEPOT:      " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_ROAD, AIRoad.BT_DEPOT));
 	print("  ROADTYPE_ROAD,BT_BUS_STOP:   " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_ROAD, AIRoad.BT_BUS_STOP));
 	print("  ROADTYPE_ROAD,BT_TRUCK_STOP: " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_ROAD, AIRoad.BT_TRUCK_STOP));
+	print("  ROADTYPE_ROAD,BT_WAYPOINT:   " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_ROAD, AIRoad.BT_WAYPOINT));
 	print("  ROADTYPE_TRAM,BT_ROAD:       " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_TRAM, AIRoad.BT_ROAD));
 	print("  ROADTYPE_TRAM,BT_DEPOT:      " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_TRAM, AIRoad.BT_DEPOT));
 	print("  ROADTYPE_TRAM,BT_BUS_STOP:   " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_TRAM, AIRoad.BT_BUS_STOP));
 	print("  ROADTYPE_TRAM,BT_TRUCK_STOP: " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_TRAM, AIRoad.BT_TRUCK_STOP));
+	print("  ROADTYPE_TRAM,BT_WAYPOINT:   " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_TRAM, AIRoad.BT_WAYPOINT));
 	print(" -Water-");
 	print("  BT_DOCK:  " + AIMarine.GetBuildCost(AIMarine.BT_DOCK));
 	print("  BT_DEPOT: " + AIMarine.GetBuildCost(AIMarine.BT_DEPOT));
@@ -964,7 +966,7 @@ function Regression::Marine()
 	}
 	print("  HasWaypointType:");
 	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
-		print("    " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_RAIL) + "  " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_BUOY) + "  " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_ANY));
+		print("    " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_RAIL) + "  " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_ROAD) + "  " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_BUOY) + "  " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_ANY));
 	}
 	print("");
 
@@ -1325,6 +1327,56 @@ function Regression::Road()
 	print("    GetDriveThroughBackTile():     " + AIRoad.GetDriveThroughBackTile(33415));
 	print("    GetRoadStationFrontTile():     " + AIRoad.GetRoadStationFrontTile(33415));
 	print("    IsRoadTile():                  " + AIRoad.IsRoadTile(33415));
+
+	print("  Waypoint");
+	print("    IsRoadWaypointTile():          " + AIRoad.IsRoadWaypointTile(33411));
+	print("    IsRoadWaypointTile():          " + AIRoad.IsRoadWaypointTile(33412));
+	print("    IsRoadWaypointTile():          " + AIRoad.IsRoadWaypointTile(33413));
+	print("    IsRoadWaypointTile():          " + AIRoad.IsRoadWaypointTile(33414));
+	print("    IsRoadWaypointTile():          " + AIRoad.IsRoadWaypointTile(33415));
+	print("    IsRoadWaypointTile():          " + AIRoad.IsRoadWaypointTile(33416));
+	print("    IsRoadWaypointTile():          " + AIRoad.IsRoadWaypointTile(33417));
+	print("    BuildRoad():                   " + AIRoad.BuildRoad(33666, 33666 + 256));
+	print("    BuildRoadWaypoint():           " + AIRoad.BuildRoadWaypoint(33666, AIStation.STATION_JOIN_ADJACENT));
+	print("    BuildRoadWaypoint():           " + AIRoad.BuildRoadWaypoint(33666 + 256, AIStation.STATION_NEW));
+	print("    BuildRoadFull():               " + AIRoad.BuildRoadFull(33665, 33663));
+	print("    BuildRoadWaypoint():           " + AIRoad.BuildRoadWaypoint(33664, AIStation.STATION_NEW));
+	print("    BuildRoadWaypoint():           " + AIRoad.BuildRoadWaypoint(33665, AIStation.STATION_JOIN_ADJACENT));
+	print("    BuildRoadWaypoint():           " + AIRoad.BuildRoadWaypoint(33663, AIStation.STATION_JOIN_ADJACENT));
+	print("    BuildRoadWaypoint():           " + AIRoad.BuildRoadWaypoint(33665, 8));
+	print("    BuildOneWayRoadFull():         " + AIRoad.BuildOneWayRoadFull(33663, 33662));
+	print("    BuildRoadWaypoint():           " + AIRoad.BuildRoadWaypoint(33662, AIStation.STATION_JOIN_ADJACENT));
+	print("    IsRoadWaypointTile():          " + AIRoad.IsRoadWaypointTile(33662));
+	print("    GetWaypointID():               " + AIWaypoint.GetWaypointID(33666));
+	print("    IsValidWaypoint():             " + AIWaypoint.IsValidWaypoint(8));
+	print("    GetStationID():                " + AIStation.GetStationID(33666));
+	print("    IsValidStation():              " + AIStation.IsValidStation(8));
+	print("    IsValidBaseStation():          " + AIBaseStation.IsValidBaseStation(8));
+	print("    IsRoadWaypointTile():          " + AIRoad.IsRoadWaypointTile(33666));
+	print("    IsRoadDepotTile():             " + AIRoad.IsRoadDepotTile(33666));
+	print("    IsRoadStationTile():           " + AIRoad.IsRoadStationTile(33666));
+	print("    IsDriveThroughRoadStationTile(): " + AIRoad.IsDriveThroughRoadStationTile(33666));
+	print("    IsRoadTile():                  " + AIRoad.IsRoadTile(33666));
+	print("    GetNeighbourRoadCount():       " + AIRoad.GetNeighbourRoadCount(33666));
+	print("    AreRoadTilesConnected():       " + AIRoad.AreRoadTilesConnected(33666, 33666 + 256));
+	print("    GetDriveThroughBackTile():     " + AIRoad.GetDriveThroughBackTile(33666));
+	print("    GetRoadStationFrontTile():     " + AIRoad.GetRoadStationFrontTile(33666));
+	print("    IsBuildable():                 " + AITile.IsBuildable(33666));
+	print("    BuildRoadWaypoint():           " + AIRoad.BuildRoadWaypoint(41383, AIStation.STATION_NEW));
+	print("    RemoveRoadWaypointTileRectangle(): " + AIRoad.RemoveRoadWaypointTileRectangle(33666, 33666));
+	print("    RemoveRoadWaypointTileRectangle(): " + AIRoad.RemoveRoadWaypointTileRectangle(33666, 33669));
+	local list = AIWaypointList(AIWaypoint.WAYPOINT_ROAD);
+	print("");
+	print("--AIWaypointList(ROAD)--");
+	print("  Count():             " + list.Count());
+	print("  Location ListDump:");
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + AIWaypoint.GetLocation(i));
+	}
+	print("  HasWaypointType:");
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_RAIL) + "  " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_ROAD) + "  " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_BUOY) + "  " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_ANY));
+	}
 }
 
 function Regression::Sign()

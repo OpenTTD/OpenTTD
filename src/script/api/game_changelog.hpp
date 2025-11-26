@@ -31,6 +31,11 @@
  * \li GSBaseStation::GetOwner
  * \li GSError::ERR_BRIDGE_TOO_LOW
  * \li GSEngine::GetAllRailTypes
+ * \li GSRoad::IsRoadWaypointTile
+ * \li GSRoad::BuildRoadWaypoint
+ * \li GSRoad::RemoveRoadWaypointTileRectangle
+ * \li GSWaypoint::WAYPOINT_ROAD
+ * \li GSRoad::BT_WAYPOINT
  *
  * Other changes:
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
