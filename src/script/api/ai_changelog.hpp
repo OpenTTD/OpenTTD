@@ -30,6 +30,8 @@
  * \li AIVehicleList_Waypoint
  * \li AIError::ERR_BRIDGE_TOO_LOW
  * \li AIEngine::GetAllRailTypes
+ * \li AIOrder::OF_UNBUNCH_IN_DEPOT
+ * \li AIOrder::ERR_ORDER_UNBUNCH
  *
  * Other changes:
  * \li AIBridge::GetBridgeID renamed to AIBridge::GetBridgeType
