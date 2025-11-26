@@ -1077,7 +1077,7 @@ static void MakeLake(TileIndex lake_centre, uint height_lake)
 				TileIndex t = tile + TileOffsByDiagDir(d);
 				if (IsWaterTile(t)) {
 					MakeRiverAndModifyDesertZoneAround(tile);
-					return;
+					break;
 				}
 			}
 		}
