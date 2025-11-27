@@ -468,6 +468,22 @@ public:
 				size.height = this->tiny_step_height;
 				break;
 
+			case WID_GL_INFO: {
+				uint left_side = 0;
+				for (const StringID &label : {STR_GROUP_PROFIT_THIS_PERIOD, STR_GROUP_PROFIT_THIS_YEAR, STR_GROUP_PROFIT_LAST_PERIOD, STR_GROUP_PROFIT_LAST_YEAR, STR_GROUP_OCCUPANCY}) {
+					left_side = std::max(left_side, GetStringBoundingBox(label).width);
+				}
+
+				/* Guestimate that 12 digits is reasonable*/
+				uint right_side = std::max(
+					GetStringBoundingBox(GetString(STR_GROUP_OCCUPANCY_VALUE, GetParamMaxDigits(3))).width,
+					GetStringBoundingBox(GetString(STR_JUST_CURRENCY_LONG, GetParamMaxDigits(12))).width
+				);
+
+				size.width = left_side + WidgetDimensions::scaled.hsep_wide + right_side + padding.width;
+				break;
+			}
+
 			case WID_GL_SORT_BY_ORDER: {
 				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->GetString());
 				d.width += padding.width + Window::SortButtonWidth() * 2; // Doubled since the string is centred and it also looks better.
