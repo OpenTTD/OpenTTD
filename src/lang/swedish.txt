@@ -312,6 +312,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}När den
 STR_BUTTON_DEFAULT                                              :{BLACK}Standardinställning
 STR_BUTTON_CANCEL                                               :{BLACK}Avbryt
 STR_BUTTON_OK                                                   :{BLACK}OK
+STR_BUTTON_MOVE                                                 :{BLACK}Flytta
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-= qwertyuiop[]asdfghjkl;'#\zxcvbnm,./ .
@@ -2861,15 +2862,15 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Välj vilken st
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Välj en hustyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
 
 STR_HOUSE_PICKER_CAPTION                                        :Husval
-STR_HOUSE_PICKER_NAME                                           :{BLACK}Namn: {ORANGE}{STRING}
-STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Invånarantal: {ORANGE}{NUM}
-STR_HOUSE_PICKER_YEARS                                          :{BLACK}År: {ORANGE}{NUM}-{NUM}
-STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}År: {ORANGE}Alla
-STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}År: {ORANGE}Från {NUM}
-STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}År: {ORANGE}Till {NUM}
-STR_HOUSE_PICKER_SIZE                                           :{BLACK}Storlek: {ORANGE}{NUM}x{NUM} rutor
-STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Accepterat gods: {ORANGE}
-STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Fraktgods producerat: {ORANGE}{CARGO_LIST}
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Namn: {GOLD}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Invånarantal: {GOLD}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}År: {GOLD}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}År: {GOLD}Alla
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}År: {GOLD}Från {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}År: {GOLD}Till {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Storlek: {GOLD}{NUM}x{NUM} rutor
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Accepterat gods: {GOLD}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Fraktgods producerat: {GOLD}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Gräns
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Utkanter
@@ -3687,7 +3688,7 @@ STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Matcha V
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Slå på/av matchning av VERSALER/gemener när skyltnamn matchas mot sökfiltret
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Ändra skylttext
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Ändra skylt
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Centrera huvudvyn på skyltens läge Ctrl+Klick för att öppna en ny fönstervy över skyltens läge
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Åk till nästa skylt
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Åk till föregående skylt
@@ -3904,12 +3905,14 @@ STR_CARGO_RATING_EXCELLENT                                      :Utmärkt
 STR_CARGO_RATING_OUTSTANDING                                    :Enastående
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrera huvudvyn på stationen. Ctrl+Klick öppnar en ny fönstervy över stationens läge
+STR_STATION_VIEW_EDIT_TOOLTIP                                   :{BLACK}Döp om station eller flytta skylt
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Visa alla tåg där denna station finns med i rutten
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Visa alla vägfordon där denna station finns med i rutten
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Visa alla flygplan där denna station finns med i rutten
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Visa alla skepp där denna station finns med i rutten
 
+STR_STATION_VIEW_EDIT_STATION_SIGN                              :{WHITE}Ändra skylt på station
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Stäng flygplats
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Hindra flygplan från att landa på den här flygplatsen
@@ -3917,9 +3920,11 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Hindra f
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrera huvudvyn på riktmärket. Ctrl+Klick för att öppna en ny fönstervy över riktmärkets läge
+STR_WAYPOINT_VIEW_EDIT_TOOLTIP                                  :{BLACK}Döp om riktmärke eller flytta skylt
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrera huvudvyn på bojen. Ctrl+klicka för att öppna en ny skärmvy över bojens läge
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Ändra namn på boj
 
+STR_WAYPOINT_VIEW_EDIT_WAYPOINT_SIGN                            :{WHITE}Ändra skylt på riktmärke
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Budget {BLACK}{COMPANY_NUM}
@@ -5133,6 +5138,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}För må
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}För nära en annan hamn
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}För nära en annan flygplats
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kan inte byta namn på station...
+STR_ERROR_CAN_T_MOVE_STATION_NAME                               :{WHITE}Kan inte flytta stationsskylt...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... detta är en väg som ägs av en stad
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... vägen pekar i fel riktning
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... genomfartshållplatser kan inte ha gatuhörn
@@ -5164,6 +5170,7 @@ STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}Kan inte
 STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Kan inte bygga vägriktmärke här...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kan inte placera boj här...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan inte ändra riktmärkets namn...
+STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :{WHITE}Kain inte flytta skylt för riktmärke...
 
 STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Kan inte ta bort järnvägsriktmärke här...
 STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Kan inte ta bort vägriktmärke här...

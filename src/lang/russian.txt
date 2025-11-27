@@ -3033,15 +3033,15 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Выберит�
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Выберите здание для строительства. Ctrl+щелчок добавит его в «избранное» или удалит.
 
 STR_HOUSE_PICKER_CAPTION                                        :Выбор типов зданий
-STR_HOUSE_PICKER_NAME                                           :{BLACK}Здание: {ORANGE}{STRING}
-STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Кол-во жителей: {ORANGE}{NUM}
-STR_HOUSE_PICKER_YEARS                                          :{BLACK}Дата: {ORANGE}{NUM}-{NUM}
-STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Дата: {ORANGE}любая
-STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Дата: {ORANGE}с {NUM} г.
-STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Дата: {ORANGE}до {NUM} г.
-STR_HOUSE_PICKER_SIZE                                           :{BLACK}Размеры: {ORANGE}{NUM}×{NUM}
-STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Принимаемый груз: {ORANGE}
-STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Груза отдано: {ORANGE}{CARGO_LIST}
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Здание: {GOLD}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Кол-во жителей: {GOLD}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Дата: {GOLD}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Дата: {GOLD}любая
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Дата: {GOLD}с {NUM} г.
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Дата: {GOLD}до {NUM} г.
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Размеры: {GOLD}{NUM}×{NUM}
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Принимаемый груз: {GOLD}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Груза отдано: {GOLD}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Пригород
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Окраина

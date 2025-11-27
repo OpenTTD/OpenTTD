@@ -2862,15 +2862,15 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Valitse näytet
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Valitse rakennettavan talon tyyppi. Ctrl+napsautus lisää tallennettuihin tai poistaa tallennetuista
 
 STR_HOUSE_PICKER_CAPTION                                        :Talojen valinta
-STR_HOUSE_PICKER_NAME                                           :{BLACK}Nimi: {ORANGE}{STRING}
-STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Asukasluku: {ORANGE}{NUM}
-STR_HOUSE_PICKER_YEARS                                          :{BLACK}Vuodet: {ORANGE}{NUM}–{NUM}
-STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Vuodet: {ORANGE}milloin tahansa
-STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Vuodet: {ORANGE}{NUM} alkaen
-STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Vuodet: {ORANGE}{NUM} saakka
-STR_HOUSE_PICKER_SIZE                                           :{BLACK}Koko: {ORANGE}{NUM}×{NUM} ruutua
-STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Ottaa vastaan: {ORANGE}
-STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Tuottaa: {ORANGE}{CARGO_LIST}
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Nimi: {GOLD}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Asukasluku: {GOLD}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Vuodet: {GOLD}{NUM}–{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Vuodet: {GOLD}milloin tahansa
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Vuodet: {GOLD}{NUM} alkaen
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Vuodet: {GOLD}{NUM} saakka
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Koko: {GOLD}{NUM}×{NUM} ruutua
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Ottaa vastaan: {GOLD}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Tuottaa: {GOLD}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Reuna-alueet
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Laitamat
