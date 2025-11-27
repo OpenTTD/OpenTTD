@@ -451,6 +451,12 @@ enum WindowClass : uint16_t {
 	 *   - 0 = #SelectGameIntroWidgets
 	 */
 	WC_SELECT_GAME,
+	
+	/**
+	 * Tutorial window; %Window numbers:
+	 *   - 0 = #TutorialWidgets
+	 */
+	WC_TUTORIAL,
 
 	/**
 	 * Landscape generation (in Scenario Editor); %Window numbers:

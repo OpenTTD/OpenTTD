@@ -35,6 +35,7 @@
 #include "misc_cmd.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
+#include "tutorial_gui.h"
 
 #include "saveload/saveload.h"
 
@@ -544,12 +545,13 @@ bool IsQuitKey(uint16_t keycode)
 	return num == GHK_QUIT;
 }
 
-
 void ShowSelectGameWindow();
 
 /**
  * Initialise the default colours (remaps and the likes), and load the main windows.
  */
+
+
 void SetupColoursAndInitialWindow()
 {
 	for (Colours i = COLOUR_BEGIN; i != COLOUR_END; i++) {
@@ -567,6 +569,7 @@ void SetupColoursAndInitialWindow()
 		default: NOT_REACHED();
 		case GM_MENU:
 			ShowSelectGameWindow();
+			ShowTutorialWindow();  // 显示新手教程窗口
 			break;
 
 		case GM_NORMAL:
