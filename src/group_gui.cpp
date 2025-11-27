@@ -280,6 +280,34 @@ private:
 	}
 
 	/**
+	 * Get the string to draw for the given group.
+	 * @param g_id Group to get string for.
+	 * @return Formatted string to draw.
+	 */
+	std::string GetGroupNameString(GroupID g_id) const
+	{
+		if (IsAllGroupID(g_id)) return GetString(STR_GROUP_ALL_TRAINS + this->vli.vtype);
+		if (IsDefaultGroupID(g_id)) return GetString(STR_GROUP_DEFAULT_TRAINS + this->vli.vtype);
+		return GetString(STR_GROUP_NAME, g_id);
+	}
+
+	/**
+	 * Get the profit sprite ID to draw for the given group.
+	 * @param g_id Group to get profit sprite ID for.
+	 * @return SpriteID to draw.
+	 */
+	SpriteID GetGroupProfitSpriteID(GroupID g_id) const
+	{
+		uint num_vehicle_min_age = GetGroupNumVehicleMinAge(this->vli.company, g_id, this->vli.vtype);
+		if (num_vehicle_min_age == 0) return SPR_PROFIT_NA;
+
+		Money profit_last_year_min_age = GetGroupProfitLastYearMinAge(this->vli.company, g_id, this->vli.vtype);
+		if (profit_last_year_min_age < 0) return SPR_PROFIT_NEGATIVE;
+		if (profit_last_year_min_age < VEHICLE_PROFIT_THRESHOLD * num_vehicle_min_age) return SPR_PROFIT_SOME;
+		return SPR_PROFIT_LOT;
+	}
+
+	/**
 	 * Draw a row in the group list.
 	 * @param r Rect to draw row in.
 	 * @param g_id Group to list.
@@ -329,16 +357,8 @@ private:
 		int text_width = this->column_size[VGC_NAME].width - indent * WidgetDimensions::scaled.hsep_indent;
 
 		/* draw group name */
-		std::string str;
-		if (IsAllGroupID(g_id)) {
-			str = GetString(STR_GROUP_ALL_TRAINS + this->vli.vtype);
-		} else if (IsDefaultGroupID(g_id)) {
-			str = GetString(STR_GROUP_DEFAULT_TRAINS + this->vli.vtype);
-		} else {
-			str = GetString(STR_GROUP_NAME, g_id);
-		}
 		r = r.Indent(this->column_size[VGC_FOLD].width + WidgetDimensions::scaled.hsep_normal, rtl);
-		DrawString(r.WithWidth(text_width, rtl).CentreToHeight(this->column_size[VGC_NAME].height), std::move(str), colour);
+		DrawString(r.WithWidth(text_width, rtl).CentreToHeight(this->column_size[VGC_NAME].height), this->GetGroupNameString(g_id), colour);
 
 		/* draw autoreplace protection */
 		r = r.Indent(text_width + WidgetDimensions::scaled.hsep_wide, rtl);
@@ -353,21 +373,8 @@ private:
 		}
 
 		/* draw the profit icon */
-		SpriteID spr;
-		uint num_vehicle_min_age = GetGroupNumVehicleMinAge(this->vli.company, g_id, this->vli.vtype);
-		Money profit_last_year_min_age = GetGroupProfitLastYearMinAge(this->vli.company, g_id, this->vli.vtype);
-		if (num_vehicle_min_age == 0) {
-			spr = SPR_PROFIT_NA;
-		} else if (profit_last_year_min_age < 0) {
-			spr = SPR_PROFIT_NEGATIVE;
-		} else if (profit_last_year_min_age < VEHICLE_PROFIT_THRESHOLD * num_vehicle_min_age) {
-			spr = SPR_PROFIT_SOME;
-		} else {
-			spr = SPR_PROFIT_LOT;
-		}
-
 		r = r.Indent(this->column_size[VGC_AUTOREPLACE].width + WidgetDimensions::scaled.hsep_normal, rtl);
-		DrawSpriteIgnorePadding(spr, PAL_NONE, r.WithWidth(this->column_size[VGC_PROFIT].width, rtl), SA_CENTER);
+		DrawSpriteIgnorePadding(this->GetGroupProfitSpriteID(g_id), PAL_NONE, r.WithWidth(this->column_size[VGC_PROFIT].width, rtl), SA_CENTER);
 
 		/* draw the number of vehicles of the group */
 		r = r.Indent(this->column_size[VGC_PROFIT].width + WidgetDimensions::scaled.hsep_normal, rtl);
