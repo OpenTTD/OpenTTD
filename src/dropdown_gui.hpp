@@ -23,6 +23,11 @@
 #include "querystring_gui.h"
 #include "stringfilter_type.h"
 
+extern const std::initializer_list<NWidgetPart> NESTED_DROPDOWN_MENU_WIDGETS;
+extern WindowDesc _dropdown_desc;
+
+std::unique_ptr<NWidgetBase> InsertDropdownNestedWidgets();
+
 /** Drop-down menu window */
 struct DropdownWindow : Window {
 public:
@@ -58,7 +63,7 @@ private:
 	Dimension items_dim{}; ///< Calculated cropped and padded dimension for the items widget
 
 public:
-	DropdownWindow(int window_id, Window *parent, DropDownList &&list, int selected, WidgetID button, const Rect wi_rect, bool instant_close, Colours wi_colour, bool persist, bool has_sorter);
+	DropdownWindow(int window_id, Window *parent, DropDownList &&list, int selected, WidgetID button, const Rect wi_rect, bool instant_close, Colours wi_colour, bool persist, bool has_sorter, WindowDesc &window_desc = _dropdown_desc);
 	DropdownWindow(int window_id, Window *parent, DropDownList &&list, int selected, WidgetID button, const Rect wi_rect, bool instant_close, Colours wi_colour, bool persist);
 
 	void OnInit() override;
@@ -102,7 +107,7 @@ public:
 class RailTypeDropdownWindowBase : public DropdownWindow {
 public:
 	/** @see DropdownWindow::DropdownWindow. */
-	RailTypeDropdownWindowBase(int window_id, Window *parent, DropDownList &&list, int selected, WidgetID button, const Rect wi_rect, bool instant_close, Colours wi_colour, bool persist) : DropdownWindow(window_id, parent, std::move(list), selected, button, wi_rect, instant_close, wi_colour, persist, true)
+	RailTypeDropdownWindowBase(int window_id, Window *parent, DropDownList &&list, int selected, WidgetID button, const Rect wi_rect, bool instant_close, Colours wi_colour, bool persist, WindowDesc &window_desc = _dropdown_desc) : DropdownWindow(window_id, parent, std::move(list), selected, button, wi_rect, instant_close, wi_colour, persist, true, window_desc)
 	{
 		this->FinishInitNested(window_id);
 		this->flags.Reset(WindowFlag::WhiteBorder);

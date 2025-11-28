@@ -7,11 +7,15 @@
 
 /** @file rail_gui.cpp %File for dealing with rail construction user interface */
 
+#include "gfx_type.h"
 #include "newgrf.h"
 #include "stdafx.h"
 #include "gui.h"
 #include "station_base.h"
+#include "transport_type.h"
 #include "waypoint_base.h"
+#include "widget_type.h"
+#include "widgets/toolbar_widget.h"
 #include "window_gui.h"
 #include "station_gui.h"
 #include "terraform_gui.h"
@@ -35,6 +39,7 @@
 #include "hotkeys.h"
 #include "engine_base.h"
 #include "vehicle_func.h"
+#include "window_type.h"
 #include "zoom_func.h"
 #include "rail_gui.h"
 #include "station_cmd.h"
@@ -62,6 +67,7 @@ static DiagDirection _build_depot_direction; ///< Currently selected depot direc
 static bool _convert_signal_button;          ///< convert signal button in the signal GUI pressed
 static SignalVariant _cur_signal_variant;    ///< set the signal variant (for signal GUI)
 static SignalType _cur_signal_type;          ///< set the signal type (for signal GUI)
+static bool _show_dropdown_inside_toolbar = false; ///< Whether railtype dropdown is visible inside the build rail toolbar window.
 
 struct WaypointPickerSelection {
 	StationClassID sel_class; ///< Selected station class.
@@ -438,27 +444,33 @@ static void HandleAutoSignalPlacement()
 
 
 /** Rail toolbar management class. */
-struct BuildRailToolbarWindow : Window {
+struct BuildRailToolbarWindow : RailTypeDropdownWindowBase {
 	RailType railtype = INVALID_RAILTYPE; ///< Rail type to build.
 	WidgetID last_user_action = INVALID_WIDGET; ///< Last started user action.
 
-	BuildRailToolbarWindow(WindowDesc &desc, RailType railtype) : Window(desc), railtype(railtype)
+	BuildRailToolbarWindow(WindowDesc &desc, RailType railtype) : RailTypeDropdownWindowBase(TRANSPORT_RAIL, FindWindowByClass(WC_MAIN_TOOLBAR), {}, _last_built_railtype, WID_TN_RAILS, {}, false, COLOUR_DARK_GREEN, true, desc), railtype(railtype)
 	{
-		this->CreateNestedTree();
-		this->FinishInitNested(TRANSPORT_RAIL);
+		this->GetWidget<NWidgetStacked>(WID_RAT_SHOW_DROPDOWN)->SetDisplayedPlane(_show_dropdown_inside_toolbar ? 0 : SZSP_HORIZONTAL);
+
 		this->DisableWidget(WID_RAT_REMOVE);
 		this->OnInvalidateData();
+		this->ReInit();
 
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
 	}
 
-	void Close([[maybe_unused]] int data = 0) override
+	void Close(int data = 0) override
 	{
 		if (this->IsWidgetLowered(WID_RAT_BUILD_STATION)) SetViewportCatchmentStation(nullptr, true);
 		if (this->IsWidgetLowered(WID_RAT_BUILD_WAYPOINT)) SetViewportCatchmentWaypoint(nullptr, true);
 		if (_settings_client.gui.link_terraform_toolbar) CloseWindowById(WC_SCEN_LAND_GEN, 0, false);
 		CloseWindowById(WC_SELECT_STATION, 0);
-		this->Window::Close();
+		this->RailTypeDropdownWindowBase::Close(data);
+	}
+
+	void OnFocusLost(bool closing) override
+	{
+		this->Window::OnFocusLost(closing);
 	}
 
 	/** List of widgets to be disabled if infrastructure limit prevents building. */
@@ -512,6 +524,8 @@ struct BuildRailToolbarWindow : Window {
 		this->GetWidget<NWidgetCore>(WID_RAT_BUILD_DEPOT)->SetSprite(rti->gui_sprites.build_depot);
 		this->GetWidget<NWidgetCore>(WID_RAT_CONVERT_RAIL)->SetSprite(rti->gui_sprites.convert_rail);
 		this->GetWidget<NWidgetCore>(WID_RAT_BUILD_TUNNEL)->SetSprite(rti->gui_sprites.build_tunnel);
+
+		this->RailTypeDropdownWindowBase::OnInit();
 	}
 
 	/**
@@ -564,10 +578,10 @@ struct BuildRailToolbarWindow : Window {
 			return GetString(rti->strings.toolbar_caption);
 		}
 
-		return this->Window::GetWidgetString(widget, stringid);
+		return this->RailTypeDropdownWindowBase::GetWidgetString(widget, stringid);
 	}
 
-	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
+	void OnClick(Point pt, WidgetID widget, int click_count) override
 	{
 		if (widget < WID_RAT_BUILD_NS) return;
 
@@ -652,7 +666,15 @@ struct BuildRailToolbarWindow : Window {
 				this->last_user_action = widget;
 				break;
 
-			default: NOT_REACHED();
+			case WID_RAT_TOGGLE_SIZE:
+				_show_dropdown_inside_toolbar = !_show_dropdown_inside_toolbar;
+				this->GetWidget<NWidgetStacked>(WID_RAT_SHOW_DROPDOWN)->SetDisplayedPlane(_show_dropdown_inside_toolbar ? 0 : SZSP_HORIZONTAL);
+				this->ReInit();
+				break;
+
+			default:
+				this->RailTypeDropdownWindowBase::OnClick(pt, widget, click_count);
+				return;
 		}
 		this->UpdateRemoveWidgetStatus(widget);
 		if (_ctrl_pressed) RailToolbar_CtrlChanged(this);
@@ -868,6 +890,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_rail_widgets =
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, WID_RAT_CAPTION), SetTextStyle(TC_WHITE),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_RAT_TOGGLE_SIZE), SetSpriteTip(SPR_LARGE_SMALL_WINDOW, STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW), SetAspect(WidgetDimensions::ASPECT_TOGGLE_SIZE),
 		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
@@ -903,6 +926,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_rail_widgets =
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_RAT_CONVERT_RAIL),
 						SetFill(0, 1), SetToolbarMinimalSize(1), SetSpriteTip(SPR_IMG_CONVERT_RAIL, STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL),
 	EndContainer(),
+	NWidget(NWID_SELECTION, INVALID_COLOUR, WID_RAT_SHOW_DROPDOWN),
+		NWidgetFunction(InsertDropdownNestedWidgets),
+	EndContainer(),
 };
 
 static WindowDesc _build_rail_desc(
@@ -913,6 +939,14 @@ static WindowDesc _build_rail_desc(
 	&BuildRailToolbarWindow::hotkeys
 );
 
+/**
+ * Updates the dropdown part of BuildRailToolbarWindow.
+ */
+void UpdateBuildRailToolbar() {
+	if (BuildRailToolbarWindow *w = dynamic_cast<BuildRailToolbarWindow *>(FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL))) {
+		w->ReplaceList({}, _last_built_railtype);
+	}
+}
 
 /**
  * Open the build rail toolbar window for a specific rail type.
@@ -926,6 +960,12 @@ Window *ShowBuildRailToolbar(RailType railtype)
 {
 	if (!Company::IsValidID(_local_company)) return nullptr;
 	if (!ValParamRailType(railtype)) return nullptr;
+
+	if (BuildRailToolbarWindow *w = dynamic_cast<BuildRailToolbarWindow *>(FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL))) {
+		w->ReplaceList({}, railtype);
+		w->ModifyRailType(railtype);
+		return w;
+	}
 
 	CloseWindowByClass(WC_BUILD_TOOLBAR);
 	_cur_railtype = railtype;

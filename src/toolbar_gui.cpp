@@ -877,18 +877,21 @@ void RailTypeDropdownWindowBase::SetSortCriteria(int new_sort_criteria)
 	if (new_sort_criteria < 0) return;
 	_railtypes_sort_criteria = new_sort_criteria;
 	InitRailTypes();
+	UpdateBuildRailToolbar();
 }
 
 void RailTypeDropdownWindowBase::SetSortOrderInverted(bool is_sort_order_inverted)
 {
 	_railtypes_invert_sort_order = is_sort_order_inverted;
 	InitRailTypes();
+	UpdateBuildRailToolbar();
 }
 
 static CallBackFunction ToolbarBuildRailClick(Window *w)
 {
 	if (_replace_dropdown_list) {
 		ReplaceDropDownList<RailTypeDropdownWindowBase>(w, {}, _last_built_railtype);
+		UpdateBuildRailToolbar();
 	} else {
 		ShowCustomDropdownList<RailTypeDropdownWindowBase>(w, {}, _last_built_railtype, WID_TN_RAILS, 140, _settings_client.gui.toolbar_dropdown_autoselect, true);
 	}
