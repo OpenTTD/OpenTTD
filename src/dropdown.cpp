@@ -14,6 +14,7 @@
 #include "sound_func.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
+#include "widget_type.h"
 #include "window_gui.h"
 #include "window_func.h"
 #include "zoom_func.h"
@@ -64,7 +65,7 @@ std::unique_ptr<DropDownListItem> MakeDropDownListCheckedItem(bool checked, Stri
 	return std::make_unique<DropDownListCheckedItem>(indent, checked, GetString(str), value, masked, shaded);
 }
 
-static constexpr std::initializer_list<NWidgetPart> _nested_dropdown_menu_widgets = {
+constexpr std::initializer_list<NWidgetPart> NESTED_DROPDOWN_MENU_WIDGETS = {
 	NWidget(NWID_SELECTION, INVALID_COLOUR, WID_DM_SHOW_SORTER),
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_HORIZONTAL),
@@ -85,11 +86,17 @@ static constexpr std::initializer_list<NWidgetPart> _nested_dropdown_menu_widget
 	EndContainer(),
 };
 
-static WindowDesc _dropdown_desc(
+std::unique_ptr<NWidgetBase> InsertDropdownNestedWidgets()
+{
+	auto container = std::make_unique<NWidgetVertical>(NWidContainerFlag{});
+	return MakeNWidgets(NESTED_DROPDOWN_MENU_WIDGETS, std::move(container));
+}
+
+WindowDesc _dropdown_desc(
 	WDP_MANUAL, {}, 0, 0,
 	WC_DROPDOWN_MENU, WC_NONE,
 	WindowDefaultFlag::NoFocus,
-	_nested_dropdown_menu_widgets
+	NESTED_DROPDOWN_MENU_WIDGETS
 );
 
 /**
@@ -104,8 +111,8 @@ static WindowDesc _dropdown_desc(
  * @param options Dropdown options for this menu.
  * @param has_sorter Defines if the dropdown has widgets for sorting and filtering.
  */
-DropdownWindow::DropdownWindow(int window_id, Window *parent, DropDownList &&list, int selected, WidgetID button, const Rect wi_rect, Colours wi_colour, DropDownOptions options, bool has_sorter)
-	: Window(_dropdown_desc)
+DropdownWindow::DropdownWindow(int window_id, Window *parent, DropDownList &&list, int selected, WidgetID button, const Rect wi_rect, Colours wi_colour, DropDownOptions options, bool has_sorter, WindowDesc &window_desc)
+	: Window(window_desc)
 	, scroll_interval{std::chrono::milliseconds(30), [this](auto) {
 		if (this->scrolling == 0) return;
 
@@ -129,7 +136,7 @@ DropdownWindow::DropdownWindow(int window_id, Window *parent, DropDownList &&lis
 	this->CreateNestedTree();
 
 	for (auto widget : {WID_DM_ITEMS, WID_DM_SCROLL, WID_DM_SORT_ASCENDING_DESCENDING, WID_DM_SORT_SUBDROPDOWN, WID_DM_CONFIGURE, WID_DM_FILTER}) {
-		this->GetWidget<NWidgetCore>(widget)->colour = wi_colour;
+		this->GetWidget<NWidgetCore>(widget)->colour = this->window_colour;
 	}
 
 	this->vscroll = this->GetScrollbar(WID_DM_SCROLL);

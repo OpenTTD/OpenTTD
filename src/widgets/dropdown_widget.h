@@ -12,9 +12,12 @@
 
 /** Widgets of the #DropdownWindow class. */
 enum DropdownMenuWidgets : WidgetID {
+	WID_DM_START = 1 << 14, ///< Dummy to ensure widgets don't overlap.
+
 	WID_DM_ITEMS, ///< Panel showing the dropdown items.
 	WID_DM_SHOW_SCROLL, ///< Hide scrollbar if too few items.
 	WID_DM_SCROLL, ///< Scrollbar.
+
 	WID_DM_SHOW_SORTER, ///< Hide/show following widgets.
 	WID_DM_FILTER, ///< Filter by name.
 	WID_DM_SORT_ASCENDING_DESCENDING, ///< Sort direction.

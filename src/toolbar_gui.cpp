@@ -883,18 +883,21 @@ void RailTypeDropdownWindow::SetSortCriteria(int new_sort_criteria)
 	if (new_sort_criteria < 0) return;
 	_railtypes_sort_criteria = new_sort_criteria;
 	InitRailTypes();
+	UpdateBuildRailToolbar();
 }
 
 void RailTypeDropdownWindow::SetSortOrderInverted(bool is_sort_order_inverted)
 {
 	_railtypes_invert_sort_order = is_sort_order_inverted;
 	InitRailTypes();
+	UpdateBuildRailToolbar();
 }
 
 static CallBackFunction ToolbarBuildRailClick(Window *w)
 {
 	if (_replace_dropdown_list) {
 		ReplaceDropDownList<RailTypeDropdownWindow>(w, {}, _last_built_railtype);
+		UpdateBuildRailToolbar();
 	} else {
 		ShowCustomDropdownList<RailTypeDropdownWindow>(w, {}, _last_built_railtype, WID_TN_RAILS, 140, GetToolbarDropDownOptions().Set(DropDownOption::Persist));
 	}
