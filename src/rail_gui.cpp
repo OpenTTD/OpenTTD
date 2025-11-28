@@ -7,6 +7,7 @@
 
 /** @file rail_gui.cpp %File for dealing with rail construction user interface */
 
+#include "newgrf.h"
 #include "stdafx.h"
 #include "gui.h"
 #include "station_base.h"
@@ -2026,9 +2027,9 @@ void InitializeRailGUI()
 	ResetSignalVariant();
 }
 
-DropDownList RailTypeDropdownWindow::GetDropdownList(const BadgeFilterChoices &badge_filter_choices) const
+DropDownList RailTypeDropdownWindow::GetDropdownList(const BadgeFilterChoices &badge_filter_choices, const StringFilter &string_filter) const
 {
-	return GetRailTypeDropDownList(false, false, badge_filter_choices);
+	return GetRailTypeDropDownList(false, false, badge_filter_choices, string_filter);
 }
 
 static constexpr RailType RAILTYPE_HIDDABLE_SUBLIST_END{RAILTYPE_END + 1}; ///< Special value to mark the dropdown list divider item that is only visible when ctrl is pressed.
@@ -2039,7 +2040,7 @@ static constexpr RailType RAILTYPE_HIDDABLE_SUBLIST_END{RAILTYPE_END + 1}; ///< 
  * @param all_option Whether to add an 'all types' item.
  * @return The populated and sorted #DropDownList.
  */
-DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option, const BadgeFilterChoices &badge_filter_choices)
+DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option, const BadgeFilterChoices &badge_filter_choices, StringFilter string_filter)
 {
 	RailTypes used_railtypes;
 	RailTypes avail_railtypes;
@@ -2122,6 +2123,21 @@ DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option, cons
 		const RailTypeInfo *rti = GetRailTypeInfo(rt);
 
 		if (!bdf.Filter(rti->badges)) continue;
+
+		/* Do not filter if the filter text box is empty. */
+		if (!string_filter.IsEmpty()) {
+			/* Filter rail type name. */
+			string_filter.ResetState();
+			string_filter.AddLine(GetString(rti->strings.menu_text));
+
+			/* Filter retaled trian type name. */
+			string_filter.AddLine(GetString(rti->strings.new_loco));
+
+			/* Filter badge names. */
+			BadgeTextFilter btf(string_filter, GSF_RAILTYPES);
+
+			if (!string_filter.GetState() && !btf.Filter(rti->badges)) continue;
+		}
 
 		if (for_replacement) {
 			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, GetString(rti->strings.replace_text), rt, false, !avail_railtypes.Test(rt) || c->hidden_railtypes.Test(rt), COLOUR_MAUVE, COLOUR_ORANGE, c->hidden_railtypes.Test(rt)));

@@ -19,7 +19,7 @@
 struct Window *ShowBuildRoadToolbar(RoadType roadtype);
 struct Window *ShowBuildRoadScenToolbar(RoadType roadtype);
 void ConnectRoadToStructure(TileIndex tile, DiagDirection direction);
-DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement = true, bool all_option = true, const BadgeFilterChoices &badge_filter_choices = {});
+DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement = true, bool all_option = true, const BadgeFilterChoices &badge_filter_choices = {}, StringFilter string_filter = {});
 DropDownList GetScenRoadTypeDropDownList(RoadTramTypes rtts);
 void InitializeRoadGUI();
 

@@ -20,6 +20,8 @@
 #include "sound_func.h"
 #include "zoom_func.h"
 #include "window_func.h"
+#include "querystring_gui.h"
+#include "stringfilter_type.h"
 
 /** Drop-down menu window */
 struct DropdownWindow : Window {
@@ -36,7 +38,11 @@ private:
 	DropDownOptions options; ///< Options for this drop down menu.
 	int scrolling = 0; ///< If non-zero, auto-scroll the item list (one time).
 	Point position{}; ///< Position of the topleft corner of the window.
+
 	Scrollbar *vscroll = nullptr;
+	QueryString editbox; ///< Filter editbox.
+	StringFilter string_filter{}; ///< Filter for type name.
+
 	bool last_shift_state; ///< Whether the shift button was pressed during last frame.
 	bool last_ctrl_state; ///< Whether the ctrl button was pressed during last frame.
 
@@ -65,6 +71,7 @@ public:
 	void OnDropdownSelect(WidgetID widget, int index, int click_result) override;
 	void OnDropdownClose(Point pt, WidgetID widget, int index, int click_result, bool instant_close) override;
 	void OnMouseLoop() override;
+	void OnEditboxChanged(WidgetID wid) override;
 
 	void FitAvailableHeight(Dimension &desired, const Dimension &list, uint available_height);
 	void UpdateSizeAndPosition();
@@ -74,7 +81,7 @@ public:
 
 	virtual StringID GetSortCriteriaString() const;
 	virtual bool IsSortOrderInverted() const;
-	virtual DropDownList GetDropdownList(const BadgeFilterChoices &badge_filter_choices) const;
+	virtual DropDownList GetDropdownList(const BadgeFilterChoices &badge_filter_choices, const StringFilter &string_filter) const;
 	virtual GrfSpecFeature GetGrfSpecFeature() const;
 	virtual DropDownList GetSortDropdownList() const;
 
@@ -104,7 +111,7 @@ public:
 	StringID GetSortCriteriaString() const override;
 	void SetSortOrderInverted(bool is_sort_order_inverted) override;
 	bool IsSortOrderInverted() const override { return _railtypes_invert_sort_order; }
-	DropDownList GetDropdownList(const BadgeFilterChoices &badge_filter_choices) const override;
+	DropDownList GetDropdownList(const BadgeFilterChoices &badge_filter_choices, const StringFilter &string_filter) const override;
 	GrfSpecFeature GetGrfSpecFeature() const override { return GSF_RAILTYPES; }
 	DropDownList GetSortDropdownList() const override;
 };
@@ -122,7 +129,7 @@ public:
 	StringID GetSortCriteriaString() const override;
 	void SetSortOrderInverted(bool is_sort_order_inverted) override;
 	bool IsSortOrderInverted() const override { return _roadtypes_invert_sort_order; }
-	DropDownList GetDropdownList(const BadgeFilterChoices &badge_filter_choices) const override;
+	DropDownList GetDropdownList(const BadgeFilterChoices &badge_filter_choices, const StringFilter &string_filter) const override;
 	GrfSpecFeature GetGrfSpecFeature() const override { return GSF_ROADTYPES; }
 	DropDownList GetSortDropdownList() const override;
 };
@@ -140,7 +147,7 @@ public:
 	StringID GetSortCriteriaString() const override;
 	void SetSortOrderInverted(bool is_sort_order_inverted) override;
 	bool IsSortOrderInverted() const override { return _tramtypes_invert_sort_order; }
-	DropDownList GetDropdownList(const BadgeFilterChoices &badge_filter_choices) const override;
+	DropDownList GetDropdownList(const BadgeFilterChoices &badge_filter_choices, const StringFilter &string_filter) const override;
 	GrfSpecFeature GetGrfSpecFeature() const override { return GSF_TRAMTYPES; }
 	DropDownList GetSortDropdownList() const override;
 };

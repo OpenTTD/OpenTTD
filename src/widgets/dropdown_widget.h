@@ -16,6 +16,7 @@ enum DropdownMenuWidgets : WidgetID {
 	WID_DM_SHOW_SCROLL, ///< Hide scrollbar if too few items.
 	WID_DM_SCROLL, ///< Scrollbar.
 	WID_DM_SHOW_SORTER, ///< Hide/show following widgets.
+	WID_DM_FILTER, ///< Filter by name.
 	WID_DM_SORT_ASCENDING_DESCENDING, ///< Sort direction.
 	WID_DM_SORT_SUBDROPDOWN, ///< Criteria of sorting subdropdown.
 	WID_DM_CONFIGURE, ///< Button to configure badges and appearance of some sublists.

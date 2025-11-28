@@ -7,6 +7,7 @@
 
 /** @file road_gui.cpp GUI for building roads. */
 
+#include "newgrf.h"
 #include "stdafx.h"
 #include "gui.h"
 #include "window_gui.h"
@@ -1767,17 +1768,17 @@ void InitializeRoadGUI()
 static constexpr RoadType ROADTYPE_SUBLIST_END{ROADTYPE_END + 1}; ///< Special value to mark the dropdown list divider item.
 static constexpr RoadType ROADTYPE_HIDDABLE_SUBLIST_END{ROADTYPE_SUBLIST_END + 1}; ///< Special value to mark the dropdown list divider item that is only visible when ctrl is pressed.
 
-DropDownList RoadTypeDropdownWindow::GetDropdownList(const BadgeFilterChoices &badge_filter_choices) const
+DropDownList RoadTypeDropdownWindow::GetDropdownList(const BadgeFilterChoices &badge_filter_choices, const StringFilter &string_filter) const
 {
-	return GetRoadTypeDropDownList(RTTB_ROAD, false, false, badge_filter_choices);
+	return GetRoadTypeDropDownList(RTTB_ROAD, false, false, badge_filter_choices, string_filter);
 }
 
-DropDownList TramTypeDropdownWindow::GetDropdownList(const BadgeFilterChoices &badge_filter_choices) const
+DropDownList TramTypeDropdownWindow::GetDropdownList(const BadgeFilterChoices &badge_filter_choices, const StringFilter &string_filter) const
 {
-	return GetRoadTypeDropDownList(RTTB_TRAM, false, false, badge_filter_choices);
+	return GetRoadTypeDropDownList(RTTB_TRAM, false, false, badge_filter_choices, string_filter);
 }
 
-DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, bool all_option, const BadgeFilterChoices &badge_filter_choices)
+DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, bool all_option, const BadgeFilterChoices &badge_filter_choices, StringFilter string_filter)
 {
 	RoadTypes used_roadtypes;
 	RoadTypes avail_roadtypes;
@@ -1880,6 +1881,21 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 
 		if (!bdf.Filter(rti->badges)) continue;
+
+		/* Do not filter if the filter text box is empty. */
+		if (!string_filter.IsEmpty()) {
+			/* Filter road type name. */
+			string_filter.ResetState();
+			string_filter.AddLine(GetString(rti->strings.menu_text));
+
+			/* Filter related road vehicle type name. */
+			string_filter.AddLine(GetString(rti->strings.new_engine));
+
+			/* Filter badge names. */
+			BadgeTextFilter btf(string_filter, GSF_ROADTYPES);
+
+			if (!string_filter.GetState() && !btf.Filter(rti->badges)) continue;
+		}
 
 		if (for_replacement) {
 			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GSF_ROADTYPES, rti->introduction_date, GetString(rti->strings.replace_text), rt, false, !avail_roadtypes.Test(rt) || c->hidden_roadtypes.Test(rt), COLOUR_MAUVE, COLOUR_ORANGE, c->hidden_roadtypes.Test(rt)));

@@ -72,6 +72,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_dropdown_menu_widget
 				NWidget(WWT_DROPDOWN, COLOUR_END, WID_DM_SORT_SUBDROPDOWN), SetResize(1, 0), SetFill(1, 0), SetToolTip(STR_TOOLTIP_SORT_CRITERIA),
 				NWidget(WWT_IMGBTN, COLOUR_END, WID_DM_CONFIGURE), SetAspect(WidgetDimensions::ASPECT_UP_DOWN_BUTTON), SetResize(0, 0), SetFill(0, 1), SetSpriteTip(SPR_EXTRA_MENU, STR_BADGE_CONFIG_MENU_TOOLTIP),
 			EndContainer(),
+			NWidget(WWT_EDITBOX, COLOUR_END, WID_DM_FILTER), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
 			NWidget(NWID_VERTICAL, NWidContainerFlag{}, WID_DM_BADGE_FILTER),
 			EndContainer(),
 		EndContainer(),
@@ -117,6 +118,7 @@ DropdownWindow::DropdownWindow(int window_id, Window *parent, DropDownList &&lis
 	, list(std::move(list))
 	, selected_result(selected)
 	, options(options)
+	, editbox(MAX_LENGTH_VEHICLE_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_VEHICLE_NAME_CHARS)
 	, last_shift_state(_shift_pressed)
 	, last_ctrl_state(_ctrl_pressed)
 	, window_colour(wi_colour)
@@ -126,11 +128,12 @@ DropdownWindow::DropdownWindow(int window_id, Window *parent, DropDownList &&lis
 
 	this->CreateNestedTree();
 
-	for (auto widget : {WID_DM_ITEMS, WID_DM_SCROLL, WID_DM_SORT_ASCENDING_DESCENDING, WID_DM_SORT_SUBDROPDOWN, WID_DM_CONFIGURE}) {
+	for (auto widget : {WID_DM_ITEMS, WID_DM_SCROLL, WID_DM_SORT_ASCENDING_DESCENDING, WID_DM_SORT_SUBDROPDOWN, WID_DM_CONFIGURE, WID_DM_FILTER}) {
 		this->GetWidget<NWidgetCore>(widget)->colour = wi_colour;
 	}
 
 	this->vscroll = this->GetScrollbar(WID_DM_SCROLL);
+	this->querystrings[WID_DM_FILTER] = &this->editbox;
 
 	if (!has_sorter) this->GetWidget<NWidgetStacked>(WID_DM_SHOW_SORTER)->SetDisplayedPlane(SZSP_HORIZONTAL);
 }
@@ -156,7 +159,7 @@ DropdownWindow::DropdownWindow(int window_id, Window *parent, DropDownList &&lis
 void DropdownWindow::OnInit()
 {
 	if (this->list.empty()) {
-		this->list = this->GetDropdownList(this->badge_filter_choices);
+		this->list = this->GetDropdownList(this->badge_filter_choices, this->string_filter);
 	}
 
 	assert(!this->list.empty());
@@ -164,8 +167,9 @@ void DropdownWindow::OnInit()
 
 	this->badge_classes = GUIBadgeClasses(this->GetGrfSpecFeature());
 
+	this->SetFocusedWidget(WID_DM_FILTER);
+
 	auto container = this->GetWidget<NWidgetContainer>(WID_DM_BADGE_FILTER);
-	container->UnFocusWidgets(this);
 	this->badge_filters = AddBadgeDropdownFilters(*container, WID_DM_BADGE_FILTER, window_colour, this->GetGrfSpecFeature());
 
 	this->widget_lookup.clear();
@@ -294,7 +298,7 @@ bool DropdownWindow::GetDropdownItem(int &result, int &click_result)
 	if (widget < 0) return false;
 
 	if (widget != WID_DM_ITEMS ) {
-		if (widget == WID_DM_SORT_ASCENDING_DESCENDING || widget == WID_DM_SORT_SUBDROPDOWN || widget == WID_DM_CONFIGURE
+		if (widget == WID_DM_SORT_ASCENDING_DESCENDING || widget == WID_DM_SORT_SUBDROPDOWN || widget == WID_DM_CONFIGURE || widget == WID_DM_FILTER
 			|| IsInsideMM(widget, this->badge_filters.first, this->badge_filters.second)) {
 			result = DROPDOWN_SORTER_ITEM_INDEX;
 			click_result = widget;
@@ -400,7 +404,7 @@ void DropdownWindow::OnDropdownSelect(WidgetID widget, int index, int click_resu
 				}
 			}
 	}
-	this->ReplaceList(this->GetDropdownList(this->badge_filter_choices), std::nullopt);
+	this->ReplaceList(this->GetDropdownList(this->badge_filter_choices, this->string_filter), std::nullopt);
 }
 
 void DropdownWindow::OnDropdownClose(Point pt, WidgetID widget, int index, int click_result, bool instant_close)
@@ -448,9 +452,10 @@ void DropdownWindow::OnMouseLoop()
 		if (this->selected_result == DROPDOWN_SORTER_ITEM_INDEX) {
 			this->RaiseWidget(this->selected_click_result);
 			switch (this->selected_click_result) {
+				case WID_DM_FILTER: this->SetFocusedWidget(WID_DM_FILTER); break;
 				case WID_DM_SORT_ASCENDING_DESCENDING:
 					this->SetSortOrderInverted(!this->IsSortOrderInverted());
-					this->ReplaceList(this->GetDropdownList(this->badge_filter_choices), std::nullopt);
+					this->ReplaceList(this->GetDropdownList(this->badge_filter_choices, this->string_filter), std::nullopt);
 					break;
 
 				case WID_DM_SORT_SUBDROPDOWN:
@@ -506,6 +511,14 @@ void DropdownWindow::OnMouseLoop()
 	}
 }
 
+void DropdownWindow::OnEditboxChanged(WidgetID wid)
+{
+	if (wid == WID_DM_FILTER) {
+		this->string_filter.SetFilterTerm(this->editbox.text.GetText());
+		this->ReplaceList(this->GetDropdownList(this->badge_filter_choices, this->string_filter), std::nullopt);
+	}
+}
+
 /**
  * Replaces the content with provided one.
  * If new constent is empty, uses return value of @see GetDropDownList instead.
@@ -544,7 +557,7 @@ bool DropdownWindow::IsSortOrderInverted() const
  * Gets the new content for itself.
  * @return New dropdown list that should replace the current one.
  */
-DropDownList DropdownWindow::GetDropdownList([[maybe_unused]] const BadgeFilterChoices &badge_filter_choices) const
+DropDownList DropdownWindow::GetDropdownList([[maybe_unused]] const BadgeFilterChoices &badge_filter_choices, [[maybe_unused]] const StringFilter &string_filter) const
 {
 	NOT_REACHED();
 }
