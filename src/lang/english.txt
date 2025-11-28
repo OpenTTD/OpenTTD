@@ -5968,3 +5968,33 @@ STR_BADGE_CONFIG_PREVIEW                                        :Preview Image
 STR_BADGE_CONFIG_NAME                                           :Name
 STR_BADGE_FILTER_ANY_LABEL                                      :Any {STRING}
 STR_BADGE_FILTER_IS_LABEL                                       :{STRING} is {STRING}
+
+# Tutorial window strings - ADD START
+STR_TUTORIAL_TITLE                                           :Welcome to OpenTTD
+
+STR_TUTORIAL_PAGE_1_TITLE                                    :Welcome to OpenTTD
+STR_TUTORIAL_PAGE_1_BODY                                     :Welcome! This short tutorial will show you the basic controls and core concepts to get started. You can navigate through pages with the Next/Previous buttons or use the arrow keys. Check "Do not show on startup" to disable automatic display.
+
+STR_TUTORIAL_PAGE_2_TITLE                                    :Move around the map
+STR_TUTORIAL_PAGE_2_BODY                                     :Use arrow keys or click-and-drag to move the view. Use the mouse wheel (or + / - keys) to zoom in and out. Try moving to a town and zooming in to see details.
+
+STR_TUTORIAL_PAGE_3_TITLE                                    :Build stations and roads
+STR_TUTORIAL_PAGE_3_BODY                                     :Select a station type (rail, bus, ship or airport) from the menu, then place it on the map. Connect stations using track or road tools. Vehicles use these networks to pick up and deliver cargo and passengers.
+
+STR_TUTORIAL_PAGE_4_TITLE                                    :Create vehicles and give orders
+STR_TUTORIAL_PAGE_4_BODY                                     :After building track or road, create vehicles at depots or stations. Open the vehicle orders panel to set waypoints and routes. Orders tell vehicles where to go and which stops to visit.
+
+STR_TUTORIAL_PAGE_5_TITLE                                    :Earn money and grow your network
+STR_TUTORIAL_PAGE_5_BODY                                     :Transporting goods and passengers generates income. Balance route coverage, vehicle costs and maintenance to maximize profit. Use the finance and graph tools to monitor performance and find bottlenecks.
+
+STR_TUTORIAL_PAGE_6_TITLE                                    :Learn more and next steps
+STR_TUTORIAL_PAGE_6_BODY                                     :This tutorial covers only the basics. For detailed information, open Help -> Manual from the main menu. Community forums, the wiki and the in-game help provide deeper guides and examples.
+
+STR_TUTORIAL_NEXT                                            :Next
+STR_TUTORIAL_PREV                                            :Previous
+STR_TUTORIAL_FINISH                                          :Finish
+STR_TUTORIAL_DONT_SHOW_AGAIN                                 :Do not show on startup
+
+STR_HELP_MENU_TUTORIAL                                       :Show Tutorial
+STR_TUTORIAL_CLOSING_NOTE                                    :You're all set! Press Finish to close this tutorial. You can reopen it anytime from Help -> Show Tutorial
+# Tutorial window strings - ADD END
