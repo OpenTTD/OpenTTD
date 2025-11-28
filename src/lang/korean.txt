@@ -313,6 +313,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}이 버�
 STR_BUTTON_DEFAULT                                              :{BLACK}기본값
 STR_BUTTON_CANCEL                                               :{BLACK}취소
 STR_BUTTON_OK                                                   :{BLACK}확인
+STR_BUTTON_MOVE                                                 :{BLACK}이동
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔ[]ㅁㄴㅇㄹㅎㅗㅓㅏㅣ;'  ㅋㅌㅊㅍㅠㅜㅡ,./ .
@@ -2862,15 +2863,15 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :표시할 도�
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :지으려는 건물 종류를 선택하세요. CTRL+클릭하면 즐겨찾기 추가/제거가 가능합니다
 
 STR_HOUSE_PICKER_CAPTION                                        :건물 선택
-STR_HOUSE_PICKER_NAME                                           :{BLACK}이름: {ORANGE}{STRING}
-STR_HOUSE_PICKER_POPULATION                                     :{BLACK}인구: {ORANGE}{NUM}
-STR_HOUSE_PICKER_YEARS                                          :{BLACK}연도: {ORANGE}{NUM} ~ {NUM}
-STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}연도: {ORANGE}항상
-STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}연도: {ORANGE}{NUM}년부터
-STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}연도: {ORANGE}{NUM}년까지
-STR_HOUSE_PICKER_SIZE                                           :{BLACK}크기: {ORANGE}{NUM}x{NUM}칸
-STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}받는 화물: {ORANGE}
-STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}생산 화물량: {ORANGE}{CARGO_LIST}
+STR_HOUSE_PICKER_NAME                                           :{BLACK}이름: {GOLD}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}인구: {GOLD}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}연도: {GOLD}{NUM} ~ {NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}연도: {GOLD}항상
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}연도: {GOLD}{NUM}년부터
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}연도: {GOLD}{NUM}년까지
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}크기: {GOLD}{NUM}x{NUM}칸
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}받는 화물: {GOLD}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}생산 화물량: {GOLD}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :가장자리
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :교외
@@ -3688,7 +3689,7 @@ STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}대소�
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}팻말의 이름을 비교할 때 검색 문자열의 대소문자 구분할지 여부를 선택합니다
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}팻말 내용 고치기
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}팻말 고치기
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}이 팻말의 위치로 이동합니다. CTRL+클릭하면 이 팻말 위치를 기준으로 새로운 외부 화면을 엽니다
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}다음 팻말로 가기
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}이전 팻말로 가기
@@ -3905,12 +3906,14 @@ STR_CARGO_RATING_EXCELLENT                                      :훌륭함
 STR_CARGO_RATING_OUTSTANDING                                    :매우 훌륭함
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}이 역의 위치로 시점을 변경합니다. CTRL+클릭하면 이 역 위치를 기준으로 새로운 외부 화면을 엽니다
+STR_STATION_VIEW_EDIT_TOOLTIP                                   :{BLACK}역의 이름을 바꾸거나 팻말 위치를 바꿉니다
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}이 역을 거쳐가는 모든 열차를 보여줍니다
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}이 역을 거쳐가는 모든 차량을 보여줍니다
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}이 역을 거쳐가는 모든 항공기를 보여줍니다
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}이 역을 거쳐가는 모든 선박을 보여줍니다
 
+STR_STATION_VIEW_EDIT_STATION_SIGN                              :{WHITE}역 팻말 수정
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}공항 폐쇄
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}이 공항에 항공기가 착륙하는 것을 금지합니다
@@ -3918,9 +3921,11 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}이 공�
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}이 경유지의 위치로 시점을 변경합니다. CTRL+클릭하면 이 경유지 위치를 기준으로 새로운 외부 화면을 엽니다
+STR_WAYPOINT_VIEW_EDIT_TOOLTIP                                  :{BLACK}경유지의 이름을 바꾸거나 팻말 위치를 바꿉니다
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}이 부표의 위치로 이동합니다. CTRL+클릭하면 이 부표 위치를 기준으로 새로운 외부 화면을 엽니다
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}부표 이름 바꾸기
 
+STR_WAYPOINT_VIEW_EDIT_WAYPOINT_SIGN                            :{WHITE}경유지 팻말 수정
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY}의 재정 {BLACK}{COMPANY_NUM}
@@ -5134,6 +5139,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}트럭 �
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}다른 항구와 너무 가깝습니다
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}다른 공항과 너무 가깝습니다
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}역 이름을 바꿀 수 없습니다...
+STR_ERROR_CAN_T_MOVE_STATION_NAME                               :{WHITE}역 팻말 위치를 옮길 수 없습니다...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... 도시 소유의 도로입니다
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... 도로의 방향과 일치하지 않습니다
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... 통과식 도로 정류장은 굽은 도로에 건설할 수 없습니다
@@ -5165,6 +5171,7 @@ STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}여기�
 STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}여기에 도로 경유지를 지을 수 없습니다...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}여기에 부표를 설치할 수 없습니다...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}경유지의 이름을 변경할 수 없습니다...
+STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :{WHITE}경유지 팻말 위치를 옮길 수 없습니다...
 
 STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}이 열차 경유지를 제거할 수 없습니다...
 STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}이 도로 경유지를 제거할 수 없습니다...
