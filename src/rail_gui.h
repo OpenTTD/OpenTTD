@@ -12,12 +12,13 @@
 
 #include "rail_type.h"
 #include "dropdown_type.h"
+#include "stringfilter_type.h"
 
 struct Window *ShowBuildRailToolbar(RailType railtype);
 void ReinitGuiAfterToggleElrail(bool disable);
 void ResetSignalVariant(int32_t = 0);
 void InitializeRailGUI();
-DropDownList GetRailTypeDropDownList(bool for_replacement = true, bool all_option = true, const BadgeFilterChoices &badge_filter_choices = {});
+DropDownList GetRailTypeDropDownList(bool for_replacement = true, bool all_option = true, const BadgeFilterChoices &badge_filter_choices = {}, StringFilter string_filter = {});
 
 /** Settings for which signals are shown by the signal GUI. */
 enum SignalGUISettings : uint8_t {
