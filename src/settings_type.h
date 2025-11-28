@@ -244,6 +244,7 @@ struct GUISettings {
 	uint8_t  newgrf_default_palette;           ///< default palette to use for NewGRFs without action 14 palette information
 
 	bool   scale_bevels;                     ///< bevels are scaled with GUI scale.
+	bool tutorial_completed;
 
 	/**
 	 * Returns true when the user has sufficient privileges to edit newgrfs on a running game
