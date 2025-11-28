@@ -9,7 +9,17 @@
 
 #ifndef TUTORIAL_GUI_H
 #define TUTORIAL_GUI_H
+#include "stdafx.h"
+#include "window_gui.h"
+#include "window_func.h"
+#include "widgets/tutorial_widget.h"
+#include "gfx_func.h"
+
+#include "table/strings.h"
 
 void ShowTutorialWindow();
+void DrawWidget(const Rect&r,WidgetID widget);
+void LoadPagesFromStrings();
+void UpdateUIForPage(uint index);
 
 #endif /* TUTORIAL_GUI_H */
