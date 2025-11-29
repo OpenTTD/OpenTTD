@@ -11,6 +11,8 @@
 #include "core/backup_type.hpp"
 #include "dropdown_type.h"
 #include "dropdown_func.h"
+#include "stringfilter_type.h"
+#include "querystring_gui.h"
 #include "strings_func.h"
 #include "sound_func.h"
 #include "timer/timer.h"
@@ -58,18 +60,27 @@ std::unique_ptr<DropDownListItem> MakeDropDownListCheckedItem(bool checked, Stri
 }
 
 static constexpr std::initializer_list<NWidgetPart> _nested_dropdown_menu_widgets = {
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_END, WID_DM_ITEMS), SetScrollbar(WID_DM_SCROLL), EndContainer(),
-		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_DM_SHOW_SCROLL),
-			NWidget(NWID_VSCROLLBAR, COLOUR_END, WID_DM_SCROLL),
+	NWidget(NWID_VERTICAL),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_DM_FILTER_SEL),
+			NWidget(WWT_PANEL, COLOUR_END, WID_DM_FILTER_PANEL),
+				NWidget(WWT_EDITBOX, COLOUR_END, WID_DM_FILTER), SetResize(1, 0), SetFill(1, 0), SetPadding(2), SetStringTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+			EndContainer(),
+		EndContainer(),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_PANEL, COLOUR_END, WID_DM_ITEMS), SetScrollbar(WID_DM_SCROLL),
+			EndContainer(),
+			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_DM_SHOW_SCROLL),
+				NWidget(NWID_VSCROLLBAR, COLOUR_END, WID_DM_SCROLL),
+			EndContainer(),
 		EndContainer(),
 	EndContainer(),
 };
 
+/** Window description for dropdown menus. */
 static WindowDesc _dropdown_desc(
 	WDP_MANUAL, {}, 0, 0,
 	WC_DROPDOWN_MENU, WC_NONE,
-	WindowDefaultFlag::NoFocus,
+	{},
 	_nested_dropdown_menu_widgets
 );
 
@@ -82,12 +93,17 @@ struct DropdownWindow : Window {
 	int selected_click_result = -1; ///< Click result value, from the OnClick handler of the selected item.
 	uint8_t click_delay = 0; ///< Timer to delay selection.
 	bool drag_mode = true;
+	bool above = false; ///< Set if the drop down list is above the drop down widget instead of below.
 	DropDownOptions options; ///< Options for this drop down menu.
 	int scrolling = 0; ///< If non-zero, auto-scroll the item list (one time).
 	Point position{}; ///< Position of the topleft corner of the window.
 	Scrollbar *vscroll = nullptr;
 
+	Dimension initial_dim{}; ///< Initial dimension of dropdown menu before filtering.
 	Dimension items_dim{}; ///< Calculated cropped and padded dimension for the items widget.
+
+	mutable StringFilter string_filter{}; ///< String filter for filter text.
+	QueryString editbox; ///< Editbox for filter text.
 
 	/**
 	 * Create a dropdown menu.
@@ -106,6 +122,7 @@ struct DropdownWindow : Window {
 			, list(std::move(list))
 			, selected_result(selected)
 			, options(options)
+			, editbox(60 * MAX_CHAR_LENGTH, 60)
 	{
 		assert(!this->list.empty());
 
@@ -113,12 +130,19 @@ struct DropdownWindow : Window {
 
 		this->CreateNestedTree();
 
+		this->GetWidget<NWidgetStacked>(WID_DM_FILTER_SEL)->SetDisplayedPlane(this->options.Test(DropDownOption::Filterable) ? 0 : SZSP_HORIZONTAL);
+		this->GetWidget<NWidgetCore>(WID_DM_FILTER_PANEL)->colour = wi_colour;
+		this->GetWidget<NWidgetCore>(WID_DM_FILTER)->colour = wi_colour;
 		this->GetWidget<NWidgetCore>(WID_DM_ITEMS)->colour = wi_colour;
 		this->GetWidget<NWidgetCore>(WID_DM_SCROLL)->colour = wi_colour;
 		this->vscroll = this->GetScrollbar(WID_DM_SCROLL);
 		this->UpdateSizeAndPosition();
 
+		this->querystrings[WID_DM_FILTER] = &this->editbox;
+
 		this->FinishInitNested(0);
+
+		if (this->options.Test(DropDownOption::Filterable)) this->SetFocusedWidget(WID_DM_FILTER);
 		this->flags.Reset(WindowFlag::WhiteBorder);
 	}
 
@@ -147,6 +171,18 @@ struct DropdownWindow : Window {
 	}
 
 	/**
+	 * Get height of filter edit panel.
+	 * @return Height of filter edit panel, or zero if not filtering.
+	 */
+	uint GetFilterBoxHeight() const
+	{
+		if (!this->options.Test(DropDownOption::Filterable)) return 0;
+
+		/* The edit panel widget does not exist yet so we don't know its real size. Calculate it instead. */
+		return GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.fullbevel.Vertical() * 3;
+	}
+
+	/**
 	 * Fit dropdown list into available height, rounding to average item size. Width is adjusted if scrollbar is present.
 	 * @param[in,out] desired Desired dimensions of dropdown list.
 	 * @param list Dimensions of the list itself, without padding or cropping.
@@ -154,6 +190,8 @@ struct DropdownWindow : Window {
 	 */
 	void FitAvailableHeight(Dimension &desired, const Dimension &list, uint available_height)
 	{
+		available_height -= this->GetFilterBoxHeight();
+
 		if (desired.height < available_height) return;
 
 		/* If the dropdown doesn't fully fit, we a need a dropdown. */
@@ -162,6 +200,20 @@ struct DropdownWindow : Window {
 
 		desired.width = std::max(list.width, desired.width - NWidgetScrollbar::GetVerticalDimension().width);
 		desired.height = rows * avg_height + WidgetDimensions::scaled.dropdownlist.Vertical();
+	}
+
+	/**
+	 * Get the height of the dropdown list, excluding filtered items.
+	 * @return Height of visible items in dropdown list.
+	 */
+	uint GetVisibleHeight() const
+	{
+		uint height = 0;
+		for (const auto &item : this->list) {
+			if (!this->FilterByText(*item)) continue;
+			height += item->Height();
+		}
+		return height;
 	}
 
 	/**
@@ -189,10 +241,14 @@ struct DropdownWindow : Window {
 		/* Is it better to place the dropdown above the widget? */
 		if (widget_dim.height > available_height_below && available_height_above > available_height_below) {
 			FitAvailableHeight(widget_dim, list_dim, available_height_above);
-			this->position.y = button_rect.top - widget_dim.height;
+			this->above = true;
+			this->position.y = button_rect.top - widget_dim.height - this->GetFilterBoxHeight();
+			this->GetWidget<NWidgetCore>(WID_DM_FILTER_PANEL)->GetParentWidget<NWidgetVertical>()->bottom_up = true;
 		} else {
 			FitAvailableHeight(widget_dim, list_dim, available_height_below);
+			this->above = false;
 			this->position.y = button_rect.bottom + 1;
+			this->GetWidget<NWidgetCore>(WID_DM_FILTER_PANEL)->GetParentWidget<NWidgetVertical>()->bottom_up = false;
 		}
 
 		if (_current_text_dir == TD_RTL) {
@@ -202,16 +258,17 @@ struct DropdownWindow : Window {
 			this->position.x = button_rect.left;
 		}
 
+		this->initial_dim = widget_dim;
 		this->items_dim = widget_dim;
 		this->GetWidget<NWidgetStacked>(WID_DM_SHOW_SCROLL)->SetDisplayedPlane(list_dim.height > widget_dim.height ? 0 : SZSP_NONE);
 
 		/* Capacity is the average number of items visible */
 		this->vscroll->SetCapacity(widget_dim.height - WidgetDimensions::scaled.dropdownlist.Vertical());
 		this->vscroll->SetStepSize(list_dim.height / this->list.size());
-		this->vscroll->SetCount(list_dim.height);
+		this->vscroll->SetCount(this->GetVisibleHeight());
 
 		/* If the dropdown is positioned above the parent widget, start selection at the bottom. */
-		if (this->position.y < button_rect.top && list_dim.height > widget_dim.height) this->vscroll->UpdatePosition(INT_MAX);
+		if (this->above) this->vscroll->SetPosition(INT_MAX);
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -240,6 +297,7 @@ struct DropdownWindow : Window {
 		int y_end = r.Height();
 
 		for (const auto &item : this->list) {
+			if (!this->FilterByText(*item)) continue;
 			int item_height = item->Height();
 
 			/* Skip items that are scrolled up */
@@ -256,6 +314,23 @@ struct DropdownWindow : Window {
 		return false;
 	}
 
+	/**
+	 * Filter individual dropdown item
+	 * @param item Item to filter.
+	 * @return true iff the item should appear in the filtered list.
+	 */
+	bool FilterByText(const DropDownListItem &item) const
+	{
+		/* Do not filter if the filter text box is empty */
+		if (this->string_filter.IsEmpty()) return true;
+
+		/* Filter table name */
+		this->string_filter.ResetState();
+		item.FilterText(this->string_filter);
+
+		return this->string_filter.GetState();
+	}
+
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget != WID_DM_ITEMS) return;
@@ -263,6 +338,7 @@ struct DropdownWindow : Window {
 		Colours colour = this->GetWidget<NWidgetCore>(widget)->colour;
 
 		Rect ir = r.Shrink(WidgetDimensions::scaled.dropdownlist);
+		if (ir.Height() == 0) return;
 
 		/* Setup a clipping rectangle... */
 		DrawPixelInfo tmp_dpi;
@@ -276,6 +352,7 @@ struct DropdownWindow : Window {
 		int y_end = ir.Height();
 
 		for (const auto &item : this->list) {
+			if (!this->FilterByText(*item)) continue;
 			int item_height = item->Height();
 
 			/* Skip items that are scrolled up */
@@ -360,10 +437,46 @@ struct DropdownWindow : Window {
 		this->list = std::move(list);
 		if (selected_result.has_value()) this->selected_result = *selected_result;
 		this->UpdateSizeAndPosition();
-		this->ReInit(0, 0);
+		this->ReInit();
 		this->InitializePositionSize(this->position.x, this->position.y, this->nested_root->smallest_x, this->nested_root->smallest_y);
 		this->FindWindowPlacementAndResize(this->window_desc.GetDefaultWidth(), this->window_desc.GetDefaultHeight(), true);
 		this->SetDirty();
+	}
+
+	void OnResize() override
+	{
+		this->vscroll->SetCapacity(this->items_dim.height - WidgetDimensions::scaled.dropdownlist.Vertical());
+	}
+
+	/**
+	 * Apply text filter to the items in the dropdown list, resizing the window as necessary.
+	 */
+	void UpdateFilter()
+	{
+		this->string_filter.SetFilterTerm(this->editbox.text.GetText());
+
+		uint height = this->GetVisibleHeight();
+		uint old_height = this->items_dim.height;
+		this->items_dim.height = std::min(this->initial_dim.height, height + WidgetDimensions::scaled.dropdownlist.Vertical());
+		this->vscroll->SetCount(height);
+
+		if (old_height != this->items_dim.height) {
+			this->ReInit();
+			if (this->above) {
+				/* Drop down list needs to be moved to near the parent drop down button. */
+				Rect button_rect = this->wi_rect.Translate(this->parent->left, this->parent->top);
+				this->top = button_rect.top - this->items_dim.height - this->GetFilterBoxHeight();
+				this->SetDirty();
+			}
+		} else {
+			this->SetDirty();
+		}
+	}
+
+	void OnEditboxChanged(WidgetID wid) override
+	{
+		if (wid != WID_DM_FILTER) return;
+		this->UpdateFilter();
 	}
 };
 
@@ -454,8 +567,9 @@ void ShowDropDownList(Window *w, DropDownList &&list, int selected, WidgetID but
  * @param disabled_mask Bitmask for disabled items (items with their bit set are displayed, but not selectable in the dropdown list).
  * @param hidden_mask   Bitmask for hidden items (items with their bit set are not copied to the dropdown list).
  * @param width         Minimum width of the dropdown menu.
+ * @param options Drop Down options for this menu
  */
-void ShowDropDownMenu(Window *w, std::span<const StringID> strings, int selected, WidgetID button, uint32_t disabled_mask, uint32_t hidden_mask, uint width)
+void ShowDropDownMenu(Window *w, std::span<const StringID> strings, int selected, WidgetID button, uint32_t disabled_mask, uint32_t hidden_mask, uint width, DropDownOptions options)
 {
 	DropDownList list;
 
@@ -467,5 +581,5 @@ void ShowDropDownMenu(Window *w, std::span<const StringID> strings, int selected
 		++i;
 	}
 
-	if (!list.empty()) ShowDropDownList(w, std::move(list), selected, button, width, {});
+	if (!list.empty()) ShowDropDownList(w, std::move(list), selected, button, width, options);
 }
