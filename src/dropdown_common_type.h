@@ -63,6 +63,12 @@ public:
 		this->SetString(std::move(string));
 	}
 
+	void GetText(std::vector<std::string_view> &texts) const override
+	{
+		texts.push_back(this->string);
+		this->TBase::GetText(texts);
+	}
+
 	void SetString(std::string &&string)
 	{
 		this->string = std::move(string);

@@ -29,6 +29,7 @@ public:
 	explicit DropDownListItem(int result, bool masked = false, bool shaded = false) : result(result), masked(masked), shaded(shaded) {}
 	virtual ~DropDownListItem() = default;
 
+	virtual void GetText([[maybe_unused]] std::vector<std::string_view> &texts) const {}
 	virtual bool Selectable() const { return true; }
 	virtual uint Height() const { return 0; }
 	virtual uint Width() const { return 0; }

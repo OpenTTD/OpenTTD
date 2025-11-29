@@ -202,6 +202,16 @@ public:
 		if (dim.width > 0) dim.width -= WidgetDimensions::scaled.hsep_normal;
 	}
 
+	void GetText(std::vector<std::string_view> &texts) const override
+	{
+		for (const BadgeID &badge_index : this->badges) {
+			const Badge *badge = GetBadge(badge_index);
+			if (badge->name == STR_NULL) continue;
+			texts.push_back(GetString(badge->name));
+		}
+		this->TBase::GetText(texts);
+	}
+
 	uint Height() const override
 	{
 		return std::max<uint>(this->dim.height, this->TBase::Height());
