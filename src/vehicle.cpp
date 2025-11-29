@@ -1284,38 +1284,50 @@ static const uint8_t _breakdown_chance[64] = {
 	150, 170, 190, 210, 230, 250, 250, 250,
 };
 
+/**
+ * Periodic check for a vehicle to maybe break down.
+ * @param v The vehicle to consider breaking.
+ */
 void CheckVehicleBreakdown(Vehicle *v)
 {
+	/* Vehicles in the menu don't break down. */
+	if (_game_mode == GM_MENU) return;
+
+	/* If both breakdowns and automatic servicing are disabled, we don't decrease reliability or break down. */
+	if (_settings_game.difficulty.vehicle_breakdowns == VB_NONE && _settings_game.order.no_servicing_if_no_breakdowns) return;
+
+	/* Decrease reliability. */
 	int rel, rel_old;
+	v->reliability = rel = std::max((rel_old = v->reliability) - v->reliability_spd_dec, 0);
+	if ((rel_old >> 8) != (rel >> 8)) SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 
-	/* decrease reliability */
-	if (!_settings_game.order.no_servicing_if_no_breakdowns ||
-			_settings_game.difficulty.vehicle_breakdowns != VB_NONE) {
-		v->reliability = rel = std::max((rel_old = v->reliability) - v->reliability_spd_dec, 0);
-		if ((rel_old >> 8) != (rel >> 8)) SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
-	}
+	/* Some vehicles lose reliability but won't break down. */
+	/* Breakdowns are disabled. */
+	if (_settings_game.difficulty.vehicle_breakdowns == VB_NONE) return;
+	/* The vehicle is already broken down. */
+	if (v->breakdown_ctr != 0) return;
+	/* The vehicle is stopped or going very slow. */
+	if (v->cur_speed < 5) return;
+	/* The vehicle has been manually stopped. */
+	if (v->vehstatus.Test(VehState::Stopped)) return;
 
-	if (v->breakdown_ctr != 0 || v->vehstatus.Test(VehState::Stopped) ||
-			_settings_game.difficulty.vehicle_breakdowns < VB_REDUCED ||
-			v->cur_speed < 5 || _game_mode == GM_MENU) {
-		return;
-	}
+	/* Time to consider breaking down. */
 
 	uint32_t r = Random();
 
-	/* increase chance of failure */
+	/* Increase chance of failure. */
 	int chance = v->breakdown_chance + 1;
 	if (Chance16I(1, 25, r)) chance += 25;
 	v->breakdown_chance = ClampTo<uint8_t>(chance);
 
-	/* calculate reliability value to use in comparison */
+	/* Calculate reliability value to use in comparison. */
 	rel = v->reliability;
 	if (v->type == VEH_SHIP) rel += 0x6666;
 
-	/* reduced breakdowns? */
+	/* Reduce the chance if the player has chosen the Reduced setting. */
 	if (_settings_game.difficulty.vehicle_breakdowns == VB_REDUCED) rel += 0x6666;
 
-	/* check if to break down */
+	/* Check the random chance and inform the vehicle of the result. */
 	if (_breakdown_chance[ClampTo<uint16_t>(rel) >> 10] <= v->breakdown_chance) {
 		v->breakdown_ctr    = GB(r, 16, 6) + 0x3F;
 		v->breakdown_delay  = GB(r, 24, 7) + 0x80;
