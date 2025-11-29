@@ -5971,7 +5971,7 @@ STR_BADGE_FILTER_IS_LABEL                                       :{STRING} is {ST
 
 # Tutorial window strings - ADD START
 STR_TUTORIAL_TITLE                                           :Welcome to OpenTTD
-
+STR_TUTORIAL_TITLE_WITH_PAGE                                 :Page {NUM} of {NUM}
 STR_TUTORIAL_PAGE_1_TITLE                                    :Welcome to OpenTTD
 STR_TUTORIAL_PAGE_1_BODY                                     :Welcome! This short tutorial will show you the basic controls and core concepts to get started. You can navigate through pages with the Next/Previous buttons or use the arrow keys. Check "Do not show on startup" to disable automatic display.
 
