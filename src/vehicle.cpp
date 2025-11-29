@@ -1296,6 +1296,9 @@ void CheckVehicleBreakdown(Vehicle *v)
 	/* If both breakdowns and automatic servicing are disabled, we don't decrease reliability or break down. */
 	if (_settings_game.difficulty.vehicle_breakdowns == VB_NONE && _settings_game.order.no_servicing_if_no_breakdowns) return;
 
+	/* With Reduced breakdowns, vehicles (un)loading at stations don't lose reliability. */
+	if (_settings_game.difficulty.vehicle_breakdowns == VB_REDUCED && v->current_order.IsType(OT_LOADING)) return;
+
 	/* Decrease reliability. */
 	int rel, rel_old;
 	v->reliability = rel = std::max((rel_old = v->reliability) - v->reliability_spd_dec, 0);
