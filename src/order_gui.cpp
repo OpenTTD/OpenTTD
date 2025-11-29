@@ -475,6 +475,7 @@ enum OrderHotKeys : int32_t {
 	OHK_TRANSFER,
 	OHK_NO_UNLOAD,
 	OHK_NO_LOAD,
+	OHK_CLOSE,
 };
 
 /**
@@ -1457,6 +1458,7 @@ public:
 			case OHK_TRANSFER:       this->OrderClick_Unload(OrderUnloadType::Transfer, true); break;
 			case OHK_NO_UNLOAD:      this->OrderClick_Unload(OrderUnloadType::NoUnload, true); break;
 			case OHK_NO_LOAD:        this->OrderClick_FullLoad(OrderLoadType::NoLoad, true); break;
+			case OHK_CLOSE:          this->Close(); break;
 			default: return ES_NOT_HANDLED;
 		}
 		return ES_HANDLED;
@@ -1577,6 +1579,7 @@ public:
 		Hotkey(0, "transfer", OHK_TRANSFER),
 		Hotkey(0, "no_unload", OHK_NO_UNLOAD),
 		Hotkey(0, "no_load", OHK_NO_LOAD),
+		Hotkey('Q', "close_window", OHK_CLOSE),
 	}};
 };
 
