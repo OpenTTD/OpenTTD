@@ -1705,7 +1705,7 @@ struct BuildVehicleWindow : Window {
 
 			case WID_BV_CONFIGURE_BADGES:
 				if (this->badge_classes.GetClasses().empty()) break;
-				ShowDropDownList(this, this->BuildBadgeConfigurationList(), -1, widget, 0, false, true);
+				ShowDropDownList(this, this->BuildBadgeConfigurationList(), -1, widget, 0, DropDownOption::Persist);
 				break;
 
 			case WID_BV_SHOW_HIDE: {
@@ -1732,7 +1732,7 @@ struct BuildVehicleWindow : Window {
 			default:
 				if (IsInsideMM(widget, this->badge_filters.first, this->badge_filters.second)) {
 					PaletteID palette = SPR_2CCMAP_BASE + Company::Get(_local_company)->GetCompanyRecolourOffset(LS_DEFAULT);
-					ShowDropDownList(this, this->GetWidget<NWidgetBadgeFilter>(widget)->GetDropDownList(palette), -1, widget, 0, false);
+					ShowDropDownList(this, this->GetWidget<NWidgetBadgeFilter>(widget)->GetDropDownList(palette), -1, widget, 0);
 				}
 				break;
 		}
