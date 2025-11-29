@@ -8,7 +8,6 @@
 /** @file script_list.cpp Implementation of ScriptList. */
 
 #include "../../stdafx.h"
-#include "script_controller.hpp"
 #include "script_list.hpp"
 #include "../../debug.h"
 #include "../../script/squirrel.hpp"
@@ -645,44 +644,45 @@ void ScriptList::SwapList(ScriptList *list)
 	list->sorter->Retarget(list);
 }
 
-void ScriptList::RemoveAboveValue(SQInteger value)
+SQInteger ScriptList::RemoveAboveValue(HSQUIRRELVM vm)
 {
-	this->modifications++;
+	if (sq_gettop(vm) != 2) return sq_throwerror(vm, "wrong number of parameters");
+	if (sq_gettype(vm, 2) != OT_INTEGER) return SQ_ERROR;
+	SQInteger value;
+	sq_getinteger(vm, 2, &value);
 
-	for (ScriptListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
-		next_iter = std::next(iter);
-		if (iter->second > value) this->RemoveItem(iter->first);
-	}
+	return this->RemoveItemValueFilter(vm, [&](const SQInteger &v) { return v > value; });
 }
 
-void ScriptList::RemoveBelowValue(SQInteger value)
+SQInteger ScriptList::RemoveBelowValue(HSQUIRRELVM vm)
 {
-	this->modifications++;
+	if (sq_gettop(vm) != 2) return sq_throwerror(vm, "wrong number of parameters");
+	if (sq_gettype(vm, 2) != OT_INTEGER) return SQ_ERROR;
+	SQInteger value;
+	sq_getinteger(vm, 2, &value);
 
-	for (ScriptListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
-		next_iter = std::next(iter);
-		if (iter->second < value) this->RemoveItem(iter->first);
-	}
+	return this->RemoveItemValueFilter(vm, [&](const SQInteger &v) { return v < value; });
 }
 
-void ScriptList::RemoveBetweenValue(SQInteger start, SQInteger end)
+SQInteger ScriptList::RemoveBetweenValue(HSQUIRRELVM vm)
 {
-	this->modifications++;
+	if (sq_gettop(vm) != 3) return sq_throwerror(vm, "wrong number of parameters");
+	if (sq_gettype(vm, 2) != OT_INTEGER || sq_gettype(vm, 3) != OT_INTEGER) return SQ_ERROR;
+	SQInteger start, end;
+	sq_getinteger(vm, 2, &start);
+	sq_getinteger(vm, 3, &end);
 
-	for (ScriptListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
-		next_iter = std::next(iter);
-		if (iter->second > start && iter->second < end) this->RemoveItem(iter->first);
-	}
+	return this->RemoveItemValueFilter(vm, [&](const SQInteger &v) { return v > start && v < end; });
 }
 
-void ScriptList::RemoveValue(SQInteger value)
+SQInteger ScriptList::RemoveValue(HSQUIRRELVM vm)
 {
-	this->modifications++;
+	if (sq_gettop(vm) != 2) return sq_throwerror(vm, "wrong number of parameters");
+	if (sq_gettype(vm, 2) != OT_INTEGER) return SQ_ERROR;
+	SQInteger value;
+	sq_getinteger(vm, 2, &value);
 
-	for (ScriptListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
-		next_iter = std::next(iter);
-		if (iter->second == value) this->RemoveItem(iter->first);
-	}
+	return this->RemoveItemValueFilter(vm, [&](const SQInteger &v) { return v == value; });
 }
 
 void ScriptList::RemoveTop(SQInteger count)
@@ -772,44 +772,45 @@ void ScriptList::RemoveList(ScriptList *list)
 	}
 }
 
-void ScriptList::KeepAboveValue(SQInteger value)
+SQInteger ScriptList::KeepAboveValue(HSQUIRRELVM vm)
 {
-	this->modifications++;
+	if (sq_gettop(vm) != 2) return sq_throwerror(vm, "wrong number of parameters");
+	if (sq_gettype(vm, 2) != OT_INTEGER) return SQ_ERROR;
+	SQInteger value;
+	sq_getinteger(vm, 2, &value);
 
-	for (ScriptListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
-		next_iter = std::next(iter);
-		if (iter->second <= value) this->RemoveItem(iter->first);
-	}
+	return this->RemoveItemValueFilter(vm, [&](const SQInteger &v) { return v <= value; });
 }
 
-void ScriptList::KeepBelowValue(SQInteger value)
+SQInteger ScriptList::KeepBelowValue(HSQUIRRELVM vm)
 {
-	this->modifications++;
+	if (sq_gettop(vm) != 2) return sq_throwerror(vm, "wrong number of parameters");
+	if (sq_gettype(vm, 2) != OT_INTEGER) return SQ_ERROR;
+	SQInteger value;
+	sq_getinteger(vm, 2, &value);
 
-	for (ScriptListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
-		next_iter = std::next(iter);
-		if (iter->second >= value) this->RemoveItem(iter->first);
-	}
+	return this->RemoveItemValueFilter(vm, [&](const SQInteger &v) { return v >= value; });
 }
 
-void ScriptList::KeepBetweenValue(SQInteger start, SQInteger end)
+SQInteger ScriptList::KeepBetweenValue(HSQUIRRELVM vm)
 {
-	this->modifications++;
+	if (sq_gettop(vm) != 3) return sq_throwerror(vm, "wrong number of parameters");
+	if (sq_gettype(vm, 2) != OT_INTEGER || sq_gettype(vm, 3) != OT_INTEGER) return SQ_ERROR;
+	SQInteger start, end;
+	sq_getinteger(vm, 2, &start);
+	sq_getinteger(vm, 3, &end);
 
-	for (ScriptListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
-		next_iter = std::next(iter);
-		if (iter->second <= start || iter->second >= end) this->RemoveItem(iter->first);
-	}
+	return this->RemoveItemValueFilter(vm, [&](const SQInteger &v) { return v <= start && v >= end; });
 }
 
-void ScriptList::KeepValue(SQInteger value)
+SQInteger ScriptList::KeepValue(HSQUIRRELVM vm)
 {
-	this->modifications++;
+	if (sq_gettop(vm) != 2) return sq_throwerror(vm, "wrong number of parameters");
+	if (sq_gettype(vm, 2) != OT_INTEGER) return SQ_ERROR;
+	SQInteger value;
+	sq_getinteger(vm, 2, &value);
 
-	for (ScriptListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
-		next_iter = std::next(iter);
-		if (iter->second != value) this->RemoveItem(iter->first);
-	}
+	return this->RemoveItemValueFilter(vm, [&](const SQInteger &v) { return v != value; });
 }
 
 void ScriptList::KeepTop(SQInteger count)
