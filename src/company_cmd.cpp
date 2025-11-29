@@ -41,6 +41,7 @@
 #include "timer/timer_game_economy.h"
 #include "timer/timer_game_tick.h"
 #include "timer/timer_window.h"
+#include "window_type.h"
 
 #include "widgets/statusbar_widget.h"
 
@@ -1167,6 +1168,52 @@ CommandCost CmdSetCompanyColour(DoCommandFlags flags, LiveryScheme scheme, bool 
 
 		UpdateObjectColours(c);
 	}
+	return CommandCost();
+}
+
+/**
+ * Change visibility of the rail type in build rail window.
+ * @param flags operation to perform
+ * @param rail_type rail type to set
+ * @param road_type road/tram type to set
+ * @param is_hidden the new visibility
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdSetRailRoadTypeCompanyHidden(DoCommandFlags flags, RailType rail_type, RoadType road_type, bool is_hidden)
+{
+	Company *c = Company::Get(_current_company);
+
+	if (rail_type >= RAILTYPE_END && road_type >= ROADTYPE_END) return CMD_ERROR;
+
+	if (flags.Test(DoCommandFlag::Execute)) {
+		if (rail_type < RAILTYPE_END) c->hidden_railtypes.Set(rail_type, is_hidden);
+		if (road_type < ROADTYPE_END) c->hidden_roadtypes.Set(road_type, is_hidden);
+		InvalidateWindowClassesData(WC_DROPDOWN_MENU);
+	}
+
+	return CommandCost();
+}
+
+/**
+ * Change favourite status of the rail type in build rail window.
+ * @param flags operation to perform
+ * @param rail_type rail type to set
+ * @param road_type road/tram type to set
+ * @param is_favourite the new favourite status
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdSetRailRoadTypeCompanyFavourite(DoCommandFlags flags, RailType rail_type, RoadType road_type, bool is_favourite)
+{
+	Company *c = Company::Get(_current_company);
+
+	if (rail_type >= RAILTYPE_END && road_type >= ROADTYPE_END) return CMD_ERROR;
+
+	if (flags.Test(DoCommandFlag::Execute)) {
+		if (rail_type < RAILTYPE_END) c->favourite_railtypes.Set(rail_type, is_favourite);
+		if (road_type < ROADTYPE_END) c->favourite_roadtypes.Set(road_type, is_favourite);
+		InvalidateWindowClassesData(WC_DROPDOWN_MENU);
+	}
+
 	return CommandCost();
 }
 

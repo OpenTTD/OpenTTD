@@ -27,6 +27,7 @@
 #include "company_func.h"
 #include "dropdown_type.h"
 #include "dropdown_func.h"
+#include "dropdown_gui.hpp"
 #include "tunnelbridge.h"
 #include "tilehighlight_func.h"
 #include "core/geometry_func.hpp"
@@ -42,6 +43,7 @@
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
 #include "picker_gui.h"
+#include "toolbar_gui.h"
 
 #include "station_map.h"
 #include "tunnelbridge_map.h"
@@ -838,7 +840,6 @@ struct BuildRailToolbarWindow : Window {
 	static EventState RailToolbarGlobalHotkeys(int hotkey)
 	{
 		if (_game_mode != GM_NORMAL) return ES_NOT_HANDLED;
-		extern RailType _last_built_railtype;
 		Window *w = ShowBuildRailToolbar(_last_built_railtype);
 		if (w == nullptr) return ES_NOT_HANDLED;
 		return w->OnHotkey(hotkey);
@@ -1927,11 +1928,15 @@ void InitializeRailGui()
  */
 void ReinitGuiAfterToggleElrail(bool disable)
 {
-	extern RailType _last_built_railtype;
-	if (disable && _last_built_railtype == RAILTYPE_ELECTRIC) {
-		_last_built_railtype = _cur_railtype = RAILTYPE_RAIL;
-		BuildRailToolbarWindow *w = dynamic_cast<BuildRailToolbarWindow *>(FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL));
-		if (w != nullptr) w->ModifyRailType(_cur_railtype);
+	if (disable) {
+		if (_last_built_railtype[0] == RAILTYPE_ELECTRIC) {
+			_last_built_railtype[0] = _cur_railtype = RAILTYPE_RAIL;
+			_last_built_railtype[1] = INVALID_RAILTYPE;
+			BuildRailToolbarWindow *w = dynamic_cast<BuildRailToolbarWindow *>(FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL));
+			if (w != nullptr) w->ModifyRailType(_cur_railtype);
+		} else if (_last_built_railtype[1] == RAILTYPE_ELECTRIC) {
+			_last_built_railtype[1] = INVALID_RAILTYPE;
+		}
 	}
 	MarkWholeScreenDirty();
 }
@@ -1941,7 +1946,6 @@ static void SetDefaultRailGui()
 {
 	if (_local_company == COMPANY_SPECTATOR || !Company::IsValidID(_local_company)) return;
 
-	extern RailType _last_built_railtype;
 	RailType rt;
 	switch (_settings_client.gui.default_rail_type) {
 		case 2: {
@@ -1978,7 +1982,8 @@ static void SetDefaultRailGui()
 			NOT_REACHED();
 	}
 
-	_last_built_railtype = _cur_railtype = rt;
+	_last_built_railtype[0] = _cur_railtype = rt;
+	_last_built_railtype[1] = INVALID_RAILTYPE;
 	BuildRailToolbarWindow *w = dynamic_cast<BuildRailToolbarWindow *>(FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL));
 	if (w != nullptr) w->ModifyRailType(_cur_railtype);
 }
@@ -2021,13 +2026,20 @@ void InitializeRailGUI()
 	ResetSignalVariant();
 }
 
+DropDownList RailTypeDropdownWindowBase::GetDropDownList(const BadgeFilterChoices &badge_filter_choices) const
+{
+	return GetRailTypeDropDownList(false, false, badge_filter_choices);
+}
+
+static constexpr RailType RAILTYPE_HIDDABLE_SUBLIST_END{RAILTYPE_END + 1}; ///< Special value to mark the dropdown list divider item that is only visible when ctrl is pressed.
+
 /**
  * Create a drop down list for all the rail types of the local company.
  * @param for_replacement Whether this list is for the replacement window.
  * @param all_option Whether to add an 'all types' item.
  * @return The populated and sorted #DropDownList.
  */
-DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
+DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option, const BadgeFilterChoices &badge_filter_choices)
 {
 	RailTypes used_railtypes;
 	RailTypes avail_railtypes;
@@ -2063,23 +2075,65 @@ DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
 	/* Shared list so that each item can take ownership. */
 	auto badge_class_list = std::make_shared<GUIBadgeClasses>(GSF_RAILTYPES);
 
-	for (const auto &rt : _sorted_railtypes) {
+	RailTypes already_in_dropdown;
+
+	std::vector<RailType> railtypes;
+	/* One more than the size of last built type list in order to contain dropdown list divider. */
+	railtypes.reserve(_last_built_railtype.size() + 1
+		+ (c->favourite_railtypes.Any() ? c->favourite_railtypes.Count() + 1 : 0) // Also a divider.
+		+ _sorted_railtypes.size());
+	railtypes.insert(railtypes.end(), _last_built_railtype.begin(), _last_built_railtype.end());
+	railtypes.push_back(RAILTYPE_END); ///< Mark end of sub list.
+
+	if (auto fr = c->favourite_railtypes; fr.Reset(c->hidden_railtypes).Any()) {
+		for (RailType rt : _sorted_railtypes) {
+			if (fr.Test(rt)) railtypes.push_back(rt);
+		}
+		railtypes.push_back(RAILTYPE_END); ///< Mark end of sub list.
+	}
+
+	if (c->hidden_railtypes.Any()) {
+		for (RailType rt : _sorted_railtypes) {
+			if (c->hidden_railtypes.Test(rt)) railtypes.push_back(rt);
+		}
+		railtypes.push_back(RAILTYPE_HIDDABLE_SUBLIST_END); ///< Mark end of sub list.
+	}
+
+	railtypes.insert(railtypes.end(), _sorted_railtypes.begin(), _sorted_railtypes.end());
+
+	size_t in_last_sublist = 0;
+	BadgeDropdownFilter bdf(badge_filter_choices);
+
+	for (const auto &rt : railtypes) {
+		if (rt >= RAILTYPE_END) {
+			if (rt == RAILTYPE_HIDDABLE_SUBLIST_END) list.push_back(MakeDropDownListDividerItem<FS_SMALL>({DropDownListDividerItem<FS_SMALL>::State::Default, DropDownListDividerItem<FS_SMALL>::State::ShiftPressed}));
+			else list.push_back(MakeDropDownListDividerItem<FS_SMALL>());
+			in_last_sublist = 0;
+			continue;
+		}
+
 		/* If it's not used ever, don't show it to the user. */
 		if (!used_railtypes.Test(rt)) continue;
 
+		if (already_in_dropdown.Test(rt)) continue;
+		already_in_dropdown.Set(rt);
+
+		in_last_sublist += 1;
 		const RailTypeInfo *rti = GetRailTypeInfo(rt);
 
+		if (!bdf.Filter(rti->badges)) continue;
+
 		if (for_replacement) {
-			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, GetString(rti->strings.replace_text), rt, !avail_railtypes.Test(rt)));
+			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, GetString(rti->strings.replace_text), rt, false, !avail_railtypes.Test(rt) || c->hidden_railtypes.Test(rt), COLOUR_MAUVE, COLOUR_ORANGE, c->hidden_railtypes.Test(rt)));
 		} else {
 			std::string str = rti->max_speed > 0
 				? GetString(STR_TOOLBAR_RAILTYPE_VELOCITY, rti->strings.menu_text, rti->max_speed)
 				: GetString(rti->strings.menu_text);
-			list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, RailBuildCost(rt), d, rti->gui_sprites.build_x_rail, PAL_NONE, std::move(str), rt, !avail_railtypes.Test(rt)));
+			list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, RailBuildCost(rt), d, rti->gui_sprites.build_x_rail, PAL_NONE, std::move(str), rt, false, !avail_railtypes.Test(rt) || c->hidden_railtypes.Test(rt), COLOUR_MAUVE, COLOUR_ORANGE, c->hidden_railtypes.Test(rt)));
 		}
 	}
 
-	if (list.empty()) {
+	if (in_last_sublist == 0) {
 		/* Empty dropdowns are not allowed */
 		list.push_back(MakeDropDownListStringItem(STR_NONE, INVALID_RAILTYPE, true));
 	}
