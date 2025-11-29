@@ -1698,9 +1698,11 @@ struct BuildVehicleWindow : Window {
 				DisplayVehicleSortDropDown(this, this->vehicle_type, this->sort_criteria, WID_BV_SORT_DROPDOWN);
 				break;
 
-			case WID_BV_CARGO_FILTER_DROPDOWN: // Select cargo filtering criteria dropdown menu
-				ShowDropDownList(this, this->BuildCargoDropDownList(), this->cargo_filter_criteria, widget, 0, DropDownOption::Filterable);
+			case WID_BV_CARGO_FILTER_DROPDOWN: { // Select cargo filtering criteria dropdown menu
+				static std::string cargo_filter;
+				ShowDropDownList(this, this->BuildCargoDropDownList(), this->cargo_filter_criteria, widget, 0, DropDownOption::Filterable, &cargo_filter);
 				break;
+			}
 
 			case WID_BV_CONFIGURE_BADGES:
 				if (this->badge_classes.GetClasses().empty()) break;

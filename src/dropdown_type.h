@@ -69,9 +69,9 @@ enum class DropDownOption : uint8_t {
 };
 using DropDownOptions = EnumBitSet<DropDownOption, uint8_t>;
 
-void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, WidgetID button, Rect wi_rect, Colours wi_colour, DropDownOptions options = {});
+void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, WidgetID button, Rect wi_rect, Colours wi_colour, DropDownOptions options = {}, std::string * const persistent_filter_text = nullptr);
 
-void ShowDropDownList(Window *w, DropDownList &&list, int selected, WidgetID button, uint width = 0, DropDownOptions options = {});
+void ShowDropDownList(Window *w, DropDownList &&list, int selected, WidgetID button, uint width = 0, DropDownOptions options = {}, std::string * const persistent_filter_text = nullptr);
 
 Dimension GetDropDownListDimension(const DropDownList &list);
 

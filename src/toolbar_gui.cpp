@@ -879,9 +879,13 @@ static CallBackFunction ToolbarZoomOutClick(Window *w)
 
 /* --- Rail button menu --- */
 
+static std::string _railtype_filter; ///< Persistent filter text for railtype dropdown menu.
+static std::string _roadtype_filter; ///< Persistent filter text for roadtype dropdown menu.
+static std::string _tramtype_filter; ///< Persistent filter text for tramtype dropdown menu.
+
 static CallBackFunction ToolbarBuildRailClick(Window *w)
 {
-	ShowDropDownList(w, GetRailTypeDropDownList(), _last_built_railtype, WID_TN_RAILS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable));
+	ShowDropDownList(w, GetRailTypeDropDownList(), _last_built_railtype, WID_TN_RAILS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable), &_railtype_filter);
 	return CBF_NONE;
 }
 
@@ -902,7 +906,7 @@ static CallBackFunction MenuClickBuildRail(int index)
 
 static CallBackFunction ToolbarBuildRoadClick(Window *w)
 {
-	ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_ROAD), _last_built_roadtype, WID_TN_ROADS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable));
+	ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_ROAD), _last_built_roadtype, WID_TN_ROADS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable), &_roadtype_filter);
 	return CBF_NONE;
 }
 
@@ -923,7 +927,7 @@ static CallBackFunction MenuClickBuildRoad(int index)
 
 static CallBackFunction ToolbarBuildTramClick(Window *w)
 {
-	ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_TRAM), _last_built_tramtype, WID_TN_TRAMS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable));
+	ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_TRAM), _last_built_tramtype, WID_TN_TRAMS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable), &_tramtype_filter);
 	return CBF_NONE;
 }
 
@@ -1259,7 +1263,7 @@ static CallBackFunction ToolbarScenGenIndustry(Window *w)
 
 static CallBackFunction ToolbarScenBuildRoadClick(Window *w)
 {
-	ShowDropDownList(w, GetScenRoadTypeDropDownList(RTTB_ROAD), _last_built_roadtype, WID_TE_ROADS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable));
+	ShowDropDownList(w, GetScenRoadTypeDropDownList(RTTB_ROAD), _last_built_roadtype, WID_TE_ROADS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable), &_roadtype_filter);
 	return CBF_NONE;
 }
 
@@ -1278,7 +1282,7 @@ static CallBackFunction ToolbarScenBuildRoad(int index)
 
 static CallBackFunction ToolbarScenBuildTramClick(Window *w)
 {
-	ShowDropDownList(w, GetScenRoadTypeDropDownList(RTTB_TRAM), _last_built_tramtype, WID_TE_TRAMS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable));
+	ShowDropDownList(w, GetScenRoadTypeDropDownList(RTTB_TRAM), _last_built_tramtype, WID_TE_TRAMS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable), &_tramtype_filter);
 	return CBF_NONE;
 }
 
