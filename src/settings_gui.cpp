@@ -1152,18 +1152,28 @@ struct GameOptionsWindow : Window {
 				ShowNetworkContentListWindow(nullptr, CONTENT_TYPE_BASE_MUSIC);
 				break;
 
-			case WID_GO_CURRENCY_DROPDOWN:
 			case WID_GO_AUTOSAVE_DROPDOWN:
-			case WID_GO_LANG_DROPDOWN:
 			case WID_GO_RESOLUTION_DROPDOWN:
-			case WID_GO_REFRESH_RATE_DROPDOWN:
+			case WID_GO_REFRESH_RATE_DROPDOWN: {
+				int selected;
+				DropDownList list = this->BuildDropDownList(widget, &selected);
+				if (!list.empty()) {
+					ShowDropDownList(this, std::move(list), selected, widget);
+				} else {
+					if (widget == WID_GO_RESOLUTION_DROPDOWN) ShowErrorMessage(GetEncodedString(STR_ERROR_RESOLUTION_LIST_FAILED), {}, WL_ERROR);
+				}
+				break;
+			}
+
+			case WID_GO_CURRENCY_DROPDOWN:
+			case WID_GO_LANG_DROPDOWN:
 			case WID_GO_BASE_GRF_DROPDOWN:
 			case WID_GO_BASE_SFX_DROPDOWN:
 			case WID_GO_BASE_MUSIC_DROPDOWN: {
 				int selected;
 				DropDownList list = this->BuildDropDownList(widget, &selected);
 				if (!list.empty()) {
-					ShowDropDownList(this, std::move(list), selected, widget);
+					ShowDropDownList(this, std::move(list), selected, widget, 0, DropDownOption::Filterable);
 				} else {
 					if (widget == WID_GO_RESOLUTION_DROPDOWN) ShowErrorMessage(GetEncodedString(STR_ERROR_RESOLUTION_LIST_FAILED), {}, WL_ERROR);
 				}
