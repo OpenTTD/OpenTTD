@@ -5995,6 +5995,9 @@ STR_TUTORIAL_PREV                                            :Previous
 STR_TUTORIAL_FINISH                                          :Finish
 STR_TUTORIAL_DONT_SHOW_AGAIN                                 :Do not show on startup
 
+STR_TUTORIAL_ALREADY_FIRST_PAGE                              :Already at the first page
+STR_TUTORIAL_ALREADY_LAST_PAGE                               :Already at the last page
+
 STR_ABOUT_MENU_TUTORIAL                                      :Show Tutorial
 STR_TUTORIAL_CLOSING_NOTE                                    :You're all set! Press Finish to close this tutorial. You can reopen it anytime from Help -> Show Tutorial
 # Tutorial window strings - ADD END
