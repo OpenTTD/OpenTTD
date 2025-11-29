@@ -1699,7 +1699,7 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case WID_BV_CARGO_FILTER_DROPDOWN: // Select cargo filtering criteria dropdown menu
-				ShowDropDownList(this, this->BuildCargoDropDownList(), this->cargo_filter_criteria, widget);
+				ShowDropDownList(this, this->BuildCargoDropDownList(), this->cargo_filter_criteria, widget, 0, DropDownOption::Filterable);
 				break;
 
 			case WID_BV_CONFIGURE_BADGES:
@@ -1731,7 +1731,7 @@ struct BuildVehicleWindow : Window {
 			default:
 				if (IsInsideMM(widget, this->badge_filters.first, this->badge_filters.second)) {
 					PaletteID palette = SPR_2CCMAP_BASE + Company::Get(_local_company)->GetCompanyRecolourOffset(LS_DEFAULT);
-					ShowDropDownList(this, this->GetWidget<NWidgetBadgeFilter>(widget)->GetDropDownList(palette), -1, widget, 0);
+					ShowDropDownList(this, this->GetWidget<NWidgetBadgeFilter>(widget)->GetDropDownList(palette), -1, widget, 0, DropDownOption::Filterable);
 				}
 				break;
 		}

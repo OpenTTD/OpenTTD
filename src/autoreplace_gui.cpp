@@ -539,11 +539,11 @@ public:
 			}
 
 			case WID_RV_RAIL_TYPE_DROPDOWN: // Railtype selection dropdown menu
-				ShowDropDownList(this, GetRailTypeDropDownList(true, true), this->sel_railtype, widget);
+				ShowDropDownList(this, GetRailTypeDropDownList(true, true), this->sel_railtype, widget, 0, DropDownOption::Filterable);
 				break;
 
 			case WID_RV_ROAD_TYPE_DROPDOWN: // Roadtype selection dropdown menu
-				ShowDropDownList(this, GetRoadTypeDropDownList(RTTB_ROAD | RTTB_TRAM, true, true), this->sel_roadtype, widget);
+				ShowDropDownList(this, GetRoadTypeDropDownList(RTTB_ROAD | RTTB_TRAM, true, true), this->sel_roadtype, widget, 0, DropDownOption::Filterable);
 				break;
 
 			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE: {
