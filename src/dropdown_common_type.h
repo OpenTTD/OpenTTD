@@ -16,6 +16,7 @@
 #include "palette_func.h"
 #include "settings_gui.h"
 #include "string_func.h"
+#include "stringfilter_type.h"
 #include "strings_func.h"
 #include "window_gui.h"
 
@@ -63,10 +64,10 @@ public:
 		this->SetString(std::move(string));
 	}
 
-	void GetText(std::vector<std::string_view> &texts) const override
+	void FilterText(StringFilter &string_filter) const override
 	{
-		texts.push_back(this->string);
-		this->TBase::GetText(texts);
+		string_filter.AddLine(this->string);
+		this->TBase::FilterText(string_filter);
 	}
 
 	void SetString(std::string &&string)
