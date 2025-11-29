@@ -97,6 +97,7 @@ struct DropdownWindow : Window {
 	int scrolling = 0; ///< If non-zero, auto-scroll the item list (one time).
 	Point position{}; ///< Position of the topleft corner of the window.
 	Scrollbar *vscroll = nullptr;
+	std::string *persistent_filter_text = nullptr;
 
 	Dimension initial_dim{};
 	Dimension items_dim{}; ///< Calculated cropped and padded dimension for the items widget.
@@ -114,13 +115,14 @@ struct DropdownWindow : Window {
 	 * @param wi_colour     Colour of the parent widget.
 	 * @param options Drop Down options for this menu.
 	 */
-	DropdownWindow(Window *parent, DropDownList &&list, int selected, WidgetID button, const Rect wi_rect, Colours wi_colour, DropDownOptions options)
+	DropdownWindow(Window *parent, DropDownList &&list, int selected, WidgetID button, const Rect wi_rect, Colours wi_colour, DropDownOptions options, std::string *persistent_filter_text)
 			: Window(_dropdown_desc)
 			, parent_button(button)
 			, wi_rect(wi_rect)
 			, list(std::move(list))
 			, selected_result(selected)
 			, options(options)
+			, persistent_filter_text(persistent_filter_text)
 			, editbox(60 * MAX_CHAR_LENGTH, 60)
 	{
 		assert(!this->list.empty());
@@ -141,7 +143,14 @@ struct DropdownWindow : Window {
 
 		this->FinishInitNested(0);
 
-		if (this->options.Test(DropDownOption::Filterable)) this->SetFocusedWidget(WID_DM_FILTER);
+		if (this->options.Test(DropDownOption::Filterable)) {
+			this->SetFocusedWidget(WID_DM_FILTER);
+			if (this->persistent_filter_text != nullptr && !this->persistent_filter_text->empty()) {
+				this->editbox.text.Assign(*this->persistent_filter_text);
+				this->UpdateFilter();
+			}
+		}
+
 		this->flags.Reset(WindowFlag::WhiteBorder);
 	}
 
@@ -150,6 +159,10 @@ struct DropdownWindow : Window {
 		/* Finish closing the dropdown, so it doesn't affect new window placement.
 		 * Also mark it dirty in case the callback deals with the screen. (e.g. screenshots). */
 		this->Window::Close();
+
+		if (this->persistent_filter_text != nullptr) {
+			*this->persistent_filter_text = this->editbox.text.GetText();
+		}
 
 		Point pt = _cursor.pos;
 		pt.x -= this->parent->left;
@@ -500,10 +513,10 @@ Dimension GetDropDownListDimension(const DropDownList &list)
  * @param wi_rect  Coord of the parent drop down button, used to position the dropdown menu.
  * @param options Drop Down options for this menu.
  */
-void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, WidgetID button, Rect wi_rect, Colours wi_colour, DropDownOptions options)
+void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, WidgetID button, Rect wi_rect, Colours wi_colour, DropDownOptions options, std::string *persistent_filter_text)
 {
 	CloseWindowByClass(WC_DROPDOWN_MENU);
-	new DropdownWindow(w, std::move(list), selected, button, wi_rect, wi_colour, options);
+	new DropdownWindow(w, std::move(list), selected, button, wi_rect, wi_colour, options, persistent_filter_text);
 }
 
 /**
@@ -516,7 +529,7 @@ void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, WidgetID b
  * @param width    Override the minimum width determined by the selected widget and list contents.
  * @param options Drop Down options for this menu.
  */
-void ShowDropDownList(Window *w, DropDownList &&list, int selected, WidgetID button, uint width, DropDownOptions options)
+void ShowDropDownList(Window *w, DropDownList &&list, int selected, WidgetID button, uint width, DropDownOptions options, std::string *persistent_filter_text)
 {
 	/* Handle the beep of the player's click. */
 	SndClickBeep();
@@ -542,7 +555,7 @@ void ShowDropDownList(Window *w, DropDownList &&list, int selected, WidgetID but
 		}
 	}
 
-	ShowDropDownListAt(w, std::move(list), selected, button, wi_rect, wi_colour, options);
+	ShowDropDownListAt(w, std::move(list), selected, button, wi_rect, wi_colour, options, persistent_filter_text);
 }
 
 /**
@@ -557,7 +570,7 @@ void ShowDropDownList(Window *w, DropDownList &&list, int selected, WidgetID but
  * @param width         Minimum width of the dropdown menu.
  * @param options Drop Down options for this menu
  */
-void ShowDropDownMenu(Window *w, std::span<const StringID> strings, int selected, WidgetID button, uint32_t disabled_mask, uint32_t hidden_mask, uint width, DropDownOptions options)
+void ShowDropDownMenu(Window *w, std::span<const StringID> strings, int selected, WidgetID button, uint32_t disabled_mask, uint32_t hidden_mask, uint width, DropDownOptions options, std::string *persistent_filter_text)
 {
 	DropDownList list;
 
@@ -569,5 +582,5 @@ void ShowDropDownMenu(Window *w, std::span<const StringID> strings, int selected
 		++i;
 	}
 
-	if (!list.empty()) ShowDropDownList(w, std::move(list), selected, button, width, options);
+	if (!list.empty()) ShowDropDownList(w, std::move(list), selected, button, width, options, persistent_filter_text);
 }

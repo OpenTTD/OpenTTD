@@ -10,6 +10,7 @@
 #ifndef DROPDOWN_COMMON_TYPE_H
 #define DROPDOWN_COMMON_TYPE_H
 
+#include "debug.h"
 #include "dropdown_type.h"
 #include "gfx_func.h"
 #include "gfx_type.h"
@@ -67,6 +68,7 @@ public:
 	void FilterText(StringFilter &string_filter) const override
 	{
 		string_filter.AddLine(this->string);
+		Debug(misc, 0, "{} {}", this->string, string_filter.GetState());
 		this->TBase::FilterText(string_filter);
 	}
 
