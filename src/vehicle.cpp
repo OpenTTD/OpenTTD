@@ -187,7 +187,7 @@ void VehicleServiceInDepot(Vehicle *v)
 		v->reliability = v->GetEngine()->reliability;
 		/* Prevent vehicles from breaking down directly after exiting the depot. */
 		v->breakdown_chance /= 4;
-		if (_settings_game.difficulty.vehicle_breakdowns == 1) v->breakdown_chance = 0; // on reduced breakdown
+		if (_settings_game.difficulty.vehicle_breakdowns == VB_REDUCED) v->breakdown_chance = 0; // on reduced breakdown
 		v = v->Next();
 	} while (v != nullptr && v->HasEngineType());
 }
@@ -222,7 +222,7 @@ bool Vehicle::NeedsServicing() const
 	/* If we're servicing anyway, because we have not disabled servicing when
 	 * there are no breakdowns or we are playing with breakdowns, bail out. */
 	if (!_settings_game.order.no_servicing_if_no_breakdowns ||
-			_settings_game.difficulty.vehicle_breakdowns != 0) {
+			_settings_game.difficulty.vehicle_breakdowns != VB_NONE) {
 		return true;
 	}
 
@@ -1290,13 +1290,13 @@ void CheckVehicleBreakdown(Vehicle *v)
 
 	/* decrease reliability */
 	if (!_settings_game.order.no_servicing_if_no_breakdowns ||
-			_settings_game.difficulty.vehicle_breakdowns != 0) {
+			_settings_game.difficulty.vehicle_breakdowns != VB_NONE) {
 		v->reliability = rel = std::max((rel_old = v->reliability) - v->reliability_spd_dec, 0);
 		if ((rel_old >> 8) != (rel >> 8)) SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 	}
 
 	if (v->breakdown_ctr != 0 || v->vehstatus.Test(VehState::Stopped) ||
-			_settings_game.difficulty.vehicle_breakdowns < 1 ||
+			_settings_game.difficulty.vehicle_breakdowns < VB_REDUCED ||
 			v->cur_speed < 5 || _game_mode == GM_MENU) {
 		return;
 	}
@@ -1313,7 +1313,7 @@ void CheckVehicleBreakdown(Vehicle *v)
 	if (v->type == VEH_SHIP) rel += 0x6666;
 
 	/* reduced breakdowns? */
-	if (_settings_game.difficulty.vehicle_breakdowns == 1) rel += 0x6666;
+	if (_settings_game.difficulty.vehicle_breakdowns == VB_REDUCED) rel += 0x6666;
 
 	/* check if to break down */
 	if (_breakdown_chance[ClampTo<uint16_t>(rel) >> 10] <= v->breakdown_chance) {
