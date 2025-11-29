@@ -27,6 +27,7 @@
 #include "company_func.h"
 #include "dropdown_type.h"
 #include "dropdown_func.h"
+#include "dropdown_common_type.h"
 #include "tunnelbridge.h"
 #include "tilehighlight_func.h"
 #include "core/geometry_func.hpp"
@@ -47,6 +48,8 @@
 #include "tunnelbridge_map.h"
 
 #include "widgets/rail_widget.h"
+
+#include <ranges>
 
 #include "table/strings.h"
 
@@ -2035,6 +2038,17 @@ static std::unique_ptr<DropDownListItem> MakeRailTypeDropDownItem(RailType rt, b
 	}
 }
 
+static std::unique_ptr<DropDownListItem> MakeRailCategoryDropDownItem(const Badge &badge, DropDownList &&sublist, int index)
+{
+	PalSpriteID ps = GetBadgeSprite(badge, GSF_RAILTYPES, std::nullopt, PAL_NONE);
+
+	if (ps.sprite != 0) {
+		return std::make_unique<DropDownIcon<DropDownString<DropDownSubmenuItem>>>(ps.sprite, ps.pal, GetString(badge.name), std::move(sublist), index);
+	} else {
+		return std::make_unique<DropDownString<DropDownSubmenuItem>>(GetString(badge.name), std::move(sublist), index);
+	}
+}
+
 /**
  * Create a drop down list for all the rail types of the local company.
  * @param for_replacement Whether this list is for the replacement window.
@@ -2077,6 +2091,30 @@ DropDownList GetRailTypeDropDownList(RailType last_built_railtype, bool for_repl
 	/* Shared list so that each item can take ownership. */
 	auto badge_class_list = std::make_shared<GUIBadgeClasses>(GSF_RAILTYPES);
 
+	std::map<BadgeID, std::vector<RailType>> badge_railtypes{};
+	RailTypes rt_with_badge{};
+	if (!for_replacement) {
+		/* Get category class badge. */
+		if (auto cat_class = std::ranges::find_if(badge_class_list->Classes(), [](const BadgeClassID id) { return GetClassBadge(id)->label == "category"sv; }); cat_class != std::end(badge_class_list->Classes())) {
+			BadgeClassID class_id = GetClassBadge(*cat_class)->class_index;
+
+			/* Gather railtypes per category badge. */
+			for (const auto &rt : _sorted_railtypes) {
+				/* If it's not used ever, don't show it to the user. */
+				if (!used_railtypes.Test(rt)) continue;
+
+				for (BadgeID id : GetRailTypeInfo(rt)->badges) {
+					const Badge *badge = GetBadge(id);
+					if (badge->class_index != class_id) continue;
+
+					badge_railtypes.try_emplace(id).first->second.push_back(rt);
+					rt_with_badge.Set(rt);
+				}
+			}
+		}
+	}
+
+	/* Put last built railtype on top. */
 	bool add_divider = false;
 	if (last_built_railtype != INVALID_RAILTYPE && used_railtypes.Test(last_built_railtype)) {
 		list.push_back(MakeRailTypeDropDownItem(last_built_railtype, !avail_railtypes.Test(last_built_railtype), !for_replacement, d, badge_class_list));
@@ -2085,7 +2123,9 @@ DropDownList GetRailTypeDropDownList(RailType last_built_railtype, bool for_repl
 		used_railtypes.Reset(last_built_railtype);
 	}
 
+	/* List all railtypes not in any category. */
 	for (const auto &rt : _sorted_railtypes) {
+		if (rt_with_badge.Test(rt)) continue;
 		/* If it's not used ever, don't show it to the user. */
 		if (!used_railtypes.Test(rt)) continue;
 
@@ -2094,6 +2134,25 @@ DropDownList GetRailTypeDropDownList(RailType last_built_railtype, bool for_repl
 			add_divider = false;
 		}
 		list.push_back(MakeRailTypeDropDownItem(rt, !avail_railtypes.Test(rt), !for_replacement, d, badge_class_list));
+	}
+
+	if (!for_replacement && !badge_railtypes.empty()) {
+		/* Only add a divider if the previous section isn't empty. */
+		if (list.size() > 2) list.push_back(MakeDropDownListDividerItem());
+
+		int index = -1;
+		for (auto badge_group : badge_railtypes) {
+			/* Build sub dropdown. */
+			DropDownList sublist{};
+			for (RailType rt : badge_group.second) {
+				sublist.push_back(MakeRailTypeDropDownItem(rt, !avail_railtypes.Test(rt), !for_replacement, d, badge_class_list));
+			}
+
+			const Badge &badge = *GetBadge(badge_group.first);
+			list.push_back(MakeRailCategoryDropDownItem(badge, std::move(sublist), index));
+
+			index--;
+		}
 	}
 
 	if (list.empty()) {
