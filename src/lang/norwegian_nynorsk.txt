@@ -3101,14 +3101,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Utmerkt
 STR_CARGO_RATING_OUTSTANDING                                    :Framifrå
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Midtstill hovedvisninga på stasjonen. CTRL+klikk syner stasjonen i eit nytt tilleggsvindauge
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Byt namn på stasjonen
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Syne alle tog som har denne stasjonen på ruteplanen sin
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Syne alle køyretøy som har denne stasjonen på ruteplanen sin
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Syne alle luftfartøy som har denne stasjonen på ruteplanen sin
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Syne alle skip som har denne stasjonen på ruteplanen sin
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Endre namnet på stasjon/lasteterminal
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Steng flyplassen
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Hindre at luftfartøy lander på flyplassen
@@ -3116,11 +3114,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Hindre a
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Midtstill hovedvisninga på kontrollpunktet. CTRL+klikk syner kontrollpunktet i eit nytt tilleggsvindauge
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Byt namn på kontrollpunkt
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Midtstill hovedvisninga på bøyen. CTRL+klikk syner bøyen i eit nytt tilleggsvindauge
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Byt namn på bøyen
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Endre namn på kontrollpunkt
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Rekneskapen til {COMPANY} {BLACK}{COMPANY_NUM}

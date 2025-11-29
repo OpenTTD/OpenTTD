@@ -3904,14 +3904,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Rawe
 STR_CARGO_RATING_OUTSTANDING                                    :Kei runga rawa atu
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Nekehia te tirohanga matua ki te tauwāhi o te teihana. Pātaki+Pāwhiri kia huaki i tētahi atu tirohanga i te tauwāhi o te teihana
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Panonitia te ingoa o te teihana
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Whakaaria ngā tereina katoa e toro ana i tēnei teihana i ana rārangi mahi
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Whakaaria ngā waka rori katoa e toro ana i tēnei teihana i ana rārangi mahi
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Whakaaria ngā waka rererangi katoa e toro ana i tēnei teihana i ana rārangi mahi
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Whakaaria ngā kaipuke katoa e toro ana i tēnei teihana i ana rārangi mahi
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Tapaia anō te teihana/wāhi utauta
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Katia te taunga rererangi
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Āraia ngā waka rererangi kei tau ki tēnei taunga
@@ -3919,11 +3917,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Āraia n
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Nekehia te tirohanga matua ki te tauwāhi o te aratohu. Pātaki+Pāwhiri kia huaki i tētahi atu tirohanga i te tauwāhi o te aratohu
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Panonitia te ingoa o te aratohu
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Nekehia te tirohanga matua ki te tauwāhi o te kārewa. Pātaki+Pāwhiri kia huaki i tētahi atu tirohanga i te tauwāhi o te kārewa
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Panonitia te ingoa o te kārewa
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Whakarerekētia te ingoa o te aratohu
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Ahumoni o {COMPANY} {BLACK}{COMPANY_NUM}

@@ -3826,14 +3826,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Suurepärane
 STR_CARGO_RATING_OUTSTANDING                                    :Suurepärane
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Vaate viimine jaama juurde
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Muuda jaama nime
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Näita kõiki ronge, mille sõidugraafik sisaldab seda rongijaama
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Näita kõiki mootorsõidukeid, mille sõidugraafik sisaldab seda jaama
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Näita kõiki õhusõidukeid, mille graafik sisaldab seda jaama
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Näita kõiki laevu, mille sõidugraafik sisaldab seda sadamat
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Ümbernimeta jaam/laadimisala
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Sulge lennujaam
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Keela õhusõidukite maandumine selles lennujaamas
@@ -3841,11 +3839,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Keela õ
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Keskenda vaade teemärgisel. Ctrl+klõps avab teemärgisel uue vaate
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Muuda meldepunkti nime
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Keskenda vaade poi kohale. Ctrl+klõps avab poi kohal uue vaateakna
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Muuda poi nime
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Muuda meldepunkti nime
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} rahavoogude aruanne {BLACK}{COMPANY_NUM}

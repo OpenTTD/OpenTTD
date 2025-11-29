@@ -39,10 +39,10 @@ INSTANTIATE_POOL_METHODS(StoryPage)
 
 StoryPage::~StoryPage()
 {
-	if (!this->CleaningPool()) {
-		for (StoryPageElement *spe : StoryPageElement::Iterate()) {
-			if (spe->page == this->index) delete spe;
-		}
+	if (CleaningPool()) return;
+
+	for (StoryPageElement *spe : StoryPageElement::Iterate()) {
+		if (spe->page == this->index) delete spe;
 	}
 }
 

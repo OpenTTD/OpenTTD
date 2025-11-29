@@ -133,6 +133,7 @@ int DrawBadgeNameList(Rect r, std::span<const BadgeID> badges, GrfSpecFeature)
 			const Badge *badge = GetBadge(index);
 			if (badge == nullptr || badge->name == STR_NULL) continue;
 			if (badge->class_index != class_index) continue;
+			if (badge->flags.Test(BadgeFlag::NameListSkip)) continue;
 
 			if (!s.empty()) {
 				if (badge->flags.Test(BadgeFlag::NameListFirstOnly)) continue;

@@ -3906,14 +3906,12 @@ STR_CARGO_RATING_EXCELLENT                                      :lielisks
 STR_CARGO_RATING_OUTSTANDING                                    :izcils
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrēt galveno skatu uz staciju. Ctrl+klikšķis atvērs skatu uz staciju jaunā skatlaukā
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Pārdēvēt staciju
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Rādīt vilcienus, kuru rīkojumu sarakstos ir šī stacija
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Rādīt autotransporta līdzekļus, kuru rīkojumu sarakstos ir šī stacija
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Rādīt lidaparātus, kuru rīkojumu sarakstos ir šī stacija
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Rādīt kuģus, kuru rīkojumu sarakstos ir šī stacija
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Pārdēvēt staciju/iekraušanas zonu
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Slēgt lidostu
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Novērst lidaparātu nolaišanos šajā lidostā
@@ -3921,11 +3919,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Novērst
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrēt galveno skatu uz pieturas punktu. Ctrl+klikšķis atvērs skatu uz pieturas punktu jaunā skatlaukā
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Mainīt pieturas punkta nosaukumu
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrēt galveno skatu uz boju. Ctrl+klikšķis atvērs skatu uz boju jaunā skatlaukā
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Mainīt bojas nosaukumu
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Labot pieturas punkta nosaukumu
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} finanses {BLACK}{COMPANY_NUM}

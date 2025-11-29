@@ -3921,14 +3921,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Vynikající
 STR_CARGO_RATING_OUTSTANDING                                    :Úžasné
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Vystředit pohled na stanici. Ctrl+Klik otevře nový pohled na umístění stanice
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Přejmenovat stanici
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Zobrazit všechny vlaky, které mají tuto stanici v jízdním řádu
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Zobrazit všechna silniční vozidla, která mají tuto stanici v jízdním řádu
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Zobrazit všechna letadla, která mají tuto stanici v jízdním řádu
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Zobrazit všechny lodě, které mají tuto stanici v jízdním řádu
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Přejmenovat stanici
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Uzavřít letiště
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Zabránit letadlu od přistání na tomto letišti
@@ -3936,11 +3934,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Zabráni
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Zaměřit hlavní pohled na umístění bodu na trase. Při stisknutí Ctrl+Klik otevřete nové okno na umístění bodu na trase
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Přejmenovat směrování
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Vystředit pohled na bójku. Ctrl+Klik otevře nové okno náhledu
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Přejmenovat bójku
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Přejmenovat směrování
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Finance - {COMPANY} {BLACK}{COMPANY_NUM}

@@ -3792,14 +3792,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Harika
 STR_CARGO_RATING_OUTSTANDING                                    :Mükemmel
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Durağın oldugu yeri ortala. Ctrl + Sol Tıklama durağın olduğu yere ait bir görünüm penceresi açar.
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}İstasyonun ismini değiştir
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Talimat listesinde bu durak olan trenleri listele
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Talimat listesinde bu durak olan tüm karayolu araçlarını listele
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Talimat listesinde bu durak olan uçakları listele
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Talimat listesinde bu durak olan gemileri listele
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :İstasyonu yeniden adlandır
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Havalimanını kapat
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Uçağın bu havalimanına iniş yapmasını engelle
@@ -3807,11 +3805,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Uçağı
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Ana görünümü güzergaha ortala. Ctrl+Sol tık ile güzegahın konumunu gösteren yeni bir pencere açabilirsiniz
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Ara nokta adını değiştir
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Ana görünümü şamandıra(duba) konumuna ortala. Ctrl + Sol Tıklama şamandıranın olduğu yere ait bir görünüm penceresi açar.
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Şamandıra adını değiştir
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Yerimi adını değiştir
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Hesaplar {BLACK}{COMPANY_NUM}

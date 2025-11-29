@@ -3901,14 +3901,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Excellent
 STR_CARGO_RATING_OUTSTANDING                                    :Exceptionnel
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrer la vue sur la station. Ctrl-clic pour ouvrir une nouvelle vue sur la station.
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Renommer la station
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Afficher les trains ayant cette station dans leurs ordres
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Afficher les véhicules routiers ayant cette station dans leurs ordres
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Afficher les aéronefs ayant cette station dans leurs ordres
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Afficher les navires ayant cette station dans leurs ordres
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Renommer la gare
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Fermer l'aéroport
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Empêcher l'aéronef de se poser sur cet aéroport
@@ -3916,11 +3914,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Empêche
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrer la vue sur le point de contrôle. Ctrl-clic pour ouvrir une nouvelle vue sur le point de contrôle
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Renommer le point de contrôle
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrer la vue sur la bouée. Ctrl-clic pour ouvrir une nouvelle vue sur la bouée
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Renommer la bouée
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Modifier le nom du point de contrôle
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Finances de {COMPANY} {BLACK}{COMPANY_NUM}

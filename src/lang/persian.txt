@@ -3168,24 +3168,20 @@ STR_CARGO_RATING_EXCELLENT                                      :عالی
 STR_CARGO_RATING_OUTSTANDING                                    :بسیار عالی
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}مرکز تصویر اصلی را روی محل ایستگاه قرار بده. Ctrl+Click برای گشودن یک پنجره نما از ایستگاه
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}تغییر نام ایستگاه
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}همه قطار هایی که در ایستگاه هایشان دارای زمانبندی می باشند را نشان می دهد.
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}همه خودروهایی هایی که در ایستگاه هایشان دارای زمانبندی می باشند را نشان می دهد.
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}همه هواپیماهایی که در ایستگاه هایشان دارای زمانبندی می باشند را نشان می دهد.
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}همه کشتی هایی هایی که در ایستگاه هایشان دارای زمانبندی می باشند را نشان می دهد.
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :نام گذاری محوطه ایستگاه/بارگیری
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}بستن (یا نزدیک) فرودگاه
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}جلوگیری از فرود هواپیما در این فرودگاه
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}تغییر نام نقطه مسیر
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}تغییر نام شناور
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}ویرایش نام نقطه راه
 
 # Finances window
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}

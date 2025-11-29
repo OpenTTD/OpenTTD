@@ -3878,14 +3878,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Gwych
 STR_CARGO_RATING_OUTSTANDING                                    :Rhagorol
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Canoli'r brif olygfa ar leoliad yr orsaf. Ctrl+Clic i agor ffenest golwg newydd ar leoliad yr orsaf
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Newid enw'r orsaf
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Dangos pob trên sydd â'r orsaf hon yn eu hamserlen
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Dangos pob cerbyd ffordd sydd â'r orsaf hon yn eu hamserlen
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Dangos pob awyren sydd â'r orsaf hon yn eu hamserlen
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Dangos pob llong sydd â'r orsaf hon yn eu hamserlen
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Ailenwi gorsaf/ardal lwytho
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Cau'r maes awyr
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Rhwystro awyrennau rhag glanio ar y maes awyr yma
@@ -3893,11 +3891,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Rhwystro
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Canoli'r brif olygfa ar leoliad y pwynt llwybro. Ctrl+Clic i agor ffenest olygfa newydd ar leoliad y pwynt llwybro
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Newid enw pwynt llwybro
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Canoli'r brif olygfa ar leoliad y bwï. Ctrl+Clic i agor ffenestr olygfa newydd ar leoliad y bwï
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Newid enw bwï
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Golygu enw pwynt llwybro
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Cyllid {COMPANY}{BLACK}{COMPANY_NUM}

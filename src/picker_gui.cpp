@@ -358,7 +358,7 @@ void PickerWindow::DrawWidget(const Rect &r, WidgetID widget) const
 		}
 
 		case WID_PW_TYPE_NAME:
-			DrawString(r, this->callbacks.GetTypeName(this->callbacks.GetSelectedClass(), this->callbacks.GetSelectedType()), TC_ORANGE, SA_CENTER);
+			DrawString(r, this->callbacks.GetTypeName(this->callbacks.GetSelectedClass(), this->callbacks.GetSelectedType()), TC_GOLD, SA_CENTER);
 			break;
 	}
 }
@@ -468,7 +468,7 @@ void PickerWindow::OnDropdownSelect(WidgetID widget, int index, int click_result
 			}
 
 			/* We need to refresh if a filter is removed. */
-			this->InvalidateData({PickerInvalidation::Type, PickerInvalidation::Filter});
+			this->InvalidateData({PickerInvalidation::Type, PickerInvalidation::Filter, PickerInvalidation::Position});
 			break;
 		}
 
@@ -479,7 +479,7 @@ void PickerWindow::OnDropdownSelect(WidgetID widget, int index, int click_result
 				} else {
 					SetBadgeFilter(this->badge_filter_choices, BadgeID(index));
 				}
-				this->InvalidateData({PickerInvalidation::Type, PickerInvalidation::Filter});
+				this->InvalidateData({PickerInvalidation::Type, PickerInvalidation::Filter, PickerInvalidation::Position});
 			}
 			break;
 	}
@@ -555,7 +555,7 @@ void PickerWindow::OnEditboxChanged(WidgetID wid)
 			} else {
 				this->type_string_filter.btf.reset();
 			}
-			this->InvalidateData({PickerInvalidation::Type, PickerInvalidation::Filter});
+			this->InvalidateData({PickerInvalidation::Type, PickerInvalidation::Filter, PickerInvalidation::Position});
 			break;
 
 		default:
@@ -729,9 +729,11 @@ void PickerWindow::EnsureSelectedTypeIsVisible()
 	int index = this->callbacks.GetSelectedType();
 
 	auto it = std::ranges::find_if(this->types, [class_index, index](const auto &item) { return item.class_index == class_index && item.index == index; });
-	if (it == std::end(this->types)) return;
+	int pos = -1;
+	if (it != std::end(this->types)) {
+		pos = static_cast<int>(std::distance(std::begin(this->types), it));
+	}
 
-	int pos = static_cast<int>(std::distance(std::begin(this->types), it));
 	this->GetWidget<NWidgetMatrix>(WID_PW_TYPE_MATRIX)->SetClicked(pos);
 }
 

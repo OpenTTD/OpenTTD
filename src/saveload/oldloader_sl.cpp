@@ -84,7 +84,7 @@ static void FixTTDMapArray()
 					SetTileType(tile, MP_WATER);
 					SetTileOwner(tile, OWNER_WATER);
 					tile.m2() = 0;
-					tile.m3() = 2; // WATER_CLASS_RIVER
+					tile.m3() = 2; // WaterClass::River
 					tile.m4() = Random();
 					tile.m5() = 0;
 				}

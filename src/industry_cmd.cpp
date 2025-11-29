@@ -451,7 +451,7 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, Ca
 		}
 	}
 
-	for (uint8_t i = 0; i < std::size(itspec->accepts_cargo); i++) {
+	for (size_t i = 0; i < std::size(itspec->accepts_cargo); i++) {
 		CargoType cargo = accepts_cargo[i];
 		if (!IsValidCargoType(cargo) || cargo_acceptance[i] <= 0) continue; // work only with valid cargoes
 
@@ -1938,7 +1938,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 		if (it.gfx != GFX_WATERTILE_SPECIALCHECK) {
 			i->location.Add(cur_tile);
 
-			WaterClass wc = (IsWaterTile(cur_tile) ? GetWaterClass(cur_tile) : WATER_CLASS_INVALID);
+			WaterClass wc = (IsWaterTile(cur_tile) ? GetWaterClass(cur_tile) : WaterClass::Invalid);
 
 			Command<CMD_LANDSCAPE_CLEAR>::Do({DoCommandFlag::Execute, DoCommandFlag::NoTestTownRating, DoCommandFlag::NoModifyTownRating}, cur_tile);
 

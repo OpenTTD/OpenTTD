@@ -33,6 +33,7 @@ if(GRFCODEC_FOUND)
                          ${CMAKE_CURRENT_SOURCE_DIR}/aqueduct.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/autorail.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/bridge_decks.png
+                         ${CMAKE_CURRENT_SOURCE_DIR}/bridge_decks_toyland.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/canals.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/canal_locks.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/chars.png

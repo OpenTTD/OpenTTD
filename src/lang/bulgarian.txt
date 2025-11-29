@@ -3818,14 +3818,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Отлично
 STR_CARGO_RATING_OUTSTANDING                                    :Невероятно
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Центриране на камерата върху станцията. Ctrl+Click отваря прозорец с нов изглед към станцията
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Промяна името на станцията
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Показване на всички влакове които минават през гарата
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Показване на всички автомобили които минават през гарата
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Показване на всички летателни средства които кацат на летището
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Показване на всички кораби които спират на пристанището
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Преименуване на станция
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Затвори летище
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Забранява кацането на летателни средства на това летище
@@ -3833,11 +3831,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Забр
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Центриране на камерата върху междинния пункт. Ctrl+Click отваря прозорец с нов изглед към пункта
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Смяна на името на междинния пункт
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Центриране на камерата върху шамандура. Ctrl+Click отваря прозорец с нов изглед към шамандурата
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Промяна на името на шамандурата
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Редакция на името на междинния пункт
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Финансов отчет на {COMPANY} {BLACK}{COMPANY_NUM}

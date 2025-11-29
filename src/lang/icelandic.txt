@@ -2975,14 +2975,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Frábær
 STR_CARGO_RATING_OUTSTANDING                                    :Framúrskarandi
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Færa miðju aðal sjónarhorns á staðsetningu stöðvar. Ctrl+smelltu til að opna sýnisglugga yfir þessari stöð
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Breyta nafni stöðvar
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Sýna allar lestir sem hafa þessa stöð á sinni áætlun
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Sýna allar bifreiðir sem hafa þessa stöð á sinni áætlun
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Sýna allar flugvélar sem hafa þessa stöð á sinni áætlun
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Sýna öll skip sem hafa þessa stöð á sinni áætlun
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Endurnefna stöð/lestunarsvæði
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Loka flugvelli
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Koma í veg fyrir að flugvélar geti lent á þessum flugvelli
@@ -2990,11 +2988,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Koma í 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Færa sjónarhorn á staðsetningu millistöðvar. Ctrl+Smelltu til að opna sýniglugg á þessa staðsetningu
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Breyta nafni á vegleiðara
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Færa sjónarhorn á staðsetningu bauju. Ctrl+Smelltu til að opna sýnisglugga á þessa staðsetningu.
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Breyta nafni bauju
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Breyta nafni millistöðvar
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Fjármál {BLACK}{COMPANY_NUM}

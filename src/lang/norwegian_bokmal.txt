@@ -3906,14 +3906,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Utmerket
 STR_CARGO_RATING_OUTSTANDING                                    :Fremragende
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Sentrer hovedvisningen på stasjonslokasjon. Ctrl+klikk for å åpne et nytt tilleggsvindu på stasjonslokasjon
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Endre stasjonens navn
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Vis alle tog som har denne stasjonen på sin ordreliste
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Vis alle kjøretøy som har denne stasjonen på sin ordreliste
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Vis alle luftfartøy som har denne stasjonen på sin ordreliste
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Vis alle skip som har denne stasjonen på sin ordreliste
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Endre navnet til stasjon/godsterminal
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Steng flyplass
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Hindre fly i å lande på denne flyplassen.
@@ -3921,11 +3919,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Hindre f
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Sentrer hovedvinduet på veipunktets lokasjon. Ctrl+klikk for å åpne et nytt tilleggsvindu på veipunktets lokasjon
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Endre veipunktets navn
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Sentrer hovedvinduet på bøyens lokasjon. Ctrl+klikk for å åpne et nytt tilleggsvindu på bøyens lokasjon
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Endre navn på bøye
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Endre navn på veipunkt
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY}s regnskap{BLACK}{COMPANY_NUM}

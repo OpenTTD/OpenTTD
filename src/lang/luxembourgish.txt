@@ -3900,14 +3900,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Exzellent
 STR_CARGO_RATING_OUTSTANDING                                    :Perfekt
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Zentréiert d'Usiicht op d'Statioun. Ctrl+Klick erstellt eng nei Usiicht op d'Statioun
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Den Numm vun der Statioun änneren
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Weis all Zich déi des Statioun an hierem Zäitplang hunn
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Weis all Stroossegefierer déi des Statioun an hierem Zäitplang hunn
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Weis all Fliger déi des Statioun an hierem Zäitplang hunn
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Weis all Schëffer déi des Statioun an hierem Zäitplang hunn
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :D'Gare ëmbenennen
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Fluchhafen zoumaachen
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Hal de Fliger dovun of op dësem Fluchhafen ze landen
@@ -3915,11 +3913,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Hal de F
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Zentréiert d'Usiicht op de Weepunkt. Ctrl+Klick erstellt eng nei Usiicht um Weepunkt
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Weepunkt Numm änneren
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Zentréiert d'Usiicht op d'Boje. Ctrl+Klick erstellt eng nei Usiicht op d'Boje
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Boje ëmbenennen
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Weepunktnumm
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finanzen {BLACK}{COMPANY_NUM}
