@@ -255,6 +255,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL} kN
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}Fuß
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
+STR_UNITS_HEIGHT_GAMEUNITS                                      :{DECIMAL}{NBSP}Ebene{P "" n}
 
 # Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}Tag{P "" e}
@@ -312,6 +313,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Zeigt au
 STR_BUTTON_DEFAULT                                              :{BLACK}Standard
 STR_BUTTON_CANCEL                                               :{BLACK}Abbrechen
 STR_BUTTON_OK                                                   :{BLACK}OK
+STR_BUTTON_MOVE                                                 :{BLACK}Verschieben
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :^1234567890ß'€qwertzuiopü+asdfghjklöä#<yxcvbnm,.- .
@@ -638,8 +640,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Zahlung für 10 gelieferte Einheiten (oder 10.000 Liter) Fracht über eine Strecke von 20 Feldern
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Alle
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Keine
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Zeige alle Frachtarten im Frachtraten-Diagramm an
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Zeige keine Fracht im Frachtraten-Diagramm an
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Zeige alle Frachtarten im Diagramm an
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Zeige keine Fracht im Diagramm an
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Diagramm für diesen Frachttyp ein/aus
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -1691,6 +1693,8 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Bewege die Kart
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Weicher Bildlauf beim Springen zu einer Position: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Lege fest, auf welche Weise die Hauptansicht an eine bestimmte Position wechselt (z.B. wenn ein Punkt auf der Weltkarte angeklickt wird oder der Standort eines Bahnhofs angezeigt werden soll). Ist diese Option eingeschaltet, schwenkt die Ansicht über die Karte, bis sie am gewünschten Punkt angekommen ist. Ist sie ausgeschaltet, springt die Ansicht sofort an die gewünschte Position
 
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT                  :Traditionelles Auswahlverhalten des Werkzeugleistenmenüs: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT_HELPTEXT         :Auswahlverhalten von Werkzeugleistenmenüs auswählen. Falls aus, werden Werkzeugleistenmenüs offen bleiben, bis eine Auswahl getroffen wurde. Falls an, werden Werkzeugleistenmenüs aktiv, wenn die Maustaste losgelassen wurde.
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Beim Bauen Tooltip mit Abmessungen anzeigen: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Zeige Distanzen und Höhendifferenzen an, wenn mit der Maus während eines Bauvorgangs gezogen wird
@@ -2161,6 +2165,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Immer wenn Höh
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisch (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_GAMEUNITS          :Spieleinheiten (Ebenen)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :Lokalisierung
 STR_CONFIG_SETTING_GRAPHICS                                     :Grafik
@@ -2858,15 +2863,15 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Wählen Sie ein
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Wählen Sie einen Haustyp zum Bauen. Strg+Klick, um in gespeicherten Einträgen hinzuzufügen oder zu entfernen
 
 STR_HOUSE_PICKER_CAPTION                                        :Hausauswahl
-STR_HOUSE_PICKER_NAME                                           :{BLACK}Name: {ORANGE}{STRING}
-STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Bewohner: {ORANGE}{NUM}
-STR_HOUSE_PICKER_YEARS                                          :{BLACK}Jahre: {ORANGE}{NUM}-{NUM}
-STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Jahre: {ORANGE}Beliebig
-STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Jahre: {ORANGE}Ab {NUM}
-STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Jahre: {ORANGE}Bis {NUM}
-STR_HOUSE_PICKER_SIZE                                           :{BLACK}Größe: {ORANGE}{NUM}×{NUM} Kacheln
-STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Akzeptierte Fracht: {ORANGE}
-STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Produzierte Fracht: {ORANGE}{CARGO_LIST}
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Name: {GOLD}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Bewohner: {GOLD}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Jahre: {GOLD}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Jahre: {GOLD}Beliebig
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Jahre: {GOLD}Ab {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Jahre: {GOLD}Bis {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Größe: {GOLD}{NUM}×{NUM} Kacheln
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Akzeptierte Fracht: {GOLD}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Produzierte Fracht: {GOLD}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Rand
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Peripherie
@@ -3347,6 +3352,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filter:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Datei überschreiben
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Existierende Datei wirklich überschreiben?
+STR_SAVELOAD_DELETE_TITLE                                       :{WHITE}Datei löschen
+STR_SAVELOAD_DELETE_WARNING                                     :{YELLOW}Möchten Sie diese Datei wirklich löschen?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (Verzeichnis)
 STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Überverzeichnis)
 
@@ -3422,13 +3429,18 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Nordwest
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Nordosten
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Südosten
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Südwesten
+STR_MAPGEN_NORTHWEST_TOOLTIP                                    :Zwischen Wasser- und Freiformkante an der nordwestlichen Kartenkante wechseln
+STR_MAPGEN_NORTHEAST_TOOLTIP                                    :Zwischen Wasser- und Freiformkante an der nordöstlichen Kartenkante wechseln
+STR_MAPGEN_SOUTHEAST_TOOLTIP                                    :Zwischen Wasser- und Freiformkante an der südöstlichen Kartenkante wechseln
+STR_MAPGEN_SOUTHWEST_TOOLTIP                                    :Zwischen Wasser- und Freiformkante an der südwestlichen Kartenkante wechseln
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Beliebig
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Wasser
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Zufällig
 
 ###length 3
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Zufällig
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuell
+STR_MAPGEN_BORDER_RANDOMIZE                                     :Zufällig
+STR_MAPGEN_BORDER_MANUAL                                        :Manuell
+STR_MAPGEN_BORDER_INFINITE_WATER                                :Unendliches Wasser
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Reliefkarte drehen:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Reliefkartenname:
@@ -3467,6 +3479,8 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Landscha
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Flussgenerierung
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Raue, felsige Landschaft wird erzeugt
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Stadterzeugung
+STR_GENERATION_LAND_INDUSTRY_GENERATION                         :{BLACK}Landindustrieerzeugung
+STR_GENERATION_WATER_INDUSTRY_GENERATION                        :{BLACK}Wasserindustrieerzeugung
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Unbewegliche Objekte werden erzeugt
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Bäume werden erzeugt
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Spiel wird vorbereitet
@@ -3675,7 +3689,7 @@ STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Groß-/K
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Umschalten zwischen Beachtung und Nichtbeachtung der Groß- und Kleinschreibung beim Vergleich von Schildern mit dem Suchbegriff
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Schildtext ändern
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Schild bearbeiten
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Hauptansicht auf Schildposition zentrieren. Mit Strg+Klick wird ein neues Ansichtsfenster auf der Position des Schildes geöffnet
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Zum nächsten Schild wechseln
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Zum vorherigen Schild wechseln
@@ -3686,6 +3700,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Text fü
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Städte ({COMMA} von {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Keine -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{BLACK} ({COMMA}) {YELLOW}{CITY_ICON}
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Städtenamen – Klick auf den Namen zentriert Hauptansicht auf die Stadt. Mit Strg+Klick wird eine neue Zusatzansicht auf die Stadt geöffnet
 STR_TOWN_POPULATION                                             :{BLACK}Weltbevölkerung: {COMMA}
 
@@ -3891,12 +3906,14 @@ STR_CARGO_RATING_EXCELLENT                                      :Ausgezeichnet
 STR_CARGO_RATING_OUTSTANDING                                    :Hervorragend
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Hauptansicht zur Station scrollen. Mit Strg+Klick wird eine neue Zusatzansicht bei der Station geöffnet
+STR_STATION_VIEW_EDIT_TOOLTIP                                   :{BLACK}Station umbenennen oder Schild verschieben
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Alle Züge, die diesen Bahnhof anfahren, anzeigen
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Alle Straßenfahrzeuge, die diese Station anfahren, anzeigen
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Alle Flugzeuge, die diesen Flughafen anfliegen, anzeigen
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Alle Schiffe, die diesen Hafen ansteuern, anzeigen
 
+STR_STATION_VIEW_EDIT_STATION_SIGN                              :{WHITE}Stationsschild bearbeiten
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Flughafen schließen
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Luftfahrzeugen die Landeerlaubnis verweigern
@@ -3904,9 +3921,11 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Luftfahr
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Hauptansicht auf den Wegpunktstandort zentrieren. Mit Strg+Klick wird neue Zusatzansicht beim Wegpunktstandort geöffnet
+STR_WAYPOINT_VIEW_EDIT_TOOLTIP                                  :{BLACK}Wegpunkt umbenennen oder Schild verschieben
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Hauptansicht zum Bojenstandort zentrierten. Mit Strg+Klick wird eine neue Zusatzansicht beim Bojenstandort geöffnet
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Namen der Boje ändern
 
+STR_WAYPOINT_VIEW_EDIT_WAYPOINT_SIGN                            :{WHITE}Wegpunktschild bearbeiten
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} – Finanzen {BLACK}{COMPANY_NUM}
@@ -4178,6 +4197,7 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Alles außer {C
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Zugkraft: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Reichweite: {GOLD}{COMMA} Felder
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Flugzeugtyp: {GOLD}{STRING}
+STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Gleistypen: {GOLD}{STRING}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Alle Frachttypen
@@ -4361,6 +4381,7 @@ STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Betriebskosten:
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Betriebskosten: {CURRENCY_LONG}/Zyklus
 STR_ENGINE_PREVIEW_CAPACITY                                     :Kapazität: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :Kapazität: {CARGO_LONG}, {CARGO_LONG}
+STR_ENGINE_PREVIEW_RAILTYPES                                    :Gleistypen: {STRING}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} ersetzen – {STRING}
@@ -5118,6 +5139,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Zu viele
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Zu dicht an einem anderen Hafen
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Zu dicht an einem anderen Flughafen
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Station kann nicht umbenannt werden ...
+STR_ERROR_CAN_T_MOVE_STATION_NAME                               :{WHITE}Stationsschild kann nicht bewegt werden …
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... Staße im Stadteigentum
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... Straße verläuft in die falsche Richtung
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... Bus- und Lkw-Haltestellen können nicht um die Kurve gehen
@@ -5149,6 +5171,7 @@ STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}Wegpunkt
 STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Straßenwegpunkt kann hier nicht gebaut werden …
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Boje kann hier nicht platziert werden ...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Wegpunktname kann nicht geändert werden ...
+STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :{WHITE}Wegpunktschild kann nicht bewegt werden …
 
 STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Wegpunkt kann hier nicht entfernt werden ...
 STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Straßenwegpunkt kann hier nicht entfernt werden …
@@ -5257,6 +5280,13 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Anfang u
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... Brücke muss an beiden Seiten auf Land enden
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... Brücke zu lang
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Die Brücke würde außerhalb der Karte enden
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Brücke ist {HEIGHT} zu niedrig für Station
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Brücke ist {HEIGHT} zu niedrig für Straßenhaltepunkt
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Brücke ist {HEIGHT} zu niedrig für Dock
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Brücke ist {HEIGHT} zu niedrig für Boje
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Brücke ist {HEIGHT} zu niedrig für Schienenwegpunkt
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Brücke ist {HEIGHT} zu niedrig für Straßenwegpunkt
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Brücke ist {HEIGHT} zu niedrig für Schleuse
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Tunnel kann hier nicht gebaut werden ...
@@ -5841,7 +5871,7 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:ZERO
 STR_FORMAT_COMPANY_NUM                                          :(Firma {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Gruppe {COMMA}
 STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} #{COMMA}
-STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
 
 ###length 2
 STR_FORMAT_BUOY_NAME                                            :{TOWN} Boje
@@ -5873,6 +5903,8 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :Zuschauer, {1:S
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_CITY                                          :{TOWN} {CITY_ICON}
+STR_VIEWPORT_TOWN_CITY_POP                                      :{TOWN} ({COMMA}) {CITY_ICON}
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data
