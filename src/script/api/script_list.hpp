@@ -12,6 +12,7 @@
 #define SCRIPT_LIST_HPP
 
 #include "script_object.hpp"
+#include "script_controller.hpp"
 
 /** Maximum number of operations allowed for valuating a list. */
 static const int MAX_VALUATE_OPS = 1000000;
@@ -155,14 +156,29 @@ protected:
 	void CopyList(const ScriptList *list);
 
 	template <class ValueFilter>
-	void RemoveItems(ValueFilter value_filter)
+	bool RemoveItems(ValueFilter value_filter)
 	{
 		this->modifications++;
 
-		for (ScriptListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
+		ScriptObject::DisableDoCommandScope disabler{};
+
+		auto begin = this->items.begin();
+		if (disabler.GetOriginalValue() && this->resume_item.has_value()) {
+			begin = this->items.lower_bound(this->resume_item.value());
+		}
+
+		for (ScriptListMap::iterator next_iter, iter = begin; iter != this->items.end(); iter = next_iter) {
+			if (disabler.GetOriginalValue() && iter->first != this->resume_item && ScriptController::GetOpsTillSuspend() < 0) {
+				this->resume_item = iter->first;
+				return true;
+			}
 			next_iter = std::next(iter);
 			if (value_filter(iter->first, iter->second)) this->RemoveItem(iter->first);
+			ScriptController::DecreaseOps(5);
 		}
+
+		this->resume_item.reset();
+		return false;
 	}
 
 public:
@@ -282,27 +298,47 @@ public:
 	/**
 	 * Removes all items with a higher value than 'value'.
 	 * @param value the value above which all items are removed.
+	 * @suspendable
 	 */
+#ifdef DOXYGEN_API
 	void RemoveAboveValue(SQInteger value);
+#else
+	bool RemoveAboveValue(SQInteger value);
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Removes all items with a lower value than 'value'.
 	 * @param value the value below which all items are removed.
+	 * @suspendable
 	 */
+#ifdef DOXYGEN_API
 	void RemoveBelowValue(SQInteger value);
+#else
+	bool RemoveBelowValue(SQInteger value);
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Removes all items with a value above start and below end.
 	 * @param start the lower bound of the to be removed values (exclusive).
 	 * @param end   the upper bound of the to be removed values (exclusive).
+	 * @suspendable
 	 */
+#ifdef DOXYGEN_API
 	void RemoveBetweenValue(SQInteger start, SQInteger end);
+#else
+	bool RemoveBetweenValue(SQInteger start, SQInteger end);
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Remove all items with this value.
 	 * @param value the value to remove.
+	 * @suspendable
 	 */
+#ifdef DOXYGEN_API
 	void RemoveValue(SQInteger value);
+#else
+	bool RemoveValue(SQInteger value);
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Remove the first count items.
@@ -320,33 +356,58 @@ public:
 	 * Remove everything that is in the given list from this list (same item index that is).
 	 * @param list the list of items to remove.
 	 * @pre list != null
+	 * @suspendable
 	 */
+#ifdef DOXYGEN_API
 	void RemoveList(ScriptList *list);
+#else
+	bool RemoveList(ScriptList *list);
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Keep all items with a higher value than 'value'.
 	 * @param value the value above which all items are kept.
+	 * @suspendable
 	 */
+#ifdef DOXYGEN_API
 	void KeepAboveValue(SQInteger value);
+#else
+	bool KeepAboveValue(SQInteger value);
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Keep all items with a lower value than 'value'.
 	 * @param value the value below which all items are kept.
+	 * @suspendable
 	 */
+#ifdef DOXYGEN_API
 	void KeepBelowValue(SQInteger value);
+#else
+	bool KeepBelowValue(SQInteger value);
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Keep all items with a value above start and below end.
 	 * @param start the lower bound of the to be kept values (exclusive).
 	 * @param end   the upper bound of the to be kept values (exclusive).
+	 * @suspendable
 	 */
+#ifdef DOXYGEN_API
 	void KeepBetweenValue(SQInteger start, SQInteger end);
+#else
+	bool KeepBetweenValue(SQInteger start, SQInteger end);
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Keep all items with this value.
 	 * @param value the value to keep.
+	 * @suspendable
 	 */
+#ifdef DOXYGEN_API
 	void KeepValue(SQInteger value);
+#else
+	bool KeepValue(SQInteger value);
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Keep the first count items, i.e. remove everything except the first count items.
@@ -364,8 +425,13 @@ public:
 	 * Keeps everything that is in the given list from this list (same item index that is).
 	 * @param list the list of items to keep.
 	 * @pre list != null
+	 * @suspendable
 	 */
+#ifdef DOXYGEN_API
 	void KeepList(ScriptList *list);
+#else
+	bool KeepList(ScriptList *list);
+#endif /* DOXYGEN_API */
 
 #ifndef DOXYGEN_API
 	/**

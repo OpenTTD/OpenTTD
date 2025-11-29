@@ -84,6 +84,12 @@ ScriptController::ScriptController(::CompanyID company) :
 	return ScriptObject::GetActiveInstance().GetOpsTillSuspend();
 }
 
+/* static */ void ScriptController::DecreaseOps(int amount)
+{
+	Squirrel &engine = *ScriptObject::GetActiveInstance().engine;
+	Squirrel::DecreaseOps(engine.GetVM(), amount);
+}
+
 /* static */ int ScriptController::GetSetting(const std::string &name)
 {
 	return ScriptObject::GetActiveInstance().GetSetting(name);

@@ -8,7 +8,6 @@
 /** @file script_list.cpp Implementation of ScriptList. */
 
 #include "../../stdafx.h"
-#include "script_controller.hpp"
 #include "script_list.hpp"
 #include "../../debug.h"
 #include "../../script/squirrel.hpp"
@@ -631,24 +630,24 @@ void ScriptList::SwapList(ScriptList *list)
 	list->sorter->Retarget(list);
 }
 
-void ScriptList::RemoveAboveValue(SQInteger value)
+bool ScriptList::RemoveAboveValue(SQInteger value)
 {
-	this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v > value; });
+	return this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v > value; });
 }
 
-void ScriptList::RemoveBelowValue(SQInteger value)
+bool ScriptList::RemoveBelowValue(SQInteger value)
 {
-	this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v < value; });
+	return this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v < value; });
 }
 
-void ScriptList::RemoveBetweenValue(SQInteger start, SQInteger end)
+bool ScriptList::RemoveBetweenValue(SQInteger start, SQInteger end)
 {
-	this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v > start && v < end; });
+	return this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v > start && v < end; });
 }
 
-void ScriptList::RemoveValue(SQInteger value)
+bool ScriptList::RemoveValue(SQInteger value)
 {
-	this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v == value; });
+	return this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v == value; });
 }
 
 void ScriptList::RemoveTop(SQInteger count)
@@ -709,33 +708,33 @@ void ScriptList::RemoveBottom(SQInteger count)
 	}
 }
 
-void ScriptList::RemoveList(ScriptList *list)
+bool ScriptList::RemoveList(ScriptList *list)
 {
 	if (list == this) {
 		this->Clear();
-		return;
+		return false;
 	}
-	this->RemoveItems([&](const SQInteger &k, const SQInteger &) { return list->HasItem(k); });
+	return this->RemoveItems([&](const SQInteger &k, const SQInteger &) { return list->HasItem(k); });
 }
 
-void ScriptList::KeepAboveValue(SQInteger value)
+bool ScriptList::KeepAboveValue(SQInteger value)
 {
-	this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v <= value; });
+	return this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v <= value; });
 }
 
-void ScriptList::KeepBelowValue(SQInteger value)
+bool ScriptList::KeepBelowValue(SQInteger value)
 {
-	this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v >= value; });
+	return this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v >= value; });
 }
 
-void ScriptList::KeepBetweenValue(SQInteger start, SQInteger end)
+bool ScriptList::KeepBetweenValue(SQInteger start, SQInteger end)
 {
-	this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v <= start && v >= end; });
+	return this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v <= start && v >= end; });
 }
 
-void ScriptList::KeepValue(SQInteger value)
+bool ScriptList::KeepValue(SQInteger value)
 {
-	this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v != value; });
+	return this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v != value; });
 }
 
 void ScriptList::KeepTop(SQInteger count)
@@ -752,10 +751,10 @@ void ScriptList::KeepBottom(SQInteger count)
 	this->RemoveTop(this->Count() - count);
 }
 
-void ScriptList::KeepList(ScriptList *list)
+bool ScriptList::KeepList(ScriptList *list)
 {
-	if (list == this) return;
-	this->RemoveItems([&](const SQInteger &k, const SQInteger &) { return !list->HasItem(k); });
+	if (list == this) return false;
+	return this->RemoveItems([&](const SQInteger &k, const SQInteger &) { return !list->HasItem(k); });
 }
 
 SQInteger ScriptList::_get(HSQUIRRELVM vm) const
