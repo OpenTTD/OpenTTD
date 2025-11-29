@@ -43,7 +43,7 @@
 #include "hotkeys.h"
 
 #include "widgets/build_vehicle_widget.h"
-
+#include "hotkeys.h"
 #include "table/strings.h"
 
 #include "safeguards.h"
@@ -1964,6 +1964,7 @@ struct BuildVehicleWindow : Window {
 
 	static inline HotkeyList hotkeys{"buildvehicle", {
 		Hotkey('F', "focus_filter_box", WID_BV_FILTER),
+		Hotkey('B', "build_vehicle", WID_BV_BUILD),
 	}};
 };
 

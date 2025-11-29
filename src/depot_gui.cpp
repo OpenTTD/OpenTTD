@@ -38,6 +38,8 @@
 
 #include "table/strings.h"
 
+#include "hotkeys.h"
+
 #include "safeguards.h"
 
 /*
@@ -86,33 +88,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_train_depot_widgets 
 	EndContainer(),
 };
 
-static WindowDesc _train_depot_desc(
-	WDP_AUTO, "depot_train", 362, 123,
-	WC_VEHICLE_DEPOT, WC_NONE,
-	{},
-	_nested_train_depot_widgets
-);
 
-static WindowDesc _road_depot_desc(
-	WDP_AUTO, "depot_roadveh", 316, 97,
-	WC_VEHICLE_DEPOT, WC_NONE,
-	{},
-	_nested_train_depot_widgets
-);
-
-static WindowDesc _ship_depot_desc(
-	WDP_AUTO, "depot_ship", 306, 99,
-	WC_VEHICLE_DEPOT, WC_NONE,
-	{},
-	_nested_train_depot_widgets
-);
-
-static WindowDesc _aircraft_depot_desc(
-	WDP_AUTO, "depot_aircraft", 332, 99,
-	WC_VEHICLE_DEPOT, WC_NONE,
-	{},
-	_nested_train_depot_widgets
-);
 
 extern void DepotSortList(VehicleList *list);
 
@@ -1163,6 +1139,18 @@ struct DepotWindow : Window {
 	{
 		return GetDepotDestinationIndex(this->window_number);
 	}
+
+	EventState OnHotkey(int hotkey) override
+	{
+		if (this->owner != _local_company) return ES_NOT_HANDLED;
+		return Window::OnHotkey(hotkey);
+	}
+
+	static inline HotkeyList hotkeys{"depot_view", {
+		Hotkey(WKC_CTRL | 'G', "depot_go_all", WID_D_START_ALL),
+		Hotkey('B', "depot_build_vehicle", WID_D_BUILD),
+		Hotkey(WKC_NONE, "depot_clone_vehicle", WID_D_CLONE),
+	}};
 };
 
 static void DepotSellAllConfirmationCallback(Window *win, bool confirmed)
@@ -1174,6 +1162,38 @@ static void DepotSellAllConfirmationCallback(Window *win, bool confirmed)
 		Command<CMD_DEPOT_SELL_ALL_VEHICLES>::Post(GetCmdSellAllVehMsg(vehtype), tile, vehtype);
 	}
 }
+
+static WindowDesc _train_depot_desc(
+	WDP_AUTO, "depot_train", 362, 123,
+	WC_VEHICLE_DEPOT, WC_NONE,
+	{},
+	_nested_train_depot_widgets,
+	&DepotWindow::hotkeys
+);
+
+static WindowDesc _road_depot_desc(
+	WDP_AUTO, "depot_roadveh", 316, 97,
+	WC_VEHICLE_DEPOT, WC_NONE,
+	{},
+	_nested_train_depot_widgets,
+	&DepotWindow::hotkeys
+);
+
+static WindowDesc _ship_depot_desc(
+	WDP_AUTO, "depot_ship", 306, 99,
+	WC_VEHICLE_DEPOT, WC_NONE,
+	{},
+	_nested_train_depot_widgets,
+	&DepotWindow::hotkeys
+);
+
+static WindowDesc _aircraft_depot_desc(
+	WDP_AUTO, "depot_aircraft", 332, 99,
+	WC_VEHICLE_DEPOT, WC_NONE,
+	{},
+	_nested_train_depot_widgets,
+	&DepotWindow::hotkeys
+);
 
 /**
  * Opens a depot window
