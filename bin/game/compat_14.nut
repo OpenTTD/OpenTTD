@@ -89,3 +89,11 @@ foreach(name, object in CompatScriptRootTable) {
 	if (object.constructor != GSObject.constructorCompat14) continue;
 	object.constructor <- function() : (name) { GSLog.Error("'" + name + "' is not instantiable"); }
 }
+
+GSStation.GetStationIDCompat14 <- GSStation.GetStationID;
+GSStation.GetStationID <- function(tile)
+{
+	local id = GSStation.GetStationIDCompat14(tile);
+	if (id == GSBaseStation.STATION_INVALID) return GSWaypoint.GetWaypointID(tile);
+	return id;
+}

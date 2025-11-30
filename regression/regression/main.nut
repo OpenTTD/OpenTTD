@@ -1363,6 +1363,7 @@ function Regression::Station()
 	print("  GetName(0):               " + AIStation.GetName(0));
 	print("  GetLocation(1):           " + AIStation.GetLocation(1));
 	print("  GetLocation(1000):        " + AIStation.GetLocation(1000));
+	print("  GetStationID(28481):      " + AIStation.GetStationID(28481));
 	print("  GetStationID(33411):      " + AIStation.GetStationID(33411));
 	print("  GetStationID(34411):      " + AIStation.GetStationID(34411));
 	print("  GetStationID(33411):      " + AIStation.GetStationID(33411));
