@@ -447,7 +447,7 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 
 		default:
 			if (IsInsideMM(widget, this->badge_filters.first, this->badge_filters.second)) {
-				ShowDropDownList(this, this->GetWidget<NWidgetBadgeFilter>(widget)->GetDropDownList(), -1, widget, 0);
+				ShowDropDownList(this, this->GetWidget<NWidgetBadgeFilter>(widget)->GetDropDownList(), -1, widget, 0, DropDownOption::Filterable);
 			}
 			break;
 	}

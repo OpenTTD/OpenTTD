@@ -10,12 +10,14 @@
 #ifndef DROPDOWN_COMMON_TYPE_H
 #define DROPDOWN_COMMON_TYPE_H
 
+#include "debug.h"
 #include "dropdown_type.h"
 #include "gfx_func.h"
 #include "gfx_type.h"
 #include "palette_func.h"
 #include "settings_gui.h"
 #include "string_func.h"
+#include "stringfilter_type.h"
 #include "strings_func.h"
 #include "window_gui.h"
 
@@ -61,6 +63,13 @@ public:
 	explicit DropDownString(std::string &&string, Args&&... args) : TBase(std::forward<Args>(args)...)
 	{
 		this->SetString(std::move(string));
+	}
+
+	void FilterText(StringFilter &string_filter) const override
+	{
+		string_filter.AddLine(this->string);
+		Debug(misc, 0, "{} {}", this->string, string_filter.GetState());
+		this->TBase::FilterText(string_filter);
 	}
 
 	void SetString(std::string &&string)
