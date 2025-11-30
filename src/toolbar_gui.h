@@ -10,6 +10,10 @@
 #ifndef TOOLBAR_GUI_H
 #define TOOLBAR_GUI_H
 
+#include "newgrf.h"
+#include "rail_gui.h"
+#include "road_gui.h"
+
 enum MainToolbarHotkeys : int32_t {
 	MTHK_PAUSE,
 	MTHK_FASTFORWARD,

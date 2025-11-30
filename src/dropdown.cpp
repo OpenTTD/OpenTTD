@@ -21,15 +21,11 @@
 #include "widgets/dropdown_widget.h"
 
 #include "table/strings.h"
+#include "table/sprites.h"
 
 #include "dropdown_common_type.h"
 
 #include "safeguards.h"
-
-std::unique_ptr<DropDownListItem> MakeDropDownListDividerItem()
-{
-	return std::make_unique<DropDownListDividerItem>(-1);
-}
 
 std::unique_ptr<DropDownListItem> MakeDropDownListStringItem(StringID str, int value, bool masked, bool shaded)
 {
@@ -85,6 +81,8 @@ struct DropdownWindow : Window {
 	int scrolling = 0; ///< If non-zero, auto-scroll the item list (one time).
 	Point position{}; ///< Position of the topleft corner of the window.
 	Scrollbar *vscroll = nullptr;
+	bool last_shift_state; ///< Whether the shift button was pressed during last frame.
+	bool last_ctrl_state; ///< Whether the ctrl button was pressed during last frame.
 
 	Dimension items_dim{}; ///< Calculated cropped and padded dimension for the items widget.
 
@@ -105,6 +103,8 @@ struct DropdownWindow : Window {
 			, list(std::move(list))
 			, selected_result(selected)
 			, options(options)
+			, last_shift_state(_shift_pressed)
+			, last_ctrl_state(_ctrl_pressed)
 	{
 		assert(!this->list.empty());
 
@@ -115,7 +115,7 @@ struct DropdownWindow : Window {
 		this->GetWidget<NWidgetCore>(WID_DM_ITEMS)->colour = wi_colour;
 		this->GetWidget<NWidgetCore>(WID_DM_SCROLL)->colour = wi_colour;
 		this->vscroll = this->GetScrollbar(WID_DM_SCROLL);
-		this->UpdateSizeAndPosition();
+		this->UpdateSizeAndPosition(false);
 
 		this->FinishInitNested(0);
 		this->flags.Reset(WindowFlag::WhiteBorder);
@@ -165,8 +165,9 @@ struct DropdownWindow : Window {
 
 	/**
 	 * Update size and position of window to fit dropdown list into available space.
+	 * @param apply_new_size_and_position Iff true the window will be reinitialized.
 	 */
-	void UpdateSizeAndPosition()
+	void UpdateSizeAndPosition(bool apply_new_size_and_position = true)
 	{
 		Rect button_rect = this->wi_rect.Translate(this->parent->left, this->parent->top);
 
@@ -210,6 +211,12 @@ struct DropdownWindow : Window {
 
 		/* If the dropdown is positioned above the parent widget, start selection at the bottom. */
 		if (this->position.y < button_rect.top && list_dim.height > widget_dim.height) this->vscroll->UpdatePosition(INT_MAX);
+
+		if (apply_new_size_and_position) {
+			this->ReInit(0, 0);
+			this->InitializePositionSize(this->position.x, this->position.y, this->nested_root->smallest_x, this->nested_root->smallest_y);
+			this->FindWindowPlacementAndResize(this->window_desc.GetDefaultWidth(), this->window_desc.GetDefaultHeight(), true);
+		}
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -274,7 +281,7 @@ struct DropdownWindow : Window {
 				Rect full = ir.WithY(y, y + item_height - 1);
 
 				bool selected = (this->selected_result == item->result) && item->Selectable();
-				if (selected) GfxFillRect(full, PC_BLACK);
+				if (selected) GfxFillRect(full, item->GetSelectedBGColour(colour));
 
 				item->Draw(full, full.Shrink(WidgetDimensions::scaled.dropdowntext, RectPadding::zero), selected, selected ? this->selected_click_result : -1, colour);
 			}
@@ -305,6 +312,15 @@ struct DropdownWindow : Window {
 
 	void OnMouseLoop() override
 	{
+		if (this->last_ctrl_state != _ctrl_pressed || this->last_shift_state != _shift_pressed) {
+			/* Dropdown might contain an item with specified custom bg colours, allow it to update. */
+			this->SetDirty();
+			/* Also handle hiddable items. */
+			this->UpdateSizeAndPosition();
+			this->last_ctrl_state = _ctrl_pressed;
+			this->last_shift_state = _shift_pressed;
+		}
+
 		if (this->click_delay != 0 && --this->click_delay == 0) {
 			/* Close the dropdown, so it doesn't affect new window placement.
 			 * Also mark it dirty in case the callback deals with the screen. (e.g. screenshots). */
@@ -350,9 +366,6 @@ struct DropdownWindow : Window {
 		this->list = std::move(list);
 		if (selected_result.has_value()) this->selected_result = *selected_result;
 		this->UpdateSizeAndPosition();
-		this->ReInit(0, 0);
-		this->InitializePositionSize(this->position.x, this->position.y, this->nested_root->smallest_x, this->nested_root->smallest_y);
-		this->FindWindowPlacementAndResize(this->window_desc.GetDefaultWidth(), this->window_desc.GetDefaultHeight(), true);
 		this->SetDirty();
 	}
 };

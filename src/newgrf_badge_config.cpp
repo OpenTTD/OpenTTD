@@ -27,7 +27,7 @@ public:
 	std::array<std::vector<BadgeClassConfigItem>, GrfSpecFeature::GSF_END> features = {};
 
 	static constexpr GrfSpecFeatures CONFIGURABLE_FEATURES = {
-		GSF_TRAINS, GSF_ROADVEHICLES, GSF_SHIPS, GSF_AIRCRAFT, GSF_STATIONS, GSF_HOUSES, GSF_OBJECTS, GSF_ROADSTOPS,
+		GSF_TRAINS, GSF_ROADVEHICLES, GSF_SHIPS, GSF_AIRCRAFT, GSF_STATIONS, GSF_HOUSES, GSF_OBJECTS, GSF_ROADSTOPS, GSF_RAILTYPES, GSF_ROADTYPES, GSF_TRAMTYPES,
 	};
 
 	static inline const std::array<std::string_view, GrfSpecFeature::GSF_END> sections = {
@@ -47,10 +47,10 @@ public:
 		{}, // GSF_AIRPORTS
 		{}, // GSF_SIGNALS
 		"badges_objects", // GSF_OBJECTS
-		{}, // GSF_RAILTYPES
+		"badges_railtypes", // GSF_RAILTYPES
 		{}, // GSF_AIRPORTTILES
-		{}, // GSF_ROADTYPES
-		{}, // GSF_TRAMTYPES
+		"badges_roadtypes", // GSF_ROADTYPES
+		"badges_tramtypes", // GSF_TRAMTYPES
 		"badges_roadstops", // GSF_ROADSTOPS
 		{}, // GSF_BADGES
 	};
