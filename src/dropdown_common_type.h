@@ -22,6 +22,33 @@
 #include "table/strings.h"
 
 /**
+ * Drop down submenu component.
+ */
+class DropDownSubmenuItem : public DropDownListItem {
+	Dimension dim; ///< Dimension of arrow.
+
+public:
+	DropDownList list{}; ///< List with dropdown sub-menu items.
+
+	explicit DropDownSubmenuItem(DropDownList &&list, int result, bool masked = false, bool shaded = false) : DropDownListItem(result, masked, shaded), list(std::move(list))
+	{
+		assert(!this->list.empty());
+
+		this->dim = GetStringBoundingBox(_current_text_dir == TD_RTL ? STR_JUST_LEFT_ARROW : STR_JUST_RIGHT_ARROW);
+	}
+
+	uint Height() const override { return std::max<uint>(this->dim.height, this->DropDownListItem::Height()); }
+	uint Width() const override { return this->dim.width + WidgetDimensions::scaled.hsep_wide + this->DropDownListItem::Width(); }
+
+	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
+	{
+		bool rtl = _current_text_dir == TD_RTL;
+		DrawStringMultiLine(r.WithWidth(this->dim.width, !rtl), rtl ? STR_JUST_LEFT_ARROW : STR_JUST_RIGHT_ARROW, this->GetColour(sel), SA_CENTER, false);
+		this->DropDownListItem::Draw(full, r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, !rtl), sel, click_result, bg_colour);
+	}
+};
+
+/**
  * Drop down divider component.
  * @tparam TBase Base component.
  * @tparam TFs Font size -- used to determine height.

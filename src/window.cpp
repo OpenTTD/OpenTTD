@@ -629,7 +629,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 		if (!w->window_desc.flags.Test(WindowDefaultFlag::NoFocus) && widget_type != WWT_CLOSEBOX) {
 			focused_widget_changed = true;
 			SetFocusedWindow(w);
-		} else if (_focused_window != nullptr && _focused_window->window_class == WC_DROPDOWN_MENU) {
+		} else if (_focused_window != nullptr && _focused_window->window_class == WC_DROPDOWN_MENU && w->window_class != WC_DROPDOWN_MENU) {
 			/* The previously focused window was a dropdown menu, but the user clicked on another window that
 			 * isn't focusable. Close the dropdown menu anyway. */
 			SetFocusedWindow(nullptr);

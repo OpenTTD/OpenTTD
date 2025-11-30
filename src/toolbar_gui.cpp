@@ -875,7 +875,7 @@ static CallBackFunction ToolbarZoomOutClick(Window *w)
 
 static CallBackFunction ToolbarBuildRailClick(Window *w)
 {
-	ShowDropDownList(w, GetRailTypeDropDownList(), _last_built_railtype, WID_TN_RAILS, 140, GetToolbarDropDownOptions());
+	ShowDropDownList(w, GetRailTypeDropDownList(_last_built_railtype), _last_built_railtype, WID_TN_RAILS, 140, GetToolbarDropDownOptions());
 	return CBF_NONE;
 }
 
