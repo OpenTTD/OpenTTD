@@ -70,7 +70,7 @@ struct Backup {
 	const T &GetOriginalValue() const
 	{
 		assert(this->valid);
-		return original_value;
+		return this->original_value;
 	}
 
 	/**
@@ -83,7 +83,7 @@ struct Backup {
 	{
 		/* Note: We use a separate typename U, so type conversions are handled by assignment operator. */
 		assert(this->valid);
-		original = new_value;
+		this->original = new_value;
 	}
 
 	/**
@@ -170,6 +170,15 @@ struct AutoRestoreBackup {
 	~AutoRestoreBackup()
 	{
 		this->original = this->original_value;
+	}
+
+	/**
+	 * Returns the backupped value.
+	 * @return value from the backup.
+	 */
+	const T &GetOriginalValue() const
+	{
+		return this->original_value;
 	}
 
 private:

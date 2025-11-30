@@ -84,7 +84,7 @@ protected:
 		static ScriptInstance *active;  ///< The global current active instance.
 	};
 
-	class DisableDoCommandScope : private AutoRestoreBackup<bool> {
+	class DisableDoCommandScope : public AutoRestoreBackup<bool> {
 	public:
 		DisableDoCommandScope();
 	};

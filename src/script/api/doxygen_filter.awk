@@ -49,6 +49,10 @@ BEGIN {
 	gsub(/script/, apis)
 }
 
+/^([	 ]*)\* @suspendable/ {
+	next
+}
+
 /^([	 ]*)\* @api/ {
 	if (api == "Script") {
 		api_selected = "true"

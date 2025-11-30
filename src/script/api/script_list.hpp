@@ -12,6 +12,7 @@
 #define SCRIPT_LIST_HPP
 
 #include "script_object.hpp"
+#include "script_controller.hpp"
 
 /** Maximum number of operations allowed for valuating a list. */
 static const int MAX_VALUATE_OPS = 1000000;
@@ -41,6 +42,7 @@ private:
 	bool sort_ascending;          ///< Whether to sort ascending or descending
 	bool initialized;             ///< Whether an iteration has been started
 	int modifications;            ///< Number of modification that has been done. To prevent changing data while valuating.
+	std::optional<SQInteger> resume_item; ///< Item to use on valuation start.
 
 protected:
 	/* Temporary helper functions to get the raw index from either strongly and non-strongly typed pool items. */
@@ -152,6 +154,34 @@ protected:
 	 * @param list The list that will be copied.
 	 */
 	void CopyList(const ScriptList *list);
+
+	template <class ValueFilter>
+	SQInteger RemoveItemValueFilter(HSQUIRRELVM vm, ValueFilter value_filter)
+	{
+		this->modifications++;
+
+		ScriptObject::DisableDoCommandScope disabler{};
+
+		auto begin = this->items.begin();
+		if (disabler.GetOriginalValue() && this->resume_item.has_value()) {
+			begin = this->items.lower_bound(this->resume_item.value());
+		}
+
+		for (ScriptListMap::iterator next_iter, iter = begin; iter != this->items.end(); iter = next_iter) {
+			if (disabler.GetOriginalValue() && iter->first != this->resume_item && ScriptController::GetOpsTillSuspend() < 0) {
+				this->resume_item = iter->first;
+				sq_pushbool(vm, SQTrue);
+				return 1;
+			}
+			next_iter = std::next(iter);
+			if (value_filter(iter->second)) this->RemoveItem(iter->first);
+			Squirrel::DecreaseOps(vm, 5);
+		}
+
+		this->resume_item.reset();
+		sq_pushbool(vm, SQFalse);
+		return 1;
+	}
 
 public:
 	typedef std::set<SQInteger> ScriptItemList;                   ///< The list of items inside the bucket
@@ -268,6 +298,31 @@ public:
 	 */
 	void SwapList(ScriptList *list);
 
+#ifndef DOXYGEN_API
+	/**
+	 * The RemoveAboveValue() wrapper from Squirrel.
+	 * @suspendable
+	 */
+	SQInteger RemoveAboveValue(HSQUIRRELVM vm);
+
+	/**
+	 * The RemoveBelowValue() wrapper from Squirrel.
+	 * @suspendable
+	 */
+	SQInteger RemoveBelowValue(HSQUIRRELVM vm);
+
+	/**
+	 * The RemoveBetweenValue() wrapper from Squirrel.
+	 * @suspendable
+	 */
+	SQInteger RemoveBetweenValue(HSQUIRRELVM vm);
+
+	/**
+	 * The RemoveValue() wrapper from Squirrel.
+	 * @suspendable
+	 */
+	SQInteger RemoveValue(HSQUIRRELVM vm);
+#else
 	/**
 	 * Removes all items with a higher value than 'value'.
 	 * @param value the value above which all items are removed.
@@ -292,6 +347,7 @@ public:
 	 * @param value the value to remove.
 	 */
 	void RemoveValue(SQInteger value);
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Remove the first count items.
@@ -312,6 +368,31 @@ public:
 	 */
 	void RemoveList(ScriptList *list);
 
+#ifndef DOXYGEN_API
+	/**
+	 * The KeepAboveValue() wrapper from Squirrel.
+	 * @suspendable
+	 */
+	SQInteger KeepAboveValue(HSQUIRRELVM vm);
+
+	/**
+	 * The KeepBelowValue() wrapper from Squirrel.
+	 * @suspendable
+	 */
+	SQInteger KeepBelowValue(HSQUIRRELVM vm);
+
+	/**
+	 * The KeepBetweenValue() wrapper from Squirrel.
+	 * @suspendable
+	 */
+	SQInteger KeepBetweenValue(HSQUIRRELVM vm);
+
+	/**
+	 * The KeepValue() wrapper from Squirrel.
+	 * @suspendable
+	 */
+	SQInteger KeepValue(HSQUIRRELVM vm);
+#else
 	/**
 	 * Keep all items with a higher value than 'value'.
 	 * @param value the value above which all items are kept.
@@ -336,6 +417,7 @@ public:
 	 * @param value the value to keep.
 	 */
 	void KeepValue(SQInteger value);
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Keep the first count items, i.e. remove everything except the first count items.
@@ -374,6 +456,7 @@ public:
 
 	/**
 	 * The Valuate() wrapper from Squirrel.
+	 * @suspendable
 	 */
 	SQInteger Valuate(HSQUIRRELVM vm);
 #else
