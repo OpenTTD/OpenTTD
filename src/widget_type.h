@@ -922,6 +922,7 @@ public:
 
 	void SetupSmallestSize(Window *w) override;
 	void Draw(const Window *w) override;
+	void DrawHotkeyHint(const Window* window);
 
 	bool ButtonHit(const Point &pt);
 

@@ -73,6 +73,7 @@ enum ToolbarEditorWidgets : WidgetID {
 	WID_TE_MUSIC_SOUND,   ///< Music/sound configuration menu.
 	WID_TE_HELP,          ///< Help menu.
 	WID_TE_SWITCH_BAR,    ///< Only available when toolbar has been split to switch between different subsets.
+	WID_TE_END,
 };
 
 #endif /* WIDGETS_TOOLBAR_WIDGET_H */
