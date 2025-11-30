@@ -105,7 +105,7 @@ struct CompanyProperties {
 	uint32_t terraform_limit = 0; ///< Amount of tileheights we can (still) terraform (times 65536).
 	uint32_t clear_limit = 0; ///< Amount of tiles we can (still) clear (times 65536).
 	uint32_t tree_limit = 0; ///< Amount of trees we can (still) plant (times 65536).
-	uint32_t build_object_limit = 0; ///< Amount of tiles we can (still) build objects on (times 65536). Also applies to buying land.
+	uint32_t build_object_limit = 0; ///< Amount of tiles we can (still) build objects on (times 65536). Also applies to buying land and placing houses.
 
 	/**
 	 * If \c true, the company is (also) controlled by the computer (a NoAI program).
