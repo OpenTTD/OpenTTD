@@ -2160,7 +2160,17 @@ CommandCost CmdForceTrainProceed(DoCommandFlags flags, VehicleID veh_id)
 		 * to proceed to the next signal. In the other cases we
 		 * would like to pass the signal at danger and run till the
 		 * next signal we encounter. */
-		t->force_proceed = t->force_proceed == TFP_SIGNAL ? TFP_NONE : t->flags.Test(VehicleRailFlag::Stuck) || t->IsChainInDepot() ? TFP_STUCK : TFP_SIGNAL;
+		if (t->force_proceed == TFP_SIGNAL) {
+			t->force_proceed = TFP_NONE;
+		} else if (t->flags.Test(VehicleRailFlag::Stuck)) {
+			TileIndex next_tile = TileAddByDiagDir(t->tile, TrackdirToExitdir(t->GetVehicleTrackdir()));
+			if (next_tile == INVALID_TILE) t->force_proceed = TFP_STUCK;
+			else {
+				t->force_proceed = IsTileType(next_tile, MP_RAILWAY) && HasSignals(next_tile) ? TFP_SIGNAL : TFP_STUCK;
+			}
+		} else {
+			t->force_proceed = t->IsChainInDepot() ? TFP_STUCK : TFP_SIGNAL;
+		}
 		SetWindowDirty(WC_VEHICLE_VIEW, t->index);
 
 		/* Unbunching data is no longer valid. */
