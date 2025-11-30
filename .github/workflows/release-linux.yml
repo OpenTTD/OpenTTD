@@ -21,7 +21,7 @@ jobs:
 
     steps:
     - name: Download source
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v6
       with:
         name: internal-source
 
@@ -156,14 +156,14 @@ jobs:
         echo "::endgroup::"
 
     - name: Store bundles
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: openttd-linux-generic
         path: build/bundles
         retention-days: 5
 
     - name: Store symbols
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: symbols-linux-generic
         path: build/symbols

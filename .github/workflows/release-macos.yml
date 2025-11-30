@@ -23,7 +23,7 @@ jobs:
         xcode-version: latest-stable
 
     - name: Download source
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v6
       with:
         name: internal-source
 
@@ -205,14 +205,14 @@ jobs:
         mv _CPack_Packages/*/Bundle/openttd-*.zip bundles/
 
     - name: Store bundles
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: openttd-macos-universal
         path: build-x64/bundles
         retention-days: 5
 
     - name: Store symbols
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: symbols-macos-universal
         path: build-x64/symbols
