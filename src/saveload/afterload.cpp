@@ -561,9 +561,7 @@ bool AfterLoadGame()
 {
 	SetSignalHandlers();
 
-	extern TileIndex _cur_tileloop_tile; // From landscape.cpp.
-	/* The LFSR used in RunTileLoop iteration cannot have a zeroed state, make it non-zeroed. */
-	if (_cur_tileloop_tile == 0) _cur_tileloop_tile = TileIndex{1};
+	GenerateTileLoopPattern();
 
 	if (IsSavegameVersionBefore(SLV_98)) _gamelog.Oldver();
 
