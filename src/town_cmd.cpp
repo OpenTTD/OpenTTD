@@ -1476,9 +1476,7 @@ static inline bool RoadTypesAllowHouseHere(TileIndex t)
 		allow = true;
 
 		RoadType road_rt = GetRoadTypeRoad(cur_tile);
-		RoadType tram_rt = GetRoadTypeTram(cur_tile);
 		if (road_rt != INVALID_ROADTYPE && !GetRoadTypeInfo(road_rt)->flags.Test(RoadTypeFlag::NoHouses)) return true;
-		if (tram_rt != INVALID_ROADTYPE && !GetRoadTypeInfo(tram_rt)->flags.Test(RoadTypeFlag::NoHouses)) return true;
 	}
 
 	/* If no road was found surrounding the tile we can allow building the house since there is
