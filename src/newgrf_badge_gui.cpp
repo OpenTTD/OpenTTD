@@ -21,6 +21,7 @@
 #include "strings_func.h"
 #include "timer/timer_game_calendar.h"
 #include "window_gui.h"
+#include "window_type.h"
 #include "zoom_func.h"
 
 #include "table/strings.h"
@@ -550,15 +551,17 @@ DropDownList NWidgetBadgeFilter::GetDropDownList(PaletteID palette) const
 
 /**
  * Add badge drop down filter widgets.
- * @param container Container widget to hold filter widgets.
+ * @param window Window that holds the container.
+ * @param container Container widget index to hold filter widgets.
  * @param widget Widget index to apply to first filter.
  * @param colour Background colour of widgets.
  * @param feature GRF feature for filters.
  * @return First and last widget indexes of filter widgets.
  */
-std::pair<WidgetID, WidgetID> AddBadgeDropdownFilters(NWidgetContainer &container, WidgetID widget, Colours colour, GrfSpecFeature feature)
+std::pair<WidgetID, WidgetID> AddBadgeDropdownFilters(Window *window, WidgetID container_id, WidgetID widget, Colours colour, GrfSpecFeature feature)
 {
-	container.Clear();
+	auto container = window->GetWidget<NWidgetContainer>(container_id);
+	container->Clear(window);
 	WidgetID first = ++widget;
 
 	/* Get list of classes used by feature. */
@@ -568,7 +571,7 @@ std::pair<WidgetID, WidgetID> AddBadgeDropdownFilters(NWidgetContainer &containe
 		const auto [config, _] = GetBadgeClassConfigItem(feature, GetClassBadge(class_index)->label);
 		if (!config.show_filter) continue;
 
-		container.Add(std::make_unique<NWidgetBadgeFilter>(colour, widget, feature, class_index));
+		container->Add(std::make_unique<NWidgetBadgeFilter>(colour, widget, feature, class_index));
 		++widget;
 	}
 
