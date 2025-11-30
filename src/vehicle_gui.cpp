@@ -3399,6 +3399,12 @@ public:
 
 	static inline HotkeyList hotkeys{"vehicleview", {
 		Hotkey('H', "honk", WID_VV_HONK_HORN),
+		Hotkey('G', "vehicle_orders", WID_VV_SHOW_ORDERS),
+		Hotkey('Z', "vehicle_go", WID_VV_START_STOP),
+		Hotkey('N', "vehicle_depot", WID_VV_GOTO_DEPOT),
+		Hotkey('T', "vehicle_turn", WID_VV_TURN_AROUND),
+		Hotkey('F', "vehicle_refit", WID_VV_REFIT),
+		Hotkey(WKC_CTRL | 'E', "vehicle_clone", WID_VV_CLONE),
 	}};
 };
 
