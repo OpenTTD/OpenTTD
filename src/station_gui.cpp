@@ -838,8 +838,10 @@ static constexpr std::initializer_list<NWidgetPart> _nested_station_view_widgets
 	NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SV_ACCEPTS_RATINGS), SetMinimalSize(46, 12), SetResize(1, 0), SetFill(1, 1),
 				SetStringTip(STR_STATION_VIEW_RATINGS_BUTTON, STR_STATION_VIEW_RATINGS_TOOLTIP),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SV_CLOSE_AIRPORT), SetMinimalSize(45, 12), SetResize(1, 0), SetFill(1, 1),
-				SetStringTip(STR_STATION_VIEW_CLOSE_AIRPORT, STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_SV_CLOSE_AIRPORT_SEL),
+			NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SV_CLOSE_AIRPORT), SetMinimalSize(45, 12), SetResize(1, 0), SetFill(1, 1),
+					SetStringTip(STR_STATION_VIEW_CLOSE_AIRPORT, STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP),
+		EndContainer(),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SV_CATCHMENT), SetMinimalSize(45, 12), SetResize(1, 0), SetFill(1, 1), SetStringTip(STR_BUTTON_CATCHMENT, STR_TOOLTIP_CATCHMENT),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SV_TRAINS), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetFill(0, 1), SetStringTip(STR_TRAIN, STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SV_ROADVEHS), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetFill(0, 1), SetStringTip(STR_LORRY, STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP),
@@ -1321,6 +1323,7 @@ struct StationViewWindow : public Window {
 	StationViewWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->CreateNestedTree();
+		this->GetWidget<NWidgetStacked>(WID_SV_CLOSE_AIRPORT_SEL)->SetDisplayedPlane(Station::Get(this->window_number)->facilities.Test(StationFacility::Airport) ? 0 : SZSP_NONE);
 		this->vscroll = this->GetScrollbar(WID_SV_SCROLLBAR);
 		/* Nested widget tree creation is done in two steps to ensure that this->GetWidget<NWidgetCore>(WID_SV_ACCEPTS_RATINGS) exists in UpdateWidgetSize(). */
 		this->FinishInitNested(window_number);
@@ -1408,15 +1411,6 @@ struct StationViewWindow : public Window {
 
 			case WID_SV_ACCEPT_RATING_LIST:
 				size.height = ((this->GetWidget<NWidgetCore>(WID_SV_ACCEPTS_RATINGS)->GetString() == STR_STATION_VIEW_RATINGS_BUTTON) ? this->accepts_lines : this->rating_lines) * GetCharacterHeight(FS_NORMAL) + padding.height;
-				break;
-
-			case WID_SV_CLOSE_AIRPORT:
-				if (!Station::Get(this->window_number)->facilities.Test(StationFacility::Airport)) {
-					/* Hide 'Close Airport' button if no airport present. */
-					size.width = 0;
-					resize.width = 0;
-					fill.width = 0;
-				}
 				break;
 		}
 	}

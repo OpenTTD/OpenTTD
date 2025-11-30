@@ -32,6 +32,7 @@ enum NewsWidgets : WidgetID {
 	WID_N_VEH_SPR,     ///< Graphical display of the new vehicle.
 	WID_N_VEH_INFO,    ///< Some technical data of the new vehicle.
 	WID_N_SHOW_GROUP,  ///< Show vehicle's group
+	WID_N_SHOW_GROUP_SEL, ///< Selector for showing vehicle group, which can be hidden.
 };
 
 /** Widgets of the #MessageHistoryWindow class. */
