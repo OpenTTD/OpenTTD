@@ -114,7 +114,7 @@ bool GenerateVehicleSortList(VehicleList *list, const VehicleListIdentifier &vli
 		case VL_DEPOT_LIST:
 			FindVehiclesWithOrder(
 				[&vli](const Vehicle *v) { return v->type == vli.vtype; },
-				[&vli](const Order *order) { return order->IsType(OT_GOTO_DEPOT) && !(order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) && order->GetDestination() == vli.ToDestinationID(); },
+				[&vli](const Order *order) { return order->IsType(OT_GOTO_DEPOT) && !order->GetDepotActionType().Test(OrderDepotActionFlag::NearestDepot) && order->GetDestination() == vli.ToDestinationID(); },
 				[&list](const Vehicle *v) { list->push_back(v); }
 			);
 			break;

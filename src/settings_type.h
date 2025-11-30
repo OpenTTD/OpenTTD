@@ -169,7 +169,7 @@ struct GUISettings {
 	bool   show_finances;                    ///< show finances at end of year
 	bool   sg_new_nonstop;                   ///< ttdpatch compatible nonstop handling read from pre v93 savegames
 	bool   new_nonstop;                      ///< ttdpatch compatible nonstop handling
-	uint8_t  stop_location;                    ///< what is the default stop location of trains?
+	OrderStopLocation stop_location; ///< what is the default stop location of trains?
 	uint8_t  auto_scrolling;                   ///< scroll when moving mouse to the edge (see #ViewportAutoscrolling)
 	uint8_t errmsg_duration;                  ///< duration of error message
 	uint16_t hover_delay_ms;                   ///< time required to activate a hover event, in milliseconds

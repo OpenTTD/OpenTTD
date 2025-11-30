@@ -74,7 +74,7 @@ public:
 	void Free();
 
 	void MakeGoToStation(StationID destination);
-	void MakeGoToDepot(DestinationID destination, OrderDepotTypeFlags order, OrderNonStopFlags non_stop_type = ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS, OrderDepotActionFlags action = ODATF_SERVICE_ONLY, CargoType cargo = CARGO_NO_REFIT);
+	void MakeGoToDepot(DestinationID destination, OrderDepotTypeFlags order, OrderNonStopFlags non_stop_type = OrderNonStopFlag::NoIntermediate, OrderDepotActionFlags action = {}, CargoType cargo = CARGO_NO_REFIT);
 	void MakeGoToWaypoint(StationID destination);
 	void MakeLoading(bool ordered);
 	void MakeLeaveStation();
@@ -133,17 +133,17 @@ public:
 	/** How must the consist be unloaded? */
 	inline OrderUnloadFlags GetUnloadType() const { return (OrderUnloadFlags)GB(this->flags, 0, 3); }
 	/** At which stations must we stop? */
-	inline OrderNonStopFlags GetNonStopType() const { return (OrderNonStopFlags)GB(this->type, 6, 2); }
+	inline OrderNonStopFlags GetNonStopType() const { return static_cast<OrderNonStopFlags>(GB(this->type, 6, 2)); }
 	/** Where must we stop at the platform? */
-	inline OrderStopLocation GetStopLocation() const { return (OrderStopLocation)GB(this->type, 4, 2); }
+	inline OrderStopLocation GetStopLocation() const { return static_cast<OrderStopLocation>(GB(this->type, 4, 2)); }
 	/** What caused us going to the depot? */
-	inline OrderDepotTypeFlags GetDepotOrderType() const { return (OrderDepotTypeFlags)GB(this->flags, 0, 3); }
+	inline OrderDepotTypeFlags GetDepotOrderType() const { return static_cast<OrderDepotTypeFlags>(GB(this->flags, 0, 3)); }
 	/** What are we going to do when in the depot. */
-	inline OrderDepotActionFlags GetDepotActionType() const { return (OrderDepotActionFlags)GB(this->flags, 3, 4); }
+	inline OrderDepotActionFlags GetDepotActionType() const { return static_cast<OrderDepotActionFlags>(GB(this->flags, 3, 4)); }
 	/** What variable do we have to compare? */
 	inline OrderConditionVariable GetConditionVariable() const { return static_cast<OrderConditionVariable>(GB(this->dest.value, 11, 5)); }
 	/** What is the comparator to use? */
-	inline OrderConditionComparator GetConditionComparator() const { return (OrderConditionComparator)GB(this->type, 5, 3); }
+	inline OrderConditionComparator GetConditionComparator() const { return static_cast<OrderConditionComparator>(GB(this->type, 5, 3)); }
 	/** Get the order to skip to. */
 	inline VehicleOrderID GetConditionSkipToOrder() const { return this->flags; }
 	/** Get the value to base the skip on. */
@@ -154,17 +154,17 @@ public:
 	/** Set how the consist must be unloaded. */
 	inline void SetUnloadType(OrderUnloadFlags unload_type) { SB(this->flags, 0, 3, unload_type); }
 	/** Set whether we must stop at stations or not. */
-	inline void SetNonStopType(OrderNonStopFlags non_stop_type) { SB(this->type, 6, 2, non_stop_type); }
+	inline void SetNonStopType(OrderNonStopFlags non_stop_type) { SB(this->type, 6, 2, non_stop_type.base()); }
 	/** Set where we must stop at the platform. */
-	inline void SetStopLocation(OrderStopLocation stop_location) { SB(this->type, 4, 2, stop_location); }
+	inline void SetStopLocation(OrderStopLocation stop_location) { SB(this->type, 4, 2, to_underlying(stop_location)); }
 	/** Set the cause to go to the depot. */
-	inline void SetDepotOrderType(OrderDepotTypeFlags depot_order_type) { SB(this->flags, 0, 3, depot_order_type); }
+	inline void SetDepotOrderType(OrderDepotTypeFlags depot_order_type) { SB(this->flags, 0, 3, depot_order_type.base()); }
 	/** Set what we are going to do in the depot. */
-	inline void SetDepotActionType(OrderDepotActionFlags depot_service_type) { SB(this->flags, 3, 4, depot_service_type); }
+	inline void SetDepotActionType(OrderDepotActionFlags depot_service_type) { SB(this->flags, 3, 4, depot_service_type.base()); }
 	/** Set variable we have to compare. */
-	inline void SetConditionVariable(OrderConditionVariable condition_variable) { SB(this->dest.value, 11, 5, condition_variable); }
+	inline void SetConditionVariable(OrderConditionVariable condition_variable) { SB(this->dest.value, 11, 5, to_underlying(condition_variable)); }
 	/** Set the comparator to use. */
-	inline void SetConditionComparator(OrderConditionComparator condition_comparator) { SB(this->type, 5, 3, condition_comparator); }
+	inline void SetConditionComparator(OrderConditionComparator condition_comparator) { SB(this->type, 5, 3, to_underlying(condition_comparator)); }
 	/** Get the order to skip to. */
 	inline void SetConditionSkipToOrder(VehicleOrderID order_id) { this->flags = order_id; }
 	/** Set the value to base the skip on. */
@@ -231,7 +231,7 @@ public:
 	{
 		if (!this->IsTravelTimetabled() && !this->IsType(OT_CONDITIONAL)) return false;
 		if (!this->IsWaitTimetabled() && this->IsType(OT_GOTO_STATION) &&
-				!(this->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION)) {
+				!this->GetNonStopType().Test(OrderNonStopFlag::NoDestination)) {
 			return false;
 		}
 		return true;

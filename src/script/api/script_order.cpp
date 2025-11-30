@@ -64,7 +64,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, ScriptOrder::OrderPositio
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
 	if (order_position == ScriptOrder::ORDER_CURRENT) {
 		const Order *order = &v->current_order;
-		if (order->GetType() == OT_GOTO_DEPOT && !(order->GetDepotOrderType() & ODTFB_PART_OF_ORDERS)) return order;
+		if (order->GetType() == OT_GOTO_DEPOT && !order->GetDepotOrderType().Test(OrderDepotTypeFlag::PartOfOrders)) return order;
 		order_position = ScriptOrder::ResolveOrderPosition(vehicle_id, order_position);
 		if (order_position == ScriptOrder::ORDER_INVALID) return nullptr;
 	}
@@ -170,7 +170,7 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 
 	const Order *order = &::Vehicle::Get(vehicle_id)->current_order;
 	if (order->GetType() != OT_GOTO_DEPOT) return true;
-	return (order->GetDepotOrderType() & ODTFB_PART_OF_ORDERS) != 0;
+	return order->GetDepotOrderType().Test(OrderDepotTypeFlag::PartOfOrders);
 }
 
 /* static */ ScriptOrder::OrderPosition ScriptOrder::ResolveOrderPosition(VehicleID vehicle_id, OrderPosition order_position)
@@ -249,7 +249,7 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 	switch (order->GetType()) {
 		case OT_GOTO_DEPOT: {
 			/* We don't know where the nearest depot is... (yet) */
-			if (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) return INVALID_TILE;
+			if (order->GetDepotActionType().Test(OrderDepotActionFlag::NearestDepot)) return INVALID_TILE;
 
 			if (v->type != VEH_AIRCRAFT) return ::Depot::Get(order->GetDestination().ToDepotID())->xy;
 			/* Aircraft's hangars are referenced by StationID, not DepotID */
@@ -306,12 +306,12 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 	if (order == nullptr || order->GetType() == OT_CONDITIONAL || order->GetType() == OT_DUMMY) return OF_INVALID;
 
 	ScriptOrderFlags order_flags = OF_NONE;
-	order_flags |= (ScriptOrderFlags)order->GetNonStopType();
+	order_flags |= static_cast<ScriptOrderFlags>(order->GetNonStopType().base());
 	switch (order->GetType()) {
 		case OT_GOTO_DEPOT:
-			if (order->GetDepotOrderType() & ODTFB_SERVICE) order_flags |= OF_SERVICE_IF_NEEDED;
-			if (order->GetDepotActionType() & ODATFB_HALT) order_flags |= OF_STOP_IN_DEPOT;
-			if (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) order_flags |= OF_GOTO_NEAREST_DEPOT;
+			if (order->GetDepotOrderType().Test(OrderDepotTypeFlag::Service)) order_flags |= OF_SERVICE_IF_NEEDED;
+			if (order->GetDepotActionType().Test(OrderDepotActionFlag::Halt)) order_flags |= OF_STOP_IN_DEPOT;
+			if (order->GetDepotActionType().Test(OrderDepotActionFlag::NearestDepot)) order_flags |= OF_GOTO_NEAREST_DEPOT;
 			break;
 
 		case OT_GOTO_STATION:
@@ -359,7 +359,7 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 
 	const Order *order = ::ResolveOrder(vehicle_id, order_position);
 	SQInteger value = order->GetConditionValue();
-	if (order->GetConditionVariable() == OCV_MAX_SPEED) value = value * 16 / 10;
+	if (order->GetConditionVariable() == OrderConditionVariable::MaxSpeed) value = value * 16 / 10;
 	return value;
 }
 
@@ -484,11 +484,16 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 	OrderType ot = (order_flags & OF_GOTO_NEAREST_DEPOT) ? OT_GOTO_DEPOT : ::GetOrderTypeByTile(destination);
 	switch (ot) {
 		case OT_GOTO_DEPOT: {
-			OrderDepotTypeFlags odtf = (OrderDepotTypeFlags)(ODTFB_PART_OF_ORDERS | ((order_flags & OF_SERVICE_IF_NEEDED) ? ODTFB_SERVICE : 0));
-			OrderDepotActionFlags odaf = (OrderDepotActionFlags)(ODATF_SERVICE_ONLY | ((order_flags & OF_STOP_IN_DEPOT) ? ODATFB_HALT : 0));
-			if (order_flags & OF_GOTO_NEAREST_DEPOT) odaf |= ODATFB_NEAREST_DEPOT;
-			OrderNonStopFlags onsf = (OrderNonStopFlags)((order_flags & OF_NON_STOP_INTERMEDIATE) ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
-			if (order_flags & OF_GOTO_NEAREST_DEPOT) {
+			OrderDepotTypeFlags odtf = OrderDepotTypeFlag::PartOfOrders;
+			if ((order_flags & OF_SERVICE_IF_NEEDED) != 0) odtf.Set(OrderDepotTypeFlag::Service);
+
+			OrderDepotActionFlags odaf{};
+			if ((order_flags & OF_STOP_IN_DEPOT) != 0) odaf.Set(OrderDepotActionFlag::Halt);
+			if ((order_flags & OF_GOTO_NEAREST_DEPOT) != 0) odaf.Set(OrderDepotActionFlag::NearestDepot);
+
+			OrderNonStopFlags onsf{};
+			if ((order_flags & OF_NON_STOP_INTERMEDIATE) != 0) onsf.Set(OrderNonStopFlag::NoIntermediate);
+			if ((order_flags & OF_GOTO_NEAREST_DEPOT) != 0) {
 				order.MakeGoToDepot(DepotID::Invalid(), odtf, onsf, odaf);
 			} else {
 				/* Check explicitly if the order is to a station (for aircraft) or
@@ -508,7 +513,7 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 			order.MakeGoToStation(::GetStationIndex(destination));
 			order.SetLoadType((OrderLoadFlags)GB(order_flags, 5, 3));
 			order.SetUnloadType((OrderUnloadFlags)GB(order_flags, 2, 3));
-			order.SetStopLocation(OSL_PLATFORM_FAR_END);
+			order.SetStopLocation(OrderStopLocation::FarEnd);
 			break;
 
 		case OT_GOTO_WAYPOINT:
@@ -519,7 +524,7 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 			return false;
 	}
 
-	order.SetNonStopType((OrderNonStopFlags)GB(order_flags, 0, 2));
+	order.SetNonStopType(static_cast<OrderNonStopFlags>(GB(order_flags, 0, 2)));
 
 	int order_pos = ScriptOrderPositionToRealOrderPosition(vehicle_id, order_position);
 	return ScriptObject::Command<CMD_INSERT_ORDER>::Do(0, vehicle_id, order_pos, order);
@@ -613,10 +618,10 @@ static void _DoCommandReturnSetOrderFlags(class ScriptInstance &instance)
 	switch (order->GetType()) {
 		case OT_GOTO_DEPOT:
 			if ((current & OF_DEPOT_FLAGS) != (order_flags & OF_DEPOT_FLAGS)) {
-				uint data = DA_ALWAYS_GO;
-				if (order_flags & OF_SERVICE_IF_NEEDED) data = DA_SERVICE;
-				if (order_flags & OF_STOP_IN_DEPOT) data = DA_STOP;
-				return ScriptObject::Command<CMD_MODIFY_ORDER>::Do(&::_DoCommandReturnSetOrderFlags, vehicle_id, order_pos, MOF_DEPOT_ACTION, data);
+				OrderDepotAction data = OrderDepotAction::AlwaysGo;
+				if ((order_flags & OF_SERVICE_IF_NEEDED) != 0) data = OrderDepotAction::Service;
+				if ((order_flags & OF_STOP_IN_DEPOT) != 0) data = OrderDepotAction::Stop;
+				return ScriptObject::Command<CMD_MODIFY_ORDER>::Do(&::_DoCommandReturnSetOrderFlags, vehicle_id, order_pos, MOF_DEPOT_ACTION, to_underlying(data));
 			}
 			break;
 

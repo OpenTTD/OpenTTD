@@ -1823,7 +1823,7 @@ bool AfterLoadGame()
 
 			v->current_order.ConvertFromOldSavegame();
 			if (v->type == VEH_ROAD && v->IsPrimaryVehicle() && v->FirstShared() == v) {
-				for (Order &order : v->Orders()) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
+				for (Order &order : v->Orders()) order.SetNonStopType(OrderNonStopFlag::NoIntermediate);
 			}
 		}
 	} else if (IsSavegameVersionBefore(SLV_94)) {
@@ -1848,13 +1848,13 @@ bool AfterLoadGame()
 		for (OrderList *orderlist : OrderList::Iterate()) {
 			for (Order &order : orderlist->GetOrders()) {
 				if (!order.IsType(OT_GOTO_DEPOT)) continue;
-				order.SetDepotActionType((OrderDepotActionFlags)(order.GetDepotActionType() >> 1));
+				order.SetDepotActionType(static_cast<OrderDepotActionFlags>(order.GetDepotActionType().base() >> 1));
 			}
 		}
 
 		for (Vehicle *v : Vehicle::Iterate()) {
 			if (!v->current_order.IsType(OT_GOTO_DEPOT)) continue;
-			v->current_order.SetDepotActionType((OrderDepotActionFlags)(v->current_order.GetDepotActionType() >> 1));
+			v->current_order.SetDepotActionType(static_cast<OrderDepotActionFlags>(v->current_order.GetDepotActionType().base() >> 1));
 		}
 	}
 
@@ -2213,7 +2213,7 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_117)) {
 		for (OrderList *orderlist : OrderList::Iterate()) {
 			for (Order &o : orderlist->GetOrders()) {
-				if (o.IsType(OT_GOTO_STATION)) o.SetStopLocation(OSL_PLATFORM_FAR_END);
+				if (o.IsType(OT_GOTO_STATION)) o.SetStopLocation(OrderStopLocation::FarEnd);
 			}
 		}
 	}
