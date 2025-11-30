@@ -1791,6 +1791,7 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, std::vector<T *> &affected_st
 			Company::Get(owner)->infrastructure.station--;
 			DirtyCompanyInfrastructureWindows(owner);
 
+			st->tile_waiting_random_triggers.erase(tile);
 			st->rect.AfterRemoveTile(st, tile);
 			AddTrackToSignalBuffer(tile, track, owner);
 			YapfNotifyTrackLayoutChange(tile, track);
@@ -2314,6 +2315,7 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlags flags, int repl
 
 		if (replacement_spec_index < 0) st->AfterStationTileSetChange(false, is_truck ? StationType::Truck: StationType::Bus);
 
+		st->tile_waiting_random_triggers.erase(tile);
 		st->RemoveRoadStopTileData(tile);
 		if ((int)specindex != replacement_spec_index) DeallocateSpecFromRoadStop(st, specindex);
 
@@ -2373,6 +2375,7 @@ CommandCost RemoveRoadWaypointStop(TileIndex tile, DoCommandFlags flags, int rep
 
 		wp->rect.AfterRemoveTile(wp, tile);
 
+		wp->tile_waiting_random_triggers.erase(tile);
 		wp->RemoveRoadStopTileData(tile);
 		if ((int)specindex != replacement_spec_index) DeallocateSpecFromRoadStop(wp, specindex);
 
