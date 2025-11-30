@@ -525,6 +525,11 @@ static void NewSpriteGroup(ByteReader &buf)
 		/* Neither a variable or randomized sprite group... must be a real group */
 		default:
 		{
+			if (type >= 0x80) {
+				GrfMsg(0, "NewSpriteGroup: Reserved group type 0x{:02X}, skipping", type);
+				return;
+			}
+
 			switch (feature) {
 				case GSF_TRAINS:
 				case GSF_ROADVEHICLES:
