@@ -106,7 +106,7 @@ static const DrawTileSpriteSpan _object_hq[] = {
 #undef TILE_SPRITE_LINE
 #undef TILE_SPRITE_LINE_NOTHING
 
-#define M(name, size, build_cost_multiplier, clear_cost_multiplier, height, climate, gen_amount, flags) {{INVALID_OBJECT_CLASS, 0}, StandardGRFFileProps{}, AnimationInfo<ObjectAnimationTriggers>{}, name, climate, size, build_cost_multiplier, clear_cost_multiplier, TimerGameCalendar::Date{}, CalendarTime::MAX_DATE + 1, flags, ObjectCallbackMasks{}, height, 1, gen_amount, {}}
+#define M(name, size, build_cost_multiplier, clear_cost_multiplier, height, introduction_date, climate, gen_amount, flags) {{INVALID_OBJECT_CLASS, 0}, StandardGRFFileProps{}, AnimationInfo<ObjectAnimationTriggers>{}, name, climate, size, build_cost_multiplier, clear_cost_multiplier, introduction_date, CalendarTime::MAX_DATE + 1, flags, ObjectCallbackMasks{}, height, 1, gen_amount, {}}
 
 /* Climates
  * T = Temperate
@@ -119,11 +119,11 @@ static const DrawTileSpriteSpan _object_hq[] = {
 #define Y LandscapeType::Toyland
 /** Specification of the original object structures. */
 extern const ObjectSpec _original_objects[] = {
-	M(STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER,          0x11,   0,   0, 10, LandscapeTypes({T,A,S  }), 15, ObjectFlags({ObjectFlag::CannotRemove, ObjectFlag::OnlyInScenedit})),
-	M(STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE,           0x11,   0,   0,  8, LandscapeTypes({T,A    }),  8, ObjectFlags({ObjectFlag::CannotRemove, ObjectFlag::OnlyInScenedit, ObjectFlag::ScaleByWater})),
-	M(STR_TOWN_BUILDING_NAME_STATUE_1,                 0x11,   0,   0,  5, LandscapeTypes({T,S,A,Y}),  0, ObjectFlags({ObjectFlag::CannotRemove, ObjectFlag::OnlyInGame, ObjectFlag::OnlyInScenedit})), // Yes, we disallow building this everywhere. Happens in "special" case!
-	M(STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND,   0x11,  10,  10,  0, LandscapeTypes({T,S,A,Y}),  0, ObjectFlags({ObjectFlag::Autoremove, ObjectFlag::OnlyInGame, ObjectFlag::ClearIncome, ObjectFlag::HasNoFoundation})), // Only non-silly use case is to use it when you cannot build a station, so disallow bridges
-	M(STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS, 0x22,   0,   0,  7, LandscapeTypes({T,S,A,Y}),  0, ObjectFlags({ObjectFlag::CannotRemove, ObjectFlag::OnlyInGame})),
+	M(STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER,          0x11,   0,   0, 10, TimerGameCalendar::DateAtStartOfYear(CalendarTime::ORIGINAL_BASE_YEAR), LandscapeTypes({T,A,S  }), 15, ObjectFlags({ObjectFlag::CannotRemove, ObjectFlag::OnlyInScenedit})), // Not available before original starting year.
+	M(STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE,           0x11,   0,   0,  8, TimerGameCalendar::Date{}, LandscapeTypes({T,A    }),  8, ObjectFlags({ObjectFlag::CannotRemove, ObjectFlag::OnlyInScenedit, ObjectFlag::ScaleByWater})),
+	M(STR_TOWN_BUILDING_NAME_STATUE_1,                 0x11,   0,   0,  5, TimerGameCalendar::Date{}, LandscapeTypes({T,S,A,Y}),  0, ObjectFlags({ObjectFlag::CannotRemove, ObjectFlag::OnlyInGame, ObjectFlag::OnlyInScenedit})), // Yes, we disallow building this everywhere. Happens in "special" case!
+	M(STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND,   0x11,  10,  10,  0, TimerGameCalendar::Date{}, LandscapeTypes({T,S,A,Y}),  0, ObjectFlags({ObjectFlag::Autoremove, ObjectFlag::OnlyInGame, ObjectFlag::ClearIncome, ObjectFlag::HasNoFoundation})), // Only non-silly use case is to use it when you cannot build a station, so disallow bridges
+	M(STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS, 0x22,   0,   0,  7, TimerGameCalendar::Date{}, LandscapeTypes({T,S,A,Y}),  0, ObjectFlags({ObjectFlag::CannotRemove, ObjectFlag::OnlyInGame})),
 };
 
 #undef M
