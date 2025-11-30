@@ -75,6 +75,7 @@ void HandleTextInput(std::string_view str, bool marked = false,
 		std::optional<size_t> insert_location = std::nullopt, std::optional<size_t> replacement_end = std::nullopt);
 void HandleCtrlChanged();
 void HandleMouseEvents();
+void HandleGamepadScrolling(float stick_x, float stick_y, float max_axis_value);
 void UpdateWindows();
 void ChangeGameSpeed(bool enable_fast_forward);
 
