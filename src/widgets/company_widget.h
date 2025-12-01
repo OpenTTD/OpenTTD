@@ -90,6 +90,7 @@ enum SelectCompanyLiveryWidgets : WidgetID {
 	WID_SCL_SPACER_DROPDOWN,  ///< Spacer for dropdown.
 	WID_SCL_PRI_COL_DROPDOWN, ///< Dropdown for primary colour.
 	WID_SCL_SEC_COL_DROPDOWN, ///< Dropdown for secondary colour.
+	WID_SCL_SEC_COL_DROP_SEL, ///< Container for secondary color dropdown, which can be hidden.
 	WID_SCL_MATRIX,           ///< Matrix.
 	WID_SCL_MATRIX_SCROLLBAR, ///< Matrix scrollbar.
 };
