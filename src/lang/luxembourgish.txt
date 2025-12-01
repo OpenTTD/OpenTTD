@@ -312,6 +312,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Mat dës
 STR_BUTTON_DEFAULT                                              :{BLACK}Standard
 STR_BUTTON_CANCEL                                               :{BLACK}Ofbriechen
 STR_BUTTON_OK                                                   :{BLACK}OK
+STR_BUTTON_MOVE                                                 :{BLACK}Versetzen
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :§1234567890'^ qwertzuiopè¨asdfghjkléà$\yxcvbnm,.- .
@@ -2861,15 +2862,15 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Wiel eng Stad-Z
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Wiel en Haustyp fir ze bauen. Ctrl+Klick fir en bei d'gespäichert Objeten dobäizesetzen oder ewechzehuelen
 
 STR_HOUSE_PICKER_CAPTION                                        :Häiserauswiel
-STR_HOUSE_PICKER_NAME                                           :{BLACK}Numm: {ORANGE}{STRING}
-STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Awunner: {ORANGE}{NUM}
-STR_HOUSE_PICKER_YEARS                                          :{BLACK}Joer: {ORANGE}{NUM}-{NUM}
-STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Joer: {ORANGE}All
-STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Joer: {ORANGE}Vun {NUM}
-STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Joer: {ORANGE}Bis {NUM}
-STR_HOUSE_PICKER_SIZE                                           :{BLACK}Gréisst: {ORANGE}{NUM}x{NUM} Felder
-STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Akzeptéiert Wuer: {ORANGE}
-STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Produzéiert Wuer: {ORANGE}{CARGO_LIST}
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Numm: {GOLD}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Awunner: {GOLD}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Joer: {GOLD}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Joer: {GOLD}All
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Joer: {GOLD}Vun {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Joer: {GOLD}Bis {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Gréisst: {GOLD}{NUM}x{NUM} Felder
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Akzeptéiert Wuer: {GOLD}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Produzéiert Wuer: {GOLD}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Rand
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Ausseberäich
@@ -3006,7 +3007,7 @@ STR_AIRPORT_COMMUTER                                            :Pendler
 STR_AIRPORT_INTERCONTINENTAL                                    :Interkontinental
 STR_AIRPORT_HELIPORT                                            :Heliport
 STR_AIRPORT_HELIDEPOT                                           :Helidepot
-STR_AIRPORT_HELISTATION                                         :Helistatioun
+STR_AIRPORT_HELISTATION                                         :Helikoptergare
 
 STR_AIRPORT_CLASS_SMALL                                         :Kleng Fluchhäfen
 STR_AIRPORT_CLASS_LARGE                                         :Grouss Fluchhäfen
@@ -3427,6 +3428,10 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Nordwest
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Nordost
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Südost
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Südwest
+STR_MAPGEN_NORTHWEST_TOOLTIP                                    :Wiesselen tëschend Waasser oder Fräiformeck am Nordwesten vun dem Kaartenenn
+STR_MAPGEN_NORTHEAST_TOOLTIP                                    :Wiesselen tëschend Waasser oder Fräiformeck am Nordosten vun dem Kaartenenn
+STR_MAPGEN_SOUTHEAST_TOOLTIP                                    :Wiesselen tëschend Waasser oder Fräiformeck am Südosten vun dem Kaartenenn
+STR_MAPGEN_SOUTHWEST_TOOLTIP                                    :Wiesselen tëschend Waasser oder Fräiformeck am Südwesten vun dem Kaartenenn
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Fräiform
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Waasser
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Zoufälleg
@@ -3683,7 +3688,7 @@ STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Passende
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Zoutreffend Fäll wiesselen wann Schëldernimm mam String-Filter verglach ginn
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Schëldtext änneren
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Schëld änneren
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Zentréiert d'Usiicht op d'Schëld. Ctrl+Klick erstellt eng nei Usiicht op d'Schëld
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Géi bei d'nächst Schëld
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Géi bei d'Schëld firdrun
@@ -3900,12 +3905,14 @@ STR_CARGO_RATING_EXCELLENT                                      :Exzellent
 STR_CARGO_RATING_OUTSTANDING                                    :Perfekt
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Zentréiert d'Usiicht op d'Statioun. Ctrl+Klick erstellt eng nei Usiicht op d'Statioun
+STR_STATION_VIEW_EDIT_TOOLTIP                                   :{BLACK}Gare embënennen oder Schëld versetzen
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Weis all Zich déi des Statioun an hierem Zäitplang hunn
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Weis all Stroossegefierer déi des Statioun an hierem Zäitplang hunn
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Weis all Fliger déi des Statioun an hierem Zäitplang hunn
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Weis all Schëffer déi des Statioun an hierem Zäitplang hunn
 
+STR_STATION_VIEW_EDIT_STATION_SIGN                              :{WHITE}Gareschëld änneren
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Fluchhafen zoumaachen
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Hal de Fliger dovun of op dësem Fluchhafen ze landen
@@ -3913,9 +3920,11 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Hal de F
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Zentréiert d'Usiicht op de Weepunkt. Ctrl+Klick erstellt eng nei Usiicht um Weepunkt
+STR_WAYPOINT_VIEW_EDIT_TOOLTIP                                  :{BLACK}Weepunkt embënennen oder Schëld versetzen
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Zentréiert d'Usiicht op d'Boje. Ctrl+Klick erstellt eng nei Usiicht op d'Boje
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Boje ëmbenennen
 
+STR_WAYPOINT_VIEW_EDIT_WAYPOINT_SIGN                            :{WHITE}Weepunktschëld änneren
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finanzen {BLACK}{COMPANY_NUM}
@@ -5128,7 +5137,8 @@ STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Ze vill 
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Ze vill Camionsgaren
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Ze no un engem aanere Quai
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Ze no un engem aanere Fluchhafen
-STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kann d'Statioun net ëmbenennen...
+STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kann d'Gare net ëmbenennen...
+STR_ERROR_CAN_T_MOVE_STATION_NAME                               :{WHITE}Ka Gareschëld net versetzen
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... d'Strooss ass am Besëtz vun der Stad
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... Strooss geet an dei falsch Richtung
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... Duerchfahrtstops kënnen keng Kéiren hunn
@@ -5160,6 +5170,7 @@ STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}Kann kee
 STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Kann kee Stroosseweepunkt he bauen...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kann Boje net hei plazéieren...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kann de Weepunktnumm net änneren...
+STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :{WHITE}Ka Weepunktschëld net versetzen
 
 STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Kann de Weepunkt hei net ofrappen...
 STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Kann de Stroosseweepunkt hei net ofrappen...
