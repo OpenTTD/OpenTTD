@@ -17,11 +17,13 @@ enum TutorialWidgets : WidgetID {
 	WID_TUT_CAPTION,           ///< Caption of the window
 	WID_TUT_PANEL,             ///< Main panel
 	WID_TUT_CONTENT,           ///< Content area
+	WID_TUT_PAGE_INDICATOR,    ///< Page indicator (e.g., "Page 2/6")
 	WID_TUT_PREVIOUS,          ///< Previous page button
 	WID_TUT_NEXT,              ///< Next page button
 	WID_TUT_CLOSE,             ///< Close button
 	WID_TUT_FINISH,            ///< Finish button
 	WID_TUT_DONT_SHOW,         ///< Don't show again checkbox
+	WID_TUT_SCROLLBAR,         ///< Vertical scrollbar
 };
 
 #endif /* WIDGETS_TUTORIAL_WIDGET_H */

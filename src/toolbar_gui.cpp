@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "gui.h"
+#include "tutorial_gui.h"
 #include "window_gui.h"
 #include "window_func.h"
 #include "viewport_func.h"
@@ -66,6 +67,8 @@
 #include "network/network.h"
 #include "network/network_gui.h"
 #include "network/network_func.h"
+
+#include"tutorial_gui.h"
 
 #include "table/strings.h"
 
@@ -1064,7 +1067,7 @@ static CallBackFunction ToolbarHelpClick(Window *w)
 				STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES});
 	} else {
 		PopupMainToolbarMenu(w, _game_mode == GM_EDITOR ? (WidgetID)WID_TE_HELP : (WidgetID)WID_TN_HELP, {STR_ABOUT_MENU_LAND_BLOCK_INFO,
-				STR_ABOUT_MENU_HELP, STR_NULL, STR_ABOUT_MENU_TOGGLE_CONSOLE, STR_ABOUT_MENU_AI_DEBUG,
+				STR_ABOUT_MENU_HELP, STR_ABOUT_MENU_TUTORIAL,STR_NULL, STR_ABOUT_MENU_TOGGLE_CONSOLE, STR_ABOUT_MENU_AI_DEBUG,
 				STR_ABOUT_MENU_SCREENSHOT, STR_ABOUT_MENU_SHOW_FRAMERATE, STR_ABOUT_MENU_ABOUT_OPENTTD});
 	}
 	return CBF_NONE;
@@ -1149,15 +1152,16 @@ static CallBackFunction MenuClickHelp(int index)
 	switch (index) {
 		case  0: return PlaceLandBlockInfo();
 		case  1: ShowHelpWindow();                 break;
-		case  2: IConsoleSwitch();                 break;
-		case  3: ShowScriptDebugWindow(CompanyID::Invalid(), _ctrl_pressed); break;
-		case  4: ShowScreenshotWindow();           break;
-		case  5: ShowFramerateWindow();            break;
-		case  6: ShowAboutWindow();                break;
-		case  7: ShowSpriteAlignerWindow();        break;
-		case  8: ToggleBoundingBoxes();            break;
-		case  9: ToggleDirtyBlocks();              break;
-		case 10: ToggleWidgetOutlines();           break;
+		case  2: ShowTutorialWindow(true);         break; /*Force show, ignore settings*/
+		case  3: IConsoleSwitch();                 break;
+		case  4: ShowScriptDebugWindow(CompanyID::Invalid(), _ctrl_pressed); break;
+		case  5: ShowScreenshotWindow();           break;
+		case  6: ShowFramerateWindow();            break;
+		case  7: ShowAboutWindow();                break;
+		case  8: ShowSpriteAlignerWindow();        break;
+		case  9: ToggleBoundingBoxes();            break;
+		case 10: ToggleDirtyBlocks();              break;
+		case 11: ToggleWidgetOutlines();           break;
 	}
 	return CBF_NONE;
 }

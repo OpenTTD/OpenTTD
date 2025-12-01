@@ -17,7 +17,7 @@
 
 #include "table/strings.h"
 
-void ShowTutorialWindow();
+void ShowTutorialWindow(bool force_show = false);
 void DrawWidget(const Rect&r,WidgetID widget);
 void LoadPagesFromStrings();
 void UpdateUIForPage(uint index);

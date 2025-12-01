@@ -21,6 +21,7 @@ enum HelpWindowWidgets : WidgetID {
 	WID_HW_WIKI,
 	WID_HW_BUGTRACKER,
 	WID_HW_COMMUNITY,
+	WID_HM_TUTORIAL,
 };
 
 #endif /* WIDGETS_HELP_WIDGET_H */
