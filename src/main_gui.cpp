@@ -569,7 +569,6 @@ void SetupColoursAndInitialWindow()
 		default: NOT_REACHED();
 		case GM_MENU:
 			ShowSelectGameWindow();
-			ShowTutorialWindow();  // 显示新手教程窗口
 			break;
 
 		case GM_NORMAL:

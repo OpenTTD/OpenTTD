@@ -21,7 +21,9 @@ enum TutorialWidgets : WidgetID {
 	WID_TUT_PREVIOUS,          ///< Previous page button
 	WID_TUT_NEXT,              ///< Next page button
 	WID_TUT_CLOSE,             ///< Close button
+	WID_TUT_CLOSE_SEL,         ///< Selection container for close button
 	WID_TUT_FINISH,            ///< Finish button
+	WID_TUT_FINISH_SEL,        ///< Selection container for finish button
 	WID_TUT_DONT_SHOW,         ///< Don't show again checkbox
 	WID_TUT_SCROLLBAR,         ///< Vertical scrollbar
 };

@@ -5972,32 +5972,38 @@ STR_BADGE_FILTER_IS_LABEL                                       :{STRING} is {ST
 # Tutorial window strings - ADD START
 STR_TUTORIAL_TITLE                                           :Welcome to OpenTTD
 STR_TUTORIAL_TITLE_WITH_PAGE                                 :Page {NUM} of {NUM}
-STR_TUTORIAL_PAGE_1_TITLE                                    :Welcome to OpenTTD
-STR_TUTORIAL_PAGE_1_BODY                                     :Welcome! This short tutorial will show you the basic controls and core concepts to get started. You can navigate through pages with the Next/Previous buttons or use the arrow keys. Check "Do not show on startup" to disable automatic display.
 
-STR_TUTORIAL_PAGE_2_TITLE                                    :Move around the map
-STR_TUTORIAL_PAGE_2_BODY                                     :Use arrow keys or click-and-drag to move the view. Use the mouse wheel (or + / - keys) to zoom in and out. Try moving to a town and zooming in to see details.
+# Page 1: Basic Operations
+STR_TUTORIAL_PAGE_1_TITLE                                    :{WHITE}Let's Get Started!
+STR_TUTORIAL_PAGE_1_BODY                                     :{BLACK}Welcome aboard! Here are the basics you'll need:{}{}• Move around - Right-click and drag, or use arrow keys{}• Zoom - Mouse wheel or toolbar buttons{}• Resize windows - Grab the corner and drag{}• Scroll content - Use the scrollbar on the right{}• Cancel actions - Press ESC{}• Save your game - Use the "save" folder for quick access{}• Get help - Hover over buttons for helpful tooltips{}{}Pro tip: Take your time exploring the interface - there's no rush!
 
-STR_TUTORIAL_PAGE_3_TITLE                                    :Build stations and roads
-STR_TUTORIAL_PAGE_3_BODY                                     :Select a station type (rail, bus, ship or airport) from the menu, then place it on the map. Connect stations using track or road tools. Vehicles use these networks to pick up and deliver cargo and passengers.
+# Page 2: Road Construction
+STR_TUTORIAL_PAGE_2_TITLE                                    :{WHITE}Building Your First Road
+STR_TUTORIAL_PAGE_2_BODY                                     :{BLACK}Let's build something! Roads are a great starting point.{}{}• Build roads - Drag with the road tool for quick placement{}• Remove roads - Use the bulldozer or hold Ctrl while dragging{}• Add a depot - Match the depot direction to your road{}• Place stations - Blue circles show coverage. Put passenger stations near homes, cargo stations near industries{}• Buy vehicles - Click your depot, choose "New Vehicles", pick one, set destinations with the arrow button, then click "Stopped" to get rolling!{}{}Don't forget to scroll down in the vehicle list!{}{}Awesome! You just created your first transport route!
 
-STR_TUTORIAL_PAGE_4_TITLE                                    :Create vehicles and give orders
-STR_TUTORIAL_PAGE_4_BODY                                     :After building track or road, create vehicles at depots or stations. Open the vehicle orders panel to set waypoints and routes. Orders tell vehicles where to go and which stops to visit.
+# Page 3: Railway Construction
+STR_TUTORIAL_PAGE_3_TITLE                                    :{WHITE}Time for Trains!
+STR_TUTORIAL_PAGE_3_BODY                                     :{BLACK}Ready to level up? Railways can be super profitable!{}{}• Lay tracks - Just like roads, but watch those curves{}• Build stations - Same idea as road stations{}• Add a depot - That's where you'll buy trains{}• Get your train - Buy a locomotive, add some wagons, set your route{}• Place signals - Keep clicking to change signal types. These prevent train crashes when you're running multiple trains!{}{}Fun fact: Mastering railways is one of OpenTTD's coolest challenges. You'll love figuring it out!{}{}Congrats on your first railway!
 
-STR_TUTORIAL_PAGE_5_TITLE                                    :Earn money and grow your network
-STR_TUTORIAL_PAGE_5_BODY                                     :Transporting goods and passengers generates income. Balance route coverage, vehicle costs and maintenance to maximize profit. Use the finance and graph tools to monitor performance and find bottlenecks.
+# Page 4: Bridges and Tunnels
+STR_TUTORIAL_PAGE_4_TITLE                                    :{WHITE}Getting Creative with Bridges & Tunnels
+STR_TUTORIAL_PAGE_4_BODY                                     :{BLACK}Hit an obstacle? No problem!{}{}Bridges let you cross rivers, roads, and valleys (just not buildings).{}{}Tunnels can go through almost anything.{}{}These tools are game-changers for connecting distant locations!
 
-STR_TUTORIAL_PAGE_6_TITLE                                    :Learn more and next steps
-STR_TUTORIAL_PAGE_6_BODY                                     :This tutorial covers only the basics. For detailed information, open Help -> Manual from the main menu. Community forums, the wiki and the in-game help provide deeper guides and examples.
+# Page 5: Aircraft and Ships
+STR_TUTORIAL_PAGE_5_TITLE                                    :{WHITE}Expanding Your Empire
+STR_TUTORIAL_PAGE_5_BODY                                     :{BLACK}See those far-away cities? Let's connect them!{}{}Aircraft: Build an airport, click the hangar, buy a plane, set your routes. Fast and easy!{}{}Ships: Build a dock on the shore, add a ship depot, buy a ship. For long routes, place buoys as waypoints to avoid "too far" errors.{}{}Canals: Build waterways on land! Use locks to connect different elevations.{}{}You're becoming a transport tycoon!
 
+# Page 6: Next Steps
+STR_TUTORIAL_PAGE_6_TITLE                                    :{WHITE}You're Ready to Play!
+STR_TUTORIAL_PAGE_6_BODY                                     :{BLACK}Great job! You've got the fundamentals down.{}{}Missing some features? Try starting a new game with a later date - newer tech unlocks as time goes on!{}{}Check your Finances window to track profits and plan your next moves.{}{}Your challenge: Build networks as amazing as the examples you've seen - or even better!{}{}Need a refresher? Find this tutorial anytime in Help -> "Show Tutorial"{}Want to dive deeper? Check Help -> "Manual/Wiki" for the "In Depth" section, or search YouTube for fantastic community guides.{}{}Ready to build your empire? Let's go!
+
+# UI Strings
 STR_TUTORIAL_NEXT                                            :Next
 STR_TUTORIAL_PREV                                            :Previous
 STR_TUTORIAL_FINISH                                          :Finish
 STR_TUTORIAL_DONT_SHOW_AGAIN                                 :Do not show on startup
-
 STR_TUTORIAL_ALREADY_FIRST_PAGE                              :Already at the first page
 STR_TUTORIAL_ALREADY_LAST_PAGE                               :Already at the last page
-
 STR_ABOUT_MENU_TUTORIAL                                      :Show Tutorial
-STR_TUTORIAL_CLOSING_NOTE                                    :You're all set! Press Finish to close this tutorial. You can reopen it anytime from Help -> Show Tutorial
+STR_TUTORIAL_CLOSING_NOTE                                    :You're all set! Reopen anytime from Help -> Show Tutorial
 # Tutorial window strings - ADD END

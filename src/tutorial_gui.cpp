@@ -31,7 +31,7 @@ struct TutorialContentItem{
 };
     TutorialContentType type;
     StringID text_id;
-    SpriteID sprite_id;  // 使用 Sprite ID 而非文件路径
+    std::vector<SpriteID> sprite_ids;//图片容器
     int height;
 
 };
@@ -39,7 +39,6 @@ struct TutorialPages
 {
 	uint index=0;
 	StringID page_title_id;//页面标题
-	std::string image_path;
 	std::vector<TutorialContentItem> content_items;//页面所有内容的容器
 };
 struct Tutorial_widgets_disabled_state
@@ -62,6 +61,7 @@ struct TutorialWindow : public Window {
 		this->vscroll = this->GetScrollbar(WID_TUT_SCROLLBAR);
 		LoadPagesFromStrings();
 		UpdateScrollbar();
+		UpdateUIForPage(0); // 初始化第一页的UI状态
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
@@ -144,25 +144,21 @@ void DrawWidget(const Rect&r,WidgetID widget)const override
 				}
 				
 				case TutorialContentItem::IMAGE: {
-					// 绘制 Sprite 图片或占位符
-					int img_height;
-					if (item.sprite_id != 0) {
-						Dimension sprite_dim = GetSpriteSize(item.sprite_id);
-						img_height = sprite_dim.height;
-						if (y + img_height > text_rect.top) {
-							int sprite_x = text_rect.left + (text_rect.Width() - sprite_dim.width) / 2; // 居中
-							int sprite_y = std::max(y, text_rect.top);
-							DrawSprite(item.sprite_id, PAL_NONE, sprite_x, sprite_y);
+					int img_height = 0;
+					if (!item.sprite_ids.empty()) {
+						// 找出最高的sprite来确定行高
+						for (const auto &sprite_id : item.sprite_ids) {
+							Dimension sprite_dim = GetSpriteSize(sprite_id);
+							img_height = std::max(img_height, (int)sprite_dim.height);
 						}
-					} else {
-						// 占位符（如果没有 sprite）
-						img_height = 100;
+						
 						if (y + img_height > text_rect.top) {
-							Rect img_rect = {text_rect.left, std::max(y, text_rect.top), text_rect.right, std::min(y + img_height, text_rect.bottom)};
-							GfxFillRect(img_rect, PC_GREY, FILLRECT_RECOLOUR);
-							int mid_y = img_rect.top + img_rect.Height() / 2;
-							if (mid_y >= img_rect.top && mid_y < img_rect.bottom) {
-								DrawString(img_rect.left, img_rect.right, mid_y, "[No Image]", TC_BLACK, SA_HOR_CENTER);
+							int sprite_x = text_rect.left + 10;
+							int sprite_y = std::max(y, text_rect.top);
+							for (const auto &sprite_id : item.sprite_ids) {
+								Dimension sprite_dim = GetSpriteSize(sprite_id);
+								DrawSprite(sprite_id, PAL_NONE, sprite_x, sprite_y);
+								sprite_x += sprite_dim.width + 10; // 每个sprite后面留10像素间距
 							}
 						}
 					}
@@ -177,9 +173,8 @@ void DrawWidget(const Rect&r,WidgetID widget)const override
 		}
 	}
 	
-	// 绘制页码指示器
 	if (widget == WID_TUT_PAGE_INDICATOR) {
-		DrawString(r.left, r.right, r.top, GetString(STR_TUTORIAL_PAGE_INDICATOR, current_page_index + 1, tutorial_pages.size()), TC_BLACK, SA_HOR_CENTER);
+		DrawString(r, GetString(STR_TUTORIAL_TITLE_WITH_PAGE, current_page_index + 1, tutorial_pages.size()), TC_BLACK, SA_HOR_CENTER);
 	}
 }
 
@@ -205,11 +200,14 @@ void DrawWidget(const Rect&r,WidgetID widget)const override
 				}
 				
 				case TutorialContentItem::IMAGE:
-					if (item.sprite_id != 0) {
-						Dimension sprite_dim = GetSpriteSize(item.sprite_id);
-						content_height += sprite_dim.height + 10; // 10 像素间距
-					} else {
-						content_height += 100 + 10; // 占位符高度
+					if (!item.sprite_ids.empty()) {
+						// 找出最高的sprite来确定行高
+						int max_height = 0;
+						for (const auto &sprite_id : item.sprite_ids) {
+							Dimension sprite_dim = GetSpriteSize(sprite_id);
+							max_height = std::max(max_height, (int)sprite_dim.height);
+						}
+						content_height += max_height + 10;
 					}
 					break;
 				
@@ -255,7 +253,6 @@ void LoadPagesFromStrings()
 		TutorialPages page;
 		page.index = i;
 		page.page_title_id = title_id;
-		page.image_path = ""; // Placeholder
 		
 		// 添加标题内容项
 		TutorialContentItem title_item;
@@ -271,14 +268,58 @@ void LoadPagesFromStrings()
 		text_item.height = 0; // 自动计算
 		page.content_items.push_back(text_item);
 		
-		// 为部分页面添加测试图片（使用现有 Sprite）
-		if (i == 0 || i == 2) { // 第 1 页和第 3 页添加图片
-			TutorialContentItem image_item;
-			image_item.type = TutorialContentItem::IMAGE;
-			image_item.sprite_id = SPR_SQUARE; // 使用现有的方块 sprite 作为占位
-			image_item.text_id = INVALID_STRING_ID;
-			image_item.height = 0; // 自动从 sprite 获取
-			page.content_items.push_back(image_item);
+		// 为每页添加相关的示意图标（一行显示多个sprite）
+		TutorialContentItem image_item;
+		image_item.type = TutorialContentItem::IMAGE;
+		image_item.text_id = INVALID_STRING_ID;
+		image_item.height = 0;
+		
+		switch (i) {
+			case 0: // Page 1: 基本操作 - 显示工具栏和基础图标
+				image_item.sprite_ids.push_back(SPR_IMG_ZOOMIN);
+				image_item.sprite_ids.push_back(SPR_WINDOW_RESIZE_RIGHT);
+				image_item.sprite_ids.push_back(SPR_IMG_SAVE);
+				page.content_items.push_back(image_item);
+				break;
+				
+			case 1: // Page 2: 道路建设 - 显示道路工具和车站
+				image_item.sprite_ids.push_back(SPR_IMG_AUTOROAD);
+				image_item.sprite_ids.push_back(SPR_IMG_ROAD_DEPOT);
+				image_item.sprite_ids.push_back(SPR_IMG_BUS_STATION);
+				image_item.sprite_ids.push_back(SPR_IMG_TRUCK_BAY);
+				image_item.sprite_ids.push_back(SPR_IMG_TRUCKLIST);
+				page.content_items.push_back(image_item);
+				break;
+				
+			case 2: // Page 3: 铁路建设 - 显示铁路工具和火车站
+				image_item.sprite_ids.push_back(SPR_IMG_AUTORAIL);
+				image_item.sprite_ids.push_back(SPR_IMG_RAIL_STATION);
+				image_item.sprite_ids.push_back(SPR_IMG_DEPOT_RAIL);
+				image_item.sprite_ids.push_back(SPR_IMG_TRAINLIST);
+				image_item.sprite_ids.push_back(SPR_IMG_RAIL_SIGNALS);
+				page.content_items.push_back(image_item);
+				break;
+				
+			case 3: // Page 4: 桥梁和隧道
+				image_item.sprite_ids.push_back(SPR_IMG_BRIDGE);
+				image_item.sprite_ids.push_back(SPR_IMG_ROAD_TUNNEL);
+				page.content_items.push_back(image_item);
+				break;
+				
+			case 4: // Page 5: 飞机和船只
+				image_item.sprite_ids.push_back(SPR_IMG_AIRPORT);
+				image_item.sprite_ids.push_back(SPR_IMG_SHIP_DOCK);
+				image_item.sprite_ids.push_back(SPR_IMG_BUOY);
+				image_item.sprite_ids.push_back(SPR_IMG_BUILD_CANAL);
+				image_item.sprite_ids.push_back(SPR_IMG_BUILD_LOCK);
+				page.content_items.push_back(image_item);
+				break;
+				
+			case 5: // Page 6: 下一步 - 显示公司管理和目标
+				image_item.sprite_ids.push_back(SPR_IMG_COMPANY_FINANCE);
+				image_item.sprite_ids.push_back(SPR_IMG_GOAL);
+				page.content_items.push_back(image_item);
+				break;
 		}
 		
 		tutorial_pages.push_back(page);
@@ -326,9 +367,16 @@ void UpdateUIForPage(uint index)
 	this->vscroll->SetPosition(0);//重置滚动条到顶部
 	UpdateScrollbar();
 	
+	// 判断是否是最后一页
+	bool is_last_page = (index == tutorial_pages.size() - 1);
+	
 	// 更新按钮禁用状态
 	this->SetWidgetDisabledState(WID_TUT_PREVIOUS, disabled_state.previous_disabled);
     this->SetWidgetDisabledState(WID_TUT_NEXT, disabled_state.next_disabled);
+	
+	// 控制按钮的显示：只在最后一页显示"Finish"和结束消息按钮
+	this->GetWidget<NWidgetStacked>(WID_TUT_CLOSE_SEL)->SetDisplayedPlane(is_last_page ? 0 : SZSP_NONE);
+	this->GetWidget<NWidgetStacked>(WID_TUT_FINISH_SEL)->SetDisplayedPlane(is_last_page ? 0 : SZSP_NONE);
 	
 	// 标记需要重绘的部件
 	this->SetWidgetDirty(WID_TUT_PAGE_INDICATOR);
@@ -373,14 +421,18 @@ static constexpr std::initializer_list<NWidgetPart> _nested_tutorial_widgets = {
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_TUT_PREVIOUS), SetMinimalSize(80, 20), SetStringTip(STR_TUTORIAL_PREV, STR_NULL),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_TUT_NEXT), SetMinimalSize(80, 20), SetStringTip(STR_TUTORIAL_NEXT, STR_NULL),
 					NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_TUT_CLOSE), SetMinimalSize(80, 20), SetStringTip(STR_TUTORIAL_FINISH, STR_TOOLTIP_CLOSE_WINDOW),
+					NWidget(NWID_SELECTION, INVALID_COLOUR, WID_TUT_CLOSE_SEL),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_TUT_CLOSE), SetMinimalSize(80, 20), SetStringTip(STR_TUTORIAL_FINISH, STR_TOOLTIP_CLOSE_WINDOW),
+					EndContainer(),
 				EndContainer(),
 			EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_GREY), SetResize(1, 0), SetFill(1, 0), SetPIP(5, 0, 5),
 				NWidget(NWID_HORIZONTAL), SetPIP(5, 2, 5),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_TUT_DONT_SHOW), SetMinimalSize(150, 20), SetStringTip(STR_TUTORIAL_DONT_SHOW_AGAIN, STR_NULL),
 					NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_TUT_FINISH), SetMinimalSize(80, 20), SetStringTip(STR_TUTORIAL_CLOSING_NOTE, STR_NULL),
+					NWidget(NWID_SELECTION, INVALID_COLOUR, WID_TUT_FINISH_SEL),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_TUT_FINISH), SetMinimalSize(80, 20), SetStringTip(STR_TUTORIAL_CLOSING_NOTE, STR_NULL),
+					EndContainer(),
 					NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 				EndContainer(),
 			EndContainer(),

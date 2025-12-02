@@ -174,6 +174,9 @@ static const SpriteID SPR_PLAYER_HOST                = SPR_OPENTTD_BASE + 190;
 
 static const SpriteID SPR_EXTRA_MENU                 = SPR_OPENTTD_BASE + 191;
 
+
+
+
 static const SpriteID SPR_IMG_CARGOFLOW              = SPR_OPENTTD_BASE + 174;
 
 static const SpriteID SPR_SIGNALS_BASE  = SPR_OPENTTD_BASE + OPENTTD_SPRITE_COUNT;

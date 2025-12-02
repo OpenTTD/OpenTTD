@@ -38,6 +38,7 @@
 #include "game/game.hpp"
 #include "game/game_instance.hpp"
 #include "newgrf_railtype.h"
+#include "tutorial_gui.h"
 #include "newgrf_roadtype.h"
 #include "string_func.h"
 #include "thread.h"
@@ -201,7 +202,13 @@ static void _GenerateWorld()
 		_cur_company.Trash();
 		_current_company = _local_company = GenWorldInfo::lc;
 		/* Show all vital windows again, because we have hidden them. */
-		if (_game_mode != GM_MENU) ShowVitalWindows();
+		if (_game_mode != GM_MENU) {
+			ShowVitalWindows();
+			/* Show tutorial window for first-time players after generating new game */
+			if (!_settings_client.gui.tutorial_completed && !_networking) {
+				ShowTutorialWindow();
+			}
+		}
 
 		SetGeneratingWorldProgress(GWP_GAME_START, 1);
 		/* Call any callback */
