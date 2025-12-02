@@ -8,6 +8,7 @@
 ##decimalsep .
 ##winlangid 0x0c09
 ##grflangid 0x3d
+##gender s p
 
 
 # This file is part of OpenTTD.

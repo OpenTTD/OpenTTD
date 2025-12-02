@@ -145,7 +145,6 @@ void FileStringReader::HandlePragma(std::string_view str, LanguagePackHeader &la
 		}
 		lang.newgrflangid = static_cast<uint8_t>(langid);
 	} else if (name == "gender") {
-		if (this->master) FatalError("Genders are not allowed in the base translation.");
 		for (;;) {
 			auto s = ParseWord(consumer);
 

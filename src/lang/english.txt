@@ -8,6 +8,7 @@
 ##decimalsep .
 ##winlangid 0x0809
 ##grflangid 0x01
+##gender s p
 
 
 # This file is part of OpenTTD.
@@ -5974,4 +5975,4 @@ STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Badge Fi
 STR_BADGE_CONFIG_PREVIEW                                        :Preview Image
 STR_BADGE_CONFIG_NAME                                           :Name
 STR_BADGE_FILTER_ANY_LABEL                                      :Any {STRING}
-STR_BADGE_FILTER_IS_LABEL                                       :{STRING} is {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} {G 0 is are} {STRING}
