@@ -993,16 +993,23 @@ static const uint8_t _plantfarmfield_type[] = {1, 1, 1, 1, 1, 3, 3, 4, 4, 4, 5, 
 
 /**
  * Check whether the tile can be replaced by a farm field.
- * @param tile the tile to investigate.
- * @param allow_fields if true, the method will return true even if
- * the tile is a farm tile, otherwise the tile may not be a farm tile
+ * @param tile The tile to investigate.
+ * @param allow_fields Can we replace an existing field?
+ * @param allow_rough Can we build on rough tiles? (clear or trees)
  * @return true if the tile can become a farm field
  */
-static bool IsSuitableForFarmField(TileIndex tile, bool allow_fields)
+static bool IsSuitableForFarmField(TileIndex tile, bool allow_fields, bool allow_rough)
 {
 	switch (GetTileType(tile)) {
-		case MP_CLEAR: return !IsSnowTile(tile) && !IsClearGround(tile, CLEAR_DESERT) && (allow_fields || !IsClearGround(tile, CLEAR_FIELDS));
-		case MP_TREES: return GetTreeGround(tile) != TREE_GROUND_SHORE;
+		case MP_CLEAR:
+			switch (GetClearGround(tile)) {
+				case CLEAR_SNOW: return false;
+				case CLEAR_DESERT: return false;
+				case CLEAR_ROUGH: return allow_rough;
+				case CLEAR_FIELDS: return allow_fields;
+				default: return true;
+			}
+		case MP_TREES: return GetTreeGround(tile) != TREE_GROUND_SHORE && (allow_rough || GetTreeGround(tile) != TREE_GROUND_ROUGH);
 		default:       return false;
 	}
 }
@@ -1059,7 +1066,7 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 	int count = 0;
 	for (TileIndex cur_tile : ta) {
 		assert(cur_tile < Map::Size());
-		count += IsSuitableForFarmField(cur_tile, false);
+		count += IsSuitableForFarmField(cur_tile, false, false);
 	}
 	if (count * 2 < ta.w * ta.h) return;
 
@@ -1071,7 +1078,7 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 	/* make field */
 	for (TileIndex cur_tile : ta) {
 		assert(cur_tile < Map::Size());
-		if (IsSuitableForFarmField(cur_tile, true)) {
+		if (IsSuitableForFarmField(cur_tile, true, true)) {
 			MakeField(cur_tile, field_type, industry);
 			SetClearCounter(cur_tile, counter);
 			MarkTileDirtyByTile(cur_tile);
