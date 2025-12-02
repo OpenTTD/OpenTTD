@@ -19,7 +19,7 @@
 
 void ShowTutorialWindow(bool force_show = false);
 void DrawWidget(const Rect&r,WidgetID widget);
-void LoadPagesFromStrings();
+void LoadPages();
 void UpdateUIForPage(uint index);
 
 #endif /* TUTORIAL_GUI_H */

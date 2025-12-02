@@ -26,20 +26,20 @@ struct TutorialContentItem{
 	enum TutorialContentType{
 	   TEXT,
 	   IMAGE,
-	   TITLE,//小标题
+	   TITLE, // Subtitle
 	   SPACER
 };
     TutorialContentType type;
     StringID text_id;
-    std::vector<SpriteID> sprite_ids;//图片容器
+	std::vector<SpriteID> sprite_ids; // container for sprite IDs
     int height;
 
 };
 struct TutorialPages 
 {
 	uint index=0;
-	StringID page_title_id;//页面标题
-	std::vector<TutorialContentItem> content_items;//页面所有内容的容器
+	StringID page_title_id; // page title
+	std::vector<TutorialContentItem> content_items; // container for all page content items
 };
 struct Tutorial_widgets_disabled_state
 {
@@ -59,9 +59,9 @@ struct TutorialWindow : public Window {
 		this->CreateNestedTree();
 		this->FinishInitNested(0);
 		this->vscroll = this->GetScrollbar(WID_TUT_SCROLLBAR);
-		LoadPagesFromStrings();
+		LoadPages();
 		UpdateScrollbar();
-		UpdateUIForPage(0); // 初始化第一页的UI状态
+		UpdateUIForPage(0); // Initialize UI state for first page
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
@@ -102,7 +102,7 @@ struct TutorialWindow : public Window {
 
 	void OnMouseWheel(int wheel, [[maybe_unused]] WidgetID widget) override
 	{
-		if(this->vscroll==nullptr)return; // 滚动条未初始化
+		if (this->vscroll == nullptr) return; // scrollbar not initialized
 		this->vscroll->UpdatePosition(wheel);
 		this->SetWidgetDirty(WID_TUT_CONTENT);
 	}
@@ -116,13 +116,13 @@ void DrawWidget(const Rect&r,WidgetID widget)const override
 		const TutorialPages &page = tutorial_pages[current_page_index];
 		Rect text_rect = r.Shrink(5);
 		
-		// 获取像素级滚动偏移
+		// get pixel-level scroll offset
 		int scroll_offset = (this->vscroll != nullptr) ? this->vscroll->GetPosition() : 0;
 		int y = text_rect.top - scroll_offset;
 		
-		// 遍历内容项并绘制
+		// iterate over content items and draw them
 		for (const auto &item : page.content_items) {
-			if (y >= text_rect.bottom) break; // 超出可见区域底部
+			if (y >= text_rect.bottom) break; // beyond visible bottom
 			
 			switch (item.type) {
 				case TutorialContentItem::TITLE: {
@@ -146,19 +146,19 @@ void DrawWidget(const Rect&r,WidgetID widget)const override
 				case TutorialContentItem::IMAGE: {
 					int img_height = 0;
 					if (!item.sprite_ids.empty()) {
-						// 找出最高的sprite来确定行高
+						// determine the tallest sprite to compute row height
 						for (const auto &sprite_id : item.sprite_ids) {
 							Dimension sprite_dim = GetSpriteSize(sprite_id);
 							img_height = std::max(img_height, (int)sprite_dim.height);
 						}
-						
+
 						if (y + img_height > text_rect.top) {
 							int sprite_x = text_rect.left + 10;
 							int sprite_y = std::max(y, text_rect.top);
 							for (const auto &sprite_id : item.sprite_ids) {
 								Dimension sprite_dim = GetSpriteSize(sprite_id);
 								DrawSprite(sprite_id, PAL_NONE, sprite_x, sprite_y);
-								sprite_x += sprite_dim.width + 10; // 每个sprite后面留10像素间距
+								sprite_x += sprite_dim.width + 10; // leave 10px spacing after each sprite
 							}
 						}
 					}
@@ -184,9 +184,9 @@ void DrawWidget(const Rect&r,WidgetID widget)const override
 		const TutorialPages &page = tutorial_pages[current_page_index];
 		
 		int content_height = 0;
-		int content_width = 390; // 默认宽度
+		int content_width = 390; // default width
 		
-		// 遍历所有内容项计算高度
+		// iterate over content items to calculate height
 		for (const auto &item : page.content_items) {
 			switch (item.type) {
 				case TutorialContentItem::TITLE:
@@ -201,7 +201,6 @@ void DrawWidget(const Rect&r,WidgetID widget)const override
 				
 				case TutorialContentItem::IMAGE:
 					if (!item.sprite_ids.empty()) {
-						// 找出最高的sprite来确定行高
 						int max_height = 0;
 						for (const auto &sprite_id : item.sprite_ids) {
 							Dimension sprite_dim = GetSpriteSize(sprite_id);
@@ -217,33 +216,32 @@ void DrawWidget(const Rect&r,WidgetID widget)const override
 			}
 		}
 		
-		// 添加底部间距
+			// add bottom padding
 		content_height += 20;
 		
 		return content_height;
 	}
 	
-	/** 更新滚动条状态 */
 	void UpdateScrollbar()
 	{
-		if (this->vscroll == nullptr) return; // 滚动条未初始化
+		if (this->vscroll == nullptr) return;
 		
-		int visible_height = 300; // 默认值（用于初始化阶段）
+		int visible_height = 300; 
 		const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_TUT_CONTENT);
 		if (wid != nullptr) {
-			visible_height = wid->current_y; // 使用实际高度
+			visible_height = wid->current_y; 
 		}
 		
 		int content_height = CalculateContentHeight();
 		
-		// 按像素设置滚动条
+	
 		this->vscroll->SetCount(content_height);
 		this->vscroll->SetCapacity(visible_height);
-		this->vscroll->SetStepSize(GetCharacterHeight(FS_NORMAL)); // 每次滚动一行的高度
+		this->vscroll->SetStepSize(GetCharacterHeight(FS_NORMAL));
 	}
 
 
-void LoadPagesFromStrings()
+void LoadPages()
 {
 	tutorial_pages.clear();
 	for(uint i = 0;i<6; i++) {
@@ -254,35 +252,35 @@ void LoadPagesFromStrings()
 		page.index = i;
 		page.page_title_id = title_id;
 		
-		// 添加标题内容项
+	
 		TutorialContentItem title_item;
 		title_item.type = TutorialContentItem::TITLE;
 		title_item.text_id = title_id;
-		title_item.height = 0; // 自动计算
+		title_item.height = 0;
 		page.content_items.push_back(title_item);
 		
-		// 添加正文内容项
+
 		TutorialContentItem text_item;
 		text_item.type = TutorialContentItem::TEXT;
 		text_item.text_id = body_id;
-		text_item.height = 0; // 自动计算
+		text_item.height = 0;
 		page.content_items.push_back(text_item);
 		
-		// 为每页添加相关的示意图标（一行显示多个sprite）
+		// Add illustrative icons for each page (multiple sprites per row)
 		TutorialContentItem image_item;
 		image_item.type = TutorialContentItem::IMAGE;
 		image_item.text_id = INVALID_STRING_ID;
 		image_item.height = 0;
 		
 		switch (i) {
-			case 0: // Page 1: 基本操作 - 显示工具栏和基础图标
+			case 0: // Page 1: Basic operations - toolbar and basic icons
 				image_item.sprite_ids.push_back(SPR_IMG_ZOOMIN);
 				image_item.sprite_ids.push_back(SPR_WINDOW_RESIZE_RIGHT);
 				image_item.sprite_ids.push_back(SPR_IMG_SAVE);
 				page.content_items.push_back(image_item);
 				break;
 				
-			case 1: // Page 2: 道路建设 - 显示道路工具和车站
+			case 1: // Page 2: Roads - road tools and stations
 				image_item.sprite_ids.push_back(SPR_IMG_AUTOROAD);
 				image_item.sprite_ids.push_back(SPR_IMG_ROAD_DEPOT);
 				image_item.sprite_ids.push_back(SPR_IMG_BUS_STATION);
@@ -291,7 +289,7 @@ void LoadPagesFromStrings()
 				page.content_items.push_back(image_item);
 				break;
 				
-			case 2: // Page 3: 铁路建设 - 显示铁路工具和火车站
+			case 2: // Page 3: Railways - rail tools and stations
 				image_item.sprite_ids.push_back(SPR_IMG_AUTORAIL);
 				image_item.sprite_ids.push_back(SPR_IMG_RAIL_STATION);
 				image_item.sprite_ids.push_back(SPR_IMG_DEPOT_RAIL);
@@ -300,13 +298,13 @@ void LoadPagesFromStrings()
 				page.content_items.push_back(image_item);
 				break;
 				
-			case 3: // Page 4: 桥梁和隧道
+			case 3: // Page 4: Bridges & Tunnels
 				image_item.sprite_ids.push_back(SPR_IMG_BRIDGE);
 				image_item.sprite_ids.push_back(SPR_IMG_ROAD_TUNNEL);
 				page.content_items.push_back(image_item);
 				break;
 				
-			case 4: // Page 5: 飞机和船只
+			case 4: // Page 5: Aircraft & Ships
 				image_item.sprite_ids.push_back(SPR_IMG_AIRPORT);
 				image_item.sprite_ids.push_back(SPR_IMG_SHIP_DOCK);
 				image_item.sprite_ids.push_back(SPR_IMG_BUOY);
@@ -315,7 +313,7 @@ void LoadPagesFromStrings()
 				page.content_items.push_back(image_item);
 				break;
 				
-			case 5: // Page 6: 下一步 - 显示公司管理和目标
+			case 5: // Page 6: Next steps - company and goals
 				image_item.sprite_ids.push_back(SPR_IMG_COMPANY_FINANCE);
 				image_item.sprite_ids.push_back(SPR_IMG_GOAL);
 				page.content_items.push_back(image_item);
@@ -363,22 +361,22 @@ void UpdateUIForPage(uint index)
 	if(index >= tutorial_pages.size()) return;
 	UpdateButtonState();
 	
-	if(this->vscroll==nullptr)return; // 滚动条未初始化
-	this->vscroll->SetPosition(0);//重置滚动条到顶部
+	if(this->vscroll==nullptr)return; 
+	this->vscroll->SetPosition(0);
 	UpdateScrollbar();
 	
-	// 判断是否是最后一页
+	
 	bool is_last_page = (index == tutorial_pages.size() - 1);
 	
-	// 更新按钮禁用状态
+	
 	this->SetWidgetDisabledState(WID_TUT_PREVIOUS, disabled_state.previous_disabled);
     this->SetWidgetDisabledState(WID_TUT_NEXT, disabled_state.next_disabled);
 	
-	// 控制按钮的显示：只在最后一页显示"Finish"和结束消息按钮
+	
 	this->GetWidget<NWidgetStacked>(WID_TUT_CLOSE_SEL)->SetDisplayedPlane(is_last_page ? 0 : SZSP_NONE);
 	this->GetWidget<NWidgetStacked>(WID_TUT_FINISH_SEL)->SetDisplayedPlane(is_last_page ? 0 : SZSP_NONE);
 	
-	// 标记需要重绘的部件
+	
 	this->SetWidgetDirty(WID_TUT_PAGE_INDICATOR);
 	this->SetWidgetDirty(WID_TUT_CONTENT);
     this->SetWidgetDirty(WID_TUT_PREVIOUS); 
@@ -387,15 +385,13 @@ void UpdateUIForPage(uint index)
 
 void OnResize() override
 {
-	if(this->vscroll==nullptr)return; // 滚动条未初始化
-	UpdateScrollbar();// 重新计算内容高度并更新滚动条
-	// 防止滚动位置超出新的范围
+	if(this->vscroll==nullptr)return;
+	UpdateScrollbar();
     int max_pos = std::max(0, this->vscroll->GetCount() - this->vscroll->GetCapacity());
     if (this->vscroll->GetPosition() > max_pos) {
         this->vscroll->SetPosition(max_pos);
     }
 
-	// 标记整个窗口需要重绘
 	this->SetDirty();
 }
 
@@ -443,7 +439,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_tutorial_widgets = {
 
 /** Tutorial window description */
 static WindowDesc _tutorial_window_desc(
-	WDP_CENTER, {}, 500, 400,  // 默认宽度500，高度400
+	WDP_CENTER, {}, 500, 400, 
 	WC_TUTORIAL, WC_NONE,
 	{},
 	_nested_tutorial_widgets
