@@ -55,6 +55,8 @@
 #include "road_cmd.h"
 #include "terraform_cmd.h"
 #include "tunnelbridge_cmd.h"
+#include "clear_map.h"
+#include "tree_map.h"
 #include "map_func.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
@@ -1474,9 +1476,7 @@ static inline bool RoadTypesAllowHouseHere(TileIndex t)
 		allow = true;
 
 		RoadType road_rt = GetRoadTypeRoad(cur_tile);
-		RoadType tram_rt = GetRoadTypeTram(cur_tile);
 		if (road_rt != INVALID_ROADTYPE && !GetRoadTypeInfo(road_rt)->flags.Test(RoadTypeFlag::NoHouses)) return true;
-		if (tram_rt != INVALID_ROADTYPE && !GetRoadTypeInfo(tram_rt)->flags.Test(RoadTypeFlag::NoHouses)) return true;
 	}
 
 	/* If no road was found surrounding the tile we can allow building the house since there is
@@ -2113,9 +2113,10 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32_t townnameparts, TownSi
 /**
  * Check if it's possible to place a town on a given tile.
  * @param tile The tile to check.
+ * @param check_surrounding Should we ensure surrounding tiles are free too?
  * @return A zero cost if allowed, otherwise an error.
  */
-static CommandCost TownCanBePlacedHere(TileIndex tile)
+static CommandCost TownCanBePlacedHere(TileIndex tile, bool check_surrounding)
 {
 	/* Check if too close to the edge of map */
 	if (DistanceFromEdge(tile) < 12) {
@@ -2130,6 +2131,29 @@ static CommandCost TownCanBePlacedHere(TileIndex tile)
 	/* Can only build on clear flat areas, possibly with trees. */
 	if ((!IsTileType(tile, MP_CLEAR) && !IsTileType(tile, MP_TREES)) || !IsTileFlat(tile)) {
 		return CommandCost(STR_ERROR_SITE_UNSUITABLE);
+	}
+
+	/* We might want to make sure the town has enough room. */
+	if (check_surrounding) {
+		constexpr uint SEARCH_DIAMETER = 5; // Center tile of town + 2 tile radius.
+		/* Half of the tiles in the search must be valid for the town to build upon. */
+		constexpr uint VALID_TILE_GOAL = (SEARCH_DIAMETER * SEARCH_DIAMETER) / 2;
+		uint counter = 0;
+		for (TileIndex t : SpiralTileSequence(tile, SEARCH_DIAMETER)) {
+			if (counter == VALID_TILE_GOAL) break;
+
+			/* The most likely unsuitable tile type is water, test that first. */
+			if (IsTileType(tile, MP_WATER)) continue;
+
+			/* Don't allow rough tiles, as they are likely wetlands. */
+			bool clear = IsTileType(t, MP_CLEAR) && GetClearDensity(t) != CLEAR_ROUGH;
+			bool trees = IsTileType(t, MP_TREES) && GetTreeGround(t) != TREE_GROUND_ROUGH;
+			int town_height = GetTileZ(tile);
+			bool elevation_similar = (GetTileMaxZ(t) <= town_height + 1) && (GetTileZ(t) >= town_height - 1);
+			if ((clear || trees) && elevation_similar) counter++;
+		}
+
+		if (counter < VALID_TILE_GOAL) return CommandCost(STR_ERROR_SITE_UNSUITABLE);
 	}
 
 	return CommandCost(EXPENSES_OTHER);
@@ -2194,7 +2218,7 @@ std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlags flags, TileIn
 	if (!Town::CanAllocateItem()) return { CommandCost(STR_ERROR_TOO_MANY_TOWNS), 0, TownID::Invalid() };
 
 	if (!random_location) {
-		CommandCost ret = TownCanBePlacedHere(tile);
+		CommandCost ret = TownCanBePlacedHere(tile, false);
 		if (ret.Failed()) return { ret, 0, TownID::Invalid() };
 	}
 
@@ -2311,6 +2335,7 @@ static TileIndex FindNearestGoodCoastalTownSpot(TileIndex tile, TownLayout layou
 		uint max_dist = 0;
 		for (auto test : SpiralTileSequence(coast, 10)) {
 			if (!IsTileType(test, MP_CLEAR) || !IsTileFlat(test) || !IsTileAlignedToGrid(test, layout)) continue;
+			if (TownCanBePlacedHere(tile, true).Failed()) continue;
 
 			uint dist = GetClosestWaterDistance(test, true);
 			if (dist > max_dist) {
@@ -2359,15 +2384,12 @@ static Town *CreateRandomTown(uint attempts, uint32_t townnameparts, TownSize si
 		/* Generate a tile index not too close from the edge */
 		TileIndex tile = AlignTileToGrid(RandomTile(), layout);
 
-		/* if we tried to place the town on water, slide it over onto
-		 * the nearest likely-looking spot */
+		/* If we tried to place the town on water, find a suitable land tile nearby.
+		 * Otherwise, evaluate the land tile. */
 		if (IsTileType(tile, MP_WATER)) {
 			tile = FindNearestGoodCoastalTownSpot(tile, layout);
 			if (tile == INVALID_TILE) continue;
-		}
-
-		/* Make sure town can be placed here */
-		if (TownCanBePlacedHere(tile).Failed()) continue;
+		} else if (TownCanBePlacedHere(tile, true).Failed()) continue;
 
 		/* Allocate a town struct */
 		Town *t = new Town(tile);

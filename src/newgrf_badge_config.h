@@ -16,8 +16,8 @@
 class BadgeClassConfigItem {
 public:
 	std::string label; ///< Class label.
-	int column = -1; ///< UI column, feature-dependent.
-	bool show_icon = false; ///< Set if the badge icons should be displayed for this class.
+	uint column = 0; ///< UI column, feature-dependent.
+	bool show_icon = true; ///< Set if the badge icons should be displayed for this class.
 	bool show_filter = false; ///< Set if a drop down filter should be added for this class.
 };
 

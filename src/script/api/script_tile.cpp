@@ -37,7 +37,7 @@
 			/* Tram bits aren't considered buildable */
 			if (::GetRoadTypeTram(tile) != INVALID_ROADTYPE) return false;
 			/* Depots and crossings aren't considered buildable */
-			if (::GetRoadTileType(tile) != ROAD_TILE_NORMAL) return false;
+			if (::GetRoadTileType(tile) != RoadTileType::Normal) return false;
 			if (!HasExactlyOneBit(::GetRoadBits(tile, RTT_ROAD))) return false;
 			if (::IsRoadOwner(tile, RTT_ROAD, OWNER_TOWN)) return true;
 			if (::IsRoadOwner(tile, RTT_ROAD, ScriptObject::GetCompany())) return true;
@@ -152,6 +152,13 @@
 	if (!::IsValidTile(tile)) return false;
 
 	return (::IsTileType(tile, MP_CLEAR) && ::IsClearGround(tile, CLEAR_DESERT));
+}
+
+/* static */ bool ScriptTile::IsHouseTile(TileIndex tile)
+{
+	if (!::IsValidTile(tile)) return false;
+
+	return ::IsTileType(tile, MP_HOUSE);
 }
 
 /* static */ ScriptTile::TerrainType ScriptTile::GetTerrainType(TileIndex tile)

@@ -136,9 +136,9 @@ public:
 		for (const auto &item : src) {
 			const auto *spec = T::GetByGrf(item.grfid, item.local_id);
 			if (spec == nullptr) {
-				dst.insert({item.grfid, item.local_id, -1, -1});
+				dst.emplace(item.grfid, item.local_id, -1, -1);
 			} else {
-				dst.insert(GetPickerItem(spec));
+				dst.emplace(GetPickerItem(spec));
 			}
 		}
 		return dst;

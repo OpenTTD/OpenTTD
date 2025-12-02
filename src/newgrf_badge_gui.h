@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file newgrf_badge.h Functions related to NewGRF badges. */
+/** @file newgrf_badge_gui.h GUI functions related to NewGRF badges. */
 
 #ifndef NEWGRF_BADGE_GUI_H
 #define NEWGRF_BADGE_GUI_H
@@ -65,7 +65,7 @@ public:
 
 	BadgeClassID GetBadgeClassID() const { return this->badge_class; }
 	std::string GetStringParameter(const BadgeFilterChoices &choices) const;
-	DropDownList GetDropDownList() const;
+	DropDownList GetDropDownList(PaletteID palette = PAL_NONE) const;
 
 private:
 	GrfSpecFeature feature; ///< Feature of this dropdown.

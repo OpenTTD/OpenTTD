@@ -1002,9 +1002,9 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlags flags)
 
 		for (TileIndex c = tile + delta; c != endtile; c += delta) {
 			/* do not let trees appear from 'nowhere' after removing bridge */
-			if (IsNormalRoadTile(c) && GetRoadside(c) == ROADSIDE_TREES) {
+			if (IsNormalRoadTile(c) && GetRoadside(c) == Roadside::Trees) {
 				int minz = GetTileMaxZ(c) + 3;
-				if (height < minz) SetRoadside(c, ROADSIDE_PAVED);
+				if (height < minz) SetRoadside(c, Roadside::Paved);
 			}
 			ClearBridgeMiddle(c);
 			MarkTileDirtyByTile(c, height - TileHeight(c));
@@ -1462,7 +1462,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 		if (!HasTunnelBridgeSnowOrDesert(ti->tile)) {
 			TileIndex next = ti->tile + TileOffsByDiagDir(tunnelbridge_direction);
-			if (ti->tileh != SLOPE_FLAT && ti->z == 0 && HasTileWaterClass(next) && GetWaterClass(next) == WATER_CLASS_SEA) {
+			if (ti->tileh != SLOPE_FLAT && ti->z == 0 && HasTileWaterClass(next) && GetWaterClass(next) == WaterClass::Sea) {
 				DrawShoreTile(ti->tileh);
 			} else {
 				DrawClearLandTile(ti, 3);

@@ -89,7 +89,7 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, DiagDirections *override
 		case MP_RAILWAY:
 			if (!HasRailCatenary(GetRailType(t))) return TRACK_BIT_NONE;
 			switch (GetRailTileType(t)) {
-				case RAIL_TILE_NORMAL: case RAIL_TILE_SIGNALS:
+				case RailTileType::Normal: case RailTileType::Signals:
 					return GetTrackBits(t);
 				default:
 					return TRACK_BIT_NONE;

@@ -8,8 +8,8 @@
 /** @file soundloader_wav.cpp Loading of wav sounds. */
 
 #include "stdafx.h"
-#include "core/bitmath_func.hpp"
 #include "core/math_func.hpp"
+#include "debug.h"
 #include "random_access_file_type.h"
 #include "sound_type.h"
 #include "soundloader_type.h"
@@ -39,10 +39,16 @@ public:
 
 			if (tag == std::byteswap<uint32_t>('fmt ')) {
 				uint16_t format = file.ReadWord();
-				if (format != 1) return false; // File must be uncompressed PCM
+				if (format != 1) {
+					Debug(grf, 0, "SoundLoader_Wav: Unsupported format {}, expected 1 (uncompressed PCM).", format);
+					return false;
+				}
 
 				sound.channels = file.ReadWord();
-				if (sound.channels != 1) return false; // File must be mono.
+				if (sound.channels != 1) {
+					Debug(grf, 0, "SoundLoader_Wav: Unsupported channels {}, expected 1.", sound.channels);
+					return false;
+				}
 
 				sound.rate = file.ReadDword();
 				if (!new_format) sound.rate = DEFAULT_SAMPLE_RATE; // All old samples should be played at 11025 Hz.
@@ -51,13 +57,20 @@ public:
 				file.ReadWord();  // alignment
 
 				sound.bits_per_sample = file.ReadWord();
-				if (sound.bits_per_sample != 8 && sound.bits_per_sample != 16) return false; // File must be 8 or 16 BPS.
+				if (sound.bits_per_sample != 8 && sound.bits_per_sample != 16) {
+					Debug(grf, 0, "SoundLoader_Wav: Unsupported bits_per_sample {}, expected 8 or 16.", sound.bits_per_sample);
+					return false;
+				}
 
 				/* We've read 16 bytes of this chunk, we can skip anything extra. */
 				size -= 16;
 			} else if (tag == std::byteswap<uint32_t>('data')) {
 				uint align = sound.channels * sound.bits_per_sample / 8;
-				if (Align(size, align) != size) return false; // Ensure length is aligned correctly for channels and BPS.
+				if (Align(size, align) != size) {
+					/* Ensure length is aligned correctly for channels and BPS. */
+					Debug(grf, 0, "SoundLoader_Wav: Unexpected end of stream.");
+					return false;
+				}
 
 				if (size == 0) return true; // No need to continue.
 

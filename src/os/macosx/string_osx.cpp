@@ -190,9 +190,9 @@ static const CTRunDelegateCallbacks _sprite_font_callback = {
 		}
 		CFAttributedStringSetAttribute(str.get(), CFRangeMake(last, position - last), kCTFontAttributeName, font_handle);
 
-		CGColorRef color = CGColorCreateGenericGray((uint8_t)font->colour / 255.0f, 1.0f); // We don't care about the real colours, just that they are different.
-		CFAttributedStringSetAttribute(str.get(), CFRangeMake(last, position - last), kCTForegroundColorAttributeName, color);
-		CGColorRelease(color);
+		CGColorRef colour = CGColorCreateGenericGray((uint8_t)font->colour / 255.0f, 1.0f); // We don't care about the real colours, just that they are different.
+		CFAttributedStringSetAttribute(str.get(), CFRangeMake(last, position - last), kCTForegroundColorAttributeName, colour);
+		CGColorRelease(colour);
 
 		/* Install a size callback for our special private-use sprite glyphs in case the font does not provide them. */
 		for (ssize_t c = last; c < position; c++) {

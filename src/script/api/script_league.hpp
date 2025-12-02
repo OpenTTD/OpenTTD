@@ -70,7 +70,7 @@ public:
 	 * Create a new league table element.
 	 * @param table Id of the league table this element belongs to.
 	 * @param rating Value that elements are ordered by.
-	 * @param company Company to show the color blob for or COMPANY_INVALID.
+	 * @param company Company to show the colour blob for or COMPANY_INVALID.
 	 * @param text Text of the element (can be either a raw string, or ScriptText object).
 	 * @param score String representation of the score associated with the element (can be either a raw string, or ScriptText object).
 	 * @param link_type Type of the referenced object.
@@ -87,7 +87,7 @@ public:
 	/**
 	 * Update the attributes of a league table element.
 	 * @param element Id of the element to update
-	 * @param company Company to show the color blob for or COMPANY_INVALID.
+	 * @param company Company to show the colour blob for or COMPANY_INVALID.
 	 * @param text Text of the element (can be either a raw string, or ScriptText object).
 	 * @param link_type Type of the referenced object.
 	 * @param link_target Id of the referenced object.

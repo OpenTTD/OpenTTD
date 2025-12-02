@@ -130,9 +130,9 @@ Badge *GetBadgeByLabel(std::string_view label)
 }
 
 /**
- * Get the badge class of a badge label.
- * @param label Label to get class of.
- * @returns Badge class index of label.
+ * Get the badge for a badge class index.
+ * @param class_index Index of the badge class.
+ * @return Class badge for the class index, or nullptr if not present.
  */
 Badge *GetClassBadge(BadgeClassID class_index)
 {

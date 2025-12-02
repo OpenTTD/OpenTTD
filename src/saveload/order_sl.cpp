@@ -191,7 +191,7 @@ struct ORDRChunkHandler : ChunkHandler {
 
 			/* Update all the next pointer. The orders were built like this:
 			 * While the order is valid, the previous order will get its next pointer set */
-			for (uint32_t num = 1; OldOrderSaveLoadItem item : _old_order_saveload_pool) {
+			for (uint32_t num = 1; const OldOrderSaveLoadItem &item : _old_order_saveload_pool) {
 				if (!item.order.IsType(OT_NOTHING) && num > 1) {
 					OldOrderSaveLoadItem *prev = GetOldOrder(num - 1);
 					if (prev != nullptr) prev->next = num;

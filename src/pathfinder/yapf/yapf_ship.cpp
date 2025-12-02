@@ -385,11 +385,11 @@ public:
 
 		/* Ocean/canal speed penalty. */
 		const ShipVehicleInfo *svi = ShipVehInfo(Yapf().GetVehicle()->engine_type);
-		uint8_t speed_frac = (GetEffectiveWaterClass(n.GetTile()) == WATER_CLASS_SEA) ? svi->ocean_speed_frac : svi->canal_speed_frac;
+		uint8_t speed_frac = (GetEffectiveWaterClass(n.GetTile()) == WaterClass::Sea) ? svi->ocean_speed_frac : svi->canal_speed_frac;
 		if (speed_frac > 0) c += YAPF_TILE_LENGTH * (1 + follower->tiles_skipped) * speed_frac / (256 - speed_frac);
 
 		/* Lock penalty. */
-		if (IsTileType(n.GetTile(), MP_WATER) && IsLock(n.GetTile()) && GetLockPart(n.GetTile()) == LOCK_PART_MIDDLE) {
+		if (IsTileType(n.GetTile(), MP_WATER) && IsLock(n.GetTile()) && GetLockPart(n.GetTile()) == LockPart::Middle) {
 			const uint canal_speed = svi->ApplyWaterClassSpeedFrac(svi->max_speed, false);
 			/* Cost is proportional to the vehicle's speed as the vehicle stops in the lock. */
 			c += (TILE_HEIGHT * YAPF_TILE_LENGTH * canal_speed) / 128;

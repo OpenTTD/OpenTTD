@@ -29,6 +29,7 @@
 #include "road_internal.h" /* For drawing catenary/checking road removal */
 #include "autoslope.h"
 #include "water.h"
+#include "tilehighlight_func.h"
 #include "strings_func.h"
 #include "clear_func.h"
 #include "timer/timer_game_calendar.h"
@@ -71,6 +72,7 @@
 #include "station_layout_type.h"
 
 #include "widgets/station_widget.h"
+#include "widgets/misc_widget.h"
 
 #include "table/strings.h"
 #include "table/station_land.h"
@@ -2702,7 +2704,7 @@ CommandCost CmdBuildAirport(DoCommandFlags flags, TileIndex tile, uint8_t airpor
 
 		for (AirportTileTableIterator iter(as->layouts[layout].tiles, tile); iter != INVALID_TILE; ++iter) {
 			Tile t(iter);
-			MakeAirport(t, st->owner, st->index, iter.GetStationGfx(), WATER_CLASS_INVALID);
+			MakeAirport(t, st->owner, st->index, iter.GetStationGfx(), WaterClass::Invalid);
 			SetStationTileRandomBits(t, GB(Random(), 0, 4));
 			st->airport.Add(iter);
 
@@ -2946,7 +2948,7 @@ CommandCost CmdBuildDock(DoCommandFlags flags, TileIndex tile, StationID station
 		 * This is needed as we've cleared that tile before.
 		 * Clearing object tiles may result in water tiles which are already accounted for in the water infrastructure total.
 		 * See: MakeWaterKeepingClass() */
-		if (wc == WATER_CLASS_CANAL && !(HasTileWaterClass(flat_tile) && GetWaterClass(flat_tile) == WATER_CLASS_CANAL && IsTileOwner(flat_tile, _current_company))) {
+		if (wc == WaterClass::Canal && !(HasTileWaterClass(flat_tile) && GetWaterClass(flat_tile) == WaterClass::Canal && IsTileOwner(flat_tile, _current_company))) {
 			Company::Get(st->owner)->infrastructure.water++;
 		}
 		Company::Get(st->owner)->infrastructure.station += 2;
@@ -3357,8 +3359,8 @@ static void DrawTile_Station(TileInfo *ti)
 		} else {
 			assert(IsDock(ti->tile));
 			TileIndex water_tile = ti->tile + TileOffsByDiagDir(GetDockDirection(ti->tile));
-			WaterClass wc = HasTileWaterClass(water_tile) ? GetWaterClass(water_tile) : WATER_CLASS_INVALID;
-			if (wc == WATER_CLASS_SEA) {
+			WaterClass wc = HasTileWaterClass(water_tile) ? GetWaterClass(water_tile) : WaterClass::Invalid;
+			if (wc == WaterClass::Sea) {
 				DrawShoreTile(ti->tileh);
 			} else {
 				DrawClearLandTile(ti, 3);
@@ -3768,11 +3770,11 @@ static void TileLoop_Station(TileIndex tile)
 			}
 
 			/* Adjust road ground type depending on 'new_zone' */
-			Roadside new_rs = new_zone != HouseZone::TownEdge ? ROADSIDE_PAVED : ROADSIDE_GRASS;
+			Roadside new_rs = new_zone != HouseZone::TownEdge ? Roadside::Paved : Roadside::Grass;
 			Roadside cur_rs = GetRoadWaypointRoadside(tile);
 
 			if (new_rs != cur_rs) {
-				SetRoadWaypointRoadside(tile, cur_rs == ROADSIDE_BARREN ? new_rs : ROADSIDE_BARREN);
+				SetRoadWaypointRoadside(tile, cur_rs == Roadside::Barren ? new_rs : Roadside::Barren);
 				MarkTileDirtyByTile(tile);
 			}
 
@@ -4073,7 +4075,7 @@ static void UpdateStationRating(Station *st)
 				uint32_t r = Random();
 				if (rating <= (int)GB(r, 0, 7)) {
 					/* Need to have int, otherwise it will just overflow etc. */
-					waiting = std::max((int)waiting - (int)((GB(r, 8, 2) - 1) * num_dests), 0);
+					waiting = std::max((int)waiting - (int)((GB(r, 8, 2) + 1) * num_dests), 0);
 					waiting_changed = true;
 				}
 			}
@@ -4475,6 +4477,59 @@ CommandCost CmdRenameStation(DoCommandFlags flags, StationID station_id, const s
 	return CommandCost();
 }
 
+/**
+ * Move a station name.
+ * @param flags type of operation
+ * @param station_id id of the station
+ * @param tile to move the station name to
+ * @return the cost of this operation or an error and the station ID
+ */
+std::tuple<CommandCost, StationID> CmdMoveStationName(DoCommandFlags flags, StationID station_id, TileIndex tile)
+{
+	Station *st = Station::GetIfValid(station_id);
+	if (st == nullptr) return { CMD_ERROR, StationID::Invalid() };
+
+	if (st->owner != OWNER_NONE) {
+		CommandCost ret = CheckOwnership(st->owner);
+		if (ret.Failed()) return { ret, StationID::Invalid() };
+	}
+
+	const StationRect *r = &st->rect;
+	if (!r->PtInExtendedRect(TileX(tile), TileY(tile))) {
+		return { CommandCost(STR_ERROR_SITE_UNSUITABLE), StationID::Invalid() };
+	}
+
+	bool other_station = false;
+	/* Check if the tile is the base tile of another station */
+	ForAllStationsRadius(tile, 0, [&](BaseStation *s) {
+		if (s != nullptr) {
+			if (s != st && s->xy == tile) other_station = true;
+		}
+	});
+	if (other_station) return { CommandCost(STR_ERROR_SITE_UNSUITABLE), StationID::Invalid() };
+
+	if (flags.Test(DoCommandFlag::Execute)) {
+		st->MoveSign(tile);
+
+		st->UpdateVirtCoord();
+	}
+	return { CommandCost(), station_id };
+}
+
+/**
+* Callback function that is called after a name is moved
+* @param result of the operation
+* @param station_id ID of the changed station
+*/
+void CcMoveStationName(Commands, const CommandCost &result, StationID station_id)
+	{
+		if (result.Failed()) return;
+
+		ResetObjectToPlace();
+		Station *st = Station::Get(station_id);
+		SetViewportStationRect(st, false);
+	}
+
 static void AddNearbyStationsByCatchment(TileIndex tile, StationList &stations, StationList &nearby)
 {
 	for (Station *st : nearby) {
@@ -4748,7 +4803,7 @@ static void ChangeTileOwner_Station(TileIndex tile, Owner old_owner, Owner new_o
 
 			case StationType::Buoy:
 			case StationType::Dock:
-				if (GetWaterClass(tile) == WATER_CLASS_CANAL) {
+				if (GetWaterClass(tile) == WaterClass::Canal) {
 					old_company->infrastructure.water--;
 					new_company->infrastructure.water++;
 				}

@@ -3828,14 +3828,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Výborné
 STR_CARGO_RATING_OUTSTANDING                                    :Perfektné
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Vycentrovať pohľad na pozíciu stanice. Ctrl+Klik otvorí nové okno s pohľadom na stanicu
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Zmeniť názov stanice
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Zobraziť všetky vlaky, ktoré majú túto stanicu v cestovnom poriadku
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Zobraziť všetky autá, ktoré majú túto stanicu v cestovnom poriadku
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Zobraziť všetky lietadlá, ktoré majú túto stanicu v cestovnom poriadku
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Zobraziť všetky lode, ktoré majú túto stanicu v cestovnom poriadku
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Premenovať stanicu/vykládku
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Uzavri letisko
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Zakáž lietadlám pristávať na tomto letisku
@@ -3843,11 +3841,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Zakáž 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Vycentrovať pohľad na pozíciu smerového bodu. Ctrl+Klik otvorí nové okno s pohľadom na smerový bod
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Zmeniť meno smerového bodu
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Vycentrovať pohľad na pozíciu bóje. Ctrl+Klik otvorí nové okno s pohľadom na bóju
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Zmeniť meno bóje
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Upraviť názvy smerových bodov
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Financie spoločnosti {COMPANY} {BLACK}{COMPANY_NUM}

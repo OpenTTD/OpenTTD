@@ -3071,14 +3071,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Bikaina
 STR_CARGO_RATING_OUTSTANDING                                    :Ezin hobea
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Ikuspegi nagusi geltokian kokatu. Ktrl+Klik ikuspegi lehio berria irekiko da geltokiaren kokapenean
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Geltokiaren izena aldatu
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Erakutsi geltoki hau erabiltzen duten trenak
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Erakutsi geltoki hau erabiltzen duten errepide ibilgailuak
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Erakutsi geltoki hau erabiltzen duten hegazkinak
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Erakutsi geltoki hau erabiltzen duten itsasontziak
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Geltokiaren izena aldatu
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Aireporturik hurbilenak
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Hegazkinak aireportu honetan lurreratzea ekiditu
@@ -3086,11 +3084,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Hegazkin
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Ikuspegi nagusia bidepuntuan kokatu. Ktrl+Klik Ikuspegi lehio berria irekiko du bidepuntuaren kokapenerakin
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Bidepuntuaren izena aldatu
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Ikuspegi nagusia buian kokatu. ktrl+Klik Ikuspegi lehio berria irekiko du buiaren kokapenarekin
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Buiaren izena aldatu
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Bidepuntuaren izena aldatu
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finantzak {BLACK}{COMPANY_NUM}

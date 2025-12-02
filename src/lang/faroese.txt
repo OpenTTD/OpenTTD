@@ -2820,14 +2820,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Framúrskarandi
 STR_CARGO_RATING_OUTSTANDING                                    :Avberða gott
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Savna høvuðs sýni á støðina. Ctrl+trýst letur nýggjan sýnisglugga upp við sýni á støðina
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Broyt navn á støð
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Vís øll tok ið hava hesa støðina í teirra skrá
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Vís øll akfør ið hava hesa støðina í teirra skrá
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Vís øll flogfør ið hava hesa støðina í teirra skrá
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Vís øll skip ið hava hesa støðina í teirra skrá
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Navngev støð/lessingar øki
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Stong floghavn
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Forða flogførum í at lenda í hesari floghavnini
@@ -2835,11 +2833,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Forða f
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Savna høvuðs sýni á waypoint. Ctrl+trýst letur nýggjan sýnisglugga upp við sýni á waypoint
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Broyt navn á waypoint
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Savna høvuðs sýni á boyjuna. Ctrl+trýst letur nýggjan sýnisglugga upp á boyjuna
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Broyt navn á boyju
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Rætta waypoint navn
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Fíggjar støða {BLACK}{COMPANY_NUM}

@@ -3458,14 +3458,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Ar fheabhas
 STR_CARGO_RATING_OUTSTANDING                                    :Go hiontach
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Láraigh an príomhamharc ar shuíomh an stáisiúin. Osclaítear amharc nua ar shuíomh an stáisiúin le Ctrl+Cliceáil
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Athraigh ainm an stásiúin
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Taispeáin gach traein a bhfuil an stáisiún seo ar a sceideal
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Taispeáin gach feithicil bóthair a bhfuil an stáisiún seo ar a sceideal
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Taispeáin gach aerárthach a bhfuil an stáisiún seo ar a sceideal
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Taispeáin gach long a bhfuil an stáisiún seo ar a sceideal
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Athainmnigh stáisiún/limistéar lódála
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Dún an t-aerfort
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Cuir cosc ar aerárthaigh tuirlingt ag an aerfort seo
@@ -3473,11 +3471,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Cuir cos
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Láraigh an príomhamharc ar shuíomh an phointe bealaigh. Osclaítear amharc nua ar shuíomh an phointe bealaigh le Ctrl+Cliceáil
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Athraigh ainm an phointe bealaigh
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Láraigh an príomhamharc ar shuíomh an bhaoi. Osclaítear amharc nua ar shuíomh an bhaoi le Ctrl+Cliceáil
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Athraigh ainm an bhaoi
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Cuir ainm an phointe bealaigh in eagar
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Airgeadas {COMPANY} {BLACK}{COMPANY_NUM}

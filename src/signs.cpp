@@ -55,11 +55,11 @@ void UpdateAllSignVirtCoords()
 }
 
 /**
- * Check if the current company can rename a given sign.
+ * Check if the current company can rename or move a given sign.
  * @param *si The sign in question.
- * @return true if the sign can be renamed, else false.
+ * @return true if the sign can be renamed or moved, else false.
  */
-bool CompanyCanRenameSign(const Sign *si)
+bool CompanyCanEditSign(const Sign *si)
 {
 	if (si->owner == OWNER_DEITY && _current_company != OWNER_DEITY && _game_mode != GM_EDITOR) return false;
 	return true;

@@ -99,7 +99,7 @@ VideoDriver_Cocoa::VideoDriver_Cocoa(bool uses_hardware_acceleration)
 	this->cocoaview = nil;
 	this->delegate  = nil;
 
-	this->color_space = nullptr;
+	this->colour_space = nullptr;
 
 	this->dirty_rect = {};
 }
@@ -116,7 +116,7 @@ void VideoDriver_Cocoa::Stop()
 	[ this->cocoaview release ];
 	[ this->delegate release ];
 
-	CGColorSpaceRelease(this->color_space);
+	CGColorSpaceRelease(this->colour_space);
 
 	_cocoa_video_started = false;
 }
@@ -432,10 +432,10 @@ bool VideoDriver_Cocoa::MakeWindow(int width, int height)
 	[ draw_view release ];
 
 	[ this->window setColorSpace:[ NSColorSpace sRGBColorSpace ] ];
-	CGColorSpaceRelease(this->color_space);
-	this->color_space = CGColorSpaceCreateWithName(kCGColorSpaceSRGB);
-	if (this->color_space == nullptr) this->color_space = CGColorSpaceCreateDeviceRGB();
-	if (this->color_space == nullptr) FatalError("Could not get a valid colour space for drawing.");
+	CGColorSpaceRelease(this->colour_space);
+	this->colour_space = CGColorSpaceCreateWithName(kCGColorSpaceSRGB);
+	if (this->colour_space == nullptr) this->colour_space = CGColorSpaceCreateDeviceRGB();
+	if (this->colour_space == nullptr) FatalError("Could not get a valid colour space for drawing.");
 
 	this->setup = false;
 
@@ -654,7 +654,7 @@ void VideoDriver_CocoaQuartz::AllocateBackingStore(bool)
 		this->window_height,       // height
 		8,                         // bits per component
 		this->window_pitch * 4,    // bytes per row
-		this->color_space,         // color space
+		this->colour_space, // colour space
 		kCGImageAlphaNoneSkipFirst | kCGBitmapByteOrder32Host
 	);
 
@@ -704,11 +704,11 @@ void VideoDriver_CocoaQuartz::BlitIndexedToView32(int left, int top, int right, 
 }
 
 /** Update the palette */
-void VideoDriver_CocoaQuartz::UpdatePalette(uint first_color, uint num_colors)
+void VideoDriver_CocoaQuartz::UpdatePalette(uint first_colour, uint num_colours)
 {
 	if (this->buffer_depth != 8) return;
 
-	for (uint i = first_color; i < first_color + num_colors; i++) {
+	for (uint i = first_colour; i < first_colour + num_colours; i++) {
 		uint32_t clr = 0xff000000;
 		clr |= (uint32_t)_local_palette.palette[i].r << 16;
 		clr |= (uint32_t)_local_palette.palette[i].g << 8;

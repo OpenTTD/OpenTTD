@@ -15,7 +15,7 @@
 CommandCost CmdChangeSetting(DoCommandFlags flags, const std::string &name, int32_t value);
 CommandCost CmdChangeCompanySetting(DoCommandFlags flags, const std::string &name, int32_t value);
 
-DEF_CMD_TRAIT(CMD_CHANGE_SETTING,         CmdChangeSetting,        CommandFlags({CommandFlag::Server, CommandFlag::NoEst}), CMDT_SERVER_SETTING)
-DEF_CMD_TRAIT(CMD_CHANGE_COMPANY_SETTING, CmdChangeCompanySetting, CommandFlag::NoEst, CMDT_COMPANY_SETTING)
+DEF_CMD_TRAIT(CMD_CHANGE_SETTING,         CmdChangeSetting,        CommandFlags({CommandFlag::Server, CommandFlag::NoEst}), CommandType::ServerSetting)
+DEF_CMD_TRAIT(CMD_CHANGE_COMPANY_SETTING, CmdChangeCompanySetting, CommandFlag::NoEst, CommandType::CompanySetting)
 
 #endif /* SETTINGS_CMD_H */

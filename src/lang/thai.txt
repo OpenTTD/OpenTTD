@@ -3257,14 +3257,12 @@ STR_CARGO_RATING_EXCELLENT                                      :ยอดเย
 STR_CARGO_RATING_OUTSTANDING                                    :เกินความคาดหมาย
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}จุดศูนย์กลางมุมมองสถานี
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}เปลี่ยนชื่อสถานี
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}แสดงขบวนรถไฟที่มีรายการเข้าจอดที่สถานีนี้
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}แสดงยานพาหนะทางบกที่มีรายการเข้าจอดที่สถานีนี้
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}แสดงอากาศยานที่มีรายการลงจอดจอดที่สถานีนี้
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}แสดงเรือที่มีรายการเข้าเทียบท่าที่ท่านี้
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :เปลี่ยนชื่อสถานี/พื้นที่รับส่งสินค้า
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}ปิดท่าอากาศยาน
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}ไม่ให้เที่ยวบินมาลงจอดที่ท่าอากาศยานนี้
@@ -3272,11 +3270,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}ไม�
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}จุดศูนย์กลางมุมมองสถานี
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}เปลี่ยนชื่อ Waypoint
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}จุดศูนย์กลางมุมมองสถานี
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}เปลี่ยนชื่อทุ่มลอยน้ำ
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}เปลี่ยนชื่อ Waypoint
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE} สภาวะการเงินของ {COMPANY}{BLACK}{COMPANY_NUM}

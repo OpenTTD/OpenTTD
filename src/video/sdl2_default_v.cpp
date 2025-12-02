@@ -67,22 +67,22 @@ void VideoDriver_SDL_Default::MakePalette()
 
 	if (_sdl_surface != _sdl_real_surface) {
 		/* When using a shadow surface, also set our palette on the real screen. This lets SDL
-		 * allocate as many colors (or approximations) as
+		 * allocate as many colours (or approximations) as
 		 * possible, instead of using only the default SDL
-		 * palette. This allows us to get more colors exactly
+		 * palette. This allows us to get more colours exactly
 		 * right and might allow using better approximations for
-		 * other colors.
+		 * other colours.
 		 *
-		 * Note that colors allocations are tried in-order, so
-		 * this favors colors further up into the palette. Also
-		 * note that if two colors from the same animation
-		 * sequence are approximated using the same color, that
+		 * Note that colours allocations are tried in-order, so
+		 * this favors colours further up into the palette. Also
+		 * note that if two colours from the same animation
+		 * sequence are approximated using the same colour, that
 		 * animation will stop working.
 		 *
 		 * Since changing the system palette causes the colours
 		 * to change right away, and allocations might
 		 * drastically change, we can't use this for animation,
-		 * since that could cause weird coloring between the
+		 * since that could cause weird colouring between the
 		 * palette change and the blitting below, so we only set
 		 * the real palette during initialisation.
 		 */

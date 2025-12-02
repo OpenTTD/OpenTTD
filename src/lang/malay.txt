@@ -2878,25 +2878,21 @@ STR_CARGO_RATING_EXCELLENT                                      :Cemerlang
 STR_CARGO_RATING_OUTSTANDING                                    :Mengkagumkan
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Pusatkan pemandangan utama ke lokasi stesen. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi stesen
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Tukarkan nama stesen
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Tunjukkan semua keretapi yang mengandungi stesen ini dalam jadual mereka
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Tunjukkan semua kenderaan darat yang mempunyai stesen ini di dalam jadual mereka
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Tunjukkan semua pesawat yang mengandungi lapangan terbang ini dalam jadual mereka
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Tunjukkan semua kapal yang mengandungi stesen ini dalam jadual mereka
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Namakan semula stesen/ruang punggahan
 
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Halang pesawat daripada mendarat di lapangan terbang ini
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Pusatkan pemandangan utama ke lokasi tandatuju. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi tandatuju
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Tukar nama tandatuju
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Pusatkan pemandangan utama ke lokasi pelampung. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi pelampung
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Tukar nama pelampung
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Tukar nama tandatuju
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Kewangan {BLACK}{COMPANY_NUM}

@@ -81,7 +81,7 @@ GUIBadgeClasses::GUIBadgeClasses(GrfSpecFeature feature) : UsedBadgeClasses(feat
 		const auto [config, sort_order] = GetBadgeClassConfigItem(feature, class_badge->label);
 
 		this->gui_classes.emplace_back(class_index, config.column, config.show_icon, sort_order, size, class_badge->label);
-		if (size.width != 0 && config.show_icon) max_column = std::max<uint>(max_column, config.column);
+		if (size.width != 0 && config.show_icon) max_column = std::max(max_column, config.column);
 	}
 
 	std::sort(std::begin(this->gui_classes), std::end(this->gui_classes));
@@ -133,6 +133,7 @@ int DrawBadgeNameList(Rect r, std::span<const BadgeID> badges, GrfSpecFeature)
 			const Badge *badge = GetBadge(index);
 			if (badge == nullptr || badge->name == STR_NULL) continue;
 			if (badge->class_index != class_index) continue;
+			if (badge->flags.Test(BadgeFlag::NameListSkip)) continue;
 
 			if (!s.empty()) {
 				if (badge->flags.Test(BadgeFlag::NameListFirstOnly)) continue;
@@ -193,9 +194,12 @@ public:
 	{
 		for (const auto &gc : gui_classes->GetClasses()) {
 			if (gc.column_group != 0) continue;
-			dim.width += gc.size.width + WidgetDimensions::scaled.hsep_normal;
-			dim.height = std::max(dim.height, gc.size.height);
+			dim.width += ScaleGUITrad(gc.size.width) + WidgetDimensions::scaled.hsep_normal;
+			dim.height = std::max<uint>(dim.height, ScaleGUITrad(gc.size.height));
 		}
+
+		/* Remove trailing `hsep_normal` spacer. */
+		if (dim.width > 0) dim.width -= WidgetDimensions::scaled.hsep_normal;
 	}
 
 	uint Height() const override
@@ -206,7 +210,7 @@ public:
 	uint Width() const override
 	{
 		if (this->dim.width == 0) return this->TBase::Width();
-		return this->dim.width + WidgetDimensions::scaled.hsep_wide + this->TBase::Width();
+		return this->dim.width + WidgetDimensions::scaled.hsep_normal + this->TBase::Width();
 	}
 
 	int OnClick(const Rect &r, const Point &pt) const override
@@ -215,7 +219,7 @@ public:
 			return this->TBase::OnClick(r, pt);
 		} else {
 			bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
-			return this->TBase::OnClick(r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), pt);
+			return this->TBase::OnClick(r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_normal, rtl), pt);
 		}
 	}
 
@@ -226,7 +230,7 @@ public:
 		} else {
 			bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
 			DrawBadgeColumn(r.WithWidth(this->dim.width, rtl), 0, *this->gui_classes, this->badges, this->feature, this->introduction_date, PAL_NONE);
-			this->TBase::Draw(full, r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), sel, click_result, bg_colour);
+			this->TBase::Draw(full, r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_normal, rtl), sel, click_result, bg_colour);
 		}
 	}
 
@@ -436,7 +440,7 @@ static void BadgeClassMoveNext(GrfSpecFeature feature, Badge &class_badge, uint 
 
 	auto pos_cur = std::ranges::find(gui_classes.GetClasses(), class_badge.class_index, &GUIBadgeClasses::Element::class_index);
 	if (std::next(pos_cur) == std::end(gui_classes.GetClasses())) {
-		if (it->column < static_cast<int>(columns - 1)) ++it->column;
+		if (it->column < columns - 1) ++it->column;
 		return;
 	}
 
@@ -505,9 +509,10 @@ std::string NWidgetBadgeFilter::GetStringParameter(const BadgeFilterChoices &cho
 
 /**
  * Get the drop down list of badges for this filter.
+ * @param palette Palette used to remap badge sprites.
  * @return Drop down list for filter.
  */
-DropDownList NWidgetBadgeFilter::GetDropDownList() const
+DropDownList NWidgetBadgeFilter::GetDropDownList(PaletteID palette) const
 {
 	DropDownList list;
 
@@ -530,7 +535,7 @@ DropDownList NWidgetBadgeFilter::GetDropDownList() const
 		if (badge.name == STR_NULL) continue;
 		if (!badge.features.Test(this->feature)) continue;
 
-		PalSpriteID ps = GetBadgeSprite(badge, this->feature, std::nullopt, PAL_NONE);
+		PalSpriteID ps = GetBadgeSprite(badge, this->feature, std::nullopt, palette);
 		if (ps.sprite == 0) {
 			list.push_back(MakeDropDownListStringItem(badge.name, badge.index.base()));
 		} else {

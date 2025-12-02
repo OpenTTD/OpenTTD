@@ -28,19 +28,19 @@ static constexpr uint8_t WBL_DEPOT_PART = 0; ///< Depot part flag.
 static constexpr uint8_t WBL_DEPOT_AXIS = 1; ///< Depot axis flag.
 
 /** Available water tile types. */
-enum WaterTileType : uint8_t {
-	WATER_TILE_CLEAR, ///< Plain water.
-	WATER_TILE_COAST, ///< Coast.
-	WATER_TILE_LOCK,  ///< Water lock.
-	WATER_TILE_DEPOT, ///< Water Depot.
+enum class WaterTileType : uint8_t {
+	Clear = 0, ///< Plain water.
+	Coast = 1, ///< Coast.
+	Lock = 2, ///< Water lock.
+	Depot = 3, ///< Water Depot.
 };
 
-/** classes of water (for #WATER_TILE_CLEAR water tile type). */
-enum WaterClass : uint8_t {
-	WATER_CLASS_SEA,     ///< Sea.
-	WATER_CLASS_CANAL,   ///< Canal.
-	WATER_CLASS_RIVER,   ///< River.
-	WATER_CLASS_INVALID, ///< Used for industry tiles on land (also for oilrig if newgrf says so).
+/** classes of water (for #WaterTileType::Clear water tile type). */
+enum class WaterClass : uint8_t {
+	Sea = 0, ///< Sea.
+	Canal = 1, ///< Canal.
+	River = 2, ///< River.
+	Invalid = 3, ///< Used for industry tiles on land (also for oilrig if newgrf says so).
 };
 
 /**
@@ -51,22 +51,22 @@ enum WaterClass : uint8_t {
  */
 inline bool IsValidWaterClass(WaterClass wc)
 {
-	return wc < WATER_CLASS_INVALID;
+	return wc < WaterClass::Invalid;
 }
 
 /** Sections of the water depot. */
-enum DepotPart : uint8_t {
-	DEPOT_PART_NORTH = 0, ///< Northern part of a depot.
-	DEPOT_PART_SOUTH = 1, ///< Southern part of a depot.
-	DEPOT_PART_END
+enum class DepotPart : uint8_t {
+	North = 0, ///< Northern part of a depot.
+	South = 1, ///< Southern part of a depot.
+	End,
 };
 
 /** Sections of the water lock. */
-enum LockPart : uint8_t {
-	LOCK_PART_MIDDLE = 0, ///< Middle part of a lock.
-	LOCK_PART_LOWER  = 1, ///< Lower part of a lock.
-	LOCK_PART_UPPER  = 2, ///< Upper part of a lock.
-	LOCK_PART_END,
+enum class LockPart : uint8_t {
+	Middle = 0, ///< Middle part of a lock.
+	Lower = 1, ///< Lower part of a lock.
+	Upper = 2, ///< Upper part of a lock.
+	End,
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(LockPart);
 
@@ -114,7 +114,7 @@ inline bool HasTileWaterClass(Tile t)
 inline WaterClass GetWaterClass(Tile t)
 {
 	assert(HasTileWaterClass(t));
-	return (WaterClass)GB(t.m1(), 5, 2);
+	return static_cast<WaterClass>(GB(t.m1(), 5, 2));
 }
 
 /**
@@ -126,7 +126,7 @@ inline WaterClass GetWaterClass(Tile t)
 inline void SetWaterClass(Tile t, WaterClass wc)
 {
 	assert(HasTileWaterClass(t));
-	SB(t.m1(), 5, 2, wc);
+	SB(t.m1(), 5, 2, to_underlying(wc));
 }
 
 /**
@@ -137,7 +137,7 @@ inline void SetWaterClass(Tile t, WaterClass wc)
  */
 inline bool IsTileOnWater(Tile t)
 {
-	return (GetWaterClass(t) != WATER_CLASS_INVALID);
+	return (GetWaterClass(t) != WaterClass::Invalid);
 }
 
 /**
@@ -148,7 +148,7 @@ inline bool IsTileOnWater(Tile t)
  */
 inline bool IsWater(Tile t)
 {
-	return GetWaterTileType(t) == WATER_TILE_CLEAR;
+	return GetWaterTileType(t) == WaterTileType::Clear;
 }
 
 /**
@@ -159,7 +159,7 @@ inline bool IsWater(Tile t)
  */
 inline bool IsSea(Tile t)
 {
-	return IsWater(t) && GetWaterClass(t) == WATER_CLASS_SEA;
+	return IsWater(t) && GetWaterClass(t) == WaterClass::Sea;
 }
 
 /**
@@ -170,7 +170,7 @@ inline bool IsSea(Tile t)
  */
 inline bool IsCanal(Tile t)
 {
-	return IsWater(t) && GetWaterClass(t) == WATER_CLASS_CANAL;
+	return IsWater(t) && GetWaterClass(t) == WaterClass::Canal;
 }
 
 /**
@@ -181,7 +181,7 @@ inline bool IsCanal(Tile t)
  */
 inline bool IsRiver(Tile t)
 {
-	return IsWater(t) && GetWaterClass(t) == WATER_CLASS_RIVER;
+	return IsWater(t) && GetWaterClass(t) == WaterClass::River;
 }
 
 /**
@@ -202,7 +202,7 @@ inline bool IsWaterTile(Tile t)
  */
 inline bool IsCoast(Tile t)
 {
-	return GetWaterTileType(t) == WATER_TILE_COAST;
+	return GetWaterTileType(t) == WaterTileType::Coast;
 }
 
 /**
@@ -212,7 +212,7 @@ inline bool IsCoast(Tile t)
  */
 inline bool IsCoastTile(Tile t)
 {
-	return (IsTileType(t, MP_WATER) && IsCoast(t)) || (IsTileType(t, MP_TREES) && GetWaterClass(t) != WATER_CLASS_INVALID);
+	return (IsTileType(t, MP_WATER) && IsCoast(t)) || (IsTileType(t, MP_TREES) && GetWaterClass(t) != WaterClass::Invalid);
 }
 
 /**
@@ -223,7 +223,7 @@ inline bool IsCoastTile(Tile t)
  */
 inline bool IsShipDepot(Tile t)
 {
-	return GetWaterTileType(t) == WATER_TILE_DEPOT;
+	return GetWaterTileType(t) == WaterTileType::Depot;
 }
 
 /**
@@ -257,7 +257,7 @@ inline Axis GetShipDepotAxis(Tile t)
 inline DepotPart GetShipDepotPart(Tile t)
 {
 	assert(IsShipDepotTile(t));
-	return (DepotPart)GB(t.m5(), WBL_DEPOT_PART, 1);
+	return static_cast<DepotPart>(GB(t.m5(), WBL_DEPOT_PART, 1));
 }
 
 /**
@@ -268,7 +268,7 @@ inline DepotPart GetShipDepotPart(Tile t)
  */
 inline DiagDirection GetShipDepotDirection(Tile t)
 {
-	return XYNSToDiagDir(GetShipDepotAxis(t), GetShipDepotPart(t));
+	return XYNSToDiagDir(GetShipDepotAxis(t), to_underlying(GetShipDepotPart(t)));
 }
 
 /**
@@ -279,7 +279,7 @@ inline DiagDirection GetShipDepotDirection(Tile t)
  */
 inline TileIndex GetOtherShipDepotTile(Tile t)
 {
-	return TileIndex(t) + (GetShipDepotPart(t) != DEPOT_PART_NORTH ? -1 : 1) * TileOffsByAxis(GetShipDepotAxis(t));
+	return TileIndex(t) + (GetShipDepotPart(t) != DepotPart::North ? -1 : 1) * TileOffsByAxis(GetShipDepotAxis(t));
 }
 
 /**
@@ -304,7 +304,7 @@ inline TileIndex GetShipDepotNorthTile(Tile t)
  */
 inline bool IsLock(Tile t)
 {
-	return GetWaterTileType(t) == WATER_TILE_LOCK;
+	return GetWaterTileType(t) == WaterTileType::Lock;
 }
 
 /**
@@ -384,13 +384,13 @@ inline void MakeShore(Tile t)
 {
 	SetTileType(t, MP_WATER);
 	SetTileOwner(t, OWNER_WATER);
-	SetWaterClass(t, WATER_CLASS_SEA);
+	SetWaterClass(t, WaterClass::Sea);
 	SetDockingTile(t, false);
 	t.m2() = 0;
 	t.m3() = 0;
 	t.m4() = 0;
 	t.m5() = 0;
-	SetWaterTileType(t, WATER_TILE_COAST);
+	SetWaterTileType(t, WaterTileType::Coast);
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
 	t.m8() = 0;
@@ -413,7 +413,7 @@ inline void MakeWater(Tile t, Owner o, WaterClass wc, uint8_t random_bits)
 	t.m3() = 0;
 	t.m4() = random_bits;
 	t.m5() = 0;
-	SetWaterTileType(t, WATER_TILE_CLEAR);
+	SetWaterTileType(t, WaterTileType::Clear);
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
 	t.m8() = 0;
@@ -425,7 +425,7 @@ inline void MakeWater(Tile t, Owner o, WaterClass wc, uint8_t random_bits)
  */
 inline void MakeSea(Tile t)
 {
-	MakeWater(t, OWNER_WATER, WATER_CLASS_SEA, 0);
+	MakeWater(t, OWNER_WATER, WaterClass::Sea, 0);
 }
 
 /**
@@ -435,7 +435,7 @@ inline void MakeSea(Tile t)
  */
 inline void MakeRiver(Tile t, uint8_t random_bits)
 {
-	MakeWater(t, OWNER_WATER, WATER_CLASS_RIVER, random_bits);
+	MakeWater(t, OWNER_WATER, WaterClass::River, random_bits);
 }
 
 /**
@@ -447,7 +447,7 @@ inline void MakeRiver(Tile t, uint8_t random_bits)
 inline void MakeCanal(Tile t, Owner o, uint8_t random_bits)
 {
 	assert(o != OWNER_WATER);
-	MakeWater(t, o, WATER_CLASS_CANAL, random_bits);
+	MakeWater(t, o, WaterClass::Canal, random_bits);
 }
 
 /**
@@ -455,7 +455,7 @@ inline void MakeCanal(Tile t, Owner o, uint8_t random_bits)
  * @param t    Tile to place the ship depot section.
  * @param o    Owner of the depot.
  * @param did  Depot ID.
- * @param part Depot part (either #DEPOT_PART_NORTH or #DEPOT_PART_SOUTH).
+ * @param part Depot part (either #DepotPart::North or #DepotPart::South).
  * @param a    Axis of the depot.
  * @param original_water_class Original water class.
  */
@@ -468,8 +468,8 @@ inline void MakeShipDepot(Tile t, Owner o, DepotID did, DepotPart part, Axis a, 
 	t.m2() = did.base();
 	t.m3() = 0;
 	t.m4() = 0;
-	t.m5() = part << WBL_DEPOT_PART | a << WBL_DEPOT_AXIS;
-	SetWaterTileType(t, WATER_TILE_DEPOT);
+	t.m5() = to_underlying(part) << WBL_DEPOT_PART | a << WBL_DEPOT_AXIS;
+	SetWaterTileType(t, WaterTileType::Depot);
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
 	t.m8() = 0;
@@ -493,8 +493,8 @@ inline void MakeLockTile(Tile t, Owner o, LockPart part, DiagDirection dir, Wate
 	t.m2() = 0;
 	t.m3() = 0;
 	t.m4() = 0;
-	t.m5() = part << WBL_LOCK_PART_BEGIN | dir << WBL_LOCK_ORIENT_BEGIN;
-	SetWaterTileType(t, WATER_TILE_LOCK);
+	t.m5() = to_underlying(part) << WBL_LOCK_PART_BEGIN | dir << WBL_LOCK_ORIENT_BEGIN;
+	SetWaterTileType(t, WaterTileType::Lock);
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
 	t.m8() = 0;
@@ -517,9 +517,9 @@ inline void MakeLock(Tile t, Owner o, DiagDirection d, WaterClass wc_lower, Wate
 
 	/* Keep the current waterclass and owner for the tiles.
 	 * It allows to restore them after the lock is deleted */
-	MakeLockTile(t, o, LOCK_PART_MIDDLE, d, wc_middle);
-	MakeLockTile(lower_tile, IsWaterTile(lower_tile) ? GetTileOwner(lower_tile) : o, LOCK_PART_LOWER, d, wc_lower);
-	MakeLockTile(upper_tile, IsWaterTile(upper_tile) ? GetTileOwner(upper_tile) : o, LOCK_PART_UPPER, d, wc_upper);
+	MakeLockTile(t, o, LockPart::Middle, d, wc_middle);
+	MakeLockTile(lower_tile, IsWaterTile(lower_tile) ? GetTileOwner(lower_tile) : o, LockPart::Lower, d, wc_lower);
+	MakeLockTile(upper_tile, IsWaterTile(upper_tile) ? GetTileOwner(upper_tile) : o, LockPart::Upper, d, wc_upper);
 }
 
 /**

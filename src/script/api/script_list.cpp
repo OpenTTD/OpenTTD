@@ -21,7 +21,7 @@ class ScriptListSorter {
 protected:
 	ScriptList *list;       ///< The list that's being sorted.
 	bool has_no_more_items; ///< Whether we have more items to iterate over.
-	SQInteger item_next;    ///< The next item we will show.
+	std::optional<SQInteger> item_next{}; ///< The next item we will show, or std::nullopt if there are no more items to iterate over.
 
 public:
 	/**
@@ -32,7 +32,7 @@ public:
 	/**
 	 * Get the first item of the sorter.
 	 */
-	virtual SQInteger Begin() = 0;
+	virtual std::optional<SQInteger> Begin() = 0;
 
 	/**
 	 * Stop iterating a sorter.
@@ -42,7 +42,7 @@ public:
 	/**
 	 * Get the next item of the sorter.
 	 */
-	virtual SQInteger Next() = 0;
+	virtual std::optional<SQInteger> Next() = 0;
 
 	/**
 	 * See if the sorter has reached the end.
@@ -89,9 +89,12 @@ public:
 		this->End();
 	}
 
-	SQInteger Begin() override
+	std::optional<SQInteger> Begin() override
 	{
-		if (this->list->buckets.empty()) return 0;
+		if (this->list->buckets.empty()) {
+			this->item_next = std::nullopt;
+			return std::nullopt;
+		}
 		this->has_no_more_items = false;
 
 		this->bucket_iter = this->list->buckets.begin();
@@ -99,7 +102,7 @@ public:
 		this->bucket_list_iter = this->bucket_list->begin();
 		this->item_next = *this->bucket_list_iter;
 
-		SQInteger item_current = this->item_next;
+		std::optional<SQInteger> item_current = this->item_next;
 		this->FindNext();
 		return item_current;
 	}
@@ -107,8 +110,8 @@ public:
 	void End() override
 	{
 		this->bucket_list = nullptr;
+		this->item_next = std::nullopt;
 		this->has_no_more_items = true;
-		this->item_next = 0;
 	}
 
 	/**
@@ -117,6 +120,7 @@ public:
 	void FindNext()
 	{
 		if (this->bucket_list == nullptr) {
+			this->item_next = std::nullopt;
 			this->has_no_more_items = true;
 			return;
 		}
@@ -126,6 +130,7 @@ public:
 			++this->bucket_iter;
 			if (this->bucket_iter == this->list->buckets.end()) {
 				this->bucket_list = nullptr;
+				this->item_next = std::nullopt;
 				return;
 			}
 			this->bucket_list = &this->bucket_iter->second;
@@ -134,11 +139,11 @@ public:
 		this->item_next = *this->bucket_list_iter;
 	}
 
-	SQInteger Next() override
+	std::optional<SQInteger> Next() override
 	{
-		if (this->IsEnd()) return 0;
+		if (this->IsEnd()) return std::nullopt;
 
-		SQInteger item_current = this->item_next;
+		std::optional<SQInteger> item_current = this->item_next;
 		this->FindNext();
 		return item_current;
 	}
@@ -178,9 +183,12 @@ public:
 		this->End();
 	}
 
-	SQInteger Begin() override
+	std::optional<SQInteger> Begin() override
 	{
-		if (this->list->buckets.empty()) return 0;
+		if (this->list->buckets.empty()) {
+			this->item_next = std::nullopt;
+			return std::nullopt;
+		}
 		this->has_no_more_items = false;
 
 		/* Go to the end of the bucket-list */
@@ -193,7 +201,7 @@ public:
 		--this->bucket_list_iter;
 		this->item_next = *this->bucket_list_iter;
 
-		SQInteger item_current = this->item_next;
+		std::optional<SQInteger> item_current = this->item_next;
 		this->FindNext();
 		return item_current;
 	}
@@ -201,8 +209,8 @@ public:
 	void End() override
 	{
 		this->bucket_list = nullptr;
+		this->item_next = std::nullopt;
 		this->has_no_more_items = true;
-		this->item_next = 0;
 	}
 
 	/**
@@ -211,6 +219,7 @@ public:
 	void FindNext()
 	{
 		if (this->bucket_list == nullptr) {
+			this->item_next = std::nullopt;
 			this->has_no_more_items = true;
 			return;
 		}
@@ -218,6 +227,7 @@ public:
 		if (this->bucket_list_iter == this->bucket_list->begin()) {
 			if (this->bucket_iter == this->list->buckets.begin()) {
 				this->bucket_list = nullptr;
+				this->item_next = std::nullopt;
 				return;
 			}
 			--this->bucket_iter;
@@ -229,11 +239,11 @@ public:
 		this->item_next = *this->bucket_list_iter;
 	}
 
-	SQInteger Next() override
+	std::optional<SQInteger> Next() override
 	{
-		if (this->IsEnd()) return 0;
+		if (this->IsEnd()) return std::nullopt;
 
-		SQInteger item_current = this->item_next;
+		std::optional<SQInteger> item_current = this->item_next;
 		this->FindNext();
 		return item_current;
 	}
@@ -268,21 +278,25 @@ public:
 		this->End();
 	}
 
-	SQInteger Begin() override
+	std::optional<SQInteger> Begin() override
 	{
-		if (this->list->items.empty()) return 0;
+		if (this->list->items.empty()) {
+			this->item_next = std::nullopt;
+			return std::nullopt;
+		}
 		this->has_no_more_items = false;
 
 		this->item_iter = this->list->items.begin();
 		this->item_next = this->item_iter->first;
 
-		SQInteger item_current = this->item_next;
+		std::optional<SQInteger> item_current = this->item_next;
 		this->FindNext();
 		return item_current;
 	}
 
 	void End() override
 	{
+		this->item_next = std::nullopt;
 		this->has_no_more_items = true;
 	}
 
@@ -291,6 +305,7 @@ public:
 	 */
 	void FindNext()
 	{
+		this->item_next = std::nullopt;
 		if (this->item_iter == this->list->items.end()) {
 			this->has_no_more_items = true;
 			return;
@@ -299,11 +314,11 @@ public:
 		if (this->item_iter != this->list->items.end()) this->item_next = this->item_iter->first;
 	}
 
-	SQInteger Next() override
+	std::optional<SQInteger> Next() override
 	{
-		if (this->IsEnd()) return 0;
+		if (this->IsEnd()) return std::nullopt;
 
-		SQInteger item_current = this->item_next;
+		std::optional<SQInteger> item_current = this->item_next;
 		this->FindNext();
 		return item_current;
 	}
@@ -341,22 +356,26 @@ public:
 		this->End();
 	}
 
-	SQInteger Begin() override
+	std::optional<SQInteger> Begin() override
 	{
-		if (this->list->items.empty()) return 0;
+		if (this->list->items.empty()) {
+			this->item_next = std::nullopt;
+			return std::nullopt;
+		}
 		this->has_no_more_items = false;
 
 		this->item_iter = this->list->items.end();
 		--this->item_iter;
 		this->item_next = this->item_iter->first;
 
-		SQInteger item_current = this->item_next;
+		std::optional<SQInteger> item_current = this->item_next;
 		this->FindNext();
 		return item_current;
 	}
 
 	void End() override
 	{
+		this->item_next = std::nullopt;
 		this->has_no_more_items = true;
 	}
 
@@ -365,6 +384,7 @@ public:
 	 */
 	void FindNext()
 	{
+		this->item_next = std::nullopt;
 		if (this->item_iter == this->list->items.end()) {
 			this->has_no_more_items = true;
 			return;
@@ -378,11 +398,11 @@ public:
 		if (this->item_iter != this->list->items.end()) this->item_next = this->item_iter->first;
 	}
 
-	SQInteger Next() override
+	std::optional<SQInteger> Next() override
 	{
-		if (this->IsEnd()) return 0;
+		if (this->IsEnd()) return std::nullopt;
 
-		SQInteger item_current = this->item_next;
+		std::optional<SQInteger> item_current = this->item_next;
 		this->FindNext();
 		return item_current;
 	}
@@ -523,7 +543,7 @@ void ScriptList::RemoveItem(SQInteger item)
 SQInteger ScriptList::Begin()
 {
 	this->initialized = true;
-	return this->sorter->Begin();
+	return this->sorter->Begin().value_or(0);
 }
 
 SQInteger ScriptList::Next()
@@ -532,7 +552,7 @@ SQInteger ScriptList::Next()
 		Debug(script, 0, "Next() is invalid as Begin() is never called");
 		return 0;
 	}
-	return this->sorter->Next();
+	return this->sorter->Next().value_or(0);
 }
 
 bool ScriptList::IsEmpty()

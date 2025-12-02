@@ -1181,7 +1181,7 @@ CargoPayment::CargoPayment(Vehicle *front) :
 
 CargoPayment::~CargoPayment()
 {
-	if (this->CleaningPool()) return;
+	if (CleaningPool()) return;
 
 	this->front->cargo_payment = nullptr;
 

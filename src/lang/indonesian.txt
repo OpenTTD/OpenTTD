@@ -3672,14 +3672,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Sempurna
 STR_CARGO_RATING_OUTSTANDING                                    :Luar Biasa
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Arahkan pandangan utama pada lokasi stasiun. Ctrl+Click akan membuka viewport baru pada lokasi stasiun
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Ganti nama stasiun
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Tampilkan semua kereta yang memiliki jadwal menuju stasiun ini.
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Tampilkan semua kendaraan yang memiliki jadwal menuju terminal ini.
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Tampilkan semua Pesawat yang memiliki jadwal menuju bandara ini.
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Tampilkan semua kapal yang memiliki jadwal menuju pelabuhan ini.
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Ubah nama stasiun/area bongkar muat
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Tutup bandara
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Cegah pesawat mendarat di bandara ini
@@ -3687,11 +3685,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Cegah pe
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Arahkan pandangan utama pada lokasi waypoint. Ctrl+Click akan membuka viewport baru pada lokasi waypoint
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Ubah nama waypoint
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Arahkan pandangan utama pada lokasi pelampung. Ctrl+Click akan membuka viewport baru pada lokasi pelampung
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Ubah nama pelampung
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ubah nama waypoint
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Keuangan {COMPANY} {BLACK}{COMPANY_NUM}

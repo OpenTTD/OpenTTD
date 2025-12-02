@@ -17,9 +17,9 @@ CommandCost CmdEngineCtrl(DoCommandFlags flags, EngineID engine_id, CompanyID co
 CommandCost CmdRenameEngine(DoCommandFlags flags, EngineID engine_id, const std::string &text);
 CommandCost CmdSetVehicleVisibility(DoCommandFlags flags, EngineID engine_id, bool hide);
 
-DEF_CMD_TRAIT(CMD_WANT_ENGINE_PREVIEW,    CmdWantEnginePreview,    {},          CMDT_VEHICLE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_ENGINE_CTRL,            CmdEngineCtrl,           CommandFlag::Deity,  CMDT_VEHICLE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_RENAME_ENGINE,          CmdRenameEngine,         CommandFlag::Server, CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_SET_VEHICLE_VISIBILITY, CmdSetVehicleVisibility, {},          CMDT_COMPANY_SETTING)
+DEF_CMD_TRAIT(CMD_WANT_ENGINE_PREVIEW,    CmdWantEnginePreview,    {},          CommandType::VehicleManagement)
+DEF_CMD_TRAIT(CMD_ENGINE_CTRL,            CmdEngineCtrl,           CommandFlag::Deity,  CommandType::VehicleManagement)
+DEF_CMD_TRAIT(CMD_RENAME_ENGINE,          CmdRenameEngine,         CommandFlag::Server, CommandType::OtherManagement)
+DEF_CMD_TRAIT(CMD_SET_VEHICLE_VISIBILITY, CmdSetVehicleVisibility, {},          CommandType::CompanySetting)
 
 #endif /* ENGINE_CMD_H */

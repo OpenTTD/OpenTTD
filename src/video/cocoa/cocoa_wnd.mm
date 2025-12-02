@@ -177,8 +177,8 @@ static NSImage *NSImageFromSprite(SpriteID sprite_id, ZoomLevel zoom)
 	if (!data) return nullptr;
 
 	CGBitmapInfo info = kCGImageAlphaFirst | kCGBitmapByteOrder32Host;
-	CFAutoRelease<CGColorSpaceRef> color_space(CGColorSpaceCreateWithName(kCGColorSpaceSRGB));
-	CFAutoRelease<CGImage> bitmap(CGImageCreate(dim.width, dim.height, 8, 32, dim.width * 4, color_space.get(), info, data.get(), nullptr, false, kCGRenderingIntentDefault));
+	CFAutoRelease<CGColorSpaceRef> colour_space(CGColorSpaceCreateWithName(kCGColorSpaceSRGB));
+	CFAutoRelease<CGImage> bitmap(CGImageCreate(dim.width, dim.height, 8, 32, dim.width * 4, colour_space.get(), info, data.get(), nullptr, false, kCGRenderingIntentDefault));
 	if (!bitmap) return nullptr;
 
 	return [ [ [ NSImage alloc ] initWithCGImage:bitmap.get() size:NSZeroSize ] autorelease ];

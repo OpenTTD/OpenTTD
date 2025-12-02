@@ -3894,14 +3894,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Tuyệt vời
 STR_CARGO_RATING_OUTSTANDING                                    :Hoàn hảo
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Xem trung tâm ga, bến, cảng. Ctrl+Click mở cửa sổ mới để xem
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Đổi tên ga, bến, cảng
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Hiện lên tất cả các đoàn tàu có lộ trình đi qua ga này
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Hiện lên tất cả các xe có lộ trình đi qua bến này
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Hiện tất cả các máy bay có lộ trình đi qua sân bay này
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Hiện tất cả tàu thuỷ có lộ trình đi qua cảng này.
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Đổi tên ga, bến, cảng
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Đóng cửa sân bay
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Không cho máy bay hạ cánh ở sân bay này
@@ -3909,11 +3907,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Không c
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Xem vị trí của điểm mốc. Ctrl+Click để mở cửa sổ mới cho điểm mốc
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Đổi tên điểm mốc
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Xem vị trí phao hàng hải. Ctrl+Click mở cửa sổ mới vị trí phao
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Đổi tên phao
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Sửa tên điểm mốc
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Tài Chính Công Ty {COMPANY} {BLACK}{COMPANY_NUM}

@@ -226,7 +226,7 @@ static inline bool NeighbourIsNormal(TileIndex tile)
 		TileIndex t = tile + TileOffsByDiagDir(dir);
 		if (!IsValidTile(t)) continue;
 		if (GetTropicZone(t) != TROPICZONE_DESERT) return true;
-		if (HasTileWaterClass(t) && GetWaterClass(t) == WATER_CLASS_SEA) return true;
+		if (HasTileWaterClass(t) && GetWaterClass(t) == WaterClass::Sea) return true;
 	}
 	return false;
 }

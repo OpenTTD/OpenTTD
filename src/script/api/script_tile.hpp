@@ -276,6 +276,14 @@ public:
 	static bool IsDesertTile(TileIndex tile);
 
 	/**
+	 * Check if the tile is town house/building
+	 * @param tile The tile to check on.
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @return True if and only if the tile is house tile.
+	 */
+	static bool IsHouseTile(TileIndex tile);
+
+	/**
 	 * Get the type of terrain regardless of buildings or infrastructure.
 	 * @note When a desert or rainforest tile are changed, their terrain type will remain the same. In other words, a sea tile can be of the desert terrain type.
 	 * @note The snow terrain type can change to the normal terrain type and vice versa based on landscaping or variable snow lines from NewGRFs.

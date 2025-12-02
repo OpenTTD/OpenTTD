@@ -250,6 +250,11 @@ struct BuildDocksToolbarWindow : Window {
 		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
 	}
 
+	Point OnInitialPosition(int16_t sm_width, [[maybe_unused]] int16_t sm_height, [[maybe_unused]] int window_number) override
+	{
+		return AlignInitialConstructionToolbar(sm_width);
+	}
+
 	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile) override
 	{
 		if (pt.x != -1) {
@@ -259,13 +264,13 @@ struct BuildDocksToolbarWindow : Window {
 					break;
 				case DDSP_CREATE_WATER:
 					if (_game_mode == GM_EDITOR) {
-						Command<CMD_BUILD_CANAL>::Post(STR_ERROR_CAN_T_BUILD_CANALS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, _ctrl_pressed ? WATER_CLASS_SEA : WATER_CLASS_CANAL, false);
+						Command<CMD_BUILD_CANAL>::Post(STR_ERROR_CAN_T_BUILD_CANALS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, _ctrl_pressed ? WaterClass::Sea : WaterClass::Canal, false);
 					} else {
-						Command<CMD_BUILD_CANAL>::Post(STR_ERROR_CAN_T_BUILD_CANALS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, WATER_CLASS_CANAL, _ctrl_pressed);
+						Command<CMD_BUILD_CANAL>::Post(STR_ERROR_CAN_T_BUILD_CANALS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, WaterClass::Canal, _ctrl_pressed);
 					}
 					break;
 				case DDSP_CREATE_RIVER:
-					Command<CMD_BUILD_CANAL>::Post(STR_ERROR_CAN_T_PLACE_RIVERS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, WATER_CLASS_RIVER, _ctrl_pressed);
+					Command<CMD_BUILD_CANAL>::Post(STR_ERROR_CAN_T_PLACE_RIVERS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, WaterClass::River, _ctrl_pressed);
 					break;
 
 				default: break;
@@ -352,7 +357,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_docks_toolbar_
 };
 
 static WindowDesc _build_docks_toolbar_desc(
-	WDP_ALIGN_TOOLBAR, "toolbar_water", 0, 0,
+	WDP_MANUAL, "toolbar_water", 0, 0,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WindowDefaultFlag::Construction,
 	_nested_build_docks_toolbar_widgets,
@@ -555,8 +560,8 @@ public:
 					int y = (ir.Height() - ScaleSpriteTrad(64)) / 2;
 					int x1 = ScaleSpriteTrad(63);
 					int x2 = ScaleSpriteTrad(31);
-					DrawShipDepotSprite(x + (axis == AXIS_X ? x1 : x2), y + ScaleSpriteTrad(17), axis, DEPOT_PART_NORTH);
-					DrawShipDepotSprite(x + (axis == AXIS_X ? x2 : x1), y + ScaleSpriteTrad(33), axis, DEPOT_PART_SOUTH);
+					DrawShipDepotSprite(x + (axis == AXIS_X ? x1 : x2), y + ScaleSpriteTrad(17), axis, DepotPart::North);
+					DrawShipDepotSprite(x + (axis == AXIS_X ? x2 : x1), y + ScaleSpriteTrad(33), axis, DepotPart::South);
 				}
 				break;
 			}

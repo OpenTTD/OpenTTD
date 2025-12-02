@@ -3900,14 +3900,12 @@ STR_CARGO_RATING_EXCELLENT                                      :極佳
 STR_CARGO_RATING_OUTSTANDING                                    :傑出
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}將車站置於畫面正中央。按住 <Ctrl> 點選可於車站位置開啟新檢視視窗
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}修改車站名稱
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}顯示所有指令內包含這個車站的列車
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}顯示所有指令內包含這個車站的車輛
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}顯示所有指令內包含這座機場的飛機
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}顯示所有指令內包含這個碼頭的船舶
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :修改車站／載貨區名稱
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}關閉機場
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}防止飛機在此機場降落
@@ -3915,11 +3913,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}防止�
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}將中途站置於畫面正中央。按住 <Ctrl> 點選可於中途站位置開啟新檢視視窗
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}修改中途站名稱
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}將浮標置於畫面正中央。按住 <Ctrl> 點選可於浮標位置開啟新檢視視窗
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}修改浮標名稱
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}編輯中途站名稱
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} 財務狀況 {BLACK}{COMPANY_NUM}

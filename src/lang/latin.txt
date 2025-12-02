@@ -3405,14 +3405,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Praestans
 STR_CARGO_RATING_OUTSTANDING                                    :Optima
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Movere conspectum supra hanc stationem. Ctrl+Preme ut nova fenestra conspectus aperiatur supra stationem
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Mutare nomen stationis
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Monstrare omnia tramina quae hanc stationem in horario habent
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Monstrare omnia vehicula viaria quae hanc stationem in horario habent
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Monstrare omnia aeroplana quae hanc stationem in horario habent
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Monstrare omnes naves quae hanc stationem in horario habent
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Renominare stationem
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Claudere aeroportum
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Facere ut aeroplana non appellant in hoc aeroportu
@@ -3420,11 +3418,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Facere u
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Movere conspectum supra hunc interlocum. ut nova fenestra conspectus aperiatur supra interlocum
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Mutare nomen interloci
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Movere conspectum supra hoc signum monitorium. ut nova fenestra conspectus aperiatur supra signum monitorium
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Mutare nomen signi monitorii
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Recensere nomen interloci
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Res Fiscales {BLACK}{COMPANY_NUM}

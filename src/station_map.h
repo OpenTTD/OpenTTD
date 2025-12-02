@@ -288,7 +288,7 @@ StationGfx GetTranslatedAirportTileID(StationGfx gfx);
 static inline Roadside GetRoadWaypointRoadside(Tile tile)
 {
 	assert(IsRoadWaypointTile(tile));
-	return (Roadside)GB(tile.m3(), 2, 2);
+	return static_cast<Roadside>(GB(tile.m3(), 2, 2));
 }
 
 /**
@@ -299,7 +299,7 @@ static inline Roadside GetRoadWaypointRoadside(Tile tile)
 static inline void SetRoadWaypointRoadside(Tile tile, Roadside s)
 {
 	assert(IsRoadWaypointTile(tile));
-	SB(tile.m3(), 2, 2, s);
+	SB(tile.m3(), 2, 2, to_underlying(s));
 }
 
 /**
@@ -714,7 +714,7 @@ inline uint8_t GetStationTileRandomBits(Tile t)
  * @param section the StationGfx to be used for this tile
  * @param wc The water class of the station
  */
-inline void MakeStation(Tile t, Owner o, StationID sid, StationType st, uint8_t section, WaterClass wc = WATER_CLASS_INVALID)
+inline void MakeStation(Tile t, Owner o, StationID sid, StationType st, uint8_t section, WaterClass wc = WaterClass::Invalid)
 {
 	SetTileType(t, MP_STATION);
 	SetTileOwner(t, o);
