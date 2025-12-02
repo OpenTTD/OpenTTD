@@ -504,7 +504,7 @@ std::string NWidgetBadgeFilter::GetStringParameter(const BadgeFilterChoices &cho
 		return ::GetString(STR_BADGE_FILTER_ANY_LABEL, GetClassBadge(this->badge_class)->name);
 	}
 
-	return ::GetString(STR_BADGE_FILTER_IS_LABEL, GetClassBadge(it->first)->name, GetBadge(it->second)->name);
+	return ::GetString(GetBadge(it->second)->name);
 }
 
 /**
