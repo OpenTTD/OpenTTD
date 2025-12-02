@@ -25,7 +25,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: Setup vcpkg
       uses: ./.github/actions/setup-vcpkg
@@ -77,7 +77,7 @@ jobs:
         echo "::endgroup::"
 
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v3
+      uses: github/codeql-action/init@v4
       with:
         languages: cpp
         config-file: ./.github/codeql/codeql-config.yml
@@ -93,7 +93,7 @@ jobs:
         echo "::endgroup::"
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v3
+      uses: github/codeql-action/analyze@v4
       with:
         category: /language:cpp
         upload: False
@@ -111,6 +111,6 @@ jobs:
         output: sarif-results/cpp.sarif
 
     - name: Upload results
-      uses: github/codeql-action/upload-sarif@v3
+      uses: github/codeql-action/upload-sarif@v4
       with:
         sarif_file: sarif-results/cpp.sarif
