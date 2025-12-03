@@ -444,7 +444,7 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 
 		case WID_PW_CONFIGURE_BADGES:
 			if (this->badge_classes.GetClasses().empty()) break;
-			ShowDropDownList(this, BuildBadgeClassConfigurationList(this->badge_classes, 1, {}), -1, widget, 0, DropDownOption::Persist);
+			ShowDropDownList(this, BuildBadgeClassConfigurationList(this->badge_classes, 1, {}, COLOUR_DARK_GREEN), -1, widget, 0, DropDownOption::Persist);
 			break;
 
 		default:
@@ -466,7 +466,7 @@ void PickerWindow::OnDropdownSelect(WidgetID widget, int index, int click_result
 			this->ReInit();
 
 			if (reopen) {
-				ReplaceDropDownList(this, BuildBadgeClassConfigurationList(this->badge_classes, 1, {}), -1);
+				ReplaceDropDownList(this, BuildBadgeClassConfigurationList(this->badge_classes, 1, {}, COLOUR_DARK_GREEN), -1);
 			} else {
 				this->CloseChildWindows(WC_DROPDOWN_MENU);
 			}

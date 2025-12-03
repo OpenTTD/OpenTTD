@@ -330,7 +330,7 @@ enum BadgeClick : int {
 	BADGE_CLICK_TOGGLE_FILTER,
 };
 
-DropDownList BuildBadgeClassConfigurationList(const GUIBadgeClasses &gui_classes, uint columns, std::span<const StringID> column_separators)
+DropDownList BuildBadgeClassConfigurationList(const GUIBadgeClasses &gui_classes, uint columns, std::span<const StringID> column_separators, Colours bg_colour)
 {
 	DropDownList list;
 
@@ -349,7 +349,7 @@ DropDownList BuildBadgeClassConfigurationList(const GUIBadgeClasses &gui_classes
 
 			bool first = (i == 0 && gc.class_index == front);
 			bool last = (i == columns - 1 && gc.class_index == back);
-			list.push_back(std::make_unique<DropDownListToggleMoverItem>(first ? 0 : BADGE_CLICK_MOVE_UP, last ? 0 : BADGE_CLICK_MOVE_DOWN, COLOUR_YELLOW, gc.visible, BADGE_CLICK_TOGGLE_ICON, COLOUR_YELLOW, COLOUR_GREY, GetString(GetClassBadge(gc.class_index)->name), gc.class_index.base()));
+			list.push_back(std::make_unique<DropDownListToggleMoverItem>(first ? 0 : BADGE_CLICK_MOVE_UP, last ? 0 : BADGE_CLICK_MOVE_DOWN, COLOUR_YELLOW, gc.visible, BADGE_CLICK_TOGGLE_ICON, COLOUR_YELLOW, bg_colour, GetString(GetClassBadge(gc.class_index)->name), gc.class_index.base()));
 		}
 
 		if (i >= column_separators.size()) continue;
@@ -369,7 +369,7 @@ DropDownList BuildBadgeClassConfigurationList(const GUIBadgeClasses &gui_classes
 		if (!badge->flags.Test(BadgeFlag::HasText)) continue;
 
 		const auto [config, _] = GetBadgeClassConfigItem(gui_classes.GetFeature(), badge->label);
-		list.push_back(std::make_unique<DropDownListToggleItem>(config.show_filter, BADGE_CLICK_TOGGLE_FILTER, COLOUR_YELLOW, COLOUR_GREY, GetString(badge->name), (1U << 16) | badge_class_index.base()));
+		list.push_back(std::make_unique<DropDownListToggleItem>(config.show_filter, BADGE_CLICK_TOGGLE_FILTER, COLOUR_YELLOW, bg_colour, GetString(badge->name), (1U << 16) | badge_class_index.base()));
 	}
 
 	return list;
