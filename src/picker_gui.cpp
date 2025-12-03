@@ -341,7 +341,9 @@ void PickerWindow::DrawWidget(const Rect &r, WidgetID widget) const
 				int by = ir.Height() - ScaleGUITrad(12);
 
 				GrfSpecFeature feature = this->callbacks.GetFeature();
-				DrawBadgeColumn({0, by, ir.Width() - 1, ir.Height() - 1}, 0, this->badge_classes, this->callbacks.GetTypeBadges(item.class_index, item.index), feature, std::nullopt, PAL_NONE);
+				/* Houses have recolours but not related to the company colour. */
+				PaletteID palette = feature == GSF_HOUSES ? PAL_NONE : GetCompanyPalette(_local_company);
+				DrawBadgeColumn({0, by, ir.Width() - 1, ir.Height() - 1}, 0, this->badge_classes, this->callbacks.GetTypeBadges(item.class_index, item.index), feature, std::nullopt, palette);
 
 				if (this->callbacks.saved.contains(item)) {
 					DrawSprite(SPR_BLOT, PALETTE_TO_YELLOW, 0, 0);
@@ -447,7 +449,9 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 
 		default:
 			if (IsInsideMM(widget, this->badge_filters.first, this->badge_filters.second)) {
-				ShowDropDownList(this, this->GetWidget<NWidgetBadgeFilter>(widget)->GetDropDownList(), -1, widget, 0);
+				/* Houses have recolours but not related to the company colour. */
+				PaletteID palette = this->callbacks.GetFeature() == GSF_HOUSES ? PAL_NONE : GetCompanyPalette(_local_company);
+				ShowDropDownList(this, this->GetWidget<NWidgetBadgeFilter>(widget)->GetDropDownList(palette), -1, widget, 0);
 			}
 			break;
 	}
