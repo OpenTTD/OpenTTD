@@ -18,7 +18,8 @@ void sqstd_printcallstack(HSQUIRRELVM v)
 		SQFloat f;
 		SQInteger level=1; //1 is to skip this function that is level 0
 		SQInteger seq=0;
-		pf(v,"\nCALLSTACK\n");
+		pf(v,"\n");
+		pf(v,"CALLSTACK\n");
 		while(SQ_SUCCEEDED(sq_stackinfos(v,level,&si)))
 		{
 			std::string_view fn="unknown";
@@ -37,7 +38,8 @@ void sqstd_printcallstack(HSQUIRRELVM v)
 			level++;
 		}
 		level=0;
-		pf(v,"\nLOCALS\n");
+		pf(v,"\n");
+		pf(v,"LOCALS\n");
 
 		for(level=0;level<10;level++){
 			seq=0;
@@ -116,11 +118,12 @@ static SQInteger _sqstd_aux_printerror(HSQUIRRELVM v)
 	if(pf) {
 		std::string_view error;
 		if(sq_gettop(v)>=1) {
+			pf(v,"\n");
 			if(SQ_SUCCEEDED(sq_getstring(v,2,error))) {
-				pf(v,fmt::format("\nAN ERROR HAS OCCURRED [{}]\n",error));
+				pf(v,fmt::format("AN ERROR HAS OCCURRED [{}]\n",error));
 			}
 			else{
-				pf(v,"\nAN ERROR HAS OCCURRED [unknown]\n");
+				pf(v,"AN ERROR HAS OCCURRED [unknown]\n");
 			}
 			sqstd_printcallstack(v);
 		}
