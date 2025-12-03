@@ -68,40 +68,40 @@ enum class GrfMiscBit : uint8_t {
 
 using GrfMiscBits = EnumBitSet<GrfMiscBit, uint8_t>;
 
-enum GrfSpecFeature : uint8_t {
-	GSF_TRAINS,
-	GSF_ROADVEHICLES,
-	GSF_SHIPS,
-	GSF_AIRCRAFT,
-	GSF_STATIONS,
-	GSF_CANALS,
-	GSF_BRIDGES,
-	GSF_HOUSES,
-	GSF_GLOBALVAR,
-	GSF_INDUSTRYTILES,
-	GSF_INDUSTRIES,
-	GSF_CARGOES,
-	GSF_SOUNDFX,
-	GSF_AIRPORTS,
-	GSF_SIGNALS,
-	GSF_OBJECTS,
-	GSF_RAILTYPES,
-	GSF_AIRPORTTILES,
-	GSF_ROADTYPES,
-	GSF_TRAMTYPES,
-	GSF_ROADSTOPS,
-	GSF_BADGES,
-	GSF_END,
+enum class GrfSpecFeature : uint8_t {
+	Trains, ///< Trains feature
+	RoadVehicles, ///< Road vehicles feature
+	Ships, ///< Ships feature
+	Aircraft, ///< Aircraft feature
+	Stations, ///< Stations feature
+	Canals, ///< Canals feature
+	Bridges, ///< Bridges feature
+	Houses, ///< Houses feature
+	GlobalVar, ///< Global variables feature
+	IndustryTiles, ///< Industry tiles feature
+	Industries, ///< Industries feature
+	Cargoes, ///< Cargoes feature
+	SoundEffects, ///< Sound effects feature
+	Airports, ///< Airports feature
+	Signals, ///< Signals feature
+	Objects, ///< Objects feature
+	RailTypes, ///< Rail types feature
+	AirportTiles, ///< Airport tiles feature
+	RoadTypes, ///< Road types feature
+	TramTypes, ///< Tram types feature
+	RoadStops, ///< Road stops feature
+	Badges, ///< Badges feature
+	End, ///< End marker
 
-	GSF_DEFAULT = GSF_END, ///< Unspecified feature, default badge
-	GSF_FAKE_TOWNS = GSF_END, ///< Fake town GrfSpecFeature for NewGRF debugging (parent scope)
-	GSF_FAKE_END,             ///< End of the fake features
+	Default = End, ///< Unspecified feature, default badge
+	FakeTowns = End, ///< Fake town GrfSpecFeature for NewGRF debugging (parent scope)
+	FakeEnd, ///< End of the fake features
 
-	GSF_ORIGINAL_STRINGS = 0x48,
+	OriginalStrings = 0x48, ///< Pseudo unsupported 'feature' for replacing original strings
 
-	GSF_INVALID = 0xFF,       ///< An invalid spec feature
+	Invalid = 0xFF, ///< An invalid spec feature
 };
-using GrfSpecFeatures = EnumBitSet<GrfSpecFeature, uint32_t, GrfSpecFeature::GSF_END>;
+using GrfSpecFeatures = EnumBitSet<GrfSpecFeature, uint32_t, GrfSpecFeature::End>;
 
 static const uint32_t INVALID_GRFID = 0xFFFFFFFF;
 
@@ -208,7 +208,7 @@ struct GRFLoadedFeatures {
 struct PriceBaseSpec {
 	Money start_price; ///< Default value at game start, before adding multipliers.
 	PriceCategory category; ///< Price is affected by certain difficulty settings.
-	GrfSpecFeature grf_feature; ///< GRF Feature that decides whether price multipliers apply locally or globally, #GSF_END if none.
+	GrfSpecFeature grf_feature; ///< GRF Feature that decides whether price multipliers apply locally or globally, #GrfSpecFeature::End if none.
 	Price fallback_price; ///< Fallback price multiplier for new prices but old grfs.
 };
 

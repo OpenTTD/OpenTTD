@@ -24,35 +24,35 @@ class BadgeClassConfig {
 public:
 	static inline const BadgeClassConfigItem EMPTY_CONFIG_ITEM{};
 
-	std::array<std::vector<BadgeClassConfigItem>, GrfSpecFeature::GSF_END> features = {};
+	EnumClassIndexContainer<std::array<std::vector<BadgeClassConfigItem>, to_underlying(GrfSpecFeature::End)>, GrfSpecFeature> features = {};
 
 	static constexpr GrfSpecFeatures CONFIGURABLE_FEATURES = {
-		GSF_TRAINS, GSF_ROADVEHICLES, GSF_SHIPS, GSF_AIRCRAFT, GSF_STATIONS, GSF_HOUSES, GSF_OBJECTS, GSF_ROADSTOPS,
+		GrfSpecFeature::Trains, GrfSpecFeature::RoadVehicles, GrfSpecFeature::Ships, GrfSpecFeature::Aircraft, GrfSpecFeature::Stations, GrfSpecFeature::Houses, GrfSpecFeature::Objects, GrfSpecFeature::RoadStops,
 	};
 
-	static inline const std::array<std::string_view, GrfSpecFeature::GSF_END> sections = {
-		"badges_trains", // GSF_TRAINS
-		"badges_roadvehicles", // GSF_ROADVEHICLES
-		"badges_ships", // GSF_SHIPS
-		"badges_aircraft", // GSF_AIRCRAFT
-		"badges_stations", // GSF_STATIONS
-		{}, // GSF_CANALS
-		{}, // GSF_BRIDGES
-		"badges_houses", // GSF_HOUSES
-		{}, // GSF_GLOBALVAR
-		{}, // GSF_INDUSTRYTILES
-		{}, // GSF_INDUSTRIES
-		{}, // GSF_CARGOES
-		{}, // GSF_SOUNDFX
-		{}, // GSF_AIRPORTS
-		{}, // GSF_SIGNALS
-		"badges_objects", // GSF_OBJECTS
-		{}, // GSF_RAILTYPES
-		{}, // GSF_AIRPORTTILES
-		{}, // GSF_ROADTYPES
-		{}, // GSF_TRAMTYPES
-		"badges_roadstops", // GSF_ROADSTOPS
-		{}, // GSF_BADGES
+	static inline const EnumClassIndexContainer<std::array<std::string_view, to_underlying(GrfSpecFeature::End)>, GrfSpecFeature> sections = {
+		"badges_trains", // GrfSpecFeature::Trains
+		"badges_roadvehicles", // GrfSpecFeature::RoadVehicles
+		"badges_ships", // GrfSpecFeature::Ships
+		"badges_aircraft", // GrfSpecFeature::Aircraft
+		"badges_stations", // GrfSpecFeature::Stations
+		{}, // GrfSpecFeature::Canals
+		{}, // GrfSpecFeature::Bridges
+		"badges_houses", // GrfSpecFeature::Houses
+		{}, // GrfSpecFeature::GlobalVar
+		{}, // GrfSpecFeature::IndustryTiles
+		{}, // GrfSpecFeature::Industries
+		{}, // GrfSpecFeature::Cargoes
+		{}, // GrfSpecFeature::SoundEffects
+		{}, // GrfSpecFeature::Airports
+		{}, // GrfSpecFeature::Signals
+		"badges_objects", // GrfSpecFeature::Objects
+		{}, // GrfSpecFeature::RailTypes
+		{}, // GrfSpecFeature::AirportTiles
+		{}, // GrfSpecFeature::RoadTypes
+		{}, // GrfSpecFeature::TramTypes
+		"badges_roadstops", // GrfSpecFeature::RoadStops
+		{}, // GrfSpecFeature::Badges
 	};
 };
 
@@ -67,8 +67,8 @@ static BadgeClassConfig _badge_config;
 std::span<BadgeClassConfigItem> GetBadgeClassConfiguration(GrfSpecFeature feature)
 {
 	assert(BadgeClassConfig::CONFIGURABLE_FEATURES.Test(feature));
-	assert(feature < std::size(_badge_config.features));
-	return _badge_config.features[to_underlying(feature)];
+	assert(to_underlying(feature) < std::size(_badge_config.features));
+	return _badge_config.features[feature];
 }
 
 /**
@@ -99,7 +99,7 @@ void AddBadgeClassesToConfiguration()
  */
 void ResetBadgeClassConfiguration(GrfSpecFeature feature)
 {
-	assert(feature < GrfSpecFeature::GSF_END);
+	assert(feature < GrfSpecFeature::End);
 
 	auto &config = _badge_config.features[feature];
 	config.clear();
@@ -187,7 +187,7 @@ static void BadgeClassSaveConfigFeature(IniFile &ini, GrfSpecFeature feature)
 	IniGroup &group = ini.GetOrCreateGroup(BadgeClassConfig::sections[feature]);
 	group.Clear();
 
-	for (const auto &item : _badge_config.features[to_underlying(feature)]) {
+	for (const auto &item : _badge_config.features[feature]) {
 		group.CreateItem(item.label).SetValue(fmt::format("{}{}{}", item.show_filter ? "?" : "", item.show_icon ? "" : "!", item.column));
 	}
 }

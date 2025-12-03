@@ -120,7 +120,7 @@ HouseResolverObject::HouseResolverObject(HouseID house_id, TileIndex tile, Town 
 
 GrfSpecFeature HouseResolverObject::GetFeature() const
 {
-	return GSF_HOUSES;
+	return GrfSpecFeature::Houses;
 }
 
 uint32_t HouseResolverObject::GetDebugID() const

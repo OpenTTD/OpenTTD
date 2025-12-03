@@ -134,7 +134,7 @@ static ChangeInfoResult RoadTypeChangeInfo(uint first, uint last, int prop, Byte
 				break;
 
 			case 0x1E: // Badge list
-				rti->badges = ReadBadgeList(buf, GSF_ROADTYPES);
+				rti->badges = ReadBadgeList(buf, GrfSpecFeature::RoadTypes);
 				break;
 
 			default:
@@ -229,11 +229,11 @@ static ChangeInfoResult RoadTypeReserveInfo(uint first, uint last, int prop, Byt
 }
 
 /** @copydoc GrfChangeInfoHandler::Reserve */
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_ROADTYPES>::Reserve(uint first, uint last, int prop, ByteReader &buf) { return RoadTypeReserveInfo(first, last, prop, buf, RoadTramType::Road); }
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::RoadTypes>::Reserve(uint first, uint last, int prop, ByteReader &buf) { return RoadTypeReserveInfo(first, last, prop, buf, RoadTramType::Road); }
 /** @copydoc GrfChangeInfoHandler::Activation */
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_ROADTYPES>::Activation(uint first, uint last, int prop, ByteReader &buf) { return RoadTypeChangeInfo(first, last, prop, buf, RoadTramType::Road); }
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::RoadTypes>::Activation(uint first, uint last, int prop, ByteReader &buf) { return RoadTypeChangeInfo(first, last, prop, buf, RoadTramType::Road); }
 
 /** @copydoc GrfChangeInfoHandler::Reserve */
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_TRAMTYPES>::Reserve(uint first, uint last, int prop, ByteReader &buf) { return RoadTypeReserveInfo(first, last, prop, buf, RoadTramType::Tram); }
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::TramTypes>::Reserve(uint first, uint last, int prop, ByteReader &buf) { return RoadTypeReserveInfo(first, last, prop, buf, RoadTramType::Tram); }
 /** @copydoc GrfChangeInfoHandler::Activation */
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_TRAMTYPES>::Activation(uint first, uint last, int prop, ByteReader &buf) { return RoadTypeChangeInfo(first, last, prop, buf, RoadTramType::Tram); }
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::TramTypes>::Activation(uint first, uint last, int prop, ByteReader &buf) { return RoadTypeChangeInfo(first, last, prop, buf, RoadTramType::Tram); }

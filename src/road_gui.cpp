@@ -1249,7 +1249,7 @@ class RoadStopPickerCallbacks : public PickerCallbacksNewGRFClass<RoadStopClass>
 public:
 	RoadStopPickerCallbacks(const std::string &ini_group) : PickerCallbacksNewGRFClass<RoadStopClass>(ini_group) {}
 
-	GrfSpecFeature GetFeature() const override { return GSF_ROADSTOPS; }
+	GrfSpecFeature GetFeature() const override { return GrfSpecFeature::RoadStops; }
 
 	StringID GetClassTooltip() const override;
 	StringID GetTypeTooltip() const override;
@@ -1443,7 +1443,7 @@ public:
 		Rect r = this->GetWidget<NWidgetBase>(WID_BROS_ACCEPTANCE)->GetCurrentRect();
 		const int bottom = r.bottom;
 		r.bottom = INT_MAX; // Allow overflow as we want to know the required height.
-		if (spec != nullptr) r.top = DrawBadgeNameList(r, spec->badges, GSF_ROADSTOPS);
+		if (spec != nullptr) r.top = DrawBadgeNameList(r, spec->badges, GrfSpecFeature::RoadStops);
 		r.top = DrawStationCoverageAreaText(r, sct, rad, false) + WidgetDimensions::scaled.vsep_normal;
 		r.top = DrawStationCoverageAreaText(r, sct, rad, true);
 		/* Resize background if the window is too small.
@@ -1686,7 +1686,7 @@ class RoadWaypointPickerCallbacks : public PickerCallbacksNewGRFClass<RoadStopCl
 public:
 	RoadWaypointPickerCallbacks() : PickerCallbacksNewGRFClass<RoadStopClass>("fav_road_waypoints") {}
 
-	GrfSpecFeature GetFeature() const override { return GSF_ROADSTOPS; }
+	GrfSpecFeature GetFeature() const override { return GrfSpecFeature::RoadStops; }
 
 	StringID GetClassTooltip() const override { return STR_PICKER_WAYPOINT_CLASS_TOOLTIP; }
 	StringID GetTypeTooltip() const override { return STR_PICKER_WAYPOINT_TYPE_TOOLTIP; }
@@ -1860,7 +1860,7 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 	}
 
 	/* Shared list so that each item can take ownership. */
-	auto badge_class_list = std::make_shared<GUIBadgeClasses>(GSF_ROADTYPES);
+	auto badge_class_list = std::make_shared<GUIBadgeClasses>(GrfSpecFeature::RoadTypes);
 
 	for (const auto &rt : _sorted_roadtypes) {
 		/* If it's not used ever, don't show it to the user. */
@@ -1869,12 +1869,12 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 
 		if (for_replacement) {
-			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GSF_ROADTYPES, rti->introduction_date, GetString(rti->strings.replace_text), rt, !avail_roadtypes.Test(rt)));
+			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GrfSpecFeature::RoadTypes, rti->introduction_date, GetString(rti->strings.replace_text), rt, !avail_roadtypes.Test(rt)));
 		} else {
 			std::string str = rti->max_speed > 0
 				? GetString(STR_TOOLBAR_ROADTYPE_VELOCITY, rti->strings.menu_text, rti->max_speed / 2)
 				: GetString(rti->strings.menu_text);
-			list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GSF_ROADTYPES, rti->introduction_date, RoadBuildCost(rt), d, rti->gui_sprites.build_x_road, PAL_NONE, std::move(str), rt, !avail_roadtypes.Test(rt)));
+			list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GrfSpecFeature::RoadTypes, rti->introduction_date, RoadBuildCost(rt), d, rti->gui_sprites.build_x_road, PAL_NONE, std::move(str), rt, !avail_roadtypes.Test(rt)));
 		}
 	}
 
@@ -1908,7 +1908,7 @@ DropDownList GetScenRoadTypeDropDownList(RoadTramTypes rtts)
 	}
 
 	/* Shared list so that each item can take ownership. */
-	auto badge_class_list = std::make_shared<GUIBadgeClasses>(GSF_ROADTYPES);
+	auto badge_class_list = std::make_shared<GUIBadgeClasses>(GrfSpecFeature::RoadTypes);
 
 	for (const auto &rt : _sorted_roadtypes) {
 		if (!used_roadtypes.Test(rt)) continue;
@@ -1918,7 +1918,7 @@ DropDownList GetScenRoadTypeDropDownList(RoadTramTypes rtts)
 		std::string str = rti->max_speed > 0
 			? GetString(STR_TOOLBAR_ROADTYPE_VELOCITY, rti->strings.menu_text, rti->max_speed / 2)
 			: GetString(rti->strings.menu_text);
-		list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GSF_ROADTYPES, rti->introduction_date, RoadBuildCost(rt), d, rti->gui_sprites.build_x_road, PAL_NONE, std::move(str), rt, !avail_roadtypes.Test(rt)));
+		list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GrfSpecFeature::RoadTypes, rti->introduction_date, RoadBuildCost(rt), d, rti->gui_sprites.build_x_road, PAL_NONE, std::move(str), rt, !avail_roadtypes.Test(rt)));
 	}
 
 	if (list.empty()) {

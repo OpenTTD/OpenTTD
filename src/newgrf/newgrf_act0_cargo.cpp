@@ -198,6 +198,6 @@ static ChangeInfoResult CargoReserveInfo(uint first, uint last, int prop, ByteRe
 }
 
 /** @copydoc GrfChangeInfoHandler::Reserve */
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_CARGOES>::Reserve(uint first, uint last, int prop, ByteReader &buf) { return CargoReserveInfo(first, last, prop, buf); }
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::Cargoes>::Reserve(uint first, uint last, int prop, ByteReader &buf) { return CargoReserveInfo(first, last, prop, buf); }
 /** @copybrief GrfChangeInfoHandler::Activation @return Always ChangeInfoResult::Unhandled. */
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_CARGOES>::Activation(uint, uint, int, ByteReader &) { return ChangeInfoResult::Unhandled; }
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::Cargoes>::Activation(uint, uint, int, ByteReader &) { return ChangeInfoResult::Unhandled; }

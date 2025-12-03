@@ -877,10 +877,10 @@ static void FinaliseEngineArray()
 		switch (e->type) {
 			case VEH_TRAIN:
 				for (RailType rt : e->VehInfo<RailVehicleInfo>().railtypes) {
-					AppendCopyableBadgeList(e->badges, GetRailTypeInfo(rt)->badges, GSF_TRAINS);
+					AppendCopyableBadgeList(e->badges, GetRailTypeInfo(rt)->badges, GrfSpecFeature::Trains);
 				}
 				break;
-			case VEH_ROAD: AppendCopyableBadgeList(e->badges, GetRoadTypeInfo(e->VehInfo<RoadVehicleInfo>().roadtype)->badges, GSF_ROADVEHICLES); break;
+			case VEH_ROAD: AppendCopyableBadgeList(e->badges, GetRoadTypeInfo(e->VehInfo<RoadVehicleInfo>().roadtype)->badges, GrfSpecFeature::RoadVehicles); break;
 			default: break;
 		}
 
@@ -1485,7 +1485,7 @@ static void ActivateOldTramDepot()
 static void FinalisePriceBaseMultipliers()
 {
 	/** Features, to which '_grf_id_overrides' applies. Currently vehicle features only. */
-	static constexpr GrfSpecFeatures override_features{GSF_TRAINS, GSF_ROADVEHICLES, GSF_SHIPS, GSF_AIRCRAFT};
+	static constexpr GrfSpecFeatures override_features{GrfSpecFeature::Trains, GrfSpecFeature::RoadVehicles, GrfSpecFeature::Ships, GrfSpecFeature::Aircraft};
 
 	/* Evaluate grf overrides */
 	int num_grfs = (uint)_grf_files.size();
@@ -1614,17 +1614,17 @@ static void FinaliseBadges()
 		for (Engine *e : Engine::Iterate()) {
 			if (e->grf_prop.grffile != &file) continue;
 			e->badges.push_back(badge->index);
-			badge->features.Set(static_cast<GrfSpecFeature>(GSF_TRAINS + e->type));
+			badge->features.Set(static_cast<GrfSpecFeature>(GrfSpecFeature::Trains + e->type));
 		}
 
-		AddBadgeToSpecs(file.stations, GSF_STATIONS, *badge);
-		AddBadgeToSpecs(file.housespec, GSF_HOUSES, *badge);
-		AddBadgeToSpecs(file.industryspec, GSF_INDUSTRIES, *badge);
-		AddBadgeToSpecs(file.indtspec, GSF_INDUSTRYTILES, *badge);
-		AddBadgeToSpecs(file.objectspec, GSF_OBJECTS, *badge);
-		AddBadgeToSpecs(file.airportspec, GSF_AIRPORTS, *badge);
-		AddBadgeToSpecs(file.airtspec, GSF_AIRPORTTILES, *badge);
-		AddBadgeToSpecs(file.roadstops, GSF_ROADSTOPS, *badge);
+		AddBadgeToSpecs(file.stations, GrfSpecFeature::Stations, *badge);
+		AddBadgeToSpecs(file.housespec, GrfSpecFeature::Houses, *badge);
+		AddBadgeToSpecs(file.industryspec, GrfSpecFeature::Industries, *badge);
+		AddBadgeToSpecs(file.indtspec, GrfSpecFeature::IndustryTiles, *badge);
+		AddBadgeToSpecs(file.objectspec, GrfSpecFeature::Objects, *badge);
+		AddBadgeToSpecs(file.airportspec, GrfSpecFeature::Airports, *badge);
+		AddBadgeToSpecs(file.airtspec, GrfSpecFeature::AirportTiles, *badge);
+		AddBadgeToSpecs(file.roadstops, GrfSpecFeature::RoadStops, *badge);
 	}
 
 	ApplyBadgeFeaturesToClassBadges();

@@ -227,7 +227,7 @@ AirportTileResolverObject::AirportTileResolverObject(const AirportTileSpec *ats,
 
 GrfSpecFeature AirportTileResolverObject::GetFeature() const
 {
-	return GSF_AIRPORTTILES;
+	return GrfSpecFeature::AirportTiles;
 }
 
 uint32_t AirportTileResolverObject::GetDebugID() const

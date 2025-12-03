@@ -71,7 +71,7 @@
 
 GrfSpecFeature RailTypeResolverObject::GetFeature() const
 {
-	return GSF_RAILTYPES;
+	return GrfSpecFeature::RailTypes;
 }
 
 uint32_t RailTypeResolverObject::GetDebugID() const

@@ -271,19 +271,19 @@ static void InitializeWindowsAndCaches()
 	/* Identify owners of persistent storage arrays */
 	for (Industry *i : Industry::Iterate()) {
 		if (i->psa != nullptr) {
-			i->psa->feature = GSF_INDUSTRIES;
+			i->psa->feature = GrfSpecFeature::Industries;
 			i->psa->tile = i->location.tile;
 		}
 	}
 	for (Station *s : Station::Iterate()) {
 		if (s->airport.psa != nullptr) {
-			s->airport.psa->feature = GSF_AIRPORTS;
+			s->airport.psa->feature = GrfSpecFeature::Airports;
 			s->airport.psa->tile = s->airport.tile;
 		}
 	}
 	for (Town *t : Town::Iterate()) {
 		for (auto &it : t->psa_list) {
-			it->feature = GSF_FAKE_TOWNS;
+			it->feature = GrfSpecFeature::FakeTowns;
 			it->tile = t->xy;
 		}
 	}

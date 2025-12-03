@@ -95,7 +95,7 @@ private:
 	};
 
 	/** Currently referenceable spritesets */
-	std::map<uint, SpriteSet> spritesets[GSF_END];
+	std::array<std::map<uint, SpriteSet>, to_underlying(GrfSpecFeature::End)> spritesets{};
 
 public:
 	/* Global state */
@@ -120,8 +120,8 @@ public:
 		this->nfo_line = 0;
 		this->skip_sprites = 0;
 
-		for (uint i = 0; i < GSF_END; i++) {
-			this->spritesets[i].clear();
+		for (auto &s : this->spritesets) {
+			s.clear();
 		}
 
 		this->spritegroups = {};
@@ -137,9 +137,9 @@ public:
 	 */
 	void AddSpriteSets(GrfSpecFeature feature, SpriteID first_sprite, uint first_set, uint numsets, uint numents)
 	{
-		assert(feature < GSF_END);
+		assert(feature < GrfSpecFeature::End);
 		for (uint i = 0; i < numsets; i++) {
-			SpriteSet &set = this->spritesets[feature][first_set + i];
+			SpriteSet &set = this->spritesets[to_underlying(feature)][first_set + i];
 			set.sprite = first_sprite + i * numents;
 			set.num_sprites = numents;
 		}
@@ -153,8 +153,8 @@ public:
 	 */
 	bool HasValidSpriteSets(GrfSpecFeature feature) const
 	{
-		assert(feature < GSF_END);
-		return !this->spritesets[feature].empty();
+		assert(feature < GrfSpecFeature::End);
+		return !this->spritesets[to_underlying(feature)].empty();
 	}
 
 	/**
@@ -166,8 +166,8 @@ public:
 	 */
 	bool IsValidSpriteSet(GrfSpecFeature feature, uint set) const
 	{
-		assert(feature < GSF_END);
-		return this->spritesets[feature].find(set) != this->spritesets[feature].end();
+		assert(feature < GrfSpecFeature::End);
+		return this->spritesets[to_underlying(feature)].find(set) != this->spritesets[to_underlying(feature)].end();
 	}
 
 	/**
@@ -179,7 +179,7 @@ public:
 	SpriteID GetSprite(GrfSpecFeature feature, uint set) const
 	{
 		assert(IsValidSpriteSet(feature, set));
-		return this->spritesets[feature].find(set)->second.sprite;
+		return this->spritesets[to_underlying(feature)].find(set)->second.sprite;
 	}
 
 	/**
@@ -191,7 +191,7 @@ public:
 	uint GetNumEnts(GrfSpecFeature feature, uint set) const
 	{
 		assert(IsValidSpriteSet(feature, set));
-		return this->spritesets[feature].find(set)->second.num_sprites;
+		return this->spritesets[to_underlying(feature)].find(set)->second.num_sprites;
 	}
 };
 

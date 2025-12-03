@@ -46,7 +46,7 @@ class ObjectPickerCallbacks : public PickerCallbacksNewGRFClass<ObjectClass> {
 public:
 	ObjectPickerCallbacks() : PickerCallbacksNewGRFClass<ObjectClass>("fav_objects") {}
 
-	GrfSpecFeature GetFeature() const override { return GSF_OBJECTS; }
+	GrfSpecFeature GetFeature() const override { return GrfSpecFeature::Objects; }
 
 	StringID GetClassTooltip() const override { return STR_PICKER_OBJECT_CLASS_TOOLTIP; }
 	StringID GetTypeTooltip() const override { return STR_PICKER_OBJECT_TYPE_TOOLTIP; }
@@ -236,7 +236,7 @@ public:
 				const int bottom = tr.bottom;
 				/* Use all the available space past the rect, so that we can enlarge the window if needed. */
 				tr.bottom = INT16_MAX;
-				tr.top = DrawBadgeNameList(tr, spec->badges, GSF_OBJECTS);
+				tr.top = DrawBadgeNameList(tr, spec->badges, GrfSpecFeature::Objects);
 
 				/* Get the extra message for the GUI */
 				if (spec->callback_mask.Test(ObjectCallbackMask::FundMoreText)) {

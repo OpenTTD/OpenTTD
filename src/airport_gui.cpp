@@ -451,7 +451,7 @@ public:
 			}
 
 			/* strings such as 'Size' and 'Coverage Area' */
-			r.top = DrawBadgeNameList(r, as->badges, GSF_AIRPORTS) + WidgetDimensions::scaled.vsep_normal;
+			r.top = DrawBadgeNameList(r, as->badges, GrfSpecFeature::Airports) + WidgetDimensions::scaled.vsep_normal;
 			r.top = DrawStationCoverageAreaText(r, SCT_ALL, rad, false) + WidgetDimensions::scaled.vsep_normal;
 			r.top = DrawStationCoverageAreaText(r, SCT_ALL, rad, true);
 		}

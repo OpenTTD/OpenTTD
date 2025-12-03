@@ -575,7 +575,7 @@ uint32_t Waypoint::GetNewGRFVariable(const ResolverObject &, uint8_t variable, [
 
 GrfSpecFeature StationResolverObject::GetFeature() const
 {
-	return GSF_STATIONS;
+	return GrfSpecFeature::Stations;
 }
 
 uint32_t StationResolverObject::GetDebugID() const
