@@ -7970,6 +7970,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetName(0):               Look, a station
   GetLocation(1):           29253
   GetLocation(1000):        -1
+  GetStationID(28481):      65535
   GetStationID(33411):      6
   GetStationID(34411):      65535
   GetStationID(33411):      6
@@ -10116,7 +10117,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
 constructor failed with: excessive CPU usage in list filter function
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [Start()] regression/main.nut line [2184]
+*FUNCTION [Start()] regression/main.nut line [2185]
 
 [Infinite] CLOSURE
 [list] INSTANCE
