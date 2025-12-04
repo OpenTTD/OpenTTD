@@ -1327,6 +1327,39 @@ bool RiverFlowsDown(TileIndex begin, TileIndex end)
 }
 
 /**
+ * Find the size of a patch of connected sea tiles.
+ * @param tile The starting tile to search.
+ * @param sea The set of sea tiles found.
+ * @param limit How many tiles to find before cutting the search short.
+ * @return True iff we found a map edge and broke out early, otherwise false (use the sea parameter as the output count/tile set).
+ */
+static bool CountConnectedSeaTiles(TileIndex tile, std::unordered_set<TileIndex> &sea, const uint limit)
+{
+	/* This tile might not be sea. */
+	if (!IsWaterTile(tile) || GetWaterClass(tile) != WaterClass::Sea || !IsTileFlat(tile)) return false;
+
+	/* If we've found an edge tile, we are "connected to the sea outside the map." */
+	if (DistanceFromEdge(tile) <= 1) return true;
+
+	/* We have now evaluated this tile and don't want to check it again. */
+	sea.insert(tile);
+
+	/* We might want to cut our search short if the size of the sea is "big enough".
+	 * Count this tile but don't check its neighbors. */
+	if (sea.size() > limit) return false;
+
+	/* Count adjacent tiles using recusion. */
+	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
+		TileIndex t = tile + TileOffsByDiagDir(d);
+		if (IsValidTile(t) && !sea.contains(t)) {
+			if (CountConnectedSeaTiles(t, sea, limit)) return true;
+		}
+	}
+
+	return false;
+}
+
+/**
  * Try to flow the river down from a given begin.
  * @param spring The springing point of the river.
  * @param begin  The begin point we are looking from; somewhere down hill from the spring.
@@ -1358,8 +1391,29 @@ static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint 
 
 		int height_end;
 		if (IsTileFlat(end, &height_end) && (height_end < height_begin || (height_end == height_begin && IsWaterTile(end)))) {
-			found = true;
-			break;
+			if (IsWaterTile(end) && GetWaterClass(end) == WaterClass::Sea) {
+				/* If we've found the sea, make sure it's large enough. Scale by the map size but set a cap to avoid performance issues on large maps. */
+				const uint MAX_SEA_SIZE_THRESHOLD = 1024;
+				const uint SEA_SIZE_THRESHOLD = std::min(static_cast<uint>(2 * std::sqrt(Map::SizeX() * Map::SizeY())), MAX_SEA_SIZE_THRESHOLD);
+				std::unordered_set<TileIndex> sea;
+				/* Count the connected tiles, if the sea is large we can end the river here. */
+				bool found_edge = CountConnectedSeaTiles(end, sea, SEA_SIZE_THRESHOLD);
+				if (found_edge || sea.size() > SEA_SIZE_THRESHOLD) {
+					found = true;
+					break;
+				} else {
+					/* Sea is too small, flatten it so the river keeps looking or forms a lake / wetland. */
+					for (TileIndex sea_tile : sea) {
+						Command<CMD_TERRAFORM_LAND>::Do(DoCommandFlag::Execute, sea_tile, SLOPE_ELEVATED, false);
+						Slope slope = ComplementSlope(GetTileSlope(sea_tile));
+						Command<CMD_TERRAFORM_LAND>::Do(DoCommandFlag::Execute, sea_tile, slope, true);
+					}
+				}
+			} else {
+				/* We've found a river. */
+				found = true;
+				break;
+			}
 		}
 
 		for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
