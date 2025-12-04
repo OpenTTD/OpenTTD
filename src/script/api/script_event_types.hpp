@@ -329,6 +329,108 @@ private:
 };
 
 /**
+ * Base class for events involving a engine and a company.
+ * @api game
+ */
+class ScriptEventCompanyEngine : public ScriptEvent {
+public:
+#ifndef DOXYGEN_API
+	/**
+	 * @param engine The EngineID of the engine involved into the event.
+	 * @param company The CompanyID of the company involved into the event.
+	 */
+	ScriptEventCompanyEngine(EngineID engine, ::CompanyID company, ScriptEvent::ScriptEventType type) :
+		ScriptEvent(type),
+		engine(engine),
+		company(ScriptCompany::ToScriptCompanyID(company))
+	{}
+#endif /* DOXYGEN_API */
+
+	/**
+	 * Convert an ScriptEvent to the real instance.
+	 * @param instance The instance to convert.
+	 * @return The converted instance.
+	 */
+	static ScriptEventCompanyEngine *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventCompanyEngine *>(instance); }
+
+	/**
+	 * Get the EngineID of the engine involved into the event.
+	 * @return The EngineID of the engine.
+	 */
+	EngineID GetEngineID() { return this->engine; }
+
+	/**
+	 * Get the CompanyID of the company involved into the event.
+	 * @return The CompanyID of the company.
+	 */
+	ScriptCompany::CompanyID GetCompanyID() { return this->company; }
+
+private:
+	EngineID engine; ///< The involved engine.
+	ScriptCompany::CompanyID company; ///< The involved company.
+};
+
+/**
+ * Event Engine Preview Accepted, indicating a company has accepted an engine preview.
+ * @api game
+ */
+class ScriptEventEnginePreviewAccepted : public ScriptEventCompanyEngine {
+public:
+#ifndef DOXYGEN_API
+	/**
+	 * @param engine The previewed engine.
+	 * @param company Company that has accepted the preview.
+	 */
+	ScriptEventEnginePreviewAccepted(EngineID engine, ::CompanyID company) :
+		ScriptEventCompanyEngine(engine, company, ET_ENGINE_PREVIEW_ACCEPTED)
+	{}
+#endif /* DOXYGEN_API */
+
+	/**
+	 * Convert an ScriptEvent to the real instance.
+	 * @param instance The instance to convert.
+	 * @return The converted instance.
+	 */
+	static ScriptEventEnginePreviewAccepted *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventEnginePreviewAccepted *>(instance); }
+};
+
+/**
+ * Event Engine Preview Ended, indicating an engine preview has ended.
+ * @api game
+ */
+class ScriptEventEnginePreviewEnded : public ScriptEventCompanyEngine {
+public:
+#ifndef DOXYGEN_API
+	/**
+	 * @param engine The previewed engine.
+	 * @param company Company that had the preview.
+	 * @param created_instances Number of instance of the engine that company currenlty has.
+	 */
+	ScriptEventEnginePreviewEnded(EngineID engine, ::CompanyID company, int32_t created_instances) :
+		ScriptEventCompanyEngine(engine, company, ET_ENGINE_PREVIEW_ENDED),
+		created_instances(created_instances)
+	{}
+#endif /* DOXYGEN_API */
+
+	/**
+	 * Convert an ScriptEvent to the real instance.
+	 * @param instance The instance to convert.
+	 * @return The converted instance.
+	 */
+	static ScriptEventEnginePreviewEnded *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventEnginePreviewEnded *>(instance); }
+
+	/**
+	 * Get quantity of engine instances that the company had when engine preview has ended.
+	 * Iff it is equal to zero, the company has been blocked from getting new preview offers for a few years.
+	 * @return The number of instances.
+	 */
+	int32_t GetNumberOfInstances() { return this->created_instances; }
+
+private:
+	int32_t created_instances; ///< Number of instances of the engine that company had when preview has ended.
+};
+
+/**
  * Event Company New, indicating a new company has been created.
  * @api ai game
  */
