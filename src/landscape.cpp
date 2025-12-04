@@ -1670,7 +1670,7 @@ bool GenerateLandscape(uint8_t mode)
 				uint i = Map::ScaleBySize(GB(r, 0, 7) + (3 - _settings_game.difficulty.quantity_sea_lakes) * 256 + 100);
 				for (; i != 0; --i) {
 					/* Make sure we do not overflow. */
-					GenerateTerrain(Clamp(_settings_game.difficulty.terrain_type, 0, 3), 0);
+					GenerateTerrain(Clamp(_settings_game.difficulty.terrain_type, TT_VERY_FLAT, TT_MOUNTAINOUS), 0);
 				}
 				break;
 			}
