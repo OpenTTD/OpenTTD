@@ -406,9 +406,10 @@ public:
 	 * @param company Company that had the preview.
 	 * @param created_instances Number of instance of the engine that company currenlty has.
 	 */
-	ScriptEventEnginePreviewEnded(EngineID engine, ::CompanyID company, int32_t created_instances) :
+	ScriptEventEnginePreviewEnded(EngineID engine, ::CompanyID company, int32_t created_instances, uint8_t old_block_preview_value) :
 		ScriptEventCompanyEngine(engine, company, ET_ENGINE_PREVIEW_ENDED),
-		created_instances(created_instances)
+		created_instances(created_instances),
+		old_block_preview_value(old_block_preview_value)
 	{}
 #endif /* DOXYGEN_API */
 
@@ -426,8 +427,48 @@ public:
 	 */
 	int32_t GetNumberOfInstances() { return this->created_instances; }
 
+	/**
+	 * Get the value of the block preview just before the preview has ended.
+	 * @return The old value of block_preview member.
+	 */
+	int32_t GetOldValue() { return this->old_block_preview_value; }
+
 private:
 	int32_t created_instances; ///< Number of instances of the engine that company had when preview has ended.
+	int32_t old_block_preview_value; ///< The old value of block_preview member.
+};
+
+/**
+ * Event Block Engine Preview Changed, indicating that the date of the end of block has changed.
+ * @api ai
+ */
+class ScriptEventBlockEnginePreviewChanged : public ScriptEvent {
+public:
+#ifndef DOXYGEN_API
+	/**
+	 * @param old_value The old value of block_preview member.
+	 */
+	ScriptEventBlockEnginePreviewChanged(uint8_t old_value) :
+		ScriptEvent(ET_BLOCK_ENGINE_PREVIEW_CHANGED),
+		old_value(old_value)
+	{}
+#endif /* DOXYGEN_API */
+
+	/**
+	 * Convert an ScriptEvent to the real instance.
+	 * @param instance The instance to convert.
+	 * @return The converted instance.
+	 */
+	static ScriptEventBlockEnginePreviewChanged *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventBlockEnginePreviewChanged *>(instance); }
+
+	/**
+	 * Get the value of the block preview before it was changed.
+	 * @return The old value of block_preview member.
+	 */
+	int32_t GetOldValue() { return this->old_value; }
+
+private:
+	int32_t old_value; ///< The old value of block_preview member.
 };
 
 /**

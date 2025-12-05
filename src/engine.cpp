@@ -1094,12 +1094,18 @@ static void NewVehicleAvailable(Engine *e)
 			 * as those are the only engines that can be given exclusive previews. */
 			auto num_engines = GetGroupNumEngines(c->index, ALL_GROUP, e->index);
 
+			uint8_t old_value = c->block_preview;
+
 			if (num_engines == 0) {
 				/* The company did not build this engine during preview. */
-				c->block_preview = 20;
+				/* GS could have added more quaters in the meantime. */
+				c->block_preview = std::max<uint8_t>(20, c->block_preview);
+
+				/* Notify the AI about the change. */
+				if (old_value != c->block_preview) AI::NewEvent(c->index, new ScriptEventBlockEnginePreviewChanged(old_value));
 			}
 
-			Game::NewEvent(new ScriptEventEnginePreviewEnded(e->index, c->index, num_engines));
+			Game::NewEvent(new ScriptEventEnginePreviewEnded(e->index, c->index, num_engines, old_value));
 		}
 	}
 
