@@ -61,6 +61,7 @@ public:
 		ET_PRESIDENT_RENAMED,
 		ET_ENGINE_PREVIEW_ENDED, ///< Event Engine Preview Ended, indicating an engine preview has ended.
 		ET_ENGINE_PREVIEW_ACCEPTED, ///< Event Engine Preview Accepted, indicating a company has accepted an engine preview.
+		ET_BLOCK_ENGINE_PREVIEW_CHANGED, ///< Event Block Engine Preview Changed, indicating that the date of the end of block has changed.
 	};
 
 #ifndef DOXYGEN_API

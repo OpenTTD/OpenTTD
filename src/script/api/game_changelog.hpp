@@ -23,6 +23,8 @@
  * \li GSEventCompanyEngine
  * \li GSEventEnginePreviewAccepted
  * \li GSEventEnginePreviewEnded
+ * \li GSCompany::SetBlockPreview
+ * \li GSCompany::GetBlockPreview
  *
  * \b 15.0
  *
