@@ -2326,7 +2326,7 @@ static bool ConContent(std::span<std::string_view> argv)
  */
 static std::string_view FontLoadReasonToName(FontLoadReason load_reason)
 {
-	static const std::string_view LOAD_REASON_TO_NAME[] = { "default", "configured", "language" };
+	static const std::string_view LOAD_REASON_TO_NAME[] = { "default", "configured", "language", "missing" };
 	static_assert(std::size(LOAD_REASON_TO_NAME) == to_underlying(FontLoadReason::End));
 	return LOAD_REASON_TO_NAME[to_underlying(load_reason)];
 }
