@@ -279,7 +279,11 @@ void EmitGender(StringBuilder &builder, std::string_view param, char32_t)
 		/* This is a {G=DER} command */
 		auto gender = consumer.Read(StringConsumer::npos);
 		auto nw = _strgen.lang.GetGenderIndex(gender);
-		if (nw >= MAX_NUM_GENDERS) StrgenFatal("G argument '{}' invalid", gender);
+		if (nw >= MAX_NUM_GENDERS) {
+			/* Show only warning since english has genders. */
+			StrgenWarning("G argument '{}' invalid", gender);
+			return; // Do not add the gender if index is invalid.
+		}
 
 		/* now nw contains the gender index */
 		builder.PutUtf8(SCC_GENDER_INDEX);
@@ -302,7 +306,11 @@ void EmitGender(StringBuilder &builder, std::string_view param, char32_t)
 			if (!word.has_value()) break;
 			words.emplace_back(*word);
 		}
-		if (words.size() != _strgen.lang.num_genders) StrgenFatal("Bad # of arguments for gender command");
+		if (words.size() != _strgen.lang.num_genders) {
+			/* Show only warning since english has genders. */
+			StrgenWarning("Bad # of arguments for gender command");
+			words.resize(_strgen.lang.num_genders, words[0]);
+		}
 
 		assert(IsInsideBS(cmd->value, SCC_CONTROL_START, UINT8_MAX));
 		builder.PutUtf8(SCC_GENDER_LIST);

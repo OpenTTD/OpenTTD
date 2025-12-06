@@ -8,7 +8,7 @@
 ##decimalsep ,
 ##winlangid 0x0415
 ##grflangid 0x30
-##gender m f n
+##gender m f n mo nmo
 ##case d c b n m w
 
 
