@@ -10,6 +10,7 @@
 #ifndef ORDER_FUNC_H
 #define ORDER_FUNC_H
 
+#include "core/geometry_type.hpp"
 #include "order_type.h"
 #include "vehicle_type.h"
 #include "company_type.h"
@@ -24,7 +25,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth = 0, 
 VehicleOrderID ProcessConditionalOrder(const Order *order, const Vehicle *v);
 uint GetOrderDistance(VehicleOrderID prev, VehicleOrderID cur, const Vehicle *v, int conditional_depth = 0);
 
-void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_index, int y, bool selected, bool timetable, int left, int middle, int right);
+void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_index, bool selected, bool timetable, Rect index_rect, Rect order_rect, int rating_width);
 
 static const uint DEF_SERVINT_DAYS_TRAINS   = 150;
 static const uint DEF_SERVINT_DAYS_ROADVEH  = 150;
