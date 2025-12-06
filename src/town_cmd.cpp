@@ -2448,7 +2448,7 @@ bool GenerateTowns(TownLayout layout, std::optional<uint> number)
 		total = Map::ScaleByLandProportion(GetDefaultTownsForMapSize() + (Random() & 7));
 	}
 
-	total = std::min<uint>(TownPool::MAX_SIZE, total);
+	total = Clamp<uint>(total, 1, TownPool::MAX_SIZE);
 	uint32_t townnameparts;
 	TownNames town_names;
 
