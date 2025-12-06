@@ -8,13 +8,15 @@
 /** @file truetypefontcache.cpp Common base implementation for font file based font caches. */
 
 #include "../stdafx.h"
-#include "../debug.h"
 #include "../fontcache.h"
-#include "../core/bitmath_func.hpp"
 #include "../gfx_layout.h"
+#include "../table/sprites.h"
+#include "../blitter/base.hpp"
 #include "truetypefontcache.h"
 
 #include "../safeguards.h"
+
+extern void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = nullptr, SpriteID sprite_id = SPR_CURSOR_MOUSE, ZoomLevel zoom = ZoomLevel::Min);
 
 /**
  * Create a new TrueTypeFontCache.
@@ -47,14 +49,27 @@ void TrueTypeFontCache::ClearFontCache()
 TrueTypeFontCache::GlyphEntry *TrueTypeFontCache::GetGlyphPtr(GlyphID key)
 {
 	auto found = this->glyph_to_sprite_map.find(key);
-	if (found == std::end(this->glyph_to_sprite_map)) return nullptr;
-	return &found->second;
+	if (found != std::end(this->glyph_to_sprite_map)) return &found->second;
+	return this->InternalGetGlyph(key, GetFontAAState());
 }
 
 TrueTypeFontCache::GlyphEntry &TrueTypeFontCache::SetGlyphPtr(GlyphID key, GlyphEntry &&glyph)
 {
 	this->glyph_to_sprite_map[key] = std::move(glyph);
 	return this->glyph_to_sprite_map[key];
+}
+
+void TrueTypeFontCache::DrawGlyph(GlyphID key, const Rect &r)
+{
+	extern void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = nullptr, SpriteID sprite_id = SPR_CURSOR_MOUSE, ZoomLevel zoom = ZoomLevel::Min);
+	GlyphEntry *glyph = this->GetGlyphPtr(key);
+	const Sprite *sprite = glyph->GetSprite();
+	GfxMainBlitter(sprite, r.left, r.top, BlitterMode::ColourRemap);
+}
+
+void TrueTypeFontCache::DrawGlyphShadow(GlyphID key, const Rect &r)
+{
+	if (this->GetDrawGlyphShadow()) DrawGlyph(key, r);
 }
 
 bool TrueTypeFontCache::GetDrawGlyphShadow()
@@ -65,19 +80,6 @@ bool TrueTypeFontCache::GetDrawGlyphShadow()
 uint TrueTypeFontCache::GetGlyphWidth(GlyphID key)
 {
 	GlyphEntry *glyph = this->GetGlyphPtr(key);
-	if (glyph == nullptr || glyph->data == nullptr) {
-		this->GetGlyph(key);
-		glyph = this->GetGlyphPtr(key);
-	}
-
+	if (glyph == nullptr || glyph->data == nullptr) return 0;
 	return glyph->width;
-}
-
-const Sprite *TrueTypeFontCache::GetGlyph(GlyphID key)
-{
-	/* Check for the glyph in our cache */
-	GlyphEntry *glyph = this->GetGlyphPtr(key);
-	if (glyph != nullptr && glyph->data != nullptr) return glyph->GetSprite();
-
-	return this->InternalGetGlyph(key, GetFontAAState());
 }

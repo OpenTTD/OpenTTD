@@ -14,7 +14,7 @@
  * List of string control codes used for string formatting, displaying, and
  * by strgen to generate the language files.
  */
-enum StringControlCode : uint16_t {
+enum StringControlCode : char32_t {
 	SCC_RECORD_SEPARATOR = 0x1E,
 
 	SCC_CONTROL_START = 0xE000,
@@ -79,6 +79,11 @@ enum StringControlCode : uint16_t {
 	SCC_DATE_SHORT,
 	SCC_DATE_LONG,
 	SCC_DATE_ISO,
+
+	SCC_CARGO_ICON,
+	SCC_BADGE_ICON,
+	SCC_COMPANY_ICON,
+	SCC_ENGINE_ICON,
 
 	/* Must be consecutive */
 	SCC_STRING1,
@@ -187,6 +192,9 @@ enum StringControlCode : uint16_t {
 	SCC_SUPERSCRIPT_M1   = SCC_SPRITE_START + 0xB9,
 	SCC_SMALL_UP_ARROW   = SCC_SPRITE_START + 0xBC,
 	SCC_SMALL_DOWN_ARROW = SCC_SPRITE_START + 0xBD,
+
+	SCC_ICON_START = 0xF0000,
+	SCC_ICON_END = SCC_ICON_START + 0xFFFD,
 };
 
 #endif /* CONTROL_CODES_H */

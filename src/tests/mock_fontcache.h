@@ -22,7 +22,8 @@ public:
 	}
 
 	void ClearFontCache() override {}
-	const Sprite *GetGlyph(GlyphID) override { return nullptr; }
+	void DrawGlyph(GlyphID, const Rect &) override {}
+	void DrawGlyphShadow(GlyphID, const Rect &) override {}
 	uint GetGlyphWidth(GlyphID) override { return this->height / 2; }
 	bool GetDrawGlyphShadow() override { return false; }
 	GlyphID MapCharToGlyph(char32_t key) override { return key; }
