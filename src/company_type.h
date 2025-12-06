@@ -10,7 +10,7 @@
 #ifndef COMPANY_TYPE_H
 #define COMPANY_TYPE_H
 
-#include "core/enum_type.hpp"
+#include "core/base_bitset_type.hpp"
 #include "core/pool_type.hpp"
 
 using CompanyID = PoolID<uint8_t, struct CompanyIDTag, 0xF, 0xFF>;

@@ -10,7 +10,6 @@
 #ifndef TIMER_GAME_ECONOMY_H
 #define TIMER_GAME_ECONOMY_H
 
-#include "../core/strong_typedef_type.hpp"
 #include "timer_game_common.h"
 
 /**

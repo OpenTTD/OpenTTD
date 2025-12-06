@@ -10,7 +10,6 @@
 #include "../stdafx.h"
 
 #include "../blitter/factory.hpp"
-#include "../core/math_func.hpp"
 #include "../spritecache.h"
 #include "../spritecache_internal.h"
 #include "../table/sprites.h"

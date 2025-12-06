@@ -10,7 +10,6 @@
 #include "../stdafx.h"
 #include "../zoom_func.h"
 #include "../settings_type.h"
-#include "../core/math_func.hpp"
 #include "8bpp_optimized.hpp"
 
 #include "../safeguards.h"

@@ -22,7 +22,6 @@
 #include "window_func.h"
 #include "newgrf_debug.h"
 #include "core/backup_type.hpp"
-#include "core/container_func.hpp"
 #include "core/geometry_func.hpp"
 #include "viewport_func.h"
 

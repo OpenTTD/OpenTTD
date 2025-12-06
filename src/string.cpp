@@ -9,7 +9,6 @@
 
 #include "stdafx.h"
 #include "debug.h"
-#include "core/math_func.hpp"
 #include "error_func.h"
 #include "string_func.h"
 #include "string_base.h"

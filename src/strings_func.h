@@ -12,10 +12,7 @@
 
 #include "fontcache.h"
 #include "strings_type.h"
-#include "string_type.h"
 #include "gfx_type.h"
-#include "core/bitmath_func.hpp"
-#include "core/convertible_through_base.hpp"
 #include "vehicle_type.h"
 
 /**

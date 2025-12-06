@@ -10,8 +10,6 @@
 #ifndef HASHTABLE_HPP
 #define HASHTABLE_HPP
 
-#include "../core/math_func.hpp"
-
 template <class TItem>
 struct HashTableSlot
 {

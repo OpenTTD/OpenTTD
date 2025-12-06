@@ -12,7 +12,6 @@
 
 #include "road_type.h"
 #include "gfx_type.h"
-#include "core/bitmath_func.hpp"
 #include "core/flatset_type.hpp"
 #include "strings_type.h"
 #include "timer/timer_game_calendar.h"

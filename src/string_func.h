@@ -14,7 +14,6 @@
 
 #include <iosfwd>
 
-#include "core/bitmath_func.hpp"
 #include "string_type.h"
 
 void strecpy(std::span<char> dst, std::string_view src);

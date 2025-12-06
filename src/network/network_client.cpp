@@ -9,7 +9,6 @@
 
 #include "../stdafx.h"
 #include "network_gui.h"
-#include "../core/string_consumer.hpp"
 #include "../saveload/saveload.h"
 #include "../saveload/saveload_filter.h"
 #include "../command_func.h"

@@ -14,7 +14,6 @@
 #define NEWGRF_COMMONS_H
 
 #include "sprite.h"
-#include "core/alloc_type.hpp"
 #include "command_type.h"
 #include "direction_type.h"
 #include "company_type.h"

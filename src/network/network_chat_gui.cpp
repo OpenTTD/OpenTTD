@@ -17,7 +17,6 @@
 #include "../town.h"
 #include "../window_func.h"
 #include "../toolbar_gui.h"
-#include "../core/geometry_func.hpp"
 #include "../zoom_func.h"
 #include "../timer/timer.h"
 #include "../timer/timer_window.h"

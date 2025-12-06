@@ -10,7 +10,6 @@
 #ifndef WIDGET_TYPE_H
 #define WIDGET_TYPE_H
 
-#include "core/bitmath_func.hpp"
 #include "core/math_func.hpp"
 #include "strings_type.h"
 #include "gfx_type.h"

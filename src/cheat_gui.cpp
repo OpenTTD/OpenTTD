@@ -29,7 +29,6 @@
 #include "newgrf.h"
 #include "error.h"
 #include "misc_cmd.h"
-#include "core/geometry_func.hpp"
 #include "settings_type.h"
 #include "settings_internal.h"
 #include "timer/timer.h"

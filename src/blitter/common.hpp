@@ -11,7 +11,6 @@
 #define BLITTER_COMMON_HPP
 
 #include "base.hpp"
-#include "../core/math_func.hpp"
 
 #include <utility>
 
