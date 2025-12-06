@@ -58,15 +58,12 @@ public:
 	virtual void Remove(SQInteger item) = 0;
 
 	/**
-	 * Attach the sorter to a new list. This assumes the content of the old list has been moved to
-	 * the new list, too, so that we don't have to invalidate any iterators. Note that std::swap
-	 * doesn't invalidate iterators on lists and maps, so that should be safe.
-	 * @param target New list to attach to.
+	 * Attach the sorter to a new list and update internal iterators so they remain valid
+	 * in the context of the new list. This assumes the content of the old list has been
+	 * moved to the new list.
+	 * @param new_list New list to attach to and update internal iterators.
 	 */
-	virtual void Retarget(ScriptList *new_list)
-	{
-		this->list = new_list;
-	}
+	virtual void Retarget(ScriptList *new_list) = 0;
 };
 
 /**
@@ -156,6 +153,20 @@ public:
 		if (item == this->item_next) {
 			this->FindNext();
 			return;
+		}
+	}
+
+	void Retarget(ScriptList *new_list) override
+	{
+		this->list = new_list;
+		if (this->item_next) {
+			auto item_iter = this->list->items.find(*this->item_next);
+			SQInteger value = item_iter->second;
+			this->bucket_iter = this->list->buckets.find(value);
+			this->bucket_list_iter = this->bucket_list->find(*this->item_next);
+		} else {
+			this->bucket_iter = this->list->buckets.end();
+			assert(this->bucket_list == nullptr);
 		}
 	}
 };
@@ -258,6 +269,20 @@ public:
 			return;
 		}
 	}
+
+	void Retarget(ScriptList *new_list) override
+	{
+		this->list = new_list;
+		if (this->item_next) {
+			auto item_iter = this->list->items.find(*this->item_next);
+			SQInteger value = item_iter->second;
+			this->bucket_iter = this->list->buckets.find(value);
+			this->bucket_list_iter = this->bucket_list->find(*this->item_next);
+		} else {
+			this->bucket_iter = this->list->buckets.end();
+			assert(this->bucket_list == nullptr);
+		}
+	}
 };
 
 /**
@@ -331,6 +356,16 @@ public:
 		if (item == this->item_next) {
 			this->FindNext();
 			return;
+		}
+	}
+
+	void Retarget(ScriptList *new_list) override
+	{
+		this->list = new_list;
+		if (this->item_next) {
+			this->item_iter = this->list->items.find(*this->item_next);
+		} else {
+			this->item_iter = this->list->items.end();
 		}
 	}
 };
@@ -415,6 +450,16 @@ public:
 		if (item == this->item_next) {
 			this->FindNext();
 			return;
+		}
+	}
+
+	void Retarget(ScriptList *new_list) override
+	{
+		this->list = new_list;
+		if (this->item_next) {
+			this->item_iter = this->list->items.find(*this->item_next);
+		} else {
+			this->item_iter = this->list->items.end();
 		}
 	}
 };
