@@ -72,11 +72,14 @@ static WindowDesc _dropdown_desc(
 	_nested_dropdown_menu_widgets
 );
 
-/** Drop-down menu window */
-struct DropdownWindow : Window {
+static void ShowDropDownSubmenu(struct DropdownWindowBase *parent, const DropDownSubmenuItem &submenu, const Rect wi_rect, int item_index, bool drag_mode);
+
+/** Drop-down menu window base */
+struct DropdownWindowBase : Window {
+	Window *callback; ///< Window to send events to.
 	WidgetID parent_button{}; ///< Parent widget number where the window is dropped from.
 	Rect wi_rect{}; ///< Rect of the button that opened the dropdown.
-	DropDownList list{}; ///< List with dropdown menu items.
+	Colours wi_colour;
 	int selected_result = 0; ///< Result value of the selected item in the list.
 	int selected_click_result = -1; ///< Click result value, from the OnClick handler of the selected item.
 	uint8_t click_delay = 0; ///< Timer to delay selection.
@@ -86,28 +89,28 @@ struct DropdownWindow : Window {
 	Point position{}; ///< Position of the topleft corner of the window.
 	Scrollbar *vscroll = nullptr;
 
+	int submenu_index = -1;
+
 	Dimension items_dim{}; ///< Calculated cropped and padded dimension for the items widget.
 
 	/**
 	 * Create a dropdown menu.
 	 * @param parent        Parent window.
-	 * @param list          Dropdown item list.
 	 * @param selected      Initial selected result of the list.
 	 * @param button        Widget of the parent window doing the dropdown.
 	 * @param wi_rect       Rect of the button that opened the dropdown.
 	 * @param wi_colour     Colour of the parent widget.
 	 * @param options Drop Down options for this menu.
 	 */
-	DropdownWindow(Window *parent, DropDownList &&list, int selected, WidgetID button, const Rect wi_rect, Colours wi_colour, DropDownOptions options)
+	DropdownWindowBase(Window *parent, Window *callback, int selected, WidgetID button, const Rect wi_rect, Colours wi_colour, DropDownOptions options)
 			: Window(_dropdown_desc)
+			, callback(callback)
 			, parent_button(button)
 			, wi_rect(wi_rect)
-			, list(std::move(list))
+			, wi_colour(wi_colour)
 			, selected_result(selected)
 			, options(options)
 	{
-		assert(!this->list.empty());
-
 		this->parent = parent;
 
 		this->CreateNestedTree();
@@ -115,9 +118,13 @@ struct DropdownWindow : Window {
 		this->GetWidget<NWidgetCore>(WID_DM_ITEMS)->colour = wi_colour;
 		this->GetWidget<NWidgetCore>(WID_DM_SCROLL)->colour = wi_colour;
 		this->vscroll = this->GetScrollbar(WID_DM_SCROLL);
+	}
+
+	void Init(WindowNumber window_number)
+	{
 		this->UpdateSizeAndPosition();
 
-		this->FinishInitNested(0);
+		this->FinishInitNested(window_number);
 		this->flags.Reset(WindowFlag::WhiteBorder);
 	}
 
@@ -128,9 +135,9 @@ struct DropdownWindow : Window {
 		this->Window::Close();
 
 		Point pt = _cursor.pos;
-		pt.x -= this->parent->left;
-		pt.y -= this->parent->top;
-		this->parent->OnDropdownClose(pt, this->parent_button, this->selected_result, this->selected_click_result, this->options.Test(DropDownOption::InstantClose));
+		pt.x -= this->callback->left;
+		pt.y -= this->callback->top;
+		this->callback->OnDropdownClose(pt, this->parent_button, this->selected_result, this->selected_click_result, this->options.Test(DropDownOption::InstantClose));
 
 		/* Set flag on parent widget to indicate that we have just closed. */
 		NWidgetCore *nwc = this->parent->GetWidget<NWidgetCore>(this->parent_button);
@@ -156,7 +163,7 @@ struct DropdownWindow : Window {
 		if (desired.height < available_height) return;
 
 		/* If the dropdown doesn't fully fit, we a need a dropdown. */
-		uint avg_height = list.height / (uint)this->list.size();
+		uint avg_height = list.height / (uint)this->GetList().size();
 		uint rows = std::max((available_height - WidgetDimensions::scaled.dropdownlist.Vertical()) / avg_height, 1U);
 
 		desired.width = std::max(list.width, desired.width - NWidgetScrollbar::GetVerticalDimension().width);
@@ -171,7 +178,7 @@ struct DropdownWindow : Window {
 		Rect button_rect = this->wi_rect.Translate(this->parent->left, this->parent->top);
 
 		/* Get the dimensions required for the list. */
-		Dimension list_dim = GetDropDownListDimension(this->list);
+		Dimension list_dim = GetDropDownListDimension(this->GetList());
 
 		/* Set up dimensions for the items widget. */
 		Dimension widget_dim = list_dim;
@@ -194,19 +201,14 @@ struct DropdownWindow : Window {
 			this->position.y = button_rect.bottom + 1;
 		}
 
-		if (_current_text_dir == TD_RTL) {
-			/* In case the list is wider than the parent button, the list should be right aligned to the button and overflow to the left. */
-			this->position.x = button_rect.right + 1 - (int)(widget_dim.width + (list_dim.height > widget_dim.height ? NWidgetScrollbar::GetVerticalDimension().width : 0));
-		} else {
-			this->position.x = button_rect.left;
-		}
+		this->position.x = GetInitalXPosition(button_rect, list_dim, widget_dim);
 
 		this->items_dim = widget_dim;
 		this->GetWidget<NWidgetStacked>(WID_DM_SHOW_SCROLL)->SetDisplayedPlane(list_dim.height > widget_dim.height ? 0 : SZSP_NONE);
 
 		/* Capacity is the average number of items visible */
-		this->vscroll->SetCapacity((widget_dim.height - WidgetDimensions::scaled.dropdownlist.Vertical()) * this->list.size() / list_dim.height);
-		this->vscroll->SetCount(this->list.size());
+		this->vscroll->SetCapacity((widget_dim.height - WidgetDimensions::scaled.dropdownlist.Vertical()) * this->GetList().size() / list_dim.height);
+		this->vscroll->SetCount(this->GetList().size());
 
 		/* If the dropdown is positioned above the parent widget, start selection at the bottom. */
 		if (this->position.y < button_rect.top && list_dim.height > widget_dim.height) this->vscroll->UpdatePosition(INT_MAX);
@@ -236,7 +238,8 @@ struct DropdownWindow : Window {
 		int y     = _cursor.pos.y - this->top - r.top;
 		int pos   = this->vscroll->GetPosition();
 
-		for (const auto &item : this->list) {
+		int item_index = 1;
+		for (const auto &item : this->GetList()) {
 			/* Skip items that are scrolled up */
 			if (--pos >= 0) continue;
 
@@ -244,12 +247,37 @@ struct DropdownWindow : Window {
 
 			if (y < item_height) {
 				if (item->masked || !item->Selectable()) return false;
-				result = item->result;
-				click_result = item->OnClick(r.WithY(0, item_height - 1), {_cursor.pos.x - this->left, y});
-				return true;
+
+				auto submenu_item = dynamic_cast<const DropDownSubmenuItem *>(item.get());
+				if (submenu_item != nullptr) {
+					DropdownWindowBase *sub_window = static_cast<DropdownWindowBase *>(FindWindowById(WC_DROPDOWN_MENU, this->window_number + 1));
+
+					/* Show proper submenu if it isn't already shown. */
+					if (sub_window == nullptr || sub_window->submenu_index != item_index) {
+						if (sub_window != nullptr) sub_window->Close();
+
+						int item_y = _cursor.pos.y - this->top - y;
+						Rect item_rect{r.left, item_y, r.right, item_y};
+						ShowDropDownSubmenu(this, *submenu_item, item_rect, item_index, this->drag_mode);
+					}
+
+					if (this->selected_result != submenu_item->result) {
+						this->selected_result = submenu_item->result;
+						this->SetDirty();
+					}
+
+					return false;
+				} else {
+					CloseWindowById(WC_DROPDOWN_MENU, this->window_number + 1);
+
+					result = item->result;
+					click_result = item->OnClick(r.WithY(0, item_height - 1), {_cursor.pos.x - this->left, y});
+					return true;
+				}
 			}
 
 			y -= item_height;
+			item_index++;
 		}
 
 		return false;
@@ -264,7 +292,7 @@ struct DropdownWindow : Window {
 		Rect ir = r.Shrink(WidgetDimensions::scaled.dropdownlist);
 		int y = ir.top;
 		int pos = this->vscroll->GetPosition();
-		for (const auto &item : this->list) {
+		for (const auto &item : this->GetList()) {
 			int item_height = item->Height();
 
 			/* Skip items that are scrolled up */
@@ -308,8 +336,12 @@ struct DropdownWindow : Window {
 		if (this->click_delay != 0 && --this->click_delay == 0) {
 			/* Close the dropdown, so it doesn't affect new window placement.
 			 * Also mark it dirty in case the callback deals with the screen. (e.g. screenshots). */
-			if (!this->options.Test(DropDownOption::Persist)) this->Close();
-			this->parent->OnDropdownSelect(this->parent_button, this->selected_result, this->selected_click_result);
+			if (!this->options.Test(DropDownOption::Persist)) {
+				this->Close();
+				/* If we are a sub-menu window, also close our parent window. */
+				if (this->window_number > 0) CloseWindowById(WC_DROPDOWN_MENU, this->window_number - 1);
+			}
+			this->callback->OnDropdownSelect(this->parent_button, this->selected_result, this->selected_click_result);
 			return;
 		}
 
@@ -324,6 +356,9 @@ struct DropdownWindow : Window {
 				}
 				this->click_delay = 2;
 			} else {
+				/* If some other window is above us, don't handle mouse movement. */
+				if (FindWindowFromPt(_cursor.pos.x, _cursor.pos.y) != this) return;
+
 				if (_cursor.pos.y <= this->top + WidgetDimensions::scaled.dropdownlist.top) {
 					/* Cursor is above the list, set scroll up */
 					this->scrolling = -1;
@@ -345,6 +380,35 @@ struct DropdownWindow : Window {
 		}
 	}
 
+protected:
+	virtual const DropDownList &GetList() const = 0;
+
+	virtual int GetInitalXPosition(const Rect &button_rect, const Dimension &list_dim, const Dimension &widget_dim) = 0;
+};
+
+/** Drop-down menu window */
+struct DropdownWindow : public DropdownWindowBase {
+	DropDownList list{}; ///< List with dropdown menu items.
+
+	/**
+	 * Create a dropdown menu.
+	 * @param parent        Parent window.
+	 * @param list          Dropdown item list.
+	 * @param selected      Initial selected result of the list.
+	 * @param button        Widget of the parent window doing the dropdown.
+	 * @param wi_rect       Rect of the button that opened the dropdown.
+	 * @param wi_colour     Colour of the parent widget.
+	 * @param options Drop Down options for this menu.
+	 */
+	DropdownWindow(Window *parent, DropDownList &&list, int selected, WidgetID button, const Rect wi_rect, Colours wi_colour, DropDownOptions options)
+			: DropdownWindowBase(parent, parent, selected, button, wi_rect, wi_colour, options)
+			, list(std::move(list))
+	{
+		assert(!this->list.empty());
+
+		this->Init(0);
+	}
+
 	void ReplaceList(DropDownList &&list, std::optional<int> selected_result)
 	{
 		this->list = std::move(list);
@@ -355,7 +419,62 @@ struct DropdownWindow : Window {
 		this->FindWindowPlacementAndResize(this->window_desc.GetDefaultWidth(), this->window_desc.GetDefaultHeight(), true);
 		this->SetDirty();
 	}
+
+protected:
+	const DropDownList &GetList() const override { return this->list; }
+
+	int GetInitalXPosition(const Rect &button_rect, const Dimension &list_dim, const Dimension &widget_dim) override
+	{
+		if (_current_text_dir == TD_RTL) {
+			/* In case the list is wider than the parent button, the list should be right aligned to the button and overflow to the left. */
+			return button_rect.right + 1 - (int)(widget_dim.width + (list_dim.height > widget_dim.height ? NWidgetScrollbar::GetVerticalDimension().width : 0));
+		} else {
+			return button_rect.left;
+		}
+	}
 };
+
+/** Drop-down sub-menu window */
+struct DropdownSubmenuWindow : public DropdownWindowBase {
+	const DropDownSubmenuItem &submenu;
+
+	DropdownSubmenuWindow(DropdownWindowBase *parent, const DropDownSubmenuItem &submenu, const Rect wi_rect, int item_index, bool drag_mode)
+			: DropdownWindowBase(parent, parent->callback, -1, parent->parent_button, wi_rect, parent->wi_colour, parent->options)
+			, submenu(submenu)
+	{
+		this->submenu_index = item_index;
+		this->drag_mode = drag_mode;
+
+		this->Init(parent->window_number + 1);
+	}
+
+protected:
+	const DropDownList &GetList() const override { return this->submenu.list; }
+
+	int GetInitalXPosition(const Rect &button_rect, const Dimension &, const Dimension &widget_dim) override
+	{
+		if (_current_text_dir == TD_RTL) {
+			/* Prefer to position the menu on the left. If this would cover more than a third of the parent button, position it to the right instead. */
+			if (button_rect.left - (int)widget_dim.width >= 0 - button_rect.Width() / 3) {
+				return std::max(0, button_rect.left - (int)widget_dim.width);
+			} else {
+				return std::min(button_rect.right, _screen.width - (int)widget_dim.width);
+			}
+		} else {
+			/* Prefer to position the menu on the right. If this would cover more than a third of the parent button, position it to the left instead. */
+			if (button_rect.right + (int)widget_dim.width <= _screen.width + button_rect.Width() / 3) {
+				return std::min(button_rect.right, _screen.width - (int)widget_dim.width);
+			} else {
+				return std::max(0, button_rect.left - (int)widget_dim.width);
+			}
+		}
+	}
+};
+
+void ShowDropDownSubmenu(DropdownWindowBase *parent, const DropDownSubmenuItem &submenu, const Rect wi_rect, int item_index, bool drag_mode)
+{
+	new DropdownSubmenuWindow(parent, submenu, wi_rect, item_index, drag_mode);
+}
 
 void ReplaceDropDownList(Window *parent, DropDownList &&list, std::optional<int> selected_result)
 {
