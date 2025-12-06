@@ -78,15 +78,15 @@ jobs:
         mkdir -p ~/.local/share/openttd/baseset
         cd ~/.local/share/openttd/baseset
 
-        echo "::group::Download OpenGFX"
-        curl -L https://cdn.openttd.org/opengfx-releases/0.6.0/opengfx-0.6.0-all.zip -o opengfx-all.zip
+        echo "::group::Download OpenGFX2"
+        curl -L https://cdn.openttd.org/opengfx2_classic-releases/0.8/opengfx2_classic-0.8-all.zip -o opengfx2-all.zip
         echo "::endgroup::"
 
-        echo "::group::Unpack OpenGFX"
-        unzip opengfx-all.zip
+        echo "::group::Unpack OpenGFX2"
+        unzip opengfx2-all.zip
         echo "::endgroup::"
 
-        rm -f opengfx-all.zip
+        rm -f opengfx2-all.zip
 
     - name: Install GCC problem matcher
       uses: ammaraskar/gcc-problem-matcher@master
