@@ -5,10 +5,13 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file stdafx.h Definition of base types and functions in a cross-platform compatible way. */
+/** 
+ * @file std_macros.h Definition of base types and functions in a cross-platform compatible way.
+ * Contain only definitions of macros in this file as they can't be located inside module.
+ */
 
-#ifndef STDAFX_H
-#define STDAFX_H
+#ifndef STD_MACROS_H
+#define STD_MACROS_H
 
 #if defined(_WIN32)
 	/* Minimum supported version is Windows 7. */
@@ -24,56 +27,19 @@
 #endif
 
 #if defined(__APPLE__)
-#	include "os/macosx/osx_stdafx.h"
+#   include "os/macosx/osx_stdafx.h"
 #else
 /* It seems that we need to include stdint.h before anything else
  * We need INT64_MAX, which for most systems comes from stdint.h.
  * For OSX the inclusion is already done in osx_stdafx.h. */
 #	define __STDC_LIMIT_MACROS
-#	include <stdint.h>
+#   include <stdint.h>
 #endif /* __APPLE__ */
 
 #if defined(__HAIKU__)
-#	include <SupportDefs.h>
-#	include <unistd.h>
 #	define _DEFAULT_SOURCE
 #	define _GNU_SOURCE
 #endif
-
-#include <algorithm>
-#include <array>
-#include <bit>
-#include <cassert>
-#include <cctype>
-#include <cerrno>
-#include <climits>
-#include <cmath>
-#include <cstddef>
-#include <cstdint>
-#include <cstdio>
-#include <cstring>
-#include <cstdlib>
-#include <cwchar>
-#include <deque>
-#include <exception>
-#include <functional>
-#include <iterator>
-#include <list>
-#include <limits>
-#include <map>
-#include <memory>
-#include <numeric>
-#include <optional>
-#include <set>
-#include <source_location>
-#include <span>
-#include <stdexcept>
-#include <string>
-#include <type_traits>
-#include <variant>
-#include <vector>
-
-using namespace std::literals::string_view_literals;
 
 #if defined(UNIX) || defined(__MINGW32__)
 #	include <sys/types.h>
@@ -93,6 +59,11 @@ using namespace std::literals::string_view_literals;
 #	define EMPTY_BASES __declspec(empty_bases)
 #else
 #	define EMPTY_BASES
+#endif
+
+#if defined(__HAIKU__)
+#	include <SupportDefs.h>
+#	include <unistd.h>
 #endif
 
 /* Stuff for MSVC */
@@ -154,19 +125,6 @@ using namespace std::literals::string_view_literals;
 #	define S_ISREG(mode) (mode & S_IFREG)
 
 #endif /* defined(_MSC_VER) */
-
-#if !defined(STRGEN) && !defined(SETTINGSGEN)
-#	if defined(_WIN32)
-		std::string FS2OTTD(std::wstring_view name);
-		std::wstring OTTD2FS(std::string_view name);
-#	elif defined(WITH_ICONV)
-		std::string FS2OTTD(std::string_view name);
-		std::string OTTD2FS(std::string_view name);
-#	else
-		static inline std::string FS2OTTD(std::string_view name) { return std::string{name}; }
-		static inline std::string OTTD2FS(std::string_view name) { return std::string{name}; }
-#	endif /* _WIN32 or WITH_ICONV */
-#endif /* STRGEN || SETTINGSGEN */
 
 #if defined(_WIN32)
 #	define PATHSEP "\\"
@@ -231,11 +189,6 @@ using namespace std::literals::string_view_literals;
 #define debug_inline inline
 #endif
 
-/* This is already defined in unix, but not in QNX Neutrino (6.x) or Cygwin. */
-#if (!defined(UNIX) && !defined(__HAIKU__)) || defined(__QNXNTO__) || defined(__CYGWIN__)
-	typedef unsigned int uint;
-#endif
-
 #if !defined(WITH_PERSONAL_DIR)
 #	define PERSONAL_DIR ""
 #endif
@@ -245,20 +198,10 @@ using namespace std::literals::string_view_literals;
 #	define USE_XDG
 #endif
 
-/* Check if the types have the bitsizes like we are using them */
-static_assert(sizeof(uint64_t) == 8);
-static_assert(sizeof(uint32_t) == 4);
-static_assert(sizeof(uint16_t) == 2);
-static_assert(sizeof(uint8_t)  == 1);
-static_assert(SIZE_MAX >= UINT32_MAX);
-
 #ifndef M_PI_2
 #define M_PI_2 1.57079632679489661923
 #define M_PI   3.14159265358979323846
 #endif /* M_PI_2 */
-
-template <typename T, size_t N>
-char (&ArraySizeHelper(T (&array)[N]))[N];
 
 /**
  * Return the length of an fixed size array.
@@ -283,9 +226,6 @@ char (&ArraySizeHelper(T (&array)[N]))[N];
 #else
 #	define GNU_TARGET(x)
 #endif /* __GNUC__ || __clang__ */
-
-[[noreturn]] void NOT_REACHED(const std::source_location location = std::source_location::current());
-[[noreturn]] void AssertFailedError(std::string_view expression, const std::source_location location = std::source_location::current());
 
 /* For non-debug builds with assertions enabled use the special assertion handler. */
 #if defined(NDEBUG) && defined(WITH_ASSERT)
@@ -328,4 +268,42 @@ char (&ArraySizeHelper(T (&array)[N]))[N];
 #	define IGNORE_UNINITIALIZED_WARNING_STOP
 #endif
 
-#endif /* STDAFX_H */
+/* Import module so there is no need to import it in other files. */
+#ifndef INCLUDED_FROM_STD_MODULE_ITSELF
+	import std;
+
+	using namespace std::literals::string_view_literals;
+
+	#if !defined(STRGEN) && !defined(SETTINGSGEN)
+	#	if defined(_WIN32)
+			std::string FS2OTTD(std::wstring_view name);
+			std::wstring OTTD2FS(std::string_view name);
+	#	elif defined(WITH_ICONV)
+			std::string FS2OTTD(std::string_view name);
+			std::string OTTD2FS(std::string_view name);
+	#	else
+			static inline std::string FS2OTTD(std::string_view name) { return std::string{name}; }
+			static inline std::string OTTD2FS(std::string_view name) { return std::string{name}; }
+	#	endif /* _WIN32 or WITH_ICONV */
+	#endif /* STRGEN || SETTINGSGEN */
+
+	/* This is already defined in unix, but not in QNX Neutrino (6.x) or Cygwin. */
+	#if (!defined(UNIX) && !defined(__HAIKU__)) || defined(__QNXNTO__) || defined(__CYGWIN__)
+		typedef unsigned int uint;
+	#endif
+
+	/* Check if the types have the bitsizes like we are using them */
+	static_assert(sizeof(uint64_t) == 8);
+	static_assert(sizeof(uint32_t) == 4);
+	static_assert(sizeof(uint16_t) == 2);
+	static_assert(sizeof(uint8_t)  == 1);
+	static_assert(SIZE_MAX >= UINT32_MAX);
+
+	template <typename T, size_t N>
+	char (&ArraySizeHelper(T (&array)[N]))[N];
+
+	[[noreturn]] void NOT_REACHED(const std::source_location location = std::source_location::current());
+	[[noreturn]] void AssertFailedError(std::string_view expression, const std::source_location location = std::source_location::current());
+#endif
+
+#endif /* STD_MACROS_H */
