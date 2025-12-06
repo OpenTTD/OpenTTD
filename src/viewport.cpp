@@ -1404,12 +1404,18 @@ static void ViewportAddSignStrings(DrawPixelInfo *dpi, const std::vector<const S
 	if (small) flags.Set(ViewportStringFlag::Small);
 
 	/* Signs placed by a game script don't have a frame. */
-	ViewportStringFlags deity_flags{flags};
+	ViewportStringFlags deity_flags{ flags };
+	deity_flags.Set(ViewportStringFlag::TextColour);
+
 	flags.Set(IsTransparencySet(TO_SIGNS) ? ViewportStringFlag::TransparentRect : ViewportStringFlag::ColourRect);
 
 	for (const Sign *si : signs) {
+		/* Workaround to make sure white is actually white. The string drawing logic changes all
+		 * colours that are not INVALID_COLOUR slightly, turning white into a light gray. */
+		const Colours deity_colour = si->text_colour == COLOUR_WHITE ? INVALID_COLOUR : si->text_colour;
+
 		std::string *str = ViewportAddString(dpi, &si->sign, (si->owner == OWNER_DEITY) ? deity_flags : flags,
-			(si->owner == OWNER_NONE) ? COLOUR_GREY : (si->owner == OWNER_DEITY ? INVALID_COLOUR : _company_colours[si->owner]));
+			(si->owner == OWNER_NONE) ? COLOUR_GREY : (si->owner == OWNER_DEITY ? deity_colour : _company_colours[si->owner]));
 		if (str == nullptr) continue;
 
 		*str = GetString(STR_SIGN_NAME, si->index);
