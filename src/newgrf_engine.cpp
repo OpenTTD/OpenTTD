@@ -1020,7 +1020,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 	}
 
 	const Order &order = v->First()->current_order;
-	bool not_loading = (order.GetUnloadType() & OUFB_NO_UNLOAD) && (order.GetLoadType() & OLFB_NO_LOAD);
+	bool not_loading = order.GetUnloadType() == OrderUnloadType::NoUnload && order.GetLoadType() == OrderLoadType::NoLoad;
 	bool in_motion = !order.IsType(OT_LOADING) || not_loading;
 
 	uint totalsets = static_cast<uint>(in_motion ? group.loaded.size() : group.loading.size());

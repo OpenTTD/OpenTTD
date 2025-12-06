@@ -1472,8 +1472,8 @@ uint8_t CalcPercentVehicleFilled(const Vehicle *front, StringID *colour)
 	const Station *st = Station::GetIfValid(front->last_station_visited);
 	assert(colour == nullptr || (st != nullptr && is_loading));
 
-	bool order_no_load = is_loading && (front->current_order.GetLoadType() & OLFB_NO_LOAD);
-	bool order_full_load = is_loading && (front->current_order.GetLoadType() & OLFB_FULL_LOAD);
+	bool order_no_load = is_loading && front->current_order.GetLoadType() == OrderLoadType::NoLoad;
+	bool order_full_load = is_loading && front->current_order.IsFullLoadOrder();
 
 	/* Count up max and used */
 	for (const Vehicle *v = front; v != nullptr; v = v->Next()) {
@@ -2286,8 +2286,8 @@ void Vehicle::BeginLoading()
 
 	if (this->last_loading_station != StationID::Invalid() &&
 			this->last_loading_station != this->last_station_visited &&
-			((this->current_order.GetLoadType() & OLFB_NO_LOAD) == 0 ||
-			(this->current_order.GetUnloadType() & OUFB_NO_UNLOAD) == 0)) {
+			(this->current_order.GetLoadType() != OrderLoadType::NoLoad ||
+			this->current_order.GetUnloadType() != OrderUnloadType::NoUnload)) {
 		IncreaseStats(Station::Get(this->last_loading_station), this, this->last_station_visited, travel_time);
 	}
 
@@ -2334,8 +2334,8 @@ void Vehicle::LeaveStation()
 	/* Only update the timetable if the vehicle was supposed to stop here. */
 	if (this->current_order.GetNonStopType().Any()) UpdateVehicleTimetable(this, false);
 
-	if ((this->current_order.GetLoadType() & OLFB_NO_LOAD) == 0 ||
-			(this->current_order.GetUnloadType() & OUFB_NO_UNLOAD) == 0) {
+	if (this->current_order.GetLoadType() != OrderLoadType::NoLoad ||
+			this->current_order.GetUnloadType() != OrderUnloadType::NoUnload) {
 		if (this->current_order.CanLeaveWithCargo(this->last_loading_station != StationID::Invalid())) {
 			/* Refresh next hop stats to make sure we've done that at least once
 			 * during the stop and that refit_cap == cargo_cap for each vehicle in
@@ -2442,7 +2442,7 @@ void Vehicle::HandleLoading(bool mode)
 bool Vehicle::HasFullLoadOrder() const
 {
 	return std::ranges::any_of(this->Orders(), [](const Order &o) {
-		return o.IsType(OT_GOTO_STATION) && o.GetLoadType() & (OLFB_FULL_LOAD | OLF_FULL_LOAD_ANY);
+		return o.IsType(OT_GOTO_STATION) && o.IsFullLoadOrder();
 	});
 }
 

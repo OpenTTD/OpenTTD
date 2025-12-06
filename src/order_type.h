@@ -62,23 +62,23 @@ enum OrderType : uint8_t {
 };
 
 /**
- * Flags related to the unloading order.
+ * Unloading order types.
  */
-enum OrderUnloadFlags : uint8_t {
-	OUF_UNLOAD_IF_POSSIBLE = 0,      ///< Unload all cargo that the station accepts.
-	OUFB_UNLOAD            = 1 << 0, ///< Force unloading all cargo onto the platform, possibly not getting paid.
-	OUFB_TRANSFER          = 1 << 1, ///< Transfer all cargo onto the platform.
-	OUFB_NO_UNLOAD         = 1 << 2, ///< Totally no unloading will be done.
+enum class OrderUnloadType : uint8_t {
+	UnloadIfPossible = 0, ///< Unload all cargo that the station accepts.
+	Unload = 1, ///< Force unloading all cargo onto the platform, possibly not getting paid.
+	Transfer = 2, ///< Transfer all cargo onto the platform.
+	NoUnload = 4, ///< Totally no unloading will be done.
 };
 
 /**
- * Flags related to the loading order.
+ * Loading order types.
  */
-enum OrderLoadFlags : uint8_t {
-	OLF_LOAD_IF_POSSIBLE = 0,      ///< Load as long as there is cargo that fits in the train.
-	OLFB_FULL_LOAD       = 1 << 1, ///< Full load all cargoes of the consist.
-	OLF_FULL_LOAD_ANY    = 3,      ///< Full load a single cargo of the consist.
-	OLFB_NO_LOAD         = 4,      ///< Do not load anything.
+enum class OrderLoadType : uint8_t {
+	LoadIfPossible = 0, ///< Load as long as there is cargo that fits in the train.
+	FullLoad = 2, ///< Full load all cargoes of the consist.
+	FullLoadAny = 3, ///< Full load a single cargo of the consist.
+	NoLoad = 4, ///< Do not load anything.
 };
 
 /**

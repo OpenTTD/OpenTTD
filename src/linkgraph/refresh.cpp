@@ -203,7 +203,7 @@ void LinkRefresher::RefreshStats(VehicleOrderID cur, VehicleOrderID next)
 			}
 
 			/* A link is at least partly restricted if a vehicle can't load at its source. */
-			EdgeUpdateMode restricted_mode = (orders[cur].GetLoadType() & OLFB_NO_LOAD) == 0 ?
+			EdgeUpdateMode restricted_mode = orders[cur].GetLoadType() != OrderLoadType::NoLoad ?
 						EdgeUpdateMode::Unrestricted : EdgeUpdateMode::Restricted;
 			/* This estimates the travel time of the link as the time needed
 			 * to travel between the stations at half the max speed of the consist.

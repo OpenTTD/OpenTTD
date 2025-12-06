@@ -128,10 +128,20 @@ public:
 
 	void SetRefit(CargoType cargo);
 
+	/**
+	 * Is this order a OrderLoadType::FullLoad or OrderLoadType::FullLoadAny?
+	 * @return true iff the order is a full load or full load any order.
+	 */
+	inline bool IsFullLoadOrder() const
+	{
+		OrderLoadType type = GetLoadType();
+		return type == OrderLoadType::FullLoad || type == OrderLoadType::FullLoadAny;
+	}
+
 	/** How must the consist be loaded? */
-	inline OrderLoadFlags GetLoadType() const { return (OrderLoadFlags)GB(this->flags, 4, 3); }
+	inline OrderLoadType GetLoadType() const { return static_cast<OrderLoadType>(GB(this->flags, 4, 3)); }
 	/** How must the consist be unloaded? */
-	inline OrderUnloadFlags GetUnloadType() const { return (OrderUnloadFlags)GB(this->flags, 0, 3); }
+	inline OrderUnloadType GetUnloadType() const { return static_cast<OrderUnloadType>(GB(this->flags, 0, 3)); }
 	/** At which stations must we stop? */
 	inline OrderNonStopFlags GetNonStopType() const { return static_cast<OrderNonStopFlags>(GB(this->type, 6, 2)); }
 	/** Where must we stop at the platform? */
@@ -150,9 +160,9 @@ public:
 	inline uint16_t GetConditionValue() const { return GB(this->dest.value, 0, 11); }
 
 	/** Set how the consist must be loaded. */
-	inline void SetLoadType(OrderLoadFlags load_type) { SB(this->flags, 4, 3, load_type); }
+	inline void SetLoadType(OrderLoadType load_type) { SB(this->flags, 4, 3, to_underlying(load_type)); }
 	/** Set how the consist must be unloaded. */
-	inline void SetUnloadType(OrderUnloadFlags unload_type) { SB(this->flags, 0, 3, unload_type); }
+	inline void SetUnloadType(OrderUnloadType unload_type) { SB(this->flags, 0, 3, to_underlying(unload_type)); }
 	/** Set whether we must stop at stations or not. */
 	inline void SetNonStopType(OrderNonStopFlags non_stop_type) { SB(this->type, 6, 2, non_stop_type.base()); }
 	/** Set where we must stop at the platform. */

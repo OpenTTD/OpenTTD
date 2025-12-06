@@ -425,14 +425,14 @@ void VehicleCargoList::AgeCargo()
  * @param accepted If the cargo will be accepted at the station.
  * @param current_station ID of the station.
  * @param next_station ID of the station the vehicle will go to next.
- * @param order_flags OrderUnloadFlags that will apply to the unload operation.
+ * @param unload_type OrderUnloadType that will apply to the unload operation.
  * @param ge GoodsEntry for getting the flows.
  * @param cargo The cargo type of the cargo.
  * @param payment Payment object for registering transfers.
  * @param current_tile Current tile the cargo handling is happening on.
  * return If any cargo will be unloaded.
  */
-bool VehicleCargoList::Stage(bool accepted, StationID current_station, std::span<const StationID> next_station, uint8_t order_flags, const GoodsEntry *ge, CargoType cargo, CargoPayment *payment, TileIndex current_tile)
+bool VehicleCargoList::Stage(bool accepted, StationID current_station, std::span<const StationID> next_station, OrderUnloadType unload_type, const GoodsEntry *ge, CargoType cargo, CargoPayment *payment, TileIndex current_tile)
 {
 	this->AssertCountConsistency();
 	assert(this->action_counts[MTA_LOAD] == 0);
@@ -444,9 +444,9 @@ bool VehicleCargoList::Stage(bool accepted, StationID current_station, std::span
 	static const FlowStatMap EMPTY_FLOW_STAT_MAP = {};
 	const FlowStatMap &flows = ge->HasData() ? ge->GetData().flows : EMPTY_FLOW_STAT_MAP;
 
-	bool force_keep = (order_flags & OUFB_NO_UNLOAD) != 0;
-	bool force_unload = (order_flags & OUFB_UNLOAD) != 0;
-	bool force_transfer = (order_flags & (OUFB_TRANSFER | OUFB_UNLOAD)) != 0;
+	bool force_keep = unload_type == OrderUnloadType::NoUnload;
+	bool force_unload = unload_type == OrderUnloadType::Unload;
+	bool force_transfer = unload_type == OrderUnloadType::Transfer || unload_type == OrderUnloadType::Unload;
 	assert(this->count > 0 || it == this->packets.end());
 	while (sum < this->count) {
 		CargoPacket *cp = *it;
