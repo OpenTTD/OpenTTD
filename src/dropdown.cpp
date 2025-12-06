@@ -8,6 +8,7 @@
 /** @file dropdown.cpp Implementation of the dropdown widget. */
 
 #include "stdafx.h"
+#include "core/backup_type.hpp"
 #include "dropdown_type.h"
 #include "dropdown_func.h"
 #include "strings_func.h"
@@ -205,8 +206,9 @@ struct DropdownWindow : Window {
 		this->GetWidget<NWidgetStacked>(WID_DM_SHOW_SCROLL)->SetDisplayedPlane(list_dim.height > widget_dim.height ? 0 : SZSP_NONE);
 
 		/* Capacity is the average number of items visible */
-		this->vscroll->SetCapacity((widget_dim.height - WidgetDimensions::scaled.dropdownlist.Vertical()) * this->list.size() / list_dim.height);
-		this->vscroll->SetCount(this->list.size());
+		this->vscroll->SetCapacity(widget_dim.height - WidgetDimensions::scaled.dropdownlist.Vertical());
+		this->vscroll->SetStepSize(list_dim.height / this->list.size());
+		this->vscroll->SetCount(list_dim.height);
 
 		/* If the dropdown is positioned above the parent widget, start selection at the bottom. */
 		if (this->position.y < button_rect.top && list_dim.height > widget_dim.height) this->vscroll->UpdatePosition(INT_MAX);
@@ -233,23 +235,22 @@ struct DropdownWindow : Window {
 		if (GetWidgetFromPos(this, _cursor.pos.x - this->left, _cursor.pos.y - this->top) < 0) return false;
 
 		const Rect &r = this->GetWidget<NWidgetBase>(WID_DM_ITEMS)->GetCurrentRect().Shrink(WidgetDimensions::scaled.dropdownlist).Shrink(WidgetDimensions::scaled.dropdowntext, RectPadding::zero);
-		int y     = _cursor.pos.y - this->top - r.top;
-		int pos   = this->vscroll->GetPosition();
+		int click_y = _cursor.pos.y - this->top - r.top;
+		int y = -this->vscroll->GetPosition();
+		int y_end = r.Height();
 
 		for (const auto &item : this->list) {
-			/* Skip items that are scrolled up */
-			if (--pos >= 0) continue;
-
 			int item_height = item->Height();
 
-			if (y < item_height) {
+			/* Skip items that are scrolled up */
+			if (y > y_end) break;
+			if (click_y >= y && click_y < y + item_height) {
 				if (item->masked || !item->Selectable()) return false;
 				result = item->result;
-				click_result = item->OnClick(r.WithY(0, item_height - 1), {_cursor.pos.x - this->left, y});
+				click_result = item->OnClick(r.WithY(0, item_height - 1), {_cursor.pos.x - this->left, click_y - y});
 				return true;
 			}
-
-			y -= item_height;
+			y += item_height;
 		}
 
 		return false;
@@ -262,16 +263,25 @@ struct DropdownWindow : Window {
 		Colours colour = this->GetWidget<NWidgetCore>(widget)->colour;
 
 		Rect ir = r.Shrink(WidgetDimensions::scaled.dropdownlist);
-		int y = ir.top;
-		int pos = this->vscroll->GetPosition();
+
+		/* Setup a clipping rectangle... */
+		DrawPixelInfo tmp_dpi;
+		if (!FillDrawPixelInfo(&tmp_dpi, ir)) return;
+		/* ...but keep coordinates relative to the window. */
+		tmp_dpi.left += ir.left;
+		tmp_dpi.top += ir.top;
+		AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
+
+		int y = -this->vscroll->GetPosition();
+		int y_end = ir.Height();
+
 		for (const auto &item : this->list) {
 			int item_height = item->Height();
 
 			/* Skip items that are scrolled up */
-			if (--pos >= 0) continue;
-
-			if (y + item_height - 1 <= ir.bottom) {
-				Rect full = ir.WithY(y, y + item_height - 1);
+			if (y > y_end) break;
+			if (y > -item_height) {
+				Rect full = ir.Translate(0, y).WithHeight(item_height);
 
 				bool selected = (this->selected_result == item->result) && item->Selectable();
 				if (selected) GfxFillRect(full, PC_BLACK);
