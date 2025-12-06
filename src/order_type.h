@@ -84,72 +84,72 @@ enum OrderLoadFlags : uint8_t {
 /**
  * Non-stop order flags.
  */
-enum OrderNonStopFlags : uint8_t {
-	ONSF_STOP_EVERYWHERE                  = 0, ///< The vehicle will stop at any station it passes and the destination.
-	ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS = 1, ///< The vehicle will not stop at any stations it passes except the destination.
-	ONSF_NO_STOP_AT_DESTINATION_STATION   = 2, ///< The vehicle will stop at any station it passes except the destination.
-	ONSF_NO_STOP_AT_ANY_STATION           = 3, ///< The vehicle will not stop at any stations it passes including the destination.
-	ONSF_END
+enum class OrderNonStopFlag : uint8_t {
+	NoIntermediate = 0, ///< The vehicle will not stop at any stations it passes except the destination, aka non-stop.
+	NoDestination = 1, ///< The vehicle will stop at any station it passes except the destination, aka via.
 };
+
+using OrderNonStopFlags = EnumBitSet<OrderNonStopFlag, uint8_t>;
 
 /**
  * Where to stop the trains.
  */
-enum OrderStopLocation : uint8_t {
-	OSL_PLATFORM_NEAR_END = 0, ///< Stop at the near end of the platform
-	OSL_PLATFORM_MIDDLE   = 1, ///< Stop at the middle of the platform
-	OSL_PLATFORM_FAR_END  = 2, ///< Stop at the far end of the platform
-	OSL_END
+enum class OrderStopLocation : uint8_t {
+	NearEnd = 0, ///< Stop at the near end of the platform
+	Middle = 1, ///< Stop at the middle of the platform
+	FarEnd = 2, ///< Stop at the far end of the platform
+	End,
 };
 
 /**
  * Reasons that could cause us to go to the depot.
  */
-enum OrderDepotTypeFlags : uint8_t {
-	ODTF_MANUAL          = 0,      ///< Manually initiated order.
-	ODTFB_SERVICE        = 1 << 0, ///< This depot order is because of the servicing limit.
-	ODTFB_PART_OF_ORDERS = 1 << 1, ///< This depot order is because of a regular order.
+enum class OrderDepotTypeFlag : uint8_t {
+	Service = 0, ///< This depot order is because of the servicing limit.
+	PartOfOrders = 1, ///< This depot order is because of a regular order.
 };
+
+using OrderDepotTypeFlags = EnumBitSet<OrderDepotTypeFlag, uint8_t>;
 
 /**
  * Actions that can be performed when the vehicle enters the depot.
  */
-enum OrderDepotActionFlags : uint8_t {
-	ODATF_SERVICE_ONLY   = 0,      ///< Only service the vehicle.
-	ODATFB_HALT          = 1 << 0, ///< Service the vehicle and then halt it.
-	ODATFB_NEAREST_DEPOT = 1 << 1, ///< Send the vehicle to the nearest depot.
-	ODATFB_UNBUNCH       = 1 << 2, ///< Service the vehicle and then unbunch it.
+enum class OrderDepotActionFlag : uint8_t {
+	Halt = 0, ///< Service the vehicle and then halt it.
+	NearestDepot = 1, ///< Send the vehicle to the nearest depot.
+	Unbunch = 2, ///< Service the vehicle and then unbunch it.
 };
-DECLARE_ENUM_AS_BIT_SET(OrderDepotActionFlags)
+
+using OrderDepotActionFlags = EnumBitSet<OrderDepotActionFlag, uint8_t>;
 
 /**
  * Variables (of a vehicle) to 'cause' skipping on.
  */
-enum OrderConditionVariable : uint8_t {
-	OCV_LOAD_PERCENTAGE,    ///< Skip based on the amount of load
-	OCV_RELIABILITY,        ///< Skip based on the reliability
-	OCV_MAX_SPEED,          ///< Skip based on the maximum speed
-	OCV_AGE,                ///< Skip based on the age
-	OCV_REQUIRES_SERVICE,   ///< Skip when the vehicle requires service
-	OCV_UNCONDITIONALLY,    ///< Always skip
-	OCV_REMAINING_LIFETIME, ///< Skip based on the remaining lifetime
-	OCV_MAX_RELIABILITY,    ///< Skip based on the maximum reliability
-	OCV_END
+enum class OrderConditionVariable : uint8_t {
+	LoadPercentage = 0, ///< Skip based on the amount of load
+	Reliability = 1, ///< Skip based on the reliability
+	MaxSpeed = 2, ///< Skip based on the maximum speed
+	Age = 3, ///< Skip based on the age
+	RequiresService = 4, ///< Skip when the vehicle requires service
+	Unconditionally = 5, ///< Always skip
+	RemainingLifetime = 6, ///< Skip based on the remaining lifetime
+	MaxReliability = 7, ///< Skip based on the maximum reliability
+	End,
 };
 
 /**
  * Comparator for the skip reasoning.
  */
-enum OrderConditionComparator : uint8_t {
-	OCC_EQUALS,      ///< Skip if both values are equal
-	OCC_NOT_EQUALS,  ///< Skip if both values are not equal
-	OCC_LESS_THAN,   ///< Skip if the value is less than the limit
-	OCC_LESS_EQUALS, ///< Skip if the value is less or equal to the limit
-	OCC_MORE_THAN,   ///< Skip if the value is more than the limit
-	OCC_MORE_EQUALS, ///< Skip if the value is more or equal to the limit
-	OCC_IS_TRUE,     ///< Skip if the variable is true
-	OCC_IS_FALSE,    ///< Skip if the variable is false
-	OCC_END
+enum class OrderConditionComparator : uint8_t {
+	Equal = 0, ///< Skip if both values are equal
+	NotEqual = 1, ///< Skip if both values are not equal
+	LessThan = 2, ///< Skip if the value is less than the limit
+	LessThanOrEqual = 3, ///< Skip if the value is less or equal to the limit
+	MoreThan = 4, ///< Skip if the value is more than the limit
+	MoreThanOrEqual = 5, ///< Skip if the value is more or equal to the limit
+	IsTrue = 6, ///< Skip if the variable is true
+	IsFalse = 7, ///< Skip if the variable is false
+	End,
 };
 
 
@@ -172,12 +172,12 @@ enum ModifyOrderFlags : uint8_t {
 /**
  * Depot action to switch to when doing a #MOF_DEPOT_ACTION.
  */
-enum OrderDepotAction : uint8_t {
-	DA_ALWAYS_GO, ///< Always go to the depot
-	DA_SERVICE,   ///< Service only if needed
-	DA_STOP,      ///< Go to the depot and stop there
-	DA_UNBUNCH,   ///< Go to the depot and unbunch
-	DA_END
+enum class OrderDepotAction : uint8_t {
+	AlwaysGo = 0, ///< Always go to the depot
+	Service = 1, ///< Service only if needed
+	Stop = 2, ///< Go to the depot and stop there
+	Unbunch = 3, ///< Go to the depot and unbunch
+	End
 };
 
 /**

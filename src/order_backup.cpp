@@ -233,7 +233,7 @@ CommandCost CmdClearOrderBackup(DoCommandFlags flags, TileIndex tile, ClientID u
 	for (OrderBackup *ob : OrderBackup::Iterate()) {
 		for (Order &order : ob->orders) {
 			OrderType ot = order.GetType();
-			if (ot == OT_GOTO_DEPOT && (order.GetDepotActionType() & ODATFB_NEAREST_DEPOT) != 0) continue;
+			if (ot == OT_GOTO_DEPOT && order.GetDepotActionType().Test(OrderDepotActionFlag::NearestDepot)) continue;
 			if (ot == OT_GOTO_DEPOT && hangar && !IsHangarTile(ob->tile)) continue; // Not an aircraft? Can't have a hangar order.
 			if (ot == OT_IMPLICIT || (IsHangarTile(ob->tile) && ot == OT_GOTO_DEPOT && !hangar)) ot = OT_GOTO_STATION;
 			if (ot == type && order.GetDestination() == destination) {

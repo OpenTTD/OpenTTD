@@ -3164,11 +3164,11 @@ public:
 				if (v->current_order.GetDestination() == DepotID::Invalid()) return {};
 
 				auto params = MakeParameters(v->type, v->current_order.GetDestination(), PackVelocity(v->GetDisplaySpeed(), v->type));
-				if (v->current_order.GetDepotActionType() & ODATFB_HALT) {
+				if (v->current_order.GetDepotActionType().Test(OrderDepotActionFlag::Halt)) {
 					return GetStringWithArgs(v->vehicle_flags.Test(VehicleFlag::PathfinderLost) ? STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL : STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL, params);
 				}
 
-				if (v->current_order.GetDepotActionType() & ODATFB_UNBUNCH) {
+				if (v->current_order.GetDepotActionType().Test(OrderDepotActionFlag::Unbunch)) {
 					return GetStringWithArgs(v->vehicle_flags.Test(VehicleFlag::PathfinderLost) ? STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL : STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL, params);
 				}
 
