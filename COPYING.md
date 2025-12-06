@@ -6,7 +6,7 @@ GNU General Public License
 
 _Version 2, June 1991_
 _Copyright © 1989, 1991 Free Software Foundation, Inc.,_
-_51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA_
+_[https://fsf.org/](https://fsf.org/)_
 
 Everyone is permitted to copy and distribute verbatim copies
 of this license document, but changing it is not allowed.
