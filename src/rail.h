@@ -519,6 +519,8 @@ void InitRailTypes();
 RailType AllocateRailType(RailTypeLabel label);
 
 extern std::vector<RailType> _sorted_railtypes;
+extern bool _railtypes_invert_sort_order;
+extern uint8_t _railtypes_sort_criteria;
 extern RailTypes _railtypes_hidden_mask;
 
 #endif /* RAIL_H */

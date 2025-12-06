@@ -485,6 +485,7 @@ public:
 
 	NWidgetBase *GetWidgetOfType(WidgetType tp) override;
 	void Clear() { this->children.clear(); }
+	void UnFocusWidgets(Window *parent_window);
 
 protected:
 	std::vector<std::unique_ptr<NWidgetBase>> children{}; ///< Child widgets in container.

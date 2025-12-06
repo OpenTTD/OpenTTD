@@ -16,6 +16,7 @@
 #include "gfx_type.h"
 #include "palette_func.h"
 #include "window_gui.h"
+#include "newgrf_badge.h"
 
 /**
  * Base list item class from which others are derived.
@@ -48,6 +49,11 @@ public:
 		if (this->shaded) return (sel ? TC_SILVER : TC_GREY) | TC_NO_SHADE;
 		return sel ? TC_WHITE : TC_BLACK;
 	}
+
+	virtual PixelColour GetSelectedBGColour([[maybe_unused]] Colours window_colour) const
+	{
+		return PC_BLACK;
+	}
 };
 
 /**
@@ -60,6 +66,8 @@ enum class DropDownOption : uint8_t {
 	Persist, ///< Set if this dropdown should stay open after an option is selected.
 };
 using DropDownOptions = EnumBitSet<DropDownOption, uint8_t>;
+
+Window *ShowSubDropDownListAt(int sub_dropdown_id, Window *w, DropDownList &&list, int selected, WidgetID button, Rect wi_rect, Colours wi_colour, DropDownOptions options = {});
 
 void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, WidgetID button, Rect wi_rect, Colours wi_colour, DropDownOptions options = {});
 

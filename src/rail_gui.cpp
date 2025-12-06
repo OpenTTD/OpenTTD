@@ -7,10 +7,15 @@
 
 /** @file rail_gui.cpp %File for dealing with rail construction user interface */
 
+#include "gfx_type.h"
+#include "newgrf.h"
 #include "stdafx.h"
 #include "gui.h"
 #include "station_base.h"
+#include "transport_type.h"
 #include "waypoint_base.h"
+#include "widget_type.h"
+#include "widgets/toolbar_widget.h"
 #include "window_gui.h"
 #include "station_gui.h"
 #include "terraform_gui.h"
@@ -27,12 +32,14 @@
 #include "company_func.h"
 #include "dropdown_type.h"
 #include "dropdown_func.h"
+#include "dropdown_gui.hpp"
 #include "tunnelbridge.h"
 #include "tilehighlight_func.h"
 #include "core/geometry_func.hpp"
 #include "hotkeys.h"
 #include "engine_base.h"
 #include "vehicle_func.h"
+#include "window_type.h"
 #include "zoom_func.h"
 #include "rail_gui.h"
 #include "station_cmd.h"
@@ -42,6 +49,7 @@
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
 #include "picker_gui.h"
+#include "toolbar_gui.h"
 
 #include "station_map.h"
 #include "tunnelbridge_map.h"
@@ -59,6 +67,7 @@ static DiagDirection _build_depot_direction; ///< Currently selected depot direc
 static bool _convert_signal_button;          ///< convert signal button in the signal GUI pressed
 static SignalVariant _cur_signal_variant;    ///< set the signal variant (for signal GUI)
 static SignalType _cur_signal_type;          ///< set the signal type (for signal GUI)
+static bool _show_dropdown_inside_toolbar = false; ///< Whether railtype dropdown is visible inside the build rail toolbar window.
 
 struct WaypointPickerSelection {
 	StationClassID sel_class; ///< Selected station class.
@@ -435,27 +444,33 @@ static void HandleAutoSignalPlacement()
 
 
 /** Rail toolbar management class. */
-struct BuildRailToolbarWindow : Window {
+struct BuildRailToolbarWindow : RailTypeDropdownWindowBase {
 	RailType railtype = INVALID_RAILTYPE; ///< Rail type to build.
 	WidgetID last_user_action = INVALID_WIDGET; ///< Last started user action.
 
-	BuildRailToolbarWindow(WindowDesc &desc, RailType railtype) : Window(desc), railtype(railtype)
+	BuildRailToolbarWindow(WindowDesc &desc, RailType railtype) : RailTypeDropdownWindowBase(TRANSPORT_RAIL, FindWindowByClass(WC_MAIN_TOOLBAR), {}, _last_built_railtype, WID_TN_RAILS, {}, false, COLOUR_DARK_GREEN, true, desc), railtype(railtype)
 	{
-		this->CreateNestedTree();
-		this->FinishInitNested(TRANSPORT_RAIL);
+		this->GetWidget<NWidgetStacked>(WID_RAT_SHOW_DROPDOWN)->SetDisplayedPlane(_show_dropdown_inside_toolbar ? 0 : SZSP_HORIZONTAL);
+
 		this->DisableWidget(WID_RAT_REMOVE);
 		this->OnInvalidateData();
+		this->ReInit();
 
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
 	}
 
-	void Close([[maybe_unused]] int data = 0) override
+	void Close(int data = 0) override
 	{
 		if (this->IsWidgetLowered(WID_RAT_BUILD_STATION)) SetViewportCatchmentStation(nullptr, true);
 		if (this->IsWidgetLowered(WID_RAT_BUILD_WAYPOINT)) SetViewportCatchmentWaypoint(nullptr, true);
 		if (_settings_client.gui.link_terraform_toolbar) CloseWindowById(WC_SCEN_LAND_GEN, 0, false);
 		CloseWindowById(WC_SELECT_STATION, 0);
-		this->Window::Close();
+		this->RailTypeDropdownWindowBase::Close(data);
+	}
+
+	void OnFocusLost(bool closing) override
+	{
+		this->Window::OnFocusLost(closing);
 	}
 
 	/** List of widgets to be disabled if infrastructure limit prevents building. */
@@ -509,6 +524,8 @@ struct BuildRailToolbarWindow : Window {
 		this->GetWidget<NWidgetCore>(WID_RAT_BUILD_DEPOT)->SetSprite(rti->gui_sprites.build_depot);
 		this->GetWidget<NWidgetCore>(WID_RAT_CONVERT_RAIL)->SetSprite(rti->gui_sprites.convert_rail);
 		this->GetWidget<NWidgetCore>(WID_RAT_BUILD_TUNNEL)->SetSprite(rti->gui_sprites.build_tunnel);
+
+		this->RailTypeDropdownWindowBase::OnInit();
 	}
 
 	/**
@@ -561,10 +578,10 @@ struct BuildRailToolbarWindow : Window {
 			return GetString(rti->strings.toolbar_caption);
 		}
 
-		return this->Window::GetWidgetString(widget, stringid);
+		return this->RailTypeDropdownWindowBase::GetWidgetString(widget, stringid);
 	}
 
-	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
+	void OnClick(Point pt, WidgetID widget, int click_count) override
 	{
 		if (widget < WID_RAT_BUILD_NS) return;
 
@@ -649,7 +666,15 @@ struct BuildRailToolbarWindow : Window {
 				this->last_user_action = widget;
 				break;
 
-			default: NOT_REACHED();
+			case WID_RAT_TOGGLE_SIZE:
+				_show_dropdown_inside_toolbar = !_show_dropdown_inside_toolbar;
+				this->GetWidget<NWidgetStacked>(WID_RAT_SHOW_DROPDOWN)->SetDisplayedPlane(_show_dropdown_inside_toolbar ? 0 : SZSP_HORIZONTAL);
+				this->ReInit();
+				break;
+
+			default:
+				this->RailTypeDropdownWindowBase::OnClick(pt, widget, click_count);
+				return;
 		}
 		this->UpdateRemoveWidgetStatus(widget);
 		if (_ctrl_pressed) RailToolbar_CtrlChanged(this);
@@ -838,7 +863,6 @@ struct BuildRailToolbarWindow : Window {
 	static EventState RailToolbarGlobalHotkeys(int hotkey)
 	{
 		if (_game_mode != GM_NORMAL) return ES_NOT_HANDLED;
-		extern RailType _last_built_railtype;
 		Window *w = ShowBuildRailToolbar(_last_built_railtype);
 		if (w == nullptr) return ES_NOT_HANDLED;
 		return w->OnHotkey(hotkey);
@@ -866,6 +890,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_rail_widgets =
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, WID_RAT_CAPTION), SetTextStyle(TC_WHITE),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_RAT_TOGGLE_SIZE), SetSpriteTip(SPR_LARGE_SMALL_WINDOW, STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW), SetAspect(WidgetDimensions::ASPECT_TOGGLE_SIZE),
 		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
@@ -901,6 +926,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_rail_widgets =
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_RAT_CONVERT_RAIL),
 						SetFill(0, 1), SetToolbarMinimalSize(1), SetSpriteTip(SPR_IMG_CONVERT_RAIL, STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL),
 	EndContainer(),
+	NWidget(NWID_SELECTION, INVALID_COLOUR, WID_RAT_SHOW_DROPDOWN),
+		NWidgetFunction(InsertDropdownNestedWidgets),
+	EndContainer(),
 };
 
 static WindowDesc _build_rail_desc(
@@ -911,6 +939,14 @@ static WindowDesc _build_rail_desc(
 	&BuildRailToolbarWindow::hotkeys
 );
 
+/**
+ * Updates the dropdown part of BuildRailToolbarWindow.
+ */
+void UpdateBuildRailToolbar() {
+	if (BuildRailToolbarWindow *w = dynamic_cast<BuildRailToolbarWindow *>(FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL))) {
+		w->ReplaceList({}, _last_built_railtype);
+	}
+}
 
 /**
  * Open the build rail toolbar window for a specific rail type.
@@ -924,6 +960,12 @@ Window *ShowBuildRailToolbar(RailType railtype)
 {
 	if (!Company::IsValidID(_local_company)) return nullptr;
 	if (!ValParamRailType(railtype)) return nullptr;
+
+	if (BuildRailToolbarWindow *w = dynamic_cast<BuildRailToolbarWindow *>(FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL))) {
+		w->ReplaceList({}, railtype);
+		w->ModifyRailType(railtype);
+		return w;
+	}
 
 	CloseWindowByClass(WC_BUILD_TOOLBAR);
 	_cur_railtype = railtype;
@@ -1927,11 +1969,15 @@ void InitializeRailGui()
  */
 void ReinitGuiAfterToggleElrail(bool disable)
 {
-	extern RailType _last_built_railtype;
-	if (disable && _last_built_railtype == RAILTYPE_ELECTRIC) {
-		_last_built_railtype = _cur_railtype = RAILTYPE_RAIL;
-		BuildRailToolbarWindow *w = dynamic_cast<BuildRailToolbarWindow *>(FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL));
-		if (w != nullptr) w->ModifyRailType(_cur_railtype);
+	if (disable) {
+		if (_last_built_railtype[0] == RAILTYPE_ELECTRIC) {
+			_last_built_railtype[0] = _cur_railtype = RAILTYPE_RAIL;
+			_last_built_railtype[1] = INVALID_RAILTYPE;
+			BuildRailToolbarWindow *w = dynamic_cast<BuildRailToolbarWindow *>(FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL));
+			if (w != nullptr) w->ModifyRailType(_cur_railtype);
+		} else if (_last_built_railtype[1] == RAILTYPE_ELECTRIC) {
+			_last_built_railtype[1] = INVALID_RAILTYPE;
+		}
 	}
 	MarkWholeScreenDirty();
 }
@@ -1941,7 +1987,6 @@ static void SetDefaultRailGui()
 {
 	if (_local_company == COMPANY_SPECTATOR || !Company::IsValidID(_local_company)) return;
 
-	extern RailType _last_built_railtype;
 	RailType rt;
 	switch (_settings_client.gui.default_rail_type) {
 		case 2: {
@@ -1978,7 +2023,8 @@ static void SetDefaultRailGui()
 			NOT_REACHED();
 	}
 
-	_last_built_railtype = _cur_railtype = rt;
+	_last_built_railtype[0] = _cur_railtype = rt;
+	_last_built_railtype[1] = INVALID_RAILTYPE;
 	BuildRailToolbarWindow *w = dynamic_cast<BuildRailToolbarWindow *>(FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL));
 	if (w != nullptr) w->ModifyRailType(_cur_railtype);
 }
@@ -2021,13 +2067,20 @@ void InitializeRailGUI()
 	ResetSignalVariant();
 }
 
+DropDownList RailTypeDropdownWindow::GetDropdownList(const BadgeFilterChoices &badge_filter_choices, const StringFilter &string_filter) const
+{
+	return GetRailTypeDropDownList(false, false, badge_filter_choices, string_filter);
+}
+
+static constexpr RailType RAILTYPE_HIDDABLE_SUBLIST_END{RAILTYPE_END + 1}; ///< Special value to mark the dropdown list divider item that is only visible when ctrl is pressed.
+
 /**
  * Create a drop down list for all the rail types of the local company.
  * @param for_replacement Whether this list is for the replacement window.
  * @param all_option Whether to add an 'all types' item.
  * @return The populated and sorted #DropDownList.
  */
-DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
+DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option, const BadgeFilterChoices &badge_filter_choices, StringFilter string_filter)
 {
 	RailTypes used_railtypes;
 	RailTypes avail_railtypes;
@@ -2063,23 +2116,80 @@ DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
 	/* Shared list so that each item can take ownership. */
 	auto badge_class_list = std::make_shared<GUIBadgeClasses>(GSF_RAILTYPES);
 
-	for (const auto &rt : _sorted_railtypes) {
+	RailTypes already_in_dropdown;
+
+	std::vector<RailType> railtypes;
+	/* One more than the size of last built type list in order to contain dropdown list divider. */
+	railtypes.reserve(_last_built_railtype.size() + 1
+		+ (c->favourite_railtypes.Any() ? c->favourite_railtypes.Count() + 1 : 0) // Also a divider.
+		+ _sorted_railtypes.size());
+	railtypes.insert(railtypes.end(), _last_built_railtype.begin(), _last_built_railtype.end());
+	railtypes.push_back(RAILTYPE_END); ///< Mark end of sub list.
+
+	if (auto fr = c->favourite_railtypes; fr.Reset(c->hidden_railtypes).Any()) {
+		for (RailType rt : _sorted_railtypes) {
+			if (fr.Test(rt)) railtypes.push_back(rt);
+		}
+		railtypes.push_back(RAILTYPE_END); ///< Mark end of sub list.
+	}
+
+	if (c->hidden_railtypes.Any()) {
+		for (RailType rt : _sorted_railtypes) {
+			if (c->hidden_railtypes.Test(rt)) railtypes.push_back(rt);
+		}
+		railtypes.push_back(RAILTYPE_HIDDABLE_SUBLIST_END); ///< Mark end of sub list.
+	}
+
+	railtypes.insert(railtypes.end(), _sorted_railtypes.begin(), _sorted_railtypes.end());
+
+	size_t in_last_sublist = 0;
+	BadgeDropdownFilter bdf(badge_filter_choices);
+
+	for (const auto &rt : railtypes) {
+		if (rt >= RAILTYPE_END) {
+			if (rt == RAILTYPE_HIDDABLE_SUBLIST_END) list.push_back(MakeDropDownListDividerItem<FS_SMALL>({DropDownListDividerItem<FS_SMALL>::State::Default, DropDownListDividerItem<FS_SMALL>::State::ShiftPressed}));
+			else list.push_back(MakeDropDownListDividerItem<FS_SMALL>());
+			in_last_sublist = 0;
+			continue;
+		}
+
 		/* If it's not used ever, don't show it to the user. */
 		if (!used_railtypes.Test(rt)) continue;
 
+		if (already_in_dropdown.Test(rt)) continue;
+		already_in_dropdown.Set(rt);
+
+		in_last_sublist += 1;
 		const RailTypeInfo *rti = GetRailTypeInfo(rt);
 
+		if (!bdf.Filter(rti->badges)) continue;
+
+		/* Do not filter if the filter text box is empty. */
+		if (!string_filter.IsEmpty()) {
+			/* Filter rail type name. */
+			string_filter.ResetState();
+			string_filter.AddLine(GetString(rti->strings.menu_text));
+
+			/* Filter retaled trian type name. */
+			string_filter.AddLine(GetString(rti->strings.new_loco));
+
+			/* Filter badge names. */
+			BadgeTextFilter btf(string_filter, GSF_RAILTYPES);
+
+			if (!string_filter.GetState() && !btf.Filter(rti->badges)) continue;
+		}
+
 		if (for_replacement) {
-			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, GetString(rti->strings.replace_text), rt, !avail_railtypes.Test(rt)));
+			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, GetString(rti->strings.replace_text), rt, false, !avail_railtypes.Test(rt) || c->hidden_railtypes.Test(rt), COLOUR_MAUVE, COLOUR_ORANGE, c->hidden_railtypes.Test(rt)));
 		} else {
 			std::string str = rti->max_speed > 0
 				? GetString(STR_TOOLBAR_RAILTYPE_VELOCITY, rti->strings.menu_text, rti->max_speed)
 				: GetString(rti->strings.menu_text);
-			list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, RailBuildCost(rt), d, rti->gui_sprites.build_x_rail, PAL_NONE, std::move(str), rt, !avail_railtypes.Test(rt)));
+			list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, RailBuildCost(rt), d, rti->gui_sprites.build_x_rail, PAL_NONE, std::move(str), rt, false, !avail_railtypes.Test(rt) || c->hidden_railtypes.Test(rt), COLOUR_MAUVE, COLOUR_ORANGE, c->hidden_railtypes.Test(rt)));
 		}
 	}
 
-	if (list.empty()) {
+	if (in_last_sublist == 0) {
 		/* Empty dropdowns are not allowed */
 		list.push_back(MakeDropDownListStringItem(STR_NONE, INVALID_RAILTYPE, true));
 	}

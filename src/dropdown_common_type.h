@@ -264,25 +264,32 @@ public:
  * Drop down spacer component.
  * @tparam TBase Base component.
  * @tparam TEnd Position space at end if true, or start if false.
+ * @tparam TWide If true hsep_wide is used instead of hsep_normal.
  */
-template <class TBase, bool TEnd = false>
+template <class TBase, bool TEnd = false, bool TWide = true>
 class DropDownSpacer : public TBase {
 public:
 	template <typename... Args>
 	explicit DropDownSpacer(Args&&... args) : TBase(std::forward<Args>(args)...) {}
 
-	uint Width() const override { return WidgetDimensions::scaled.hsep_wide + this->TBase::Width(); }
+	inline int GetHSep() const
+	{
+		if constexpr (TWide) return WidgetDimensions::scaled.hsep_wide;
+		else return WidgetDimensions::scaled.hsep_normal;
+	}
+
+	uint Width() const override { return this->GetHSep() + this->TBase::Width(); }
 
 	int OnClick(const Rect &r, const Point &pt) const override
 	{
 		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
-		return this->TBase::OnClick(r.Indent(WidgetDimensions::scaled.hsep_wide, rtl), pt);
+		return this->TBase::OnClick(r.Indent(this->GetHSep(), rtl), pt);
 	}
 
 	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
 	{
 		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
-		this->TBase::Draw(full, r.Indent(WidgetDimensions::scaled.hsep_wide, rtl), sel, click_result, bg_colour);
+		this->TBase::Draw(full, r.Indent(this->GetHSep(), rtl), sel, click_result, bg_colour);
 	}
 };
 
@@ -299,10 +306,119 @@ public:
 	bool Selectable() const override { return false; }
 };
 
+/**
+ * Drop down component that changes the colour of the background when item.
+ * @tparam TBase Base component.
+ */
+template <class TBase>
+class DropDownCustomSelectedBGColour : public TBase {
+public:
+	/**
+	 * Colours is converted to PixelColour
+	 * true evalueates to current window colour
+	 * false falls back to TBase::GetSelectedBGColour
+	 */
+	using ColourType = std::variant<PixelColour, Colours, bool>;
+private:
+	ColourType colour;
+	ColourType shift_colour;
+	ColourType ctrl_colour;
+public:
+	template <typename... Args>
+	explicit DropDownCustomSelectedBGColour(const ColourType &colour, const ColourType &shift_colour, const ColourType &ctrl_colour, Args&&... args)
+		: TBase(std::forward<Args>(args)...), colour(colour), shift_colour(shift_colour), ctrl_colour(ctrl_colour)
+	{
+	}
+
+	PixelColour GetSelectedBGColour(Colours window_colour) const override
+	{
+		auto colour = this->colour;
+		if (_shift_pressed) colour = shift_colour;
+		if (_ctrl_pressed) colour = ctrl_colour;
+
+		switch (colour.index()) {
+			default: NOT_REACHED();
+			case 0 /* PixelColour */: return std::get<PixelColour>(colour);
+			case 1 /* Colours */: return GetColourGradient(std::get<Colours>(colour), SHADE_LIGHT);
+			case 2 /* bool */:
+				if (std::get<bool>(colour)) return GetColourGradient(window_colour, SHADE_LIGHT);
+				return this->TBase::GetSelectedBGColour(window_colour);
+		}
+	}
+};
+
+/**
+ * Drop down component that hides its content.
+ * @tparam TBase Base component.
+ */
+template <class TBase>
+class DropDownHiddable : public TBase {
+public:
+	enum class State {
+		Default,
+		CtrlPressed,
+		ShiftPressed,
+	};
+	using States = EnumBitSet<DropDownHiddable<TBase>::State, uint8_t>;
+private:
+	bool hide_on_ctrl;
+	bool hide_on_shift;
+	bool hide_on_default;
+public:
+	template <typename... Args>
+	explicit DropDownHiddable(const DropDownHiddable<TBase>::States &hidden_states, Args&&... args) : TBase(std::forward<Args>(args)...)
+	{
+		this->hide_on_ctrl = hidden_states.Test(DropDownHiddable<TBase>::State::CtrlPressed);
+		this->hide_on_shift = hidden_states.Test(DropDownHiddable<TBase>::State::ShiftPressed);
+		this->hide_on_default = hidden_states.Test(DropDownHiddable<TBase>::State::Default);
+	}
+
+	/**
+	 * Checks if the item should be drawn.
+	 * @return true iff the item is visible.
+	 */
+	bool IsVisible() const
+	{
+		if (this->hide_on_ctrl && _ctrl_pressed) return false;
+		if (this->hide_on_shift && _shift_pressed) return false;
+		if (this->hide_on_default && !_ctrl_pressed && !_shift_pressed) return false;
+		return true;
+	}
+
+	uint Height() const override
+	{
+		if (this->IsVisible()) return this->TBase::Height();
+		return 0;
+	}
+
+	uint Width() const override
+	{
+		if (this->IsVisible()) return this->TBase::Width();
+		return 0;
+	}
+
+	int OnClick(const Rect &r, const Point &pt) const override
+	{
+		if (this->IsVisible()) return this->TBase::OnClick(r, pt);
+		return -1;
+	}
+
+	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
+	{
+		if (this->IsVisible()) this->TBase::Draw(full, r, sel, click_result, bg_colour);
+	}
+};
+
 /* Commonly used drop down list items. */
-using DropDownListDividerItem = DropDownDivider<DropDownListItem>;
 using DropDownListStringItem = DropDownString<DropDownListItem>;
 using DropDownListIconItem = DropDownIcon<DropDownString<DropDownListItem>>;
 using DropDownListCheckedItem = DropDownIndent<DropDownCheck<DropDownString<DropDownListItem>>>;
+
+/**
+ * Drop down list divider item.
+ * @tparam TFs Font size -- used to determine height.
+ */
+template<FontSize TFs = FS_NORMAL>
+using DropDownListDividerItem = DropDownHiddable<DropDownDivider<DropDownListItem, TFs>>;
 
 #endif /* DROPDOWN_COMMON_TYPE_H */

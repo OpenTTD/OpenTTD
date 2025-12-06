@@ -8,6 +8,8 @@
 /** @file rail_cmd.cpp Handling of rail tiles. */
 
 #include "stdafx.h"
+#include "rail.h"
+#include "rail_type.h"
 #include "viewport_func.h"
 #include "command_func.h"
 #include "depot_base.h"
@@ -28,11 +30,14 @@
 #include "core/backup_type.hpp"
 #include "core/container_func.hpp"
 #include "timer/timer_game_calendar.h"
+#include "string_func.h"
 #include "strings_func.h"
 #include "company_gui.h"
 #include "object_map.h"
 #include "rail_cmd.h"
 #include "landscape_cmd.h"
+#include "dropdown_gui.hpp"
+#include "dropdown_func.h"
 
 #include "table/strings.h"
 #include "table/railtypes.h"
@@ -45,6 +50,8 @@ typedef std::vector<Train *> TrainList;
 
 RailTypeInfo _railtypes[RAILTYPE_END];
 std::vector<RailType> _sorted_railtypes; ///< Sorted list of rail types.
+bool _railtypes_invert_sort_order = false;
+uint8_t _railtypes_sort_criteria = 0; ///< Defines by what railtypes are sorted.
 RailTypes _railtypes_hidden_mask;
 
 /** Enum holding the signal offset in the sprite sheet according to the side it is representing. */
@@ -115,13 +122,115 @@ void ResolveRailTypeGUISprites(RailTypeInfo *rti)
 
 /**
  * Compare railtypes based on their sorting order.
- * @param first  The railtype to compare to.
+ * @param first The railtype to compare to.
  * @param second The railtype to compare.
  * @return True iff the first should be sorted before the second.
  */
 static bool CompareRailTypes(const RailType &first, const RailType &second)
 {
-	return GetRailTypeInfo(first)->sorting_order < GetRailTypeInfo(second)->sorting_order;
+	bool cmp = GetRailTypeInfo(first)->sorting_order < GetRailTypeInfo(second)->sorting_order;
+	return _railtypes_invert_sort_order ? !cmp : cmp;
+}
+
+/**
+ * Compare railtypes based on cost.
+ * @param first The railtype to compare to.
+ * @param second The railtype to compare.
+ * @return True iff the first should be sorted before the second.
+ */
+static bool CompareRailTypesByCost(const RailType &first, const RailType &second)
+{
+	int r = GetRailTypeInfo(first)->cost_multiplier - GetRailTypeInfo(second)->cost_multiplier;
+	if (r == 0) return CompareRailTypes(first, second); ///< Use sorting_order instead since we want consistent sorting.
+	return _railtypes_invert_sort_order ? r > 0 : r < 0;
+}
+
+/**
+ * Compare railtypes based on max speed.
+ * @param first The railtype to compare to.
+ * @param second The railtype to compare.
+ * @return True iff the first should be sorted before the second.
+ */
+static bool CompareRailTypesBySpeed(const RailType &first, const RailType &second)
+{
+	int r = GetRailTypeInfo(first)->max_speed - GetRailTypeInfo(second)->max_speed;
+	if (r == 0) return CompareRailTypes(first, second); // Use sorting_order instead since we want consistent sorting.
+	if (GetRailTypeInfo(r > 0 ? second : first)->max_speed == 0) r = -r; // 0 is used for no speed limit.
+	return _railtypes_invert_sort_order ? r > 0 : r < 0;
+}
+
+/**
+ * Compare railtypes based on maintenance cost.
+ * @param first The railtype to compare to.
+ * @param second The railtype to compare.
+ * @return True iff the first should be sorted before the second.
+ */
+static bool CompareRailTypesByMaintenanceCost(const RailType &first, const RailType &second)
+{
+	int r = GetRailTypeInfo(first)->maintenance_multiplier - GetRailTypeInfo(second)->maintenance_multiplier;
+	if (r == 0) return CompareRailTypes(first, second); ///< Use sorting_order instead since we want consistent sorting.
+	return _railtypes_invert_sort_order ? r > 0 : r < 0;
+}
+
+/** Cached values for CompareRailTypesByName to spare many GetString() calls */
+static RailType _last_sorted_railtype[2] = { INVALID_RAILTYPE, INVALID_RAILTYPE };
+
+/**
+ * Compare railtypes based on name.
+ * @param first The railtype to compare to.
+ * @param second The railtype to compare.
+ * @return True iff the first should be sorted before the second.
+ */
+static bool CompareRailTypesByName(const RailType &first, const RailType &second)
+{
+	static std::string last_name[2] = { {}, {} };
+
+	if (first != _last_sorted_railtype[0]) {
+		_last_sorted_railtype[0] = first;
+		last_name[0] = GetString(GetRailTypeInfo(first)->strings.menu_text);
+	}
+
+	if (second != _last_sorted_railtype[1]) {
+		_last_sorted_railtype[1] = second;
+		last_name[1] = GetString(GetRailTypeInfo(second)->strings.menu_text);
+	}
+
+	int r = StrNaturalCompare(last_name[0], last_name[1]);
+	if (r == 0) return CompareRailTypes(first, second); ///< Use sorting_order instead since we want consistent sorting.
+	return _railtypes_invert_sort_order ? r > 0 : r < 0;
+}
+
+typedef bool CompareRailTypesFunction(const RailType&, const RailType&); ///< Type of functions for comparing railtypes.
+
+/** Compare functions for the rail_type sort criteria. */
+static CompareRailTypesFunction *_railtypes_sort_functions[] = {
+	CompareRailTypes,
+	CompareRailTypesByCost,
+	CompareRailTypesBySpeed,
+	CompareRailTypesByMaintenanceCost,
+	CompareRailTypesByName
+};
+
+static const std::array<StringID, sizeof(_railtypes_sort_functions) / sizeof(_railtypes_sort_functions[0])> RAILTYPE_SORT_LISTING = {
+	STR_SORT_BY_RAILTYPE_ID,
+	STR_SORT_BY_COST,
+	STR_SORT_BY_MAX_SPEED,
+	STR_SORT_BY_MAINTENANCE_COST,
+	STR_SORT_BY_NAME
+};
+
+StringID RailTypeDropdownWindow::GetSortCriteriaString() const
+{
+	return RAILTYPE_SORT_LISTING[_railtypes_sort_criteria];
+}
+
+DropDownList RailTypeDropdownWindow::GetSortDropdownList() const
+{
+	DropDownList list;
+	for (uint8_t i = 0; i < RAILTYPE_SORT_LISTING.size(); ++i) {
+		list.push_back(MakeDropDownListStringItem(RAILTYPE_SORT_LISTING[i], i));
+	}
+	return list;
 }
 
 /**
@@ -139,7 +248,7 @@ void InitRailTypes()
 		if (rti.label == 0) continue;
 		_sorted_railtypes.push_back(rt);
 	}
-	std::sort(_sorted_railtypes.begin(), _sorted_railtypes.end(), CompareRailTypes);
+	std::sort(_sorted_railtypes.begin(), _sorted_railtypes.end(), _railtypes_sort_functions[_railtypes_sort_criteria]);
 }
 
 /**
