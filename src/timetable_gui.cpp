@@ -240,7 +240,6 @@ struct TimetableWindow : Window {
 				}
 				[[fallthrough]];
 
-			case WID_VT_ARRIVAL_DEPARTURE_SELECTION:
 			case WID_VT_TIMETABLE_PANEL:
 				fill.height = resize.height = GetCharacterHeight(FS_NORMAL);
 				size.height = 8 * resize.height + padding.height;
