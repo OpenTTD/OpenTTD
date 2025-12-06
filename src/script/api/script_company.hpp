@@ -460,6 +460,24 @@ public:
 	 * @return Secondary colour of livery.
 	 */
 	static ScriptCompany::Colours GetSecondaryLiveryColour(LiveryScheme scheme);
+
+	/**
+	 * Set how long company will not be able to get engine preview offer.
+	 * @param quarters Number of quarters that the company is not allowed to get new exclusive engine previews.
+	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
+	 * @pre quarters >= 0.
+	 * @return True if the block preview was changed.
+	 * @api -ai
+	 */
+	static bool SetBlockPreview(SQInteger quarters);
+
+	/**
+	 * Get number of quarters in wich the company will not be offered an engine preview.
+	 * @param company The company to get the block preview off.
+	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
+	 * @return Number of quarters that the company is not allowed to get new exclusive engine previews.
+	 */
+	static SQInteger GetBlockPreview(ScriptCompany::CompanyID company);
 };
 
 DECLARE_INCREMENT_DECREMENT_OPERATORS(ScriptCompany::CompanyID)

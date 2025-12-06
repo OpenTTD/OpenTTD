@@ -22,6 +22,7 @@
  * \li AIEventVehicleCrashed::GetVehicleOwner
  * \li AIEventCompanyRenamed
  * \li AIEventPresidentRenamed
+ * \li AIEventBlockEnginePreviewChanged
  * \li AICargo::CC_OVERSIZED
  * \li AICargo::CC_POWDERIZED
  * \li AICargo::CC_NON_POURABLE
@@ -31,6 +32,7 @@
  * \li AIError::ERR_BRIDGE_TOO_LOW
  * \li AIEngine::GetAllRailTypes
  * \li AITile::IsHouseTile
+ * \li AICompany::GetBlockPreview
  *
  * Other changes:
  * \li AIBridge::GetBridgeID renamed to AIBridge::GetBridgeType
