@@ -2844,7 +2844,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_vehicle_view_widgets
 			EndContainer(),
 			/* For trains only, 'ignore signal' button. */
 			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_VV_FORCE_PROCEED_SEL),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_VV_FORCE_PROCEED), SetMinimalSize(18, 18),
+				NWidget(WWT_IMGBTN, COLOUR_GREY, WID_VV_FORCE_PROCEED), SetMinimalSize(18, 18),
 											SetSpriteTip(SPR_IGNORE_SIGNALS, STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_VV_SELECT_REFIT_TURN),
@@ -3047,7 +3047,8 @@ public:
 		this->GetWidget<NWidgetCore>(WID_VV_SHOW_DETAILS)->SetToolTip(STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP + v->type);
 		this->GetWidget<NWidgetCore>(WID_VV_CLONE)->SetToolTip(STR_VEHICLE_VIEW_CLONE_TRAIN_INFO + v->type);
 
-		this->UpdateButtonStatus();
+		this->UpdatePlanes();
+		this->UpdateButtons();
 	}
 
 	void Close([[maybe_unused]] int data = 0) override
@@ -3081,7 +3082,8 @@ public:
 		}
 	}
 
-	void OnPaint() override
+	/** Update buttons state to match shown vehicle. */
+	void UpdateButtons()
 	{
 		const Vehicle *v = Vehicle::Get(this->window_number);
 		bool is_localcompany = v->owner == _local_company;
@@ -3102,6 +3104,11 @@ public:
 		}
 
 		this->SetWidgetDisabledState(WID_VV_ORDER_LOCATION, v->current_order.GetLocation(v) == INVALID_TILE);
+	}
+
+	void OnPaint() override
+	{
+		const Vehicle *v = Vehicle::Get(this->window_number);
 
 		const Window *mainwindow = GetMainWindow();
 		if (mainwindow->viewport->follow_vehicle == v->index) {
@@ -3351,7 +3358,8 @@ public:
 		}
 	}
 
-	void UpdateButtonStatus()
+	/** Selects apropriate plane for current state of the shown vehicle. */
+	void UpdatePlanes()
 	{
 		const Vehicle *v = Vehicle::Get(this->window_number);
 		bool veh_stopped = v->IsStoppedInDepot();
@@ -3363,7 +3371,6 @@ public:
 		NWidgetStacked *nwi = this->GetWidget<NWidgetStacked>(WID_VV_SELECT_DEPOT_CLONE); // Selection widget 'send to depot' / 'clone'.
 		if (nwi->shown_plane + SEL_DC_BASEPLANE != plane) {
 			this->SelectPlane(plane);
-			this->SetWidgetDirty(WID_VV_SELECT_DEPOT_CLONE);
 		}
 		/* The same system applies to widget WID_VV_REFIT_VEH and VVW_WIDGET_TURN_AROUND.*/
 		if (v->IsGroundVehicle()) {
@@ -3371,7 +3378,6 @@ public:
 			nwi = this->GetWidget<NWidgetStacked>(WID_VV_SELECT_REFIT_TURN);
 			if (nwi->shown_plane + SEL_RT_BASEPLANE != plane) {
 				this->SelectPlane(plane);
-				this->SetWidgetDirty(WID_VV_SELECT_REFIT_TURN);
 			}
 		}
 	}
@@ -3389,7 +3395,9 @@ public:
 			return;
 		}
 
-		this->UpdateButtonStatus();
+		this->UpdatePlanes();
+		this->UpdateButtons();
+		this->SetDirty();
 	}
 
 	bool IsNewGRFInspectable() const override
