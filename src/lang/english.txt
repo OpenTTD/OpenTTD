@@ -1720,6 +1720,25 @@ STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom map
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Scroll map
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Off
 
+STR_CONFIG_SETTING_GAMEPAD_STICK_SELECTION                      :Gamepad stick for scrolling: {STRING2}
+STR_CONFIG_SETTING_GAMEPAD_STICK_SELECTION_HELPTEXT             :Select which analog stick to use for map scrolling
+###length 3
+STR_CONFIG_SETTING_GAMEPAD_STICK_DISABLED                       :Disabled
+STR_CONFIG_SETTING_GAMEPAD_STICK_LEFT                           :Left stick
+STR_CONFIG_SETTING_GAMEPAD_STICK_RIGHT                          :Right stick
+
+STR_CONFIG_SETTING_GAMEPAD_DEADZONE                             :Gamepad deadzone: {STRING2}%
+STR_CONFIG_SETTING_GAMEPAD_DEADZONE_HELPTEXT                    :Minimum stick movement required before scrolling starts (0-100%)
+
+STR_CONFIG_SETTING_GAMEPAD_SENSITIVITY                          :Gamepad sensitivity: {STRING2}
+STR_CONFIG_SETTING_GAMEPAD_SENSITIVITY_HELPTEXT                 :Control the sensitivity of gamepad analog stick scrolling
+
+STR_CONFIG_SETTING_GAMEPAD_INVERT_X                             :Invert gamepad X-axis: {STRING2}
+STR_CONFIG_SETTING_GAMEPAD_INVERT_X_HELPTEXT                    :Invert the horizontal axis movement of the gamepad analog stick
+
+STR_CONFIG_SETTING_GAMEPAD_INVERT_Y                             :Invert gamepad Y-axis: {STRING2}
+STR_CONFIG_SETTING_GAMEPAD_INVERT_Y_HELPTEXT                    :Invert the vertical axis movement of the gamepad analog stick
+
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :On screen keyboard: {STRING2}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Select the method to open the on screen keyboard for entering text into editboxes only using the pointing device. This is meant for small devices without actual keyboard
 ###length 4
