@@ -199,7 +199,7 @@ GRFFile *GetFileByGRFID(uint32_t grfid);
 GRFError *DisableGrf(StringID message = {}, GRFConfig *config = nullptr);
 void DisableStaticNewGRFInfluencingNonStaticNewGRFs(GRFConfig &c);
 bool HandleChangeInfoResult(std::string_view caller, ChangeInfoResult cir, GrfSpecFeature feature, uint8_t property);
-uint32_t GetParamVal(uint8_t param, uint32_t *cond_val);
+uint32_t GetParamVal(uint8_t param, uint32_t *cond_val, bool *unsafe = nullptr);
 void GRFUnsafe(ByteReader &);
 
 void InitializePatchFlags();
