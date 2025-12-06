@@ -847,6 +847,7 @@ SettingsContainer &GetSettingsTree()
 			genworld->Add(new SettingEntry("game_creation.snow_line_height"));
 			genworld->Add(new SettingEntry("game_creation.desert_coverage"));
 			genworld->Add(new SettingEntry("game_creation.amount_of_rivers"));
+			genworld->Add(new SettingEntry("game_creation.generate_obstacles"));
 		}
 
 		SettingsPage *environment = main->Add(new SettingsPage(STR_CONFIG_SETTING_ENVIRONMENT));
