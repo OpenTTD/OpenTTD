@@ -2215,6 +2215,25 @@ static void DrawTrackBitsOverlay(TileInfo *ti, TrackBits track, const RailTypeIn
 }
 
 /**
+ * Returns which of the 5 junction-'Rail underlays' to use for the given track bits.
+ * See https://newgrf-specs.tt-wiki.net/wiki/Action3/Railtypes for the cases.
+ * @pre The track bits describe a junction, so at least two bits are set.
+ * @param track The track bits to consider.
+ * @return The offset in the five junction ground sprites.
+ */
+static int GetJunctionGroundSpriteOffset(TrackBits track)
+{
+	/* If none of the tracks end up in the NE corner, return the ground sprite
+	 * where the NE of the tile is not covered. Repeat for the other directions.
+	 * What remains are junctions where all directions are covered. */
+	if ((track & TRACK_BIT_3WAY_NE) == 0) return 0;
+	if ((track & TRACK_BIT_3WAY_SW) == 0) return 1;
+	if ((track & TRACK_BIT_3WAY_NW) == 0) return 2;
+	if ((track & TRACK_BIT_3WAY_SE) == 0) return 3;
+	return 4;
+}
+
+/**
  * Draw ground sprite and track bits
  * @param ti TileInfo
  * @param track TrackBits to draw
@@ -2289,11 +2308,7 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 				/* junction, select only ground sprite, handle track sprite later */
 				default:
 					junction = true;
-					if ((track & TRACK_BIT_3WAY_NE) == 0) { image = rti->base_sprites.ground;     break; }
-					if ((track & TRACK_BIT_3WAY_SW) == 0) { image = rti->base_sprites.ground + 1; break; }
-					if ((track & TRACK_BIT_3WAY_NW) == 0) { image = rti->base_sprites.ground + 2; break; }
-					if ((track & TRACK_BIT_3WAY_SE) == 0) { image = rti->base_sprites.ground + 3; break; }
-					image = rti->base_sprites.ground + 4;
+					image = rti->base_sprites.ground + GetJunctionGroundSpriteOffset(track);
 					break;
 			}
 		}
