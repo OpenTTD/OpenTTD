@@ -26,6 +26,7 @@
 #include "vehicle_func.h"
 #include "string_func.h"
 #include "company_func.h"
+#include "newgrf_debug.h"
 #include "newgrf_station.h"
 #include "newgrf_roadstop.h"
 #include "company_base.h"
@@ -315,6 +316,7 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 			MarkTileDirtyByTile(tile);
 
 			DeallocateSpecFromStation(wp, old_specindex);
+			if (spec == nullptr) DeleteNewGRFInspectWindow(GSF_STATIONS, tile);
 			YapfNotifyTrackLayoutChange(tile, AxisToTrack(axis));
 		}
 		DirtyCompanyInfrastructureWindows(wp->owner);
