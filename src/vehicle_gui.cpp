@@ -2844,7 +2844,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_vehicle_view_widgets
 			EndContainer(),
 			/* For trains only, 'ignore signal' button. */
 			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_VV_FORCE_PROCEED_SEL),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_VV_FORCE_PROCEED), SetMinimalSize(18, 18),
+				NWidget(WWT_IMGBTN, COLOUR_GREY, WID_VV_FORCE_PROCEED), SetMinimalSize(18, 18),
 											SetSpriteTip(SPR_IGNORE_SIGNALS, STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_VV_SELECT_REFIT_TURN),
