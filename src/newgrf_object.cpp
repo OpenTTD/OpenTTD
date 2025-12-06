@@ -291,6 +291,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 			/* Object view */
 			case 0x48: return this->view;
 
+			case 0x79: return GetNearbyBadgeVariableResult(*this->ro.grffile, GetNearbyTile(parameter, this->tile), this->ro);
 			case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, this->spec->badges, parameter);
 
 			/*
@@ -364,6 +365,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 		/* Count of object, distance of closest instance */
 		case 0x64: return GetCountAndDistanceOfClosestInstance(this->ro, parameter, this->ro.grffile->grfid, this->tile, this->obj);
 
+		case 0x79: return GetNearbyBadgeVariableResult(*this->ro.grffile, GetNearbyTile(parameter, this->tile), this->ro);
 		case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, this->spec->badges, parameter);
 	}
 
