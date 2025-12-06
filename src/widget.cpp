@@ -27,6 +27,9 @@
 
 #include "safeguards.h"
 
+#include "widgets/toolbar_widget.h"
+#include "hotkeys.h"
+
 WidgetDimensions WidgetDimensions::scaled = {};
 
 static std::string GetStringForWidget(const Window *w, const NWidgetCore *nwid, bool secondary = false)
@@ -3097,6 +3100,87 @@ void NWidgetLeaf::Draw(const Window *w)
 	}
 
 	DrawOutline(w, this);
+
+	// TODO: Draw hints only if Alt is being held.
+	// Don't draw hotkey hints on disabled widgets or editboxes with focus.
+	if (!(this->IsDisabled() || (this->type == WWT_EDITBOX && w->nested_focus == this))) {
+		this->DrawHotkeyHint(w);
+	}
+}
+
+void NWidgetLeaf::DrawHotkeyHint(const Window* w) {
+	// TODO: Use global hotkey for autoroads for rail, road, tram, etc. if
+	// they have been set.
+
+	const uint o = ScaleGUITrad(1);
+	Rect r = this->GetCurrentRect().Shrink(o);
+	std::string hint;
+	uint16_t keycode = 0;
+
+	if (w->window_desc.cls == WC_MAIN_TOOLBAR && this->index == WID_TN_FAST_FORWARD) {
+		// Special-case hint text for Fast-forwards because it's not really a hotkey
+		hint = "Tab";
+	} else if (w->window_desc.hotkeys != nullptr) {
+		// Widget IDs can coincidentally overlap with hotkey IDs if
+		// they aren't assigned properly. Avoid this.
+		auto hk = w->window_desc.hotkeys->GetHotkeyByNum(this->index);
+		if (hk != nullptr && hk->keycodes.size()) {
+			// Find the "best" of the available keycodes
+			// TODO: maybe don't repeat this work so much
+			keycode = *(hk->keycodes.begin());
+			hint = KeycodeToShortString(keycode);
+			for (auto k : hk->keycodes) {
+				if (!(keycode & WKC_GLOBAL_HOTKEY) && (k & WKC_GLOBAL_HOTKEY)) {
+					keycode = k;
+				} else {
+					auto h = KeycodeToShortString(k);
+					if (hint.length() > h.length()) {
+						keycode = k;
+						hint = h;
+					}
+				}
+			}
+
+			// Convert to a string
+			// TODO: Glyphs for Shift, Alt, etc. Colour for global.
+			//   - On screen keyboard has a sprite for shift.
+			hint = KeycodeToShortString(keycode);
+		}
+	}
+
+	if (hint.empty()) {
+		return;
+	}
+
+	// Choose the font-size
+	auto fontsize = FS_SMALL;
+	// It's better to have a single consistent size.
+	/*auto availableSize = Dimension(r.right - r.left, r.bottom - r.top);*/
+	/*auto desiredSize = GetStringBoundingBox(hint, FS_NORMAL);*/
+	/*if (availableSize < desiredSize) {*/
+	/*	fontsize = FS_SMALL;*/
+	/*}*/
+
+	// Choose hint colour
+	auto colour = TC_WHITE;
+	if (keycode & WKC_GLOBAL_HOTKEY) {
+		colour = TC_LIGHT_BLUE;
+	}
+
+	auto alignment = SA_LEFT | SA_BOTTOM;
+
+	// Draw a slightly shoddy outline
+	DrawStringMultiLine(r.Translate( o,  o), hint, TC_BLACK | TC_NO_SHADE, alignment, false, fontsize);
+	DrawStringMultiLine(r.Translate( o, -o), hint, TC_BLACK | TC_NO_SHADE, alignment, false, fontsize);
+	DrawStringMultiLine(r.Translate(-o,  o), hint, TC_BLACK | TC_NO_SHADE, alignment, false, fontsize);
+	DrawStringMultiLine(r.Translate(-o, -o), hint, TC_BLACK | TC_NO_SHADE, alignment, false, fontsize);
+	DrawStringMultiLine(r.Translate( o,  0), hint, TC_BLACK | TC_NO_SHADE, alignment, false, fontsize);
+	DrawStringMultiLine(r.Translate(-o,  0), hint, TC_BLACK | TC_NO_SHADE, alignment, false, fontsize);
+	DrawStringMultiLine(r.Translate( 0,  o), hint, TC_BLACK | TC_NO_SHADE, alignment, false, fontsize);
+	DrawStringMultiLine(r.Translate( 0, -o), hint, TC_BLACK | TC_NO_SHADE, alignment, false, fontsize);
+
+	// Draw the hint text
+	DrawStringMultiLine(r, hint, colour | TC_NO_SHADE, alignment, false, fontsize);
 }
 
 /**

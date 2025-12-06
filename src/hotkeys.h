@@ -44,6 +44,7 @@ struct HotkeyList {
 	void Save(IniFile &ini) const;
 
 	int CheckMatch(uint16_t keycode, bool global_only = false) const;
+	const Hotkey* GetHotkeyByNum(int num) const;
 
 	GlobalHotkeyHandlerFunc global_hotkey_handler;
 private:
@@ -64,5 +65,6 @@ void SaveHotkeysToConfig();
 
 
 void HandleGlobalHotkeys(char32_t key, uint16_t keycode);
+std::string KeycodeToShortString(uint16_t keycode);
 
 #endif /* HOTKEYS_H */
