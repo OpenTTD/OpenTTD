@@ -172,7 +172,7 @@ struct ScriptListWindow : public Window {
 		} else {
 			ScriptInfoList::const_iterator it = this->info_list->cbegin();
 			std::advance(it, this->selected);
-			GetConfig(this->slot)->Change(it->second->GetName(), it->second->GetVersion());
+			GetConfig(this->slot)->Change(it->second->GetName(), it->second->GetVersion(), this->show_all);
 		}
 		if (_game_mode == GM_EDITOR) {
 			if (this->slot == OWNER_DEITY) {
