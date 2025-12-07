@@ -6,6 +6,7 @@
 - Feature: Rivers can end in wetlands if unable to reach sea (#14784, #14846)
 - Feature: Signs, waypoint and station names may be moved (#14744)
 - Feature: House placer mode to replace existing houses (#14469)
+- Feature: Gamepad viewport scrolling for Windows and Linux (#14365)
 - Feature: Draw infinite water when all borders are water (#13289)
 - Add: [NewGRF] Allow badges to be excluded from badge name list (#14818)
 - Add: [Script] ScriptTile::IsHouseTile (#14806)
