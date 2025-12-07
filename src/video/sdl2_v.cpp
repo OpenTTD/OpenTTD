@@ -521,6 +521,10 @@ bool VideoDriver_SDL_Base::PollEvent()
 				/* mouse left the window, undraw cursor */
 				UndrawMouseCursor();
 				_cursor.in_window = false;
+			} else if (ev.window.event == SDL_WINDOWEVENT_FOCUS_GAINED) {
+				this->window_has_focus = true;
+			} else if (ev.window.event == SDL_WINDOWEVENT_FOCUS_LOST) {
+				this->window_has_focus = false;
 			}
 			break;
 		}
@@ -662,8 +666,8 @@ void VideoDriver_SDL_Base::InputLoop()
 
 	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 
-	/* Process gamepad input for scrolling */
-	this->ProcessGamepadInput();
+	/* Process gamepad input for scrolling only when focused */
+	if (this->window_has_focus) this->ProcessGamepadInput();
 }
 
 void VideoDriver_SDL_Base::LoopOnce()

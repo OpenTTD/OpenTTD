@@ -90,6 +90,9 @@ private:
 	 */
 	bool edit_box_focused = false;
 
+	/* Tracks whether the SDL window currently has focus to gate gamepad input. */
+	bool window_has_focus = true;
+
 	int startup_display = 0;
 
 	SDL_GameController *gamepad = nullptr; ///< Currently opened gamepad.

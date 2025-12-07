@@ -993,8 +993,8 @@ void VideoDriver_Win32Base::InputLoop()
 
 	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 
-	/* Process gamepad input for scrolling */
-	this->ProcessGamepadInput();
+	/* Process gamepad input for scrolling only while focused */
+	if (this->has_focus) this->ProcessGamepadInput();
 }
 
 bool VideoDriver_Win32Base::PollEvent()
