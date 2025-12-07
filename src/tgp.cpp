@@ -750,30 +750,38 @@ static double perlin_coast_noise_2D(const double x, const double y, const double
  * creates a very realistic coastline. Other times the variation is less, and
  * the map-edge shows its cliff-like roots.
  *
- * This routine may be extended to randomly sculpt the height of the terrain
- * near the edge. This will have the coast edge at low level (1-3), rising in
- * smoothed steps inland to about 15 tiles in. This should make it look as
- * though the map has been built for the map size, rather than a slice through
- * a larger map.
- *
  * Please note that all the small numbers; 53, 101, 167, etc. are small primes
  * to help give the perlin noise a bit more of a random feel.
  */
 static void HeightMapCoastLines(BorderFlags water_borders)
 {
-	int smallest_size = std::min(_settings_game.game_creation.map_x, _settings_game.game_creation.map_y);
-	const int margin = 4;
+	const int smallest_size = std::min(_settings_game.game_creation.map_x, _settings_game.game_creation.map_y);
+
+	int margin = 8; // a margin of water tiles around the edge of the map (no land within this number of tiles)
+	int depth = 42; // depth weighting for larger features (making this too large will destroy the illusion of natural terrain)
+
+	if (smallest_size < 7) {
+		margin = 2;
+		depth = 9;
+	} else if (smallest_size < 9) {
+		margin = 4;
+		depth = 21;
+	}
+
+	/* For the smallest maps by area further decrease the number of water tiles */
+	if (_settings_game.game_creation.map_x * _settings_game.game_creation.map_y <= 56) {
+		margin = 2;
+		depth = 4;
+	}
+
 	int y, x;
-	double max_x;
-	double max_y;
+	double max_y, max_x;
 
 	/* Lower to sea level */
 	for (y = 0; y <= _height_map.size_y; y++) {
 		if (water_borders.Test(BorderFlag::NorthEast)) {
 			/* Top right */
-			max_x = abs((perlin_coast_noise_2D(_height_map.size_y - y, y, 0.9, 53) + 0.25) * 5 + (perlin_coast_noise_2D(y, y, 0.35, 179) + 1) * 12);
-			max_x = std::max((smallest_size * smallest_size / 64) + max_x, (smallest_size * smallest_size / 64) + margin - max_x);
-			if (smallest_size < 8 && max_x > 5) max_x /= 1.5;
+			max_x = margin + abs((perlin_coast_noise_2D(_height_map.size_y - y, y, 0.9, 53) + 0.25) * 3 + (perlin_coast_noise_2D(y, y, 0.35, 179) + 1) * depth);
 			for (x = 0; x < max_x; x++) {
 				_height_map.height(x, y) = 0;
 			}
@@ -781,9 +789,7 @@ static void HeightMapCoastLines(BorderFlags water_borders)
 
 		if (water_borders.Test(BorderFlag::SouthWest)) {
 			/* Bottom left */
-			max_x = abs((perlin_coast_noise_2D(_height_map.size_y - y, y, 0.85, 101) + 0.3) * 6 + (perlin_coast_noise_2D(y, y, 0.45,  67) + 0.75) * 8);
-			max_x = std::max((smallest_size * smallest_size / 64) + max_x, (smallest_size * smallest_size / 64) + margin - max_x);
-			if (smallest_size < 8 && max_x > 5) max_x /= 1.5;
+			max_x = margin + abs((perlin_coast_noise_2D(_height_map.size_y - y, y, 0.85, 101) + 0.3) * 4 + (perlin_coast_noise_2D(y, y, 0.45, 67) + 0.75) * depth);
 			for (x = _height_map.size_x; x > (_height_map.size_x - 1 - max_x); x--) {
 				_height_map.height(x, y) = 0;
 			}
@@ -794,9 +800,7 @@ static void HeightMapCoastLines(BorderFlags water_borders)
 	for (x = 0; x <= _height_map.size_x; x++) {
 		if (water_borders.Test(BorderFlag::NorthWest)) {
 			/* Top left */
-			max_y = abs((perlin_coast_noise_2D(x, _height_map.size_y / 2, 0.9, 167) + 0.4) * 5 + (perlin_coast_noise_2D(x, _height_map.size_y / 3, 0.4, 211) + 0.7) * 9);
-			max_y = std::max((smallest_size * smallest_size / 64) + max_y, (smallest_size * smallest_size / 64) + margin - max_y);
-			if (smallest_size < 8 && max_y > 5) max_y /= 1.5;
+			max_y = margin + abs((perlin_coast_noise_2D(x, static_cast<double>(_height_map.size_y) / 2, 0.9, 167) + 0.4) * 3 + (perlin_coast_noise_2D(x, static_cast<double>(_height_map.size_y) / 3, 0.4, 211) + 0.7) * depth);
 			for (y = 0; y < max_y; y++) {
 				_height_map.height(x, y) = 0;
 			}
@@ -804,9 +808,7 @@ static void HeightMapCoastLines(BorderFlags water_borders)
 
 		if (water_borders.Test(BorderFlag::SouthEast)) {
 			/* Bottom right */
-			max_y = abs((perlin_coast_noise_2D(x, _height_map.size_y / 3, 0.85, 71) + 0.25) * 6 + (perlin_coast_noise_2D(x, _height_map.size_y / 3, 0.35, 193) + 0.75) * 12);
-			max_y = std::max((smallest_size * smallest_size / 64) + max_y, (smallest_size * smallest_size / 64) + margin - max_y);
-			if (smallest_size < 8 && max_y > 5) max_y /= 1.5;
+			max_y = margin + abs((perlin_coast_noise_2D(x, static_cast<double>(_height_map.size_y) / 3, 0.85, 71) + 0.25) * 4 + (perlin_coast_noise_2D(x, static_cast<double>(_height_map.size_y) / 3, 0.35, 193) + 0.75) * depth);
 			for (y = _height_map.size_y; y > (_height_map.size_y - 1 - max_y); y--) {
 				_height_map.height(x, y) = 0;
 			}
@@ -817,7 +819,7 @@ static void HeightMapCoastLines(BorderFlags water_borders)
 /** Start at given point, move in given direction, find and Smooth coast in that direction */
 static void HeightMapSmoothCoastInDirection(int org_x, int org_y, int dir_x, int dir_y)
 {
-	const int max_coast_dist_from_edge = 35;
+	const int max_coast_dist_from_edge = 100;
 	const int max_coast_smooth_depth = 35;
 
 	int x, y;
