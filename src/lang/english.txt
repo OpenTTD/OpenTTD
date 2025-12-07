@@ -2880,10 +2880,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Outer Suburbs
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Inner Suburbs
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Town centre
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Prevent upgrades
+STR_HOUSE_PICKER_PROTECT                                        :Prevent upgrades
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Choose whether this house will be protected from replacement as the town grows
-STR_HOUSE_PICKER_PROTECT_OFF                                    :Off
-STR_HOUSE_PICKER_PROTECT_ON                                     :On
+
+STR_HOUSE_PICKER_REPLACE                                        :Replace existing
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Choose whether to automatically remove an existing house on the tile where this house is placed
 
 STR_STATION_CLASS_DFLT                                          :Default
 STR_STATION_CLASS_DFLT_STATION                                  :Default station
