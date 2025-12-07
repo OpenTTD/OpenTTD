@@ -1727,8 +1727,8 @@ STR_CONFIG_SETTING_GAMEPAD_STICK_DISABLED                       :Disabled
 STR_CONFIG_SETTING_GAMEPAD_STICK_LEFT                           :Left stick
 STR_CONFIG_SETTING_GAMEPAD_STICK_RIGHT                          :Right stick
 
-STR_CONFIG_SETTING_GAMEPAD_DEADZONE                             :Gamepad deadzone: {STRING2}%
-STR_CONFIG_SETTING_GAMEPAD_DEADZONE_HELPTEXT                    :Minimum stick movement required before scrolling starts (0-100%)
+STR_CONFIG_SETTING_GAMEPAD_DEADZONE                             :Gamepad deadzone: {STRING2}
+STR_CONFIG_SETTING_GAMEPAD_DEADZONE_HELPTEXT                    :Minimum stick movement required before scrolling starts
 
 STR_CONFIG_SETTING_GAMEPAD_SENSITIVITY                          :Gamepad sensitivity: {STRING2}
 STR_CONFIG_SETTING_GAMEPAD_SENSITIVITY_HELPTEXT                 :Control the sensitivity of gamepad analog stick scrolling
