@@ -26,7 +26,6 @@
 #include "ai/ai_gui.hpp"
 #include "game/game_gui.hpp"
 #include "gfx_func.h"
-#include "core/geometry_func.hpp"
 #include "core/string_consumer.hpp"
 #include "language.h"
 #include "rev.h"

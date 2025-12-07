@@ -19,7 +19,6 @@
 #include "../fios.h"
 #include "../blitter/factory.hpp"
 #include "../company_func.h"
-#include "../core/random_func.hpp"
 #include "../saveload/saveload.h"
 #include "../thread.h"
 #include "../window_func.h"

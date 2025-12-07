@@ -11,7 +11,6 @@
 #define STATION_KDTREE_H
 
 #include "core/kdtree.hpp"
-#include "core/math_func.hpp"
 #include "station_base.h"
 #include "map_func.h"
 

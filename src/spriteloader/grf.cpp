@@ -13,9 +13,6 @@
 #include "../settings_type.h"
 #include "../strings_func.h"
 #include "../error.h"
-#include "../core/math_func.hpp"
-#include "../core/alloc_type.hpp"
-#include "../core/bitmath_func.hpp"
 #include "../spritecache.h"
 #include "grf.hpp"
 

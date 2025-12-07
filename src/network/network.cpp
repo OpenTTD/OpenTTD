@@ -9,7 +9,6 @@
 
 #include "../stdafx.h"
 
-#include "../core/string_consumer.hpp"
 #include "../strings_func.h"
 #include "../command_func.h"
 #include "../timer/timer_game_tick.h"

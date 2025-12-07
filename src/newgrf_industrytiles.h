@@ -12,7 +12,6 @@
 
 #include "newgrf_animation_type.h"
 #include "newgrf_industries.h"
-#include "core/random_func.hpp"
 
 /** Resolver for the industry tiles scope. */
 struct IndustryTileScopeResolver : public ScopeResolver {

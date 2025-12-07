@@ -13,7 +13,6 @@
 #include "../blitter/factory.hpp"
 #include "../thread.h"
 #include "../progress.h"
-#include "../core/random_func.hpp"
 #include "../core/math_func.hpp"
 #include "../core/geometry_func.hpp"
 #include "../core/utf8.hpp"

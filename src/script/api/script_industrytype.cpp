@@ -15,7 +15,6 @@
 #include "../../strings_func.h"
 #include "../../industry.h"
 #include "../../newgrf_industries.h"
-#include "../../core/random_func.hpp"
 #include "../../industry_cmd.h"
 
 #include "../../safeguards.h"

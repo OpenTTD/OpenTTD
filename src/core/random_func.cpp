@@ -9,7 +9,6 @@
 
 #include "../stdafx.h"
 #include "random_func.hpp"
-#include "bitmath_func.hpp"
 #include "../debug.h"
 
 #ifdef RANDOM_DEBUG

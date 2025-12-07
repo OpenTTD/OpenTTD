@@ -8,7 +8,6 @@
 /** @file makeindexed.cpp Implementation for converting sprites from another source from 32bpp RGBA to indexed 8bpp. */
 
 #include "../stdafx.h"
-#include "../core/bitmath_func.hpp"
 #include "../core/math_func.hpp"
 #include "../gfx_func.h"
 #include "../palette_func.h"

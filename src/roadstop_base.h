@@ -12,7 +12,6 @@
 
 #include "station_type.h"
 #include "core/pool_type.hpp"
-#include "core/bitmath_func.hpp"
 #include "vehicle_type.h"
 
 using RoadStopPool = Pool<RoadStop, RoadStopID, 32>;

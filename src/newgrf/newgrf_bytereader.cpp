@@ -8,7 +8,6 @@
 /** @file newgrf_bytereader.cpp NewGRF byte buffer reader implementation. */
 
 #include "../stdafx.h"
-#include "../core/backup_type.hpp"
 #include "../string_func.h"
 #include "newgrf_bytereader.h"
 

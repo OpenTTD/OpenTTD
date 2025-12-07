@@ -11,7 +11,6 @@
 
 #include "../../stdafx.h"
 #include "network_game_info.h"
-#include "../../core/bitmath_func.hpp"
 #include "../../company_base.h"
 #include "../../timer/timer_game_calendar.h"
 #include "../../timer/timer_game_tick.h"

@@ -9,7 +9,6 @@
 
 #include "../stdafx.h"
 #include "../settings_type.h"
-#include "../core/random_func.hpp"
 #include "script_info.hpp"
 #include "api/script_object.hpp"
 #include "../textfile_gui.h"

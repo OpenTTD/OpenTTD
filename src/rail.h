@@ -13,7 +13,6 @@
 #include "rail_type.h"
 #include "track_type.h"
 #include "gfx_type.h"
-#include "core/bitmath_func.hpp"
 #include "core/enum_type.hpp"
 #include "core/flatset_type.hpp"
 #include "economy_func.h"
