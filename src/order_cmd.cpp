@@ -212,7 +212,7 @@ uint16_t Order::MapOldOrder() const
  */
 void InvalidateVehicleOrder(const Vehicle *v, int data)
 {
-	SetWindowDirty(WC_VEHICLE_VIEW, v->index);
+	InvalidateWindowData(WC_VEHICLE_VIEW, v->index);
 
 	if (data != 0) {
 		/* Calls SetDirty() too */
@@ -1761,7 +1761,7 @@ void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination, bool 
 		if ((v->type == VEH_AIRCRAFT && v->current_order.IsType(OT_GOTO_DEPOT) && !hangar ? OT_GOTO_STATION : v->current_order.GetType()) == type &&
 				(!hangar || v->type == VEH_AIRCRAFT) && v->current_order.GetDestination() == destination) {
 			v->current_order.MakeDummy();
-			SetWindowDirty(WC_VEHICLE_VIEW, v->index);
+			InvalidateWindowData(WC_VEHICLE_VIEW, v->index);
 		}
 
 		if (v->orders == nullptr) continue;

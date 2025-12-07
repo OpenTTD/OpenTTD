@@ -3081,9 +3081,8 @@ public:
 		}
 	}
 
-	void OnPaint() override
+	void UpdateButtons(const Vehicle *v)
 	{
-		const Vehicle *v = Vehicle::Get(this->window_number);
 		bool is_localcompany = v->owner == _local_company;
 		bool refittable_and_stopped_in_depot = IsVehicleRefittable(v);
 
@@ -3102,6 +3101,11 @@ public:
 		}
 
 		this->SetWidgetDisabledState(WID_VV_ORDER_LOCATION, v->current_order.GetLocation(v) == INVALID_TILE);
+	}
+
+	void OnPaint() override
+	{
+		const Vehicle *v = Vehicle::Get(this->window_number);
 
 		const Window *mainwindow = GetMainWindow();
 		if (mainwindow->viewport->follow_vehicle == v->index) {
@@ -3363,7 +3367,6 @@ public:
 		NWidgetStacked *nwi = this->GetWidget<NWidgetStacked>(WID_VV_SELECT_DEPOT_CLONE); // Selection widget 'send to depot' / 'clone'.
 		if (nwi->shown_plane + SEL_DC_BASEPLANE != plane) {
 			this->SelectPlane(plane);
-			this->SetWidgetDirty(WID_VV_SELECT_DEPOT_CLONE);
 		}
 		/* The same system applies to widget WID_VV_REFIT_VEH and VVW_WIDGET_TURN_AROUND.*/
 		if (v->IsGroundVehicle()) {
@@ -3371,9 +3374,11 @@ public:
 			nwi = this->GetWidget<NWidgetStacked>(WID_VV_SELECT_REFIT_TURN);
 			if (nwi->shown_plane + SEL_RT_BASEPLANE != plane) {
 				this->SelectPlane(plane);
-				this->SetWidgetDirty(WID_VV_SELECT_REFIT_TURN);
 			}
 		}
+
+		this->UpdateButtons(v);
+		this->SetDirty();
 	}
 
 	/**
