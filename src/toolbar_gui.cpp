@@ -146,10 +146,11 @@ static void PopupMainToolbarMenu(Window *w, WidgetID widget, const std::initiali
 	PopupMainToolbarMenu(w, widget, std::move(list), 0);
 }
 
-/** Enum for the Company Toolbar's network related buttons */
-static const int CTMN_CLIENT_LIST = -1; ///< Show the client list
-static const int CTMN_SPECTATE    = -2; ///< Become spectator
-static const int CTMN_SPECTATOR   = -3; ///< Show a company window as spectator
+/* Special values used in the dropdowns related to companies.
+ * They cannot interfere with valid IDs for companies. */
+static const int CTMN_CLIENT_LIST = MAX_COMPANIES; ///< Indicates the "all connected players" entry.
+static const int CTMN_SPECTATE = COMPANY_SPECTATOR.base(); ///< Indicates the "become spectator" entry.
+static const int CTMN_SPECTATOR = CompanyID::Invalid().base(); ///< Indicates that a window is being opened for the spectator.
 
 /**
  * Pop up a generic company list menu.
@@ -619,7 +620,7 @@ static CallBackFunction ToolbarStoryClick(Window *w)
  */
 static CallBackFunction MenuClickStory(int index)
 {
-	ShowStoryBook(index == CTMN_SPECTATOR ? CompanyID::Invalid() : (CompanyID)index);
+	ShowStoryBook(CompanyID(index));
 	return CBF_NONE;
 }
 
@@ -639,7 +640,7 @@ static CallBackFunction ToolbarGoalClick(Window *w)
  */
 static CallBackFunction MenuClickGoal(int index)
 {
-	ShowGoalsList(index == CTMN_SPECTATOR ? CompanyID::Invalid() : (CompanyID)index);
+	ShowGoalsList(CompanyID(index));
 	return CBF_NONE;
 }
 
