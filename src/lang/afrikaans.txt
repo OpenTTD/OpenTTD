@@ -2383,6 +2383,7 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bou 'n s
 
 
 
+
 STR_STATION_CLASS_DFLT                                          :Verstek stasie
 STR_STATION_CLASS_WAYP                                          :Roetebakens
 

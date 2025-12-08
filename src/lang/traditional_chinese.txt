@@ -2878,10 +2878,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :遠郊
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :近郊
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :市鎮中心
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :防止升級
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :選擇是否要保護房屋以免房屋隨著市鎮的發展而被替換
-STR_HOUSE_PICKER_PROTECT_OFF                                    :關閉
-STR_HOUSE_PICKER_PROTECT_ON                                     :開啟
+
 
 STR_STATION_CLASS_DFLT                                          :預設
 STR_STATION_CLASS_DFLT_STATION                                  :預設車站

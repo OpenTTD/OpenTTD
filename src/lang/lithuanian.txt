@@ -2935,6 +2935,7 @@ STR_PICKER_MODE_ALL                                             :Visi
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Kraštas
 
 
+
 STR_STATION_CLASS_DFLT                                          :Numatytoji
 STR_STATION_CLASS_DFLT_STATION                                  :Numatytoji stotelė
 STR_STATION_CLASS_DFLT_ROADSTOP                                 :Numatytoji kelio stotelė

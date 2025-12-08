@@ -2912,6 +2912,7 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Gradnja 
 
 
 
+
 STR_STATION_CLASS_DFLT                                          :Podrazumevana stanica
 STR_STATION_CLASS_WAYP                                          :Putanje
 

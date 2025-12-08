@@ -2942,10 +2942,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Külső kertvá
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Belső kertváros
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Városközpont
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Frissítések megelőzése
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Válaszd ki, hogy a város növekedésével ez a ház védve legyen-e a cserétől
-STR_HOUSE_PICKER_PROTECT_OFF                                    :Ki
-STR_HOUSE_PICKER_PROTECT_ON                                     :Be
+
 
 STR_STATION_CLASS_DFLT                                          :Alapértelmezett
 STR_STATION_CLASS_DFLT_STATION                                  :Alapértelmezett állomás

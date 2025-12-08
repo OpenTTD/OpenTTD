@@ -2877,10 +2877,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Buitenste voors
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Binnenste voorsteden
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Stadscentrum
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Opwaarderen voorkomen
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Kies of dit huis wordt beschermd tegen vervangen als de stad groeit
-STR_HOUSE_PICKER_PROTECT_OFF                                    :Uit
-STR_HOUSE_PICKER_PROTECT_ON                                     :Aan
+
 
 STR_STATION_CLASS_DFLT                                          :Standaard
 STR_STATION_CLASS_DFLT_STATION                                  :Standaard station

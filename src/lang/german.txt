@@ -2879,10 +2879,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Äußere Vorort
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Innere Vororte
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Stadtmitte
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Aufwertungen verhindern
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Auswählen, ob dieses Haus vor dem Ersetzen geschützt wird, wenn die Stadt wächst.
-STR_HOUSE_PICKER_PROTECT_OFF                                    :Aus
-STR_HOUSE_PICKER_PROTECT_ON                                     :An
+
 
 STR_STATION_CLASS_DFLT                                          :Standard
 STR_STATION_CLASS_DFLT_STATION                                  :Standart-Haltestelle

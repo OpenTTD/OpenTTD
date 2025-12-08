@@ -2875,10 +2875,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Phía ngoài ng
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Phía trong ngoại ô
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Nội thành
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Ngăn chặn nâng cấp
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Chọn nếu ngôi nhà này có được bảo vệ khỏi việc bị thay thế hay không khi thị trấn phát triển
-STR_HOUSE_PICKER_PROTECT_OFF                                    :Tắt
-STR_HOUSE_PICKER_PROTECT_ON                                     :Bật
+
 
 STR_STATION_CLASS_DFLT                                          :Mặc định
 STR_STATION_CLASS_DFLT_STATION                                  :Trạm mặc định
