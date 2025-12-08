@@ -3001,6 +3001,59 @@ CommandCost CmdPlaceHouse(DoCommandFlags flags, TileIndex tile, HouseID house, b
 }
 
 /**
+ * Construct multiple houses in an area
+ * @param flags Type of operation.
+ * @param tile End tile of area dragging.
+ * @param start_tile Start tile of area dragging.
+ * @param HouseID The HouseID of the house spec.
+ * @param is_protected Whether the house is protected from the town upgrading it.
+ * @param replace Whether we can replace existing houses.
+ * @param diagonal Whether to use the Diagonal or Orthogonal tile iterator.
+ * @return Empty cost or an error.
+ */
+CommandCost CmdPlaceHouseArea(DoCommandFlags flags, TileIndex tile, TileIndex start_tile, HouseID house, bool is_protected, bool replace, bool diagonal)
+{
+	if (start_tile >= Map::Size()) return CMD_ERROR;
+
+	if (_game_mode != GM_EDITOR && _settings_game.economy.place_houses == PH_FORBIDDEN) return CMD_ERROR;
+
+	if (Town::GetNumItems() == 0) return CommandCost(STR_ERROR_MUST_FOUND_TOWN_FIRST);
+
+	if (static_cast<size_t>(house) >= HouseSpec::Specs().size()) return CMD_ERROR;
+	const HouseSpec *hs = HouseSpec::Get(house);
+	if (!hs->enabled) return CMD_ERROR;
+
+	/* Only allow placing an area of 1x1 houses. */
+	if (!hs->building_flags.Test(BuildingFlag::Size1x1)) return CMD_ERROR;
+
+	/* Use the built object limit to rate limit house placement. */
+	const Company *c = Company::GetIfValid(_current_company);
+	int limit = (c == nullptr ? INT32_MAX : GB(c->build_object_limit, 16, 16));
+
+	CommandCost last_error = CMD_ERROR;
+	bool had_success = false;
+
+	std::unique_ptr<TileIterator> iter = TileIterator::Create(tile, start_tile, diagonal);
+	for (; *iter != INVALID_TILE; ++(*iter)) {
+		TileIndex t = *iter;
+		CommandCost ret = Command<CMD_PLACE_HOUSE>::Do(DoCommandFlags{flags}.Reset(DoCommandFlag::Execute), t, house, is_protected, replace);
+
+		/* If we've reached the limit, stop building (or testing). */
+		if (c != nullptr && limit-- <= 0) break;
+
+		if (ret.Failed()) {
+			last_error = std::move(ret);
+			continue;
+		}
+
+		if (flags.Test(DoCommandFlag::Execute)) Command<CMD_PLACE_HOUSE>::Do(flags, t, house, is_protected, replace);
+		had_success = true;
+	}
+
+	return had_success ? CommandCost{} : last_error;
+}
+
+/**
  * Update data structures when a house is removed
  * @param tile  Tile of the house
  * @param t     Town owning the house
