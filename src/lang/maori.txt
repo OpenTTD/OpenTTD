@@ -2877,10 +2877,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Paenoho Waho
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Paenoho Roto
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Pokapū Tāone
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Āraia ngā whakamohoa
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Kōwhiria mehemea ka tiakina tēnei whare kei whakakapi ina tupu ake te tāone
-STR_HOUSE_PICKER_PROTECT_OFF                                    :Poko
-STR_HOUSE_PICKER_PROTECT_ON                                     :Kā
+
 
 STR_STATION_CLASS_DFLT                                          :Taunoa
 STR_STATION_CLASS_DFLT_STATION                                  :Teihana taunoa

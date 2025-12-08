@@ -2742,6 +2742,7 @@ STR_HOUSE_PICKER_CLASS_ZONE2                                    :Periferioj
 STR_HOUSE_PICKER_CLASS_ZONE3                                    :Eksteraj Antaŭurboj
 
 
+
 STR_STATION_CLASS_DFLT                                          :Defaŭlta
 STR_STATION_CLASS_DFLT_STATION                                  :Defaŭlta stacio
 STR_STATION_CLASS_DFLT_ROADSTOP                                 :Defaŭlta vojhaltejo

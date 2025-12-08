@@ -2849,6 +2849,7 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Zvoľ veľkosť
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Okraj
 
 
+
 STR_STATION_CLASS_DFLT                                          :Pôvodná
 STR_STATION_CLASS_DFLT_STATION                                  :Predvolená stanica
 STR_STATION_CLASS_DFLT_ROADSTOP                                 :Predvolená zastávka

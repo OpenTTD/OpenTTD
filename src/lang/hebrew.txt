@@ -2549,6 +2549,7 @@ STR_PICKER_MODE_SAVED_TOOLTIP                                   :החלף הצג
 
 
 
+
 STR_STATION_CLASS_DFLT                                          :ברירת מחדל
 STR_STATION_CLASS_DFLT_STATION                                  :תחנת ברירת מחדל
 STR_STATION_CLASS_DFLT_ROADSTOP                                 :תחנת ברירת מחדל

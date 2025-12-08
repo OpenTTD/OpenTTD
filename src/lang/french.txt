@@ -2878,10 +2878,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Banlieue extér
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Banlieue intérieure
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centre-ville
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Empêcher les améliorations
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Définit si cette maison sera protégée contre son remplacement lors de la croissance de la ville
-STR_HOUSE_PICKER_PROTECT_OFF                                    :Désactivé
-STR_HOUSE_PICKER_PROTECT_ON                                     :Activé
+
 
 STR_STATION_CLASS_DFLT                                          :Par défaut
 STR_STATION_CLASS_DFLT_STATION                                  :Stations par défaut

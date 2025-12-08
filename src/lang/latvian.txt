@@ -2879,10 +2879,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Ārējās priek
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Iekšējās priekšpilsētas
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Pilsētas centrs
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Novērst uzlabojumus
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Izvēlieties, vai šī māja tiks aizsargāta pret nomaiņu, pilsētai augot
-STR_HOUSE_PICKER_PROTECT_OFF                                    :Izslēgts
-STR_HOUSE_PICKER_PROTECT_ON                                     :Ieslēgts
+
 
 STR_STATION_CLASS_DFLT                                          :Noklusējuma
 STR_STATION_CLASS_DFLT_STATION                                  :Noklusējuma stacija

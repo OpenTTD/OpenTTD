@@ -2878,10 +2878,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Yttrerförorter
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Innerförorter
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Stadskärnan
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Förhindra uppgraderingar
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Välj huruvida detta hus ska skyddas från att ersättas i samband med att staden växer
-STR_HOUSE_PICKER_PROTECT_OFF                                    :Av
-STR_HOUSE_PICKER_PROTECT_ON                                     :På
+
 
 STR_STATION_CLASS_DFLT                                          :Original
 STR_STATION_CLASS_DFLT_STATION                                  :Standardstation

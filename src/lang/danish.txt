@@ -2875,10 +2875,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Ydre Forstæder
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Indre Forstæder
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Bymidte
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Forhindre opgraderinger
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Vælg om dette hus skal beskyttes mod udskiftning i takt med at byen vokser
-STR_HOUSE_PICKER_PROTECT_OFF                                    :Slukket
-STR_HOUSE_PICKER_PROTECT_ON                                     :tændt
+
 
 STR_STATION_CLASS_DFLT                                          :Standard station
 STR_STATION_CLASS_DFLT_STATION                                  :Standard station

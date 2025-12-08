@@ -2263,6 +2263,7 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Geltokia
 
 
 
+
 STR_STATION_CLASS_DFLT                                          :Geltoki lehenetsia
 STR_STATION_CLASS_WAYP                                          :Bidepuntuak
 

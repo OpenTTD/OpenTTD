@@ -1091,6 +1091,8 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Marque esta cai
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Usar a fonte fixa tradicional
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Marque esta caixa se preferir usar o tipo de fonte tradicional de tamanho fixo
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT                               :Usar fonte padrão
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP                       :Marque esta opção para usar a fonte padrão em vez das fontes alternativas encontradas no sistema
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Fontes com contornos suaves
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Marque esta caixa para usar fontes redimensionáveis com contornos suaves
 
@@ -2879,10 +2881,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Periferia Dista
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Periferia Próxima
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centro da cidade
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Não permitir atualizações
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Escolher se essa casa será protegida contra substituição quando a cidade crescer
-STR_HOUSE_PICKER_PROTECT_OFF                                    :Desativado
-STR_HOUSE_PICKER_PROTECT_ON                                     :Ativado
+
 
 STR_STATION_CLASS_DFLT                                          :Padrão
 STR_STATION_CLASS_DFLT_STATION                                  :Estação padrão

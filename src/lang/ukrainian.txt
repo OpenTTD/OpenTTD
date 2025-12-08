@@ -2986,10 +2986,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Передмі�
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Щільне передмістя
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Центр міста
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Захист від оновлень
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Укажіть, чи буде захищено цю будівлю від змін у разі зростання міста
-STR_HOUSE_PICKER_PROTECT_OFF                                    :вимкнено
-STR_HOUSE_PICKER_PROTECT_ON                                     :увімкнено
+
 
 STR_STATION_CLASS_DFLT                                          :Звичайна
 STR_STATION_CLASS_DFLT_STATION                                  :Звичайна станція
