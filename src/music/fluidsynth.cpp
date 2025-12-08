@@ -11,6 +11,7 @@
 
 #include "fluidsynth.h"
 
+#include <filesystem>
 #include <fluidsynth.h>
 #include <mutex>
 
@@ -31,7 +32,7 @@ static struct {
 static FMusicDriver_FluidSynth iFMusicDriver_FluidSynth;
 
 /** List of sound fonts to try by default. */
-static const char *default_sf[] = {
+static const char *_default_soundfonts[] = {
 	/* FluidSynth preferred */
 	/* See: https://www.fluidsynth.org/api/settings_synth.html#settings_synth_default-soundfont */
 	"/usr/share/soundfonts/default.sf2",
@@ -49,8 +50,6 @@ static const char *default_sf[] = {
 	/* Debian/Ubuntu/OpenSUSE alternatives */
 	"/usr/share/sounds/sf2/TimGM6mb.sf2",
 	"/usr/share/sounds/sf2/FluidR3_GS.sf2",
-
-	nullptr
 };
 
 static void RenderMusicStream(int16_t *buffer, size_t samples)
@@ -99,9 +98,9 @@ std::optional<std::string_view> MusicDriver_FluidSynth::Start(const StringList &
 
 		/* If no default soundfont found, try our own list. */
 		if (sfont_id == FLUID_FAILED) {
-			for (int i = 0; default_sf[i]; i++) {
-				if (!fluid_is_soundfont(default_sf[i])) continue;
-				sfont_id = fluid_synth_sfload(_midi.synth, default_sf[i], 1);
+			for (const char *soundfont : _default_soundfonts) {
+				if (!std::filesystem::exists(soundfont) || !fluid_is_soundfont(soundfont)) continue;
+				sfont_id = fluid_synth_sfload(_midi.synth, soundfont, 1);
 				if (sfont_id != FLUID_FAILED) break;
 			}
 		}
