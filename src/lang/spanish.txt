@@ -2847,10 +2847,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Suburbios exter
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Suburbios interiores
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centro urbano
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Evitar mejoras
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Selecciona si esta casa estará protegida de reemplazos cuando el municipio crezca
-STR_HOUSE_PICKER_PROTECT_OFF                                    :No
-STR_HOUSE_PICKER_PROTECT_ON                                     :Sí
+
 
 STR_STATION_CLASS_DFLT                                          :Por defecto
 STR_STATION_CLASS_DFLT_STATION                                  :Estación por defecto

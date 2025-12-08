@@ -2803,6 +2803,7 @@ STR_HOUSE_PICKER_CLASS_ZONE4                                    :İç banliyöle
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Şehir merkezi
 
 
+
 STR_STATION_CLASS_DFLT                                          :Varsayılan
 STR_STATION_CLASS_DFLT_STATION                                  :Varsayılan istasyon
 STR_STATION_CLASS_DFLT_ROADSTOP                                 :Varsayılan yol durağı

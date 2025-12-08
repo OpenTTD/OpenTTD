@@ -2288,10 +2288,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :الضواحي 
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :الضواحي الداخلية
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :مركز المدينة
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :منع الترقيات
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :اختر ما اذا كان هذا المنزل محمي من الاستبدال مع نمو المدينة
-STR_HOUSE_PICKER_PROTECT_OFF                                    :ايقاف
-STR_HOUSE_PICKER_PROTECT_ON                                     :تفعيل
+
 
 STR_STATION_CLASS_DFLT                                          :المحطة القياسية
 STR_STATION_CLASS_WAYP                                          :نقطة عبور

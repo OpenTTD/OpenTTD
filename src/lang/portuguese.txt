@@ -1087,10 +1087,12 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Detetar automat
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Marque esta opção para detetar automaticamente o tamanho do interface
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Escalar rebordos
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Marque esta opção para dimensionar os chanfros por tamanho de interface
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Marque esta opção para dimensionar os rebordos das janelas em relação ao tamanho da interface
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Usar o tipo de letra com gráficos tradicionais
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Marque esta opção se prefere usar o tipo de letra tradicional de tamanho fixo
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT                               :Preferir tipo de letra padrão
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP                       :Marque esta opção se prefere usar o tipo de letra padrão em vez os tipos de letra alternativos encontrados no seu sistema.
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Tipos de letra com contornos suaves
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Marque esta opção para tipos de letra redimensionáveis com contornos suaves
 
@@ -2254,7 +2256,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Selecion
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Abrir opções de jogo
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Abrir tabela de classificações
-STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Obter acesso a documentação e recursos online
+STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Aceder a documentação e outros recursos online
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Verificar conteúdo novo e atualizado para descarga
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Sair de 'OpenTTD'
 
@@ -2676,9 +2678,9 @@ STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Clique n
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Selecionar tudo
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Marcar todo o conteúdo para ser descarregado
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Sel. atualizações
-STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marcar todo o conteúdo que seja atualização ao conteúdo existente a ser descarregado
+STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marcar para descarregar todo o conteúdo que seja uma atualização ao conteúdo já presente no seu sistema
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Desselecionar tudo
-STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Marcar todo o conteúdo que não deva ser descarregado
+STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Desmarcar todo o conteúdo selecionado
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Pesquisar em páginas externas
 STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Escolher conteúdo não disponível no serviço de conteúdo do OpenTTD em páginas não associadas ao OpenTTD
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Está a sair do OpenTTD!
@@ -2879,10 +2881,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Subúrbios Peri
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Subúrbios Centrais
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centro da localidade
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Impedir atualizações
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Escolha se esta casa será protegida contra a substituição à medida que localidade cresce
-STR_HOUSE_PICKER_PROTECT_OFF                                    :Desativado
-STR_HOUSE_PICKER_PROTECT_ON                                     :Ativado
+
 
 STR_STATION_CLASS_DFLT                                          :Padrão
 STR_STATION_CLASS_DFLT_STATION                                  :Estação padrão
@@ -4950,13 +4950,13 @@ STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
 STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Recuar no histórico de navegação
 STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Avançar no histórico de navegação
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Envolver o texto
-STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Envolve o texto da janela de forma que não é necessário deslizar listagem
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Envolve o texto da janela de forma em que não seja necessário deslizar o conteúdo na horizontal
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Leia-me
-STR_TEXTFILE_VIEW_README_TOOLTIP                                :Ver 'Leia-me' para este conteúdo
+STR_TEXTFILE_VIEW_README_TOOLTIP                                :Ver 'Leia-me' deste conteúdo
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Lista de alterações
-STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :Ver o registo de alterações para este conteúdo
+STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :Ver o registo de alterações deste conteúdo
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licença
-STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Ver a licença para este conteúdo
+STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Ver a licença deste conteúdo
 ###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Leiame {STRING} de {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Lista de alterações {STRING} de {STRING}

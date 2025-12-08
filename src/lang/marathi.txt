@@ -1198,6 +1198,7 @@ STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 
 
+
 # Signal window
 
 # Bridge selection window
