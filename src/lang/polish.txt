@@ -1470,6 +1470,8 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Zaznacz to pole
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Użyj tradycyjnego fonta typu sprite
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Zaznacz to pole, jeśli wolisz używać tradycyjnego fonta typu sprite o stałym rozmiarze
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT                               :Preferuj font domyślny
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP                       :Zaznacz to pole, jeśli wolisz używać fontu domyślnego zamiast wykrytych fontów zastępczych
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Wygładzanie fontów
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Zaznacz to pole, aby wygładzać fonty o zmiennym rozmiarze
 
@@ -3258,10 +3260,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Przedmieścia z
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Przedmieścia wewnętrzne
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centrum miasta
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Zapobieganie modernizacji
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Określ, czy ten budynek ma być chroniony przed zastąpieniem w miarę rozwoju miasta
-STR_HOUSE_PICKER_PROTECT_OFF                                    :Wył.
-STR_HOUSE_PICKER_PROTECT_ON                                     :Wł.
+
 
 STR_STATION_CLASS_DFLT                                          :Standardowa
 STR_STATION_CLASS_DFLT_STATION                                  :Standardowa stacja

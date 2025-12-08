@@ -2879,10 +2879,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Suburbios da pe
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Suburbios interiores
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centro da vila
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Evitar melloras
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Escolle se esta casa estará protexida do remprazo a medida que a vila medra
-STR_HOUSE_PICKER_PROTECT_OFF                                    :Desactivado
-STR_HOUSE_PICKER_PROTECT_ON                                     :Activado
+
 
 STR_STATION_CLASS_DFLT                                          :Por defecto
 STR_STATION_CLASS_DFLT_STATION                                  :Estación por defecto

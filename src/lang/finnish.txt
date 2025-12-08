@@ -1090,6 +1090,8 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Valitse tämä 
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Käytä perinteistä sprite-fonttia
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Valitse tämä ruutu käyttääksesi perinteistä kiinteäkokoista sprite-kirjasintyyppiä
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT                               :Suosi oletusfonttia
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP                       :Valitse tämä ruutu, jos haluat käyttää oletuskirjaintyyppiä löydettyjen varafonttien sijaan
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Pehmennä kirjasinten reunoja
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Valitse tämä ruutu pehmentääksesi muuttuvan kokoisten fonttien reunoja
 
@@ -2878,10 +2880,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Ulommat lähiö
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Sisemmät lähiöt
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Keskusta
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Estä uudistaminen
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Valitse, suojataanko tämä talo korvaamiselta kunnan kasvaessa
-STR_HOUSE_PICKER_PROTECT_OFF                                    :Ei
-STR_HOUSE_PICKER_PROTECT_ON                                     :Kyllä
+
 
 STR_STATION_CLASS_DFLT                                          :Oletus
 STR_STATION_CLASS_DFLT_STATION                                  :Oletusasema

@@ -1067,6 +1067,7 @@ STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Вер�
 
 
 
+
 # Signal window
 
 # Bridge selection window

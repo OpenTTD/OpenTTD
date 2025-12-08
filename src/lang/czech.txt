@@ -2916,10 +2916,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Vnější před
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Vnitní předměstí
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centrum města
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Zabránit vylepšování
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Vyber, zdali bude tento dům chráněn před nahrazením, jak se bude město rozrůstat
-STR_HOUSE_PICKER_PROTECT_OFF                                    :Vypnuto
-STR_HOUSE_PICKER_PROTECT_ON                                     :Zapnuto
+
 
 STR_STATION_CLASS_DFLT                                          :Původní
 STR_STATION_CLASS_DFLT_STATION                                  :Původní stanice

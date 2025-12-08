@@ -2833,10 +2833,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Suburbiile peri
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Suburbiile urbane
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centrul orașului
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Preveniți upgrade-urile
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Alege dacă această casă va fi protejată împotriva înlocuirii pe măsură ce orașul crește
-STR_HOUSE_PICKER_PROTECT_OFF                                    :Oprit
-STR_HOUSE_PICKER_PROTECT_ON                                     :Pornit
+
 
 STR_STATION_CLASS_DFLT                                          :Implicită
 STR_STATION_CLASS_DFLT_STATION                                  :Stație implicită

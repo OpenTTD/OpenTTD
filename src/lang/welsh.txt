@@ -2863,10 +2863,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Maestrefi Allan
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Maestrefi Mewnol
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Canol y ddinas
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Atal uwchraddiadau
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Dewis a fydd y tŷ yma'n cael ei amddiffyn rhag disodli wrth i'r dref tyfu
-STR_HOUSE_PICKER_PROTECT_OFF                                    :I ffwrdd
-STR_HOUSE_PICKER_PROTECT_ON                                     :Ymlaen
+
 
 STR_STATION_CLASS_DFLT                                          :Rhagosodiad
 STR_STATION_CLASS_DFLT_STATION                                  :Gorsaf rhagosodedig

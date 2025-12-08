@@ -2871,10 +2871,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Suburbios exter
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Suburbios interiores
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centro
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Prevenir mejoras
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Optar por que el edificio no sea reemplazado cuando el pueblo crezca
-STR_HOUSE_PICKER_PROTECT_OFF                                    :No
-STR_HOUSE_PICKER_PROTECT_ON                                     :Sí
+
 
 STR_STATION_CLASS_DFLT                                          :por defecto
 STR_STATION_CLASS_DFLT_STATION                                  :Estación por defecto

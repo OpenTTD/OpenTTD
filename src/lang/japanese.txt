@@ -2657,6 +2657,7 @@ STR_PICKER_MODE_ALL                                             :すべて
 
 
 
+
 STR_STATION_CLASS_DFLT                                          :標準駅
 STR_STATION_CLASS_WAYP                                          :中継駅
 

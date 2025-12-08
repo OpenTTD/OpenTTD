@@ -2309,10 +2309,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :حومه‌ها
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :حومه‌های داخلی
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :مرکز شهر
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :جلوگیری از ارتقا
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :انتخاب کنید که آیا این خانه با رشد شهر از جایگزینی در امان خواهد بود یا خیر
-STR_HOUSE_PICKER_PROTECT_OFF                                    :خاموش
-STR_HOUSE_PICKER_PROTECT_ON                                     :روشن
+
 
 STR_STATION_CLASS_DFLT                                          :ایستگاه پیش فرض
 STR_STATION_CLASS_WAYP                                          :نقطه مسیر ها

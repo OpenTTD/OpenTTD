@@ -2823,6 +2823,7 @@ STR_HOUSE_PICKER_CLASS_ZONE4                                    :Вътрешн�
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Градски център
 
 
+
 STR_STATION_CLASS_DFLT                                          :Станция по подразбиране
 STR_STATION_CLASS_DFLT_STATION                                  :Товарна станция по подразбиране
 STR_STATION_CLASS_DFLT_ROADSTOP                                 :Спирка по подразбиране
