@@ -2973,8 +2973,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Εξωτερι�
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Εσωτερικά Προάστια
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Κέντρο της πόλης
 
+STR_HOUSE_PICKER_PROTECT                                        :Αποτροπή αναβαθμίσεων
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Επιλέξτε αν αυτό το σπίτι θα προστατεύεται από αντικατάσταση καθώς η πόλη μεγαλώνει
 
+STR_HOUSE_PICKER_REPLACE                                        :Αντικατάσταση υπάρχοντος
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Επιλέξτε εάν θα αφαιρεθεί αυτόματα ένα υπάρχον σπίτι στο πλακίδιο όπου τοποθετείται αυτό το σπίτι
 
 STR_STATION_CLASS_DFLT                                          :Προεπιλεγμένος
 STR_STATION_CLASS_DFLT_STATION                                  :Προεπιλεγμένος σταθμός

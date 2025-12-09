@@ -1090,6 +1090,8 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Kryssa i den h�
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Använd traditionellt sprite-typsnitt
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Kryssa i den här rutan om du föredrar att använda det traditionella sprite-typsnittet med fast storlek
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT                               :Prioritera standardteckensnitt
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP                       :Kryssa i den här rutan om du föredrar att använda standardtypsnittet istället för dom upptäckta
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Anti-alias-typsnitt
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Kryssa i den här rutan för anti-aliasing av typsnitt med justerbar storlek
 
@@ -2878,8 +2880,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Yttrerförorter
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Innerförorter
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Stadskärnan
 
+STR_HOUSE_PICKER_PROTECT                                        :Hindra uppgraderingar
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Välj huruvida detta hus ska skyddas från att ersättas i samband med att staden växer
 
+STR_HOUSE_PICKER_REPLACE                                        :Ersätt befintlig
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Välj om befintliga hus automatiskt ska tas bort när denna byggnad placeras
 
 STR_STATION_CLASS_DFLT                                          :Original
 STR_STATION_CLASS_DFLT_STATION                                  :Standardstation

@@ -218,31 +218,31 @@ STR_UNITS_VELOCITY_GAMEUNITS_DAY                                :{DECIMAL}{NBSP}
 STR_UNITS_VELOCITY_GAMEUNITS_SEC                                :{DECIMAL}{NBSP}mosaicos/seg
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}nó{P 0 "" s}
 
-STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}cv
-STR_UNITS_POWER_METRIC                                          :{DECIMAL}cv
+STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}hp
+STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}cv
 STR_UNITS_POWER_SI                                              :{DECIMAL}kW
 
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}{NBSP}hp/t
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}hp/t
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI                           :{DECIMAL}{NBSP}hp/Mg
-STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}hp/t
-STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}hp/t
-STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}hp/Mg
+STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}cv/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}cv/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}cv/Mg
 STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}kW/t
 STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}{NBSP}kW/t
 STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}W/kg
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{DECIMAL}t
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL}t
-STR_UNITS_WEIGHT_SHORT_SI                                       :{DECIMAL}kg
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{DECIMAL}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{DECIMAL}{NBSP}kg
 
 STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{DECIMAL}{NBSP}ton{P "" s}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL}{NBSP}tonelada{P "" s}
 STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL}{NBSP}kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{DECIMAL}gal
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{DECIMAL}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{DECIMAL}m³
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{DECIMAL}{NBSP}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{DECIMAL}{NBSP}L
+STR_UNITS_VOLUME_SHORT_SI                                       :{DECIMAL}{NBSP}m³
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{DECIMAL}{NBSP}gal{P ão ões}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{DECIMAL}{NBSP}litro{P "" s}
@@ -517,7 +517,7 @@ STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Construção de
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Construção de carris para elétricos
 
 # Waterways construction menu
-STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Construção de vias fluviais
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Construção de rotas navais
 
 # Aairport construction menu
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Construção de aeroportos
@@ -670,7 +670,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Gestor de Tráf
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Coordenador de Transportes
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Supervisor de Rotas
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Diretor
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Chefe Executivo
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Diretor Sénior
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Diretor Executivo
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Presidente
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Magnata
@@ -1092,7 +1092,7 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Marque esta op�
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Usar o tipo de letra com gráficos tradicionais
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Marque esta opção se prefere usar o tipo de letra tradicional de tamanho fixo
 STR_GAME_OPTIONS_GUI_FONT_DEFAULT                               :Preferir tipo de letra padrão
-STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP                       :Marque esta opção se prefere usar o tipo de letra padrão em vez os tipos de letra alternativos encontrados no seu sistema.
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP                       :Marque esta opção se prefere usar o tipo de letra padrão em vez dos tipos de letra alternativos encontrados no seu sistema.
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Tipos de letra com contornos suaves
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Marque esta opção para tipos de letra redimensionáveis com contornos suaves
 
@@ -2137,13 +2137,13 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unidades de pot
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Quando a potência de um veículo é mostrada no interface de utilizador, mostrar na unidade selecionada
 ###length 3
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Imperial (hp)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Métrico (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Métrico (cv)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Unidades de peso: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Quando um peso é mostrado na interface de utilizador, mostrar na unidade selecionada
 ###length 3
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperial (short t/ton)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperial (t/ton curta)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Métrico (t/tonelada)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
@@ -2151,7 +2151,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Unidades de vol
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Quando uma quantidade de volume é mostrada na interface de utilizador, mostrar na unidade selecionada
 ###length 3
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperial (galões)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Métrico (l)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Métrico (L)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Unidades de esforço de tração: {STRING}
@@ -2881,8 +2881,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Subúrbios Peri
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Subúrbios Centrais
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centro da localidade
 
+STR_HOUSE_PICKER_PROTECT                                        :Impedir atualizações
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Escolha se esta casa será protegida contra a substituição à medida que localidade cresce
 
+STR_HOUSE_PICKER_REPLACE                                        :Substituir existentes
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Escolha se deseja remover automaticamente a casa existente no mosaico onde esta nova casa será colocada.
 
 STR_STATION_CLASS_DFLT                                          :Padrão
 STR_STATION_CLASS_DFLT_STATION                                  :Estação padrão
@@ -2972,7 +2975,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Orienta�
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Selecionar orientação do terminal de carga para elétricos
 
 # Waterways toolbar (last two for SE only)
-STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construção de Vias Fluviais
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construção de Rotas Navais
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Canais
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construir canais. Ctrl+Clique+Arrastar para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construir eclusas. Pressione também Shift para apenas mostrar o custo estimado
@@ -3364,13 +3367,13 @@ STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Gerador 
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Dim. do mapa:
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Selecionar o tamanho do mapa em mosaicos. O número de mosaicos disponíveis será ligeiramente menor
 STR_MAPGEN_BY                                                   :{BLACK}*
-STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Num. de localidades:
+STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Núm. de localidades:
 STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :{BLACK}Selecionar a densidade das cidades, ou um número personalizado
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Nomes das localidades:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Selecionar o estilo dos nomes das localidades
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
 STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}Selecionar a data inicial
-STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Num. de indústrias:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Núm. de indústrias:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Selecionar a densidade das indústrias, ou um número personalizado
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Pico mais alto:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Escolher o pico mais alto que o jogo tentará criar, medido em elevação acima do nível do mar
@@ -3480,7 +3483,7 @@ STR_GENERATION_RIVER_GENERATION                                 :{BLACK}A gerar 
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}A gerar zonas rochosas e montanhosas
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}A gerar localidades
 STR_GENERATION_LAND_INDUSTRY_GENERATION                         :{BLACK}A gerar indústrias terrestres
-STR_GENERATION_WATER_INDUSTRY_GENERATION                        :{BLACK}A gerar indústrias fluviais
+STR_GENERATION_WATER_INDUSTRY_GENERATION                        :{BLACK}A gerar indústrias fluviais/marítimas
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}A gerar objetos
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}A gerar árvores
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}A configurar jogo
@@ -3517,7 +3520,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Para Cim
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Move o ficheiro NewGRF selecionado para cima na lista
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Para Baixo
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Move o ficheiro NewGRF selecionado para baixo na lista
-STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Atualiza
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Atualizar
 STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Atualiza ficheiros NewGRF para os quais tens uma versão mais recente instalada
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Uma lista dos ficheiros NewGRF que estão instalados
 
@@ -3990,7 +3993,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infraestr
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} secç{P ão ões} de linha ferroviária
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} secç{P ão ões} de estrada
 STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} mosaico{P "" s} com água
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} mosaico{P "" s} com estaç{P ão ões}
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} mosaico{P "" s} com {P "uma " ""}estaç{P ão ões}
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} aeroporto{P "" s}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Nenhuma
 
@@ -4494,7 +4497,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Parado
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}{VELOCITY} - A parar
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Sem energia
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}A esperar por caminho livre
-STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Longe de mais do próximo destino
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Demasiado longe do próximo destino
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - Dirige-se para {G 0 "" "o " "a " "os " "as "}{0:STATION}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - Sem ordens
@@ -4807,7 +4810,7 @@ STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Viajar (durante
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Viajar (por {STRING}, sem programação) no máximo a {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(permanecer por {STRING}, sem horário)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(viajar durante {STRING}, sem horário)
-STR_TIMETABLE_STAY_FOR                                          :{SPACE}e ficar por {STRING}
+STR_TIMETABLE_STAY_FOR                                          :{SPACE}e permanecer por {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}e viajar durante {STRING}
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Este horário levará aproximadamente {STRING} para concluir

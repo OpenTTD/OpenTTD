@@ -1091,6 +1091,8 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :인터페이스
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :원본 그래픽 글꼴 사용
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :기존 영어의 고정폭 글꼴을 사용하는 것을 선호하는 경우 이 박스에 체크하세요. 한국어 사용자는 체크하면 안 됩니다
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT                               :선호 기본 글꼴
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP                       :검색된 대체 글꼴 대신 기본 글꼴을 사용하려면 이 박스에 체크하세요
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :글씨체 테두리를 부드럽게
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :크기 조절이 가능한 글씨체에 안티 에일리어싱을 적용하여 테두리를 부드럽게 표현하려면 이 박스에 체크하세요
 
@@ -2879,8 +2881,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :바깥쪽 시�
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :안쪽 시내
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :도시 중심
 
+STR_HOUSE_PICKER_PROTECT                                        :업그레이드 방지
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :이 건물이 도시가 성장함에 따라 교체되는 것을 막을지 여부를 선택합니다
 
+STR_HOUSE_PICKER_REPLACE                                        :이미 설치된 것 교체
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :이 건물이 배치된 칸에서 기존 건물을 자동으로 제거할지 여부를 선택합니다
 
 STR_STATION_CLASS_DFLT                                          :기본
 STR_STATION_CLASS_DFLT_STATION                                  :기본 역

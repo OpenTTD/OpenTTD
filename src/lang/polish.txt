@@ -1468,12 +1468,12 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Zaznacz to pole
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Skaluj fazy krawędzi
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Zaznacz to pole, aby skalować fazy krawędzi zgodnie z rozmiarem interfejsu
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Użyj tradycyjnego fonta typu sprite
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Zaznacz to pole, jeśli wolisz używać tradycyjnego fonta typu sprite o stałym rozmiarze
-STR_GAME_OPTIONS_GUI_FONT_DEFAULT                               :Preferuj font domyślny
-STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP                       :Zaznacz to pole, jeśli wolisz używać fontu domyślnego zamiast wykrytych fontów zastępczych
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :Wygładzanie fontów
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Zaznacz to pole, aby wygładzać fonty o zmiennym rozmiarze
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Użyj tradycyjnej czcionki typu sprite
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Zaznacz to pole, jeśli wolisz używać tradycyjnej czcionki typu sprite o stałym rozmiarze
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT                               :Preferuj domyślną czcionkę
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP                       :Zaznacz to pole, jeśli wolisz używać domyślnej czcionki zamiast wykrytych czcionek zastępczych
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Wygładzanie czcionek
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Zaznacz to pole, aby wygładzać czcionki o zmiennym rozmiarze
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
@@ -2661,7 +2661,7 @@ STR_HELP_WINDOW_README                                          :{BLACK}Plik „
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Lista Zmian
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Znane Błędy
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}Licencja
-STR_HELP_WINDOW_FONTS                                           :{BLACK}Fonty
+STR_HELP_WINDOW_FONTS                                           :{BLACK}Czcionki
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Podręcznik / Wiki
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Zgłoś Błąd
@@ -3260,8 +3260,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Przedmieścia z
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Przedmieścia wewnętrzne
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centrum miasta
 
+STR_HOUSE_PICKER_PROTECT                                        :Zapobiegaj modernizacji
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Określ, czy ten budynek ma być chroniony przed zastąpieniem w miarę rozwoju miasta
 
+STR_HOUSE_PICKER_REPLACE                                        :Zastąp istniejące budynki
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Określ, czy chcesz budować nowe budunki w miejscu innych budynków. Jeśli tak, to stary budunek zostanie automatycznie usunięty, jeśli nie, to w wypadku takiej próby umieszczenia zostanie wyświetlony komunikat o błędnym umiejscowieniu budunku
 
 STR_STATION_CLASS_DFLT                                          :Standardowa
 STR_STATION_CLASS_DFLT_STATION                                  :Standardowa stacja

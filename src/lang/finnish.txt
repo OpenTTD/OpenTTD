@@ -2880,8 +2880,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Ulommat lähiö
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Sisemmät lähiöt
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Keskusta
 
+STR_HOUSE_PICKER_PROTECT                                        :Estä parannukset
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Valitse, suojataanko tämä talo korvaamiselta kunnan kasvaessa
 
+STR_HOUSE_PICKER_REPLACE                                        :Korvaa entinen
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Valitse, poistetaanko olemassa oleva talo automaattisesti ruudulta, jolle taloa sijoitetaan
 
 STR_STATION_CLASS_DFLT                                          :Oletus
 STR_STATION_CLASS_DFLT_STATION                                  :Oletusasema
