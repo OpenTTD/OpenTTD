@@ -35,10 +35,8 @@ jobs:
       uses: actions/checkout@v6
 
     - name: Setup vcpkg
-      uses: ./.github/actions/setup-vcpkg
-      with:
-        vcpkg-location: ${{ runner.temp }}/vcpkg
-        mono-install-command: 'brew install mono'
+      id: vcpkg
+      uses: OpenTTD/actions/setup-vcpkg@v6
 
     - name: Install OpenGFX
       run: |
@@ -67,7 +65,7 @@ jobs:
         cmake .. \
           -DCMAKE_OSX_ARCHITECTURES=${{ inputs.full_arch }} \
           -DVCPKG_TARGET_TRIPLET=${{ inputs.arch }}-osx \
-          -DCMAKE_TOOLCHAIN_FILE=${{ runner.temp }}/vcpkg/scripts/buildsystems/vcpkg.cmake \
+          -DCMAKE_TOOLCHAIN_FILE=${{ steps.vcpkg.outputs.vcpkg-cmake }} \
           ${{ inputs.extra-cmake-parameters }} \
           # EOF
         echo "::endgroup::"
