@@ -110,7 +110,8 @@ jobs:
         echo "::endgroup::"
 
     - name: Setup vcpkg
-      uses: ./.github/actions/setup-vcpkg
+      id: vcpkg
+      uses: OpenTTD/actions/setup-vcpkg@v6
       with:
         vcpkg-location: /vcpkg
         mono-install-command: 'yum install -y mono-complete'
@@ -125,7 +126,7 @@ jobs:
 
         echo "::group::CMake"
         cmake ${GITHUB_WORKSPACE} \
-          -DCMAKE_TOOLCHAIN_FILE=/vcpkg/scripts/buildsystems/vcpkg.cmake \
+          -DCMAKE_TOOLCHAIN_FILE=${{ steps.vcpkg.outputs.vcpkg-cmake }} \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
           -DOPTION_SURVEY_KEY=${{ inputs.survey_key }} \
           -DOPTION_PACKAGE_DEPENDENCIES=ON \
