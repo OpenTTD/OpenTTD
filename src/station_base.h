@@ -547,6 +547,7 @@ public:
 	void MarkTilesDirty(bool cargo_change) const;
 
 	void UpdateVirtCoord() override;
+	std::string GetCargoWaitingSignString() const;
 
 	void MoveSign(TileIndex new_xy) override;
 

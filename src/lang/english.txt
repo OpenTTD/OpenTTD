@@ -5967,3 +5967,8 @@ STR_BADGE_CONFIG_PREVIEW                                        :Preview Image
 STR_BADGE_CONFIG_NAME                                           :Name
 STR_BADGE_FILTER_ANY_LABEL                                      :Any {STRING}
 STR_BADGE_FILTER_IS_LABEL                                       :{STRING} is {STRING}
+
+STR_WAITING_CARGO_LABEL_OK									    :{WHITE}{RAW_STRING}: {COMMA}
+STR_WAITING_CARGO_LABEL_HIGH								    :{YELLOW}{RAW_STRING}: {COMMA}
+STR_WAITING_CARGO_LABEL_VERY_HIGH							    :{ORANGE}{RAW_STRING}: {COMMA}
+STR_WAITING_CARGO_LABEL_MEGA_HIGH							    :{RED}{RAW_STRING}: {COMMA}

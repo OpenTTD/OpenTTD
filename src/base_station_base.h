@@ -58,6 +58,7 @@ struct StationRect : public Rect {
 struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	TileIndex xy = INVALID_TILE; ///< Base tile of the station
 	TrackedViewportSign sign{}; ///< NOSAVE: Dimensions of sign
+	TrackedViewportSign cargoSign{}; ///< NOSAVE: Dimensions of cargo sign
 	uint8_t delete_ctr = 0; ///< Delete counter. If greater than 0 then it is decremented until it reaches 0; the waypoint is then is deleted.
 
 	std::string name{}; ///< Custom name

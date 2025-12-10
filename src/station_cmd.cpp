@@ -439,10 +439,28 @@ void Station::UpdateVirtCoord()
 	if (this->sign.kdtree_valid) _viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeStation(this->index));
 
 	this->sign.UpdatePosition(pt.x, pt.y, GetString(STR_VIEWPORT_STATION, this->index, this->facilities), GetString(STR_STATION_NAME, this->index, this->facilities));
+	//this->cargoSign.UpdatePosition(pt.x, pt.y - 64, "ddd" + this->GetCargoWaitingSignString() + "ddd", "");
 
 	_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeStation(this->index));
 
 	SetWindowDirty(WC_STATION_VIEW, this->index);
+}
+
+std::string Station::GetCargoWaitingSignString() const
+{
+	std::string str = "";
+	for (const CargoSpec *cs : CargoSpec::Iterate()) {
+		const GoodsEntry *ge = &this->goods[cs->Index()];
+		if (ge->HasData() && ge->GetData().cargo.AvailableCount() > 0) {
+			int cargoAvailable = ge->GetData().cargo.AvailableCount();
+			StringID stringToDisplay = STR_WAITING_CARGO_LABEL_OK;
+			if (cargoAvailable > 200) stringToDisplay = STR_WAITING_CARGO_LABEL_HIGH;
+			if (cargoAvailable > 600) stringToDisplay = STR_WAITING_CARGO_LABEL_VERY_HIGH;
+			if (cargoAvailable > 1200) stringToDisplay = STR_WAITING_CARGO_LABEL_MEGA_HIGH;
+			str += GetString(stringToDisplay, GetString(cs->abbrev), cargoAvailable) + "   ";
+		}
+	}
+	return str.empty() ? "" : str.substr(0, str.length() - 3);
 }
 
 /**
