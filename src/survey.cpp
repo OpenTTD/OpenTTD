@@ -305,6 +305,7 @@ void SurveyFont(nlohmann::json &survey)
 		font["configured"]["size"] = setting->size;
 	}
 	for (const auto &fc : FontCache::Get()) {
+		if (fc == nullptr) continue;
 		auto &font = survey[std::string(FontSizeToName(fc->GetSize()))];
 		font["active"].push_back(fc->GetFontName());
 	}
