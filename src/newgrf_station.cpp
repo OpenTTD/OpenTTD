@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file newgrf_station.cpp Functions for dealing with station classes and custom stations. */
@@ -614,7 +614,9 @@ SpriteID GetCustomStationRelocation(const StationSpec *statspec, BaseStation *st
 {
 	StationResolverObject object(statspec, st, tile, CBID_NO_CALLBACK, var10);
 	const auto *group = object.Resolve<ResultSpriteGroup>();
-	if (group == nullptr || group->num_sprites == 0) return 0;
+
+	/* A zero-length ResultSpriteGroup is valid because the output value is an offset, not a sprite ID within the ResultSpriteGroup. */
+	if (group == nullptr) return 0;
 	return group->sprite - SPR_RAIL_PLATFORM_Y_FRONT;
 }
 
@@ -624,8 +626,12 @@ void GetCustomStationRelocation(SpriteLayoutProcessor &processor, const StationS
 	for (uint8_t var10 : processor.Var10Values()) {
 		object.callback_param1 = var10;
 		const auto *group = object.Resolve<ResultSpriteGroup>();
-		if (group == nullptr || group->num_sprites == 0) continue;
-		processor.ProcessRegisters(object, var10, group->sprite - SPR_RAIL_PLATFORM_Y_FRONT);
+
+		/* ProcessRegisters must be called no matter the type of the sprite resolve result or whether it is valid.
+		 * The sprite offset is only used for layouts with the SPRITE_MODIFIER_CUSTOM_SPRITE flag, however other aspects of layouts
+		 * such as register operations must still be processed even if this flag is not set and the sprite offset is never used.
+		 * A zero-length ResultSpriteGroup is valid because the output value is an offset, not a sprite ID within the ResultSpriteGroup. */
+		processor.ProcessRegisters(object, var10, group != nullptr ? group->sprite - SPR_RAIL_PLATFORM_Y_FRONT : 0);
 	}
 }
 

@@ -13,7 +13,7 @@
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
 
 
 ##id 0x0000
@@ -254,6 +254,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}ft
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
+STR_UNITS_HEIGHT_GAMEUNITS                                      :{DECIMAL}{NBSP}level{P "" s}
 
 # Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}day{P "" s}
@@ -311,6 +312,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}By enabl
 STR_BUTTON_DEFAULT                                              :{BLACK}Default
 STR_BUTTON_CANCEL                                               :{BLACK}Cancel
 STR_BUTTON_OK                                                   :{BLACK}OK
+STR_BUTTON_MOVE                                                 :{BLACK}Move
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -1088,6 +1090,8 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Check this box 
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Use traditional sprite font
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Check this box if you prefer to use the traditional fixed-size sprite font
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT                               :Prefer default font
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP                       :Check this box if you prefer to use the default font over discovered fallback fonts
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Anti-alias fonts
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Check this box to anti-alias resizable fonts
 
@@ -2158,10 +2162,11 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Heights units: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Whenever a height is shown in the user interface, show it in the selected units
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metric (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_GAMEUNITS          :Game units (levels)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :Localization
 STR_CONFIG_SETTING_GRAPHICS                                     :Graphics
@@ -2859,15 +2864,15 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Select a town z
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Select a house type to build. Ctrl+Click to add or remove in saved items
 
 STR_HOUSE_PICKER_CAPTION                                        :House Selection
-STR_HOUSE_PICKER_NAME                                           :{BLACK}Name: {ORANGE}{STRING}
-STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Population: {ORANGE}{NUM}
-STR_HOUSE_PICKER_YEARS                                          :{BLACK}Years: {ORANGE}{NUM}-{NUM}
-STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Years: {ORANGE}Any
-STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Years: {ORANGE}From {NUM}
-STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Years: {ORANGE}Until {NUM}
-STR_HOUSE_PICKER_SIZE                                           :{BLACK}Size: {ORANGE}{NUM}x{NUM} tiles
-STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Cargo accepted: {ORANGE}
-STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Cargo produced: {ORANGE}{CARGO_LIST}
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Name: {GOLD}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Population: {GOLD}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Years: {GOLD}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Years: {GOLD}Any
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Years: {GOLD}From {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Years: {GOLD}Until {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Size: {GOLD}{NUM}x{NUM} tiles
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Cargo accepted: {GOLD}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Cargo produced: {GOLD}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Edge
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Outskirts
@@ -2875,10 +2880,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Outer Suburbs
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Inner Suburbs
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Town center
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Prevent upgrades
+STR_HOUSE_PICKER_PROTECT                                        :Prevent upgrades
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Choose whether this house will be protected from replacement as the town grows
-STR_HOUSE_PICKER_PROTECT_OFF                                    :Off
-STR_HOUSE_PICKER_PROTECT_ON                                     :On
+
+STR_HOUSE_PICKER_REPLACE                                        :Replace existing
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Choose whether to automatically remove an existing house on the tile where this house is placed
 
 STR_STATION_CLASS_DFLT                                          :Default
 STR_STATION_CLASS_DFLT_STATION                                  :Default station
@@ -3425,6 +3431,10 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Northwes
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Northeast
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Southeast
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Southwest
+STR_MAPGEN_NORTHWEST_TOOLTIP                                    :Toggle water or freeform edge on the northwest map edge
+STR_MAPGEN_NORTHEAST_TOOLTIP                                    :Toggle water or freeform edge on the northeast map edge
+STR_MAPGEN_SOUTHEAST_TOOLTIP                                    :Toggle water or freeform edge on the southeast map edge
+STR_MAPGEN_SOUTHWEST_TOOLTIP                                    :Toggle water or freeform edge on the southwest map edge
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Freeform
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Water
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Random
@@ -3471,7 +3481,8 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Landscap
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}River generation
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Rough and rocky area generation
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Town generation
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Industry generation
+STR_GENERATION_LAND_INDUSTRY_GENERATION                         :{BLACK}Land industry generation
+STR_GENERATION_WATER_INDUSTRY_GENERATION                        :{BLACK}Water industry generation
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Object generation
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Tree generation
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Setting up game
@@ -3680,7 +3691,7 @@ STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Match ca
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Toggle matching case when comparing sign names against the filter string
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Edit sign text
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Edit sign
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Center the main view on sign location. Ctrl+Click to open a new viewport on sign location
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Go to next sign
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Go to previous sign
@@ -3897,14 +3908,14 @@ STR_CARGO_RATING_EXCELLENT                                      :Excellent
 STR_CARGO_RATING_OUTSTANDING                                    :Outstanding
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Center main view on station location. Ctrl+Click to open a new viewport on station location
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Change name of station
+STR_STATION_VIEW_EDIT_TOOLTIP                                   :{BLACK}Rename station or move sign
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Show all trains which have this station on their schedule
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Show all road vehicles which have this station on their schedule
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Show all aircraft which have this station on their schedule
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Show all ships which have this station on their schedule
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Rename station/loading area
+STR_STATION_VIEW_EDIT_STATION_SIGN                              :{WHITE}Edit station sign
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Close airport
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Prevent aircraft from landing on this airport
@@ -3912,11 +3923,11 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Prevent 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Center main view on waypoint location. Ctrl+Click to open a new viewport on waypoint location
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Change waypoint name
+STR_WAYPOINT_VIEW_EDIT_TOOLTIP                                  :{BLACK}Rename waypoint or move sign
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Center main view on buoy location. Ctrl+Click to open a new viewport on buoy location
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Change buoy name
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edit waypoint name
+STR_WAYPOINT_VIEW_EDIT_WAYPOINT_SIGN                            :{WHITE}Edit waypoint sign
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finances {BLACK}{COMPANY_NUM}
@@ -5130,6 +5141,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Too many
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Too close to another dock
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Too close to another airport
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Can't rename station...
+STR_ERROR_CAN_T_MOVE_STATION_NAME                               :{WHITE}Can't move station sign...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... road owned by a town
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... road facing in the wrong direction
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... drive through stops can't have corners
@@ -5161,6 +5173,7 @@ STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}Can't bu
 STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Can't build road waypoint here...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Can't place buoy here...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Can't change waypoint name...
+STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :{WHITE}Can't move waypoint sign...
 
 STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Can't remove train waypoint here...
 STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Can't remove road waypoint here...
@@ -5269,13 +5282,13 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start an
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... ends of bridge must both be on land
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... bridge too long
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Bridge would end out of the map
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Bridge is too low for station
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Bridge is too low for road stop
-STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Bridge is too low for dock
-STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Bridge is too low for buoy
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Bridge is too low for rail waypoint
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Bridge is too low for road waypoint
-STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Bridge is too low for lock
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Bridge is {HEIGHT} too low for station
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Bridge is {HEIGHT} too low for road stop
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Bridge is {HEIGHT} too low for dock
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Bridge is {HEIGHT} too low for buoy
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Bridge is {HEIGHT} too low for rail waypoint
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Bridge is {HEIGHT} too low for road waypoint
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Bridge is {HEIGHT} too low for lock
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Can't build tunnel here...

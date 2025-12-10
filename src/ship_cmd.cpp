@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file ship_cmd.cpp Handling of ships. */
@@ -55,11 +55,11 @@ WaterClass GetEffectiveWaterClass(TileIndex tile)
 	if (HasTileWaterClass(tile)) return GetWaterClass(tile);
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 		assert(GetTunnelBridgeTransportType(tile) == TRANSPORT_WATER);
-		return WATER_CLASS_CANAL;
+		return WaterClass::Canal;
 	}
 	if (IsTileType(tile, MP_RAILWAY)) {
-		assert(GetRailGroundType(tile) == RAIL_GROUND_WATER);
-		return WATER_CLASS_SEA;
+		assert(GetRailGroundType(tile) == RailGroundType::HalfTileWater);
+		return WaterClass::Sea;
 	}
 	NOT_REACHED();
 }
@@ -220,7 +220,7 @@ static void CheckIfShipNeedsService(Vehicle *v)
 		return;
 	}
 
-	v->current_order.MakeGoToDepot(depot->index, ODTFB_SERVICE);
+	v->current_order.MakeGoToDepot(depot->index, OrderDepotTypeFlag::Service);
 	v->SetDestTile(depot->xy);
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 }
@@ -233,7 +233,7 @@ void Ship::UpdateCache()
 	const ShipVehicleInfo *svi = ShipVehInfo(this->engine_type);
 
 	/* Get speed fraction for the current water type. Aqueducts are always canals. */
-	bool is_ocean = GetEffectiveWaterClass(this->tile) == WATER_CLASS_SEA;
+	bool is_ocean = GetEffectiveWaterClass(this->tile) == WaterClass::Sea;
 	uint raw_speed = GetVehicleProperty(this, PROP_SHIP_SPEED, svi->max_speed);
 	this->vcache.cached_max_speed = svi->ApplyWaterClassSpeedFrac(raw_speed, is_ocean);
 
@@ -566,7 +566,7 @@ static const ShipSubcoordData _ship_subcoord[DIAGDIR_END][TRACK_END] = {
 static int ShipTestUpDownOnLock(const Ship *v)
 {
 	/* Suitable tile? */
-	if (!IsTileType(v->tile, MP_WATER) || !IsLock(v->tile) || GetLockPart(v->tile) != LOCK_PART_MIDDLE) return 0;
+	if (!IsTileType(v->tile, MP_WATER) || !IsLock(v->tile) || GetLockPart(v->tile) != LockPart::Middle) return 0;
 
 	/* Must be at the centre of the lock */
 	if ((v->x_pos & 0xF) != 8 || (v->y_pos & 0xF) != 8) return 0;

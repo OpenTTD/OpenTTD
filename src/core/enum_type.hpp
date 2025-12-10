@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file enum_type.hpp Type (helpers) for enums */
@@ -139,7 +139,7 @@ inline constexpr auto operator-(enum_type a, enum_type b)
  * @return True iff the flag is set.
  */
 template <typename T, class = typename std::enable_if_t<std::is_enum_v<T>>>
-debug_inline constexpr bool HasFlag(const T x, const T y)
+[[debug_inline]] inline constexpr bool HasFlag(const T x, const T y)
 {
 	return (x & y) == y;
 }
@@ -150,7 +150,7 @@ debug_inline constexpr bool HasFlag(const T x, const T y)
  * @param y The flag to toggle.
  */
 template <typename T, class = typename std::enable_if_t<std::is_enum_v<T>>>
-debug_inline constexpr void ToggleFlag(T &x, const T y)
+[[debug_inline]] inline constexpr void ToggleFlag(T &x, const T y)
 {
 	if (HasFlag(x, y)) {
 		x &= ~y;

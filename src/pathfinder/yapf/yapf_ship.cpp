@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file yapf_ship.cpp Implementation of YAPF for ships. */
@@ -385,11 +385,11 @@ public:
 
 		/* Ocean/canal speed penalty. */
 		const ShipVehicleInfo *svi = ShipVehInfo(Yapf().GetVehicle()->engine_type);
-		uint8_t speed_frac = (GetEffectiveWaterClass(n.GetTile()) == WATER_CLASS_SEA) ? svi->ocean_speed_frac : svi->canal_speed_frac;
+		uint8_t speed_frac = (GetEffectiveWaterClass(n.GetTile()) == WaterClass::Sea) ? svi->ocean_speed_frac : svi->canal_speed_frac;
 		if (speed_frac > 0) c += YAPF_TILE_LENGTH * (1 + follower->tiles_skipped) * speed_frac / (256 - speed_frac);
 
 		/* Lock penalty. */
-		if (IsTileType(n.GetTile(), MP_WATER) && IsLock(n.GetTile()) && GetLockPart(n.GetTile()) == LOCK_PART_MIDDLE) {
+		if (IsTileType(n.GetTile(), MP_WATER) && IsLock(n.GetTile()) && GetLockPart(n.GetTile()) == LockPart::Middle) {
 			const uint canal_speed = svi->ApplyWaterClassSpeedFrac(svi->max_speed, false);
 			/* Cost is proportional to the vehicle's speed as the vehicle stops in the lock. */
 			c += (TILE_HEIGHT * YAPF_TILE_LENGTH * canal_speed) / 128;

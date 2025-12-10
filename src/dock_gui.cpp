@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file dock_gui.cpp GUI to create amazing water objects. */
@@ -250,6 +250,11 @@ struct BuildDocksToolbarWindow : Window {
 		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
 	}
 
+	Point OnInitialPosition(int16_t sm_width, [[maybe_unused]] int16_t sm_height, [[maybe_unused]] int window_number) override
+	{
+		return AlignInitialConstructionToolbar(sm_width);
+	}
+
 	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile) override
 	{
 		if (pt.x != -1) {
@@ -259,13 +264,13 @@ struct BuildDocksToolbarWindow : Window {
 					break;
 				case DDSP_CREATE_WATER:
 					if (_game_mode == GM_EDITOR) {
-						Command<CMD_BUILD_CANAL>::Post(STR_ERROR_CAN_T_BUILD_CANALS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, _ctrl_pressed ? WATER_CLASS_SEA : WATER_CLASS_CANAL, false);
+						Command<CMD_BUILD_CANAL>::Post(STR_ERROR_CAN_T_BUILD_CANALS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, _ctrl_pressed ? WaterClass::Sea : WaterClass::Canal, false);
 					} else {
-						Command<CMD_BUILD_CANAL>::Post(STR_ERROR_CAN_T_BUILD_CANALS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, WATER_CLASS_CANAL, _ctrl_pressed);
+						Command<CMD_BUILD_CANAL>::Post(STR_ERROR_CAN_T_BUILD_CANALS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, WaterClass::Canal, _ctrl_pressed);
 					}
 					break;
 				case DDSP_CREATE_RIVER:
-					Command<CMD_BUILD_CANAL>::Post(STR_ERROR_CAN_T_PLACE_RIVERS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, WATER_CLASS_RIVER, _ctrl_pressed);
+					Command<CMD_BUILD_CANAL>::Post(STR_ERROR_CAN_T_PLACE_RIVERS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, WaterClass::River, _ctrl_pressed);
 					break;
 
 				default: break;
@@ -333,7 +338,7 @@ struct BuildDocksToolbarWindow : Window {
  * Nested widget parts of docks toolbar, game version.
  * Position of #WID_DT_RIVER widget has changed.
  */
-static constexpr NWidgetPart _nested_build_docks_toolbar_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_build_docks_toolbar_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetStringTip(STR_WATERWAYS_TOOLBAR_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -352,7 +357,7 @@ static constexpr NWidgetPart _nested_build_docks_toolbar_widgets[] = {
 };
 
 static WindowDesc _build_docks_toolbar_desc(
-	WDP_ALIGN_TOOLBAR, "toolbar_water", 0, 0,
+	WDP_MANUAL, "toolbar_water", 0, 0,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WindowDefaultFlag::Construction,
 	_nested_build_docks_toolbar_widgets,
@@ -378,7 +383,7 @@ Window *ShowBuildDocksToolbar()
  * Nested widget parts of docks toolbar, scenario editor version.
  * Positions of #WID_DT_DEPOT, #WID_DT_STATION, and #WID_DT_BUOY widgets have changed.
  */
-static constexpr NWidgetPart _nested_build_docks_scen_toolbar_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_build_docks_scen_toolbar_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetStringTip(STR_WATERWAYS_TOOLBAR_CAPTION_SE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -478,7 +483,7 @@ public:
 };
 
 /** Nested widget parts of a build dock station window. */
-static constexpr NWidgetPart _nested_build_dock_station_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_build_dock_station_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetStringTip(STR_STATION_BUILD_DOCK_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -555,8 +560,8 @@ public:
 					int y = (ir.Height() - ScaleSpriteTrad(64)) / 2;
 					int x1 = ScaleSpriteTrad(63);
 					int x2 = ScaleSpriteTrad(31);
-					DrawShipDepotSprite(x + (axis == AXIS_X ? x1 : x2), y + ScaleSpriteTrad(17), axis, DEPOT_PART_NORTH);
-					DrawShipDepotSprite(x + (axis == AXIS_X ? x2 : x1), y + ScaleSpriteTrad(33), axis, DEPOT_PART_SOUTH);
+					DrawShipDepotSprite(x + (axis == AXIS_X ? x1 : x2), y + ScaleSpriteTrad(17), axis, DepotPart::North);
+					DrawShipDepotSprite(x + (axis == AXIS_X ? x2 : x1), y + ScaleSpriteTrad(33), axis, DepotPart::South);
 				}
 				break;
 			}
@@ -579,7 +584,7 @@ public:
 	}
 };
 
-static constexpr NWidgetPart _nested_build_docks_depot_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_build_docks_depot_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetStringTip(STR_DEPOT_BUILD_SHIP_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),

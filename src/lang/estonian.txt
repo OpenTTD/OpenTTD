@@ -14,7 +14,7 @@
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
 
 
 ##id 0x0000
@@ -2163,7 +2163,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI-süsteem (kN
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Kõrgusühikud: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Liideses näidatakse kõrgust valitud mõõdustikus
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Inglise mõõdustik (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Meetermõõdustik (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI-süsteem (m)
@@ -2847,6 +2847,7 @@ STR_HOUSE_PICKER_CLASS_ZONE4                                    :Eeslinnad
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Kesklinn
 
 
+
 STR_STATION_CLASS_DFLT                                          :Vaikimisi
 STR_STATION_CLASS_DFLT_STATION                                  :Vaikimisi jaam
 STR_STATION_CLASS_DFLT_ROADSTOP                                 :Vaikimisi peatus
@@ -3418,7 +3419,6 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Maastiku
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Jõgede tekitamine
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Mägise ja kivise maa-ala tekitamine
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Asulate tekitamine
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Tööstuse tekitamine
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Objekti tekitamine
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Puude tekitamine
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Mängu seadistamine
@@ -3827,14 +3827,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Suurepärane
 STR_CARGO_RATING_OUTSTANDING                                    :Suurepärane
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Vaate viimine jaama juurde
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Muuda jaama nime
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Näita kõiki ronge, mille sõidugraafik sisaldab seda rongijaama
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Näita kõiki mootorsõidukeid, mille sõidugraafik sisaldab seda jaama
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Näita kõiki õhusõidukeid, mille graafik sisaldab seda jaama
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Näita kõiki laevu, mille sõidugraafik sisaldab seda sadamat
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Ümbernimeta jaam/laadimisala
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Sulge lennujaam
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Keela õhusõidukite maandumine selles lennujaamas
@@ -3842,11 +3840,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Keela õ
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Keskenda vaade teemärgisel. Ctrl+klõps avab teemärgisel uue vaate
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Muuda meldepunkti nime
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Keskenda vaade poi kohale. Ctrl+klõps avab poi kohal uue vaateakna
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Muuda poi nime
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Muuda meldepunkti nime
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} rahavoogude aruanne {BLACK}{COMPANY_NUM}

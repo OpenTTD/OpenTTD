@@ -15,7 +15,7 @@
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
 
 
 ##id 0x0000
@@ -2013,7 +2013,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Unitates altitudinis: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Quandocumque altitudo monstratur, monstrabitur his unitatibus electis
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Anglicae (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metricae (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -2563,6 +2563,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Longitud
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Eligere longitudinem ferriviae stationis
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Trahere Ponereque
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Struere stationem trahendo ponendoque
+
 
 
 
@@ -3405,14 +3406,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Praestans
 STR_CARGO_RATING_OUTSTANDING                                    :Optima
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Movere conspectum supra hanc stationem. Ctrl+Preme ut nova fenestra conspectus aperiatur supra stationem
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Mutare nomen stationis
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Monstrare omnia tramina quae hanc stationem in horario habent
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Monstrare omnia vehicula viaria quae hanc stationem in horario habent
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Monstrare omnia aeroplana quae hanc stationem in horario habent
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Monstrare omnes naves quae hanc stationem in horario habent
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Renominare stationem
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Claudere aeroportum
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Facere ut aeroplana non appellant in hoc aeroportu
@@ -3420,11 +3419,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Facere u
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Movere conspectum supra hunc interlocum. ut nova fenestra conspectus aperiatur supra interlocum
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Mutare nomen interloci
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Movere conspectum supra hoc signum monitorium. ut nova fenestra conspectus aperiatur supra signum monitorium
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Mutare nomen signi monitorii
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Recensere nomen interloci
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Res Fiscales {BLACK}{COMPANY_NUM}

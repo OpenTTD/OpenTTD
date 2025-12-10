@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file news_gui.cpp GUI functions related to news messages. */
@@ -102,7 +102,7 @@ static TileIndex GetReferenceTile(const NewsReference &reference)
 }
 
 /* Normal news items. */
-static constexpr NWidgetPart _nested_normal_news_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_normal_news_widgets = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
 		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
 			NWidget(NWID_LAYER, INVALID_COLOUR),
@@ -134,7 +134,7 @@ static WindowDesc _normal_news_desc(
 );
 
 /* New vehicles news items. */
-static constexpr NWidgetPart _nested_vehicle_news_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_vehicle_news_widgets = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
 		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
 			NWidget(NWID_LAYER, INVALID_COLOUR),
@@ -182,7 +182,7 @@ static WindowDesc _vehicle_news_desc(
 );
 
 /* Company news items. */
-static constexpr NWidgetPart _nested_company_news_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_company_news_widgets = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
 		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
 			NWidget(NWID_LAYER, INVALID_COLOUR),
@@ -227,7 +227,7 @@ static WindowDesc _company_news_desc(
 );
 
 /* Thin news items. */
-static constexpr NWidgetPart _nested_thin_news_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_thin_news_widgets = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
 		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
 			NWidget(NWID_LAYER, INVALID_COLOUR),
@@ -261,15 +261,17 @@ static WindowDesc _thin_news_desc(
 );
 
 /* Small news items. */
-static constexpr NWidgetPart _nested_small_news_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_small_news_widgets = {
 	/* Caption + close box. The caption is not WWT_CAPTION as the window shall not be moveable and so on. */
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, WID_N_CLOSEBOX),
 		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_N_CAPTION),
-		NWidget(WWT_TEXTBTN, COLOUR_LIGHT_BLUE, WID_N_SHOW_GROUP),
-				SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON),
-				SetResize(1, 0),
-				SetToolTip(STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_N_SHOW_GROUP_SEL),
+			NWidget(WWT_TEXTBTN, COLOUR_LIGHT_BLUE, WID_N_SHOW_GROUP),
+					SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON),
+					SetResize(1, 0),
+					SetToolTip(STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP),
+		EndContainer(),
 	EndContainer(),
 
 	/* Main part */
@@ -368,8 +370,12 @@ struct NewsWindow : Window {
 
 		this->CreateNestedTree();
 
+		bool has_vehicle_id = std::holds_alternative<VehicleID>(ni->ref1);
+		NWidgetStacked *nwid_sel = this->GetWidget<NWidgetStacked>(WID_N_SHOW_GROUP_SEL);
+		if (nwid_sel != nullptr) nwid_sel->SetDisplayedPlane(has_vehicle_id ? 0 : SZSP_NONE);
+
 		NWidgetCore *nwid = this->GetWidget<NWidgetCore>(WID_N_SHOW_GROUP);
-		if (std::holds_alternative<VehicleID>(ni->ref1) && nwid != nullptr) {
+		if (has_vehicle_id && nwid != nullptr) {
 			const Vehicle *v = Vehicle::Get(std::get<VehicleID>(ni->ref1));
 			switch (v->type) {
 				case VEH_TRAIN:
@@ -470,14 +476,6 @@ struct NewsWindow : Window {
 					d2.height += WidgetDimensions::scaled.captiontext.Vertical();
 					d2.width += WidgetDimensions::scaled.captiontext.Horizontal();
 					size = d2;
-				} else {
-					/* Hide 'Show group window' button if this news is not about a vehicle. */
-					size.width = 0;
-					size.height = 0;
-					resize.width = 0;
-					resize.height = 0;
-					fill.width = 0;
-					fill.height = 0;
 				}
 				return;
 
@@ -1275,7 +1273,7 @@ struct MessageHistoryWindow : Window {
 	}
 };
 
-static constexpr NWidgetPart _nested_message_history[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_message_history = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN), SetStringTip(STR_MESSAGE_HISTORY, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),

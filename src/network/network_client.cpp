@@ -2,14 +2,13 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file network_client.cpp Client part of the network protocol. */
 
 #include "../stdafx.h"
 #include "network_gui.h"
-#include "../core/string_consumer.hpp"
 #include "../saveload/saveload.h"
 #include "../saveload/saveload_filter.h"
 #include "../command_func.h"
@@ -537,7 +536,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CLIENT_INFO(Pac
 
 	ci = NetworkClientInfo::GetByClientID(client_id);
 	if (ci != nullptr) {
-		if (playas == ci->client_playas && name.compare(ci->client_name) != 0) {
+		if (playas == ci->client_playas && name != ci->client_name) {
 			/* Client name changed, display the change */
 			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, name);
 		} else if (playas != ci->client_playas) {
@@ -1296,17 +1295,17 @@ void NetworkUpdateClientName(const std::string &client_name)
 	if (ci == nullptr) return;
 
 	/* Don't change the name if it is the same as the old name */
-	if (client_name.compare(ci->client_name) != 0) {
-		if (!_network_server) {
-			MyClient::SendSetName(client_name);
-		} else {
-			/* Copy to a temporary buffer so no #n gets added after our name in the settings when there are duplicate names. */
-			std::string temporary_name = client_name;
-			if (NetworkMakeClientNameUnique(temporary_name)) {
-				NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, temporary_name);
-				ci->client_name = std::move(temporary_name);
-				NetworkUpdateClientInfo(CLIENT_ID_SERVER);
-			}
+	if (client_name == ci->client_name) return;
+
+	if (!_network_server) {
+		MyClient::SendSetName(client_name);
+	} else {
+		/* Copy to a temporary buffer so no #n gets added after our name in the settings when there are duplicate names. */
+		std::string temporary_name = client_name;
+		if (NetworkMakeClientNameUnique(temporary_name)) {
+			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, temporary_name);
+			ci->client_name = std::move(temporary_name);
+			NetworkUpdateClientInfo(CLIENT_ID_SERVER);
 		}
 	}
 }

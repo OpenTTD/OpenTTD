@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file newgrf_act2.cpp NewGRF Action 0x02 handler. */
@@ -525,6 +525,11 @@ static void NewSpriteGroup(ByteReader &buf)
 		/* Neither a variable or randomized sprite group... must be a real group */
 		default:
 		{
+			if (type >= 0x80) {
+				GrfMsg(0, "NewSpriteGroup: Reserved group type 0x{:02X}, skipping", type);
+				return;
+			}
+
 			switch (feature) {
 				case GSF_TRAINS:
 				case GSF_ROADVEHICLES:

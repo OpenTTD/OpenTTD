@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file sdl2_default_v.cpp Implementation of the default backend for SDL2 video driver. */
@@ -16,8 +16,6 @@
 #include "../network/network.h"
 #include "../thread.h"
 #include "../progress.h"
-#include "../core/random_func.hpp"
-#include "../core/math_func.hpp"
 #include "../core/geometry_func.hpp"
 #include "../fileio_func.h"
 #include "../framerate_type.h"
@@ -67,22 +65,22 @@ void VideoDriver_SDL_Default::MakePalette()
 
 	if (_sdl_surface != _sdl_real_surface) {
 		/* When using a shadow surface, also set our palette on the real screen. This lets SDL
-		 * allocate as many colors (or approximations) as
+		 * allocate as many colours (or approximations) as
 		 * possible, instead of using only the default SDL
-		 * palette. This allows us to get more colors exactly
+		 * palette. This allows us to get more colours exactly
 		 * right and might allow using better approximations for
-		 * other colors.
+		 * other colours.
 		 *
-		 * Note that colors allocations are tried in-order, so
-		 * this favors colors further up into the palette. Also
-		 * note that if two colors from the same animation
-		 * sequence are approximated using the same color, that
+		 * Note that colours allocations are tried in-order, so
+		 * this favors colours further up into the palette. Also
+		 * note that if two colours from the same animation
+		 * sequence are approximated using the same colour, that
 		 * animation will stop working.
 		 *
 		 * Since changing the system palette causes the colours
 		 * to change right away, and allocations might
 		 * drastically change, we can't use this for animation,
-		 * since that could cause weird coloring between the
+		 * since that could cause weird colouring between the
 		 * palette change and the blitting below, so we only set
 		 * the real palette during initialisation.
 		 */

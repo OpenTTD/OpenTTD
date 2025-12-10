@@ -15,7 +15,7 @@
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
 
 
 ##id 0x0000
@@ -2172,7 +2172,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Jednotky výšky: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Vždy, keď sa zobrazí výška v užívateľskom rozhraní, zobrazí sa vo vybraných jednotkách
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperialne (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrické (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -2849,6 +2849,7 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Zvoľ veľkosť
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Okraj
 
 
+
 STR_STATION_CLASS_DFLT                                          :Pôvodná
 STR_STATION_CLASS_DFLT_STATION                                  :Predvolená stanica
 STR_STATION_CLASS_DFLT_ROADSTOP                                 :Predvolená zastávka
@@ -3420,7 +3421,6 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :Generujem kraji
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generovanie riek
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generovanie nerovností a skál
 STR_GENERATION_TOWN_GENERATION                                  :Vytváranie mesta
-STR_GENERATION_INDUSTRY_GENERATION                              :Vytváranie priemyslu
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generovanie objektov
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generovanie stromov
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Nastavovanie hry
@@ -3829,14 +3829,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Výborné
 STR_CARGO_RATING_OUTSTANDING                                    :Perfektné
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Vycentrovať pohľad na pozíciu stanice. Ctrl+Klik otvorí nové okno s pohľadom na stanicu
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Zmeniť názov stanice
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Zobraziť všetky vlaky, ktoré majú túto stanicu v cestovnom poriadku
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Zobraziť všetky autá, ktoré majú túto stanicu v cestovnom poriadku
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Zobraziť všetky lietadlá, ktoré majú túto stanicu v cestovnom poriadku
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Zobraziť všetky lode, ktoré majú túto stanicu v cestovnom poriadku
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Premenovať stanicu/vykládku
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Uzavri letisko
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Zakáž lietadlám pristávať na tomto letisku
@@ -3844,11 +3842,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Zakáž 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Vycentrovať pohľad na pozíciu smerového bodu. Ctrl+Klik otvorí nové okno s pohľadom na smerový bod
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Zmeniť meno smerového bodu
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Vycentrovať pohľad na pozíciu bóje. Ctrl+Klik otvorí nové okno s pohľadom na bóju
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Zmeniť meno bóje
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Upraviť názvy smerových bodov
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Financie spoločnosti {COMPANY} {BLACK}{COMPANY_NUM}

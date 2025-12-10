@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file mock_fontcache.h Mock font cache implementation definition. */
@@ -25,15 +25,16 @@ public:
 	const Sprite *GetGlyph(GlyphID) override { return nullptr; }
 	uint GetGlyphWidth(GlyphID) override { return this->height / 2; }
 	bool GetDrawGlyphShadow() override { return false; }
-	GlyphID MapCharToGlyph(char32_t key, [[maybe_unused]] bool allow_fallback = true) override { return key; }
+	GlyphID MapCharToGlyph(char32_t key) override { return key; }
 	std::string GetFontName() override { return "mock"; }
 	bool IsBuiltInFont() override { return true; }
 
 	static void InitializeFontCaches()
 	{
+		FontCache::caches.clear();
 		for (FontSize fs = FS_BEGIN; fs != FS_END; fs++) {
-			if (FontCache::Get(fs) != nullptr) continue;
-			FontCache::Register(std::make_unique<MockFontCache>(fs));
+			FontCache::Register(std::make_unique<MockFontCache>(fs), FontLoadReason::Default);
+			FontCache::UpdateCharacterHeight(fs);
 		}
 	}
 };

@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file strings_func.h Functions related to OTTD's strings. */
@@ -10,11 +10,9 @@
 #ifndef STRINGS_FUNC_H
 #define STRINGS_FUNC_H
 
+#include "fontcache.h"
 #include "strings_type.h"
-#include "string_type.h"
 #include "gfx_type.h"
-#include "core/bitmath_func.hpp"
-#include "core/convertible_through_base.hpp"
 #include "vehicle_type.h"
 
 /**
@@ -158,8 +156,32 @@ EncodedString GetEncodedString(StringID string, const Args&... args)
  */
 class MissingGlyphSearcher {
 public:
+	FontSizes fontsizes; ///< Font sizes to search for.
+
+	MissingGlyphSearcher(FontSizes fontsizes) : fontsizes(fontsizes) {}
+
 	/** Make sure everything gets destructed right. */
 	virtual ~MissingGlyphSearcher() = default;
+
+	/**
+	 * Test if any glyphs are missing.
+	 * @return Font sizes which have missing glyphs.
+	 */
+	FontSizes FindMissingGlyphs();
+
+	virtual FontLoadReason GetLoadReason() = 0;
+
+	/**
+	 * Get set of glyphs required for the current language.
+	 * @param fontsizes Font sizes to test.
+	 * @return Set of required glyphs.
+	 **/
+	virtual std::set<char32_t> GetRequiredGlyphs(FontSizes fontsizes) = 0;
+};
+
+class BaseStringMissingGlyphSearcher : public MissingGlyphSearcher {
+public:
+	BaseStringMissingGlyphSearcher(FontSizes fontsizes) : MissingGlyphSearcher(fontsizes) {}
 
 	/**
 	 * Get the next string to search through.
@@ -178,23 +200,11 @@ public:
 	 */
 	virtual void Reset() = 0;
 
-	/**
-	 * Whether to search for a monospace font or not.
-	 * @return True if searching for monospace.
-	 */
-	virtual bool Monospace() = 0;
+	FontLoadReason GetLoadReason() override { return FontLoadReason::LanguageFallback; }
 
-	/**
-	 * Set the right font names.
-	 * @param settings  The settings to modify.
-	 * @param font_name The new font name.
-	 * @param os_data Opaque pointer to OS-specific data.
-	 */
-	virtual void SetFontNames(struct FontCacheSettings *settings, std::string_view font_name, const void *os_data = nullptr) = 0;
-
-	bool FindMissingGlyphs();
+	std::set<char32_t> GetRequiredGlyphs(FontSizes fontsizes) override;
 };
 
-void CheckForMissingGlyphs(MissingGlyphSearcher *search = nullptr);
+void CheckForMissingGlyphs(MissingGlyphSearcher *searcher = nullptr);
 
 #endif /* STRINGS_FUNC_H */

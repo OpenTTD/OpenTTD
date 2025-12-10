@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file console_gui.cpp Handling the GUI of the in-game console. */
@@ -133,7 +133,7 @@ static inline void IConsoleResetHistoryPos()
 static std::optional<std::string_view> IConsoleHistoryAdd(std::string_view cmd);
 static void IConsoleHistoryNavigate(int direction);
 
-static constexpr NWidgetPart _nested_console_window_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_console_window_widgets = {
 	NWidget(WWT_EMPTY, INVALID_COLOUR, WID_C_BACKGROUND), SetResize(1, 1),
 };
 
@@ -453,7 +453,7 @@ void IConsoleClose()
 static std::optional<std::string_view> IConsoleHistoryAdd(std::string_view cmd)
 {
 	/* Strip all spaces at the begin */
-	while (IsWhitespace(cmd[0])) cmd.remove_prefix(1);
+	while (!cmd.empty() && IsWhitespace(cmd[0])) cmd.remove_prefix(1);
 
 	/* Do not put empty command in history */
 	if (cmd.empty()) return std::nullopt;

@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file script_tile.cpp Implementation of ScriptTile. */
@@ -37,7 +37,7 @@
 			/* Tram bits aren't considered buildable */
 			if (::GetRoadTypeTram(tile) != INVALID_ROADTYPE) return false;
 			/* Depots and crossings aren't considered buildable */
-			if (::GetRoadTileType(tile) != ROAD_TILE_NORMAL) return false;
+			if (::GetRoadTileType(tile) != RoadTileType::Normal) return false;
 			if (!HasExactlyOneBit(::GetRoadBits(tile, RTT_ROAD))) return false;
 			if (::IsRoadOwner(tile, RTT_ROAD, OWNER_TOWN)) return true;
 			if (::IsRoadOwner(tile, RTT_ROAD, ScriptObject::GetCompany())) return true;
@@ -152,6 +152,13 @@
 	if (!::IsValidTile(tile)) return false;
 
 	return (::IsTileType(tile, MP_CLEAR) && ::IsClearGround(tile, CLEAR_DESERT));
+}
+
+/* static */ bool ScriptTile::IsHouseTile(TileIndex tile)
+{
+	if (!::IsValidTile(tile)) return false;
+
+	return ::IsTileType(tile, MP_HOUSE);
 }
 
 /* static */ ScriptTile::TerrainType ScriptTile::GetTerrainType(TileIndex tile)

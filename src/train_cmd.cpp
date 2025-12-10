@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file train_cmd.cpp Handling of trains. */
@@ -265,10 +265,10 @@ int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *v, i
 
 	/* Default to the middle of the station for stations stops that are not in
 	 * the order list like intermediate stations when non-stop is disabled */
-	OrderStopLocation osl = OSL_PLATFORM_MIDDLE;
+	OrderStopLocation osl = OrderStopLocation::Middle;
 	if (v->gcache.cached_total_length >= *station_length) {
 		/* The train is longer than the station, make it stop at the far end of the platform */
-		osl = OSL_PLATFORM_FAR_END;
+		osl = OrderStopLocation::FarEnd;
 	} else if (v->current_order.IsType(OT_GOTO_STATION) && v->current_order.GetDestination() == station_id) {
 		osl = v->current_order.GetStopLocation();
 	}
@@ -278,15 +278,15 @@ int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *v, i
 	switch (osl) {
 		default: NOT_REACHED();
 
-		case OSL_PLATFORM_NEAR_END:
+		case OrderStopLocation::NearEnd:
 			stop = v->gcache.cached_total_length;
 			break;
 
-		case OSL_PLATFORM_MIDDLE:
+		case OrderStopLocation::Middle:
 			stop = *station_length - (*station_length - v->gcache.cached_total_length) / 2;
 			break;
 
-		case OSL_PLATFORM_FAR_END:
+		case OrderStopLocation::FarEnd:
 			stop = *station_length;
 			break;
 	}
@@ -2138,6 +2138,27 @@ CommandCost CmdReverseTrainDirection(DoCommandFlags flags, VehicleID veh_id, boo
 }
 
 /**
+ * Determine to what force_proceed should be changed.
+ * If we are forced to proceed, cancel that order.
+ * If we are marked stuck we would want to force the train to
+ * proceed to the next signal unless we are stuck just before
+ * the next signal. In the other cases we would like to pass
+ * the signal at danger and run till the next signal we encounter.
+ * @param t The train to determine the new value of force_proceed for.
+ * @return The next state of force_proceed.
+ */
+static TrainForceProceeding DetermineNextTrainForceProceeding(const Train *t)
+{
+	if (t->vehstatus.Test(VehState::Crashed) || t->force_proceed == TFP_SIGNAL) return TFP_NONE;
+	if (!t->flags.Test(VehicleRailFlag::Stuck)) return t->IsChainInDepot() ? TFP_STUCK : TFP_SIGNAL;
+
+	TileIndex next_tile = TileAddByDiagDir(t->tile, TrackdirToExitdir(t->GetVehicleTrackdir()));
+	if (next_tile == INVALID_TILE || !IsTileType(next_tile, MP_RAILWAY) || !HasSignals(next_tile)) return TFP_STUCK;
+	TrackBits new_tracks = DiagdirReachesTracks(TrackdirToExitdir(t->GetVehicleTrackdir())) & GetTrackBits(next_tile);
+	return new_tracks != TRACK_BIT_NONE && HasSignalOnTrack(next_tile, FindFirstTrack(new_tracks)) ? TFP_SIGNAL : TFP_STUCK;
+}
+
+/**
  * Force a train through a red signal
  * @param flags type of operation
  * @param veh_id train to ignore the red signal
@@ -2155,12 +2176,7 @@ CommandCost CmdForceTrainProceed(DoCommandFlags flags, VehicleID veh_id)
 
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		/* If we are forced to proceed, cancel that order.
-		 * If we are marked stuck we would want to force the train
-		 * to proceed to the next signal. In the other cases we
-		 * would like to pass the signal at danger and run till the
-		 * next signal we encounter. */
-		t->force_proceed = t->force_proceed == TFP_SIGNAL ? TFP_NONE : t->flags.Test(VehicleRailFlag::Stuck) || t->IsChainInDepot() ? TFP_STUCK : TFP_SIGNAL;
+		t->force_proceed = DetermineNextTrainForceProceeding(t);
 		SetWindowDirty(WC_VEHICLE_VIEW, t->index);
 
 		/* Unbunching data is no longer valid. */
@@ -2675,7 +2691,7 @@ public:
 			switch (order->GetType()) {
 				case OT_GOTO_DEPOT:
 					/* Skip service in depot orders when the train doesn't need service. */
-					if ((order->GetDepotOrderType() & ODTFB_SERVICE) && !this->v->NeedsServicing()) break;
+					if (order->GetDepotOrderType().Test(OrderDepotTypeFlag::Service) && !this->v->NeedsServicing()) break;
 					[[fallthrough]];
 				case OT_GOTO_STATION:
 				case OT_GOTO_WAYPOINT:
@@ -2859,7 +2875,7 @@ static Track ChooseTrainTrack(Train *v, TileIndex tile, DiagDirection enterdir, 
 
 	orders.Restore();
 	if (v->current_order.IsType(OT_GOTO_DEPOT) &&
-			(v->current_order.GetDepotActionType() & ODATFB_NEAREST_DEPOT) &&
+			v->current_order.GetDepotActionType().Test(OrderDepotActionFlag::NearestDepot) &&
 			final_dest != INVALID_TILE && IsRailDepotTile(final_dest)) {
 		v->current_order.SetDestination(GetDepotIndex(final_dest));
 		v->dest_tile = final_dest;
@@ -3086,7 +3102,7 @@ static inline void AffectSpeedByZChange(Train *v, int old_z)
 static bool TrainMovedChangeSignals(TileIndex tile, DiagDirection dir)
 {
 	if (IsTileType(tile, MP_RAILWAY) &&
-			GetRailTileType(tile) == RAIL_TILE_SIGNALS) {
+			GetRailTileType(tile) == RailTileType::Signals) {
 		TrackdirBits tracks = TrackBitsToTrackdirBits(GetTrackBits(tile)) & DiagdirReachesTrackdirs(dir);
 		Trackdir trackdir = FindFirstTrackdir(tracks);
 		if (UpdateSignalsOnSegment(tile,  TrackdirToExitdir(trackdir), GetTileOwner(tile)) == SIGSEG_PBS && HasSignalOnTrackdir(tile, trackdir)) {
@@ -4042,7 +4058,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 			OrderType order_type = v->current_order.GetType();
 			/* Do not skip waypoints (incl. 'via' stations) when passing through at full speed. */
 			if ((order_type == OT_GOTO_WAYPOINT || order_type == OT_GOTO_STATION) &&
-						(v->current_order.GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) &&
+						v->current_order.GetNonStopType().Test(OrderNonStopFlag::NoDestination) &&
 						IsTileType(v->tile, MP_STATION) &&
 						v->current_order.GetDestination() == GetStationIndex(v->tile)) {
 				ProcessOrders(v);
@@ -4152,7 +4168,7 @@ static void CheckIfTrainNeedsService(Train *v)
 	}
 
 	SetBit(v->gv_flags, GVF_SUPPRESS_IMPLICIT_ORDERS);
-	v->current_order.MakeGoToDepot(depot, ODTFB_SERVICE, ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS, ODATFB_NEAREST_DEPOT);
+	v->current_order.MakeGoToDepot(depot, OrderDepotTypeFlag::Service, OrderNonStopFlag::NoIntermediate, OrderDepotActionFlag::NearestDepot);
 	v->dest_tile = tfdd.tile;
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 }

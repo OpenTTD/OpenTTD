@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file highscore.cpp Definition of functions used for highscore handling */
@@ -87,20 +87,19 @@ static bool HighScoreSorter(const Company * const &a, const Company * const &b)
  */
 int8_t SaveHighScoreValueNetwork()
 {
-	const Company *cl[MAX_COMPANIES];
-	size_t count = 0;
+	std::vector<const Company *> cl;
 	int8_t local_company_place = -1;
 
 	/* Sort all active companies with the highest score first */
-	for (const Company *c : Company::Iterate()) cl[count++] = c;
+	for (const Company *c : Company::Iterate()) cl.push_back(c);
 
-	std::sort(std::begin(cl), std::begin(cl) + count, HighScoreSorter);
+	std::ranges::sort(cl, HighScoreSorter);
 
 	/* Clear the high scores from the previous network game. */
 	auto &highscores = _highscore_table[SP_MULTIPLAYER];
 	std::fill(highscores.begin(), highscores.end(), HighScore{});
 
-	for (size_t i = 0; i < count && i < highscores.size(); i++) {
+	for (size_t i = 0; i < cl.size() && i < highscores.size(); i++) {
 		const Company *c = cl[i];
 		auto &highscore = highscores[i];
 		highscore.name = GetString(STR_HIGHSCORE_NAME, c->index, c->index); // get manager/company name string

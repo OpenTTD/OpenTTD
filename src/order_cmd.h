@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file order_cmd.h Command definitions related to orders. */
@@ -23,14 +23,14 @@ CommandCost CmdCloneOrder(DoCommandFlags flags, CloneOptions action, VehicleID v
 CommandCost CmdMoveOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID moving_order, VehicleOrderID target_order);
 CommandCost CmdClearOrderBackup(DoCommandFlags flags, TileIndex tile, ClientID user_id);
 
-DEF_CMD_TRAIT(CMD_MODIFY_ORDER,       CmdModifyOrder,       CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_SKIP_TO_ORDER,      CmdSkipToOrder,       CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_DELETE_ORDER,       CmdDeleteOrder,       CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_INSERT_ORDER,       CmdInsertOrder,       CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_ORDER_REFIT,        CmdOrderRefit,        CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_CLONE_ORDER,        CmdCloneOrder,        CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_MOVE_ORDER,         CmdMoveOrder,         CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_CLEAR_ORDER_BACKUP, CmdClearOrderBackup,  CommandFlag::ClientID, CMDT_SERVER_SETTING)
+DEF_CMD_TRAIT(CMD_MODIFY_ORDER,       CmdModifyOrder,       CommandFlag::Location, CommandType::RouteManagement)
+DEF_CMD_TRAIT(CMD_SKIP_TO_ORDER,      CmdSkipToOrder,       CommandFlag::Location, CommandType::RouteManagement)
+DEF_CMD_TRAIT(CMD_DELETE_ORDER,       CmdDeleteOrder,       CommandFlag::Location, CommandType::RouteManagement)
+DEF_CMD_TRAIT(CMD_INSERT_ORDER,       CmdInsertOrder,       CommandFlag::Location, CommandType::RouteManagement)
+DEF_CMD_TRAIT(CMD_ORDER_REFIT,        CmdOrderRefit,        CommandFlag::Location, CommandType::RouteManagement)
+DEF_CMD_TRAIT(CMD_CLONE_ORDER,        CmdCloneOrder,        CommandFlag::Location, CommandType::RouteManagement)
+DEF_CMD_TRAIT(CMD_MOVE_ORDER,         CmdMoveOrder,         CommandFlag::Location, CommandType::RouteManagement)
+DEF_CMD_TRAIT(CMD_CLEAR_ORDER_BACKUP, CmdClearOrderBackup,  CommandFlag::ClientID, CommandType::ServerSetting)
 
 template <typename Tcont, typename Titer>
 inline EndianBufferWriter<Tcont, Titer> &operator <<(EndianBufferWriter<Tcont, Titer> &buffer, const Order &order)

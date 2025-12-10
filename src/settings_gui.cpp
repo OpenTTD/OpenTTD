@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file settings_gui.cpp GUI for settings. */
@@ -202,7 +202,7 @@ static constexpr TextColour GAME_OPTIONS_LABEL = TC_LIGHT_BLUE;
 /** Colour for selected text of game options. */
 static constexpr TextColour GAME_OPTIONS_SELECTED = TC_WHITE;
 
-static constexpr NWidgetPart _nested_social_plugins_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_social_plugins_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_FRAME, GAME_OPTIONS_BACKGROUND, WID_GO_SOCIAL_PLUGIN_TITLE), SetTextStyle(GAME_OPTIONS_FRAME),
 			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
@@ -217,7 +217,7 @@ static constexpr NWidgetPart _nested_social_plugins_widgets[] = {
 	EndContainer(),
 };
 
-static constexpr NWidgetPart _nested_social_plugins_none_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_social_plugins_none_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_TEXT, INVALID_COLOUR), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE), SetTextStyle(GAME_OPTIONS_LABEL),
 	EndContainer(),
@@ -415,6 +415,7 @@ struct GameOptionsWindow : Window {
 	bool reload = false;
 	bool gui_scale_changed = false;
 	int gui_scale = 0;
+	static inline int previous_gui_scale = 0; ///< Previous GUI scale.
 	static inline WidgetID active_tab = WID_GO_TAB_GENERAL;
 
 	GameOptionsWindow(WindowDesc &desc) : Window(desc), filter_editbox(50)
@@ -656,6 +657,9 @@ struct GameOptionsWindow : Window {
 
 			case WID_GO_GUI_FONT_SPRITE_TEXT:
 				return GetToggleString(STR_GAME_OPTIONS_GUI_FONT_SPRITE, WID_GO_GUI_FONT_SPRITE);
+
+			case WID_GO_GUI_FONT_DEFAULT_TEXT:
+				return GetToggleString(STR_GAME_OPTIONS_GUI_FONT_DEFAULT, WID_GO_GUI_FONT_DEFAULT);
 
 			case WID_GO_GUI_FONT_AA_TEXT:
 				return GetToggleString(STR_GAME_OPTIONS_GUI_FONT_AA, WID_GO_GUI_FONT_AA);
@@ -927,6 +931,18 @@ struct GameOptionsWindow : Window {
 		}
 	}
 
+#ifdef HAS_TRUETYPE_FONT
+	static void ReloadFonts()
+	{
+		FontCache::LoadFontCaches(FONTSIZES_ALL);
+		FontCache::ClearFontCaches(FONTSIZES_ALL);
+		CheckForMissingGlyphs();
+		SetupWidgetDimensions();
+		UpdateAllVirtCoords();
+		ReInitAllWindows(true);
+	}
+#endif /* HAS_TRUETYPE_FONT */
+
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		if (widget >= WID_GO_BASE_GRF_TEXTFILE && widget < WID_GO_BASE_GRF_TEXTFILE + TFT_CONTENT_END) {
@@ -1037,13 +1053,15 @@ struct GameOptionsWindow : Window {
 				this->SetWidgetLoweredState(WID_GO_GUI_FONT_SPRITE, _fcsettings.prefer_sprite);
 				this->SetWidgetDisabledState(WID_GO_GUI_FONT_AA, _fcsettings.prefer_sprite);
 				this->SetDirty();
+				ReloadFonts();
+				break;
 
-				FontCache::LoadFontCaches(FONTSIZES_ALL);
-				FontCache::ClearFontCaches(FONTSIZES_ALL);
-				CheckForMissingGlyphs();
-				SetupWidgetDimensions();
-				UpdateAllVirtCoords();
-				ReInitAllWindows(true);
+			case WID_GO_GUI_FONT_DEFAULT:
+				_fcsettings.prefer_default = !_fcsettings.prefer_default;
+
+				this->SetWidgetLoweredState(WID_GO_GUI_FONT_DEFAULT, _fcsettings.prefer_default);
+				this->SetDirty();
+				ReloadFonts();
 				break;
 
 			case WID_GO_GUI_FONT_AA:
@@ -1076,9 +1094,12 @@ struct GameOptionsWindow : Window {
 			case WID_GO_GUI_SCALE_AUTO:
 			{
 				if (_gui_scale_cfg == -1) {
-					_gui_scale_cfg = _gui_scale;
+					_gui_scale_cfg = this->previous_gui_scale; // Load the previous GUI scale
 					this->SetWidgetLoweredState(WID_GO_GUI_SCALE_AUTO, false);
+					if (AdjustGUIZoom(false)) ReInitAllWindows(true);
+					this->gui_scale = _gui_scale;
 				} else {
+					this->previous_gui_scale = _gui_scale; // Set the previous GUI scale value as the current one
 					_gui_scale_cfg = -1;
 					this->SetWidgetLoweredState(WID_GO_GUI_SCALE_AUTO, true);
 					if (AdjustGUIZoom(false)) ReInitAllWindows(true);
@@ -1538,6 +1559,7 @@ struct GameOptionsWindow : Window {
 		this->SetWidgetLoweredState(WID_GO_GUI_SCALE_BEVEL_BUTTON, _settings_client.gui.scale_bevels);
 #ifdef HAS_TRUETYPE_FONT
 		this->SetWidgetLoweredState(WID_GO_GUI_FONT_SPRITE, _fcsettings.prefer_sprite);
+		this->SetWidgetLoweredState(WID_GO_GUI_FONT_DEFAULT, _fcsettings.prefer_default);
 		this->SetWidgetLoweredState(WID_GO_GUI_FONT_AA, _fcsettings.global_aa);
 		this->SetWidgetDisabledState(WID_GO_GUI_FONT_AA, _fcsettings.prefer_sprite);
 #endif /* HAS_TRUETYPE_FONT */
@@ -1598,7 +1620,7 @@ struct GameOptionsWindow : Window {
 	}
 };
 
-static constexpr NWidgetPart _nested_game_options_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_game_options_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, GAME_OPTIONS_BACKGROUND),
 		NWidget(WWT_CAPTION, GAME_OPTIONS_BACKGROUND), SetStringTip(STR_GAME_OPTIONS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -1667,6 +1689,10 @@ static constexpr NWidgetPart _nested_game_options_widgets[] = {
 							NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 								NWidget(WWT_BOOLBTN, GAME_OPTIONS_BACKGROUND, WID_GO_GUI_FONT_SPRITE), SetAlternateColourTip(GAME_OPTIONS_BUTTON, STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP),
 								NWidget(WWT_TEXT, INVALID_COLOUR, WID_GO_GUI_FONT_SPRITE_TEXT), SetFill(1, 0), SetResize(1, 0), SetTextStyle(GAME_OPTIONS_LABEL),
+							EndContainer(),
+							NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
+								NWidget(WWT_BOOLBTN, GAME_OPTIONS_BACKGROUND, WID_GO_GUI_FONT_DEFAULT), SetAlternateColourTip(GAME_OPTIONS_BUTTON, STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP),
+								NWidget(WWT_TEXT, INVALID_COLOUR, WID_GO_GUI_FONT_DEFAULT_TEXT), SetFill(1, 0), SetResize(1, 0), SetTextStyle(GAME_OPTIONS_LABEL),
 							EndContainer(),
 							NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 								NWidget(WWT_BOOLBTN, GAME_OPTIONS_BACKGROUND, WID_GO_GUI_FONT_AA), SetAlternateColourTip(GAME_OPTIONS_BUTTON, STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP),
@@ -2138,7 +2164,7 @@ struct CustomCurrencyWindow : Window {
 	}
 };
 
-static constexpr NWidgetPart _nested_cust_currency_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_cust_currency_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_CURRENCY_WINDOW, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),

@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file order_sl.cpp Code handling saving and loading of orders */
@@ -31,9 +31,9 @@ void Order::ConvertFromOldSavegame()
 	/* First handle non-stop - use value from savegame if possible, else use value from config file */
 	if (_settings_client.gui.sg_new_nonstop || (IsSavegameVersionBefore(SLV_22) && _savegame_type != SGT_TTO && _savegame_type != SGT_TTD && _settings_client.gui.new_nonstop)) {
 		/* OFB_NON_STOP */
-		this->SetNonStopType((old_flags & 8) ? ONSF_NO_STOP_AT_ANY_STATION : ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
+		this->SetNonStopType((old_flags & 8) ? OrderNonStopFlags{OrderNonStopFlag::NoIntermediate, OrderNonStopFlag::NoDestination} : OrderNonStopFlag::NoIntermediate);
 	} else {
-		this->SetNonStopType((old_flags & 8) ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
+		this->SetNonStopType((old_flags & 8) ? OrderNonStopFlag::NoIntermediate : OrderNonStopFlags{});
 	}
 
 	switch (this->GetType()) {
@@ -45,32 +45,35 @@ void Order::ConvertFromOldSavegame()
 	if (this->GetType() != OT_GOTO_DEPOT) {
 		/* Then the load flags */
 		if ((old_flags & 2) != 0) { // OFB_UNLOAD
-			this->SetLoadType(OLFB_NO_LOAD);
+			this->SetLoadType(OrderLoadType::NoLoad);
 		} else if ((old_flags & 4) == 0) { // !OFB_FULL_LOAD
-			this->SetLoadType(OLF_LOAD_IF_POSSIBLE);
+			this->SetLoadType(OrderLoadType::LoadIfPossible);
 		} else {
 			/* old OTTD versions stored full_load_any in config file - assume it was enabled when loading */
-			this->SetLoadType(_settings_client.gui.sg_full_load_any || IsSavegameVersionBefore(SLV_22) ? OLF_FULL_LOAD_ANY : OLFB_FULL_LOAD);
+			this->SetLoadType(_settings_client.gui.sg_full_load_any || IsSavegameVersionBefore(SLV_22) ? OrderLoadType::FullLoadAny : OrderLoadType::FullLoad);
 		}
 
-		if (this->IsType(OT_GOTO_STATION)) this->SetStopLocation(OSL_PLATFORM_FAR_END);
+		if (this->IsType(OT_GOTO_STATION)) this->SetStopLocation(OrderStopLocation::FarEnd);
 
 		/* Finally fix the unload flags */
 		if ((old_flags & 1) != 0) { // OFB_TRANSFER
-			this->SetUnloadType(OUFB_TRANSFER);
+			this->SetUnloadType(OrderUnloadType::Transfer);
 		} else if ((old_flags & 2) != 0) { // OFB_UNLOAD
-			this->SetUnloadType(OUFB_UNLOAD);
+			this->SetUnloadType(OrderUnloadType::Unload);
 		} else {
-			this->SetUnloadType(OUF_UNLOAD_IF_POSSIBLE);
+			this->SetUnloadType(OrderUnloadType::UnloadIfPossible);
 		}
 	} else {
 		/* Then the depot action flags */
-		this->SetDepotActionType(((old_flags & 6) == 4) ? ODATFB_HALT : ODATF_SERVICE_ONLY);
+		OrderDepotActionFlags action_flags{};
+		if ((old_flags & 6) == 4) action_flags.Set(OrderDepotActionFlag::Halt);
+		this->SetDepotActionType(action_flags);
 
 		/* Finally fix the depot type flags */
-		uint t = ((old_flags & 6) == 6) ? ODTFB_SERVICE : ODTF_MANUAL;
-		if ((old_flags & 2) != 0) t |= ODTFB_PART_OF_ORDERS;
-		this->SetDepotOrderType((OrderDepotTypeFlags)t);
+		OrderDepotTypeFlags type_flags{};
+		if ((old_flags & 6) == 6) type_flags.Set(OrderDepotTypeFlag::Service);
+		if ((old_flags & 2) != 0) type_flags.Set(OrderDepotTypeFlag::PartOfOrders);
+		this->SetDepotOrderType(type_flags);
 	}
 }
 
@@ -191,7 +194,7 @@ struct ORDRChunkHandler : ChunkHandler {
 
 			/* Update all the next pointer. The orders were built like this:
 			 * While the order is valid, the previous order will get its next pointer set */
-			for (uint32_t num = 1; OldOrderSaveLoadItem item : _old_order_saveload_pool) {
+			for (uint32_t num = 1; const OldOrderSaveLoadItem &item : _old_order_saveload_pool) {
 				if (!item.order.IsType(OT_NOTHING) && num > 1) {
 					OldOrderSaveLoadItem *prev = GetOldOrder(num - 1);
 					if (prev != nullptr) prev->next = num;

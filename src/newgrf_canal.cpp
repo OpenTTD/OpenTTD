@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file newgrf_canal.cpp Implementation of NewGRF canals. */
@@ -65,7 +65,7 @@ struct CanalResolverObject : public ResolverObject {
 		case 0x80: {
 			int z = GetTileZ(this->tile);
 			/* Return consistent height within locks */
-			if (IsTileType(this->tile, MP_WATER) && IsLock(this->tile) && GetLockPart(this->tile) == LOCK_PART_UPPER) z--;
+			if (IsTileType(this->tile, MP_WATER) && IsLock(this->tile) && GetLockPart(this->tile) == LockPart::Upper) z--;
 			return z;
 		}
 

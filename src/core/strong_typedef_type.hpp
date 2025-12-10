@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file strong_typedef_type.hpp Type (helpers) for making a strong typedef that is a distinct type. */
@@ -157,5 +157,32 @@ namespace StrongType {
 		TBaseType value{};
 	};
 }
+
+/**
+ * Implementation of std::hash for StrongType::Typedef.
+ *
+ * This specialization of std::hash allows hashing of StrongType::Typedef instances
+ * by leveraging the hash of the base type.
+ *
+ * Example Usage:
+ *   using MyType = StrongType::Typedef<int, struct MyTypeTag>;
+ *   std::unordered_map<MyType, std::string> my_map;
+ *
+ * @tparam TBaseType The underlying type of the StrongType::Typedef.
+ * @tparam TProperties Additional properties for the StrongType::Typedef.
+ */
+template <typename TBaseType, typename... TProperties>
+struct std::hash<StrongType::Typedef<TBaseType, TProperties...>> {
+	/**
+	 * Computes the hash value for a StrongType::Typedef instance.
+	 *
+	 * @param t The StrongType::Typedef instance to hash.
+	 * @return The hash value of the base type of t.
+	 */
+	std::size_t operator()(const StrongType::Typedef<TBaseType, TProperties...> &t) const noexcept
+	{
+		return std::hash<TBaseType>()(t.base());
+	}
+};
 
 #endif /* STRONG_TYPEDEF_TYPE_HPP */

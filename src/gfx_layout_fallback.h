@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file gfx_layout_fallback.h Functions related to laying out the texts as fallback. */
@@ -26,5 +26,24 @@ public:
 	static size_t AppendToBuffer(char32_t *buff, const char32_t *buffer_last, char32_t c);
 };
 
+/**
+ * Swap paired brackets for fallback RTL layouting.
+ * @param c Character to swap.
+ * @return Swapped character, or original character if it is not a paired bracket.
+ */
+inline char32_t SwapRtlPairedCharacters(char32_t c)
+{
+	/* There are many more paired brackets, but for fallback purposes we only handle ASCII brackets. */
+	/* https://www.unicode.org/Public/UCD/latest/ucd/BidiBrackets.txt */
+	switch (c) {
+		case U'(': return U')';
+		case U')': return U'(';
+		case U'[': return U']';
+		case U']': return U'[';
+		case U'{': return U'}';
+		case U'}': return U'{';
+		default: return c;
+	}
+}
 
 #endif /* GFX_LAYOUT_FALLBACK_H */

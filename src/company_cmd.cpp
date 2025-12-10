@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file company_cmd.cpp Handling of companies. */
@@ -574,14 +574,14 @@ restart:;
 void ResetCompanyLivery(Company *c)
 {
 	for (LiveryScheme scheme = LS_BEGIN; scheme < LS_END; scheme++) {
-		c->livery[scheme].in_use  = 0;
+		c->livery[scheme].in_use.Reset();
 		c->livery[scheme].colour1 = c->colour;
 		c->livery[scheme].colour2 = c->colour;
 	}
 
 	for (Group *g : Group::Iterate()) {
 		if (g->owner == c->index) {
-			g->livery.in_use  = 0;
+			g->livery.in_use.Reset();
 			g->livery.colour1 = c->colour;
 			g->livery.colour2 = c->colour;
 		}
@@ -623,8 +623,8 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = CompanyID::Invalid(
 	c->inaugurated_year = TimerGameEconomy::year;
 	c->inaugurated_year_calendar = TimerGameCalendar::year;
 
-	/* If starting a player company in singleplayer and a favorite company manager face is selected, choose it. Otherwise, use a random face.
-	 * In a network game, we'll choose the favorite face later in CmdCompanyCtrl to sync it to all clients. */
+	/* If starting a player company in singleplayer and a favourite company manager face is selected, choose it. Otherwise, use a random face.
+	 * In a network game, we'll choose the favourite face later in CmdCompanyCtrl to sync it to all clients. */
 	bool randomise_face = true;
 	if (!_company_manager_face.empty() && !is_ai && !_networking) {
 		auto cmf = ParseCompanyManagerFaceCode(_company_manager_face);
@@ -917,7 +917,7 @@ CommandCost CmdCompanyCtrl(DoCommandFlags flags, CompanyCtrlAction cca, CompanyI
 				SetLocalCompany(c->index);
 
 				/*
-				 * If a favorite company manager face is selected, choose it. Otherwise, use a random face.
+				 * If a favourite company manager face is selected, choose it. Otherwise, use a random face.
 				 * Because this needs to be synchronised over the network, only the client knows
 				 * its configuration and we are currently in the execution of a command, we have
 				 * to circumvent the normal ::Post logic for commands and just send the command.
@@ -925,7 +925,7 @@ CommandCost CmdCompanyCtrl(DoCommandFlags flags, CompanyCtrlAction cca, CompanyI
 				if (!_company_manager_face.empty()) {
 					auto cmf = ParseCompanyManagerFaceCode(_company_manager_face);
 					if (cmf.has_value()) {
-						Command<CMD_SET_COMPANY_MANAGER_FACE>::SendNet(STR_NULL, c->index, cmf->bits, cmf->style);
+						Command<CMD_SET_COMPANY_MANAGER_FACE>::SendNet(STR_NULL, c->index, cmf->style, cmf->bits);
 					}
 				}
 
@@ -1050,11 +1050,11 @@ CommandCost CmdCompanyAllowListCtrl(DoCommandFlags flags, CompanyAllowListCtrlAc
 /**
  * Change the company manager's face.
  * @param flags operation to perform
- * @param bits The bits of company manager face.
  * @param style The style of the company manager face.
+ * @param bits The bits of company manager face.
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetCompanyManagerFace(DoCommandFlags flags, uint32_t bits, uint style)
+CommandCost CmdSetCompanyManagerFace(DoCommandFlags flags, uint style, uint32_t bits)
 {
 	CompanyManagerFace tmp_face{style, bits, {}};
 	if (!IsValidCompanyManagerFace(tmp_face)) return CMD_ERROR;
@@ -1077,8 +1077,8 @@ CommandCost CmdSetCompanyManagerFace(DoCommandFlags flags, uint32_t bits, uint s
 void UpdateCompanyLiveries(Company *c)
 {
 	for (int i = 1; i < LS_END; i++) {
-		if (!HasBit(c->livery[i].in_use, 0)) c->livery[i].colour1 = c->livery[LS_DEFAULT].colour1;
-		if (!HasBit(c->livery[i].in_use, 1)) c->livery[i].colour2 = c->livery[LS_DEFAULT].colour2;
+		if (!c->livery[i].in_use.Test(Livery::Flag::Primary)) c->livery[i].colour1 = c->livery[LS_DEFAULT].colour1;
+		if (!c->livery[i].in_use.Test(Livery::Flag::Secondary)) c->livery[i].colour2 = c->livery[LS_DEFAULT].colour2;
 	}
 	UpdateCompanyGroupLiveries(c);
 }
@@ -1109,7 +1109,7 @@ CommandCost CmdSetCompanyColour(DoCommandFlags flags, LiveryScheme scheme, bool 
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		if (primary) {
-			if (scheme != LS_DEFAULT) AssignBit(c->livery[scheme].in_use, 0, colour != INVALID_COLOUR);
+			if (scheme != LS_DEFAULT) c->livery[scheme].in_use.Set(Livery::Flag::Primary, colour != INVALID_COLOUR);
 			if (colour == INVALID_COLOUR) colour = c->livery[LS_DEFAULT].colour1;
 			c->livery[scheme].colour1 = colour;
 
@@ -1122,7 +1122,7 @@ CommandCost CmdSetCompanyColour(DoCommandFlags flags, LiveryScheme scheme, bool 
 				CompanyAdminUpdate(c);
 			}
 		} else {
-			if (scheme != LS_DEFAULT) AssignBit(c->livery[scheme].in_use, 1, colour != INVALID_COLOUR);
+			if (scheme != LS_DEFAULT) c->livery[scheme].in_use.Set(Livery::Flag::Secondary, colour != INVALID_COLOUR);
 			if (colour == INVALID_COLOUR) colour = c->livery[LS_DEFAULT].colour2;
 			c->livery[scheme].colour2 = colour;
 
@@ -1131,16 +1131,16 @@ CommandCost CmdSetCompanyColour(DoCommandFlags flags, LiveryScheme scheme, bool 
 			}
 		}
 
-		if (c->livery[scheme].in_use != 0) {
+		if (c->livery[scheme].in_use.Any({Livery::Flag::Primary, Livery::Flag::Secondary})) {
 			/* If enabling a scheme, set the default scheme to be in use too */
-			c->livery[LS_DEFAULT].in_use = 1;
+			c->livery[LS_DEFAULT].in_use.Set(Livery::Flag::Primary);
 		} else {
 			/* Else loop through all schemes to see if any are left enabled.
 			 * If not, disable the default scheme too. */
-			c->livery[LS_DEFAULT].in_use = 0;
+			c->livery[LS_DEFAULT].in_use.Reset({Livery::Flag::Primary, Livery::Flag::Secondary});
 			for (scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
-				if (c->livery[scheme].in_use != 0) {
-					c->livery[LS_DEFAULT].in_use = 1;
+				if (c->livery[scheme].in_use.Any({Livery::Flag::Primary, Livery::Flag::Secondary})) {
+					c->livery[LS_DEFAULT].in_use.Set(Livery::Flag::Primary);
 					break;
 				}
 			}
@@ -1291,26 +1291,14 @@ int CompanyServiceInterval(const Company *c, VehicleType type)
 
 /**
  * Get total sum of all owned road bits.
+ * @param rtt RoadTramType to get total for.
  * @return Combined total road road bits.
  */
-uint32_t CompanyInfrastructure::GetRoadTotal() const
+uint32_t CompanyInfrastructure::GetRoadTramTotal(RoadTramType rtt) const
 {
 	uint32_t total = 0;
-	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
-		if (RoadTypeIsRoad(rt)) total += this->road[rt];
-	}
-	return total;
-}
-
-/**
- * Get total sum of all owned tram bits.
- * @return Combined total of tram road bits.
- */
-uint32_t CompanyInfrastructure::GetTramTotal() const
-{
-	uint32_t total = 0;
-	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
-		if (RoadTypeIsTram(rt)) total += this->road[rt];
+	for (RoadType rt : GetMaskForRoadTramType(rtt)) {
+		total += this->road[rt];
 	}
 	return total;
 }

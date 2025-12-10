@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file linkgraphjob.cpp Definition of link graph job classes used for cargo distribution. */
@@ -132,11 +132,11 @@ LinkGraphJob::~LinkGraphJob()
 					!(*lg)[node_id].HasEdgeTo(dest_id) ||
 					(*lg)[node_id][dest_id].LastUpdate() == EconomyTime::INVALID_DATE) {
 				/* Edge has been removed. Delete flows. */
-				StationIDStack erased = flows.DeleteFlows(to);
+				std::vector<StationID> erased = flows.DeleteFlows(to);
 				/* Delete old flows for source stations which have been deleted
 				 * from the new flows. This avoids flow cycles between old and
 				 * new flows. */
-				while (!erased.IsEmpty()) geflows.erase(erased.Pop());
+				for (const StationID &station : erased) geflows.erase(station);
 			} else if ((*lg)[node_id][dest_id].last_unrestricted_update == EconomyTime::INVALID_DATE) {
 				/* Edge is fully restricted. */
 				flows.RestrictFlows(to);

@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file  vehicle_base.h Base class for all vehicles. */
@@ -467,7 +467,7 @@ public:
 	 * Check if the vehicle is a ground vehicle.
 	 * @return True iff the vehicle is a train or a road vehicle.
 	 */
-	debug_inline bool IsGroundVehicle() const
+	[[debug_inline]] inline bool IsGroundVehicle() const
 	{
 		return this->type == VEH_TRAIN || this->type == VEH_ROAD;
 	}
@@ -714,9 +714,10 @@ public:
 	 * Get the next station the vehicle will stop at.
 	 * @return ID of the next station the vehicle will stop at or StationID::Invalid().
 	 */
-	inline StationIDStack GetNextStoppingStation() const
+	inline void GetNextStoppingStation(std::vector<StationID> &next_station) const
 	{
-		return (this->orders == nullptr) ? StationID::Invalid() : this->orders->GetNextStoppingStation(this);
+		if (this->orders == nullptr) return;
+		this->orders->GetNextStoppingStation(next_station, this);
 	}
 
 	void ResetRefitCaps();
@@ -909,7 +910,7 @@ public:
 	 * Check if the vehicle is a front engine.
 	 * @return Returns true if the vehicle is a front engine.
 	 */
-	debug_inline bool IsFrontEngine() const
+	[[debug_inline]] inline bool IsFrontEngine() const
 	{
 		return this->IsGroundVehicle() && HasBit(this->subtype, GVSF_FRONT);
 	}

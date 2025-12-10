@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file group_cmd.cpp Handling of the engine groups */
@@ -46,7 +46,7 @@ void GroupStatistics::Clear()
  */
 void UpdateGroupChildren()
 {
-	for (Group *g : Group::Iterate()) {
+	for (const Group *g : Group::Iterate()) {
 		if (g->parent != GroupID::Invalid()) Group::Get(g->parent)->children.insert(g->index);
 	}
 }
@@ -306,8 +306,8 @@ static void PropagateChildLivery(const Group *g, bool reset_cache)
 
 	for (const GroupID &childgroup : g->children) {
 		Group *cg = Group::Get(childgroup);
-		if (!HasBit(cg->livery.in_use, 0)) cg->livery.colour1 = g->livery.colour1;
-		if (!HasBit(cg->livery.in_use, 1)) cg->livery.colour2 = g->livery.colour2;
+		if (!cg->livery.in_use.Test(Livery::Flag::Primary)) cg->livery.colour1 = g->livery.colour1;
+		if (!cg->livery.in_use.Test(Livery::Flag::Secondary)) cg->livery.colour2 = g->livery.colour2;
 		PropagateChildLivery(cg, reset_cache);
 	}
 }
@@ -321,8 +321,8 @@ void UpdateCompanyGroupLiveries(const Company *c)
 {
 	for (Group *g : Group::Iterate()) {
 		if (g->owner == c->index && g->parent == GroupID::Invalid()) {
-			if (!HasBit(g->livery.in_use, 0)) g->livery.colour1 = c->livery[LS_DEFAULT].colour1;
-			if (!HasBit(g->livery.in_use, 1)) g->livery.colour2 = c->livery[LS_DEFAULT].colour2;
+			if (!g->livery.in_use.Test(Livery::Flag::Primary)) g->livery.colour1 = c->livery[LS_DEFAULT].colour1;
+			if (!g->livery.in_use.Test(Livery::Flag::Secondary)) g->livery.colour2 = c->livery[LS_DEFAULT].colour2;
 			PropagateChildLivery(g, false);
 		}
 	}
@@ -402,7 +402,7 @@ CommandCost CmdDeleteGroup(DoCommandFlags flags, GroupID group_id)
 			Company *c = Company::Get(g->owner);
 
 			/* If we set an autoreplace for the group we delete, remove it. */
-			for (EngineRenew *er : EngineRenew::Iterate()) {
+			for (const EngineRenew *er : EngineRenew::Iterate()) {
 				if (er->group_id == g->index) RemoveEngineReplacementForCompany(c, er->from, g->index, flags);
 			}
 
@@ -480,11 +480,11 @@ CommandCost CmdAlterGroup(DoCommandFlags flags, AlterGroupMode mode, GroupID gro
 
 			GroupStatistics::UpdateAutoreplace(g->owner);
 
-			if (!HasBit(g->livery.in_use, 0) || !HasBit(g->livery.in_use, 1)) {
+			if (!g->livery.in_use.All({Livery::Flag::Primary, Livery::Flag::Secondary})) {
 				/* Update livery with new parent's colours if either colour is default. */
 				const Livery *livery = GetParentLivery(g);
-				if (!HasBit(g->livery.in_use, 0)) g->livery.colour1 = livery->colour1;
-				if (!HasBit(g->livery.in_use, 1)) g->livery.colour2 = livery->colour2;
+				if (!g->livery.in_use.Test(Livery::Flag::Primary)) g->livery.colour1 = livery->colour1;
+				if (!g->livery.in_use.Test(Livery::Flag::Secondary)) g->livery.colour2 = livery->colour2;
 
 				PropagateChildLivery(g, true);
 				MarkWholeScreenDirty();
@@ -557,7 +557,7 @@ std::tuple<CommandCost, GroupID> CmdAddVehicleGroup(DoCommandFlags flags, GroupI
 	if (veh_id == VehicleID::Invalid() && vli.Valid()) {
 		if (!GenerateVehicleSortList(&list, vli) || list.empty()) return { CMD_ERROR, GroupID::Invalid() };
 	} else {
-		Vehicle *v = Vehicle::GetIfValid(veh_id);
+		const Vehicle *v = Vehicle::GetIfValid(veh_id);
 		if (v == nullptr) return { CMD_ERROR, GroupID::Invalid() };
 		list.push_back(v);
 	}
@@ -568,7 +568,7 @@ std::tuple<CommandCost, GroupID> CmdAddVehicleGroup(DoCommandFlags flags, GroupI
 	}
 
 	if (Group::IsValidID(new_g)) {
-		Group *g = Group::Get(new_g);
+		const Group *g = Group::Get(new_g);
 		if (g->owner != _current_company || g->vehicle_type != vtype) return { CMD_ERROR, GroupID::Invalid() };
 	}
 
@@ -646,7 +646,7 @@ CommandCost CmdAddSharedVehicleGroup(DoCommandFlags flags, GroupID id_g, Vehicle
  */
 CommandCost CmdRemoveAllVehiclesGroup(DoCommandFlags flags, GroupID group_id)
 {
-	Group *g = Group::GetIfValid(group_id);
+	const Group *g = Group::GetIfValid(group_id);
 
 	if (g == nullptr || g->owner != _current_company) return CMD_ERROR;
 
@@ -684,11 +684,11 @@ CommandCost CmdSetGroupLivery(DoCommandFlags flags, GroupID group_id, bool prima
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		if (primary) {
-			AssignBit(g->livery.in_use, 0, colour != INVALID_COLOUR);
+			g->livery.in_use.Set(Livery::Flag::Primary, colour != INVALID_COLOUR);
 			if (colour == INVALID_COLOUR) colour = GetParentLivery(g)->colour1;
 			g->livery.colour1 = colour;
 		} else {
-			AssignBit(g->livery.in_use, 1, colour != INVALID_COLOUR);
+			g->livery.in_use.Set(Livery::Flag::Secondary, colour != INVALID_COLOUR);
 			if (colour == INVALID_COLOUR) colour = GetParentLivery(g)->colour2;
 			g->livery.colour2 = colour;
 		}
@@ -810,7 +810,7 @@ uint GetGroupNumEngines(CompanyID company, GroupID id_g, EngineID id_e)
 {
 	uint count = 0;
 
-	if (Group *g = Group::GetIfValid(id_g); g != nullptr) {
+	if (const Group *g = Group::GetIfValid(id_g); g != nullptr) {
 		for (const GroupID &childgroup : g->children) {
 			count += GetGroupNumEngines(company, childgroup, id_e);
 		}
@@ -831,7 +831,7 @@ uint GetGroupNumVehicle(CompanyID company, GroupID id_g, VehicleType type)
 {
 	uint count = 0;
 
-	if (Group *g = Group::GetIfValid(id_g); g != nullptr) {
+	if (const Group *g = Group::GetIfValid(id_g); g != nullptr) {
 		for (const GroupID &childgroup : g->children) {
 			count += GetGroupNumVehicle(company, childgroup, type);
 		}
@@ -852,7 +852,7 @@ uint GetGroupNumVehicleMinAge(CompanyID company, GroupID id_g, VehicleType type)
 {
 	uint count = 0;
 
-	if (Group *g = Group::GetIfValid(id_g); g != nullptr) {
+	if (const Group *g = Group::GetIfValid(id_g); g != nullptr) {
 		for (const GroupID &childgroup : g->children) {
 			count += GetGroupNumVehicleMinAge(company, childgroup, type);
 		}
@@ -873,7 +873,7 @@ Money GetGroupProfitLastYearMinAge(CompanyID company, GroupID id_g, VehicleType 
 {
 	Money sum = 0;
 
-	if (Group *g = Group::GetIfValid(id_g); g != nullptr) {
+	if (const Group *g = Group::GetIfValid(id_g); g != nullptr) {
 		for (const GroupID &childgroup : g->children) {
 			sum += GetGroupProfitLastYearMinAge(company, childgroup, type);
 		}

@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file engine_type.h Types related to engines. */
@@ -75,8 +75,8 @@ struct RailVehicleInfo {
 	uint8_t image_index = 0;
 	RailVehicleTypes railveh_type = RAILVEH_WAGON;
 	uint8_t cost_factor = 0; ///< Purchase cost factor;      For multiheaded engines the sum of both engine prices.
-	RailTypes railtypes{}; ///< Railtypes, mangled if elrail is disabled.
-	RailTypes intended_railtypes{}; ///< Intended railtypes, regardless of elrail being enabled or disabled.
+	RailTypes railtypes{RAILTYPE_RAIL}; ///< Railtypes, mangled if elrail is disabled.
+	RailTypes intended_railtypes{RAILTYPE_RAIL}; ///< Intended railtypes, regardless of elrail being enabled or disabled.
 	uint8_t ai_passenger_only = 0; ///< Bit value to tell AI that this engine is for passenger use only
 	uint16_t max_speed = 0; ///< Maximum speed (1 unit = 1/1.6 mph = 1 km-ish/h)
 	uint16_t power = 0; ///< Power of engine (hp);      For multiheaded engines the sum of both engine powers.

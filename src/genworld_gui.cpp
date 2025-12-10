@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file genworld_gui.cpp GUI to configure and show progress during map generation. */
@@ -74,7 +74,7 @@ void SetNewLandscapeType(LandscapeType landscape)
 }
 
 /** Widgets of GenerateLandscapeWindow when generating world */
-static constexpr NWidgetPart _nested_generate_landscape_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_generate_landscape_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN), SetStringTip(STR_MAPGEN_WORLD_GENERATION_CAPTION),
@@ -172,14 +172,14 @@ static constexpr NWidgetPart _nested_generate_landscape_widgets[] = {
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 					NWidget(WWT_TEXT, INVALID_COLOUR), SetStringTip(STR_MAPGEN_NORTHWEST), SetPadding(0, WidgetDimensions::unscaled.hsep_normal, 0, 0), SetFill(1, 1), SetAlignment(SA_RIGHT | SA_VERT_CENTER),
-					NWidget(WWT_TEXTBTN, COLOUR_ORANGE, WID_GL_WATER_NW), SetToolTip(STR_MAPGEN_NORTHWEST), SetFill(1, 1),
-					NWidget(WWT_TEXTBTN, COLOUR_ORANGE, WID_GL_WATER_NE), SetToolTip(STR_MAPGEN_NORTHEAST), SetFill(1, 1),
+					NWidget(WWT_TEXTBTN, COLOUR_ORANGE, WID_GL_WATER_NW), SetToolTip(STR_MAPGEN_NORTHWEST_TOOLTIP), SetFill(1, 1),
+					NWidget(WWT_TEXTBTN, COLOUR_ORANGE, WID_GL_WATER_NE), SetToolTip(STR_MAPGEN_NORTHEAST_TOOLTIP), SetFill(1, 1),
 					NWidget(WWT_TEXT, INVALID_COLOUR), SetStringTip(STR_MAPGEN_NORTHEAST), SetPadding(0, 0, 0, WidgetDimensions::unscaled.hsep_normal), SetFill(1, 1),
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 					NWidget(WWT_TEXT, INVALID_COLOUR), SetStringTip(STR_MAPGEN_SOUTHWEST), SetPadding(0, WidgetDimensions::unscaled.hsep_normal, 0, 0), SetFill(1, 1), SetAlignment(SA_RIGHT | SA_VERT_CENTER),
-					NWidget(WWT_TEXTBTN, COLOUR_ORANGE, WID_GL_WATER_SW), SetToolTip(STR_MAPGEN_SOUTHWEST), SetFill(1, 1),
-					NWidget(WWT_TEXTBTN, COLOUR_ORANGE, WID_GL_WATER_SE), SetToolTip(STR_MAPGEN_SOUTHEAST), SetFill(1, 1),
+					NWidget(WWT_TEXTBTN, COLOUR_ORANGE, WID_GL_WATER_SW), SetToolTip(STR_MAPGEN_SOUTHWEST_TOOLTIP), SetFill(1, 1),
+					NWidget(WWT_TEXTBTN, COLOUR_ORANGE, WID_GL_WATER_SE), SetToolTip(STR_MAPGEN_SOUTHEAST_TOOLTIP), SetFill(1, 1),
 					NWidget(WWT_TEXT, INVALID_COLOUR), SetStringTip(STR_MAPGEN_SOUTHEAST), SetPadding(0, 0, 0, WidgetDimensions::unscaled.hsep_normal), SetFill(1, 1),
 				EndContainer(),
 			EndContainer(),
@@ -198,7 +198,7 @@ static constexpr NWidgetPart _nested_generate_landscape_widgets[] = {
 };
 
 /** Widgets of GenerateLandscapeWindow when loading heightmap */
-static constexpr NWidgetPart _nested_heightmap_load_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_heightmap_load_widgets = {
 	/* Window header. */
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -1244,7 +1244,7 @@ struct CreateScenarioWindow : public Window
 	}
 };
 
-static constexpr NWidgetPart _nested_create_scenario_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_create_scenario_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN), SetStringTip(STR_SE_MAPGEN_CAPTION),
@@ -1317,7 +1317,7 @@ void ShowCreateScenario()
 	new CreateScenarioWindow(_create_scenario_desc, GLWM_SCENARIO);
 }
 
-static constexpr NWidgetPart _nested_generate_progress_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_generate_progress_widgets = {
 	NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_GENERATION_WORLD, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.modalpopup),
@@ -1349,7 +1349,8 @@ static const StringID _generation_class_table[]  = {
 	STR_GENERATION_RIVER_GENERATION,
 	STR_GENERATION_CLEARING_TILES,
 	STR_GENERATION_TOWN_GENERATION,
-	STR_GENERATION_INDUSTRY_GENERATION,
+	STR_GENERATION_LAND_INDUSTRY_GENERATION,
+	STR_GENERATION_WATER_INDUSTRY_GENERATION,
 	STR_GENERATION_OBJECT_GENERATION,
 	STR_GENERATION_TREE_GENERATION,
 	STR_GENERATION_SETTINGUP_GAME,
@@ -1456,7 +1457,7 @@ void ShowGenerateWorldProgress()
 
 static void _SetGeneratingWorldProgress(GenWorldProgress cls, uint progress, uint total)
 {
-	static const int percent_table[] = {0, 5, 14, 17, 20, 40, 60, 65, 80, 85, 95, 99, 100 };
+	static const int percent_table[] = {0, 5, 14, 17, 20, 40, 55, 60, 65, 80, 85, 95, 99, 100 };
 	static_assert(lengthof(percent_table) == GWP_CLASS_COUNT + 1);
 	assert(cls < GWP_CLASS_COUNT);
 

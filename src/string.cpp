@@ -2,14 +2,13 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file string.cpp Handling of strings (std::string/std::string_view). */
 
 #include "stdafx.h"
 #include "debug.h"
-#include "core/math_func.hpp"
 #include "error_func.h"
 #include "string_func.h"
 #include "string_base.h"
@@ -28,7 +27,10 @@
 
 #ifdef WITH_ICU_I18N
 /* Required by StrNaturalCompare. */
+#	include <unicode/brkiter.h>
+#	include <unicode/stsearch.h>
 #	include <unicode/ustring.h>
+#	include <unicode/utext.h>
 #	include "language.h"
 #	include "gfx_func.h"
 #endif /* WITH_ICU_I18N */
@@ -453,8 +455,6 @@ int StrNaturalCompare(std::string_view s1, std::string_view s2, bool ignore_garb
 
 #ifdef WITH_ICU_I18N
 
-#include <unicode/stsearch.h>
-
 /**
  * Search if a string is contained in another string using the current locale.
  *
@@ -600,9 +600,6 @@ bool ConvertHexToBytes(std::string_view hex, std::span<uint8_t> bytes)
 }
 
 #elif defined(WITH_ICU_I18N)
-
-#include <unicode/utext.h>
-#include <unicode/brkiter.h>
 
 /** String iterator using ICU as a backend. */
 class IcuStringIterator : public StringIterator

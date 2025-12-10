@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file picker_gui.cpp %File for dealing with picker windows */
@@ -251,9 +251,7 @@ void PickerWindow::ConstructWindow()
 void PickerWindow::OnInit()
 {
 	this->badge_classes = GUIBadgeClasses(this->callbacks.GetFeature());
-
-	auto container = this->GetWidget<NWidgetContainer>(WID_PW_BADGE_FILTER);
-	this->badge_filters = AddBadgeDropdownFilters(*container, WID_PW_BADGE_FILTER, COLOUR_DARK_GREEN, this->callbacks.GetFeature());
+	this->badge_filters = AddBadgeDropdownFilters(this, WID_PW_BADGE_FILTER, WID_PW_BADGE_FILTER, COLOUR_DARK_GREEN, this->callbacks.GetFeature());
 
 	this->widget_lookup.clear();
 	this->nested_root->FillWidgetLookup(this->widget_lookup);
@@ -341,7 +339,9 @@ void PickerWindow::DrawWidget(const Rect &r, WidgetID widget) const
 				int by = ir.Height() - ScaleGUITrad(12);
 
 				GrfSpecFeature feature = this->callbacks.GetFeature();
-				DrawBadgeColumn({0, by, ir.Width() - 1, ir.Height() - 1}, 0, this->badge_classes, this->callbacks.GetTypeBadges(item.class_index, item.index), feature, std::nullopt, PAL_NONE);
+				/* Houses have recolours but not related to the company colour. */
+				PaletteID palette = feature == GSF_HOUSES ? PAL_NONE : GetCompanyPalette(_local_company);
+				DrawBadgeColumn({0, by, ir.Width() - 1, ir.Height() - 1}, 0, this->badge_classes, this->callbacks.GetTypeBadges(item.class_index, item.index), feature, std::nullopt, palette);
 
 				if (this->callbacks.saved.contains(item)) {
 					DrawSprite(SPR_BLOT, PALETTE_TO_YELLOW, 0, 0);
@@ -358,7 +358,7 @@ void PickerWindow::DrawWidget(const Rect &r, WidgetID widget) const
 		}
 
 		case WID_PW_TYPE_NAME:
-			DrawString(r, this->callbacks.GetTypeName(this->callbacks.GetSelectedClass(), this->callbacks.GetSelectedType()), TC_ORANGE, SA_CENTER);
+			DrawString(r, this->callbacks.GetTypeName(this->callbacks.GetSelectedClass(), this->callbacks.GetSelectedType()), TC_GOLD, SA_CENTER);
 			break;
 	}
 }
@@ -442,12 +442,14 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 
 		case WID_PW_CONFIGURE_BADGES:
 			if (this->badge_classes.GetClasses().empty()) break;
-			ShowDropDownList(this, BuildBadgeClassConfigurationList(this->badge_classes, 1, {}), -1, widget, 0, false, true);
+			ShowDropDownList(this, BuildBadgeClassConfigurationList(this->badge_classes, 1, {}, COLOUR_DARK_GREEN), -1, widget, 0, DropDownOption::Persist);
 			break;
 
 		default:
 			if (IsInsideMM(widget, this->badge_filters.first, this->badge_filters.second)) {
-				ShowDropDownList(this, this->GetWidget<NWidgetBadgeFilter>(widget)->GetDropDownList(), -1, widget, 0, false);
+				/* Houses have recolours but not related to the company colour. */
+				PaletteID palette = this->callbacks.GetFeature() == GSF_HOUSES ? PAL_NONE : GetCompanyPalette(_local_company);
+				ShowDropDownList(this, this->GetWidget<NWidgetBadgeFilter>(widget)->GetDropDownList(palette), -1, widget, 0);
 			}
 			break;
 	}
@@ -462,13 +464,13 @@ void PickerWindow::OnDropdownSelect(WidgetID widget, int index, int click_result
 			this->ReInit();
 
 			if (reopen) {
-				ReplaceDropDownList(this, BuildBadgeClassConfigurationList(this->badge_classes, 1, {}), -1);
+				ReplaceDropDownList(this, BuildBadgeClassConfigurationList(this->badge_classes, 1, {}, COLOUR_DARK_GREEN), -1);
 			} else {
 				this->CloseChildWindows(WC_DROPDOWN_MENU);
 			}
 
 			/* We need to refresh if a filter is removed. */
-			this->InvalidateData({PickerInvalidation::Type, PickerInvalidation::Filter});
+			this->InvalidateData({PickerInvalidation::Type, PickerInvalidation::Filter, PickerInvalidation::Position});
 			break;
 		}
 
@@ -479,7 +481,7 @@ void PickerWindow::OnDropdownSelect(WidgetID widget, int index, int click_result
 				} else {
 					SetBadgeFilter(this->badge_filter_choices, BadgeID(index));
 				}
-				this->InvalidateData({PickerInvalidation::Type, PickerInvalidation::Filter});
+				this->InvalidateData({PickerInvalidation::Type, PickerInvalidation::Filter, PickerInvalidation::Position});
 			}
 			break;
 	}
@@ -555,7 +557,7 @@ void PickerWindow::OnEditboxChanged(WidgetID wid)
 			} else {
 				this->type_string_filter.btf.reset();
 			}
-			this->InvalidateData({PickerInvalidation::Type, PickerInvalidation::Filter});
+			this->InvalidateData({PickerInvalidation::Type, PickerInvalidation::Filter, PickerInvalidation::Position});
 			break;
 
 		default:
@@ -729,16 +731,18 @@ void PickerWindow::EnsureSelectedTypeIsVisible()
 	int index = this->callbacks.GetSelectedType();
 
 	auto it = std::ranges::find_if(this->types, [class_index, index](const auto &item) { return item.class_index == class_index && item.index == index; });
-	if (it == std::end(this->types)) return;
+	int pos = -1;
+	if (it != std::end(this->types)) {
+		pos = static_cast<int>(std::distance(std::begin(this->types), it));
+	}
 
-	int pos = static_cast<int>(std::distance(std::begin(this->types), it));
 	this->GetWidget<NWidgetMatrix>(WID_PW_TYPE_MATRIX)->SetClicked(pos);
 }
 
 /** Create nested widgets for the class picker widgets. */
 std::unique_ptr<NWidgetBase> MakePickerClassWidgets()
 {
-	static constexpr NWidgetPart picker_class_widgets[] = {
+	static constexpr std::initializer_list<NWidgetPart> picker_class_widgets = {
 		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_PW_CLASS_SEL),
 			NWidget(NWID_VERTICAL),
 				NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
@@ -761,7 +765,7 @@ std::unique_ptr<NWidgetBase> MakePickerClassWidgets()
 /** Create nested widgets for the type picker widgets. */
 std::unique_ptr<NWidgetBase> MakePickerTypeWidgets()
 {
-	static constexpr NWidgetPart picker_type_widgets[] = {
+	static constexpr std::initializer_list<NWidgetPart> picker_type_widgets = {
 		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_PW_TYPE_SEL),
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_HORIZONTAL),

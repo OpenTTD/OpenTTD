@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file strgen_base.cpp Tool to create computer readable (stand-alone) translation files. */
@@ -313,9 +313,8 @@ void EmitGender(StringBuilder &builder, std::string_view param, char32_t)
 
 static const CmdStruct *FindCmd(std::string_view s)
 {
-	for (const auto &cs : _cmd_structs) {
-		if (cs.cmd == s) return &cs;
-	}
+	auto it = std::ranges::find(_cmd_structs, s, &CmdStruct::cmd);
+	if (it != std::end(_cmd_structs)) return &*it;
 	return nullptr;
 }
 
@@ -449,17 +448,11 @@ static bool CheckCommandsMatch(std::string_view a, std::string_view b, std::stri
 
 	for (auto &templ_nc : templ.non_consuming_commands) {
 		/* see if we find it in lang, and zero it out */
-		bool found = false;
-		for (auto &lang_nc : lang.non_consuming_commands) {
-			if (templ_nc.cmd == lang_nc.cmd && templ_nc.param == lang_nc.param) {
-				/* it was found in both. zero it out from lang so we don't find it again */
-				lang_nc.cmd = nullptr;
-				found = true;
-				break;
-			}
-		}
-
-		if (!found) {
+		auto it = std::ranges::find(lang.non_consuming_commands, templ_nc);
+		if (it != std::end(lang.non_consuming_commands)) {
+			/* it was found in both. zero it out from lang so we don't find it again */
+			it->cmd = nullptr;
+		} else {
 			StrgenWarning("{}: command '{}' exists in template file but not in language file", name, templ_nc.cmd->cmd);
 			result = false;
 		}

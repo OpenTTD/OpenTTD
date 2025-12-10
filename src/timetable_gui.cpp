@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file timetable_gui.cpp GUI for time tabling. */
@@ -110,7 +110,7 @@ static bool CanDetermineTimeTaken(const Order &order, bool travelling)
 	if (travelling && !order.IsTravelTimetabled()) return false;
 	/* No wait time but we are loading at this timetabled station */
 	if (!travelling && !order.IsWaitTimetabled() && order.IsType(OT_GOTO_STATION) &&
-			!(order.GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION)) {
+			!order.GetNonStopType().Test(OrderNonStopFlag::NoDestination)) {
 		return false;
 	}
 
@@ -208,7 +208,7 @@ struct TimetableWindow : Window {
 	{
 		assert(v->vehicle_flags.Test(VehicleFlag::TimetableStarted));
 
-		bool travelling = (!v->current_order.IsType(OT_LOADING) || v->current_order.GetNonStopType() == ONSF_STOP_EVERYWHERE);
+		bool travelling = (!v->current_order.IsType(OT_LOADING) || v->current_order.GetNonStopType().None());
 		TimerGameTick::Ticks start_time = -v->current_order_time;
 
 		/* If arrival and departure times are in days, compensate for the current date_fract. */
@@ -240,7 +240,6 @@ struct TimetableWindow : Window {
 				}
 				[[fallthrough]];
 
-			case WID_VT_ARRIVAL_DEPARTURE_SELECTION:
 			case WID_VT_TIMETABLE_PANEL:
 				fill.height = resize.height = GetCharacterHeight(FS_NORMAL);
 				size.height = 8 * resize.height + padding.height;
@@ -349,7 +348,7 @@ struct TimetableWindow : Window {
 				if (selected % 2 != 0) {
 					disable = order != nullptr && (order->IsType(OT_CONDITIONAL) || order->IsType(OT_IMPLICIT));
 				} else {
-					disable = order == nullptr || ((!order->IsType(OT_GOTO_STATION) || (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION)) && !order->IsType(OT_CONDITIONAL));
+					disable = order == nullptr || ((!order->IsType(OT_GOTO_STATION) || order->GetNonStopType().Test(OrderNonStopFlag::NoDestination)) && !order->IsType(OT_CONDITIONAL));
 				}
 			}
 			bool disable_speed = disable || selected % 2 == 0 || v->type == VEH_AIRCRAFT;
@@ -797,7 +796,7 @@ struct TimetableWindow : Window {
 	}};
 };
 
-static constexpr NWidgetPart _nested_timetable_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_timetable_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_VT_CAPTION),

@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file 40bpp_optimized.cpp Implementation of the optimized 40 bpp blitter. */
@@ -240,9 +240,9 @@ inline void Blitter_40bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 					if (src_px->a == 255) {
 						src_px += n;
 						do {
-							/* If the anim buffer contains a color value, the image composition will
+							/* If the anim buffer contains a colour value, the image composition will
 							 * only look at the RGB brightness value. As such, we can simply darken the
-							 * RGB value to darken the anim color. */
+							 * RGB value to darken the anim colour. */
 							Colour b = *anim != 0 ? Colour(GetColourBrightness(*dst), 0, 0) : *dst;
 							*dst = this->MakeTransparent(b, 3, 4);
 							anim++;
@@ -360,9 +360,9 @@ void Blitter_40bppAnim::DrawColourMappingRect(void *dst, int width, int height, 
 	uint8_t *anim = VideoDriver::GetInstance()->GetAnimBuffer() + ((uint32_t *)dst - (uint32_t *)_screen.dst_ptr);
 
 	if (pal == PALETTE_TO_TRANSPARENT) {
-		/* If the anim buffer contains a color value, the image composition will
+		/* If the anim buffer contains a colour value, the image composition will
 		 * only look at the RGB brightness value. As such, we can simply darken the
-		 * RGB value to darken the anim color. */
+		 * RGB value to darken the anim colour. */
 		do {
 			for (int i = 0; i != width; i++) {
 				Colour b = *anim != 0 ? Colour(GetColourBrightness(*udst), 0, 0) : *udst;

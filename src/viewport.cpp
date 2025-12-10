@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /**
@@ -1009,7 +1009,9 @@ enum TileHighlightType : uint8_t {
 };
 
 const Station *_viewport_highlight_station; ///< Currently selected station for coverage area highlight
+const Station *_viewport_highlight_station_rect; ///< Currently selected station for rectangle highlight
 const Waypoint *_viewport_highlight_waypoint; ///< Currently selected waypoint for coverage area highlight
+const Waypoint *_viewport_highlight_waypoint_rect; ///< Currently selected waypoint for rectangle highlight
 const Town *_viewport_highlight_town; ///< Currently selected town for coverage area highlight
 
 /**
@@ -1023,8 +1025,21 @@ static TileHighlightType GetTileHighlightType(TileIndex t)
 		if (IsTileType(t, MP_STATION) && GetStationIndex(t) == _viewport_highlight_station->index) return THT_WHITE;
 		if (_viewport_highlight_station->TileIsInCatchment(t)) return THT_BLUE;
 	}
+
+	if (_viewport_highlight_station_rect != nullptr) {
+		if (IsTileType(t, MP_STATION) && GetStationIndex(t) == _viewport_highlight_station_rect->index) return THT_WHITE;
+		const StationRect *r = &_viewport_highlight_station_rect->rect;
+		if (r->PtInExtendedRect(TileX(t), TileY(t))) return THT_BLUE;
+	}
+
 	if (_viewport_highlight_waypoint != nullptr) {
 		if (IsTileType(t, MP_STATION) && GetStationIndex(t) == _viewport_highlight_waypoint->index) return THT_BLUE;
+	}
+
+	if (_viewport_highlight_waypoint_rect != nullptr) {
+		if (IsTileType(t, MP_STATION) && GetStationIndex(t) == _viewport_highlight_waypoint_rect->index) return THT_WHITE;
+		const StationRect *r = &_viewport_highlight_waypoint_rect->rect;
+		if (r->PtInExtendedRect(TileX(t), TileY(t))) return THT_BLUE;
 	}
 
 	if (_viewport_highlight_town != nullptr) {
@@ -1389,12 +1404,18 @@ static void ViewportAddSignStrings(DrawPixelInfo *dpi, const std::vector<const S
 	if (small) flags.Set(ViewportStringFlag::Small);
 
 	/* Signs placed by a game script don't have a frame. */
-	ViewportStringFlags deity_flags{flags};
+	ViewportStringFlags deity_flags{ flags };
+	deity_flags.Set(ViewportStringFlag::TextColour);
+
 	flags.Set(IsTransparencySet(TO_SIGNS) ? ViewportStringFlag::TransparentRect : ViewportStringFlag::ColourRect);
 
 	for (const Sign *si : signs) {
+		/* Workaround to make sure white is actually white. The string drawing logic changes all
+		 * colours that are not INVALID_COLOUR slightly, turning white into a light gray. */
+		const Colours deity_colour = si->text_colour == COLOUR_WHITE ? INVALID_COLOUR : si->text_colour;
+
 		std::string *str = ViewportAddString(dpi, &si->sign, (si->owner == OWNER_DEITY) ? deity_flags : flags,
-			(si->owner == OWNER_NONE) ? COLOUR_GREY : (si->owner == OWNER_DEITY ? INVALID_COLOUR : _company_colours[si->owner]));
+			(si->owner == OWNER_NONE) ? COLOUR_GREY : (si->owner == OWNER_DEITY ? deity_colour : _company_colours[si->owner]));
 		if (str == nullptr) continue;
 
 		*str = GetString(STR_SIGN_NAME, si->index);
@@ -3662,6 +3683,7 @@ void MarkCatchmentTilesDirty()
 		MarkWholeScreenDirty();
 		return;
 	}
+
 	if (_viewport_highlight_station != nullptr) {
 		if (_viewport_highlight_station->catchment_tiles.tile == INVALID_TILE) {
 			MarkWholeScreenDirty();
@@ -3673,9 +3695,24 @@ void MarkCatchmentTilesDirty()
 			}
 		}
 	}
+
+	if (_viewport_highlight_station_rect != nullptr) {
+		if (!_viewport_highlight_station_rect->IsInUse()) {
+			_viewport_highlight_station_rect = nullptr;
+		}
+		MarkWholeScreenDirty();
+	}
+
 	if (_viewport_highlight_waypoint != nullptr) {
 		if (!_viewport_highlight_waypoint->IsInUse()) {
 			_viewport_highlight_waypoint = nullptr;
+		}
+		MarkWholeScreenDirty();
+	}
+
+	if (_viewport_highlight_waypoint_rect != nullptr) {
+		if (!_viewport_highlight_waypoint_rect->IsInUse()) {
+			_viewport_highlight_waypoint_rect = nullptr;
 		}
 		MarkWholeScreenDirty();
 	}
@@ -3684,7 +3721,9 @@ void MarkCatchmentTilesDirty()
 static void SetWindowDirtyForViewportCatchment()
 {
 	if (_viewport_highlight_station != nullptr) SetWindowDirty(WC_STATION_VIEW, _viewport_highlight_station->index);
+	if (_viewport_highlight_station_rect != nullptr) SetWindowDirty(WC_STATION_VIEW, _viewport_highlight_station_rect->index);
 	if (_viewport_highlight_waypoint != nullptr) SetWindowDirty(WC_WAYPOINT_VIEW, _viewport_highlight_waypoint->index);
+	if (_viewport_highlight_waypoint_rect != nullptr) SetWindowDirty(WC_WAYPOINT_VIEW, _viewport_highlight_waypoint_rect->index);
 	if (_viewport_highlight_town != nullptr) SetWindowDirty(WC_TOWN_VIEW, _viewport_highlight_town->index);
 }
 
@@ -3692,7 +3731,9 @@ static void ClearViewportCatchment()
 {
 	MarkCatchmentTilesDirty();
 	_viewport_highlight_station = nullptr;
+	_viewport_highlight_station_rect = nullptr;
 	_viewport_highlight_waypoint = nullptr;
+	_viewport_highlight_waypoint_rect = nullptr;
 	_viewport_highlight_town = nullptr;
 }
 
@@ -3705,15 +3746,41 @@ static void ClearViewportCatchment()
 void SetViewportCatchmentStation(const Station *st, bool sel)
 {
 	SetWindowDirtyForViewportCatchment();
+	/* Mark tiles dirty for redrawing and update selected station if a different station is already highlighted. */
 	if (sel && _viewport_highlight_station != st) {
 		ClearViewportCatchment();
 		_viewport_highlight_station = st;
 		MarkCatchmentTilesDirty();
+	/* Mark tiles dirty for redrawing and clear station selection if deselecting highlight. */
 	} else if (!sel && _viewport_highlight_station == st) {
 		MarkCatchmentTilesDirty();
 		_viewport_highlight_station = nullptr;
 	}
+	/* Redraw the currently selected station window */
 	if (_viewport_highlight_station != nullptr) SetWindowDirty(WC_STATION_VIEW, _viewport_highlight_station->index);
+}
+
+/**
+ * Select or deselect station for rectangle area highlight.
+ * Selecting a station will deselect a town.
+ * @param *st Station in question
+ * @param sel Select or deselect given station
+ */
+void SetViewportStationRect(const Station *st, bool sel)
+{
+	SetWindowDirtyForViewportCatchment();
+	/* Mark tiles dirty for redrawing and update selected station if a different station is already highlighted. */
+	if (sel && _viewport_highlight_station_rect != st) {
+		ClearViewportCatchment();
+		_viewport_highlight_station_rect = st;
+		MarkCatchmentTilesDirty();
+	/* Mark tiles dirty for redrawing and clear station selection if deselecting highlight. */
+	} else if (!sel && _viewport_highlight_station_rect == st) {
+		MarkCatchmentTilesDirty();
+		_viewport_highlight_station_rect = nullptr;
+	}
+	/* Redraw the currently selected station window */
+	if (_viewport_highlight_station_rect != nullptr) SetWindowDirty(WC_STATION_VIEW, _viewport_highlight_station_rect->index);
 }
 
 /**
@@ -3725,15 +3792,41 @@ void SetViewportCatchmentStation(const Station *st, bool sel)
 void SetViewportCatchmentWaypoint(const Waypoint *wp, bool sel)
 {
 	SetWindowDirtyForViewportCatchment();
+	/* Mark tiles dirty for redrawing and update selected waypoint if a different waypoint is already highlighted. */
 	if (sel && _viewport_highlight_waypoint != wp) {
 		ClearViewportCatchment();
 		_viewport_highlight_waypoint = wp;
 		MarkCatchmentTilesDirty();
+	/* Mark tiles dirty for redrawing and clear waypoint selection if deselecting highlight. */
 	} else if (!sel && _viewport_highlight_waypoint == wp) {
 		MarkCatchmentTilesDirty();
 		_viewport_highlight_waypoint = nullptr;
 	}
+	/* Redraw the currently selected waypoint window */
 	if (_viewport_highlight_waypoint != nullptr) SetWindowDirty(WC_WAYPOINT_VIEW, _viewport_highlight_waypoint->index);
+}
+
+/**
+ * Select or deselect waypoint for rectangle area highlight.
+ * Selecting a waypoint will deselect a town.
+ * @param *wp Waypoint in question
+ * @param sel Select or deselect given waypoint
+ */
+void SetViewportWaypointRect(const Waypoint *wp, bool sel)
+{
+	SetWindowDirtyForViewportCatchment();
+	/* Mark tiles dirty for redrawing and update selected waypoint if a different waypoint is already highlighted. */
+	if (sel && _viewport_highlight_waypoint_rect != wp) {
+		ClearViewportCatchment();
+		_viewport_highlight_waypoint_rect = wp;
+		MarkCatchmentTilesDirty();
+	/* Mark tiles dirty for redrawing and clear waypoint selection if deselecting highlight. */
+	} else if (!sel && _viewport_highlight_waypoint_rect == wp) {
+		MarkCatchmentTilesDirty();
+		_viewport_highlight_waypoint_rect = nullptr;
+	}
+	/* Redraw the currently selected waypoint window */
+	if (_viewport_highlight_waypoint_rect != nullptr) SetWindowDirty(WC_WAYPOINT_VIEW, _viewport_highlight_waypoint_rect->index);
 }
 
 /**
@@ -3745,14 +3838,17 @@ void SetViewportCatchmentWaypoint(const Waypoint *wp, bool sel)
 void SetViewportCatchmentTown(const Town *t, bool sel)
 {
 	SetWindowDirtyForViewportCatchment();
+	/* Mark tiles dirty for redrawing and update selected town if a different town is already highlighted. */
 	if (sel && _viewport_highlight_town != t) {
 		ClearViewportCatchment();
 		_viewport_highlight_town = t;
 		MarkWholeScreenDirty();
+	/* Mark tiles dirty for redrawing and clear town selection if deselecting highlight. */
 	} else if (!sel && _viewport_highlight_town == t) {
 		_viewport_highlight_town = nullptr;
 		MarkWholeScreenDirty();
 	}
+	/* Redraw the currently selected town window */
 	if (_viewport_highlight_town != nullptr) SetWindowDirty(WC_TOWN_VIEW, _viewport_highlight_town->index);
 }
 

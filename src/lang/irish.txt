@@ -13,7 +13,7 @@
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
 
 
 ##id 0x0000
@@ -1913,7 +1913,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Aonaid airde: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Aon áit a thaispeántar airde sa chomhéadan úsáideora, taispeain sna haonaid roghnaithe í
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Impiriúil (tr)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Méadrach (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -2531,6 +2531,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Fad an a
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Roghnaigh fad an stáisiúin iarnróid
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Tarraing & Scaoil
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Tóg stáisiún ag úsáid tarraing & scaoil
+
 
 
 
@@ -3458,14 +3459,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Ar fheabhas
 STR_CARGO_RATING_OUTSTANDING                                    :Go hiontach
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Láraigh an príomhamharc ar shuíomh an stáisiúin. Osclaítear amharc nua ar shuíomh an stáisiúin le Ctrl+Cliceáil
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Athraigh ainm an stásiúin
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Taispeáin gach traein a bhfuil an stáisiún seo ar a sceideal
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Taispeáin gach feithicil bóthair a bhfuil an stáisiún seo ar a sceideal
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Taispeáin gach aerárthach a bhfuil an stáisiún seo ar a sceideal
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Taispeáin gach long a bhfuil an stáisiún seo ar a sceideal
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Athainmnigh stáisiún/limistéar lódála
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Dún an t-aerfort
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Cuir cosc ar aerárthaigh tuirlingt ag an aerfort seo
@@ -3473,11 +3472,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Cuir cos
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Láraigh an príomhamharc ar shuíomh an phointe bealaigh. Osclaítear amharc nua ar shuíomh an phointe bealaigh le Ctrl+Cliceáil
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Athraigh ainm an phointe bealaigh
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Láraigh an príomhamharc ar shuíomh an bhaoi. Osclaítear amharc nua ar shuíomh an bhaoi le Ctrl+Cliceáil
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Athraigh ainm an bhaoi
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Cuir ainm an phointe bealaigh in eagar
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Airgeadas {COMPANY} {BLACK}{COMPANY_NUM}

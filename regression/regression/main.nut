@@ -461,6 +461,21 @@ function Regression::Company()
 	}
 }
 
+function Regression::CompanyGender()
+{
+	print("");
+	print("--Company Gender--");
+	/* Check gender switching behaviour matches API. */
+	print("  GetPresidentGender():              " + AICompany.GetPresidentGender(AICompany.COMPANY_SELF));
+	print("  SetPresidentGender():              " + AICompany.SetPresidentGender(AICompany.GENDER_MALE));
+	print("  GetPresidentGender():              " + AICompany.GetPresidentGender(AICompany.COMPANY_SELF));
+	print("  SetPresidentGender():              " + AICompany.SetPresidentGender(AICompany.GENDER_FEMALE));
+	print("  GetPresidentGender():              " + AICompany.GetPresidentGender(AICompany.COMPANY_SELF));
+	/* Setting to existing gender should fail. */
+	print("  SetPresidentGender():              " + AICompany.SetPresidentGender(AICompany.GENDER_FEMALE));
+	print("  GetPresidentGender():              " + AICompany.GetPresidentGender(AICompany.COMPANY_SELF));
+}
+
 function Regression::Engine()
 {
 	local j = 0;
@@ -2096,6 +2111,7 @@ function Regression::Start()
 	this.Vehicle();
 	/* Order has to be after Vehicle */
 	this.Order();
+	this.CompanyGender();
 	print("");
 	print("  First Subsidy Test");
 	PrintSubsidy(0);

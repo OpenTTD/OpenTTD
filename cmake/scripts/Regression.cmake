@@ -25,6 +25,12 @@ if(EDITBIN_EXECUTABLE)
     execute_process(COMMAND ${EDITBIN_EXECUTABLE} /nologo /subsystem:console ${OPENTTD_EXECUTABLE})
 endif()
 
+# Remove previous crash files
+file(GLOB CRASH_FILES "regression/crash*")
+if(CRASH_FILES)
+    file(REMOVE ${CRASH_FILES})
+endif()
+
 # Run the regression test
 execute_process(COMMAND ${OPENTTD_EXECUTABLE}
                         -x
@@ -39,6 +45,13 @@ execute_process(COMMAND ${OPENTTD_EXECUTABLE}
                 ERROR_VARIABLE REGRESSION_RESULT
                 OUTPUT_STRIP_TRAILING_WHITESPACE
 )
+
+# Detect any crash
+file(GLOB CRASH_FILES "regression/crash*.log")
+if (CRASH_FILES)
+    file(READ ${CRASH_FILES} CRASH_LOG)
+    message(FATAL_ERROR "OpenTTD crashed: ${CRASH_LOG}")
+endif()
 
 if(REGRESSION_OUTPUT)
     message(FATAL_ERROR "Unexpected output: ${REGRESSION_OUTPUT}")

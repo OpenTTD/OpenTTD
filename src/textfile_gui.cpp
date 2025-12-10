@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file textfile_gui.cpp Implementation of textfile window. */
@@ -40,7 +40,7 @@
 #include "safeguards.h"
 
 /** Widgets for the textfile window. */
-static constexpr NWidgetPart _nested_textfile_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_textfile_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
 		NWidget(WWT_PUSHARROWBTN, COLOUR_MAUVE, WID_TF_NAVBACK), SetFill(0, 1), SetMinimalSize(15, 1), SetArrowWidgetTypeTip(AWV_DECREASE, STR_TEXTFILE_NAVBACK_TOOLTIP),
@@ -83,7 +83,7 @@ static WindowDesc _textfile_desc(
 	_nested_textfile_widgets
 );
 
-TextfileWindow::TextfileWindow(Window *parent, TextfileType file_type) : Window(_textfile_desc), file_type(file_type)
+TextfileWindow::TextfileWindow(Window *parent, TextfileType file_type) : Window(_textfile_desc), BaseStringMissingGlyphSearcher(FS_MONO), file_type(file_type)
 {
 	/* Init of nested tree is deferred.
 	 * TextfileWindow::ConstructWindow must be called by the inheriting window. */
@@ -752,19 +752,6 @@ bool TextfileWindow::IsTextWrapped() const
 	if (this->search_iterator >= this->lines.size()) return std::nullopt;
 
 	return this->lines[this->search_iterator++].text;
-}
-
-/* virtual */ bool TextfileWindow::Monospace()
-{
-	return true;
-}
-
-/* virtual */ void TextfileWindow::SetFontNames([[maybe_unused]] FontCacheSettings *settings, [[maybe_unused]] std::string_view font_name, [[maybe_unused]] const void *os_data)
-{
-#if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
-	settings->mono.font = font_name;
-	settings->mono.os_handle = os_data;
-#endif
 }
 
 #if defined(WITH_ZLIB)

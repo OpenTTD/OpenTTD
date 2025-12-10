@@ -14,7 +14,7 @@
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
 
 
 ##id 0x0000
@@ -255,6 +255,7 @@ STR_UNITS_FORCE_SI                                              :{G=Masculin}{DE
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}ft
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{G=Masculin}{DECIMAL}{NBSP}m
+STR_UNITS_HEIGHT_GAMEUNITS                                      :{DECIMAL}{NBSP}nivell{P "" s}
 
 # Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}di{P a es}
@@ -312,6 +313,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Activant
 STR_BUTTON_DEFAULT                                              :{BLACK}Predeterminat
 STR_BUTTON_CANCEL                                               :{BLACK}Cancel·la
 STR_BUTTON_OK                                                   :{BLACK}D'acord
+STR_BUTTON_MOVE                                                 :{BLACK}Mou
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-= qwertyuiop[]asdfghjkl;'#\zxcvbnm,./ .
@@ -1089,6 +1091,8 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Marqueu aquesta
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Fes servir la font tradicional
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Marqueu aquesta casella si preferiu fer servir la font tradicional de mida fixa i pixelada.
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT                               :Prefereix la font per defecte
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP                       :Marqueu aquesta casella si preferiu fer servir la font tradicional abans que les fonts alternatives trobades.
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Aplica anti-àlies a les fonts
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Marqueu aquesta casella per a fer servir tècniques d'anti-àlies a les fonts redimensionables.
 
@@ -2159,10 +2163,11 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Unitats de longitud: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Quan es mostren longituds a la interfície d'usuari, presenta-les en les unitats seleccionades
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (peu)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Mètric (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_GAMEUNITS          :Unitats de la partida (nivells)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :Localització
 STR_CONFIG_SETTING_GRAPHICS                                     :Gràfics
@@ -2860,15 +2865,15 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Trieu quina zon
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Trieu quin tipus de casa construir. Amb Ctrl+clic, s'afegeix o es trau l'element de la llista de desats.
 
 STR_HOUSE_PICKER_CAPTION                                        :Selecció de cases
-STR_HOUSE_PICKER_NAME                                           :{BLACK}Nom: {ORANGE}{STRING}
-STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Habitants: {ORANGE}{NUM}
-STR_HOUSE_PICKER_YEARS                                          :{BLACK}Anys: {ORANGE}{NUM}-{NUM}
-STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Anys: {ORANGE}Qualssevol
-STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Anys: {ORANGE}De {NUM}
-STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Anys: {ORANGE}Fins al {NUM}
-STR_HOUSE_PICKER_SIZE                                           :{BLACK}Mida: {ORANGE}{NUM}x{NUM} caselles
-STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Càrrega acceptada: {ORANGE}
-STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Càrrega produïda: {ORANGE}{CARGO_LIST}
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Nom: {GOLD}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Habitants: {GOLD}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Anys: {GOLD}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Anys: {GOLD}Qualssevol
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Anys: {GOLD}De {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Anys: {GOLD}Fins al {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Mida: {GOLD}{NUM}x{NUM} caselles
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Càrrega acceptada: {GOLD}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Càrrega produïda: {GOLD}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Vora
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Afores
@@ -2876,10 +2881,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Suburbi exterio
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Suburbi interior
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centre de la població
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Evita les millores
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Escolliu si aquesta casa s'ha de protegir i evitar que es reemplaci quan creixi la població.
-STR_HOUSE_PICKER_PROTECT_OFF                                    :Desactivat
-STR_HOUSE_PICKER_PROTECT_ON                                     :Activat
+
 
 STR_STATION_CLASS_DFLT                                          :Per defecte
 STR_STATION_CLASS_DFLT_STATION                                  :Estació per defecte
@@ -3426,6 +3429,10 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Nord-oes
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Nord-est
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Sud-est
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Sud-oest
+STR_MAPGEN_NORTHWEST_TOOLTIP                                    :Commuta entre vora amb aigua o amb forma lliure a la vora nord-oest del mapa.
+STR_MAPGEN_NORTHEAST_TOOLTIP                                    :Commuta entre vora amb aigua o amb forma lliure a la vora nord-est del mapa.
+STR_MAPGEN_SOUTHEAST_TOOLTIP                                    :Commuta entre vora amb aigua o amb forma lliure a la vora sud-est del mapa.
+STR_MAPGEN_SOUTHWEST_TOOLTIP                                    :Commuta entre vora amb aigua o amb forma lliure a la vora sud-oest del mapa.
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Forma lliure
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Aigua
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Aleatori
@@ -3472,7 +3479,8 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Generaci
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generació de rius
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generació d'una àrea escarpada i rocosa
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Generació de poblacions
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Generació d'indústries
+STR_GENERATION_LAND_INDUSTRY_GENERATION                         :{BLACK}Generació d'indústries terrestres
+STR_GENERATION_WATER_INDUSTRY_GENERATION                        :{BLACK}Generació d'indústries a l'aigua
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generació inamovible
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generació d'arbres
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Configurant la partida
@@ -3692,6 +3700,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Posa un 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Poblacions ({COMMA} de {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Cap -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{BLACK} ({COMMA}) {YELLOW}{CITY_ICON}
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Noms de les poblacions - feu clic al nom d'una població per a centrar-hi la vista principal. Amb Ctrl+clic, s'obre una vista nova centrada on hi ha la població.
 STR_TOWN_POPULATION                                             :{BLACK}Població mundial: {COMMA}
 
@@ -3897,14 +3906,14 @@ STR_CARGO_RATING_EXCELLENT                                      :Excel·lent
 STR_CARGO_RATING_OUTSTANDING                                    :Excepcional
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centra la vista principal al lloc de l'estació. Amb Ctrl+clic, s'obre una vista al lloc de l'estació.
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Canvia el nom de l'estació
+STR_STATION_VIEW_EDIT_TOOLTIP                                   :{BLACK}Canvia el nom de l'estació o mou-ne el senyal.
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Mostra tots els trens que tinguin aquesta estació en el seu itinerari
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Mostra tots els vehicles que tinguin aquesta estació en el seu itinerari
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Mostra tots els avions que tinguin aquest aeroport en el seu itinerari
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Mostra tots els vaixells que tinguin aquest port en el seu itinerari
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Canvia el nom de l'estació/àrea de càrrega
+STR_STATION_VIEW_EDIT_STATION_SIGN                              :{WHITE}Edita el senyal de l'estació
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Tanca l'aeroport
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Evita que els avions aterrin en aquest aeroport
@@ -3912,11 +3921,11 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Evita qu
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centra la vista principal al lloc del punt de pas. Amb Ctrl+clic, s'obre una vista al lloc del punt de pas.
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Canvia el nom del punt de pas
+STR_WAYPOINT_VIEW_EDIT_TOOLTIP                                  :{BLACK}Canvia el nom del punt de pas o mou-ne el senyal.
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la vista principal en la boia. Amb Ctrl+clic, s'obre una vista centrada a la boia.
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Canvia el nom de la boia
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edita el nom del punt de pas
+STR_WAYPOINT_VIEW_EDIT_WAYPOINT_SIGN                            :{WHITE}Edita el senyal del punt de pas
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Finances de {COMPANY} {BLACK}{COMPANY_NUM}
@@ -5130,6 +5139,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Masses e
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Massa prop d'un altre moll
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Massa prop d'un altre aeroport
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}No es pot canviar el nom de l'estació...
+STR_ERROR_CAN_T_MOVE_STATION_NAME                               :{WHITE}El senyal de l'estació no es pot moure...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... aquesta carretera és propietat d'una població.
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... sentit de la carretera en la direcció incorrecta
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... les estacions d'autobús de pas no poden tenir cantonades
@@ -5161,6 +5171,7 @@ STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}Aquí no
 STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Aquí no es pot construir un punt de pas de carretera...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Aquí no es pot situar una boia...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}No es pot canviar el nom del punt de pas...
+STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :{WHITE}El senyal del punt de pas no es pot moure...
 
 STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Aquí no es pot treure un punt de pas de tren...
 STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Aquí no es pot traure cap punt de pas de carretera...
@@ -5269,13 +5280,13 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Inici i 
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... els extrems del pont han d'estar tots dos a terra
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... el pont és massa llarg
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}El pont acabaria fora del mapa
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}El pont està massa baix per a l'estació.
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}El pont està massa baix per a la parada.
-STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}El pont és massa baix per al port.
-STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}El pont està massa baix per a la boia.
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}El pont està massa baix per al punt de pas.
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}El pont està massa baix per al punt de pas de carretera.
-STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}El pont és massa baix per a la resclosa.
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}El pont és {HEIGHT} massa baix per a l'estació.
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}El pont és {HEIGHT} massa baix per a la parada de carretera.
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}El pont és {HEIGHT} massa baix per al moll.
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}El pont és {HEIGHT} massa baix per a la boia.
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}El pont és {HEIGHT} massa baix per al punt de pas.
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}El pont és {HEIGHT} massa baix per al punt de pas de carretera.
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}El pont és {HEIGHT} massa baix per a la resclosa.
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Aquí no es pot construir el túnel...

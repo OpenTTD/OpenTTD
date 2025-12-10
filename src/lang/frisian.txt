@@ -13,7 +13,7 @@
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
 
 
 ##id 0x0000
@@ -1785,7 +1785,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Hichte-ienheid: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Wannear't der hichten sichtber binne yn de interface de selektearre ienheiden brûke
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Ymperiaal (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrysk (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -2257,6 +2257,7 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Selektea
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Stasjon lengte
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Selektear lengte fan treinstasjon
 STR_STATION_BUILD_DRAG_DROP                                     :Sleepe en los litte
+
 
 
 
@@ -3041,21 +3042,17 @@ STR_CARGO_RATING_EXCELLENT                                      :Geweldich
 STR_CARGO_RATING_OUTSTANDING                                    :Poerbêst
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Sintrearje it byld op de lokaasje fan dit stasjon
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Feroarje stasjonsnamme
 
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Jou stasjon in nije namme
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Fleanfjild slute
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Sintrearje it byld op de lokaasje fan dizze kontrôlepost
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Namme fan kontrôlepost oanpasse
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Sintrearje it byld op de lokaasje fan dizze boei
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Namme fan boei oanpasse
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Namme fan kontrôlepost oanpasse
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finânsjes {BLACK}{COMPANY_NUM}

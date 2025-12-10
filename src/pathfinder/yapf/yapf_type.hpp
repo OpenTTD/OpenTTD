@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file yapf_type.hpp Types used by YAPF. */
@@ -72,7 +72,7 @@ inline std::string ValueStr(EndSegmentReasons flags)
 		"PATH_TOO_LONG", "FIRST_TWO_WAY_RED", "LOOK_AHEAD_END", "TARGET_REACHED"
 	};
 
-	return fmt::format("0x{:04X} ({})", flags.base(), ComposeNameT(flags, end_segment_reason_names, "UNK"));
+	return fmt::format("0x{:04X} ({})", flags.base(), ComposeName(flags, end_segment_reason_names, "UNK"));
 }
 
 #endif /* YAPF_TYPE_HPP */

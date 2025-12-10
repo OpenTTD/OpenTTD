@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file object_cmd.h Command definitions related to objects. */
@@ -16,7 +16,7 @@
 CommandCost CmdBuildObject(DoCommandFlags flags, TileIndex tile, ObjectType type, uint8_t view);
 CommandCost CmdBuildObjectArea(DoCommandFlags flags, TileIndex tile, TileIndex start_tile, ObjectType type, uint8_t view, bool diagonal);
 
-DEF_CMD_TRAIT(CMD_BUILD_OBJECT, CmdBuildObject, CommandFlags({CommandFlag::Deity, CommandFlag::NoWater, CommandFlag::Auto}), CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_BUILD_OBJECT_AREA, CmdBuildObjectArea, CommandFlags({CommandFlag::Deity, CommandFlag::NoWater, CommandFlag::NoTest, CommandFlag::Auto}), CMDT_LANDSCAPE_CONSTRUCTION)
+DEF_CMD_TRAIT(CMD_BUILD_OBJECT, CmdBuildObject, CommandFlags({CommandFlag::Deity, CommandFlag::NoWater, CommandFlag::Auto}), CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(CMD_BUILD_OBJECT_AREA, CmdBuildObjectArea, CommandFlags({CommandFlag::Deity, CommandFlag::NoWater, CommandFlag::NoTest, CommandFlag::Auto}), CommandType::LandscapeConstruction)
 
 #endif /* OBJECT_CMD_H */

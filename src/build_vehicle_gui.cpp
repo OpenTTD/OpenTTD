@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file build_vehicle_gui.cpp GUI for building vehicles. */
@@ -58,7 +58,7 @@ uint GetEngineListHeight(VehicleType type)
 	return std::max<uint>(GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.matrix.Vertical(), GetVehicleImageCellSize(type, EIT_PURCHASE).height);
 }
 
-static constexpr NWidgetPart _nested_build_vehicle_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_build_vehicle_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_BV_CAPTION), SetTextStyle(TC_WHITE),
@@ -1334,8 +1334,7 @@ struct BuildVehicleWindow : Window {
 		this->badge_classes = GUIBadgeClasses(static_cast<GrfSpecFeature>(GSF_TRAINS + this->vehicle_type));
 		this->SetCargoFilterArray();
 
-		auto container = this->GetWidget<NWidgetContainer>(WID_BV_BADGE_FILTER);
-		this->badge_filters = AddBadgeDropdownFilters(*container, WID_BV_BADGE_FILTER, COLOUR_GREY, static_cast<GrfSpecFeature>(GSF_TRAINS + this->vehicle_type));
+		this->badge_filters = AddBadgeDropdownFilters(this, WID_BV_BADGE_FILTER, WID_BV_BADGE_FILTER, COLOUR_GREY, static_cast<GrfSpecFeature>(GSF_TRAINS + this->vehicle_type));
 
 		this->widget_lookup.clear();
 		this->nested_root->FillWidgetLookup(this->widget_lookup);
@@ -1617,7 +1616,7 @@ struct BuildVehicleWindow : Window {
 	DropDownList BuildBadgeConfigurationList() const
 	{
 		static const auto separators = {STR_BADGE_CONFIG_PREVIEW, STR_BADGE_CONFIG_NAME};
-		return BuildBadgeClassConfigurationList(this->badge_classes, BADGE_COLUMNS, separators);
+		return BuildBadgeClassConfigurationList(this->badge_classes, BADGE_COLUMNS, separators, COLOUR_GREY);
 	}
 
 	void BuildVehicle()
@@ -1705,7 +1704,7 @@ struct BuildVehicleWindow : Window {
 
 			case WID_BV_CONFIGURE_BADGES:
 				if (this->badge_classes.GetClasses().empty()) break;
-				ShowDropDownList(this, this->BuildBadgeConfigurationList(), -1, widget, 0, false, true);
+				ShowDropDownList(this, this->BuildBadgeConfigurationList(), -1, widget, 0, DropDownOption::Persist);
 				break;
 
 			case WID_BV_SHOW_HIDE: {
@@ -1731,7 +1730,8 @@ struct BuildVehicleWindow : Window {
 
 			default:
 				if (IsInsideMM(widget, this->badge_filters.first, this->badge_filters.second)) {
-					ShowDropDownList(this, this->GetWidget<NWidgetBadgeFilter>(widget)->GetDropDownList(), -1, widget, 0, false);
+					PaletteID palette = SPR_2CCMAP_BASE + Company::Get(_local_company)->GetCompanyRecolourOffset(LS_DEFAULT);
+					ShowDropDownList(this, this->GetWidget<NWidgetBadgeFilter>(widget)->GetDropDownList(palette), -1, widget, 0);
 				}
 				break;
 		}
@@ -1931,7 +1931,6 @@ struct BuildVehicleWindow : Window {
 
 				/* We need to refresh if a filter is removed. */
 				this->eng_list.ForceRebuild();
-				this->SetDirty();
 				break;
 			}
 
@@ -1943,7 +1942,6 @@ struct BuildVehicleWindow : Window {
 						SetBadgeFilter(this->badge_filter_choices, BadgeID(index));
 					}
 					this->eng_list.ForceRebuild();
-					this->SetDirty();
 				}
 				break;
 		}

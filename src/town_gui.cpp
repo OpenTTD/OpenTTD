@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file town_gui.cpp GUI for towns. */
@@ -58,7 +58,7 @@ TownKdtree _town_local_authority_kdtree{};
 
 typedef GUIList<const Town*, const bool &> GUITownList;
 
-static constexpr NWidgetPart _nested_town_authority_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_town_authority_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_TA_CAPTION),
@@ -611,7 +611,7 @@ public:
 	}};
 };
 
-static constexpr NWidgetPart _nested_town_game_view_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_town_game_view_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, WID_TV_CHANGE_NAME), SetAspect(WidgetDimensions::ASPECT_RENAME), SetSpriteTip(SPR_RENAME, STR_TOWN_VIEW_RENAME_TOOLTIP),
@@ -642,7 +642,7 @@ static WindowDesc _town_game_view_desc(
 	_nested_town_game_view_widgets
 );
 
-static constexpr NWidgetPart _nested_town_editor_view_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_town_editor_view_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, WID_TV_CHANGE_NAME), SetAspect(WidgetDimensions::ASPECT_RENAME), SetSpriteTip(SPR_RENAME, STR_TOWN_VIEW_RENAME_TOOLTIP),
@@ -686,7 +686,7 @@ void ShowTownViewWindow(TownID town)
 	}
 }
 
-static constexpr NWidgetPart _nested_town_directory_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_town_directory_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_TD_CAPTION),
@@ -1068,7 +1068,7 @@ void CcFoundRandomTown(Commands, const CommandCost &result, Money, TownID town_i
 	if (result.Succeeded()) ScrollMainWindowToTile(Town::Get(town_id)->xy);
 }
 
-static constexpr NWidgetPart _nested_found_town_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_found_town_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetStringTip(STR_FOUND_TOWN_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -1588,16 +1588,19 @@ public:
 		std::set<PickerItem> dst;
 		for (const auto &item : src) {
 			if (item.grfid == 0) {
-				dst.insert(item);
+				const HouseSpec *hs = HouseSpec::Get(item.local_id);
+				if (hs == nullptr) continue;
+				int class_index = GetClassIdFromHouseZone(hs->building_availability);
+				dst.emplace(item.grfid, item.local_id, class_index, item.local_id);
 			} else {
 				/* Search for spec by grfid and local index. */
 				auto it = std::ranges::find_if(specs, [&item](const HouseSpec &spec) { return spec.grf_prop.grfid == item.grfid && spec.grf_prop.local_id == item.local_id; });
 				if (it == specs.end()) {
 					/* Not preset, hide from UI. */
-					dst.insert({item.grfid, item.local_id, -1, -1});
+					dst.emplace(item.grfid, item.local_id, -1, -1);
 				} else {
 					int class_index = GetClassIdFromHouseZone(it->building_availability);
-					dst.insert( {item.grfid, item.local_id, class_index, it->Index()});
+					dst.emplace(item.grfid, item.local_id, class_index, it->Index());
 				}
 			}
 		}
@@ -1642,6 +1645,7 @@ static CargoTypes GetProducedCargoOfHouse(const HouseSpec *hs)
 struct BuildHouseWindow : public PickerWindow {
 	std::string house_info{};
 	static inline bool house_protected;
+	static inline bool replace;
 
 	BuildHouseWindow(WindowDesc &desc, Window *parent) : PickerWindow(desc, parent, 0, HousePickerCallbacks::instance)
 	{
@@ -1746,11 +1750,17 @@ struct BuildHouseWindow : public PickerWindow {
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
-			case WID_BH_PROTECT_OFF:
-			case WID_BH_PROTECT_ON:
-				BuildHouseWindow::house_protected = (widget == WID_BH_PROTECT_ON);
-				this->SetWidgetLoweredState(WID_BH_PROTECT_OFF, !BuildHouseWindow::house_protected);
-				this->SetWidgetLoweredState(WID_BH_PROTECT_ON, BuildHouseWindow::house_protected);
+			case WID_BH_PROTECT_TOGGLE:
+				BuildHouseWindow::house_protected = !BuildHouseWindow::house_protected;
+				this->SetWidgetLoweredState(WID_BH_PROTECT_TOGGLE, BuildHouseWindow::house_protected);
+
+				SndClickBeep();
+				this->SetDirty();
+				break;
+
+			case WID_BH_REPLACE_TOGGLE:
+				BuildHouseWindow::replace = !BuildHouseWindow::replace;
+				this->SetWidgetLoweredState(WID_BH_REPLACE_TOGGLE, BuildHouseWindow::replace);
 
 				SndClickBeep();
 				this->SetDirty();
@@ -1779,17 +1789,16 @@ struct BuildHouseWindow : public PickerWindow {
 		bool hasflag = spec->extra_flags.Test(HouseExtraFlag::BuildingIsProtected);
 		if (hasflag) BuildHouseWindow::house_protected = true;
 
-		this->SetWidgetLoweredState(WID_BH_PROTECT_OFF, !BuildHouseWindow::house_protected);
-		this->SetWidgetLoweredState(WID_BH_PROTECT_ON, BuildHouseWindow::house_protected);
+		this->SetWidgetLoweredState(WID_BH_PROTECT_TOGGLE, BuildHouseWindow::house_protected);
+		this->SetWidgetLoweredState(WID_BH_REPLACE_TOGGLE, BuildHouseWindow::replace);
 
-		this->SetWidgetDisabledState(WID_BH_PROTECT_OFF, hasflag);
-		this->SetWidgetDisabledState(WID_BH_PROTECT_ON, hasflag);
+		this->SetWidgetDisabledState(WID_BH_PROTECT_TOGGLE, hasflag);
 	}
 
 	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
 	{
 		const HouseSpec *spec = HouseSpec::Get(HousePickerCallbacks::sel_type);
-		Command<CMD_PLACE_HOUSE>::Post(STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index(), BuildHouseWindow::house_protected);
+		Command<CMD_PLACE_HOUSE>::Post(STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index(), BuildHouseWindow::house_protected, BuildHouseWindow::replace);
 	}
 
 	const IntervalTimer<TimerWindow> view_refresh_interval = {std::chrono::milliseconds(2500), [this](auto) {
@@ -1805,7 +1814,7 @@ struct BuildHouseWindow : public PickerWindow {
 };
 
 /** Nested widget definition for the build NewGRF rail waypoint window */
-static constexpr NWidgetPart _nested_build_house_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_build_house_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetStringTip(STR_HOUSE_PICKER_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -1819,14 +1828,10 @@ static constexpr NWidgetPart _nested_build_house_widgets[] = {
 			NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
 				NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_picker, 0), SetPadding(WidgetDimensions::unscaled.picker),
 					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_BH_INFO), SetFill(1, 1), SetMinimalTextLines(10, 0),
-					NWidget(WWT_LABEL, INVALID_COLOUR), SetStringTip(STR_HOUSE_PICKER_PROTECT_TITLE, STR_NULL), SetFill(1, 0),
-					NWidget(NWID_HORIZONTAL), SetPIPRatio(1, 0, 1),
-						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BH_PROTECT_OFF), SetMinimalSize(60, 12), SetStringTip(STR_HOUSE_PICKER_PROTECT_OFF, STR_HOUSE_PICKER_PROTECT_TOOLTIP),
-						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BH_PROTECT_ON), SetMinimalSize(60, 12), SetStringTip(STR_HOUSE_PICKER_PROTECT_ON, STR_HOUSE_PICKER_PROTECT_TOOLTIP),
-					EndContainer(),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BH_PROTECT_TOGGLE), SetMinimalSize(60, 12), SetStringTip(STR_HOUSE_PICKER_PROTECT, STR_HOUSE_PICKER_PROTECT_TOOLTIP),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BH_REPLACE_TOGGLE), SetMinimalSize(60, 12), SetStringTip(STR_HOUSE_PICKER_REPLACE, STR_HOUSE_PICKER_REPLACE_TOOLTIP),
 				EndContainer(),
 			EndContainer(),
-
 		EndContainer(),
 		NWidgetFunction(MakePickerTypeWidgets),
 	EndContainer(),

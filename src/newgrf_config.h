@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file newgrf_config.h Functions to find and configure NewGRFs. */
@@ -17,15 +17,15 @@
 #include "3rdparty/md5/md5.h"
 
 /** GRF config bit flags */
-enum GRFConfigFlag : uint8_t {
-	System,     ///< GRF file is an openttd-internal system grf
-	Unsafe,     ///< GRF file is unsafe for static usage
-	Static,     ///< GRF file is used statically (can be used in any MP game)
+enum class GRFConfigFlag : uint8_t {
+	System, ///< GRF file is an openttd-internal system grf
+	Unsafe, ///< GRF file is unsafe for static usage
+	Static, ///< GRF file is used statically (can be used in any MP game)
 	Compatible, ///< GRF file does not exactly match the requested GRF (different MD5SUM), but grfid matches)
-	Copy,       ///< The data is copied from a grf in _all_grfs
-	InitOnly,   ///< GRF file is processed up to GLS_INIT
-	Reserved,   ///< GRF file passed GLS_RESERVE stage
-	Invalid,    ///< GRF is unusable with this version of OpenTTD
+	Copy, ///< The data is copied from a grf in _all_grfs
+	InitOnly, ///< GRF file is processed up to GLS_INIT
+	Reserved, ///< GRF file passed GLS_RESERVE stage
+	Invalid, ///< GRF is unusable with this version of OpenTTD
 };
 using GRFConfigFlags = EnumBitSet<GRFConfigFlag, uint8_t>;
 

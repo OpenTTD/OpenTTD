@@ -14,7 +14,7 @@
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
 
 
 ##id 0x0000
@@ -2099,7 +2099,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI-unuoj (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Altecunuoj: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Kiam ajn montriĝas alteco en la uzantinterfaco, montru ĝin en la indikitaj unuoj
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Angla-usona sistemo (futoj)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metra (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI-unuoj (m)
@@ -2740,6 +2740,7 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Tiru por
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Rando
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Periferioj
 STR_HOUSE_PICKER_CLASS_ZONE3                                    :Eksteraj Antaŭurboj
+
 
 
 STR_STATION_CLASS_DFLT                                          :Defaŭlta
@@ -3660,14 +3661,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Bonege
 STR_CARGO_RATING_OUTSTANDING                                    :Elstare bonege
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centri ĉefvidon ĉe la stacio. Stir+Klak por malfermi novan vidujon ĉe la stacioloko.
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Ŝanĝu nomon de stacio
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Montru ĉiujn vagonarojn kun ĉi tiu stacio en la plano
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Montru ĉiujn stratveturilojn kun ĉi tiu stacio en la plano
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Montru ĉiujn aviadilojn kun ĉi tiu stacio en la plano
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Montru ĉiujn ŝipojn kun ĉi tiu stacio en la plano
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Alinomi stacion/ŝarĝejon
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Fermu la flughavenon
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Malpermesu al aviadiloj surteriĝi ĉe tiu ĉi flughaveno
@@ -3675,11 +3674,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Malperme
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centri ĉefvidon ĉe la vojpunkto. Stir+Klak por malfermi novan vidujon ĉe la loko.
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Ŝanĝi nomon de vojpunkto.
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centri ĉefvidon ĉe la buo. Ctrl+Klak por malfermi novan vidujon ĉe la bua loko.
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Ŝanĝi nomon de la buo.
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ŝanĝu vojpunktonomon
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Financoj de {COMPANY} {BLACK}{COMPANY_NUM}

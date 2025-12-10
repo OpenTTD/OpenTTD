@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - name: Download source
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v6
       with:
         name: internal-source
 
@@ -25,17 +25,17 @@ jobs:
         tar -xf source.tar.gz --strip-components=1
 
     - name: Download x86 build
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v6
       with:
         name: openttd-windows-x86
 
     - name: Download x64 build
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v6
       with:
         name: openttd-windows-x64
 
     - name: Download arm64 build
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v6
       with:
         name: openttd-windows-arm64
 
@@ -74,16 +74,16 @@ jobs:
         mkdir -p builds/common-binaries/baseset
         cd builds/common-binaries/baseset
 
-        echo "::group::Download OpenGFX"
-        curl -L https://cdn.openttd.org/opengfx-releases/7.1/opengfx-7.1-all.zip -o opengfx-all.zip
+        echo "::group::Download OpenGFX2"
+        curl -L https://cdn.openttd.org/opengfx2_classic-releases/0.8/opengfx2_classic-0.8-all.zip -o opengfx2_classic.zip
         echo "::endgroup::"
 
-        echo "::group::Unpack OpenGFX"
-        unzip opengfx-all.zip
-        tar xf opengfx-*.tar
+        echo "::group::Unpack OpenGFX2"
+        unzip opengfx2_classic.zip
+        tar xf OpenGFX2_Classic-0.8.tar
         echo "::endgroup::"
 
-        rm -f opengfx-all.zip opengfx-*.tar
+        rm -f opengfx2_classic.zip OpenGFX2_Classic-0.8.tar
 
     - name: Install OpenMSX
       shell: bash
@@ -185,7 +185,7 @@ jobs:
         move output\OpenTTD.appxbundle bundles\internal\openttd-${{ inputs.version }}-windows-store.appxbundle
 
     - name: Store bundles
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: openttd-windows-store
         path: builds/bundles

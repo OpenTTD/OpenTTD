@@ -13,7 +13,7 @@
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
 
 
 ##id 0x0000
@@ -2127,7 +2127,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Unitate înălțime: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Afișează înălțimile în interfață folosind unitățile selectate
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metric (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -2833,10 +2833,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Suburbiile peri
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Suburbiile urbane
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centrul orașului
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Preveniți upgrade-urile
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Alege dacă această casă va fi protejată împotriva înlocuirii pe măsură ce orașul crește
-STR_HOUSE_PICKER_PROTECT_OFF                                    :Oprit
-STR_HOUSE_PICKER_PROTECT_ON                                     :Pornit
+
 
 STR_STATION_CLASS_DFLT                                          :Implicită
 STR_STATION_CLASS_DFLT_STATION                                  :Stație implicită
@@ -3418,7 +3416,6 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Generare
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generarea râurilor
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generare zonă dură și pietroasă
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Generare oraș
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Generare industrie
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generare fixă
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generare arbori
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Se configurează jocul
@@ -3830,14 +3827,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Excelent
 STR_CARGO_RATING_OUTSTANDING                                    :Fantastic
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrează imaginea pe locația stației. Ctrl+Click pentru a deshide o fereastra cu locația stației
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Schimbă numele stației
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Afiseaza toate trenurile care opresc in aceasta statie
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Afiseaza toate autovehiculele care opresc in aceasta statie
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Afiseaza toate aeronavele care opresc in aceasta statie
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Afiseaza toate navele care opresc in aceasta statie
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Redenumește stația
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Închide aeroport
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Nu permite avioanelor să aterizeze pe acest aeroport
@@ -3845,11 +3840,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Nu permi
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrază fereasta principală pe punctul de tranzit. Ctrl+Click pentru a deshide o fereastra cu locația punctului de tranzit
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Schimbă numele haltei
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrează vizorul principal pe locația balizei. Ctrl+Clic pentru a deschide o nouă fereastră de vizualizare cu locația balizei
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Schimbă numele balizei
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editează numele haltei
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Situația financiară a companiei {COMPANY} {BLACK}{COMPANY_NUM}

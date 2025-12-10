@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /**
@@ -13,9 +13,11 @@
  * functions may still be available if you return an older API version
  * in GetAPIVersion() in info.nut.
  *
- * \b 15.0
+ * \b 16.0
  *
  * This version is not yet released. The following changes are not set in stone yet.
+ *
+ * \b 15.0
  *
  * API additions:
  * \li GSEventVehicleCrashed::GetVictims
@@ -29,8 +31,9 @@
  * \li GSCargo::CC_NON_POTABLE
  * \li GSVehicleList_Waypoint
  * \li GSBaseStation::GetOwner
- * \li GSError:ERR_BRIDGE_TOO_LOW
- * \li GSRail::GetAllRailTypes
+ * \li GSError::ERR_BRIDGE_TOO_LOW
+ * \li GSEngine::GetAllRailTypes
+ * \li GSTile::IsHouseTile
  *
  * Other changes:
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
@@ -38,7 +41,7 @@
  * \li GSList instances can now be saved
  * \li GSVehicleList_Station accepts an optional GSVehicle::VehicleType parameter
  * \li GSList instances can now be cloned
- * \li GSRail::GetRailType will only return the first RailType of an engine, use GSRail::GetAllRailTypes instead
+ * \li GSEngine::GetRailType will only return the first RailType of an engine, use GSEngine::GetAllRailTypes instead
  *
  * \b 14.0
  *

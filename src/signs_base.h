@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file signs_base.h Base class for signs. */
@@ -24,7 +24,8 @@ struct Sign : SignPool::PoolItem<&_sign_pool> {
 	int32_t x = 0;
 	int32_t y = 0;
 	int32_t z = 0;
-	Owner owner = INVALID_OWNER; // placed by this company. Anyone can delete them though. OWNER_NONE for gray signs from old games.
+	Owner owner = INVALID_OWNER; // Placed by this company. Anyone can delete them though. OWNER_NONE for gray signs from old games.
+	Colours text_colour = COLOUR_WHITE; // Colour of the sign's text. Only relevant for OWNER_DEITY.
 
 	Sign() {}
 	Sign(Owner owner, int32_t x, int32_t y, int32_t z, const std::string &name) : name(name), x(x), y(y), z(z), owner(owner) {}

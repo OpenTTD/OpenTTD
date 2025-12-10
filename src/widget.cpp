@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file widget.cpp Handling of the default/simple widgets. */
@@ -3475,4 +3475,21 @@ std::unique_ptr<NWidgetBase> MakeCompanyButtonRows(WidgetID widget_first, Widget
 	}
 	if (hor != nullptr) vert->Add(std::move(hor));
 	return vert;
+}
+
+/**
+ * Unfocuses the focused widget of the window,
+ * if the focused widget is contained inside the container.
+ * @param parent_window Window which contains this container.
+ */
+void NWidgetContainer::UnfocusWidgets(Window *parent_window)
+{
+	assert(parent_window != nullptr);
+	if (parent_window->nested_focus != nullptr) {
+		for (auto &widget : this->children) {
+			if (parent_window->nested_focus == widget.get()) {
+				parent_window->UnfocusFocusedWidget();
+			}
+		}
+	}
 }

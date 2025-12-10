@@ -14,7 +14,7 @@
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
 
 
 ##id 0x0000
@@ -1700,7 +1700,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Meðalstærð b
 
 ###length 3
 
-###length 3
+###length 4
 
 STR_CONFIG_SETTING_SOUND                                        :Hljóð
 STR_CONFIG_SETTING_INTERFACE                                    :Viðmót
@@ -2207,6 +2207,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Lengd le
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Veldu lengd lestarstöðvar
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Draga & Sleppa
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Byggja lestarstöð með 'draga og sleppa' aðferðinni
+
 
 
 
@@ -2975,14 +2976,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Frábær
 STR_CARGO_RATING_OUTSTANDING                                    :Framúrskarandi
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Færa miðju aðal sjónarhorns á staðsetningu stöðvar. Ctrl+smelltu til að opna sýnisglugga yfir þessari stöð
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Breyta nafni stöðvar
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Sýna allar lestir sem hafa þessa stöð á sinni áætlun
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Sýna allar bifreiðir sem hafa þessa stöð á sinni áætlun
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Sýna allar flugvélar sem hafa þessa stöð á sinni áætlun
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Sýna öll skip sem hafa þessa stöð á sinni áætlun
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Endurnefna stöð/lestunarsvæði
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Loka flugvelli
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Koma í veg fyrir að flugvélar geti lent á þessum flugvelli
@@ -2990,11 +2989,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Koma í 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Færa sjónarhorn á staðsetningu millistöðvar. Ctrl+Smelltu til að opna sýniglugg á þessa staðsetningu
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Breyta nafni á vegleiðara
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Færa sjónarhorn á staðsetningu bauju. Ctrl+Smelltu til að opna sýnisglugga á þessa staðsetningu.
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Breyta nafni bauju
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Breyta nafni millistöðvar
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Fjármál {BLACK}{COMPANY_NUM}

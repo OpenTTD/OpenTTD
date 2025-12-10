@@ -13,7 +13,7 @@
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
 
 
 ##id 0x0000
@@ -254,6 +254,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}fot
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
+STR_UNITS_HEIGHT_GAMEUNITS                                      :{DECIMAL}{NBSP}nivå{P "" s}
 
 # Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}dag{P "" ar}
@@ -311,6 +312,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}När den
 STR_BUTTON_DEFAULT                                              :{BLACK}Standardinställning
 STR_BUTTON_CANCEL                                               :{BLACK}Avbryt
 STR_BUTTON_OK                                                   :{BLACK}OK
+STR_BUTTON_MOVE                                                 :{BLACK}Flytta
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-= qwertyuiop[]asdfghjkl;'#\zxcvbnm,./ .
@@ -1088,6 +1090,8 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Kryssa i den h�
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Använd traditionellt sprite-typsnitt
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Kryssa i den här rutan om du föredrar att använda det traditionella sprite-typsnittet med fast storlek
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT                               :Prioritera standardteckensnitt
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP                       :Kryssa i den här rutan om du föredrar att använda standardtypsnittet istället för dom upptäckta
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Anti-alias-typsnitt
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Kryssa i den här rutan för anti-aliasing av typsnitt med justerbar storlek
 
@@ -2158,10 +2162,11 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Höjdenhet: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Närhelst en höjd visas i användargränssnittet, visa den i de valda enheterna
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Brittisk (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisk (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_GAMEUNITS          :Spelenheter (nivåer)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :Lokalisering
 STR_CONFIG_SETTING_GRAPHICS                                     :Grafik
@@ -2859,15 +2864,15 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Välj vilken st
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Välj en hustyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
 
 STR_HOUSE_PICKER_CAPTION                                        :Husval
-STR_HOUSE_PICKER_NAME                                           :{BLACK}Namn: {ORANGE}{STRING}
-STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Invånarantal: {ORANGE}{NUM}
-STR_HOUSE_PICKER_YEARS                                          :{BLACK}År: {ORANGE}{NUM}-{NUM}
-STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}År: {ORANGE}Alla
-STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}År: {ORANGE}Från {NUM}
-STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}År: {ORANGE}Till {NUM}
-STR_HOUSE_PICKER_SIZE                                           :{BLACK}Storlek: {ORANGE}{NUM}x{NUM} rutor
-STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Accepterat gods: {ORANGE}
-STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Fraktgods producerat: {ORANGE}{CARGO_LIST}
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Namn: {GOLD}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Invånarantal: {GOLD}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}År: {GOLD}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}År: {GOLD}Alla
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}År: {GOLD}Från {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}År: {GOLD}Till {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Storlek: {GOLD}{NUM}x{NUM} rutor
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Accepterat gods: {GOLD}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Fraktgods producerat: {GOLD}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Gräns
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Utkanter
@@ -2875,10 +2880,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Yttrerförorter
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Innerförorter
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Stadskärnan
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Förhindra uppgraderingar
+STR_HOUSE_PICKER_PROTECT                                        :Hindra uppgraderingar
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Välj huruvida detta hus ska skyddas från att ersättas i samband med att staden växer
-STR_HOUSE_PICKER_PROTECT_OFF                                    :Av
-STR_HOUSE_PICKER_PROTECT_ON                                     :På
+
+STR_HOUSE_PICKER_REPLACE                                        :Ersätt befintlig
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Välj om befintliga hus automatiskt ska tas bort när denna byggnad placeras
 
 STR_STATION_CLASS_DFLT                                          :Original
 STR_STATION_CLASS_DFLT_STATION                                  :Standardstation
@@ -3425,6 +3431,10 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Nordväs
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Nordost
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Sydost
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Sydväst
+STR_MAPGEN_NORTHWEST_TOOLTIP                                    :Växla mellan vatten- eller friformskant vid den nordvästra kartkanten
+STR_MAPGEN_NORTHEAST_TOOLTIP                                    :Växla mellan vatten- eller friformskant vid den nordöstra kartkanten
+STR_MAPGEN_SOUTHEAST_TOOLTIP                                    :Växla mellan vatten- eller friformskant vid den sydöstra kartkanten
+STR_MAPGEN_SOUTHWEST_TOOLTIP                                    :Växla mellan vatten- eller friformskant vid den sydvästra kartkanten
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Fri form
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vatten
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}På måfå
@@ -3471,7 +3481,8 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Landskap
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generera Flod
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Svår och stenig markgenerering
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Stadsgenerering
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Industrigenerering
+STR_GENERATION_LAND_INDUSTRY_GENERATION                         :{BLACK}Generering av markindustri
+STR_GENERATION_WATER_INDUSTRY_GENERATION                        :{BLACK}Generering av vattenindustri
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generera objekt
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generera Träd
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Ställer in spel
@@ -3680,7 +3691,7 @@ STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Matcha V
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Slå på/av matchning av VERSALER/gemener när skyltnamn matchas mot sökfiltret
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Ändra skylttext
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Ändra skylt
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Centrera huvudvyn på skyltens läge Ctrl+Klick för att öppna en ny fönstervy över skyltens läge
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Åk till nästa skylt
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Åk till föregående skylt
@@ -3691,6 +3702,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Mata in 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Städer ({COMMA} av {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Inga -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{BLACK} ({COMMA}) {YELLOW}{CITY_ICON}
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Stadsnamn - klicka på ett namn för att centrera huvudvyn på staden. Ctrl+Klick för att öppna en ny fönstervy över stadens läge
 STR_TOWN_POPULATION                                             :{BLACK}Global folkmängd: {COMMA}
 
@@ -3896,14 +3908,14 @@ STR_CARGO_RATING_EXCELLENT                                      :Utmärkt
 STR_CARGO_RATING_OUTSTANDING                                    :Enastående
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrera huvudvyn på stationen. Ctrl+Klick öppnar en ny fönstervy över stationens läge
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Byt namn på stationen
+STR_STATION_VIEW_EDIT_TOOLTIP                                   :{BLACK}Döp om station eller flytta skylt
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Visa alla tåg där denna station finns med i rutten
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Visa alla vägfordon där denna station finns med i rutten
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Visa alla flygplan där denna station finns med i rutten
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Visa alla skepp där denna station finns med i rutten
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Byt namn på station
+STR_STATION_VIEW_EDIT_STATION_SIGN                              :{WHITE}Ändra skylt på station
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Stäng flygplats
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Hindra flygplan från att landa på den här flygplatsen
@@ -3911,11 +3923,11 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Hindra f
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrera huvudvyn på riktmärket. Ctrl+Klick för att öppna en ny fönstervy över riktmärkets läge
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Byt namn på riktmärke
+STR_WAYPOINT_VIEW_EDIT_TOOLTIP                                  :{BLACK}Döp om riktmärke eller flytta skylt
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrera huvudvyn på bojen. Ctrl+klicka för att öppna en ny skärmvy över bojens läge
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Ändra namn på boj
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ändra namn på riktmärke
+STR_WAYPOINT_VIEW_EDIT_WAYPOINT_SIGN                            :{WHITE}Ändra skylt på riktmärke
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Budget {BLACK}{COMPANY_NUM}
@@ -5129,6 +5141,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}För må
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}För nära en annan hamn
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}För nära en annan flygplats
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kan inte byta namn på station...
+STR_ERROR_CAN_T_MOVE_STATION_NAME                               :{WHITE}Kan inte flytta stationsskylt...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... detta är en väg som ägs av en stad
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... vägen pekar i fel riktning
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... genomfartshållplatser kan inte ha gatuhörn
@@ -5160,6 +5173,7 @@ STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}Kan inte
 STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Kan inte bygga vägriktmärke här...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kan inte placera boj här...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan inte ändra riktmärkets namn...
+STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :{WHITE}Kain inte flytta skylt för riktmärke...
 
 STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Kan inte ta bort järnvägsriktmärke här...
 STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Kan inte ta bort vägriktmärke här...
@@ -5268,13 +5282,13 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start- o
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... brons båda ändar måste vara på land
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... för lång bro
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Bron slutar utanför kartans gränser
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Bro för låg för station
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Bro för låg för depå
-STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Bron är för låg för en kaj
-STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Bro för låg för boj
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Bro för låg för järnvägsriktmärke
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Bro för låg för vägriktmärke
-STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Bro för låg för sluss
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Bron är {HEIGHT} för låg för station
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Bron är {HEIGHT} för låg för depå
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Bron är {HEIGHT} för låg för en kaj
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Bron är {HEIGHT} för låg för boj
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Bron är {HEIGHT} för låg för järnvägsriktmärke
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Bron är {HEIGHT} för låg för vägriktmärke
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Bron är {HEIGHT} för låg för sluss
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kan inte bygga tunnel här...

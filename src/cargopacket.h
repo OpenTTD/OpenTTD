@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file cargopacket.h Base class for cargo packets. */
@@ -371,7 +371,7 @@ protected:
 	void RemoveFromMeta(const CargoPacket *cp, MoveToAction action, uint count);
 
 	static MoveToAction ChooseAction(const CargoPacket *cp, StationID cargo_next,
-			StationID current_station, bool accepted, StationIDStack next_station);
+			StationID current_station, bool accepted, std::span<const StationID> next_station);
 
 public:
 	/** The station cargo list needs to control the unloading. */
@@ -469,7 +469,7 @@ public:
 
 	void InvalidateCache();
 
-	bool Stage(bool accepted, StationID current_station, StationIDStack next_station, uint8_t order_flags, const GoodsEntry *ge, CargoType cargo, CargoPayment *payment, TileIndex current_tile);
+	bool Stage(bool accepted, StationID current_station, std::span<const StationID> next_station, OrderUnloadType unload_type, const GoodsEntry *ge, CargoType cargo, CargoPayment *payment, TileIndex current_tile);
 
 	/**
 	 * Marks all cargo in the vehicle as to be kept. This is mostly useful for
@@ -543,7 +543,7 @@ public:
 	bool ShiftCargo(Taction &action, StationID next);
 
 	template <class Taction>
-	uint ShiftCargo(Taction action, StationIDStack next, bool include_invalid);
+	uint ShiftCargo(Taction action, std::span<const StationID> next, bool include_invalid);
 
 	void Append(CargoPacket *cp, StationID next);
 
@@ -552,10 +552,10 @@ public:
 	 * @param next Station the cargo is headed for.
 	 * @return If there is any cargo for that station.
 	 */
-	inline bool HasCargoFor(StationIDStack next) const
+	inline bool HasCargoFor(std::span<const StationID> next) const
 	{
-		while (!next.IsEmpty()) {
-			if (this->packets.find(next.Pop()) != this->packets.end()) return true;
+		for (const StationID &station : next) {
+			if (this->packets.find(station) != this->packets.end()) return true;
 		}
 		/* Packets for StationID::Invalid() can go anywhere. */
 		return this->packets.find(StationID::Invalid()) != this->packets.end();
@@ -603,8 +603,8 @@ public:
 	 * amount of cargo to be moved. Second parameter is destination (if
 	 * applicable), return value is amount of cargo actually moved. */
 
-	uint Reserve(uint max_move, VehicleCargoList *dest, StationIDStack next, TileIndex current_tile);
-	uint Load(uint max_move, VehicleCargoList *dest, StationIDStack next, TileIndex current_tile);
+	uint Reserve(uint max_move, VehicleCargoList *dest, std::span<const StationID> next, TileIndex current_tile);
+	uint Load(uint max_move, VehicleCargoList *dest, std::span<const StationID> next, TileIndex current_tile);
 	uint Truncate(uint max_move = UINT_MAX, StationCargoAmountMap *cargo_per_source = nullptr);
 	uint Reroute(uint max_move, StationCargoList *dest, StationID avoid, StationID avoid2, const GoodsEntry *ge);
 

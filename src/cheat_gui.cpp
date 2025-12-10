@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file cheat_gui.cpp GUI related to cheating. */
@@ -29,7 +29,6 @@
 #include "newgrf.h"
 #include "error.h"
 #include "misc_cmd.h"
-#include "core/geometry_func.hpp"
 #include "settings_type.h"
 #include "settings_internal.h"
 #include "timer/timer.h"
@@ -219,7 +218,7 @@ static const CheatEntry _cheats_ui[] = {
 static_assert(CHT_NUM_CHEATS == lengthof(_cheats_ui));
 
 /** Widget definitions of the cheat GUI. */
-static constexpr NWidgetPart _nested_cheat_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_cheat_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_CHEATS, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),

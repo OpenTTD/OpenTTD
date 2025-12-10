@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file road_func.h Functions related to roads. */
@@ -159,7 +159,7 @@ void UpdateAdjacentLevelCrossingTilesOnLevelCrossingRemoval(TileIndex tile, Axis
 void UpdateCompanyRoadInfrastructure(RoadType rt, Owner o, int count);
 
 struct TileInfo;
-enum Roadside : uint8_t;
+enum class Roadside : uint8_t;
 void DrawRoadOverlays(const TileInfo *ti, PaletteID pal, const RoadTypeInfo *road_rti, const RoadTypeInfo *tram_rit, uint road_offset, uint tram_offset, bool draw_underlay = true);
 void DrawRoadGroundSprites(const TileInfo *ti, RoadBits road, RoadBits tram, const RoadTypeInfo *road_rti, const RoadTypeInfo *tram_rti, Roadside roadside, bool snow_or_desert);
 

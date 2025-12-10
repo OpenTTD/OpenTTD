@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file newgrf_badge_config.h Functions related to NewGRF badge configuration. */
@@ -16,8 +16,8 @@
 class BadgeClassConfigItem {
 public:
 	std::string label; ///< Class label.
-	int column = -1; ///< UI column, feature-dependent.
-	bool show_icon = false; ///< Set if the badge icons should be displayed for this class.
+	uint column = 0; ///< UI column, feature-dependent.
+	bool show_icon = true; ///< Set if the badge icons should be displayed for this class.
 	bool show_filter = false; ///< Set if a drop down filter should be added for this class.
 };
 

@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file order_gui.cpp GUI related to orders. */
@@ -155,14 +155,14 @@ static const StringID _order_goto_dropdown_aircraft[] = {
 
 /** Variables for conditional orders; this defines the order of appearance in the dropdown box */
 static const OrderConditionVariable _order_conditional_variable[] = {
-	OCV_LOAD_PERCENTAGE,
-	OCV_RELIABILITY,
-	OCV_MAX_RELIABILITY,
-	OCV_MAX_SPEED,
-	OCV_AGE,
-	OCV_REMAINING_LIFETIME,
-	OCV_REQUIRES_SERVICE,
-	OCV_UNCONDITIONALLY,
+	OrderConditionVariable::LoadPercentage,
+	OrderConditionVariable::Reliability,
+	OrderConditionVariable::MaxReliability,
+	OrderConditionVariable::MaxSpeed,
+	OrderConditionVariable::Age,
+	OrderConditionVariable::RemainingLifetime,
+	OrderConditionVariable::RequiresService,
+	OrderConditionVariable::Unconditionally,
 };
 
 static const StringID _order_conditional_condition[] = {
@@ -186,17 +186,12 @@ static const StringID _order_depot_action_dropdown[] = {
 	STR_ORDER_DROP_UNBUNCH,
 };
 
-static int DepotActionStringIndex(const Order *order)
+static OrderDepotAction DepotActionStringIndex(const Order *order)
 {
-	if (order->GetDepotActionType() & ODATFB_HALT) {
-		return DA_STOP;
-	} else if (order->GetDepotOrderType() & ODTFB_SERVICE) {
-		return DA_SERVICE;
-	} else if (order->GetDepotActionType() & ODATFB_UNBUNCH) {
-		return DA_UNBUNCH;
-	} else {
-		return DA_ALWAYS_GO;
-	}
+	if (order->GetDepotActionType().Test(OrderDepotActionFlag::Halt)) return OrderDepotAction::Stop;
+	if (order->GetDepotOrderType().Test(OrderDepotTypeFlag::Service)) return OrderDepotAction::Service;
+	if (order->GetDepotActionType().Test(OrderDepotActionFlag::Unbunch)) return OrderDepotAction::Unbunch;
+	return OrderDepotAction::AlwaysGo;
 }
 
 static const StringID _order_refit_action_dropdown[] = {
@@ -206,10 +201,10 @@ static const StringID _order_refit_action_dropdown[] = {
 
 static StringID GetOrderGoToString(const Order &order)
 {
-	if (order.GetDepotOrderType() & ODTFB_SERVICE) {
-		return (order.GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_ORDER_SERVICE_NON_STOP_AT : STR_ORDER_SERVICE_AT;
+	if (order.GetDepotOrderType().Test(OrderDepotTypeFlag::Service)) {
+		return order.GetNonStopType().Test(OrderNonStopFlag::NoIntermediate) ? STR_ORDER_SERVICE_NON_STOP_AT : STR_ORDER_SERVICE_AT;
 	} else {
-		return (order.GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_ORDER_GO_NON_STOP_TO : STR_ORDER_GO_TO;
+		return order.GetNonStopType().Test(OrderNonStopFlag::NoIntermediate) ? STR_ORDER_GO_NON_STOP_TO : STR_ORDER_GO_TO;
 	}
 }
 
@@ -262,11 +257,11 @@ void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_
 			break;
 
 		case OT_GOTO_STATION: {
-			OrderLoadFlags load = order->GetLoadType();
-			OrderUnloadFlags unload = order->GetUnloadType();
+			OrderLoadType load = order->GetLoadType();
+			OrderUnloadType unload = order->GetUnloadType();
 			bool valid_station = CanVehicleUseStation(v, Station::Get(order->GetDestination().ToStationID()));
 
-			line = GetString(valid_station ? STR_ORDER_GO_TO_STATION : STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION, STR_ORDER_GO_TO + (v->IsGroundVehicle() ? order->GetNonStopType() : 0), order->GetDestination());
+			line = GetString(valid_station ? STR_ORDER_GO_TO_STATION : STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION, STR_ORDER_GO_TO + (v->IsGroundVehicle() ? order->GetNonStopType() : OrderNonStopFlags{}).base(), order->GetDestination());
 			if (timetable) {
 				/* Show only wait time in the timetable window. */
 				if (order->GetWaitTime() > 0) {
@@ -275,8 +270,8 @@ void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_
 				}
 			} else {
 				/* Show non-stop, refit and stop location only in the order window. */
-				if (!(order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION)) {
-					StringID str = _station_load_types[order->IsRefit()][unload][load];
+				if (!order->GetNonStopType().Test(OrderNonStopFlag::NoDestination)) {
+					StringID str = _station_load_types[order->IsRefit()][to_underlying(unload)][to_underlying(load)];
 					if (str != INVALID_STRING_ID) {
 						if (order->IsRefit()) {
 							line += GetString(str, order->IsAutoRefit() ? STR_ORDER_AUTO_REFIT_ANY : CargoSpec::Get(order->GetRefitCargo())->name);
@@ -286,10 +281,10 @@ void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_
 					}
 				}
 
-				if (v->type == VEH_TRAIN && (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) == 0) {
+				if (v->type == VEH_TRAIN && !order->GetNonStopType().Test(OrderNonStopFlag::NoDestination)) {
 					/* Only show the stopping location if other than the default chosen by the player. */
-					if (order->GetStopLocation() != (OrderStopLocation)(_settings_client.gui.stop_location)) {
-						line += GetString(STR_ORDER_STOP_LOCATION_NEAR_END + order->GetStopLocation());
+					if (order->GetStopLocation() != _settings_client.gui.stop_location) {
+						line += GetString(STR_ORDER_STOP_LOCATION_NEAR_END + to_underlying(order->GetStopLocation()));
 					}
 				}
 			}
@@ -297,7 +292,7 @@ void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_
 		}
 
 		case OT_GOTO_DEPOT:
-			if (!(order->GetDepotActionType() & ODATFB_NEAREST_DEPOT)) {
+			if (!order->GetDepotActionType().Test(OrderDepotActionFlag::NearestDepot)) {
 				/* Going to a specific depot. */
 				line = GetString(STR_ORDER_GO_TO_DEPOT_FORMAT, GetOrderGoToString(*order), v->type, order->GetDestination());
 			} else if (v->type == VEH_AIRCRAFT) {
@@ -309,38 +304,38 @@ void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_
 			}
 
 			/* Do not show stopping in the depot in the timetable window. */
-			if (!timetable && (order->GetDepotActionType() & ODATFB_HALT)) {
+			if (!timetable && order->GetDepotActionType().Test(OrderDepotActionFlag::Halt)) {
 				line += GetString(STR_ORDER_STOP_ORDER);
 			}
 
 			/* Do not show refitting in the depot in the timetable window. */
 			if (!timetable && order->IsRefit()) {
-				line += GetString((order->GetDepotActionType() & ODATFB_HALT) ? STR_ORDER_REFIT_STOP_ORDER : STR_ORDER_REFIT_ORDER, CargoSpec::Get(order->GetRefitCargo())->name);
+				line += GetString(order->GetDepotActionType().Test(OrderDepotActionFlag::Halt) ? STR_ORDER_REFIT_STOP_ORDER : STR_ORDER_REFIT_ORDER, CargoSpec::Get(order->GetRefitCargo())->name);
 			}
 
 			/* Show unbunching depot in both order and timetable windows. */
-			if (order->GetDepotActionType() & ODATFB_UNBUNCH) {
+			if (order->GetDepotActionType().Test(OrderDepotActionFlag::Unbunch)) {
 				line += GetString(STR_ORDER_WAIT_TO_UNBUNCH);
 			}
 			break;
 
 		case OT_GOTO_WAYPOINT:
-			line = GetString((order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_ORDER_GO_NON_STOP_TO_WAYPOINT : STR_ORDER_GO_TO_WAYPOINT, order->GetDestination());
+			line = GetString(order->GetNonStopType().Test(OrderNonStopFlag::NoIntermediate) ? STR_ORDER_GO_NON_STOP_TO_WAYPOINT : STR_ORDER_GO_TO_WAYPOINT, order->GetDestination());
 			break;
 
 		case OT_CONDITIONAL:
-			if (order->GetConditionVariable() == OCV_UNCONDITIONALLY) {
+			if (order->GetConditionVariable() == OrderConditionVariable::Unconditionally) {
 				line = GetString(STR_ORDER_CONDITIONAL_UNCONDITIONAL, order->GetConditionSkipToOrder() + 1);
 			} else {
 				OrderConditionComparator occ = order->GetConditionComparator();
 
 				uint value = order->GetConditionValue();
-				if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value, v->type);
+				if (order->GetConditionVariable() == OrderConditionVariable::MaxSpeed) value = ConvertSpeedToDisplaySpeed(value, v->type);
 
-				line = GetString((occ == OCC_IS_TRUE || occ == OCC_IS_FALSE) ? STR_ORDER_CONDITIONAL_TRUE_FALSE : STR_ORDER_CONDITIONAL_NUM,
+				line = GetString((occ == OrderConditionComparator::IsTrue || occ == OrderConditionComparator::IsFalse) ? STR_ORDER_CONDITIONAL_TRUE_FALSE : STR_ORDER_CONDITIONAL_NUM,
 					order->GetConditionSkipToOrder() + 1,
-					STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + order->GetConditionVariable(),
-					STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS + occ,
+					STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + to_underlying(order->GetConditionVariable()),
+					STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS + to_underlying(occ),
 					value);
 			}
 
@@ -376,8 +371,8 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	/* check depot first */
 	if (IsDepotTypeTile(tile, (TransportType)(uint)v->type) && IsTileOwner(tile, _local_company)) {
 		order.MakeGoToDepot(GetDepotDestinationIndex(tile),
-				ODTFB_PART_OF_ORDERS,
-				(_settings_client.gui.new_nonstop && v->IsGroundVehicle()) ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
+				OrderDepotTypeFlag::PartOfOrders,
+				(_settings_client.gui.new_nonstop && v->IsGroundVehicle()) ? OrderNonStopFlag::NoIntermediate : OrderNonStopFlags{});
 
 		if (_ctrl_pressed) {
 			/* Check to see if we are allowed to make this an unbunching order. */
@@ -403,7 +398,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			}
 
 			/* Now we are allowed to set the action type. */
-			order.SetDepotActionType(ODATFB_UNBUNCH);
+			order.SetDepotActionType(OrderDepotActionFlag::Unbunch);
 		}
 
 		return order;
@@ -414,7 +409,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			v->type == VEH_TRAIN &&
 			IsTileOwner(tile, _local_company)) {
 		order.MakeGoToWaypoint(GetStationIndex(tile));
-		if (_settings_client.gui.new_nonstop != _ctrl_pressed) order.SetNonStopType(ONSF_NO_STOP_AT_ANY_STATION);
+		if (_settings_client.gui.new_nonstop != _ctrl_pressed) order.SetNonStopType({});
 		return order;
 	}
 
@@ -423,7 +418,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			v->type == VEH_ROAD &&
 			IsTileOwner(tile, _local_company)) {
 		order.MakeGoToWaypoint(GetStationIndex(tile));
-		if (_settings_client.gui.new_nonstop != _ctrl_pressed) order.SetNonStopType(ONSF_NO_STOP_AT_ANY_STATION);
+		if (_settings_client.gui.new_nonstop != _ctrl_pressed) order.SetNonStopType({});
 		return order;
 	}
 
@@ -454,9 +449,9 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			}
 			if (st->facilities.Any(facil)) {
 				order.MakeGoToStation(st->index);
-				if (_ctrl_pressed) order.SetLoadType(OLF_FULL_LOAD_ANY);
-				if (_settings_client.gui.new_nonstop && v->IsGroundVehicle()) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
-				order.SetStopLocation(v->type == VEH_TRAIN ? (OrderStopLocation)(_settings_client.gui.stop_location) : OSL_PLATFORM_FAR_END);
+				if (_ctrl_pressed) order.SetLoadType(OrderLoadType::FullLoadAny);
+				if (_settings_client.gui.new_nonstop && v->IsGroundVehicle()) order.SetNonStopType(OrderNonStopFlag::NoIntermediate);
+				order.SetStopLocation(v->type == VEH_TRAIN ? (OrderStopLocation)(_settings_client.gui.stop_location) : OrderStopLocation::FarEnd);
 				return order;
 			}
 		}
@@ -619,7 +614,7 @@ private:
 	 * @param load_type Load flag to apply. If matches existing load type, toggles to default of 'load if possible'.
 	 * @param toggle If we toggle or not (used for hotkey behavior)
 	 */
-	void OrderClick_FullLoad(OrderLoadFlags load_type, bool toggle = false)
+	void OrderClick_FullLoad(OrderLoadType load_type, bool toggle = false)
 	{
 		VehicleOrderID sel_ord = this->OrderGetSel();
 		const Order *order = this->vehicle->GetOrder(sel_ord);
@@ -627,26 +622,26 @@ private:
 		if (order == nullptr) return;
 
 		if (toggle && order->GetLoadType() == load_type) {
-			load_type = OLF_LOAD_IF_POSSIBLE; // reset to 'default'
+			load_type = OrderLoadType::LoadIfPossible; // reset to 'default'
 		}
 		if (order->GetLoadType() == load_type) return; // If we still match, do nothing
 
-		Command<CMD_MODIFY_ORDER>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER, this->vehicle->tile, this->vehicle->index, sel_ord, MOF_LOAD, load_type);
+		Command<CMD_MODIFY_ORDER>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER, this->vehicle->tile, this->vehicle->index, sel_ord, MOF_LOAD, to_underlying(load_type));
 	}
 
 	/**
 	 * Handle the click on the service.
 	 */
-	void OrderClick_Service(int i)
+	void OrderClick_Service(std::optional<OrderDepotAction> i)
 	{
 		VehicleOrderID sel_ord = this->OrderGetSel();
 
-		if (i < 0) {
+		if (!i.has_value()) {
 			const Order *order = this->vehicle->GetOrder(sel_ord);
 			if (order == nullptr) return;
-			i = (order->GetDepotOrderType() & ODTFB_SERVICE) ? DA_ALWAYS_GO : DA_SERVICE;
+			i = order->GetDepotOrderType().Test(OrderDepotTypeFlag::Service) ? OrderDepotAction::AlwaysGo : OrderDepotAction::Service;
 		}
-		Command<CMD_MODIFY_ORDER>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER, this->vehicle->tile, this->vehicle->index, sel_ord, MOF_DEPOT_ACTION, i);
+		Command<CMD_MODIFY_ORDER>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER, this->vehicle->tile, this->vehicle->index, sel_ord, MOF_DEPOT_ACTION, to_underlying(i.value()));
 	}
 
 	/**
@@ -655,9 +650,9 @@ private:
 	void OrderClick_NearestDepot()
 	{
 		Order order{};
-		order.MakeGoToDepot(DepotID::Invalid(), ODTFB_PART_OF_ORDERS,
-				_settings_client.gui.new_nonstop && this->vehicle->IsGroundVehicle() ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
-		order.SetDepotActionType(ODATFB_NEAREST_DEPOT);
+		order.MakeGoToDepot(DepotID::Invalid(), OrderDepotTypeFlag::PartOfOrders,
+				_settings_client.gui.new_nonstop && this->vehicle->IsGroundVehicle() ? OrderNonStopFlag::NoIntermediate : OrderNonStopFlags{});
+		order.SetDepotActionType(OrderDepotActionFlag::NearestDepot);
 
 		Command<CMD_INSERT_ORDER>::Post(STR_ERROR_CAN_T_INSERT_NEW_ORDER, this->vehicle->tile, this->vehicle->index, this->OrderGetSel(), order);
 	}
@@ -667,7 +662,7 @@ private:
 	 * @param unload_type Unload flag to apply. If matches existing unload type, toggles to default of 'unload if possible'.
 	 * @param toggle If we toggle or not (used for hotkey behavior)
 	 */
-	void OrderClick_Unload(OrderUnloadFlags unload_type, bool toggle = false)
+	void OrderClick_Unload(OrderUnloadType unload_type, bool toggle = false)
 	{
 		VehicleOrderID sel_ord = this->OrderGetSel();
 		const Order *order = this->vehicle->GetOrder(sel_ord);
@@ -675,24 +670,24 @@ private:
 		if (order == nullptr) return;
 
 		if (toggle && order->GetUnloadType() == unload_type) {
-			unload_type = OUF_UNLOAD_IF_POSSIBLE;
+			unload_type = OrderUnloadType::UnloadIfPossible;
 		}
 		if (order->GetUnloadType() == unload_type) return; // If we still match, do nothing
 
-		Command<CMD_MODIFY_ORDER>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER, this->vehicle->tile, this->vehicle->index, sel_ord, MOF_UNLOAD, unload_type);
+		Command<CMD_MODIFY_ORDER>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER, this->vehicle->tile, this->vehicle->index, sel_ord, MOF_UNLOAD, to_underlying(unload_type));
 
 		/* Transfer and unload orders with leave empty as default */
-		if (unload_type == OUFB_TRANSFER || unload_type == OUFB_UNLOAD) {
-			Command<CMD_MODIFY_ORDER>::Post(this->vehicle->tile, this->vehicle->index, sel_ord, MOF_LOAD, OLFB_NO_LOAD);
+		if (unload_type == OrderUnloadType::Transfer || unload_type == OrderUnloadType::Unload) {
+			Command<CMD_MODIFY_ORDER>::Post(this->vehicle->tile, this->vehicle->index, sel_ord, MOF_LOAD, to_underlying(OrderLoadType::NoLoad));
 			this->SetWidgetDirty(WID_O_FULL_LOAD);
 		}
 	}
 
 	/**
 	 * Handle the click on the nonstop button.
-	 * @param non_stop what non-stop type to use; -1 to use the 'next' one.
+	 * @param non_stop what non-stop type to use; std::nullopt to use the 'next' one.
 	 */
-	void OrderClick_Nonstop(int non_stop)
+	void OrderClick_Nonstop(std::optional<OrderNonStopFlags> non_stop)
 	{
 		if (!this->vehicle->IsGroundVehicle()) return;
 
@@ -701,13 +696,13 @@ private:
 
 		if (order == nullptr || order->GetNonStopType() == non_stop) return;
 
-		/* Keypress if negative, so 'toggle' to the next */
-		if (non_stop < 0) {
-			non_stop = order->GetNonStopType() ^ ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS;
+		/* Keypress if no value, so 'toggle' to the next */
+		if (!non_stop.has_value()) {
+			non_stop = order->GetNonStopType().Flip(OrderNonStopFlag::NoIntermediate);
 		}
 
 		this->SetWidgetDirty(WID_O_NON_STOP);
-		Command<CMD_MODIFY_ORDER>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER, this->vehicle->tile, this->vehicle->index, sel_ord, MOF_NON_STOP, non_stop);
+		Command<CMD_MODIFY_ORDER>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER, this->vehicle->tile, this->vehicle->index, sel_ord, MOF_NON_STOP, non_stop.value().base());
 	}
 
 	/**
@@ -829,7 +824,7 @@ public:
 			case WID_O_COND_VARIABLE: {
 				Dimension d = {0, 0};
 				for (const auto &ocv : _order_conditional_variable) {
-					d = maxdim(d, GetStringBoundingBox(STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + ocv));
+					d = maxdim(d, GetStringBoundingBox(STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + to_underlying(ocv)));
 				}
 				d.width += padding.width;
 				d.height += padding.height;
@@ -985,8 +980,8 @@ public:
 			this->DisableWidget(WID_O_UNLOAD);
 			this->DisableWidget(WID_O_REFIT_DROPDOWN);
 		} else {
-			this->SetWidgetDisabledState(WID_O_FULL_LOAD, (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) != 0); // full load
-			this->SetWidgetDisabledState(WID_O_UNLOAD,    (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) != 0); // unload
+			this->SetWidgetDisabledState(WID_O_FULL_LOAD, order->GetNonStopType().Test(OrderNonStopFlag::NoDestination)); // full load
+			this->SetWidgetDisabledState(WID_O_UNLOAD,    order->GetNonStopType().Test(OrderNonStopFlag::NoDestination)); // unload
 
 			switch (order->GetType()) {
 				case OT_GOTO_STATION:
@@ -998,15 +993,15 @@ public:
 						middle_sel->SetDisplayedPlane(DP_MIDDLE_UNLOAD);
 						right_sel->SetDisplayedPlane(DP_RIGHT_REFIT);
 						this->EnableWidget(WID_O_NON_STOP);
-						this->SetWidgetLoweredState(WID_O_NON_STOP, order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
+						this->SetWidgetLoweredState(WID_O_NON_STOP, order->GetNonStopType().Test(OrderNonStopFlag::NoIntermediate));
 					}
-					this->SetWidgetLoweredState(WID_O_FULL_LOAD, order->GetLoadType() == OLF_FULL_LOAD_ANY);
-					this->SetWidgetLoweredState(WID_O_UNLOAD, order->GetUnloadType() == OUFB_UNLOAD);
+					this->SetWidgetLoweredState(WID_O_FULL_LOAD, order->GetLoadType() == OrderLoadType::FullLoadAny);
+					this->SetWidgetLoweredState(WID_O_UNLOAD, order->GetUnloadType() == OrderUnloadType::Unload);
 
 					/* Can only do refitting when stopping at the destination and loading cargo.
 					 * Also enable the button if a refit is already set to allow clearing it. */
 					this->SetWidgetDisabledState(WID_O_REFIT_DROPDOWN,
-							order->GetLoadType() == OLFB_NO_LOAD || (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) ||
+							order->GetLoadType() == OrderLoadType::NoLoad || order->GetNonStopType().Test(OrderNonStopFlag::NoDestination) ||
 							((!this->can_do_refit || !this->can_do_autorefit) && !order->IsRefit()));
 
 					break;
@@ -1020,7 +1015,7 @@ public:
 						middle_sel->SetDisplayedPlane(DP_MIDDLE_UNLOAD);
 						right_sel->SetDisplayedPlane(DP_RIGHT_EMPTY);
 						this->EnableWidget(WID_O_NON_STOP);
-						this->SetWidgetLoweredState(WID_O_NON_STOP, order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
+						this->SetWidgetLoweredState(WID_O_NON_STOP, order->GetNonStopType().Test(OrderNonStopFlag::NoIntermediate));
 					}
 					this->DisableWidget(WID_O_FULL_LOAD);
 					this->DisableWidget(WID_O_UNLOAD);
@@ -1036,12 +1031,12 @@ public:
 						middle_sel->SetDisplayedPlane(DP_MIDDLE_SERVICE);
 						right_sel->SetDisplayedPlane(DP_RIGHT_EMPTY);
 						this->EnableWidget(WID_O_NON_STOP);
-						this->SetWidgetLoweredState(WID_O_NON_STOP, order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
+						this->SetWidgetLoweredState(WID_O_NON_STOP, order->GetNonStopType().Test(OrderNonStopFlag::NoIntermediate));
 					}
 					/* Disable refit button if the order is no 'always go' order.
 					 * However, keep the service button enabled for refit-orders to allow clearing refits (without knowing about ctrl). */
 					this->SetWidgetDisabledState(WID_O_REFIT,
-							(order->GetDepotOrderType() & ODTFB_SERVICE) || (order->GetDepotActionType() & ODATFB_HALT) ||
+							order->GetDepotOrderType().Test(OrderDepotTypeFlag::Service) || order->GetDepotActionType().Test(OrderDepotActionFlag::Halt) ||
 							(!this->can_do_refit && !order->IsRefit()));
 					break;
 
@@ -1053,10 +1048,10 @@ public:
 					}
 					OrderConditionVariable ocv = order->GetConditionVariable();
 					/* Set the strings for the dropdown boxes. */
-					this->GetWidget<NWidgetCore>(WID_O_COND_VARIABLE)->SetString(STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + ocv);
-					this->GetWidget<NWidgetCore>(WID_O_COND_COMPARATOR)->SetString(_order_conditional_condition[order->GetConditionComparator()]);
-					this->SetWidgetDisabledState(WID_O_COND_COMPARATOR, ocv == OCV_UNCONDITIONALLY);
-					this->SetWidgetDisabledState(WID_O_COND_VALUE, ocv == OCV_REQUIRES_SERVICE || ocv == OCV_UNCONDITIONALLY);
+					this->GetWidget<NWidgetCore>(WID_O_COND_VARIABLE)->SetString(STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + to_underlying(ocv));
+					this->GetWidget<NWidgetCore>(WID_O_COND_COMPARATOR)->SetString(_order_conditional_condition[to_underlying(order->GetConditionComparator())]);
+					this->SetWidgetDisabledState(WID_O_COND_COMPARATOR, ocv == OrderConditionVariable::Unconditionally);
+					this->SetWidgetDisabledState(WID_O_COND_VALUE, ocv == OrderConditionVariable::RequiresService || ocv == OrderConditionVariable::Unconditionally);
 					break;
 				}
 
@@ -1159,7 +1154,7 @@ public:
 
 				if (order != nullptr && order->IsType(OT_CONDITIONAL)) {
 					uint value = order->GetConditionValue();
-					if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value, this->vehicle->type);
+					if (order->GetConditionVariable() == OrderConditionVariable::MaxSpeed) value = ConvertSpeedToDisplaySpeed(value, this->vehicle->type);
 					return GetString(STR_JUST_COMMA, value);
 				}
 				return {};
@@ -1174,9 +1169,9 @@ public:
 				if (order == nullptr || !order->IsType(OT_GOTO_DEPOT)) return {};
 
 				/* Select the current action selected in the dropdown. The flags don't match the dropdown so we can't just use an index. */
-				if (order->GetDepotOrderType() & ODTFB_SERVICE) return GetString(STR_ORDER_DROP_SERVICE_DEPOT);
-				if (order->GetDepotActionType() & ODATFB_HALT) return GetString(STR_ORDER_DROP_HALT_DEPOT);
-				if (order->GetDepotActionType() & ODATFB_UNBUNCH) return GetString(STR_ORDER_DROP_UNBUNCH);
+				if (order->GetDepotOrderType().Test(OrderDepotTypeFlag::Service)) return GetString(STR_ORDER_DROP_SERVICE_DEPOT);
+				if (order->GetDepotActionType().Test(OrderDepotActionFlag::Halt)) return GetString(STR_ORDER_DROP_HALT_DEPOT);
+				if (order->GetDepotActionType().Test(OrderDepotActionFlag::Unbunch)) return GetString(STR_ORDER_DROP_UNBUNCH);
 
 				return GetString(STR_ORDER_DROP_GO_ALWAYS_DEPOT);
 			}
@@ -1220,7 +1215,7 @@ public:
 					if (this->vehicle->type == VEH_TRAIN && sel < this->vehicle->GetNumOrders()) {
 						Command<CMD_MODIFY_ORDER>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER,
 								this->vehicle->tile, this->vehicle->index, sel,
-								MOF_STOP_LOCATION, (this->vehicle->GetOrder(sel)->GetStopLocation() + 1) % OSL_END);
+								MOF_STOP_LOCATION, (to_underlying(this->vehicle->GetOrder(sel)->GetStopLocation()) + 1) % to_underlying(OrderStopLocation::End));
 					}
 				} else {
 					/* Select clicked order */
@@ -1250,11 +1245,11 @@ public:
 
 			case WID_O_NON_STOP:
 				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
-					this->OrderClick_Nonstop(-1);
+					this->OrderClick_Nonstop(std::nullopt);
 				} else {
 					const Order *o = this->vehicle->GetOrder(this->OrderGetSel());
 					assert(o != nullptr);
-					ShowDropDownMenu(this, _order_non_stop_dropdown, o->GetNonStopType(), WID_O_NON_STOP, 0,
+					ShowDropDownMenu(this, _order_non_stop_dropdown, o->GetNonStopType().base(), WID_O_NON_STOP, 0,
 													o->IsType(OT_GOTO_STATION) ? 0 : (o->IsType(OT_GOTO_WAYPOINT) ? 3 : 12));
 				}
 				break;
@@ -1281,17 +1276,17 @@ public:
 
 			case WID_O_FULL_LOAD:
 				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
-					this->OrderClick_FullLoad(OLF_FULL_LOAD_ANY, true);
+					this->OrderClick_FullLoad(OrderLoadType::FullLoadAny, true);
 				} else {
-					ShowDropDownMenu(this, _order_full_load_dropdown, this->vehicle->GetOrder(this->OrderGetSel())->GetLoadType(), WID_O_FULL_LOAD, 0, 2);
+					ShowDropDownMenu(this, _order_full_load_dropdown, to_underlying(this->vehicle->GetOrder(this->OrderGetSel())->GetLoadType()), WID_O_FULL_LOAD, 0, 2);
 				}
 				break;
 
 			case WID_O_UNLOAD:
 				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
-					this->OrderClick_Unload(OUFB_UNLOAD, true);
+					this->OrderClick_Unload(OrderUnloadType::Unload, true);
 				} else {
-					ShowDropDownMenu(this, _order_unload_dropdown, this->vehicle->GetOrder(this->OrderGetSel())->GetUnloadType(), WID_O_UNLOAD, 0, 8);
+					ShowDropDownMenu(this, _order_unload_dropdown, to_underlying(this->vehicle->GetOrder(this->OrderGetSel())->GetUnloadType()), WID_O_UNLOAD, 0, 8);
 				}
 				break;
 
@@ -1300,7 +1295,7 @@ public:
 				break;
 
 			case WID_O_DEPOT_ACTION:
-				ShowDropDownMenu(this, _order_depot_action_dropdown, DepotActionStringIndex(this->vehicle->GetOrder(this->OrderGetSel())), WID_O_DEPOT_ACTION, 0, 0);
+				ShowDropDownMenu(this, _order_depot_action_dropdown, to_underlying(DepotActionStringIndex(this->vehicle->GetOrder(this->OrderGetSel()))), WID_O_DEPOT_ACTION, 0, 0);
 				break;
 
 			case WID_O_REFIT_DROPDOWN:
@@ -1318,16 +1313,16 @@ public:
 			case WID_O_COND_VARIABLE: {
 				DropDownList list;
 				for (const auto &ocv : _order_conditional_variable) {
-					list.push_back(MakeDropDownListStringItem(STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + ocv, ocv));
+					list.push_back(MakeDropDownListStringItem(STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + to_underlying(ocv), to_underlying(ocv)));
 				}
-				ShowDropDownList(this, std::move(list), this->vehicle->GetOrder(this->OrderGetSel())->GetConditionVariable(), WID_O_COND_VARIABLE);
+				ShowDropDownList(this, std::move(list), to_underlying(this->vehicle->GetOrder(this->OrderGetSel())->GetConditionVariable()), WID_O_COND_VARIABLE);
 				break;
 			}
 
 			case WID_O_COND_COMPARATOR: {
 				const Order *o = this->vehicle->GetOrder(this->OrderGetSel());
 				assert(o != nullptr);
-				ShowDropDownMenu(this, _order_conditional_condition, o->GetConditionComparator(), WID_O_COND_COMPARATOR, 0, (o->GetConditionVariable() == OCV_REQUIRES_SERVICE) ? 0x3F : 0xC0);
+				ShowDropDownMenu(this, _order_conditional_condition, to_underlying(o->GetConditionComparator()), WID_O_COND_COMPARATOR, 0, (o->GetConditionVariable() == OrderConditionVariable::RequiresService) ? 0x3F : 0xC0);
 				break;
 			}
 
@@ -1335,7 +1330,7 @@ public:
 				const Order *order = this->vehicle->GetOrder(this->OrderGetSel());
 				assert(order != nullptr);
 				uint value = order->GetConditionValue();
-				if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value, this->vehicle->type);
+				if (order->GetConditionVariable() == OrderConditionVariable::MaxSpeed) value = ConvertSpeedToDisplaySpeed(value, this->vehicle->type);
 				ShowQueryString(GetString(STR_JUST_INT, value), STR_ORDER_CONDITIONAL_VALUE_CAPT, 5, this, CS_NUMERAL, {});
 				break;
 			}
@@ -1355,12 +1350,12 @@ public:
 		if (!value.has_value()) return;
 
 		switch (this->vehicle->GetOrder(sel)->GetConditionVariable()) {
-			case OCV_MAX_SPEED:
+			case OrderConditionVariable::MaxSpeed:
 				value = ConvertDisplaySpeedToSpeed(*value, this->vehicle->type);
 				break;
 
-			case OCV_RELIABILITY:
-			case OCV_LOAD_PERCENTAGE:
+			case OrderConditionVariable::Reliability:
+			case OrderConditionVariable::LoadPercentage:
 				value = Clamp(*value, 0, 100);
 				break;
 
@@ -1374,15 +1369,15 @@ public:
 	{
 		switch (widget) {
 			case WID_O_NON_STOP:
-				this->OrderClick_Nonstop(index);
+				this->OrderClick_Nonstop(static_cast<OrderNonStopFlags>(index));
 				break;
 
 			case WID_O_FULL_LOAD:
-				this->OrderClick_FullLoad((OrderLoadFlags)index);
+				this->OrderClick_FullLoad(static_cast<OrderLoadType>(index));
 				break;
 
 			case WID_O_UNLOAD:
-				this->OrderClick_Unload((OrderUnloadFlags)index);
+				this->OrderClick_Unload(static_cast<OrderUnloadType>(index));
 				break;
 
 			case WID_O_GOTO:
@@ -1396,7 +1391,7 @@ public:
 				break;
 
 			case WID_O_DEPOT_ACTION:
-				this->OrderClick_Service(index);
+				this->OrderClick_Service(static_cast<OrderDepotAction>(index));
 				break;
 
 			case WID_O_REFIT_DROPDOWN:
@@ -1454,14 +1449,14 @@ public:
 			case OHK_SKIP:           this->OrderClick_Skip(); break;
 			case OHK_DELETE:         this->OrderClick_Delete(); break;
 			case OHK_GOTO:           this->OrderClick_Goto(OPOS_GOTO); break;
-			case OHK_NONSTOP:        this->OrderClick_Nonstop(-1); break;
-			case OHK_FULLLOAD:       this->OrderClick_FullLoad(OLF_FULL_LOAD_ANY, true); break;
-			case OHK_UNLOAD:         this->OrderClick_Unload(OUFB_UNLOAD, true); break;
+			case OHK_NONSTOP:        this->OrderClick_Nonstop(std::nullopt); break;
+			case OHK_FULLLOAD:       this->OrderClick_FullLoad(OrderLoadType::FullLoadAny, true); break;
+			case OHK_UNLOAD:         this->OrderClick_Unload(OrderUnloadType::Unload, true); break;
 			case OHK_NEAREST_DEPOT:  this->OrderClick_NearestDepot(); break;
-			case OHK_ALWAYS_SERVICE: this->OrderClick_Service(-1); break;
-			case OHK_TRANSFER:       this->OrderClick_Unload(OUFB_TRANSFER, true); break;
-			case OHK_NO_UNLOAD:      this->OrderClick_Unload(OUFB_NO_UNLOAD, true); break;
-			case OHK_NO_LOAD:        this->OrderClick_FullLoad(OLFB_NO_LOAD, true); break;
+			case OHK_ALWAYS_SERVICE: this->OrderClick_Service(std::nullopt); break;
+			case OHK_TRANSFER:       this->OrderClick_Unload(OrderUnloadType::Transfer, true); break;
+			case OHK_NO_UNLOAD:      this->OrderClick_Unload(OrderUnloadType::NoUnload, true); break;
+			case OHK_NO_LOAD:        this->OrderClick_FullLoad(OrderLoadType::NoLoad, true); break;
 			default: return ES_NOT_HANDLED;
 		}
 		return ES_HANDLED;
@@ -1586,7 +1581,7 @@ public:
 };
 
 /** Nested widget definition for "your" train orders. */
-static constexpr NWidgetPart _nested_orders_train_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_orders_train_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_O_CAPTION),
@@ -1663,7 +1658,7 @@ static WindowDesc _orders_train_desc(
 );
 
 /** Nested widget definition for "your" orders (non-train). */
-static constexpr NWidgetPart _nested_orders_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_orders_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_O_CAPTION), SetStringTip(STR_ORDERS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -1736,7 +1731,7 @@ static WindowDesc _orders_desc(
 );
 
 /** Nested widget definition for competitor orders. */
-static constexpr NWidgetPart _nested_other_orders_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_other_orders_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_O_CAPTION), SetStringTip(STR_ORDERS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),

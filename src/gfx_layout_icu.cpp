@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file gfx_layout_icu.cpp Handling of laying out with ICU / Harfbuzz. */
@@ -11,6 +11,9 @@
 #include "gfx_layout_icu.h"
 
 #include "debug.h"
+#include "gfx_func.h"
+#include "gfx_layout_fallback.h"
+#include "string_func.h"
 #include "strings_func.h"
 #include "language.h"
 #include "table/control_codes.h"
@@ -40,7 +43,7 @@ public:
 	int length; ///< Length of the run in the buffer.
 	UBiDiLevel level; ///< Embedding level of the run.
 	UScriptCode script; ///< Script of the run.
-	Font *font; ///< Font of the run.
+	Font font; ///< Font of the run.
 
 	std::vector<GlyphID> glyphs; ///< The glyphs of the run. Valid after Shape() is called.
 	std::vector<int> advance; ///< The advance (width) of the glyphs. Valid after Shape() is called.
@@ -48,9 +51,10 @@ public:
 	std::vector<ParagraphLayouter::Position> positions; ///< The positions of the glyphs. Valid after Shape() is called.
 	int total_advance = 0; ///< The total advance of the run. Valid after Shape() is called.
 
-	ICURun(int start, int length, UBiDiLevel level, UScriptCode script = USCRIPT_UNKNOWN, Font *font = nullptr) : start(start), length(length), level(level), script(script), font(font) {}
+	ICURun(int start, int length, UBiDiLevel level, UScriptCode script, const Font &font) : start(start), length(length), level(level), script(script), font(font) {}
 
 	void Shape(UChar *buff, size_t length);
+	void FallbackShape(UChar *buff);
 };
 
 /**
@@ -66,7 +70,7 @@ public:
 		std::vector<int> glyph_to_char;
 
 		int total_advance;
-		const Font *font;
+		Font font;
 
 	public:
 		ICUVisualRun(const ICURun &run, int x);
@@ -75,8 +79,8 @@ public:
 		std::span<const Position> GetPositions() const override { return this->positions; }
 		std::span<const int> GetGlyphToCharMap() const override { return this->glyph_to_char; }
 
-		const Font *GetFont() const override { return this->font; }
-		int GetLeading() const override { return this->font->fc->GetHeight(); }
+		const Font &GetFont() const override { return this->font; }
+		int GetLeading() const override { return GetCharacterHeight(this->font.GetFontCache().GetSize()); }
 		int GetGlyphCount() const override { return this->glyphs.size(); }
 		int GetAdvance() const { return this->total_advance; }
 	};
@@ -142,6 +146,46 @@ ICUParagraphLayout::ICUVisualRun::ICUVisualRun(const ICURun &run, int x) :
 }
 
 /**
+ * Manually shape a run for built-in non-truetype fonts.
+ * Similar to but not quite the same as \a UniscribeRun::FallbackShape.
+ * @param buff The complete buffer of the run.
+ */
+void ICURun::FallbackShape(UChar *buff)
+{
+	FontCache &fc = this->font.GetFontCache();
+
+	this->glyphs.reserve(this->length);
+	this->glyph_to_char.reserve(this->length);
+
+	/* Read each UTF-16 character, mapping to an appropriate glyph. */
+	for (int i = this->start; i < this->start + this->length; i += Utf16IsLeadSurrogate(buff[i]) ? 2 : 1) {
+		char32_t c = Utf16DecodeChar(reinterpret_cast<uint16_t *>(buff + i));
+		if (this->level & 1) c = SwapRtlPairedCharacters(c);
+		this->glyphs.emplace_back(fc.MapCharToGlyph(c));
+		this->glyph_to_char.push_back(i);
+	}
+
+	/* Reverse the sequence if this run is RTL. */
+	if (this->level & 1) {
+		std::reverse(std::begin(this->glyphs), std::end(this->glyphs));
+		std::reverse(std::begin(this->glyph_to_char), std::end(this->glyph_to_char));
+	}
+
+	this->positions.reserve(this->glyphs.size());
+
+	/* Set positions of each glyph. */
+	int y_offset = fc.GetGlyphYOffset();
+	int advance = 0;
+	for (const GlyphID glyph : this->glyphs) {
+		int x_advance = fc.GetGlyphWidth(glyph);
+		this->positions.emplace_back(advance, advance + x_advance - 1, y_offset);
+		this->advance.push_back(x_advance);
+		advance += x_advance;
+	}
+	this->total_advance = advance;
+}
+
+/**
  * Shape a single run.
  *
  * @param buff The buffer of which a partial (depending on start/length of the run) will be shaped.
@@ -149,7 +193,20 @@ ICUParagraphLayout::ICUVisualRun::ICUVisualRun(const ICURun &run, int x) :
  */
 void ICURun::Shape(UChar *buff, size_t buff_length)
 {
-	auto hbfont = hb_ft_font_create_referenced(*(static_cast<const FT_Face *>(font->fc->GetOSHandle())));
+	FontCache &fc = this->font.GetFontCache();
+
+	/* Make sure any former run is lost. */
+	this->glyphs.clear();
+	this->glyph_to_char.clear();
+	this->positions.clear();
+	this->advance.clear();
+
+	if (fc.IsBuiltInFont()) {
+		this->FallbackShape(buff);
+		return;
+	}
+
+	auto hbfont = hb_ft_font_create_referenced(*(static_cast<const FT_Face *>(fc.GetOSHandle())));
 	/* Match the flags with how we render the glyphs. */
 	hb_ft_font_set_load_flags(hbfont, GetFontAAState() ? FT_LOAD_TARGET_NORMAL : FT_LOAD_TARGET_MONO);
 
@@ -170,12 +227,6 @@ void ICURun::Shape(UChar *buff, size_t buff_length)
 	auto glyph_info = hb_buffer_get_glyph_infos(hbbuf, &glyph_count);
 	auto glyph_pos = hb_buffer_get_glyph_positions(hbbuf, &glyph_count);
 
-	/* Make sure any former run is lost. */
-	this->glyphs.clear();
-	this->glyph_to_char.clear();
-	this->positions.clear();
-	this->advance.clear();
-
 	/* Reserve space, as we already know the size. */
 	this->glyphs.reserve(glyph_count);
 	this->glyph_to_char.reserve(glyph_count);
@@ -183,20 +234,12 @@ void ICURun::Shape(UChar *buff, size_t buff_length)
 	this->advance.reserve(glyph_count);
 
 	/* Prepare the glyphs/position. ICUVisualRun will give the position an offset if needed. */
+	int y_offset = fc.GetGlyphYOffset();
 	hb_position_t advance = 0;
 	for (unsigned int i = 0; i < glyph_count; i++) {
-		int x_advance;
-
-		if (buff[glyph_info[i].cluster] >= SCC_SPRITE_START && buff[glyph_info[i].cluster] <= SCC_SPRITE_END && glyph_info[i].codepoint == 0) {
-			auto glyph = this->font->fc->MapCharToGlyph(buff[glyph_info[i].cluster]);
-			x_advance = this->font->fc->GetGlyphWidth(glyph);
-			this->glyphs.push_back(glyph);
-			this->positions.emplace_back(advance, advance + x_advance - 1, (this->font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(this->font->fc->GetSize()))) / 2); // Align sprite font to centre
-		} else {
-			x_advance = glyph_pos[i].x_advance / FONT_SCALE;
-			this->glyphs.push_back(glyph_info[i].codepoint);
-			this->positions.emplace_back(glyph_pos[i].x_offset / FONT_SCALE + advance, glyph_pos[i].x_offset / FONT_SCALE + advance + x_advance - 1, glyph_pos[i].y_offset / FONT_SCALE);
-		}
+		int x_advance = glyph_pos[i].x_advance / FONT_SCALE;
+		this->glyphs.push_back(glyph_info[i].codepoint);
+		this->positions.emplace_back(glyph_pos[i].x_offset / FONT_SCALE + advance, glyph_pos[i].x_offset / FONT_SCALE + advance + x_advance - 1, glyph_pos[i].y_offset / FONT_SCALE + y_offset);
 
 		this->glyph_to_char.push_back(glyph_info[i].cluster);
 		this->advance.push_back(x_advance);
@@ -280,7 +323,7 @@ std::vector<ICURun> ItemizeBidi(UChar *buff, size_t length)
 		UBiDiLevel level;
 		ubidi_getLogicalRun(ubidi, start_pos, &logical_pos, &level);
 
-		runs.emplace_back(start_pos, logical_pos - start_pos, level);
+		runs.emplace_back(start_pos, logical_pos - start_pos, level, USCRIPT_UNKNOWN, Font{});
 	}
 
 	assert(static_cast<size_t>(count) == runs.size());
@@ -311,7 +354,7 @@ std::vector<ICURun> ItemizeScript(UChar *buff, size_t length, std::vector<ICURun
 			int stop_pos = std::min(script_itemizer.getScriptEnd(), cur_run->start + cur_run->length);
 			assert(stop_pos - cur_pos > 0);
 
-			runs.emplace_back(cur_pos, stop_pos - cur_pos, cur_run->level, script_itemizer.getScriptCode());
+			runs.emplace_back(cur_pos, stop_pos - cur_pos, cur_run->level, script_itemizer.getScriptCode(), Font{});
 
 			if (stop_pos == cur_run->start + cur_run->length) cur_run++;
 			cur_pos = stop_pos;
@@ -358,11 +401,6 @@ std::vector<ICURun> ItemizeStyle(std::vector<ICURun> &runs_current, FontMap &fon
 	size_t length = buff_end - buff;
 	/* Can't layout an empty string. */
 	if (length == 0) return nullptr;
-
-	/* Can't layout our in-built sprite fonts. */
-	for (auto const &[position, font] : font_mapping) {
-		if (font->fc->IsBuiltInFont()) return nullptr;
-	}
 
 	auto runs = ItemizeBidi(buff, length);
 	runs = ItemizeScript(buff, length, runs);

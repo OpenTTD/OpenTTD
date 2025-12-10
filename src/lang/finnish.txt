@@ -13,7 +13,7 @@
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
 
 
 ##id 0x0000
@@ -254,6 +254,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}ft
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
+STR_UNITS_HEIGHT_GAMEUNITS                                      :{DECIMAL}{NBSP}taso{P "" a}
 
 # Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}vrk
@@ -311,6 +312,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Kun otat
 STR_BUTTON_DEFAULT                                              :{BLACK}Oletus
 STR_BUTTON_CANCEL                                               :{BLACK}Peruuta
 STR_BUTTON_OK                                                   :{BLACK}OK
+STR_BUTTON_MOVE                                                 :{BLACK}Siirrä
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :§1234567890+´ qwertyuiopå¨asdfghjklöä'<zxcvbnm,.- .
@@ -1088,6 +1090,8 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Valitse tämä 
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Käytä perinteistä sprite-fonttia
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Valitse tämä ruutu käyttääksesi perinteistä kiinteäkokoista sprite-kirjasintyyppiä
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT                               :Suosi oletusfonttia
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP                       :Valitse tämä ruutu, jos haluat käyttää oletuskirjaintyyppiä löydettyjen varafonttien sijaan
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Pehmennä kirjasinten reunoja
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Valitse tämä ruutu pehmentääksesi muuttuvan kokoisten fonttien reunoja
 
@@ -2124,8 +2128,8 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Kun käyttölii
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Brittiläinen (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrinen (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :Pelin yksiköt (ruutua/vrk)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :Pelin yksiköt (ruutua/s)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :Pelin yksiköt (ruutuja/vrk)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :Pelin yksiköt (ruutuja/s)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Solmut
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Kulkuneuvon tehon yksikkö: {STRING}
@@ -2158,10 +2162,11 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Korkeuden yksikkö: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Kun käyttöliittymässä näytetään korkeus, näytä se valittua yksikköä käyttäen
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Brittiläinen (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrinen (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_GAMEUNITS          :Pelin yksiköt (tasoja)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :Mittayksiköt ja päivämäärät
 STR_CONFIG_SETTING_GRAPHICS                                     :Grafiikka
@@ -2859,15 +2864,15 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Valitse näytet
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Valitse rakennettavan talon tyyppi. Ctrl+napsautus lisää tallennettuihin tai poistaa tallennetuista
 
 STR_HOUSE_PICKER_CAPTION                                        :Talojen valinta
-STR_HOUSE_PICKER_NAME                                           :{BLACK}Nimi: {ORANGE}{STRING}
-STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Asukasluku: {ORANGE}{NUM}
-STR_HOUSE_PICKER_YEARS                                          :{BLACK}Vuodet: {ORANGE}{NUM}–{NUM}
-STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Vuodet: {ORANGE}milloin tahansa
-STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Vuodet: {ORANGE}{NUM} alkaen
-STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Vuodet: {ORANGE}{NUM} saakka
-STR_HOUSE_PICKER_SIZE                                           :{BLACK}Koko: {ORANGE}{NUM}×{NUM} ruutua
-STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Ottaa vastaan: {ORANGE}
-STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Tuottaa: {ORANGE}{CARGO_LIST}
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Nimi: {GOLD}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Asukasluku: {GOLD}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Vuodet: {GOLD}{NUM}–{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Vuodet: {GOLD}milloin tahansa
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Vuodet: {GOLD}{NUM} alkaen
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Vuodet: {GOLD}{NUM} saakka
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Koko: {GOLD}{NUM}×{NUM} ruutua
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Ottaa vastaan: {GOLD}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Tuottaa: {GOLD}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Reuna-alueet
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Laitamat
@@ -2875,10 +2880,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Ulommat lähiö
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Sisemmät lähiöt
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Keskusta
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Estä uudistaminen
+STR_HOUSE_PICKER_PROTECT                                        :Estä parannukset
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Valitse, suojataanko tämä talo korvaamiselta kunnan kasvaessa
-STR_HOUSE_PICKER_PROTECT_OFF                                    :Ei
-STR_HOUSE_PICKER_PROTECT_ON                                     :Kyllä
+
+STR_HOUSE_PICKER_REPLACE                                        :Korvaa entinen
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Valitse, poistetaanko olemassa oleva talo automaattisesti ruudulta, jolle taloa sijoitetaan
 
 STR_STATION_CLASS_DFLT                                          :Oletus
 STR_STATION_CLASS_DFLT_STATION                                  :Oletusasema
@@ -2962,8 +2968,8 @@ STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Linja-au
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Valitse linja-autoaseman suunta
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Lastauslaiturin suunta
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Valitse lastauslaiturin suunta
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Aseman suunta
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Valitse aseman suunta
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Raitiotien matkustaja-aseman suunta
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Valitse raitiotien matkustaja-aseman suunta
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Rahtiaseman suunta
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Valitse rahtiaseman suunta
 
@@ -3425,6 +3431,10 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Luode
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Koillinen
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Kaakko
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Lounas
+STR_MAPGEN_NORTHWEST_TOOLTIP                                    :Valitse, onko kartan luoteislaita vettä vai vapaamuotoista reunaa
+STR_MAPGEN_NORTHEAST_TOOLTIP                                    :Valitse, onko kartan koillislaita vettä vai vapaamuotoista reunaa
+STR_MAPGEN_SOUTHEAST_TOOLTIP                                    :Valitse, onko kartan kaakkoislaita vettä vai vapaamuotoista reunaa
+STR_MAPGEN_SOUTHWEST_TOOLTIP                                    :Valitse, onko kartan lounaislaita vettä vai vapaamuotoista reunaa
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Vapaa
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vesi
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Sattumanvarainen
@@ -3471,7 +3481,8 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Maaston 
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Jokien luominen
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Karun ja kivisen alueen luominen
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Kuntien luominen
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Tuotantolaitosten luominen
+STR_GENERATION_LAND_INDUSTRY_GENERATION                         :{BLACK}Teollisuuden luominen maalla
+STR_GENERATION_WATER_INDUSTRY_GENERATION                        :{BLACK}Teollisuuden luominen vedessä
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Siirtämättömän luominen
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Puiden luominen
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Valmistellaan peliä
@@ -3680,7 +3691,7 @@ STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Kirjaink
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Kytke kirjainkoon täsmäys kun verrataan kylttien nimiä suodatintekstiin
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Muokkaa kyltin tekstiä
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Muokkaa kylttiä
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Keskitä päänäkymä kyltin sijaintiin. Ctrl+napsautus avaa uuden näkymäikkunan kyltin sijaintiin
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Siirry seuraavaan kylttiin
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Siirry edelliseen kylttiin
@@ -3897,14 +3908,14 @@ STR_CARGO_RATING_EXCELLENT                                      :Mainio
 STR_CARGO_RATING_OUTSTANDING                                    :Loistava
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Keskitä päänäkymä aseman sijaintiin. Ctrl+napsautus avaa uuden näkymäikkunan aseman sijaintiin.
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Muuta aseman nimi
+STR_STATION_VIEW_EDIT_TOOLTIP                                   :{BLACK}Nimeä asema uudelleen tai siirrä kylttiä
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Näytä kaikki junat, joilla on tämä asema käskyissään
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Näytä kaikki ajoneuvot, joilla on tämä asema käskyissään.
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Näytä kaikki lentokoneet, joilla on tämä asema käskyissään
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Näytä kaikki laivat, joilla on tämä asema käskyissään
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Nimeä asema/lastausalue
+STR_STATION_VIEW_EDIT_STATION_SIGN                              :{WHITE}Muokkaa asemakylttiä
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Sulje lentokenttä
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Estä ilma-aluksia laskeutumasta tälle lentokentälle
@@ -3912,11 +3923,11 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Estä il
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Keskitä päänäkymä reittipisteen sijaintiin. Ctrl+napsautus avaa uuden näkymäikkunan reittipisteen sijaintiin.
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Muuta reittipisteen nimeä
+STR_WAYPOINT_VIEW_EDIT_TOOLTIP                                  :{BLACK}Nimeä reittipiste uudelleen tai siirrä kylttiä
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Keskitä päänäkymä poijun sijaintiin. Ctrl+napsautus avaa uuden näkymäikkunan poijun sijaintiin
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Vaihda poijun nimeä
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Muokkaa reittipisteen nimeä
+STR_WAYPOINT_VIEW_EDIT_WAYPOINT_SIGN                            :{WHITE}Muokkaa reittipisteen kylttiä
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Talous, {COMPANY} {BLACK}{COMPANY_NUM}
@@ -5130,6 +5141,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Liian mo
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Liian lähellä toista satamaa.
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Liian lähellä toista lentokenttää.
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Asemaa ei voi nimetä uudelleen.
+STR_ERROR_CAN_T_MOVE_STATION_NAME                               :{WHITE}Aseman kylttiä ei voida siirtää…
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}… tien omistaa kunta
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... tie on väärin päin
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... läpiajettavissa pysäkeissä ei voi olla mutkia
@@ -5161,6 +5173,7 @@ STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}Rautatie
 STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Tien reittipistettä ei voi rakentaa tähän…
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Poijua ei voi sijoittaa tähän...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Reittipisteen nimeä ei voi muuttaa...
+STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :{WHITE}Reittipisteen kylttiä ei voida siirtää…
 
 STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Rautatien reittipistettä ei voi poistaa tästä…
 STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Tien reittipistettä ei voi poistaa tästä…
@@ -5269,13 +5282,13 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Alku- ja
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... sillan molempien päiden pitää sijaita maalla.
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... silta liian pitkä
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Silta päättyisi kartan ulkopuolelle
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Silta on liian matala aseman ylle
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Silta on liian matala pysäkin ylle
-STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Silta on liian matala sataman ylle
-STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Silta on liian matala poijun ylle
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Silta on liian matala rautatien reittipisteen ylle
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Silta on liian matala tien reittipisteen ylle
-STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Silta on liian matala sulun ylle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Silta on {HEIGHT} liian matala aseman ylle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Silta on {HEIGHT} liian matala pysäkin ylle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Silta on {HEIGHT} liian matala sataman ylle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Silta on {HEIGHT} liian matala poijun ylle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Silta on {HEIGHT} liian matala rautatien reittipisteen ylle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Silta on {HEIGHT} liian matala tien reittipisteen ylle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Silta on {HEIGHT} liian matala sulun ylle
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Tunnelia ei voi rakentaa...

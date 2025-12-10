@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file script_group.cpp Implementation of ScriptGroup. */
@@ -241,7 +241,7 @@
 	EnforcePrecondition(ScriptCompany::Colours::COLOUR_INVALID, IsValidGroup(group_id));
 
 	const Group *g = ::Group::Get(group_id);
-	if (!HasBit(g->livery.in_use, 0)) return ScriptCompany::Colours::COLOUR_INVALID;
+	if (!g->livery.in_use.Test(Livery::Flag::Primary)) return ScriptCompany::Colours::COLOUR_INVALID;
 	return (ScriptCompany::Colours)g->livery.colour1;
 }
 
@@ -250,6 +250,6 @@
 	EnforcePrecondition(ScriptCompany::Colours::COLOUR_INVALID, IsValidGroup(group_id));
 
 	const Group *g = ::Group::Get(group_id);
-	if (!HasBit(g->livery.in_use, 1)) return ScriptCompany::Colours::COLOUR_INVALID;
+	if (!g->livery.in_use.Test(Livery::Flag::Secondary)) return ScriptCompany::Colours::COLOUR_INVALID;
 	return (ScriptCompany::Colours)g->livery.colour2;
 }

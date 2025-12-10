@@ -15,7 +15,7 @@
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
 
 
 ##id 0x0000
@@ -2172,7 +2172,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Unità di altezza: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Seleziona le unità di misura da utilizzare per mostrare le altezze nell'interfaccia utente
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperiali (piedi)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metriche (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -2886,6 +2886,7 @@ STR_HOUSE_PICKER_CLASS_ZONE4                                    :Sobborghi inter
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centro città
 
 
+
 STR_STATION_CLASS_DFLT                                          :Predefinita
 STR_STATION_CLASS_DFLT_STATION                                  :Stazione predefinita
 STR_STATION_CLASS_DFLT_ROADSTOP                                 :Fermata stradale predefinita
@@ -3469,7 +3470,6 @@ STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generazi
 STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Generazione paesaggio
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generazione fiumi
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generazione aree brulle e rocciose
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Generazione industrie
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generazione oggetti inamovibili
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generazione alberi
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Impostazione partita
@@ -3886,14 +3886,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Eccellente
 STR_CARGO_RATING_OUTSTANDING                                    :Eccezionale
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centra la vista principale sulla posizione della stazione. Ctrl+Clic per aprire una nuova finestra sulla posizione della stazione
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Cambia il nome della stazione
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Mostra tutti i treni che hanno questa stazione pianificata
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Mostra tutti gli automezzi che hanno questa stazione pianificata
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Mostra tutti gli aeromobili che hanno questa stazione pianificata
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Mostra tutte le navi che hanno questa stazione pianificata
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Rinomina stazione/area di carico
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Chiudi aeroporto
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Impedisce agli aeromobili di atterrare in questo aeroporto
@@ -3901,11 +3899,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Impedisc
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centra la vista principale sulla posizione del waypoint. Ctrl+Clic per aprire una nuova finestra sulla posizione del waypoint.
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Cambia il nome del waypoint
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la visuale principale sulla posizione della boa. Ctrl+Clic per aprire una nuova finestra di visualizzazione sulla posizione della boa
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Cambia il nome della boa
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Rinomina il waypoint
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Finanze della {COMPANY} {BLACK}{COMPANY_NUM}
@@ -5247,7 +5243,6 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Inizio e
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... gli estremi del ponte devono trovarsi entrambi sul terreno
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... ponte troppo lungo
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Il ponte terminerebbe fuori dalla mappa
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Ponte troppo basso per una fermata
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Impossibile costruire il tunnel qui...

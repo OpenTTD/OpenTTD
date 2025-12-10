@@ -14,7 +14,7 @@
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
 
 
 ##id 0x0000
@@ -255,6 +255,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}ft
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
+STR_UNITS_HEIGHT_GAMEUNITS                                      :{DECIMAL}{NBSP}niveau{P "" x}
 
 # Time units used in string control characters
 STR_UNITS_DAYS                                                  :{G=m}{COMMA}{NBSP}jour{P "" s}
@@ -2092,7 +2093,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Taille moyenne 
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Mise à jour du graphe de distribution toutes les {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Intervalle entre les recalculs successifs du graphe de liaison. Chaque recalcul planifie un composant du graphe. Cela signifie qu'une valeur X pour ce paramètre ne signifie pas que l'ensemble du graphe sera mis à jour toutes les X secondes. Seul un composant le sera. Plus vous définissez cet intervalle court, plus le temps de processeur nécessaire pour le calcul sera important. Plus vous définissez cet intervalle long, plus il faudra de temps pour que la distribution de marchandises commence sur de nouveaux itinéraires
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Recalcul du graphe de distribution toutes les {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Prend {STRING} pour le recalcul du graphe de distribution
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Temps pris pour chaque recalcul d'un composant du graphe de liaison. Lorsqu'un recalcul est lancé, un fil d'exécution est créé et autorisé à fonctionner pendant ce nombre de secondes. Plus vous définissez cette durée courte, plus il est probable que le fil ne soit pas terminé lorsqu'il est censé l'être. Ensuite, le jeu s'arrête jusqu'à ce qu'il le soit ("lag"). Plus vous définissez cette durée longue, plus il faut de temps pour que la distribution soit mise à jour lorsque les itinéraires changent
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Type de distribution pour les passagers{NBSP}: {STRING}
@@ -2159,10 +2160,11 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Unité de hauteur{NBSP}: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Quand une hauteur est affichée dans l'interface utilisateur, utiliser l'unité sélectionnée
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Impérial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Métrique (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_GAMEUNITS          :Unités de jeu (niveaux)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :Localisation
 STR_CONFIG_SETTING_GRAPHICS                                     :Graphiques
@@ -2876,10 +2878,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Banlieue extér
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Banlieue intérieure
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centre-ville
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Empêcher les améliorations
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Définit si cette maison sera protégée contre son remplacement lors de la croissance de la ville
-STR_HOUSE_PICKER_PROTECT_OFF                                    :Désactivé
-STR_HOUSE_PICKER_PROTECT_ON                                     :Activé
+
 
 STR_STATION_CLASS_DFLT                                          :Par défaut
 STR_STATION_CLASS_DFLT_STATION                                  :Stations par défaut
@@ -3431,8 +3431,9 @@ STR_MAPGEN_BORDER_WATER                                         :{BLACK}Eau
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Aléatoire
 
 ###length 3
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Aléatoire
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuel
+STR_MAPGEN_BORDER_RANDOMIZE                                     :Aléatoire
+STR_MAPGEN_BORDER_MANUAL                                        :Manuel
+STR_MAPGEN_BORDER_INFINITE_WATER                                :Eau à l'infini
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotation de la carte d'altitude{NBSP}:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nom de la carte d'altitude{NBSP}:
@@ -3471,7 +3472,8 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Généra
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Création des rivières
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Création des zones rugueuses et rocheuses
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Génération des villes
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Génération des industries
+STR_GENERATION_LAND_INDUSTRY_GENERATION                         :{BLACK}Génération des industries terrestres
+STR_GENERATION_WATER_INDUSTRY_GENERATION                        :{BLACK}Génération des industries maritimes
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Création des objets inamovibles
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Création des arbres
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Configuration du jeu
@@ -3691,6 +3693,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Entrer u
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Villes ({COMMA} de {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}− Aucune −
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{BLACK} ({COMMA}) {YELLOW}{CITY_ICON}
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Noms des villes - Cliquer sur un nom pour centrer la vue principale sur la ville. Ctrl-clic pour ouvrir une nouvelle vue sur la ville.
 STR_TOWN_POPULATION                                             :{BLACK}Population mondiale{NBSP}: {COMMA}
 
@@ -3896,14 +3899,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Excellent
 STR_CARGO_RATING_OUTSTANDING                                    :Exceptionnel
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrer la vue sur la station. Ctrl-clic pour ouvrir une nouvelle vue sur la station.
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Renommer la station
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Afficher les trains ayant cette station dans leurs ordres
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Afficher les véhicules routiers ayant cette station dans leurs ordres
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Afficher les aéronefs ayant cette station dans leurs ordres
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Afficher les navires ayant cette station dans leurs ordres
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Renommer la gare
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Fermer l'aéroport
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Empêcher l'aéronef de se poser sur cet aéroport
@@ -3911,11 +3912,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Empêche
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrer la vue sur le point de contrôle. Ctrl-clic pour ouvrir une nouvelle vue sur le point de contrôle
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Renommer le point de contrôle
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrer la vue sur la bouée. Ctrl-clic pour ouvrir une nouvelle vue sur la bouée
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Renommer la bouée
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Modifier le nom du point de contrôle
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Finances de {COMPANY} {BLACK}{COMPANY_NUM}
@@ -4187,7 +4186,7 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Tous sauf {CARG
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Effort de traction max.{NBSP}: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Rayon d'action{NBSP}: {GOLD}{COMMA}{NBSP}cases
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Type d'aéronef{NBSP}: {GOLD}{STRING}
-STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Types de rail : {GOLD}{STRING}
+STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Types de rail{NBSP}: {GOLD}{STRING}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Tous les types de cargaison
@@ -4371,7 +4370,7 @@ STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Coûts d'entret
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Coûts d'entretien{NBSP}: {CURRENCY_LONG}/période
 STR_ENGINE_PREVIEW_CAPACITY                                     :Capacité{NBSP}: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :Capacité{NBSP}: {CARGO_LONG}, {CARGO_LONG}
-STR_ENGINE_PREVIEW_RAILTYPES                                    :Types de rail : {STRING}
+STR_ENGINE_PREVIEW_RAILTYPES                                    :Types de rail{NBSP}: {STRING}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Remplacer {STRING} - {STRING}
@@ -5268,12 +5267,13 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Le débu
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... les deux extrémités du pont doivent être sur la terre ferme
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... pont trop long
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Le pont finirait en dehors de la carte
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Le pont est trop bas pour les gares
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Le pont est trop bas pour les arrêts de bus
-STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Le pont est trop bas pour les bouées
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Le pont est trop bas pour les points de contrôle
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Le pont est trop bas pour les points de contrôle de route
-STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Ce pont est trop bas pour le verrouillage
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Le pont est {HEIGHT} trop bas pour les gares
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Le pont est {HEIGHT} trop bas pour les arrêts de bus
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Le pont est {HEIGHT} trop bas pour le port
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Le pont est {HEIGHT} trop bas pour les bouées
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Le pont est {HEIGHT} trop bas pour les points de contrôle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Le pont est {HEIGHT} trop bas pour les points de contrôle de route
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Le pont est {HEIGHT} trop bas pour l'écluse
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Impossible de construire un tunnel ici...

@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file widget_type.h Definitions about widgets. */
@@ -10,7 +10,6 @@
 #ifndef WIDGET_TYPE_H
 #define WIDGET_TYPE_H
 
-#include "core/bitmath_func.hpp"
 #include "core/math_func.hpp"
 #include "strings_type.h"
 #include "gfx_type.h"
@@ -484,7 +483,17 @@ public:
 	inline bool IsEmpty() { return this->children.empty(); }
 
 	NWidgetBase *GetWidgetOfType(WidgetType tp) override;
-	void Clear() { this->children.clear(); }
+	void UnfocusWidgets(Window *parent_window);
+
+	/**
+	 * Clears the container, deleting all widgets that were contained.
+	 * @param parent_window Window that contains the container.
+	 */
+	inline void Clear(Window *parent_window)
+	{
+		this->UnfocusWidgets(parent_window);
+		this->children.clear();
+	}
 
 protected:
 	std::vector<std::unique_ptr<NWidgetBase>> children{}; ///< Child widgets in container.

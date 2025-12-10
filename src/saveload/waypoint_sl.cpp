@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file waypoint_sl.cpp Code handling saving and loading of waypoints */
@@ -100,11 +100,11 @@ void MoveWaypointsToBaseStations()
 		TileIndex t = wp.xy;
 		/* Sometimes waypoint (sign) locations became disconnected from their actual location in
 		 * the map array. If this is the case, try to locate the actual location in the map array */
-		if (!IsTileType(t, MP_RAILWAY) || GetRailTileType(t) != 2 /* RAIL_TILE_WAYPOINT */ || Tile(t).m2() != wp.index) {
+		if (!IsTileType(t, MP_RAILWAY) || GetRailTileType(t) != RailTileType{2} /* RAIL_TILE_WAYPOINT */ || Tile(t).m2() != wp.index) {
 			Debug(sl, 0, "Found waypoint tile {} with invalid position", t);
 			t = INVALID_TILE;
 			for (auto tile : Map::Iterate()) {
-				if (IsTileType(tile, MP_RAILWAY) && GetRailTileType(tile) == 2 /* RAIL_TILE_WAYPOINT */ && tile.m2() == wp.index) {
+				if (IsTileType(tile, MP_RAILWAY) && GetRailTileType(tile) == RailTileType{2} /* RAIL_TILE_WAYPOINT */ && tile.m2() == wp.index) {
 					t = TileIndex(tile);
 					Debug(sl, 0, "Found actual waypoint position at {}", TileIndex(tile));
 					break;

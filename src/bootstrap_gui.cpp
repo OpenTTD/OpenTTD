@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file bootstrap_gui.cpp Barely used user interface for bootstrapping OpenTTD, i.e. downloading the required content. */
@@ -33,7 +33,7 @@
 #include "safeguards.h"
 
 /** Widgets for the background window to prevent smearing. */
-static constexpr NWidgetPart _background_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _background_widgets = {
 	NWidget(WWT_PANEL, COLOUR_DARK_BLUE, WID_BB_BACKGROUND), SetResize(1, 1),
 	EndContainer(),
 };
@@ -66,7 +66,7 @@ public:
 };
 
 /** Nested widgets for the error window. */
-static constexpr NWidgetPart _nested_bootstrap_errmsg_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_bootstrap_errmsg_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_BEM_CAPTION), SetStringTip(STR_MISSING_GRAPHICS_ERROR_TITLE),
 	EndContainer(),
@@ -123,7 +123,7 @@ public:
 };
 
 /** Nested widgets for the download window. */
-static constexpr NWidgetPart _nested_bootstrap_download_status_window_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_bootstrap_download_status_window_widgets = {
 	NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_CONTENT_DOWNLOAD_TITLE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.modalpopup),
@@ -174,7 +174,7 @@ public:
 };
 
 /** The widgets for the query. It has no close box as that sprite does not exist yet. */
-static constexpr NWidgetPart _bootstrap_query_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _bootstrap_query_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_MISSING_GRAPHICS_SET_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),

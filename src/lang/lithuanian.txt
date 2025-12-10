@@ -15,7 +15,7 @@
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
 
 
 ##id 0x0000
@@ -2274,7 +2274,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Aukščio vienetai: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Vienetai, kuriais matuojamas aukštis
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :imperiniai (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :metriniai (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -2935,6 +2935,7 @@ STR_PICKER_MODE_ALL                                             :Visi
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Kraštas
 
 
+
 STR_STATION_CLASS_DFLT                                          :Numatytoji
 STR_STATION_CLASS_DFLT_STATION                                  :Numatytoji stotelė
 STR_STATION_CLASS_DFLT_ROADSTOP                                 :Numatytoji kelio stotelė
@@ -3503,7 +3504,6 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Peizažo
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Upių generavimas
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Daubų ir uolų generacija
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Miestų generavimas
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Pramonės generavimas
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Nejudinama generacija
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Medžių generacija
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Sukurti zaidima
@@ -3905,14 +3905,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Puikus
 STR_CARGO_RATING_OUTSTANDING                                    :Nuostabus
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centruoti stotį pagrindiniame lange. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atidarytas naujas peržiūros langas su vaizdu į šią stotį
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Pakeisti stoties pavadinimą
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Rodyti visus traukinius, į kurių užduotis yra įtraukta ši stotelė
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Rodyti visus automobilius, į kurių užduotis yra įtraukta ši stotelė
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Rodyti visus lėktuvus, į kurių užduotis yra įtraukta ši stotelė
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Rodyti visus laivus, į kurių užduotis yra įtraukta ši stotelė
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Pervardinti stotį
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Uždaryti
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Uždrausti lėktuvams leistis šiame oro uoste
@@ -3920,11 +3918,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Uždraus
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Rodyti kontrolės punktą lango centre.Ctrl+Paspaudimas atidaro naują langą su kontrolės punkto vazidu.
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Keisti waypoint pavadinimą
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centruoti plūdurą pagrindiniame lange. Spragtelėkite laikant nuspaustą Ctrl klavišą, kad atidarytumėte naują peržiūros langą su vaizdu į šį plūdurą
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Pakeisti plūduro pavadinimą
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Redaguoti punkto vardą
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finansai {BLACK}{COMPANY_NUM}

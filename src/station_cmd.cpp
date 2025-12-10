@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file station_cmd.cpp Handling of station tiles. */
@@ -29,6 +29,7 @@
 #include "road_internal.h" /* For drawing catenary/checking road removal */
 #include "autoslope.h"
 #include "water.h"
+#include "tilehighlight_func.h"
 #include "strings_func.h"
 #include "clear_func.h"
 #include "timer/timer_game_calendar.h"
@@ -71,6 +72,7 @@
 #include "station_layout_type.h"
 
 #include "widgets/station_widget.h"
+#include "widgets/misc_widget.h"
 
 #include "table/strings.h"
 #include "table/station_land.h"
@@ -911,7 +913,10 @@ static CommandCost IsStationBridgeAboveOk(TileIndex tile, std::span<const Bridge
 		/* Get normal error message associated with clearing the tile. */
 		return Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlag::Auto, tile);
 	}
-	if (GetTileMaxZ(tile) + height > bridge_height) return CommandCost{ GetBridgeTooLowMessageForStationType(type) };
+	if (GetTileMaxZ(tile) + height > bridge_height) {
+		int height_diff = (GetTileMaxZ(tile) + height - bridge_height) * TILE_HEIGHT_STEP;
+		return CommandCostWithParam(GetBridgeTooLowMessageForStationType(type), height_diff);
+	}
 
 	return CommandCost{};
 }
@@ -1507,7 +1512,7 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 			if (statspec != nullptr) {
 				uint32_t platinfo = GetPlatformInfo(AXIS_X, gfx, plat_len, numtracks, j, i, false);
 				/* As the station is not yet completely finished, the station does not yet exist. */
-				uint16_t callback = GetStationCallback(CBID_STATION_BUILD_TILE_LAYOUT, platinfo, 0, statspec, nullptr, tile);
+				uint16_t callback = GetStationCallback(CBID_STATION_BUILD_TILE_LAYOUT, platinfo, 0, statspec, nullptr, INVALID_TILE);
 				if (callback != CALLBACK_FAILED && callback <= UINT8_MAX) gfx = (callback & ~1) + axis;
 			}
 
@@ -1573,6 +1578,7 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 				MakeRailStation(tile, st->owner, st->index, axis, *it, rt);
 				/* Free the spec if we overbuild something */
 				DeallocateSpecFromStation(st, old_specindex);
+				if (statspec == nullptr) DeleteNewGRFInspectWindow(GSF_STATIONS, tile);
 
 				SetCustomStationSpecIndex(tile, *specindex);
 				SetStationTileRandomBits(tile, GB(Random(), 0, 4));
@@ -2719,7 +2725,7 @@ CommandCost CmdBuildAirport(DoCommandFlags flags, TileIndex tile, uint8_t airpor
 
 		for (AirportTileTableIterator iter(as->layouts[layout].tiles, tile); iter != INVALID_TILE; ++iter) {
 			Tile t(iter);
-			MakeAirport(t, st->owner, st->index, iter.GetStationGfx(), WATER_CLASS_INVALID);
+			MakeAirport(t, st->owner, st->index, iter.GetStationGfx(), WaterClass::Invalid);
 			SetStationTileRandomBits(t, GB(Random(), 0, 4));
 			st->airport.Add(iter);
 
@@ -2963,7 +2969,7 @@ CommandCost CmdBuildDock(DoCommandFlags flags, TileIndex tile, StationID station
 		 * This is needed as we've cleared that tile before.
 		 * Clearing object tiles may result in water tiles which are already accounted for in the water infrastructure total.
 		 * See: MakeWaterKeepingClass() */
-		if (wc == WATER_CLASS_CANAL && !(HasTileWaterClass(flat_tile) && GetWaterClass(flat_tile) == WATER_CLASS_CANAL && IsTileOwner(flat_tile, _current_company))) {
+		if (wc == WaterClass::Canal && !(HasTileWaterClass(flat_tile) && GetWaterClass(flat_tile) == WaterClass::Canal && IsTileOwner(flat_tile, _current_company))) {
 			Company::Get(st->owner)->infrastructure.water++;
 		}
 		Company::Get(st->owner)->infrastructure.station += 2;
@@ -3374,8 +3380,8 @@ static void DrawTile_Station(TileInfo *ti)
 		} else {
 			assert(IsDock(ti->tile));
 			TileIndex water_tile = ti->tile + TileOffsByDiagDir(GetDockDirection(ti->tile));
-			WaterClass wc = HasTileWaterClass(water_tile) ? GetWaterClass(water_tile) : WATER_CLASS_INVALID;
-			if (wc == WATER_CLASS_SEA) {
+			WaterClass wc = HasTileWaterClass(water_tile) ? GetWaterClass(water_tile) : WaterClass::Invalid;
+			if (wc == WaterClass::Sea) {
 				DrawShoreTile(ti->tileh);
 			} else {
 				DrawClearLandTile(ti, 3);
@@ -3787,11 +3793,11 @@ static void TileLoop_Station(TileIndex tile)
 			}
 
 			/* Adjust road ground type depending on 'new_zone' */
-			Roadside new_rs = new_zone != HouseZone::TownEdge ? ROADSIDE_PAVED : ROADSIDE_GRASS;
+			Roadside new_rs = new_zone != HouseZone::TownEdge ? Roadside::Paved : Roadside::Grass;
 			Roadside cur_rs = GetRoadWaypointRoadside(tile);
 
 			if (new_rs != cur_rs) {
-				SetRoadWaypointRoadside(tile, cur_rs == ROADSIDE_BARREN ? new_rs : ROADSIDE_BARREN);
+				SetRoadWaypointRoadside(tile, cur_rs == Roadside::Barren ? new_rs : Roadside::Barren);
 				MarkTileDirtyByTile(tile);
 			}
 
@@ -4121,7 +4127,7 @@ static void UpdateStationRating(Station *st)
 				if (rating <= (int)GB(r, 0, 7)) {
 					/* Need to have int, otherwise it will just overflow etc. */
 					uint prev_waiting = waiting;
-					waiting = std::max((int)waiting - (int)((GB(r, 8, 2) - 1) * num_dests), 0);
+					waiting = std::max((int)waiting - (int)((GB(r, 8, 2) + 1) * num_dests), 0);
 					if (waiting < prev_waiting) {
 						Debug(misc, 0, "Lost {} cargo from {}", prev_waiting - waiting, st->name);
 					}
@@ -4523,6 +4529,59 @@ CommandCost CmdRenameStation(DoCommandFlags flags, StationID station_id, const s
 	return CommandCost();
 }
 
+/**
+ * Move a station name.
+ * @param flags type of operation
+ * @param station_id id of the station
+ * @param tile to move the station name to
+ * @return the cost of this operation or an error and the station ID
+ */
+std::tuple<CommandCost, StationID> CmdMoveStationName(DoCommandFlags flags, StationID station_id, TileIndex tile)
+{
+	Station *st = Station::GetIfValid(station_id);
+	if (st == nullptr) return { CMD_ERROR, StationID::Invalid() };
+
+	if (st->owner != OWNER_NONE) {
+		CommandCost ret = CheckOwnership(st->owner);
+		if (ret.Failed()) return { ret, StationID::Invalid() };
+	}
+
+	const StationRect *r = &st->rect;
+	if (!r->PtInExtendedRect(TileX(tile), TileY(tile))) {
+		return { CommandCost(STR_ERROR_SITE_UNSUITABLE), StationID::Invalid() };
+	}
+
+	bool other_station = false;
+	/* Check if the tile is the base tile of another station */
+	ForAllStationsRadius(tile, 0, [&](BaseStation *s) {
+		if (s != nullptr) {
+			if (s != st && s->xy == tile) other_station = true;
+		}
+	});
+	if (other_station) return { CommandCost(STR_ERROR_SITE_UNSUITABLE), StationID::Invalid() };
+
+	if (flags.Test(DoCommandFlag::Execute)) {
+		st->MoveSign(tile);
+
+		st->UpdateVirtCoord();
+	}
+	return { CommandCost(), station_id };
+}
+
+/**
+* Callback function that is called after a name is moved
+* @param result of the operation
+* @param station_id ID of the changed station
+*/
+void CcMoveStationName(Commands, const CommandCost &result, StationID station_id)
+	{
+		if (result.Failed()) return;
+
+		ResetObjectToPlace();
+		Station *st = Station::Get(station_id);
+		SetViewportStationRect(st, false);
+	}
+
 static void AddNearbyStationsByCatchment(TileIndex tile, StationList &stations, StationList &nearby)
 {
 	for (Station *st : nearby) {
@@ -4822,7 +4881,7 @@ static void ChangeTileOwner_Station(TileIndex tile, Owner old_owner, Owner new_o
 
 			case StationType::Buoy:
 			case StationType::Dock:
-				if (GetWaterClass(tile) == WATER_CLASS_CANAL) {
+				if (GetWaterClass(tile) == WaterClass::Canal) {
 					old_company->infrastructure.water--;
 					new_company->infrastructure.water++;
 				}
@@ -5280,14 +5339,14 @@ void FlowStatMap::FinalizeLocalConsumption(StationID self)
  * @return IDs of source stations for which the complete FlowStat, not only a
  *         share, has been erased.
  */
-StationIDStack FlowStatMap::DeleteFlows(StationID via)
+std::vector<StationID> FlowStatMap::DeleteFlows(StationID via)
 {
-	StationIDStack ret;
+	std::vector<StationID> ret;
 	for (FlowStatMap::iterator f_it = this->begin(); f_it != this->end();) {
 		FlowStat &s_flows = f_it->second;
 		s_flows.ChangeShare(via, INT_MIN);
 		if (s_flows.GetShares()->empty()) {
-			ret.Push(f_it->first);
+			ret.push_back(f_it->first);
 			this->erase(f_it++);
 		} else {
 			++f_it;

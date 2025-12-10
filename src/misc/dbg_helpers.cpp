@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file dbg_helpers.cpp Helpers for outputting debug information. */
@@ -23,13 +23,13 @@ static const std::string_view trackdir_names[] = {
 /** Return name of given Trackdir. */
 std::string ValueStr(Trackdir td)
 {
-	return fmt::format("{} ({})", to_underlying(td), ItemAtT(td, trackdir_names, "UNK", INVALID_TRACKDIR, "INV"));
+	return fmt::format("{} ({})", to_underlying(td), ItemAt(td, trackdir_names, "UNK", INVALID_TRACKDIR, "INV"));
 }
 
 /** Return composed name of given TrackdirBits. */
 std::string ValueStr(TrackdirBits td_bits)
 {
-	return fmt::format("{} ({})", to_underlying(td_bits), ComposeNameT(td_bits, trackdir_names, "UNK", INVALID_TRACKDIR_BIT, "INV"));
+	return fmt::format("{} ({})", to_underlying(td_bits), ComposeName(td_bits, trackdir_names, "UNK", INVALID_TRACKDIR_BIT, "INV"));
 }
 
 
@@ -41,7 +41,7 @@ static const std::string_view diagdir_names[] = {
 /** Return name of given DiagDirection. */
 std::string ValueStr(DiagDirection dd)
 {
-	return fmt::format("{} ({})", to_underlying(dd), ItemAtT(dd, diagdir_names, "UNK", INVALID_DIAGDIR, "INV"));
+	return fmt::format("{} ({})", to_underlying(dd), ItemAt(dd, diagdir_names, "UNK", INVALID_DIAGDIR, "INV"));
 }
 
 
@@ -53,7 +53,7 @@ static const std::string_view signal_type_names[] = {
 /** Return name of given SignalType. */
 std::string ValueStr(SignalType t)
 {
-	return fmt::format("{} ({})", to_underlying(t), ItemAtT(t, signal_type_names, "UNK"));
+	return fmt::format("{} ({})", to_underlying(t), ItemAt(t, signal_type_names, "UNK"));
 }
 
 

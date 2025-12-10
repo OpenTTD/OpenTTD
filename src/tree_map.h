@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file tree_map.h Map accessors for tree tiles. */
@@ -146,7 +146,7 @@ inline void SetTreeGroundDensity(Tile t, TreeGround g, uint d)
 	assert(IsTileType(t, MP_TREES)); // XXX incomplete
 	SB(t.m2(), 4, 2, d);
 	SB(t.m2(), 6, 3, g);
-	SetWaterClass(t, g == TREE_GROUND_SHORE ? WATER_CLASS_SEA : WATER_CLASS_INVALID);
+	SetWaterClass(t, g == TREE_GROUND_SHORE ? WaterClass::Sea : WaterClass::Invalid);
 }
 
 /**
@@ -226,7 +226,7 @@ inline void AddTreeGrowth(Tile t, int a)
 inline void SetTreeGrowth(Tile t, TreeGrowthStage g)
 {
 	assert(IsTileType(t, MP_TREES)); // XXX incomplete
-	SB(t.m5(), 0, 3, static_cast<uint>(g));
+	SB(t.m5(), 0, 3, to_underlying(g));
 }
 
 /**
@@ -245,13 +245,14 @@ inline void MakeTree(Tile t, TreeType type, uint count, TreeGrowthStage growth, 
 {
 	SetTileType(t, MP_TREES);
 	SetTileOwner(t, OWNER_NONE);
-	SetWaterClass(t, ground == TREE_GROUND_SHORE ? WATER_CLASS_SEA : WATER_CLASS_INVALID);
+	SetWaterClass(t, ground == TREE_GROUND_SHORE ? WaterClass::Sea : WaterClass::Invalid);
 	t.m2() = ground << 6 | density << 4 | 0;
 	t.m3() = type;
 	t.m4() = 0 << 5 | 0 << 2;
-	t.m5() = count << 6 | static_cast<uint>(growth);
-	SB(t.m6(), 2, 4, 0);
+	t.m5() = count << 6 | to_underlying(growth);
+	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
+	t.m8() = 0;
 }
 
 #endif /* TREE_MAP_H */

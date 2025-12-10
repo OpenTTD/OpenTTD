@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file timetable_cmd.cpp Commands related to time tabling. */
@@ -167,7 +167,7 @@ CommandCost CmdChangeTimetable(DoCommandFlags flags, VehicleID veh, VehicleOrder
 	if (wait_time != order->GetWaitTime()) {
 		switch (order->GetType()) {
 			case OT_GOTO_STATION:
-				if (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) return CommandCost(STR_ERROR_TIMETABLE_NOT_STOPPING_HERE);
+				if (order->GetNonStopType().Test(OrderNonStopFlag::NoDestination)) return CommandCost(STR_ERROR_TIMETABLE_NOT_STOPPING_HERE);
 				break;
 
 			case OT_CONDITIONAL:
@@ -317,8 +317,8 @@ static bool VehicleTimetableSorter(Vehicle * const &a, Vehicle * const &b)
 	int j = (int)b_order - (int)a_order;
 
 	/* Are we currently at an ordered station (un)loading? */
-	bool a_load = a->current_order.IsType(OT_LOADING) && a->current_order.GetNonStopType() != ONSF_STOP_EVERYWHERE;
-	bool b_load = b->current_order.IsType(OT_LOADING) && b->current_order.GetNonStopType() != ONSF_STOP_EVERYWHERE;
+	bool a_load = a->current_order.IsType(OT_LOADING) && a->current_order.GetNonStopType().Any();
+	bool b_load = b->current_order.IsType(OT_LOADING) && b->current_order.GetNonStopType().Any();
 
 	/* If the current order is not loading at the ordered station, decrease the order index by one since we have
 	 * not yet arrived at the station (and thus the timetable entry; still in the travelling of the previous one).

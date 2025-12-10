@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file roadveh_cmd.cpp Handling of road vehicles. */
@@ -1700,13 +1700,13 @@ static void CheckIfRoadVehNeedsService(RoadVehicle *v)
 	DepotID depot = GetDepotIndex(rfdd.tile);
 
 	if (v->current_order.IsType(OT_GOTO_DEPOT) &&
-			v->current_order.GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS &&
+			v->current_order.GetNonStopType().Test(OrderNonStopFlag::NoIntermediate) &&
 			!Chance16(1, 20)) {
 		return;
 	}
 
 	SetBit(v->gv_flags, GVF_SUPPRESS_IMPLICIT_ORDERS);
-	v->current_order.MakeGoToDepot(depot, ODTFB_SERVICE);
+	v->current_order.MakeGoToDepot(depot, OrderDepotTypeFlag::Service);
 	v->SetDestTile(rfdd.tile);
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 }

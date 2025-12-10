@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file order_backup.cpp Handling of order backups. */
@@ -233,7 +233,7 @@ CommandCost CmdClearOrderBackup(DoCommandFlags flags, TileIndex tile, ClientID u
 	for (OrderBackup *ob : OrderBackup::Iterate()) {
 		for (Order &order : ob->orders) {
 			OrderType ot = order.GetType();
-			if (ot == OT_GOTO_DEPOT && (order.GetDepotActionType() & ODATFB_NEAREST_DEPOT) != 0) continue;
+			if (ot == OT_GOTO_DEPOT && order.GetDepotActionType().Test(OrderDepotActionFlag::NearestDepot)) continue;
 			if (ot == OT_GOTO_DEPOT && hangar && !IsHangarTile(ob->tile)) continue; // Not an aircraft? Can't have a hangar order.
 			if (ot == OT_IMPLICIT || (IsHangarTile(ob->tile) && ot == OT_GOTO_DEPOT && !hangar)) ot = OT_GOTO_STATION;
 			if (ot == type && order.GetDestination() == destination) {

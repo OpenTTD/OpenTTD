@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file group_cmd.h Command definitions related to engine groups. */
@@ -34,14 +34,14 @@ CommandCost CmdRemoveAllVehiclesGroup(DoCommandFlags flags, GroupID group_id);
 CommandCost CmdSetGroupFlag(DoCommandFlags flags, GroupID group_id, GroupFlag flag, bool value, bool recursive);
 CommandCost CmdSetGroupLivery(DoCommandFlags flags, GroupID group_id, bool primary, Colours colour);
 
-DEF_CMD_TRAIT(CMD_CREATE_GROUP,              CmdCreateGroup,            {}, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_DELETE_GROUP,              CmdDeleteGroup,            {}, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_ALTER_GROUP,               CmdAlterGroup,             {}, CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_ADD_VEHICLE_GROUP,         CmdAddVehicleGroup,        {}, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_ADD_SHARED_VEHICLE_GROUP,  CmdAddSharedVehicleGroup,  {}, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_REMOVE_ALL_VEHICLES_GROUP, CmdRemoveAllVehiclesGroup, {}, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_SET_GROUP_FLAG,            CmdSetGroupFlag,           {}, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_SET_GROUP_LIVERY,          CmdSetGroupLivery,         {}, CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_CREATE_GROUP,              CmdCreateGroup,            {}, CommandType::RouteManagement)
+DEF_CMD_TRAIT(CMD_DELETE_GROUP,              CmdDeleteGroup,            {}, CommandType::RouteManagement)
+DEF_CMD_TRAIT(CMD_ALTER_GROUP,               CmdAlterGroup,             {}, CommandType::OtherManagement)
+DEF_CMD_TRAIT(CMD_ADD_VEHICLE_GROUP,         CmdAddVehicleGroup,        {}, CommandType::RouteManagement)
+DEF_CMD_TRAIT(CMD_ADD_SHARED_VEHICLE_GROUP,  CmdAddSharedVehicleGroup,  {}, CommandType::RouteManagement)
+DEF_CMD_TRAIT(CMD_REMOVE_ALL_VEHICLES_GROUP, CmdRemoveAllVehiclesGroup, {}, CommandType::RouteManagement)
+DEF_CMD_TRAIT(CMD_SET_GROUP_FLAG,            CmdSetGroupFlag,           {}, CommandType::RouteManagement)
+DEF_CMD_TRAIT(CMD_SET_GROUP_LIVERY,          CmdSetGroupLivery,         {}, CommandType::RouteManagement)
 
 void CcCreateGroup(Commands cmd, const CommandCost &result, GroupID new_group, VehicleType vt, GroupID parent_group);
 void CcAddVehicleNewGroup(Commands cmd, const CommandCost &result, GroupID new_group, GroupID, VehicleID veh_id, bool, const VehicleListIdentifier &);

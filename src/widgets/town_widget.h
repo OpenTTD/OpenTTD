@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file town_widget.h Types related to the town widgets. */
@@ -78,8 +78,8 @@ enum TownFoundingWidgets : WidgetID {
 /** Widgets of the #BuildHouseWindow class. */
 enum BuildHouseWidgets : WidgetID {
 	WID_BH_INFO, ///< Information panel of selected house.
-	WID_BH_PROTECT_OFF, ///< Button to protect the next house built.
-	WID_BH_PROTECT_ON, ///< Button to not protect the next house built.
+	WID_BH_PROTECT_TOGGLE, ///< Button to toggle protecting the next house built.
+	WID_BH_REPLACE_TOGGLE, ///< Button to toggle replacing existing houses.
 };
 
 #endif /* WIDGETS_TOWN_WIDGET_H */

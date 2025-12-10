@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file osk_gui.cpp The On Screen Keyboard GUI */
@@ -321,7 +321,7 @@ static std::unique_ptr<NWidgetBase> MakeSpacebarKeys()
 }
 
 
-static constexpr NWidgetPart _nested_osk_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_osk_widgets = {
 	NWidget(WWT_CAPTION, COLOUR_GREY, WID_OSK_CAPTION), SetTextStyle(TC_WHITE),
 	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(WWT_EDITBOX, COLOUR_GREY, WID_OSK_TEXT), SetMinimalSize(252, 0), SetPadding(2, 2, 2, 2),

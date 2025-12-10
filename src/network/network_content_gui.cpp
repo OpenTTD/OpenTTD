@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file network_content_gui.cpp Implementation of the Network Content related GUIs. */
@@ -84,7 +84,7 @@ static void ShowContentTextfileWindow(Window *parent, TextfileType file_type, co
 }
 
 /** Nested widgets for the download window. */
-static constexpr NWidgetPart _nested_network_content_download_status_window_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_network_content_download_status_window_widgets = {
 	NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_CONTENT_DOWNLOAD_TITLE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.modalpopup),
@@ -1025,7 +1025,7 @@ void BuildContentTypeStringList()
 }
 
 /** The widgets for the content list. */
-static constexpr NWidgetPart _nested_network_content_list_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_network_content_list_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE),
 		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE), SetStringTip(STR_CONTENT_TITLE),

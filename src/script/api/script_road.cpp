@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file script_road.cpp Implementation of ScriptRoad. */
@@ -37,7 +37,7 @@
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return (::IsTileType(tile, MP_ROAD) && ::GetRoadTileType(tile) != ROAD_TILE_DEPOT) ||
+	return (::IsTileType(tile, MP_ROAD) && ::GetRoadTileType(tile) != RoadTileType::Depot) ||
 			IsDriveThroughRoadStationTile(tile);
 }
 
@@ -46,7 +46,7 @@
 	if (!::IsValidTile(tile)) return false;
 	if (!IsRoadTypeAvailable(GetCurrentRoadType())) return false;
 
-	return ::IsTileType(tile, MP_ROAD) && ::GetRoadTileType(tile) == ROAD_TILE_DEPOT &&
+	return ::IsTileType(tile, MP_ROAD) && ::GetRoadTileType(tile) == RoadTileType::Depot &&
 			::GetPresentRoadTypes(tile).Test(::RoadType(GetCurrentRoadType()));
 }
 
@@ -465,7 +465,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 
 	switch (::GetTileType(neighbour_tile)) {
 		case MP_ROAD:
-			return (::GetRoadTileType(neighbour_tile) != ROAD_TILE_DEPOT);
+			return (::GetRoadTileType(neighbour_tile) != RoadTileType::Depot);
 
 		case MP_STATION:
 			if (::IsDriveThroughStopTile(neighbour_tile)) {
@@ -623,7 +623,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, IsTileType(tile, MP_ROAD))
-	EnforcePrecondition(false, GetRoadTileType(tile) == ROAD_TILE_DEPOT);
+	EnforcePrecondition(false, GetRoadTileType(tile) == RoadTileType::Depot);
 
 	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile);
 }

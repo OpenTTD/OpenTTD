@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file dbg_helpers.h Functions to be used for debug printings. */
@@ -18,24 +18,14 @@
 #include "../track_type.h"
 #include "../core/format.hpp"
 
-/** Helper template class that provides C array length and item type */
-template <typename T> struct ArrayT;
-
-/** Helper template class that provides C array length and item type */
-template <typename T, size_t N> struct ArrayT<T[N]> {
-	static const size_t length = N;
-	using Item = T;
-};
-
-
 /**
  * Helper template function that returns item of array at given index
  * or t_unk when index is out of bounds.
  */
-template <typename E, typename T>
-inline typename ArrayT<T>::Item ItemAtT(E idx, const T &t, typename ArrayT<T>::Item t_unk)
+template <typename E>
+inline std::string_view ItemAt(E idx, std::span<const std::string_view> t, std::string_view t_unk)
 {
-	if (static_cast<size_t>(idx) >= ArrayT<T>::length) {
+	if (static_cast<size_t>(idx) >= std::size(t)) {
 		return t_unk;
 	}
 	return t[idx];
@@ -46,16 +36,13 @@ inline typename ArrayT<T>::Item ItemAtT(E idx, const T &t, typename ArrayT<T>::I
  * or t_inv when index == idx_inv
  * or t_unk when index is out of bounds.
  */
-template <typename E, typename T>
-inline typename ArrayT<T>::Item ItemAtT(E idx, const T &t, typename ArrayT<T>::Item t_unk, E idx_inv, typename ArrayT<T>::Item t_inv)
+template <typename E>
+inline std::string_view ItemAt(E idx, std::span<const std::string_view> t, std::string_view t_unk, E idx_inv, std::string_view t_inv)
 {
-	if (static_cast<size_t>(idx) < ArrayT<T>::length) {
-		return t[idx];
-	}
 	if (idx == idx_inv) {
 		return t_inv;
 	}
-	return t_unk;
+	return ItemAt(idx, t, t_unk);
 }
 
 /**
@@ -64,8 +51,8 @@ inline typename ArrayT<T>::Item ItemAtT(E idx, const T &t, typename ArrayT<T>::I
  * or t_inv when index == idx_inv
  * or t_unk when index is out of bounds.
  */
-template <typename E, typename T>
-inline std::string ComposeNameT(E value, T &t, std::string_view t_unk, E val_inv, std::string_view name_inv)
+template <typename E>
+inline std::string ComposeName(E value, std::span<const std::string_view> t, std::string_view t_unk, E val_inv, std::string_view name_inv)
 {
 	std::string out;
 	if (value == val_inv) {
@@ -73,7 +60,7 @@ inline std::string ComposeNameT(E value, T &t, std::string_view t_unk, E val_inv
 	} else if (value == 0) {
 		out = "<none>";
 	} else {
-		for (size_t i = 0; i < ArrayT<T>::length; i++) {
+		for (size_t i = 0; i < std::size(t); i++) {
 			if ((value & (1 << i)) == 0) continue;
 			out += (!out.empty() ? "+" : "");
 			out += t[i];
@@ -93,7 +80,7 @@ inline std::string ComposeNameT(E value, T &t, std::string_view t_unk, E val_inv
  * or unknown_name when index is out of bounds.
  */
 template <typename E>
-inline std::string ComposeNameT(E value, std::span<const std::string_view> names, std::string_view unknown_name)
+inline std::string ComposeName(E value, std::span<const std::string_view> names, std::string_view unknown_name)
 {
 	std::string out;
 	if (value.base() == 0) {

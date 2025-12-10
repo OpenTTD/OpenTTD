@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file vehicle_gui.cpp The base GUI for all vehicles. */
@@ -1307,7 +1307,7 @@ struct RefitWindow : public Window {
 	}
 };
 
-static constexpr NWidgetPart _nested_vehicle_refit_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_vehicle_refit_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_VR_CAPTION),
@@ -1595,7 +1595,7 @@ void ChangeVehicleViewWindow(VehicleID from_index, VehicleID to_index)
 	ChangeVehicleWindow(WC_VEHICLE_TIMETABLE, from_index, to_index);
 }
 
-static constexpr NWidgetPart _nested_vehicle_list[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_vehicle_list = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_VL_CAPTION_SELECTION),
@@ -2324,7 +2324,7 @@ static_assert(WID_VD_DETAILS_CAPACITY_OF_EACH == WID_VD_DETAILS_CARGO_CARRIED + 
 static_assert(WID_VD_DETAILS_TOTAL_CARGO      == WID_VD_DETAILS_CARGO_CARRIED + TDW_TAB_TOTALS  );
 
 /** Vehicle details widgets (other than train). */
-static constexpr NWidgetPart _nested_nontrain_vehicle_details_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_nontrain_vehicle_details_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_VD_CAPTION),
@@ -2347,7 +2347,7 @@ static constexpr NWidgetPart _nested_nontrain_vehicle_details_widgets[] = {
 };
 
 /** Train details widgets. */
-static constexpr NWidgetPart _nested_train_vehicle_details_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_train_vehicle_details_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_VD_CAPTION), SetStringTip(STR_VEHICLE_DETAILS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -2820,7 +2820,7 @@ static void ShowVehicleDetailsWindow(const Vehicle *v)
 /* Unified vehicle GUI - Vehicle View Window */
 
 /** Vehicle view widgets. */
-static constexpr NWidgetPart _nested_vehicle_view_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_vehicle_view_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_VV_RENAME), SetAspect(WidgetDimensions::ASPECT_RENAME), SetSpriteTip(SPR_RENAME),
@@ -2843,8 +2843,10 @@ static constexpr NWidgetPart _nested_vehicle_view_widgets[] = {
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_VV_CLONE), SetMinimalSize(18, 18), SetSpriteTip(SPR_EMPTY /* filled later */),
 			EndContainer(),
 			/* For trains only, 'ignore signal' button. */
-			NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_VV_FORCE_PROCEED), SetMinimalSize(18, 18),
+			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_VV_FORCE_PROCEED_SEL),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_VV_FORCE_PROCEED), SetMinimalSize(18, 18),
 											SetSpriteTip(SPR_IGNORE_SIGNALS, STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP),
+			EndContainer(),
 			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_VV_SELECT_REFIT_TURN),
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_VV_REFIT), SetMinimalSize(18, 18), SetSpriteTip(SPR_REFIT_VEHICLE),
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_VV_TURN_AROUND), SetMinimalSize(18, 18),
@@ -3017,13 +3019,16 @@ public:
 		switch (v->type) {
 			case VEH_TRAIN:
 				this->GetWidget<NWidgetCore>(WID_VV_TURN_AROUND)->SetToolTip(STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP);
+				this->GetWidget<NWidgetStacked>(WID_VV_FORCE_PROCEED_SEL)->SetDisplayedPlane(0);
 				break;
 
 			case VEH_ROAD:
+				this->GetWidget<NWidgetStacked>(WID_VV_FORCE_PROCEED_SEL)->SetDisplayedPlane(SZSP_NONE);
 				break;
 
 			case VEH_SHIP:
 			case VEH_AIRCRAFT:
+				this->GetWidget<NWidgetStacked>(WID_VV_FORCE_PROCEED_SEL)->SetDisplayedPlane(SZSP_NONE);
 				this->SelectPlane(SEL_RT_REFIT);
 				break;
 
@@ -3159,11 +3164,11 @@ public:
 				if (v->current_order.GetDestination() == DepotID::Invalid()) return {};
 
 				auto params = MakeParameters(v->type, v->current_order.GetDestination(), PackVelocity(v->GetDisplaySpeed(), v->type));
-				if (v->current_order.GetDepotActionType() & ODATFB_HALT) {
+				if (v->current_order.GetDepotActionType().Test(OrderDepotActionFlag::Halt)) {
 					return GetStringWithArgs(v->vehicle_flags.Test(VehicleFlag::PathfinderLost) ? STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL : STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL, params);
 				}
 
-				if (v->current_order.GetDepotActionType() & ODATFB_UNBUNCH) {
+				if (v->current_order.GetDepotActionType().Test(OrderDepotActionFlag::Unbunch)) {
 					return GetStringWithArgs(v->vehicle_flags.Test(VehicleFlag::PathfinderLost) ? STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL : STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL, params);
 				}
 

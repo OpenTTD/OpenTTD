@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file industry_gui.cpp GUIs related to industries. */
@@ -257,7 +257,7 @@ void SortIndustryTypes()
 	std::sort(_sorted_industry_types.begin(), _sorted_industry_types.end(), IndustryTypeNameSorter);
 }
 
-static constexpr NWidgetPart _nested_build_industry_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_build_industry_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetStringTip(STR_FUND_INDUSTRY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -1204,7 +1204,7 @@ static void UpdateIndustryProduction(Industry *i)
 }
 
 /** Widget definition of the view industry gui */
-static constexpr NWidgetPart _nested_industry_view_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_industry_view_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_CREAM),
 		NWidget(WWT_CAPTION, COLOUR_CREAM, WID_IV_CAPTION),
@@ -1242,7 +1242,7 @@ void ShowIndustryViewWindow(IndustryID industry)
 }
 
 /** Widget definition of the industry directory gui */
-static constexpr NWidgetPart _nested_industry_directory_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_industry_directory_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_ID_CAPTION),
@@ -1931,7 +1931,7 @@ void ShowIndustryDirectory()
 }
 
 /** Widgets of the industry cargoes window. */
-static constexpr NWidgetPart _nested_industry_cargoes_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_industry_cargoes_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_IC_CAPTION),

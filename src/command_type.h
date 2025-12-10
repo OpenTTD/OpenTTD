@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file command_type.h Types related to commands. */
@@ -214,6 +214,7 @@ enum Commands : uint8_t {
 
 	CMD_BUILD_RAIL_WAYPOINT,          ///< build a waypoint
 	CMD_RENAME_WAYPOINT,              ///< rename a waypoint
+	CMD_MOVE_WAYPOINT_NAME,           ///< move a waypoint name
 	CMD_REMOVE_FROM_RAIL_WAYPOINT,    ///< remove a (rectangle of) tiles from a rail waypoint
 
 	CMD_BUILD_ROAD_WAYPOINT,          ///< build a road waypoint
@@ -275,10 +276,12 @@ enum Commands : uint8_t {
 	CMD_RENAME_COMPANY,               ///< change the company name
 	CMD_RENAME_PRESIDENT,             ///< change the president name
 	CMD_RENAME_STATION,               ///< rename a station
+	CMD_MOVE_STATION_NAME,            ///< move a station name
 	CMD_RENAME_DEPOT,                 ///< rename a depot
 
 	CMD_PLACE_SIGN,                   ///< place a sign
 	CMD_RENAME_SIGN,                  ///< rename a sign
+	CMD_MOVE_SIGN,                    ///< move a sign
 
 	CMD_TURN_ROADVEH,                 ///< turn a road vehicle around
 
@@ -380,7 +383,7 @@ enum Commands : uint8_t {
  *
  * This enums defines some flags which can be used for the commands.
  */
-enum DoCommandFlag : uint8_t {
+enum class DoCommandFlag : uint8_t {
 	Execute, ///< execute the given command
 	Auto, ///< don't allow building on structures
 	QueryCost, ///< query cost only,  don't build.
@@ -417,26 +420,27 @@ enum class CommandFlag : uint8_t {
 using CommandFlags = EnumBitSet<CommandFlag, uint16_t>;
 
 /** Types of commands we have. */
-enum CommandType : uint8_t {
-	CMDT_LANDSCAPE_CONSTRUCTION, ///< Construction and destruction of objects on the map.
-	CMDT_VEHICLE_CONSTRUCTION,   ///< Construction, modification (incl. refit) and destruction of vehicles.
-	CMDT_MONEY_MANAGEMENT,       ///< Management of money, i.e. loans.
-	CMDT_VEHICLE_MANAGEMENT,     ///< Stopping, starting, sending to depot, turning around, replace orders etc.
-	CMDT_ROUTE_MANAGEMENT,       ///< Modifications to route management (orders, groups, etc).
-	CMDT_OTHER_MANAGEMENT,       ///< Renaming stuff, changing company colours, placing signs, etc.
-	CMDT_COMPANY_SETTING,        ///< Changing settings related to a company.
-	CMDT_SERVER_SETTING,         ///< Pausing/removing companies/server settings.
-	CMDT_CHEAT,                  ///< A cheat of some sorts.
+enum class CommandType : uint8_t {
+	LandscapeConstruction, ///< Construction and destruction of objects on the map.
+	VehicleConstruction, ///< Construction, modification (incl. refit) and destruction of vehicles.
+	MoneyManagement, ///< Management of money, i.e. loans.
+	VehicleManagement, ///< Stopping, starting, sending to depot, turning around, replace orders etc.
+	RouteManagement, ///< Modifications to route management (orders, groups, etc).
+	OtherManagement, ///< Renaming stuff, changing company colours, placing signs, etc.
+	CompanySetting, ///< Changing settings related to a company.
+	ServerSetting, ///< Pausing/removing companies/server settings.
+	Cheat, ///< A cheat of some sorts.
 
-	CMDT_END,                    ///< Magic end marker.
+	End, ///< End marker.
 };
 
 /** Different command pause levels. */
-enum CommandPauseLevel : uint8_t {
-	CMDPL_NO_ACTIONS,      ///< No user actions may be executed.
-	CMDPL_NO_CONSTRUCTION, ///< No construction actions may be executed.
-	CMDPL_NO_LANDSCAPING,  ///< No landscaping actions may be executed.
-	CMDPL_ALL_ACTIONS,     ///< All actions may be executed.
+
+enum class CommandPauseLevel : uint8_t {
+	NoActions, ///< No user actions may be executed.
+	NoConstruction, ///< No construction actions may be executed.
+	NoLandscaping, ///< No landscaping actions may be executed.
+	AllActions, ///< All actions may be executed.
 };
 
 

@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file script_info_docs.hpp Description of the functions an Script can/must provide in ScriptInfo. */
@@ -154,23 +154,23 @@ public:
 	string CreateInstance();
 
 	/**
-	 * Gets the API version this Script is written for. If this function
-	 * does not exist API compatibility with version 0.7 is assumed.
+	 * Gets the API version this Script is written for.
+	 *
 	 * If the function returns something OpenTTD does not understand,
 	 * for example a newer version or a string that is not a version,
 	 * the Script will not be loaded.
 	 *
-	 * Although in the future we might need to make a separate
-	 * compatibility 'wrapper' for a specific version of OpenTTD, for
-	 * example '0.7.1', we will use only the major and minor number
-	 * and not the bugfix number as valid return for this function.
+	 * Valid return values are string representations of the major part
+	 * of the OpenTTD version string (and "<major>.<minor>" prior version 12)
+	 * Some examples:
+	 * - "0.7" (the first valid AI version)
+	 * - "1.2" (the first valid GS version)
+	 * - "1.11" (last major.minor version)
+	 * - "12" (first major-only version)
+	 * - "15"
 	 *
-	 * Valid return values are:
-	 * - "0.7" (for AI only)
-	 * - "1.0" (for AI only)
-	 * - "1.1" (for AI only)
-	 * - "1.2" (for both AI and GS)
-	 * - "1.3" (for both AI and GS)
+	 * This function must exist for GS but for historical reasons AI that
+	 * do not set it will assume API compatibility version "0.7".
 	 *
 	 * @return The version this Script is compatible with.
 	 */

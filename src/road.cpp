@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file road.cpp Generic road related functions. */
@@ -45,7 +45,7 @@ RoadType RoadTypeInfo::Index() const
 static bool IsPossibleCrossing(const TileIndex tile, Axis ax)
 {
 	return (IsTileType(tile, MP_RAILWAY) &&
-		GetRailTileType(tile) == RAIL_TILE_NORMAL &&
+		GetRailTileType(tile) == RailTileType::Normal &&
 		GetTrackBits(tile) == (ax == AXIS_X ? TRACK_BIT_Y : TRACK_BIT_X) &&
 		std::get<0>(GetFoundationSlope(tile)) == SLOPE_FLAT);
 }

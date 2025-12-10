@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file road.h Road specific functions. */
@@ -12,7 +12,6 @@
 
 #include "road_type.h"
 #include "gfx_type.h"
-#include "core/bitmath_func.hpp"
 #include "core/flatset_type.hpp"
 #include "strings_type.h"
 #include "timer/timer_game_calendar.h"
@@ -20,20 +19,6 @@
 #include "newgrf.h"
 #include "newgrf_badge_type.h"
 #include "economy_func.h"
-
-
-enum RoadTramType : bool {
-	RTT_ROAD,
-	RTT_TRAM,
-};
-
-enum RoadTramTypes : uint8_t {
-	RTTB_ROAD = 1 << RTT_ROAD,
-	RTTB_TRAM = 1 << RTT_TRAM,
-};
-DECLARE_ENUM_AS_BIT_SET(RoadTramTypes)
-
-static const RoadTramType _roadtramtypes[] = { RTT_ROAD, RTT_TRAM };
 
 /** Roadtype flag bit numbers. */
 enum class RoadTypeFlag : uint8_t {

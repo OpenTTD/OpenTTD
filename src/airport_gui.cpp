@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file airport_gui.cpp The GUI for airports. */
@@ -161,6 +161,11 @@ struct BuildAirToolbarWindow : Window {
 		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
 	}
 
+	Point OnInitialPosition(int16_t sm_width, [[maybe_unused]] int16_t sm_height, [[maybe_unused]] int window_number) override
+	{
+		return AlignInitialConstructionToolbar(sm_width);
+	}
+
 	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile) override
 	{
 		if (pt.x != -1 && select_proc == DDSP_DEMOLISH_AREA) {
@@ -197,7 +202,7 @@ struct BuildAirToolbarWindow : Window {
 	}, AirportToolbarGlobalHotkeys};
 };
 
-static constexpr NWidgetPart _nested_air_toolbar_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_air_toolbar_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetStringTip(STR_TOOLBAR_AIRCRAFT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -211,7 +216,7 @@ static constexpr NWidgetPart _nested_air_toolbar_widgets[] = {
 };
 
 static WindowDesc _air_toolbar_desc(
-	WDP_ALIGN_TOOLBAR, "toolbar_air", 0, 0,
+	WDP_MANUAL, "toolbar_air", 0, 0,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WindowDefaultFlag::Construction,
 	_nested_air_toolbar_widgets,
@@ -580,7 +585,7 @@ public:
 	}};
 };
 
-static constexpr NWidgetPart _nested_build_airport_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_build_airport_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetStringTip(STR_STATION_BUILD_AIRPORT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),

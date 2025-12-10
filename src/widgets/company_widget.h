@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file company_widget.h Types related to the company widgets. */
@@ -90,6 +90,7 @@ enum SelectCompanyLiveryWidgets : WidgetID {
 	WID_SCL_SPACER_DROPDOWN,  ///< Spacer for dropdown.
 	WID_SCL_PRI_COL_DROPDOWN, ///< Dropdown for primary colour.
 	WID_SCL_SEC_COL_DROPDOWN, ///< Dropdown for secondary colour.
+	WID_SCL_SEC_COL_DROP_SEL, ///< Container for secondary color dropdown, which can be hidden.
 	WID_SCL_MATRIX,           ///< Matrix.
 	WID_SCL_MATRIX_SCROLLBAR, ///< Matrix scrollbar.
 };

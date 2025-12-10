@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file sdl2_opengl_v.cpp Implementation of the OpenGL backend for SDL2 video driver. */
@@ -19,9 +19,6 @@
 #include "../network/network.h"
 #include "../thread.h"
 #include "../progress.h"
-#include "../core/random_func.hpp"
-#include "../core/math_func.hpp"
-#include "../core/geometry_func.hpp"
 #include "../fileio_func.h"
 #include "../framerate_type.h"
 #include "../window_func.h"

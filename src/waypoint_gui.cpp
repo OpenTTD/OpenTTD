@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file waypoint_gui.cpp Handling of waypoints gui. */
@@ -20,10 +20,12 @@
 #include "company_base.h"
 #include "window_func.h"
 #include "waypoint_base.h"
+#include "station_base.h"
 #include "waypoint_cmd.h"
 #include "zoom_func.h"
 
 #include "widgets/waypoint_widget.h"
+#include "widgets/misc_widget.h"
 
 #include "table/strings.h"
 
@@ -87,7 +89,7 @@ public:
 		}
 		if (this->vt != VEH_SHIP) {
 			this->GetWidget<NWidgetCore>(WID_W_CENTER_VIEW)->SetToolTip(STR_WAYPOINT_VIEW_CENTER_TOOLTIP);
-			this->GetWidget<NWidgetCore>(WID_W_RENAME)->SetToolTip(STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME);
+			this->GetWidget<NWidgetCore>(WID_W_RENAME)->SetToolTip(STR_WAYPOINT_VIEW_EDIT_TOOLTIP);
 		}
 		this->FinishInitNested(window_number);
 
@@ -125,6 +127,8 @@ public:
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
+		Window *w = FindWindowByClass(WC_QUERY_STRING);
+
 		switch (widget) {
 			case WID_W_CENTER_VIEW: // scroll to location
 				if (_ctrl_pressed) {
@@ -135,7 +139,8 @@ public:
 				break;
 
 			case WID_W_RENAME: // rename
-				ShowQueryString(GetString(STR_WAYPOINT_NAME, this->wp->index), STR_EDIT_WAYPOINT_NAME, MAX_LENGTH_STATION_NAME_CHARS, this, CS_ALPHANUMERAL, {QueryStringFlag::EnableDefault, QueryStringFlag::LengthIsInChars});
+				ShowQueryString(GetString(STR_WAYPOINT_NAME, this->wp->index), STR_WAYPOINT_VIEW_EDIT_WAYPOINT_SIGN, MAX_LENGTH_STATION_NAME_CHARS, this, CS_ALPHANUMERAL,
+		{QueryStringFlag::EnableDefault, QueryStringFlag::LengthIsInChars, QueryStringFlag::EnableMove});
 				break;
 
 			case WID_W_SHOW_VEHICLES: // show list of vehicles having this waypoint in their orders
@@ -144,6 +149,11 @@ public:
 
 			case WID_W_CATCHMENT:
 				SetViewportCatchmentWaypoint(Waypoint::Get(this->window_number), !this->IsWidgetLowered(WID_W_CATCHMENT));
+
+				if (w != nullptr && this->IsWidgetLowered(WID_W_CATCHMENT)) {
+					if (w->parent->window_class == WC_STATION_VIEW && w->IsWidgetLowered(WID_QS_MOVE)) SetViewportStationRect(Station::Get(w->parent->window_number), true);
+					if (w->parent->window_class == WC_WAYPOINT_VIEW && w->IsWidgetLowered(WID_QS_MOVE)) SetViewportWaypointRect(Waypoint::Get(w->parent->window_number), true);
+				}
 				break;
 		}
 	}
@@ -185,7 +195,7 @@ public:
 };
 
 /** The widgets of the waypoint view. */
-static constexpr NWidgetPart _nested_waypoint_view_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_waypoint_view_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_W_RENAME), SetAspect(WidgetDimensions::ASPECT_RENAME), SetSpriteTip(SPR_RENAME, STR_BUOY_VIEW_RENAME_TOOLTIP),

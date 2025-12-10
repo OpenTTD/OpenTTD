@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file company_base.h Definition of stuff that is very close to a company, like the company struct itself. */
@@ -45,8 +45,10 @@ struct CompanyInfrastructure {
 		return std::accumulate(std::begin(this->rail), std::end(this->rail), 0U);
 	}
 
-	uint32_t GetRoadTotal() const;
-	uint32_t GetTramTotal() const;
+	uint32_t GetRoadTramTotal(RoadTramType rtt) const;
+
+	inline uint32_t GetRoadTotal() const { return GetRoadTramTotal(RTT_ROAD); }
+	inline uint32_t GetTramTotal() const { return GetRoadTramTotal(RTT_TRAM); }
 };
 
 class FreeUnitIDGenerator {
@@ -176,6 +178,18 @@ struct Company : CompanyProperties, CompanyPool::PoolItem<&_company_pool> {
 	static inline bool IsHumanID(auto index)
 	{
 		return !Company::Get(index)->is_ai;
+	}
+
+	/**
+	 * Get offset for recolour palette of specific company.
+	 * @param livery_scheme Scheme to use for recolour.
+	 * @param use_secondary Specify whether to add secondary colour offset to the result.
+	 * @return palette offset.
+	 */
+	inline uint8_t GetCompanyRecolourOffset(LiveryScheme livery_scheme, bool use_secondary = true) const
+	{
+		const Livery &l = this->livery[livery_scheme];
+		return use_secondary ? l.colour1 + l.colour2 * 16 : l.colour1;
 	}
 
 	static void PostDestructor(size_t index);

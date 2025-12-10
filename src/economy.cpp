@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file economy.cpp Handling of the economy. */
@@ -1188,7 +1188,7 @@ CargoPayment::CargoPayment(Vehicle *front) :
 
 CargoPayment::~CargoPayment()
 {
-	if (this->CleaningPool()) return;
+	if (CleaningPool()) return;
 
 	this->front->cargo_payment = nullptr;
 
@@ -1277,8 +1277,9 @@ void PrepareUnload(Vehicle *front_v)
 	assert(CargoPayment::CanAllocateItem());
 	front_v->cargo_payment = new CargoPayment(front_v);
 
-	StationIDStack next_station = front_v->GetNextStoppingStation();
-	if (front_v->orders == nullptr || (front_v->current_order.GetUnloadType() & OUFB_NO_UNLOAD) == 0) {
+	std::vector<StationID> next_station;
+	front_v->GetNextStoppingStation(next_station);
+	if (front_v->orders == nullptr || front_v->current_order.GetUnloadType() != OrderUnloadType::NoUnload) {
 		Station *st = Station::Get(front_v->last_station_visited);
 		for (Vehicle *v = front_v; v != nullptr; v = v->Next()) {
 			const GoodsEntry *ge = &st->goods[v->cargo_type];
@@ -1440,7 +1441,7 @@ struct FinalizeRefitAction
 {
 	CargoArray &consist_capleft;  ///< Capacities left in the consist.
 	Station *st;                  ///< Station to reserve cargo from.
-	StationIDStack &next_station; ///< Next hops to reserve cargo for.
+	std::span<const StationID> next_station; ///< Next hops to reserve cargo for.
 	bool do_reserve;              ///< If the vehicle should reserve.
 
 	/**
@@ -1450,7 +1451,7 @@ struct FinalizeRefitAction
 	 * @param next_station Next hops to reserve cargo for.
 	 * @param do_reserve If we should reserve cargo or just add up the capacities.
 	 */
-	FinalizeRefitAction(CargoArray &consist_capleft, Station *st, StationIDStack &next_station, bool do_reserve) :
+	FinalizeRefitAction(CargoArray &consist_capleft, Station *st, std::span<const StationID> next_station, bool do_reserve) :
 		consist_capleft(consist_capleft), st(st), next_station(next_station), do_reserve(do_reserve) {}
 
 	/**
@@ -1478,7 +1479,7 @@ struct FinalizeRefitAction
  * @param next_station Possible next stations the vehicle can travel to.
  * @param new_cargo_type Target cargo for refit.
  */
-static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station *st, StationIDStack next_station, CargoType new_cargo_type)
+static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station *st, std::span<const StationID> next_station, CargoType new_cargo_type)
 {
 	Vehicle *v_start = v->GetFirstEnginePart();
 	if (!IterateVehicleParts(v_start, IsEmptyAction())) return;
@@ -1527,7 +1528,7 @@ static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station 
 
 	/* Add new capacity to consist capacity and reserve cargo */
 	IterateVehicleParts(v_start, FinalizeRefitAction(consist_capleft, st, next_station,
-			is_auto_refit || (v->First()->current_order.GetLoadType() & OLFB_FULL_LOAD) != 0));
+			is_auto_refit || v->First()->current_order.IsFullLoadOrder()));
 
 	cur_company.Restore();
 }
@@ -1545,16 +1546,16 @@ static bool MayLoadUnderExclusiveRights(const Station *st, const Vehicle *v)
 
 struct ReserveCargoAction {
 	Station *st;
-	StationIDStack *next_station;
+	std::span<const StationID> next_station;
 
-	ReserveCargoAction(Station *st, StationIDStack *next_station) :
+	ReserveCargoAction(Station *st, std::span<const StationID> next_station) :
 		st(st), next_station(next_station) {}
 
 	bool operator()(Vehicle *v)
 	{
 		if (v->cargo_cap > v->cargo.RemainingCount() && MayLoadUnderExclusiveRights(st, v)) {
 			st->goods[v->cargo_type].GetOrCreateData().cargo.Reserve(v->cargo_cap - v->cargo.RemainingCount(),
-					&v->cargo, *next_station, v->GetCargoTile());
+					&v->cargo, next_station, v->GetCargoTile());
 		}
 
 		return true;
@@ -1570,7 +1571,7 @@ struct ReserveCargoAction {
  * @param consist_capleft If given, save free capacities after reserving there.
  * @param next_station Station(s) the vehicle will stop at next.
  */
-static void ReserveConsist(Station *st, Vehicle *u, CargoArray *consist_capleft, StationIDStack *next_station)
+static void ReserveConsist(Station *st, Vehicle *u, CargoArray *consist_capleft, std::span<const StationID> next_station)
 {
 	/* If there is a cargo payment not all vehicles of the consist have tried to do the refit.
 	 * In that case, only reserve if it's a fixed refit and the equivalent of "articulated chain"
@@ -1625,14 +1626,15 @@ static void LoadUnloadVehicle(Vehicle *front)
 	StationID last_visited = front->last_station_visited;
 	Station *st = Station::Get(last_visited);
 
-	StationIDStack next_station = front->GetNextStoppingStation();
+	std::vector<StationID> next_station;
+	front->GetNextStoppingStation(next_station);
 	bool use_autorefit = front->current_order.IsRefit() && front->current_order.GetRefitCargo() == CARGO_AUTO_REFIT;
 	CargoArray consist_capleft{};
 	if (_settings_game.order.improved_load && use_autorefit ?
-			front->cargo_payment == nullptr : (front->current_order.GetLoadType() & OLFB_FULL_LOAD) != 0) {
+			front->cargo_payment == nullptr : (front->current_order.IsFullLoadOrder())) {
 		ReserveConsist(st, front,
 				(use_autorefit && front->load_unload_ticks != 0) ? &consist_capleft : nullptr,
-				&next_station);
+				next_station);
 	}
 
 	/* We have not waited enough time till the next round of loading/unloading */
@@ -1670,14 +1672,14 @@ static void LoadUnloadVehicle(Vehicle *front)
 
 		GoodsEntry *ge = &st->goods[v->cargo_type];
 
-		if (v->vehicle_flags.Test(VehicleFlag::CargoUnloading) && (front->current_order.GetUnloadType() & OUFB_NO_UNLOAD) == 0) {
+		if (v->vehicle_flags.Test(VehicleFlag::CargoUnloading) && front->current_order.GetUnloadType() != OrderUnloadType::NoUnload) {
 			uint cargo_count = v->cargo.UnloadCount();
 			uint amount_unloaded = _settings_game.order.gradual_loading ? std::min(cargo_count, GetLoadAmount(v)) : cargo_count;
 			bool remaining = false; // Are there cargo entities in this vehicle that can still be unloaded here?
 
 			if (!ge->status.Test(GoodsEntry::State::Acceptance) && v->cargo.ActionCount(VehicleCargoList::MTA_DELIVER) > 0) {
 				/* The station does not accept our goods anymore. */
-				if (front->current_order.GetUnloadType() & (OUFB_TRANSFER | OUFB_UNLOAD)) {
+				if (front->current_order.GetUnloadType() == OrderUnloadType::Transfer || front->current_order.GetUnloadType() == OrderUnloadType::Unload) {
 					/* Transfer instead of delivering. */
 					v->cargo.Reassign<VehicleCargoList::MTA_DELIVER, VehicleCargoList::MTA_TRANSFER>(
 							v->cargo.ActionCount(VehicleCargoList::MTA_DELIVER));
@@ -1735,7 +1737,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 		}
 
 		/* Do not pick up goods when we have no-load set or loading is stopped. */
-		if (front->current_order.GetLoadType() & OLFB_NO_LOAD || front->vehicle_flags.Test(VehicleFlag::StopLoading)) continue;
+		if (front->current_order.GetLoadType() == OrderLoadType::NoLoad || front->vehicle_flags.Test(VehicleFlag::StopLoading)) continue;
 
 		/* This order has a refit, if this is the first vehicle part carrying cargo and the whole vehicle is empty, try refitting. */
 		if (front->current_order.IsRefit() && artic_part == 1) {
@@ -1859,7 +1861,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 		}
 		/* We loaded less cargo than possible for all cargo types and it's not full
 		 * load and we're not supposed to wait any longer: stop loading. */
-		if (!anything_unloaded && full_load_amount == 0 && reservation_left == 0 && !(front->current_order.GetLoadType() & OLFB_FULL_LOAD) &&
+		if (!anything_unloaded && full_load_amount == 0 && reservation_left == 0 && !front->current_order.IsFullLoadOrder() &&
 				front->current_order_time >= std::max(front->current_order.GetTimetabledWait() - front->lateness_counter, 0)) {
 			front->vehicle_flags.Set(VehicleFlag::StopLoading);
 		}
@@ -1868,8 +1870,8 @@ static void LoadUnloadVehicle(Vehicle *front)
 	} else {
 		UpdateLoadUnloadTicks(front, st, 20); // We need the ticks for link refreshing.
 		bool finished_loading = true;
-		if (front->current_order.GetLoadType() & OLFB_FULL_LOAD) {
-			if (front->current_order.GetLoadType() == OLF_FULL_LOAD_ANY) {
+		if (front->current_order.IsFullLoadOrder()) {
+			if (front->current_order.GetLoadType() == OrderLoadType::FullLoadAny) {
 				/* if the aircraft carries passengers and is NOT full, then
 				 * continue loading, no matter how much mail is in */
 				if ((front->type == VEH_AIRCRAFT && IsCargoInClass(front->cargo_type, CargoClass::Passengers) && front->cargo_cap > front->cargo.StoredCount()) ||

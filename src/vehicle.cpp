@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file vehicle.cpp Base implementations of all vehicles. */
@@ -284,7 +284,7 @@ bool Vehicle::NeedsAutomaticServicing() const
 {
 	if (this->HasDepotOrder()) return false;
 	if (this->current_order.IsType(OT_LOADING)) return false;
-	if (this->current_order.IsType(OT_GOTO_DEPOT) && (this->current_order.GetDepotOrderType() & ODTFB_SERVICE) == 0) return false;
+	if (this->current_order.IsType(OT_GOTO_DEPOT) && !this->current_order.GetDepotOrderType().Test(OrderDepotTypeFlag::Service)) return false;
 	return NeedsServicing();
 }
 
@@ -1472,8 +1472,8 @@ uint8_t CalcPercentVehicleFilled(const Vehicle *front, StringID *colour)
 	const Station *st = Station::GetIfValid(front->last_station_visited);
 	assert(colour == nullptr || (st != nullptr && is_loading));
 
-	bool order_no_load = is_loading && (front->current_order.GetLoadType() & OLFB_NO_LOAD);
-	bool order_full_load = is_loading && (front->current_order.GetLoadType() & OLFB_FULL_LOAD);
+	bool order_no_load = is_loading && front->current_order.GetLoadType() == OrderLoadType::NoLoad;
+	bool order_full_load = is_loading && front->current_order.IsFullLoadOrder();
 
 	/* Count up max and used */
 	for (const Vehicle *v = front; v != nullptr; v = v->Next()) {
@@ -1588,8 +1588,8 @@ void VehicleEnterDepot(Vehicle *v)
 
 		/* Test whether we are heading for this depot. If not, do nothing.
 		 * Note: The target depot for nearest-/manual-depot-orders is only updated on junctions, but we want to accept every depot. */
-		if ((v->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) &&
-				real_order != nullptr && !(real_order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) &&
+		if (v->current_order.GetDepotOrderType().Test(OrderDepotTypeFlag::PartOfOrders) &&
+				real_order != nullptr && !real_order->GetDepotActionType().Test(OrderDepotActionFlag::NearestDepot) &&
 				(v->type == VEH_AIRCRAFT ? v->current_order.GetDestination() != GetStationIndex(v->tile) : v->dest_tile != v->tile)) {
 			/* We are heading for another depot, keep driving. */
 			return;
@@ -1614,13 +1614,13 @@ void VehicleEnterDepot(Vehicle *v)
 			}
 		}
 
-		if (v->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) {
+		if (v->current_order.GetDepotOrderType().Test(OrderDepotTypeFlag::PartOfOrders)) {
 			/* Part of orders */
 			v->DeleteUnreachedImplicitOrders();
 			UpdateVehicleTimetable(v, true);
 			v->IncrementImplicitOrderIndex();
 		}
-		if (v->current_order.GetDepotActionType() & ODATFB_HALT) {
+		if (v->current_order.GetDepotActionType().Test(OrderDepotActionFlag::Halt)) {
 			/* Vehicles are always stopped on entering depots. Do not restart this one. */
 			_vehicles_to_autoreplace[v->index] = false;
 			/* Invalidate last_loading_station. As the link from the station
@@ -1639,7 +1639,7 @@ void VehicleEnterDepot(Vehicle *v)
 		}
 
 		/* If we've entered our unbunching depot, record the round trip duration. */
-		if (v->current_order.GetDepotActionType() & ODATFB_UNBUNCH && v->depot_unbunching_last_departure > 0) {
+		if (v->current_order.GetDepotActionType().Test(OrderDepotActionFlag::Unbunch) && v->depot_unbunching_last_departure > 0) {
 			TimerGameTick::Ticks measured_round_trip = TimerGameTick::counter - v->depot_unbunching_last_departure;
 			if (v->round_trip_time == 0) {
 				/* This might be our first round trip. */
@@ -2052,16 +2052,16 @@ const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID 
 			const Group *g = Group::GetIfValid(v->First()->group_id);
 			if (g != nullptr) {
 				/* Traverse parents until we find a livery or reach the top */
-				while (g->livery.in_use == 0 && g->parent != GroupID::Invalid()) {
+				while (!g->livery.in_use.Any({Livery::Flag::Primary, Livery::Flag::Secondary}) && g->parent != GroupID::Invalid()) {
 					g = Group::Get(g->parent);
 				}
-				if (g->livery.in_use != 0) return &g->livery;
+				if (g->livery.in_use.Any({Livery::Flag::Primary, Livery::Flag::Secondary})) return &g->livery;
 			}
 		}
 
 		/* The default livery is always available for use, but its in_use flag determines
 		 * whether any _other_ liveries are in use. */
-		if (c->livery[LS_DEFAULT].in_use != 0) {
+		if (c->livery[LS_DEFAULT].in_use.Any({Livery::Flag::Primary, Livery::Flag::Secondary})) {
 			/* Determine the livery scheme to use */
 			scheme = GetEngineLiveryScheme(engine_type, parent_engine_type, v);
 		}
@@ -2198,7 +2198,7 @@ void Vehicle::BeginLoading()
 		 * necessary to be known for HandleTrainLoading to determine
 		 * whether the train is lost or not; not marking a train lost
 		 * that arrives at random stations is bad. */
-		this->current_order.SetNonStopType(ONSF_NO_STOP_AT_ANY_STATION);
+		this->current_order.SetNonStopType({OrderNonStopFlag::NoIntermediate, OrderNonStopFlag::NoDestination});
 
 	} else {
 		/* We weren't scheduled to stop here. Insert an implicit order
@@ -2286,8 +2286,8 @@ void Vehicle::BeginLoading()
 
 	if (this->last_loading_station != StationID::Invalid() &&
 			this->last_loading_station != this->last_station_visited &&
-			((this->current_order.GetLoadType() & OLFB_NO_LOAD) == 0 ||
-			(this->current_order.GetUnloadType() & OUFB_NO_UNLOAD) == 0)) {
+			(this->current_order.GetLoadType() != OrderLoadType::NoLoad ||
+			this->current_order.GetUnloadType() != OrderUnloadType::NoUnload)) {
 		IncreaseStats(Station::Get(this->last_loading_station), this, this->last_station_visited, travel_time);
 	}
 
@@ -2332,10 +2332,10 @@ void Vehicle::LeaveStation()
 	assert(this->cargo_payment == nullptr); // cleared by ~CargoPayment
 
 	/* Only update the timetable if the vehicle was supposed to stop here. */
-	if (this->current_order.GetNonStopType() != ONSF_STOP_EVERYWHERE) UpdateVehicleTimetable(this, false);
+	if (this->current_order.GetNonStopType().Any()) UpdateVehicleTimetable(this, false);
 
-	if ((this->current_order.GetLoadType() & OLFB_NO_LOAD) == 0 ||
-			(this->current_order.GetUnloadType() & OUFB_NO_UNLOAD) == 0) {
+	if (this->current_order.GetLoadType() != OrderLoadType::NoLoad ||
+			this->current_order.GetUnloadType() != OrderUnloadType::NoUnload) {
 		if (this->current_order.CanLeaveWithCargo(this->last_loading_station != StationID::Invalid())) {
 			/* Refresh next hop stats to make sure we've done that at least once
 			 * during the stop and that refit_cap == cargo_cap for each vehicle in
@@ -2442,7 +2442,7 @@ void Vehicle::HandleLoading(bool mode)
 bool Vehicle::HasFullLoadOrder() const
 {
 	return std::ranges::any_of(this->Orders(), [](const Order &o) {
-		return o.IsType(OT_GOTO_STATION) && o.GetLoadType() & (OLFB_FULL_LOAD | OLF_FULL_LOAD_ANY);
+		return o.IsType(OT_GOTO_STATION) && o.IsFullLoadOrder();
 	});
 }
 
@@ -2462,7 +2462,7 @@ bool Vehicle::HasConditionalOrder() const
 bool Vehicle::HasUnbunchingOrder() const
 {
 	return std::ranges::any_of(this->Orders(), [](const Order &o) {
-		return o.IsType(OT_GOTO_DEPOT) && (o.GetDepotActionType() & ODATFB_UNBUNCH);
+		return o.IsType(OT_GOTO_DEPOT) && o.GetDepotActionType().Test(OrderDepotActionFlag::Unbunch);
 	});
 }
 
@@ -2477,7 +2477,7 @@ static bool PreviousOrderIsUnbunching(const Vehicle *v)
 	const Order *previous_order = (is_first_order) ? v->GetLastOrder() : v->GetOrder(v->cur_implicit_order_index - 1);
 
 	if (previous_order == nullptr || !previous_order->IsType(OT_GOTO_DEPOT)) return false;
-	return (previous_order->GetDepotActionType() & ODATFB_UNBUNCH) != 0;
+	return previous_order->GetDepotActionType().Test(OrderDepotActionFlag::Unbunch);
 }
 
 /**
@@ -2564,14 +2564,14 @@ CommandCost Vehicle::SendToDepot(DoCommandFlags flags, DepotCommandFlags command
 	if (flags.Test(DoCommandFlag::Execute)) this->ResetDepotUnbunching();
 
 	if (this->current_order.IsType(OT_GOTO_DEPOT)) {
-		bool halt_in_depot = (this->current_order.GetDepotActionType() & ODATFB_HALT) != 0;
+		bool halt_in_depot = this->current_order.GetDepotActionType().Test(OrderDepotActionFlag::Halt);
 		if (command.Test(DepotCommandFlag::Service) == halt_in_depot) {
 			/* We called with a different DEPOT_SERVICE setting.
 			 * Now we change the setting to apply the new one and let the vehicle head for the same depot.
 			 * Note: the if is (true for requesting service == true for ordered to stop in depot)          */
 			if (flags.Test(DoCommandFlag::Execute)) {
-				this->current_order.SetDepotOrderType(ODTF_MANUAL);
-				this->current_order.SetDepotActionType(halt_in_depot ? ODATF_SERVICE_ONLY : ODATFB_HALT);
+				this->current_order.SetDepotOrderType({});
+				this->current_order.SetDepotActionType(halt_in_depot ? OrderDepotActionFlags{} : OrderDepotActionFlag::Halt);
 				SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, WID_VV_START_STOP);
 			}
 			return CommandCost();
@@ -2581,7 +2581,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlags flags, DepotCommandFlags command
 		if (flags.Test(DoCommandFlag::Execute)) {
 			/* If the orders to 'goto depot' are in the orders list (forced servicing),
 			 * then skip to the next order; effectively cancelling this forced service */
-			if (this->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) this->IncrementRealOrderIndex();
+			if (this->current_order.GetDepotOrderType().Test(OrderDepotTypeFlag::PartOfOrders)) this->IncrementRealOrderIndex();
 
 			if (this->IsGroundVehicle()) {
 				uint16_t &gv_flags = this->GetGroundVehicleFlags();
@@ -2607,8 +2607,8 @@ CommandCost Vehicle::SendToDepot(DoCommandFlags flags, DepotCommandFlags command
 		}
 
 		this->SetDestTile(closest_depot.location);
-		this->current_order.MakeGoToDepot(closest_depot.destination.ToDepotID(), ODTF_MANUAL);
-		if (!command.Test(DepotCommandFlag::Service)) this->current_order.SetDepotActionType(ODATFB_HALT);
+		this->current_order.MakeGoToDepot(closest_depot.destination.ToDepotID(), {});
+		if (!command.Test(DepotCommandFlag::Service)) this->current_order.SetDepotActionType(OrderDepotActionFlag::Halt);
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, WID_VV_START_STOP);
 
 		/* If there is no depot in front and the train is not already reversing, reverse automatically (trains only) */

@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /**
@@ -1002,9 +1002,9 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlags flags)
 
 		for (TileIndex c = tile + delta; c != endtile; c += delta) {
 			/* do not let trees appear from 'nowhere' after removing bridge */
-			if (IsNormalRoadTile(c) && GetRoadside(c) == ROADSIDE_TREES) {
+			if (IsNormalRoadTile(c) && GetRoadside(c) == Roadside::Trees) {
 				int minz = GetTileMaxZ(c) + 3;
-				if (height < minz) SetRoadside(c, ROADSIDE_PAVED);
+				if (height < minz) SetRoadside(c, Roadside::Paved);
 			}
 			ClearBridgeMiddle(c);
 			MarkTileDirtyByTile(c, height - TileHeight(c));
@@ -1445,7 +1445,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		DrawBridgeMiddle(ti, BridgePillarFlag::EdgeNE + tunnelbridge_direction);
 	} else { // IsBridge(ti->tile)
 		DrawFoundation(ti, GetBridgeFoundation(ti->tileh, DiagDirToAxis(tunnelbridge_direction)));
-		bool is_custom_layout; // Set if rail/road bridge uses a custom layout.
+		bool is_custom_layout = false; // Set if rail/road bridge uses a custom layout.
 
 		uint base_offset = GetBridgeRampDirectionBaseOffset(tunnelbridge_direction);
 		std::span<const PalSpriteID> psid;
@@ -1462,7 +1462,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 		if (!HasTunnelBridgeSnowOrDesert(ti->tile)) {
 			TileIndex next = ti->tile + TileOffsByDiagDir(tunnelbridge_direction);
-			if (ti->tileh != SLOPE_FLAT && ti->z == 0 && HasTileWaterClass(next) && GetWaterClass(next) == WATER_CLASS_SEA) {
+			if (ti->tileh != SLOPE_FLAT && ti->z == 0 && HasTileWaterClass(next) && GetWaterClass(next) == WaterClass::Sea) {
 				DrawShoreTile(ti->tileh);
 			} else {
 				DrawClearLandTile(ti, 3);

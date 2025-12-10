@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file network_admin.cpp Server part of the admin network protocol. */
@@ -633,8 +633,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_JOIN(Packet &p)
 
 	std::string password = p.Recv_string(NETWORK_PASSWORD_LENGTH);
 
-	if (_settings_client.network.admin_password.empty() ||
-			_settings_client.network.admin_password.compare(password) != 0) {
+	if (_settings_client.network.admin_password.empty() || _settings_client.network.admin_password != password) {
 		/* Password is invalid */
 		return this->SendError(NETWORK_ERROR_WRONG_PASSWORD);
 	}

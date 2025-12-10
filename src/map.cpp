@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file map.cpp Base functions related to the map and distances on them. */
@@ -22,6 +22,8 @@
 /* static */ uint Map::size_y;    ///< Size of the map along the Y
 /* static */ uint Map::size;      ///< The number of tiles on the map
 /* static */ uint Map::tile_mask; ///< _map_size - 1 (to mask the mapsize)
+
+/* static */ uint Map::initial_land_count; ///< Initial number of land tiles on the map.
 
 /* static */ std::unique_ptr<Tile::TileBase[]> Tile::base_tiles; ///< Base tiles of the map
 /* static */ std::unique_ptr<Tile::TileExtended[]> Tile::extended_tiles; ///< Extended tiles of the map
@@ -56,6 +58,20 @@
 	Tile::extended_tiles = std::make_unique<Tile::TileExtended[]>(Map::size);
 
 	AllocateWaterRegions();
+}
+
+/* static */ void Map::CountLandTiles()
+{
+	/* Count number of tiles that are land. */
+	Map::initial_land_count = 0;
+	for (const auto tile : Map::Iterate()) {
+		Map::initial_land_count += IsWaterTile(tile) ? 0 : 1;
+	}
+
+	/* Compensate for default values being set for (or users are most familiar with) at least
+	 * very low sea level. Dividing by 12 adds roughly 8%. */
+	Map::initial_land_count += Map::initial_land_count / 12;
+	Map::initial_land_count = std::min(Map::initial_land_count, Map::size);
 }
 
 

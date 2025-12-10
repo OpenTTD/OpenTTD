@@ -2,13 +2,14 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file sound_opus.cpp Loading of opus sounds. */
 
 #include "stdafx.h"
 
+#include "debug.h"
 #include "misc/autorelease.hpp"
 #include "random_access_file_type.h"
 #include "sound_type.h"
@@ -54,7 +55,10 @@ public:
 
 		int error = 0;
 		auto of = AutoRelease<OggOpusFile, op_free>(op_open_memory(tmp.data(), tmp.size(), &error));
-		if (error != 0) return false;
+		if (error != 0) {
+			Debug(grf, 0, "SoundLoader_Opus: Unable to open stream.");
+			return false;
+		}
 
 		size_t datapos = 0;
 		for (;;) {
@@ -64,8 +68,15 @@ public:
 			int read = op_read(of.get(), reinterpret_cast<opus_int16 *>(&data[datapos]), DECODE_BUFFER_BYTES, &link_index);
 			if (read == 0) break;
 
-			if (read < 0 || op_channel_count(of.get(), link_index) != 1) {
-				/* Error reading, or incorrect channel count. */
+			if (read < 0) {
+				Debug(grf, 0, "SoundLoader_Opus: Unexpected end of stream.");
+				data.clear();
+				return false;
+			}
+
+			int channels = op_channel_count(of.get(), link_index);
+			if (channels != 1) {
+				Debug(grf, 0, "SoundLoader_Opus: Unsupported channels {}, expected 1.", channels);
 				data.clear();
 				return false;
 			}

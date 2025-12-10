@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file newgrf_badge_type.h Types related to NewGRF badges. */
@@ -24,10 +24,11 @@ template <> struct std::hash<BadgeClassID> {
 };
 
 enum class BadgeFlag : uint8_t {
-	Copy              = 0, ///< Copy badge to related things.
-	NameListStop      = 1, ///< Stop adding names to the name list after this badge.
+	Copy = 0, ///< Copy badge to related things.
+	NameListStop = 1, ///< Stop adding names to the name list after this badge.
 	NameListFirstOnly = 2, ///< Don't add this name to the name list if not first.
-	UseCompanyColour  = 3, ///< Apply company colour palette to this badge.
+	UseCompanyColour = 3, ///< Apply company colour palette to this badge.
+	NameListSkip = 4, ///< Don't show name in name list at all.
 
 	HasText, ///< Internal flag set if the badge has text.
 };

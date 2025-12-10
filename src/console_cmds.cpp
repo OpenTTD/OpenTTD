@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file console_cmds.cpp Implementation of the console hooks. */
@@ -45,6 +45,10 @@
 #include "3rdparty/fmt/chrono.h"
 #include "company_cmd.h"
 #include "misc_cmd.h"
+
+#if defined(WITH_ZLIB)
+#include "network/network_content.h"
+#endif /* WITH_ZLIB */
 
 #include "table/strings.h"
 
@@ -2163,7 +2167,7 @@ static bool ConNetworkAuthorizedKey(std::span<std::string_view> argv)
 	}
 
 	for (auto [name, authorized_keys] : _console_cmd_authorized_keys) {
-		if (StrEqualsIgnoreCase(type, name)) continue;
+		if (!StrEqualsIgnoreCase(type, name)) continue;
 
 		PerformNetworkAuthorizedKeyAction(name, authorized_keys, action, authorized_key);
 		return true;
@@ -2176,7 +2180,6 @@ static bool ConNetworkAuthorizedKey(std::span<std::string_view> argv)
 
 /* Content downloading only is available with ZLIB */
 #if defined(WITH_ZLIB)
-#include "network/network_content.h"
 
 /** Resolve a string to a content type. */
 static ContentType StringToContentType(std::string_view str)
@@ -2316,6 +2319,18 @@ static bool ConContent(std::span<std::string_view> argv)
 }
 #endif /* defined(WITH_ZLIB) */
 
+/**
+ * Get string representation of a font load reason.
+ * @param load_reason The font load reason.
+ * @return String representation.
+ */
+static std::string_view FontLoadReasonToName(FontLoadReason load_reason)
+{
+	static const std::string_view LOAD_REASON_TO_NAME[] = { "default", "configured", "language", "missing" };
+	static_assert(std::size(LOAD_REASON_TO_NAME) == to_underlying(FontLoadReason::End));
+	return LOAD_REASON_TO_NAME[to_underlying(load_reason)];
+}
+
 static bool ConFont(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -2364,17 +2379,18 @@ static bool ConFont(std::span<std::string_view> argv)
 		SetFont(argfs, font, size);
 	}
 
-	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
-		FontCache *fc = FontCache::Get(fs);
-		FontCacheSubSetting *setting = GetFontCacheSubSetting(fs);
-		/* Make sure all non sprite fonts are loaded. */
-		if (!setting->font.empty() && !fc->HasParent()) {
-			FontCache::LoadFontCaches(fs);
-			fc = FontCache::Get(fs);
-		}
-		IConsolePrint(CC_DEFAULT, "{} font:", FontSizeToName(fs));
-		IConsolePrint(CC_DEFAULT, "Currently active: \"{}\", size {}", fc->GetFontName(), fc->GetFontSize());
-		IConsolePrint(CC_DEFAULT, "Requested: \"{}\", size {}", setting->font, setting->size);
+	IConsolePrint(CC_INFO, "Configured fonts:");
+	for (uint i = 0; FontSize fs : FONTSIZES_ALL) {
+		const FontCacheSubSetting *setting = GetFontCacheSubSetting(fs);
+		IConsolePrint(CC_DEFAULT, "{}) {} font: \"{}\", size {}", i, FontSizeToName(fs), setting->font, setting->size);
+		++i;
+	}
+
+	IConsolePrint(CC_INFO, "Currently active fonts:");
+	for (uint i = 0; const auto &fc : FontCache::Get()) {
+		if (fc == nullptr) continue;
+		IConsolePrint(CC_DEFAULT, "{}) {} font: \"{}\" size {} [{}]", i, FontSizeToName(fc->GetSize()), fc->GetFontName(), fc->GetFontSize(), FontLoadReasonToName(fc->GetFontLoadReason()));
+		++i;
 	}
 
 	return true;

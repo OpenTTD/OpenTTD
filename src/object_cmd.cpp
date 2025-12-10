@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file object_cmd.cpp Handling of object tiles. */
@@ -97,8 +97,7 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, u
 	if (owner == OWNER_NONE) {
 		o->colour = Random();
 	} else {
-		const Livery &l = Company::Get(owner)->livery[0];
-		o->colour = l.colour1 + l.colour2 * 16;
+		o->colour = Company::Get(owner)->GetCompanyRecolourOffset(LS_DEFAULT);
 	}
 
 	/* If the object wants only one colour, then give it that colour. */
@@ -117,9 +116,9 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, u
 	for (TileIndex t : ta) {
 		if (IsWaterTile(t)) ClearNeighbourNonFloodingStates(t);
 		if (HasTileWaterGround(t)) InvalidateWaterRegion(t);
-		WaterClass wc = (IsWaterTile(t) ? GetWaterClass(t) : WATER_CLASS_INVALID);
+		WaterClass wc = (IsWaterTile(t) ? GetWaterClass(t) : WaterClass::Invalid);
 		/* Update company infrastructure counts for objects build on canals owned by nobody. */
-		if (wc == WATER_CLASS_CANAL && owner != OWNER_NONE && (IsTileOwner(t, OWNER_NONE) || IsTileOwner(t, OWNER_WATER))) {
+		if (wc == WaterClass::Canal && owner != OWNER_NONE && (IsTileOwner(t, OWNER_NONE) || IsTileOwner(t, OWNER_WATER))) {
 			Company::Get(owner)->infrastructure.water++;
 			DirtyCompanyInfrastructureWindows(owner);
 		}
@@ -193,8 +192,7 @@ void UpdateObjectColours(const Company *c)
 		/* Using the object colour callback, so not using company colour. */
 		if (spec->callback_mask.Test(ObjectCallbackMask::Colour)) continue;
 
-		const Livery &l = c->livery[0];
-		obj->colour = (spec->flags.Test(ObjectFlag::Uses2CC) ? (l.colour2 * 16) : 0) + l.colour1;
+		obj->colour = c->GetCompanyRecolourOffset(LS_DEFAULT, spec->flags.Test(ObjectFlag::Uses2CC));
 	}
 }
 
@@ -771,11 +769,14 @@ static bool TryBuildLightHouse()
 	}
 
 	/* Only build lighthouses at tiles where the border is sea. */
-	if (!IsTileType(tile, MP_WATER)) return false;
+	if (!IsTileType(tile, MP_WATER) || GetWaterClass(tile) != WaterClass::Sea) return false;
 
 	for (int j = 0; j < 19; j++) {
 		int h;
 		if (IsTileType(tile, MP_CLEAR) && IsTileFlat(tile, &h) && h <= 2 && !IsBridgeAbove(tile)) {
+			for (auto t : SpiralTileSequence(tile, 9)) {
+				if (IsObjectTypeTile(t, OBJECT_LIGHTHOUSE)) return false;
+			}
 			BuildObject(OBJECT_LIGHTHOUSE, tile);
 			assert(tile < Map::Size());
 			return true;
@@ -872,7 +873,7 @@ static void ChangeTileOwner_Object(TileIndex tile, Owner old_owner, Owner new_ow
 	ObjectType type = GetObjectType(tile);
 	if ((type == OBJECT_OWNED_LAND || type >= NEW_OBJECT_OFFSET) && new_owner != INVALID_OWNER) {
 		SetTileOwner(tile, new_owner);
-		if (GetWaterClass(tile) == WATER_CLASS_CANAL) {
+		if (GetWaterClass(tile) == WaterClass::Canal) {
 			Company::Get(old_owner)->infrastructure.water--;
 			Company::Get(new_owner)->infrastructure.water++;
 		}

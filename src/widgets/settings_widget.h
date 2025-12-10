@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file settings_widget.h Types related to the settings widgets. */
@@ -32,6 +32,8 @@ enum GameOptionsWidgets : WidgetID {
 	WID_GO_GUI_SCALE_BEVEL_TEXT,   ///< Text for chunky bevels.
 	WID_GO_GUI_FONT_SPRITE,        ///< Toggle whether to prefer the sprite font over TTF fonts.
 	WID_GO_GUI_FONT_SPRITE_TEXT,   ///< Text for sprite font toggle.
+	WID_GO_GUI_FONT_DEFAULT,       ///< Toggle whether to prefer the default font over fallback fonts.
+	WID_GO_GUI_FONT_DEFAULT_TEXT,  ///< Text for default font toggle.
 	WID_GO_GUI_FONT_AA,            ///< Toggle whether to anti-alias fonts.
 	WID_GO_GUI_FONT_AA_TEXT,       ///< Text for anti-alias toggle.
 	WID_GO_BASE_GRF_DROPDOWN,      ///< Use to select a base GRF.

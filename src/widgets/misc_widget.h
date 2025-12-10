@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file misc_widget.h Types related to the misc widgets. */
@@ -33,8 +33,11 @@ enum QueryStringWidgets : WidgetID {
 	WID_QS_CAPTION, ///< Caption of the window.
 	WID_QS_TEXT,    ///< Text of the query.
 	WID_QS_DEFAULT, ///< Default button.
+	WID_QS_DEFAULT_SEL, ///< Container for default button, which can be hidden.
 	WID_QS_CANCEL,  ///< Cancel button.
 	WID_QS_OK,      ///< OK button.
+	WID_QS_MOVE,    ///< Move button.
+	WID_QS_MOVE_SEL, ///< Container for move button, which can be hidden.
 };
 
 /** Widgets of the #QueryWindow class. */

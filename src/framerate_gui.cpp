@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file framerate_gui.cpp GUI for displaying framerate/game speed information. */
@@ -377,7 +377,7 @@ static std::string_view GetAIName(int ai_index)
 }
 
 /** @hideinitializer */
-static constexpr NWidgetPart _framerate_window_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _framerate_window_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_FRW_CAPTION),
@@ -695,7 +695,7 @@ static WindowDesc _framerate_display_desc(
 
 
 /** @hideinitializer */
-static constexpr NWidgetPart _frametime_graph_window_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _frametime_graph_window_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_FGW_CAPTION), SetTextStyle(TC_WHITE),

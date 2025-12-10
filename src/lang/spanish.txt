@@ -14,7 +14,7 @@
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
 
 
 ##id 0x0000
@@ -2137,7 +2137,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Unidad de altura: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Cada vez que se muestre una altura en la interfaz de usuario, se empleará la unidad seleccionada
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (pies)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Métrico (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -2847,10 +2847,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Suburbios exter
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Suburbios interiores
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centro urbano
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Evitar mejoras
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Selecciona si esta casa estará protegida de reemplazos cuando el municipio crezca
-STR_HOUSE_PICKER_PROTECT_OFF                                    :No
-STR_HOUSE_PICKER_PROTECT_ON                                     :Sí
+
 
 STR_STATION_CLASS_DFLT                                          :Por defecto
 STR_STATION_CLASS_DFLT_STATION                                  :Estación por defecto
@@ -3440,7 +3438,6 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Generaci
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generación de ríos
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generación de áreas ásperas o rocosas
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Generación de municipios
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Generación de industrias
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generación de inamovibles
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generación de árboles
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Configurar juego
@@ -3863,14 +3860,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Excelente
 STR_CARGO_RATING_OUTSTANDING                                    :Excepcional
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centra la vista principal en la posición de la estación. Ctrl+clic abre un punto de vista en dicha posición
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Cambia el nombre de la estación
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Muestra todos los trenes que tienen esta estación en sus órdenes
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Muestra todos los vehículos de carretera que tienen esta estación en sus órdenes
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Muestra todas las aeronaves que tienen esta estación en sus órdenes
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Muestra todos los barcos que tienen esta estación en sus órdenes
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Renombrar estación/zona de carga
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Cerrar aeropuerto
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Evita que las aeronaves aterricen en este aeropuerto
@@ -3878,11 +3873,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Evita qu
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrar vista principal en la posición del punto de ruta. Ctrl+clic abre un punto de vista en dicha posición
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Cambiar nombre del punto de ruta
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la vista principal en la boya. Ctrl+clic abre una nueva vista en dicha posición
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Cambiar nombre de boya
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editar nombre del punto de ruta
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Finanzas de {COMPANY} {BLACK}{COMPANY_NUM}

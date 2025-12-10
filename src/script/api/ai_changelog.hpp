@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /**
@@ -13,9 +13,11 @@
  * functions may still be available if you return an older API version
  * in GetAPIVersion() in info.nut.
  *
- * \b 15.0
+ * \b 16.0
  *
  * This version is not yet released. The following changes are not set in stone yet.
+ *
+ * \b 15.0
  *
  * API additions:
  * \li AIEventVehicleCrashed::GetVictims
@@ -29,7 +31,8 @@
  * \li AICargo::CC_NON_POTABLE
  * \li AIVehicleList_Waypoint
  * \li AIError::ERR_BRIDGE_TOO_LOW
- * \li AIRail::GetAllRailTypes
+ * \li AIEngine::GetAllRailTypes
+ * \li AITile::IsHouseTile
  *
  * Other changes:
  * \li AIBridge::GetBridgeID renamed to AIBridge::GetBridgeType
@@ -37,7 +40,7 @@
  * \li AIList instances can now be saved
  * \li AIVehicleList_Station accepts an optional AIVehicle::VehicleType parameter
  * \li AIList instances can now be cloned
- * \li AIRail::GetRailType will only return the first RailType of an engine, use AIRail::GetAllRailTypes instead
+ * \li AIEngine::GetRailType will only return the first RailType of an engine, use AIEngine::GetAllRailTypes instead
  *
  * \b 14.0
  *

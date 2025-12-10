@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file settings_type.h Types related to global configuration settings. */
@@ -10,6 +10,7 @@
 #ifndef SETTINGS_TYPE_H
 #define SETTINGS_TYPE_H
 
+#include "command_type.h"
 #include "timer/timer_game_calendar.h"
 #include "economy_type.h"
 #include "town_type.h"
@@ -98,6 +99,17 @@ enum RightClickClose : uint8_t {
 	RCC_YES_EXCEPT_STICKY,
 };
 
+/**
+ * List of tree placer algorithm.
+ *
+ * This enumeration defines all possible tree placer algorithm in the game.
+ */
+enum TreePlacer : uint8_t {
+	TP_NONE,     ///< No tree placer algorithm
+	TP_ORIGINAL, ///< The original algorithm
+	TP_IMPROVED, ///< A 'improved' algorithm
+};
+
 /** Possible values for "place_houses" setting. */
 enum PlaceHouses : uint8_t {
 	PH_FORBIDDEN = 0,
@@ -157,7 +169,7 @@ struct GUISettings {
 	bool   show_finances;                    ///< show finances at end of year
 	bool   sg_new_nonstop;                   ///< ttdpatch compatible nonstop handling read from pre v93 savegames
 	bool   new_nonstop;                      ///< ttdpatch compatible nonstop handling
-	uint8_t  stop_location;                    ///< what is the default stop location of trains?
+	OrderStopLocation stop_location; ///< what is the default stop location of trains?
 	uint8_t  auto_scrolling;                   ///< scroll when moving mouse to the edge (see #ViewportAutoscrolling)
 	uint8_t errmsg_duration;                  ///< duration of error message
 	uint16_t hover_delay_ms;                   ///< time required to activate a hover event, in milliseconds
@@ -216,8 +228,8 @@ struct GUISettings {
 	uint8_t missing_strings_threshold;        ///< the number of missing strings before showing the warning
 	uint8_t  graph_line_thickness;             ///< the thickness of the lines in the various graph guis
 	uint8_t  osk_activation;                   ///< Mouse gesture to trigger the OSK.
-	Colours starting_colour;                 ///< default color scheme for the company to start a new game with
-	Colours starting_colour_secondary;       ///< default secondary color scheme for the company to start a new game with
+	Colours starting_colour;                 ///< default colour scheme for the company to start a new game with
+	Colours starting_colour_secondary;       ///< default secondary colour scheme for the company to start a new game with
 	bool   show_newgrf_name;                 ///< Show the name of the NewGRF in the build vehicle window
 	bool   show_cargo_in_vehicle_lists;      ///< Show the cargoes the vehicles can carry in the list windows
 	bool   auto_remove_signals;              ///< automatically remove signals when in the way during rail construction
@@ -410,7 +422,7 @@ struct ConstructionSettings {
 	uint8_t  industry_platform;                ///< the amount of flat land around an industry
 	bool   freeform_edges;                   ///< allow terraforming the tiles at the map edges
 	uint8_t  extra_tree_placement;             ///< (dis)allow building extra trees in-game
-	uint8_t  command_pause_level;              ///< level/amount of commands that can't be executed while paused
+	CommandPauseLevel command_pause_level; ///< level/amount of commands that can't be executed while paused
 
 	uint32_t terraform_per_64k_frames;         ///< how many tile heights may, over a long period, be terraformed per 65536 frames?
 	uint16_t terraform_frame_burst;            ///< how many tile heights may, over a short period, be terraformed?

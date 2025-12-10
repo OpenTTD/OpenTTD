@@ -10,3 +10,5 @@ query-filters:
     - cpp/irregular-enum-init
     # Our GUI code tends to use switches for OnClick handlers, DrawWidget, and UpdateWidgetSize. Sometimes GUIs just don't have many elements, but we want to keep consistency.
     - cpp/trivial-switch
+    # Our (GUI) code tends to use long switches.
+    - cpp/long-switch

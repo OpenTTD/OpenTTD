@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file tile_map.h Map writing/reading functions for tiles. */
@@ -26,7 +26,7 @@
  * @return the height of the tile
  * @pre tile < Map::Size()
  */
-debug_inline static uint TileHeight(Tile tile)
+[[debug_inline]] inline static uint TileHeight(Tile tile)
 {
 	assert(tile < Map::Size());
 	return tile.height();
@@ -93,7 +93,7 @@ inline uint TilePixelHeightOutsideMap(int x, int y)
  * @return The tiletype of the tile
  * @pre tile < Map::Size()
  */
-debug_inline static TileType GetTileType(Tile tile)
+[[debug_inline]] inline static TileType GetTileType(Tile tile)
 {
 	assert(tile < Map::Size());
 	return (TileType)GB(tile.type(), 4, 4);
@@ -147,7 +147,7 @@ inline void SetTileType(Tile tile, TileType type)
  * @param type The type to check against
  * @return true If the type matches against the type of the tile
  */
-debug_inline static bool IsTileType(Tile tile, TileType type)
+[[debug_inline]] inline static bool IsTileType(Tile tile, TileType type)
 {
 	return GetTileType(tile) == type;
 }

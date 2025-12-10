@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file station_widget.h Types related to the station widgets. */
@@ -24,6 +24,7 @@ enum StationViewWidgets : WidgetID {
 	WID_SV_ACCEPTS_RATINGS,    ///< 'Accepts' / 'Ratings' button.
 	WID_SV_RENAME,             ///< 'Rename' button.
 	WID_SV_CLOSE_AIRPORT,      ///< 'Close airport' button.
+	WID_SV_CLOSE_AIRPORT_SEL,  ///< Container for 'close airport' button, which can be hidden.
 	WID_SV_TRAINS,             ///< List of scheduled trains button.
 	WID_SV_ROADVEHS,           ///< List of scheduled road vehs button.
 	WID_SV_SHIPS,              ///< List of scheduled ships button.

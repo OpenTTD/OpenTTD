@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file font_osx.h Functions related to font handling on MacOS. */
@@ -28,7 +28,7 @@ public:
 	~CoreTextFontCache() {}
 
 	void ClearFontCache() override;
-	GlyphID MapCharToGlyph(char32_t key, bool allow_fallback = true) override;
+	GlyphID MapCharToGlyph(char32_t key) override;
 	std::string GetFontName() override { return font_name; }
 	bool IsBuiltInFont() override { return false; }
 	const void *GetOSHandle() override { return font.get(); }

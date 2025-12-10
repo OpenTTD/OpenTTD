@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file newgrf_gui.cpp GUI to change NewGRF settings. */
@@ -500,7 +500,7 @@ struct NewGRFParametersWindow : public Window {
 GRFParameterInfo NewGRFParametersWindow::dummy_parameter_info(0);
 
 
-static constexpr NWidgetPart _nested_newgrf_parameter_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_newgrf_parameter_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
 		NWidget(WWT_CAPTION, COLOUR_MAUVE, WID_NP_CAPTION),
@@ -1743,7 +1743,7 @@ public:
 const uint NWidgetNewGRFDisplay::MAX_EXTRA_INFO_WIDTH    = 150;
 const uint NWidgetNewGRFDisplay::MIN_EXTRA_FOR_3_COLUMNS = 50;
 
-static constexpr NWidgetPart _nested_newgrf_actives_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_newgrf_actives_widgets = {
 	NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
 		/* Left side, presets. */
 		NWidget(NWID_VERTICAL),
@@ -1798,7 +1798,7 @@ static constexpr NWidgetPart _nested_newgrf_actives_widgets[] = {
 	EndContainer(),
 };
 
-static constexpr NWidgetPart _nested_newgrf_availables_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_newgrf_availables_widgets = {
 	NWidget(WWT_FRAME, COLOUR_MAUVE), SetStringTip(STR_NEWGRF_SETTINGS_INACTIVE_LIST), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
 		/* Left side, available grfs, filter edit box. */
 		NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
@@ -1831,7 +1831,7 @@ static constexpr NWidgetPart _nested_newgrf_availables_widgets[] = {
 	EndContainer(),
 };
 
-static constexpr NWidgetPart _nested_newgrf_infopanel_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_newgrf_infopanel_widgets = {
 	NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
 		/* Right side, info panel. */
 		NWidget(WWT_PANEL, COLOUR_MAUVE),
@@ -1886,7 +1886,7 @@ std::unique_ptr<NWidgetBase> NewGRFDisplay()
 }
 
 /* Widget definition of the manage newgrfs window */
-static constexpr NWidgetPart _nested_newgrf_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_newgrf_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
 		NWidget(WWT_CAPTION, COLOUR_MAUVE), SetStringTip(STR_NEWGRF_SETTINGS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -1970,7 +1970,7 @@ void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFC
 }
 
 /** Widget parts of the save preset window. */
-static constexpr NWidgetPart _nested_save_preset_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_save_preset_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_SAVE_PRESET_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -2123,7 +2123,7 @@ static void ShowSavePresetWindow(std::string_view initial_text)
 }
 
 /** Widgets for the progress window. */
-static constexpr NWidgetPart _nested_scan_progress_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_scan_progress_widgets = {
 	NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_NEWGRF_SCAN_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.modalpopup),

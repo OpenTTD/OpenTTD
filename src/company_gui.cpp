@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file company_gui.cpp %Company related GUIs. */
@@ -286,7 +286,7 @@ static void DrawYearColumn(const Rect &r, TimerGameEconomy::Year year, const Exp
 	DrawPrice(sum, r.left, r.right, y, TC_WHITE);
 }
 
-static constexpr NWidgetPart _nested_company_finances_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_company_finances_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_CF_CAPTION),
@@ -655,7 +655,7 @@ private:
 		}
 
 		uint8_t sel;
-		if (default_livery == nullptr || HasBit(livery->in_use, primary ? 0 : 1)) {
+		if (default_livery == nullptr || livery->in_use.Test(primary ? Livery::Flag::Primary : Livery::Flag::Secondary)) {
 			sel = primary ? livery->colour1 : livery->colour2;
 		} else {
 			sel = default_col;
@@ -697,6 +697,7 @@ public:
 	SelectCompanyLiveryWindow(WindowDesc &desc, CompanyID company, GroupID group) : Window(desc)
 	{
 		this->CreateNestedTree();
+		this->GetWidget<NWidgetStacked>(WID_SCL_SEC_COL_DROP_SEL)->SetDisplayedPlane(_loaded_newgrf_features.has_2CC ? 0 : SZSP_NONE);
 		this->vscroll = this->GetScrollbar(WID_SCL_MATRIX_SCROLLBAR);
 
 		if (group == GroupID::Invalid()) {
@@ -767,10 +768,7 @@ public:
 			}
 
 			case WID_SCL_SEC_COL_DROPDOWN:
-				if (!_loaded_newgrf_features.has_2CC) {
-					size.width = 0;
-					break;
-				}
+				if (!_loaded_newgrf_features.has_2CC) break;
 				[[fallthrough]];
 
 			case WID_SCL_PRI_COL_DROPDOWN: {
@@ -819,7 +817,7 @@ public:
 						}
 						if (scheme == LS_END) scheme = LS_DEFAULT;
 						const Livery *livery = &c->livery[scheme];
-						if (scheme == LS_DEFAULT || HasBit(livery->in_use, primary ? 0 : 1)) {
+						if (scheme == LS_DEFAULT || livery->in_use.Test(primary ? Livery::Flag::Primary : Livery::Flag::Secondary)) {
 							colour = STR_COLOUR_DARK_BLUE + (primary ? livery->colour1 : livery->colour2);
 						}
 					}
@@ -827,7 +825,7 @@ public:
 					if (this->sel != GroupID::Invalid()) {
 						const Group *g = Group::Get(this->sel);
 						const Livery *livery = &g->livery;
-						if (HasBit(livery->in_use, primary ? 0 : 1)) {
+						if (livery->in_use.Test(primary ? Livery::Flag::Primary : Livery::Flag::Secondary)) {
 							colour = STR_COLOUR_DARK_BLUE + (primary ? livery->colour1 : livery->colour2);
 						}
 					}
@@ -875,12 +873,12 @@ public:
 
 			/* Text below the first dropdown. */
 			DrawSprite(SPR_SQUARE, GetColourPalette(livery.colour1), pri_squ.left, y + square_offs);
-			DrawString(pri.left, pri.right, y + text_offs, (is_default_scheme || HasBit(livery.in_use, 0)) ? STR_COLOUR_DARK_BLUE + livery.colour1 : STR_COLOUR_DEFAULT, is_selected ? TC_WHITE : TC_GOLD);
+			DrawString(pri.left, pri.right, y + text_offs, (is_default_scheme || livery.in_use.Test(Livery::Flag::Primary)) ? STR_COLOUR_DARK_BLUE + livery.colour1 : STR_COLOUR_DEFAULT, is_selected ? TC_WHITE : TC_GOLD);
 
 			/* Text below the second dropdown. */
 			if (sec.right > sec.left) { // Second dropdown has non-zero size.
 				DrawSprite(SPR_SQUARE, GetColourPalette(livery.colour2), sec_squ.left, y + square_offs);
-				DrawString(sec.left, sec.right, y + text_offs, (is_default_scheme || HasBit(livery.in_use, 1)) ? STR_COLOUR_DARK_BLUE + livery.colour2 : STR_COLOUR_DEFAULT, is_selected ? TC_WHITE : TC_GOLD);
+				DrawString(sec.left, sec.right, y + text_offs, (is_default_scheme || livery.in_use.Test(Livery::Flag::Secondary)) ? STR_COLOUR_DARK_BLUE + livery.colour2 : STR_COLOUR_DEFAULT, is_selected ? TC_WHITE : TC_GOLD);
 			}
 
 			y += this->line_height;
@@ -1062,7 +1060,7 @@ public:
 	}
 };
 
-static constexpr NWidgetPart _nested_select_company_livery_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_select_company_livery_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SCL_CAPTION),
@@ -1089,13 +1087,15 @@ static constexpr NWidgetPart _nested_select_company_livery_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_GREY, WID_SCL_SPACER_DROPDOWN), SetFill(1, 1), SetResize(1, 0), EndContainer(),
 		NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_SCL_PRI_COL_DROPDOWN), SetFill(0, 1), SetToolTip(STR_LIVERY_PRIMARY_TOOLTIP),
-		NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_SCL_SEC_COL_DROPDOWN), SetFill(0, 1), SetToolTip(STR_LIVERY_SECONDARY_TOOLTIP),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_SCL_SEC_COL_DROP_SEL),
+			NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_SCL_SEC_COL_DROPDOWN), SetFill(0, 1), SetToolTip(STR_LIVERY_SECONDARY_TOOLTIP),
+		EndContainer(),
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
 
 static WindowDesc _select_company_livery_desc(
-	WDP_AUTO, "company_color_scheme", 0, 0,
+	WDP_AUTO, "company_colour_scheme", 0, 0,
 	WC_COMPANY_COLOUR, WC_NONE,
 	{},
 	_nested_select_company_livery_widgets
@@ -1161,7 +1161,7 @@ void DrawCompanyManagerFace(const CompanyManagerFace &cmf, Colours colour, const
 }
 
 /** Nested widget description for the company manager face selection dialog */
-static constexpr NWidgetPart _nested_select_company_manager_face_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_select_company_manager_face_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SCMF_CAPTION), SetStringTip(STR_FACE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -1384,7 +1384,7 @@ public:
 
 			/* OK button */
 			case WID_SCMF_ACCEPT:
-				Command<CMD_SET_COMPANY_MANAGER_FACE>::Post(this->face.bits, this->face.style);
+				Command<CMD_SET_COMPANY_MANAGER_FACE>::Post(this->face.style, this->face.bits);
 				[[fallthrough]];
 
 			/* Cancel button */
@@ -1536,7 +1536,7 @@ static void DoSelectCompanyManagerFace(Window *parent)
 	new SelectCompanyManagerFaceWindow(_select_company_manager_face_desc, parent);
 }
 
-static constexpr NWidgetPart _nested_company_infrastructure_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_company_infrastructure_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_CI_CAPTION),
@@ -1840,7 +1840,7 @@ static void ShowCompanyInfrastructure(CompanyID company)
 	AllocateWindowDescFront<CompanyInfrastructureWindow>(_company_infrastructure_desc, company);
 }
 
-static constexpr NWidgetPart _nested_company_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_company_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_C_CAPTION),
@@ -2405,7 +2405,7 @@ private:
 	Money company_value{}; ///< The value of the company for which the user can buy it.
 };
 
-static constexpr NWidgetPart _nested_buy_company_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_buy_company_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE),
 		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, WID_BC_CAPTION),

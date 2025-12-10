@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file network_server.cpp Server part of the network protocol. */
@@ -1451,7 +1451,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_RCON(Packet &p)
 		/* We are allowed, nothing more to validate. */
 	} else if (_settings_client.network.rcon_password.empty()) {
 		return NETWORK_RECV_STATUS_OKAY;
-	} else if (_settings_client.network.rcon_password.compare(password) != 0) {
+	} else if (_settings_client.network.rcon_password != password) {
 		Debug(net, 1, "[rcon] Wrong password from client-id {}", this->client_id);
 		return NETWORK_RECV_STATUS_OKAY;
 	}
@@ -1648,7 +1648,7 @@ bool NetworkServerChangeClientName(ClientID client_id, const std::string &new_na
 {
 	/* Check if the name's already in use */
 	for (NetworkClientInfo *ci : NetworkClientInfo::Iterate()) {
-		if (ci->client_name.compare(new_name) == 0) return false;
+		if (ci->client_name == new_name) return false;
 	}
 
 	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);

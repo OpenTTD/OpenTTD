@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file script_order.hpp Everything to query and build orders. */
@@ -89,14 +89,14 @@ public:
 	 */
 	enum OrderCondition {
 		/* Note: these values represent part of the in-game OrderConditionVariable enum */
-		OC_LOAD_PERCENTAGE     = ::OCV_LOAD_PERCENTAGE,    ///< Skip based on the amount of load, value is in tons.
-		OC_RELIABILITY         = ::OCV_RELIABILITY,        ///< Skip based on the reliability, value is percent (0..100).
-		OC_MAX_RELIABILITY     = ::OCV_MAX_RELIABILITY,    ///< Skip based on the maximum reliability.  Value in percent
-		OC_MAX_SPEED           = ::OCV_MAX_SPEED,          ///< Skip based on the maximum speed, value is in OpenTTD's internal speed unit, see ScriptEngine::GetMaxSpeed.
-		OC_AGE                 = ::OCV_AGE,                ///< Skip based on the age, value is in calendar-years. @see \ref ScriptCalendarTime
-		OC_REQUIRES_SERVICE    = ::OCV_REQUIRES_SERVICE,   ///< Skip when the vehicle requires service, no value.
-		OC_UNCONDITIONALLY     = ::OCV_UNCONDITIONALLY,    ///< Always skip, no compare function, no value.
-		OC_REMAINING_LIFETIME  = ::OCV_REMAINING_LIFETIME, ///< Skip based on the remaining lifetime in calendar-years. @see \ref ScriptCalendarTime
+		OC_LOAD_PERCENTAGE     = to_underlying(::OrderConditionVariable::LoadPercentage), ///< Skip based on the amount of load, value is in tons.
+		OC_RELIABILITY         = to_underlying(::OrderConditionVariable::Reliability), ///< Skip based on the reliability, value is percent (0..100).
+		OC_MAX_RELIABILITY     = to_underlying(::OrderConditionVariable::MaxReliability), ///< Skip based on the maximum reliability.  Value in percent
+		OC_MAX_SPEED           = to_underlying(::OrderConditionVariable::MaxSpeed), ///< Skip based on the maximum speed, value is in OpenTTD's internal speed unit, see ScriptEngine::GetMaxSpeed.
+		OC_AGE                 = to_underlying(::OrderConditionVariable::Age), ///< Skip based on the age, value is in calendar-years. @see \ref ScriptCalendarTime
+		OC_REQUIRES_SERVICE    = to_underlying(::OrderConditionVariable::RequiresService), ///< Skip when the vehicle requires service, no value.
+		OC_UNCONDITIONALLY     = to_underlying(::OrderConditionVariable::Unconditionally), ///< Always skip, no compare function, no value.
+		OC_REMAINING_LIFETIME  = to_underlying(::OrderConditionVariable::RemainingLifetime), ///< Skip based on the remaining lifetime in calendar-years. @see \ref ScriptCalendarTime
 
 		/* Custom added value, only valid for this API */
 		OC_INVALID             = -1,                       ///< An invalid condition, do not use.
@@ -107,14 +107,14 @@ public:
 	 */
 	enum CompareFunction {
 		/* Note: these values represent part of the in-game OrderConditionComparator enum */
-		CF_EQUALS        = ::OCC_EQUALS,       ///< Skip if both values are equal
-		CF_NOT_EQUALS    = ::OCC_NOT_EQUALS,   ///< Skip if both values are not equal
-		CF_LESS_THAN     = ::OCC_LESS_THAN,    ///< Skip if the value is less than the limit
-		CF_LESS_EQUALS   = ::OCC_LESS_EQUALS,  ///< Skip if the value is less or equal to the limit
-		CF_MORE_THAN     = ::OCC_MORE_THAN,    ///< Skip if the value is more than the limit
-		CF_MORE_EQUALS   = ::OCC_MORE_EQUALS,  ///< Skip if the value is more or equal to the limit
-		CF_IS_TRUE       = ::OCC_IS_TRUE,      ///< Skip if the variable is true
-		CF_IS_FALSE      = ::OCC_IS_FALSE,     ///< Skip if the variable is false
+		CF_EQUALS        = to_underlying(::OrderConditionComparator::Equal), ///< Skip if both values are equal
+		CF_NOT_EQUALS    = to_underlying(::OrderConditionComparator::NotEqual), ///< Skip if both values are not equal
+		CF_LESS_THAN     = to_underlying(::OrderConditionComparator::LessThan), ///< Skip if the value is less than the limit
+		CF_LESS_EQUALS   = to_underlying(::OrderConditionComparator::LessThanOrEqual), ///< Skip if the value is less or equal to the limit
+		CF_MORE_THAN     = to_underlying(::OrderConditionComparator::MoreThan), ///< Skip if the value is more than the limit
+		CF_MORE_EQUALS   = to_underlying(::OrderConditionComparator::MoreThanOrEqual), ///< Skip if the value is more or equal to the limit
+		CF_IS_TRUE       = to_underlying(::OrderConditionComparator::IsTrue), ///< Skip if the variable is true
+		CF_IS_FALSE      = to_underlying(::OrderConditionComparator::IsFalse), ///< Skip if the variable is false
 
 		/* Custom added value, only valid for this API */
 		CF_INVALID       = -1,                 ///< Invalid compare function, do not use.

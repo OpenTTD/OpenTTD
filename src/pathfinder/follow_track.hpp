@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file follow_track.hpp Template function for track followers */
@@ -87,11 +87,11 @@ struct CFollowTrackT {
 		this->railtypes = railtype_override;
 	}
 
-	debug_inline static TransportType TT() { return Ttr_type_; }
-	debug_inline static bool IsWaterTT() { return TT() == TRANSPORT_WATER; }
-	debug_inline static bool IsRailTT() { return TT() == TRANSPORT_RAIL; }
+	[[debug_inline]] inline static TransportType TT() { return Ttr_type_; }
+	[[debug_inline]] inline static bool IsWaterTT() { return TT() == TRANSPORT_WATER; }
+	[[debug_inline]] inline static bool IsRailTT() { return TT() == TRANSPORT_RAIL; }
 	inline bool IsTram() { return IsRoadTT() && RoadTypeIsTram(RoadVehicle::From(this->veh)->roadtype); }
-	debug_inline static bool IsRoadTT() { return TT() == TRANSPORT_ROAD; }
+	[[debug_inline]] inline static bool IsRoadTT() { return TT() == TRANSPORT_ROAD; }
 	static inline bool Allow90degTurns() { return T90deg_turns_allowed_; }
 	static inline bool DoTrackMasking() { return Tmask_reserved_tracks; }
 

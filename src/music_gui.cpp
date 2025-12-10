@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file music_gui.cpp GUI for the music playback. */
@@ -621,7 +621,7 @@ struct MusicTrackSelectionWindow : public Window {
 	}
 };
 
-static constexpr NWidgetPart _nested_music_track_selection_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_music_track_selection_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_MTS_CAPTION),
@@ -857,7 +857,7 @@ struct MusicWindow : public Window {
 	}
 };
 
-static constexpr NWidgetPart _nested_music_window_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_music_window_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_MUSIC_JAZZ_JUKEBOX_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),

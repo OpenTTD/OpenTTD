@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file misc_gui.cpp GUIs for a number of misc windows. */
@@ -13,11 +13,14 @@
 #include "error.h"
 #include "gui.h"
 #include "gfx_layout.h"
+#include "tilehighlight_func.h"
 #include "command_func.h"
 #include "company_func.h"
 #include "town.h"
 #include "string_func.h"
 #include "company_base.h"
+#include "station_base.h"
+#include "waypoint_base.h"
 #include "texteff.hpp"
 #include "strings_func.h"
 #include "window_func.h"
@@ -27,6 +30,8 @@
 #include "zoom_func.h"
 #include "viewport_func.h"
 #include "landscape_cmd.h"
+#include "station_cmd.h"
+#include "waypoint_cmd.h"
 #include "rev.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
@@ -47,7 +52,7 @@ enum OskActivation : uint8_t {
 };
 
 
-static constexpr NWidgetPart _nested_land_info_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_land_info_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_LAND_AREA_INFORMATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -319,7 +324,7 @@ void ShowLandInfo(TileIndex tile)
 	new LandInfoWindow(tile);
 }
 
-static constexpr NWidgetPart _nested_about_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_about_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_ABOUT_OPENTTD, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -643,7 +648,7 @@ void HideFillingPercent(TextEffectID *te_id)
 	*te_id = INVALID_TE_ID;
 }
 
-static constexpr NWidgetPart _nested_tooltips_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_tooltips_widgets = {
 	NWidget(WWT_EMPTY, INVALID_COLOUR, WID_TT_BACKGROUND),
 };
 
@@ -956,6 +961,8 @@ struct QueryStringWindow : public Window
 	QueryString editbox; ///< Editbox.
 	QueryStringFlags flags{}; ///< Flags controlling behaviour of the window.
 
+	WidgetID last_user_action = INVALID_WIDGET; ///< Last started user action.
+
 	QueryStringWindow(std::string_view str, StringID caption, uint max_bytes, uint max_chars, WindowDesc &desc, Window *parent, CharSetFilter afilter, QueryStringFlags flags) :
 			Window(desc), editbox(max_bytes, max_chars)
 	{
@@ -970,21 +977,14 @@ struct QueryStringWindow : public Window
 		this->editbox.text.afilter = afilter;
 		this->flags = flags;
 
-		this->InitNested(WN_QUERY_STRING);
+		this->CreateNestedTree();
+		this->GetWidget<NWidgetStacked>(WID_QS_DEFAULT_SEL)->SetDisplayedPlane((this->flags.Test(QueryStringFlag::EnableDefault)) ? 0 : SZSP_NONE);
+		this->GetWidget<NWidgetStacked>(WID_QS_MOVE_SEL)->SetDisplayedPlane((this->flags.Test(QueryStringFlag::EnableMove)) ? 0 : SZSP_NONE);
+		this->FinishInitNested(WN_QUERY_STRING);
 
 		this->parent = parent;
 
 		this->SetFocusedWidget(WID_QS_TEXT);
-	}
-
-	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
-	{
-		if (widget == WID_QS_DEFAULT && !this->flags.Test(QueryStringFlag::EnableDefault)) {
-			/* We don't want this widget to show! */
-			fill.width = 0;
-			resize.width = 0;
-			size.width = 0;
-		}
 	}
 
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
@@ -1018,21 +1018,69 @@ struct QueryStringWindow : public Window
 			case WID_QS_CANCEL:
 				this->Close();
 				break;
+
+			case WID_QS_MOVE:
+				this->last_user_action = widget;
+
+				if (Station::IsExpected(Station::Get(this->parent->window_number))) {
+					/* this is a station */
+					SetViewportStationRect(Station::Get(this->parent->window_number), !this->IsWidgetLowered(WID_QS_MOVE));
+				} else {
+					/* this is a waypoint */
+					SetViewportWaypointRect(Waypoint::Get(this->parent->window_number), !this->IsWidgetLowered(WID_QS_MOVE));
+				}
+
+				HandlePlacePushButton(this, WID_QS_MOVE, SPR_CURSOR_SIGN, HT_RECT);
+				break;
 		}
+	}
+
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
+	{
+		switch (this->last_user_action) {
+			case WID_QS_MOVE: // Move name button
+				if (Station::IsExpected(Station::Get(this->parent->window_number))) {
+					/* this is a station */
+					Command<CMD_MOVE_STATION_NAME>::Post(STR_ERROR_CAN_T_MOVE_STATION_NAME, CcMoveStationName, this->parent->window_number, tile);
+				} else {
+					/* this is a waypoint */
+					Command<CMD_MOVE_WAYPOINT_NAME>::Post(STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME, CcMoveWaypointName, this->parent->window_number, tile);
+				}
+				break;
+
+			default: NOT_REACHED();
+		}
+	}
+
+	void OnPlaceObjectAbort() override
+	{
+		if (Station::IsExpected(Station::Get(this->parent->window_number))) {
+			/* this is a station */
+			SetViewportStationRect(Station::Get(this->parent->window_number), false);
+		} else {
+			/* this is a waypoint */
+			SetViewportWaypointRect(Waypoint::Get(this->parent->window_number), false);
+		}
+
+		this->RaiseButtons();
 	}
 
 	void Close([[maybe_unused]] int data = 0) override
 	{
+		if (this->parent->window_class == WC_STATION_VIEW) SetViewportStationRect(Station::Get(this->parent->window_number), false);
+		if (this->parent->window_class == WC_WAYPOINT_VIEW) SetViewportWaypointRect(Waypoint::Get(this->parent->window_number), false);
+
 		if (!this->editbox.handled && this->parent != nullptr) {
 			Window *parent = this->parent;
 			this->parent = nullptr; // so parent doesn't try to close us again
 			parent->OnQueryTextFinished(std::nullopt);
 		}
+
 		this->Window::Close();
 	}
 };
 
-static constexpr NWidgetPart _nested_query_string_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_query_string_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_QS_CAPTION), SetTextStyle(TC_WHITE),
@@ -1041,9 +1089,14 @@ static constexpr NWidgetPart _nested_query_string_widgets[] = {
 		NWidget(WWT_EDITBOX, COLOUR_GREY, WID_QS_TEXT), SetMinimalSize(256, 0), SetFill(1, 0), SetPadding(2, 2, 2, 2),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_QS_DEFAULT), SetMinimalSize(87, 12), SetFill(1, 1), SetStringTip(STR_BUTTON_DEFAULT),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_QS_CANCEL), SetMinimalSize(86, 12), SetFill(1, 1), SetStringTip(STR_BUTTON_CANCEL),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_QS_OK), SetMinimalSize(87, 12), SetFill(1, 1), SetStringTip(STR_BUTTON_OK),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_QS_DEFAULT_SEL),
+			NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_QS_DEFAULT), SetMinimalSize(65, 12), SetFill(1, 1), SetStringTip(STR_BUTTON_DEFAULT),
+		EndContainer(),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_QS_CANCEL), SetMinimalSize(65, 12), SetFill(1, 1), SetStringTip(STR_BUTTON_CANCEL),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_QS_OK), SetMinimalSize(65, 12), SetFill(1, 1), SetStringTip(STR_BUTTON_OK),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_QS_MOVE_SEL),
+			NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_QS_MOVE), SetMinimalSize(65, 12), SetFill(1, 1), SetStringTip(STR_BUTTON_MOVE),
+		EndContainer(),
 	EndContainer(),
 };
 
@@ -1170,7 +1223,7 @@ struct QueryWindow : public Window {
 	}
 };
 
-static constexpr NWidgetPart _nested_query_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_query_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_RED),
 		NWidget(WWT_CAPTION, COLOUR_RED, WID_Q_CAPTION),

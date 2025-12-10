@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file road_type.h Enums and other types related to roads. */
@@ -30,6 +30,22 @@ enum RoadType : uint8_t {
 DECLARE_INCREMENT_DECREMENT_OPERATORS(RoadType)
 
 using RoadTypes = EnumBitSet<RoadType, uint64_t>;
+
+/**
+ * The different types of road type.
+ */
+enum RoadTramType : bool {
+	RTT_ROAD, ///< Road road type.
+	RTT_TRAM, ///< Tram road type.
+};
+
+enum RoadTramTypes : uint8_t {
+	RTTB_ROAD = 1 << RTT_ROAD, ///< Road road type bit.
+	RTTB_TRAM = 1 << RTT_TRAM, ///< Tram road type bit.
+};
+DECLARE_ENUM_AS_BIT_SET(RoadTramTypes)
+
+static const RoadTramType _roadtramtypes[] = { RTT_ROAD, RTT_TRAM };
 
 /**
  * Enumeration for the road parts on a tile.

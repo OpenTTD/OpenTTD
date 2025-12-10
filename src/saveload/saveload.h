@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file saveload.h Functions/types related to saving and loading games. */
@@ -411,7 +411,8 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_DOCKS_UNDER_BRIDGES,                ///< 360  PR#14594 Allow docks under bridges.
 	SLV_LOCKS_UNDER_BRIDGES,                ///< 361  PR#14595 Allow locks under bridges.
-	SLV_ENGINE_MULTI_RAILTYPE,              ///< 362  PR#14357 Train engines can have multiple railtypes.
+	SLV_ENGINE_MULTI_RAILTYPE,              ///< 362  PR#14357 v15.0 Train engines can have multiple railtypes.
+	SLV_SIGN_TEXT_COLOURS,                  ///< 363  PR#14743 Configurable sign text colors in scenario editor.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };

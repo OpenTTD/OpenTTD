@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file game_sl.cpp Handles the saveload part of the GameScripts */
@@ -80,7 +80,7 @@ struct GSDTChunkHandler : ChunkHandler {
 				 * latest version of the GameScript instead. */
 				config->Change(_game_saveload_name, -1, false);
 				if (!config->HasScript()) {
-					if (_game_saveload_name.compare("%_dummy") != 0) {
+					if (_game_saveload_name != "%_dummy") {
 						Debug(script, 0, "The savegame has an GameScript by the name '{}', version {} which is no longer available.", _game_saveload_name, _game_saveload_version);
 						Debug(script, 0, "This game will continue to run without GameScript.");
 					} else {

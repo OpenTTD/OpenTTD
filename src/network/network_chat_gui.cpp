@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file network_chat_gui.cpp GUI for handling chat messages. */
@@ -17,7 +17,6 @@
 #include "../town.h"
 #include "../window_func.h"
 #include "../toolbar_gui.h"
-#include "../core/geometry_func.hpp"
 #include "../zoom_func.h"
 #include "../timer/timer.h"
 #include "../timer/timer_window.h"
@@ -411,7 +410,7 @@ struct NetworkChatWindow : public Window {
 };
 
 /** The widgets of the chat window. */
-static constexpr NWidgetPart _nested_chat_window_widgets[] = {
+static constexpr std::initializer_list<NWidgetPart> _nested_chat_window_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, WID_NC_CLOSE),
 		NWidget(WWT_PANEL, COLOUR_GREY, WID_NC_BACKGROUND),

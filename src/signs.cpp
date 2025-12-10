@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file signs.cpp Handling of signs. */
@@ -55,11 +55,11 @@ void UpdateAllSignVirtCoords()
 }
 
 /**
- * Check if the current company can rename a given sign.
+ * Check if the current company can rename or move a given sign.
  * @param *si The sign in question.
- * @return true if the sign can be renamed, else false.
+ * @return true if the sign can be renamed or moved, else false.
  */
-bool CompanyCanRenameSign(const Sign *si)
+bool CompanyCanEditSign(const Sign *si)
 {
 	if (si->owner == OWNER_DEITY && _current_company != OWNER_DEITY && _game_mode != GM_EDITOR) return false;
 	return true;

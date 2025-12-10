@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file rail_cmd.h Command definitions for rail. */
@@ -27,16 +27,16 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 CommandCost CmdBuildSignalTrack(DoCommandFlags flags, TileIndex tile, TileIndex end_tile, Track track, SignalType sigtype, SignalVariant sigvar, bool mode, bool autofill, bool minimise_gaps, uint8_t signal_density);
 CommandCost CmdRemoveSignalTrack(DoCommandFlags flags, TileIndex tile, TileIndex end_tile, Track track, bool autofill);
 
-DEF_CMD_TRAIT(CMD_BUILD_RAILROAD_TRACK,  CmdBuildRailroadTrack,  CommandFlags({CommandFlag::Auto, CommandFlag::NoWater}), CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_REMOVE_RAILROAD_TRACK, CmdRemoveRailroadTrack, CommandFlag::Auto,                CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_BUILD_SINGLE_RAIL,     CmdBuildSingleRail,     CommandFlags({CommandFlag::Auto, CommandFlag::NoWater}), CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_REMOVE_SINGLE_RAIL,    CmdRemoveSingleRail,    CommandFlag::Auto,                CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_BUILD_TRAIN_DEPOT,     CmdBuildTrainDepot,     CommandFlags({CommandFlag::Auto, CommandFlag::NoWater}), CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_BUILD_SINGLE_SIGNAL,   CmdBuildSingleSignal,   CommandFlag::Auto,                CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_REMOVE_SINGLE_SIGNAL,  CmdRemoveSingleSignal,  CommandFlag::Auto,                CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_CONVERT_RAIL,          CmdConvertRail,         {},                               CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_BUILD_SIGNAL_TRACK,    CmdBuildSignalTrack,    CommandFlag::Auto,                CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_REMOVE_SIGNAL_TRACK,   CmdRemoveSignalTrack,   CommandFlag::Auto,                CMDT_LANDSCAPE_CONSTRUCTION)
+DEF_CMD_TRAIT(CMD_BUILD_RAILROAD_TRACK,  CmdBuildRailroadTrack,  CommandFlags({CommandFlag::Auto, CommandFlag::NoWater}), CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(CMD_REMOVE_RAILROAD_TRACK, CmdRemoveRailroadTrack, CommandFlag::Auto,                CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(CMD_BUILD_SINGLE_RAIL,     CmdBuildSingleRail,     CommandFlags({CommandFlag::Auto, CommandFlag::NoWater}), CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(CMD_REMOVE_SINGLE_RAIL,    CmdRemoveSingleRail,    CommandFlag::Auto,                CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(CMD_BUILD_TRAIN_DEPOT,     CmdBuildTrainDepot,     CommandFlags({CommandFlag::Auto, CommandFlag::NoWater}), CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(CMD_BUILD_SINGLE_SIGNAL,   CmdBuildSingleSignal,   CommandFlag::Auto,                CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(CMD_REMOVE_SINGLE_SIGNAL,  CmdRemoveSingleSignal,  CommandFlag::Auto,                CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(CMD_CONVERT_RAIL,          CmdConvertRail,         {},                               CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(CMD_BUILD_SIGNAL_TRACK,    CmdBuildSignalTrack,    CommandFlag::Auto,                CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(CMD_REMOVE_SIGNAL_TRACK,   CmdRemoveSignalTrack,   CommandFlag::Auto,                CommandType::LandscapeConstruction)
 
 CommandCallback CcPlaySound_CONSTRUCTION_RAIL;
 CommandCallback CcStation;

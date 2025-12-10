@@ -15,7 +15,7 @@
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
 
 
 ##id 0x0000
@@ -2414,7 +2414,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :СІ (кН)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Сыстэма адзінак для вышыні: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Паказваць значэньні вышыні ў абранай сыстэме адзінак
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :ангельская (фут)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :мэтрычная (м)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :СІ (м)
@@ -3093,6 +3093,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Даўж
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Выберыце даўжыню станцыйных каляінаў
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Участак
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Пабудаваць станцыю на выбраным участку зямлі
+
 
 
 
@@ -4079,14 +4080,12 @@ STR_CARGO_RATING_EXCELLENT                                      :Выдатны
 STR_CARGO_RATING_OUTSTANDING                                    :Цудоўны
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Паказаць станцыю ў асноўным вакне. Ctrl+клік — паказаць у дадатковым вакне.
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Перайменаваць станцыю
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Паказаць усе цягнiкi, у раскладзе якіх ёсьць гэтая станцыя
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Паказаць усе аўтамабiлi, у раскладзе якіх ёсьць гэты тэрмiнал/прыпынак
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Паказаць увесь авiятранспарт, у раскладзе якога ёсьць гэты аэрапорт
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Паказаць усе караблі, у раскладзе якіх ёсьць гэтая прыстань
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Перайменаваць станцыю
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Закрыць аэрапорт
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Прадухiляць пасадку паветранаго судна ў гэтым аэрапорце
@@ -4094,11 +4093,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Прад
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Паказаць маршрутны пункт у асноўным вакне. Ctrl+клік — паказаць у дадатковым вакне.
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Перайменаваць маршрутны пункт
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Паказаць буй у асноўным вакне. Ctrl+пстрычка — паказаць у дадатковым вакне.
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Зьмяніць назву буя
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Назва маршрутнага пункта
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Фінансы — {COMPANY} {BLACK}{COMPANY_NUM}

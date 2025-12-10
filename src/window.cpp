@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file window.cpp Windowing system, widgets and events */
@@ -1677,7 +1677,7 @@ restart:
 /**
  * Computer the position of the top-left corner of a window to be opened right
  * under the toolbar.
- * @param window_width the width of the window to get the position for
+ * @param window_width the width of the window to get the position for.
  * @return Coordinate of the top-left corner of the new window.
  */
 Point GetToolbarAlignedWindowPosition(int window_width)
@@ -1685,6 +1685,24 @@ Point GetToolbarAlignedWindowPosition(int window_width)
 	const Window *w = FindWindowById(WC_MAIN_TOOLBAR, 0);
 	assert(w != nullptr);
 	Point pt = { _current_text_dir == TD_RTL ? w->left : (w->left + w->width) - window_width, w->top + w->height };
+	return pt;
+}
+
+/**
+ * Compute the position of the construction toolbars.
+ *
+ * If the terraform toolbar is open place them to the right/left of it,
+ * otherwise use default toolbar aligned position.
+ * @param window_width the width of the toolbar to get the position for.
+ * @return Coordinate of the top-left corner of the new toolbar.
+ */
+Point AlignInitialConstructionToolbar(int window_width)
+{
+	Point pt = GetToolbarAlignedWindowPosition(window_width);
+	const Window *w = FindWindowByClass(WC_SCEN_LAND_GEN);
+	if (w != nullptr && w->top == pt.y && !_settings_client.gui.link_terraform_toolbar) {
+		pt.x = w->left + (_current_text_dir == TD_RTL ? w->width : - window_width);
+	}
 	return pt;
 }
 

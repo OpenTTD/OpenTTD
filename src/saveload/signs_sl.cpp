@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file signs_sl.cpp Code handling saving and loading of economy data */
@@ -19,15 +19,16 @@
 
 /** Description of a sign within the savegame. */
 static const SaveLoad _sign_desc[] = {
-	SLE_CONDVAR(Sign, name,  SLE_NAME,                   SL_MIN_VERSION, SLV_84),
+	SLE_CONDVAR(Sign, name, SLE_NAME, SL_MIN_VERSION, SLV_84),
 	SLE_CONDSSTR(Sign, name, SLE_STR | SLF_ALLOW_CONTROL, SLV_84, SL_MAX_VERSION),
-	SLE_CONDVAR(Sign, x,     SLE_FILE_I16 | SLE_VAR_I32, SL_MIN_VERSION, SLV_5),
-	SLE_CONDVAR(Sign, y,     SLE_FILE_I16 | SLE_VAR_I32, SL_MIN_VERSION, SLV_5),
-	SLE_CONDVAR(Sign, x,     SLE_INT32,                  SLV_5, SL_MAX_VERSION),
-	SLE_CONDVAR(Sign, y,     SLE_INT32,                  SLV_5, SL_MAX_VERSION),
-	SLE_CONDVAR(Sign, owner, SLE_UINT8,                  SLV_6, SL_MAX_VERSION),
-	SLE_CONDVAR(Sign, z,     SLE_FILE_U8  | SLE_VAR_I32, SL_MIN_VERSION, SLV_164),
-	SLE_CONDVAR(Sign, z,     SLE_INT32,                SLV_164, SL_MAX_VERSION),
+	SLE_CONDVAR(Sign, x, SLE_FILE_I16 | SLE_VAR_I32, SL_MIN_VERSION, SLV_5),
+	SLE_CONDVAR(Sign, y, SLE_FILE_I16 | SLE_VAR_I32, SL_MIN_VERSION, SLV_5),
+	SLE_CONDVAR(Sign, x, SLE_INT32, SLV_5, SL_MAX_VERSION),
+	SLE_CONDVAR(Sign, y, SLE_INT32, SLV_5, SL_MAX_VERSION),
+	SLE_CONDVAR(Sign, owner, SLE_UINT8, SLV_6, SL_MAX_VERSION),
+	SLE_CONDVAR(Sign, z, SLE_FILE_U8  | SLE_VAR_I32, SL_MIN_VERSION, SLV_164),
+	SLE_CONDVAR(Sign, z, SLE_INT32, SLV_164, SL_MAX_VERSION),
+	SLE_CONDVAR(Sign, text_colour, SLE_UINT8, SLV_SIGN_TEXT_COLOURS, SL_MAX_VERSION),
 };
 
 struct SIGNChunkHandler : ChunkHandler {

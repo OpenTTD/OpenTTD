@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file gfx_layout_fallback.cpp Handling of laying out text as fallback. */
@@ -10,6 +10,7 @@
 #include "stdafx.h"
 
 #include "gfx_layout_fallback.h"
+#include "gfx_func.h"
 #include "string_func.h"
 #include "zoom_func.h"
 
@@ -43,15 +44,15 @@ public:
 		std::vector<Position> positions; ///< The positions of the glyphs.
 		std::vector<int> glyph_to_char; ///< The char index of the glyphs.
 
-		Font *font;       ///< The font used to layout these.
+		Font font;       ///< The font used to layout these.
 
 	public:
-		FallbackVisualRun(Font *font, const char32_t *chars, int glyph_count, int char_offset, int x);
-		const Font *GetFont() const override { return this->font; }
+		FallbackVisualRun(const Font &font, const char32_t *chars, int glyph_count, int char_offset, int x);
+		const Font &GetFont() const override { return this->font; }
 		int GetGlyphCount() const override { return static_cast<int>(this->glyphs.size()); }
 		std::span<const GlyphID> GetGlyphs() const override { return this->glyphs; }
 		std::span<const Position> GetPositions() const override { return this->positions; }
-		int GetLeading() const override { return this->GetFont()->fc->GetHeight(); }
+		int GetLeading() const override { return GetCharacterHeight(this->GetFont().GetFontCache().GetSize()); }
 		std::span<const int> GetGlyphToCharMap() const override { return this->glyph_to_char; }
 	};
 
@@ -109,26 +110,20 @@ public:
  * @param char_offset This run's offset from the start of the layout input string.
  * @param x           The initial x position for this run.
  */
-FallbackParagraphLayout::FallbackVisualRun::FallbackVisualRun(Font *font, const char32_t *chars, int char_count, int char_offset, int x) :
+FallbackParagraphLayout::FallbackVisualRun::FallbackVisualRun(const Font &font, const char32_t *chars, int char_count, int char_offset, int x) :
 		font(font)
 {
-	const bool isbuiltin = font->fc->IsBuiltInFont();
-
 	this->glyphs.reserve(char_count);
 	this->glyph_to_char.reserve(char_count);
 	this->positions.reserve(char_count);
 
+	FontCache &fc = this->font.GetFontCache();
+	int y_offset = fc.GetGlyphYOffset();;
 	int advance = x;
 	for (int i = 0; i < char_count; i++) {
-		const GlyphID &glyph_id = this->glyphs.emplace_back(font->fc->MapCharToGlyph(chars[i]));
-		int x_advance = font->fc->GetGlyphWidth(glyph_id);
-		if (isbuiltin) {
-			this->positions.emplace_back(advance, advance + x_advance - 1, font->fc->GetAscender()); // Apply sprite font's ascender.
-		} else if (chars[i] >= SCC_SPRITE_START && chars[i] <= SCC_SPRITE_END) {
-			this->positions.emplace_back(advance, advance + x_advance - 1, (font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(font->fc->GetSize()))) / 2); // Align sprite font to centre
-		} else {
-			this->positions.emplace_back(advance, advance + x_advance - 1, 0); // No ascender adjustment.
-		}
+		const GlyphID &glyph_id = this->glyphs.emplace_back(fc.MapCharToGlyph(chars[i]));
+		int x_advance = fc.GetGlyphWidth(glyph_id);
+		this->positions.emplace_back(advance, advance + x_advance - 1, y_offset); // No ascender adjustment.
 		advance += x_advance;
 		this->glyph_to_char.push_back(char_offset + i);
 	}
@@ -233,7 +228,8 @@ std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine
 		assert(iter != this->runs.end());
 	}
 
-	const FontCache *fc = iter->second->fc;
+	const FontCache *fc = &iter->second.GetFontCache();
+	assert(fc != nullptr);
 	const char32_t *next_run = this->buffer_begin + iter->first;
 
 	const char32_t *begin = this->buffer;
@@ -251,6 +247,7 @@ std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine
 
 		if (this->buffer == next_run) {
 			int w = l->GetWidth();
+			assert(iter->second.font_index != INVALID_FONT_INDEX);
 			l->emplace_back(iter->second, begin, this->buffer - begin, begin - this->buffer_begin, w);
 			++iter;
 			assert(iter != this->runs.end());

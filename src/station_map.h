@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file station_map.h Maps accessors for stations. */
@@ -288,7 +288,7 @@ StationGfx GetTranslatedAirportTileID(StationGfx gfx);
 static inline Roadside GetRoadWaypointRoadside(Tile tile)
 {
 	assert(IsRoadWaypointTile(tile));
-	return (Roadside)GB(tile.m3(), 2, 2);
+	return static_cast<Roadside>(GB(tile.m3(), 2, 2));
 }
 
 /**
@@ -299,7 +299,7 @@ static inline Roadside GetRoadWaypointRoadside(Tile tile)
 static inline void SetRoadWaypointRoadside(Tile tile, Roadside s)
 {
 	assert(IsRoadWaypointTile(tile));
-	SB(tile.m3(), 2, 2, s);
+	SB(tile.m3(), 2, 2, to_underlying(s));
 }
 
 /**
@@ -714,7 +714,7 @@ inline uint8_t GetStationTileRandomBits(Tile t)
  * @param section the StationGfx to be used for this tile
  * @param wc The water class of the station
  */
-inline void MakeStation(Tile t, Owner o, StationID sid, StationType st, uint8_t section, WaterClass wc = WATER_CLASS_INVALID)
+inline void MakeStation(Tile t, Owner o, StationID sid, StationType st, uint8_t section, WaterClass wc = WaterClass::Invalid)
 {
 	SetTileType(t, MP_STATION);
 	SetTileOwner(t, o);
@@ -726,6 +726,7 @@ inline void MakeStation(Tile t, Owner o, StationID sid, StationType st, uint8_t 
 	t.m5() = section;
 	SB(t.m6(), 2, 1, 0);
 	SB(t.m6(), 3, 4, to_underlying(st));
+	SB(t.m6(), 7, 1, 0);
 	t.m7() = 0;
 	t.m8() = 0;
 }

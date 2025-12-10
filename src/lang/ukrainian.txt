@@ -15,7 +15,7 @@
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
 
 
 ##id 0x0000
@@ -2273,7 +2273,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :СІ (кН)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Одиниці висоти: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Якщо висоти відображаються на інтерфейсі: показувати в обраній одиниці виміру
-###length 3
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Імперські (фути)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Метричні (м)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :СІ (м)
@@ -2986,10 +2986,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Передмі�
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Щільне передмістя
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Центр міста
 
-STR_HOUSE_PICKER_PROTECT_TITLE                                  :Захист від оновлень
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Укажіть, чи буде захищено цю будівлю від змін у разі зростання міста
-STR_HOUSE_PICKER_PROTECT_OFF                                    :вимкнено
-STR_HOUSE_PICKER_PROTECT_ON                                     :увімкнено
+
 
 STR_STATION_CLASS_DFLT                                          :Звичайна
 STR_STATION_CLASS_DFLT_STATION                                  :Звичайна станція
@@ -3579,7 +3577,6 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Гене
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Генерація річок
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Розкидати каміння
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Генерація міст
-STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Генерація промисловості
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Генерація нерухомості
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Насадження дерев
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Налаштування гри
@@ -4002,14 +3999,12 @@ STR_CARGO_RATING_EXCELLENT                                      :відмінн�
 STR_CARGO_RATING_OUTSTANDING                                    :найкраще
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Показувати станцію в центрі екрану. Ctrl+клац мишею відкриє нове вікно з видом на станцію
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Перейменувати станцію
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Показати всі поїзди, які заходять на цю станцію
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Показати всі авто, які заходять на цю станцію
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Показати всі літаки, які залітають на цю станцію
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Показати всі кораблі, які запливають на цю станцію
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Перейменування станції
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Закрити аеропорт
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Заборонити посадку авіатранспорту на цей аеропорт
@@ -4017,11 +4012,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Забо
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Показати точку маршруту в центрі екрану. Ctrl+клац мишею відкриє нове вікно з видом на точку маршруту
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Перейменувати точку маршруту
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Показати буй в центрі екрану. Ctrl+клац мишею відкриє нове вікно з видом на розташування буя
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Перейменувати буй
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Перейменуйте точку маршруту
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Фінанси {COMPANY} {BLACK}{COMPANY_NUM}

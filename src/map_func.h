@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file map_func.h Functions related to maps. */
@@ -61,7 +61,7 @@ public:
 	 * Create the tile wrapper for the given tile.
 	 * @param tile The tile to access the map for.
 	 */
-	debug_inline Tile(TileIndex tile) : tile(tile) {}
+	[[debug_inline]] inline Tile(TileIndex tile) : tile(tile) {}
 
 	/**
 	 * Create the tile wrapper for the given tile.
@@ -72,12 +72,12 @@ public:
 	/**
 	 * Implicit conversion to the TileIndex.
 	 */
-	debug_inline constexpr operator TileIndex() const { return this->tile; }
+	[[debug_inline]] inline constexpr operator TileIndex() const { return this->tile; }
 
 	/**
 	 * Implicit conversion to the uint for bounds checking.
 	 */
-	debug_inline constexpr operator uint() const { return this->tile.base(); }
+	[[debug_inline]] inline constexpr operator uint() const { return this->tile.base(); }
 
 	/**
 	 * The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)
@@ -86,7 +86,7 @@ public:
 	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
-	debug_inline uint8_t &type()
+	[[debug_inline]] inline uint8_t &type()
 	{
 		return base_tiles[this->tile.base()].type;
 	}
@@ -98,7 +98,7 @@ public:
 	 * @param tile The tile to get the height for.
 	 * @return reference to the byte holding the height.
 	 */
-	debug_inline uint8_t &height()
+	[[debug_inline]] inline uint8_t &height()
 	{
 		return base_tiles[this->tile.base()].height;
 	}
@@ -110,7 +110,7 @@ public:
 	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
-	debug_inline uint8_t &m1()
+	[[debug_inline]] inline uint8_t &m1()
 	{
 		return base_tiles[this->tile.base()].m1;
 	}
@@ -122,7 +122,7 @@ public:
 	 * @param tile The tile to get the data for.
 	 * @return reference to the uint16_t holding the data.
 	 */
-	debug_inline uint16_t &m2()
+	[[debug_inline]] inline uint16_t &m2()
 	{
 		return base_tiles[this->tile.base()].m2;
 	}
@@ -134,7 +134,7 @@ public:
 	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
-	debug_inline uint8_t &m3()
+	[[debug_inline]] inline uint8_t &m3()
 	{
 		return base_tiles[this->tile.base()].m3;
 	}
@@ -146,7 +146,7 @@ public:
 	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
-	debug_inline uint8_t &m4()
+	[[debug_inline]] inline uint8_t &m4()
 	{
 		return base_tiles[this->tile.base()].m4;
 	}
@@ -158,7 +158,7 @@ public:
 	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
-	debug_inline uint8_t &m5()
+	[[debug_inline]] inline uint8_t &m5()
 	{
 		return base_tiles[this->tile.base()].m5;
 	}
@@ -170,7 +170,7 @@ public:
 	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
-	debug_inline uint8_t &m6()
+	[[debug_inline]] inline uint8_t &m6()
 	{
 		return extended_tiles[this->tile.base()].m6;
 	}
@@ -182,7 +182,7 @@ public:
 	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
-	debug_inline uint8_t &m7()
+	[[debug_inline]] inline uint8_t &m7()
 	{
 		return extended_tiles[this->tile.base()].m7;
 	}
@@ -194,7 +194,7 @@ public:
 	 * @param tile The tile to get the data for.
 	 * @return reference to the uint16_t holding the data.
 	 */
-	debug_inline uint16_t &m8()
+	[[debug_inline]] inline uint16_t &m8()
 	{
 		return extended_tiles[this->tile.base()].m8;
 	}
@@ -239,15 +239,18 @@ private:
 	static uint size;      ///< The number of tiles on the map
 	static uint tile_mask; ///< _map_size - 1 (to mask the mapsize)
 
+	static uint initial_land_count; ///< Initial number of land tiles on the map.
+
 public:
 	static void Allocate(uint size_x, uint size_y);
+	static void CountLandTiles();
 
 	/**
 	 * Logarithm of the map size along the X side.
 	 * @note try to avoid using this one
 	 * @return 2^"return value" == Map::SizeX()
 	 */
-	debug_inline static uint LogX()
+	[[debug_inline]] inline static uint LogX()
 	{
 		return Map::log_x;
 	}
@@ -266,7 +269,7 @@ public:
 	 * Get the size of the map along the X
 	 * @return the number of tiles along the X of the map
 	 */
-	debug_inline static uint SizeX()
+	[[debug_inline]] inline static uint SizeX()
 	{
 		return Map::size_x;
 	}
@@ -284,7 +287,7 @@ public:
 	 * Get the size of the map
 	 * @return the number of tiles of the map
 	 */
-	debug_inline static uint Size()
+	[[debug_inline]] inline static uint Size()
 	{
 		return Map::size;
 	}
@@ -293,7 +296,7 @@ public:
 	 * Gets the maximum X coordinate within the map, including MP_VOID
 	 * @return the maximum X coordinate
 	 */
-	debug_inline static uint MaxX()
+	[[debug_inline]] inline static uint MaxX()
 	{
 		return Map::SizeX() - 1;
 	}
@@ -307,6 +310,16 @@ public:
 		return Map::SizeY() - 1;
 	}
 
+	/**
+	 * Scales the given value by the number of water tiles.
+	 * @param n the value to scale
+	 * @return the scaled size
+	 */
+	static inline uint ScaleByLandProportion(uint n)
+	{
+		/* Use 64-bit arithmetic to avoid overflow. */
+		return static_cast<uint>(static_cast<uint64_t>(n) * Map::initial_land_count / Map::size);
+	}
 
 	/**
 	 * 'Wraps' the given "tile" so it is within the map.
@@ -369,7 +382,7 @@ public:
  * @param y The y coordinate of the tile
  * @return The TileIndex calculated by the coordinate
  */
-debug_inline static TileIndex TileXY(uint x, uint y)
+[[debug_inline]] inline static TileIndex TileXY(uint x, uint y)
 {
 	return TileIndex{(y << Map::LogX()) + x};
 }
@@ -400,7 +413,7 @@ inline TileIndexDiff TileDiffXY(int x, int y)
  * @param y The virtual y coordinate of the tile.
  * @return The TileIndex calculated by the coordinate.
  */
-debug_inline static TileIndex TileVirtXY(uint x, uint y)
+[[debug_inline]] inline static TileIndex TileVirtXY(uint x, uint y)
 {
 	return TileIndex{(y >> 4 << Map::LogX()) + (x >> 4)};
 }
@@ -411,7 +424,7 @@ debug_inline static TileIndex TileVirtXY(uint x, uint y)
  * @param tile the tile to get the X component of
  * @return the X component
  */
-debug_inline static uint TileX(TileIndex tile)
+[[debug_inline]] inline static uint TileX(TileIndex tile)
 {
 	return tile.base() & Map::MaxX();
 }
@@ -421,7 +434,7 @@ debug_inline static uint TileX(TileIndex tile)
  * @param tile the tile to get the Y component of
  * @return the Y component
  */
-debug_inline static uint TileY(TileIndex tile)
+[[debug_inline]] inline static uint TileY(TileIndex tile)
 {
 	return tile.base() >> Map::LogX();
 }

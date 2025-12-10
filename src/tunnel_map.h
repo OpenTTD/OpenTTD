@@ -2,7 +2,7 @@
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
 /** @file tunnel_map.h Map accessors for tunnels. */
@@ -55,7 +55,7 @@ inline void MakeRoadTunnel(Tile t, Owner o, DiagDirection d, RoadType road_rt, R
 	t.m3() = 0;
 	t.m4() = 0;
 	t.m5() = TRANSPORT_ROAD << 2 | d;
-	SB(t.m6(), 2, 4, 0);
+	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
 	t.m8() = 0;
 	SetRoadOwner(t, RTT_ROAD, o);
@@ -78,7 +78,7 @@ inline void MakeRailTunnel(Tile t, Owner o, DiagDirection d, RailType r)
 	t.m3() = 0;
 	t.m4() = 0;
 	t.m5() = TRANSPORT_RAIL << 2 | d;
-	SB(t.m6(), 2, 4, 0);
+	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
 	t.m8() = 0;
 	SetRailType(t, r);
