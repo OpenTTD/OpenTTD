@@ -34,6 +34,7 @@ struct EFCParam {
 	LOCALESIGNATURE locale;
 	FontSizes fontsizes;
 	MissingGlyphSearcher *callback;
+	std::set<char32_t> chars;
 	std::vector<std::wstring> fonts;
 
 	bool Add(const std::wstring_view &font)
@@ -77,8 +78,23 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	char font_name[MAX_PATH];
 	convert_from_fs(logfont->elfFullName, font_name);
 
+	/* Load font by itself to determine if it has all our required glyphs. */
+	auto os_data = std::as_bytes(std::span(&logfont->elfLogFont, 1));
+	auto fc = FontProviderManager::LoadFont(info->fontsizes.GetNthSetBit(0).value_or(FS_NORMAL), FontType::TrueType, false, font_name, os_data);
+	if (fc == nullptr) return 1;
+
+	size_t matching_chars = 0;
+	for (const char32_t &c : info->chars) {
+		if (fc->MapCharToGlyph(c) != 0) ++matching_chars;
+	}
+
+	if (matching_chars < info->chars.size()) {
+		Debug(fontcache, 1, "Font \"{}\" misses {} glyphs", font_name, info->chars.size() - matching_chars);
+		return 1;
+	}
+
 	if (!FontCache::AddFallbackWithHandle(info->fontsizes, info->callback->GetLoadReason(), font_name, logfont->elfLogFont)) return 1;
-	if (info->callback->FindMissingGlyphs().None()) return 1;
+
 	Debug(fontcache, 1, "Fallback font: {}", font_name);
 	return 0; // stop enumerating
 }
@@ -315,6 +331,7 @@ public:
 		}
 		langInfo.fontsizes = fontsizes;
 		langInfo.callback = callback;
+		langInfo.chars = callback->GetRequiredGlyphs(fontsizes);
 
 		LOGFONT font;
 		/* Enumerate all fonts. */

@@ -261,6 +261,9 @@ public:
 			lang = language_isocode.substr(0, language_isocode.find('_'));
 		}
 
+		/* Get set of required characters. */
+		auto chars = callback->GetRequiredGlyphs(fontsizes);
+
 		/* Create a font descriptor matching the wanted language and latin (english) glyphs.
 		 * Can't use CFAutoRelease here for everything due to the way the dictionary has to be created. */
 		CFStringRef lang_codes[2];
@@ -308,14 +311,22 @@ public:
 				std::string_view name{buffer};
 				if (name.starts_with(".") || name.starts_with("LastResort")) continue;
 
+				/* Load font by itself to determine if it has all our required glyphs. */
+				auto fc = FontProviderManager::LoadFont(fontsizes.GetNthSetBit(0).value_or(FS_NORMAL), FontType::TrueType, false, std::string{name}, {});
+				if (fc == nullptr) return 1;
+
+				size_t matching_chars = 0;
+				for (const char32_t &c : chars) {
+					if (fc->MapCharToGlyph(c) != 0) ++matching_chars;
+				}
+
+				if (matching_chars < chars.size()) {
+					Debug(fontcache, 1, "Font \"{}\" misses {} glyphs", name, chars.size() - matching_chars);
+					return 1;
+				}
+
 				/* Save result. */
 				if (!FontCache::AddFallback(fontsizes, callback->GetLoadReason(), name)) continue;
-
-				if (callback->FindMissingGlyphs().None()) {
-					Debug(fontcache, 2, "CT-Font for {}: {}", language_isocode, name);
-					result = true;
-					break;
-				}
 			}
 		}
 
@@ -326,7 +337,6 @@ public:
 			result = callback->FindMissingGlyphs().None();
 		}
 
-		callback->FindMissingGlyphs();
 		return result;
 	}
 

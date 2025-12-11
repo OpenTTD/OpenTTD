@@ -200,7 +200,7 @@ bool FontConfigFindFallbackFont(const std::string &language_isocode, FontSizes f
 		}
 
 		if (matching_chars < chars.size()) {
-			Debug(fontcache, 1, "Font \"{}\" misses {} glyphs", reinterpret_cast<const char *>(file), chars.size() - matching_chars);
+			Debug(fontcache, 1, "Font \"{}\" misses {} glyphs", FromFcString(file), chars.size() - matching_chars);
 			continue;
 		}
 
