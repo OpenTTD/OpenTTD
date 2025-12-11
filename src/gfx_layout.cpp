@@ -43,7 +43,8 @@
 std::unique_ptr<Layouter::LineCache> Layouter::linecache;
 
 class RuntimeMissingGlyphSearcher : public MissingGlyphSearcher {
-	std::array<std::set<char32_t>, FS_END> glyphs{};
+	std::array<std::set<char32_t>, FS_END> missing_glyphs{}; ///< List of glyphs to search for.
+	std::array<std::set<char32_t>, FS_END> blocked_glyphs{}; ///< List of glyphs that were searched and not found.
 public:
 	RuntimeMissingGlyphSearcher() : MissingGlyphSearcher(FONTSIZES_ALL) {}
 
@@ -51,7 +52,9 @@ public:
 
 	inline void Insert(FontSize fs, char32_t c)
 	{
-		this->glyphs[fs].insert(c);
+		if (this->blocked_glyphs[fs].contains(fs)) return;
+
+		this->missing_glyphs[fs].insert(c);
 		this->search_timeout.Reset();
 	}
 
@@ -59,7 +62,7 @@ public:
 	{
 		std::set<char32_t> r;
 		for (FontSize fs : fontsizes) {
-			r.merge(this->glyphs[fs]);
+			r.insert(this->missing_glyphs[fs].begin(), this->missing_glyphs[fs].end());
 		}
 		return r;
 	}
@@ -68,10 +71,15 @@ public:
 	{
 		FontSizes changed_fontsizes{};
 		for (FontSize fs = FS_BEGIN; fs != FS_END; ++fs) {
-			auto &missing = this->glyphs[fs];
+			auto &missing = this->missing_glyphs[fs];
 			if (missing.empty()) continue;
 
-			if (FontProviderManager::FindFallbackFont({}, fs, this)) changed_fontsizes.Set(fs);
+			if (FontProviderManager::FindFallbackFont({}, fs, this)) {
+				changed_fontsizes.Set(fs);
+			} else {
+				Debug(fontcache, 1, "Unable to find font for {} missing glyphs", missing.size());
+				this->blocked_glyphs[fs].insert(missing.begin(), missing.end());
+			}
 			missing.clear();
 		}
 
