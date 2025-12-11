@@ -3695,6 +3695,7 @@ STR_EDIT_SIGN_CAPTION                                           :{WHITE}Muokkaa 
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Keskitä päänäkymä kyltin sijaintiin. Ctrl+napsautus avaa uuden näkymäikkunan kyltin sijaintiin
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Siirry seuraavaan kylttiin
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Siirry edelliseen kylttiin
+STR_EDIT_SIGN_TEXT_COLOUR_TOOLTIP                               :{BLACK}Merkin tekstin väri
 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Syötä kyltin nimi
 

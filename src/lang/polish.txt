@@ -4075,6 +4075,7 @@ STR_EDIT_SIGN_CAPTION                                           :{WHITE}Edytuj n
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Wyśrodkuj widok główny na lokalizacji napisu. Użyj Ctrl, aby otworzyć nowy podgląd na jego lokalizację
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Idź do następnego napisu
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Idź do poprzedniego napisu
+STR_EDIT_SIGN_TEXT_COLOUR_TOOLTIP                               :{BLACK}Kolor napisu
 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Wpisz nazwę dla znaku
 

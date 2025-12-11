@@ -514,7 +514,7 @@ STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Construção de
 
 # Road construction menu
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Construção de estradas
-STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Construção de carris para elétricos
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Construção de linhas de elétrico
 
 # Waterways construction menu
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Construção de rotas navais
@@ -879,7 +879,7 @@ STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLAC
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Fábrica perto de {TOWN} foi destruída em circunstâncias suspeitas!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}OVNI pousa em {TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Afundamento em mina de carvão perto de {TOWN} causa rasto de destruição!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Inundações!{}Pelo menos {COMMA} pessoa{P 0 "" s} desaparecida{P 0 "" s} ou morta{P 0 "" s} após terrível desastre!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Inundações!{}Pelo menos {COMMA} pessoa{P 0 "" s} desaparecida{P 0 "" s}, presumivelmente morta{P 0 "" s} após terrível desastre!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Empresa de transportes em dificuldades!
 STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} será vendida ou declarada falida a menos que melhore os seus rendimentos em breve!
@@ -888,7 +888,7 @@ STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Faliu!
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} foi encerrada por credores e todos os ativos foram vendidos!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nova empresa de transportes!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} inicia construção em {TOWN}!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} inicia construção perto de {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} foi adquirida por {STRING} por um valor não declarado!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Presidente)
 
@@ -909,7 +909,7 @@ STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{G 0 "" "O " "A " "Os " "As "}{INDUSTRY} aumenta{G 0 "" "" "" m m} a produção!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Foi descoberto um novo estrato de carvão {G 0 em no na nos nas} {INDUSTRY}!{}Espera-se duplicar a produção!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Novas reservas de petróleo encontradas {G 0 em no na nos nas} {INDUSTRY}!{}Espera-se duplicar a produção!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Nova técnica de cultivo leva à duplicação da produção {G 0 em no na nos nas} {INDUSTRY}!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Nova técnica de cultivo deverá duplicar a produção {G 0 em no na nos nas} {INDUSTRY}!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produção de {STRING} {G 1 em no na nos nas} {INDUSTRY} aumenta {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}Produção d{G 0 e o a os as} {INDUSTRY} reduzida em 50%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Praga de insetos causa estragos {G 0 em no na nos nas} {INDUSTRY}!{}A produção diminui 50%!
@@ -1174,7 +1174,7 @@ STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Li
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Mudar parâmetro da moeda personalizada
 
 STR_NONE                                                        :Nenhum
-STR_FUNDING_ONLY                                                :Financiamento apenas
+STR_FUNDING_ONLY                                                :Apenas com financiamento
 STR_MINIMAL                                                     :Mínimo
 STR_NUM_VERY_LOW                                                :Muito Baixo
 STR_NUM_LOW                                                     :Baixo
@@ -2882,7 +2882,7 @@ STR_HOUSE_PICKER_CLASS_ZONE4                                    :Subúrbios Cent
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centro da localidade
 
 STR_HOUSE_PICKER_PROTECT                                        :Impedir atualizações
-STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Escolha se esta casa será protegida contra a substituição à medida que localidade cresce
+STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Escolha se esta casa será protegida contra a substituição à medida que a localidade cresce
 
 STR_HOUSE_PICKER_REPLACE                                        :Substituir existentes
 STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Escolha se deseja remover automaticamente a casa existente no mosaico onde esta nova casa será colocada.
@@ -3021,7 +3021,7 @@ STR_AIRPORT_CLASS_HELIPORTS                                     :Heliportos
 STR_STATION_BUILD_NOISE                                         :{BLACK}Ruído gerado: {GOLD}{COMMA}
 
 # Landscaping toolbar
-STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Terreno
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Paisagem
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Baixar um canto do terreno. Clique+Arraste para rebaixar o primeiro canto selecionado e nivelar o terreno da área selecionada para a nova altura do canto. Ctrl+Clique+Arraste para selecionar a área na diagonal. Pressione também Shift para apenas mostrar o custo estimado
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Elevar um canto do terreno. Clique+Arrastar para elevar o primeiro canto selecionado e nivelar a área selecionada com a altura do novo canto. Ctrl+Clique+Arrastar para selecionar a área na diagonal. Pressione também Shift para apenas mostrar o custo estimado
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelar uma área de terreno até a altura do primeiro canto selecionado. Ctrl+Clique+Arrastar para selecionar a área na diagonal. Pressione também Shift para apenas mostrar o custo estimado
@@ -3696,6 +3696,7 @@ STR_EDIT_SIGN_CAPTION                                           :{WHITE}Editar l
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Centrar a vista principal na localização do letreiro. Ctrl+Clique para abrir um novo visualizador na localização do letreiro
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Ir para o próximo letreiro
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Ir para o letreiro anterior
+STR_EDIT_SIGN_TEXT_COLOUR_TOOLTIP                               :{BLACK}A cor do texto do letreiro
 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Introduza um nome para o letreiro
 
@@ -4783,7 +4784,7 @@ STR_ORDER_AUTO_REFIT_ANY                                        :mercadoria disp
 ###length 3
 STR_ORDER_STOP_LOCATION_NEAR_END                                :{SPACE}[início]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :{SPACE}[meio]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :{SPACE}[final]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :{SPACE}[fim]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (Próximo destino está fora de alcance)
 
@@ -5893,7 +5894,7 @@ STR_FORMAT_DEPOT_NAME_SHIP                                      :{G=m}Estaleiro 
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{G=m}Estaleiro Naval de {TOWN} #{COMMA}
 ###next-name-looks-similar
 
-STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{G=m}Hangar de {STATION}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{G=m}Hangar {G de do da dos das} {STATION}
 # _SERIAL version of AIRACRAFT doesn't exist
 
 STR_UNKNOWN_STATION                                             :estação desconhecida

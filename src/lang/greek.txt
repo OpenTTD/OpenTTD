@@ -3788,6 +3788,7 @@ STR_EDIT_SIGN_CAPTION                                           :{WHITE}Επεξ
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Κεντράρισμα της κύριας προβολής στη τοποθεσία της πινακίδας. Ctrl+Κλικ για άνοιγμα νέου παραθύρου προβολής στην τοποθεσία της πινακίδας
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Μετάβαση στην επόμενη πινακίδα
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Μετάβαση στη προηγούμενη πινακίδα
+STR_EDIT_SIGN_TEXT_COLOUR_TOOLTIP                               :{BLACK}Χρώμα κειμένου της πινακίδας
 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Δώστε ένα όνομα για την πινακίδα
 

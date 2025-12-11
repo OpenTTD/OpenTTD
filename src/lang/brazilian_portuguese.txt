@@ -2881,8 +2881,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Periferia Dista
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Periferia Próxima
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centro da cidade
 
+STR_HOUSE_PICKER_PROTECT                                        :Impedir atualizações
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Escolher se essa casa será protegida contra substituição quando a cidade crescer
 
+STR_HOUSE_PICKER_REPLACE                                        :Substituir existentes
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Escolha se deseja remover automaticamente a casa existente no local onde esta casa será colocada
 
 STR_STATION_CLASS_DFLT                                          :Padrão
 STR_STATION_CLASS_DFLT_STATION                                  :Estação padrão
@@ -3693,6 +3696,7 @@ STR_EDIT_SIGN_CAPTION                                           :{WHITE}Editar a
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Centralizar visualização principal na localização da placa. Ctrl+Clique para abrir uma nova visualização na localização da placa
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Ir para a próxima placa
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Ir para a placa anterior
+STR_EDIT_SIGN_TEXT_COLOUR_TOOLTIP                               :{BLACK}Cor do texto da placa
 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Introduza um nome para a placa
 

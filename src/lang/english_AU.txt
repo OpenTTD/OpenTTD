@@ -2880,8 +2880,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Outer Suburbs
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Inner Suburbs
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Town centre
 
+STR_HOUSE_PICKER_PROTECT                                        :Prevent upgrades
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Choose whether this house will be protected from replacement as the town grows
 
+STR_HOUSE_PICKER_REPLACE                                        :Replace existing
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Choose whether to automatically remove an existing house on the tile where this house is placed
 
 STR_STATION_CLASS_DFLT                                          :Default
 STR_STATION_CLASS_DFLT_STATION                                  :Default station
@@ -3692,6 +3695,7 @@ STR_EDIT_SIGN_CAPTION                                           :{WHITE}Edit sig
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Centre the main view on sign location. Ctrl+Click to open a new viewport on sign location
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Go to next sign
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Go to previous sign
+STR_EDIT_SIGN_TEXT_COLOUR_TOOLTIP                               :{BLACK}Colour of the sign's text
 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Enter a name for the sign
 

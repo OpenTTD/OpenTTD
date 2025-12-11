@@ -833,6 +833,7 @@ STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Fabrika 
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Haritada fabrika gösterme
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Haritada tüm fabrikaları göster
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Yükseklik haritasının gösterimini aç/kapa
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRY_NAMES                        :{BLACK}Endüstri isimlerini göster/gizle
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Haritada şirket mülkü gösterme
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Haritada şirketlerin tüm mülklerini göster
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Haritada hiçbir kargo türünü gösterme
@@ -1532,6 +1533,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Bir aracın gel
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Etkinleştirildiğinde, eğer bir araç bir yıl içerisinde hiç kâr etmezse bir haber mesajı gönderilir.
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Etkinleştirildiğinde, eğer bir araç bir periyot içerisinde hiç kâr etmezse bir haber mesajı gönderilir.
 
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :Araç yaşlanınca uyar: {STRING}
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE_HELPTEXT                    :Etkinleştirildiğinde, eğer bir araç yaşlanırsa haber mesajı gönderilir.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Eski araçlar sürekli üretilsin: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Etkinleştirildiğinde, tüm araç modelleri piyasaya çıkışlarından itibaren sonsuza dek satın alınabilir.
@@ -1878,6 +1881,9 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Yeni hava araç
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Gemiler için varsayılan bakım aralığı: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Yeni gemiler için varsayılan bakım aralığını ayarlar, eğer araç için özel bir bakım aralığı belirtilmemişse geçerlidir
 ###length 3
+STR_CONFIG_SETTING_SERVINT_VALUE_DAYS                           :{COMMA}{NBSP}Gün
+STR_CONFIG_SETTING_SERVINT_VALUE_MINUTES                        :{COMMA}{NBSP}Dakika
+STR_CONFIG_SETTING_SERVINT_VALUE_PERCENTAGE                     :{COMMA}%{NBSP}
 
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Etkisiz
@@ -2158,6 +2164,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Kullanıcı ara
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (Ingiliz ölçü birimleri) (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrik (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (Uluslararası Ölçüm Sistemi) (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_GAMEUNITS          :Oyun birimleri (seviyeler)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :Yerelleştirme
 STR_CONFIG_SETTING_GRAPHICS                                     :Grafikler
@@ -2272,6 +2279,7 @@ STR_HELP_WINDOW_README                                          :{BLACK}Beni oku
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Değişiklik günlüğü
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Bilinen Hatalar
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}Lisans
+STR_HELP_WINDOW_FONTS                                           :{BLACK}Yazı Tipleri
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Kılavuz / Wiki
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Hata Bildir
@@ -2350,16 +2358,19 @@ STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Basit y�
 STR_FACE_LOAD                                                   :{BLACK}Yükle
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Tercih edilen yüzü yükle
 STR_FACE_LOAD_DONE                                              :{WHITE}Tercih edilen yüz OpenTTD ayar dosyasından yüklendi
-STR_FACE_FACECODE                                               :{BLACK}Oyuncu yüzü no.
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Şirket başkanının yüz portre numarasını göster ve/veya düzenle
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Şirket başkanının yüz portre numarasını göster ve/veya düzenle
-STR_FACE_FACECODE_SET                                           :{WHITE}Surat numarası ayarlandı
-STR_FACE_FACECODE_ERR                                           :{WHITE}Şirket başkanının yüz portre numarası hatalıdır. - Yüz portre numarası 0 ve 4,294,967,295 arasında bir sayı olmalıdır!
+STR_FACE_FACECODE                                               :{BLACK}Oyuncu surat kodu
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Şirket başkanının surat kodunu göster ve/veya düzenle
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Şirket başkanının surat kodunu göster ve/veya düzenle
+STR_FACE_FACECODE_SET                                           :{WHITE}Yeni surat kodu ayarlandı
+STR_FACE_FACECODE_ERR                                           :{WHITE}Şirket başkanının surat kodu ayarlanamadı - geçerli bir etiket ve numara olmalıdır
 STR_FACE_SAVE                                                   :{BLACK}Kaydet
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Tercih edilen yüzü kaydet
 STR_FACE_SAVE_DONE                                              :{WHITE}Bu yüz OpenTTD ayar dosyasına favoriniz olarak kaydedilecek
+STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
+STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Evet
 STR_FACE_NO                                                     :Hayır
+STR_FACE_STYLE                                                  :Biçem:
 STR_FACE_HAIR                                                   :Saç:
 STR_FACE_EYEBROWS                                               :Kaşlar:
 STR_FACE_EYECOLOUR                                              :Göz rengi:
@@ -2835,6 +2846,8 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Önizleme resim
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Önizleme resimlerinin yüksekliğini arttır. En yükseğe çekmek için Ctrl + Sol Tık yapın
 
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Görüntülenecek istasyon sınıfını seçin
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :İnşa edilecek istasyon türünü seçin. Kayıtlı öğelerde ekleme çıkarma için Ctrl+Tıklayabilirsiniz
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Görüntülenecek bir yol noktası türünü seçin
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Görüntülenecek otobüs istasyonunu seçin
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :İnşa edilecek otobüs istasyonunu seçin. Kayıtlı öğelerde ekleme çıkarma için Ctrl+Tıklayabilirsiniz
@@ -2920,6 +2933,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Otomatik
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Garaj inşa et (araç alımı ve bakımı için). Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Tramvay garı inşa et (araç alımı ve bakımı için). Ayrıca maliyetini görmek için Shift tuşuna basabilirsiniz.
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Yola yerimi inşa et. Ctrl + Sol Tık birleştirmek için başka yerimi seçtirir. Ayrıca maliyetini görmek için Shift'e basabilirsiniz
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Tramvaya yerimi inşa et. Ctrl + Sol Tık birleştirmek için başka yerimi seçtirir. Ayrıca maliyetini görmek için Shift'e basabilirsiniz
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Otobüs durağı inşa et. Ctrl + Sol Tık istasyonları birleştirmeyi aktif eder. Ayrıca maliyetini görmek için Shift'e basabilirsiniz
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Yolcu tramvayı istasyonu inşa et. Ctrl + Sol Tık birleştirmeyi mümkün kılar. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Kamyon yükleme bölgesi inşa et. Ctrl + Sol Tık istasyonları birleştirmeyi mümkün kılar. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
@@ -3462,6 +3476,7 @@ STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Nehir ol
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Engebeli ve kayalık alan oluştur
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Kasaba Oluşumu
 STR_GENERATION_LAND_INDUSTRY_GENERATION                         :{BLACK}Kara endüstrisi oluşturma
+STR_GENERATION_WATER_INDUSTRY_GENERATION                        :{BLACK}Su endüstrisi oluşturma
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Nesne oluşturma
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Ağaç üretimi
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Oyun ayarlanıyor
@@ -3671,6 +3686,7 @@ STR_EDIT_SIGN_CAPTION                                           :{WHITE}Tabelay�
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Ana görünümü tabelanın konumuna ortalar. Ctrl + Sol Tıklama tabelanın olduğu yere ait bir görünüm penceresi açar.
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Sonraki tabelaya git
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Önceki tabelaya git
+STR_EDIT_SIGN_TEXT_COLOUR_TOOLTIP                               :{BLACK}Tabela yazısının rengi
 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Tabela için bir isim girin
 
@@ -3700,6 +3716,8 @@ STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Ana gör
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Belediye
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Belediye hakkında bilgi göster
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Şehrin ismini değiştir
+STR_TOWN_VIEW_CARGO_GRAPH                                       :Kargo Grafiği
+STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :Şehrin kargo geçmişinin grafiğini gösterir
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Genişlet
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Şehrin boyutunu büyült
@@ -4770,14 +4788,15 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Zaman ç
 STR_TIMETABLE_NO_TRAVEL                                         :Sefer yok
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Yolculuk (otomatik; bir sonraki elle verilmiş talimat tarafından zamanlanır)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Gezi (zamanlı değil)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :En çok {VELOCITY} hız ile git (zaman tablosu yok)
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} boyunca yol al
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{STRING} boyunca en çok {VELOCITY} hız ile git
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Seyahat et ({STRING} için, hareket planı yok)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Seyahat et ({STRING} için, hareket planı yok) en fazla {VELOCITY} hızı ile
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :({STRING} kalma, hareket saati yok)
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :({STRING} için seyahat, hareket saati yok)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}({STRING} için seyahat, hareket saati yok)
 STR_TIMETABLE_STAY_FOR                                          :{STRING} bekle
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :ve şuraya sefer yap: {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}ve şuraya sefer yap: {STRING}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Bu zaman çizelgesinin bitmesi {STRING} sürecek
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Bu zaman çizelgesinin bitmesi en az {STRING} sürecek (tamamı hesaplanmadı)
@@ -5874,7 +5893,9 @@ STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STR
 STR_SAVEGAME_NAME_SPECTATOR                                     :İzleyici, {1:STRING}
 
 # Viewport strings
-STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_CITY                                          :{TOWN} {CITY_ICON}
+STR_VIEWPORT_TOWN_CITY_POP                                      :{TOWN} ({COMMA}) {CITY_ICON}
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data
@@ -5898,6 +5919,7 @@ STR_CURRENCY_SHORT_GIGA                                         :{NBSP}bn
 STR_CURRENCY_SHORT_TERA                                         :{NBSP}tn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_LEFT_ARROW                                             :{LEFT_ARROW}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
