@@ -2092,6 +2092,8 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 in {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :None
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Initial city size multiplier: {STRING2}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Average size of cities relative to normal towns at start of the game
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE                            :Minimum distance between towns: {STRING2}
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE_HELPTEXT                   :Set the minimum distance in tiles between towns for map generation and random founding
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Update distribution graph every {STRING2}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Time between subsequent recalculations of the link graph. Each recalculation calculates the plans for one component of the graph. That means that a value X for this setting does not mean the whole graph will be updated every X seconds. Only some component will. The shorter you set it the more CPU time will be necessary to calculate it. The longer you set it the longer it will take until the cargo distribution starts on new routes
