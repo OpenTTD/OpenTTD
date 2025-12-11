@@ -740,57 +740,57 @@ static void HeightMapAdjustWaterLevel(int64_t water_percent, Height h_max_new)
 static double perlin_coast_noise_2D(const double x, const double y, const double p, const int prime);
 
 /**
- * This routine sculpts in from the edge a random amount, again a Perlin
- * sequence, to avoid the rigid flat-edge slopes that were present before. The
- * Perlin noise map doesn't know where we are going to slice across, and so we
- * often cut straight through high terrain. The smoothing routine makes it
- * legal, gradually increasing up from the edge to the original terrain height.
- * By cutting parts of this away, it gives a far more irregular edge to the
- * map-edge. Sometimes it works beautifully with the existing sea & lakes, and
- * creates a very realistic coastline. Other times the variation is less, and
- * the map-edge shows its cliff-like roots.
+ * This routine sculpts in from the edge a random amount, again from Perlin
+ * sequences, to avoid rigid flat-edge slopes and add an irregular edge to the
+ * land. The smoothing routines makes it legal, gradually increasing up from
+ * the edge to the original terrain.
  *
- * Please note that all the small numbers; 53, 101, 167, etc. are small primes
- * to help give the perlin noise a bit more of a random feel.
+ * More varied coastlines on large maps require coastal features that would
+ * turn small maps into tiny islands. To avoid this, multiple perlin sequences
+ * with different persistence values are scaled based on the map dimensions.
+ *
+ * The constants used are based on what looks right. If you're changing the
+ * limits or the persistence values you'll want to experiment with various map
+ * sizes.
  */
 static void HeightMapCoastLines(BorderFlags water_borders)
 {
-	const int smallest_size = std::min(_settings_game.game_creation.map_x, _settings_game.game_creation.map_y);
+	const int smallest_size = std::min(_height_map.size_x, _height_map.size_y);
+	const int map_ratio = std::max(_height_map.size_x, _height_map.size_y) / smallest_size;
 
-	int margin = 8; // a margin of water tiles around the edge of the map (no land within this number of tiles)
-	int depth = 42; // depth weighting for larger features (making this too large will destroy the illusion of natural terrain)
+	/* More jagged perlin noise is used to create inlets and craggier features. It scales with map size and ratio and quickly
+	 * reaches the limit of 64. It scales both by the shortest side and the map ratio to try and balance variation in the
+	 * coastline and the amount of water on the map.
+	 */
+	const double jagged_distance = std::min(12 + static_cast<int>(pow(smallest_size / 64, 2)) + std::min(map_ratio, 16), 64);
 
-	if (smallest_size < 7) {
-		margin = 2;
-		depth = 9;
-	} else if (smallest_size < 9) {
-		margin = 4;
-		depth = 21;
-	}
+	/* Smoother perlin noise is used to add more depth to the coastline as the smallest edge increases in length */
+	const int smooth_distance = std::min(smallest_size / 32, 32);
 
-	/* For the smallest maps by area further decrease the number of water tiles */
-	if (_settings_game.game_creation.map_x * _settings_game.game_creation.map_y <= 56) {
-		margin = 2;
-		depth = 4;
-	}
+	/* Function to get the distance from the edge at x (the coastline is actually 1D noise).
+	 * p1, p2, p3 are small prime numbers so the sequences aren't identical.
+	 */
+	auto get_depth = [&](int x, int p1, int p2, int p3) {
+		return 2 // we ensure a margin of two water tiles at the edge of the map
+			+ smooth_distance * (1 + perlin_coast_noise_2D(x, x, 0.2, p1)) // +1 rather than abs reduces the number of V shaped inlets
+			+ jagged_distance * abs(perlin_coast_noise_2D(x, x, 0.5, p2))
+			+ 8 * abs(perlin_coast_noise_2D(x, x, 0.8, p3)); // Some unscaled jaggedness to breakup anything smoothed by scaling
+	};
 
 	int y, x;
-	double max_y, max_x;
 
 	/* Lower to sea level */
 	for (y = 0; y <= _height_map.size_y; y++) {
 		if (water_borders.Test(BorderFlag::NorthEast)) {
 			/* Top right */
-			max_x = margin + abs((perlin_coast_noise_2D(_height_map.size_y - y, y, 0.9, 53) + 0.25) * 3 + (perlin_coast_noise_2D(y, y, 0.35, 179) + 1) * depth);
-			for (x = 0; x < max_x; x++) {
+			for (x = 0; x < get_depth(y, 67, 179, 53); x++) {
 				_height_map.height(x, y) = 0;
 			}
 		}
 
 		if (water_borders.Test(BorderFlag::SouthWest)) {
 			/* Bottom left */
-			max_x = margin + abs((perlin_coast_noise_2D(_height_map.size_y - y, y, 0.85, 101) + 0.3) * 4 + (perlin_coast_noise_2D(y, y, 0.45, 67) + 0.75) * depth);
-			for (x = _height_map.size_x; x > (_height_map.size_x - 1 - max_x); x--) {
+			for (x = _height_map.size_x; x > (_height_map.size_x - 1 - get_depth(y, 199, 67, 101)); x--) {
 				_height_map.height(x, y) = 0;
 			}
 		}
@@ -800,16 +800,14 @@ static void HeightMapCoastLines(BorderFlags water_borders)
 	for (x = 0; x <= _height_map.size_x; x++) {
 		if (water_borders.Test(BorderFlag::NorthWest)) {
 			/* Top left */
-			max_y = margin + abs((perlin_coast_noise_2D(x, static_cast<double>(_height_map.size_y) / 2, 0.9, 167) + 0.4) * 3 + (perlin_coast_noise_2D(x, static_cast<double>(_height_map.size_y) / 3, 0.4, 211) + 0.7) * depth);
-			for (y = 0; y < max_y; y++) {
+			for (y = 0; y < get_depth(x, 179, 211, 167); y++) {
 				_height_map.height(x, y) = 0;
 			}
 		}
 
 		if (water_borders.Test(BorderFlag::SouthEast)) {
 			/* Bottom right */
-			max_y = margin + abs((perlin_coast_noise_2D(x, static_cast<double>(_height_map.size_y) / 3, 0.85, 71) + 0.25) * 4 + (perlin_coast_noise_2D(x, static_cast<double>(_height_map.size_y) / 3, 0.35, 193) + 0.75) * depth);
-			for (y = _height_map.size_y; y > (_height_map.size_y - 1 - max_y); y--) {
+			for (y = _height_map.size_y; y > (_height_map.size_y - 1 - get_depth(x, 101, 193, 71)); y--) {
 				_height_map.height(x, y) = 0;
 			}
 		}
@@ -973,7 +971,6 @@ static double interpolated_noise(const double x, const double y, const int prime
 	return linear_interpolate(i1, i2, fractional_y);
 }
 
-
 /**
  * This is a similar function to the main perlin noise calculation, but uses
  * the value p passed as a parameter rather than selected from the predefined
@@ -986,14 +983,19 @@ static double perlin_coast_noise_2D(const double x, const double y, const double
 	constexpr double INITIAL_FREQUENCY = 1 << OCTAVES;
 
 	double total = 0.0;
+	double max_value = 0.0;
 	double frequency = 1.0 / INITIAL_FREQUENCY;
 	double amplitude = 1.0;
 	for (int i = 0; i < OCTAVES; i++) {
 		total += interpolated_noise(x * frequency, y * frequency, prime) * amplitude;
+		max_value += amplitude;
+
 		frequency *= 2.0;
 		amplitude *= p;
 	}
-	return total;
+
+	/* Bringing the output range into [-1, 1] makes it much easier to reason with */
+	return total / max_value;
 }
 
 
