@@ -216,7 +216,7 @@ bool FontConfigFindFallbackFont(const std::string &language_isocode, FontSizes f
 
 	if (best_font.empty()) return false;
 
-	FontCache::AddFallbackWithHandle(fontsizes, callback->GetLoadReason(), best_font, best_index);
+	if (!FontCache::AddFallbackWithHandle(fontsizes, callback->GetLoadReason(), best_font, best_index)) return false;
 	FontCache::LoadFontCaches(fontsizes);
 
 	return true;

@@ -77,7 +77,7 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	char font_name[MAX_PATH];
 	convert_from_fs(logfont->elfFullName, font_name);
 
-	FontCache::AddFallbackWithHandle(info->fontsizes, info->callback->GetLoadReason(), font_name, logfont->elfLogFont);
+	if (!FontCache::AddFallbackWithHandle(info->fontsizes, info->callback->GetLoadReason(), font_name, logfont->elfLogFont)) return 1;
 	if (info->callback->FindMissingGlyphs().None()) return 1;
 	Debug(fontcache, 1, "Fallback font: {}", font_name);
 	return 0; // stop enumerating

@@ -252,12 +252,21 @@ std::string GetFontCacheFontName(FontSize fs)
  * @param fontsizes Fontsizes to add fallback to.
  * @param name Name of font to add.
  * @param handle OS-specific handle or data of font.
+ * @return true iff the fallback was added.
  */
-/* static */ void FontCache::AddFallback(FontSizes fontsizes, FontLoadReason load_reason, std::string_view name, std::span<const std::byte> os_data)
+/* static */ bool FontCache::AddFallback(FontSizes fontsizes, FontLoadReason load_reason, std::string_view name, std::span<const std::byte> os_data)
 {
+	bool added = false;
+
 	for (FontSize fs : fontsizes) {
-		GetFontCacheSubSetting(fs)->fallback_fonts.emplace_back(load_reason, std::string{name}, std::vector<std::byte>{os_data.begin(), os_data.end()});
+		auto &fallbacks = GetFontCacheSubSetting(fs)->fallback_fonts;
+		if (std::ranges::find(fallbacks, name, &FontCacheSubSetting::FontCacheFallback::name) != std::end(fallbacks)) continue;
+
+		fallbacks.emplace_back(load_reason, std::string{name}, std::vector<std::byte>{os_data.begin(), os_data.end()});
+		added = true;
 	}
+
+	return added;
 }
 
 /* static */ void FontCache::LoadDefaultFonts(FontSize fs)

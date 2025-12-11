@@ -309,7 +309,7 @@ public:
 				if (name.starts_with(".") || name.starts_with("LastResort")) continue;
 
 				/* Save result. */
-				FontCache::AddFallback(fontsizes, callback->GetLoadReason(), name);
+				if (!FontCache::AddFallback(fontsizes, callback->GetLoadReason(), name)) continue;
 
 				if (callback->FindMissingGlyphs().None()) {
 					Debug(fontcache, 2, "CT-Font for {}: {}", language_isocode, name);
@@ -322,7 +322,7 @@ public:
 		if (!result) {
 			/* For some OS versions, the font 'Arial Unicode MS' does not report all languages it
 			 * supports. If we didn't find any other font, just try it, maybe we get lucky. */
-			FontCache::AddFallback(fontsizes, callback->GetLoadReason(), "Arial Unicode MS");
+			if (!FontCache::AddFallback(fontsizes, callback->GetLoadReason(), "Arial Unicode MS")) return false;
 			result = callback->FindMissingGlyphs().None();
 		}
 

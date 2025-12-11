@@ -74,19 +74,20 @@ public:
 		return FontCache::metrics[fs].baseline;
 	}
 
-	static void AddFallback(FontSizes fontsizes, FontLoadReason load_reason, std::string_view name, std::span<const std::byte> os_data = {});
+	static bool AddFallback(FontSizes fontsizes, FontLoadReason load_reason, std::string_view name, std::span<const std::byte> os_data = {});
 
 	/**
 	 * Add a fallback font, with OS-specific handle.
 	 * @param fontsizes Fontsizes to add fallback to.
 	 * @param name Name of font to add.
 	 * @param handle OS-specific handle or data of font.
+	 * @return true iff the fallback was added.
 	 */
 	template <typename T>
-	static void AddFallbackWithHandle(FontSizes fontsizes, FontLoadReason load_reason, std::string_view name, T &handle)
+	static bool AddFallbackWithHandle(FontSizes fontsizes, FontLoadReason load_reason, std::string_view name, T &handle)
 	{
 		auto os_data = std::as_bytes(std::span(&handle, 1));
-		FontCache::AddFallback(fontsizes, load_reason, name, os_data);
+		return FontCache::AddFallback(fontsizes, load_reason, name, os_data);
 	}
 
 	/**
