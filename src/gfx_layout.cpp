@@ -69,6 +69,12 @@ public:
 
 	TimeoutTimer<TimerWindow> search_timeout{std::chrono::milliseconds(250), [this]()
 	{
+		/* Test if a dropdown window is being shown. If so we don't want to reinit windows yet. */
+		if (FindWindowByClass(WC_DROPDOWN_MENU) != nullptr) {
+			this->search_timeout.Reset();
+			return;
+		}
+
 		FontSizes changed_fontsizes{};
 		for (FontSize fs = FS_BEGIN; fs != FS_END; ++fs) {
 			auto &missing = this->missing_glyphs[fs];
