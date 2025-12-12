@@ -3759,6 +3759,7 @@ STR_EDIT_SIGN_CAPTION                                           :{WHITE}Tábla s
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}A fő nézetet a felirat helyére állítja. Ctrl+kattintással új nézet nyílik a felirat helyzeténél
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Következő felirat
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Előző felirat
+STR_EDIT_SIGN_TEXT_COLOUR_TOOLTIP                               :{BLACK}A tábla szövegének színe
 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Felirat szövegének szerkesztése
 
