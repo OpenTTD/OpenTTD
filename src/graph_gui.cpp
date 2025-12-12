@@ -677,16 +677,9 @@ public:
 
 				/* Draw x-axis labels and markings for graphs based on financial quarters and years.  */
 				if (this->draw_dates) {
-					TimerGameEconomy::Month month = this->month;
-					TimerGameEconomy::Year year = this->year;
-					for (int i = 0; i < this->num_on_x_axis; i++) {
+					uint year = GetParamMaxValue(this->year.base(), 4, FS_SMALL);
+					for (uint month = 0; month < 12; ++month) {
 						x_label_width = std::max(x_label_width, GetStringBoundingBox(GetString(month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, STR_MONTH_ABBREV_JAN + month, year)).width);
-
-						month += this->month_increment;
-						if (month >= 12) {
-							month = 0;
-							year++;
-						}
 					}
 				} else {
 					/* Draw x-axis labels for graphs not based on quarterly performance (cargo payment rates). */
