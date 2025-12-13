@@ -428,7 +428,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 			}
 		}
 		/* give error cause if no bridges available here*/
-		if (!any_available) ret = type_check;
+		if (!any_available) ret = std::move(type_check);
 	}
 
 	if (!bl.empty()) {

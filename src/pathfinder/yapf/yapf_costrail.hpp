@@ -345,7 +345,6 @@ public:
 			if (segment_cost == 0) {
 				/* We just entered the loop. First transition cost goes to segment entry cost)*/
 				segment_entry_cost = transition_cost;
-				transition_cost = 0;
 
 				/* It is the right time now to look if we can reuse the cached segment cost. */
 				if (is_cached_segment) {
