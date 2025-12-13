@@ -263,6 +263,7 @@ enum Commands : uint8_t {
 
 	CMD_SET_COMPANY_MANAGER_FACE,     ///< set the manager's face of the company
 	CMD_SET_COMPANY_COLOUR,           ///< set the colour of the company
+	CMD_SET_COMPANY_BLOCK_PREVIEW,    ///< set the block_preview for the company
 
 	CMD_INCREASE_LOAN,                ///< increase the loan from the bank
 	CMD_DECREASE_LOAN,                ///< decrease the loan from the bank

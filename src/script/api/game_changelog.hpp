@@ -24,6 +24,8 @@
  * \li GSEventVehicleCrashed::GetVehicleOwner
  * \li GSEventCompanyRenamed
  * \li GSEventPresidentRenamed
+ * \li GSEventEnginePreviewAccepted
+ * \li GSEventEnginePreviewEnded
  * \li GSCargo::CC_OVERSIZED
  * \li GSCargo::CC_POWDERIZED
  * \li GSCargo::CC_NON_POURABLE
@@ -34,6 +36,8 @@
  * \li GSError::ERR_BRIDGE_TOO_LOW
  * \li GSEngine::GetAllRailTypes
  * \li GSTile::IsHouseTile
+ * \li GSCompany::SetBlockPreview
+ * \li GSCompany::GetBlockPreview
  *
  * Other changes:
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
