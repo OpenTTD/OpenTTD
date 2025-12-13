@@ -64,6 +64,8 @@ bool TrueTypeFontCache::GetDrawGlyphShadow()
 
 uint TrueTypeFontCache::GetGlyphWidth(GlyphID key)
 {
+	if ((key & SPRITE_GLYPH) != 0) return this->parent->GetGlyphWidth(key);
+
 	GlyphEntry *glyph = this->GetGlyphPtr(key);
 	if (glyph == nullptr || glyph->data == nullptr) {
 		this->GetGlyph(key);
@@ -75,6 +77,8 @@ uint TrueTypeFontCache::GetGlyphWidth(GlyphID key)
 
 const Sprite *TrueTypeFontCache::GetGlyph(GlyphID key)
 {
+	if ((key & SPRITE_GLYPH) != 0) return this->parent->GetGlyph(key);
+
 	/* Check for the glyph in our cache */
 	GlyphEntry *glyph = this->GetGlyphPtr(key);
 	if (glyph != nullptr && glyph->data != nullptr) return glyph->GetSprite();

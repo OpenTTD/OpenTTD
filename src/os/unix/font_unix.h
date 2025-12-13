@@ -19,7 +19,7 @@
 
 FT_Error GetFontByFaceName(std::string_view font_name, FT_Face *face);
 
-bool FontConfigFindFallbackFont(const std::string &language_isocode, FontSizes fontsizes, MissingGlyphSearcher *callback);
+bool FontConfigFindFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, MissingGlyphSearcher *callback);
 
 #endif /* WITH_FONTCONFIG */
 
