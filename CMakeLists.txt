@@ -449,6 +449,7 @@ if(WIN32)
         psapi
         winhttp
         bcrypt
+        xinput
     )
 endif()
 
