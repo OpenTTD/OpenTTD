@@ -34,6 +34,9 @@
  * \li GSError::ERR_BRIDGE_TOO_LOW
  * \li GSEngine::GetAllRailTypes
  * \li GSTile::IsHouseTile
+ * \li GSNews::NewsType::NT_PREVIEW_RESULT
+ * \li GSNews::NewsReferenceType::NR_ENGINE
+ * \li GSNews::CreateWithInfo
  *
  * Other changes:
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType

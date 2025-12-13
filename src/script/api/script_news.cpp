@@ -13,6 +13,7 @@
 #include "script_station.hpp"
 #include "script_map.hpp"
 #include "script_town.hpp"
+#include "script_engine.hpp"
 #include "script_error.hpp"
 #include "../../command_type.h"
 #include "../../string_func.h"
@@ -28,6 +29,7 @@ static NewsReference CreateReference(ScriptNews::NewsReferenceType ref_type, SQI
 		case ScriptNews::NR_STATION: return static_cast<StationID>(reference);
 		case ScriptNews::NR_INDUSTRY: return static_cast<IndustryID>(reference);
 		case ScriptNews::NR_TOWN: return static_cast<TownID>(reference);
+		case ScriptNews::NR_ENGINE: return static_cast<EngineID>(reference);
 		default: NOT_REACHED();
 	}
 }
@@ -40,15 +42,42 @@ static NewsReference CreateReference(ScriptNews::NewsReferenceType ref_type, SQI
 	EnforcePrecondition(false, text != nullptr);
 	EncodedString encoded = text->GetEncodedText();
 	EnforcePreconditionEncodedText(false, encoded);
-	EnforcePrecondition(false, type == NT_ECONOMY || type == NT_SUBSIDIES || type == NT_GENERAL);
+	EnforcePrecondition(false, type == NT_ECONOMY || type == NT_SUBSIDIES || type == NT_GENERAL || type == NT_PREVIEW_RESULT);
 	EnforcePrecondition(false, company == ScriptCompany::COMPANY_INVALID || ScriptCompany::ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID);
 	EnforcePrecondition(false, (ref_type == NR_NONE) ||
 	                           (ref_type == NR_TILE     && ScriptMap::IsValidTile(::TileIndex(reference))) ||
 	                           (ref_type == NR_STATION  && ScriptStation::IsValidStation(static_cast<StationID>(reference))) ||
 	                           (ref_type == NR_INDUSTRY && ScriptIndustry::IsValidIndustry(static_cast<IndustryID>(reference))) ||
-	                           (ref_type == NR_TOWN     && ScriptTown::IsValidTown(static_cast<TownID>(reference))));
+	                           (ref_type == NR_TOWN     && ScriptTown::IsValidTown(static_cast<TownID>(reference))) ||
+							   (ref_type == NR_ENGINE   && ScriptEngine::IsValidEngine(static_cast<EngineID>(reference))));
 
 	::CompanyID c = ScriptCompany::FromScriptCompanyID(company);
 
-	return ScriptObject::Command<CMD_CUSTOM_NEWS_ITEM>::Do((::NewsType)type, c, CreateReference(ref_type, reference), encoded);
+	return ScriptObject::Command<CMD_CUSTOM_NEWS_ITEM>::Do((::NewsType)type, c, CreateReference(ref_type, reference), encoded, encoded, {}, {});
+}
+
+/* static */ bool ScriptNews::CreateWithInfo(NewsType type, Text *text, ScriptCompany::CompanyID company, NewsReferenceType ref_type, SQInteger reference, Text *title, Text *additional_message1, Text *additional_message2)
+{
+	ScriptObjectRef counter(text);
+
+	EnforceDeityMode(false);
+	EnforcePrecondition(false, text != nullptr);
+	EncodedString encoded = text->GetEncodedText();
+	EnforcePreconditionEncodedText(false, encoded);
+	EnforcePrecondition(false, type == NT_ECONOMY || type == NT_SUBSIDIES || type == NT_GENERAL || type == NT_PREVIEW_RESULT);
+	EnforcePrecondition(false, company == ScriptCompany::COMPANY_INVALID || ScriptCompany::ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID);
+	EnforcePrecondition(false, (ref_type == NR_NONE) ||
+	                           (ref_type == NR_TILE     && ScriptMap::IsValidTile(::TileIndex(reference))) ||
+	                           (ref_type == NR_STATION  && ScriptStation::IsValidStation(static_cast<StationID>(reference))) ||
+	                           (ref_type == NR_INDUSTRY && ScriptIndustry::IsValidIndustry(static_cast<IndustryID>(reference))) ||
+	                           (ref_type == NR_TOWN     && ScriptTown::IsValidTown(static_cast<TownID>(reference))) ||
+							   (ref_type == NR_ENGINE   && ScriptEngine::IsValidEngine(static_cast<EngineID>(reference))));
+
+	::CompanyID c = ScriptCompany::FromScriptCompanyID(company);
+
+	EncodedString msg1 = additional_message1->GetEncodedText();
+	EncodedString msg2 = additional_message2->GetEncodedText();
+	EncodedString encoded_title = title->GetEncodedText();
+
+	return ScriptObject::Command<CMD_CUSTOM_NEWS_ITEM>::Do((::NewsType)type, c, CreateReference(ref_type, reference), encoded_title, encoded, msg1, msg2);
 }
