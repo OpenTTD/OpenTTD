@@ -119,14 +119,4 @@ inline int ScaleGUITrad(int value)
 	return value * _gui_scale / 100;
 }
 
-/**
- * Scale traditional pixel dimensions to font zoom level, for drawing sprite fonts.
- * @param value Pixel amount at #ZOOM_BASE (traditional "normal" interface size).
- * @return Pixel amount at _font_zoom (current interface size).
- */
-inline int ScaleFontTrad(int value)
-{
-	return UnScaleByZoom(value * ZOOM_BASE, _font_zoom);
-}
-
 #endif /* ZOOM_FUNC_H */
