@@ -229,6 +229,37 @@ public:
 template class SlStationSpecList<StationSpec>;
 template class SlStationSpecList<RoadStopSpec>;
 
+class SlStationWaitingTriggers : public DefaultSaveLoadHandler<SlStationWaitingTriggers, BaseStation> {
+public:
+	using StationWaitingTriggersPair = std::pair<const TileIndex, StationRandomTriggers>;
+
+	static inline const SaveLoad description[] = {
+		SLE_VAR(StationWaitingTriggersPair, first, SLE_UINT32),
+		SLE_VAR(StationWaitingTriggersPair, second, SLE_UINT8),
+	};
+	static inline const SaveLoadCompatTable compat_description = _station_cargo_sl_compat;
+
+	void Save(BaseStation *st) const override
+	{
+		SlSetStructListLength(st->tile_waiting_random_triggers.size());
+		for (const auto &pair : st->tile_waiting_random_triggers) {
+			SlObject(const_cast<StationWaitingTriggersPair *>(&pair), this->GetDescription());
+		}
+	}
+
+	void Load(BaseStation *st) const override
+	{
+		size_t num = SlGetStructListLength(UINT32_MAX);
+		if (num == 0) return;
+
+		StationWaitingTriggersPair pair;
+		for (uint j = 0; j < num; ++j) {
+			SlObject(&pair, this->GetLoadDescription());
+			st->tile_waiting_random_triggers.emplace(pair.first, pair.second);
+		}
+	}
+};
+
 class SlStationCargo : public DefaultSaveLoadHandler<SlStationCargo, GoodsEntry> {
 public:
 	static inline const SaveLoad description[] = {
@@ -563,6 +594,7 @@ public:
 		/* Used by newstations for graphic variations */
 		    SLE_VAR(BaseStation, random_bits,            SLE_UINT16),
 		    SLE_VARNAME(BaseStation, waiting_random_triggers, "waiting_triggers", SLE_UINT8),
+	   SLEG_STRUCTLIST("tile_waiting_triggers", SlStationWaitingTriggers),
 	   SLEG_CONDVAR("num_specs", SlStationSpecList<StationSpec>::last_num_specs, SLE_UINT8, SL_MIN_VERSION, SLV_SAVELOAD_LIST_LENGTH),
 	};
 	static inline const SaveLoadCompatTable compat_description = _station_base_sl_compat;
