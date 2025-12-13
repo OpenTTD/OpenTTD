@@ -1090,8 +1090,6 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Marker dette af
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Brug traditionel sprite-skrifttype
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Marker dette felt, hvis du foretrækker at bruge den traditionelle sprite-skrifttype med fast størrelse
-STR_GAME_OPTIONS_GUI_FONT_DEFAULT                               :Foretræk standardskrifttype
-STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP                       :Markér dette felt, hvis du foretrækker at bruge standardskrifttypen frem for fundne reserveskrifttyper
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Anti-alias skrifttyper
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Marker dette felt for at skrifttyper, der kan ændres størrelse, kan udlignes
 

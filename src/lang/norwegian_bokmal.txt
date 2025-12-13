@@ -1092,8 +1092,6 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Kryss av denne 
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Bruk tradisjonell sprite-skrift
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Kryss av denne knappen hvis du foretrekker den tradisjonelle sprite-skriften med fast størrelse
-STR_GAME_OPTIONS_GUI_FONT_DEFAULT                               :Foretrekk standard skrift
-STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP                       :Kryss av denne knappen hvis du foretrekker å bruke standard skrift over reserveskrifter
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Kantutjevning av skrift
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Kryss av denne knappen for å kantutjevne skalerbar skrift
 

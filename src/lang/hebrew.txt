@@ -1004,7 +1004,6 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :סמן תיבה
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :השתמש בגופן ספרייט מסורתי
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :סמן תיבה זו אם אתה מעדיף להשתמש בגופן הספרייט המסורתי בעל גודל קבוע
-STR_GAME_OPTIONS_GUI_FONT_DEFAULT                               :העדף גופן ברירת מחדל
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :גופנים חלקים
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :סמן תיבה זו כדי להחליק גופנים בעלי גודל משתנה
 

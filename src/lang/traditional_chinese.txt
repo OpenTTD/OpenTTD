@@ -1090,8 +1090,6 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :啟用後，使
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :使用傳統點陣式字體
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :啟用後，使用固定大小的傳統點陣式字體
-STR_GAME_OPTIONS_GUI_FONT_DEFAULT                               :使用預設字體
-STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP                       :啟用後，使用預設字體而非已發現的備用字體
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :反鋸齒字體
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :啟用後，使用反鋸齒字體
 

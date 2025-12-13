@@ -1090,8 +1090,6 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :勾选此框使
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :使用位图字体
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :勾选此框以使用固定大小的传统位图字体
-STR_GAME_OPTIONS_GUI_FONT_DEFAULT                               :使用默认字体
-STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP                       :启用后将使用游戏默认字体，不使用检测到的备用字体
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :字体抗锯齿
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :勾选此框以对游戏字体应用抗锯齿
 

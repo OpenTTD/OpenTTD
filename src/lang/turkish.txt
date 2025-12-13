@@ -1089,8 +1089,6 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Eğimi arayüz 
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                : Geleneksel yazı tipini kullan
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Yazı tipini geleneksel sabit boyutlu haline döndürmek için bu kutucuğu işaretleyin
-STR_GAME_OPTIONS_GUI_FONT_DEFAULT                               :Öntanımlı yazıtipini tercih et
-STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP                       :Bulunan yedek yazı tipleri yerine öntanımlı yazı tipini kullanmak için bu kutucuğu işaretleyin
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Yazı tipi kenarlarını yumuşatma
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Yeniden boyutlandırılabilir yazı tiplerinin kenarlarını yumuşatmak için bu kutucuğu işaretleyin
 
