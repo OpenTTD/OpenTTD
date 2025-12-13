@@ -12,6 +12,8 @@
 
 #include "misc/lrucache.hpp"
 #include "fontcache.h"
+#include "gfx_func.h"
+#include "core/math_func.hpp"
 
 #include <string_view>
 
@@ -20,13 +22,12 @@
  * of the same text, e.g. on line breaks.
  */
 struct FontState {
-	FontSize fontsize; ///< Current font size.
-	FontIndex font_index; ///< Current font index.
-	TextColour cur_colour; ///< Current text colour.
+	FontSize fontsize;       ///< Current font size.
+	TextColour cur_colour;   ///< Current text colour.
 	std::vector<TextColour> colour_stack; ///< Stack of colours to assist with colour switching.
 
-	FontState() : fontsize(FS_END), font_index(INVALID_FONT_INDEX), cur_colour(TC_INVALID) {}
-	FontState(TextColour colour, FontSize fontsize, FontIndex font_index) : fontsize(fontsize), font_index(font_index), cur_colour(colour) {}
+	FontState() : fontsize(FS_END), cur_colour(TC_INVALID) {}
+	FontState(TextColour colour, FontSize fontsize) : fontsize(fontsize), cur_colour(colour) {}
 
 	auto operator<=>(const FontState &) const = default;
 
@@ -66,7 +67,6 @@ struct FontState {
 	inline void SetFontSize(FontSize f)
 	{
 		this->fontsize = f;
-		this->font_index = FontCache::GetDefaultFontIndex(this->fontsize);
 	}
 };
 
@@ -85,10 +85,9 @@ template <> struct std::hash<FontState> {
 	std::size_t operator()(const FontState &state) const noexcept
 	{
 		size_t h1 = std::hash<FontSize>{}(state.fontsize);
-		size_t h2 = std::hash<FontIndex>{}(state.font_index);
-		size_t h3 = std::hash<TextColour>{}(state.cur_colour);
-		size_t h4 = std::hash<std::vector<TextColour>>{}(state.colour_stack);
-		return h1 ^ (h2 << 1) ^ (h3 << 2) ^ (h4 << 3);
+		size_t h2 = std::hash<TextColour>{}(state.cur_colour);
+		size_t h3 = std::hash<std::vector<TextColour>>{}(state.colour_stack);
+		return h1 ^ (h2 << 1) ^ (h3 << 2);
 	}
 };
 
@@ -97,14 +96,14 @@ template <> struct std::hash<FontState> {
  */
 class Font {
 public:
-	FontIndex font_index = INVALID_FONT_INDEX; ///< The font we are using.
-	TextColour colour = TC_INVALID; ///< The colour this font has to be.
+	FontCache *fc;     ///< The font we are using.
+	TextColour colour; ///< The colour this font has to be.
 
-	inline FontCache &GetFontCache() const { return *FontCache::Get(this->font_index); }
+	Font(FontSize size, TextColour colour);
 };
 
 /** Mapping from index to font. The pointer is owned by FontColourMap. */
-using FontMap = std::vector<std::pair<int, Font>>;
+using FontMap = std::vector<std::pair<int, Font *>>;
 
 /**
  * Interface to glue fallback and normal layouter into one.
@@ -130,7 +129,7 @@ public:
 	class VisualRun {
 	public:
 		virtual ~VisualRun() = default;
-		virtual const Font &GetFont() const = 0;
+		virtual const Font *GetFont() const = 0;
 		virtual int GetGlyphCount() const = 0;
 		virtual std::span<const GlyphID> GetGlyphs() const = 0;
 		virtual std::span<const Position> GetPositions() const = 0;
@@ -206,14 +205,18 @@ private:
 
 	static LineCacheItem &GetCachedParagraphLayout(std::string_view str, const FontState &state);
 
+	using FontColourMap = std::map<TextColour, std::unique_ptr<Font>>;
+	static FontColourMap fonts[FS_END];
 public:
+	static Font *GetFont(FontSize size, TextColour colour);
+
 	Layouter(std::string_view str, int maxw = INT32_MAX, FontSize fontsize = FS_NORMAL);
 	Dimension GetBounds();
 	ParagraphLayouter::Position GetCharPosition(std::string_view::const_iterator ch) const;
 	ptrdiff_t GetCharAtPosition(int x, size_t line_index) const;
 
 	static void Initialize();
-	static void ResetFontCache(FontSize fs);
+	static void ResetFontCache(FontSize size);
 	static void ResetLineCache();
 };
 
