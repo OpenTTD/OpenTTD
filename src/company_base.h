@@ -122,6 +122,12 @@ struct CompanyProperties {
 
 	EngineRenewList engine_renew_list = nullptr; ///< Engine renewals of this company.
 	CompanySettings settings{}; ///< settings specific for each company
+
+	RailTypes hidden_railtypes{}; ///< Whether the rail type is hidden in the dropdown for that company.
+	RoadTypes hidden_roadtypes{}; ///< Whether the road/tram type is hidden in the dropdown for that company.
+
+	RailTypes favourite_railtypes{}; ///< Whether the rail type is marked as favourite in the dropdown for that company.
+	RoadTypes favourite_roadtypes{}; ///< Whether the road/tram type is marked as favourite in the dropdown for that company.
 };
 
 struct Company : CompanyProperties, CompanyPool::PoolItem<&_company_pool> {
