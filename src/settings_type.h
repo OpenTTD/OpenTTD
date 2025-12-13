@@ -159,6 +159,13 @@ enum ScrollWheelScrollingSetting : uint8_t {
 	SWS_OFF = 2             ///< Scroll wheel has no effect.
 };
 
+/** Settings related to gamepad stick selection. */
+enum GamepadStickSelection : uint8_t {
+	GSS_DISABLED,           ///< Gamepad scrolling disabled.
+	GSS_LEFT_STICK,         ///< Use left analog stick for scrolling.
+	GSS_RIGHT_STICK,        ///< Use right analog stick for scrolling.
+};
+
 /** Settings related to the GUI and other stuff that is not saved in the savegame. */
 struct GUISettings {
 	bool   sg_full_load_any;                 ///< new full load calculation, any cargo must be full read from pre v93 savegames
@@ -202,6 +209,11 @@ struct GUISettings {
 	uint8_t  right_mouse_btn_emulation;        ///< should we emulate right mouse clicking?
 	uint8_t  scrollwheel_scrolling;            ///< scrolling using the scroll wheel?
 	uint8_t  scrollwheel_multiplier;           ///< how much 'wheel' per incoming event from the OS?
+	uint8_t  gamepad_deadzone;                 ///< deadzone for gamepad analog sticks (0-100)
+	uint8_t  gamepad_sensitivity;              ///< sensitivity multiplier for gamepad scrolling
+	bool     gamepad_invert_x;                 ///< invert X axis for gamepad scrolling?
+	bool     gamepad_invert_y;                 ///< invert Y axis for gamepad scrolling?
+	GamepadStickSelection gamepad_stick_selection; ///< which stick to use for scrolling (left/right/disabled)
 	bool   timetable_arrival_departure;      ///< show arrivals and departures in vehicle timetables
 	RightClickClose  right_click_wnd_close;  ///< close window with right click
 	bool   toolbar_dropdown_autoselect;      ///< should toolbar dropdown buttons autoselect when releasing the mouse button

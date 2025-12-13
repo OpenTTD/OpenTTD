@@ -19,6 +19,7 @@ extern bool _cocoa_video_started;
 @class OTTD_CocoaWindowDelegate;
 @class OTTD_CocoaWindow;
 @class OTTD_CocoaView;
+@class GCController;
 
 class VideoDriver_Cocoa : public VideoDriver {
 private:
@@ -84,8 +85,15 @@ protected:
 	/** Hand video buffer back to the drawing backend. */
 	virtual void ReleaseVideoPointer() {}
 
+	/* Gamepad support */
+	bool OpenGamepad() override;
+	void CloseGamepad() override;
+	void ProcessGamepadInput() override;
+
 private:
 	bool IsFullscreen();
+
+	GCController *gamepad_controller = nullptr; ///< Currently active gamepad controller
 };
 
 class VideoDriver_CocoaQuartz : public VideoDriver_Cocoa {
