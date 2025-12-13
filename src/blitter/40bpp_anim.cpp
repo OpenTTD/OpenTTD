@@ -213,7 +213,7 @@ inline void Blitter_40bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 							} else {
 								uint r = remap[m];
 								if (r != 0) {
-									*dst = this->ComposeColourPANoCheck(this->LookupColourInPalette(r), src_px->a, b);
+									*dst = this->ComposeColourPANoCheck(AdjustBrightness(this->LookupColourInPalette(r), GB(*src_n, 8, 8)), src_px->a, b);
 									*anim = 0; // Animation colours don't work with alpha-blending.
 								}
 							}
