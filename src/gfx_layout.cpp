@@ -10,15 +10,10 @@
 #include "stdafx.h"
 #include "core/math_func.hpp"
 #include "gfx_layout.h"
-#include "gfx_func.h"
 #include "string_func.h"
 #include "strings_func.h"
 #include "core/utf8.hpp"
 #include "debug.h"
-#include "timer/timer.h"
-#include "timer/timer_window.h"
-#include "viewport_func.h"
-#include "window_func.h"
 
 #include "table/control_codes.h"
 
@@ -41,50 +36,6 @@
 
 /** Cache of ParagraphLayout lines. */
 std::unique_ptr<Layouter::LineCache> Layouter::linecache;
-
-class RuntimeMissingGlyphSearcher : public MissingGlyphSearcher {
-	std::array<std::set<char32_t>, FS_END> glyphs{};
-public:
-	RuntimeMissingGlyphSearcher() : MissingGlyphSearcher(FONTSIZES_ALL) {}
-
-	FontLoadReason GetLoadReason() override { return FontLoadReason::MissingFallback; }
-
-	inline void Insert(FontSize fs, char32_t c)
-	{
-		this->glyphs[fs].insert(c);
-		this->search_timeout.Reset();
-	}
-
-	std::set<char32_t> GetRequiredGlyphs(FontSizes fontsizes) override
-	{
-		std::set<char32_t> r;
-		for (FontSize fs : fontsizes) {
-			r.merge(this->glyphs[fs]);
-		}
-		return r;
-	}
-
-	TimeoutTimer<TimerWindow> search_timeout{std::chrono::milliseconds(250), [this]()
-	{
-		FontSizes changed_fontsizes{};
-		for (FontSize fs = FS_BEGIN; fs != FS_END; ++fs) {
-			auto &missing = this->glyphs[fs];
-			if (missing.empty()) continue;
-
-			if (FontProviderManager::FindFallbackFont({}, fs, this)) changed_fontsizes.Set(fs);
-			missing.clear();
-		}
-
-		if (!changed_fontsizes.Any()) return;
-
-		FontCache::LoadFontCaches(changed_fontsizes);
-		LoadStringWidthTable(changed_fontsizes);
-		UpdateAllVirtCoords();
-		ReInitAllWindows(true);
-	}};
-};
-
-static RuntimeMissingGlyphSearcher _missing_glyphs;
 
 /**
  * Helper for getting a ParagraphLayouter of the given type.
@@ -147,7 +98,6 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
 			FontIndex font_index = FontCache::GetFontIndexForCharacter(state.fontsize, c);
 
 			if (font_index == INVALID_FONT_INDEX) {
-				_missing_glyphs.Insert(state.fontsize, c);
 				font_index = FontCache::GetDefaultFontIndex(state.fontsize);
 			}
 

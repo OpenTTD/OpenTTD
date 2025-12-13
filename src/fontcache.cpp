@@ -75,7 +75,6 @@ int FontCache::GetDefaultFontHeight(FontSize fs)
 
 	for (const auto &fc : FontCache::caches) {
 		if (fc == nullptr || fc->fs != fs) continue;
-		if (fc->load_reason == FontLoadReason::MissingFallback) continue; // Avoid dynamically loaded fonts affecting widget sizes.
 		ascender = std::max(ascender, fc->ascender);
 		descender = std::min(descender, fc->descender);
 	}
@@ -270,11 +269,10 @@ std::string GetFontCacheFontName(FontSize fs)
 	}
 }
 
-/* static */ void FontCache::LoadFallbackFonts(FontSize fs, FontLoadReason load_reason)
+/* static */ void FontCache::LoadFallbackFonts(FontSize fs)
 {
 	const FontCacheSubSetting *setting = GetFontCacheSubSetting(fs);
 	for (auto it = setting->fallback_fonts.rbegin(); it != setting->fallback_fonts.rend(); ++it) {
-		if (it->load_reason != load_reason) continue;
 		FontCache::Register(FontProviderManager::LoadFont(fs, FontType::TrueType, false, it->name, it->os_handle), it->load_reason);
 	}
 }
@@ -320,15 +318,12 @@ std::string GetFontCacheFontName(FontSize fs)
 			if (std::ranges::find(fontnames, extra_font) == std::end(fontnames)) fontnames.push_back(extra_font);
 		}
 
-		/* First load fonts for missing glyphs discovered during string formatting. */
-		FontCache::LoadFallbackFonts(fs, FontLoadReason::MissingFallback);
-
 		/* Load configured fonts in reverse order so that the first entry has priority. */
 		for (auto it = fontnames.rbegin(); it != fontnames.rend(); ++it) {
 			if (*it == DEFAULT_FONT) {
 				FontCache::LoadDefaultFonts(fs);
 			} else if (*it == FALLBACK_FONT) {
-				FontCache::LoadFallbackFonts(fs, FontLoadReason::LanguageFallback);
+				FontCache::LoadFallbackFonts(fs);
 			} else {
 				FontCache::Register(FontProviderManager::LoadFont(fs, FontType::TrueType, true, std::string{*it}, {}), FontLoadReason::Configured);
 			}
