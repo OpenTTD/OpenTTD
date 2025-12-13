@@ -1010,13 +1010,15 @@ struct QueryStringWindow : public Window
 
 	void Close([[maybe_unused]] int data = 0) override
 	{
-		if (this->parent->window_class == WC_STATION_VIEW) SetViewportStationRect(Station::Get(this->parent->window_number), false);
-		if (this->parent->window_class == WC_WAYPOINT_VIEW) SetViewportWaypointRect(Waypoint::Get(this->parent->window_number), false);
+		if (this->parent != nullptr) {
+			if (this->parent->window_class == WC_STATION_VIEW) SetViewportStationRect(Station::Get(this->parent->window_number), false);
+			if (this->parent->window_class == WC_WAYPOINT_VIEW) SetViewportWaypointRect(Waypoint::Get(this->parent->window_number), false);
 
-		if (!this->editbox.handled && this->parent != nullptr) {
-			Window *parent = this->parent;
-			this->parent = nullptr; // so parent doesn't try to close us again
-			parent->OnQueryTextFinished(std::nullopt);
+			if (!this->editbox.handled) {
+				Window *parent = this->parent;
+				this->parent = nullptr; // so parent doesn't try to close us again
+				parent->OnQueryTextFinished(std::nullopt);
+			}
 		}
 
 		this->Window::Close();
