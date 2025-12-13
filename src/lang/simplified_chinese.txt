@@ -2878,8 +2878,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :外郊区
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :内郊区
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :城镇中心
 
+STR_HOUSE_PICKER_PROTECT                                        :阻止重盖建筑
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :选择是否保护房屋以防止房屋随着城镇发展被替换
 
+STR_HOUSE_PICKER_REPLACE                                        :替换现有建筑
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :选择是否自动移除选中格子上已经存在的房屋
 
 STR_STATION_CLASS_DFLT                                          :默认
 STR_STATION_CLASS_DFLT_STATION                                  :默认车站

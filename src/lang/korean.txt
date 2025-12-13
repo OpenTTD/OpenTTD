@@ -2879,8 +2879,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :바깥쪽 시�
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :안쪽 시내
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :도시 중심
 
+STR_HOUSE_PICKER_PROTECT                                        :업그레이드 방지
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :이 건물이 도시가 성장함에 따라 교체되는 것을 막을지 여부를 선택합니다
 
+STR_HOUSE_PICKER_REPLACE                                        :이미 설치된 것 교체
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :이 건물이 배치된 칸에서 기존 건물을 자동으로 제거할지 여부를 선택합니다
 
 STR_STATION_CLASS_DFLT                                          :기본
 STR_STATION_CLASS_DFLT_STATION                                  :기본 역

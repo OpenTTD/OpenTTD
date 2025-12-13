@@ -254,6 +254,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL} kN
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} fod
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
+STR_UNITS_HEIGHT_GAMEUNITS                                      :{DECIMAL}{NBSP}level{P "" s}
 
 # Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}dag{P "" s}
@@ -311,6 +312,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Ved at a
 STR_BUTTON_DEFAULT                                              :{BLACK}Standard
 STR_BUTTON_CANCEL                                               :{BLACK}Annullér
 STR_BUTTON_OK                                                   :{BLACK}OK
+STR_BUTTON_MOVE                                                 :{BLACK}Flyt
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-= qwertyuiop[]asdfghjkl;'#\zxcvbnm,./ .
@@ -2162,6 +2164,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Når højde er 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperisk (fod)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisk (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_GAMEUNITS          :Spillenheder (levels)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :Lokalisering
 STR_CONFIG_SETTING_GRAPHICS                                     :Grafiksæt / Manglende grafik
@@ -2859,15 +2862,15 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Vælg en byzone
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Vælg en hustype at bygge. Ctrl+klik for at tilføje eller fjerne i gemte elementer
 
 STR_HOUSE_PICKER_CAPTION                                        :Husvalg
-STR_HOUSE_PICKER_NAME                                           :{BLACK}Navn: {ORANGE}{STRING}
-STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Befolkning: {ORANGE}{NUM}
-STR_HOUSE_PICKER_YEARS                                          :{BLACK}År: {ORANGE}{NUM}-{NUM}
-STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}År: {ORANGE}Any
-STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}År: {ORANGE}Fra {NUM}
-STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}År: {ORANGE}til {NUM}
-STR_HOUSE_PICKER_SIZE                                           :{BLACK}Størrelse: {ORANGE}{NUM}x{NUM} fliser
-STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Gods accepteret: {ORANGE}
-STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Produceret last: {ORANGE}{CARGO_LIST}
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Navn: {GOLD}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Befolkning: {GOLD}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}År: {GOLD}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}År: {GOLD}Any
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}År: {GOLD}From {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}År: {GOLD}til {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Størrelse: {GOLD}{NUM}x{NUM} fliser
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Last accepteret: {GOLD}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Produceret last: {GOLD}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Kant
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Udkant
@@ -2875,8 +2878,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Ydre Forstæder
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Indre Forstæder
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Bymidte
 
+STR_HOUSE_PICKER_PROTECT                                        :Forhindre opgraderinger
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Vælg om dette hus skal beskyttes mod udskiftning i takt med at byen vokser
 
+STR_HOUSE_PICKER_REPLACE                                        :Erstat eksisterende
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Vælg om et eksisterende hus automatisk skal fjernes på den flise, hvor dette hus er placeret
 
 STR_STATION_CLASS_DFLT                                          :Standard station
 STR_STATION_CLASS_DFLT_STATION                                  :Standard station
@@ -3423,6 +3429,10 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Nordvest
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Nordøst
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Sydøst
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Sydvest
+STR_MAPGEN_NORTHWEST_TOOLTIP                                    :Skift mellem vand- eller friformskant på den nordvestlige kortkant
+STR_MAPGEN_NORTHEAST_TOOLTIP                                    :Skift mellem vand- eller friformskant på den nordøstlige kortkant
+STR_MAPGEN_SOUTHEAST_TOOLTIP                                    :Skift mellem vand- eller friformskant på den sydøstlige kortkant
+STR_MAPGEN_SOUTHWEST_TOOLTIP                                    :Skift mellem vand- eller friformskant på den sydvestlige kortkant
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Fri udformning
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vand
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Tilfældige
@@ -3469,6 +3479,8 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Landskab
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Flod-generering
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generer råt og stenet område
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}By generation
+STR_GENERATION_LAND_INDUSTRY_GENERATION                         :{BLACK}Generering af jordindustrien
+STR_GENERATION_WATER_INDUSTRY_GENERATION                        :{BLACK}Generering af vandindustrien
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ikke-flytbar generering
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Trægenerering
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Klargør spil
@@ -3677,7 +3689,7 @@ STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Match st
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Vis matchende stort/lille bogstav når der sammenlignes skiltenavne med filter teksten
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Ændre skiltets tekst
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Rediger skilt
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Centrér skærmen ved skiltets placering. Ctrl+klik åbner et nyt vindue ved skiltets placering
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Gå til næste skilt
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Gå til forrige skilt
@@ -3894,12 +3906,14 @@ STR_CARGO_RATING_EXCELLENT                                      :Fortrinlig
 STR_CARGO_RATING_OUTSTANDING                                    :Enestående
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrer skærmen over stationens lokalitet. Ctrl+Klik åbner et nyt vindue ved stationens lokalitet.
+STR_STATION_VIEW_EDIT_TOOLTIP                                   :{BLACK}Omdøb station eller flyt skilt
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Vis alle toge, som har denne station i deres ruteplan
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Vis alle køretøjer, som har denne station i deres ruteplan
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Vis alle fly, som har denne lufthavn i deres ruteplan
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Vis alle skibe, som har denne station i deres ruteplan
 
+STR_STATION_VIEW_EDIT_STATION_SIGN                              :{WHITE}Rediger stationsskilt
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Luk lufthavn
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Forhindre at fly lander i denne lufthavn
@@ -3907,9 +3921,11 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Forhindr
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrer skærmen over rutepunktets lokalitet. Ctrl+Klik åbner et nyt vindue ved rutepunktets lokalitet.
+STR_WAYPOINT_VIEW_EDIT_TOOLTIP                                  :{BLACK}Omdøb rutepunkt eller flyt skilt
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrér skærmen ved bøjens placering. Ctrl+klik åbner et nyt vindue ved bøjens placering
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Ændr navnet på bøjen
 
+STR_WAYPOINT_VIEW_EDIT_WAYPOINT_SIGN                            :{WHITE}Rediger rutepunkt skilt
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finanser {BLACK}{COMPANY_NUM}
@@ -5123,6 +5139,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}For mang
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}For tæt på en anden havn
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}For tæt på en anden lufthavn
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kan ikke omdøbe stationen...
+STR_ERROR_CAN_T_MOVE_STATION_NAME                               :{WHITE}Kan ikke flytte stationsskiltet...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... denne vej er ejet af en by
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... vejen peger i den forkerte retning
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... drive-through stops kan ikke have hjørner
@@ -5154,6 +5171,7 @@ STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}Kan ikke
 STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Kan ikke bygge rutepunkt her...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kan ikke placere en bøje her...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan ikke omdøbe rutepunkt...
+STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :{WHITE}Kan ikke flytte rutepunkt skiltet...
 
 STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Kan ikke fjerne rutepunkt for tog her...
 STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Kan ikke fjerne rutepunkt...
@@ -5262,6 +5280,13 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start- o
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... begge ender af en bro skal være på land
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... broen er for lang
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Broen ville slutte udenfor kortet
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Broen er {HEIGHT} for lav til en station
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Broen er {HEIGHT} for lav til et vej stoppested
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Broen er {HEIGHT} for lav til havnen
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE} Broen er {HEIGHT}  for lav til en bøje
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Broen er  {HEIGHT} for lav til et rutepunkt
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Broen er {HEIGHT} for lav til et rutepunkt
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Bro er {HEIGHT} for lav til slusen
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kan ikke bygge en tunnel her...

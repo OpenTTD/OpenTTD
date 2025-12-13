@@ -219,15 +219,15 @@ STR_UNITS_VELOCITY_GAMEUNITS_SEC                                :{DECIMAL}{NBSP}
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}nós
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}hp
-STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}hp
+STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}cv
 STR_UNITS_POWER_SI                                              :{DECIMAL}{NBSP}kW
 
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}{NBSP}hp/t
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}hp/t
-STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI                           :{DECIMAL}{NBSP}hp/t
-STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}hp/t
-STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}hp/t
-STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI                           :{DECIMAL}{NBSP}hp/Mg
+STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}cv/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}cv/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}cv/Mg
 STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}kW/t
 STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}{NBSP}kW/t
 STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}W/kg
@@ -1091,8 +1091,6 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Marque esta cai
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Usar a fonte fixa tradicional
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Marque esta caixa se preferir usar o tipo de fonte tradicional de tamanho fixo
-STR_GAME_OPTIONS_GUI_FONT_DEFAULT                               :Usar fonte padrão
-STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP                       :Marque esta opção para usar a fonte padrão em vez das fontes alternativas encontradas no sistema
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Fontes com contornos suaves
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Marque esta caixa para usar fontes redimensionáveis com contornos suaves
 
@@ -2137,7 +2135,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unidades de pot
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Sempre que a potência de um veículo for exibida na interface de usuário, mostrar nessas unidades
 ###length 3
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Imperial (hp)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Métrico (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Métrico (cv)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Unidades de peso: {STRING}
@@ -2881,8 +2879,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Periferia Dista
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Periferia Próxima
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centro da cidade
 
+STR_HOUSE_PICKER_PROTECT                                        :Impedir atualizações
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Escolher se essa casa será protegida contra substituição quando a cidade crescer
 
+STR_HOUSE_PICKER_REPLACE                                        :Substituir existentes
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Escolha se deseja remover automaticamente a casa existente no local onde esta casa será colocada
 
 STR_STATION_CLASS_DFLT                                          :Padrão
 STR_STATION_CLASS_DFLT_STATION                                  :Estação padrão
