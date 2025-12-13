@@ -1183,8 +1183,6 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Τσεκάρε�
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Χρήση παραδοσιακής γραμματοσειράς
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Τσεκάρετε αυτό το κουτάκι εάν προτιμάτε να χρησιμοποιήσετε την παραδοσιακή γραμματοσειρά σταθερού μεγέθους
-STR_GAME_OPTIONS_GUI_FONT_DEFAULT                               :Προτίμησε την προεπιλεγμένη γραμματοσειρά
-STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP                       :Επιλέξτε αυτό το πλαίσιο αν προτιμάτε να χρησιμοποιήσετε την προεπιλεγμένη γραμματοσειρά αντί για τις ανακαλυφθείσες εφεδρικές γραμματοσειρές
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Εξομάλυνση εμφάνισης γραμματοσειράς
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Τσεκάρετε αυτό το κουτάκι για εξομάλυνση εμφάνισης γραμματοσειράς μεταβλητού μεγέθους
 
@@ -2973,8 +2971,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Εξωτερι�
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Εσωτερικά Προάστια
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Κέντρο της πόλης
 
+STR_HOUSE_PICKER_PROTECT                                        :Αποτροπή αναβαθμίσεων
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Επιλέξτε αν αυτό το σπίτι θα προστατεύεται από αντικατάσταση καθώς η πόλη μεγαλώνει
 
+STR_HOUSE_PICKER_REPLACE                                        :Αντικατάσταση υπάρχοντος
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Επιλέξτε εάν θα αφαιρεθεί αυτόματα ένα υπάρχον σπίτι στο πλακίδιο όπου τοποθετείται αυτό το σπίτι
 
 STR_STATION_CLASS_DFLT                                          :Προεπιλεγμένος
 STR_STATION_CLASS_DFLT_STATION                                  :Προεπιλεγμένος σταθμός

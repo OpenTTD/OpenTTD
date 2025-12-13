@@ -2880,8 +2880,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Ytre forsteder
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Indre forsteder
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Bysentrum
 
+STR_HOUSE_PICKER_PROTECT                                        :Forhindre oppgraderinger
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Velg hvorvidt dette huset skal være beskyttet mot å bli byttet ut når byen vokser
 
+STR_HOUSE_PICKER_REPLACE                                        :Erstatt eksisterende
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Velg hvorvidt eksisterende hus skal fjernes automatisk på ruten hvor dette huset blir plassert
 
 STR_STATION_CLASS_DFLT                                          :Standard
 STR_STATION_CLASS_DFLT_STATION                                  :Standard stasjon

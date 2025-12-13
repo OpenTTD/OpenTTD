@@ -1470,8 +1470,6 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Zaznacz to pole
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Użyj tradycyjnego fonta typu sprite
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Zaznacz to pole, jeśli wolisz używać tradycyjnego fonta typu sprite o stałym rozmiarze
-STR_GAME_OPTIONS_GUI_FONT_DEFAULT                               :Preferuj font domyślny
-STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP                       :Zaznacz to pole, jeśli wolisz używać fontu domyślnego zamiast wykrytych fontów zastępczych
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Wygładzanie fontów
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Zaznacz to pole, aby wygładzać fonty o zmiennym rozmiarze
 
@@ -2661,7 +2659,7 @@ STR_HELP_WINDOW_README                                          :{BLACK}Plik „
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Lista Zmian
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Znane Błędy
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}Licencja
-STR_HELP_WINDOW_FONTS                                           :{BLACK}Fonty
+STR_HELP_WINDOW_FONTS                                           :{BLACK}Fonty (pot. czcionki)
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Podręcznik / Wiki
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Zgłoś Błąd
@@ -3260,8 +3258,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Przedmieścia z
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Przedmieścia wewnętrzne
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centrum miasta
 
+STR_HOUSE_PICKER_PROTECT                                        :Zapobiegaj modernizacji
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Określ, czy ten budynek ma być chroniony przed zastąpieniem w miarę rozwoju miasta
 
+STR_HOUSE_PICKER_REPLACE                                        :Zastąp istniejące budynki
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Określ, czy chcesz budować nowe budunki w miejscu innych budynków. Jeśli tak, to stary budunek zostanie automatycznie usunięty, jeśli nie, to w wypadku takiej próby umieszczenia zostanie wyświetlony komunikat o błędnym umiejscowieniu budunku
 
 STR_STATION_CLASS_DFLT                                          :Standardowa
 STR_STATION_CLASS_DFLT_STATION                                  :Standardowa stacja
@@ -3961,11 +3962,11 @@ STR_SPRITE_ALIGNER_CAPTION_NO_ACTION                            :{WHITE}Wyrówny
 STR_SPRITE_ALIGNER_CAPTION_ACTIONA                              :{WHITE}Wyrównywanie sprite'a: Action 0xA, {COMMA} ({STRING}:{NUM})
 STR_SPRITE_ALIGNER_CAPTION_ACTION5                              :{WHITE}Wyrównywanie sprite'a: Action 0x5, typ {HEX}, {COMMA} ({STRING}:{NUM})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Następny sprite
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Idź do następnego normalnego sprite'a, pomijając jakiekolwiek pseudo / przebarwione / czcionkowe sprite'y, a po ostatnim przejdź do pierwszego
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Idź do następnego sprite'a (pomijając sprite'y: pseudo, zmiany kolorów, fontów), a po ostatnim przejdź do pierwszego
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Idź do sprite'a
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Idź do danego sprite'a. Jeśli dany sprite nie jest normalnym spritem, przejdź do następnego normalnego sprite'a
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Poprzedni sprite
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Idź do poprzedniego normalnego sprite'a, pomijając jakiekolwiek pseudo / przebarwione / czcionkowe sprite'y, a po pierwszym przejdź do ostatniego
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Idź do poprzedniego sprite'a (pomijając sprite'y: pseudo, zmiany kolorów, fontów), a po pierwszym przejdź do ostatniego
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Prezentacja wybranego sprite'a. Wyrównanie jest ignorowane podczas rysowania tego sprite'a
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Poruszaj spritem, zmieniając przesunięcia X i Y. Użyj Ctrl, aby przesunąć o 8 jednostek  na raz
 STR_SPRITE_ALIGNER_SPRITE                                       :{STRING}:{NUM}
@@ -5334,8 +5335,8 @@ STR_TEXTFILE_JUMPLIST_TOOLTIP                                   :{BLACK}Przeskoc
 STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
 STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Cofnij się w historii nawigacji
 STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Powrót do przodu w historii nawigacji
-STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Zawijaj tekst
-STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Zawiń tekst w oknie, aby zmieścił się bez konieczności przewijania
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Zawijaj wiersze
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Zawiń tekst, aby zmieścił się w oknie bez konieczności przewijania w poziomie
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Plik „readme”
 STR_TEXTFILE_VIEW_README_TOOLTIP                                :Wyświetl plik „readme” dla tej zawartości
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Lista zmian

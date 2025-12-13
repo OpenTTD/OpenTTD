@@ -1705,7 +1705,7 @@ STR_CONFIG_SETTING_LIVERIES_NONE                                :不顯示
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :自家公司
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :所有公司
 
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :傾向以 <ENTER> 鍵開啟小隊交談功能：{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :使用 <Enter> 與隊伍聊天：{STRING}
 STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :選擇是否以 <ENTER> 鍵取代 <Ctrl+ENTER> 鍵作切換公眾交談窗與公司內部交談窗之用。
 
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :滾輪地圖捲動速度：{STRING}
@@ -2878,8 +2878,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :遠郊
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :近郊
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :市鎮中心
 
-STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :選擇是否要保護房屋以免房屋隨著市鎮的發展而被替換
+STR_HOUSE_PICKER_PROTECT                                        :防止升級
+STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :選擇是否保護房屋以免房屋隨著市鎮發展而被替換
 
+STR_HOUSE_PICKER_REPLACE                                        :替換現有
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :選擇是否自動移除該房屋所在地上的現有房屋
 
 STR_STATION_CLASS_DFLT                                          :預設
 STR_STATION_CLASS_DFLT_STATION                                  :預設車站

@@ -1090,8 +1090,6 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Valitse tämä 
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Käytä perinteistä sprite-fonttia
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Valitse tämä ruutu käyttääksesi perinteistä kiinteäkokoista sprite-kirjasintyyppiä
-STR_GAME_OPTIONS_GUI_FONT_DEFAULT                               :Suosi oletusfonttia
-STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP                       :Valitse tämä ruutu, jos haluat käyttää oletuskirjaintyyppiä löydettyjen varafonttien sijaan
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Pehmennä kirjasinten reunoja
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Valitse tämä ruutu pehmentääksesi muuttuvan kokoisten fonttien reunoja
 
@@ -2880,8 +2878,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Ulommat lähiö
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Sisemmät lähiöt
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Keskusta
 
+STR_HOUSE_PICKER_PROTECT                                        :Estä parannukset
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Valitse, suojataanko tämä talo korvaamiselta kunnan kasvaessa
 
+STR_HOUSE_PICKER_REPLACE                                        :Korvaa entinen
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Valitse, poistetaanko olemassa oleva talo automaattisesti ruudulta, jolle taloa sijoitetaan
 
 STR_STATION_CLASS_DFLT                                          :Oletus
 STR_STATION_CLASS_DFLT_STATION                                  :Oletusasema
@@ -4638,10 +4639,10 @@ STR_ORDER_GO_VIA                                                :Mene kautta
 STR_ORDER_GO_NON_STOP_VIA                                       :Mene pysähtymättä kautta
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Muuta korostetun käskyn pysähtymiskäyttäytymistä
 
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Lastaa täyteen mikä tahansa rahtityyppi
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Lastaa täyteen mitä tahansa rahtia
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Lastaa jos saatavilla
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Lastaa täyteen kaikki rahtityypit
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Lastaa täyteen mikä tahansa rahtityyppi
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Lastaa täyteen mitä tahansa rahtia
 STR_ORDER_DROP_NO_LOADING                                       :Älä lastaa rahtia
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Muuta korostetun käskyn lastauskäyttäytymistä
 
@@ -4713,7 +4714,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Mene lähimmäl
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Mene lähimpään lentokonehalliin
 STR_ORDER_CONDITIONAL                                           :Ehdollinen hyppykäsky
 STR_ORDER_SHARE                                                 :Jaa käskyt
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Lisää uuden käskyn ennen valittua, tai lisää listan viimeiseksi. Ctrl+napsautuksella asemakäskyistä tulee ”lastaa täyteen mikä tahansa rahti”, reittipistekäskyille ”oletuksena pysähtymättä” -asetuksen vastakohta, ja veturitallikäskyistä tulee ”sumanpurku”. Napsauta toista kulkuneuvoa kopioidaksesi sen käskyt tai Ctrl+napsauta luodaksesi jaetun käskyn. Tallikäsky poistaa automaattiset huollot
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Lisää uuden käskyn ennen valittua, tai lisää listan viimeiseksi. Ctrl+napsautuksella asemakäskyistä tulee ”lastaa täyteen mitä tahansa rahtia”, reittipistekäskyillä ”oletuksena pysähtymättä” -asetuksen vastakohta, ja varikkokäskyistä tulee ”sumanpurku”. Napsauta toista kulkuneuvoa kopioidaksesi sen käskyt tai Ctrl+napsauta luodaksesi jaetun käskyn. Varikkokäsky poistaa kulkuneuvon automaattiset huollot käytöstä
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Näytä kaikki kulkuneuvot, jotka jakavat nämä käskyt
 
@@ -4763,7 +4764,7 @@ STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{SPACE}(Ei purk
 
 STR_ORDER_AUTO_REFIT                                            :{SPACE}(Sovita rahdille {STRING})
 STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Sovita rahdille {STRING} ja lastaa täyteen)
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Sovita rahdille {STRING} ja lastaa täyteen mitä tahansa rahtia)
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Sovita rahdille {STRING} ja lastaa täyteen)
 STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Pura lasti, sovita rahdille {STRING}, ota rahti)
 STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Pura lasti, sovita rahdille {STRING}, odota täyttä lastia)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Pura lasti, sovita rahdille {STRING}, odota mitä tahansa täyttä lastia)
