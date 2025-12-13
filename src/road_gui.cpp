@@ -1200,6 +1200,7 @@ public:
 
 	StringID GetClassTooltip() const override;
 	StringID GetTypeTooltip() const override;
+	StringID GetCollectionTooltip() const override;
 
 	bool IsActive() const override
 	{
@@ -1290,9 +1291,11 @@ public:
 
 template <> StringID RoadStopPickerCallbacks<RoadStopType::Bus>::GetClassTooltip() const { return STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP; }
 template <> StringID RoadStopPickerCallbacks<RoadStopType::Bus>::GetTypeTooltip() const { return STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP; }
+template <> StringID RoadStopPickerCallbacks<RoadStopType::Bus>::GetCollectionTooltip() const { return STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP; }
 
 template <> StringID RoadStopPickerCallbacks<RoadStopType::Truck>::GetClassTooltip() const { return STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP; }
 template <> StringID RoadStopPickerCallbacks<RoadStopType::Truck>::GetTypeTooltip() const { return STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP; }
+template <> StringID RoadStopPickerCallbacks<RoadStopType::Truck>::GetCollectionTooltip() const { return STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP; }
 
 static RoadStopPickerCallbacks<RoadStopType::Bus> _bus_callback_instance("fav_passenger_roadstops");
 static RoadStopPickerCallbacks<RoadStopType::Truck> _truck_callback_instance("fav_freight_roadstops");
@@ -1632,6 +1635,7 @@ public:
 
 	StringID GetClassTooltip() const override { return STR_PICKER_WAYPOINT_CLASS_TOOLTIP; }
 	StringID GetTypeTooltip() const override { return STR_PICKER_WAYPOINT_TYPE_TOOLTIP; }
+	StringID GetCollectionTooltip() const override { return STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP; }
 
 	bool IsActive() const override
 	{
