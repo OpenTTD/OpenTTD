@@ -1,5 +1,13 @@
 ## 15.x
 
+### 15.0-RC2 (2025-12-13)
+
+- Fix #14677: Desync due to using newgame time settings to validate savegame time settings (#14904)
+- Fix: Graph label allocated size could be too small (#14901)
+- Fix #14891: Minimum sprite zoomlevel could break in some cases showing placeholder sprites instead (#14894)
+- Fix #14889: [FluidSynth] Don't try to load a soundfont that doesn't exist (#14890)
+- Revert: Dynamic font loading changes removed (#14903)
+
 ### 15.0-RC1 (2025-12-07)
 
 - Feature: Automatically load extra fonts for missing glyphs (#13303, #14856)
