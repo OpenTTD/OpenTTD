@@ -1757,11 +1757,13 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 		const Industry *i = Industry::Get(this->window_number);
 
 		this->data.clear();
+		this->data.reserve(
+			2 * std::ranges::count_if(i->produced, &IsValidCargoType, &Industry::ProducedCargo::cargo) +
+			2 * std::ranges::count_if(i->accepted, &IsValidCargoType, &Industry::AcceptedCargo::cargo));
+
 		for (const auto &p : i->produced) {
 			if (!IsValidCargoType(p.cargo)) continue;
 			const CargoSpec *cs = CargoSpec::Get(p.cargo);
-
-			this->data.reserve(this->data.size() + 2);
 
 			DataSet &produced = this->data.emplace_back();
 			produced.colour = cs->legend_colour;
@@ -1782,8 +1784,6 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 		for (const auto &a : i->accepted) {
 			if (!IsValidCargoType(a.cargo)) continue;
 			const CargoSpec *cs = CargoSpec::Get(a.cargo);
-
-			this->data.reserve(this->data.size() + 2);
 
 			DataSet &accepted = this->data.emplace_back();
 			accepted.colour = cs->legend_colour;
