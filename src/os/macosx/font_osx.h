@@ -22,7 +22,7 @@ class CoreTextFontCache : public TrueTypeFontCache {
 	std::string font_name;                        ///< Cached font name.
 
 	void SetFontSize(int pixels);
-	const Sprite *InternalGetGlyph(GlyphID key, bool use_aa) override;
+	TrueTypeFontCache::GlyphEntry *InternalGetGlyph(GlyphID key, bool use_aa) override;
 public:
 	CoreTextFontCache(FontSize fs, CFAutoRelease<CTFontDescriptorRef> &&font, int pixels);
 	~CoreTextFontCache() {}

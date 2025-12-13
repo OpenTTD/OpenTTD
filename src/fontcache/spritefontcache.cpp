@@ -8,6 +8,7 @@
 /** @file spritefontcache.cpp Sprite fontcache implementation. */
 
 #include "../stdafx.h"
+#include "../blitter/base.hpp"
 #include "../fontcache.h"
 #include "../gfx_layout.h"
 #include "../spritecache.h"
@@ -20,6 +21,8 @@
 #include "../table/unicode.h"
 
 #include "../safeguards.h"
+
+extern void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = nullptr, SpriteID sprite_id = SPR_CURSOR_MOUSE, ZoomLevel zoom = ZoomLevel::Min);
 
 static const int ASCII_LETTERSTART = 32; ///< First printable ASCII letter.
 
@@ -128,11 +131,12 @@ int SpriteFontCache::GetGlyphYOffset()
 	return FontCache::GetFontBaseline(this->fs) - this->scaled_ascender;
 }
 
-const Sprite *SpriteFontCache::GetGlyph(GlyphID key)
+void SpriteFontCache::DrawGlyph(GlyphID key, const Rect &r)
 {
-	SpriteID sprite = static_cast<SpriteID>(key);
-	if (sprite == 0) sprite = GetUnicodeGlyph(this->fs, '?');
-	return GetSprite(sprite, SpriteType::Font);
+	SpriteID spriteid = static_cast<SpriteID>(key);
+	if (spriteid == 0) spriteid = GetUnicodeGlyph(this->fs, '?');
+	const Sprite *sprite = GetSprite(spriteid, SpriteType::Font);
+	GfxMainBlitter(sprite, r.left, r.top, BlitterMode::ColourRemap);
 }
 
 uint SpriteFontCache::GetGlyphWidth(GlyphID key)
@@ -148,11 +152,6 @@ GlyphID SpriteFontCache::MapCharToGlyph(char32_t key)
 	SpriteID sprite = GetUnicodeGlyph(this->fs, key);
 	if (sprite == 0) return 0;
 	return static_cast<GlyphID>(sprite);
-}
-
-bool SpriteFontCache::GetDrawGlyphShadow()
-{
-	return false;
 }
 
 class SpriteFontCacheFactory : public FontCacheFactory {

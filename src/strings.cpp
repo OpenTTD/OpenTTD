@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "currency.h"
+#include "newgrf_badge.h"
 #include "station_base.h"
 #include "town.h"
 #include "waypoint_base.h"
@@ -39,6 +40,7 @@
 #include "gfx_layout.h"
 #include "core/utf8.hpp"
 #include "core/string_consumer.hpp"
+#include "iconglyphs.h"
 #include <stack>
 
 #include "table/strings.h"
@@ -58,6 +60,8 @@ TextDirection _current_text_dir; ///< Text direction of the currently selected l
 #ifdef WITH_ICU_I18N
 std::unique_ptr<icu::Collator> _current_collator;    ///< Collator for the language currently in use.
 #endif /* WITH_ICU_I18N */
+
+IconGlyphs _icon_glyphs;
 
 /**
  * Get the next parameter from our parameters.
@@ -1827,6 +1831,39 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 				case SCC_COLOUR: { // {COLOUR}
 					StringControlCode scc = (StringControlCode)(SCC_BLUE + args.GetNextParameter<Colours>());
 					if (IsInsideMM(scc, SCC_BLUE, SCC_COLOUR)) builder.PutUtf8(scc);
+					break;
+				}
+
+				case SCC_CARGO_ICON: { // {CARGO_ICON}
+					CargoType cargo = args.GetNextParameter<CargoType>();
+					if (cargo >= CargoSpec::GetArraySize()) break;
+
+					builder.PutUtf8(_icon_glyphs.GetOrCreate(cargo));
+					break;
+				}
+
+				case SCC_BADGE_ICON: { // {BADGE_ICON}
+					std::string_view label = args.GetNextParameterString();
+					const Badge *badge = GetBadgeByLabel(label);
+					if (badge == nullptr) break;
+
+					builder.PutUtf8(_icon_glyphs.GetOrCreate(badge->index));
+					break;
+				}
+
+				case SCC_COMPANY_ICON: { // {COMPANY_ICON}
+					CompanyID companyid = args.GetNextParameter<CompanyID>();
+					if (companyid >= CompanyID::End()) break;
+
+					builder.PutUtf8(_icon_glyphs.GetOrCreate(companyid));
+					break;
+				}
+
+				case SCC_ENGINE_ICON: { // {ENGINE_ICON}
+					EngineID engine = args.GetNextParameter<EngineID>();
+					if (engine >= EngineID::End()) break;
+
+					builder.PutUtf8(_icon_glyphs.GetOrCreate(engine));
 					break;
 				}
 

@@ -253,6 +253,17 @@ struct Rect {
 	}
 
 	/**
+	 * Centre a horizontal dimension within this Rect.
+	 * @param width The horizontal dimension.
+	 * @return the new resized Rect.
+	 */
+	[[nodiscard]] inline Rect CentreToWidth(int width) const
+	{
+		int new_left = CentreBounds(this->left, this->right, width);
+		return {new_left, this->top, new_left + width - 1, this->bottom};
+	}
+
+	/**
 	 * Centre a vertical dimension within this Rect.
 	 * @param height The vertical dimension.
 	 * @return the new resized Rect.
@@ -261,6 +272,17 @@ struct Rect {
 	{
 		int new_top = CentreBounds(this->top, this->bottom, height);
 		return {this->left, new_top, this->right, new_top + height - 1};
+	}
+
+	/**
+	 * Centre a dimension within this Rect.
+	 * @param width The horizontal dimension.
+	 * @param height The vertical dimension.
+	 * @return the new resized Rect.
+	 */
+	[[nodiscard]] inline Rect CentreTo(int width, int height) const
+	{
+		return this->CentreToWidth(width).CentreToHeight(height);
 	}
 
 	/**

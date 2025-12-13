@@ -173,7 +173,7 @@ void Win32FontCache::ClearFontCache()
 	this->TrueTypeFontCache::ClearFontCache();
 }
 
-/* virtual */ const Sprite *Win32FontCache::InternalGetGlyph(GlyphID key, bool aa)
+/* virtual */ TrueTypeFontCache::GlyphEntry *Win32FontCache::InternalGetGlyph(GlyphID key, bool aa)
 {
 	GLYPHMETRICS gm;
 	MAT2 mat = { {0, 1}, {0, 0}, {0, 0}, {0, 1} };
@@ -242,7 +242,7 @@ void Win32FontCache::ClearFontCache()
 	new_glyph.data = std::move(allocator.data);
 	new_glyph.width = gm.gmCellIncX;
 
-	return this->SetGlyphPtr(key, std::move(new_glyph)).GetSprite();
+	return &this->SetGlyphPtr(key, std::move(new_glyph));
 }
 
 /* virtual */ GlyphID Win32FontCache::MapCharToGlyph(char32_t key)

@@ -11,6 +11,7 @@
 #include "core/math_func.hpp"
 #include "gfx_layout.h"
 #include "gfx_func.h"
+#include "iconglyphs.h"
 #include "string_func.h"
 #include "strings_func.h"
 #include "core/utf8.hpp"
@@ -429,6 +430,8 @@ void Layouter::ResetFontCache([[maybe_unused]] FontSize size)
 #if defined(WITH_COCOA)
 	MacOSResetScriptCache(size);
 #endif
+
+	_icon_glyphs.Clear();
 }
 
 /**
