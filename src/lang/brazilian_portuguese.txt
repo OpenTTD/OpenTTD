@@ -2093,6 +2093,8 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 a cada {COMMA
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Nenhuma
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador de tamanho inicial da cidade: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Tamanho médio das cidades em relação às localidades normais no início do jogo
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE                            :Distância mínima entre localidades: {STRING}
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE_HELPTEXT                   :Definir a distância mínima, em quadrados, entre localidades para a geração do mapa e criação aleatória
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Atualizar a distribuição a cada {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tempo entre recálculos subsequentes da rede de conexões. Cada recálculo atualiza os planos para um componente da rede. Isso significa que um valor X para esta configuração não significa que toda a rede será atualizada a cada X segundos. Apenas algum componente será atualizado. Quanto menor este valor, mais tempo de CPU será necessário para calcular as atualizações. Quanto maior este valor, mais tempo será necessário até que a distribuição de carga inicie nas rotas novas

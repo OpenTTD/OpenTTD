@@ -1090,6 +1090,8 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :勾选此框使
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :使用位图字体
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :勾选此框以使用固定大小的传统位图字体
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT                               :使用默认字体
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP                       :启用后将使用游戏默认字体，不使用检测到的备用字体
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :字体抗锯齿
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :勾选此框以对游戏字体应用抗锯齿
 
@@ -2090,6 +2092,8 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 / {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :无
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :初始都市规模系数：{STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :游戏开局时，城市的平均规模相对于普通城镇的比值
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE                            :城镇间最小距离：{STRING}
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE_HELPTEXT                   :设定生成地图与随机建设城镇时城镇间的最小距离
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :客货流更新周期：{STRING}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :重新计算客货流的周期。由于重新计算时仅会计算部分客货流，此处设定的数值并不代表所有客货流会按照此周期更新。设定赋值越小，重新计算客货流所需的 CPU 时间越多；设定赋值越大，线路改变时货物再分配所需时间越长
@@ -2878,8 +2882,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :外郊区
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :内郊区
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :城镇中心
 
+STR_HOUSE_PICKER_PROTECT                                        :阻止重盖建筑
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :选择是否保护房屋以防止房屋随着城镇发展被替换
 
+STR_HOUSE_PICKER_REPLACE                                        :替换现有建筑
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :选择是否自动移除选中格子上已经存在的房屋
 
 STR_STATION_CLASS_DFLT                                          :默认
 STR_STATION_CLASS_DFLT_STATION                                  :默认车站
@@ -3690,6 +3697,7 @@ STR_EDIT_SIGN_CAPTION                                           :{WHITE}编辑�
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}将屏幕中心移动到标志所在的位置。按住 <Ctrl> 单击会在新视点中显示目标位置
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}前往下个标记
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}前往上个标记
+STR_EDIT_SIGN_TEXT_COLOUR_TOOLTIP                               :{BLACK}标志文字颜色
 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}为标记起名
 

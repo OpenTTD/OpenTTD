@@ -2092,6 +2092,8 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :每 {COMMA} 座
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :無
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :初始城市規模倍率：{STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :設定遊戲開始時城市的大小 (相對於一般市鎮而言)。
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE                            :市鎮之間最小距離： {STRING}
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE_HELPTEXT                   :設定地圖生成和隨機建立的市鎮之間最小距離
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :每{STRING}更新貨物分配圖
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :兩次連結圖的重新計算間隔。每次重新計算都會計算圖中的一個部分的計劃。這表示此設定的值 X 並不表示整張圖會每 X 秒更新一次。只有一些部分會被更新。設定的越短，計算它所需的 CPU 時間就越多。設定的時間越長，在新航線上開始時貨物分配所需的時間就越長

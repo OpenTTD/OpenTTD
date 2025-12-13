@@ -2243,6 +2243,8 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 из {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :нет
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Стартовый множитель размера мегаполисов: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Средний размер мегаполисов по сравнению с остальными городами в начале игры
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE                            :Минимальное расстояние между городами: {STRING}
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE_HELPTEXT                   :Минимальное расстояние, которое должно соблюдаться между городами при создании карты, а также при основании города в случайном месте
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Интервал обновления графа распределения: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Интервалы между перерасчётами графов распределения грузов. Каждый перерасчёт обновляет один компонент графа. То есть, по истечении указанного здесь времени будет обновлён не весь граф, а только один из его компонентов. Чем ниже значение, тем выше нагрузка на процессор. Чем выше значение, тем дольше не будет работать распределение грузов на новых маршрутах.

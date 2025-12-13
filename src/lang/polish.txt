@@ -2472,6 +2472,8 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 z {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Żadne
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Początkowy mnożnik rozmiarów metropolii: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Średni rozmiar metropolii w porównaniu do normalnych miast na początku gry
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE                            :Minimalna odległość między miastami: {STRING}
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE_HELPTEXT                   :Ustaw minimalną liczbę pól pomiędzy miastami przy tworzeniu mapy lub generowaniu wielu losowych miast
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Aktualizuj graf dystrybucji co {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Czas pomiędzy kolejnymi przeliczeniami grafu połączeń. Każde przeliczenie oblicza plany dla jednego komponentu grafu. Wartość X dla tego ustawienia nie oznacza, że cały graf będzie aktualizowany co X sekund. Aktualizowane będą tylko niektóre komponenty. Im mniejszą wartość ustawisz, tym więcej czasu będzie potrzebował procesor, aby wykonać obliczenia. Im większą wartość ustawisz, tym więcej czasu upłynie, zanim rozpocznie się dystrybucja ładunków po nowych trasach
