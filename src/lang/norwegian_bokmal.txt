@@ -2092,6 +2092,8 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 av {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :ingen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Innledende bystørrelsesmultiplikator: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Gjennomsnittsstørrelse på (stor)byer i forhold til vanlige byer ved begynnelsen av spillet
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE                            :Minste avstand mellom byer: {STRING}
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE_HELPTEXT                   :Sett minsteavstand i ruter mellom byer for kartgenerering og tilfeldige grunnleggelser
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Oppdater distribusjonsgraf hvert {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tid mellom hver rekalkulering av koblingsgrafen. Hver rekalkulering kalkulerer planene for en komponent på grafen. Dette betyr at verdi X for denne innstillingen ikke innebærer at hele grafen vil bli oppdatert hvert X sekund. Kun noen komponenter vil. Jo kortere du setter den, jo mer CPU-tid vil være nødvendig for å kalkulere den. Jo lenger du setter den, jo lenger vil det ta før varedistribusjonen kommer i gang på nye ruter

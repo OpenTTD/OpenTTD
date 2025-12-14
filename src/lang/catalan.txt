@@ -2091,6 +2091,8 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 de cada {COMM
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Cap
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador de mida inicial de ciutats: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :La grandària mitjana de les ciutats en relació als pobles a l'inici de la partida.
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE                            :Distància mínima entre poblacions: {STRING}
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE_HELPTEXT                   :Estableix la distància mínima en caselles entre poblacions per a la generació del mapa i per a la fundació aleatòria de poblacions.
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Actualitza el graf de distribució cada {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Temps entre actualitzacions de les arestes del graf de distribució. Cada vegada es calcularan els plans d'un dels components del graf. Això vol dir que un valor X d'aquesta opció no significa que es recalculi el graf sencer cada X segons. Només ho farà algun component. Com més curt sigui, farà falta més temps de CPU per a calcular-lo. Com més llarg sigui, més es trigarà a què la distribució de càrrega s'apliqui a les rutes noves.
@@ -2879,8 +2881,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Suburbi exterio
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Suburbi interior
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centre de la població
 
+STR_HOUSE_PICKER_PROTECT                                        :Evita les millores
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Escolliu si aquesta casa s'ha de protegir i evitar que es reemplaci quan creixi la població.
 
+STR_HOUSE_PICKER_REPLACE                                        :Reemplaça l'existent
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Escull si cal traure automàticament la casa existent a la casella on se situa la nova casa.
 
 STR_STATION_CLASS_DFLT                                          :Per defecte
 STR_STATION_CLASS_DFLT_STATION                                  :Estació per defecte
@@ -3691,6 +3696,7 @@ STR_EDIT_SIGN_CAPTION                                           :{WHITE}Edita el
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Centra la vista principal en la senyal. Amb Ctrl+clic, s'obre una vista centrada en el senyal.
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Vés al proper senyal
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Vés al senyal anterior
+STR_EDIT_SIGN_TEXT_COLOUR_TOOLTIP                               :{BLACK}Color del text del senyal
 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Posa un nom al senyal
 

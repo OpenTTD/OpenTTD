@@ -2090,6 +2090,8 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 av {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Inga
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Initial stadsstorleks-multiplikator: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Storstäders genomsnittliga storlek i relation till vanliga städers vid spelets början
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE                            :Minsta avstånd mellan städer: {STRING}
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE_HELPTEXT                   :Ställ in minimiavståndet i rutor mellan städer vid kartgenerering och slumpmässiga grundanden
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Uppdatera distributionsdiagram var {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tid mellan efterföljande omräkningar av länkgrafen. Varje omräkning beräknar planerna för en komponent i grafen. Det betyder att ett värde X för den här inställningen inte betyder att hela grafen kommer att uppdateras var X:e sekund. Bara viss komponent kommer att göra det. Ju kortare du ställer in den desto mer CPU-tid kommer att behövas för att beräkna den. Ju längre du ställer in den desto längre tid tar det tills lastdistributionen startar på nya rutter
