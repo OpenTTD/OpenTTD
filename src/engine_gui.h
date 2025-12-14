@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file engine_gui.h %Engine GUI functions, used by build_vehicle_gui and autoreplace_gui */
+/** @file engine_gui.h %Engine GUI functions, used by build_vehicle_gui and autoreplace_gui. */
 
 #ifndef ENGINE_GUI_H
 #define ENGINE_GUI_H

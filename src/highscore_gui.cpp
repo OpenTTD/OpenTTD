@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file highscore_gui.cpp Definition of the HighScore and EndGame windows */
+/** @file highscore_gui.cpp Definition of the HighScore and EndGame windows. */
 
 #include "stdafx.h"
 #include "highscore.h"

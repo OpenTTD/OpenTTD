@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file subsidy_type.h basic types related to subsidies */
+/** @file subsidy_type.h Basic types related to subsidies. */
 
 #ifndef SUBSIDY_TYPE_H
 #define SUBSIDY_TYPE_H

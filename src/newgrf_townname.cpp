@@ -6,8 +6,8 @@
  */
 
 /**
- * @file newgrf_townname.cpp
- * Implementation of  Action 0F "universal holder" structure and functions.
+ * @file newgrf_townname.cpp Implementation of  Action 0F "universal holder" structure and functions.
+ *
  * This file implements a linked-lists of townname generators,
  * holding everything that the newgrf action 0F will send over to OpenTTD.
  */

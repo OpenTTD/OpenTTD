@@ -5,9 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/**
- * @file tcp_content.cpp Basic functions to receive and send Content packets.
- */
+/** @file tcp_content.cpp Basic functions to receive and send Content packets. */
 
 #include "../../stdafx.h"
 #include "../../textfile_gui.h"

@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file alloc_type.hpp Helper types related to the allocation of memory */
+/** @file alloc_type.hpp Helper types related to the allocation of memory. */
 
 #ifndef ALLOC_TYPE_HPP
 #define ALLOC_TYPE_HPP

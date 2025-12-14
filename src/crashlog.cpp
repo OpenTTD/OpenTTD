@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file crashlog.cpp Implementation of generic function to be called to log a crash */
+/** @file crashlog.cpp Implementation of generic function to be called to log a crash. */
 
 #include "stdafx.h"
 #include "crashlog.h"

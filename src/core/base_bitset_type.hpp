@@ -5,10 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/**
- * @file base_bitset_type.hpp Base for bitset types that accept strong types,
- * i.e. types that need some casting like StrongType and enum class.
- */
+/** @file base_bitset_type.hpp Base for bitset types that accept strong types, ones that need some casting like StrongType and enum class. */
 
 #ifndef BASE_BITSET_TYPE_HPP
 #define BASE_BITSET_TYPE_HPP

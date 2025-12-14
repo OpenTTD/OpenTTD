@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file osk_gui.cpp The On Screen Keyboard GUI */
+/** @file osk_gui.cpp The On Screen Keyboard GUI. */
 
 #include "stdafx.h"
 #include "string_func.h"

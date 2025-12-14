@@ -5,9 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/**
- * @file host.h Resolving of hostnames/IPs
- */
+/** @file host.h Resolving of hostnames/IPs. */
 
 #ifndef NETWORK_CORE_HOST_H
 #define NETWORK_CORE_HOST_H

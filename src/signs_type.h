@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file signs_type.h Types related to signs */
+/** @file signs_type.h Types related to signs. */
 
 #ifndef SIGNS_TYPE_H
 #define SIGNS_TYPE_H

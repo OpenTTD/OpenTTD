@@ -5,9 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/**
- * @file base_media_func.h Generic function implementations for base data (graphics, sounds).
- */
+/** @file base_media_func.h Generic function implementations for base data (graphics, sounds). */
 
 #include "base_media_base.h"
 #include "debug.h"

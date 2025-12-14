@@ -6,11 +6,8 @@
  */
 
 /**
- * @file timer_game_economy.cpp
- * This file implements the timer logic for the game-economy-timer.
- */
-
-/**
+ * @file timer_game_economy.cpp This file implements the timer logic for the game-economy-timer.
+ *
  * Economy time is used for the regular pace of the game, including:
  * - Industry and house production/consumption
  * - Industry production changes, closure, and spawning

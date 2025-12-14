@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file game_gui.cpp %Window for configuring the Game Script */
+/** @file game_gui.cpp %Window for configuring GS. */
 
 #include "../stdafx.h"
 #include "../error.h"

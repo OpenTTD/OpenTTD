@@ -6,8 +6,8 @@
  */
 
 /**
- * @file elrail.cpp
- * This file deals with displaying wires and pylons for electric railways.
+ * @file elrail.cpp This file deals with displaying wires and pylons for electric railways.
+ *
  * <h2>Basics</h2>
  *
  * <h3>Tile Types</h3>
@@ -30,7 +30,7 @@
  * A Pylon Control Point (PCP) is a position where a wire (or rather two)
  * is mounted onto a pylon.
  * Each NRT does contain 4 PCPs which are bitmapped to a byte
- * variable and are represented by the DiagDirection enum
+ * variable and are represented by the DiagDirection enum.
  *
  * Each track ends on two PCPs and thus requires one pylon on each end. However,
  * there is one exception: Straight-and-level tracks only have one pylon every
@@ -41,9 +41,9 @@
  * in question, both tiles get it).
  *
  * <h4>Position Points</h4>
- * A Pylon Position Point (PPP) is a position where a pylon is located on the
- * ground.  Each PCP owns 8 in (45 degree steps) PPPs that are located around
- * it. PPPs are represented using the Direction enum. Each track bit has PPPs
+ * A Pylon Position Point (PPP) is a position where a pylon is located on the ground.
+ * Each PCP owns 8 in (45 degree steps) PPPs that are located around it.
+ * PPPs are represented using the Direction enum. Each track bit has PPPs
  * that are impossible (because the pylon would be situated on the track) and
  * some that are preferred (because the pylon would be rectangular to the track).
  *

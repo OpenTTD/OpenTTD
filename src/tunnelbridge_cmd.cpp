@@ -6,9 +6,8 @@
  */
 
 /**
- * @file tunnelbridge_cmd.cpp
- * This file deals with tunnels and bridges (non-gui stuff)
- * @todo separate this file into two
+ * @file tunnelbridge_cmd.cpp This file deals with tunnels and bridges (non-gui stuff).
+ * @todo separate this file into two.
  */
 
 #include "stdafx.h"

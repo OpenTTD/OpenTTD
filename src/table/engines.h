@@ -5,10 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/**
- * @file table/engines.h
- *  This file contains all the data for vehicles
- */
+/** @file engines.h This file contains all the data for vehicles. */
 
 #ifndef ENGINES_H
 #define ENGINES_H

@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file newgrf_class.h Header file for classes to be used by e.g. NewGRF stations and airports */
+/** @file newgrf_class.h Header file for classes to be used by for example, NewGRF stations and airports. */
 
 #ifndef NEWGRF_CLASS_H
 #define NEWGRF_CLASS_H

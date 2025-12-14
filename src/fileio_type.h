@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file fileio_type.h Types for Standard In/Out file operations */
+/** @file fileio_type.h Types for standard in/out file operations. */
 
 #ifndef FILEIO_TYPE_H
 #define FILEIO_TYPE_H

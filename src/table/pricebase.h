@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file pricebase.h Price Bases */
+/** @file pricebase.h Table of all default price bases. */
 
 extern const PriceBaseSpec _price_base_specs[] = {
 	{    100, PCAT_NONE,         GSF_END,          INVALID_PRICE         }, ///< PR_STATION_VALUE

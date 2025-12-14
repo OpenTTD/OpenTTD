@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file elrail_func.h header file for electrified rail specific functions */
+/** @file elrail_func.h Header file for electrified rail specific functions. */
 
 #ifndef ELRAIL_FUNC_H
 #define ELRAIL_FUNC_H
