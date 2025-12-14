@@ -15,8 +15,6 @@
  *
  * \b 15.0
  *
- * This version is not yet released. The following changes are not set in stone yet.
- *
  * API additions:
  * \li AIEventVehicleCrashed::GetVictims
  * \li AIEventVehicleCrashed::GetVehicleOwner
