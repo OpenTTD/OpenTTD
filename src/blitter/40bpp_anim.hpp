@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file 40bpp_optimized.hpp Optimized 40 bpp blitter. */
+/** @file 40bpp_anim.hpp Animated 40 bpp blitter. */
 
 #ifndef BLITTER_40BPP_OPTIMIZED_HPP
 #define BLITTER_40BPP_OPTIMIZED_HPP

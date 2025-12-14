@@ -5,9 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/**
- * @file settings_table.cpp The tables of all the settings as well as the implementation of most of their callbacks.
- */
+/** @file settings_table.cpp The tables of all the settings as well as the implementation of most of their callbacks. */
 
 #include "stdafx.h"
 #include "settings_table.h"

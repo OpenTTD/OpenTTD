@@ -5,9 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/**
- * @file packet.h Basic functions to create, fill and read packets.
- */
+/** @file packet.h Basic functions to create, fill and read packets. */
 
 #ifndef NETWORK_CORE_PACKET_H
 #define NETWORK_CORE_PACKET_H

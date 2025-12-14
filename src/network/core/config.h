@@ -5,9 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/**
- * @file config.h Configuration options of the network stuff. It is used even when compiling without network support.
- */
+/** @file config.h Configuration options of the network stuff. It is used even when compiling without network support. */
 
 #ifndef NETWORK_CORE_CONFIG_H
 #define NETWORK_CORE_CONFIG_H

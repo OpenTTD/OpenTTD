@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file saveload_internal.h Declaration of functions used in more save/load files */
+/** @file saveload_internal.h Declaration of functions used in more save/load files. */
 
 #ifndef SAVELOAD_INTERNAL_H
 #define SAVELOAD_INTERNAL_H

@@ -6,8 +6,8 @@
  */
 
 /**
- * @file animcursors.h
- * This file defines all the the animated cursors.
+ * @file animcursors.h This file defines all the the animated cursors.
+ *
  * Animated cursors consist of the number of sprites that are
  * displayed in a round-robin manner. Each sprite also has a time
  * associated that indicates how many ticks the corresponding sprite

@@ -8,7 +8,8 @@
 #include "table/strings.h"
 
 /**
- * @file bridge_land.h This file contains all the sprites for bridges
+ * @file bridge_land.h This file contains all the sprites for bridges.
+ *
  * It consists of a number of arrays.
  * <ul><li>_bridge_sprite_table_n_m. Defines all the sprites of a bridge besides the pylons.
  * n defines the number of the bridge type, m the number of the section. the highest m for

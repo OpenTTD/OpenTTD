@@ -5,9 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/**
- * @file string_builder.hpp Compose strings from textual and binary data.
- */
+/** @file string_builder.hpp Compose strings from textual and binary data. */
 
 #ifndef STRING_BUILDER_HPP
 #define STRING_BUILDER_HPP

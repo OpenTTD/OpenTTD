@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file mcf.h Declaration of Multi-Commodity-Flow solver */
+/** @file mcf.h Declaration of Multi-Commodity-Flow solver. */
 
 #ifndef MCF_H
 #define MCF_H

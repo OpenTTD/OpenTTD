@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file squirrel_helper.hpp declarations and parts of the implementation of the class for convert code */
+/** @file squirrel_helper.hpp Declarations and parts of the implementation of the class for convert code. */
 
 #ifndef SQUIRREL_HELPER_HPP
 #define SQUIRREL_HELPER_HPP

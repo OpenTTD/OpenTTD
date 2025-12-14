@@ -5,9 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/**
- * @file string_func.h Functions related to low-level strings.
- */
+/** @file string_func.h Functions related to low-level strings. */
 
 #ifndef STRING_FUNC_H
 #define STRING_FUNC_H

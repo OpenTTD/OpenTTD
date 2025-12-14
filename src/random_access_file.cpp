@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
- /** @file random_access_file.cpp Actual implementation of the RandomAccessFile class. */
+/** @file random_access_file.cpp Actual implementation of the RandomAccessFile class. */
 
 #include "stdafx.h"
 #include "random_access_file_type.h"

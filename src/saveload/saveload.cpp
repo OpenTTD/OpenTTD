@@ -6,9 +6,9 @@
  */
 
 /**
- * @file saveload.cpp
- * All actions handling saving and loading goes on in this file. The general actions
- * are as follows for saving a game (loading is analogous):
+ * @file saveload.cpp All actions handling saving and loading goes on in this file.
+ *
+ * The general actions are as follows for saving a game (loading is analogous):
  * <ol>
  * <li>initialize the writer by creating a temporary memory-buffer for it
  * <li>go through all to-be saved elements, each 'chunk' (#ChunkHandler) prefixed by a label

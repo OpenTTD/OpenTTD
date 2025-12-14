@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file timer_game_tick.h Definition of the tick-based game-timer */
+/** @file timer_game_tick.h Definition of the tick-based game-timer. */
 
 #ifndef TIMER_GAME_TICK_H
 #define TIMER_GAME_TICK_H

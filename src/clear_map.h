@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file clear_map.h Map accessors for 'clear' tiles */
+/** @file clear_map.h Map accessors for 'clear' tiles. */
 
 #ifndef CLEAR_MAP_H
 #define CLEAR_MAP_H

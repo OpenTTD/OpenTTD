@@ -7,8 +7,7 @@
 
 /**
  * @file slope_type.h Definitions of a slope.
- * This file defines the enumeration and helper functions for handling
- * the slope info of a tile.
+ * This file defines the enumeration and helper functions for handling the slope info of a tile.
  */
 
 #ifndef SLOPE_TYPE_H

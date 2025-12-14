@@ -6,11 +6,8 @@
  */
 
 /**
- * @file timer_game_calendar.cpp
- * This file implements the timer logic for the game-calendar-timer.
- */
-
-/**
+ * @file timer_game_calendar.cpp This file implements the timer logic for the game-calendar-timer.
+ *
  * Calendar time is used for technology and time-of-year changes, including:
  * - Vehicle, airport, station, object introduction and obsolescence
  * - Vehicle and engine age

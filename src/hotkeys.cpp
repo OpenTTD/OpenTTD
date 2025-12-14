@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file hotkeys.cpp Implementation of hotkey related functions */
+/** @file hotkeys.cpp Implementation of hotkey related functions. */
 
 #include "stdafx.h"
 #include "openttd.h"

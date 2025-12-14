@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file squirrel_std.hpp defines the Squirrel Standard Function class */
+/** @file squirrel_std.hpp Defines the Squirrel Standard Function class. */
 
 #ifndef SQUIRREL_STD_HPP
 #define SQUIRREL_STD_HPP

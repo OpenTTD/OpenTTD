@@ -5,6 +5,8 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
+/** @file game_changelog.hpp Lists all changes / additions to the game script API. */
+
 /**
  * @page game_changelog Lists all changes / additions to the API.
  *

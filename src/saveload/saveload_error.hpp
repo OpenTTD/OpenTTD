@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file saveload.h Functions/types related to errors from savegames. */
+/** @file saveload_error.hpp Functions/types related to errors from savegames. */
 
 #ifndef SAVELOAD_ERROR_HPP
 #define SAVELOAD_ERROR_HPP

@@ -5,10 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/**
- * @file aircraft_cmd.cpp
- * This file deals with aircraft and airport movements functionalities
- */
+/** @file aircraft_cmd.cpp This file deals with aircraft and airport movements functionalities. */
 
 #include "stdafx.h"
 #include "aircraft.h"

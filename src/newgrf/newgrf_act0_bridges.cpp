@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file newgrf_act0_bidges.cpp NewGRF Action 0x00 handler for bridges. */
+/** @file newgrf_act0_bridges.cpp NewGRF Action 0x00 handler for bridges. */
 
 #include "../stdafx.h"
 #include "../debug.h"

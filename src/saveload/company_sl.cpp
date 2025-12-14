@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file company_sl.cpp Code handling saving and loading of company data */
+/** @file company_sl.cpp Code handling saving and loading of company data. */
 
 #include "../stdafx.h"
 

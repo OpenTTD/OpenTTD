@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
- /** @file water_regions.h Handles dividing the water in the map into regions to assist pathfinding. */
+/** @file water_regions.h Handles dividing the water in the map into regions to assist pathfinding. */
 
 #ifndef WATER_REGIONS_H
 #define WATER_REGIONS_H

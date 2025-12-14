@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file window.cpp Windowing system, widgets and events */
+/** @file window.cpp Windowing system, widgets and events. */
 
 #include "stdafx.h"
 #include "company_func.h"

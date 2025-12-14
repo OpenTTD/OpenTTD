@@ -5,9 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/**
- * @file newgrf_roadstop.h NewGRF definitions and structures for road stops.
- */
+/** @file newgrf_roadstop.h NewGRF definitions and structures for road stops. */
 
 #ifndef NEWGRF_ROADSTATION_H
 #define NEWGRF_ROADSTATION_H

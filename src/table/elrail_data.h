@@ -7,7 +7,7 @@
 
 /**
  * @file elrail_data.h Stores all the data for overhead wire and pylon drawing.
- *  @see elrail.c
+ * @see elrail.cpp
  */
 
 #ifndef ELRAIL_DATA_H

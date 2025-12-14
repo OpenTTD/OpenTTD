@@ -6,9 +6,8 @@
  */
 
 /**
- * @file disaster_vehicle.cpp
+ * @file disaster_vehicle.cpp All disaster/easter egg vehicles are handled here.
  *
- * All disaster/easter egg vehicles are handled here.
  * The general flow of control for the disaster vehicles is as follows:
  * <ol>
  * <li>Initialize the disaster in a disaster specific way (eg start position,
@@ -16,9 +15,10 @@
  * <li>Add a subtype to a disaster, which is an index into the function array
  *     that handles the vehicle's ticks.
  * <li>Run the disaster vehicles each tick until their target has been reached,
- *     this happens in the DisasterTick_XXX() functions. In here, a vehicle's
- *     state is kept by v->state variable. Each achieved sub-target
- *     will increase this value, and the last one will remove the disaster itself
+ *     this happens in the DisasterTick_XXX() functions.
+ *     In here, a vehicle's state is kept by v->state variable.
+ *     Each achieved sub-target will increase this value,
+ *     and the last one will remove the disaster itself.
  * </ol>
  */
 

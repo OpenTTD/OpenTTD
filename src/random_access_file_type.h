@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
- /** @file random_access_file_type.h Class related to random access to files. */
+/** @file random_access_file_type.h Class related to random access to files. */
 
 #ifndef RANDOM_ACCESS_FILE_TYPE_H
 #define RANDOM_ACCESS_FILE_TYPE_H
