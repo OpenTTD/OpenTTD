@@ -21,7 +21,7 @@
 {
 	assert(company < MAX_COMPANIES);
 
-	if (_game_mode == GM_MENU) source = SSS_FORCE_NEWGAME;
+	if (source == SSS_DEFAULT && _game_mode == GM_MENU) source = SSS_FORCE_NEWGAME;
 
 	if (source == SSS_DEFAULT) {
 		Company *c = Company::GetIfValid(company);
