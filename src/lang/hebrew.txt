@@ -183,6 +183,7 @@ STR_LITERS                                                      :{P 0 "ליטר 
 STR_ITEMS                                                       :{P 0 "פריט " ""}{COMMA}{P "" "פריטים"}
 STR_CRATES                                                      :{P 0 "ארגז " ""}{COMMA}{P "" "ארגזים"}
 
+STR_COLOUR_DEFAULT                                              :ברירת מחדל
 ###length 17
 STR_COLOUR_DARK_BLUE                                            :כחול כהה
 STR_COLOUR_PALE_GREEN                                           :ירוק חיוור
@@ -200,10 +201,13 @@ STR_COLOUR_ORANGE                                               :כתום
 STR_COLOUR_BROWN                                                :חום
 STR_COLOUR_GREY                                                 :אפור
 STR_COLOUR_WHITE                                                :לבן
+STR_COLOUR_RANDOM                                               :אקראי
 
 ###length 17
 STR_COLOUR_SECONDARY_DARK_BLUE                                  :כחול כהה
 STR_COLOUR_SECONDARY_PALE_GREEN                                 :ירוק חיוור
+STR_COLOUR_SECONDARY_SECONDARY_PINK                             :ורוד
+STR_COLOUR_SECONDARY_YELLOW                                     :צהוב
 STR_COLOUR_SECONDARY_RED                                        :אדום
 STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :כחול בהיר
 STR_COLOUR_SECONDARY_GREEN                                      :ירוק
@@ -215,6 +219,7 @@ STR_COLOUR_SECONDARY_PURPLE                                     :סגול
 STR_COLOUR_SECONDARY_ORANGE                                     :כתום
 STR_COLOUR_SECONDARY_BROWN                                      :חום
 STR_COLOUR_SECONDARY_GREY                                       :אפור
+STR_COLOUR_SECONDARY_WHITE                                      :לבן
 STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :כמו הראשי
 
 
@@ -906,7 +911,15 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}העתק
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}אפשרויות משחק
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :כללי
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :בחר הגדרות כלליות
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :גרפיקות
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :בחר הגדרות גרפיקה
+STR_GAME_OPTIONS_TAB_SOUND                                      :שמע
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :בחר הגדרות שמע ומוזיקה
+STR_GAME_OPTIONS_TAB_SOCIAL                                     :חברתי
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :בחר הגדרות שילוב חברתי
+STR_GAME_OPTIONS_TAB_ADVANCED                                   :הגדרות מתקדמות
+STR_GAME_OPTIONS_TAB_ADVANCED_TOOLTIP                           :שנה את ההגדרות המתקדמות
 
 
 
@@ -989,6 +1002,10 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :סמן תיבה
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :התאם שוליים
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :סמן תיבה זו כדי להתאים את השוליים לפי גודל הממשק
 
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :השתמש בגופן ספרייט מסורתי
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :סמן תיבה זו אם אתה מעדיף להשתמש בגופן הספרייט המסורתי בעל גודל קבוע
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :גופנים חלקים
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :סמן תיבה זו כדי להחליק גופנים בעלי גודל משתנה
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
@@ -1299,9 +1316,11 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :מימין
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :הראה את חלון מערך הכספים בכל סוף שנה : {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_PERIOD                          :הראה את חלון מערך הכספים בכל סוף תקופה: {STRING}
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :אם מאופשר, חלון הכספים מופיע בסוף כל שנה כדי לאפשר בחינה קלה של המצב הכספי של החברה
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :אם מאופשר, חלון הכספים מופיע בסוף כל תקופה כדי לאפשר בחינה קלה של המצב הכספי של החברה
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :הוראות חדשות הם תמיד 'לא לעצור' כבחירת מחדל: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :בדרך כלל, רכב יעצור בכל תחנה בה הוא עובר. ע"י הפעלת הגדרה זו, הוא יסע דרך כל התחנות בדרך על יעדו הסופי מבלי לעצור. שים לב, הגדרה זו רק קובעת ערך ברירת מחדל עבור הוראות חדשות. הוראות פרטניות יכולות להיות מוגדרות במפורש לכל אחת מבין ההתנהגויות בכל מקרה
@@ -1613,6 +1632,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{STRING}: שמ�
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :השאר את כלי הבנייה עבור גשרים, מנהרות וכו' פתוחים אחרי השימוש
 
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :הסר רמזורים אוטומטית במהלך בניית פסי רכבת: {STRING}
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :הסר רמזורים אוטומטית במהלך בניית פסי רכבת אם הרמזורים נמצאים בדרך. הסרה זו עלולה לגרום לתאונות רכבת
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :הגבלת מהירות הרצה קדימה: {STRING}
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :הגבלת מהירות המשחק כאשר הרצה קדימה מופעלת. 0 = ללא הגבלה (מהר ככל שהמחשב שלך מאפשר). ערכים מתחת ל-100% מאטים את המשחק. הגבול העליון תלוי במפרט המחשב שלך ועשוי להשתנות בהתאם למשחק.
@@ -1628,9 +1648,11 @@ STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :השמע צלי
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :סוף שנה: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD                             :סוף תקופה: {STRING}
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :השמע צליל בסוף שנה המסכם את תפקוד החברה בהשוואה לשנה הקודמת
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD_HELPTEXT                    :השמע צליל בסוף תקופה המסכם את תפקוד החברה במהלך התקופה בהשוואה לתקופה הקודמת
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :בנייה: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :השמע צליל בעת הצלחת בנייה או פעולות אחרות
@@ -2180,6 +2202,10 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}הצטר
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}רענן שרת
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}רענן את המידע המוצג לגבי השרת
 
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :{BLACK}חפש באינטרנט
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}חפש שרתים פומביים באינטרנט
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}חפש ברשת המקומית
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}חפש שרתים ברשת המקורית
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}הוסף שרת
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}מוסיף שרת לרשימה שתמיד תבדק למשחקים פעילים.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}הפעל שרת
@@ -2475,6 +2501,10 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}העמסת יתר
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}{CARGO_LONG} ישונעו בחודש מ{STATION} ל{STATION} ({COMMA}% מהקיבולת){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG} ישונעו בדקה מ{STATION} ל{STATION} ({COMMA}% מהקיבולת){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} ישונעו חזרה  ({COMMA}% מהקיבולת)
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}זמן מסע ממוצע: {UNITS_DAYS_OR_SECONDS}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}הדגשת שטח הכיסוי
@@ -3599,6 +3629,14 @@ STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}דורש
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}דורש:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX                    :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} ממתינים{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX.singular           :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} ממתין{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX.plural             :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} ממתינים{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_NOSUFFIX                         :{YELLOW}{0:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX                  :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} ממתינים
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX.singular         :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} ממתין
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX.plural           :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} ממתינים
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}שנה תפוקה (כפולות של 8, עד 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}שינוי ברמת ההפקה (עד 800% אחוז)
@@ -3810,7 +3848,7 @@ STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}מכור
 STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}החלף אוטומטית את כל הרכבות שבמוסך
 STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}החלף אוטומטית את כל הרכבים שבמוסך
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}החלף אוטומטית את כל כלי השייט שבמבדוק
-STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}החלף אוטומאטית את כל כלי הטייס שבסככה
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}החלף אוטומטית את כל כלי הטייס שבסככה
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}כלים חדשים
@@ -3879,6 +3917,8 @@ STR_ENGINE_PREVIEW_SHIP                                         :כלי שייט
 
 STR_ENGINE_PREVIEW_COST_WEIGHT                                  :עלות: {CURRENCY_LONG} משקל: {WEIGHT_SHORT}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :עלות: {CURRENCY_LONG} מהירות מרבית: {VELOCITY}
+STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :עלות הפעלה: {CURRENCY_LONG} לשנה
+STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :עלות הפעלה: {CURRENCY_LONG} לתקופה
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}החלף {STRING} - {STRING}
@@ -4482,6 +4522,7 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... הג
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... הגעת למגבלת פינוי המשבצות
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... הגעת למגבלת נטיעת העצים
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}השם חייב להיות ייחודי
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}חוסם את הדרך {STRING}
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}אסור בזמן שהמשחק מושהה
 
 # Local authority errors
@@ -4786,12 +4827,17 @@ STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}לא נ�
 ###length VEHICLE_TYPES
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}לא ניתן להחליף את הרכבות אוטומטית...
+STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}לא ניתן להחליף את כלי הרכב אוטומטית...
+STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}לא ניתן להחליף את כלי השייט אוטומטית...
+STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}לא ניתן להחליף את כלי הטייס אוטומטית...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}יותר מידי כלי תעבורה במשחק
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}לא ניתן לשנות את מרווחי הטיפול...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... הרכב נהרס
 
+STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... לא כל כלי הרכב זהים
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}כלי תחבורה לא יהיו זמינים
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}שנה הגדרות NewGRF

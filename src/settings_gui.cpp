@@ -658,9 +658,6 @@ struct GameOptionsWindow : Window {
 			case WID_GO_GUI_FONT_SPRITE_TEXT:
 				return GetToggleString(STR_GAME_OPTIONS_GUI_FONT_SPRITE, WID_GO_GUI_FONT_SPRITE);
 
-			case WID_GO_GUI_FONT_DEFAULT_TEXT:
-				return GetToggleString(STR_GAME_OPTIONS_GUI_FONT_DEFAULT, WID_GO_GUI_FONT_DEFAULT);
-
 			case WID_GO_GUI_FONT_AA_TEXT:
 				return GetToggleString(STR_GAME_OPTIONS_GUI_FONT_AA, WID_GO_GUI_FONT_AA);
 
@@ -931,18 +928,6 @@ struct GameOptionsWindow : Window {
 		}
 	}
 
-#ifdef HAS_TRUETYPE_FONT
-	static void ReloadFonts()
-	{
-		FontCache::LoadFontCaches(FONTSIZES_ALL);
-		FontCache::ClearFontCaches(FONTSIZES_ALL);
-		CheckForMissingGlyphs();
-		SetupWidgetDimensions();
-		UpdateAllVirtCoords();
-		ReInitAllWindows(true);
-	}
-#endif /* HAS_TRUETYPE_FONT */
-
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		if (widget >= WID_GO_BASE_GRF_TEXTFILE && widget < WID_GO_BASE_GRF_TEXTFILE + TFT_CONTENT_END) {
@@ -1053,15 +1038,13 @@ struct GameOptionsWindow : Window {
 				this->SetWidgetLoweredState(WID_GO_GUI_FONT_SPRITE, _fcsettings.prefer_sprite);
 				this->SetWidgetDisabledState(WID_GO_GUI_FONT_AA, _fcsettings.prefer_sprite);
 				this->SetDirty();
-				ReloadFonts();
-				break;
 
-			case WID_GO_GUI_FONT_DEFAULT:
-				_fcsettings.prefer_default = !_fcsettings.prefer_default;
-
-				this->SetWidgetLoweredState(WID_GO_GUI_FONT_DEFAULT, _fcsettings.prefer_default);
-				this->SetDirty();
-				ReloadFonts();
+				FontCache::LoadFontCaches(FONTSIZES_ALL);
+				FontCache::ClearFontCaches(FONTSIZES_ALL);
+				CheckForMissingGlyphs();
+				SetupWidgetDimensions();
+				UpdateAllVirtCoords();
+				ReInitAllWindows(true);
 				break;
 
 			case WID_GO_GUI_FONT_AA:
@@ -1559,7 +1542,6 @@ struct GameOptionsWindow : Window {
 		this->SetWidgetLoweredState(WID_GO_GUI_SCALE_BEVEL_BUTTON, _settings_client.gui.scale_bevels);
 #ifdef HAS_TRUETYPE_FONT
 		this->SetWidgetLoweredState(WID_GO_GUI_FONT_SPRITE, _fcsettings.prefer_sprite);
-		this->SetWidgetLoweredState(WID_GO_GUI_FONT_DEFAULT, _fcsettings.prefer_default);
 		this->SetWidgetLoweredState(WID_GO_GUI_FONT_AA, _fcsettings.global_aa);
 		this->SetWidgetDisabledState(WID_GO_GUI_FONT_AA, _fcsettings.prefer_sprite);
 #endif /* HAS_TRUETYPE_FONT */
@@ -1689,10 +1671,6 @@ static constexpr std::initializer_list<NWidgetPart> _nested_game_options_widgets
 							NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 								NWidget(WWT_BOOLBTN, GAME_OPTIONS_BACKGROUND, WID_GO_GUI_FONT_SPRITE), SetAlternateColourTip(GAME_OPTIONS_BUTTON, STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP),
 								NWidget(WWT_TEXT, INVALID_COLOUR, WID_GO_GUI_FONT_SPRITE_TEXT), SetFill(1, 0), SetResize(1, 0), SetTextStyle(GAME_OPTIONS_LABEL),
-							EndContainer(),
-							NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
-								NWidget(WWT_BOOLBTN, GAME_OPTIONS_BACKGROUND, WID_GO_GUI_FONT_DEFAULT), SetAlternateColourTip(GAME_OPTIONS_BUTTON, STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP),
-								NWidget(WWT_TEXT, INVALID_COLOUR, WID_GO_GUI_FONT_DEFAULT_TEXT), SetFill(1, 0), SetResize(1, 0), SetTextStyle(GAME_OPTIONS_LABEL),
 							EndContainer(),
 							NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 								NWidget(WWT_BOOLBTN, GAME_OPTIONS_BACKGROUND, WID_GO_GUI_FONT_AA), SetAlternateColourTip(GAME_OPTIONS_BUTTON, STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP),

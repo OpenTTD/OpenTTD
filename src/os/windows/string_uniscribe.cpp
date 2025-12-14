@@ -10,8 +10,6 @@
 #include "../../stdafx.h"
 #include "../../debug.h"
 #include "string_uniscribe.h"
-#include "../../gfx_func.h"
-#include "../../gfx_layout_fallback.h"
 #include "../../language.h"
 #include "../../strings_func.h"
 #include "../../string_func.h"
@@ -31,7 +29,7 @@
 
 
 /** Uniscribe cache for internal font information, cleared when OTTD changes fonts. */
-static std::map<FontIndex, SCRIPT_CACHE> _script_cache;
+static SCRIPT_CACHE _script_cache[FS_END];
 
 /**
  * Contains all information about a run of characters. A run are consecutive
@@ -40,7 +38,7 @@ static std::map<FontIndex, SCRIPT_CACHE> _script_cache;
 struct UniscribeRun {
 	int pos;
 	int len;
-	Font font;
+	Font *font;
 
 	std::vector<GlyphID> ft_glyphs;
 
@@ -53,9 +51,7 @@ struct UniscribeRun {
 	std::vector<GOFFSET> offsets;
 	int total_advance;
 
-	UniscribeRun(int pos, int len, const Font &font, SCRIPT_ANALYSIS &sa) : pos(pos), len(len), font(font), sa(sa) {}
-
-	void FallbackShape(const UniscribeParagraphLayoutFactory::CharType *buff);
+	UniscribeRun(int pos, int len, Font *font, SCRIPT_ANALYSIS &sa) : pos(pos), len(len), font(font), sa(sa) {}
 };
 
 /** Break a string into language formatting ranges. */
@@ -85,7 +81,7 @@ public:
 		int start_pos;
 		int total_advance;
 		int num_glyphs;
-		Font font;
+		Font *font;
 
 		mutable std::vector<int> glyph_to_char;
 
@@ -97,8 +93,8 @@ public:
 		std::span<const Position> GetPositions() const override { return this->positions; }
 		std::span<const int> GetGlyphToCharMap() const override;
 
-		const Font &GetFont() const override { return this->font;  }
-		int GetLeading() const override { return GetCharacterHeight(this->font.GetFontCache().GetSize()); }
+		const Font *GetFont() const override { return this->font;  }
+		int GetLeading() const override { return this->font->fc->GetHeight(); }
 		int GetGlyphCount() const override { return this->num_glyphs; }
 		int GetAdvance() const { return this->total_advance; }
 	};
@@ -134,71 +130,31 @@ public:
 	std::unique_ptr<const Line> NextLine(int max_width) override;
 };
 
-void UniscribeResetScriptCache(FontSize)
+void UniscribeResetScriptCache(FontSize size)
 {
-	for (auto &sc : _script_cache) {
-		ScriptFreeCache(&sc.second);
+	if (_script_cache[size] != nullptr) {
+		ScriptFreeCache(&_script_cache[size]);
+		_script_cache[size] = nullptr;
 	}
-	_script_cache.clear();
 }
 
 /** Load the matching native Windows font. */
-static HFONT HFontFromFont(const Font &font)
+static HFONT HFontFromFont(Font *font)
 {
-	FontCache &fc = font.GetFontCache();
-
-	if (fc.GetOSHandle() != nullptr) return CreateFontIndirect(reinterpret_cast<PLOGFONT>(const_cast<void *>(fc.GetOSHandle())));
+	if (font->fc->GetOSHandle() != nullptr) return CreateFontIndirect(reinterpret_cast<PLOGFONT>(const_cast<void *>(font->fc->GetOSHandle())));
 
 	LOGFONT logfont{};
-	logfont.lfHeight = fc.GetHeight();
+	logfont.lfHeight = font->fc->GetHeight();
 	logfont.lfWeight = FW_NORMAL;
 	logfont.lfCharSet = DEFAULT_CHARSET;
-	convert_to_fs(fc.GetFontName(), logfont.lfFaceName);
+	convert_to_fs(font->fc->GetFontName(), logfont.lfFaceName);
 
 	return CreateFontIndirect(&logfont);
-}
-
-/**
- * Manually shape a run for built-in non-truetype fonts.
- * Similar to but not quite the same as \a ICURun::FallbackShape.
- * @param buff The complete buffer of the run.
- */
-void UniscribeRun::FallbackShape(const UniscribeParagraphLayoutFactory::CharType *buff)
-{
-	FontCache &fc = this->font.GetFontCache();
-
-	this->glyphs.reserve(this->len);
-
-	/* Read each UTF-16 character, mapping to an appropriate glyph. */
-	for (int i = this->pos; i < this->pos + this->len; i += Utf16IsLeadSurrogate(buff[i]) ? 2 : 1) {
-		char32_t c = Utf16DecodeChar(reinterpret_cast<const uint16_t *>(buff + i));
-		if (this->sa.fRTL) c = SwapRtlPairedCharacters(c);
-		this->glyphs.emplace_back(fc.MapCharToGlyph(c));
-	}
-
-	/* Reverse the sequence if this run is RTL. */
-	if (this->sa.fRTL) {
-		std::reverse(std::begin(this->glyphs), std::end(this->glyphs));
-	}
-
-	this->offsets.reserve(this->glyphs.size());
-
-	/* Set positions of each glyph. */
-	int y_offset = fc.GetGlyphYOffset();
-	int advance = 0;
-	for (const GlyphID glyph : this->glyphs) {
-		this->offsets.emplace_back(advance, y_offset);
-		int x_advance = fc.GetGlyphWidth(glyph);
-		this->advances.push_back(x_advance);
-		advance += x_advance;
-	}
 }
 
 /** Determine the glyph positions for a run. */
 static bool UniscribeShapeRun(const UniscribeParagraphLayoutFactory::CharType *buff, UniscribeRun &range)
 {
-	FontCache &fc = range.font.GetFontCache();
-
 	/* Initial size guess for the number of glyphs recommended by Uniscribe. */
 	range.glyphs.resize(range.len * 3 / 2 + 16);
 	range.vis_attribs.resize(range.glyphs.size());
@@ -210,15 +166,10 @@ static bool UniscribeShapeRun(const UniscribeParagraphLayoutFactory::CharType *b
 	HFONT old_font = nullptr;
 	HFONT cur_font = nullptr;
 
-	if (fc.IsBuiltInFont()) {
-		range.FallbackShape(buff);
-		return true;
-	}
-
 	while (true) {
 		/* Shape the text run by determining the glyphs needed for display. */
 		int glyphs_used = 0;
-		HRESULT hr = ScriptShape(temp_dc, &_script_cache[fc.GetIndex()], buff + range.pos, range.len, (int)range.glyphs.size(), &range.sa, &range.glyphs[0], &range.char_to_glyph[0], &range.vis_attribs[0], &glyphs_used);
+		HRESULT hr = ScriptShape(temp_dc, &_script_cache[range.font->fc->GetSize()], buff + range.pos, range.len, (int)range.glyphs.size(), &range.sa, &range.glyphs[0], &range.char_to_glyph[0], &range.vis_attribs[0], &glyphs_used);
 
 		if (SUCCEEDED(hr)) {
 			range.glyphs.resize(glyphs_used);
@@ -228,7 +179,7 @@ static bool UniscribeShapeRun(const UniscribeParagraphLayoutFactory::CharType *b
 			ABC abc;
 			range.advances.resize(range.glyphs.size());
 			range.offsets.resize(range.glyphs.size());
-			hr = ScriptPlace(temp_dc, &_script_cache[fc.GetIndex()], &range.glyphs[0], (int)range.glyphs.size(), &range.vis_attribs[0], &range.sa, &range.advances[0], &range.offsets[0], &abc);
+			hr = ScriptPlace(temp_dc, &_script_cache[range.font->fc->GetSize()], &range.glyphs[0], (int)range.glyphs.size(), &range.vis_attribs[0], &range.sa, &range.advances[0], &range.offsets[0], &abc);
 			if (SUCCEEDED(hr)) {
 				/* We map our special sprite chars to values that don't fit into a WORD. Copy the glyphs
 				 * into a new vector and query the real glyph to use for these special chars. */
@@ -236,12 +187,22 @@ static bool UniscribeShapeRun(const UniscribeParagraphLayoutFactory::CharType *b
 				for (size_t g_id = 0; g_id < range.glyphs.size(); g_id++) {
 					range.ft_glyphs[g_id] = range.glyphs[g_id];
 				}
+				for (int i = 0; i < range.len; i++) {
+					if (buff[range.pos + i] >= SCC_SPRITE_START && buff[range.pos + i] <= SCC_SPRITE_END) {
+						auto pos = range.char_to_glyph[i];
+						if (range.ft_glyphs[pos] == 0) { // Font doesn't have our special glyph, so remap.
+							range.ft_glyphs[pos] = range.font->fc->MapCharToGlyph(buff[range.pos + i]);
+							range.offsets[pos].dv = (range.font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(range.font->fc->GetSize()))) / 2; // Align sprite font to centre
+							range.advances[pos] = range.font->fc->GetGlyphWidth(range.ft_glyphs[pos]);
+						}
+					}
+				}
 
 				range.total_advance = 0;
 				for (size_t i = 0; i < range.advances.size(); i++) {
 #ifdef WITH_FREETYPE
 					/* FreeType and GDI/Uniscribe seems to occasionally disagree over the width of a glyph. */
-					if (range.advances[i] > 0 && range.glyphs[i] != 0xFFFF) range.advances[i] = fc.GetGlyphWidth(range.glyphs[i]);
+					if (range.advances[i] > 0 && range.ft_glyphs[i] != 0xFFFF) range.advances[i] = range.font->fc->GetGlyphWidth(range.ft_glyphs[i]);
 #endif
 					range.total_advance += range.advances[i];
 				}
@@ -318,6 +279,11 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 	int32_t length = buff_end - buff;
 	/* Can't layout an empty string. */
 	if (length == 0) return nullptr;
+
+	/* Can't layout our in-built sprite fonts. */
+	for (auto const &[position, font] : font_mapping) {
+		if (font->fc->IsBuiltInFont()) return nullptr;
+	}
 
 	/* Itemize text. */
 	std::vector<SCRIPT_ITEM> items = UniscribeItemizeString(buff, length);

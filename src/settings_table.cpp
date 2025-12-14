@@ -670,7 +670,7 @@ static void ChangeMinutesPerYear(int32_t new_value)
 static std::tuple<int32_t, uint32_t> GetMinutesPerYearRange(const IntSettingDesc &)
 {
 	/* Allow a non-default value only if using Wallclock timekeeping units. */
-	if (_settings_newgame.economy.timekeeping_units == TKU_WALLCLOCK) return { CalendarTime::FROZEN_MINUTES_PER_YEAR, CalendarTime::MAX_MINUTES_PER_YEAR };
+	if (TimerGameEconomy::UsingWallclockUnits(_game_mode == GM_MENU)) return { CalendarTime::FROZEN_MINUTES_PER_YEAR, CalendarTime::MAX_MINUTES_PER_YEAR };
 
 	return { CalendarTime::DEF_MINUTES_PER_YEAR, CalendarTime::DEF_MINUTES_PER_YEAR };
 }

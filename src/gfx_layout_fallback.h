@@ -26,24 +26,5 @@ public:
 	static size_t AppendToBuffer(char32_t *buff, const char32_t *buffer_last, char32_t c);
 };
 
-/**
- * Swap paired brackets for fallback RTL layouting.
- * @param c Character to swap.
- * @return Swapped character, or original character if it is not a paired bracket.
- */
-inline char32_t SwapRtlPairedCharacters(char32_t c)
-{
-	/* There are many more paired brackets, but for fallback purposes we only handle ASCII brackets. */
-	/* https://www.unicode.org/Public/UCD/latest/ucd/BidiBrackets.txt */
-	switch (c) {
-		case U'(': return U')';
-		case U')': return U'(';
-		case U'[': return U']';
-		case U']': return U'[';
-		case U'{': return U'}';
-		case U'}': return U'{';
-		default: return c;
-	}
-}
 
 #endif /* GFX_LAYOUT_FALLBACK_H */

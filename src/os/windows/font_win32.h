@@ -37,11 +37,11 @@ public:
 	Win32FontCache(FontSize fs, const LOGFONT &logfont, int pixels);
 	~Win32FontCache();
 	void ClearFontCache() override;
-	GlyphID MapCharToGlyph(char32_t key) override;
+	GlyphID MapCharToGlyph(char32_t key, bool allow_fallback = true) override;
 	std::string GetFontName() override { return this->fontname; }
 	const void *GetOSHandle() override { return &this->logfont; }
 };
 
-void LoadWin32Font(FontSize fs, bool search, const std::string &font_name, std::span<const std::byte> os_handle);
+void LoadWin32Font(FontSize fs);
 
 #endif /* FONT_WIN32_H */

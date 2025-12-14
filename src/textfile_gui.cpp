@@ -83,7 +83,7 @@ static WindowDesc _textfile_desc(
 	_nested_textfile_widgets
 );
 
-TextfileWindow::TextfileWindow(Window *parent, TextfileType file_type) : Window(_textfile_desc), BaseStringMissingGlyphSearcher(FS_MONO), file_type(file_type)
+TextfileWindow::TextfileWindow(Window *parent, TextfileType file_type) : Window(_textfile_desc), file_type(file_type)
 {
 	/* Init of nested tree is deferred.
 	 * TextfileWindow::ConstructWindow must be called by the inheriting window. */
@@ -752,6 +752,19 @@ bool TextfileWindow::IsTextWrapped() const
 	if (this->search_iterator >= this->lines.size()) return std::nullopt;
 
 	return this->lines[this->search_iterator++].text;
+}
+
+/* virtual */ bool TextfileWindow::Monospace()
+{
+	return true;
+}
+
+/* virtual */ void TextfileWindow::SetFontNames([[maybe_unused]] FontCacheSettings *settings, [[maybe_unused]] std::string_view font_name, [[maybe_unused]] const void *os_data)
+{
+#if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
+	settings->mono.font = font_name;
+	settings->mono.os_handle = os_data;
+#endif
 }
 
 #if defined(WITH_ZLIB)

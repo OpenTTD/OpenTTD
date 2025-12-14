@@ -534,7 +534,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 }
 
 struct GrfSpriteOffset {
-	size_t file_pos;
+	size_t file_pos = 0;
 	SpriteCacheCtrlFlags control_flags{};
 };
 
@@ -565,7 +565,7 @@ void ReadGRFSpriteOffsets(SpriteFile &file)
 		size_t old_pos = file.GetPos();
 		file.SeekTo(data_offset, SEEK_CUR);
 
-		GrfSpriteOffset offset{0};
+		GrfSpriteOffset offset{};
 
 		/* Loop over all sprite section entries and store the file
 		 * offset for each newly encountered ID. */
@@ -574,6 +574,7 @@ void ReadGRFSpriteOffsets(SpriteFile &file)
 			if (id != prev_id) {
 				_grf_sprite_offsets[prev_id] = offset;
 				offset.file_pos = file.GetPos() - 4;
+				offset.control_flags.Reset();
 			}
 			prev_id = id;
 			uint length = file.ReadDword();

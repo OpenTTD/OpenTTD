@@ -10,7 +10,6 @@
 #ifndef STRINGS_FUNC_H
 #define STRINGS_FUNC_H
 
-#include "fontcache.h"
 #include "strings_type.h"
 #include "gfx_type.h"
 #include "vehicle_type.h"
@@ -156,32 +155,8 @@ EncodedString GetEncodedString(StringID string, const Args&... args)
  */
 class MissingGlyphSearcher {
 public:
-	FontSizes fontsizes; ///< Font sizes to search for.
-
-	MissingGlyphSearcher(FontSizes fontsizes) : fontsizes(fontsizes) {}
-
 	/** Make sure everything gets destructed right. */
 	virtual ~MissingGlyphSearcher() = default;
-
-	/**
-	 * Test if any glyphs are missing.
-	 * @return Font sizes which have missing glyphs.
-	 */
-	FontSizes FindMissingGlyphs();
-
-	virtual FontLoadReason GetLoadReason() = 0;
-
-	/**
-	 * Get set of glyphs required for the current language.
-	 * @param fontsizes Font sizes to test.
-	 * @return Set of required glyphs.
-	 **/
-	virtual std::set<char32_t> GetRequiredGlyphs(FontSizes fontsizes) = 0;
-};
-
-class BaseStringMissingGlyphSearcher : public MissingGlyphSearcher {
-public:
-	BaseStringMissingGlyphSearcher(FontSizes fontsizes) : MissingGlyphSearcher(fontsizes) {}
 
 	/**
 	 * Get the next string to search through.
@@ -200,11 +175,23 @@ public:
 	 */
 	virtual void Reset() = 0;
 
-	FontLoadReason GetLoadReason() override { return FontLoadReason::LanguageFallback; }
+	/**
+	 * Whether to search for a monospace font or not.
+	 * @return True if searching for monospace.
+	 */
+	virtual bool Monospace() = 0;
 
-	std::set<char32_t> GetRequiredGlyphs(FontSizes fontsizes) override;
+	/**
+	 * Set the right font names.
+	 * @param settings  The settings to modify.
+	 * @param font_name The new font name.
+	 * @param os_data Opaque pointer to OS-specific data.
+	 */
+	virtual void SetFontNames(struct FontCacheSettings *settings, std::string_view font_name, const void *os_data = nullptr) = 0;
+
+	bool FindMissingGlyphs();
 };
 
-void CheckForMissingGlyphs(MissingGlyphSearcher *searcher = nullptr);
+void CheckForMissingGlyphs(MissingGlyphSearcher *search = nullptr);
 
 #endif /* STRINGS_FUNC_H */

@@ -881,6 +881,7 @@ SettingsContainer &GetSettingsTree()
 				towns->Add(new SettingEntry("economy.town_layout"));
 				towns->Add(new SettingEntry("economy.larger_towns"));
 				towns->Add(new SettingEntry("economy.initial_city_size"));
+				towns->Add(new SettingEntry("economy.town_min_distance"));
 				towns->Add(new SettingEntry("economy.town_cargogen_mode"));
 			}
 

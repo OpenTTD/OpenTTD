@@ -10117,9 +10117,12 @@ constructor failed with: excessive CPU usage in list filter function
 Your script made an error: excessive CPU usage in valuator function
 
 CALLSTACK
+*FUNCTION [Valuate()] Valuate line [5]
 *FUNCTION [Start()] regression/main.nut line [2184]
 
 LOCALS
+[args] ARRAY
+[this] INSTANCE
 [Infinite] CLOSURE
 [list] INSTANCE
 [this] INSTANCE
