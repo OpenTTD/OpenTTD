@@ -496,23 +496,23 @@ protected:
 
 		/* Draw x-axis labels and markings for graphs based on financial quarters and years.  */
 		if (this->draw_dates) {
-			TimerGameEconomy::Month month = this->month;
-			TimerGameEconomy::Year year = this->year;
+			TimerGameEconomy::Month mo = this->month;
+			TimerGameEconomy::Year yr = this->year;
 			for (int i = 0; i < this->num_on_x_axis; i++) {
 				if (rtl) {
 					DrawStringMultiLineWithClipping(x + x_sep, x, y, this->height,
-						GetString(month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, STR_MONTH_ABBREV_JAN + month, year),
+						GetString(mo == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, STR_MONTH_ABBREV_JAN + mo, yr),
 						GRAPH_AXIS_LABEL_COLOUR, SA_LEFT);
 				} else {
 					DrawStringMultiLineWithClipping(x, x + x_sep, y, this->height,
-						GetString(month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, STR_MONTH_ABBREV_JAN + month, year),
+						GetString(mo == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, STR_MONTH_ABBREV_JAN + mo, yr),
 						GRAPH_AXIS_LABEL_COLOUR, SA_LEFT);
 				}
 
-				month += this->month_increment;
-				if (month >= 12) {
-					month = 0;
-					year++;
+				mo += this->month_increment;
+				if (mo >= 12) {
+					mo = 0;
+					yr++;
 
 					/* Draw a lighter grid line between years. Top and bottom adjustments ensure we don't draw over top and bottom horizontal grid lines. */
 					GfxFillRect(x + x_sep, r.top + gridline_width, x + x_sep + gridline_width - 1, r.bottom - 1, GRAPH_YEAR_LINE_COLOUR);
@@ -677,9 +677,9 @@ public:
 
 				/* Draw x-axis labels and markings for graphs based on financial quarters and years.  */
 				if (this->draw_dates) {
-					uint year = GetParamMaxValue(this->year.base(), 4, FS_SMALL);
-					for (uint month = 0; month < 12; ++month) {
-						x_label_width = std::max(x_label_width, GetStringBoundingBox(GetString(month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, STR_MONTH_ABBREV_JAN + month, year)).width);
+					uint yr = GetParamMaxValue(this->year.base(), 4, FS_SMALL);
+					for (uint mo = 0; mo < 12; ++mo) {
+						x_label_width = std::max(x_label_width, GetStringBoundingBox(GetString(mo == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, STR_MONTH_ABBREV_JAN + mo, yr)).width);
 					}
 				} else {
 					/* Draw x-axis labels for graphs not based on quarterly performance (cargo payment rates). */
