@@ -439,7 +439,7 @@ uint32_t Station::GetNewGRFVariable(const ResolverObject &object, uint8_t variab
 		const GoodsEntry *ge = &this->goods[cargo];
 
 		switch (variable) {
-			case 0x60: return ge->HasData() ? std::min(ge->GetData().cargo.TotalCount(), 4095u) : 0;
+			case 0x60: return std::min(ge->TotalCount(), 4095u);
 			case 0x61: return ge->HasVehicleEverTriedLoading() ? ge->time_since_pickup : 0;
 			case 0x62: return ge->HasRating() ? ge->rating : 0xFFFFFFFF;
 			case 0x63: return ge->HasData() ? ge->GetData().cargo.PeriodsInTransit() : 0;
@@ -453,8 +453,8 @@ uint32_t Station::GetNewGRFVariable(const ResolverObject &object, uint8_t variab
 	if (variable >= 0x8C && variable <= 0xEC) {
 		const GoodsEntry *g = &this->goods[GB(variable - 0x8C, 3, 4)];
 		switch (GB(variable - 0x8C, 0, 3)) {
-			case 0: return g->HasData() ? g->GetData().cargo.TotalCount() : 0;
-			case 1: return GB(g->HasData() ? std::min(g->GetData().cargo.TotalCount(), 4095u) : 0, 0, 4) | (g->status.Test(GoodsEntry::State::Acceptance) ? (1U << 7) : 0);
+			case 0: return g->TotalCount();
+			case 1: return GB(std::min(g->TotalCount(), 4095u), 0, 4) | (g->status.Test(GoodsEntry::State::Acceptance) ? (1U << 7) : 0);
 			case 2: return g->time_since_pickup;
 			case 3: return g->rating;
 			case 4: return (g->HasData() ? g->GetData().cargo.GetFirstStation() : StationID::Invalid()).base();
@@ -521,14 +521,13 @@ uint32_t Waypoint::GetNewGRFVariable(const ResolverObject &, uint8_t variable, [
 
 		case CargoGRFFileProps::SG_DEFAULT:
 			for (const GoodsEntry &ge : st->goods) {
-				if (!ge.HasData()) continue;
-				cargo += ge.GetData().cargo.TotalCount();
+				cargo += ge.TotalCount();
 			}
 			break;
 
 		default: {
 			const GoodsEntry &ge = st->goods[this->station_scope.cargo_type];
-			cargo = ge.HasData() ? ge.GetData().cargo.TotalCount() : 0;
+			cargo = ge.TotalCount();
 			break;
 		}
 	}
@@ -585,7 +584,7 @@ StationResolverObject::StationResolverObject(const StationSpec *statspec, BaseSt
 		const Station *st = Station::From(this->station_scope.st);
 		/* Pick the first cargo that we have waiting */
 		for (const auto &[cargo, spritegroup] : statspec->grf_prop.spritegroups) {
-			if (cargo < NUM_CARGO && st->goods[cargo].HasData() && st->goods[cargo].GetData().cargo.TotalCount() > 0) {
+			if (cargo < NUM_CARGO && st->goods[cargo].TotalCount() > 0) {
 				ctype = cargo;
 				break;
 			}

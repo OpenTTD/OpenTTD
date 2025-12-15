@@ -1501,7 +1501,7 @@ static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station 
 				 * of 0 for all cargoes. */
 				if (refit_capacity > 0 && (consist_capleft[cargo_type] < consist_capleft[new_cargo_type] ||
 						(consist_capleft[cargo_type] == consist_capleft[new_cargo_type] &&
-						st->goods[cargo_type].GetData().cargo.AvailableCount() > st->goods[new_cargo_type].GetData().cargo.AvailableCount()))) {
+						st->goods[cargo_type].AvailableCount() > st->goods[new_cargo_type].AvailableCount()))) {
 					new_cargo_type = cargo_type;
 				}
 			}
@@ -1774,7 +1774,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 
 			/* If there's goods waiting at the station, and the vehicle
 			 * has capacity for it, load it on the vehicle. */
-			if ((v->cargo.ActionCount(VehicleCargoList::MTA_LOAD) > 0 || (ge->HasData() && ge->GetData().cargo.AvailableCount() > 0)) && MayLoadUnderExclusiveRights(st, v)) {
+			if ((v->cargo.ActionCount(VehicleCargoList::MTA_LOAD) > 0 || ge->AvailableCount() > 0) && MayLoadUnderExclusiveRights(st, v)) {
 				if (v->cargo.StoredCount() == 0) TriggerVehicleRandomisation(v, VehicleRandomTrigger::NewCargo);
 				if (_settings_game.order.gradual_loading) cap_left = std::min(cap_left, GetLoadAmount(v));
 
