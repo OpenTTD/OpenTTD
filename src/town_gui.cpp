@@ -1782,7 +1782,7 @@ struct BuildHouseWindow : public PickerWindow {
 		PickerInvalidations pi(data);
 		if (pi.Test(PickerInvalidation::Position)) {
 			UpdateSelectSize(spec);
-			this->house_info = GetHouseInformation(spec);
+			this->house_info = spec->enabled ? GetHouseInformation(spec) : "";
 		}
 
 		/* If house spec already has the protected flag, handle it automatically and disable the buttons. */
