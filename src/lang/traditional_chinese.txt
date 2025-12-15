@@ -442,7 +442,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :離開編輯器
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :離開
 
-STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :生成市鎮
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :產生市鎮
 STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :設置房屋
 
 # Settings menu
@@ -892,7 +892,7 @@ STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLAC
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(總經理)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} 出資贊助新市鎮「{TOWN}」的興建！
-STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}一個名叫{TOWN}的新城鎮剛剛建立了!
+STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}一個名叫{TOWN}的新市鎮剛剛建立了！
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}新的 {STRING} 正在 {TOWN} 附近建造中！
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}新的 {STRING} 正在 {TOWN} 附近種植中！
@@ -1361,7 +1361,7 @@ STR_CONFIG_SETTING_CITY_APPROVAL                                :地方政府對
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :選擇公司所製造的噪音和環境傷害對其在市鎮的評比及未來的建設行動會造成多大影響。
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :地圖高度限制：{STRING}
-STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :設定地圖的最大高度。選擇"(自動)"則會在地形生成後自動選取合適的數值。
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :設定地圖的最大高度。選擇「（自動）」則會在產生地形後自動選取合適的數值
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :（自動）
@@ -1590,7 +1590,7 @@ STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :在車輛列表
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :如啟用此選項，車輛可運輸的負載量會於車輛列表上方顯示。
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :場景：{STRING}
-STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :此設定決定基本的遊戲場景、可供運輸的貨物種類，以及城鎮發展的條件。然而，NewGRF 及遊戲腳本可提供更加細緻的設定。
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :此設定決定基本的遊戲場景、可供運輸的貨物種類，以及市鎮發展的條件。然而，NewGRF 及遊戲腳本可提供更加細緻的設定
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :地形產生器：{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :「原版」地圖產生器根據所使用的基本圖形集來產生固定的地形。TerraGenesis 則是一個建基於 Perlin 噪音原理的地形產生程序，支援較為細緻的地形設定。
@@ -1608,14 +1608,14 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :煉油廠與地
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :僅於地圖邊緣建造煉油廠，在島嶼型地圖中它們將處於海邊。在大於256格的地圖上，此數值會按比例增加
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :雪線高度：{STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :選擇在寒帶氣候中的雪線高度。雪量會影響工業生成與城市擴張要求。只能在場景編輯器中修改或由"雪量覆蓋率"計算得到
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :控制寒帶氣候中的雪線高度。積雪會影響產生工業與市鎮發展需求。只能在場景編輯器中更改或由「積雪覆蓋率」計算得到
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :積雪覆蓋率：{STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :選擇在寒帶氣候中的大致雪量。雪量會影響工業生成與市鎮擴張要求。只在地圖生成時有效。海平面以上一格的土地永遠不會下雪
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :控制寒帶氣候中的大致雪量。雪量會影響產生工業與市鎮發展需求。只在產生地圖時有效。海平面上的土地永遠沒有積雪
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :沙漠覆蓋率：{STRING}
-STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :控制熱帶氣候中的大致沙漠量。沙漠會影響工業生成和市鎮擴張要求。只在地圖生成時有效
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :控制熱帶氣候中的大致沙漠量。沙漠會影響產生工業與市鎮發展需求。只在產生地圖時有效
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :地形起伏度 (只適用於 TerraGenesis)：{STRING}
@@ -1833,7 +1833,7 @@ STR_CONFIG_SETTING_SOUND_VEHICLE                                :車輛：{STRIN
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :播放車輛的音效。
 
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :環境：{STRING}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :播放與地貌、工業設施和城鎮有關的環境音效。
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :播放與地貌、工業設施和市鎮有關的環境音效
 
 STR_CONFIG_SETTING_MAX_TRAINS                                   :公司可擁有最大列車數量：{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :每所公司擁有的列車數量上限。
@@ -2026,7 +2026,7 @@ STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :禁止
 STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :允許
 STR_CONFIG_SETTING_HOUSE_PLACER_FULLY_CONSTRUCTED               :允許，完全建成
 
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :城鎮貨物生成：{STRING}
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :產生市鎮貨物：{STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :貨物的產出速度取決於城市中的房屋，與城市的總人口數相關。{}二次方：兩倍人口的都市產出四倍量的貨物{}線性：兩倍人口的都市產出兩倍量的貨物
 ###length 2
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :四倍（原版）
@@ -2090,8 +2090,8 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :每 {COMMA} 座
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :無
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :初始城市規模倍率：{STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :設定遊戲開始時城市的大小 (相對於一般市鎮而言)。
-STR_CONFIG_SETTING_TOWN_MIN_DISTANCE                            :市鎮之間最小距離： {STRING}
-STR_CONFIG_SETTING_TOWN_MIN_DISTANCE_HELPTEXT                   :設定地圖生成和隨機建立的市鎮之間最小距離
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE                            :市鎮之間最小距離：{STRING}
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE_HELPTEXT                   :設定產生地圖與隨機建立市鎮時市鎮之間的最小距離
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :每{STRING}更新貨物分配圖
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :兩次連結圖的重新計算間隔。每次重新計算都會計算圖中的一個部分的計劃。這表示此設定的值 X 並不表示整張圖會每 X 秒更新一次。只有一些部分會被更新。設定的越短，計算它所需的 CPU 時間就越多。設定的時間越長，在新航線上開始時貨物分配所需的時間就越長
@@ -2676,7 +2676,7 @@ STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}內容�
 STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}按一下項目查看詳細資訊{}勾選前面的方塊可選擇是否下載
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}全選
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}將所有內容標示為要下載
-STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}選擇升級檔
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}選擇擴充檔
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}將所有已下載項目的升級檔標示為要下載
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}取消全選
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}將所有內容標示為不要下載
@@ -2880,11 +2880,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :遠郊
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :近郊
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :市鎮中心
 
-STR_HOUSE_PICKER_PROTECT                                        :防止升級
+STR_HOUSE_PICKER_PROTECT                                        :防止覆蓋建築物
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :選擇是否保護房屋以免房屋隨著市鎮發展而被替換
 
-STR_HOUSE_PICKER_REPLACE                                        :替換現有
-STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :選擇是否自動移除該房屋所在地上的現有房屋
+STR_HOUSE_PICKER_REPLACE                                        :替換現有建築物
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :選擇是否自動移除所選該格上現存的房屋
 
 STR_STATION_CLASS_DFLT                                          :預設
 STR_STATION_CLASS_DFLT_STATION                                  :預設車站
@@ -3088,7 +3088,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}大型
 STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}隨機
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}選擇市鎮大小
 STR_FOUND_TOWN_CITY                                             :{BLACK}城市
-STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}城市比普通城鎮成長的更快{}你可以從進階設定中調整城市的初始規模
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}城市成長比一般市鎮發展得更快{}你可以從進階設定中調整城市的初始規模
 
 STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}市鎮擴展：
 STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :建築物
@@ -3477,10 +3477,10 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}您確�
 STR_GENERATION_PROGRESS                                         :{WHITE}完成 {NUM}%
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}產生世界
-STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}景觀生成
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}產生景觀
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}產生河流
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}產生荒地與岩石地貌
-STR_GENERATION_TOWN_GENERATION                                  :{BLACK}市鎮生成
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}產生市鎮
 STR_GENERATION_LAND_INDUSTRY_GENERATION                         :{BLACK}產生陸上工業
 STR_GENERATION_WATER_INDUSTRY_GENERATION                        :{BLACK}產生水上工業
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}無法移動
@@ -3763,13 +3763,13 @@ STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :購買專屬營
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :向地方政府行賄
 ###next-name-looks-similar
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}開始進行小型地方廣告活動，為您的運輸服務吸引更多乘客與貨物。{}使城鎮小範圍內的車站獲得暫時的評分增益。{} {POP_COLOUR}費用：{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}開始進行中型地方廣告活動，為您的運輸服務吸引更多乘客與貨物。{}使城鎮中等範圍內的車站獲得暫時的評分增益。{}{POP_COLOUR}費用：{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}開始進行大型地方廣告活動，為您的運輸服務吸引更多乘客與貨物。{}使城鎮較大範圍內的車站獲得暫時的評分增益。{}{POP_COLOUR}費用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}開始進行小型地方廣告活動，為您的運輸服務吸引更多乘客與貨物。{}使市鎮小範圍內的車站獲得暫時的評分增益。{} {POP_COLOUR}費用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}開始進行中型地方廣告活動，為您的運輸服務吸引更多乘客與貨物。{}使市鎮中等範圍內的車站獲得暫時的評分增益。{}{POP_COLOUR}費用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}開始進行大型地方廣告活動，為您的運輸服務吸引更多乘客與貨物。{}使市鎮較大範圍內的車站獲得暫時的評分增益。{}{POP_COLOUR}費用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{YELLOW}贊助市鎮道路網絡重建。{}這將會使到市鎮的交通阻塞 6 個月。{}{POP_COLOUR}費用︰{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}贊助市鎮道路網絡重建。{}這將會使到市鎮的交通阻塞 6 分鐘。{}{POP_COLOUR}費用︰{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}建造雕像紀念您的公司。{}使城鎮範圍內的車站獲得永久的評分增益。{}{POP_COLOUR}費用：{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}出資協助市鎮建造新的商業建築。{}使城鎮獲得暫時性的成長速度增益。{}{POP_COLOUR}費用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}建造雕像紀念您的公司。{}使市鎮範圍內的車站獲得永久的評分增益。{}{POP_COLOUR}費用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}出資協助市鎮建造新的商業建築。{}使市鎮獲得暫時性的成長速度增益。{}{POP_COLOUR}費用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}購買該市鎮 12 個月的專屬營運權。{}市政府將不許乘客和貨物使用其他公司的車站。但如果競爭對手成功賄賂則該合約將被取消。{}{POP_COLOUR}費用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}購買該市鎮 12 分鐘的專屬營運權。{}市政府將不許乘客和貨物使用其他公司的車站。但如果競爭對手成功賄賂則該合約將被取消。{}{POP_COLOUR}費用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}賄賂地方政府以提高您的評級並終止競爭對手的專屬營運權，但如果被發現，將面臨嚴厲處罰的風險。{}{POP_COLOUR}費用：{CURRENCY_LONG}
@@ -5283,13 +5283,13 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}開始�
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... 橋樑的兩端應在陸地上
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}……橋樑過長
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}橋的終點將會在地圖外
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}橋高 {HEIGHT}，不足以興建車站
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}橋高 {HEIGHT}，不足以興建車站
-STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}橋高 {HEIGHT}，不足以興建碼頭
-STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}橋高 {HEIGHT}，不足以放置浮標
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}橋高 {HEIGHT}，不足以興建中途站
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}橋高 {HEIGHT}，不足以興建中途站
-STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}橋高 {HEIGHT}，不足以興建水閘
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}橋樑過低，橋高僅有 {HEIGHT}，不足以興建車站
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}橋樑過低，橋高僅有 {HEIGHT}，不足以興建車站
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}橋樑過低，橋高僅有 {HEIGHT}，不足以興建碼頭
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}橋樑過低，橋高僅有 {HEIGHT}，不足以放置浮標
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}橋樑過低，橋高僅有 {HEIGHT}，不足以興建中途站
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}橋樑過低，橋高僅有 {HEIGHT}，不足以興建中途站
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}橋樑過低，橋高僅有 {HEIGHT}，不足以興建水閘
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}無法在此挖掘隧道...

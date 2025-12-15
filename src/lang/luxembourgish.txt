@@ -2090,6 +2090,8 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 zu {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Keng
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Ufangs-Gréisst vu Stied multiplizéiren mat: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Duerchschnëttsgréisst vu Stied an Proportioun zu normalen Dierfer um Spillstart
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE                            :Minimal Distanz tëschent Stied: {STRING}
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE_HELPTEXT                   :Definéier d'minimal Distanz a Felder tëschend Stied fir d'Kaartegeneratioun and zoufälleg Grënnung
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Update de Verdeelergraph all {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Zäit tëschend zwou Neiberechnungen vun der Linkgrafik. All Neiberechnung berechent eng Komponent vun der Grafik. Dëst bedeit dass e Wäert X net heescht dass déi ganze Grafik all X Sekonne geupdate gëtt. Nëmmen eng Komponent gëtt berechent. Wat de Wäert méi kuerz gesat gëtt, wat méi CPU Leeschtung gebraucht gëtt fir alles ze berechnen. Je gréisser de Wäert gesat gëtt desto méi laang brauch et bis d'Wuereverdeelung op neie Route gestart gëtt
@@ -2878,8 +2880,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Aner Viruerter
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Bannescht Viruerter
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Stadzentrum
 
+STR_HOUSE_PICKER_PROTECT                                        :Upgrades verhënneren
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Wiel aus ob dëst Haus firun engem Ersetze geschützt gëtt wann d'Stad wiisst
 
+STR_HOUSE_PICKER_REPLACE                                        :Existéiernt ersetzen
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Wiel aus fir d'existéierend Haus automatesch ewech ze huele wann dëst Haus placéiert gëtt
 
 STR_STATION_CLASS_DFLT                                          :Standard
 STR_STATION_CLASS_DFLT_STATION                                  :Standardstatioun
@@ -3690,6 +3695,7 @@ STR_EDIT_SIGN_CAPTION                                           :{WHITE}Schëld 
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Zentréiert d'Usiicht op d'Schëld. Ctrl+Klick erstellt eng nei Usiicht op d'Schëld
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Géi bei d'nächst Schëld
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Géi bei d'Schëld firdrun
+STR_EDIT_SIGN_TEXT_COLOUR_TOOLTIP                               :{BLACK}Faarw vum Text vun de Schëlder
 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Gëff en Numm fir d'Schëld an
 

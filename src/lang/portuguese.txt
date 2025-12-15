@@ -437,8 +437,8 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}Colocar 
 ###length 7
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Guardar cenário
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Abrir cenário
-STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Guardar mapa de alturas
-STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Abrir mapa de alturas
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Guardar mapa de altura
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Abrir mapa de altura
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Abandonar editor de cenário
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Sair
@@ -1742,7 +1742,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :<CTRL> + clique
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desligado
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Fechar janelas ao fazer clique direito: {STRING}
-STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Fecha uma janela ao fazer clique direito dentro dela. Desativa os textos de ajuda ao fazer clique direito!
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Fecha uma janela ao fazer clique do botão direito do rato dentro da mesma. Esta opção desativa a opção que faz aparecer os textos de ajuda com o clique direito!
 ###length 3
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Não
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Sim
@@ -2229,22 +2229,22 @@ STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... O co
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
 STR_INTRO_VERSION                                               :OpenTTD {REV}
 
-STR_INTRO_NEW_GAME                                              :{BLACK}Novo jogo
-STR_INTRO_LOAD_GAME                                             :{BLACK}Carregar jogo
-STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Jogar cenário
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Jogar mapa de alturas
-STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor de cenário
-STR_INTRO_MULTIPLAYER                                           :{BLACK}Multi-jogador
+STR_INTRO_NEW_GAME                                              :{BLACK}Novo Jogo
+STR_INTRO_LOAD_GAME                                             :{BLACK}Carregar Jogo
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Jogar Cenário
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Jogar Mapa de Altura
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor de Cenário
+STR_INTRO_MULTIPLAYER                                           :{BLACK}Multi-Jogador
 
-STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opções de jogo
-STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela de classificações
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opções de Jogo
+STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela de Classificações
 STR_INTRO_HELP                                                  :{BLACK}Ajuda e Manuais
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Conteúdo Online
 STR_INTRO_QUIT                                                  :{BLACK}Sair
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Iniciar um novo jogo. Ctrl+Clique salta a configuração do mapa
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Carregar um jogo guardado
-STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Iniciar novo jogo, usando um mapa de alturas como terreno
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Iniciar novo jogo, usando um mapa de altura para gerar o terreno
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Iniciar um novo jogo, utilizando um cenário personalizado guardado no disco
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Criar um cenário de jogo personalizado
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Começar um jogo multi-jogador
@@ -2700,7 +2700,7 @@ STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Esta de
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Já tem isto
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Este conteúdo é desconhecido e não pode ser descarregado no OpenTTD
 
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Isto é uma atualização para u{G 0 m m ma ns mas} {STRING} existente{G 0 "" "" "" s s}
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Este conteúdo é uma atualização para u{G 0 m m ma ns mas} {STRING} já existente{G 0 "" "" "" s s} no seu sistema
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nome: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versão: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Descrição: {WHITE}{STRING}
@@ -2719,7 +2719,7 @@ STR_CONTENT_TYPE_NEWGRF                                         :{G=m}NewGRF
 STR_CONTENT_TYPE_AI                                             :{G=f}IA
 STR_CONTENT_TYPE_AI_LIBRARY                                     :{G=f}Biblioteca de IA
 STR_CONTENT_TYPE_SCENARIO                                       :{G=m}Cenário
-STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=m}Mapa de alturas
+STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=m}Mapa de altura
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :{G=mp}Sons base
 STR_CONTENT_TYPE_BASE_MUSIC                                     :{G=fp}Músicas base
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :{G=m}Script de jogo
@@ -3333,8 +3333,8 @@ STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Guardar 
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Abrir Jogo
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Guardar Cenário
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Abrir Cenário
-STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Carregar mapa de alturas
-STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Guardar mapa de alturas
+STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Carregar mapa de altura
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Guardar mapa de altura
 STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Carregar Dados da Localidade
 STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Clique aqui para saltar para o diretório atual de gravação/carregamento padrão
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} livres
@@ -3346,7 +3346,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Guardar
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Guardar o jogo atual, usando o nome escolhido
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Carregar
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Carregar o jogo selecionado
-STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Carregar mapa de alturas selecionado
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Carregar mapa de altura selecionado
 STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Carregar dados da localidade selecionada
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalhes do Jogo
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nenhuma informação disponível
@@ -3494,9 +3494,9 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}A prepar
 STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Falha ao carregar dados da localidade
 STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}Ficheiro JSON formatado incorretamente
 STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}Dados de {STRING} formatados incorretamente
-STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}Coordenadas de {STRING} mal formatadas, devem ser de 0 a 1 como uma proporção da dimensão total do mapa de alturas
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}Coordenadas de {STRING} mal formatadas, devem ser de 0 a 1 como uma proporção da dimensão total do mapa de altura
 
-STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Não foi possível encontrar um local válido para fundar {NUM} localidade{P "" s}. Em vez disso, fo{P i ram} colocado{P "" s} {P "um " ""}letreiro{P "" s} no{P "" s} loca{P l is} desejado{P "" s}
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Não foi possível encontrar um local válido para fundar {NUM} localidade{P "" s}. Em vez disso, fo{P i ram} colocado{P "" s} {P "um " ""}letreiro{P "" s} no{P "" s} loca{P l is} pretendido{P "" s}
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Definições NewGRF
@@ -4937,7 +4937,7 @@ STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Captura 
 STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Ampliação máxima
 STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Captura de ecrã com ampliação predefinida
 STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Mapa completo
-STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Mapa de alturas
+STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Captura de ecrã do mapa de altura
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Captura de ecrã do minimapa
 
 # Script Parameters
@@ -5025,7 +5025,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Só foi 
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Captura de ecrã enorme
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}A captura vai ter uma resolução de {COMMA} x {COMMA} pixeis. Pode demorar algum tempo para realizar a captura. Deseja continuar?
 
-STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Mapa de alturas guardado com sucesso como '{STRING}'. O pico mais alto é {NUM}
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Mapa de altura guardado com sucesso como '{STRING}'. O pico mais alto é {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Captura de ecrã gravada para o disco como '{STRING}' com sucesso
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}A captura de ecrã falhou!
 
