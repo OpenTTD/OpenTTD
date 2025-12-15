@@ -101,22 +101,17 @@ private:
 	uint height_summary = 0; ///< Height of the #summary_msg string in pixels in the #WID_EM_MESSAGE widget.
 	uint height_detailed = 0; ///< Height of the #detailed_msg string in pixels in the #WID_EM_MESSAGE widget.
 	uint height_extra = 0; ///< Height of the #extra_msg string in pixels in the #WID_EM_MESSAGE widget.
-	TimeoutTimer<TimerWindow> display_timeout;
+
+	TimeoutTimer<TimerWindow> display_timeout = {std::chrono::seconds(_settings_client.gui.errmsg_duration), [this]() {
+		this->Close();
+	}};
 
 public:
 	ErrmsgWindow(const ErrorMessageData &data) :
 		Window(data.HasFace() ? _errmsg_face_desc : _errmsg_desc),
-		ErrorMessageData(data),
-		display_timeout(std::chrono::seconds(_settings_client.gui.errmsg_duration), [this]() {
-			this->Close();
-		})
+		ErrorMessageData(data)
 	{
 		this->InitNested();
-
-		/* Only start the timeout if the message is not critical. */
-		if (!this->is_critical) {
-			this->display_timeout.Reset();
-		}
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -220,6 +215,17 @@ public:
 			default:
 				break;
 		}
+	}
+
+	void OnPaint() override
+	{
+		/* Start the timeout if not already started and the message is not critical. This is handled during OnPaint so that any delay between
+		 * creating the window and displaying it does not affect how long the message is visible. */
+		if (!this->is_critical && this->display_timeout.HasFired()) {
+			this->display_timeout.Reset();
+		}
+
+		this->Window::OnPaint();
 	}
 
 	void OnMouseLoop() override
