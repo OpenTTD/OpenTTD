@@ -2036,7 +2036,7 @@ struct SavePresetWindow : public Window {
 		this->presetname_editbox.text.Assign(initial_text);
 	}
 
-	~SavePresetWindow()
+	~SavePresetWindow() override
 	{
 	}
 

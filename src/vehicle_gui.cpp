@@ -1939,7 +1939,7 @@ public:
 		this->SortVehicleList();
 	}
 
-	~VehicleListWindow()
+	~VehicleListWindow() override
 	{
 		*this->sorting = this->vehgroups.GetListing();
 	}

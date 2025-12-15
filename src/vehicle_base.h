@@ -335,7 +335,7 @@ public:
 
 	void PreDestructor();
 	/** We want to 'destruct' the right class. */
-	virtual ~Vehicle();
+	~Vehicle() override;
 
 	void BeginLoading();
 	void CancelReservation(StationID next, Station *st);

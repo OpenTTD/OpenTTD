@@ -155,7 +155,7 @@ static void VehicleMapSpriteGroup(ByteReader &buf, GrfSpecFeature feature, uint8
 
 /** Handler interface for mapping sprite groups. */
 struct MapSpriteGroupHandler {
-	virtual ~MapSpriteGroupHandler() {}
+	virtual ~MapSpriteGroupHandler() = default;
 	virtual void MapSpecific(uint16_t local_id, uint8_t cid, const SpriteGroup *group) = 0;
 	virtual void MapDefault(uint16_t local_id, const SpriteGroup *group) = 0;
 };

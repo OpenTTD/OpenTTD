@@ -39,7 +39,7 @@ private:
 
 public:
 	FreeTypeFontCache(FontSize fs, FT_Face face, int pixels);
-	~FreeTypeFontCache();
+	~FreeTypeFontCache() override;
 	void ClearFontCache() override;
 	GlyphID MapCharToGlyph(char32_t key, bool allow_fallback = true) override;
 	std::string GetFontName() override { return fmt::format("{}, {}", face->family_name, face->style_name); }
@@ -213,7 +213,7 @@ class FreeTypeFontCacheFactory : public FontCacheFactory {
 public:
 	FreeTypeFontCacheFactory() : FontCacheFactory("freetype", "FreeType font provider") {}
 
-	virtual ~FreeTypeFontCacheFactory()
+	~FreeTypeFontCacheFactory() override
 	{
 		FT_Done_FreeType(_ft_library);
 		_ft_library = nullptr;

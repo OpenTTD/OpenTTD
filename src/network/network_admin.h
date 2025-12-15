@@ -48,7 +48,7 @@ public:
 	NetworkAddress address{}; ///< Address of the admin.
 
 	ServerNetworkAdminSocketHandler(SOCKET s);
-	~ServerNetworkAdminSocketHandler();
+	~ServerNetworkAdminSocketHandler() override;
 
 	NetworkRecvStatus SendError(NetworkErrorCode error);
 	NetworkRecvStatus SendWelcome();

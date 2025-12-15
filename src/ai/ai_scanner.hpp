@@ -15,7 +15,7 @@
 class AIScannerInfo : public ScriptScanner {
 public:
 	AIScannerInfo();
-	~AIScannerInfo();
+	~AIScannerInfo() override;
 
 	void Initialize() override;
 

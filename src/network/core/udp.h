@@ -49,7 +49,7 @@ public:
 	NetworkUDPSocketHandler(NetworkAddressList *bind = nullptr);
 
 	/** On destructing of this class, the socket needs to be closed */
-	virtual ~NetworkUDPSocketHandler() { this->CloseSocket(); }
+	~NetworkUDPSocketHandler() override { this->CloseSocket(); }
 
 	bool Listen();
 	void CloseSocket();

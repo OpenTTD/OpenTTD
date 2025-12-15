@@ -75,7 +75,7 @@ public:
 	NetworkAddress client_address{}; ///< IP-address of the client (so they can be banned)
 
 	ServerNetworkGameSocketHandler(SOCKET s);
-	~ServerNetworkGameSocketHandler();
+	~ServerNetworkGameSocketHandler() override;
 
 	std::unique_ptr<Packet> ReceivePacket() override;
 	NetworkRecvStatus CloseConnection(NetworkRecvStatus status) override;

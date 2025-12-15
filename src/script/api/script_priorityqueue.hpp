@@ -33,7 +33,7 @@ private:
 	std::vector<PriorityItem> queue;  ///< The priority list
 
 public:
-	~ScriptPriorityQueue();
+	~ScriptPriorityQueue() override;
 
 #ifdef DOXYGEN_API
 	/**

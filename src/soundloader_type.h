@@ -21,7 +21,7 @@ public:
 		ProviderManager<SoundLoader>::Register(*this);
 	}
 
-	virtual ~SoundLoader()
+	~SoundLoader() override
 	{
 		ProviderManager<SoundLoader>::Unregister(*this);
 	}

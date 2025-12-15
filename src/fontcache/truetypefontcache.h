@@ -44,7 +44,7 @@ protected:
 
 public:
 	TrueTypeFontCache(FontSize fs, int pixels);
-	virtual ~TrueTypeFontCache();
+	~TrueTypeFontCache() override;
 	int GetFontSize() const override { return this->used_size; }
 	const Sprite *GetGlyph(GlyphID key) override;
 	void ClearFontCache() override;

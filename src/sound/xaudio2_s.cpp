@@ -56,6 +56,8 @@ public:
 		this->buffer.resize(buffer_length);
 	}
 
+	/* This needs to be virtual because the XAudio2 API declares the interface without
+	 * a virtual destructor, even though it has functions that need to be overridden. */
 	virtual ~StreamingVoiceContext() = default;
 
 	HRESULT SubmitBuffer()

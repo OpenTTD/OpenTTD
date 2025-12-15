@@ -28,7 +28,7 @@ struct EffectVehicle final : public SpecializedVehicle<EffectVehicle, VEH_EFFECT
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
 	EffectVehicle() : SpecializedVehicleBase() {}
 	/** We want to 'destruct' the right class. */
-	virtual ~EffectVehicle() = default;
+	~EffectVehicle() override = default;
 
 	void UpdateDeltaXY() override;
 	bool Tick() override;

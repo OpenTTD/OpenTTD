@@ -781,7 +781,7 @@ struct ScriptDebugWindow : public Window {
 		this->InvalidateData(-1);
 	}
 
-	~ScriptDebugWindow()
+	~ScriptDebugWindow() override
 	{
 		ScriptDebugWindow::initial_state = this->filter;
 	}

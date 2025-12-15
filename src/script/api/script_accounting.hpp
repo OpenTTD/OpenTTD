@@ -40,7 +40,7 @@ public:
 	 *   So basically restore the value of GetCosts to what it was before we
 	 *   created this instance.
 	 */
-	~ScriptAccounting();
+	~ScriptAccounting() override;
 
 	/**
 	 * Get the current value of the costs.

@@ -831,7 +831,7 @@ public:
 		this->InvalidateData();
 	}
 
-	~IndustryViewWindow()
+	~IndustryViewWindow() override
 	{
 		CloseWindowById(WC_INDUSTRY_PRODUCTION, this->window_number, false);
 	}
@@ -1665,7 +1665,7 @@ public:
 		this->industry_editbox.cancel_button = QueryString::ACTION_CLEAR;
 	}
 
-	~IndustryDirectoryWindow()
+	~IndustryDirectoryWindow() override
 	{
 		this->last_sorting = this->industries.GetListing();
 	}
