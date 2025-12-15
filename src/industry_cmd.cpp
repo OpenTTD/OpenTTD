@@ -2474,7 +2474,7 @@ static IndustryGenerationProbabilities GetScaledProbabilities(bool water)
 
 	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
 		p.probs[it] = GetScaledIndustryGenerationProbability(it, water, &p.force_one[it]);
-		p.total += p.probs[it];;
+		p.total += p.probs[it];
 		if (p.force_one[it]) p.num_forced++;
 	}
 
@@ -2499,7 +2499,8 @@ void GenerateIndustries()
 		auto &p = water ? wprob : lprob;
 
 		/* Total number of industries scaled by land/water proportion. */
-		uint total_amount = p.total * GetNumberOfIndustries() / (lprob.total + wprob.total);
+		uint total_amount = 0;
+		if (lprob.total + wprob.total > 0) total_amount = p.total * GetNumberOfIndustries() / (lprob.total + wprob.total);
 
 		/* Scale land-based industries to the land proportion, unless the player has set a custom industry count. */
 		if (!water && _settings_game.difficulty.industry_density != ID_CUSTOM) total_amount = Map::ScaleByLandProportion(total_amount);
