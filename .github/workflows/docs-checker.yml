@@ -1,0 +1,100 @@
+name: Docs checker
+
+on:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
+
+jobs:
+  docs-checker:
+    name: New doxygen warnings checker
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+      with:
+        fetch-depth: 4
+
+    - name: Get pull-request commits
+      uses: OpenTTD/actions/checkout-pull-request@v6
+
+    - name: Install dependencies
+      run: |
+        echo "::group::Update apt"
+        sudo apt-get update
+        echo "::endgroup::"
+
+        echo "::group::Install dependencies"
+        sudo apt-get install -y --no-install-recommends \
+          doxygen \
+          # EOF
+        echo "::endgroup::"
+      env:
+        DEBIAN_FRONTEND: noninteractive
+
+    - name: Build docs for PR
+      run: |
+        mkdir build
+
+        echo "::group::CMake"
+        cmake -S . -B build -DOPTION_DOCS_ONLY=ON -DOPTION_LINE_IN_DOXYGEN_WARNINGS=OFF -DOPTION_DOXYGEN_GS_WARN_FILE="Warnings.GS" -DOPTION_DOXYGEN_AI_WARN_FILE="Warnings.AI" -DOPTION_DOXYGEN_WARN_FILE="Warnings.source"
+        echo "::endgroup::"
+
+        echo "::group::Build Source"
+        cmake --build build --target docs_source
+        mv build/Warnings.source doxygen_warnings.PR
+        echo "::endgroup::"
+
+        echo "::group::Build AI"
+        cmake --build build --target docs_ai
+        mv build/Warnings.AI doxygen_AI_warnings.PR
+        echo "::endgroup::"
+
+        echo "::group::Build GS"
+        cmake --build build --target docs_game
+        mv build/Warnings.GS doxygen_GS_warnings.PR
+        echo "::endgroup::"
+
+        rm -r build
+        git restore Doxyfile.in src/script/api/Doxyfile_AI.in src/script/api/Doxyfile_GS.in
+
+    - name: Build docs for base branch
+      run: |
+        git checkout HEAD^
+        mkdir build
+
+        echo "::group::CMake"
+        cmake -S . -B build -DOPTION_DOCS_ONLY=ON -DOPTION_LINE_IN_DOXYGEN_WARNINGS=OFF -DOPTION_DOXYGEN_GS_WARN_FILE="Warnings.GS" -DOPTION_DOXYGEN_AI_WARN_FILE="Warnings.AI" -DOPTION_DOXYGEN_WARN_FILE="Warnings.source"
+        echo "::endgroup::"
+
+        echo "::group::Build Source"
+        cmake --build build --target docs_source
+        mv build/Warnings.source doxygen_warnings.base
+        echo "::endgroup::"
+
+        echo "::group::Build AI"
+        cmake --build build --target docs_ai
+        mv build/Warnings.AI doxygen_AI_warnings.base
+        echo "::endgroup::"
+
+        echo "::group::Build GS"
+        cmake --build build --target docs_game
+        mv build/Warnings.GS doxygen_GS_warnings.base
+        echo "::endgroup::"
+
+        rm -r build
+
+    - name: Compare doxygen warnings and errors
+      run: |
+        unset FAIL
+
+        diff doxygen_warnings.base doxygen_warnings.PR | grep '^>' && FAIL=1
+        diff doxygen_AI_warnings.base doxygen_AI_warnings.PR | grep '^>' && FAIL=1
+        diff doxygen_GS_warnings.base doxygen_GS_warnings.PR | grep '^>' && FAIL=1
+
+        if [ $FAIL ]; then
+            exit 1;
+        fi
