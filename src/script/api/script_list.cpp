@@ -650,62 +650,35 @@ bool ScriptList::RemoveValue(SQInteger value)
 	return this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v == value; });
 }
 
-void ScriptList::RemoveTop(SQInteger count)
+bool ScriptList::RemoveTop(SQInteger count)
 {
 	this->modifications++;
 
-	if (!this->sort_ascending) {
-		this->Sort(this->sorter_type, !this->sort_ascending);
-		this->RemoveBottom(count);
-		this->Sort(this->sorter_type, !this->sort_ascending);
-		return;
+	ScriptObject::DisableDoCommandScope disabler{};
+
+	if (disabler.GetOriginalValue() && this->resume_item.has_value()) {
+		count = this->resume_item.value();
+		this->resume_item.reset();
 	}
 
-	switch (this->sorter_type) {
-		default: NOT_REACHED();
-		case SORT_BY_VALUE:
-			for (auto iter = this->values.begin(); iter != this->values.end(); iter = this->values.begin()) {
-				if (--count < 0) return;
-				this->RemoveItem(iter->second);
-			}
-			break;
-
-		case SORT_BY_ITEM:
-			for (auto iter = this->items.begin(); iter != this->items.end(); iter = this->items.begin()) {
-				if (--count < 0) return;
-				this->RemoveItem(iter->first);
-			}
-			break;
+	while (--count >= 0 && !this->items.empty()) {
+		this->RemoveItem(this->sorter->Begin().value());
+		ScriptController::DecreaseOps(5);
+		if (disabler.GetOriginalValue() && count != 0 && ScriptController::GetOpsTillSuspend() < 0) {
+			this->resume_item = count;
+			return true;
+		}
 	}
+
+	return false;
 }
 
-void ScriptList::RemoveBottom(SQInteger count)
+bool ScriptList::RemoveBottom(SQInteger count)
 {
-	this->modifications++;
-
-	if (!this->sort_ascending) {
-		this->Sort(this->sorter_type, !this->sort_ascending);
-		this->RemoveTop(count);
-		this->Sort(this->sorter_type, !this->sort_ascending);
-		return;
-	}
-
-	switch (this->sorter_type) {
-		default: NOT_REACHED();
-		case SORT_BY_VALUE:
-			for (auto iter = this->values.rbegin(); iter != this->values.rend(); iter = this->values.rbegin()) {
-				if (--count < 0) return;
-				this->RemoveItem(iter->second);
-			}
-			break;
-
-		case SORT_BY_ITEM:
-			for (auto iter = this->items.rbegin(); iter != this->items.rend(); iter = this->items.rbegin()) {
-				if (--count < 0) return;
-				this->RemoveItem(iter->first);
-			}
-			break;
-	}
+	this->Sort(this->sorter_type, !this->sort_ascending);
+	bool ret = this->RemoveTop(count);
+	this->Sort(this->sorter_type, !this->sort_ascending);
+	return ret;
 }
 
 bool ScriptList::RemoveList(ScriptList *list)
@@ -737,18 +710,14 @@ bool ScriptList::KeepValue(SQInteger value)
 	return this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v != value; });
 }
 
-void ScriptList::KeepTop(SQInteger count)
+bool ScriptList::KeepTop(SQInteger count)
 {
-	this->modifications++;
-
-	this->RemoveBottom(this->Count() - count);
+	return this->RemoveBottom(this->Count() - count);
 }
 
-void ScriptList::KeepBottom(SQInteger count)
+bool ScriptList::KeepBottom(SQInteger count)
 {
-	this->modifications++;
-
-	this->RemoveTop(this->Count() - count);
+	return this->RemoveTop(this->Count() - count);
 }
 
 bool ScriptList::KeepList(ScriptList *list)
