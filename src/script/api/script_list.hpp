@@ -343,14 +343,24 @@ public:
 	/**
 	 * Remove the first count items.
 	 * @param count the amount of items to remove.
+	 * @suspendable
 	 */
+#ifdef DOXYGEN_API
 	void RemoveTop(SQInteger count);
+#else
+	bool RemoveTop(SQInteger count);
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Remove the last count items.
 	 * @param count the amount of items to remove.
+	 * @suspendable
 	 */
+#ifdef DOXYGEN_API
 	void RemoveBottom(SQInteger count);
+#else
+	bool RemoveBottom(SQInteger count);
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Remove everything that is in the given list from this list (same item index that is).
@@ -412,14 +422,24 @@ public:
 	/**
 	 * Keep the first count items, i.e. remove everything except the first count items.
 	 * @param count the amount of items to keep.
+	 * @suspendable
 	 */
+#ifdef DOXYGEN_API
 	void KeepTop(SQInteger count);
+#else
+	bool KeepTop(SQInteger count);
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Keep the last count items, i.e. remove everything except the last count items.
 	 * @param count the amount of items to keep.
+	 * @suspendable
 	 */
+#ifdef DOXYGEN_API
 	void KeepBottom(SQInteger count);
+#else
+	bool KeepBottom(SQInteger count);
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Keeps everything that is in the given list from this list (same item index that is).
