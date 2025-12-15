@@ -343,6 +343,26 @@ struct GoodsEntry {
 
 	uint8_t ConvertState() const;
 
+	/**
+	 * Returns sum of cargo still available for loading at the station.
+	 * (i.e. not counting cargo which is already reserved for loading)
+	 * @return Cargo on board the vehicle.
+	 */
+	inline uint AvailableCount() const
+	{
+		return this->HasData() ? this->GetData().cargo.AvailableCount() : 0;
+	}
+
+	/**
+	 * Returns total count of cargo at the station, including
+	 * cargo which is already reserved for loading.
+	 * @return Total cargo count.
+	 */
+	inline uint TotalCount() const
+	{
+		return this->HasData() ? this->GetData().cargo.TotalCount() : 0;
+	}
+
 private:
 	std::unique_ptr<GoodsEntryData> data = nullptr; ///< Optional cargo packet and flow data.
 };
