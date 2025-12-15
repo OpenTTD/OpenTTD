@@ -1766,7 +1766,7 @@ bool AfterLoadGame()
 		for (Station *st : Station::Iterate()) {
 			for (GoodsEntry &ge : st->goods) {
 				ge.last_speed = 0;
-				if (ge.HasData() && ge.GetData().cargo.AvailableCount() != 0) ge.status.Set(GoodsEntry::State::Rating);
+				if (ge.AvailableCount() != 0) ge.status.Set(GoodsEntry::State::Rating);
 			}
 		}
 	}
