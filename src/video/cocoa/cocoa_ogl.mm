@@ -5,16 +5,27 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file cocoa_ogl.mm Code related to the cocoa OpengL video driver. */
+/**
+ * @file cocoa_ogl.mm Code related to the cocoa OpengL video driver.
+ *
+ * @important Notice regarding all modifications!!!!!!!
+ * There are certain limitations because the file is objective C++.
+ * gdb has limitations.
+ * C++ and objective C code can't be joined in all cases (classes stuff).
+ * Read http://developer.apple.com/releasenotes/Cocoa/Objective-C++.html for more information.
+ */
 
-#ifdef WITH_COCOA
+#if defined(WITH_COCOA) || defined(DOXYGEN_API)
 
 #include "../../stdafx.h"
 #include "../../os/macosx/macos.h"
 
+/** Macro defined before OpenGL and GLUT includes to avoid deprecation messages. */
 #define GL_SILENCE_DEPRECATION
 
-#define Rect  OTTDRect
+/** Macro that prevents name conflicts between included headers. */
+#define Rect OTTDRect
+/** Macro that prevents name conflicts between included headers. */
 #define Point OTTDPoint
 #import <Cocoa/Cocoa.h>
 #import <QuartzCore/QuartzCore.h>
@@ -37,15 +48,6 @@
 #import <OpenGL/gl3.h>
 
 static Palette _local_palette; ///< Current palette to use for drawing.
-
-
-/**
- * Important notice regarding all modifications!!!!!!!
- * There are certain limitations because the file is objective C++.
- * gdb has limitations.
- * C++ and objective C code can't be joined in all cases (classes stuff).
- * Read http://developer.apple.com/releasenotes/Cocoa/Objective-C++.html for more information.
- */
 
 /** Platform-specific callback to get an OpenGL function pointer. */
 static OGLProc GetOGLProcAddressCallback(const char *proc)
@@ -181,6 +183,7 @@ static bool _allowSoftware;
 @end
 
 
+/** Storage for instance of the FVideoDriver_CocoaOpenGL class. */
 static FVideoDriver_CocoaOpenGL iFVideoDriver_CocoaOpenGL;
 
 
@@ -330,4 +333,4 @@ void VideoDriver_CocoaOpenGL::Paint()
 	[ CATransaction commit ];
 }
 
-#endif /* WITH_COCOA */
+#endif /* WITH_COCOA or DOXYGEN_API */
