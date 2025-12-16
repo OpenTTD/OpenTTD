@@ -5,25 +5,24 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file cocoa_wnd.mm Code related to OS interface for the cocoa video driver. */
+/**
+ * @file cocoa_wnd.mm Code related to OS interface for the cocoa video driver.
+ *
+ * @important Notice regarding all modifications!!!!!!!
+ * There are certain limitations because the file is objective C++.
+ * gdb has limitations.
+ * C++ and objective C code can't be joined in all cases (classes stuff).
+ * Read http://developer.apple.com/releasenotes/Cocoa/Objective-C++.html for more information.
+ *
+ * @todo List available resolutions.
+ */
 
-/******************************************************************************
- *                             Cocoa video driver                             *
- * Known things left to do:                                                   *
- *  List available resolutions.                                               *
- ******************************************************************************/
-
-#ifdef WITH_COCOA
+#if defined(WITH_COCOA) || defined(DOXYGEN_API)
 
 #include "../../stdafx.h"
 #include "../../os/macosx/macos.h"
 
-#define Rect  OTTDRect
-#define Point OTTDPoint
-#import <Cocoa/Cocoa.h>
-#undef Rect
-#undef Point
-
+#include "../../os/macosx/macos_objective_c.h"
 #include "../../openttd.h"
 #include "../../debug.h"
 #include "cocoa_v.h"
@@ -43,22 +42,18 @@
 /* Table data for key mapping. */
 #include "cocoa_keys.h"
 
-/**
- * Important notice regarding all modifications!!!!!!!
- * There are certain limitations because the file is objective C++.
- * gdb has limitations.
- * C++ and objective C code can't be joined in all cases (classes stuff).
- * Read http://developer.apple.com/releasenotes/Cocoa/Objective-C++.html for more information.
- */
-
+/** Structure to store information about single touch bar button. */
 struct TouchBarButton {
-	NSTouchBarItemIdentifier key;
-	SpriteID                 sprite;
-	MainToolbarHotkeys       hotkey;
-	NSString                *fallback_text;
+	NSTouchBarItemIdentifier key; ///< Unique identifier for this button.
+	SpriteID sprite; ///< Sprite to display on button.
+	MainToolbarHotkeys hotkey; ///< Index of widget that corresponds to this button.
+	NSString *fallback_text; ///< Text to use if sprite is unavailable.
 };
 
-/* 9 items can be displayed on the touch bar when using default buttons. */
+/**
+ * Storage of defined touch bar buttons.
+ * @note 9 items can be displayed on the touch bar when using default buttons.
+ */
 static const std::array<TouchBarButton, 9> _touchbar_buttons{{
 	{ @"openttd.pause",         SPR_IMG_PAUSE,       MTHK_PAUSE,         @"Pause" },
 	{ @"openttd.fastforward",   SPR_IMG_FASTFORWARD, MTHK_FASTFORWARD,   @"Fast Forward" },
@@ -71,23 +66,23 @@ static const std::array<TouchBarButton, 9> _touchbar_buttons{{
 	{ @"openttd.build_airport", SPR_IMG_BUILDAIR,    MTHK_BUILD_AIRPORT, @"Airport" }
 }};
 
-bool _allow_hidpi_window = true; // Referenced from table/misc_settings.ini
+bool _allow_hidpi_window = true; ///< Storage for allow_hidpi setting. If true renders OTTD in native resolution. @see table/misc_settings.ini
 
 @interface OTTDMain : NSObject <NSApplicationDelegate>
 @end
 
+/** Name of notification observer used to restart the game loop if necessary. */
 NSString *OTTDMainLaunchGameEngine = @"ottdmain_launch_game_engine";
 
-bool _tab_is_down;
+bool _tab_is_down; ///< Is tab button pressed.
 
-static bool _cocoa_video_dialog = false;
-static OTTDMain *_ottd_main;
+static bool _cocoa_video_dialog = false; ///< True iff inside the scope of CocoaDialog method.
+static OTTDMain *_ottd_main; ///< App delegate instance of OTTDMain.
 
 
 /**
  * Count the number of UTF-16 code points in a range of an UTF-8 string.
- * @param from Start of the range.
- * @param to End of the range.
+ * @param str The view in range of the string.
  * @return Number of UTF-16 code points in the range.
  */
 static NSUInteger CountUtf16Units(std::string_view str)
@@ -141,6 +136,10 @@ static std::vector<char32_t> NSStringToUTF32(NSString *s)
 	return unicode_str;
 }
 
+/**
+ * Free memory where data was stored.
+ * @param data Pointer to memory that will be freed.
+ */
 static void CGDataFreeCallback(void *, const void *data, size_t)
 {
 	delete[] (const uint32_t *)data;
@@ -326,6 +325,7 @@ static void setupWindowMenu()
 
 /**
  * Startup the application.
+ * @return True iff startup was successful.
  */
 bool CocoaSetupApplication()
 {
@@ -376,7 +376,7 @@ void CocoaExitApplication()
  * @param message Message text.
  * @param buttonLabel Button text.
  *
- * @note This is needed since sometimes assert is called before the videodriver is initialized .
+ * @note This is needed since sometimes assert is called before the videodriver is initialized.
  */
 void CocoaDialog(std::string_view title, std::string_view message, std::string_view buttonLabel)
 {
@@ -410,6 +410,10 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
  * Re-implement the system cursor in order to allow hiding and showing it nicely
  */
 @implementation NSCursor (OTTD_CocoaCursor)
+/**
+ * Create clear cursor for cocoa driver.
+ * @return The created cursor.
+ */
 + (NSCursor *) clearCocoaCursor
 {
 	/* RAW 16x16 transparent GIF */
@@ -427,7 +431,7 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 
 @implementation OTTD_CocoaWindow {
 	VideoDriver_Cocoa *driver;
-	bool touchbar_created;
+	bool touchbar_created; ///< Whether the touchbar exists.
 }
 
 /**
@@ -536,8 +540,8 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 
 @implementation OTTD_CocoaView {
 	float _current_magnification;
-	NSUInteger _current_mods;
-	bool _emulated_down;
+	NSUInteger _current_mods; ///< Currently applied modifier flags.
+	bool _emulated_down; ///< Whether the mouse button is emulated or real.
 	bool _use_hidpi; ///< Render content in native resolution?
 }
 
@@ -602,14 +606,16 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	[ track release ];
 }
 /**
- * Make OpenTTD aware that it has control over the mouse
+ * Make OpenTTD aware that it has control over the mouse.
+ * @param theEvent Information about occurred event.
  */
 - (void)mouseEntered:(NSEvent *)theEvent
 {
 	_cursor.in_window = true;
 }
 /**
- * Make OpenTTD aware that it has NOT control over the mouse
+ * Make OpenTTD aware that it has NO control over the mouse.
+ * @param theEvent Information about occurred event.
  */
 - (void)mouseExited:(NSEvent *)theEvent
 {
@@ -618,9 +624,9 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 }
 
 /**
- * Return the mouse location
- * @param event UI event
- * @return mouse location as NSPoint
+ * Return the mouse location.
+ * @param e Information about occurred event.
+ * @return Mouse location as NSPoint.
  */
 - (NSPoint)mousePositionFromEvent:(NSEvent *)e
 {
@@ -631,6 +637,10 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	return [ self getRealRect:NSMakeRect(pt.x, self.bounds.size.height - pt.y, 0, 0) ].origin;
 }
 
+/**
+ * Internal handler of mouse movement.
+ * @param event Information about occurred event.
+ */
 - (void)internalMouseMoveEvent:(NSEvent *)event
 {
 	if (_cursor.fix_at) {
@@ -643,6 +653,9 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	HandleMouseEvents();
 }
 
+/**
+ * Internal handler of mouse buttons.
+ */
 - (void)internalMouseButtonEvent
 {
 	bool cur_fix = _cursor.fix_at;
@@ -652,6 +665,11 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	if (cur_fix != _cursor.fix_at) CGAssociateMouseAndMouseCursorPosition(!_cursor.fix_at);
 }
 
+/**
+ * Check if right mouse button should be emulated when left button is pressed.
+ * @param event Information about occurred event.
+ * @return True iff right button should be emulated instead of left one.
+ */
 - (BOOL)emulateRightButton:(NSEvent *)event
 {
 	uint32_t keymask = 0;
@@ -661,15 +679,28 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	return (event.modifierFlags & keymask) != 0;
 }
 
+/**
+ * Handler of mouse movement.
+ * @param event Information about occurred event.
+ */
 - (void)mouseMoved:(NSEvent *)event
 {
 	[ self internalMouseMoveEvent:event ];
 }
 
+/**
+ * Handler of mouse movement while left button is down.
+ * @param event Information about occurred event.
+ */
 - (void)mouseDragged:(NSEvent *)event
 {
 	[ self internalMouseMoveEvent:event ];
 }
+
+/**
+ * Handler of left mouse button pressing.
+ * @param event Information about occurred event.
+ */
 - (void)mouseDown:(NSEvent *)event
 {
 	if ([ self emulateRightButton:event ]) {
@@ -680,6 +711,11 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 		[ self internalMouseButtonEvent ];
 	}
 }
+
+/**
+ * Handler of left mouse button releasing.
+ * @param event Information about occurred event.
+ */
 - (void)mouseUp:(NSEvent *)event
 {
 	if (self->_emulated_down) {
@@ -692,22 +728,40 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	}
 }
 
+/**
+ * Handler of mouse movement when right button is down.
+ * @param event Information about occurred event.
+ */
 - (void)rightMouseDragged:(NSEvent *)event
 {
 	[ self internalMouseMoveEvent:event ];
 }
+
+/**
+ * Handler of right mouse button pressing.
+ * @param event Information about occurred event.
+ */
 - (void)rightMouseDown:(NSEvent *)event
 {
 	_right_button_down = true;
 	_right_button_clicked = true;
 	[ self internalMouseButtonEvent ];
 }
+
+/**
+ * Handler of right mouse button releasing.
+ * @param event Information about occurred event.
+ */
 - (void)rightMouseUp:(NSEvent *)event
 {
 	_right_button_down = false;
 	[ self internalMouseButtonEvent ];
 }
 
+/**
+ * Handler of mouse wheel scrolling.
+ * @param event Information about occurred event.
+ */
 - (void)scrollWheel:(NSEvent *)event
 {
 	if ([ event deltaY ] > 0.0) { /* Scroll up */
@@ -737,6 +791,10 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	_cursor.wheel_moved = true;
 }
 
+/**
+ * Handler of magnification events.
+ * @param event Information about occurred event.
+ */
 - (void)magnifyWithEvent:(NSEvent *)event
 {
 	/* Pinch open or close gesture. */
@@ -754,6 +812,10 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	}
 }
 
+/**
+ * Handler of gesture to end magnification.
+ * @param event Information about occurred event.
+ */
 - (void)endGestureWithEvent:(NSEvent *)event
 {
 	/* Gesture ended. */
@@ -761,6 +823,11 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 }
 
 
+/**
+ * Internal handler of keyboard keys.
+ * @param event Information about occurred event.
+ * @return Whether event should be interpreted.
+ */
 - (BOOL)internalHandleKeycode:(unsigned short)keycode unicode:(char32_t)unicode pressed:(BOOL)down modifiers:(NSUInteger)modifiers
 {
 	switch (keycode) {
@@ -833,6 +900,10 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	return interpret_keys;
 }
 
+/**
+ * Handler of keyboard key pressing.
+ * @param event Information about occurred event.
+ */
 - (void)keyDown:(NSEvent *)event
 {
 	/* Quit, hide and minimize */
@@ -862,6 +933,10 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	}
 }
 
+/**
+ * Handler of keyboard key releasing.
+ * @param event Information about occurred event.
+ */
 - (void)keyUp:(NSEvent *)event
 {
 	/* Quit, hide and minimize */
@@ -882,6 +957,10 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	[ self internalHandleKeycode:event.keyCode unicode:unicode_str[0] pressed:NO modifiers:event.modifierFlags ];
 }
 
+/**
+ * Handler of modifiers.
+ * @param event Information about occurred event.
+ */
 - (void)flagsChanged:(NSEvent *)event
 {
 	const int mapping[] = { QZ_CAPSLOCK, QZ_LSHIFT, QZ_LCTRL, QZ_LALT, QZ_LMETA };
@@ -1082,141 +1161,210 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	return [ NSArray array ];
 }
 
-/** Delete single character left of the cursor. */
+/**
+ * Delete single character left of the cursor.
+ * @param sender Where the event comes from.
+ */
 - (void)deleteBackward:(id)sender
 {
 	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_BACKSPACE, 0);
 }
 
-/** Delete word left of the cursor. */
+/**
+ * Delete word left of the cursor.
+ * @param sender Where the event comes from.
+ */
 - (void)deleteWordBackward:(id)sender
 {
 	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_BACKSPACE | WKC_CTRL, 0);
 }
 
-/** Delete single character right of the cursor. */
+/**
+ * Delete single character right of the cursor.
+ * @param sender Where the event comes from.
+ */
 - (void)deleteForward:(id)sender
 {
 	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_DELETE, 0);
 }
 
-/** Delete word right of the cursor. */
+/**
+ * Delete word right of the cursor.
+ * @param sender Where the event comes from.
+ */
 - (void)deleteWordForward:(id)sender
 {
 	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_DELETE | WKC_CTRL, 0);
 }
 
-/** Move cursor one character left. */
+/**
+ * Move cursor one character left.
+ * @param sender Where the event comes from.
+ */
 - (void)moveLeft:(id)sender
 {
 	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_LEFT, 0);
 }
 
-/** Move cursor one word left. */
+/**
+ * Move cursor one word left.
+ * @param sender Where the event comes from.
+ */
 - (void)moveWordLeft:(id)sender
 {
 	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_LEFT | WKC_CTRL, 0);
 }
 
-/** Move cursor one character right. */
+/**
+ * Move cursor one character right.
+ * @param sender Where the event comes from.
+ */
 - (void)moveRight:(id)sender
 {
 	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_RIGHT, 0);
 }
 
-/** Move cursor one word right. */
+/**
+ * Move cursor one word right.
+ * @param sender Where the event comes from.
+ */
 - (void)moveWordRight:(id)sender
 {
 	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_RIGHT | WKC_CTRL, 0);
 }
 
-/** Move cursor one line up. */
+/**
+ * Move cursor one line up.
+ * @param sender Where the event comes from.
+ */
 - (void)moveUp:(id)sender
 {
 	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_UP, 0);
 }
 
-/** Move cursor one line down. */
+/**
+ * Move cursor one line down.
+ * @param sender Where the event comes from.
+ */
 - (void)moveDown:(id)sender
 {
 	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_DOWN, 0);
 }
 
-/** MScroll one line up. */
+/**
+ * MScroll one line up.
+ * @param sender Where the event comes from.
+ */
 - (void)moveUpAndModifySelection:(id)sender
 {
 	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_UP | WKC_SHIFT, 0);
 }
 
-/** Scroll one line down. */
+/**
+ * Scroll one line down.
+ * @param sender Where the event comes from.
+ */
 - (void)moveDownAndModifySelection:(id)sender
 {
 	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_DOWN | WKC_SHIFT, 0);
 }
 
-/** Move cursor to the start of the line. */
+/**
+ * Move cursor to the start of the line.
+ * @param sender Where the event comes from.
+ */
 - (void)moveToBeginningOfLine:(id)sender
 {
 	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_HOME, 0);
 }
 
-/** Move cursor to the end of the line. */
+/**
+ * Move cursor to the end of the line.
+ * @param sender Where the event comes from.
+ */
 - (void)moveToEndOfLine:(id)sender
 {
 	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_END, 0);
 }
 
-/** Scroll one page up. */
+/**
+ * Scroll one page up.
+ * @param sender Where the event comes from.
+ */
 - (void)scrollPageUp:(id)sender
 {
 	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_PAGEUP, 0);
 }
 
-/** Scroll one page down. */
+/**
+ * Scroll one page down.
+ * @param sender Where the event comes from.
+ */
 - (void)scrollPageDown:(id)sender
 {
 	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_PAGEDOWN, 0);
 }
 
-/** Move cursor (and selection) one page up. */
+/**
+ * Move cursor (and selection) one page up.
+ * @param sender Where the event comes from.
+ */
 - (void)pageUpAndModifySelection:(id)sender
 {
 	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_PAGEUP | WKC_SHIFT, 0);
 }
 
-/** Move cursor (and selection) one page down. */
+/**
+ * Move cursor (and selection) one page down.
+ * @param sender Where the event comes from.
+ */
 - (void)pageDownAndModifySelection:(id)sender
 {
 	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_PAGEDOWN | WKC_SHIFT, 0);
 }
 
-/** Scroll to the beginning of the document. */
+/**
+ * Scroll to the beginning of the document.
+ * @param sender Where the event comes from.
+ */
 - (void)scrollToBeginningOfDocument:(id)sender
 {
 	/* For compatibility with OTTD on Win/Linux. */
 	[ self moveToBeginningOfLine:sender ];
 }
 
-/** Scroll to the end of the document. */
+/**
+ * Scroll to the end of the document.
+ * @param sender Where the event comes from.
+ */
 - (void)scrollToEndOfDocument:(id)sender
 {
 	/* For compatibility with OTTD on Win/Linux. */
 	[ self moveToEndOfLine:sender ];
 }
 
-/** Return was pressed. */
+/**
+ * Return was pressed.
+ * @param sender Where the event comes from.
+ */
 - (void)insertNewline:(id)sender
 {
 	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_RETURN, '\r');
 }
 
-/** Escape was pressed. */
+/**
+ * Escape was pressed.
+ * @param sender Where the event comes from.
+ */
 - (void)cancelOperation:(id)sender
 {
 	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_ESC, 0);
 }
 
-/** Invoke the selector if we implement it. */
+/**
+ * Invoke the selector if we implement it.
+ * @param aSelector The selector to invoke.
+ */
 - (void)doCommandBySelector:(SEL)aSelector
 {
 	if ([ self respondsToSelector:aSelector ]) [ self performSelector:aSelector ];
@@ -1237,7 +1385,10 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	}
 	return self;
 }
-/** Handle closure requests */
+/**
+ * Handle closure requests
+ * @param sender Where the event comes from.
+ */
 - (BOOL)windowShouldClose:(id)sender
 {
 	HandleExitGameRequest();
@@ -1276,4 +1427,4 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 
 @end
 
-#endif /* WITH_COCOA */
+#endif /* WITH_COCOA or DOXYGEN_API */
