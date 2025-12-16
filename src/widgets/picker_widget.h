@@ -34,6 +34,8 @@ enum PickerClassWindowWidgets : WidgetID {
 	WID_PW_TYPE_MATRIX, ///< Matrix with items.
 	WID_PW_TYPE_ITEM, ///< A single item.
 	WID_PW_TYPE_SCROLL, ///< Scrollbar for the matrix.
+	WID_PW_TYPE_RAND_SEL, ///< Selector for random item button, which can be hidden.
+	WID_PW_TYPE_RANDOM, ///< Random item button.
 	WID_PW_TYPE_NAME, ///< Name of selected item.
 	WID_PW_TYPE_RESIZE, ///< Type resize handle.
 	WID_PW_CONFIGURE_BADGES, ///< Button to configure badges.
