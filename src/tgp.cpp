@@ -755,6 +755,7 @@ static double perlin_coast_noise_2D(const double x, const double y, const double
  */
 static void HeightMapCoastLines(BorderFlags water_borders)
 {
+	/* Both map dimensions are powers of 2. Division by smaller powers of 2 will always result in an integer. */
 	const int smallest_size = std::min(_height_map.size_x, _height_map.size_y);
 	const int map_ratio = std::max(_height_map.size_x, _height_map.size_y) / smallest_size;
 
@@ -762,7 +763,7 @@ static void HeightMapCoastLines(BorderFlags water_borders)
 	 * reaches the limit of 64. It scales both by the shortest side and the map ratio to try and balance variation in the
 	 * coastline and the amount of water on the map.
 	 */
-	const double jagged_distance = std::min(12 + static_cast<int>(pow(smallest_size / 64, 2)) + std::min(map_ratio, 16), 64);
+	const int jagged_distance = std::min(12 + (smallest_size * smallest_size / 4096) + std::min(map_ratio, 16), 64);
 
 	/* Smoother perlin noise is used to add more depth to the coastline as the smallest edge increases in length */
 	const int smooth_distance = std::min(smallest_size / 32, 32);
