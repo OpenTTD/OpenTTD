@@ -1315,6 +1315,48 @@ ERROR: IsEnd() is invalid as Begin() is never called
     List 1 Next:   0 => 0  (true)
     List 2 Next:   4002 >= 8004  (false)
     List 2 Next:   4006 >= 12  (false)
+  IsEmpty():     true
+  Negative ListDump:
+    1 => 0
+    0 => 0
+    -1 => 0
+    2 => -2
+    -2 => -2
+    3 => -4
+    -3 => -4
+    4 => -8
+    -4 => -8
+    5 => -12
+    -5 => -12
+    6 => -18
+    -6 => -18
+    7 => -24
+    -7 => -24
+    8 => -32
+    -8 => -32
+    9 => -40
+    -9 => -40
+    -10 => -50
+  KeepBelowValue(-12):
+    6 => -18
+    -6 => -18
+    7 => -24
+    -7 => -24
+    8 => -32
+    -8 => -32
+    9 => -40
+    -9 => -40
+    -10 => -50
+  KeepAboveValue(-40):
+    6 => -18
+    -6 => -18
+    7 => -24
+    -7 => -24
+    8 => -32
+    -8 => -32
+  KeepValue(-24):
+    7 => -24
+    -7 => -24
 
 --Company--
   SetName():            true
@@ -10836,7 +10878,7 @@ Your script made an error: excessive CPU usage in valuator function
 
 CALLSTACK
 *FUNCTION [Valuate()] Valuate line [5]
-*FUNCTION [Start()] regression/main.nut line [2383]
+*FUNCTION [Start()] regression/main.nut line [2412]
 
 LOCALS
 [args] ARRAY
