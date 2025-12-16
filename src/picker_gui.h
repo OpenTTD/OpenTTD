@@ -84,6 +84,12 @@ public:
 	/* Collection Callbacks */
 	/** Get the tooltip string for the collection list. */
 	virtual StringID GetCollectionTooltip() const = 0;
+	/** Get the tooltip for the random item button */
+	virtual StringID GetRandomTooltip() const = 0;
+	/** Is collection randomisation supported at all for this picker type? */
+	virtual bool IsCollectionRandomisationSupported() const { return false; }
+	/** Does the collection consist of only 1x1 tiles? */
+	virtual bool IsCollectionValidForRandom([[maybe_unused]] const std::set<PickerItem> &items, [[maybe_unused]] Window *w) { return false; }
 
 	/** Fill a set with all items that are used by the current player. */
 	virtual void FillUsedItems(std::set<PickerItem> &items) = 0;
@@ -133,6 +139,8 @@ public:
 
 	std::set<PickerItem> used; ///< Set of items used in the current game by the current company.
 	std::map<std::string, std::set<PickerItem>> saved; ///< Set of saved collections of items.
+
+	static const int MAX_RANDOM_ITEMS = 2048; ///< Maximum number of items in a randomizable collection to make sure we don't exceed packet size.
 };
 
 /** Helper for PickerCallbacks when the class system is based on NewGRFClass. */
@@ -229,6 +237,7 @@ public:
 	bool has_class_picker = false; ///< Set if this window has a class picker 'component'.
 	bool has_type_picker = false; ///< Set if this window has a type picker 'component'.
 	bool has_collection_picker = false; ///< Set if this window has a collection picker 'component'.
+	bool random_hidden = true; ///< Should we be hiding the randomization button?
 	int preview_height = 0; ///< Height of preview images.
 	std::set<std::string> inactive; ///< Set of collections with inactive items.
 
@@ -238,6 +247,7 @@ public:
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, const Dimension &padding, Dimension &fill, Dimension &resize) override;
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override;
 	DropDownList BuildCollectionDropDownList();
+	void SetDisabledRandomItemButton();
 	void DrawWidget(const Rect &r, WidgetID widget) const override;
 	void OnDropdownSelect(WidgetID widget, int index, int click_result) override;
 	void OnResize() override;

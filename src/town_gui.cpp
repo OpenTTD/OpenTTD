@@ -1491,6 +1491,7 @@ public:
 
 	StringID GetClassTooltip() const override { return STR_PICKER_HOUSE_CLASS_TOOLTIP; }
 	StringID GetTypeTooltip() const override { return STR_PICKER_HOUSE_TYPE_TOOLTIP; }
+	StringID GetRandomTooltip() const override { return STR_PICKER_HOUSE_RANDOM_TOOLTIP; }
 	StringID GetCollectionTooltip() const override { return STR_PICKER_HOUSE_COLLECTION_TOOLTIP; }
 	bool IsActive() const override { return true; }
 
@@ -1567,6 +1568,21 @@ public:
 	void DrawType(int x, int y, int, int id) const override
 	{
 		DrawHouseInGUI(x, y, id, HousePickerCallbacks::sel_view);
+	}
+
+	bool IsCollectionRandomisationSupported() const override { return true; }
+
+	bool IsCollectionValidForRandom(const std::set<PickerItem> &items, [[maybe_unused]] Window *w) override
+	{
+		if (items.size() >= MAX_RANDOM_ITEMS) return false;
+
+		for (const PickerItem &item : items) {
+			if (item.index == -1) continue;
+			const HouseSpec *hs = HouseSpec::Get(item.index);
+			if (hs == nullptr) continue;
+			if (!hs->building_flags.Test(BuildingFlag::Size1x1)) return false;
+		}
+		return true;
 	}
 
 	void FillUsedItems(std::set<PickerItem> &items) override
