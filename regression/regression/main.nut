@@ -1094,6 +1094,35 @@ function Regression::List()
 		}
 	}
 
+	list.Clear();
+	print("  IsEmpty():     " + list.IsEmpty());
+
+	list2 = AIList();
+	for (local i = -10; i < 10; i++) {
+		list2.AddItem(i, -i * i / 2);
+	}
+	list.SwapList(list2);
+
+	print("  Negative ListDump:");
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + i + " => " + list.GetValue(i));
+	}
+	print("  KeepBelowValue(-12):");
+	list.KeepBelowValue(-12);
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + i + " => " + list.GetValue(i));
+	}
+	print("  KeepAboveValue(-40):");
+	list.KeepAboveValue(-40);
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + i + " => " + list.GetValue(i));
+	}
+	print("  KeepValue(-24):");
+	list.KeepValue(-24);
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + i + " => " + list.GetValue(i));
+	}
+
 }
 
 function Regression::Map()
