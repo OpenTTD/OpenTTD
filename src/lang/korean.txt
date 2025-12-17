@@ -2091,6 +2091,8 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :{COMMA}개 중�
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :없음
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :초기 대도시 크기 비율: 일반 도시보다 {STRING}배 크게 시작
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :게임을 시작했을 때 일반 도시에 대한 대도시의 평균 크기를 설정합니다
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE                            :도시 사이의 최소 거리: {STRING}
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE_HELPTEXT                   :지도 생성 및 무작위 설립시 도시 사이의 최소 거리를 몇 칸으로 할지 설정합니다
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :분배 그래프를 매 {STRING}마다 업데이트
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :각 연결 그래프의 하위 시퀀스 재계산 사이의 시간입니다. 각 재계산은 그래프의 한 구성 요소에 대한 계획을 계산합니다. 즉, 이 설정을 X로 설정한다고 해서 전체 그래프를 X초마다 업데이트한다는 뜻은 아닙니다. 일부 구성 요소만 X초마다 업데이트됩니다. 이 값을 더 짧게 설정할 수록 계산하는데 더 많은 CPU 계산 시간이 필요합니다. 값을 더 길게 설정하면 화물 분배가 새 경로로 이뤄지기까지 더 오랜 시간이 걸리게 됩니다
@@ -3694,6 +3696,7 @@ STR_EDIT_SIGN_CAPTION                                           :{WHITE}팻말 �
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}이 팻말의 위치로 이동합니다. CTRL+클릭하면 이 팻말 위치를 기준으로 새로운 외부 화면을 엽니다
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}다음 팻말로 가기
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}이전 팻말로 가기
+STR_EDIT_SIGN_TEXT_COLOUR_TOOLTIP                               :{BLACK}팻말 글씨의 색상
 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}팻말 이름을 입력하세요
 
