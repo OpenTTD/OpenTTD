@@ -154,6 +154,17 @@ protected:
 	 */
 	void CopyList(const ScriptList *list);
 
+	template <class ValueFilter>
+	void RemoveItems(ValueFilter value_filter)
+	{
+		this->modifications++;
+
+		for (ScriptListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
+			next_iter = std::next(iter);
+			if (value_filter(iter->first, iter->second)) this->RemoveItem(iter->first);
+		}
+	}
+
 public:
 	typedef std::set<SQInteger> ScriptItemList;                   ///< The list of items inside the bucket
 	typedef std::map<SQInteger, ScriptItemList> ScriptListBucket; ///< The bucket list per value
