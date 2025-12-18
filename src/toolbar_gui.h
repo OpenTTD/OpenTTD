@@ -10,6 +10,9 @@
 #ifndef TOOLBAR_GUI_H
 #define TOOLBAR_GUI_H
 
+#include "rail_type.h"
+#include "road_type.h"
+
 enum MainToolbarHotkeys : int32_t {
 	MTHK_PAUSE,
 	MTHK_FASTFORWARD,
@@ -59,5 +62,9 @@ void ToggleDirtyBlocks();
 void ToggleWidgetOutlines();
 
 extern uint _toolbar_width;
+
+extern RailType _last_built_railtype; ///< The most recently used type of rail.
+extern RoadType _last_built_roadtype; ///< The most recently used type of road.
+extern RoadType _last_built_tramtype; ///< The most recently used type of tram track.
 
 #endif /* TOOLBAR_GUI_H */
