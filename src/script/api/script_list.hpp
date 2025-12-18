@@ -154,12 +154,11 @@ protected:
 	void CopyList(const ScriptList *list);
 
 public:
-	typedef std::set<SQInteger> ScriptItemList;                   ///< The list of items inside the bucket
-	typedef std::map<SQInteger, ScriptItemList> ScriptListBucket; ///< The bucket list per value
-	typedef std::map<SQInteger, SQInteger> ScriptListMap;         ///< List per item
+	using ScriptListSet = std::set<std::pair<SQInteger, SQInteger>>; ///< List per value
+	using ScriptListMap = std::map<SQInteger, SQInteger>; ///< List per item
 
 	ScriptListMap items;           ///< The items in the list
-	ScriptListBucket buckets;      ///< The items in the list, sorted by value
+	ScriptListSet values; ///< The items in the list, sorted by value
 
 	ScriptList();
 	~ScriptList();
