@@ -24,6 +24,11 @@ protected:
 	bool has_no_more_items; ///< Whether we have more items to iterate over.
 	std::optional<SQInteger> item_next{}; ///< The next item we will show, or std::nullopt if there are no more items to iterate over.
 
+	/**
+	 * Actually try to find the next item.
+	 */
+	virtual void FindNext() = 0;
+
 public:
 	/**
 	 * Virtual dtor, needed to mute warnings.
@@ -38,12 +43,24 @@ public:
 	/**
 	 * Stop iterating a sorter.
 	 */
-	virtual void End() = 0;
+	void End()
+	{
+		this->item_next = std::nullopt;
+		this->has_no_more_items = true;
+	}
 
 	/**
 	 * Get the next item of the sorter.
+	 * @return Optional containing the next item, or std::nullopt when there is none.
 	 */
-	virtual std::optional<SQInteger> Next() = 0;
+	std::optional<SQInteger> Next()
+	{
+		if (this->IsEnd()) return std::nullopt;
+
+		std::optional<SQInteger> item_current = this->item_next;
+		this->FindNext();
+		return item_current;
+	}
 
 	/**
 	 * See if the sorter has reached the end.
@@ -56,7 +73,16 @@ public:
 	/**
 	 * Callback from the list if an item gets removed.
 	 */
-	virtual void Remove(SQInteger item) = 0;
+	void Remove(SQInteger item)
+	{
+		if (this->IsEnd()) return;
+
+		/* If we remove the 'next' item, skip to the next */
+		if (item == this->item_next) {
+			this->FindNext();
+			return;
+		}
+	}
 
 	/**
 	 * Attach the sorter to a new list. This assumes the content of the old list has been moved to
@@ -64,7 +90,7 @@ public:
 	 * doesn't invalidate iterators on lists and maps, so that should be safe.
 	 * @param target New list to attach to.
 	 */
-	virtual void Retarget(ScriptList *new_list)
+	void Retarget(ScriptList *new_list)
 	{
 		this->list = new_list;
 	}
@@ -104,16 +130,7 @@ public:
 		return item_current;
 	}
 
-	void End() override
-	{
-		this->item_next = std::nullopt;
-		this->has_no_more_items = true;
-	}
-
-	/**
-	 * Find the next item, and store that information.
-	 */
-	void FindNext()
+	void FindNext() override
 	{
 		this->item_next = std::nullopt;
 		if (this->value_iter == this->list->values.end()) {
@@ -122,26 +139,6 @@ public:
 		}
 		++this->value_iter;
 		if (this->value_iter != this->list->values.end()) this->item_next = this->value_iter->second;
-	}
-
-	std::optional<SQInteger> Next() override
-	{
-		if (this->IsEnd()) return std::nullopt;
-
-		std::optional<SQInteger> item_current = this->item_next;
-		this->FindNext();
-		return item_current;
-	}
-
-	void Remove(SQInteger item) override
-	{
-		if (this->IsEnd()) return;
-
-		/* If we remove the 'next' item, skip to the next */
-		if (item == this->item_next) {
-			this->FindNext();
-			return;
-		}
 	}
 };
 
@@ -183,16 +180,7 @@ public:
 		return item_current;
 	}
 
-	void End() override
-	{
-		this->item_next = std::nullopt;
-		this->has_no_more_items = true;
-	}
-
-	/**
-	 * Find the next item, and store that information.
-	 */
-	void FindNext()
+	void FindNext() override
 	{
 		this->item_next = std::nullopt;
 		if (this->value_iter == this->list->values.end()) {
@@ -206,26 +194,6 @@ public:
 			--this->value_iter;
 		}
 		if (this->value_iter != this->list->values.end()) this->item_next = this->value_iter->second;
-	}
-
-	std::optional<SQInteger> Next() override
-	{
-		if (this->IsEnd()) return std::nullopt;
-
-		std::optional<SQInteger> item_current = this->item_next;
-		this->FindNext();
-		return item_current;
-	}
-
-	void Remove(SQInteger item) override
-	{
-		if (this->IsEnd()) return;
-
-		/* If we remove the 'next' item, skip to the next */
-		if (item == this->item_next) {
-			this->FindNext();
-			return;
-		}
 	}
 };
 
@@ -263,16 +231,7 @@ public:
 		return item_current;
 	}
 
-	void End() override
-	{
-		this->item_next = std::nullopt;
-		this->has_no_more_items = true;
-	}
-
-	/**
-	 * Find the next item, and store that information.
-	 */
-	void FindNext()
+	void FindNext() override
 	{
 		this->item_next = std::nullopt;
 		if (this->item_iter == this->list->items.end()) {
@@ -281,26 +240,6 @@ public:
 		}
 		++this->item_iter;
 		if (this->item_iter != this->list->items.end()) this->item_next = this->item_iter->first;
-	}
-
-	std::optional<SQInteger> Next() override
-	{
-		if (this->IsEnd()) return std::nullopt;
-
-		std::optional<SQInteger> item_current = this->item_next;
-		this->FindNext();
-		return item_current;
-	}
-
-	void Remove(SQInteger item) override
-	{
-		if (this->IsEnd()) return;
-
-		/* If we remove the 'next' item, skip to the next */
-		if (item == this->item_next) {
-			this->FindNext();
-			return;
-		}
 	}
 };
 
@@ -342,16 +281,7 @@ public:
 		return item_current;
 	}
 
-	void End() override
-	{
-		this->item_next = std::nullopt;
-		this->has_no_more_items = true;
-	}
-
-	/**
-	 * Find the next item, and store that information.
-	 */
-	void FindNext()
+	void FindNext() override
 	{
 		this->item_next = std::nullopt;
 		if (this->item_iter == this->list->items.end()) {
@@ -365,26 +295,6 @@ public:
 			--this->item_iter;
 		}
 		if (this->item_iter != this->list->items.end()) this->item_next = this->item_iter->first;
-	}
-
-	std::optional<SQInteger> Next() override
-	{
-		if (this->IsEnd()) return std::nullopt;
-
-		std::optional<SQInteger> item_current = this->item_next;
-		this->FindNext();
-		return item_current;
-	}
-
-	void Remove(SQInteger item) override
-	{
-		if (this->IsEnd()) return;
-
-		/* If we remove the 'next' item, skip to the next */
-		if (item == this->item_next) {
-			this->FindNext();
-			return;
-		}
 	}
 };
 
