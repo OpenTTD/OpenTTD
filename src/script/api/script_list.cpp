@@ -20,9 +20,15 @@
  */
 class ScriptListSorter {
 protected:
-	ScriptList *list;       ///< The list that's being sorted.
-	bool has_no_more_items; ///< Whether we have more items to iterate over.
-	std::optional<SQInteger> item_next{}; ///< The next item we will show, or std::nullopt if there are no more items to iterate over.
+	const ScriptList *list; ///< The list that's being sorted.
+	bool has_no_more_items = true; ///< Whether we have more items to iterate over.
+	std::optional<SQInteger> item_next = std::nullopt; ///< The next item we will show, or std::nullopt if there are no more items to iterate over.
+
+	/**
+	 * Create a new sorter.
+	 * @param list The list to sort.
+	 */
+	ScriptListSorter(const ScriptList *list) : list(list) {}
 
 	/**
 	 * Actually try to find the next item.
@@ -65,7 +71,7 @@ public:
 	/**
 	 * See if the sorter has reached the end.
 	 */
-	bool IsEnd()
+	bool IsEnd() const
 	{
 		return this->list->items.empty() || this->has_no_more_items;
 	}
@@ -90,7 +96,7 @@ public:
 	 * doesn't invalidate iterators on lists and maps, so that should be safe.
 	 * @param target New list to attach to.
 	 */
-	void Retarget(ScriptList *new_list)
+	void Retarget(const ScriptList *new_list)
 	{
 		this->list = new_list;
 	}
@@ -101,18 +107,14 @@ public:
  */
 class ScriptListSorterValueAscending : public ScriptListSorter {
 private:
-	ScriptList::ScriptListSet::iterator value_iter; ///< The iterator over the value/item pairs in the set.
+	ScriptList::ScriptListSet::const_iterator value_iter; ///< The iterator over the value/item pairs in the set.
 
 public:
 	/**
 	 * Create a new sorter.
 	 * @param list The list to sort.
 	 */
-	ScriptListSorterValueAscending(ScriptList *list)
-	{
-		this->list = list;
-		this->End();
-	}
+	ScriptListSorterValueAscending(const ScriptList *list) : ScriptListSorter(list) {}
 
 	std::optional<SQInteger> Begin() override
 	{
@@ -150,18 +152,14 @@ private:
 	/* Note: We cannot use reverse_iterator.
 	 *       The iterators must only be invalidated when the element they are pointing to is removed.
 	 *       This only holds for forward iterators. */
-	ScriptList::ScriptListSet::iterator value_iter; ///< The iterator over the value/item pairs in the set.
+	ScriptList::ScriptListSet::const_iterator value_iter; ///< The iterator over the value/item pairs in the set.
 
 public:
 	/**
 	 * Create a new sorter.
 	 * @param list The list to sort.
 	 */
-	ScriptListSorterValueDescending(ScriptList *list)
-	{
-		this->list = list;
-		this->End();
-	}
+	ScriptListSorterValueDescending(const ScriptList *list) : ScriptListSorter(list) {}
 
 	std::optional<SQInteger> Begin() override
 	{
@@ -202,18 +200,14 @@ public:
  */
 class ScriptListSorterItemAscending : public ScriptListSorter {
 private:
-	ScriptList::ScriptListMap::iterator item_iter; ///< The iterator over the items in the map.
+	ScriptList::ScriptListMap::const_iterator item_iter; ///< The iterator over the items in the map.
 
 public:
 	/**
 	 * Create a new sorter.
 	 * @param list The list to sort.
 	 */
-	ScriptListSorterItemAscending(ScriptList *list)
-	{
-		this->list = list;
-		this->End();
-	}
+	ScriptListSorterItemAscending(const ScriptList *list) : ScriptListSorter(list) {}
 
 	std::optional<SQInteger> Begin() override
 	{
@@ -251,18 +245,14 @@ private:
 	/* Note: We cannot use reverse_iterator.
 	 *       The iterators must only be invalidated when the element they are pointing to is removed.
 	 *       This only holds for forward iterators. */
-	ScriptList::ScriptListMap::iterator item_iter; ///< The iterator over the items in the map.
+	ScriptList::ScriptListMap::const_iterator item_iter; ///< The iterator over the items in the map.
 
 public:
 	/**
 	 * Create a new sorter.
 	 * @param list The list to sort.
 	 */
-	ScriptListSorterItemDescending(ScriptList *list)
-	{
-		this->list = list;
-		this->End();
-	}
+	ScriptListSorterItemDescending(const ScriptList *list) : ScriptListSorter(list) {}
 
 	std::optional<SQInteger> Begin() override
 	{
