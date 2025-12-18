@@ -27,6 +27,7 @@
 #include "company_base.h"
 #include "hotkeys.h"
 #include "road_gui.h"
+#include "toolbar_gui.h"
 #include "zoom_func.h"
 #include "dropdown_type.h"
 #include "dropdown_func.h"
@@ -862,13 +863,11 @@ struct BuildRoadToolbarWindow : Window {
 
 	static EventState RoadToolbarGlobalHotkeys(int hotkey)
 	{
-		extern RoadType _last_built_roadtype;
 		return RoadTramToolbarGlobalHotkeys(hotkey, _last_built_roadtype, RTT_ROAD);
 	}
 
 	static EventState TramToolbarGlobalHotkeys(int hotkey)
 	{
-		extern RoadType _last_built_tramtype;
 		return RoadTramToolbarGlobalHotkeys(hotkey, _last_built_tramtype, RTT_TRAM);
 	}
 
