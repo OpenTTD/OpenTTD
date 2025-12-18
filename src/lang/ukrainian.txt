@@ -779,6 +779,8 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Вироблено
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Перевезено
 
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Постачання
+STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Перевезено
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Показати детальні оцінки ефективності
 
@@ -3549,7 +3551,7 @@ STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}дові
 
 ###length 3
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}довільно
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}вручну
+STR_MAPGEN_BORDER_MANUAL                                        :вручну
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Поворот рельєфу
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Назва мапи висот:
