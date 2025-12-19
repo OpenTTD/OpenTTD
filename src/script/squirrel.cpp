@@ -30,6 +30,8 @@
  */
 
 struct ScriptAllocator {
+	friend class Squirrel;
+
 private:
 	std::allocator<uint8_t> allocator;
 	size_t allocated_size = 0; ///< Sum of allocated data size
@@ -813,4 +815,15 @@ bool Squirrel::CanSuspend()
 SQInteger Squirrel::GetOpsTillSuspend()
 {
 	return this->vm->_ops_till_suspend;
+}
+
+void Squirrel::IncreaseAllocatedSize(size_t bytes)
+{
+	_squirrel_allocator->CheckAllocationAllowed(bytes);
+	_squirrel_allocator->allocated_size += bytes;
+}
+
+void Squirrel::DecreaseAllocatedSize(size_t bytes)
+{
+	_squirrel_allocator->allocated_size -= bytes;
 }
