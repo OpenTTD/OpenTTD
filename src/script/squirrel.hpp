@@ -291,6 +291,18 @@ public:
 	 * Get number of bytes allocated by this VM.
 	 */
 	size_t GetAllocatedMemory() const noexcept;
+
+	/**
+	 * Increase number of bytes allocated in the current script allocator scope.
+	 * @param bytes Number of bytes to increase.
+	 */
+	static void IncreaseAllocatedSize(size_t bytes);
+
+	/**
+	 * Decrease number of bytes allocated in the current script allocator scope.
+	 * @param bytes Number of bytes to decrease.
+	 */
+	static void DecreaseAllocatedSize(size_t bytes);
 };
 
 
