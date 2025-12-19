@@ -286,8 +286,13 @@ public:
 	 * @note All added items keep their value as it was in 'list'.
 	 * @note If the item already exists inside the caller, the value of the
 	 *  list that is added is set on the item.
+	 * @suspendable
 	 */
+#ifdef DOXYGEN_API
 	void AddList(ScriptList *list);
+#else
+	bool AddList(ScriptList *list);
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Swap the contents of two lists.

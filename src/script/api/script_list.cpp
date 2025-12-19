@@ -598,9 +598,9 @@ void ScriptList::Sort(SorterType sorter, bool ascending)
 	this->initialized    = false;
 }
 
-void ScriptList::AddList(ScriptList *list)
+bool ScriptList::AddList(ScriptList *list)
 {
-	if (list == this) return;
+	if (list == this) return false;
 
 	if (this->IsEmpty()) {
 		/* If this is empty, we can just take the items of the other list as is. */
@@ -608,11 +608,27 @@ void ScriptList::AddList(ScriptList *list)
 		this->values = list->values;
 		this->modifications++;
 	} else {
-		for (const auto &item : list->items) {
+		ScriptObject::DisableDoCommandScope disabler{};
+
+		auto begin = list->items.begin();
+		if (disabler.GetOriginalValue() && this->resume_item.has_value()) {
+			begin = list->items.lower_bound(this->resume_item.value());
+		}
+
+		for (const auto &item : std::ranges::subrange(begin, list->items.end())) {
+			if (disabler.GetOriginalValue() && item.first != this->resume_item && ScriptController::GetOpsTillSuspend() < 0) {
+				this->resume_item = item.first;
+				return true;
+			}
 			this->AddItem(item.first);
 			this->SetValue(item.first, item.second);
+			ScriptController::DecreaseOps(5);
 		}
+
+		this->resume_item.reset();
 	}
+
+	return false;
 }
 
 void ScriptList::SwapList(ScriptList *list)
