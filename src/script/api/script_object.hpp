@@ -510,4 +510,37 @@ public:
 	}
 };
 
+/**
+ * Allocator that uses script memory allocation accounting.
+ * @tparam T Type of allocator.
+ */
+template <typename T>
+struct ScriptStdAllocator
+{
+	using value_type = T;
+
+	ScriptStdAllocator() = default;
+
+	template <typename U>
+	constexpr ScriptStdAllocator(const ScriptStdAllocator<U> &) noexcept {}
+
+	T *allocate(std::size_t n)
+	{
+		Squirrel::IncreaseAllocatedSize(n * sizeof(T));
+		return std::allocator<T>{}.allocate(n);
+	}
+
+	void deallocate(T *mem, std::size_t n)
+	{
+		Squirrel::DecreaseAllocatedSize(n * sizeof(T));
+		std::allocator<T>{}.deallocate(mem, n);
+	}
+};
+
+template <typename T, typename U>
+bool operator==(const ScriptStdAllocator<T> &, const ScriptStdAllocator<U> &) { return true; }
+
+template <typename T, typename U>
+bool operator!=(const ScriptStdAllocator<T> &, const ScriptStdAllocator<U> &) { return false; }
+
 #endif /* SCRIPT_OBJECT_HPP */
