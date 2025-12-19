@@ -52,7 +52,7 @@ public:
 	 * Destroying this instance resets the asynchronous mode to the mode it was
 	 *   in when the instance was created.
 	 */
-	~ScriptAsyncMode();
+	~ScriptAsyncMode() override;
 
 	/**
 	 * @api -all

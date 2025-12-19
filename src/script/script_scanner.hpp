@@ -19,7 +19,7 @@ using ScriptInfoList = std::map<std::string, class ScriptInfo *, CaseInsensitive
 class ScriptScanner : public FileScanner {
 public:
 	ScriptScanner();
-	virtual ~ScriptScanner();
+	~ScriptScanner() override;
 
 	virtual void Initialize() = 0;
 

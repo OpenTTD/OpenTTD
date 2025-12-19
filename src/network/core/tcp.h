@@ -63,7 +63,7 @@ public:
 	 * @param s The just opened TCP connection.
 	 */
 	NetworkTCPSocketHandler(SOCKET s = INVALID_SOCKET) : sock(s) {}
-	~NetworkTCPSocketHandler();
+	~NetworkTCPSocketHandler() override;
 };
 
 /**

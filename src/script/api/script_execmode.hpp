@@ -43,7 +43,7 @@ public:
 	 * Destroying this instance reset the building mode to the mode it was
 	 *   in when the instance was created.
 	 */
-	~ScriptExecMode();
+	~ScriptExecMode() override;
 
 	/**
 	 * @api -all

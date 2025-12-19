@@ -553,7 +553,7 @@ public:
 	Industry *industry = nullptr; ///< NOSAVE: Associated industry for neutral stations. (Rebuilt on load from Industry->st)
 
 	Station(TileIndex tile = INVALID_TILE);
-	~Station();
+	~Station() override;
 
 	void AddFacility(StationFacility new_facility_bit, TileIndex facil_xy);
 

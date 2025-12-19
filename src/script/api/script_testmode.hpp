@@ -45,7 +45,7 @@ public:
 	 * Destroying this instance reset the building mode to the mode it was
 	 *   in when the instance was created.
 	 */
-	~ScriptTestMode();
+	~ScriptTestMode() override;
 
 	/**
 	 * @api -all

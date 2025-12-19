@@ -30,7 +30,7 @@ struct Waypoint final : SpecializedStation<Waypoint, true> {
 	 * @param tile The location of the waypoint.
 	 */
 	Waypoint(TileIndex tile = INVALID_TILE) : SpecializedStation<Waypoint, true>(tile) { }
-	~Waypoint();
+	~Waypoint() override;
 
 	void UpdateVirtCoord() override;
 

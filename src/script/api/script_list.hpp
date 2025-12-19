@@ -173,7 +173,7 @@ public:
 	ScriptListSet values; ///< The items in the list, sorted by value
 
 	ScriptList();
-	~ScriptList();
+	~ScriptList() override;
 
 #ifdef DOXYGEN_API
 	/**

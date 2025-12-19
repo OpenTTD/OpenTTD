@@ -44,7 +44,7 @@ struct DisasterVehicle final : public SpecializedVehicle<DisasterVehicle, VEH_DI
 	DisasterVehicle() : SpecializedVehicleBase() {}
 	DisasterVehicle(int x, int y, Direction direction, DisasterSubType subtype, VehicleID big_ufo_destroyer_target = VehicleID::Invalid());
 	/** We want to 'destruct' the right class. */
-	virtual ~DisasterVehicle() = default;
+	~DisasterVehicle() override = default;
 
 	void UpdatePosition(int x, int y, int z);
 	void UpdateDeltaXY() override;

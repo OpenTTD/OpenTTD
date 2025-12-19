@@ -443,7 +443,7 @@ public:
 		this->GetWidget<NWidgetCore>(WID_STL_SORTDROPBTN)->SetString(CompanyStationsWindow::sorter_names[this->stations.SortType()]);
 	}
 
-	~CompanyStationsWindow()
+	~CompanyStationsWindow() override
 	{
 		/* Save filter state. */
 		this->filter.last_sorting = this->stations.GetListing();

@@ -176,7 +176,7 @@ public:
 		this->vscroll->SetCount(this->bridges.size());
 	}
 
-	~BuildBridgeWindow()
+	~BuildBridgeWindow() override
 	{
 		BuildBridgeWindow::last_sorting = this->bridges.GetListing();
 	}

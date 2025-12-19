@@ -31,7 +31,7 @@ public:
 		ProviderManager<ScreenshotProvider>::Register(*this);
 	}
 
-	virtual ~ScreenshotProvider()
+	~ScreenshotProvider() override
 	{
 		ProviderManager<ScreenshotProvider>::Unregister(*this);
 	}

@@ -15,7 +15,7 @@
 /** Music player making use of DirectX. */
 class MusicDriver_DMusic : public MusicDriver {
 public:
-	virtual ~MusicDriver_DMusic();
+	~MusicDriver_DMusic() override;
 
 	std::optional<std::string_view> Start(const StringList &param) override;
 

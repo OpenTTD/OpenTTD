@@ -85,7 +85,7 @@ struct Aircraft final : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
 	Aircraft() : SpecializedVehicleBase() {}
 	/** We want to 'destruct' the right class. */
-	virtual ~Aircraft() { this->PreDestructor(); }
+	~Aircraft() override { this->PreDestructor(); }
 
 	void MarkDirty() override;
 	void UpdateDeltaXY() override;

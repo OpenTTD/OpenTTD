@@ -48,6 +48,8 @@ template <class T> struct BaseSetTraits;
  */
 template <class T>
 struct BaseSet {
+	virtual ~BaseSet() = default;
+
 	typedef std::unordered_map<std::string, std::string, StringHash, std::equal_to<>> TranslatedStrings;
 
 	/** Number of files in this set */

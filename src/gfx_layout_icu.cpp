@@ -109,7 +109,7 @@ public:
 		this->Reflow();
 	}
 
-	~ICUParagraphLayout() override { }
+	~ICUParagraphLayout() override = default;
 
 	void Reflow() override
 	{

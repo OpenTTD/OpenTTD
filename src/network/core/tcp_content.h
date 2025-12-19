@@ -124,7 +124,7 @@ public:
 	}
 
 	/** On destructing of this class, the socket needs to be closed */
-	virtual ~NetworkContentSocketHandler()
+	~NetworkContentSocketHandler() override
 	{
 		/* Virtual functions get called statically in destructors, so make it explicit to remove any confusion. */
 		this->CloseSocket();

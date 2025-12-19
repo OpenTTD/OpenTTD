@@ -112,7 +112,7 @@ struct RoadVehicle final : public GroundVehicle<RoadVehicle, VEH_ROAD> {
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
 	RoadVehicle() : GroundVehicleBase() {}
 	/** We want to 'destruct' the right class. */
-	virtual ~RoadVehicle() { this->PreDestructor(); }
+	~RoadVehicle() override { this->PreDestructor(); }
 
 	friend struct GroundVehicle<RoadVehicle, VEH_ROAD>; // GroundVehicle needs to use the acceleration functions defined at RoadVehicle.
 
