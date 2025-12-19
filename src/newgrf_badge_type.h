@@ -13,8 +13,8 @@
 #include "core/enum_type.hpp"
 #include "core/strong_typedef_type.hpp"
 
-using BadgeID = StrongType::Typedef<uint16_t, struct BadgeIDTag, StrongType::Compare>;
-using BadgeClassID = StrongType::Typedef<uint16_t, struct BadgeClassIDTag, StrongType::Compare>;
+using BadgeID = StrongType::Typedef<uint32_t, struct BadgeIDTag, StrongType::Compare>;
+using BadgeClassID = StrongType::Typedef<uint32_t, struct BadgeClassIDTag, StrongType::Compare>;
 
 template <> struct std::hash<BadgeClassID> {
 	std::size_t operator()(const BadgeClassID &badge_class_index) const noexcept
