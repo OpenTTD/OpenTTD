@@ -2445,8 +2445,8 @@ STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}搜尋�
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}搜尋本地網路中的伺服器
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}新增伺服器
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}新增一個伺服器到列表中。可以使用伺服器網址或邀請碼。
-STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}起動伺服器
-STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}起動您自己的伺服器
+STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}啟動伺服器
+STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}啟動本機作為伺服器
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}輸入您的名稱
 STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}輸入伺服器位址或邀請碼
@@ -4114,7 +4114,7 @@ STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :送到船塢
 STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :送到機棚
 
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}點選此按鈕以停止清單上的所有車輛
-STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}點選此按鈕以起動清單上的所有車輛
+STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}點選此按鈕以啟動清單上的所有車輛
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}顯示此車輛類別所有可用的引擎設計
 
 STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}由 {COMMA} 部車輛共用的指令清單
@@ -4351,10 +4351,10 @@ STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}點選�
 STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}點選可停止機棚內的所有飛機
 
 ###length VEHICLE_TYPES
-STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}點選可起動機廠內的所有列車
-STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}點選可起動車廠內的所有車輛
-STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}點選可起動船塢內的所有船舶
-STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}點選可起動機棚內的所有飛機
+STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}點選可啟動機廠內的所有列車
+STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}點選可啟動車廠內的所有車輛
+STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}點選可啟動船塢內的所有船舶
+STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}點選可啟動機棚內的所有飛機
 
 STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}將車頭拖至此即可出售整列車
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}您正準備出售車廠內的所有車輛。確定嗎？
@@ -4482,10 +4482,10 @@ STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}顯示�
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}顯示飛機詳細資料。按住 <Ctrl> 點選可顯示飛機群組
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}目前列車狀態 - 點擊以停止／起動列車
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}目前列車狀態 - 點擊以停止／起動車輛
-STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}目前船舶狀態 - 點擊以停止／起動船舶
-STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}目前飛機狀態 - 點擊以停止／起動飛機
+STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}目前列車狀態 - 點選可停止或啟動列車
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}目前列車狀態 - 點選可停止或啟動車輛
+STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}目前船舶狀態 - 點選可停止或啟動船舶
+STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}目前飛機狀態 - 點選可停止或啟動飛機
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}正在裝卸貨物
@@ -4513,7 +4513,7 @@ STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELO
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}已停止
-STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}已起動
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}已啟動
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (詳細資料)
@@ -5346,10 +5346,10 @@ STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}無法�
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}無法修改飛機名稱...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}無法停止／起動列車...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}無法停止／起動車輛...
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}無法停止／起動船舶...
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}無法停止／起動飛機...
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}無法停止或啟動列車……
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}無法停止或啟動車輛……
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}無法停止或啟動船舶……
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}無法停止或啟動飛機……
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}無法將列車送往機廠...
