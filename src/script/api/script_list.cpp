@@ -15,6 +15,9 @@
 
 #include "../../safeguards.h"
 
+/** Number of bytes per item to charge to script allocation limit. */
+static const size_t SCRIPT_LIST_BYTES_PER_ITEM = 64;
+
 /**
  * Base class for any ScriptList sorter.
  */
@@ -449,9 +452,11 @@ ScriptObject *ScriptList::CloneObject()
 
 void ScriptList::CopyList(const ScriptList *list)
 {
+	Squirrel::DecreaseAllocatedSize(SCRIPT_LIST_BYTES_PER_ITEM * this->items.size());
 	this->Sort(list->sorter_type, list->sort_ascending);
 	this->items = list->items;
 	this->values = list->values;
+	Squirrel::IncreaseAllocatedSize(SCRIPT_LIST_BYTES_PER_ITEM * this->items.size());
 }
 
 ScriptList::ScriptList()
@@ -466,6 +471,9 @@ ScriptList::ScriptList()
 
 ScriptList::~ScriptList()
 {
+	if (_squirrel_allocator != nullptr) {
+		Squirrel::DecreaseAllocatedSize(SCRIPT_LIST_BYTES_PER_ITEM * this->items.size());
+	}
 }
 
 bool ScriptList::HasItem(SQInteger item)
@@ -476,6 +484,7 @@ bool ScriptList::HasItem(SQInteger item)
 void ScriptList::Clear()
 {
 	this->modifications++;
+	Squirrel::DecreaseAllocatedSize(SCRIPT_LIST_BYTES_PER_ITEM * this->items.size());
 
 	this->items.clear();
 	this->values.clear();
@@ -490,6 +499,7 @@ void ScriptList::AddItem(SQInteger item, SQInteger value)
 
 	this->items[item] = value;
 	this->values.emplace(value, item);
+	Squirrel::IncreaseAllocatedSize(SCRIPT_LIST_BYTES_PER_ITEM);
 }
 
 void ScriptList::RemoveItem(SQInteger item)
@@ -506,6 +516,7 @@ void ScriptList::RemoveItem(SQInteger item)
 	assert(value_iter != this->values.end());
 	this->values.erase(value_iter);
 	this->items.erase(item_iter);
+	Squirrel::DecreaseAllocatedSize(SCRIPT_LIST_BYTES_PER_ITEM);
 }
 
 SQInteger ScriptList::Begin()
@@ -608,6 +619,7 @@ void ScriptList::AddList(ScriptList *list)
 		this->items = list->items;
 		this->values = list->values;
 		this->modifications++;
+		Squirrel::IncreaseAllocatedSize(SCRIPT_LIST_BYTES_PER_ITEM * this->items.size());
 	} else {
 		for (const auto &item : list->items) {
 			this->AddItem(item.first);
