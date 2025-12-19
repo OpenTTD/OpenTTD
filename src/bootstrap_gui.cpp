@@ -7,23 +7,19 @@
 
 /** @file bootstrap_gui.cpp Barely used user interface for bootstrapping OpenTTD, i.e. downloading the required content. */
 
+#if defined(WITH_UNISCRIBE) || (defined(WITH_FREETYPE) && (defined(WITH_FONTCONFIG))) || defined(WITH_COCOA)
+
 #include "stdafx.h"
+#include "core/geometry_func.hpp"
 #include "base_media_base.h"
 #include "base_media_graphics.h"
-#include "blitter/factory.hpp"
 #include "error_func.h"
-
-#if defined(WITH_FREETYPE) || defined(WITH_UNISCRIBE) || defined(WITH_COCOA)
-
-#include "core/geometry_func.hpp"
-#include "error.h"
 #include "fontcache.h"
 #include "gfx_func.h"
-#include "network/network.h"
 #include "network/network_content_gui.h"
 #include "openttd.h"
 #include "strings_func.h"
-#include "video/video_driver.hpp"
+#include "palette_func.h"
 #include "window_func.h"
 
 #include "widgets/bootstrap_widget.h"
@@ -282,101 +278,8 @@ public:
 	}
 };
 
-#endif /* defined(WITH_FREETYPE) */
-
-#if defined(__EMSCRIPTEN__)
-#	include <emscripten.h>
-#	include "network/network.h"
-#	include "network/network_content.h"
-#	include "openttd.h"
-#	include "video/video_driver.hpp"
-
-class BootstrapEmscripten : public ContentCallback {
-	bool downloading = false;
-	uint total_files = 0;
-	uint total_bytes = 0;
-	uint downloaded_bytes = 0;
-
-public:
-	BootstrapEmscripten()
-	{
-		_network_content_client.AddCallback(this);
-		_network_content_client.Connect();
-	}
-
-	~BootstrapEmscripten()
-	{
-		_network_content_client.RemoveCallback(this);
-	}
-
-	void OnConnect(bool success) override
-	{
-		if (!success) {
-			EM_ASM({ if (window["openttd_bootstrap_failed"]) openttd_bootstrap_failed(); });
-			return;
-		}
-
-		/* Once connected, request the metadata. */
-		_network_content_client.RequestContentList(CONTENT_TYPE_BASE_GRAPHICS);
-	}
-
-	void OnReceiveContentInfo(const ContentInfo &ci) override
-	{
-		if (this->downloading) return;
-
-		/* And once the metadata is received, start downloading it. */
-		_network_content_client.Select(ci.id);
-		_network_content_client.DownloadSelectedContent(this->total_files, this->total_bytes);
-		this->downloading = true;
-
-		EM_ASM({ if (window["openttd_bootstrap"]) openttd_bootstrap($0, $1); }, this->downloaded_bytes, this->total_bytes);
-	}
-
-	void OnDownloadProgress(const ContentInfo &, int bytes) override
-	{
-		/* A negative value means we are resetting; for example, when retrying or using a fallback. */
-		if (bytes < 0) {
-			this->downloaded_bytes = 0;
-		} else {
-			this->downloaded_bytes += bytes;
-		}
-
-		EM_ASM({ if (window["openttd_bootstrap"]) openttd_bootstrap($0, $1); }, this->downloaded_bytes, this->total_bytes);
-	}
-
-	void OnDownloadComplete(ContentID) override
-	{
-		/* _exit_game is used to break out of the outer video driver's MainLoop. */
-		_exit_game = true;
-
-		delete this;
-	}
-};
-#endif /* __EMSCRIPTEN__ */
-
-/**
- * Handle all procedures for bootstrapping OpenTTD without a base graphics set.
- * This requires all kinds of trickery that is needed to avoid the use of
- * sprites from the base graphics set which are pretty interwoven.
- * @return True if a base set exists, otherwise false.
- */
-bool HandleBootstrap()
+void HandleBootstrapGui()
 {
-	if (BaseGraphics::GetUsedSet() != nullptr) return true;
-
-	/* No user interface, bail out with an error. */
-	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 0) goto failure;
-
-	/* If there is no network or no non-sprite font, then there is nothing we can do. Go straight to failure. */
-#if defined(__EMSCRIPTEN__) || (defined(_WIN32) && defined(WITH_UNISCRIBE)) || (defined(WITH_FREETYPE) && (defined(WITH_FONTCONFIG) || defined(__APPLE__))) || defined(WITH_COCOA)
-	if (!_network_available) goto failure;
-
-	/* First tell the game we're bootstrapping. */
-	_game_mode = GM_BOOTSTRAP;
-
-#if defined(__EMSCRIPTEN__)
-	new BootstrapEmscripten();
-#else
 	/* Initialise the font cache. */
 	InitializeUnicodeGlyphMap();
 	/* Next "force" finding a suitable non-sprite font as the local font is missing. */
@@ -395,27 +298,6 @@ bool HandleBootstrap()
 	/* Finally ask the question. */
 	new BootstrapBackground();
 	new BootstrapAskForDownloadWindow();
-#endif /* __EMSCRIPTEN__ */
-
-	/* Process the user events. */
-	VideoDriver::GetInstance()->MainLoop();
-
-	/* _exit_game is used to get out of the video driver's main loop.
-	 * In case GM_BOOTSTRAP is still set we did not exit it via the
-	 * "download complete" event, so it was a manual exit. Obey it. */
-	_exit_game = _game_mode == GM_BOOTSTRAP;
-	if (_exit_game) return false;
-
-	/* Try to probe the graphics. Should work this time. */
-	if (!BaseGraphics::SetSet(nullptr)) goto failure;
-
-	/* Finally we can continue heading for the menu. */
-	_game_mode = GM_MENU;
-	return true;
-#endif
-
-	/* Failure to get enough working to get a graphics set. */
-failure:
-	UserError("Failed to find a graphics set. Please acquire a graphics set for OpenTTD. See section 1.4 of README.md.");
-	return false;
 }
+
+#endif /* defined(WITH_UNISCRIBE) || (defined(WITH_FREETYPE) && (defined(WITH_FONTCONFIG))) || defined(WITH_COCOA) */

@@ -35,6 +35,11 @@ add_files(
 )
 
 add_files(
+    bootstrap_emscripten_gui.cpp
+    CONDITION EMSCRIPTEN
+)
+
+add_files(
     gfx_layout_icu.cpp
     gfx_layout_icu.h
     CONDITION ICU_i18n_FOUND AND HARFBUZZ_FOUND
@@ -86,6 +91,7 @@ add_files(
     bitmap_type.h
     bmp.cpp
     bmp.h
+    bootstrap.cpp
     bootstrap_gui.cpp
     bridge.h
     bridge_gui.cpp
