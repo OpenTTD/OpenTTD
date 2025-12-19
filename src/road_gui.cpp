@@ -344,6 +344,17 @@ static bool RoadToolbar_CtrlChanged(Window *w)
 
 /** Road toolbar window handler. */
 struct BuildRoadToolbarWindow : Window {
+	/**
+	* Indexes for special hotkeys.
+	* Values have to differ from members of #RoadToolbarWidgets because they are also used as ids for hotkeys.
+	*/
+	enum class SpecialHotkeys : int {
+		PreviousRoadtype = WID_ROT_END, ///< Hotkey to select previous road/tram track type.
+		NextRoadtype, ///< Hotkey to select next road/tram track type.
+		FirstRoadtype, ///< Hotkey to select first road/tram track type.
+		LastRoadtype, ///< Hotkey to select last road/tram track type.
+	};
+
 	RoadType roadtype = INVALID_ROADTYPE; ///< Road type to build.
 	WidgetID last_started_action = INVALID_WIDGET; ///< Last started user action.
 
@@ -597,8 +608,61 @@ struct BuildRoadToolbarWindow : Window {
 		if (_ctrl_pressed) RoadToolbar_CtrlChanged(this);
 	}
 
+	/**
+	* Selects new RoadType based on SpecialHotkeys and order defined in _sorted_roadtypes.
+	* @param hotkey Defines what action to perform.
+	* @return ES_HANDLED if hotkey was accepted.
+	*/
+	EventState ChangeRoadTypeOnHotkey(int hotkey)
+	{
+		int index = 0;
+		int direction = 1;
+
+		switch(SpecialHotkeys(hotkey)) {
+			default: NOT_REACHED();
+			case SpecialHotkeys::FirstRoadtype:
+				index = _sorted_roadtypes.size() - 1;
+				break;
+
+			case SpecialHotkeys::LastRoadtype:
+				direction = -1;
+				break;
+
+			case SpecialHotkeys::PreviousRoadtype:
+				direction = -1;
+				index = _sorted_roadtypes.size() - 1;
+				[[fallthrough]];
+
+			case SpecialHotkeys::NextRoadtype:
+				while (_sorted_roadtypes[index] != this->roadtype) {
+					index += direction;
+					assert(index >= 0 && index < int(_sorted_roadtypes.size()));
+				}
+				break;
+		}
+
+		do {
+			index += direction;
+			if (index >= int(_sorted_roadtypes.size())) {
+				index = 0;
+			} else if (index < 0) {
+				index = _sorted_roadtypes.size() - 1;
+			}
+		} while (RoadTypeIsRoad(_sorted_roadtypes[index]) != RoadTypeIsRoad(this->roadtype) || !HasRoadTypeAvail(_local_company, _sorted_roadtypes[index]));
+
+		_cur_roadtype = _sorted_roadtypes[index];
+		if (RoadTypeIsRoad(_cur_roadtype)) {
+			_last_built_roadtype = _cur_roadtype;
+		} else {
+			_last_built_tramtype = _cur_roadtype;
+		}
+		this->ModifyRoadType(_cur_roadtype);
+		return ES_HANDLED;
+	}
+
 	EventState OnHotkey(int hotkey) override
 	{
+		if (hotkey >= WID_ROT_END) return this->ChangeRoadTypeOnHotkey(hotkey);
 		MarkTileDirtyByTile(TileVirtXY(_thd.pos.x, _thd.pos.y)); // redraw tile selection
 		return Window::OnHotkey(hotkey);
 	}
@@ -885,6 +949,10 @@ struct BuildRoadToolbarWindow : Window {
 		Hotkey('T', "tunnel", WID_ROT_BUILD_TUNNEL),
 		Hotkey('R', "remove", WID_ROT_REMOVE),
 		Hotkey('C', "convert", WID_ROT_CONVERT_ROAD),
+		Hotkey(WKC_L_BRACKET, "prev_roadtype", to_underlying(SpecialHotkeys::PreviousRoadtype)),
+		Hotkey(WKC_R_BRACKET, "next_roadtype", to_underlying(SpecialHotkeys::NextRoadtype)),
+		Hotkey(WKC_L_BRACKET | WKC_CTRL, "first_roadtype", to_underlying(SpecialHotkeys::FirstRoadtype)),
+		Hotkey(WKC_R_BRACKET | WKC_CTRL, "last_roadtype", to_underlying(SpecialHotkeys::LastRoadtype)),
 	}, RoadToolbarGlobalHotkeys};
 
 	static inline HotkeyList tram_hotkeys{"tramtoolbar", {
@@ -900,6 +968,10 @@ struct BuildRoadToolbarWindow : Window {
 		Hotkey('T', "tunnel", WID_ROT_BUILD_TUNNEL),
 		Hotkey('R', "remove", WID_ROT_REMOVE),
 		Hotkey('C', "convert", WID_ROT_CONVERT_ROAD),
+		Hotkey(WKC_L_BRACKET, "prev_tramtype", to_underlying(SpecialHotkeys::PreviousRoadtype)),
+		Hotkey(WKC_R_BRACKET, "next_tramtype", to_underlying(SpecialHotkeys::NextRoadtype)),
+		Hotkey(WKC_L_BRACKET | WKC_CTRL, "first_tramtype", to_underlying(SpecialHotkeys::FirstRoadtype)),
+		Hotkey(WKC_R_BRACKET | WKC_CTRL, "last_tramtype", to_underlying(SpecialHotkeys::LastRoadtype)),
 	}, TramToolbarGlobalHotkeys};
 };
 
