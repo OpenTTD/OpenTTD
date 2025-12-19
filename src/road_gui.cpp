@@ -508,56 +508,85 @@ struct BuildRoadToolbarWindow : Window {
 		}
 	}
 
+	/**
+	 * Returns corresponding cursor for provided button.
+	 * @param widget Widget ID of the button.
+	 * @return Corresponding cursor ID.
+	 */
+	CursorID GetCursorForWidget(WidgetID widget)
+	{
+		switch (widget) {
+			case WID_ROT_ROAD_X: return GetRoadTypeInfo(this->roadtype)->cursor.road_nwse;
+			case WID_ROT_ROAD_Y: return GetRoadTypeInfo(this->roadtype)->cursor.road_swne;
+			case WID_ROT_AUTOROAD: return GetRoadTypeInfo(this->roadtype)->cursor.autoroad;
+			case WID_ROT_DEMOLISH: return ANIMCURSOR_DEMOLISH;
+			case WID_ROT_DEPOT: return GetRoadTypeInfo(this->roadtype)->cursor.depot;
+			case WID_ROT_BUILD_WAYPOINT: return SPR_CURSOR_WAYPOINT;
+			case WID_ROT_BUS_STATION: return SPR_CURSOR_BUS_STATION;
+			case WID_ROT_TRUCK_STATION: return SPR_CURSOR_TRUCK_STATION;
+			case WID_ROT_BUILD_BRIDGE: return SPR_CURSOR_BRIDGE;
+			case WID_ROT_BUILD_TUNNEL: return GetRoadTypeInfo(this->roadtype)->cursor.tunnel;
+			case WID_ROT_CONVERT_ROAD: return GetRoadTypeInfo(this->roadtype)->cursor.convert_road;
+			default: NOT_REACHED();
+		}
+	}
+
+	/**
+	 * Returns corresponding high light style for provided button.
+	 * @param widget Widget ID of the button.
+	 * @return Corresponding high light style.
+	 */
+	HighLightStyle GetHighLightStyleForWidget(WidgetID widget)
+	{
+		switch (widget) {
+			case WID_ROT_ROAD_X: return HT_RECT;
+			case WID_ROT_ROAD_Y: return HT_RECT;
+			case WID_ROT_AUTOROAD: return HT_RECT;
+			case WID_ROT_DEMOLISH: return HT_RECT | HT_DIAGONAL;
+			case WID_ROT_DEPOT: return HT_RECT;
+			case WID_ROT_BUILD_WAYPOINT: return HT_RECT;
+			case WID_ROT_BUS_STATION: return HT_RECT;
+			case WID_ROT_TRUCK_STATION: return HT_RECT;
+			case WID_ROT_BUILD_BRIDGE: return HT_RECT;
+			case WID_ROT_BUILD_TUNNEL: return HT_SPECIAL;
+			case WID_ROT_CONVERT_ROAD: return HT_RECT | HT_DIAGONAL;
+			default: NOT_REACHED();
+		}
+	}
+
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
+		bool started;
 		_remove_button_clicked = false;
 		_one_way_button_clicked = false;
+
+		if (widget != WID_ROT_ONE_WAY && widget != WID_ROT_REMOVE) {
+			started = HandlePlacePushButton(this, widget, this->GetCursorForWidget(widget), this->GetHighLightStyleForWidget(widget));
+			this->last_started_action = widget;
+		}
+
 		switch (widget) {
-			case WID_ROT_ROAD_X:
-				HandlePlacePushButton(this, WID_ROT_ROAD_X, GetRoadTypeInfo(this->roadtype)->cursor.road_nwse, HT_RECT);
-				this->last_started_action = widget;
-				break;
-
-			case WID_ROT_ROAD_Y:
-				HandlePlacePushButton(this, WID_ROT_ROAD_Y, GetRoadTypeInfo(this->roadtype)->cursor.road_swne, HT_RECT);
-				this->last_started_action = widget;
-				break;
-
-			case WID_ROT_AUTOROAD:
-				HandlePlacePushButton(this, WID_ROT_AUTOROAD, GetRoadTypeInfo(this->roadtype)->cursor.autoroad, HT_RECT);
-				this->last_started_action = widget;
-				break;
-
-			case WID_ROT_DEMOLISH:
-				HandlePlacePushButton(this, WID_ROT_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL);
-				this->last_started_action = widget;
-				break;
-
 			case WID_ROT_DEPOT:
-				if (HandlePlacePushButton(this, WID_ROT_DEPOT, GetRoadTypeInfo(this->roadtype)->cursor.depot, HT_RECT)) {
+				if (started) {
 					ShowRoadDepotPicker(this);
-					this->last_started_action = widget;
 				}
 				break;
 
 			case WID_ROT_BUILD_WAYPOINT:
-				this->last_started_action = widget;
-				if (HandlePlacePushButton(this, WID_ROT_BUILD_WAYPOINT, SPR_CURSOR_WAYPOINT, HT_RECT)) {
+				if (started) {
 					ShowBuildRoadWaypointPicker(this);
 				}
 				break;
 
 			case WID_ROT_BUS_STATION:
-				if (HandlePlacePushButton(this, WID_ROT_BUS_STATION, SPR_CURSOR_BUS_STATION, HT_RECT)) {
+				if (started) {
 					ShowRVStationPicker(this, RoadStopType::Bus);
-					this->last_started_action = widget;
 				}
 				break;
 
 			case WID_ROT_TRUCK_STATION:
-				if (HandlePlacePushButton(this, WID_ROT_TRUCK_STATION, SPR_CURSOR_TRUCK_STATION, HT_RECT)) {
+				if (started) {
 					ShowRVStationPicker(this, RoadStopType::Truck);
-					this->last_started_action = widget;
 				}
 				break;
 
@@ -568,16 +597,6 @@ struct BuildRoadToolbarWindow : Window {
 				SetSelectionRed(false);
 				break;
 
-			case WID_ROT_BUILD_BRIDGE:
-				HandlePlacePushButton(this, WID_ROT_BUILD_BRIDGE, SPR_CURSOR_BRIDGE, HT_RECT);
-				this->last_started_action = widget;
-				break;
-
-			case WID_ROT_BUILD_TUNNEL:
-				HandlePlacePushButton(this, WID_ROT_BUILD_TUNNEL, GetRoadTypeInfo(this->roadtype)->cursor.tunnel, HT_SPECIAL);
-				this->last_started_action = widget;
-				break;
-
 			case WID_ROT_REMOVE:
 				if (this->IsWidgetDisabled(WID_ROT_REMOVE)) return;
 
@@ -585,20 +604,41 @@ struct BuildRoadToolbarWindow : Window {
 				ToggleRoadButton_Remove(this);
 				SndClickBeep();
 				break;
-
-			case WID_ROT_CONVERT_ROAD:
-				HandlePlacePushButton(this, WID_ROT_CONVERT_ROAD, GetRoadTypeInfo(this->roadtype)->cursor.convert_road, HT_RECT | HT_DIAGONAL);
-				this->last_started_action = widget;
-				break;
-
-			default: NOT_REACHED();
 		}
-		this->UpdateOptionWidgetStatus((RoadToolbarWidgets)widget);
+		this->UpdateOptionWidgetStatus(static_cast<RoadToolbarWidgets>(widget));
 		if (_ctrl_pressed) RoadToolbar_CtrlChanged(this);
+	}
+
+	/**
+	* Selects new RoadType based on SpecialHotkeys and order defined in _sorted_roadtypes.
+	* @param hotkey Defines what action to perform.
+	* @return ES_HANDLED if hotkey was accepted.
+	*/
+	EventState ChangeRoadTypeOnHotkey(int hotkey)
+	{
+		auto [index, step] = GetListIndexStep(SpecialListHotkeys(hotkey), _sorted_roadtypes, this->roadtype);
+
+		while (RoadTypeIsRoad(_sorted_roadtypes[index]) != RoadTypeIsRoad(this->roadtype) || !HasRoadTypeAvail(_local_company, _sorted_roadtypes[index])) {
+			index = (index + step) % _sorted_roadtypes.size();
+		}
+
+		_cur_roadtype = _sorted_roadtypes[index];
+		if (RoadTypeIsRoad(_cur_roadtype)) {
+			_last_built_roadtype = _cur_roadtype;
+		} else {
+			_last_built_tramtype = _cur_roadtype;
+		}
+		this->ModifyRoadType(_cur_roadtype);
+
+		if (_thd.GetCallbackWnd() == this) SetCursor(this->GetCursorForWidget(this->last_started_action), PAL_NONE);
+		for (WindowClass cls : {WC_BUS_STATION, WC_TRUCK_STATION, WC_BUILD_WAYPOINT, WC_BUILD_DEPOT}) SetWindowDirty(cls, TRANSPORT_ROAD);
+
+		return ES_HANDLED;
 	}
 
 	EventState OnHotkey(int hotkey) override
 	{
+		if (IsSpecialHotkey(hotkey)) return this->ChangeRoadTypeOnHotkey(hotkey);
 		MarkTileDirtyByTile(TileVirtXY(_thd.pos.x, _thd.pos.y)); // redraw tile selection
 		return Window::OnHotkey(hotkey);
 	}
@@ -885,6 +925,10 @@ struct BuildRoadToolbarWindow : Window {
 		Hotkey('T', "tunnel", WID_ROT_BUILD_TUNNEL),
 		Hotkey('R', "remove", WID_ROT_REMOVE),
 		Hotkey('C', "convert", WID_ROT_CONVERT_ROAD),
+		Hotkey(WKC_L_BRACKET, "prev_roadtype", to_underlying(SpecialListHotkeys::PreviousItem)),
+		Hotkey(WKC_R_BRACKET, "next_roadtype", to_underlying(SpecialListHotkeys::NextItem)),
+		Hotkey(WKC_L_BRACKET | WKC_CTRL, "first_roadtype", to_underlying(SpecialListHotkeys::FirstItem)),
+		Hotkey(WKC_R_BRACKET | WKC_CTRL, "last_roadtype", to_underlying(SpecialListHotkeys::LastItem)),
 	}, RoadToolbarGlobalHotkeys};
 
 	static inline HotkeyList tram_hotkeys{"tramtoolbar", {
@@ -900,6 +944,10 @@ struct BuildRoadToolbarWindow : Window {
 		Hotkey('T', "tunnel", WID_ROT_BUILD_TUNNEL),
 		Hotkey('R', "remove", WID_ROT_REMOVE),
 		Hotkey('C', "convert", WID_ROT_CONVERT_ROAD),
+		Hotkey(WKC_L_BRACKET, "prev_tramtype", to_underlying(SpecialListHotkeys::PreviousItem)),
+		Hotkey(WKC_R_BRACKET, "next_tramtype", to_underlying(SpecialListHotkeys::NextItem)),
+		Hotkey(WKC_L_BRACKET | WKC_CTRL, "first_tramtype", to_underlying(SpecialListHotkeys::FirstItem)),
+		Hotkey(WKC_R_BRACKET | WKC_CTRL, "last_tramtype", to_underlying(SpecialListHotkeys::LastItem)),
 	}, TramToolbarGlobalHotkeys};
 };
 
