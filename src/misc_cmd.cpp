@@ -8,6 +8,7 @@
 /** @file misc_cmd.cpp Some misc functions that are better fitted in other files, but never got moved there... */
 
 #include "stdafx.h"
+#include "openttd.h"
 #include "command_func.h"
 #include "economy_func.h"
 #include "window_func.h"
@@ -22,6 +23,7 @@
 #include "texteff.hpp"
 #include "core/backup_type.hpp"
 #include "misc_cmd.h"
+#include "video/video_driver.hpp"
 
 #include "table/strings.h"
 
@@ -204,6 +206,9 @@ CommandCost CmdPause(DoCommandFlags flags, PauseMode mode, bool pause)
 			}
 
 			NetworkHandlePauseChange(prev_mode, mode);
+
+			/* Screensaver should always be inhibited unless we're paused. */
+			VideoDriver::GetInstance()->SetScreensaverInhibited(_pause_mode.None());
 		}
 
 		SetWindowDirty(WC_STATUS_BAR, 0);
