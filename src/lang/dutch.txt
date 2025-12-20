@@ -222,7 +222,7 @@ STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}
 STR_UNITS_POWER_SI                                              :{DECIMAL}{NBSP}kW
 
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}{NBSP}pk/t
-STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}pk/t
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI                           :{DECIMAL}{NBSP}pk/Mg
 STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}pk/t
 STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}pk/t
@@ -312,6 +312,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Wanneer 
 STR_BUTTON_DEFAULT                                              :{BLACK}Standaard
 STR_BUTTON_CANCEL                                               :{BLACK}Annuleren
 STR_BUTTON_OK                                                   :{BLACK}OK
+STR_BUTTON_MOVE                                                 :{BLACK}Verplaatsen
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-= qwertyuiop[]asdfghjkl;'#\zxcvbnm,./ .
@@ -386,7 +387,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Hiermee 
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Hiermee verhoog je de spelsnelheid
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opties en instellingen
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Spel opslaan, laden of stoppen, afsluiten
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Kaart, extra kijkvenster, vrachtstroom of lijst met bordjes openen
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Kaart, extra kijkvenster, vrachtstroom of lijst met borden openen
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Stedenlijst openen of stad stichten
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Subsidies openen
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Lijst met stations van het bedrijf openen
@@ -408,7 +409,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Wegen bo
 STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Tramsporen bouwen
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Dokken en havens bouwen
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Vliegvelden bouwen
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Landschapsmenu of bomenmenu openen of bordjes plaatsen
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Landschapsmenu of bomenmenu openen of borden plaatsen
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Geluid-/muziekvenster openen
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Laatste (nieuws-)bericht openen, berichtengeschiedenis of alle berichten verwijderen
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landinformatie, schermfotomenu, OpenTTD-medewerkerlijst en ontwikkelaarshulpmiddelen openen
@@ -421,7 +422,7 @@ STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenari
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Startdatum 1 jaar terugzetten
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Startdatum 1 jaar vooruitzetten
 STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP                           :{BLACK}Klik om het startjaar op te geven
-STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}Kaart, extra venster, lijst met bordjes, stedenlijst of lijst met industrieën openen
+STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}Kaart, extra venster, lijst met borden, stedenlijst of lijst met industrieën openen
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}Menu Landschapsontwikkeling openen of nieuwe wereld genereren
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}Steden bouwen of genereren
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}Industrieën bouwen of genereren
@@ -460,12 +461,12 @@ STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :Dokken
 STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :Vliegvelden
 STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :Spook
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Namen van routepunten weergeven
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Bordjes weergeven
-STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Bordjes en namen van tegenstanders weergeven
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Borden weergeven
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Borden en namen van tegenstanders weergeven
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Alle animaties
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Alle details
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Transparante gebouwen
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparante bordjes
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparante borden
 
 # File menu
 STR_FILE_MENU_SAVE_GAME                                         :Spel opslaan
@@ -477,7 +478,7 @@ STR_FILE_MENU_EXIT                                              :Afsluiten
 STR_MAP_MENU_MAP_OF_WORLD                                       :Wereldkaart
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Extra kijkvenster
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenda vrachtstroom
-STR_MAP_MENU_SIGN_LIST                                          :Bordjeslijst
+STR_MAP_MENU_SIGN_LIST                                          :Lijst van borden
 
 # Town menu
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Stedenlijst
@@ -2122,7 +2123,7 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Vaak zijn er me
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Snelheidseenheden (land): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Snelheidseenheden (nautisch): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Wanneer een snelheid wordt weergegeven in het gebruikersscherm, gebruik dan de geselecteerde eenheden
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperiaal (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Angelsaksisch (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrisch (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :Speleenheden (tegels/dag)
@@ -2132,35 +2133,35 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Knopen
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Voertuigkrachteenheden: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Als het verbruik van een voertuig wordt weergegeven in het gebruikersscherm, gebruik dan de geselecteerde eenheden
 ###length 3
-STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Imperiaal (hp)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrisch (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Angelsaksisch (pk)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrisch (pk)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Gewichtseenheden: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Wanneer gewichten worden weergegeven in het gebruikersscherm, gebruik dan de geselecteerde eenheden
 ###length 3
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperiaal (short t/ton)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Angelsaksisch (short t/ton)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metrisch (t/ton)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Volume-eenheden: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Wanneer volumes worden weergeven in het gebruikersscherm, gebruik dan de geselecteerde eenheden
 ###length 3
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperiaal (gal)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Angelsaksisch (gal)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metrisch (l)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Trekkrachteenheden: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Wanneer trekkracht wordt weergegeven in het gebruikersscherm, weergeven in de geselecteerde eenheden
 ###length 3
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperiaal (lbf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Angelsaksisch (lbf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metrisch (kgf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Hoogte-eenheden: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Wanneer hoogtes worden weergegeven in het gebruikersscherm, gebruik dan de geselecteerde eenheden
 ###length 4
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperiaal (ft)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Angelsaksisch (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisch (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_GAMEUNITS          :Speleenheden (niveaus)
@@ -2861,15 +2862,15 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Selecteer een s
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Selecteer een type huizen om te bouwen. Ctrl+klik om toe te voegen aan of te verwijderen uit opgeslagen onderdelen
 
 STR_HOUSE_PICKER_CAPTION                                        :Huizen selecteren
-STR_HOUSE_PICKER_NAME                                           :{BLACK}Naam: {ORANGE}{STRING}
-STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Bevolking: {ORANGE}{NUM}
-STR_HOUSE_PICKER_YEARS                                          :{BLACK}Jaar: {ORANGE}{NUM}-{NUM}
-STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Jaar: {ORANGE}Willekeurig
-STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Jaar: {ORANGE}Vanaf {NUM}
-STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Jaar: {ORANGE}Tot en met {NUM}
-STR_HOUSE_PICKER_SIZE                                           :{BLACK}Grootte: {ORANGE}{NUM}x{NUM} tegels
-STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Geaccepteerde vracht: {ORANGE}
-STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Geproduceerde vracht: {ORANGE}{CARGO_LIST}
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Naam: {GOLD}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Bevolking: {GOLD}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Jaar: {GOLD}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Jaar: {GOLD}Willekeurig
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Jaar: {GOLD}Vanaf {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Jaar: {GOLD}Tot en met {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Grootte: {GOLD}{NUM}x{NUM} tegels
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Geaccepteerde vracht: {GOLD}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Geproduceerde vracht: {GOLD}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Rand
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Buitenwijken
@@ -2877,8 +2878,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Buitenste voors
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Binnenste voorsteden
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Stadscentrum
 
+STR_HOUSE_PICKER_PROTECT                                        :Opwaarderen voorkomen
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Kies of dit huis wordt beschermd tegen vervangen als de stad groeit
 
+STR_HOUSE_PICKER_REPLACE                                        :Bestaande vervangen
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Kies of je een bestaand huis op de tegel automatisch wilt verwijderen waar je dit huis plaatst
 
 STR_STATION_CLASS_DFLT                                          :Standaard
 STR_STATION_CLASS_DFLT_STATION                                  :Standaard station
@@ -3425,6 +3429,10 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Noordwes
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Noordoost
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Zuidoost
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Zuidwest
+STR_MAPGEN_NORTHWEST_TOOLTIP                                    :Schakelen tussen water of vrij gevormde rand aan noord-westrand
+STR_MAPGEN_NORTHEAST_TOOLTIP                                    :Schakelen tussen water of vrij gevormde rand aan noord-oostrand
+STR_MAPGEN_SOUTHEAST_TOOLTIP                                    :Schakelen tussen water of vrij gevormde rand aan zuid-oostrand
+STR_MAPGEN_SOUTHWEST_TOOLTIP                                    :Schakelen tussen water of vrij gevormde rand aan zuid-westrand
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Vrije vorm
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Water
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Willekeurig
@@ -3485,7 +3493,7 @@ STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}JSON-bes
 STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}{STRING} gegevens met onjuiste indeling
 STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} coördinaten met onjuiste indeling, moeten tussen 0 en 1 liggen als verhouding tot de totale afmeting van de hoogtekaart
 
-STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Kon geen geldige locatie vinden voor het stichten van {NUM} st{P ad eden}. {P "een " ""}bordje{P "" s} geplaatst op de bedoelde locatie{P "" s}.
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Kon geen geldige locatie vinden voor het stichten van {NUM} st{P ad eden}. {P "een " ""}bord{P "" en} geplaatst op de bedoelde locatie{P "" s}.
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-instellingen
@@ -3676,12 +3684,12 @@ STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRF's
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" s} gescand van een geschatte {NUM} NewGRF{P "" s}
 
 # Sign list window
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Bordjeslijst - {COMMA} bordje{P "" s}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Lijst met borden - {COMMA} bord{P "" en}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Hoofdlettergevoelig
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Schakel hoofdlettergevoeligheid in bij het vergelijken van bordnamen met de filtertekst
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Wijzig tekst van bord
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Bord bewerken
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Centreer het hoofdscherm op de locatie van het sein. Ctrl+klik opent een nieuw venster op de locatie van het sein.
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Ga naar volgende bord
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Ga naar vorige bord
@@ -3898,12 +3906,14 @@ STR_CARGO_RATING_EXCELLENT                                      :Uitstekend
 STR_CARGO_RATING_OUTSTANDING                                    :Voortreffelijk
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centreer het hoofdscherm op de locatie van het station. Ctrl+klik opent een nieuw venster op de locatie van het station
+STR_STATION_VIEW_EDIT_TOOLTIP                                   :{BLACK}Station hernoemen of bord verplaatsen
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Geef alle treinen weer die dit station in hun opdrachtenlijst hebben
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Geef alle wegvoertuigen weer die dit station in hun opdrachtenlijst hebben
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Geef alle vliegtuigen weer die dit station in hun opdrachtenlijst hebben
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Geef alle schepen weer die dit station in hun opdrachtenlijst hebben
 
+STR_STATION_VIEW_EDIT_STATION_SIGN                              :{WHITE}Stationsbord bewerken
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Luchthaven sluiten
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Voorkom landen van vliegtuig op deze luchthaven
@@ -3911,9 +3921,11 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Voorkom 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centreer het hoofdscherm op het routepunt. Ctrl+klik opent nieuw venster op locatie van routepunt.
+STR_WAYPOINT_VIEW_EDIT_TOOLTIP                                  :{BLACK}Routepunt hernoemen of bord verplaatsen
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centreer het hoofdscherm op de locatie van de boei. Ctrl+klik opent een nieuw venster op de locatie van de boei.
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Naam van boei aanpassen
 
+STR_WAYPOINT_VIEW_EDIT_WAYPOINT_SIGN                            :{WHITE}Routepuntbord bewerken
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Financiën {BLACK}{COMPANY_NUM}
@@ -5127,6 +5139,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Te veel 
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Te dicht bij een andere haven
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Te dicht bij een ander vliegveld
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kan stationsnaam niet veranderen...
+STR_ERROR_CAN_T_MOVE_STATION_NAME                               :{WHITE}Kan stationsbord niet verplaatsen...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... weg in eigendom van een stad
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... weg is in de verkeerde richting
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... doorrij haltes kunnen geen bochten hebben
@@ -5158,6 +5171,7 @@ STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}Kan hier
 STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Kan hier geen weg-routepunt bouwen...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kan boei hier niet plaatsen...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan naam routepunt niet aanpassen...
+STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :{WHITE}Kan routepuntbord niet verplaatsen...
 
 STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Kan hier geen routepunt verwijderen...
 STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Kan hier geen weg-routepunt verwijderen...
@@ -5440,10 +5454,10 @@ STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... dien
 STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... dienstregeling is nog niet gestart
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... te veel bordjes
-STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Kan hier geen bordje plaatsen
-STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kan de naam van het bordje niet wijzigen
-STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kan bordje niet verwijderen...
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... te veel borden
+STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Kan hier geen bord plaatsen
+STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kan naam van bord niet wijzigen
+STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kan bord niet verwijderen...
 
 # Translatable comment for OpenTTD's desktop shortcut
 ###external 1

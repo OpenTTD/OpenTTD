@@ -2107,7 +2107,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :В старых
 STR_CONFIG_SETTING_STARTING_YEAR                                :Год начала игры: {STRING}
 
 STR_CONFIG_SETTING_ENDING_YEAR                                  :Последний год игры: {STRING}
-STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :По прошествии указанного года рейтинг компании рассчитывается, записывается и выводится таблица рекордов. После этого игру можно продолжить.{}Если указанный год предшествует году начала игры, то таблица рекордов не отображается.
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Год окончания игры. В конце указанного года рейтинг компании рассчитывается, записывается и выводится таблица рекордов. После этого игру можно продолжить.{}Если указанный год предшествует году начала игры, то таблица рекордов не отображается.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Никогда
@@ -5275,7 +5275,7 @@ STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Нево
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... слишком близко к краю карты
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... слишком близко к другому городу
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... слишком много городов
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... нет места на карте
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... на карте нет места
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Идут дорожные работы...
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Невозможно снести город.{}{}К нему относится станция или депо, либо невозможно очистить одну из занимаемых им клеток.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... в центре города нет места для статуи
@@ -5467,19 +5467,19 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Нача
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... оба конца моста должны опираться на землю
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... мост слишком длинный
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Мост выходит за пределы карты
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Высота моста {HEIGHT} недостаточна для строительства станции
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Высота моста {HEIGHT} недостаточна для строительства остановки
-STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Высота моста {HEIGHT} недостаточна для строительства пристани
-STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Высота моста {HEIGHT} недостаточна для установки буя
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Высота моста {HEIGHT} недостаточна для строительства маршрутной точки
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Высота моста {HEIGHT} недостаточна для строительства маршрутной точки
-STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Высота моста {HEIGHT} недостаточна для строительства шлюза
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Высота моста - {HEIGHT}, этого недостаточно для станции
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Высота моста - {HEIGHT}, этого недостаточно для остановки
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Высота моста - {HEIGHT}, этого недостаточно для пристани
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Высота моста - {HEIGHT}, этого недостаточно для буя
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Высота моста - {HEIGHT}, этого недостаточно для маршрутной точки
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Высота моста - {HEIGHT}, этого недостаточно для маршрутной точки
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Высота моста - {HEIGHT}, этого недостаточно для шлюза
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Здесь невозможно построить туннель...
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Неподходящее место для строительства туннеля
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Сначала снесите туннель
-STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Другой туннель на пути
+STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Туннели не могут пересекаться
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Туннель заканчивается за пределами карты
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Невозможно поднять/опустить землю для другого конца туннеля
 STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... туннель слишком длинный
@@ -5586,7 +5586,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Уста
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Отсутствуют типы дорог, которые могла бы прокладывать городская администрация
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Измените конфигурацию установленных модулей NewGRF
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Пока что отсутствуют типы дорог, которые могла бы прокладывать городская администрация
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Установите дату начала игры не ранее {DATE_SHORT} или установите модуль NewGRF, добавляющий типы дорог, которые будут доступны администрациям городов на выбранную вами дату.
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Установите дату начала игры не ранее {DATE_SHORT} или установите модуль NewGRF, добавляющий типы дорог, которые будут доступны для строительства на выбранную вами дату.
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Невозможно игнорировать светофор. Опасно...

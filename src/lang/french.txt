@@ -2862,15 +2862,15 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Séléctionner 
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Séléctionner un type de maison à construire. Ctrl+Clic pour ajouter ou retirer des éléments sauvegardés.
 
 STR_HOUSE_PICKER_CAPTION                                        :Séléction de maison
-STR_HOUSE_PICKER_NAME                                           :{BLACK}Nom{NBSP}: {ORANGE}{STRING}
-STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Population{NBSP}: {ORANGE}{NUM}
-STR_HOUSE_PICKER_YEARS                                          :{BLACK}Années{NBSP}: {ORANGE}{NUM}-{NUM}
-STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Années{NBSP}: {ORANGE}Toutes
-STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Années{NBSP}: {ORANGE}À partir de {NUM}
-STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Années{NBSP}: {ORANGE}Jusqu'à {NUM}
-STR_HOUSE_PICKER_SIZE                                           :{BLACK}Taille{NBSP}: {ORANGE}{NUM}{NBSP}x{NBSP}{NUM} cases
-STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Cargaison acceptée{NBSP}: {ORANGE}
-STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Marchandises produites : {ORANGE}{CARGO_LIST}
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Nom{NBSP}: {GOLD}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Population{NBSP}: {GOLD}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Années{NBSP}: {GOLD}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Années{NBSP}: {GOLD}Toutes
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Années{NBSP}: {GOLD}À partir de {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Années{NBSP}: {GOLD}Jusqu'à {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Taille{NBSP}: {GOLD}{NUM}{NBSP}x{NBSP}{NUM} cases
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Cargaison acceptée{NBSP}: {GOLD}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Marchandises produites : {GOLD}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Bord
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Périphérie
@@ -3682,7 +3682,7 @@ STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Respecte
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Activer ou non le respect de la casse pour la comparaison entre le texte des panneaux et l'entrée dans le filtre
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Éditer le texte du panneau
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Éditer le panneau
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Centrer la vue sur le panneau. Ctrl-clic pour ouvrir une nouvelle vue sur le panneau
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Aller au panneau suivant
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Aller au panneau précédent
