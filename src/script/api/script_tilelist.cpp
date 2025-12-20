@@ -30,13 +30,32 @@ ScriptObject *ScriptTileList::CloneObject() const
 	return clone;
 }
 
-void ScriptTileList::AddRectangle(TileIndex t1, TileIndex t2)
+bool ScriptTileList::AddRectangle(TileIndex t1, TileIndex t2)
 {
-	if (!::IsValidTile(t1)) return;
-	if (!::IsValidTile(t2)) return;
+	if (!::IsValidTile(t1)) return false;
+	if (!::IsValidTile(t2)) return false;
 
 	TileArea ta(t1, t2);
-	for (TileIndex t : ta) this->AddItem(t.base());
+
+	ScriptObject::DisableDoCommandScope disabler{};
+
+	OrthogonalTileIterator begin = ta.begin();
+	if (disabler.GetOriginalValue() && this->resume_iter.has_value()) {
+		begin = this->resume_iter.value();
+	}
+
+	for (OrthogonalTileIterator iter = begin; iter != ta.end(); ++iter) {
+		TileIndex t = iter;
+		if (disabler.GetOriginalValue() && iter != begin && ScriptController::GetOpsTillSuspend() < 0) {
+			this->resume_iter = iter;
+			return true;
+		}
+		this->AddItem(t.base());
+		ScriptController::DecreaseOps(5);
+	}
+
+	this->resume_iter.reset();
+	return false;
 }
 
 void ScriptTileList::AddTile(TileIndex tile)
@@ -46,13 +65,32 @@ void ScriptTileList::AddTile(TileIndex tile)
 	this->AddItem(tile.base());
 }
 
-void ScriptTileList::RemoveRectangle(TileIndex t1, TileIndex t2)
+bool ScriptTileList::RemoveRectangle(TileIndex t1, TileIndex t2)
 {
-	if (!::IsValidTile(t1)) return;
-	if (!::IsValidTile(t2)) return;
+	if (!::IsValidTile(t1)) return false;
+	if (!::IsValidTile(t2)) return false;
 
 	TileArea ta(t1, t2);
-	for (TileIndex t : ta) this->RemoveItem(t.base());
+
+	ScriptObject::DisableDoCommandScope disabler{};
+
+	OrthogonalTileIterator begin = ta.begin();
+	if (disabler.GetOriginalValue() && this->resume_iter.has_value()) {
+		begin = this->resume_iter.value();
+	}
+
+	for (OrthogonalTileIterator iter = begin; iter != ta.end(); ++iter) {
+		TileIndex t = iter;
+		if (disabler.GetOriginalValue() && iter != begin && ScriptController::GetOpsTillSuspend() < 0) {
+			this->resume_iter = iter;
+			return true;
+		}
+		this->RemoveItem(t.base());
+		ScriptController::DecreaseOps(5);
+	}
+
+	this->resume_iter.reset();
+	return false;
 }
 
 void ScriptTileList::RemoveTile(TileIndex tile)
