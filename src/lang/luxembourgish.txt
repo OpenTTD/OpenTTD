@@ -2878,8 +2878,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Aner Viruerter
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Bannescht Viruerter
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Stadzentrum
 
+STR_HOUSE_PICKER_PROTECT                                        :Upgrades verhënneren
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Wiel aus ob dëst Haus firun engem Ersetze geschützt gëtt wann d'Stad wiisst
 
+STR_HOUSE_PICKER_REPLACE                                        :Existéiernt ersetzen
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Wiel aus fir d'existéierend Haus automatesch ewech ze huele wann dëst Haus placéiert gëtt
 
 STR_STATION_CLASS_DFLT                                          :Standard
 STR_STATION_CLASS_DFLT_STATION                                  :Standardstatioun

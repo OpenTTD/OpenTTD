@@ -312,6 +312,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}I te wha
 STR_BUTTON_DEFAULT                                              :{BLACK}Taunoa
 STR_BUTTON_CANCEL                                               :{BLACK}Whakakore
 STR_BUTTON_OK                                                   :{BLACK}Ka pai
+STR_BUTTON_MOVE                                                 :{BLACK}Neke
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-= qwertyuiop[]asdfghjkl;'#\zxcvbnm,./ .
@@ -2861,15 +2862,15 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Tīpakona he ro
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Tīpakona he momo whare hei hanga. Pātaki+Pāwhiri kia tāpiri, tango rānei i ngā tūemi kua puritia
 
 STR_HOUSE_PICKER_CAPTION                                        :Tīpakonga Whare
-STR_HOUSE_PICKER_NAME                                           :{BLACK}Ingoa: {ORANGE}{STRING}
-STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Taupori: {ORANGE}{NUM}
-STR_HOUSE_PICKER_YEARS                                          :{BLACK}Tau: {ORANGE}{NUM}-{NUM}
-STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Tau: {ORANGE}Katoa
-STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Tau: {ORANGE}Mai i te {NUM}
-STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Tau: {ORANGE}Ki te {NUM}
-STR_HOUSE_PICKER_SIZE                                           :{BLACK}Rahi: {ORANGE}{NUM}x{NUM} papariki
-STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Utanga hei whiwhi: {ORANGE}
-STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Utanga hei whakaputa: {ORANGE}{CARGO_LIST}
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Ingoa: {GOLD}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Taupori: {GOLD}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Tau: {GOLD}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Tau: {GOLD}Katoa
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Tau: {GOLD}Mai i te {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Tau: {GOLD}Ki te {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Rahi: {GOLD}{NUM}x{NUM} papariki
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Utanga hei whiwhi: {GOLD}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Utanga hei whakaputa: {GOLD}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Tapa
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Mōwaho
@@ -2877,8 +2878,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Paenoho Waho
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Paenoho Roto
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Pokapū Tāone
 
+STR_HOUSE_PICKER_PROTECT                                        :Āraia kei whakamohoa
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Kōwhiria mehemea ka tiakina tēnei whare kei whakakapi ina tupu ake te tāone
 
+STR_HOUSE_PICKER_REPLACE                                        :Whakakapia he whare e tū kē ana
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Kōwhiria mehemea ka tango aunoatia he whare kei te papariki ka makaia ai tēnei whare
 
 STR_STATION_CLASS_DFLT                                          :Taunoa
 STR_STATION_CLASS_DFLT_STATION                                  :Teihana taunoa
@@ -3058,9 +3062,9 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Kei te t
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Whakatūranga Tāone
-STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Tāone Hou
+STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Tāone hou
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Whakatūria he tāone hou. Pēhi hoki i te Pāhiki kia whakaatu noa iho i te whakataunga tata o te utu
-STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Tāone Matapōkere
+STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Tāone matapōkere
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Whakatūria he tāone i tētahi wāhi matapōkere
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Maha o ngā tāone matapōkere
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Hora tāone matapōkere puta noa i te mahere
@@ -3685,7 +3689,7 @@ STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Me tauri
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Hohokona te taurite a ngā pūmatua me ngā pūriki ina whakatauritea ngā ingoa o ngā tohu ki te aho tātari
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Whakarerekētia te kuputuhi tohu
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Whakarerekētia te tohu
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Nekehia te tirohanga matua ki te tauwāhi o te tohu. Pātaki+Pāwhiri kia huaki i tētahi atu tirohanga i te tauwāhi o te tohu
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Haere ki te tohu ki muri
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Haere ki te tohu ki mua
@@ -3902,12 +3906,14 @@ STR_CARGO_RATING_EXCELLENT                                      :Rawe
 STR_CARGO_RATING_OUTSTANDING                                    :Kei runga rawa atu
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Nekehia te tirohanga matua ki te tauwāhi o te teihana. Pātaki+Pāwhiri kia huaki i tētahi atu tirohanga i te tauwāhi o te teihana
+STR_STATION_VIEW_EDIT_TOOLTIP                                   :{BLACK}Tapaia anō te teihana, nekehia rānei te tohu
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Whakaaria ngā tereina katoa e toro ana i tēnei teihana i ana rārangi mahi
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Whakaaria ngā waka rori katoa e toro ana i tēnei teihana i ana rārangi mahi
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Whakaaria ngā waka rererangi katoa e toro ana i tēnei teihana i ana rārangi mahi
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Whakaaria ngā kaipuke katoa e toro ana i tēnei teihana i ana rārangi mahi
 
+STR_STATION_VIEW_EDIT_STATION_SIGN                              :{WHITE}Whakarerekētia te tohu o te teihana
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Katia te taunga rererangi
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Āraia ngā waka rererangi kei tau ki tēnei taunga
@@ -3915,9 +3921,11 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Āraia n
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Nekehia te tirohanga matua ki te tauwāhi o te aratohu. Pātaki+Pāwhiri kia huaki i tētahi atu tirohanga i te tauwāhi o te aratohu
+STR_WAYPOINT_VIEW_EDIT_TOOLTIP                                  :{BLACK}Tapaia anō te aratohu, nekehia rānei te tohu
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Nekehia te tirohanga matua ki te tauwāhi o te kārewa. Pātaki+Pāwhiri kia huaki i tētahi atu tirohanga i te tauwāhi o te kārewa
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Panonitia te ingoa o te kārewa
 
+STR_WAYPOINT_VIEW_EDIT_WAYPOINT_SIGN                            :{WHITE}Whakarerekētia te tohu o te aratohu
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Ahumoni o {COMPANY} {BLACK}{COMPANY_NUM}
@@ -4892,9 +4900,9 @@ STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLO
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Tatau mōrahi o ngā kaiwhakataetae: {ORANGE}{COMMA}
 STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}Wā i waenga i ngā tīmata a ngā kaiwhakataetae: {ORANGE}{COMMA} meneti
 
-STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Neke Ake
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Neke ake
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Nekehia ake i te rārangi te kaitākaro hangahanga kua tīpakona
-STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Neke Iho
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Neke iho
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Nekehia iho i te rārangi te kaitākaro hangahanga kua tīpakona
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Hōtuhi Kēmu
@@ -5131,6 +5139,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Tuhene n
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Tata rawa ki tētahi atu tauranga
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Tata rawa ki tētahi atu taunga rererangi
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Tē taea te tapa anō te teihana...
+STR_ERROR_CAN_T_MOVE_STATION_NAME                               :{WHITE}Tē taea te neke te tohu o te teihana…
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... nō tētahi tāone te rori
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... ki te ahu hē te rori
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... tē āhei ngā koki i ngā tūnga taraiwa ā-roto
@@ -5162,6 +5171,7 @@ STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}Tē taea
 STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Tē taea te hanga te aratohu rori i konei...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Tē taea te maka te kārewa i konei...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Tē taea te panoni te ingoa o te aratohu...
+STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :{WHITE}Tē taea te neke te tohu o te aratohu…
 
 STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Tē taea te tango te aratohu tereina nei...
 STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Tē taea te tango te aratohu rori nei...
