@@ -43,6 +43,8 @@ public:
 
 	std::string_view GetInfoString() const override { return this->driver_info; }
 
+	void SetScreensaverInhibited(bool inhibited) override;
+
 protected:
 	struct SDL_Window *sdl_window = nullptr; ///< Main SDL window.
 	Palette local_palette{}; ///< Current palette to use for drawing.
