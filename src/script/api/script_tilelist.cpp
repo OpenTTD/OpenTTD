@@ -15,7 +15,7 @@
 
 #include "../../safeguards.h"
 
-bool ScriptTileList::SaveObject(HSQUIRRELVM vm)
+bool ScriptTileList::SaveObject(HSQUIRRELVM vm) const
 {
 	sq_pushstring(vm, "TileList");
 	if (!ScriptList::SaveObject(vm)) return false;
@@ -23,7 +23,7 @@ bool ScriptTileList::SaveObject(HSQUIRRELVM vm)
 	return true;
 }
 
-ScriptObject *ScriptTileList::CloneObject()
+ScriptObject *ScriptTileList::CloneObject() const
 {
 	ScriptTileList *clone = new ScriptTileList();
 	clone->CopyList(this);

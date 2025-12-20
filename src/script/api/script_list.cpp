@@ -390,7 +390,7 @@ public:
 
 
 
-bool ScriptList::SaveObject(HSQUIRRELVM vm)
+bool ScriptList::SaveObject(HSQUIRRELVM vm) const
 {
 	sq_pushstring(vm, "List");
 	sq_newarray(vm, 0);
@@ -440,7 +440,7 @@ bool ScriptList::LoadObject(HSQUIRRELVM vm)
 	return true;
 }
 
-ScriptObject *ScriptList::CloneObject()
+ScriptObject *ScriptList::CloneObject() const
 {
 	ScriptList *clone = new ScriptList();
 	clone->CopyList(this);
@@ -468,7 +468,7 @@ ScriptList::~ScriptList()
 {
 }
 
-bool ScriptList::HasItem(SQInteger item)
+bool ScriptList::HasItem(SQInteger item) const
 {
 	return this->items.count(item) == 1;
 }
@@ -523,12 +523,12 @@ SQInteger ScriptList::Next()
 	return this->sorter->Next().value_or(0);
 }
 
-bool ScriptList::IsEmpty()
+bool ScriptList::IsEmpty() const
 {
 	return this->items.empty();
 }
 
-bool ScriptList::IsEnd()
+bool ScriptList::IsEnd() const
 {
 	if (!this->initialized) {
 		Debug(script, 0, "IsEnd() is invalid as Begin() is never called");
@@ -537,12 +537,12 @@ bool ScriptList::IsEnd()
 	return this->sorter->IsEnd();
 }
 
-SQInteger ScriptList::Count()
+SQInteger ScriptList::Count() const
 {
 	return this->items.size();
 }
 
-SQInteger ScriptList::GetValue(SQInteger item)
+SQInteger ScriptList::GetValue(SQInteger item) const
 {
 	auto item_iter = this->items.find(item);
 	return item_iter == this->items.end() ? 0 : item_iter->second;
@@ -758,7 +758,7 @@ void ScriptList::KeepList(ScriptList *list)
 	this->RemoveItems([&](const SQInteger &k, const SQInteger &) { return !list->HasItem(k); });
 }
 
-SQInteger ScriptList::_get(HSQUIRRELVM vm)
+SQInteger ScriptList::_get(HSQUIRRELVM vm) const
 {
 	if (sq_gettype(vm, 2) != OT_INTEGER) return SQ_ERROR;
 

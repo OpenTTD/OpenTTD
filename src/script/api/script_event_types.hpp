@@ -68,31 +68,31 @@ public:
 	 * Get the VehicleID of the crashed vehicle.
 	 * @return The crashed vehicle.
 	 */
-	VehicleID GetVehicleID() { return this->vehicle; }
+	VehicleID GetVehicleID() const { return this->vehicle; }
 
 	/**
 	 * Find the tile the vehicle crashed.
 	 * @return The crash site.
 	 */
-	TileIndex GetCrashSite() { return this->crash_site; }
+	TileIndex GetCrashSite() const { return this->crash_site; }
 
 	/**
 	 * Get the reason for crashing
 	 * @return The reason for crashing
 	 */
-	CrashReason GetCrashReason() { return this->crash_reason; }
+	CrashReason GetCrashReason() const { return this->crash_reason; }
 
 	/**
 	 * Get the number of victims
 	 * @return The number of victims
 	 */
-	SQInteger GetVictims() { return this->victims; }
+	SQInteger GetVictims() const { return this->victims; }
 
 	/**
 	 * Get the CompanyID of the company owning the vehicle
 	 * @return The company owning the vehicle
 	 */
-	ScriptCompany::CompanyID GetVehicleOwner() { return this->company; }
+	ScriptCompany::CompanyID GetVehicleOwner() const { return this->company; }
 
 private:
 	TileIndex crash_site;     ///< The location of the crash.
@@ -129,7 +129,7 @@ public:
 	 * Get the SubsidyID of the subsidy.
 	 * @return The subsidy id.
 	 */
-	SubsidyID GetSubsidyID() { return this->subsidy_id; }
+	SubsidyID GetSubsidyID() const { return this->subsidy_id; }
 
 private:
 	SubsidyID subsidy_id; ///< The subsidy that got offered.
@@ -162,7 +162,7 @@ public:
 	 * Get the SubsidyID of the subsidy.
 	 * @return The subsidy id.
 	 */
-	SubsidyID GetSubsidyID() { return this->subsidy_id; }
+	SubsidyID GetSubsidyID() const { return this->subsidy_id; }
 
 private:
 	SubsidyID subsidy_id; ///< The subsidy offer that expired.
@@ -195,7 +195,7 @@ public:
 	 * Get the SubsidyID of the subsidy.
 	 * @return The subsidy id.
 	 */
-	SubsidyID GetSubsidyID() { return this->subsidy_id; }
+	SubsidyID GetSubsidyID() const { return this->subsidy_id; }
 
 private:
 	SubsidyID subsidy_id; ///< The subsidy that was awarded.
@@ -228,7 +228,7 @@ public:
 	 * Get the SubsidyID of the subsidy.
 	 * @return The subsidy id.
 	 */
-	 SubsidyID GetSubsidyID() { return this->subsidy_id; }
+	 SubsidyID GetSubsidyID() const { return this->subsidy_id; }
 
 private:
 	SubsidyID subsidy_id; ///< The subsidy that expired.
@@ -263,21 +263,21 @@ public:
 	 * Get the name of the offered engine.
 	 * @return The name the engine has.
 	 */
-	std::optional<std::string> GetName();
+	std::optional<std::string> GetName() const;
 
 	/**
 	 * Get the cargo-type of the offered engine. In case it can transport multiple cargoes, it
 	 *  returns the first/main.
 	 * @return The cargo-type of the engine.
 	 */
-	CargoType GetCargoType();
+	CargoType GetCargoType() const;
 
 	/**
 	 * Get the capacity of the offered engine. In case it can transport multiple cargoes, it
 	 *  returns the first/main.
 	 * @return The capacity of the engine.
 	 */
-	int32_t GetCapacity();
+	int32_t GetCapacity() const;
 
 	/**
 	 * Get the maximum speed of the offered engine.
@@ -286,29 +286,29 @@ public:
 	 *       This is mph / 1.6, which is roughly km/h.
 	 *       To get km/h multiply this number by 1.00584.
 	 */
-	int32_t GetMaxSpeed();
+	int32_t GetMaxSpeed() const;
 
 	/**
 	 * Get the new cost of the offered engine.
 	 * @return The new cost the engine has.
 	 */
-	Money GetPrice();
+	Money GetPrice() const;
 
 	/**
 	 * Get the running cost of the offered engine.
 	 * @return The running cost of the vehicle per economy-year.
 	 * @see \ref ScriptEconomyTime
 	 */
-	Money GetRunningCost();
+	Money GetRunningCost() const;
 
 	/**
 	 * Get the type of the offered engine.
 	 * @return The type the engine has.
 	 */
 #ifdef DOXYGEN_API
-	ScriptVehicle::VehicleType GetVehicleType();
+	ScriptVehicle::VehicleType GetVehicleType() const;
 #else
-	int32_t GetVehicleType();
+	int32_t GetVehicleType() const;
 #endif /* DOXYGEN_API */
 
 	/**
@@ -355,7 +355,7 @@ public:
 	 * Get the CompanyID of the company that has been created.
 	 * @return The CompanyID of the company.
 	 */
-	ScriptCompany::CompanyID GetCompanyID() { return this->owner; }
+	ScriptCompany::CompanyID GetCompanyID() const { return this->owner; }
 
 private:
 	ScriptCompany::CompanyID owner; ///< The new company.
@@ -389,13 +389,13 @@ public:
 	 * Get the CompanyID of the company that has been renamed.
 	 * @return The CompanyID of the company.
 	 */
-	ScriptCompany::CompanyID GetCompanyID() { return this->company; }
+	ScriptCompany::CompanyID GetCompanyID() const { return this->company; }
 
 	/**
 	 * Get the new name of the company.
 	 * @return The new name of the company.
 	 */
-	std::optional<std::string> GetNewName() { return this->new_name; }
+	std::optional<std::string> GetNewName() const { return this->new_name; }
 
 private:
 
@@ -431,7 +431,7 @@ public:
 	 * Get the CompanyID of the company that is in trouble.
 	 * @return The CompanyID of the company in trouble.
 	 */
-	ScriptCompany::CompanyID GetCompanyID() { return this->owner; }
+	ScriptCompany::CompanyID GetCompanyID() const { return this->owner; }
 
 private:
 	ScriptCompany::CompanyID owner; ///< The company that is in trouble.
@@ -467,13 +467,13 @@ public:
 	 * @return The CompanyID of the company that can be bought.
 	 * @note If the company is bought this will become invalid.
 	 */
-	ScriptCompany::CompanyID GetCompanyID() { return this->owner; }
+	ScriptCompany::CompanyID GetCompanyID() const { return this->owner; }
 
 	/**
 	 * Get the value of the new company.
 	 * @return The value of the new company.
 	 */
-	Money GetValue() { return this->value; }
+	Money GetValue() const { return this->value; }
 
 	/**
 	 * Take over the company for this merger.
@@ -520,13 +520,13 @@ public:
 	 *  ScriptCompany::ResolveCompanyID will return COMPANY_COMPANY. It's
 	 *  only useful if you're keeping track of company's yourself.
 	 */
-	ScriptCompany::CompanyID GetOldCompanyID() { return this->old_owner; }
+	ScriptCompany::CompanyID GetOldCompanyID() const { return this->old_owner; }
 
 	/**
 	 * Get the CompanyID of the new owner.
 	 * @return The CompanyID of the new owner.
 	 */
-	ScriptCompany::CompanyID GetNewCompanyID() { return this->new_owner; }
+	ScriptCompany::CompanyID GetNewCompanyID() const { return this->new_owner; }
 
 private:
 	ScriptCompany::CompanyID old_owner; ///< The company that ended to exist.
@@ -560,7 +560,7 @@ public:
 	 * Get the CompanyID of the company that has gone bankrupt.
 	 * @return The CompanyID of the company that has gone bankrupt.
 	 */
-	ScriptCompany::CompanyID GetCompanyID() { return this->owner; }
+	ScriptCompany::CompanyID GetCompanyID() const { return this->owner; }
 
 private:
 	ScriptCompany::CompanyID owner; ///< The company that has gone bankrupt.
@@ -593,7 +593,7 @@ public:
 	 * Get the VehicleID of the vehicle that is lost.
 	 * @return The VehicleID of the vehicle that is lost.
 	 */
-	VehicleID GetVehicleID() { return this->vehicle_id; }
+	VehicleID GetVehicleID() const { return this->vehicle_id; }
 
 private:
 	VehicleID vehicle_id; ///< The vehicle that is lost.
@@ -626,7 +626,7 @@ public:
 	 * Get the VehicleID of the vehicle that is waiting in a depot.
 	 * @return The VehicleID of the vehicle that is waiting in a depot.
 	 */
-	VehicleID GetVehicleID() { return this->vehicle_id; }
+	VehicleID GetVehicleID() const { return this->vehicle_id; }
 
 private:
 	VehicleID vehicle_id; ///< The vehicle that is waiting in the depot.
@@ -659,7 +659,7 @@ public:
 	 * Get the VehicleID of the vehicle that lost money.
 	 * @return The VehicleID of the vehicle that lost money.
 	 */
-	VehicleID GetVehicleID() { return this->vehicle_id; }
+	VehicleID GetVehicleID() const { return this->vehicle_id; }
 
 private:
 	VehicleID vehicle_id; ///< The vehicle that is unprofitable.
@@ -692,7 +692,7 @@ public:
 	 * Get the IndustryID of the new industry.
 	 * @return The IndustryID of the industry.
 	 */
-	IndustryID GetIndustryID() { return this->industry_id; }
+	IndustryID GetIndustryID() const { return this->industry_id; }
 
 private:
 	IndustryID industry_id; ///< The industry that opened.
@@ -725,7 +725,7 @@ public:
 	 * Get the IndustryID of the closing industry.
 	 * @return The IndustryID of the industry.
 	 */
-	IndustryID GetIndustryID() { return this->industry_id; }
+	IndustryID GetIndustryID() const { return this->industry_id; }
 
 private:
 	IndustryID industry_id; ///< The industry that closed.
@@ -758,7 +758,7 @@ public:
 	 * Get the EngineID of the new engine.
 	 * @return The EngineID of the new engine.
 	 */
-	EngineID GetEngineID() { return this->engine; }
+	EngineID GetEngineID() const { return this->engine; }
 
 private:
 	EngineID engine; ///< The engine that became available.
@@ -793,13 +793,13 @@ public:
 	 * Get the StationID of the visited station.
 	 * @return The StationID of the visited station.
 	 */
-	StationID GetStationID() { return this->station; }
+	StationID GetStationID() const { return this->station; }
 
 	/**
 	 * Get the VehicleID of the first vehicle.
 	 * @return The VehicleID of the first vehicle.
 	 */
-	VehicleID GetVehicleID() { return this->vehicle; }
+	VehicleID GetVehicleID() const { return this->vehicle; }
 
 private:
 	StationID station; ///< The station the vehicle arrived at.
@@ -833,7 +833,7 @@ public:
 	 * Get the StationID of the station containing the affected airport.
 	 * @return The StationID of the station containing the affected airport.
 	 */
-	StationID GetStationID() { return this->station; }
+	StationID GetStationID() const { return this->station; }
 
 private:
 	StationID station; ///< The station the zeppeliner crashed.
@@ -866,7 +866,7 @@ public:
 	 * Get the StationID of the station containing the affected airport.
 	 * @return The StationID of the station containing the affected airport.
 	 */
-	StationID GetStationID() { return this->station; }
+	StationID GetStationID() const { return this->station; }
 
 private:
 	StationID station; ///< The station the zeppeliner crashed.
@@ -899,7 +899,7 @@ public:
 	 * Get the TownID of the town.
 	 * @return The TownID of the town that was created.
 	 */
-	TownID GetTownID() { return this->town; }
+	TownID GetTownID() const { return this->town; }
 
 private:
 	TownID town; ///< The town that got founded.
@@ -934,7 +934,7 @@ public:
 	 * Get the VehicleID of the aircraft whose destination is too far away.
 	 * @return The VehicleID of the aircraft whose destination is too far away.
 	 */
-	VehicleID GetVehicleID() { return this->vehicle_id; }
+	VehicleID GetVehicleID() const { return this->vehicle_id; }
 
 private:
 	VehicleID vehicle_id; ///< The vehicle aircraft whose destination is too far away.
@@ -964,13 +964,13 @@ public:
 	/**
 	 * The GetObject() wrapper from Squirrel.
 	 */
-	SQInteger GetObject(HSQUIRRELVM vm);
+	SQInteger GetObject(HSQUIRRELVM vm) const;
 #else
 	/**
 	 * Get the information that was sent to you back as Squirrel object.
 	 * @return The object.
 	 */
-	SQObject GetObject();
+	SQObject GetObject() const;
 #endif /* DOXYGEN_API */
 
 
@@ -1009,19 +1009,19 @@ public:
 	 * Get the class of the window that was clicked.
 	 * @return The clicked window class.
 	 */
-	ScriptWindow::WindowClass GetWindowClass() { return this->window; }
+	ScriptWindow::WindowClass GetWindowClass() const { return this->window; }
 
 	/**
 	 * Get the number of the window that was clicked.
 	 * @return The clicked identifying number of the widget within the class.
 	 */
-	uint32_t GetWindowNumber() { return this->number; }
+	uint32_t GetWindowNumber() const { return this->number; }
 
 	/**
 	 * Get the number of the widget that was clicked.
 	 * @return The number of the clicked widget.
 	 */
-	int GetWidgetNumber() { return this->widget; }
+	int GetWidgetNumber() const { return this->widget; }
 
 private:
 	ScriptWindow::WindowClass window; ///< Window of the click.
@@ -1062,19 +1062,19 @@ public:
 	 * Get the unique id of the question.
 	 * @return The unique id.
 	 */
-	uint16_t GetUniqueID() { return this->uniqueid; }
+	uint16_t GetUniqueID() const { return this->uniqueid; }
 
 	/**
 	 * Get the company that pressed a button.
 	 * @return The company.
 	 */
-	ScriptCompany::CompanyID GetCompany() { return this->company; }
+	ScriptCompany::CompanyID GetCompany() const { return this->company; }
 
 	/**
 	 * Get the button that got pressed.
 	 * @return The button.
 	 */
-	ScriptGoal::QuestionButton GetButton() { return this->button; }
+	ScriptGoal::QuestionButton GetButton() const { return this->button; }
 
 private:
 	uint16_t uniqueid;                   ///< The uniqueid of the question.
@@ -1112,13 +1112,13 @@ public:
 	 * Get the CompanyID of the company.
 	 * @return The CompanyID of the company involved into the event.
 	 */
-	ScriptCompany::CompanyID GetCompanyID() { return this->company; }
+	ScriptCompany::CompanyID GetCompanyID() const { return this->company; }
 
 	/**
 	 * Get the TownID of the town.
 	 * @return The TownID of the town involved into the event.
 	 */
-	TownID GetTownID() { return this->town; }
+	TownID GetTownID() const { return this->town; }
 
 private:
 	ScriptCompany::CompanyID company; ///< The company involved into the event.
@@ -1204,13 +1204,13 @@ public:
 	 * Get the VehicleID of the vehicle that has been replaced.
 	 * @return The VehicleID of the vehicle that has been replaced. This ID is no longer valid for referencing the vehicle.
 	 */
-	VehicleID GetOldVehicleID() { return this->old_id; }
+	VehicleID GetOldVehicleID() const { return this->old_id; }
 
 	/**
 	 * Get the VehicleID of the vehicle that has been created in replacement.
 	 * @return The VehicleID of the vehicle that has been created in replacement.
 	 */
-	VehicleID GetNewVehicleID() { return this->new_id; }
+	VehicleID GetNewVehicleID() const { return this->new_id; }
 
 private:
 	VehicleID old_id; ///< The vehicle that has been replaced.
@@ -1248,19 +1248,19 @@ public:
 	 * Get the CompanyID of the player that selected a tile.
 	 * @return The ID of the company.
 	 */
-	ScriptCompany::CompanyID GetCompanyID() { return this->company_id; }
+	ScriptCompany::CompanyID GetCompanyID() const { return this->company_id; }
 
 	/**
 	 * Get the StoryPageID of the storybook page the clicked button is located on.
 	 * @return The ID of the page in the story book the click was on.
 	 */
-	StoryPageID GetStoryPageID() { return this->page_id; }
+	StoryPageID GetStoryPageID() const { return this->page_id; }
 
 	/**
 	 * Get the StoryPageElementID of the button element that was clicked.
 	 * @return The ID of the element that was clicked.
 	 */
-	StoryPageElementID GetElementID() { return this->element_id; }
+	StoryPageElementID GetElementID() const { return this->element_id; }
 
 private:
 	ScriptCompany::CompanyID company_id;
@@ -1301,25 +1301,25 @@ public:
 	 * Get the CompanyID of the player that selected a tile.
 	 * @return The company that selected the tile.
 	 */
-	ScriptCompany::CompanyID GetCompanyID() { return this->company_id; }
+	ScriptCompany::CompanyID GetCompanyID() const { return this->company_id; }
 
 	/**
 	 * Get the StoryPageID of the storybook page the used selection button is located on.
 	 * @return The ID of the story page selection was done from.
 	 */
-	StoryPageID GetStoryPageID() { return this->page_id; }
+	StoryPageID GetStoryPageID() const { return this->page_id; }
 
 	/**
 	 * Get the StoryPageElementID of the selection button used to select the tile.
 	 * @return The ID of the element that was used to select the tile.
 	 */
-	StoryPageElementID GetElementID() { return this->element_id; }
+	StoryPageElementID GetElementID() const { return this->element_id; }
 
 	/**
 	 * Get the TileIndex of the tile the player selected.
 	 * @return The selected tile.
 	 */
-	TileIndex GetTile() { return this->tile_index; }
+	TileIndex GetTile() const { return this->tile_index; }
 
 private:
 	ScriptCompany::CompanyID company_id;
@@ -1361,25 +1361,25 @@ public:
 	 * Get the CompanyID of the player that selected a tile.
 	 * @return The company's ID.
 	 */
-	ScriptCompany::CompanyID GetCompanyID() { return this->company_id; }
+	ScriptCompany::CompanyID GetCompanyID() const { return this->company_id; }
 
 	/**
 	 * Get the StoryPageID of the storybook page the used selection button is located on.
 	 * @return The ID of the storybook page the selected element is on.
 	 */
-	StoryPageID GetStoryPageID() { return this->page_id; }
+	StoryPageID GetStoryPageID() const { return this->page_id; }
 
 	/**
 	 * Get the StoryPageElementID of the selection button used to select the vehicle.
 	 * @return The ID of the selected element of the story page.
 	 */
-	StoryPageElementID GetElementID() { return this->element_id; }
+	StoryPageElementID GetElementID() const { return this->element_id; }
 
 	/**
 	 * Get the VehicleID of the vehicle the player selected.
 	 * @return The ID of the vehicle.
 	 */
-	VehicleID GetVehicleID() { return this->vehicle_id; }
+	VehicleID GetVehicleID() const { return this->vehicle_id; }
 
 private:
 	ScriptCompany::CompanyID company_id;
@@ -1419,13 +1419,13 @@ public:
 	 * Get the CompanyID of the company that got its president renamed.
 	 * @return The CompanyID of the company.
 	 */
-	ScriptCompany::CompanyID GetCompanyID() { return this->company; }
+	ScriptCompany::CompanyID GetCompanyID() const { return this->company; }
 
 	/**
 	 * Get the new name of the president.
 	 * @return The new name of the president.
 	 */
-	std::optional<std::string> GetNewName() { return this->new_name; }
+	std::optional<std::string> GetNewName() const { return this->new_name; }
 
 private:
 	ScriptCompany::CompanyID company; ///< The company of the renamed president.

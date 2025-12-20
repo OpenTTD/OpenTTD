@@ -75,7 +75,7 @@ public:
 	 * Get the event-type.
 	 * @return The @c ScriptEventType.
 	 */
-	ScriptEventType GetEventType() { return this->type; }
+	ScriptEventType GetEventType() const { return this->type; }
 
 protected:
 	/**

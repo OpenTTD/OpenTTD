@@ -12,7 +12,7 @@
 
 #include "../../safeguards.h"
 
-Money ScriptAccounting::GetCosts()
+Money ScriptAccounting::GetCosts() const
 {
 	return this->GetDoCommandCosts();
 }
