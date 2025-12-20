@@ -21,8 +21,8 @@
  */
 class ScriptTileList : public ScriptList {
 protected:
-	virtual bool SaveObject(HSQUIRRELVM) override;
-	virtual ScriptObject *CloneObject() override;
+	virtual bool SaveObject(HSQUIRRELVM) const override;
+	virtual ScriptObject *CloneObject() const override;
 public:
 	/**
 	 * Adds the rectangle between tile_from and tile_to to the to-be-evaluated tiles.

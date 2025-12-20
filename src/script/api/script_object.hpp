@@ -96,7 +96,7 @@ protected:
 	 *  - the data for the object (any supported types)
 	 * @return True iff saving this type is supported.
 	 */
-	virtual bool SaveObject(HSQUIRRELVM) { return false; }
+	virtual bool SaveObject(HSQUIRRELVM) const { return false; }
 
 	/**
 	 * Load this object.
@@ -109,7 +109,7 @@ protected:
 	 * Clone an object.
 	 * @return The clone if cloning this type is supported, nullptr otherwise.
 	 */
-	virtual ScriptObject *CloneObject() { return nullptr; }
+	virtual ScriptObject *CloneObject() const { return nullptr; }
 
 public:
 	/**

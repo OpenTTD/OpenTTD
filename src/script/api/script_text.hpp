@@ -27,14 +27,14 @@ public:
 	 * @return A string.
 	 * @api -all
 	 */
-	virtual EncodedString GetEncodedText() = 0;
+	virtual EncodedString GetEncodedText() const = 0;
 
 	/**
 	 * Convert a #ScriptText into a decoded normal string.
 	 * @return A string.
 	 * @api -all
 	 */
-	const std::string GetDecodedText();
+	std::string GetDecodedText() const;
 };
 
 /**
@@ -45,7 +45,7 @@ class RawText : public Text {
 public:
 	RawText(const std::string &text) : text(text) {}
 
-	EncodedString GetEncodedText() override;
+	EncodedString GetEncodedText() const override;
 private:
 	const std::string text;
 };
@@ -124,7 +124,7 @@ public:
 	/**
 	 * @api -all
 	 */
-	EncodedString GetEncodedText() override;
+	EncodedString GetEncodedText() const override;
 
 	/**
 	 * @api -all
@@ -133,17 +133,17 @@ public:
 
 private:
 	using ScriptTextRef = ScriptObjectRef<ScriptText>;
-	using ScriptTextList = std::vector<ScriptText *>;
+	using ScriptTextList = std::vector<const ScriptText *>;
 	using Param = std::variant<std::monostate, SQInteger, std::string, ScriptTextRef>;
 
 	struct ParamCheck {
 		StringIndexInTab owner;
 		int idx;
-		Param *param;
+		const Param *param;
 		bool used = false;
 		std::string_view cmd;
 
-		ParamCheck(StringIndexInTab owner, int idx, Param *param) : owner(owner), idx(idx), param(param) {}
+		ParamCheck(StringIndexInTab owner, int idx, const Param *param) : owner(owner), idx(idx), param(param) {}
 
 		void Encode(StringBuilder &output, std::string_view cmd);
 	};
@@ -163,7 +163,7 @@ private:
 	 * @param params The list of parameters to fill.
 	 * @param seen_texts The list of seen ScriptText.
 	 */
-	void _FillParamList(ParamList &params, ScriptTextList &seen_texts);
+	void _FillParamList(ParamList &params, ScriptTextList &seen_texts) const;
 
 	/**
 	 * Internal function for recursive calling this function over multiple
@@ -173,7 +173,7 @@ private:
 	 * @param args The parameters to be consumed.
 	 * @param first Whether it's the first call in the recursion.
 	 */
-	void _GetEncodedText(StringBuilder &output, int &param_count, ParamSpan args, bool first);
+	void _GetEncodedText(StringBuilder &output, int &param_count, ParamSpan args, bool first) const;
 
 	/**
 	 * Set a parameter, where the value is the first item on the stack.

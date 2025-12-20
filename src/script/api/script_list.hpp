@@ -144,9 +144,9 @@ protected:
 		ScriptList::FillList<T>(vm, list, [](const T *) { return true; });
 	}
 
-	virtual bool SaveObject(HSQUIRRELVM vm) override;
+	virtual bool SaveObject(HSQUIRRELVM vm) const override;
 	virtual bool LoadObject(HSQUIRRELVM vm) override;
-	virtual ScriptObject *CloneObject() override;
+	virtual ScriptObject *CloneObject() const override;
 
 	/**
 	 * Copy the content of a list.
@@ -202,7 +202,7 @@ public:
 	 * @param item the item to check for.
 	 * @return true if the item is in the list.
 	 */
-	bool HasItem(SQInteger item);
+	bool HasItem(SQInteger item) const;
 
 	/**
 	 * Go to the beginning of the list and return the item. To get the value use list.GetValue(list.Begin()).
@@ -222,27 +222,27 @@ public:
 	 * Check if a list is empty.
 	 * @return true if the list is empty.
 	 */
-	bool IsEmpty();
+	bool IsEmpty() const;
 
 	/**
 	 * Check if there is a element left. In other words, if this is false,
 	 * the last call to Begin() or Next() returned a valid item.
 	 * @return true if the current item is beyond end-of-list.
 	 */
-	bool IsEnd();
+	bool IsEnd() const;
 
 	/**
 	 * Returns the amount of items in the list.
 	 * @return amount of items in the list.
 	 */
-	SQInteger Count();
+	SQInteger Count() const;
 
 	/**
 	 * Get the value that belongs to this item.
 	 * @param item the item to get the value from
 	 * @return the value that belongs to this item.
 	 */
-	SQInteger GetValue(SQInteger item);
+	SQInteger GetValue(SQInteger item) const;
 
 	/**
 	 * Set a value of an item directly.
@@ -371,7 +371,7 @@ public:
 	/**
 	 * Used for 'foreach()' and [] get from Squirrel.
 	 */
-	SQInteger _get(HSQUIRRELVM vm);
+	SQInteger _get(HSQUIRRELVM vm) const;
 
 	/**
 	 * Used for [] set from Squirrel.

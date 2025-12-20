@@ -73,8 +73,8 @@ public:
 #else
 	SQInteger Insert(HSQUIRRELVM vm);
 	SQInteger Pop(HSQUIRRELVM vm);
-	SQInteger Peek(HSQUIRRELVM vm);
-	SQInteger Exists(HSQUIRRELVM vm);
+	SQInteger Peek(HSQUIRRELVM vm) const;
+	SQInteger Exists(HSQUIRRELVM vm) const;
 	SQInteger Clear(HSQUIRRELVM vm);
 #endif /* DOXYGEN_API */
 
@@ -82,13 +82,13 @@ public:
 	 * Check if the queue is empty.
 	 * @return true if the queue is empty.
 	 */
-	bool IsEmpty();
+	bool IsEmpty() const;
 
 	/**
 	 * Returns the amount of items in the queue.
 	 * @return amount of items in the queue.
 	 */
-	SQInteger Count();
+	SQInteger Count() const;
 };
 
 #endif /* SCRIPT_PRIORITYQUEUE_HPP */

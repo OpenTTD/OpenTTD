@@ -30,14 +30,14 @@ bool ScriptEventEnginePreview::IsEngineValid() const
 	return e != nullptr && e->IsEnabled();
 }
 
-std::optional<std::string> ScriptEventEnginePreview::GetName()
+std::optional<std::string> ScriptEventEnginePreview::GetName() const
 {
 	if (!this->IsEngineValid()) return std::nullopt;
 
 	return ::StrMakeValid(::GetString(STR_ENGINE_NAME, this->engine), {});
 }
 
-CargoType ScriptEventEnginePreview::GetCargoType()
+CargoType ScriptEventEnginePreview::GetCargoType() const
 {
 	if (!this->IsEngineValid()) return INVALID_CARGO;
 	CargoArray cap = ::GetCapacityOfArticulatedParts(this->engine);
@@ -48,7 +48,7 @@ CargoType ScriptEventEnginePreview::GetCargoType()
 	return CargoType(std::distance(std::cbegin(cap), it));
 }
 
-int32_t ScriptEventEnginePreview::GetCapacity()
+int32_t ScriptEventEnginePreview::GetCapacity() const
 {
 	if (!this->IsEngineValid()) return -1;
 	const Engine *e = ::Engine::Get(this->engine);
@@ -70,7 +70,7 @@ int32_t ScriptEventEnginePreview::GetCapacity()
 	}
 }
 
-int32_t ScriptEventEnginePreview::GetMaxSpeed()
+int32_t ScriptEventEnginePreview::GetMaxSpeed() const
 {
 	if (!this->IsEngineValid()) return -1;
 	const Engine *e = ::Engine::Get(this->engine);
@@ -79,19 +79,19 @@ int32_t ScriptEventEnginePreview::GetMaxSpeed()
 	return max_speed;
 }
 
-Money ScriptEventEnginePreview::GetPrice()
+Money ScriptEventEnginePreview::GetPrice() const
 {
 	if (!this->IsEngineValid()) return -1;
 	return ::Engine::Get(this->engine)->GetCost();
 }
 
-Money ScriptEventEnginePreview::GetRunningCost()
+Money ScriptEventEnginePreview::GetRunningCost() const
 {
 	if (!this->IsEngineValid()) return -1;
 	return ::Engine::Get(this->engine)->GetRunningCost();
 }
 
-int32_t ScriptEventEnginePreview::GetVehicleType()
+int32_t ScriptEventEnginePreview::GetVehicleType() const
 {
 	if (!this->IsEngineValid()) return ScriptVehicle::VT_INVALID;
 	switch (::Engine::Get(this->engine)->type) {
@@ -183,7 +183,7 @@ static bool ScriptEventAdminPortReadValue(HSQUIRRELVM vm, nlohmann::json &json)
 	return true;
 }
 
-SQInteger ScriptEventAdminPort::GetObject(HSQUIRRELVM vm)
+SQInteger ScriptEventAdminPort::GetObject(HSQUIRRELVM vm) const
 {
 	auto json = nlohmann::json::parse(this->json, nullptr, false);
 
