@@ -2248,22 +2248,22 @@ void Vehicle::BeginLoading()
 						InvalidateVehicleOrder(this, 0);
 					} else {
 						/* Delete all implicit orders up to the station we just reached */
-						VehicleOrderID cur = this->cur_implicit_order_index;
-						auto orders = this->Orders();
-						while (!orders[cur].IsType(OT_IMPLICIT) || orders[cur].GetDestination() != this->last_station_visited) {
-							if (orders[cur].IsType(OT_IMPLICIT)) {
+						const Order *order = this->GetOrder(this->cur_implicit_order_index);
+						while (!order->IsType(OT_IMPLICIT) || order->GetDestination() != this->last_station_visited) {
+							if (order->IsType(OT_IMPLICIT)) {
 								DeleteOrder(this, this->cur_implicit_order_index);
-								/* DeleteOrder does various magic with order_indices, so resync 'order' with 'cur_implicit_order_index' */
 							} else {
 								/* Skip non-implicit orders, e.g. service-orders */
-								if (cur < this->orders->GetNext(cur)) {
-									this->cur_implicit_order_index++;
-								} else {
-									/* Wrapped around. */
-									this->cur_implicit_order_index = 0;
-								}
-								cur = this->orders->GetNext(cur);
+								++this->cur_implicit_order_index;
 							}
+							order = this->GetOrder(this->cur_implicit_order_index);
+
+							/* Wrapped around. */
+							if (order == nullptr) {
+								this->cur_implicit_order_index = 0;
+								order = this->GetOrder(this->cur_implicit_order_index);
+							}
+							assert(order != nullptr);
 						}
 					}
 				} else if (!suppress_implicit_orders &&
