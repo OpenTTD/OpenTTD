@@ -1,5 +1,16 @@
 ## 15.x
 
+### 15.0-RC3 (2025-12-20)
+
+- Fix #14932: [NewGRF] Increase internal badge index size to avoid overflowing BadgeIDs (#14933)
+- Fix: Crash related to object picker recolours in Scenario Editor (#14929)
+- Fix #14921: Crash during station autorefit if station doesn't accept current cargo type (#14924)
+- Fix #14917: Crash when opening house picker with no houses available (#14920)
+- Fix #14916: Duration of error message window could be too short (#14919)
+- Fix #14915: Crash due to divide-by-zero of industry probabilities (#14918)
+- Fix: Script configs were cleared by intro game (#14910)
+- Fix: [NewGRF] Automatically push/pop colours when formatting a sub-string (#14006)
+
 ### 15.0-RC2 (2025-12-13)
 
 - Fix #14677: Desync due to using newgame time settings to validate savegame time settings (#14904)
