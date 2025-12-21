@@ -215,19 +215,12 @@ public:
 	{
 		if (fonttype != FontType::TrueType) return nullptr;
 
-		FontCacheSubSetting *settings = GetFontCacheSubSetting(fs);
-
 		std::string font = GetFontCacheFontName(fs);
 		if (font.empty()) return nullptr;
 
 		CFAutoRelease<CTFontDescriptorRef> font_ref;
 
-		if (settings->os_handle != nullptr) {
-			font_ref.reset(static_cast<CTFontDescriptorRef>(const_cast<void *>(settings->os_handle)));
-			CFRetain(font_ref.get()); // Increase ref count to match a later release.
-		}
-
-		if (!font_ref && MacOSVersionIsAtLeast(10, 6, 0)) {
+		if (MacOSVersionIsAtLeast(10, 6, 0)) {
 			/* Might be a font file name, try load it. */
 			font_ref.reset(LoadFontFromFile(font));
 			if (!font_ref) ShowInfo("Unable to load file '{}' for {} font, using default OS font selection instead", font, FontSizeToName(fs));
