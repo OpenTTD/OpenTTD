@@ -822,7 +822,7 @@ static bool CanPlantExtraTrees(TileIndex tile)
 				return _settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL;
 		}
 	}
-
+	
 	return (_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL);
 }
 
