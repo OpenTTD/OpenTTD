@@ -803,11 +803,27 @@ static void TileLoopTreesAlps(TileIndex tile)
 	MarkTileDirtyByTile(tile);
 }
 
+/**
+ * Check if trees on this tile can spread, according to biome and game settings.
+ * @param tile The tile to check.
+ * @return If trees on this tile are allowed to spread.
+ */
 static bool CanPlantExtraTrees(TileIndex tile)
 {
-	return ((_settings_game.game_creation.landscape == LandscapeType::Tropic && GetTropicZone(tile) == TROPICZONE_RAINFOREST) ?
-		(_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL || _settings_game.construction.extra_tree_placement == ETP_SPREAD_RAINFOREST) :
-		_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL);
+	/* Desert and rainforest trees need special handling. */
+	if (_settings_game.game_creation.landscape == LandscapeType::Tropic) {
+		switch (GetTropicZone(tile)) {
+			case TROPICZONE_DESERT:
+				/* Cacti never spread. */
+				return false;
+			case TROPICZONE_RAINFOREST:
+				return (_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL || _settings_game.construction.extra_tree_placement == ETP_SPREAD_RAINFOREST);
+			default:
+				return _settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL;
+		}
+	}
+
+	return (_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL);
 }
 
 static void TileLoop_Trees(TileIndex tile)
