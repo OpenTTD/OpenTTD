@@ -1341,7 +1341,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :Επέκτασ�
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Σύμπτυξη όλων
 STR_CONFIG_SETTING_RESET_ALL                                    :Επαναφορά όλων των τιμών
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(δεν υπάρχει διαθέσιμη επεξήγηση)
-STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
+STR_CONFIG_SETTING_VALUE                                        :{ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Προκαθορισμένη τιμή: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Τύπος ρύθμισης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Ρύθμιση πελάτη (δεν αποθηκεύεται στα αποθηκευμένα παιχνίδια, επηρεάζει όλα τα παιχνίδια)
@@ -3751,17 +3751,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Βρέ�
 STR_NEWGRF_LIST_MISSING                                         :{RED}Λείπουν αρχεία
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Η συμπεριφορά του NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' είναι πιθανό να προκαλέσει αποσυγχρονισμούς ή/και απρόοπτα κλεισίματα
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Άλλαξε την κατάσταση μηχανοκίνητου βαγονιού για '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' όταν δεν είναι μέσα σε αμαξοστάσιο
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Άλλαξε το μήκος του οχήματος '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' όταν δεν βρίσκεται μέσα σε αμαξοστάσιο
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Άλλαξε τη χωρητικότητα όχηματος για τη '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' όταν δεν είναι σε αμαξοστάσιο ή σε διαδικασία μετατροπής
+STR_NEWGRF_BROKEN                                               :{WHITE}Η συμπεριφορά του NewGRF '{0:STRING}' είναι πιθανό να προκαλέσει αποσυγχρονισμούς ή/και απρόοπτα κλεισίματα
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Άλλαξε την κατάσταση μηχανοκίνητου βαγονιού για την '{1:ENGINE}' όταν δεν είναι μέσα σε αμαξοστάσιο
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Άλλαξε το μήκος οχήματος για το '{1:ENGINE}' όταν δεν βρίσκεται μέσα σε αμαξοστάσιο
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Άλλαξε τη χωρητικότητα όχηματος για την '{1:ENGINE}' όταν δεν είναι σε αμαξοστάσιο ή σε διαδικασία μετατροπής
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Το τρένο «{VEHICLE}» που ανήκει στην εταιρία «{COMPANY}» έχει μη έγκυρο μήκος. Πιθανόν να προκλήθηκε από προβλήματα με κάποια NewGRF. Το παιχνίδι μπορεί να αποσυγχρονιστεί ή να κλείσει απρόοπτα.
 
-STR_NEWGRF_BUGGY                                                :{WHITE}Το NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' δίνει λάθος πληροφορίες
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Η πληροφορία εμπορεύματος/μετατροπής για τη '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' διαφέρει από τη λίστα αγοράς μετά την κατασκευή. Αυτό μπορεί να προκαλέσει την αποτυχία σωστής μετατροπής της διαδικασίας αυτόματης ανανέωσης/αντικατάστασης
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}Το '{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' προκάλεσε ένα ατέρμονο βρόχο στην κλήση παραγωγής
+STR_NEWGRF_BUGGY                                                :{WHITE}Το NewGRF '{0:STRING}' παρέχει λάθος πληροφορίες
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Η πληροφορία εμπορεύματος/μετατροπής για τη '{1:ENGINE}' διαφέρει από τη λίστα αγοράς μετά την κατασκευή. Αυτό μπορεί να προκαλέσει την αποτυχία σωστής μετατροπής της διαδικασίας αυτόματης ανανέωσης/αντικατάστασης
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}Το {1:STRING}' προκάλεσε ένα ατέρμονο βρόχο στην κλήση παραγωγής
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Η κλήση {1:HEX} επέστρεψε άγνωστο/άκυρο αποτέλεσμα {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}Το '{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' επέστρεψε άγνωστο/άκυρο τύπο εμπορεύματος στην κλήση {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}Το '{1:STRING}' επέστρεψε άγνωστο/άκυρο τύπο εμπορεύματος στην κλήση παραγωγής στη θέση {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<μη έγκυρο φορτίο>
