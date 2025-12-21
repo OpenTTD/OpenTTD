@@ -182,8 +182,8 @@ protected:
 	}
 
 public:
-	using ScriptListSet = std::set<std::pair<SQInteger, SQInteger>>; ///< List per value
-	using ScriptListMap = std::map<SQInteger, SQInteger>; ///< List per item
+	using ScriptListSet = std::set<std::pair<SQInteger, SQInteger>, std::less<>, ScriptStdAllocator<std::pair<SQInteger, SQInteger>>>; ///< List per value
+	using ScriptListMap = std::map<SQInteger, SQInteger, std::less<>, ScriptStdAllocator<std::pair<const SQInteger, SQInteger>>>; ///< List per item
 
 	ScriptListMap items;           ///< The items in the list
 	ScriptListSet values; ///< The items in the list, sorted by value
