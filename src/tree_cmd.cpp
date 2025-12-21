@@ -803,10 +803,16 @@ static void TileLoopTreesAlps(TileIndex tile)
 	MarkTileDirtyByTile(tile);
 }
 
+/*
+ * Check if trees on this tile can spread, according to biome and game settings.
+ * 
+ * In most climates, the setting that decides is to "grow and spread everywhere."
+ * If it is a tropical game, then it must be in the rainforest and have a setting allowing it to spread there.
+ */
 static bool CanPlantExtraTrees(TileIndex tile)
 {
-	return ((_settings_game.game_creation.landscape == LandscapeType::Tropic && GetTropicZone(tile) == TROPICZONE_RAINFOREST) ?
-		(_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL || _settings_game.construction.extra_tree_placement == ETP_SPREAD_RAINFOREST) :
+	return ((_settings_game.game_creation.landscape == LandscapeType::Tropic) ?
+		(GetTropicZone(tile) == TROPICZONE_RAINFOREST && (_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL || _settings_game.construction.extra_tree_placement == ETP_SPREAD_RAINFOREST)) :
 		_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL);
 }
 
