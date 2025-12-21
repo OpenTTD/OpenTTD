@@ -404,7 +404,7 @@ static std::optional<RoadPartOrientation> ToRoadPartOrientation(const TileIndex 
 	/* The start tile and end tile cannot be the same tile either. */
 	if (start == end) return -1;
 
-	std::vector<RoadPartOrientation> existing_orientations;
+	Array<RoadPartOrientation> existing_orientations;
 	existing_orientations.reserve(existing.size());
 	for (const auto &t : existing) {
 		auto orientation = ToRoadPartOrientation(t);
