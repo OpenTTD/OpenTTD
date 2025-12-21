@@ -803,11 +803,10 @@ static void TileLoopTreesAlps(TileIndex tile)
 	MarkTileDirtyByTile(tile);
 }
 
-/*
+/**
  * Check if trees on this tile can spread, according to biome and game settings.
- * 
- * In most climates, the setting that decides is to "grow and spread everywhere."
- * If it is a tropical game, then it must be in the rainforest and have a setting allowing it to spread there.
+ * @param tile The tile to check.
+ * @return If trees on this tile are allowed to spread.
  */
 static bool CanPlantExtraTrees(TileIndex tile)
 {
