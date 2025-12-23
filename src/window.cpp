@@ -3601,3 +3601,84 @@ void PickerWindowBase::Close([[maybe_unused]] int data)
 	ResetObjectToPlace();
 	this->Window::Close();
 }
+
+/**
+ * Process gamepad analog stick input for viewport scrolling.
+ * This is a common function that can be used by any video driver that supports gamepads.
+ * @param stick_x Raw analog stick X value (typically -32768 to 32767 range)
+ * @param stick_y Raw analog stick Y value (typically -32768 to 32767 range)
+ * @param max_axis_value Maximum value for the analog stick axes (e.g., 32767 for SDL2)
+ */
+void HandleGamepadScrolling(float stick_x, float stick_y, float max_axis_value)
+{
+	/* Skip if gamepad stick selection is disabled */
+	if (_settings_client.gui.gamepad_stick_selection == GSS_DISABLED) {
+		return;
+	}
+
+	/* Apply deadzone (convert percentage to axis range) */
+	const float deadzone = (_settings_client.gui.gamepad_deadzone * max_axis_value) / 100;
+
+	if (abs(stick_x) < deadzone) stick_x = 0;
+	if (abs(stick_y) < deadzone) stick_y = 0;
+
+	/* Skip if no movement after deadzone */
+	if (stick_x == 0 && stick_y == 0) {
+		return;
+	}
+
+	/* Calculate scroll delta with sensitivity */
+	float sensitivity = _settings_client.gui.gamepad_sensitivity / 10.0f;
+	int delta_x = (int)(stick_x * sensitivity / (max_axis_value / 16)); // Scale down from axis range
+	int delta_y = (int)(stick_y * sensitivity / (max_axis_value / 16));
+
+	/* Apply axis inversion */
+	if (_settings_client.gui.gamepad_invert_x) delta_x = -delta_x;
+	if (_settings_client.gui.gamepad_invert_y) delta_y = -delta_y;
+
+	/* Skip if deltas are too small */
+	if (abs(delta_x) < 1 && abs(delta_y) < 1) {
+		return;
+	}
+
+	/* Apply scrolling based on cursor position */
+	if (_game_mode != GM_MENU && _game_mode != GM_BOOTSTRAP) {
+		Window *target_window = nullptr;
+
+		/* Check if cursor is over a window with a viewport */
+		Window *w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
+		if (w != nullptr && w->viewport != nullptr) {
+			/* Check if cursor is actually over the viewport area within the window */
+			Point pt = { _cursor.pos.x - w->left, _cursor.pos.y - w->top };
+			if (pt.x >= w->viewport->left - w->left &&
+			    pt.x < w->viewport->left - w->left + w->viewport->width &&
+			    pt.y >= w->viewport->top - w->top &&
+			    pt.y < w->viewport->top - w->top + w->viewport->height) {
+				/* Respect the same lock as RMB-drag scrolling: some viewports disable scrolling entirely. */
+				if (!w->flags.Test(WindowFlag::DisableVpScroll)) {
+					target_window = w;
+				}
+			}
+		}
+
+		/* If no viewport under cursor, use main window */
+		if (target_window == nullptr) {
+			target_window = GetMainWindow();
+		}
+
+		/* Apply scrolling to the target viewport */
+		if (target_window != nullptr && target_window->viewport != nullptr) {
+			/* Check if the viewport is following a vehicle (similar to mouse scroll behavior) */
+			if (target_window == GetMainWindow() && target_window->viewport->follow_vehicle != VehicleID::Invalid()) {
+				/* If following a vehicle, center on it and stop following (like mouse scroll) */
+				const Vehicle *veh = Vehicle::Get(target_window->viewport->follow_vehicle);
+				ScrollMainWindowTo(veh->x_pos, veh->y_pos, veh->z_pos, true); // This also resets follow_vehicle
+				return; // Don't apply gamepad scroll, just like mouse scroll returns ES_NOT_HANDLED
+			}
+
+			/* Apply the scroll using the same method as keyboard scrolling */
+			target_window->viewport->dest_scrollpos_x += ScaleByZoom(delta_x, target_window->viewport->zoom);
+			target_window->viewport->dest_scrollpos_y += ScaleByZoom(delta_y, target_window->viewport->zoom);
+		}
+	}
+}

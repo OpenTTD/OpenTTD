@@ -682,6 +682,11 @@ SettingsContainer &GetSettingsTree()
 				 *  Since it's also able to completely disable the scrollwheel will we display it on all platforms anyway */
 				viewports->Add(new SettingEntry("gui.scrollwheel_scrolling"));
 				viewports->Add(new SettingEntry("gui.scrollwheel_multiplier"));
+				viewports->Add(new SettingEntry("gui.gamepad_stick_selection"));
+				viewports->Add(new SettingEntry("gui.gamepad_deadzone"));
+				viewports->Add(new SettingEntry("gui.gamepad_sensitivity"));
+				viewports->Add(new SettingEntry("gui.gamepad_invert_x"));
+				viewports->Add(new SettingEntry("gui.gamepad_invert_y"));
 #ifdef __APPLE__
 				/* We might need to emulate a right mouse button on mac */
 				viewports->Add(new SettingEntry("gui.right_mouse_btn_emulation"));
