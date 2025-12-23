@@ -14,6 +14,7 @@
 #include <mutex>
 #include <condition_variable>
 #include <windows.h>
+#include <xinput.h>
 
 /** Base class for Windows video drivers. */
 class VideoDriver_Win32Base : public VideoDriver {
@@ -55,6 +56,10 @@ protected:
 	void CheckPaletteAnim() override;
 	bool PollEvent() override;
 
+	bool OpenGamepad() override;
+	void CloseGamepad() override;
+	void ProcessGamepadInput() override;
+
 	void Initialize();
 	bool MakeWindow(bool full_screen, bool resize = true);
 	void ClientSizeChanged(int w, int h, bool force = false);
@@ -72,6 +77,9 @@ protected:
 
 private:
 	friend LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
+	DWORD gamepad_user_index = XUSER_MAX_COUNT; ///< Index of currently opened gamepad (XUSER_MAX_COUNT = no gamepad).
+	uint32_t gamepad_reconnect_timer = 0;       ///< Timer for retrying gamepad connection after disconnect.
 };
 /** The GDI video driver for windows. */
 class VideoDriver_Win32GDI : public VideoDriver_Win32Base {
