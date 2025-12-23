@@ -3836,14 +3836,14 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Файлы
 STR_NEWGRF_BROKEN                                               :{WHITE}Модуль NewGRF «{0:STRING}» может привести к рассинхронизации и/или к аварийному завершению игры.
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Он изменил состояние вагона-локомотива «{1:ENGINE}» за пределами депо
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Он изменил длину состава «{1:ENGINE}», находящегося вне депо
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Он изменил ёмкость ТС «{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}» за пределами депо или без задания на переоборудование
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Он изменил ёмкость ТС «{1:ENGINE}» за пределами депо или без задания на переоборудование
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Поезд «{VEHICLE}», принадлежащий «{COMPANY}», имеет неправильную длину. Вероятно, это вызвано ошибками в одном из модулей NewGRF. Игра может рассинхронизироваться или вылететь.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Модуль NewGRF «{0:STRING}» предоставляет неверную информацию.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Информация о вместимости/переоборудовании для локомотива «{1:ENGINE}» до и после покупки различается. Это может помешать функции автообновления/автозамены корректно произвести переоборудование.
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}Модуль «{PUSH_COLOUR}{1:STRING}{POP_COLOUR}» вызвал бесконечный цикл
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}Модуль «{1:STRING}» вызвал бесконечный цикл
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Функция обратного вызова {1:HEX} вернула непонятный/неверный результат {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}«{PUSH_COLOUR}{1:STRING}{POP_COLOUR}» вернул неверный тип груза по адресу {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}Модуль «{1:STRING}» вернул неверный тип груза по адресу {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<неизвестный груз>
