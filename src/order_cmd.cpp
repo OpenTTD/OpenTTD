@@ -1881,7 +1881,11 @@ uint16_t GetServiceIntervalClamped(int interval, bool ispercent)
  */
 static bool CheckForValidOrders(const Vehicle *v)
 {
-	return std::ranges::any_of(v->Orders(), [](const Order &order) { return order.IsGotoOrder(); });
+	/* Check if vehicle has any valid orders.
+	 * Function is only called for aircraft, no type check needed. */
+	return std::ranges::any_of(v->Orders(), [](const Order &order) {
+		return order.IsGotoOrder() && !order.IsType(OT_GOTO_DEPOT);
+	});
 }
 
 /**
