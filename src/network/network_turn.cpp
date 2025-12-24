@@ -57,9 +57,8 @@ bool ClientNetworkTurnSocketHandler::Receive_TURN_ERROR(Packet &)
 
 bool ClientNetworkTurnSocketHandler::Receive_TURN_CONNECTED(Packet &p)
 {
-	Debug(net, 9, "Receive_TURN_CONNECTED()");
-
 	std::string hostname = p.Recv_string(NETWORK_HOSTNAME_LENGTH);
+	Debug(net, 9, "Turn::Receive_TURN_CONNECTED({})", hostname);
 
 	/* Act like we no longer have a socket, as we are handing it over to the
 	 * game handler. */
@@ -101,6 +100,7 @@ void ClientNetworkTurnSocketHandler::Connect()
 	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
 	p->Send_string(ticket);
 
+	Debug(net, 9, "Turn::SendTurn({})", ticket);
 	turn_handler->SendPacket(std::move(p));
 
 	return turn_handler;
