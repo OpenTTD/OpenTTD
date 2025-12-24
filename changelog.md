@@ -1,5 +1,22 @@
 ## 15.x
 
+### 15.0-RC4 (2025-12-26)
+
+- Fix: Incorrect text colour in fund industry window (#14987)
+- Fix: Towns failed to find spawn locations near water (#14988)
+- Fix: Don't draw bridge deck rail sprites for default bridges (#14985)
+- Fix: "(Invalid parameter)" in error message when trying to remove another player's object (#14981)
+- Fix #14978: Don't clear water tiles after removing buoys (#14980)
+- Fix #14973: Composed strings are incorrect colour (#14976)
+- Fix: Badge filter toggles no longer worked (#14972)
+- Fix #12465: Click/tooltip alignment of industry chain cargo lines (#14963)
+- Fix #14951: Possible incorrect data in industry production graphs (#14962)
+- Fix #14958: Crash when opening station window (#14959)
+- Fix #14938: Don't allow cacti to die off (#14956)
+- Fix: Don't allow joining a company after it was taken over (#14955)
+- Fix #14949: Crash when moving station sign in a network game (#14950)
+- Fix #14945: Hang when deleting implicit orders during vehicle loading (#14946)
+
 ### 15.0-RC3 (2025-12-20)
 
 - Fix #14932: [NewGRF] Increase internal badge index size to avoid overflowing BadgeIDs (#14933)
