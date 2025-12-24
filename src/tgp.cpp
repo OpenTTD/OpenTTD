@@ -455,6 +455,66 @@ static int *HeightMapMakeHistogram(Height h_min, [[maybe_unused]] Height h_max, 
 	return hist;
 }
 
+/**
+ * Adjust the landscape to create lowlands on average (tropic landscape).
+ * @param fheight The height to adjust.
+ */
+static void SineTransformLowlands(double &fheight)
+{
+	/* Half of tiles should be at lowest (0..25%) heights */
+	double sine_lower_limit = 0.5;
+	double linear_compression = 2;
+	if (fheight <= sine_lower_limit) {
+		/* Under the limit we do linear compression down */
+		fheight = fheight / linear_compression;
+	} else {
+		double m = sine_lower_limit / linear_compression;
+		/* Get sine_lower_limit..1 into -1..1 */
+		fheight = 2.0 * ((fheight - sine_lower_limit) / (1.0 - sine_lower_limit)) - 1.0;
+		/* Sine wave transform */
+		fheight = sin(fheight * M_PI_2);
+		/* Get -1..1 back to (sine_lower_limit / linear_compression)..1.0 */
+		fheight = 0.5 * ((1.0 - m) * fheight + (1.0 + m));
+	}
+}
+
+/**
+ * Adjust the landscape to create normal average height (temperate and toyland landscapes).
+ * @param fheight The height to adjust.
+ */
+static void SineTransformNormal(double &fheight)
+{
+	/* Move and scale 0..1 into -1..+1 */
+	fheight = 2 * fheight - 1;
+	/* Sine transform */
+	fheight = sin(fheight * M_PI_2);
+	/* Transform it back from -1..1 into 0..1 space */
+	fheight = 0.5 * (fheight + 1);
+}
+
+/**
+ * Adjust the landscape to create plateaus on average (arctic landscape).
+ * @param fheight The height to adjust.
+ */
+static void SineTransformPlateaus(double &fheight)
+{
+	/* Redistribute heights to have more tiles at highest (75%..100%) range */
+	double sine_upper_limit = 0.75;
+	double linear_compression = 2;
+	if (fheight >= sine_upper_limit) {
+		/* Over the limit we do linear compression up */
+		fheight = 1.0 - (1.0 - fheight) / linear_compression;
+	} else {
+		double m = 1.0 - (1.0 - sine_upper_limit) / linear_compression;
+		/* Get 0..sine_upper_limit into -1..1 */
+		fheight = 2.0 * fheight / sine_upper_limit - 1.0;
+		/* Sine wave transform */
+		fheight = sin(fheight * M_PI_2);
+		/* Get -1..1 back to 0..(1 - (1 - sine_upper_limit) / linear_compression) == 0.0..m */
+		fheight = 0.5 * (fheight + 1.0) * m;
+	}
+}
+
 /** Applies sine wave redistribution onto height map */
 static void HeightMapSineTransform(Height h_min, Height h_max)
 {
@@ -465,64 +525,25 @@ static void HeightMapSineTransform(Height h_min, Height h_max)
 
 		/* Transform height into 0..1 space */
 		fheight = (double)(h - h_min) / (double)(h_max - h_min);
-		/* Apply sine transform depending on landscape type */
-		switch (_settings_game.game_creation.landscape) {
-			case LandscapeType::Toyland:
-			case LandscapeType::Temperate:
-				/* Move and scale 0..1 into -1..+1 */
-				fheight = 2 * fheight - 1;
-				/* Sine transform */
-				fheight = sin(fheight * M_PI_2);
-				/* Transform it back from -1..1 into 0..1 space */
-				fheight = 0.5 * (fheight + 1);
-				break;
 
-			case LandscapeType::Arctic:
-				{
-					/* Arctic terrain needs special height distribution.
-					 * Redistribute heights to have more tiles at highest (75%..100%) range */
-					double sine_upper_limit = 0.75;
-					double linear_compression = 2;
-					if (fheight >= sine_upper_limit) {
-						/* Over the limit we do linear compression up */
-						fheight = 1.0 - (1.0 - fheight) / linear_compression;
-					} else {
-						double m = 1.0 - (1.0 - sine_upper_limit) / linear_compression;
-						/* Get 0..sine_upper_limit into -1..1 */
-						fheight = 2.0 * fheight / sine_upper_limit - 1.0;
-						/* Sine wave transform */
-						fheight = sin(fheight * M_PI_2);
-						/* Get -1..1 back to 0..(1 - (1 - sine_upper_limit) / linear_compression) == 0.0..m */
-						fheight = 0.5 * (fheight + 1.0) * m;
-					}
+		switch (_settings_game.game_creation.average_height) {
+			case AVH_AUTO:
+				/* Apply sine transform depending on landscape type */
+				switch (_settings_game.game_creation.landscape) {
+					case LandscapeType::Temperate: SineTransformNormal(fheight); break;
+					case LandscapeType::Tropic: SineTransformLowlands(fheight); break;
+					case LandscapeType::Arctic: SineTransformPlateaus(fheight); break;
+					case LandscapeType::Toyland: SineTransformNormal(fheight); break;
+					default: NOT_REACHED();
 				}
 				break;
 
-			case LandscapeType::Tropic:
-				{
-					/* Desert terrain needs special height distribution.
-					 * Half of tiles should be at lowest (0..25%) heights */
-					double sine_lower_limit = 0.5;
-					double linear_compression = 2;
-					if (fheight <= sine_lower_limit) {
-						/* Under the limit we do linear compression down */
-						fheight = fheight / linear_compression;
-					} else {
-						double m = sine_lower_limit / linear_compression;
-						/* Get sine_lower_limit..1 into -1..1 */
-						fheight = 2.0 * ((fheight - sine_lower_limit) / (1.0 - sine_lower_limit)) - 1.0;
-						/* Sine wave transform */
-						fheight = sin(fheight * M_PI_2);
-						/* Get -1..1 back to (sine_lower_limit / linear_compression)..1.0 */
-						fheight = 0.5 * ((1.0 - m) * fheight + (1.0 + m));
-					}
-				}
-				break;
-
-			default:
-				NOT_REACHED();
-				break;
+			case AVH_LOWLANDS: SineTransformLowlands(fheight); break;
+			case AVH_NORMAL: SineTransformNormal(fheight); break;
+			case AVH_PLATEAUS: SineTransformPlateaus(fheight); break;
+			default: NOT_REACHED();
 		}
+
 		/* Transform it back into h_min..h_max space */
 		h = (Height)(fheight * (h_max - h_min) + h_min);
 		if (h < 0) h = I2H(0);
