@@ -1248,7 +1248,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :展开全部
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :折叠全部
 STR_CONFIG_SETTING_RESET_ALL                                    :重置所有数值
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :（没有可用的提示）
-STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
+STR_CONFIG_SETTING_VALUE                                        :{ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}默认值：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}设置类型：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :当前客户端设置（不保存，影响所有游戏）
@@ -3656,17 +3656,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}找到�
 STR_NEWGRF_LIST_MISSING                                         :{RED}缺失文件
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF“{PUSH_COLOUR}{0:STRING}{POP_COLOUR}”的行为可能造成同步错误或崩溃
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}它于“{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}”不在车库内时改变了动力车厢状态
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}它于“{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}”不在车库内时改変了列车长度
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}它于“{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}”不在车库内或不在改装时改変了容量
+STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF“{0:STRING}”的行为可能造成同步错误或崩溃
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}它于“{1:ENGINE}”不在车库内时改变了动力车厢状态
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}它于“{1:ENGINE}”不在车库内时改変了列车长度
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}它于“{1:ENGINE}”不在车库内或不在改装时改変了容量
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}{1:COMPANY} 所拥有的列车 {0:VEHICLE} 长度无效。这个错误可能是由 NewGRF 导致的。游戏可能会无法同步或崩溃
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF“{PUSH_COLOUR}{STRING}{POP_COLOUR}”提供了错误的信息
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}购买列表中“{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}”的货物/改装信息与购买后的信息不同。这可能会导致自动更新或自动替换时无法正确改装此载具
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}“{PUSH_COLOUR}{1:STRING}{POP_COLOUR}”在生产回调函数中产生了一个死循环
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF“{STRING}”提供了错误的信息
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}购买列表中“{1:ENGINE}”的货物/改装信息与购买后的信息不同。这可能会导致自动更新或自动替换时无法正确改装此载具
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}“{1:STRING}”在生产回调函数中产生了一个死循环
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}回调函数 {1:HEX} 返回了一个未知/错误的结果：{2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}“{PUSH_COLOUR}{1:STRING}{POP_COLOUR}”返回了错误的货物类型。位于生产回调函数 {2:HEX} 处
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}“{1:STRING}”返回了错误的货物类型。位于生产回调函数 {2:HEX} 处
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<无效货物>

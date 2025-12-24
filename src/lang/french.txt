@@ -313,6 +313,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}En activ
 STR_BUTTON_DEFAULT                                              :{BLACK}Défaut
 STR_BUTTON_CANCEL                                               :{BLACK}Annuler
 STR_BUTTON_OK                                                   :{BLACK}OK
+STR_BUTTON_MOVE                                                 :{BLACK}Déplacer
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :²&é"'(-è_çà)= azertyuiop^$qsdfghjklmù*<wxcvbn,;:!
@@ -1248,7 +1249,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :Tout développe
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Tout réduire
 STR_CONFIG_SETTING_RESET_ALL                                    :Réinitialiser tous les réglages
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(pas d'explication disponible)
-STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
+STR_CONFIG_SETTING_VALUE                                        :{ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valeur par défaut{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Type de paramètre{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Paramètre du client (n'est pas enregistré dans les sauvegardes{NBSP}; affecte toutes les parties)
@@ -2878,8 +2879,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Banlieue extér
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Banlieue intérieure
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centre-ville
 
+STR_HOUSE_PICKER_PROTECT                                        :Protéger
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Définit si cette maison sera protégée contre son remplacement lors de la croissance de la ville
 
+STR_HOUSE_PICKER_REPLACE                                        :Remplacer l'existant
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Définit si ce bâtiment remplace automatiquement le bâtiment existant sur la case où il est placé
 
 STR_STATION_CLASS_DFLT                                          :Par défaut
 STR_STATION_CLASS_DFLT_STATION                                  :Stations par défaut
@@ -3426,6 +3430,10 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Nord-Oue
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Nord-Est
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Sud-Est
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Sud-Ouest
+STR_MAPGEN_NORTHWEST_TOOLTIP                                    :Basculer entre "eau" et "forme libre" pour le bord nord-ouest de la carte
+STR_MAPGEN_NORTHEAST_TOOLTIP                                    :Basculer entre "eau" et "forme libre" pour le bord nord-est de la carte
+STR_MAPGEN_SOUTHEAST_TOOLTIP                                    :Basculer entre "eau" et "forme libre" pour le bord sud-est de la carte
+STR_MAPGEN_SOUTHWEST_TOOLTIP                                    :Basculer entre "eau" et "forme libre" pour le bord sud-ouest de la carte
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Forme libre
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Eau
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Aléatoire
@@ -3649,17 +3657,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Modules
 STR_NEWGRF_LIST_MISSING                                         :{RED}Modules manquants
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Le comportement du NewGRF "{PUSH_COLOUR}{0:STRING}{POP_COLOUR}" peut provoquer des erreurs de synchronisation et/ou des plantages
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Il a modifié l'état de wagon motorisé pour "{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}" en dehors du dépôt
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Il a modifié la longueur de véhicule pour "{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}" en dehors du dépôt
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Il a changé la capacité pour "{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}" hors d'un dépôt ou d'un réaménagement
+STR_NEWGRF_BROKEN                                               :{WHITE}Le comportement du NewGRF "{0:STRING}" peut provoquer des erreurs de synchronisation et/ou des plantages
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Il a modifié l'état de wagon motorisé pour "{1:ENGINE}" en dehors du dépôt
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Il a modifié la longueur de véhicule pour "{1:ENGINE}" en dehors du dépôt
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Il a changé la capacité pour "{1:ENGINE}" hors d'un dépôt ou d'un réaménagement
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Le train "{VEHICLE}" appartenant à "{COMPANY}" a une longueur invalide. Cela est probablement dû à des problèmes avec des NewGRFs, et peut provoquer des erreurs de synchronisation ou planter le jeu.
 
-STR_NEWGRF_BUGGY                                                :{WHITE}Le module NewGRF "{PUSH_COLOUR}{0:STRING}{POP_COLOUR}" fournit une information incorrecte
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Les informations de cargaison/réaménagement pour "{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}" après sa construction sont différentes de celles de la liste d'achat. Cela peut causer un échec de réaménagement lors de l'auto-renouvellement/remplacement
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}"{PUSH_COLOUR}{1:STRING}{POP_COLOUR}" a causé une boucle infinie dans la fonction de rappel de production
+STR_NEWGRF_BUGGY                                                :{WHITE}Le module NewGRF "{0:STRING}" fournit une information incorrecte
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Les informations de cargaison/réaménagement pour "{1:ENGINE}" après sa construction sont différentes de celles de la liste d'achat. Cela peut causer un échec de réaménagement lors de l'auto-renouvellement/remplacement
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}"{1:STRING}" a causé une boucle infinie dans la fonction de rappel de production
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}La fonction de rappel {1:HEX} a retourné un résultat invalide {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}"{PUSH_COLOUR}{1:STRING}{POP_COLOUR}" a renvoyé un type de cargaison invalide dans la fonction de rappel de production à {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}"{1:STRING}" a renvoyé un type de cargaison invalide dans la fonction de rappel de production à {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<marchandise invalide>
@@ -3899,12 +3907,14 @@ STR_CARGO_RATING_EXCELLENT                                      :Excellent
 STR_CARGO_RATING_OUTSTANDING                                    :Exceptionnel
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrer la vue sur la station. Ctrl-clic pour ouvrir une nouvelle vue sur la station.
+STR_STATION_VIEW_EDIT_TOOLTIP                                   :{BLACK}Renommer la station ou déplacer le panneau
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Afficher les trains ayant cette station dans leurs ordres
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Afficher les véhicules routiers ayant cette station dans leurs ordres
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Afficher les aéronefs ayant cette station dans leurs ordres
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Afficher les navires ayant cette station dans leurs ordres
 
+STR_STATION_VIEW_EDIT_STATION_SIGN                              :{WHITE}Éditer le panneau
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Fermer l'aéroport
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Empêcher l'aéronef de se poser sur cet aéroport
@@ -3912,9 +3922,11 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Empêche
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrer la vue sur le point de contrôle. Ctrl-clic pour ouvrir une nouvelle vue sur le point de contrôle
+STR_WAYPOINT_VIEW_EDIT_TOOLTIP                                  :{BLACK}Renommer le point de contrôle ou déplacer le panneau
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrer la vue sur la bouée. Ctrl-clic pour ouvrir une nouvelle vue sur la bouée
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Renommer la bouée
 
+STR_WAYPOINT_VIEW_EDIT_WAYPOINT_SIGN                            :{WHITE}Éditer le panneau
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Finances de {COMPANY} {BLACK}{COMPANY_NUM}
@@ -5128,6 +5140,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Trop d'a
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Trop près d'un autre port
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Trop près d'un autre aéroport
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Impossible de renommer la gare...
+STR_ERROR_CAN_T_MOVE_STATION_NAME                               :{WHITE}Impossible de déplacer le panneau de la station...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... route appartenant à une ville
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... mauvaise orientation de la route
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... les arrêts ne peuvent pas avoir de virages
@@ -5159,6 +5172,7 @@ STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}Impossib
 STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Impossible de construire un point de contrôle de route ici...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Impossible de placer une bouée ici...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Impossible de renommer le point de contrôle...
+STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :{WHITE}Impossible de déplacer le panneau du point de contrôle...
 
 STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Impossible de retirer le point de contrôle d'ici...
 STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Impossible de retirer ce point de contrôle de route...

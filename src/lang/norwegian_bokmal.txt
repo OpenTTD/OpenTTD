@@ -1250,7 +1250,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :Vis alle
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Skjul alle
 STR_CONFIG_SETTING_RESET_ALL                                    :Tilbakestill alle verdier
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ingen forklaring tilgjengelig)
-STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
+STR_CONFIG_SETTING_VALUE                                        :{ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standard verdi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Instillings type: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Klient innstilling (ikke lagret i lagringsfilene, påvirker alle spill)
@@ -3658,17 +3658,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Fant ko
 STR_NEWGRF_LIST_MISSING                                         :{RED}Manglende filer
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Atferden til NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' vil trolig forårsake synkroniseringsfeil og/eller krasj.
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Det endret maskinvogntilstand for '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' når det er utenfor en togstall
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Det endret kjøretøylengde for ''{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' når utenfor en togstall
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Det endret kjøretøykapasitet for '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' når ikke i et depot eller under ombygging
+STR_NEWGRF_BROKEN                                               :{WHITE}Atferden til NewGRF '{0:STRING}' vil trolig forårsake synkroniseringsfeil og/eller krasj.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Det endret maskinvogntilstand for '{1:ENGINE}' når det er utenfor en togstall
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Det endret kjøretøylengde for '{1:ENGINE}' når utenfor en togstall
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Det endret kjøretøykapasitet for '{1:ENGINE}' når ikke i et depot eller under ombygging
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tog '{VEHICLE}' tilhørende '{COMPANY}' har ugyldig lengde. Dette skyldes trolig problemer med NewGRF-er. Spillet kan bli usynkronisert eller krasje.
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' gir feilaktig informasjon
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vare-/ombyggingsinformasjon for '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' er forskjellig fra kjøpelisten etter bygging. Dette kan resultere i at automatisk fornyelse ikke fungerer på riktig måte
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' forårsaket en uendelig løkke i produksjons-callback
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' gir feilaktig informasjon
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vare-/ombyggingsinformasjon for '{1:ENGINE}' er forskjellig fra kjøpelisten etter bygging. Dette kan resultere i at automatisk fornyelse ikke fungerer på riktig måte
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' forårsaket en uendelig løkke i produksjons-callback
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Tilbakekall {1:HEX} rapporterte ukjent/ugyldig resultat {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' returnerte ugyldig varetype i produksjons-callback i {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' returnerte ugyldig varetype i produksjons-callback i {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<invalid cargo>
