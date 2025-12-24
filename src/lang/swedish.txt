@@ -1248,7 +1248,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :Utöka alla
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Stäng alla
 STR_CONFIG_SETTING_RESET_ALL                                    :Återställ alla värden
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ingen förklaring tillgänglig)
-STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
+STR_CONFIG_SETTING_VALUE                                        :{ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standardvärde: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Typ av inställning: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Klientinställning (sparas ej i spel-filer och påverkar alla spel)
@@ -3656,15 +3656,15 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Hittade
 STR_NEWGRF_LIST_MISSING                                         :{RED}Saknade filer
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Beteendet hos NewGRF:en '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' kommer troligen orsaka desynkronisering och/eller krascher
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Kraftförsörjning-vagn-tillstånd för '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' ändrades utanför en depå
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Fordonslängd för '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' ändrades utanför en depå
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Kapaciteten ändrades för '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' utan att vara i depå eller anpassning
+STR_NEWGRF_BROKEN                                               :{WHITE}Beteendet hos NewGRF:en '{0:STRING}' kommer troligen orsaka desynkronisering och/eller krascher
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Kraftförsörjning-vagn-tillstånd för '{1:ENGINE}' ändrades utanför en depå
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Fordonslängd för '{1:ENGINE}' ändrades utanför en depån
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Kapaciteten ändrades för '{1:ENGINE}' utan att vara i depå eller anpassning
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tåget '{VEHICLE}' som tillhör '{COMPANY}' har ogiltig längd. Detta orsakas förmodligen av problem med en NewGRF. Spelet kan desynkroniseras eller krascha
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' ger felaktig information
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING} ger felaktig information
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Last-/återställningsinformationen för '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' skiljer sig från köplistan efter konstruktion. Detta kan leda till att automatisk förnyelse/uppgradering misslyckas med att anpassa fordonen/vagnarna korrekt
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' skapade en oändlig loop i produktions-callback-funktionen
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' skapade en oändlig loop i produktions-callback-funktionen
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback-funktion {1:HEX} returnerade ett okänt/ogiltligt resultat {2:HEX}
 STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' returnerade ogiltig lasttyp i produktions-callback vid {2:HEX}
 

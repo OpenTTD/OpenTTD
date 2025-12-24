@@ -1248,7 +1248,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :展開所有選
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :折疊所有選項
 STR_CONFIG_SETTING_RESET_ALL                                    :重設所有數值
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(沒有適用的解釋)
-STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
+STR_CONFIG_SETTING_VALUE                                        :{ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}預設值：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}設定種類：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :用戶端設定 (存檔時不保存；影響所有遊戲)
@@ -3656,17 +3656,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}發現�
 STR_NEWGRF_LIST_MISSING                                         :{RED}缺少檔案
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF「 {PUSH_COLOUR}{0:STRING}{POP_COLOUR} 」的行為可能會造成同步失敗或當機
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}「 {PUSH_COLOUR}{1:ENGINE}{POP_COLOUR} 」不在機廠內卻發生動力車廂列車狀態的變動
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}「 {PUSH_COLOUR}{1:ENGINE}{POP_COLOUR} 」不在機廠內卻發生列車長度的變動
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}「 {PUSH_COLOUR}{1:ENGINE}{POP_COLOUR} 」不在機廠內或不在改裝時卻發生列車運載量的變動
+STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF「{0:STRING}」的行為可能會造成同步失敗或當機
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}它於「 {1:ENGINE}」不在機廠內時更變了動力車廂狀態
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}它於「{1:ENGINE}」不在機廠內時更變了列車長度
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}它於「{1:ENGINE} 」不在機廠內或不在改裝時更變了載量
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}{1:COMPANY} 所擁有的列車 {0:VEHICLE} 長度無效。 這個錯誤可能是由 NewGRF 導致的，遊戲可能會無法同步或當機
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF「 {PUSH_COLOUR}{0:STRING}{POP_COLOUR} 」提供了錯誤的資訊
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}購買清單中「 {PUSH_COLOUR}{1:ENGINE}{POP_COLOUR} 」的貨物或改裝資訊與購買後的資訊不同。這可能會導致自動更新或自動替換時無法正確的改裝該車輛
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}「 {PUSH_COLOUR}{1:STRING}{POP_COLOUR} 」會導致生產回傳函數陷入無限循環的錯誤
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF「{STRING}」提供了錯誤的資訊
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}購買清單中「{1:ENGINE}」的貨物或改裝資訊與購買後的資訊不同。這可能會導致自動更新或自動替換時無法正確的改裝該車輛
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}「{1:STRING}」會導致生產回傳函數陷入無限循環的錯誤
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}回傳函數 {1:HEX} 回傳了一個未知或無效的結果：{2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}「 {PUSH_COLOUR}{1:STRING}{POP_COLOUR} 」產品回傳函數：{2:HEX} ，回傳了錯誤的貨物類型
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}「{1:STRING}」產品回傳函數：{2:HEX} ，回傳了錯誤的貨物類型
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<無效貨物>

@@ -1248,7 +1248,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :Expand all
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Collapse all
 STR_CONFIG_SETTING_RESET_ALL                                    :Reset all values
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(no explanation available)
-STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
+STR_CONFIG_SETTING_VALUE                                        :{ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Default value: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Setting type: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Client setting (not stored in saves; affects all games)
@@ -3656,17 +3656,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Found c
 STR_NEWGRF_LIST_MISSING                                         :{RED}Missing files
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Behavior of NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' is likely to cause desyncs and/or crashes
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}It changed powered-wagon state for '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' when not inside a depot
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}It changed vehicle length for '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' when not inside a depot
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}It changed vehicle capacity for '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' when not inside a depot or refitting
+STR_NEWGRF_BROKEN                                               :{WHITE}Behavior of NewGRF '{0:STRING}' is likely to cause desyncs and/or crashes
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}It changed powered-wagon state for '{1:ENGINE}' when not inside a depot
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}It changed vehicle length for '{1:ENGINE}' when not inside a depot
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}It changed vehicle capacity for '{1:ENGINE}' when not inside a depot or refitting
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Train '{VEHICLE}' belonging to '{COMPANY}' has invalid length. It is probably caused by problems with NewGRFs. Game may desync or crash
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' provides incorrect information
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Cargo/refit information for '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' differs from purchase list after construction. This might cause autorenew/-replace to fail refitting correctly
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' caused an endless loop in the production callback
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' provides incorrect information
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Cargo/refit information for '{1:ENGINE}' differs from purchase list after construction. This might cause autorenew/-replace to fail refitting correctly
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' caused an endless loop in the production callback
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback {1:HEX} returned unknown/invalid result {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' returned invalid cargo type in the production callback at {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' returned invalid cargo type in the production callback at {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<invalid cargo>

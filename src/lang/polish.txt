@@ -1628,7 +1628,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :Rozwiń wszystk
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Zwiń wszystkie
 STR_CONFIG_SETTING_RESET_ALL                                    :Przywróć wszystkie ustawienia
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(wyjaśnienie niedostępne)
-STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
+STR_CONFIG_SETTING_VALUE                                        :{ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Domyślna wartość: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Typ ustawienia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Ustawienie klienta (nie przechowywane w plikach zapisu; ma wpływ na wszystkie rozgrywki)
@@ -4036,17 +4036,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Znalezi
 STR_NEWGRF_LIST_MISSING                                         :{RED}Brakujące pliki
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Zachowanie NewGRF „{PUSH_COLOUR}{0:STRING}{POP_COLOUR}” może powodować desynchronizacje i/lub błędy
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Zmieniono stan wagonu silnikowego „{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}”, gdy nie znajdował się w hali warsztatów
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Zmieniono długość pojazdu „{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}”, gdy nie znajdował się w hali warsztatów
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Zmieniono ładowność pojazdu „{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}”, gdy nie znajdował się w hali warsztatów lub w trakcie przebudowy
+STR_NEWGRF_BROKEN                                               :{WHITE}Zachowanie NewGRF „{0:STRING}” może powodować desynchronizacje i/lub błędy
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Zmieniono stan wagonu silnikowego „{1:ENGINE}”, gdy nie znajdował się w hali warsztatów
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Zmieniono długość pojazdu „{1:ENGINE}”, gdy nie znajdował się w hali warsztatów
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Zmieniono ładowność pojazdu „{1:ENGINE}”, gdy nie znajdował się w hali warsztatów lub w trakcie przebudowy
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Pociąg „{VEHICLE}” należący do „{COMPANY}” ma nieprawidłową długość. Prawdopodobnie jest to spowodowane problemami z NewGRF-ami. Gra może się desychronizować lub zawiesić
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF „{PUSH_COLOUR}{0:STRING}{POP_COLOUR}” dostarcza niepoprawne dane
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacje o ładunku/przebudowie „{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}” różnią się od listy zakupów po zbudowaniu. Może to spowodować, że automatyczne odnowienie/zamiana nie wykona się poprawnie
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}„{PUSH_COLOUR}{1:STRING}{POP_COLOUR}” spowodował nieskończoną pętlę w wywołaniu zwrotnym produkcji
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF „{0:STRING}” dostarcza niepoprawne dane
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacje o ładunku/przebudowie „{1:ENGINE}” różnią się od listy zakupów po zbudowaniu. Może to spowodować, że automatyczne odnowienie/zamiana nie wykona się poprawnie
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}„{1:STRING}” spowodował nieskończoną pętlę w wywołaniu zwrotnym produkcji
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Wywołanie zwrotne {1:HEX} zwróciło nieznany/błędny wynik {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}„{PUSH_COLOUR}{1:STRING}{POP_COLOUR}” zwrócił niewłaściwy typ ładunku w wywołaniu zwrotnym produkcji w {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}„{1:STRING}” zwrócił niewłaściwy typ ładunku w wywołaniu zwrotnym produkcji w {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<nieprawidłowy ładunek>
