@@ -855,7 +855,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Βιομήχα�
 STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Κεφαλαιούχος
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Μεγιστάνας
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Τυχοδιώκτης
-STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Μεγιστάνας του Αιώνα
+STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Επιχειρηματίας του Αιώνα
 STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}«{STRING}»   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} έφτασε στο επίπεδο «{STRING}»
@@ -1137,7 +1137,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ρινγκίτ 
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Λετονικά Λατς
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Πορτογαλικό Εσκούδο
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Ουκρανικά Γρίβνα
-STR_GAME_OPTIONS_CURRENCY_VND                                   :Βιετναμέζικο Dong
+STR_GAME_OPTIONS_CURRENCY_VND                                   :Βιετναμέζικο Ντονγκ
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Αυτόματη αποθήκευση
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Επιλογή διαστήματος μεταξύ αυτόματων αποθηκεύσεων
@@ -1191,7 +1191,7 @@ STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Αυτοματοποιημένη έρευνα
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Συμμετοχή σε αυτοματοποιημένη έρευνα
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :Όταν είναι ενεργοποιημένο, το OpenTTD θα μεταδίδει μια έρευνα κατά την έξοδο από ένα παιχνίδι
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :Πληροφορίες για την αυτοματοποιημένη έρευνα και ιδιωτικότητα
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :Πληροφορίες για την έρευνα και ιδιωτικότητα
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Αυτό ανοίγει ένα πρόγραμμα περιήγησης με περισσότερες πληροφορίες σχετικά με την αυτοματοποιημένη έρευνα
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Προεπισκόπηση αποτελέσματος έρευνας
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Εμφάνιση του αποτελέσματος έρευνας του τρέχοντος παιχνιδιού
@@ -1218,7 +1218,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Επιπλέο�
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Λήψη Περιεχομένου
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Ελέγξτε για νέο και ενημερωμένο περιεχόμενο προς λήψη
 
-STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :(δεν έχουν εγκατασταθεί πρόσθετα (plugins) για διασύνδεση με πλατφόρμες κοινωνικής δικτύωσης)
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :(δεν έχουν εγκατασταθεί πρόσθετα [plugins] για διασύνδεση με πλατφόρμες κοινωνικής δικτύωσης)
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Πλατφόρμα:
@@ -1274,11 +1274,11 @@ STR_NUM_CUSTOM                                                  :Προσαρμ�
 STR_NUM_CUSTOM_NUMBER                                           :Προσαρμοσμένος ({NUM})
 
 STR_VARIETY_NONE                                                :Καθόλου
-STR_VARIETY_VERY_LOW                                            :Πολύ Χαμηλό
-STR_VARIETY_LOW                                                 :Χαμηλό
-STR_VARIETY_MEDIUM                                              :Μέτριο
-STR_VARIETY_HIGH                                                :Υψηλό
-STR_VARIETY_VERY_HIGH                                           :Πολύ Υψηλό
+STR_VARIETY_VERY_LOW                                            :Πολύ Χαμηλή
+STR_VARIETY_LOW                                                 :Χαμηλή
+STR_VARIETY_MEDIUM                                              :Μεσαία
+STR_VARIETY_HIGH                                                :Υψηλή
+STR_VARIETY_VERY_HIGH                                           :Πολύ Υψηλή
 
 ###length 5
 STR_AI_SPEED_VERY_SLOW                                          :Πολύ Αργή
@@ -1324,8 +1324,8 @@ STR_TERRAIN_TYPE_FLAT                                           :Επίπεδο
 STR_TERRAIN_TYPE_HILLY                                          :Λοφώδες
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Ορεινό
 STR_TERRAIN_TYPE_ALPINIST                                       :Αλπικό
-STR_TERRAIN_TYPE_CUSTOM                                         :Προσαρμοσμένο ύψος
-STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Προσαρμοσμένο ύψος ({NUM})
+STR_TERRAIN_TYPE_CUSTOM                                         :Προσαρμοσμένου ύψους
+STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Προσαρμοσμένου ύψους ({NUM})
 
 ###length 4
 STR_CITY_APPROVAL_LENIENT                                       :Ήπια
@@ -1417,7 +1417,7 @@ STR_CONFIG_SETTING_RUNNING_COSTS_MEDIUM                         :Μεσαία
 STR_CONFIG_SETTING_RUNNING_COSTS_HIGH                           :Υψηλά
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Ταχύτητα οικοδόμησης: {STRING}
-STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Περιορίζει το ποσοστό των οικοδομήμσεων από την ΤΝ
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Περιορίζει τις πόσεις εικοδομήσεις κάνουν τα AI
 
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Βλάβες οχημάτων: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Ελέγχει πόσο συχνά παθαίνουν βλάβες τα ανεπαρκώς συντηρημένα οχήματα
@@ -2168,7 +2168,7 @@ STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1x
 
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Ρυθμός ανάπτυξης πόλης: {STRING}
-STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Ταχύτητα μεγέθυνσης πόλεων
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Ταχύτητα επέκτασης πόλεων
 ###length 5
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Μηδενικός
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Αργός
@@ -2342,7 +2342,7 @@ STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Δημι
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Έναρξη παιχνιδιού με πολλούς παίκτες
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Επιλογή «εύκρατου» στυλ τοπίου
-STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Επιλογή «υπό-αρκτικού» στυλ τοπίου
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Επιλογή «πολικού» στυλ τοπίου
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Επιλογή «υπό-τροπικού» στυλ τοπίου
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Επιλογή στυλ τοπίου «παιχνιδούπολης»
 
@@ -2517,7 +2517,7 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Έκδ�
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Διεύθυνση διακομιστή: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Κωδικός πρόσκλησης: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Ημερομηνία έναρξης: {WHITE}{DATE_SHORT}
-STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Τρέχουσα ημερομηνία: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Τωρινή ημερομηνία: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_PLAY_TIME                               :{SILVER}Χρόνος παιχνιδιού: {WHITE}{NUM}ω {NUM}λ
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Script Παιχνιδιού: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Προστατευμένο με κωδικό!
@@ -2928,8 +2928,8 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Αριθ
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Επιλέξτε τον αριθμό πλατφορμών για το σιδηροδρομικό σταθμό
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Μήκος πλατφόρμας
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Επιλέξτε το μήκος του σιδηροδρομικού σταθμού
-STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Σύρετε και Ελευθερώστε
-STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Φτιάξε ένα σταθμό χρησιμοποιώντας σύρσιμο και ελευθέρωση
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Με μεταφορά και απόθεση
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Κτίστε έναν σταθμό με σύρσιμο και ελευθέρωση
 
 STR_PICKER_MODE_ALL                                             :Όλα
 STR_PICKER_MODE_ALL_TOOLTIP                                     :Εναλλαγή εμφάνισης στοιχείων από όλες τις κατηγορίες
@@ -3125,7 +3125,7 @@ STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Προε
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Μέγεθος: {GOLD}{NUM} x {NUM} τετράγωνα
 
 STR_OBJECT_CLASS_LTHS                                           :Φάροι
-STR_OBJECT_CLASS_TRNS                                           :Αναμεταδότες
+STR_OBJECT_CLASS_TRNS                                           :Πομποί
 
 # Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Δέντρα
@@ -3351,7 +3351,7 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Σωληνοε�
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Υπερυψωμένο κανάλι
 
-STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Αναμεταδότης
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Πομπός
 STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Φάρος
 STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Έδρα εταιρίας
 STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Ιδιοκτησία γης από εταιρία
@@ -3490,7 +3490,7 @@ STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Δημι
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Ρυθμίσεις NewGRF
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Εμφάνιση ρυθμίσεων NewGRF
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Ρυθμίσεις AI
-STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Εμφάνιση ρυθμίσεων ΤΝ
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Εμφάνιση ρυθμίσεων AI
 STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Ρυθμίσεις σενάριου παιχνιδιού
 STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Εμφάνιση ρυθμίσεων σενάριου παιχνιδιού
 
@@ -3707,7 +3707,7 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Προει
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Λάθος: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Καταστροφικό: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Το NewGRF «{STRING}» επέστρεψε ένα καταστροφικό λάθος:{}{STRING}
-STR_NEWGRF_ERROR_POPUP                                          :{WHITE}Το NewGRF "{STRING}" επέστρεψε ένα λάθος:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}Το NewGRF «{STRING}» επέστρεψε ένα λάθος:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :Το {1:STRING} δεν θα δουλέψει με την έκδοση του TTDPatch όπως αναφέρεται από το OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :Το {1:STRING} είναι για την έκδοση {2:STRING} του TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :Το {1:STRING} είναι σχεδιασμένο να δουλέψει με το {2:STRING}
@@ -4969,36 +4969,36 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Επιλ
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Αποσφαλμάτωση ΤΝ και δέσμης ενεργειών παιχνιδιού
+STR_AI_DEBUG                                                    :{WHITE}Αποσφαλμάτωση AI και δέσμης ενεργειών παιχνιδιού
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (έκδοση {NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Όνομα δέσμης ενεργειών
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Ρυθμίσεις
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Αλλαγή των ρυθμίσεων της δέσμης ενεργειών
-STR_AI_DEBUG_RELOAD                                             :{BLACK}Επαναφόρτωση ΤΝ
-STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Τερματίστε την ΤΝ, ξαναφορτώστε τη δέσμη ενεργειών και επανεκκινήστε την ΤΝ
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Ενεργοποίηση/απενεργοποίηση παύσης όταν μια καταχώρηση ιστορικού της ΤΝ ταυτίζεται με το αλφαριθμητικό παύσης
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Επαναφόρτωση AI
+STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Τερματίστε το AI, ξαναφορτώστε τη δέσμη ενεργειών και επανεκκινήστε το AI
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Ενεργοποίηση/απενεργοποίηση παύσης όταν μια καταχώρηση ιστορικού του AI ταυτίζεται με το αλφαριθμητικό παύσης
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Παύση στο:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Παύση στο
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Εάν υπάρξει ταύτιση του παρόντος αλφαριθμητικού με μια καταχώρηση από τα μηνύματα του ΤΝ, τότε γίνεται παύση του παιχνιδιού
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Εάν υπάρξει ταύτιση του παρόντος αλφαριθμητικού με μια καταχώρηση από τα μηνύματα του AI, τότε γίνεται παύση του παιχνιδιού
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Ταύτιση μεγέθους
-STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Μεταβολή της ταύτισης μεγέθους όταν η γίνεται σύγκριση μιας καταχώρησης της ΤΝ με το αλφαριθμητικό παύσης
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Μεταβολή της ταύτισης μεγέθους όταν η γίνεται σύγκριση μιας καταχώρησης του AI με το αλφαριθμητικό παύσης
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Συνέχεια
-STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Συνέχιση του παιχνιδιού και της λειτουργίας της ΤΝ
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Εμφάνιση της εξόδου αποσφαλμάτωσης αυτής της ΤΝ. Με Ctrl+Κλικ ανοίγει νέο παράθυρο εμφάνισης
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Συνέχιση του παιχνιδιού και της λειτουργίας του AI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Εμφάνιση της εξόδου αποσφαλμάτωσης αυτού του AI. Με Ctrl+Κλικ ανοίγει νέο παράθυρο εμφάνισης
 STR_AI_GAME_SCRIPT                                              :{BLACK}Δέσμη Ενεργειών Παιχνιδιού
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Έλεγχος ιστορικού δέσμης ενεργειών παιχνιδιού. Ctrl+Κλικ για άνοιγμα σε νέο παράθυρο
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Δεν βρέθηκε κατάλληλη AI για φόρτωση.{}Αυτή η AI είναι ψεύτικη και δεν θα κάνει τίποτα.{}Μπορείτε να κατεβάσετε διάφορες AΙ από το σύστημα Διαδικτυακού Περιεχομένου.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Μια από τις δέσμες ενεργειών που εκτελούνται τερμάτισε απότομα. Παρακαλώ ενημερώστε τον συγγραφέα της δέσμης ενεργειών με ένα στιγμιότυπο οθόνης από το παράθυρο αποσφαλμάτωσης AI/Παιχνιδιού
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Το παράθυρο αποσφαλμάτωσης ΤΝ και δέσμης ενεργειών είναι διαθέσιμο μόνο για τον διακομιστή
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Το παράθυρο αποσφαλμάτωσης AI και δέσμης ενεργειών είναι διαθέσιμο μόνο για τον διακομιστή
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Ρυθμίσεις ΤΝ
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Ρυθμίσεις AI
 STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Ρυθμίσεις δέσμης ενεργειών παιχνιδιού
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Η Δέσμη Ενεργειών παιχνιδιού που θα φορτωθεί στο επόμενο παιχνίδι
-STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Οι ΤΝ που θα φορτωθούν στο επόμενο παιχνίδι
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Τα AI που θα φορτωθούν στο επόμενο παιχνίδι
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ανθρώπινος παίκτης
-STR_AI_CONFIG_RANDOM_AI                                         :Τυχαία ΤΝ
+STR_AI_CONFIG_RANDOM_AI                                         :Τυχαίο AI
 STR_AI_CONFIG_NONE                                              :{G=f}(καμία)
 STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Μέγιστος αρ. ανταγωνιστών: {ORANGE}{COMMA}
@@ -5007,13 +5007,13 @@ STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}Διά�
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Μετακίνηση Πάνω
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Μετακίνηση της επιλεγμένης AI πάνω στη λίστα
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Μετακίνηση Κάτω
-STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Μετακίνηση της επιλεγμένης ΤΝ κάτω στη λίστα
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Μετακίνηση του επιλεγμένου AI κάτω στη λίστα
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Δέσμη Ενεργειών
 STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Παράμετροι
 STR_AI_CONFIG_AI                                                :{SILVER}AI
 
-STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Διάλεξε ΤΝ
+STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Διαλέξτε AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Επιλογή Δέσμης Ενεργειών
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Φόρτωση άλλης δέσμης ενεργειών. Ctrl+Κλικ για εμφάνιση όλων των διαθέσιμων εκδόσεων
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Ρυθμίσεις
@@ -5021,7 +5021,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Ρύθμ
 
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Διαθέσιμη {STRING}
-STR_AI_LIST_CAPTION_AI                                          :ΤΝ
+STR_AI_LIST_CAPTION_AI                                          :AI
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Δέσμες Ενεργειών
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Πατήστε για να επιλέξετε μία δέσμη ενεργειών
 
@@ -5041,7 +5041,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Στιγ
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Στιγμιότυπο μίνι χάρτη
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Παράμετροι ΤΝ (Τεχνητης Νοημοσύνης)
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Παράμετροι AI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Παράμετροι σεναρίου παιχνιδιού
 STR_AI_SETTINGS_RESET                                           :{BLACK}Επαναφορά
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -5661,7 +5661,7 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=n}Ορυχε
 
 ##id 0x6000
 STR_SV_EMPTY                                                    :
-STR_SV_UNNAMED                                                  :Ανώνυμο
+STR_SV_UNNAMED                                                  :Χωρίς όνομα
 STR_SV_TRAIN_NAME                                               :{G=n}Τρένο #{COMMA}
 STR_SV_TRAIN_NAME.geniki                                        :Τρένου {COMMA}
 STR_SV_ROAD_VEHICLE_NAME                                        :{G=n}Οδικό όχημα #{COMMA}
