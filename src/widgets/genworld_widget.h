@@ -53,6 +53,7 @@ enum GenerateLandscapeWidgets : WidgetID {
 	WID_GL_RIVER_PULLDOWN,              ///< Dropdown 'Rivers'.
 	WID_GL_SMOOTHNESS_PULLDOWN,         ///< Dropdown 'Smoothness'.
 	WID_GL_VARIETY_PULLDOWN,            ///< Dropdown 'Variety distribution'.
+	WID_GL_AVERAGE_HEIGHT_PULLDOWN,     ///< Dropdown 'Average height'.
 
 	WID_GL_BORDERS_PULLDOWN,            ///< Dropdown 'Map edges'.
 	WID_GL_WATER_NW,                    ///< NW 'Water'/'Freeform'.

@@ -97,6 +97,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_generate_landscape_w
 					NWidget(NWID_VERTICAL, NWidContainerFlag::EqualSize), SetPIP(0, WidgetDimensions::unscaled.vsep_sparse, 0),
 						NWidget(WWT_TEXT, INVALID_COLOUR), SetStringTip(STR_MAPGEN_MAPSIZE, STR_MAPGEN_MAPSIZE_TOOLTIP), SetFill(1, 1),
 						NWidget(WWT_TEXT, INVALID_COLOUR), SetStringTip(STR_MAPGEN_TERRAIN_TYPE, STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT), SetFill(1, 1),
+						NWidget(WWT_TEXT, INVALID_COLOUR), SetStringTip(STR_MAPGEN_AVERAGE_HEIGHT, STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT), SetFill(1, 1),
 						NWidget(WWT_TEXT, INVALID_COLOUR), SetStringTip(STR_MAPGEN_VARIETY, STR_CONFIG_SETTING_VARIETY_HELPTEXT), SetFill(1, 1),
 						NWidget(WWT_TEXT, INVALID_COLOUR), SetStringTip(STR_MAPGEN_SMOOTHNESS, STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT), SetFill(1, 1),
 						NWidget(WWT_TEXT, INVALID_COLOUR), SetStringTip(STR_MAPGEN_QUANTITY_OF_RIVERS, STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT), SetFill(1, 1),
@@ -112,6 +113,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_generate_landscape_w
 							NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_MAPSIZE_Y_PULLDOWN), SetToolTip(STR_MAPGEN_MAPSIZE_TOOLTIP), SetFill(1, 1),
 						EndContainer(),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_TERRAIN_PULLDOWN), SetToolTip(STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT), SetFill(1, 1),
+						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_AVERAGE_HEIGHT_PULLDOWN), SetToolTip(STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT), SetFill(1, 1),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_VARIETY_PULLDOWN), SetToolTip(STR_CONFIG_SETTING_VARIETY_HELPTEXT), SetFill(1, 1),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_SMOOTHNESS_PULLDOWN), SetToolTip(STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT), SetFill(1, 1),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_RIVER_PULLDOWN), SetToolTip(STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT), SetFill(1, 1),
@@ -385,6 +387,7 @@ static const StringID _rotation[]    = {STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CO
 static const StringID _num_towns[]   = {STR_NUM_VERY_LOW, STR_NUM_LOW, STR_NUM_NORMAL, STR_NUM_HIGH, STR_NUM_CUSTOM};
 static const StringID _num_inds[]    = {STR_FUNDING_ONLY, STR_MINIMAL, STR_NUM_VERY_LOW, STR_NUM_LOW, STR_NUM_NORMAL, STR_NUM_HIGH, STR_NUM_CUSTOM};
 static const StringID _variety[]     = {STR_VARIETY_NONE, STR_VARIETY_VERY_LOW, STR_VARIETY_LOW, STR_VARIETY_MEDIUM, STR_VARIETY_HIGH, STR_VARIETY_VERY_HIGH};
+static const StringID _average_height[] = {STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUTO, STR_CONFIG_SETTING_AVERAGE_HEIGHT_LOWLANDS, STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL, STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS};
 
 static_assert(std::size(_num_inds) == ID_END);
 
@@ -472,6 +475,7 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_RIVER_PULLDOWN:      return GetString(_rivers[_settings_newgame.game_creation.amount_of_rivers]);
 			case WID_GL_SMOOTHNESS_PULLDOWN: return GetString(_smoothness[_settings_newgame.game_creation.tgen_smoothness]);
 			case WID_GL_VARIETY_PULLDOWN:    return GetString(_variety[_settings_newgame.game_creation.variety]);
+			case WID_GL_AVERAGE_HEIGHT_PULLDOWN: return GetString(_average_height[to_underlying(_settings_newgame.game_creation.average_height)]);
 			case WID_GL_BORDERS_PULLDOWN: return GetString(_borders[_settings_newgame.game_creation.water_border_presets]);
 			case WID_GL_WATER_NE: return GetString((_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? STR_MAPGEN_BORDER_RANDOM : _settings_newgame.game_creation.water_borders.Test(BorderFlag::NorthEast) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM);
 			case WID_GL_WATER_NW: return GetString((_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? STR_MAPGEN_BORDER_RANDOM : _settings_newgame.game_creation.water_borders.Test(BorderFlag::NorthWest) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM);
@@ -619,6 +623,7 @@ struct GenerateLandscapeWindow : public Window {
 
 			case WID_GL_RIVER_PULLDOWN:      strs = _rivers; break;
 			case WID_GL_SMOOTHNESS_PULLDOWN: strs = _smoothness; break;
+			case WID_GL_AVERAGE_HEIGHT_PULLDOWN: strs = _variety; break;
 			case WID_GL_VARIETY_PULLDOWN:    strs = _variety; break;
 			case WID_GL_HEIGHTMAP_ROTATION_PULLDOWN: strs = _rotation; break;
 			case WID_GL_BORDERS_PULLDOWN:    strs = _borders; break;
@@ -803,6 +808,10 @@ struct GenerateLandscapeWindow : public Window {
 				ShowDropDownMenu(this, _variety, _settings_newgame.game_creation.variety, WID_GL_VARIETY_PULLDOWN, 0, 0);
 				break;
 
+			case WID_GL_AVERAGE_HEIGHT_PULLDOWN: // Average height
+				ShowDropDownMenu(this, _average_height, to_underlying(_settings_newgame.game_creation.average_height), WID_GL_AVERAGE_HEIGHT_PULLDOWN, 0, 0);
+				break;
+
 			/* Map borders */
 			case WID_GL_BORDERS_PULLDOWN:
 				ShowDropDownMenu(this, _borders, _settings_newgame.game_creation.water_border_presets, WID_GL_BORDERS_PULLDOWN, 0, 0);
@@ -863,6 +872,7 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_RIVER_PULLDOWN:         _settings_newgame.game_creation.amount_of_rivers = index; break;
 			case WID_GL_SMOOTHNESS_PULLDOWN:    _settings_newgame.game_creation.tgen_smoothness = index;  break;
 			case WID_GL_VARIETY_PULLDOWN:       _settings_newgame.game_creation.variety = index; break;
+			case WID_GL_AVERAGE_HEIGHT_PULLDOWN: _settings_newgame.game_creation.average_height = static_cast<GenworldAverageHeight>(index); break;
 
 			case WID_GL_HEIGHTMAP_ROTATION_PULLDOWN: _settings_newgame.game_creation.heightmap_rotation = index; break;
 

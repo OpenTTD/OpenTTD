@@ -1626,6 +1626,14 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Smooth
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rough
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Very Rough
 
+STR_CONFIG_SETTING_AVERAGE_HEIGHT                               :Average height: {STRING2}
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT                      :Choose the average height of land. 'Automatic' uses the default based on the selected climate: 'Lowlands' for Subtropical, 'Normal' for Temperate and Toyland, and 'Plateaus' for Subarctic.
+###length 4
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUTO                          :Automatic
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_LOWLANDS                      :Lowlands
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL                        :Normal
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS                      :Plateaus
+
 STR_CONFIG_SETTING_VARIETY                                      :Variety distribution: {STRING2}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Choose if the map contains both mountains and flat areas. The higher the variety, the more differences in elevation between mountainous and flat areas
 
@@ -3387,6 +3395,7 @@ STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Increase
 STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Decrease desert coverage by ten percent
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrain type:
+STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}Average height:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Sea level:
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Select the sea level
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Rivers:
