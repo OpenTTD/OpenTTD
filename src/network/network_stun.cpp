@@ -97,6 +97,7 @@ std::unique_ptr<ClientNetworkStunSocketHandler> ClientNetworkStunSocketHandler::
 	p->Send_string(token);
 	p->Send_uint8(family);
 
+	Debug(net, 9, "Stun::SendStun({}, {})", token, family);
 	stun_handler->SendPacket(std::move(p));
 
 	return stun_handler;
