@@ -803,11 +803,28 @@ static void TileLoopTreesAlps(TileIndex tile)
 	MarkTileDirtyByTile(tile);
 }
 
-static bool CanPlantExtraTrees(TileIndex tile)
+/*
+ * Check if trees on this tile are allowed to spread.
+ * If they are allowed to spread, they are also allowed to die.
+ * @param tile The tile to check.
+ * @return Whether trees on this tile can spread.
+ */
+static bool TreesOnTileCanSpread(TileIndex tile)
 {
-	return ((_settings_game.game_creation.landscape == LandscapeType::Tropic && GetTropicZone(tile) == TROPICZONE_RAINFOREST) ?
-		(_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL || _settings_game.construction.extra_tree_placement == ETP_SPREAD_RAINFOREST) :
-		_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL);
+	/* Desert and rainforest trees need special handling. */
+	if (_settings_game.game_creation.landscape == LandscapeType::Tropic) {
+		switch (GetTropicZone(tile)) {
+			case TROPICZONE_DESERT:
+				/* Cacti never spread. */
+				return false;
+			case TROPICZONE_RAINFOREST:
+				return (_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL || _settings_game.construction.extra_tree_placement == ETP_SPREAD_RAINFOREST);
+			default:
+				return _settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL;
+		}
+	}
+
+	return (_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL);
 }
 
 static void TileLoop_Trees(TileIndex tile)
@@ -857,7 +874,7 @@ static void TileLoop_Trees(TileIndex tile)
 						break;
 
 					case 1: // add a tree
-						if (GetTreeCount(tile) < 4 && CanPlantExtraTrees(tile)) {
+						if (GetTreeCount(tile) < 4 && TreesOnTileCanSpread(tile)) {
 							AddTreeCount(tile, 1);
 							SetTreeGrowth(tile, TreeGrowthStage::Growing1);
 							break;
@@ -865,13 +882,12 @@ static void TileLoop_Trees(TileIndex tile)
 						[[fallthrough]];
 
 					case 2: { // add a neighbouring tree
-						if (!CanPlantExtraTrees(tile)) break;
+						if (!TreesOnTileCanSpread(tile)) break;
 
 						TreeType treetype = GetTreeType(tile);
 
 						tile += TileOffsByDir(static_cast<Direction>(Random() % DIR_END));
 
-						/* Cacti don't spread */
 						if (!CanPlantTreesOnTile(tile, false)) return;
 
 						/* Don't plant trees, if ground was freshly cleared */
@@ -889,7 +905,7 @@ static void TileLoop_Trees(TileIndex tile)
 			break;
 
 		case TreeGrowthStage::Dead: // final stage of tree destruction
-			if (!CanPlantExtraTrees(tile)) {
+			if (!TreesOnTileCanSpread(tile)) {
 				/* if trees can't spread just plant a new one to prevent deforestation */
 				SetTreeGrowth(tile, TreeGrowthStage::Growing1);
 			} else if (GetTreeCount(tile) > 1) {
