@@ -370,7 +370,7 @@ DropDownList BuildBadgeClassConfigurationList(const GUIBadgeClasses &gui_classes
 		if (!badge->flags.Test(BadgeFlag::HasText)) continue;
 
 		const auto [config, _] = GetBadgeClassConfigItem(gui_classes.GetFeature(), badge->label);
-		list.push_back(std::make_unique<DropDownListToggleItem>(config.show_filter, BADGE_CLICK_TOGGLE_FILTER, COLOUR_YELLOW, bg_colour, GetString(badge->name), (1U << 16) | badge_class_index.base()));
+		list.push_back(std::make_unique<DropDownListToggleItem>(config.show_filter, BADGE_CLICK_TOGGLE_FILTER, COLOUR_YELLOW, bg_colour, GetString(badge->name), badge_class_index.base()));
 	}
 
 	return list;
