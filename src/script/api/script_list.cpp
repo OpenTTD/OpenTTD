@@ -560,9 +560,10 @@ bool ScriptList::SetValue(SQInteger item, SQInteger value)
 	this->sorter->Remove(item);
 	auto value_iter = this->values.find({value_old, item});
 	assert(value_iter != this->values.end());
-	this->values.erase(value_iter);
 	item_iter->second = value;
-	this->values.emplace(value, item);
+	auto node_handle = this->values.extract(value_iter);
+	node_handle.value().first = value;
+	this->values.insert(std::move(node_handle));
 
 	return true;
 }
