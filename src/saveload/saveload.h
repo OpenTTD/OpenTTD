@@ -413,6 +413,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_LOCKS_UNDER_BRIDGES,                ///< 361  PR#14595 Allow locks under bridges.
 	SLV_ENGINE_MULTI_RAILTYPE,              ///< 362  PR#14357 v15.0 Train engines can have multiple railtypes.
 	SLV_SIGN_TEXT_COLOURS,                  ///< 363  PR#14743 Configurable sign text colors in scenario editor.
+	SLV_HIDDEN_AND_FAVOURITE_RRT_TYPES,     ///< 364  PR#14798 Hidden and favourite rail/road/tram types.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
