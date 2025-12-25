@@ -13,6 +13,7 @@
 #include "heightmap.h"
 #include "clear_map.h"
 #include "spritecache.h"
+#include "station_map.h"
 #include "viewport_func.h"
 #include "command_func.h"
 #include "landscape.h"
@@ -682,8 +683,11 @@ CommandCost CmdLandscapeClear(DoCommandFlags flags, TileIndex tile)
 	/* Test for stuff which results in water when cleared. Then add the cost to also clear the water. */
 	if (flags.Test(DoCommandFlag::ForceClearTile) && HasTileWaterClass(tile) && IsTileOnWater(tile) && !IsWaterTile(tile) && !IsCoastTile(tile)) {
 		if (flags.Test(DoCommandFlag::Auto) && GetWaterClass(tile) == WaterClass::Canal) return CommandCost(STR_ERROR_MUST_DEMOLISH_CANAL_FIRST);
-		do_clear = true;
-		cost.AddCost(GetWaterClass(tile) == WaterClass::Canal ? _price[PR_CLEAR_CANAL] : _price[PR_CLEAR_WATER]);
+		/* Buoy tiles are special as they can be cleared by anyone, but the underlying tile shouldn't be cleared if it has a different owner. */
+		if (!IsBuoyTile(tile) || GetTileOwner(tile) == _current_company) {
+			do_clear = true;
+			cost.AddCost(GetWaterClass(tile) == WaterClass::Canal ? _price[PR_CLEAR_CANAL] : _price[PR_CLEAR_WATER]);
+		}
 	}
 
 	Company *c = flags.Any({DoCommandFlag::Auto, DoCommandFlag::Bankrupt}) ? nullptr : Company::GetIfValid(_current_company);
