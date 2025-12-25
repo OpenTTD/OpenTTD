@@ -368,27 +368,18 @@ class BuildIndustryWindow : public Window {
 		assert(cargolist.size() == cargo_suffix.size());
 
 		std::string cargostring;
-		size_t numcargo = 0;
-		size_t firstcargo = 0;
+		std::string_view list_separator = GetListSeparator();
 
 		for (size_t j = 0; j < cargolist.size(); j++) {
 			if (!IsValidCargoType(cargolist[j])) continue;
-			numcargo++;
-			if (numcargo == 1) {
-				firstcargo = j;
-				continue;
-			}
+
+			if (!cargostring.empty()) cargostring += list_separator;
 			auto params = MakeParameters(CargoSpec::Get(cargolist[j])->name, cargo_suffix[j].text);
 			AppendStringWithArgsInPlace(cargostring, STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION, params);
 		}
 
-		if (numcargo > 0) {
-			cargostring = GetString(prefixstr, CargoSpec::Get(cargolist[firstcargo])->name, cargo_suffix[firstcargo].text) + cargostring;
-		} else {
-			cargostring = GetString(prefixstr, STR_JUST_NOTHING, ""sv);
-		}
-
-		return cargostring;
+		if (cargostring.empty()) AppendStringInPlace(cargostring, STR_JUST_NOTHING);
+		return GetString(prefixstr, cargostring);
 	}
 
 public:
