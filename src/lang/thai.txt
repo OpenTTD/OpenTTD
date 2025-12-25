@@ -2642,7 +2642,7 @@ STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}ระ�
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}ชื่อท่าอากาศยาน: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}ชื่อท่าอากาศยาน: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}สินค้าที่รับ: {LTBLUE}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}สินค้าที่รับ: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}ประเภทของถนน: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}ประเภทรถราง: {LTBLUE}{STRING}
@@ -3365,7 +3365,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}ท่�
 # Industry directory
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- ไม่มี -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}ชื่อของอุตสาหกรรม - คลิ๊กที่ชื่อเพื่อไปยังจุดศูนย์กลาง
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}ผลผลิตที่ได้: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :ไม่มี
@@ -3828,7 +3828,7 @@ STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}แส�
 STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}แสดงความจุรวมทั้งหมดของขบวนรถ
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}แสดงความจุรวมทั้งหมดของขบวนรถ แยกตามประเภทสินค้า
 
-STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}ความจุ: {LTBLUE}
+STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}ความจุ: {LTBLUE}{STRING}
 
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (ดัดแปลง)
