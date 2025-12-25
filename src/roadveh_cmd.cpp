@@ -889,7 +889,6 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 {
 #define return_track(x) { best_track = (Trackdir)x; goto found_best_track; }
 
-	TileIndex desttile;
 	Trackdir best_track;
 	bool path_found = true;
 
@@ -957,8 +956,7 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 		}
 	}
 
-	desttile = v->dest_tile;
-	if (desttile == 0) {
+	if (v->dest_tile == INVALID_TILE) {
 		/* We've got no destination, pick a random track */
 		return_track(PickRandomBit(trackdirs));
 	}

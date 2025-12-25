@@ -2228,6 +2228,13 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(SLV_BUOYS_AT_0_0)) {
+		/* Tile for no orders is now INVALID_TILE instead of 0. */
+		for (Vehicle *v : Vehicle::Iterate()) {
+			if (v->dest_tile == 0) v->SetDestTile(INVALID_TILE);
+		}
+	}
+
 	if (IsSavegameVersionBefore(SLV_121)) {
 		/* Delete small ufos heading for non-existing vehicles */
 		for (DisasterVehicle *v : DisasterVehicle::Iterate()) {

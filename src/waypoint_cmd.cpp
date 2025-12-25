@@ -474,7 +474,7 @@ CommandCost CmdBuildRoadWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
  */
 CommandCost CmdBuildBuoy(DoCommandFlags flags, TileIndex tile)
 {
-	if (tile == 0 || !HasTileWaterGround(tile)) return CommandCost(STR_ERROR_SITE_UNSUITABLE);
+	if (!HasTileWaterGround(tile)) return CommandCost(STR_ERROR_SITE_UNSUITABLE);
 	if (CommandCost ret = IsBuoyBridgeAboveOk(tile); ret.Failed()) return ret;
 
 	if (!IsTileFlat(tile)) return CommandCost(STR_ERROR_SITE_UNSUITABLE);
