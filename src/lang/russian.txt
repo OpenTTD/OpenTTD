@@ -4238,9 +4238,9 @@ STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}Пока
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Производительность: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Предприятие скоро закрывается!
 
-STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Требует: {YELLOW}{STRING.acc}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Производит: {YELLOW}{STRING.acc}{STRING}
-STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING.acc}{STRING}
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Требует: {YELLOW}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Производит: {YELLOW}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :{STRING.acc}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Требуется:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}

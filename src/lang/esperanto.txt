@@ -3808,10 +3808,9 @@ STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centri ĉefvidon ĉe la industrio. Stir+Klak por malfermi novan vidujon ĉe la industrioloko.
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produkta nivelo: {YELLOW}{COMMA}%
 
-STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Bezonas: {YELLOW}{STRING.n}{STRING.n}
-STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produktas: {YELLOW}{STRING}{STRING.n}
-STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
-STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION.n                        :, {STRING.n}{STRING.n}
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Bezonas: {YELLOW}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produktas: {YELLOW}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :{STRING.n}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Bezonas:
 
