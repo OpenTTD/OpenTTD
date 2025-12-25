@@ -566,9 +566,9 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlags flags)
 		} else if (GetTileOwner(tile) == OWNER_NONE) {
 			/* Owned by nobody and unremovable, so we can only remove it with brute force! */
 			if (!_cheats.magic_bulldozer.value && spec->flags.Test(ObjectFlag::CannotRemove)) return CMD_ERROR;
-		} else if (CheckTileOwnership(tile).Failed()) {
+		} else if (CommandCost ret = CheckTileOwnership(tile); ret.Failed()) {
 			/* We don't own it!. */
-			return CommandCost(STR_ERROR_OWNED_BY);
+			return ret;
 		} else if (spec->flags.Test(ObjectFlag::CannotRemove) && !spec->flags.Test(ObjectFlag::Autoremove)) {
 			/* In the game editor or with cheats we can remove, otherwise we can't. */
 			if (!_cheats.magic_bulldozer.value) {
