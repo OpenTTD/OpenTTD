@@ -1407,7 +1407,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ништо
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Изградба: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Аеродромот класа: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Името на аеродромот: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Прифатен товар: {LTBLUE}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Прифатен товар: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 
 # Description of land area of different tiles
@@ -1862,7 +1862,7 @@ STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Инфо
 STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Капацитети
 STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Вкупно Товар
 
-STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Капацитет: {LTBLUE}
+STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Капацитет: {LTBLUE}{STRING}
 
 # Vehicle refit
 STR_REFIT_TITLE                                                 :{GOLD}Одбери тип на товар за носење:
