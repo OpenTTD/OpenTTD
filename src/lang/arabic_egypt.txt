@@ -2280,7 +2280,7 @@ STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}السن
 STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}السنوات: {ORANGE}من {NUM}
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}السنوات: {ORANGE}حتى {NUM}
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}الحجم: {ORANGE}{NUM}×{NUM} مربع
-STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}الشحنة المقبولة: {ORANGE}
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}الشحنة المقبولة: {GOLD}{STRING}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :الطرف
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :الضواحي
@@ -2543,7 +2543,7 @@ STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}فئة �
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}اسم المطار: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}اسم مربع المطار: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}الشحنة المقبولة: {LTBLUE}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}الشحنة المقبولة: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA} /8 {STRING})
 STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}:نوع الطريق {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}:نوع الترام {LTBLUE}{STRING}
@@ -3251,8 +3251,8 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}المط
 # Industry directory
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}-بدون-
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
-STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}، {STRING}، {STRING} و{NUM} اكثر...
+STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {BLACK}{STRING}، {STRING}، {STRING} و{NUM} اكثر...
 STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}اسماء المصانع - اضغط على اسم المصنع لتوسيط الشاشة عليه. اضغط + كنترول لفتح شاشة عرض جديدة لمنطقة المصنع.
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :جميع انواع الحمولة
 STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :بدون
@@ -3710,7 +3710,7 @@ STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}عرض �
 STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}مجموع الحمولة
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK} عرض الحمولة الكاملة للقطار, مفصلة بحسب نوع البضائع
 
-STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}السعة: {LTBLUE}
+STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}السعة: {LTBLUE}{STRING}
 
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (تغيير)
