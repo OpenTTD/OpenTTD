@@ -4063,9 +4063,9 @@ STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}Shows th
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Production level: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}The industry has announced imminent closure!
 
-STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Requires: {YELLOW}{STRING}{RAW_STRING}
-STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produces: {YELLOW}{STRING}{RAW_STRING}
-STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{RAW_STRING}
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Requires: {YELLOW}{RAW_STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produces: {YELLOW}{RAW_STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :{STRING}{RAW_STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Requires:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:RAW_STRING}
