@@ -3520,9 +3520,9 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Movere c
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Quantitas productionis: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Haec industria mox claudetur!
 
-STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Postulat: {YELLOW}{STRING.acc}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Fabricat: {YELLOW}{STRING.acc}{STRING}
-STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Postulat: {YELLOW}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Fabricat: {YELLOW}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :{STRING.acc}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Postulat:
 

@@ -3152,7 +3152,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Sintrear
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produksje nivo: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Yndustry kundicht drigend sluten oan!
 
-STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Nedichheden: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Nedichheden: {YELLOW}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Nedichheden:
 

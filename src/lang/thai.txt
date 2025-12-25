@@ -3378,7 +3378,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}กด�
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}ระดับการผลิต: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}อุตสาหกรรมนี้ได้มีการประกาศปิดตัวลงอย่างเป็นทางการ!
 
-STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}ต้องการ: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}ต้องการ: {YELLOW}{STRING}
 
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}ปรับเปลี่ยนปริมาณผลผลิต (ระหว่าง 8 ถึง 2040)
