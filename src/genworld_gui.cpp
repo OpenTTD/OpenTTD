@@ -135,6 +135,8 @@ static constexpr std::initializer_list<NWidgetPart> _nested_generate_landscape_w
 						NWidget(WWT_TEXT, INVALID_COLOUR), SetStringTip(STR_MAPGEN_NUMBER_OF_TOWNS, STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP), SetFill(1, 1),
 						NWidget(WWT_TEXT, INVALID_COLOUR), SetStringTip(STR_MAPGEN_NUMBER_OF_INDUSTRIES, STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP), SetFill(1, 1),
 						NWidget(WWT_TEXT, INVALID_COLOUR), SetStringTip(STR_MAPGEN_SEA_LEVEL, STR_MAPGEN_SEA_LEVEL_TOOLTIP), SetFill(1, 1),
+						/* Spacer due to fewer items in columns 3-4 than in 1-2. */
+						NWidget(NWID_SPACER), SetFill(1, 1),
 					EndContainer(),
 
 					/* Widgets on the right side (global column 4). */
@@ -166,6 +168,8 @@ static constexpr std::initializer_list<NWidgetPart> _nested_generate_landscape_w
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_TOWN_PULLDOWN), SetToolTip(STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP), SetFill(1, 1),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_INDUSTRY_PULLDOWN), SetToolTip(STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP), SetFill(1, 1),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_WATER_PULLDOWN), SetToolTip(STR_MAPGEN_SEA_LEVEL_TOOLTIP), SetFill(1, 1),
+						/* Spacer due to fewer items in columns 3-4 than in 1-2. */
+						NWidget(NWID_SPACER), SetFill(1, 1),
 					EndContainer(),
 				EndContainer(),
 			EndContainer(),
