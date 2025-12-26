@@ -2329,7 +2329,7 @@ static TileIndex FindNearestGoodCoastalTownSpot(TileIndex tile, TownLayout layou
 {
 	for (auto coast : SpiralTileSequence(tile, 40)) {
 		/* Find nearest land tile */
-		if (!IsTileType(tile, MP_CLEAR)) continue;
+		if (!IsTileType(coast, MP_CLEAR)) continue;
 
 		TileIndex furthest = INVALID_TILE;
 		uint max_dist = 0;
