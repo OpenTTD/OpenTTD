@@ -56,7 +56,7 @@ function(set_options)
 
     option(OPTION_DEDICATED "Build dedicated server only (no GUI)" OFF)
     option(OPTION_INSTALL_FHS "Install with Filesystem Hierarchy Standard folders" ${DEFAULT_OPTION_INSTALL_FHS})
-    option(OPTION_USE_ASSERTS "Use assertions; leave enabled for nightlies, betas, and RCs" ON)
+    option(OPTION_USE_ASSERTS "Use assertions; leave enabled for nightlies, betas, and RCs" OFF)
     option(OPTION_USE_NSIS "Use NSIS to create windows installer; enable only for stable releases" OFF)
     option(OPTION_TOOLS_ONLY "Build only tools target" OFF)
     option(OPTION_DOCS_ONLY "Build only docs target" OFF)
