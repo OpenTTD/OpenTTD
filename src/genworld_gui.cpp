@@ -112,7 +112,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_generate_landscape_w
 							NWidget(WWT_TEXT, INVALID_COLOUR), SetStringTip(STR_MAPGEN_BY), SetFill(0, 1), SetAlignment(SA_CENTER),
 							NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_MAPSIZE_Y_PULLDOWN), SetToolTip(STR_MAPGEN_MAPSIZE_TOOLTIP), SetFill(1, 1),
 						EndContainer(),
-						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_TERRAIN_PULLDOWN), SetToolTip(STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT), SetFill(1, 1),
+						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_MAX_HEIGHT_PULLDOWN), SetToolTip(STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT), SetFill(1, 1),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_AVERAGE_HEIGHT_PULLDOWN), SetToolTip(STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT), SetFill(1, 1),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_VARIETY_PULLDOWN), SetToolTip(STR_CONFIG_SETTING_VARIETY_HELPTEXT), SetFill(1, 1),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_SMOOTHNESS_PULLDOWN), SetToolTip(STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT), SetFill(1, 1),
@@ -378,7 +378,7 @@ static DropDownList BuildTownNameDropDown()
 }
 
 
-static const StringID _elevations[]  = {STR_TERRAIN_TYPE_VERY_FLAT, STR_TERRAIN_TYPE_FLAT, STR_TERRAIN_TYPE_HILLY, STR_TERRAIN_TYPE_MOUNTAINOUS, STR_TERRAIN_TYPE_ALPINIST, STR_TERRAIN_TYPE_CUSTOM};
+static const StringID _max_height[]  = {STR_TERRAIN_TYPE_VERY_FLAT, STR_TERRAIN_TYPE_FLAT, STR_TERRAIN_TYPE_HILLY, STR_TERRAIN_TYPE_MOUNTAINOUS, STR_TERRAIN_TYPE_ALPINIST, STR_TERRAIN_TYPE_CUSTOM};
 static const StringID _sea_lakes[]   = {STR_SEA_LEVEL_VERY_LOW, STR_SEA_LEVEL_LOW, STR_SEA_LEVEL_MEDIUM, STR_SEA_LEVEL_HIGH, STR_SEA_LEVEL_CUSTOM};
 static const StringID _rivers[]      = {STR_RIVERS_NONE, STR_RIVERS_FEW, STR_RIVERS_MODERATE, STR_RIVERS_LOT};
 static const StringID _borders[]     = {STR_MAPGEN_BORDER_RANDOMIZE, STR_MAPGEN_BORDER_MANUAL, STR_MAPGEN_BORDER_INFINITE_WATER};
@@ -416,7 +416,7 @@ struct GenerateLandscapeWindow : public Window {
 
 		/* If original landgenerator is selected and alpinist terrain_type was selected, revert to mountainous. */
 		if (_settings_newgame.game_creation.land_generator == LG_ORIGINAL) {
-			_settings_newgame.difficulty.terrain_type = Clamp(_settings_newgame.difficulty.terrain_type, TT_VERY_FLAT, TT_MOUNTAINOUS);
+			_settings_newgame.difficulty.terrain_type = Clamp(_settings_newgame.difficulty.terrain_type, GenworldMaxHeight::VeryFlat, GenworldMaxHeight::Mountainous);
 		}
 
 		this->OnInvalidateData();
@@ -459,11 +459,11 @@ struct GenerateLandscapeWindow : public Window {
 				}
 				return GetString(_num_inds[_settings_newgame.difficulty.industry_density]);
 
-			case WID_GL_TERRAIN_PULLDOWN:
-				if (_settings_newgame.difficulty.terrain_type == TT_CUSTOM) {
+			case WID_GL_MAX_HEIGHT_PULLDOWN:
+				if (_settings_newgame.difficulty.terrain_type == GenworldMaxHeight::Custom) {
 					return GetString(STR_TERRAIN_TYPE_CUSTOM_VALUE, _settings_newgame.game_creation.custom_terrain_type);
 				}
-				return GetString(_elevations[_settings_newgame.difficulty.terrain_type]);
+				return GetString(_max_height[to_underlying(_settings_newgame.difficulty.terrain_type)]);
 
 			case WID_GL_WATER_PULLDOWN:
 				if (_settings_newgame.difficulty.quantity_sea_lakes == CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY) {
@@ -522,7 +522,7 @@ struct GenerateLandscapeWindow : public Window {
 			this->SetWidgetLoweredState(WID_GL_WATER_SW, _settings_newgame.game_creation.water_borders.Test(BorderFlag::SouthWest));
 
 			this->SetWidgetsDisabledState(_settings_newgame.game_creation.land_generator == LG_ORIGINAL && (_settings_newgame.game_creation.landscape == LandscapeType::Arctic || _settings_newgame.game_creation.landscape == LandscapeType::Tropic),
-					WID_GL_TERRAIN_PULLDOWN, WID_GL_WATER_PULLDOWN);
+					WID_GL_MAX_HEIGHT_PULLDOWN, WID_GL_WATER_PULLDOWN);
 		}
 
 		/* Disable snowline if not arctic */
@@ -558,8 +558,8 @@ struct GenerateLandscapeWindow : public Window {
 			if (_settings_newgame.difficulty.quantity_sea_lakes == CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY) {
 				_settings_newgame.difficulty.quantity_sea_lakes = 1;
 			}
-			if (_settings_newgame.difficulty.terrain_type == TT_CUSTOM) {
-				_settings_newgame.difficulty.terrain_type = TT_FLAT;
+			if (_settings_newgame.difficulty.terrain_type == GenworldMaxHeight::Custom) {
+				_settings_newgame.difficulty.terrain_type = GenworldMaxHeight::Flat;
 			}
 		}
 
@@ -611,8 +611,8 @@ struct GenerateLandscapeWindow : public Window {
 				d = GetStringBoundingBox(GetString(STR_NUM_CUSTOM_NUMBER, GetParamMaxValue(IndustryPool::MAX_SIZE)));
 				break;
 
-			case WID_GL_TERRAIN_PULLDOWN:
-				strs = _elevations;
+			case WID_GL_MAX_HEIGHT_PULLDOWN:
+				strs = _max_height;
 				d = GetStringBoundingBox(GetString(STR_TERRAIN_TYPE_CUSTOM_VALUE, GetParamMaxValue(MAX_MAP_HEIGHT_LIMIT)));
 				break;
 
@@ -781,9 +781,9 @@ struct GenerateLandscapeWindow : public Window {
 				ShowDropDownMenu(this, _rotation, _settings_newgame.game_creation.heightmap_rotation, WID_GL_HEIGHTMAP_ROTATION_PULLDOWN, 0, 0);
 				break;
 
-			case WID_GL_TERRAIN_PULLDOWN: // Terrain type
+			case WID_GL_MAX_HEIGHT_PULLDOWN: // Max height
 				/* For the original map generation only the first four are valid. */
-				ShowDropDownMenu(this, _elevations, _settings_newgame.difficulty.terrain_type, WID_GL_TERRAIN_PULLDOWN, 0, _settings_newgame.game_creation.land_generator == LG_ORIGINAL ? ~0xF : 0);
+				ShowDropDownMenu(this, _max_height, to_underlying(_settings_newgame.difficulty.terrain_type), WID_GL_MAX_HEIGHT_PULLDOWN, 0, _settings_newgame.game_creation.land_generator == LG_ORIGINAL ? ~0xF : 0);
 				break;
 
 			case WID_GL_WATER_PULLDOWN: { // Water quantity
@@ -899,12 +899,12 @@ struct GenerateLandscapeWindow : public Window {
 				_settings_newgame.difficulty.industry_density = index;
 				break;
 
-			case WID_GL_TERRAIN_PULLDOWN: {
-				if ((uint)index == TT_CUSTOM) {
+			case WID_GL_MAX_HEIGHT_PULLDOWN: {
+				if (static_cast<GenworldMaxHeight>(index) == GenworldMaxHeight::Custom) {
 					this->widget_id = widget;
 					ShowQueryString(GetString(STR_JUST_INT, _settings_newgame.game_creation.custom_terrain_type), STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT, 4, this, CS_NUMERAL, {});
 				}
-				_settings_newgame.difficulty.terrain_type = static_cast<TerrainType>(index);
+				_settings_newgame.difficulty.terrain_type = static_cast<GenworldMaxHeight>(index);
 				break;
 			}
 
@@ -958,7 +958,7 @@ struct GenerateLandscapeWindow : public Window {
 				case WID_GL_DESERT_COVERAGE_TEXT: value = DEF_DESERT_COVERAGE; break;
 				case WID_GL_TOWN_PULLDOWN: value = 1; break;
 				case WID_GL_INDUSTRY_PULLDOWN: value = 1; break;
-				case WID_GL_TERRAIN_PULLDOWN: value = MIN_MAP_HEIGHT_LIMIT; break;
+				case WID_GL_MAX_HEIGHT_PULLDOWN: value = MIN_MAP_HEIGHT_LIMIT; break;
 				case WID_GL_WATER_PULLDOWN: value = CUSTOM_SEA_LEVEL_MIN_PERCENTAGE; break;
 				default: NOT_REACHED();
 			}
@@ -993,7 +993,7 @@ struct GenerateLandscapeWindow : public Window {
 				_settings_newgame.game_creation.custom_industry_number = Clamp(value, 1, IndustryPool::MAX_SIZE);
 				break;
 
-			case WID_GL_TERRAIN_PULLDOWN:
+			case WID_GL_MAX_HEIGHT_PULLDOWN:
 				_settings_newgame.game_creation.custom_terrain_type = Clamp(value, MIN_CUSTOM_TERRAIN_TYPE, GetMapHeightLimit());
 				break;
 

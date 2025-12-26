@@ -1034,7 +1034,7 @@ static bool FindSpring(TileIndex tile)
 	uint required_num_hills = 3;
 
 	/* If we don't have many hills, loosen the standards so we still get rivers. */
-	if (_settings_game.difficulty.terrain_type < TT_HILLY) {
+	if (_settings_game.difficulty.terrain_type < GenworldMaxHeight::Hilly) {
 		max_hill_distance = 3;
 		required_num_hills = 1;
 	};
@@ -1676,7 +1676,7 @@ bool GenerateLandscape(uint8_t mode)
 				uint i = Map::ScaleBySize(GB(r, 0, 7) + (3 - _settings_game.difficulty.quantity_sea_lakes) * 256 + 100);
 				for (; i != 0; --i) {
 					/* Make sure we do not overflow. */
-					GenerateTerrain(Clamp(_settings_game.difficulty.terrain_type, TT_VERY_FLAT, TT_MOUNTAINOUS), 0);
+					GenerateTerrain(static_cast<int>(Clamp(_settings_game.difficulty.terrain_type, GenworldMaxHeight::VeryFlat, GenworldMaxHeight::Mountainous)), 0);
 				}
 				break;
 			}

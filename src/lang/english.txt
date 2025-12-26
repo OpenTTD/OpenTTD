@@ -1598,7 +1598,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :The original ge
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
-STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Terrain type: {STRING2}
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Maximum height preset: {STRING2}
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Choose the height of hills and mountains of the landscape
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industry density: {STRING2}
@@ -3394,7 +3394,7 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Desert c
 STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Increase desert coverage by ten percent
 STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Decrease desert coverage by ten percent
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
-STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrain type:
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maximum height:
 STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}Average height:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Sea level:
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Select the sea level

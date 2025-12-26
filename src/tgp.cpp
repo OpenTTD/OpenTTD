@@ -215,7 +215,7 @@ static const int64_t _water_percent[4] = {70, 170, 270, 420};
  */
 static Height TGPGetMaxHeight()
 {
-	if (_settings_game.difficulty.terrain_type == TT_CUSTOM) {
+	if (_settings_game.difficulty.terrain_type == GenworldMaxHeight::Custom) {
 		/* TGP never reaches this height; this means that if a user inputs "2",
 		 * it would create a flat map without the "+ 1". But that would
 		 * overflow on "255". So we reduce it by 1 to get back in range. */
@@ -242,7 +242,7 @@ static Height TGPGetMaxHeight()
 	};
 
 	int map_size_bucket = std::min(Map::LogX(), Map::LogY()) - MIN_MAP_SIZE_BITS;
-	int max_height_from_table = max_height[_settings_game.difficulty.terrain_type][map_size_bucket];
+	int max_height_from_table = max_height[to_underlying(_settings_game.difficulty.terrain_type)][map_size_bucket];
 
 	/* If there is a manual map height limit, clamp to it. */
 	if (_settings_game.construction.map_height_limit != 0) {

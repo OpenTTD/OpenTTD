@@ -51,16 +51,6 @@ enum SettingsProfile : uint8_t {
 	SP_HIGHSCORE_END,                         ///< End of highscore tables.
 };
 
-/** Available terrain types (heights). */
-enum TerrainType : uint8_t {
-	TT_VERY_FLAT,
-	TT_FLAT,
-	TT_HILLY,
-	TT_MOUNTAINOUS,
-	TT_ALPINIST,
-	TT_CUSTOM,
-};
-
 /** Available industry map generation densities. */
 enum IndustryDensity : uint8_t {
 	ID_FUND_ONLY, ///< The game does not build industries.
@@ -73,6 +63,16 @@ enum IndustryDensity : uint8_t {
 	ID_CUSTOM,    ///< Custom number of industries.
 
 	ID_END,       ///< Number of industry density settings.
+};
+
+/** Possible options for the Maximum Height pulldown in the Genworld GUI. */
+enum class GenworldMaxHeight : uint8_t {
+	VeryFlat,
+	Flat,
+	Hilly,
+	Mountainous,
+	Alpinist,
+	Custom,
 };
 
 /** Possible options for the Average Height pulldown in the Genworld GUI. */
@@ -159,7 +159,7 @@ struct DifficultySettings {
 	uint8_t subsidy_multiplier;               ///< payment multiplier for subsidized deliveries
 	uint16_t subsidy_duration;                 ///< duration of subsidies
 	uint8_t construction_cost;                ///< how expensive is building
-	TerrainType terrain_type; ///< the mountainousness of the landscape
+	GenworldMaxHeight terrain_type; ///< the mountainousness of the landscape
 	uint8_t quantity_sea_lakes;               ///< the amount of seas/lakes
 	bool   economy;                          ///< how volatile is the economy
 	bool   line_reverse_mode;                ///< reversing at stations or not
