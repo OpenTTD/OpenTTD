@@ -65,6 +65,16 @@ enum IndustryDensity : uint8_t {
 	ID_END,       ///< Number of industry density settings.
 };
 
+/** Possible options for the Maximum Height pulldown in the Genworld GUI. */
+enum MaxHeightPreset : uint8_t {
+	MHP_VERY_FLAT,
+	MHP_FLAT,
+	MHP_HILLY,
+	MHP_MOUNTAINOUS,
+	MHP_ALPINIST,
+	MHP_CUSTOM,
+};
+
 /** Possible options for the Average Height pulldown in the Genworld GUI. */
 enum AverageHeight : uint8_t {
 	AVH_AUTO,
