@@ -944,15 +944,17 @@ static double interpolated_noise(const double x, const double y, const int prime
  */
 static double perlin_coast_noise_2D(const double x, const double y, const double p, const int prime)
 {
+	constexpr int OCTAVES = 6;
+	constexpr double INITIAL_FREQUENCY = 1 << OCTAVES;
+
 	double total = 0.0;
-
-	for (int i = 0; i < 6; i++) {
-		const double frequency = (double)(1 << i);
-		const double amplitude = pow(p, (double)i);
-
-		total += interpolated_noise((x * frequency) / 64.0, (y * frequency) / 64.0, prime) * amplitude;
+	double frequency = 1.0 / INITIAL_FREQUENCY;
+	double amplitude = 1.0;
+	for (int i = 0; i < OCTAVES; i++) {
+		total += interpolated_noise(x * frequency, y * frequency, prime) * amplitude;
+		frequency *= 2.0;
+		amplitude *= p;
 	}
-
 	return total;
 }
 
