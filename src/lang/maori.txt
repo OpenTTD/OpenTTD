@@ -543,7 +543,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Kapomata
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Whakaaria te pāpātanga kapohanga
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Pārongo mō OpenTTD
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Tīaroaro ata
-STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Hohoko pouka tāparepare
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Hohoko pouaka tāparepare
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Hohokona te kara o ngā paraka paru
 STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Hohokona ngā hua o ngā taupānga iti
 
@@ -1248,7 +1248,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :Whakamakohatia 
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Whakahingaia te katoa
 STR_CONFIG_SETTING_RESET_ALL                                    :Tautuhitia anō ngā uara katoa
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(kāore he whakamāramatanga i te wātea)
-STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
+STR_CONFIG_SETTING_VALUE                                        :{ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Uara taunoa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Momo tautuhinga: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Tautuhinga kiritaki (kāore e puritia ki ngā kōnae; ka pāngia ngā kēmu katoa)
@@ -3656,17 +3656,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Kua kit
 STR_NEWGRF_LIST_MISSING                                         :{RED}Kōnae ngaro
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Ka taea te hinga, te ngaro rānei te tukutahi, i te whanonga o te newGRF ko {PUSH_COLOUR}{0:STRING}{POP_COLOUR}
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}I panoni tērā i te teihana wākena panapana mō {PUSH_COLOUR}{1:ENGINE}{POP_COLOUR} ina kore i roto i tētahi taupuni
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}I panoni tērā i te roa waka mō {PUSH_COLOUR}{1:ENGINE}{POP_COLOUR} ina kore i roto i tētahi taupuni
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}I panoni tērā i te kītanga waka mō {PUSH_COLOUR}{1:ENGINE}{POP_COLOUR} ina kore i roto i tētahi taupuni
+STR_NEWGRF_BROKEN                                               :{WHITE}Ka taea te hinga, te ngaro rānei te tukutahi, i te whanonga o te newGRF ko {0:STRING}
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}I panoni tērā i te teihana wākena panapana mō {1:ENGINE} ina kore i roto i tētahi taupuni
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}I panoni tērā i te roa waka mō {1:ENGINE} ina kore i roto i tētahi taupuni
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}I panoni tērā i te kītanga waka mō {1:ENGINE} ina kore i roto i tētahi taupuni
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}He roa muhu tō te tereina ko {VEHICLE} o {COMPANY}. He raru pea i ngā newGRF. Ka taea e te kēmu te hinga, te ngaro rānei te tukutahi
 
-STR_NEWGRF_BUGGY                                                :{WHITE}He pārongo hē e homaitia ana e te newGRF ko {PUSH_COLOUR}{0:STRING}{POP_COLOUR}
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}He rerekē te pārongo utanga/urutaunga mō {PUSH_COLOUR}{1:ENGINE}{POP_COLOUR} i roto i te rārangi hokohoko i muri i te hanga. Ka mūhore pea te whakahou/whakakapi aunoa ina hangahangaia ngā urutau waka
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}I meinga he koromeke mutunga kore e {PUSH_COLOUR}{1:STRING}{POP_COLOUR} i te karangamua whakaputa
+STR_NEWGRF_BUGGY                                                :{WHITE}He pārongo hē e homaitia ana e te newGRF ko {0:STRING}
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}He rerekē te pārongo utanga/urutaunga mō {1:ENGINE} i roto i te rārangi hokohoko i muri i te hanga. Ka mūhore pea te whakahou/whakakapi aunoa ina hangahangaia ngā urutau waka
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}I meinga he koromeke mutunga kore e {1:STRING} i te karangamua whakaputa
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}I whakahoki te karangamua {1:HEX} i tētahi otinga muhu/kāore i te mōhiotia {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}I whakahoki a {PUSH_COLOUR}{1:STRING}{POP_COLOUR} i tētahi momo utanga muhu i te karangamua whakaputa i {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}I whakahoki a {1:STRING} i tētahi momo utanga muhu i te karangamua whakaputa i {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<utanga muhu>
