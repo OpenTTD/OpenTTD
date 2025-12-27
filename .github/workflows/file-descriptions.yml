@@ -1,0 +1,22 @@
+name: File descriptions
+
+on:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
+
+jobs:
+  unused-strings:
+    name: File descriptions
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+
+    - name: Check descriptions of source files
+      run: |
+        set -ex
+        python3 .github/file-descriptions.py
