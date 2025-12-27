@@ -23,6 +23,11 @@ protected:
 	bool has_no_more_items; ///< Whether we have more items to iterate over.
 	std::optional<SQInteger> item_next{}; ///< The next item we will show, or std::nullopt if there are no more items to iterate over.
 
+	/**
+	 * Retarget sorter internal iterator after retargeting the list.
+	 */
+	virtual void RetargetIterator() = 0;
+
 public:
 	/**
 	 * Virtual dtor, needed to mute warnings.
@@ -58,14 +63,15 @@ public:
 	virtual void Remove(SQInteger item) = 0;
 
 	/**
-	 * Attach the sorter to a new list. This assumes the content of the old list has been moved to
-	 * the new list, too, so that we don't have to invalidate any iterators. Note that std::swap
-	 * doesn't invalidate iterators on lists and maps, so that should be safe.
-	 * @param target New list to attach to.
+	 * Attach the sorter to a new list and update internal iterator so it remains valid
+	 * in the context of the new list. This assumes the content of the old list has been
+	 * moved to the new list.
+	 * @param new_list New list to attach to and update internal iterator.
 	 */
-	virtual void Retarget(ScriptList *new_list)
+	void Retarget(ScriptList *new_list)
 	{
 		this->list = new_list;
+		this->RetargetIterator();
 	}
 };
 
@@ -140,6 +146,16 @@ public:
 		if (item == this->item_next) {
 			this->FindNext();
 			return;
+		}
+	}
+
+	void RetargetIterator() override
+	{
+		if (this->item_next.has_value()) {
+			auto item_iter = this->list->items.find(this->item_next.value());
+			this->value_iter = this->list->values.find({item_iter->second, this->item_next.value()});
+		} else {
+			this->value_iter = this->list->values.end();
 		}
 	}
 };
@@ -226,6 +242,16 @@ public:
 			return;
 		}
 	}
+
+	void RetargetIterator() override
+	{
+		if (this->item_next.has_value()) {
+			auto item_iter = this->list->items.find(this->item_next.value());
+			this->value_iter = this->list->values.find({item_iter->second, this->item_next.value()});
+		} else {
+			this->value_iter = this->list->values.end();
+		}
+	}
 };
 
 /**
@@ -299,6 +325,15 @@ public:
 		if (item == this->item_next) {
 			this->FindNext();
 			return;
+		}
+	}
+
+	void RetargetIterator() override
+	{
+		if (this->item_next.has_value()) {
+			this->item_iter = this->list->items.find(this->item_next.value());
+		} else {
+			this->item_iter = this->list->items.end();
 		}
 	}
 };
@@ -383,6 +418,15 @@ public:
 		if (item == this->item_next) {
 			this->FindNext();
 			return;
+		}
+	}
+
+	void RetargetIterator() override
+	{
+		if (this->item_next.has_value()) {
+			this->item_iter = this->list->items.find(this->item_next.value());
+		} else {
+			this->item_iter = this->list->items.end();
 		}
 	}
 };
