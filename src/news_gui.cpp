@@ -34,6 +34,7 @@
 #include "zoom_func.h"
 #include "news_cmd.h"
 #include "news_func.h"
+#include "core/string_builder.hpp"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
 #include "timer/timer_game_calendar.h"
@@ -674,15 +675,28 @@ private:
 
 	std::string GetNewVehicleMessageString(WidgetID widget) const
 	{
-		assert(std::holds_alternative<EngineID>(ni->ref1));
-		EngineID engine = std::get<EngineID>(this->ni->ref1);
+		const EnginePreviewNewsInformation *epni = dynamic_cast<const EnginePreviewNewsInformation*>(this->ni->data.get());
+		if (epni == nullptr) return {};
 
 		switch (widget) {
 			case WID_N_VEH_TITLE:
-				return GetString(STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE, GetEngineCategoryName(engine));
+				return GetString(STR_NEWS_NEW_VEHICLE_TITLE_PREFIX) + epni->title;
 
-			case WID_N_VEH_NAME:
-				return GetString(STR_NEWS_NEW_VEHICLE_TYPE, PackEngineNameDParam(engine, EngineNameContext::PreviewNews));
+			case WID_N_VEH_NAME: {
+				assert(std::holds_alternative<EngineID>(ni->ref1));
+				EngineID engine = std::get<EngineID>(this->ni->ref1);
+
+				std::string message = "";
+				StringBuilder builder(message);
+
+				for (std::string s : epni->additional_messages) {
+					builder.PutUtf8(SCC_BLACK);
+					builder.Put(s);
+				}
+				builder.Put(GetString(STR_NEWS_NEW_VEHICLE_TYPE, PackEngineNameDParam(engine, EngineNameContext::PreviewNews)));
+
+				return message;
+			}
 
 			default:
 				NOT_REACHED();
@@ -877,9 +891,10 @@ NewsItem::NewsItem(EncodedString &&headline, NewsType type, NewsStyle style, New
 std::string NewsItem::GetStatusText() const
 {
 	if (this->data != nullptr) {
-		/* CompanyNewsInformation is the only type of additional data used. */
-		const CompanyNewsInformation &cni = *static_cast<const CompanyNewsInformation*>(this->data.get());
-		return GetString(STR_MESSAGE_NEWS_FORMAT, cni.title, this->headline.GetDecodedString());
+		const CompanyNewsInformation *cni = dynamic_cast<const CompanyNewsInformation*>(this->data.get());
+		if (cni != nullptr) {
+			return GetString(STR_MESSAGE_NEWS_FORMAT, cni->title, this->headline.GetDecodedString());
+		}
 	}
 
 	return this->headline.GetDecodedString();
@@ -942,7 +957,7 @@ uint32_t SerialiseNewsReference(const NewsReference &reference)
  * @param text The text of the news message.
  * @return the cost of this operation or an error
  */
-CommandCost CmdCustomNewsItem(DoCommandFlags flags, NewsType type, CompanyID company, NewsReference reference, const EncodedString &text)
+CommandCost CmdCustomNewsItem(DoCommandFlags flags, NewsType type, CompanyID company, NewsReference reference, const EncodedString &title, const EncodedString &text, const EncodedString &add_msg1, const EncodedString &add_msg2)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 
@@ -965,7 +980,14 @@ CommandCost CmdCustomNewsItem(DoCommandFlags flags, NewsType type, CompanyID com
 	if (company != INVALID_OWNER && company != _local_company) return CommandCost();
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		AddNewsItem(EncodedString{text}, type, NewsStyle::Normal, {}, reference, {});
+		if (std::holds_alternative<EngineID>(reference)) {
+			auto epni = std::make_unique<EnginePreviewNewsInformation>(title);
+			if (!add_msg1.empty()) epni->AddAdditionalMessage(add_msg1);
+			if (!add_msg2.empty()) epni->AddAdditionalMessage(add_msg2);
+			AddNewsItem(EncodedString{text}, type, NewsStyle::Vehicle, {}, reference, {}, std::move(epni));
+		} else {
+			AddNewsItem(EncodedString{text}, type, NewsStyle::Normal, {}, reference, {});
+		}
 	}
 
 	return CommandCost();
