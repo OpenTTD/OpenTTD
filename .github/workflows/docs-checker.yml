@@ -1,0 +1,121 @@
+name: Docs checker
+
+on:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
+
+jobs:
+  docs-checker:
+    name: New doxygen warnings checker
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+      with:
+        fetch-depth: 4
+
+    - name: Get pull-request commits
+      uses: OpenTTD/actions/checkout-pull-request@v6
+
+    - name: Install dependencies
+      run: |
+        echo "::group::Update apt"
+        sudo apt-get update
+        echo "::endgroup::"
+
+        echo "::group::Install dependencies"
+        sudo apt-get install -y --no-install-recommends \
+          doxygen \
+          # EOF
+        echo "::endgroup::"
+      env:
+        DEBIAN_FRONTEND: noninteractive
+
+    - name: Build docs for PR
+      run: |
+        mkdir build
+
+        echo "::group::CMake"
+        cmake -S . -B build -DOPTION_DOCS_ONLY=ON
+        echo "::endgroup::"
+
+        echo "::group::Build Source"
+        echo "WARN_LOGFILE = $(pwd)/doxygen_warnings.PR" >> Doxyfile.in
+        echo "WARN_FORMAT = \$file: \$text" >> Doxyfile.in
+        cmake --build build --target docs_source
+        echo "::endgroup::"
+
+        echo "::group::Build AI"
+        echo "WARN_LOGFILE = $(pwd)/doxygen_AI_warnings.PR" >> src/script/api/Doxyfile_AI.in
+        echo "WARN_FORMAT = \$file: \$text" >> src/script/api/Doxyfile_AI.in
+        cmake --build build --target docs_ai
+        echo "::endgroup::"
+
+        echo "::group::Build GS"
+        echo "WARN_LOGFILE = $(pwd)/doxygen_GS_warnings.PR" >> src/script/api/Doxyfile_GS.in
+        echo "WARN_FORMAT = \$file: \$text" >> src/script/api/Doxyfile_GS.in
+        cmake --build build --target docs_game
+        echo "::endgroup::"
+
+        rm -r build
+        git restore Doxyfile.in src/script/api/Doxyfile_AI.in src/script/api/Doxyfile_GS.in
+
+    - name: Build docs for base branch
+      run: |
+        git checkout HEAD^
+        mkdir build
+
+        echo "::group::CMake"
+        cmake -S . -B build -DOPTION_DOCS_ONLY=ON
+        echo "::endgroup::"
+
+        echo "::group::Build Source"
+        echo "WARN_LOGFILE = $(pwd)/doxygen_warnings.base" >> Doxyfile.in
+        echo "WARN_FORMAT = \$file: \$text" >> Doxyfile.in
+        cmake --build build --target docs_source
+        echo "::endgroup::"
+
+        echo "::group::Build AI"
+        echo "WARN_LOGFILE = $(pwd)/doxygen_AI_warnings.base" >> src/script/api/Doxyfile_AI.in
+        echo "WARN_FORMAT = \$file: \$text" >> src/script/api/Doxyfile_AI.in
+        cmake --build build --target docs_ai
+        echo "::endgroup::"
+
+        echo "::group::Build GS"
+        echo "WARN_LOGFILE = $(pwd)/doxygen_GS_warnings.base" >> src/script/api/Doxyfile_GS.in
+        echo "WARN_FORMAT = \$file: \$text" >> src/script/api/Doxyfile_GS.in
+        cmake --build build --target docs_game
+        echo "::endgroup::"
+
+        rm -r build
+
+    - name: Compare doxygen warnings and errors
+      run: |
+        { # try
+            diff doxygen_warnings.base doxygen_warnings.PR > diff.txt
+        } || { # catch
+            cat diff.txt
+            grep "> " diff.txt | { grep -v grep || true; } >> new_warnings.txt
+        }
+
+        { # try
+            diff doxygen_AI_warnings.base doxygen_AI_warnings.PR > diff.txt
+        } || { # catch
+            cat diff.txt
+            grep "> " diff.txt | { grep -v grep || true; } >> new_warnings.txt
+        }
+
+        { # try
+            diff doxygen_GS_warnings.base doxygen_GS_warnings.PR > diff.txt
+        } || { # catch
+            cat diff.txt
+            grep "> " diff.txt | { grep -v grep || true; } >> new_warnings.txt
+        }
+
+        if [ -s new_warnings.txt ]; then
+            exit 1
+        fi
