@@ -573,8 +573,10 @@
     4001 => 8002
     4002 => 8004
     4006 => 12
+    4012 => 1
   []:
     4000 => 50
+    4012 => 1
   clone:
   Clone ListDump:
     1005 => 1005
@@ -582,21 +584,779 @@
     4001 => 8002
     4002 => 8004
     4006 => 12
+    4012 => 1
   IsEmpty():     true
-    0 => 5  (true)
+    0 => 5  (false)
 ERROR: Next() is invalid as Begin() is never called
 ERROR: IsEnd() is invalid as Begin() is never called
-    0 => 5  (false)
     0 => 5  (true)
-    2 => 6  (true)
-    3 => 6  (true)
     0 => 5  (false)
+    2 => 6  (false)
+    3 => 6  (false)
+    0 => 5  (true)
   Clone ListDump:
     1005 => 1005
     4000 => 50
     4001 => 8002
     4002 => 8004
     4006 => 12
+    4012 => 1
+
+  ListDump:  (Value Descending)
+    3 => 6
+    2 => 6
+    1 => -5
+    Begin(): 3 => 6  (false)
+    Next():  2 => 6  (false)
+    Next():  1 => -5  (false)
+    Next():  0 => 0  (true)
+    Next():  0 => 0  (true)
+  foreach (idx, val in list) {print}:  (Value Descending)
+    3 => 6  (false)
+    2 => 6  (false)
+    1 => -5  (false)
+    Post loop:  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+  for (Begin / !IsEnd / Next) {print}:  (Value Descending)
+    3 => 6  (false)
+    2 => 6  (false)
+    1 => -5  (false)
+    Post loop:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+  Begin / while (!IsEnd) {print / Next}:  (Value Descending)
+    3 => 6  (false)
+    2 => 6  (false)
+    1 => -5  (false)
+    Post loop:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+  Begin / do {{print / Next} while (!IsEnd)}:  (Value Descending)
+    3 => 6  (false)
+    2 => 6  (false)
+    1 => -5  (false)
+    Post loop:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+  GetValue / SetValue:  (Value Descending)
+    3 => 6  (false)
+      => SetValue(3, 6) ? true => 6  (false)
+      => SetValue(3, 6666) ? true => 6666  (false)
+    2 => 6  (false)
+      => SetValue(2, 6) ? true => 6  (false)
+      => SetValue(2, 6666) ? true => 6666  (false)
+    1 => -5  (false)
+      => SetValue(1, -5) ? true => -5  (false)
+      => SetValue(1, -5555) ? true => -5555  (false)
+    Post loop:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+  GetValue / AddItem:  (Value Descending)
+    3 => 6  (false)
+      => AddItem(3, 6) => 6  (false)
+      => AddItem(3, 6666) => 6  (false)
+    2 => 6  (false)
+      => AddItem(2, 6) => 6  (false)
+      => AddItem(2, 6666) => 6  (false)
+    1 => -5  (false)
+      => AddItem(1, -5) => -5  (false)
+      => AddItem(1, -5555) => -5  (false)
+    Post loop:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+  RemoveItem / HasItem / AddItem:  (Value Descending)
+    3 => 6 / true  (false)
+      => RemoveItem(3) => 0 / false  (false)
+    2 => 6 / true  (false)
+      => RemoveItem(2) => 0 / false  (false)
+    1 => -5 / true  (false)
+      => RemoveItem(1) => 0 / false  (true)
+      => AddItem(1, -5) => -5 / true  (false)
+    Post loop:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+
+  ListDump:  (Value Ascending)
+    1 => -5
+    2 => 6
+    3 => 6
+    Begin(): 1 => -5  (false)
+    Next():  2 => 6  (false)
+    Next():  3 => 6  (false)
+    Next():  0 => 0  (true)
+    Next():  0 => 0  (true)
+  foreach (idx, val in list) {print}:  (Value Ascending)
+    1 => -5  (false)
+    2 => 6  (false)
+    3 => 6  (false)
+    Post loop:  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+  for (Begin / !IsEnd / Next) {print}:  (Value Ascending)
+    1 => -5  (false)
+    2 => 6  (false)
+    3 => 6  (false)
+    Post loop:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+  Begin / while (!IsEnd) {print / Next}:  (Value Ascending)
+    1 => -5  (false)
+    2 => 6  (false)
+    3 => 6  (false)
+    Post loop:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+  Begin / do {{print / Next} while (!IsEnd)}:  (Value Ascending)
+    1 => -5  (false)
+    2 => 6  (false)
+    3 => 6  (false)
+    Post loop:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+  GetValue / SetValue:  (Value Ascending)
+    1 => -5  (false)
+      => SetValue(1, -5) ? true => -5  (false)
+      => SetValue(1, -5555) ? true => -5555  (false)
+    2 => 6  (false)
+      => SetValue(2, 6) ? true => 6  (false)
+      => SetValue(2, 6666) ? true => 6666  (false)
+    3 => 6  (false)
+      => SetValue(3, 6) ? true => 6  (false)
+      => SetValue(3, 6666) ? true => 6666  (false)
+    2 => 6666  (false)
+      => SetValue(2, 6666) ? true => 6666  (false)
+      => SetValue(2, 7405926) ? true => 7405926  (false)
+    3 => 6666  (false)
+      => SetValue(3, 6666) ? true => 6666  (false)
+      => SetValue(3, 7405926) ? true => 7405926  (false)
+    2 => 7405926  (false)
+      => SetValue(2, 7405926) ? true => 7405926  (false)
+      => SetValue(2, 8227983786) ? true => 8227983786  (false)
+    3 => 7405926  (false)
+      => SetValue(3, 7405926) ? true => 7405926  (false)
+      => SetValue(3, 8227983786) ? true => 8227983786  (false)
+    2 => 8227983786  (false)
+      => SetValue(2, 8227983786) ? true => 8227983786  (false)
+      => SetValue(2, 9141289986246) ? true => 9141289986246  (false)
+    3 => 8227983786  (false)
+      => SetValue(3, 8227983786) ? true => 8227983786  (false)
+      => SetValue(3, 9141289986246) ? true => 9141289986246  (false)
+    2 => 9141289986246  (false)
+      => SetValue(2, 9141289986246) ? true => 9141289986246  (false)
+      => SetValue(2, 10155973174719306) ? true => 10155973174719306  (false)
+    3 => 9141289986246  (false)
+      => SetValue(3, 9141289986246) ? true => 9141289986246  (false)
+      => SetValue(3, 10155973174719306) ? true => 10155973174719306  (false)
+    2 => 10155973174719306  (false)
+      => SetValue(2, 10155973174719306) ? true => 10155973174719306  (false)
+      => SetValue(2, -7163457876596402650) ? true => -7163457876596402650  (false)
+    3 => 10155973174719306  (false)
+      => SetValue(3, 10155973174719306) ? true => 10155973174719306  (false)
+      => SetValue(3, -7163457876596402650) ? true => -7163457876596402650  (false)
+    Post loop:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+  GetValue / AddItem:  (Value Ascending)
+    1 => -5  (false)
+      => AddItem(1, -5) => -5  (false)
+      => AddItem(1, -5555) => -5  (false)
+    2 => 6  (false)
+      => AddItem(2, 6) => 6  (false)
+      => AddItem(2, 6666) => 6  (false)
+    3 => 6  (false)
+      => AddItem(3, 6) => 6  (false)
+      => AddItem(3, 6666) => 6  (false)
+    Post loop:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+  RemoveItem / HasItem / AddItem:  (Value Ascending)
+    1 => -5 / true  (false)
+      => RemoveItem(1) => 0 / false  (false)
+    2 => 6 / true  (false)
+      => RemoveItem(2) => 0 / false  (false)
+    3 => 6 / true  (false)
+      => RemoveItem(3) => 0 / false  (true)
+      => AddItem(3, 6) => 6 / true  (false)
+    Post loop:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+
+  ListDump:  (Item Descending)
+    3 => 6
+    2 => 6
+    1 => -5
+    Begin(): 3 => 6  (false)
+    Next():  2 => 6  (false)
+    Next():  1 => -5  (false)
+    Next():  0 => 0  (true)
+    Next():  0 => 0  (true)
+  foreach (idx, val in list) {print}:  (Item Descending)
+    3 => 6  (false)
+    2 => 6  (false)
+    1 => -5  (false)
+    Post loop:  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+  for (Begin / !IsEnd / Next) {print}:  (Item Descending)
+    3 => 6  (false)
+    2 => 6  (false)
+    1 => -5  (false)
+    Post loop:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+  Begin / while (!IsEnd) {print / Next}:  (Item Descending)
+    3 => 6  (false)
+    2 => 6  (false)
+    1 => -5  (false)
+    Post loop:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+  Begin / do {{print / Next} while (!IsEnd)}:  (Item Descending)
+    3 => 6  (false)
+    2 => 6  (false)
+    1 => -5  (false)
+    Post loop:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+  GetValue / SetValue:  (Item Descending)
+    3 => 6  (false)
+      => SetValue(3, 6) ? true => 6  (false)
+      => SetValue(3, 6666) ? true => 6666  (false)
+    2 => 6  (false)
+      => SetValue(2, 6) ? true => 6  (false)
+      => SetValue(2, 6666) ? true => 6666  (false)
+    1 => -5  (false)
+      => SetValue(1, -5) ? true => -5  (false)
+      => SetValue(1, -5555) ? true => -5555  (false)
+    Post loop:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+  GetValue / AddItem:  (Item Descending)
+    3 => 6  (false)
+      => AddItem(3, 6) => 6  (false)
+      => AddItem(3, 6666) => 6  (false)
+    2 => 6  (false)
+      => AddItem(2, 6) => 6  (false)
+      => AddItem(2, 6666) => 6  (false)
+    1 => -5  (false)
+      => AddItem(1, -5) => -5  (false)
+      => AddItem(1, -5555) => -5  (false)
+    Post loop:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+  RemoveItem / HasItem / AddItem:  (Item Descending)
+    3 => 6 / true  (false)
+      => RemoveItem(3) => 0 / false  (false)
+    2 => 6 / true  (false)
+      => RemoveItem(2) => 0 / false  (false)
+    1 => -5 / true  (false)
+      => RemoveItem(1) => 0 / false  (true)
+      => AddItem(1, -5) => -5 / true  (false)
+    Post loop:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+
+  ListDump:  (Item Ascending)
+    1 => -5
+    2 => 6
+    3 => 6
+    Begin(): 1 => -5  (false)
+    Next():  2 => 6  (false)
+    Next():  3 => 6  (false)
+    Next():  0 => 0  (true)
+    Next():  0 => 0  (true)
+  foreach (idx, val in list) {print}:  (Item Ascending)
+    1 => -5  (false)
+    2 => 6  (false)
+    3 => 6  (false)
+    Post loop:  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+  for (Begin / !IsEnd / Next) {print}:  (Item Ascending)
+    1 => -5  (false)
+    2 => 6  (false)
+    3 => 6  (false)
+    Post loop:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+  Begin / while (!IsEnd) {print / Next}:  (Item Ascending)
+    1 => -5  (false)
+    2 => 6  (false)
+    3 => 6  (false)
+    Post loop:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+  Begin / do {{print / Next} while (!IsEnd)}:  (Item Ascending)
+    1 => -5  (false)
+    2 => 6  (false)
+    3 => 6  (false)
+    Post loop:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+  GetValue / SetValue:  (Item Ascending)
+    1 => -5  (false)
+      => SetValue(1, -5) ? true => -5  (false)
+      => SetValue(1, -5555) ? true => -5555  (false)
+    2 => 6  (false)
+      => SetValue(2, 6) ? true => 6  (false)
+      => SetValue(2, 6666) ? true => 6666  (false)
+    3 => 6  (false)
+      => SetValue(3, 6) ? true => 6  (false)
+      => SetValue(3, 6666) ? true => 6666  (false)
+    Post loop:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+  GetValue / AddItem:  (Item Ascending)
+    1 => -5  (false)
+      => AddItem(1, -5) => -5  (false)
+      => AddItem(1, -5555) => -5  (false)
+    2 => 6  (false)
+      => AddItem(2, 6) => 6  (false)
+      => AddItem(2, 6666) => 6  (false)
+    3 => 6  (false)
+      => AddItem(3, 6) => 6  (false)
+      => AddItem(3, 6666) => 6  (false)
+    Post loop:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+  RemoveItem / HasItem / AddItem:  (Item Ascending)
+    1 => -5 / true  (false)
+      => RemoveItem(1) => 0 / false  (false)
+    2 => 6 / true  (false)
+      => RemoveItem(2) => 0 / false  (false)
+    3 => 6 / true  (false)
+      => RemoveItem(3) => 0 / false  (true)
+      => AddItem(3, 6) => 6 / true  (false)
+    Post loop:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+    Post loop Next:  0 => 0  (true)
+
+  SwapList:  (Value Descending)  (Value Descending)
+    DumpList 1:  (Value Descending)
+    3 => 6
+    2 => 6
+    1 => -5
+    DumpList 2:  (Value Descending)
+    4002 => 8004
+    4001 => 8002
+    1005 => 1005
+    4000 => 50
+    4006 => 12
+    4012 => 1
+    List 1 Begin:  3 => 6  (false)
+    List 2 Begin:  4002 => 8004  (false)
+    List 2 Next:   4001 => 8002  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   1005 => 1005  (false)
+    List 2 Next:   2 => 6  (false)
+    List 2 Next:   1 => -5  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   0 => 0  (true)
+    List 2 Next:   4000 >= 50  (false)
+    List 2 Next:   4006 >= 12  (false)
+
+  SwapList:  (Value Descending)  (Value Ascending)
+    DumpList 1:  (Value Descending)
+    3 => 6
+    2 => 6
+    1 => -5
+    DumpList 2:  (Value Ascending)
+    4012 => 1
+    4006 => 12
+    4000 => 50
+    1005 => 1005
+    4001 => 8002
+    4002 => 8004
+    List 1 Begin:  3 => 6  (false)
+    List 2 Begin:  4012 => 1  (false)
+    List 2 Next:   4006 => 12  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   4000 => 50  (false)
+    List 2 Next:   2 => 6  (false)
+    List 2 Next:   1 => -5  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   0 => 0  (true)
+    List 2 Next:   1005 >= 1005  (false)
+    List 2 Next:   4001 >= 8002  (false)
+
+  SwapList:  (Value Descending)  (Item Descending)
+    DumpList 1:  (Value Descending)
+    3 => 6
+    2 => 6
+    1 => -5
+    DumpList 2:  (Item Descending)
+    4012 => 1
+    4006 => 12
+    4002 => 8004
+    4001 => 8002
+    4000 => 50
+    1005 => 1005
+    List 1 Begin:  3 => 6  (false)
+    List 2 Begin:  4012 => 1  (false)
+    List 2 Next:   4006 => 12  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   4002 => 8004  (false)
+    List 2 Next:   2 => 6  (false)
+    List 2 Next:   1 => -5  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   0 => 0  (true)
+    List 2 Next:   4001 >= 8002  (false)
+    List 2 Next:   4000 >= 50  (false)
+
+  SwapList:  (Value Descending)  (Item Ascending)
+    DumpList 1:  (Value Descending)
+    3 => 6
+    2 => 6
+    1 => -5
+    DumpList 2:  (Item Ascending)
+    1005 => 1005
+    4000 => 50
+    4001 => 8002
+    4002 => 8004
+    4006 => 12
+    4012 => 1
+    List 1 Begin:  3 => 6  (false)
+    List 2 Begin:  1005 => 1005  (false)
+    List 2 Next:   4000 => 50  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   4001 => 8002  (false)
+    List 2 Next:   2 => 6  (false)
+    List 2 Next:   1 => -5  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   0 => 0  (true)
+    List 2 Next:   4002 >= 8004  (false)
+    List 2 Next:   4006 >= 12  (false)
+
+  SwapList:  (Value Ascending)  (Value Descending)
+    DumpList 1:  (Value Ascending)
+    1 => -5
+    2 => 6
+    3 => 6
+    DumpList 2:  (Value Descending)
+    4002 => 8004
+    4001 => 8002
+    1005 => 1005
+    4000 => 50
+    4006 => 12
+    4012 => 1
+    List 1 Begin:  1 => -5  (false)
+    List 2 Begin:  4002 => 8004  (false)
+    List 2 Next:   4001 => 8002  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   1005 => 1005  (false)
+    List 2 Next:   2 => 6  (false)
+    List 2 Next:   3 => 6  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   0 => 0  (true)
+    List 2 Next:   4000 >= 50  (false)
+    List 2 Next:   4006 >= 12  (false)
+
+  SwapList:  (Value Ascending)  (Value Ascending)
+    DumpList 1:  (Value Ascending)
+    1 => -5
+    2 => 6
+    3 => 6
+    DumpList 2:  (Value Ascending)
+    4012 => 1
+    4006 => 12
+    4000 => 50
+    1005 => 1005
+    4001 => 8002
+    4002 => 8004
+    List 1 Begin:  1 => -5  (false)
+    List 2 Begin:  4012 => 1  (false)
+    List 2 Next:   4006 => 12  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   4000 => 50  (false)
+    List 2 Next:   2 => 6  (false)
+    List 2 Next:   3 => 6  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   0 => 0  (true)
+    List 2 Next:   1005 >= 1005  (false)
+    List 2 Next:   4001 >= 8002  (false)
+
+  SwapList:  (Value Ascending)  (Item Descending)
+    DumpList 1:  (Value Ascending)
+    1 => -5
+    2 => 6
+    3 => 6
+    DumpList 2:  (Item Descending)
+    4012 => 1
+    4006 => 12
+    4002 => 8004
+    4001 => 8002
+    4000 => 50
+    1005 => 1005
+    List 1 Begin:  1 => -5  (false)
+    List 2 Begin:  4012 => 1  (false)
+    List 2 Next:   4006 => 12  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   4002 => 8004  (false)
+    List 2 Next:   2 => 6  (false)
+    List 2 Next:   3 => 6  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   0 => 0  (true)
+    List 2 Next:   4001 >= 8002  (false)
+    List 2 Next:   4000 >= 50  (false)
+
+  SwapList:  (Value Ascending)  (Item Ascending)
+    DumpList 1:  (Value Ascending)
+    1 => -5
+    2 => 6
+    3 => 6
+    DumpList 2:  (Item Ascending)
+    1005 => 1005
+    4000 => 50
+    4001 => 8002
+    4002 => 8004
+    4006 => 12
+    4012 => 1
+    List 1 Begin:  1 => -5  (false)
+    List 2 Begin:  1005 => 1005  (false)
+    List 2 Next:   4000 => 50  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   4001 => 8002  (false)
+    List 2 Next:   2 => 6  (false)
+    List 2 Next:   3 => 6  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   0 => 0  (true)
+    List 2 Next:   4002 >= 8004  (false)
+    List 2 Next:   4006 >= 12  (false)
+
+  SwapList:  (Item Descending)  (Value Descending)
+    DumpList 1:  (Item Descending)
+    3 => 6
+    2 => 6
+    1 => -5
+    DumpList 2:  (Value Descending)
+    4002 => 8004
+    4001 => 8002
+    1005 => 1005
+    4000 => 50
+    4006 => 12
+    4012 => 1
+    List 1 Begin:  3 => 6  (false)
+    List 2 Begin:  4002 => 8004  (false)
+    List 2 Next:   4001 => 8002  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   1005 => 1005  (false)
+    List 2 Next:   2 => 6  (false)
+    List 2 Next:   1 => -5  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   0 => 0  (true)
+    List 2 Next:   4000 >= 50  (false)
+    List 2 Next:   4006 >= 12  (false)
+
+  SwapList:  (Item Descending)  (Value Ascending)
+    DumpList 1:  (Item Descending)
+    3 => 6
+    2 => 6
+    1 => -5
+    DumpList 2:  (Value Ascending)
+    4012 => 1
+    4006 => 12
+    4000 => 50
+    1005 => 1005
+    4001 => 8002
+    4002 => 8004
+    List 1 Begin:  3 => 6  (false)
+    List 2 Begin:  4012 => 1  (false)
+    List 2 Next:   4006 => 12  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   4000 => 50  (false)
+    List 2 Next:   2 => 6  (false)
+    List 2 Next:   1 => -5  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   0 => 0  (true)
+    List 2 Next:   1005 >= 1005  (false)
+    List 2 Next:   4001 >= 8002  (false)
+
+  SwapList:  (Item Descending)  (Item Descending)
+    DumpList 1:  (Item Descending)
+    3 => 6
+    2 => 6
+    1 => -5
+    DumpList 2:  (Item Descending)
+    4012 => 1
+    4006 => 12
+    4002 => 8004
+    4001 => 8002
+    4000 => 50
+    1005 => 1005
+    List 1 Begin:  3 => 6  (false)
+    List 2 Begin:  4012 => 1  (false)
+    List 2 Next:   4006 => 12  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   4002 => 8004  (false)
+    List 2 Next:   2 => 6  (false)
+    List 2 Next:   1 => -5  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   0 => 0  (true)
+    List 2 Next:   4001 >= 8002  (false)
+    List 2 Next:   4000 >= 50  (false)
+
+  SwapList:  (Item Descending)  (Item Ascending)
+    DumpList 1:  (Item Descending)
+    3 => 6
+    2 => 6
+    1 => -5
+    DumpList 2:  (Item Ascending)
+    1005 => 1005
+    4000 => 50
+    4001 => 8002
+    4002 => 8004
+    4006 => 12
+    4012 => 1
+    List 1 Begin:  3 => 6  (false)
+    List 2 Begin:  1005 => 1005  (false)
+    List 2 Next:   4000 => 50  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   4001 => 8002  (false)
+    List 2 Next:   2 => 6  (false)
+    List 2 Next:   1 => -5  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   0 => 0  (true)
+    List 2 Next:   4002 >= 8004  (false)
+    List 2 Next:   4006 >= 12  (false)
+
+  SwapList:  (Item Ascending)  (Value Descending)
+    DumpList 1:  (Item Ascending)
+    1 => -5
+    2 => 6
+    3 => 6
+    DumpList 2:  (Value Descending)
+    4002 => 8004
+    4001 => 8002
+    1005 => 1005
+    4000 => 50
+    4006 => 12
+    4012 => 1
+    List 1 Begin:  1 => -5  (false)
+    List 2 Begin:  4002 => 8004  (false)
+    List 2 Next:   4001 => 8002  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   1005 => 1005  (false)
+    List 2 Next:   2 => 6  (false)
+    List 2 Next:   3 => 6  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   0 => 0  (true)
+    List 2 Next:   4000 >= 50  (false)
+    List 2 Next:   4006 >= 12  (false)
+
+  SwapList:  (Item Ascending)  (Value Ascending)
+    DumpList 1:  (Item Ascending)
+    1 => -5
+    2 => 6
+    3 => 6
+    DumpList 2:  (Value Ascending)
+    4012 => 1
+    4006 => 12
+    4000 => 50
+    1005 => 1005
+    4001 => 8002
+    4002 => 8004
+    List 1 Begin:  1 => -5  (false)
+    List 2 Begin:  4012 => 1  (false)
+    List 2 Next:   4006 => 12  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   4000 => 50  (false)
+    List 2 Next:   2 => 6  (false)
+    List 2 Next:   3 => 6  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   0 => 0  (true)
+    List 2 Next:   1005 >= 1005  (false)
+    List 2 Next:   4001 >= 8002  (false)
+
+  SwapList:  (Item Ascending)  (Item Descending)
+    DumpList 1:  (Item Ascending)
+    1 => -5
+    2 => 6
+    3 => 6
+    DumpList 2:  (Item Descending)
+    4012 => 1
+    4006 => 12
+    4002 => 8004
+    4001 => 8002
+    4000 => 50
+    1005 => 1005
+    List 1 Begin:  1 => -5  (false)
+    List 2 Begin:  4012 => 1  (false)
+    List 2 Next:   4006 => 12  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   4002 => 8004  (false)
+    List 2 Next:   2 => 6  (false)
+    List 2 Next:   3 => 6  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   0 => 0  (true)
+    List 2 Next:   4001 >= 8002  (false)
+    List 2 Next:   4000 >= 50  (false)
+
+  SwapList:  (Item Ascending)  (Item Ascending)
+    DumpList 1:  (Item Ascending)
+    1 => -5
+    2 => 6
+    3 => 6
+    DumpList 2:  (Item Ascending)
+    1005 => 1005
+    4000 => 50
+    4001 => 8002
+    4002 => 8004
+    4006 => 12
+    4012 => 1
+    List 1 Begin:  1 => -5  (false)
+    List 2 Begin:  1005 => 1005  (false)
+    List 2 Next:   4000 => 50  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   4001 => 8002  (false)
+    List 2 Next:   2 => 6  (false)
+    List 2 Next:   3 => 6  (false)
+    => Swap list 1 with list 2  (null : 0x00000000)
+    List 1 Next:   0 => 0  (true)
+    List 2 Next:   4002 >= 8004  (false)
+    List 2 Next:   4006 >= 12  (false)
+  IsEmpty():     true
+  Negative ListDump:
+    1 => 0
+    0 => 0
+    -1 => 0
+    2 => -2
+    -2 => -2
+    3 => -4
+    -3 => -4
+    4 => -8
+    -4 => -8
+    5 => -12
+    -5 => -12
+    6 => -18
+    -6 => -18
+    7 => -24
+    -7 => -24
+    8 => -32
+    -8 => -32
+    9 => -40
+    -9 => -40
+    -10 => -50
+  KeepBelowValue(-12):
+    6 => -18
+    -6 => -18
+    7 => -24
+    -7 => -24
+    8 => -32
+    -8 => -32
+    9 => -40
+    -9 => -40
+    -10 => -50
+  KeepAboveValue(-40):
+    6 => -18
+    -6 => -18
+    7 => -24
+    -7 => -24
+    8 => -32
+    -8 => -32
+  KeepValue(-24):
+    7 => -24
+    -7 => -24
 
 --Company--
   SetName():            true
@@ -9778,9 +10538,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():       33417
     GetEngineType():     153
     GetUnitNumber():     1
-    GetAge():            1
+    GetAge():            0
     GetMaxAge():         5490
-    GetAgeLeft():        5489
+    GetAgeLeft():        5490
     GetCurrentSpeed():   7
     GetRunningCost():    421
     GetProfitThisYear(): 0
@@ -9793,7 +10553,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsInDepot():         false
     GetNumWagons():      1
     GetWagonEngineType(): 153
-    GetWagonAge():       1
+    GetWagonAge():       0
     GetLength():         8
   GetOwner():           1
   BuildVehicle():       14
@@ -9868,11 +10628,11 @@ ERROR: IsEnd() is invalid as Begin() is never called
     14 => 1
     12 => 1
   Age ListDump:
-    12 => 1
     17 => 0
     16 => 0
     14 => 0
     13 => 0
+    12 => 0
   MaxAge ListDump:
     16 => 10980
     14 => 10980
@@ -9884,7 +10644,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     14 => 10980
     17 => 7320
     13 => 5490
-    12 => 5489
+    12 => 5490
   CurrentSpeed ListDump:
     12 => 27
     17 => 0
@@ -10118,7 +10878,7 @@ Your script made an error: excessive CPU usage in valuator function
 
 CALLSTACK
 *FUNCTION [Valuate()] Valuate line [5]
-*FUNCTION [Start()] regression/main.nut line [2184]
+*FUNCTION [Start()] regression/main.nut line [2412]
 
 LOCALS
 [args] ARRAY
