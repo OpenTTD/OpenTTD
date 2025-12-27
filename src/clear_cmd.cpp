@@ -128,7 +128,12 @@ static void DrawTile_Clear(TileInfo *ti)
 			break;
 
 		case CLEAR_ROCKS:
-			DrawGroundSprite((HasGrfMiscBit(GrfMiscBit::SecondRockyTileSet) && (TileHash(ti->x, ti->y) & 1) ? SPR_FLAT_ROCKY_LAND_2 : SPR_FLAT_ROCKY_LAND_1) + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
+			if (GetTropicZone(ti->tile) == TROPICZONE_DESERT) {
+				DrawGroundSprite(_clear_land_sprites_snow_desert[GetClearDensity(ti->tile)] + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
+				DrawGroundSprite(SPR_OVERLAY_ROCKS_BASE + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
+			} else {
+				DrawGroundSprite((HasGrfMiscBit(GrfMiscBit::SecondRockyTileSet) && (TileHash(ti->x, ti->y) & 1) ? SPR_FLAT_ROCKY_LAND_2 : SPR_FLAT_ROCKY_LAND_1) + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
+			}
 			break;
 
 		case CLEAR_FIELDS:
@@ -233,9 +238,11 @@ static inline bool NeighbourIsNormal(TileIndex tile)
 
 static void TileLoopClearDesert(TileIndex tile)
 {
+	ClearGround ground = GetClearGround(tile);
+
 	/* Current desert level - 0 if it is not desert */
 	uint current = 0;
-	if (IsClearGround(tile, CLEAR_DESERT)) current = GetClearDensity(tile);
+	if (ground == CLEAR_DESERT || ground == CLEAR_ROCKS) current = GetClearDensity(tile);
 
 	/* Expected desert level - 0 if it shouldn't be desert */
 	uint expected = 0;
@@ -245,7 +252,9 @@ static void TileLoopClearDesert(TileIndex tile)
 
 	if (current == expected) return;
 
-	if (expected == 0) {
+	if (ground == CLEAR_ROCKS) {
+		SetClearGroundDensity(tile, CLEAR_ROCKS, expected);
+	} else if (expected == 0) {
 		SetClearGroundDensity(tile, CLEAR_GRASS, 3);
 	} else {
 		/* Transition from clear to desert is not smooth (after clearing desert tile) */
@@ -336,7 +345,7 @@ void GenerateClearTile()
 		tile = RandomTileSeed(r);
 
 		IncreaseGeneratingWorldProgress(GWP_ROUGH_ROCKY);
-		if (IsTileType(tile, MP_CLEAR) && !IsClearGround(tile, CLEAR_DESERT)) {
+		if (IsTileType(tile, MP_CLEAR)) {
 			uint j = GB(r, 16, 4) + 5;
 			for (;;) {
 				TileIndex tile_new;
@@ -346,7 +355,7 @@ void GenerateClearTile()
 				do {
 					if (--j == 0) goto get_out;
 					tile_new = tile + TileOffsByDiagDir((DiagDirection)GB(Random(), 0, 2));
-				} while (!IsTileType(tile_new, MP_CLEAR) || IsClearGround(tile_new, CLEAR_DESERT));
+				} while (!IsTileType(tile_new, MP_CLEAR));
 				tile = tile_new;
 			}
 get_out:;
