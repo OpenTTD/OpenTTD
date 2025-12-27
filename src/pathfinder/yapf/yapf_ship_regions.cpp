@@ -193,7 +193,7 @@ public:
 				}
 			}
 		} else {
-			TileIndex tile = v->dest_tile;
+			TileIndex tile = v->dest_tile == INVALID_TILE ? TileIndex{} : v->dest_tile;
 			pf.AddOrigin(GetWaterRegionPatchInfo(tile));
 		}
 
