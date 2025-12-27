@@ -24,6 +24,7 @@ struct Depot : DepotPool::PoolItem<&_depot_pool> {
 	Town *town = nullptr;
 	std::string name{};
 	TimerGameCalendar::Date build_date{}; ///< Date of construction
+	uint running_vehicles = 0; ///< Number of vehicles currently entering or waiting to leave the depot
 
 	Depot() {}
 	Depot(TileIndex xy) : xy(xy), build_date(TimerGameCalendar::date) {}
@@ -45,5 +46,7 @@ struct Depot : DepotPool::PoolItem<&_depot_pool> {
 		return GetTileType(d->xy) == GetTileType(this->xy);
 	}
 };
+
+void RebuildDepotOccupancyCache(VehicleType type);
 
 #endif /* DEPOT_BASE_H */
