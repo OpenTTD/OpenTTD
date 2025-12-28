@@ -563,7 +563,7 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Λεπτομε�
 STR_GRAPH_MENU_HIGHSCORE                                        :Πίνακας βαθμολογίας
 
 # Industry menu
-STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Κατάλογος Βιομηχανιών
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Κατάλογος βιομηχανιών
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Αλυσίδες βιομηχανιών
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Χρηματοδότηση νέας βιομηχανίας
 
@@ -571,7 +571,7 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Χρηματο�
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Κατασκευή σιδηρόδρομου
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Κατασκευή ηλεκτροδοτουμένου σιδηρόδρομου
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Κατασκευή μονοτρόχιου
-STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Κατασκευή Maglev
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Κατασκευή maglev
 
 # Road construction menu
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Κατασκευή δρόμου
@@ -982,7 +982,7 @@ STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Ιδρύεται νέα εταιρεία μεταφορών!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}Η {STRING} ξεκινά τις κατασκευές κοντά στην πόλη {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}Η {STRING} εξαγοράστηκε από την {STRING} για ένα μη ανακοινώσιμο ποσό!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Διευθ{G 0 υντής ύντρια ""})
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Διευθυντής})
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}Η {STRING} χορήγεισε την κατασκεύη της νέας πόλης {TOWN}!
 STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}Μια νέα πόλη με όνομα {TOWN} κατασκευάστηκε!
@@ -1044,7 +1044,7 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Έληξε η προσφορά επιδότησης:{}{}{STRING} από {G τον τη το} {STRING} πρός {G τον τη το} {STRING} δεν θα επιδοτείται πλέον.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Η επιδότηση αποσύρθηκε:{}{}Η υπηρεσια για {STRING.subs} απο το {STRING} προς το {STRING} δεν επιδοτείται πλέον.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Προσφορά επιδότησης υπηρεσίας:{}{}Η πρώτη {STRING} από {STRING} έως {STRING} θα προσελκύσει επιδότηση {UNITS_YEARS_OR_MINUTES} από την τοπική αρχή!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Προσφορά επιδότησης υπηρεσίας:{}{}{G "O πρώτος" "Η πρώτη" "Το πρώτο"} {STRING} από {STRING} έως {STRING} θα προσελκύσει επιδότηση {UNITS_YEARS_OR_MINUTES} από την τοπική αρχή!
 ###length 4
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Η επιχορήγηση υπηρεσίας που δόθηκε στην {STRING}!{}{}{STRING} από {STRING} έως {STRING} θα πληρώνει 50% έξτρα για το/α επόμενο/α {UNITS_YEARS_OR_MINUTES}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Η επιχορήγηση υπηρεσίας που δόθηκε στην {STRING}!{}{}{STRING} από {STRING} έως {STRING} θα πληρώνει διπλά ποσά για το επόμενο/α {UNITS_YEARS_OR_MINUTES}!
@@ -1541,7 +1541,7 @@ STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :Εάν είνα
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Οι νέες οδηγίες είναι «χωρίς στάση» εξ' ορισμού: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Κανονικά, τα οχήματα σταματούν σε κάθε σταθμό που περνούν. Ενεργοποιώντας αυτήν τη ρύθμιση, δεν θα σταματούν σε κανένα σταθμό που θα βρει στη διαδρομή τους προς τον τελικό προορισμό. Σημείωστε πως αυτή η ρύθμιση ορίζει μόνο μια καθορισμένη τιμή για νέες εντολές. Ειδικές εντολές μπορούν να δοθούν για οποιαδήποτε συμπεριφορά, άσχετα από την προκαθορισμένη
 
-STR_CONFIG_SETTING_STOP_LOCATION                                :Οι νέες εντολές τρένων έχουν στάση εξ' ορισμού στ{G "ον" "η" "ο"} {STRING} της πλατφόρμας
+STR_CONFIG_SETTING_STOP_LOCATION                                :Οι νέες εντολές τρένων έχουν στάση εξ' ορισμού στ{G ον η ο} {STRING} της πλατφόρμας
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Ορισμός προεπιλεγμένου σημείου που θα σταματούν τα τρένα στην πλατφόρμα. Το «κοντινό άκρο» σημαίνει κοντά στο σημείο εισόδου, «μέση» σημαίνει στο μέσο της πλατφόρμας και «μακρινό άκρο» σημαίνει στο άλλο άκρο από το σημείο εισόδου. Σημειώστε ότι αυτή η ρύθμιση ορίζει μόνο την προεπιλεγμένη τιμή για νέες εντολές. Οι μεμονωμένες εντολές μπορούν να έχουν τη δική τους θέση στάσης κάνοντας κλικ πάνω στο κείμενο της εντολής
 ###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :{G=n}κοντινό άκρο
@@ -2330,7 +2330,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Παιχ
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Επιλογές Παιχνιδιού
 STR_INTRO_HIGHSCORE                                             :{BLACK}Πίνακας Βαθμολογιών
-STR_INTRO_HELP                                                  :{BLACK}Βοήθεια και εγχειρίδια χρήσης
+STR_INTRO_HELP                                                  :{BLACK}Βοήθεια και Εγχειρίδια Χρήσης
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Διαδικτυακό Περιεχόμενο
 STR_INTRO_QUIT                                                  :{BLACK}Έξοδος
 
@@ -3221,8 +3221,8 @@ STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Βιομ
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Σπιτιά
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Πατήστε στη βιομηχανία για να δείτε τους προμηθευτές και τους πελάτες της
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Πατήστε στο εμπόρευμα για να δείτε τους προμηθευτές και τους πελάτες
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Εμφάνιση αλυσίδας βιομηχανιών
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Εμφάνιση βιομηχανιών προμήθειας και αποδοχής για το εμπόρευμα
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Αλυσίδα Βιομηχανιών
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Εμφάνιση βιομηχανιών που προμηθεύουν και αποδέχονται εμπορεύματα
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Σύνδεση στο μικρό χάρτη
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Επιλογή των εμφανιζόμενων βιομηχανιών και στο μικρό χάρτη
 STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Επιλογή εμπορευμάτων
@@ -4071,7 +4071,7 @@ STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Υποδ
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Διευθ{G 0 υντής ύντρια ""})
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Διευθυντής)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Ίδρυση: {WHITE}{NUM}
 STR_COMPANY_VIEW_INAUGURATED_TITLE_WALLCLOCK                    :{GOLD}Εγκαινιάστηκε: {WHITE}{NUM} (περίοδος {NUM})
