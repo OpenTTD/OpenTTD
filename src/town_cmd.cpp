@@ -2139,18 +2139,27 @@ static CommandCost TownCanBePlacedHere(TileIndex tile, bool check_surrounding)
 		/* Half of the tiles in the search must be valid for the town to build upon. */
 		constexpr uint VALID_TILE_GOAL = (SEARCH_DIAMETER * SEARCH_DIAMETER) / 2;
 		uint counter = 0;
+		int town_height = GetTileZ(tile);
 		for (TileIndex t : SpiralTileSequence(tile, SEARCH_DIAMETER)) {
 			if (counter == VALID_TILE_GOAL) break;
 
-			/* The most likely unsuitable tile type is water, test that first. */
-			if (IsTileType(tile, MP_WATER)) continue;
+			switch (GetTileType(t)) {
+				case MP_CLEAR:
+					/* Don't allow rough tiles, as they are likely wetlands. */
+					if (GetClearDensity(t) == CLEAR_ROUGH) continue;
+					break;
 
-			/* Don't allow rough tiles, as they are likely wetlands. */
-			bool clear = IsTileType(t, MP_CLEAR) && GetClearDensity(t) != CLEAR_ROUGH;
-			bool trees = IsTileType(t, MP_TREES) && GetTreeGround(t) != TREE_GROUND_ROUGH;
-			int town_height = GetTileZ(tile);
+				case MP_TREES:
+					/* Don't allow rough trees, as they are likely wetlands. */
+					if (GetTreeGround(t) == TREE_GROUND_ROUGH) continue;
+					break;
+
+				default:
+					continue;
+			}
+
 			bool elevation_similar = (GetTileMaxZ(t) <= town_height + 1) && (GetTileZ(t) >= town_height - 1);
-			if ((clear || trees) && elevation_similar) counter++;
+			if (elevation_similar) counter++;
 		}
 
 		if (counter < VALID_TILE_GOAL) return CommandCost(STR_ERROR_SITE_UNSUITABLE);
@@ -2335,7 +2344,7 @@ static TileIndex FindNearestGoodCoastalTownSpot(TileIndex tile, TownLayout layou
 		uint max_dist = 0;
 		for (auto test : SpiralTileSequence(coast, 10)) {
 			if (!IsTileType(test, MP_CLEAR) || !IsTileFlat(test) || !IsTileAlignedToGrid(test, layout)) continue;
-			if (TownCanBePlacedHere(tile, true).Failed()) continue;
+			if (TownCanBePlacedHere(test, true).Failed()) continue;
 
 			uint dist = GetClosestWaterDistance(test, true);
 			if (dist > max_dist) {
