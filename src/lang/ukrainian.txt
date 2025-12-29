@@ -401,6 +401,7 @@ STR_UNITS_PERIODS.d                                             :{NUM}{NBSP}пе
 STR_UNITS_PERIODS.z                                             :{NUM}{NBSP}періодів
 
 STR_LIST_SEPARATOR                                              :,{SPACE}
+STR_TRUNCATION_ELLIPSIS                                         :...
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Фільтр:
@@ -444,6 +445,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}нати
 STR_BUTTON_DEFAULT                                              :{BLACK}Стандартно
 STR_BUTTON_CANCEL                                               :{BLACK}Скасувати
 STR_BUTTON_OK                                                   :{BLACK}Так
+STR_BUTTON_MOVE                                                 :{BLACK}Перемістити
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-= йцукенгшщзхїфівапролджє#\ячсмитьбю. .
@@ -776,11 +778,13 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Не п�
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Ввімк/вимик графік типів вантажу
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Історія вантажів
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Вироблено
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Перевезено
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Доставлено
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Очікує
 
+STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Історія вантажів
 STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Постачання
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Перевезено
 
@@ -2173,7 +2177,7 @@ STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Горизон�
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Позиція панелі статусу: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Горизонтальна позиція панелі статусу, що внизу екрана.
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Радіус прилипання вікон: {STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Дистанція між вікнами, при якій вікно, що переміщують, буде автоматично вирівноватися та "прилипати" до сусідніх вікон.
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Проміжок між вікнами перед переміщенням вікна автоматично вирівноватиметься відносно сусідніх вікон.
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} піксел{P ь і ів}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Відключено
@@ -2218,6 +2222,7 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 з {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Жодного
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Множник розміру мегаполісів: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Середньостатистичне відношення початкового розміру мегаполісів порівняно зі звичайними містами.
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE                            :Найменша відстань між містами: {STRING}
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Оновлення обрахунку зв'язків, час {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Час між перерозрахунками графа зв'язків. Кожен розрахунок обчислює один компонент графа, тобто лише деякі компоненти оновляться після закінчення кожного проміжку часу, а не весь граф. Чим менше це значення, тим більше часу процесора буде витрачатися. Чим більше це значення, тим довше доведеться очікувати розподілення вантажів на нових маршрутах
@@ -2998,7 +3003,7 @@ STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Роки
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Роки: {ORANGE}до {NUM}
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}Розмір: {ORANGE}{NUM}x{NUM} клітинок
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Приймається вантаж: {GOLD}{STRING}
-STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Вантажу вироблено: {ORANGE}{CARGO_LIST}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Вантажу вироблено: {GOLD}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Край
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Окраїна

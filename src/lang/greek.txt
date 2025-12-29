@@ -2336,7 +2336,7 @@ STR_INTRO_QUIT                                                  :{BLACK}Έξοδ
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Έναρξη νέου παιχνιδιού. Με Ctrl+Κλικ παρακάμπτεται η ρύθμιση του χάρτη
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Φόρτωση αποθηκευμένου παιχνιδιού
-STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Εκκίνηση νέου παιχνιδιού με χρήση χάρτη υψομετρίας
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Έναρξη νέου παιχνιδιού με χρήση χάρτη υψομετρίας
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Έναρξη νέου παιχνιδιού, χρησιμοποιώντας ένα προσαρμοσμένο σενάριο
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Δημιουργία προσαρμοσμένου κόσμου/σεναρίου
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Έναρξη παιχνιδιού με πολλούς παίκτες
@@ -2348,7 +2348,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Επιλ
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Εμφάνιση επιλογών παιχνιδιού
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Εμφάνιση του πίνακα βαθμολογιών
-STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Αποκτήστε πρόσβαση στην τεκμηρίωση και σε διαδικτυακούς πόρους
+STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Πρόσβαση στην τεκμηρίωση και σε διαδικτυακούς πόρους
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Έλεγχος για νέο και ανανεωμένο περιεχόμενο για λήψη
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Έξοδος από το «OpenTTD»
 
