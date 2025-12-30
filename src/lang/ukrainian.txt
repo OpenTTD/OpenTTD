@@ -917,7 +917,7 @@ STR_SMALLMAP_TYPE_OWNERS                                        :Власник�
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Показати рельєф на карті
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Показати транспорт на карті
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Показати підприємства на карті
-STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Показувати потік вантажу на карті
+STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Показувати вантажопотік на карті
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Показати маршрути на карті
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Показати рослинність на карті
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Показати власників землі на карті
@@ -2297,6 +2297,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Якщо вис
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Імперські (фути)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Метричні (м)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :СІ (м)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_GAMEUNITS          :Ігрових одиниць (рівні)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :Локалізація
 STR_CONFIG_SETTING_GRAPHICS                                     :Графіки
@@ -2995,7 +2996,7 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Виберіт�
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Виберіть тип споруди для побудови. Клацніть Ctrl+Клік, щоб додати або видалити зі списку збереженого
 
 STR_HOUSE_PICKER_CAPTION                                        :Вибір будівлі
-STR_HOUSE_PICKER_NAME                                           :{BLACK}Назва: {ORANGE}{STRING}
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Назва: {GOLD}{STRING}
 STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Населення: {ORANGE}{NUM}
 STR_HOUSE_PICKER_YEARS                                          :{BLACK}Роки: {ORANGE}{NUM}-{NUM}
 STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Роки: {ORANGE}будь-які
@@ -3607,6 +3608,8 @@ STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Гене
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Генерація річок
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Розкидати каміння
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Генерація міст
+STR_GENERATION_LAND_INDUSTRY_GENERATION                         :{BLACK}Створення наземної промисловості
+STR_GENERATION_WATER_INDUSTRY_GENERATION                        :{BLACK}Створення водної промисловості
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Генерація нерухомості
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Насадження дерев
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Налаштування гри
@@ -3850,6 +3853,7 @@ STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Пока
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Місцева влада
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Інформація про місцеву владу
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Перейменувати місто
+STR_TOWN_VIEW_CARGO_GRAPH                                       :Вантажопотік
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Розширити
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Збільшити розмір міста
@@ -4317,6 +4321,7 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Всі, крі�
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Максимальне тягове зусилля: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Дальність: {GOLD}{COMMA} клітинок
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Тип літака: {GOLD}{STRING}
+STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Залізничні колії: {GOLD}{STRING}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Всі типи вантажів
@@ -4500,6 +4505,7 @@ STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Вартіст�
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Вартість експлуатації: {CURRENCY_LONG}/період
 STR_ENGINE_PREVIEW_CAPACITY                                     :Місткість: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :Місткість: {CARGO_LONG}, {CARGO_LONG}
+STR_ENGINE_PREVIEW_RAILTYPES                                    :Залізничні колії: {STRING}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Оновити {STRING} - {STRING}
@@ -5183,7 +5189,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Робо
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Вже понижено до рівня моря
 STR_ERROR_TOO_HIGH                                              :{WHITE}Дуже високо
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... вже рівна
-STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Пізніше, міст над цим місцем буде занадто високо.
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Інакше міст над цим місцем буде занадто високо.
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Неможливо перейменувати компанію...
@@ -5314,7 +5320,7 @@ STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Поїз
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Поїзд дуже довгий
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Не можна розвернути поїзд...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... складається з декількох частин
-STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Залізничні колій несумісні
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Залізничні колії несумісні
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Неможливо перемістити транспорт...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}задній потяг буде завжди йти за переднім
@@ -5397,6 +5403,13 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Поча
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... обидва кінці мосту мають бути на землі
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... міст надто довгий
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Міст закінчиться поза картою
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Висота мосту: {HEIGHT}, що занадто низько для станції
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Висота мосту: {HEIGHT}, що занадто низько для дорожньої станції
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Висота мосту: {HEIGHT}, що занадто низько для доку
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Висота мосту: {HEIGHT}, що занадто низько для бакена
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Висота мосту: {HEIGHT}, що занадто низько для колійної точки маршруту
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Висота мосту: {HEIGHT}, що занадто низько для дорожньої точки маршруту
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Висота мосту: {HEIGHT}, що занадто низько для шлюзу
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Неможливо збудувати тунель...

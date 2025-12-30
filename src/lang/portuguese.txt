@@ -2697,7 +2697,7 @@ STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFO DE
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Não selecionou este conteúdo para ser descarregado
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Selecionou este conteúdo para ser descarregado
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Esta dependência foi selecionada para ser descarregada
-STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Já tem isto
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Já tem este conteúdo
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Este conteúdo é desconhecido e não pode ser descarregado no OpenTTD
 
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Este conteúdo é uma atualização para u{G 0 m m ma ns mas} {STRING} já existente{G 0 "" "" "" s s} no seu sistema
