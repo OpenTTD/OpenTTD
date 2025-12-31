@@ -3178,7 +3178,10 @@ void UpdateWindows()
 void SetWindowDirty(WindowClass cls, WindowNumber number)
 {
 	for (const Window *w : Window::Iterate()) {
-		if (w->window_class == cls && w->window_number == number) w->SetDirty();
+		if (w->window_class == cls && w->window_number == number) {
+			w->SetDirty();
+			return;
+		}
 	}
 }
 
@@ -3193,6 +3196,7 @@ void SetWindowWidgetDirty(WindowClass cls, WindowNumber number, WidgetID widget_
 	for (const Window *w : Window::Iterate()) {
 		if (w->window_class == cls && w->window_number == number) {
 			w->SetWidgetDirty(widget_index);
+			return;
 		}
 	}
 }
@@ -3298,6 +3302,7 @@ void InvalidateWindowData(WindowClass cls, WindowNumber number, int data, bool g
 	for (Window *w : Window::Iterate()) {
 		if (w->window_class == cls && w->window_number == number) {
 			w->InvalidateData(data, gui_scope);
+			return;
 		}
 	}
 }
