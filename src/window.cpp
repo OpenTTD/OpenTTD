@@ -287,7 +287,9 @@ void Window::OnDropdownClose(Point pt, WidgetID widget, int index, int click_res
 {
 	if (widget < 0) return;
 
-	if (instant_close) {
+	/* Many dropdown selections depend on the position of the main toolbar,
+	 * so if it doesn't exist (e.g. the end screen has appeared), just skip the instant close behaviour. */
+	if (instant_close && FindWindowById(WC_MAIN_TOOLBAR, 0) != nullptr) {
 		/* Send event for selected option if we're still
 		 * on the parent button of the dropdown (behaviour of the dropdowns in the main toolbar). */
 		if (GetWidgetFromPos(this, pt.x, pt.y) == widget) {
