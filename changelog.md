@@ -1,5 +1,15 @@
 ## 15.x
 
+### 15.0 (2026-01-01)
+
+- Fix: Small ufos would loop over vehicles in depots forever (#15008)
+- Fix #14982: Can't place buoys under bridges (#15007)
+- Fix #15004: Crashes when dropdown is held open during endgame screen (#15006)
+- Fix: Further improve town spawning near water (#15002)
+- Fix: Use correct 'minutes per year' setting for old savegames (#14995)
+- Fix: Rare crash dividing by 0 when drawing a line (#14994)
+- Fix #14992: Respect non-stop order setting when adding waypoint orders (#14993)
+
 ### 15.0-RC4 (2025-12-26)
 
 - Fix: Incorrect text colour in fund industry window (#14987)
