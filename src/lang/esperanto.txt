@@ -3811,6 +3811,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produkta
 STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Bezonas: {YELLOW}{STRING}
 STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produktas: {YELLOW}{STRING}
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :{STRING.n}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION.n                        :, {STRING.n}{STRING.n}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Bezonas:
 

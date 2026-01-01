@@ -394,7 +394,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Abrir li
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Abrir lista de estações da empresa
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Abrir informações financeiras da empresa
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Abrir informação geral da empresa
-STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Abrir livro de história
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Abrir livro de histórias
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Abrir lista de objetivos
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Abrir gráficos estatísticos da empresa e taxas de pagamento de carga
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Abrir tabela de classificação de empresas
@@ -2692,10 +2692,10 @@ STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Tamanho
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFO DE CONTEÚDO
 
 ###length 5
-STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Não selecionou isto para ser descarregado
-STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Selecionou isto para ser descarregado
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Não selecionou este conteúdo para ser descarregado
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Selecionou este conteúdo para ser descarregado
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Esta dependência foi selecionada para ser descarregada
-STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Já tem isto
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Já tem este conteúdo
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Este conteúdo é desconhecido e não pode ser descarregado no OpenTTD
 
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Este conteúdo é uma atualização para u{G 0 m m ma ns mas} {STRING} já existente{G 0 "" "" "" s s} no seu sistema
@@ -3774,7 +3774,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{Y
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Objetivos de {COMPANY}
-STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Objetivos globais
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Objetivos Globais
 STR_GOALS_SPECTATOR                                             :Objetivos Globais
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Global
 STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Mostrar objetivos globais
@@ -3827,8 +3827,8 @@ STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :até {DATE_SHOR
 STR_SUBSIDIES_SUBSIDISED_EXPIRY_TIME                            :{UNITS_MONTHS_OR_MINUTES} restante{P "" s}
 
 # Story book window
-STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Livro de História
-STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Livro de História Global
+STR_STORY_BOOK_CAPTION                                          :{WHITE}Livro de Histórias de {COMPANY}
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Livro de Histórias Global
 STR_STORY_BOOK_SPECTATOR                                        :Livro de Histórias Global
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Página nº {NUM}
@@ -4919,7 +4919,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configur
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}{STRING} Disponíveis
 STR_AI_LIST_CAPTION_AI                                          :IAs
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Scripts de jogo
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Scripts de Jogo
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Clique para selecionar um script
 
 STR_AI_LIST_AUTHOR                                              :{LTBLUE}Autor: {ORANGE}{STRING}
@@ -4973,8 +4973,8 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST                                           :{RED}Custo: {CURRENCY_LONG}
-STR_INCOME_FLOAT_INCOME                                         :{GREEN}Lucro: {CURRENCY_LONG}
+STR_INCOME_FLOAT_COST                                           :{RED}Despesa: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME                                         :{GREEN}Receita: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Transferir: {CURRENCY_LONG}
 STR_FEEDER_INCOME                                               :{YELLOW}Transferir: {CURRENCY_LONG}{WHITE} / {GREEN}Receita: {CURRENCY_LONG}
 STR_FEEDER_COST                                                 :{YELLOW}Transferir: {CURRENCY_LONG}{WHITE} / {RED}Custo: {CURRENCY_LONG}
@@ -5558,7 +5558,7 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=f}Mina de A�
 
 ##id 0x6000
 STR_SV_EMPTY                                                    :
-STR_SV_UNNAMED                                                  :Sem nome
+STR_SV_UNNAMED                                                  :Sem Nome
 STR_SV_TRAIN_NAME                                               :Comboio #{COMMA}
 STR_SV_ROAD_VEHICLE_NAME                                        :Veículo Rodoviário #{COMMA}
 STR_SV_SHIP_NAME                                                :Navio #{COMMA}

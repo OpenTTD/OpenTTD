@@ -1249,7 +1249,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :Desplega-ho tot
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Plega-ho tot
 STR_CONFIG_SETTING_RESET_ALL                                    :Restableix tots els valors
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(cap explicació disponible)
-STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
+STR_CONFIG_SETTING_VALUE                                        :{ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor per defecte: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipus de paràmetre: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Paràmetre del client (no s'emmagatzema a les partides; afecta a totes les partides)
@@ -3657,17 +3657,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Arxius 
 STR_NEWGRF_LIST_MISSING                                         :{RED}Arxius que falten
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}El comportament dels NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' pot fer que la partida es pengi o es dessincronitzi
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Un vehicle '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' ha canviat el seu estat de vagó amb potència mentre estava fora de la cotxera
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Un vehicle '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' ha canviat la seva llargada mentre estava fora del dipòsit
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Un vehicle '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' ha canviat la seva capacitat mentre estava fora del dipòsit o no ha canviat el tipus de càrrega a transportar
+STR_NEWGRF_BROKEN                                               :{WHITE}El comportament dels NewGRF «{0:STRING}» pot fer que la partida es pengi o es dessincronitzi.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Un vehicle «{1:ENGINE}» ha canviat el seu estat de vagó amb potència mentre estava fora de la cotxera.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Un vehicle «{1:ENGINE}» ha canviat la seva llargada mentre estava fora del dipòsit.
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Un vehicle «{1:ENGINE}» ha canviat la seva capacitat mentre estava fora del dipòsit o no ha canviat el tipus de càrrega a transportar.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}El tren «{VEHICLE}» propietat de «{COMPANY}» té una llargada invàlida, probablement a causa de problemes amb els NewGRF. La partida podria dessincronitzar-se o fallar.
 
-STR_NEWGRF_BUGGY                                                :{WHITE}El NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' dóna informació incorrecta
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La informació de càrrega/remodelació per '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' no encaixa amb la llista de compres després de la construcció. Això podria causar un mal funcionament de autorenova/-substitueix
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' ha provocat un bucle infinit en la crida de producció
+STR_NEWGRF_BUGGY                                                :{WHITE}El NewGRF «{0:STRING}» dóna informació incorrecta.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La informació de càrrega/remodelació de «{1:ENGINE}» no encaixa amb la llista de compres després de la construcció. Això podria causar un mal funcionament de la funció autorenova/substitueix.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}«{1:STRING}» ha provocat un bucle infinit en la crida de producció.
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}'Callback' {1:HEX} ha retornat un resultat desconegut/invàlid {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}«{PUSH_COLOUR}{1:STRING}{POP_COLOUR}» ha retornat un tipus de càrrega no vàlid a {2:HEX}.
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' ha retornat un tipus de càrrega no vàlid a {2:HEX}.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<càrrega invàlida>

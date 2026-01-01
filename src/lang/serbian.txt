@@ -1249,7 +1249,7 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :Kada je uključ
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :O anketi i privatnosti
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Ovo otvara pretraživač sa više informacija o automatizovanim anketama
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Pregledaj rezultate anketa
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Pogledaj rezultate ankete za trenutnu igru
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Pregledaj rezultate ankete za trenutnu igru
 
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :Frekvencija osvežavanja ekrana
@@ -1699,8 +1699,8 @@ STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Lebdi na {COMMA
 ###setting-zero-is-special
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Desni klik
 
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Prikazivati br. stanovnika pored naziva naselja: {STRING}
-STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Prikazuje broj stanovnika naselja na njihovoj oznaci na karti
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Prikazati broj stanovnika pored naziva naselja: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Prikazuje broj stanovnika naselja na njihovoj oznaci na mapi
 
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Debljina linija u grafikonima: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Širina linije na grafiku. Tanka linija je preciznija a debelu je lakše videti i lakše je razlikovati boje
@@ -1767,7 +1767,7 @@ STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Odaberi stranu 
 STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Levom stranom
 STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Desnom stranom
 
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Orijentacija elevacione karte: {STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Orijentacija visinske mape: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Odaberi kako će se visinska mapa rotirati da bi se uklopila u svet igre
 ###length 2
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Nalevo
@@ -2111,7 +2111,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :originalno
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :unapređeni putevi
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 mreže
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 mreže
-STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :proizvoljan plan
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :nasumičan plan
 
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Naseljima je dozvoljeno da grade kolovoze: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Dozvoli naseljima da grade ulice kako bi rasli. Onemogući kako bi sprečili gradske vlasti da same grade ulice
@@ -2327,14 +2327,14 @@ STR_INTRO_VERSION                                               :OpenTTD {REV}
 STR_INTRO_NEW_GAME                                              :{BLACK}Nova igra
 STR_INTRO_LOAD_GAME                                             :{BLACK}Učitavanje igre
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Igra sa scenariom
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Igra sa visinskom kartom
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Igra sa visinskom mapom
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Uređivač scenarija
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Mrežna igra
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opcije
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela najboljih rezultata
 STR_INTRO_HELP                                                  :{BLACK}Pomoć i priručnici
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Proveri dodatke na mreži
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Dodaci na mreži
 STR_INTRO_QUIT                                                  :{BLACK}Napusti
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Započinje novu igru. Ctrl+klik preskače konfiguraciju mape
@@ -2804,7 +2804,7 @@ STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :VI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :VI biblioteke
 STR_CONTENT_TYPE_SCENARIO                                       :Scenario
-STR_CONTENT_TYPE_HEIGHTMAP                                      :Elevaciona karta
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Visinska mapa
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Osnovni zvukovi
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Osnovna muzika
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :Skripta igre
@@ -2921,11 +2921,28 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Odabir d
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Prevlačenje
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Gradnja stanice prevlačenjem
 
+STR_PICKER_MODE_ALL                                             :Sve
+STR_PICKER_MODE_SAVED                                           :Sačuvano
+
+STR_PICKER_PREVIEW_SHRINK                                       :-
+STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Smanjuje visinu slika u pregledu. Ctrl+klik smanjuje na minimum
+STR_PICKER_PREVIEW_EXPAND                                       :+
+STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Uvećava visinu slika u pregledu. Ctrl+klik povećava na maksimum
 
 
+STR_HOUSE_PICKER_CAPTION                                        :Odabir kuće
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Naziv: {GOLD}{STRING}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Godina: {GOLD}{NUM}-{NUM}
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Prihvaćen teret: {GOLD}{STRING}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Proizveden teret: {GOLD}{CARGO_LIST}
 
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Ivica
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Predgrađe
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Spoljno predgrađe
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Unutrašnje predgrađe
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centar naselja
 
-
+STR_HOUSE_PICKER_PROTECT                                        :Spreči poboljšanja
 
 
 STR_STATION_CLASS_DFLT                                          :Podrazumevana stanica
@@ -3190,7 +3207,7 @@ STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Klasa ae
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Naziv aerodroma: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Naziv dela aerodroma: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Teret prihvaćen: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Prihvaćen teret: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Vrsta šina: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Vrsta druma: {LTBLUE}{STRING}
@@ -3198,6 +3215,8 @@ STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Vrsta tr
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Najveća brzina na pruzi: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Ograničenje brzine: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Ograničenje brzine tramvaja: {LTBLUE}{VELOCITY}
+STR_LAND_AREA_INFORMATION_TOWN_CAN_UPGRADE                      :{BLACK}Naselje se može nadograditi: {LTBLUE}Da
+STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE                   :{BLACK}Naselje se može nadograditi: {LTBLUE}Ne
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Stene
@@ -3395,6 +3414,7 @@ STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Izaberi 
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Broj fabrika:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Najviši vrh:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Odaberi najviši vrh koji će igra pokušati da generiše, mereno kao uzvišenje iznad nivoa mora
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}Povećaj maksimalnu visinu najvišeg vrha za jedan korak
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}Smanji maksimalnu visinu najvišeg vrha za jedan korak
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Pokrivenost snegom:
@@ -3454,12 +3474,15 @@ STR_MAPGEN_BORDER_WATER                                         :{BLACK}More
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Proizvoljno
 
 ###length 3
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Proizvoljno
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Podešeno
+STR_MAPGEN_BORDER_RANDOMIZE                                     :Nasumično
+STR_MAPGEN_BORDER_MANUAL                                        :Ručno podešeno
+STR_MAPGEN_BORDER_INFINITE_WATER                                :Beskonačna voda
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Orijentacija elevacione karte:
-STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Naziv elevacione karte:
+STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Naziv visinske mape:
+STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}Naziv slike za visinsku mapu
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Veličina:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}Veličina izvorne slike za visinsku mapu. Za najbolje rezultate, svaka ivica treba da odgovara dužini ivice mape dostupne u OpenTTD, kao što je 256, 512, 1024, itd.
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Ciljna visina vrha
@@ -3496,6 +3519,7 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Razrađi
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Pokretanje skripte
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Pripremanje igre
 
+STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}{STRING} podaci neispravno formatirani
 
 
 # NewGRF settings
@@ -4045,6 +4069,10 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Proizvod
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :{STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK} Zahteva:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX                    :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} na čekanju{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_NOSUFFIX                         :{YELLOW}{0:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX                  :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} na čekanju
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Promena proizvodnje
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Promena nivoa proizvodnje (u procentima, do 800%)
@@ -4701,6 +4729,7 @@ STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Drumski Depo
 STR_ORDER_SHIP_DEPOT                                            :Brodogradilište
 ###next-name-looks-similar
 
+STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT                           :{STRING} do najbližeg hangara
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} do najbližeg {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
@@ -4858,10 +4887,11 @@ STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Podešav
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Skripta koja će biti pokrenuta u sledećoj igri
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Veštačke inteligencije koje će biti pokrenute u sledećoj igri
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ljudsko biće
-STR_AI_CONFIG_RANDOM_AI                                         :Proizvoljna VI
+STR_AI_CONFIG_RANDOM_AI                                         :Nasumična VI
 STR_AI_CONFIG_NONE                                              :(nijedna)
 STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Najveći broj suparnika: {ORANGE}{COMMA}
+STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}Interval početka suparnika: {ORANGE}{COMMA} minut{P "" a a}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Pomeri naviše
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Pomera obeleženu VI naviše u listi
@@ -4874,7 +4904,7 @@ STR_AI_CONFIG_AI                                                :{SILVER}VIe
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Odaberi VI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Odaberi skriptu
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Učitava drugu skriptu
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Učitava drugu skriptu. Ctrl+klik za prikaz svih dostupnih verzija
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Podešavanje
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Podešavanje parametara skripte
 
@@ -4921,6 +4951,7 @@ STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Prikaži licenc
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} uputstvo za {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} promena od {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licenca od {STRING}
+STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Pretpregled rezultata ankete
 STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}OpenTTD dokument '{STRING}'
 
 
