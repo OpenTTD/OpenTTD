@@ -382,9 +382,11 @@ static bool DisasterTick_Ufo(DisasterVehicle *ufo)
 		if (dist <= TILE_SIZE && z > target->z_pos) z--;
 		ufo->UpdatePosition(gp.x, gp.y, z);
 
-		if (z <= target->z_pos && !target->vehstatus.Test(VehState::Hidden)) {
+		/* If the vehicle is hidden in a depot or similar treat it as having "escaped" being crashed to avoid the Ufo looping forever,
+		 * but we'll still explode the surrounding area ;) */
+		if (z <= target->z_pos) {
 			ufo->age++;
-			if (target->crashed_ctr == 0) {
+			if (!target->vehstatus.Test(VehState::Hidden) && target->crashed_ctr == 0) {
 				uint victims = target->Crash();
 				target->disaster_vehicle = VehicleID::Invalid();
 
