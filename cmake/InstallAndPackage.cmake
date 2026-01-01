@@ -190,29 +190,7 @@ elseif(UNIX)
         set(CPACK_GENERATOR "TXZ")
         set(PLATFORM "unknown")
     else()
-        find_program(LSB_RELEASE_EXEC lsb_release)
-        execute_process(COMMAND ${LSB_RELEASE_EXEC} -is
-            OUTPUT_VARIABLE LSB_RELEASE_ID
-            OUTPUT_STRIP_TRAILING_WHITESPACE
-        )
-        if(LSB_RELEASE_ID)
-            if(LSB_RELEASE_ID STREQUAL "Ubuntu" OR LSB_RELEASE_ID STREQUAL "Debian" OR LSB_RELEASE_ID STREQUAL "Linuxmint")
-                execute_process(COMMAND ${LSB_RELEASE_EXEC} -cs
-                    OUTPUT_VARIABLE LSB_RELEASE_CODENAME
-                    OUTPUT_STRIP_TRAILING_WHITESPACE
-                )
-                string(TOLOWER "${LSB_RELEASE_ID}-${LSB_RELEASE_CODENAME}" PLATFORM)
-
-                set(CPACK_GENERATOR "DEB")
-                include(PackageDeb)
-            elseif(LSB_RELEASE_ID STREQUAL "Fedora")
-                set(PLATFORM "fedora")
-                set(CPACK_GENERATOR "RPM")
-                include(PackageRPM)
-            else()
-                set(UNSUPPORTED_PLATFORM_NAME "LSB-based Linux distribution '${LSB_RELEASE_ID}'")
-            endif()
-        elseif(EXISTS "/etc/os-release")
+        if(EXISTS "/etc/os-release")
             file(STRINGS "/etc/os-release" OS_RELEASE_CONTENTS REGEX "^ID=")
             string(REGEX MATCH "ID=(.*)" _ ${OS_RELEASE_CONTENTS})
             set(DISTRO_ID ${CMAKE_MATCH_1})
@@ -223,11 +201,43 @@ elseif(UNIX)
                 set(PLATFORM "fedora")
                 set(CPACK_GENERATOR "RPM")
                 include(PackageRPM)
+            elseif(DISTRO_ID STREQUAL "ubuntu" OR DISTRO_ID STREQUAL "debian" OR DISTRO_ID STREQUAL "linuxmint")
+                file(STRINGS "/etc/os-release" OS_RELEASE_CODENAME REGEX "^VERSION_CODENAME=")
+                string(REGEX MATCH "VERSION_CODENAME=(.*)" _ ${OS_RELEASE_CODENAME})
+                set(RELEASE_CODENAME ${CMAKE_MATCH_1})
+                string(TOLOWER "${DISTRO_ID}-${RELEASE_CODENAME}" PLATFORM)
+
+                set(CPACK_GENERATOR "DEB")
+                include(PackageDeb)
             else()
                 set(UNSUPPORTED_PLATFORM_NAME "Linux distribution '${DISTRO_ID}' from /etc/os-release")
             endif()
         else()
-            set(UNSUPPORTED_PLATFORM_NAME "Linux distribution")
+            find_program(LSB_RELEASE_EXEC lsb_release)
+            execute_process(COMMAND ${LSB_RELEASE_EXEC} -is
+                OUTPUT_VARIABLE LSB_RELEASE_ID
+                OUTPUT_STRIP_TRAILING_WHITESPACE
+            )
+            if(LSB_RELEASE_ID)
+                if(LSB_RELEASE_ID STREQUAL "Ubuntu" OR LSB_RELEASE_ID STREQUAL "Debian" OR LSB_RELEASE_ID STREQUAL "Linuxmint")
+                    execute_process(COMMAND ${LSB_RELEASE_EXEC} -cs
+                        OUTPUT_VARIABLE LSB_RELEASE_CODENAME
+                        OUTPUT_STRIP_TRAILING_WHITESPACE
+                    )
+                    string(TOLOWER "${LSB_RELEASE_ID}-${LSB_RELEASE_CODENAME}" PLATFORM)
+
+                    set(CPACK_GENERATOR "DEB")
+                    include(PackageDeb)
+                elseif(LSB_RELEASE_ID STREQUAL "Fedora")
+                    set(PLATFORM "fedora")
+                    set(CPACK_GENERATOR "RPM")
+                    include(PackageRPM)
+                else()
+                    set(UNSUPPORTED_PLATFORM_NAME "LSB-based Linux distribution '${LSB_RELEASE_ID}'")
+                endif()
+            else()
+                set(UNSUPPORTED_PLATFORM_NAME "Linux distribution")
+            endif()
         endif()
 
         if(NOT PLATFORM)
