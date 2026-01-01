@@ -961,6 +961,20 @@ static CommandCost IsDockBridgeAboveOk(TileIndex tile, StationGfx layout)
 }
 
 /**
+ * Test if a buoy can be built below a bridge.
+ * @param tile Tile to test.
+ * @return Command result.
+ */
+CommandCost IsBuoyBridgeAboveOk(TileIndex tile)
+{
+	if (!IsBridgeAbove(tile)) return CommandCost();
+
+	TileIndex rampsouth = GetSouthernBridgeEnd(tile);
+	auto bridgeable_info = GetStationBridgeableTileInfo(StationType::Buoy);
+	return IsStationBridgeAboveOk(tile, bridgeable_info, StationType::Buoy, 0, GetBridgeHeight(rampsouth), STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+}
+
+/**
  * Checks if a rail station can be built at the given tile.
  * @param tile_cur Tile to check.
  * @param north_tile North tile of the area being checked.
