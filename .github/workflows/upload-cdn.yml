@@ -21,7 +21,7 @@ jobs:
 
     steps:
     - name: Download all bundles
-      uses: actions/download-artifact@v6
+      uses: actions/download-artifact@v7
 
     - name: Calculate checksums
       run: |
@@ -70,14 +70,14 @@ jobs:
         done
 
     - name: Store bundles
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v6
       with:
         name: cdn-bundles
         path: bundles/*
         retention-days: 5
 
     - name: Store breakpad symbols
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v6
       with:
         name: cdn-symbols
         path: symbols/*
