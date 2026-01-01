@@ -1143,12 +1143,8 @@ static Trackdir FollowPreviousRoadVehicle(const RoadVehicle *v, const RoadVehicl
 static bool CanBuildTramTrackOnTile(CompanyID c, TileIndex t, RoadType rt, RoadBits r)
 {
 	/* The 'current' company is not necessarily the owner of the vehicle. */
-	Backup<CompanyID> cur_company(_current_company, c);
-
-	CommandCost ret = Command<Commands::BuildRoad>::Do(DoCommandFlag::NoWater, t, r, rt, {}, TownID::Invalid());
-
-	cur_company.Restore();
-	return ret.Succeeded();
+	AutoRestoreBackup cur_company(_current_company, c);
+	return Command<Commands::BuildRoad>::Do(DoCommandFlag::NoWater, t, r, rt, {}, TownID::Invalid()).Succeeded();
 }
 
 bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *prev)

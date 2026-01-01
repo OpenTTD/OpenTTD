@@ -1069,11 +1069,10 @@ void CallVehicleTicks()
 		}
 	}
 
-	Backup<CompanyID> cur_company(_current_company);
 	for (auto &it : _vehicles_to_autoreplace) {
 		Vehicle *v = Vehicle::Get(it.first);
 		/* Autoreplace needs the current company set as the vehicle owner */
-		cur_company.Change(v->owner);
+		AutoRestoreBackup cur_company(_current_company, v->owner);
 
 		/* Start vehicle if we stopped them in VehicleEnteredDepotThisTick()
 		 * We need to stop them between VehicleEnteredDepotThisTick() and here or we risk that
@@ -1111,8 +1110,6 @@ void CallVehicleTicks()
 
 		AddVehicleAdviceNewsItem(AdviceType::AutorenewFailed, std::move(headline), v->index);
 	}
-
-	cur_company.Restore();
 }
 
 /**
@@ -1637,9 +1634,8 @@ void VehicleEnterDepot(Vehicle *v)
 		}
 
 		if (v->current_order.IsRefit()) {
-			Backup<CompanyID> cur_company(_current_company, v->owner);
+			AutoRestoreBackup cur_company(_current_company, v->owner);
 			CommandCost cost = std::get<0>(Command<Commands::RefitVehicle>::Do(DoCommandFlag::Execute, v->index, v->current_order.GetRefitCargo(), 0xFF, false, false, 0));
-			cur_company.Restore();
 
 			if (cost.Failed()) {
 				_vehicles_to_autoreplace[v->index] = false;

@@ -1270,7 +1270,7 @@ void NetworkClientRequestMove(CompanyID company_id)
  */
 void NetworkClientsToSpectators(CompanyID cid)
 {
-	Backup<CompanyID> cur_company(_current_company);
+	AutoRestoreBackup cur_company(_current_company, _current_company);
 	/* If our company is changing owner, go to spectators */
 	if (cid == _local_company) SetLocalCompany(COMPANY_SPECTATOR);
 
@@ -1279,8 +1279,6 @@ void NetworkClientsToSpectators(CompanyID cid)
 		NetworkTextMessage(NetworkAction::CompanySpectator, CC_DEFAULT, false, ci->client_name);
 		ci->client_playas = COMPANY_SPECTATOR;
 	}
-
-	cur_company.Restore();
 }
 
 /**

@@ -1131,7 +1131,7 @@ static void ChopLumberMillTrees(Industry *i)
 		_industry_sound_tile = tile;
 		if (_settings_client.sound.ambient) SndPlayTileFx(SND_38_LUMBER_MILL_1, tile);
 
-		AutoRestoreBackup<CompanyID> cur_company(_current_company, OWNER_NONE);
+		AutoRestoreBackup cur_company(_current_company, OWNER_NONE);
 		Command<Commands::LandscapeClear>::Do(DoCommandFlag::Execute, tile);
 
 		/* Add according value to waiting cargo. */
@@ -1503,9 +1503,8 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
 				}
 
 				/* Clear the tiles as OWNER_TOWN to not affect town rating, and to not clear protected buildings */
-				Backup<CompanyID> cur_company(_current_company, OWNER_TOWN);
+				AutoRestoreBackup cur_company(_current_company, OWNER_TOWN);
 				ret = Command<Commands::LandscapeClear>::Do({}, cur_tile);
-				cur_company.Restore();
 
 				if (ret.Failed()) return ret;
 			} else {
@@ -1649,7 +1648,7 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlags flags
 
 	/* _current_company is OWNER_NONE for randomly generated industries and in editor, or the company who funded or prospected the industry.
 	 * Perform terraforming as OWNER_TOWN to disable autoslope and town ratings. */
-	Backup<CompanyID> cur_company(_current_company, OWNER_TOWN);
+	AutoRestoreBackup cur_company(_current_company, OWNER_TOWN);
 
 	for (TileIndex tile_walk : ta) {
 		uint curh = TileHeight(tile_walk);
@@ -1657,13 +1656,11 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlags flags
 			/* This tile needs terraforming. Check if we can do that without
 			 *  damaging the surroundings too much. */
 			if (!CheckCanTerraformSurroundingTiles(tile_walk, h, 0)) {
-				cur_company.Restore();
 				return false;
 			}
 			/* This is not 100% correct check, but the best we can do without modifying the map.
 			 *  What is missing, is if the difference in height is more than 1.. */
 			if (std::get<0>(Command<Commands::TerraformLand>::Do(DoCommandFlags{flags}.Reset(DoCommandFlag::Execute), tile_walk, SLOPE_N, curh <= h)).Failed()) {
-				cur_company.Restore();
 				return false;
 			}
 		}
@@ -1683,7 +1680,6 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlags flags
 		}
 	}
 
-	cur_company.Restore();
 	return true;
 }
 
@@ -2102,7 +2098,7 @@ CommandCost CmdBuildIndustry(DoCommandFlags flags, TileIndex tile, IndustryType 
 			if (prospect_success) {
 				/* Prospected industries are build as OWNER_TOWN to not e.g. be build on owned land of the founder */
 				IndustryAvailabilityCallType calltype = _current_company == OWNER_DEITY ? IACT_RANDOMCREATION : IACT_PROSPECTCREATION;
-				Backup<CompanyID> cur_company(_current_company, OWNER_TOWN);
+				AutoRestoreBackup cur_company(_current_company, OWNER_TOWN);
 				for (int i = 0; i < 5000; i++) {
 					/* We should not have more than one Random() in a function call
 					 * because parameter evaluation order is not guaranteed in the c++ standard
@@ -2118,7 +2114,6 @@ CommandCost CmdBuildIndustry(DoCommandFlags flags, TileIndex tile, IndustryType 
 					}
 					if (ret.Succeeded()) break;
 				}
-				cur_company.Restore();
 			}
 			if (ret.Failed() && IsLocalCompany()) {
 				if (prospect_success) {
@@ -2406,12 +2401,10 @@ static Industry *PlaceIndustry(IndustryType type, IndustryAvailabilityCallType c
  */
 static void PlaceInitialIndustry(IndustryType type, bool water, bool try_hard)
 {
-	Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
+	AutoRestoreBackup cur_company(_current_company, OWNER_NONE);
 
 	IncreaseGeneratingWorldProgress(water ? GWP_WATER_INDUSTRY : GWP_LAND_INDUSTRY);
 	PlaceIndustry(type, IACT_MAPGENERATION, try_hard);
-
-	cur_company.Restore();
 }
 
 /**
@@ -3101,7 +3094,7 @@ static const IntervalTimer<TimerGameEconomy> _economy_industries_daily({TimerGam
 		return;  // Nothing to do? get out
 	}
 
-	Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
+	AutoRestoreBackup cur_company(_current_company, OWNER_NONE);
 
 	/* perform the required industry changes for the day */
 
@@ -3121,15 +3114,14 @@ static const IntervalTimer<TimerGameEconomy> _economy_industries_daily({TimerGam
 		}
 	}
 
-	cur_company.Restore();
-
 	/* production-change */
 	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, IDIWD_PRODUCTION_CHANGE);
 });
 
+/** Economy monthly loop for industries. */
 static const IntervalTimer<TimerGameEconomy> _economy_industries_monthly({TimerGameEconomy::Trigger::Month, TimerGameEconomy::Priority::Industry}, [](auto)
 {
-	Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
+	AutoRestoreBackup cur_company(_current_company, OWNER_NONE);
 
 	_industry_builder.EconomyMonthlyLoop();
 
@@ -3142,8 +3134,6 @@ static const IntervalTimer<TimerGameEconomy> _economy_industries_monthly({TimerG
 			SetWindowDirty(WC_INDUSTRY_VIEW, i->index);
 		}
 	}
-
-	cur_company.Restore();
 
 	/* production-change */
 	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, IDIWD_PRODUCTION_CHANGE);

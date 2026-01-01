@@ -324,7 +324,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	/* We need to set _current_company to old_owner before we try to move
 	 * the client. This is needed as it needs to know whether "you" really
 	 * are the current local company. */
-	Backup<CompanyID> cur_company(_current_company, old_owner);
+	AutoRestoreBackup cur_company(_current_company, old_owner);
 	/* In all cases, make spectators of clients connected to that company */
 	if (_networking) NetworkClientsToSpectators(old_owner);
 	if (old_owner == _local_company) {
@@ -537,8 +537,6 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 
 	/* Change colour of existing windows */
 	if (new_owner != INVALID_OWNER) ChangeWindowOwner(old_owner, new_owner);
-
-	cur_company.Restore();
 
 	MarkWholeScreenDirty();
 }
@@ -1185,7 +1183,7 @@ CargoPayment::~CargoPayment()
 
 	if (this->visual_profit == 0 && this->visual_transfer == 0) return;
 
-	Backup<CompanyID> cur_company(_current_company, this->front->owner);
+	AutoRestoreBackup cur_company(_current_company, this->front->owner);
 
 	SubtractMoneyFromCompany(_current_company, CommandCost(this->front->GetExpenseType(true), -this->route_profit));
 	this->front->profit_this_year += (this->visual_profit + this->visual_transfer) << 8;
@@ -1202,8 +1200,6 @@ CargoPayment::~CargoPayment()
 		ShowCostOrIncomeAnimation(moving_front->x_pos, moving_front->y_pos,
 				moving_front->z_pos, -this->visual_profit);
 	}
-
-	cur_company.Restore();
 }
 
 /**
@@ -1476,7 +1472,7 @@ static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station 
 	Vehicle *v_start = v->GetFirstEnginePart();
 	if (!IterateVehicleParts(v_start, IsEmptyAction())) return;
 
-	Backup<CompanyID> cur_company(_current_company, v->owner);
+	AutoRestoreBackup cur_company(_current_company, v->owner);
 
 	CargoTypes refit_mask = v->GetEngine()->info.refit_mask;
 
@@ -1521,8 +1517,6 @@ static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station 
 	/* Add new capacity to consist capacity and reserve cargo */
 	IterateVehicleParts(v_start, FinalizeRefitAction(consist_capleft, st, next_station,
 			is_auto_refit || v->First()->current_order.IsFullLoadOrder()));
-
-	cur_company.Restore();
 }
 
 /**

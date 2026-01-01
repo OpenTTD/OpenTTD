@@ -43,10 +43,8 @@
 
 	Game::frame_counter++;
 
-	Backup<CompanyID> cur_company(_current_company);
-	cur_company.Change(OWNER_DEITY);
+	AutoRestoreBackup cur_company(_current_company, OWNER_DEITY);
 	Game::instance->GameLoop();
-	cur_company.Restore();
 
 	/* Occasionally collect garbage */
 	if ((Game::frame_counter & 255) == 0) {
@@ -85,16 +83,13 @@
 
 	config->AnchorUnchangeableSettings();
 
-	Backup<CompanyID> cur_company(_current_company);
-	cur_company.Change(OWNER_DEITY);
+	AutoRestoreBackup cur_company(_current_company, OWNER_DEITY);
 
 	Game::info = info;
 	Game::instance = std::make_unique<GameInstance>();
 	Game::instance->Initialize(info);
 	Game::instance->LoadOnStack(config->GetToLoadData());
 	config->SetToLoadData(nullptr);
-
-	cur_company.Restore();
 
 	InvalidateWindowClassesData(WC_SCRIPT_DEBUG, -1);
 }
@@ -148,9 +143,8 @@
 	}
 
 	/* Queue the event */
-	Backup<CompanyID> cur_company(_current_company, OWNER_DEITY);
+	AutoRestoreBackup cur_company(_current_company, OWNER_DEITY);
 	Game::instance->InsertEvent(event);
-	cur_company.Restore();
 }
 
 /* static */ void Game::ResetConfig()
@@ -192,9 +186,8 @@
 /* static */ void Game::Save()
 {
 	if (Game::instance != nullptr && (!_networking || _network_server)) {
-		Backup<CompanyID> cur_company(_current_company, OWNER_DEITY);
+		AutoRestoreBackup cur_company(_current_company, OWNER_DEITY);
 		Game::instance->Save();
-		cur_company.Restore();
 	} else {
 		GameInstance::SaveEmpty();
 	}
