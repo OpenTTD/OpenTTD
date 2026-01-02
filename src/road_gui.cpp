@@ -1322,6 +1322,8 @@ public:
 		}
 	}
 
+	void SetSelectedCollection([[maybe_unused]] const std::set<PickerItem> items) const override { return; }
+
 	void FillUsedItems(std::set<PickerItem> &items) override
 	{
 		for (const Station *st : Station::Iterate()) {
@@ -1747,6 +1749,8 @@ public:
 			DrawRoadStopTile(x, y, _cur_roadtype, spec, StationType::RoadWaypoint, RSV_DRIVE_THROUGH_X);
 		}
 	}
+
+	void SetSelectedCollection([[maybe_unused]] const std::set<PickerItem> items) const override { return; }
 
 	void FillUsedItems(std::set<PickerItem> &items) override
 	{

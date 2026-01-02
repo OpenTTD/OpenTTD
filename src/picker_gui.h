@@ -161,6 +161,11 @@ public:
 	 */
 	virtual StringID GetRandomTooltip() const = 0;
 	/**
+	 * Set the selected collection.
+	 * @param items the collection to set for placement.
+	 */
+	virtual void SetSelectedCollection([[maybe_unused]] const std::set<PickerItem> items) const = 0;
+	/**
 	 * Is collection randomisation supported at all for this picker type?
 	 * @return \c true If we support randomization for the picker type.
 	 */
@@ -219,6 +224,7 @@ public:
 
 	const std::string ini_group; ///< Ini Group for saving favourites.
 	uint8_t mode = 0; ///< Bitmask of \c PickerFilterModes.
+	bool place_collection = false;       ///< Are we placing a collection?
 	bool rename_collection = false;      ///< Are we renaming a collection?
 	std::string sel_collection;          ///< Currently selected collection of saved items.
 	std::string edit_collection;         ///< Collection to rename or delete.
