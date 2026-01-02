@@ -43,10 +43,10 @@ enum class BridgePillarFlag : uint8_t {
 	CornerE = 2, ///< East corner is obstructed.
 	CornerN = 3, ///< North corner is obstructed.
 	/* Edges are in the same order as DiagDirection enum. */
-	EdgeNE = 4, //< Northeast edge is obstructed.
-	EdgeSE = 5, //< Southeast edge is obstructed.
-	EdgeSW = 6, //< Southwest edge is obstructed.
-	EdgeNW = 7, //< Northwest edge is obstructed.
+	EdgeNE = 4, ///< Northeast edge is obstructed.
+	EdgeSE = 5, ///< Southeast edge is obstructed.
+	EdgeSW = 6, ///< Southwest edge is obstructed.
+	EdgeNW = 7, ///< Northwest edge is obstructed.
 };
 using BridgePillarFlags = EnumBitSet<BridgePillarFlag, uint8_t>;
 

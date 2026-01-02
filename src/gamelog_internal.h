@@ -56,7 +56,7 @@ struct LoggedChangeRevision : LoggedChange {
 	std::string text{}; ///< revision string, _openttd_revision
 	uint32_t newgrf = 0; ///< _openttd_newgrf_version
 	uint16_t slver = 0; ///< _sl_version
-	uint8_t modified = 0; //< _openttd_revision_modified
+	uint8_t modified = 0; ///< _openttd_revision_modified
 };
 
 struct LoggedChangeOldVersion : LoggedChange {

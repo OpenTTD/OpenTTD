@@ -159,12 +159,12 @@ static const int AMPLITUDE_DECIMAL_BITS = 10;
 /** Height map - allocated array of heights (Map::SizeX() + 1) * (Map::SizeY() + 1) */
 struct HeightMap
 {
-	std::vector<Height> h; //< array of heights
+	std::vector<Height> h; ///< array of heights
 	/* Even though the sizes are always positive, there are many cases where
 	 * X and Y need to be signed integers due to subtractions. */
-	int      dim_x;      //< height map size_x Map::SizeX() + 1
-	int      size_x;     //< Map::SizeX()
-	int      size_y;     //< Map::SizeY()
+	int      dim_x;      ///< height map size_x Map::SizeX() + 1
+	int      size_x;     ///< Map::SizeX()
+	int      size_y;     ///< Map::SizeY()
 
 	/**
 	 * Height map accessor

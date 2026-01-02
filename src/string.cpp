@@ -753,7 +753,7 @@ public:
 class DefaultStringIterator : public StringIterator
 {
 	Utf8View string; ///< Current string.
-	Utf8View::iterator cur_pos; //< Current iteration position.
+	Utf8View::iterator cur_pos; ///< Current iteration position.
 
 public:
 	void SetString(std::string_view s) override
