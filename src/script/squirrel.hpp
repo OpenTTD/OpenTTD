@@ -293,6 +293,11 @@ public:
 	size_t GetAllocatedMemory() const noexcept;
 
 	/**
+	 * Get the peak number of bytes allocated by this VM.
+	 */
+	size_t GetPeakAllocatedMemory() const noexcept;
+
+	/**
 	 * Increase number of bytes allocated in the current script allocator scope.
 	 * @param bytes Number of bytes to increase.
 	 */

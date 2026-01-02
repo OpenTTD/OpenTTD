@@ -84,6 +84,16 @@ ScriptController::ScriptController(::CompanyID company) :
 	return ScriptObject::GetActiveInstance().GetOpsTillSuspend();
 }
 
+/* static */ SQInteger ScriptController::GetPeakAllocatedMemory()
+{
+	return ScriptObject::GetActiveInstance().GetPeakAllocatedMemory();
+}
+
+/* static */ SQInteger ScriptController::GetAllocatedMemory()
+{
+	return ScriptObject::GetActiveInstance().GetAllocatedMemory();
+}
+
 /* static */ void ScriptController::DecreaseOps(int amount)
 {
 	Squirrel &engine = *ScriptObject::GetActiveInstance().engine;

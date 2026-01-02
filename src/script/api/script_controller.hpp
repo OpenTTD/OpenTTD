@@ -121,6 +121,20 @@ public:
 	static int GetOpsTillSuspend();
 
 	/**
+	 * Get the peak amount of memory allocated by the script in bytes
+	 * @return The peak amount of memory allocated.
+	 * @api all
+	 */
+	static SQInteger GetPeakAllocatedMemory();
+
+	/**
+	 * Get the current amount of memory allocated by the script in bytes
+	 * @return The current amount of memory allocated.
+	 * @api all
+	 */
+	static SQInteger GetAllocatedMemory();
+
+	/**
 	 * Remove \c amount ops from the number of ops till suspend.
 	 * @api none
 	 */
