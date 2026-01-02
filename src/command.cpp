@@ -190,7 +190,7 @@ void CommandHelperBase::InternalDoAfter(CommandCost &res, DoCommandFlags flags, 
 	} else {
 		/* If top-level, subtract the money. */
 		if (res.Succeeded() && top_level && !flags.Test(DoCommandFlag::Bankrupt)) {
-			SubtractMoneyFromCompany(res);
+			SubtractMoneyFromCompany(_current_company, res);
 		}
 	}
 }
@@ -381,7 +381,7 @@ CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, Comman
 		if (c != nullptr) c->last_build_coordinate = tile;
 	}
 
-	SubtractMoneyFromCompany(res_exec);
+	SubtractMoneyFromCompany(_current_company, res_exec);
 
 	/* Record if there was a command issues during pause; ignore pause/other setting related changes. */
 	if (_pause_mode.Any() && _command_proc_table[cmd].type != CommandType::ServerSetting) _pause_mode.Set(PauseMode::CommandDuringPause);
