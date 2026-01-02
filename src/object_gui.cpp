@@ -107,6 +107,8 @@ public:
 		}
 	}
 
+	void SetSelectedCollection([[maybe_unused]] const std::set<PickerItem>) const override { return; }
+
 	void FillUsedItems(std::set<PickerItem> &items) override
 	{
 		for (const Object *o : Object::Iterate()) {

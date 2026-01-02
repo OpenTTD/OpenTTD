@@ -1476,6 +1476,7 @@ public:
 	static inline int sel_class; ///< Currently selected 'class'.
 	static inline int sel_type; ///< Currently selected HouseID.
 	static inline int sel_view; ///< Currently selected 'view'. This is not controllable as its based on random data.
+	static inline std::vector<int> sel_collection; ///< Currently selected collection.
 
 	/* Houses do not have classes like NewGRFClass. We'll make up fake classes based on town zone
 	 * availability instead. */
@@ -1568,6 +1569,15 @@ public:
 	void DrawType(int x, int y, int, int id) const override
 	{
 		DrawHouseInGUI(x, y, id, HousePickerCallbacks::sel_view);
+	}
+
+	void SetSelectedCollection(std::set<PickerItem> items) const override
+	{
+		sel_collection.clear();
+		sel_collection.reserve(items.size());
+		for (const PickerItem &item : items) {
+			if (item.class_index != -1 && item.index != -1) sel_collection.emplace_back(item.index);
+		}
 	}
 
 	bool IsCollectionRandomisationSupported() const override { return true; }
