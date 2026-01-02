@@ -1491,6 +1491,7 @@ public:
 
 	StringID GetClassTooltip() const override { return STR_PICKER_HOUSE_CLASS_TOOLTIP; }
 	StringID GetTypeTooltip() const override { return STR_PICKER_HOUSE_TYPE_TOOLTIP; }
+	StringID GetCollectionTooltip() const override { return STR_PICKER_HOUSE_COLLECTION_TOOLTIP; }
 	bool IsActive() const override { return true; }
 
 	bool HasClassChoice() const override { return true; }

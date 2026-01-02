@@ -81,6 +81,10 @@ public:
 	/** Draw preview image of an item. */
 	virtual void DrawType(int x, int y, int cls_id, int id) const = 0;
 
+	/* Collection Callbacks */
+	/** Get the tooltip string for the collection list. */
+	virtual StringID GetCollectionTooltip() const = 0;
+
 	/** Fill a set with all items that are used by the current player. */
 	virtual void FillUsedItems(std::set<PickerItem> &items) = 0;
 	/** Update link between grfid/localidx and class_index/index in saved items. */
@@ -120,7 +124,9 @@ public:
 
 	const std::string ini_group; ///< Ini Group for saving favourites.
 	uint8_t mode = 0; ///< Bitmask of \c PickerFilterModes.
+	bool rename_collection = false;      ///< Are we renaming a collection?
 	std::string sel_collection;          ///< Currently selected collection of saved items.
+	std::string edit_collection;         ///< Collection to rename or delete.
 	std::set<std::string> rm_collections; ///< Set of removed or renamed collections for updating ini file.
 
 	int preview_height = 0; ///< Previously adjusted height.
@@ -222,6 +228,7 @@ public:
 
 	bool has_class_picker = false; ///< Set if this window has a class picker 'component'.
 	bool has_type_picker = false; ///< Set if this window has a type picker 'component'.
+	bool has_collection_picker = false; ///< Set if this window has a collection picker 'component'.
 	int preview_height = 0; ///< Height of preview images.
 	std::set<std::string> inactive; ///< Set of collections with inactive items.
 
@@ -230,10 +237,13 @@ public:
 	void Close(int data = 0) override;
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, const Dimension &padding, Dimension &fill, Dimension &resize) override;
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override;
+	DropDownList BuildCollectionDropDownList();
 	void DrawWidget(const Rect &r, WidgetID widget) const override;
 	void OnDropdownSelect(WidgetID widget, int index, int click_result) override;
 	void OnResize() override;
+	void static DeletePickerCollectionCallback(Window *win, bool confirmed);
 	void OnClick(Point pt, WidgetID widget, int click_count) override;
+	void OnQueryTextFinished(std::optional<std::string> str) override;
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override;
 	EventState OnHotkey(int hotkey) override;
 	void OnEditboxChanged(WidgetID wid) override;
