@@ -23,7 +23,7 @@ jobs:
         xcode-version: latest-stable
 
     - name: Download source
-      uses: actions/download-artifact@v6
+      uses: actions/download-artifact@v7
       with:
         name: internal-source
 
@@ -77,7 +77,7 @@ jobs:
         echo "::endgroup::"
 
     - name: Import code signing certificates
-      uses: Apple-Actions/import-codesign-certs@v5
+      uses: Apple-Actions/import-codesign-certs@v6
       with:
         # The certificates in a PKCS12 file encoded as a base64 string
         p12-file-base64: ${{ secrets.APPLE_DEVELOPER_CERTIFICATE_P12_BASE64 }}
@@ -203,14 +203,14 @@ jobs:
         mv _CPack_Packages/*/Bundle/openttd-*.zip bundles/
 
     - name: Store bundles
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v6
       with:
         name: openttd-macos-universal
         path: build-x64/bundles
         retention-days: 5
 
     - name: Store symbols
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v6
       with:
         name: symbols-macos-universal
         path: build-x64/symbols
