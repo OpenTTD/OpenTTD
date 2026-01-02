@@ -36,6 +36,18 @@ private:
 
 	static_assert(sizeof(TileBaseCommon) == 2);
 
+	/** Storage for TileType::Clear tile base. */
+	struct ClearTileBase : TileBaseCommon {
+		uint8_t field_type : 4 = 0; ///< Field production stage.
+		uint8_t snow_presence : 1 = 0; ///< If the tile is covered with snow.
+		uint8_t hedge_NE : 3 = 0; ///< Type of hedge on NE border.
+	private:
+		[[maybe_unused]] uint8_t bit_offset : 2 = 0; ///< Unused. @note Prevents save conversion.
+	public:
+		uint8_t hedge_SE : 3 = 0; ///< Type of hedge on SE border.
+		uint8_t hedge_SW : 3 = 0; ///< Type of hedge on SW border.
+	};
+
 	/** Data that is stored per tile in old save games. Also used OldTileExtended for this. */
 	struct OldTileBase {
 		uint8_t type = 0; ///< The type (bits 4..7), bridges (2..3), rainforest/desert (0..1).
@@ -51,6 +63,7 @@ private:
 	union TileBase {
 		uint32_t base; ///< Bare access to all bits, useful for saving, loading and constructing map array.
 		TileBaseCommon common; ///< Common storage for all tile bases.
+		ClearTileBase clear; ///< Storage for tiles with: grass, snow, sand etc.
 		OldTileBase old; ///< Used to preserve compatibility with older save games.
 
 		/** Construct empty tile base storage. */
@@ -76,13 +89,25 @@ private:
 		uint8_t animation_state : 2 = 0; ///< Animated tile state.
 	};
 
+	/** Storage for TileType::Clear tile extended. */
+	struct ClearTileExtended : TileExtendedCommon {
+		uint8_t density : 2 = 0; ///< The density of a non-field clear tile.
+		uint8_t ground : 3 = 0; ///< The type of ground.
+		uint8_t update : 3 = 0; ///< The counter used to advance to the next clear density/field type.
+		uint16_t farm_index = 0; ///< Farm index on industries poll.
+	private:
+		[[maybe_unused]] uint8_t bit_offset : 2 = 0; ///< Unused. @note These bits are reserved for animated tile state.
+	public:
+		uint8_t hedge_NW : 3 = 0; ///< Type of hedge on NW border.
+	};
+
 	/** Data that is stored per tile in old save games. Also used OldTileBase for this. */
 	struct OldTileExtended {
 		uint8_t m1 = 0; ///< Primarily used for ownership information
 		uint8_t m5 = 0; ///< General purpose
+		uint16_t m2 = 0; ///< Primarily used for indices to towns, industries and stations
 		uint8_t m6 = 0; ///< General purpose
 		uint8_t m7 = 0; ///< Primarily used for newgrf support
-		uint16_t m2 = 0; ///< Primarily used for indices to towns, industries and stations
 		uint16_t m8 = 0; ///< General purpose
 	};
 
@@ -93,6 +118,7 @@ private:
 	union TileExtended {
 		uint64_t base; ///< Bare access to all bits, useful for saving, loading and constructing map array.
 		TileExtendedAnimatedCommon common; ///< Common storage for all tile extends.
+		ClearTileExtended clear; ///< Storage for tiles with: grass, snow, sand etc.
 		OldTileExtended old; ///< Used to preserve compatibility with older save games.
 
 		/** Construct empty tile extended storage. */
@@ -129,6 +155,20 @@ public:
 	 */
 	[[debug_inline]] inline constexpr operator uint() const { return this->tile.base(); }
 
+	/** Clears all bits that are not shared between all TileTypes. */
+	[[debug_inline]] inline void ResetData()
+	{
+		TileBase &base = base_tiles[this->tile.base()];
+		TileBaseCommon base_common = base.common;
+		base.base = 0;
+		base.common = base_common;
+
+		TileExtended &extended = extended_tiles[this->tile.base()];
+		uint8_t animation_state = extended.common.animation_state;
+		extended.base = 0;
+		extended.common.animation_state = animation_state;
+	}
+
 	/**
 	 * The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)
 	 *
@@ -151,6 +191,32 @@ public:
 	[[debug_inline]] inline uint8_t &height()
 	{
 		return base_tiles[this->tile.base()].common.height;
+	}
+
+	/**
+	 * Get the internall TileBase structure for appropriate TileType.
+	 * @tparam Type The TileType to get the structure for.
+	 * @return The appropriate structure from TileBase union.
+	 */
+	template<TileType Type>
+	[[debug_inline]] inline auto &GetTileBaseAs()
+	{
+		if constexpr (Type == TileType::Clear) {
+			return base_tiles[this->tile.base()].clear;
+		}
+	}
+
+	/**
+	 * Get the internall TileExtended structure for appropriate TileType.
+	 * @tparam Type The TileType to get the structure for.
+	 * @return The appropriate structure from TileExtended union.
+	 */
+	template<TileType Type>
+	[[debug_inline]] inline auto &GetTileExtendedAs()
+	{
+		if constexpr (Type == TileType::Clear) {
+			return extended_tiles[this->tile.base()].clear;
+		}
 	}
 
 	/**
