@@ -403,19 +403,6 @@ struct GenerateLandscapeWindow : public Window {
 
 		this->mode = this->window_number;
 
-		/* Disable town and industry in SE */
-		this->SetWidgetDisabledState(WID_GL_TOWN_PULLDOWN,     _game_mode == GM_EDITOR);
-		this->SetWidgetDisabledState(WID_GL_INDUSTRY_PULLDOWN, _game_mode == GM_EDITOR);
-
-		/* In case the map_height_limit is changed, clamp heightmap_height and custom_terrain_type. */
-		_settings_newgame.game_creation.heightmap_height = Clamp(_settings_newgame.game_creation.heightmap_height, MIN_HEIGHTMAP_HEIGHT, GetMapHeightLimit());
-		_settings_newgame.game_creation.custom_terrain_type = Clamp(_settings_newgame.game_creation.custom_terrain_type, MIN_CUSTOM_TERRAIN_TYPE, GetMapHeightLimit());
-
-		/* If original landgenerator is selected and alpinist terrain_type was selected, revert to mountainous. */
-		if (_settings_newgame.game_creation.land_generator == LG_ORIGINAL) {
-			_settings_newgame.difficulty.terrain_type = Clamp(_settings_newgame.difficulty.terrain_type, 0, 3);
-		}
-
 		this->OnInvalidateData();
 	}
 
@@ -498,18 +485,24 @@ struct GenerateLandscapeWindow : public Window {
 	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
+
 		/* Update the climate buttons */
 		this->SetWidgetLoweredState(WID_GL_TEMPERATE, _settings_newgame.game_creation.landscape == LandscapeType::Temperate);
 		this->SetWidgetLoweredState(WID_GL_ARCTIC,    _settings_newgame.game_creation.landscape == LandscapeType::Arctic);
 		this->SetWidgetLoweredState(WID_GL_TROPICAL,  _settings_newgame.game_creation.landscape == LandscapeType::Tropic);
 		this->SetWidgetLoweredState(WID_GL_TOYLAND,   _settings_newgame.game_creation.landscape == LandscapeType::Toyland);
 
-		/* You can't select smoothness / non-water borders if not terragenesis */
+		bool original = _settings_newgame.game_creation.land_generator == LG_ORIGINAL;
+
+		/* Update buttons only available when generating a new landscape. */
 		if (mode == GLWM_GENERATE) {
-			this->SetWidgetDisabledState(WID_GL_SMOOTHNESS_PULLDOWN, _settings_newgame.game_creation.land_generator == LG_ORIGINAL);
-			this->SetWidgetDisabledState(WID_GL_VARIETY_PULLDOWN, _settings_newgame.game_creation.land_generator == LG_ORIGINAL);
-			this->SetWidgetDisabledState(WID_GL_BORDERS_PULLDOWN, _settings_newgame.game_creation.land_generator == LG_ORIGINAL);
-			this->SetWidgetsDisabledState(_settings_newgame.game_creation.land_generator == LG_ORIGINAL || !_settings_newgame.construction.freeform_edges || _settings_newgame.game_creation.water_borders == BorderFlag::Random,
+			/* If using the original land generator, some settings are disabled. */
+			this->SetWidgetDisabledState(WID_GL_SMOOTHNESS_PULLDOWN, original);
+			this->SetWidgetDisabledState(WID_GL_VARIETY_PULLDOWN, original);
+			this->SetWidgetDisabledState(WID_GL_BORDERS_PULLDOWN, original);
+
+			/* Water edge buttons might be disabled for a variety of reasons. */
+			this->SetWidgetsDisabledState(original || !_settings_newgame.construction.freeform_edges || _settings_newgame.game_creation.water_borders == BorderFlag::Random,
 					WID_GL_WATER_NW, WID_GL_WATER_NE, WID_GL_WATER_SE, WID_GL_WATER_SW);
 
 			this->SetWidgetLoweredState(WID_GL_WATER_NW, _settings_newgame.game_creation.water_borders.Test(BorderFlag::NorthWest));
@@ -517,9 +510,26 @@ struct GenerateLandscapeWindow : public Window {
 			this->SetWidgetLoweredState(WID_GL_WATER_SE, _settings_newgame.game_creation.water_borders.Test(BorderFlag::SouthEast));
 			this->SetWidgetLoweredState(WID_GL_WATER_SW, _settings_newgame.game_creation.water_borders.Test(BorderFlag::SouthWest));
 
-			this->SetWidgetsDisabledState(_settings_newgame.game_creation.land_generator == LG_ORIGINAL && (_settings_newgame.game_creation.landscape == LandscapeType::Arctic || _settings_newgame.game_creation.landscape == LandscapeType::Tropic),
+			this->SetWidgetsDisabledState(original && (_settings_newgame.game_creation.landscape == LandscapeType::Arctic || _settings_newgame.game_creation.landscape == LandscapeType::Tropic),
 					WID_GL_TERRAIN_PULLDOWN, WID_GL_WATER_PULLDOWN);
 		}
+
+		/* Do not allow a custom sea level or terrain type with the original land generator. */
+		if (original) {
+			if (_settings_newgame.difficulty.quantity_sea_lakes == CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY) {
+				_settings_newgame.difficulty.quantity_sea_lakes = 1;
+			}
+			/* If original landgenerator is selected, don't allow anything taller than Alpinist, including Custom. */
+			_settings_newgame.difficulty.terrain_type = Clamp(_settings_newgame.difficulty.terrain_type, 0, 3);
+		}
+
+		/* Disable town and industry in Scenario Editor. */
+		this->SetWidgetDisabledState(WID_GL_TOWN_PULLDOWN, _game_mode == GM_EDITOR);
+		this->SetWidgetDisabledState(WID_GL_INDUSTRY_PULLDOWN, _game_mode == GM_EDITOR);
+
+		/* In case the map_height_limit is changed, clamp heightmap_height and custom_terrain_type. */
+		_settings_newgame.game_creation.heightmap_height = Clamp(_settings_newgame.game_creation.heightmap_height, MIN_HEIGHTMAP_HEIGHT, GetMapHeightLimit());
+		_settings_newgame.game_creation.custom_terrain_type = Clamp(_settings_newgame.game_creation.custom_terrain_type, MIN_CUSTOM_TERRAIN_TYPE, GetMapHeightLimit());
 
 		/* Disable snowline if not arctic */
 		this->SetWidgetDisabledState(WID_GL_SNOW_COVERAGE_TEXT, _settings_newgame.game_creation.landscape != LandscapeType::Arctic);
@@ -548,17 +558,6 @@ struct GenerateLandscapeWindow : public Window {
 		this->SetWidgetDisabledState(WID_GL_SNOW_COVERAGE_UP,   _settings_newgame.game_creation.snow_coverage >= 100 || _settings_newgame.game_creation.landscape != LandscapeType::Arctic);
 		this->SetWidgetDisabledState(WID_GL_DESERT_COVERAGE_DOWN, _settings_newgame.game_creation.desert_coverage <= 0 || _settings_newgame.game_creation.landscape != LandscapeType::Tropic);
 		this->SetWidgetDisabledState(WID_GL_DESERT_COVERAGE_UP,   _settings_newgame.game_creation.desert_coverage >= 100 || _settings_newgame.game_creation.landscape != LandscapeType::Tropic);
-
-		/* Do not allow a custom sea level or terrain type with the original land generator. */
-		if (_settings_newgame.game_creation.land_generator == LG_ORIGINAL) {
-			if (_settings_newgame.difficulty.quantity_sea_lakes == CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY) {
-				_settings_newgame.difficulty.quantity_sea_lakes = 1;
-			}
-			if (_settings_newgame.difficulty.terrain_type == CUSTOM_TERRAIN_TYPE_NUMBER_DIFFICULTY) {
-				_settings_newgame.difficulty.terrain_type = 1;
-			}
-		}
-
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
