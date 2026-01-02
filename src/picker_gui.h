@@ -66,7 +66,6 @@ public:
 	virtual StringID GetTypeTooltip() const = 0;
 	/** Get the number of types in a class. @note Used only to estimate space requirements. */
 	virtual int GetTypeCount(int cls_id) const = 0;
-
 	/** Get the selected type. */
 	virtual int GetSelectedType() const = 0;
 	/** Set the selected type. */
@@ -85,7 +84,31 @@ public:
 	/** Fill a set with all items that are used by the current player. */
 	virtual void FillUsedItems(std::set<PickerItem> &items) = 0;
 	/** Update link between grfid/localidx and class_index/index in saved items. */
-	virtual std::set<PickerItem> UpdateSavedItems(const std::set<PickerItem> &src) = 0;
+	virtual std::map<std::string, std::set<PickerItem>> UpdateSavedItems(const std::map<std::string, std::set<PickerItem>> &src) = 0;
+	/**
+	 * Initialize the list of active collections for sorting purposes.
+	 * @param collections The map of collections to check.
+	 * @return The set of collections with inactive items.
+	 */
+	inline std::set<std::string> InitializeInactiveCollections(const std::map<std::string, std::set<PickerItem>> collections)
+	{
+		std::set<std::string> inactive;
+
+		for (const auto &collection : collections) {
+			if ((collection.second.size() == 1 && collection.second.contains({})) || collection.first == "") continue;
+			for (const PickerItem &item : collection.second) {
+				if (item.class_index == -1 || item.index == -1) {
+					inactive.emplace(collection.first);
+					break;
+				}
+				if (GetTypeName(item.class_index, item.index) == INVALID_STRING_ID) {
+					inactive.emplace(collection.first);
+					break;
+				}
+			}
+		}
+		return inactive;
+	}
 
 	Listing class_last_sorting = { false, 0 }; ///< Default sorting of #PickerClassList.
 	Filtering class_last_filtering = { false, 0 }; ///< Default filtering of #PickerClassList.
@@ -93,13 +116,17 @@ public:
 	Listing type_last_sorting = { false, 0 }; ///< Default sorting of #PickerTypeList.
 	Filtering type_last_filtering = { false, 0 }; ///< Default filtering of #PickerTypeList.
 
+	Listing collection_last_sorting = { false, 0 }; ///< Default sorting of #PickerCollectionList.
+
 	const std::string ini_group; ///< Ini Group for saving favourites.
 	uint8_t mode = 0; ///< Bitmask of \c PickerFilterModes.
+	std::string sel_collection;          ///< Currently selected collection of saved items.
+	std::set<std::string> rm_collections; ///< Set of removed or renamed collections for updating ini file.
 
 	int preview_height = 0; ///< Previously adjusted height.
 
 	std::set<PickerItem> used; ///< Set of items used in the current game by the current company.
-	std::set<PickerItem> saved; ///< Set of saved favourite items.
+	std::map<std::string, std::set<PickerItem>> saved; ///< Set of saved collections of items.
 };
 
 /** Helper for PickerCallbacks when the class system is based on NewGRFClass. */
@@ -128,17 +155,24 @@ public:
 		return GetPickerItem(GetClass(cls_id)->GetSpec(id), cls_id, id);
 	}
 
-	std::set<PickerItem> UpdateSavedItems(const std::set<PickerItem> &src) override
+	std::map<std::string, std::set<PickerItem>> UpdateSavedItems(const std::map<std::string, std::set<PickerItem>> &src) override
 	{
 		if (src.empty()) return {};
 
-		std::set<PickerItem> dst;
-		for (const auto &item : src) {
-			const auto *spec = T::GetByGrf(item.grfid, item.local_id);
-			if (spec == nullptr) {
-				dst.emplace(item.grfid, item.local_id, -1, -1);
-			} else {
-				dst.emplace(GetPickerItem(spec));
+		std::map<std::string, std::set<PickerItem>> dst;
+		for (auto it = src.begin(); it != src.end(); it++) {
+			if (it->second.empty() || (it->second.size() == 1 && it->second.contains({}))) {
+				dst[it->first];
+				continue;
+			}
+
+			for (const auto &item : it->second) {
+				const auto *spec = T::GetByGrf(item.grfid, item.local_id);
+				if (spec == nullptr) {
+					dst[it->first].emplace(item.grfid, item.local_id, -1, -1);
+				} else {
+					dst[it->first].emplace(GetPickerItem(spec));
+				}
 			}
 		}
 		return dst;
@@ -153,6 +187,7 @@ struct PickerFilterData : StringFilter {
 
 using PickerClassList = GUIList<int, std::nullptr_t, PickerFilterData &>; ///< GUIList holding classes to display.
 using PickerTypeList = GUIList<PickerItem, std::nullptr_t, PickerFilterData &>; ///< GUIList holding classes/types to display.
+using PickerCollectionList = GUIList<std::string, std::nullptr_t, PickerFilterData &>; ///< GUIList holding collections to display.
 
 class PickerWindow : public PickerWindowBase {
 public:
@@ -166,6 +201,7 @@ public:
 	enum class PickerInvalidation : uint8_t {
 		Class, ///< Refresh the class list.
 		Type, ///< Refresh the type list.
+		Collection, ///< Refresh the collection list.
 		Position, ///< Update scroll positions.
 		Validate, ///< Validate selected item.
 		Filter, ///< Update filter state.
@@ -187,6 +223,7 @@ public:
 	bool has_class_picker = false; ///< Set if this window has a class picker 'component'.
 	bool has_type_picker = false; ///< Set if this window has a type picker 'component'.
 	int preview_height = 0; ///< Height of preview images.
+	std::set<std::string> inactive; ///< Set of collections with inactive items.
 
 	PickerWindow(WindowDesc &desc, Window *parent, int window_number, PickerCallbacks &callbacks);
 	void OnInit() override;
@@ -230,6 +267,10 @@ private:
 	void BuildPickerTypeList();
 	void EnsureSelectedTypeIsValid();
 	void EnsureSelectedTypeIsVisible();
+
+	PickerCollectionList collections; ///< List of collections.
+
+	void BuildPickerCollectionList();
 
 	GUIBadgeClasses badge_classes;
 	std::pair<WidgetID, WidgetID> badge_filters{};
