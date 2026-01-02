@@ -112,10 +112,10 @@ static constexpr std::initializer_list<NWidgetPart> _nested_generate_landscape_w
 							NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_MAPSIZE_Y_PULLDOWN), SetToolTip(STR_MAPGEN_MAPSIZE_TOOLTIP), SetFill(1, 1),
 						EndContainer(),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_TERRAIN_PULLDOWN), SetToolTip(STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT), SetFill(1, 1),
-						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_VARIETY_PULLDOWN), SetToolTip(STR_CONFIG_SETTING_VARIETY_HELPTEXT), SetFill(1, 1),
-						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_SMOOTHNESS_PULLDOWN), SetToolTip(STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT), SetFill(1, 1),
+						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_VARIETY_PULLDOWN), SetFill(1, 1),
+						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_SMOOTHNESS_PULLDOWN), SetFill(1, 1),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_RIVER_PULLDOWN), SetToolTip(STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT), SetFill(1, 1),
-						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_BORDERS_PULLDOWN), SetToolTip(STR_MAPGEN_BORDER_TYPE_TOOLTIP), SetFill(1, 1),
+						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_BORDERS_PULLDOWN), SetFill(1, 1),
 					EndContainer(),
 				EndContainer(),
 
@@ -500,6 +500,11 @@ struct GenerateLandscapeWindow : public Window {
 			this->SetWidgetDisabledState(WID_GL_SMOOTHNESS_PULLDOWN, original);
 			this->SetWidgetDisabledState(WID_GL_VARIETY_PULLDOWN, original);
 			this->SetWidgetDisabledState(WID_GL_BORDERS_PULLDOWN, original);
+
+			/* Set their tooltips accordingly. */
+			this->GetWidget<NWidgetCore>(WID_GL_VARIETY_PULLDOWN)->SetToolTip(original ? STR_MAPGEN_DISABLED_ORIGINAL : STR_CONFIG_SETTING_VARIETY_HELPTEXT);
+			this->GetWidget<NWidgetCore>(WID_GL_SMOOTHNESS_PULLDOWN)->SetToolTip(original ? STR_MAPGEN_DISABLED_ORIGINAL : STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT);
+			this->GetWidget<NWidgetCore>(WID_GL_BORDERS_PULLDOWN)->SetToolTip(original ? STR_MAPGEN_DISABLED_ORIGINAL : STR_MAPGEN_BORDER_TYPE_TOOLTIP);
 
 			/* Water edge buttons might be disabled for a variety of reasons. */
 			this->SetWidgetsDisabledState(original || !_settings_newgame.construction.freeform_edges || _settings_newgame.game_creation.water_borders == BorderFlag::Random,
