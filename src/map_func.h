@@ -25,31 +25,54 @@
 class Tile {
 private:
 	friend struct Map;
+
+	/** Common storage for all tile bases. */
+	struct TileBaseCommon {
+		uint8_t tropic_zone : 2 = 0; ///< Only meaningful in tropic climate. It contains the definition of the available zones.
+		uint8_t bridge_above : 2 = 0; ///< Presence and direction of bridge above.
+		uint8_t type : 4 = 0; ///< The type of the base tile. @note Max 4 base tile types are allowed.
+		uint8_t height = 0; ///< The height of the northern corner.
+	};
+
+	static_assert(sizeof(TileBaseCommon) == 2);
+
+	/** Data that is stored per tile in old save games. Also used TileExtended for this. */
+	struct OldTileBase {
+		uint8_t type = 0; ///< The type (bits 4..7), bridges (2..3), rainforest/desert (0..1).
+		uint8_t height = 0; ///< The height of the northern corner.
+		uint8_t m3 = 0; ///< General purpose
+		uint8_t m4 = 0; ///< General purpose
+	};
+
 	/**
 	 * Data that is stored per tile. Also used TileExtended for this.
 	 * Look at docs/landscape.html for the exact meaning of the members.
 	 */
-	struct TileBase {
-		uint8_t type = 0; ///< The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)
-		uint8_t height = 0; ///< The height of the northern corner.
-		uint16_t m2 = 0; ///< Primarily used for indices to towns, industries and stations
-		uint8_t m1 = 0; ///< Primarily used for ownership information
-		uint8_t m3 = 0; ///< General purpose
-		uint8_t m4 = 0; ///< General purpose
-		uint8_t m5 = 0; ///< General purpose
+	union TileBase {
+		uint32_t base; ///< Bare access to all bits, useful for saving, loading and constructing map array.
+		TileBaseCommon common; ///< Common storage for all tile bases.
+		OldTileBase old; ///< Used to preserve compatibility with older save games.
+
+		/** Construct empty tile base storage. */
+		TileBase() { this->base = 0; }
 	};
 
-	static_assert(sizeof(TileBase) == 8);
+	static_assert(sizeof(TileBase) == 4);
 
 	/**
 	 * Data that is stored per tile. Also used TileBase for this.
 	 * Look at docs/landscape.html for the exact meaning of the members.
 	 */
 	struct TileExtended {
+		uint8_t m1 = 0; ///< Primarily used for ownership information
+		uint8_t m5 = 0; ///< General purpose
 		uint8_t m6 = 0; ///< General purpose
 		uint8_t m7 = 0; ///< Primarily used for newgrf support
+		uint16_t m2 = 0; ///< Primarily used for indices to towns, industries and stations
 		uint16_t m8 = 0; ///< General purpose
 	};
+
+	static_assert(sizeof(TileExtended) == 8);
 
 	static std::unique_ptr<TileBase[]> base_tiles; ///< Pointer to the tile-array.
 	static std::unique_ptr<TileExtended[]> extended_tiles; ///< Pointer to the extended tile-array.
@@ -88,7 +111,7 @@ public:
 	 */
 	[[debug_inline]] inline uint8_t &type()
 	{
-		return base_tiles[this->tile.base()].type;
+		return base_tiles[this->tile.base()].old.type;
 	}
 
 	/**
@@ -100,7 +123,7 @@ public:
 	 */
 	[[debug_inline]] inline uint8_t &height()
 	{
-		return base_tiles[this->tile.base()].height;
+		return base_tiles[this->tile.base()].common.height;
 	}
 
 	/**
@@ -112,7 +135,7 @@ public:
 	 */
 	[[debug_inline]] inline uint8_t &m1()
 	{
-		return base_tiles[this->tile.base()].m1;
+		return extended_tiles[this->tile.base()].m1;
 	}
 
 	/**
@@ -124,7 +147,7 @@ public:
 	 */
 	[[debug_inline]] inline uint16_t &m2()
 	{
-		return base_tiles[this->tile.base()].m2;
+		return extended_tiles[this->tile.base()].m2;
 	}
 
 	/**
@@ -136,7 +159,7 @@ public:
 	 */
 	[[debug_inline]] inline uint8_t &m3()
 	{
-		return base_tiles[this->tile.base()].m3;
+		return base_tiles[this->tile.base()].old.m3;
 	}
 
 	/**
@@ -148,7 +171,7 @@ public:
 	 */
 	[[debug_inline]] inline uint8_t &m4()
 	{
-		return base_tiles[this->tile.base()].m4;
+		return base_tiles[this->tile.base()].old.m4;
 	}
 
 	/**
@@ -160,7 +183,7 @@ public:
 	 */
 	[[debug_inline]] inline uint8_t &m5()
 	{
-		return base_tiles[this->tile.base()].m5;
+		return extended_tiles[this->tile.base()].m5;
 	}
 
 	/**
