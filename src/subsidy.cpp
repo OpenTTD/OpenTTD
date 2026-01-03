@@ -172,7 +172,7 @@ static bool CheckSubsidyDistance(Source src, Source dst)
  */
 void CreateSubsidy(CargoType cargo_type, Source src, Source dst)
 {
-	Subsidy *s = new Subsidy(cargo_type, src, dst, SUBSIDY_OFFER_MONTHS);
+	Subsidy *s = Subsidy::Create(cargo_type, src, dst, SUBSIDY_OFFER_MONTHS);
 
 	const CargoSpec *cs = CargoSpec::Get(s->cargo_type);
 	EncodedString headline = GetEncodedString(STR_NEWS_SERVICE_SUBSIDY_OFFERED, cs->name, s->src.GetFormat(), s->src.id, s->dst.GetFormat(), s->dst.id, _settings_game.difficulty.subsidy_duration);

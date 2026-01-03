@@ -641,7 +641,7 @@ static CommandCost CmdBuildRailWagon(DoCommandFlags flags, TileIndex tile, const
 	if (!IsCompatibleRail(rvi->railtypes, GetRailType(tile))) return CMD_ERROR;
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		Train *v = new Train();
+		Train *v = Train::Create();
 		*ret = v;
 		v->spritenum = rvi->image_index;
 
@@ -723,7 +723,7 @@ void NormalizeTrainVehInDepot(const Train *u)
 
 static void AddRearEngineToMultiheadedTrain(Train *v)
 {
-	Train *u = new Train();
+	Train *u = Train::Create();
 	v->value >>= 1;
 	u->value = v->value;
 	u->direction = v->direction;
@@ -782,7 +782,7 @@ CommandCost CmdBuildRailVehicle(DoCommandFlags flags, TileIndex tile, const Engi
 		int x = TileX(tile) * TILE_SIZE + _vehicle_initial_x_fract[dir];
 		int y = TileY(tile) * TILE_SIZE + _vehicle_initial_y_fract[dir];
 
-		Train *v = new Train();
+		Train *v = Train::Create();
 		*ret = v;
 		v->direction = DiagDirToDir(dir);
 		v->tile = tile;

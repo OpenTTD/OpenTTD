@@ -1127,6 +1127,17 @@ struct SpecializedVehicle : public Vehicle {
 	}
 
 	/**
+	 * Creates a new T-object in the vehicle pool.
+	 * @param args... The arguments to the constructor.
+	 * @return The created object.
+	 */
+	template <typename... Targs>
+	static inline T *Create(Targs &&... args)
+	{
+		return Vehicle::Create<T>(std::forward<Targs&&>(args)...);
+	}
+
+	/**
 	 * Converts a Vehicle to SpecializedVehicle with type checking.
 	 * @param v Vehicle pointer
 	 * @return pointer to SpecializedVehicle

@@ -115,7 +115,7 @@ void MoveWaypointsToBaseStations()
 			SlErrorCorrupt("Waypoint with invalid tile");
 		}
 
-		Waypoint *new_wp = new Waypoint(t);
+		Waypoint *new_wp = Waypoint::Create(t);
 		new_wp->town       = wp.town;
 		new_wp->town_cn    = wp.town_cn;
 		new_wp->name       = wp.name;

@@ -213,7 +213,7 @@ uint32_t AirportResolverObject::GetDebugID() const
 		/* Create storage on first modification. */
 		uint32_t grfid = (this->ro.grffile != nullptr) ? this->ro.grffile->grfid : 0;
 		assert(PersistentStorage::CanAllocateItem());
-		this->st->airport.psa = new PersistentStorage(grfid, GSF_AIRPORTS, this->st->airport.tile);
+		this->st->airport.psa = PersistentStorage::Create(grfid, GSF_AIRPORTS, this->st->airport.tile);
 	}
 	this->st->airport.psa->StoreValue(pos, value);
 }

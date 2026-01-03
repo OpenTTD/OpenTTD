@@ -45,11 +45,12 @@ private:
 	std::vector<Order> orders; ///< The actual orders if the vehicle was not a clone.
 	uint32_t old_order_index = 0;
 
+	void DoRestore(Vehicle *v);
+
+	friend OrderBackupPool::PoolItem<&_order_backup_pool>;
 	/** Creation for savegame restoration. */
 	OrderBackup() = default;
 	OrderBackup(const Vehicle *v, uint32_t user);
-
-	void DoRestore(Vehicle *v);
 
 public:
 	~OrderBackup();

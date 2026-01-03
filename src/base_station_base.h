@@ -270,6 +270,17 @@ struct SpecializedStation : public BaseStation {
 	}
 
 	/**
+	 * Creates a new T-object in the station pool.
+	 * @param args... The arguments to the constructor.
+	 * @return The created object.
+	 */
+	template <typename... Targs>
+	static inline T *Create(Targs &&... args)
+	{
+		return BaseStation::Create<T>(std::forward<Targs&&>(args)...);
+	}
+
+	/**
 	 * Converts a BaseStation to SpecializedStation with type checking.
 	 * @param st BaseStation pointer
 	 * @return pointer to SpecializedStation

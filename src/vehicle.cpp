@@ -2960,7 +2960,7 @@ void Vehicle::AddToShared(Vehicle *shared_chain)
 	if (shared_chain->orders == nullptr) {
 		assert(shared_chain->previous_shared == nullptr);
 		assert(shared_chain->next_shared == nullptr);
-		this->orders = shared_chain->orders = new OrderList(shared_chain);
+		this->orders = shared_chain->orders = OrderList::Create(shared_chain);
 	}
 
 	this->next_shared     = shared_chain->next_shared;

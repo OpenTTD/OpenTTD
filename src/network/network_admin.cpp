@@ -115,7 +115,7 @@ ServerNetworkAdminSocketHandler::~ServerNetworkAdminSocketHandler()
  */
 /* static */ void ServerNetworkAdminSocketHandler::AcceptConnection(SOCKET s, const NetworkAddress &address)
 {
-	ServerNetworkAdminSocketHandler *as = new ServerNetworkAdminSocketHandler(s);
+	ServerNetworkAdminSocketHandler *as = ServerNetworkAdminSocketHandler::Create(s);
 	as->address = address; // Save the IP of the client
 }
 

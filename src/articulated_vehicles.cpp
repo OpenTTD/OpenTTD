@@ -82,7 +82,7 @@ uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
 
 	std::unique_ptr<Vehicle> v;
 	if (!purchase_window) {
-		v = std::make_unique<Vehicle>();
+		v = std::unique_ptr<Vehicle>(Vehicle::Create());
 		v->engine_type = engine_type;
 		v->owner = _current_company;
 	}
@@ -357,7 +357,7 @@ void AddArticulatedParts(Vehicle *first)
 
 			case VEH_TRAIN: {
 				Train *front = Train::From(first);
-				Train *t = new Train();
+				Train *t = Train::Create();
 				v->SetNext(t);
 				v = t;
 
@@ -381,7 +381,7 @@ void AddArticulatedParts(Vehicle *first)
 
 			case VEH_ROAD: {
 				RoadVehicle *front = RoadVehicle::From(first);
-				RoadVehicle *rv = new RoadVehicle();
+				RoadVehicle *rv = RoadVehicle::Create();
 				v->SetNext(rv);
 				v = rv;
 

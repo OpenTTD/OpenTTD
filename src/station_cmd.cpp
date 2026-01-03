@@ -701,7 +701,7 @@ static CommandCost BuildStationPart(Station **st, DoCommandFlags flags, bool reu
 		if (!Station::CanAllocateItem()) return CommandCost(STR_ERROR_TOO_MANY_STATIONS_LOADING);
 
 		if (flags.Test(DoCommandFlag::Execute)) {
-			*st = new Station(area.tile);
+			*st = Station::Create(area.tile);
 			_station_kdtree.Insert((*st)->index);
 
 			(*st)->town = ClosestTownFromTile(area.tile, UINT_MAX);
@@ -2165,7 +2165,7 @@ CommandCost CmdBuildRoadStop(DoCommandFlags flags, TileIndex tile, uint8_t width
 				st->cached_roadstop_anim_triggers.Set(roadstopspec->animation.triggers);
 			}
 
-			RoadStop *road_stop = new RoadStop(cur_tile);
+			RoadStop *road_stop = RoadStop::Create(cur_tile);
 			/* Insert into linked list of RoadStops. */
 			RoadStop **currstop = FindRoadStopSpot(is_truck_stop, st);
 			*currstop = road_stop;
@@ -4268,7 +4268,7 @@ void IncreaseStats(Station *st, CargoType cargo, StationID next_station_id, uint
 	if (ge1.link_graph == LinkGraphID::Invalid()) {
 		if (ge2.link_graph == LinkGraphID::Invalid()) {
 			if (LinkGraph::CanAllocateItem()) {
-				lg = new LinkGraph(cargo);
+				lg = LinkGraph::Create(cargo);
 				LinkGraphSchedule::instance.Queue(lg);
 				ge2.link_graph = lg->index;
 				ge2.node = lg->AddNode(st2);
@@ -4413,11 +4413,11 @@ static uint UpdateStationWaiting(Station *st, CargoType cargo, uint amount, Sour
 	if (amount == 0) return 0;
 
 	StationID next = ge.GetVia(st->index);
-	ge.GetOrCreateData().cargo.Append(new CargoPacket(st->index, amount, source), next);
+	ge.GetOrCreateData().cargo.Append(CargoPacket::Create(st->index, amount, source), next);
 	LinkGraph *lg = nullptr;
 	if (ge.link_graph == LinkGraphID::Invalid()) {
 		if (LinkGraph::CanAllocateItem()) {
-			lg = new LinkGraph(cargo);
+			lg = LinkGraph::Create(cargo);
 			LinkGraphSchedule::instance.Queue(lg);
 			ge.link_graph = lg->index;
 			ge.node = lg->AddNode(st);
@@ -4714,7 +4714,7 @@ void BuildOilRig(TileIndex tile)
 		return;
 	}
 
-	Station *st = new Station(tile);
+	Station *st = Station::Create(tile);
 	_station_kdtree.Insert(st->index);
 	st->town = ClosestTownFromTile(tile, UINT_MAX);
 

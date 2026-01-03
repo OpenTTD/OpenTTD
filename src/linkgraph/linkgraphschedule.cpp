@@ -43,7 +43,7 @@ void LinkGraphSchedule::SpawnNext()
 	assert(next == LinkGraph::Get(next->index));
 	this->schedule.pop_front();
 	if (LinkGraphJob::CanAllocateItem()) {
-		LinkGraphJob *job = new LinkGraphJob(*next);
+		LinkGraphJob *job = LinkGraphJob::Create(*next);
 		job->SpawnThread();
 		this->running.push_back(job);
 	} else {
