@@ -892,7 +892,7 @@ struct GameOptionsWindow : Window {
 
 	void OnPaint() override
 	{
-		if (this->GetWidget<NWidgetStacked>(WID_GO_TAB_SELECTION)->shown_plane != 4) {
+		if (GameOptionsWindow::active_tab != WID_GO_TAB_ADVANCED) {
 			this->DrawWidgets();
 			return;
 		}
