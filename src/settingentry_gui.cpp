@@ -841,6 +841,7 @@ SettingsContainer &GetSettingsTree()
 			genworld->Add(new SettingEntry("game_creation.landscape"));
 			genworld->Add(new SettingEntry("game_creation.land_generator"));
 			genworld->Add(new SettingEntry("difficulty.terrain_type"));
+			genworld->Add(new SettingEntry("game_creation.average_height"));
 			genworld->Add(new SettingEntry("game_creation.tgen_smoothness"));
 			genworld->Add(new SettingEntry("game_creation.variety"));
 			genworld->Add(new SettingEntry("game_creation.snow_coverage"));
