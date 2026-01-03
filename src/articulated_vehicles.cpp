@@ -69,27 +69,19 @@ bool IsArticulatedEngine(EngineID engine_type)
 /**
  * Count the number of articulated parts of an engine.
  * @param engine_type The engine to get the number of parts of.
- * @param purchase_window Whether we are in the scope of the purchase window or not, i.e. whether we cannot allocate vehicles.
  * @return The number of parts.
  */
-uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
+uint CountArticulatedParts(EngineID engine_type)
 {
 	if (!EngInfo(engine_type)->callback_mask.Test(VehicleCallbackMask::ArticEngine)) return 0;
 
-	/* If we can't allocate a vehicle now, we can't allocate it in the command
-	 * either, so it doesn't matter how many articulated parts there are. */
-	if (!Vehicle::CanAllocateItem()) return 0;
-
-	std::unique_ptr<Vehicle> v;
-	if (!purchase_window) {
-		v = std::unique_ptr<Vehicle>(Vehicle::Create());
-		v->engine_type = engine_type;
-		v->owner = _current_company;
-	}
+	Vehicle v(VehicleID::Invalid());
+	v.engine_type = engine_type;
+	v.owner = _current_company;
 
 	uint i;
 	for (i = 1; i < MAX_ARTICULATED_PARTS; i++) {
-		if (GetNextArticulatedPart(i, engine_type, v.get()) == EngineID::Invalid()) break;
+		if (GetNextArticulatedPart(i, engine_type, &v) == EngineID::Invalid()) break;
 	}
 
 	return i - 1;

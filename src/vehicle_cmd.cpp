@@ -122,8 +122,8 @@ std::tuple<CommandCost, VehicleID, uint, uint16_t, CargoArray> CmdBuildVehicle(D
 	/* Check whether the number of vehicles we need to build can be built according to pool space. */
 	uint num_vehicles;
 	switch (type) {
-		case VEH_TRAIN:    num_vehicles = (e->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_MULTIHEAD ? 2 : 1) + CountArticulatedParts(eid, false); break;
-		case VEH_ROAD:     num_vehicles = 1 + CountArticulatedParts(eid, false); break;
+		case VEH_TRAIN:    num_vehicles = (e->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_MULTIHEAD ? 2 : 1) + CountArticulatedParts(eid); break;
+		case VEH_ROAD:     num_vehicles = 1 + CountArticulatedParts(eid); break;
 		case VEH_SHIP:     num_vehicles = 1; break;
 		case VEH_AIRCRAFT: num_vehicles = e->VehInfo<AircraftVehicleInfo>().subtype & AIR_CTOL ? 2 : 3; break;
 		default: NOT_REACHED(); // Safe due to IsDepotTile()
