@@ -45,7 +45,7 @@ PYTHON_DOCSTRING       = YES
 INHERIT_DOCS           = YES
 SEPARATE_MEMBER_PAGES  = NO
 TAB_SIZE               = 2
-ALIASES                =
+ALIASES                = important="@attention" # @important is available in newer versions of doxygen.
 OPTIMIZE_OUTPUT_FOR_C  = YES
 OPTIMIZE_OUTPUT_JAVA   = NO
 OPTIMIZE_FOR_FORTRAN   = NO
@@ -134,7 +134,9 @@ FILE_PATTERNS          = *.c \
                          *.cpp \
                          *.c++ \
                          *.h \
-                         *.hpp
+                         *.hpp \
+                         *.mm \
+	                     *.m
 RECURSIVE              = YES
 EXCLUDE                =
 EXCLUDE_SYMLINKS       = NO
@@ -317,6 +319,7 @@ PREDEFINED             = WITH_ZLIB \
                          WITH_HARFBUZZ \
                          WITH_ICU_I18N \
                          UNICODE \
+                         DOXYGEN_API \
                          _UNICODE \
                          _GNU_SOURCE \
                          FINAL=
