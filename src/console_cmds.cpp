@@ -2459,25 +2459,25 @@ static bool ConNewGRFReload(std::span<std::string_view> argv)
 static bool ConListDirs(std::span<std::string_view> argv)
 {
 	struct SubdirNameMap {
-		Subdirectory subdir; ///< Index of subdirectory type
 		std::string_view name; ///< UI name for the directory
-		bool default_only;   ///< Whether only the default (first existing) directory for this is interesting
+		Subdirectory subdir; ///< Index of subdirectory type
+		bool default_only; ///< Whether only the default (first existing) directory for this is interesting
 	};
 	static const SubdirNameMap subdir_name_map[] = {
 		/* Game data directories */
-		{ BASESET_DIR,      "baseset",    false },
-		{ NEWGRF_DIR,       "newgrf",     false },
-		{ AI_DIR,           "ai",         false },
-		{ AI_LIBRARY_DIR,   "ailib",      false },
-		{ GAME_DIR,         "gs",         false },
-		{ GAME_LIBRARY_DIR, "gslib",      false },
-		{ SCENARIO_DIR,     "scenario",   false },
-		{ HEIGHTMAP_DIR,    "heightmap",  false },
+		{ "baseset", BASESET_DIR, false },
+		{ "newgrf", NEWGRF_DIR, false },
+		{ "ai", AI_DIR, false },
+		{ "ailib", AI_LIBRARY_DIR, false },
+		{ "gs", GAME_DIR, false },
+		{ "gslib", GAME_LIBRARY_DIR, false },
+		{ "scenario", SCENARIO_DIR, false },
+		{ "heightmap", HEIGHTMAP_DIR, false },
 		/* Default save locations for user data */
-		{ SAVE_DIR,         "save",       true  },
-		{ AUTOSAVE_DIR,     "autosave",   true  },
-		{ SCREENSHOT_DIR,   "screenshot", true  },
-		{ SOCIAL_INTEGRATION_DIR, "social_integration", true },
+		{ "save", SAVE_DIR, true },
+		{ "autosave", AUTOSAVE_DIR, true },
+		{ "screenshot", SCREENSHOT_DIR, true },
+		{ "social_integration", SOCIAL_INTEGRATION_DIR, true },
 	};
 
 	if (argv.size() != 2) {
