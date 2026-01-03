@@ -36,7 +36,7 @@ extern std::vector<Searchpath> _valid_searchpaths;
 /** Helper for scanning for files with a given name */
 class FileScanner {
 protected:
-	Subdirectory subdir; ///< The current sub directory we are searching through
+	Subdirectory subdir{}; ///< The current sub directory we are searching through
 public:
 	/** Destruct the proper one... */
 	virtual ~FileScanner() = default;
