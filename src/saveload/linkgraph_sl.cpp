@@ -277,7 +277,7 @@ struct LGRPChunkHandler : ChunkHandler {
 
 		int index;
 		while ((index = SlIterateArray()) != -1) {
-			LinkGraph *lg = new (LinkGraphID(index)) LinkGraph();
+			LinkGraph *lg = LinkGraph::CreateAtIndex(LinkGraphID(index));
 			SlObject(lg, slt);
 		}
 	}
@@ -305,7 +305,7 @@ struct LGRJChunkHandler : ChunkHandler {
 
 		int index;
 		while ((index = SlIterateArray()) != -1) {
-			LinkGraphJob *lgj = new (LinkGraphJobID(index)) LinkGraphJob();
+			LinkGraphJob *lgj = LinkGraphJob::CreateAtIndex(LinkGraphJobID(index));
 			SlObject(lgj, slt);
 		}
 	}

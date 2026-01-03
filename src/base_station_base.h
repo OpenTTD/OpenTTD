@@ -281,6 +281,18 @@ struct SpecializedStation : public BaseStation {
 	}
 
 	/**
+	 * Creates a new T-object in the station pool.
+	 * @param index The index allocate the object at.
+	 * @param args... The arguments to the constructor.
+	 * @return The created object.
+	 */
+	template <typename... Targs>
+	static inline T *CreateAtIndex(StationID index, Targs &&... args)
+	{
+		return BaseStation::CreateAtIndex<T>(index, std::forward<Targs&&>(args)...);
+	}
+
+	/**
 	 * Converts a BaseStation to SpecializedStation with type checking.
 	 * @param st BaseStation pointer
 	 * @return pointer to SpecializedStation

@@ -304,18 +304,8 @@ public:
 			Tpool->FreeItem(size, Pool::GetRawIndex(pn->index));
 		}
 
-		/**
-		 * Allocates space for new Titem with given index
-		 * @param size size of Titem
-		 * @param index index of item
-		 * @return pointer to allocated memory
-		 * @note can never fail (return nullptr), use CanAllocate() to check first!
-		 * @pre index has to be unused! Else it will crash
-		 */
-		inline void *operator new(size_t size, Tindex index)
-		{
-			return Tpool->GetNew(size, index.base());
-		}
+		/** Do not use new (index) PoolItem(...), but rather PoolItem::CreateAtIndex(index, ...). */
+		inline void *operator new(size_t size, Tindex index) = delete;
 
 		/**
 		 * Allocates space for new Titem at given memory address
@@ -349,6 +339,20 @@ public:
 		static inline T *Create(Targs &&... args)
 		{
 			void *data = Tpool->GetNew(sizeof(T));
+			return ::new (data) T(std::forward<Targs&&>(args)...);
+		}
+
+		/**
+		 * Creates a new T-object in the associated pool.
+		 * @param index The to allocate the object at.
+		 * @param args... The arguments to the constructor.
+		 * @return The created object.
+		 */
+		template <typename T = Titem, typename... Targs>
+		requires std::is_base_of_v<Titem, T>
+		static inline T *CreateAtIndex(Tindex index, Targs &&... args)
+		{
+			void *data = Tpool->GetNew(sizeof(T), index.base());
 			return ::new (data) T(std::forward<Targs&&>(args)...);
 		}
 

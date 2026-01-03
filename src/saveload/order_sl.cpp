@@ -269,7 +269,7 @@ struct ORDLChunkHandler : ChunkHandler {
 		int index;
 
 		while ((index = SlIterateArray()) != -1) {
-			OrderList *list = new (OrderListID(index)) OrderList();
+			OrderList *list = OrderList::CreateAtIndex(OrderListID(index));
 			SlObject(list, slt);
 		}
 
@@ -346,7 +346,7 @@ struct BKORChunkHandler : ChunkHandler {
 
 		while ((index = SlIterateArray()) != -1) {
 			/* set num_orders to 0 so it's a valid OrderList */
-			OrderBackup *ob = new (OrderBackupID(index)) OrderBackup();
+			OrderBackup *ob = OrderBackup::CreateAtIndex(OrderBackupID(index));
 			SlObject(ob, slt);
 		}
 	}

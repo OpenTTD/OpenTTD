@@ -1138,6 +1138,18 @@ struct SpecializedVehicle : public Vehicle {
 	}
 
 	/**
+	 * Creates a new T-object in the vehicle pool.
+	 * @param index The index allocate the object at.
+	 * @param args... The arguments to the constructor.
+	 * @return The created object.
+	 */
+	template <typename... Targs>
+	static inline T *CreateAtIndex(VehicleID index, Targs &&... args)
+	{
+		return Vehicle::CreateAtIndex<T>(index, std::forward<Targs&&>(args)...);
+	}
+
+	/**
 	 * Converts a Vehicle to SpecializedVehicle with type checking.
 	 * @param v Vehicle pointer
 	 * @return pointer to SpecializedVehicle
