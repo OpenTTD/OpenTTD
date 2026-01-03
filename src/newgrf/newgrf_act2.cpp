@@ -286,7 +286,7 @@ static const SpriteGroup *GetCallbackResultGroup(uint16_t value)
 
 	/* Result value is not present, so make it and add to cache. */
 	assert(CallbackResultSpriteGroup::CanAllocateItem());
-	const SpriteGroup *group = new CallbackResultSpriteGroup(value);
+	const SpriteGroup *group = CallbackResultSpriteGroup::Create(value);
 	it = _cached_callback_groups.emplace(it, value, group->index);
 	return group;
 }
@@ -330,7 +330,7 @@ static const SpriteGroup *CreateGroupFromGroupID(GrfSpecFeature feature, uint8_t
 	assert(spriteset_start + num_sprites <= _cur_gps.spriteid);
 
 	assert(ResultSpriteGroup::CanAllocateItem());
-	return new ResultSpriteGroup(spriteset_start, num_sprites);
+	return ResultSpriteGroup::Create(spriteset_start, num_sprites);
 }
 
 /* Action 0x02 */
@@ -374,7 +374,7 @@ static void NewSpriteGroup(ByteReader &buf)
 			uint8_t varsize;
 
 			assert(DeterministicSpriteGroup::CanAllocateItem());
-			DeterministicSpriteGroup *group = new DeterministicSpriteGroup();
+			DeterministicSpriteGroup *group = DeterministicSpriteGroup::Create();
 			group->nfo_line = _cur_gps.nfo_line;
 			act_group = group;
 			group->var_scope = HasBit(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
@@ -494,7 +494,7 @@ static void NewSpriteGroup(ByteReader &buf)
 		case 0x84: // Relative scope
 		{
 			assert(RandomizedSpriteGroup::CanAllocateItem());
-			RandomizedSpriteGroup *group = new RandomizedSpriteGroup();
+			RandomizedSpriteGroup *group = RandomizedSpriteGroup::Create();
 			group->nfo_line = _cur_gps.nfo_line;
 			act_group = group;
 			group->var_scope = HasBit(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
@@ -593,7 +593,7 @@ static void NewSpriteGroup(ByteReader &buf)
 					}
 
 					assert(RealSpriteGroup::CanAllocateItem());
-					RealSpriteGroup *group = new RealSpriteGroup();
+					RealSpriteGroup *group = RealSpriteGroup::Create();
 					group->nfo_line = _cur_gps.nfo_line;
 					act_group = group;
 
@@ -622,7 +622,7 @@ static void NewSpriteGroup(ByteReader &buf)
 					uint8_t num_building_sprites = std::max((uint8_t)1, type);
 
 					assert(TileLayoutSpriteGroup::CanAllocateItem());
-					TileLayoutSpriteGroup *group = new TileLayoutSpriteGroup();
+					TileLayoutSpriteGroup *group = TileLayoutSpriteGroup::Create();
 					group->nfo_line = _cur_gps.nfo_line;
 					act_group = group;
 
@@ -638,7 +638,7 @@ static void NewSpriteGroup(ByteReader &buf)
 					}
 
 					assert(IndustryProductionSpriteGroup::CanAllocateItem());
-					IndustryProductionSpriteGroup *group = new IndustryProductionSpriteGroup();
+					IndustryProductionSpriteGroup *group = IndustryProductionSpriteGroup::Create();
 					group->nfo_line = _cur_gps.nfo_line;
 					act_group = group;
 					group->version = type;

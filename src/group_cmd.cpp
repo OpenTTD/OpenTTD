@@ -349,7 +349,7 @@ std::tuple<CommandCost, GroupID> CmdCreateGroup(DoCommandFlags flags, VehicleTyp
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		Group *g = new Group(_current_company, vt);
+		Group *g = Group::Create(_current_company, vt);
 
 		Company *c = Company::Get(g->owner);
 		g->number = c->freegroups.UseID(c->freegroups.NextID());

@@ -109,7 +109,7 @@ CommandCost AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, Engi
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		/* Insert before the first element */
-		*erl = new EngineRenew(old_engine, new_engine, group, replace_when_old, *erl);
+		*erl = EngineRenew::Create(old_engine, new_engine, group, replace_when_old, *erl);
 	}
 
 	return CommandCost();

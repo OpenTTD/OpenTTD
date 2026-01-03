@@ -59,10 +59,30 @@ public:
 };
 
 
+/**
+ * Class defining some overloaded accessors so we don't have to cast SpriteGroups that often
+ */
+template <class T>
+struct SpecializedSpriteGroup : public SpriteGroup {
+	inline SpecializedSpriteGroup() : SpriteGroup() {}
+
+	/**
+	 * Creates a new T-object in the SpriteGroup pool.
+	 * @param args... The arguments to the constructor.
+	 * @return The created object.
+	 */
+	template <typename... Targs>
+	static inline T *Create(Targs &&... args)
+	{
+		return SpriteGroup::Create<T>(std::forward<Targs&&>(args)...);
+	}
+};
+
+
 /* 'Real' sprite groups contain a list of other result or callback sprite
  * groups. */
-struct RealSpriteGroup : SpriteGroup {
-	RealSpriteGroup() : SpriteGroup() {}
+struct RealSpriteGroup : SpecializedSpriteGroup<RealSpriteGroup> {
+	RealSpriteGroup() : SpecializedSpriteGroup<RealSpriteGroup>() {}
 
 	/* Loaded = in motion, loading = not moving
 	 * Each group contains several spritesets, for various loading stages */
@@ -156,8 +176,8 @@ struct DeterministicSpriteGroupRange {
 };
 
 
-struct DeterministicSpriteGroup : SpriteGroup {
-	DeterministicSpriteGroup() : SpriteGroup() {}
+struct DeterministicSpriteGroup : SpecializedSpriteGroup<DeterministicSpriteGroup> {
+	DeterministicSpriteGroup() : SpecializedSpriteGroup<DeterministicSpriteGroup>() {}
 
 	VarSpriteGroupScope var_scope{};
 	DeterministicSpriteGroupSize size{};
@@ -178,8 +198,8 @@ enum RandomizedSpriteGroupCompareMode : uint8_t {
 	RSG_CMP_ALL,
 };
 
-struct RandomizedSpriteGroup : SpriteGroup {
-	RandomizedSpriteGroup() : SpriteGroup() {}
+struct RandomizedSpriteGroup : SpecializedSpriteGroup<RandomizedSpriteGroup> {
+	RandomizedSpriteGroup() : SpecializedSpriteGroup<RandomizedSpriteGroup>() {}
 
 	VarSpriteGroupScope var_scope{};  ///< Take this object:
 
@@ -198,12 +218,12 @@ protected:
 
 /* This contains a callback result. A failed callback has a value of
  * CALLBACK_FAILED */
-struct CallbackResultSpriteGroup : SpriteGroup {
+struct CallbackResultSpriteGroup : SpecializedSpriteGroup<CallbackResultSpriteGroup> {
 	/**
 	 * Creates a spritegroup representing a callback result
 	 * @param value The value that was used to represent this callback result
 	 */
-	explicit CallbackResultSpriteGroup(CallbackResult value) : SpriteGroup(), result(value) {}
+	explicit CallbackResultSpriteGroup(CallbackResult value) : SpecializedSpriteGroup<CallbackResultSpriteGroup>(), result(value) {}
 
 	CallbackResult result = 0;
 
@@ -214,14 +234,14 @@ protected:
 
 /* A result sprite group returns the first SpriteID and the number of
  * sprites in the set */
-struct ResultSpriteGroup : SpriteGroup {
+struct ResultSpriteGroup : SpecializedSpriteGroup<ResultSpriteGroup> {
 	/**
 	 * Creates a spritegroup representing a sprite number result.
 	 * @param sprite The sprite number.
 	 * @param num_sprites The number of sprites per set.
 	 * @return A spritegroup representing the sprite number result.
 	 */
-	ResultSpriteGroup(SpriteID sprite, uint8_t num_sprites) : SpriteGroup(), num_sprites(num_sprites), sprite(sprite) {}
+	ResultSpriteGroup(SpriteID sprite, uint8_t num_sprites) : SpecializedSpriteGroup<ResultSpriteGroup>(), num_sprites(num_sprites), sprite(sprite) {}
 
 	uint8_t num_sprites = 0;
 	SpriteID sprite = 0;
@@ -233,8 +253,8 @@ protected:
 /**
  * Action 2 sprite layout for houses, industry tiles, objects and airport tiles.
  */
-struct TileLayoutSpriteGroup : SpriteGroup {
-	TileLayoutSpriteGroup() : SpriteGroup() {}
+struct TileLayoutSpriteGroup : SpecializedSpriteGroup<TileLayoutSpriteGroup> {
+	TileLayoutSpriteGroup() : SpecializedSpriteGroup<TileLayoutSpriteGroup>() {}
 
 	NewGRFSpriteLayout dts{};
 
@@ -244,8 +264,8 @@ protected:
 	ResolverResult Resolve(ResolverObject &) const override { return this; }
 };
 
-struct IndustryProductionSpriteGroup : SpriteGroup {
-	IndustryProductionSpriteGroup() : SpriteGroup() {}
+struct IndustryProductionSpriteGroup : SpecializedSpriteGroup<IndustryProductionSpriteGroup> {
+	IndustryProductionSpriteGroup() : SpecializedSpriteGroup<IndustryProductionSpriteGroup>() {}
 
 	uint8_t version = 0; ///< Production callback version used, or 0xFF if marked invalid
 	uint8_t num_input = 0; ///< How many subtract_input values are valid

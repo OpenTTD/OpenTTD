@@ -565,7 +565,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CLIENT_INFO(Pac
 	if (!NetworkClientInfo::CanAllocateItem()) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	/* We don't have this client_id yet, find an empty client_id, and put the data there */
-	ci = new NetworkClientInfo(client_id);
+	ci = NetworkClientInfo::Create(client_id);
 	ci->client_playas = playas;
 	if (client_id == _network_own_client_id) this->SetInfo(ci);
 

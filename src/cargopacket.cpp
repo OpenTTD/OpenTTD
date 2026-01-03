@@ -96,7 +96,7 @@ CargoPacket *CargoPacket::Split(uint new_size)
 	if (!CargoPacket::CanAllocateItem()) return nullptr;
 
 	Money fs = this->GetFeederShare(new_size);
-	CargoPacket *cp_new = new CargoPacket(new_size, fs, *this);
+	CargoPacket *cp_new = CargoPacket::Create(new_size, fs, *this);
 	this->feeder_share -= fs;
 	this->count -= new_size;
 	return cp_new;

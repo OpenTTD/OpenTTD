@@ -281,7 +281,7 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		if (wp == nullptr) {
-			wp = new Waypoint(start_tile);
+			wp = Waypoint::Create(start_tile);
 		} else if (!wp->IsInUse()) {
 			/* Move existing (recently deleted) waypoint to the new location */
 			wp->xy = start_tile;
@@ -401,7 +401,7 @@ CommandCost CmdBuildRoadWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		if (wp == nullptr) {
-			wp = new Waypoint(start_tile);
+			wp = Waypoint::Create(start_tile);
 			SetBit(wp->waypoint_flags, WPF_ROAD);
 		} else if (!wp->IsInUse()) {
 			/* Move existing (recently deleted) waypoint to the new location */
@@ -492,7 +492,7 @@ CommandCost CmdBuildBuoy(DoCommandFlags flags, TileIndex tile)
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		if (wp == nullptr) {
-			wp = new Waypoint(tile);
+			wp = Waypoint::Create(tile);
 		} else {
 			/* Move existing (recently deleted) buoy to the new location */
 			wp->xy = tile;

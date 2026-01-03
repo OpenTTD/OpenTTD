@@ -567,7 +567,7 @@ EffectVehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicleType type)
 {
 	if (!Vehicle::CanAllocateItem()) return nullptr;
 
-	EffectVehicle *v = new EffectVehicle();
+	EffectVehicle *v = EffectVehicle::Create();
 	v->subtype = type;
 	v->x_pos = x;
 	v->y_pos = y;

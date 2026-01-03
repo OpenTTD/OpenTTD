@@ -275,8 +275,8 @@ CommandCost CmdBuildAircraft(DoCommandFlags flags, TileIndex tile, const Engine 
 	tile = st->airport.GetHangarTile(st->airport.GetHangarNum(tile));
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		Aircraft *v = new Aircraft(); // aircraft
-		Aircraft *u = new Aircraft(); // shadow
+		Aircraft *v = Aircraft::Create(); // aircraft
+		Aircraft *u = Aircraft::Create(); // shadow
 		*ret = v;
 
 		v->direction = DIR_SE;
@@ -366,7 +366,7 @@ CommandCost CmdBuildAircraft(DoCommandFlags flags, TileIndex tile, const Engine 
 
 		/* Aircraft with 3 vehicles (chopper)? */
 		if (v->subtype == AIR_HELICOPTER) {
-			Aircraft *w = new Aircraft();
+			Aircraft *w = Aircraft::Create();
 			w->engine_type = e->index;
 			w->direction = DIR_N;
 			w->owner = _current_company;

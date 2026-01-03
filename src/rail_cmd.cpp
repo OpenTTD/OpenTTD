@@ -1008,7 +1008,7 @@ CommandCost CmdBuildTrainDepot(DoCommandFlags flags, TileIndex tile, RailType ra
 		if (rotate_existing_depot) {
 			SetRailDepotExitDirection(tile, dir);
 		} else {
-			Depot *d = new Depot(tile);
+			Depot *d = Depot::Create(tile);
 
 			MakeRailDepot(tile, _current_company, d->index, dir, railtype);
 			MakeDefaultName(d);

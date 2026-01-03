@@ -145,7 +145,7 @@ CommandCost CmdBuildShipDepot(DoCommandFlags flags, TileIndex tile, Axis axis)
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		Depot *depot = new Depot(tile);
+		Depot *depot = Depot::Create(tile);
 
 		uint new_water_infra = 2 * LOCK_DEPOT_TILE_FACTOR;
 		/* Update infrastructure counts after the tile clears earlier.
