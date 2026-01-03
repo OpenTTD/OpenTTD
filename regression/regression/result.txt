@@ -877,12 +877,12 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetAirportHeight(8):              2
   GetAirportCoverageRadius(8):      4
   GetAirportNumHelipads(8):         3
-  IsAirportInformationAvailable(9): false
+  IsAirportInformationAvailable(9): true
   IsValidAirportType(9):            false
-  GetAirportWidth(9):               -1
-  GetAirportHeight(9):              -1
-  GetAirportCoverageRadius(9):      -1
-  GetAirportNumHelipads(9):         -1
+  GetAirportWidth(9):               1
+  GetAirportHeight(9):              1
+  GetAirportCoverageRadius(9):      4
+  GetAirportNumHelipads(9):         1
   GetBankBalance():     1999999790
   GetPrice():           5400
   BuildAirport():       true
