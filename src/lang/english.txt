@@ -3401,6 +3401,8 @@ STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Open AI 
 STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Game Script Settings
 STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Open game script settings
 
+STR_MAPGEN_DISABLED_ORIGINAL                                    :Disabled when using 'Original' land generator
+
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :English (Original)
 STR_MAPGEN_TOWN_NAME_FRENCH                                     :French
