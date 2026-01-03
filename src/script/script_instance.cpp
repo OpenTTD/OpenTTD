@@ -847,6 +847,12 @@ size_t ScriptInstance::GetAllocatedMemory() const
 	return this->engine->GetAllocatedMemory();
 }
 
+size_t ScriptInstance::GetPeakAllocatedMemory() const
+{
+	assert(this->engine != nullptr);
+	return this->engine->GetPeakAllocatedMemory();
+}
+
 void ScriptInstance::ReleaseSQObject(HSQOBJECT *obj)
 {
 	if (!this->in_shutdown) this->engine->ReleaseObject(obj);
