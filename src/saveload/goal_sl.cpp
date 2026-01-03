@@ -44,7 +44,7 @@ struct GOALChunkHandler : ChunkHandler {
 
 		int index;
 		while ((index = SlIterateArray()) != -1) {
-			Goal *s = new (GoalID(index)) Goal();
+			Goal *s = Goal::CreateAtIndex(GoalID(index));
 			SlObject(s, slt);
 		}
 	}

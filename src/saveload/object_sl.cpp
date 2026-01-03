@@ -49,7 +49,7 @@ struct OBJSChunkHandler : ChunkHandler {
 
 		int index;
 		while ((index = SlIterateArray()) != -1) {
-			Object *o = new (ObjectID(index)) Object();
+			Object *o = Object::CreateAtIndex(ObjectID(index));
 			SlObject(o, slt);
 		}
 	}

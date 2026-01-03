@@ -609,7 +609,7 @@ void SetupEngines()
 		assert(std::size(mapping) >= _engine_counts[type]);
 
 		for (const EngineIDMapping &eid : mapping) {
-			new (eid.engine) Engine(type, eid.internal_id);
+			Engine::CreateAtIndex(eid.engine, type, eid.internal_id);
 		}
 	}
 }

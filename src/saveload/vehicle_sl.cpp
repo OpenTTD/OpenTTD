@@ -1129,12 +1129,12 @@ struct VEHSChunkHandler : ChunkHandler {
 			VehicleType vtype = (VehicleType)SlReadByte();
 
 			switch (vtype) {
-				case VEH_TRAIN:    v = new (VehicleID(index)) Train();           break;
-				case VEH_ROAD:     v = new (VehicleID(index)) RoadVehicle();     break;
-				case VEH_SHIP:     v = new (VehicleID(index)) Ship();            break;
-				case VEH_AIRCRAFT: v = new (VehicleID(index)) Aircraft();        break;
-				case VEH_EFFECT:   v = new (VehicleID(index)) EffectVehicle();   break;
-				case VEH_DISASTER: v = new (VehicleID(index)) DisasterVehicle(); break;
+				case VEH_TRAIN: v = Train::CreateAtIndex(VehicleID(index)); break;
+				case VEH_ROAD: v = RoadVehicle::CreateAtIndex(VehicleID(index)); break;
+				case VEH_SHIP: v = Ship::CreateAtIndex(VehicleID(index)); break;
+				case VEH_AIRCRAFT: v = Aircraft::CreateAtIndex(VehicleID(index)); break;
+				case VEH_EFFECT: v = EffectVehicle::CreateAtIndex(VehicleID(index)); break;
+				case VEH_DISASTER: v = DisasterVehicle::CreateAtIndex(VehicleID(index)); break;
 				case VEH_INVALID: // Savegame shouldn't contain invalid vehicles
 				default: SlErrorCorrupt("Invalid vehicle type");
 			}

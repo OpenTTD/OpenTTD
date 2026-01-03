@@ -253,7 +253,7 @@ struct INDYChunkHandler : ChunkHandler {
 		SlIndustryProduced::ResetOldStructure();
 
 		while ((index = SlIterateArray()) != -1) {
-			Industry *i = new (IndustryID(index)) Industry();
+			Industry *i = Industry::CreateAtIndex(IndustryID(index));
 			SlObject(i, slt);
 
 			/* Before savegame version 161, persistent storages were not stored in a pool. */

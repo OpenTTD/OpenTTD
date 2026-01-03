@@ -608,7 +608,7 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = CompanyID::Invalid(
 		c = Company::Create(STR_SV_UNNAMED, is_ai);
 	} else {
 		if (Company::IsValidID(company)) return nullptr;
-		c = new (company) Company(STR_SV_UNNAMED, is_ai);
+		c = Company::CreateAtIndex(company, STR_SV_UNNAMED, is_ai);
 	}
 
 	c->colour = colour;

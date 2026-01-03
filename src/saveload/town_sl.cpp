@@ -348,7 +348,7 @@ struct CITYChunkHandler : ChunkHandler {
 		int index;
 
 		while ((index = SlIterateArray()) != -1) {
-			Town *t = new (TownID(index)) Town();
+			Town *t = Town::CreateAtIndex(TownID(index));
 			SlObject(t, slt);
 
 			if (IsSavegameVersionBefore(SLV_165)) {
