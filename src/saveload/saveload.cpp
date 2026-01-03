@@ -2794,11 +2794,11 @@ struct LZMASaveFilter : SaveFilter {
 
 /** The format for a reader/writer type of a savegame */
 struct SaveLoadFormat {
-	std::string_view name; ///< name of the compressor/decompressor (debug-only)
-	uint32_t tag;                           ///< the 4-letter tag by which it is identified in the savegame
-
 	std::shared_ptr<LoadFilter> (*init_load)(std::shared_ptr<LoadFilter> chain); ///< Constructor for the load filter.
 	std::shared_ptr<SaveFilter> (*init_write)(std::shared_ptr<SaveFilter> chain, uint8_t compression); ///< Constructor for the save filter.
+
+	std::string_view name; ///< name of the compressor/decompressor (debug-only)
+	uint32_t tag; ///< the 4-letter tag by which it is identified in the savegame
 
 	uint8_t min_compression;                 ///< the minimum compression level of this format
 	uint8_t default_compression;             ///< the default compression level of this format
@@ -2814,19 +2814,19 @@ static const uint32_t SAVEGAME_TAG_LZMA = TO_BE32('OTTX');
 static const SaveLoadFormat _saveload_formats[] = {
 #if defined(WITH_LZO)
 	/* Roughly 75% larger than zlib level 6 at only ~7% of the CPU usage. */
-	{"lzo",  SAVEGAME_TAG_LZO,  CreateLoadFilter<LZOLoadFilter>,    CreateSaveFilter<LZOSaveFilter>,    0, 0, 0},
+	{CreateLoadFilter<LZOLoadFilter>, CreateSaveFilter<LZOSaveFilter>, "lzo", SAVEGAME_TAG_LZO, 0, 0, 0},
 #else
-	{"lzo",  SAVEGAME_TAG_LZO,  nullptr,                            nullptr,                            0, 0, 0},
+	{nullptr, nullptr, "lzo", SAVEGAME_TAG_LZO, 0, 0, 0},
 #endif
 	/* Roughly 5 times larger at only 1% of the CPU usage over zlib level 6. */
-	{"none", SAVEGAME_TAG_NONE, CreateLoadFilter<NoCompLoadFilter>, CreateSaveFilter<NoCompSaveFilter>, 0, 0, 0},
+	{CreateLoadFilter<NoCompLoadFilter>, CreateSaveFilter<NoCompSaveFilter>, "none", SAVEGAME_TAG_NONE, 0, 0, 0},
 #if defined(WITH_ZLIB)
 	/* After level 6 the speed reduction is significant (1.5x to 2.5x slower per level), but the reduction in filesize is
 	 * fairly insignificant (~1% for each step). Lower levels become ~5-10% bigger by each level than level 6 while level
 	 * 1 is "only" 3 times as fast. Level 0 results in uncompressed savegames at about 8 times the cost of "none". */
-	{"zlib", SAVEGAME_TAG_ZLIB, CreateLoadFilter<ZlibLoadFilter>,   CreateSaveFilter<ZlibSaveFilter>,   0, 6, 9},
+	{CreateLoadFilter<ZlibLoadFilter>, CreateSaveFilter<ZlibSaveFilter>, "zlib", SAVEGAME_TAG_ZLIB, 0, 6, 9},
 #else
-	{"zlib", SAVEGAME_TAG_ZLIB, nullptr,                            nullptr,                            0, 0, 0},
+	{nullptr, nullptr, "zlib", SAVEGAME_TAG_ZLIB, 0, 0, 0},
 #endif
 #if defined(WITH_LIBLZMA)
 	/* Level 2 compression is speed wise as fast as zlib level 6 compression (old default), but results in ~10% smaller saves.
@@ -2834,9 +2834,9 @@ static const SaveLoadFormat _saveload_formats[] = {
 	 * The next significant reduction in file size is at level 4, but that is already 4 times slower. Level 3 is primarily 50%
 	 * slower while not improving the filesize, while level 0 and 1 are faster, but don't reduce savegame size much.
 	 * It's OTTX and not e.g. OTTL because liblzma is part of xz-utils and .tar.xz is preferred over .tar.lzma. */
-	{"lzma", SAVEGAME_TAG_LZMA, CreateLoadFilter<LZMALoadFilter>,   CreateSaveFilter<LZMASaveFilter>,   0, 2, 9},
+	{CreateLoadFilter<LZMALoadFilter>, CreateSaveFilter<LZMASaveFilter>, "lzma", SAVEGAME_TAG_LZMA, 0, 2, 9},
 #else
-	{"lzma", SAVEGAME_TAG_LZMA, nullptr,                            nullptr,                            0, 0, 0},
+	{nullptr, nullptr, "lzma", SAVEGAME_TAG_LZMA, 0, 0, 0},
 #endif
 };
 
