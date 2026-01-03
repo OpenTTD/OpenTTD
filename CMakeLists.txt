@@ -67,6 +67,20 @@ if(WIN32)
     list(APPEND GENERATED_SOURCE_FILES "${CMAKE_BINARY_DIR}/generated/ottdres.rc")
 endif()
 
+set(CACHE DOXYGEN_WARN_FILE CACHE FILEPATH "")
+set(CACHE DOXYGEN_WARN_FORMAT_WITHOUT_LINES CACHE BOOL "" VALUE ON)
+
+if(DOXYGEN_WARN_FILE)
+	set(DOXYGEN_WARN_FILE ${CMAKE_BINARY_DIR}/${DOXYGEN_WARN_FILE})
+endif()
+
+if(DOXYGEN_WARN_FORMAT_WITHOUT_LINES)
+    set(DOXYGEN_WARN_FORMAT_LINE "")
+else()
+	set(DOXYGEN_WARN_FORMAT_LINE "line")
+endif()
+
+
 # Generate a target to determine version, which is execute every 'make' run
 add_custom_target(find_version
         ${CMAKE_COMMAND}
@@ -75,6 +89,8 @@ add_custom_target(find_version
                 -DREV_MAJOR=${PROJECT_VERSION_MAJOR}
                 -DREV_MINOR=${PROJECT_VERSION_MINOR}
                 -DWINDOWS=${WIN32}
+			    -DDOXYGEN_WARN_FILE=${DOXYGEN_WARN_FILE}
+			    -DDOXYGEN_WARN_FORMAT_LINE=${DOXYGEN_WARN_FORMAT_LINE}
                 -P "${CMAKE_SOURCE_DIR}/cmake/scripts/FindVersion.cmake"
         WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
         BYPRODUCTS ${GENERATED_SOURCE_FILES}
