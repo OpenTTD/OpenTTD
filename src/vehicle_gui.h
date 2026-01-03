@@ -21,6 +21,8 @@
 
 void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order, Window *parent, bool auto_refit = false);
 
+const int BADGE_COLUMNS = 3; ///< Number of columns available for badges (0 = left of image, 1 = between image and name, 2 = after name)
+
 /** The tabs in the train details window */
 enum TrainDetailsWindowTabs : uint8_t {
 	TDW_TAB_CARGO = 0, ///< Tab with cargo carried by the vehicles
@@ -117,5 +119,7 @@ void StopGlobalFollowVehicle(const Vehicle *v);
 
 void DrawVehicleImage(const Vehicle *v, const Rect &r, VehicleID selection, EngineImageType image_type, int skip);
 void SetMouseCursorVehicle(const Vehicle *v, EngineImageType image_type);
+
+std::optional<std::string> GetNewGRFAdditionalText(EngineID engine);
 
 #endif /* VEHICLE_GUI_H */
