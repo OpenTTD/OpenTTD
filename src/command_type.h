@@ -299,6 +299,7 @@ enum Commands : uint8_t {
 	CMD_EXPAND_TOWN,                  ///< expand a town
 	CMD_DELETE_TOWN,                  ///< delete a town
 	CMD_PLACE_HOUSE,                  ///< place a house
+	CMD_PLACE_HOUSE_AREA,             ///< place an area of houses
 
 	CMD_ORDER_REFIT,                  ///< change the refit information of an order (for "goto depot" )
 	CMD_CLONE_ORDER,                  ///< clone (and share) an order

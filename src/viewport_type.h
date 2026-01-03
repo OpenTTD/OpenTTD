@@ -124,6 +124,7 @@ enum ViewportDragDropSelectionProcess : uint8_t {
 	DDSP_PLANT_TREES,          ///< Plant trees
 	DDSP_BUILD_BRIDGE,         ///< Bridge placement
 	DDSP_BUILD_OBJECT,         ///< Build an object
+	DDSP_PLACE_HOUSE,          ///< Place a house
 
 	/* Rail specific actions */
 	DDSP_PLACE_RAIL,           ///< Rail placement
