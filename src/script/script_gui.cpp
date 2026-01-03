@@ -470,7 +470,7 @@ struct ScriptSettingsWindow : public Window {
 					}
 				} else if (!bool_item && !config_item.complete_labels) {
 					/* Display a query box so users can enter a custom value. */
-					ShowQueryString(GetString(STR_JUST_INT, old_val), STR_CONFIG_SETTING_QUERY_CAPTION, INT32_DIGITS_WITH_SIGN_AND_TERMINATION, this, CS_NUMERAL_SIGNED, {});
+					ShowQueryString(GetString(STR_JUST_INT, old_val), STR_CONFIG_SETTING_QUERY_CAPTION, INT32_DIGITS_WITH_SIGN_AND_TERMINATION, this, CS_NUMERAL_SIGNED, QueryStringFlag::EnableDefault);
 				}
 				this->SetDirty();
 				break;
@@ -485,10 +485,17 @@ struct ScriptSettingsWindow : public Window {
 
 	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
+		/* The user pressed cancel */
 		if (!str.has_value()) return;
-		auto value = ParseInteger<int32_t>(*str, 10, true);
-		if (!value.has_value()) return;
-		this->SetValue(*value);
+
+		if (!str->empty()) {
+			auto value = ParseInteger<int32_t>(*str, 10, true);
+			if (!value.has_value()) return;
+
+			this->SetValue(*value);
+		} else {
+			this->SetDefaultValue();
+		}
 	}
 
 	void OnDropdownSelect(WidgetID widget, int index, int) override
@@ -550,6 +557,14 @@ private:
 		const ScriptConfigItem &config_item = *this->visible_settings[this->clicked_row];
 		if (_game_mode == GM_NORMAL && ((this->slot == OWNER_DEITY) || Company::IsValidID(this->slot)) && !config_item.flags.Test(ScriptConfigFlag::InGame)) return;
 		this->script_config->SetSetting(config_item.name, value);
+		this->SetDirty();
+	}
+
+	void SetDefaultValue()
+	{
+		const ScriptConfigItem &config_item = *this->visible_settings[this->clicked_row];
+		if (_game_mode == GM_NORMAL && ((this->slot == OWNER_DEITY) || Company::IsValidID(this->slot)) && !config_item.flags.Test(ScriptConfigFlag::InGame)) return;
+		this->script_config->ResetSetting(config_item.name);
 		this->SetDirty();
 	}
 };
