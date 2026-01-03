@@ -19,6 +19,13 @@
  *
  * This version is not yet released. The following changes are not set in stone yet.
  *
+ * API additions:
+ * \li AIAirport::GetAirportPlaneCompatibility
+ * \li AIAirport::APC_INCOMPATIBLE
+ * \li AIAirport::APC_COMPATIBLE
+ * \li AIAirport::APC_SHORT_RUNWAY
+ * \li AIAirport::APC_INVALID
+ *
  * \b 15.0
  *
  * API additions:
