@@ -28,10 +28,9 @@ struct Object : ObjectPool::PoolItem<&_object_pool> {
 	uint8_t colour = 0; ///< Colour of the object, for display purpose
 	uint8_t view = 0; ///< The view setting for this object
 
-	/** Make sure the object isn't zeroed. */
-	Object() {}
-	Object(ObjectType type, Town *town, TileArea location, TimerGameCalendar::Date build_date, uint8_t view) :
-		type(type), town(town), location(location), build_date(build_date), view(view) {}
+	Object(ObjectID index) : ObjectPool::PoolItem<&_object_pool>(index) {}
+	Object(ObjectID index, ObjectType type, Town *town, TileArea location, TimerGameCalendar::Date build_date, uint8_t view) :
+		ObjectPool::PoolItem<&_object_pool>(index), type(type), town(town), location(location), build_date(build_date), view(view) {}
 	/** Make sure the right destructor is called as well! */
 	~Object() {}
 

@@ -85,8 +85,8 @@ struct Group : GroupPool::PoolItem<&_group_pool> {
 	GroupID parent = GroupID::Invalid(); ///< Parent group
 	uint16_t number = 0; ///< Per-company group number.
 
-	Group() {}
-	Group(CompanyID owner, VehicleType vehicle_type) : owner(owner), vehicle_type(vehicle_type) {}
+	Group(GroupID index, CompanyID owner = INVALID_OWNER, VehicleType vehicle_type = VEH_INVALID) :
+		GroupPool::PoolItem<&_group_pool>(index), owner(owner), vehicle_type(vehicle_type) {}
 };
 
 

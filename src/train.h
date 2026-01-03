@@ -104,8 +104,7 @@ struct Train final : public GroundVehicle<Train, VEH_TRAIN> {
 	TrackBits track{};
 	TrainForceProceeding force_proceed{};
 
-	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
-	Train() : GroundVehicleBase() {}
+	Train(VehicleID index) : GroundVehicleBase(index) {}
 	/** We want to 'destruct' the right class. */
 	~Train() override { this->PreDestructor(); }
 

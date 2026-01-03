@@ -30,9 +30,10 @@ struct NetworkClientInfo : NetworkClientInfoPool::PoolItem<&_networkclientinfo_p
 
 	/**
 	 * Create a new client.
+	 * @param index The index into the client info pool.
 	 * @param client_id The unique identifier of the client.
 	 */
-	NetworkClientInfo(ClientID client_id = INVALID_CLIENT_ID) : client_id(client_id) {}
+	NetworkClientInfo(ClientPoolID index, ClientID client_id = INVALID_CLIENT_ID) : NetworkClientInfoPool::PoolItem<&_networkclientinfo_pool>(index), client_id(client_id) {}
 	~NetworkClientInfo();
 
 	static NetworkClientInfo *GetByClientID(ClientID client_id);

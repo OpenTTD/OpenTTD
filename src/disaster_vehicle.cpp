@@ -118,14 +118,15 @@ void DisasterVehicle::UpdateImage()
 
 /**
  * Construct the disaster vehicle.
+ * @param index The index within the vehicle pool.
  * @param x         The X coordinate.
  * @param y         The Y coordinate.
  * @param direction The direction the vehicle is facing.
  * @param subtype   The sub type of vehicle.
  * @param big_ufo_destroyer_target The target for the UFO destroyer.
  */
-DisasterVehicle::DisasterVehicle(int x, int y, Direction direction, DisasterSubType subtype, VehicleID big_ufo_destroyer_target) :
-		SpecializedVehicleBase(), big_ufo_destroyer_target(big_ufo_destroyer_target)
+DisasterVehicle::DisasterVehicle(VehicleID index, int x, int y, Direction direction, DisasterSubType subtype, VehicleID big_ufo_destroyer_target) :
+		SpecializedVehicleBase(index), big_ufo_destroyer_target(big_ufo_destroyer_target)
 {
 	this->vehstatus = VehState::Unclickable;
 

@@ -156,9 +156,10 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 
 	/**
 	 * Creates a new town.
+	 * @param index the index within the town pool
 	 * @param tile center tile of the town
 	 */
-	Town(TileIndex tile = INVALID_TILE) : xy(tile) { }
+	Town(TownID index, TileIndex tile = INVALID_TILE) : TownPool::PoolItem<&_town_pool>(index), xy(tile) { }
 
 	/** Destroy the town. */
 	~Town();

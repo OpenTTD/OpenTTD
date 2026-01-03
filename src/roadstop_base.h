@@ -71,7 +71,7 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 	RoadStop *next = nullptr; ///< Next stop of the given type at this station
 
 	/** Initializes a RoadStop */
-	inline RoadStop(TileIndex tile = INVALID_TILE) : xy(tile) { }
+	inline RoadStop(RoadStopID index, TileIndex tile = INVALID_TILE) : RoadStopPool::PoolItem<&_roadstop_pool>(index), xy(tile) { }
 
 	~RoadStop();
 

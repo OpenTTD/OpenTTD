@@ -41,8 +41,8 @@ struct DisasterVehicle final : public SpecializedVehicle<DisasterVehicle, VEH_DI
 	uint16_t state = 0; ///< Action stage of the disaster vehicle.
 
 	/** For use by saveload. */
-	DisasterVehicle() : SpecializedVehicleBase() {}
-	DisasterVehicle(int x, int y, Direction direction, DisasterSubType subtype, VehicleID big_ufo_destroyer_target = VehicleID::Invalid());
+	DisasterVehicle(VehicleID index) : SpecializedVehicleBase(index) {}
+	DisasterVehicle(VehicleID index, int x, int y, Direction direction, DisasterSubType subtype, VehicleID big_ufo_destroyer_target = VehicleID::Invalid());
 	/** We want to 'destruct' the right class. */
 	~DisasterVehicle() override = default;
 

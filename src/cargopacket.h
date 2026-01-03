@@ -73,10 +73,10 @@ public:
 	/** Maximum number of items in a single cargo packet. */
 	static const uint16_t MAX_COUNT = UINT16_MAX;
 
-	CargoPacket();
-	CargoPacket(StationID first_station, uint16_t count, Source source);
-	CargoPacket(uint16_t count, uint16_t periods_in_transit, StationID first_station, TileIndex source_xy, Money feeder_share);
-	CargoPacket(uint16_t count, Money feeder_share, CargoPacket &original);
+	CargoPacket(CargoPacketID index);
+	CargoPacket(CargoPacketID index, StationID first_station, uint16_t count, Source source);
+	CargoPacket(CargoPacketID index, uint16_t count, uint16_t periods_in_transit, StationID first_station, TileIndex source_xy, Money feeder_share);
+	CargoPacket(CargoPacketID index, uint16_t count, Money feeder_share, CargoPacket &original);
 
 	/** Destroy the packet. */
 	~CargoPacket() { }
