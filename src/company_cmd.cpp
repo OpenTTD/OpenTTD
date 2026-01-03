@@ -66,7 +66,7 @@ INSTANTIATE_POOL_METHODS(Company)
  * @param name_1 Name of the company.
  * @param is_ai  A computer program is running for this company.
  */
-Company::Company(StringID name_1, bool is_ai)
+Company::Company(CompanyID index, StringID name_1, bool is_ai) : CompanyPool::PoolItem<&_company_pool>(index)
 {
 	this->name_1 = name_1;
 	this->is_ai = is_ai;

@@ -552,7 +552,7 @@ public:
 	IndustryList industries_near{}; ///< Cached list of industries near the station that can accept cargo, @see DeliverGoodsToIndustry()
 	Industry *industry = nullptr; ///< NOSAVE: Associated industry for neutral stations. (Rebuilt on load from Industry->st)
 
-	Station(TileIndex tile = INVALID_TILE);
+	Station(StationID index, TileIndex tile = INVALID_TILE);
 	~Station() override;
 
 	void AddFacility(StationFacility new_facility_bit, TileIndex facil_xy);

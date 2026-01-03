@@ -46,7 +46,7 @@ extern SpriteGroupPool _spritegroup_pool;
 /* Common wrapper for all the different sprite group types */
 struct SpriteGroup : SpriteGroupPool::PoolItem<&_spritegroup_pool> {
 protected:
-	SpriteGroup() {} // Not `= default` as that resets PoolItem->index.
+	SpriteGroup(SpriteGroupID index) : SpriteGroupPool::PoolItem<&_spritegroup_pool>(index) {}
 	/** Base sprite group resolver */
 	virtual ResolverResult Resolve(ResolverObject &object) const = 0;
 
@@ -64,7 +64,7 @@ public:
  */
 template <class T>
 struct SpecializedSpriteGroup : public SpriteGroup {
-	inline SpecializedSpriteGroup() : SpriteGroup() {}
+	inline SpecializedSpriteGroup(SpriteGroupID index) : SpriteGroup(index) {}
 
 	/**
 	 * Creates a new T-object in the SpriteGroup pool.
@@ -82,7 +82,7 @@ struct SpecializedSpriteGroup : public SpriteGroup {
 /* 'Real' sprite groups contain a list of other result or callback sprite
  * groups. */
 struct RealSpriteGroup : SpecializedSpriteGroup<RealSpriteGroup> {
-	RealSpriteGroup() : SpecializedSpriteGroup<RealSpriteGroup>() {}
+	RealSpriteGroup(SpriteGroupID index) : SpecializedSpriteGroup<RealSpriteGroup>(index) {}
 
 	/* Loaded = in motion, loading = not moving
 	 * Each group contains several spritesets, for various loading stages */
@@ -177,7 +177,7 @@ struct DeterministicSpriteGroupRange {
 
 
 struct DeterministicSpriteGroup : SpecializedSpriteGroup<DeterministicSpriteGroup> {
-	DeterministicSpriteGroup() : SpecializedSpriteGroup<DeterministicSpriteGroup>() {}
+	DeterministicSpriteGroup(SpriteGroupID index) : SpecializedSpriteGroup<DeterministicSpriteGroup>(index) {}
 
 	VarSpriteGroupScope var_scope{};
 	DeterministicSpriteGroupSize size{};
@@ -199,7 +199,7 @@ enum RandomizedSpriteGroupCompareMode : uint8_t {
 };
 
 struct RandomizedSpriteGroup : SpecializedSpriteGroup<RandomizedSpriteGroup> {
-	RandomizedSpriteGroup() : SpecializedSpriteGroup<RandomizedSpriteGroup>() {}
+	RandomizedSpriteGroup(SpriteGroupID index) : SpecializedSpriteGroup<RandomizedSpriteGroup>(index) {}
 
 	VarSpriteGroupScope var_scope{};  ///< Take this object:
 
@@ -223,7 +223,7 @@ struct CallbackResultSpriteGroup : SpecializedSpriteGroup<CallbackResultSpriteGr
 	 * Creates a spritegroup representing a callback result
 	 * @param value The value that was used to represent this callback result
 	 */
-	explicit CallbackResultSpriteGroup(CallbackResult value) : SpecializedSpriteGroup<CallbackResultSpriteGroup>(), result(value) {}
+	CallbackResultSpriteGroup(SpriteGroupID index, CallbackResult value) : SpecializedSpriteGroup<CallbackResultSpriteGroup>(index), result(value) {}
 
 	CallbackResult result = 0;
 
@@ -241,7 +241,7 @@ struct ResultSpriteGroup : SpecializedSpriteGroup<ResultSpriteGroup> {
 	 * @param num_sprites The number of sprites per set.
 	 * @return A spritegroup representing the sprite number result.
 	 */
-	ResultSpriteGroup(SpriteID sprite, uint8_t num_sprites) : SpecializedSpriteGroup<ResultSpriteGroup>(), num_sprites(num_sprites), sprite(sprite) {}
+	ResultSpriteGroup(SpriteGroupID index, SpriteID sprite, uint8_t num_sprites) : SpecializedSpriteGroup<ResultSpriteGroup>(index), num_sprites(num_sprites), sprite(sprite) {}
 
 	uint8_t num_sprites = 0;
 	SpriteID sprite = 0;
@@ -254,7 +254,7 @@ protected:
  * Action 2 sprite layout for houses, industry tiles, objects and airport tiles.
  */
 struct TileLayoutSpriteGroup : SpecializedSpriteGroup<TileLayoutSpriteGroup> {
-	TileLayoutSpriteGroup() : SpecializedSpriteGroup<TileLayoutSpriteGroup>() {}
+	TileLayoutSpriteGroup(SpriteGroupID index) : SpecializedSpriteGroup<TileLayoutSpriteGroup>(index) {}
 
 	NewGRFSpriteLayout dts{};
 
@@ -265,7 +265,7 @@ protected:
 };
 
 struct IndustryProductionSpriteGroup : SpecializedSpriteGroup<IndustryProductionSpriteGroup> {
-	IndustryProductionSpriteGroup() : SpecializedSpriteGroup<IndustryProductionSpriteGroup>() {}
+	IndustryProductionSpriteGroup(SpriteGroupID index) : SpecializedSpriteGroup<IndustryProductionSpriteGroup>(index) {}
 
 	uint8_t version = 0; ///< Production callback version used, or 0xFF if marked invalid
 	uint8_t num_input = 0; ///< How many subtract_input values are valid

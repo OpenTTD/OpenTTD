@@ -331,7 +331,7 @@ public:
 		return 0;
 	}
 
-	Vehicle(VehicleType type = VEH_INVALID);
+	Vehicle(VehicleID index, VehicleType type = VEH_INVALID);
 
 	void PreDestructor();
 	/** We want to 'destruct' the right class. */
@@ -1018,8 +1018,9 @@ struct SpecializedVehicle : public Vehicle {
 
 	/**
 	 * Set vehicle type correctly
+	 * @param index The index into the vehicle pool.
 	 */
-	inline SpecializedVehicle() : Vehicle(Type)
+	inline SpecializedVehicle(VehicleID index) : Vehicle(index, Type)
 	{
 		this->sprite_cache.sprite_seq.count = 1;
 	}

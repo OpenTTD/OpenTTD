@@ -188,13 +188,12 @@ public:
 		return val > 0 ? std::max(1U, val * target_age.base() / orig_age.base()) : 0;
 	}
 
-	/** Bare constructor, only for save/load. */
-	LinkGraph() {}
 	/**
 	 * Real constructor.
 	 * @param cargo Cargo the link graph is about.
 	 */
-	LinkGraph(CargoType cargo) : cargo(cargo), last_compression(TimerGameEconomy::date) {}
+	LinkGraph(LinkGraphID index, CargoType cargo = INVALID_CARGO) :
+		LinkGraphPool::PoolItem<&_link_graph_pool>(index), cargo(cargo), last_compression(TimerGameEconomy::date) {}
 
 	void Init(uint size);
 	void ShiftDates(TimerGameEconomy::Date interval);

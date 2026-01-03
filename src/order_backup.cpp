@@ -30,11 +30,22 @@ INSTANTIATE_POOL_METHODS(OrderBackup)
 OrderBackup::~OrderBackup() = default;
 
 /**
+ * Create an order backup for savegame loading.
+ * @param index The index of the order backup pool.
+ */
+OrderBackup::OrderBackup(OrderBackupID index) :
+	OrderBackupPool::PoolItem<&_order_backup_pool>(index)
+{
+}
+
+/**
  * Create an order backup for the given vehicle.
+ * @param index The index of the order backup pool.
  * @param v    The vehicle to make a backup of.
  * @param user The user that is requesting the backup.
  */
-OrderBackup::OrderBackup(const Vehicle *v, uint32_t user) : user(user), tile(v->tile), group(v->group_id)
+OrderBackup::OrderBackup(OrderBackupID index, const Vehicle *v, uint32_t user) :
+	OrderBackupPool::PoolItem<&_order_backup_pool>(index), user(user), tile(v->tile), group(v->group_id)
 {
 	this->CopyConsistPropertiesFrom(v);
 

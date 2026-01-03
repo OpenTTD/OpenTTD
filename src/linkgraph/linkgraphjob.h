@@ -26,7 +26,7 @@ extern LinkGraphJobPool _link_graph_job_pool;
 /**
  * Class for calculation jobs to be run on link graphs.
  */
-class LinkGraphJob : public LinkGraphJobPool::PoolItem<&_link_graph_job_pool>{
+class LinkGraphJob : public LinkGraphJobPool::PoolItem<&_link_graph_job_pool> {
 public:
 	/**
 	 * Demand between two nodes.
@@ -176,9 +176,9 @@ public:
 	 * Bare constructor, only for save/load. link_graph, join_date and actually
 	 * settings have to be brutally const-casted in order to populate them.
 	 */
-	LinkGraphJob() : settings(_settings_game.linkgraph) {}
+	LinkGraphJob(LinkGraphJobID index) : LinkGraphJobPool::PoolItem<&_link_graph_job_pool>(index), link_graph(LinkGraphID::Invalid()), settings(_settings_game.linkgraph) {}
 
-	LinkGraphJob(const LinkGraph &orig);
+	LinkGraphJob(LinkGraphJobID index, const LinkGraph &orig);
 	~LinkGraphJob();
 
 	void Init();

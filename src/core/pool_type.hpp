@@ -24,6 +24,10 @@ static constexpr PoolTypes PT_ALL = {PoolType::Normal, PoolType::NetworkClient, 
 
 typedef std::vector<struct PoolBase *> PoolVector; ///< Vector of pointers to PoolBase
 
+template <typename Tindex>
+using AllocationResult = std::pair<void *, Tindex>;
+
+
 /** Non-templated base for #PoolID for use with type trait queries. */
 struct PoolIDBase {};
 
@@ -134,6 +138,7 @@ struct Pool : PoolBase {
 public:
 	static constexpr size_t MAX_SIZE = Tindex::End().base(); ///< Make template parameter accessible from outside
 
+	using IndexType = Tindex;
 	using BitmapStorage = size_t;
 	static constexpr size_t BITMAP_SIZE = std::numeric_limits<BitmapStorage>::digits;
 
@@ -283,7 +288,13 @@ public:
 	 */
 	template <struct Pool<Titem, Tindex, Tgrowth_step, Tpool_type, Tcache> *Tpool>
 	struct PoolItem {
-		Tindex index; ///< Index of this pool item
+		const Tindex index; ///< Index of this pool item
+
+		/**
+		 * Construct the item.
+		 * @param index The index of this PoolItem in the pool.
+		 */
+		PoolItem(Tindex index) : index(index) {}
 
 		/** Type of the pool this item is going to be part of */
 		typedef struct Pool<Titem, Tindex, Tgrowth_step, Tpool_type, Tcache> Pool;
@@ -338,8 +349,8 @@ public:
 		requires std::is_base_of_v<Titem, T>
 		static inline T *Create(Targs &&... args)
 		{
-			void *data = Tpool->GetNew(sizeof(T));
-			return ::new (data) T(std::forward<Targs&&>(args)...);
+			auto [data, index] = Tpool->GetNew(sizeof(T));
+			return ::new (data) T(index, std::forward<Targs&&>(args)...);
 		}
 
 		/**
@@ -352,8 +363,8 @@ public:
 		requires std::is_base_of_v<Titem, T>
 		static inline T *CreateAtIndex(Tindex index, Targs &&... args)
 		{
-			void *data = Tpool->GetNew(sizeof(T), index.base());
-			return ::new (data) T(std::forward<Targs&&>(args)...);
+			auto [data, _] = Tpool->GetNew(sizeof(T), index.base());
+			return ::new (data) T(index, std::forward<Targs&&>(args)...);
 		}
 
 		/** Helper functions so we can use PoolItem::Function() instead of _poolitem_pool.Function() */
@@ -461,12 +472,12 @@ private:
 	AllocCache *alloc_cache = nullptr;
 	std::allocator<uint8_t> allocator{};
 
-	void *AllocateItem(size_t size, size_t index);
+	AllocationResult<Tindex> AllocateItem(size_t size, size_t index);
 	void ResizeFor(size_t index);
 	size_t FindFirstFree();
 
-	void *GetNew(size_t size);
-	void *GetNew(size_t size, size_t index);
+	AllocationResult<Tindex> GetNew(size_t size);
+	AllocationResult<Tindex> GetNew(size_t size, size_t index);
 
 	void FreeItem(size_t size, size_t index);
 

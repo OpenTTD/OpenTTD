@@ -290,26 +290,27 @@ private:
 
 public:
 	/** Default constructor producing an invalid order list. */
-	OrderList() {}
+	OrderList(OrderListID index) : OrderListPool::PoolItem<&_orderlist_pool>(index) {}
 
 	/**
 	 * Create an order list with the given order chain for the given vehicle.
-	 *  @param chain pointer to the first order of the order chain
-	 *  @param v any vehicle using this orderlist
+	 * @param index index of the list within the order list pool
+	 * @param chain pointer to the first order of the order chain
+	 * @param v any vehicle using this orderlist
 	 */
-	OrderList(Order &&order, Vehicle *v)
+	OrderList(OrderListID index, Order &&order, Vehicle *v) : OrderListPool::PoolItem<&_orderlist_pool>(index)
 	{
 		this->orders.emplace_back(std::move(order));
 		this->Initialize(v);
 	}
 
-	OrderList(std::vector<Order> &&orders, Vehicle *v)
+	OrderList(OrderListID index, std::vector<Order> &&orders, Vehicle *v) : OrderListPool::PoolItem<&_orderlist_pool>(index)
 	{
 		this->orders = std::move(orders);
 		this->Initialize(v);
 	}
 
-	OrderList(Vehicle *v)
+	OrderList(OrderListID index, Vehicle *v) : OrderListPool::PoolItem<&_orderlist_pool>(index)
 	{
 		this->Initialize(v);
 	}

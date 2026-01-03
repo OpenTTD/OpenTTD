@@ -27,9 +27,10 @@ struct Waypoint final : SpecializedStation<Waypoint, true> {
 
 	/**
 	 * Create a waypoint at the given tile.
+	 * @param index The index within the station pool.
 	 * @param tile The location of the waypoint.
 	 */
-	Waypoint(TileIndex tile = INVALID_TILE) : SpecializedStation<Waypoint, true>(tile) { }
+	Waypoint(StationID index, TileIndex tile = INVALID_TILE) : SpecializedStation<Waypoint, true>(index, tile) { }
 	~Waypoint() override;
 
 	void UpdateVirtCoord() override;

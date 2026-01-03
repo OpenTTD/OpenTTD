@@ -25,8 +25,7 @@ struct Depot : DepotPool::PoolItem<&_depot_pool> {
 	std::string name{};
 	TimerGameCalendar::Date build_date{}; ///< Date of construction
 
-	Depot() {}
-	Depot(TileIndex xy) : xy(xy), build_date(TimerGameCalendar::date) {}
+	Depot(DepotID index, TileIndex xy = INVALID_TILE) : DepotPool::PoolItem<&_depot_pool>(index), xy(xy), build_date(TimerGameCalendar::date) {}
 	~Depot();
 
 	static inline Depot *GetByTile(TileIndex tile)

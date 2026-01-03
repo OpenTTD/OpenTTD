@@ -47,7 +47,7 @@ public:
 	std::chrono::steady_clock::time_point connect_time{}; ///< Time of connection.
 	NetworkAddress address{}; ///< Address of the admin.
 
-	ServerNetworkAdminSocketHandler(SOCKET s);
+	ServerNetworkAdminSocketHandler(AdminID index, SOCKET s);
 	~ServerNetworkAdminSocketHandler() override;
 
 	NetworkRecvStatus SendError(NetworkErrorCode error);

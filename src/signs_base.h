@@ -27,8 +27,9 @@ struct Sign : SignPool::PoolItem<&_sign_pool> {
 	Owner owner = INVALID_OWNER; // Placed by this company. Anyone can delete them though. OWNER_NONE for gray signs from old games.
 	Colours text_colour = COLOUR_WHITE; // Colour of the sign's text. Only relevant for OWNER_DEITY.
 
-	Sign() {}
-	Sign(Owner owner, int32_t x, int32_t y, int32_t z, const std::string &name) : name(name), x(x), y(y), z(z), owner(owner) {}
+	Sign(SignID index) : SignPool::PoolItem<&_sign_pool>(index) {}
+	Sign(SignID index, Owner owner, int32_t x, int32_t y, int32_t z, const std::string &name) :
+		SignPool::PoolItem<&_sign_pool>(index), name(name), x(x), y(y), z(z), owner(owner) {}
 	~Sign();
 
 	void UpdateVirtCoord();

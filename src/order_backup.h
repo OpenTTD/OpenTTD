@@ -48,9 +48,8 @@ private:
 	void DoRestore(Vehicle *v);
 
 	friend OrderBackupPool::PoolItem<&_order_backup_pool>;
-	/** Creation for savegame restoration. */
-	OrderBackup() = default;
-	OrderBackup(const Vehicle *v, uint32_t user);
+	OrderBackup(OrderBackupID index);
+	OrderBackup(OrderBackupID index, const Vehicle *v, uint32_t user);
 
 public:
 	~OrderBackup();

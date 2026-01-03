@@ -48,7 +48,7 @@ Engine *GetTempDataEngine(EngineID index)
 	if (index < _temp_engine.size()) {
 		return &_temp_engine[index];
 	} else if (index == _temp_engine.size()) {
-		return &_temp_engine.emplace_back();
+		return &_temp_engine.emplace_back(index);
 	} else {
 		NOT_REACHED();
 	}
