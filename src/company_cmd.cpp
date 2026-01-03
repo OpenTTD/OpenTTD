@@ -133,6 +133,7 @@ void SetLocalCompany(CompanyID new_company)
 
 	if (switching_company) {
 		InvalidateWindowClassesData(WC_COMPANY);
+		InvalidateWindowClassesData(WC_VEHICLE_VIEW);
 		/* Delete any construction windows... */
 		CloseConstructionWindows();
 	}
