@@ -829,6 +829,10 @@ void GenerateObjects()
 		/* Continue, if the object was never available till now or shall not be placed */
 		if (!spec.WasEverAvailable() || spec.generate_amount == 0) continue;
 
+		/* If transmitters and lighthouses are disabled, do not place them */
+		if ((spec.Index() == OBJECT_TRANSMITTER || spec.Index() == OBJECT_LIGHTHOUSE)
+				&& !_settings_newgame.game_creation.generate_obstacles) continue;
+
 		uint16_t amount = spec.generate_amount;
 
 		/* Scale by map size */
