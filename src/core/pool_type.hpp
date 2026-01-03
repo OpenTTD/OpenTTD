@@ -318,26 +318,8 @@ public:
 		/** Do not use new (index) PoolItem(...), but rather PoolItem::CreateAtIndex(index, ...). */
 		inline void *operator new(size_t size, Tindex index) = delete;
 
-		/**
-		 * Allocates space for new Titem at given memory address
-		 * @param ptr where are we allocating the item?
-		 * @return pointer to allocated memory (== ptr)
-		 * @note use of this is strongly discouraged
-		 * @pre the memory must not be allocated in the Pool!
-		 */
-		inline void *operator new(size_t, void *ptr)
-		{
-			for (size_t i = 0; i < Tpool->first_unused; i++) {
-				/* Don't allow creating new objects over existing.
-				 * Even if we called the destructor and reused this memory,
-				 * we don't know whether 'size' and size of currently allocated
-				 * memory are the same (because of possible inheritance).
-				 * Use { size_t index = item->index; delete item; new (index) item; }
-				 * instead to make sure destructor is called and no memory leaks. */
-				assert(ptr != Tpool->data[i]);
-			}
-			return ptr;
-		}
+		/** Do not use new (address) PoolItem(...). */
+		inline void *operator new(size_t, void *ptr) = delete;
 
 
 		/**

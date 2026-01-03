@@ -43,12 +43,12 @@ static const SaveLoad _engine_desc[] = {
 
 static TypedIndexContainer<std::vector<Engine>, EngineID> _temp_engine;
 
-Engine *GetTempDataEngine(EngineID index)
+Engine *GetTempDataEngine(EngineID index, VehicleType type, uint16_t local_id)
 {
 	if (index < _temp_engine.size()) {
 		return &_temp_engine[index];
 	} else if (index == _temp_engine.size()) {
-		return &_temp_engine.emplace_back(index);
+		return &_temp_engine.emplace_back(index, type, local_id);
 	} else {
 		NOT_REACHED();
 	}
