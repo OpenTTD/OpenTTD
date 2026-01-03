@@ -1430,6 +1430,9 @@ STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Amount of flat 
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Allow multiple similar industries per town: {STRING2}
 STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normally, a town does not want more than one industry of each type. With this setting, it will allow several industries of the same type in the same town
 
+STR_CONFIG_SETTING_TRADITIONAL_INDUSTRY_ACCEPTANCE              :Traditional industry tile acceptance
+STR_CONFIG_SETTING_TRADITIONAL_INDUSTRY_ACCEPTANCE_HELPTEXT     :When enabled, only some tiles of the default Oil Refinery, Power Station, and Sawmill accept cargo
+
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Show signals: {STRING2}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Select on which side of the track to place signals
 ###length 3
