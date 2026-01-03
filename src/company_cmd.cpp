@@ -281,7 +281,7 @@ bool CheckCompanyHasMoney(CommandCost &cost)
  * @param c Company to pay the bill.
  * @param cost Money to pay.
  */
-static void SubtractMoneyFromAnyCompany(Company *c, const CommandCost &cost)
+static void SubtractMoneyFromCompany(Company *c, const CommandCost &cost)
 {
 	if (cost.GetCost() == 0) return;
 	assert(cost.GetExpensesType() != INVALID_EXPENSES);
@@ -307,13 +307,14 @@ static void SubtractMoneyFromAnyCompany(Company *c, const CommandCost &cost)
 }
 
 /**
- * Subtract money from the #_current_company, if the company is valid.
+ * Subtract money from a company, if the company is valid.
+ * @param company CompanyID of company.
  * @param cost Money to pay.
  */
-void SubtractMoneyFromCompany(const CommandCost &cost)
+void SubtractMoneyFromCompany(CompanyID company, const CommandCost &cost)
 {
-	Company *c = Company::GetIfValid(_current_company);
-	if (c != nullptr) SubtractMoneyFromAnyCompany(c, cost);
+	Company *c = Company::GetIfValid(company);
+	if (c != nullptr) SubtractMoneyFromCompany(c, cost);
 }
 
 /**
@@ -330,7 +331,7 @@ void SubtractMoneyFromCompanyFract(CompanyID company, const CommandCost &cst)
 	c->money_fraction = m - (uint8_t)cost;
 	cost >>= 8;
 	if (c->money_fraction > m) cost++;
-	if (cost != 0) SubtractMoneyFromAnyCompany(c, CommandCost(cst.GetExpensesType(), cost));
+	if (cost != 0) SubtractMoneyFromCompany(c, CommandCost(cst.GetExpensesType(), cost));
 }
 
 static constexpr void UpdateLandscapingLimit(uint32_t &limit, uint64_t per_64k_frames, uint64_t burst)
@@ -1328,9 +1329,7 @@ CommandCost CmdGiveMoney(DoCommandFlags flags, Money money, CompanyID dest_compa
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		/* Add money to company */
-		Backup<CompanyID> cur_company(_current_company, dest_company);
-		SubtractMoneyFromCompany(CommandCost(EXPENSES_OTHER, -amount.GetCost()));
-		cur_company.Restore();
+		SubtractMoneyFromCompany(dest_company, CommandCost(EXPENSES_OTHER, -amount.GetCost()));
 
 		if (_networking) {
 			std::string dest_company_name = GetString(STR_COMPANY_NAME, dest_company);

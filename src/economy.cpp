@@ -645,14 +645,10 @@ static void CompaniesGenStatistics()
 		CompanyCheckBankrupt(c);
 	}
 
-	Backup<CompanyID> cur_company(_current_company);
-
 	/* Pay Infrastructure Maintenance, if enabled */
 	if (_settings_game.economy.infrastructure_maintenance) {
 		/* Improved monthly infrastructure costs. */
 		for (const Company *c : Company::Iterate()) {
-			cur_company.Change(c->index);
-
 			CommandCost cost(EXPENSES_PROPERTY);
 			uint32_t rail_total = c->infrastructure.GetRailTotal();
 			for (RailType rt = RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) {
@@ -668,10 +664,9 @@ static void CompaniesGenStatistics()
 			cost.AddCost(StationMaintenanceCost(c->infrastructure.station));
 			cost.AddCost(AirportMaintenanceCost(c->index));
 
-			SubtractMoneyFromCompany(cost);
+			SubtractMoneyFromCompany(c->index, cost);
 		}
 	}
-	cur_company.Restore();
 
 	/* Only run the economic statistics and update company stats every 3rd economy month (1st of quarter). */
 	if (!HasBit(1 << 0 | 1 << 3 | 1 << 6 | 1 << 9, TimerGameEconomy::month)) return;
@@ -808,10 +803,7 @@ void RecomputePrices()
 /** Let all companies pay the monthly interest on their loan. */
 static void CompaniesPayInterest()
 {
-	Backup<CompanyID> cur_company(_current_company);
 	for (const Company *c : Company::Iterate()) {
-		cur_company.Change(c->index);
-
 		/* Over a year the paid interest should be "loan * interest percentage",
 		 * but... as that number is likely not dividable by 12 (pay each month),
 		 * one needs to account for that in the monthly fee calculations.
@@ -834,11 +826,10 @@ static void CompaniesPayInterest()
 		Money up_to_previous_month = yearly_fee * TimerGameEconomy::month / 12;
 		Money up_to_this_month = yearly_fee * (TimerGameEconomy::month + 1) / 12;
 
-		SubtractMoneyFromCompany(CommandCost(EXPENSES_LOAN_INTEREST, up_to_this_month - up_to_previous_month));
+		SubtractMoneyFromCompany(c->index, CommandCost(EXPENSES_LOAN_INTEREST, up_to_this_month - up_to_previous_month));
 
-		SubtractMoneyFromCompany(CommandCost(EXPENSES_OTHER, _price[PR_STATION_VALUE] >> 2));
+		SubtractMoneyFromCompany(c->index, CommandCost(EXPENSES_OTHER, _price[PR_STATION_VALUE] >> 2));
 	}
-	cur_company.Restore();
 }
 
 static void HandleEconomyFluctuations()
@@ -1189,7 +1180,7 @@ CargoPayment::~CargoPayment()
 
 	Backup<CompanyID> cur_company(_current_company, this->front->owner);
 
-	SubtractMoneyFromCompany(CommandCost(this->front->GetExpenseType(true), -this->route_profit));
+	SubtractMoneyFromCompany(_current_company, CommandCost(this->front->GetExpenseType(true), -this->route_profit));
 	this->front->profit_this_year += (this->visual_profit + this->visual_transfer) << 8;
 
 	if (this->route_profit != 0 && IsLocalCompany() && !PlayVehicleSound(this->front, VSE_LOAD_UNLOAD)) {
