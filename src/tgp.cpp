@@ -215,7 +215,7 @@ static const int64_t _water_percent[4] = {70, 170, 270, 420};
  */
 static Height TGPGetMaxHeight()
 {
-	if (_settings_game.difficulty.terrain_type == CUSTOM_TERRAIN_TYPE_NUMBER_DIFFICULTY) {
+	if (_settings_game.difficulty.terrain_type == TT_CUSTOM) {
 		/* TGP never reaches this height; this means that if a user inputs "2",
 		 * it would create a flat map without the "+ 1". But that would
 		 * overflow on "255". So we reduce it by 1 to get back in range. */
