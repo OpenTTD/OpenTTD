@@ -13,7 +13,7 @@
 #include "vehicle_type.h"
 #include "engine_type.h"
 
-uint CountArticulatedParts(EngineID engine_type, bool purchase_window);
+uint CountArticulatedParts(EngineID engine_type);
 CargoArray GetCapacityOfArticulatedParts(EngineID engine);
 CargoTypes GetCargoTypesOfArticulatedParts(EngineID engine);
 void AddArticulatedParts(Vehicle *first);
