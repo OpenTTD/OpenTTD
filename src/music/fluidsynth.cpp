@@ -90,11 +90,12 @@ std::optional<std::string_view> MusicDriver_FluidSynth::Start(const StringList &
 		sfont_id = FLUID_FAILED;
 
 		/* Try loading the default soundfont registered with FluidSynth. */
-		char *default_soundfont;
+		char *default_soundfont = nullptr;
 		fluid_settings_dupstr(_midi.settings, "synth.default-soundfont", &default_soundfont);
-		if (fluid_is_soundfont(default_soundfont)) {
+		if (default_soundfont != nullptr && std::filesystem::exists(default_soundfont) && fluid_is_soundfont(default_soundfont)) {
 			sfont_id = fluid_synth_sfload(_midi.synth, default_soundfont, 1);
 		}
+		fluid_free(default_soundfont);
 
 		/* If no default soundfont found, try our own list. */
 		if (sfont_id == FLUID_FAILED) {
