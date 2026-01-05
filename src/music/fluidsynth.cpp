@@ -60,6 +60,18 @@ static void RenderMusicStream(int16_t *buffer, size_t samples)
 	fluid_synth_write_s16(_midi.synth, samples, buffer, 0, 2, buffer, 1, 2);
 }
 
+static void load_and_execute_config_file(fluid_cmd_handler_t *cmd_handler, const char *config_file)
+{
+	if (std::filesystem::exists(config_file)) {
+		Debug(driver, 2, "Fluidsynth: Attempting to load config file '{}'", config_file);
+		if (fluid_source(cmd_handler, config_file) < 0) {
+			Debug(driver, 0, "Fluidsynth: Failed to execute command configuration file '{}'", config_file);
+		}
+	} else {
+		Debug(driver, 1, "Fluidsynth: Failed to load config file '{}' - file doesn't exist", config_file);
+	}
+}
+
 std::optional<std::string_view> MusicDriver_FluidSynth::Start(const StringList &param)
 {
 	std::lock_guard<std::mutex> lock{_midi.synth_mutex};
@@ -72,6 +84,19 @@ std::optional<std::string_view> MusicDriver_FluidSynth::Start(const StringList &
 	/* Create the settings. */
 	_midi.settings = new_fluid_settings();
 	if (_midi.settings == nullptr) return "Could not create midi settings";
+
+	/* Read config file(s) */
+	fluid_cmd_handler_t *cmd_handler = new_fluid_cmd_handler2(_midi.settings, nullptr, nullptr, nullptr);
+	if (cmd_handler == NULL) return "Failed to create the early command handler";
+
+	char buf[MAX_PATH] = {};
+	const char *config_file = fluid_get_sysconf(buf, sizeof(buf)); // system-wide config file
+	load_and_execute_config_file(cmd_handler, config_file);
+	config_file = fluid_get_userconf(buf, sizeof(buf)); // user config file (potentially overrides system)
+	load_and_execute_config_file(cmd_handler, config_file);
+
+	delete_fluid_cmd_handler(cmd_handler);
+
 	/* Don't try to lock sample data in memory, OTTD usually does not run with privileges allowing that */
 	fluid_settings_setint(_midi.settings, "synth.lock-memory", 0);
 
