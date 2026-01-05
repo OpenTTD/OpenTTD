@@ -1059,8 +1059,9 @@ protected:
 		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 		AutoRestoreBackup dpi_backup(_cur_dpi, dpi);
 
-		/* Clear it */
-		GfxFillRect(dpi->left, dpi->top, dpi->left + dpi->width - 1, dpi->top + dpi->height - 1, PC_BLACK);
+		/* If freeform edges are off, draw infinite water off the edges of the map. */
+		const PixelColour map_clear_color = (_settings_game.construction.freeform_edges ? PC_BLACK : PC_WATER);
+		GfxFillRect(dpi->left, dpi->top, dpi->left + dpi->width - 1, dpi->top + dpi->height - 1, map_clear_color);
 
 		/* Which tile is displayed at (dpi->left, dpi->top)? */
 		int dx;
