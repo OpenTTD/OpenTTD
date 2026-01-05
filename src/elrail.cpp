@@ -586,7 +586,7 @@ void UpdateDisableElrailSettingState(bool disable, bool update_vehicles)
 		/* update railtype of engines intended to use elrail */
 		if (rv_info->intended_railtypes.Test(RAILTYPE_ELECTRIC)) {
 			rv_info->railtypes.Set(RAILTYPE_ELECTRIC, !disable);
-			rv_info->railtypes.Set(RAILTYPE_RAIL, disable);
+			rv_info->railtypes.Set(RAILTYPE_RAIL, disable || rv_info->intended_railtypes.Test(RAILTYPE_RAIL));
 		}
 	}
 
