@@ -1179,7 +1179,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :A játékhoz ha
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :További információk a grafikus alapcsomagról
 
 STR_GAME_OPTIONS_BASE_SFX                                       :Hang alapcsomag
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Használandó hang alapcsomag kiválasztása (nem módosítható a játékban, csak a főmenüben)
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Használandó hang alapcsomag kiválasztása
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :További információk a hang alapcsomagról
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :Zenei alapcsomag
@@ -1312,7 +1312,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :Összes kibont�
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Összes összecsukása
 STR_CONFIG_SETTING_RESET_ALL                                    :Összes érték visszaállítása
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(leírás nem elérhető)
-STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
+STR_CONFIG_SETTING_VALUE                                        :{ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Alapértelmezett érték: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Beállítás típusa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Kliens beállítás (mentésben nem tárolva; minden játékot befolyásol)
@@ -3722,13 +3722,13 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Talált
 STR_NEWGRF_LIST_MISSING                                         :{RED}Hiányzó fájlok
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}A NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' viselkedése valószínűleg deszinkronizációt és/vagy összeomlást okoz
+STR_NEWGRF_BROKEN                                               :{WHITE}A NewGRF '{0:STRING}' viselkedése valószínűleg deszinkronizációt és/vagy összeomlást okoz
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Megváltoztattad '{1:ENGINE}' motorkocsi állapotát mikor nem volt bent a járműtelepen
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Megváltoztattad '{1:ENGINE}' jármű hosszát mikor nem volt a járműtelepen
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Megváltoztattad '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' jármű kapacitását, amikor az nem a garázsban vagy átalakítás alatt áll
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Megváltoztattad '{1:ENGINE}' jármű kapacitását, amikor az nem a garázsban vagy átalakítás alatt áll
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}A(z) „{1:COMPANY}” vállalat „{0:VEHICLE}” jelű vonatának hossza érvénytelen. Ezt valószínűleg NewGRF-ek okozhatják. A játék elszállhat vagy összeomolhat.
 
-STR_NEWGRF_BUGGY                                                :{WHITE}A NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' helytelen információt biztosít
+STR_NEWGRF_BUGGY                                                :{WHITE}A NewGRF {0:STRING}' helytelen információt biztosít
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}A(z) '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' rakomány/átalakítás információja a gyártás után különbözik a vételi listán találhatótól. Ez hibát okozhat az automatikus felújítás/lecserélés során az átalakításban
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' végtelen ciklust okozott a termelés folyamatnál
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}{1:HEX} visszatérő érték ismeretlen/érvénytelen {2:HEX} értékkel tért vissza

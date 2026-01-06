@@ -902,7 +902,7 @@ STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Problemas de abastecimento leva{G 0 "" "" "" m m} {G 0 "" "o " "a " "o " "as "}{STRING} a anunciar{G 0 "" "" "" em em} fecho iminente!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Escassez de árvores nas proximidades leva{G 0 "" "" "" m m} {G 0 "" "o " "a " "os " "as "}{STRING} a anunciar{G 0 "" "" "" em em} fecho iminente!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}União Monetária Europeia!{}{}O Euro é introduzido como moeda única para todas as transacções no seu país!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}União Monetária Europeia!{}{}O Euro é introduzido como moeda única para todas as transações do seu país!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Recessão Mundial!{}{}Especialistas financeiros temem crise económica!
 STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Fim da recessão!{}{}Melhorias no comércio inspiram confiança nas indústrias enquanto a economia recupera!
 
@@ -4377,10 +4377,10 @@ STR_ENGINE_PREVIEW_SHIP                                         :{G=m}navio
 
 STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Custo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Custo: {CURRENCY_LONG}  Velocidade Máx.: {VELOCITY}
-STR_ENGINE_PREVIEW_SPEED_POWER                                  :Velocidade: {VELOCITY} Potência: {POWER}
-STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Velocidade: {VELOCITY} Potência: {POWER} Tração Máx.: {FORCE}
+STR_ENGINE_PREVIEW_SPEED_POWER                                  :Velocidade: {VELOCITY}  Potência: {POWER}
+STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Velocidade: {VELOCITY}  Potência: {POWER}  Tração Máx.: {FORCE}
 STR_ENGINE_PREVIEW_TYPE                                         :Tipo de aeronave: {STRING}
-STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Tipo de aeronave: {STRING} Alcance: {COMMA} mosaicos
+STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Tipo de aeronave: {STRING}   Alcance: {COMMA} mosaicos
 STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Custo de Circulação: {CURRENCY_LONG}/ano
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Custo de Circulação: {CURRENCY_LONG}/período
 STR_ENGINE_PREVIEW_CAPACITY                                     :Capacidade: {CARGO_LONG}

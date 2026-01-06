@@ -1111,15 +1111,15 @@ STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}高於60Hz的畫面更新率可能會影響遊戲性能
 
 STR_GAME_OPTIONS_BASE_GRF                                       :基本圖形集
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :選擇要使用的基本圖形集（無法在遊戲中更改，只能從主選單中更改）
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :選擇使用的基本圖形集（無法在遊戲中更改，只能從主選單中更改）
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :關於基本圖形集的額外資訊
 
 STR_GAME_OPTIONS_BASE_SFX                                       :基本音效集
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :選擇要使用的基本音效集（無法在遊戲中更改，只能從主選單中更改）
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :選擇使用的基本音效集
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :關於基本音效集的額外資訊
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :基本音樂集
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :選擇要使用的基本音樂集
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :選擇使用的基本音樂集
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :關於基本音樂集的額外資訊
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :取得內容

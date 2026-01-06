@@ -1003,7 +1003,7 @@ STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pāuna Piritana
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Tāra Amerikana
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Ūro
 STR_GAME_OPTIONS_CURRENCY_JPY                                   :Ene Hapanihi
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Herengi o Ateria
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Herengi Ateriana
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Wharangi o Peretiama
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Wharangi o Huiterangi
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :Koruna o Tiekia
@@ -1115,7 +1115,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Kōwhiria te ko
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Pārongo tāpiri mō te kohinga whakairoiro mātāmua
 
 STR_GAME_OPTIONS_BASE_SFX                                       :Kohinga oro mātāmua
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Kōwhiria te kohinga oro mātāmua hei whakamahi (tē taea te panoni i roto i te kēmu, ka taea i te tahua matua anake)
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Kōwhiria te kohinga oro mātāmua hei whakamahi
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Pārongo tāpiri mō te kohinga oro mātāmua
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :Kohinga puoro mātāmua

@@ -1116,7 +1116,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Selecione um co
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Informação adicional sobre sobre o conjunto de gráficos básicos
 
 STR_GAME_OPTIONS_BASE_SFX                                       :Conjunto de sons básicos
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Selecione um conjunto de sons básicos para usar (não pode ser alterado no jogo, só a partir do menu principal)
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Selecione o conjunto de sons básicos para usar
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Informação adicional sobre sobre o conjunto de sons básicos
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :Conjunto de músicas básicas

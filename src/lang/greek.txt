@@ -1208,7 +1208,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Επιλογή 
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Επιπλέον πληροφορίες σχετικά με το βασικό πακέτο γραφικών
 
 STR_GAME_OPTIONS_BASE_SFX                                       :Σετ βασικών ήχων
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Επιλογή του βασικού σετ ήχων που θα χρησιμοποιηθεί (δεν αλλάζει μέσα από ένα παιχνίδι, μόνο από το κεντρικό μενού)
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Επιλογή του βασικού σετ ήχων που θα χρησιμοποιηθεί
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Επιπλέον πληροφορίες σχετικά με τους βασικούς ήχους
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :Βασικό σετ μουσικής

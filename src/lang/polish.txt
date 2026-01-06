@@ -1495,7 +1495,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Wybierz podstaw
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Dodatkowe informacje o podstawowym zestawie grafik
 
 STR_GAME_OPTIONS_BASE_SFX                                       :Podstawowy zestaw dźwięków
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Wybierz podstawowy zestaw dźwięków (nie można tego zmienić w trakcie gry, jedynie w menu głównym)
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Wybierz podstawowy zestaw dźwięków
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Dodatkowe informacje o podstawowym zestawie dźwięków
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :Podstawowy zestaw muzyki
