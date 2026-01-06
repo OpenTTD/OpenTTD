@@ -46,8 +46,17 @@ void GroupStatistics::Clear()
  */
 void UpdateGroupChildren()
 {
-	for (const Group *g : Group::Iterate()) {
-		if (g->parent != GroupID::Invalid()) Group::Get(g->parent)->children.insert(g->index);
+	for (Group *g : Group::Iterate()) {
+		if (g->parent == GroupID::Invalid()) continue;
+		Group *pg = Group::GetIfValid(g->parent);
+		if (pg == nullptr || pg->owner != g->owner || pg->vehicle_type != g->vehicle_type) {
+			/* Due to a bug, groups which should have been deleted could be left with an invalid parent.
+			 * Keep the group but clear the invalid parent so that the game is recoverable. */
+			Debug(misc, 2, "Group {} has invalid parent {}", g->index, g->parent);
+			g->parent = GroupID::Invalid();
+		} else {
+			pg->children.insert(g->index);
+		}
 	}
 }
 
@@ -389,8 +398,9 @@ CommandCost CmdDeleteGroup(DoCommandFlags flags, GroupID group_id)
 	/* Remove all vehicles from the group */
 	Command<CMD_REMOVE_ALL_VEHICLES_GROUP>::Do(flags, group_id);
 
-	/* Delete sub-groups */
-	for (const GroupID &childgroup : g->children) {
+	/* Delete sub-groups, using a copy to avoid invalid iteration. */
+	FlatSet<GroupID> children = g->children;
+	for (const GroupID &childgroup : children) {
 		Command<CMD_DELETE_GROUP>::Do(flags, childgroup);
 	}
 
