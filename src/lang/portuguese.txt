@@ -765,7 +765,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Magnata
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Barão
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Magnata do Século
 STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIG_FONT}"{STRING}" ({COMMA})
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}"{STRING}"   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} alcança o estatuto de “{STRING}”!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} de {COMPANY} conquista o estatuto de “{STRING}”!
 
@@ -844,7 +844,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Mostrar 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Mostrar a última mensagem ou notícia
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  EM PAUSA  *  *
+STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  EM PAUSA  *  *
 STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  EM PAUSA (em espera pela atualização do gráfico de ligações) *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}A GUARDAR AUTOMATICAMENTE
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  A GUARDAR JOGO *  *
@@ -943,7 +943,7 @@ STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Renovaç
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}U{G 0 m m ma ns mas} nov{G 0 "o modelo de" o a os as} {STRING} est{G 0 á á á am am} disponíve{G 0 l l l is is}!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}U{G 0 m m ma ns mas} nov{G 0 "o modelo de" o a os as} {STRING} est{G 0 á á á am am} disponíve{G 0 l l l is is}! - {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}U{G 0 m m ma ns mas} nov{G 0 "o modelo de" o a os as} {STRING} est{G 0 á á á am am} disponíve{G 0 l l l is is}!  -  {ENGINE}
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Abrir a janela de grupo focada no grupo do veículo
 
@@ -3712,8 +3712,8 @@ STR_TOWN_POPULATION                                             :{BLACK}Populaç
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Cidade)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}População: {ORANGE}{COMMA}{BLACK}  Casas: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} no último mês: {ORANGE}{COMMA}{BLACK} máx.: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} no último minuto: {ORANGE}{COMMA}{BLACK} máx.: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} no último mês: {ORANGE}{COMMA}{BLACK}  máx.: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} no último minuto: {ORANGE}{COMMA}{BLACK}  máx.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Requisitos para o desenvolvimento da localidade:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{RED}{G 0 É É É São São} necessári{G 0 o o o os as} {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{BLACK}No inverno, {G 0 é é é são são} necessári{G 0 o o o os as} {ORANGE}{STRING}
@@ -4362,7 +4362,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Está p
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mensagem de um fabricante de veículos
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Desenvolvemos u{G 0 m m ma ns mas} nov{G 0 "o modelo de" o a os as} {STRING} - teria interesse num ano de utilização exclusiva deste{G 0 "" "" "" s s} veículo{G 0 "" "" "" s s}, para que possamos avaliar o {G 0 "seu " "seu " "seu " "" ""}desempenho antes de o{G 0 "" "" "" s s} lançar globalmente?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Desenvolvemos u{G 0 m m ma ns mas} nov{G 0 "o modelo de" o a os as} {STRING} - estaria interessado num ano de utilização exclusiva deste{G 0 "" "" "" s s} veículo{G 0 "" "" "" s s}, para que possamos avaliar o {G 0 "seu " "seu " "seu " "" ""}desempenho antes de o{G 0 "" "" "" s s} lançar globalmente?
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}locomotiva ferroviária
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :{G=f}locomotiva elétrica ferroviária
@@ -4375,12 +4375,12 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :{G=m}elétrico
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=f}aeronave
 STR_ENGINE_PREVIEW_SHIP                                         :{G=m}navio
 
-STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Custo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}
+STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Custo: {CURRENCY_LONG}  Peso: {WEIGHT_SHORT}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Custo: {CURRENCY_LONG}  Velocidade Máx.: {VELOCITY}
 STR_ENGINE_PREVIEW_SPEED_POWER                                  :Velocidade: {VELOCITY}  Potência: {POWER}
 STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Velocidade: {VELOCITY}  Potência: {POWER}  Tração Máx.: {FORCE}
 STR_ENGINE_PREVIEW_TYPE                                         :Tipo de aeronave: {STRING}
-STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Tipo de aeronave: {STRING}   Alcance: {COMMA} mosaicos
+STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Tipo de aeronave: {STRING}   Autonomia: {COMMA} mosaicos
 STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Custo de Circulação: {CURRENCY_LONG}/ano
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Custo de Circulação: {CURRENCY_LONG}/período
 STR_ENGINE_PREVIEW_CAPACITY                                     :Capacidade: {CARGO_LONG}
@@ -4527,8 +4527,8 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Renomear
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} ano{P "" s} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ano{P "" s} ({COMMA})
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Idade: {LTBLUE}{STRING}{BLACK} Custo de Circulação: {LTBLUE}{CURRENCY_LONG}/ano
-STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Idade: {LTBLUE}{STRING}{BLACK} Custo de Circulação: {LTBLUE}{CURRENCY_LONG}/período
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo de Circulação: {LTBLUE}{CURRENCY_LONG}/ano
+STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo de Circulação: {LTBLUE}{CURRENCY_LONG}/período
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Velocidade máx.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Vel. máxima: {LTBLUE}{VELOCITY} {BLACK}Tipo de aeronave: {LTBLUE}{STRING}
@@ -4550,9 +4550,9 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacida
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Créditos de Transferência: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}{NBSP}dias{BLACK} {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}{NBSP}minuto{P "" s}{BLACK} {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}%{BLACK} {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}{NBSP}dias{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}{NBSP}minuto{P "" s}{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}%{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Última manutenção: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Última manutenção: {LTBLUE}{NUM} minuto{P "" s} atrás
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Aumentar o intervalo de manutenção em 10 dias. Ctrl+Clique para aumentar o intervalo de manutenção em 5 dias
@@ -4575,8 +4575,8 @@ STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Renomear
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Renomear aeronave
 
 # Extra buttons for train details windows
-STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK} Fabricado em: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY_LONG}
-STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK} Valor: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Fabricado em: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Valor: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Carga total (capacidade) deste comboio:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})
