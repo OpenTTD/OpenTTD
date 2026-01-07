@@ -43,17 +43,6 @@
 /* Table data for key mapping. */
 #include "cocoa_keys.h"
 
-/* The 10.12 SDK added new names for some enum constants and
- * deprecated the old ones. As there's no functional change in any
- * way, just use a define for older SDKs to the old names. */
-#ifndef HAVE_OSX_1012_SDK
-#	define NSEventModifierFlagCommand NSCommandKeyMask
-#	define NSEventModifierFlagControl NSControlKeyMask
-#	define NSEventModifierFlagOption NSAlternateKeyMask
-#	define NSEventModifierFlagShift NSShiftKeyMask
-#	define NSEventModifierFlagCapsLock NSAlphaShiftKeyMask
-#endif
-
 /**
  * Important notice regarding all modifications!!!!!!!
  * There are certain limitations because the file is objective C++.
@@ -62,7 +51,6 @@
  * Read http://developer.apple.com/releasenotes/Cocoa/Objective-C++.html for more information.
  */
 
-#ifdef HAVE_TOUCHBAR_SUPPORT
 struct TouchBarButton {
 	NSTouchBarItemIdentifier key;
 	SpriteID                 sprite;
@@ -82,8 +70,6 @@ static const std::array<TouchBarButton, 9> _touchbar_buttons{{
 	{ @"openttd.build_docks",   SPR_IMG_BUILDWATER,  MTHK_BUILD_DOCKS,   @"Docks" },
 	{ @"openttd.build_airport", SPR_IMG_BUILDAIR,    MTHK_BUILD_AIRPORT, @"Airport" }
 }};
-
-#endif
 
 bool _allow_hidpi_window = true; // Referenced from table/misc_settings.ini
 
@@ -199,11 +185,7 @@ static NSImage *NSImageFromSprite(SpriteID sprite_id, ZoomLevel zoom)
 	[ NSApp stop:self ];
 
 	/* Send an empty event to return from the run loop. Without that, application is stuck waiting for an event. */
-#ifdef HAVE_OSX_1012_SDK
 	NSEventType type = NSEventTypeApplicationDefined;
-#else
-	NSEventType type = NSApplicationDefined;
-#endif
 	NSEvent *event = [ NSEvent otherEventWithType:type location:NSMakePoint(0, 0) modifierFlags:0 timestamp:0.0 windowNumber:0 context:nil subtype:0 data1:0 data2:0 ];
 	[ NSApp postEvent:event atStart:YES ];
 }
@@ -410,11 +392,7 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 
 	@autoreleasepool {
 		NSAlert *alert = [ [ NSAlert alloc ] init ];
-#ifdef HAVE_OSX_1012_SDK
 		[ alert setAlertStyle: NSAlertStyleCritical ];
-#else
-		[ alert setAlertStyle: NSCriticalAlertStyle ];
-#endif
 		[ alert setMessageText:[ [ NSString alloc ] initWithBytes:title.data() length:title.size() encoding:NSUTF8StringEncoding ] ];
 		[ alert setInformativeText:[ [ NSString alloc ] initWithBytes:message.data() length:message.size() encoding:NSUTF8StringEncoding ] ];
 		[ alert addButtonWithTitle: [ [ NSString alloc ] initWithBytes:buttonLabel.data() length:buttonLabel.size() encoding:NSUTF8StringEncoding ] ];
@@ -483,8 +461,6 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	driver->AllocateBackingStore();
 }
 
-#ifdef HAVE_TOUCHBAR_SUPPORT
-
 - (void)touchBarButtonAction:(id)sender
 {
 	NSButton *btn = (NSButton *)sender;
@@ -526,11 +502,8 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	return tb_item;
 }
 
-#endif /* HAVE_TOUCHBAR_SUPPORT */
-
 - (void)refreshSystemSprites
 {
-#ifdef HAVE_TOUCHBAR_SUPPORT
 	if (!self->touchbar_created || ![ self respondsToSelector:@selector(touchBar) ] || self.touchBar == nil) return;
 
 	/* Re-create button images from OTTD sprites. */
@@ -557,7 +530,6 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 			button.imagePosition = NSNoImage;
 		}
 	}
-#endif /* HAVE_TOUCHBAR_SUPPORT */
 }
 
 @end
