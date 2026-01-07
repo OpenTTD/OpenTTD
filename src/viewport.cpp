@@ -3567,12 +3567,7 @@ void SetObjectToPlace(CursorID icon, PaletteID pal, HighLightStyle mode, WindowC
 		VpStartPreSizing();
 	}
 
-	if ((icon & ANIMCURSOR_FLAG) != 0) {
-		SetAnimatedMouseCursor(_animcursors[icon & ~ANIMCURSOR_FLAG]);
-	} else {
-		SetMouseCursor(icon, pal);
-	}
-
+	SetCursor(icon, pal);
 }
 
 /** Reset the cursor and mouse mode handling back to default (normal cursor, only clicking in windows). */

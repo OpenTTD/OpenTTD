@@ -170,6 +170,7 @@ void DrawOverlappedWindowForAll(int left, int top, int right, int bottom);
 void SetMouseCursorBusy(bool busy);
 void SetMouseCursor(CursorID cursor, PaletteID pal);
 void SetAnimatedMouseCursor(std::span<const AnimCursor> table);
+void SetCursor(CursorID cursor, PaletteID pal);
 void CursorTick();
 void UpdateCursorSize();
 bool ChangeResInGame(int w, int h);
