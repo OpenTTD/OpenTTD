@@ -45,17 +45,6 @@
 #import <sys/param.h> /* for MAXPATHLEN */
 #import <sys/time.h> /* gettimeofday */
 
-/* The 10.12 SDK added new names for some enum constants and
- * deprecated the old ones. As there's no functional change in any
- * way, just use a define for older SDKs to the old names. */
-#ifndef HAVE_OSX_1012_SDK
-#	define NSEventModifierFlagCommand NSCommandKeyMask
-#	define NSEventModifierFlagControl NSControlKeyMask
-#	define NSEventModifierFlagOption NSAlternateKeyMask
-#	define NSEventModifierFlagShift NSShiftKeyMask
-#	define NSEventModifierFlagCapsLock NSAlphaShiftKeyMask
-#endif
-
 /**
  * Important notice regarding all modifications!!!!!!!
  * There are certain limitations because the file is objective C++.
@@ -375,11 +364,7 @@ bool VideoDriver_Cocoa::MakeWindow(int width, int height)
 	NSRect contentRect = NSMakeRect(0, 0, width, height);
 
 	/* Create main window. */
-#ifdef HAVE_OSX_1012_SDK
 	unsigned int style = NSWindowStyleMaskTitled | NSWindowStyleMaskResizable | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskClosable;
-#else
-	unsigned int style = NSTitledWindowMask | NSResizableWindowMask | NSMiniaturizableWindowMask | NSClosableWindowMask;
-#endif
 	this->window = [ [ OTTD_CocoaWindow alloc ] initWithContentRect:contentRect styleMask:style backing:NSBackingStoreBuffered defer:NO driver:this ];
 	if (this->window == nil) {
 		Debug(driver, 0, "Could not create the Cocoa window.");
@@ -449,11 +434,7 @@ bool VideoDriver_Cocoa::MakeWindow(int width, int height)
  */
 bool VideoDriver_Cocoa::PollEvent()
 {
-#ifdef HAVE_OSX_1012_SDK
 	NSEventMask mask = NSEventMaskAny;
-#else
-	NSEventMask mask = NSAnyEventMask;
-#endif
 	NSEvent *event = [ NSApp nextEventMatchingMask:mask untilDate:[ NSDate distantPast ] inMode:NSDefaultRunLoopMode dequeue:YES ];
 
 	if (event == nil) return false;
