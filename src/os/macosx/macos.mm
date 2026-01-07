@@ -21,10 +21,6 @@
 #undef Rect
 #undef Point
 
-#ifndef __clang__
-#define __bridge
-#endif
-
 /*
  * This file contains objective C
  * Apple uses objective C instead of plain C to interact with OS specific/native functions
