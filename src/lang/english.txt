@@ -2068,7 +2068,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Highest resolution sprites to use: {STRING2}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limit the maximum resolution to use for sprites. Limiting sprite resolution will avoid using high resolution graphics even when available. This can help keep the game appearance unified when using a mix of GRF files with and without high resolution graphics
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limit the maximum resolution to use for sprites. Limiting sprite resolution will avoid using high resolution graphics even when available. This can help keep the game appearance unified when using a mix of NewGRF files with and without high resolution graphics
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2204,7 +2204,7 @@ STR_CONFIG_ERROR                                                :{WHITE}Error wi
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... error in array '{RAW_STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... invalid value '{RAW_STRING}' for '{RAW_STRING}'
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... trailing characters at end of setting '{RAW_STRING}'
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignoring NewGRF '{RAW_STRING}': duplicate GRF ID with '{RAW_STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignoring NewGRF '{RAW_STRING}': duplicate NewGRF ID with '{RAW_STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignoring invalid NewGRF '{RAW_STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :not found
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :unsafe for static use
@@ -3620,7 +3620,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Invalid paramet
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:RAW_STRING} must be loaded before {2:RAW_STRING}
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:RAW_STRING} must be loaded after {2:RAW_STRING}
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:RAW_STRING} requires OpenTTD version {2:RAW_STRING} or better
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :the GRF file it was designed to translate
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :the NewGRF file it was designed to translate
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Too many NewGRFs are loaded
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Loading {1:RAW_STRING} as static NewGRF with {2:RAW_STRING} could cause desyncs
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Unexpected sprite (sprite {3:NUM})
@@ -3629,7 +3629,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Attempt to use 
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{RAW_STRING} contains a corrupt sprite. All corrupt sprites will be shown as a red question mark (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contains multiple Action 8 entries (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Read past end of pseudo-sprite (sprite {3:NUM})
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Requested GRF resources not available (sprite {3:NUM})
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Requested NewGRF resources not available (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:RAW_STRING} was disabled by {2:RAW_STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Invalid/unknown sprite layout format (sprite {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Too many elements in property value list (sprite {3:NUM}, property {4:HEX})
@@ -3639,13 +3639,13 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Invalid industr
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Caution!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}You are about to make changes to a running game. This can crash OpenTTD or break the game state. Do not file bug reports about these issues.{}Are you absolutely sure about this?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Can't add file: duplicate GRF ID
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matching file not found (compatible GRF loaded)
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Can't add file: duplicate NewGRF ID
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matching file not found (compatible NewGRF loaded)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Can't add file: NewGRF file limit reached
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Compatible GRF(s) loaded for missing files
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Missing GRF file(s) have been disabled
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Missing GRF file(s)
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Compatible NewGRF(s) loaded for missing files
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Missing NewGRF file(s) have been disabled
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Missing NewGRF file(s)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Unpausing can crash OpenTTD. Do not file bug reports for subsequent crashes.{}Do you really want to unpause?
 
 # NewGRF status
