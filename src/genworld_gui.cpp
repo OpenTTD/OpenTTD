@@ -413,7 +413,7 @@ struct GenerateLandscapeWindow : public Window {
 
 		/* If original landgenerator is selected and alpinist terrain_type was selected, revert to mountainous. */
 		if (_settings_newgame.game_creation.land_generator == LG_ORIGINAL) {
-			_settings_newgame.difficulty.terrain_type = Clamp(_settings_newgame.difficulty.terrain_type, 0, 3);
+			_settings_newgame.difficulty.terrain_type = Clamp(_settings_newgame.difficulty.terrain_type, TT_VERY_FLAT, TT_MOUNTAINOUS);
 		}
 
 		this->OnInvalidateData();
@@ -457,7 +457,7 @@ struct GenerateLandscapeWindow : public Window {
 				return GetString(_num_inds[_settings_newgame.difficulty.industry_density]);
 
 			case WID_GL_TERRAIN_PULLDOWN:
-				if (_settings_newgame.difficulty.terrain_type == CUSTOM_TERRAIN_TYPE_NUMBER_DIFFICULTY) {
+				if (_settings_newgame.difficulty.terrain_type == TT_CUSTOM) {
 					return GetString(STR_TERRAIN_TYPE_CUSTOM_VALUE, _settings_newgame.game_creation.custom_terrain_type);
 				}
 				return GetString(_elevations[_settings_newgame.difficulty.terrain_type]);
@@ -554,8 +554,8 @@ struct GenerateLandscapeWindow : public Window {
 			if (_settings_newgame.difficulty.quantity_sea_lakes == CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY) {
 				_settings_newgame.difficulty.quantity_sea_lakes = 1;
 			}
-			if (_settings_newgame.difficulty.terrain_type == CUSTOM_TERRAIN_TYPE_NUMBER_DIFFICULTY) {
-				_settings_newgame.difficulty.terrain_type = 1;
+			if (_settings_newgame.difficulty.terrain_type == TT_CUSTOM) {
+				_settings_newgame.difficulty.terrain_type = TT_FLAT;
 			}
 		}
 
@@ -890,11 +890,11 @@ struct GenerateLandscapeWindow : public Window {
 				break;
 
 			case WID_GL_TERRAIN_PULLDOWN: {
-				if ((uint)index == CUSTOM_TERRAIN_TYPE_NUMBER_DIFFICULTY) {
+				if ((uint)index == TT_CUSTOM) {
 					this->widget_id = widget;
 					ShowQueryString(GetString(STR_JUST_INT, _settings_newgame.game_creation.custom_terrain_type), STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT, 4, this, CS_NUMERAL, {});
 				}
-				_settings_newgame.difficulty.terrain_type = index;
+				_settings_newgame.difficulty.terrain_type = static_cast<TerrainType>(index);
 				break;
 			}
 

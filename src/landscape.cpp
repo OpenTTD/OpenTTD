@@ -1021,32 +1021,38 @@ static void CreateDesertOrRainForest(uint desert_tropic_line)
  */
 static bool FindSpring(TileIndex tile)
 {
+	if (!IsValidTile(tile)) return false;
+
 	int reference_height;
 	if (!IsTileFlat(tile, &reference_height) || IsWaterTile(tile)) return false;
 
 	/* In the tropics rivers start in the rainforest. */
 	if (_settings_game.game_creation.landscape == LandscapeType::Tropic && GetTropicZone(tile) != TROPICZONE_RAINFOREST) return false;
 
-	/* Are there enough higher tiles to warrant a 'spring'? */
-	uint num = 0;
-	for (int dx = -1; dx <= 1; dx++) {
-		for (int dy = -1; dy <= 1; dy++) {
-			TileIndex t = TileAddWrap(tile, dx, dy);
-			if (t != INVALID_TILE && GetTileMaxZ(t) > reference_height) num++;
+	/* Rivers begin where water flows off hillsides and collects at the bottom. */
+	uint max_hill_distance = 1;
+	uint required_num_hills = 3;
+
+	/* If we don't have many hills, loosen the standards so we still get rivers. */
+	if (_settings_game.difficulty.terrain_type < TT_HILLY) {
+		max_hill_distance = 3;
+		required_num_hills = 1;
+	};
+
+	uint num_hills = 0;
+	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
+		TileIndex check_tile = tile;
+		for (uint i = 0; i < max_hill_distance; i++) {
+			check_tile = TileAddByDiagDir(check_tile, d);
+			if (!IsValidTile(check_tile)) break;
+			if (GetTileMaxZ(check_tile) > reference_height) {
+				num_hills++;
+				break;
+			}
 		}
 	}
 
-	if (num < 4) return false;
-
-	/* Are we near the top of a hill? */
-	for (int dx = -16; dx <= 16; dx++) {
-		for (int dy = -16; dy <= 16; dy++) {
-			TileIndex t = TileAddWrap(tile, dx, dy);
-			if (t != INVALID_TILE && GetTileMaxZ(t) > reference_height + 2) return false;
-		}
-	}
-
-	return true;
+	return num_hills >= required_num_hills;
 }
 
 /**
@@ -1670,7 +1676,7 @@ bool GenerateLandscape(uint8_t mode)
 				uint i = Map::ScaleBySize(GB(r, 0, 7) + (3 - _settings_game.difficulty.quantity_sea_lakes) * 256 + 100);
 				for (; i != 0; --i) {
 					/* Make sure we do not overflow. */
-					GenerateTerrain(Clamp(_settings_game.difficulty.terrain_type, 0, 3), 0);
+					GenerateTerrain(Clamp(_settings_game.difficulty.terrain_type, TT_VERY_FLAT, TT_MOUNTAINOUS), 0);
 				}
 				break;
 			}
