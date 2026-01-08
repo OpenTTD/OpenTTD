@@ -34,6 +34,11 @@ protected:
 	 */
 	virtual void FindNext() = 0;
 
+	/**
+	 * Retarget sorter internal iterator after retargeting the list.
+	 */
+	virtual void RetargetIterator() = 0;
+
 public:
 	/**
 	 * Virtual dtor, needed to mute warnings.
@@ -87,14 +92,15 @@ public:
 	}
 
 	/**
-	 * Attach the sorter to a new list. This assumes the content of the old list has been moved to
-	 * the new list, too, so that we don't have to invalidate any iterators. Note that std::swap
-	 * doesn't invalidate iterators on lists and maps, so that should be safe.
-	 * @param new_list New list to attach to.
+	 * Attach the sorter to a new list and update internal iterator so it remains valid
+	 * in the context of the new list. This assumes the content of the old list has been
+	 * moved to the new list.
+	 * @param new_list New list to attach to and update internal iterator.
 	 */
 	void Retarget(const ScriptList *new_list)
 	{
 		this->list = new_list;
+		this->RetargetIterator();
 	}
 };
 
@@ -137,6 +143,16 @@ public:
 		}
 		++this->value_iter;
 		if (this->value_iter != this->list->values.end()) this->item_next = this->value_iter->second;
+	}
+
+	void RetargetIterator() override
+	{
+		if (this->item_next.has_value()) {
+			auto item_iter = this->list->items.find(this->item_next.value());
+			this->value_iter = this->list->values.find({item_iter->second, this->item_next.value()});
+		} else {
+			this->value_iter = this->list->values.end();
+		}
 	}
 };
 
@@ -189,6 +205,16 @@ public:
 		}
 		if (this->value_iter != this->list->values.end()) this->item_next = this->value_iter->second;
 	}
+
+	void RetargetIterator() override
+	{
+		if (this->item_next.has_value()) {
+			auto item_iter = this->list->items.find(this->item_next.value());
+			this->value_iter = this->list->values.find({item_iter->second, this->item_next.value()});
+		} else {
+			this->value_iter = this->list->values.end();
+		}
+	}
 };
 
 /**
@@ -230,6 +256,15 @@ public:
 		}
 		++this->item_iter;
 		if (this->item_iter != this->list->items.end()) this->item_next = this->item_iter->first;
+	}
+
+	void RetargetIterator() override
+	{
+		if (this->item_next.has_value()) {
+			this->item_iter = this->list->items.find(this->item_next.value());
+		} else {
+			this->item_iter = this->list->items.end();
+		}
 	}
 };
 
@@ -281,6 +316,15 @@ public:
 			--this->item_iter;
 		}
 		if (this->item_iter != this->list->items.end()) this->item_next = this->item_iter->first;
+	}
+
+	void RetargetIterator() override
+	{
+		if (this->item_next.has_value()) {
+			this->item_iter = this->list->items.find(this->item_next.value());
+		} else {
+			this->item_iter = this->list->items.end();
+		}
 	}
 };
 
