@@ -380,7 +380,7 @@ STR_GROUP_BY_SHARED_ORDERS                                      :Paylaşılan ta
 
 # Order button in shared orders vehicle list
 STR_GOTO_ORDER_VIEW                                             :{BLACK}Talimatlar
-STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Emir görünümünü aç
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Talimat görünümünü aç
 
 # Tooltips for the main toolbar
 ###length 31
@@ -1116,7 +1116,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Kullanılacak t
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Temel grafik setiyle ilgili ilave bilgiler
 
 STR_GAME_OPTIONS_BASE_SFX                                       :Temel ses kümesi
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Kullanılacak temel ses kümesini seçin (oyun içinde değiştirlemez sadece ana menüde değiştirebilinir)
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Kullanılacak temel ses kümesini seçin
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Temel ses kümesiyle ilgili ilave bilgiler
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :Temel müzik kümesi
