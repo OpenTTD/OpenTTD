@@ -116,7 +116,6 @@ INTERNAL_LINKAGE inline __m128i DarkenTwoPixels(__m128i src, __m128i dst, const 
 	return _mm_packus_epi16(dstAB, dstAB);
 }
 
-IGNORE_UNINITIALIZED_WARNING_START
 GNU_TARGET(SSE_TARGET)
 INTERNAL_LINKAGE Colour ReallyAdjustBrightness(Colour colour, uint8_t brightness)
 {
@@ -147,7 +146,6 @@ INTERNAL_LINKAGE Colour ReallyAdjustBrightness(Colour colour, uint8_t brightness
 	ret = _mm_packus_epi16(ret, ret);      // PACKUSWB, saturate and pack.
 	return alpha32 | _mm_cvtsi128_si32(ret);
 }
-IGNORE_UNINITIALIZED_WARNING_STOP
 
 /** ReallyAdjustBrightness() is not called that often.
  * Inlining this function implies a far jump, which has a huge latency.
@@ -210,7 +208,6 @@ INTERNAL_LINKAGE inline __m128i AdjustBrightnessOfTwoPixels([[maybe_unused]] __m
  * @param bp further blitting parameters
  * @param zoom zoom level at which we are drawing
  */
-IGNORE_UNINITIALIZED_WARNING_START
 template <BlitterMode mode, Blitter_32bppSSE2::ReadMode read_mode, Blitter_32bppSSE2::BlockType bt_last, bool translucent>
 GNU_TARGET(SSE_TARGET)
 #if (SSE_VERSION == 2)
@@ -446,7 +443,6 @@ next_line:
 		dst_line += bp->pitch;
 	}
 }
-IGNORE_UNINITIALIZED_WARNING_STOP
 
 /**
  * Draws a sprite to a (screen) buffer. Calls adequate templated function.
