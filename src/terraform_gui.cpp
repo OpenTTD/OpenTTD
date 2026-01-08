@@ -281,7 +281,7 @@ struct TerraformToolbarWindow : Window {
 						if (TileY(end_tile) == Map::MaxY()) end_tile += TileDiffXY(0, -1);
 					}
 					Command<CMD_BUILD_OBJECT_AREA>::Post(STR_ERROR_CAN_T_PURCHASE_THIS_LAND, CcPlaySound_CONSTRUCTION_RAIL,
-						end_tile, start_tile, OBJECT_OWNED_LAND, 0, (_ctrl_pressed ? true : false));
+						end_tile, start_tile, OBJECT_OWNED_LAND, 0, _ctrl_pressed);
 					break;
 			}
 		}

@@ -391,7 +391,7 @@ CommandCost CmdBuildObject(DoCommandFlags flags, TileIndex tile, ObjectType type
  * @param start_tile start tile of area dragging
  * @param type the object type to build
  * @param view the view for the object
- * @param diagonal Whether to use the Orthogonal (0) or Diagonal (1) iterator.
+ * @param diagonal Whether to use the Diagonal or Orthogonal tile iterator.
  * @return the cost of this operation or an error
  */
 CommandCost CmdBuildObjectArea(DoCommandFlags flags, TileIndex tile, TileIndex start_tile, ObjectType type, uint8_t view, bool diagonal)
