@@ -3240,8 +3240,10 @@ static uint CheckTrainCollision(Vehicle *v, Train *t)
  * Reports the incident in a flashy news item, modifies station ratings and
  * plays a sound.
  * @param v %Train to test.
+ * @param force Crash the train even if there is no collision with another vehicle.
+ * @return Iff the train has crashed.
  */
-static bool CheckTrainCollision(Train *v)
+bool CheckTrainCollision(Train *v, bool force = false)
 {
 	/* can't collide in depot */
 	if (v->track == TRACK_BIT_DEPOT) return false;
@@ -3250,8 +3252,11 @@ static bool CheckTrainCollision(Train *v)
 
 	uint num_victims = 0;
 
-	/* find colliding vehicles */
-	if (v->track == TRACK_BIT_WORMHOLE) {
+	if (force) {
+		/* Single-vehicle crash, no collision. */
+		num_victims = TrainCrashed(v);
+	} else if (v->track == TRACK_BIT_WORMHOLE) {
+		/* Find colliding vehicles on a bridge or tunnel. */
 		for (Vehicle *u : VehiclesOnTile(v->tile)) {
 			num_victims += CheckTrainCollision(u, v);
 		}
@@ -3259,6 +3264,7 @@ static bool CheckTrainCollision(Train *v)
 			num_victims += CheckTrainCollision(u, v);
 		}
 	} else {
+		/* Find colliding vehicles on a regular tile. */
 		for (Vehicle *u : VehiclesNearTileXY(v->x_pos, v->y_pos, 7)) {
 			num_victims += CheckTrainCollision(u, v);
 		}
@@ -3272,6 +3278,29 @@ static bool CheckTrainCollision(Train *v)
 	ModifyStationRatingAround(v->tile, v->owner, -160, 30);
 	if (_settings_client.sound.disaster) SndPlayVehicleFx(SND_13_TRAIN_COLLISION, v);
 	return true;
+}
+
+/**
+ * Crash a train on the given tile and track.
+ * @param tile The tile where the crash happens.
+ * @param track The track where the crash happens.
+ */
+void CrashTrainsOnTrack(TileIndex tile, Track track)
+{
+	TrackBits track_bits = TrackToTrackBits(track);
+
+	/* TODO: Value v is not safe in MP games, this code is copied from EnsureNoTrainOnTrackBits() which uses it to generate a client-side error message. */
+	for (Vehicle *v : VehiclesOnTile(tile)) {
+		if (v->type != VEH_TRAIN) continue;
+
+		Train *t = Train::From(v);
+
+		if (t->vehstatus.Test(VehState::Crashed)) continue;
+
+		if ((t->track != track_bits) && !TracksOverlap(t->track | track_bits)) continue;
+
+		CheckTrainCollision(t->First(), true);
+	}
 }
 
 /**

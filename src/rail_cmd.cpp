@@ -15,6 +15,7 @@
 #include "newgrf_debug.h"
 #include "newgrf_railtype.h"
 #include "train.h"
+#include "train_cmd.h"
 #include "autoslope.h"
 #include "water.h"
 #include "tunnelbridge_map.h"
@@ -669,7 +670,10 @@ CommandCost CmdRemoveSingleRail(DoCommandFlags flags, TileIndex tile, Track trac
 			}
 
 			CommandCost ret = EnsureNoTrainOnTrack(tile, track);
-			if (ret.Failed()) return ret;
+			if (ret.Failed()) {
+				if (flags.Test(DoCommandFlag::Execute)) CrashTrainsOnTrack(tile, track);
+				return ret;
+			}
 
 			present = GetTrackBits(tile);
 			if ((present & trackbit) == 0) return CommandCost(STR_ERROR_THERE_IS_NO_RAILROAD_TRACK);

@@ -27,5 +27,6 @@ DEF_CMD_TRAIT(CMD_FORCE_TRAIN_PROCEED,     CmdForceTrainProceed,     CommandFlag
 DEF_CMD_TRAIT(CMD_REVERSE_TRAIN_DIRECTION, CmdReverseTrainDirection, CommandFlag::Location, CommandType::VehicleManagement)
 
 void CcBuildWagon(Commands cmd, const CommandCost &result, VehicleID new_veh_id, uint, uint16_t, CargoArray, TileIndex tile, EngineID, bool, CargoType, ClientID);
+void CrashTrainsOnTrack(TileIndex tile, Track track);
 
 #endif /* TRAIN_CMD_H */
