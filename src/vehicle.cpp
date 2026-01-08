@@ -8,6 +8,7 @@
 /** @file vehicle.cpp Base implementations of all vehicles. */
 
 #include "stdafx.h"
+#include "debug.h"
 #include "error.h"
 #include "roadveh.h"
 #include "ship.h"
@@ -17,6 +18,7 @@
 #include "news_func.h"
 #include "command_func.h"
 #include "company_func.h"
+#include "map_func.h"
 #include "train.h"
 #include "aircraft.h"
 #include "newgrf_debug.h"
@@ -960,7 +962,9 @@ void CallVehicleTicks()
 
 	{
 		PerformanceMeasurer framerate(PFE_GL_ECONOMY);
-		for (Station *st : Station::Iterate()) LoadUnloadStation(st);
+		for (Station *st : Station::Iterate()) {
+			LoadUnloadStation(st);
+		}
 	}
 	PerformanceAccumulator::Reset(PFE_GL_TRAINS);
 	PerformanceAccumulator::Reset(PFE_GL_ROADVEHS);
@@ -968,15 +972,10 @@ void CallVehicleTicks()
 	PerformanceAccumulator::Reset(PFE_GL_AIRCRAFT);
 
 	for (Vehicle *v : Vehicle::Iterate()) {
-		[[maybe_unused]] VehicleID vehicle_index = v->index;
-
 		/* Vehicle could be deleted in this tick */
 		if (!v->Tick()) {
-			assert(Vehicle::Get(vehicle_index) == nullptr);
 			continue;
 		}
-
-		assert(Vehicle::Get(vehicle_index) == v);
 
 		switch (v->type) {
 			default: break;

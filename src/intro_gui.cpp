@@ -182,7 +182,6 @@ struct SelectGameWindow : public Window {
 		this->CreateNestedTree();
 		this->FinishInitNested(0);
 		this->OnInvalidateData();
-
 		this->ReadIntroGameViewportCommands();
 	}
 

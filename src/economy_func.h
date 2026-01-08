@@ -61,6 +61,7 @@ inline bool EconomyIsInRecession()
 static uint ScaleByInverseCargoScale(uint num, bool town)
 {
 	uint16_t percentage = (town ? _settings_game.economy.town_cargo_scale : _settings_game.economy.industry_cargo_scale);
+	if (percentage == 0) return std::max(num * 100u, 1u);
 
 	/* We might not need to do anything. */
 	if (percentage == 100) return num;
@@ -83,6 +84,7 @@ inline uint ScaleByCargoScale(uint num, bool town)
 	if (num == 0) return num;
 
 	uint16_t percentage = (town ? _settings_game.economy.town_cargo_scale : _settings_game.economy.industry_cargo_scale);
+	if (percentage == 0) return 0;
 
 	/* We might not need to do anything. */
 	if (percentage == 100) return num;

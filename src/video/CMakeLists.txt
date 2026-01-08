@@ -1,4 +1,5 @@
 add_subdirectory(cocoa)
+add_subdirectory(libretro)
 
 if(NOT OPTION_DEDICATED)
     add_files(

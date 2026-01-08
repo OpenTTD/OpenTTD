@@ -118,6 +118,25 @@ set(CMAKE_THREAD_PREFER_PTHREAD YES)
 find_package(Threads REQUIRED)
 
 find_package(ZLIB)
+
+if(OPTION_LIBRETRO AND NOT ZLIB_FOUND)
+    include(FetchContent)
+    set(ZLIB_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+    set(ZLIB_BUILD_TESTING OFF CACHE BOOL "" FORCE)
+    set(SKIP_INSTALL_ALL ON CACHE BOOL "" FORCE)
+    FetchContent_Declare(zlib
+        URL https://zlib.net/zlib-1.3.1.tar.gz
+    )
+    FetchContent_MakeAvailable(zlib)
+    if(TARGET zlibstatic AND NOT TARGET ZLIB::ZLIB)
+        add_library(ZLIB::ZLIB ALIAS zlibstatic)
+        set(ZLIB_FOUND ON)
+    elseif(TARGET zlib AND NOT TARGET ZLIB::ZLIB)
+        add_library(ZLIB::ZLIB ALIAS zlib)
+        set(ZLIB_FOUND ON)
+    endif()
+endif()
+
 find_package(LibLZMA)
 find_package(LZO)
 find_package(PNG)
@@ -138,6 +157,10 @@ endif()
 if(NOT OPTION_DEDICATED)
     if(WIN32)
         find_package(Xaudio2)
+        # Enable FluidSynth for libretro builds on Windows
+        if(OPTION_LIBRETRO)
+            find_package(Fluidsynth)
+        endif()
     else()
         find_package(Allegro)
         if(NOT APPLE)
@@ -301,6 +324,10 @@ if(IPO_FOUND)
 endif()
 set_target_properties(openttd PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_BINARY_DIR}")
 
+if(OPTION_LIBRETRO AND TARGET ZLIB::ZLIB AND NOT ZLIB_FOUND)
+    set(ZLIB_FOUND ON CACHE BOOL "" FORCE)
+endif()
+
 include(LinkPackage)
 link_package(PNG TARGET PNG::PNG ENCOURAGED)
 link_package(ZLIB TARGET ZLIB::ZLIB ENCOURAGED)
@@ -432,6 +459,51 @@ endif()
 link_package(SSE)
 
 add_definitions_based_on_options()
+
+# Libretro core build
+if(OPTION_LIBRETRO)
+    message(STATUS "Building OpenTTD as a libretro core")
+
+    # Create shared library for libretro core
+    add_library(openttd_libretro SHARED)
+    set_target_properties(openttd_libretro PROPERTIES
+        OUTPUT_NAME "openttd_libretro"
+        PREFIX ""
+    )
+
+    # Link against the object library
+    target_link_libraries(openttd_libretro
+        openttd_lib
+    )
+
+    # Platform-specific settings
+    if(WIN32)
+        set_target_properties(openttd_libretro PROPERTIES
+            WINDOWS_EXPORT_ALL_SYMBOLS OFF
+        )
+    elseif(APPLE)
+        set_target_properties(openttd_libretro PROPERTIES
+            MACOSX_RPATH ON
+        )
+    else()
+        target_link_options(openttd_libretro PRIVATE -Wl,--no-undefined)
+    endif()
+
+    # Output directory
+    set_target_properties(openttd_libretro PROPERTIES
+        LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/libretro"
+        RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/libretro"
+    )
+
+    # Include directories for libretro headers
+    target_include_directories(openttd_libretro PRIVATE
+        ${CMAKE_SOURCE_DIR}/src/video/libretro
+    )
+
+    add_dependencies(openttd_libretro find_version)
+
+    message(STATUS "Libretro core will be output to: ${CMAKE_BINARY_DIR}/libretro/")
+endif()
 
 if(WIN32)
     add_definitions(

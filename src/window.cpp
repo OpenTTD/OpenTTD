@@ -1425,24 +1425,20 @@ void Window::InitializeData(WindowNumber window_number)
 	this->owner = INVALID_OWNER;
 	this->nested_focus = nullptr;
 	this->window_number = window_number;
-
 	this->OnInit();
 	/* Initialize smallest size. */
 	this->nested_root->SetupSmallestSize(this);
 	/* Initialize to smallest size. */
 	this->nested_root->AssignSizePosition(ST_SMALLEST, 0, 0, this->nested_root->smallest_x, this->nested_root->smallest_y, _current_text_dir == TD_RTL);
-
 	/* Further set up window properties,
 	 * this->left, this->top, this->width, this->height, this->resize.width, and this->resize.height are initialized later. */
 	this->resize.step_width  = this->nested_root->resize_x;
 	this->resize.step_height = this->nested_root->resize_y;
-
 	/* Give focus to the opened window unless a dropdown menu has focus or a text box of the focused window has focus
 	 * (so we don't interrupt typing) unless the new window has a text box. */
 	bool dropdown_active = _focused_window != nullptr && _focused_window->window_class == WC_DROPDOWN_MENU;
 	bool editbox_active = EditBoxInGlobalFocus() && this->nested_root->GetWidgetOfType(WWT_EDITBOX) == nullptr;
 	if (!dropdown_active && !editbox_active) SetFocusedWindow(this);
-
 	/* Insert the window into the correct location in the z-ordering. */
 	BringWindowToFront(this, false);
 }
@@ -2106,21 +2102,16 @@ void ResizeWindow(Window *w, int delta_x, int delta_y, bool clamp_to_screen, boo
 			if (new_right  >= (int)_screen.width)  delta_x -= Ceil(new_right  - _screen.width,  std::max(1U, w->nested_root->resize_x));
 			if (new_bottom >= (int)_screen.height) delta_y -= Ceil(new_bottom - _screen.height, std::max(1U, w->nested_root->resize_y));
 		}
-
 		w->SetDirty();
-
 		uint new_xinc = std::max(0, (w->nested_root->resize_x == 0) ? 0 : (int)(w->nested_root->current_x - w->nested_root->smallest_x) + delta_x);
 		uint new_yinc = std::max(0, (w->nested_root->resize_y == 0) ? 0 : (int)(w->nested_root->current_y - w->nested_root->smallest_y) + delta_y);
 		assert(w->nested_root->resize_x == 0 || new_xinc % w->nested_root->resize_x == 0);
 		assert(w->nested_root->resize_y == 0 || new_yinc % w->nested_root->resize_y == 0);
-
 		w->nested_root->AssignSizePosition(ST_RESIZE, 0, 0, w->nested_root->smallest_x + new_xinc, w->nested_root->smallest_y + new_yinc, _current_text_dir == TD_RTL);
 		w->width  = w->nested_root->current_x;
 		w->height = w->nested_root->current_y;
 	}
-
 	EnsureVisibleCaption(w, w->left, w->top);
-
 	/* Schedule OnResize to make sure everything is initialised correctly if it needs to be. */
 	if (schedule_resize) {
 		w->ScheduleResize();

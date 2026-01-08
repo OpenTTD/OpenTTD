@@ -216,6 +216,7 @@ struct MainWindow : Window
 	{
 		this->InitNested(0);
 		this->flags.Reset(WindowFlag::WhiteBorder);
+
 		ResizeWindow(this, _screen.width, _screen.height);
 
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_M_VIEWPORT);
@@ -271,8 +272,7 @@ struct MainWindow : Window
 				off_x += GetSpriteSize(sprite).width + letter_spacing;
 			}
 
-			int text_y = this->height - GetCharacterHeight(FS_NORMAL) * 2;
-			DrawString(0, this->width - 1, text_y, STR_INTRO_VERSION, TC_WHITE, SA_CENTER);
+			DrawString(0, this->width - 1, this->height - GetCharacterHeight(FS_NORMAL) * 2, STR_INTRO_VERSION, TC_WHITE, SA_CENTER);
 		}
 	}
 
@@ -553,13 +553,16 @@ void ShowSelectGameWindow();
 void SetupColoursAndInitialWindow()
 {
 	for (Colours i = COLOUR_BEGIN; i != COLOUR_END; i++) {
-		const uint8_t *b = GetNonSprite(GetColourPalette(i), SpriteType::Recolour) + 1;
-		assert(b != nullptr);
+		SpriteID palette_sprite = GetColourPalette(i);
+		const uint8_t *b = GetNonSprite(palette_sprite, SpriteType::Recolour);
+		if (b == nullptr) {
+			return;
+		}
+		b++; /* Skip first byte */
 		for (ColourShade j = SHADE_BEGIN; j < SHADE_END; j++) {
 			SetColourGradient(i, j, PixelColour{b[0xC6 + j]});
 		}
 	}
-
 	new MainWindow(_main_window_desc);
 
 	/* XXX: these are not done */

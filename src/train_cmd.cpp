@@ -8,6 +8,7 @@
 /** @file train_cmd.cpp Handling of trains. */
 
 #include "stdafx.h"
+#include "debug.h"
 #include "error.h"
 #include "articulated_vehicles.h"
 #include "command_func.h"
@@ -3584,11 +3585,10 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 		}
 
 		/* Do not check on every tick to save some computing time. */
-		if (v->IsFrontEngine() && v->tick_counter % _settings_game.pf.path_backoff_interval == 0) CheckNextTrainTile(v);
+		if (v->IsFrontEngine() && _settings_game.pf.path_backoff_interval != 0 && v->tick_counter % _settings_game.pf.path_backoff_interval == 0) CheckNextTrainTile(v);
 	}
 
 	if (direction_changed) first->tcache.cached_max_curve_speed = first->GetCurveSpeedLimit();
-
 	return true;
 
 invalid_rail:

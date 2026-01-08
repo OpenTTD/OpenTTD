@@ -28,6 +28,7 @@
 #include "dropdown_type.h"
 #include "slider_func.h"
 #include "mixer.h"
+#include "debug.h"
 
 #include "widgets/music_widget.h"
 
@@ -471,7 +472,16 @@ void ChangeMusicSet(int index)
  */
 void InitializeMusic()
 {
+	Debug(misc, 1, "InitializeMusic: starting");
+	const auto *set = BaseMusic::GetUsedSet();
+	Debug(misc, 1, "InitializeMusic: BaseMusic::GetUsedSet()={}", (const void *)set);
+	if (set == nullptr) {
+		Debug(misc, 1, "InitializeMusic: No music set selected; skipping playlist build");
+		return;
+	}
+	Debug(misc, 1, "InitializeMusic: set name='{}'", set->name);
 	_music.BuildPlaylists();
+	Debug(misc, 1, "InitializeMusic: playlist build done");
 }
 
 
@@ -492,6 +502,7 @@ struct MusicTrackSelectionWindow : public Window {
 				return GetString(STR_PLAYLIST_PROGRAM, STR_MUSIC_PLAYLIST_ALL + _settings_client.music.playlist);
 
 			case WID_MTS_CAPTION:
+				if (BaseMusic::GetUsedSet() == nullptr) return "";
 				return GetString(STR_PLAYLIST_MUSIC_SELECTION_SETNAME, BaseMusic::GetUsedSet()->name);
 
 			default:
@@ -682,11 +693,13 @@ struct MusicWindow : public Window {
 
 	void UpdateDisabledButtons()
 	{
+		const auto *set = BaseMusic::GetUsedSet();
+		bool no_music = set == nullptr || set->num_available == 0;
 		/* Disable stop and play if there is no music. */
-		this->SetWidgetsDisabledState(BaseMusic::GetUsedSet()->num_available == 0, WID_M_STOP, WID_M_PLAY);
+		this->SetWidgetsDisabledState(no_music, WID_M_STOP, WID_M_PLAY);
 		/* Disable most music control widgets if there is no music, or we are in the intro menu. */
 		this->SetWidgetsDisabledState(
-			BaseMusic::GetUsedSet()->num_available == 0 || _game_mode == GM_MENU,
+			no_music || _game_mode == GM_MENU,
 			WID_M_PREV, WID_M_NEXT, WID_M_SHUFFLE,
 			WID_M_ALL, WID_M_OLD, WID_M_NEW, WID_M_EZY, WID_M_CUSTOM1, WID_M_CUSTOM2
 			);
@@ -738,10 +751,12 @@ struct MusicWindow : public Window {
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
+		const auto *set = BaseMusic::GetUsedSet();
+		bool no_music = set == nullptr || set->num_available == 0;
 		switch (widget) {
 			case WID_M_TRACK_NR: {
 				GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), PC_BLACK);
-				if (BaseMusic::GetUsedSet()->num_available == 0) {
+				if (no_music) {
 					break;
 				}
 				Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
@@ -758,7 +773,7 @@ struct MusicWindow : public Window {
 				Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
 
 				MusicSystem::PlaylistEntry entry(_music.GetCurrentSong());
-				if (BaseMusic::GetUsedSet()->num_available == 0) {
+				if (no_music) {
 					DrawString(ir, STR_MUSIC_TITLE_NOMUSIC, TC_FROMSTRING, SA_HOR_CENTER);
 				} else if (_music.IsPlaying()) {
 					DrawString(ir, GetString(STR_MUSIC_TITLE_NAME, entry.songname), TC_FROMSTRING, SA_HOR_CENTER);

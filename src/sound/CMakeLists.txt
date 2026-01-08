@@ -35,3 +35,16 @@ add_files(
     null_s.cpp
     null_s.h
 )
+
+# Libretro sound driver disabled for now - minimal core build
+# add_files(
+#     libretro_s.cpp
+#     libretro_s.h
+#     CONDITION OPTION_LIBRETRO
+# )
+
+add_files(
+    libretro_s.cpp
+    libretro_s.h
+    CONDITION OPTION_LIBRETRO
+)

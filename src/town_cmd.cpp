@@ -4110,6 +4110,7 @@ Town::SuppliedHistory SumHistory(std::span<const Town::SuppliedHistory> history)
 	uint32_t production = std::accumulate(std::begin(history), std::end(history), 0, [](uint32_t r, const auto &s) { return r + s.production; });
 	uint32_t transported = std::accumulate(std::begin(history), std::end(history), 0, [](uint32_t r, const auto &s) { return r + s.transported; });
 	auto count = std::size(history);
+	if (count == 0) return {.production = 0, .transported = 0};
 	return {.production = ClampTo<uint16_t>(production / count), .transported = ClampTo<uint16_t>(transported / count)};
 }
 

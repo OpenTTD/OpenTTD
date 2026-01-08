@@ -168,6 +168,11 @@ LinkGraphSchedule::~LinkGraphSchedule()
  */
 void StateGameLoop_LinkGraphPauseControl()
 {
+	int32_t interval_days = static_cast<int32_t>(_settings_game.linkgraph.recalc_interval / EconomyTime::SECONDS_PER_DAY);
+	if (interval_days == 0) return;
+	int32_t mid_day = interval_days / 2;
+	if (mid_day == 0) return;
+
 	if (_pause_mode.Test(PauseMode::LinkGraph)) {
 		/* We are paused waiting on a job, check the job every tick. */
 		if (!LinkGraphSchedule::instance.IsJoinWithUnfinishedJobDue()) {
@@ -175,7 +180,7 @@ void StateGameLoop_LinkGraphPauseControl()
 		}
 	} else if (_pause_mode.None() &&
 			TimerGameEconomy::date_fract == LinkGraphSchedule::SPAWN_JOIN_TICK - 2 &&
-			TimerGameEconomy::date.base() % (_settings_game.linkgraph.recalc_interval / EconomyTime::SECONDS_PER_DAY) == (_settings_game.linkgraph.recalc_interval / EconomyTime::SECONDS_PER_DAY) / 2 &&
+			TimerGameEconomy::date.base() % interval_days == mid_day &&
 			LinkGraphSchedule::instance.IsJoinWithUnfinishedJobDue()) {
 		/* Perform check two TimerGameEconomy::date_fract ticks before we would join, to make
 		 * sure it also works in multiplayer. */
@@ -202,10 +207,12 @@ void AfterLoad_LinkGraphPauseControl()
 void OnTick_LinkGraph()
 {
 	if (TimerGameEconomy::date_fract != LinkGraphSchedule::SPAWN_JOIN_TICK) return;
-	TimerGameEconomy::Date offset{TimerGameEconomy::date.base() % (_settings_game.linkgraph.recalc_interval / EconomyTime::SECONDS_PER_DAY)};
+	int32_t interval_days = static_cast<int32_t>(_settings_game.linkgraph.recalc_interval / EconomyTime::SECONDS_PER_DAY);
+	if (interval_days == 0) return;
+	TimerGameEconomy::Date offset{TimerGameEconomy::date.base() % interval_days};
 	if (offset == 0) {
 		LinkGraphSchedule::instance.SpawnNext();
-	} else if (offset == (_settings_game.linkgraph.recalc_interval / EconomyTime::SECONDS_PER_DAY) / 2) {
+	} else if (interval_days >= 2 && offset == interval_days / 2) {
 		if (!_networking || _network_server) {
 			PerformanceMeasurer::SetInactive(PFE_GL_LINKGRAPH);
 			LinkGraphSchedule::instance.JoinNext();

@@ -21,6 +21,8 @@
 #include "settings_type.h"
 #include "querystring_gui.h"
 
+#include "debug.h"
+
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "table/string_colours.h"
@@ -38,6 +40,8 @@ static std::string GetStringForWidget(const Window *w, const NWidgetCore *nwid, 
 		return GetString(stringid + (secondary ? 1 : 0));
 	}
 
+	if (w == nullptr) return {};
+	if (stringid == STR_NULL) return w->GetWidgetString(nwid->GetIndex(), STR_NULL);
 	return w->GetWidgetString(nwid->GetIndex(), stringid + (secondary ? 1 : 0));
 }
 
@@ -1556,6 +1560,7 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w)
 	/* 1b. Make the container higher if needed to accommodate all children nicely. */
 	[[maybe_unused]] uint max_smallest = this->smallest_y + 3 * max_vert_fill; // Upper limit to computing smallest height.
 	uint cur_height = this->smallest_y;
+	bool safety_triggered = false;
 	for (;;) {
 		for (const auto &child_wid : this->children) {
 			uint step_size = child_wid->GetVerticalStepSize(ST_SMALLEST);
@@ -1564,11 +1569,16 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w)
 				uint remainder = (cur_height - child_height) % step_size;
 				if (remainder > 0) { // Child did not fit entirely, widen the container.
 					cur_height += step_size - remainder;
+					if (cur_height >= max_smallest) {
+						safety_triggered = true;
+						break;
+					}
 					assert(cur_height < max_smallest); // Safeguard against infinite height expansion.
 					/* Remaining children will adapt to the new cur_height, thus speeding up the computation. */
 				}
 			}
 		}
+		if (safety_triggered) break;
 		if (this->smallest_y == cur_height) break;
 		this->smallest_y = cur_height; // Smallest height got changed, try again.
 	}
@@ -1739,6 +1749,7 @@ void NWidgetVertical::SetupSmallestSize(Window *w)
 	/* 1b. Make the container wider if needed to accommodate all children nicely. */
 	[[maybe_unused]] uint max_smallest = this->smallest_x + 3 * max_hor_fill; // Upper limit to computing smallest height.
 	uint cur_width = this->smallest_x;
+	bool safety_triggered = false;
 	for (;;) {
 		for (const auto &child_wid : this->children) {
 			uint step_size = child_wid->GetHorizontalStepSize(ST_SMALLEST);
@@ -1747,11 +1758,16 @@ void NWidgetVertical::SetupSmallestSize(Window *w)
 				uint remainder = (cur_width - child_width) % step_size;
 				if (remainder > 0) { // Child did not fit entirely, widen the container.
 					cur_width += step_size - remainder;
+					if (cur_width >= max_smallest) {
+						safety_triggered = true;
+						break;
+					}
 					assert(cur_width < max_smallest); // Safeguard against infinite width expansion.
 					/* Remaining children will adapt to the new cur_width, thus speeding up the computation. */
 				}
 			}
 		}
+		if (safety_triggered) break;
 		if (this->smallest_x == cur_width) break;
 		this->smallest_x = cur_width; // Smallest width got changed, try again.
 	}

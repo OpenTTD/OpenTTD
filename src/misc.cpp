@@ -94,9 +94,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 	/* Make sure there isn't any window that can influence anything
 	 * related to the new game we're about to start/load. */
 	UnInitWindowSystem();
-
 	Map::Allocate(size_x, size_y);
-
 	_pause_mode = {};
 	_game_speed = 100;
 	TimerGameTick::counter = 0;
@@ -120,21 +118,15 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 		}
 		InitializeOldNames();
 	}
-
 	LinkGraphSchedule::Clear();
 	PoolBase::Clean(PoolType::Normal);
-
 	RebuildStationKdtree();
 	RebuildTownKdtree();
 	RebuildViewportKdtree();
-
 	ResetPersistentNewGRFData();
-
 	InitializeSound();
 	InitializeMusic();
-
 	InitializeVehicles();
-
 	InitNewsItemStructs();
 	InitializeLandscape();
 	InitializeRailGui();
@@ -148,12 +140,10 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 	InitializeTrees();
 	InitializeIndustries();
 	InitializeObjects();
-
 	InitializeCompanies();
 	AI::Initialize();
 	Game::Initialize();
 	InitializeCheats();
-
 	InitTextEffects();
 	NetworkInitChatMessage();
 	InitializeAnimatedTiles();

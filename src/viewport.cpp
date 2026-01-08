@@ -78,6 +78,7 @@
 #include "company_func.h"
 #include "waypoint_func.h"
 #include "window_func.h"
+#include "debug.h"
 #include "tilehighlight_func.h"
 #include "window_gui.h"
 #include "linkgraph/linkgraph_gui.h"

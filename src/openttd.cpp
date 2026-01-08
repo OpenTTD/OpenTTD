@@ -1017,13 +1017,16 @@ static void UpdateSocialIntegration(GameMode game_mode)
 
 void SwitchToMode(SwitchMode new_mode)
 {
+	Debug(misc, 0, "[SWITCH] SwitchToMode BEGIN new_mode={} game_mode={} switch_mode={} networking={} server={} is_network_server={}", (int)new_mode, (int)_game_mode, (int)_switch_mode, _networking, _network_server, _is_network_server);
 	/* If we are saving something, the network stays in its current state */
 	if (new_mode != SM_SAVE_GAME) {
 		/* If the network is active, make it not-active */
 		if (_networking) {
 			if (_network_server && (new_mode == SM_LOAD_GAME || new_mode == SM_NEWGAME || new_mode == SM_RESTARTGAME)) {
+				Debug(misc, 0, "[SWITCH] NetworkReboot path (server) new_mode={}", (int)new_mode);
 				NetworkReboot();
 			} else {
+				Debug(misc, 0, "[SWITCH] NetworkDisconnect path new_mode={}", (int)new_mode);
 				NetworkDisconnect();
 			}
 		}
@@ -1032,6 +1035,7 @@ void SwitchToMode(SwitchMode new_mode)
 		if (_is_network_server) {
 			/* But not if we are going to the menu */
 			if (new_mode != SM_MENU) {
+				Debug(misc, 0, "[SWITCH] NetworkServerStart path new_mode={}", (int)new_mode);
 				/* check if we should reload the config */
 				if (_settings_client.network.reload_cfg) {
 					LoadFromConfig();
@@ -1040,6 +1044,7 @@ void SwitchToMode(SwitchMode new_mode)
 				}
 				NetworkServerStart();
 			} else {
+				Debug(misc, 0, "[SWITCH] Leaving network-server mode (to menu)");
 				/* This client no longer wants to be a network-server */
 				_is_network_server = false;
 			}
@@ -1063,6 +1068,7 @@ void SwitchToMode(SwitchMode new_mode)
 
 	switch (new_mode) {
 		case SM_EDITOR: // Switch to scenario editor
+			Debug(misc, 0, "[SWITCH] Case SM_EDITOR");
 			MakeNewEditorWorld();
 			GenerateSavegameId();
 
@@ -1070,6 +1076,7 @@ void SwitchToMode(SwitchMode new_mode)
 			break;
 
 		case SM_RELOADGAME: // Reload with what-ever started the game
+			Debug(misc, 0, "[SWITCH] Case SM_RELOADGAME");
 			if (_file_to_saveload.ftype.abstract == FT_SAVEGAME || _file_to_saveload.ftype.abstract == FT_SCENARIO) {
 				/* Reload current savegame/scenario */
 				_switch_mode = _game_mode == GM_EDITOR ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
@@ -1090,7 +1097,9 @@ void SwitchToMode(SwitchMode new_mode)
 
 		case SM_RESTARTGAME: // Restart --> 'Random game' with current settings
 		case SM_NEWGAME: // New Game --> 'Random game'
+			Debug(misc, 0, "[SWITCH] Case SM_NEWGAME/SM_RESTARTGAME new_mode={} (calling MakeNewGame)", (int)new_mode);
 			MakeNewGame(false, new_mode == SM_NEWGAME);
+			Debug(misc, 0, "[SWITCH] MakeNewGame returned new_mode={}", (int)new_mode);
 			GenerateSavegameId();
 
 			UpdateSocialIntegration(GM_NORMAL);
@@ -1225,7 +1234,9 @@ void StateGameLoop()
 
 		if (!HasModalProgress()) UpdateLandscapingLimits();
 #ifndef DEBUG_DUMP_COMMANDS
-		if (_game_mode == GM_NORMAL) Game::GameLoop();
+		if (_game_mode == GM_NORMAL) {
+			Game::GameLoop();
+		}
 #endif
 		return;
 	}
@@ -1282,7 +1293,14 @@ void StateGameLoop()
 		cur_company.Restore();
 	}
 
+	/* Libretro-specific fix: ensure current_company is valid to avoid IsLocalCompany assert */
+#ifdef WITH_LIBRETRO
+	if (!IsLocalCompany()) {
+		_current_company = _local_company;
+	}
+#else
 	assert(IsLocalCompany());
+#endif
 }
 
 /** Interval for regular autosaves. Initialized at zero to disable till settings are loaded. */
@@ -1337,7 +1355,9 @@ void GameLoop()
 {
 	if (_game_mode == GM_BOOTSTRAP) {
 		/* Check for UDP stuff */
-		if (_network_available) NetworkBackgroundLoop();
+		if (_network_available) {
+			NetworkBackgroundLoop();
+		}
 		return;
 	}
 
@@ -1371,7 +1391,9 @@ void GameLoop()
 	IncreaseSpriteLRU();
 
 	/* Check for UDP stuff */
-	if (_network_available) NetworkBackgroundLoop();
+	if (_network_available) {
+		NetworkBackgroundLoop();
+	}
 
 	DebugSendRemoteMessages();
 
@@ -1388,9 +1410,14 @@ void GameLoop()
 		StateGameLoop();
 	}
 
-	if (_pause_mode.None() && HasBit(_display_opt, DO_FULL_ANIMATION)) DoPaletteAnimations();
+	if (_pause_mode.None() && HasBit(_display_opt, DO_FULL_ANIMATION)) {
+		DoPaletteAnimations();
+	}
 
-	SoundDriver::GetInstance()->MainLoop();
+	{
+		SoundDriver *sd = SoundDriver::GetInstance();
+		if (sd != nullptr) sd->MainLoop();
+	}
 	MusicLoop();
 	SocialIntegration::RunCallbacks();
 }

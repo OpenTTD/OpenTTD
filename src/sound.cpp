@@ -90,7 +90,22 @@ static bool SetBankSource(MixerChannel *mc, SoundEntry *sound, SoundID sound_id)
 void InitializeSound()
 {
 	Debug(misc, 1, "Loading sound effects...");
-	OpenBankFile(BaseSounds::GetUsedSet()->files[0].filename);
+	const auto *set = BaseSounds::GetUsedSet();
+	Debug(misc, 1, "InitializeSound: BaseSounds::GetUsedSet()={}", (const void *)set);
+	if (set == nullptr) {
+		Debug(misc, 1, "InitializeSound: No sound set selected; skipping sound bank load");
+		return;
+	}
+
+	Debug(misc, 1, "InitializeSound: set name='{}'", set->name);
+	Debug(misc, 1, "InitializeSound: set files count={}", set->files.size());
+	if (set->files.empty()) {
+		Debug(misc, 1, "InitializeSound: Sound set has no files; skipping sound bank load");
+		return;
+	}
+
+	Debug(misc, 1, "InitializeSound: Opening sound bank file='{}'", set->files[0].filename);
+	OpenBankFile(set->files[0].filename);
 }
 
 

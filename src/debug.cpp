@@ -24,6 +24,10 @@
 
 #include "network/network_admin.h"
 
+#ifdef WITH_LIBRETRO
+#include "video/libretro/libretro_core.h"
+#endif
+
 #include "safeguards.h"
 
 /** Element in the queue of debug messages that have to be passed to either NetworkAdminConsole or IConsolePrint.*/
@@ -124,7 +128,12 @@ void DebugPrint(std::string_view category, int level, std::string &&message)
 		fflush(*f);
 #endif
 	} else {
-		fmt::print(stderr, "{}dbg: [{}:{}] {}\n", GetLogPrefix(true), category, level, message);
+		std::string line = fmt::format("{}dbg: [{}:{}] {}", GetLogPrefix(true), category, level, message);
+#ifdef WITH_LIBRETRO
+		LibretroCore::Log(RETRO_LOG_INFO, "%s\n", line.c_str());
+#else
+		fmt::print(stderr, "{}\n", line);
+#endif
 
 		if (_debug_remote_console.load()) {
 			/* Only add to the queue when there is at least one consumer of the data. */

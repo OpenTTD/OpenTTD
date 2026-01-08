@@ -49,3 +49,16 @@ add_files(
     null_m.cpp
     null_m.h
 )
+
+# Libretro music driver disabled for now - minimal core build
+# add_files(
+#     libretro_m.cpp
+#     libretro_m.h
+#     CONDITION OPTION_LIBRETRO
+# )
+
+add_files(
+    libretro_m.cpp
+    libretro_m.h
+    CONDITION OPTION_LIBRETRO
+)

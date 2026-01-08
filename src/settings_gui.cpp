@@ -139,6 +139,7 @@ void ShowBaseSetTextfileWindow(Window *parent, TextfileType file_type, const TBa
 template <typename TBaseSet>
 static std::string GetListLabel(const TBaseSet *baseset)
 {
+	if (baseset == nullptr) return "";
 	if (baseset->GetNumInvalid() == 0) return GetString(STR_JUST_RAW_STRING, baseset->name);
 	return GetString(STR_BASESET_STATUS, baseset->name, baseset->GetNumInvalid());
 }
@@ -257,6 +258,10 @@ public:
 	template <typename T>
 	std::string &GetWidestPlugin(T SocialIntegrationPlugin::*member) const
 	{
+		/* LIBRETRO: Return empty string if no plugins available (prevents crash) */
+		static std::string empty_string;
+		if (this->plugins.empty()) return empty_string;
+
 		std::string *longest = &(this->plugins[0]->*member);
 		int longest_length = 0;
 
@@ -275,6 +280,9 @@ public:
 	{
 		switch (widget) {
 			case WID_GO_SOCIAL_PLUGIN_TITLE:
+				/* LIBRETRO: Return empty if no plugins (prevents crash) */
+				if (this->plugins.empty()) return "";
+
 				/* For SetupSmallestSize, use the longest string we have. */
 				if (this->current_index < 0) {
 					return GetString(STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE, GetWidestPlugin(&SocialIntegrationPlugin::name), GetWidestPlugin(&SocialIntegrationPlugin::version));
@@ -287,6 +295,9 @@ public:
 				return GetString(STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE, this->plugins[this->current_index]->name, this->plugins[this->current_index]->version);
 
 			case WID_GO_SOCIAL_PLUGIN_PLATFORM:
+				/* LIBRETRO: Return empty if no plugins (prevents crash) */
+				if (this->plugins.empty()) return "";
+
 				/* For SetupSmallestSize, use the longest string we have. */
 				if (this->current_index < 0) {
 					return GetWidestPlugin(&SocialIntegrationPlugin::social_platform);
@@ -295,6 +306,9 @@ public:
 				return this->plugins[this->current_index]->social_platform;
 
 			case WID_GO_SOCIAL_PLUGIN_STATE: {
+				/* LIBRETRO: Return empty if no plugins (prevents crash) */
+				if (this->plugins.empty()) return "";
+
 				static const std::pair<SocialIntegrationPlugin::State, StringID> state_to_string[] = {
 					{ SocialIntegrationPlugin::RUNNING, STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING },
 					{ SocialIntegrationPlugin::FAILED, STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED },
@@ -421,30 +435,22 @@ struct GameOptionsWindow : Window {
 	GameOptionsWindow(WindowDesc &desc) : Window(desc), filter_editbox(50)
 	{
 		this->opt = &GetGameSettings();
-
 		AddCustomRefreshRates();
-
 		this->filter.mode = (RestrictionMode)_settings_client.gui.settings_restriction_mode;
 		this->filter.min_cat = RM_ALL;
 		this->filter.type = ST_ALL;
 		this->filter.type_hides = false;
 		this->settings_ptr = &GetGameSettings();
-
-		GetSettingsTree().FoldAll(); // Close all sub-pages
-
+		GetSettingsTree().FoldAll();
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_GO_SCROLLBAR);
 		this->vscroll_description = this->GetScrollbar(WID_GO_HELP_TEXT_SCROLL);
 		this->vscroll_description->SetCapacity(NUM_DESCRIPTION_LINES);
 		this->FinishInitNested(WN_GAME_OPTIONS_GAME_OPTIONS);
-
 		this->querystrings[WID_GO_FILTER] = &this->filter_editbox;
 		this->filter_editbox.cancel_button = QueryString::ACTION_CLEAR;
-
 		this->OnInvalidateData(0);
-
 		this->SetTab(GameOptionsWindow::active_tab);
-
 		if constexpr (!NetworkSurveyHandler::IsSurveyPossible()) this->GetWidget<NWidgetStacked>(WID_GO_SURVEY_SEL)->SetDisplayedPlane(SZSP_NONE);
 	}
 
@@ -683,11 +689,15 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case WID_GO_BASE_SFX_DESCRIPTION:
-				DrawStringMultiLine(r, GetString(STR_JUST_RAW_STRING, BaseSounds::GetUsedSet()->GetDescription(GetCurrentLanguageIsoCode())), GAME_OPTIONS_SELECTED);
+				if (BaseSounds::GetUsedSet() != nullptr) {
+					DrawStringMultiLine(r, GetString(STR_JUST_RAW_STRING, BaseSounds::GetUsedSet()->GetDescription(GetCurrentLanguageIsoCode())), GAME_OPTIONS_SELECTED);
+				}
 				break;
 
 			case WID_GO_BASE_MUSIC_DESCRIPTION:
-				DrawStringMultiLine(r, GetString(STR_JUST_RAW_STRING, BaseMusic::GetUsedSet()->GetDescription(GetCurrentLanguageIsoCode())), GAME_OPTIONS_SELECTED);
+				if (BaseMusic::GetUsedSet() != nullptr) {
+					DrawStringMultiLine(r, GetString(STR_JUST_RAW_STRING, BaseMusic::GetUsedSet()->GetDescription(GetCurrentLanguageIsoCode())), GAME_OPTIONS_SELECTED);
+				}
 				break;
 
 			case WID_GO_GUI_SCALE:
@@ -1454,6 +1464,17 @@ struct GameOptionsWindow : Window {
 					CloseWindowByClass(WC_GRF_PARAMETERS);
 					auto set = BaseGraphics::GetSet(index);
 					BaseGraphics::SetSet(set);
+					if (set != nullptr) {
+						BaseGraphics::ini_data.name = set->name;
+						BaseGraphics::ini_data.shortname = set->shortname;
+						BaseGraphics::ini_data.extra_version = 0;
+						BaseGraphics::ini_data.extra_params.clear();
+						const GRFConfig *extra_cfg = set->GetExtraConfig();
+						if (extra_cfg != nullptr && !extra_cfg->param.empty()) {
+							BaseGraphics::ini_data.extra_version = extra_cfg->version;
+							BaseGraphics::ini_data.extra_params = extra_cfg->param;
+						}
+					}
 					this->reload = true;
 					this->InvalidateData();
 				}
@@ -1553,6 +1574,7 @@ struct GameOptionsWindow : Window {
 		this->SetWidgetDisabledState(WID_GO_BASE_GRF_OPEN_URL, BaseGraphics::GetUsedSet() == nullptr || BaseGraphics::GetUsedSet()->url.empty());
 		this->SetWidgetDisabledState(WID_GO_BASE_SFX_OPEN_URL, BaseSounds::GetUsedSet() == nullptr || BaseSounds::GetUsedSet()->url.empty());
 		this->SetWidgetDisabledState(WID_GO_BASE_MUSIC_OPEN_URL, BaseMusic::GetUsedSet() == nullptr || BaseMusic::GetUsedSet()->url.empty());
+		this->SetWidgetDisabledState(WID_GO_BASE_MUSIC_JUKEBOX, BaseMusic::GetUsedSet() == nullptr || BaseMusic::GetUsedSet()->num_available == 0);
 
 		for (TextfileType tft = TFT_CONTENT_BEGIN; tft < TFT_CONTENT_END; tft++) {
 			this->SetWidgetDisabledState(WID_GO_BASE_GRF_TEXTFILE + tft, BaseGraphics::GetUsedSet() == nullptr || !BaseGraphics::GetUsedSet()->GetTextfile(tft).has_value());

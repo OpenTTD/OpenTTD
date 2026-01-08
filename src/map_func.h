@@ -317,6 +317,8 @@ public:
 	 */
 	static inline uint ScaleByLandProportion(uint n)
 	{
+		if (Map::size == 0) return 0;
+		if (Map::initial_land_count == 0) return 0;
 		/* Use 64-bit arithmetic to avoid overflow. */
 		return static_cast<uint>(static_cast<uint64_t>(n) * Map::initial_land_count / Map::size);
 	}
