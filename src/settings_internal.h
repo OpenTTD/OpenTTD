@@ -12,6 +12,7 @@
 
 #include <variant>
 #include "saveload/saveload.h"
+#include "core/enum_type.hpp"
 
 enum class SettingFlag : uint8_t {
 	GuiZeroIsSpecial, ///< A value of zero is possible and has a custom string (the one after "strval").
@@ -66,6 +67,14 @@ enum SettingType : uint8_t {
 };
 
 struct IniItem;
+
+/**
+ * Type is convertible to TTo, either directly, through ConvertibleThroughBase or through to_underlying.
+ * @tparam T The type under consideration.
+ * @tparam TTo The type to convert to.
+ */
+template <typename T, typename TTo>
+concept ConvertibleThroughBaseOrUnderlyingOrTo = ConvertibleThroughBaseOrTo<T, TTo> || (is_scoped_enum_v<T> && std::is_convertible_v<std::underlying_type_t<T>, TTo>);
 
 /** Properties of config file settings. */
 struct SettingDesc {
@@ -167,7 +176,7 @@ struct IntSettingDesc : SettingDesc {
 	 */
 	using PostChangeCallback = void(int32_t value);
 
-	template <ConvertibleThroughBaseOrTo<int32_t> Tdef, ConvertibleThroughBaseOrTo<int32_t> Tmin, ConvertibleThroughBaseOrTo<uint32_t> Tmax, ConvertibleThroughBaseOrTo<int32_t> Tinterval>
+	template <ConvertibleThroughBaseOrUnderlyingOrTo<int32_t> Tdef, ConvertibleThroughBaseOrUnderlyingOrTo<int32_t> Tmin, ConvertibleThroughBaseOrUnderlyingOrTo<uint32_t> Tmax, ConvertibleThroughBaseOrUnderlyingOrTo<int32_t> Tinterval>
 	IntSettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, Tdef def,
 			Tmin min, Tmax max, Tinterval interval, StringID str, StringID str_help, StringID str_val,
 			SettingCategory cat, PreChangeCheck pre_check, PostChangeCallback post_callback,
@@ -177,27 +186,36 @@ struct IntSettingDesc : SettingDesc {
 			str(str), str_help(str_help), str_val(str_val), cat(cat), pre_check(pre_check),
 			post_callback(post_callback),
 			get_title_cb(get_title_cb), get_help_cb(get_help_cb), get_value_params_cb(get_value_params_cb),
-			get_def_cb(get_def_cb), get_range_cb(get_range_cb) {
+			get_def_cb(get_def_cb), get_range_cb(get_range_cb)
+	{
 		if constexpr (ConvertibleThroughBase<Tdef>) {
 			this->def = def.base();
+		} else if constexpr (is_scoped_enum_v<Tdef>) {
+			this->def = to_underlying(def);
 		} else {
 			this->def = def;
 		}
 
 		if constexpr (ConvertibleThroughBase<Tmin>) {
 			this->min = min.base();
+		} else if constexpr (is_scoped_enum_v<Tmin>) {
+			this->min = to_underlying(min);
 		} else {
 			this->min = min;
 		}
 
 		if constexpr (ConvertibleThroughBase<Tmax>) {
 			this->max = max.base();
+		} else if constexpr (is_scoped_enum_v<Tmax>) {
+			this->max = to_underlying(max);
 		} else {
 			this->max = max;
 		}
 
 		if constexpr (ConvertibleThroughBase<Tinterval>) {
 			this->interval = interval.base();
+		} else if constexpr (is_scoped_enum_v<Tinterval>) {
+			this->interval = to_underlying(interval);
 		} else {
 			this->interval = interval;
 		}
@@ -269,7 +287,7 @@ struct BoolSettingDesc : IntSettingDesc {
 struct OneOfManySettingDesc : IntSettingDesc {
 	typedef std::optional<uint32_t> OnConvert(std::string_view value); ///< callback prototype for conversion error
 
-	template <ConvertibleThroughBaseOrTo<int32_t> Tdef, ConvertibleThroughBaseOrTo<uint32_t> Tmax>
+	template <ConvertibleThroughBaseOrUnderlyingOrTo<int32_t> Tdef, ConvertibleThroughBaseOrUnderlyingOrTo<uint32_t> Tmax>
 	OneOfManySettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, Tdef def,
 			Tmax max, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
 			PreChangeCheck pre_check, PostChangeCallback post_callback,
