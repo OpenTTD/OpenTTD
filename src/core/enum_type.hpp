@@ -16,6 +16,9 @@
 template <typename enum_type>
 constexpr std::underlying_type_t<enum_type> to_underlying(enum_type e) { return static_cast<std::underlying_type_t<enum_type>>(e); }
 
+/** Implementation of std::is_scoped_enum_v (from C++23) */
+template <class T> constexpr bool is_scoped_enum_v = std::conjunction_v<std::is_enum<T>, std::negation<std::is_convertible<T, int>>>;
+
 /** Trait to enable prefix/postfix incrementing operators. */
 template <typename enum_type>
 struct is_enum_incrementable {
