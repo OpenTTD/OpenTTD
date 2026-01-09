@@ -1340,16 +1340,18 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 					this->vscroll->ScrollTowards(to_pos);
 					this->preset = -1;
-					this->InvalidateData();
+					this->InvalidateData(GOID_NEWGRF_LIST_EDITED);
 				}
 			} else if (this->avail_sel != nullptr) {
 				int to_pos = std::min(this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NS_FILE_LIST, WidgetDimensions::scaled.framerect.top), this->vscroll->GetCount() - 1);
 				this->AddGRFToActive(to_pos);
+				this->InvalidateData(GOID_NEWGRF_LIST_EDITED);
 			}
 		} else if (widget == WID_NS_AVAIL_LIST && this->active_sel != nullptr) {
 			/* Remove active NewGRF file by dragging it over available list. */
 			Point dummy = {-1, -1};
 			this->OnClick(dummy, WID_NS_REMOVE, 1);
+			this->InvalidateData(GOID_NEWGRF_LIST_EDITED);
 		}
 
 		ResetObjectToPlace();
