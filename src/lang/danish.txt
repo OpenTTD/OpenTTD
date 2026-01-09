@@ -1115,7 +1115,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Vælg det grund
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Yderligere information om basis-grafiksættet
 
 STR_GAME_OPTIONS_BASE_SFX                                       :Basis lydsæt
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Vælg det grundlæggende lyd sæt, der skal bruges (kan ikke ændres i spillet, kun fra hovedmenuen)
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Vælg det grundlæggende lyd sæt, der skal bruges
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Mere information om basis lydsættet
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :Basis musiksæt
