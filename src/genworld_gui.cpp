@@ -480,7 +480,7 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_SMOOTHNESS_PULLDOWN: return GetString(_smoothness[_settings_newgame.game_creation.tgen_smoothness]);
 			case WID_GL_VARIETY_PULLDOWN:    return GetString(_variety[_settings_newgame.game_creation.variety]);
 			case WID_GL_AVERAGE_HEIGHT_PULLDOWN: return GetString(_average_height[to_underlying(_settings_newgame.game_creation.average_height)]);
-			case WID_GL_BORDERS_PULLDOWN: return GetString(_borders[_settings_newgame.game_creation.water_border_presets]);
+			case WID_GL_BORDERS_PULLDOWN: return GetString(_borders[to_underlying(_settings_newgame.game_creation.water_border_presets)]);
 			case WID_GL_WATER_NE: return GetString((_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? STR_MAPGEN_BORDER_RANDOM : _settings_newgame.game_creation.water_borders.Test(BorderFlag::NorthEast) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM);
 			case WID_GL_WATER_NW: return GetString((_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? STR_MAPGEN_BORDER_RANDOM : _settings_newgame.game_creation.water_borders.Test(BorderFlag::NorthWest) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM);
 			case WID_GL_WATER_SE: return GetString((_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? STR_MAPGEN_BORDER_RANDOM : _settings_newgame.game_creation.water_borders.Test(BorderFlag::SouthEast) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM);
@@ -818,7 +818,7 @@ struct GenerateLandscapeWindow : public Window {
 
 			/* Map borders */
 			case WID_GL_BORDERS_PULLDOWN:
-				ShowDropDownMenu(this, _borders, _settings_newgame.game_creation.water_border_presets, WID_GL_BORDERS_PULLDOWN, 0, 0);
+				ShowDropDownMenu(this, _borders, to_underlying(_settings_newgame.game_creation.water_border_presets), WID_GL_BORDERS_PULLDOWN, 0, 0);
 				break;
 
 			case WID_GL_WATER_NW:
@@ -913,16 +913,16 @@ struct GenerateLandscapeWindow : public Window {
 			}
 
 			case WID_GL_BORDERS_PULLDOWN: {
-				switch (index) {
-					case BFP_RANDOM:
+				switch (static_cast<BorderFlagPresets>(index)) {
+					case BorderFlagPresets::Random:
 						_settings_newgame.game_creation.water_borders = BorderFlag::Random;
 						_settings_newgame.construction.freeform_edges = true;
 						break;
-					case BFP_MANUAL:
+					case BorderFlagPresets::Manual:
 						_settings_newgame.game_creation.water_borders = {};
 						_settings_newgame.construction.freeform_edges = true;
 						break;
-					case BFP_INFINITE_WATER:
+					case BorderFlagPresets::InfiniteWater:
 						_settings_newgame.game_creation.water_borders = BORDERFLAGS_ALL;
 						_settings_newgame.construction.freeform_edges = false;
 						break;

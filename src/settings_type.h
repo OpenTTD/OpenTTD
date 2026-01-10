@@ -84,10 +84,10 @@ enum class GenworldAverageHeight : uint8_t {
 };
 
 /** Possible options for the Borders pulldown in the Genworld GUI. */
-enum BorderFlagPresets : uint8_t {
-	BFP_RANDOM = 0,
-	BFP_MANUAL,
-	BFP_INFINITE_WATER,
+enum class BorderFlagPresets : uint8_t {
+	Random = 0,
+	Manual,
+	InfiniteWater,
 };
 
 /** Possible values for the "timekeeping_units" setting. */
