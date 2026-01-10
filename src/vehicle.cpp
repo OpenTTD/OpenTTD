@@ -187,7 +187,7 @@ void VehicleServiceInDepot(Vehicle *v)
 		v->reliability = v->GetEngine()->reliability;
 		/* Prevent vehicles from breaking down directly after exiting the depot. */
 		v->breakdown_chance /= 4;
-		if (_settings_game.difficulty.vehicle_breakdowns == VB_REDUCED) v->breakdown_chance = 0; // on reduced breakdown
+		if (_settings_game.difficulty.vehicle_breakdowns == VehicleBreakdowns::Reduced) v->breakdown_chance = 0; // on reduced breakdown
 		v = v->Next();
 	} while (v != nullptr && v->HasEngineType());
 }
@@ -222,7 +222,7 @@ bool Vehicle::NeedsServicing() const
 	/* If we're servicing anyway, because we have not disabled servicing when
 	 * there are no breakdowns or we are playing with breakdowns, bail out. */
 	if (!_settings_game.order.no_servicing_if_no_breakdowns ||
-			_settings_game.difficulty.vehicle_breakdowns != VB_NONE) {
+			_settings_game.difficulty.vehicle_breakdowns != VehicleBreakdowns::None) {
 		return true;
 	}
 
@@ -1295,10 +1295,10 @@ void CheckVehicleBreakdown(Vehicle *v)
 	if (_game_mode == GM_MENU) return;
 
 	/* If both breakdowns and automatic servicing are disabled, we don't decrease reliability or break down. */
-	if (_settings_game.difficulty.vehicle_breakdowns == VB_NONE && _settings_game.order.no_servicing_if_no_breakdowns) return;
+	if (_settings_game.difficulty.vehicle_breakdowns == VehicleBreakdowns::None && _settings_game.order.no_servicing_if_no_breakdowns) return;
 
 	/* With Reduced breakdowns, vehicles (un)loading at stations don't lose reliability. */
-	if (_settings_game.difficulty.vehicle_breakdowns == VB_REDUCED && v->current_order.IsType(OT_LOADING)) return;
+	if (_settings_game.difficulty.vehicle_breakdowns == VehicleBreakdowns::Reduced && v->current_order.IsType(OT_LOADING)) return;
 
 	/* Decrease reliability. */
 	int rel, rel_old;
@@ -1307,7 +1307,7 @@ void CheckVehicleBreakdown(Vehicle *v)
 
 	/* Some vehicles lose reliability but won't break down. */
 	/* Breakdowns are disabled. */
-	if (_settings_game.difficulty.vehicle_breakdowns == VB_NONE) return;
+	if (_settings_game.difficulty.vehicle_breakdowns == VehicleBreakdowns::None) return;
 	/* The vehicle is already broken down. */
 	if (v->breakdown_ctr != 0) return;
 	/* The vehicle is stopped or going very slow. */
@@ -1329,7 +1329,7 @@ void CheckVehicleBreakdown(Vehicle *v)
 	if (v->type == VEH_SHIP) rel += 0x6666;
 
 	/* Reduce the chance if the player has chosen the Reduced setting. */
-	if (_settings_game.difficulty.vehicle_breakdowns == VB_REDUCED) rel += 0x6666;
+	if (_settings_game.difficulty.vehicle_breakdowns == VehicleBreakdowns::Reduced) rel += 0x6666;
 
 	/* Check the random chance and inform the vehicle of the result. */
 	if (_breakdown_chance[ClampTo<uint16_t>(rel) >> 10] <= v->breakdown_chance) {

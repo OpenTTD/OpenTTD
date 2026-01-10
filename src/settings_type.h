@@ -136,10 +136,10 @@ enum PlaceHouses : uint8_t {
 };
 
 /** Possible values for "vehicle_breakdowns" setting. */
-enum VehicleBreakdowns : uint8_t {
-	VB_NONE = 0,
-	VB_REDUCED,
-	VB_NORMAL,
+enum class VehicleBreakdowns : uint8_t {
+	None = 0,
+	Reduced,
+	Normal,
 };
 
 /** Settings related to the difficulty of the game */
@@ -155,7 +155,7 @@ struct DifficultySettings {
 	uint8_t initial_interest;                 ///< amount of interest (to pay over the loan)
 	uint8_t vehicle_costs;                    ///< amount of money spent on vehicle running cost
 	uint8_t competitor_speed;                 ///< the speed at which the AI builds
-	uint8_t vehicle_breakdowns;               ///< likelihood of vehicles breaking down
+	VehicleBreakdowns vehicle_breakdowns; ///< likelihood of vehicles breaking down
 	uint8_t subsidy_multiplier;               ///< payment multiplier for subsidized deliveries
 	uint16_t subsidy_duration;                 ///< duration of subsidies
 	uint8_t construction_cost;                ///< how expensive is building
