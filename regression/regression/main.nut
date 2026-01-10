@@ -225,6 +225,9 @@ function Regression::Airport()
 		print("  GetAirportHeight(" + i + "):              " + AIAirport.GetAirportHeight(i));
 		print("  GetAirportCoverageRadius(" + i + "):      " + AIAirport.GetAirportCoverageRadius(i));
 		print("  GetAirportNumHelipads(" + i + "):         " + AIAirport.GetAirportNumHelipads(i));
+		for (local j = 0; j < 4; j++) {
+			print("  GetAirportPlaneCompatibility(" + i + ", " + j + "): " + AIAirport.GetAirportPlaneCompatibility(i, j));
+		}
 	}
 
 	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
