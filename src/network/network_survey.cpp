@@ -90,7 +90,7 @@ void NetworkSurveyHandler::Transmit(Reason reason, bool blocking)
 		return;
 	}
 
-	if (_settings_client.network.participate_survey != PS_YES) {
+	if (_settings_client.network.participate_survey != ParticipateSurvey::Yes) {
 		Debug(net, 5, "Survey: user is not participating in survey; skipping survey");
 		return;
 	}

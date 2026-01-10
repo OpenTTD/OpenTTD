@@ -960,17 +960,17 @@ struct GameOptionsWindow : Window {
 
 			case WID_GO_SURVEY_PARTICIPATE_BUTTON:
 				switch (_settings_client.network.participate_survey) {
-					case PS_ASK:
-					case PS_NO:
-						_settings_client.network.participate_survey = PS_YES;
+					case ParticipateSurvey::Ask:
+					case ParticipateSurvey::No:
+						_settings_client.network.participate_survey = ParticipateSurvey::Yes;
 						break;
 
-					case PS_YES:
-						_settings_client.network.participate_survey = PS_NO;
+					case ParticipateSurvey::Yes:
+						_settings_client.network.participate_survey = ParticipateSurvey::No;
 						break;
 				}
 
-				this->SetWidgetLoweredState(WID_GO_SURVEY_PARTICIPATE_BUTTON, _settings_client.network.participate_survey == PS_YES);
+				this->SetWidgetLoweredState(WID_GO_SURVEY_PARTICIPATE_BUTTON, _settings_client.network.participate_survey == ParticipateSurvey::Yes);
 				this->SetWidgetDirty(WID_GO_SURVEY_PARTICIPATE_BUTTON);
 				this->SetWidgetDirty(WID_GO_SURVEY_PARTICIPATE_TEXT);
 				break;
@@ -1528,7 +1528,7 @@ struct GameOptionsWindow : Window {
 	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
-		this->SetWidgetLoweredState(WID_GO_SURVEY_PARTICIPATE_BUTTON, _settings_client.network.participate_survey == PS_YES);
+		this->SetWidgetLoweredState(WID_GO_SURVEY_PARTICIPATE_BUTTON, _settings_client.network.participate_survey == ParticipateSurvey::Yes);
 		this->SetWidgetLoweredState(WID_GO_FULLSCREEN_BUTTON, _fullscreen);
 		this->SetWidgetLoweredState(WID_GO_VIDEO_ACCEL_BUTTON, _video_hw_accel);
 		this->SetWidgetDisabledState(WID_GO_REFRESH_RATE_DROPDOWN, _video_vsync);

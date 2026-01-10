@@ -104,10 +104,10 @@ enum UseRelayService : uint8_t {
 };
 
 /** Possible values for "participate_survey" setting. */
-enum ParticipateSurvey : uint8_t {
-	PS_ASK = 0,
-	PS_NO,
-	PS_YES,
+enum class ParticipateSurvey : uint8_t {
+	Ask = 0,
+	No,
+	Yes,
 };
 
 /** Right-click to close window actions. */

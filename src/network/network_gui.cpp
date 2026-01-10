@@ -2281,12 +2281,12 @@ struct NetworkAskSurveyWindow : public Window {
 				break;
 
 			case WID_NAS_NO:
-				_settings_client.network.participate_survey = PS_NO;
+				_settings_client.network.participate_survey = ParticipateSurvey::No;
 				this->Close();
 				break;
 
 			case WID_NAS_YES:
-				_settings_client.network.participate_survey = PS_YES;
+				_settings_client.network.participate_survey = ParticipateSurvey::Yes;
 				this->Close();
 				break;
 		}
