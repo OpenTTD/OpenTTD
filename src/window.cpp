@@ -2447,7 +2447,7 @@ static EventState HandleViewportScroll()
 	 * outside of the window and should not left-mouse scroll anymore. */
 	if (_last_scroll_window == nullptr) _last_scroll_window = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
 
-	if (_last_scroll_window == nullptr || !((_settings_client.gui.scroll_mode != VSM_MAP_LMB && _right_button_down) || scrollwheel_scrolling || (_settings_client.gui.scroll_mode == VSM_MAP_LMB && _left_button_down))) {
+	if (_last_scroll_window == nullptr || !((_settings_client.gui.scroll_mode != ViewportScrollMode::MapLMB && _right_button_down) || scrollwheel_scrolling || (_settings_client.gui.scroll_mode == ViewportScrollMode::MapLMB && _left_button_down))) {
 		_cursor.fix_at = false;
 		_scrolling_viewport = false;
 		_last_scroll_window = nullptr;
@@ -2472,7 +2472,7 @@ static EventState HandleViewportScroll()
 		_cursor.v_wheel = std::modf(_cursor.v_wheel, &temp);
 		_cursor.h_wheel = std::modf(_cursor.h_wheel, &temp);
 	} else {
-		if (_settings_client.gui.scroll_mode != VSM_VIEWPORT_RMB_FIXED) {
+		if (_settings_client.gui.scroll_mode != ViewportScrollMode::ViewportRMBFixed) {
 			delta.x = -_cursor.delta.x;
 			delta.y = -_cursor.delta.y;
 		} else {
@@ -2909,7 +2909,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 			case MC_LEFT:
 				if (HandleViewportClicked(*vp, x, y)) return;
 				if (!w->flags.Test(WindowFlag::DisableVpScroll) &&
-						_settings_client.gui.scroll_mode == VSM_MAP_LMB) {
+						_settings_client.gui.scroll_mode == ViewportScrollMode::MapLMB) {
 					_scrolling_viewport = true;
 					_cursor.fix_at = false;
 					return;
@@ -2918,10 +2918,10 @@ static void MouseLoop(MouseClick click, int mousewheel)
 
 			case MC_RIGHT:
 				if (!w->flags.Test(WindowFlag::DisableVpScroll) &&
-						_settings_client.gui.scroll_mode != VSM_MAP_LMB) {
+						_settings_client.gui.scroll_mode != ViewportScrollMode::MapLMB) {
 					_scrolling_viewport = true;
-					_cursor.fix_at = (_settings_client.gui.scroll_mode == VSM_VIEWPORT_RMB_FIXED ||
-							_settings_client.gui.scroll_mode == VSM_MAP_RMB_FIXED);
+					_cursor.fix_at = (_settings_client.gui.scroll_mode == ViewportScrollMode::ViewportRMBFixed ||
+							_settings_client.gui.scroll_mode == ViewportScrollMode::MapRMBFixed);
 					DispatchRightClickEvent(w, x - w->left, y - w->top);
 					return;
 				}

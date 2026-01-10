@@ -169,12 +169,12 @@ struct DifficultySettings {
 };
 
 /** Settings relating to viewport/smallmap scrolling. */
-enum ViewportScrollMode : uint8_t {
-	VSM_VIEWPORT_RMB_FIXED, ///< Viewport moves with mouse movement on holding right mouse button, cursor position is fixed.
-	VSM_MAP_RMB_FIXED,      ///< Map moves with mouse movement on holding right mouse button, cursor position is fixed.
-	VSM_MAP_RMB,            ///< Map moves with mouse movement on holding right mouse button, cursor moves.
-	VSM_MAP_LMB,            ///< Map moves with mouse movement on holding left mouse button, cursor moves.
-	VSM_END,                ///< Number of scroll mode settings.
+enum class ViewportScrollMode : uint8_t {
+	ViewportRMBFixed, ///< Viewport moves with mouse movement on holding right mouse button, cursor position is fixed.
+	MapRMBFixed, ///< Map moves with mouse movement on holding right mouse button, cursor position is fixed.
+	MapRMB, ///< Map moves with mouse movement on holding right mouse button, cursor moves.
+	MapLMB, ///< Map moves with mouse movement on holding left mouse button, cursor moves.
+	End, ///< Number of scroll mode settings.
 };
 
 /** Settings related to scroll wheel behavior. */
@@ -201,7 +201,7 @@ struct GUISettings {
 	bool   link_terraform_toolbar;           ///< display terraform toolbar when displaying rail, road, water and airport toolbars
 	uint8_t  smallmap_land_colour;             ///< colour used for land and heightmap at the smallmap
 	uint8_t  linkgraph_colours;                ///< linkgraph overlay colours
-	uint8_t  scroll_mode;                      ///< viewport scroll mode
+	ViewportScrollMode scroll_mode; ///< viewport scroll mode
 	bool   smooth_scroll;                    ///< smooth scroll viewports
 	bool   measure_tooltip;                  ///< show a permanent tooltip when dragging tools
 	uint8_t liveries;                         ///< options for displaying company liveries, 0=none, 1=self, 2=all
