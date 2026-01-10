@@ -94,9 +94,9 @@ uint TimerGameEconomy::days_since_last_month = {};
  */
 /* static */ bool TimerGameEconomy::UsingWallclockUnits(bool newgame)
 {
-	if (newgame) return (_settings_newgame.economy.timekeeping_units == TKU_WALLCLOCK);
+	if (newgame) return (_settings_newgame.economy.timekeeping_units == TimekeepingUnits::Wallclock);
 
-	return (_settings_game.economy.timekeeping_units == TKU_WALLCLOCK);
+	return (_settings_game.economy.timekeeping_units == TimekeepingUnits::Wallclock);
 }
 
 template <>

@@ -91,9 +91,9 @@ enum BorderFlagPresets : uint8_t {
 };
 
 /** Possible values for the "timekeeping_units" setting. */
-enum TimekeepingUnits : uint8_t {
-	TKU_CALENDAR = 0,
-	TKU_WALLCLOCK,
+enum class TimekeepingUnits : uint8_t {
+	Calendar = 0,
+	Wallclock,
 };
 
 /** Possible values for "use_relay_service" setting. */
