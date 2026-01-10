@@ -178,10 +178,10 @@ enum class ViewportScrollMode : uint8_t {
 };
 
 /** Settings related to scroll wheel behavior. */
-enum ScrollWheelScrollingSetting : uint8_t {
-	SWS_ZOOM_MAP = 0,       ///< Scroll wheel zooms the map.
-	SWS_SCROLL_MAP = 1,     ///< Scroll wheel scrolls the map.
-	SWS_OFF = 2             ///< Scroll wheel has no effect.
+enum class ScrollWheelScrolling : uint8_t {
+	ZoomMap = 0, ///< Scroll wheel zooms the map.
+	ScrollMap = 1, ///< Scroll wheel scrolls the map.
+	Off = 2, ///< Scroll wheel has no effect.
 };
 
 /** Settings related to the GUI and other stuff that is not saved in the savegame. */
@@ -225,7 +225,7 @@ struct GUISettings {
 	uint8_t max_num_autosaves;                ///< controls how many autosavegames are made before the game starts to overwrite (names them 0 to max_num_autosaves - 1)
 	bool   population_in_label;              ///< show the population of a town in its label?
 	uint8_t  right_mouse_btn_emulation;        ///< should we emulate right mouse clicking?
-	uint8_t  scrollwheel_scrolling;            ///< scrolling using the scroll wheel?
+	ScrollWheelScrolling scrollwheel_scrolling; ///< scrolling using the scroll wheel?
 	uint8_t  scrollwheel_multiplier;           ///< how much 'wheel' per incoming event from the OS?
 	bool   timetable_arrival_departure;      ///< show arrivals and departures in vehicle timetables
 	RightClickClose  right_click_wnd_close;  ///< close window with right click

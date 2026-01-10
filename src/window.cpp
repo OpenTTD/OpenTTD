@@ -2438,7 +2438,7 @@ static EventState HandleActiveWidget()
  */
 static EventState HandleViewportScroll()
 {
-	bool scrollwheel_scrolling = _settings_client.gui.scrollwheel_scrolling == SWS_SCROLL_MAP && _cursor.wheel_moved;
+	bool scrollwheel_scrolling = _settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::ScrollMap && _cursor.wheel_moved;
 
 	if (!_scrolling_viewport) return ES_NOT_HANDLED;
 
@@ -2871,7 +2871,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 
 	HandleMouseOver();
 
-	bool scrollwheel_scrolling = _settings_client.gui.scrollwheel_scrolling == SWS_SCROLL_MAP && _cursor.wheel_moved;
+	bool scrollwheel_scrolling = _settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::ScrollMap && _cursor.wheel_moved;
 	if (click == MC_NONE && mousewheel == 0 && !scrollwheel_scrolling) return;
 
 	int x = _cursor.pos.x;

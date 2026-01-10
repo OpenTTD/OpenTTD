@@ -439,7 +439,7 @@ struct MainWindow : Window
 	void OnMouseWheel(int wheel, WidgetID widget) override
 	{
 		if (widget != WID_M_VIEWPORT) return;
-		if (_settings_client.gui.scrollwheel_scrolling != SWS_OFF) {
+		if (_settings_client.gui.scrollwheel_scrolling != ScrollWheelScrolling::Off) {
 			bool in = wheel < 0;
 
 			/* When following, only change zoom - otherwise zoom to the cursor. */
