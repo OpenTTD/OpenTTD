@@ -129,10 +129,10 @@ enum TreePlacer : uint8_t {
 };
 
 /** Possible values for "place_houses" setting. */
-enum PlaceHouses : uint8_t {
-	PH_FORBIDDEN = 0,
-	PH_ALLOWED,
-	PH_ALLOWED_CONSTRUCTED,
+enum class PlaceHouses : uint8_t {
+	Forbidden = 0,
+	Allowed,
+	AllowedConstructed,
 };
 
 /** Possible values for "vehicle_breakdowns" setting. */
