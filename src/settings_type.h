@@ -52,17 +52,17 @@ enum SettingsProfile : uint8_t {
 };
 
 /** Available industry map generation densities. */
-enum IndustryDensity : uint8_t {
-	ID_FUND_ONLY, ///< The game does not build industries.
-	ID_MINIMAL,   ///< Start with just the industries that must be present.
-	ID_VERY_LOW,  ///< Very few industries at game start.
-	ID_LOW,       ///< Few industries at game start.
-	ID_NORMAL,    ///< Normal amount of industries at game start.
-	ID_HIGH,      ///< Many industries at game start.
+enum class IndustryDensity : uint8_t {
+	FundedOnly, ///< The game does not build industries.
+	Minimal, ///< Start with just the industries that must be present.
+	VeryLow, ///< Very few industries at game start.
+	Low, ///< Few industries at game start.
+	Normal, ///< Normal amount of industries at game start.
+	High, ///< Many industries at game start.
 
-	ID_CUSTOM,    ///< Custom number of industries.
+	Custom, ///< Custom number of industries.
 
-	ID_END,       ///< Number of industry density settings.
+	End, ///< Number of industry density settings.
 };
 
 /** Possible options for the Maximum Height pulldown in the Genworld GUI. */
@@ -84,37 +84,37 @@ enum class GenworldAverageHeight : uint8_t {
 };
 
 /** Possible options for the Borders pulldown in the Genworld GUI. */
-enum BorderFlagPresets : uint8_t {
-	BFP_RANDOM = 0,
-	BFP_MANUAL,
-	BFP_INFINITE_WATER,
+enum class BorderFlagPresets : uint8_t {
+	Random = 0,
+	Manual,
+	InfiniteWater,
 };
 
 /** Possible values for the "timekeeping_units" setting. */
-enum TimekeepingUnits : uint8_t {
-	TKU_CALENDAR = 0,
-	TKU_WALLCLOCK,
+enum class TimekeepingUnits : uint8_t {
+	Calendar = 0,
+	Wallclock,
 };
 
 /** Possible values for "use_relay_service" setting. */
-enum UseRelayService : uint8_t {
-	URS_NEVER = 0,
-	URS_ASK,
-	URS_ALLOW,
+enum class UseRelayService : uint8_t {
+	Never = 0,
+	Ask,
+	Allow,
 };
 
 /** Possible values for "participate_survey" setting. */
-enum ParticipateSurvey : uint8_t {
-	PS_ASK = 0,
-	PS_NO,
-	PS_YES,
+enum class ParticipateSurvey : uint8_t {
+	Ask = 0,
+	No,
+	Yes,
 };
 
 /** Right-click to close window actions. */
-enum RightClickClose : uint8_t {
-	RCC_NO = 0,
-	RCC_YES,
-	RCC_YES_EXCEPT_STICKY,
+enum class RightClickClose : uint8_t {
+	No = 0,
+	Yes,
+	YesExceptSticky,
 };
 
 /**
@@ -122,24 +122,24 @@ enum RightClickClose : uint8_t {
  *
  * This enumeration defines all possible tree placer algorithm in the game.
  */
-enum TreePlacer : uint8_t {
-	TP_NONE,     ///< No tree placer algorithm
-	TP_ORIGINAL, ///< The original algorithm
-	TP_IMPROVED, ///< A 'improved' algorithm
+enum class TreePlacer: uint8_t {
+	None, ///< No tree placer algorithm
+	Original, ///< The original algorithm
+	Improved, ///< A 'improved' algorithm
 };
 
 /** Possible values for "place_houses" setting. */
-enum PlaceHouses : uint8_t {
-	PH_FORBIDDEN = 0,
-	PH_ALLOWED,
-	PH_ALLOWED_CONSTRUCTED,
+enum class PlaceHouses : uint8_t {
+	Forbidden = 0,
+	Allowed,
+	AllowedConstructed,
 };
 
 /** Possible values for "vehicle_breakdowns" setting. */
-enum VehicleBreakdowns : uint8_t {
-	VB_NONE = 0,
-	VB_REDUCED,
-	VB_NORMAL,
+enum class VehicleBreakdowns : uint8_t {
+	None = 0,
+	Reduced,
+	Normal,
 };
 
 /** Settings related to the difficulty of the game */
@@ -150,12 +150,12 @@ struct DifficultySettings {
 	uint8_t max_no_competitors;               ///< the number of competitors (AIs)
 	uint16_t competitors_interval;             ///< the interval (in minutes) between adding competitors
 	uint8_t number_towns;                     ///< the amount of towns
-	uint8_t industry_density;                 ///< The industry density. @see IndustryDensity
+	IndustryDensity industry_density; ///< The industry density. @see IndustryDensity
 	uint32_t max_loan;                         ///< the maximum initial loan
 	uint8_t initial_interest;                 ///< amount of interest (to pay over the loan)
 	uint8_t vehicle_costs;                    ///< amount of money spent on vehicle running cost
 	uint8_t competitor_speed;                 ///< the speed at which the AI builds
-	uint8_t vehicle_breakdowns;               ///< likelihood of vehicles breaking down
+	VehicleBreakdowns vehicle_breakdowns; ///< likelihood of vehicles breaking down
 	uint8_t subsidy_multiplier;               ///< payment multiplier for subsidized deliveries
 	uint16_t subsidy_duration;                 ///< duration of subsidies
 	uint8_t construction_cost;                ///< how expensive is building
@@ -169,19 +169,19 @@ struct DifficultySettings {
 };
 
 /** Settings relating to viewport/smallmap scrolling. */
-enum ViewportScrollMode : uint8_t {
-	VSM_VIEWPORT_RMB_FIXED, ///< Viewport moves with mouse movement on holding right mouse button, cursor position is fixed.
-	VSM_MAP_RMB_FIXED,      ///< Map moves with mouse movement on holding right mouse button, cursor position is fixed.
-	VSM_MAP_RMB,            ///< Map moves with mouse movement on holding right mouse button, cursor moves.
-	VSM_MAP_LMB,            ///< Map moves with mouse movement on holding left mouse button, cursor moves.
-	VSM_END,                ///< Number of scroll mode settings.
+enum class ViewportScrollMode : uint8_t {
+	ViewportRMBFixed, ///< Viewport moves with mouse movement on holding right mouse button, cursor position is fixed.
+	MapRMBFixed, ///< Map moves with mouse movement on holding right mouse button, cursor position is fixed.
+	MapRMB, ///< Map moves with mouse movement on holding right mouse button, cursor moves.
+	MapLMB, ///< Map moves with mouse movement on holding left mouse button, cursor moves.
+	End, ///< Number of scroll mode settings.
 };
 
 /** Settings related to scroll wheel behavior. */
-enum ScrollWheelScrollingSetting : uint8_t {
-	SWS_ZOOM_MAP = 0,       ///< Scroll wheel zooms the map.
-	SWS_SCROLL_MAP = 1,     ///< Scroll wheel scrolls the map.
-	SWS_OFF = 2             ///< Scroll wheel has no effect.
+enum class ScrollWheelScrolling : uint8_t {
+	ZoomMap = 0, ///< Scroll wheel zooms the map.
+	ScrollMap = 1, ///< Scroll wheel scrolls the map.
+	Off = 2, ///< Scroll wheel has no effect.
 };
 
 /** Settings related to the GUI and other stuff that is not saved in the savegame. */
@@ -201,7 +201,7 @@ struct GUISettings {
 	bool   link_terraform_toolbar;           ///< display terraform toolbar when displaying rail, road, water and airport toolbars
 	uint8_t  smallmap_land_colour;             ///< colour used for land and heightmap at the smallmap
 	uint8_t  linkgraph_colours;                ///< linkgraph overlay colours
-	uint8_t  scroll_mode;                      ///< viewport scroll mode
+	ViewportScrollMode scroll_mode; ///< viewport scroll mode
 	bool   smooth_scroll;                    ///< smooth scroll viewports
 	bool   measure_tooltip;                  ///< show a permanent tooltip when dragging tools
 	uint8_t liveries;                         ///< options for displaying company liveries, 0=none, 1=self, 2=all
@@ -225,7 +225,7 @@ struct GUISettings {
 	uint8_t max_num_autosaves;                ///< controls how many autosavegames are made before the game starts to overwrite (names them 0 to max_num_autosaves - 1)
 	bool   population_in_label;              ///< show the population of a town in its label?
 	uint8_t  right_mouse_btn_emulation;        ///< should we emulate right mouse clicking?
-	uint8_t  scrollwheel_scrolling;            ///< scrolling using the scroll wheel?
+	ScrollWheelScrolling scrollwheel_scrolling; ///< scrolling using the scroll wheel?
 	uint8_t  scrollwheel_multiplier;           ///< how much 'wheel' per incoming event from the OS?
 	bool   timetable_arrival_departure;      ///< show arrivals and departures in vehicle timetables
 	RightClickClose  right_click_wnd_close;  ///< close window with right click
@@ -413,7 +413,7 @@ struct GameCreationSettings {
 	uint8_t desert_coverage;                  ///< the amount of desert coverage on the map
 	uint8_t heightmap_height;                 ///< highest mountain for heightmap (towards what it scales)
 	uint8_t tgen_smoothness;                  ///< how rough is the terrain from 0-3
-	uint8_t tree_placer;                      ///< the tree placer algorithm
+	TreePlacer tree_placer; ///< the tree placer algorithm
 	uint8_t heightmap_rotation;               ///< rotation director for the heightmap
 	uint8_t se_flat_world_height;             ///< land height a flat world gets in SE
 	uint8_t town_name;                        ///< the town name generator used for town names

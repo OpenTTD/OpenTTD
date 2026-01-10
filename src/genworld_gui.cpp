@@ -393,7 +393,7 @@ static const StringID _num_inds[]    = {STR_FUNDING_ONLY, STR_MINIMAL, STR_NUM_V
 static const StringID _variety[]     = {STR_VARIETY_NONE, STR_VARIETY_VERY_LOW, STR_VARIETY_LOW, STR_VARIETY_MEDIUM, STR_VARIETY_HIGH, STR_VARIETY_VERY_HIGH};
 static const StringID _average_height[] = {STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUTO, STR_CONFIG_SETTING_AVERAGE_HEIGHT_LOWLANDS, STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL, STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS};
 
-static_assert(std::size(_num_inds) == ID_END);
+static_assert(std::size(_num_inds) == to_underlying(IndustryDensity::End));
 
 struct GenerateLandscapeWindow : public Window {
 	WidgetID widget_id{};
@@ -458,10 +458,10 @@ struct GenerateLandscapeWindow : public Window {
 				if (_game_mode == GM_EDITOR) {
 					return GetString(STR_CONFIG_SETTING_OFF);
 				}
-				if (_settings_newgame.difficulty.industry_density == ID_CUSTOM) {
+				if (_settings_newgame.difficulty.industry_density == IndustryDensity::Custom) {
 					return GetString(STR_NUM_CUSTOM_NUMBER, _settings_newgame.game_creation.custom_industry_number);
 				}
-				return GetString(_num_inds[_settings_newgame.difficulty.industry_density]);
+				return GetString(_num_inds[to_underlying(_settings_newgame.difficulty.industry_density)]);
 
 			case WID_GL_MAX_HEIGHT_PULLDOWN:
 				if (_settings_newgame.difficulty.terrain_type == GenworldMaxHeight::Custom) {
@@ -480,7 +480,7 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_SMOOTHNESS_PULLDOWN: return GetString(_smoothness[_settings_newgame.game_creation.tgen_smoothness]);
 			case WID_GL_VARIETY_PULLDOWN:    return GetString(_variety[_settings_newgame.game_creation.variety]);
 			case WID_GL_AVERAGE_HEIGHT_PULLDOWN: return GetString(_average_height[to_underlying(_settings_newgame.game_creation.average_height)]);
-			case WID_GL_BORDERS_PULLDOWN: return GetString(_borders[_settings_newgame.game_creation.water_border_presets]);
+			case WID_GL_BORDERS_PULLDOWN: return GetString(_borders[to_underlying(_settings_newgame.game_creation.water_border_presets)]);
 			case WID_GL_WATER_NE: return GetString((_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? STR_MAPGEN_BORDER_RANDOM : _settings_newgame.game_creation.water_borders.Test(BorderFlag::NorthEast) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM);
 			case WID_GL_WATER_NW: return GetString((_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? STR_MAPGEN_BORDER_RANDOM : _settings_newgame.game_creation.water_borders.Test(BorderFlag::NorthWest) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM);
 			case WID_GL_WATER_SE: return GetString((_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? STR_MAPGEN_BORDER_RANDOM : _settings_newgame.game_creation.water_borders.Test(BorderFlag::SouthEast) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM);
@@ -679,7 +679,7 @@ struct GenerateLandscapeWindow : public Window {
 				break;
 
 			case WID_GL_INDUSTRY_PULLDOWN: // Number of industries
-				ShowDropDownMenu(this, _num_inds, _settings_newgame.difficulty.industry_density, WID_GL_INDUSTRY_PULLDOWN, 0, 0);
+				ShowDropDownMenu(this, _num_inds, to_underlying(_settings_newgame.difficulty.industry_density), WID_GL_INDUSTRY_PULLDOWN, 0, 0);
 				break;
 
 			case WID_GL_GENERATE_BUTTON: { // Generate
@@ -818,7 +818,7 @@ struct GenerateLandscapeWindow : public Window {
 
 			/* Map borders */
 			case WID_GL_BORDERS_PULLDOWN:
-				ShowDropDownMenu(this, _borders, _settings_newgame.game_creation.water_border_presets, WID_GL_BORDERS_PULLDOWN, 0, 0);
+				ShowDropDownMenu(this, _borders, to_underlying(_settings_newgame.game_creation.water_border_presets), WID_GL_BORDERS_PULLDOWN, 0, 0);
 				break;
 
 			case WID_GL_WATER_NW:
@@ -896,11 +896,11 @@ struct GenerateLandscapeWindow : public Window {
 				break;
 
 			case WID_GL_INDUSTRY_PULLDOWN:
-				if ((uint)index == ID_CUSTOM) {
+				if (static_cast<IndustryDensity>(index) == IndustryDensity::Custom) {
 					this->widget_id = widget;
 					ShowQueryString(GetString(STR_JUST_INT, _settings_newgame.game_creation.custom_industry_number), STR_MAPGEN_NUMBER_OF_INDUSTRIES, 5, this, CS_NUMERAL, {});
 				}
-				_settings_newgame.difficulty.industry_density = index;
+				_settings_newgame.difficulty.industry_density = static_cast<IndustryDensity>(index);
 				break;
 
 			case WID_GL_MAX_HEIGHT_PULLDOWN: {
@@ -913,16 +913,16 @@ struct GenerateLandscapeWindow : public Window {
 			}
 
 			case WID_GL_BORDERS_PULLDOWN: {
-				switch (index) {
-					case BFP_RANDOM:
+				switch (static_cast<BorderFlagPresets>(index)) {
+					case BorderFlagPresets::Random:
 						_settings_newgame.game_creation.water_borders = BorderFlag::Random;
 						_settings_newgame.construction.freeform_edges = true;
 						break;
-					case BFP_MANUAL:
+					case BorderFlagPresets::Manual:
 						_settings_newgame.game_creation.water_borders = {};
 						_settings_newgame.construction.freeform_edges = true;
 						break;
-					case BFP_INFINITE_WATER:
+					case BorderFlagPresets::InfiniteWater:
 						_settings_newgame.game_creation.water_borders = BORDERFLAGS_ALL;
 						_settings_newgame.construction.freeform_edges = false;
 						break;

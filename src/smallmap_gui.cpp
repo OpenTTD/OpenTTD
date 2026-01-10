@@ -1860,7 +1860,7 @@ public:
 	void OnMouseWheel(int wheel, WidgetID widget) override
 	{
 		if (widget != WID_SM_MAP) return;
-		if (_settings_client.gui.scrollwheel_scrolling != SWS_OFF) {
+		if (_settings_client.gui.scrollwheel_scrolling != ScrollWheelScrolling::Off) {
 			const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_SM_MAP);
 			int cursor_x = _cursor.pos.x - this->left - wid->pos_x;
 			int cursor_y = _cursor.pos.y - this->top  - wid->pos_y;
@@ -1871,7 +1871,7 @@ public:
 
 	void OnScroll(Point delta) override
 	{
-		if (_settings_client.gui.scroll_mode == VSM_VIEWPORT_RMB_FIXED || _settings_client.gui.scroll_mode == VSM_MAP_RMB_FIXED) _cursor.fix_at = true;
+		if (_settings_client.gui.scroll_mode == ViewportScrollMode::ViewportRMBFixed || _settings_client.gui.scroll_mode == ViewportScrollMode::MapRMBFixed) _cursor.fix_at = true;
 
 		/* While tile is at (delta.x, delta.y)? */
 		int sub;

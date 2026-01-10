@@ -1408,11 +1408,11 @@ void LoadFromConfig(bool startup)
 				const IniItem *use_relay_service = network->GetItem("use_relay_service");
 				if (use_relay_service != nullptr) {
 					if (use_relay_service->value == "never") {
-						_settings_client.network.use_relay_service = UseRelayService::URS_NEVER;
+						_settings_client.network.use_relay_service = UseRelayService::Never;
 					} else if (use_relay_service->value == "ask") {
-						_settings_client.network.use_relay_service = UseRelayService::URS_ASK;
+						_settings_client.network.use_relay_service = UseRelayService::Ask;
 					} else if (use_relay_service->value == "allow") {
-						_settings_client.network.use_relay_service = UseRelayService::URS_ALLOW;
+						_settings_client.network.use_relay_service = UseRelayService::Allow;
 					}
 				}
 			}
@@ -1442,7 +1442,7 @@ void LoadFromConfig(bool startup)
 		/* Persist the right click close option from older versions. */
 		if (generic_version < IFV_RIGHT_CLICK_CLOSE && IsConversionNeeded(generic_ini, "gui", "right_mouse_wnd_close", "right_click_wnd_close", &old_item)) {
 			auto old_value = BoolSettingDesc::ParseSingleValue(*old_item->value);
-			_settings_client.gui.right_click_wnd_close = old_value.value_or(false) ? RCC_YES : RCC_NO;
+			_settings_client.gui.right_click_wnd_close = old_value.value_or(false) ? RightClickClose::Yes : RightClickClose::No;
 		}
 
 		_grfconfig_newgame = GRFLoadConfig(generic_ini, "newgrf", false);
