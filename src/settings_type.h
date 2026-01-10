@@ -52,17 +52,17 @@ enum SettingsProfile : uint8_t {
 };
 
 /** Available industry map generation densities. */
-enum IndustryDensity : uint8_t {
-	ID_FUND_ONLY, ///< The game does not build industries.
-	ID_MINIMAL,   ///< Start with just the industries that must be present.
-	ID_VERY_LOW,  ///< Very few industries at game start.
-	ID_LOW,       ///< Few industries at game start.
-	ID_NORMAL,    ///< Normal amount of industries at game start.
-	ID_HIGH,      ///< Many industries at game start.
+enum class IndustryDensity : uint8_t {
+	FundedOnly, ///< The game does not build industries.
+	Minimal, ///< Start with just the industries that must be present.
+	VeryLow, ///< Very few industries at game start.
+	Low, ///< Few industries at game start.
+	Normal, ///< Normal amount of industries at game start.
+	High, ///< Many industries at game start.
 
-	ID_CUSTOM,    ///< Custom number of industries.
+	Custom, ///< Custom number of industries.
 
-	ID_END,       ///< Number of industry density settings.
+	End, ///< Number of industry density settings.
 };
 
 /** Possible options for the Maximum Height pulldown in the Genworld GUI. */
@@ -150,7 +150,7 @@ struct DifficultySettings {
 	uint8_t max_no_competitors;               ///< the number of competitors (AIs)
 	uint16_t competitors_interval;             ///< the interval (in minutes) between adding competitors
 	uint8_t number_towns;                     ///< the amount of towns
-	uint8_t industry_density;                 ///< The industry density. @see IndustryDensity
+	IndustryDensity industry_density; ///< The industry density. @see IndustryDensity
 	uint32_t max_loan;                         ///< the maximum initial loan
 	uint8_t initial_interest;                 ///< amount of interest (to pay over the loan)
 	uint8_t vehicle_costs;                    ///< amount of money spent on vehicle running cost
