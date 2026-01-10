@@ -5,7 +5,12 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file macos.mm Code related to MacOSX. */
+/**
+ * @file macos.mm Code related to MacOSX.
+ *
+ * This file contains objective C.
+ * Apple uses objective C instead of plain C to interact with OS specific/native functions.
+ */
 
 #include "../../stdafx.h"
 #include "../../core/bitmath_func.hpp"
@@ -14,18 +19,7 @@
 #include "../../string_func.h"
 #include "../../fileio_func.h"
 #include <pthread.h>
-
-#define Rect  OTTDRect
-#define Point OTTDPoint
-#include <AppKit/AppKit.h>
-#undef Rect
-#undef Point
-
-/*
- * This file contains objective C
- * Apple uses objective C instead of plain C to interact with OS specific/native functions
- */
-
+#include "macos_objective_c.h"
 
 #ifdef WITH_COCOA
 static NSAutoreleasePool *_ottd_autorelease_pool;
@@ -58,44 +52,28 @@ void GetMacOSVersion(int *return_major, int *return_minor, int *return_bugfix)
 }
 
 #ifdef WITH_COCOA
-
 extern void CocoaDialog(std::string_view title, std::string_view message, std::string_view buttonLabel);
-
-/**
- * Show the system dialogue message (Cocoa on MacOSX).
- *
- * @param title Window title.
- * @param message Message text.
- * @param buttonLabel Button text.
- */
-void ShowMacDialog(std::string_view title, std::string_view message, std::string_view buttonLabel)
-{
-	CocoaDialog(title, message, buttonLabel);
-}
-
-
-#else
-
-/**
- * Show the system dialogue message (console on MacOSX).
- *
- * @param title Window title.
- * @param message Message text.
- * @param buttonLabel Button text.
- */
-void ShowMacDialog(std::string_view title, std::string_view message, std::string_view buttonLabel)
-{
-	fmt::print(stderr, "{}: {}\n", title, message);
-}
-
 #endif
 
+/**
+ * Show the system dialogue message, uses Cocoa if available and console otherwise.
+ * @param title Window title.
+ * @param message Message text.
+ * @param buttonLabel Button text.
+ */
+void ShowMacDialog(std::string_view title, std::string_view message, std::string_view buttonLabel)
+{
+#ifdef WITH_COCOA
+	CocoaDialog(title, message, buttonLabel);
+#else
+	fmt::print(stderr, "{}: {}\n", title, message);
+#endif
+}
 
 /**
  * Show an error message.
- *
- * @param buf error message text.
- * @param system message text originates from OS.
+ * @param buf Text with error message.
+ * @param system Whether message text originates from OS.
  */
 void ShowOSErrorBox(std::string_view buf, bool system)
 {
@@ -107,13 +85,18 @@ void ShowOSErrorBox(std::string_view buf, bool system)
 	}
 }
 
+/**
+ * Opens browser on MacOS.
+ * @param url Web page address to open.
+ */
 void OSOpenBrowser(const std::string &url)
 {
 	[ [ NSWorkspace sharedWorkspace ] openURL:[ NSURL URLWithString:[ NSString stringWithUTF8String:url.c_str() ] ] ];
 }
 
 /**
- * Determine and return the current user's locale.
+ * Determine and return the current user's charset.
+ * @return String containing current charset, or std::nullopt if not-determinable.
  */
 std::optional<std::string> GetCurrentLocale(const char *)
 {
@@ -220,6 +203,10 @@ void MacOSSetThreadName(const std::string &name)
 	}
 }
 
+/**
+ * Ask OS how much RAM it has physically attached.
+ * @return Number of available bytes.
+ */
 uint64_t MacOSGetPhysicalMemory()
 {
 	return [ [ NSProcessInfo processInfo ] physicalMemory ];
