@@ -111,10 +111,10 @@ enum ParticipateSurvey : uint8_t {
 };
 
 /** Right-click to close window actions. */
-enum RightClickClose : uint8_t {
-	RCC_NO = 0,
-	RCC_YES,
-	RCC_YES_EXCEPT_STICKY,
+enum class RightClickClose : uint8_t {
+	No = 0,
+	Yes,
+	YesExceptSticky,
 };
 
 /**
