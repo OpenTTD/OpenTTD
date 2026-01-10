@@ -51,16 +51,6 @@ enum SettingsProfile : uint8_t {
 	SP_HIGHSCORE_END,                         ///< End of highscore tables.
 };
 
-/** Available terrain types (heights). */
-enum TerrainType : uint8_t {
-	TT_VERY_FLAT,
-	TT_FLAT,
-	TT_HILLY,
-	TT_MOUNTAINOUS,
-	TT_ALPINIST,
-	TT_CUSTOM,
-};
-
 /** Available industry map generation densities. */
 enum IndustryDensity : uint8_t {
 	ID_FUND_ONLY, ///< The game does not build industries.
@@ -73,6 +63,24 @@ enum IndustryDensity : uint8_t {
 	ID_CUSTOM,    ///< Custom number of industries.
 
 	ID_END,       ///< Number of industry density settings.
+};
+
+/** Possible options for the Maximum Height pulldown in the Genworld GUI. */
+enum class GenworldMaxHeight : uint8_t {
+	VeryFlat,
+	Flat,
+	Hilly,
+	Mountainous,
+	Alpinist,
+	Custom,
+};
+
+/** Possible options for the Average Height pulldown in the Genworld GUI. */
+enum class GenworldAverageHeight : uint8_t {
+	Auto,
+	Lowlands,
+	Normal,
+	Plateaus,
 };
 
 /** Possible options for the Borders pulldown in the Genworld GUI. */
@@ -151,7 +159,7 @@ struct DifficultySettings {
 	uint8_t subsidy_multiplier;               ///< payment multiplier for subsidized deliveries
 	uint16_t subsidy_duration;                 ///< duration of subsidies
 	uint8_t construction_cost;                ///< how expensive is building
-	TerrainType terrain_type; ///< the mountainousness of the landscape
+	GenworldMaxHeight terrain_type; ///< the mountainousness of the landscape
 	uint8_t quantity_sea_lakes;               ///< the amount of seas/lakes
 	bool   economy;                          ///< how volatile is the economy
 	bool   line_reverse_mode;                ///< reversing at stations or not
@@ -415,6 +423,7 @@ struct GameCreationSettings {
 	uint16_t custom_town_number;               ///< manually entered number of towns
 	uint16_t custom_industry_number;           ///< manually entered number of industries
 	uint8_t variety;                          ///< variety level applied to TGP
+	GenworldAverageHeight average_height; ///< adjustment applied to TGP based on climate, or manually set by the player.
 	uint8_t custom_terrain_type;              ///< manually entered height for TGP to aim for
 	uint8_t custom_sea_level;                 ///< manually entered percentage of water in the map
 	uint8_t min_river_length;                 ///< the minimum river length
