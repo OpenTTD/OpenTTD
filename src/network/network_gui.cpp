@@ -2190,7 +2190,7 @@ struct NetworkAskRelayWindow : public Window {
 				break;
 
 			case WID_NAR_YES_ALWAYS:
-				_settings_client.network.use_relay_service = URS_ALLOW;
+				_settings_client.network.use_relay_service = UseRelayService::Allow;
 				_network_coordinator_client.StartTurnConnection(this->token);
 				this->Close(NRWCD_HANDLED);
 				break;

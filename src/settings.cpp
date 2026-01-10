@@ -1408,11 +1408,11 @@ void LoadFromConfig(bool startup)
 				const IniItem *use_relay_service = network->GetItem("use_relay_service");
 				if (use_relay_service != nullptr) {
 					if (use_relay_service->value == "never") {
-						_settings_client.network.use_relay_service = UseRelayService::URS_NEVER;
+						_settings_client.network.use_relay_service = UseRelayService::Never;
 					} else if (use_relay_service->value == "ask") {
-						_settings_client.network.use_relay_service = UseRelayService::URS_ASK;
+						_settings_client.network.use_relay_service = UseRelayService::Ask;
 					} else if (use_relay_service->value == "allow") {
-						_settings_client.network.use_relay_service = UseRelayService::URS_ALLOW;
+						_settings_client.network.use_relay_service = UseRelayService::Allow;
 					}
 				}
 			}

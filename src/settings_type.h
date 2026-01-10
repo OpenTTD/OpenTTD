@@ -97,10 +97,10 @@ enum TimekeepingUnits : uint8_t {
 };
 
 /** Possible values for "use_relay_service" setting. */
-enum UseRelayService : uint8_t {
-	URS_NEVER = 0,
-	URS_ASK,
-	URS_ALLOW,
+enum class UseRelayService : uint8_t {
+	Never = 0,
+	Ask,
+	Allow,
 };
 
 /** Possible values for "participate_survey" setting. */

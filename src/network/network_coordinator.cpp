@@ -397,15 +397,15 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_TURN_CONNECT(Packet &p)
 		}
 
 		switch (_settings_client.network.use_relay_service) {
-			case URS_NEVER:
+			case UseRelayService::Never:
 				this->ConnectFailure(token, 0);
 				break;
 
-			case URS_ASK:
+			case UseRelayService::Ask:
 				ShowNetworkAskRelay(connecter_it->second.first, std::move(connection_string), std::move(token));
 				break;
 
-			case URS_ALLOW:
+			case UseRelayService::Allow:
 				this->StartTurnConnection(token);
 				break;
 		}
