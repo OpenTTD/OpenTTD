@@ -5980,4 +5980,3 @@ STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Merkefil
 STR_BADGE_CONFIG_PREVIEW                                        :Forhåndsvis bilde
 STR_BADGE_CONFIG_NAME                                           :Navn
 STR_BADGE_FILTER_ANY_LABEL                                      :Vilkårlig {STRING}
-STR_BADGE_FILTER_IS_LABEL                                       :{STRING} er {STRING}

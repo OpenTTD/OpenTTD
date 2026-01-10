@@ -5978,4 +5978,3 @@ STR_BADGE_CONFIG_FILTERS                                        :{WHITE}筛选�
 STR_BADGE_CONFIG_PREVIEW                                        :预览图
 STR_BADGE_CONFIG_NAME                                           :名称
 STR_BADGE_FILTER_ANY_LABEL                                      :{STRING}：所有
-STR_BADGE_FILTER_IS_LABEL                                       :{STRING}：{STRING}

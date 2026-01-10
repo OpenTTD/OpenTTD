@@ -6083,4 +6083,3 @@ STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Jelvény
 STR_BADGE_CONFIG_PREVIEW                                        :Előnézet kép
 STR_BADGE_CONFIG_NAME                                           :Név
 STR_BADGE_FILTER_ANY_LABEL                                      :Bármelyik {STRING}
-STR_BADGE_FILTER_IS_LABEL                                       :{STRING} {STRING}

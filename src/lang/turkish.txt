@@ -5989,4 +5989,3 @@ STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Rozet Fi
 STR_BADGE_CONFIG_PREVIEW                                        :Önizleme Resmi
 STR_BADGE_CONFIG_NAME                                           :İsim
 STR_BADGE_FILTER_ANY_LABEL                                      :Her {STRING}
-STR_BADGE_FILTER_IS_LABEL                                       :{STRING} eşittir {STRING}

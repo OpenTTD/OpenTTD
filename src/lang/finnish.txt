@@ -2068,7 +2068,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Korkein käytettävä sprite-resoluutio: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Rajoita suurinta spriteille käytettävää resoluutiota. Resoluution rajoittaminen estää korkean tarkkuuden grafiikoiden käyttämisen, vaikka niitä olisi saatavilla. Tämä voi auttaa pitämään pelin ulkoasun yhtenäisenä käytettäessä sekaisin GRF-tiedostoja, joista osassa on ja osassa ei ole korkean tarkkuuden grafiikoita
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Rajoita suurinta spriteille käytettävää resoluutiota. Resoluution rajoittaminen estää korkean tarkkuuden grafiikoiden käyttämisen, vaikka niitä olisi saatavilla. Tämä voi auttaa pitämään pelin ulkoasun yhtenäisenä käytettäessä sekaisin NewGRF-tiedostoja, joista osassa on ja osassa ei ole korkean tarkkuuden grafiikoita
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4×
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2×
@@ -2206,7 +2206,7 @@ STR_CONFIG_ERROR                                                :{WHITE}Virhe as
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... virhe taulukossa ”{STRING}”
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... epäkelpo arvo ”{STRING}” asetuksella ”{STRING}”
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... ylimääräisiä merkkejä asetuksen ”{STRING}” perässä
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... jätetään huomiotta NewGRF ”{STRING}”: sama GRF ID kuin NewGRF:ssä ”{STRING}”
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}… NewGRF ”{STRING}” jätetään huomiotta: sama NewGRF-tunnus kuin NewGRF:llä ”{STRING}”
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... jätetään huomiotta epäkelpo NewGRF ”{STRING}”: {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :ei löydetty
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :ei turvallinen staattiseen käyttöön
@@ -3622,7 +3622,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Virheellinen pa
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} on ladattava ennen kuin {2:STRING} voidaan ladata
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} tulee ladata lisäosan {2:STRING} jälkeen
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} vaatii OpenTTD:n version {2:STRING} tai uudemman
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-tiedosto, jonka se muuntaa
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :NewGRF-tiedosto, joka sen piti muuntaa
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Liian monta NewGRF:ää on ladattu
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Lisäosan {1:STRING} lataaminen staattisena NewGRF:nä lisäosan {2:STRING} kanssa voi johtaa tahdistusvirheisiin
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Odottamaton sprite (sprite {3:NUM})
@@ -3631,7 +3631,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Yritys käyttä
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} sisältää korruptoituneen spriten. Kaikki korruptoituneet spritet näkyvät punaisina kysymysmerkkeinä (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Toimenpide 8 esiintyy moneen kertaan (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Luku pseudo-spriten ohi (sprite {3:NUM})
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Pyydetyt GRF-resurssit eivät ole saatavilla (sprite {3:NUM})
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Pyydetyt NewGRF-resurssit eivät ole saatavilla (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} poisti käytöstä NewGRF:n {1:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Virheellinen/tuntematon spriten asettelumuoto (sprite {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Liian monta elementtiä ominaisuusarvolistassa (sprite {3:NUM}, ominaisuus {4:HEX})
@@ -3641,13 +3641,13 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Virheellinen te
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varoitus!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Olet tekemässä muutoksia käynnissä olevaan peliin. OpenTTD voi kaatua tai nykyinen pelitilanne rikkoutua. Älä tee virheraportteja tästä johtuvista ongelmista.{}Oletko aivan varma?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ei voi lisätä tiedostoa: duplicate GRF ID
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Sopivaa tiedostoa ei löytynyt (korvaava GRF ladattu)
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Tiedostoa ei voi lisätä: NewGRF-tunnus on jo käytössä
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Sopivaa tiedostoa ei löytynyt (yhteensopiva NewGRF ladattu)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Tiedostoa ei voida lisätä: NewGRF-tiedostojen raja saavutettu
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Yhteensopivat GRF:t ladattu puuttuvien tiedostojen korvaamiseksi
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Puuttuvat GRF-tiedostot on poistettu käytöstä
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Puuttuva(t) GRF-tiedosto(t)
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Yhteensopivia NewGRF:iä ladattu puuttuvien tiedostojen korvaamiseksi
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Puuttuva(t) NewGRF-tiedosto(t) on poistettu käytöstä
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Puuttuva(t) NewGRF-tiedosto(t)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Taukotilasta poistuminen saattaa kaataa OpenTTD:n. Älä lähetä virheraportteja tämänjälkeisistä kaatumisista.{}Haluatko todella poistua taukotilasta?
 
 # NewGRF status
@@ -5978,4 +5978,3 @@ STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Tunnussu
 STR_BADGE_CONFIG_PREVIEW                                        :Esikatselu
 STR_BADGE_CONFIG_NAME                                           :Nimi
 STR_BADGE_FILTER_ANY_LABEL                                      :Mikä tahansa {STRING}
-STR_BADGE_FILTER_IS_LABEL                                       :{STRING} on {STRING}

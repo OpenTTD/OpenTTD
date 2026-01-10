@@ -5920,4 +5920,3 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_FILTER_ANY_LABEL                                      :Qualunque {STRING}
-STR_BADGE_FILTER_IS_LABEL                                       :{STRING} è {STRING}

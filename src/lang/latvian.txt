@@ -5961,4 +5961,3 @@ STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Emblēmu
 STR_BADGE_CONFIG_PREVIEW                                        :Priekšskatīt attēlu
 STR_BADGE_CONFIG_NAME                                           :Nosaukums
 STR_BADGE_FILTER_ANY_LABEL                                      :Jebkurš {STRING}
-STR_BADGE_FILTER_IS_LABEL                                       :{STRING} ir {STRING}

@@ -6157,4 +6157,3 @@ STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Філь
 STR_BADGE_CONFIG_PREVIEW                                        :Попередній перегляд
 STR_BADGE_CONFIG_NAME                                           :Назва
 STR_BADGE_FILTER_ANY_LABEL                                      :Заголовок: {STRING}
-STR_BADGE_FILTER_IS_LABEL                                       :{STRING} це {STRING}

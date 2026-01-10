@@ -2069,7 +2069,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Resolução máxima de sprites: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limite de resolução máxima a ser usada para sprites. Limitar a resolução de sprites evitará o uso de gráficos de alta resolução, mesmo quando estiverem disponíveis. Isso pode ajudar a manter o jogo com uma aparência unificada quando usar uma mistura de arquivos GRF com e sem gráficos de alta resolução
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limite de resolução máxima a ser usada para sprites. Limitar a resolução de sprites evitará o uso de gráficos de alta resolução, mesmo quando estiverem disponíveis. Isso pode ajudar a manter o jogo com uma aparência unificada quando usar uma mistura de arquivos NewGRF com e sem gráficos de alta resolução
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2207,7 +2207,7 @@ STR_CONFIG_ERROR                                                :{WHITE}Erro no 
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... erro no array '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... valor inválido '{STRING}' para '{STRING}'
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... caracteres extras no final de '{STRING}'
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorando NewGRF '{STRING}': GRF ID é igual ao de '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorando NewGRF '{STRING}': NewGRF ID duplicado de '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignorando NewGRF '{STRING}' inválido: {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :não encontrado
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :inseguro para uso estático
@@ -3623,7 +3623,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parâmetro inv�
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} deve ser carregado antes de {2:STRING}
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} deve ser carregado depois de {2:STRING}
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} é para OpenTTD versão {2:STRING} ou superior
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :o arquivo GRF que foi desenvolvido para a tradução
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :o arquivo NewGRF que foi desenvolvido para tradução
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Foram carregados NewGRFs demais
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregar {1:STRING} como NewGRF estático com {2:STRING} pode causar dessincronização
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite inesperado (sprite {3:NUM})
@@ -3632,7 +3632,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de us
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contém um sprite corrompido. Todos os sprites corrompidos serão apresentados como um ponto de interrogação (?) vermelho
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contém múltiplas entradas Action 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leitura depois do final do pseudo-sprite (sprite {3:NUM})
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Recursos GRF necessários estão indisponíveis (sprite {3:NUM})
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Recursos NewGRF requisitados estão indisponíveis (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} foi desativado por {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Formato de disposição de sprite inválido/desconhecido (sprite {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Há elementos demais na lista de valores de propriedade (sprite {3:NUM}, propriedade {4:HEX})
@@ -3642,13 +3642,13 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Chamada de prod
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Cuidado!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Você está prestes a fazer alterações num jogo em execução. Isso pode travar o OpenTTD ou interromper o estado do jogo. Não envie relatórios de erros sobre estas questões.{}Você quer mesmo fazer as alterações?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Não é possível adicionar o arquivo: GRF ID duplicado
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Arquivo correspondente não encontrado (GRF compatível carregado)
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Não é possível adicionar arquivo: NewGRF ID duplicado
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Arquivo correspondente não encontrado (NewGRF compatível carregado)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Não é possível adicionar o arquivo: limite de NewGRFs atingido
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRFs compatíveis foram carregados para os arquivos ausentes
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Arquivos GRF ausentes foram desativados
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Arquivos GRF em falta
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}NewGRF(s) compatíveis carregados para arquivos ausentes
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Arquivo(s) NewGRF ausente(s) foram desativados
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Arquivo(s) NewGRF em falta
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Sair da pausa pode travar o OpenTTD. Não envie relatórios de erros sobre travamentos subsequentes.{}Você quer mesmo sair da pausa?
 
 # NewGRF status
@@ -5979,4 +5979,3 @@ STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Filtros 
 STR_BADGE_CONFIG_PREVIEW                                        :Pré-visualizar imagem
 STR_BADGE_CONFIG_NAME                                           :Nome
 STR_BADGE_FILTER_ANY_LABEL                                      :Qualquer {STRING}
-STR_BADGE_FILTER_IS_LABEL                                       :{STRING} é {STRING}

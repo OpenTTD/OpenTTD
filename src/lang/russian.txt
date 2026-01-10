@@ -2357,7 +2357,7 @@ STR_CONFIG_ERROR                                                :{WHITE}Ошиб
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... ошибка в массиве «{STRING}»
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... неверное значение «{STRING}» параметра «{STRING}»
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... лишние символы после «{STRING}»
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... игнорируется NewGRF «{STRING}»: у него такой же идентификатор GRF, как и у «{STRING}»
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... NewGRF «{STRING}» игнорируется: у него такой же идентификатор NewGRF, как и у «{STRING}»
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... игнорируется неверный NewGRF «{STRING}»: {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :не найден
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :использование в качестве статического небезопасно
@@ -3797,7 +3797,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Неверны�
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} должен быть загружен перед {2:STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} должен быть загружен после {2:STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :Для {1:STRING} требуется OpenTTD версии {2:STRING} или выше
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :файл GRF, который им переводится.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :файл NewGRF, который им переводится
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Загружено слишком много модулей NewGRF
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Загрузка {1:STRING} в качестве статического NewGRF с {2:STRING} может вызвать рассинхронизацию
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Неверный спрайт (спрайт {3:NUM})
@@ -3806,7 +3806,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Попытка 
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} содержит повреждённый спрайт. Все повреждённые спрайты будут показаны красным знаком вопроса (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Содержит несколько блоков «Action 8» (спрайт {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Чтение за концом псевдо-спрайта (спрайт {3:NUM})
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Запрошенные ресурсы GRF недоступны (спрайт {3:NUM})
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Запрошенные ресурсы NewGRF недоступны (спрайт {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} был отключён из-за {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Недопустимый/неизвестный формат расположения спрайтов (спрайт {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Слишком много элементов в списке значений (спрайт {3:NUM}, свойство {4:HEX})
@@ -3816,13 +3816,13 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Неверна�
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Осторожно!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Вы собираетесь внести изменения в запущенную игру. Это может привести к нестабильной работе или к аварийному завершению OpenTTD. В этом случае не надо присылать отчёты об ошибках.{}Вы действительно хотите это сделать?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Невозможно добавить файл: дублируются GRF ID
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Соответствующий файл не найден (загружен совместимый GRF)
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Невозможно добавить файл: дублируются NewGRF ID
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Соответствующий файл не найден (загружен совместимый NewGRF)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Не удалось добавить файл: слишком много модулей NewGRF
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Вместо отсутствующих загружены совместимые файлы NewGRF
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Вместо отсутствующих файлов загружены совместимые модули NewGRF
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Отсутствующие файлы NewGRF были отключены
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Недостающие GRF файлы
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Отсутствующие файлы NewGRF
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Снятие с паузы может привести к ошибке OpenTTD.{}Вы хотите запустить игру?
 
 # NewGRF status
@@ -6239,4 +6239,3 @@ STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Филь
 STR_BADGE_CONFIG_PREVIEW                                        :Предпросмотр
 STR_BADGE_CONFIG_NAME                                           :Название
 STR_BADGE_FILTER_ANY_LABEL                                      :Любой {STRING}
-STR_BADGE_FILTER_IS_LABEL                                       :{STRING} равен {STRING}

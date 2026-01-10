@@ -5978,4 +5978,3 @@ STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Hidlau B
 STR_BADGE_CONFIG_PREVIEW                                        :Rhagolwg Delwedd
 STR_BADGE_CONFIG_NAME                                           :Enw
 STR_BADGE_FILTER_ANY_LABEL                                      :Unrhyw {STRING}
-STR_BADGE_FILTER_IS_LABEL                                       :Mae {STRING} yn {STRING}

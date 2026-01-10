@@ -5979,4 +5979,3 @@ STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Kennzeic
 STR_BADGE_CONFIG_PREVIEW                                        :Vorschaubild
 STR_BADGE_CONFIG_NAME                                           :Name
 STR_BADGE_FILTER_ANY_LABEL                                      :{G "Beliebiger" "Beliebige" "Beliebiges" "Beliebige"} {STRING}
-STR_BADGE_FILTER_IS_LABEL                                       :{STRING} ist {STRING}

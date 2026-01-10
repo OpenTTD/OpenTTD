@@ -5978,4 +5978,3 @@ STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Badgefil
 STR_BADGE_CONFIG_PREVIEW                                        :Voorbeeld
 STR_BADGE_CONFIG_NAME                                           :Naam
 STR_BADGE_FILTER_ANY_LABEL                                      :Willekeurige {STRING}
-STR_BADGE_FILTER_IS_LABEL                                       :{STRING} is {STRING}

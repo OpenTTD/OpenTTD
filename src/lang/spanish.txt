@@ -5979,4 +5979,3 @@ STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Filtros 
 STR_BADGE_CONFIG_PREVIEW                                        :Vista previa de imagen
 STR_BADGE_CONFIG_NAME                                           :Nombre
 STR_BADGE_FILTER_ANY_LABEL                                      :Cualquier {STRING}
-STR_BADGE_FILTER_IS_LABEL                                       :{STRING} es {STRING}

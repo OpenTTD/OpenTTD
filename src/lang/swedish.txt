@@ -5978,4 +5978,3 @@ STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Märkesf
 STR_BADGE_CONFIG_PREVIEW                                        :Förhandsvisning
 STR_BADGE_CONFIG_NAME                                           :Namn
 STR_BADGE_FILTER_ANY_LABEL                                      :Någon {STRING}
-STR_BADGE_FILTER_IS_LABEL                                       :{STRING} är {STRING}

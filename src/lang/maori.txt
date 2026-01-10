@@ -5978,4 +5978,3 @@ STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Tātari 
 STR_BADGE_CONFIG_PREVIEW                                        :Tirohia takamua te ata
 STR_BADGE_CONFIG_NAME                                           :Ingoa
 STR_BADGE_FILTER_ANY_LABEL                                      :{STRING} katoa
-STR_BADGE_FILTER_IS_LABEL                                       :Ko {1:STRING} te {0:STRING}

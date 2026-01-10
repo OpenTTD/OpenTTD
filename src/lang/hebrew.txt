@@ -5430,4 +5430,3 @@ STR_BADGE_CONFIG_FILTERS                                        :מסנני תג
 STR_BADGE_CONFIG_PREVIEW                                        :תצוגה מקדימה של התמונה
 STR_BADGE_CONFIG_NAME                                           :שם
 STR_BADGE_FILTER_ANY_LABEL                                      :כל {STRING}
-STR_BADGE_FILTER_IS_LABEL                                       :{STRING} הוא {STRING}

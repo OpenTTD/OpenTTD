@@ -2069,7 +2069,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :최고 해상도 그래픽 스프라이트: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :그래픽 스프라이트에 사용할 최고 해상도를 제한할 수 있습니다. 그래픽 스프라이트 해상도를 제한하면 고해상도 그래픽을 사용할 수 있어도 이를 사용하지 않을 수 있습니다. 이 설정을 사용하면 고해상도 그래픽을 지원하지 않는 GRF 파일을 섞어서 사용할 때 게임의 모습을 일관성있게 만들 수 있습니다
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :그래픽 스프라이트에 사용할 최고 해상도를 제한할 수 있습니다. 그래픽 스프라이트 해상도를 제한하면 고해상도 그래픽을 사용할 수 있어도 이를 사용하지 않을 수 있습니다. 이 설정을 사용하면 고해상도 그래픽을 지원하지 않는 NewGRF 파일을 섞어서 사용할 때 게임의 모습을 일관성있게 만들 수 있습니다
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -3623,7 +3623,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{1:STRING}의 �
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING}{G 1 "은" "는"} 반드시 {2:STRING}보다 앞에 불러와야 합니다
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING}{G 1 "은" "는"} 반드시 {2:STRING}보다 뒤에 불러와야 합니다
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING}{G 1 "은" "는"} OpenTTD {2:STRING} 버전이나 그 이상이 필요합니다
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 파일이 번역을 위해 만들어졌습니다
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :이 NewGRF 파일은 번역 용입니다
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :NewGRF가 너무 많습니다
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{2:STRING}{G 2 "을" "를"} 포함한 정적 NewGRF {1:STRING}{G 1 "을" "를"} 불러오는 것은 비동기화를 일으킬 수 있습니다
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :예기치 않은 스프라이트 (스프라이트 {3:NUM})
@@ -3632,7 +3632,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :유효하지 �
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING}에 손상된 객체가 있습니다. 모든 손상된 객체는 붉은 물음표로 보일 것입니다
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :여러 개의 Action 8 엔트리 포함 (스프라이트 {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :유사 스프라이트의 끝이었던 부분을 읽으려고 시도함 (스프라이트 {3:NUM})
-STR_NEWGRF_ERROR_GRM_FAILED                                     :요청한 GRF 자원을 사용할 수 없음 (스프라이트 {3:NUM})
+STR_NEWGRF_ERROR_GRM_FAILED                                     :요청한 NewGRF 자원을 사용할 수 없음 (스프라이트 {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING}(은)는 {STRING} 때문에 사용할 수 없습니다
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :유효하지 않은/알 수 없는 스프라이트 구조 유형 (스프라이트 {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :속성값 목록에 너무 많은 요소가 있음 (스프라이트 {3:NUM}, 속성 {4:HEX})
@@ -3642,13 +3642,13 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :유효하지 �
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}경고!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}게임 진행중에 설정을 변경하면 게임이 충돌할 수도 있습니다.{}정말로 설정을 변경하시겠습니까?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}파일 추가 불가: 중복된 GRF 아이디
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}해당 파일을 찾을 수 없습니다. (대체 GRF를 불러옵니다)
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}파일 추가 불가: 중복된 NewGRF 아이디
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}해당 파일을 찾을 수 없습니다. (대체 NewGRF를 불러옵니다)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}파일을 추가할 수 없습니다: NewGRF 파일이 너무 많습니다
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}대체할 수 있는 GRF를 불러왔습니다
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}없는 GRF 파일은 비활성화됩니다
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF 파일 없음
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}대체할 수 있는 NewGRF를 불러왔습니다
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}없는 NewGRF 파일은 비활성화됩니다
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}NewGRF 파일 없음
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}일시 정지 해제 시 오류가 발생하거나 게임이 종료될 수 있으며, 이와 관련된 버그 리포트는 접수받지 않습니다.{}정말로 일시 정지를 해제하시겠습니까?
 
 # NewGRF status
@@ -5979,4 +5979,3 @@ STR_BADGE_CONFIG_FILTERS                                        :{WHITE}배지 �
 STR_BADGE_CONFIG_PREVIEW                                        :미리보기 이미지
 STR_BADGE_CONFIG_NAME                                           :이름
 STR_BADGE_FILTER_ANY_LABEL                                      :모든 {STRING}
-STR_BADGE_FILTER_IS_LABEL                                       :{STRING} = {STRING}

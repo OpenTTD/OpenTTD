@@ -5978,4 +5978,3 @@ STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Bộ l�
 STR_BADGE_CONFIG_PREVIEW                                        :Ảnh xem trước
 STR_BADGE_CONFIG_NAME                                           :Tên
 STR_BADGE_FILTER_ANY_LABEL                                      :Bất cứ {STRING} nào
-STR_BADGE_FILTER_IS_LABEL                                       :{STRING} là {STRING}

@@ -6198,4 +6198,3 @@ STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Filtr od
 STR_BADGE_CONFIG_PREVIEW                                        :Náhled obrázku
 STR_BADGE_CONFIG_NAME                                           :Jméno
 STR_BADGE_FILTER_ANY_LABEL                                      :{G 0 Jakýkoliv Jakákoliv Jakékoliv Jacíkoliv Jakékoliv Jakékoliv Jakékoliv} {STRING}
-STR_BADGE_FILTER_IS_LABEL                                       :{STRING} je {STRING}

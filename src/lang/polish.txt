@@ -6419,4 +6419,3 @@ STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Filtry Z
 STR_BADGE_CONFIG_PREVIEW                                        :Podgląd Obrazka
 STR_BADGE_CONFIG_NAME                                           :Nazwa
 STR_BADGE_FILTER_ANY_LABEL                                      :Wszystkie {STRING}
-STR_BADGE_FILTER_IS_LABEL                                       :{STRING} to {STRING}
