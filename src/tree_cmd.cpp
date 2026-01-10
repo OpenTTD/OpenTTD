@@ -371,7 +371,7 @@ void PlaceTreesRandomly()
 
 		if (CanPlantTreesOnTile(tile, true)) {
 			PlaceTree(tile, r);
-			if (_settings_game.game_creation.tree_placer != TP_IMPROVED) continue;
+			if (_settings_game.game_creation.tree_placer != TreePlacer::Improved) continue;
 
 			/* Place a number of trees based on the tile height.
 			 *  This gives a cool effect of multiple trees close together.
@@ -470,11 +470,11 @@ void GenerateTrees()
 {
 	uint i, total;
 
-	if (_settings_game.game_creation.tree_placer == TP_NONE) return;
+	if (_settings_game.game_creation.tree_placer == TreePlacer::None) return;
 
 	switch (_settings_game.game_creation.tree_placer) {
-		case TP_ORIGINAL: i = _settings_game.game_creation.landscape == LandscapeType::Arctic ? 15 : 6; break;
-		case TP_IMPROVED: i = _settings_game.game_creation.landscape == LandscapeType::Arctic ?  4 : 2; break;
+		case TreePlacer::Original: i = _settings_game.game_creation.landscape == LandscapeType::Arctic ? 15 : 6; break;
+		case TreePlacer::Improved: i = _settings_game.game_creation.landscape == LandscapeType::Arctic ?  4 : 2; break;
 		default: NOT_REACHED();
 	}
 

@@ -1124,7 +1124,7 @@ static void MakeWetlands(TileIndex centre, uint height, uint river_length)
 			/* This tile is ground, which we always make rough. */
 			SetClearGroundDensity(tile, CLEAR_ROUGH, 3);
 			/* Maybe place trees? */
-			if (has_trees && _settings_game.game_creation.tree_placer != TP_NONE) {
+			if (has_trees && _settings_game.game_creation.tree_placer != TreePlacer::None) {
 				PlaceTree(tile, Random(), true);
 			}
 		}

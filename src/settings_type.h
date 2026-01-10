@@ -122,10 +122,10 @@ enum RightClickClose : uint8_t {
  *
  * This enumeration defines all possible tree placer algorithm in the game.
  */
-enum TreePlacer : uint8_t {
-	TP_NONE,     ///< No tree placer algorithm
-	TP_ORIGINAL, ///< The original algorithm
-	TP_IMPROVED, ///< A 'improved' algorithm
+enum class TreePlacer: uint8_t {
+	None, ///< No tree placer algorithm
+	Original, ///< The original algorithm
+	Improved, ///< A 'improved' algorithm
 };
 
 /** Possible values for "place_houses" setting. */
@@ -413,7 +413,7 @@ struct GameCreationSettings {
 	uint8_t desert_coverage;                  ///< the amount of desert coverage on the map
 	uint8_t heightmap_height;                 ///< highest mountain for heightmap (towards what it scales)
 	uint8_t tgen_smoothness;                  ///< how rough is the terrain from 0-3
-	uint8_t tree_placer;                      ///< the tree placer algorithm
+	TreePlacer tree_placer; ///< the tree placer algorithm
 	uint8_t heightmap_rotation;               ///< rotation director for the heightmap
 	uint8_t se_flat_world_height;             ///< land height a flat world gets in SE
 	uint8_t town_name;                        ///< the town name generator used for town names
