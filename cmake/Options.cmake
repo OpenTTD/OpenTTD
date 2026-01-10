@@ -72,6 +72,21 @@ function(set_options)
     endif()
 
     option(OPTION_SURVEY_KEY "Survey-key to use for the opt-in survey (empty if you have none)" "")
+    option(OPTION_DOXYGEN_WARN_FILE "File to write doxygen warnings into (if empty warnings are written to standard error)" "")
+    option(OPTION_DOXYGEN_GS_WARN_FILE "File to write doxygen warnings from game script docs into (if empty warnings are written to standard error)" "")
+    option(OPTION_DOXYGEN_AI_WARN_FILE "File to write doxygen warnings from AI docs into (if empty warnings are written to standard error)" "")
+
+    if(OPTION_DOXYGEN_WARN_FILE)
+	    set(DOXYGEN_WARN_FILE ${CMAKE_BINARY_DIR}/${OPTION_DOXYGEN_WARN_FILE} PARENT_SCOPE)
+    endif()
+
+    if(OPTION_DOXYGEN_GS_WARN_FILE)
+        set(DOXYGEN_GS_WARN_FILE ${CMAKE_BINARY_DIR}/${OPTION_DOXYGEN_GS_WARN_FILE} PARENT_SCOPE)
+    endif()
+
+    if(OPTION_DOXYGEN_AI_WARN_FILE)
+        set(DOXYGEN_AI_WARN_FILE ${CMAKE_BINARY_DIR}/${OPTION_DOXYGEN_AI_WARN_FILE} PARENT_SCOPE)
+    endif()
 endfunction()
 
 # Show the values of the generic options.
