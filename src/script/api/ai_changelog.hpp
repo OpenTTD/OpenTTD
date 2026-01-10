@@ -19,6 +19,10 @@
  *
  * This version is not yet released. The following changes are not set in stone yet.
  *
+ * API additions:
+ * \li AIVehicle::GetEconomyAge
+ * \li AIVehicle::GetWagonEconomyAge
+ *
  * \b 15.0
  *
  * API additions:
