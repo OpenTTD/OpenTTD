@@ -62,4 +62,8 @@ void AllocateWaterRegions();
 
 void PrintWaterRegionDebugInfo(TileIndex tile);
 
+using TestTileIndexCallBack = std::function<bool(const TileIndex)>;
+bool TestTileInWaterRegionPatch(const WaterRegionPatchDesc &water_region_patch, TestTileIndexCallBack &callback);
+TileIndex FindClosestEnteringTile(const std::span<WaterRegionPatchDesc> high_level_path, TestTileIndexCallBack &callback);
+
 #endif /* WATER_REGIONS_H */
