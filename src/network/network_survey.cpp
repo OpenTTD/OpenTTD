@@ -22,10 +22,10 @@
 NetworkSurveyHandler _survey = {};
 
 NLOHMANN_JSON_SERIALIZE_ENUM(NetworkSurveyHandler::Reason, {
-	{NetworkSurveyHandler::Reason::PREVIEW, "preview"},
-	{NetworkSurveyHandler::Reason::LEAVE, "leave"},
-	{NetworkSurveyHandler::Reason::EXIT, "exit"},
-	{NetworkSurveyHandler::Reason::CRASH, "crash"},
+	{NetworkSurveyHandler::Reason::Preview, "preview"},
+	{NetworkSurveyHandler::Reason::Leave, "leave"},
+	{NetworkSurveyHandler::Reason::Exit, "exit"},
+	{NetworkSurveyHandler::Reason::Crash, "crash"},
 })
 
 /**

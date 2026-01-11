@@ -2342,7 +2342,7 @@ struct SurveyResultTextfileWindow : public TextfileWindow {
 	{
 		this->ConstructWindow();
 
-		auto result = _survey.CreatePayload(NetworkSurveyHandler::Reason::PREVIEW, true);
+		auto result = _survey.CreatePayload(NetworkSurveyHandler::Reason::Preview, true);
 		this->LoadText(result);
 		this->InvalidateData();
 	}

@@ -403,7 +403,7 @@ void ShowSelectGameWindow()
 static void AskExitGameCallback(Window *, bool confirmed)
 {
 	if (confirmed) {
-		_survey.Transmit(NetworkSurveyHandler::Reason::EXIT, true);
+		_survey.Transmit(NetworkSurveyHandler::Reason::Exit, true);
 		_exit_game = true;
 	}
 }
