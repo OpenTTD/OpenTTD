@@ -75,6 +75,10 @@ add_custom_target(find_version
                 -DREV_MAJOR=${PROJECT_VERSION_MAJOR}
                 -DREV_MINOR=${PROJECT_VERSION_MINOR}
                 -DWINDOWS=${WIN32}
+                -DDOXYGEN_WARN_FORMAT_LINE=${DOXYGEN_WARN_FORMAT_LINE}
+                -DDOXYGEN_WARN_FILE=${DOXYGEN_WARN_FILE}
+                -DDOXYGEN_GS_WARN_FILE=${DOXYGEN_GS_WARN_FILE}
+                -DDOXYGEN_AI_WARN_FILE=${DOXYGEN_AI_WARN_FILE}
                 -P "${CMAKE_SOURCE_DIR}/cmake/scripts/FindVersion.cmake"
         WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
         BYPRODUCTS ${GENERATED_SOURCE_FILES}
