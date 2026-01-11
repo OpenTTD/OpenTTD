@@ -1923,11 +1923,12 @@ struct TownCargoGraphWindow : BaseCargoGraphWindow {
 		const Town *t = Town::Get(this->window_number);
 
 		this->data.clear();
+		this->data.reserve(
+			2 * std::ranges::count_if(t->supplied, &IsValidCargoType, &Town::SuppliedCargo::cargo));
+
 		for (const auto &s : t->supplied) {
 			if (!IsValidCargoType(s.cargo)) continue;
 			const CargoSpec *cs = CargoSpec::Get(s.cargo);
-
-			this->data.reserve(this->data.size() + 2);
 
 			DataSet &produced = this->data.emplace_back();
 			produced.colour = cs->legend_colour;
