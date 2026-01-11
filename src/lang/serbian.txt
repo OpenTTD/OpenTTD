@@ -1747,6 +1747,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Malo valovita
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Valovita
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Vrlo valovita
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Raznolikost distribucije: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Samo TerraGenesis) Odredi da li će karta sadržavati i planinska i ravna područja. Pošto ovo čini kartu još ravnijom, ostali parametri bi trebali biti postavljeni na planinske.
 

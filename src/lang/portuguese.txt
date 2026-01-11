@@ -1627,6 +1627,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Suave
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Acidentado
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Muito acidentado
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Distribuição de variedade: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Escolher se o mapa contém tanto áreas montanhosas como áreas planas. Quanto maior a variedade, maiores as diferenças de altitude entre essas as áreas
 

@@ -1556,6 +1556,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Teres
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Aspera
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Asperrima
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Partitio varietatis: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(modo TerraGenesis) Eligere si tabula contineat et montanos et planos locos. Quoniam haec solum facit ut tabula planior sit, electiones aliae oportet esse montanae
 

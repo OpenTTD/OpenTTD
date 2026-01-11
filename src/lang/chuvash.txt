@@ -678,6 +678,8 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
 ###length 4
 
+###length 4
+
 
 
 ###length 3

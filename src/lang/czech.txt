@@ -1713,6 +1713,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :rovná
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :členitá
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :velmi členitá
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Rozmanitost umisťování: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Vyberte, zda mapa obsahuje jak hory, tak i rovinaté oblasti. Čím vyšší je rozmanitost, tím více rozdílů v nadmořské výšce mezi horskými a rovinatými oblastmi.
 

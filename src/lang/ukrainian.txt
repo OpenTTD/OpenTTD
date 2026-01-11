@@ -1763,6 +1763,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :плавно
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :грубо
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :дуже грубо
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Розподіл різноманітності: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Оберіть наявність на мапі гір і рівнин. Чим більша різноманітність, тим більша відмінність у висотах між гірськими і пласкими ділянками
 

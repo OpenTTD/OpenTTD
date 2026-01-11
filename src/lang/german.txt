@@ -1627,6 +1627,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Eben
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Zerklüftet
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Sehr zerklüftet
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Größe der Geländeformen: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Wählen, ob die Karte sowohl Berge als auch ebene Gebiete enthalten soll. Je höher die Vielfalt, desto häufiger sind Höhenunterschiede zwischen bergigen und flachen Gebieten
 

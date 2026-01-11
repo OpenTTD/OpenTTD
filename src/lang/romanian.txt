@@ -1596,6 +1596,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Fin
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Dur
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Foarte dur
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Distribuția varietății: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Alegeți dacă harta conține atât munți, cât și zone plane. Cu cât varietatea este mai mare, cu atât mai multe diferențe de altitudine între zonele muntoase și cele plate.
 

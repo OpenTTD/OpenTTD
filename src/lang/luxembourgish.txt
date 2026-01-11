@@ -1626,6 +1626,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Flaach
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Fielseg
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Ganz Fielseg
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Vielfaltverdeelung: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Wielt aus op d'Kaart flaach Stécker an och Bierger huet. Wat d'Vielfalt méi héich, wat méi Ennerscheeder an der Landschaft tëscht de Bierger a flaach Arealer
 

@@ -1626,6 +1626,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Phẳng
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Gồ Ghề
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Rất Gồ Ghề
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Phân bổ sự đa dạng: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Điều chỉnh liệu rằng bản đồ gồm cả vùng núi cao và vùng đồng bằng. Độ đa dạng càng cao thì sự chênh lệch về độ cao giữa vùng núi và vùng đồng bằng càng nhiều
 

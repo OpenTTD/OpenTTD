@@ -1309,6 +1309,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Mjúkt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Harðrent
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Sera harðrent
 
+###length 4
+
 
 
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algoritma fyri setan av trøðum: {STRING}

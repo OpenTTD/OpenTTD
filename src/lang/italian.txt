@@ -1639,6 +1639,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Morbido
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Accidentato
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Molto accidentato
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Varietà del terreno: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Scegliere se la mappa deve contenere sia montagne che aree pianeggianti. Più alta è la varietà, maggiori sono le differenze di altitudine tra aree montuose e pianeggianti
 

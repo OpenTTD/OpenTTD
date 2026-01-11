@@ -1382,6 +1382,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Glad
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rof
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Baie Rof
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Verskeidenheid verspreiding: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Slegs TerraGenesis) Kies of die land berge en vlaktes het. Hierdie instelling maak die landskap vlakker, so ander instellings moet bergagtig wees.
 

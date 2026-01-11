@@ -1308,6 +1308,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Slétt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Hrjúft
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Mjög hrjúft
 
+###length 4
+
 
 
 STR_CONFIG_SETTING_TREE_PLACER                                  :Staðsetning trjáa: {STRING}

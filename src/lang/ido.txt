@@ -665,6 +665,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normala
 
 ###length 4
 
+###length 4
+
 
 
 ###length 3

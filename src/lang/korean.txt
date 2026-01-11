@@ -1627,6 +1627,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :부드럽게
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :거칠게
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :매우 거칠게
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :산세 험준도: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :지도에 산지와 평지를 모두 있도록 만들지 결정합니다. 더 높은 값을 사용할수록, 산지와 평지 사이의 고도 차이가 더 많아집니다
 

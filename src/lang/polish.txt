@@ -2006,6 +2006,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Łagodny
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Pofałdowany
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Bardzo pofałdowany
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Różnorodność terenu: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Wybierz, czy mapa ma zawierać zarówno obszary górskie, jak i płaskie. Im większa różnorodność, tym większe różnice wysokości między obszarami górskimi i płaskimi
 
@@ -2586,7 +2588,7 @@ STR_CONFIG_ERROR                                                :{WHITE}Błąd w
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... błąd w tablicy „{STRING}”
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... nieprawidłowa wartość „{STRING}” dla „{STRING}”
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... zbędne znaki na końcu ustawienia „{STRING}”
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorowanie NewGRF-a „{STRING}”: zduplikowany GRF ID z „{STRING}”
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorowanie NewGRF-a „{STRING}”: identyfikator NewGRF zduplikowany z „{STRING}”
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... pominięcie nieprawidłowych NewGRF-ów „{STRING}”: {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :nie znaleziono
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :{G=n}niebezpieczne w stałym użyciu
@@ -4002,7 +4004,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Niewłaściwy p
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} musi być wczytany przed {2:STRING}
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} musi być wczytany po {2:STRING}
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} wymaga OpenTTD w wersji {2:STRING} lub nowszej
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :pliku GRF który miał być tłumaczony
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :pliku NewGRF, który miał zostać przetłumaczony
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Wczytano zbyt wiele NewGRF
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Ładowanie {1:STRING} jako statyczne NewGRF z {2:STRING} może spowodować desynchronizacje
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Nieoczekiwany sprite (sprite {3:NUM})
@@ -4011,7 +4013,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Próba użycia 
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} zawiera uszkodzoną teksturę. Wszystkie uszkodzone tekstury będą pokazane jako czerwony znak zapytania (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Zawiera wiele wpisów Action 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Odczyt poza obszar pseudo-sprite'u (sprite {3:NUM})
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Potrzebne źródło GRF nie jest dostępne (sprite {3:NUM})
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Żądane zasoby NewGRF są niedostępne (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} został wyłączony przez {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Nieprawidłowy/nieznany format układu sprite'a (sprite {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Zbyt wiele elementów na liście wartości właściwości (sprite {3:NUM}, właściwość {4:HEX})
@@ -4021,13 +4023,13 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Nieprawidłowe 
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Uwaga!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Zamierzasz wprowadzić zmiany do uruchomionej gry; to może zawiesić OpenTTD lub uszkodzić stan gry. W takim przypadku nie wysyłaj raportów o błędach.{}Czy jesteś całkowicie pewien?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nie można dodać pliku: taki sam GRF ID
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Nie znaleziono pasującego pliku (wczytano kompatybilny GRF)
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nie można dodać pliku: zduplikowany identyfikator NewGRF
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Nie znaleziono pasującego pliku (wczytano kompatybilny NewGRF)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Nie można dodać pliku: osiągnięto limit plików NewGRF
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Wczytano kompatybilne GRF dla brakujących plików
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Brakujące pliki GRF zostały wyłączone
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Brakujące pliki GRF
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Wczytano kompatybilne NewGRF-y dla brakujących plików
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Brakujące pliki NewGRF zostały wyłączone
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Brakujące pliki NewGRF
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Wyłączenie pauzy może zawiesić OpenTTD. Nie zgłaszaj błędów o powtarzających się zawieszeniach.{}Czy na pewno chcesz wyłączyć pauzę?
 
 # NewGRF status

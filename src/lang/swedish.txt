@@ -1626,6 +1626,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Lätt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Svår
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Väldigt svår
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Varierad distribution: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Välj om kartan ska innehålla både berg och flacka områden. Ju större variation desto större höjdskillnad mellan bergiga och flacka områden
 

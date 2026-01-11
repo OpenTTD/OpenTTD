@@ -1369,6 +1369,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Glêd
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rûch
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Tige rûch
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Fariaasjedistribusje: {STRING}
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Tal rivieren: {STRING}

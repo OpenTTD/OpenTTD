@@ -1563,6 +1563,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Rèidh
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Garbh
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Glè gharbh
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Sgaoileadh caochlaidh: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(TerraGenesis a-mhàin) Stiùirich am bi an dà chuid beanntan ’s tìr rèidh air a’ mhapa gus nach bi. O nach adhbharaich an roghainn seo ach tìr nas rèidhe, cuir na roghainnean eile air beanntan
 

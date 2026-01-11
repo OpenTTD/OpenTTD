@@ -1626,6 +1626,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Blødt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Råt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Meget råt
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Forskelligheds fordeling: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Vælg om kortet indeholder både bjerge og flade områder. Jo højere sorten er, jo flere højdeforskelle mellem bjergrige og flade områder
 

@@ -1599,6 +1599,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Полегат
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Стръмен
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Много стръмен
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Разпределение на разнообразието: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Изберете дали картата да съдържа както планини, така и равнинни зони. Колкото по-голямо е разнообразието, толкова по-големи са разликите във височината между планинските и равнинните зони
 

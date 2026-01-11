@@ -1777,6 +1777,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Гладкий
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Грубый
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Очень грубый
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Разнообразие ландшафта: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Определяет наличие на карте как горных, так и равнинных областей. Чем выше разнообразие, тем выше разница в высоте между этими зонами.
 

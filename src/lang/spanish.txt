@@ -1627,6 +1627,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Llano
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Irregular
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Muy Irregular
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Variedad: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Permite controlar si el mapa contendrá tanto zonas montañosas como planas. Cuanta más variedad, más diferencia de altura habrá entre las zonas montañosas y las planas
 

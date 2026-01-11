@@ -1637,6 +1637,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Lauge
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Järsk
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Väga järsk
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Iseärasuste jaotus: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(TerraGenesis only) Määra, kas kaardil on nii mägiseid kui laugeid alasid. Kuna see muudab kaarti ainult laugemaks, peaksid teised sätted olema seadistatud mägisteks
 

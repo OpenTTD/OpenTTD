@@ -1538,6 +1538,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Halus
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Kasar
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Sangat Kasar
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Distribusi variasi: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(hanya TerraGenesis) Menentukan apakah bentang darat berisi area bergunung dan rata. Karena ini hanya akan mengakibatkan bentang darat yang lebih rata, pengaturan yang lain seharusnya ditetap 'bergunung'
 

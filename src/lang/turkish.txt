@@ -1627,6 +1627,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Düzgün
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Engebeli
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Çok Engebeli
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Çeşitlilik dağılımı: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Haritanın hem dağları hem de düzlükleri içerip içermediğini seçin. Çeşitlilik arttıkça dağlık ve düzlükler arasındaki yükseklik farkı da artar
 

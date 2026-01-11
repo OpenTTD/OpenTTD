@@ -1513,6 +1513,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Zglajen
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Valovit
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Zelo valovit
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Raznolika distribucija: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(TerraGenesis only) Nadzor nad ravninskimi in goratimi predeli ozemlja. Ker to izravna ozemlje, nastavi drugo nastavitev na gorato.
 

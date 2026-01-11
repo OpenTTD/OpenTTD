@@ -1627,6 +1627,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Lisse
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rugueux
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Très rugueux
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Distribution de variété{NBSP}: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Contrôle si la carte contient à la fois des montagnes et des plaines. Plus la valeur est élevée, plus la différence d'élévation entre le plateau montagneux et les plaines sera importante
 

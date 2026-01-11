@@ -1627,6 +1627,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Suau
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Escarpat
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Molt escarpat
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Varietat: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Trieu si el mapa ha de contenir muntanyes o àrees planes. Com més varietat, més diferències hi haurà entre l'elevació de les àrees muntanyoses i planes.
 

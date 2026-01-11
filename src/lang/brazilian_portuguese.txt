@@ -1627,6 +1627,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Regular
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Irregular
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Muito Irregular
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Distribuição de variedade: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Escolher se o mapa conterá tanto áreas montanhosas como áreas planas. Quanto maior a variedade, maiores as diferenças de altura entre as áreas montanhosas e as áreas planas
 

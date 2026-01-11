@@ -1626,6 +1626,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Smooth
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rough
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Very Rough
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Variety distribution: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Choose if the map contains both mountains and flat areas. The higher the variety, the more differences in elevation between mountainous and flat areas
 

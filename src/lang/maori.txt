@@ -1626,6 +1626,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Mōhanihani
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Tuarangaranga
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Tuarangaranga rawa
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Tuari matatini: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Kōwhiri mehemea he maunga, he wāhi papatahi hoki kei te mahere. Ka nui atu te matatini, ka nui atu ngā rerekētanga i te teitei i waenga i ngā maunga me ngā wāhi papatahi
 

@@ -1353,6 +1353,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :ناعم
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :خشن
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :خشن جدا
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :توزيع منوع: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(TerraGenesis only)التحكم بالخريطة هل تحتوي علىجبال ومناطق مسطحه, لأن هذا الإعداد يجعل الخارطة مستوية, هنالك إعدادات أخرى يجب ان تغير إلى الجبال
 

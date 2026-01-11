@@ -1626,6 +1626,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Tasainen
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Epätasainen
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Erittäin epätasainen
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Maaston vaihtelu: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Valitse, onko kartalla sekä vuoristoisia että tasaisia alueita. Mitä suurempi on vaihtelu, sitä suurempia ovat korkeuserot vuoristoisten ja tasaisten alueiden välillä
 

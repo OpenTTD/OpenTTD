@@ -1367,6 +1367,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :ราบเร
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :หยาบ
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :หยาบมาก
 
+###length 4
+
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :จำนวนแม่น้ำ: {STRING}
 

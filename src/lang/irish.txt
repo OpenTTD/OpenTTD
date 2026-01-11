@@ -1448,6 +1448,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Mín
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Garbh
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :An-gharbh
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Dáileadh éagsúlachta: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(TerraGenesis amháin) Rialaigh an mbeidh limistéir sléibhtiúla agus réidh araon ar an léarscáil. Toisc nach ndéantar an léarscáil ach níos cothroime leis an socrú seo, ba cheart na socruithe eile a shocrú go sléibhtiúil
 

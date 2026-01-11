@@ -1891,6 +1891,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Гладкі
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Грубы
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Вельмі грубы
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Разнастайнасць ландшафту: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Вызначае наяўнасць на карце як горных, так і раўнінных абласцей. Чым вышэй разнастайнасць, тым вышэй розніца ў вышыні паміж гэтымі зонамі.
 

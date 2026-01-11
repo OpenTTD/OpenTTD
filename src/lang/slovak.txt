@@ -1649,6 +1649,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Rovný
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Členitý
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Veľmi členitý
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Rozmanitosť distribúcie: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Zvoliť, či mapa obsahuje oba terény aj horský aj nížinný. Čím väčšia rozmanitosť, tým väčšie budú rozdiely v prevýšeniach medzi rovinami a horami
 

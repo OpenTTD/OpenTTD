@@ -1622,6 +1622,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Suave
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rugoso
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Muy rugoso
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Distribución de variedad: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Elegir si el mapa tendrá zonas montañosas y planas. Entre mayor variedad de altitud, habrá más diferencias de elevación entre montañas y planicies
 

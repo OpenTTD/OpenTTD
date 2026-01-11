@@ -1719,6 +1719,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Λεία
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Τραχιά
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Πολύ Τραχιά
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Διανομή ποικιλομορφίας: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Επιλέξτε αν ο χάρτης περιέχει και βουνά και επίπεδες περιοχές. Όσο μεγαλύτερη είναι η ποικιλία, τόσο περισσότερες οι υψομετρικές διαφορές μεταξύ ορεινών και επίπεδων περιοχών
 

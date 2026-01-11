@@ -1338,6 +1338,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Jamnt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Ulendt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Særs ulendt
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Variasjonsdistrubusjon: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Berre TerraGenesis) Kontroller om kartet inneheld både høge og flate område. Sidan dette berre gjer kartet flatare, bør andre innstillingar setjast til høge
 

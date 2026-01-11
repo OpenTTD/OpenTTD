@@ -1626,6 +1626,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :平滑
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :高低不平
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :非常粗糙
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :地形起伏分佈：{STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :選擇地圖是否同時包含山脈和平坦地域。多樣性越豐富，高山和平地之間的海拔差距就越大
 

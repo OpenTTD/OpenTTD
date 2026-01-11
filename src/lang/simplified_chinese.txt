@@ -1626,6 +1626,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :光滑
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :粗糙
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :非常粗糙
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :多样地形：{STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :此设置控制地图是否同时包含多山及平坦的地带。多样性越丰富，山地和平地之间的海拔差距就越大
 

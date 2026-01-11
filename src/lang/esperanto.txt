@@ -1600,6 +1600,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Regule
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Neregule
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Malregule
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Diverseca distribuo: {STRING}
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Nombro de riveroj: {STRING}

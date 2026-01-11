@@ -1626,6 +1626,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Llyfn
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Garw
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Garw Iawn
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Dosraniad amrywiaeth: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Rheoli a yw'r map yn cynnwys ardaloedd mynyddig a gwastad. Y mwyaf o amrywiaeth, y mwy o wahaniaeth uchder rhwng ardaloedd mynyddig a gwastad
 

@@ -1627,6 +1627,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Suave
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Escabroso
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Moi escabroso
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Distribución da variedade: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Escolle se o mapa contén áreas montañosas ou chás. Canta máis variedade, maiores diferencias en elevación entre as zonas montañosas e chás
 
