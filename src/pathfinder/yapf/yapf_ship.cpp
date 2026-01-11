@@ -32,8 +32,7 @@ public:
 	typedef typename Node::Key Key; ///< key to hash tables.
 
 protected:
-	TileIndex dest_tile;
-	TrackdirBits dest_trackdirs;
+	std::span<TileIndex> dest_tiles;
 	StationID dest_station;
 
 	bool has_intermediate_dest = false;
@@ -41,16 +40,13 @@ protected:
 	WaterRegionPatchDesc intermediate_dest_region_patch;
 
 public:
-	void SetDestination(const Ship *v)
+	void SetDestination(const Ship *v, const std::span<TileIndex> destination_tiles)
 	{
+		this->dest_tiles = destination_tiles;
 		if (v->current_order.IsType(OT_GOTO_STATION)) {
 			this->dest_station = v->current_order.GetDestination().ToStationID();
-			this->dest_tile = CalcClosestStationTile(this->dest_station, v->tile, StationType::Dock);
-			this->dest_trackdirs = INVALID_TRACKDIR_BIT;
 		} else {
 			this->dest_station = StationID::Invalid();
-			this->dest_tile = v->dest_tile == INVALID_TILE ? TileIndex{} : v->dest_tile;
-			this->dest_trackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(this->dest_tile, TRANSPORT_WATER, 0));
 		}
 	}
 
@@ -75,7 +71,7 @@ public:
 		return this->PfDetectDestinationTile(n.GetTile(), n.GetTrackdir());
 	}
 
-	inline bool PfDetectDestinationTile(TileIndex tile, Trackdir trackdir)
+	inline bool PfDetectDestinationTile(TileIndex tile, [[maybe_unused]] Trackdir trackdir)
 	{
 		if (this->has_intermediate_dest) {
 			/* GetWaterRegionInfo is much faster than GetWaterRegionPatchInfo so we try that first. */
@@ -85,7 +81,8 @@ public:
 
 		if (this->dest_station != StationID::Invalid()) return IsDockingTile(tile) && IsShipDestinationTile(tile, this->dest_station);
 
-		return tile == this->dest_tile && ((this->dest_trackdirs & TrackdirToTrackdirBits(trackdir)) != TRACKDIR_BIT_NONE);
+		assert(this->dest_tiles.size() == 1);
+		return tile == this->dest_tiles.front();
 	}
 
 	/**
@@ -94,14 +91,21 @@ public:
 	 */
 	inline bool PfCalcEstimate(Node &n)
 	{
-		const TileIndex destination_tile = this->has_intermediate_dest ? this->intermediate_dest_tile : this->dest_tile;
-
 		if (this->PfDetectDestination(n)) {
 			n.estimate = n.cost;
 			return true;
 		}
 
-		n.estimate = n.cost + OctileDistanceCost(n.GetTile(), n.GetTrackdir(), destination_tile);
+		int shortest_estimate = std::numeric_limits<int>::max();
+		if (this->has_intermediate_dest) {
+			shortest_estimate = OctileDistanceCost(n.GetTile(), n.GetTrackdir(), this->intermediate_dest_tile);
+		} else {
+			for (const TileIndex &destination_tile : this->dest_tiles) {
+				int estimate = OctileDistanceCost(n.GetTile(), n.GetTrackdir(), destination_tile);
+				if (estimate < shortest_estimate) shortest_estimate = estimate;
+			}
+		}
+		n.estimate = n.cost + shortest_estimate;
 		assert(n.estimate >= n.parent->estimate);
 		return true;
 	}
@@ -196,10 +200,10 @@ public:
 		return result;
 	}
 
-	static Trackdir ChooseShipTrack(const Ship *v, TileIndex tile, TrackdirBits forward_dirs, TrackdirBits reverse_dirs,
+	static Trackdir ChooseShipTrack(const Ship *v, TileIndex tile, TrackdirBits forward_dirs, TrackdirBits reverse_dirs, const std::span<TileIndex> dest_tiles,
 		bool &path_found, ShipPathCache &path_cache, Trackdir &best_origin_dir)
 	{
-		const std::vector<WaterRegionPatchDesc> high_level_path = YapfShipFindWaterRegionPath(v, tile, NUMBER_OR_WATER_REGIONS_LOOKAHEAD + 1);
+		const std::vector<WaterRegionPatchDesc> high_level_path = YapfShipFindWaterRegionPath(v, tile, NUMBER_OR_WATER_REGIONS_LOOKAHEAD + 1, dest_tiles);
 		if (high_level_path.empty()) {
 			path_found = false;
 			/* Make the ship move around aimlessly. This prevents repeated pathfinder calls and clearly indicates that the ship is lost. */
@@ -214,7 +218,7 @@ public:
 
 			/* Set origin and destination nodes */
 			pf.SetOrigin(v->tile, forward_dirs | reverse_dirs);
-			pf.SetDestination(v);
+			pf.SetDestination(v, dest_tiles);
 			const bool is_intermediate_destination = static_cast<int>(high_level_path.size()) >= NUMBER_OR_WATER_REGIONS_LOOKAHEAD + 1;
 			if (is_intermediate_destination) pf.SetIntermediateDestination(high_level_path.back());
 
@@ -282,9 +286,10 @@ public:
 	 * Called when leaving depot.
 	 * @param v Ship.
 	 * @param trackdir [out] the best of all possible reversed trackdirs.
+	 * @param dest_tiles list of destination tiles.
 	 * @return true if the reverse direction is better.
 	 */
-	static bool CheckShipReverse(const Ship *v, Trackdir *trackdir)
+	static bool CheckShipReverse(const Ship *v, Trackdir *trackdir, const std::span<TileIndex> dest_tiles)
 	{
 		bool path_found = false;
 		ShipPathCache dummy_cache;
@@ -295,13 +300,13 @@ public:
 			const Trackdir reverse_dir = ReverseTrackdir(v->GetVehicleTrackdir());
 			const TrackdirBits forward_dirs = TrackdirToTrackdirBits(v->GetVehicleTrackdir());
 			const TrackdirBits reverse_dirs = TrackdirToTrackdirBits(reverse_dir);
-			(void)ChooseShipTrack(v, v->tile, forward_dirs, reverse_dirs, path_found, dummy_cache, best_origin_dir);
+			(void)ChooseShipTrack(v, v->tile, forward_dirs, reverse_dirs, dest_tiles, path_found, dummy_cache, best_origin_dir);
 			return path_found && best_origin_dir == reverse_dir;
 		} else {
 			/* This gets called when a ship suddenly can't move forward, e.g. due to terraforming. */
 			const DiagDirection entry = ReverseDiagDir(VehicleExitDir(v->direction, v->state));
 			const TrackdirBits reverse_dirs = DiagdirReachesTrackdirs(entry) & TrackStatusToTrackdirBits(GetTileTrackStatus(v->tile, TRANSPORT_WATER, 0, entry));
-			(void)ChooseShipTrack(v, v->tile, TRACKDIR_BIT_NONE, reverse_dirs, path_found, dummy_cache, best_origin_dir);
+			(void)ChooseShipTrack(v, v->tile, TRACKDIR_BIT_NONE, reverse_dirs, dest_tiles, path_found, dummy_cache, best_origin_dir);
 			*trackdir = path_found && best_origin_dir != INVALID_TRACKDIR ? best_origin_dir : GetRandomTrackdir(reverse_dirs);
 			return true;
 		}
@@ -429,13 +434,15 @@ struct CYapfShip : CYapfT<CYapfShip_TypesT<CYapfShip>> {
 /** Ship controller helper - path finder invoker. */
 Track YapfShipChooseTrack(const Ship *v, TileIndex tile, bool &path_found, ShipPathCache &path_cache)
 {
+	std::vector<TileIndex> dest_tiles = GetShipDestinationTiles(v);
 	Trackdir best_origin_dir = INVALID_TRACKDIR;
 	const TrackdirBits origin_dirs = TrackdirToTrackdirBits(v->GetVehicleTrackdir());
-	const Trackdir td_ret = CYapfShip::ChooseShipTrack(v, tile, origin_dirs, TRACKDIR_BIT_NONE, path_found, path_cache, best_origin_dir);
+	const Trackdir td_ret = CYapfShip::ChooseShipTrack(v, tile, origin_dirs, TRACKDIR_BIT_NONE, dest_tiles, path_found, path_cache, best_origin_dir);
 	return (td_ret != INVALID_TRACKDIR) ? TrackdirToTrack(td_ret) : INVALID_TRACK;
 }
 
 bool YapfShipCheckReverse(const Ship *v, Trackdir *trackdir)
 {
-	return CYapfShip::CheckShipReverse(v, trackdir);
+	std::vector<TileIndex> dest_tiles = GetShipDestinationTiles(v);
+	return CYapfShip::CheckShipReverse(v, trackdir, dest_tiles);
 }
