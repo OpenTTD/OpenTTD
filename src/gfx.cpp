@@ -25,6 +25,7 @@
 #include "core/geometry_func.hpp"
 #include "viewport_func.h"
 
+#include "table/animcursors.h"
 #include "table/string_colours.h"
 #include "table/sprites.h"
 #include "table/control_codes.h"
@@ -1723,6 +1724,20 @@ void SetAnimatedMouseCursor(std::span<const AnimCursor> table)
 	_cursor.animate_cur = std::end(table);
 	_cursor.sprites[0].image.pal = PAL_NONE;
 	SwitchAnimatedCursor();
+}
+
+/**
+ * Assign an animation or a non-animated sprite to the cursor.
+ * @param icon New shape of the mouse cursor.
+ * @param pal Palette to use.
+ */
+void SetCursor(CursorID icon, PaletteID pal)
+{
+	if ((icon & ANIMCURSOR_FLAG) != 0) {
+		SetAnimatedMouseCursor(_animcursors[icon & ~ANIMCURSOR_FLAG]);
+	} else {
+		SetMouseCursor(icon, pal);
+	}
 }
 
 /**
