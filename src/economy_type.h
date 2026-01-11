@@ -18,11 +18,11 @@ typedef OverflowSafeInt64 Money;
 
 /** Type of the game economy. */
 enum EconomyType : uint8_t {
-	ET_BEGIN = 0,
-	ET_ORIGINAL = 0,
-	ET_SMOOTH = 1,
-	ET_FROZEN = 2,
-	ET_END = 3,
+	ET_BEGIN = 0, ///< The lowest valid value, used for iteration.
+	ET_ORIGINAL = 0, ///< Imitates original TTD economy.
+	ET_SMOOTH = 1, ///< Makes production changes more often, and in smaller steps.
+	ET_FROZEN = 2, ///< Stops production changes and industry closures.
+	ET_END = 3, ///< How many valid economy types are there, used for iteration.
 };
 
 /**
@@ -59,20 +59,18 @@ struct Economy {
 
 /** Score categories in the detailed performance rating. */
 enum ScoreID : uint8_t {
-	SCORE_BEGIN      = 0,
-	SCORE_VEHICLES   = 0,
-	SCORE_STATIONS   = 1,
-	SCORE_MIN_PROFIT = 2,
-	SCORE_MIN_INCOME = 3,
-	SCORE_MAX_INCOME = 4,
-	SCORE_DELIVERED  = 5,
-	SCORE_CARGO      = 6,
-	SCORE_MONEY      = 7,
-	SCORE_LOAN       = 8,
-	SCORE_TOTAL      = 9,  ///< This must always be the last entry
-	SCORE_END        = 10, ///< How many scores are there..
-
-
+	SCORE_BEGIN = 0, ///< The lowest valid value, used for iteration.
+	SCORE_VEHICLES = 0, ///< Number of vehicles that turned profit last year.
+	SCORE_STATIONS = 1, ///< Number of recently-serviced stations.
+	SCORE_MIN_PROFIT = 2, ///< The profit of the vehicle with the lowest income.
+	SCORE_MIN_INCOME = 3, ///< Income in the quater with the lowest profit of the last 12 quaters.
+	SCORE_MAX_INCOME = 4, ///< Income in the quater with the highest profit of the last 12 quaters.
+	SCORE_DELIVERED = 5, ///< Units of cargo delivered in the last four quaters.
+	SCORE_CARGO = 6, ///< Number of types of cargo delivered in the last four quaters.
+	SCORE_MONEY = 7, ///< Amount of money company has in the bank.
+	SCORE_LOAN = 8, ///< The amount of money company can take as a loan.
+	SCORE_TOTAL = 9, ///< Total points out of possible points ,must always be the last entry.
+	SCORE_END = 10, ///< How many valid scores are there, used for iteration.
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(ScoreID)
 
@@ -93,81 +91,81 @@ struct ScoreInfo {
  * The prices are ordered as they are expected by NewGRF cost multipliers, so don't shuffle them.
  */
 enum Price : uint8_t {
-	PR_BEGIN = 0,
-	PR_STATION_VALUE = 0,
-	PR_BUILD_RAIL,
-	PR_BUILD_ROAD,
-	PR_BUILD_SIGNALS,
-	PR_BUILD_BRIDGE,
-	PR_BUILD_DEPOT_TRAIN,
-	PR_BUILD_DEPOT_ROAD,
-	PR_BUILD_DEPOT_SHIP,
-	PR_BUILD_TUNNEL,
-	PR_BUILD_STATION_RAIL,
-	PR_BUILD_STATION_RAIL_LENGTH,
-	PR_BUILD_STATION_AIRPORT,
-	PR_BUILD_STATION_BUS,
-	PR_BUILD_STATION_TRUCK,
-	PR_BUILD_STATION_DOCK,
-	PR_BUILD_VEHICLE_TRAIN,
-	PR_BUILD_VEHICLE_WAGON,
-	PR_BUILD_VEHICLE_AIRCRAFT,
-	PR_BUILD_VEHICLE_ROAD,
-	PR_BUILD_VEHICLE_SHIP,
-	PR_BUILD_TREES,
-	PR_TERRAFORM,
-	PR_CLEAR_GRASS,
-	PR_CLEAR_ROUGH,
-	PR_CLEAR_ROCKS,
-	PR_CLEAR_FIELDS,
-	PR_CLEAR_TREES,
-	PR_CLEAR_RAIL,
-	PR_CLEAR_SIGNALS,
-	PR_CLEAR_BRIDGE,
-	PR_CLEAR_DEPOT_TRAIN,
-	PR_CLEAR_DEPOT_ROAD,
-	PR_CLEAR_DEPOT_SHIP,
-	PR_CLEAR_TUNNEL,
-	PR_CLEAR_WATER,
-	PR_CLEAR_STATION_RAIL,
-	PR_CLEAR_STATION_AIRPORT,
-	PR_CLEAR_STATION_BUS,
-	PR_CLEAR_STATION_TRUCK,
-	PR_CLEAR_STATION_DOCK,
-	PR_CLEAR_HOUSE,
-	PR_CLEAR_ROAD,
-	PR_RUNNING_TRAIN_STEAM,
-	PR_RUNNING_TRAIN_DIESEL,
-	PR_RUNNING_TRAIN_ELECTRIC,
-	PR_RUNNING_AIRCRAFT,
-	PR_RUNNING_ROADVEH,
-	PR_RUNNING_SHIP,
-	PR_BUILD_INDUSTRY,
-	PR_CLEAR_INDUSTRY,
-	PR_BUILD_OBJECT,
-	PR_CLEAR_OBJECT,
-	PR_BUILD_WAYPOINT_RAIL,
-	PR_CLEAR_WAYPOINT_RAIL,
-	PR_BUILD_WAYPOINT_BUOY,
-	PR_CLEAR_WAYPOINT_BUOY,
-	PR_TOWN_ACTION,
-	PR_BUILD_FOUNDATION,
-	PR_BUILD_INDUSTRY_RAW,
-	PR_BUILD_TOWN,
-	PR_BUILD_CANAL,
-	PR_CLEAR_CANAL,
-	PR_BUILD_AQUEDUCT,
-	PR_CLEAR_AQUEDUCT,
-	PR_BUILD_LOCK,
-	PR_CLEAR_LOCK,
-	PR_INFRASTRUCTURE_RAIL,
-	PR_INFRASTRUCTURE_ROAD,
-	PR_INFRASTRUCTURE_WATER,
-	PR_INFRASTRUCTURE_STATION,
-	PR_INFRASTRUCTURE_AIRPORT,
+	PR_BEGIN = 0, ///< The lowest valid value, used for iteration.
+	PR_STATION_VALUE = 0, ///< Stations value and additional constant company running fee.
+	PR_BUILD_RAIL, ///< Price for building rails.
+	PR_BUILD_ROAD, ///< Price for building roads.
+	PR_BUILD_SIGNALS, ///< Price for building rail signals.
+	PR_BUILD_BRIDGE, ///< Price for building bridges.
+	PR_BUILD_DEPOT_TRAIN, ///< Price for building train depots.
+	PR_BUILD_DEPOT_ROAD, ///< Price for building road vehicle depots.
+	PR_BUILD_DEPOT_SHIP, ///< Price for building ship depots.
+	PR_BUILD_TUNNEL, ///< Price for building tunnels.
+	PR_BUILD_STATION_RAIL, ///< Price for building rail stations.
+	PR_BUILD_STATION_RAIL_LENGTH, ///< Additional price for building rail stations dependent on their length.
+	PR_BUILD_STATION_AIRPORT, ///< Price for building airports.
+	PR_BUILD_STATION_BUS, ///< Price for building bus stops.
+	PR_BUILD_STATION_TRUCK, ///< Price for building lorry stations.
+	PR_BUILD_STATION_DOCK, ///< Price for building docks.
+	PR_BUILD_VEHICLE_TRAIN, ///< Price for purchasing new train engines.
+	PR_BUILD_VEHICLE_WAGON, ///< Price for purchasing new wagons.
+	PR_BUILD_VEHICLE_AIRCRAFT, ///< Price for purchasing new aircrafts.
+	PR_BUILD_VEHICLE_ROAD, ///< Price for purchasing new road vehicles.
+	PR_BUILD_VEHICLE_SHIP, ///< Price for purchasing new ships.
+	PR_BUILD_TREES, ///< Price for planting trees.
+	PR_TERRAFORM, ///< Price for terraforming land, e.g. rising, lowering and flattening.
+	PR_CLEAR_GRASS, ///< Price for destroying grass.
+	PR_CLEAR_ROUGH, ///< Price for destroying rough land.
+	PR_CLEAR_ROCKS, ///< Price for destroying rocks.
+	PR_CLEAR_FIELDS, ///< Price for destroying fields.
+	PR_CLEAR_TREES, ///< Price for destroying trees.
+	PR_CLEAR_RAIL, ///< Price for destroying rails.
+	PR_CLEAR_SIGNALS, ///< Price for destroying rail signals.
+	PR_CLEAR_BRIDGE, ///< Price for destroying bridges.
+	PR_CLEAR_DEPOT_TRAIN, ///< Price for destroying train depots.
+	PR_CLEAR_DEPOT_ROAD, ///< Price for destroying road vehicle depots.
+	PR_CLEAR_DEPOT_SHIP, ///< Price for destroying ship depots.
+	PR_CLEAR_TUNNEL, ///< Price for destroying tunnels.
+	PR_CLEAR_WATER, ///< Price for destroying water e.g. see, rives.
+	PR_CLEAR_STATION_RAIL, ///< Price for destroying rail stations.
+	PR_CLEAR_STATION_AIRPORT, ///< Price for destroying airports.
+	PR_CLEAR_STATION_BUS, ///< Price for destroying bus stops.
+	PR_CLEAR_STATION_TRUCK, ///< Price for destroying lorry stations.
+	PR_CLEAR_STATION_DOCK, ///< Price for destroying docks.
+	PR_CLEAR_HOUSE, ///< Price for destroying houses and other town buildings.
+	PR_CLEAR_ROAD, ///< Price for destroying roads.
+	PR_RUNNING_TRAIN_STEAM, ///< Running cost of steam trains.
+	PR_RUNNING_TRAIN_DIESEL, ///< Running cost of diesel trains.
+	PR_RUNNING_TRAIN_ELECTRIC, ///< Running cost of electric trains.
+	PR_RUNNING_AIRCRAFT, ///< Running cost of aircrafts.
+	PR_RUNNING_ROADVEH, ///< Running cost of road vehicles.
+	PR_RUNNING_SHIP, ///< Running cost of ships.
+	PR_BUILD_INDUSTRY, ///< Price for funding new industries.
+	PR_CLEAR_INDUSTRY, ///< Price for destroying industries.
+	PR_BUILD_OBJECT, ///< Price for building new objects.
+	PR_CLEAR_OBJECT, ///< Price for destroying objects.
+	PR_BUILD_WAYPOINT_RAIL, ///< Price for building new rail waypoints.
+	PR_CLEAR_WAYPOINT_RAIL, ///< Price for destroying rail waypoints.
+	PR_BUILD_WAYPOINT_BUOY, ///< Price for building new buoys.
+	PR_CLEAR_WAYPOINT_BUOY, ///< Price for destroying buoys.
+	PR_TOWN_ACTION, ///< Price for interaction with local authorities.
+	PR_BUILD_FOUNDATION, ///< Price for building foundation under other constructions e.g. roads, rails, depots, objects, etc., etc..
+	PR_BUILD_INDUSTRY_RAW, ///< Price for funding new raw industries, e.g. coal mine, forest.
+	PR_BUILD_TOWN, ///< Price for funding new towns and cities.
+	PR_BUILD_CANAL, ///< Price for building new canals.
+	PR_CLEAR_CANAL, ///< Price for destroying canals.
+	PR_BUILD_AQUEDUCT, ///< Price for building new aqueducts.
+	PR_CLEAR_AQUEDUCT, ///< Price for destroying aqueducts.
+	PR_BUILD_LOCK, ///< Price for building new locks.
+	PR_CLEAR_LOCK, ///< Price for destroying locks.
+	PR_INFRASTRUCTURE_RAIL, ///< Rails maintenance cost.
+	PR_INFRASTRUCTURE_ROAD, ///< Roads maintenance cost.
+	PR_INFRASTRUCTURE_WATER, ///< Canals maintenance cost.
+	PR_INFRASTRUCTURE_STATION, ///< Stations maintenance cost.
+	PR_INFRASTRUCTURE_AIRPORT, ///< Airports maintenance cost.
 
-	PR_END,
-	INVALID_PRICE = 0xFF
+	PR_END, ///< How many valid base prices are there, used for iteration.
+	INVALID_PRICE = 0xFF ///< Invalid base price.
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(Price)
 
