@@ -23,6 +23,7 @@ template <> struct std::hash<BadgeClassID> {
 	}
 };
 
+/** Configuration flags for badges. */
 enum class BadgeFlag : uint8_t {
 	Copy = 0, ///< Copy badge to related things.
 	NameListStop = 1, ///< Stop adding names to the name list after this badge.

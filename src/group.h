@@ -63,6 +63,7 @@ struct GroupStatistics {
 	static void UpdateAutoreplace(CompanyID company);
 };
 
+/** Configuration flags for a group. */
 enum class GroupFlag : uint8_t {
 	ReplaceProtection = 0, ///< If set, the global autoreplace has no effect on the group
 	ReplaceWagonRemoval = 1, ///< If set, autoreplace will perform wagon removal on vehicles in this group.

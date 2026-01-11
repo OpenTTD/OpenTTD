@@ -14,6 +14,7 @@
 #include "saveload/saveload.h"
 #include "core/enum_type.hpp"
 
+/** Flags describing the behaviour of a setting. */
 enum class SettingFlag : uint8_t {
 	GuiZeroIsSpecial, ///< A value of zero is possible and has a custom string (the one after "strval").
 	GuiDropdown, ///< The value represents a limited number of string-options (internally integer) presented as dropdown.

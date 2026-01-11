@@ -1344,6 +1344,7 @@ protected:
 	StringFilter string_filter{}; ///< Filter for industries
 	QueryString industry_editbox; ///< Filter editbox
 
+	/** Ways to sort industries. */
 	enum class SorterType : uint8_t {
 		ByName,        ///< Sorter type to sort by name
 		ByType,        ///< Sorter type to sort by type
