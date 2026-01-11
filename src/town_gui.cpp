@@ -1491,6 +1491,7 @@ public:
 
 	StringID GetClassTooltip() const override { return STR_PICKER_HOUSE_CLASS_TOOLTIP; }
 	StringID GetTypeTooltip() const override { return STR_PICKER_HOUSE_TYPE_TOOLTIP; }
+	StringID GetCollectionTooltip() const override { return STR_PICKER_HOUSE_COLLECTION_TOOLTIP; }
 	bool IsActive() const override { return true; }
 
 	bool HasClassChoice() const override { return true; }
@@ -1580,27 +1581,34 @@ public:
 		}
 	}
 
-	std::set<PickerItem> UpdateSavedItems(const std::set<PickerItem> &src) override
+	std::map<std::string, std::set<PickerItem>> UpdateSavedItems(const std::map<std::string, std::set<PickerItem>> &src) override
 	{
 		if (src.empty()) return src;
 
 		const auto &specs = HouseSpec::Specs();
-		std::set<PickerItem> dst;
-		for (const auto &item : src) {
-			if (item.grfid == 0) {
-				const HouseSpec *hs = HouseSpec::Get(item.local_id);
-				if (hs == nullptr) continue;
-				int class_index = GetClassIdFromHouseZone(hs->building_availability);
-				dst.emplace(item.grfid, item.local_id, class_index, item.local_id);
-			} else {
-				/* Search for spec by grfid and local index. */
-				auto it = std::ranges::find_if(specs, [&item](const HouseSpec &spec) { return spec.grf_prop.grfid == item.grfid && spec.grf_prop.local_id == item.local_id; });
-				if (it == specs.end()) {
-					/* Not preset, hide from UI. */
-					dst.emplace(item.grfid, item.local_id, -1, -1);
+		std::map<std::string, std::set<PickerItem>> dst;
+		for (auto group_it = src.begin(); group_it != src.end(); group_it++) {
+			if (group_it->second.empty() || (group_it->second.size() == 1 && group_it->second.contains({}))) {
+				dst[group_it->first];
+				continue;
+			}
+
+			for (const auto &item : group_it->second) {
+				if (item.grfid == 0) {
+					const HouseSpec *hs = HouseSpec::Get(item.local_id);
+					if (hs == nullptr) continue;
+					int class_index = GetClassIdFromHouseZone(hs->building_availability);
+					dst[group_it->first].emplace(item.grfid, item.local_id, class_index, item.local_id);
 				} else {
-					int class_index = GetClassIdFromHouseZone(it->building_availability);
-					dst.emplace(item.grfid, item.local_id, class_index, it->Index());
+					/* Search for spec by grfid and local index. */
+					auto it = std::ranges::find_if(specs, [&item](const HouseSpec &spec) { return spec.grf_prop.grfid == item.grfid && spec.grf_prop.local_id == item.local_id; });
+					if (it == specs.end()) {
+						/* Not preset, hide from UI. */
+						dst[group_it->first].emplace(item.grfid, item.local_id, -1, -1);
+					} else {
+						int class_index = GetClassIdFromHouseZone(it->building_availability);
+						dst[group_it->first].emplace(item.grfid, item.local_id, class_index, it->Index());
+					}
 				}
 			}
 		}
