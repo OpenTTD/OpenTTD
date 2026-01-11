@@ -412,14 +412,16 @@ static Foundation GetFoundation_Industry(TileIndex tile, Slope tileh)
 static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, CargoTypes &always_accepted)
 {
 	IndustryGfx gfx = GetIndustryGfx(tile);
-	const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);
 	const Industry *ind = Industry::GetByTile(tile);
+	const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);
+	const IndustrySpec *indspec = GetIndustrySpec(ind->type);
 
 	/* Starting point for acceptance */
 	auto accepts_cargo = itspec->accepts_cargo;
 	auto cargo_acceptance = itspec->acceptance;
 
-	if (itspec->special_flags.Test(IndustryTileSpecialFlag::AcceptsAllCargo)) {
+	/* Default (non-NewGRF) industry tiles might accept all cargoes. */
+	if (itspec->special_flags.Test(IndustryTileSpecialFlag::AcceptsAllCargo) || (!_settings_game.economy.traditional_industry_acceptance && !indspec->grf_prop.HasGrfFile() && !itspec->grf_prop.HasGrfFile())) {
 		/* Copy all accepted cargoes from industry itself */
 		for (const auto &a : ind->accepted) {
 			auto pos = std::ranges::find(accepts_cargo, a.cargo);
