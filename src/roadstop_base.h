@@ -19,6 +19,7 @@ extern RoadStopPool _roadstop_pool;
 
 /** A Stop for a Road Vehicle */
 struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
+	/** Flags describing the status of a single road stop. */
 	enum class RoadStopStatusFlag : uint8_t {
 		Bay0Free  = 0, ///< Non-zero when bay 0 is free
 		Bay1Free  = 1, ///< Non-zero when bay 1 is free

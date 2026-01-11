@@ -110,6 +110,7 @@ enum StationClassID : uint16_t {
 /** Allow incrementing of StationClassID variables */
 DECLARE_INCREMENT_DECREMENT_OPERATORS(StationClassID)
 
+/** Flags describing behaviour of NewGRF stations. */
 enum class StationSpecFlag : uint8_t {
 	SeparateGround = 0, ///< Use different sprite set for ground sprites.
 	DivByStationSize = 1, ///< Divide cargo amount by station size.
@@ -163,6 +164,7 @@ struct StationSpec : NewGRFSpecBase<StationClassID> {
 
 	StationSpecFlags flags; ///< Bitmask of flags, bit 0: use different sprite set; bit 1: divide cargo about by station size
 
+	/** Flags describing the behaviour for individual tiles of a station. */
 	enum class TileFlag : uint8_t {
 		Pylons = 0, ///< Tile should contain catenary pylons.
 		NoWires = 1, ///< Tile should NOT contain catenary wires.
