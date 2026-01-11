@@ -787,6 +787,14 @@ bool AfterLoadGame()
 		_settings_game.linkgraph.distribution_default = DT_MANUAL;
 	}
 
+	if (IsSavegameVersionBefore(SLV_ASYMMETRIC_EQUAL_DISTRIBUTION)) {
+		/* Asymmetric (equal) was inserted before Symmetric. */
+		if (_settings_game.linkgraph.distribution_pax == DT_ASYMMETRIC_EQUAL) _settings_game.linkgraph.distribution_pax = DT_SYMMETRIC;
+		if (_settings_game.linkgraph.distribution_mail == DT_ASYMMETRIC_EQUAL) _settings_game.linkgraph.distribution_mail = DT_SYMMETRIC;
+		if (_settings_game.linkgraph.distribution_armoured == DT_ASYMMETRIC_EQUAL) _settings_game.linkgraph.distribution_armoured = DT_SYMMETRIC;
+		if (_settings_game.linkgraph.distribution_default == DT_ASYMMETRIC_EQUAL) _settings_game.linkgraph.distribution_default = DT_SYMMETRIC;
+	}
+
 	if (IsSavegameVersionBefore(SLV_ENDING_YEAR)) {
 		_settings_game.game_creation.ending_year = CalendarTime::DEF_END_YEAR;
 	}
