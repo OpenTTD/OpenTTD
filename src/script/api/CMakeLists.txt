@@ -206,6 +206,7 @@ add_files(
     script_subsidylist.hpp
     script_testmode.hpp
     script_text.hpp
+    script_text_effect.hpp
     script_tile.hpp
     script_tilelist.hpp
     script_town.hpp
@@ -278,6 +279,7 @@ add_files(
     script_subsidylist.cpp
     script_testmode.cpp
     script_text.cpp
+    script_text_effect.cpp
     script_tile.cpp
     script_tilelist.cpp
     script_town.cpp
