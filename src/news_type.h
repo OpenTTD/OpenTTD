@@ -23,6 +23,8 @@
 #include "town_type.h"
 #include "vehicle_type.h"
 
+#include "table/strings.h"
+
 /**
  * Type of news.
  */
@@ -169,6 +171,44 @@ struct CompanyNewsInformation : NewsAllocatedData {
 	Colours colour; ///< The colour related to the company
 
 	CompanyNewsInformation(StringID title, const struct Company *c, const struct Company *other = nullptr);
+
+	CompanyNewsInformation &operator=(const CompanyNewsInformation &b)
+	{
+		this->company_name = b.company_name;
+		this->president_name = b.president_name;
+		this->other_company_name = b.other_company_name;
+		this->title = b.title;
+		this->face = b.face;
+		this->colour = b.colour;
+		return *this;
+	}
+
+	CompanyNewsInformation(const CompanyNewsInformation &b) { this->operator=(b); }
+};
+
+/**
+ * Data that needs to be stored for massage with an engine.
+ */
+struct EnginePreviewNewsInformation : NewsAllocatedData {
+	std::string title;
+	std::vector<std::string> additional_messages;
+
+	EnginePreviewNewsInformation(const EncodedString &p_title) : title(p_title.GetDecodedString()) {}
+	EnginePreviewNewsInformation(const std::string &p_title) : title(p_title) {}
+
+	EnginePreviewNewsInformation &operator=(const EnginePreviewNewsInformation &b)
+	{
+		this->title = b.title;
+		this->additional_messages = b.additional_messages;
+		return *this;
+	}
+
+	EnginePreviewNewsInformation(const EnginePreviewNewsInformation &b) { this->operator=(b); }
+
+	void AddAdditionalMessage(const EncodedString &message)
+	{
+		this->additional_messages.push_back(message.GetDecodedString() + '\n');
+	}
 };
 
 using NewsContainer = std::list<NewsItem>; ///< Container type for storing news items.
