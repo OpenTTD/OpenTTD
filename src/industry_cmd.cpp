@@ -2915,7 +2915,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		}
 	} else {
 		if (monthly == original_economy) return;
-		if (!original_economy && _settings_game.economy.type == ET_FROZEN) return;
+		if (!original_economy && _settings_game.economy.type == EconomyType::Frozen) return;
 		if (indspec->life_type == INDUSTRYLIFE_BLACK_HOLE) return;
 	}
 
@@ -2932,7 +2932,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 					div = 1; // Decrease production
 				}
 			}
-		} else if (_settings_game.economy.type == ET_SMOOTH) {
+		} else if (_settings_game.economy.type == EconomyType::Smooth) {
 			closeit = !i->ctlflags.Any({IndustryControlFlag::NoClosure, IndustryControlFlag::NoProductionDecrease});
 			for (auto &p : i->produced) {
 				if (!IsValidCargoType(p.cargo)) continue;
@@ -3224,7 +3224,7 @@ Money IndustrySpec::GetRemovalCost() const
  */
 bool IndustrySpec::UsesOriginalEconomy() const
 {
-	return _settings_game.economy.type == ET_ORIGINAL ||
+	return _settings_game.economy.type == EconomyType::Original ||
 		this->callback_mask.Any({
 			IndustryCallbackMask::Production256Ticks,
 			IndustryCallbackMask::ProductionCargoArrival, // production callbacks
