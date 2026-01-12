@@ -125,7 +125,7 @@ inline RoadBits AxisToRoadBits(Axis a)
 inline Money RoadMaintenanceCost(RoadType roadtype, uint32_t num, uint32_t total_num)
 {
 	assert(roadtype < ROADTYPE_END);
-	return (_price[PR_INFRASTRUCTURE_ROAD] * GetRoadTypeInfo(roadtype)->maintenance_multiplier * num * (1 + IntSqrt(total_num))) >> 12;
+	return (_price[Price::InfrastructureRoad] * GetRoadTypeInfo(roadtype)->maintenance_multiplier * num * (1 + IntSqrt(total_num))) >> 12;
 }
 
 /**

@@ -442,7 +442,7 @@ public:
 			}
 
 			if (_settings_game.economy.infrastructure_maintenance) {
-				Money monthly = _price[PR_INFRASTRUCTURE_AIRPORT] * as->maintenance_cost >> 3;
+				Money monthly = _price[Price::InfrastructureAirport] * as->maintenance_cost >> 3;
 				DrawString(r, GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD : STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR, monthly * 12));
 				r.top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 			}

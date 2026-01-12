@@ -423,7 +423,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 				item.spec = GetBridgeSpec(brd_type);
 				/* Add to terraforming & bulldozing costs the cost of the
 				 * bridge itself (not computed with DoCommandFlag::QueryCost) */
-				item.cost = ret.GetCost() + (((int64_t)tot_bridgedata_len * _price[PR_BUILD_BRIDGE] * item.spec->price) >> 8) + infra_cost;
+				item.cost = ret.GetCost() + (((int64_t)tot_bridgedata_len * _price[Price::BuildBridge] * item.spec->price) >> 8) + infra_cost;
 				any_available = true;
 			}
 		}

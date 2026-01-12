@@ -122,7 +122,7 @@ static Money CalculateCompanyAssetValue(const Company *c)
 		if (st->owner == owner) num += st->facilities.Count();
 	}
 
-	Money value = num * _price[PR_STATION_VALUE] * 25;
+	Money value = num * _price[Price::StationValue] * 25;
 
 	for (const Vehicle *v : Vehicle::Iterate()) {
 		if (v->owner != owner) continue;
@@ -740,7 +740,7 @@ void RecomputePrices()
 	_economy.max_loan = ((uint64_t)_settings_game.difficulty.max_loan * _economy.inflation_prices >> 16) / LOAN_INTERVAL * LOAN_INTERVAL;
 
 	/* Setup price bases */
-	for (Price i = PR_BEGIN; i < PR_END; i++) {
+	for (Price i = Price::Begin; i < Price::End; i++) {
 		Money price = _price_base_specs[i].start_price;
 
 		/* Apply difficulty settings */
@@ -828,7 +828,7 @@ static void CompaniesPayInterest()
 
 		SubtractMoneyFromCompany(c->index, CommandCost(EXPENSES_LOAN_INTEREST, up_to_this_month - up_to_previous_month));
 
-		SubtractMoneyFromCompany(c->index, CommandCost(EXPENSES_OTHER, _price[PR_STATION_VALUE] >> 2));
+		SubtractMoneyFromCompany(c->index, CommandCost(EXPENSES_OTHER, _price[Price::StationValue] >> 2));
 	}
 }
 
@@ -872,7 +872,7 @@ void ResetPriceBaseMultipliers()
  */
 void SetPriceBaseMultiplier(Price price, int factor)
 {
-	assert(price < PR_END);
+	assert(price < Price::End);
 	_price_base_multiplier[price] = Clamp(factor, MIN_PRICE_MODIFIER, MAX_PRICE_MODIFIER);
 }
 
@@ -939,7 +939,7 @@ void InitializeEconomy()
  */
 Money GetPrice(Price index, uint cost_factor, const GRFFile *grf_file, int shift)
 {
-	if (index >= PR_END) return 0;
+	if (index >= Price::End) return 0;
 
 	Money cost = _price[index] * cost_factor;
 	if (grf_file != nullptr) shift += grf_file->price_base_multipliers[index];

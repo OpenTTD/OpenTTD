@@ -235,7 +235,7 @@ public:
 		switch (widget) {
 			case WID_TA_ACTION_INFO:
 				if (this->sel_action != TownAction::End) {
-					Money action_cost = _price[PR_TOWN_ACTION] * GetTownActionCost(this->sel_action) >> 8;
+					Money action_cost = _price[Price::TownAction] * GetTownActionCost(this->sel_action) >> 8;
 					bool affordable = Company::IsValidID(_local_company) && action_cost < GetAvailableMoney(_local_company);
 
 					DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.framerect),
@@ -253,7 +253,7 @@ public:
 				assert(size.width > padding.width && size.height > padding.height);
 				Dimension d = {0, 0};
 				for (TownAction i = {}; i != TownAction::End; ++i) {
-					Money price = _price[PR_TOWN_ACTION] * GetTownActionCost(i) >> 8;
+					Money price = _price[Price::TownAction] * GetTownActionCost(i) >> 8;
 					d = maxdim(d, GetStringMultiLineBoundingBox(GetString(this->action_tooltips[to_underlying(i)], price), size));
 				}
 				d.width += padding.width;

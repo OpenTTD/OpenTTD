@@ -494,10 +494,10 @@ static bool IsValidSignalType(int signal_type)
 
 	switch (build_type) {
 		case BT_TRACK:    return ::RailBuildCost((::RailType)railtype);
-		case BT_SIGNAL:   return ::GetPrice(PR_BUILD_SIGNALS, 1, nullptr);
-		case BT_DEPOT:    return ::GetPrice(PR_BUILD_DEPOT_TRAIN, 1, nullptr);
-		case BT_STATION:  return ::GetPrice(PR_BUILD_STATION_RAIL, 1, nullptr) + ::GetPrice(PR_BUILD_STATION_RAIL_LENGTH, 1, nullptr);
-		case BT_WAYPOINT: return ::GetPrice(PR_BUILD_WAYPOINT_RAIL, 1, nullptr);
+		case BT_SIGNAL:   return ::GetPrice(Price::BuildSignals, 1, nullptr);
+		case BT_DEPOT:    return ::GetPrice(Price::BuildDepotTrain, 1, nullptr);
+		case BT_STATION:  return ::GetPrice(Price::BuildStationRail, 1, nullptr) + ::GetPrice(Price::BuildStationRailLength, 1, nullptr);
+		case BT_WAYPOINT: return ::GetPrice(Price::BuildWaypointRail, 1, nullptr);
 		default: return -1;
 	}
 }

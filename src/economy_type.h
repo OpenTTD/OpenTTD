@@ -90,86 +90,86 @@ struct ScoreInfo {
  * Enumeration of all base prices for use with #Prices.
  * The prices are ordered as they are expected by NewGRF cost multipliers, so don't shuffle them.
  */
-enum Price : uint8_t {
-	PR_BEGIN = 0, ///< The lowest valid value.
-	PR_STATION_VALUE = 0, ///< Stations value and additional constant company running fee.
-	PR_BUILD_RAIL, ///< Price for building rails.
-	PR_BUILD_ROAD, ///< Price for building roads.
-	PR_BUILD_SIGNALS, ///< Price for building rail signals.
-	PR_BUILD_BRIDGE, ///< Price for building bridges.
-	PR_BUILD_DEPOT_TRAIN, ///< Price for building train depots.
-	PR_BUILD_DEPOT_ROAD, ///< Price for building road vehicle depots.
-	PR_BUILD_DEPOT_SHIP, ///< Price for building ship depots.
-	PR_BUILD_TUNNEL, ///< Price for building tunnels.
-	PR_BUILD_STATION_RAIL, ///< Price for building rail stations.
-	PR_BUILD_STATION_RAIL_LENGTH, ///< Additional price for building rail stations dependent on their length.
-	PR_BUILD_STATION_AIRPORT, ///< Price for building airports.
-	PR_BUILD_STATION_BUS, ///< Price for building bus stops.
-	PR_BUILD_STATION_TRUCK, ///< Price for building lorry stations.
-	PR_BUILD_STATION_DOCK, ///< Price for building docks.
-	PR_BUILD_VEHICLE_TRAIN, ///< Price for purchasing new train engines.
-	PR_BUILD_VEHICLE_WAGON, ///< Price for purchasing new wagons.
-	PR_BUILD_VEHICLE_AIRCRAFT, ///< Price for purchasing new aircrafts.
-	PR_BUILD_VEHICLE_ROAD, ///< Price for purchasing new road vehicles.
-	PR_BUILD_VEHICLE_SHIP, ///< Price for purchasing new ships.
-	PR_BUILD_TREES, ///< Price for planting trees.
-	PR_TERRAFORM, ///< Price for terraforming land, e.g. rising, lowering and flattening.
-	PR_CLEAR_GRASS, ///< Price for destroying grass.
-	PR_CLEAR_ROUGH, ///< Price for destroying rough land.
-	PR_CLEAR_ROCKS, ///< Price for destroying rocks.
-	PR_CLEAR_FIELDS, ///< Price for destroying fields.
-	PR_CLEAR_TREES, ///< Price for destroying trees.
-	PR_CLEAR_RAIL, ///< Price for destroying rails.
-	PR_CLEAR_SIGNALS, ///< Price for destroying rail signals.
-	PR_CLEAR_BRIDGE, ///< Price for destroying bridges.
-	PR_CLEAR_DEPOT_TRAIN, ///< Price for destroying train depots.
-	PR_CLEAR_DEPOT_ROAD, ///< Price for destroying road vehicle depots.
-	PR_CLEAR_DEPOT_SHIP, ///< Price for destroying ship depots.
-	PR_CLEAR_TUNNEL, ///< Price for destroying tunnels.
-	PR_CLEAR_WATER, ///< Price for destroying water e.g. see, rives.
-	PR_CLEAR_STATION_RAIL, ///< Price for destroying rail stations.
-	PR_CLEAR_STATION_AIRPORT, ///< Price for destroying airports.
-	PR_CLEAR_STATION_BUS, ///< Price for destroying bus stops.
-	PR_CLEAR_STATION_TRUCK, ///< Price for destroying lorry stations.
-	PR_CLEAR_STATION_DOCK, ///< Price for destroying docks.
-	PR_CLEAR_HOUSE, ///< Price for destroying houses and other town buildings.
-	PR_CLEAR_ROAD, ///< Price for destroying roads.
-	PR_RUNNING_TRAIN_STEAM, ///< Running cost of steam trains.
-	PR_RUNNING_TRAIN_DIESEL, ///< Running cost of diesel trains.
-	PR_RUNNING_TRAIN_ELECTRIC, ///< Running cost of electric trains.
-	PR_RUNNING_AIRCRAFT, ///< Running cost of aircrafts.
-	PR_RUNNING_ROADVEH, ///< Running cost of road vehicles.
-	PR_RUNNING_SHIP, ///< Running cost of ships.
-	PR_BUILD_INDUSTRY, ///< Price for funding new industries.
-	PR_CLEAR_INDUSTRY, ///< Price for destroying industries.
-	PR_BUILD_OBJECT, ///< Price for building new objects.
-	PR_CLEAR_OBJECT, ///< Price for destroying objects.
-	PR_BUILD_WAYPOINT_RAIL, ///< Price for building new rail waypoints.
-	PR_CLEAR_WAYPOINT_RAIL, ///< Price for destroying rail waypoints.
-	PR_BUILD_WAYPOINT_BUOY, ///< Price for building new buoys.
-	PR_CLEAR_WAYPOINT_BUOY, ///< Price for destroying buoys.
-	PR_TOWN_ACTION, ///< Price for interaction with local authorities.
-	PR_BUILD_FOUNDATION, ///< Price for building foundation under other constructions e.g. roads, rails, depots, objects, etc., etc..
-	PR_BUILD_INDUSTRY_RAW, ///< Price for funding new raw industries, e.g. coal mine, forest.
-	PR_BUILD_TOWN, ///< Price for funding new towns and cities.
-	PR_BUILD_CANAL, ///< Price for building new canals.
-	PR_CLEAR_CANAL, ///< Price for destroying canals.
-	PR_BUILD_AQUEDUCT, ///< Price for building new aqueducts.
-	PR_CLEAR_AQUEDUCT, ///< Price for destroying aqueducts.
-	PR_BUILD_LOCK, ///< Price for building new locks.
-	PR_CLEAR_LOCK, ///< Price for destroying locks.
-	PR_INFRASTRUCTURE_RAIL, ///< Rails maintenance cost.
-	PR_INFRASTRUCTURE_ROAD, ///< Roads maintenance cost.
-	PR_INFRASTRUCTURE_WATER, ///< Canals maintenance cost.
-	PR_INFRASTRUCTURE_STATION, ///< Stations maintenance cost.
-	PR_INFRASTRUCTURE_AIRPORT, ///< Airports maintenance cost.
-	PR_END, ///< Price base end marker.
-	INVALID_PRICE = 0xFF ///< Invalid base price.
+enum class Price : uint8_t {
+	Begin, ///< The lowest valid value.
+	StationValue = Price::Begin, ///< Stations value and additional constant company running fee.
+	BuildRail, ///< Price for building rails.
+	BuildRoad, ///< Price for building roads.
+	BuildSignals, ///< Price for building rail signals.
+	BuildBridge, ///< Price for building bridges.
+	BuildDepotTrain, ///< Price for building train depots.
+	BuildDepotRoad, ///< Price for building road vehicle depots.
+	BuildDepotShip, ///< Price for building ship depots.
+	BuildTunnel, ///< Price for building tunnels.
+	BuildStationRail, ///< Price for building rail stations.
+	BuildStationRailLength, ///< Additional price for building rail stations dependent on their length.
+	BuildStationAirport, ///< Price for building airports.
+	BuildStationBus, ///< Price for building bus stops.
+	BuildStationTruck, ///< Price for building lorry stations.
+	BuildStationDock, ///< Price for building docks.
+	BuildVehicleTrain, ///< Price for purchasing new train engines.
+	BuildVehicleWagon, ///< Price for purchasing new wagons.
+	BuildVehicleAircraft, ///< Price for purchasing new aircrafts.
+	BuildVehicleRoad, ///< Price for purchasing new road vehicles.
+	BuildVehicleShip, ///< Price for purchasing new ships.
+	BuildTrees, ///< Price for planting trees.
+	Terraform, ///< Price for terraforming land, e.g. rising, lowering and flattening.
+	ClearGrass, ///< Price for destroying grass.
+	ClearRough, ///< Price for destroying rough land.
+	ClearRocks, ///< Price for destroying rocks.
+	ClearFields, ///< Price for destroying fields.
+	ClearTrees, ///< Price for destroying trees.
+	ClearRail, ///< Price for destroying rails.
+	ClearSignals, ///< Price for destroying rail signals.
+	ClearBridge, ///< Price for destroying bridges.
+	ClearDepotTrain, ///< Price for destroying train depots.
+	ClearDepotRoad, ///< Price for destroying road vehicle depots.
+	ClearDepotShip, ///< Price for destroying ship depots.
+	ClearTunnel, ///< Price for destroying tunnels.
+	ClearWater, ///< Price for destroying water e.g. see, rives.
+	ClearStationRail, ///< Price for destroying rail stations.
+	ClearStationAirport, ///< Price for destroying airports.
+	ClearStationBus, ///< Price for destroying bus stops.
+	ClearStationTruck, ///< Price for destroying lorry stations.
+	ClearStationDock, ///< Price for destroying docks.
+	ClearHouse, ///< Price for destroying houses and other town buildings.
+	ClearRoad, ///< Price for destroying roads.
+	RunningTrainSteam, ///< Running cost of steam trains.
+	RunningTrainDiesel, ///< Running cost of diesel trains.
+	RunningTrainElectric, ///< Running cost of electric trains.
+	RunningAircraft, ///< Running cost of aircrafts.
+	RunningRoadveh, ///< Running cost of road vehicles.
+	RunningShip, ///< Running cost of ships.
+	BuildIndustry, ///< Price for funding new industries.
+	ClearIndustry, ///< Price for destroying industries.
+	BuildObject, ///< Price for building new objects.
+	ClearObject, ///< Price for destroying objects.
+	BuildWaypointRail, ///< Price for building new rail waypoints.
+	ClearWaypointRail, ///< Price for destroying rail waypoints.
+	BuildWaypointBuoy, ///< Price for building new buoys.
+	ClearWaypointBuoy, ///< Price for destroying buoys.
+	TownAction, ///< Price for interaction with local authorities.
+	BuildFoundation, ///< Price for building foundation under other constructions e.g. roads, rails, depots, objects, etc., etc..
+	BuildIndustryRaw, ///< Price for funding new raw industries, e.g. coal mine, forest.
+	BuildTown, ///< Price for funding new towns and cities.
+	BuildCanal, ///< Price for building new canals.
+	ClearCanal, ///< Price for destroying canals.
+	BuildAqueduct, ///< Price for building new aqueducts.
+	ClearAqueduct, ///< Price for destroying aqueducts.
+	BuildLock, ///< Price for building new locks.
+	ClearLock, ///< Price for destroying locks.
+	InfrastructureRail, ///< Rails maintenance cost.
+	InfrastructureRoad, ///< Roads maintenance cost.
+	InfrastructureWater, ///< Canals maintenance cost.
+	InfrastructureStation, ///< Stations maintenance cost.
+	InfrastructureAirport, ///< Airports maintenance cost.
+	End, ///< Price base end marker.
+	Invalid = 0xFF ///< Invalid base price.
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(Price)
 
-typedef Money Prices[PR_END]; ///< Prices of everything. @see Price
-using PriceMultipliers = std::array<int8_t, PR_END>;
+using Prices = EnumClassIndexContainer<std::array<Money,to_underlying(Price::End)>, Price>; ///< Prices of everything. @see Price
+using PriceMultipliers = EnumClassIndexContainer<std::array<int8_t, to_underlying(Price::End)>, Price>;
 
 /** Types of expenses. */
 enum ExpensesType : uint8_t {

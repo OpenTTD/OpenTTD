@@ -338,15 +338,15 @@
 /* static */ Money ScriptTile::GetBuildCost(BuildType build_type)
 {
 	switch (build_type) {
-		case BT_FOUNDATION:   return ::GetPrice(PR_BUILD_FOUNDATION, 1, nullptr);
-		case BT_TERRAFORM:    return ::GetPrice(PR_TERRAFORM, 1, nullptr);
-		case BT_BUILD_TREES:  return ::GetPrice(PR_BUILD_TREES, 1, nullptr);
-		case BT_CLEAR_GRASS:  return ::GetPrice(PR_CLEAR_GRASS, 1, nullptr);
-		case BT_CLEAR_ROUGH:  return ::GetPrice(PR_CLEAR_ROUGH, 1, nullptr);
-		case BT_CLEAR_ROCKY:  return ::GetPrice(PR_CLEAR_ROCKS, 1, nullptr);
-		case BT_CLEAR_FIELDS: return ::GetPrice(PR_CLEAR_FIELDS, 1, nullptr);
-		case BT_CLEAR_HOUSE:  return ::GetPrice(PR_CLEAR_HOUSE, 1, nullptr);
-		case BT_CLEAR_WATER:  return ::GetPrice(PR_CLEAR_WATER, 1, nullptr);
+		case BT_FOUNDATION:   return ::GetPrice(Price::BuildFoundation, 1, nullptr);
+		case BT_TERRAFORM:    return ::GetPrice(Price::Terraform, 1, nullptr);
+		case BT_BUILD_TREES:  return ::GetPrice(Price::BuildTrees, 1, nullptr);
+		case BT_CLEAR_GRASS:  return ::GetPrice(Price::ClearGrass, 1, nullptr);
+		case BT_CLEAR_ROUGH:  return ::GetPrice(Price::ClearRough, 1, nullptr);
+		case BT_CLEAR_ROCKY:  return ::GetPrice(Price::ClearRocks, 1, nullptr);
+		case BT_CLEAR_FIELDS: return ::GetPrice(Price::ClearFields, 1, nullptr);
+		case BT_CLEAR_HOUSE:  return ::GetPrice(Price::ClearHouse, 1, nullptr);
+		case BT_CLEAR_WATER:  return ::GetPrice(Price::ClearWater, 1, nullptr);
 		default: return -1;
 	}
 }

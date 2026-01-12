@@ -4089,7 +4089,7 @@ Money Train::GetRunningCost() const
 
 	do {
 		const Engine *e = v->GetEngine();
-		if (e->VehInfo<RailVehicleInfo>().running_cost_class == INVALID_PRICE) continue;
+		if (e->VehInfo<RailVehicleInfo>().running_cost_class == Price::Invalid) continue;
 
 		uint cost_factor = GetVehicleProperty(v, PROP_TRAIN_RUNNING_COST_FACTOR, e->VehInfo<RailVehicleInfo>().running_cost);
 		if (cost_factor == 0) continue;

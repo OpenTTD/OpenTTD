@@ -686,7 +686,7 @@ CommandCost CmdLandscapeClear(DoCommandFlags flags, TileIndex tile)
 		/* Buoy tiles are special as they can be cleared by anyone, but the underlying tile shouldn't be cleared if it has a different owner. */
 		if (!IsBuoyTile(tile) || GetTileOwner(tile) == _current_company) {
 			do_clear = true;
-			cost.AddCost(GetWaterClass(tile) == WaterClass::Canal ? _price[PR_CLEAR_CANAL] : _price[PR_CLEAR_WATER]);
+			cost.AddCost(GetWaterClass(tile) == WaterClass::Canal ? _price[Price::ClearCanal] : _price[Price::ClearWater]);
 		}
 	}
 

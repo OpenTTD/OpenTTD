@@ -402,10 +402,10 @@ static constexpr EngineInfo _orig_engine_info[] = {
 #define O RAILTYPE_MONO
 #define L RAILTYPE_MAGLEV
 
-#define RC_S PR_RUNNING_TRAIN_STEAM
-#define RC_D PR_RUNNING_TRAIN_DIESEL
-#define RC_E PR_RUNNING_TRAIN_ELECTRIC
-#define RC_W INVALID_PRICE
+#define RC_S Price::RunningTrainSteam
+#define RC_D Price::RunningTrainDiesel
+#define RC_E Price::RunningTrainElectric
+#define RC_W Price::Invalid
 
 static constexpr RailVehicleInfo _orig_rail_vehicle_info[] = {
 	/*   image_index  max_speed          running_cost      engclass
@@ -667,7 +667,7 @@ static constexpr AircraftVehicleInfo _orig_aircraft_vehicle_info[] = {
  * Tractive effort coefficient by default is the same as TTDPatch, 0.30*256=76
  * Air drag value depends on the top speed of the vehicle.
  */
-#define ROV(a, b, c, d, e, f, g, h) { a, b, c, PR_RUNNING_ROADVEH, d, e, f, g, h, 76, 0, VE_DEFAULT, 0, ROADTYPE_ROAD }
+#define ROV(a, b, c, d, e, f, g, h) { a, b, c, Price::RunningRoadveh, d, e, f, g, h, 76, 0, VE_DEFAULT, 0, ROADTYPE_ROAD }
 static constexpr RoadVehicleInfo _orig_road_vehicle_info[] = {
 	/*    image_index       sfx                            max_speed    power
 	 *    |    cost_factor  |                              |   capacity |

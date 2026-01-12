@@ -310,22 +310,22 @@ static CommandCost GetRefitCost(const Vehicle *v, EngineID engine_type, CargoTyp
 	int cost_factor = GetRefitCostFactor(v, engine_type, new_cargo_type, new_subtype, auto_refit_allowed);
 	switch (e->type) {
 		case VEH_SHIP:
-			base_price = PR_BUILD_VEHICLE_SHIP;
+			base_price = Price::BuildVehicleShip;
 			expense_type = EXPENSES_SHIP_RUN;
 			break;
 
 		case VEH_ROAD:
-			base_price = PR_BUILD_VEHICLE_ROAD;
+			base_price = Price::BuildVehicleRoad;
 			expense_type = EXPENSES_ROADVEH_RUN;
 			break;
 
 		case VEH_AIRCRAFT:
-			base_price = PR_BUILD_VEHICLE_AIRCRAFT;
+			base_price = Price::BuildVehicleAircraft;
 			expense_type = EXPENSES_AIRCRAFT_RUN;
 			break;
 
 		case VEH_TRAIN:
-			base_price = (e->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_WAGON) ? PR_BUILD_VEHICLE_WAGON : PR_BUILD_VEHICLE_TRAIN;
+			base_price = (e->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_WAGON) ? Price::BuildVehicleWagon : Price::BuildVehicleTrain;
 			cost_factor <<= 1;
 			expense_type = EXPENSES_TRAIN_RUN;
 			break;
