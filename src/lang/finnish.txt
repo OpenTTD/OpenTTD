@@ -1598,7 +1598,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Alkuperäinen m
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Alkuperäinen
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
-STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Maaston tyyppi: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Enimmäiskorkeuden esiasetus: {STRING}
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Valitse maiseman mäkien ja vuorten korkeus
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Teollisuuden määrä: {STRING}
@@ -1626,7 +1626,13 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Tasainen
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Epätasainen
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Erittäin epätasainen
 
+STR_CONFIG_SETTING_AVERAGE_HEIGHT                               :Keskimääräinen korkeus: {STRING}
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT                      :Valitse maaston keskimääräinen korkeus. ”Automaattinen” käyttää valitun maastotyypin oletusta: ”alangot” subtrooppiselle, ”normaali” lauhkealle ja lelumaalle, ”ylängöt” pohjoiselle
 ###length 4
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUTO                          :Automaattinen
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_LOWLANDS                      :Alangot
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL                        :Normaali
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS                      :Ylängöt
 
 STR_CONFIG_SETTING_VARIETY                                      :Maaston vaihtelu: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Valitse, onko kartalla sekä vuoristoisia että tasaisia alueita. Mitä suurempi on vaihtelu, sitä suurempia ovat korkeuserot vuoristoisten ja tasaisten alueiden välillä
@@ -2035,7 +2041,7 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Neliöllinen (a
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineaarinen
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Puiden istutus pelissä: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Määrittää puiden sattumanvaraisen luomisen. Tämä voi vaikuttaa teollisuuslaitoksiin, jotka ovat riippuvaisia puiden kasvamisesta, esimerkiksi subtrooppisen ilmaston sahat.
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Määrittää puiden sattumanvaraisen luomisen. Tämä voi vaikuttaa teollisuuslaitoksiin, jotka ovat riippuvaisia puiden kasvamisesta, esimerkiksi subtrooppisen maastotyypin sahat.
 ###length 4
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Puut kasvavat, mutta eivät leviä {RED}(rikkoo subtrooppisen sahan)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Puut kasvavat, mutta leviävät vain sademetsissä
@@ -2105,7 +2111,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :”Symmetrinen�
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Postin jakautuminen: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :”Symmetrinen” tarkoittaa, että suunnilleen sama määrä postia kulkee asemalta A asemalle B kuin asemalta B asemalle A. ”Epäsymmetrinen” tarkoittaa, että postia voi kulkea mielivaltainen määrä kumpaankin suuntaan. ”Manuaalinen” tarkoittaa, että automaattista jakautumista ei sovelleta postiin
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Arvokuljetusten jakautuminen: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Arvokuljetuksiin kuuluvat arvotavarat lauhkeassa ilmastossa, timantit subtrooppisessa ilmastossa ja kulta pohjoisessa ilmastossa. NewGRF:t voivat kuitenkin muuttaa näitä rahteja. ”Symmetrinen” tarkoittaa, että suunnilleen sama määrä rahtia lähetetään asemalta A asemalle B kuin asemalta B asemalle A. ”Epäsymmetrinen” tarkoittaa, että tätä rahtia voidaan lähettää mielivaltainen määrä kumpaankin suuntaan. ”Manuaalinen” tarkoittaa, että automaattista jakautumista ei sovelleta tähän rahtiin. Suositeltavia asetuksia ovat ”epäsymmetrinen” tai ”manuaalinen” pelattaessa pohjoisessa tai subtrooppisessa ilmastossa, sillä näissä pankit ottavat ainoastaan vastaan rahtia. Lauhkeassa ilmastossa pelatessa voidaan myös valita ”symmetrinen”, sillä pankit myös lähettävät arvotavaroita takaisin lähtöpankille
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Arvokuljetuksiin kuuluvat arvotavarat lauhkeassa, timantit subtrooppisessa ja kulta pohjoisessa maastotyypissä. NewGRF:t voivat kuitenkin muuttaa näitä rahteja. ”Symmetrinen” tarkoittaa, että suunnilleen sama määrä rahtia lähetetään asemalta A asemalle B kuin asemalta B asemalle A. ”Epäsymmetrinen” tarkoittaa, että tätä rahtia voidaan lähettää mielivaltainen määrä kumpaankin suuntaan. ”Manuaalinen” tarkoittaa, että automaattista jakautumista ei sovelleta tähän rahtiin. Suositeltavia asetuksia ovat ”epäsymmetrinen” tai ”manuaalinen” pelattaessa pohjoisessa tai subtrooppisessa maastotyypissä, sillä näissä pankit ainoastaan ottavat vastaan rahtia. Lauhkeassa maastotyypissä pelatessa voidaan myös valita ”symmetrinen”, sillä pankit myös lähettävät arvotavaroita takaisin lähtöpankille
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Muiden rahtityyppien jakautuminen: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :”Epäsymmetrinen” tarkoittaa, että rahtia voidaan lähettää mielivaltainen määrä kumpaankin suuntaan. ”Manuaalinen” tarkoittaa, että automaattista jakautumista ei sovelleta näihin rahteihin
 ###length 3
@@ -3388,7 +3394,8 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Aavikon 
 STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Kasvata aavikon peittoa 10 prosentilla
 STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Vähennä aavikon peittoa 10 prosentilla
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}{NBSP}%
-STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maaston tyyppi:
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Enimmäiskorkeus:
+STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}Keskikorkeus:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Merenpinta:
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Valitse merenpinnan taso
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Joet:

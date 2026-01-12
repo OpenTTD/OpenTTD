@@ -1117,7 +1117,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Velg grafikkset
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Tilleggsinformasjon om grafikksettet
 
 STR_GAME_OPTIONS_BASE_SFX                                       :Lydsett
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Velg lydsett som skal brukes (kan ikke endres inne i spillet, bare fra hovedmenyen)
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Velg lydsett som skal brukes
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Tilleggsinformasjon om lydsettet
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :Musikksett
@@ -1225,7 +1225,7 @@ STR_SUBSIDY_X4                                                  :x4
 STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Temperert landskap
 STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Subarktisk landskap
 STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Subtropisk landskap
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Leketøylandskap
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Leketøyland
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Veldig flatt
@@ -1600,7 +1600,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Den opprinnelig
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Orginal
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
-STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Terrengtype: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Valgt maksimal høyde: {STRING}
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Velg høyden til bakker og fjell i landskapet
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industritetthet: {STRING}
@@ -1628,7 +1628,13 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Jevnt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Ulendt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Veldig ulendt
 
+STR_CONFIG_SETTING_AVERAGE_HEIGHT                               :Gjennomsnittshøyde: {STRING}
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT                      :Velg gjennomsnittshøyde for land. 'Automatisk' er basert på valgt klima: 'Lavland' for subtropisk, 'Normal' for temperert og leketøyland, og 'Platå' for subarktisk.
 ###length 4
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUTO                          :Automatisk
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_LOWLANDS                      :Lavland
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL                        :Normal
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS                      :Platå
 
 STR_CONFIG_SETTING_VARIETY                                      :Variasjonsspredning: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Velg om kartet inneholder både fjellrike og flate områder. Jo høyere variasjon, dess større forskjeller i høyde mellom fjellrike og flate områder
@@ -2072,7 +2078,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Høyeste oppløsning effekter kan bruke: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Begrens største oppløsning spritene kan bruke. Å begrense oppløsningen vil unngå å bruke høyoppløst grafikk selv når det er tilgjengelig. Dette kan bidra til gjøre spillets uttrykk enhetlig når en blanding av GRF-filer med og uten høyoppløst grafikk er i bruk
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Begrens største oppløsning spritene kan bruke. Å begrense oppløsningen vil unngå å bruke høyoppløst grafikk selv når det er tilgjengelig. Dette kan bidra til gjøre spillets uttrykk enhetlig når en blanding av NewGRF-filer med og uten høyoppløst grafikk er i bruk
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2210,7 +2216,7 @@ STR_CONFIG_ERROR                                                :{WHITE}Feil med
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... feil i matrise '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... ugyldig verdi '{STRING}' for '{STRING}'
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... etterslengende bokstaver i slutten av innstilling '{STRING}'
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorerer NewGRF '{STRING}': duplikat GRF ID med '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorerer NewGRF '{STRING}': duplikat NewGRF ID med '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignorerer ugyldig NewGRF '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :ikke funnet
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :usikker for statisk bruk
@@ -3390,7 +3396,8 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Ørkende
 STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Øk ørkendekningen med ti prosent
 STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Reduser ørkendekning med 10 prosent
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
-STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrengtype:
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maksimal høyde:
+STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}Gjennomsnittshøyde:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Havnivå:
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Velg havnivået
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Elver:
@@ -3626,7 +3633,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Ugyldig paramet
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} må lastes inn før {2:STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} må lastes inn etter {2:STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} krever OpenTTD versjon {2:STRING} eller nyere
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-filen den var laget for å oversette
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :NewGRF-filen den var laget for å oversette
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :For mange NewGRF-er er innlastet
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Å laste inn {1:STRING} som statisk NewGRF med {2:STRING} kan forårsake synkroniseringsfeil
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Uventet sprite (sprite {3:NUM})
@@ -3635,7 +3642,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Forsøk på å 
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} inneholder en ødelagt sprite. Alle ødelagte spriter blir vist som røde spørsmålstegn (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Inneholder flere Handling 8-oppføringer (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leste forbi slutten av pseudo-sprite (sprite {3:NUM})
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Etterspurte GRF-ressurser ikke tilgjengelig (sprite {3:NUM})
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Etterspurte NewGRF-ressurser ikke tilgjengelig (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} ble deaktivert av {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ugyldig/ukjent sprite layoutformat (sprite {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :For mange elementer i fortegnelse over eiendomsverdier (sprite {3:NUM}, property {4:HEX})
@@ -3645,13 +3652,13 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Ugyldig industr
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Advarsel!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du er i ferd med å gjøre forandringer i et kjørende spill. Dette kan krasje OpenTTD. Ikke send inn bug-rapporter om slike feil.{}Er du helt sikker på at du vil gjøre dette?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan ikke legge til fil: GRF ID finnes allerede
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matchende fil ble ikke funnet (kompatibel GRF-fil lastet inn)
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan ikke legge til fil: NewGRF ID finnes allerede
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matchende fil ble ikke funnet (kompatibel NewGRF-fil lastet inn)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Kan ikke legge til fil: Grense nådd for NewGRF-filer
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibel GRF(er) lastet for manglende filer
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manglende GRF-fil(er) har blitt deaktivert
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Mangler GRF-fil(er)
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibel NewGRF(er) lastet for manglende filer
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manglende NewGRF-fil(er) har blitt deaktivert
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Mangler NewGRF-fil(er)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Å slå av pause kan medføre at OpenTTD krasjer. Ikke rapporter feil for etterfølgende krasjer.{}Er du sikker på at du vil slå av pause?
 
 # NewGRF status

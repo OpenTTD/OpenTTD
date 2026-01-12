@@ -1749,7 +1749,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Оригина�
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Оригинальный
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
-STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Тип ландшафта: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Предустановленная высота: {STRING}
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Укажите высоту гор и холмов на карте
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Количество предприятий: {STRING}
@@ -1777,7 +1777,13 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Гладкий
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Грубый
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Очень грубый
 
+STR_CONFIG_SETTING_AVERAGE_HEIGHT                               :Средняя высота: {STRING}
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT                      :Выберите среднюю высоту ландшафта. «Автоматически» установит высоту в зависимости от выбранного типа карты: «Низины» для субтропического, «Среднюю» для умеренного и игрушечного, «Плато» для субарктического.
 ###length 4
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUTO                          :Автоматически
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_LOWLANDS                      :Низины
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL                        :Средняя
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS                      :Плато
 
 STR_CONFIG_SETTING_VARIETY                                      :Разнообразие ландшафта: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Определяет наличие на карте как горных, так и равнинных областей. Чем выше разнообразие, тем выше разница в высоте между этими зонами.
@@ -3563,7 +3569,8 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Песч
 STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Увеличить площадь песчаного покрытия на 10%
 STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Уменьшить площадь песчаного покрытия на 10%
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
-STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тип ландшафта:
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Максимальная высота:
+STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}Средняя высота:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Количество водоёмов:
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Выберите количество морей и озёр на карте
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Количество рек:

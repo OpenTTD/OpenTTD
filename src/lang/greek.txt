@@ -1691,7 +1691,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Η πρωτότ
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Αυθεντική
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
-STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Σχηματισμός εδάφους: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Μέγιστο προεπιλεγμένο ύψος: {STRING}
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Επιλέξτε το ύψος των λόφων και των βουνών του τοπίου
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Πυκνότητα βιομηχανιών: {STRING}
@@ -1719,7 +1719,13 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Λεία
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Τραχιά
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Πολύ Τραχιά
 
+STR_CONFIG_SETTING_AVERAGE_HEIGHT                               :Μέσο ύψος: {STRING}
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT                      :Επιλέξτε το μέσο ύψος της γης. Η επιλογή «Αυτόματη» χρησιμοποιεί την προεπιλογή με βάση το επιλεγμένο κλίμα: «Πεδινές περιοχές» για Υποτροπικό, «Κανονικό» για Εύκρατο και Παιχνιδότοπο και «Οροπέδια» για Υποαρκτικό.
 ###length 4
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUTO                          :Αυτόματο
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_LOWLANDS                      :Πεδινές περιοχές
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL                        :Κανονικό
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS                      :Οροπέδια
 
 STR_CONFIG_SETTING_VARIETY                                      :Διανομή ποικιλομορφίας: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Επιλέξτε αν ο χάρτης περιέχει και βουνά και επίπεδες περιοχές. Όσο μεγαλύτερη είναι η ποικιλία, τόσο περισσότερες οι υψομετρικές διαφορές μεταξύ ορεινών και επίπεδων περιοχών
@@ -3481,7 +3487,8 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Κάλυ
 STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Αύξηση κάλυψης ερήμου κατά δέκα τοις εκατό
 STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Μείωση κάλυψης ερήμου κατά δέκα τοις εκατό
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
-STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Τύπος εδάφους:
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Μέγιστο ύψος:
+STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}Μέσο ύψος:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Στάθμη θαλάσσης:
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Επιλέξτε τη στάθμη της θάλασσας
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Ποτάμια:

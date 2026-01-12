@@ -1598,7 +1598,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :「原版」地
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :原版
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
-STR_CONFIG_SETTING_TERRAIN_TYPE                                 :地形種類：{STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :地形最大高度預設值：{STRING}
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :選擇產生版圖的地型起伏度
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :工業設施密度：{STRING}
@@ -1626,7 +1626,13 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :平滑
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :高低不平
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :非常粗糙
 
+STR_CONFIG_SETTING_AVERAGE_HEIGHT                               :平均地勢高度：{STRING}
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT                      :選擇平均地勢高度。若選擇「自動」，系統將根據所選的氣候去決定預設值：亞熱帶為「平原」，溫帶與玩具樂園為「普通」，而寒帶則為「高原」。
 ###length 4
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUTO                          :自動
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_LOWLANDS                      :平原
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL                        :普通
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS                      :高原
 
 STR_CONFIG_SETTING_VARIETY                                      :地形起伏分佈：{STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :選擇地圖是否同時包含山脈和平坦地域。多樣性越豐富，高山和平地之間的海拔差距就越大
@@ -3388,7 +3394,8 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}沙漠�
 STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}將沙漠覆蓋率提高10%
 STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}將沙漠覆蓋率降低10%
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
-STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}地形種類：
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}地形最大高度：
+STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}平均地勢高度：
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}海平面：
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}選擇海洋覆蓋率
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}河流:
@@ -5109,11 +5116,11 @@ STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}……�
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... 應先建造市鎮
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... 每個市鎮僅允許一個
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... 只能在市鎮人口超過 1200 人的地方建造
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... 只能建在雨林區
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... 只能建在沙漠區
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}……只能在雨林地帶建設
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}……只能在沙漠地帶建設
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... 只能建在市鎮內 (取代房屋)
 STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... 只能在城市中心附近興建
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... 只能建在低地
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}……只能在平原地帶建設
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... 只能位於地圖邊緣
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... 森林只能種在雪線以上
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... 只能在雪線以上建造
