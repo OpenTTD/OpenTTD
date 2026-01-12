@@ -5,7 +5,10 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+/**
+ * @file ${APILC}_includes.hpp Registers OTTD API in squirrel engine.
+ * @attention THIS FILE IS AUTO-GENERATED. PLEASE DO NOT ALTER MANUALLY.
+ */
 
 #include "../script_fatalerror.hpp"
 
