@@ -58,19 +58,19 @@ struct Economy {
 };
 
 /** Score categories in the detailed performance rating. */
-enum ScoreID : uint8_t {
-	SCORE_BEGIN = 0, ///< The lowest valid value.
-	SCORE_VEHICLES = 0, ///< Number of vehicles that turned profit last year.
-	SCORE_STATIONS = 1, ///< Number of recently-serviced stations.
-	SCORE_MIN_PROFIT = 2, ///< The profit of the vehicle with the lowest income.
-	SCORE_MIN_INCOME = 3, ///< Income in the quater with the lowest profit of the last 12 quaters.
-	SCORE_MAX_INCOME = 4, ///< Income in the quater with the highest profit of the last 12 quaters.
-	SCORE_DELIVERED = 5, ///< Units of cargo delivered in the last four quaters.
-	SCORE_CARGO = 6, ///< Number of types of cargo delivered in the last four quaters.
-	SCORE_MONEY = 7, ///< Amount of money company has in the bank.
-	SCORE_LOAN = 8, ///< The amount of money company can take as a loan.
-	SCORE_TOTAL = 9, ///< Total points out of possible points ,must always be the last entry.
-	SCORE_END = 10, ///< Score ID end marker.
+enum class ScoreID : uint8_t {
+	Begin, ///< The lowest valid value.
+	Vehicles = ScoreID::Begin, ///< Number of vehicles that turned profit last year.
+	Stations, ///< Number of recently-serviced stations.
+	MinProfit, ///< The profit of the vehicle with the lowest income.
+	MinIncome, ///< Income in the quater with the lowest profit of the last 12 quaters.
+	MaxIncome, ///< Income in the quater with the highest profit of the last 12 quaters.
+	Delivered, ///< Units of cargo delivered in the last four quaters.
+	Cargo, ///< Number of types of cargo delivered in the last four quaters.
+	Money, ///< Amount of money company has in the bank.
+	Loan, ///< The amount of money company can take as a loan.
+	Total, ///< Total points out of possible points ,must always be the last entry.
+	End, ///< Score ID end marker.
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(ScoreID)
 
@@ -82,8 +82,8 @@ static constexpr int SCORE_MAX = 1000;
 
 /** Data structure for storing how the score is computed for a single score id. */
 struct ScoreInfo {
-	int needed; ///< How much you need to get the perfect score
 	int score;  ///< How much score it will give
+	int needed; ///< How much you need to get the perfect score
 };
 
 /**

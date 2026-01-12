@@ -88,20 +88,20 @@ typedef std::vector<Industry *> SmallIndustryList;
 /**
  * Score info, values used for computing the detailed performance rating.
  */
-const ScoreInfo _score_info[] = {
-	{     120, 100}, // SCORE_VEHICLES
-	{      80, 100}, // SCORE_STATIONS
-	{   10000, 100}, // SCORE_MIN_PROFIT
-	{   50000,  50}, // SCORE_MIN_INCOME
-	{  100000, 100}, // SCORE_MAX_INCOME
-	{   40000, 400}, // SCORE_DELIVERED
-	{       8,  50}, // SCORE_CARGO
-	{10000000,  50}, // SCORE_MONEY
-	{  250000,  50}, // SCORE_LOAN
-	{       0,   0}  // SCORE_TOTAL
+const EnumClassIndexContainer<std::array<ScoreInfo, to_underlying(ScoreID::End)>, ScoreID> _score_info = {
+	ScoreInfo(100, 120), // ScoreID::Vehicles
+	ScoreInfo(100, 80), // ScoreID::Stations
+	ScoreInfo(100, 10000), // ScoreID::MinProfit
+	ScoreInfo(50, 50000), // ScoreID::MinIncome
+	ScoreInfo(100, 100000), // ScoreID::MaxIncome
+	ScoreInfo(400, 40000), // ScoreID::Delivered
+	ScoreInfo(50, 8), // ScoreID::Cargo
+	ScoreInfo(50, 10000000), // ScoreID::Money
+	ScoreInfo(50, 250000), // ScoreID::Loan
+	ScoreInfo(0, 0), // ScoreID::Total
 };
 
-TypedIndexContainer<std::array<std::array<int64_t, SCORE_END>, MAX_COMPANIES>, CompanyID> _score_part;
+TypedIndexContainer<std::array<EnumClassIndexContainer<std::array<int64_t, to_underlying(ScoreID::End)>, ScoreID>, MAX_COMPANIES>, CompanyID> _score_part;
 Economy _economy;
 Prices _price;
 static PriceMultipliers _price_base_multiplier;
@@ -228,10 +228,10 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 
 		min_profit >>= 8; // remove the fract part
 
-		_score_part[owner][SCORE_VEHICLES] = num;
+		_score_part[owner][ScoreID::Vehicles] = num;
 		/* Don't allow negative min_profit to show */
 		if (min_profit > 0) {
-			_score_part[owner][SCORE_MIN_PROFIT] = min_profit;
+			_score_part[owner][ScoreID::MinProfit] = min_profit;
 		}
 	}
 
@@ -242,7 +242,7 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 			/* Only count stations that are actually serviced */
 			if (st->owner == owner && (st->time_since_load <= 20 || st->time_since_unload <= 20)) num += st->facilities.Count();
 		}
-		_score_part[owner][SCORE_STATIONS] = num;
+		_score_part[owner][ScoreID::Stations] = num;
 	}
 
 	/* Generate statistics depending on recent income statistics */
@@ -251,8 +251,8 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 		if (numec != 0) {
 			auto [min_income, max_income] = std::ranges::minmax(c->old_economy | std::views::take(numec) | std::views::transform([](const auto &ce) { return ce.income + ce.expenses; }));
 
-			if (min_income > 0) _score_part[owner][SCORE_MIN_INCOME] = min_income;
-			_score_part[owner][SCORE_MAX_INCOME] = max_income;
+			if (min_income > 0) _score_part[owner][ScoreID::MinIncome] = min_income;
+			_score_part[owner][ScoreID::MaxIncome] = max_income;
 		}
 	}
 
@@ -263,25 +263,25 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 			OverflowSafeInt64 total_delivered = 0;
 			for (auto &ce : c->old_economy | std::views::take(numec)) total_delivered += ce.delivered_cargo.GetSum<OverflowSafeInt64>();
 
-			_score_part[owner][SCORE_DELIVERED] = total_delivered;
+			_score_part[owner][ScoreID::Delivered] = total_delivered;
 		}
 	}
 
 	/* Generate score for variety of cargo */
 	{
-		_score_part[owner][SCORE_CARGO] = c->old_economy[0].delivered_cargo.GetCount();
+		_score_part[owner][ScoreID::Cargo] = c->old_economy[0].delivered_cargo.GetCount();
 	}
 
 	/* Generate score for company's money */
 	{
 		if (c->money > 0) {
-			_score_part[owner][SCORE_MONEY] = c->money;
+			_score_part[owner][ScoreID::Money] = c->money;
 		}
 	}
 
 	/* Generate score for loan */
 	{
-		_score_part[owner][SCORE_LOAN] = _score_info[SCORE_LOAN].needed - c->current_loan;
+		_score_part[owner][ScoreID::Loan] = _score_info[ScoreID::Loan].needed - c->current_loan;
 	}
 
 	/* Now we calculate the score for each item.. */
@@ -289,16 +289,16 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 		int total_score = 0;
 		int s;
 		score = 0;
-		for (ScoreID i = SCORE_BEGIN; i < SCORE_END; i++) {
+		for (ScoreID i = ScoreID::Begin; i < ScoreID::End; i++) {
 			/* Skip the total */
-			if (i == SCORE_TOTAL) continue;
+			if (i == ScoreID::Total) continue;
 			/*  Check the score */
 			s = Clamp<int64_t>(_score_part[owner][i], 0, _score_info[i].needed) * _score_info[i].score / _score_info[i].needed;
 			score += s;
 			total_score += _score_info[i].score;
 		}
 
-		_score_part[owner][SCORE_TOTAL] = score;
+		_score_part[owner][ScoreID::Total] = score;
 
 		/*  We always want the score scaled to SCORE_MAX (1000) */
 		if (total_score != SCORE_MAX) score = score * SCORE_MAX / total_score;
