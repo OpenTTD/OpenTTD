@@ -24,6 +24,7 @@ protected:
 	bool IsCancelled() const override { return false; }
 
 public:
+	/** Reason why the survey data is being sent. */
 	enum class Reason : uint8_t {
 		Preview, ///< User is previewing the survey result.
 		Leave, ///< User is leaving the game (but not exiting the application).

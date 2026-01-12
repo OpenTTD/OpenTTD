@@ -21,6 +21,7 @@ struct Sprite {
 	std::byte data[]; ///< Sprite data.
 };
 
+/** Flags to control the sprite caching behaviour of large sprites. */
 enum class SpriteCacheCtrlFlag : uint8_t {
 	AllowZoomMin1xPal, ///< Allow use of sprite min zoom setting at 1x in palette mode.
 	AllowZoomMin1x32bpp, ///< Allow use of sprite min zoom setting at 1x in 32bpp mode.

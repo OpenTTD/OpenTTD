@@ -58,7 +58,7 @@ inline bool IsValidWaterClass(WaterClass wc)
 enum class DepotPart : uint8_t {
 	North = 0, ///< Northern part of a depot.
 	South = 1, ///< Southern part of a depot.
-	End,
+	End, ///< End marker.
 };
 
 /** Sections of the water lock. */
@@ -66,7 +66,7 @@ enum class LockPart : uint8_t {
 	Middle = 0, ///< Middle part of a lock.
 	Lower = 1, ///< Lower part of a lock.
 	Upper = 2, ///< Upper part of a lock.
-	End,
+	End, ///< End marker.
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(LockPart);
 

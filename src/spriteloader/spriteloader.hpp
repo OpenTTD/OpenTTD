@@ -23,7 +23,7 @@ enum class SpriteComponent : uint8_t {
 	RGB     = 0, ///< Sprite has RGB.
 	Alpha   = 1, ///< Sprite has alpha.
 	Palette = 2, ///< Sprite has palette data.
-	End,
+	End, ///< End marker.
 };
 using SpriteComponents = EnumBitSet<SpriteComponent, uint8_t, SpriteComponent::End>;
 

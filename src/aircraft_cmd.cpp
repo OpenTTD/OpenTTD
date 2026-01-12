@@ -1221,7 +1221,7 @@ static bool HandleCrashedAircraft(Aircraft *v)
 		/*  remove rubble of crashed airplane */
 
 		/* clear runway-in on all airports, set by crashing plane
-		 * small airports use AIRPORT_BUSY, city airports use AirportBlock::RunwayInOut, etc.
+		 * small airports use AirportBlock::AirportBusy, city airports use AirportBlock::RunwayInOut, etc.
 		 * but they all share the same number */
 		if (st != nullptr) {
 			st->airport.blocks.Reset(AirportBlock::RunwayIn);

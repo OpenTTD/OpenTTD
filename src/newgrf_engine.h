@@ -101,8 +101,9 @@ bool UsesWagonOverride(const Vehicle *v);
 int GetVehicleProperty(const Vehicle *v, PropertyID property, int orig_value, bool is_signed = false);
 int GetEngineProperty(EngineID engine, PropertyID property, int orig_value, const Vehicle *v = nullptr, bool is_signed = false);
 
+/** Different types of modifications during the purchase of a vehicle to request the chance for using a NewGRF callback. */
 enum class BuildProbabilityType : uint8_t {
-	Reversed = 0,
+	Reversed = 0, ///< Change the rail vehicle should be reversed when purchased.
 };
 
 std::optional<bool> TestVehicleBuildProbability(Vehicle *v, EngineID engine, BuildProbabilityType type);

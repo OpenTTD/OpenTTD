@@ -367,7 +367,7 @@ struct FixedGRFFileProps : GRFFilePropsBase {
 enum class StandardSpriteGroup {
 	Default, ///< Default type used when no more-specific group matches.
 	Purchase, ///< Used before an entity exists.
-	End
+	End, ///< End marker.
 };
 
 /**
