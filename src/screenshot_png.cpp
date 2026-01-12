@@ -67,6 +67,7 @@ public:
 		png_init_io(png_ptr, f);
 
 		png_set_filter(png_ptr, 0, PNG_FILTER_NONE);
+		png_set_compression_level(png_ptr, 4);
 
 		png_set_IHDR(png_ptr, info_ptr, w, h, 8, pixelformat == 8 ? PNG_COLOR_TYPE_PALETTE : PNG_COLOR_TYPE_RGB,
 			PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_DEFAULT, PNG_FILTER_TYPE_DEFAULT);
