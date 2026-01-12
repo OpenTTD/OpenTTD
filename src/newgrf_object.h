@@ -86,13 +86,13 @@ struct ObjectSpec : NewGRFSpecBase<ObjectClassID> {
 	 * Get the cost for building a structure of this type.
 	 * @return The cost for building.
 	 */
-	Money GetBuildCost() const { return GetPrice(PR_BUILD_OBJECT, this->build_cost_multiplier, this->grf_prop.grffile, 0); }
+	Money GetBuildCost() const { return GetPrice(Price::BuildObject, this->build_cost_multiplier, this->grf_prop.grffile, 0); }
 
 	/**
 	 * Get the cost for clearing a structure of this type.
 	 * @return The cost for clearing.
 	 */
-	Money GetClearCost() const { return GetPrice(PR_CLEAR_OBJECT, this->clear_cost_multiplier, this->grf_prop.grffile, 0); }
+	Money GetClearCost() const { return GetPrice(Price::ClearObject, this->clear_cost_multiplier, this->grf_prop.grffile, 0); }
 
 	bool IsEverAvailable() const;
 	bool WasEverAvailable() const;

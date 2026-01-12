@@ -226,7 +226,7 @@ static CommandCost CheckBridgeSlope(BridgePieces bridge_piece, Axis axis, Slope 
 
 	if (f == FOUNDATION_NONE) return CommandCost();
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::BuildFoundation]);
 }
 
 /**
@@ -280,7 +280,7 @@ static Money TunnelBridgeClearCost(TileIndex tile, Price base_price)
 
 		case TRANSPORT_RAIL: base_cost += RailClearCost(GetRailType(tile)); break;
 		/* Aqueducts have their own clear price. */
-		case TRANSPORT_WATER: base_cost = _price[PR_CLEAR_AQUEDUCT]; break;
+		case TRANSPORT_WATER: base_cost = _price[Price::ClearAqueduct]; break;
 		default: break;
 	}
 
@@ -451,7 +451,7 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 		}
 
 		/* The cost of clearing the current bridge. */
-		cost.AddCost(bridge_len * TunnelBridgeClearCost(tile_start, PR_CLEAR_BRIDGE));
+		cost.AddCost(bridge_len * TunnelBridgeClearCost(tile_start, Price::ClearBridge));
 		owner = GetTileOwner(tile_start);
 
 		/* If bridge belonged to bankrupt company, it has a new owner now */
@@ -623,10 +623,10 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 		if (c != nullptr) bridge_len = CalcBridgeLenCostFactor(bridge_len);
 
 		if (transport_type != TRANSPORT_WATER) {
-			cost.AddCost((int64_t)bridge_len * _price[PR_BUILD_BRIDGE] * GetBridgeSpec(bridge_type)->price >> 8);
+			cost.AddCost((int64_t)bridge_len * _price[Price::BuildBridge] * GetBridgeSpec(bridge_type)->price >> 8);
 		} else {
 			/* Aqueducts use a separate base cost. */
-			cost.AddCost((int64_t)bridge_len * _price[PR_BUILD_AQUEDUCT]);
+			cost.AddCost((int64_t)bridge_len * _price[Price::BuildAqueduct]);
 		}
 
 	}
@@ -727,12 +727,12 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 			tiles_bump *= 2;
 		}
 
-		cost.AddCost(_price[PR_BUILD_TUNNEL]);
+		cost.AddCost(_price[Price::BuildTunnel]);
 		cost.AddCost(cost.GetCost() >> tiles_coef); // add a multiplier for longer tunnels
 	}
 
 	/* Add the cost of the entrance */
-	cost.AddCost(_price[PR_BUILD_TUNNEL]);
+	cost.AddCost(_price[Price::BuildTunnel]);
 	cost.AddCost(ret.GetCost());
 
 	/* if the command fails from here on we want the end tile to be highlighted */
@@ -780,7 +780,7 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 		if (ret.Failed()) return CommandCost(STR_ERROR_UNABLE_TO_EXCAVATE_LAND);
 		cost.AddCost(ret.GetCost());
 	}
-	cost.AddCost(_price[PR_BUILD_TUNNEL]);
+	cost.AddCost(_price[Price::BuildTunnel]);
 
 	/* Pay for the rail/road in the tunnel including entrances */
 	switch (transport_type) {
@@ -893,7 +893,7 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlags flags)
 		ChangeTownRating(t, RATING_TUNNEL_BRIDGE_DOWN_STEP, RATING_TUNNEL_BRIDGE_MINIMUM, flags);
 	}
 
-	Money base_cost = TunnelBridgeClearCost(tile, PR_CLEAR_TUNNEL);
+	Money base_cost = TunnelBridgeClearCost(tile, Price::ClearTunnel);
 	uint len = GetTunnelBridgeLength(tile, endtile) + 2; // Don't forget the end tiles.
 
 	if (flags.Test(DoCommandFlag::Execute)) {
@@ -974,7 +974,7 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlags flags)
 		ChangeTownRating(t, RATING_TUNNEL_BRIDGE_DOWN_STEP, RATING_TUNNEL_BRIDGE_MINIMUM, flags);
 	}
 
-	Money base_cost = TunnelBridgeClearCost(tile, PR_CLEAR_BRIDGE);
+	Money base_cost = TunnelBridgeClearCost(tile, Price::ClearBridge);
 	uint len = GetTunnelBridgeLength(tile, endtile) + 2; // Don't forget the end tiles.
 
 	if (flags.Test(DoCommandFlag::Execute)) {
@@ -2117,7 +2117,7 @@ static CommandCost TerraformTile_TunnelBridge(TileIndex tile, DoCommandFlags fla
 		}
 
 		/* Surface slope is valid and remains unchanged? */
-		if (res.Succeeded() && (z_old == z_new) && (tileh_old == tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
+		if (res.Succeeded() && (z_old == z_new) && (tileh_old == tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::BuildFoundation]);
 	}
 
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);

@@ -288,23 +288,23 @@ Money Engine::GetRunningCost() const
 	switch (this->type) {
 		case VEH_ROAD:
 			base_price = this->VehInfo<RoadVehicleInfo>().running_cost_class;
-			if (base_price == INVALID_PRICE) return 0;
+			if (base_price == Price::Invalid) return 0;
 			cost_factor = GetEngineProperty(this->index, PROP_ROADVEH_RUNNING_COST_FACTOR, this->VehInfo<RoadVehicleInfo>().running_cost);
 			break;
 
 		case VEH_TRAIN:
 			base_price = this->VehInfo<RailVehicleInfo>().running_cost_class;
-			if (base_price == INVALID_PRICE) return 0;
+			if (base_price == Price::Invalid) return 0;
 			cost_factor = GetEngineProperty(this->index, PROP_TRAIN_RUNNING_COST_FACTOR, this->VehInfo<RailVehicleInfo>().running_cost);
 			break;
 
 		case VEH_SHIP:
-			base_price = PR_RUNNING_SHIP;
+			base_price = Price::RunningShip;
 			cost_factor = GetEngineProperty(this->index, PROP_SHIP_RUNNING_COST_FACTOR, this->VehInfo<ShipVehicleInfo>().running_cost);
 			break;
 
 		case VEH_AIRCRAFT:
-			base_price = PR_RUNNING_AIRCRAFT;
+			base_price = Price::RunningAircraft;
 			cost_factor = GetEngineProperty(this->index, PROP_AIRCRAFT_RUNNING_COST_FACTOR, this->VehInfo<AircraftVehicleInfo>().running_cost);
 			break;
 
@@ -324,27 +324,27 @@ Money Engine::GetCost() const
 	uint cost_factor;
 	switch (this->type) {
 		case VEH_ROAD:
-			base_price = PR_BUILD_VEHICLE_ROAD;
+			base_price = Price::BuildVehicleRoad;
 			cost_factor = GetEngineProperty(this->index, PROP_ROADVEH_COST_FACTOR, this->VehInfo<RoadVehicleInfo>().cost_factor);
 			break;
 
 		case VEH_TRAIN:
 			if (this->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_WAGON) {
-				base_price = PR_BUILD_VEHICLE_WAGON;
+				base_price = Price::BuildVehicleWagon;
 				cost_factor = GetEngineProperty(this->index, PROP_TRAIN_COST_FACTOR, this->VehInfo<RailVehicleInfo>().cost_factor);
 			} else {
-				base_price = PR_BUILD_VEHICLE_TRAIN;
+				base_price = Price::BuildVehicleTrain;
 				cost_factor = GetEngineProperty(this->index, PROP_TRAIN_COST_FACTOR, this->VehInfo<RailVehicleInfo>().cost_factor);
 			}
 			break;
 
 		case VEH_SHIP:
-			base_price = PR_BUILD_VEHICLE_SHIP;
+			base_price = Price::BuildVehicleShip;
 			cost_factor = GetEngineProperty(this->index, PROP_SHIP_COST_FACTOR, this->VehInfo<ShipVehicleInfo>().cost_factor);
 			break;
 
 		case VEH_AIRCRAFT:
-			base_price = PR_BUILD_VEHICLE_AIRCRAFT;
+			base_price = Price::BuildVehicleAircraft;
 			cost_factor = GetEngineProperty(this->index, PROP_AIRCRAFT_COST_FACTOR, this->VehInfo<AircraftVehicleInfo>().cost_factor);
 			break;
 

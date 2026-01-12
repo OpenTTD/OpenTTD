@@ -26,12 +26,12 @@
 static CommandCost ClearTile_Clear(TileIndex tile, DoCommandFlags flags)
 {
 	static constexpr Price clear_price_table[] = {
-		PR_CLEAR_GRASS,
-		PR_CLEAR_ROUGH,
-		PR_CLEAR_ROCKS,
-		PR_CLEAR_FIELDS,
-		PR_CLEAR_ROUGH,
-		PR_CLEAR_ROUGH,
+		Price::ClearGrass,
+		Price::ClearRough,
+		Price::ClearRocks,
+		Price::ClearFields,
+		Price::ClearRough,
+		Price::ClearRough,
 	};
 	CommandCost price(EXPENSES_CONSTRUCTION);
 
@@ -40,7 +40,7 @@ static CommandCost ClearTile_Clear(TileIndex tile, DoCommandFlags flags)
 	if (IsSnowTile(tile)) {
 		price.AddCost(_price[clear_price_table[ground]]);
 		/* Add a little more for removing snow. */
-		price.AddCost(std::abs(_price[PR_CLEAR_ROUGH] - _price[PR_CLEAR_GRASS]));
+		price.AddCost(std::abs(_price[Price::ClearRough] - _price[Price::ClearGrass]));
 	} else if (ground != CLEAR_GRASS || density != 0) {
 		price.AddCost(_price[clear_price_table[ground]]);
 	}

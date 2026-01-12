@@ -32,7 +32,7 @@
 	if (!IsValidAirportType(type)) return -1;
 
 	const AirportSpec *as = ::AirportSpec::Get(type);
-	return _price[PR_BUILD_STATION_AIRPORT] * as->size_x * as->size_y;
+	return _price[Price::BuildStationAirport] * as->size_x * as->size_y;
 }
 
 /* static */ bool ScriptAirport::IsHangarTile(TileIndex tile)
@@ -170,7 +170,7 @@
 {
 	if (!IsAirportInformationAvailable(type)) return -1;
 
-	return (int64_t)GetMaintenanceCostFactor(type) * _price[PR_INFRASTRUCTURE_AIRPORT] >> 3;
+	return (int64_t)GetMaintenanceCostFactor(type) * _price[Price::InfrastructureAirport] >> 3;
 }
 
 /* static */ SQInteger ScriptAirport::GetAirportNumHelipads(AirportType type)

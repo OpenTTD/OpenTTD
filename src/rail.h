@@ -428,7 +428,7 @@ inline bool Rail90DegTurnDisallowed(RailType rt1, RailType rt2, bool def = _sett
 inline Money RailBuildCost(RailType railtype)
 {
 	assert(railtype < RAILTYPE_END);
-	return (_price[PR_BUILD_RAIL] * GetRailTypeInfo(railtype)->cost_multiplier) >> 3;
+	return (_price[Price::BuildRail] * GetRailTypeInfo(railtype)->cost_multiplier) >> 3;
 }
 
 /**
@@ -444,7 +444,7 @@ inline Money RailClearCost(RailType railtype)
 	 * cost.
 	 */
 	assert(railtype < RAILTYPE_END);
-	return std::max(_price[PR_CLEAR_RAIL], -RailBuildCost(railtype) * 3 / 4);
+	return std::max(_price[Price::ClearRail], -RailBuildCost(railtype) * 3 / 4);
 }
 
 /**
@@ -483,7 +483,7 @@ inline Money RailConvertCost(RailType from, RailType to)
 inline Money RailMaintenanceCost(RailType railtype, uint32_t num, uint32_t total_num)
 {
 	assert(railtype < RAILTYPE_END);
-	return (_price[PR_INFRASTRUCTURE_RAIL] * GetRailTypeInfo(railtype)->maintenance_multiplier * num * (1 + IntSqrt(total_num))) >> 11; // 4 bits fraction for the multiplier and 7 bits scaling.
+	return (_price[Price::InfrastructureRail] * GetRailTypeInfo(railtype)->maintenance_multiplier * num * (1 + IntSqrt(total_num))) >> 11; // 4 bits fraction for the multiplier and 7 bits scaling.
 }
 
 /**
@@ -493,7 +493,7 @@ inline Money RailMaintenanceCost(RailType railtype, uint32_t num, uint32_t total
  */
 inline Money SignalMaintenanceCost(uint32_t num)
 {
-	return (_price[PR_INFRASTRUCTURE_RAIL] * 15 * num * (1 + IntSqrt(num))) >> 8; // 1 bit fraction for the multiplier and 7 bits scaling.
+	return (_price[Price::InfrastructureRail] * 15 * num * (1 + IntSqrt(num))) >> 8; // 1 bit fraction for the multiplier and 7 bits scaling.
 }
 
 void DrawTrainDepotSprite(int x, int y, int image, RailType railtype);

@@ -402,7 +402,7 @@ static CommandCost CheckRailSlope(Slope tileh, TrackBits rail_bits, TrackBits ex
 	}
 
 	Foundation f_old = GetRailFoundation(tileh, existing);
-	return CommandCost(EXPENSES_CONSTRUCTION, f_new != f_old ? _price[PR_BUILD_FOUNDATION] : (Money)0);
+	return CommandCost(EXPENSES_CONSTRUCTION, f_new != f_old ? _price[Price::BuildFoundation] : (Money)0);
 }
 
 /* Validate functions for rail building */
@@ -575,8 +575,8 @@ CommandCost CmdBuildSingleRail(DoCommandFlags flags, TileIndex tile, RailType ra
 			cost.AddCost(ret.GetCost());
 
 			if (water_ground) {
-				cost.AddCost(-_price[PR_CLEAR_WATER]);
-				cost.AddCost(_price[PR_CLEAR_ROUGH]);
+				cost.AddCost(-_price[Price::ClearWater]);
+				cost.AddCost(_price[Price::ClearRough]);
 			}
 
 			if (flags.Test(DoCommandFlag::Execute)) {
@@ -978,7 +978,7 @@ CommandCost CmdBuildTrainDepot(DoCommandFlags flags, TileIndex tile, RailType ra
 		if (!_settings_game.construction.build_on_slopes || !CanBuildDepotByTileh(dir, tileh)) {
 			return CommandCost(STR_ERROR_FLAT_LAND_REQUIRED);
 		}
-		cost.AddCost(_price[PR_BUILD_FOUNDATION]);
+		cost.AddCost(_price[Price::BuildFoundation]);
 	}
 
 	/* Allow the user to rotate the depot instead of having to destroy it and build it again */
@@ -1022,7 +1022,7 @@ CommandCost CmdBuildTrainDepot(DoCommandFlags flags, TileIndex tile, RailType ra
 		YapfNotifyTrackLayoutChange(tile, DiagDirToDiagTrack(dir));
 	}
 
-	cost.AddCost(_price[PR_BUILD_DEPOT_TRAIN]);
+	cost.AddCost(_price[Price::BuildDepotTrain]);
 	cost.AddCost(RailBuildCost(railtype));
 	return cost;
 }
@@ -1076,17 +1076,17 @@ CommandCost CmdBuildSingleSignal(DoCommandFlags flags, TileIndex tile, Track tra
 	CommandCost cost;
 	if (!HasSignalOnTrack(tile, track)) {
 		/* build new signals */
-		cost = CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_SIGNALS]);
+		cost = CommandCost(EXPENSES_CONSTRUCTION, _price[Price::BuildSignals]);
 	} else {
 		if (signals_copy != 0 && sigvar != GetSignalVariant(tile, track)) {
 			/* convert signals <-> semaphores */
-			cost = CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_SIGNALS] + _price[PR_CLEAR_SIGNALS]);
+			cost = CommandCost(EXPENSES_CONSTRUCTION, _price[Price::BuildSignals] + _price[Price::ClearSignals]);
 
 		} else if (convert_signal) {
 			/* convert button pressed */
 			if (ctrl_pressed || GetSignalVariant(tile, track) != sigvar) {
 				/* it costs money to change signal variant (light or semaphore) */
-				cost = CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_SIGNALS] + _price[PR_CLEAR_SIGNALS]);
+				cost = CommandCost(EXPENSES_CONSTRUCTION, _price[Price::BuildSignals] + _price[Price::ClearSignals]);
 			} else {
 				/* it is free to change signal type (block, exit, entry, combo, path, etc) */
 				cost = CommandCost();
@@ -1507,7 +1507,7 @@ CommandCost CmdRemoveSingleSignal(DoCommandFlags flags, TileIndex tile, Track tr
 		MarkTileDirtyByTile(tile);
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_SIGNALS]);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::ClearSignals]);
 }
 
 /**
@@ -1786,7 +1786,7 @@ static CommandCost RemoveTrainDepot(TileIndex tile, DoCommandFlags flags)
 		if (v != nullptr) TryPathReserve(v, true);
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_DEPOT_TRAIN]);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::ClearDepotTrain]);
 }
 
 static CommandCost ClearTile_Track(TileIndex tile, DoCommandFlags flags)
@@ -1830,7 +1830,7 @@ static CommandCost ClearTile_Track(TileIndex tile, DoCommandFlags flags)
 				if (flags.Test(DoCommandFlag::Execute)) {
 					DoClearSquare(tile);
 				}
-				cost.AddCost(_price[PR_CLEAR_WATER]);
+				cost.AddCost(_price[Price::ClearWater]);
 			}
 
 			return cost;
@@ -3022,7 +3022,7 @@ static CommandCost TestAutoslopeOnRailTile(TileIndex tile, DoCommandFlags flags,
 		/* Surface slope must not be changed */
 		default:
 			if (z_old != z_new || tileh_old != tileh_new) return CommandCost(STR_ERROR_MUST_REMOVE_RAILROAD_TRACK);
-			return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
+			return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::BuildFoundation]);
 	}
 
 	/* The height of the track_corner must not be changed. The rest ensures GetRailFoundation() already. */
@@ -3030,11 +3030,11 @@ static CommandCost TestAutoslopeOnRailTile(TileIndex tile, DoCommandFlags flags,
 	z_new += GetSlopeZInCorner(RemoveHalftileSlope(tileh_new), track_corner);
 	if (z_old != z_new) return CommandCost(STR_ERROR_MUST_REMOVE_RAILROAD_TRACK);
 
-	CommandCost cost = CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
+	CommandCost cost = CommandCost(EXPENSES_CONSTRUCTION, _price[Price::BuildFoundation]);
 	/* Make the ground dirty, if surface slope has changed */
 	if (tileh_old != tileh_new) {
 		/* If there is flat water on the lower halftile add the cost for clearing it */
-		if (GetRailGroundType(tile) == RailGroundType::HalfTileWater && IsSlopeWithOneCornerRaised(tileh_old)) cost.AddCost(_price[PR_CLEAR_WATER]);
+		if (GetRailGroundType(tile) == RailGroundType::HalfTileWater && IsSlopeWithOneCornerRaised(tileh_old)) cost.AddCost(_price[Price::ClearWater]);
 		if (flags.Test(DoCommandFlag::Execute)) SetRailGroundType(tile, RailGroundType::Barren);
 	}
 	return  cost;
@@ -3081,10 +3081,10 @@ static CommandCost TerraformTile_Track(TileIndex tile, DoCommandFlags flags, int
 		if (flags.Test(DoCommandFlag::Execute)) SetRailGroundType(tile, RailGroundType::Barren);
 
 		/* allow terraforming */
-		return CommandCost(EXPENSES_CONSTRUCTION, was_water ? _price[PR_CLEAR_WATER] : (Money)0);
+		return CommandCost(EXPENSES_CONSTRUCTION, was_water ? _price[Price::ClearWater] : (Money)0);
 	} else if (_settings_game.construction.build_on_slopes && AutoslopeEnabled() &&
 			AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, GetRailDepotDirection(tile))) {
-		return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
+		return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::BuildFoundation]);
 	}
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }

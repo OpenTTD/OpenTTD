@@ -536,7 +536,7 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 					if (c != nullptr) c->tree_limit -= 1 << 16;
 				}
 				/* 2x as expensive to add more trees to an existing tile */
-				cost.AddCost(_price[PR_BUILD_TREES] * 2);
+				cost.AddCost(_price[Price::BuildTrees] * 2);
 				break;
 
 			case MP_WATER:
@@ -607,7 +607,7 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 						SetTropicZone(current_tile, TROPICZONE_RAINFOREST);
 					}
 				}
-				cost.AddCost(_price[PR_BUILD_TREES]);
+				cost.AddCost(_price[Price::BuildTrees]);
 				break;
 			}
 
@@ -729,7 +729,7 @@ static CommandCost ClearTile_Trees(TileIndex tile, DoCommandFlags flags)
 
 	if (flags.Test(DoCommandFlag::Execute)) DoClearSquare(tile);
 
-	return CommandCost(EXPENSES_CONSTRUCTION, num * _price[PR_CLEAR_TREES]);
+	return CommandCost(EXPENSES_CONSTRUCTION, num * _price[Price::ClearTrees]);
 }
 
 static void GetTileDesc_Trees(TileIndex tile, TileDesc &td)

@@ -231,7 +231,7 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 	/* only AddCost for non-existing waypoints */
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	for (TileIndex cur_tile : new_location) {
-		if (!IsRailWaypointTile(cur_tile)) cost.AddCost(_price[PR_BUILD_WAYPOINT_RAIL]);
+		if (!IsRailWaypointTile(cur_tile)) cost.AddCost(_price[Price::BuildWaypointRail]);
 	}
 
 	/* Make sure the area below consists of clear tiles. (OR tiles belonging to a certain rail station) */
@@ -367,9 +367,9 @@ CommandCost CmdBuildRoadWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 	/* Total road stop cost. */
 	Money unit_cost;
 	if (roadstopspec != nullptr) {
-		unit_cost = roadstopspec->GetBuildCost(PR_BUILD_STATION_TRUCK);
+		unit_cost = roadstopspec->GetBuildCost(Price::BuildStationTruck);
 	} else {
-		unit_cost = _price[PR_BUILD_STATION_TRUCK];
+		unit_cost = _price[Price::BuildStationTruck];
 	}
 	StationID est = StationID::Invalid();
 	CommandCost cost = CalculateRoadStopCost(roadstop_area, flags, true, StationType::RoadWaypoint, roadstopspec, axis, AxisToDiagDir(axis), &est, INVALID_ROADTYPE, unit_cost);
@@ -483,7 +483,7 @@ CommandCost CmdBuildBuoy(DoCommandFlags flags, TileIndex tile)
 	Waypoint *wp = FindDeletedWaypointCloseTo(tile, STR_SV_STNAME_BUOY, OWNER_NONE, false);
 	if (wp == nullptr && !Waypoint::CanAllocateItem()) return CommandCost(STR_ERROR_TOO_MANY_STATIONS_LOADING);
 
-	CommandCost cost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_WAYPOINT_BUOY]);
+	CommandCost cost(EXPENSES_CONSTRUCTION, _price[Price::BuildWaypointBuoy]);
 	if (!IsWaterTile(tile)) {
 		CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags | DoCommandFlag::Auto, tile);
 		if (ret.Failed()) return ret;
@@ -558,7 +558,7 @@ CommandCost RemoveBuoy(TileIndex tile, DoCommandFlags flags)
 		wp->delete_ctr = 0;
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_WAYPOINT_BUOY]);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::ClearWaypointBuoy]);
 }
 
 /**

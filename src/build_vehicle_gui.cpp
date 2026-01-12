@@ -611,7 +611,7 @@ static int DrawRailWagonPurchaseInfo(int left, int right, int y, EngineID engine
 	}
 
 	/* Running cost */
-	if (rvi->running_cost_class != INVALID_PRICE) {
+	if (rvi->running_cost_class != Price::Invalid) {
 		DrawString(left, right, y, GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_INFO_RUNNINGCOST_PERIOD : STR_PURCHASE_INFO_RUNNINGCOST_YEAR, e->GetRunningCost()));
 		y += GetCharacterHeight(FS_NORMAL);
 	}
@@ -662,7 +662,7 @@ static int DrawRailEnginePurchaseInfo(int left, int right, int y, EngineID engin
 	}
 
 	/* Running cost */
-	if (rvi->running_cost_class != INVALID_PRICE) {
+	if (rvi->running_cost_class != Price::Invalid) {
 		DrawString(left, right, y, GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_INFO_RUNNINGCOST_PERIOD : STR_PURCHASE_INFO_RUNNINGCOST_YEAR, e->GetRunningCost()));
 		y += GetCharacterHeight(FS_NORMAL);
 	}

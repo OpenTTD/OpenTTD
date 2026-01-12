@@ -47,6 +47,7 @@
 #include "newgrf/newgrf_stringmapping.h"
 
 #include "table/strings.h"
+#include "table/pricebase.h"
 
 #include "safeguards.h"
 
@@ -333,14 +334,14 @@ void ConvertTTDBasePrice(uint32_t base_pointer, std::string_view error_location,
 {
 	/* Special value for 'none' */
 	if (base_pointer == 0) {
-		*index = INVALID_PRICE;
+		*index = Price::Invalid;
 		return;
 	}
 
 	static const uint32_t start = 0x4B34; ///< Position of first base price
 	static const uint32_t size  = 6;      ///< Size of each base price record
 
-	if (base_pointer < start || (base_pointer - start) % size != 0 || (base_pointer - start) / size >= PR_END) {
+	if (base_pointer < start || (base_pointer - start) % size != 0 || (base_pointer - start) / size >= to_underlying(Price::End)) {
 		GrfMsg(1, "{}: Unsupported running cost base 0x{:04X}, ignoring", error_location, base_pointer);
 		return;
 	}
@@ -1478,7 +1479,6 @@ static void ActivateOldTramDepot()
  */
 static void FinalisePriceBaseMultipliers()
 {
-	extern const PriceBaseSpec _price_base_specs[];
 	/** Features, to which '_grf_id_overrides' applies. Currently vehicle features only. */
 	static constexpr GrfSpecFeatures override_features{GSF_TRAINS, GSF_ROADVEHICLES, GSF_SHIPS, GSF_AIRCRAFT};
 
@@ -1508,7 +1508,7 @@ static void FinalisePriceBaseMultipliers()
 		source.grf_features.Set(features);
 		dest.grf_features.Set(features);
 
-		for (Price p = PR_BEGIN; p < PR_END; p++) {
+		for (Price p = Price::Begin; p < Price::End; p++) {
 			/* No price defined -> nothing to do */
 			if (!features.Test(_price_base_specs[p].grf_feature) || source.price_base_multipliers[p] == INVALID_PRICE_MODIFIER) continue;
 			Debug(grf, 3, "'{}' overrides price base multiplier {} of '{}'", source.filename, p, dest.filename);
@@ -1526,7 +1526,7 @@ static void FinalisePriceBaseMultipliers()
 		source.grf_features.Set(features);
 		dest.grf_features.Set(features);
 
-		for (Price p = PR_BEGIN; p < PR_END; p++) {
+		for (Price p = Price::Begin; p < Price::End; p++) {
 			/* Already a price defined -> nothing to do */
 			if (!features.Test(_price_base_specs[p].grf_feature) || dest.price_base_multipliers[p] != INVALID_PRICE_MODIFIER) continue;
 			Debug(grf, 3, "Price base multiplier {} from '{}' propagated to '{}'", p, source.filename, dest.filename);
@@ -1544,7 +1544,7 @@ static void FinalisePriceBaseMultipliers()
 		source.grf_features.Set(features);
 		dest.grf_features.Set(features);
 
-		for (Price p = PR_BEGIN; p < PR_END; p++) {
+		for (Price p = Price::Begin; p < Price::End; p++) {
 			if (!features.Test(_price_base_specs[p].grf_feature)) continue;
 			if (source.price_base_multipliers[p] != dest.price_base_multipliers[p]) {
 				Debug(grf, 3, "Price base multiplier {} from '{}' propagated to '{}'", p, dest.filename, source.filename);
@@ -1557,9 +1557,9 @@ static void FinalisePriceBaseMultipliers()
 	for (auto &file : _grf_files) {
 		if (file.grf_version >= 8) continue;
 		PriceMultipliers &price_base_multipliers = file.price_base_multipliers;
-		for (Price p = PR_BEGIN; p < PR_END; p++) {
+		for (Price p = Price::Begin; p < Price::End; p++) {
 			Price fallback_price = _price_base_specs[p].fallback_price;
-			if (fallback_price != INVALID_PRICE && price_base_multipliers[p] == INVALID_PRICE_MODIFIER) {
+			if (fallback_price != Price::Invalid && price_base_multipliers[p] == INVALID_PRICE_MODIFIER) {
 				/* No price multiplier has been set.
 				 * So copy the multiplier from the fallback price, maybe a multiplier was set there. */
 				price_base_multipliers[p] = price_base_multipliers[fallback_price];
@@ -1570,7 +1570,7 @@ static void FinalisePriceBaseMultipliers()
 	/* Decide local/global scope of price base multipliers */
 	for (auto &file : _grf_files) {
 		PriceMultipliers &price_base_multipliers = file.price_base_multipliers;
-		for (Price p = PR_BEGIN; p < PR_END; p++) {
+		for (Price p = Price::Begin; p < Price::End; p++) {
 			if (price_base_multipliers[p] == INVALID_PRICE_MODIFIER) {
 				/* No multiplier was set; set it to a neutral value */
 				price_base_multipliers[p] = 0;

@@ -151,7 +151,7 @@ static void _DoCommandReturnBuildBridge1(class ScriptInstance &instance)
 
 	length = Clamp<SQInteger>(length, 0, INT32_MAX);
 
-	return ::CalcBridgeLenCostFactor(length) * _price[PR_BUILD_BRIDGE] * ::GetBridgeSpec(bridge_type)->price >> 8;
+	return ::CalcBridgeLenCostFactor(length) * _price[Price::BuildBridge] * ::GetBridgeSpec(bridge_type)->price >> 8;
 }
 
 /* static */ SQInteger ScriptBridge::GetMaxLength(BridgeType bridge_type)
