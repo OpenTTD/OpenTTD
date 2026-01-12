@@ -17,12 +17,12 @@
 typedef OverflowSafeInt64 Money;
 
 /** Type of the game economy. */
-enum EconomyType : uint8_t {
-	ET_BEGIN = 0, ///< The lowest valid value.
-	ET_ORIGINAL = 0, ///< Imitates original TTD economy.
-	ET_SMOOTH = 1, ///< Makes production changes more often, and in smaller steps.
-	ET_FROZEN = 2, ///< Stops production changes and industry closures.
-	ET_END = 3, ///< Economy type end marker.
+enum class EconomyType : uint8_t {
+	Begin, ///< The lowest valid value.
+	Original = EconomyType::Begin, ///< Imitates original TTD economy.
+	Smooth, ///< Makes production changes more often, and in smaller steps.
+	Frozen, ///< Stops production changes and industry closures.
+	End, ///< Economy type end marker.
 };
 
 /**
