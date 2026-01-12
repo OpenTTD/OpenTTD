@@ -1493,8 +1493,8 @@ struct PerformanceRatingDetailWindow : Window {
 				size.height = this->bar_height + WidgetDimensions::scaled.matrix.Vertical();
 
 				uint score_info_width = 0;
-				for (uint i = SCORE_BEGIN; i < SCORE_END; i++) {
-					score_info_width = std::max(score_info_width, GetStringBoundingBox(STR_PERFORMANCE_DETAIL_VEHICLES + i).width);
+				for (ScoreID i = ScoreID::Begin; i < ScoreID::End; i++) {
+					score_info_width = std::max(score_info_width, GetStringBoundingBox(STR_PERFORMANCE_DETAIL_VEHICLES + to_underlying(i)).width);
 				}
 				score_info_width += GetStringBoundingBox(GetString(STR_JUST_COMMA, GetParamMaxValue(1000))).width + WidgetDimensions::scaled.hsep_wide;
 
@@ -1565,16 +1565,16 @@ struct PerformanceRatingDetailWindow : Window {
 		int64_t needed = _score_info[score_type].needed;
 		int   score  = _score_info[score_type].score;
 
-		/* SCORE_TOTAL has its own rules ;) */
-		if (score_type == SCORE_TOTAL) {
-			for (ScoreID i = SCORE_BEGIN; i < SCORE_END; i++) score += _score_info[i].score;
+		/* ScoreID::Total has its own rules ;) */
+		if (score_type == ScoreID::Total) {
+			for (ScoreID i = ScoreID::Begin; i < ScoreID::End; i++) score += _score_info[i].score;
 			needed = SCORE_MAX;
 		}
 
 		uint bar_top  = CentreBounds(r.top, r.bottom, this->bar_height);
 		uint text_top = CentreBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL));
 
-		DrawString(this->score_info_left, this->score_info_right, text_top, STR_PERFORMANCE_DETAIL_VEHICLES + score_type);
+		DrawString(this->score_info_left, this->score_info_right, text_top, STR_PERFORMANCE_DETAIL_VEHICLES + to_underlying(score_type));
 
 		/* Draw the score */
 		DrawString(this->score_info_left, this->score_info_right, text_top, GetString(STR_JUST_COMMA, score), TC_BLACK, SA_RIGHT);
@@ -1595,17 +1595,17 @@ struct PerformanceRatingDetailWindow : Window {
 		/* Draw it */
 		DrawString(this->bar_left, this->bar_right, text_top, GetString(STR_PERFORMANCE_DETAIL_PERCENT, Clamp<int64_t>(val, 0, needed) * 100 / needed), TC_FROMSTRING, SA_HOR_CENTER);
 
-		/* SCORE_LOAN is inverted */
-		if (score_type == SCORE_LOAN) val = needed - val;
+		/* ScoreID::Loan is inverted */
+		if (score_type == ScoreID::Loan) val = needed - val;
 
 		/* Draw the amount we have against what is needed
 		 * For some of them it is in currency format */
 		switch (score_type) {
-			case SCORE_MIN_PROFIT:
-			case SCORE_MIN_INCOME:
-			case SCORE_MAX_INCOME:
-			case SCORE_MONEY:
-			case SCORE_LOAN:
+			case ScoreID::MinProfit:
+			case ScoreID::MinIncome:
+			case ScoreID::MaxIncome:
+			case ScoreID::Money:
+			case ScoreID::Loan:
 				DrawString(this->score_detail_left, this->score_detail_right, text_top, GetString(STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY, val, needed));
 				break;
 			default:
@@ -2017,7 +2017,7 @@ static std::unique_ptr<NWidgetBase> MakePerformanceDetailPanels()
 		STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP,
 	};
 
-	static_assert(lengthof(performance_tips) == SCORE_END - SCORE_BEGIN);
+	static_assert(lengthof(performance_tips) == to_underlying(ScoreID::End));
 
 	auto vert = std::make_unique<NWidgetVertical>(NWidContainerFlag::EqualSize);
 	for (WidgetID widnum = WID_PRD_SCORE_FIRST; widnum <= WID_PRD_SCORE_LAST; widnum++) {
