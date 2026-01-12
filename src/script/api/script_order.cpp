@@ -494,7 +494,7 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 			if ((order_flags & OF_GOTO_NEAREST_DEPOT) != 0) odaf.Set(OrderDepotActionFlag::NearestDepot);
 
 			OrderNonStopFlags onsf{};
-			if ((order_flags & OF_NON_STOP_INTERMEDIATE) != 0) onsf.Set(OrderNonStopFlag::NoIntermediate);
+			if (v->IsGroundVehicle() && (order_flags & OF_NON_STOP_INTERMEDIATE) != 0) onsf.Set(OrderNonStopFlag::NoIntermediate);
 			if ((order_flags & OF_GOTO_NEAREST_DEPOT) != 0) {
 				order.MakeGoToDepot(DepotID::Invalid(), odtf, onsf, odaf);
 			} else {
@@ -516,17 +516,17 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 			order.SetLoadType(static_cast<OrderLoadType>(GB(order_flags, 5, 3)));
 			order.SetUnloadType(static_cast<OrderUnloadType>(GB(order_flags, 2, 3)));
 			order.SetStopLocation(OrderStopLocation::FarEnd);
+			if (v->IsGroundVehicle()) order.SetNonStopType(static_cast<OrderNonStopFlags>(GB(order_flags, 0, 2)));
 			break;
 
 		case OT_GOTO_WAYPOINT:
 			order.MakeGoToWaypoint(::GetStationIndex(destination));
+			if (v->IsGroundVehicle()) order.SetNonStopType(static_cast<OrderNonStopFlags>(GB(order_flags, 0, 2)));
 			break;
 
 		default:
 			return false;
 	}
-
-	order.SetNonStopType(static_cast<OrderNonStopFlags>(GB(order_flags, 0, 2)));
 
 	int order_pos = ScriptOrderPositionToRealOrderPosition(vehicle_id, order_position);
 	return ScriptObject::Command<Commands::InsertOrder>::Do(0, vehicle_id, order_pos, order);
