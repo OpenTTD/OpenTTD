@@ -1509,9 +1509,9 @@ static inline bool TownAllowedToBuildRoads(TownExpandModes modes)
 
 /* The possible states of town growth. */
 enum class TownGrowthResult {
-	Succeed,
-	SearchStopped,
-	Continue,
+	Succeed, ///< The town has grown.
+	SearchStopped, ///< There is a reason not to try growing the town now.
+	Continue, ///< The town hasn't grown yet, but try again.
 };
 
 /**

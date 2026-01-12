@@ -77,6 +77,7 @@ DECLARE_ENUM_AS_ADDABLE(LiveryClass)
 
 /** Information about a particular livery. */
 struct Livery {
+	/** Flags for bitmask to declare which of the colours are set. */
 	enum class Flag : uint8_t {
 		Primary = 0, ///< Primary colour is set.
 		Secondary = 1, ///< Secondary colour is set.

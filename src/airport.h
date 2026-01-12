@@ -96,37 +96,36 @@ enum class AirportBlock : uint8_t {
 	Term6            =  5, ///< Block belonging to terminal 6.
 	Helipad1         =  6, ///< Block belonging to helipad 1.
 	Helipad2         =  7, ///< Block belonging to helipad 2.
-	RunwayInOut      =  8,
-	RunwayIn         =  8,
-	AirportBusy      =  8,
-	RunwayOut        =  9,
-	TaxiwayBusy      = 10,
-	OutWay           = 11,
-	InWay            = 12,
-	AirportEntrance  = 13,
-	TermGroup1       = 14,
-	TermGroup2       = 15,
-	Hangar2Area      = 16,
-	TermGroup2Enter1 = 17,
-	TermGroup2Enter2 = 18,
-	TermGroup2Exit1  = 19,
-	TermGroup2Exit2  = 20,
-	PreHelipad       = 21,
+	RunwayInOut      =  8, ///< Runway used for landing and take-off (commuter / city airports).
+	RunwayIn         =  8, ///< Runway used for landing (metropolitan / international / intercontinental airports).
+	AirportBusy      =  8, ///< Complete airport is busy (small airport / heliport).
+	RunwayOut        =  9, ///< Runway used for take off.
+	TaxiwayBusy      = 10, ///< Taxiway is occupied (commuter / city airports / helistation).
+	OutWay           = 11, ///< Holding point just before take off.
+	InWay            = 12, ///< Holding point just after take off.
+	AirportEntrance  = 13, ///< Entrance point before terminals.
+	TermGroup1       = 14, ///< First set of terminals.
+	TermGroup2       = 15, ///< Second set of terminals.
+	Hangar2Area      = 16, ///< Area in front of the second hangar.
+	TermGroup2Enter1 = 17, ///< First holding point before terminal.
+	TermGroup2Enter2 = 18, ///< Second holding point before terminal.
+	TermGroup2Exit1  = 19, ///< First holding point after terminal.
+	TermGroup2Exit2  = 20, ///< Second holding point after terminal.
+	PreHelipad       = 21, ///< Holding point for helicopter landings.
 
 	/* blocks for new airports */
 	Term7            = 22, ///< Block belonging to terminal 7.
 	Term8            = 23, ///< Block belonging to terminal 8.
 	Helipad3         = 24, ///< Block belonging to helipad 3.
-	Hangar1Area      = 26,
-	OutWay2          = 27,
-	InWay2           = 28,
-	RunwayIn2        = 29,
-	RunwayOut2       = 10, ///< @note re-uses #AirportBlock::TaxiwayBusy
-	HelipadGroup     = 13, ///< @note re-uses #AirportBlock::AirportEntrance
-	OutWay3          = 31,
+	Hangar1Area      = 26, ///< Area in front of the first hangar.
+	OutWay2          = 27, ///< Second holding point just before take off.
+	InWay2           = 28, ///< Second holding point just after take off.
+	RunwayIn2        = 29, ///< Second runway for landing.
+	RunwayOut2       = 10, ///< Second runway for take off. @note re-uses #AirportBlock::TaxiwayBusy
+	OutWay3          = 31, ///< Third holding point just before take off.
 	/* end of new blocks */
 
-	Nothing          = 30,
+	Nothing          = 30, ///< Nothing is blocked, for example being in the hanger.
 	Zeppeliner       = 62, ///< Block for the zeppeliner disaster vehicle.
 	AirportClosed    = 63, ///< Dummy block for indicating a closed airport.
 };

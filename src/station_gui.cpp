@@ -858,6 +858,7 @@ enum SortOrder : uint8_t {
 
 class CargoDataEntry;
 
+/** Ways of sorting cargo in the UI. */
 enum class CargoSortType : uint8_t {
 	AsGrouping,    ///< by the same principle the entries are being grouped
 	Count,         ///< by amount of cargo

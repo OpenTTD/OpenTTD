@@ -143,7 +143,10 @@
  * Technically DiagDirection could be used, but that allows simple conversions to/from integer. In this case that is not wanted.
  */
 enum class RoadPartOrientation {
-	NW, NE, SW, SE
+	NW, ///< North west.
+	NE, ///< North east.
+	SW, ///< South west.
+	SE, ///< South east.
 };
 
 /**

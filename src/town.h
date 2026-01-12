@@ -225,7 +225,7 @@ enum TownCouncilAttitudes {
 enum class TownRatingCheckType : uint8_t {
 	RoadRemove, ///< Removal of a road owned by the town.
 	TunnelBridgeRemove, ///< Removal of a tunnel or bridge owned by the town.
-	End,
+	End, ///< End marker.
 };
 
 /** Special values for town list window for the data parameter of #InvalidateWindowData. */
@@ -254,7 +254,7 @@ enum class TownAction : uint8_t {
 	FundBuildings, ///< Fund new buildings.
 	BuyRights, ///< Buy exclusive transport rights.
 	Bribe, ///< Try to bribe the council.
-	End,
+	End, ///< End marker.
 };
 using TownActions = EnumBitSet<TownAction, uint8_t>;
 

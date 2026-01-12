@@ -9,6 +9,7 @@
 
 #include "../core/enum_type.hpp"
 
+/** Flags describing how to process a string command. */
 enum class CmdFlag : uint8_t {
 	DontCount, ///< These commands aren't counted for comparison
 	Case, ///< These commands support cases

@@ -98,7 +98,7 @@ enum class OrderStopLocation : uint8_t {
 	NearEnd = 0, ///< Stop at the near end of the platform
 	Middle = 1, ///< Stop at the middle of the platform
 	FarEnd = 2, ///< Stop at the far end of the platform
-	End,
+	End, ///< End marker.
 };
 
 /**
@@ -134,7 +134,7 @@ enum class OrderConditionVariable : uint8_t {
 	Unconditionally = 5, ///< Always skip
 	RemainingLifetime = 6, ///< Skip based on the remaining lifetime
 	MaxReliability = 7, ///< Skip based on the maximum reliability
-	End,
+	End, ///< End marker.
 };
 
 /**
@@ -149,7 +149,7 @@ enum class OrderConditionComparator : uint8_t {
 	MoreThanOrEqual = 5, ///< Skip if the value is more or equal to the limit
 	IsTrue = 6, ///< Skip if the variable is true
 	IsFalse = 7, ///< Skip if the variable is false
-	End,
+	End, ///< End marker.
 };
 
 
@@ -177,7 +177,7 @@ enum class OrderDepotAction : uint8_t {
 	Service = 1, ///< Service only if needed
 	Stop = 2, ///< Go to the depot and stop there
 	Unbunch = 3, ///< Go to the depot and unbunch
-	End
+	End, ///< End marker.
 };
 
 /**

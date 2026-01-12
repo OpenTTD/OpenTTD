@@ -84,14 +84,15 @@ bool ScriptInfo::GetSettings()
 	return this->engine->CallMethod(this->SQ_instance, "GetSettings", nullptr, MAX_GET_SETTING_OPS);
 }
 
+/** Configuration items for a script. */
 enum class ScriptConfigItemKey : uint8_t {
-	Name,
-	Description,
-	MinValue,
-	MaxValue,
-	MediumValue,
-	DefaultValue,
-	Flags,
+	Name, ///< Name of the configuration.
+	Description, ///< Description.
+	MinValue, ///< Minimum value.
+	MaxValue, ///< Maximum value.
+	MediumValue, ///< Used for reading the old medium difficulty setting, which is used as default when that does not exist.
+	DefaultValue, ///< Default value when nothing is entered.
+	Flags, ///< ScriptConfigFlags defining how/when to use this configuration.
 };
 using ScriptConfigItemKeys = EnumBitSet<ScriptConfigItemKey, uint8_t>;
 

@@ -14,10 +14,11 @@
 #include "economy_type.h"
 #include "openttd.h"
 
+/** Different ways to determine the amount to loan/repay. */
 enum class LoanCommand : uint8_t {
-	Interval,
-	Max,
-	Amount,
+	Interval, ///< Loan/repay LOAN_INTERVAL.
+	Max, ///< Loan/repay the maximum amount permitting money/settings.
+	Amount, ///< Loan/repay the given amount.
 };
 
 CommandCost CmdMoneyCheat(DoCommandFlags flags, Money amount);
