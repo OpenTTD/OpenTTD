@@ -477,7 +477,9 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, ScriptVehicle::IsPrimaryVehicle(vehicle_id));
-	EnforcePrecondition(false, order_position >= 0 && order_position <= ::Vehicle::Get(vehicle_id)->GetNumManualOrders());
+
+	const Vehicle *v = ::Vehicle::Get(vehicle_id);
+	EnforcePrecondition(false, order_position >= 0 && order_position <= v->GetNumManualOrders());
 	EnforcePrecondition(false, AreOrderFlagsValid(destination, order_flags));
 
 	Order order;
@@ -498,7 +500,7 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 			} else {
 				/* Check explicitly if the order is to a station (for aircraft) or
 				 * to a depot (other vehicle types). */
-				if (::Vehicle::Get(vehicle_id)->type == VEH_AIRCRAFT) {
+				if (v->type == VEH_AIRCRAFT) {
 					if (!::IsTileType(destination, TileType::Station)) return false;
 					order.MakeGoToDepot(::GetStationIndex(destination), odtf, onsf, odaf);
 				} else {
@@ -604,17 +606,15 @@ static void _DoCommandReturnSetOrderFlags(class ScriptInstance &instance)
 	EnforcePrecondition(false, IsValidVehicleOrder(vehicle_id, order_position));
 	EnforcePrecondition(false, AreOrderFlagsValid(GetOrderDestination(vehicle_id, order_position), order_flags));
 
-	const Order *order = ::ResolveOrder(vehicle_id, order_position);
-	int order_pos = ScriptOrderPositionToRealOrderPosition(vehicle_id, order_position);
-
 	ScriptOrderFlags current = GetOrderFlags(vehicle_id, order_position);
-
 	EnforcePrecondition(false, (order_flags & OF_GOTO_NEAREST_DEPOT) == (current & OF_GOTO_NEAREST_DEPOT));
 
+	int order_pos = ScriptOrderPositionToRealOrderPosition(vehicle_id, order_position);
 	if ((current & OF_NON_STOP_FLAGS) != (order_flags & OF_NON_STOP_FLAGS)) {
 		return ScriptObject::Command<Commands::ModifyOrder>::Do(&::_DoCommandReturnSetOrderFlags, vehicle_id, order_pos, MOF_NON_STOP, order_flags & OF_NON_STOP_FLAGS);
 	}
 
+	const Order *order = ::ResolveOrder(vehicle_id, order_position);
 	switch (order->GetType()) {
 		case OT_GOTO_DEPOT:
 			if ((current & OF_DEPOT_FLAGS) != (order_flags & OF_DEPOT_FLAGS)) {
