@@ -491,11 +491,11 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 
 			OrderDepotActionFlags odaf{};
 			if ((order_flags & OF_STOP_IN_DEPOT) != 0) odaf.Set(OrderDepotActionFlag::Halt);
-			if ((order_flags & OF_GOTO_NEAREST_DEPOT) != 0) odaf.Set(OrderDepotActionFlag::NearestDepot);
 
 			OrderNonStopFlags onsf{};
 			if (v->IsGroundVehicle() && (order_flags & OF_NON_STOP_INTERMEDIATE) != 0) onsf.Set(OrderNonStopFlag::NoIntermediate);
 			if ((order_flags & OF_GOTO_NEAREST_DEPOT) != 0) {
+				odaf.Set(OrderDepotActionFlag::NearestDepot);
 				order.MakeGoToDepot(DepotID::Invalid(), odtf, onsf, odaf);
 			} else {
 				/* Check explicitly if the order is to a station (for aircraft) or
