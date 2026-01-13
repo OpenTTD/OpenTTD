@@ -46,9 +46,8 @@ jobs:
 
     - name: Install GOG Galaxy Build Creator
       run: |
-        wget https://cdn.gog.com/open/galaxy/pipeline/build_creator/gnu-linux/GOGGalaxyBuildCreator-1.4.0.AppImage
-        7z x GOGGalaxyBuildCreator-1.4.0.AppImage
-        chmod +x ./app/GOGGalaxyPipelineBuilder
+        wget https://cdn.gog.com/open/galaxy/pipeline/10.6.7.17/gnu-linux/GOGGalaxyPipelineBuilder
+        chmod +x ./GOGGalaxyPipelineBuilder
 
     - name: Install OpenGFX
       shell: bash
@@ -145,8 +144,8 @@ jobs:
           echo "::endgroup::"
 
           echo "::group::Upload to GOG"
-          ../app/GOGGalaxyPipelineBuilder build-game --username "${{ secrets.GOG_USERNAME }}" --password "${{ secrets.GOG_PASSWORD }}" --branch Testing windows.json
-          ../app/GOGGalaxyPipelineBuilder build-game --username "${{ secrets.GOG_USERNAME }}" --password "${{ secrets.GOG_PASSWORD }}" --branch Testing macos.json
-          ../app/GOGGalaxyPipelineBuilder build-game --username "${{ secrets.GOG_USERNAME }}" --password "${{ secrets.GOG_PASSWORD }}" --branch Testing linux.json
+          ../GOGGalaxyPipelineBuilder build-game --username "${{ secrets.GOG_USERNAME }}" --password "${{ secrets.GOG_PASSWORD }}" --branch Testing windows.json
+          ../GOGGalaxyPipelineBuilder build-game --username "${{ secrets.GOG_USERNAME }}" --password "${{ secrets.GOG_PASSWORD }}" --branch Testing macos.json
+          ../GOGGalaxyPipelineBuilder build-game --username "${{ secrets.GOG_USERNAME }}" --password "${{ secrets.GOG_PASSWORD }}" --branch Testing linux.json
           echo "::endgroup::"
         )
