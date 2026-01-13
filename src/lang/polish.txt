@@ -1606,12 +1606,12 @@ STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Krajobraz tropi
 STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Krajobraz zabawkowy
 
 ###length 7
-STR_TERRAIN_TYPE_VERY_FLAT                                      :Bardzo płaski
-STR_TERRAIN_TYPE_FLAT                                           :Płaski
-STR_TERRAIN_TYPE_HILLY                                          :Pagórkowaty
-STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Górzysty
-STR_TERRAIN_TYPE_ALPINIST                                       :Alpejski
-STR_TERRAIN_TYPE_CUSTOM                                         :Niestandardowa wysokość
+STR_TERRAIN_TYPE_VERY_FLAT                                      :Bardzo płasko
+STR_TERRAIN_TYPE_FLAT                                           :Płasko
+STR_TERRAIN_TYPE_HILLY                                          :Pagórkowato
+STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Górzyście
+STR_TERRAIN_TYPE_ALPINIST                                       :Alpejsko
+STR_TERRAIN_TYPE_CUSTOM                                         :Własna
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Niestandardowa wysokość ({NUM})
 
 ###length 4
@@ -1978,7 +1978,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Oryginalny gene
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Oryginalny
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
-STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Typ terenu: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Maksymalna wysokość: {STRING}
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Wybierz wysokość wzgórz i gór w krajobrazie
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Liczba przedsiębiorstw: {STRING}
@@ -2006,7 +2006,13 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Łagodny
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Pofałdowany
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Bardzo pofałdowany
 
+STR_CONFIG_SETTING_AVERAGE_HEIGHT                               :Średnia wysokość: {STRING}
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT                      :Wybierz średnią wysokość terenu. Opcja „Automatyczna” użyje domyślnej wartości dla wybranego klimatu: „Niziny” dla tropikalnego, „Normalna” dla umiarkowanego i zabawkowego oraz „Płaskowyże” dla arktycznego
 ###length 4
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUTO                          :Automatyczna
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_LOWLANDS                      :Niziny
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL                        :Normalna
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS                      :Płaskowyże
 
 STR_CONFIG_SETTING_VARIETY                                      :Różnorodność terenu: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Wybierz, czy mapa ma zawierać zarówno obszary górskie, jak i płaskie. Im większa różnorodność, tym większe różnice wysokości między obszarami górskimi i płaskimi
@@ -3768,7 +3774,8 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Pokrycie
 STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Zwiększ pokrycie pustynią o 10%
 STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Zmniejsz pokrycie pustynią o 10%
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
-STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Typ terenu:
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maksymalna wysokość:
+STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}Średnia wysokość
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Poziom morza:
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Określ wysokość poziomu morza
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Liczba rzek:

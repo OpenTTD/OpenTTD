@@ -3912,6 +3912,7 @@ STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Rādīt 
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Rādīt lidaparātus, kuru rīkojumu sarakstos ir šī stacija
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Rādīt kuģus, kuru rīkojumu sarakstos ir šī stacija
 
+STR_STATION_VIEW_EDIT_STATION_SIGN                              :{WHITE}Rediģēt stacijas zīmi
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Slēgt lidostu
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Novērst lidaparātu nolaišanos šajā lidostā

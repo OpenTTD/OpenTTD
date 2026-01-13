@@ -1662,7 +1662,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Az eredeti tér
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Eredeti
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
-STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Tereptípus: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Előre beállított maximális magasság: {STRING}
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :A dombok és hegyek magasságának beállítása
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Gazdasági épületek száma: {STRING}
@@ -1690,7 +1690,13 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Sima
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Durva
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Nagyon durva
 
+STR_CONFIG_SETTING_AVERAGE_HEIGHT                               :Átlagos magasság: {STRING}
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT                      :Válassza ki a terület átlagos magasságát. Az 'Automatikus' beállítás az alapértelmezett értéket használja a kiválasztott éghajlat alapján: 'Síkság' a szubtrópusi éghajlatra, 'Normál' a mérsékelt éghajlatra és a Toyland-re, valamint 'Fennsík' a szubarktikus éghajlatra.
 ###length 4
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUTO                          :Automatikus
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_LOWLANDS                      :Síkság
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL                        :Normál
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS                      :Fennsík
 
 STR_CONFIG_SETTING_VARIETY                                      :Változatosság eloszlása: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Bekapcsolása esetén a térképen lesznek hegyvidékes és sík területek is. Nagyobb változatosság esetén nagyobb lesz a magasságkülönbség a sík és hegyvidékes területek között
@@ -2272,7 +2278,7 @@ STR_CONFIG_ERROR                                                :{WHITE}Hiba a k
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... hiba a(z) '{STRING}' tömbben
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... a(z) '{1:STRING}' beállítás értéke érvénytelen: '{0:STRING}'
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... felesleges karakterek a(z) '{STRING}' beállítás végén
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... érvénytelen NewGRF nem került betöltésre - '{STRING}': ütköző GRF ID egy másik NewGRF-fel: '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... érvénytelen NewGRF nem került betöltésre - '{STRING}': ütköző NewGRF ID egy másik NewGRF-fel: '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... érvénytelen NewGRF nem került betöltésre - '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :nem található
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :nem biztonságos állandó használatra
@@ -3452,7 +3458,8 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Sivatag 
 STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}A sivatag kiterjedésének növelése 10%-kal
 STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}A sivatag kiterjedésének csökkentése 10%-kal
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
-STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tereptípus:
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maximális magasság:
+STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}Áltagos magasság:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Tengerszint:
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Tengerszint kiválasztása
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Folyók:
@@ -3688,7 +3695,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Hibás paramét
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} muszáj, hogy betöltődjön ezelőtt: {2:STRING}
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} muszáj, hogy ezután töltődjön be: {2:STRING}
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} csak a {2:STRING} vagy újabb verziójú OpenTTD-vel működik
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :az adott GRF fájl célja egy másik lefordítása
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :az adott NewGRF fájl célja egy másik lefordítása
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Túl sok NewGRF van betöltve
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{1:STRING} betöltése mint statikus NewGRF {2:STRING} mellett ütközést okozhat
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Váratlan sprite (sprite {3:NUM})
@@ -3697,7 +3704,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Érvénytelen I
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} hibás sprite-ot tartalmaz. Minden hibás sprite piros kérdőjellel (?) kerül jelölésre
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Több Action 8 bejegyzést tartalmaz (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Ál-sprite távoli végének olvasása (sprite {3:NUM})
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Kért GRF források nem elérhetőek (sprite {3:NUM})
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Kért NewGRF erforrások nem elérhetőek (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} kikapcsolva {STRING} által
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Érvénytelen/ismeretlen sprite szerkezet formátum (sprite {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Túl sok érték a tulajdonságlistában (sprite {3:NUM}, property {4:HEX})
@@ -3707,13 +3714,13 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Érvénytelen t
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Figyelem!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Te éppen egy jelenleg futó játékon akarsz változtatni; ettől elszállhat az OpenTTD. Ezekről ne tegyél hibajelentést.{}Teljesen biztos vagy ebben?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nem lehetséges a fájl hozzáadása: duplikált GRF azonosító
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Pontosan megegyező fájlt nem találtam (kompatibilis GRF-fel helyettesítve)
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nem lehetséges a fájl hozzáadása: duplikált NewGRF azonosító
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE} Egyező fájlt nem található (kompatibilis NewGRF-fel helyettesítve)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Nem adhatod hozzá: Elérted a NewGRF fájlok maximális számát
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilis GRFek betöltve a hiányzó fájlok helyett
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Hiányzó GRF fájlokat kikapcsoltam
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Hiányzó GRF fájlok
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilis NewGRF(-ek) betöltve a hiányzó fájlok helyett
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Hiányzó NewGRF fájlok kikapcsolva
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Hiányzó NewGRF fájl(ok)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}A játék folytatásától az OpenTTD lefagyhat.{}Ne jelentsd be az ismétlődő lefagyásokat egyesével.{}Biztosan folytatni akarod?
 
 # NewGRF status
@@ -3731,10 +3738,10 @@ STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Megvált
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}A(z) „{1:COMPANY}” vállalat „{0:VEHICLE}” jelű vonatának hossza érvénytelen. Ezt valószínűleg NewGRF-ek okozhatják. A játék elszállhat vagy összeomolhat.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}A NewGRF {0:STRING}' helytelen információt biztosít
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}A(z) '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' rakomány/átalakítás információja a gyártás után különbözik a vételi listán találhatótól. Ez hibát okozhat az automatikus felújítás/lecserélés során az átalakításban
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}A(z) '{1:ENGINE}}' rakomány/átalakítás információja a gyártás után különbözik a vételi listán találhatótól. Ez hibát okozhat az automatikus felújítás/lecserélés során az átalakításban
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' végtelen ciklust okozott a termelés folyamatnál
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}{1:HEX} visszatérő érték ismeretlen/érvénytelen {2:HEX} értékkel tért vissza
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' érvénytelen rakománytípussal tért vissza a termelési callback-ben: {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}' {1:STRING} ' érvénytelen rakománytípussal tért vissza a termelési callback-ben: {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<érvénytelen rakomány>
