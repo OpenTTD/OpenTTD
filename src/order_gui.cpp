@@ -375,28 +375,6 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 				(_settings_client.gui.new_nonstop && v->IsGroundVehicle()) ? OrderNonStopFlag::NoIntermediate : OrderNonStopFlags{});
 
 		if (_ctrl_pressed) {
-			/* Check to see if we are allowed to make this an unbunching order. */
-			bool failed = false;
-			if (v->HasFullLoadOrder()) {
-				/* We don't allow unbunching if the vehicle has a full load order. */
-				ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_INSERT_NEW_ORDER), GetEncodedString(STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD), WL_INFO);
-				failed = true;
-			} else if (v->HasUnbunchingOrder()) {
-				/* Don't allow a new unbunching order if we already have one. */
-				ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_INSERT_NEW_ORDER), GetEncodedString(STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED), WL_INFO);
-				failed = true;
-			} else if (v->HasConditionalOrder()) {
-				/* We don't allow unbunching if the vehicle has a conditional order. */
-				ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_INSERT_NEW_ORDER), GetEncodedString(STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL), WL_INFO);
-				failed = true;
-			}
-
-			/* Return an empty order to bail out. */
-			if (failed) {
-				order.Free();
-				return order;
-			}
-
 			/* Now we are allowed to set the action type. */
 			order.SetDepotActionType(OrderDepotActionFlag::Unbunch);
 		}
