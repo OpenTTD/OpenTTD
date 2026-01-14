@@ -114,7 +114,9 @@ static void _GenerateWorld()
 		IncreaseGeneratingWorldProgress(GWP_MAP_INIT);
 		/* Must start economy early because of the costs. */
 		StartupEconomy();
-		if (!CheckTownRoadTypes()) {
+
+		/* Allow a landscape to generate in the editor without towns being able to be generated (e.g. to create a heightmap) */
+		if (_game_mode != GM_EDITOR && !CheckTownRoadTypes(true)) {
 			HandleGeneratingWorldAbortion();
 			return;
 		}

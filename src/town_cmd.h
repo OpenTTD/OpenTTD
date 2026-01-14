@@ -45,5 +45,6 @@ DEF_CMD_TRAIT(CMD_PLACE_HOUSE_AREA, CmdPlaceHouseArea, CommandFlags({ CommandFla
 
 CommandCallback CcFoundTown;
 void CcFoundRandomTown(Commands cmd, const CommandCost &result, Money, TownID town_id);
+TimerGameCalendar::Date GetTownRoadTypeFirstIntroductionDate();
 
 #endif /* TOWN_CMD_H */

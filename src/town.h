@@ -351,7 +351,7 @@ inline uint16_t TownTicksToGameTicks(uint16_t ticks)
 
 
 RoadType GetTownRoadType();
-bool CheckTownRoadTypes();
+bool CheckTownRoadTypes(bool show_error_messages = false);
 std::span<const DrawBuildingsTileStruct> GetTownDrawTileData();
 
 #endif /* TOWN_H */

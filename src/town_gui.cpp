@@ -1222,6 +1222,19 @@ public:
 	{
 		std::string name;
 
+		if (!CheckTownRoadTypes()) {
+			auto min_date = GetTownRoadTypeFirstIntroductionDate();
+			ShowErrorMessage(
+				/* Display "Can't build any towns" / "Can't found town here" messages for random and non-random generation, respectively. */
+				GetEncodedString(random ? STR_ERROR_CAN_T_GENERATE_TOWN : STR_ERROR_CAN_T_FOUND_TOWN_HERE),
+				/* Display the appropariate "Non-town buildable... available (yet)" messages. */
+				GetEncodedString(min_date < INT32_MAX ? STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET : STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL),
+				WL_INFO, 0, 0,
+				min_date < INT32_MAX ? GetEncodedString(STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION, min_date) : GetEncodedString(STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION)
+			);
+			return;
+		}
+
 		if (!this->townnamevalid) {
 			name = this->townname_editbox.text.GetText();
 		} else {
@@ -1312,9 +1325,20 @@ public:
 
 		Backup<bool> old_generating_world(_generating_world, true);
 		UpdateNearestTownForRoadTiles(true);
-		if (!GenerateTowns(this->town_layout, value)) {
-			ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_GENERATE_TOWN), GetEncodedString(STR_ERROR_NO_SPACE_FOR_TOWN), WL_INFO);
+
+		if (CheckTownRoadTypes()) {
+			if (!GenerateTowns(this->town_layout, value)) {
+				ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_GENERATE_TOWN), GetEncodedString(STR_ERROR_NO_SPACE_FOR_TOWN), WL_INFO);
+			}
+		} else {
+			auto min_date = GetTownRoadTypeFirstIntroductionDate();
+			if (min_date < INT32_MAX) {
+				ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_GENERATE_TOWN), GetEncodedString(STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET), WL_INFO, 0, 0, GetEncodedString(STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION, min_date));
+			} else {
+				ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_GENERATE_TOWN), GetEncodedString(STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL), WL_CRITICAL, 0, 0, GetEncodedString(STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION));
+			}
 		}
+
 		UpdateNearestTownForRoadTiles(false);
 		old_generating_world.Restore();
 	}

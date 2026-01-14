@@ -992,7 +992,7 @@ RoadType GetTownRoadType()
  * Get the calendar date of the earliest town-buildable road type.
  * @return introduction date of earliest road type, or INT32_MAX if none available.
  */
-static TimerGameCalendar::Date GetTownRoadTypeFirstIntroductionDate()
+TimerGameCalendar::Date GetTownRoadTypeFirstIntroductionDate()
 {
 	const RoadTypeInfo *best = nullptr;
 	for (RoadType rt : GetMaskForRoadTramType(RTT_ROAD)) {
@@ -1010,22 +1010,25 @@ static TimerGameCalendar::Date GetTownRoadTypeFirstIntroductionDate()
 
 /**
  * Check if towns are able to build road.
+ * @param show_error_messages Whether error messages should be shown to the user, should no road types be available.
  * @return true iff the towns are currently able to build road.
  */
-bool CheckTownRoadTypes()
+bool CheckTownRoadTypes(bool show_error_messages)
 {
 	auto min_date = GetTownRoadTypeFirstIntroductionDate();
 	if (min_date <= TimerGameCalendar::date) return true;
 
-	if (min_date < INT32_MAX) {
-		ShowErrorMessage(
-			GetEncodedString(STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET),
-			GetEncodedString(STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION, min_date),
-			WL_CRITICAL);
-	} else {
-		ShowErrorMessage(
-			GetEncodedString(STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL),
-			GetEncodedString(STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION), WL_CRITICAL);
+	if (show_error_messages) {
+		if (min_date < INT32_MAX) {
+			ShowErrorMessage(
+				GetEncodedString(STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET),
+				GetEncodedString(STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION, min_date),
+				WL_CRITICAL);
+		} else {
+			ShowErrorMessage(
+				GetEncodedString(STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL),
+				GetEncodedString(STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION), WL_CRITICAL);
+		}
 	}
 	return false;
 }
@@ -2447,6 +2450,11 @@ uint GetDefaultTownsForMapSize()
  */
 bool GenerateTowns(TownLayout layout, std::optional<uint> number)
 {
+	/* Don't attempt to generate towns if there are no roadtypes available. */
+	if (!CheckTownRoadTypes()) {
+		return false;
+	}
+
 	uint current_number = 0;
 	uint total;
 	if (number.has_value()) {
