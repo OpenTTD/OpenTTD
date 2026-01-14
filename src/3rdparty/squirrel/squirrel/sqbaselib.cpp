@@ -519,6 +519,7 @@ bool _sort_compare(HSQUIRRELVM v,SQObjectPtr &a,SQObjectPtr &b,SQInteger func,SQ
 
 bool _hsort_sift_down(HSQUIRRELVM v,SQArray *arr, SQInteger root, SQInteger bottom, SQInteger func)
 {
+	SQInteger initial_size = arr->Size();
 	SQInteger maxChild;
 	SQInteger done = 0;
 	SQInteger ret;
@@ -531,6 +532,10 @@ bool _hsort_sift_down(HSQUIRRELVM v,SQArray *arr, SQInteger root, SQInteger bott
 		else {
 			if(!_sort_compare(v,arr->_values[root2],arr->_values[root2 + 1],func,ret))
 				return false;
+			if (initial_size != arr->Size()) {
+				v->Raise_Error("compare function modified array");
+				return false;
+			}
 			if (ret > 0) {
 				maxChild = root2;
 			}
@@ -542,6 +547,10 @@ bool _hsort_sift_down(HSQUIRRELVM v,SQArray *arr, SQInteger root, SQInteger bott
 
 		if(!_sort_compare(v,arr->_values[root],arr->_values[maxChild],func,ret))
 			return false;
+		if (initial_size != arr->Size()) {
+			v->Raise_Error("compare function modified array");
+			return false;
+		}
 		if (ret < 0) {
 			if (root == maxChild) {
 				v->Raise_Error("inconsistent compare function");
