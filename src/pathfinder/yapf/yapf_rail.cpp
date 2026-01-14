@@ -357,7 +357,7 @@ public:
 	{
 		/* Set origin and destination. */
 		Yapf().SetOrigin(t1, td);
-		Yapf().SetTreatFirstRedTwoWaySignalAsEOL(false);
+		Yapf().SetTreatFirstRedTwoWaySignalAsEOL(true);
 		Yapf().SetDestination(v, override_railtype);
 
 		if (!Yapf().FindPath(v)) return false;
