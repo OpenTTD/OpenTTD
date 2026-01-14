@@ -3775,7 +3775,7 @@ STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Zwiększ
 STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Zmniejsz pokrycie pustynią o 10%
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maksymalna wysokość:
-STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}Średnia wysokość
+STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}Średnia wysokość:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Poziom morza:
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Określ wysokość poziomu morza
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Liczba rzek:

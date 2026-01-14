@@ -1598,7 +1598,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Den oprindelige
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
-STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Terræn type: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Maksimal forudindstillet højde: {STRING}
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Vælg højden på bakker og bjerge i landskabet
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industri tæthed: {STRING}
@@ -1626,7 +1626,13 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Blødt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Råt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Meget råt
 
+STR_CONFIG_SETTING_AVERAGE_HEIGHT                               :Gennemsnitlig højde: {STRING}
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT                      :Vælg den gennemsnitlige landhøjde. 'Automatisk' bruger standardindstillingen baseret på det valgte klima: 'Lavland' for subtropisk, 'Normal' for tempereret og lejemålet, og 'Plateauer' for subarktisk.
 ###length 4
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUTO                          :Automatisk
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_LOWLANDS                      :Lavlandet
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL                        :Normal
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS                      :Plateauer
 
 STR_CONFIG_SETTING_VARIETY                                      :Forskelligheds fordeling: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Vælg om kortet indeholder både bjerge og flade områder. Jo højere sorten er, jo flere højdeforskelle mellem bjergrige og flade områder
@@ -2070,7 +2076,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Højeste sprite-opløsning der må anvendes: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Begrænser den maksimale opløsning for sprites. Denne begrænsning vil forhindre brug af højopløsningsgrafik selv når den er tilgængelig. Dette kan bevare en ensartet fremtoning af spillet når der er en blanding af GRF filer med og uden højopløsningsgrafik
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Begrænser den maksimale opløsning for sprites. Denne begrænsning vil forhindre brug af højopløsningsgrafik selv når den er tilgængelig. Dette kan bevare en ensartet fremtoning af spillet når der er en blanding af  NewGRF filer med og uden højopløsningsgrafik
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2208,7 +2214,7 @@ STR_CONFIG_ERROR                                                :{WHITE}Fejl i k
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... fejl i array '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... ugyldig værdi '{STRING}' for '{STRING}'
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... efterfølgende karakterer i slutningen af indstilling '{STRING}'
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorerer NewGRF '{STRING}': identisk GRF ID med '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorerer NewGRF '{STRING}': duplikere NewGRF ID med '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignorér ugyldig NewGRF '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :ikke fundet
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :usikker til fast brug
@@ -3388,7 +3394,8 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Ørkend�
 STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Forøger ørkendækningen med ti procent
 STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Sænker ørkendækningen med ti procent
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
-STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terræntype:
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maksimal højde:
+STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}Gennemsnitlig højde:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Havniveau
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Vælg havniveau
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Floder:
@@ -3624,7 +3631,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Ugyldig paramet
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} skal indlæses inden {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} skal indlæses efter {STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} kræver OpenTTD version {STRING} eller højere.
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF filen, som den er lavet til at oversætte,
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          : NewGRF filen, som den er lavet til at oversætte,
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :For mange NewGRF sæt er indlæst.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Indlæsning af {1:STRING} som statisk NewGRF med {STRING} kan forårsage de-sykronisering.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Uventet sprite (sprite {3:NUM})
@@ -3633,7 +3640,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Forsøg på at 
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} indeholder en ødelagt sprite. Alle ødelagte sprites vil blive vist som et rødt spørgsmålstegn (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Indeholder adskillige handling 8 indgange (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Læste ud over slutningen af pseudo-sprite (sprite {3:NUM})
-STR_NEWGRF_ERROR_GRM_FAILED                                     :De ønskede GRF ressourcer er ikke tilgængelige (sprite {3:NUM})
+STR_NEWGRF_ERROR_GRM_FAILED                                     :De ønskede  NewGRF ressourcer er ikke tilgængelige (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} blev deaktiveret af {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ugyldigt/ukendt sprite layoutformat (sprite {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :For mange elementer i værdiliste for egenskab (sprite {3:NUM}, egenskab {4:HEX})
@@ -3643,13 +3650,13 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Ugyldig produkt
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Advarsel!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du er ved at ændre et igangværende spil; dette kan få OpenTTD til at gå ned.{}Er du helt sikker på at du vil fortsætte?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan ikke tilføje sæt: dobbelt GRF ID
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Tilsvarende fil ikke fundet (kompatibel GRF indlæst)
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan ikke tilføje sæt: dobbelt  NewGRF ID
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Tilsvarende fil ikke fundet (kompatibel  NewGRF indlæst)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Kan ikke tilføje fil: Grænsen for antal NewGRF filer er nået
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatible GRF fil(er) indlæst i stedet for manglende fil(er)
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manglende GRF fil(er) er blevet slået fra
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Manglende GRF-fil(er)
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatible  NewGRF fil(er) indlæst i stedet for manglende fil(er)
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manglende  NewGRF fil(er) er blevet slået fra
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Manglende  NewGRF-fil(er)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}OpenTTD kan gå ned, når spillet sættes i gang igen. Undlad at indsende fejlrapporter for efterfølgende nedbrud.{}Vil du virkelig sætte spillet i gang igen?
 
 # NewGRF status

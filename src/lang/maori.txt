@@ -1598,7 +1598,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Ka whakamahi te
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Taketake
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
-STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Momo whenua: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Tatūkē teitei mōrahi: {STRING}
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Kōwhiria te teitei o ngā puke me ngā maunga i te whenua
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Apiapi ahumahi: {STRING}
@@ -1626,7 +1626,13 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Mōhanihani
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Tuarangaranga
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Tuarangaranga rawa
 
+STR_CONFIG_SETTING_AVERAGE_HEIGHT                               :Teitei toharite: {STRING}
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT                      :Kōwhiria te teitei toharite o te whenua. “Aunoa”: ka whakamahia te taunoa mō te taiao kua tīpakona: 'Raorao' mō te taiao wera, “Māori” mō te taiao hātai me te taiao taonga tākaro, “Mānia tairanga” mō te taiao makariri.
 ###length 4
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUTO                          :Aunoa
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_LOWLANDS                      :Raorao
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL                        :Māori
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS                      :Mānia tairanga
 
 STR_CONFIG_SETTING_VARIETY                                      :Tuari matatini: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Kōwhiri mehemea he maunga, he wāhi papatahi hoki kei te mahere. Ka nui atu te matatini, ka nui atu ngā rerekētanga i te teitei i waenga i ngā maunga me ngā wāhi papatahi
@@ -2070,7 +2076,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Ata tino arinui hei whakamahi: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Whakatinaia te ariari mōrahi hei whakamahi mō ngā ata. Ka karoa te whakamahi i te whakairoiro arinui ina wātea hoki. Ka āwhina tēnei kia kotahi te āhua o te kēmu ina whakamahia he ranunga o ngā kōnae GRF, he arinui, he ariiti hoki
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Whakatinaia te ariari mōrahi hei whakamahi mō ngā ata. Ka karoa te whakamahi i te whakairoiro arinui ina wātea hoki. Ka āwhina tēnei kia kotahi te āhua o te kēmu ina whakamahia he ranunga o ngā kōnae newGRF, he arinui, he ariiti hoki
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2208,7 +2214,7 @@ STR_CONFIG_ERROR                                                :{WHITE}Hapa i t
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... he hapa i te tūtohi tukutuku, "{STRING}"
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... he uara muhu, "{STRING}", mō te "{STRING}"
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... he pūtohu i muri i te tautuhinga "{STRING}"
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... kei te waiho i te newGRF "{STRING}": he GRF ID taurua he ōrite ki te "{STRING}"
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... kei te waiho i te newGRF "{STRING}": he newGRF ID taurua he ōrite ki te "{STRING}"
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... kei te waiho i te newGRF muhu "{STRING}": {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :kāore i kitea
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :ehara i te haumaru hei whakamahi tū
@@ -3388,7 +3394,8 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Horahang
 STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Whakarahia te horahanga onepū mā te tekau ōrau
 STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Whakapakutia te horahanga onepū mā te tekau ōrau
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
-STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Momo whenua:
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Teitei mōrahi:
+STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}Teitei toharite:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Pae moana:
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Tīpakona te pae moana
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Awa:
@@ -3624,7 +3631,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Tawhā muhu mō
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :Me utaina a {1:STRING} i mua i {2:STRING}
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :Me utaina a {1:STRING} i muri i {2:STRING}
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :Ka hiahia a {1:STRING} ki te whakaputanga {2:STRING}, neke atu rānei, o OpenTTD
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :te kōnae GRF i hoahoaina kia whakamāori
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :te kōnae newGRF i hoahoaina kia whakamāori
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :He maha rawa ngā newGRFs kua utaina
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Ka taea te ngaro te tukutahi i te uta i {1:STRING} hei newGRF tū ki {2:STRING}
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Ata ohorere (ata {3:NUM})
@@ -3633,7 +3640,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Tarai ki te wha
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}He ata hāmate tō {STRING}. Ka whakaaria ngā ata hāmate katoa hei tohu pātai whero (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :He maha ngā tāurunga Mahi 8 (ata {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :I pānui ki muri ki te mutunga o tētahi ata tipatipa (ata {3:NUM})
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Kāore i te wātea ngā rauemi GRF kua tonoa (ata {3:NUM})
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Kāore i te wātea ngā rauemi newGRF kua tonoa (ata {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :I whakakorea a {1:STRING} e {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Hōputu takotoranga ata muhu/kāore i te mōhiotia (ata {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :He maha rawa ngā huānga i roto i te rārangi uara āhuatanga (ata {3:NUM}, āhuatanga {4:HEX})
@@ -3643,13 +3650,13 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Karangamua whak
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Kia tūpato!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Ka mahia e koe he panoni i tētahi kēmu e hāere ana. Ka taea te hinga e OpenTTD, te pakaru rānei te teihana kēmu. Kaua e tuku pūrongo iro mō aua raru.{}Kei te tino hiahia rānei koe ki tēnei?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Tē taea te tāpiri te kōnae: He taurua te GRF ID
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Kāore te kōnae taurite i kitea (kua utaina te GRF hototahi)
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Tē taea te tāpiri te kōnae: He taurua te newGRF ID
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Kāore te kōnae taurite i kitea (kua utaina te newGRF hototahi)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Tē taea te tāpiri te kōnae: Kua taea te tepe kōnae newGRF
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kua utainga he GRF hototahi mō ētahi kōnae ngaro
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Kua āraia he kōnae GRF ngaro
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Kōnae GRF ngaro
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kua utainga he newGRF hototahi mō ētahi kōnae ngaro
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Kua āraia he kōnae newGRF ngaro
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Kōnae newGRF ngaro
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Ka taea te hinga e OpenTTD i te purei. Kaua e tuku pūrongo iro mō ngā hinga e whai ake nei.{}Kei te tino hiahia rānei koe kia purei?
 
 # NewGRF status
