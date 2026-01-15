@@ -778,24 +778,24 @@ int GetAircraftFlightLevel(T *v, bool takeoff)
 
 	int z = v->z_pos;
 	if (z < aircraft_min_altitude ||
-			(HasBit(v->flags, VAF_IN_MIN_HEIGHT_CORRECTION) && z < aircraft_middle_altitude)) {
+			(v->flags.Test(VehicleAirFlag::InMinimumHeightCorrection) && z < aircraft_middle_altitude)) {
 		/* Ascend. And don't fly into that mountain right ahead.
 		 * And avoid our aircraft become a stairclimber, so if we start
 		 * correcting altitude, then we stop correction not too early. */
-		SetBit(v->flags, VAF_IN_MIN_HEIGHT_CORRECTION);
+		v->flags.Set(VehicleAirFlag::InMinimumHeightCorrection);
 		z += takeoff ? 2 : 1;
 	} else if (!takeoff && (z > aircraft_max_altitude ||
-			(HasBit(v->flags, VAF_IN_MAX_HEIGHT_CORRECTION) && z > aircraft_middle_altitude))) {
+			(v->flags.Test(VehicleAirFlag::InMaximumHeightCorrection) && z > aircraft_middle_altitude))) {
 		/* Descend lower. You are an aircraft, not an space ship.
 		 * And again, don't stop correcting altitude too early. */
-		SetBit(v->flags, VAF_IN_MAX_HEIGHT_CORRECTION);
+		v->flags.Set(VehicleAirFlag::InMaximumHeightCorrection);
 		z--;
-	} else if (HasBit(v->flags, VAF_IN_MIN_HEIGHT_CORRECTION) && z >= aircraft_middle_altitude) {
+	} else if (v->flags.Test(VehicleAirFlag::InMinimumHeightCorrection) && z >= aircraft_middle_altitude) {
 		/* Now, we have corrected altitude enough. */
-		ClrBit(v->flags, VAF_IN_MIN_HEIGHT_CORRECTION);
-	} else if (HasBit(v->flags, VAF_IN_MAX_HEIGHT_CORRECTION) && z <= aircraft_middle_altitude) {
+		v->flags.Reset(VehicleAirFlag::InMinimumHeightCorrection);
+	} else if (v->flags.Test(VehicleAirFlag::InMaximumHeightCorrection) && z <= aircraft_middle_altitude) {
 		/* Now, we have corrected altitude enough. */
-		ClrBit(v->flags, VAF_IN_MAX_HEIGHT_CORRECTION);
+		v->flags.Reset(VehicleAirFlag::InMaximumHeightCorrection);
 	}
 
 	return z;
@@ -940,7 +940,7 @@ static bool AircraftController(Aircraft *v)
 
 	/* Helicopter landing. */
 	if (amd.flags.Test(AirportMovingDataFlag::HeliLower)) {
-		SetBit(v->flags, VAF_HELI_DIRECT_DESCENT);
+		v->flags.Set(VehicleAirFlag::HelicopterDirectDescent);
 
 		if (st == nullptr) {
 			v->state = FLYING;
@@ -967,7 +967,7 @@ static bool AircraftController(Aircraft *v)
 
 			/*  Increase speed of rotors. When speed is 80, we've landed. */
 			if (u->cur_speed >= 80) {
-				ClrBit(v->flags, VAF_HELI_DIRECT_DESCENT);
+				v->flags.Reset(VehicleAirFlag::HelicopterDirectDescent);
 				return true;
 			}
 			u->cur_speed += 4;
@@ -1688,7 +1688,7 @@ static void AircraftEventHandler_Flying(Aircraft *v, const AirportFTAClass *apc)
 				uint16_t tsubspeed = v->subspeed;
 				if (!AirportHasBlock(v, current, apc)) {
 					v->state = landingtype; // LANDING / HELILANDING
-					if (v->state == HELILANDING) SetBit(v->flags, VAF_HELI_DIRECT_DESCENT);
+					if (v->state == HELILANDING) v->flags.Set(VehicleAirFlag::HelicopterDirectDescent);
 					/* it's a bit dirty, but I need to set position to next position, otherwise
 					 * if there are multiple runways, plane won't know which one it took (because
 					 * they all have heading LANDING). And also occupy that block! */
@@ -2072,8 +2072,8 @@ static bool AirportFindFreeHelipad(Aircraft *v, const AirportFTAClass *apc)
 static void AircraftHandleDestTooFar(Aircraft *v, bool too_far)
 {
 	if (too_far) {
-		if (!HasBit(v->flags, VAF_DEST_TOO_FAR)) {
-			SetBit(v->flags, VAF_DEST_TOO_FAR);
+		if (!v->flags.Test(VehicleAirFlag::DestinationTooFar)) {
+			v->flags.Set(VehicleAirFlag::DestinationTooFar);
 			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 			AI::NewEvent(v->owner, new ScriptEventAircraftDestTooFar(v->index));
 			if (v->owner == _local_company) {
@@ -2084,9 +2084,9 @@ static void AircraftHandleDestTooFar(Aircraft *v, bool too_far)
 		return;
 	}
 
-	if (HasBit(v->flags, VAF_DEST_TOO_FAR)) {
+	if (v->flags.Test(VehicleAirFlag::DestinationTooFar)) {
 		/* Not too far anymore, clear flag and message. */
-		ClrBit(v->flags, VAF_DEST_TOO_FAR);
+		v->flags.Reset(VehicleAirFlag::DestinationTooFar);
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 		DeleteVehicleNews(v->index, AdviceType::AircraftDestinationTooFar);
 	}
@@ -2123,7 +2123,7 @@ static bool AircraftEventHandler(Aircraft *v, int loop)
 		}
 	}
 
-	if (!HasBit(v->flags, VAF_DEST_TOO_FAR)) AirportGoToNextPosition(v);
+	if (!v->flags.Test(VehicleAirFlag::DestinationTooFar)) AirportGoToNextPosition(v);
 
 	return true;
 }

@@ -33,17 +33,18 @@ enum AircraftSubType : uint8_t {
 };
 
 /** Flags for air vehicles; shared with disaster vehicles. */
-enum AirVehicleFlags : uint8_t {
-	VAF_DEST_TOO_FAR             = 0, ///< Next destination is too far away.
+enum class VehicleAirFlag : uint8_t {
+	DestinationTooFar = 0, ///< Next destination is too far away.
 
 	/* The next two flags are to prevent stair climbing of the aircraft. The idea is that the aircraft
 	 * will ascend or descend multiple flight levels at a time instead of following the contours of the
 	 * landscape at a fixed altitude. This only has effect when there are more than 15 height levels. */
-	VAF_IN_MAX_HEIGHT_CORRECTION = 1, ///< The vehicle is currently lowering its altitude because it hit the upper bound.
-	VAF_IN_MIN_HEIGHT_CORRECTION = 2, ///< The vehicle is currently raising its altitude because it hit the lower bound.
+	InMaximumHeightCorrection = 1, ///< The vehicle is currently lowering its altitude because it hit the upper bound.
+	InMinimumHeightCorrection = 2, ///< The vehicle is currently raising its altitude because it hit the lower bound.
 
-	VAF_HELI_DIRECT_DESCENT      = 3, ///< The helicopter is descending directly at its destination (helipad or in front of hangar)
+	HelicopterDirectDescent = 3, ///< The helicopter is descending directly at its destination (helipad or in front of hangar)
 };
+using VehicleAirFlags = EnumBitSet<VehicleAirFlag, uint8_t>;
 
 static const int ROTOR_Z_OFFSET         = 5;    ///< Z Offset between helicopter- and rotorsprite.
 
@@ -78,7 +79,7 @@ struct Aircraft final : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	Direction last_direction = INVALID_DIR;
 	uint8_t number_consecutive_turns = 0; ///< Protection to prevent the aircraft of making a lot of turns in order to reach a specific point.
 	uint8_t turn_counter = 0; ///< Ticks between each turn to prevent > 45 degree turns.
-	uint8_t flags = 0; ///< Aircraft flags. @see AirVehicleFlags
+	VehicleAirFlags flags{}; ///< Aircraft flags. @see VehicleAirFlags
 
 	AircraftCache acache{};
 
