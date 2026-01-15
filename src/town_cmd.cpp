@@ -3011,7 +3011,7 @@ CommandCost CmdPlaceHouse(DoCommandFlags flags, TileIndex tile, HouseID house, b
  * @param diagonal Whether to use the Diagonal or Orthogonal tile iterator.
  * @return Empty cost or an error.
  */
-CommandCost CmdPlaceHouseArea(DoCommandFlags flags, TileIndex tile, TileIndex start_tile, HouseID house, bool is_protected, bool replace, bool diagonal)
+CommandCost CmdPlaceHouseArea(DoCommandFlags flags, TileIndex tile, TileIndex start_tile, std::vector<HouseID> houses, bool is_protected, bool replace, bool diagonal)
 {
 	if (start_tile >= Map::Size()) return CMD_ERROR;
 
@@ -3019,12 +3019,15 @@ CommandCost CmdPlaceHouseArea(DoCommandFlags flags, TileIndex tile, TileIndex st
 
 	if (Town::GetNumItems() == 0) return CommandCost(STR_ERROR_MUST_FOUND_TOWN_FIRST);
 
-	if (static_cast<size_t>(house) >= HouseSpec::Specs().size()) return CMD_ERROR;
-	const HouseSpec *hs = HouseSpec::Get(house);
-	if (!hs->enabled) return CMD_ERROR;
+	if (std::any_of(houses.begin(), houses.end(), [](HouseID house) { return static_cast<size_t>(house) >= HouseSpec::Specs().size(); })) return CMD_ERROR;
 
-	/* Only allow placing an area of 1x1 houses. */
-	if (!hs->building_flags.Test(BuildingFlag::Size1x1)) return CMD_ERROR;
+	for (const HouseID &house : houses) {
+		const HouseSpec *hs = HouseSpec::Get(house);
+		if (!hs->enabled) return CMD_ERROR;
+
+		/* Only allow placing an area of 1x1 houses. */
+		if (!hs->building_flags.Test(BuildingFlag::Size1x1)) return CMD_ERROR;
+	}
 
 	/* Use the built object limit to rate limit house placement. */
 	const Company *c = Company::GetIfValid(_current_company);
@@ -3033,9 +3036,15 @@ CommandCost CmdPlaceHouseArea(DoCommandFlags flags, TileIndex tile, TileIndex st
 	CommandCost last_error = CMD_ERROR;
 	bool had_success = false;
 
+	SavedRandomSeeds saved_seeds;
+	SaveRandomSeeds(&saved_seeds);
+
+	if (!flags.Test(DoCommandFlag::Execute)) RestoreRandomSeeds(saved_seeds);
+
 	std::unique_ptr<TileIterator> iter = TileIterator::Create(tile, start_tile, diagonal);
 	for (; *iter != INVALID_TILE; ++(*iter)) {
 		TileIndex t = *iter;
+		const HouseID house = houses.at(RandomRange(static_cast<uint32_t>(houses.size())));
 		CommandCost ret = Command<Commands::PlaceHouse>::Do(DoCommandFlags{flags}.Reset(DoCommandFlag::Execute), t, house, is_protected, replace);
 
 		/* If we've reached the limit, stop building (or testing). */
