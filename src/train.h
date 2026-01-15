@@ -22,7 +22,7 @@
 struct Train;
 
 /** Rail vehicle flags. */
-enum VehicleRailFlag : uint8_t {
+enum class VehicleRailFlag : uint8_t {
 	Reversing = 0, ///< Train is slowing down to reverse.
 	PoweredWagon = 3, ///< Wagon is powered.
 	Flipped = 4, ///< Reverse the visible direction of the vehicle.
