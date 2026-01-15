@@ -1820,7 +1820,7 @@ bool SetSettingValue(const IntSettingDesc *sd, int32_t value, bool force_newgame
 	const IntSettingDesc *setting = sd->AsIntSetting();
 	if (setting->flags.Test(SettingFlag::PerCompany)) {
 		if (Company::IsValidID(_local_company) && _game_mode != GM_MENU) {
-			return Command<CMD_CHANGE_COMPANY_SETTING>::Post(setting->GetName(), value);
+			return Command<Commands::ChangeCompanySetting>::Post(setting->GetName(), value);
 		}
 
 		setting->ChangeValue(&_settings_client.company, value);
@@ -1846,7 +1846,7 @@ bool SetSettingValue(const IntSettingDesc *sd, int32_t value, bool force_newgame
 
 	/* send non-company-based settings over the network */
 	if (!_networking || (_networking && _network_server)) {
-		return Command<CMD_CHANGE_SETTING>::Post(setting->GetName(), value);
+		return Command<Commands::ChangeSetting>::Post(setting->GetName(), value);
 	}
 	return false;
 }
@@ -1880,7 +1880,7 @@ void SyncCompanySettings()
 		 * that the rest of the clients do not know about, we need to circumvent the normal ::Post
 		 * local command validation and immediately send the command to the server.
 		 */
-		if (old_value != new_value) Command<CMD_CHANGE_COMPANY_SETTING>::SendNet(STR_NULL, _local_company, sd->GetName(), new_value);
+		if (old_value != new_value) Command<Commands::ChangeCompanySetting>::SendNet(STR_NULL, _local_company, sd->GetName(), new_value);
 	}
 }
 

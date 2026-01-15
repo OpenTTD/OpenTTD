@@ -84,7 +84,7 @@ inline constexpr CommandInfo CommandFromTrait() noexcept { return { T::name, T::
 
 template <typename T, T... i>
 inline constexpr auto MakeCommandsFromTraits(std::integer_sequence<T, i...>) noexcept {
-	return std::array<CommandInfo, sizeof...(i)>{{ CommandFromTrait<CommandTraits<static_cast<Commands>(i)>>()... }};
+	return EnumClassIndexContainer<std::array<CommandInfo, sizeof...(i)>, Commands>{{{ CommandFromTrait<CommandTraits<static_cast<Commands>(i)>>()... }}};
 }
 
 /**
@@ -94,7 +94,7 @@ inline constexpr auto MakeCommandsFromTraits(std::integer_sequence<T, i...>) noe
  * the flags which belongs to it. The indices are the same
  * as the value from the CMD_* enums.
  */
-static constexpr auto _command_proc_table = MakeCommandsFromTraits(std::make_integer_sequence<std::underlying_type_t<Commands>, CMD_END>{});
+static constexpr auto _command_proc_table = MakeCommandsFromTraits(std::make_integer_sequence<std::underlying_type_t<Commands>, to_underlying(Commands::End)>{});
 
 
 /**
@@ -105,7 +105,7 @@ static constexpr auto _command_proc_table = MakeCommandsFromTraits(std::make_int
  */
 bool IsValidCommand(Commands cmd)
 {
-	return cmd < _command_proc_table.size();
+	return to_underlying(cmd) < _command_proc_table.size();
 }
 
 /**
@@ -343,7 +343,7 @@ CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, Comman
 {
 	BasePersistentStorageArray::SwitchMode(PSM_LEAVE_COMMAND);
 
-	if (cmd == CMD_COMPANY_CTRL) {
+	if (cmd == Commands::CompanyControl) {
 		cur_company.Trash();
 		/* We are a new company                  -> Switch to new local company.
 		 * We were closed down                   -> Switch to spectator

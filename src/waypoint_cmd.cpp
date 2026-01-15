@@ -485,7 +485,7 @@ CommandCost CmdBuildBuoy(DoCommandFlags flags, TileIndex tile)
 
 	CommandCost cost(EXPENSES_CONSTRUCTION, _price[Price::BuildWaypointBuoy]);
 	if (!IsWaterTile(tile)) {
-		CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags | DoCommandFlag::Auto, tile);
+		CommandCost ret = Command<Commands::LandscapeClear>::Do(flags | DoCommandFlag::Auto, tile);
 		if (ret.Failed()) return ret;
 		cost.AddCost(ret.GetCost());
 	}

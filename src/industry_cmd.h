@@ -21,10 +21,10 @@ CommandCost CmdIndustrySetExclusivity(DoCommandFlags flags, IndustryID ind_id, O
 CommandCost CmdIndustrySetText(DoCommandFlags flags, IndustryID ind_id, const EncodedString &text);
 CommandCost CmdIndustrySetProduction(DoCommandFlags flags, IndustryID ind_id, uint8_t prod_level, bool show_news, const EncodedString &text);
 
-DEF_CMD_TRAIT(CMD_BUILD_INDUSTRY, CmdBuildIndustry, CommandFlag::Deity, CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_INDUSTRY_SET_FLAGS, CmdIndustrySetFlags, CommandFlag::Deity, CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_INDUSTRY_SET_EXCLUSIVITY, CmdIndustrySetExclusivity, CommandFlag::Deity, CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_INDUSTRY_SET_TEXT, CmdIndustrySetText, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_INDUSTRY_SET_PRODUCTION, CmdIndustrySetProduction, CommandFlag::Deity, CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::BuildIndustry, CmdBuildIndustry, CommandFlag::Deity, CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::IndustrySetFlags, CmdIndustrySetFlags, CommandFlag::Deity, CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::IndustrySetExclusivity, CmdIndustrySetExclusivity, CommandFlag::Deity, CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::IndustrySetText, CmdIndustrySetText, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::IndustrySetProduction, CmdIndustrySetProduction, CommandFlag::Deity, CommandType::OtherManagement)
 
 #endif /* INDUSTRY_CMD_H */

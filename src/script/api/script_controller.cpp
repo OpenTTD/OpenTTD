@@ -58,7 +58,7 @@
 	ShowScriptDebugWindow(ScriptObject::GetRootCompany());
 
 	if (!_pause_mode.Test(PauseMode::Normal)) {
-		ScriptObject::Command<CMD_PAUSE>::Do(PauseMode::Normal, true);
+		ScriptObject::Command<Commands::Pause>::Do(PauseMode::Normal, true);
 	}
 }
 

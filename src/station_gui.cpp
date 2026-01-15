@@ -1998,7 +1998,7 @@ struct StationViewWindow : public Window {
 				break;
 
 			case WID_SV_CLOSE_AIRPORT:
-				Command<CMD_OPEN_CLOSE_AIRPORT>::Post(this->window_number);
+				Command<Commands::OpenCloseAirport>::Post(this->window_number);
 				break;
 
 			case WID_SV_TRAINS:   // Show list of scheduled trains to this station
@@ -2135,7 +2135,7 @@ struct StationViewWindow : public Window {
 	{
 		if (!str.has_value()) return;
 
-		Command<CMD_RENAME_STATION>::Post(STR_ERROR_CAN_T_RENAME_STATION, this->window_number, *str);
+		Command<Commands::RenameStation>::Post(STR_ERROR_CAN_T_RENAME_STATION, this->window_number, *str);
 	}
 
 	void OnResize() override

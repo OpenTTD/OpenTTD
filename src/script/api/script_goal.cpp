@@ -61,7 +61,7 @@
 	EnforcePrecondition(GOAL_INVALID, company == ScriptCompany::COMPANY_INVALID || ScriptCompany::ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID);
 	EnforcePrecondition(GOAL_INVALID, IsValidGoalDestination(company, type, destination));
 
-	if (!ScriptObject::Command<CMD_CREATE_GOAL>::Do(&ScriptInstance::DoCommandReturnGoalID, ScriptCompany::FromScriptCompanyID(company), (::GoalType)type, destination, text)) return GOAL_INVALID;
+	if (!ScriptObject::Command<Commands::CreateGoal>::Do(&ScriptInstance::DoCommandReturnGoalID, ScriptCompany::FromScriptCompanyID(company), (::GoalType)type, destination, text)) return GOAL_INVALID;
 
 	/* In case of test-mode, we return GoalID 0 */
 	return GoalID::Begin();
@@ -72,7 +72,7 @@
 	EnforceDeityMode(false);
 	EnforcePrecondition(false, IsValidGoal(goal_id));
 
-	return ScriptObject::Command<CMD_REMOVE_GOAL>::Do(goal_id);
+	return ScriptObject::Command<Commands::RemoveGoal>::Do(goal_id);
 }
 
 /* static */ bool ScriptGoal::SetDestination(GoalID goal_id, GoalType type, SQInteger destination)
@@ -82,7 +82,7 @@
 	const Goal *g = Goal::Get(goal_id);
 	EnforcePrecondition(false, IsValidGoalDestination(ScriptCompany::ToScriptCompanyID(g->company), type, destination));
 
-	return ScriptObject::Command<CMD_SET_GOAL_DESTINATION>::Do(goal_id, (::GoalType)type, destination);
+	return ScriptObject::Command<Commands::SetGoalDestination>::Do(goal_id, (::GoalType)type, destination);
 }
 
 /* static */ bool ScriptGoal::SetText(GoalID goal_id, Text *goal)
@@ -95,7 +95,7 @@
 	EncodedString text = goal->GetEncodedText();
 	EnforcePreconditionEncodedText(false, text);
 
-	return ScriptObject::Command<CMD_SET_GOAL_TEXT>::Do(goal_id, text);
+	return ScriptObject::Command<Commands::SetGoalText>::Do(goal_id, text);
 }
 
 /* static */ bool ScriptGoal::SetProgress(GoalID goal_id, Text *progress)
@@ -105,7 +105,7 @@
 	EnforcePrecondition(false, IsValidGoal(goal_id));
 	EnforceDeityMode(false);
 
-	return ScriptObject::Command<CMD_SET_GOAL_PROGRESS>::Do(goal_id, progress != nullptr ? progress->GetEncodedText() : EncodedString{});
+	return ScriptObject::Command<Commands::SetGoalProgress>::Do(goal_id, progress != nullptr ? progress->GetEncodedText() : EncodedString{});
 }
 
 /* static */ bool ScriptGoal::SetCompleted(GoalID goal_id, bool completed)
@@ -113,7 +113,7 @@
 	EnforcePrecondition(false, IsValidGoal(goal_id));
 	EnforceDeityMode(false);
 
-	return ScriptObject::Command<CMD_SET_GOAL_COMPLETED>::Do(goal_id, completed);
+	return ScriptObject::Command<Commands::SetGoalCompleted>::Do(goal_id, completed);
 }
 
 /* static */ bool ScriptGoal::IsCompleted(GoalID goal_id)
@@ -139,7 +139,7 @@
 	EnforcePrecondition(false, (int)type < ::GQT_END);
 	EnforcePrecondition(false, uniqueid >= 0 && uniqueid <= UINT16_MAX);
 
-	return ScriptObject::Command<CMD_GOAL_QUESTION>::Do(uniqueid, target, is_client, buttons, (::GoalQuestionType)type, text);
+	return ScriptObject::Command<Commands::GoalQuestion>::Do(uniqueid, target, is_client, buttons, (::GoalQuestionType)type, text);
 }
 
 /* static */ bool ScriptGoal::Question(SQInteger uniqueid, ScriptCompany::CompanyID company, Text *question, QuestionType type, SQInteger buttons)
@@ -160,5 +160,5 @@
 	EnforceDeityMode(false);
 	EnforcePrecondition(false, uniqueid >= 0 && uniqueid <= UINT16_MAX);
 
-	return ScriptObject::Command<CMD_GOAL_QUESTION_ANSWER>::Do(uniqueid, 0);
+	return ScriptObject::Command<Commands::GoalQuestionAnswer>::Do(uniqueid, 0);
 }

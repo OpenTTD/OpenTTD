@@ -67,7 +67,7 @@ enum CompanyRemoveReason : uint8_t {
 	CRR_NONE = CRR_MANUAL, ///< Dummy reason for actions that don't need one.
 };
 
-/** The action to do with CMD_COMPANY_CTRL. */
+/** The action to do with Commands::CompanyControl. */
 enum CompanyCtrlAction : uint8_t {
 	CCA_NEW,    ///< Create a new company.
 	CCA_NEW_AI, ///< Create a new AI company.
@@ -76,7 +76,7 @@ enum CompanyCtrlAction : uint8_t {
 	CCA_END,    ///< Sentinel for end.
 };
 
-/** The action to do with CMD_COMPANY_ALLOW_LIST_CTRL. */
+/** The action to do with Commands::CompanyAllowListControl. */
 enum CompanyAllowListCtrlAction : uint8_t {
 	CALCA_ADD, ///< Create a public key.
 	CALCA_REMOVE, ///< Remove a public key.

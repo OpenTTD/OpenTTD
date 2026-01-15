@@ -52,7 +52,7 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 
 	::CompanyID c = ScriptCompany::FromScriptCompanyID(company);
 
-	if (!ScriptObject::Command<CMD_CREATE_STORY_PAGE>::Do(&ScriptInstance::DoCommandReturnStoryPageID,
+	if (!ScriptObject::Command<Commands::CreateStoryPage>::Do(&ScriptInstance::DoCommandReturnStoryPageID,
 		c, title != nullptr ? title->GetEncodedText() : EncodedString{})) return STORY_PAGE_INVALID;
 
 	/* In case of test-mode, we return StoryPageID 0 */
@@ -96,7 +96,7 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 			NOT_REACHED();
 	}
 
-	if (!ScriptObject::Command<CMD_CREATE_STORY_PAGE_ELEMENT>::Do(&ScriptInstance::DoCommandReturnStoryPageElementID,
+	if (!ScriptObject::Command<Commands::CreateStoryPageElement>::Do(&ScriptInstance::DoCommandReturnStoryPageElementID,
 			reftile,
 			(::StoryPageID)story_page_id, (::StoryPageElementType)type,
 			refid,
@@ -145,7 +145,7 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 			NOT_REACHED();
 	}
 
-	return ScriptObject::Command<CMD_UPDATE_STORY_PAGE_ELEMENT>::Do(reftile, story_page_element_id, refid, encoded_text);
+	return ScriptObject::Command<Commands::UpdateStoryPageElement>::Do(reftile, story_page_element_id, refid, encoded_text);
 }
 
 /* static */ SQInteger ScriptStoryPage::GetPageSortValue(StoryPageID story_page_id)
@@ -169,7 +169,7 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	EnforcePrecondition(false, IsValidStoryPage(story_page_id));
 	EnforceDeityMode(false);
 
-	return ScriptObject::Command<CMD_SET_STORY_PAGE_TITLE>::Do(story_page_id, title != nullptr ? title->GetEncodedText() : EncodedString{});
+	return ScriptObject::Command<Commands::SetStoryPageTitle>::Do(story_page_id, title != nullptr ? title->GetEncodedText() : EncodedString{});
 }
 
 /* static */ ScriptCompany::CompanyID ScriptStoryPage::GetCompany(StoryPageID story_page_id)
@@ -192,7 +192,7 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	EnforcePrecondition(false, IsValidStoryPage(story_page_id));
 	EnforceDeityMode(false);
 
-	return ScriptObject::Command<CMD_SET_STORY_PAGE_DATE>::Do(story_page_id, ::TimerGameCalendar::Date{date});
+	return ScriptObject::Command<Commands::SetStoryPageDate>::Do(story_page_id, ::TimerGameCalendar::Date{date});
 }
 
 
@@ -201,7 +201,7 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	EnforcePrecondition(false, IsValidStoryPage(story_page_id));
 	EnforceDeityMode(false);
 
-	return ScriptObject::Command<CMD_SHOW_STORY_PAGE>::Do(story_page_id);
+	return ScriptObject::Command<Commands::ShowStoryPage>::Do(story_page_id);
 }
 
 /* static */ bool ScriptStoryPage::Remove(StoryPageID story_page_id)
@@ -209,7 +209,7 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	EnforceDeityMode(false);
 	EnforcePrecondition(false, IsValidStoryPage(story_page_id));
 
-	return ScriptObject::Command<CMD_REMOVE_STORY_PAGE>::Do(story_page_id);
+	return ScriptObject::Command<Commands::RemoveStoryPage>::Do(story_page_id);
 }
 
 /* static */ bool ScriptStoryPage::RemoveElement(StoryPageElementID story_page_element_id)
@@ -217,7 +217,7 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	EnforceDeityMode(false);
 	EnforcePrecondition(false, IsValidStoryPageElement(story_page_element_id));
 
-	return ScriptObject::Command<CMD_REMOVE_STORY_PAGE_ELEMENT>::Do(story_page_element_id);
+	return ScriptObject::Command<Commands::RemoveStoryPageElement>::Do(story_page_element_id);
 }
 
 /* static */ bool ScriptStoryPage::IsValidStoryPageButtonColour(StoryPageButtonColour colour)

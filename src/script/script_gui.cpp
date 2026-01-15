@@ -1014,8 +1014,8 @@ struct ScriptDebugWindow : public Window {
 			case WID_SCRD_RELOAD_TOGGLE:
 				if (this->filter.script_debug_company == OWNER_DEITY) break;
 				/* First kill the company of the AI, then start a new one. This should start the current AI again */
-				Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, this->filter.script_debug_company, CRR_MANUAL, INVALID_CLIENT_ID);
-				Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, this->filter.script_debug_company, CRR_NONE, INVALID_CLIENT_ID);
+				Command<Commands::CompanyControl>::Post(CCA_DELETE, this->filter.script_debug_company, CRR_MANUAL, INVALID_CLIENT_ID);
+				Command<Commands::CompanyControl>::Post(CCA_NEW_AI, this->filter.script_debug_company, CRR_NONE, INVALID_CLIENT_ID);
 				break;
 
 			case WID_SCRD_SETTINGS:
@@ -1054,7 +1054,7 @@ struct ScriptDebugWindow : public Window {
 						}
 						if (all_unpaused) {
 							/* All scripts have been unpaused => unpause the game. */
-							Command<CMD_PAUSE>::Post(PauseMode::Normal, false);
+							Command<Commands::Pause>::Post(PauseMode::Normal, false);
 						}
 					}
 				}
@@ -1107,7 +1107,7 @@ struct ScriptDebugWindow : public Window {
 
 					/* Pause the game. */
 					if (!_pause_mode.Test(PauseMode::Normal)) {
-						Command<CMD_PAUSE>::Post(PauseMode::Normal, true);
+						Command<Commands::Pause>::Post(PauseMode::Normal, true);
 					}
 
 					/* Highlight row that matched */

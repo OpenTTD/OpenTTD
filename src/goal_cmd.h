@@ -22,13 +22,13 @@ CommandCost CmdSetGoalCompleted(DoCommandFlags flags, GoalID goal, bool complete
 CommandCost CmdGoalQuestion(DoCommandFlags flags, uint16_t uniqueid, uint32_t target, bool is_client, uint32_t button_mask, GoalQuestionType type, const EncodedString &text);
 CommandCost CmdGoalQuestionAnswer(DoCommandFlags flags, uint16_t uniqueid, uint8_t button);
 
-DEF_CMD_TRAIT(CMD_CREATE_GOAL,          CmdCreateGoal,         CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_REMOVE_GOAL,          CmdRemoveGoal,         CommandFlag::Deity, CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_SET_GOAL_DESTINATION, CmdSetGoalDestination, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_SET_GOAL_TEXT,        CmdSetGoalText,        CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_SET_GOAL_PROGRESS,    CmdSetGoalProgress,    CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_SET_GOAL_COMPLETED,   CmdSetGoalCompleted,   CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_GOAL_QUESTION,        CmdGoalQuestion,       CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_GOAL_QUESTION_ANSWER, CmdGoalQuestionAnswer, CommandFlag::Deity, CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::CreateGoal, CmdCreateGoal, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::RemoveGoal, CmdRemoveGoal, CommandFlag::Deity, CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::SetGoalDestination, CmdSetGoalDestination, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::SetGoalText, CmdSetGoalText, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::SetGoalProgress, CmdSetGoalProgress, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::SetGoalCompleted, CmdSetGoalCompleted, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::GoalQuestion, CmdGoalQuestion, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::GoalQuestionAnswer, CmdGoalQuestionAnswer, CommandFlag::Deity, CommandType::OtherManagement)
 
 #endif /* GOAL_CMD_H */

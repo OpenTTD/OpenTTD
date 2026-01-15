@@ -407,7 +407,7 @@ static void CheckPauseHelper(bool pause, PauseMode pm)
 {
 	if (pause == _pause_mode.Test(pm)) return;
 
-	Command<CMD_PAUSE>::Post(pm, pause);
+	Command<Commands::Pause>::Post(pm, pause);
 }
 
 /**
@@ -1198,8 +1198,8 @@ void NetworkGameLoop()
 				Debug(desync, 0, "Injecting pause for join at {:08x}:{:02x}; please join when paused", next_date, next_date_fract);
 				cp = new CommandPacket();
 				cp->company = COMPANY_SPECTATOR;
-				cp->cmd = CMD_PAUSE;
-				cp->data = EndianBufferWriter<>::FromValue(CommandTraits<CMD_PAUSE>::Args{ PauseMode::Normal, true });
+				cp->cmd = Commands::Pause;
+				cp->data = EndianBufferWriter<>::FromValue(CommandTraits<Commands::Pause>::Args{ PauseMode::Normal, true });
 				_ddc_fastforward = false;
 			} else if (consumer.ReadIf("sync: ")) {
 				next_date = TimerGameEconomy::Date(consumer.ReadIntegerBase<uint32_t>(16));

@@ -553,7 +553,7 @@ protected:
 				this->SetTimeout();
 				this->SetWidgetDirty(WID_SB_PAGE_PANEL);
 
-				Command<CMD_STORY_PAGE_BUTTON>::Post(TileIndex{}, pe.index, VehicleID::Invalid());
+				Command<Commands::StoryPageButton>::Post(TileIndex{}, pe.index, VehicleID::Invalid());
 				break;
 
 			case SPET_BUTTON_TILE:
@@ -898,7 +898,7 @@ public:
 			return;
 		}
 
-		Command<CMD_STORY_PAGE_BUTTON>::Post(tile, pe->index, VehicleID::Invalid());
+		Command<Commands::StoryPageButton>::Post(tile, pe->index, VehicleID::Invalid());
 		ResetObjectToPlace();
 	}
 
@@ -917,7 +917,7 @@ public:
 		VehicleType wanted_vehtype = data.GetVehicleType();
 		if (wanted_vehtype != VEH_INVALID && wanted_vehtype != v->type) return false;
 
-		Command<CMD_STORY_PAGE_BUTTON>::Post(TileIndex{}, pe->index, v->index);
+		Command<Commands::StoryPageButton>::Post(TileIndex{}, pe->index, v->index);
 		ResetObjectToPlace();
 		return true;
 	}

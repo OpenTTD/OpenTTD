@@ -112,7 +112,7 @@ struct SelectGameWindow : public Window {
 	 * Find and parse all viewport command signs.
 	 * Fills the intro_viewport_commands vector and deletes parsed signs from the world.
 	 */
-	void ReadIntroGameViewportCommands()
+	void ReadIntroGameViewportCommand()
 	{
 		intro_viewport_commands.clear();
 
@@ -183,7 +183,7 @@ struct SelectGameWindow : public Window {
 		this->FinishInitNested(0);
 		this->OnInvalidateData();
 
-		this->ReadIntroGameViewportCommands();
+		this->ReadIntroGameViewportCommand();
 	}
 
 	void OnRealtimeTick(uint delta_ms) override

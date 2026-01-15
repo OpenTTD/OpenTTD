@@ -1090,35 +1090,35 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMMAND(Packet 
 	}
 
 	/**
-	 * Only CMD_COMPANY_CTRL is always allowed, for the rest, playas needs
+	 * Only Commands::CompanyControl is always allowed, for the rest, playas needs
 	 * to match the company in the packet. If it doesn't, the client has done
 	 * something pretty naughty (or a bug), and will be kicked
 	 */
-	CompanyCtrlAction cca = cp.cmd == CMD_COMPANY_CTRL ? std::get<0>(EndianBufferReader::ToValue<CommandTraits<CMD_COMPANY_CTRL>::Args>(cp.data)) : CCA_NEW;
-	if (!(cp.cmd == CMD_COMPANY_CTRL && cca == CCA_NEW && ci->client_playas == COMPANY_NEW_COMPANY) && ci->client_playas != cp.company) {
+	CompanyCtrlAction cca = cp.cmd == Commands::CompanyControl ? std::get<0>(EndianBufferReader::ToValue<CommandTraits<Commands::CompanyControl>::Args>(cp.data)) : CCA_NEW;
+	if (!(cp.cmd == Commands::CompanyControl && cca == CCA_NEW && ci->client_playas == COMPANY_NEW_COMPANY) && ci->client_playas != cp.company) {
 		IConsolePrint(CC_WARNING, "Kicking client #{} (IP: {}) due to calling a command as another company {}.",
 		               ci->client_playas + 1, this->GetClientIP(), cp.company + 1);
 		return this->SendError(NETWORK_ERROR_COMPANY_MISMATCH);
 	}
 
-	if (cp.cmd == CMD_COMPANY_CTRL) {
+	if (cp.cmd == Commands::CompanyControl) {
 		if (cca != CCA_NEW || cp.company != COMPANY_SPECTATOR) {
 			return this->SendError(NETWORK_ERROR_CHEATER);
 		}
 
-		/* Check if we are full - else it's possible for spectators to send a CMD_COMPANY_CTRL and the company is created regardless of max_companies! */
+		/* Check if we are full - else it's possible for spectators to send a Commands::CompanyControl and the company is created regardless of max_companies! */
 		if (Company::GetNumItems() >= _settings_client.network.max_companies) {
 			NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_CLIENT, ci->client_id, "cannot create new company, server full", CLIENT_ID_SERVER);
 			return NETWORK_RECV_STATUS_OKAY;
 		}
 	}
 
-	if (cp.cmd == CMD_COMPANY_ALLOW_LIST_CTRL) {
+	if (cp.cmd == Commands::CompanyAllowListControl) {
 		/* Maybe the client just got moved before allowing? */
 		if (ci->client_id != CLIENT_ID_SERVER && ci->client_playas != cp.company) return NETWORK_RECV_STATUS_OKAY;
 
 		/* Only allow clients to add/remove currently joined clients. The server owner does not go via this method, so is allowed to do more. */
-		std::string public_key = std::get<1>(EndianBufferReader::ToValue<CommandTraits<CMD_COMPANY_ALLOW_LIST_CTRL>::Args>(cp.data));
+		std::string public_key = std::get<1>(EndianBufferReader::ToValue<CommandTraits<Commands::CompanyAllowListControl>::Args>(cp.data));
 		bool found = false;
 		for (const NetworkClientInfo *info : NetworkClientInfo::Iterate()) {
 			if (info->public_key == public_key) {
@@ -1586,13 +1586,13 @@ static void NetworkAutoCleanCompanies()
 			/* Is the company empty for autoclean_protected-months? */
 			if (_settings_client.network.autoclean_protected != 0 && c->months_empty > _settings_client.network.autoclean_protected) {
 				/* Shut the company down */
-				Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, c->index, CRR_AUTOCLEAN, INVALID_CLIENT_ID);
+				Command<Commands::CompanyControl>::Post(CCA_DELETE, c->index, CRR_AUTOCLEAN, INVALID_CLIENT_ID);
 				IConsolePrint(CC_INFO, "Auto-cleaned company #{}.", c->index + 1);
 			}
 			/* Is the company empty for autoclean_novehicles-months, and has no vehicles? */
 			if (_settings_client.network.autoclean_novehicles != 0 && c->months_empty > _settings_client.network.autoclean_novehicles && !has_vehicles.Test(c->index)) {
 				/* Shut the company down */
-				Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, c->index, CRR_AUTOCLEAN, INVALID_CLIENT_ID);
+				Command<Commands::CompanyControl>::Post(CCA_DELETE, c->index, CRR_AUTOCLEAN, INVALID_CLIENT_ID);
 				IConsolePrint(CC_INFO, "Auto-cleaned company #{} with no vehicles.", c->index + 1);
 			}
 		} else {
@@ -2166,8 +2166,8 @@ void NetworkServerNewCompany(const Company *c, NetworkClientInfo *ci)
 		 * different state/president/company name in the different clients, we need to
 		 * circumvent the normal ::Post logic and go directly to sending the command.
 		 */
-		Command<CMD_COMPANY_ALLOW_LIST_CTRL>::SendNet(STR_NULL, c->index, CALCA_ADD, ci->public_key);
-		Command<CMD_RENAME_PRESIDENT>::SendNet(STR_NULL, c->index, ci->client_name);
+		Command<Commands::CompanyAllowListControl>::SendNet(STR_NULL, c->index, CALCA_ADD, ci->public_key);
+		Command<Commands::RenamePresident>::SendNet(STR_NULL, c->index, ci->client_name);
 
 		NetworkServerSendChat(NETWORK_ACTION_COMPANY_NEW, DESTTYPE_BROADCAST, 0, "", ci->client_id, c->index + 1);
 	}

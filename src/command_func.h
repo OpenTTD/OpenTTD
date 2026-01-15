@@ -97,7 +97,7 @@ protected:
 
 /**
  * Templated wrapper that exposes the command parameter arguments
- * for the various Command::Do/Post calls.
+ * for the various Commands::Do/Post calls.
  * @tparam Tcmd The command-id to execute.
  * @tparam Tret Return type of the command.
  * @tparam Targs The command parameter types.

@@ -152,7 +152,7 @@ CommandCost CmdSetCompanyMaxLoan(DoCommandFlags flags, CompanyID company, Money 
 static void AskUnsafeUnpauseCallback(Window *, bool confirmed)
 {
 	if (confirmed) {
-		Command<CMD_PAUSE>::Post(PauseMode::Error, false);
+		Command<Commands::Pause>::Post(PauseMode::Error, false);
 	}
 }
 

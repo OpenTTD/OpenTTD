@@ -367,17 +367,17 @@ struct GoalQuestionWindow : public Window {
 	{
 		switch (widget) {
 			case WID_GQ_BUTTON_1:
-				Command<CMD_GOAL_QUESTION_ANSWER>::Post(this->window_number, this->button[0]);
+				Command<Commands::GoalQuestionAnswer>::Post(this->window_number, this->button[0]);
 				this->Close();
 				break;
 
 			case WID_GQ_BUTTON_2:
-				Command<CMD_GOAL_QUESTION_ANSWER>::Post(this->window_number, this->button[1]);
+				Command<Commands::GoalQuestionAnswer>::Post(this->window_number, this->button[1]);
 				this->Close();
 				break;
 
 			case WID_GQ_BUTTON_3:
-				Command<CMD_GOAL_QUESTION_ANSWER>::Post(this->window_number, this->button[2]);
+				Command<Commands::GoalQuestionAnswer>::Post(this->window_number, this->button[2]);
 				this->Close();
 				break;
 		}

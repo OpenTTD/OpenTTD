@@ -17,7 +17,7 @@
 
 CommandCost CmdCreateSubsidy(DoCommandFlags flags, CargoType cargo_type, Source src, Source dst);
 
-DEF_CMD_TRAIT(CMD_CREATE_SUBSIDY, CmdCreateSubsidy, CommandFlag::Deity, CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::CreateSubsidy, CmdCreateSubsidy, CommandFlag::Deity, CommandType::OtherManagement)
 
 
 template <typename Tcont, typename Titer>

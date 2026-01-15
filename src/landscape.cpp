@@ -760,7 +760,7 @@ std::tuple<CommandCost, Money> CmdClearArea(DoCommandFlags flags, TileIndex tile
 	std::unique_ptr<TileIterator> iter = TileIterator::Create(tile, start_tile, diagonal);
 	for (; *iter != INVALID_TILE; ++(*iter)) {
 		TileIndex t = *iter;
-		CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlags{flags}.Reset(DoCommandFlag::Execute), t);
+		CommandCost ret = Command<Commands::LandscapeClear>::Do(DoCommandFlags{flags}.Reset(DoCommandFlag::Execute), t);
 		if (ret.Failed()) {
 			last_error = std::move(ret);
 
@@ -775,7 +775,7 @@ std::tuple<CommandCost, Money> CmdClearArea(DoCommandFlags flags, TileIndex tile
 			if (ret.GetCost() > 0 && money < 0) {
 				return { cost, ret.GetCost() };
 			}
-			Command<CMD_LANDSCAPE_CLEAR>::Do(flags, t);
+			Command<Commands::LandscapeClear>::Do(flags, t);
 
 			/* draw explosion animation...
 			 * Disable explosions when game is paused. Looks silly and blocks the view. */
@@ -1244,7 +1244,7 @@ void RiverMakeWider(TileIndex tile, TileIndex origin_tile)
 				TileIndex other_tile = TileAddByDiagDir(tile, d);
 				if (IsInclinedSlope(GetTileSlope(other_tile)) && IsWaterTile(other_tile)) return;
 			}
-			Command<CMD_TERRAFORM_LAND>::Do({DoCommandFlag::Execute, DoCommandFlag::Auto}, tile, ComplementSlope(cur_slope), true);
+			Command<Commands::TerraformLand>::Do({DoCommandFlag::Execute, DoCommandFlag::Auto}, tile, ComplementSlope(cur_slope), true);
 
 		/* If the river is descending and the adjacent tile has either one or three corners raised, we want to make it match the slope. */
 		} else if (IsInclinedSlope(desired_slope)) {
@@ -1265,14 +1265,14 @@ void RiverMakeWider(TileIndex tile, TileIndex origin_tile)
 			/* Lower unwanted corners first. If only one corner is raised, no corners need lowering. */
 			if (!IsSlopeWithOneCornerRaised(cur_slope)) {
 				to_change = to_change & ComplementSlope(desired_slope);
-				Command<CMD_TERRAFORM_LAND>::Do({DoCommandFlag::Execute, DoCommandFlag::Auto}, tile, to_change, false);
+				Command<Commands::TerraformLand>::Do({DoCommandFlag::Execute, DoCommandFlag::Auto}, tile, to_change, false);
 			}
 
 			/* Now check the match and raise any corners needed. */
 			cur_slope = GetTileSlope(tile);
 			if (cur_slope != desired_slope && IsSlopeWithOneCornerRaised(cur_slope)) {
 				to_change = cur_slope ^ desired_slope;
-				Command<CMD_TERRAFORM_LAND>::Do({DoCommandFlag::Execute, DoCommandFlag::Auto}, tile, to_change, true);
+				Command<Commands::TerraformLand>::Do({DoCommandFlag::Execute, DoCommandFlag::Auto}, tile, to_change, true);
 			}
 		}
 		/* Update cur_slope after possibly terraforming. */
@@ -1420,9 +1420,9 @@ static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint 
 				} else {
 					/* Sea is too small, flatten it so the river keeps looking or forms a lake / wetland. */
 					for (TileIndex sea_tile : sea) {
-						Command<CMD_TERRAFORM_LAND>::Do(DoCommandFlag::Execute, sea_tile, SLOPE_ELEVATED, false);
+						Command<Commands::TerraformLand>::Do(DoCommandFlag::Execute, sea_tile, SLOPE_ELEVATED, false);
 						Slope slope = ComplementSlope(GetTileSlope(sea_tile));
-						Command<CMD_TERRAFORM_LAND>::Do(DoCommandFlag::Execute, sea_tile, slope, true);
+						Command<Commands::TerraformLand>::Do(DoCommandFlag::Execute, sea_tile, slope, true);
 					}
 				}
 			} else {

@@ -396,12 +396,12 @@ CommandCost CmdDeleteGroup(DoCommandFlags flags, GroupID group_id)
 	if (g == nullptr || g->owner != _current_company) return CMD_ERROR;
 
 	/* Remove all vehicles from the group */
-	Command<CMD_REMOVE_ALL_VEHICLES_GROUP>::Do(flags, group_id);
+	Command<Commands::RemoveAllVehiclesGroup>::Do(flags, group_id);
 
 	/* Delete sub-groups, using a copy to avoid invalid iteration. */
 	FlatSet<GroupID> children = g->children;
 	for (const GroupID &childgroup : children) {
-		Command<CMD_DELETE_GROUP>::Do(flags, childgroup);
+		Command<Commands::DeleteGroup>::Do(flags, childgroup);
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
@@ -636,7 +636,7 @@ CommandCost CmdAddSharedVehicleGroup(DoCommandFlags flags, GroupID id_g, Vehicle
 
 				/* For each shared vehicles add it to the group */
 				for (Vehicle *v2 = v->FirstShared(); v2 != nullptr; v2 = v2->NextShared()) {
-					if (v2->group_id != id_g) Command<CMD_ADD_VEHICLE_GROUP>::Do(flags, id_g, v2->index, false, VehicleListIdentifier{});
+					if (v2->group_id != id_g) Command<Commands::AddVehicleToGroup>::Do(flags, id_g, v2->index, false, VehicleListIdentifier{});
 				}
 			}
 		}
@@ -667,7 +667,7 @@ CommandCost CmdRemoveAllVehiclesGroup(DoCommandFlags flags, GroupID group_id)
 				if (v->group_id != group_id) continue;
 
 				/* Add The Vehicle to the default group */
-				Command<CMD_ADD_VEHICLE_GROUP>::Do(flags, DEFAULT_GROUP, v->index, false, VehicleListIdentifier{});
+				Command<Commands::AddVehicleToGroup>::Do(flags, DEFAULT_GROUP, v->index, false, VehicleListIdentifier{});
 			}
 		}
 

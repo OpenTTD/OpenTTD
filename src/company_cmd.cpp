@@ -672,7 +672,7 @@ TimeoutTimer<TimerGameTick> _new_competitor_timeout({ TimerGameTick::Priority::C
 
 	/* Send a command to all clients to start up a new AI.
 	 * Works fine for Multiplayer and Singleplayer */
-	Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, CompanyID::Invalid(), CRR_NONE, INVALID_CLIENT_ID);
+	Command<Commands::CompanyControl>::Post(CCA_NEW_AI, CompanyID::Invalid(), CRR_NONE, INVALID_CLIENT_ID);
 });
 
 /** Start of a new game. */
@@ -793,7 +793,7 @@ void OnTick_Companies()
 			for (auto i = 0; i < _settings_game.difficulty.max_no_competitors; i++) {
 				if (_networking && num_companies++ >= _settings_client.network.max_companies) break;
 				if (num_ais++ >= _settings_game.difficulty.max_no_competitors) break;
-				Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, CompanyID::Invalid(), CRR_NONE, INVALID_CLIENT_ID);
+				Command<Commands::CompanyControl>::Post(CCA_NEW_AI, CompanyID::Invalid(), CRR_NONE, INVALID_CLIENT_ID);
 			}
 			timeout = 10 * 60 * Ticks::TICKS_PER_SECOND;
 		}
@@ -927,7 +927,7 @@ CommandCost CmdCompanyCtrl(DoCommandFlags flags, CompanyCtrlAction cca, CompanyI
 				if (!_company_manager_face.empty()) {
 					auto cmf = ParseCompanyManagerFaceCode(_company_manager_face);
 					if (cmf.has_value()) {
-						Command<CMD_SET_COMPANY_MANAGER_FACE>::SendNet(STR_NULL, c->index, cmf->style, cmf->bits);
+						Command<Commands::SetCompanyManagerFace>::SendNet(STR_NULL, c->index, cmf->style, cmf->bits);
 					}
 				}
 
@@ -1259,7 +1259,7 @@ CommandCost CmdRenamePresident(DoCommandFlags flags, const std::string &text)
 			c->president_name = text;
 
 			if (c->name_1 == STR_SV_UNNAMED && c->name.empty()) {
-				Command<CMD_RENAME_COMPANY>::Do(DoCommandFlag::Execute, text + " Transport");
+				Command<Commands::RenameCompany>::Do(DoCommandFlag::Execute, text + " Transport");
 			}
 		}
 

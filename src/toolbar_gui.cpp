@@ -209,7 +209,7 @@ static CallBackFunction ToolbarPauseClick(Window *)
 {
 	if (_networking && !_network_server) return CBF_NONE; // only server can pause the game
 
-	if (Command<CMD_PAUSE>::Post(PauseMode::Normal, _pause_mode.None())) {
+	if (Command<Commands::Pause>::Post(PauseMode::Normal, _pause_mode.None())) {
 		SndConfirmBeep();
 	}
 	return CBF_NONE;

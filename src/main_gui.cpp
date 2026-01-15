@@ -344,7 +344,7 @@ struct MainWindow : Window
 
 			case GHK_MONEY: // Gimme money
 				/* You can only cheat for money in singleplayer mode. */
-				if (!_networking) Command<CMD_MONEY_CHEAT>::Post(10000000);
+				if (!_networking) Command<Commands::MoneyCheat>::Post(10000000);
 				break;
 
 			case GHK_UPDATE_COORDS: // Update the coordinates of all station signs

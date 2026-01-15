@@ -61,7 +61,7 @@ static int32_t _money_cheat_amount = 10000000;
  */
 static int32_t ClickMoneyCheat(int32_t, int32_t change_direction)
 {
-	Command<CMD_MONEY_CHEAT>::Post(Money(_money_cheat_amount) * change_direction);
+	Command<Commands::MoneyCheat>::Post(Money(_money_cheat_amount) * change_direction);
 	return _money_cheat_amount;
 }
 

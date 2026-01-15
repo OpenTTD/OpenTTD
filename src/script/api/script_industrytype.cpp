@@ -124,7 +124,7 @@
 
 	uint32_t seed = ScriptBase::Rand();
 	uint32_t layout_index = ScriptBase::RandRange((uint32_t)::GetIndustrySpec(industry_type)->layouts.size());
-	return ScriptObject::Command<CMD_BUILD_INDUSTRY>::Do(tile, industry_type, layout_index, true, seed);
+	return ScriptObject::Command<Commands::BuildIndustry>::Do(tile, industry_type, layout_index, true, seed);
 }
 
 /* static */ bool ScriptIndustryType::ProspectIndustry(IndustryType industry_type)
@@ -133,7 +133,7 @@
 	EnforcePrecondition(false, CanProspectIndustry(industry_type));
 
 	uint32_t seed = ScriptBase::Rand();
-	return ScriptObject::Command<CMD_BUILD_INDUSTRY>::Do(TileIndex{}, industry_type, 0, false, seed);
+	return ScriptObject::Command<Commands::BuildIndustry>::Do(TileIndex{}, industry_type, 0, false, seed);
 }
 
 /* static */ bool ScriptIndustryType::IsBuiltOnWater(IndustryType industry_type)

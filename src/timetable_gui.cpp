@@ -639,7 +639,7 @@ struct TimetableWindow : Window {
 				} else {
 					ShowSetDateWindow(this, v->index.base(), TimerGameEconomy::date, TimerGameEconomy::year, TimerGameEconomy::year + MAX_TIMETABLE_START_YEARS,
 						[ctrl=_ctrl_pressed](const Window *w, TimerGameEconomy::Date date) {
-							Command<CMD_SET_TIMETABLE_START>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, w->window_number, ctrl, GetStartTickFromDate(date));
+							Command<Commands::SetTimetableStart>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, w->window_number, ctrl, GetStartTickFromDate(date));
 						}
 					);
 				}
@@ -692,9 +692,9 @@ struct TimetableWindow : Window {
 			case WID_VT_CLEAR_TIME: { // Clear waiting time.
 				auto [order_id, mtf] = PackTimetableArgs(v, this->sel_index, false);
 				if (_ctrl_pressed) {
-					Command<CMD_BULK_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, mtf, 0);
+					Command<Commands::ChangeTimetableBulk>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, mtf, 0);
 				} else {
-					Command<CMD_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, order_id, mtf, 0);
+					Command<Commands::ChangeTimetable>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, order_id, mtf, 0);
 				}
 				break;
 			}
@@ -702,19 +702,19 @@ struct TimetableWindow : Window {
 			case WID_VT_CLEAR_SPEED: { // Clear max speed button.
 				auto [order_id, mtf] = PackTimetableArgs(v, this->sel_index, true);
 				if (_ctrl_pressed) {
-					Command<CMD_BULK_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, mtf, UINT16_MAX);
+					Command<Commands::ChangeTimetableBulk>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, mtf, UINT16_MAX);
 				} else {
-					Command<CMD_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, order_id, mtf, UINT16_MAX);
+					Command<Commands::ChangeTimetable>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, order_id, mtf, UINT16_MAX);
 				}
 				break;
 			}
 
 			case WID_VT_RESET_LATENESS: // Reset the vehicle's late counter.
-				Command<CMD_SET_VEHICLE_ON_TIME>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, _ctrl_pressed);
+				Command<Commands::SetVehicleOnTime>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, _ctrl_pressed);
 				break;
 
 			case WID_VT_AUTOFILL: { // Autofill the timetable.
-				Command<CMD_AUTOFILL_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, !v->vehicle_flags.Test(VehicleFlag::AutofillTimetable), _ctrl_pressed);
+				Command<Commands::AutofillTimetable>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, !v->vehicle_flags.Test(VehicleFlag::AutofillTimetable), _ctrl_pressed);
 				break;
 			}
 
@@ -743,9 +743,9 @@ struct TimetableWindow : Window {
 				val = ConvertDisplaySpeedToKmhishSpeed(val, v->type);
 
 				if (this->change_timetable_all) {
-					Command<CMD_BULK_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, mtf, ClampTo<uint16_t>(val));
+					Command<Commands::ChangeTimetableBulk>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, mtf, ClampTo<uint16_t>(val));
 				} else {
-					Command<CMD_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, order_id, mtf, ClampTo<uint16_t>(val));
+					Command<Commands::ChangeTimetable>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, order_id, mtf, ClampTo<uint16_t>(val));
 				}
 				break;
 			}
@@ -754,15 +754,15 @@ struct TimetableWindow : Window {
 				val *= TicksPerTimetableUnit();
 
 				if (this->change_timetable_all) {
-					Command<CMD_BULK_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, mtf, ClampTo<uint16_t>(val));
+					Command<Commands::ChangeTimetableBulk>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, mtf, ClampTo<uint16_t>(val));
 				} else {
-					Command<CMD_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, order_id, mtf, ClampTo<uint16_t>(val));
+					Command<Commands::ChangeTimetable>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, order_id, mtf, ClampTo<uint16_t>(val));
 				}
 				break;
 
 			case WID_VT_START_DATE: {
 				TimerGameTick::TickCounter start_tick = TimerGameTick::counter + (val * Ticks::TICKS_PER_SECOND);
-				Command<CMD_SET_TIMETABLE_START>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, this->change_timetable_all, start_tick);
+				Command<Commands::SetTimetableStart>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, this->change_timetable_all, start_tick);
 				break;
 			}
 

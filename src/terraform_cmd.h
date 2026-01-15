@@ -17,8 +17,8 @@
 std::tuple<CommandCost, Money, TileIndex> CmdTerraformLand(DoCommandFlags flags, TileIndex tile, Slope slope, bool dir_up);
 std::tuple<CommandCost, Money, TileIndex> CmdLevelLand(DoCommandFlags flags, TileIndex tile, TileIndex start_tile, bool diagonal, LevelMode lm);
 
-DEF_CMD_TRAIT(CMD_TERRAFORM_LAND, CmdTerraformLand, CommandFlags({CommandFlag::AllTiles, CommandFlag::Auto}),                      CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_LEVEL_LAND,     CmdLevelLand,     CommandFlags({CommandFlag::AllTiles, CommandFlag::Auto, CommandFlag::NoTest}), CommandType::LandscapeConstruction) // test run might clear tiles multiple times, in execution that only happens once
+DEF_CMD_TRAIT(Commands::TerraformLand, CmdTerraformLand, CommandFlags({CommandFlag::AllTiles, CommandFlag::Auto}),                      CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::LevelLand, CmdLevelLand, CommandFlags({CommandFlag::AllTiles, CommandFlag::Auto, CommandFlag::NoTest}), CommandType::LandscapeConstruction) // test run might clear tiles multiple times, in execution that only happens once
 
 CommandCallback CcPlaySound_EXPLOSION;
 void CcTerraform(Commands cmd, const CommandCost &result, Money, TileIndex tile);

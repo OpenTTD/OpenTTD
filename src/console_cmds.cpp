@@ -830,7 +830,7 @@ static bool ConPauseGame(std::span<std::string_view> argv)
 	}
 
 	if (!_pause_mode.Test(PauseMode::Normal)) {
-		Command<CMD_PAUSE>::Post(PauseMode::Normal, true);
+		Command<Commands::Pause>::Post(PauseMode::Normal, true);
 		if (!_networking) IConsolePrint(CC_DEFAULT, "Game paused.");
 	} else {
 		IConsolePrint(CC_DEFAULT, "Game is already paused.");
@@ -852,7 +852,7 @@ static bool ConUnpauseGame(std::span<std::string_view> argv)
 	}
 
 	if (_pause_mode.Test(PauseMode::Normal)) {
-		Command<CMD_PAUSE>::Post(PauseMode::Normal, false);
+		Command<Commands::Pause>::Post(PauseMode::Normal, false);
 		if (!_networking) IConsolePrint(CC_DEFAULT, "Game unpaused.");
 	} else if (_pause_mode.Test(PauseMode::Error)) {
 		IConsolePrint(CC_DEFAULT, "Game is in error state and cannot be unpaused via console.");
@@ -1098,7 +1098,7 @@ static bool ConResetCompany(std::span<std::string_view> argv)
 	}
 
 	/* It is safe to remove this company */
-	Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, *index, CRR_MANUAL, INVALID_CLIENT_ID);
+	Command<Commands::CompanyControl>::Post(CCA_DELETE, *index, CRR_MANUAL, INVALID_CLIENT_ID);
 	IConsolePrint(CC_DEFAULT, "Company deleted.");
 
 	return true;
@@ -1512,7 +1512,7 @@ static bool ConStartAI(std::span<std::string_view> argv)
 	}
 
 	/* Start a new AI company */
-	Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, CompanyID::Invalid(), CRR_NONE, INVALID_CLIENT_ID);
+	Command<Commands::CompanyControl>::Post(CCA_NEW_AI, CompanyID::Invalid(), CRR_NONE, INVALID_CLIENT_ID);
 
 	return true;
 }
@@ -1553,8 +1553,8 @@ static bool ConReloadAI(std::span<std::string_view> argv)
 	}
 
 	/* First kill the company of the AI, then start a new one. This should start the current AI again */
-	Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, *company_id, CRR_MANUAL, INVALID_CLIENT_ID);
-	Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, *company_id, CRR_NONE, INVALID_CLIENT_ID);
+	Command<Commands::CompanyControl>::Post(CCA_DELETE, *company_id, CRR_MANUAL, INVALID_CLIENT_ID);
+	Command<Commands::CompanyControl>::Post(CCA_NEW_AI, *company_id, CRR_NONE, INVALID_CLIENT_ID);
 	IConsolePrint(CC_DEFAULT, "AI reloaded.");
 
 	return true;
@@ -1596,7 +1596,7 @@ static bool ConStopAI(std::span<std::string_view> argv)
 	}
 
 	/* Now kill the company of the AI. */
-	Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, *company_id, CRR_MANUAL, INVALID_CLIENT_ID);
+	Command<Commands::CompanyControl>::Post(CCA_DELETE, *company_id, CRR_MANUAL, INVALID_CLIENT_ID);
 	IConsolePrint(CC_DEFAULT, "AI stopped, company deleted.");
 
 	return true;
@@ -2074,7 +2074,7 @@ static void PerformNetworkAuthorizedKeyAction(std::string_view name, NetworkAuth
 				authorized_keys->Add(authorized_key);
 			} else {
 				AutoRestoreBackup backup(_current_company, company);
-				Command<CMD_COMPANY_ALLOW_LIST_CTRL>::Post(CALCA_ADD, authorized_key);
+				Command<Commands::CompanyAllowListControl>::Post(CALCA_ADD, authorized_key);
 			}
 			IConsolePrint(CC_INFO, "Added {} to {}.", authorized_key, name);
 			return;
@@ -2089,7 +2089,7 @@ static void PerformNetworkAuthorizedKeyAction(std::string_view name, NetworkAuth
 				authorized_keys->Remove(authorized_key);
 			} else {
 				AutoRestoreBackup backup(_current_company, company);
-				Command<CMD_COMPANY_ALLOW_LIST_CTRL>::Post(CALCA_REMOVE, authorized_key);
+				Command<Commands::CompanyAllowListControl>::Post(CALCA_REMOVE, authorized_key);
 			}
 			IConsolePrint(CC_INFO, "Removed {} from {}.", authorized_key, name);
 			return;
