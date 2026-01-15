@@ -43,7 +43,7 @@
 
 	value = Clamp<SQInteger>(value, INT32_MIN, INT32_MAX);
 
-	return ScriptObject::Command<CMD_CHANGE_SETTING>::Do(sd->GetName(), value);
+	return ScriptObject::Command<Commands::ChangeSetting>::Do(sd->GetName(), value);
 }
 
 /* static */ bool ScriptGameSettings::IsDisabledVehicleType(ScriptVehicle::VehicleType vehicle_type)

@@ -87,7 +87,7 @@ void CheckTrainsLengths()
 
 						if (!_networking && first) {
 							first = false;
-							Command<CMD_PAUSE>::Post(PauseMode::Error, true);
+							Command<Commands::Pause>::Post(PauseMode::Error, true);
 						}
 						/* Break so we warn only once for each train. */
 						break;
@@ -704,7 +704,7 @@ static CommandCost CmdBuildRailWagon(DoCommandFlags flags, TileIndex tile, const
 			if (w->engine_type != v->engine_type) continue; ///< Must be same type
 			if (w->First() == v) continue; ///< Don't connect to ourself
 
-			if (Command<CMD_MOVE_RAIL_VEHICLE>::Do(DoCommandFlag::Execute, v->index, w->Last()->index, true).Succeeded()) {
+			if (Command<Commands::MoveRailVehicle>::Do(DoCommandFlag::Execute, v->index, w->Last()->index, true).Succeeded()) {
 				break;
 			}
 		}
@@ -718,7 +718,7 @@ void NormalizeTrainVehInDepot(const Train *u)
 {
 	assert(u->IsEngine());
 	for (VehicleID vehicle : GetFreeWagonsInDepot(u->tile)) {
-		if (Command<CMD_MOVE_RAIL_VEHICLE>::Do(DoCommandFlag::Execute, vehicle, u->index, true).Failed()) {
+		if (Command<Commands::MoveRailVehicle>::Do(DoCommandFlag::Execute, vehicle, u->index, true).Failed()) {
 			break;
 		}
 	}

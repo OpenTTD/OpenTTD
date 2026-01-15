@@ -132,13 +132,13 @@ CommandCost CmdBuildShipDepot(DoCommandFlags flags, TileIndex tile, Axis axis)
 	CommandCost cost = CommandCost(EXPENSES_CONSTRUCTION, _price[Price::BuildDepotShip]);
 
 	bool add_cost = !IsWaterTile(tile);
-	CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags | DoCommandFlag::Auto, tile);
+	CommandCost ret = Command<Commands::LandscapeClear>::Do(flags | DoCommandFlag::Auto, tile);
 	if (ret.Failed()) return ret;
 	if (add_cost) {
 		cost.AddCost(ret.GetCost());
 	}
 	add_cost = !IsWaterTile(tile2);
-	ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags | DoCommandFlag::Auto, tile2);
+	ret = Command<Commands::LandscapeClear>::Do(flags | DoCommandFlag::Auto, tile2);
 	if (ret.Failed()) return ret;
 	if (add_cost) {
 		cost.AddCost(ret.GetCost());
@@ -335,13 +335,13 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlags
 
 	/* middle tile */
 	WaterClass wc_middle = HasTileWaterGround(tile) ? GetWaterClass(tile) : WaterClass::Canal;
-	ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
+	ret = Command<Commands::LandscapeClear>::Do(flags, tile);
 	if (ret.Failed()) return ret;
 	cost.AddCost(ret.GetCost());
 
 	/* lower tile */
 	if (!IsWaterTile(tile - delta)) {
-		ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile - delta);
+		ret = Command<Commands::LandscapeClear>::Do(flags, tile - delta);
 		if (ret.Failed()) return ret;
 		cost.AddCost(ret.GetCost());
 		cost.AddCost(_price[Price::BuildCanal]);
@@ -353,7 +353,7 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlags
 
 	/* upper tile */
 	if (!IsWaterTile(tile + delta)) {
-		ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile + delta);
+		ret = Command<Commands::LandscapeClear>::Do(flags, tile + delta);
 		if (ret.Failed()) return ret;
 		cost.AddCost(ret.GetCost());
 		cost.AddCost(_price[Price::BuildCanal]);
@@ -513,7 +513,7 @@ CommandCost CmdBuildCanal(DoCommandFlags flags, TileIndex tile, TileIndex start_
 		/* Outside the editor, prevent building canals over your own or OWNER_NONE owned canals */
 		if (water && IsCanal(current_tile) && _game_mode != GM_EDITOR && (IsTileOwner(current_tile, _current_company) || IsTileOwner(current_tile, OWNER_NONE))) continue;
 
-		ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, current_tile);
+		ret = Command<Commands::LandscapeClear>::Do(flags, current_tile);
 		if (ret.Failed()) return ret;
 
 		if (!water) cost.AddCost(ret.GetCost());
@@ -1180,7 +1180,7 @@ static void DoFloodTile(TileIndex target)
 				[[fallthrough]];
 
 			case TileType::Clear:
-				if (Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlag::Execute, target).Succeeded()) {
+				if (Command<Commands::LandscapeClear>::Do(DoCommandFlag::Execute, target).Succeeded()) {
 					MakeShore(target);
 					MarkTileDirtyByTile(target);
 					flooded = true;
@@ -1195,7 +1195,7 @@ static void DoFloodTile(TileIndex target)
 		FloodVehicles(target);
 
 		/* flood flat tile */
-		if (Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlag::Execute, target).Succeeded()) {
+		if (Command<Commands::LandscapeClear>::Do(DoCommandFlag::Execute, target).Succeeded()) {
 			MakeSea(target);
 			MarkTileDirtyByTile(target);
 			flooded = true;
@@ -1248,7 +1248,7 @@ static void DoDryUp(TileIndex tile)
 		case TileType::Water:
 			assert(IsCoast(tile));
 
-			if (Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlag::Execute, tile).Succeeded()) {
+			if (Command<Commands::LandscapeClear>::Do(DoCommandFlag::Execute, tile).Succeeded()) {
 				MakeClear(tile, CLEAR_GRASS, 3);
 				MarkTileDirtyByTile(tile);
 			}
@@ -1418,7 +1418,7 @@ static void ChangeTileOwner_Water(TileIndex tile, Owner old_owner, Owner new_own
 	}
 
 	/* Remove depot */
-	if (IsShipDepot(tile)) Command<CMD_LANDSCAPE_CLEAR>::Do({DoCommandFlag::Execute, DoCommandFlag::Bankrupt}, tile);
+	if (IsShipDepot(tile)) Command<Commands::LandscapeClear>::Do({DoCommandFlag::Execute, DoCommandFlag::Bankrupt}, tile);
 
 	/* Set owner of canals and locks ... and also canal under dock there was before.
 	 * Check if the new owner after removing depot isn't OWNER_WATER. */
@@ -1438,7 +1438,7 @@ static CommandCost TerraformTile_Water(TileIndex tile, DoCommandFlags flags, int
 	/* Canals can't be terraformed */
 	if (IsWaterTile(tile) && IsCanal(tile)) return CommandCost(STR_ERROR_MUST_DEMOLISH_CANAL_FIRST);
 
-	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
+	return Command<Commands::LandscapeClear>::Do(flags, tile);
 }
 
 static CommandCost CheckBuildAbove_Water(TileIndex tile, DoCommandFlags flags, Axis, int height)
@@ -1449,7 +1449,7 @@ static CommandCost CheckBuildAbove_Water(TileIndex tile, DoCommandFlags flags, A
 		int height_diff = (GetTileMaxZ(tile) + GetLockPartMinimalBridgeHeight(GetLockPart(tile)) - height) * TILE_HEIGHT_STEP;
 		return CommandCostWithParam(STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK, height_diff);
 	}
-	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
+	return Command<Commands::LandscapeClear>::Do(flags, tile);
 }
 
 extern const TileTypeProcs _tile_type_water_procs = {

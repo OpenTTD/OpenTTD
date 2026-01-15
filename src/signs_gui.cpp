@@ -387,7 +387,7 @@ Window *ShowSignList()
 static bool RenameSign(SignID index, std::string_view text, Colours text_colour)
 {
 	bool remove = text.empty();
-	Command<CMD_RENAME_SIGN>::Post(remove ? STR_ERROR_CAN_T_DELETE_SIGN : STR_ERROR_CAN_T_CHANGE_SIGN_NAME, index, std::string{text}, text_colour);
+	Command<Commands::RenameSign>::Post(remove ? STR_ERROR_CAN_T_DELETE_SIGN : STR_ERROR_CAN_T_CHANGE_SIGN_NAME, index, std::string{text}, text_colour);
 	return remove;
 }
 
@@ -398,7 +398,7 @@ static bool RenameSign(SignID index, std::string_view text, Colours text_colour)
  */
 void MoveSign(SignID index, TileIndex tile)
 {
-	Command<CMD_MOVE_SIGN>::Post(STR_ERROR_CAN_T_PLACE_SIGN_HERE, index, tile);
+	Command<Commands::MoveSign>::Post(STR_ERROR_CAN_T_PLACE_SIGN_HERE, index, tile);
 }
 
 struct SignWindow : Window, SignList {

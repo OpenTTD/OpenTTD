@@ -864,7 +864,7 @@ static void MakeNewGameDone()
 	/* In a dedicated server, the server does not play */
 	if (!VideoDriver::GetInstance()->HasGUI()) {
 		OnStartGame(true);
-		if (_settings_client.gui.pause_on_newgame) Command<CMD_PAUSE>::Post(PauseMode::Normal, true);
+		if (_settings_client.gui.pause_on_newgame) Command<Commands::Pause>::Post(PauseMode::Normal, true);
 		return;
 	}
 
@@ -878,11 +878,11 @@ static void MakeNewGameDone()
 	 * COLOUR_END corresponds to Random colour */
 
 	if (_settings_client.gui.starting_colour != COLOUR_END) {
-		Command<CMD_SET_COMPANY_COLOUR>::Post(LS_DEFAULT, true, _settings_client.gui.starting_colour);
+		Command<Commands::SetCompanyColour>::Post(LS_DEFAULT, true, _settings_client.gui.starting_colour);
 	}
 
 	if (_settings_client.gui.starting_colour_secondary != COLOUR_END && HasBit(_loaded_newgrf_features.used_liveries, LS_DEFAULT)) {
-		Command<CMD_SET_COMPANY_COLOUR>::Post(LS_DEFAULT, false, _settings_client.gui.starting_colour_secondary);
+		Command<Commands::SetCompanyColour>::Post(LS_DEFAULT, false, _settings_client.gui.starting_colour_secondary);
 	}
 
 	OnStartGame(false);
@@ -890,7 +890,7 @@ static void MakeNewGameDone()
 	InitializeRailGUI();
 	InitializeRoadGUI();
 
-	if (_settings_client.gui.pause_on_newgame) Command<CMD_PAUSE>::Post(PauseMode::Normal, true);
+	if (_settings_client.gui.pause_on_newgame) Command<Commands::Pause>::Post(PauseMode::Normal, true);
 
 	CheckEngines();
 	CheckIndustries();
@@ -1108,7 +1108,7 @@ void SwitchToMode(SwitchMode new_mode)
 				}
 				OnStartGame(_network_dedicated);
 				/* Decrease pause counter (was increased from opening load dialog) */
-				Command<CMD_PAUSE>::Post(PauseMode::SaveLoad, false);
+				Command<Commands::Pause>::Post(PauseMode::SaveLoad, false);
 			}
 
 			UpdateSocialIntegration(GM_NORMAL);
@@ -1141,7 +1141,7 @@ void SwitchToMode(SwitchMode new_mode)
 				GenerateSavegameId();
 				_settings_newgame.game_creation.starting_year = TimerGameCalendar::year;
 				/* Cancel the saveload pausing */
-				Command<CMD_PAUSE>::Post(PauseMode::SaveLoad, false);
+				Command<Commands::Pause>::Post(PauseMode::SaveLoad, false);
 			} else {
 				ShowErrorMessage(GetSaveLoadErrorType(), GetSaveLoadErrorMessage(), WL_CRITICAL);
 			}

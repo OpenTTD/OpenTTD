@@ -59,7 +59,7 @@ private:
 	bool last_command_res = true; ///< The last result of the command.
 
 	CommandDataBuffer last_data; ///< The last data passed to a command.
-	Commands last_cmd = CMD_END; ///< The last cmd passed to a command.
+	Commands last_cmd = Commands::End; ///< The last cmd passed to a command.
 	CommandDataBuffer last_cmd_ret; ///< The extra data returned by the last command.
 
 	std::vector<int> callback_value; ///< The values which need to survive a callback.

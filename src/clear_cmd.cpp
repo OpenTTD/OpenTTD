@@ -395,7 +395,7 @@ static void ChangeTileOwner_Clear(TileIndex, Owner, Owner)
 
 static CommandCost TerraformTile_Clear(TileIndex tile, DoCommandFlags flags, int, Slope)
 {
-	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
+	return Command<Commands::LandscapeClear>::Do(flags, tile);
 }
 
 static CommandCost CheckBuildAbove_Clear(TileIndex, DoCommandFlags, Axis, int)

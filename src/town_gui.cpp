@@ -309,7 +309,7 @@ public:
 			}
 
 			case WID_TA_EXECUTE:
-				Command<CMD_DO_TOWN_ACTION>::Post(STR_ERROR_CAN_T_DO_THIS, this->town->xy, static_cast<TownID>(this->window_number), this->sel_action);
+				Command<Commands::TownAction>::Post(STR_ERROR_CAN_T_DO_THIS, this->town->xy, static_cast<TownID>(this->window_number), this->sel_action);
 				break;
 		}
 	}
@@ -496,19 +496,19 @@ public:
 				break;
 
 			case WID_TV_EXPAND: // expand town - only available on Scenario editor
-				Command<CMD_EXPAND_TOWN>::Post(STR_ERROR_CAN_T_EXPAND_TOWN, static_cast<TownID>(this->window_number), 0, {TownExpandMode::Buildings, TownExpandMode::Roads});
+				Command<Commands::ExpandTown>::Post(STR_ERROR_CAN_T_EXPAND_TOWN, static_cast<TownID>(this->window_number), 0, {TownExpandMode::Buildings, TownExpandMode::Roads});
 				break;
 
 			case WID_TV_EXPAND_BUILDINGS: // expand buildings of town - only available on Scenario editor
-				Command<CMD_EXPAND_TOWN>::Post(STR_ERROR_CAN_T_EXPAND_TOWN, static_cast<TownID>(this->window_number), 0, {TownExpandMode::Buildings});
+				Command<Commands::ExpandTown>::Post(STR_ERROR_CAN_T_EXPAND_TOWN, static_cast<TownID>(this->window_number), 0, {TownExpandMode::Buildings});
 				break;
 
 			case WID_TV_EXPAND_ROADS: // expand roads of town - only available on Scenario editor
-				Command<CMD_EXPAND_TOWN>::Post(STR_ERROR_CAN_T_EXPAND_TOWN, static_cast<TownID>(this->window_number), 0, {TownExpandMode::Roads});
+				Command<Commands::ExpandTown>::Post(STR_ERROR_CAN_T_EXPAND_TOWN, static_cast<TownID>(this->window_number), 0, {TownExpandMode::Roads});
 				break;
 
 			case WID_TV_DELETE: // delete town - only available on Scenario editor
-				Command<CMD_DELETE_TOWN>::Post(STR_ERROR_TOWN_CAN_T_DELETE, static_cast<TownID>(this->window_number));
+				Command<Commands::DeleteTown>::Post(STR_ERROR_TOWN_CAN_T_DELETE, static_cast<TownID>(this->window_number));
 				break;
 
 			case WID_TV_GRAPH: {
@@ -602,7 +602,7 @@ public:
 	{
 		if (!str.has_value()) return;
 
-		Command<CMD_RENAME_TOWN>::Post(STR_ERROR_CAN_T_RENAME_TOWN, static_cast<TownID>(this->window_number), *str);
+		Command<Commands::RenameTown>::Post(STR_ERROR_CAN_T_RENAME_TOWN, static_cast<TownID>(this->window_number), *str);
 	}
 
 	const IntervalTimer<TimerGameCalendar> daily_interval = {{TimerGameCalendar::DAY, TimerGameCalendar::Priority::NONE}, [this](auto) {
@@ -1230,7 +1230,7 @@ public:
 			if (original_name != this->townname_editbox.text.GetText()) name = this->townname_editbox.text.GetText();
 		}
 
-		bool success = Command<CMD_FOUND_TOWN>::Post(errstr, cc,
+		bool success = Command<Commands::FoundTown>::Post(errstr, cc,
 				tile, this->town_size, this->city, this->town_layout, random, townnameparts, name);
 
 		/* Rerandomise name, if success and no cost-estimation. */
@@ -1264,7 +1264,7 @@ public:
 
 			case WID_TF_EXPAND_ALL_TOWNS:
 				for (Town *t : Town::Iterate()) {
-					Command<CMD_EXPAND_TOWN>::Do(DoCommandFlag::Execute, t->index, 0, FoundTownWindow::expand_modes);
+					Command<Commands::ExpandTown>::Do(DoCommandFlag::Execute, t->index, 0, FoundTownWindow::expand_modes);
 				}
 				break;
 
@@ -1810,7 +1810,7 @@ struct BuildHouseWindow : public PickerWindow {
 		if (spec->building_flags.Test(BuildingFlag::Size1x1)) {
 			VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_PLACE_HOUSE);
 		} else {
-			Command<CMD_PLACE_HOUSE>::Post(STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index(), BuildHouseWindow::house_protected, BuildHouseWindow::replace);
+			Command<Commands::PlaceHouse>::Post(STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index(), BuildHouseWindow::house_protected, BuildHouseWindow::replace);
 		}
 	}
 
@@ -1826,7 +1826,7 @@ struct BuildHouseWindow : public PickerWindow {
 		assert(select_proc == DDSP_PLACE_HOUSE);
 
 		const HouseSpec *spec = HouseSpec::Get(HousePickerCallbacks::sel_type);
-		Command<CMD_PLACE_HOUSE_AREA>::Post(STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER,
+		Command<Commands::PlaceHouseArea>::Post(STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER,
 			end_tile, start_tile, spec->Index(), BuildHouseWindow::house_protected, BuildHouseWindow::replace, _ctrl_pressed);
 	}
 

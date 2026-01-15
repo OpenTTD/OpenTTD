@@ -829,7 +829,7 @@ bool ScriptInstance::DoCommandCallback(const CommandCost &result, const CommandD
 		ScriptObject::SetLastCost(result.GetCost());
 	}
 
-	ScriptObject::SetLastCommand({}, CMD_END);
+	ScriptObject::SetLastCommand({}, Commands::End);
 
 	return true;
 }

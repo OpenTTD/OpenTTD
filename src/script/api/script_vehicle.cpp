@@ -82,7 +82,7 @@
 
 	EnforcePreconditionCustomError(VEHICLE_INVALID, !ScriptGameSettings::IsDisabledVehicleType((ScriptVehicle::VehicleType)type), ScriptVehicle::ERR_VEHICLE_BUILD_DISABLED);
 
-	if (!ScriptObject::Command<CMD_BUILD_VEHICLE>::Do(&ScriptInstance::DoCommandReturnVehicleID, depot, engine_id, true, cargo, INVALID_CLIENT_ID)) return VEHICLE_INVALID;
+	if (!ScriptObject::Command<Commands::BuildVehicle>::Do(&ScriptInstance::DoCommandReturnVehicleID, depot, engine_id, true, cargo, INVALID_CLIENT_ID)) return VEHICLE_INVALID;
 
 	/* In case of test-mode, we return VehicleID 0 */
 	return VehicleID::Begin();
@@ -104,7 +104,7 @@
 	if (!ScriptEngine::IsBuildable(engine_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
 
-	auto [res, veh_id, refit_capacity, refit_mail, cargo_capacities] = ::Command<CMD_BUILD_VEHICLE>::Do(DoCommandFlag::QueryCost, depot, engine_id, true, cargo, INVALID_CLIENT_ID);
+	auto [res, veh_id, refit_capacity, refit_mail, cargo_capacities] = ::Command<Commands::BuildVehicle>::Do(DoCommandFlag::QueryCost, depot, engine_id, true, cargo, INVALID_CLIENT_ID);
 	return res.Succeeded() ? refit_capacity : -1;
 }
 
@@ -113,7 +113,7 @@
 	EnforceCompanyModeValid(VEHICLE_INVALID);
 	EnforcePrecondition(VEHICLE_INVALID, IsPrimaryVehicle(vehicle_id));
 
-	if (!ScriptObject::Command<CMD_CLONE_VEHICLE>::Do(&ScriptInstance::DoCommandReturnVehicleID, depot, vehicle_id, share_orders)) return VEHICLE_INVALID;
+	if (!ScriptObject::Command<Commands::CloneVehicle>::Do(&ScriptInstance::DoCommandReturnVehicleID, depot, vehicle_id, share_orders)) return VEHICLE_INVALID;
 
 	/* In case of test-mode, we return VehicleID 0 */
 	return VehicleID::Begin();
@@ -135,7 +135,7 @@
 		while (dest_wagon-- > 0) w = w->GetNextUnit();
 	}
 
-	return ScriptObject::Command<CMD_MOVE_RAIL_VEHICLE>::Do(v->index, w == nullptr ? VehicleID::Invalid() : w->index, move_attached_wagons);
+	return ScriptObject::Command<Commands::MoveRailVehicle>::Do(v->index, w == nullptr ? VehicleID::Invalid() : w->index, move_attached_wagons);
 }
 
 /* static */ bool ScriptVehicle::MoveWagon(VehicleID source_vehicle_id, SQInteger source_wagon, SQInteger dest_vehicle_id, SQInteger dest_wagon)
@@ -153,7 +153,7 @@
 	if (!IsValidVehicle(vehicle_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
 
-	auto [res, refit_capacity, refit_mail, cargo_capacities] = ::Command<CMD_REFIT_VEHICLE>::Do(DoCommandFlag::QueryCost, vehicle_id, cargo, 0, false, false, 0);
+	auto [res, refit_capacity, refit_mail, cargo_capacities] = ::Command<Commands::RefitVehicle>::Do(DoCommandFlag::QueryCost, vehicle_id, cargo, 0, false, false, 0);
 	return res.Succeeded() ? refit_capacity : -1;
 }
 
@@ -162,7 +162,7 @@
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, IsValidVehicle(vehicle_id) && ScriptCargo::IsValidCargo(cargo));
 
-	return ScriptObject::Command<CMD_REFIT_VEHICLE>::Do(vehicle_id, cargo, 0, false, false, 0);
+	return ScriptObject::Command<Commands::RefitVehicle>::Do(vehicle_id, cargo, 0, false, false, 0);
 }
 
 
@@ -172,7 +172,7 @@
 	EnforcePrecondition(false, IsValidVehicle(vehicle_id));
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
-	return ScriptObject::Command<CMD_SELL_VEHICLE>::Do(vehicle_id, v->type == VEH_TRAIN, false, INVALID_CLIENT_ID);
+	return ScriptObject::Command<Commands::SellVehicle>::Do(vehicle_id, v->type == VEH_TRAIN, false, INVALID_CLIENT_ID);
 }
 
 /* static */ bool ScriptVehicle::_SellWagonInternal(VehicleID vehicle_id, SQInteger wagon, bool sell_attached_wagons)
@@ -184,7 +184,7 @@
 	const Train *v = ::Train::Get(vehicle_id);
 	while (wagon-- > 0) v = v->GetNextUnit();
 
-	return ScriptObject::Command<CMD_SELL_VEHICLE>::Do(v->index, sell_attached_wagons, false, INVALID_CLIENT_ID);
+	return ScriptObject::Command<Commands::SellVehicle>::Do(v->index, sell_attached_wagons, false, INVALID_CLIENT_ID);
 }
 
 /* static */ bool ScriptVehicle::SellWagon(VehicleID vehicle_id, SQInteger wagon)
@@ -202,7 +202,7 @@
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, IsPrimaryVehicle(vehicle_id));
 
-	return ScriptObject::Command<CMD_SEND_VEHICLE_TO_DEPOT>::Do(vehicle_id, DepotCommandFlags{}, {});
+	return ScriptObject::Command<Commands::SendVehicleToDepot>::Do(vehicle_id, DepotCommandFlags{}, {});
 }
 
 /* static */ bool ScriptVehicle::SendVehicleToDepotForServicing(VehicleID vehicle_id)
@@ -210,7 +210,7 @@
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, IsPrimaryVehicle(vehicle_id));
 
-	return ScriptObject::Command<CMD_SEND_VEHICLE_TO_DEPOT>::Do(vehicle_id, DepotCommandFlag::Service, {});
+	return ScriptObject::Command<Commands::SendVehicleToDepot>::Do(vehicle_id, DepotCommandFlag::Service, {});
 }
 
 /* static */ bool ScriptVehicle::IsInDepot(VehicleID vehicle_id)
@@ -230,7 +230,7 @@
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, IsPrimaryVehicle(vehicle_id));
 
-	return ScriptObject::Command<CMD_START_STOP_VEHICLE>::Do(vehicle_id, false);
+	return ScriptObject::Command<Commands::StartStopVehicle>::Do(vehicle_id, false);
 }
 
 /* static */ bool ScriptVehicle::ReverseVehicle(VehicleID vehicle_id)
@@ -240,8 +240,8 @@
 	EnforcePrecondition(false, ::Vehicle::Get(vehicle_id)->type == VEH_ROAD || ::Vehicle::Get(vehicle_id)->type == VEH_TRAIN);
 
 	switch (::Vehicle::Get(vehicle_id)->type) {
-		case VEH_ROAD: return ScriptObject::Command<CMD_TURN_ROADVEH>::Do(vehicle_id);
-		case VEH_TRAIN: return ScriptObject::Command<CMD_REVERSE_TRAIN_DIRECTION>::Do(vehicle_id, false);
+		case VEH_ROAD: return ScriptObject::Command<Commands::TurnRoadVehicle>::Do(vehicle_id);
+		case VEH_TRAIN: return ScriptObject::Command<Commands::ReverseTrainDirection>::Do(vehicle_id, false);
 		default: NOT_REACHED();
 	}
 }
@@ -257,7 +257,7 @@
 	EnforcePreconditionEncodedText(false, text);
 	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_VEHICLE_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 
-	return ScriptObject::Command<CMD_RENAME_VEHICLE>::Do(vehicle_id, text);
+	return ScriptObject::Command<Commands::RenameVehicle>::Do(vehicle_id, text);
 }
 
 /* static */ TileIndex ScriptVehicle::GetLocation(VehicleID vehicle_id)

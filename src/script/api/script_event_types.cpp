@@ -107,13 +107,13 @@ bool ScriptEventEnginePreview::AcceptPreview()
 {
 	EnforceCompanyModeValid(false);
 	if (!this->IsEngineValid()) return false;
-	return ScriptObject::Command<CMD_WANT_ENGINE_PREVIEW>::Do(this->engine);
+	return ScriptObject::Command<Commands::WantEnginePreview>::Do(this->engine);
 }
 
 bool ScriptEventCompanyAskMerger::AcceptMerger()
 {
 	EnforceCompanyModeValid(false);
-	return ScriptObject::Command<CMD_BUY_COMPANY>::Do(ScriptCompany::FromScriptCompanyID(this->owner), false);
+	return ScriptObject::Command<Commands::BuyCompany>::Do(ScriptCompany::FromScriptCompanyID(this->owner), false);
 }
 
 ScriptEventAdminPort::ScriptEventAdminPort(const std::string &json) :

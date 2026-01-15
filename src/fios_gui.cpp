@@ -438,7 +438,7 @@ public:
 		/* pause is only used in single-player, non-editor mode, non-menu mode. It
 		 * will be unpaused in the WE_DESTROY event handler. */
 		if (_game_mode != GM_MENU && !_networking && _game_mode != GM_EDITOR) {
-			Command<CMD_PAUSE>::Post(PauseMode::SaveLoad, true);
+			Command<Commands::Pause>::Post(PauseMode::SaveLoad, true);
 		}
 		SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
 
@@ -481,7 +481,7 @@ public:
 	{
 		/* pause is only used in single-player, non-editor mode, non menu mode */
 		if (!_networking && _game_mode != GM_EDITOR && _game_mode != GM_MENU) {
-			Command<CMD_PAUSE>::Post(PauseMode::SaveLoad, false);
+			Command<Commands::Pause>::Post(PauseMode::SaveLoad, false);
 		}
 		this->Window::Close();
 	}

@@ -24,13 +24,13 @@ CommandCost CmdBuildBuoy(DoCommandFlags flags, TileIndex tile);
 CommandCost CmdRenameWaypoint(DoCommandFlags flags, StationID waypoint_id, const std::string &text);
 std::tuple<CommandCost, StationID> CmdMoveWaypointName(DoCommandFlags flags, StationID waypoint_id, TileIndex tile);
 
-DEF_CMD_TRAIT(CMD_BUILD_RAIL_WAYPOINT,       CmdBuildRailWaypoint,      {},        CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_REMOVE_FROM_RAIL_WAYPOINT, CmdRemoveFromRailWaypoint, {},        CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_BUILD_ROAD_WAYPOINT,       CmdBuildRoadWaypoint,      {},        CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_REMOVE_FROM_ROAD_WAYPOINT, CmdRemoveFromRoadWaypoint, {},        CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_BUILD_BUOY,                CmdBuildBuoy,              CommandFlag::Auto, CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_RENAME_WAYPOINT,           CmdRenameWaypoint,         {},        CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_MOVE_WAYPOINT_NAME,        CmdMoveWaypointName,       {},        CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::BuildRailWaypoint, CmdBuildRailWaypoint, {}, CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::RemoveFromRailWaypoint, CmdRemoveFromRailWaypoint, {}, CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::BuildRoadWaypoint, CmdBuildRoadWaypoint, {}, CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::RemoveFromRoadWaypoint, CmdRemoveFromRoadWaypoint, {}, CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::BuildBuoy, CmdBuildBuoy, CommandFlag::Auto, CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::RenameWaypoint, CmdRenameWaypoint, {}, CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::MoveWaypointNAme, CmdMoveWaypointName, {}, CommandType::OtherManagement)
 
 void CcMoveWaypointName(Commands cmd, const CommandCost &result, StationID waypoint_id);
 

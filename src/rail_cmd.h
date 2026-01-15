@@ -27,16 +27,16 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 CommandCost CmdBuildSignalTrack(DoCommandFlags flags, TileIndex tile, TileIndex end_tile, Track track, SignalType sigtype, SignalVariant sigvar, bool mode, bool autofill, bool minimise_gaps, uint8_t signal_density);
 CommandCost CmdRemoveSignalTrack(DoCommandFlags flags, TileIndex tile, TileIndex end_tile, Track track, bool autofill);
 
-DEF_CMD_TRAIT(CMD_BUILD_RAILROAD_TRACK,  CmdBuildRailroadTrack,  CommandFlags({CommandFlag::Auto, CommandFlag::NoWater}), CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_REMOVE_RAILROAD_TRACK, CmdRemoveRailroadTrack, CommandFlag::Auto,                CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_BUILD_SINGLE_RAIL,     CmdBuildSingleRail,     CommandFlags({CommandFlag::Auto, CommandFlag::NoWater}), CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_REMOVE_SINGLE_RAIL,    CmdRemoveSingleRail,    CommandFlag::Auto,                CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_BUILD_TRAIN_DEPOT,     CmdBuildTrainDepot,     CommandFlags({CommandFlag::Auto, CommandFlag::NoWater}), CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_BUILD_SINGLE_SIGNAL,   CmdBuildSingleSignal,   CommandFlag::Auto,                CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_REMOVE_SINGLE_SIGNAL,  CmdRemoveSingleSignal,  CommandFlag::Auto,                CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_CONVERT_RAIL,          CmdConvertRail,         {},                               CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_BUILD_SIGNAL_TRACK,    CmdBuildSignalTrack,    CommandFlag::Auto,                CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_REMOVE_SIGNAL_TRACK,   CmdRemoveSignalTrack,   CommandFlag::Auto,                CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::BuildRailLong, CmdBuildRailroadTrack, CommandFlags({CommandFlag::Auto, CommandFlag::NoWater}), CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::RemoveRailLong, CmdRemoveRailroadTrack, CommandFlag::Auto, CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::BuildRail, CmdBuildSingleRail, CommandFlags({CommandFlag::Auto, CommandFlag::NoWater}), CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::RemoveRail, CmdRemoveSingleRail, CommandFlag::Auto, CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::BuildRailDepot, CmdBuildTrainDepot, CommandFlags({CommandFlag::Auto, CommandFlag::NoWater}), CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::BuildSignal, CmdBuildSingleSignal, CommandFlag::Auto, CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::RemoveSignal, CmdRemoveSingleSignal, CommandFlag::Auto, CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::ConvertRail, CmdConvertRail, {}, CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::BuildSignalLong, CmdBuildSignalTrack, CommandFlag::Auto, CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::RemoveSignalLong, CmdRemoveSignalTrack, CommandFlag::Auto, CommandType::LandscapeConstruction)
 
 CommandCallback CcPlaySound_CONSTRUCTION_RAIL;
 CommandCallback CcStation;

@@ -576,7 +576,7 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 					switch (GetClearGround(current_tile)) {
 						case CLEAR_FIELDS:
 						case CLEAR_ROCKS: {
-							CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, current_tile);
+							CommandCost ret = Command<Commands::LandscapeClear>::Do(flags, current_tile);
 							if (ret.Failed()) return ret;
 							cost.AddCost(ret.GetCost());
 							break;
@@ -1021,7 +1021,7 @@ void InitializeTrees()
 
 static CommandCost TerraformTile_Trees(TileIndex tile, DoCommandFlags flags, int, Slope)
 {
-	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
+	return Command<Commands::LandscapeClear>::Do(flags, tile);
 }
 
 

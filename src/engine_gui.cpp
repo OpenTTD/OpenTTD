@@ -182,7 +182,7 @@ struct EnginePreviewWindow : Window {
 		switch (widget) {
 			case WID_EP_YES:
 				if (this->selected_index < this->engines.size()) {
-					Command<CMD_WANT_ENGINE_PREVIEW>::Post(this->engines[this->selected_index]);
+					Command<Commands::WantEnginePreview>::Post(this->engines[this->selected_index]);
 				}
 				[[fallthrough]];
 

@@ -27,11 +27,11 @@ CommandCost CmdBuildRoad(DoCommandFlags flags, TileIndex tile, RoadBits pieces, 
 CommandCost CmdBuildRoadDepot(DoCommandFlags flags, TileIndex tile, RoadType rt, DiagDirection dir);
 CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_start, RoadType to_type, bool diagonal);
 
-DEF_CMD_TRAIT(CMD_BUILD_LONG_ROAD,  CmdBuildLongRoad,  CommandFlags({CommandFlag::Auto, CommandFlag::NoWater, CommandFlag::Deity}), CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_REMOVE_LONG_ROAD, CmdRemoveLongRoad, CommandFlags({CommandFlag::Auto, CommandFlag::NoTest}),              CommandType::LandscapeConstruction) // towns may disallow removing road bits (as they are connected) in test, but in exec they're removed and thus removing is allowed.
-DEF_CMD_TRAIT(CMD_BUILD_ROAD,       CmdBuildRoad,      CommandFlags({CommandFlag::Auto, CommandFlag::NoWater, CommandFlag::Deity}), CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_BUILD_ROAD_DEPOT, CmdBuildRoadDepot, CommandFlags({CommandFlag::Auto, CommandFlag::NoWater}),             CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_CONVERT_ROAD,     CmdConvertRoad,    {},                                                                  CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::BuildRoadLong, CmdBuildLongRoad, CommandFlags({CommandFlag::Auto, CommandFlag::NoWater, CommandFlag::Deity}), CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::RemoveRoadLong, CmdRemoveLongRoad, CommandFlags({CommandFlag::Auto, CommandFlag::NoTest}), CommandType::LandscapeConstruction) // towns may disallow removing road bits (as they are connected) in test, but in exec they're removed and thus removing is allowed.
+DEF_CMD_TRAIT(Commands::BuildRoad, CmdBuildRoad, CommandFlags({CommandFlag::Auto, CommandFlag::NoWater, CommandFlag::Deity}), CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::BuildRoadDepot, CmdBuildRoadDepot, CommandFlags({CommandFlag::Auto, CommandFlag::NoWater}), CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::ConvertRoad, CmdConvertRoad, {}, CommandType::LandscapeConstruction)
 
 CommandCallback CcPlaySound_CONSTRUCTION_OTHER;
 CommandCallback CcBuildRoadTunnel;

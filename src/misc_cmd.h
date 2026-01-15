@@ -28,11 +28,11 @@ CommandCost CmdDecreaseLoan(DoCommandFlags flags, LoanCommand cmd, Money amount)
 CommandCost CmdSetCompanyMaxLoan(DoCommandFlags flags, CompanyID company, Money amount);
 CommandCost CmdPause(DoCommandFlags flags, PauseMode mode, bool pause);
 
-DEF_CMD_TRAIT(CMD_MONEY_CHEAT,          CmdMoneyCheat,        CommandFlags({CommandFlag::Offline, CommandFlag::NoEst}), CommandType::Cheat)
-DEF_CMD_TRAIT(CMD_CHANGE_BANK_BALANCE,  CmdChangeBankBalance, CommandFlag::Deity,               CommandType::MoneyManagement)
-DEF_CMD_TRAIT(CMD_INCREASE_LOAN,        CmdIncreaseLoan,      {},                       CommandType::MoneyManagement)
-DEF_CMD_TRAIT(CMD_DECREASE_LOAN,        CmdDecreaseLoan,      {},                       CommandType::MoneyManagement)
-DEF_CMD_TRAIT(CMD_SET_COMPANY_MAX_LOAN, CmdSetCompanyMaxLoan, CommandFlag::Deity,               CommandType::MoneyManagement)
-DEF_CMD_TRAIT(CMD_PAUSE,                CmdPause,             CommandFlags({CommandFlag::Server, CommandFlag::NoEst}), CommandType::ServerSetting)
+DEF_CMD_TRAIT(Commands::MoneyCheat, CmdMoneyCheat, CommandFlags({CommandFlag::Offline, CommandFlag::NoEst}), CommandType::Cheat)
+DEF_CMD_TRAIT(Commands::ChangeBankBalance, CmdChangeBankBalance, CommandFlag::Deity, CommandType::MoneyManagement)
+DEF_CMD_TRAIT(Commands::IncreaseLoan, CmdIncreaseLoan, {}, CommandType::MoneyManagement)
+DEF_CMD_TRAIT(Commands::DecreaseLoan, CmdDecreaseLoan, {}, CommandType::MoneyManagement)
+DEF_CMD_TRAIT(Commands::SetCompanyMaxLoan, CmdSetCompanyMaxLoan, CommandFlag::Deity, CommandType::MoneyManagement)
+DEF_CMD_TRAIT(Commands::Pause, CmdPause, CommandFlags({CommandFlag::Server, CommandFlag::NoEst}), CommandType::ServerSetting)
 
 #endif /* MISC_CMD_H */

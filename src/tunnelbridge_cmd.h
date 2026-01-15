@@ -17,8 +17,8 @@
 CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex tile_start, TransportType transport_type, BridgeType bridge_type, uint8_t road_rail_type);
 CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, TransportType transport_type, uint8_t road_rail_type);
 
-DEF_CMD_TRAIT(CMD_BUILD_BRIDGE, CmdBuildBridge, CommandFlags({CommandFlag::Deity, CommandFlag::Auto, CommandFlag::NoWater}), CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_BUILD_TUNNEL, CmdBuildTunnel, CommandFlags({CommandFlag::Deity, CommandFlag::Auto}),                       CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::BuildBridge, CmdBuildBridge, CommandFlags({CommandFlag::Deity, CommandFlag::Auto, CommandFlag::NoWater}), CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::BuildTunnel, CmdBuildTunnel, CommandFlags({CommandFlag::Deity, CommandFlag::Auto}),                       CommandType::LandscapeConstruction)
 
 void CcBuildBridge(Commands cmd, const CommandCost &result, TileIndex end_tile, TileIndex tile_start, TransportType transport_type, BridgeType, uint8_t);
 

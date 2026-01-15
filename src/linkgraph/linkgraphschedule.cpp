@@ -171,7 +171,7 @@ void StateGameLoop_LinkGraphPauseControl()
 	if (_pause_mode.Test(PauseMode::LinkGraph)) {
 		/* We are paused waiting on a job, check the job every tick. */
 		if (!LinkGraphSchedule::instance.IsJoinWithUnfinishedJobDue()) {
-			Command<CMD_PAUSE>::Post(PauseMode::LinkGraph, false);
+			Command<Commands::Pause>::Post(PauseMode::LinkGraph, false);
 		}
 	} else if (_pause_mode.None() &&
 			TimerGameEconomy::date_fract == LinkGraphSchedule::SPAWN_JOIN_TICK - 2 &&
@@ -179,7 +179,7 @@ void StateGameLoop_LinkGraphPauseControl()
 			LinkGraphSchedule::instance.IsJoinWithUnfinishedJobDue()) {
 		/* Perform check two TimerGameEconomy::date_fract ticks before we would join, to make
 		 * sure it also works in multiplayer. */
-		Command<CMD_PAUSE>::Post(PauseMode::LinkGraph, true);
+		Command<Commands::Pause>::Post(PauseMode::LinkGraph, true);
 	}
 }
 

@@ -34,14 +34,14 @@ CommandCost CmdRemoveAllVehiclesGroup(DoCommandFlags flags, GroupID group_id);
 CommandCost CmdSetGroupFlag(DoCommandFlags flags, GroupID group_id, GroupFlag flag, bool value, bool recursive);
 CommandCost CmdSetGroupLivery(DoCommandFlags flags, GroupID group_id, bool primary, Colours colour);
 
-DEF_CMD_TRAIT(CMD_CREATE_GROUP,              CmdCreateGroup,            {}, CommandType::RouteManagement)
-DEF_CMD_TRAIT(CMD_DELETE_GROUP,              CmdDeleteGroup,            {}, CommandType::RouteManagement)
-DEF_CMD_TRAIT(CMD_ALTER_GROUP,               CmdAlterGroup,             {}, CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_ADD_VEHICLE_GROUP,         CmdAddVehicleGroup,        {}, CommandType::RouteManagement)
-DEF_CMD_TRAIT(CMD_ADD_SHARED_VEHICLE_GROUP,  CmdAddSharedVehicleGroup,  {}, CommandType::RouteManagement)
-DEF_CMD_TRAIT(CMD_REMOVE_ALL_VEHICLES_GROUP, CmdRemoveAllVehiclesGroup, {}, CommandType::RouteManagement)
-DEF_CMD_TRAIT(CMD_SET_GROUP_FLAG,            CmdSetGroupFlag,           {}, CommandType::RouteManagement)
-DEF_CMD_TRAIT(CMD_SET_GROUP_LIVERY,          CmdSetGroupLivery,         {}, CommandType::RouteManagement)
+DEF_CMD_TRAIT(Commands::CreateGroup, CmdCreateGroup, {}, CommandType::RouteManagement)
+DEF_CMD_TRAIT(Commands::DeleteGroup, CmdDeleteGroup, {}, CommandType::RouteManagement)
+DEF_CMD_TRAIT(Commands::AlterGroup, CmdAlterGroup, {}, CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::AddVehicleToGroup, CmdAddVehicleGroup, {}, CommandType::RouteManagement)
+DEF_CMD_TRAIT(Commands::AddSharedVehiclesToGroup, CmdAddSharedVehicleGroup, {}, CommandType::RouteManagement)
+DEF_CMD_TRAIT(Commands::RemoveAllVehiclesGroup, CmdRemoveAllVehiclesGroup, {}, CommandType::RouteManagement)
+DEF_CMD_TRAIT(Commands::SetGroupFlag, CmdSetGroupFlag, {}, CommandType::RouteManagement)
+DEF_CMD_TRAIT(Commands::SetGroupLivery, CmdSetGroupLivery, {}, CommandType::RouteManagement)
 
 void CcCreateGroup(Commands cmd, const CommandCost &result, GroupID new_group, VehicleType vt, GroupID parent_group);
 void CcAddVehicleNewGroup(Commands cmd, const CommandCost &result, GroupID new_group, GroupID, VehicleID veh_id, bool, const VehicleListIdentifier &);

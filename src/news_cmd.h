@@ -16,6 +16,6 @@
 
 CommandCost CmdCustomNewsItem(DoCommandFlags flags, NewsType type, CompanyID company, NewsReference reference, const EncodedString &text);
 
-DEF_CMD_TRAIT(CMD_CUSTOM_NEWS_ITEM, CmdCustomNewsItem, CommandFlags({CommandFlag::StrCtrl, CommandFlag::Deity}), CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::CreateCustomNewsItem, CmdCustomNewsItem, CommandFlags({CommandFlag::StrCtrl, CommandFlag::Deity}), CommandType::OtherManagement)
 
 #endif /* NEWS_CMD_H */

@@ -242,7 +242,7 @@ CommandCost CmdBulkChangeTimetable(DoCommandFlags flags, VehicleID veh, ModifyTi
 			Order *order = v->GetOrder(order_number);
 			if (order == nullptr || order->IsType(OT_IMPLICIT)) continue;
 
-			Command<CMD_CHANGE_TIMETABLE>::Do(DoCommandFlag::Execute, v->index, order_number, mtf, data);
+			Command<Commands::ChangeTimetable>::Do(DoCommandFlag::Execute, v->index, order_number, mtf, data);
 		}
 	}
 
