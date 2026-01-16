@@ -410,7 +410,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Hangaia 
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Hangaia he tūāhanga arawai
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Hangaia he taunga rererangi
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Huakina te tahua hanga whenua, te tahua rākau rānei, makaia he tohu rānei
-STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Huakina te matapihi oro/pūoro
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Huakina te matapihi oro/puoro
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Huakina te karere/pūrongo kua hipa, te hītori karere rānei, mukua rānei ngā karere katoa
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Huakina te pārongo whenua, te tahua kapomata, ngā mihi a OpenTTD, ngā taputapu rānei mā ngā kaihanga pūmanawa
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Whitiwhitia ngā paeutauta
@@ -721,7 +721,7 @@ STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
-STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Kāore he pūoro e wātea nei
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Kāore he puoro e wātea nei
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Waiata
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Taitara
@@ -729,12 +729,12 @@ STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLA
 STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Hōtaka
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Peke ki te waiata kua hipa i tēnei tīpako
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Peke ki te waiata e whai ake nei i tēnei tīpako
-STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Kāti te pūoro
-STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Pureitia te pūoro
-STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Tōia ngā tāneke kia tautuhi te kaha mō te pūoro me ngā orotaunaki
+STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Kāti te puoro
+STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Pureitia te puoro
+STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Tōia ngā tāneke kia tautuhi te kaha mō te puoro me ngā orotaunaki
 STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Kōwhiria te hōtaka o "waiata katoa"
-STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Kōwhiria te hōtaka o "pūoro tāera tawhito"
-STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Kōwhiria te hōtaka o "pūoro tāera hou"
+STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Kōwhiria te hōtaka o "puoro tāera tawhito"
+STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Kōwhiria te hōtaka o "puoro tāera hou"
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Kōwhiria te hōtaka o "Tiritimāmā"
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Kōwhiria te hōtaka o "Whaiaro 1" (tautuhitia e te kaiwhakamahi)
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Kōwhiria te hōtaka o "Whaiaro 2" (tautuhitia e te kaiwhakamahi)
@@ -749,7 +749,7 @@ STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLA
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Ūkui
 STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Panoni rārangi
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Ūkuia te hōtaka onāianei (ko Whaiaro 1, ko Whaiaro 2 rānei anake)
-STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Panonitia te tīpakonga pūoro ki tētahi atu rārangi kua tāutangia
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Panonitia te tīpakonga puoro ki tētahi atu rārangi kua tāutangia
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Pāwhiria he waiata kia tāpiria ki te hōtaka onāianei (ko Whaiaro 1, ko Whaiaro 2 rānei anake)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Pāwhiria he waiata kia tangohia mai i te hōtaka onāianei (ko Whaiaro 1, ko Whaiaro 2 rānei anake)
 
@@ -873,10 +873,10 @@ STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLAC
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Tuki Waka Rererangi!{}I pau te kora, ka mate te {COMMA} tāngata i roto i te pahūtanga
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Maikiroa waka pūangi i {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Ka whakangaromia he waka rori i te tūtakitanga ki tētahi "kaipuke tuarangi"!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Ka whakangaromia he waka rori i te tūtakitanga ki tētahi "kaipuke ātea"!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Pahūtanga i te whare whakapai hinu e tata ana ki {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Ka whakangaromia he wheketere i tētahi pūāhua whanokē pea e tata ana ki {TOWN}!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}Ka tau he "kaipuke tuarangi" e tata ana ki {TOWN}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}Ka tau he "kaipuke ātea" e tata ana ki {TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Ka hangaia he rārangi whakangaromanga e te tāpokopoko i tētahi maina waro e tata ana ki {TOWN}!
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Waipuke!{}Neke atu i te {COMMA} tāngata kua ngaro, kua mate pea i muri i te waipuke taikaha!
 
@@ -1002,8 +1002,8 @@ STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRI
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pāuna Piritana
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Tāra Amerikana
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Ūro
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Ene Hapani
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Herengi o Ateria
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Ene Hapanihi
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Herengi Ateriana
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Wharangi o Peretiama
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Wharangi o Huiterangi
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :Koruna o Tiekia
@@ -1019,29 +1019,29 @@ STR_GAME_OPTIONS_CURRENCY_ITL                                   :Rīra Itāriana
 STR_GAME_OPTIONS_CURRENCY_NLG                                   :Kereta o Hōrana
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Korōna o Nōwei
 STR_GAME_OPTIONS_CURRENCY_PLN                                   :Tuoti o Pōrana
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Reu o Romēnia
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rūpuru o Rūhia
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tāra o Horowinia
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Reu Romēniana
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rūpuru Rūhiana
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tāra Horowīniana
 STR_GAME_OPTIONS_CURRENCY_SEK                                   :Korōna o Huītene
 STR_GAME_OPTIONS_CURRENCY_TRY                                   :Rīra o Tākei
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :Koruna o Horowākia
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Koruna Horowākiana
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Reāra o Parīhi
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Korōni o Etōnia
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Rita o Rituānia
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Korōni Etōniana
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Rita Rituāniana
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Wana o Kōrea ki te Tonga
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rana o Āwherika ki te Tonga
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Tautuhi...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Rare o Hōria
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Rare Hōriana
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Reāra o Irāna
-STR_GAME_OPTIONS_CURRENCY_RUB                                   :Rūpuru Hou o Rūhia
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Rūpuru Rūhiana Hou
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peho Mehikana
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Tāra Hou o Taiwana
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Remimi o Haina
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Tāra o Hongipua
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupī o Īnia
-STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia o Initonīhia
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia Initonīhiana
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringi o Marēhia
-STR_GAME_OPTIONS_CURRENCY_LVL                                   :Rati o Rāwhia
+STR_GAME_OPTIONS_CURRENCY_LVL                                   :Rati Rāwhiana
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Ekutu Pōtukihi
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Hirinia o Ukareinga
 STR_GAME_OPTIONS_CURRENCY_VND                                   :Tongi o Whitināma
@@ -1066,7 +1066,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Mākatia tēnei
 
 STR_GAME_OPTIONS_RESOLUTION                                     :Ariari mata
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Kōwhiria te ariari mata hei whakamahi
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :kē
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :kē atu
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Whakahohoro ā-pūmārō
@@ -1082,7 +1082,7 @@ STR_GAME_OPTIONS_INTERFACE                                      :Tāhono
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Rahi o te tāhono
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Tōia te tāneke kia tautuhi i te rahi o te tāhono. Pātaki+Tō kia motukore te whakarite
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Kite aunoatia te rahi
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Rapu aunoatia te rahi
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Mākatia tēnei pouaka kia kite aunoatia te rahi o te tāhono
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Hurirahitia ngā hema
@@ -1115,12 +1115,12 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Kōwhiria te ko
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Pārongo tāpiri mō te kohinga whakairoiro mātāmua
 
 STR_GAME_OPTIONS_BASE_SFX                                       :Kohinga oro mātāmua
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Kōwhiria te kohinga oro mātāmua hei whakamahi (tē taea te panoni i roto i te kēmu, ka taea i te tahua matua anake)
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Kōwhiria te kohinga oro mātāmua hei whakamahi
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Pārongo tāpiri mō te kohinga oro mātāmua
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :Kohinga pūoro mātāmua
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Kōwhiria te kohinga pūoro mātāmua
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Pārongo tāpiri mō te kohinga pūoro mātāmua
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Kohinga puoro mātāmua
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Kōwhiria te kohinga puoro mātāmua
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Pārongo tāpiri mō te kohinga puoro mātāmua
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Tīkina ētahi atu huānga
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Rapua he huānga hou hei tikiake
@@ -2068,7 +2068,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Ata tino arinui hei whakamahi: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Whakatinaia te ariari mōrahi hei whakamahi mō ngā ata. Ka karoa te whakamahi i te whakairoiro arinui ina wātea hoki. Ka āwhina tēnei kia kotahi te āhua o te kēmu ina whakamahia he ranunga o ngā kōnae GRF, he arinui, he ariiti hoki
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Whakatinaia te ariari mōrahi hei whakamahi mō ngā ata. Ka karoa te whakamahi i te whakairoiro arinui ina wātea hoki. Ka āwhina tēnei kia kotahi te āhua o te kēmu ina whakamahia he ranunga o ngā kōnae newGRF, he arinui, he ariiti hoki
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2204,7 +2204,7 @@ STR_CONFIG_ERROR                                                :{WHITE}Hapa i t
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... he hapa i te tūtohi tukutuku, "{STRING}"
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... he uara muhu, "{STRING}", mō te "{STRING}"
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... he pūtohu i muri i te tautuhinga "{STRING}"
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... kei te waiho i te newGRF "{STRING}": he GRF ID taurua he ōrite ki te "{STRING}"
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... kei te waiho i te newGRF "{STRING}": he newGRF ID taurua he ōrite ki te "{STRING}"
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... kei te waiho i te newGRF muhu "{STRING}": {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :kāore i kitea
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :ehara i te haumaru hei whakamahi tū
@@ -3410,14 +3410,14 @@ STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Huītene
 STR_MAPGEN_TOWN_NAME_DUTCH                                      :Tatimana
 STR_MAPGEN_TOWN_NAME_FINNISH                                    :Whinirana
 STR_MAPGEN_TOWN_NAME_POLISH                                     :Pōrana
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Horowākia
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Horowākiana
 STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Nōwei
 STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hanekari
 STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Ateria
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Romēnia
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Romēniana
 STR_MAPGEN_TOWN_NAME_CZECH                                      :Tiekia
 STR_MAPGEN_TOWN_NAME_SWISS                                      :Huiterangi
-STR_MAPGEN_TOWN_NAME_DANISH                                     :Tenemāka
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Teina
 STR_MAPGEN_TOWN_NAME_TURKISH                                    :Tākei
 STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Itāriana
 STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katarana
@@ -3620,7 +3620,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Tawhā muhu mō
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :Me utaina a {1:STRING} i mua i {2:STRING}
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :Me utaina a {1:STRING} i muri i {2:STRING}
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :Ka hiahia a {1:STRING} ki te whakaputanga {2:STRING}, neke atu rānei, o OpenTTD
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :te kōnae GRF i hoahoaina kia whakamāori
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :te kōnae newGRF i hoahoaina kia whakamāori
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :He maha rawa ngā newGRFs kua utaina
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Ka taea te ngaro te tukutahi i te uta i {1:STRING} hei newGRF tū ki {2:STRING}
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Ata ohorere (ata {3:NUM})
@@ -3629,7 +3629,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Tarai ki te wha
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}He ata hāmate tō {STRING}. Ka whakaaria ngā ata hāmate katoa hei tohu pātai whero (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :He maha ngā tāurunga Mahi 8 (ata {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :I pānui ki muri ki te mutunga o tētahi ata tipatipa (ata {3:NUM})
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Kāore i te wātea ngā rauemi GRF kua tonoa (ata {3:NUM})
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Kāore i te wātea ngā rauemi newGRF kua tonoa (ata {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :I whakakorea a {1:STRING} e {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Hōputu takotoranga ata muhu/kāore i te mōhiotia (ata {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :He maha rawa ngā huānga i roto i te rārangi uara āhuatanga (ata {3:NUM}, āhuatanga {4:HEX})
@@ -3639,13 +3639,13 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Karangamua whak
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Kia tūpato!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Ka mahia e koe he panoni i tētahi kēmu e hāere ana. Ka taea te hinga e OpenTTD, te pakaru rānei te teihana kēmu. Kaua e tuku pūrongo iro mō aua raru.{}Kei te tino hiahia rānei koe ki tēnei?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Tē taea te tāpiri te kōnae: He taurua te GRF ID
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Kāore te kōnae taurite i kitea (kua utaina te GRF hototahi)
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Tē taea te tāpiri te kōnae: He taurua te newGRF ID
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Kāore te kōnae taurite i kitea (kua utaina te newGRF hototahi)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Tē taea te tāpiri te kōnae: Kua taea te tepe kōnae newGRF
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kua utainga he GRF hototahi mō ētahi kōnae ngaro
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Kua āraia he kōnae GRF ngaro
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Kōnae GRF ngaro
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kua utainga he newGRF hototahi mō ētahi kōnae ngaro
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Kua āraia he kōnae newGRF ngaro
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Kōnae newGRF ngaro
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Ka taea te hinga e OpenTTD i te purei. Kaua e tuku pūrongo iro mō ngā hinga e whai ake nei.{}Kei te tino hiahia rānei koe kia purei?
 
 # NewGRF status
@@ -5474,7 +5474,7 @@ STR_BASESOUNDS_NONE_DESCRIPTION                                 :He takai oro ki
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Pūoro taketake o Transport Tycoon Deluxe Windows edition.
 STR_BASEMUSIC_DOS_DESCRIPTION                                   :Pūoro taketake o Transport Tycoon Deluxe DOS edition.
 STR_BASEMUSIC_TTO_DESCRIPTION                                   :Pūoro taketake o Transport Tycoon (Original/World Editor) DOS edition.
-STR_BASEMUSIC_NONE_DESCRIPTION                                  :He takai pūoro ki te kore pūoro tūturu.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :He takai puoro ki te kore puoro tūturu.
 
 ##id 0x2000
 # Town building names

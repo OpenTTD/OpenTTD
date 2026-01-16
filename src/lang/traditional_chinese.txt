@@ -1110,17 +1110,17 @@ STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :選擇畫面更
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}高於60Hz的畫面更新率可能會影響遊戲性能
 
-STR_GAME_OPTIONS_BASE_GRF                                       :基本圖形集
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :選擇要使用的基本圖形集（無法在遊戲中更改，只能從主選單中更改）
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :關於基本圖形集的額外資訊
+STR_GAME_OPTIONS_BASE_GRF                                       :基礎圖形集
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :選擇使用的基礎圖形集（無法在遊戲中更改，只能從主選單中更改）
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :關於基礎圖形集的額外資訊
 
-STR_GAME_OPTIONS_BASE_SFX                                       :基本音效集
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :選擇要使用的基本音效集（無法在遊戲中更改，只能從主選單中更改）
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :關於基本音效集的額外資訊
+STR_GAME_OPTIONS_BASE_SFX                                       :基礎音效集
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :選擇使用的基礎音效集
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :關於基礎音效集的額外資訊
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :基本音樂集
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :選擇要使用的基本音樂集
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :關於基本音樂集的額外資訊
+STR_GAME_OPTIONS_BASE_MUSIC                                     :基礎音樂集
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :選擇使用的基礎音樂集
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :關於基礎音樂集的額外資訊
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :取得內容
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :檢查及下載最新內容
@@ -1593,7 +1593,7 @@ STR_CONFIG_SETTING_LANDSCAPE                                    :場景：{STRIN
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :此設定決定基本的遊戲場景、可供運輸的貨物種類，以及市鎮發展的條件。然而，NewGRF 及遊戲腳本可提供更加細緻的設定
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :地形產生器：{STRING}
-STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :「原版」地圖產生器根據所使用的基本圖形集來產生固定的地形。TerraGenesis 則是一個建基於 Perlin 噪音原理的地形產生程序，支援較為細緻的地形設定。
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :「原版」地圖產生器根據所使用的基礎圖形集來產生固定的地形。TerraGenesis 則是一個基於柏林雜訊原理的地形產生程序，支援較為細緻的地形設定
 ###length 2
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :原版
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
@@ -2068,7 +2068,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :貼圖的最高解析度：{STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :設定貼圖的最高解析度。即使有更高解析度的貼圖可用，系統仍會避免使用這些貼圖。這將有助於混用高低解析度貼圖的 GRF 檔案時，保持遊戲畫面的一致性
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :設定貼圖的最高解析度。即使有更高解析度的貼圖可用，系統仍會避免使用這些貼圖。這將有助於混用高低解析度貼圖的 NewGRF 檔案時，保持遊戲畫面的一致性
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2204,8 +2204,8 @@ STR_CONFIG_ERROR                                                :{WHITE}讀取�
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... 處理陣列 '{STRING}' 時出錯
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}……「 {STRING} 」不是「 {STRING} 」的有效值
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... 在設定 '{STRING}' 的末尾有殘餘字句
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}……正在忽略 NewGRF 套件「 {STRING} 」：此套件的 GRF 識別碼與「 {STRING} 」的 GRF 識別碼相同
-STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}……正在忽略無效的 NewGRF 套件「 {STRING} 」：{STRING}
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}……正忽略 NewGRF「{STRING}」：重複的 NewGRF ID「{STRING}」
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}……正忽略無效的 NewGRF「{STRING}」：{STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :找不到
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :此套件被標記為「不安全」，不能載入為靜態 NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :系統 NewGRF
@@ -2213,9 +2213,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :與此版本的
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :不明
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... 無效的壓縮層級值 '{STRING}'
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... 本版本不支援存檔格式 '{STRING}'，現改用 '{STRING}' 格式
-STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}……正在忽略「 {STRING} 」基本圖形集：找不到檔案
-STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}……正在忽略「 {STRING} 」基本音效集：找不到檔案
-STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}……正在忽略「 {STRING} 」基本音樂集：找不到檔案
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}……正忽略基礎圖形集「{STRING}」：找不到檔案
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}……正忽略基礎音效集「{STRING}」：找不到檔案
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}……正忽略基礎音樂集「{STRING}」：找不到檔案
 
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}圖像設定錯誤...
@@ -2257,7 +2257,7 @@ STR_INTRO_TOOLTIP_HELP                                          :{BLACK}取得�
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}檢查有無最新或可更新的內容可下載
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}離開「OpenTTD」
 
-STR_INTRO_BASESET                                               :{BLACK}目前所選的基本圖形集缺少了 {NUM} 張貼圖。請確認基本圖形集是否有更新。
+STR_INTRO_BASESET                                               :{BLACK}目前所選的基礎圖形集缺少了 {NUM} 張貼圖。請確認基礎圖形集是否有更新。
 STR_INTRO_TRANSLATION                                           :{BLACK}繁體中文翻譯欠缺了 {NUM} 行字串。請申請成為 OpenTTD 的翻譯員以讓本遊戲更完善。詳情請參閱 readme.txt。
 
 # Quit window
@@ -2711,14 +2711,14 @@ STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD 
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... 不支援內容下載功能！
 
 # Order of these is important!
-STR_CONTENT_TYPE_BASE_GRAPHICS                                  :基本圖形
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :基礎圖形
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :AI 函式庫
 STR_CONTENT_TYPE_SCENARIO                                       :場景
 STR_CONTENT_TYPE_HEIGHTMAP                                      :高度圖
-STR_CONTENT_TYPE_BASE_SOUNDS                                    :基本音效
-STR_CONTENT_TYPE_BASE_MUSIC                                     :基本音樂
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :基礎音效
+STR_CONTENT_TYPE_BASE_MUSIC                                     :基礎音樂
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :遊戲腳本
 STR_CONTENT_TYPE_GS_LIBRARY                                     :GS 函式庫
 
@@ -3557,7 +3557,7 @@ STR_SAVE_PRESET_SAVE                                            :{BLACK}存檔
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}儲存預設值到選擇的名稱
 
 # NewGRF parameters window
-STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}變更基本圖形集參數
+STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}變更基礎圖形集參數
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}變更 NewGRF 參數
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}重設
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}將所有參數設為預設值
@@ -3620,7 +3620,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{1:STRING} 的�
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} 必須於 {2:STRING} 之前載入。
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} 必須於 {2:STRING} 之後載入。
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} 需要 OpenTTD 版本 {2:STRING} 或更新的版本
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 檔案翻譯後出現錯誤
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :NewGRF 檔案翻譯後出現錯誤
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :已載入太多 NewGRF
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :在已載入 {2:STRING} 的情況下將 {1:STRING} 載入為靜態 NewGRF，可能會造成同步失敗
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :第 {3:NUM} 個子畫面與預期的畫面不符
@@ -3629,7 +3629,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :子畫面企圖
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} 包含了毀損的 sprite。所有毀損的 sprite 會以紅色問號 (？) 顯示。
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :過多的 Action 8 資料 (發生於第 {3:NUM} 個子畫面)
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :子畫面資料不足 (發生於第 {3:NUM} 個子畫面)
-STR_NEWGRF_ERROR_GRM_FAILED                                     :要求的 GRF 資料不存在或無法讀取 (發生於第 {3:NUM} 個子畫面)
+STR_NEWGRF_ERROR_GRM_FAILED                                     :要求的 NewGRF 資料不存在或無法讀取（貼圖 {3:NUM}）
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} 使 {1:STRING} 被停用
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :無效或無法識別的子畫面配置格式 (發生於第 {3:NUM} 個子畫面)
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :參數列表中有過多元素 (貼圖 {3:NUM}, 屬性{4:HEX})
@@ -3639,13 +3639,13 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :無效的產品
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}注意！
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}您將會修改進行中的遊戲；這可能會導致 OpenTTD 當掉或破壞遊戲資料，修改後遇到錯誤時請不要回報。{}您真的確定要這麼做嗎？
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}無法新增檔案：GRF ID 重複
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}找不到符合的檔案 (已載入相容的 GRF)
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}無法新增檔案：NewGRF ID 重複
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}找不到符合的檔案（已載入相容的 NewGRF）
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}無法加入檔案：已達到 NewGRF 檔案數量上限
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}已為找不到的檔案載入相容的 GRF
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}找不到的 GRF 檔案已被停用
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}缺少某些 GRF 檔案
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}已為缺少的檔案載入相容的 NewGRF
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}已停用缺少的 NewGRF 檔案
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}缺少某些 NewGRF 檔案
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}取消暫停可能會讓 OpenTTD 當掉，請不要回報之後的當機情形。{}您真的要取消暫停嗎？
 
 # NewGRF status
@@ -5104,11 +5104,11 @@ STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}……�
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... 應先建造市鎮
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... 每個市鎮僅允許一個
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... 只能在市鎮人口超過 1200 人的地方建造
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... 只能建在雨林區
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... 只能建在沙漠區
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}……只能在雨林地帶建設
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}……只能在沙漠地帶建設
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... 只能建在市鎮內 (取代房屋)
 STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... 只能在城市中心附近興建
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... 只能建在低地
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}……只能在平原地帶建設
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... 只能位於地圖邊緣
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... 森林只能種在雪線以上
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... 只能在雪線以上建造
