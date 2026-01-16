@@ -1802,6 +1802,19 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(SaveLoadVersion::PerLandscapeTrees)) {
+		/* Tree types are now unique per landscape type. Move existing trees down into range. */
+		static constexpr uint8_t tree_offsets[] = {0, 12, 20, 32};
+		static constexpr uint8_t tree_counts[] = {12, 8, 12, 9};
+		uint offset = tree_offsets[to_underlying(_settings_game.game_creation.landscape)];
+		uint count = tree_counts[to_underlying(_settings_game.game_creation.landscape)];
+
+		for (auto t : Map::Iterate()) {
+			if (GetTileType(t) == TileType::Trees) {
+				t.m3() = Clamp(GetTreeType(t) - offset, 0, count);
+			}
+		}
+	}
 
 	if (IsSavegameVersionBefore(SaveLoadVersion::ImprovedOrders)) {
 		/* Rework of orders. */
