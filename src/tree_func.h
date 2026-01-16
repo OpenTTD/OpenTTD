@@ -5,15 +5,22 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file tree_cmd.h Command definitions related to tree tiles. */
+/** @file tree_func.h Function definitions related to tree tiles. */
 
-#ifndef TREE_CMD_H
-#define TREE_CMD_H
+#ifndef TREE_FUNC_H
+#define TREE_FUNC_H
 
-#include "command_type.h"
+#include "gfx_type.h"
+#include "tree_map.h"
 
-CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_tile, uint8_t tree_to_plant, bool diagonal);
+void ResetTrees();
+void FinaliseTrees();
 
-DEF_CMD_TRAIT(Commands::PlantTree, CmdPlantTree, CommandFlag::Auto, CommandType::LandscapeConstruction)
+std::span<const TreeType> GetTreeTypes();
+PalSpriteID GetTreeSprite(TreeType treetype);
 
-#endif /* TREE_CMD_H */
+void PlaceTree(TileIndex tile, uint32_t r, bool keep_density = false);
+void PlaceTreesRandomly();
+uint PlaceTreeGroupAroundTile(TileIndex tile, TreeType treetype, uint radius, uint count, bool set_zone);
+
+#endif /* TREE_FUNC_H */

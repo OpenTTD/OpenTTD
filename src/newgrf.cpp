@@ -41,6 +41,7 @@
 #include "error_func.h"
 #include "vehicle_base.h"
 #include "road.h"
+#include "tree_func.h"
 #include "newgrf_roadstop.h"
 #include "newgrf/newgrf_bytereader.h"
 #include "newgrf/newgrf_internal_vehicle.h"
@@ -456,6 +457,9 @@ void ResetNewGRFData()
 
 	/* Reset the industries structures*/
 	ResetIndustries();
+
+	/* Reset trees */
+	ResetTrees();
 
 	/* Reset the objects. */
 	ObjectClass::Reset();
@@ -1663,6 +1667,8 @@ static void AfterLoadGRFs()
 
 	/* Add all new objects to the object array. */
 	FinaliseObjectsArray();
+
+	FinaliseTrees();
 
 	InitializeSortedCargoSpecs();
 
