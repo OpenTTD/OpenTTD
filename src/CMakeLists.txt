@@ -547,7 +547,9 @@ add_files(
     transport_type.h
     tree_cmd.cpp
     tree_cmd.h
+    tree_func.h
     tree_gui.cpp
+    tree_type.h
     tree_map.h
     tunnel_map.cpp
     tunnel_map.h

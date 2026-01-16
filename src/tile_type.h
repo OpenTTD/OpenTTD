@@ -11,6 +11,7 @@
 #define TILE_TYPE_H
 
 #include "core/strong_typedef_type.hpp"
+#include "core/enum_type.hpp"
 
 static constexpr uint TILE_SIZE           = 16;                    ///< Tile size in world coordinates.
 static constexpr uint TILE_UNIT_MASK      = TILE_SIZE - 1;         ///< For masking in/out the inner-tile world coordinate units.
@@ -82,7 +83,10 @@ enum class TropicZone : uint8_t {
 	Normal = 0, ///< Normal tropiczone
 	Desert = 1, ///< Tile is desert
 	Rainforest = 2, ///< Rainforest tile
+	End, ///< End marker.
 };
+
+using TropicZones = EnumBitSet<TropicZone, uint8_t>;
 
 /**
  * The index/ID of a Tile.
