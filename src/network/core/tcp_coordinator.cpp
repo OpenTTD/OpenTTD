@@ -25,23 +25,23 @@ bool NetworkCoordinatorSocketHandler::HandlePacket(Packet &p)
 	PacketCoordinatorType type = static_cast<PacketCoordinatorType>(p.Recv_uint8());
 
 	switch (type) {
-		case PACKET_COORDINATOR_GC_ERROR:              return this->Receive_GC_ERROR(p);
-		case PACKET_COORDINATOR_SERVER_REGISTER:       return this->Receive_SERVER_REGISTER(p);
-		case PACKET_COORDINATOR_GC_REGISTER_ACK:       return this->Receive_GC_REGISTER_ACK(p);
-		case PACKET_COORDINATOR_SERVER_UPDATE:         return this->Receive_SERVER_UPDATE(p);
-		case PACKET_COORDINATOR_CLIENT_LISTING:        return this->Receive_CLIENT_LISTING(p);
-		case PACKET_COORDINATOR_GC_LISTING:            return this->Receive_GC_LISTING(p);
-		case PACKET_COORDINATOR_CLIENT_CONNECT:        return this->Receive_CLIENT_CONNECT(p);
-		case PACKET_COORDINATOR_GC_CONNECTING:         return this->Receive_GC_CONNECTING(p);
-		case PACKET_COORDINATOR_SERCLI_CONNECT_FAILED: return this->Receive_SERCLI_CONNECT_FAILED(p);
-		case PACKET_COORDINATOR_GC_CONNECT_FAILED:     return this->Receive_GC_CONNECT_FAILED(p);
-		case PACKET_COORDINATOR_CLIENT_CONNECTED:      return this->Receive_CLIENT_CONNECTED(p);
-		case PACKET_COORDINATOR_GC_DIRECT_CONNECT:     return this->Receive_GC_DIRECT_CONNECT(p);
-		case PACKET_COORDINATOR_GC_STUN_REQUEST:       return this->Receive_GC_STUN_REQUEST(p);
-		case PACKET_COORDINATOR_SERCLI_STUN_RESULT:    return this->Receive_SERCLI_STUN_RESULT(p);
-		case PACKET_COORDINATOR_GC_STUN_CONNECT:       return this->Receive_GC_STUN_CONNECT(p);
-		case PACKET_COORDINATOR_GC_NEWGRF_LOOKUP:      return this->Receive_GC_NEWGRF_LOOKUP(p);
-		case PACKET_COORDINATOR_GC_TURN_CONNECT:       return this->Receive_GC_TURN_CONNECT(p);
+		case PacketCoordinatorType::GameCoordinatorError: return this->ReceiveGameCoordinatorError(p);
+		case PacketCoordinatorType::ServerRegister: return this->ReceiveServerRegister(p);
+		case PacketCoordinatorType::GameCoordinatorRegisterAck: return this->ReceiveGameCoordinatorRegisterAck(p);
+		case PacketCoordinatorType::ServerUpdate: return this->ReceiveServerUpdate(p);
+		case PacketCoordinatorType::ClientListing: return this->ReceiveClientListing(p);
+		case PacketCoordinatorType::GameCoordinatorListing: return this->ReceiveGameCoordinatorListing(p);
+		case PacketCoordinatorType::ClientConnect: return this->ReceiveClientConnect(p);
+		case PacketCoordinatorType::GameCoordinatorConnecting: return this->ReceiveGameCoordinatorConnecting(p);
+		case PacketCoordinatorType::ServerOrClientConnectFailed: return this->ReceiveServerOrClientConnectFailed(p);
+		case PacketCoordinatorType::GameCoordinatorConnectFailed: return this->ReceiveGameCoordinatorConnectFailed(p);
+		case PacketCoordinatorType::ClientConnected: return this->ReceiveClientConnected(p);
+		case PacketCoordinatorType::GameCoordinatorDirectConnect: return this->ReceiveGameCoordinatorDirectConnect(p);
+		case PacketCoordinatorType::GameCoordinatorStunRequest: return this->ReceiveGameCoordinatorStunRequest(p);
+		case PacketCoordinatorType::ServerOrClientStunResult: return this->ReceiveServerOrClientStunResult(p);
+		case PacketCoordinatorType::GameCoordinatorStunConnect: return this->ReceiveGameCoordinatorStunConnect(p);
+		case PacketCoordinatorType::GameCoordinatorNewGRFLookup: return this->ReceiveGameCoordinatorNewGRFLookup(p);
+		case PacketCoordinatorType::GameCoordinatorTurnConnect: return this->ReceiveGameCoordinatorTurnConnect(p);
 
 		default:
 			Debug(net, 0, "[tcp/coordinator] Received invalid packet type {}", type);
@@ -84,20 +84,20 @@ bool NetworkCoordinatorSocketHandler::ReceiveInvalidPacket(PacketCoordinatorType
 	return false;
 }
 
-bool NetworkCoordinatorSocketHandler::Receive_GC_ERROR(Packet &) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_ERROR); }
-bool NetworkCoordinatorSocketHandler::Receive_SERVER_REGISTER(Packet &) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_SERVER_REGISTER); }
-bool NetworkCoordinatorSocketHandler::Receive_GC_REGISTER_ACK(Packet &) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_REGISTER_ACK); }
-bool NetworkCoordinatorSocketHandler::Receive_SERVER_UPDATE(Packet &) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_SERVER_UPDATE); }
-bool NetworkCoordinatorSocketHandler::Receive_CLIENT_LISTING(Packet &) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_CLIENT_LISTING); }
-bool NetworkCoordinatorSocketHandler::Receive_GC_LISTING(Packet &) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_LISTING); }
-bool NetworkCoordinatorSocketHandler::Receive_CLIENT_CONNECT(Packet &) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_CLIENT_CONNECT); }
-bool NetworkCoordinatorSocketHandler::Receive_GC_CONNECTING(Packet &) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_CONNECTING); }
-bool NetworkCoordinatorSocketHandler::Receive_SERCLI_CONNECT_FAILED(Packet &) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_SERCLI_CONNECT_FAILED); }
-bool NetworkCoordinatorSocketHandler::Receive_GC_CONNECT_FAILED(Packet &) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_CONNECT_FAILED); }
-bool NetworkCoordinatorSocketHandler::Receive_CLIENT_CONNECTED(Packet &) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_CLIENT_CONNECTED); }
-bool NetworkCoordinatorSocketHandler::Receive_GC_DIRECT_CONNECT(Packet &) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_DIRECT_CONNECT); }
-bool NetworkCoordinatorSocketHandler::Receive_GC_STUN_REQUEST(Packet &) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_STUN_REQUEST); }
-bool NetworkCoordinatorSocketHandler::Receive_SERCLI_STUN_RESULT(Packet &) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_SERCLI_STUN_RESULT); }
-bool NetworkCoordinatorSocketHandler::Receive_GC_STUN_CONNECT(Packet &) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_STUN_CONNECT); }
-bool NetworkCoordinatorSocketHandler::Receive_GC_NEWGRF_LOOKUP(Packet &) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_NEWGRF_LOOKUP); }
-bool NetworkCoordinatorSocketHandler::Receive_GC_TURN_CONNECT(Packet &) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_TURN_CONNECT); }
+bool NetworkCoordinatorSocketHandler::ReceiveGameCoordinatorError(Packet &) { return this->ReceiveInvalidPacket(PacketCoordinatorType::GameCoordinatorError); }
+bool NetworkCoordinatorSocketHandler::ReceiveServerRegister(Packet &) { return this->ReceiveInvalidPacket(PacketCoordinatorType::ServerRegister); }
+bool NetworkCoordinatorSocketHandler::ReceiveGameCoordinatorRegisterAck(Packet &) { return this->ReceiveInvalidPacket(PacketCoordinatorType::GameCoordinatorRegisterAck); }
+bool NetworkCoordinatorSocketHandler::ReceiveServerUpdate(Packet &) { return this->ReceiveInvalidPacket(PacketCoordinatorType::ServerUpdate); }
+bool NetworkCoordinatorSocketHandler::ReceiveClientListing(Packet &) { return this->ReceiveInvalidPacket(PacketCoordinatorType::ClientListing); }
+bool NetworkCoordinatorSocketHandler::ReceiveGameCoordinatorListing(Packet &) { return this->ReceiveInvalidPacket(PacketCoordinatorType::GameCoordinatorListing); }
+bool NetworkCoordinatorSocketHandler::ReceiveClientConnect(Packet &) { return this->ReceiveInvalidPacket(PacketCoordinatorType::ClientConnect); }
+bool NetworkCoordinatorSocketHandler::ReceiveGameCoordinatorConnecting(Packet &) { return this->ReceiveInvalidPacket(PacketCoordinatorType::GameCoordinatorConnecting); }
+bool NetworkCoordinatorSocketHandler::ReceiveServerOrClientConnectFailed(Packet &) { return this->ReceiveInvalidPacket(PacketCoordinatorType::ServerOrClientConnectFailed); }
+bool NetworkCoordinatorSocketHandler::ReceiveGameCoordinatorConnectFailed(Packet &) { return this->ReceiveInvalidPacket(PacketCoordinatorType::GameCoordinatorConnectFailed); }
+bool NetworkCoordinatorSocketHandler::ReceiveClientConnected(Packet &) { return this->ReceiveInvalidPacket(PacketCoordinatorType::ClientConnected); }
+bool NetworkCoordinatorSocketHandler::ReceiveGameCoordinatorDirectConnect(Packet &) { return this->ReceiveInvalidPacket(PacketCoordinatorType::GameCoordinatorDirectConnect); }
+bool NetworkCoordinatorSocketHandler::ReceiveGameCoordinatorStunRequest(Packet &) { return this->ReceiveInvalidPacket(PacketCoordinatorType::GameCoordinatorStunRequest); }
+bool NetworkCoordinatorSocketHandler::ReceiveServerOrClientStunResult(Packet &) { return this->ReceiveInvalidPacket(PacketCoordinatorType::ServerOrClientStunResult); }
+bool NetworkCoordinatorSocketHandler::ReceiveGameCoordinatorStunConnect(Packet &) { return this->ReceiveInvalidPacket(PacketCoordinatorType::GameCoordinatorStunConnect); }
+bool NetworkCoordinatorSocketHandler::ReceiveGameCoordinatorNewGRFLookup(Packet &) { return this->ReceiveInvalidPacket(PacketCoordinatorType::GameCoordinatorNewGRFLookup); }
+bool NetworkCoordinatorSocketHandler::ReceiveGameCoordinatorTurnConnect(Packet &) { return this->ReceiveInvalidPacket(PacketCoordinatorType::GameCoordinatorTurnConnect); }
