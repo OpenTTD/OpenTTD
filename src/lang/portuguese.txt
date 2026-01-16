@@ -765,7 +765,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Magnata
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Barão
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Magnata do Século
 STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIG_FONT}"{STRING}" ({COMMA})
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}"{STRING}"   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} alcança o estatuto de “{STRING}”!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} de {COMPANY} conquista o estatuto de “{STRING}”!
 
@@ -844,7 +844,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Mostrar 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Mostrar a última mensagem ou notícia
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  EM PAUSA  *  *
+STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  EM PAUSA  *  *
 STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  EM PAUSA (em espera pela atualização do gráfico de ligações) *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}A GUARDAR AUTOMATICAMENTE
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  A GUARDAR JOGO *  *
@@ -902,7 +902,7 @@ STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Problemas de abastecimento leva{G 0 "" "" "" m m} {G 0 "" "o " "a " "o " "as "}{STRING} a anunciar{G 0 "" "" "" em em} fecho iminente!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Escassez de árvores nas proximidades leva{G 0 "" "" "" m m} {G 0 "" "o " "a " "os " "as "}{STRING} a anunciar{G 0 "" "" "" em em} fecho iminente!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}União Monetária Europeia!{}{}O Euro é introduzido como moeda única para todas as transacções no seu país!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}União Monetária Europeia!{}{}O Euro é introduzido como moeda única para todas as transações do seu país!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Recessão Mundial!{}{}Especialistas financeiros temem crise económica!
 STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Fim da recessão!{}{}Melhorias no comércio inspiram confiança nas indústrias enquanto a economia recupera!
 
@@ -943,7 +943,7 @@ STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Renovaç
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}U{G 0 m m ma ns mas} nov{G 0 "o modelo de" o a os as} {STRING} est{G 0 á á á am am} disponíve{G 0 l l l is is}!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}U{G 0 m m ma ns mas} nov{G 0 "o modelo de" o a os as} {STRING} est{G 0 á á á am am} disponíve{G 0 l l l is is}! - {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}U{G 0 m m ma ns mas} nov{G 0 "o modelo de" o a os as} {STRING} est{G 0 á á á am am} disponíve{G 0 l l l is is}!  -  {ENGINE}
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Abrir a janela de grupo focada no grupo do veículo
 
@@ -1116,7 +1116,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Selecione o con
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Informação adicional sobre o conjunto de gráficos base
 
 STR_GAME_OPTIONS_BASE_SFX                                       :Conjunto de sons base
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Selecione o conjunto de sons base a usar (não pode ser alterado no jogo, só a partir do menu principal)
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Selecione o conjunto de sons base a usar
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Informação adicional sobre o conjunto de sons base
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :Conjunto de música base
@@ -1608,10 +1608,10 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Define quantas 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distância máxima entre o limite do mapa e Refinarias de Petróleo: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limite de distância entre a borda do mapa e o local de construção de refinarias e plataformas de petróleo. Em mapas de ilhas isto garante que elas fiquem perto da costa. Em mapas com mais de 256 mosaicos esse valor é aumentado
 
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altura da linha de neve: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Escolher a que altura a neve começa na paisagem subártica. A neve também afeta a geração de indústrias e os requisitos de crescimento das localidades. Só pode ser modificado através do Editor de Cenários ou é calculado através da "cobertura de neve"
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altura da linha da neve: {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Escolher a que altura a neve começa na paisagem subártica. A neve também afeta a geração de indústrias e os requisitos de crescimento das localidades. Só pode ser modificado através do Editor de Cenários ou é calculado através da "cobertura da neve"
 
-STR_CONFIG_SETTING_SNOW_COVERAGE                                :Cobertura de neve: {STRING}
+STR_CONFIG_SETTING_SNOW_COVERAGE                                :Cobertura da neve: {STRING}
 STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Escolher a quantidade aproximada de neve no clima subártico. A neve também afeta a geração de indústrias e os requisitos de crescimento das localidades. Usado apenas durante a geração do mapa. O nível do mar e as suas encostas nunca têm neve
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
@@ -2020,12 +2020,12 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Proibido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Permitido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Permitido, estrutura personalizada da localidade
 
-STR_CONFIG_SETTING_HOUSE_PLACER                                 :Colocar casas isoladas nas localidades: {STRING}
+STR_CONFIG_SETTING_HOUSE_PLACER                                 :Colocar casas individualmente nas localidades: {STRING}
 STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :Ativar esta preferência, permite aos jogadores colocar manualmente casas nas localidades
 ###length 3
 STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :Proibido
 STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :Permitido
-STR_CONFIG_SETTING_HOUSE_PLACER_FULLY_CONSTRUCTED               :Permitido, totalmente construído
+STR_CONFIG_SETTING_HOUSE_PLACER_FULLY_CONSTRUCTED               :Permitido, construidas na totalidade
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Geração de carga da localidade: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Quantidade de carga produzida por casas em localidades, relativa à população total da mesma.{}Crescimento quadrático: Uma localidade do dobro do tamanho gera quatro vezes mais passageiros.{}Crescimento linear: Uma localidade do dobro do tamanho gera duas vezes a quantidade de passageiros
@@ -2069,7 +2069,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Resolução máxima de gráficos a usar: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limita a resolução máxima a ser usada para os elementos visuais. Limitar a resolução dos elementos visuais evitará o uso de gráficos de alta resolução, mesmo quando disponíveis. Isto pode ajudar a manter a aparência do jogo consistente ao usar uma combinação de ficheiros GRF com e sem gráficos de alta resolução
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limita a resolução máxima a ser usada para os elementos visuais. Limitar a resolução dos elementos visuais evitará o uso de gráficos de alta resolução, mesmo quando disponíveis. Isto pode ajudar a manter a aparência do jogo consistente ao usar uma combinação de ficheiros NewGRF com e sem gráficos de alta resolução
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2205,7 +2205,7 @@ STR_CONFIG_ERROR                                                :{WHITE}Erro com
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... erro no array '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... valor inválido '{STRING}' para '{STRING}'
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... caracteres no fim da opção '{STRING}'
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... a ignorar NewGRF '{STRING}': ID GRF duplicado de '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... a ignorar NewGRF '{STRING}': ID NewGRF duplicado com '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... a ignorar NewGRF inválido '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :não foi encontrado
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :inseguro para uso estático
@@ -2440,7 +2440,7 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Renovar 
 
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :{BLACK}Pesquisar na internet
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Pesquisar servidores públicos na internet
-STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Procurar na rede local (LAN)
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Pesquisar na rede local (LAN)
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Pesquisar por servidores na rede local
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Adicionar servidor
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Adiciona um servidor à lista. Pode ser um endereço de servidor ou um código de convite
@@ -3294,10 +3294,10 @@ STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COM
 ###length 15
 STR_FRAMERATE_GAMELOOP                                          :{BLACK}Total do ciclo de jogo
 STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Movimentação de carga:
-STR_FRAMERATE_GL_TRAINS                                         :{BLACK}  Quantidade de atraso no percurso do Comboio:
-STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}Quantidade de atraso no percurso do veículo rodoviário:
+STR_FRAMERATE_GL_TRAINS                                         :{BLACK}  Tiques de comboio:
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}  Tiques de veículo rodoviário:
 STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Tiques de navio:
-STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK} Quantidade de atraso no percurso de Aeronave:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}  Tiques de aeronave:
 STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK} Tiques do mundo:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK} Atraso no gráfico de ligações:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Renderização gráfica:
@@ -3621,7 +3621,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parâmetro inv�
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} deve ser carregado antes de {2:STRING}
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} deve ser carregado depois de {2:STRING}
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} requer OpenTTD versão {2:STRING} ou superior
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :o ficheiro GRF que foi desenvolvido para tradução
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :o ficheiro NewGRF que foi desenvolvido para tradução
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Demasiados NewGRFs carregados.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregar {1:STRING} como NewGRF estático com {2:STRING} pode causar dessincronização
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Gráfico inválido (sprite {3:NUM})
@@ -3630,7 +3630,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de us
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contém um elemento visual corrompido. Todos os elementos visuais corrompidos serão apresentados como um ponto de interrogação (?) vermelho.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contém múltiplas entradas Ação 8 - (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leitura além dos limites do pseudo-sprite (sprite {3:NUM})
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Recursos GRF pedidos não disponíveis (sprite {3:NUM})
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Recursos NewGRF pedidos não estão disponíveis (elemento gráfico {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} foi desativado por {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Formato do elemento visual Inválido ou desconhecido (sprite {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Demasiados elementos na lista de valores de propriedade (sprite {3:NUM}, propriedade {4:HEX})
@@ -3640,13 +3640,13 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Revogação da 
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Alerta!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Vai alterar um jogo em execução. O OpenTTD pode terminar abruptamente. Não envie relatórios de erros sobre estas situações.{}Tem a certeza que quer continuar?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Não é possível adicionar ficheiro: GRF ID duplicado
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Ficheiro correspondente não encontrado (GRF compatível carregado)
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Não é possível adicionar ficheiro: NewGRF ID duplicado
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Ficheiro correspondente não encontrado (NewGRF compatível carregado)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Não é possível adicionar ficheiro: foi alcançado o limite de NewGRFs
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) compatíveis carregados para ficheiros em falta
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Ficheiro(s) GRF em falta foram desativados
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Ficheiro(s) GRF em falta
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}NewGRF(s) compatíveis carregados para ficheiros em falta
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Ficheiro(s) NewGRF em falta foi/foram desativado(s)
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Ficheiro(s) NewGRF em falta
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Sair da pausa pode causar problemas ao OpenTTD. Não envie informações sobre este tipo de problemas.{}Deseja realmente sair da pausa?
 
 # NewGRF status
@@ -3709,8 +3709,8 @@ STR_TOWN_POPULATION                                             :{BLACK}Populaç
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Cidade)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}População: {ORANGE}{COMMA}{BLACK}  Casas: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} no último mês: {ORANGE}{COMMA}{BLACK} máx.: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} no último minuto: {ORANGE}{COMMA}{BLACK} máx.: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} no último mês: {ORANGE}{COMMA}{BLACK}  máx.: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} no último minuto: {ORANGE}{COMMA}{BLACK}  máx.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Requisitos para o desenvolvimento da localidade:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{RED}{G 0 É É É São São} necessári{G 0 o o o os as} {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{BLACK}No inverno, {G 0 é é é são são} necessári{G 0 o o o os as} {ORANGE}{STRING}
@@ -4111,8 +4111,8 @@ STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Enviar para uma
 STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Enviar para um estaleiro
 STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Enviar para um hangar
 
-STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Pressione botão esquerdo do rato para imobilizar todos os veículos na lista
-STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Pressione botão esquerdo do rato para iniciar todos os veículos na lista
+STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Clique para parar todos os veículos desta lista
+STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Clique para iniciar a marcha de todos os veículos desta lista
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ver lista de modelos disponíveis para este tipo de veículo.
 
 STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Ordens partilhadas de {COMMA} veículo{P "" s}
@@ -4359,7 +4359,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Está p
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mensagem de um fabricante de veículos
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Desenvolvemos u{G 0 m m ma ns mas} nov{G 0 "o modelo de" o a os as} {STRING} - estaria interessado num ano de uso exclusivo deste{G 0 "" "" "" s s} veículo{G 0 "" "" "" s s}, de modo a que possamos avaliar o {G 0 "seu " "seu " "seu " "" ""}desempenho antes de o{G 0 "" "" "" s s} disponibilizar globalmente?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Desenvolvemos u{G 0 m m ma ns mas} nov{G 0 "o modelo de" o a os as} {STRING} - estaria interessado num ano de utilização exclusiva deste{G 0 "" "" "" s s} veículo{G 0 "" "" "" s s}, para que possamos avaliar o {G 0 "seu " "seu " "seu " "" ""}desempenho antes de o{G 0 "" "" "" s s} lançar globalmente?
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}locomotiva ferroviária
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :{G=f}locomotiva elétrica ferroviária
@@ -4372,12 +4372,12 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :{G=m}elétrico
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=f}aeronave
 STR_ENGINE_PREVIEW_SHIP                                         :{G=m}navio
 
-STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Custo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}
+STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Custo: {CURRENCY_LONG}  Peso: {WEIGHT_SHORT}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Custo: {CURRENCY_LONG}  Velocidade Máx.: {VELOCITY}
-STR_ENGINE_PREVIEW_SPEED_POWER                                  :Velocidade: {VELOCITY} Potência: {POWER}
-STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Velocidade: {VELOCITY} Potência: {POWER} Tração Máx.: {FORCE}
+STR_ENGINE_PREVIEW_SPEED_POWER                                  :Velocidade: {VELOCITY}  Potência: {POWER}
+STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Velocidade: {VELOCITY}  Potência: {POWER}  Tração Máx.: {FORCE}
 STR_ENGINE_PREVIEW_TYPE                                         :Tipo de aeronave: {STRING}
-STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Tipo de aeronave: {STRING} Alcance: {COMMA} mosaicos
+STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Tipo de aeronave: {STRING}   Autonomia: {COMMA} mosaicos
 STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Custo de Circulação: {CURRENCY_LONG}/ano
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Custo de Circulação: {CURRENCY_LONG}/período
 STR_ENGINE_PREVIEW_CAPACITY                                     :Capacidade: {CARGO_LONG}
@@ -4510,8 +4510,8 @@ STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELO
 STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - Não é possível chegar {G 0 a ao à aos às} {0:DEPOT}
 
 # Vehicle stopped/started animations
-STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Parou
-STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Iniciado
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Parado
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Iniciou Marcha
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detalhes)
@@ -4524,8 +4524,8 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Renomear
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} ano{P "" s} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ano{P "" s} ({COMMA})
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Idade: {LTBLUE}{STRING}{BLACK} Custo de Circulação: {LTBLUE}{CURRENCY_LONG}/ano
-STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Idade: {LTBLUE}{STRING}{BLACK} Custo de Circulação: {LTBLUE}{CURRENCY_LONG}/período
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo de Circulação: {LTBLUE}{CURRENCY_LONG}/ano
+STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo de Circulação: {LTBLUE}{CURRENCY_LONG}/período
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Velocidade máx.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Vel. máxima: {LTBLUE}{VELOCITY} {BLACK}Tipo de aeronave: {LTBLUE}{STRING}
@@ -4547,9 +4547,9 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacida
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Créditos de Transferência: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}{NBSP}dias{BLACK} {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}{NBSP}minuto{P "" s}{BLACK} {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}%{BLACK} {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}{NBSP}dias{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}{NBSP}minuto{P "" s}{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}%{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Última manutenção: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Última manutenção: {LTBLUE}{NUM} minuto{P "" s} atrás
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Aumentar o intervalo de manutenção em 10 dias. Ctrl+Clique para aumentar o intervalo de manutenção em 5 dias
@@ -4572,8 +4572,8 @@ STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Renomear
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Renomear aeronave
 
 # Extra buttons for train details windows
-STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK} Fabricado em: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY_LONG}
-STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK} Valor: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Fabricado em: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Valor: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Carga total (capacidade) deste comboio:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})

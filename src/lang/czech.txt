@@ -1202,7 +1202,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Vyber si zákla
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Další informace o základní sadě grafiky
 
 STR_GAME_OPTIONS_BASE_SFX                                       :Základní sada zvuků
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Vyber si základní sadu zvuků (nemůže být změněna během hry, ale pouze z hlavního menu)
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Vyber si základní sadu zvuků
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Další informace o základní sadě zvuků
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :Základní hudební set
@@ -2155,7 +2155,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Nejvyšší dovolené rozlišení spritů: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Omezte maximální rozlišení používané pro sprity. Omezení rozlišení spritů zabrání použití grafiky ve vysokém rozlišení, i když je k dispozici. To může pomoci udržet jednotný vzhled hry při použití kombinace souborů GRF s grafikou ve vysokém rozlišení a bez ní.
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Omezte maximální rozlišení používané pro sprity. Omezení rozlišení spritů zabrání použití grafiky ve vysokém rozlišení, i když je k dispozici. To může pomoci udržet jednotný vzhled hry při použití kombinace souborů NewGRF s grafikou ve vysokém rozlišení a bez ní.
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2190,7 +2190,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Symetricky" zn
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Mód distribuce pro náklady pancéřových vozů: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Třída nákladu ARMOURED (Cennosti) obsahuje cennosti v mírném podnebí, diamanty v subtropickém nebo zlato v subarktickém podnebí. NewGRF soubory toto mohou změnit. "Symetrický" znamená, že ze stanice A do stanice B bude odesláno zhruba stejné množství tohoto nákladu jako ze stanice B do stanice A. "Asymetrický" znamená, že v obou směrech může být zasláno libovolné množství tohoto nákladu. "Manuální" znamená, že u daného nákladu nebude probíhat žádná automatická distribuce. Při hraní v subarktickém nebo subtropickém podnebí se doporučuje nastavit asymetrickou nebo manuální distribuci, protože banky v těchto podnebích náklad pouze přijímají. Pro mírné podnebí můžete zvolit i symetrickou, protože banky v něm posílají cennosti zpět do výchozí banky.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Módy distribuce pro ostatní třídy nákladu: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asymmetricky" znamená, že v obou směrech může být zasláno libovolné množství nákladu. "Manuální" znamená, že u těchto nákladů nebude probíhat žádná automatická distribuce.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asymetrický" znamená, že v obou směrech může být zasláno libovolné množství nákladu. "Manuální" znamená, že u těchto nákladů nebude probíhat žádná automatická distribuce.
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuální
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :Asymmetrický
@@ -2291,7 +2291,7 @@ STR_CONFIG_ERROR                                                :{WHITE}Chyba v 
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... chyba v poli '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... neplatná hodnota '{STRING}' pro '{STRING}'
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... koncové znaky na konci nastavení '{STRING}'
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorována grafika '{STRING}': duplicitní GRF ID s '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorována grafika '{STRING}': duplicitní NewGRF ID s '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignorovány neplatné grafiky '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :nenalezeno
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :nebezpečné pro statické použití
@@ -3722,7 +3722,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Pokus o použit
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} obsahuje poškozený sprite. Všechny takové se zobrazí jako červený otazník (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Obsahuje vícero Akce 8 záznamů (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Čtení konce pseudo-spritu (sprite {3:NUM})
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Požadované zdroje GRF nejsou dostupné (sprite {3:NUM})
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Požadované zdroje NewGRF nejsou dostupné (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} byla vypnuta {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Neplatný/neznámý sprite layout formát (sprite {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Příliš mnoho prvků v seznamu hodnot vlastností (sprite {3:NUM}, vlastnost {4:HEX})
@@ -3732,13 +3732,13 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Neplatné zpět
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varování!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Právě se chystáš změnit nastavení za běžící hry. To může to shodit OpenTTD nebo způsobit zaseknutí hry. Neupozorňujte na to jako na bug.{}Jste si tím opravdu jisti?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nelze přidat soubor: duplicitní GRF ID
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Odpovídající soubor nebyl nalezen (načetl se kompatibilní GRF)
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nelze přidat soubor: duplicitní NewGRF ID
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Odpovídající soubor nebyl nalezen (načetl se kompatibilní NewGRF)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Nemůžu přidat soubor. Dosažen limit NewGRF souborů
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilní GRF se načetly místo chybějících
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilní NewGRF se načetly místo chybějících
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Chybějící grafiky byly vypnuty
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Chybějící grafické soubory
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Chybějící soubory NewGRF grafik
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Spuštění hry může shodit OpenTTD. Nehlaš chybu kvůli pádům způsobeným touto akcí.{}Opravdu chceš rozjet hru?
 
 # NewGRF status

@@ -258,7 +258,7 @@ STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_GAMEUNITS                                      :{DECIMAL}{NBSP}seviye
 
 # Time units used in string control characters
-STR_UNITS_DAYS                                                  :{COMMA}{NBSP}gün{P "ler" }
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP}gün
 STR_UNITS_SECONDS                                               :{COMMA}{NBSP}saniye{P "ler" }
 STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tik{P "ler" }
 
@@ -380,7 +380,7 @@ STR_GROUP_BY_SHARED_ORDERS                                      :Paylaşılan ta
 
 # Order button in shared orders vehicle list
 STR_GOTO_ORDER_VIEW                                             :{BLACK}Talimatlar
-STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Emir görünümünü aç
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Talimat görünümünü aç
 
 # Tooltips for the main toolbar
 ###length 31
@@ -1116,7 +1116,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Kullanılacak t
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Temel grafik setiyle ilgili ilave bilgiler
 
 STR_GAME_OPTIONS_BASE_SFX                                       :Temel ses kümesi
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Kullanılacak temel ses kümesini seçin (oyun içinde değiştirlemez sadece ana menüde değiştirebilinir)
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Kullanılacak temel ses kümesini seçin
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Temel ses kümesiyle ilgili ilave bilgiler
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :Temel müzik kümesi
@@ -3717,8 +3717,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} taşındı
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (hala ihtiyaç var)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (taşındı)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Şehir her {ORANGE} {UNITS_DAYS_OR_SECONDS} bir büyür
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Kasaba her {ORANGE}{UNITS_DAYS_OR_SECONDS} bir büyür (finanse edildiğinde)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Şehir her {ORANGE} {UNITS_DAYS_OR_SECONDS} geçtiğinde büyür
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Kasaba her {ORANGE}{UNITS_DAYS_OR_SECONDS} geçtiğinde büyür (finanse edildiğinde)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Kasaba {RED}büyümüyor{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Kasabadaki gürültü sınırı: {ORANGE}{COMMA}{BLACK}  En fazla: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Ana görüntüyü şehrin üzerine ortala. Ctrl+Sol tık ile şehrin konumunu gösteren yeni bir pencere açabilirsiniz

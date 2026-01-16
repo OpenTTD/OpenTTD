@@ -1115,7 +1115,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Välj vilket gr
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Ytterligare information om grafikpaketet
 
 STR_GAME_OPTIONS_BASE_SFX                                       :Grundljudpaket
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Välj vilket ljudpaket som ska användas (kan inte ändras under spel, utan endast från huvudmenyn)
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Välj vilket ljudpaket som ska användas
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Ytterligare information om ljudpaketet
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :Grundmusikpaket
