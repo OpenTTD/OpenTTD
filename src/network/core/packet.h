@@ -19,6 +19,12 @@
 typedef uint16_t PacketSize; ///< Size of the whole packet.
 typedef uint8_t  PacketType; ///< Identifier for the packet
 
+/** Trait to mark an enumeration as a PacketType. */
+template <typename enum_type>
+struct IsEnumPacketType {
+	static constexpr bool value = false; ///< True iff a PacketType.
+};
+
 /**
  * Internal entity of a packet. As everything is sent as a packet,
  * all network communication will need to call the functions that
@@ -55,6 +61,18 @@ private:
 public:
 	Packet(NetworkSocketHandler *cs, size_t limit, size_t initial_read_size = EncodedLengthOfPacketSize());
 	Packet(NetworkSocketHandler *cs, PacketType type, size_t limit = COMPAT_MTU);
+
+	/**
+	 * Creates a packet to send
+	 * @param cs    The socket handler associated with the socket we are writing to; could be \c nullptr.
+	 * @param type  The type of the packet to send.
+	 * @param limit The maximum number of bytes the packet may have. Default is COMPAT_MTU.
+	 *              Be careful of compatibility with older clients/servers when changing
+	 *              the limit as it might break things if the other side is not expecting
+	 *              much larger packets than what they support.
+	 */
+	template <typename E, typename = std::enable_if_t<IsEnumPacketType<E>::value>>
+	Packet(NetworkSocketHandler *cs, E type, size_t limit = COMPAT_MTU) : Packet(cs, to_underlying(type), limit) {}
 
 	/* Sending/writing of packets */
 	void PrepareToSend();
