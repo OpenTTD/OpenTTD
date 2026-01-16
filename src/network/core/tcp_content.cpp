@@ -106,13 +106,13 @@ bool NetworkContentSocketHandler::HandlePacket(Packet &p)
 	PacketContentType type = static_cast<PacketContentType>(p.Recv_uint8());
 
 	switch (type) {
-		case PACKET_CONTENT_CLIENT_INFO_LIST:      return this->Receive_CLIENT_INFO_LIST(p);
-		case PACKET_CONTENT_CLIENT_INFO_ID:        return this->Receive_CLIENT_INFO_ID(p);
-		case PACKET_CONTENT_CLIENT_INFO_EXTID:     return this->Receive_CLIENT_INFO_EXTID(p);
-		case PACKET_CONTENT_CLIENT_INFO_EXTID_MD5: return this->Receive_CLIENT_INFO_EXTID_MD5(p);
-		case PACKET_CONTENT_SERVER_INFO:           return this->Receive_SERVER_INFO(p);
-		case PACKET_CONTENT_CLIENT_CONTENT:        return this->Receive_CLIENT_CONTENT(p);
-		case PACKET_CONTENT_SERVER_CONTENT:        return this->Receive_SERVER_CONTENT(p);
+		case PacketContentType::ClientInfoList: return this->ReceiveClientInfoList(p);
+		case PacketContentType::ClientInfoID: return this->ReceiveClientInfoID(p);
+		case PacketContentType::ClientInfoExternalID: return this->ReceiveClientInfoExternalID(p);
+		case PacketContentType::ClientInfoExternalIDMD5: return this->ReceiveClientInfoExternalIDMD5(p);
+		case PacketContentType::ServerInfo: return this->ReceiveServerInfo(p);
+		case PacketContentType::ClientContent: return this->ReceiveClientContent(p);
+		case PacketContentType::ServerContent: return this->ReceiveServerContent(p);
 
 		default:
 			Debug(net, 0, "[tcp/content] Received invalid packet type {}", type);
@@ -168,13 +168,13 @@ bool NetworkContentSocketHandler::ReceiveInvalidPacket(PacketContentType type)
 	return false;
 }
 
-bool NetworkContentSocketHandler::Receive_CLIENT_INFO_LIST(Packet &) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_LIST); }
-bool NetworkContentSocketHandler::Receive_CLIENT_INFO_ID(Packet &) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_ID); }
-bool NetworkContentSocketHandler::Receive_CLIENT_INFO_EXTID(Packet &) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_EXTID); }
-bool NetworkContentSocketHandler::Receive_CLIENT_INFO_EXTID_MD5(Packet &) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_EXTID_MD5); }
-bool NetworkContentSocketHandler::Receive_SERVER_INFO(Packet &) { return this->ReceiveInvalidPacket(PACKET_CONTENT_SERVER_INFO); }
-bool NetworkContentSocketHandler::Receive_CLIENT_CONTENT(Packet &) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_CONTENT); }
-bool NetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet &) { return this->ReceiveInvalidPacket(PACKET_CONTENT_SERVER_CONTENT); }
+bool NetworkContentSocketHandler::ReceiveClientInfoList(Packet &) { return this->ReceiveInvalidPacket(PacketContentType::ClientInfoList); }
+bool NetworkContentSocketHandler::ReceiveClientInfoID(Packet &) { return this->ReceiveInvalidPacket(PacketContentType::ClientInfoID); }
+bool NetworkContentSocketHandler::ReceiveClientInfoExternalID(Packet &) { return this->ReceiveInvalidPacket(PacketContentType::ClientInfoExternalID); }
+bool NetworkContentSocketHandler::ReceiveClientInfoExternalIDMD5(Packet &) { return this->ReceiveInvalidPacket(PacketContentType::ClientInfoExternalIDMD5); }
+bool NetworkContentSocketHandler::ReceiveServerInfo(Packet &) { return this->ReceiveInvalidPacket(PacketContentType::ServerInfo); }
+bool NetworkContentSocketHandler::ReceiveClientContent(Packet &) { return this->ReceiveInvalidPacket(PacketContentType::ClientContent); }
+bool NetworkContentSocketHandler::ReceiveServerContent(Packet &) { return this->ReceiveInvalidPacket(PacketContentType::ServerContent); }
 
 /**
  * Helper to get the subdirectory a #ContentInfo is located in.
