@@ -20,11 +20,12 @@
 
 /**
  * Template for TCP listeners.
- * @param Tsocket      The class we create sockets for.
+ * @param Tsocket The class we create sockets for.
+ * @param EnumPacketType The enumeration type of the packet type.
  * @param Tfull_packet The packet type to return when we don't allow more sockets.
- * @param Tban_packet  The packet type to return when the client is banned.
+ * @param Tban_packet The packet type to return when the client is banned.
  */
-template <class Tsocket, PacketType Tfull_packet, PacketType Tban_packet>
+template <class Tsocket, typename EnumPacketType, EnumPacketType Tfull_packet, EnumPacketType Tban_packet>
 class TCPListenHandler {
 	/** List of sockets we listen on. */
 	static SocketList sockets;
@@ -177,6 +178,6 @@ public:
 };
 
 /** Instantiate the sockets. */
-template <class Tsocket, PacketType Tfull_packet, PacketType Tban_packet> SocketList TCPListenHandler<Tsocket, Tfull_packet, Tban_packet>::sockets;
+template <class Tsocket, typename EnumPacketType, EnumPacketType Tfull_packet, EnumPacketType Tban_packet> SocketList TCPListenHandler<Tsocket, EnumPacketType, Tfull_packet, Tban_packet>::sockets;
 
 #endif /* NETWORK_CORE_TCP_LISTEN_H */
