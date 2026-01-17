@@ -22,21 +22,21 @@ using NetworkAdminSocketPool = Pool<ServerNetworkAdminSocketHandler, AdminID, 2,
 extern NetworkAdminSocketPool _networkadminsocket_pool;
 
 /** Class for handling the server side of the game connection. */
-class ServerNetworkAdminSocketHandler : public NetworkAdminSocketPool::PoolItem<&_networkadminsocket_pool>, public NetworkAdminSocketHandler, public TCPListenHandler<ServerNetworkAdminSocketHandler, PacketAdminType, ADMIN_PACKET_SERVER_FULL, ADMIN_PACKET_SERVER_BANNED> {
+class ServerNetworkAdminSocketHandler : public NetworkAdminSocketPool::PoolItem<&_networkadminsocket_pool>, public NetworkAdminSocketHandler, public TCPListenHandler<ServerNetworkAdminSocketHandler, PacketAdminType, PacketAdminType::ServerFull, PacketAdminType::ServerBanned> {
 private:
 	std::unique_ptr<NetworkAuthenticationServerHandler> authentication_handler = nullptr; ///< The handler for the authentication.
 protected:
-	NetworkRecvStatus Receive_ADMIN_JOIN(Packet &p) override;
-	NetworkRecvStatus Receive_ADMIN_QUIT(Packet &p) override;
-	NetworkRecvStatus Receive_ADMIN_UPDATE_FREQUENCY(Packet &p) override;
-	NetworkRecvStatus Receive_ADMIN_POLL(Packet &p) override;
-	NetworkRecvStatus Receive_ADMIN_CHAT(Packet &p) override;
-	NetworkRecvStatus Receive_ADMIN_EXTERNAL_CHAT(Packet &p) override;
-	NetworkRecvStatus Receive_ADMIN_RCON(Packet &p) override;
-	NetworkRecvStatus Receive_ADMIN_GAMESCRIPT(Packet &p) override;
-	NetworkRecvStatus Receive_ADMIN_PING(Packet &p) override;
-	NetworkRecvStatus Receive_ADMIN_JOIN_SECURE(Packet &p) override;
-	NetworkRecvStatus Receive_ADMIN_AUTH_RESPONSE(Packet &p) override;
+	NetworkRecvStatus ReceiveAdminJoin(Packet &p) override;
+	NetworkRecvStatus ReceiveAdminQuit(Packet &p) override;
+	NetworkRecvStatus ReceiveAdminUpdateFrequency(Packet &p) override;
+	NetworkRecvStatus ReceiveAdminPoll(Packet &p) override;
+	NetworkRecvStatus ReceiveAdminChat(Packet &p) override;
+	NetworkRecvStatus ReceiveAdminExternalChat(Packet &p) override;
+	NetworkRecvStatus ReceiveAdminRemoteConsoleCommand(Packet &p) override;
+	NetworkRecvStatus ReceiveAdminGameScript(Packet &p) override;
+	NetworkRecvStatus ReceiveAdminPing(Packet &p) override;
+	NetworkRecvStatus ReceiveAdminJoinSecure(Packet &p) override;
+	NetworkRecvStatus ReceiveAdminAuthenticationResponse(Packet &p) override;
 
 	NetworkRecvStatus SendProtocol();
 	NetworkRecvStatus SendPong(uint32_t d1);
