@@ -2001,7 +2001,7 @@ void ResetSignalVariant(int32_t)
 	}
 }
 
-static const IntervalTimer<TimerGameCalendar> _check_reset_signal({TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [](auto)
+static const IntervalTimer<TimerGameCalendar> _check_reset_signal({TimerGameCalendar::Trigger::Year, TimerGameCalendar::Priority::None}, [](auto)
 {
 	if (TimerGameCalendar::year != _settings_client.gui.semaphore_build_before) return;
 

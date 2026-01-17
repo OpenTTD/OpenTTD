@@ -605,7 +605,7 @@ public:
 		Command<CMD_RENAME_TOWN>::Post(STR_ERROR_CAN_T_RENAME_TOWN, static_cast<TownID>(this->window_number), *str);
 	}
 
-	const IntervalTimer<TimerGameCalendar> daily_interval = {{TimerGameCalendar::DAY, TimerGameCalendar::Priority::NONE}, [this](auto) {
+	const IntervalTimer<TimerGameCalendar> daily_interval = {{TimerGameCalendar::Trigger::Day, TimerGameCalendar::Priority::None}, [this](auto) {
 		/* Refresh after possible snowline change */
 		this->SetDirty();
 	}};

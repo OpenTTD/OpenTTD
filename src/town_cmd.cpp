@@ -4166,7 +4166,7 @@ Town::SuppliedHistory SumHistory(std::span<const Town::SuppliedHistory> history)
 	return {.production = ClampTo<uint16_t>(production / count), .transported = ClampTo<uint16_t>(transported / count)};
 }
 
-static const IntervalTimer<TimerGameEconomy> _economy_towns_monthly({TimerGameEconomy::MONTH, TimerGameEconomy::Priority::TOWN}, [](auto)
+static const IntervalTimer<TimerGameEconomy> _economy_towns_monthly({TimerGameEconomy::Trigger::Month, TimerGameEconomy::Priority::Town}, [](auto)
 {
 	for (Town *t : Town::Iterate()) {
 		/* Check for active town actions and decrement their counters. */
@@ -4195,7 +4195,7 @@ static const IntervalTimer<TimerGameEconomy> _economy_towns_monthly({TimerGameEc
 	}
 });
 
-static const IntervalTimer<TimerGameEconomy> _economy_towns_yearly({TimerGameEconomy::YEAR, TimerGameEconomy::Priority::TOWN}, [](auto)
+static const IntervalTimer<TimerGameEconomy> _economy_towns_yearly({TimerGameEconomy::Trigger::Year, TimerGameEconomy::Priority::Town}, [](auto)
 {
 	/* Increment house ages */
 	for (const auto t : Map::Iterate()) {

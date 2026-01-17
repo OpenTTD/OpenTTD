@@ -205,7 +205,7 @@ struct StatusBarWindow : Window {
 		this->SetWidgetDirty(WID_S_MIDDLE);
 	}};
 
-	const IntervalTimer<TimerGameCalendar> daily_interval = {{TimerGameCalendar::DAY, TimerGameCalendar::Priority::NONE}, [this](auto) {
+	const IntervalTimer<TimerGameCalendar> daily_interval = {{TimerGameCalendar::Trigger::Day, TimerGameCalendar::Priority::None}, [this](auto) {
 		this->SetWidgetDirty(WID_S_LEFT);
 	}};
 };

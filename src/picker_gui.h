@@ -235,7 +235,7 @@ private:
 	std::pair<WidgetID, WidgetID> badge_filters{};
 	BadgeFilterChoices badge_filter_choices{};
 
-	const IntervalTimer<TimerGameCalendar> yearly_interval = {{TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [this](auto) {
+	const IntervalTimer<TimerGameCalendar> yearly_interval = {{TimerGameCalendar::Trigger::Year, TimerGameCalendar::Priority::None}, [this](auto) {
 		this->SetDirty();
 	}};
 
