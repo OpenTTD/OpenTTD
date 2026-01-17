@@ -119,10 +119,8 @@ void TimeoutTimer<TimerGameEconomy>::Elapsed(TimerGameEconomy::TElapsed trigger)
 }
 
 template <>
-bool TimerManager<TimerGameEconomy>::Elapsed([[maybe_unused]] TimerGameEconomy::TElapsed delta)
+bool TimerManager<TimerGameEconomy>::Elapsed(TimerGameEconomy::TElapsed)
 {
-	assert(delta == 1);
-
 	if (_game_mode == GM_MENU) return false;
 
 	TimerGameEconomy::date_fract++;
@@ -149,30 +147,30 @@ bool TimerManager<TimerGameEconomy>::Elapsed([[maybe_unused]] TimerGameEconomy::
 	auto timers = TimerManager<TimerGameEconomy>::GetTimers();
 
 	for (auto timer : timers) {
-		timer->Elapsed(TimerGameEconomy::DAY);
+		timer->Elapsed(TimerGameEconomy::Trigger::Day);
 	}
 
 	if ((TimerGameEconomy::date.base() % 7) == 3) {
 		for (auto timer : timers) {
-			timer->Elapsed(TimerGameEconomy::WEEK);
+			timer->Elapsed(TimerGameEconomy::Trigger::Week);
 		}
 	}
 
 	if (new_month) {
 		for (auto timer : timers) {
-			timer->Elapsed(TimerGameEconomy::MONTH);
+			timer->Elapsed(TimerGameEconomy::Trigger::Month);
 		}
 
 		if ((TimerGameEconomy::month % 3) == 0) {
 			for (auto timer : timers) {
-				timer->Elapsed(TimerGameEconomy::QUARTER);
+				timer->Elapsed(TimerGameEconomy::Trigger::Quarter);
 			}
 		}
 	}
 
 	if (new_year) {
 		for (auto timer : timers) {
-			timer->Elapsed(TimerGameEconomy::YEAR);
+			timer->Elapsed(TimerGameEconomy::Trigger::Year);
 		}
 	}
 
@@ -194,7 +192,7 @@ bool TimerManager<TimerGameEconomy>::Elapsed([[maybe_unused]] TimerGameEconomy::
 template <>
 void TimerManager<TimerGameEconomy>::Validate(TimerGameEconomy::TPeriod period)
 {
-	if (period.priority == TimerGameEconomy::Priority::NONE) return;
+	if (period.priority == TimerGameEconomy::Priority::None) return;
 
 	/* Validate we didn't make a developer error and scheduled more than one
 	 * entry on the same priority/trigger. There can only be one timer on

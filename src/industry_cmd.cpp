@@ -3083,7 +3083,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
  * For small maps, it implies that less than one change per month is required, while on bigger maps,
  * it would be way more. The daily loop handles those changes.
  */
-static const IntervalTimer<TimerGameEconomy> _economy_industries_daily({TimerGameEconomy::DAY, TimerGameEconomy::Priority::INDUSTRY}, [](auto)
+static const IntervalTimer<TimerGameEconomy> _economy_industries_daily({TimerGameEconomy::Trigger::Day, TimerGameEconomy::Priority::Industry}, [](auto)
 {
 	_economy.industry_daily_change_counter += _economy.industry_daily_increment;
 
@@ -3125,7 +3125,7 @@ static const IntervalTimer<TimerGameEconomy> _economy_industries_daily({TimerGam
 	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, IDIWD_PRODUCTION_CHANGE);
 });
 
-static const IntervalTimer<TimerGameEconomy> _economy_industries_monthly({TimerGameEconomy::MONTH, TimerGameEconomy::Priority::INDUSTRY}, [](auto)
+static const IntervalTimer<TimerGameEconomy> _economy_industries_monthly({TimerGameEconomy::Trigger::Month, TimerGameEconomy::Priority::Industry}, [](auto)
 {
 	Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
 
