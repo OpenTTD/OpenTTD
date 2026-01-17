@@ -21,26 +21,26 @@ using NetworkClientSocketPool = Pool<NetworkClientSocket, ClientPoolID, 8, PoolT
 extern NetworkClientSocketPool _networkclientsocket_pool;
 
 /** Class for handling the server side of the game connection. */
-class ServerNetworkGameSocketHandler : public NetworkClientSocketPool::PoolItem<&_networkclientsocket_pool>, public NetworkGameSocketHandler, public TCPListenHandler<ServerNetworkGameSocketHandler, PacketGameType, PACKET_SERVER_FULL, PACKET_SERVER_BANNED> {
+class ServerNetworkGameSocketHandler : public NetworkClientSocketPool::PoolItem<&_networkclientsocket_pool>, public NetworkGameSocketHandler, public TCPListenHandler<ServerNetworkGameSocketHandler, PacketGameType, PacketGameType::ServerFull, PacketGameType::ServerBanned> {
 protected:
 	std::unique_ptr<class NetworkAuthenticationServerHandler> authentication_handler = nullptr; ///< The handler for the authentication.
 	std::string peer_public_key{}; ///< The public key of our client.
 
-	NetworkRecvStatus Receive_CLIENT_JOIN(Packet &p) override;
-	NetworkRecvStatus Receive_CLIENT_IDENTIFY(Packet &p) override;
-	NetworkRecvStatus Receive_CLIENT_GAME_INFO(Packet &p) override;
-	NetworkRecvStatus Receive_CLIENT_AUTH_RESPONSE(Packet &p) override;
-	NetworkRecvStatus Receive_CLIENT_GETMAP(Packet &p) override;
-	NetworkRecvStatus Receive_CLIENT_MAP_OK(Packet &p) override;
-	NetworkRecvStatus Receive_CLIENT_ACK(Packet &p) override;
-	NetworkRecvStatus Receive_CLIENT_COMMAND(Packet &p) override;
-	NetworkRecvStatus Receive_CLIENT_CHAT(Packet &p) override;
-	NetworkRecvStatus Receive_CLIENT_SET_NAME(Packet &p) override;
-	NetworkRecvStatus Receive_CLIENT_QUIT(Packet &p) override;
-	NetworkRecvStatus Receive_CLIENT_ERROR(Packet &p) override;
-	NetworkRecvStatus Receive_CLIENT_RCON(Packet &p) override;
-	NetworkRecvStatus Receive_CLIENT_NEWGRFS_CHECKED(Packet &p) override;
-	NetworkRecvStatus Receive_CLIENT_MOVE(Packet &p) override;
+	NetworkRecvStatus ReceiveClientJoin(Packet &p) override;
+	NetworkRecvStatus ReceiveClientIdentify(Packet &p) override;
+	NetworkRecvStatus ReceiveClientGameInfo(Packet &p) override;
+	NetworkRecvStatus ReceiveClientAuthenticationResponse(Packet &p) override;
+	NetworkRecvStatus ReceiveClientGetMap(Packet &p) override;
+	NetworkRecvStatus ReceiveClientMapOk(Packet &p) override;
+	NetworkRecvStatus ReceiveClientAck(Packet &p) override;
+	NetworkRecvStatus ReceiveClientCommand(Packet &p) override;
+	NetworkRecvStatus ReceiveClientChat(Packet &p) override;
+	NetworkRecvStatus ReceiveClientSetName(Packet &p) override;
+	NetworkRecvStatus ReceiveClientQuit(Packet &p) override;
+	NetworkRecvStatus ReceiveClientError(Packet &p) override;
+	NetworkRecvStatus ReceiveClientRemoteConsoleCommand(Packet &p) override;
+	NetworkRecvStatus ReceiveClientNewGRFsChecked(Packet &p) override;
+	NetworkRecvStatus ReceiveClientMove(Packet &p) override;
 
 	NetworkRecvStatus SendGameInfo();
 	NetworkRecvStatus SendNewGRFCheck();
