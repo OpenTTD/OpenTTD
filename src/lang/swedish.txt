@@ -1598,7 +1598,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Den ursprunglig
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
-STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Terrängtyp: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Maxhöjd förval: {STRING}
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Välj höjden på kullar och berg i landskapet
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industritäthet: {STRING}
@@ -1626,7 +1626,13 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Lätt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Svår
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Väldigt svår
 
+STR_CONFIG_SETTING_AVERAGE_HEIGHT                               :Medelhöjd: {STRING}
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT                      :Välj medelhöjd på landnivå. "Automatisk" använder standardhöjd för klimatet: "Lågland" i subtropiskt, "Normalt" i tempererat/leksaksland och "Platåer" i subarktiskt.
 ###length 4
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUTO                          :Automatiskt
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_LOWLANDS                      :Lågland
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL                        :Normalt
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS                      :Platåer
 
 STR_CONFIG_SETTING_VARIETY                                      :Varierad distribution: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Välj om kartan ska innehålla både berg och flacka områden. Ju större variation desto större höjdskillnad mellan bergiga och flacka områden
@@ -2070,7 +2076,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Högsta upplösning som sprites ska använda: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Begränsa den maximala upplösningen för sprites. Begränsning av spritens upplösning hindrar användandet av högre upplösningar även om det finns tillgängligt. Detta kan hjälpa att hålla spelets utseende mer enhetlig vid användandet av flera olika GRF filer med högre och lägre upplösning
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Begränsa den maximala upplösningen för sprites. Begränsning av spritens upplösning hindrar användandet av högre upplösningar även om det finns tillgängligt. Detta kan hjälpa att hålla spelets utseende mer enhetlig vid användandet av flera olika NewGRF filer med högre och lägre upplösning
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2208,7 +2214,7 @@ STR_CONFIG_ERROR                                                :{WHITE}Problem 
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... fel i listan '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... ogiltigt värde '{STRING}' för '{STRING}'
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... extra tecken vid slutet av inställning '{STRING}'
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorerar NewGRF '{STRING}': GRF ID-dublett med '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorerar NewGRF '{STRING}': NewGRF ID-dublett med '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignorerar ogiltig NewGRF '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :hittades ej
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :osäker för statisk användning
@@ -3388,7 +3394,8 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Ökentä
 STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Öka ökentäckning med tio procent
 STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Minska ökentäckning med tio procent
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
-STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrängtyp:
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maxhöjd:
+STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}Medelhöjd:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Havsnivå
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Välj havsnivån
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Flod:
@@ -3624,7 +3631,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Felaktig parame
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} måste laddas in innan {2:STRING}
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} måste laddas in efter {2:STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} kräver OpenTTD version {2:STRING} eller bättre
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-filen den var designad att översätta
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :NewGRF-filen den var designad att översätta
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :För många NewGRFer är laddade
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Att ladda {1:STRING} som statisk NewGRF med {2:STRING} kan orsaka desynkronisering
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Oväntat spriteobjekt (spriteobjekt {3:NUM})
@@ -3633,7 +3640,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Försök att an
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} innehåller ett skadat spriteobjekt. Alla korrupta spriteobjekt kommer att visas som röda frågetecken (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Innehåller flera Action 8 (spriteobjekt {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Läste förbi slutet av pseudo-spriteobjekt (spriteobjekt {3:NUM})
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Efterfrågade GRF-resurser är inte tillgängliga (spriteobjekt {3:NUM})
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Efterfrågade NewGRF-resurser är inte tillgängliga (spriteobjekt {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} har inaktiverats av {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Felaktigt/okänt layout-format av spriteobjekt (spriteobjekt {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :För många poster i listan med egenskapsvärden (spriteobjekt {3:NUM}, egenskap {4:HEX})
@@ -3643,13 +3650,13 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Ogiltig industr
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varning!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du håller på att göra ändringar i ett pågående spel; detta kan krascha OpenTTD eller orsaka andra fel i spelet. Skicka inte buggrapporter om sådana fel.{}Är du helt säker på detta?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan inte lägga till filen: redan existerande GRF ID
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matchande fil saknas (kompatibel GRF laddad)
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan inte lägga till filen: redan existerande NewGRF ID
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matchande fil saknas (kompatibel NewGRF laddad)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Kan inte lägga till fil: Gränsen för NewGRF-filer uppnådd
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibel GRF laddad för saknade filer
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Saknad GRF-fil har stängts av
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Saknad(e) GRF-fil(er)
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibel NewGRF laddad för saknade filer
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Saknad NewGRF-fil har stängts av
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Saknad(e) NewGRF-fil(er)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Avpausning kan krascha OpenTTD. Skicka ej bugg-rapporter för eventuella resulterande krascher.{}Är du säker på att du vill avpausa?
 
 # NewGRF status
