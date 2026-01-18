@@ -171,7 +171,7 @@ static void AddCustomRefreshRates()
 	std::copy(monitor_rates.begin(), monitor_rates.end(), std::inserter(_refresh_rates, _refresh_rates.end()));
 }
 
-static inline int CalcScaleNMarks(int max_scale, int steps = _gui_scale_step)
+static inline int CalcScaleNMarks(int max_scale, int steps = GUI_SCALE_STEP)
 {
 	return (max_scale - MIN_INTERFACE_SCALE) / steps + 1;
 }

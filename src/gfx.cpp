@@ -62,7 +62,6 @@ ZoomLevel _gui_zoom = ZoomLevel::Normal; ///< GUI Zoom level
 ZoomLevel _font_zoom = _gui_zoom;           ///< Sprite font Zoom level (not clamped)
 int _gui_scale       = MIN_INTERFACE_SCALE; ///< GUI scale, 100 is 100%.
 int _gui_scale_cfg;                         ///< GUI scale in config.
-int _gui_scale_step = 25;					///< GUI scale step size.
 
 /**
  * The rect for repaint.
@@ -1796,7 +1795,7 @@ int GetMaxSafeGuiScale()
 	float xs = _screen.width / roundf(640.f / 1.25f);
 	float ys = _screen.height / roundf(480.f / 1.25f);
 	int scale = std::min(xs, ys) * 100;
-	return Clamp((scale / 25) * 25, MIN_INTERFACE_SCALE + 25, MAX_INTERFACE_SCALE);
+	return Clamp((scale / GUI_SCALE_STEP) * GUI_SCALE_STEP, MIN_INTERFACE_SCALE + GUI_SCALE_STEP, MAX_INTERFACE_SCALE);
 }
 
 int GetOptimalGuiScale()
@@ -1806,7 +1805,7 @@ int GetOptimalGuiScale()
 	float ys = _screen.height / 480.f;
 	int scale = std::min(xs, ys) * 100;
 	/* Round down scaling to 25% increments and clamp to limits. */
-	return Clamp((scale / 25) * 25, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE);
+	return Clamp((scale / GUI_SCALE_STEP) * GUI_SCALE_STEP, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE);
 }
 
 /**
