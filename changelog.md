@@ -1,5 +1,26 @@
 ## 15.x
 
+### 15.1 (2026-01-22)
+
+- Fix: Tile suitability test for farm field no longer handled snow tiles (#15134)
+- Fix #15131: Trees no longer spread on partially snowy tiles (#15133)
+- Fix: Change tooltips to match change from checkboxes to switches (#15123)
+- Fix: [Script] Potential out of bounds array/string slice indexes (#15106)
+- Fix: [Script] Potential out of bounds indexed string access (#15106)
+- Fix: [Script] Check if array sort function modified array (#15106)
+- Fix #15069: World generation map edges GUI starts in an invalid state (#15082)
+- Fix #15079: Incorrect dates shown on town cargo history graph (#15080)
+- Fix #15067: Mark NewGRF settings as modified after moving by drag & drop (#15068)
+- Fix: Incorrect error message for aqueducts reaching northern map borders (#14974)
+- Fix: Standardize wording of GRF/NewGRF (#15059)
+- Fix #15046: Crash on loading game due to invalid group parents (#15049)
+- Fix: Disable_elrails handling with engines that use both RAIL and ELRL (#15045)
+- Fix: [Fluidsynth] Read settings from system and user config files if available (#15044)
+- Fix #15039: Name and version can disappear from content list (#15040)
+- Fix #15026: Remove incorrect info from base sounds tooltip (#15029)
+- Fix: [Script] Improve reporting of invalid GetAPIVersion return (#15015)
+- Fix: [Script] Undefined behaviour after calling SwapList during iteration (#14805)
+
 ### 15.0 (2026-01-01)
 
 - Fix: Small ufos would loop over vehicles in depots forever (#15008)
