@@ -171,8 +171,7 @@ static void AddCustomRefreshRates()
 	std::copy(monitor_rates.begin(), monitor_rates.end(), std::inserter(_refresh_rates, _refresh_rates.end()));
 }
 
-static const int SCALE_STEP = 25; // 25% increments
-static inline int CalcScaleNMarks(int max_scale, int steps = SCALE_STEP)
+static inline int CalcScaleNMarks(int max_scale, int steps = _gui_scale_step)
 {
 	return (max_scale - MIN_INTERFACE_SCALE) / steps + 1;
 }
@@ -695,7 +694,7 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case WID_GO_GUI_SCALE:
-				DrawSliderWidget(r, GAME_OPTIONS_BACKGROUND, GAME_OPTIONS_BUTTON, TC_BLACK, MIN_INTERFACE_SCALE, this->GetMaxSafeGuiScale(), CalcScaleNMarks(this->GetMaxSafeGuiScale()), this->gui_scale, ScaleMarkFunc);
+				DrawSliderWidget(r, GAME_OPTIONS_BACKGROUND, GAME_OPTIONS_BUTTON, TC_BLACK, MIN_INTERFACE_SCALE, GetMaxSafeGuiScale(), CalcScaleNMarks(GetMaxSafeGuiScale()), this->gui_scale, ScaleMarkFunc);
 				break;
 
 			case WID_GO_VIDEO_DRIVER_INFO:
@@ -896,9 +895,6 @@ struct GameOptionsWindow : Window {
 
 	void OnPaint() override
 	{
-		/* Try to fix GUI scale before drawing. */
-		this->EnforceMaxSafeGuiScale();
-
 		if (GameOptionsWindow::active_tab != WID_GO_TAB_ADVANCED) {
 			this->DrawWidgets();
 			return;
@@ -1073,7 +1069,7 @@ struct GameOptionsWindow : Window {
 					this->SetWidgetDirty(WID_GO_GUI_SCALE_AUTO_TEXT);
 				}
 
-				if (ClickSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, MIN_INTERFACE_SCALE, this->GetMaxSafeGuiScale(), _ctrl_pressed ? 0 : CalcScaleNMarks(this->GetMaxSafeGuiScale()), this->gui_scale)) {
+				if (ClickSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, MIN_INTERFACE_SCALE, GetMaxSafeGuiScale(), _ctrl_pressed ? 0 : CalcScaleNMarks(GetMaxSafeGuiScale()), this->gui_scale)) {
 					this->gui_scale_changed = true;
 					this->SetWidgetDirty(widget);
 				}
@@ -1605,23 +1601,6 @@ struct GameOptionsWindow : Window {
 				GetSettingsTree().UnFoldAll();
 			}
 			this->InvalidateData();
-		}
-	}
-
-	int GetMaxSafeGuiScale() const
- 	{
-		int safe_max = (int) roundf((_screen.height / 4.0f) / (float) SCALE_STEP) * 25;
-		return std::clamp(safe_max, MIN_INTERFACE_SCALE + 25, MAX_INTERFACE_SCALE); /* Gives users additional 1/4 adjustment to max */
-	}
-
-	void EnforceMaxSafeGuiScale()
-	{
-		int max_gui_scale = this->GetMaxSafeGuiScale();
-
-		if (this->gui_scale > max_gui_scale) {
-			this->previous_gui_scale = this->gui_scale;
-			this->gui_scale = max_gui_scale;
-			this->gui_scale_changed = true;
 		}
 	}
 };

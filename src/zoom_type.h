@@ -53,6 +53,7 @@ static uint const ZOOM_BASE = 1U << ZOOM_BASE_SHIFT;
 
 extern int _gui_scale;
 extern int _gui_scale_cfg;
+extern int _gui_scale_step;
 
 extern ZoomLevel _gui_zoom;
 extern ZoomLevel _font_zoom;

@@ -62,6 +62,7 @@ ZoomLevel _gui_zoom = ZoomLevel::Normal; ///< GUI Zoom level
 ZoomLevel _font_zoom = _gui_zoom;           ///< Sprite font Zoom level (not clamped)
 int _gui_scale       = MIN_INTERFACE_SCALE; ///< GUI scale, 100 is 100%.
 int _gui_scale_cfg;                         ///< GUI scale in config.
+int _gui_scale_step = 25;					///< GUI scale step size.
 
 /**
  * The rect for repaint.
@@ -1763,7 +1764,13 @@ bool CursorVars::UpdateCursorPosition(int x, int y)
 
 bool ChangeResInGame(int width, int height)
 {
-	return (_screen.width == width && _screen.height == height) || VideoDriver::GetInstance()->ChangeResolution(width, height);
+	if (_screen.width == width && _screen.height == height) return true;
+
+	if (VideoDriver::GetInstance()->ChangeResolution(width, height)) {
+		AdjustGUIZoom(true);
+		return true;
+	}
+	return false;
 }
 
 bool ToggleFullScreen(bool fs)
@@ -1784,6 +1791,24 @@ void SortResolutions()
 	_resolutions.erase(last, _resolutions.end());
 }
 
+int GetMaxSafeGuiScale()
+{
+	float xs = _screen.width / roundf(640.f / 1.25f);
+	float ys = _screen.height / roundf(480.f / 1.25f);
+	int scale = std::min(xs, ys) * 100;
+	return Clamp((scale / 25) * 25, MIN_INTERFACE_SCALE + 25, MAX_INTERFACE_SCALE);
+}
+
+int GetOptimalGuiScale()
+{
+	/* Minimum design size of the game is 640x480. */
+	float xs = _screen.width / 640.f;
+	float ys = _screen.height / 480.f;
+	int scale = std::min(xs, ys) * 100;
+	/* Round down scaling to 25% increments and clamp to limits. */
+	return Clamp((scale / 25) * 25, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE);
+}
+
 /**
  * Resolve GUI zoom level, if auto-suggestion is requested.
  */
@@ -1791,14 +1816,10 @@ void UpdateGUIZoom()
 {
 	/* Determine real GUI zoom to use. */
 	if (_gui_scale_cfg == -1) {
-		/* Minimum design size of the game is 640x480. */
-		float xs = _screen.width / 640.f;
-		float ys = _screen.height / 480.f;
-		int scale = std::min(xs, ys) * 100;
-		/* Round down scaling to 25% increments and clamp to limits. */
-		_gui_scale = Clamp((scale / 25) * 25, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE);
+		_gui_scale = GetOptimalGuiScale();
 	} else {
-		_gui_scale = Clamp(_gui_scale_cfg, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE);
+		const int max_scale = GetMaxSafeGuiScale();
+		_gui_scale = _gui_scale_cfg > max_scale ? max_scale : Clamp(_gui_scale_cfg, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE);
 	}
 
 	ZoomLevel new_zoom = ScaleGUITrad(1) <= 1 ? ZoomLevel::Normal : ScaleGUITrad(1) >= 4 ? ZoomLevel::In4x : ZoomLevel::In2x;
