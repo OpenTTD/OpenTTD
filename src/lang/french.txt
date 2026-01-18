@@ -1116,7 +1116,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Sélectionner l
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Informations additionnelles sur les graphiques de base
 
 STR_GAME_OPTIONS_BASE_SFX                                       :Sons de base
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Sélectionner les sons de base à utiliser (ne peuvent pas être modifiés en jeu, que depuis le menu principal)
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Sélectionner les sons de base à utiliser
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Informations additionnelles sur les sons de base
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :Musique de base
@@ -2069,7 +2069,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Résolution maximale des sprites{NBSP}: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limite la résolution des graphismes. Même si des sprites de plus haute résolution sont disponibles, ils ne seront pas utilisés. Cela peut aider à garder un aspect cohérent quand plusieurs fichiers GRF avec des résolutions différentes sont utilisés
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limite la résolution des graphismes. Même si des sprites de plus haute résolution sont disponibles, ils ne seront pas utilisés. Cela peut aider à garder un aspect cohérent quand plusieurs fichiers NewGRF avec des résolutions différentes sont utilisés
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2205,7 +2205,7 @@ STR_CONFIG_ERROR                                                :{WHITE}Erreur d
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... erreur dans le tableau '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... valeur '{STRING}' invalide pour '{STRING}'
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... caractères superflus à la fin du paramètre '{STRING}'
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... NewGRF '{STRING}' ignoré{NBSP}: GRF ID en doublon avec '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... NewGRF '{STRING}' ignoré{NBSP}: NewGRF ID en doublon avec '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... NewGRF '{STRING}' invalide ignoré{NBSP}: {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :non trouvé
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :dangereux pour un usage statique
@@ -3621,7 +3621,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Paramètre inva
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} doit être chargé avant {2:STRING}
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} doit être chargé après {2:STRING}
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} nécessite OpenTTD version {2:STRING} ou supérieure
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :le fichier GRF qu'il doit traduire
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :le fichier NewGRF qu'il doit traduire
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Trop de NewGRFs sont chargés
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Charger {1:STRING} comme NewGRF statique avec {2:STRING} peut provoquer des erreurs de synchronisation
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite inattendu (sprite {3:NUM})
@@ -3630,7 +3630,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Tentative d'uti
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contient un sprite corrompu. Tous les sprites corrompus seront remplacés par un point d'interrogation rouge (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Présence multiple de l'Action 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lecture après la fin des pseudo-sprite (sprite {3:NUM})
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Indisponibilité de la ressource demandée (sprite {3:NUM})
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Indisponibilité des ressources NewGRF demandées (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} a été désactivé par {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Format de sprite invalide ou inconnu (sprite {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Trop d'éléments dans la liste des valeurs de la propriété (sprite {3:NUM}, propriété {4:HEX})
@@ -3640,13 +3640,13 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Fonction de rap
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Attention{NBSP}!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Vous êtes sur le point de faire des changements dans une partie en cours. Cela peut provoquer l'arrêt d'OpenTTD ou compromettre la partie en cours. Ne rapportez pas de bogues pour ces problèmes.{}Êtes-vous absolument sûr{NBSP}?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ajout impossible{NBSP}: GRF ID en double
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Module exact non trouvé (GRF compatible chargé)
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ajout impossible{NBSP}: NewGRF ID en doublon
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Module exact non trouvé (NewGRF compatible chargé)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Impossible d'ajouter le module{NBSP}: la limite des modules NewGRF a été atteinte
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) compatible(s) chargé(s) pour les modules absents
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Module(s) GRF absent(s) désactivés
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Module(s) GRF manquant(s)
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}NewGRF(s) compatible(s) chargé(s) pour les modules absents
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Module(s) NewGRF absent(s) désactivés
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Module(s) NewGRF manquant(s)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Retirer la pause peut faire planter OpenTTD. Ne pas envoyer de rapport de bug à cause de cela.{}Voulez-vous vraiment retirer la pause{NBSP}?
 
 # NewGRF status
