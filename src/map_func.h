@@ -81,6 +81,7 @@ private:
 
 	/** Common tile extended for all animated tiles. */
 	struct TileExtendedAnimatedCommon : TileExtendedCommon {
+		friend class Tile;
 	private:
 		/** Unused. Needs to be splited into two parts, because some compilers (like MSVC) can't fill bits from uint32_t with other types. @note Prevents save conversion. */
 		[[maybe_unused]] uint8_t bit_offset_1 = 0;
@@ -314,6 +315,8 @@ public:
 	{
 		return extended_tiles[this->tile.base()].old.m8;
 	}
+
+	void RunUnitTest();
 };
 
 /**

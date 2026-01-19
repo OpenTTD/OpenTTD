@@ -5,6 +5,7 @@ add_test_files(
     flatset_type.cpp
     history_func.cpp
     landscape_partial_pixel_z.cpp
+	map_storage.cpp
     math_func.cpp
     mock_environment.h
     mock_fontcache.h
