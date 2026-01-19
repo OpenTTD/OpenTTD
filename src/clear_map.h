@@ -51,10 +51,11 @@ inline ClearGround GetClearGround(Tile t)
 }
 
 /**
- * Set the type of clear tile.
- * @param t  the tile to set the clear ground type of
+ * Checks if the clear ground is of a certain type.
+ * @param t  the tile to check the ground type of
  * @param ct the ground type
  * @pre IsTileType(t, MP_CLEAR)
+ * @return Whether the tile's clear ground type matches the provided type.
  */
 inline bool IsClearGround(Tile t, ClearGround ct)
 {
