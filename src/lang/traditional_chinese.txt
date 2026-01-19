@@ -1062,7 +1062,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :選擇界面語
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING}（已完成 {NUM} ％）
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :全螢幕
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :啟用後，即可在全螢幕下遊玩 OpenTTD
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :開啟以使用全螢幕模式遊玩 OpenTTD
 
 STR_GAME_OPTIONS_RESOLUTION                                     :螢幕解析度
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :選擇螢幕解析度
@@ -1070,11 +1070,11 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :其他
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :硬體加速
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :啟用後，允許 OpenTTD 嘗試使用硬體加速。設定將會在遊戲重新啟動後套用
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :開啟以允許 OpenTTD 嘗試使用硬體加速。設定將會在遊戲重新啟動後套用
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}修改的設定將會在遊戲重啟後生效
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :垂直同步
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :啟用後，使用垂直同步 (V-SYNC)。此項設定將會在遊戲重啟後套用。只在使用硬體加速時可用
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :開啟以使用垂直同步（V-SYNC）。此項設定將會在遊戲重啟後套用。只在使用硬體加速時可用
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :使用中的驅動程式：{STRING}
 
@@ -1083,15 +1083,15 @@ STR_GAME_OPTIONS_INTERFACE                                      :界面
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :界面大小
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :拖曳滑動以設定界面大小。 按住 <Ctrl> 鍵以精準細緻調整
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :自動選取大小
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :啟用後，自動選取界面大小
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :開啟以自動選取界面大小
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :縮放邊框
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :啟用後，使邊框隨界面大小而縮放
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :開啟以使邊框隨界面大小而縮放
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :使用傳統點陣式字體
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :啟用後，使用固定大小的傳統點陣式字體
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :開啟以使用固定大小的傳統點陣式字體
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :反鋸齒字體
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :啟用後，使用反鋸齒字體
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :開啟以使用反鋸齒字體
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 

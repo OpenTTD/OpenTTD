@@ -1155,7 +1155,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Επιλογή 
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% ολοκλήρωση)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :Πλήρης οθόνη
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Τσεκάρετε αυτό το κουτάκι ωστε να παίξετε το OpenTTD σε όλη την οθόνη
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Τσεκάρετέ το ωστε να παίξετε το OpenTTD σε όλη την οθόνη
 
 STR_GAME_OPTIONS_RESOLUTION                                     :Ανάλυση οθόνης
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Διαλέξτε την ανάλυση της οθόνης
@@ -1163,11 +1163,11 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :άλλη
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Επιτάχυνση υλικού
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Τσεκάρετε αυτό το κουτί για να επιτρέψετε στο OpenTTD να δοκιμάσει να χρησιμοποιήσει την επιτάχυνση υλικού. Η αλλαγή αυτή θα εφαρμοστεί μόνο μετά από επανεκκίνηση του παιχνιδιού
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Τσεκάρετέ το για να επιτρέψετε στο OpenTTD να δοκιμάσει να χρησιμοποιήσει την επιτάχυνση υλικού. Η αλλαγή αυτή θα εφαρμοστεί μόνο μετά από επανεκκίνηση του παιχνιδιού
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Η ρύθμιση θα εφαρμοστεί μόνο μετά από επανεκκίνηση του παιχνιδιού
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Τσεκάρετε αυτό το κουτί για να ενεργοποιήσετε το v-sync (κάθετος συγχρονισμός) στην οθόνη. Η αλλαγή αυτή θα εφαρμοστεί μετά από επανεκκίνηση του παιχνιδιού. Λειτουργεί μόνο με ενεργοποιημένη την επιτάχυνση υλικού
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Τσεκάρετέ το για να ενεργοποιήσετε το v-sync (κάθετος συγχρονισμός) στην οθόνη. Η αλλαγή αυτή θα εφαρμοστεί μετά από επανεκκίνηση του παιχνιδιού. Λειτουργεί μόνο με ενεργοποιημένη την επιτάχυνση υλικού
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Τρέχων οδηγός: {STRING}
 
@@ -1176,15 +1176,15 @@ STR_GAME_OPTIONS_INTERFACE                                      :Διεπαφή
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Μέγεθος διεπαφής
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Σύρετε το κουμπί για να ορίσετε το μέγεθος της διεπαφής. Ctrl+Σύρσιμο για συνεχή προσαρμογή
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Αυτόματος εντοπισμός μεγέθους
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Τσεκάρετε αυτό το κουτάκι για να ανιχνεύεται το μέγεθος της διεπαφής αυτόματα
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Τσεκάρετέ το για να ανιχνεύεται το μέγεθος της διεπαφής αυτόματα
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Κλίση κλίμακας
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Τσεκάρετε αυτό το κουτί για να αλλάζει μέγεθος το περίγραμμα με βάση το μέγεθος της διεπαφής
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Τσεκάρετέ το για να αλλάζει μέγεθος το περίγραμμα με βάση το μέγεθος της διεπαφής
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Χρήση παραδοσιακής γραμματοσειράς
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Τσεκάρετε αυτό το κουτάκι εάν προτιμάτε να χρησιμοποιήσετε την παραδοσιακή γραμματοσειρά σταθερού μεγέθους
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Τσεκάρετέ το αν προτιμάτε να χρησιμοποιήσετε την παραδοσιακή γραμματοσειρά σταθερού μεγέθους
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Εξομάλυνση εμφάνισης γραμματοσειράς
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Τσεκάρετε αυτό το κουτάκι για εξομάλυνση εμφάνισης γραμματοσειράς μεταβλητού μεγέθους
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Τσεκάρετέ το για εξομάλυνση εμφάνισης γραμματοσειράς μεταβλητού μεγέθους
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
