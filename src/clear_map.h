@@ -21,7 +21,6 @@ enum ClearGround : uint8_t {
 	CLEAR_ROUGH  = 1, ///< 3
 	CLEAR_ROCKS  = 2, ///< 3
 	CLEAR_FIELDS = 3, ///< 3
-	CLEAR_SNOW   = 4, ///< 0-3 (Not stored in map.)
 	CLEAR_DESERT = 5, ///< 1,3
 };
 
