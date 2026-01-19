@@ -1002,8 +1002,8 @@ static bool IsSuitableForFarmField(TileIndex tile, bool allow_fields, bool allow
 {
 	switch (GetTileType(tile)) {
 		case MP_CLEAR:
+			if (IsSnowTile(tile)) return false;
 			switch (GetClearGround(tile)) {
-				case CLEAR_SNOW: return false;
 				case CLEAR_DESERT: return false;
 				case CLEAR_ROUGH: return allow_rough;
 				case CLEAR_FIELDS: return allow_fields;
