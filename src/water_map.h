@@ -79,7 +79,7 @@ bool IsPossibleDockingTile(Tile t);
  */
 inline WaterTileType GetWaterTileType(Tile t)
 {
-	assert(IsTileType(t, MP_WATER));
+	assert(IsTileType(t, TileType::Water));
 	return static_cast<WaterTileType>(GB(t.m5(), WBL_TYPE_BEGIN, WBL_TYPE_COUNT));
 }
 
@@ -90,7 +90,7 @@ inline WaterTileType GetWaterTileType(Tile t)
  */
 inline void SetWaterTileType(Tile t, WaterTileType type)
 {
-	assert(IsTileType(t, MP_WATER));
+	assert(IsTileType(t, TileType::Water));
 	SB(t.m5(), WBL_TYPE_BEGIN, WBL_TYPE_COUNT, to_underlying(type));
 }
 
@@ -102,13 +102,13 @@ inline void SetWaterTileType(Tile t, WaterTileType type)
  */
 inline bool HasTileWaterClass(Tile t)
 {
-	return IsTileType(t, MP_WATER) || IsTileType(t, MP_STATION) || IsTileType(t, MP_INDUSTRY) || IsTileType(t, MP_OBJECT) || IsTileType(t, MP_TREES);
+	return IsTileType(t, TileType::Water) || IsTileType(t, TileType::Station) || IsTileType(t, TileType::Industry) || IsTileType(t, TileType::Object) || IsTileType(t, TileType::Trees);
 }
 
 /**
  * Get the water class at a tile.
  * @param t Water tile to query.
- * @pre IsTileType(t, MP_WATER) || IsTileType(t, MP_STATION) || IsTileType(t, MP_INDUSTRY) || IsTileType(t, MP_OBJECT)
+ * @pre IsTileType(t, TileType::Water) || IsTileType(t, TileType::Station) || IsTileType(t, TileType::Industry) || IsTileType(t, TileType::Object)
  * @return Water class at the tile.
  */
 inline WaterClass GetWaterClass(Tile t)
@@ -121,7 +121,7 @@ inline WaterClass GetWaterClass(Tile t)
  * Set the water class at a tile.
  * @param t  Water tile to change.
  * @param wc New water class.
- * @pre IsTileType(t, MP_WATER) || IsTileType(t, MP_STATION) || IsTileType(t, MP_INDUSTRY) || IsTileType(t, MP_OBJECT)
+ * @pre IsTileType(t, TileType::Water) || IsTileType(t, TileType::Station) || IsTileType(t, TileType::Industry) || IsTileType(t, TileType::Object)
  */
 inline void SetWaterClass(Tile t, WaterClass wc)
 {
@@ -132,7 +132,7 @@ inline void SetWaterClass(Tile t, WaterClass wc)
 /**
  * Tests if the tile was built on water.
  * @param t the tile to check
- * @pre IsTileType(t, MP_WATER) || IsTileType(t, MP_STATION) || IsTileType(t, MP_INDUSTRY) || IsTileType(t, MP_OBJECT)
+ * @pre IsTileType(t, TileType::Water) || IsTileType(t, TileType::Station) || IsTileType(t, TileType::Industry) || IsTileType(t, TileType::Object)
  * @return true iff on water
  */
 inline bool IsTileOnWater(Tile t)
@@ -144,7 +144,7 @@ inline bool IsTileOnWater(Tile t)
  * Is it a plain water tile?
  * @param t Water tile to query.
  * @return \c true if any type of clear water like ocean, river, or canal.
- * @pre IsTileType(t, MP_WATER)
+ * @pre IsTileType(t, TileType::Water)
  */
 inline bool IsWater(Tile t)
 {
@@ -155,7 +155,7 @@ inline bool IsWater(Tile t)
  * Is it a sea water tile?
  * @param t Water tile to query.
  * @return \c true if it is a sea water tile.
- * @pre IsTileType(t, MP_WATER)
+ * @pre IsTileType(t, TileType::Water)
  */
 inline bool IsSea(Tile t)
 {
@@ -166,7 +166,7 @@ inline bool IsSea(Tile t)
  * Is it a canal tile?
  * @param t Water tile to query.
  * @return \c true if it is a canal tile.
- * @pre IsTileType(t, MP_WATER)
+ * @pre IsTileType(t, TileType::Water)
  */
 inline bool IsCanal(Tile t)
 {
@@ -177,7 +177,7 @@ inline bool IsCanal(Tile t)
  * Is it a river water tile?
  * @param t Water tile to query.
  * @return \c true if it is a river water tile.
- * @pre IsTileType(t, MP_WATER)
+ * @pre IsTileType(t, TileType::Water)
  */
 inline bool IsRiver(Tile t)
 {
@@ -191,14 +191,14 @@ inline bool IsRiver(Tile t)
  */
 inline bool IsWaterTile(Tile t)
 {
-	return IsTileType(t, MP_WATER) && IsWater(t);
+	return IsTileType(t, TileType::Water) && IsWater(t);
 }
 
 /**
  * Is it a coast tile?
  * @param t Water tile to query.
  * @return \c true if it is a sea water tile.
- * @pre IsTileType(t, MP_WATER)
+ * @pre IsTileType(t, TileType::Water)
  */
 inline bool IsCoast(Tile t)
 {
@@ -212,14 +212,14 @@ inline bool IsCoast(Tile t)
  */
 inline bool IsCoastTile(Tile t)
 {
-	return (IsTileType(t, MP_WATER) && IsCoast(t)) || (IsTileType(t, MP_TREES) && GetWaterClass(t) != WaterClass::Invalid);
+	return (IsTileType(t, TileType::Water) && IsCoast(t)) || (IsTileType(t, TileType::Trees) && GetWaterClass(t) != WaterClass::Invalid);
 }
 
 /**
  * Is it a water tile with a ship depot on it?
  * @param t Water tile to query.
  * @return \c true if it is a ship depot tile.
- * @pre IsTileType(t, MP_WATER)
+ * @pre IsTileType(t, TileType::Water)
  */
 inline bool IsShipDepot(Tile t)
 {
@@ -233,7 +233,7 @@ inline bool IsShipDepot(Tile t)
  */
 inline bool IsShipDepotTile(Tile t)
 {
-	return IsTileType(t, MP_WATER) && IsShipDepot(t);
+	return IsTileType(t, TileType::Water) && IsShipDepot(t);
 }
 
 /**
@@ -300,7 +300,7 @@ inline TileIndex GetShipDepotNorthTile(Tile t)
  * Is there a lock on a given water tile?
  * @param t Water tile to query.
  * @return \c true if it is a water lock tile.
- * @pre IsTileType(t, MP_WATER)
+ * @pre IsTileType(t, TileType::Water)
  */
 inline bool IsLock(Tile t)
 {
@@ -311,7 +311,7 @@ inline bool IsLock(Tile t)
  * Get the direction of the water lock.
  * @param t Water tile to query.
  * @return Direction of the lock.
- * @pre IsTileType(t, MP_WATER) && IsLock(t)
+ * @pre IsTileType(t, TileType::Water) && IsLock(t)
  */
 inline DiagDirection GetLockDirection(Tile t)
 {
@@ -323,7 +323,7 @@ inline DiagDirection GetLockDirection(Tile t)
  * Get the part of a lock.
  * @param t Water tile to query.
  * @return The part.
- * @pre IsTileType(t, MP_WATER) && IsLock(t)
+ * @pre IsTileType(t, TileType::Water) && IsLock(t)
  */
 inline LockPart GetLockPart(Tile t)
 {
@@ -335,11 +335,11 @@ inline LockPart GetLockPart(Tile t)
  * Get the random bits of the water tile.
  * @param t Water tile to query.
  * @return Random bits of the tile.
- * @pre IsTileType(t, MP_WATER)
+ * @pre IsTileType(t, TileType::Water)
  */
 inline uint8_t GetWaterTileRandomBits(Tile t)
 {
-	assert(IsTileType(t, MP_WATER));
+	assert(IsTileType(t, TileType::Water));
 	return t.m4();
 }
 
@@ -362,7 +362,7 @@ inline bool HasTileWaterGround(Tile t)
  */
 inline void SetDockingTile(Tile t, bool b)
 {
-	assert(IsTileType(t, MP_WATER) || IsTileType(t, MP_RAILWAY) || IsTileType(t, MP_STATION) || IsTileType(t, MP_TUNNELBRIDGE));
+	assert(IsTileType(t, TileType::Water) || IsTileType(t, TileType::Railway) || IsTileType(t, TileType::Station) || IsTileType(t, TileType::TunnelBridge));
 	AssignBit(t.m1(), 7, b);
 }
 
@@ -372,7 +372,7 @@ inline void SetDockingTile(Tile t, bool b)
  */
 inline bool IsDockingTile(Tile t)
 {
-	return (IsTileType(t, MP_WATER) || IsTileType(t, MP_RAILWAY) || IsTileType(t, MP_STATION) || IsTileType(t, MP_TUNNELBRIDGE)) && HasBit(t.m1(), 7);
+	return (IsTileType(t, TileType::Water) || IsTileType(t, TileType::Railway) || IsTileType(t, TileType::Station) || IsTileType(t, TileType::TunnelBridge)) && HasBit(t.m1(), 7);
 }
 
 
@@ -382,7 +382,7 @@ inline bool IsDockingTile(Tile t)
  */
 inline void MakeShore(Tile t)
 {
-	SetTileType(t, MP_WATER);
+	SetTileType(t, TileType::Water);
 	SetTileOwner(t, OWNER_WATER);
 	SetWaterClass(t, WaterClass::Sea);
 	SetDockingTile(t, false);
@@ -405,7 +405,7 @@ inline void MakeShore(Tile t)
  */
 inline void MakeWater(Tile t, Owner o, WaterClass wc, uint8_t random_bits)
 {
-	SetTileType(t, MP_WATER);
+	SetTileType(t, TileType::Water);
 	SetTileOwner(t, o);
 	SetWaterClass(t, wc);
 	SetDockingTile(t, false);
@@ -461,7 +461,7 @@ inline void MakeCanal(Tile t, Owner o, uint8_t random_bits)
  */
 inline void MakeShipDepot(Tile t, Owner o, DepotID did, DepotPart part, Axis a, WaterClass original_water_class)
 {
-	SetTileType(t, MP_WATER);
+	SetTileType(t, TileType::Water);
 	SetTileOwner(t, o);
 	SetWaterClass(t, original_water_class);
 	SetDockingTile(t, false);
@@ -486,7 +486,7 @@ inline void MakeShipDepot(Tile t, Owner o, DepotID did, DepotPart part, Axis a, 
  */
 inline void MakeLockTile(Tile t, Owner o, LockPart part, DiagDirection dir, WaterClass original_water_class)
 {
-	SetTileType(t, MP_WATER);
+	SetTileType(t, TileType::Water);
 	SetTileOwner(t, o);
 	SetWaterClass(t, original_water_class);
 	SetDockingTile(t, false);
@@ -529,7 +529,7 @@ inline void MakeLock(Tile t, Owner o, DiagDirection d, WaterClass wc_lower, Wate
  */
 inline void SetNonFloodingWaterTile(Tile t, bool b)
 {
-	assert(IsTileType(t, MP_WATER));
+	assert(IsTileType(t, TileType::Water));
 	AssignBit(t.m3(), 0, b);
 }
 /**
@@ -538,7 +538,7 @@ inline void SetNonFloodingWaterTile(Tile t, bool b)
  */
 inline bool IsNonFloodingWaterTile(Tile t)
 {
-	assert(IsTileType(t, MP_WATER));
+	assert(IsTileType(t, TileType::Water));
 	return HasBit(t.m3(), 0);
 }
 

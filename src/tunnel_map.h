@@ -17,12 +17,12 @@
 /**
  * Is this a tunnel (entrance)?
  * @param t the tile that might be a tunnel
- * @pre IsTileType(t, MP_TUNNELBRIDGE)
+ * @pre IsTileType(t, TileType::TunnelBridge)
  * @return true if and only if this tile is a tunnel (entrance)
  */
 inline bool IsTunnel(Tile t)
 {
-	assert(IsTileType(t, MP_TUNNELBRIDGE));
+	assert(IsTileType(t, TileType::TunnelBridge));
 	return !HasBit(t.m5(), 7);
 }
 
@@ -33,7 +33,7 @@ inline bool IsTunnel(Tile t)
  */
 inline bool IsTunnelTile(Tile t)
 {
-	return IsTileType(t, MP_TUNNELBRIDGE) && IsTunnel(t);
+	return IsTileType(t, TileType::TunnelBridge) && IsTunnel(t);
 }
 
 TileIndex GetOtherTunnelEnd(TileIndex);
@@ -49,7 +49,7 @@ bool IsTunnelInWayDir(TileIndex tile, int z, DiagDirection dir);
  */
 inline void MakeRoadTunnel(Tile t, Owner o, DiagDirection d, RoadType road_rt, RoadType tram_rt)
 {
-	SetTileType(t, MP_TUNNELBRIDGE);
+	SetTileType(t, TileType::TunnelBridge);
 	SetTileOwner(t, o);
 	t.m2() = 0;
 	t.m3() = 0;
@@ -72,7 +72,7 @@ inline void MakeRoadTunnel(Tile t, Owner o, DiagDirection d, RoadType road_rt, R
  */
 inline void MakeRailTunnel(Tile t, Owner o, DiagDirection d, RailType r)
 {
-	SetTileType(t, MP_TUNNELBRIDGE);
+	SetTileType(t, TileType::TunnelBridge);
 	SetTileOwner(t, o);
 	t.m2() = 0;
 	t.m3() = 0;

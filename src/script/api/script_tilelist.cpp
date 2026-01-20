@@ -109,7 +109,7 @@ void ScriptTileList::RemoveTile(TileIndex tile)
 static void FillIndustryCatchment(const Industry *i, SQInteger radius, BitmapTileArea &bta)
 {
 	for (TileIndex cur_tile : i->location) {
-		if (!::IsTileType(cur_tile, MP_INDUSTRY) || ::GetIndustryIndex(cur_tile) != i->index) continue;
+		if (!::IsTileType(cur_tile, TileType::Industry) || ::GetIndustryIndex(cur_tile) != i->index) continue;
 
 		int tx = TileX(cur_tile);
 		int ty = TileY(cur_tile);
@@ -119,7 +119,7 @@ static void FillIndustryCatchment(const Industry *i, SQInteger radius, BitmapTil
 				if (tx + x < 0 || tx + x > (int)Map::MaxX()) continue;
 				TileIndex tile = TileXY(tx + x, ty + y);
 				if (!IsValidTile(tile)) continue;
-				if (::IsTileType(tile, MP_INDUSTRY) && ::GetIndustryIndex(tile) == i->index) continue;
+				if (::IsTileType(tile, TileType::Industry) && ::GetIndustryIndex(tile) == i->index) continue;
 				bta.SetTile(tile);
 			}
 		}
@@ -194,7 +194,7 @@ ScriptTileList_StationType::ScriptTileList_StationType(StationID station_id, Scr
 
 	TileArea ta(::TileXY(rect->left, rect->top), rect->Width(), rect->Height());
 	for (TileIndex cur_tile : ta) {
-		if (!::IsTileType(cur_tile, MP_STATION)) continue;
+		if (!::IsTileType(cur_tile, TileType::Station)) continue;
 		if (::GetStationIndex(cur_tile) != station_id) continue;
 		if (!station_types.Test(::GetStationType(cur_tile))) continue;
 		this->AddTile(cur_tile);

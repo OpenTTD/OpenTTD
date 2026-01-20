@@ -82,11 +82,11 @@ static void GenerateRockyArea(TileIndex end, TileIndex start)
 
 	for (TileIndex tile : ta) {
 		switch (GetTileType(tile)) {
-			case MP_TREES:
+			case TileType::Trees:
 				if (GetTreeGround(tile) == TREE_GROUND_SHORE) continue;
 				[[fallthrough]];
 
-			case MP_CLEAR:
+			case TileType::Clear:
 				MakeClear(tile, CLEAR_ROCKS, 3);
 				break;
 
@@ -112,7 +112,7 @@ static void GenerateRockyArea(TileIndex end, TileIndex start)
 bool GUIPlaceProcDragXY(ViewportDragDropSelectionProcess proc, TileIndex start_tile, TileIndex end_tile)
 {
 	if (!_settings_game.construction.freeform_edges) {
-		/* When end_tile is MP_VOID, the error tile will not be visible to the
+		/* When end_tile is TileType::Void, the error tile will not be visible to the
 		 * user. This happens when terraforming at the southern border. */
 		if (TileX(end_tile) == Map::MaxX()) end_tile += TileDiffXY(-1, 0);
 		if (TileY(end_tile) == Map::MaxY()) end_tile += TileDiffXY(0, -1);
@@ -275,7 +275,7 @@ struct TerraformToolbarWindow : Window {
 					break;
 				case DDSP_BUILD_OBJECT:
 					if (!_settings_game.construction.freeform_edges) {
-						/* When end_tile is MP_VOID, the error tile will not be visible to the
+						/* When end_tile is TileType::Void, the error tile will not be visible to the
 						 * user. This happens when terraforming at the southern border. */
 						if (TileX(end_tile) == Map::MaxX()) end_tile += TileDiffXY(-1, 0);
 						if (TileY(end_tile) == Map::MaxY()) end_tile += TileDiffXY(0, -1);

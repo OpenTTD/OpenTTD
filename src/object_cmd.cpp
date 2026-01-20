@@ -60,12 +60,12 @@ INSTANTIATE_POOL_METHODS(Object)
 /**
  * Gets the ObjectType of the given object tile
  * @param t the tile to get the type from.
- * @pre IsTileType(t, MP_OBJECT)
+ * @pre IsTileType(t, TileType::Object)
  * @return the type.
  */
 ObjectType GetObjectType(Tile t)
 {
-	assert(IsTileType(t, MP_OBJECT));
+	assert(IsTileType(t, TileType::Object));
 	return Object::GetByTile(t)->type;
 }
 
@@ -265,7 +265,7 @@ CommandCost CmdBuildObject(DoCommandFlags flags, TileIndex tile, ObjectType type
 
 				/* When relocating HQ, allow it to be relocated (partial) on itself. */
 				if (!(type == OBJECT_HQ &&
-						IsTileType(t, MP_OBJECT) &&
+						IsTileType(t, TileType::Object) &&
 						IsTileOwner(t, _current_company) &&
 						IsObjectType(t, OBJECT_HQ))) {
 					cost.AddCost(Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlags{flags}.Reset(DoCommandFlag::Execute), t));
@@ -329,7 +329,7 @@ CommandCost CmdBuildObject(DoCommandFlags flags, TileIndex tile, ObjectType type
 			break;
 
 		case OBJECT_OWNED_LAND:
-			if (IsTileType(tile, MP_OBJECT) &&
+			if (IsTileType(tile, TileType::Object) &&
 					IsTileOwner(tile, _current_company) &&
 					IsObjectType(tile, OBJECT_OWNED_LAND)) {
 				return CommandCost(STR_ERROR_YOU_ALREADY_OWN_IT);
@@ -769,11 +769,11 @@ static bool TryBuildLightHouse()
 	}
 
 	/* Only build lighthouses at tiles where the border is sea. */
-	if (!IsTileType(tile, MP_WATER) || GetWaterClass(tile) != WaterClass::Sea) return false;
+	if (!IsTileType(tile, TileType::Water) || GetWaterClass(tile) != WaterClass::Sea) return false;
 
 	for (int j = 0; j < 19; j++) {
 		int h;
-		if (IsTileType(tile, MP_CLEAR) && IsTileFlat(tile, &h) && h <= 2 && !IsBridgeAbove(tile)) {
+		if (IsTileType(tile, TileType::Clear) && IsTileFlat(tile, &h) && h <= 2 && !IsBridgeAbove(tile)) {
 			for (auto t : SpiralTileSequence(tile, 9)) {
 				if (IsObjectTypeTile(t, OBJECT_LIGHTHOUSE)) return false;
 			}
@@ -795,7 +795,7 @@ static bool TryBuildTransmitter()
 {
 	TileIndex tile = RandomTile();
 	int h;
-	if (IsTileType(tile, MP_CLEAR) && IsTileFlat(tile, &h) && h >= 4 && !IsBridgeAbove(tile)) {
+	if (IsTileType(tile, TileType::Clear) && IsTileFlat(tile, &h) && h >= 4 && !IsBridgeAbove(tile)) {
 		for (auto t : SpiralTileSequence(tile, 9)) {
 			if (IsObjectTypeTile(t, OBJECT_TRANSMITTER)) return false;
 		}
@@ -814,12 +814,12 @@ void GenerateObjects()
 	uint num_water_tiles = 0;
 	if (_settings_game.construction.freeform_edges) {
 		for (uint x = 0; x < Map::MaxX(); x++) {
-			if (IsTileType(TileXY(x, 1), MP_WATER)) num_water_tiles++;
-			if (IsTileType(TileXY(x, Map::MaxY() - 1), MP_WATER)) num_water_tiles++;
+			if (IsTileType(TileXY(x, 1), TileType::Water)) num_water_tiles++;
+			if (IsTileType(TileXY(x, Map::MaxY() - 1), TileType::Water)) num_water_tiles++;
 		}
 		for (uint y = 1; y < Map::MaxY() - 1; y++) {
-			if (IsTileType(TileXY(1, y), MP_WATER)) num_water_tiles++;
-			if (IsTileType(TileXY(Map::MaxX() - 1, y), MP_WATER)) num_water_tiles++;
+			if (IsTileType(TileXY(1, y), TileType::Water)) num_water_tiles++;
+			if (IsTileType(TileXY(Map::MaxX() - 1, y), TileType::Water)) num_water_tiles++;
 		}
 	}
 
@@ -834,7 +834,7 @@ void GenerateObjects()
 		/* Scale by map size */
 		if (spec.flags.Test(ObjectFlag::ScaleByWater) && _settings_game.construction.freeform_edges) {
 			/* Scale the amount of lighthouses with the amount of land at the borders.
-			 * The -6 is because the top borders are MP_VOID (-2) and all corners
+			 * The -6 is because the top borders are TileType::Void (-2) and all corners
 			 * are counted twice (-4). */
 			amount = Map::ScaleBySize1D(amount * num_water_tiles) / (2 * Map::MaxY() + 2 * Map::MaxX() - 6);
 		} else if (spec.flags.Test(ObjectFlag::ScaleByWater)) {

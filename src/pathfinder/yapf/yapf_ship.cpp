@@ -389,7 +389,7 @@ public:
 		if (speed_frac > 0) c += YAPF_TILE_LENGTH * (1 + follower->tiles_skipped) * speed_frac / (256 - speed_frac);
 
 		/* Lock penalty. */
-		if (IsTileType(n.GetTile(), MP_WATER) && IsLock(n.GetTile()) && GetLockPart(n.GetTile()) == LockPart::Middle) {
+		if (IsTileType(n.GetTile(), TileType::Water) && IsLock(n.GetTile()) && GetLockPart(n.GetTile()) == LockPart::Middle) {
 			const uint canal_speed = svi->ApplyWaterClassSpeedFrac(svi->max_speed, false);
 			/* Cost is proportional to the vehicle's speed as the vehicle stops in the lock. */
 			c += (TILE_HEIGHT * YAPF_TILE_LENGTH * canal_speed) / 128;

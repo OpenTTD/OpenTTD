@@ -149,7 +149,7 @@ void CcRailDepot(Commands, const CommandCost &result, TileIndex tile, RailType, 
 
 	tile += TileOffsByDiagDir(dir);
 
-	if (IsTileType(tile, MP_RAILWAY)) {
+	if (IsTileType(tile, TileType::Railway)) {
 		PlaceExtraDepotRail(tile, _place_depot_extra_dir[dir], _place_depot_extra_track[dir]);
 
 		/* Don't place the rail straight out of the depot of there is another depot across from it. */
@@ -1948,8 +1948,8 @@ static void SetDefaultRailGui()
 			/* Find the most used rail type */
 			std::array<uint, RAILTYPE_END> count{};
 			for (const auto t : Map::Iterate()) {
-				if (IsTileType(t, MP_RAILWAY) || IsLevelCrossingTile(t) || HasStationTileRail(t) ||
-						(IsTileType(t, MP_TUNNELBRIDGE) && GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL)) {
+				if (IsTileType(t, TileType::Railway) || IsLevelCrossingTile(t) || HasStationTileRail(t) ||
+						(IsTileType(t, TileType::TunnelBridge) && GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL)) {
 					count[GetRailType(t)]++;
 				}
 			}

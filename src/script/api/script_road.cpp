@@ -37,7 +37,7 @@
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return (::IsTileType(tile, MP_ROAD) && ::GetRoadTileType(tile) != RoadTileType::Depot) ||
+	return (::IsTileType(tile, TileType::Road) && ::GetRoadTileType(tile) != RoadTileType::Depot) ||
 			IsDriveThroughRoadStationTile(tile);
 }
 
@@ -46,7 +46,7 @@
 	if (!::IsValidTile(tile)) return false;
 	if (!IsRoadTypeAvailable(GetCurrentRoadType())) return false;
 
-	return ::IsTileType(tile, MP_ROAD) && ::GetRoadTileType(tile) == RoadTileType::Depot &&
+	return ::IsTileType(tile, TileType::Road) && ::GetRoadTileType(tile) == RoadTileType::Depot &&
 			::GetPresentRoadTypes(tile).Test(::RoadType(GetCurrentRoadType()));
 }
 
@@ -467,10 +467,10 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	if (!::GetPresentRoadTypes(neighbour_tile).Test(rt)) return false;
 
 	switch (::GetTileType(neighbour_tile)) {
-		case MP_ROAD:
+		case TileType::Road:
 			return (::GetRoadTileType(neighbour_tile) != RoadTileType::Depot);
 
-		case MP_STATION:
+		case TileType::Station:
 			if (::IsDriveThroughStopTile(neighbour_tile)) {
 				return ::DiagDirToAxis(neighbour) == ::GetDriveThroughStopAxis(neighbour_tile);
 			}
@@ -625,7 +625,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 {
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, ::IsValidTile(tile));
-	EnforcePrecondition(false, IsTileType(tile, MP_ROAD))
+	EnforcePrecondition(false, IsTileType(tile, TileType::Road))
 	EnforcePrecondition(false, GetRoadTileType(tile) == RoadTileType::Depot);
 
 	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile);
@@ -635,7 +635,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 {
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, ::IsValidTile(tile));
-	EnforcePrecondition(false, IsTileType(tile, MP_STATION));
+	EnforcePrecondition(false, IsTileType(tile, TileType::Station));
 	EnforcePrecondition(false, IsStationRoadStop(tile));
 
 	return ScriptObject::Command<CMD_REMOVE_ROAD_STOP>::Do(tile, 1, 1, GetRoadStopType(tile), false);

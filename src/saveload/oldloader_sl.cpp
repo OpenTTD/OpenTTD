@@ -53,7 +53,7 @@ static void FixTTDMapArray()
 {
 	for (auto tile : Map::Iterate()) {
 		switch (GetTileType(tile)) {
-			case MP_STATION:
+			case TileType::Station:
 				tile.m4() = 0; // We do not understand this TTDP station mapping (yet)
 				switch (tile.m5()) {
 					/* We have drive through stops at a totally different place */
@@ -65,7 +65,7 @@ static void FixTTDMapArray()
 				}
 				break;
 
-			case MP_RAILWAY:
+			case TileType::Railway:
 				/* We save presignals different from TTDPatch, convert them */
 				if (GB(tile.m5(), 6, 2) == 1) { // RailTileType::Signals
 					/* This byte is always zero in TTD for this type of tile */
@@ -78,10 +78,10 @@ static void FixTTDMapArray()
 				tile.m4() &= 0xF; // Only keep the lower four bits; upper four is PBS
 				break;
 
-			case MP_WATER:
+			case TileType::Water:
 				/* if water class == 3, make river there */
 				if (GB(tile.m3(), 0, 2) == 3) {
-					SetTileType(tile, MP_WATER);
+					SetTileType(tile, TileType::Water);
 					SetTileOwner(tile, OWNER_WATER);
 					tile.m2() = 0;
 					tile.m3() = 2; // WaterClass::River
@@ -184,7 +184,7 @@ void FixOldVehicles(LoadgameState &ls)
 			if (rv->state != RVSB_IN_DEPOT && rv->state != RVSB_WORMHOLE) {
 				ClrBit(rv->state, 2);
 				Tile tile(rv->tile);
-				if (IsTileType(tile, MP_STATION) && tile.m5() >= 168) {
+				if (IsTileType(tile, TileType::Station) && tile.m5() >= 168) {
 					/* Update the vehicle's road state to show we're in a drive through road stop. */
 					SetBit(rv->state, RVS_IN_DT_ROAD_STOP);
 				}
@@ -211,20 +211,20 @@ static bool FixTTOMapArray()
 {
 	for (auto tile : Map::Iterate()) {
 		TileType tt = GetTileType(tile);
-		if (tt == 11) {
+		if (to_underlying(tt) == 11) {
 			/* TTO has a different way of storing monorail.
 			 * Instead of using bits in m3 it uses a different tile type. */
 			tile.m3() = 1; // rail type = monorail (in TTD)
-			SetTileType(tile, MP_RAILWAY);
+			SetTileType(tile, TileType::Railway);
 			tile.m2() = 1; // set monorail ground to RailGroundType::Grass
-			tt = MP_RAILWAY;
+			tt = TileType::Railway;
 		}
 
 		switch (tt) {
-			case MP_CLEAR:
+			case TileType::Clear:
 				break;
 
-			case MP_RAILWAY:
+			case TileType::Railway:
 				switch (GB(tile.m5(), 6, 2)) {
 					case 0: // RailTileType::Normal
 						break;
@@ -243,7 +243,7 @@ static bool FixTTOMapArray()
 				}
 				break;
 
-			case MP_ROAD: // road (depot) or level crossing
+			case TileType::Road: // road (depot) or level crossing
 				switch (GB(tile.m5(), 4, 4)) {
 					case 0: // RoadTileType::Normal
 						if (tile.m2() == 4) tile.m2() = 5; // 'small trees' -> Roadside::Trees
@@ -258,32 +258,32 @@ static bool FixTTOMapArray()
 				}
 				break;
 
-			case MP_HOUSE:
+			case TileType::House:
 				tile.m3() = tile.m2() & 0xC0;    // construction stage
 				tile.m2() &= 0x3F;               // building type
 				if (tile.m2() >= 5) tile.m2()++; // skip "large office block on snow"
 				break;
 
-			case MP_TREES:
+			case TileType::Trees:
 				tile.m3() = GB(tile.m5(), 3, 3); // type of trees
 				tile.m5() &= 0xC7;               // number of trees and growth status
 				break;
 
-			case MP_STATION:
+			case TileType::Station:
 				tile.m3() = (tile.m5() >= 0x08 && tile.m5() <= 0x0F) ? 1 : 0; // monorail -> 1, others 0 (rail, road, airport, dock)
 				if (tile.m5() >= 8) tile.m5() -= 8; // shift for monorail
 				if (tile.m5() >= 0x42) tile.m5()++; // skip heliport
 				break;
 
-			case MP_WATER:
+			case TileType::Water:
 				tile.m3() = tile.m2() = 0;
 				break;
 
-			case MP_VOID:
+			case TileType::Void:
 				tile.m2() = tile.m3() = tile.m5() = 0;
 				break;
 
-			case MP_INDUSTRY:
+			case TileType::Industry:
 				tile.m3() = 0;
 				switch (tile.m5()) {
 					case 0x24: // farm silo
@@ -299,7 +299,7 @@ static bool FixTTOMapArray()
 				}
 				break;
 
-			case MP_TUNNELBRIDGE:
+			case TileType::TunnelBridge:
 				if (HasBit(tile.m5(), 7)) { // bridge
 					uint8_t m5 = tile.m5();
 					tile.m5() = m5 & 0xE1; // copy bits 7..5, 1
@@ -319,7 +319,7 @@ static bool FixTTOMapArray()
 				}
 				break;
 
-			case MP_OBJECT:
+			case TileType::Object:
 				tile.m2() = 0;
 				tile.m3() = 0;
 				break;

@@ -103,12 +103,12 @@ void ResetIndustries()
  * it will return the general type of industry, and not the sprite index
  * as would do GetIndustryGfx.
  * @param tile that is queried
- * @pre IsTileType(tile, MP_INDUSTRY)
+ * @pre IsTileType(tile, TileType::Industry)
  * @return general type for this industry, as defined in industry.h
  */
 IndustryType GetIndustryType(Tile tile)
 {
-	assert(IsTileType(tile, MP_INDUSTRY));
+	assert(IsTileType(tile, TileType::Industry));
 
 	const Industry *ind = Industry::GetByTile(tile);
 	assert(ind != nullptr);
@@ -155,14 +155,14 @@ Industry::~Industry()
 	const bool has_neutral_station = this->neutral_station != nullptr;
 
 	for (TileIndex tile_cur : this->location) {
-		if (IsTileType(tile_cur, MP_INDUSTRY)) {
+		if (IsTileType(tile_cur, TileType::Industry)) {
 			if (GetIndustryIndex(tile_cur) == this->index) {
 				DeleteNewGRFInspectWindow(GSF_INDUSTRYTILES, tile_cur.base());
 
 				/* MakeWaterKeepingClass() can also handle 'land' */
 				MakeWaterKeepingClass(tile_cur, OWNER_NONE);
 			}
-		} else if (IsTileType(tile_cur, MP_STATION) && IsOilRig(tile_cur)) {
+		} else if (IsTileType(tile_cur, TileType::Station) && IsOilRig(tile_cur)) {
 			DeleteOilRig(tile_cur);
 		}
 	}
@@ -179,7 +179,7 @@ Industry::~Industry()
 
 		/* Remove the farmland and convert it to regular tiles over time. */
 		for (TileIndex tile_cur : ta) {
-			if (IsTileType(tile_cur, MP_CLEAR) && IsClearGround(tile_cur, CLEAR_FIELDS) &&
+			if (IsTileType(tile_cur, TileType::Clear) && IsClearGround(tile_cur, CLEAR_FIELDS) &&
 					GetIndustryIndexOfField(tile_cur) == this->index) {
 				SetIndustryIndexOfField(tile_cur, IndustryID::Invalid());
 			}
@@ -784,7 +784,7 @@ static void MakeIndustryTileBigger(TileIndex tile)
 		 * station. */
 		TileIndex other = tile + TileDiffXY(0, 1);
 
-		if (IsTileType(other, MP_INDUSTRY) &&
+		if (IsTileType(other, TileType::Industry) &&
 				GetIndustryGfx(other) == GFX_OILRIG_1 &&
 				GetIndustryIndex(tile) == GetIndustryIndex(other)) {
 			BuildOilRig(tile);
@@ -838,7 +838,7 @@ static void TileLoop_Industry(TileIndex tile)
 	 * an industry that was previously build on water can now be flooded.
 	 * If this happens the tile is no longer an industry tile after
 	 * returning from TileLoop_Water. */
-	if (!IsTileType(tile, MP_INDUSTRY)) return;
+	if (!IsTileType(tile, TileType::Industry)) return;
 
 	TriggerIndustryTileRandomisation(tile, IndustryRandomTrigger::TileLoop);
 
@@ -978,7 +978,7 @@ static void ChangeTileOwner_Industry(TileIndex tile, Owner old_owner, Owner new_
 bool IsTileForestIndustry(TileIndex tile)
 {
 	/* Check for industry tile */
-	if (!IsTileType(tile, MP_INDUSTRY)) return false;
+	if (!IsTileType(tile, TileType::Industry)) return false;
 
 	const Industry *ind = Industry::GetByTile(tile);
 
@@ -1001,7 +1001,7 @@ static const uint8_t _plantfarmfield_type[] = {1, 1, 1, 1, 1, 3, 3, 4, 4, 4, 5, 
 static bool IsSuitableForFarmField(TileIndex tile, bool allow_fields, bool allow_rough)
 {
 	switch (GetTileType(tile)) {
-		case MP_CLEAR:
+		case TileType::Clear:
 			if (IsSnowTile(tile)) return false;
 			switch (GetClearGround(tile)) {
 				case CLEAR_DESERT: return false;
@@ -1009,7 +1009,7 @@ static bool IsSuitableForFarmField(TileIndex tile, bool allow_fields, bool allow
 				case CLEAR_FIELDS: return allow_fields;
 				default: return true;
 			}
-		case MP_TREES: return GetTreeGround(tile) != TREE_GROUND_SHORE && (allow_rough || GetTreeGround(tile) != TREE_GROUND_ROUGH);
+		case TileType::Trees: return GetTreeGround(tile) != TREE_GROUND_SHORE && (allow_rough || GetTreeGround(tile) != TREE_GROUND_ROUGH);
 		default:       return false;
 	}
 }
@@ -1029,9 +1029,9 @@ static void SetupFarmFieldFence(TileIndex tile, int size, uint8_t type, DiagDire
 	do {
 		tile = Map::WrapToMap(tile);
 
-		if (IsTileType(tile, MP_CLEAR) && IsClearGround(tile, CLEAR_FIELDS)) {
+		if (IsTileType(tile, TileType::Clear) && IsClearGround(tile, CLEAR_FIELDS)) {
 			TileIndex neighbour = tile + neighbour_diff;
-			if (!IsTileType(neighbour, MP_CLEAR) || !IsClearGround(neighbour, CLEAR_FIELDS) || GetFence(neighbour, ReverseDiagDir(side)) == 0) {
+			if (!IsTileType(neighbour, TileType::Clear) || !IsClearGround(neighbour, CLEAR_FIELDS) || GetFence(neighbour, ReverseDiagDir(side)) == 0) {
 				/* Add fence as long as neighbouring tile does not already have a fence in the same position. */
 				uint8_t or_ = type;
 
@@ -1124,7 +1124,7 @@ static void ChopLumberMillTrees(Industry *i)
 	}
 
 	for (auto tile : SpiralTileSequence(i->location.tile, 40)) { // 40x40 tiles  to search.
-		if (!IsTileType(tile, MP_TREES) || GetTreeGrowth(tile) < TreeGrowthStage::Grown) continue;
+		if (!IsTileType(tile, TileType::Trees) || GetTreeGrowth(tile) < TreeGrowthStage::Grown) continue;
 
 		/* found a tree */
 		_industry_sound_ctr = 1;
@@ -1497,8 +1497,8 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
 			if (!HasBit(its->slopes_refused, 5) && ((HasTileWaterClass(cur_tile) && IsTileOnWater(cur_tile)) != ind_behav.Test(IndustryBehaviour::BuiltOnWater))) return CommandCost(STR_ERROR_SITE_UNSUITABLE);
 
 			if (ind_behav.Any({IndustryBehaviour::OnlyInTown, IndustryBehaviour::Town1200More}) || // Tile must be a house
-					(ind_behav.Test(IndustryBehaviour::OnlyNearTown) && IsTileType(cur_tile, MP_HOUSE))) { // Tile is allowed to be a house (and it is a house)
-				if (!IsTileType(cur_tile, MP_HOUSE)) {
+					(ind_behav.Test(IndustryBehaviour::OnlyNearTown) && IsTileType(cur_tile, TileType::House))) { // Tile is allowed to be a house (and it is a house)
+				if (!IsTileType(cur_tile, TileType::House)) {
 					return CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS);
 				}
 
@@ -1589,13 +1589,13 @@ static CommandCost CheckIfIndustryIsAllowed(TileIndex tile, IndustryType type, c
 static bool CheckCanTerraformSurroundingTiles(TileIndex tile, uint height, int internal)
 {
 	/* Check if we don't leave the map */
-	if (TileX(tile) == 0 || TileY(tile) == 0 || GetTileType(tile) == MP_VOID) return false;
+	if (TileX(tile) == 0 || TileY(tile) == 0 || GetTileType(tile) == TileType::Void) return false;
 
 	TileArea ta(tile - TileDiffXY(1, 1), 2, 2);
 	for (TileIndex tile_walk : ta) {
 		uint curh = TileHeight(tile_walk);
 		/* Is the tile clear? */
-		if ((GetTileType(tile_walk) != MP_CLEAR) && (GetTileType(tile_walk) != MP_TREES)) return false;
+		if ((GetTileType(tile_walk) != TileType::Clear) && (GetTileType(tile_walk) != TileType::Trees)) return false;
 
 		/* Don't allow too big of a change if this is the sub-tile check */
 		if (internal != 0 && Delta(curh, height) > 1) return false;
@@ -1741,7 +1741,7 @@ static void PopulateStationsNearby(Industry *ind)
 	}
 
 	ForAllStationsAroundTiles(ind->location, [ind](Station *st, TileIndex tile) {
-		if (!IsTileType(tile, MP_INDUSTRY) || GetIndustryIndex(tile) != ind->index) return false;
+		if (!IsTileType(tile, TileType::Industry) || GetIndustryIndex(tile) != ind->index) return false;
 		ind->stations_near.insert(st);
 		st->AddIndustryToDeliver(ind, tile);
 		return false;
