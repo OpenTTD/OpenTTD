@@ -55,6 +55,12 @@ private:
 		uint8_t random_bits = 0; ///< Canal/river random bits.
 	};
 
+	/** Storage for TileType::Industry tile base. */
+	struct IndustryTileBase : TileBaseCommon {
+		uint8_t random_bits = 0; ///< NewGRF random bits.
+		uint8_t animation_loop = 0; ///< The state of the animation loop.
+	};
+
 	/** Data that is stored per tile in old save games. Also used OldTileExtended for this. */
 	struct OldTileBase {
 		uint8_t type = 0; ///< The type (bits 4..7), bridges (2..3), rainforest/desert (0..1).
@@ -72,6 +78,7 @@ private:
 		TileBaseCommon common; ///< Common storage for all tile bases.
 		ClearTileBase clear; ///< Storage for tiles with: grass, snow, sand etc.
 		WaterTileBase water; ///< Storage for tiles with: canal, river, sea, shore etc.
+		IndustryTileBase industry; ///< Storage for tiles with parts of industries.
 		OldTileBase old; ///< Used to preserve compatibility with older save games.
 
 		/** Construct empty tile base storage. */
@@ -128,6 +135,28 @@ private:
 		uint16_t index = 0; ///< Depot index on the poll.
 	};
 
+	/**
+	 * Storage for TileType::Industry tile extended.
+	 * @note Does not inherit from TileExtendedCommon, but contains water_class from it.
+	 */
+	struct IndustryTileExtended {
+		uint16_t construction_stage : 2 = 0; ///< Stage of construction, incremented when the construction counter wraps around the meaning is different for some animated tiles which are never under construction.
+		uint16_t construction_counter : 2 = 0; ///< For buildings under construction incremented on every periodic tile processing.
+		uint16_t completed : 1 = 0; ///< Whether the industry is completed or under construction.
+		uint16_t water_class : 2 = 0; ///< The type of water that is below industry. WaterClass::Invalid used for industry tiles on land.
+		uint16_t graphics : 9 = 0; ///< Which sprite should be drawn for this industry tile.
+		uint16_t index = 0; ///< Industry index on the poll.
+		uint8_t animation_state : 2 = 0; ///< Animated tile state.
+	private:
+		[[maybe_unused]] uint8_t bit_offset_1 : 1 = 0; ///< Unused. @note Prevents save conversion.
+	public:
+		uint8_t random_triggers : 3 = 0; ///< NewGRF random triggers.
+	private:
+		[[maybe_unused]] uint8_t bit_offset_2 : 2 = 0; ///< Unused. @note Prevents save conversion.
+	public:
+		uint8_t animation_frame = 0; ///< The frame of animation.
+	};
+
 	/** Data that is stored per tile in old save games. Also used OldTileBase for this. */
 	struct OldTileExtended {
 		uint8_t m1 = 0; ///< Primarily used for ownership information
@@ -148,6 +177,7 @@ private:
 		ClearTileExtended clear; ///< Storage for tiles with: grass, snow, sand etc.
 		WaterTileExtended water; ///< Storage for tiles with water except ship depot.
 		ShipDepotTileExtended ship_depot; ///< Storage for ship depot.
+		IndustryTileExtended industry; ///< Storage for tiles with parts of industries.
 		OldTileExtended old; ///< Used to preserve compatibility with older save games.
 
 		/** Construct empty tile extended storage. */
@@ -236,6 +266,8 @@ public:
 			return base_tiles[this->tile.base()].clear;
 		} else if constexpr (Type == TileType::Water) {
 			return base_tiles[this->tile.base()].water;
+		} else if constexpr (Type == TileType::Industry) {
+			return base_tiles[this->tile.base()].industry;
 		}
 	}
 
@@ -254,6 +286,8 @@ public:
 			return extended_tiles[this->tile.base()].clear;
 		} else if constexpr (Type == TileType::Water) {
 			return extended_tiles[this->tile.base()].water;
+		} else if constexpr (Type == TileType::Industry) {
+			return extended_tiles[this->tile.base()].industry;
 		}
 	}
 

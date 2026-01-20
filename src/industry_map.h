@@ -63,7 +63,7 @@ enum IndustryGraphics : uint8_t {
 inline IndustryID GetIndustryIndex(Tile t)
 {
 	assert(IsTileType(t, TileType::Industry));
-	return static_cast<IndustryID>(t.m2());
+	return static_cast<IndustryID>(t.GetTileExtendedAs<TileType::Industry>().index);
 }
 
 /**
@@ -100,7 +100,7 @@ inline void SetIndustryCompleted(Tile tile)
 inline uint8_t GetIndustryConstructionStage(Tile tile)
 {
 	assert(IsTileType(tile, TileType::Industry));
-	return IsIndustryCompleted(tile) ? (uint8_t)INDUSTRY_COMPLETED : GB(tile.m1(), 0, 2);
+	return IsIndustryCompleted(tile) ? uint8_t(INDUSTRY_COMPLETED) : tile.GetTileExtendedAs<TileType::Industry>().construction_stage;
 }
 
 /**
@@ -112,7 +112,7 @@ inline uint8_t GetIndustryConstructionStage(Tile tile)
 inline void SetIndustryConstructionStage(Tile tile, uint8_t value)
 {
 	assert(IsTileType(tile, TileType::Industry));
-	SB(tile.m1(), 0, 2, value);
+	tile.GetTileExtendedAs<TileType::Industry>().construction_stage = value;
 }
 
 /**
@@ -162,7 +162,7 @@ inline void SetIndustryGfx(Tile t, IndustryGfx gfx)
 inline uint8_t GetIndustryConstructionCounter(Tile tile)
 {
 	assert(IsTileType(tile, TileType::Industry));
-	return GB(tile.m1(), 2, 2);
+	return tile.GetTileExtendedAs<TileType::Industry>().construction_counter;
 }
 
 /**
@@ -174,7 +174,7 @@ inline uint8_t GetIndustryConstructionCounter(Tile tile)
 inline void SetIndustryConstructionCounter(Tile tile, uint8_t value)
 {
 	assert(IsTileType(tile, TileType::Industry));
-	SB(tile.m1(), 2, 2, value);
+	tile.GetTileExtendedAs<TileType::Industry>().construction_counter = value;
 }
 
 /**
@@ -187,7 +187,10 @@ inline void SetIndustryConstructionCounter(Tile tile, uint8_t value)
 inline void ResetIndustryConstructionStage(Tile tile)
 {
 	assert(IsTileType(tile, TileType::Industry));
-	SB(tile.m1(), 0, 4, 0);
+	auto &extended = tile.GetTileExtendedAs<TileType::Industry>();
+	extended.construction_counter = 0;
+	extended.construction_stage = 0;
+	extended.completed = 0;
 	SB(tile.m1(), 7, 1, 0);
 }
 
@@ -199,7 +202,7 @@ inline void ResetIndustryConstructionStage(Tile tile)
 inline uint8_t GetIndustryAnimationLoop(Tile tile)
 {
 	assert(IsTileType(tile, TileType::Industry));
-	return tile.m4();
+	return tile.GetTileBaseAs<TileType::Industry>().animation_loop;
 }
 
 /**
@@ -211,7 +214,7 @@ inline uint8_t GetIndustryAnimationLoop(Tile tile)
 inline void SetIndustryAnimationLoop(Tile tile, uint8_t count)
 {
 	assert(IsTileType(tile, TileType::Industry));
-	tile.m4() = count;
+	tile.GetTileBaseAs<TileType::Industry>().animation_loop = count;
 }
 
 /**
@@ -224,7 +227,7 @@ inline void SetIndustryAnimationLoop(Tile tile, uint8_t count)
 inline uint8_t GetIndustryRandomBits(Tile tile)
 {
 	assert(IsTileType(tile, TileType::Industry));
-	return tile.m3();
+	return tile.GetTileBaseAs<TileType::Industry>().random_bits;
 }
 
 /**
@@ -237,7 +240,7 @@ inline uint8_t GetIndustryRandomBits(Tile tile)
 inline void SetIndustryRandomBits(Tile tile, uint8_t bits)
 {
 	assert(IsTileType(tile, TileType::Industry));
-	tile.m3() = bits;
+	tile.GetTileBaseAs<TileType::Industry>().random_bits = bits;
 }
 
 /**
@@ -250,7 +253,7 @@ inline void SetIndustryRandomBits(Tile tile, uint8_t bits)
 inline IndustryRandomTriggers GetIndustryRandomTriggers(Tile tile)
 {
 	assert(IsTileType(tile, TileType::Industry));
-	return static_cast<IndustryRandomTriggers>(GB(tile.m6(), 3, 3));
+	return static_cast<IndustryRandomTriggers>(tile.GetTileExtendedAs<TileType::Industry>().random_triggers);
 }
 
 
@@ -264,7 +267,7 @@ inline IndustryRandomTriggers GetIndustryRandomTriggers(Tile tile)
 inline void SetIndustryRandomTriggers(Tile tile, IndustryRandomTriggers triggers)
 {
 	assert(IsTileType(tile, TileType::Industry));
-	SB(tile.m6(), 3, 3, triggers.base());
+	tile.GetTileExtendedAs<TileType::Industry>().random_triggers = triggers.base();
 }
 
 /**
@@ -278,16 +281,12 @@ inline void SetIndustryRandomTriggers(Tile tile, IndustryRandomTriggers triggers
 inline void MakeIndustry(Tile t, IndustryID index, IndustryGfx gfx, uint8_t random, WaterClass wc)
 {
 	SetTileType(t, TileType::Industry);
-	t.m1() = 0;
-	t.m2() = index.base();
-	SetIndustryRandomBits(t, random); // m3
-	t.m4() = 0;
-	SetIndustryGfx(t, gfx); // m5, part of m6
-	SetIndustryRandomTriggers(t, {}); // rest of m6
+	t.ResetData();
+	t.GetTileExtendedAs<TileType::Industry>().index = index.base();
+	SetIndustryRandomBits(t, random);
+	SetIndustryGfx(t, gfx);
+	SetIndustryRandomTriggers(t, {});
 	SetWaterClass(t, wc);
-	SB(t.m6(), 6, 2, 0);
-	t.m7() = 0;
-	t.m8() = 0;
 }
 
 #endif /* INDUSTRY_MAP_H */
