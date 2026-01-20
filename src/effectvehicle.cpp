@@ -49,7 +49,7 @@ static bool ChimneySmokeTick(EffectVehicle *v)
 		v->progress--;
 	} else {
 		TileIndex tile = TileVirtXY(v->x_pos, v->y_pos);
-		if (!IsTileType(tile, MP_INDUSTRY)) {
+		if (!IsTileType(tile, TileType::Industry)) {
 			delete v;
 			return false;
 		}
@@ -511,7 +511,7 @@ static bool BubbleTick(EffectVehicle *v)
 		if (_settings_client.sound.ambient) SndPlayVehicleFx(SND_31_BUBBLE_GENERATOR_SUCCESS, v);
 
 		tile = TileVirtXY(v->x_pos, v->y_pos);
-		if (IsTileType(tile, MP_INDUSTRY) && GetIndustryGfx(tile) == GFX_BUBBLE_CATCHER) AddAnimatedTile(tile);
+		if (IsTileType(tile, TileType::Industry) && GetIndustryGfx(tile) == GFX_BUBBLE_CATCHER) AddAnimatedTile(tile);
 	}
 
 	v->animation_state = anim_state;

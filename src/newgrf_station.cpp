@@ -167,7 +167,7 @@ static TileIndex FindRailStationEnd(TileIndex tile, TileIndexDiff delta, bool ch
 	for (;;) {
 		TileIndex new_tile = TileAdd(tile, delta);
 
-		if (!IsTileType(new_tile, MP_STATION) || GetStationIndex(new_tile) != sid) break;
+		if (!IsTileType(new_tile, TileType::Station) || GetStationIndex(new_tile) != sid) break;
 		if (!HasStationRail(new_tile)) break;
 		if (check_type && GetCustomStationSpecIndex(new_tile) != orig_type) break;
 		if (check_axis && GetRailStationAxis(new_tile) != orig_axis) break;
@@ -222,7 +222,7 @@ static uint32_t GetRailContinuationInfo(TileIndex tile)
 
 			/* With tunnels and bridges the tile has tracks, but they are not necessarily connected
 			 * with the next tile because the ramp is not going in the right direction. */
-			if (IsTileType(neighbour_tile, MP_TUNNELBRIDGE) && GetTunnelBridgeDirection(neighbour_tile) != *diagdir) {
+			if (IsTileType(neighbour_tile, TileType::TunnelBridge) && GetTunnelBridgeDirection(neighbour_tile) != *diagdir) {
 				continue;
 			}
 

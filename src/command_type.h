@@ -393,7 +393,7 @@ enum class DoCommandFlag : uint8_t {
 	Bankrupt, ///< company bankrupts, skip money check, skip vehicle on tile check in some cases
 	AutoReplace, ///< autoreplace/autorenew is in progress, this shall disable vehicle limits when building, and ignore certain restrictions when undoing things (like vehicle attach callback)
 	NoCargoCapacityCheck, ///< when autoreplace/autorenew is in progress, this shall prevent truncating the amount of cargo in the vehicle to prevent testing the command to remove cargo
-	AllTiles, ///< allow this command also on MP_VOID tiles
+	AllTiles, ///< allow this command also on TileType::Void tiles
 	NoModifyTownRating, ///< do not change town rating
 	ForceClearTile, ///< do not only remove the object on the tile, but also clear any water left on it
 };
@@ -409,7 +409,7 @@ enum class CommandFlag : uint8_t {
 	Spectator, ///< the command may be initiated by a spectator
 	Offline, ///< the command cannot be executed in a multiplayer game; single-player only
 	Auto, ///< set the DoCommandFlag::Auto flag on this command
-	AllTiles, ///< allow this command also on MP_VOID tiles
+	AllTiles, ///< allow this command also on TileType::Void tiles
 	NoTest, ///< the command's output may differ between test and execute due to town rating changes etc.
 	NoWater, ///< set the DoCommandFlag::NoWater flag on this command
 	ClientID, ///< set p2 with the ClientID of the sending client.

@@ -158,7 +158,7 @@ template class NewGRFClass<ObjectSpec, ObjectClassID, OBJECT_CLASS_MAX>;
 
 /* virtual */ uint32_t ObjectScopeResolver::GetRandomBits() const
 {
-	return IsValidTile(this->tile) && IsTileType(this->tile, MP_OBJECT) ? GetObjectRandomBits(this->tile) : 0;
+	return IsValidTile(this->tile) && IsTileType(this->tile, TileType::Object) ? GetObjectRandomBits(this->tile) : 0;
 }
 
 /**
@@ -169,7 +169,7 @@ template class NewGRFClass<ObjectSpec, ObjectClassID, OBJECT_CLASS_MAX>;
  */
 static uint32_t GetObjectIDAtOffset(TileIndex tile, uint32_t cur_grfid)
 {
-	if (!IsTileType(tile, MP_OBJECT)) {
+	if (!IsTileType(tile, TileType::Object)) {
 		return 0xFFFF;
 	}
 
@@ -199,7 +199,7 @@ static uint32_t GetObjectIDAtOffset(TileIndex tile, uint32_t cur_grfid)
 static uint32_t GetNearbyObjectTileInformation(uint8_t parameter, TileIndex tile, ObjectID index, bool grf_version8)
 {
 	if (parameter != 0) tile = GetNearbyTile(parameter, tile); // only perform if it is required
-	bool is_same_object = (IsTileType(tile, MP_OBJECT) && GetObjectIndex(tile) == index);
+	bool is_same_object = (IsTileType(tile, TileType::Object) && GetObjectIndex(tile) == index);
 
 	return GetNearbyTileInformation(tile, grf_version8) | (is_same_object ? 1 : 0) << 8;
 }
@@ -349,7 +349,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 		/* Get random tile bits at offset param */
 		case 0x61: {
 			TileIndex tile = GetNearbyTile(parameter, this->tile);
-			return (IsTileType(tile, MP_OBJECT) && Object::GetByTile(tile) == this->obj) ? GetObjectRandomBits(tile) : 0;
+			return (IsTileType(tile, TileType::Object) && Object::GetByTile(tile) == this->obj) ? GetObjectRandomBits(tile) : 0;
 		}
 
 		/* Land info of nearby tiles */
@@ -358,7 +358,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 		/* Animation counter of nearby tile */
 		case 0x63: {
 			TileIndex tile = GetNearbyTile(parameter, this->tile);
-			return (IsTileType(tile, MP_OBJECT) && Object::GetByTile(tile) == this->obj) ? GetAnimationFrame(tile) : 0;
+			return (IsTileType(tile, TileType::Object) && Object::GetByTile(tile) == this->obj) ? GetAnimationFrame(tile) : 0;
 		}
 
 		/* Count of object, distance of closest instance */

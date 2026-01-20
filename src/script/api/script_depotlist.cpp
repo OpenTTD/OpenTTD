@@ -21,9 +21,9 @@ ScriptDepotList::ScriptDepotList(ScriptTile::TransportType transport_type)
 	switch (transport_type) {
 		default: return;
 
-		case ScriptTile::TRANSPORT_ROAD:  tile_type = ::MP_ROAD; break;
-		case ScriptTile::TRANSPORT_RAIL:  tile_type = ::MP_RAILWAY; break;
-		case ScriptTile::TRANSPORT_WATER: tile_type = ::MP_WATER; break;
+		case ScriptTile::TRANSPORT_ROAD:  tile_type = ::TileType::Road; break;
+		case ScriptTile::TRANSPORT_RAIL:  tile_type = ::TileType::Railway; break;
+		case ScriptTile::TRANSPORT_WATER: tile_type = ::TileType::Water; break;
 
 		case ScriptTile::TRANSPORT_AIR: {
 			/* Hangars are not seen as real depots by the depot code. */

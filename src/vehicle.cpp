@@ -2190,11 +2190,11 @@ void Vehicle::DeleteUnreachedImplicitOrders()
 
 /**
  * Prepare everything to begin the loading when arriving at a station.
- * @pre IsTileType(this->tile, MP_STATION) || this->type == VEH_SHIP.
+ * @pre IsTileType(this->tile, TileType::Station) || this->type == VEH_SHIP.
  */
 void Vehicle::BeginLoading()
 {
-	assert(IsTileType(this->tile, MP_STATION) || this->type == VEH_SHIP);
+	assert(IsTileType(this->tile, TileType::Station) || this->type == VEH_SHIP);
 
 	TimerGameTick::Ticks travel_time = TimerGameTick::counter - this->last_loading_tick;
 	if (this->current_order.IsType(OT_GOTO_STATION) &&
@@ -2375,7 +2375,7 @@ void Vehicle::LeaveStation()
 
 	if (this->type == VEH_TRAIN && !this->vehstatus.Test(VehState::Crashed)) {
 		/* Trigger station animation (trains only) */
-		if (IsTileType(this->tile, MP_STATION)) {
+		if (IsTileType(this->tile, TileType::Station)) {
 			TriggerStationRandomisation(st, this->tile, StationRandomTrigger::VehicleDeparts);
 			TriggerStationAnimation(st, this->tile, StationAnimationTrigger::VehicleDeparts);
 		}

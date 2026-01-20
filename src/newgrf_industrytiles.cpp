@@ -35,7 +35,7 @@
 uint32_t GetNearbyIndustryTileInformation(uint8_t parameter, TileIndex tile, IndustryID index, bool signed_offsets, bool grf_version8)
 {
 	if (parameter != 0) tile = GetNearbyTile(parameter, tile, signed_offsets); // only perform if it is required
-	bool is_same_industry = (IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == index);
+	bool is_same_industry = (IsTileType(tile, TileType::Industry) && GetIndustryIndex(tile) == index);
 
 	return GetNearbyTileInformation(tile, grf_version8) | (is_same_industry ? 1 : 0) << 8;
 }
@@ -63,7 +63,7 @@ uint32_t GetRelativePosition(TileIndex tile, TileIndex ind_tile)
 {
 	switch (variable) {
 		/* Construction state of the tile: a value between 0 and 3 */
-		case 0x40: return (IsTileType(this->tile, MP_INDUSTRY)) ? GetIndustryConstructionStage(this->tile) : 0;
+		case 0x40: return (IsTileType(this->tile, TileType::Industry)) ? GetIndustryConstructionStage(this->tile) : 0;
 
 		/* Terrain type */
 		case 0x41: return GetTerrainType(this->tile);
@@ -75,7 +75,7 @@ uint32_t GetRelativePosition(TileIndex tile, TileIndex ind_tile)
 		case 0x43: return GetRelativePosition(this->tile, this->industry->location.tile);
 
 		/* Animation frame. Like house variable 46 but can contain anything 0..FF. */
-		case 0x44: return IsTileType(this->tile, MP_INDUSTRY) ? GetAnimationFrame(this->tile) : 0;
+		case 0x44: return IsTileType(this->tile, TileType::Industry) ? GetAnimationFrame(this->tile) : 0;
 
 		/* Land info of nearby tiles */
 		case 0x60: return GetNearbyIndustryTileInformation(parameter, this->tile,
@@ -84,7 +84,7 @@ uint32_t GetRelativePosition(TileIndex tile, TileIndex ind_tile)
 		/* Animation stage of nearby tiles */
 		case 0x61: {
 			TileIndex tile = GetNearbyTile(parameter, this->tile);
-			if (IsTileType(tile, MP_INDUSTRY) && Industry::GetByTile(tile) == this->industry) {
+			if (IsTileType(tile, TileType::Industry) && Industry::GetByTile(tile) == this->industry) {
 				return GetAnimationFrame(tile);
 			}
 			return UINT_MAX;
@@ -105,7 +105,7 @@ uint32_t GetRelativePosition(TileIndex tile, TileIndex ind_tile)
 /* virtual */ uint32_t IndustryTileScopeResolver::GetRandomBits() const
 {
 	assert(this->industry != nullptr && IsValidTile(this->tile));
-	assert(this->industry->index == IndustryID::Invalid() || IsTileType(this->tile, MP_INDUSTRY));
+	assert(this->industry->index == IndustryID::Invalid() || IsTileType(this->tile, TileType::Industry));
 
 	return (this->industry->index != IndustryID::Invalid()) ? GetIndustryRandomBits(this->tile) : 0;
 }
@@ -113,7 +113,7 @@ uint32_t GetRelativePosition(TileIndex tile, TileIndex ind_tile)
 /* virtual */ uint32_t IndustryTileScopeResolver::GetRandomTriggers() const
 {
 	assert(this->industry != nullptr && IsValidTile(this->tile));
-	assert(this->industry->index == IndustryID::Invalid() || IsTileType(this->tile, MP_INDUSTRY));
+	assert(this->industry->index == IndustryID::Invalid() || IsTileType(this->tile, TileType::Industry));
 	if (this->industry->index == IndustryID::Invalid()) return 0;
 	return GetIndustryRandomTriggers(this->tile).base();
 }
@@ -182,7 +182,7 @@ static void IndustryDrawTileLayout(const TileInfo *ti, const DrawTileSpriteSpan 
 uint16_t GetIndustryTileCallback(CallbackID callback, uint32_t param1, uint32_t param2, IndustryGfx gfx_id, Industry *industry, TileIndex tile, std::span<int32_t> regs100)
 {
 	assert(industry != nullptr && IsValidTile(tile));
-	assert(industry->index == IndustryID::Invalid() || IsTileType(tile, MP_INDUSTRY));
+	assert(industry->index == IndustryID::Invalid() || IsTileType(tile, TileType::Industry));
 
 	IndustryTileResolverObject object(gfx_id, tile, industry, callback, param1, param2);
 	return object.ResolveCallback(regs100);
@@ -322,7 +322,7 @@ bool TriggerIndustryAnimation(const Industry *ind, IndustryAnimationTrigger iat)
  */
 static void DoTriggerIndustryTileRandomisation(TileIndex tile, IndustryRandomTrigger trigger, Industry *ind, uint32_t &reseed_industry)
 {
-	assert(IsValidTile(tile) && IsTileType(tile, MP_INDUSTRY));
+	assert(IsValidTile(tile) && IsTileType(tile, TileType::Industry));
 
 	IndustryGfx gfx = GetIndustryGfx(tile);
 	const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);

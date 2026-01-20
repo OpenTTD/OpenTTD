@@ -407,10 +407,10 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	}
 
 	/* check for station or industry with neutral station */
-	if (IsTileType(tile, MP_STATION) || IsTileType(tile, MP_INDUSTRY)) {
+	if (IsTileType(tile, TileType::Station) || IsTileType(tile, TileType::Industry)) {
 		const Station *st = nullptr;
 
-		if (IsTileType(tile, MP_STATION)) {
+		if (IsTileType(tile, TileType::Station)) {
 			st = Station::GetByTile(tile);
 		} else {
 			const Industry *in = Industry::GetByTile(tile);

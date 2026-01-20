@@ -475,7 +475,7 @@ static bool CheckFreeformEdges(int32_t &new_value)
 			}
 		}
 		for (uint i = 1; i < Map::MaxX(); i++) {
-			if (!IsTileType(TileXY(i, Map::MaxY() - 1), MP_WATER) || TileHeight(TileXY(1, Map::MaxY())) != 0) {
+			if (!IsTileType(TileXY(i, Map::MaxY() - 1), TileType::Water) || TileHeight(TileXY(1, Map::MaxY())) != 0) {
 				ShowErrorMessage(GetEncodedString(STR_CONFIG_SETTING_EDGES_NOT_WATER), {}, WL_ERROR);
 				return false;
 			}
@@ -487,7 +487,7 @@ static bool CheckFreeformEdges(int32_t &new_value)
 			}
 		}
 		for (uint i = 1; i < Map::MaxY(); i++) {
-			if (!IsTileType(TileXY(Map::MaxX() - 1, i), MP_WATER) || TileHeight(TileXY(Map::MaxX(), i)) != 0) {
+			if (!IsTileType(TileXY(Map::MaxX() - 1, i), TileType::Water) || TileHeight(TileXY(Map::MaxX(), i)) != 0) {
 				ShowErrorMessage(GetEncodedString(STR_CONFIG_SETTING_EDGES_NOT_WATER), {}, WL_ERROR);
 				return false;
 			}
@@ -507,11 +507,11 @@ static void UpdateFreeformEdges(int32_t new_value)
 		/* Make tiles at the border water again. */
 		for (uint i = 0; i < Map::MaxX(); i++) {
 			SetTileHeight(TileXY(i, 0), 0);
-			SetTileType(TileXY(i, 0), MP_WATER);
+			SetTileType(TileXY(i, 0), TileType::Water);
 		}
 		for (uint i = 0; i < Map::MaxY(); i++) {
 			SetTileHeight(TileXY(0, i), 0);
-			SetTileType(TileXY(0, i), MP_WATER);
+			SetTileType(TileXY(0, i), TileType::Water);
 		}
 	}
 	MarkWholeScreenDirty();

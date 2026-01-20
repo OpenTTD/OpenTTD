@@ -61,7 +61,7 @@ static void DisasterClearSquare(TileIndex tile)
 	if (EnsureNoVehicleOnGround(tile).Failed()) return;
 
 	switch (GetTileType(tile)) {
-		case MP_RAILWAY:
+		case TileType::Railway:
 			if (Company::IsHumanID(GetTileOwner(tile)) && !IsRailDepot(tile)) {
 				Backup<CompanyID> cur_company(_current_company, OWNER_WATER);
 				Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlag::Execute, tile);
@@ -72,15 +72,15 @@ static void DisasterClearSquare(TileIndex tile)
 			}
 			break;
 
-		case MP_HOUSE: {
+		case TileType::House: {
 			Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
 			Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlag::Execute, tile);
 			cur_company.Restore();
 			break;
 		}
 
-		case MP_TREES:
-		case MP_CLEAR:
+		case TileType::Trees:
+		case TileType::Clear:
 			DoClearSquare(tile);
 			break;
 
@@ -479,7 +479,7 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16_t image_override, b
 		if ((uint)x > Map::MaxX() * TILE_SIZE - 1) return true;
 
 		TileIndex tile = TileVirtXY(x, y);
-		if (!IsTileType(tile, MP_INDUSTRY)) return true;
+		if (!IsTileType(tile, TileType::Industry)) return true;
 
 		IndustryID ind = GetIndustryIndex(tile);
 		v->dest_tile = TileIndex{ind.base()};

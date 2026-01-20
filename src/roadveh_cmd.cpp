@@ -380,7 +380,7 @@ CommandCost CmdTurnRoadVeh(DoCommandFlags flags, VehicleID veh_id)
 
 	if (IsNormalRoadTile(v->tile) && GetDisallowedRoadDirections(v->tile) != DRD_NONE) return CMD_ERROR;
 
-	if (IsTileType(v->tile, MP_TUNNELBRIDGE) && DirToDiagDir(v->direction) == GetTunnelBridgeDirection(v->tile)) return CMD_ERROR;
+	if (IsTileType(v->tile, TileType::TunnelBridge) && DirToDiagDir(v->direction) == GetTunnelBridgeDirection(v->tile)) return CMD_ERROR;
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		v->reverse_ctr = 180;
@@ -815,7 +815,7 @@ static void RoadVehCheckOvertake(RoadVehicle *v, RoadVehicle *u)
 	if (RoadTypeIsTram(v->roadtype)) return;
 
 	/* Don't overtake in stations */
-	if (IsTileType(v->tile, MP_STATION) || IsTileType(u->tile, MP_STATION)) return;
+	if (IsTileType(v->tile, TileType::Station) || IsTileType(u->tile, TileType::Station)) return;
 
 	/* For now, articulated road vehicles can't overtake anything. */
 	if (v->HasArticulatedPart()) return;
@@ -896,12 +896,12 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 	TrackdirBits red_signals = TrackStatusToRedSignals(ts); // crossing
 	TrackdirBits trackdirs = TrackStatusToTrackdirBits(ts);
 
-	if (IsTileType(tile, MP_ROAD)) {
+	if (IsTileType(tile, TileType::Road)) {
 		if (IsRoadDepot(tile) && (!IsTileOwner(tile, v->owner) || GetRoadDepotDirection(tile) == enterdir)) {
 			/* Road depot owned by another company or with the wrong orientation */
 			trackdirs = TRACKDIR_BIT_NONE;
 		}
-	} else if (IsTileType(tile, MP_STATION) && IsBayRoadStopTile(tile)) {
+	} else if (IsTileType(tile, TileType::Station) && IsBayRoadStopTile(tile)) {
 		/* Standard road stop (drive-through stops are treated as normal road) */
 
 		if (!IsTileOwner(tile, v->owner) || GetBayRoadStopDir(tile) == enterdir || v->HasArticulatedPart()) {
@@ -1067,7 +1067,7 @@ static Trackdir FollowPreviousRoadVehicle(const RoadVehicle *v, const RoadVehicl
 	if (prev_state == RVSB_WORMHOLE || prev_state == RVSB_IN_DEPOT) {
 		DiagDirection diag_dir = INVALID_DIAGDIR;
 
-		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+		if (IsTileType(tile, TileType::TunnelBridge)) {
 			diag_dir = GetTunnelBridgeDirection(tile);
 		} else if (IsRoadDepotTile(tile)) {
 			diag_dir = ReverseDiagDir(GetRoadDepotDirection(tile));
@@ -1141,7 +1141,7 @@ static bool CanBuildTramTrackOnTile(CompanyID c, TileIndex t, RoadType rt, RoadB
 bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *prev)
 {
 	if (v->overtaking != 0)  {
-		if (IsTileType(v->tile, MP_STATION)) {
+		if (IsTileType(v->tile, TileType::Station)) {
 			/* Force us to be not overtaking! */
 			v->overtaking = 0;
 		} else if (++v->overtaking_ctr >= RV_OVERTAKE_TIMEOUT) {
@@ -1171,7 +1171,7 @@ bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *prev)
 			}
 		}
 
-		if (IsTileType(gp.new_tile, MP_TUNNELBRIDGE) && VehicleEnterTile(v, gp.new_tile, gp.x, gp.y).Test(VehicleEnterTileState::EnteredWormhole)) {
+		if (IsTileType(gp.new_tile, TileType::TunnelBridge) && VehicleEnterTile(v, gp.new_tile, gp.x, gp.y).Test(VehicleEnterTileState::EnteredWormhole)) {
 			/* Vehicle has just entered a bridge or tunnel */
 			v->x_pos = gp.x;
 			v->y_pos = gp.y;
@@ -1293,7 +1293,7 @@ again:
 
 		auto vets = VehicleEnterTile(v, tile, x, y);
 		if (vets.Test(VehicleEnterTileState::CannotEnter)) {
-			if (!IsTileType(tile, MP_TUNNELBRIDGE)) {
+			if (!IsTileType(tile, TileType::TunnelBridge)) {
 				v->cur_speed = 0;
 				return false;
 			}
@@ -1302,7 +1302,7 @@ again:
 			goto again;
 		}
 
-		if (IsInsideMM(v->state, RVSB_IN_ROAD_STOP, RVSB_IN_DT_ROAD_STOP_END) && IsTileType(v->tile, MP_STATION)) {
+		if (IsInsideMM(v->state, RVSB_IN_ROAD_STOP, RVSB_IN_DT_ROAD_STOP_END) && IsTileType(v->tile, TileType::Station)) {
 			if (IsReversingRoadTrackdir(dir) && IsInsideMM(v->state, RVSB_IN_ROAD_STOP, RVSB_IN_ROAD_STOP_END)) {
 				/* New direction is trying to turn vehicle around.
 				 * We can't turn at the exit of a road stop so wait.*/

@@ -30,12 +30,12 @@ enum class RailTileType : uint8_t {
  * Returns the RailTileType (normal with or without signals,
  * waypoint or depot).
  * @param t the tile to get the information from
- * @pre IsTileType(t, MP_RAILWAY)
+ * @pre IsTileType(t, TileType::Railway)
  * @return the RailTileType
  */
 [[debug_inline]] inline static RailTileType GetRailTileType(Tile t)
 {
-	assert(IsTileType(t, MP_RAILWAY));
+	assert(IsTileType(t, TileType::Railway));
 	return static_cast<RailTileType>(GB(t.m5(), 6, 2));
 }
 
@@ -43,7 +43,7 @@ enum class RailTileType : uint8_t {
  * Returns whether this is plain rails, with or without signals. Iow, if this
  * tiles RailTileType is RailTileType::Normal or RailTileType::Signals.
  * @param t the tile to get the information from
- * @pre IsTileType(t, MP_RAILWAY)
+ * @pre IsTileType(t, TileType::Railway)
  * @return true if and only if the tile is normal rail (with or without signals)
  */
 [[debug_inline]] inline static bool IsPlainRail(Tile t)
@@ -59,14 +59,14 @@ enum class RailTileType : uint8_t {
  */
 [[debug_inline]] inline static bool IsPlainRailTile(Tile t)
 {
-	return IsTileType(t, MP_RAILWAY) && IsPlainRail(t);
+	return IsTileType(t, TileType::Railway) && IsPlainRail(t);
 }
 
 
 /**
  * Checks if a rail tile has signals.
  * @param t the tile to get the information from
- * @pre IsTileType(t, MP_RAILWAY)
+ * @pre IsTileType(t, TileType::Railway)
  * @return true if and only if the tile has signals
  */
 inline bool HasSignals(Tile t)
@@ -89,7 +89,7 @@ inline void SetHasSignals(Tile tile, bool signals)
 /**
  * Is this rail tile a rail depot?
  * @param t the tile to get the information from
- * @pre IsTileType(t, MP_RAILWAY)
+ * @pre IsTileType(t, TileType::Railway)
  * @return true if and only if the tile is a rail depot
  */
 [[debug_inline]] inline static bool IsRailDepot(Tile t)
@@ -104,7 +104,7 @@ inline void SetHasSignals(Tile tile, bool signals)
  */
 [[debug_inline]] inline static bool IsRailDepotTile(Tile t)
 {
-	return IsTileType(t, MP_RAILWAY) && IsRailDepot(t);
+	return IsTileType(t, TileType::Railway) && IsRailDepot(t);
 }
 
 /**
@@ -461,7 +461,7 @@ inline void SetSignalStateByTrackdir(Tile tile, Trackdir trackdir, SignalState s
  */
 inline bool HasPbsSignalOnTrackdir(Tile tile, Trackdir td)
 {
-	return IsTileType(tile, MP_RAILWAY) && HasSignalOnTrackdir(tile, td) &&
+	return IsTileType(tile, TileType::Railway) && HasSignalOnTrackdir(tile, td) &&
 			IsPbsSignal(GetSignalType(tile, TrackdirToTrack(td)));
 }
 
@@ -473,7 +473,7 @@ inline bool HasPbsSignalOnTrackdir(Tile tile, Trackdir td)
  */
 inline bool HasOnewaySignalBlockingTrackdir(Tile tile, Trackdir td)
 {
-	return IsTileType(tile, MP_RAILWAY) && HasSignalOnTrackdir(tile, ReverseTrackdir(td)) &&
+	return IsTileType(tile, TileType::Railway) && HasSignalOnTrackdir(tile, ReverseTrackdir(td)) &&
 			!HasSignalOnTrackdir(tile, td) && IsOnewaySignal(tile, TrackdirToTrack(td));
 }
 
@@ -517,7 +517,7 @@ inline bool IsSnowRailGround(Tile t)
 
 inline void MakeRailNormal(Tile t, Owner o, TrackBits b, RailType r)
 {
-	SetTileType(t, MP_RAILWAY);
+	SetTileType(t, TileType::Railway);
 	SetTileOwner(t, o);
 	SetDockingTile(t, false);
 	t.m2() = 0;
@@ -550,7 +550,7 @@ inline void SetRailDepotExitDirection(Tile tile, DiagDirection dir)
  */
 inline void MakeRailDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirection dir, RailType rail_type)
 {
-	SetTileType(tile, MP_RAILWAY);
+	SetTileType(tile, TileType::Railway);
 	SetTileOwner(tile, owner);
 	SetDockingTile(tile, false);
 	tile.m2() = depot_id.base();

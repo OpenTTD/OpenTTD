@@ -212,23 +212,23 @@ void ConvertRailTypes()
 
 	for (const auto t : Map::Iterate()) {
 		switch (GetTileType(t)) {
-			case MP_RAILWAY:
+			case TileType::Railway:
 				SetRailType(t, railtype_conversion_map[GetRailType(t)]);
 				break;
 
-			case MP_ROAD:
+			case TileType::Road:
 				if (IsLevelCrossing(t)) {
 					SetRailType(t, railtype_conversion_map[GetRailType(t)]);
 				}
 				break;
 
-			case MP_STATION:
+			case TileType::Station:
 				if (HasStationRail(t)) {
 					SetRailType(t, railtype_conversion_map[GetRailType(t)]);
 				}
 				break;
 
-			case MP_TUNNELBRIDGE:
+			case TileType::TunnelBridge:
 				if (GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) {
 					SetRailType(t, railtype_conversion_map[GetRailType(t)]);
 				}

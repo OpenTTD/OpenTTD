@@ -484,7 +484,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 			 * Similar with crossings - it is needed to bar crossings that weren't before
 			 * because of different owner of crossing and approaching train */
 			for (const auto tile : Map::Iterate()) {
-				if (IsTileType(tile, MP_RAILWAY) && IsTileOwner(tile, new_owner) && HasSignals(tile)) {
+				if (IsTileType(tile, TileType::Railway) && IsTileOwner(tile, new_owner) && HasSignals(tile)) {
 					TrackBits tracks = GetTrackBits(tile);
 					do { // there may be two tracks with signals for TRACK_BIT_HORZ and TRACK_BIT_VERT
 						Track track = RemoveFirstTrack(&tracks);
@@ -1626,7 +1626,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 	/* We have not waited enough time till the next round of loading/unloading */
 	if (front->load_unload_ticks != 0) return;
 
-	if (front->type == VEH_TRAIN && (!IsTileType(front->tile, MP_STATION) || GetStationIndex(front->tile) != st->index)) {
+	if (front->type == VEH_TRAIN && (!IsTileType(front->tile, TileType::Station) || GetStationIndex(front->tile) != st->index)) {
 		/* The train reversed in the station. Take the "easy" way
 		 * out and let the train just leave as it always did. */
 		front->vehicle_flags.Set(VehicleFlag::LoadingFinished);
