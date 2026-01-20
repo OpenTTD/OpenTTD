@@ -277,7 +277,7 @@ uint GetClosestWaterDistance(TileIndex tile, bool water)
 
 			/* each side of this square has length 'dist' */
 			for (uint a = 0; a < dist; a++) {
-				/* MP_VOID tiles are not checked (interval is [min; max) for IsInsideMM())*/
+				/* TileType::Void tiles are not checked (interval is [min; max) for IsInsideMM())*/
 				if (IsInsideMM(x, min_xy, max_x) && IsInsideMM(y, min_xy, max_y)) {
 					TileIndex t = TileXY(x, y);
 					if (HasTileWaterGround(t) == water) return dist;
@@ -291,7 +291,7 @@ uint GetClosestWaterDistance(TileIndex tile, bool water)
 	if (!water) {
 		/* no land found - is this a water-only map? */
 		for (const auto t : Map::Iterate()) {
-			if (!IsTileType(t, MP_VOID) && !IsTileType(t, MP_WATER)) return 0x1FF;
+			if (!IsTileType(t, TileType::Void) && !IsTileType(t, TileType::Water)) return 0x1FF;
 		}
 	}
 

@@ -21,13 +21,13 @@
 bool MayHaveRoad(Tile t)
 {
 	switch (GetTileType(t)) {
-		case MP_ROAD:
+		case TileType::Road:
 			return true;
 
-		case MP_STATION:
+		case TileType::Station:
 			return IsAnyRoadStop(t);
 
-		case MP_TUNNELBRIDGE:
+		case TileType::TunnelBridge:
 			return GetTunnelBridgeTransportType(t) == TRANSPORT_ROAD;
 
 		default:
@@ -56,7 +56,7 @@ RoadBits GetAnyRoadBits(Tile tile, RoadTramType rtt, bool straight_tunnel_bridge
 	if (!MayHaveRoad(tile) || !HasTileRoadType(tile, rtt)) return ROAD_NONE;
 
 	switch (GetTileType(tile)) {
-		case MP_ROAD:
+		case TileType::Road:
 			switch (GetRoadTileType(tile)) {
 				default:
 				case RoadTileType::Normal:   return GetRoadBits(tile, rtt);
@@ -64,12 +64,12 @@ RoadBits GetAnyRoadBits(Tile tile, RoadTramType rtt, bool straight_tunnel_bridge
 				case RoadTileType::Depot:    return DiagDirToRoadBits(GetRoadDepotDirection(tile));
 			}
 
-		case MP_STATION:
+		case TileType::Station:
 			assert(IsAnyRoadStopTile(tile)); // ensured by MayHaveRoad
 			if (IsDriveThroughStopTile(tile)) return AxisToRoadBits(GetDriveThroughStopAxis(tile));
 			return DiagDirToRoadBits(GetBayRoadStopDir(tile));
 
-		case MP_TUNNELBRIDGE:
+		case TileType::TunnelBridge:
 			assert(GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD); // ensured by MayHaveRoad
 			return straight_tunnel_bridge_entrance ?
 					AxisToRoadBits(DiagDirToAxis(GetTunnelBridgeDirection(tile))) :

@@ -49,7 +49,7 @@ static const uint16_t DEFAULT_RAINFOREST_TREE_STEPS = 15000; ///< Default number
 static const uint16_t EDITOR_TREE_DIV = 5;                   ///< Game editor tree generation divisor factor.
 
 /**
- * Tests if a tile can be converted to MP_TREES
+ * Tests if a tile can be converted to TileType::Trees
  * This is true for clear ground without farms or rocks.
  *
  * @param tile the tile of interest
@@ -59,10 +59,10 @@ static const uint16_t EDITOR_TREE_DIV = 5;                   ///< Game editor tr
 static bool CanPlantTreesOnTile(TileIndex tile, bool allow_desert)
 {
 	switch (GetTileType(tile)) {
-		case MP_WATER:
+		case TileType::Water:
 			return !IsBridgeAbove(tile) && IsCoast(tile) && !IsSlopeWithOneCornerRaised(GetTileSlope(tile));
 
-		case MP_CLEAR:
+		case TileType::Clear:
 			return !IsBridgeAbove(tile) && !IsClearGround(tile, CLEAR_FIELDS) && !IsClearGround(tile, CLEAR_ROCKS) &&
 			       (allow_desert || !IsClearGround(tile, CLEAR_DESERT));
 
@@ -90,12 +90,12 @@ static void PlantTreesOnTile(TileIndex tile, TreeType treetype, uint count, Tree
 	uint density = 3;
 
 	switch (GetTileType(tile)) {
-		case MP_WATER:
+		case TileType::Water:
 			ground = TREE_GROUND_SHORE;
 			ClearNeighbourNonFloodingStates(tile);
 			break;
 
-		case MP_CLEAR: {
+		case TileType::Clear: {
 			ClearGround clearground = GetClearGround(tile);
 			if (IsSnowTile(tile)) {
 				ground = clearground == CLEAR_ROUGH ? TREE_GROUND_ROUGH_SNOW : TREE_GROUND_SNOW_DESERT;
@@ -438,7 +438,7 @@ uint PlaceTreeGroupAroundTile(TileIndex tile, TreeType treetype, uint radius, ui
 		const int32_t yofs = mkcoord();
 		const TileIndex tile_to_plant = TileAddWrap(tile, xofs, yofs);
 		if (tile_to_plant != INVALID_TILE) {
-			if (IsTileType(tile_to_plant, MP_TREES) && GetTreeCount(tile_to_plant) < 4) {
+			if (IsTileType(tile_to_plant, TileType::Trees) && GetTreeCount(tile_to_plant) < 4) {
 				AddTreeCount(tile_to_plant, 1);
 				SetTreeGrowth(tile_to_plant, TreeGrowthStage::Growing1);
 				MarkTileDirtyByTile(tile_to_plant, 0);
@@ -453,7 +453,7 @@ uint PlaceTreeGroupAroundTile(TileIndex tile, TreeType treetype, uint radius, ui
 
 	if (set_zone && IsInsideMM(treetype, TREE_RAINFOREST, TREE_CACTUS)) {
 		for (TileIndex t : TileArea(tile).Expand(radius)) {
-			if (GetTileType(t) != MP_VOID && DistanceSquare(tile, t) < radius * radius) SetTropicZone(t, TROPICZONE_RAINFOREST);
+			if (GetTileType(t) != TileType::Void && DistanceSquare(tile, t) < radius * radius) SetTropicZone(t, TROPICZONE_RAINFOREST);
 		}
 	}
 
@@ -517,7 +517,7 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 	for (; *iter != INVALID_TILE; ++(*iter)) {
 		TileIndex current_tile = *iter;
 		switch (GetTileType(current_tile)) {
-			case MP_TREES:
+			case TileType::Trees:
 				/* no more space for trees? */
 				if (GetTreeCount(current_tile) == 4) {
 					msg = STR_ERROR_TREE_ALREADY_HERE;
@@ -539,14 +539,14 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 				cost.AddCost(_price[Price::BuildTrees] * 2);
 				break;
 
-			case MP_WATER:
+			case TileType::Water:
 				if (!IsCoast(current_tile) || IsSlopeWithOneCornerRaised(GetTileSlope(current_tile))) {
 					msg = STR_ERROR_CAN_T_BUILD_ON_WATER;
 					continue;
 				}
 				[[fallthrough]];
 
-			case MP_CLEAR: {
+			case TileType::Clear: {
 				if (IsBridgeAbove(current_tile)) {
 					msg = STR_ERROR_SITE_UNSUITABLE;
 					continue;
@@ -571,7 +571,7 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 					break;
 				}
 
-				if (IsTileType(current_tile, MP_CLEAR)) {
+				if (IsTileType(current_tile, TileType::Clear)) {
 					/* Remove fields or rocks. Note that the ground will get barrened */
 					switch (GetClearGround(current_tile)) {
 						case CLEAR_FIELDS:
@@ -847,7 +847,7 @@ static void TileLoop_Trees(TileIndex tile)
 	 */
 	uint32_t cycle = 11 * TileX(tile) + 9 * TileY(tile) + (TimerGameTick::counter >> 8);
 
-	/* Handle growth of grass (under trees/on MP_TREES tiles) at every 8th processings, like it's done for grass on MP_CLEAR tiles. */
+	/* Handle growth of grass (under trees/on TileType::Trees tiles) at every 8th processings, like it's done for grass on TileType::Clear tiles. */
 	if ((cycle & 7) == 7 && GetTreeGround(tile) == TREE_GROUND_GRASS) {
 		uint density = GetTreeDensity(tile);
 		if (density < 3) {
@@ -891,7 +891,7 @@ static void TileLoop_Trees(TileIndex tile)
 						if (!CanPlantTreesOnTile(tile, false)) return;
 
 						/* Don't plant trees, if ground was freshly cleared */
-						if (IsTileType(tile, MP_CLEAR) && GetClearGround(tile) == CLEAR_GRASS && !IsSnowTile(tile) && GetClearDensity(tile) != 3) return;
+						if (IsTileType(tile, TileType::Clear) && GetClearGround(tile) == CLEAR_GRASS && !IsSnowTile(tile) && GetClearDensity(tile) != 3) return;
 
 						PlantTreesOnTile(tile, treetype, 0, TreeGrowthStage::Growing1);
 
@@ -913,7 +913,7 @@ static void TileLoop_Trees(TileIndex tile)
 				AddTreeCount(tile, -1);
 				SetTreeGrowth(tile, TreeGrowthStage::Grown);
 			} else {
-				/* just one tree, change type into MP_CLEAR */
+				/* just one tree, change type into TileType::Clear */
 				switch (GetTreeGround(tile)) {
 					case TREE_GROUND_SHORE: MakeShore(tile); break;
 					case TREE_GROUND_GRASS: MakeClear(tile, CLEAR_GRASS, GetTreeDensity(tile)); break;

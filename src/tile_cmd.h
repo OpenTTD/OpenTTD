@@ -10,6 +10,7 @@
 #ifndef TILE_CMD_H
 #define TILE_CMD_H
 
+#include "core/enum_type.hpp"
 #include "core/geometry_type.hpp"
 #include "command_type.h"
 #include "vehicle_type.h"
@@ -168,7 +169,7 @@ struct TileTypeProcs {
 	CheckBuildAboveProc *check_build_above_proc;
 };
 
-extern const TileTypeProcs * const _tile_type_procs[16];
+extern const EnumClassIndexContainer<std::array<const TileTypeProcs *, to_underlying(TileType::End)>, TileType> _tile_type_procs;
 
 TrackStatus GetTileTrackStatus(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side = INVALID_DIAGDIR);
 VehicleEnterTileStates VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y);

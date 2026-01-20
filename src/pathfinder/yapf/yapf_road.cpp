@@ -61,14 +61,14 @@ protected:
 		if (IsDiagonalTrackdir(trackdir)) {
 			cost += YAPF_TILE_LENGTH;
 			switch (GetTileType(tile)) {
-				case MP_ROAD:
+				case TileType::Road:
 					/* Increase the cost for level crossings */
 					if (IsLevelCrossing(tile)) {
 						cost += Yapf().PfGetSettings().road_crossing_penalty;
 					}
 					break;
 
-				case MP_STATION: {
+				case TileType::Station: {
 					if (IsRoadWaypoint(tile)) break;
 
 					const RoadStop *rs = RoadStop::GetByTile(tile, GetRoadStopType(tile));
@@ -278,7 +278,7 @@ public:
 	inline bool PfDetectDestinationTile(TileIndex tile, Trackdir trackdir)
 	{
 		if (this->dest_station != StationID::Invalid()) {
-			return IsTileType(tile, MP_STATION) &&
+			return IsTileType(tile, TileType::Station) &&
 				GetStationIndex(tile) == this->dest_station &&
 				(this->station_type == GetStationType(tile)) &&
 				(this->non_artic || IsDriveThroughStopTile(tile));

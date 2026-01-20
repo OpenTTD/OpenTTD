@@ -30,10 +30,10 @@
 
 	switch (::GetTileType(tile)) {
 		default: return false;
-		case MP_CLEAR: return true;
-		case MP_TREES: return true;
-		case MP_WATER: return IsCoast(tile);
-		case MP_ROAD:
+		case TileType::Clear: return true;
+		case TileType::Trees: return true;
+		case TileType::Water: return IsCoast(tile);
+		case TileType::Road:
 			/* Tram bits aren't considered buildable */
 			if (::GetRoadTypeTram(tile) != INVALID_ROADTYPE) return false;
 			/* Depots and crossings aren't considered buildable */
@@ -66,36 +66,36 @@
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return ::IsTileType(tile, MP_WATER) && ::IsSea(tile);
+	return ::IsTileType(tile, TileType::Water) && ::IsSea(tile);
 }
 
 /* static */ bool ScriptTile::IsRiverTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return ::IsTileType(tile, MP_WATER) && ::IsRiver(tile);
+	return ::IsTileType(tile, TileType::Water) && ::IsRiver(tile);
 }
 
 /* static */ bool ScriptTile::IsWaterTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return ::IsTileType(tile, MP_WATER) && !::IsCoast(tile);
+	return ::IsTileType(tile, TileType::Water) && !::IsCoast(tile);
 }
 
 /* static */ bool ScriptTile::IsCoastTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return (::IsTileType(tile, MP_WATER) && ::IsCoast(tile)) ||
-		(::IsTileType(tile, MP_TREES) && ::GetTreeGround(tile) == TREE_GROUND_SHORE);
+	return (::IsTileType(tile, TileType::Water) && ::IsCoast(tile)) ||
+		(::IsTileType(tile, TileType::Trees) && ::GetTreeGround(tile) == TREE_GROUND_SHORE);
 }
 
 /* static */ bool ScriptTile::IsStationTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return ::IsTileType(tile, MP_STATION);
+	return ::IsTileType(tile, TileType::Station);
 }
 
 /* static */ bool ScriptTile::IsSteepSlope(Slope slope)
@@ -116,49 +116,49 @@
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return ::IsTileType(tile, MP_TREES);
+	return ::IsTileType(tile, TileType::Trees);
 }
 
 /* static */ bool ScriptTile::IsFarmTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return (::IsTileType(tile, MP_CLEAR) && ::IsClearGround(tile, CLEAR_FIELDS));
+	return (::IsTileType(tile, TileType::Clear) && ::IsClearGround(tile, CLEAR_FIELDS));
 }
 
 /* static */ bool ScriptTile::IsRockTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return (::IsTileType(tile, MP_CLEAR) && ::GetClearGround(tile) == ::CLEAR_ROCKS);
+	return (::IsTileType(tile, TileType::Clear) && ::GetClearGround(tile) == ::CLEAR_ROCKS);
 }
 
 /* static */ bool ScriptTile::IsRoughTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return (::IsTileType(tile, MP_CLEAR) && ::GetClearGround(tile) == ::CLEAR_ROUGH);
+	return (::IsTileType(tile, TileType::Clear) && ::GetClearGround(tile) == ::CLEAR_ROUGH);
 }
 
 /* static */ bool ScriptTile::IsSnowTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return (::IsTileType(tile, MP_CLEAR) && ::IsSnowTile(tile));
+	return (::IsTileType(tile, TileType::Clear) && ::IsSnowTile(tile));
 }
 
 /* static */ bool ScriptTile::IsDesertTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return (::IsTileType(tile, MP_CLEAR) && ::IsClearGround(tile, CLEAR_DESERT));
+	return (::IsTileType(tile, TileType::Clear) && ::IsClearGround(tile, CLEAR_DESERT));
 }
 
 /* static */ bool ScriptTile::IsHouseTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return ::IsTileType(tile, MP_HOUSE);
+	return ::IsTileType(tile, TileType::House);
 }
 
 /* static */ ScriptTile::TerrainType ScriptTile::GetTerrainType(TileIndex tile)
@@ -213,8 +213,8 @@
 /* static */ ScriptCompany::CompanyID ScriptTile::GetOwner(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return ScriptCompany::COMPANY_INVALID;
-	if (::IsTileType(tile, MP_HOUSE)) return ScriptCompany::COMPANY_INVALID;
-	if (::IsTileType(tile, MP_INDUSTRY)) return ScriptCompany::COMPANY_INVALID;
+	if (::IsTileType(tile, TileType::House)) return ScriptCompany::COMPANY_INVALID;
+	if (::IsTileType(tile, TileType::Industry)) return ScriptCompany::COMPANY_INVALID;
 
 	return ScriptCompany::ResolveCompanyID(ScriptCompany::ToScriptCompanyID(::GetTileOwner(tile)));
 }

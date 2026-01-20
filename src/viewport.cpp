@@ -1022,28 +1022,28 @@ const Town *_viewport_highlight_town; ///< Currently selected town for coverage 
 static TileHighlightType GetTileHighlightType(TileIndex t)
 {
 	if (_viewport_highlight_station != nullptr) {
-		if (IsTileType(t, MP_STATION) && GetStationIndex(t) == _viewport_highlight_station->index) return THT_WHITE;
+		if (IsTileType(t, TileType::Station) && GetStationIndex(t) == _viewport_highlight_station->index) return THT_WHITE;
 		if (_viewport_highlight_station->TileIsInCatchment(t)) return THT_BLUE;
 	}
 
 	if (_viewport_highlight_station_rect != nullptr) {
-		if (IsTileType(t, MP_STATION) && GetStationIndex(t) == _viewport_highlight_station_rect->index) return THT_WHITE;
+		if (IsTileType(t, TileType::Station) && GetStationIndex(t) == _viewport_highlight_station_rect->index) return THT_WHITE;
 		const StationRect *r = &_viewport_highlight_station_rect->rect;
 		if (r->PtInExtendedRect(TileX(t), TileY(t))) return THT_BLUE;
 	}
 
 	if (_viewport_highlight_waypoint != nullptr) {
-		if (IsTileType(t, MP_STATION) && GetStationIndex(t) == _viewport_highlight_waypoint->index) return THT_BLUE;
+		if (IsTileType(t, TileType::Station) && GetStationIndex(t) == _viewport_highlight_waypoint->index) return THT_BLUE;
 	}
 
 	if (_viewport_highlight_waypoint_rect != nullptr) {
-		if (IsTileType(t, MP_STATION) && GetStationIndex(t) == _viewport_highlight_waypoint_rect->index) return THT_WHITE;
+		if (IsTileType(t, TileType::Station) && GetStationIndex(t) == _viewport_highlight_waypoint_rect->index) return THT_WHITE;
 		const StationRect *r = &_viewport_highlight_waypoint_rect->rect;
 		if (r->PtInExtendedRect(TileX(t), TileY(t))) return THT_BLUE;
 	}
 
 	if (_viewport_highlight_town != nullptr) {
-		if (IsTileType(t, MP_HOUSE)) {
+		if (IsTileType(t, TileType::House)) {
 			if (GetTownIndex(t) == _viewport_highlight_town->index) {
 				TileHighlightType type = THT_RED;
 				for (const Station *st : _viewport_highlight_town->stations_near) {
@@ -1052,7 +1052,7 @@ static TileHighlightType GetTileHighlightType(TileIndex t)
 				}
 				return type;
 			}
-		} else if (IsTileType(t, MP_STATION)) {
+		} else if (IsTileType(t, TileType::Station)) {
 			for (const Station *st : _viewport_highlight_town->stations_near) {
 				if (st->owner != _current_company) continue;
 				if (GetStationIndex(t) == st->index) return THT_WHITE;
@@ -1090,7 +1090,7 @@ static void HighlightTownLocalAuthorityTiles(const TileInfo *ti)
 	if (_town_local_authority_kdtree.Count() == 0) return;
 
 	/* Tile belongs to town regardless of distance from town. */
-	if (GetTileType(ti->tile) == MP_HOUSE) {
+	if (GetTileType(ti->tile) == TileType::House) {
 		if (!Town::GetByTile(ti->tile)->show_zone) return;
 
 		DrawTileSelectionRect(ti, PALETTE_CRASH);
@@ -1261,10 +1261,10 @@ static void ViewportAddLandscape()
 				tile_type = GetTileType(_cur_ti.tile);
 			} else {
 				_cur_ti.tile = INVALID_TILE;
-				tile_type = MP_VOID;
+				tile_type = TileType::Void;
 			}
 
-			if (tile_type != MP_VOID) {
+			if (tile_type != TileType::Void) {
 				/* We are inside the map => paint landscape. */
 				std::tie(_cur_ti.tileh, _cur_ti.z) = GetTilePixelSlope(_cur_ti.tile);
 			} else {
@@ -1284,7 +1284,7 @@ static void ViewportAddLandscape()
 			int min_visible_height = viewport_y - (_vd.dpi.top + _vd.dpi.height);
 			bool tile_visible = min_visible_height <= 0;
 
-			if (tile_type != MP_VOID) {
+			if (tile_type != TileType::Void) {
 				/* Is tile with buildings visible? */
 				if (min_visible_height < MAX_TILE_EXTENT_TOP) tile_visible = true;
 

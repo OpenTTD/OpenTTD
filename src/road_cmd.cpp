@@ -320,13 +320,13 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlags flags, RoadBits pie
 	if (existing_rt == INVALID_ROADTYPE) return CommandCost((rtt == RTT_TRAM) ? STR_ERROR_THERE_IS_NO_TRAMWAY : STR_ERROR_THERE_IS_NO_ROAD);
 
 	switch (GetTileType(tile)) {
-		case MP_ROAD: {
+		case TileType::Road: {
 			CommandCost ret = EnsureNoVehicleOnGround(tile);
 			if (ret.Failed()) return ret;
 			break;
 		}
 
-		case MP_STATION: {
+		case TileType::Station: {
 			if (!IsDriveThroughStopTile(tile)) return CMD_ERROR;
 
 			CommandCost ret = EnsureNoVehicleOnGround(tile);
@@ -334,7 +334,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlags flags, RoadBits pie
 			break;
 		}
 
-		case MP_TUNNELBRIDGE: {
+		case TileType::TunnelBridge: {
 			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
 			CommandCost ret = TunnelBridgeIsFree(tile, GetOtherTunnelBridgeEnd(tile));
 			if (ret.Failed()) return ret;
@@ -348,12 +348,12 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlags flags, RoadBits pie
 	CommandCost ret = CheckAllowRemoveRoad(tile, pieces, GetRoadOwner(tile, rtt), rtt, flags, town_check);
 	if (ret.Failed()) return ret;
 
-	if (!IsTileType(tile, MP_ROAD)) {
+	if (!IsTileType(tile, TileType::Road)) {
 		/* If it's the last roadtype, just clear the whole tile */
 		if (GetRoadType(tile, OtherRoadTramType(rtt)) == INVALID_ROADTYPE) return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 
 		CommandCost cost(EXPENSES_CONSTRUCTION);
-		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+		if (IsTileType(tile, TileType::TunnelBridge)) {
 			/* Removing any roadbit in the bridge axis removes the roadtype (that's the behaviour remove-long-roads needs) */
 			if ((AxisToRoadBits(DiagDirToAxis(GetTunnelBridgeDirection(tile))) & pieces) == ROAD_NONE) return CommandCost((rtt == RTT_TRAM) ? STR_ERROR_THERE_IS_NO_TRAMWAY : STR_ERROR_THERE_IS_NO_ROAD);
 
@@ -630,7 +630,7 @@ CommandCost CmdBuildRoad(DoCommandFlags flags, TileIndex tile, RoadBits pieces, 
 
 	bool need_to_clear = false;
 	switch (GetTileType(tile)) {
-		case MP_ROAD:
+		case TileType::Road:
 			switch (GetRoadTileType(tile)) {
 				case RoadTileType::Normal: {
 					if (HasRoadWorks(tile)) return CommandCost(STR_ERROR_ROAD_WORKS_IN_PROGRESS);
@@ -706,7 +706,7 @@ CommandCost CmdBuildRoad(DoCommandFlags flags, TileIndex tile, RoadBits pieces, 
 			}
 			break;
 
-		case MP_RAILWAY: {
+		case TileType::Railway: {
 			if (IsSteepSlope(tileh)) {
 				return CommandCost(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 			}
@@ -774,7 +774,7 @@ CommandCost CmdBuildRoad(DoCommandFlags flags, TileIndex tile, RoadBits pieces, 
 			return CommandCost(EXPENSES_CONSTRUCTION, 2 * RoadBuildCost(rt));
 		}
 
-		case MP_STATION: {
+		case TileType::Station: {
 			if ((GetAnyRoadBits(tile, rtt) & pieces) == pieces) return CommandCost(STR_ERROR_ALREADY_BUILT);
 			if (!IsDriveThroughStopTile(tile)) goto do_clear;
 
@@ -786,7 +786,7 @@ CommandCost CmdBuildRoad(DoCommandFlags flags, TileIndex tile, RoadBits pieces, 
 			break;
 		}
 
-		case MP_TUNNELBRIDGE: {
+		case TileType::TunnelBridge: {
 			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) goto do_clear;
 			/* Only allow building the outer roadbit, so building long roads stops at existing bridges */
 			if (MirrorRoadBits(DiagDirToRoadBits(GetTunnelBridgeDirection(tile))) != pieces) goto do_clear;
@@ -822,7 +822,7 @@ do_clear:;
 	}
 
 	if (!need_to_clear) {
-		if (IsTileType(tile, MP_ROAD)) {
+		if (IsTileType(tile, TileType::Road)) {
 			/* Don't put the pieces that already exist */
 			pieces &= ComplementRoadBits(existing);
 
@@ -861,7 +861,7 @@ do_clear:;
 		}
 	}
 
-	uint num_pieces = (!need_to_clear && IsTileType(tile, MP_TUNNELBRIDGE)) ?
+	uint num_pieces = (!need_to_clear && IsTileType(tile, TileType::TunnelBridge)) ?
 			/* There are 2 pieces on *every* tile of the bridge or tunnel */
 			2 * (GetTunnelBridgeLength(GetOtherTunnelBridgeEnd(tile), tile) + 2) :
 			/* Count pieces */
@@ -871,7 +871,7 @@ do_clear:;
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		switch (GetTileType(tile)) {
-			case MP_ROAD: {
+			case TileType::Road: {
 				RoadTileType rttype = GetRoadTileType(tile);
 				if (existing == ROAD_NONE || rttype == RoadTileType::Crossing) {
 					SetRoadType(tile, rtt, rt);
@@ -882,7 +882,7 @@ do_clear:;
 				break;
 			}
 
-			case MP_TUNNELBRIDGE: {
+			case TileType::TunnelBridge: {
 				TileIndex other_end = GetOtherTunnelBridgeEnd(tile);
 
 				SetRoadType(other_end, rtt, rt);
@@ -900,7 +900,7 @@ do_clear:;
 				break;
 			}
 
-			case MP_STATION: {
+			case TileType::Station: {
 				assert(IsDriveThroughStopTile(tile));
 				SetRoadType(tile, rtt, rt);
 				SetRoadOwner(tile, rtt, company);
@@ -913,7 +913,7 @@ do_clear:;
 		}
 
 		/* Update company infrastructure count. */
-		if (IsTileType(tile, MP_TUNNELBRIDGE)) num_pieces *= TUNNELBRIDGE_TRACKBIT_FACTOR;
+		if (IsTileType(tile, TileType::TunnelBridge)) num_pieces *= TUNNELBRIDGE_TRACKBIT_FACTOR;
 		UpdateCompanyRoadInfrastructure(rt, GetRoadOwner(tile, rtt), num_pieces);
 
 		if (rtt == RTT_ROAD && IsNormalRoadTile(tile)) {
@@ -1024,7 +1024,7 @@ CommandCost CmdBuildLongRoad(DoCommandFlags flags, TileIndex end_tile, TileIndex
 		} else {
 			had_success = true;
 			/* Only pay for the upgrade on one side of the bridges and tunnels */
-			if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+			if (IsTileType(tile, TileType::TunnelBridge)) {
 				if (IsBridge(tile)) {
 					if (!had_bridge || GetTunnelBridgeDirection(tile) == dir) {
 						cost.AddCost(ret.GetCost());
@@ -1443,14 +1443,14 @@ void DrawRoadCatenary(const TileInfo *ti)
 	RoadBits road = ROAD_NONE;
 	RoadBits tram = ROAD_NONE;
 
-	if (IsTileType(ti->tile, MP_ROAD)) {
+	if (IsTileType(ti->tile, TileType::Road)) {
 		if (IsNormalRoad(ti->tile)) {
 			road = GetRoadBits(ti->tile, RTT_ROAD);
 			tram = GetRoadBits(ti->tile, RTT_TRAM);
 		} else if (IsLevelCrossing(ti->tile)) {
 			tram = road = (GetCrossingRailAxis(ti->tile) == AXIS_Y ? ROAD_X : ROAD_Y);
 		}
-	} else if (IsTileType(ti->tile, MP_STATION)) {
+	} else if (IsTileType(ti->tile, TileType::Station)) {
 		if (IsAnyRoadStop(ti->tile)) {
 			if (IsDriveThroughStopTile(ti->tile)) {
 				Axis axis = GetDriveThroughStopAxis(ti->tile);
@@ -1946,7 +1946,7 @@ void UpdateNearestTownForRoadTiles(bool invalidate)
 	assert(!invalidate || _generating_world);
 
 	for (const auto t : Map::Iterate()) {
-		if (IsTileType(t, MP_ROAD) && !IsRoadDepot(t) && !HasTownOwnedRoad(t)) {
+		if (IsTileType(t, TileType::Road) && !IsRoadDepot(t) && !HasTownOwnedRoad(t)) {
 			TownID tid = TownID::Invalid();
 			if (!invalidate) {
 				const Town *town = CalcClosestTownFromTile(t);
@@ -2483,16 +2483,16 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 		/* Check if there is any infrastructure on tile */
 		TileType tt = GetTileType(tile);
 		switch (tt) {
-			case MP_STATION:
+			case TileType::Station:
 				if (!IsAnyRoadStop(tile)) continue;
 				break;
-			case MP_ROAD:
+			case TileType::Road:
 				if (IsLevelCrossing(tile) && RoadNoLevelCrossing(to_type)) {
 					error.MakeError(STR_ERROR_CROSSING_DISALLOWED_ROAD);
 					continue;
 				}
 				break;
-			case MP_TUNNELBRIDGE:
+			case TileType::TunnelBridge:
 				if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) continue;
 				break;
 			default: continue;
@@ -2512,7 +2512,7 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 		 * acceptance of destructive actions. */
 		if (owner == OWNER_TOWN) {
 			Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
-			CommandCost ret = CheckforTownRating({}, t, tt == MP_TUNNELBRIDGE ? TownRatingCheckType::TunnelBridgeRemove : TownRatingCheckType::RoadRemove);
+			CommandCost ret = CheckforTownRating({}, t, tt == TileType::TunnelBridge ? TownRatingCheckType::TunnelBridgeRemove : TownRatingCheckType::RoadRemove);
 			if (ret.Failed()) {
 				error = std::move(ret);
 				continue;
@@ -2521,7 +2521,7 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 
 		/* Vehicle on the tile when not converting normal <-> powered
 		 * Tunnels and bridges have special check later */
-		if (tt != MP_TUNNELBRIDGE) {
+		if (tt != TileType::TunnelBridge) {
 			if (!HasPowerOnRoad(from_type, to_type)) {
 				CommandCost ret = EnsureNoVehicleOnGround(tile);
 				if (ret.Failed()) {
@@ -2540,9 +2540,9 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 			}
 
 			uint num_pieces = CountBits(GetAnyRoadBits(tile, rtt));
-			if (tt == MP_STATION && IsBayRoadStopTile(tile)) {
+			if (tt == TileType::Station && IsBayRoadStopTile(tile)) {
 				num_pieces *= ROAD_STOP_TRACKBIT_FACTOR;
-			} else if (tt == MP_ROAD && IsRoadDepot(tile)) {
+			} else if (tt == TileType::Road && IsRoadDepot(tile)) {
 				num_pieces *= ROAD_DEPOT_TRACKBIT_FACTOR;
 			}
 

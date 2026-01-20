@@ -63,8 +63,8 @@ struct GenericWaypointTypeFilter
 	static bool IsAcceptableWaypointTile(TileIndex tile) { return IsTileType(tile, TILE_TYPE); }
 	static constexpr bool IsWaypoint() { return true; }
 };
-using RailWaypointTypeFilter = GenericWaypointTypeFilter<false, MP_RAILWAY>;
-using RoadWaypointTypeFilter = GenericWaypointTypeFilter<true, MP_ROAD>;
+using RailWaypointTypeFilter = GenericWaypointTypeFilter<false, TileType::Railway>;
+using RoadWaypointTypeFilter = GenericWaypointTypeFilter<true, TileType::Road>;
 
 /**
  * Calculates and draws the accepted or supplied cargo around the selected tile(s)
@@ -117,7 +117,7 @@ void FindStationsAroundSelection()
 	TileArea location(TileVirtXY(_thd.pos.x, _thd.pos.y), _thd.size.x / TILE_SIZE - 1, _thd.size.y / TILE_SIZE - 1);
 
 	/* If the current tile is already a station, then it must be the nearest station. */
-	if (IsTileType(location.tile, MP_STATION) && GetTileOwner(location.tile) == _local_company) {
+	if (IsTileType(location.tile, TileType::Station) && GetTileOwner(location.tile) == _local_company) {
 		typename T::StationType *st = T::StationType::GetByTile(location.tile);
 		if (st != nullptr && T::IsValidBaseStation(st)) {
 			SetViewportCatchmentSpecializedStation<typename T::StationType>(st, true);
@@ -137,7 +137,7 @@ void FindStationsAroundSelection()
 
 	/* Direct loop instead of ForAllStationsAroundTiles as we are not interested in catchment area */
 	for (TileIndex tile : ta) {
-		if (IsTileType(tile, MP_STATION) && GetTileOwner(tile) == _local_company) {
+		if (IsTileType(tile, TileType::Station) && GetTileOwner(tile) == _local_company) {
 			typename T::StationType *st = T::StationType::GetByTile(tile);
 			if (st == nullptr || !T::IsValidBaseStation(st)) continue;
 			if (adjacent != nullptr && st != adjacent) {
@@ -2207,7 +2207,7 @@ static void AddNearbyStation(TileIndex tile, TileArea *ctx)
 	}
 
 	/* Check if own station and if we stay within station spread */
-	if (!IsTileType(tile, MP_STATION)) return;
+	if (!IsTileType(tile, TileType::Station)) return;
 
 	StationID sid = GetStationIndex(tile);
 

@@ -279,7 +279,7 @@ bool FindSubsidyTownCargoRoute()
 	CargoArray town_cargo_produced{};
 	TileArea ta = TileArea(src_town->xy, 1, 1).Expand(SUBSIDY_TOWN_CARGO_RADIUS);
 	for (TileIndex tile : ta) {
-		if (IsTileType(tile, MP_HOUSE)) {
+		if (IsTileType(tile, TileType::House)) {
 			AddProducedCargo(tile, town_cargo_produced);
 		}
 	}
@@ -380,7 +380,7 @@ bool FindSubsidyCargoDestination(CargoType cargo_type, Source src)
 			CargoArray town_cargo_accepted{};
 			TileArea ta = TileArea(dst_town->xy, 1, 1).Expand(SUBSIDY_TOWN_CARGO_RADIUS);
 			for (TileIndex tile : ta) {
-				if (IsTileType(tile, MP_HOUSE)) {
+				if (IsTileType(tile, TileType::House)) {
 					AddAcceptedCargo(tile, town_cargo_accepted, nullptr);
 				}
 			}
@@ -530,7 +530,7 @@ bool CheckSubsidised(CargoType cargo_type, CompanyID company, Source src, const 
 
 			BitmapTileIterator it(st->catchment_tiles);
 			for (TileIndex tile = it; tile != INVALID_TILE; tile = ++it) {
-				if (!IsTileType(tile, MP_HOUSE)) continue;
+				if (!IsTileType(tile, TileType::House)) continue;
 				const Town *t = Town::GetByTile(tile);
 				if (t->cache.part_of_subsidy.Test(PartOfSubsidy::Destination)) include(towns_near, t);
 			}

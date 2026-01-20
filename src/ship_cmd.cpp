@@ -53,11 +53,11 @@ constexpr int MAX_SHIP_DEPOT_SEARCH_DISTANCE = 80;
 WaterClass GetEffectiveWaterClass(TileIndex tile)
 {
 	if (HasTileWaterClass(tile)) return GetWaterClass(tile);
-	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+	if (IsTileType(tile, TileType::TunnelBridge)) {
 		assert(GetTunnelBridgeTransportType(tile) == TRANSPORT_WATER);
 		return WaterClass::Canal;
 	}
-	if (IsTileType(tile, MP_RAILWAY)) {
+	if (IsTileType(tile, TileType::Railway)) {
 		assert(GetRailGroundType(tile) == RailGroundType::HalfTileWater);
 		return WaterClass::Sea;
 	}
@@ -566,7 +566,7 @@ static const ShipSubcoordData _ship_subcoord[DIAGDIR_END][TRACK_END] = {
 static int ShipTestUpDownOnLock(const Ship *v)
 {
 	/* Suitable tile? */
-	if (!IsTileType(v->tile, MP_WATER) || !IsLock(v->tile) || GetLockPart(v->tile) != LockPart::Middle) return 0;
+	if (!IsTileType(v->tile, TileType::Water) || !IsLock(v->tile) || GetLockPart(v->tile) != LockPart::Middle) return 0;
 
 	/* Must be at the centre of the lock */
 	if ((v->x_pos & 0xF) != 8 || (v->y_pos & 0xF) != 8) return 0;
@@ -622,11 +622,11 @@ bool IsShipDestinationTile(TileIndex tile, StationID station)
 		TileIndex t = tile + TileOffsByDiagDir(d);
 		if (!IsValidTile(t)) continue;
 		if (IsDockTile(t) && GetStationIndex(t) == station && IsDockWaterPart(t)) return true;
-		if (IsTileType(t, MP_INDUSTRY)) {
+		if (IsTileType(t, TileType::Industry)) {
 			const Industry *i = Industry::GetByTile(t);
 			if (i->neutral_station != nullptr && i->neutral_station->index == station) return true;
 		}
-		if (IsTileType(t, MP_STATION) && IsOilRig(t) && GetStationIndex(t) == station) return true;
+		if (IsTileType(t, TileType::Station) && IsOilRig(t) && GetStationIndex(t) == station) return true;
 	}
 	return false;
 }
@@ -814,7 +814,7 @@ static void ShipController(Ship *v)
 			}
 		} else {
 			/* On a bridge */
-			if (!IsTileType(gp.new_tile, MP_TUNNELBRIDGE) || !VehicleEnterTile(v, gp.new_tile, gp.x, gp.y).Test(VehicleEnterTileState::EnteredWormhole)) {
+			if (!IsTileType(gp.new_tile, TileType::TunnelBridge) || !VehicleEnterTile(v, gp.new_tile, gp.x, gp.y).Test(VehicleEnterTileState::EnteredWormhole)) {
 				v->x_pos = gp.x;
 				v->y_pos = gp.y;
 				v->UpdatePosition();

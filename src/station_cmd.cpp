@@ -91,12 +91,12 @@
 /**
  * Check whether the given tile is a hangar.
  * @param t the tile to of whether it is a hangar.
- * @pre IsTileType(t, MP_STATION)
+ * @pre IsTileType(t, TileType::Station)
  * @return true if and only if the tile is a hangar.
  */
 bool IsHangar(Tile t)
 {
-	assert(IsTileType(t, MP_STATION));
+	assert(IsTileType(t, TileType::Station));
 
 	/* If the tile isn't an airport there's no chance it's a hangar. */
 	if (!IsAirport(t)) return false;
@@ -127,7 +127,7 @@ CommandCost GetStationAround(TileArea ta, StationID closest_station, CompanyID c
 
 	/* check around to see if there are any stations there owned by the company */
 	for (TileIndex tile_cur : ta) {
-		if (IsTileType(tile_cur, MP_STATION)) {
+		if (IsTileType(tile_cur, TileType::Station)) {
 			StationID t = GetStationIndex(tile_cur);
 			if (!T::IsValidID(t) || T::Get(t)->owner != company || !filter(T::Get(t))) continue;
 			if (closest_station == StationID::Invalid()) {
@@ -176,7 +176,7 @@ static int CountMapSquareAround(TileIndex tile, CMSAMatcher cmp)
 static bool CMSAMine(TileIndex tile)
 {
 	/* No industry */
-	if (!IsTileType(tile, MP_INDUSTRY)) return false;
+	if (!IsTileType(tile, TileType::Industry)) return false;
 
 	const Industry *ind = Industry::GetByTile(tile);
 
@@ -202,7 +202,7 @@ static bool CMSAMine(TileIndex tile)
  */
 static bool CMSAWater(TileIndex tile)
 {
-	return IsTileType(tile, MP_WATER) && IsWater(tile);
+	return IsTileType(tile, TileType::Water) && IsWater(tile);
 }
 
 /**
@@ -212,7 +212,7 @@ static bool CMSAWater(TileIndex tile)
  */
 static bool CMSATree(TileIndex tile)
 {
-	return IsTileType(tile, MP_TREES);
+	return IsTileType(tile, TileType::Trees);
 }
 
 enum StationNaming : uint8_t {
@@ -271,7 +271,7 @@ static StringID GenerateStationName(Station *st, TileIndex tile, StationNaming n
 	}
 
 	for (auto indtile : SpiralTileSequence(tile, 7)) {
-		if (!IsTileType(indtile, MP_INDUSTRY)) continue;
+		if (!IsTileType(indtile, TileType::Industry)) continue;
 
 		/* If the station name is undefined it means that it doesn't name a station */
 		IndustryType indtype = GetIndustryType(indtile);
@@ -539,7 +539,7 @@ CargoArray GetProductionAroundTiles(TileIndex north_tile, int w, int h, int rad)
 	/* Loop over all tiles to get the produced cargo of
 	 * everything except industries */
 	for (TileIndex tile : ta) {
-		if (IsTileType(tile, MP_INDUSTRY)) industries.insert(GetIndustryIndex(tile));
+		if (IsTileType(tile, TileType::Industry)) industries.insert(GetIndustryIndex(tile));
 		AddProducedCargo(tile, produced);
 	}
 
@@ -577,7 +577,7 @@ CargoArray GetAcceptanceAroundTiles(TileIndex center_tile, int w, int h, int rad
 
 	for (TileIndex tile : ta) {
 		/* Ignore industry if it has a neutral station. */
-		if (!_settings_game.station.serve_neutral_industries && IsTileType(tile, MP_INDUSTRY) && Industry::GetByTile(tile)->neutral_station != nullptr) continue;
+		if (!_settings_game.station.serve_neutral_industries && IsTileType(tile, TileType::Industry) && Industry::GetByTile(tile)->neutral_station != nullptr) continue;
 
 		AddAcceptedCargo(tile, acceptance, always_accepted);
 	}
@@ -1011,7 +1011,7 @@ static CommandCost CheckFlatLandRailStation(TileIndex tile_cur, TileIndex north_
 	/* if station is set, then we have special handling to allow building on top of already existing stations.
 	 * so station points to StationID::Invalid() if we can build on any station.
 	 * Or it points to a station if we're only allowed to build on exactly that station. */
-	if (station != nullptr && IsTileType(tile_cur, MP_STATION)) {
+	if (station != nullptr && IsTileType(tile_cur, TileType::Station)) {
 		if (!IsRailStation(tile_cur)) {
 			return ClearTile_Station(tile_cur, DoCommandFlag::Auto); // get error message
 		} else {
@@ -1087,7 +1087,7 @@ static CommandCost CheckFlatLandRoadStop(TileIndex cur_tile, int &allowed_z, con
 	/* If station is set, then we have special handling to allow building on top of already existing stations.
 	 * Station points to StationID::Invalid() if we can build on any station.
 	 * Or it points to a station if we're only allowed to build on exactly that station. */
-	if (station != nullptr && IsTileType(cur_tile, MP_STATION)) {
+	if (station != nullptr && IsTileType(cur_tile, TileType::Station)) {
 		if (!IsAnyRoadStop(cur_tile)) {
 			return ClearTile_Station(cur_tile, DoCommandFlag::Auto); // Get error message.
 		} else {
@@ -2040,7 +2040,7 @@ CommandCost CalculateRoadStopCost(TileArea tile_area, DoCommandFlags flags, bool
 		CommandCost ret = CheckFlatLandRoadStop(cur_tile, allowed_z, roadstopspec, flags, invalid_dirs, is_drive_through, station_type, axis, est, rt);
 		if (ret.Failed()) return ret;
 
-		bool is_preexisting_roadstop = IsTileType(cur_tile, MP_STATION) && IsAnyRoadStop(cur_tile);
+		bool is_preexisting_roadstop = IsTileType(cur_tile, TileType::Station) && IsAnyRoadStop(cur_tile);
 
 		/* Only add costs if a stop doesn't already exist in the location */
 		if (!is_preexisting_roadstop) {
@@ -2155,7 +2155,7 @@ CommandCost CmdBuildRoadStop(DoCommandFlags flags, TileIndex tile, uint8_t width
 			Owner road_owner = road_rt != INVALID_ROADTYPE ? GetRoadOwner(cur_tile, RTT_ROAD) : _current_company;
 			Owner tram_owner = tram_rt != INVALID_ROADTYPE ? GetRoadOwner(cur_tile, RTT_TRAM) : _current_company;
 
-			if (IsTileType(cur_tile, MP_STATION) && IsStationRoadStop(cur_tile)) {
+			if (IsTileType(cur_tile, TileType::Station) && IsStationRoadStop(cur_tile)) {
 				RemoveRoadStop(cur_tile, flags, *specindex);
 			}
 
@@ -2425,7 +2425,7 @@ static CommandCost RemoveGenericRoadStop(DoCommandFlags flags, const TileArea &r
 
 	for (TileIndex cur_tile : roadstop_area) {
 		/* Make sure the specified tile is a road stop of the correct type */
-		if (!IsTileType(cur_tile, MP_STATION) || !IsAnyRoadStop(cur_tile) || IsRoadWaypoint(cur_tile) != road_waypoint) continue;
+		if (!IsTileType(cur_tile, TileType::Station) || !IsAnyRoadStop(cur_tile) || IsRoadWaypoint(cur_tile) != road_waypoint) continue;
 
 		/* Save information on to-be-restored roads before the stop is removed. */
 		RoadBits road_bits = ROAD_NONE;
@@ -2933,7 +2933,7 @@ CommandCost CmdBuildDock(DoCommandFlags flags, TileIndex tile, StationID station
 	if (add_cost) cost.AddCost(ret.GetCost());
 
 	tile_cur += TileOffsByDiagDir(direction);
-	if (!IsTileType(tile_cur, MP_WATER) || !IsTileFlat(tile_cur)) {
+	if (!IsTileType(tile_cur, TileType::Water) || !IsTileFlat(tile_cur)) {
 		return CommandCost(STR_ERROR_SITE_UNSUITABLE);
 	}
 
@@ -2983,10 +2983,10 @@ void RemoveDockingTile(TileIndex t)
 		TileIndex tile = t + TileOffsByDiagDir(d);
 		if (!IsValidTile(tile)) continue;
 
-		if (IsTileType(tile, MP_STATION)) {
+		if (IsTileType(tile, TileType::Station)) {
 			Station *st = Station::GetByTile(tile);
 			if (st != nullptr) UpdateStationDockingTiles(st);
-		} else if (IsTileType(tile, MP_INDUSTRY)) {
+		} else if (IsTileType(tile, TileType::Industry)) {
 			Station *neutral = Industry::GetByTile(tile)->neutral_station;
 			if (neutral != nullptr) UpdateStationDockingTiles(neutral);
 		}
@@ -3903,7 +3903,7 @@ void TriggerWatchedCargoCallbacks(Station *st)
 	/* Loop over all houses in the catchment. */
 	BitmapTileIterator it(st->catchment_tiles);
 	for (TileIndex tile = it; tile != INVALID_TILE; tile = ++it) {
-		if (IsTileType(tile, MP_HOUSE)) {
+		if (IsTileType(tile, TileType::House)) {
 			TriggerHouseAnimation_WatchedCargoAccepted(tile, cargoes);
 		}
 	}
@@ -4559,7 +4559,7 @@ static void AddNearbyStationsByCatchment(TileIndex tile, StationList &stations, 
 const StationList &StationFinder::GetStations()
 {
 	if (this->tile != INVALID_TILE) {
-		if (IsTileType(this->tile, MP_HOUSE)) {
+		if (IsTileType(this->tile, TileType::House)) {
 			/* Town nearby stations need to be filtered per tile. */
 			assert(this->w == 1 && this->h == 1);
 			AddNearbyStationsByCatchment(this->tile, this->stations, Town::GetByTile(this->tile)->stations_near);
@@ -4720,7 +4720,7 @@ void BuildOilRig(TileIndex tile)
 
 	st->string_id = GenerateStationName(st, tile, STATIONNAMING_OILRIG);
 
-	assert(IsTileType(tile, MP_INDUSTRY));
+	assert(IsTileType(tile, TileType::Industry));
 	/* Mark industry as associated both ways */
 	st->industry = Industry::GetByTile(tile);
 	st->industry->neutral_station = st;
@@ -4845,7 +4845,7 @@ static void ChangeTileOwner_Station(TileIndex tile, Owner old_owner, Owner new_o
 			} else {
 				Command<CMD_REMOVE_ROAD_STOP>::Do({DoCommandFlag::Execute, DoCommandFlag::Bankrupt}, tile, 1, 1, (GetStationType(tile) == StationType::Truck) ? RoadStopType::Truck : RoadStopType::Bus, false);
 			}
-			assert(IsTileType(tile, MP_ROAD));
+			assert(IsTileType(tile, TileType::Road));
 			/* Change owner of tile and all roadtypes */
 			ChangeTileOwner(tile, old_owner, new_owner);
 		} else {
@@ -4853,7 +4853,7 @@ static void ChangeTileOwner_Station(TileIndex tile, Owner old_owner, Owner new_o
 			/* Set tile owner of water under (now removed) buoy and dock to OWNER_NONE.
 			 * Update owner of buoy if it was not removed (was in orders).
 			 * Do not update when owned by OWNER_WATER (sea and rivers). */
-			if ((IsTileType(tile, MP_WATER) || IsBuoyTile(tile)) && IsTileOwner(tile, old_owner)) SetTileOwner(tile, OWNER_NONE);
+			if ((IsTileType(tile, TileType::Water) || IsBuoyTile(tile)) && IsTileOwner(tile, old_owner)) SetTileOwner(tile, OWNER_NONE);
 		}
 	}
 }
