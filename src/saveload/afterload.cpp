@@ -932,6 +932,15 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(SLV_SIMPLIFY_INDUSTRY_GRAPHICS)) {
+		for (auto t : Map::Iterate()) {
+			if (IsTileType(t, TileType::Industry)) {
+				t.GetTileExtendedAs<TileType::Industry>().completed = HasBit(t.m1(), 7);
+				SetIndustryGfx(t, t.m5() | (GB(t.m6(), 2, 1) << 8));
+			}
+		}
+	}
+
 	for (const auto t : Map::Iterate()) {
 		switch (GetTileType(t)) {
 			case TileType::Station: {

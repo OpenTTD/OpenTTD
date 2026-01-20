@@ -75,7 +75,7 @@ inline IndustryID GetIndustryIndex(Tile t)
 inline bool IsIndustryCompleted(Tile t)
 {
 	assert(IsTileType(t, TileType::Industry));
-	return HasBit(t.m1(), 7);
+	return t.GetTileExtendedAs<TileType::Industry>().completed;
 }
 
 IndustryType GetIndustryType(Tile tile);
@@ -88,7 +88,7 @@ IndustryType GetIndustryType(Tile tile);
 inline void SetIndustryCompleted(Tile tile)
 {
 	assert(IsTileType(tile, TileType::Industry));
-	SetBit(tile.m1(), 7);
+	tile.GetTileExtendedAs<TileType::Industry>().completed = 1;
 }
 
 /**
@@ -125,7 +125,7 @@ inline void SetIndustryConstructionStage(Tile tile, uint8_t value)
 inline IndustryGfx GetCleanIndustryGfx(Tile t)
 {
 	assert(IsTileType(t, TileType::Industry));
-	return t.m5() | (GB(t.m6(), 2, 1) << 8);
+	return t.GetTileExtendedAs<TileType::Industry>().graphics;
 }
 
 /**
@@ -149,8 +149,7 @@ inline IndustryGfx GetIndustryGfx(Tile t)
 inline void SetIndustryGfx(Tile t, IndustryGfx gfx)
 {
 	assert(IsTileType(t, TileType::Industry));
-	t.m5() = GB(gfx, 0, 8);
-	SB(t.m6(), 2, 1, GB(gfx, 8, 1));
+	t.GetTileExtendedAs<TileType::Industry>().graphics = gfx;
 }
 
 /**
@@ -191,7 +190,6 @@ inline void ResetIndustryConstructionStage(Tile tile)
 	extended.construction_counter = 0;
 	extended.construction_stage = 0;
 	extended.completed = 0;
-	SB(tile.m1(), 7, 1, 0);
 }
 
 /**
