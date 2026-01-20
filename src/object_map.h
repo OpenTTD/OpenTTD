@@ -47,7 +47,8 @@ inline bool IsObjectTypeTile(Tile t, ObjectType type)
 inline ObjectID GetObjectIndex(Tile t)
 {
 	assert(IsTileType(t, TileType::Object));
-	return ObjectID(t.m2() | t.m5() << 16);
+	auto &extended = t.GetTileExtendedAs<TileType::Object>();
+	return ObjectID(extended.index_low_bits | extended.index_high_bits << 16);
 }
 
 /**
@@ -59,7 +60,7 @@ inline ObjectID GetObjectIndex(Tile t)
 inline uint8_t GetObjectRandomBits(Tile t)
 {
 	assert(IsTileType(t, TileType::Object));
-	return t.m3();
+	return t.GetTileBaseAs<TileType::Object>().random_bits;
 }
 
 
@@ -74,15 +75,13 @@ inline uint8_t GetObjectRandomBits(Tile t)
 inline void MakeObject(Tile t, Owner o, ObjectID index, WaterClass wc, uint8_t random)
 {
 	SetTileType(t, TileType::Object);
+	t.ResetData();
 	SetTileOwner(t, o);
 	SetWaterClass(t, wc);
-	t.m2() = index.base();
-	t.m3() = random;
-	t.m4() = 0;
-	t.m5() = index.base() >> 16;
-	SB(t.m6(), 2, 6, 0);
-	t.m7() = 0;
-	t.m8() = 0;
+	auto &extended = t.GetTileExtendedAs<TileType::Object>();
+	extended.index_low_bits = index.base();
+	extended.index_high_bits = index.base() >> 16;
+	t.GetTileBaseAs<TileType::Object>().random_bits = random;
 }
 
 #endif /* OBJECT_MAP_H */

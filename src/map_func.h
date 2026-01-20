@@ -61,6 +61,11 @@ private:
 		uint8_t animation_loop = 0; ///< The state of the animation loop.
 	};
 
+	/** Storage for TileType::Object tile base. */
+	struct ObjectTileBase : TileBaseCommon {
+		uint8_t random_bits = 0; ///< NewGRF random bits.
+	};
+
 	/** Data that is stored per tile in old save games. Also used OldTileExtended for this. */
 	struct OldTileBase {
 		uint8_t type = 0; ///< The type (bits 4..7), bridges (2..3), rainforest/desert (0..1).
@@ -79,6 +84,7 @@ private:
 		ClearTileBase clear; ///< Storage for tiles with: grass, snow, sand etc.
 		WaterTileBase water; ///< Storage for tiles with: canal, river, sea, shore etc.
 		IndustryTileBase industry; ///< Storage for tiles with parts of industries.
+		ObjectTileBase object; ///< Storage for tiles with object e.g. transmitters, lighthouses, owned land.
 		OldTileBase old; ///< Used to preserve compatibility with older save games.
 
 		/** Construct empty tile base storage. */
@@ -157,6 +163,15 @@ private:
 		uint8_t animation_frame = 0; ///< The frame of animation.
 	};
 
+	/** Storage for TileType::Object tile extended. */
+	struct ObjectTileExtended : TileExtendedCommon {
+		uint8_t index_high_bits = 0; ///< High bits of object index on the poll.
+		uint16_t index_low_bits = 0; ///< Low bits of object index on the poll.
+		uint8_t animation_state : 2 = 0; ///< Animated tile state.
+		/* 6 bit offset is auto added by the compiler, because animation_counter can't fit into those 6 bits. */
+		uint8_t animation_counter = 0; ///< The state of the animation.
+	};
+
 	/** Data that is stored per tile in old save games. Also used OldTileBase for this. */
 	struct OldTileExtended {
 		uint8_t m1 = 0; ///< Primarily used for ownership information
@@ -178,6 +193,7 @@ private:
 		WaterTileExtended water; ///< Storage for tiles with water except ship depot.
 		ShipDepotTileExtended ship_depot; ///< Storage for ship depot.
 		IndustryTileExtended industry; ///< Storage for tiles with parts of industries.
+		ObjectTileExtended object; ///< Storage for tiles with object e.g. transmitters, lighthouses, owned land.
 		OldTileExtended old; ///< Used to preserve compatibility with older save games.
 
 		/** Construct empty tile extended storage. */
@@ -268,6 +284,8 @@ public:
 			return base_tiles[this->tile.base()].water;
 		} else if constexpr (Type == TileType::Industry) {
 			return base_tiles[this->tile.base()].industry;
+		} else if constexpr (Type == TileType::Object) {
+			return base_tiles[this->tile.base()].object;
 		}
 	}
 
@@ -288,6 +306,8 @@ public:
 			return extended_tiles[this->tile.base()].water;
 		} else if constexpr (Type == TileType::Industry) {
 			return extended_tiles[this->tile.base()].industry;
+		} else if constexpr (Type == TileType::Object) {
+			return extended_tiles[this->tile.base()].object;
 		}
 	}
 
