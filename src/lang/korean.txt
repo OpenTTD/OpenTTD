@@ -1063,7 +1063,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :사용할 언�
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% 번역됨)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :전체화면
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :OpenTTD를 전체화면으로 플레이하려면 클릭하세요
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :OpenTTD를 전체화면으로 플레이하려면 이 설정을 켜세요
 
 STR_GAME_OPTIONS_RESOLUTION                                     :화면 해상도
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :사용할 화면 해상도를 선택하세요
@@ -1071,11 +1071,11 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :기타
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :하드웨어 가속
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :}OpenTTD가 하드웨어 가속을 사용하게 하려면 체크하세요. 변경한 설정은 게임을 재시작한 뒤에 적용될 것입니다
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :OpenTTD가 하드웨어 가속을 사용하게 하려면 이 설정을 켜세요. 변경한 설정은 게임을 재시작한 뒤에 적용됩니다
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}이 설정은 게임을 재시작한 뒤에 적용될 것입니다
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :수직 동기화
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :화면과 수직 동기화하려면 체크하세요. 변경한 설정은 게임을 재시작한 뒤에 적용될 것입니다. 하드웨어 가속을 켠 경우에만 작동합니다
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :화면과 수직 동기화하려면 이 설정을 켜세요. 변경한 설정은 게임을 재시작한 뒤에 적용됩니다. 하드웨어 가속을 켠 경우에만 작동합니다
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :현재 드라이버: {STRING}
 
@@ -1084,15 +1084,15 @@ STR_GAME_OPTIONS_INTERFACE                                      :인터페이스
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :인터페이스 크기
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :인터페이스 크기를 설정하려면 슬라이더를 드래그하세요. CTRL+드래그하면 미세 조정이 가능합니다
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :크기 자동 탐지
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :인터페이스 크기를 자동으로 탐지하려면 이 박스에 체크하세요
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :인터페이스 크기를 자동으로 탐지하려면 이 설정을 켜세요
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :크기 조절
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :인터페이스 크기를 슬라이더로 조절하려면 이 박스에 체크하세요
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :원본 그래픽 글꼴 사용
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :기존 영어의 고정폭 글꼴을 사용하는 것을 선호하는 경우 이 박스에 체크하세요. 한국어 사용자는 체크하면 안 됩니다
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :기존 영어의 고정폭 글꼴을 사용하는 것을 선호하는 경우 이 설정을 켜세요. 한국어 사용자는 체크하면 안 됩니다
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :글씨체 테두리를 부드럽게
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :크기 조절이 가능한 글씨체에 안티 에일리어싱을 적용하여 테두리를 부드럽게 표현하려면 이 박스에 체크하세요
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :크기 조절이 가능한 글씨체에 안티 에일리어싱을 적용하여 테두리를 부드럽게 표현하려면 이 설정을 켜세요
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
@@ -1599,7 +1599,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :오리지널 �
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :오리지널
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :천지창조
 
-STR_CONFIG_SETTING_TERRAIN_TYPE                                 :지형 종류: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :최대 고도 프리셋: {STRING}
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :지형의 언덕과 산지 모양을 결정합니다
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :산업시설 수: {STRING}
@@ -1627,7 +1627,13 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :부드럽게
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :거칠게
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :매우 거칠게
 
+STR_CONFIG_SETTING_AVERAGE_HEIGHT                               :평균 고도: {STRING}
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT                      :지형의 평균 고도를 선택합니다. '자동'은 선택한 기후에 기반한 기본값(아열대는 '저지대', 온대는 '보통', 아한대는 '고원')을 사용합니다.
 ###length 4
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUTO                          :자동
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_LOWLANDS                      :저지대
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL                        :보통
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS                      :고원
 
 STR_CONFIG_SETTING_VARIETY                                      :산세 험준도: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :지도에 산지와 평지를 모두 있도록 만들지 결정합니다. 더 높은 값을 사용할수록, 산지와 평지 사이의 고도 차이가 더 많아집니다
@@ -3389,7 +3395,8 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}사막 �
 STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}눈이 내린 곳의 비율을 10%p 줄입니다.
 STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}사막 지역의 비율을 10%p 줄입니다.
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
-STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}지형 종류:
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}최대 고도:
+STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}평균 고도:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}해수면:
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}해수면 높이를 선택합니다
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}강:

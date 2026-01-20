@@ -1092,7 +1092,7 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Marque esta op�
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Usar o tipo de letra com gráficos tradicionais
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Marque esta opção se prefere usar o tipo de letra tradicional de tamanho fixo
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Tipos de letra com contornos suaves
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Ativar para usar tipos de letra redimensionáveis com contornos suaves
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Marque esta opção para usar tipos de letra redimensionáveis com contornos suaves
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
