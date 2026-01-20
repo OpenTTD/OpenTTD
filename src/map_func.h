@@ -36,7 +36,7 @@ private:
 
 	static_assert(sizeof(TileBaseCommon) == 2);
 
-	/** Data that is stored per tile in old save games. Also used TileExtended for this. */
+	/** Data that is stored per tile in old save games. Also used OldTileExtended for this. */
 	struct OldTileBase {
 		uint8_t type = 0; ///< The type (bits 4..7), bridges (2..3), rainforest/desert (0..1).
 		uint8_t height = 0; ///< The height of the northern corner.
@@ -59,17 +59,44 @@ private:
 
 	static_assert(sizeof(TileBase) == 4);
 
-	/**
-	 * Data that is stored per tile. Also used TileBase for this.
-	 * Look at docs/landscape.html for the exact meaning of the members.
-	 */
-	struct TileExtended {
+	/** Common storage for all tile extends. */
+	struct TileExtendedCommon {
+		uint8_t owner : 5 = 0; ///< Owner of the tile, if tile has more than one owner, it is one of them.
+		uint8_t water_class : 2 = 0; ///< The type of water that is on a tile.
+		uint8_t ship_docking : 1 = 0; ///< Ship docking tile status.
+	};
+
+	/** Common tile extended for all animated tiles. */
+	struct TileExtendedAnimatedCommon : TileExtendedCommon {
+	private:
+		/** Unused. Needs to be splited into two parts, because some compilers (like MSVC) can't fill bits from uint32_t with other types. @note Prevents save conversion. */
+		[[maybe_unused]] uint8_t bit_offset_1 = 0;
+		[[maybe_unused]] uint16_t bit_offset_2 = 0; ///< Unused. @see bit_offset_1
+	public:
+		uint8_t animation_state : 2 = 0; ///< Animated tile state.
+	};
+
+	/** Data that is stored per tile in old save games. Also used OldTileBase for this. */
+	struct OldTileExtended {
 		uint8_t m1 = 0; ///< Primarily used for ownership information
 		uint8_t m5 = 0; ///< General purpose
 		uint8_t m6 = 0; ///< General purpose
 		uint8_t m7 = 0; ///< Primarily used for newgrf support
 		uint16_t m2 = 0; ///< Primarily used for indices to towns, industries and stations
 		uint16_t m8 = 0; ///< General purpose
+	};
+
+	/**
+	 * Data that is stored per tile. Also used TileBase for this.
+	 * Look at docs/landscape.html for the exact meaning of the members.
+	 */
+	union TileExtended {
+		uint64_t base; ///< Bare access to all bits, useful for saving, loading and constructing map array.
+		TileExtendedAnimatedCommon common; ///< Common storage for all tile extends.
+		OldTileExtended old; ///< Used to preserve compatibility with older save games.
+
+		/** Construct empty tile extended storage. */
+		TileExtended() { this->base = 0; }
 	};
 
 	static_assert(sizeof(TileExtended) == 8);
@@ -135,7 +162,7 @@ public:
 	 */
 	[[debug_inline]] inline uint8_t &m1()
 	{
-		return extended_tiles[this->tile.base()].m1;
+		return extended_tiles[this->tile.base()].old.m1;
 	}
 
 	/**
@@ -147,7 +174,7 @@ public:
 	 */
 	[[debug_inline]] inline uint16_t &m2()
 	{
-		return extended_tiles[this->tile.base()].m2;
+		return extended_tiles[this->tile.base()].old.m2;
 	}
 
 	/**
@@ -183,7 +210,7 @@ public:
 	 */
 	[[debug_inline]] inline uint8_t &m5()
 	{
-		return extended_tiles[this->tile.base()].m5;
+		return extended_tiles[this->tile.base()].old.m5;
 	}
 
 	/**
@@ -195,7 +222,7 @@ public:
 	 */
 	[[debug_inline]] inline uint8_t &m6()
 	{
-		return extended_tiles[this->tile.base()].m6;
+		return extended_tiles[this->tile.base()].old.m6;
 	}
 
 	/**
@@ -207,7 +234,7 @@ public:
 	 */
 	[[debug_inline]] inline uint8_t &m7()
 	{
-		return extended_tiles[this->tile.base()].m7;
+		return extended_tiles[this->tile.base()].old.m7;
 	}
 
 	/**
@@ -219,7 +246,7 @@ public:
 	 */
 	[[debug_inline]] inline uint16_t &m8()
 	{
-		return extended_tiles[this->tile.base()].m8;
+		return extended_tiles[this->tile.base()].old.m8;
 	}
 };
 
