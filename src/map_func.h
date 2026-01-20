@@ -48,6 +48,13 @@ private:
 		uint8_t hedge_SW : 3 = 0; ///< Type of hedge on SW border.
 	};
 
+	/** Storage for TileType::Water tile base. */
+	struct WaterTileBase : TileBaseCommon {
+		uint8_t flood : 1 = 0; ///< Non-flooding state.
+		/* 7 bit offset is auto added by the compiler, because random_bits can't fit into those 7 bits. */
+		uint8_t random_bits = 0; ///< Canal/river random bits.
+	};
+
 	/** Data that is stored per tile in old save games. Also used OldTileExtended for this. */
 	struct OldTileBase {
 		uint8_t type = 0; ///< The type (bits 4..7), bridges (2..3), rainforest/desert (0..1).
@@ -64,6 +71,7 @@ private:
 		uint32_t base; ///< Bare access to all bits, useful for saving, loading and constructing map array.
 		TileBaseCommon common; ///< Common storage for all tile bases.
 		ClearTileBase clear; ///< Storage for tiles with: grass, snow, sand etc.
+		WaterTileBase water; ///< Storage for tiles with: canal, river, sea, shore etc.
 		OldTileBase old; ///< Used to preserve compatibility with older save games.
 
 		/** Construct empty tile base storage. */
@@ -102,6 +110,24 @@ private:
 		uint8_t hedge_NW : 3 = 0; ///< Type of hedge on NW border.
 	};
 
+	/** Storage for TileType::Water tile extended. */
+	struct WaterTileExtended : TileExtendedCommon {
+		uint8_t lock_direction : 2 = 0; ///< In which direction the raised part is facing. Used only for locks.
+		uint8_t lock_part : 2 = 0; ///< Which part of the lock is it. Used only for locks.
+		uint8_t water_type : 4 = 0; ///< Specify what kind of water is this tile of.
+	};
+
+	/** Storage for ship depot tile extended. */
+	struct ShipDepotTileExtended : TileExtendedCommon {
+		uint8_t part : 1 = 0; ///< Which part of the depot is it.
+		uint8_t axis : 1 = 0; ///< Whether the depot follows NE-SW or NW-SE direction.
+	private:
+		[[maybe_unused]] uint8_t bit_offset : 2 = 0; ///< Unused. @note Prevents save conversion.
+	public:
+		uint8_t water_type : 4 = 0; ///< Specify what kind of water is this tile of. If it is not WaterTileType::Depot, then something went wrong.
+		uint16_t index = 0; ///< Depot index on the poll.
+	};
+
 	/** Data that is stored per tile in old save games. Also used OldTileBase for this. */
 	struct OldTileExtended {
 		uint8_t m1 = 0; ///< Primarily used for ownership information
@@ -120,6 +146,8 @@ private:
 		uint64_t base; ///< Bare access to all bits, useful for saving, loading and constructing map array.
 		TileExtendedAnimatedCommon common; ///< Common storage for all tile extends.
 		ClearTileExtended clear; ///< Storage for tiles with: grass, snow, sand etc.
+		WaterTileExtended water; ///< Storage for tiles with water except ship depot.
+		ShipDepotTileExtended ship_depot; ///< Storage for ship depot.
 		OldTileExtended old; ///< Used to preserve compatibility with older save games.
 
 		/** Construct empty tile extended storage. */
@@ -199,24 +227,33 @@ public:
 	 * @tparam Type The TileType to get the structure for.
 	 * @return The appropriate structure from TileBase union.
 	 */
-	template<TileType Type>
+	template<TileType Type = TileType::Invalid>
 	[[debug_inline]] inline auto &GetTileBaseAs()
 	{
-		if constexpr (Type == TileType::Clear) {
+		if constexpr (Type == TileType::Invalid) {
+			return base_tiles[this->tile.base()].common;
+		} else if constexpr (Type == TileType::Clear) {
 			return base_tiles[this->tile.base()].clear;
+		} else if constexpr (Type == TileType::Water) {
+			return base_tiles[this->tile.base()].water;
 		}
 	}
 
 	/**
 	 * Get the internall TileExtended structure for appropriate TileType.
 	 * @tparam Type The TileType to get the structure for.
+	 * @tparam SubType The sub type (e.g. WaterTileType) to get the structure for.
 	 * @return The appropriate structure from TileExtended union.
 	 */
-	template<TileType Type>
+	template<TileType Type = TileType::Invalid, auto SubType = -1>
 	[[debug_inline]] inline auto &GetTileExtendedAs()
 	{
-		if constexpr (Type == TileType::Clear) {
+		if constexpr (Type == TileType::Invalid) {
+			return extended_tiles[this->tile.base()].common;
+		} else if constexpr (Type == TileType::Clear) {
 			return extended_tiles[this->tile.base()].clear;
+		} else if constexpr (Type == TileType::Water) {
+			return extended_tiles[this->tile.base()].water;
 		}
 	}
 

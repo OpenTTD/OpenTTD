@@ -57,6 +57,7 @@ enum class TileType : uint8_t {
 	TunnelBridge, ///< Tunnel entry/exit and bridge heads.
 	Object, ///< Contains objects such as transmitters and owned land.
 	End, ///< End marker.
+	Invalid = 0xFF, ///< Invalid marker.
 };
 
 /**
