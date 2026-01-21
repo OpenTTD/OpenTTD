@@ -53,6 +53,28 @@ private:
 		uint8_t tree_type = 0; ///< The type of trees.
 	};
 
+	/** Storage for TileType::Station tile base. */
+	struct StationTileBase : TileBaseCommon {
+		uint8_t is_blocked : 1 = 0; ///< Rail station / waypoint is blocked.
+		uint8_t wire_allowed : 1 = 0; ///< Rail station / waypoint may have catenary wires.
+		uint8_t pylons_allowed : 1 = 0; ///< Rail station / waypoint may have catenary pylons.
+	private:
+		[[maybe_unused]] uint8_t bit_offset : 1 = 0; ///< Unused. @note Prevents save conversion.
+	public:
+		uint8_t random_bits : 4 = 0; ///< Persistent random data for railway stations/waypoints and airports.
+		uint8_t specification_id = 0; ///< Custom station id; 0 means standard graphics.
+	};
+
+	/** Storage for road stops and road waypoints tile base. */
+	struct RoadStationTileBase : TileBaseCommon {
+	private:
+		[[maybe_unused]] uint8_t bit_offset : 2 = 0; ///< Unused. @note Prevents save conversion.
+	public:
+		uint8_t ground_type : 2 = 0; ///< What is under the road waypoint.
+		uint8_t tram_owner : 4 = 0; ///< The owner of the tram track.
+		uint8_t road_type : 6 = 0; ///< The type of road.
+	};
+
 	/** Storage for TileType::Water tile base. */
 	struct WaterTileBase : TileBaseCommon {
 		uint8_t flood : 1 = 0; ///< Non-flooding state.
@@ -97,6 +119,8 @@ private:
 		TileBaseCommon common; ///< Common storage for all tile bases.
 		ClearTileBase clear; ///< Storage for tiles with: grass, snow, sand etc.
 		TreesTileBase trees; ///< Storage for tiles with trees.
+		StationTileBase station; ///< Storage for tiles with station except road stops and road waypoints.
+		RoadStationTileBase road_station; ///< Storage for tiles with road stop or road waypoint.
 		WaterTileBase water; ///< Storage for tiles with: canal, river, sea, shore etc.
 		IndustryTileBase industry; ///< Storage for tiles with parts of industries.
 		TunnelBridgeTileBase tunnel_bridge; ///< Storage for tiles with tunnel exit or bridge head.
@@ -151,6 +175,37 @@ private:
 	public:
 		uint16_t density : 2 = 0; ///< The density of the ground under trees.
 		uint16_t ground : 3 = 0; ///< The ground under trees.
+	};
+
+	/** Common storage for TileType::Station tile extended. */
+	struct StationTileExtendedCommon : TileExtendedCommon {
+		uint8_t graphics = 0; ///< Graphics index.
+		uint16_t index = 0; ///< Station index on the poll.
+	};
+
+	/** Also common storage for TileType::Station tile extended like @see StationTileExtendedCommon. Needs to be separeted because of MSVC */
+	struct TileExtendedStationSpecificPart {
+		uint8_t animation_state : 2 = 0; ///< Animated tile state.
+		uint8_t pbs_reservation : 1 = 0; ///< The pbs reservation state for railway.
+		uint8_t station_type : 4 = 0; ///< The type of station.
+	};
+
+	/** Storage for TileType::Station tile extended. */
+	struct StationTileExtended : StationTileExtendedCommon, TileExtendedStationSpecificPart {
+		uint8_t animation_frame = 0; ///< The frame of animation.
+		uint8_t rail_type : 6 = 0; ///< The track type for railway.
+	};
+
+	/** Storage for road stops and road waypoints tile extended. */
+	struct RoadStationTileExtended : StationTileExtendedCommon, TileExtendedStationSpecificPart {
+		uint8_t road_owner : 5 = 0; ///< The owner of the road.
+		/* 3 bit offset is auto added by the compiler, because specification_id can't fit into those 3 bits. */
+		uint16_t specification_id : 6 = 0; ///< Custom station id; 0 means standard graphics.
+		uint16_t tram_type : 6 = 0; ///< The type of tram track.
+	private:
+		[[maybe_unused]] uint16_t bit_offset : 3 = 0; ///< Unused. @note Prevents save conversion.
+	public:
+		uint16_t snow_desert_presence : 1 = 0; ///< If set it is surrounded by snow or sand depending on the biome.
 	};
 
 	/** Storage for TileType::Water tile extended. */
@@ -243,6 +298,8 @@ private:
 		TileExtendedAnimatedCommon common; ///< Common storage for all tile extends.
 		ClearTileExtended clear; ///< Storage for tiles with: grass, snow, sand etc.
 		TreesTileExtended trees; ///< Storage for tiles with trees.
+		StationTileExtended station; ///< Storage for tiles with station except road stops and road waypoints.
+		RoadStationTileExtended road_station; ///< Storage for tiles with road stop or road waypoint.
 		WaterTileExtended water; ///< Storage for tiles with water except ship depot.
 		ShipDepotTileExtended ship_depot; ///< Storage for ship depot.
 		IndustryTileExtended industry; ///< Storage for tiles with parts of industries.
@@ -325,9 +382,10 @@ public:
 	/**
 	 * Get the internall TileBase structure for appropriate TileType.
 	 * @tparam Type The TileType to get the structure for.
+	 * @tparam SubType The sub type (e.g. TransportType) to get the structure for.
 	 * @return The appropriate structure from TileBase union.
 	 */
-	template<TileType Type = TileType::Invalid>
+	template<TileType Type = TileType::Invalid, auto SubType = -1>
 	[[debug_inline]] inline auto &GetTileBaseAs()
 	{
 		if constexpr (Type == TileType::Invalid) {
@@ -336,6 +394,8 @@ public:
 			return base_tiles[this->tile.base()].clear;
 		} else if constexpr (Type == TileType::Trees) {
 			return base_tiles[this->tile.base()].trees;
+		} else if constexpr (Type == TileType::Station) {
+			return base_tiles[this->tile.base()].station;
 		} else if constexpr (Type == TileType::Water) {
 			return base_tiles[this->tile.base()].water;
 		} else if constexpr (Type == TileType::Industry) {
@@ -362,6 +422,8 @@ public:
 			return extended_tiles[this->tile.base()].clear;
 		} else if constexpr (Type == TileType::Trees) {
 			return extended_tiles[this->tile.base()].trees;
+		} else if constexpr (Type == TileType::Station) {
+			return extended_tiles[this->tile.base()].station;
 		} else if constexpr (Type == TileType::Water) {
 			return extended_tiles[this->tile.base()].water;
 		} else if constexpr (Type == TileType::Industry) {
