@@ -1209,6 +1209,11 @@ STR_RIVERS_MODERATE                                             :Medium
 STR_RIVERS_LOT                                                  :Many
 
 ###length 3
+STR_TREES_FEW                                                   :Few
+STR_TREES_MODERATE                                              :Medium
+STR_TREES_LOT                                                   :Many
+
+###length 3
 STR_DISASTER_NONE                                               :None
 STR_DISASTER_REDUCED                                            :Reduced
 STR_DISASTER_NORMAL                                             :Normal
@@ -1639,6 +1644,9 @@ STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Choose if the m
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :River amount: {STRING2}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Choose how many rivers to generate
+
+STR_CONFIG_SETTING_TREE_AMOUNT                                  :Tree amount: {STRING2}
+STR_CONFIG_SETTING_TREE_AMOUNT_HELPTEXT                         :The amount of trees that will be on the map. This can be changed while the game is running, but the effect will only become visible after several in-game years.
 
 STR_CONFIG_SETTING_TREE_PLACER                                  :Tree placer algorithm: {STRING2}
 STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Choose the distribution of trees on the map: 'Original' plants trees uniformly scattered, 'Improved' plants them in groups
@@ -3399,6 +3407,8 @@ STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}Average 
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Sea level:
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Select the sea level
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Rivers:
+STR_MAPGEN_QUANTITY_OF_TREES                                    :{BLACK}Trees:
+STR_MAPGEN_QUANTITY_OF_TREES_TOOLTIP                            :{BLACK}Amount of trees on the map
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Smoothness:
 STR_MAPGEN_VARIETY                                              :{BLACK}Variety distribution:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generate

@@ -230,6 +230,28 @@ inline void SetTreeGrowth(Tile t, TreeGrowthStage g)
 }
 
 /**
+ * Returns whether a tree tile is poisoned
+ * @param tile The tile to check
+ * @return True if poisoned, false otherwise
+ */
+inline bool IsTreeTilePoisoned(Tile tile)
+{
+	assert(GetTileType(tile) == MP_TREES);
+	return HasBit(tile.m5(), 3);
+}
+
+/**
+ * Sets whether a tree tile is poisoned
+ * @param tile The tile to apply to value to
+ * @param poisoned Whether the tile will be poisoned or not.
+ */
+inline void SetTreeTilePoisoned(Tile tile, bool poisoned)
+{
+	assert(GetTileType(tile) == MP_TREES);
+	AssignBit(tile.m5(), 3, poisoned);
+}
+
+/**
  * Make a tree-tile.
  *
  * This functions change the tile to a tile with trees and all information which belongs to it.
