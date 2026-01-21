@@ -48,6 +48,11 @@ private:
 		uint8_t hedge_SW : 3 = 0; ///< Type of hedge on SW border.
 	};
 
+	/** Storage for TileType::Trees tile base. */
+	struct TreesTileBase : TileBaseCommon {
+		uint8_t tree_type = 0; ///< The type of trees.
+	};
+
 	/** Storage for TileType::Water tile base. */
 	struct WaterTileBase : TileBaseCommon {
 		uint8_t flood : 1 = 0; ///< Non-flooding state.
@@ -82,6 +87,7 @@ private:
 		uint32_t base; ///< Bare access to all bits, useful for saving, loading and constructing map array.
 		TileBaseCommon common; ///< Common storage for all tile bases.
 		ClearTileBase clear; ///< Storage for tiles with: grass, snow, sand etc.
+		TreesTileBase trees; ///< Storage for tiles with trees.
 		WaterTileBase water; ///< Storage for tiles with: canal, river, sea, shore etc.
 		IndustryTileBase industry; ///< Storage for tiles with parts of industries.
 		ObjectTileBase object; ///< Storage for tiles with object e.g. transmitters, lighthouses, owned land.
@@ -121,6 +127,20 @@ private:
 		[[maybe_unused]] uint8_t bit_offset : 2 = 0; ///< Unused. @note These bits are reserved for animated tile state.
 	public:
 		uint8_t hedge_NW : 3 = 0; ///< Type of hedge on NW border.
+	};
+
+	/** Storage for TileType::Trees tile extended. */
+	struct TreesTileExtended : TileExtendedCommon {
+		uint8_t growth : 3 = 0; ///< The trees growth status.
+	private:
+		[[maybe_unused]] uint8_t bit_offset_1 : 3 = 0; ///< Unused. @note Prevents save conversion.
+	public:
+		uint8_t quantity : 2 = 0; ///< The number of trees minus one.
+	private:
+		[[maybe_unused]] uint16_t bit_offset_2 : 4 = 0; ///< Unused, previously tree counter. @note Prevents save conversion.
+	public:
+		uint16_t density : 2 = 0; ///< The density of the ground under trees.
+		uint16_t ground : 3 = 0; ///< The ground under trees.
 	};
 
 	/** Storage for TileType::Water tile extended. */
@@ -190,6 +210,7 @@ private:
 		uint64_t base; ///< Bare access to all bits, useful for saving, loading and constructing map array.
 		TileExtendedAnimatedCommon common; ///< Common storage for all tile extends.
 		ClearTileExtended clear; ///< Storage for tiles with: grass, snow, sand etc.
+		TreesTileExtended trees; ///< Storage for tiles with trees.
 		WaterTileExtended water; ///< Storage for tiles with water except ship depot.
 		ShipDepotTileExtended ship_depot; ///< Storage for ship depot.
 		IndustryTileExtended industry; ///< Storage for tiles with parts of industries.
@@ -280,6 +301,8 @@ public:
 			return base_tiles[this->tile.base()].common;
 		} else if constexpr (Type == TileType::Clear) {
 			return base_tiles[this->tile.base()].clear;
+		} else if constexpr (Type == TileType::Trees) {
+			return base_tiles[this->tile.base()].trees;
 		} else if constexpr (Type == TileType::Water) {
 			return base_tiles[this->tile.base()].water;
 		} else if constexpr (Type == TileType::Industry) {
@@ -302,6 +325,8 @@ public:
 			return extended_tiles[this->tile.base()].common;
 		} else if constexpr (Type == TileType::Clear) {
 			return extended_tiles[this->tile.base()].clear;
+		} else if constexpr (Type == TileType::Trees) {
+			return extended_tiles[this->tile.base()].trees;
 		} else if constexpr (Type == TileType::Water) {
 			return extended_tiles[this->tile.base()].water;
 		} else if constexpr (Type == TileType::Industry) {

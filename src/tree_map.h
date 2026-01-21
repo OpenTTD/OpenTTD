@@ -87,7 +87,7 @@ enum class TreeGrowthStage : uint8_t {
 inline TreeType GetTreeType(Tile t)
 {
 	assert(IsTileType(t, TileType::Trees));
-	return (TreeType)t.m3();
+	return TreeType(t.GetTileBaseAs<TileType::Trees>().tree_type);
 }
 
 /**
@@ -102,7 +102,7 @@ inline TreeType GetTreeType(Tile t)
 inline TreeGround GetTreeGround(Tile t)
 {
 	assert(IsTileType(t, TileType::Trees));
-	return (TreeGround)GB(t.m2(), 6, 3);
+	return TreeGround(t.GetTileExtendedAs<TileType::Trees>().ground);
 }
 
 /**
@@ -127,7 +127,7 @@ inline TreeGround GetTreeGround(Tile t)
 inline uint GetTreeDensity(Tile t)
 {
 	assert(IsTileType(t, TileType::Trees));
-	return GB(t.m2(), 4, 2);
+	return t.GetTileExtendedAs<TileType::Trees>().density;
 }
 
 /**
@@ -144,8 +144,9 @@ inline uint GetTreeDensity(Tile t)
 inline void SetTreeGroundDensity(Tile t, TreeGround g, uint d)
 {
 	assert(IsTileType(t, TileType::Trees)); // XXX incomplete
-	SB(t.m2(), 4, 2, d);
-	SB(t.m2(), 6, 3, g);
+	auto &extended = t.GetTileExtendedAs<TileType::Trees>();
+	extended.density = d;
+	extended.ground = g;
 	SetWaterClass(t, g == TREE_GROUND_SHORE ? WaterClass::Sea : WaterClass::Invalid);
 }
 
@@ -163,7 +164,7 @@ inline void SetTreeGroundDensity(Tile t, TreeGround g, uint d)
 inline uint GetTreeCount(Tile t)
 {
 	assert(IsTileType(t, TileType::Trees));
-	return GB(t.m5(), 6, 2) + 1;
+	return t.GetTileExtendedAs<TileType::Trees>().quantity + 1;
 }
 
 /**
@@ -180,7 +181,7 @@ inline uint GetTreeCount(Tile t)
 inline void AddTreeCount(Tile t, int c)
 {
 	assert(IsTileType(t, TileType::Trees)); // XXX incomplete
-	t.m5() += c << 6;
+	t.GetTileExtendedAs<TileType::Trees>().quantity += c ;
 }
 
 /**
@@ -195,7 +196,7 @@ inline void AddTreeCount(Tile t, int c)
 inline TreeGrowthStage GetTreeGrowth(Tile t)
 {
 	assert(IsTileType(t, TileType::Trees));
-	return static_cast<TreeGrowthStage>(GB(t.m5(), 0, 3));
+	return static_cast<TreeGrowthStage>(t.GetTileExtendedAs<TileType::Trees>().growth);
 }
 
 /**
@@ -210,7 +211,7 @@ inline TreeGrowthStage GetTreeGrowth(Tile t)
 inline void AddTreeGrowth(Tile t, int a)
 {
 	assert(IsTileType(t, TileType::Trees)); // XXX incomplete
-	t.m5() += a;
+	t.GetTileExtendedAs<TileType::Trees>().growth += a;
 }
 
 /**
@@ -226,7 +227,7 @@ inline void AddTreeGrowth(Tile t, int a)
 inline void SetTreeGrowth(Tile t, TreeGrowthStage g)
 {
 	assert(IsTileType(t, TileType::Trees)); // XXX incomplete
-	SB(t.m5(), 0, 3, to_underlying(g));
+	t.GetTileExtendedAs<TileType::Trees>().growth = to_underlying(g);
 }
 
 /**
@@ -244,15 +245,15 @@ inline void SetTreeGrowth(Tile t, TreeGrowthStage g)
 inline void MakeTree(Tile t, TreeType type, uint count, TreeGrowthStage growth, TreeGround ground, uint density)
 {
 	SetTileType(t, TileType::Trees);
+	t.ResetData();
 	SetTileOwner(t, OWNER_NONE);
 	SetWaterClass(t, ground == TREE_GROUND_SHORE ? WaterClass::Sea : WaterClass::Invalid);
-	t.m2() = ground << 6 | density << 4 | 0;
-	t.m3() = type;
-	t.m4() = 0 << 5 | 0 << 2;
-	t.m5() = count << 6 | to_underlying(growth);
-	SB(t.m6(), 2, 6, 0);
-	t.m7() = 0;
-	t.m8() = 0;
+	t.GetTileBaseAs<TileType::Trees>().tree_type = type;
+	auto &extended = t.GetTileExtendedAs<TileType::Trees>();
+	extended.ground = ground;
+	extended.density = density;
+	extended.quantity = count;
+	extended.growth = to_underlying(growth);
 }
 
 #endif /* TREE_MAP_H */
