@@ -66,6 +66,15 @@ private:
 		uint8_t animation_loop = 0; ///< The state of the animation loop.
 	};
 
+	/** Storage for TileType::TunnelBridge tile base. */
+	struct TunnelBridgeTileBase : TileBaseCommon {
+	private:
+		[[maybe_unused]] uint8_t bit_offset : 4 = 0; ///< Unused. @note Prevents save conversion.
+	public:
+		uint8_t tram_owner : 4 = 0; ///< The owner of the tram track.
+		uint8_t road_type : 6 = 0; ///< The type of road.
+	};
+
 	/** Storage for TileType::Object tile base. */
 	struct ObjectTileBase : TileBaseCommon {
 		uint8_t random_bits = 0; ///< NewGRF random bits.
@@ -90,6 +99,7 @@ private:
 		TreesTileBase trees; ///< Storage for tiles with trees.
 		WaterTileBase water; ///< Storage for tiles with: canal, river, sea, shore etc.
 		IndustryTileBase industry; ///< Storage for tiles with parts of industries.
+		TunnelBridgeTileBase tunnel_bridge; ///< Storage for tiles with tunnel exit or bridge head.
 		ObjectTileBase object; ///< Storage for tiles with object e.g. transmitters, lighthouses, owned land.
 		OldTileBase old; ///< Used to preserve compatibility with older save games.
 
@@ -183,6 +193,28 @@ private:
 		uint8_t animation_frame = 0; ///< The frame of animation.
 	};
 
+	/** Storage for TileType::TunnelBridge tile extended. */
+	struct TunnelBridgeTileExtended : TileExtendedCommon {
+		uint8_t direction : 2 = 0; ///< The direction onto the bridge / out of the tunnel.
+		uint8_t transport_type : 2 = 0; ///< What kind of vehicles can enter the bridge / tunnel.
+		uint8_t pbs_reservation : 1 = 0; ///< The pbs reservation state for railway.
+	private:
+		[[maybe_unused]] uint8_t bit_offset_1 : 2 = 0; ///< Unused. @note Prevents save conversion.
+	public:
+		uint8_t is_bridge : 1 = 0; ///< Whether it is a bridge or a tunnel.
+	private:
+		[[maybe_unused]] uint16_t bit_offset_2 = 0; ///< Unused. @note Prevents save conversion.
+		[[maybe_unused]] uint8_t bit_offset_3 : 2 = 0; ///< Unused. @note These bits are reserved for animated tile state.
+	public:
+		uint8_t bridge_type : 4 = 0; ///< The type of bridge. Unused for tunnels.
+		/* 2 bit offset is auto added by the compiler, because road_owner can't fit into those 2 bits. */
+		uint8_t road_owner : 5 = 0; ///< The owner of the road.
+		uint8_t snow_desert_presence : 1 = 0; ///< If set it is surrounded by snow or sand depending on the biome.
+		/* 2 bit offset is auto added by the compiler, because road_owner can't fit into those 2 bits. */
+		uint16_t rail_type : 6 = 0; ///< The track type for railway.
+		uint16_t tram_type : 6 = 0; ///< The type of tram track.
+	};
+
 	/** Storage for TileType::Object tile extended. */
 	struct ObjectTileExtended : TileExtendedCommon {
 		uint8_t index_high_bits = 0; ///< High bits of object index on the poll.
@@ -214,6 +246,7 @@ private:
 		WaterTileExtended water; ///< Storage for tiles with water except ship depot.
 		ShipDepotTileExtended ship_depot; ///< Storage for ship depot.
 		IndustryTileExtended industry; ///< Storage for tiles with parts of industries.
+		TunnelBridgeTileExtended tunnel_bridge; ///< Storage for tiles with tunnel exits or bridge heads.
 		ObjectTileExtended object; ///< Storage for tiles with object e.g. transmitters, lighthouses, owned land.
 		OldTileExtended old; ///< Used to preserve compatibility with older save games.
 
@@ -307,6 +340,8 @@ public:
 			return base_tiles[this->tile.base()].water;
 		} else if constexpr (Type == TileType::Industry) {
 			return base_tiles[this->tile.base()].industry;
+		} else if constexpr (Type == TileType::TunnelBridge) {
+			return base_tiles[this->tile.base()].tunnel_bridge;
 		} else if constexpr (Type == TileType::Object) {
 			return base_tiles[this->tile.base()].object;
 		}
@@ -331,6 +366,8 @@ public:
 			return extended_tiles[this->tile.base()].water;
 		} else if constexpr (Type == TileType::Industry) {
 			return extended_tiles[this->tile.base()].industry;
+		} else if constexpr (Type == TileType::TunnelBridge) {
+			return extended_tiles[this->tile.base()].tunnel_bridge;
 		} else if constexpr (Type == TileType::Object) {
 			return extended_tiles[this->tile.base()].object;
 		}

@@ -23,7 +23,7 @@
 inline bool IsTunnel(Tile t)
 {
 	assert(IsTileType(t, TileType::TunnelBridge));
-	return !HasBit(t.m5(), 7);
+	return !t.GetTileExtendedAs<TileType::TunnelBridge>().is_bridge;
 }
 
 /**
@@ -50,14 +50,11 @@ bool IsTunnelInWayDir(TileIndex tile, int z, DiagDirection dir);
 inline void MakeRoadTunnel(Tile t, Owner o, DiagDirection d, RoadType road_rt, RoadType tram_rt)
 {
 	SetTileType(t, TileType::TunnelBridge);
+	t.ResetData();
 	SetTileOwner(t, o);
-	t.m2() = 0;
-	t.m3() = 0;
-	t.m4() = 0;
-	t.m5() = TRANSPORT_ROAD << 2 | d;
-	SB(t.m6(), 2, 6, 0);
-	t.m7() = 0;
-	t.m8() = 0;
+	auto &extended = t.GetTileExtendedAs<TileType::TunnelBridge>();
+	extended.transport_type = TRANSPORT_ROAD;
+	extended.direction = d;
 	SetRoadOwner(t, RTT_ROAD, o);
 	if (o != OWNER_TOWN) SetRoadOwner(t, RTT_TRAM, o);
 	SetRoadTypes(t, road_rt, tram_rt);
@@ -73,14 +70,11 @@ inline void MakeRoadTunnel(Tile t, Owner o, DiagDirection d, RoadType road_rt, R
 inline void MakeRailTunnel(Tile t, Owner o, DiagDirection d, RailType r)
 {
 	SetTileType(t, TileType::TunnelBridge);
+	t.ResetData();
 	SetTileOwner(t, o);
-	t.m2() = 0;
-	t.m3() = 0;
-	t.m4() = 0;
-	t.m5() = TRANSPORT_RAIL << 2 | d;
-	SB(t.m6(), 2, 6, 0);
-	t.m7() = 0;
-	t.m8() = 0;
+	auto &extended = t.GetTileExtendedAs<TileType::TunnelBridge>();
+	extended.transport_type = TRANSPORT_RAIL;
+	extended.direction = d;
 	SetRailType(t, r);
 }
 

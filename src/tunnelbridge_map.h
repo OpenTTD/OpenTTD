@@ -26,7 +26,7 @@
 inline DiagDirection GetTunnelBridgeDirection(Tile t)
 {
 	assert(IsTileType(t, TileType::TunnelBridge));
-	return (DiagDirection)GB(t.m5(), 0, 2);
+	return DiagDirection(t.GetTileExtendedAs<TileType::TunnelBridge>().direction);
 }
 
 /**
@@ -39,7 +39,7 @@ inline DiagDirection GetTunnelBridgeDirection(Tile t)
 inline TransportType GetTunnelBridgeTransportType(Tile t)
 {
 	assert(IsTileType(t, TileType::TunnelBridge));
-	return (TransportType)GB(t.m5(), 2, 2);
+	return TransportType(t.GetTileExtendedAs<TileType::TunnelBridge>().transport_type);
 }
 
 /**
@@ -52,7 +52,7 @@ inline TransportType GetTunnelBridgeTransportType(Tile t)
 inline bool HasTunnelBridgeSnowOrDesert(Tile t)
 {
 	assert(IsTileType(t, TileType::TunnelBridge));
-	return HasBit(t.m7(), 5);
+	return t.GetTileExtendedAs<TileType::TunnelBridge>().snow_desert_presence;
 }
 
 /**
@@ -66,7 +66,7 @@ inline bool HasTunnelBridgeSnowOrDesert(Tile t)
 inline void SetTunnelBridgeSnowOrDesert(Tile t, bool snow_or_desert)
 {
 	assert(IsTileType(t, TileType::TunnelBridge));
-	SB(t.m7(), 5, 1, snow_or_desert);
+	t.GetTileExtendedAs<TileType::TunnelBridge>().snow_desert_presence = snow_or_desert;
 }
 
 /**
@@ -92,7 +92,7 @@ inline bool HasTunnelBridgeReservation(Tile t)
 {
 	assert(IsTileType(t, TileType::TunnelBridge));
 	assert(GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL);
-	return HasBit(t.m5(), 4);
+	return t.GetTileExtendedAs<TileType::TunnelBridge>().pbs_reservation;
 }
 
 /**
@@ -105,7 +105,7 @@ inline void SetTunnelBridgeReservation(Tile t, bool b)
 {
 	assert(IsTileType(t, TileType::TunnelBridge));
 	assert(GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL);
-	AssignBit(t.m5(), 4, b);
+	t.GetTileExtendedAs<TileType::TunnelBridge>().pbs_reservation = b;
 }
 
 /**

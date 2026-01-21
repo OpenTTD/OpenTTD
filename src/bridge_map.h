@@ -24,7 +24,7 @@
 inline bool IsBridge(Tile t)
 {
 	assert(IsTileType(t, TileType::TunnelBridge));
-	return HasBit(t.m5(), 7);
+	return t.GetTileExtendedAs<TileType::TunnelBridge>().is_bridge;
 }
 
 /**
@@ -44,7 +44,7 @@ inline bool IsBridgeTile(Tile t)
  */
 inline bool IsBridgeAbove(Tile t)
 {
-	return GB(t.type(), 2, 2) != 0;
+	return t.GetTileBaseAs<>().bridge_above != 0;
 }
 
 /**
@@ -56,11 +56,11 @@ inline bool IsBridgeAbove(Tile t)
 inline BridgeType GetBridgeType(Tile t)
 {
 	assert(IsBridgeTile(t));
-	return GB(t.m6(), 2, 4);
+	return t.GetTileExtendedAs<TileType::TunnelBridge>().bridge_type;
 }
 
 /**
- * Get the axis of the bridge that goes over the tile. Not the axis or the ramp.
+ * Get the axis of the bridge that goes over the tile. Not the axis of the ramp.
  * @param t The tile to analyze
  * @pre IsBridgeAbove(t)
  * @return the above mentioned axis
@@ -68,7 +68,7 @@ inline BridgeType GetBridgeType(Tile t)
 inline Axis GetBridgeAxis(Tile t)
 {
 	assert(IsBridgeAbove(t));
-	return (Axis)(GB(t.type(), 2, 2) - 1);
+	return Axis(t.GetTileBaseAs<>().bridge_above - 1);
 }
 
 TileIndex GetNorthernBridgeEnd(TileIndex t);
@@ -93,7 +93,9 @@ inline int GetBridgePixelHeight(TileIndex tile)
  */
 inline void ClearSingleBridgeMiddle(Tile t, Axis a)
 {
-	ClrBit(t.type(), 2 + a);
+	auto &base = t.GetTileBaseAs<>();
+	uint8_t tmp = base.bridge_above;
+	base.bridge_above = ClrBit(tmp, a);
 }
 
 /**
@@ -102,8 +104,7 @@ inline void ClearSingleBridgeMiddle(Tile t, Axis a)
  */
 inline void ClearBridgeMiddle(Tile t)
 {
-	ClearSingleBridgeMiddle(t, AXIS_X);
-	ClearSingleBridgeMiddle(t, AXIS_Y);
+	t.GetTileBaseAs<>().bridge_above = 0;
 }
 
 /**
@@ -113,31 +114,34 @@ inline void ClearBridgeMiddle(Tile t)
  */
 inline void SetBridgeMiddle(Tile t, Axis a)
 {
-	SetBit(t.type(), 2 + a);
+	auto &base = t.GetTileBaseAs<>();
+	uint8_t tmp = base.bridge_above;
+	base.bridge_above = SetBit(tmp, a);
 }
 
 /**
- * Generic part to make a bridge ramp for both roads and rails.
- * @param t          the tile to make a bridge ramp
- * @param o          the new owner of the bridge ramp
- * @param bridgetype the type of bridge this bridge ramp belongs to
- * @param d          the direction this ramp must be facing
- * @param tt         the transport type of the bridge
- * @note this function should not be called directly.
+ * Generic part to make a bridge ramp for both roads, rails and canals.
+ * @param tile The tile to make a bridge ramp.
+ * @param owner The new owner of the bridge ramp.
+ * @param bridge_type The type of bridge this bridge ramp belongs to.
+ * @param direction The direction this ramp must be facing.
+ * @param transport_type The transport type of the bridge.
+ * @note This function should not be called directly.
+ * @see MakeRoadBridgeRamp
+ * @see MakeRailBridgeRamp
+ * @see MakeAqueductBridgeRamp
  */
-inline void MakeBridgeRamp(Tile t, Owner o, BridgeType bridgetype, DiagDirection d, TransportType tt)
+inline void MakeBridgeRamp(Tile tile, Owner owner, BridgeType bridge_type, DiagDirection direction, TransportType transport_type)
 {
-	SetTileType(t, TileType::TunnelBridge);
-	SetTileOwner(t, o);
-	SetDockingTile(t, false);
-	t.m2() = 0;
-	t.m3() = 0;
-	t.m4() = 0;
-	t.m5() = 1 << 7 | tt << 2 | d;
-	SB(t.m6(), 2, 4, bridgetype);
-	SB(t.m6(), 6, 2, 0);
-	t.m7() = 0;
-	t.m8() = 0;
+	SetTileType(tile, TileType::TunnelBridge);
+	tile.ResetData();
+	SetTileOwner(tile, owner);
+	SetDockingTile(tile, false);
+	auto &extended = tile.GetTileExtendedAs<TileType::TunnelBridge>();
+	extended.is_bridge = 1;
+	extended.transport_type = transport_type;
+	extended.direction = direction;
+	extended.bridge_type = bridge_type;
 }
 
 /**
