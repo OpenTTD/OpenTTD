@@ -456,7 +456,7 @@ public:
 
 		if (IsSavegameVersionBefore(SLV_85)) {
 			/* We want to insert some liveries somewhere in between. This means some have to be moved. */
-			std::move_backward(&c->livery[LS_FREIGHT_WAGON - 2], &c->livery[LS_END - 2], &c->livery[LS_END]);
+			std::move_backward(&c->livery[LS_FREIGHT_WAGON - 2], &c->livery[LS_END - 2], &c->livery[0] + LS_END);
 			c->livery[LS_PASSENGER_WAGON_MONORAIL] = c->livery[LS_MONORAIL];
 			c->livery[LS_PASSENGER_WAGON_MAGLEV]   = c->livery[LS_MAGLEV];
 		}
