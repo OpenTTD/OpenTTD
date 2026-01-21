@@ -1062,7 +1062,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :選擇界面語
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING}（已完成 {NUM} ％）
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :全螢幕
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :開啟以使用全螢幕模式遊玩 OpenTTD
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :啟用以使用全螢幕模式遊玩 OpenTTD
 
 STR_GAME_OPTIONS_RESOLUTION                                     :螢幕解析度
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :選擇螢幕解析度
@@ -1070,11 +1070,11 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :其他
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :硬體加速
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :開啟以允許 OpenTTD 嘗試使用硬體加速。設定將會在遊戲重新啟動後套用
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :啟用以允許 OpenTTD 嘗試使用硬體加速。設定將會在遊戲重新啟動後套用
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}修改的設定將會在遊戲重啟後生效
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :垂直同步
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :開啟以使用垂直同步（V-SYNC）。此項設定將會在遊戲重啟後套用。只在使用硬體加速時可用
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :啟用以使用垂直同步（V-SYNC）。此項設定將會在遊戲重啟後套用。只在使用硬體加速時可用
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :使用中的驅動程式：{STRING}
 
@@ -1083,15 +1083,15 @@ STR_GAME_OPTIONS_INTERFACE                                      :界面
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :界面大小
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :拖曳滑動以設定界面大小。 按住 <Ctrl> 鍵以精準細緻調整
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :自動選取大小
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :開啟以自動選取界面大小
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :啟用以自動選取界面大小
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :縮放邊框
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :開啟以使邊框隨界面大小而縮放
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :啟用以使邊框隨界面大小而縮放
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :使用傳統點陣式字體
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :開啟以使用固定大小的傳統點陣式字體
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :啟用以使用固定大小的傳統點陣式字體
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :反鋸齒字體
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :開啟以使用反鋸齒字體
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :啟用以使用反鋸齒字體
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
@@ -1598,7 +1598,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :「原版」地
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :原版
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
-STR_CONFIG_SETTING_TERRAIN_TYPE                                 :地形最大高度預設值：{STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :預設最大高度：{STRING}
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :選擇產生版圖的地型起伏度
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :工業設施密度：{STRING}
@@ -1626,8 +1626,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :平滑
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :高低不平
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :非常粗糙
 
-STR_CONFIG_SETTING_AVERAGE_HEIGHT                               :平均地勢高度：{STRING}
-STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT                      :選擇平均地勢高度。若選擇「自動」，系統將根據所選的氣候去決定預設值：亞熱帶為「平原」，溫帶與玩具樂園為「普通」，而寒帶則為「高原」。
+STR_CONFIG_SETTING_AVERAGE_HEIGHT                               :平均海拔：{STRING}
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT                      :選擇地圖平均海拔。選擇「自動」時，系統將根據所選的氣候去決定平均高度：「亞熱帶」為「平原」，「溫帶」與「玩具樂園」為「普通」，而「寒帶」則為「高原」。
 ###length 4
 STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUTO                          :自動
 STR_CONFIG_SETTING_AVERAGE_HEIGHT_LOWLANDS                      :平原
@@ -3394,8 +3394,8 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}沙漠�
 STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}將沙漠覆蓋率提高10%
 STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}將沙漠覆蓋率降低10%
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
-STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}地形最大高度：
-STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}平均地勢高度：
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}最大高度：
+STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}平均海拔：
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}海平面：
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}選擇海洋覆蓋率
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}河流:
