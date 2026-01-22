@@ -1062,7 +1062,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Vælg sprog til
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% færdig)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :Fuld skærm
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Afkryds for at spille OpenTTD i fuld skærm
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Slå til for at afspille OpenTTD i fuldskærmstilstand
 
 STR_GAME_OPTIONS_RESOLUTION                                     :Skærmopløsning
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Vælg ønsket skærmopløsning
@@ -1070,11 +1070,11 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :andet
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Hardware-acceleration
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Marker dette felt for at tillade at OpenTTD forsøger at bruge hardwareacceleration. Ændringer af indstillingen er først effektiv efter spillet er genstartet.
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Slå til for at tillade OpenTTD at forsøge at bruge hardwareacceleration. En ændret indstilling anvendes kun ved genstart af spillet.
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Indstillingen er først effektiv efter spillet er genstartet.
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Afmærk dette felt for at v-synkronisere skærmen. Ændringer af indstillingen er først effektiv efter spillet er genstartet. Fungerer kun med hardware-acceleration aktiveret.
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Aktivér for at v-synkronisere skærmen. En ændret indstilling anvendes kun ved genstart af spillet. Fungerer kun med hardwareacceleration aktiveret.
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Nuværende fører: {STRING}
 
@@ -1083,15 +1083,15 @@ STR_GAME_OPTIONS_INTERFACE                                      :Grænseflade
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Interface størrelse
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Træk skyderen for at indstille grænsefladestørrelsen. Hold Ctrl nede for kontinuerlig justering
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Automatisk registrering af størrelse
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Marker dette felt for automatisk at registrere grænsefladestørrelse
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Slå til for automatisk at registrere grænsefladestørrelse
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Skalere facetter
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Marker dette afkrydsningsfelt for at skalere facetter efter grænsefladestørrelse
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Slå til for at skalere facetter efter grænsefladestørrelse
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Brug traditionel sprite-skrifttype
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Marker dette felt, hvis du foretrækker at bruge den traditionelle sprite-skrifttype med fast størrelse
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Slå til, hvis du foretrækker at bruge den traditionelle sprite-skrifttype med fast størrelse
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Anti-alias skrifttyper
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Marker dette felt for at skrifttyper, der kan ændres størrelse, kan udlignes
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Slå antialias-skrifttyper til, der kan tilpasses i størrelse
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 

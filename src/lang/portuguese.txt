@@ -1063,7 +1063,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Selecionar a l�
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% concluído)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :Ecrã Inteiro
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Selecione esta opção para jogar o OpenTTD no modo de ecrã inteiro
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Marque esta opção para jogar o OpenTTD no modo de ecrã inteiro
 
 STR_GAME_OPTIONS_RESOLUTION                                     :Resolução do ecrã
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Selecione a resolução do ecrã que deseja utilizar
@@ -1075,7 +1075,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Marque esta op�
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}A definição só terá efeito após reiniciar o jogo
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Marque esta opção para ativar v-sync no ecrã. Uma definição alterada só terá efeito quando reiniciar o jogo. Só funciona com a aceleração por hardware ativada
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Marque esta opção para ativar v-sync no ecrã. Se modificada, esta configuração só terá efeito após reiniciar o jogo. Só funciona com a aceleração por hardware ativada
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Controlador atual: {STRING}
 
@@ -1092,7 +1092,7 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Marque esta op�
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Usar o tipo de letra com gráficos tradicionais
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Marque esta opção se prefere usar o tipo de letra tradicional de tamanho fixo
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Tipos de letra com contornos suaves
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Marque esta opção para tipos de letra redimensionáveis com contornos suaves
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Marque esta opção para usar tipos de letra redimensionáveis com contornos suaves
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 

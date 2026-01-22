@@ -1062,7 +1062,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Valitse käytt�
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}{NBSP}% valmiina)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :Koko näyttö
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Valitse tämä pelataksesi OpenTTD:tä koko ruudun tilassa
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Valitse pelataksesi OpenTTD:tä koko ruudun tilassa
 
 STR_GAME_OPTIONS_RESOLUTION                                     :Näytön tarkkuus
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Valitse käytettävä näytön tarkkuus
@@ -1074,7 +1074,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Valitse tämä,
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Asetus tulee voimaan vasta pelin uudelleenkäynnistyksen jälkeen
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :Pystytahdistus
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Valitse tämä ottaaksesi käyttöön näytön pystytahdistuksen. Muutettu asetus tulee voimaan vasta pelin uudelleenkäynnistyksen jälkeen. Edellyttää, että laitteistokiihdytys on käytössä
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Valitse ottaaksesi käyttöön näytön pystytahdistuksen. Muutettu asetus tulee voimaan vasta pelin uudelleenkäynnistyksen jälkeen. Edellyttää, että laitteistokiihdytys on käytössä
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Nykyinen ajuri: {STRING}
 
@@ -1083,15 +1083,15 @@ STR_GAME_OPTIONS_INTERFACE                                      :Käyttöliittym
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Käyttöliittymän koko
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Vedä liukusäädintä asettaaksesi käyttöliittymän koon. Pidä Ctrl-näppäintä painettuna säätääksesi portaattomasti
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Tunnista koko automaattisesti
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Valitse tämä ruutu käyttöliittymän koon tunnistamiseksi automaattisesti
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Valitse käyttöliittymän koon tunnistamiseksi automaattisesti
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Skaalaa viisteet
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Valitse tämä ruutu viisteiden skaalaamiseksi käyttöliittymän koon mukaan
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Valitse viisteiden skaalaamiseksi käyttöliittymän koon mukaan
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Käytä perinteistä sprite-fonttia
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Valitse tämä ruutu käyttääksesi perinteistä kiinteäkokoista sprite-kirjasintyyppiä
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Valitse käyttääksesi perinteistä kiinteäkokoista sprite-kirjasintyyppiä
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Pehmennä kirjasinten reunoja
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Valitse tämä ruutu pehmentääksesi muuttuvan kokoisten fonttien reunoja
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Valitse muuttuvan kokoisten fonttien reunojen pehmentämiseksi
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}×
 
