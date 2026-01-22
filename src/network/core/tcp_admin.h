@@ -492,7 +492,7 @@ protected:
 	 * uint32_t  ID of the client sending the command.
 	 * uint8_t   ID of the company (0..MAX_COMPANIES-1).
 	 * uint16_t  ID of the command.
-	 * <var>   Command specific buffer with encoded parameters of variable length.
+	 * `<var>` Command specific buffer with encoded parameters of variable length.
 	 *         The content differs per command and can change without notification.
 	 * uint32_t  Frame of execution.
 	 * @param p The packet that was just received.

@@ -325,7 +325,7 @@ protected:
 	 * Send a DoCommand to the Server:
 	 * uint8_t   ID of the company (0..MAX_COMPANIES-1).
 	 * uint32_t  ID of the command (see command.h).
-	 * <var>   Command specific buffer with encoded parameters of variable length.
+	 * `<var>` Command specific buffer with encoded parameters of variable length.
 	 *         The content differs per command and can change without notification.
 	 * uint8_t   ID of the callback.
 	 * @param p The packet that was just received.
@@ -336,7 +336,7 @@ protected:
 	 * Sends a DoCommand to the client:
 	 * uint8_t   ID of the company (0..MAX_COMPANIES-1).
 	 * uint32_t  ID of the command (see command.h).
-	 * <var>   Command specific buffer with encoded parameters of variable length.
+	 * `<var>` Command specific buffer with encoded parameters of variable length.
 	 *         The content differs per command and can change without notification.
 	 * uint8_t   ID of the callback.
 	 * uint32_t  Frame of execution.
