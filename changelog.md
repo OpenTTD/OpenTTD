@@ -1,7 +1,13 @@
 ## 15.x
 
-### 15.1 (2026-01-22)
+### 15.1 (2026-01-24)
 
+- Fix #15088: When building a new train, the refit button state may be incorrect (#15162)
+- Fix #15160: Incorrect company names displayed in load game window (#15161)
+- Fix #15153: Wrong tile used to get bridge reservation overlay (#15154)
+- Fix #15116: Old cargo/industry sets without cargo translation table broken (#15150)
+- Fix: Possible crash converting company liveries in older savegames/scenarios (#15148)
+- Fix: Allow infinite water to be (de)selected when loading heightmap (#15146)
 - Fix: Tile suitability test for farm field no longer handled snow tiles (#15134)
 - Fix #15131: Trees no longer spread on partially snowy tiles (#15133)
 - Fix: Change tooltips to match change from checkboxes to switches (#15123)
