@@ -1063,7 +1063,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Escolher o idio
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% concluído)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :Tela cheia
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Marque esta caixa para jogar o OpenTTD em modo de tela cheia
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Marque esta opção para jogar o OpenTTD em modo de tela cheia
 
 STR_GAME_OPTIONS_RESOLUTION                                     :Resolução da tela
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Selecione uma resolução de tela para usar
@@ -1071,7 +1071,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :outra
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Aceleração por hardware
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Marque esta caixa para permitir que o OpenTTD tente usar aceleração por hardware. Se modificada, esta configuração só terá efeito após reiniciar o jogo
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Marque esta opção para permitir que o OpenTTD tente usar aceleração por hardware. Se modificada, esta configuração só terá efeito após reiniciar o jogo
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}A configuração só terá efeito após reiniciar o jogo
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
@@ -1084,15 +1084,15 @@ STR_GAME_OPTIONS_INTERFACE                                      :Interface
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Tamanho da interface
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Arraste o controle deslizante para definir o tamanho da interface. Ctrl+Arraste para um ajuste contínuo
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Detectar automaticamente o tamanho
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Marque esta caixa para detectar automaticamente o tamanho da interface
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Marque esta opção para detetar automaticamente o tamanho da interface
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Escalar bordas
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Marque esta caixa para dimensionar as bordas pelo tamanho de interface
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Marque esta opção para dimensionar as bordas das janelas em relação ao tamanho de interface
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Usar a fonte fixa tradicional
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Marque esta caixa se preferir usar o tipo de fonte tradicional de tamanho fixo
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Marque esta opção se prefere usar a letra tradicional de tamanho fixo
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Fontes com contornos suaves
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Marque esta caixa para usar fontes redimensionáveis com contornos suaves
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Marque esta opção para usar letras redimensionáveis com contornos suaves
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 

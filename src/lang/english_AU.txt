@@ -1062,7 +1062,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Select the inte
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% completed)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :Fullscreen
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Check this box to play OpenTTD fullscreen mode
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Turn on to play OpenTTD fullscreen mode
 
 STR_GAME_OPTIONS_RESOLUTION                                     :Screen resolution
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Select the screen resolution to use
@@ -1070,11 +1070,11 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :other
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Hardware acceleration
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Check this box to allow OpenTTD to try to use hardware acceleration. A changed setting will only be applied upon game restart
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Turn on to allow OpenTTD to try to use hardware acceleration. A changed setting will only be applied upon game restart
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}The setting will only take effect after a game restart
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Check this box to v-sync the screen. A changed setting will only be applied upon game restart. Only works with hardware acceleration enabled
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Turn on to v-sync the screen. A changed setting will only be applied upon game restart. Only works with hardware acceleration enabled
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Current driver: {STRING}
 
@@ -1083,15 +1083,15 @@ STR_GAME_OPTIONS_INTERFACE                                      :Interface
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Interface size
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Drag slider to set interface size. Ctrl+Drag for continuous adjustment
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Auto-detect size
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Check this box to detect interface size automatically
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Turn on to detect interface size automatically
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Scale bevels
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Check this box to scale bevels by interface size
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Turn on to scale bevels by interface size
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Use traditional sprite font
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Check this box if you prefer to use the traditional fixed-size sprite font
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Turn on if you prefer to use the traditional fixed-size sprite font
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Anti-alias fonts
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Check this box to anti-alias resizable fonts
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Turn on to anti-alias resizable fonts
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 

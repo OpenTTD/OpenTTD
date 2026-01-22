@@ -1062,7 +1062,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :选择界面语
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING}（已完成 {NUM}%）
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :全屏幕
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :勾选此框可以在全屏幕模式下游玩 OpenTTD
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :启用以在全屏幕模式下游玩 OpenTTD
 
 STR_GAME_OPTIONS_RESOLUTION                                     :屏幕分辨率
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :选择屏幕分辨率
@@ -1070,11 +1070,11 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :其他
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}×{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :硬件加速
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :勾选此框以让 OpenTTD 尝试使用硬件加速。修改后的设置将在游戏重启后生效
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :启用以允许 OpenTTD 尝试使用硬件加速。修改后的设置将在游戏重启后生效
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}修改后的设置将在游戏重启后生效
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :垂直同步
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :勾选此框以开启垂直同步（V-sync）。修改后的设置将在游戏重启后生效。仅于开启硬件加速时可用
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :启用以开启垂直同步（V-sync）。修改后的设置将在游戏重启后生效。仅于开启硬件加速时可用
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :驱动程序：{STRING}
 
@@ -1083,15 +1083,15 @@ STR_GAME_OPTIONS_INTERFACE                                      :界面
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :界面大小
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :拖动滑块以设置界面大小。按住 <Ctrl> 键以精准调整
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :自动检测大小
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :勾选此框以自动检测界面大小
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :启用以自动检测界面大小
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :缩放边框
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :勾选此框使边框随界面大小而缩放
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :启用使边框随界面大小而缩放
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :使用位图字体
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :勾选此框以使用固定大小的传统位图字体
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :启用以使用固定大小的传统位图字体
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :字体抗锯齿
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :勾选此框以对游戏字体应用抗锯齿
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :启用以应用字体抗锯齿
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}×
 
@@ -1115,7 +1115,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :选择使用的
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :关于基础图形组的额外信息
 
 STR_GAME_OPTIONS_BASE_SFX                                       :基础音效组
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :选择使用的基础音效组（无法在游戏中更改，只能在主菜单更改）
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :选择使用的基础音效组
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :关于基础音效组的额外信息
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :基础音乐组
@@ -2068,7 +2068,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4 倍
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8 倍
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :贴图的最高分辨率：{STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :限制贴图的最高分辨率。限制贴图分辨率将避免使用高分辨率贴图，即使它们可用。有助于在混用有/无高分辨率图形的 GRF 文件时保持游戏外观的统一
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :限制贴图的最高分辨率。限制贴图分辨率将避免使用高分辨率贴图，即使它们可用。有助于在混用有/无高分辨率图形的 NewGRF 文件时保持游戏外观的统一
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4 倍
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2 倍
@@ -2204,7 +2204,7 @@ STR_CONFIG_ERROR                                                :{WHITE}配置�
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}……函数错误“{STRING}”
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}……“{STRING}”不是“{STRING}”的有效值
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}……有多余字符在设定的结尾处“{STRING}”
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}……正忽略 NewGRF“{STRING}”：重复的 GRF ID “{STRING}”
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}……正忽略 NewGRF“{STRING}”：重复的 NewGRF ID “{STRING}”
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}……正忽略无效的 NewGRF“{STRING}”：{STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :未找到
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :静态使用时不安全
@@ -3620,7 +3620,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{1:STRING} 具�
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} 必须在 {2:STRING} 之前加载
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} 必须在 {2:STRING} 后加载
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} 需要 OpenTTD {2:STRING} 或更高版本
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 文件翻译后出现错误
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :NewGRF 文件翻译后出现错误
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :加载的 NewGRF 太多
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :载入 {1:STRING} 为静态 NewGRF 时载入 {2:STRING} 可能造成同步错误
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :未预期的 sprite（sprite {3:NUM}）
@@ -3629,7 +3629,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :尝试使用非
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} 含有损坏的图形元素{}所有损坏的图形元素{}将显示为红色的问号（？）
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :具有多个 Action 8（sprite {3:NUM}）
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :读取 pseudo-sprite 时越界（sprite {3:NUM}）
-STR_NEWGRF_ERROR_GRM_FAILED                                     :请求的 GRF 资源不可用（sprite {3:NUM}）
+STR_NEWGRF_ERROR_GRM_FAILED                                     :请求的 NewGRF 资源不可用（sprite {3:NUM}）
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} 被 {STRING} 禁用
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :错误或未知的 sprite layout 格式（sprite {3:NUM}）
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :属性数值列表中元素过多（sprite {3:NUM}，属性 {4:HEX}）
@@ -3639,13 +3639,13 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :无效的生产
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}注意！
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}此操作将改变一个进行中的游戏，可能导致游戏崩溃或破坏游戏资料。修改后遇到错误时请不要向开发者报告。{}真的确定继续吗？
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}不能添加文件：重复的 GRF ID
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}未找到匹配的文件（已载入兼容的 GRF）
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}不能添加文件：重复的 NewGRF ID
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}未找到匹配的文件（已载入兼容的 NewGRF）
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}加入的 NewGRF 文件达到上限，不能再新增
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}已为缺失的文件载入兼容的 GRF
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}已禁用缺失的 GRF 文件
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}无法找到 GRF 文件
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}已为缺失的文件载入兼容的 NewGRF
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}已禁用缺失的 NewGRF 文件
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}无法找到 NewGRF 文件
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}取消暂停可能造成 OpenTTD 游戏错误，请不要将向开发人员报告接下来可能出现的错误情形。{}真的确定取消暂停吗？
 
 # NewGRF status

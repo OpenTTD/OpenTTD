@@ -1442,7 +1442,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Wybierz język 
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} (ukończono {NUM}%)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :Pełny ekran
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Zaznacz to pole, jeśli chcesz grać w OpenTTD w trybie pełnoekranowym
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Włącz, aby grać w OpenTTD w trybie pełnoekranowym
 
 STR_GAME_OPTIONS_RESOLUTION                                     :Rozdzielczość ekranu
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Wybierz rozdzielczość ekranu
@@ -1450,11 +1450,11 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :inna
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Przyspieszenie sprzętowe
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Zaznacz to pole, aby zezwolić OpenTTD na użycie przyspieszenia sprzętowego. Zmiana zostanie zastosowana dopiero po ponownym uruchomieniu gry
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Włącz, aby zezwolić OpenTTD na użycie przyspieszenia sprzętowego. Zmiana zostanie zastosowana dopiero po ponownym uruchomieniu gry
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Ustawienie zostanie zastosowane dopiero po ponownym uruchomieniu gry
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :Synchronizacja pionowa
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Zaznacz to pole, aby włączyć synchronizację pionową. Zmiana zostanie zastosowana dopiero po ponownym uruchomieniu gry. Działa tylko z włączonym przyspieszeniem sprzętowym
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Włącz, aby używać synchronizacji pionowej. Zmiana zostanie zastosowana dopiero po ponownym uruchomieniu gry. Działa tylko z włączonym przyspieszeniem sprzętowym
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Bieżący sterownik: {STRING}
 
@@ -1463,15 +1463,15 @@ STR_GAME_OPTIONS_INTERFACE                                      :Interfejs
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Rozmiar interfejsu
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Przeciągnij suwak, aby ustawić rozmiar interfejsu. Przeciągnij z użyciem Ctrl, aby uzyskać płynną regulację
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Wykryj rozmiar automatycznie
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Zaznacz to pole, aby rozmiar interfejsu był wykrywany automatycznie
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Włącz, aby rozmiar interfejsu był wykrywany automatycznie
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Skaluj fazy krawędzi
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Zaznacz to pole, aby skalować fazy krawędzi zgodnie z rozmiarem interfejsu
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Włącz, aby skalować fazy krawędzi zgodnie z rozmiarem interfejsu
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Użyj tradycyjnego fonta typu sprite
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Zaznacz to pole, jeśli wolisz używać tradycyjnego fonta typu sprite o stałym rozmiarze
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Włącz, jeśli wolisz używać tradycyjnego fonta typu sprite o stałym rozmiarze
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Wygładzanie fontów
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Zaznacz to pole, aby wygładzać fonty o zmiennym rozmiarze
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Włącz, aby wygładzać fonty o zmiennym rozmiarze
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
