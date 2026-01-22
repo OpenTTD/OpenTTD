@@ -13,7 +13,7 @@
 /** Helper function displaying a message the best possible way. */
 void ShowMacDialog(std::string_view title, std::string_view message, std::string_view button_label);
 
-void GetMacOSVersion(int *return_major, int *return_minor, int *return_bugfix);
+std::tuple<int, int, int> GetMacOSVersion();
 
 bool IsMonospaceFont(CFStringRef name);
 
