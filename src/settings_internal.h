@@ -116,9 +116,8 @@ struct SettingDesc {
 
 	/**
 	 * Format the value of the setting associated with this object.
-	 * @param buf The before of the buffer to format into.
-	 * @param last The end of the buffer to format into.
 	 * @param object The object the setting is in.
+	 * @return The string representing the given value in human readable format.
 	 */
 	virtual std::string FormatValue(const void *object) const = 0;
 
