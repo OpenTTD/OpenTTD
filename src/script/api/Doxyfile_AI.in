@@ -122,7 +122,7 @@ WARN_NO_PARAMDOC       = YES
 WARN_IF_UNDOC_ENUM_VAL = YES
 WARN_AS_ERROR          = NO
 WARN_FORMAT            = "$file:$${DOXYGEN_WARN_FORMAT_LINE}: $text"
-WARN_LINE_FORMAT       = "at line $line of file $file"
+WARN_LINE_FORMAT       = "at line $${DOXYGEN_WARN_FORMAT_LINE} of file $file"
 WARN_LOGFILE           = ${DOXYGEN_AI_WARN_FILE}
 #---------------------------------------------------------------------------
 # Configuration options related to the input files
