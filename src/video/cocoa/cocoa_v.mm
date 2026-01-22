@@ -103,8 +103,6 @@ void VideoDriver_Cocoa::Stop()
  */
 std::optional<std::string_view> VideoDriver_Cocoa::Initialize()
 {
-	if (!MacOSVersionIsAtLeast(10, 7, 0)) return "The Cocoa video driver requires Mac OS X 10.7 or later.";
-
 	if (_cocoa_video_started) return "Already started";
 	_cocoa_video_started = true;
 
@@ -237,18 +235,16 @@ std::vector<int> VideoDriver_Cocoa::GetListOfMonitorRefreshRates()
 {
 	std::vector<int> rates{};
 
-	if (MacOSVersionIsAtLeast(10, 6, 0)) {
-		std::array<CGDirectDisplayID, 16> displays;
+	std::array<CGDirectDisplayID, 16> displays;
 
-		uint32_t count = 0;
-		CGGetActiveDisplayList(displays.size(), displays.data(), &count);
+	uint32_t count = 0;
+	CGGetActiveDisplayList(displays.size(), displays.data(), &count);
 
-		for (uint32_t i = 0; i < count; i++) {
-			CGDisplayModeRef mode = CGDisplayCopyDisplayMode(displays[i]);
-			int rate = (int)CGDisplayModeGetRefreshRate(mode);
-			if (rate > 0) rates.push_back(rate);
-			CGDisplayModeRelease(mode);
-		}
+	for (uint32_t i = 0; i < count; i++) {
+		CGDisplayModeRef mode = CGDisplayCopyDisplayMode(displays[i]);
+		int rate = static_cast<int>(CGDisplayModeGetRefreshRate(mode));
+		if (rate > 0) rates.push_back(rate);
+		CGDisplayModeRelease(mode);
 	}
 
 	return rates;

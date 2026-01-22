@@ -15,25 +15,6 @@ void ShowMacDialog(std::string_view title, std::string_view message, std::string
 
 void GetMacOSVersion(int *return_major, int *return_minor, int *return_bugfix);
 
-/**
- * Check if we are at least running on the specified version of Mac OS.
- * @param major major version of the os. This would be 10 in the case of 10.4.11.
- * @param minor minor version of the os. This would be 4 in the case of 10.4.11.
- * @param bugfix bugfix version of the os. This would be 11 in the case of 10.4.11.
- * @return true if the running os is at least what we asked, false otherwise.
- */
-inline bool MacOSVersionIsAtLeast(long major, long minor, long bugfix)
-{
-	int version_major, version_minor, version_bugfix;
-	GetMacOSVersion(&version_major, &version_minor, &version_bugfix);
-
-	if (version_major < major) return false;
-	if (version_major == major && version_minor < minor) return false;
-	if (version_major == major && version_minor == minor && version_bugfix < bugfix) return false;
-
-	return true;
-}
-
 bool IsMonospaceFont(CFStringRef name);
 
 void MacOSSetThreadName(const std::string &name);

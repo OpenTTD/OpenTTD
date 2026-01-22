@@ -124,8 +124,6 @@ static const CTRunDelegateCallbacks _sprite_font_callback = {
 
 /* static */ std::unique_ptr<ParagraphLayouter> CoreTextParagraphLayoutFactory::GetParagraphLayout(CharType *buff, CharType *buff_end, FontMap &font_mapping)
 {
-	if (!MacOSVersionIsAtLeast(10, 5, 0)) return nullptr;
-
 	/* Can't layout an empty string. */
 	ptrdiff_t length = buff_end - buff;
 	if (length == 0) return nullptr;
@@ -276,8 +274,6 @@ void MacOSResetScriptCache(FontSize size)
 /** Register an external font file with the CoreText system. */
 void MacOSRegisterExternalFont(std::string_view file_path)
 {
-	if (!MacOSVersionIsAtLeast(10, 6, 0)) return;
-
 	CFAutoRelease<CFStringRef> path(CFStringCreateWithBytes(kCFAllocatorDefault, reinterpret_cast<const UInt8 *>(file_path.data()), file_path.size(), kCFStringEncodingUTF8, false));
 	CFAutoRelease<CFURLRef> url(CFURLCreateWithFileSystemPath(kCFAllocatorDefault, path.get(), kCFURLPOSIXPathStyle, false));
 
@@ -287,8 +283,6 @@ void MacOSRegisterExternalFont(std::string_view file_path)
 /** Store current language locale as a CoreFoundation locale. */
 void MacOSSetCurrentLocaleName(std::string_view iso_code)
 {
-	if (!MacOSVersionIsAtLeast(10, 5, 0)) return;
-
 	CFAutoRelease<CFStringRef> iso(CFStringCreateWithBytes(kCFAllocatorDefault, reinterpret_cast<const UInt8 *>(iso_code.data()), iso_code.size(), kCFStringEncodingUTF8, false));
 	_osx_locale.reset(CFLocaleCreate(kCFAllocatorDefault, iso.get()));
 }
@@ -302,9 +296,6 @@ void MacOSSetCurrentLocaleName(std::string_view iso_code)
  */
 int MacOSStringCompare(std::string_view s1, std::string_view s2)
 {
-	static const bool supported = MacOSVersionIsAtLeast(10, 5, 0);
-	if (!supported) return 0;
-
 	CFStringCompareFlags flags = kCFCompareCaseInsensitive | kCFCompareNumerically | kCFCompareLocalized | kCFCompareWidthInsensitive | kCFCompareForcedOrdering;
 
 	CFAutoRelease<CFStringRef> cf1(CFStringCreateWithBytes(kCFAllocatorDefault, (const UInt8 *)s1.data(), s1.size(), kCFStringEncodingUTF8, false));
@@ -326,9 +317,6 @@ int MacOSStringCompare(std::string_view s1, std::string_view s2)
  */
 int MacOSStringContains(std::string_view str, std::string_view value, bool case_insensitive)
 {
-	static const bool supported = MacOSVersionIsAtLeast(10, 5, 0);
-	if (!supported) return -1;
-
 	CFStringCompareFlags flags = kCFCompareLocalized | kCFCompareWidthInsensitive;
 	if (case_insensitive) flags |= kCFCompareCaseInsensitive;
 
@@ -447,7 +435,5 @@ int MacOSStringContains(std::string_view str, std::string_view value, bool case_
 
 /* static */ std::unique_ptr<StringIterator> OSXStringIterator::Create()
 {
-	if (!MacOSVersionIsAtLeast(10, 5, 0)) return nullptr;
-
 	return std::make_unique<OSXStringIterator>();
 }
