@@ -193,9 +193,7 @@ bool IsMonospaceFont(CFStringRef name)
  */
 void MacOSSetThreadName(const std::string &name)
 {
-	if (MacOSVersionIsAtLeast(10, 6, 0)) {
-		pthread_setname_np(name.c_str());
-	}
+	pthread_setname_np(name.c_str());
 
 	NSThread *cur = [ NSThread currentThread ];
 	if (cur != nil && [ cur respondsToSelector:@selector(setName:) ]) {

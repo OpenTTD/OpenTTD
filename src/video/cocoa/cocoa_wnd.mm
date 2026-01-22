@@ -310,10 +310,8 @@ static void setupWindowMenu()
 	[ menuItem setSubmenu:windowMenu ];
 	[ [ NSApp mainMenu ] addItem:menuItem ];
 
-	if (MacOSVersionIsAtLeast(10, 7, 0)) {
-		/* The OS will change the name of this menu item automatically */
-		[ windowMenu addItemWithTitle:@"Fullscreen" action:@selector(toggleFullScreen:) keyEquivalent:@"^f" ];
-	}
+	/* The OS will change the name of this menu item automatically */
+	[ windowMenu addItemWithTitle:@"Fullscreen" action:@selector(toggleFullScreen:) keyEquivalent:@"^f" ];
 
 	/* Tell the application object that this is now the window menu */
 	[ NSApp setWindowsMenu:windowMenu ];
