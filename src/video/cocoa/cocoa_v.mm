@@ -550,6 +550,9 @@ void VideoDriver_Cocoa::MainLoopReal()
 
 @end
 
+/** Register the cocoa video driver. */
+static FVideoDriver_CocoaQuartz iFVideoDriver_CocoaQuartz;
+
 /**
  * Clear buffer to opaque black.
  * @param buffer Pointer to the buffer.
