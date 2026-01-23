@@ -25,6 +25,8 @@
 class Tile {
 private:
 	friend struct Map;
+	friend struct TILEChunkHandler;
+
 	/**
 	 * Data that is stored per tile. Also used TileExtended for this.
 	 * Look at docs/landscape.html for the exact meaning of the members.
