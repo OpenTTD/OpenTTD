@@ -246,7 +246,7 @@ inline void SetFence(Tile t, DiagDirection side, uint h)
 inline void MakeClear(Tile t, ClearGround g, uint density)
 {
 	SetTileType(t, MP_CLEAR);
-	t.m1() = 0;
+	t.m1() = to_underlying(WaterClass::Invalid) << 5; // Using SetWaterClass() would trigger an assert.
 	SetTileOwner(t, OWNER_NONE);
 	t.m2() = 0;
 	t.m3() = 0;
@@ -267,7 +267,7 @@ inline void MakeClear(Tile t, ClearGround g, uint density)
 inline void MakeField(Tile t, uint field_type, IndustryID industry)
 {
 	SetTileType(t, MP_CLEAR);
-	t.m1() = 0;
+	t.m1() = to_underlying(WaterClass::Invalid) << 5; // Using SetWaterClass() would trigger an assert.
 	SetTileOwner(t, OWNER_NONE);
 	t.m2() = industry.base();
 	t.m3() = field_type;

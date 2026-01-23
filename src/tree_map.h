@@ -10,6 +10,7 @@
 #ifndef TREE_MAP_H
 #define TREE_MAP_H
 
+#include "landscape_type.h"
 #include "tile_map.h"
 #include "water_map.h"
 
@@ -87,7 +88,14 @@ enum class TreeGrowthStage : uint8_t {
 inline TreeType GetTreeType(Tile t)
 {
 	assert(IsTileType(t, MP_TREES));
-	return (TreeType)t.m3();
+	uint8_t type = GB(t.m3(), 3, 4);
+	switch (_settings_game.game_creation.landscape) {
+		case LandscapeType::Temperate: return TreeType(type + TREE_TEMPERATE);
+		case LandscapeType::Arctic: return TreeType(type + TREE_SUB_ARCTIC);
+		case LandscapeType::Tropic: return TreeType(type + TREE_RAINFOREST);
+		case LandscapeType::Toyland: return TreeType(type + TREE_TOYLAND);
+		default: NOT_REACHED();
+	}
 }
 
 /**
@@ -102,7 +110,7 @@ inline TreeType GetTreeType(Tile t)
 inline TreeGround GetTreeGround(Tile t)
 {
 	assert(IsTileType(t, MP_TREES));
-	return (TreeGround)GB(t.m2(), 6, 3);
+	return TreeGround(GB(t.m5(), 2, 3));
 }
 
 /**
@@ -127,7 +135,7 @@ inline TreeGround GetTreeGround(Tile t)
 inline uint GetTreeDensity(Tile t)
 {
 	assert(IsTileType(t, MP_TREES));
-	return GB(t.m2(), 4, 2);
+	return GB(t.m5(), 0, 2);
 }
 
 /**
@@ -144,8 +152,8 @@ inline uint GetTreeDensity(Tile t)
 inline void SetTreeGroundDensity(Tile t, TreeGround g, uint d)
 {
 	assert(IsTileType(t, MP_TREES)); // XXX incomplete
-	SB(t.m2(), 4, 2, d);
-	SB(t.m2(), 6, 3, g);
+	SB(t.m5(), 0, 2, d);
+	SB(t.m5(), 2, 3, g);
 	SetWaterClass(t, g == TREE_GROUND_SHORE ? WaterClass::Sea : WaterClass::Invalid);
 }
 
@@ -163,7 +171,7 @@ inline void SetTreeGroundDensity(Tile t, TreeGround g, uint d)
 inline uint GetTreeCount(Tile t)
 {
 	assert(IsTileType(t, MP_TREES));
-	return GB(t.m5(), 6, 2) + 1;
+	return GB(t.m6(), 2, 2) + 1;
 }
 
 /**
@@ -180,7 +188,7 @@ inline uint GetTreeCount(Tile t)
 inline void AddTreeCount(Tile t, int c)
 {
 	assert(IsTileType(t, MP_TREES)); // XXX incomplete
-	t.m5() += c << 6;
+	t.m6() += c << 2;
 }
 
 /**
@@ -195,7 +203,7 @@ inline void AddTreeCount(Tile t, int c)
 inline TreeGrowthStage GetTreeGrowth(Tile t)
 {
 	assert(IsTileType(t, MP_TREES));
-	return static_cast<TreeGrowthStage>(GB(t.m5(), 0, 3));
+	return static_cast<TreeGrowthStage>(GB(t.m3(), 0, 3));
 }
 
 /**
@@ -210,7 +218,7 @@ inline TreeGrowthStage GetTreeGrowth(Tile t)
 inline void AddTreeGrowth(Tile t, int a)
 {
 	assert(IsTileType(t, MP_TREES)); // XXX incomplete
-	t.m5() += a;
+	t.m3() += a;
 }
 
 /**
@@ -226,7 +234,7 @@ inline void AddTreeGrowth(Tile t, int a)
 inline void SetTreeGrowth(Tile t, TreeGrowthStage g)
 {
 	assert(IsTileType(t, MP_TREES)); // XXX incomplete
-	SB(t.m5(), 0, 3, to_underlying(g));
+	SB(t.m3(), 0, 3, to_underlying(g));
 }
 
 /**
@@ -240,17 +248,28 @@ inline void SetTreeGrowth(Tile t, TreeGrowthStage g)
  * @param growth the growth stage
  * @param ground the ground type
  * @param density the density (not the number of trees)
+ * @pre count is max two bits.
  */
 inline void MakeTree(Tile t, TreeType type, uint count, TreeGrowthStage growth, TreeGround ground, uint density)
 {
+	assert(count <= 0b11);
 	SetTileType(t, MP_TREES);
+	ClrBit(t.m1(), 7);
 	SetTileOwner(t, OWNER_NONE);
 	SetWaterClass(t, ground == TREE_GROUND_SHORE ? WaterClass::Sea : WaterClass::Invalid);
-	t.m2() = ground << 6 | density << 4 | 0;
-	t.m3() = type;
-	t.m4() = 0 << 5 | 0 << 2;
-	t.m5() = count << 6 | to_underlying(growth);
-	SB(t.m6(), 2, 6, 0);
+	t.m2() = 0;
+	uint8_t tree_type = type;
+	switch (_settings_game.game_creation.landscape) {
+		case LandscapeType::Temperate: tree_type -= TREE_TEMPERATE; break;
+		case LandscapeType::Arctic: tree_type -= TREE_SUB_ARCTIC; break;
+		case LandscapeType::Tropic: tree_type -= TREE_RAINFOREST; break;
+		case LandscapeType::Toyland: tree_type -= TREE_TOYLAND; break;
+		default: NOT_REACHED();
+	}
+	t.m3() = tree_type << 3 | to_underlying(growth);
+	t.m4() = 0;
+	t.m5() = ground << 2 | density;
+	SB(t.m6(), 2, 6, count);
 	t.m7() = 0;
 	t.m8() = 0;
 }

@@ -3212,6 +3212,33 @@ bool AfterLoadGame()
 		for (Industry *ind : Industry::Iterate()) if (ind->neutral_station != nullptr) ind->neutral_station->industry = ind;
 	}
 
+	if (IsSavegameVersionBefore(SLV_BETTER_TREES_STORAGE)) {
+		for (auto t : Map::Iterate()) {
+			if (!IsTileType(t, MP_TREES)) {
+				/* Store the same water class in fields and ground tiles as for trees that are not on shore. */
+				if (IsTileType(t, MP_CLEAR)) SB(t.m1(), 5, 2, to_underlying(WaterClass::Invalid));
+				continue;
+			}
+			uint8_t type = t.m3(); // Store tree type in temporary variable.
+			t.m3() = GB(t.m5(), 0, 3); // Move tree growth in order to make space for ground and density in m5.
+			SB(t.m6(), 2, 2, GB(t.m5(), 6, 2)); // Same for quantity.
+			t.m5() = (t.m2() >> 4) & 0b00011111; // Move ground and density and clear all other bits in m5.
+			t.m2() = 0; // Clear m2, no data for trees is stored there now.
+			ClrBit(t.m1(), 7); // There is no valid data here, but the make function didn't clear it.
+			t.m4() = 0; // Clear m4, there is no usable data there.
+
+			/* Store tree type in remaining 3 bits of m3 and bit 7 of m5. */
+			switch (_settings_game.game_creation.landscape) {
+				case LandscapeType::Temperate: type -= TREE_TEMPERATE; break;
+				case LandscapeType::Arctic: type -= TREE_SUB_ARCTIC; break;
+				case LandscapeType::Tropic: type -= TREE_RAINFOREST; break;
+				case LandscapeType::Toyland: type -= TREE_TOYLAND; break;
+				default: NOT_REACHED();
+			}
+			SB(t.m3(), 3, 4, type);
+		}
+	}
+
 	if (IsSavegameVersionBefore(SLV_TREES_WATER_CLASS)) {
 		/* Update water class for trees. */
 		for (const auto t : Map::Iterate()) {
@@ -3311,15 +3338,6 @@ bool AfterLoadGame()
 					u->UpdatePosition();
 				}
 				RoadVehLeaveDepot(rv, false);
-			}
-		}
-
-		if (IsSavegameVersionBeforeOrAt(SLV_MULTITRACK_LEVEL_CROSSINGS)) {
-			/* Reset unused tree counters to reduce the savegame size. */
-			for (auto t : Map::Iterate()) {
-				if (IsTileType(t, MP_TREES)) {
-					SB(t.m2(), 0, 4, 0);
-				}
 			}
 		}
 

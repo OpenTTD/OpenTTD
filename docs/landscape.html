@@ -147,6 +147,7 @@
    <td valign=top nowrap>&nbsp;</td>
    <td>
     <ul>
+	 <li>m1 bits 6..5: Water class, always WaterClass::Invalid.</li>
      <li>m1 bits 4..0: <a href="#OwnershipInfo">owner</a> of the tile (normally <tt>10</tt>)</li>
      <li>m2: see fields</li>
      <li>m3 bits 7..5: type of hedge on NE border of the tile</li>
@@ -784,7 +785,58 @@
     <ul>
      <li>m1 bits 6..5: water class (sea or land)</li>
      <li>m1 bits 4..0: <a href="#OwnershipInfo">owner</a> (normally <tt>10</tt>)</li>
-     <li>m2 bits 8..6: ground
+     <li>m3 bits 2..0: growth status:
+      <table border="0">
+       <tr>
+        <td><tt>0</tt>..<tt>2</tt>&nbsp;</td>
+        <td>one of trees is growing&nbsp;</td>
+       </tr>
+       <tr>
+        <td><tt>3</tt>&nbsp;</td>
+        <td>all trees are fully grown&nbsp;</td>
+       </tr>
+       <tr>
+        <td><tt>4</tt>..<tt>6</tt>&nbsp;</td>
+        <td>one of trees is withering&nbsp;</td>
+       </tr>
+      </table>
+     </li>
+	 <li>m3 bits 6..3: type of trees:
+      <table>
+       <tr>
+        <td nowrap valign=top><tt>00</tt>..<tt>0B</tt>&nbsp; </td>
+        <td align=left>temperate climate trees</td>
+       </tr>
+
+       <tr>
+        <td nowrap valign=top><tt>00</tt>..<tt>07</tt>&nbsp; </td>
+        <td align=left>sub-arctic climate trees</td>
+       </tr>
+
+       <tr>
+        <td nowrap valign=top><tt>00</tt>..<tt>06</tt>&nbsp; </td>
+        <td align=left>rainforest trees</td>
+       </tr>
+
+       <tr>
+        <td nowrap valign=top><tt>07</tt> </td>
+        <td align=left>cactus plants</td>
+       </tr>
+
+       <tr>
+        <td nowrap valign=top><tt>08</tt>..<tt>0B</tt>&nbsp; </td>
+        <td align=left>sub-tropical climate, non-rainforest, non-desert trees</td>
+       </tr>
+
+       <tr>
+        <td nowrap valign=top><tt>00</tt>..<tt>08</tt>&nbsp; </td>
+        <td align=left>toyland trees</td>
+       </tr>
+      </table>
+      <small>Note: the actually displayed set of trees depends on both type and number of trees</small><br>
+	  <small>Note: on acces values are converted to global enumeration of all tree types.</small>
+     </li>
+     <li>m5 bits 4..2: ground
       <table>
 
        <tr>
@@ -813,58 +865,8 @@
        </tr>
       </table>
      </li>
-     <li>m2 bits 5..4: ground density</li>
-     <li>m3 bits 7..0: type of trees:
-      <table>
-       <tr>
-        <td nowrap valign=top><tt>00</tt>..<tt>0B</tt>&nbsp; </td>
-        <td align=left>temperate climate trees</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>0C</tt>..<tt>13</tt>&nbsp; </td>
-        <td align=left>sub-arctic climate trees</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>14</tt>..<tt>1A</tt>&nbsp; </td>
-        <td align=left>rainforest trees</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>1B</tt> </td>
-        <td align=left>cactus plants</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>1C</tt>..<tt>1F</tt>&nbsp; </td>
-        <td align=left>sub-tropical climate, non-rainforest, non-desert trees</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>20</tt>..<tt>28</tt>&nbsp; </td>
-        <td align=left>toyland trees</td>
-       </tr>
-      </table>
-      <small>Note: the actually displayed set of trees depends on both type and number of trees</small>
-     </li>
-     <li>m5 bits 7..6: number of trees minus one</li>
-     <li>m5 bits 2..0: growth status:
-      <table border="0">
-       <tr>
-        <td><tt>0</tt>..<tt>2</tt>&nbsp;</td>
-        <td>one of trees is growing&nbsp;</td>
-       </tr>
-       <tr>
-        <td><tt>3</tt>&nbsp;</td>
-        <td>all trees are fully grown&nbsp;</td>
-       </tr>
-       <tr>
-        <td><tt>4</tt>..<tt>6</tt>&nbsp;</td>
-        <td>one of trees is withering&nbsp;</td>
-       </tr>
-      </table>
-     </li>
+     <li>m5 bits 1..0: ground density</li>
+	 <li>m6 bits 3..2: number of trees minus one</li>
     </ul>
    </td>
   </tr>
