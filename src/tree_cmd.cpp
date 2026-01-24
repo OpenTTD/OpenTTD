@@ -31,6 +31,9 @@
 #include "table/tree_land.h"
 #include "table/clear_land.h"
 
+#include <unordered_set>
+#include <queue>
+
 #include "safeguards.h"
 
 /** Where to place trees while in-game? */
@@ -184,208 +187,23 @@ struct BlobHarmonic {
 };
 
 /**
- * Creates a star-shaped polygon originating from (0, 0) as defined by the given harmonics.
- * The shape is placed into a pre-allocated span so the caller controls allocation.
- * @param radius The maximum radius of the polygon. May be smaller, but will not be larger.
- * @param harmonics Harmonics data for the polygon.
- * @param[out] shape Shape to fill with points.
- */
-static void CreateStarShapedPolygon(int radius, std::span<const BlobHarmonic> harmonics, std::span<Point> shape)
-{
-	float theta = 0;
-	float step = (M_PI * 2) / std::size(shape);
-
-	/* Divide a circle into a number of equally spaced divisions. */
-	for (Point &vertex : shape) {
-
-		/* Add up the values of each harmonic at this segment.*/
-		float deviation = std::accumulate(std::begin(harmonics), std::end(harmonics), 0.f, [theta](float d, const BlobHarmonic &harmonic) -> float {
-			return d + sinf((theta + harmonic.phase) * harmonic.frequency) * harmonic.amplitude;
-		});
-
-		/* Smooth out changes. */
-		float adjusted_radius = (radius / 2.f) + (deviation / 2);
-
-		/* Add to the final polygon. */
-		vertex.x = cosf(theta) * adjusted_radius;
-		vertex.y = sinf(theta) * adjusted_radius;
-
-		/* Proceed to the next segment. */
-		theta += step;
-	}
-}
-
-/**
- * Creates a random star-shaped polygon originating from (0, 0).
- * The shape is placed into a pre-allocated span so the caller controls allocation.
- * @param radius The maximum radius of the blob. May be smaller, but will not be larger.
- * @param[out] shape Shape to fill with polygon points.
- */
-static void CreateRandomStarShapedPolygon(int radius, std::span<Point> shape)
-{
-	/* Valid values for the phase of blob harmonics are between 0 and Tau. we can get a value in the correct range
-	 * from Random() by dividing the maximum possible value by the desired maximum, and then dividing the random
-	 * value by the result. */
-	static constexpr float PHASE_DIVISOR = static_cast<float>(INT32_MAX / M_PI * 2);
-
-	/* These values are ones found in testing that result in suitable-looking polygons that did not self-intersect
-	 * and fit within a square of radius * radius dimensions. */
-	std::initializer_list<BlobHarmonic> harmonics = {
-		{radius / 2, Random() / PHASE_DIVISOR, 1},
-		{radius / 4, Random() / PHASE_DIVISOR, 2},
-		{radius / 8, Random() / PHASE_DIVISOR, 3},
-		{radius / 16, Random() / PHASE_DIVISOR, 4},
-	};
-
-	CreateStarShapedPolygon(radius, harmonics, shape);
-}
-
-/**
- * Returns true if the given coordinates lie within a triangle.
- * @param x X coordinate relative to centre of shape.
- * @param y Y coordinate relative to centre of shape.
- * @param v1 First vertex of triangle.
- * @param v2 Second vertex of triangle.
- * @param v3 Third vertex of triangle.
- * @returns true if the given coordinates lie within a triangle.
- */
-static bool IsPointInTriangle(int x, int y, const Point &v1, const Point &v2, const Point &v3)
-{
-	const int s = ((v1.x - v3.x) * (y - v3.y)) - ((v1.y - v3.y) * (x - v3.x));
-	const int t = ((v2.x - v1.x) * (y - v1.y)) - ((v2.y - v1.y) * (x - v1.x));
-
-	if ((s < 0) != (t < 0) && s != 0 && t != 0) return false;
-
-	const int d = (v3.x - v2.x) * (y - v2.y) - (v3.y - v2.y) * (x - v2.x);
-	return (d < 0) == (s + t <= 0);
-}
-
-/**
- * Returns true if the given coordinates lie within a star shaped polygon.
- * Breaks the polygon into a series of triangles around the centre point (0, 0) and then tests the coordinates against each triangle until a match is found (or not).
- * @param x X coordinate relative to centre of shape.
- * @param y Y coordinate relative to centre of shape.
- * @param shape The shape to check against.
- * @returns true if the given coordinates lie within the star shaped polygon.
- */
-static bool IsPointInStarShapedPolygon(int x, int y, std::span<Point> shape)
-{
-	for (auto it = std::begin(shape); it != std::end(shape); /* nothing */) {
-		const Point &v1 = *it;
-		++it;
-		const Point &v2 = (it == std::end(shape)) ? shape.front() : *it;
-
-		if (IsPointInTriangle(x, y, v1, v2, {0, 0})) return true;
-	}
-
-	return false;
-}
-
-/**
- * Creates a number of tree groups.
- * The number of trees in each group depends on how many trees are actually placed around the given tile.
- *
- * @param num_groups Number of tree groups to place.
- */
-static void PlaceTreeGroups(uint num_groups)
-{
-	static constexpr uint GROVE_SEGMENTS = 16; ///< How many segments make up the tree group.
-	static constexpr uint GROVE_RADIUS = 16; ///< Maximum radius of tree groups.
-
-	/* Shape in which trees may be contained. Array is here to reduce allocations. */
-	std::array<Point, GROVE_SEGMENTS> grove;
-
-	do {
-		TileIndex center_tile = RandomTile();
-
-		CreateRandomStarShapedPolygon(GROVE_RADIUS, grove);
-
-		for (uint i = 0; i < DEFAULT_TREE_STEPS; i++) {
-			IncreaseGeneratingWorldProgress(GWP_TREE);
-
-			uint32_t r = Random();
-			int x = GB(r, 0, 5) - GROVE_RADIUS;
-			int y = GB(r, 8, 5) - GROVE_RADIUS;
-			TileIndex cur_tile = TileAddWrap(center_tile, x, y);
-
-			if (cur_tile == INVALID_TILE) continue;
-			if (!CanPlantTreesOnTile(cur_tile, true)) continue;
-			if (!IsPointInStarShapedPolygon(x, y, grove)) continue;
-
-			PlaceTree(cur_tile, r);
-		}
-
-	} while (--num_groups);
-}
-
-/**
- * Place a tree at the same height as an existing tree.
- *
- * Add a new tree around the given tile which is at the same
- * height or at some offset (2 units) of it.
- *
- * @param tile The base tile to add a new tree somewhere around
- * @param height The height (like the one from the tile)
- */
-static void PlaceTreeAtSameHeight(TileIndex tile, int height)
-{
-	for (uint i = 0; i < DEFAULT_TREE_STEPS; i++) {
-		uint32_t r = Random();
-		int x = GB(r, 0, 5) - 16;
-		int y = GB(r, 8, 5) - 16;
-		TileIndex cur_tile = TileAddWrap(tile, x, y);
-		if (cur_tile == INVALID_TILE) continue;
-
-		/* Keep in range of the existing tree */
-		if (abs(x) + abs(y) > 16) continue;
-
-		/* Clear tile, no farm-tiles or rocks */
-		if (!CanPlantTreesOnTile(cur_tile, true)) continue;
-
-		/* Not too much height difference */
-		if (Delta(GetTileZ(cur_tile), height) > 2) continue;
-
-		/* Place one tree and quit */
-		PlaceTree(cur_tile, r);
-		break;
-	}
-}
-
-/**
  * Place some trees randomly
  *
  * This function just place some trees randomly on the map.
  */
 void PlaceTreesRandomly()
 {
-	int i, j, ht;
-	uint8_t max_height = _settings_game.construction.map_height_limit;
-
-	i = Map::ScaleBySize(DEFAULT_TREE_STEPS);
+	int i = Map::ScaleBySize(DEFAULT_TREE_STEPS);
 	if (_game_mode == GM_EDITOR) i /= EDITOR_TREE_DIV;
 	do {
 		uint32_t r = Random();
 		TileIndex tile = RandomTileSeed(r);
 
-		IncreaseGeneratingWorldProgress(GWP_TREE);
-
 		if (CanPlantTreesOnTile(tile, true)) {
 			PlaceTree(tile, r);
-			if (_settings_game.game_creation.tree_placer != TreePlacer::Improved) continue;
 
-			/* Place a number of trees based on the tile height.
-			 *  This gives a cool effect of multiple trees close together.
-			 *  It is almost real life ;) */
-			ht = GetTileZ(tile);
-			/* The higher we get, the more trees we plant */
-			j = GetTileZ(tile) * 2;
-			/* Above snowline more trees! */
-			if (_settings_game.game_creation.landscape == LandscapeType::Arctic && ht > GetSnowLine()) j *= 3;
-			/* Scale generation by maximum map height. */
-			if (max_height > MAP_HEIGHT_LIMIT_ORIGINAL) j = j * MAP_HEIGHT_LIMIT_ORIGINAL / max_height;
-			while (j--) {
-				PlaceTreeAtSameHeight(tile, ht);
-			}
+			// TODO remove the TreePlacer setting?
+			//if (_settings_game.game_creation.tree_placer != TreePlacer::Improved) continue;
 		}
 	} while (--i);
 
@@ -397,8 +215,6 @@ void PlaceTreesRandomly()
 		do {
 			uint32_t r = Random();
 			TileIndex tile = RandomTileSeed(r);
-
-			IncreaseGeneratingWorldProgress(GWP_TREE);
 
 			if (GetTropicZone(tile) == TROPICZONE_RAINFOREST && CanPlantTreesOnTile(tile, false)) {
 				PlaceTree(tile, r);
@@ -461,38 +277,6 @@ uint PlaceTreeGroupAroundTile(TileIndex tile, TreeType treetype, uint radius, ui
 }
 
 /**
- * Place new trees.
- *
- * This function takes care of the selected tree placer algorithm and
- * place randomly the trees for a new game.
- */
-void GenerateTrees()
-{
-	uint i, total;
-
-	if (_settings_game.game_creation.tree_placer == TreePlacer::None) return;
-
-	switch (_settings_game.game_creation.tree_placer) {
-		case TreePlacer::Original: i = _settings_game.game_creation.landscape == LandscapeType::Arctic ? 15 : 6; break;
-		case TreePlacer::Improved: i = _settings_game.game_creation.landscape == LandscapeType::Arctic ?  4 : 2; break;
-		default: NOT_REACHED();
-	}
-
-	total = Map::ScaleBySize(DEFAULT_TREE_STEPS);
-	if (_settings_game.game_creation.landscape == LandscapeType::Tropic) total += Map::ScaleBySize(DEFAULT_RAINFOREST_TREE_STEPS);
-	total *= i;
-	uint num_groups = (_settings_game.game_creation.landscape != LandscapeType::Toyland) ? Map::ScaleBySize(GB(Random(), 0, 5) + 25) : 0;
-	total += num_groups * DEFAULT_TREE_STEPS;
-	SetGeneratingWorldProgress(GWP_TREE, total);
-
-	if (num_groups != 0) PlaceTreeGroups(num_groups);
-
-	for (; i != 0; i--) {
-		PlaceTreesRandomly();
-	}
-}
-
-/**
  * Plant a tree.
  * @param flags type of operation
  * @param tile end tile of area-drag
@@ -532,6 +316,7 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 
 				if (flags.Test(DoCommandFlag::Execute)) {
 					AddTreeCount(current_tile, 1);
+					SetTreeTilePoisoned(current_tile, false);
 					MarkTileDirtyByTile(current_tile);
 					if (c != nullptr) c->tree_limit -= 1 << 16;
 				}
@@ -599,6 +384,7 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 
 					/* Plant full grown trees in scenario editor */
 					PlantTreesOnTile(current_tile, treetype, 0, _game_mode == GM_EDITOR ? TreeGrowthStage::Grown : TreeGrowthStage::Growing1);
+					SetTreeTilePoisoned(current_tile, false);
 					MarkTileDirtyByTile(current_tile);
 					if (c != nullptr) c->tree_limit -= 1 << 16;
 
@@ -669,6 +455,7 @@ static void DrawTile_Trees(TileInfo *ti)
 	for (uint i = 0; i < trees; i++) {
 		SpriteID sprite = s[0].sprite + (i == trees - 1 ? to_underlying(GetTreeGrowth(ti->tile)) : 3);
 		PaletteID pal = s[0].pal;
+		if (_ctrl_pressed && IsTreeTilePoisoned(ti->tile)) pal = PALETTE_CRASH;
 
 		te[i].sprite = sprite;
 		te[i].pal    = pal;
@@ -827,6 +614,135 @@ static bool TreesOnTileCanSpread(TileIndex tile)
 	return (_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL);
 }
 
+/*
+ * Iterates over all 4-connected tree tiles and marks them as poisoned.
+ * @param tile The tile to start iterating from.
+ */
+static void PoisonForest(TileIndex start_tile)
+{
+	static constexpr int TILE_LIMIT = 300; // Max number of tiles to poison
+	static constexpr int SURVIVAL_PERCENTAGE = 5; // Percentage of tree tiles that survives
+
+	assert(GetTileType(start_tile) == MP_TREES);
+
+	std::unordered_set<TileIndex::BaseType> visited_tiles;
+	std::queue<TileIndex::BaseType> queue;
+	int tree_tile_count = 0;
+
+	queue.emplace(start_tile.base());
+	visited_tiles.emplace(start_tile.base());
+
+	while (!queue.empty()) {
+		if (++tree_tile_count > TILE_LIMIT) return;
+
+		const TileIndex tile = TileIndex(queue.front());
+		queue.pop();
+
+		if (TreesOnTileCanSpread(tile) && !Chance16(SURVIVAL_PERCENTAGE, 100)) SetTreeTilePoisoned(tile, true);
+
+		for (DiagDirection side : DIAGDIRECTIONS_ALL) {
+			const TileIndex adjacent_tile = TileAddByDiagDir(tile, side);
+
+			if (visited_tiles.contains(adjacent_tile.base())) continue;
+			visited_tiles.insert(adjacent_tile.base());
+
+			if (GetTileType(adjacent_tile) == MP_TREES && !IsTreeTilePoisoned(adjacent_tile)) queue.emplace(adjacent_tile.base());
+		}
+	}
+}
+
+
+/*
+ * Handles the growth (and death) lifecycle of trees.
+ * @param tile The tile to process trees on
+ */
+static void ProcessTreeGrowth(TileIndex tile)
+{
+	static constexpr std::array POISON_EVENT_CHANCES = { 100, 1000, 10000 }; // Few, Medium, Many
+
+	assert(IsTileType(tile, MP_TREES));
+
+	/* Prevent trees from taking over the entire map by occasionally poisoning clumps of trees. This causes them
+	 * to die off slowly. Loosely based on the Forest-Fire Model: https://en.wikipedia.org/wiki/Forest-fire_model */
+	if (Chance16(1, POISON_EVENT_CHANCES.at(_settings_game.game_creation.amount_of_trees))) PoisonForest(tile);
+
+	switch (GetTreeGrowth(tile)) {
+		case TreeGrowthStage::Grown: // regular sized tree
+		{
+			if (IsTreeTilePoisoned(tile) || Chance16(1, 10)) {
+				SetTreeGrowth(tile, TreeGrowthStage::Dying1);
+				break;
+			}
+
+			if (GetTreeCount(tile) < 4 && Chance16(1, 2)) {
+				AddTreeCount(tile, 1);
+				SetTreeGrowth(tile, TreeGrowthStage::Growing1);
+				break;
+			}
+
+			if (!TreesOnTileCanSpread(tile)) break;
+
+
+			const TreeType treetype = GetTreeType(tile);
+
+			tile += TileOffsByDir(static_cast<Direction>(Random() % DIR_END));
+
+			if (!CanPlantTreesOnTile(tile, false)) return;
+
+			if (IsTileType(tile, MP_TREES) && IsTreeTilePoisoned(tile)) return;
+
+			/* Don't plant trees, if ground was freshly cleared */
+			if (IsTileType(tile, MP_CLEAR) && GetClearGround(tile) == CLEAR_GRASS && !IsSnowTile(tile) && GetClearDensity(tile) != 3) return;
+
+			PlantTreesOnTile(tile, treetype, 0, TreeGrowthStage::Growing1);
+
+			break;
+		}
+
+		case TreeGrowthStage::Dead: // final stage of tree destruction
+			//if (!TreesOnTileCanSpread(tile)) {
+			if (!TreesOnTileCanSpread(tile) && GetTreeCount(tile) == 1) {
+				/* if trees can't spread just plant a new one to prevent deforestation */
+				SetTreeGrowth(tile, TreeGrowthStage::Growing1);
+				SetTreeTilePoisoned(tile, false);
+			} else if (GetTreeCount(tile) > 1) {
+				/* more than one tree, delete it */
+				AddTreeCount(tile, -1);
+				SetTreeGrowth(tile, TreeGrowthStage::Grown);
+			} else {
+				/* just one tree, change type into MP_CLEAR */
+				switch (GetTreeGround(tile)) {
+					case TREE_GROUND_SHORE: MakeShore(tile); break;
+					case TREE_GROUND_GRASS: MakeClear(tile, CLEAR_GRASS, GetTreeDensity(tile)); break;
+					case TREE_GROUND_ROUGH: MakeClear(tile, CLEAR_ROUGH, 3); break;
+					case TREE_GROUND_ROUGH_SNOW:
+					{
+						uint density = GetTreeDensity(tile);
+						MakeClear(tile, CLEAR_ROUGH, 3);
+						MakeSnow(tile, density);
+						break;
+					}
+					default: // snow or desert
+						if (_settings_game.game_creation.landscape == LandscapeType::Tropic) {
+							MakeClear(tile, CLEAR_DESERT, GetTreeDensity(tile));
+						} else {
+							uint density = GetTreeDensity(tile);
+							MakeClear(tile, CLEAR_GRASS, 3);
+							MakeSnow(tile, density);
+						}
+						break;
+				}
+			}
+			break;
+
+		default:
+			AddTreeGrowth(tile, 1);
+			break;
+	}
+
+	MarkTileDirtyByTile(tile);
+}
+
 static void TileLoop_Trees(TileIndex tile)
 {
 	if (GetTreeGround(tile) == TREE_GROUND_SHORE) {
@@ -858,91 +774,10 @@ static void TileLoop_Trees(TileIndex tile)
 
 	if (_settings_game.construction.extra_tree_placement == ETP_NO_GROWTH_NO_SPREAD) return;
 
-	static const uint32_t TREE_UPDATE_FREQUENCY = 16;  // How many tile updates happen for one tree update
+	static constexpr uint32_t TREE_UPDATE_FREQUENCY = 4;  // How many tile updates happen for one tree update
 	if (cycle % TREE_UPDATE_FREQUENCY != TREE_UPDATE_FREQUENCY - 1) return;
 
-	switch (GetTreeGrowth(tile)) {
-		case TreeGrowthStage::Grown: // regular sized tree
-			if (_settings_game.game_creation.landscape == LandscapeType::Tropic &&
-					GetTreeType(tile) != TREE_CACTUS &&
-					GetTropicZone(tile) == TROPICZONE_DESERT) {
-				AddTreeGrowth(tile, 1);
-			} else {
-				switch (GB(Random(), 0, 3)) {
-					case 0: // start destructing
-						AddTreeGrowth(tile, 1);
-						break;
-
-					case 1: // add a tree
-						if (GetTreeCount(tile) < 4 && TreesOnTileCanSpread(tile)) {
-							AddTreeCount(tile, 1);
-							SetTreeGrowth(tile, TreeGrowthStage::Growing1);
-							break;
-						}
-						[[fallthrough]];
-
-					case 2: { // add a neighbouring tree
-						if (!TreesOnTileCanSpread(tile)) break;
-
-						TreeType treetype = GetTreeType(tile);
-
-						tile += TileOffsByDir(static_cast<Direction>(Random() % DIR_END));
-
-						if (!CanPlantTreesOnTile(tile, false)) return;
-
-						/* Don't plant trees, if ground was freshly cleared */
-						if (IsTileType(tile, MP_CLEAR) && GetClearGround(tile) == CLEAR_GRASS && !IsSnowTile(tile) && GetClearDensity(tile) != 3) return;
-
-						PlantTreesOnTile(tile, treetype, 0, TreeGrowthStage::Growing1);
-
-						break;
-					}
-
-					default:
-						return;
-				}
-			}
-			break;
-
-		case TreeGrowthStage::Dead: // final stage of tree destruction
-			if (!TreesOnTileCanSpread(tile)) {
-				/* if trees can't spread just plant a new one to prevent deforestation */
-				SetTreeGrowth(tile, TreeGrowthStage::Growing1);
-			} else if (GetTreeCount(tile) > 1) {
-				/* more than one tree, delete it */
-				AddTreeCount(tile, -1);
-				SetTreeGrowth(tile, TreeGrowthStage::Grown);
-			} else {
-				/* just one tree, change type into MP_CLEAR */
-				switch (GetTreeGround(tile)) {
-					case TREE_GROUND_SHORE: MakeShore(tile); break;
-					case TREE_GROUND_GRASS: MakeClear(tile, CLEAR_GRASS, GetTreeDensity(tile)); break;
-					case TREE_GROUND_ROUGH: MakeClear(tile, CLEAR_ROUGH, 3); break;
-					case TREE_GROUND_ROUGH_SNOW: {
-						uint density = GetTreeDensity(tile);
-						MakeClear(tile, CLEAR_ROUGH, 3);
-						MakeSnow(tile, density);
-						break;
-					}
-					default: // snow or desert
-						if (_settings_game.game_creation.landscape == LandscapeType::Tropic) {
-							MakeClear(tile, CLEAR_DESERT, GetTreeDensity(tile));
-						} else {
-							uint density = GetTreeDensity(tile);
-							MakeClear(tile, CLEAR_GRASS, 3);
-							MakeSnow(tile, density);
-						}
-						break;
-				}
-			}
-			break;
-
-		default:
-			AddTreeGrowth(tile, 1);
-			break;
-	}
-
-	MarkTileDirtyByTile(tile);
+	ProcessTreeGrowth(tile);
 }
 
 /**
@@ -980,6 +815,30 @@ static void PlantRandomTree(bool rainforest)
 	PlantTreesOnTile(tile, tree, 0, TreeGrowthStage::Growing1);
 }
 
+/**
+ * Generates trees for an empty map.
+ */
+void GenerateTrees()
+{
+	static constexpr int TREE_GROWTH_ITERATIONS = 32;
+
+	SetGeneratingWorldProgress(GWP_TREE, TREE_GROWTH_ITERATIONS);
+
+	/* Add one tree per tile as a starting point for forests to grow or poison events to start. */
+	for (TileIndex tile : Map::Iterate()) {
+		if (CanPlantTreesOnTile(tile, false)) PlaceTree(tile, Random(), true);
+	}
+
+	/* Run the in-game tree life cycle for a fixed amount of iterations to get to a stable amount of trees.
+	 * Note that this doesn't follow the same order as the tile loop but visually it looks similar. */
+	for (int i = 0; i < TREE_GROWTH_ITERATIONS; ++i) {
+		IncreaseGeneratingWorldProgress(GWP_TREE);
+		for (TileIndex tile : Map::Iterate()) {
+			if (IsTileType(tile, MP_TREES)) ProcessTreeGrowth(tile);
+		}
+	}
+}
+
 void OnTick_Trees()
 {
 	/* Don't spread trees if that's not allowed */
@@ -1001,6 +860,7 @@ void OnTick_Trees()
 	if (!DecrementTreeCounter() || _settings_game.construction.extra_tree_placement == ETP_SPREAD_RAINFOREST) return;
 
 	/* place a tree at a random spot */
+	PlantRandomTree(false);
 	PlantRandomTree(false);
 }
 

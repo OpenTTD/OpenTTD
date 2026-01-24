@@ -429,6 +429,7 @@ struct GameCreationSettings {
 	uint8_t min_river_length;                 ///< the minimum river length
 	uint8_t river_route_random;               ///< the amount of randomicity for the route finding
 	uint8_t amount_of_rivers;                 ///< the amount of rivers
+	uint8_t amount_of_trees;                  ///< the amount of trees
 };
 
 /** Settings related to construction in-game */

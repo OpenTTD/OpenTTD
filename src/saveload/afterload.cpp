@@ -3393,6 +3393,10 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(SLV_NEW_TREE_ALGORITHM)) {
+		_settings_game.game_creation.amount_of_trees = 1; // Medium
+	}
+
 	for (Company *c : Company::Iterate()) {
 		UpdateCompanyLiveries(c);
 	}
