@@ -36,6 +36,7 @@ static constexpr uint MAX_SNOWLINE_HEIGHT = (MAX_TILE_HEIGHT - 2); ///< Maximum 
 static constexpr uint DEF_SNOW_COVERAGE = 40;                      ///< Default snow coverage.
 static constexpr uint DEF_DESERT_COVERAGE = 50;                    ///< Default desert coverage.
 
+static constexpr size_t TILE_TYPE_BITS = 4; ///< How many bits in map array are dedicated for type of each tile.
 
 /**
  * The different types of tiles.
@@ -57,7 +58,10 @@ enum class TileType : uint8_t {
 	TunnelBridge, ///< Tunnel entry/exit and bridge heads.
 	Object, ///< Contains objects such as transmitters and owned land.
 	End, ///< End marker.
+	MaxSize = 1U << TILE_TYPE_BITS, ///< The maximum possible number of tile types to be stored in map.
 };
+
+static_assert(TileType::End <= TileType::MaxSize);
 
 /**
  * Additional infos of a tile on a tropic game.
