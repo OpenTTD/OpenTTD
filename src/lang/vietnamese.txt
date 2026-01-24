@@ -1089,9 +1089,9 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Tỷ lệ góc 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Đánh dấu vào ô này để điều chỉnh tỷ lệ góc xiên theo kích thước giao diện
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Sử dụng sprite phông truyền thống
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Tuỳ chọn này nếu bạn muốn sử dụng sprite phông cố định truyền thống
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Bật lên tuỳ chọn này nếu bạn muốn sử dụng sprite phông cố định truyền thống
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Phông chữ chống răng cưa
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Tuỳ chọn này để chống răng cưa phông chữ co dãn được
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Bật tuỳ chọn này để chống răng cưa phông chữ co dãn được
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
@@ -1626,7 +1626,13 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Phẳng
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Gồ Ghề
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Rất Gồ Ghề
 
+STR_CONFIG_SETTING_AVERAGE_HEIGHT                               :Độ cao trung bình: {STRING}
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT                      :Chọn độ cao trung bình của nền đất. 'Tự động' sử dụng nền mặc định dựa trên khí hậu: 'Đất thấp' cho vùng khí hậu Cận nhiệt đới, 'Bình thường' cho Ôn hoà và Đồ chơi, và 'Cao nguyên' cho khi hậu Bắc Cực.
 ###length 4
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUTO                          :Tự động
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_LOWLANDS                      :Đất thấp
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL                        :Bình thường
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS                      :Cao nguyên
 
 STR_CONFIG_SETTING_VARIETY                                      :Phân bổ sự đa dạng: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Điều chỉnh liệu rằng bản đồ gồm cả vùng núi cao và vùng đồng bằng. Độ đa dạng càng cao thì sự chênh lệch về độ cao giữa vùng núi và vùng đồng bằng càng nhiều
@@ -2208,7 +2214,7 @@ STR_CONFIG_ERROR                                                :{WHITE}lỗi tr
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... lỗi trong mảng '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... giá trị không hợp lệ của '{STRING}' đối với '{STRING}'
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... thừa ký tự ở cuối tùy chọn '{STRING}'
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... bỏ qua NewGRF '{STRING}': trùng lặp GRF ID với '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... bỏ qua NewGRF '{STRING}': trùng lặp NewGRF ID với '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... bỏ qua NewGRF '{STRING}' không hợp lệ: {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :không tìm thấy
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :không an toàn để dùng tĩnh
@@ -3389,6 +3395,7 @@ STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Tăng đ
 STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Giảm độ phủ sa mạc đi mười phần trăm
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Kiểu nền đất:
+STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}Độ cao trung bình:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Mực nước biển:
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Chọn mực nước biển
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Số sông/suối:
@@ -3649,7 +3656,7 @@ STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Không t
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF tương thích được nạp thay cho các file thiếu.
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Các GRF file thiếu bị bỏ qua
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Thiếu GRF file
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Thiếu NewGRF file
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Tiếp tục có thể làm treo OpenTTD. Không nên báo cáo lỗi sau khi bị treo.{}Bạn có chắc là tiếp tục chơi?
 
 # NewGRF status

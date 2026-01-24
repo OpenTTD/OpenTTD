@@ -1063,7 +1063,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Selecciona l'id
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}{NBSP}% completat)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :Pantalla completa
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Marqueu la casella per mostrar l'OpenTTD a pantalla completa.
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Si s'activa, mostra l'OpenTTD a pantalla completa.
 
 STR_GAME_OPTIONS_RESOLUTION                                     :Resolució de pantalla
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Selecciona la resolució de pantalla
@@ -1071,11 +1071,11 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altres
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Acceleració per maquinari
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Seleccioneu aquesta opció per permetre que l'OpenTTD provi d'usar acceleració per maquinari. Si es canvia l'opció, s'aplicarà quan es reiniciï el programa.
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Activa aquesta opció per a permetre que l'OpenTTD intenti fer servir l'acceleració per maquinari. Si es canvia l'opció, s'aplicarà quan es reiniciï el programa.
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}La configuració tindrà efecte quan es reiniciï el programa.
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Selecciona aquesta casella per activar la sincronització vertical de la pantalla. Els canvis s'aplicaran quan es reiniciï el programa. Només funciona si s'activa l'acceleració per maquinari.
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Activa la sincronització vertical de la pantalla. Els canvis s'aplicaran quan es reiniciï el programa. Només funciona si s'activa l'acceleració per maquinari.
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Controlador actual: {STRING}
 
@@ -1084,15 +1084,15 @@ STR_GAME_OPTIONS_INTERFACE                                      :Interfície
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Mida de la interfície
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Arrossegueu el botó lliscant per a triar la mida de la interfície. Amb Ctrl+arrossega, s'aplica un ajust continu.
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Detecta la mida automàticament
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Marqueu aquesta opció si voleu que s'ajusti la mida de la interfície automàticament.
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Aquesta opció permet que s'ajusti la mida de la interfície automàticament.
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Escala els bisells
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Marqueu aquesta opció si voleu que s'escalin els bisells segons la mida de la interfície.
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Si s'activa, es modificarà la mida dels bisells segons la mida de la interfície.
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Fes servir la font tradicional
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Marqueu aquesta casella si preferiu fer servir la font tradicional de mida fixa i pixelada.
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Si s'activa, fa servir la font tradicional de mida fixa i pixelada.
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Aplica anti-àlies a les fonts
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Marqueu aquesta casella per a fer servir tècniques d'anti-àlies a les fonts redimensionables.
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Si s'activa, fa servir tècniques d'anti-àlies a les fonts redimensionables.
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
