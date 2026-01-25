@@ -721,7 +721,7 @@ STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLA
 STR_GRAPH_TOGGLE_RANGE                                          :{BLACK}Baskulu diagramon de tiu ŝarĝotipo
 STR_GRAPH_SELECT_SCALE                                          :Ŝanĝi horizontalan skalon de diagramoj
 
-STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Ŝarĝpagaj Tarifoj
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Ŝarĝpagaj tarifoj
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Tagoj dum transito
 STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}Sekundoj dum transito
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pago por liveri 10 unuojn (aŭ 10,000 litrojn) da ŝarĝo trans 20 kvadratoj
@@ -797,7 +797,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}La monkv
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Entuta poentaro el eblaj poentoj
 
 # Music window
-STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Ĵaza Diskogurdo
+STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Ĵaza diskogurdo
 STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLACK}Ĉiu
 STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}Malnovstile
 STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}Novstile
@@ -2449,7 +2449,7 @@ STR_LIVERY_PASSENGER_TRAM                                       :Pasaĝera Tramo
 STR_LIVERY_FREIGHT_TRAM                                         :Frajttramo
 
 # Face selection window
-STR_FACE_CAPTION                                                :{WHITE}Elekto de Vizaĝo
+STR_FACE_CAPTION                                                :{WHITE}Elekto de vizaĝo
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Nuligu elekton de nova vizaĝo
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Akceptu elekton de nova vizaĝo
 
@@ -2784,7 +2784,7 @@ STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Malelekt
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Marki ĉiujn enhavojn neelŝutotan
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Serĉo eksteraj retejoj
 STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK} Serĉu enhavo ne estas disponebla en OpenTTD enhavon servon en retejoj ne asocias al OpenTTD
-STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Vi forlase OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Vi forlasas OpenTTD!
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}La uzokondiĉoj por elŝuti enhavon de eksteraj retejoj estas variaj.{}Vi devas kontroli ĉe la eksteraj retejoj por trovi informojn pri kiel instali la enhavon al OpenTTD.{}Ĉu vi volas daŭrigi?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Etikeda/noma filtro:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Retejo
@@ -2901,10 +2901,10 @@ STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}Krei ap
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Malaktiva ĉar ĉi-momente ne haveblas veturiloj por tia ĉi infrastrukturo
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Konstruado de Fervojo
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Konstruado de Elektrofervojo
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Konstruado de Unurela Fervojo
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Konstruado de Magleva Fervojo
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Konstruado de fervojo
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Konstruado de elektrofervojo
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Konstruado de unurela fervojo
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Konstruado de magleva fervojo
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Konstrui trakon. Ctrl+Klaku por forviŝi fervojan trakon. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Konstrui trakon per Aŭtomata fervoj-reĝimo. Ctrl+Klaku por forigi fervojan trakon. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
@@ -2995,7 +2995,7 @@ STR_STATION_CLASS_WAYP                                          :Vojpunktoj
 STR_STATION_CLASS_WAYP_WAYPOINT                                 :Defaŭlta vojpunkto
 
 # Signal window
-STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Elekto de Signalo
+STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Elekto de signalo
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Bloksignalo (semafora){}Tio ĉi estas la plej baza tipo de signalo, kiu permesas al nur unu vagonaro esti en la sama bloko dum la sama tempo
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Enirsemaforo{}Restas verda dum estas almenaŭ unu verda elirsemaforo de la sekva traksekcio. Alikaze ĝi estas ruĝa
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Elira semaforo{}Kondutas same kiel bloka semaforo, sed estas bezonata por kaŭzi la ĝustan koloron ĉe eniraj kaj kombinaj antaŭsemaforoj
@@ -3014,8 +3014,8 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Malpliig
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Pliigu semaforan distancon dum trenado
 
 # Bridge selection window
-STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Elektu Relan Ponton
-STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Elektu Vojan Ponton
+STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Elekto de rela ponto
+STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Elekto de strata ponto
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Pontelekto - klaku vian preferatan ponton por konstrui ĝin
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
@@ -3062,7 +3062,7 @@ STR_ROAD_NAME_TRAM                                              :Tramvojo
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Direkto de la stratveturila garaĝo
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Elekti direkton de la stratveturila garaĝo
-STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Direkto de Tramgaraĝo
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Direkto de tramgaraĝo
 STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Elekti direkton de tramgaraĝo
 
 # Road vehicle station construction window
@@ -3129,7 +3129,7 @@ STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Ebenigu 
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Aĉetu landon por onta uzo. Stir+Klaku+Trenu por elekti areon diagonale. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 
 # Object construction window
-STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Elekto de Objekto
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Elekto de objekto
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Antaŭvido de la objekto
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grandeco: {GOLD}{NUM} x {NUM} kaheloj
 
@@ -3152,7 +3152,7 @@ STR_TREES_MODE_FOREST_LG_BUTTON.n                               :{BLACK}Arbaron
 STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plantu grandajn arbarojn per trenado super la pejzaĝo
 
 # Land generation window (SE)
-STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Landa Generado
+STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generado de tero
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Metu rokecajn lokojn en la lando
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Difinu dezertan regionon.{}Stir+Klaku por forigi dezertan regionon
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Grandigu landparton por (mal)altigi
@@ -3166,7 +3166,7 @@ STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Reigu La
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Ĉu vi certas ke vi volas forviŝi ĉiujn posedaĵojn de la kompanio?
 
 # Town generation window (SE)
-STR_FOUND_TOWN_CAPTION                                          :{WHITE}Urba Generado
+STR_FOUND_TOWN_CAPTION                                          :{WHITE}Urba generado
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nova Urbo
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fondu novan urbon. Ankaŭ premu Shift por nur montri kostotakson
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Hazarda Urbo
@@ -3431,11 +3431,11 @@ STR_FRAMETIME_CAPTION_AI                                        :AI {NUM} {STRIN
 
 
 # Save/load game/scenario
-STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Konservu Ludon
-STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Ŝarĝu Ludon
-STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Konservu Scenaron
-STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Ŝarĝu Scenaron
-STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Ŝarĝu Altecmapon
+STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Konservu ludon
+STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Ŝarĝu ludon
+STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Konservu scenaron
+STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Ŝarĝu scenaron
+STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Ŝarĝu altecmapon
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Konservu altecmapon
 STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Ŝarĝi urbodatumon
 STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Klaku ĉi tie por salti al la nuna defaŭlta konserva dosierujo
@@ -3450,7 +3450,7 @@ STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Ŝarĝu
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Ŝarĝu la elektan ludon
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Ŝarĝu la elektitan altecmapon
 STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Ŝarĝi la datumon de elektita urbo
-STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detaloj de la Ludo
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detaloj de la ludo
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ne disponeblas informoj
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
@@ -4126,7 +4126,7 @@ STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Ŝanĝu 
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Manaĝantnomo
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Ŝanĝu la nomon de la manaĝanto
 
-STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Kompania Nomo
+STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Kompania nomo
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nomo de la Manaĝanto
 STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Entajpu la monkvanton kiun vi volas doni
 
@@ -4190,10 +4190,10 @@ STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Ŝanĝu 
 
 # Vehicle lists
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Vagonaro{P "" j}
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Stratveturilo{P "" j}
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Ŝipo{P "" j}
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Aviadilo{P "" j}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} vagonaro{P "" j}
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} stratveturilo{P "" j}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} ŝipo{P "" j}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} aviadilo{P "" j}
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Vagonaroj - alklaku vagonaron por pliaj informoj. Premu Stir+Maj por surmontri ŝarĝotipojn
@@ -4226,7 +4226,7 @@ STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Alklaku 
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Alklaku por starti ĉiujn veturilojn en la listo
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Vidu liston da ĉiuj haveblaj maŝinoj por ĉi tiu veturilspeco
 
-STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Kunhavaj ordonoj de {COMMA} Veturilo{P "" j}
+STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Kunhavaj ordonoj de {COMMA} veturilo{P "" j}
 
 # Group window
 ###length VEHICLE_TYPES
@@ -4267,10 +4267,10 @@ STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
 ###length 4
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Novaj Relaj Veturiloj
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Novaj Elektraj Relaj Veturiloj
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Novaj Unurelaj Veturiloj
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Novaj Maglevaj Veturiloj
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Novaj relaj veturiloj
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Novaj elektraj relaj veturiloj
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Novaj unurelaj veturiloj
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Novaj maglevaj veturiloj
 
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Novaj stratveturiloj
 STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Novaj tramveturiloj
@@ -4279,8 +4279,8 @@ STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Novaj tramvetur
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Novaj stratveturiloj
 STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Novaj stratveturiloj
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :Novaj Ŝipoj
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Novaj Aviadiloj
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Novaj ŝipoj
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Novaj aviadiloj
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kosto: {GOLD}{CURRENCY_LONG}{BLACK} Pezo: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Kosto: {GOLD}{CURRENCY_LONG}{BLACK} (Kosto de readapto: {GOLD}{CURRENCY_LONG}{BLACK}) Pezo: {GOLD}{WEIGHT_SHORT}
@@ -4515,14 +4515,14 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aviadilo
 STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Elektu maŝinon por anstataŭi
 STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Elektu novan maŝinon por uzi anstataŭ la maldekstre elektitan
 
-STR_REPLACE_VEHICLES_START                                      :{BLACK}Komencu Anstataŭi
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Komenci anstataŭigon
 STR_REPLACE_VEHICLES_NOW                                        :Anstataŭigu ĉiujn veturilojn nun
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Anstataŭigu nur malnovajn veturilojn
 STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Premu por komenci anstataŭi la maldekstre elektitan maŝinon per la dekstre elektitan
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Ne anstataŭante
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Ne elektiĝis veturilo
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE}, kiam malnova
-STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Ĉesu Anstataŭi
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Haltigi anstataŭigon
 STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Premu por ĉesi anstataŭi la maldekstre elektitan maŝinon
 
 STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Ŝaltu inter maŝina kaj vagona anstataŭigo
@@ -4538,10 +4538,10 @@ STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Elektu l
 ###next-name-looks-similar
 
 STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Montras ontan maŝinecon de la maldekstra maŝino, se anstataŭote
-STR_REPLACE_RAIL_VEHICLES                                       :Relaj Veturiloj
-STR_REPLACE_ELRAIL_VEHICLES                                     :Elektraj Relaj Veturiloj
-STR_REPLACE_MONORAIL_VEHICLES                                   :Unurelaj Veturiloj
-STR_REPLACE_MAGLEV_VEHICLES                                     :Maglevaj Veturiloj
+STR_REPLACE_RAIL_VEHICLES                                       :Relaj veturiloj
+STR_REPLACE_ELRAIL_VEHICLES                                     :Elektraj relaj veturiloj
+STR_REPLACE_MONORAIL_VEHICLES                                   :Unurelaj veturiloj
+STR_REPLACE_MAGLEV_VEHICLES                                     :Maglevaj veturiloj
 
 STR_REPLACE_ROAD_VEHICLES                                       :Stratveturiloj
 STR_REPLACE_ROAD_VEHICLES.n                                     :Stratveturilojn
@@ -4683,10 +4683,10 @@ STR_VEHICLE_DETAILS_MINUTES                                     :Minutoj
 STR_VEHICLE_DETAILS_PERCENT                                     :Procentaĵo
 
 ###length VEHICLE_TYPES
-STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nomu vagonaron
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nomi stratveturilon
-STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Nomu ŝipon
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Nomu aviadilon
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Alinomi vagonaron
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Alinomi stratveturilon
+STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Alinomi ŝipon
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Alinomi aviadilon
 
 # Extra buttons for train details windows
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Kreite: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY_LONG}
