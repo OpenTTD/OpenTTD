@@ -4168,6 +4168,11 @@ CommandCost CheckforTownRating(DoCommandFlags flags, Town *t, TownRatingCheckTyp
 	return CommandCost();
 }
 
+/**
+ * Sum history for town supplied cargo.
+ * @param history History to be summed.
+ * @return Summary data.
+ */
 template <>
 Town::SuppliedHistory SumHistory(std::span<const Town::SuppliedHistory> history)
 {
@@ -4177,6 +4182,20 @@ Town::SuppliedHistory SumHistory(std::span<const Town::SuppliedHistory> history)
 	return {.production = ClampTo<uint32_t>(production / count), .transported = ClampTo<uint32_t>(transported / count)};
 }
 
+/**
+ * Sum history for town accepted cargo.
+ * @param history History to be summed.
+ * @return Summary data.
+ */
+template <>
+Town::AcceptedHistory SumHistory(std::span<const Town::AcceptedHistory> history)
+{
+	uint64_t accepted = std::accumulate(std::begin(history), std::end(history), 0, [](uint64_t r, const auto &s) { return r + s.accepted; });
+	auto count = std::size(history);
+	return {.accepted = ClampTo<uint32_t>(accepted / count)};
+}
+
+/** Economy monthly timer for towns. */
 static const IntervalTimer<TimerGameEconomy> _economy_towns_monthly({TimerGameEconomy::Trigger::Month, TimerGameEconomy::Priority::Town}, [](auto)
 {
 	for (Town *t : Town::Iterate()) {
@@ -4197,6 +4216,7 @@ static const IntervalTimer<TimerGameEconomy> _economy_towns_monthly({TimerGameEc
 
 		/* Update cargo statistics. */
 		for (auto &s : t->supplied) RotateHistory(s.history, t->valid_history, HISTORY_YEAR, TimerGameEconomy::month);
+		for (auto &a : t->accepted) RotateHistory(a.history, t->valid_history, HISTORY_YEAR, TimerGameEconomy::month);
 		for (auto &received : t->received) received.NewMonth();
 
 		UpdateTownGrowth(t);
