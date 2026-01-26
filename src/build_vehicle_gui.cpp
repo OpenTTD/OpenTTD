@@ -1192,11 +1192,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 				// TODO: Show more than just ratio?
 				Money rc = e->GetRunningCost();
 				if (rc != 0) {
-					double ratio = double(e->GetPower()) / double(rc);
-					std::ostringstream ss;
-					ss.setf(std::ios::fixed); ss.precision(3);
-					ss << ratio;
-					sort_prop_detail = ss.str();
+					sort_prop_detail = fmt::format("{:.3f}", double(e->GetPower()) / double(rc));
 				}
 			}
 				break;
