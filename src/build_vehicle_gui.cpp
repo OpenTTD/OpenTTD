@@ -962,6 +962,7 @@ static void DrawEngineBadgeColumn(const Rect &r, int column_group, const GUIBadg
  * @param selected_id what engine to highlight as selected, if any
  * @param show_count Whether to show the amount of engines or not
  * @param selected_group the group to list the engines of
+ * @param sort_criteria the field being sorted by
  */
 void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_list, const Scrollbar &sb, EngineID selected_id, bool show_count, GroupID selected_group, const GUIBadgeClasses &badge_classes, uint8_t sort_criteria)
 {
@@ -1085,129 +1086,103 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 		auto engine_name = PackEngineNameDParam(item.engine_id, show_count ? EngineNameContext::AutoreplaceVehicleInUse : EngineNameContext::PurchaseList, item.indent);
 		std::string name = GetString(str, engine_name);
 
-		/* Append the value of the currently selected sort property. */
+		/* Append the value of the currently selected sort property, if possible */
 		std::string sort_prop_detail;
 
-		// TODO: The index of the sort criteria depends on the vehicle type, so need to adjust cases accordingly.
-
-		/* Trains */
-		// STR_SORT_BY_ENGINE_ID,
-		// STR_SORT_BY_COST,
-		// STR_SORT_BY_MAX_SPEED,
-		// STR_SORT_BY_POWER,
-		// STR_SORT_BY_TRACTIVE_EFFORT,
-		// STR_SORT_BY_INTRO_DATE,
-		// STR_SORT_BY_NAME,
-		// STR_SORT_BY_RUNNING_COST,
-		// STR_SORT_BY_POWER_VS_RUNNING_COST,
-		// STR_SORT_BY_RELIABILITY,
-		// STR_SORT_BY_CARGO_CAPACITY,
-
-		/* Road vehicles */
-		// STR_SORT_BY_ENGINE_ID,
-		// STR_SORT_BY_COST,
-		// STR_SORT_BY_MAX_SPEED,
-		// STR_SORT_BY_POWER,
-		// STR_SORT_BY_TRACTIVE_EFFORT,
-		// STR_SORT_BY_INTRO_DATE,
-		// STR_SORT_BY_NAME,
-		// STR_SORT_BY_RUNNING_COST,
-		// STR_SORT_BY_POWER_VS_RUNNING_COST,
-		// STR_SORT_BY_RELIABILITY,
-		// STR_SORT_BY_CARGO_CAPACITY,
-
-		/* Ships */
-		// STR_SORT_BY_ENGINE_ID,
-		// STR_SORT_BY_COST,
-		// STR_SORT_BY_MAX_SPEED,
-		// STR_SORT_BY_INTRO_DATE,
-		// STR_SORT_BY_NAME,
-		// STR_SORT_BY_RUNNING_COST,
-		// STR_SORT_BY_RELIABILITY,
-		// STR_SORT_BY_CARGO_CAPACITY,
-
-		/* Aircraft */
-		// STR_SORT_BY_ENGINE_ID,
-		// STR_SORT_BY_COST,
-		// STR_SORT_BY_MAX_SPEED,
-		// STR_SORT_BY_INTRO_DATE,
-		// STR_SORT_BY_NAME,
-		// STR_SORT_BY_RUNNING_COST,
-		// STR_SORT_BY_RELIABILITY,
-		// STR_SORT_BY_CARGO_CAPACITY,
-		// STR_SORT_BY_RANGE,
-
-
-
-		switch (sort_criteria) {
-			case 0: // ENGINE_ID / list position
-				// Nothing interesting to do in this case
+		switch (std::data(_engine_sort_listing[type])[sort_criteria]) {
+			case STR_SORT_BY_ENGINE_ID:
+				// No extra interesting info to show in this case
 				break;
-			case 1: // COST
-				sort_prop_detail = GetString(STR_PURCHASE_SORT_COST, e->GetCost());
+			case STR_SORT_BY_COST:
+				sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_COST, e->GetCost());
 				break;
-			case 2: // MAX_SPEED
-			{
-				int max_speed = e->GetDisplayMaxSpeed();
-				if (max_speed != 0)
+			case STR_SORT_BY_MAX_SPEED:
+				if (int max_speed = e->GetDisplayMaxSpeed(); max_speed != 0)
 				{
-					sort_prop_detail = GetString(STR_PURCHASE_SORT_SPEED, PackVelocity(max_speed, Engine::Get(item.engine_id)->type));
+					sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_SPEED, PackVelocity(max_speed, Engine::Get(item.engine_id)->type));
 				}
-			}
 				break;
-			case 3: // POWER
-			{
-				int power = e->GetPower();
-				if (power != 0)
+			case STR_SORT_BY_POWER:
+				if (int power = e->GetPower(); power != 0)
 				{
-					sort_prop_detail = GetString(STR_PURCHASE_SORT_POWER, power);
-				}
-			}
-				break;
-			case 4: // TRACTIVE_EFFORT
-				// Skip wagons
-				if (e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON) {
-					sort_prop_detail = GetString(STR_PURCHASE_SORT_MAX_TE, e->GetDisplayMaxTractiveEffort());
+					sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_POWER, power);
 				}
 				break;
-			case 5: // INTRO_DATE
-			{
-				TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(e->intro_date);
-				sort_prop_detail = GetString(STR_PURCHASE_SORT_INTRO_DATE, ymd.year);
-			}
+			case STR_SORT_BY_TRACTIVE_EFFORT:
+				// Allow trucks, and allow trains that are not wagons
+				if (type == VEH_ROAD || (type == VEH_TRAIN && e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON)) {
+					auto max_te = e->GetDisplayMaxTractiveEffort();
+					if (max_te != 0)
+					{
+						sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_MAX_TE, max_te);
+					}
+				}
 				break;
-			case 6: // NAME -> no extra text
-				break;
-			case 7: // RUNNING_COST
-			{
-				int running_cost = e->GetRunningCost();
-				if (running_cost != 0)
+			case STR_SORT_BY_INTRO_DATE:
 				{
-					sort_prop_detail = GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_SORT_RUNNINGCOST_PERIOD : STR_PURCHASE_SORT_RUNNINGCOST_YEAR, running_cost);
+					TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(e->intro_date);
+					sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_INTRO_DATE, ymd.year);
 				}
-			}
 				break;
-			case 8: // POWER_VS_RUNNING_COST
-			{
-				// TODO: Show more than just ratio?
-				Money rc = e->GetRunningCost();
-				if (rc != 0) {
-					sort_prop_detail = fmt::format("{:.3f}", double(e->GetPower()) / double(rc));
-				}
-			}
+			case STR_SORT_BY_NAME:
+				// No extra interesting info to show in this case
 				break;
-			case 9: // RELIABILITY
-			{
-				auto isWagon = e->type == VEH_TRAIN && e->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_WAGON;
-				if (!isWagon)
+			case STR_SORT_BY_RUNNING_COST:
+				if (int running_cost = e->GetRunningCost(); running_cost != 0)
 				{
-					sort_prop_detail = GetString(STR_PURCHASE_SORT_RELIABILITY, ToPercent16(e->reliability));
+					sort_prop_detail = GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_SORT_DETAILS_RUNNINGCOST_PERIOD : STR_PURCHASE_SORT_DETAILS_RUNNINGCOST_YEAR, running_cost);
 				}
-			}
 				break;
-			case 10: // CARGO_CAPACITY
-				// TODO: Not working yet
-				sort_prop_detail = GetString(e->GetDisplayDefaultCapacity());
+			case STR_SORT_BY_POWER_VS_RUNNING_COST:
+				// NOTE: No point showing the actual values of power/running cost, because they are affected by cost factors, which make the math off
+				if (Money rc = e->GetRunningCost(); rc != 0) {
+					sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_POWER_VS_RUNNING_COST, (int64_t)(double(e->GetPower()) / double(rc) * 100), /* digits for DECIMAL */ 2);
+				}
+				break;
+			case STR_SORT_BY_RELIABILITY:
+				if (auto isWagon = e->type == VEH_TRAIN && e->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_WAGON; !isWagon)
+				{
+					sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_RELIABILITY, ToPercent16(e->reliability));
+				}
+				break;
+			case STR_SORT_BY_CARGO_CAPACITY:
+				{
+					uint total_capacity;
+					switch (type)
+					{
+						case VEH_TRAIN:
+							total_capacity = GetTotalCapacityOfArticulatedParts(item.engine_id) * (e->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
+							break;
+						case VEH_ROAD:
+							total_capacity = GetTotalCapacityOfArticulatedParts(item.engine_id);
+							break;
+						case VEH_SHIP:
+							total_capacity = e->GetDisplayDefaultCapacity();
+							break;
+						case VEH_AIRCRAFT:
+							{
+								uint16_t mail_cap;
+								int aircraft_cap = e->GetDisplayDefaultCapacity(&mail_cap);
+								total_capacity = aircraft_cap + mail_cap;
+							}
+							break;
+						default:
+							NOT_REACHED();
+							break;
+					}
+					if (total_capacity != 0)
+					{
+						sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_CAPACITY, total_capacity);
+					}
+				}
+				break;
+			case STR_SORT_BY_RANGE:
+				if (e->type == VEH_AIRCRAFT) {
+					if (uint16_t range = e->GetRange(); range != 0)
+					{
+						sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_AIRCRAFT_RANGE, range);
+					}
+				}
 				break;
 			default:
 				break;
