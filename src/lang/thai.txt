@@ -2402,6 +2402,8 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}สร�
 
 
 
+
+
 STR_STATION_CLASS_DFLT                                          :สถานีมาตรฐาน
 STR_STATION_CLASS_WAYP                                          :จุดตรวจ
 

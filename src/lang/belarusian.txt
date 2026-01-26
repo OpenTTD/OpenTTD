@@ -3103,6 +3103,8 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Пабу
 
 
 
+
+
 STR_STATION_CLASS_DFLT                                          :Стандартная станцыя
 STR_STATION_CLASS_DFLT_STATION                                  :Стандартная чыг. станцыя
 STR_STATION_CLASS_DFLT_ROADSTOP                                 :Стандартны прыпынак

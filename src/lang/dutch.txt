@@ -2852,6 +2852,8 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Verklein de hoo
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Vergroot de hoogte van voorbeelden. Ctrl+klikken vergroot tot maximaal
 
+
+
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Selecteer een klasse stations voor weergave
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Selecteer een type station om te bouwen. Ctrl+klik om toe te voegen aan of te verwijderen uit opgeslagen onderdelen
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Selecteer een klasse routepunten voor weergave

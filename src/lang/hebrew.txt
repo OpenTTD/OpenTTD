@@ -2590,6 +2590,8 @@ STR_PICKER_MODE_SAVED_TOOLTIP                                   :החלף הצג
 
 
 
+
+
 STR_HOUSE_PICKER_CAPTION                                        :בחירת בית
 STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}מטען שיוצר: {GOLD}{CARGO_LIST}
 

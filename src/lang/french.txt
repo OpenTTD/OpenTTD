@@ -2859,6 +2859,8 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Réduire la hau
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Augmenter la hauteur des images d'aperçu. Ctrl-clic pour augmenter au maximum
 
+
+
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Séléctionner un type de station à afficher
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Séléctionner un type de station à construire. Ctrl+Clic pour ajouter ou retirer des éléments sauvegardés.
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Séléctionner un type de point à afficher

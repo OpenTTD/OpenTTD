@@ -2113,6 +2113,8 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bina ste
 
 
 
+
+
 STR_STATION_CLASS_DFLT                                          :Stesen lazim
 STR_STATION_CLASS_WAYP                                          :Tandatuju
 

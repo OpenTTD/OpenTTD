@@ -2934,6 +2934,8 @@ STR_PICKER_MODE_ALL                                             :Visi
 
 
 
+
+
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Kraštas
 
 

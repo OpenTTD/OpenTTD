@@ -2805,6 +2805,8 @@ STR_PICKER_MODE_SAVED                                           :Salvat
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Comutați afișarea numai a elementelor salvate
 
 
+
+
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Selectați o clasă de stație de afișat
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Selectați un tip de stație de construit. Ctrl+Click pentru a adăuga sau elimina elementele salvate
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Selectați o clasă de punct de referință de afișat

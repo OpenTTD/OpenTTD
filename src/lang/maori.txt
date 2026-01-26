@@ -2858,6 +2858,8 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Whakapakutia te
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Whakarahia te teitei o ngā ata tiro takamua. Pātaki+Pāwhiri kia whakarahia ki te mōrahi
 
+
+
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Tīpakona he rōpū teihana hei whakaari
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Tīpakona he momo teihana hei hanga. Pātaki+Pāwhiri kia tāpiri, tango rānei i ngā tūemi kua puritia
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Tīpakona he rōpū aratohu hei whakaari

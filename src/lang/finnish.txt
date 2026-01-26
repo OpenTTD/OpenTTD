@@ -2858,6 +2858,8 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Vähennä esika
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Kasvata esikatselukuvien korkeutta. Ctrl+napsautus suurentaa maksimikorkeuteen
 
+
+
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Valitse näytettävä asemien luokka
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Valitse rakennettavan aseman tyyppi. Ctrl+napsautus lisää tallennettuihin tai poistaa tallennetuista
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Valitse näytettävä reittipisteiden luokka

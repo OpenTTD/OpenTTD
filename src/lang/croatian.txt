@@ -2529,6 +2529,8 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Napravi 
 
 
 
+
+
 STR_STATION_CLASS_DFLT                                          :Zadana postaja
 STR_STATION_CLASS_WAYP                                          :Čvorišta
 

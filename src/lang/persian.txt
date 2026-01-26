@@ -2294,6 +2294,8 @@ STR_PICKER_MODE_SAVED_TOOLTIP                                   :فعال / غی
 
 
 
+
+
 STR_HOUSE_PICKER_CAPTION                                        :انتخاب خانه
 STR_HOUSE_PICKER_NAME                                           :{BLACK}نام: {ORANGE}{STRING}
 STR_HOUSE_PICKER_POPULATION                                     :{BLACK}جمعیت: {ORANGE}{NUM}

@@ -2573,6 +2573,8 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Struere 
 
 
 
+
+
 STR_STATION_CLASS_DFLT                                          :Statio solita
 STR_STATION_CLASS_WAYP                                          :Interloci
 

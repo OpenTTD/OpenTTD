@@ -2858,6 +2858,8 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :縮小預覽圖
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :放大預覽圖。按住 <Ctrl> 鍵點選以最大化
 
+
+
 STR_PICKER_STATION_CLASS_TOOLTIP                                :選擇顯示的車站種類
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :選擇建設的車站類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :選擇顯示的中途站種類

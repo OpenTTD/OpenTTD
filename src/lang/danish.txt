@@ -2858,6 +2858,8 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Reducer højden
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Forøg højden på forhåndsvisningsbilleder. Ctrl+klik for at øge til maksimum
 
+
+
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Vælg en stationsklasse, der skal vises
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Vælg en stationstype at bygge. Ctrl+klik for at tilføje eller fjerne i gemte elementer
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Vælg et rutepunkt-klasse, der skal vises

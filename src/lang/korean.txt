@@ -2859,6 +2859,8 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :미리보기 �
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :미리보기 이미지의 높이를 늘입니다. CTRL+클릭하면 최대로 늘입니다
 
+
+
 STR_PICKER_STATION_CLASS_TOOLTIP                                :표시할 역 종류를 선택하세요
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :설치하려는 역 종류를 선택하세요. CTRL+클릭하면 즐겨찾기 추가/제거가 가능합니다
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :표시할 경유지 종류를 선택하세요

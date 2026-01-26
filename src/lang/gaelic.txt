@@ -2568,6 +2568,8 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Tog stè
 
 
 
+
+
 STR_STATION_CLASS_DFLT                                          :Stèisean bunaiteach
 STR_STATION_CLASS_WAYP                                          :Puingean-turais
 

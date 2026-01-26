@@ -2952,6 +2952,8 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Malgrandigu la 
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Grandigu la altecon de antaŭmontraj bildoj. Stir-klaku por uzi maksimumon
 
+
+
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Elektu klason de stacioj por montri
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Elektu tipon de stacio por konstrui. Stir-klako aldonas aŭ forigas la stacion kiel konservita
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Elektu klason de vojpunktoj por montri

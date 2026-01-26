@@ -2274,6 +2274,8 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}بناء
 
 
 
+
+
 STR_HOUSE_PICKER_CAPTION                                        :اختيار المنزل
 STR_HOUSE_PICKER_NAME                                           :{BLACK}الأسم: {ORANGE}{STRING}
 STR_HOUSE_PICKER_POPULATION                                     :{BLACK}عدد السكان: {ORANGE}{NUM}

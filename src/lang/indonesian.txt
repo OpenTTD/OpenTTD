@@ -2720,6 +2720,8 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Membangu
 
 
 
+
+
 STR_STATION_CLASS_DFLT                                          :Standar
 STR_STATION_CLASS_DFLT_STATION                                  :Stasiun standar
 STR_STATION_CLASS_DFLT_ROADSTOP                                 :Pemberhentian jalan standar

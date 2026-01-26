@@ -2843,6 +2843,8 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Reducir la altu
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Incrementar la altura de las imágenes previas. Ctrl+Clic aumenta al máximo
 
+
+
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Elegir qué clase de estación mostrar
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Elegir qué tipo de estación construir. Ctrl+Clic lo añade o elimina de guardados
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Elegir qué clase de punto de ruta mostrar

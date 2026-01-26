@@ -2934,6 +2934,8 @@ STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Uvećava visinu slika u pregledu. Ctrl+klik povećava na maksimum
 
 
+
+
 STR_HOUSE_PICKER_CAPTION                                        :Odabir kuće
 STR_HOUSE_PICKER_NAME                                           :{BLACK}Naziv: {GOLD}{STRING}
 STR_HOUSE_PICKER_YEARS                                          :{BLACK}Godina: {GOLD}{NUM}-{NUM}

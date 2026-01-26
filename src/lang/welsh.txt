@@ -2852,6 +2852,8 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Lleihau ucher d
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Cynyddu ucher delewddau rhagolwg. Mae Ctrl+Clic yn cynyddu at yr uchafswm
 
+
+
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Dewis dosbarth gorsaf i'w ddangos
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Dewis math gorsaf i'w adeiladu. Mae Ctrl+Clic yn adio neu tynnu o'r eitemau a gedwir
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Dewis dosbarth pwynt llwybro i'w ddangos

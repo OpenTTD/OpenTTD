@@ -2858,6 +2858,8 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Reduce the heig
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Increase the height of preview images. Ctrl+Click to increase to maximum
 
+
+
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Select a station class to display
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Select a station type to build. Ctrl+Click to add or remove in saved items
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Select a waypoint class to display

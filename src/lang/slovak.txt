@@ -2845,6 +2845,8 @@ STR_PICKER_MODE_USED                                            :Použité
 STR_PICKER_MODE_SAVED                                           :Uložené.
 
 
+
+
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Zvoľ veľkosť zóny mesta na zobrazenie
 
 

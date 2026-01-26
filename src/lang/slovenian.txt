@@ -2512,6 +2512,8 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Zgradi p
 
 
 
+
+
 STR_STATION_CLASS_DFLT                                          :Privzeta postaja
 STR_STATION_CLASS_WAYP                                          :Točke poti
 

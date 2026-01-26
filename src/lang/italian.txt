@@ -2864,6 +2864,8 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Riduce l'altezz
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Aumenta l'altezza delle anteprime. Ctrl+Click per aumentare al massimo
 
+
+
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Seleziona una classe di stazioni da visualizzare
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Seleziona un tipo di stazione da costruire. Ctrl+Click per aggiungere o rimuovere dagli oggetti salvati
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Seleziona una classe di fermate dell'autobus da visualizzare

@@ -2267,6 +2267,8 @@ STR_STATION_BUILD_DRAG_DROP                                     :Sleepe en los l
 
 
 
+
+
 STR_STATION_CLASS_DFLT                                          :Standert stasjon
 STR_STATION_CLASS_WAYP                                          :Kontrôleposten
 

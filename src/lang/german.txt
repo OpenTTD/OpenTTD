@@ -2853,6 +2853,8 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Höhe von Vorsc
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Höhe von Vorschaubildern erhöhen. Strg+Klick, um Maximum zu erhöhen
 
+
+
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Wählen Sie eine anzuzeigende Stationsklasse
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Wählen Sie einen Stationstyp zum Bauen. Strg+Klick, um in gespeicherten Einträgen hinzuzufügen oder zu entfernen
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Wählen Sie eine anzuzeigende Wegpunktklasse

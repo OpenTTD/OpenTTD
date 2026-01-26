@@ -1062,7 +1062,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Välj vilket sp
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% färdigt)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :Helskärm
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Kryssa i den här rutan för att spela OpenTTD i helskärmsläge
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Aktivera för att spela OpenTTD i helskärmsläge
 
 STR_GAME_OPTIONS_RESOLUTION                                     :Skärmupplösning
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Välj vilken skärmupplösning som ska användas
@@ -1070,11 +1070,11 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annan
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Hårdvaruacceleration
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Markera denna rutan för att tillåta OpenTTD att försöka använda hårdvaruacceleration. Ändrad inställning kommer bara att gälla efter omstart.
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Aktivera för att tillåta OpenTTD att försöka använda hårdvaruacceleration. Ändrad inställning kommer bara att gälla efter omstart.
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Inställningen kommer bara att gälla efter omstart av spelet
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Markera den här rutan för att v-synka skärmen. Ändringar i den här inställningen kommer bara att tillämpas vid omstart av spelet. Fungerar bara med hårdvaruacceleration aktiverad.
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Aktivera för att v-synka skärmen. Ändringar i den här inställningen kommer bara att tillämpas vid omstart av spelet. Fungerar bara med hårdvaruacceleration aktiverad.
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Nuvarande drivrutin: {STRING}
 
@@ -1083,15 +1083,15 @@ STR_GAME_OPTIONS_INTERFACE                                      :Gränssnitt
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Gränssnittets storlek
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Dra i reglaget för att ställa in gränssnittets storlek. Ctrl+Drag för steglös justering
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Känn av storleken automatiskt
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Kryssa i den här rutan för automatisk inställning av gränssnittets storlek
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Aktivera för automatisk inställning av gränssnittets storlek
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Skala bården
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Kryssa i den här rutan för att skala bården efter gränssnittets storlek
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Aktivera för att skala bården efter gränssnittets storlek
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Använd traditionellt sprite-typsnitt
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Kryssa i den här rutan om du föredrar att använda det traditionella sprite-typsnittet med fast storlek
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Aktivera om du föredrar att använda det traditionella sprite-typsnittet med fast storlek
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Anti-alias-typsnitt
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Kryssa i den här rutan för anti-aliasing av typsnitt med justerbar storlek
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Akrivera anti-aliasing av typsnitt med justerbar storlek
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
@@ -2857,6 +2857,8 @@ STR_PICKER_PREVIEW_SHRINK                                       :-
 STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Minska höjden på förhandsvisningen. Ctrl+Click för att minska till minimum
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Öka höjden på förhandsvisningen. Ctrl+Click för att öka till max
+
+
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Välj vilken klass av stationer som ska visas
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Välj en stationstyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt

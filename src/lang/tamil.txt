@@ -2545,6 +2545,8 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}இழ�
 
 
 
+
+
 STR_STATION_CLASS_DFLT                                          :இயல்பிருப்பு
 STR_STATION_CLASS_DFLT_STATION                                  :இயல்பிருப்பு நிலையம்
 STR_STATION_CLASS_DFLT_ROADSTOP                                 :இயல்பிருப்பு சாலை நிறுத்தம்
