@@ -104,9 +104,29 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 		SuppliedCargo(CargoType cargo) : cargo(cargo) {}
 	};
 
-	using SuppliedCargoes = std::vector<SuppliedCargo>;
+	/** Individual data point for accepted cargo history. */
+	struct AcceptedHistory {
+		uint32_t accepted = 0; ///< Total accepted.
+	};
+
+	/** Storage for accepted cargo history. */
+	struct AcceptedCargo {
+		CargoType cargo = INVALID_CARGO; ///< Cargo type of accepted cargo.
+		HistoryData<AcceptedHistory> history{}; ///< Histor data of accepted cargo.
+
+		AcceptedCargo() = default;
+		/**
+		 * Construct AcceptedCargo.
+		 * @param cargo Cargo type of this AcceptedCargo.
+		 */
+		AcceptedCargo(CargoType cargo) : cargo(cargo) {}
+	};
+
+	using SuppliedCargoes = std::vector<SuppliedCargo>; ///< Type for storage of all supplied cargo history.
+	using AcceptedCargoes = std::vector<AcceptedCargo>; ///< Type for storage of all accepted cargo history.
 
 	SuppliedCargoes supplied{}; ///< Cargo statistics about supplied cargo.
+	AcceptedCargoes accepted{}; ///< Cargo statistics about accepted cargo.
 	std::array<TransportedCargoStat<uint16_t>, NUM_TAE> received{}; ///< Cargo statistics about received cargotypes.
 	std::array<uint32_t, NUM_TAE> goal{}; ///< Amount of cargo required for the town to grow.
 	ValidHistoryMask valid_history = 0; ///< Mask of valid history records.
@@ -125,7 +145,33 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	{
 		if (!IsValidCargoType(cargo)) return std::end(this->supplied);
 		auto it = std::ranges::lower_bound(this->supplied, cargo, std::less{}, &SuppliedCargo::cargo);
-		if (it == std::end(this->supplied) || it->cargo != cargo) return std::end(supplied);
+		if (it == std::end(this->supplied) || it->cargo != cargo) return std::end(this->supplied);
+		return it;
+	}
+
+	/**
+	 * Get or create the storage for an accepted cargo.
+	 * @param cargo Cargo type to get.
+	 * @return Accepted cargo storage for the cargo type.
+	 */
+	inline AcceptedCargo &GetOrCreateCargoAccepted(CargoType cargo)
+	{
+		assert(IsValidCargoType(cargo));
+		auto it = std::ranges::lower_bound(this->accepted, cargo, std::less{}, &AcceptedCargo::cargo);
+		if (it == std::end(this->accepted) || it->cargo != cargo) it = this->accepted.emplace(it, cargo);
+		return *it;
+	}
+
+	/**
+	 * Get iterator to the storage for an accepted cargo.
+	 * @param cargo Cargo type to get.
+	 * @return Iterator to the cargo type or end of accepted cargo if it is not present.
+	 */
+	inline AcceptedCargoes::const_iterator GetCargoAccepted(CargoType cargo) const
+	{
+		if (!IsValidCargoType(cargo)) return std::end(this->accepted);
+		auto it = std::ranges::lower_bound(this->accepted, cargo, std::less{}, &AcceptedCargo::cargo);
+		if (it == std::end(this->accepted) || it->cargo != cargo) return std::end(this->accepted);
 		return it;
 	}
 
