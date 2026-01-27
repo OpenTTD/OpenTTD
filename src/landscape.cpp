@@ -66,7 +66,7 @@ extern const TileTypeProcs
  * @ingroup TileCallbackGroup
  * @see TileType
  */
-const EnumClassIndexContainer<std::array<const TileTypeProcs *, to_underlying(TileType::End)>, TileType> _tile_type_procs = {
+const EnumClassIndexContainer<std::array<const TileTypeProcs *, to_underlying(TileType::MaxSize)>, TileType> _tile_type_procs = {
 	&_tile_type_clear_procs, // Callback functions for TileType::Clear tiles
 	&_tile_type_rail_procs, // Callback functions for TileType::Railway tiles
 	&_tile_type_road_procs, // Callback functions for TileType::Road tiles
@@ -78,6 +78,12 @@ const EnumClassIndexContainer<std::array<const TileTypeProcs *, to_underlying(Ti
 	&_tile_type_industry_procs, // Callback functions for TileType::Industry tiles
 	&_tile_type_tunnelbridge_procs, // Callback functions for TileType::TunnelBridge tiles
 	&_tile_type_object_procs, // Callback functions for TileType::Object tiles
+	/* Explicitly initialize invalid elements to make sure that they are nullptr. */
+	nullptr,
+	nullptr,
+	nullptr,
+	nullptr,
+	nullptr,
 };
 
 /** landscape slope => sprite */

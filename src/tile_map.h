@@ -96,7 +96,7 @@ inline uint TilePixelHeightOutsideMap(int x, int y)
 [[debug_inline]] inline static TileType GetTileType(Tile tile)
 {
 	assert(tile < Map::Size());
-	return TileType(GB(tile.type(), 4, 4));
+	return TileType(GB(tile.type(), 4, TILE_TYPE_BITS));
 }
 
 /**
@@ -135,7 +135,7 @@ inline void SetTileType(Tile tile, TileType type)
 	 * edges of the map. If _settings_game.construction.freeform_edges is true,
 	 * the upper edges of the map are also VOID tiles. */
 	assert(IsInnerTile(tile) == (type != TileType::Void));
-	SB(tile.type(), 4, 4, to_underlying(type));
+	SB(tile.type(), 4, TILE_TYPE_BITS, to_underlying(type));
 }
 
 /**

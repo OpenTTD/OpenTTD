@@ -169,7 +169,7 @@ struct TileTypeProcs {
 	CheckBuildAboveProc *check_build_above_proc;
 };
 
-extern const EnumClassIndexContainer<std::array<const TileTypeProcs *, to_underlying(TileType::End)>, TileType> _tile_type_procs;
+extern const EnumClassIndexContainer<std::array<const TileTypeProcs *, to_underlying(TileType::MaxSize)>, TileType> _tile_type_procs;
 
 TrackStatus GetTileTrackStatus(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side = INVALID_DIAGDIR);
 VehicleEnterTileStates VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y);
