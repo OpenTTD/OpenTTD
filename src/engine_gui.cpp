@@ -8,6 +8,7 @@
 /** @file engine_gui.cpp GUI to show engine related information. */
 
 #include "stdafx.h"
+#include "dropdown_func.h"
 #include "window_gui.h"
 #include "engine_base.h"
 #include "command_func.h"
@@ -55,7 +56,7 @@ StringID GetEngineCategoryName(EngineID engine)
 static constexpr std::initializer_list<NWidgetPart> _nested_engine_preview_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE),
-		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE), SetStringTip(STR_ENGINE_PREVIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, WID_EP_CAPTION), SetToolTip(STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE),
 		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.modalpopup),
@@ -66,49 +67,105 @@ static constexpr std::initializer_list<NWidgetPart> _nested_engine_preview_widge
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_EP_PREV), SetStringTip(STR_ENGINE_PREVIEW_PREVIOUS, STR_ENGINE_PREVIEW_PREVIOUS_TOOLTIP), SetFill(1, 0),
+		NWidget(WWT_DROPDOWN, COLOUR_LIGHT_BLUE, WID_EP_LIST), SetToolTip(STR_ENGINE_PREVIEW_ENGINE_LIST_TOOLTIP), SetFill(1, 0),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_EP_NEXT), SetStringTip(STR_ENGINE_PREVIEW_NEXT, STR_ENGINE_PREVIEW_NEXT_TOOLTIP), SetFill(1, 0),
+	EndContainer(),
 };
 
 struct EnginePreviewWindow : Window {
-	int vehicle_space = 0; // The space to show the vehicle image
+	int vehicle_space = 0; ///< The space to show the vehicle image
+	size_t selected_index = 0; ///< The currently displayed index in the list of engines.
+	std::vector<EngineID> engines; ///< List of engine IDs to display preview news for.
 
-	EnginePreviewWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
+	/**
+	 * Construct a new Engine Preview window.
+	 * @param desc Window description.
+	 * @param engine Initial engine to display.
+	 */
+	EnginePreviewWindow(WindowDesc &desc, EngineID engine) : Window(desc)
 	{
-		this->InitNested(window_number);
+		this->engines.push_back(engine);
+
+		this->InitNested();
 
 		/* There is no way to recover the window; so disallow closure via DEL; unless SHIFT+DEL */
 		this->flags.Set(WindowFlag::Sticky);
 	}
 
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
+	{
+		if (widget == WID_EP_CAPTION) {
+			if (this->engines.size() <= 1) return GetString(STR_ENGINE_PREVIEW_CAPTION);
+			return GetString(STR_ENGINE_PREVIEW_CAPTION_COUNT, this->selected_index + 1, this->engines.size());
+		}
+
+		if (widget == WID_EP_LIST) {
+			return this->selected_index < this->engines.size() ? GetString(STR_ENGINE_PREVIEW_ENGINE_LIST, this->selected_index + 1, this->engines[this->selected_index]) : GetString(STR_INVALID_VEHICLE);
+		}
+
+		return this->Window::GetWidgetString(widget, stringid);
+	}
+
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
-		if (widget != WID_EP_QUESTION) return;
+		switch (widget) {
+			case WID_EP_QUESTION: {
+				/* Get size of engine sprite, on loan from depot_gui.cpp */
+				EngineImageType image_type = EIT_PREVIEW;
 
-		/* Get size of engine sprite, on loan from depot_gui.cpp */
-		EngineID engine = static_cast<EngineID>(this->window_number);
-		EngineImageType image_type = EIT_PREVIEW;
-		uint x, y;
-		int x_offs, y_offs;
+				/* First determine required the horizontal size. */
+				this->vehicle_space = ScaleSpriteTrad(40);
+				for (const EngineID &engine : this->engines) {
+					uint x, y;
+					int x_offs, y_offs;
 
-		const Engine *e = Engine::Get(engine);
-		switch (e->type) {
-			default: NOT_REACHED();
-			case VEH_TRAIN:    GetTrainSpriteSize(   engine, x, y, x_offs, y_offs, image_type); break;
-			case VEH_ROAD:     GetRoadVehSpriteSize( engine, x, y, x_offs, y_offs, image_type); break;
-			case VEH_SHIP:     GetShipSpriteSize(    engine, x, y, x_offs, y_offs, image_type); break;
-			case VEH_AIRCRAFT: GetAircraftSpriteSize(engine, x, y, x_offs, y_offs, image_type); break;
+					const Engine *e = Engine::Get(engine);
+					switch (e->type) {
+						default: NOT_REACHED();
+						case VEH_TRAIN:    GetTrainSpriteSize(   engine, x, y, x_offs, y_offs, image_type); break;
+						case VEH_ROAD:     GetRoadVehSpriteSize( engine, x, y, x_offs, y_offs, image_type); break;
+						case VEH_SHIP:     GetShipSpriteSize(    engine, x, y, x_offs, y_offs, image_type); break;
+						case VEH_AIRCRAFT: GetAircraftSpriteSize(engine, x, y, x_offs, y_offs, image_type); break;
+					}
+
+					this->vehicle_space = std::max<int>(this->vehicle_space, y - y_offs);
+					size.width = std::max(size.width, x + std::abs(x_offs));
+				}
+
+				/* Then account for the description of each vehicle. */
+				int height = 0;
+				for (const EngineID &engine : this->engines) {
+					int title_height = GetStringHeight(GetString(STR_ENGINE_PREVIEW_MESSAGE, GetEngineCategoryName(engine)), size.width);
+					int body_height = GetStringHeight(GetEngineInfoString(engine), size.width);
+					height = std::max(height, title_height + WidgetDimensions::scaled.vsep_wide + GetCharacterHeight(FS_NORMAL) + this->vehicle_space + body_height);
+				}
+
+				size.height = height;
+				break;
+			}
+
+			case WID_EP_LIST: {
+				size.width = 0;
+				int index = 0;
+				for (const EngineID &engine : this->engines) {
+					size.width = std::max(size.width, GetStringBoundingBox(GetString(STR_ENGINE_PREVIEW_ENGINE_LIST, index + 1, PackEngineNameDParam(engine, EngineNameContext::PreviewNews))).width);
+					++index;
+				}
+				size.width += padding.width;
+				break;
+			}
 		}
-		this->vehicle_space = std::max<int>(ScaleSpriteTrad(40), y - y_offs);
-
-		size.width = std::max(size.width, x + std::abs(x_offs));
-		size.height = GetStringHeight(GetString(STR_ENGINE_PREVIEW_MESSAGE, GetEngineCategoryName(engine)), size.width) + WidgetDimensions::scaled.vsep_wide + GetCharacterHeight(FS_NORMAL) + this->vehicle_space;
-		size.height += GetStringHeight(GetEngineInfoString(engine), size.width);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget != WID_EP_QUESTION) return;
 
-		EngineID engine = static_cast<EngineID>(this->window_number);
+		if (this->selected_index >= this->engines.size()) return;
+
+		EngineID engine = this->engines[selected_index];
 		int y = DrawStringMultiLine(r, GetString(STR_ENGINE_PREVIEW_MESSAGE, GetEngineCategoryName(engine)), TC_FROMSTRING, SA_HOR_CENTER | SA_TOP) + WidgetDimensions::scaled.vsep_wide;
 
 		DrawString(r.left, r.right, y, GetString(STR_ENGINE_NAME, PackEngineNameDParam(engine, EngineNameContext::PreviewNews)), TC_BLACK, SA_HOR_CENTER);
@@ -124,20 +181,92 @@ struct EnginePreviewWindow : Window {
 	{
 		switch (widget) {
 			case WID_EP_YES:
-				Command<CMD_WANT_ENGINE_PREVIEW>::Post(static_cast<EngineID>(this->window_number));
+				if (this->selected_index < this->engines.size()) {
+					Command<CMD_WANT_ENGINE_PREVIEW>::Post(this->engines[this->selected_index]);
+				}
 				[[fallthrough]];
+
 			case WID_EP_NO:
-				if (!_shift_pressed) this->Close();
+				if (!_shift_pressed) {
+					this->engines.erase(this->engines.begin() + this->selected_index);
+					this->InvalidateData();
+				}
+				break;
+
+			case WID_EP_PREV:
+				this->selected_index = (this->selected_index + this->engines.size() - 1) % this->engines.size();
+				this->SetDirty();
+				break;
+
+			case WID_EP_NEXT:
+				this->selected_index = (this->selected_index + 1) % this->engines.size();
+				this->SetDirty();
+				break;
+
+			case WID_EP_LIST:
+				ShowDropDownList(this, this->BuildDropdownList(), static_cast<int>(this->selected_index), widget);
 				break;
 		}
+	}
+
+	void OnDropdownSelect(WidgetID widget, int index, int) override
+	{
+		if (widget != WID_EP_LIST) return;
+		this->selected_index = index % this->engines.size();
+		this->SetDirty();
+	}
+
+	/**
+	 * Build the dropdown list of new engines.
+	 * @return The dropdown list.
+	 */
+	DropDownList BuildDropdownList()
+	{
+		DropDownList list;
+
+		int index = 0;
+		for (const EngineID &engine : this->engines) {
+			list.push_back(MakeDropDownListStringItem(GetString(STR_ENGINE_PREVIEW_ENGINE_LIST, index + 1, PackEngineNameDParam(engine, EngineNameContext::PreviewNews)), index, false, false));
+			++index;
+		}
+
+		return list;
 	}
 
 	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 
-		EngineID engine = static_cast<EngineID>(this->window_number);
-		if (Engine::Get(engine)->preview_company != _local_company) this->Close();
+		/* Remove engines that are no longer eligible for preview. */
+		for (auto it = this->engines.begin(); it != this->engines.end(); /* nothing */) {
+			if (Engine::Get(*it)->preview_company != _local_company) {
+				it = this->engines.erase(it);
+			} else {
+				++it;
+			}
+		}
+
+		/* If no engines are remaining, close the window. */
+		if (this->engines.empty()) this->Close();
+
+		/* Ensure selection is valid. */
+		if (this->selected_index >= this->engines.size()) this->selected_index = this->engines.size() - 1;
+
+		this->SetWidgetsDisabledState(this->engines.size() <= 1, WID_EP_PREV, WID_EP_LIST, WID_EP_NEXT);
+	}
+
+	/**
+	 * Adds another engine to the engine preview window.
+	 * @param engine Engine ID to add.
+	 */
+	void AddEngineToPreview(EngineID engine)
+	{
+		if (std::ranges::find_if(this->engines, [engine](const EngineID &e) { return e == engine; }) != std::end(this->engines)) return;
+
+		this->engines.push_back(engine);
+
+		this->InvalidateData();
+		this->ReInit();
 	}
 };
 
@@ -151,7 +280,12 @@ static WindowDesc _engine_preview_desc(
 
 void ShowEnginePreviewWindow(EngineID engine)
 {
-	AllocateWindowDescFront<EnginePreviewWindow>(_engine_preview_desc, engine);
+	EnginePreviewWindow *w = dynamic_cast<EnginePreviewWindow *>(FindWindowByClass(WC_ENGINE_PREVIEW));
+	if (w == nullptr) {
+		new EnginePreviewWindow(_engine_preview_desc, engine);
+	} else {
+		w->AddEngineToPreview(engine);
+	}
 }
 
 /**

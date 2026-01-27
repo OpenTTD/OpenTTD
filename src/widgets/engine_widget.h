@@ -12,9 +12,13 @@
 
 /** Widgets of the #EnginePreviewWindow class. */
 enum EnginePreviewWidgets : WidgetID {
+	WID_EP_CAPTION, ///< The caption for the question.
 	WID_EP_QUESTION, ///< The container for the question.
 	WID_EP_NO,       ///< No button.
 	WID_EP_YES,      ///< Yes button.
+	WID_EP_PREV, ///< Previous button.
+	WID_EP_LIST, ///< Dropdown menu to jump to entries.
+	WID_EP_NEXT, ///< Next button.
 };
 
 #endif /* WIDGETS_ENGINE_WIDGET_H */
