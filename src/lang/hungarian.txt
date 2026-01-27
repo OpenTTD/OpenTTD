@@ -1126,7 +1126,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Válaszd ki a f
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% lefordítva)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :Teljes képernyő
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Jelöld be, hogy teljes képernyős módban játssz az OpenTTD-vel
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Kapcsold be, hogy teljes képernyős módban játssz az OpenTTD-vel
 
 STR_GAME_OPTIONS_RESOLUTION                                     :Képernyőfelbontás
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Használandó képernyőfelbontás kiválasztása
@@ -1134,11 +1134,11 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :egyéb
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Hardveres gyorsítás
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Jelöld be, hogy az OpenTTD próbáljon meg hardveres gyorsítást használni. A beállítás csak a játék újraindítása után lép érvénybe.
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Kapcsold be, hogy az OpenTTD próbáljon meg hardveres gyorsítást használni. A beállítás csak a játék újraindítása után lép érvénybe.
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Ez a beállítás csak a játék újraindítása után lép érvénybe
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :Függőleges szinkronizáció (VSync)
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Jelöld be a függőleges szinkronizációhoz (VSync). A változtatás csak a játék újraindítása után lép érvénybe. Kizárólag hardveres gyorsítással működik!
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Kapcsold be a függőleges szinkronizációhoz (VSync). A változtatás csak a játék újraindítása után lép érvénybe. Kizárólag hardveres gyorsítással működik!
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Jelenlegi illesztőprogram: {STRING}
 
@@ -1147,15 +1147,15 @@ STR_GAME_OPTIONS_INTERFACE                                      :Felület
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Felület mérete
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Használd a csúszkát a felület méretének beállításához. Ctrl+húzás a finom állításhoz.
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Méret automatikus felismerése
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Jelöld be a felület méretének automatikus felismeréséhez
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Kapcsold be a felület méretének automatikus felismeréséhez
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Szegélyek méretezése
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Jelöld be a szegélyek a felület méretéhez való igazításához
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Kapcsold be a szegélyek a felület méretéhez való igazításához
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Hagyományos sprite betűk használata
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Jelöld be, ha a hagyományos sprite betűket akarod használni.
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Kapcsold be, ha a hagyományos fix méretű sprite betűket akarod használni.
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Betűk élsimítása
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Jelöld be a betűk élsimításához
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Kapcsold be a betűk élsimításához
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
@@ -2922,20 +2922,38 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Az előnézeti 
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Az előnézeti képek méretének növelése. Ctrl+kattintás a maximalizáláshoz
 
+STR_PICKER_DEFAULT_COLLECTION                                   :Alapértelmezett kollekció
+STR_PICKER_SELECT_COLLECTION_TOOLTIP                            :Jelöljön ki egy kollekciót
+STR_PICKER_COLLECTION_ADD                                       :Hozzáad
+STR_PICKER_COLLECTION_ADD_TOOLTIP                               :Új kollekció létrehozása
+STR_PICKER_COLLECTION_RENAME                                    :Átnevez
+STR_PICKER_COLLECTION_RENAME_TOOLTIP                            :Kollekció átnevezése
+STR_PICKER_COLLECTION_DELETE                                    :Törlés
+STR_PICKER_COLLECTION_DELETE_TOOLTIP                            :Kollekció törlése
 
+STR_PICKER_COLLECTION_RENAME_QUERY                              :Nevezd át ezt a kollekciót
+STR_PICKER_COLLECTION_DELETE_QUERY                              :Kollekció törlése
+STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Biztosan törölni akarod ezt a kollekciót?
+STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Biztos, hogy törölni szeretnéd ezt a kollekciót? Vannak benne elemek a tiltott NewGRF-ekből!
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Válaszd ki a megjeleníteni kívánt állomástípust
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Válassz ki egy állomástípust az építéshez. Ctrl+kattintás a mentett elemek hozzáadásához vagy eltávolításához
+STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Jelöljön ki egy állomás kollekciót a megjelenítéshez
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Válassz egy útpontot amit meg akarsz jeleníteni
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Válassz egy útpontot az építéshez. Ctrl+katintás a mentett elemek hozzáadásához vagy eltávolításához
+STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Jelöljön ki egy útpont kollekciót a megjelenítéshez
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Válaszd ki a megjeleníteni kívánt buszállomás-típust
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Válassz egy autóbuszállomás-típust az építéshez. Ctrl + kattintás a mentett elemek hozzáadásához vagy eltávolításához
+STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Jelöljön ki egy buszállomás kollekciót a megjelenítéshez
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Válaszd ki a megjeleníteni kívánt teherautó-típust
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Válassz egy teherautóállomás-típust az építéshez. Ctrl + kattintás a mentett elemek hozzáadásához vagy eltávolításához
+STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Jelöljön ki egy hajóállomás kollekciót a megjelenítéshez
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Válaszd ki a megjelenítendő elemcsoportot
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Válaszd ki az építendő elem típusát. Ctrl+kattintás a mentett elemek hozzáadásához vagy eltávolításához. Ctrl+kattintás+húzás a terület átlós kijelöléséhez. Nyomd meg a Shift billentyűt is, ha csak a költségbecslést szeretnéd megjeleníteni
+STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Jelöljön ki egy objektum kollekciót a megjelenítéshez
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Válassz egy település-zónát amit meg akarsz jeleníteni
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Válassz egy ház típúst az építéshez. Ctrl+kattintás a mentett elemek hozzáadásához vagy eltávolításához
+STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Jelöljön ki egy ház kollekciót a megjelenítéshez
 
 STR_HOUSE_PICKER_CAPTION                                        :Ház kiválasztása
 STR_HOUSE_PICKER_NAME                                           :{BLACK}Név: {GOLD}{STRING}

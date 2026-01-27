@@ -2858,20 +2858,38 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Vähennä esika
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Kasvata esikatselukuvien korkeutta. Ctrl+napsautus suurentaa maksimikorkeuteen
 
+STR_PICKER_DEFAULT_COLLECTION                                   :Oletuskokoelma
+STR_PICKER_SELECT_COLLECTION_TOOLTIP                            :Valitse kokoelma
+STR_PICKER_COLLECTION_ADD                                       :Lisää
+STR_PICKER_COLLECTION_ADD_TOOLTIP                               :Luo uusi kokoelma
+STR_PICKER_COLLECTION_RENAME                                    :Nimeä uudelleen
+STR_PICKER_COLLECTION_RENAME_TOOLTIP                            :Nimeä kokoelma uudelleen
+STR_PICKER_COLLECTION_DELETE                                    :Poista
+STR_PICKER_COLLECTION_DELETE_TOOLTIP                            :Poista kokoelma
 
+STR_PICKER_COLLECTION_RENAME_QUERY                              :Nimeä tämä kokoelma uudelleen
+STR_PICKER_COLLECTION_DELETE_QUERY                              :Poista kokoelma
+STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Haluatko varmasti poistaa tämän kokoelman?
+STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Haluatko varmasti poistaa tämän kokoelman? Se sisältää kohteita käytöstä poistetuista NewGRF:istä!
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Valitse näytettävä asemien luokka
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Valitse rakennettavan aseman tyyppi. Ctrl+napsautus lisää tallennettuihin tai poistaa tallennetuista
+STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Valitse näytettävä asemakokoelma
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Valitse näytettävä reittipisteiden luokka
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Valitse rakennettava reittipiste. Ctrl+napsautus lisää tallennettuihin tai poistaa tallennetuista
+STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Valitse näytettävä reittipistekokoelma
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Valitse näytettävä linja-autopysäkkien luokka
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Valitse rakennettavan linja-autopysäkin tyyppi. Ctrl+napsautus lisää tallennettuihin tai poistaa tallennetuista
+STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Valitse näytettävä linja-autoasemakokoelma
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Valitse näytettävä lastauslaitureiden luokka
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Valitse rakennettavan lastauslaiturin tyyppi. Ctrl+napsautus lisää tallennettuihin tai poistaa tallennetuista
+STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Valitse näytettävä lastauslaiturikokoelma
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Valitse näytettävä objektien luokka
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Valitse rakennettavan objektin tyyppi. Ctrl+napsautus lisää tallennettuihin tai poistaa tallennetuista. Ctrl+napsautus+veto valitsee alueen vinottain. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
+STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Valitse näytettävä objektikokoelma
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Valitse näytettävä kunnan vyöhyke
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Valitse rakennettavan talon tyyppi. Ctrl+napsautus lisää tallennettuihin tai poistaa tallennetuista
+STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Valitse näytettävä talokokoelma
 
 STR_HOUSE_PICKER_CAPTION                                        :Talojen valinta
 STR_HOUSE_PICKER_NAME                                           :{BLACK}Nimi: {GOLD}{STRING}

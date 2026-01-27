@@ -2371,8 +2371,8 @@ STR_QUIT_NO                                                     :{BLACK}Όχι
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Εγκατάλειψη Παιχνιδιού
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Είστε σίγουροι ότι θέλετε να εγκαταλείψετε το παιχνίδι;
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Είστε σίγουροι ότι θέλετε να εγκαταλείψετε το σενάριο;
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Είστε σίγουρος/η ότι θέλετε να εγκαταλείψετε το παιχνίδι;
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Είστε σίγουρος/η ότι θέλετε να εγκαταλείψετε το σενάριο;
 
 # Help window
 STR_HELP_WINDOW_CAPTION                                         :{WHITE}Βοήθεια και Εγχειρίδια Χρήσης
@@ -2951,20 +2951,38 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Μείωση τ
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Αύξηση του ύψους των εικόνων προεπισκόπισης. Ctrl+κλικ για αύξηση στο μέγιστο
 
+STR_PICKER_DEFAULT_COLLECTION                                   :Προεπιλεγμένη συλλογή
+STR_PICKER_SELECT_COLLECTION_TOOLTIP                            :Επιλέξτε μια συλλογή
+STR_PICKER_COLLECTION_ADD                                       :Προσθήκη
+STR_PICKER_COLLECTION_ADD_TOOLTIP                               :Δημιουργία νέας συλλογής
+STR_PICKER_COLLECTION_RENAME                                    :Μετονομασία
+STR_PICKER_COLLECTION_RENAME_TOOLTIP                            :Μετονομασία συλλογής
+STR_PICKER_COLLECTION_DELETE                                    :Διαγραφή
+STR_PICKER_COLLECTION_DELETE_TOOLTIP                            :Διαγραφή μιας συλλογής
 
+STR_PICKER_COLLECTION_RENAME_QUERY                              :Μετονομασία αυτής της συλλογής
+STR_PICKER_COLLECTION_DELETE_QUERY                              :Διαγραφή συλλογής
+STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Είστε σίγουρος/η ότι θέλετε να διαγράψετε αυτή τη συλλογή;
+STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Είστε σίγουρος/η ότι θέλετε να διαγράψετε αυτή τη συλλογή; Υπάρχουν αντικείμενα από απενεργοποιημένα NewGRFs σε αυτήν!
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Επιλογή κατηγορίας σταθμού για εμφάνιση
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Επιλογή τύπου σταθμού για κατασκευή. Ctrl+κλικ για προσθήκη σε ή αφαίρεση από αποθηκευμένα στοιχεία
+STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Επιλέξτε μια συλλογή από σταθμούς προς εμφάνιση
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Επιλογή κατηγορίας σημείου καθοδήγησης για εμφάνιση
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Επιλογή σημείου καθοδήγησης για κατασκευή. Ctrl+κλικ για προσθήκη σε ή αφαίρεση από αποθηκευμένα στοιχεία
+STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Επιλέξτε μια συλλογή από σημεία καθοδήγησης προς εμφάνιση
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Επιλογή κατηγορίας στάσεων λεωφορείων για εμφάνιση
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Επιλογή κατηγορίας στάσεων λεωφορείων για κατασκευή. Ctrl+κλικ για προσθήκη σε ή αφαίρεση από αποθηκευμένα στοιχεία
-STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Επιλογή κατηγορίας σταθμών φορτηγών για εμφάνιση.
+STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Επιλέξτε μια συλλογή από σταθμούς λεωφορείων προς εμφάνιση
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Επιλογή κατηγορίας σταθμών φορτηγών προς εμφάνιση
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Επιλογή κατηγορίας σταθμών φορτηγών για κατασκευή. Ctrl+κλικ για προσθήκη σε ή αφαίρεση από αποθηκευμένα στοιχεία
+STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Επιλέξτε μια συλλογή από σταθμούς φορτηγών προς εμφάνιση
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Επιλογή κατηγορίας αντικειμένων για εμφάνιση
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Επιλογή κατηγορίας αντικειμένων για εμφάνιση. Ctrl+κλικ για προσθήκη σε ή αφαίρεση από αποθηκευμένα στοιχεία. Ctrl+κλικ+σύρσιμο για να επιλεγεί διαγώνια περιοχή. Επίσης, πατήστε Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Επιλέξτε μια συλλογή από αντικείμενα προς εμφάνιση
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Επιλέξτε τη ζώνη της πόλης που θέλετε να εμφανίσετε
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Επιλογή τύπου σπιτιού για κατασκευή. Ctrl+κλικ για προσθήκη σε ή αφαίρεση από αποθηκευμένα στοιχεία
+STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Επιλέξτε μια συλλογή από σπίτια προς εμφάνιση
 
 STR_HOUSE_PICKER_CAPTION                                        :Επιλογή Σπιτιού
 STR_HOUSE_PICKER_NAME                                           :{BLACK}Όνομα: {GOLD}{STRING}
@@ -5399,8 +5417,8 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Η γέ�
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Η γέφυρα είναι {HEIGHT} πολύ χαμηλή για οδική στάση
 STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Η γέφυρα είναι {HEIGHT} πολύ χαμηλή για αποβάθρα
 STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Η γέφυρα είναι {HEIGHT} πολύ χαμηλή για σημαδούρα
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Η γέφυρα είναι {HEIGHT} πολύ χαμηλή για σιδηροδρομικό σημείο αναφοράς
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Η γέφυρα είναι {HEIGHT} πολύ χαμηλή για οδικό σημείο αναφοράς
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Η γέφυρα είναι {HEIGHT} πολύ χαμηλή για σιδηροδρομικό σημείο καθοδήγησης
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Η γέφυρα είναι {HEIGHT} πολύ χαμηλή για οδικό σημείο καθοδήγησης
 STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Η γέφυρα είναι {HEIGHT} πολύ χαμηλή για κλείδωμα
 
 # Tunnel related errors

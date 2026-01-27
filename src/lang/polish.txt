@@ -3238,20 +3238,38 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Zmniejsz wysoko
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Zwiększ wysokość podglądów. Użyj Ctrl, aby powiększyć maksymalnie
 
+STR_PICKER_DEFAULT_COLLECTION                                   :Domyślna kolekcja
+STR_PICKER_SELECT_COLLECTION_TOOLTIP                            :Wybierz kolekcję
+STR_PICKER_COLLECTION_ADD                                       :Utwórz
+STR_PICKER_COLLECTION_ADD_TOOLTIP                               :Utwórz nową kolekcję
+STR_PICKER_COLLECTION_RENAME                                    :Zmień nazwę
+STR_PICKER_COLLECTION_RENAME_TOOLTIP                            :Zmień nazwę kolekcji
+STR_PICKER_COLLECTION_DELETE                                    :Usuń
+STR_PICKER_COLLECTION_DELETE_TOOLTIP                            :Usuń kolekcję
 
+STR_PICKER_COLLECTION_RENAME_QUERY                              :Zmień nazwę tej kolekcji
+STR_PICKER_COLLECTION_DELETE_QUERY                              :Usuń kolekcję
+STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Czy na pewno chcesz usunąć tę kolekcję?
+STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Czy na pewno chcesz usunąć tę kolekcję? Zawiera ona elementy z wyłączonych plików NewGRF!
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Wybierz klasę stacji do wyświetlenia
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Wybierz typ stacji do zbudowania. Użyj Ctrl, aby dodać lub usunąć z zapisanych elementów
+STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Wybierz kolekcję stacji do wyświetlenia
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Wybierz klasę posterunku do wyświetlenia
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Wybierz typ posterunku do zbudowania. Użyj Ctrl, aby dodać lub usunąć z zapisanych elementów
+STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Wybierz kolekcję posterunków do wyświetlenia
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Wybierz klasę przystanku do wyświetlenia
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Wybierz typ przystanku do zbudowania. Użyj Ctrl, aby dodać lub usunąć z zapisanych elementów
+STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Wybierz kolekcję przystanków autobusowych do wyświetlenia
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Wybierz klasę stacji ciężarówek do wyświetlenia
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Wybierz typ stacji ciężarówek do zbudowania. Użyj Ctrl, aby dodać lub usunąć z zapisanych elementów
+STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Wybierz kolekcję stacji ciężarówek do wyświetlenia
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Wybierz klasę obiektu do wyświetlenia
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Wybierz typ obiektu do zbudowania. Użyj Ctrl, aby dodać lub usunąć z zapisanych elementów. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Wybierz kolekcję obiektów do wyświetlenia
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Wybierz strefę miasta do wyświetlenia
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Wybierz typ budynku do zbudowania. Użyj Ctrl, aby dodać lub usunąć z zapisanych elementów
+STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Wybierz kolekcję budynków do wyświetlenia
 
 STR_HOUSE_PICKER_CAPTION                                        :Wybór Budynków
 STR_HOUSE_PICKER_NAME                                           :{BLACK}Nazwa: {GOLD}{STRING}

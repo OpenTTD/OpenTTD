@@ -2858,20 +2858,38 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Reduce the heig
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Increase the height of preview images. Ctrl+Click to increase to maximum
 
+STR_PICKER_DEFAULT_COLLECTION                                   :Default collection
+STR_PICKER_SELECT_COLLECTION_TOOLTIP                            :Select a collection
+STR_PICKER_COLLECTION_ADD                                       :Add
+STR_PICKER_COLLECTION_ADD_TOOLTIP                               :Create a new collection
+STR_PICKER_COLLECTION_RENAME                                    :Rename
+STR_PICKER_COLLECTION_RENAME_TOOLTIP                            :Rename a collection
+STR_PICKER_COLLECTION_DELETE                                    :Delete
+STR_PICKER_COLLECTION_DELETE_TOOLTIP                            :Delete a collection
 
+STR_PICKER_COLLECTION_RENAME_QUERY                              :Rename this collection
+STR_PICKER_COLLECTION_DELETE_QUERY                              :Delete collection
+STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Are you sure you want to delete this collection?
+STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Are you sure you want to delete this collection? There are items from disabled NewGRFs in it!
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Select a station class to display
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Select a station type to build. Ctrl+Click to add or remove in saved items
+STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Select a collection of stations to display
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Select a waypoint class to display
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Select a waypoint to build. Ctrl+Click to add or remove in saved items
+STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Select a collection of waypoints to display
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Select a bus station class to display
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Select a bus station type to build. Ctrl+Click to add or remove in saved items
+STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Select a collection of bus stations to display
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Select a lorry station class to display
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Select a lorry station type to build. Ctrl+Click to add or remove in saved items
+STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Select a collection of lorry stations to display
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Select an object class to display
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Select an object type to build. Ctrl+Click to add or remove in saved items. Ctrl+Click+Drag to select the area diagonally. Also press Shift to show cost estimate only
+STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Select a collection of objects to display
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Select a town zone to display
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Select a house type to build. Ctrl+Click to add or remove in saved items
+STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Select a collection of houses to display
 
 STR_HOUSE_PICKER_CAPTION                                        :House Selection
 STR_HOUSE_PICKER_NAME                                           :{BLACK}Name: {GOLD}{STRING}

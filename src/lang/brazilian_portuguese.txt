@@ -2859,20 +2859,38 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Reduzir a altur
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Aumentar a altura das imagens na pré-visualização. Ctrl+Clique para aumentar ao máximo
 
+STR_PICKER_DEFAULT_COLLECTION                                   :Coleção padrão
+STR_PICKER_SELECT_COLLECTION_TOOLTIP                            :Selecionar uma coleção
+STR_PICKER_COLLECTION_ADD                                       :Adicionar
+STR_PICKER_COLLECTION_ADD_TOOLTIP                               :Criar uma nova coleção
+STR_PICKER_COLLECTION_RENAME                                    :Renomear
+STR_PICKER_COLLECTION_RENAME_TOOLTIP                            :Renomear uma coleção
+STR_PICKER_COLLECTION_DELETE                                    :Excluir
+STR_PICKER_COLLECTION_DELETE_TOOLTIP                            :Excluir uma coleção
 
+STR_PICKER_COLLECTION_RENAME_QUERY                              :Renomear esta coleção
+STR_PICKER_COLLECTION_DELETE_QUERY                              :Excluir coleção
+STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Você quer mesmo excluir esta coleção?
+STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Você quer mesmo excluir esta coleção? Ela contém itens de NewGRFs desativados!
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Selecionar uma classe de estação para mostrar
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Escolher um tipo de estação para construir. Ctrl+Clique para adicionar ou remover nos itens salvos
+STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Selecione uma coleção de estações para mostrar
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Selecionar uma classe de ponto de controle para mostrar
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Escolher um ponto de controle para construir. Ctrl+Clique para adicionar ou remover nos itens salvos
+STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Selecione uma coleção de pontos de controle para mostrar
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Selecionar uma classe de estação de ônibus para mostrar
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Escolher um tipo de estação de ônibus para construir. Ctrl+Clique para adicionar ou remover nos itens salvos
+STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Selecione uma coleção de estações de ônibus para mostrar
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Selecionar uma classe de estação de caminhões para mostrar
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Escolher um tipo de estação de caminhões para construir. Ctrl+Clique para adicionar ou remover nos itens salvos
+STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Selecione uma coleção de estações de carga para mostrar
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Selecionar uma classe de objeto para mostrar
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Escolher um tipo de objeto para construir. Ctrl+Clique para adicionar ou remover nos itens salvos. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para só mostrar o custo estimado
+STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Selecione uma coleção de objetos para mostrar
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Selecionar uma zona urbana para mostrar
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Selecionar um tipo de casa para construir. Ctrl+Clique para adicionar ou remover nos itens salvos
+STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Selecione uma coleção de casas para mostrar
 
 STR_HOUSE_PICKER_CAPTION                                        :Seleção de Casas
 STR_HOUSE_PICKER_NAME                                           :{BLACK}Nome: {GOLD}{STRING}

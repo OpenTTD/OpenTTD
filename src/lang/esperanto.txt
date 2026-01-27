@@ -2952,20 +2952,38 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Malgrandigu la 
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Grandigu la altecon de antaŭmontraj bildoj. Stir-klaku por uzi maksimumon
 
+STR_PICKER_DEFAULT_COLLECTION                                   :Defaŭlta kolekto
+STR_PICKER_SELECT_COLLECTION_TOOLTIP                            :Elekti kolekton
+STR_PICKER_COLLECTION_ADD                                       :Aldoni
+STR_PICKER_COLLECTION_ADD_TOOLTIP                               :Krei novan kolekton
+STR_PICKER_COLLECTION_RENAME                                    :Alinomi
+STR_PICKER_COLLECTION_RENAME_TOOLTIP                            :Alinomi kolekton
+STR_PICKER_COLLECTION_DELETE                                    :Forigi
+STR_PICKER_COLLECTION_DELETE_TOOLTIP                            :Forigi kolekton
 
+STR_PICKER_COLLECTION_RENAME_QUERY                              :Alinomi ĉi tiun kolekton
+STR_PICKER_COLLECTION_DELETE_QUERY                              :Forigi kolekton
+STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Ĉu vi certas, ke vi volas forigi ĉi tiun kolekton?
+STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Ĉu vi certas, ke vi volas forigi ĉi tiun kolekton? Ĝi enhavas erojn de malŝaltitaj NewGRF-dosieroj!
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Elektu klason de stacioj por montri
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Elektu tipon de stacio por konstrui. Stir-klako aldonas aŭ forigas la stacion kiel konservita
+STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Elekti kolekton de stacioj por montrado
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Elektu klason de vojpunktoj por montri
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Elektu vojpunkton por konstrui. Stir-klako aldonas aŭ forigas la vojpunkton kiel konservita
+STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Elekti kolekton de vojpunktoj por montrado
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Elektu klason de bushaltejoj por montri
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Elektu tipon de bushaltejo por konstrui. Stir-klako aldonas aŭ forigas la bushaltejon kiel konservita
+STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Elekti kolekton de bushaltejoj por montrado
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Elektu klason de ŝarĝstacioj por montri
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Elektu tipon de ŝarĝstacio por konstrui. Stir-klako aldonas aŭ forigas la ŝarĝstacion kiel konservita
+STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Elekti kolekton de ŝarĝstacioj por montrado
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Elektu klason de objektoj por montri
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Elektu tipon de objekto por konstrui. Stir-klako aldonas aŭ forigas la objekton kiel konservita. Stir-klako kaj ŝovo elektas diagonalan areon. Ankaŭ premu majuskligan klavon por nur montri kostotakson
+STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Elekti kolekton de objektoj por montrado
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Elektu urbodistrikton por montri
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Elektu tipon de domo por konstrui. Stir-klako aldonas aŭ forigas la objekton kiel konservita
+STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Elekti kolekton de domoj por montrado
 
 STR_HOUSE_PICKER_CAPTION                                        :Elekto de domo
 STR_HOUSE_PICKER_NAME                                           :{BLACK}Nomo: {GOLD}{STRING}
