@@ -60,6 +60,7 @@
 #include "timer/timer_game_calendar.h"
 #include "help_gui.h"
 #include "core/string_consumer.hpp"
+#include "company_cmd.h"
 
 #include "widgets/toolbar_widget.h"
 
@@ -93,6 +94,7 @@ enum CallBackFunction : uint8_t {
 	CBF_NONE,
 	CBF_PLACE_SIGN,
 	CBF_PLACE_LANDINFO,
+	ReopenDropdown,
 };
 
 static CallBackFunction _last_started_action = CBF_NONE; ///< Last started user action.
@@ -876,7 +878,11 @@ static CallBackFunction ToolbarZoomOutClick(Window *w)
 
 static CallBackFunction ToolbarBuildRailClick(Window *w)
 {
-	ShowDropDownList(w, GetRailTypeDropDownList(), _last_built_railtype, WID_TN_RAILS, 140, GetToolbarDropDownOptions());
+	if (_last_started_action == CallBackFunction::ReopenDropdown) {
+		ReplaceDropDownList(w, GetRailTypeDropDownList(), _last_built_railtype);
+	} else {
+		ShowDropDownList(w, GetRailTypeDropDownList(), _last_built_railtype, WID_TN_RAILS, 140, GetToolbarDropDownOptions().Set(DropDownOption::Persist));
+	}
 	return CBF_NONE;
 }
 
@@ -888,8 +894,25 @@ static CallBackFunction ToolbarBuildRailClick(Window *w)
  */
 static CallBackFunction MenuClickBuildRail(int index)
 {
-	_last_built_railtype = (RailType)index;
-	ShowBuildRailToolbar(_last_built_railtype);
+	const Company *c = Company::Get(_local_company);
+	if (_ctrl_pressed || _shift_pressed) {
+		if (index >= RAILTYPE_END) return CBF_NONE;
+		if (_ctrl_pressed) {
+			bool new_value = !c->hidden_railtypes.Test((RailType)index);
+			Command<CMD_SET_RAIL_ROAD_TYPE_HIDDEN>::Post((RailType)index, INVALID_ROADTYPE, new_value);
+		} else {
+			bool new_value = !c->favourite_railtypes.Test((RailType)index);
+			Command<CMD_SET_RAIL_ROAD_TYPE_FAVOURITE>::Post((RailType)index, INVALID_ROADTYPE, new_value);
+		}
+		return CallBackFunction::ReopenDropdown;
+	}
+	CloseWindowByClass(WC_DROPDOWN_MENU);
+
+	if (c->avail_railtypes.Test((RailType)index)) {
+		_last_built_railtype = (RailType)index;
+		ShowBuildRailToolbar(_last_built_railtype);
+	}
+
 	return CBF_NONE;
 }
 
@@ -897,7 +920,11 @@ static CallBackFunction MenuClickBuildRail(int index)
 
 static CallBackFunction ToolbarBuildRoadClick(Window *w)
 {
-	ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_ROAD), _last_built_roadtype, WID_TN_ROADS, 140, GetToolbarDropDownOptions());
+	if (_last_started_action == CallBackFunction::ReopenDropdown) {
+		ReplaceDropDownList(w, GetRoadTypeDropDownList(RTTB_ROAD), _last_built_roadtype);
+	} else {
+		ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_ROAD), _last_built_roadtype, WID_TN_ROADS, 140, GetToolbarDropDownOptions().Set(DropDownOption::Persist));
+	}
 	return CBF_NONE;
 }
 
@@ -909,8 +936,25 @@ static CallBackFunction ToolbarBuildRoadClick(Window *w)
  */
 static CallBackFunction MenuClickBuildRoad(int index)
 {
-	_last_built_roadtype = (RoadType)index;
-	ShowBuildRoadToolbar(_last_built_roadtype);
+	const Company *c = Company::Get(_local_company);
+	if (_ctrl_pressed || _shift_pressed) {
+		if (index >= ROADTYPE_END) return CBF_NONE;
+		if (_ctrl_pressed) {
+			bool new_value = !c->hidden_roadtypes.Test((RoadType)index);
+			Command<CMD_SET_RAIL_ROAD_TYPE_HIDDEN>::Post(INVALID_RAILTYPE, (RoadType)index, new_value);
+		} else {
+			bool new_value = !c->favourite_roadtypes.Test((RoadType)index);
+			Command<CMD_SET_RAIL_ROAD_TYPE_FAVOURITE>::Post(INVALID_RAILTYPE, (RoadType)index, new_value);
+		}
+		return CallBackFunction::ReopenDropdown;
+	}
+	CloseWindowByClass(WC_DROPDOWN_MENU);
+
+	if (c->avail_roadtypes.Test((RoadType)index)) {
+		_last_built_roadtype = (RoadType)index;
+		ShowBuildRoadToolbar(_last_built_roadtype);
+	}
+
 	return CBF_NONE;
 }
 
@@ -918,7 +962,11 @@ static CallBackFunction MenuClickBuildRoad(int index)
 
 static CallBackFunction ToolbarBuildTramClick(Window *w)
 {
-	ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_TRAM), _last_built_tramtype, WID_TN_TRAMS, 140, GetToolbarDropDownOptions());
+	if (_last_started_action == CallBackFunction::ReopenDropdown) {
+		ReplaceDropDownList(w, GetRoadTypeDropDownList(RTTB_TRAM), _last_built_tramtype);
+	} else {
+		ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_TRAM), _last_built_tramtype, WID_TN_TRAMS, 140, GetToolbarDropDownOptions().Set(DropDownOption::Persist));
+	}
 	return CBF_NONE;
 }
 
@@ -930,6 +978,10 @@ static CallBackFunction ToolbarBuildTramClick(Window *w)
  */
 static CallBackFunction MenuClickBuildTram(int index)
 {
+	/* Hidden tram track types are stored the same way as hidden road type. */
+	if (_ctrl_pressed || _shift_pressed) return MenuClickBuildRoad(index);
+
+	CloseWindowByClass(WC_DROPDOWN_MENU);
 	_last_built_tramtype = (RoadType)index;
 	ShowBuildRoadToolbar(_last_built_tramtype);
 	return CBF_NONE;
@@ -1266,6 +1318,7 @@ static CallBackFunction ToolbarScenBuildRoadClick(Window *w)
  */
 static CallBackFunction ToolbarScenBuildRoad(int index)
 {
+	/* Can't hide road types in the scene editor. */
 	_last_built_roadtype = (RoadType)index;
 	ShowBuildRoadScenToolbar(_last_built_roadtype);
 	return CBF_NONE;
@@ -1285,6 +1338,7 @@ static CallBackFunction ToolbarScenBuildTramClick(Window *w)
  */
 static CallBackFunction ToolbarScenBuildTram(int index)
 {
+	/* Can't hide tram track types in the scene editor. */
 	_last_built_tramtype = (RoadType)index;
 	ShowBuildRoadScenToolbar(_last_built_tramtype);
 	return CBF_NONE;
@@ -2016,7 +2070,14 @@ struct MainToolbarWindow : Window {
 	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		CallBackFunction cbf = _menu_clicked_procs[widget](index);
-		if (cbf != CBF_NONE) _last_started_action = cbf;
+		if (cbf != CBF_NONE) {
+			if (cbf == CallBackFunction::ReopenDropdown) {
+				cbf = _last_started_action; // Store current value so it will be reverted.
+				_last_started_action = CallBackFunction::ReopenDropdown;
+				this->OnClick({}, widget, 1);
+			}
+			_last_started_action = cbf;
+		}
 	}
 
 	EventState OnHotkey(int hotkey) override

@@ -11,13 +11,20 @@
 #define DROPDOWN_FUNC_H
 
 #include "dropdown_type.h"
+#include "gfx_type.h"
 #include "window_gui.h"
+#include "dropdown_common_type.h"
 
 /* Show drop down menu containing a fixed list of strings */
 void ShowDropDownMenu(Window *w, std::span<const StringID> strings, int selected, WidgetID button, uint32_t disabled_mask, uint32_t hidden_mask, uint width = 0);
 
 /* Helper functions for commonly used drop down list items. */
-std::unique_ptr<DropDownListItem> MakeDropDownListDividerItem();
+template <FontSize TFs = FS_NORMAL>
+inline std::unique_ptr<DropDownListItem> MakeDropDownListDividerItem(typename DropDownListDividerItem<TFs>::States hidden_states = {})
+{
+	return std::make_unique<DropDownListDividerItem<TFs>>(hidden_states, -1);
+}
+
 std::unique_ptr<DropDownListItem> MakeDropDownListStringItem(StringID str, int value, bool masked = false, bool shaded = false);
 std::unique_ptr<DropDownListItem> MakeDropDownListStringItem(std::string &&str, int value, bool masked = false, bool shaded = false);
 std::unique_ptr<DropDownListItem> MakeDropDownListIconItem(SpriteID sprite, PaletteID palette, StringID str, int value, bool masked = false, bool shaded = false);

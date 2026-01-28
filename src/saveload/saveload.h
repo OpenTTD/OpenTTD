@@ -415,6 +415,8 @@ enum SaveLoadVersion : uint16_t {
 	SLV_SIGN_TEXT_COLOURS,                  ///< 363  PR#14743 Configurable sign text colors in scenario editor.
 	SLV_BUOYS_AT_0_0,                       ///< 364  PR#14983 Allow to build buoys at (0x0).
 
+	SLV_HIDDEN_AND_FAVOURITE_RRT_TYPES,     ///< 365  PR#14798 Hidden and favourite rail/road/tram types.
+
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
 
