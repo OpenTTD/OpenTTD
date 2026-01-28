@@ -458,19 +458,22 @@ struct DepotWindow : Window {
 		return this->Window::GetWidgetString(widget, stringid);
 	}
 
-	struct GetDepotVehiclePtData {
-		const Vehicle *head;
-		const Vehicle *wagon;
+	/** Action to perform when using the depot UI. */
+	enum class DepotGUIAction : uint8_t {
+		Error, ///< Most likely clicked outside of the bounds.
+		DragVehicle, ///< Drag a vehicle to somewhere else.
+		ShowVehicle, ///< Show the vehicle window.
+		StartStop, ///< Start/stop the vehicle.
 	};
 
-	enum DepotGUIAction : uint8_t {
-		MODE_ERROR,
-		MODE_DRAG_VEHICLE,
-		MODE_SHOW_VEHICLE,
-		MODE_START_STOP,
+	/** Result of GetVehicleFromDepotWndPt that tries to determine the action to perform. */
+	struct DepotActionResult {
+		DepotGUIAction action; ///< Action to perform.
+		const Vehicle *vehicle = nullptr; ///< The vehicle, or head of vehicle, to perform the action on.
+		const Vehicle *wagon = nullptr; ///< The wagon to perform the action on. Only set for DragVehicle actions on trains.
 	};
 
-	DepotGUIAction GetVehicleFromDepotWndPt(int x, int y, const Vehicle **veh, GetDepotVehiclePtData *d)
+	DepotActionResult GetVehicleFromDepotWndPt(int x, int y)
 	{
 		this->RefreshVehicleList();
 
@@ -486,7 +489,7 @@ struct DepotWindow : Window {
 		} else {
 			xt = x / this->resize.step_width;
 			xm = x % this->resize.step_width;
-			if (xt >= this->num_columns) return MODE_ERROR;
+			if (xt >= this->num_columns) return {.action = DepotGUIAction::Error};
 		}
 		ym = (y - matrix_widget->pos_y) % this->resize.step_height;
 
@@ -497,70 +500,65 @@ struct DepotWindow : Window {
 			/* Clicking on 'line' / 'block' without a vehicle */
 			if (this->type == VEH_TRAIN) {
 				/* End the dragging */
-				d->head  = nullptr;
-				d->wagon = nullptr;
-				return MODE_DRAG_VEHICLE;
+				return {.action = DepotGUIAction::DragVehicle};
 			} else {
-				return MODE_ERROR; // empty block, so no vehicle is selected
+				return {.action = DepotGUIAction::Error}; // empty block, so no vehicle is selected
 			}
 		}
 
-		bool wagon = false;
+		const Vehicle *vehicle;
+		bool is_wagon = false;
 		if (this->vehicle_list.size() > pos) {
-			*veh = this->vehicle_list[pos];
+			vehicle = this->vehicle_list[pos];
 			/* Skip vehicles that are scrolled off the list */
 			if (this->type == VEH_TRAIN) x += this->hscroll->GetPosition();
 		} else {
 			pos -= (uint)this->vehicle_list.size();
-			*veh = this->wagon_list[pos];
+			vehicle = this->wagon_list[pos];
 			/* free wagons don't have an initial loco. */
 			x -= ScaleSpriteTrad(VEHICLEINFO_FULL_VEHICLE_WIDTH);
-			wagon = true;
-		}
-
-		const Train *v = nullptr;
-		if (this->type == VEH_TRAIN) {
-			v = Train::From(*veh);
-			d->head = d->wagon = v;
+			is_wagon = true;
 		}
 
 		if (xm <= this->header_width) {
 			switch (this->type) {
 				case VEH_TRAIN:
-					if (wagon) return MODE_ERROR;
+					if (is_wagon) return {.action = DepotGUIAction::Error};
 					[[fallthrough]];
 
 				case VEH_ROAD:
-					if (xm <= this->flag_size.width) return MODE_START_STOP;
+					if (xm <= this->flag_size.width) return {.action = DepotGUIAction::StartStop, .vehicle = vehicle};
 					break;
 
 				case VEH_SHIP:
 				case VEH_AIRCRAFT:
-					if (xm <= this->flag_size.width && ym >= (uint)(GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal)) return MODE_START_STOP;
+					if (xm <= this->flag_size.width && ym >= (uint)(GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal)) return {.action = DepotGUIAction::StartStop, .vehicle = vehicle};
 					break;
 
 				default: NOT_REACHED();
 			}
-			return MODE_SHOW_VEHICLE;
+			return {.action = DepotGUIAction::ShowVehicle, .vehicle = vehicle};
 		}
 
-		if (this->type != VEH_TRAIN) return MODE_DRAG_VEHICLE;
+		if (this->type != VEH_TRAIN) return {.action = DepotGUIAction::DragVehicle, .vehicle = vehicle};
 
 		/* Clicking on the counter */
-		if (xm >= matrix_widget->current_x - this->count_width) return wagon ? MODE_ERROR : MODE_SHOW_VEHICLE;
+		if (xm >= matrix_widget->current_x - this->count_width) {
+			if (is_wagon) return {.action = DepotGUIAction::Error};
+			return  {.action = DepotGUIAction::ShowVehicle, .vehicle = vehicle};
+		}
 
 		/* Account for the header */
 		x -= this->header_width;
 
 		/* find the vehicle in this row that was clicked */
-		for (; v != nullptr; v = v->Next()) {
-			x -= v->GetDisplayImageWidth();
+		const Train *wagon = Train::From(vehicle);
+		for (; wagon != nullptr; wagon = wagon->Next()) {
+			x -= wagon->GetDisplayImageWidth();
 			if (x < 0) break;
 		}
 
-		d->wagon = (v != nullptr ? v->GetFirstEnginePart() : nullptr);
-
-		return MODE_DRAG_VEHICLE;
+		return {.action = DepotGUIAction::DragVehicle, .vehicle = vehicle, .wagon = wagon != nullptr ? wagon->GetFirstEnginePart() : nullptr};
 	}
 
 	/**
@@ -570,24 +568,21 @@ struct DepotWindow : Window {
 	 */
 	void DepotClick(int x, int y)
 	{
-		GetDepotVehiclePtData gdvp = { nullptr, nullptr };
-		const Vehicle *v = nullptr;
-		DepotGUIAction mode = this->GetVehicleFromDepotWndPt(x, y, &v, &gdvp);
-
-		if (this->type == VEH_TRAIN) v = gdvp.wagon;
-
-		switch (mode) {
-			case MODE_ERROR: // invalid
+		DepotActionResult result = this->GetVehicleFromDepotWndPt(x, y);
+		switch (result.action) {
+			case DepotGUIAction::Error: // invalid
 				return;
 
-			case MODE_DRAG_VEHICLE: { // start dragging of vehicle
+			case DepotGUIAction::DragVehicle: { // start dragging of vehicle
+				const Vehicle *v = (this->type == VEH_TRAIN) ? result.wagon : result.vehicle;
+
 				if (v != nullptr && VehicleClicked(v)) return;
 
 				VehicleID sel = this->sel;
 
 				if (this->type == VEH_TRAIN && sel != VehicleID::Invalid()) {
 					this->sel = VehicleID::Invalid();
-					TrainDepotMoveVehicle(v, sel, gdvp.head);
+					TrainDepotMoveVehicle(v, sel, result.vehicle);
 				} else if (v != nullptr) {
 					SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, HT_DRAG, this);
 					SetMouseCursorVehicle(v, EIT_IN_DEPOT);
@@ -599,12 +594,12 @@ struct DepotWindow : Window {
 				break;
 			}
 
-			case MODE_SHOW_VEHICLE: // show info window
-				ShowVehicleViewWindow(v);
+			case DepotGUIAction::ShowVehicle: // show info window
+				ShowVehicleViewWindow(result.vehicle);
 				break;
 
-			case MODE_START_STOP: // click start/stop flag
-				StartStopVehicle(v, false);
+			case DepotGUIAction::StartStop: // click start/stop flag
+				StartStopVehicle(result.vehicle, false);
 				break;
 
 			default: NOT_REACHED();
@@ -874,13 +869,9 @@ struct DepotWindow : Window {
 	{
 		if (widget != WID_D_MATRIX) return false;
 
-		GetDepotVehiclePtData gdvp = { nullptr, nullptr };
-		const Vehicle *v = nullptr;
-		DepotGUIAction mode = this->GetVehicleFromDepotWndPt(pt.x, pt.y, &v, &gdvp);
-
-		if (this->type == VEH_TRAIN) v = gdvp.wagon;
-
-		if (v == nullptr || mode != MODE_DRAG_VEHICLE) return false;
+		DepotActionResult result = this->GetVehicleFromDepotWndPt(pt.x, pt.y);
+		const Vehicle *v = this->type == VEH_TRAIN ? result.wagon : result.vehicle;
+		if (result.action != DepotGUIAction::DragVehicle || v == nullptr) return false;
 
 		CargoArray capacity{}, loaded{};
 
@@ -1041,23 +1032,21 @@ struct DepotWindow : Window {
 			return;
 		}
 
-		const Vehicle *v = nullptr;
-		GetDepotVehiclePtData gdvp = {nullptr, nullptr};
-
-		if (this->GetVehicleFromDepotWndPt(pt.x, pt.y, &v, &gdvp) != MODE_DRAG_VEHICLE) return;
+		DepotActionResult result = this->GetVehicleFromDepotWndPt(pt.x, pt.y);
+		if (result.action != DepotGUIAction::DragVehicle) return;
 
 		VehicleID new_vehicle_over = VehicleID::Invalid();
-		if (gdvp.head != nullptr) {
-			if (gdvp.wagon == nullptr && gdvp.head->Last()->index != this->sel) { // ..at the end of the train.
+		if (result.vehicle != nullptr) {
+			if (result.wagon == nullptr && result.vehicle->Last()->index != this->sel) { // ..at the end of the train.
 				/* NOTE: As a wagon can't be moved at the begin of a train, head index isn't used to mark a drag-and-drop
 				 * destination inside a train. This head index is then used to indicate that a wagon is inserted at
 				 * the end of the train.
 				 */
-				new_vehicle_over = gdvp.head->index;
-			} else if (gdvp.wagon != nullptr && gdvp.head != gdvp.wagon &&
-					gdvp.wagon->index != this->sel &&
-					gdvp.wagon->Previous()->index != this->sel) { // ..over an existing wagon.
-				new_vehicle_over = gdvp.wagon->index;
+				new_vehicle_over = result.vehicle->index;
+			} else if (result.wagon != nullptr && result.vehicle != result.wagon &&
+					result.wagon->index != this->sel &&
+					result.wagon->Previous()->index != this->sel) { // ..over an existing wagon.
+				new_vehicle_over = result.wagon->index;
 			}
 		}
 
@@ -1071,27 +1060,25 @@ struct DepotWindow : Window {
 	{
 		switch (widget) {
 			case WID_D_MATRIX: {
-				const Vehicle *v = nullptr;
+				DepotActionResult result = this->GetVehicleFromDepotWndPt(pt.x, pt.y);
 				VehicleID sel = this->sel;
 
 				this->sel = VehicleID::Invalid();
 				this->SetDirty();
 
 				if (this->type == VEH_TRAIN) {
-					GetDepotVehiclePtData gdvp = { nullptr, nullptr };
-
-					if (this->GetVehicleFromDepotWndPt(pt.x, pt.y, &v, &gdvp) == MODE_DRAG_VEHICLE && sel != VehicleID::Invalid()) {
-						if (gdvp.wagon != nullptr && gdvp.wagon->index == sel && _ctrl_pressed) {
+					if (result.action == DepotGUIAction::DragVehicle && sel != VehicleID::Invalid()) {
+						if (result.wagon != nullptr && result.wagon->index == sel && _ctrl_pressed) {
 							Command<CMD_REVERSE_TRAIN_DIRECTION>::Post(STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE, Vehicle::Get(sel)->tile, Vehicle::Get(sel)->index, true);
-						} else if (gdvp.wagon == nullptr || gdvp.wagon->index != sel) {
+						} else if (result.wagon == nullptr || result.wagon->index != sel) {
 							this->vehicle_over = VehicleID::Invalid();
-							TrainDepotMoveVehicle(gdvp.wagon, sel, gdvp.head);
-						} else if (gdvp.head != nullptr && gdvp.head->IsFrontEngine()) {
-							ShowVehicleViewWindow(gdvp.head);
+							TrainDepotMoveVehicle(result.wagon, sel, result.vehicle);
+						} else if (result.vehicle != nullptr && result.vehicle->IsFrontEngine()) {
+							ShowVehicleViewWindow(result.vehicle);
 						}
 					}
-				} else if (this->GetVehicleFromDepotWndPt(pt.x, pt.y, &v, nullptr) == MODE_DRAG_VEHICLE && v != nullptr && sel == v->index) {
-					ShowVehicleViewWindow(v);
+				} else if (result.action == DepotGUIAction::DragVehicle && result.vehicle != nullptr && sel == result.vehicle->index) {
+					ShowVehicleViewWindow(result.vehicle);
 				}
 				break;
 			}
